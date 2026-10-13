@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso Rápido de Um Mês
 
 - Idioma: português do Brasil (`pt`); curso rápido, um mês; aproximadamente 60 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: profissionais ocupados — generalistas de TI, gestores, analistas — que precisam de uma orientação segura e prática sobre segurança de IA em um mês.
 - Relação com os livros vizinhos: o [livro profissional](../../../../professional-6-months/ai-security/en/book/MANUSCRIPT.md) desenvolve cada tema na prática do dia a dia. **Este livro é uma orientação**: as decisões principais, a prática segura, como os sistemas de IA ficam expostos e um laboratório guiado que amarra tudo.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -32,6 +32,61 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Segurança de IA e aprendizado de máquina: fundamentos e decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Como os sistemas de IA funcionam, em resumo"]
+  N1["1.2 Como eles falham ou são atacados"]
+  N2["1.3 Organizando a decisão"]
+  N3["1.4 Opções"]
+  N4["1.5 Registrando a decisão"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Como os sistemas de IA funcionam, em resumo"]
+  N1["1.2 Como eles falham ou são atacados"]
+  N2["1.3 Organizando a decisão"]
+  N3["1.4 Opções"]
+  N4["1.5 Registrando a decisão"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[1.1 Como os sistemas de IA funcionam, em resumo]
+    |
+    v
+[1.2 Como eles falham ou são atacados]
+    |
+    v
+[1.3 Organizando a decisão]
+    |
+    v
+[1.4 Opções]
+    |
+    v
+[1.5 Registrando a decisão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -99,6 +154,61 @@ Sistemas de IA são modelos envolvidos por instruções, dados e ferramentas; po
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, autorização e prática segura
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Autorização"]
+  N1["2.2 Escopo e regras"]
+  N2["2.3 Ambientes seguros"]
+  N3["2.4 Evidências e medição"]
+  N4["2.5 Tratamento das constatações"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Autorização"]
+  N1["2.2 Escopo e regras"]
+  N2["2.3 Ambientes seguros"]
+  N3["2.4 Evidências e medição"]
+  N4["2.5 Tratamento das constatações"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[2.1 Autorização]
+    |
+    v
+[2.2 Escopo e regras]
+    |
+    v
+[2.3 Ambientes seguros]
+    |
+    v
+[2.4 Evidências e medição]
+    |
+    v
+[2.5 Tratamento das constatações]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -200,6 +310,61 @@ Prática segura significa autorização, escopo claro, dados sintéticos, evidê
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Segurança de IA e aprendizado de máquina: sistemas, dados e dependências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Desenhando o fluxo"]
+  N1["3.2 Conteúdo não confiável"]
+  N2["3.3 Acesso a dados"]
+  N3["3.4 Dependências"]
+  N4["3.5 Controles que limitam o dano"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Desenhando o fluxo"]
+  N1["3.2 Conteúdo não confiável"]
+  N2["3.3 Acesso a dados"]
+  N3["3.4 Dependências"]
+  N4["3.5 Controles que limitam o dano"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[3.1 Desenhando o fluxo]
+    |
+    v
+[3.2 Conteúdo não confiável]
+    |
+    v
+[3.3 Acesso a dados]
+    |
+    v
+[3.4 Dependências]
+    |
+    v
+[3.5 Controles que limitam o dano]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -337,6 +502,66 @@ Mapeie onde o conteúdo não confiável entra e por onde as ações saem; limite
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança de IA e aprendizado de máquina: laboratório guiado e síntese aplicada
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["4.1 Regras dos laboratórios"]
+  N1["4.2 Laboratório 1 — evasão"]
+  N2["4.4 Laboratório 3 — taxas de base"]
+  N3["4.5 Laboratório 4 — medição de defesas"]
+  N4["4.6 O plano de adoção"]
+  N5["4.8 Próximos estudos"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Regras dos laboratórios"]
+  N1["4.2 Laboratório 1 — evasão"]
+  N2["4.4 Laboratório 3 — taxas de base"]
+  N3["4.5 Laboratório 4 — medição de defesas"]
+  N4["4.6 O plano de adoção"]
+  N5["4.8 Próximos estudos"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[4.1 Regras dos laboratórios]
+    |
+    v
+[4.2 Laboratório 1 — evasão]
+    |
+    v
+[4.4 Laboratório 3 — taxas de base]
+    |
+    v
+[4.5 Laboratório 4 — medição de defesas]
+    |
+    v
+[4.6 O plano de adoção]
+    |
+    v
+[4.8 Próximos estudos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

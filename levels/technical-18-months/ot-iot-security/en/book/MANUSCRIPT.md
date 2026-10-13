@@ -1,7 +1,7 @@
 # OT, IoT and Cyber-Physical Security: A Technical Operator's Workbook
 
 - Language: English (`en`); technical course, eighteen months; approximately 1,200 hours of planned study.
-- Editorial state: **draft**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technical operators and maintenance technicians who work on or beside industrial lines and must recognise, report and help recover from security problems.
 - Relation to neighbouring books: the [professional course book](../../../../professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md) is shorter; the [technologist book](../../../../technologist-3-years/ot-iot-security/en/book/MANUSCRIPT.md) adds implementation and design. **This book is procedural and floor-focused.**
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -35,6 +35,56 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC
 <a id="ch-01"></a>
 
 ## Chapter 1 — What operational technology is on a packaging line
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The line as a system"]
+  N2["1.2 Why priorities differ"]
+  N3["1.3 What an attacker or a mistake can change"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The line as a system"]
+  N2["1.2 Why priorities differ"]
+  N3["1.3 What an attacker or a mistake can change"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The line as a system]
+    |
+    v
+[1.2 Why priorities differ]
+    |
+    v
+[1.3 What an attacker or a mistake can change]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -84,6 +134,61 @@ OT security on a line starts from physical consequence: people, food and product
 <a id="ch-02"></a>
 
 ## Chapter 2 — Safety first: permits, consequence and who decides
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX005.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Safety systems are not security tools"]
+  N2["2.2 Permits and lockout"]
+  N3["2.3 Who decides"]
+  N4["2.4 Stop conditions"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX005"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Safety systems are not security tools"]
+  N2["2.2 Permits and lockout"]
+  N3["2.3 Who decides"]
+  N4["2.4 Stop conditions"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX005"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Safety systems are not security tools]
+    |
+    v
+[2.2 Permits and lockout]
+    |
+    v
+[2.3 Who decides]
+    |
+    v
+[2.4 Stop conditions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX005]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -141,6 +246,66 @@ Safety controls are untouchable, permits record the work, and named people make 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Network basics on the line
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX009.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Addresses and subnets"]
+  N2["3.2 Switches and VLANs"]
+  N3["3.3 Firewalls"]
+  N4["3.4 Unmanaged switches and wireless"]
+  N5["3.5 Addresses you should not assume"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX009"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Addresses and subnets"]
+  N2["3.2 Switches and VLANs"]
+  N3["3.3 Firewalls"]
+  N4["3.4 Unmanaged switches and wireless"]
+  N5["3.5 Addresses you should not assume"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX009"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Addresses and subnets]
+    |
+    v
+[3.2 Switches and VLANs]
+    |
+    v
+[3.3 Firewalls]
+    |
+    v
+[3.4 Unmanaged switches and wireless]
+    |
+    v
+[3.5 Addresses you should not assume]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX009]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -205,6 +370,61 @@ Addresses, VLANs and firewall rules decide who can talk to a controller; mistake
 
 ## Chapter 4 — Industrial protocols at the operator's level
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 What the protocols carry"]
+  N2["4.2 Why authentication is missing"]
+  N3["4.3 Normal patterns"]
+  N4["4.4 Do not experiment"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 What the protocols carry"]
+  N2["4.2 Why authentication is missing"]
+  N3["4.3 Normal patterns"]
+  N4["4.4 Do not experiment"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 What the protocols carry]
+    |
+    v
+[4.2 Why authentication is missing]
+    |
+    v
+[4.3 Normal patterns]
+    |
+    v
+[4.4 Do not experiment]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) describe what Modbus/TCP and similar industrial protocols carry; (2) explain why many lack authentication; and (3) recognise normal versus unusual protocol use from a description.
@@ -261,6 +481,66 @@ Industrial protocols move process values with little or no authentication, so re
 <a id="ch-05"></a>
 
 ## Chapter 5 — Keeping an asset register
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX017.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 What to record"]
+  N2["5.2 Where the data comes from"]
+  N3["5.3 Reading the result"]
+  N4["5.4 Keeping it alive"]
+  N5["5.5 Spares and retired devices"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX017"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 What to record"]
+  N2["5.2 Where the data comes from"]
+  N3["5.3 Reading the result"]
+  N4["5.4 Keeping it alive"]
+  N5["5.5 Spares and retired devices"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX017"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 What to record]
+    |
+    v
+[5.2 Where the data comes from]
+    |
+    v
+[5.3 Reading the result]
+    |
+    v
+[5.4 Keeping it alive]
+    |
+    v
+[5.5 Spares and retired devices]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX017]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -351,6 +631,66 @@ A complete, current, protected register is the base on which every other OT secu
 
 ## Chapter 6 — Accounts and passwords on HMIs and engineering tools
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Shared accounts"]
+  N2["6.2 Default passwords"]
+  N3["6.3 Privileged accounts"]
+  N4["6.4 Practical rules"]
+  N5["6.5 When a password leaks"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Shared accounts"]
+  N2["6.2 Default passwords"]
+  N3["6.3 Privileged accounts"]
+  N4["6.4 Practical rules"]
+  N5["6.5 When a password leaks"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Shared accounts]
+    |
+    v
+[6.2 Default passwords]
+    |
+    v
+[6.3 Privileged accounts]
+    |
+    v
+[6.4 Practical rules]
+    |
+    v
+[6.5 When a password leaks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) explain the risks of shared and default accounts; (2) apply simple account practices that work on a shift floor; and (3) handle a forgotten or leaked password correctly.
@@ -414,6 +754,61 @@ Named accounts, changed defaults and limited admin use make actions traceable an
 
 ## Chapter 7 — Removable media and laptops
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 How malware crosses the gap"]
+  N2["7.2 A media routine"]
+  N3["7.3 Laptops"]
+  N4["7.4 Transferring files without USB"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 How malware crosses the gap"]
+  N2["7.2 A media routine"]
+  N3["7.3 Laptops"]
+  N4["7.4 Transferring files without USB"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 How malware crosses the gap]
+    |
+    v
+[7.2 A media routine]
+    |
+    v
+[7.3 Laptops]
+    |
+    v
+[7.4 Transferring files without USB]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) explain how USB drives and laptops carry malware into plants; (2) apply a scanning and logging routine for media; and (3) decide which laptops may connect to the line.
@@ -471,6 +866,61 @@ Every file entering the line passes a scanned, logged, controlled path; unknown 
 
 ## Chapter 8 — Remote access for vendors
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Why vendors connect"]
+  N2["8.2 What the advisory found"]
+  N3["8.3 A safer pattern"]
+  N4["8.4 Ending the session"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX029"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Why vendors connect"]
+  N2["8.2 What the advisory found"]
+  N3["8.3 A safer pattern"]
+  N4["8.4 Ending the session"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX029"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Why vendors connect]
+    |
+    v
+[8.2 What the advisory found]
+    |
+    v
+[8.3 A safer pattern]
+    |
+    v
+[8.4 Ending the session]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) describe how vendors reach plant systems remotely; (2) explain lessons from the 2021 Oldsmar water advisory; and (3) run a remote session following a simple checklist.
@@ -527,6 +977,66 @@ Vendor access is through one gateway, named and multi-factor, enabled only for w
 <a id="ch-09"></a>
 
 ## Chapter 9 — Reading logs and alarms
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Two kinds of messages"]
+  N2["9.2 Patterns that matter"]
+  N3["9.3 Reading the output"]
+  N4["9.4 Escalate, do not investigate alone"]
+  N5["9.5 Time matters"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Two kinds of messages"]
+  N2["9.2 Patterns that matter"]
+  N3["9.3 Reading the output"]
+  N4["9.4 Escalate, do not investigate alone"]
+  N5["9.5 Time matters"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Two kinds of messages]
+    |
+    v
+[9.2 Patterns that matter]
+    |
+    v
+[9.3 Reading the output]
+    |
+    v
+[9.4 Escalate, do not investigate alone]
+    |
+    v
+[9.5 Time matters]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -619,6 +1129,66 @@ Security clues sit in login and change records; sequences, not single lines, jus
 
 ## Chapter 10 — Patches and security advisories
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Where advisories come from"]
+  N2["10.2 Reading one"]
+  N3["10.3 Why not patch immediately"]
+  N4["10.4 Recording the decision"]
+  N5["10.5 HMI and laptop updates"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Where advisories come from"]
+  N2["10.2 Reading one"]
+  N3["10.3 Why not patch immediately"]
+  N4["10.4 Recording the decision"]
+  N5["10.5 HMI and laptop updates"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Where advisories come from]
+    |
+    v
+[10.2 Reading one]
+    |
+    v
+[10.3 Why not patch immediately]
+    |
+    v
+[10.4 Recording the decision]
+    |
+    v
+[10.5 HMI and laptop updates]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) read an ICS advisory and find the facts that matter; (2) match an advisory to the asset register; and (3) explain why plants often mitigate before they patch.
@@ -681,6 +1251,71 @@ Advisories are matched against the register, mitigated quickly and patched at a 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Backups and restore
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 What to back up"]
+  N2["11.2 Where to keep backups"]
+  N3["11.3 Checking integrity"]
+  N4["11.4 Reading the result"]
+  N5["11.5 Test restores"]
+  N6["11.6 How often"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 What to back up"]
+  N2["11.2 Where to keep backups"]
+  N3["11.3 Checking integrity"]
+  N4["11.4 Reading the result"]
+  N5["11.5 Test restores"]
+  N6["11.6 How often"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 What to back up]
+    |
+    v
+[11.2 Where to keep backups]
+    |
+    v
+[11.3 Checking integrity]
+    |
+    v
+[11.4 Reading the result]
+    |
+    v
+[11.5 Test restores]
+    |
+    v
+[11.6 How often]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -770,6 +1405,66 @@ Backups are offline, labelled, hashed and test-restored; a mismatch stops a rest
 
 ## Chapter 12 — Segmentation and firewall rules
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Zones and conduits"]
+  N2["12.2 The DMZ"]
+  N3["12.3 Reading rules"]
+  N4["12.4 Weak rules"]
+  N5["12.5 Do not edit on your own"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Zones and conduits"]
+  N2["12.2 The DMZ"]
+  N3["12.3 Reading rules"]
+  N4["12.4 Weak rules"]
+  N5["12.5 Do not edit on your own"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Zones and conduits]
+    |
+    v
+[12.2 The DMZ]
+    |
+    v
+[12.3 Reading rules]
+    |
+    v
+[12.4 Weak rules]
+    |
+    v
+[12.5 Do not edit on your own]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Learning outcomes
 
 You will (1) explain zones and conduits from IEC 62443 in plain words; (2) read a firewall rule table; and (3) spot rules that weaken segmentation.
@@ -833,6 +1528,61 @@ Zones are separated by documented, owned conduits; broad or ownerless rules are 
 
 ## Chapter 13 — IoT devices on the factory floor
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 What counts as IoT here"]
+  N2["13.2 A baseline to check against"]
+  N3["13.3 Connecting safely"]
+  N4["13.4 End of support"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 What counts as IoT here"]
+  N2["13.2 A baseline to check against"]
+  N3["13.3 Connecting safely"]
+  N4["13.4 End of support"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 What counts as IoT here]
+    |
+    v
+[13.2 A baseline to check against]
+    |
+    v
+[13.3 Connecting safely]
+    |
+    v
+[13.4 End of support]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) identify IoT devices on a line; (2) check them against a baseline of ETSI EN 303 645 provisions; and (3) decide how to connect them safely.
@@ -889,6 +1639,66 @@ Floor IoT is checked against a baseline, isolated to what it needs and replaced 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Recognising abnormal behaviour
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Knowing normal"]
+  N2["14.2 Signs to report"]
+  N3["14.3 Naming what you saw"]
+  N4["14.4 Fault or attack?"]
+  N5["14.5 What not to do"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Knowing normal"]
+  N2["14.2 Signs to report"]
+  N3["14.3 Naming what you saw"]
+  N4["14.4 Fault or attack?"]
+  N5["14.5 What not to do"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX053"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Knowing normal]
+    |
+    v
+[14.2 Signs to report]
+    |
+    v
+[14.3 Naming what you saw]
+    |
+    v
+[14.4 Fault or attack?]
+    |
+    v
+[14.5 What not to do]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX053]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes
 
@@ -953,6 +1763,66 @@ Knowing normal lets you notice the abnormal; respond for safety and evidence bef
 
 ## Chapter 15 — Reporting an incident and first actions
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 First steps"]
+  N2["15.2 A good first report"]
+  N3["15.3 Preserving evidence"]
+  N4["15.4 Communication"]
+  N5["15.5 Notification duties"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 First steps"]
+  N2["15.2 A good first report"]
+  N3["15.3 Preserving evidence"]
+  N4["15.4 Communication"]
+  N5["15.5 Notification duties"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX057"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 First steps]
+    |
+    v
+[15.2 A good first report]
+    |
+    v
+[15.3 Preserving evidence]
+    |
+    v
+[15.4 Communication]
+    |
+    v
+[15.5 Notification duties]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX057]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) follow the HPFL first-response steps; (2) write a clear first report; and (3) explain why evidence is preserved before recovery starts.
@@ -1015,6 +1885,71 @@ Safety first, facts recorded, evidence preserved, the right people called; recov
 <a id="ch-16"></a>
 
 ## Chapter 16 — Recovery and returning to production
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Order of recovery"]
+  N2["16.2 Verification before restart"]
+  N3["16.3 Watching afterwards"]
+  N4["16.4 Lessons learned"]
+  N5["16.5 Record keeping"]
+  N6["16.6 Communicating the restart"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Order of recovery"]
+  N2["16.2 Verification before restart"]
+  N3["16.3 Watching afterwards"]
+  N4["16.4 Lessons learned"]
+  N5["16.5 Record keeping"]
+  N6["16.6 Communicating the restart"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Order of recovery]
+    |
+    v
+[16.2 Verification before restart]
+    |
+    v
+[16.3 Watching afterwards]
+    |
+    v
+[16.4 Lessons learned]
+    |
+    v
+[16.5 Record keeping]
+    |
+    v
+[16.6 Communicating the restart]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Learning outcomes
 
@@ -1085,6 +2020,66 @@ Recover in order, verify before restart, watch afterwards and turn lessons into 
 
 ## Chapter 17 — Change management and documentation
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Why change control is security"]
+  N2["17.2 A change request"]
+  N3["17.3 Rollback"]
+  N4["17.4 Keeping documents current"]
+  N5["17.5 Reviewers"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX065"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Why change control is security"]
+  N2["17.2 A change request"]
+  N3["17.3 Rollback"]
+  N4["17.4 Keeping documents current"]
+  N5["17.5 Reviewers"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX065"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Why change control is security]
+    |
+    v
+[17.2 A change request]
+    |
+    v
+[17.3 Rollback]
+    |
+    v
+[17.4 Keeping documents current]
+    |
+    v
+[17.5 Reviewers]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX065]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Learning outcomes
 
 You will (1) explain why every change on the line needs a ticket; (2) write a change request with a rollback plan; and (3) keep drawings and records in step with reality.
@@ -1147,6 +2142,71 @@ Requested, reviewed, reversible and recorded changes keep the line known; unreco
 <a id="ch-18"></a>
 
 ## Chapter 18 — Capstone: a security walk-through of the line
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Planning"]
+  N2["18.2 What to check"]
+  N3["18.3 Writing findings"]
+  N4["18.4 Prioritising"]
+  N5["18.5 Following up"]
+  N6["18.6 Presenting to the supervisor"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX069"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Planning"]
+  N2["18.2 What to check"]
+  N3["18.3 Writing findings"]
+  N4["18.4 Prioritising"]
+  N5["18.5 Following up"]
+  N6["18.6 Presenting to the supervisor"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX069"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Planning]
+    |
+    v
+[18.2 What to check]
+    |
+    v
+[18.3 Writing findings]
+    |
+    v
+[18.4 Prioritising]
+    |
+    v
+[18.5 Following up]
+    |
+    v
+[18.6 Presenting to the supervisor]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX069]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes
 

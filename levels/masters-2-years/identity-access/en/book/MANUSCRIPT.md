@@ -1,7 +1,7 @@
 # Identity and Access Management: Master's Research Track
 
 - Language: English (`en`); course 171, Master's research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students and practitioners researching authentication and account recovery in identity and access management.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only identity systems and accounts you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic accounts, entitlements, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Why the question matters"]
+  N3["1.3 Searching systematically"]
+  N4["Lab — Screening records"]
+  N5["1.4 Reading the screen"]
+  N6["1.5 Defining measures"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Why the question matters"]
+  N3["1.3 Searching systematically"]
+  N4["Lab — Screening records"]
+  N5["1.4 Reading the screen"]
+  N6["1.5 Defining measures"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Why the question matters]
+    |
+    v
+[1.3 Searching systematically]
+    |
+    v
+[Lab — Screening records]
+    |
+    v
+[1.4 Reading the screen]
+    |
+    v
+[1.5 Defining measures]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -113,6 +178,66 @@ A focused question, a repeatable search with fixed criteria and measures defined
 
 ## Chapter 2 — Identity and access management: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Authentication assurance"]
+  N2["2.2 How passkeys work"]
+  N3["2.3 Federation and single sign-on"]
+  N4["2.4 What research says"]
+  N5["2.5 Recovery remains"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Authentication assurance"]
+  N2["2.2 How passkeys work"]
+  N3["2.3 Federation and single sign-on"]
+  N4["2.4 What research says"]
+  N5["2.5 Recovery remains"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Authentication assurance]
+    |
+    v
+[2.2 How passkeys work]
+    |
+    v
+[2.3 Federation and single sign-on]
+    |
+    v
+[2.4 What research says]
+    |
+    v
+[2.5 Recovery remains]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) explain authentication assurance and phishing resistance; (2) describe how passkeys and federation work; (3) relate research findings to Halyard's plan.
@@ -169,6 +294,66 @@ Passkeys bind sign-in to the real site and remove shared secrets, but recovery m
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Design"]
+  N2["3.2 Ethics and data"]
+  N3["3.3 Analysis plan"]
+  N4["3.4 Reproducibility"]
+  N5["3.5 Change control"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Design"]
+  N2["3.2 Ethics and data"]
+  N3["3.3 Analysis plan"]
+  N4["3.4 Reproducibility"]
+  N5["3.5 Change control"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Design]
+    |
+    v
+[3.2 Ethics and data]
+    |
+    v
+[3.3 Analysis plan]
+    |
+    v
+[3.4 Reproducibility]
+    |
+    v
+[3.5 Change control]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) design a before-and-after study with comparison; (2) handle staff data ethically; (3) make the analysis reproducible.
@@ -223,6 +408,66 @@ A staggered design, aggregate data, a written plan and reproducible scripts make
 <a id="ch-04"></a>
 
 ## Chapter 4 — Identity and access management: competing explanations
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Why alternatives matter"]
+  N2["Lab — Normalised reset rate"]
+  N3["4.2 Reading the normalised series"]
+  N4["4.3 Testing other explanations"]
+  N5["4.4 Where risk moved"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Why alternatives matter"]
+  N2["Lab — Normalised reset rate"]
+  N3["4.2 Reading the normalised series"]
+  N4["4.3 Testing other explanations"]
+  N5["4.4 Where risk moved"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Why alternatives matter]
+    |
+    v
+[Lab — Normalised reset rate]
+    |
+    v
+[4.2 Reading the normalised series]
+    |
+    v
+[4.3 Testing other explanations]
+    |
+    v
+[4.4 Where risk moved]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -295,6 +540,61 @@ Normalising and testing rival explanations one by one turns a raw drop in ticket
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Proposal"]
+  N2["5.2 Pilot department"]
+  N3["5.3 Pilot findings"]
+  N4["5.4 Applying lessons"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Proposal"]
+  N2["5.2 Pilot department"]
+  N3["5.3 Pilot findings"]
+  N4["5.4 Applying lessons"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Proposal]
+    |
+    v
+[5.2 Pilot department]
+    |
+    v
+[5.3 Pilot findings]
+    |
+    v
+[5.4 Applying lessons]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write and agree a proposal; (2) run a pilot in one department; (3) record and apply lessons.
@@ -345,6 +645,66 @@ A clear proposal and a small pilot reveal pipeline and practical problems early,
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Collecting data"]
+  N2["Lab — Sign-in success"]
+  N3["6.2 Reading the result"]
+  N4["6.3 Examining the failures"]
+  N5["6.4 The difference-in-differences"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Collecting data"]
+  N2["Lab — Sign-in success"]
+  N3["6.2 Reading the result"]
+  N4["6.3 Examining the failures"]
+  N5["6.4 The difference-in-differences"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Collecting data]
+    |
+    v
+[Lab — Sign-in success]
+    |
+    v
+[6.2 Reading the result]
+    |
+    v
+[6.3 Examining the failures]
+    |
+    v
+[6.4 The difference-in-differences]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -416,6 +776,61 @@ Careful collection, intervals around rates, cause analysis of failures and a com
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Limitations"]
+  N3["7.3 Recommendations"]
+  N4["7.4 Writing for practitioners"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Limitations"]
+  N3["7.3 Recommendations"]
+  N4["7.4 Writing for practitioners"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Limitations]
+    |
+    v
+[7.3 Recommendations]
+    |
+    v
+[7.4 Writing for practitioners]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure the dissertation; (2) state limitations honestly; (3) write recommendations and a practitioner summary.
@@ -466,6 +881,61 @@ Clear structure, honest limitations and practical recommendations make research 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 Viva preparation"]
+  N3["8.3 The viva"]
+  N4["8.4 Closing the project"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 Viva preparation"]
+  N3["8.3 The viva"]
+  N4["8.4 Closing the project"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent review]
+    |
+    v
+[8.2 Viva preparation]
+    |
+    v
+[8.3 The viva]
+    |
+    v
+[8.4 Closing the project]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

@@ -16,6 +16,71 @@ This is the one principal English book for the rapid Security governance, risk a
 
 ## Chapter 1 — Security governance, risk and compliance: foundations and decisions
 
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The decision problem"]
+  N2["1.2 Start with a service, not a product"]
+  N3["1.3 Translate a threat into a business scenario"]
+  N4["1.4 Choose outcomes that can be checked"]
+  N5["1.5 Set priorities under a real limit"]
+  N6["1.6 A short working example"]
+  N7["1.7 The one-page strategy test"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The decision problem"]
+  N2["1.2 Start with a service, not a product"]
+  N3["1.3 Translate a threat into a business scenario"]
+  N4["1.4 Choose outcomes that can be checked"]
+  N5["1.5 Set priorities under a real limit"]
+  N6["1.6 A short working example"]
+  N7["1.7 The one-page strategy test"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The decision problem]
+    |
+    v
+[1.2 Start with a service, not a product]
+    |
+    v
+[1.3 Translate a threat into a business scenario]
+    |
+    v
+[1.4 Choose outcomes that can be checked]
+    |
+    v
+[1.5 Set priorities under a real limit]
+    |
+    v
+[1.6 A short working example]
+    |
+    v
+[1.7 The one-page strategy test]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
+
 ### Learning outcomes
 
 After this chapter, a reader should be able to distinguish a business objective from a security activity, explain how a risk scenario affects a service, identify who must own a decision, write a measurable security outcome, and test whether a proposed action belongs in a strategy.
@@ -141,6 +206,66 @@ All case details for Northstar Community Services are fictional. The strategic l
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Why scope comes first"]
+  N2["2.2 Permission and authority"]
+  N3["2.3 Handling personal data safely"]
+  N4["2.4 Designing a safe exercise"]
+  N5["2.5 Recording what was done"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Why scope comes first"]
+  N2["2.2 Permission and authority"]
+  N3["2.3 Handling personal data safely"]
+  N4["2.4 Designing a safe exercise"]
+  N5["2.5 Recording what was done"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Why scope comes first]
+    |
+    v
+[2.2 Permission and authority]
+    |
+    v
+[2.3 Handling personal data safely]
+    |
+    v
+[2.4 Designing a safe exercise]
+    |
+    v
+[2.5 Recording what was done]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) define the scope of a governance review in writing; (2) obtain and record permission before touching systems or data; (3) plan evidence collection and exercises that cannot harm services or people.
@@ -204,6 +329,71 @@ Written scope, explicit permission, careful data handling, safe exercise design 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security governance, risk and compliance: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 From services to components"]
+  N2["3.2 Reading the dependency map"]
+  N3["Lab — Northstar dependency map and owners"]
+  N4["3.3 Data and where it goes"]
+  N5["3.4 Dependencies outside the organisation"]
+  N6["3.5 From map to scenarios and evidence"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 From services to components"]
+  N2["3.2 Reading the dependency map"]
+  N3["Lab — Northstar dependency map and owners"]
+  N4["3.3 Data and where it goes"]
+  N5["3.4 Dependencies outside the organisation"]
+  N6["3.5 From map to scenarios and evidence"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 From services to components]
+    |
+    v
+[3.2 Reading the dependency map]
+    |
+    v
+[Lab — Northstar dependency map and owners]
+    |
+    v
+[3.3 Data and where it goes]
+    |
+    v
+[3.4 Dependencies outside the organisation]
+    |
+    v
+[3.5 From map to scenarios and evidence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -298,6 +488,71 @@ A dependency map turns named services into shared components, owners, data oblig
 <a id="ch-04"></a>
 
 ## Chapter 4 — Security governance, risk and compliance: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Running the exercise"]
+  N2["4.2 Reading the timings"]
+  N3["Lab — Timing the Northstar restore exercise"]
+  N4["4.3 What the result means"]
+  N5["4.4 Recording the decision"]
+  N6["4.5 Updating the one-page strategy"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Running the exercise"]
+  N2["4.2 Reading the timings"]
+  N3["Lab — Timing the Northstar restore exercise"]
+  N4["4.3 What the result means"]
+  N5["4.4 Recording the decision"]
+  N6["4.5 Updating the one-page strategy"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Running the exercise]
+    |
+    v
+[4.2 Reading the timings]
+    |
+    v
+[Lab — Timing the Northstar restore exercise]
+    |
+    v
+[4.3 What the result means]
+    |
+    v
+[4.4 Recording the decision]
+    |
+    v
+[4.5 Updating the one-page strategy]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

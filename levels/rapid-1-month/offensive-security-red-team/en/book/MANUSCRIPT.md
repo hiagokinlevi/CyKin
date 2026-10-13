@@ -1,7 +1,7 @@
 # Authorized Offensive Security and Red Team: A Rapid Introduction
 
 - Language: English (`en`); rapid course, one month; approximately 80 hours of planned study.
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: new learners with no prior security role.
 - Relation to neighbouring books: the [professional course book](../../../../professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) develops each topic into practice. **This book is a four-chapter introduction to authorized testing.**
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -35,6 +35,66 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 <a id="ch-01"></a>
 
 ## Chapter 1 — What authorized offensive security is
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Authorized testing, not hacking for thrills"]
+  N2["1.2 Why organisations pay for it"]
+  N3["1.3 What this course will not teach"]
+  N4["1.4 Who says yes"]
+  N5["1.5 Shared language for techniques"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Authorized testing, not hacking for thrills"]
+  N2["1.2 Why organisations pay for it"]
+  N3["1.3 What this course will not teach"]
+  N4["1.4 Who says yes"]
+  N5["1.5 Shared language for techniques"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Authorized testing, not hacking for thrills]
+    |
+    v
+[1.2 Why organisations pay for it]
+    |
+    v
+[1.3 What this course will not teach]
+    |
+    v
+[1.4 Who says yes]
+    |
+    v
+[1.5 Shared language for techniques]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -105,6 +165,61 @@ Authorized offensive security is permissioned testing done to improve defence; f
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What the paper must say"]
+  N2["2.2 Checking a target list"]
+  N3["2.3 Stop conditions and out of bounds"]
+  N4["2.4 When someone asks you to break the rules"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What the paper must say"]
+  N2["2.2 Checking a target list"]
+  N3["2.3 Stop conditions and out of bounds"]
+  N4["2.4 When someone asks you to break the rules"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What the paper must say]
+    |
+    v
+[2.2 Checking a target list]
+    |
+    v
+[2.3 Stop conditions and out of bounds]
+    |
+    v
+[2.4 When someone asks you to break the rules]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -198,6 +313,66 @@ Written scope, exclusions and stop conditions decide every action; anything uncl
 
 ## Chapter 3 — Findings, evidence and responsible reporting
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 What a finding is"]
+  N2["3.2 Evidence without harm"]
+  N3["3.3 Naming techniques"]
+  N4["3.4 Honest severity"]
+  N5["3.5 Who reads the report"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 What a finding is"]
+  N2["3.2 Evidence without harm"]
+  N3["3.3 Naming techniques"]
+  N4["3.4 Honest severity"]
+  N5["3.5 Who reads the report"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 What a finding is]
+    |
+    v
+[3.2 Evidence without harm]
+    |
+    v
+[3.3 Naming techniques]
+    |
+    v
+[3.4 Honest severity]
+    |
+    v
+[3.5 Who reads the report]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) describe what makes a useful finding; (2) keep simple evidence without attacking systems; (3) map a finding to an ATT&CK technique name; and (4) write a short, audience-aware report.
@@ -268,6 +443,71 @@ Findings are specific, evidenced and mapped to shared technique names; reports t
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided synthesis: plan, check, report
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The classroom engagement"]
+  N2["4.2 Ranking for the summary"]
+  N3["4.3 Writing the page"]
+  N4["4.4 Pressure scenarios"]
+  N5["4.5 After the course"]
+  N6["4.6 Recording the exercise"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The classroom engagement"]
+  N2["4.2 Ranking for the summary"]
+  N3["4.3 Writing the page"]
+  N4["4.4 Pressure scenarios"]
+  N5["4.5 After the course"]
+  N6["4.6 Recording the exercise"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The classroom engagement]
+    |
+    v
+[4.2 Ranking for the summary]
+    |
+    v
+[4.3 Writing the page]
+    |
+    v
+[4.4 Pressure scenarios]
+    |
+    v
+[4.5 After the course]
+    |
+    v
+[4.6 Recording the exercise]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

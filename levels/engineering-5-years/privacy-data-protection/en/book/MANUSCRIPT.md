@@ -1,7 +1,7 @@
 # Privacy and Data Protection: Engineering Course
 
 - Language: English (`en`); course 119, Engineering course (5 years).
-- Editorial state: **draft**. Chapters 1–50 of 50 have hand-written teaching text; exercises EX001–EX150 have matching worked results with 0–3 rubrics; nine offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–50 of 50 have hand-written teaching text; exercises EX001–EX150 have matching worked results with 0–3 rubrics; nine offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: engineering students designing, verifying and operating privacy and data protection as properties of a real system.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs run randomised response, retention queries, data-flow checks, DPIA scoring, minimisation counts, erasure reliability, privacy budgets, a breach clock and evidence digests, all on synthetic data. Legal analysis is teaching, not legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ Regulation (EU) 2016/679 (GDPR); Lei 13.709/2018 (LGPD); EDPB Guidelines 4/2019,
 <a id="ch-01"></a>
 
 ## Chapter 1 — Calculus I
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Why an engineer meets privacy early"]
+  N2["1.2 Rates of change"]
+  N3["1.4 Optimisation as trade-off"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Why an engineer meets privacy early"]
+  N2["1.2 Rates of change"]
+  N3["1.4 Optimisation as trade-off"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Why an engineer meets privacy early]
+    |
+    v
+[1.2 Rates of change]
+    |
+    v
+[1.4 Optimisation as trade-off]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -85,6 +135,61 @@ Chapter 1 reads calculus through privacy. Chapter 2 uses discrete mathematics to
 
 ## Chapter 2 — Discrete mathematics
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Counting combinations"]
+  N2["2.2 Sets and categories"]
+  N3["2.3 The pigeonhole principle"]
+  N4["2.4 Graphs of relationships"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Counting combinations"]
+  N2["2.2 Sets and categories"]
+  N3["2.3 The pigeonhole principle"]
+  N4["2.4 Graphs of relationships"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Counting combinations]
+    |
+    v
+[2.2 Sets and categories]
+    |
+    v
+[2.3 The pigeonhole principle]
+    |
+    v
+[2.4 Graphs of relationships]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) count combinations of attributes; (2) use sets to describe data categories; (3) reason about uniqueness with the pigeonhole principle.
@@ -132,6 +237,61 @@ Chapter 2 counts, classifies and maps. Chapter 3 looks at the physical side of d
 <a id="ch-03"></a>
 
 ## Chapter 3 — Physics for computing
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Bits are physical"]
+  N2["3.2 Flash memory and wear levelling"]
+  N3["3.3 Energy and retention"]
+  N4["3.4 Signals and side channels"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Bits are physical"]
+  N2["3.2 Flash memory and wear levelling"]
+  N3["3.3 Energy and retention"]
+  N4["3.4 Signals and side channels"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Bits are physical]
+    |
+    v
+[3.2 Flash memory and wear levelling]
+    |
+    v
+[3.3 Energy and retention]
+    |
+    v
+[3.4 Signals and side channels]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -181,6 +341,61 @@ Chapter 3 grounds erasure in physics. Chapter 4 starts programming for privacy.
 
 ## Chapter 4 — Programming I
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 First programs with personal data"]
+  N2["4.2 Validating input"]
+  N3["4.3 Functions and responsibility"]
+  N4["4.4 Testing with fake data"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 First programs with personal data"]
+  N2["4.2 Validating input"]
+  N3["4.3 Functions and responsibility"]
+  N4["4.4 Testing with fake data"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 First programs with personal data]
+    |
+    v
+[4.2 Validating input]
+    |
+    v
+[4.3 Functions and responsibility]
+    |
+    v
+[4.4 Testing with fake data]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) write simple programs that handle personal data safely; (2) avoid logging identifiers; (3) validate input to reduce collection errors.
@@ -228,6 +443,61 @@ Chapter 4 builds safe programming habits. Chapter 5 trains communication.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Engineering communication
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Writing for patients"]
+  N2["5.2 Layered information"]
+  N3["5.3 Design decision records"]
+  N4["5.4 Explaining risk plainly"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Writing for patients"]
+  N2["5.2 Layered information"]
+  N3["5.3 Design decision records"]
+  N4["5.4 Explaining risk plainly"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Writing for patients]
+    |
+    v
+[5.2 Layered information]
+    |
+    v
+[5.3 Design decision records]
+    |
+    v
+[5.4 Explaining risk plainly]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -277,6 +547,61 @@ Chapter 5 makes communication part of design. Chapter 6 returns to mathematics w
 
 ## Chapter 6 — Calculus II
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Accumulated exposure"]
+  N2["6.2 Decay and staleness"]
+  N3["6.3 Series and accumulation"]
+  N4["6.4 Approximation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Accumulated exposure"]
+  N2["6.2 Decay and staleness"]
+  N3["6.3 Series and accumulation"]
+  N4["6.4 Approximation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Accumulated exposure]
+    |
+    v
+[6.2 Decay and staleness]
+    |
+    v
+[6.3 Series and accumulation]
+    |
+    v
+[6.4 Approximation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate exposure over time; (2) model exponential decay of risk; (3) use series to accumulate privacy loss.
@@ -324,6 +649,66 @@ Chapter 6 accumulates exposure and loss. Chapter 7 uses probability to collect s
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 A sensitive question"]
+  N2["7.2 Estimating the share"]
+  N3["7.3 The cost of deniability"]
+  N4["7.4 Honest answers as the real gain"]
+  N5["Lab — Randomised response survey on medication adher"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 A sensitive question"]
+  N2["7.2 Estimating the share"]
+  N3["7.3 The cost of deniability"]
+  N4["7.4 Honest answers as the real gain"]
+  N5["Lab — Randomised response survey on medication adher"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 A sensitive question]
+    |
+    v
+[7.2 Estimating the share]
+    |
+    v
+[7.3 The cost of deniability]
+    |
+    v
+[7.4 Honest answers as the real gain]
+    |
+    v
+[Lab — Randomised response survey on medication adher]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -397,6 +782,61 @@ Chapter 7 shows privacy-accuracy trade-offs in a survey. Chapter 8 looks at hard
 
 ## Chapter 8 — Computer architecture
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Data in many places"]
+  N2["8.2 Isolation"]
+  N3["8.3 Trusted hardware for keys"]
+  N4["8.4 Performance trade-offs"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Data in many places"]
+  N2["8.2 Isolation"]
+  N3["8.3 Trusted hardware for keys"]
+  N4["8.4 Performance trade-offs"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Data in many places]
+    |
+    v
+[8.2 Isolation]
+    |
+    v
+[8.3 Trusted hardware for keys]
+    |
+    v
+[8.4 Performance trade-offs]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) trace where data sit in memory and caches; (2) understand hardware isolation; (3) assess hardware features for protecting health data.
@@ -444,6 +884,61 @@ Chapter 8 places data in hardware. Chapter 9 advances programming.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Separating identifiers"]
+  N2["9.2 Access checks in code"]
+  N3["9.3 Property-based testing"]
+  N4["9.4 Error handling"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Separating identifiers"]
+  N2["9.2 Access checks in code"]
+  N3["9.3 Property-based testing"]
+  N4["9.4 Error handling"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Separating identifiers]
+    |
+    v
+[9.2 Access checks in code]
+    |
+    v
+[9.3 Property-based testing]
+    |
+    v
+[9.4 Error handling]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -493,6 +988,61 @@ Chapter 9 encodes privacy in programs. Chapter 10 considers ethics and safety.
 
 ## Chapter 10 — Engineering ethics and safety
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Duties of an engineer"]
+  N2["10.2 Beyond compliance"]
+  N3["10.3 Safety of patients"]
+  N4["10.4 Escalation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Duties of an engineer"]
+  N2["10.2 Beyond compliance"]
+  N3["10.3 Safety of patients"]
+  N4["10.4 Escalation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Duties of an engineer]
+    |
+    v
+[10.2 Beyond compliance]
+    |
+    v
+[10.3 Safety of patients]
+    |
+    v
+[10.4 Escalation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) apply engineering ethics to privacy decisions; (2) recognise harms beyond legal compliance; (3) decide when to escalate concerns.
@@ -540,6 +1090,61 @@ Chapter 10 grounds the foundations in ethics. Chapter 11 begins the systems bloc
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Personal data on the wire"]
+  N2["11.2 Transport encryption"]
+  N3["11.3 Metadata minimisation"]
+  N4["11.4 Third-party calls"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Personal data on the wire"]
+  N2["11.2 Transport encryption"]
+  N3["11.3 Metadata minimisation"]
+  N4["11.4 Third-party calls"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Personal data on the wire]
+    |
+    v
+[11.2 Transport encryption]
+    |
+    v
+[11.3 Metadata minimisation]
+    |
+    v
+[11.4 Third-party calls]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -589,6 +1194,61 @@ Chapter 11 audits the network. Chapter 12 studies operating systems.
 
 ## Chapter 12 — Operating systems
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Permissions"]
+  N2["12.2 System logs"]
+  N3["12.3 Temporary files"]
+  N4["12.4 Updates and patching"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Permissions"]
+  N2["12.2 System logs"]
+  N3["12.3 Temporary files"]
+  N4["12.4 Updates and patching"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Permissions]
+    |
+    v
+[12.2 System logs]
+    |
+    v
+[12.3 Temporary files]
+    |
+    v
+[12.4 Updates and patching]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Learning outcomes
 
 You will (1) apply file permissions to protect records; (2) control logging at the operating system level; (3) manage temporary files.
@@ -636,6 +1296,66 @@ Chapter 12 tightens the operating system. Chapter 13 enforces retention in datab
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
+
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Retention as data"]
+  N2["13.2 The query"]
+  N3["13.3 Safe deletion"]
+  N4["13.4 Backups and replicas"]
+  N5["Lab — Records past their retention period"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Retention as data"]
+  N2["13.2 The query"]
+  N3["13.3 Safe deletion"]
+  N4["13.4 Backups and replicas"]
+  N5["Lab — Records past their retention period"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Retention as data]
+    |
+    v
+[13.2 The query]
+    |
+    v
+[13.3 Safe deletion]
+    |
+    v
+[13.4 Backups and replicas]
+    |
+    v
+[Lab — Records past their retention period]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
 
 ### Learning outcomes
 
@@ -718,6 +1438,61 @@ Chapter 13 turns policy into queries. Chapter 14 brings privacy into software en
 
 ## Chapter 14 — Software engineering
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Privacy stories"]
+  N2["14.2 Code review"]
+  N3["14.3 Test data"]
+  N4["14.4 Definition of done"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Privacy stories"]
+  N2["14.2 Code review"]
+  N3["14.3 Test data"]
+  N4["14.4 Definition of done"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Privacy stories]
+    |
+    v
+[14.2 Code review]
+    |
+    v
+[14.3 Test data]
+    |
+    v
+[14.4 Definition of done]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Learning outcomes
 
 You will (1) write privacy requirements as user stories; (2) include privacy in code review; (3) manage personal data in test environments.
@@ -765,6 +1540,61 @@ Chapter 14 embeds privacy in delivery. Chapter 15 covers security fundamentals.
 <a id="ch-15"></a>
 
 ## Chapter 15 — Security fundamentals
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 Security serves privacy"]
+  N2["15.2 Authentication"]
+  N3["15.3 Article 32 measures"]
+  N4["15.4 Integrity for patients"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 Security serves privacy"]
+  N2["15.2 Authentication"]
+  N3["15.3 Article 32 measures"]
+  N4["15.4 Integrity for patients"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 Security serves privacy]
+    |
+    v
+[15.2 Authentication]
+    |
+    v
+[15.3 Article 32 measures]
+    |
+    v
+[15.4 Integrity for patients]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Learning outcomes
 
@@ -814,6 +1644,61 @@ Chapter 15 relates security to data protection. Chapter 16 takes a systems view.
 
 ## Chapter 16 — Systems engineering
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 System of systems"]
+  N2["16.2 Requirement traceability"]
+  N3["16.3 Life cycle"]
+  N4["16.4 Interfaces with vendors"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 System of systems"]
+  N2["16.2 Requirement traceability"]
+  N3["16.3 Life cycle"]
+  N4["16.4 Interfaces with vendors"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 System of systems]
+    |
+    v
+[16.2 Requirement traceability]
+    |
+    v
+[16.3 Life cycle]
+    |
+    v
+[16.4 Interfaces with vendors]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes
 
 You will (1) describe Pellmore's platform as a system of systems; (2) trace privacy requirements across interfaces; (3) manage privacy through the life cycle.
@@ -861,6 +1746,61 @@ Chapter 16 engineers the whole system. Chapter 17 applies feedback control.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Feedback loops"]
+  N2["17.2 Choosing signals"]
+  N3["17.3 Stability"]
+  N4["17.4 Gaming"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Feedback loops"]
+  N2["17.2 Choosing signals"]
+  N3["17.3 Stability"]
+  N4["17.4 Gaming"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Feedback loops]
+    |
+    v
+[17.2 Choosing signals]
+    |
+    v
+[17.3 Stability]
+    |
+    v
+[17.4 Gaming]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -910,6 +1850,61 @@ Chapter 17 frames privacy as control. Chapter 18 designs architecture.
 
 ## Chapter 18 — Security architecture
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Zones"]
+  N2["18.2 Least privilege at scale"]
+  N3["18.3 Privacy patterns"]
+  N4["18.4 Evaluating the design"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Zones"]
+  N2["18.2 Least privilege at scale"]
+  N3["18.3 Privacy patterns"]
+  N4["18.4 Evaluating the design"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Zones]
+    |
+    v
+[18.2 Least privilege at scale]
+    |
+    v
+[18.3 Privacy patterns]
+    |
+    v
+[18.4 Evaluating the design]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Learning outcomes
 
 You will (1) apply zones and segmentation to health data; (2) design for least privilege at scale; (3) evaluate architecture against data protection by design.
@@ -957,6 +1952,56 @@ Chapter 18 designs zones and patterns. Chapter 19 covers identity and cryptograp
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 Identifiers and linkage"]
+  N2["19.2 Keyed hashing"]
+  N3["19.3 Encryption choices"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 Identifiers and linkage"]
+  N2["19.2 Keyed hashing"]
+  N3["19.3 Encryption choices"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 Identifiers and linkage]
+    |
+    v
+[19.2 Keyed hashing]
+    |
+    v
+[19.3 Encryption choices]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Learning outcomes
 
@@ -1006,6 +2051,61 @@ Chapter 19 completes the security foundations. Chapter 20 sets the engineering c
 
 ## Chapter 20 — Privacy and data protection: engineering context
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 Laws that apply"]
+  N2["20.2 Controllers and processors"]
+  N3["20.3 Frameworks and standards"]
+  N4["20.4 The engineer's role"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 Laws that apply"]
+  N2["20.2 Controllers and processors"]
+  N3["20.3 Frameworks and standards"]
+  N4["20.4 The engineer's role"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 Laws that apply]
+    |
+    v
+[20.2 Controllers and processors]
+    |
+    v
+[20.3 Frameworks and standards]
+    |
+    v
+[20.4 The engineer's role]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes
 
 You will (1) map the legal framework that shapes Pellmore's engineering; (2) identify roles of controller and processor; (3) relate standards and frameworks to engineering work.
@@ -1054,6 +2154,61 @@ Chapter 20 frames the legal and standards context. Chapter 21 writes privacy req
 
 ## Chapter 21 — Privacy and data protection: requirements
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 From principles to requirements"]
+  N2["21.2 Testable wording"]
+  N3["21.3 Rights as requirements"]
+  N4["21.4 Prioritising by risk"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 From principles to requirements"]
+  N2["21.2 Testable wording"]
+  N3["21.3 Rights as requirements"]
+  N4["21.4 Prioritising by risk"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 From principles to requirements]
+    |
+    v
+[21.2 Testable wording]
+    |
+    v
+[21.3 Rights as requirements]
+    |
+    v
+[21.4 Prioritising by risk]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Learning outcomes
 
 You will (1) derive requirements from legal principles; (2) make requirements testable; (3) prioritise requirements by risk.
@@ -1101,6 +2256,66 @@ Chapter 21 writes requirements. Chapter 22 models systems and data flows.
 <a id="ch-22"></a>
 
 ## Chapter 22 — Privacy and data protection: system and data models
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 The inventory"]
+  N2["22.2 Automated checks"]
+  N3["22.3 Transfers"]
+  N4["22.4 Research basis"]
+  N5["Lab — Checking data flows for purpose, basis and tra"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 The inventory"]
+  N2["22.2 Automated checks"]
+  N3["22.3 Transfers"]
+  N4["22.4 Research basis"]
+  N5["Lab — Checking data flows for purpose, basis and tra"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 The inventory]
+    |
+    v
+[22.2 Automated checks]
+    |
+    v
+[22.3 Transfers]
+    |
+    v
+[22.4 Research basis]
+    |
+    v
+[Lab — Checking data flows for purpose, basis and tra]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Learning outcomes
 
@@ -1187,6 +2402,61 @@ Chapter 22 models and checks flows. Chapter 23 analyses threats and failures.
 
 ## Chapter 23 — Privacy and data protection: threat and failure analysis
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 Privacy threats"]
+  N2["23.2 Failure modes"]
+  N3["23.3 Insiders and errors"]
+  N4["23.4 Ranking threats"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 Privacy threats"]
+  N2["23.2 Failure modes"]
+  N3["23.3 Insiders and errors"]
+  N4["23.4 Ranking threats"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 Privacy threats]
+    |
+    v
+[23.2 Failure modes]
+    |
+    v
+[23.3 Insiders and errors]
+    |
+    v
+[23.4 Ranking threats]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Learning outcomes
 
 You will (1) apply a privacy threat model to the platform; (2) analyse failure modes that harm privacy; (3) include non-malicious threats.
@@ -1234,6 +2504,66 @@ Chapter 23 finds threats. Chapter 24 assesses them in a DPIA.
 <a id="ch-24"></a>
 
 ## Chapter 24 — Privacy and data protection: methods I
+
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 When a DPIA is needed"]
+  N2["24.2 Scoring risks"]
+  N3["24.3 Measures and residual risk"]
+  N4["24.4 Prior consultation"]
+  N5["Lab — DPIA risk scores before and after measures"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 When a DPIA is needed"]
+  N2["24.2 Scoring risks"]
+  N3["24.3 Measures and residual risk"]
+  N4["24.4 Prior consultation"]
+  N5["Lab — DPIA risk scores before and after measures"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 When a DPIA is needed]
+    |
+    v
+[24.2 Scoring risks]
+    |
+    v
+[24.3 Measures and residual risk]
+    |
+    v
+[24.4 Prior consultation]
+    |
+    v
+[Lab — DPIA risk scores before and after measures]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
 
 ### Learning outcomes
 
@@ -1308,6 +2638,61 @@ Chapter 24 assesses risk. Chapter 25 is the first design studio.
 
 ## Chapter 25 — Design studio I
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 The brief"]
+  N2["25.2 Alternatives"]
+  N3["25.3 Automated decisions"]
+  N4["25.4 Critique"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 The brief"]
+  N2["25.2 Alternatives"]
+  N3["25.3 Automated decisions"]
+  N4["25.4 Critique"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 The brief]
+    |
+    v
+[25.2 Alternatives]
+    |
+    v
+[25.3 Automated decisions]
+    |
+    v
+[25.4 Critique]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Learning outcomes
 
 You will (1) design a privacy-preserving feature end to end; (2) present design alternatives; (3) respond to critique in a studio setting.
@@ -1355,6 +2740,61 @@ Chapter 25 designs a feature. Chapter 26 compares architecture alternatives.
 <a id="ch-26"></a>
 
 ## Chapter 26 — Privacy and data protection: architecture alternatives
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 Three architectures"]
+  N2["26.2 Privacy-enhancing technologies"]
+  N3["26.3 Scoring"]
+  N4["26.4 Decision"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 Three architectures"]
+  N2["26.2 Privacy-enhancing technologies"]
+  N3["26.3 Scoring"]
+  N4["26.4 Decision"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 Three architectures]
+    |
+    v
+[26.2 Privacy-enhancing technologies]
+    |
+    v
+[26.3 Scoring]
+    |
+    v
+[26.4 Decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Learning outcomes
 
@@ -1404,6 +2844,61 @@ Chapter 26 chooses architectures. Chapter 27 designs controls.
 
 ## Chapter 27 — Privacy and data protection: control design
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Types of control"]
+  N2["27.2 Consent management"]
+  N3["27.3 Controls linked to requirements"]
+  N4["27.4 Control owners"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Types of control"]
+  N2["27.2 Consent management"]
+  N3["27.3 Controls linked to requirements"]
+  N4["27.4 Control owners"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Types of control]
+    |
+    v
+[27.2 Consent management]
+    |
+    v
+[27.3 Controls linked to requirements]
+    |
+    v
+[27.4 Control owners]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Learning outcomes
 
 You will (1) design preventive, detective and corrective privacy controls; (2) design consent management; (3) link controls to requirements and risks.
@@ -1452,6 +2947,61 @@ Chapter 27 designs controls. Chapter 28 implements them.
 
 ## Chapter 28 — Privacy and data protection: implementation I
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 Purpose tags in the schema"]
+  N2["28.2 Consent propagation"]
+  N3["28.3 Safe deployment"]
+  N4["28.4 Documentation as code"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 Purpose tags in the schema"]
+  N2["28.2 Consent propagation"]
+  N3["28.3 Safe deployment"]
+  N4["28.4 Documentation as code"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 Purpose tags in the schema]
+    |
+    v
+[28.2 Consent propagation]
+    |
+    v
+[28.3 Safe deployment]
+    |
+    v
+[28.4 Documentation as code]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Learning outcomes
 
 You will (1) implement purpose tags and access checks; (2) implement consent propagation; (3) deploy changes safely.
@@ -1499,6 +3049,66 @@ Chapter 28 implements controls. Chapter 29 measures them.
 <a id="ch-29"></a>
 
 ## Chapter 29 — Privacy and data protection: measurement
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 Measuring minimisation"]
+  N2["29.2 Acting on the measure"]
+  N3["29.3 A metric set"]
+  N4["29.4 Metrics without new risk"]
+  N5["Lab — Fields collected versus needed by purpose"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 Measuring minimisation"]
+  N2["29.2 Acting on the measure"]
+  N3["29.3 A metric set"]
+  N4["29.4 Metrics without new risk"]
+  N5["Lab — Fields collected versus needed by purpose"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 Measuring minimisation]
+    |
+    v
+[29.2 Acting on the measure]
+    |
+    v
+[29.3 A metric set]
+    |
+    v
+[29.4 Metrics without new risk]
+    |
+    v
+[Lab — Fields collected versus needed by purpose]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Learning outcomes
 
@@ -1574,6 +3184,61 @@ Chapter 29 measures privacy. Chapter 30 verifies controls in the first laborator
 
 ## Chapter 30 — Verification laboratory I
 
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 Tests from threats"]
+  N2["30.2 Rights tests"]
+  N3["30.3 Evidence"]
+  N4["30.4 Retesting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 Tests from threats"]
+  N2["30.2 Rights tests"]
+  N3["30.3 Evidence"]
+  N4["30.4 Retesting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 Tests from threats]
+    |
+    v
+[30.2 Rights tests]
+    |
+    v
+[30.3 Evidence]
+    |
+    v
+[30.4 Retesting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
+
 ### Learning outcomes
 
 You will (1) verify privacy controls with tests; (2) design tests from threats; (3) record evidence for accountability.
@@ -1622,6 +3287,61 @@ Chapter 30 verifies controls. Chapter 31 implements the next generation of featu
 
 ## Chapter 31 — Privacy and data protection: implementation II
 
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Lesson map
+
+Lesson 31 published. Map, example, EX091.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["31.1 Portability"]
+  N2["31.2 Vendor integration"]
+  N3["31.3 Analytics redesign"]
+  N4["31.4 Code quality"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX091"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["31.1 Portability"]
+  N2["31.2 Vendor integration"]
+  N3["31.3 Analytics redesign"]
+  N4["31.4 Code quality"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX091"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[31.1 Portability]
+    |
+    v
+[31.2 Vendor integration]
+    |
+    v
+[31.3 Analytics redesign]
+    |
+    v
+[31.4 Code quality]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
+
 ### Learning outcomes
 
 You will (1) implement data portability; (2) integrate a vendor's systems with rights handling; (3) implement privacy-preserving analytics.
@@ -1669,6 +3389,66 @@ Chapter 31 implements more rights and analytics. Chapter 32 studies reliability 
 <a id="ch-32"></a>
 
 ## Chapter 32 — Privacy and data protection: reliability
+
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Lesson map
+
+Lesson 32 published. Map, example, EX094.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["32.1 Erasure as a series system"]
+  N2["32.2 Retries"]
+  N3["32.3 Persistent failures"]
+  N4["32.4 Independence assumption"]
+  N5["Lab — Reliability of erasure across five stores"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX094"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["32.1 Erasure as a series system"]
+  N2["32.2 Retries"]
+  N3["32.3 Persistent failures"]
+  N4["32.4 Independence assumption"]
+  N5["Lab — Reliability of erasure across five stores"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX094"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[32.1 Erasure as a series system]
+    |
+    v
+[32.2 Retries]
+    |
+    v
+[32.3 Persistent failures]
+    |
+    v
+[32.4 Independence assumption]
+    |
+    v
+[Lab — Reliability of erasure across five stores]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
 
 ### Learning outcomes
 
@@ -1739,6 +3519,61 @@ Chapter 32 engineers reliable erasure. Chapter 33 addresses safety and resilienc
 
 ## Chapter 33 — Privacy and data protection: safety and resilience
 
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Lesson map
+
+Lesson 33 published. Map, example, EX097.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["33.1 Resilience requirements"]
+  N2["33.2 Breaches as incidents"]
+  N3["33.3 Privacy during recovery"]
+  N4["33.4 Graceful degradation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX097"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["33.1 Resilience requirements"]
+  N2["33.2 Breaches as incidents"]
+  N3["33.3 Privacy during recovery"]
+  N4["33.4 Graceful degradation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX097"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[33.1 Resilience requirements]
+    |
+    v
+[33.2 Breaches as incidents]
+    |
+    v
+[33.3 Privacy during recovery]
+    |
+    v
+[33.4 Graceful degradation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
+
 ### Learning outcomes
 
 You will (1) plan for incidents that affect personal data; (2) design resilience that preserves privacy; (3) balance availability with confidentiality.
@@ -1786,6 +3621,61 @@ Chapter 33 builds resilience. Chapter 34 integrates the platform.
 <a id="ch-34"></a>
 
 ## Chapter 34 — Privacy and data protection: integration
+
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Lesson map
+
+Lesson 34 published. Map, example, EX100.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["34.1 Shared services"]
+  N2["34.2 Laboratory partner"]
+  N3["34.3 End-to-end tests"]
+  N4["34.4 Change control"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX100"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["34.1 Shared services"]
+  N2["34.2 Laboratory partner"]
+  N3["34.3 End-to-end tests"]
+  N4["34.4 Change control"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX100"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[34.1 Shared services]
+    |
+    v
+[34.2 Laboratory partner]
+    |
+    v
+[34.3 End-to-end tests]
+    |
+    v
+[34.4 Change control]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
 
 ### Learning outcomes
 
@@ -1835,6 +3725,61 @@ Chapter 34 integrates the platform. Chapter 35 is the second design studio.
 
 ## Chapter 35 — Design studio II
 
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Lesson map
+
+Lesson 35 published. Map, example, EX103.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["35.1 The brief"]
+  N2["35.2 Granular sharing"]
+  N3["35.3 Vulnerable patients"]
+  N4["35.4 Panel presentation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX103"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["35.1 The brief"]
+  N2["35.2 Granular sharing"]
+  N3["35.3 Vulnerable patients"]
+  N4["35.4 Panel presentation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX103"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[35.1 The brief]
+    |
+    v
+[35.2 Granular sharing]
+    |
+    v
+[35.3 Vulnerable patients]
+    |
+    v
+[35.4 Panel presentation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
+
 ### Learning outcomes
 
 You will (1) design a new data use with contextual integrity; (2) consider vulnerable groups; (3) present to a mixed panel.
@@ -1882,6 +3827,66 @@ Chapter 35 designs for relationships. Chapter 36 considers scale and differentia
 <a id="ch-36"></a>
 
 ## Chapter 36 — Privacy and data protection: performance and scale
+
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Lesson map
+
+Lesson 36 published. Map, example, EX106.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["36.1 Publishing clinic statistics"]
+  N2["36.2 The budget lab"]
+  N3["36.3 Scale effects"]
+  N4["36.4 Engineering the pipeline"]
+  N5["Lab — Splitting a yearly privacy budget across relea"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX106"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["36.1 Publishing clinic statistics"]
+  N2["36.2 The budget lab"]
+  N3["36.3 Scale effects"]
+  N4["36.4 Engineering the pipeline"]
+  N5["Lab — Splitting a yearly privacy budget across relea"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX106"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[36.1 Publishing clinic statistics]
+    |
+    v
+[36.2 The budget lab]
+    |
+    v
+[36.3 Scale effects]
+    |
+    v
+[36.4 Engineering the pipeline]
+    |
+    v
+[Lab — Splitting a yearly privacy budget across relea]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
 
 ### Learning outcomes
 
@@ -1949,6 +3954,61 @@ Chapter 36 plans releases at scale. Chapter 37 runs privacy in operations.
 
 ## Chapter 37 — Privacy and data protection: operations
 
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Lesson map
+
+Lesson 37 published. Map, example, EX109.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["37.1 A privacy operations function"]
+  N2["37.2 Rights at volume"]
+  N3["37.3 Monitoring"]
+  N4["37.4 Continuous improvement"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX109"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["37.1 A privacy operations function"]
+  N2["37.2 Rights at volume"]
+  N3["37.3 Monitoring"]
+  N4["37.4 Continuous improvement"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX109"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[37.1 A privacy operations function]
+    |
+    v
+[37.2 Rights at volume]
+    |
+    v
+[37.3 Monitoring]
+    |
+    v
+[37.4 Continuous improvement]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
+
 ### Learning outcomes
 
 You will (1) run privacy operations day to day; (2) handle rights requests at volume; (3) operate monitoring and response.
@@ -1996,6 +4056,61 @@ Chapter 37 operates privacy. Chapter 38 validates that the system meets real nee
 <a id="ch-38"></a>
 
 ## Chapter 38 — Privacy and data protection: validation
+
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Lesson map
+
+Lesson 38 published. Map, example, EX112.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["38.1 Verification and validation"]
+  N2["38.2 Usability of privacy"]
+  N3["38.3 Legal validation"]
+  N4["38.4 Validating with the supervisory context"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX112"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["38.1 Verification and validation"]
+  N2["38.2 Usability of privacy"]
+  N3["38.3 Legal validation"]
+  N4["38.4 Validating with the supervisory context"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX112"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[38.1 Verification and validation]
+    |
+    v
+[38.2 Usability of privacy]
+    |
+    v
+[38.3 Legal validation]
+    |
+    v
+[38.4 Validating with the supervisory context]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
 
 ### Learning outcomes
 
@@ -2045,6 +4160,61 @@ Chapter 38 validates outward. Chapter 39 keeps the system maintainable.
 
 ## Chapter 39 — Privacy and data protection: maintainability
 
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Lesson map
+
+Lesson 39 published. Map, example, EX115.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["39.1 Privacy debt"]
+  N2["39.2 Readable controls"]
+  N3["39.3 Dependency updates"]
+  N4["39.4 Handover"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX115"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["39.1 Privacy debt"]
+  N2["39.2 Readable controls"]
+  N3["39.3 Dependency updates"]
+  N4["39.4 Handover"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX115"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[39.1 Privacy debt]
+    |
+    v
+[39.2 Readable controls]
+    |
+    v
+[39.3 Dependency updates]
+    |
+    v
+[39.4 Handover]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
+
 ### Learning outcomes
 
 You will (1) keep privacy controls maintainable; (2) manage technical debt with privacy impact; (3) document for future engineers.
@@ -2092,6 +4262,61 @@ Chapter 39 keeps controls healthy. Chapter 40 is the second verification laborat
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Lesson map
+
+Lesson 40 published. Map, example, EX118.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["40.1 Adversarial testing"]
+  N2["40.2 Fixing the statistics leak"]
+  N3["40.3 Independent testing"]
+  N4["40.4 Reporting to management"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX118"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["40.1 Adversarial testing"]
+  N2["40.2 Fixing the statistics leak"]
+  N3["40.3 Independent testing"]
+  N4["40.4 Reporting to management"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX118"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[40.1 Adversarial testing]
+    |
+    v
+[40.2 Fixing the statistics leak]
+    |
+    v
+[40.3 Independent testing]
+    |
+    v
+[40.4 Reporting to management]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Learning outcomes
 
@@ -2141,6 +4366,61 @@ Chapter 40 closes the verification cycle. Chapter 41 optimises the system.
 
 ## Chapter 41 — Privacy and data protection: system optimization
 
+<!-- cyberabc:lesson-figures:start ch-41 -->
+### Lesson map
+
+Lesson 41 published. Map, example, EX121.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["41.1 Optimisation goals"]
+  N2["41.2 Removing redundancy"]
+  N3["41.3 Trade-offs"]
+  N4["41.4 Measuring the effect"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX121"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["41.1 Optimisation goals"]
+  N2["41.2 Removing redundancy"]
+  N3["41.3 Trade-offs"]
+  N4["41.4 Measuring the effect"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX121"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[41.1 Optimisation goals]
+    |
+    v
+[41.2 Removing redundancy]
+    |
+    v
+[41.3 Trade-offs]
+    |
+    v
+[41.4 Measuring the effect]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX121]
+```
+<!-- cyberabc:lesson-figures:end ch-41 -->
+
+
 ### Learning outcomes
 
 You will (1) optimise for privacy and utility together; (2) remove redundant processing; (3) measure the effect of optimisation.
@@ -2188,6 +4468,61 @@ Chapter 41 optimises the system. Chapter 42 turns to applied research.
 <a id="ch-42"></a>
 
 ## Chapter 42 — Privacy and data protection: applied research
+
+<!-- cyberabc:lesson-figures:start ch-42 -->
+### Lesson map
+
+Lesson 42 published. Map, example, EX124.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["42.1 The question"]
+  N2["42.2 Evidence"]
+  N3["42.3 Study design"]
+  N4["42.4 Results and use"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX124"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["42.1 The question"]
+  N2["42.2 Evidence"]
+  N3["42.3 Study design"]
+  N4["42.4 Results and use"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX124"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[42.1 The question]
+    |
+    v
+[42.2 Evidence]
+    |
+    v
+[42.3 Study design]
+    |
+    v
+[42.4 Results and use]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX124]
+```
+<!-- cyberabc:lesson-figures:end ch-42 -->
+
 
 ### Learning outcomes
 
@@ -2237,6 +4572,61 @@ Chapter 42 studies understanding. Chapter 43 reflects on practice.
 
 ## Chapter 43 — Industry or public-service practice
 
+<!-- cyberabc:lesson-figures:start ch-43 -->
+### Lesson map
+
+Lesson 43 published. Map, example, EX127.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["43.1 Working in governance"]
+  N2["43.2 Conflicting demands"]
+  N3["43.3 Professional conduct"]
+  N4["43.4 Reflection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX127"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["43.1 Working in governance"]
+  N2["43.2 Conflicting demands"]
+  N3["43.3 Professional conduct"]
+  N4["43.4 Reflection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX127"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[43.1 Working in governance]
+    |
+    v
+[43.2 Conflicting demands]
+    |
+    v
+[43.3 Professional conduct]
+    |
+    v
+[43.4 Reflection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX127]
+```
+<!-- cyberabc:lesson-figures:end ch-43 -->
+
+
 ### Learning outcomes
 
 You will (1) work within an organisation's privacy governance; (2) handle conflicting stakeholder demands; (3) reflect on professional practice.
@@ -2284,6 +4674,61 @@ Chapter 43 places Zara in practice. Chapter 44 starts the capstone.
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
+
+<!-- cyberabc:lesson-figures:start ch-44 -->
+### Lesson map
+
+Lesson 44 published. Map, example, EX130.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["44.1 Capstone scope"]
+  N2["44.2 Requirements"]
+  N3["44.3 Risks"]
+  N4["44.4 Verification plan"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX130"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["44.1 Capstone scope"]
+  N2["44.2 Requirements"]
+  N3["44.3 Risks"]
+  N4["44.4 Verification plan"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX130"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[44.1 Capstone scope]
+    |
+    v
+[44.2 Requirements]
+    |
+    v
+[44.3 Risks]
+    |
+    v
+[44.4 Verification plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX130]
+```
+<!-- cyberabc:lesson-figures:end ch-44 -->
+
 
 ### Learning outcomes
 
@@ -2333,6 +4778,61 @@ Chapter 44 plans the capstone. Chapter 45 holds an independent design review.
 
 ## Chapter 45 — Independent design review
 
+<!-- cyberabc:lesson-figures:start ch-45 -->
+### Lesson map
+
+Lesson 45 published. Map, example, EX133.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["45.1 Preparing the review"]
+  N2["45.2 Findings"]
+  N3["45.3 Responses"]
+  N4["45.4 After review"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX133"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["45.1 Preparing the review"]
+  N2["45.2 Findings"]
+  N3["45.3 Responses"]
+  N4["45.4 After review"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX133"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[45.1 Preparing the review]
+    |
+    v
+[45.2 Findings]
+    |
+    v
+[45.3 Responses]
+    |
+    v
+[45.4 After review]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX133]
+```
+<!-- cyberabc:lesson-figures:end ch-45 -->
+
+
 ### Learning outcomes
 
 You will (1) prepare a design for independent review; (2) respond to findings; (3) record decisions after review.
@@ -2381,6 +4881,61 @@ Chapter 45 strengthens the design. Chapter 46 builds and tests it.
 
 ## Chapter 46 — Engineering capstone II
 
+<!-- cyberabc:lesson-figures:start ch-46 -->
+### Lesson map
+
+Lesson 46 published. Map, example, EX136.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["46.1 Building"]
+  N2["46.2 Verification"]
+  N3["46.3 Evaluation with researchers"]
+  N4["46.4 Reflection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX136"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["46.1 Building"]
+  N2["46.2 Verification"]
+  N3["46.3 Evaluation with researchers"]
+  N4["46.4 Reflection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX136"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[46.1 Building]
+    |
+    v
+[46.2 Verification]
+    |
+    v
+[46.3 Evaluation with researchers]
+    |
+    v
+[46.4 Reflection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX136]
+```
+<!-- cyberabc:lesson-figures:end ch-46 -->
+
+
 ### Learning outcomes
 
 You will (1) build the research data service; (2) verify it against acceptance criteria; (3) evaluate it with researchers.
@@ -2428,6 +4983,66 @@ Chapter 46 delivers the capstone. Chapter 47 tests failure and recovery.
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
+
+<!-- cyberabc:lesson-figures:start ch-47 -->
+### Lesson map
+
+Lesson 47 published. Map, example, EX139.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["47.1 The scenario"]
+  N2["47.2 The clock"]
+  N3["47.3 Communicating with patients"]
+  N4["47.4 Improvements"]
+  N5["Lab — Breach timeline against the 72-hour clock"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX139"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["47.1 The scenario"]
+  N2["47.2 The clock"]
+  N3["47.3 Communicating with patients"]
+  N4["47.4 Improvements"]
+  N5["Lab — Breach timeline against the 72-hour clock"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX139"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[47.1 The scenario]
+    |
+    v
+[47.2 The clock]
+    |
+    v
+[47.3 Communicating with patients]
+    |
+    v
+[47.4 Improvements]
+    |
+    v
+[Lab — Breach timeline against the 72-hour clock]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX139]
+```
+<!-- cyberabc:lesson-figures:end ch-47 -->
+
 
 ### Learning outcomes
 
@@ -2506,6 +5121,66 @@ Chapter 47 tests recovery. Chapter 48 assembles the evidence dossier.
 
 ## Chapter 48 — Evidence dossier
 
+<!-- cyberabc:lesson-figures:start ch-48 -->
+### Lesson map
+
+Lesson 48 published. Map, example, EX142.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["48.1 What goes in the dossier"]
+  N2["48.2 Integrity"]
+  N3["48.3 Investigating the mismatch"]
+  N4["48.4 Lessons"]
+  N5["Lab — Verifying dossier evidence against its manifes"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX142"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["48.1 What goes in the dossier"]
+  N2["48.2 Integrity"]
+  N3["48.3 Investigating the mismatch"]
+  N4["48.4 Lessons"]
+  N5["Lab — Verifying dossier evidence against its manifes"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX142"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[48.1 What goes in the dossier]
+    |
+    v
+[48.2 Integrity]
+    |
+    v
+[48.3 Investigating the mismatch]
+    |
+    v
+[48.4 Lessons]
+    |
+    v
+[Lab — Verifying dossier evidence against its manifes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX142]
+```
+<!-- cyberabc:lesson-figures:end ch-48 -->
+
+
 ### Learning outcomes
 
 You will (1) assemble evidence for accountability; (2) protect evidence integrity; (3) handle discrepancies honestly.
@@ -2578,6 +5253,56 @@ Chapter 48 assembles trustworthy evidence. Chapter 49 writes the thesis.
 
 ## Chapter 49 — Engineering thesis
 
+<!-- cyberabc:lesson-figures:start ch-49 -->
+### Lesson map
+
+Lesson 49 published. Map, example, EX145.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["49.1 The claim"]
+  N2["49.2 Evidence chapters"]
+  N3["49.4 Generalisation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX145"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["49.1 The claim"]
+  N2["49.2 Evidence chapters"]
+  N3["49.4 Generalisation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX145"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[49.1 The claim]
+    |
+    v
+[49.2 Evidence chapters]
+    |
+    v
+[49.4 Generalisation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX145]
+```
+<!-- cyberabc:lesson-figures:end ch-49 -->
+
+
 ### Learning outcomes
 
 You will (1) write an engineering thesis around a design claim; (2) present evidence and limits; (3) generalise lessons carefully.
@@ -2625,6 +5350,61 @@ Chapter 49 writes the thesis. Chapter 50 is the final defense.
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
+
+<!-- cyberabc:lesson-figures:start ch-50 -->
+### Lesson map
+
+Lesson 50 published. Map, example, EX148.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["50.1 Preparing"]
+  N2["50.2 The defense"]
+  N3["50.3 Professional development"]
+  N4["50.4 Looking back"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX148"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["50.1 Preparing"]
+  N2["50.2 The defense"]
+  N3["50.3 Professional development"]
+  N4["50.4 Looking back"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX148"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[50.1 Preparing]
+    |
+    v
+[50.2 The defense]
+    |
+    v
+[50.3 Professional development]
+    |
+    v
+[50.4 Looking back]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX148]
+```
+<!-- cyberabc:lesson-figures:end ch-50 -->
+
 
 ### Learning outcomes
 

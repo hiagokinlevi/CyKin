@@ -1,7 +1,7 @@
 # Data Governance: Master's Course
 
 - Language: English (`en`); course 164, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students evaluating whether data stewardship improves data quality in a public organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs count duplicate addresses before and after normalisation in a synthetic register and estimate a difference-in-differences effect on synthetic correction times with a bootstrap interval. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-1:2022; Khatri and Brown (201
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The student and the setting"]
+  N2["1.2 Framing the question"]
+  N3["1.3 Searching the literature"]
+  N4["1.4 Recording decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The student and the setting"]
+  N2["1.2 Framing the question"]
+  N3["1.3 Searching the literature"]
+  N4["1.4 Recording decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The student and the setting]
+    |
+    v
+[1.2 Framing the question]
+    |
+    v
+[1.3 Searching the literature]
+    |
+    v
+[1.4 Recording decisions]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -89,6 +139,56 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Data governance: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Models of governance"]
+  N2["2.2 Where stewards fit"]
+  N3["2.3 Quality standards"]
+  N4["2.4 The seminar argument"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Models of governance"]
+  N2["2.2 Where stewards fit"]
+  N3["2.3 Quality standards"]
+  N4["2.4 The seminar argument"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Models of governance]
+    |
+    v
+[2.2 Where stewards fit]
+    |
+    v
+[2.3 Quality standards]
+    |
+    v
+[2.4 The seminar argument]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) compare governance models critically; (2) relate stewardship to decision rights and standards; (3) present a seminar argument.
@@ -141,6 +241,56 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Choosing a design"]
+  N2["3.2 Checking assumptions"]
+  N3["3.3 Ethics"]
+  N4["3.4 Reproducible analysis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Choosing a design"]
+  N2["3.2 Checking assumptions"]
+  N3["3.3 Ethics"]
+  N4["3.4 Reproducible analysis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Choosing a design]
+    |
+    v
+[3.2 Checking assumptions]
+    |
+    v
+[3.3 Ethics]
+    |
+    v
+[3.4 Reproducible analysis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) design a quasi-experimental evaluation; (2) address ethics in workplace research; (3) plan reproducible analysis.
@@ -192,6 +342,56 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Data governance: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Why rivals matter"]
+  N2["4.2 Designing checks"]
+  N3["4.3 The culture explanation"]
+  N4["4.4 Evidence that would weaken the hypothesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Why rivals matter"]
+  N2["4.2 Designing checks"]
+  N3["4.3 The culture explanation"]
+  N4["4.4 Evidence that would weaken the hypothesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Why rivals matter]
+    |
+    v
+[4.2 Designing checks]
+    |
+    v
+[4.3 The culture explanation]
+    |
+    v
+[4.4 Evidence that would weaken the hypothesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) list rival explanations for an expected effect; (2) design checks for each; (3) decide what evidence would weaken the main hypothesis.
@@ -242,6 +442,61 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Pilot purpose"]
+  N2["5.2 The duplicate lab"]
+  N3["5.3 Correction times"]
+  N4["5.4 Refining the proposal"]
+  N5["Lab — Address duplicates before and after normalisat"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Pilot purpose"]
+  N2["5.2 The duplicate lab"]
+  N3["5.3 Correction times"]
+  N4["5.4 Refining the proposal"]
+  N5["Lab — Address duplicates before and after normalisat"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Pilot purpose]
+    |
+    v
+[5.2 The duplicate lab]
+    |
+    v
+[5.3 Correction times]
+    |
+    v
+[5.4 Refining the proposal]
+    |
+    v
+[Lab — Address duplicates before and after normalisat]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -325,6 +580,61 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Data collection and analysis
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Collecting the data"]
+  N2["6.2 The estimate"]
+  N3["6.3 Checking rivals"]
+  N4["6.4 What the estimate means"]
+  N5["Lab — Difference-in-differences of correction times"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Collecting the data"]
+  N2["6.2 The estimate"]
+  N3["6.3 Checking rivals"]
+  N4["6.4 What the estimate means"]
+  N5["Lab — Difference-in-differences of correction times"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Collecting the data]
+    |
+    v
+[6.2 The estimate]
+    |
+    v
+[6.3 Checking rivals]
+    |
+    v
+[6.4 What the estimate means]
+    |
+    v
+[Lab — Difference-in-differences of correction times]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) collect department-level outcome data; (2) estimate a difference-in-differences effect with a bootstrap interval; (3) check rival explanations.
@@ -399,6 +709,56 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Limitations"]
+  N3["7.3 Findings versus recommendations"]
+  N4["7.4 Writing for two audiences"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Limitations"]
+  N3["7.3 Findings versus recommendations"]
+  N4["7.4 Writing for two audiences"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Limitations]
+    |
+    v
+[7.3 Findings versus recommendations]
+    |
+    v
+[7.4 Writing for two audiences]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a master's dissertation; (2) write limitations that inform readers; (3) separate findings from recommendations.
@@ -449,6 +809,56 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense"]
+  N3["8.3 Handing over"]
+  N4["8.4 Reflection"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense"]
+  N3["8.3 Handing over"]
+  N4["8.4 Reflection"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent review]
+    |
+    v
+[8.2 The defense]
+    |
+    v
+[8.3 Handing over]
+    |
+    v
+[8.4 Reflection]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

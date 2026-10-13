@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 072, curso superior de tecnologia (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnologia que vão construir e operar as verificações, os scripts, os dicionários e os relatórios que fazem a governança de dados funcionar no dia a dia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios validam códigos de prioridade e a ordem das datas em ordens de reparo sintéticas, pseudonimizam identificadores de inquilinos com hashes com chave e medem os reparos emergenciais concluídos em até vinte e quatro horas por duas prestadoras sintéticas. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,51 @@ DAMA-DMBOK2 (2017); ISO 8000-8:2015; Wang e Strong (1996); NIST SP 800-188; GDPR
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Começando no Eastgate
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O estudante"]
+  N1["1.2 Foco aplicado"]
+  N2["1.3 Ambiente de trabalho"]
+  N3["1.4 As necessidades da Calder Valley"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O estudante"]
+  N1["1.2 Foco aplicado"]
+  N2["1.3 Ambiente de trabalho"]
+  N3["1.4 As necessidades da Calder Valley"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 O estudante]
+    |
+    v
+[1.2 Foco aplicado]
+    |
+    v
+[1.3 Ambiente de trabalho]
+    |
+    v
+[1.4 As necessidades da Calder Valley]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -85,6 +130,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Dados em uma associação habitacional
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["2.1 Principais conjuntos de dados"]
+  N1["2.2 Acompanhando um reparo"]
+  N2["2.3 Quem depende dos dados de reparo"]
+  N3["2.4 Dados de segurança"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX004"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Principais conjuntos de dados"]
+  N1["2.2 Acompanhando um reparo"]
+  N2["2.3 Quem depende dos dados de reparo"]
+  N3["2.4 Dados de segurança"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX004"]
+```
+
+```text
+[2.1 Principais conjuntos de dados]
+    |
+    v
+[2.2 Acompanhando um reparo]
+    |
+    v
+[2.3 Quem depende dos dados de reparo]
+    |
+    v
+[2.4 Dados de segurança]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar os principais conjuntos de dados de uma associação habitacional; (2) mapear como fluem os dados de reparo; (3) reconhecer quem depende deles.
@@ -132,6 +222,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Higiene de planilhas e arquivos
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["3.1 Unidades compartilhadas"]
+  N1["3.2 Convenções de nomes"]
+  N2["3.3 Riscos das planilhas"]
+  N3["3.4 Dados pessoais em arquivos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX007"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Unidades compartilhadas"]
+  N1["3.2 Convenções de nomes"]
+  N2["3.3 Riscos das planilhas"]
+  N3["3.4 Dados pessoais em arquivos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX007"]
+```
+
+```text
+[3.1 Unidades compartilhadas]
+    |
+    v
+[3.2 Convenções de nomes]
+    |
+    v
+[3.3 Riscos das planilhas]
+    |
+    v
+[3.4 Dados pessoais em arquivos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -181,6 +316,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — SQL para verificações de governança
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["4.1 Consultas básicas"]
+  N1["4.2 Órfãos"]
+  N2["4.3 Duplicatas"]
+  N3["4.4 Verificações reutilizáveis"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX010"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Consultas básicas"]
+  N1["4.2 Órfãos"]
+  N2["4.3 Duplicatas"]
+  N3["4.4 Verificações reutilizáveis"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX010"]
+```
+
+```text
+[4.1 Consultas básicas]
+    |
+    v
+[4.2 Órfãos]
+    |
+    v
+[4.3 Duplicatas]
+    |
+    v
+[4.4 Verificações reutilizáveis]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever consultas SQL para verificar dados; (2) encontrar órfãos e duplicatas; (3) salvar consultas como verificações reutilizáveis.
@@ -228,6 +408,46 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Fundamentos de scripts em Python
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["5.1 Primeiros scripts"]
+  N1["5.3 Datas e números"]
+  N2["5.4 Estrutura para reutilização"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Primeiros scripts"]
+  N1["5.3 Datas e números"]
+  N2["5.4 Estrutura para reutilização"]
+  N0 --> N1 --> N2 --> Q["EX013"]
+```
+
+```text
+[5.1 Primeiros scripts]
+    |
+    v
+[5.3 Datas e números]
+    |
+    v
+[5.4 Estrutura para reutilização]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -277,6 +497,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Formatos e troca de dados
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["6.1 Formatos comuns"]
+  N1["6.2 Especificações de troca"]
+  N2["6.3 Validando arquivos"]
+  N3["6.4 Mudanças de versão"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Formatos comuns"]
+  N1["6.2 Especificações de troca"]
+  N2["6.3 Validando arquivos"]
+  N3["6.4 Mudanças de versão"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX016"]
+```
+
+```text
+[6.1 Formatos comuns]
+    |
+    v
+[6.2 Especificações de troca]
+    |
+    v
+[6.3 Validando arquivos]
+    |
+    v
+[6.4 Mudanças de versão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar formatos de dados comuns; (2) definir especificações de troca; (3) validar arquivos recebidos.
@@ -325,6 +590,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Conceitos de qualidade de dados
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["7.1 Dimensões"]
+  N1["7.2 Medidas"]
+  N2["7.3 Qualidade e uso"]
+  N3["7.4 Qualidade como hábito"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX019"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Dimensões"]
+  N1["7.2 Medidas"]
+  N2["7.3 Qualidade e uso"]
+  N3["7.4 Qualidade como hábito"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX019"]
+```
+
+```text
+[7.1 Dimensões]
+    |
+    v
+[7.2 Medidas]
+    |
+    v
+[7.3 Qualidade e uso]
+    |
+    v
+[7.4 Qualidade como hábito]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar dimensões de qualidade aos dados de reparo; (2) escolher medidas para cada uma; (3) relacionar a qualidade aos usos.
@@ -372,6 +682,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Validando ordens de reparo
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["8.1 As regras"]
+  N1["8.2 Resultados"]
+  N2["8.3 Causas"]
+  N3["8.4 Relatório"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 As regras"]
+  N1["8.2 Resultados"]
+  N2["8.3 Causas"]
+  N3["8.4 Relatório"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX022"]
+```
+
+```text
+[8.1 As regras]
+    |
+    v
+[8.2 Resultados]
+    |
+    v
+[8.3 Causas]
+    |
+    v
+[8.4 Relatório]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -444,6 +799,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 9 — Corrigindo problemas na origem
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["9.1 Limpar versus corrigir"]
+  N1["9.2 Controles na origem"]
+  N2["9.3 Medindo o efeito"]
+  N3["9.4 A limpeza que resta"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Limpar versus corrigir"]
+  N1["9.2 Controles na origem"]
+  N2["9.3 Medindo o efeito"]
+  N3["9.4 A limpeza que resta"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX025"]
+```
+
+```text
+[9.1 Limpar versus corrigir]
+    |
+    v
+[9.2 Controles na origem]
+    |
+    v
+[9.3 Medindo o efeito]
+    |
+    v
+[9.4 A limpeza que resta]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) distinguir correções na origem de limpezas posteriores; (2) implantar controles na origem; (3) medir o efeito.
@@ -491,6 +891,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Códigos de referência e tabelas de consulta
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["10.1 Listas de códigos"]
+  N1["10.2 Consistência"]
+  N2["10.3 Mudanças ao longo do tempo"]
+  N3["10.4 Documentação"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX028"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Listas de códigos"]
+  N1["10.2 Consistência"]
+  N2["10.3 Mudanças ao longo do tempo"]
+  N3["10.4 Documentação"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX028"]
+```
+
+```text
+[10.1 Listas de códigos]
+    |
+    v
+[10.2 Consistência]
+    |
+    v
+[10.3 Mudanças ao longo do tempo]
+    |
+    v
+[10.4 Documentação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -540,6 +985,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Registros de inquilinos e duplicatas
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["11.1 Por que surgem duplicatas"]
+  N1["11.2 Regras de correspondência"]
+  N2["11.3 Revisão e fusão"]
+  N3["11.4 Prevenção"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Por que surgem duplicatas"]
+  N1["11.2 Regras de correspondência"]
+  N2["11.3 Revisão e fusão"]
+  N3["11.4 Prevenção"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
+```
+
+```text
+[11.1 Por que surgem duplicatas]
+    |
+    v
+[11.2 Regras de correspondência]
+    |
+    v
+[11.3 Revisão e fusão]
+    |
+    v
+[11.4 Prevenção]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) encontrar registros duplicados de inquilinos; (2) aplicar regras de correspondência com revisão; (3) prevenir novas duplicatas.
@@ -587,6 +1077,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Metadados e dicionários de dados
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["12.1 Construindo um dicionário"]
+  N1["12.2 Resolvendo significados"]
+  N2["12.3 Mantendo-o atualizado"]
+  N3["12.4 Usando o dicionário"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Construindo um dicionário"]
+  N1["12.2 Resolvendo significados"]
+  N2["12.3 Mantendo-o atualizado"]
+  N3["12.4 Usando o dicionário"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX034"]
+```
+
+```text
+[12.1 Construindo um dicionário]
+    |
+    v
+[12.2 Resolvendo significados]
+    |
+    v
+[12.3 Mantendo-o atualizado]
+    |
+    v
+[12.4 Usando o dicionário]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -636,6 +1171,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 13 — Linhagem para relatórios
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["13.1 Rastreando um número"]
+  N1["13.2 Transformações"]
+  N2["13.3 Investigando divergências"]
+  N3["13.4 Mantendo a linhagem"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 Rastreando um número"]
+  N1["13.2 Transformações"]
+  N2["13.3 Investigando divergências"]
+  N3["13.4 Mantendo a linhagem"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX037"]
+```
+
+```text
+[13.1 Rastreando um número]
+    |
+    v
+[13.2 Transformações]
+    |
+    v
+[13.3 Investigando divergências]
+    |
+    v
+[13.4 Mantendo a linhagem]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) rastrear números de relatórios até as origens; (2) documentar transformações; (3) usar a linhagem para investigar divergências.
@@ -683,6 +1263,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Papéis na prática
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["14.1 O papel do tecnólogo"]
+  N1["14.2 Pedidos que exigem decisões"]
+  N2["14.3 Trabalhando com os curadores"]
+  N3["14.4 Levantando preocupações"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 O papel do tecnólogo"]
+  N1["14.2 Pedidos que exigem decisões"]
+  N2["14.3 Trabalhando com os curadores"]
+  N3["14.4 Levantando preocupações"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX040"]
+```
+
+```text
+[14.1 O papel do tecnólogo]
+    |
+    v
+[14.2 Pedidos que exigem decisões]
+    |
+    v
+[14.3 Trabalhando com os curadores]
+    |
+    v
+[14.4 Levantando preocupações]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -732,6 +1357,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 15 — Políticas e procedimentos
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["15.1 Lendo políticas"]
+  N1["15.2 Escrevendo procedimentos"]
+  N2["15.3 Testando com usuários"]
+  N3["15.4 Mantendo os procedimentos atualizados"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 Lendo políticas"]
+  N1["15.2 Escrevendo procedimentos"]
+  N2["15.3 Testando com usuários"]
+  N3["15.4 Mantendo os procedimentos atualizados"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX043"]
+```
+
+```text
+[15.1 Lendo políticas]
+    |
+    v
+[15.2 Escrevendo procedimentos]
+    |
+    v
+[15.3 Testando com usuários]
+    |
+    v
+[15.4 Mantendo os procedimentos atualizados]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) ler e aplicar políticas de dados; (2) escrever procedimentos claros; (3) testar procedimentos com usuários.
@@ -780,6 +1450,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 16 — Controle de acesso na prática
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["16.1 Papéis e permissões"]
+  N1["16.2 Revisões de acesso"]
+  N2["16.3 Registro de acessos"]
+  N3["16.4 Menor privilégio"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 Papéis e permissões"]
+  N1["16.2 Revisões de acesso"]
+  N2["16.3 Registro de acessos"]
+  N3["16.4 Menor privilégio"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX046"]
+```
+
+```text
+[16.1 Papéis e permissões]
+    |
+    v
+[16.2 Revisões de acesso]
+    |
+    v
+[16.3 Registro de acessos]
+    |
+    v
+[16.4 Menor privilégio]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) implantar acesso baseado em papéis para os dados; (2) conduzir revisões de acesso; (3) registrar o acesso a dados sensíveis.
@@ -827,6 +1542,46 @@ Continue para a próxima aula já escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Pseudonimização para extrações
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["17.1 A necessidade"]
+  N1["17.2 Como funciona"]
+  N2["17.3 Protegendo a chave"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 A necessidade"]
+  N1["17.2 Como funciona"]
+  N2["17.3 Protegendo a chave"]
+  N0 --> N1 --> N2 --> Q["EX049"]
+```
+
+```text
+[17.1 A necessidade]
+    |
+    v
+[17.2 Como funciona]
+    |
+    v
+[17.3 Protegendo a chave]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -894,6 +1649,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 18 — Solicitações de titulares
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["18.1 Pedidos de acesso"]
+  N1["18.2 Encontrando tudo"]
+  N2["18.3 Correções"]
+  N3["18.4 Eliminação"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX052"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Pedidos de acesso"]
+  N1["18.2 Encontrando tudo"]
+  N2["18.3 Correções"]
+  N3["18.4 Eliminação"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX052"]
+```
+
+```text
+[18.1 Pedidos de acesso]
+    |
+    v
+[18.2 Encontrando tudo]
+    |
+    v
+[18.3 Correções]
+    |
+    v
+[18.4 Eliminação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) apoiar tecnicamente os pedidos de acesso dos titulares; (2) encontrar os dados de uma pessoa em vários sistemas; (3) tratar pedidos de correção e de eliminação.
@@ -941,6 +1741,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Retenção e descarte
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa da aula
+
+Aula 19 publicada. Mapa, exemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["19.1 A tabela"]
+  N1["19.2 Automatizando o descarte"]
+  N2["19.3 Evidências"]
+  N3["19.4 Backups e cópias"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["19.1 A tabela"]
+  N1["19.2 Automatizando o descarte"]
+  N2["19.3 Evidências"]
+  N3["19.4 Backups e cópias"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX055"]
+```
+
+```text
+[19.1 A tabela]
+    |
+    v
+[19.2 Automatizando o descarte]
+    |
+    v
+[19.3 Evidências]
+    |
+    v
+[19.4 Backups e cópias]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -990,6 +1835,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 20 — Dados das prestadoras
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa da aula
+
+Aula 20 publicada. Mapa, exemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["20.1 Fluxos de dados"]
+  N1["20.2 Monitorando a qualidade"]
+  N2["20.3 Minimizando os dados compartilhados"]
+  N3["20.4 Mudanças de prestadora"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX058"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["20.1 Fluxos de dados"]
+  N1["20.2 Monitorando a qualidade"]
+  N2["20.3 Minimizando os dados compartilhados"]
+  N3["20.4 Mudanças de prestadora"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX058"]
+```
+
+```text
+[20.1 Fluxos de dados]
+    |
+    v
+[20.2 Monitorando a qualidade]
+    |
+    v
+[20.3 Minimizando os dados compartilhados]
+    |
+    v
+[20.4 Mudanças de prestadora]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) governar os dados trocados com as prestadoras; (2) monitorar a qualidade dos dados das prestadoras; (3) tratar mudanças de prestadora.
@@ -1037,6 +1927,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Medindo o desempenho das prestadoras
+
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa da aula
+
+Aula 21 publicada. Mapa, exemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["21.1 A meta"]
+  N1["21.2 Resultados"]
+  N2["21.3 Comparação justa"]
+  N3["21.4 Usando os resultados"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX061"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["21.1 A meta"]
+  N1["21.2 Resultados"]
+  N2["21.3 Comparação justa"]
+  N3["21.4 Usando os resultados"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
+```
+
+```text
+[21.1 A meta]
+    |
+    v
+[21.2 Resultados]
+    |
+    v
+[21.3 Comparação justa]
+    |
+    v
+[21.4 Usando os resultados]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1102,6 +2037,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 22 — Painéis e relatórios
 
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa da aula
+
+Aula 22 publicada. Mapa, exemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["22.1 Usuários e necessidades"]
+  N1["22.2 Qualidade ao lado dos números"]
+  N2["22.3 Exibições honestas"]
+  N3["22.4 Mantendo os painéis"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX064"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["22.1 Usuários e necessidades"]
+  N1["22.2 Qualidade ao lado dos números"]
+  N2["22.3 Exibições honestas"]
+  N3["22.4 Mantendo os painéis"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX064"]
+```
+
+```text
+[22.1 Usuários e necessidades]
+    |
+    v
+[22.2 Qualidade ao lado dos números]
+    |
+    v
+[22.3 Exibições honestas]
+    |
+    v
+[22.4 Mantendo os painéis]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar painéis para usuários diferentes; (2) mostrar a qualidade dos dados ao lado dos números; (3) evitar exibições enganosas.
@@ -1149,6 +2129,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Relatórios regulatórios
+
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa da aula
+
+Aula 23 publicada. Mapa, exemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["23.1 O relatório"]
+  N1["23.2 Documentando os cálculos"]
+  N2["23.3 Verificações"]
+  N3["23.4 Aprovação"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX067"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["23.1 O relatório"]
+  N1["23.2 Documentando os cálculos"]
+  N2["23.3 Verificações"]
+  N3["23.4 Aprovação"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX067"]
+```
+
+```text
+[23.1 O relatório]
+    |
+    v
+[23.2 Documentando os cálculos]
+    |
+    v
+[23.3 Verificações]
+    |
+    v
+[23.4 Aprovação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1198,6 +2223,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 24 — Registros de problemas e causas-raiz
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa da aula
+
+Aula 24 publicada. Mapa, exemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["24.1 O registro"]
+  N1["24.2 Causas-raiz"]
+  N2["24.3 Acompanhando o encerramento"]
+  N3["24.4 Padrões"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX070"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["24.1 O registro"]
+  N1["24.2 Causas-raiz"]
+  N2["24.3 Acompanhando o encerramento"]
+  N3["24.4 Padrões"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX070"]
+```
+
+```text
+[24.1 O registro]
+    |
+    v
+[24.2 Causas-raiz]
+    |
+    v
+[24.3 Acompanhando o encerramento]
+    |
+    v
+[24.4 Padrões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) manter um registro de problemas; (2) usar técnicas de causa-raiz; (3) acompanhar os problemas até o encerramento.
@@ -1245,6 +2315,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Incidentes com dados
+
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa da aula
+
+Aula 25 publicada. Mapa, exemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["25.1 O que conta como incidente"]
+  N1["25.2 Um incidente"]
+  N2["25.3 Contenção e correção"]
+  N3["25.4 Lições"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX073"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["25.1 O que conta como incidente"]
+  N1["25.2 Um incidente"]
+  N2["25.3 Contenção e correção"]
+  N3["25.4 Lições"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX073"]
+```
+
+```text
+[25.1 O que conta como incidente]
+    |
+    v
+[25.2 Um incidente]
+    |
+    v
+[25.3 Contenção e correção]
+    |
+    v
+[25.4 Lições]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1294,6 +2409,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 26 — Automação e agendamento
 
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa da aula
+
+Aula 26 publicada. Mapa, exemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["26.1 Agendamento"]
+  N1["26.2 Dependências"]
+  N2["26.3 Monitoramento"]
+  N3["26.4 Controle de mudanças"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX076"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["26.1 Agendamento"]
+  N1["26.2 Dependências"]
+  N2["26.3 Monitoramento"]
+  N3["26.4 Controle de mudanças"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX076"]
+```
+
+```text
+[26.1 Agendamento]
+    |
+    v
+[26.2 Dependências]
+    |
+    v
+[26.3 Monitoramento]
+    |
+    v
+[26.4 Controle de mudanças]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) agendar verificações e cargas de dados; (2) tratar dependências e falhas; (3) monitorar tarefas automatizadas.
@@ -1341,6 +2501,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Documentação e passagem de trabalho
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa da aula
+
+Aula 27 publicada. Mapa, exemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["27.1 O que documentar"]
+  N1["27.2 Praticando a passagem"]
+  N2["27.3 Reduzindo a dependência"]
+  N3["27.4 Mantendo a documentação viva"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX079"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["27.1 O que documentar"]
+  N1["27.2 Praticando a passagem"]
+  N2["27.3 Reduzindo a dependência"]
+  N3["27.4 Mantendo a documentação viva"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX079"]
+```
+
+```text
+[27.1 O que documentar]
+    |
+    v
+[27.2 Praticando a passagem]
+    |
+    v
+[27.3 Reduzindo a dependência]
+    |
+    v
+[27.4 Mantendo a documentação viva]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1390,6 +2595,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 28 — Estágio
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa da aula
+
+Aula 28 publicada. Mapa, exemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["28.1 O estágio"]
+  N1["28.2 Processos da organização"]
+  N2["28.3 Conduta profissional"]
+  N3["28.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX082"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["28.1 O estágio"]
+  N1["28.2 Processos da organização"]
+  N2["28.3 Conduta profissional"]
+  N3["28.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX082"]
+```
+
+```text
+[28.1 O estágio]
+    |
+    v
+[28.2 Processos da organização]
+    |
+    v
+[28.3 Conduta profissional]
+    |
+    v
+[28.4 Reflexão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar competências em um estágio; (2) trabalhar dentro dos processos de uma organização; (3) refletir sobre a prática profissional.
@@ -1438,6 +2688,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 29 — Projeto aplicado
 
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa da aula
+
+Aula 29 publicada. Mapa, exemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["29.1 Problema e linha de base"]
+  N1["29.2 Causas"]
+  N2["29.3 Mudanças"]
+  N3["29.4 Resultados e passagem"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX085"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["29.1 Problema e linha de base"]
+  N1["29.2 Causas"]
+  N2["29.3 Mudanças"]
+  N3["29.4 Resultados e passagem"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX085"]
+```
+
+```text
+[29.1 Problema e linha de base]
+    |
+    v
+[29.2 Causas]
+    |
+    v
+[29.3 Mudanças]
+    |
+    v
+[29.4 Resultados e passagem]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) planejar e entregar um projeto aplicado de melhoria; (2) medir os resultados em relação a uma linha de base; (3) documentar a solução para a passagem de trabalho.
@@ -1485,6 +2780,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Revisão do projeto e próximos passos
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa da aula
+
+Aula 30 publicada. Mapa, exemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["30.1 Apresentação"]
+  N1["30.2 Devolutiva"]
+  N2["30.3 Reflexão"]
+  N3["30.4 Próximos passos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX088"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["30.1 Apresentação"]
+  N1["30.2 Devolutiva"]
+  N2["30.3 Reflexão"]
+  N3["30.4 Próximos passos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX088"]
+```
+
+```text
+[30.1 Apresentação]
+    |
+    v
+[30.2 Devolutiva]
+    |
+    v
+[30.3 Reflexão]
+    |
+    v
+[30.4 Próximos passos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Objetivos de aprendizagem
 

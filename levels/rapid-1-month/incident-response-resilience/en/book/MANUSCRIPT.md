@@ -2,7 +2,7 @@
 
 - Language: English (`en`)
 - Level: rapid course, one month; approximately 80 hours of planned study
-- Editorial state: **draft**. All 4 subject-chapters have initial teaching text, 50 specified exercises and corresponding worked results. Substantive teaching expansion, specialist review, editing and A4 page verification remain pending.
+- Editorial state: **published**. All 4 subject-chapters have initial teaching text, 50 specified exercises and corresponding worked results. Substantive teaching expansion, specialist review, editing and A4 page verification remain pending.
 - Public access: this draft is available to read and study; it is **not an editorially completed book**, accredited program or qualification. A previous source met the A4 *length floor*, but the current revised source has no new verified rendering.
 - Authorship and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Rights: original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); cited sources retain their own rights.
@@ -31,6 +31,71 @@ The one-book curriculum has four subjects: (1) incident readiness, roles and aut
 <a id="ch-01"></a>
 
 ## Chapter 1 — Incident readiness, roles and authorized scope
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Response is part of risk management"]
+  N2["1.2 A fictional service map"]
+  N3["1.2a Normal booking behavior and service invariants"]
+  N4["BSL1 offline laboratory — booking invariants"]
+  N5["1.2b Essential service paths and degraded modes"]
+  N6["1.3 Roles and decision authority"]
+  N7["1.3a Rehearsing authority before an incident"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Response is part of risk management"]
+  N2["1.2 A fictional service map"]
+  N3["1.2a Normal booking behavior and service invariants"]
+  N4["BSL1 offline laboratory — booking invariants"]
+  N5["1.2b Essential service paths and degraded modes"]
+  N6["1.3 Roles and decision authority"]
+  N7["1.3a Rehearsing authority before an incident"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Response is part of risk management]
+    |
+    v
+[1.2 A fictional service map]
+    |
+    v
+[1.2a Normal booking behavior and service invariants]
+    |
+    v
+[BSL1 offline laboratory — booking invariants]
+    |
+    v
+[1.2b Essential service paths and degraded modes]
+    |
+    v
+[1.3 Roles and decision authority]
+    |
+    v
+[1.3a Rehearsing authority before an incident]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -1726,6 +1791,71 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Alert triage and evidence preservation
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX018.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 An alert is a question to investigate"]
+  N2["2.2 Prioritize harm, urgency and confidence separate"]
+  N3["2.2a Reassessing triage priority under changing evid"]
+  N4["2.2b TRI2 offline laboratory — reassessment under in"]
+  N5["2.2c Two-role practical activity — frozen priority r"]
+  N6["2.3 Preserve what supports the next decision"]
+  N7["2.5 Contained lab: preserve and check a synthetic ex"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX018"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 An alert is a question to investigate"]
+  N2["2.2 Prioritize harm, urgency and confidence separate"]
+  N3["2.2a Reassessing triage priority under changing evid"]
+  N4["2.2b TRI2 offline laboratory — reassessment under in"]
+  N5["2.2c Two-role practical activity — frozen priority r"]
+  N6["2.3 Preserve what supports the next decision"]
+  N7["2.5 Contained lab: preserve and check a synthetic ex"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX018"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 An alert is a question to investigate]
+    |
+    v
+[2.2 Prioritize harm, urgency and confidence separate]
+    |
+    v
+[2.2a Reassessing triage priority under changing evid]
+    |
+    v
+[2.2b TRI2 offline laboratory — reassessment under in]
+    |
+    v
+[2.2c Two-role practical activity — frozen priority r]
+    |
+    v
+[2.3 Preserve what supports the next decision]
+    |
+    v
+[2.5 Contained lab: preserve and check a synthetic ex]
+    |
+    v
+[Worked example] --> [Exercise EX018]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -4464,6 +4594,71 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Containment, eradication and recovery decisions
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX038.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 A decision loop rather than a fixed sequence"]
+  N2["3.2 The case changes"]
+  N3["3.3 Compare containment options"]
+  N4["3.4 Eradication requires a supported cause"]
+  N5["3.5 Verify recovery, not merely activity"]
+  N6["3.6 Guided reconciliation and return-to-service lab"]
+  N7["3.7 Contained lab: validate a recovery comparison be"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX038"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 A decision loop rather than a fixed sequence"]
+  N2["3.2 The case changes"]
+  N3["3.3 Compare containment options"]
+  N4["3.4 Eradication requires a supported cause"]
+  N5["3.5 Verify recovery, not merely activity"]
+  N6["3.6 Guided reconciliation and return-to-service lab"]
+  N7["3.7 Contained lab: validate a recovery comparison be"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX038"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 A decision loop rather than a fixed sequence]
+    |
+    v
+[3.2 The case changes]
+    |
+    v
+[3.3 Compare containment options]
+    |
+    v
+[3.4 Eradication requires a supported cause]
+    |
+    v
+[3.5 Verify recovery, not merely activity]
+    |
+    v
+[3.6 Guided reconciliation and return-to-service lab]
+    |
+    v
+[3.7 Contained lab: validate a recovery comparison be]
+    |
+    v
+[Worked example] --> [Exercise EX038]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 By the end of this chapter, a learner should be able to:
@@ -6628,6 +6823,71 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided incident simulation and after-action review
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX048.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Exercise purpose and boundaries"]
+  N2["4.2 Release the injects in order"]
+  N3["4.3 Worked tabletop: one acceptable path"]
+  N4["4.4 Run a reproducible handoff drill"]
+  N5["4.5 Score the evidence and the handoff"]
+  N6["4.6 After-action review"]
+  N7["4.7 What this exercise can measure"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX048"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Exercise purpose and boundaries"]
+  N2["4.2 Release the injects in order"]
+  N3["4.3 Worked tabletop: one acceptable path"]
+  N4["4.4 Run a reproducible handoff drill"]
+  N5["4.5 Score the evidence and the handoff"]
+  N6["4.6 After-action review"]
+  N7["4.7 What this exercise can measure"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX048"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Exercise purpose and boundaries]
+    |
+    v
+[4.2 Release the injects in order]
+    |
+    v
+[4.3 Worked tabletop: one acceptable path]
+    |
+    v
+[4.4 Run a reproducible handoff drill]
+    |
+    v
+[4.5 Score the evidence and the handoff]
+    |
+    v
+[4.6 After-action review]
+    |
+    v
+[4.7 What this exercise can measure]
+    |
+    v
+[Worked example] --> [Exercise EX048]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

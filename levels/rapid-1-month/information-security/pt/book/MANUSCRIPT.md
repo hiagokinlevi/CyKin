@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 002, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: gestores e funcionários de organizações muito pequenas que precisam corrigir em um mês as fraquezas de segurança mais comuns.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o laboratório conta, por pasta, os arquivos compartilhados sintéticos abertos a qualquer pessoa com o link. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,56 @@ ISO/IEC 27000:2026. Lista completa em [Referências](#references).
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Um mês para acertar o básico
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 A aluna"]
+  N1["1.2 A clínica"]
+  N2["1.3 O que a clínica guarda"]
+  N3["1.4 O que não pode ser perdido"]
+  N4["1.5 Regras básicas"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 A aluna"]
+  N1["1.2 A clínica"]
+  N2["1.3 O que a clínica guarda"]
+  N3["1.4 O que não pode ser perdido"]
+  N4["1.5 Regras básicas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 A aluna]
+    |
+    v
+[1.2 A clínica]
+    |
+    v
+[1.3 O que a clínica guarda]
+    |
+    v
+[1.4 O que não pode ser perdido]
+    |
+    v
+[1.5 Regras básicas]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -110,6 +160,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Contas, dispositivos e compartilhamento
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Contas próprias"]
+  N1["2.2 Segundo fator"]
+  N2["2.3 Dispositivos"]
+  N3["Laboratório — Arquivos compartilhados abertos a qual"]
+  N4["2.4 Arquivos compartilhados em excesso"]
+  N5["2.5 Fechando as lacunas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Contas próprias"]
+  N1["2.2 Segundo fator"]
+  N2["2.3 Dispositivos"]
+  N3["Laboratório — Arquivos compartilhados abertos a qual"]
+  N4["2.4 Arquivos compartilhados em excesso"]
+  N5["2.5 Fechando as lacunas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[2.1 Contas próprias]
+    |
+    v
+[2.2 Segundo fator]
+    |
+    v
+[2.3 Dispositivos]
+    |
+    v
+[Laboratório — Arquivos compartilhados abertos a qual]
+    |
+    v
+[2.4 Arquivos compartilhados em excesso]
+    |
+    v
+[2.5 Fechando as lacunas]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -213,6 +318,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — E-mail, fraude e pessoas
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Sinais de phishing"]
+  N1["3.2 Fraude de faturas"]
+  N2["3.3 A regra em ação"]
+  N3["3.4 Treinamento curto"]
+  N4["3.5 Comunicação sem culpa"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Sinais de phishing"]
+  N1["3.2 Fraude de faturas"]
+  N2["3.3 A regra em ação"]
+  N3["3.4 Treinamento curto"]
+  N4["3.5 Comunicação sem culpa"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[3.1 Sinais de phishing]
+    |
+    v
+[3.2 Fraude de faturas]
+    |
+    v
+[3.3 A regra em ação]
+    |
+    v
+[3.4 Treinamento curto]
+    |
+    v
+[3.5 Comunicação sem culpa]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) reconhecer o phishing e a fraude de faturas; (2) definir uma regra de verificação de pagamentos; (3) criar um hábito curto e sem culpa de comunicação.
@@ -284,6 +439,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Backups, incidentes e o plano adiante
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["4.1 Backups"]
+  N1["4.2 Teste de uma restauração"]
+  N2["4.3 Um cartão de incidentes"]
+  N3["4.4 Um exercício prático"]
+  N4["4.5 O plano adiante"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Backups"]
+  N1["4.2 Teste de uma restauração"]
+  N2["4.3 Um cartão de incidentes"]
+  N3["4.4 Um exercício prático"]
+  N4["4.5 O plano adiante"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+```
+
+```text
+[4.1 Backups]
+    |
+    v
+[4.2 Teste de uma restauração]
+    |
+    v
+[4.3 Um cartão de incidentes]
+    |
+    v
+[4.4 Um exercício prático]
+    |
+    v
+[4.5 O plano adiante]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

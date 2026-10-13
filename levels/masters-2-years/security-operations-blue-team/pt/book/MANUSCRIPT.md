@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 176, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre evidências sintéticas, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre evidências sintéticas, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que vão planejar, conduzir e defender um estudo aplicado sobre a prática de operações de segurança.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -37,6 +37,66 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Do problema à pergunta"]
+  N1["1.2 Partes de uma boa pergunta"]
+  N2["1.3 Buscar na literatura"]
+  N3["1.4 Avaliar as fontes"]
+  N4["1.5 O que a literatura diz"]
+  N5["1.6 O registro de busca"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Do problema à pergunta"]
+  N1["1.2 Partes de uma boa pergunta"]
+  N2["1.3 Buscar na literatura"]
+  N3["1.4 Avaliar as fontes"]
+  N4["1.5 O que a literatura diz"]
+  N5["1.6 O registro de busca"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[1.1 Do problema à pergunta]
+    |
+    v
+[1.2 Partes de uma boa pergunta]
+    |
+    v
+[1.3 Buscar na literatura]
+    |
+    v
+[1.4 Avaliar as fontes]
+    |
+    v
+[1.5 O que a literatura diz]
+    |
+    v
+[1.6 O registro de busca]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -98,6 +158,66 @@ Uma pergunta pesquisável tem partes mensuráveis; uma busca na literatura regis
 
 ## Capítulo 2 — Operações de segurança e blue team: seminário avançado
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 O que um SOC faz"]
+  N1["2.2 Engenharia de detecção"]
+  N2["2.3 Monitoramento contínuo"]
+  N3["2.4 Métricas e efeitos colaterais"]
+  N4["2.5 Modelos de maturidade"]
+  N5["2.6 Formato do seminário"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 O que um SOC faz"]
+  N1["2.2 Engenharia de detecção"]
+  N2["2.3 Monitoramento contínuo"]
+  N3["2.4 Métricas e efeitos colaterais"]
+  N4["2.5 Modelos de maturidade"]
+  N5["2.6 Formato do seminário"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[2.1 O que um SOC faz]
+    |
+    v
+[2.2 Engenharia de detecção]
+    |
+    v
+[2.3 Monitoramento contínuo]
+    |
+    v
+[2.4 Métricas e efeitos colaterais]
+    |
+    v
+[2.5 Modelos de maturidade]
+    |
+    v
+[2.6 Formato do seminário]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) discutir criticamente modelos e funções de SOC; (2) relacionar a engenharia de detecção a frameworks; (3) debater métricas e seus efeitos colaterais; (4) apresentar um argumento de seminário com fontes.
@@ -157,6 +277,71 @@ A prática avançada de SOC liga as detecções a frameworks, ativos e maturidad
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Escolha do desenho"]
+  N1["3.2 Verdade de referência para ataques"]
+  N2["3.3 Ética"]
+  N3["3.4 Reprodutibilidade"]
+  N4["3.5 Ameaças à validade"]
+  N5["3.6 Registro"]
+  N6["Regra de parada"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Escolha do desenho"]
+  N1["3.2 Verdade de referência para ataques"]
+  N2["3.3 Ética"]
+  N3["3.4 Reprodutibilidade"]
+  N4["3.5 Ameaças à validade"]
+  N5["3.6 Registro"]
+  N6["Regra de parada"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[3.1 Escolha do desenho]
+    |
+    v
+[3.2 Verdade de referência para ataques]
+    |
+    v
+[3.3 Ética]
+    |
+    v
+[3.4 Reprodutibilidade]
+    |
+    v
+[3.5 Ameaças à validade]
+    |
+    v
+[3.6 Registro]
+    |
+    v
+[Regra de parada]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -220,6 +405,71 @@ Estudos operacionais precisam de grupos de comparação, verdade de referência 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Operações de segurança e blue team: explicações concorrentes
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 A observação"]
+  N1["4.2 Grupo de comparação"]
+  N2["Laboratório — diferença em diferenças"]
+  N3["4.3 Ler o resultado"]
+  N4["4.4 Testar alternativas específicas"]
+  N5["4.5 Tendências paralelas"]
+  N6["4.6 Incerteza restante"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 A observação"]
+  N1["4.2 Grupo de comparação"]
+  N2["Laboratório — diferença em diferenças"]
+  N3["4.3 Ler o resultado"]
+  N4["4.4 Testar alternativas específicas"]
+  N5["4.5 Tendências paralelas"]
+  N6["4.6 Incerteza restante"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[4.1 A observação]
+    |
+    v
+[4.2 Grupo de comparação]
+    |
+    v
+[Laboratório — diferença em diferenças]
+    |
+    v
+[4.3 Ler o resultado]
+    |
+    v
+[4.4 Testar alternativas específicas]
+    |
+    v
+[4.5 Tendências paralelas]
+    |
+    v
+[4.6 Incerteza restante]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -302,6 +552,71 @@ Antes de dar crédito a uma intervenção, liste as rivais, subtraia os efeitos 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 A proposta"]
+  N1["5.2 Por que rotular uma amostra"]
+  N2["Laboratório — amostra estratificada"]
+  N3["5.3 Ler o resultado"]
+  N4["5.4 O piloto"]
+  N5["5.5 Problemas de logística encontrados"]
+  N6["5.6 Aprovação da proposta"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 A proposta"]
+  N1["5.2 Por que rotular uma amostra"]
+  N2["Laboratório — amostra estratificada"]
+  N3["5.3 Ler o resultado"]
+  N4["5.4 O piloto"]
+  N5["5.5 Problemas de logística encontrados"]
+  N6["5.6 Aprovação da proposta"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[5.1 A proposta]
+    |
+    v
+[5.2 Por que rotular uma amostra]
+    |
+    v
+[Laboratório — amostra estratificada]
+    |
+    v
+[5.3 Ler o resultado]
+    |
+    v
+[5.4 O piloto]
+    |
+    v
+[5.5 Problemas de logística encontrados]
+    |
+    v
+[5.6 Aprovação da proposta]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -388,6 +703,71 @@ Uma proposta fixa o plano; um piloto testa definições e logística; a amostrag
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Coleta"]
+  N1["6.2 Resultados da rotulagem"]
+  N2["6.3 Conferir as listas de permissão contra a verdade"]
+  N3["Laboratório — reprodução da lista de permissão"]
+  N4["6.4 Ler o resultado"]
+  N5["6.5 Tratar a constatação"]
+  N6["6.6 Resultados gerais"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Coleta"]
+  N1["6.2 Resultados da rotulagem"]
+  N2["6.3 Conferir as listas de permissão contra a verdade"]
+  N3["Laboratório — reprodução da lista de permissão"]
+  N4["6.4 Ler o resultado"]
+  N5["6.5 Tratar a constatação"]
+  N6["6.6 Resultados gerais"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[6.1 Coleta]
+    |
+    v
+[6.2 Resultados da rotulagem]
+    |
+    v
+[6.3 Conferir as listas de permissão contra a verdade]
+    |
+    v
+[Laboratório — reprodução da lista de permissão]
+    |
+    v
+[6.4 Ler o resultado]
+    |
+    v
+[6.5 Tratar a constatação]
+    |
+    v
+[6.6 Resultados gerais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -479,6 +859,71 @@ Meça volume, composição e segurança juntos; quando a verdade de referência 
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estrutura"]
+  N1["7.2 Escrever os resultados"]
+  N2["7.3 A discussão"]
+  N3["7.4 Limitações"]
+  N4["7.5 Recomendações"]
+  N5["7.6 Proporção"]
+  N6["7.7 Processo de redação"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estrutura"]
+  N1["7.2 Escrever os resultados"]
+  N2["7.3 A discussão"]
+  N3["7.4 Limitações"]
+  N4["7.5 Recomendações"]
+  N5["7.6 Proporção"]
+  N6["7.7 Processo de redação"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[7.1 Estrutura]
+    |
+    v
+[7.2 Escrever os resultados]
+    |
+    v
+[7.3 A discussão]
+    |
+    v
+[7.4 Limitações]
+    |
+    v
+[7.5 Recomendações]
+    |
+    v
+[7.6 Proporção]
+    |
+    v
+[7.7 Processo de redação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação de mestrado; (2) escrever os resultados sem exagerar; (3) escrever uma seção de limitações forte; (4) fazer recomendações proporcionais à evidência.
@@ -541,6 +986,71 @@ Relate os resultados medidos com clareza, interprete na discussão, analise as l
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Revisão independente"]
+  N1["8.2 O formato da defesa"]
+  N2["8.3 Perguntas prováveis"]
+  N3["8.4 Responder bem"]
+  N4["8.5 Devolver os resultados"]
+  N5["8.6 Compartilhar com segurança"]
+  N6["8.7 Depois"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Revisão independente"]
+  N1["8.2 O formato da defesa"]
+  N2["8.3 Perguntas prováveis"]
+  N3["8.4 Responder bem"]
+  N4["8.5 Devolver os resultados"]
+  N5["8.6 Compartilhar com segurança"]
+  N6["8.7 Depois"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[8.1 Revisão independente]
+    |
+    v
+[8.2 O formato da defesa]
+    |
+    v
+[8.3 Perguntas prováveis]
+    |
+    v
+[8.4 Responder bem]
+    |
+    v
+[8.5 Devolver os resultados]
+    |
+    v
+[8.6 Compartilhar com segurança]
+    |
+    v
+[8.7 Depois]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

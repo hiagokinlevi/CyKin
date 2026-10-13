@@ -1,7 +1,7 @@
 # Seguridad cuántica y poscuántica: métodos de investigación doctoral y práctica de la tesis
 
 - Idioma: español (`es`), edición en español neutro internacional; programa de investigación doctoral, dos años; aproximadamente 1600 horas de estudio planificado. Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–8 de 8 tienen texto didáctico escrito, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
+- Estado editorial: **publicado**. Los capítulos 1–8 de 8 tienen texto didáctico escrito, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
 - Público: investigadores avanzados con experiencia de investigación y una pregunta defendible sobre las consecuencias para la seguridad de la computación cuántica, la migración a la criptografía poscuántica (PQC), los protocolos híbridos poscuánticos/tradicionales (PQ/T) o la agilidad criptográfica. Conocimientos de entrada: el contenido previsto para el programa de [maestría](../../../../masters-2-years/quantum-post-quantum-security/en/book/PLAN.md) de esta área o una experiencia equivalente, además de soltura práctica en criptografía de clave pública, probabilidad discreta, álgebra lineal básica sobre anillos finitos y una familia de protocolos como TLS 1.3, la PKI X.509 o IKEv2.
 - Relación con los cursos vecinos: un curso general de criptografía estudia cómo se construyen y se demuestran las primitivas. **Este libro estudia la transición**: cómo una comunidad llega a saber si la criptografía vulnerable a la computación cuántica se ha encontrado, sustituido, combinado con PQC y vuelto a hacer sustituible, y cómo un investigador produce evidencia sobre esa transición que resista la crítica.
 - Autoría y responsabilidad editorial: [hiagokinlevi](https://github.com/hiagokinlevi). El texto didáctico original del mantenedor se dedica bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus propios derechos.
@@ -48,6 +48,71 @@ Las fuentes primarias se citan por un identificador estable y se comprobaron el 
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridad y métodos avanzados de investigación
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 El objeto de estudio: una transición, no una pri"]
+  N2["1.2 Una escalera de afirmaciones"]
+  N3["1.3 Los plazos como supuestos"]
+  N4["1.4 No causar daño al observar la criptografía"]
+  N5["1.5 Niveles de datos"]
+  N6["1.6 Métricas que resisten la manipulación"]
+  N7["1.8 Actividad práctica — Lab 1: la desigualdad de Mo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 El objeto de estudio: una transición, no una pri"]
+  N2["1.2 Una escalera de afirmaciones"]
+  N3["1.3 Los plazos como supuestos"]
+  N4["1.4 No causar daño al observar la criptografía"]
+  N5["1.5 Niveles de datos"]
+  N6["1.6 Métricas que resisten la manipulación"]
+  N7["1.8 Actividad práctica — Lab 1: la desigualdad de Mo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[1.1 El objeto de estudio: una transición, no una pri]
+    |
+    v
+[1.2 Una escalera de afirmaciones]
+    |
+    v
+[1.3 Los plazos como supuestos]
+    |
+    v
+[1.4 No causar daño al observar la criptografía]
+    |
+    v
+[1.5 Niveles de datos]
+    |
+    v
+[1.6 Métricas que resisten la manipulación]
+    |
+    v
+[1.8 Actividad práctica — Lab 1: la desigualdad de Mo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -169,6 +234,71 @@ La investigación en PQC mide una transición cuya magnitud más importante —c
 
 ## Capítulo 2 — Seguridad cuántica y poscuántica: la frontera de la investigación
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 Por qué cuesta ver la frontera"]
+  N2["2.2 Familias de investigación"]
+  N3["2.3 Qué resolvió la normalización y qué no"]
+  N4["2.4 Evaluación: qué hace creíble un estudio de inven"]
+  N5["2.6 Actividad práctica — Lab 2: codificar el mapa"]
+  N6["2.7 Una laguna falsable"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX008"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 Por qué cuesta ver la frontera"]
+  N2["2.2 Familias de investigación"]
+  N3["2.3 Qué resolvió la normalización y qué no"]
+  N4["2.4 Evaluación: qué hace creíble un estudio de inven"]
+  N5["2.6 Actividad práctica — Lab 2: codificar el mapa"]
+  N6["2.7 Una laguna falsable"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[2.1 Por qué cuesta ver la frontera]
+    |
+    v
+[2.2 Familias de investigación]
+    |
+    v
+[2.3 Qué resolvió la normalización y qué no]
+    |
+    v
+[2.4 Evaluación: qué hace creíble un estudio de inven]
+    |
+    v
+[2.6 Actividad práctica — Lab 2: codificar el mapa]
+    |
+    v
+[2.7 Una laguna falsable]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo usted podrá (1) describir las seis grandes familias de investigación en seguridad cuántica y poscuántica y el tipo de evidencia que produce cada una; (2) explicar qué dejó resuelto el proceso de normalización del NIST y qué dejó abierto; (3) evaluar un estudio de PQC en cuanto a validez de constructo, equidad de la línea base e independencia del corpus; (4) codificar un mapa de la literatura y localizar una celda vacía; y (5) formular una laguna falsable. Se apoya en la escalera de afirmaciones del capítulo 1 y aporta la pregunta que el capítulo 3 convierte en una contribución.
@@ -275,6 +405,66 @@ La frontera abarca seis familias con culturas de evidencia distintas. La normali
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Propuesta de contribución original
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 Tipos de contribución"]
+  N2["3.2 El mecanismo: visibilidad complementaria"]
+  N3["3.3 Modelo del observador"]
+  N4["3.4 Hipótesis y umbrales"]
+  N5["3.5 Líneas base y explicaciones rivales"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX015"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 Tipos de contribución"]
+  N2["3.2 El mecanismo: visibilidad complementaria"]
+  N3["3.3 Modelo del observador"]
+  N4["3.4 Hipótesis y umbrales"]
+  N5["3.5 Líneas base y explicaciones rivales"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[3.1 Tipos de contribución]
+    |
+    v
+[3.2 El mecanismo: visibilidad complementaria]
+    |
+    v
+[3.3 Modelo del observador]
+    |
+    v
+[3.4 Hipótesis y umbrales]
+    |
+    v
+[3.5 Líneas base y explicaciones rivales]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -389,6 +579,71 @@ Una contribución es defendible cuando su mecanismo predice tanto el éxito como
 
 ## Capítulo 4 — Replicación de la línea base y piloto
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Términos"]
+  N2["4.2 Diagnóstico de una reproducción fallida: InvBenc"]
+  N3["4.3 Verificar el instrumento"]
+  N4["4.4 Actividad práctica — Lab 4: verificar el clasifi"]
+  N5["4.5 Ajustar sin filtraciones"]
+  N6["4.6 Un piloto acotado"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX021"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Términos"]
+  N2["4.2 Diagnóstico de una reproducción fallida: InvBenc"]
+  N3["4.3 Verificar el instrumento"]
+  N4["4.4 Actividad práctica — Lab 4: verificar el clasifi"]
+  N5["4.5 Ajustar sin filtraciones"]
+  N6["4.6 Un piloto acotado"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[4.1 Términos]
+    |
+    v
+[4.2 Diagnóstico de una reproducción fallida: InvBenc]
+    |
+    v
+[4.3 Verificar el instrumento]
+    |
+    v
+[4.4 Actividad práctica — Lab 4: verificar el clasifi]
+    |
+    v
+[4.5 Ajustar sin filtraciones]
+    |
+    v
+[4.6 Un piloto acotado]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo usted podrá (1) distinguir repetibilidad, reproducibilidad y replicabilidad; (2) diagnosticar por qué no se reproduce un resultado de inventario publicado; (3) verificar un instrumento con entradas conocidas antes de fiarse de su salida; (4) ajustar parámetros sin filtrar datos de prueba; y (5) ejecutar un piloto acotado que termine en una decisión explícita de seguir o no seguir. Aplica la propuesta del capítulo 3 antes del estudio principal del capítulo 5.
@@ -486,6 +741,66 @@ Las líneas base se reproducen antes de superarlas; los instrumentos se verifica
 
 ## Capítulo 5 — Estudio principal y validación independiente
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 Diseño pareado"]
+  N2["5.2 Tres incertidumbres"]
+  N3["5.3 Validación independiente con reglas congeladas"]
+  N4["5.4 Adjudicación ciega"]
+  N5["5.5 Actividad práctica — Lab 5: bootstrap pareado"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX027"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 Diseño pareado"]
+  N2["5.2 Tres incertidumbres"]
+  N3["5.3 Validación independiente con reglas congeladas"]
+  N4["5.4 Adjudicación ciega"]
+  N5["5.5 Actividad práctica — Lab 5: bootstrap pareado"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[5.1 Diseño pareado]
+    |
+    v
+[5.2 Tres incertidumbres]
+    |
+    v
+[5.3 Validación independiente con reglas congeladas]
+    |
+    v
+[5.4 Adjudicación ciega]
+    |
+    v
+[5.5 Actividad práctica — Lab 5: bootstrap pareado]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo usted podrá (1) realizar una comparación pareada de dos métodos de inventario sobre los mismos elementos; (2) separar la incertidumbre de muestreo, la de medición y la de modelo; (3) validar sobre un corpus independiente con reglas congeladas; (4) llevar a cabo una adjudicación ciega e informar de la concordancia; y (5) redactar un párrafo de resultados honesto. Ejecuta el diseño que el capítulo 4 pilotó y aporta los resultados que atacará el capítulo 6.
@@ -581,6 +896,66 @@ El estudio principal es una comparación pareada que informa de tres tipos de in
 
 ## Capítulo 6 — Crítica de pares y revisión
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 Las objeciones como pruebas"]
+  N2["6.2 Someta sus afirmaciones a un equipo rojo"]
+  N3["6.3 La frontera arquitectónica"]
+  N4["6.4 Acotar una afirmación"]
+  N5["6.5 Revisión de doble uso"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX033"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 Las objeciones como pruebas"]
+  N2["6.2 Someta sus afirmaciones a un equipo rojo"]
+  N3["6.3 La frontera arquitectónica"]
+  N4["6.4 Acotar una afirmación"]
+  N5["6.5 Revisión de doble uso"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[6.1 Las objeciones como pruebas]
+    |
+    v
+[6.2 Someta sus afirmaciones a un equipo rojo]
+    |
+    v
+[6.3 La frontera arquitectónica]
+    |
+    v
+[6.4 Acotar una afirmación]
+    |
+    v
+[6.5 Revisión de doble uso]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo usted podrá (1) convertir las objeciones de los revisores en pruebas; (2) realizar una revisión interna de equipo rojo de sus propias afirmaciones; (3) encontrar la frontera arquitectónica más allá de la cual un método no puede ver; (4) acotar una afirmación sin abandonarla; y (5) llevar a cabo una revisión de doble uso de un método de inventario. Toma los resultados del capítulo 5 y prepara el argumento de la tesis del capítulo 7.
@@ -643,6 +1018,71 @@ La crítica mejora una tesis cuando las objeciones se convierten en pruebas, la 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 El mapa del argumento"]
+  N2["7.2 Estructura de la tesis"]
+  N3["7.3 Un archivo por niveles"]
+  N4["7.4 Actividad práctica — Lab 7: un manifiesto que fa"]
+  N5["7.5 Fichas de conjuntos de datos"]
+  N6["7.7 Implicaciones sin extralimitarse"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX039"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 El mapa del argumento"]
+  N2["7.2 Estructura de la tesis"]
+  N3["7.3 Un archivo por niveles"]
+  N4["7.4 Actividad práctica — Lab 7: un manifiesto que fa"]
+  N5["7.5 Fichas de conjuntos de datos"]
+  N6["7.7 Implicaciones sin extralimitarse"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[7.1 El mapa del argumento]
+    |
+    v
+[7.2 Estructura de la tesis]
+    |
+    v
+[7.3 Un archivo por niveles]
+    |
+    v
+[7.4 Actividad práctica — Lab 7: un manifiesto que fa]
+    |
+    v
+[7.5 Fichas de conjuntos de datos]
+    |
+    v
+[7.7 Implicaciones sin extralimitarse]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -744,6 +1184,71 @@ Una tesis es un argumento cuyas garantías son explícitas, cuyos números tiene
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defensa y plan de publicación
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 La auditoría de afirmaciones"]
+  N2["8.2 Preguntas del tribunal"]
+  N3["8.3 Plan de publicación"]
+  N4["8.4 Divulgación coordinada"]
+  N5["8.5 Informar a quien decide"]
+  N6["8.6 Después de la defensa"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX045"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 La auditoría de afirmaciones"]
+  N2["8.2 Preguntas del tribunal"]
+  N3["8.3 Plan de publicación"]
+  N4["8.4 Divulgación coordinada"]
+  N5["8.5 Informar a quien decide"]
+  N6["8.6 Después de la defensa"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[8.1 La auditoría de afirmaciones]
+    |
+    v
+[8.2 Preguntas del tribunal]
+    |
+    v
+[8.3 Plan de publicación]
+    |
+    v
+[8.4 Divulgación coordinada]
+    |
+    v
+[8.5 Informar a quien decide]
+    |
+    v
+[8.6 Después de la defensa]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Resultados de aprendizaje y conexión
 

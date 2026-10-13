@@ -1,7 +1,7 @@
 # Segurança de TO, IoT e Sistemas Ciberfísicos: Uma Introdução Rápida
 
 - Idioma: português do Brasil (`pt`); curso rápido, um mês; aproximadamente 80 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas vêm de execuções reais. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas vêm de execuções reais. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: iniciantes sem experiência prévia em TO.
 - Relação com os livros vizinhos: o [livro do curso profissional](../../../../professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md) desenvolve cada tema na prática. **Este livro é uma introdução em quatro capítulos.**
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -35,6 +35,61 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [série 
 <a id="ch-01"></a>
 
 ## Capítulo 1 — O que são a segurança de TO, de IoT e ciberfísica
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Três termos que se sobrepõem"]
+  N1["1.2 Uma usina solar com baterias"]
+  N2["1.3 Prioridades"]
+  N3["1.4 Por que é uma preocupação real"]
+  N4["1.5 O mapa das orientações"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Três termos que se sobrepõem"]
+  N1["1.2 Uma usina solar com baterias"]
+  N2["1.3 Prioridades"]
+  N3["1.4 Por que é uma preocupação real"]
+  N4["1.5 O mapa das orientações"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[1.1 Três termos que se sobrepõem]
+    |
+    v
+[1.2 Uma usina solar com baterias]
+    |
+    v
+[1.3 Prioridades]
+    |
+    v
+[1.4 Por que é uma preocupação real]
+    |
+    v
+[1.5 O mapa das orientações]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -111,6 +166,61 @@ Siga para a próxima lição escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Ativos, redes e exposição
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Inventário primeiro"]
+  N1["2.2 Ler o laboratório"]
+  N2["2.3 Separar a rede"]
+  N3["2.4 Exposição e acesso remoto"]
+  N4["2.5 Portais na nuvem"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Inventário primeiro"]
+  N1["2.2 Ler o laboratório"]
+  N2["2.3 Separar a rede"]
+  N3["2.4 Exposição e acesso remoto"]
+  N4["2.5 Portais na nuvem"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[2.1 Inventário primeiro]
+    |
+    v
+[2.2 Ler o laboratório]
+    |
+    v
+[2.3 Separar a rede]
+    |
+    v
+[2.4 Exposição e acesso remoto]
+    |
+    v
+[2.5 Portais na nuvem]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -211,6 +321,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 3 — Reconhecer e relatar problemas
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Primeiro, o normal"]
+  N1["3.2 Ler o laboratório"]
+  N2["3.3 Dar nome ao que você viu"]
+  N3["3.4 Outros sinais de alerta"]
+  N4["3.5 Relatar"]
+  N5["3.6 A segurança física vem primeiro"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Primeiro, o normal"]
+  N1["3.2 Ler o laboratório"]
+  N2["3.3 Dar nome ao que você viu"]
+  N3["3.4 Outros sinais de alerta"]
+  N4["3.5 Relatar"]
+  N5["3.6 A segurança física vem primeiro"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[3.1 Primeiro, o normal]
+    |
+    v
+[3.2 Ler o laboratório]
+    |
+    v
+[3.3 Dar nome ao que você viu]
+    |
+    v
+[3.4 Outros sinais de alerta]
+    |
+    v
+[3.5 Relatar]
+    |
+    v
+[3.6 A segurança física vem primeiro]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o comportamento normal na Elmstead; (2) identificar um comando que não se encaixa na agenda; (3) descrever o que viu usando os nomes do ATT&CK for ICS; e (4) escrever um relato curto e factual.
@@ -310,6 +480,56 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Hábitos seguros, noções de resposta e próximos passos
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["4.1 Hábitos do dia a dia"]
+  N1["4.2 Responder a um incidente"]
+  N2["4.3 Atualizações e dispositivos"]
+  N3["4.5 Para onde seguir"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Hábitos do dia a dia"]
+  N1["4.2 Responder a um incidente"]
+  N2["4.3 Atualizações e dispositivos"]
+  N3["4.5 Para onde seguir"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+```
+
+```text
+[4.1 Hábitos do dia a dia]
+    |
+    v
+[4.2 Responder a um incidente]
+    |
+    v
+[4.3 Atualizações e dispositivos]
+    |
+    v
+[4.5 Para onde seguir]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

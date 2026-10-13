@@ -1,7 +1,7 @@
 # Network and Communications Security: Postgraduate Course
 
 - Language: English (`en`); course 149, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: experienced practitioners in a postgraduate specialist programme who must make, evidence and lead network security decisions that affect customers, partners and the wider internet.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only networks and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, flow records, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,66 @@ NIST [SP 800-41r1](https://doi.org/10.6028/NIST.SP.800-41r1), [SP 800-77r1](http
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The decision setting"]
+  N2["1.2 Facts, estimates and values"]
+  N3["1.3 Options and consequences"]
+  N4["1.4 Reversibility and staging"]
+  N5["1.5 Recording decisions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The decision setting"]
+  N2["1.2 Facts, estimates and values"]
+  N3["1.3 Options and consequences"]
+  N4["1.4 Reversibility and staging"]
+  N5["1.5 Recording decisions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The decision setting]
+    |
+    v
+[1.2 Facts, estimates and values]
+    |
+    v
+[1.3 Options and consequences]
+    |
+    v
+[1.4 Reversibility and staging]
+    |
+    v
+[1.5 Recording decisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -91,6 +151,66 @@ Good security decisions separate facts, estimates and values, prefer staged reve
 <a id="ch-02"></a>
 
 ## Chapter 2 — Network and communications security: current practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Site-to-site VPN practice"]
+  N2["2.2 Routing security practice"]
+  N3["2.3 Filtering practice"]
+  N4["2.4 Gap analysis"]
+  N5["2.5 Practice versus guidance"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Site-to-site VPN practice"]
+  N2["2.2 Routing security practice"]
+  N3["2.3 Filtering practice"]
+  N4["2.4 Gap analysis"]
+  N5["2.5 Practice versus guidance"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Site-to-site VPN practice]
+    |
+    v
+[2.2 Routing security practice]
+    |
+    v
+[2.3 Filtering practice]
+    |
+    v
+[2.4 Gap analysis]
+    |
+    v
+[2.5 Practice versus guidance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -147,6 +267,71 @@ Comparing current practice with the partner's state, including strengths, focuse
 <a id="ch-03"></a>
 
 ## Chapter 3 — Network and communications security: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 What evidence is needed"]
+  N2["Lab — VPN peer summary"]
+  N3["3.2 Reading the summary"]
+  N4["3.3 Evidence quality"]
+  N5["3.4 Handling secrets in evidence"]
+  N6["3.5 From evidence to priorities"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 What evidence is needed"]
+  N2["Lab — VPN peer summary"]
+  N3["3.2 Reading the summary"]
+  N4["3.3 Evidence quality"]
+  N5["3.4 Handling secrets in evidence"]
+  N6["3.5 From evidence to priorities"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 What evidence is needed]
+    |
+    v
+[Lab — VPN peer summary]
+    |
+    v
+[3.2 Reading the summary]
+    |
+    v
+[3.3 Evidence quality]
+    |
+    v
+[3.4 Handling secrets in evidence]
+    |
+    v
+[3.5 From evidence to priorities]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -231,6 +416,66 @@ Specialist evidence must be complete, cross-checked, safely handled and turned i
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Risk to whom"]
+  N2["4.2 Duties beyond the organisation"]
+  N3["4.3 Conflicts of interest"]
+  N4["4.4 Customer communication"]
+  N5["4.5 Proportionality"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Risk to whom"]
+  N2["4.2 Duties beyond the organisation"]
+  N3["4.3 Conflicts of interest"]
+  N4["4.4 Customer communication"]
+  N5["4.5 Proportionality"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Risk to whom]
+    |
+    v
+[4.2 Duties beyond the organisation]
+    |
+    v
+[4.3 Conflicts of interest]
+    |
+    v
+[4.4 Customer communication]
+    |
+    v
+[4.5 Proportionality]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) weigh risks to customers and third parties; (2) handle conflicts of interest; (3) apply ethics to enforcement choices.
@@ -284,6 +529,71 @@ Advanced risk and ethics weigh who bears risk, recognise duties beyond the organ
 <a id="ch-05"></a>
 
 ## Chapter 5 — Network and communications security: design alternatives
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Three validation designs"]
+  N2["Lab — Origin validation"]
+  N3["5.2 Reading the validation"]
+  N4["5.3 Evaluating designs against cases"]
+  N5["5.4 Operational requirements"]
+  N6["5.5 The chosen design"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Three validation designs"]
+  N2["Lab — Origin validation"]
+  N3["5.2 Reading the validation"]
+  N4["5.3 Evaluating designs against cases"]
+  N5["5.4 Operational requirements"]
+  N6["5.5 The chosen design"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Three validation designs]
+    |
+    v
+[Lab — Origin validation]
+    |
+    v
+[5.2 Reading the validation]
+    |
+    v
+[5.3 Evaluating designs against cases]
+    |
+    v
+[5.4 Operational requirements]
+    |
+    v
+[5.5 The chosen design]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -370,6 +680,66 @@ Comparing designs against concrete validation results supports a staged, criteri
 
 ## Chapter 6 — Network and communications security: controlled evaluation
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Evaluation question"]
+  N2["Lab — Ingress check"]
+  N3["6.2 Reading the check"]
+  N4["6.3 Monitor-first trial"]
+  N5["6.4 Evaluation criteria"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Evaluation question"]
+  N2["Lab — Ingress check"]
+  N3["6.2 Reading the check"]
+  N4["6.3 Monitor-first trial"]
+  N5["6.4 Evaluation criteria"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Evaluation question]
+    |
+    v
+[Lab — Ingress check]
+    |
+    v
+[6.2 Reading the check]
+    |
+    v
+[6.3 Monitor-first trial]
+    |
+    v
+[6.4 Evaluation criteria]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) evaluate ingress filtering on synthetic traffic; (2) estimate customer impact; (3) design a monitor-first trial.
@@ -446,6 +816,66 @@ A controlled, monitor-first evaluation with pre-set criteria makes enforcement s
 
 ## Chapter 7 — Network and communications security: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Fitting changes into operations"]
+  N2["7.2 Roles and responsibilities"]
+  N3["7.3 The partner link"]
+  N4["7.4 Training and handover"]
+  N5["7.5 Measuring integration"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Fitting changes into operations"]
+  N2["7.2 Roles and responsibilities"]
+  N3["7.3 The partner link"]
+  N4["7.4 Training and handover"]
+  N5["7.5 Measuring integration"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Fitting changes into operations]
+    |
+    v
+[7.2 Roles and responsibilities]
+    |
+    v
+[7.3 The partner link]
+    |
+    v
+[7.4 Training and handover]
+    |
+    v
+[7.5 Measuring integration]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate changes into operations; (2) align processes and roles; (3) manage partner relationships.
@@ -499,6 +929,66 @@ Changes endure when they fit existing processes, have clear owners and are measu
 <a id="ch-08"></a>
 
 ## Chapter 8 — Network and communications security: difficult cases
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 A legitimate exception"]
+  N2["8.2 Verifying claims"]
+  N3["8.3 An invalid route incident"]
+  N4["8.4 Communicating with other networks"]
+  N5["8.5 Learning from the cases"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 A legitimate exception"]
+  N2["8.2 Verifying claims"]
+  N3["8.3 An invalid route incident"]
+  N4["8.4 Communicating with other networks"]
+  N5["8.5 Learning from the cases"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 A legitimate exception]
+    |
+    v
+[8.2 Verifying claims]
+    |
+    v
+[8.3 An invalid route incident]
+    |
+    v
+[8.4 Communicating with other networks]
+    |
+    v
+[8.5 Learning from the cases]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 
@@ -554,6 +1044,66 @@ Difficult cases test designs; verified exceptions, courteous coordination and do
 
 ## Chapter 9 — Network and communications security: leadership and assurance
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 What directors need"]
+  N2["9.2 Assurance through evidence"]
+  N3["9.3 Reporting bad news"]
+  N4["9.4 Leading without authority"]
+  N5["9.5 Independent assurance"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 What directors need"]
+  N2["9.2 Assurance through evidence"]
+  N3["9.3 Reporting bad news"]
+  N4["9.4 Leading without authority"]
+  N5["9.5 Independent assurance"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 What directors need]
+    |
+    v
+[9.2 Assurance through evidence]
+    |
+    v
+[9.3 Reporting bad news]
+    |
+    v
+[9.4 Leading without authority]
+    |
+    v
+[9.5 Independent assurance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) provide assurance to directors; (2) report risk and progress; (3) lead change without formal authority.
@@ -607,6 +1157,66 @@ Evidence-based, honest reporting and influence-based leadership give directors r
 <a id="ch-10"></a>
 
 ## Chapter 10 — Research reading and critique
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Reading with a purpose"]
+  N2["10.2 Assessing methods"]
+  N3["10.3 Classic critiques"]
+  N4["10.4 Synthesising findings"]
+  N5["10.5 Critique as a professional skill"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Reading with a purpose"]
+  N2["10.2 Assessing methods"]
+  N3["10.3 Classic critiques"]
+  N4["10.4 Synthesising findings"]
+  N5["10.5 Critique as a professional skill"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Reading with a purpose]
+    |
+    v
+[10.2 Assessing methods]
+    |
+    v
+[10.3 Classic critiques]
+    |
+    v
+[10.4 Synthesising findings]
+    |
+    v
+[10.5 Critique as a professional skill]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -662,6 +1272,66 @@ Purposeful, method-aware reading and honest synthesis turn research into usable 
 
 ## Chapter 11 — Applied project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Project scope"]
+  N2["11.2 Outcomes"]
+  N3["11.3 Comparing with criteria"]
+  N4["11.4 Documentation for the partner"]
+  N5["11.5 Reflection on the project"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Project scope"]
+  N2["11.2 Outcomes"]
+  N3["11.3 Comparing with criteria"]
+  N4["11.4 Documentation for the partner"]
+  N5["11.5 Reflection on the project"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Project scope]
+    |
+    v
+[11.2 Outcomes]
+    |
+    v
+[11.3 Comparing with criteria]
+    |
+    v
+[11.4 Documentation for the partner]
+    |
+    v
+[11.5 Reflection on the project]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) complete the applied project; (2) measure outcomes; (3) document for the partner.
@@ -715,6 +1385,66 @@ The applied project delivers measured outcomes, honest comparison with criteria 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Final review"]
+  N2["12.2 Transfer of ownership"]
+  N3["12.3 Continuing improvement"]
+  N4["12.4 Transferable lessons"]
+  N5["12.5 Closing reflection"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Final review"]
+  N2["12.2 Transfer of ownership"]
+  N3["12.3 Continuing improvement"]
+  N4["12.4 Transferable lessons"]
+  N5["12.5 Closing reflection"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Final review]
+    |
+    v
+[12.2 Transfer of ownership]
+    |
+    v
+[12.3 Continuing improvement]
+    |
+    v
+[12.4 Transferable lessons]
+    |
+    v
+[12.5 Closing reflection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

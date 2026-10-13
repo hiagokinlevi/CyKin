@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 006, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: funcionários e voluntários de pequenas organizações beneficentes e comunitárias que precisam de um começo rápido e prático em segurança centrada nas pessoas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam os sistemas que cada função alcança e resumem os tempos de reporte num teste guiado, ambos sobre dados sintéticos; nenhum funcionário, voluntário, doador, e-mail ou conta real está envolvido. O teste guiado usa uma conta de e-mail de teste e voluntários que conhecem o propósito. O curso não recomenda phishing simulado; se algum dia for usado, deve ser anunciado, acordado com os representantes dos funcionários e dos voluntários, evitar iscas sobre dinheiro, comida ou dificuldades, dar um retorno gentil e relatar apenas totais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,61 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Fatores humanos e política cibernética: fundamentos e decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Pessoas e segurança"]
+  N1["1.2 Não são o inimigo"]
+  N2["1.3 Táticas de engano"]
+  N3["1.4 Conhecimento não basta"]
+  N4["1.5 Três decisões iniciais"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Pessoas e segurança"]
+  N1["1.2 Não são o inimigo"]
+  N2["1.3 Táticas de engano"]
+  N3["1.4 Conhecimento não basta"]
+  N4["1.5 Três decisões iniciais"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[1.1 Pessoas e segurança]
+    |
+    v
+[1.2 Não são o inimigo]
+    |
+    v
+[1.3 Táticas de engano]
+    |
+    v
+[1.4 Conhecimento não basta]
+    |
+    v
+[1.5 Três decisões iniciais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -115,6 +170,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Definição do escopo"]
+  N1["2.2 Permissão"]
+  N2["2.3 Manuseio seguro dos reportes"]
+  N3["2.4 Simulações e ética"]
+  N4["2.5 Resumo da prática segura"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Definição do escopo"]
+  N1["2.2 Permissão"]
+  N2["2.3 Manuseio seguro dos reportes"]
+  N3["2.4 Simulações e ética"]
+  N4["2.5 Resumo da prática segura"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[2.1 Definição do escopo]
+    |
+    v
+[2.2 Permissão]
+    |
+    v
+[2.3 Manuseio seguro dos reportes]
+    |
+    v
+[2.4 Simulações e ética]
+    |
+    v
+[2.5 Resumo da prática segura]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) definir o escopo do trabalho de segurança numa pequena organização beneficente; (2) obter permissão e respeitar limites; (3) praticar com segurança e ética, inclusive quanto às simulações.
@@ -192,6 +302,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Fatores humanos e política cibernética: sistemas, dados e dependências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Mapeamento dos sistemas"]
+  N1["3.2 Dados e pessoas"]
+  N2["Laboratório — Contagem dos sistemas que cada função"]
+  N3["3.3 Pontos únicos de falha"]
+  N4["3.4 Correções simples"]
+  N5["3.5 Conferência das correções"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Mapeamento dos sistemas"]
+  N1["3.2 Dados e pessoas"]
+  N2["Laboratório — Contagem dos sistemas que cada função"]
+  N3["3.3 Pontos únicos de falha"]
+  N4["3.4 Correções simples"]
+  N5["3.5 Conferência das correções"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[3.1 Mapeamento dos sistemas]
+    |
+    v
+[3.2 Dados e pessoas]
+    |
+    v
+[Laboratório — Contagem dos sistemas que cada função]
+    |
+    v
+[3.3 Pontos únicos de falha]
+    |
+    v
+[3.4 Correções simples]
+    |
+    v
+[3.5 Conferência das correções]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -286,6 +456,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Fatores humanos e política cibernética: laboratório guiado e síntese aplicada
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["4.1 Caminho de reporte"]
+  N1["4.2 Laboratório guiado"]
+  N2["Laboratório — Tempos e acertos de reporte no laborat"]
+  N3["4.3 Aprendizados do teste"]
+  N4["4.4 Plano de um mês"]
+  N5["4.5 Síntese"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Caminho de reporte"]
+  N1["4.2 Laboratório guiado"]
+  N2["Laboratório — Tempos e acertos de reporte no laborat"]
+  N3["4.3 Aprendizados do teste"]
+  N4["4.4 Plano de um mês"]
+  N5["4.5 Síntese"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[4.1 Caminho de reporte]
+    |
+    v
+[4.2 Laboratório guiado]
+    |
+    v
+[Laboratório — Tempos e acertos de reporte no laborat]
+    |
+    v
+[4.3 Aprendizados do teste]
+    |
+    v
+[4.4 Plano de um mês]
+    |
+    v
+[4.5 Síntese]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

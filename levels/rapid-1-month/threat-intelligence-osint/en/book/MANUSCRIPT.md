@@ -1,7 +1,7 @@
 # Threat Intelligence and OSINT: A Rapid Course Book
 
 - Language: English (`en`); rapid course, one month.
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: beginners who need a safe, practical first month of cyber threat intelligence (CTI) and OSINT for a small organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical boundary: no collection on real private individuals, no terms-of-service evasion, no deanonymisation, no contact with adversary infrastructure. Organisations, people and indicators are **synthetic** unless a sentence cites a public source; addresses use RFC 5737 ranges and domains use `.example`.
@@ -35,6 +35,71 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 <a id="ch-01"></a>
 
 ## Chapter 1 — Threat intelligence and OSINT: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 What CTI is"]
+  N2["1.2 Decisions first"]
+  N3["1.3 Threats to charities"]
+  N4["1.4 Vocabulary"]
+  N5["1.5 The cycle in one page"]
+  N6["1.6 Realistic scope"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 What CTI is"]
+  N2["1.2 Decisions first"]
+  N3["1.3 Threats to charities"]
+  N4["1.4 Vocabulary"]
+  N5["1.5 The cycle in one page"]
+  N6["1.6 Realistic scope"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 What CTI is]
+    |
+    v
+[1.2 Decisions first]
+    |
+    v
+[1.3 Threats to charities]
+    |
+    v
+[1.4 Vocabulary]
+    |
+    v
+[1.5 The cycle in one page]
+    |
+    v
+[1.6 Realistic scope]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -112,6 +177,56 @@ CTI is checked information tied to decisions; learn the vocabulary, stay within 
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Written permission and TLP"]
+  N2["2.2 Privacy and terms of service"]
+  N3["2.3 Unsafe actions and mistakes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Written permission and TLP"]
+  N2["2.2 Privacy and terms of service"]
+  N3["2.3 Unsafe actions and mistakes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Written permission and TLP]
+    |
+    v
+[2.2 Privacy and terms of service]
+    |
+    v
+[2.3 Unsafe actions and mistakes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) set written scope and permission for CTI tasks in a small organisation; (2) apply TLP 2.0 when receiving and sharing; (3) collect OSINT lawfully, respecting privacy and terms of service; (4) recognise actions that are unsafe or need someone else's authority.
@@ -183,6 +298,66 @@ Work from written permission, follow TLP exactly, protect privacy, respect terms
 <a id="ch-03"></a>
 
 ## Chapter 3 — Threat intelligence and OSINT: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Systems and sources"]
+  N2["Lab — source dependencies"]
+  N3["3.2 Reading the result"]
+  N4["3.3 Data to keep"]
+  N5["3.4 Settings and supplier dependencies"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Systems and sources"]
+  N2["Lab — source dependencies"]
+  N3["3.2 Reading the result"]
+  N4["3.3 Data to keep"]
+  N5["3.4 Settings and supplier dependencies"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Systems and sources]
+    |
+    v
+[Lab — source dependencies]
+    |
+    v
+[3.2 Reading the result]
+    |
+    v
+[3.3 Data to keep]
+    |
+    v
+[3.4 Settings and supplier dependencies]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -280,6 +455,66 @@ Know your systems and logs, map source dependencies, remove single points of fai
 <a id="ch-04"></a>
 
 ## Chapter 4 — Threat intelligence and OSINT: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Lab rules"]
+  N2["Lab — validate, match and filter"]
+  N3["4.2 Reading and acting on the result"]
+  N4["4.3 The summary and the weekly routine"]
+  N5["4.4 Synthesis of the month"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Lab rules"]
+  N2["Lab — validate, match and filter"]
+  N3["4.2 Reading and acting on the result"]
+  N4["4.3 The summary and the weekly routine"]
+  N5["4.4 Synthesis of the month"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Lab rules]
+    |
+    v
+[Lab — validate, match and filter]
+    |
+    v
+[4.2 Reading and acting on the result]
+    |
+    v
+[4.3 The summary and the weekly routine]
+    |
+    v
+[4.4 Synthesis of the month]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

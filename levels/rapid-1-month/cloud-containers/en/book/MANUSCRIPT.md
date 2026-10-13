@@ -1,7 +1,7 @@
 # Cloud and Container Security: Rapid Course
 
 - Language: English (`en`); course 013, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: people who look after a small organisation's cloud services and need practical, proportionate cloud and container security in one month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ NIST [SP 800-145](https://doi.org/10.6028/NIST.SP.800-145), [SP 800-210](https:/
 <a id="ch-01"></a>
 
 ## Chapter 1 — Cloud and container security: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The trigger"]
+  N2["1.2 What cloud means here"]
+  N3["1.3 Containers in plain terms"]
+  N4["1.4 Who does what"]
+  N5["1.5 Proportionate decisions"]
+  N6["1.6 Recording decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The trigger"]
+  N2["1.2 What cloud means here"]
+  N3["1.3 Containers in plain terms"]
+  N4["1.4 Who does what"]
+  N5["1.5 Proportionate decisions"]
+  N6["1.6 Recording decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The trigger]
+    |
+    v
+[1.2 What cloud means here]
+    |
+    v
+[1.3 Containers in plain terms]
+    |
+    v
+[1.4 Who does what]
+    |
+    v
+[1.5 Proportionate decisions]
+    |
+    v
+[1.6 Recording decisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -112,6 +177,71 @@ Understand what the clinic controls and fix the most important things first.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Authority"]
+  N2["2.2 Evidence first"]
+  N3["2.3 What the log shows"]
+  N4["2.4 Data protection"]
+  N5["2.5 Safe practice"]
+  N6["2.6 Accounts"]
+  N7["2.7 Multi-factor authentication"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Authority"]
+  N2["2.2 Evidence first"]
+  N3["2.3 What the log shows"]
+  N4["2.4 Data protection"]
+  N5["2.5 Safe practice"]
+  N6["2.6 Accounts"]
+  N7["2.7 Multi-factor authentication"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Authority]
+    |
+    v
+[2.2 Evidence first]
+    |
+    v
+[2.3 What the log shows]
+    |
+    v
+[2.4 Data protection]
+    |
+    v
+[2.5 Safe practice]
+    |
+    v
+[2.6 Accounts]
+    |
+    v
+[2.7 Multi-factor authentication]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -200,6 +330,71 @@ Work within authority, keep evidence, and avoid risky shortcuts.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Cloud and container security: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 A simple policy"]
+  N2["3.2 Checking every item"]
+  N3["Lab — sharing check"]
+  N4["3.3 Reading the result"]
+  N5["3.4 Acting"]
+  N6["3.5 The booking container"]
+  N7["3.6 Agreement with the developer"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 A simple policy"]
+  N2["3.2 Checking every item"]
+  N3["Lab — sharing check"]
+  N4["3.3 Reading the result"]
+  N5["3.4 Acting"]
+  N6["3.5 The booking container"]
+  N7["3.6 Agreement with the developer"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 A simple policy]
+    |
+    v
+[3.2 Checking every item]
+    |
+    v
+[Lab — sharing check]
+    |
+    v
+[3.3 Reading the result]
+    |
+    v
+[3.4 Acting]
+    |
+    v
+[3.5 The booking container]
+    |
+    v
+[3.6 Agreement with the developer]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -309,6 +504,71 @@ Check every item against a simple rule and agree how dependencies stay current.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Cloud and container security: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The routine"]
+  N2["4.2 Why these six"]
+  N3["Lab — routine record"]
+  N4["4.3 Reading the result"]
+  N5["4.4 Fixing the gaps"]
+  N6["4.5 Keeping it light"]
+  N7["4.6 Course synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The routine"]
+  N2["4.2 Why these six"]
+  N3["Lab — routine record"]
+  N4["4.3 Reading the result"]
+  N5["4.4 Fixing the gaps"]
+  N6["4.5 Keeping it light"]
+  N7["4.6 Course synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The routine]
+    |
+    v
+[4.2 Why these six]
+    |
+    v
+[Lab — routine record]
+    |
+    v
+[4.3 Reading the result]
+    |
+    v
+[4.4 Fixing the gaps]
+    |
+    v
+[4.5 Keeping it light]
+    |
+    v
+[4.6 Course synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

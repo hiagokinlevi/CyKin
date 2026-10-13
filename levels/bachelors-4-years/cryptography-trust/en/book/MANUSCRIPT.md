@@ -1,7 +1,7 @@
 # Cryptography and Trust Services: Bachelor's Course
 
 - Language: English (`en`); course 100, Bachelor's course (4 years).
-- Editorial state: **draft**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; six offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; six offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: bachelor's students learning cryptography from mathematical foundations to operating trust services in a real organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: labs illustrate concepts (XOR, classical ciphers, salted hashing, hash chains) on synthetic data; toy ciphers are shown only to explain why they fail. Production systems use vetted libraries; never roll your own cryptography. All people, organisations and data are **synthetic** unless a sentence cites a public source.
@@ -40,6 +40,61 @@ Katz and Lindell (3rd ed.); Menezes et al., [*Handbook of Applied Cryptography*]
 <a id="ch-01"></a>
 
 ## Chapter 1 — Mathematical reasoning
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case and precise claims"]
+  N2["1.2 XOR and its algebra"]
+  N3["Lab — One-time pad reuse"]
+  N4["1.3 Why reuse fails"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case and precise claims"]
+  N2["1.2 XOR and its algebra"]
+  N3["Lab — One-time pad reuse"]
+  N4["1.3 Why reuse fails"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case and precise claims]
+    |
+    v
+[1.2 XOR and its algebra]
+    |
+    v
+[Lab — One-time pad reuse]
+    |
+    v
+[1.3 Why reuse fails]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -114,6 +169,56 @@ Cryptography begins with precise definitions and proofs; the one-time pad shows 
 
 ## Chapter 2 — Computing systems
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Layers of a system"]
+  N2["2.2 Three states of data"]
+  N3["2.3 Matching protections"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Layers of a system"]
+  N2["2.2 Three states of data"]
+  N3["2.3 Matching protections"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Layers of a system]
+    |
+    v
+[2.2 Three states of data]
+    |
+    v
+[2.3 Matching protections]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) describe where cryptography sits in a computing system; (2) explain data at rest, in transit and in use; (3) identify which component protects each.
@@ -157,6 +262,56 @@ Cryptography protects specific layers and data states; mapping them reveals gaps
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming I
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Bytes and encodings"]
+  N2["3.2 Hashing with hashlib"]
+  N3["3.3 A file-integrity tool"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Bytes and encodings"]
+  N2["3.2 Hashing with hashlib"]
+  N3["3.3 A file-integrity tool"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Bytes and encodings]
+    |
+    v
+[3.2 Hashing with hashlib]
+    |
+    v
+[3.3 A file-integrity tool]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -202,6 +357,56 @@ Careful byte handling, verified hashing and awareness of what a digest proves ar
 
 ## Chapter 4 — Academic writing
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Explaining clearly"]
+  N2["4.2 Citing correctly"]
+  N3["4.3 Avoiding overclaiming"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Explaining clearly"]
+  N2["4.2 Citing correctly"]
+  N3["4.3 Avoiding overclaiming"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Explaining clearly]
+    |
+    v
+[4.2 Citing correctly]
+    |
+    v
+[4.3 Avoiding overclaiming]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) write clear explanations of cryptographic ideas; (2) cite standards and textbooks correctly; (3) avoid overclaiming in security writing.
@@ -245,6 +450,56 @@ Good security writing defines terms, cites primary sources and states claims wit
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security literacy
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 What cryptography is for"]
+  N2["5.2 Four tools"]
+  N3["5.3 Common misconceptions"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 What cryptography is for"]
+  N2["5.2 Four tools"]
+  N3["5.3 Common misconceptions"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 What cryptography is for]
+    |
+    v
+[5.2 Four tools]
+    |
+    v
+[5.3 Common misconceptions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -290,6 +545,56 @@ Knowing what each cryptographic tool achieves, and what it does not, is the foun
 
 ## Chapter 6 — Discrete structures
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Modular arithmetic and groups"]
+  N2["6.2 The discrete logarithm"]
+  N3["6.3 Diffie-Hellman by hand"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Modular arithmetic and groups"]
+  N2["6.2 The discrete logarithm"]
+  N3["6.3 Diffie-Hellman by hand"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Modular arithmetic and groups]
+    |
+    v
+[6.2 The discrete logarithm]
+    |
+    v
+[6.3 Diffie-Hellman by hand]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) use modular arithmetic and groups; (2) explain the discrete logarithm problem; (3) relate it to Diffie-Hellman key agreement.
@@ -333,6 +638,56 @@ Groups and the discrete logarithm problem explain key agreement; real systems us
 <a id="ch-07"></a>
 
 ## Chapter 7 — Networks and protocols
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 The TLS 1.3 handshake"]
+  N2["7.2 Certificate validation"]
+  N3["7.3 Protocol risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 The TLS 1.3 handshake"]
+  N2["7.2 Certificate validation"]
+  N3["7.3 Protocol risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 The TLS 1.3 handshake]
+    |
+    v
+[7.2 Certificate validation]
+    |
+    v
+[7.3 Protocol risks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -378,6 +733,56 @@ TLS 1.3 secures connections when certificates validate and configurations stay c
 
 ## Chapter 8 — Programming II
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 High-level APIs"]
+  N2["8.2 Structuring for safety"]
+  N3["8.3 Negative tests"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 High-level APIs"]
+  N2["8.2 Structuring for safety"]
+  N3["8.3 Negative tests"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 High-level APIs]
+    |
+    v
+[8.2 Structuring for safety]
+    |
+    v
+[8.3 Negative tests]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) use high-level cryptographic APIs safely; (2) structure code to avoid misuse; (3) write negative tests.
@@ -421,6 +826,61 @@ Safe cryptographic code relies on high-level APIs, a small isolated module and n
 <a id="ch-09"></a>
 
 ## Chapter 9 — Data and databases
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Password storage"]
+  N2["Lab — Salted password hashing"]
+  N3["9.2 Reading the run"]
+  N4["9.3 Field-level choices"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Password storage"]
+  N2["Lab — Salted password hashing"]
+  N3["9.2 Reading the run"]
+  N4["9.3 Field-level choices"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Password storage]
+    |
+    v
+[Lab — Salted password hashing]
+    |
+    v
+[9.2 Reading the run]
+    |
+    v
+[9.3 Field-level choices]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -495,6 +955,56 @@ Salted, slow password hashing, field encryption and data minimisation protect pa
 
 ## Chapter 10 — Ethics and authorized practice
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Authorisation first"]
+  N2["10.2 Handling sensitive material"]
+  N3["10.3 Responsible disclosure"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Authorisation first"]
+  N2["10.2 Handling sensitive material"]
+  N3["10.3 Responsible disclosure"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Authorisation first]
+    |
+    v
+[10.2 Handling sensitive material]
+    |
+    v
+[10.3 Responsible disclosure]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) apply ethical rules to cryptographic testing; (2) obtain and document authorisation; (3) handle discovered weaknesses responsibly.
@@ -539,6 +1049,56 @@ Authorised scope, careful handling of secrets and coordinated disclosure make cr
 
 ## Chapter 11 — Operating systems
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Keys in the operating system"]
+  N2["11.2 Secure randomness"]
+  N3["11.3 Full-disk encryption"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Keys in the operating system"]
+  N2["11.2 Secure randomness"]
+  N3["11.3 Full-disk encryption"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Keys in the operating system]
+    |
+    v
+[11.2 Secure randomness]
+    |
+    v
+[11.3 Full-disk encryption]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) explain how operating systems store and protect keys; (2) use the system's secure random generator; (3) configure full-disk encryption sensibly.
@@ -582,6 +1142,61 @@ Operating systems protect keys with non-exportable stores, secure randomness and
 <a id="ch-12"></a>
 
 ## Chapter 12 — Probability and statistics
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Guessing space in bits"]
+  N2["Lab — Password policy bits"]
+  N3["12.2 Reading the table"]
+  N4["12.3 Human choices and policy"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Guessing space in bits"]
+  N2["Lab — Password policy bits"]
+  N3["12.2 Reading the table"]
+  N4["12.3 Human choices and policy"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Guessing space in bits]
+    |
+    v
+[Lab — Password policy bits]
+    |
+    v
+[12.2 Reading the table]
+    |
+    v
+[12.3 Human choices and policy]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 
@@ -654,6 +1269,56 @@ Measuring guessing space in bits shows why random passphrases outperform complex
 
 ## Chapter 13 — Identity and access
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Authentication factors"]
+  N2["13.2 Comparing methods"]
+  N3["13.3 Access design"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Authentication factors"]
+  N2["13.2 Comparing methods"]
+  N3["13.3 Access design"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Authentication factors]
+    |
+    v
+[13.2 Comparing methods]
+    |
+    v
+[13.3 Access design]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) explain how cryptography supports authentication; (2) compare passwords, one-time codes and security keys; (3) design access for staff and patrons.
@@ -698,6 +1363,56 @@ Cryptography strengthens authentication, from HMAC-based codes to origin-bound s
 
 ## Chapter 14 — Privacy foundations
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Library privacy"]
+  N2["14.2 Pseudonymisation"]
+  N3["14.3 When encryption helps"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Library privacy"]
+  N2["14.2 Pseudonymisation"]
+  N3["14.3 When encryption helps"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Library privacy]
+    |
+    v
+[14.2 Pseudonymisation]
+    |
+    v
+[14.3 When encryption helps]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Learning outcomes
 
 You will (1) apply privacy principles to library data; (2) use pseudonymisation and its limits; (3) decide when encryption supports privacy.
@@ -741,6 +1456,61 @@ Privacy depends on minimisation and purpose limits; cryptography such as keyed p
 <a id="ch-15"></a>
 
 ## Chapter 15 — Evidence and measurement
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 Why logs need protection"]
+  N2["Lab — Hash-chained audit log"]
+  N3["15.2 Reading the chain"]
+  N4["15.3 Measuring controls"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 Why logs need protection"]
+  N2["Lab — Hash-chained audit log"]
+  N3["15.2 Reading the chain"]
+  N4["15.3 Measuring controls"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 Why logs need protection]
+    |
+    v
+[Lab — Hash-chained audit log]
+    |
+    v
+[15.2 Reading the chain]
+    |
+    v
+[15.3 Measuring controls]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Learning outcomes
 
@@ -818,6 +1588,56 @@ Tamper-evident logs and honestly reported measures turn security claims into evi
 
 ## Chapter 16 — Security architecture
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Trust boundaries"]
+  N2["16.2 Defence in depth"]
+  N3["16.3 Keys in the architecture"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Trust boundaries"]
+  N2["16.2 Defence in depth"]
+  N3["16.3 Keys in the architecture"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Trust boundaries]
+    |
+    v
+[16.2 Defence in depth]
+    |
+    v
+[16.3 Keys in the architecture]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes
 
 You will (1) place cryptographic controls in an overall architecture; (2) identify trust boundaries; (3) apply defence in depth to library systems.
@@ -861,6 +1681,61 @@ Architectures should show trust boundaries, layered controls and every key, so c
 <a id="ch-17"></a>
 
 ## Chapter 17 — Cryptography concepts
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Kerckhoffs's principle"]
+  N2["Lab — Breaking a Caesar cipher"]
+  N3["17.2 Why classical ciphers fail"]
+  N4["17.3 Modern goals"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Kerckhoffs's principle"]
+  N2["Lab — Breaking a Caesar cipher"]
+  N3["17.2 Why classical ciphers fail"]
+  N4["17.3 Modern goals"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Kerckhoffs's principle]
+    |
+    v
+[Lab — Breaking a Caesar cipher]
+    |
+    v
+[17.2 Why classical ciphers fail]
+    |
+    v
+[17.3 Modern goals]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -938,6 +1813,56 @@ Public algorithms, precise definitions and randomised encryption replaced classi
 
 ## Chapter 18 — Research methods I
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 A researchable question"]
+  N2["18.2 Searching sources"]
+  N3["18.3 Ethical planning"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 A researchable question"]
+  N2["18.2 Searching sources"]
+  N3["18.3 Ethical planning"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 A researchable question]
+    |
+    v
+[18.2 Searching sources]
+    |
+    v
+[18.3 Ethical planning]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Learning outcomes
 
 You will (1) formulate a researchable question about cryptographic practice; (2) search literature and standards systematically; (3) plan a small study ethically.
@@ -981,6 +1906,56 @@ Researchable questions, systematic sources and ethical design turn curiosity abo
 <a id="ch-19"></a>
 
 ## Chapter 19 — Cryptography and trust services: scope and theory
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 What trust services are"]
+  N2["19.2 Delegated trust"]
+  N3["19.3 What assertions mean"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 What trust services are"]
+  N2["19.2 Delegated trust"]
+  N3["19.3 What assertions mean"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 What trust services are]
+    |
+    v
+[19.2 Delegated trust]
+    |
+    v
+[19.3 What assertions mean]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Learning outcomes
 
@@ -1026,6 +2001,56 @@ Trust services make specific assertions; understanding exactly what each asserts
 
 ## Chapter 20 — Cryptography and trust services: foundational cases
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 Classes of failure"]
+  N2["20.2 Lessons for Tidewell"]
+  N3["20.3 Separating causes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 Classes of failure"]
+  N2["20.2 Lessons for Tidewell"]
+  N3["20.3 Separating causes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 Classes of failure]
+    |
+    v
+[20.2 Lessons for Tidewell]
+    |
+    v
+[20.3 Separating causes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse documented classes of trust failure; (2) extract lessons for an organisation like Tidewell; (3) separate cryptographic from procedural causes.
@@ -1069,6 +2094,56 @@ Most trust failures are procedural; analysing them without blame yields practica
 <a id="ch-21"></a>
 
 ## Chapter 21 — Cryptography and trust services: system models
+
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 Components and flows"]
+  N2["21.2 Who asserts what"]
+  N3["21.3 Single points of trust"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 Components and flows"]
+  N2["21.2 Who asserts what"]
+  N3["21.3 Single points of trust"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 Components and flows]
+    |
+    v
+[21.2 Who asserts what]
+    |
+    v
+[21.3 Single points of trust]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
 
 ### Learning outcomes
 
@@ -1114,6 +2189,56 @@ Modelling who asserts what, and who relies on it, exposes single points of trust
 
 ## Chapter 22 — Cryptography and trust services: data and dependencies
 
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 Cryptographic inventory"]
+  N2["22.2 Library and algorithm dependencies"]
+  N3["22.3 Supplier changes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 Cryptographic inventory"]
+  N2["22.2 Library and algorithm dependencies"]
+  N3["22.3 Supplier changes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 Cryptographic inventory]
+    |
+    v
+[22.2 Library and algorithm dependencies]
+    |
+    v
+[22.3 Supplier changes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
+
 ### Learning outcomes
 
 You will (1) inventory cryptographic assets and dependencies; (2) track libraries and algorithms in use; (3) plan for supplier changes.
@@ -1157,6 +2282,56 @@ A cryptographic inventory of keys, certificates, libraries and suppliers is the 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Cryptography and trust services: methods I
+
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 Authenticated encryption"]
+  N2["23.2 Nonce rules"]
+  N3["23.3 Choosing parameters"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 Authenticated encryption"]
+  N2["23.2 Nonce rules"]
+  N3["23.3 Choosing parameters"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 Authenticated encryption]
+    |
+    v
+[23.2 Nonce rules]
+    |
+    v
+[23.3 Choosing parameters]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
 
 ### Learning outcomes
 
@@ -1202,6 +2377,56 @@ Authenticated encryption with unique nonces and bound associated data protects r
 
 ## Chapter 24 — Cryptography and trust services: controls
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 Selecting controls"]
+  N2["24.2 Separation and dual control"]
+  N3["24.3 Documenting for audit"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 Selecting controls"]
+  N2["24.2 Separation and dual control"]
+  N3["24.3 Documenting for audit"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 Selecting controls]
+    |
+    v
+[24.2 Separation and dual control]
+    |
+    v
+[24.3 Documenting for audit]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Learning outcomes
 
 You will (1) select controls for key management; (2) apply separation of duties and dual control; (3) document controls for audit.
@@ -1245,6 +2470,56 @@ Prioritised key-management controls with separation, dual control and documented
 <a id="ch-25"></a>
 
 ## Chapter 25 — Laboratory I
+
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 The lab task"]
+  N2["25.2 Testing"]
+  N3["25.3 The lab report"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 The lab task"]
+  N2["25.2 Testing"]
+  N3["25.3 The lab report"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 The lab task]
+    |
+    v
+[25.2 Testing]
+    |
+    v
+[25.3 The lab report]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
 
 ### Learning outcomes
 
@@ -1290,6 +2565,56 @@ Laboratory work proves design choices with tests, and honest reports record both
 
 ## Chapter 26 — Cryptography and trust services: methods II
 
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 How signatures work"]
+  N2["26.2 Applying signatures"]
+  N3["26.3 ECDSA or Ed25519"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 How signatures work"]
+  N2["26.2 Applying signatures"]
+  N3["26.3 ECDSA or Ed25519"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 How signatures work]
+    |
+    v
+[26.2 Applying signatures]
+    |
+    v
+[26.3 ECDSA or Ed25519]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
+
 ### Learning outcomes
 
 You will (1) explain digital signatures and verification; (2) apply signatures to documents and software; (3) choose between ECDSA and Ed25519.
@@ -1333,6 +2658,56 @@ Digital signatures prove origin and integrity publicly; Ed25519's deterministic 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Cryptography and trust services: verification
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Configuration verification"]
+  N2["27.2 Testing validation"]
+  N3["27.3 Reporting findings"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Configuration verification"]
+  N2["27.2 Testing validation"]
+  N3["27.3 Reporting findings"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Configuration verification]
+    |
+    v
+[27.2 Testing validation]
+    |
+    v
+[27.3 Reporting findings]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Learning outcomes
 
@@ -1378,6 +2753,56 @@ Verification after changes, direct validation tests and evidence-based reports k
 
 ## Chapter 28 — Cryptography and trust services: failure analysis
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 The scenario"]
+  N2["28.2 Timeline and causes"]
+  N3["28.3 Actions"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 The scenario"]
+  N2["28.2 Timeline and causes"]
+  N3["28.3 Actions"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 The scenario]
+    |
+    v
+[28.2 Timeline and causes]
+    |
+    v
+[28.3 Actions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse a key compromise scenario; (2) build a timeline and causal chain; (3) define corrective and preventive actions.
@@ -1421,6 +2846,61 @@ Failure analysis of key compromise focuses on process causes and pairs correctiv
 <a id="ch-29"></a>
 
 ## Chapter 29 — Cryptography and trust services: operations
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 Certificate operations"]
+  N2["Lab — Certificate windows"]
+  N3["29.2 Reading the windows"]
+  N4["29.3 Routine rotation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 Certificate operations"]
+  N2["Lab — Certificate windows"]
+  N3["29.2 Reading the windows"]
+  N4["29.3 Routine rotation"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 Certificate operations]
+    |
+    v
+[Lab — Certificate windows]
+    |
+    v
+[29.2 Reading the windows]
+    |
+    v
+[29.3 Routine rotation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Learning outcomes
 
@@ -1495,6 +2975,56 @@ Automated renewal with alerts and tested rotation make cryptographic operations 
 
 ## Chapter 30 — Laboratory II
 
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 Improving the export tool"]
+  N2["30.2 Testing the new design"]
+  N3["30.3 Evaluating the design"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 Improving the export tool"]
+  N2["30.2 Testing the new design"]
+  N3["30.3 Evaluating the design"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 Improving the export tool]
+    |
+    v
+[30.2 Testing the new design]
+    |
+    v
+[30.3 Evaluating the design]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
+
 ### Learning outcomes
 
 You will (1) replace manual key sharing with a public-key exchange in a lab; (2) sign and verify exported files; (3) evaluate the improved design.
@@ -1538,6 +3068,56 @@ Public-key encryption and signatures remove shared-secret transfer, provided key
 <a id="ch-31"></a>
 
 ## Chapter 31 — Cryptography and trust services: advanced cases
+
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Lesson map
+
+Lesson 31 published. Map, example, EX091.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["31.1 Post-quantum migration"]
+  N2["31.2 End-to-end messaging"]
+  N3["31.3 Capacity and priorities"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX091"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["31.1 Post-quantum migration"]
+  N2["31.2 End-to-end messaging"]
+  N3["31.3 Capacity and priorities"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX091"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[31.1 Post-quantum migration]
+    |
+    v
+[31.2 End-to-end messaging]
+    |
+    v
+[31.3 Capacity and priorities]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
 
 ### Learning outcomes
 
@@ -1583,6 +3163,56 @@ Advanced cryptography should follow solid foundations and arrive through vetted 
 
 ## Chapter 32 — Cryptography and trust services: interdisciplinary interfaces
 
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Lesson map
+
+Lesson 32 published. Map, example, EX094.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["32.1 Law and policy"]
+  N2["32.2 Electronic signatures"]
+  N3["32.3 User experience"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX094"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["32.1 Law and policy"]
+  N2["32.2 Electronic signatures"]
+  N3["32.3 User experience"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX094"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[32.1 Law and policy]
+    |
+    v
+[32.2 Electronic signatures]
+    |
+    v
+[32.3 User experience]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
+
 ### Learning outcomes
 
 You will (1) connect cryptographic decisions to law, policy and user experience; (2) explain electronic signatures in legal contexts; (3) design understandable security interactions.
@@ -1626,6 +3256,56 @@ Cryptography meets law, policy and people; precise language and usable designs m
 <a id="ch-33"></a>
 
 ## Chapter 33 — Research methods II
+
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Lesson map
+
+Lesson 33 published. Map, example, EX097.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["33.1 Running the study"]
+  N2["33.2 Reporting with uncertainty"]
+  N3["33.3 Validity threats"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX097"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["33.1 Running the study"]
+  N2["33.2 Reporting with uncertainty"]
+  N3["33.3 Validity threats"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX097"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[33.1 Running the study]
+    |
+    v
+[33.2 Reporting with uncertainty]
+    |
+    v
+[33.3 Validity threats]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
 
 ### Learning outcomes
 
@@ -1671,6 +3351,56 @@ Small studies can inform practice when results come with uncertainty and openly 
 
 ## Chapter 34 — Comparative project
 
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Lesson map
+
+Lesson 34 published. Map, example, EX100.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["34.1 The comparison"]
+  N2["34.2 Criteria and evidence"]
+  N3["34.3 Recommendation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX100"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["34.1 The comparison"]
+  N2["34.2 Criteria and evidence"]
+  N3["34.3 Recommendation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX100"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[34.1 The comparison]
+    |
+    v
+[34.2 Criteria and evidence]
+    |
+    v
+[34.3 Recommendation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
+
 ### Learning outcomes
 
 You will (1) compare two approaches to a trust problem; (2) define fair criteria; (3) recommend with justification.
@@ -1714,6 +3444,56 @@ Comparing options against shared criteria with trial evidence yields traceable r
 <a id="ch-35"></a>
 
 ## Chapter 35 — Capstone proposal
+
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Lesson map
+
+Lesson 35 published. Map, example, EX103.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["35.1 Choosing the capstone"]
+  N2["35.2 Scope and deliverables"]
+  N3["35.3 Evaluation and agreement"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX103"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["35.1 Choosing the capstone"]
+  N2["35.2 Scope and deliverables"]
+  N3["35.3 Evaluation and agreement"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX103"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[35.1 Choosing the capstone]
+    |
+    v
+[35.2 Scope and deliverables]
+    |
+    v
+[35.3 Evaluation and agreement]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
 
 ### Learning outcomes
 
@@ -1759,6 +3539,56 @@ A capstone proposal with clear aim, scope, deliverables, evaluation and authoris
 
 ## Chapter 36 — Field or community practice
 
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Lesson map
+
+Lesson 36 published. Map, example, EX106.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["36.1 Community workshops"]
+  N2["36.2 Teaching effectively"]
+  N3["36.3 Boundaries of advice"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX106"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["36.1 Community workshops"]
+  N2["36.2 Teaching effectively"]
+  N3["36.3 Boundaries of advice"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX106"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[36.1 Community workshops]
+    |
+    v
+[36.2 Teaching effectively]
+    |
+    v
+[36.3 Boundaries of advice]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
+
 ### Learning outcomes
 
 You will (1) apply cryptographic knowledge in community service; (2) teach security basics to non-specialists; (3) respect boundaries of advice.
@@ -1802,6 +3632,56 @@ Community practice turns cryptographic knowledge into practical safety for the p
 <a id="ch-37"></a>
 
 ## Chapter 37 — Evidence review seminar
+
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Lesson map
+
+Lesson 37 published. Map, example, EX109.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["37.1 The seminar task"]
+  N2["37.2 Assessing quality"]
+  N3["37.3 Balanced synthesis"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX109"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["37.1 The seminar task"]
+  N2["37.2 Assessing quality"]
+  N3["37.3 Balanced synthesis"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX109"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[37.1 The seminar task]
+    |
+    v
+[37.2 Assessing quality]
+    |
+    v
+[37.3 Balanced synthesis]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
 
 ### Learning outcomes
 
@@ -1847,6 +3727,56 @@ Critical review weighs evidence by quality and directness, producing balanced co
 
 ## Chapter 38 — Capstone implementation
 
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Lesson map
+
+Lesson 38 published. Map, example, EX112.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["38.1 Building the inventory"]
+  N2["38.2 Testing in a seeded environment"]
+  N3["38.3 Managing changes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX112"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["38.1 Building the inventory"]
+  N2["38.2 Testing in a seeded environment"]
+  N3["38.3 Managing changes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX112"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[38.1 Building the inventory]
+    |
+    v
+[38.2 Testing in a seeded environment]
+    |
+    v
+[38.3 Managing changes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
+
 ### Learning outcomes
 
 You will (1) implement the capstone inventory and alerting; (2) test against a seeded environment; (3) manage changes during implementation.
@@ -1891,6 +3821,51 @@ Implementation tested against seeded data and disciplined scope management deliv
 
 ## Chapter 39 — Capstone evaluation
 
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Lesson map
+
+Lesson 39 published. Map, example, EX115.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["39.1 Evaluation results"]
+  N2["39.3 Next steps"]
+  N3["Synthesis"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Worked example"]
+  EX --> Q["Exercise EX115"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["39.1 Evaluation results"]
+  N2["39.3 Next steps"]
+  N3["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX115"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[39.1 Evaluation results]
+    |
+    v
+[39.3 Next steps]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
+
 ### Learning outcomes
 
 You will (1) evaluate the capstone against its criteria; (2) measure adoption and false alerts; (3) recommend next steps.
@@ -1934,6 +3909,56 @@ Honest evaluation measures results, adoption and limits, and leads to modest, su
 <a id="ch-40"></a>
 
 ## Chapter 40 — Thesis and presentation
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Lesson map
+
+Lesson 40 published. Map, example, EX118.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["40.1 Writing the thesis"]
+  N2["40.2 Presenting"]
+  N3["40.3 Reflection"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX118"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["40.1 Writing the thesis"]
+  N2["40.2 Presenting"]
+  N3["40.3 Reflection"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX118"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[40.1 Writing the thesis]
+    |
+    v
+[40.2 Presenting]
+    |
+    v
+[40.3 Reflection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Learning outcomes
 

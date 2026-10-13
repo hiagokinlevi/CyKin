@@ -1,7 +1,7 @@
 # Privacy and Data Protection: Technical Course
 
 - Language: English (`en`); course 050, Technical course (18 months).
-- Editorial state: **draft**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technical students who configure, check and document the systems that hold personal data in a small healthcare business.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs find personal data in synthetic log lines, check which cookies a synthetic site sets before consent, flag record views outside a staff member's clinic in a synthetic audit log and apply a retention rule to synthetic reminder records. Legal analysis is teaching, not legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ Regulation (EU) 2016/679 (GDPR) Articles 4(15), 5, 9(2)(h), 15, 17, 28, 30, 32 a
 <a id="ch-01"></a>
 
 ## Chapter 1 — Computing and service architecture
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The course and the case"]
+  N2["1.2 Services and components"]
+  N3["1.3 Where data live"]
+  N4["1.4 A first service map"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The course and the case"]
+  N2["1.2 Services and components"]
+  N3["1.3 Where data live"]
+  N4["1.4 A first service map"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The course and the case]
+    |
+    v
+[1.2 Services and components]
+    |
+    v
+[1.3 Where data live]
+    |
+    v
+[1.4 A first service map]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -86,6 +136,56 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Networks and protocols
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX005.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Clinic networks"]
+  N2["2.2 Protocols in use"]
+  N3["2.3 Checking encryption"]
+  N4["2.4 Recommending separation"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX005"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Clinic networks"]
+  N2["2.2 Protocols in use"]
+  N3["2.3 Checking encryption"]
+  N4["2.4 Recommending separation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX005"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Clinic networks]
+    |
+    v
+[2.2 Protocols in use]
+    |
+    v
+[2.3 Checking encryption]
+    |
+    v
+[2.4 Recommending separation]
+    |
+    v
+[Worked example] --> [Exercise EX005]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) trace patient data across clinic networks; (2) check protocols for encryption; (3) recommend network separation.
@@ -134,6 +234,56 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Operating systems and identities
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX009.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Accounts on clinic computers"]
+  N2["3.2 Least privilege"]
+  N3["3.3 Administrator rights"]
+  N4["3.4 Joiners and leavers"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX009"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Accounts on clinic computers"]
+  N2["3.2 Least privilege"]
+  N3["3.3 Administrator rights"]
+  N4["3.4 Joiners and leavers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX009"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Accounts on clinic computers]
+    |
+    v
+[3.2 Least privilege]
+    |
+    v
+[3.3 Administrator rights]
+    |
+    v
+[3.4 Joiners and leavers]
+    |
+    v
+[Worked example] --> [Exercise EX009]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -184,6 +334,56 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Scripting and data formats
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Common formats"]
+  N2["4.2 Minimal output"]
+  N3["4.3 Validating input"]
+  N4["4.4 Handling files"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Common formats"]
+  N2["4.2 Minimal output"]
+  N3["4.3 Validating input"]
+  N4["4.4 Handling files"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Common formats]
+    |
+    v
+[4.2 Minimal output]
+    |
+    v
+[4.3 Validating input]
+    |
+    v
+[4.4 Handling files]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) read CSV and JSON exports safely; (2) write scripts that minimise output; (3) validate data before processing.
@@ -232,6 +432,56 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security scope and evidence
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX017.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Defining scope"]
+  N2["5.2 Authorisation"]
+  N3["5.3 Evidence collection"]
+  N4["5.4 Integrity of evidence"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX017"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Defining scope"]
+  N2["5.2 Authorisation"]
+  N3["5.3 Evidence collection"]
+  N4["5.4 Integrity of evidence"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX017"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Defining scope]
+    |
+    v
+[5.2 Authorisation]
+    |
+    v
+[5.3 Evidence collection]
+    |
+    v
+[5.4 Integrity of evidence]
+    |
+    v
+[Worked example] --> [Exercise EX017]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -282,6 +532,56 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Privacy and data protection: system model
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Purposes and systems"]
+  N2["6.2 Lawful bases and conditions"]
+  N3["6.3 Recipients"]
+  N4["6.4 Transfers"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Purposes and systems"]
+  N2["6.2 Lawful bases and conditions"]
+  N3["6.3 Recipients"]
+  N4["6.4 Transfers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Purposes and systems]
+    |
+    v
+[6.2 Lawful bases and conditions]
+    |
+    v
+[6.3 Recipients]
+    |
+    v
+[6.4 Transfers]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) model processing activities technically; (2) link systems to purposes and lawful bases; (3) identify recipients and transfers.
@@ -330,6 +630,61 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Privacy and data protection: data and telemetry
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Telemetry everywhere"]
+  N2["7.2 The log lab"]
+  N3["7.3 Fixing at the source"]
+  N4["7.4 Retention for logs"]
+  N5["Lab — Personal data in booking-server logs"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Telemetry everywhere"]
+  N2["7.2 The log lab"]
+  N3["7.3 Fixing at the source"]
+  N4["7.4 Retention for logs"]
+  N5["Lab — Personal data in booking-server logs"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Telemetry everywhere]
+    |
+    v
+[7.2 The log lab]
+    |
+    v
+[7.3 Fixing at the source]
+    |
+    v
+[7.4 Retention for logs]
+    |
+    v
+[Lab — Personal data in booking-server logs]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -411,6 +766,56 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Privacy and data protection: failure modes
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Ways controls fail"]
+  N2["8.2 Classifying failures"]
+  N3["8.3 Detection design"]
+  N4["8.4 The reminder case"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX029"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Ways controls fail"]
+  N2["8.2 Classifying failures"]
+  N3["8.3 Detection design"]
+  N4["8.4 The reminder case"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Ways controls fail]
+    |
+    v
+[8.2 Classifying failures]
+    |
+    v
+[8.3 Detection design]
+    |
+    v
+[8.4 The reminder case]
+    |
+    v
+[Worked example] --> [Exercise EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) identify how privacy controls fail; (2) classify failures; (3) design detection for each.
@@ -460,6 +865,56 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Privacy and data protection: tools and methods
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Choosing tools"]
+  N2["9.2 Methods before tools"]
+  N3["9.3 Repeatability"]
+  N4["9.4 Responsible use"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Choosing tools"]
+  N2["9.2 Methods before tools"]
+  N3["9.3 Repeatability"]
+  N4["9.4 Responsible use"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Choosing tools]
+    |
+    v
+[9.2 Methods before tools]
+    |
+    v
+[9.3 Repeatability]
+    |
+    v
+[9.4 Responsible use]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) choose tools for privacy checks; (2) use standard-library scripts responsibly; (3) document methods for repeatability.
@@ -508,6 +963,61 @@ Continue to the next authored lesson.
 <a id="ch-10"></a>
 
 ## Chapter 10 — Privacy and data protection: control configuration
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Cookies and consent"]
+  N2["10.2 The cookie lab"]
+  N3["10.3 Fixing the configuration"]
+  N4["10.4 Verifying the change"]
+  N5["Lab — Cookies set before consent"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Cookies and consent"]
+  N2["10.2 The cookie lab"]
+  N3["10.3 Fixing the configuration"]
+  N4["10.4 Verifying the change"]
+  N5["Lab — Cookies set before consent"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Cookies and consent]
+    |
+    v
+[10.2 The cookie lab]
+    |
+    v
+[10.3 Fixing the configuration]
+    |
+    v
+[10.4 Verifying the change]
+    |
+    v
+[Lab — Cookies set before consent]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -591,6 +1101,56 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Privacy and data protection: verification
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 What verification means"]
+  N2["11.2 Sampling accounts"]
+  N3["11.3 Testing operation"]
+  N4["11.4 Honest reporting"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 What verification means"]
+  N2["11.2 Sampling accounts"]
+  N3["11.3 Testing operation"]
+  N4["11.4 Honest reporting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 What verification means]
+    |
+    v
+[11.2 Sampling accounts]
+    |
+    v
+[11.3 Testing operation]
+    |
+    v
+[11.4 Honest reporting]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) verify that privacy controls work as designed; (2) use sampling; (3) report verification honestly.
@@ -639,6 +1199,56 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Contained laboratory I
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 The contained lab"]
+  N2["12.2 Lab results"]
+  N3["12.3 Interpreting the pattern"]
+  N4["Lab — Record views outside the staff member's clinic"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 The contained lab"]
+  N2["12.2 Lab results"]
+  N3["12.3 Interpreting the pattern"]
+  N4["Lab — Record views outside the staff member's clinic"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 The contained lab]
+    |
+    v
+[12.2 Lab results]
+    |
+    v
+[12.3 Interpreting the pattern]
+    |
+    v
+[Lab — Record views outside the staff member's clinic]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 
@@ -716,6 +1326,56 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Privacy and data protection: troubleshooting
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 The symptom"]
+  N2["13.2 Following the data"]
+  N3["13.3 Root cause"]
+  N4["13.4 Preventing recurrence"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 The symptom"]
+  N2["13.2 Following the data"]
+  N3["13.3 Root cause"]
+  N4["13.4 Preventing recurrence"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 The symptom]
+    |
+    v
+[13.2 Following the data]
+    |
+    v
+[13.3 Root cause]
+    |
+    v
+[13.4 Preventing recurrence]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) diagnose a privacy fault methodically; (2) find the root cause; (3) prevent recurrence.
@@ -764,6 +1424,61 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Privacy and data protection: automation
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 The retention rule"]
+  N2["14.2 The retention lab"]
+  N3["14.3 Exceptions and safety"]
+  N4["14.4 Monitoring the job"]
+  N5["Lab — Reminder records past retention"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 The retention rule"]
+  N2["14.2 The retention lab"]
+  N3["14.3 Exceptions and safety"]
+  N4["14.4 Monitoring the job"]
+  N5["Lab — Reminder records past retention"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX053"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 The retention rule]
+    |
+    v
+[14.2 The retention lab]
+    |
+    v
+[14.3 Exceptions and safety]
+    |
+    v
+[14.4 Monitoring the job]
+    |
+    v
+[Lab — Reminder records past retention]
+    |
+    v
+[Worked example] --> [Exercise EX053]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes
 
@@ -836,6 +1551,56 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Privacy and data protection: integration and dependencies
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 The new integration"]
+  N2["15.2 Dependencies"]
+  N3["15.3 Limiting data"]
+  N4["15.4 Testing the integration"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 The new integration"]
+  N2["15.2 Dependencies"]
+  N3["15.3 Limiting data"]
+  N4["15.4 Testing the integration"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX057"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 The new integration]
+    |
+    v
+[15.2 Dependencies]
+    |
+    v
+[15.3 Limiting data]
+    |
+    v
+[15.4 Testing the integration]
+    |
+    v
+[Worked example] --> [Exercise EX057]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) assess a new integration; (2) map dependencies; (3) limit data shared.
@@ -884,6 +1649,56 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Technical documentation and safety
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Why documentation matters"]
+  N2["16.2 Structure of a control document"]
+  N3["16.3 Safety and rollback"]
+  N4["16.4 Keeping it current"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Why documentation matters"]
+  N2["16.2 Structure of a control document"]
+  N3["16.3 Safety and rollback"]
+  N4["16.4 Keeping it current"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Why documentation matters]
+    |
+    v
+[16.2 Structure of a control document]
+    |
+    v
+[16.3 Safety and rollback]
+    |
+    v
+[16.4 Keeping it current]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Learning outcomes
 
@@ -934,6 +1749,56 @@ Continue to the next authored lesson.
 
 ## Chapter 17 — Contained laboratory II
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 The synthetic patient"]
+  N2["17.2 Access request"]
+  N3["17.3 Erasure"]
+  N4["17.4 Reporting gaps"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX065"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 The synthetic patient"]
+  N2["17.2 Access request"]
+  N3["17.3 Erasure"]
+  N4["17.4 Reporting gaps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX065"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 The synthetic patient]
+    |
+    v
+[17.2 Access request]
+    |
+    v
+[17.3 Erasure]
+    |
+    v
+[17.4 Reporting gaps]
+    |
+    v
+[Worked example] --> [Exercise EX065]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Learning outcomes
 
 You will (1) run an end-to-end test with a synthetic patient; (2) verify rights handling; (3) report gaps.
@@ -982,6 +1847,56 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical project
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Choosing the project"]
+  N2["18.2 Delivery"]
+  N3["18.3 Measuring the result"]
+  N4["18.4 Handover and reflection"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX069"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Choosing the project"]
+  N2["18.2 Delivery"]
+  N3["18.3 Measuring the result"]
+  N4["18.4 Handover and reflection"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX069"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Choosing the project]
+    |
+    v
+[18.2 Delivery]
+    |
+    v
+[18.3 Measuring the result]
+    |
+    v
+[18.4 Handover and reflection]
+    |
+    v
+[Worked example] --> [Exercise EX069]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes
 

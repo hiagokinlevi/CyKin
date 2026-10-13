@@ -1,7 +1,7 @@
 # Infraestructura crítica y seguridad sectorial: práctica especializada avanzada
 
 - Idioma: español neutro (`es`); curso de posgrado de especialización, dos años; aproximadamente 600 horas de estudio planificado (curso 161 de 207 en la [ruta de estudio](../../../../../STUDY_PATH.md)). Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–12 de 12 tienen texto didáctico escrito, doce laboratorios sin conexión, los ejercicios EX001–EX060 y sus resultados resueltos correspondientes. Siguen pendientes la revisión independiente por especialistas, la nueva verificación de las fuentes, la revisión de accesibilidad, la edición lingüística y la verificación de las 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
+- Estado editorial: **publicado**. Los capítulos 1–12 de 12 tienen texto didáctico escrito, doce laboratorios sin conexión, los ejercicios EX001–EX060 y sus resultados resueltos correspondientes. Siguen pendientes la revisión independiente por especialistas, la nueva verificación de las fuentes, la revisión de accesibilidad, la edición lingüística y la verificación de las 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
 - Público: profesionales con experiencia (ingenieros de seguridad, responsables de TO y de TI, responsables de riesgo y resiliencia, auditores, personal técnico de los reguladores y consultores) que ya trabajan en un servicio esencial o cerca de él y ahora tienen que **liderar** las decisiones de seguridad de toda una organización o de un grupo de operadores interdependientes. Conocimientos de entrada: un primer título universitario o una experiencia profesional equivalente en el campo; conocimientos prácticos de redes, identidad, gestión de incidentes y al menos un sector operativo; soltura con proporciones, valores esperados e intervalos de confianza; y la capacidad de ejecutar un script breve de Python.
 - En qué se diferencia este curso de sus vecinos. El [libro de grado](../../../../bachelors-4-years/critical-sector-security/es/book/MANUSCRIPT.md) construye los fundamentos asignatura por asignatura. El [libro de ingeniería](../../../../engineering-5-years/critical-sector-security/es/book/MANUSCRIPT.md) diseña, construye y verifica sistemas. El [libro de maestría](../../../../masters-2-years/critical-sector-security/es/book/MANUSCRIPT.md) diseña y defiende un estudio empírico; el [libro de doctorado](../../../../doctorate-2-years/critical-sector-security/es/book/MANUSCRIPT.md) hace una contribución original a la investigación. **Este libro de posgrado trata del juicio profesional avanzado**: tomar, justificar, evaluar y asumir decisiones a escala de la organización en condiciones de incertidumbre, con evidencias lo bastante buenas para un consejo de administración, un regulador y las personas que dependen del servicio. Lee investigación para usarla, no para producirla, y construye sistemas solo lo necesario para comparar y probar opciones de diseño.
 - Autoría y responsabilidad editorial: [hiagokinlevi](https://github.com/hiagokinlevi). El texto didáctico original del mantenedor se dedica bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus propios derechos y no se relicencian aquí.
@@ -54,6 +54,71 @@ Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [G
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Toma de decisiones de seguridad avanzada
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 Qué hace que una decisión sea «a escala de la or"]
+  N2["1.2 Plantear la decisión: el enunciado de la decisió"]
+  N3["1.4 Tres reglas de decisión"]
+  N4["1.5 Probabilidades que no conoce: sensibilidad y umb"]
+  N5["1.6 Valor de la información"]
+  N6["1.8 El registro de decisión"]
+  N7["1.10 Actividad práctica: una decisión, tres reglas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 Qué hace que una decisión sea «a escala de la or"]
+  N2["1.2 Plantear la decisión: el enunciado de la decisió"]
+  N3["1.4 Tres reglas de decisión"]
+  N4["1.5 Probabilidades que no conoce: sensibilidad y umb"]
+  N5["1.6 Valor de la información"]
+  N6["1.8 El registro de decisión"]
+  N7["1.10 Actividad práctica: una decisión, tres reglas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[1.1 Qué hace que una decisión sea «a escala de la or]
+    |
+    v
+[1.2 Plantear la decisión: el enunciado de la decisió]
+    |
+    v
+[1.4 Tres reglas de decisión]
+    |
+    v
+[1.5 Probabilidades que no conoce: sensibilidad y umb]
+    |
+    v
+[1.6 Valor de la información]
+    |
+    v
+[1.8 El registro de decisión]
+    |
+    v
+[1.10 Actividad práctica: una decisión, tres reglas]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -249,6 +314,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 2 — Infraestructura crítica y seguridad sectorial: práctica actual
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 Qué significa «práctica actual» para un especial"]
+  N2["2.2 Líneas base transversales"]
+  N3["2.3 Los regímenes sectoriales crean distintos tipos"]
+  N4["2.4 Por qué difiere la práctica entre sectores"]
+  N5["2.5 Declarado, documentado y verificado"]
+  N6["2.6 Priorizar por consecuencias"]
+  N7["2.8 Actividad práctica: cobertura declarada frente a"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX007"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 Qué significa «práctica actual» para un especial"]
+  N2["2.2 Líneas base transversales"]
+  N3["2.3 Los regímenes sectoriales crean distintos tipos"]
+  N4["2.4 Por qué difiere la práctica entre sectores"]
+  N5["2.5 Declarado, documentado y verificado"]
+  N6["2.6 Priorizar por consecuencias"]
+  N7["2.8 Actividad práctica: cobertura declarada frente a"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX007"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[2.1 Qué significa «práctica actual» para un especial]
+    |
+    v
+[2.2 Líneas base transversales]
+    |
+    v
+[2.3 Los regímenes sectoriales crean distintos tipos]
+    |
+    v
+[2.4 Por qué difiere la práctica entre sectores]
+    |
+    v
+[2.5 Declarado, documentado y verificado]
+    |
+    v
+[2.6 Priorizar por consecuencias]
+    |
+    v
+[2.8 Actividad práctica: cobertura declarada frente a]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -422,6 +552,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 3 — Infraestructura crítica y seguridad sectorial: evidencia especializada
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 El deber probatorio del especialista"]
+  N2["3.2 Fuentes de evidencia en un entorno mixto"]
+  N3["3.3 El tiempo es evidencia"]
+  N4["3.4 Preservar sin causar daño"]
+  N5["3.5 Explicaciones alternativas"]
+  N6["3.6 Redactar hallazgos"]
+  N7["3.7 Notificar por obligación"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX011"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 El deber probatorio del especialista"]
+  N2["3.2 Fuentes de evidencia en un entorno mixto"]
+  N3["3.3 El tiempo es evidencia"]
+  N4["3.4 Preservar sin causar daño"]
+  N5["3.5 Explicaciones alternativas"]
+  N6["3.6 Redactar hallazgos"]
+  N7["3.7 Notificar por obligación"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[3.1 El deber probatorio del especialista]
+    |
+    v
+[3.2 Fuentes de evidencia en un entorno mixto]
+    |
+    v
+[3.3 El tiempo es evidencia]
+    |
+    v
+[3.4 Preservar sin causar daño]
+    |
+    v
+[3.5 Explicaciones alternativas]
+    |
+    v
+[3.6 Redactar hallazgos]
+    |
+    v
+[3.7 Notificar por obligación]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -593,6 +788,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 4 — Riesgo y ética avanzados
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Por qué engañan las estimaciones puntuales"]
+  N2["4.2 Apetito y tolerancia en unidades de servicio"]
+  N3["4.3 El juicio experto como evidencia"]
+  N4["4.4 La ética en la seguridad de los servicios esenci"]
+  N5["4.5 Quién soporta el riesgo residual"]
+  N6["4.7 Actividad práctica: excedencia de pérdidas y dis"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX016"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Por qué engañan las estimaciones puntuales"]
+  N2["4.2 Apetito y tolerancia en unidades de servicio"]
+  N3["4.3 El juicio experto como evidencia"]
+  N4["4.4 La ética en la seguridad de los servicios esenci"]
+  N5["4.5 Quién soporta el riesgo residual"]
+  N6["4.7 Actividad práctica: excedencia de pérdidas y dis"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[4.1 Por qué engañan las estimaciones puntuales]
+    |
+    v
+[4.2 Apetito y tolerancia en unidades de servicio]
+    |
+    v
+[4.3 El juicio experto como evidencia]
+    |
+    v
+[4.4 La ética en la seguridad de los servicios esenci]
+    |
+    v
+[4.5 Quién soporta el riesgo residual]
+    |
+    v
+[4.7 Actividad práctica: excedencia de pérdidas y dis]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -751,6 +1011,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Infraestructura crítica y seguridad sectorial: alternativas de diseño
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 Partir de la consecuencia"]
+  N2["5.2 Principios que generan alternativas"]
+  N3["5.3 Los diseños como grafos"]
+  N4["5.4 Los diseños como sistemas operables"]
+  N5["5.6 Actividad práctica: rutas y puntos de estrangula"]
+  N6["5.7 Elegir y registrar"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX021"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 Partir de la consecuencia"]
+  N2["5.2 Principios que generan alternativas"]
+  N3["5.3 Los diseños como grafos"]
+  N4["5.4 Los diseños como sistemas operables"]
+  N5["5.6 Actividad práctica: rutas y puntos de estrangula"]
+  N6["5.7 Elegir y registrar"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[5.1 Partir de la consecuencia]
+    |
+    v
+[5.2 Principios que generan alternativas]
+    |
+    v
+[5.3 Los diseños como grafos]
+    |
+    v
+[5.4 Los diseños como sistemas operables]
+    |
+    v
+[5.6 Actividad práctica: rutas y puntos de estrangula]
+    |
+    v
+[5.7 Elegir y registrar]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -927,6 +1252,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 6 — Infraestructura crítica y seguridad sectorial: evaluación controlada
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 Por qué evaluar en condiciones controladas"]
+  N2["6.2 Detección: tasas, familias e intervalos"]
+  N3["6.3 Carga de falsas alarmas"]
+  N4["6.4 Simulacros y ejercicios"]
+  N5["6.5 Diseño seguro de las pruebas y reglas de enfrent"]
+  N6["6.7 Actividad práctica: qué muestra la evaluación"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX026"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 Por qué evaluar en condiciones controladas"]
+  N2["6.2 Detección: tasas, familias e intervalos"]
+  N3["6.3 Carga de falsas alarmas"]
+  N4["6.4 Simulacros y ejercicios"]
+  N5["6.5 Diseño seguro de las pruebas y reglas de enfrent"]
+  N6["6.7 Actividad práctica: qué muestra la evaluación"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[6.1 Por qué evaluar en condiciones controladas]
+    |
+    v
+[6.2 Detección: tasas, familias e intervalos]
+    |
+    v
+[6.3 Carga de falsas alarmas]
+    |
+    v
+[6.4 Simulacros y ejercicios]
+    |
+    v
+[6.5 Diseño seguro de las pruebas y reglas de enfrent]
+    |
+    v
+[6.7 Actividad práctica: qué muestra la evaluación]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1065,6 +1455,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Infraestructura crítica y seguridad sectorial: integración organizativa
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 Modelos operativos"]
+  N2["7.2 Titularidad: RACI y segregación de funciones"]
+  N3["7.3 Proveedores y concentración"]
+  N4["7.4 Integración con la gestión de emergencias"]
+  N5["7.5 Intercambio de información"]
+  N6["7.7 Actividad práctica: comprobaciones de concentrac"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX031"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 Modelos operativos"]
+  N2["7.2 Titularidad: RACI y segregación de funciones"]
+  N3["7.3 Proveedores y concentración"]
+  N4["7.4 Integración con la gestión de emergencias"]
+  N5["7.5 Intercambio de información"]
+  N6["7.7 Actividad práctica: comprobaciones de concentrac"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[7.1 Modelos operativos]
+    |
+    v
+[7.2 Titularidad: RACI y segregación de funciones]
+    |
+    v
+[7.3 Proveedores y concentración]
+    |
+    v
+[7.4 Integración con la gestión de emergencias]
+    |
+    v
+[7.5 Intercambio de información]
+    |
+    v
+[7.7 Actividad práctica: comprobaciones de concentrac]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1232,6 +1687,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 8 — Infraestructura crítica y seguridad sectorial: casos difíciles
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 Qué hace difícil un caso"]
+  N2["8.2 Cascadas y relojes de respaldo"]
+  N3["8.3 Las prioridades de restablecimiento necesitan pe"]
+  N4["8.4 Cuando la causa es un proveedor de confianza"]
+  N5["8.5 Extorsión"]
+  N6["8.6 Sucesos internos ambiguos"]
+  N7["8.7 Obligaciones en conflicto"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX036"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 Qué hace difícil un caso"]
+  N2["8.2 Cascadas y relojes de respaldo"]
+  N3["8.3 Las prioridades de restablecimiento necesitan pe"]
+  N4["8.4 Cuando la causa es un proveedor de confianza"]
+  N5["8.5 Extorsión"]
+  N6["8.6 Sucesos internos ambiguos"]
+  N7["8.7 Obligaciones en conflicto"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[8.1 Qué hace difícil un caso]
+    |
+    v
+[8.2 Cascadas y relojes de respaldo]
+    |
+    v
+[8.3 Las prioridades de restablecimiento necesitan pe]
+    |
+    v
+[8.4 Cuando la causa es un proveedor de confianza]
+    |
+    v
+[8.5 Extorsión]
+    |
+    v
+[8.6 Sucesos internos ambiguos]
+    |
+    v
+[8.7 Obligaciones en conflicto]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1368,6 +1888,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa de la lección
+
+Lección 09 publicada. Mapa, ejemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["9.1 Dirigir una función especializada"]
+  N2["9.2 Informes al consejo"]
+  N3["9.3 ¿Señal o ruido?"]
+  N4["9.4 Casos de aseguramiento"]
+  N5["9.5 Vigencia de la evidencia"]
+  N6["9.6 Las tres líneas y la revisión independiente"]
+  N7["9.8 Actividad práctica: gráfico XmR y vigencia de la"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX041"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["9.1 Dirigir una función especializada"]
+  N2["9.2 Informes al consejo"]
+  N3["9.3 ¿Señal o ruido?"]
+  N4["9.4 Casos de aseguramiento"]
+  N5["9.5 Vigencia de la evidencia"]
+  N6["9.6 Las tres líneas y la revisión independiente"]
+  N7["9.8 Actividad práctica: gráfico XmR y vigencia de la"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[9.1 Dirigir una función especializada]
+    |
+    v
+[9.2 Informes al consejo]
+    |
+    v
+[9.3 ¿Señal o ruido?]
+    |
+    v
+[9.4 Casos de aseguramiento]
+    |
+    v
+[9.5 Vigencia de la evidencia]
+    |
+    v
+[9.6 Las tres líneas y la revisión independiente]
+    |
+    v
+[9.8 Actividad práctica: gráfico XmR y vigencia de la]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1517,6 +2102,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 10 — Lectura y crítica de la investigación
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa de la lección
+
+Lección 10 publicada. Mapa, ejemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["10.1 Tres tipos de fuente"]
+  N2["10.2 Leer un estudio: primero el diseño"]
+  N3["10.3 Leer un aviso"]
+  N4["10.4 Leer la afirmación de un proveedor"]
+  N5["10.5 Confusión y paradoja de Simpson"]
+  N6["10.6 Transferencia"]
+  N7["10.7 La ficha de evidencia"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX046"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["10.1 Tres tipos de fuente"]
+  N2["10.2 Leer un estudio: primero el diseño"]
+  N3["10.3 Leer un aviso"]
+  N4["10.4 Leer la afirmación de un proveedor"]
+  N5["10.5 Confusión y paradoja de Simpson"]
+  N6["10.6 Transferencia"]
+  N7["10.7 La ficha de evidencia"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[10.1 Tres tipos de fuente]
+    |
+    v
+[10.2 Leer un estudio: primero el diseño]
+    |
+    v
+[10.3 Leer un aviso]
+    |
+    v
+[10.4 Leer la afirmación de un proveedor]
+    |
+    v
+[10.5 Confusión y paradoja de Simpson]
+    |
+    v
+[10.6 Transferencia]
+    |
+    v
+[10.7 La ficha de evidencia]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1651,6 +2301,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Proyecto aplicado
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa de la lección
+
+Lección 11 publicada. Mapa, ejemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["11.1 Elegir el proyecto"]
+  N2["11.2 El acta de constitución del proyecto"]
+  N3["11.3 Ejecutar a través de las personas"]
+  N4["11.4 Evaluar el resultado"]
+  N5["11.5 Informar del proyecto"]
+  N6["11.6 Rúbrica de evaluación"]
+  N7["11.8 Actividad práctica: ¿funcionó?"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX051"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["11.1 Elegir el proyecto"]
+  N2["11.2 El acta de constitución del proyecto"]
+  N3["11.3 Ejecutar a través de las personas"]
+  N4["11.4 Evaluar el resultado"]
+  N5["11.5 Informar del proyecto"]
+  N6["11.6 Rúbrica de evaluación"]
+  N7["11.8 Actividad práctica: ¿funcionó?"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[11.1 Elegir el proyecto]
+    |
+    v
+[11.2 El acta de constitución del proyecto]
+    |
+    v
+[11.3 Ejecutar a través de las personas]
+    |
+    v
+[11.4 Evaluar el resultado]
+    |
+    v
+[11.5 Informar del proyecto]
+    |
+    v
+[11.6 Rúbrica de evaluación]
+    |
+    v
+[11.8 Actividad práctica: ¿funcionó?]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1788,6 +2503,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisión final y transferencia
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa de la lección
+
+Lección 12 publicada. Mapa, ejemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["12.1 El curso como un único método"]
+  N2["12.2 Transferencia entre sectores"]
+  N3["12.3 Decisiones multicriterio y puntos de inversión"]
+  N4["12.4 Autoevaluación y práctica continuada"]
+  N5["12.6 Actividad práctica: mismas opciones, pesos dist"]
+  N6["Síntesis del capítulo"]
+  N7["Capítulo 1: EX001–EX005"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX056"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["12.1 El curso como un único método"]
+  N2["12.2 Transferencia entre sectores"]
+  N3["12.3 Decisiones multicriterio y puntos de inversión"]
+  N4["12.4 Autoevaluación y práctica continuada"]
+  N5["12.6 Actividad práctica: mismas opciones, pesos dist"]
+  N6["Síntesis del capítulo"]
+  N7["Capítulo 1: EX001–EX005"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[12.1 El curso como un único método]
+    |
+    v
+[12.2 Transferencia entre sectores]
+    |
+    v
+[12.3 Decisiones multicriterio y puntos de inversión]
+    |
+    v
+[12.4 Autoevaluación y práctica continuada]
+    |
+    v
+[12.6 Actividad práctica: mismas opciones, pesos dist]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Capítulo 1: EX001–EX005]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Resultados de aprendizaje y conexión
 

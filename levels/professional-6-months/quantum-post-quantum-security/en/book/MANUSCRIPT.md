@@ -1,7 +1,7 @@
 # Quantum and Post-Quantum Security: A Practitioner's Migration Workflow
 
 - Language: English (`en`); professional course, six months; approximately 360 hours of planned study.
-- Editorial state: **draft**. Chapters 1–12 of 12 have authored teaching text; exercises EX001–EX060 (five per chapter) have matching worked results; offline labs use the Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–12 of 12 have authored teaching text; exercises EX001–EX060 (five per chapter) have matching worked results; offline labs use the Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: entry-level practitioners — security analysts, IT risk and compliance staff, project coordinators — who will run a repeatable post-quantum migration workflow and communicate findings to managers, owners and suppliers. Entry knowledge: security basics and the relevant system fundamentals.
 - Relation to neighbouring books: the [technical book](../../../../technical-18-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) teaches hands-on configuration and the [postgraduate book](../../../../postgraduate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) organization-scale leadership. **This book is about the management workflow of migration**: scoping, inventory, prioritisation, governance, supplier engagement, tracking, verification and reporting.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -34,6 +34,66 @@ Primary sources were checked on 12 October 2026: NIST FIPS 203/204/205 (August 2
 <a id="ch-01"></a>
 
 ## Chapter 1 — Security foundations for practitioners
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 What changes and what does not"]
+  N2["1.2 The replacements"]
+  N3["1.3 Two risks with different clocks"]
+  N4["1.4 Hybrid key exchange"]
+  N5["1.6 Practice task"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 What changes and what does not"]
+  N2["1.2 The replacements"]
+  N3["1.3 Two risks with different clocks"]
+  N4["1.4 Hybrid key exchange"]
+  N5["1.6 Practice task"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 What changes and what does not]
+    |
+    v
+[1.2 The replacements]
+    |
+    v
+[1.3 Two risks with different clocks]
+    |
+    v
+[1.4 Hybrid key exchange]
+    |
+    v
+[1.6 Practice task]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -98,6 +158,71 @@ Quantum computers threaten public-key key agreement and signatures, not symmetri
 <a id="ch-02"></a>
 
 ## Chapter 2 — Quantum and post-quantum security: service and stakeholder context
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Services and data lifetimes"]
+  N2["2.2 Mosca's rule"]
+  N3["2.3 Practical activity — Lab M"]
+  N4["2.4 Stakeholders"]
+  N5["2.6 Practice task"]
+  N6["2.8 Revisiting the list"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Services and data lifetimes"]
+  N2["2.2 Mosca's rule"]
+  N3["2.3 Practical activity — Lab M"]
+  N4["2.4 Stakeholders"]
+  N5["2.6 Practice task"]
+  N6["2.8 Revisiting the list"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Services and data lifetimes]
+    |
+    v
+[2.2 Mosca's rule]
+    |
+    v
+[2.3 Practical activity — Lab M]
+    |
+    v
+[2.4 Stakeholders]
+    |
+    v
+[2.6 Practice task]
+    |
+    v
+[2.8 Revisiting the list]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -190,6 +315,71 @@ Service maps with sourced lifetimes, Mosca's rule across several assumptions and
 
 ## Chapter 3 — Authorized practice and evidence handling
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Authorization"]
+  N2["3.2 Minimum necessary evidence"]
+  N3["3.3 Storage and labelling"]
+  N4["3.4 Sensitive findings"]
+  N5["3.5 Supplier information"]
+  N6["3.7 Practice task"]
+  N7["3.9 Retention and deletion"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Authorization"]
+  N2["3.2 Minimum necessary evidence"]
+  N3["3.3 Storage and labelling"]
+  N4["3.4 Sensitive findings"]
+  N5["3.5 Supplier information"]
+  N6["3.7 Practice task"]
+  N7["3.9 Retention and deletion"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Authorization]
+    |
+    v
+[3.2 Minimum necessary evidence]
+    |
+    v
+[3.3 Storage and labelling]
+    |
+    v
+[3.4 Sensitive findings]
+    |
+    v
+[3.5 Supplier information]
+    |
+    v
+[3.7 Practice task]
+    |
+    v
+[3.9 Retention and deletion]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) obtain and respect written authorization; (2) collect only necessary evidence; (3) store and label evidence properly; (4) handle sensitive findings; and (5) work with suppliers' confidential information.
@@ -269,6 +459,71 @@ Authorized, minimal, well-labelled evidence handling protects the organization, 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Quantum and post-quantum security: core methods
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Inventory sources"]
+  N2["4.2 Practical activity — Lab I"]
+  N3["4.3 Evidence grades"]
+  N4["4.4 Exposure classes"]
+  N5["4.5 Unknowns as work"]
+  N6["4.7 Practice task"]
+  N7["4.9 Running the inventory as a cycle"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Inventory sources"]
+  N2["4.2 Practical activity — Lab I"]
+  N3["4.3 Evidence grades"]
+  N4["4.4 Exposure classes"]
+  N5["4.5 Unknowns as work"]
+  N6["4.7 Practice task"]
+  N7["4.9 Running the inventory as a cycle"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Inventory sources]
+    |
+    v
+[4.2 Practical activity — Lab I]
+    |
+    v
+[4.3 Evidence grades]
+    |
+    v
+[4.4 Exposure classes]
+    |
+    v
+[4.5 Unknowns as work]
+    |
+    v
+[4.7 Practice task]
+    |
+    v
+[4.9 Running the inventory as a cycle]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -371,6 +626,71 @@ A multi-source, graded CBOM classifies exposure and turns unknowns into tracked 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Quantum and post-quantum security: tools and interpretation
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 What tools show"]
+  N2["5.2 Practical activity — Lab T"]
+  N3["5.3 Blind spots"]
+  N4["5.4 Interpreting questionnaires"]
+  N5["5.5 From output to finding"]
+  N6["5.7 Practice task"]
+  N7["5.8 Asking the right follow-up"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 What tools show"]
+  N2["5.2 Practical activity — Lab T"]
+  N3["5.3 Blind spots"]
+  N4["5.4 Interpreting questionnaires"]
+  N5["5.5 From output to finding"]
+  N6["5.7 Practice task"]
+  N7["5.8 Asking the right follow-up"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 What tools show]
+    |
+    v
+[5.2 Practical activity — Lab T]
+    |
+    v
+[5.3 Blind spots]
+    |
+    v
+[5.4 Interpreting questionnaires]
+    |
+    v
+[5.5 From output to finding]
+    |
+    v
+[5.7 Practice task]
+    |
+    v
+[5.8 Asking the right follow-up]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -477,6 +797,71 @@ Practitioners interpret tool and questionnaire output with attention to preferen
 
 ## Chapter 6 — Quantum and post-quantum security: operational workflow
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 The cycle"]
+  N2["6.2 Roles"]
+  N3["6.3 Tracker states"]
+  N4["6.4 Dependencies"]
+  N5["6.5 Outcome measures"]
+  N6["6.7 Practice task"]
+  N7["6.8 Cadence"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 The cycle"]
+  N2["6.2 Roles"]
+  N3["6.3 Tracker states"]
+  N4["6.4 Dependencies"]
+  N5["6.5 Outcome measures"]
+  N6["6.7 Practice task"]
+  N7["6.8 Cadence"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 The cycle]
+    |
+    v
+[6.2 Roles]
+    |
+    v
+[6.3 Tracker states]
+    |
+    v
+[6.4 Dependencies]
+    |
+    v
+[6.5 Outcome measures]
+    |
+    v
+[6.7 Practice task]
+    |
+    v
+[6.8 Cadence]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) run the migration workflow as a repeatable cycle; (2) define roles, inputs and outputs for each step; (3) use a tracker with clear states; (4) manage dependencies on suppliers and partners; and (5) report progress with outcome measures.
@@ -556,6 +941,71 @@ A repeatable cycle with clear roles, tracker states, managed dependencies and ou
 <a id="ch-07"></a>
 
 ## Chapter 7 — Quantum and post-quantum security: controls and verification
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Controls"]
+  N2["7.2 Matching controls"]
+  N3["7.3 Practical activity — Lab A"]
+  N4["7.4 Verification"]
+  N5["7.5 Residual risk"]
+  N6["7.7 Practice task"]
+  N7["7.8 Exceptions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Controls"]
+  N2["7.2 Matching controls"]
+  N3["7.3 Practical activity — Lab A"]
+  N4["7.4 Verification"]
+  N5["7.5 Residual risk"]
+  N6["7.7 Practice task"]
+  N7["7.8 Exceptions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Controls]
+    |
+    v
+[7.2 Matching controls]
+    |
+    v
+[7.3 Practical activity — Lab A]
+    |
+    v
+[7.4 Verification]
+    |
+    v
+[7.5 Residual risk]
+    |
+    v
+[7.7 Practice task]
+    |
+    v
+[7.8 Exceptions]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -666,6 +1116,71 @@ Controls are matched to exposure, verified by operational evidence, and accompan
 
 ## Chapter 8 — Quantum and post-quantum security: supervised case analysis
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 The case"]
+  N2["8.2 Analysis"]
+  N3["8.3 Options"]
+  N4["8.4 Governance gaps"]
+  N5["8.5 Recommendation"]
+  N6["8.7 Practice task"]
+  N7["8.8 Supervisor review"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 The case"]
+  N2["8.2 Analysis"]
+  N3["8.3 Options"]
+  N4["8.4 Governance gaps"]
+  N5["8.5 Recommendation"]
+  N6["8.7 Practice task"]
+  N7["8.8 Supervisor review"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 The case]
+    |
+    v
+[8.2 Analysis]
+    |
+    v
+[8.3 Options]
+    |
+    v
+[8.4 Governance gaps]
+    |
+    v
+[8.5 Recommendation]
+    |
+    v
+[8.7 Practice task]
+    |
+    v
+[8.8 Supervisor review]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse a realistic migration case end to end; (2) apply the workflow under supervision; (3) weigh options with explicit criteria; (4) identify governance gaps; and (5) present a recommendation.
@@ -746,6 +1261,71 @@ Supervised case analysis applies the workflow end to end: exposures, options wit
 
 ## Chapter 9 — Communication, ethics and reporting
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Audiences"]
+  N2["9.2 Uncertainty"]
+  N3["9.3 Tone"]
+  N4["9.4 Ethics"]
+  N5["9.5 Oral presentation"]
+  N6["9.7 Practice task"]
+  N7["9.8 Handling pushback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Audiences"]
+  N2["9.2 Uncertainty"]
+  N3["9.3 Tone"]
+  N4["9.4 Ethics"]
+  N5["9.5 Oral presentation"]
+  N6["9.7 Practice task"]
+  N7["9.8 Handling pushback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Audiences]
+    |
+    v
+[9.2 Uncertainty]
+    |
+    v
+[9.3 Tone]
+    |
+    v
+[9.4 Ethics]
+    |
+    v
+[9.5 Oral presentation]
+    |
+    v
+[9.7 Practice task]
+    |
+    v
+[9.8 Handling pushback]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) write reports for executives, owners, suppliers and auditors; (2) communicate uncertainty honestly; (3) avoid fear-based or overconfident messaging; (4) handle sensitive information ethically; and (5) present findings orally.
@@ -825,6 +1405,71 @@ Good communication fits the audience, states uncertainty honestly, keeps a calm 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Quantum and post-quantum security: quality and troubleshooting
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Data quality"]
+  N2["10.2 Workflow failures"]
+  N3["10.3 Practical activity — Lab K"]
+  N4["10.4 Coordinating troubleshooting"]
+  N5["10.5 Lessons learned"]
+  N6["10.7 Practice task"]
+  N7["10.8 Measuring quality"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Data quality"]
+  N2["10.2 Workflow failures"]
+  N3["10.3 Practical activity — Lab K"]
+  N4["10.4 Coordinating troubleshooting"]
+  N5["10.5 Lessons learned"]
+  N6["10.7 Practice task"]
+  N7["10.8 Measuring quality"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Data quality]
+    |
+    v
+[10.2 Workflow failures]
+    |
+    v
+[10.3 Practical activity — Lab K]
+    |
+    v
+[10.4 Coordinating troubleshooting]
+    |
+    v
+[10.5 Lessons learned]
+    |
+    v
+[10.7 Practice task]
+    |
+    v
+[10.8 Measuring quality]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -926,6 +1571,71 @@ Quality checks, accurate reading of gate decisions, coordinated troubleshooting 
 
 ## Chapter 11 — Supervised laboratory
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Setup"]
+  N2["11.2 Tasks"]
+  N3["11.3 The incident"]
+  N4["11.4 Assessment"]
+  N5["11.6 Practice task"]
+  N6["11.7 Reflection"]
+  N7["11.8 Working with simulated stakeholders"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Setup"]
+  N2["11.2 Tasks"]
+  N3["11.3 The incident"]
+  N4["11.4 Assessment"]
+  N5["11.6 Practice task"]
+  N6["11.7 Reflection"]
+  N7["11.8 Working with simulated stakeholders"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Setup]
+    |
+    v
+[11.2 Tasks]
+    |
+    v
+[11.3 The incident]
+    |
+    v
+[11.4 Assessment]
+    |
+    v
+[11.6 Practice task]
+    |
+    v
+[11.7 Reflection]
+    |
+    v
+[11.8 Working with simulated stakeholders]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) run a full workflow cycle on a synthetic dataset; (2) produce tracker, findings and report; (3) work with simulated owners and suppliers; (4) handle a simulated incident; and (5) reflect on performance.
@@ -1005,6 +1715,71 @@ The supervised lab runs a complete cycle with simulated people and an incident, 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio contents"]
+  N2["12.2 Presentation"]
+  N3["12.3 Likely questions"]
+  N4["12.4 Next steps"]
+  N5["12.5 Staying current"]
+  N6["12.7 Practice task"]
+  N7["12.8 Professional habits"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio contents"]
+  N2["12.2 Presentation"]
+  N3["12.3 Likely questions"]
+  N4["12.4 Next steps"]
+  N5["12.5 Staying current"]
+  N6["12.7 Practice task"]
+  N7["12.8 Professional habits"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Portfolio contents]
+    |
+    v
+[12.2 Presentation]
+    |
+    v
+[12.3 Likely questions]
+    |
+    v
+[12.4 Next steps]
+    |
+    v
+[12.5 Staying current]
+    |
+    v
+[12.7 Practice task]
+    |
+    v
+[12.8 Professional habits]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

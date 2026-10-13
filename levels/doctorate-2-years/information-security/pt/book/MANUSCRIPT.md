@@ -1,7 +1,7 @@
 # Segurança da Informação: Trilha de Pesquisa de Doutorado
 
 - Idioma: português do Brasil (`pt`); curso 186, trilha de pesquisa de doutorado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: doutorandos que estudam se a priorização de controles de segurança ordenada pelo risco encurta a latência de correção de vulnerabilidades críticas e reduz o privilégio excessivo em organizações públicas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios categorizam sistemas sintéticos pelo impacto sobre confidencialidade, integridade e disponibilidade, medem o privilégio excessivo em contas sintéticas e estimam uma diferença em diferenças da latência sintética de correções com um intervalo bootstrap. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,51 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O candidato e a pergunta"]
+  N1["1.2 Integridade na pesquisa em segurança"]
+  N2["1.3 Métodos para perguntas organizacionais"]
+  N3["1.4 Ética e manuseio de dados"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O candidato e a pergunta"]
+  N1["1.2 Integridade na pesquisa em segurança"]
+  N2["1.3 Métodos para perguntas organizacionais"]
+  N3["1.4 Ética e manuseio de dados"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 O candidato e a pergunta]
+    |
+    v
+[1.2 Integridade na pesquisa em segurança]
+    |
+    v
+[1.3 Métodos para perguntas organizacionais]
+    |
+    v
+[1.4 Ética e manuseio de dados]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -94,6 +139,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança da informação: fronteira da pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Fundamentos"]
+  N1["2.2 Normas de gestão"]
+  N2["Laboratório — Categorização de segurança pela marca"]
+  N3["2.3 Reproduzindo uma categorização"]
+  N4["2.4 A lacuna"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Fundamentos"]
+  N1["2.2 Normas de gestão"]
+  N2["Laboratório — Categorização de segurança pela marca"]
+  N3["2.3 Reproduzindo uma categorização"]
+  N4["2.4 A lacuna"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[2.1 Fundamentos]
+    |
+    v
+[2.2 Normas de gestão]
+    |
+    v
+[Laboratório — Categorização de segurança pela marca]
+    |
+    v
+[2.3 Reproduzindo uma categorização]
+    |
+    v
+[2.4 A lacuna]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -183,6 +278,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Proposta de contribuição original
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Hipóteses"]
+  N1["3.2 Medidas"]
+  N2["3.3 Ameaças à validade"]
+  N3["3.4 Aprovação"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Hipóteses"]
+  N1["3.2 Medidas"]
+  N2["3.3 Ameaças à validade"]
+  N3["3.4 Aprovação"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX015"]
+```
+
+```text
+[3.1 Hipóteses]
+    |
+    v
+[3.2 Medidas]
+    |
+    v
+[3.3 Ameaças à validade]
+    |
+    v
+[3.4 Aprovação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) declarar hipóteses e medidas de desfecho com precisão; (2) desenhar a comparação e as ameaças à validade; (3) obter a aprovação de uma proposta.
@@ -238,6 +378,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Por que uma linha de base"]
+  N1["Laboratório — Privilégios excessivos em relação às l"]
+  N2["4.2 Pilotando o privilégio excessivo"]
+  N3["4.3 Auditando a medida"]
+  N4["4.4 Lições do piloto"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Por que uma linha de base"]
+  N1["Laboratório — Privilégios excessivos em relação às l"]
+  N2["4.2 Pilotando o privilégio excessivo"]
+  N3["4.3 Auditando a medida"]
+  N4["4.4 Lições do piloto"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[4.1 Por que uma linha de base]
+    |
+    v
+[Laboratório — Privilégios excessivos em relação às l]
+    |
+    v
+[4.2 Pilotando o privilégio excessivo]
+    |
+    v
+[4.3 Auditando a medida]
+    |
+    v
+[4.4 Lições do piloto]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -325,6 +515,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Estudo principal e validação independente
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Executando a análise"]
+  N1["Laboratório — Diferença em diferenças da mediana da"]
+  N2["5.2 Resultados"]
+  N3["5.3 Interpretando com honestidade"]
+  N4["5.4 Validação independente"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Executando a análise"]
+  N1["Laboratório — Diferença em diferenças da mediana da"]
+  N2["5.2 Resultados"]
+  N3["5.3 Interpretando com honestidade"]
+  N4["5.4 Validação independente"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[5.1 Executando a análise]
+    |
+    v
+[Laboratório — Diferença em diferenças da mediana da]
+    |
+    v
+[5.2 Resultados]
+    |
+    v
+[5.3 Interpretando com honestidade]
+    |
+    v
+[5.4 Validação independente]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) executar uma análise de diferença em diferenças pré-registrada; (2) interpretar um intervalo que inclui o zero; (3) providenciar a validação independente da análise.
@@ -407,6 +647,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Crítica por pares e revisão
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 A crítica"]
+  N1["6.2 Poder"]
+  N2["6.3 Comparador e mecanismo"]
+  N3["6.4 Afirmações revisadas"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 A crítica"]
+  N1["6.2 Poder"]
+  N2["6.3 Comparador e mecanismo"]
+  N3["6.4 Afirmações revisadas"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX033"]
+```
+
+```text
+[6.1 A crítica]
+    |
+    v
+[6.2 Poder]
+    |
+    v
+[6.3 Comparador e mecanismo]
+    |
+    v
+[6.4 Afirmações revisadas]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) responder a uma revisão crítica por pares; (2) revisar a análise e as afirmações sem mudar os resultados confirmatórios; (3) separar os achados exploratórios dos confirmatórios.
@@ -463,6 +748,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Síntese"]
+  N1["7.2 Arquivo de reprodutibilidade"]
+  N2["7.3 Protegendo o material sensível"]
+  N3["7.4 Escrevendo as limitações"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Síntese"]
+  N1["7.2 Arquivo de reprodutibilidade"]
+  N2["7.3 Protegendo o material sensível"]
+  N3["7.4 Escrevendo as limitações"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX039"]
+```
+
+```text
+[7.1 Síntese]
+    |
+    v
+[7.2 Arquivo de reprodutibilidade]
+    |
+    v
+[7.3 Protegendo o material sensível]
+    |
+    v
+[7.4 Escrevendo as limitações]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) sintetizar estudos numa tese coerente; (2) montar um arquivo de reprodutibilidade; (3) proteger o material sensível da pesquisa arquivada.
@@ -518,6 +848,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Preparando a defesa"]
+  N1["8.2 Questionamentos dos examinadores"]
+  N2["8.3 Resultado"]
+  N3["8.4 Plano de publicação"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Preparando a defesa"]
+  N1["8.2 Questionamentos dos examinadores"]
+  N2["8.3 Resultado"]
+  N3["8.4 Plano de publicação"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX045"]
+```
+
+```text
+[8.1 Preparando a defesa]
+    |
+    v
+[8.2 Questionamentos dos examinadores]
+    |
+    v
+[8.3 Resultado]
+    |
+    v
+[8.4 Plano de publicação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

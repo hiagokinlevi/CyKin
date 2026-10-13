@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Rapid Course
 
 - Language: English (`en`); course 012, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; One offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; One offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: volunteers and staff in very small organisations who need to secure a handful of laptops in four weeks with no budget.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -35,6 +35,71 @@ NIST [SP 800-123](https://doi.org/10.6028/NIST.SP.800-123), [SP 800-40r4](https:
 <a id="ch-01"></a>
 
 ## Chapter 1 — Week 1: Know your devices and update them
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Start with a list"]
+  N3["1.3 The quick check"]
+  N4["Lab — Five-point quick check"]
+  N5["1.4 Reading the result"]
+  N6["1.5 Getting updates working"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Start with a list"]
+  N3["1.3 The quick check"]
+  N4["Lab — Five-point quick check"]
+  N5["1.4 Reading the result"]
+  N6["1.5 Getting updates working"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Start with a list]
+    |
+    v
+[1.3 The quick check]
+    |
+    v
+[Lab — Five-point quick check]
+    |
+    v
+[1.4 Reading the result]
+    |
+    v
+[1.5 Getting updates working]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -131,6 +196,66 @@ In week one, Leah knows every device, has a clear picture of five basics, and ha
 
 ## Chapter 2 — Week 2: Accounts and safer settings
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Standard accounts"]
+  N2["2.2 Getting software without admin"]
+  N3["2.3 Passwords and MFA"]
+  N4["2.4 Key settings"]
+  N5["2.5 Front desk PC"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Standard accounts"]
+  N2["2.2 Getting software without admin"]
+  N3["2.3 Passwords and MFA"]
+  N4["2.4 Key settings"]
+  N5["2.5 Front desk PC"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Standard accounts]
+    |
+    v
+[2.2 Getting software without admin]
+    |
+    v
+[2.3 Passwords and MFA]
+    |
+    v
+[2.4 Key settings]
+    |
+    v
+[2.5 Front desk PC]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) move everyone to standard accounts; (2) secure email sign-in with MFA; (3) apply a few key settings.
@@ -203,6 +328,66 @@ By the end of week two, nobody works as an administrator, email is protected by 
 
 ## Chapter 3 — Week 3: Encryption and backups
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Why encryption"]
+  N2["3.2 Turning it on"]
+  N3["3.3 Checking it worked"]
+  N4["3.4 Backups"]
+  N5["3.5 Testing a restore"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Why encryption"]
+  N2["3.2 Turning it on"]
+  N3["3.3 Checking it worked"]
+  N4["3.4 Backups"]
+  N5["3.5 Testing a restore"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Why encryption]
+    |
+    v
+[3.2 Turning it on]
+    |
+    v
+[3.3 Checking it worked]
+    |
+    v
+[3.4 Backups]
+    |
+    v
+[3.5 Testing a restore]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) turn on and verify disk encryption; (2) store recovery keys safely; (3) check and test backups.
@@ -273,6 +458,66 @@ After week three, a stolen laptop would no longer expose client data, and files 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Week 4: Keep it going and respond calmly
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Re-running the check"]
+  N2["4.2 A monthly routine"]
+  N3["4.3 When something goes wrong"]
+  N4["4.4 Joiners and leavers"]
+  N5["4.5 What remains"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Re-running the check"]
+  N2["4.2 A monthly routine"]
+  N3["4.3 When something goes wrong"]
+  N4["4.4 Joiners and leavers"]
+  N5["4.5 What remains"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Re-running the check]
+    |
+    v
+[4.2 A monthly routine]
+    |
+    v
+[4.3 When something goes wrong]
+    |
+    v
+[4.4 Joiners and leavers]
+    |
+    v
+[4.5 What remains]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

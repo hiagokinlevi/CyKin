@@ -1,7 +1,7 @@
 # Infraestructura crítica y seguridad sectorial: diseño de investigación aplicada y la tesis de maestría
 
 - Idioma: español (`es`), edición en español neutro internacional; curso de maestría, dos años; aproximadamente 1200 horas de estudio planificado (curso 184 de 207 de la [ruta de estudio](../../../../../STUDY_PATH.md)). Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–8 de 8 tienen texto didáctico escrito, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
+- Estado editorial: **publicado**. Los capítulos 1–8 de 8 tienen texto didáctico escrito, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
 - Público: investigadores principiantes que conocen el campo por la práctica o por estudios anteriores y que ahora necesitan responder una pregunta acotada sobre la seguridad y la resiliencia de la infraestructura crítica —salud, energía, agua, transporte, comunicaciones, finanzas y servicios públicos— con evidencia que otra persona pueda comprobar. Conocimientos de entrada: el contenido previsto para los programas de [ingeniería](../../../../engineering-5-years/critical-sector-security/en/book/PLAN.md) o de [grado](../../../../bachelors-4-years/critical-sector-security/en/book/PLAN.md) de esta área (todavía esquemas en el momento de redactar), o experiencia profesional equivalente, además de estadística introductoria (medias, varianza, intervalos de confianza, regresión lineal) y la capacidad de ejecutar un script breve de Python.
 - Relación con el curso doctoral: el [libro doctoral de esta área](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) pide al investigador que haga y defienda una contribución *original*: un método nuevo, validado de forma independiente, con un programa de publicaciones. Este libro de maestría pide algo distinto y anterior: **diseñar, pilotar y ejecutar bien un estudio empírico con revisión ética**, informar exactamente lo que puede y lo que no puede mostrar y defenderlo ante un tribunal. Donde el libro doctoral construye simulaciones y replica líneas base, este libro trabaja sobre todo con datos observacionales, diseños cuasiexperimentales y entrevistas, porque eso es a lo que pueden acceder la mayoría de los proyectos de maestría de este campo.
 - Autoría y responsabilidad editorial: [hiagokinlevi](https://github.com/hiagokinlevi). El texto didáctico original del mantenedor se dedica bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus propios derechos y no se relicencian aquí.
@@ -55,6 +55,71 @@ Los [resultados resueltos](#worked-results) contienen EX001–EX050. Un [glosari
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pregunta de investigación y método de revisión de la literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 Del tema al problema y a la pregunta"]
+  N2["1.2 El estimando: diga exactamente qué número produc"]
+  N3["1.3 Para qué sirve una revisión de la literatura"]
+  N4["1.4 Buscar entre disciplinas"]
+  N5["1.5 De los registros a los estudios incluidos"]
+  N6["1.6 Síntesis por concepto, no por autor"]
+  N7["1.7 Leer un estudio por su diseño, no solo por sus h"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 Del tema al problema y a la pregunta"]
+  N2["1.2 El estimando: diga exactamente qué número produc"]
+  N3["1.3 Para qué sirve una revisión de la literatura"]
+  N4["1.4 Buscar entre disciplinas"]
+  N5["1.5 De los registros a los estudios incluidos"]
+  N6["1.6 Síntesis por concepto, no por autor"]
+  N7["1.7 Leer un estudio por su diseño, no solo por sus h"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[1.1 Del tema al problema y a la pregunta]
+    |
+    v
+[1.2 El estimando: diga exactamente qué número produc]
+    |
+    v
+[1.3 Para qué sirve una revisión de la literatura]
+    |
+    v
+[1.4 Buscar entre disciplinas]
+    |
+    v
+[1.5 De los registros a los estudios incluidos]
+    |
+    v
+[1.6 Síntesis por concepto, no por autor]
+    |
+    v
+[1.7 Leer un estudio por su diseño, no solo por sus h]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -345,6 +410,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 2 — Infraestructura crítica y seguridad sectorial: seminario avanzado
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 Para qué sirve el seminario"]
+  N2["2.2 Perfiles sectoriales"]
+  N3["2.3 Cómo los incidentes sectoriales se vuelven regio"]
+  N4["2.4 Los catálogos públicos de incidentes son muestra"]
+  N5["2.5 Cuando se revisa el primer relato"]
+  N6["2.6 Leer un artículo sectorial: un seminario resuelt"]
+  N7["2.7 Presentar en el seminario"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX008"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 Para qué sirve el seminario"]
+  N2["2.2 Perfiles sectoriales"]
+  N3["2.3 Cómo los incidentes sectoriales se vuelven regio"]
+  N4["2.4 Los catálogos públicos de incidentes son muestra"]
+  N5["2.5 Cuando se revisa el primer relato"]
+  N6["2.6 Leer un artículo sectorial: un seminario resuelt"]
+  N7["2.7 Presentar en el seminario"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[2.1 Para qué sirve el seminario]
+    |
+    v
+[2.2 Perfiles sectoriales]
+    |
+    v
+[2.3 Cómo los incidentes sectoriales se vuelven regio]
+    |
+    v
+[2.4 Los catálogos públicos de incidentes son muestra]
+    |
+    v
+[2.5 Cuando se revisa el primer relato]
+    |
+    v
+[2.6 Leer un artículo sectorial: un seminario resuelt]
+    |
+    v
+[2.7 Presentar en el seminario]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al final de este capítulo, el estudiante será capaz de:
@@ -556,6 +686,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 Diseños para un evento que nadie asignó"]
+  N2["3.2 Amenazas a la validez"]
+  N3["3.3 Análisis del diseño antes de los datos"]
+  N4["3.4 Revisión ética"]
+  N5["3.5 Acuerdos de datos y plan de gestión de datos"]
+  N6["3.6 Un proyecto reproducible desde el primer día"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX015"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 Diseños para un evento que nadie asignó"]
+  N2["3.2 Amenazas a la validez"]
+  N3["3.3 Análisis del diseño antes de los datos"]
+  N4["3.4 Revisión ética"]
+  N5["3.5 Acuerdos de datos y plan de gestión de datos"]
+  N6["3.6 Un proyecto reproducible desde el primer día"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[3.1 Diseños para un evento que nadie asignó]
+    |
+    v
+[3.2 Amenazas a la validez]
+    |
+    v
+[3.3 Análisis del diseño antes de los datos]
+    |
+    v
+[3.4 Revisión ética]
+    |
+    v
+[3.5 Acuerdos de datos y plan de gestión de datos]
+    |
+    v
+[3.6 Un proyecto reproducible desde el primer día]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -846,6 +1041,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 4 — Infraestructura crítica y seguridad sectorial: explicaciones en competencia
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Hipótesis de trabajo múltiples e inferencia fuer"]
+  N2["4.2 Qué predice la hipótesis del desbordamiento"]
+  N3["4.3 Rivales en el Estudio de Desbordamiento"]
+  N4["4.4 Diagramas causales"]
+  N5["4.5 Herramientas discriminantes y sus supuestos"]
+  N6["4.6 Explicaciones en competencia en casos documentad"]
+  N7["4.8 Actividad práctica: la estación que parecía desb"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX021"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Hipótesis de trabajo múltiples e inferencia fuer"]
+  N2["4.2 Qué predice la hipótesis del desbordamiento"]
+  N3["4.3 Rivales en el Estudio de Desbordamiento"]
+  N4["4.4 Diagramas causales"]
+  N5["4.5 Herramientas discriminantes y sus supuestos"]
+  N6["4.6 Explicaciones en competencia en casos documentad"]
+  N7["4.8 Actividad práctica: la estación que parecía desb"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[4.1 Hipótesis de trabajo múltiples e inferencia fuer]
+    |
+    v
+[4.2 Qué predice la hipótesis del desbordamiento]
+    |
+    v
+[4.3 Rivales en el Estudio de Desbordamiento]
+    |
+    v
+[4.4 Diagramas causales]
+    |
+    v
+[4.5 Herramientas discriminantes y sus supuestos]
+    |
+    v
+[4.6 Explicaciones en competencia en casos documentad]
+    |
+    v
+[4.8 Actividad práctica: la estación que parecía desb]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al final de este capítulo, el estudiante será capaz de:
@@ -1091,6 +1351,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Propuesta y piloto
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 La propuesta como contrato"]
+  N2["5.2 Calendario y ruta crítica"]
+  N3["5.3 El registro de riesgos"]
+  N4["5.4 Pedir datos a los custodios"]
+  N5["5.5 Para qué sirve un piloto"]
+  N6["5.6 Criterios de progresión"]
+  N7["5.7 Actividad práctica: auditar el extracto del pilo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX027"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 La propuesta como contrato"]
+  N2["5.2 Calendario y ruta crítica"]
+  N3["5.3 El registro de riesgos"]
+  N4["5.4 Pedir datos a los custodios"]
+  N5["5.5 Para qué sirve un piloto"]
+  N6["5.6 Criterios de progresión"]
+  N7["5.7 Actividad práctica: auditar el extracto del pilo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[5.1 La propuesta como contrato]
+    |
+    v
+[5.2 Calendario y ruta crítica]
+    |
+    v
+[5.3 El registro de riesgos]
+    |
+    v
+[5.4 Pedir datos a los custodios]
+    |
+    v
+[5.5 Para qué sirve un piloto]
+    |
+    v
+[5.6 Criterios de progresión]
+    |
+    v
+[5.7 Actividad práctica: auditar el extracto del pilo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1360,6 +1685,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 6 — Recogida y análisis de datos
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 Recoger datos con linaje"]
+  N2["6.2 El modelo de serie temporal interrumpida control"]
+  N3["6.3 Autocorrelación e intervalos robustos"]
+  N4["6.4 Las ventanas placebo como evidencia"]
+  N5["6.5 Actividad práctica: el análisis cuantitativo pri"]
+  N6["6.6 La vertiente cualitativa"]
+  N7["6.7 Integración: la presentación conjunta"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX034"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 Recoger datos con linaje"]
+  N2["6.2 El modelo de serie temporal interrumpida control"]
+  N3["6.3 Autocorrelación e intervalos robustos"]
+  N4["6.4 Las ventanas placebo como evidencia"]
+  N5["6.5 Actividad práctica: el análisis cuantitativo pri"]
+  N6["6.6 La vertiente cualitativa"]
+  N7["6.7 Integración: la presentación conjunta"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[6.1 Recoger datos con linaje]
+    |
+    v
+[6.2 El modelo de serie temporal interrumpida control]
+    |
+    v
+[6.3 Autocorrelación e intervalos robustos]
+    |
+    v
+[6.4 Las ventanas placebo como evidencia]
+    |
+    v
+[6.5 Actividad práctica: el análisis cuantitativo pri]
+    |
+    v
+[6.6 La vertiente cualitativa]
+    |
+    v
+[6.7 Integración: la presentación conjunta]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al final de este capítulo, el estudiante será capaz de:
@@ -1603,6 +1993,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 7 — Redacción de la tesis y limitaciones
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 Estructura: una función por capítulo"]
+  N2["7.2 El argumento y el registro de resultados y afirm"]
+  N3["7.3 Comunicar los resultados con honestidad"]
+  N4["7.4 Procedencia de las cifras"]
+  N5["7.5 Las guías de comunicación como listas de comprob"]
+  N6["7.6 Limitaciones con dirección"]
+  N7["7.7 Figuras y tablas accesibles"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX039"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 Estructura: una función por capítulo"]
+  N2["7.2 El argumento y el registro de resultados y afirm"]
+  N3["7.3 Comunicar los resultados con honestidad"]
+  N4["7.4 Procedencia de las cifras"]
+  N5["7.5 Las guías de comunicación como listas de comprob"]
+  N6["7.6 Limitaciones con dirección"]
+  N7["7.7 Figuras y tablas accesibles"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[7.1 Estructura: una función por capítulo]
+    |
+    v
+[7.2 El argumento y el registro de resultados y afirm]
+    |
+    v
+[7.3 Comunicar los resultados con honestidad]
+    |
+    v
+[7.4 Procedencia de las cifras]
+    |
+    v
+[7.5 Las guías de comunicación como listas de comprob]
+    |
+    v
+[7.6 Limitaciones con dirección]
+    |
+    v
+[7.7 Figuras y tablas accesibles]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al final de este capítulo, el estudiante será capaz de:
@@ -1808,6 +2263,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisión independiente y defensa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 Cómo leen los examinadores"]
+  N2["8.2 Familias de preguntas"]
+  N3["8.3 «¿Y si hubiera elegido de otro modo?»: la curva"]
+  N4["8.4 Preparar la defensa"]
+  N5["8.5 Después de la defensa: correcciones"]
+  N6["8.6 Compartir los resultados con responsabilidad"]
+  N7["8.8 Próximos pasos después de la maestría"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX045"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 Cómo leen los examinadores"]
+  N2["8.2 Familias de preguntas"]
+  N3["8.3 «¿Y si hubiera elegido de otro modo?»: la curva"]
+  N4["8.4 Preparar la defensa"]
+  N5["8.5 Después de la defensa: correcciones"]
+  N6["8.6 Compartir los resultados con responsabilidad"]
+  N7["8.8 Próximos pasos después de la maestría"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[8.1 Cómo leen los examinadores]
+    |
+    v
+[8.2 Familias de preguntas]
+    |
+    v
+[8.3 «¿Y si hubiera elegido de otro modo?»: la curva]
+    |
+    v
+[8.4 Preparar la defensa]
+    |
+    v
+[8.5 Después de la defensa: correcciones]
+    |
+    v
+[8.6 Compartir los resultados con responsabilidad]
+    |
+    v
+[8.8 Próximos pasos después de la maestría]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Resultados de aprendizaje y conexión
 

@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 167, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que avaliam como uma mudança na política de segurança afeta o comportamento e a carga de trabalho dos funcionários.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios ajustam uma série temporal interrompida, calculam um intervalo bootstrap para uma diferença de questionário e executam uma verificação deixando um mês de fora, sempre sobre dados sintéticos; nenhum funcionário, senha ou conta real está envolvido. Os questionários descritos aqui nunca pedem senhas e são anônimos. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,56 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Do problema à pergunta"]
+  N1["1.2 Por que a pergunta importa"]
+  N2["1.3 Uma busca estruturada"]
+  N3["1.4 O que a busca encontrou"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Do problema à pergunta"]
+  N1["1.2 Por que a pergunta importa"]
+  N2["1.3 Uma busca estruturada"]
+  N3["1.4 O que a busca encontrou"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 Do problema à pergunta]
+    |
+    v
+[1.2 Por que a pergunta importa]
+    |
+    v
+[1.3 Uma busca estruturada]
+    |
+    v
+[1.4 O que a busca encontrou]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -93,6 +143,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Fatores humanos e política cibernética: seminário avançado
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Teorias do comportamento"]
+  N1["2.2 Aplicar os modelos"]
+  N2["2.3 Crítica"]
+  N3["2.4 Relevância para políticas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Teorias do comportamento"]
+  N1["2.2 Aplicar os modelos"]
+  N2["2.3 Crítica"]
+  N3["2.4 Relevância para políticas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[2.1 Teorias do comportamento]
+    |
+    v
+[2.2 Aplicar os modelos]
+    |
+    v
+[2.3 Crítica]
+    |
+    v
+[2.4 Relevância para políticas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) criticar as principais teorias de fatores humanos; (2) comparar modelos comportamentais aplicados à segurança; (3) aplicá-los à mudança na política de senhas do hospital.
@@ -149,6 +249,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Métodos mistos"]
+  N1["3.2 Aprovação ética"]
+  N2["3.3 Riscos do autorrelato"]
+  N3["3.4 Plano de reprodutibilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Métodos mistos"]
+  N1["3.2 Aprovação ética"]
+  N2["3.3 Riscos do autorrelato"]
+  N3["3.4 Plano de reprodutibilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
+```
+
+```text
+[3.1 Métodos mistos]
+    |
+    v
+[3.2 Aprovação ética]
+    |
+    v
+[3.3 Riscos do autorrelato]
+    |
+    v
+[3.4 Plano de reprodutibilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar um estudo de métodos mistos sobre uma mudança de política; (2) obter aprovação ética para pesquisa com funcionários; (3) planejar a reprodutibilidade.
@@ -203,6 +353,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Fatores humanos e política cibernética: explicações concorrentes
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Explicações possíveis"]
+  N1["4.2 Verificações para cada uma"]
+  N2["Laboratório — Série temporal interrompida das redefi"]
+  N3["4.3 O que as verificações mostram"]
+  N4["4.4 Decidir o que é sustentado"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Explicações possíveis"]
+  N1["4.2 Verificações para cada uma"]
+  N2["Laboratório — Série temporal interrompida das redefi"]
+  N3["4.3 O que as verificações mostram"]
+  N4["4.4 Decidir o que é sustentado"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[4.1 Explicações possíveis]
+    |
+    v
+[4.2 Verificações para cada uma]
+    |
+    v
+[Laboratório — Série temporal interrompida das redefi]
+    |
+    v
+[4.3 O que as verificações mostram]
+    |
+    v
+[4.4 Decidir o que é sustentado]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -285,6 +490,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Proposta e piloto
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 A proposta"]
+  N1["5.2 Piloto do questionário"]
+  N2["5.3 Piloto das entrevistas"]
+  N3["5.4 Registrar as revisões"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 A proposta"]
+  N1["5.2 Piloto do questionário"]
+  N2["5.3 Piloto das entrevistas"]
+  N3["5.4 Registrar as revisões"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[5.1 A proposta]
+    |
+    v
+[5.2 Piloto do questionário]
+    |
+    v
+[5.3 Piloto das entrevistas]
+    |
+    v
+[5.4 Registrar as revisões]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma proposta de dissertação; (2) testar em piloto o questionário e o roteiro de entrevista; (3) revisar os instrumentos com base nas evidências do piloto.
@@ -339,6 +594,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Coletar os dados"]
+  N1["6.2 Analisar a mudança no questionário"]
+  N2["Laboratório — Intervalo bootstrap para a mudança na"]
+  N3["6.3 Codificar as entrevistas"]
+  N4["6.4 Reunir os resultados"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Coletar os dados"]
+  N1["6.2 Analisar a mudança no questionário"]
+  N2["Laboratório — Intervalo bootstrap para a mudança na"]
+  N3["6.3 Codificar as entrevistas"]
+  N4["6.4 Reunir os resultados"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[6.1 Coletar os dados]
+    |
+    v
+[6.2 Analisar a mudança no questionário]
+    |
+    v
+[Laboratório — Intervalo bootstrap para a mudança na]
+    |
+    v
+[6.3 Codificar as entrevistas]
+    |
+    v
+[6.4 Reunir os resultados]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -420,6 +730,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estrutura"]
+  N1["7.2 Robustez"]
+  N2["Laboratório — Verificação deixando um mês de fora na"]
+  N3["7.3 Limitações úteis"]
+  N4["7.4 Implicações"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estrutura"]
+  N1["7.2 Robustez"]
+  N2["Laboratório — Verificação deixando um mês de fora na"]
+  N3["7.3 Limitações úteis"]
+  N4["7.4 Implicações"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[7.1 Estrutura]
+    |
+    v
+[7.2 Robustez]
+    |
+    v
+[Laboratório — Verificação deixando um mês de fora na]
+    |
+    v
+[7.3 Limitações úteis]
+    |
+    v
+[7.4 Implicações]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação capítulo a capítulo; (2) escrever limitações que informem, em vez de servir de desculpa; (3) testar a robustez do resultado principal.
@@ -500,6 +865,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 Compartilhar com o hospital"]
+  N3["8.4 Depois do diploma"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 Compartilhar com o hospital"]
+  N3["8.4 Depois do diploma"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
+```
+
+```text
+[8.1 Revisão independente]
+    |
+    v
+[8.2 A defesa]
+    |
+    v
+[8.3 Compartilhar com o hospital]
+    |
+    v
+[8.4 Depois do diploma]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

@@ -1,7 +1,7 @@
 # Quantum and Post-Quantum Security: Specialist Practice for Organization-Scale Decisions
 
 - Language: English (`en`); postgraduate specialist course, two years part-time; approximately 600 hours of planned study.
-- Editorial state: **draft**. Chapters 1–12 of 12 have authored teaching text; exercises EX001–EX060 (five per chapter) have matching worked results; offline labs use the Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–12 of 12 have authored teaching text; exercises EX001–EX060 (five per chapter) have matching worked results; offline labs use the Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: experienced security specialists — architects, PKI and network leads, risk and assurance managers — who already know classical cryptography and enterprise operations and must now lead post-quantum migration in a large organization. Entry knowledge: a prior degree or equivalent professional experience in security.
 - Relation to neighbouring books: the [bachelor's book](../../../../bachelors-4-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) builds foundations and the [engineering book](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) designs and builds migrations; the [master's book](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) studies them as research. **This book is about specialist practice: deciding, justifying, integrating and assuring migration at organization scale.** It assumes the mathematics and concentrates on judgment under uncertainty, evidence standards and leadership.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -35,6 +35,71 @@ Primary sources were checked on 12 October 2026: NIST FIPS 203/204/205 (August 2
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Deep uncertainty"]
+  N2["1.2 Three decision rules"]
+  N3["1.3 Models encode values"]
+  N4["1.4 Practical activity — Lab D"]
+  N5["1.5 Buying information"]
+  N6["1.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Deep uncertainty"]
+  N2["1.2 Three decision rules"]
+  N3["1.3 Models encode values"]
+  N4["1.4 Practical activity — Lab D"]
+  N5["1.5 Buying information"]
+  N6["1.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Deep uncertainty]
+    |
+    v
+[1.2 Three decision rules]
+    |
+    v
+[1.3 Models encode values]
+    |
+    v
+[1.4 Practical activity — Lab D]
+    |
+    v
+[1.5 Buying information]
+    |
+    v
+[1.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -122,6 +187,66 @@ Quantum migration decisions are made under deep uncertainty. Robust and regret-b
 
 ## Chapter 2 — Quantum and post-quantum security: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Standards"]
+  N2["2.2 Transition guidance"]
+  N3["2.3 Deployment"]
+  N4["2.4 Worked case"]
+  N5["2.5 Practice task"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Standards"]
+  N2["2.2 Transition guidance"]
+  N3["2.3 Deployment"]
+  N4["2.4 Worked case"]
+  N5["2.5 Practice task"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Standards]
+    |
+    v
+[2.2 Transition guidance]
+    |
+    v
+[2.3 Deployment]
+    |
+    v
+[2.4 Worked case]
+    |
+    v
+[2.5 Practice task]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) summarise the state of standards, guidance and deployment as of the source date; (2) distinguish final, draft and in-development documents; (3) describe how hybrid key exchange reached large-scale deployment; (4) evaluate national and sector guidance for applicability; and (5) maintain a living "state of practice" brief for an organization.
@@ -177,6 +302,71 @@ Current practice combines final standards, draft transition guidance and uneven 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Quantum and post-quantum security: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Inventory as a programme"]
+  N2["3.2 Evidence grading"]
+  N3["3.3 Practical activity — Lab I"]
+  N4["3.4 Supplier evidence"]
+  N5["3.5 Presenting evidence"]
+  N6["3.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Inventory as a programme"]
+  N2["3.2 Evidence grading"]
+  N3["3.3 Practical activity — Lab I"]
+  N4["3.4 Supplier evidence"]
+  N5["3.5 Presenting evidence"]
+  N6["3.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Inventory as a programme]
+    |
+    v
+[3.2 Evidence grading]
+    |
+    v
+[3.3 Practical activity — Lab I]
+    |
+    v
+[3.4 Supplier evidence]
+    |
+    v
+[3.5 Presenting evidence]
+    |
+    v
+[3.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -270,6 +460,71 @@ Specialist evidence is graded, dated and supplier-aware. Coverage and the unknow
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Latent, irreversible risk"]
+  N2["4.2 Forge-later and systemic risk"]
+  N3["4.3 Obligations to data subjects"]
+  N4["4.4 Dual use and disclosure"]
+  N5["4.5 Residual-risk acceptance"]
+  N6["4.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Latent, irreversible risk"]
+  N2["4.2 Forge-later and systemic risk"]
+  N3["4.3 Obligations to data subjects"]
+  N4["4.4 Dual use and disclosure"]
+  N5["4.5 Residual-risk acceptance"]
+  N6["4.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Latent, irreversible risk]
+    |
+    v
+[4.2 Forge-later and systemic risk]
+    |
+    v
+[4.3 Obligations to data subjects]
+    |
+    v
+[4.4 Dual use and disclosure]
+    |
+    v
+[4.5 Residual-risk acceptance]
+    |
+    v
+[4.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) quantify quantum risk with scenario-based exposure measures; (2) handle risks with long latency and irreversible harm; (3) analyse ethical obligations to data subjects whose harm outlives the organization's horizon; (4) navigate dual-use and disclosure questions at specialist level; and (5) document residual risk acceptance properly.
@@ -335,6 +590,66 @@ Quantum risk is latent, irreversible and sometimes systemic. Specialists express
 <a id="ch-05"></a>
 
 ## Chapter 5 — Quantum and post-quantum security: design alternatives
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Key-establishment alternatives"]
+  N2["5.2 Authentication alternatives"]
+  N3["5.3 Practical activity — Lab B"]
+  N4["5.4 Parameter policy"]
+  N5["5.5 Worked case"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Key-establishment alternatives"]
+  N2["5.2 Authentication alternatives"]
+  N3["5.3 Practical activity — Lab B"]
+  N4["5.4 Parameter policy"]
+  N5["5.5 Worked case"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Key-establishment alternatives]
+    |
+    v
+[5.2 Authentication alternatives]
+    |
+    v
+[5.3 Practical activity — Lab B]
+    |
+    v
+[5.4 Parameter policy]
+    |
+    v
+[5.5 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -418,6 +733,71 @@ Design alternatives span hybrid, pure, PSK-augmented and minimization approaches
 <a id="ch-06"></a>
 
 ## Chapter 6 — Quantum and post-quantum security: controlled evaluation
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Evaluation questions"]
+  N2["6.2 Thresholds before data"]
+  N3["6.3 Practical activity — Lab K"]
+  N4["6.4 Interoperability matrices"]
+  N5["6.5 Validity"]
+  N6["6.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Evaluation questions"]
+  N2["6.2 Thresholds before data"]
+  N3["6.3 Practical activity — Lab K"]
+  N4["6.4 Interoperability matrices"]
+  N5["6.5 Validity"]
+  N6["6.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Evaluation questions]
+    |
+    v
+[6.2 Thresholds before data]
+    |
+    v
+[6.3 Practical activity — Lab K]
+    |
+    v
+[6.4 Interoperability matrices]
+    |
+    v
+[6.5 Validity]
+    |
+    v
+[6.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -506,6 +886,71 @@ Controlled evaluation fixes thresholds in advance, uses confidence bounds, maps 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Quantum and post-quantum security: organizational integration
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Not a project, a capability"]
+  N2["7.2 Policy-driven platforms"]
+  N3["7.3 Practical activity — Lab A"]
+  N4["7.4 Governance and decision rights"]
+  N5["7.5 Refresh cycles and budget"]
+  N6["7.6 Measuring progress"]
+  N7["7.7 Worked case"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Not a project, a capability"]
+  N2["7.2 Policy-driven platforms"]
+  N3["7.3 Practical activity — Lab A"]
+  N4["7.4 Governance and decision rights"]
+  N5["7.5 Refresh cycles and budget"]
+  N6["7.6 Measuring progress"]
+  N7["7.7 Worked case"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Not a project, a capability]
+    |
+    v
+[7.2 Policy-driven platforms]
+    |
+    v
+[7.3 Practical activity — Lab A]
+    |
+    v
+[7.4 Governance and decision rights]
+    |
+    v
+[7.5 Refresh cycles and budget]
+    |
+    v
+[7.6 Measuring progress]
+    |
+    v
+[7.7 Worked case]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -610,6 +1055,71 @@ Integration turns migration into an organizational capability: policy-driven pla
 
 ## Chapter 8 — Quantum and post-quantum security: difficult cases
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Medical and embedded devices"]
+  N2["8.2 Internal PKI"]
+  N3["8.3 Stateful hash-based signatures"]
+  N4["8.4 Long-term signatures and archives"]
+  N5["8.5 Algorithm-break response"]
+  N6["8.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Medical and embedded devices"]
+  N2["8.2 Internal PKI"]
+  N3["8.3 Stateful hash-based signatures"]
+  N4["8.4 Long-term signatures and archives"]
+  N5["8.5 Algorithm-break response"]
+  N6["8.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Medical and embedded devices]
+    |
+    v
+[8.2 Internal PKI]
+    |
+    v
+[8.3 Stateful hash-based signatures]
+    |
+    v
+[8.4 Long-term signatures and archives]
+    |
+    v
+[8.5 Algorithm-break response]
+    |
+    v
+[8.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse migrations involving medical and embedded devices, internal PKI, long-term archives and third parties; (2) apply compensating controls where migration is impossible; (3) manage stateful hash-based signatures; (4) plan long-term signature validity; and (5) reason about algorithm-break response.
@@ -677,6 +1187,71 @@ Difficult cases — devices, PKI, stateful signatures, archives and algorithm br
 <a id="ch-09"></a>
 
 ## Chapter 9 — Quantum and post-quantum security: leadership and assurance
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Programme leadership"]
+  N2["9.2 Three lines of assurance"]
+  N3["9.3 Evidence for auditors and regulators"]
+  N4["9.4 Communication"]
+  N5["9.5 Sustaining"]
+  N6["9.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Programme leadership"]
+  N2["9.2 Three lines of assurance"]
+  N3["9.3 Evidence for auditors and regulators"]
+  N4["9.4 Communication"]
+  N5["9.5 Sustaining"]
+  N6["9.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Programme leadership]
+    |
+    v
+[9.2 Three lines of assurance]
+    |
+    v
+[9.3 Evidence for auditors and regulators]
+    |
+    v
+[9.4 Communication]
+    |
+    v
+[9.5 Sustaining]
+    |
+    v
+[9.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -746,6 +1321,71 @@ Leadership keeps a multi-year programme aligned with evidence; assurance re-obse
 
 ## Chapter 10 — Research reading and critique
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Reading cryptanalysis"]
+  N2["10.2 Reading resource estimates"]
+  N3["10.3 Reading deployment studies"]
+  N4["10.4 Preprints and vendor research"]
+  N5["10.5 Structured critique"]
+  N6["10.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Reading cryptanalysis"]
+  N2["10.2 Reading resource estimates"]
+  N3["10.3 Reading deployment studies"]
+  N4["10.4 Preprints and vendor research"]
+  N5["10.5 Structured critique"]
+  N6["10.6 Worked case"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Reading cryptanalysis]
+    |
+    v
+[10.2 Reading resource estimates]
+    |
+    v
+[10.3 Reading deployment studies]
+    |
+    v
+[10.4 Preprints and vendor research]
+    |
+    v
+[10.5 Structured critique]
+    |
+    v
+[10.6 Worked case]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) read cryptanalysis, resource-estimate and deployment papers critically; (2) extract assumptions and evaluate their realism; (3) judge preprints and vendor research appropriately; (4) translate research into practice implications; and (5) write a structured critique.
@@ -813,6 +1453,71 @@ Specialists read research for its assumptions and applicability, weigh sources b
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Project types"]
+  N2["11.2 Scoping with a sponsor"]
+  N3["11.3 Deliverables"]
+  N4["11.4 Data protection"]
+  N5["11.5 Impact evaluation"]
+  N6["11.6 Worked case"]
+  N7["11.8 Working with resistance"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Project types"]
+  N2["11.2 Scoping with a sponsor"]
+  N3["11.3 Deliverables"]
+  N4["11.4 Data protection"]
+  N5["11.5 Impact evaluation"]
+  N6["11.6 Worked case"]
+  N7["11.8 Working with resistance"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Project types]
+    |
+    v
+[11.2 Scoping with a sponsor]
+    |
+    v
+[11.3 Deliverables]
+    |
+    v
+[11.4 Data protection]
+    |
+    v
+[11.5 Impact evaluation]
+    |
+    v
+[11.6 Worked case]
+    |
+    v
+[11.8 Working with resistance]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -885,6 +1590,71 @@ Applied projects support real decisions, deliver usable artefacts under proper a
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio review"]
+  N2["12.2 Defence"]
+  N3["12.3 Transfer"]
+  N4["12.4 Continuing development"]
+  N5["12.5 Legacy"]
+  N6["12.6 Worked case"]
+  N7["12.8 Reflecting on judgment"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio review"]
+  N2["12.2 Defence"]
+  N3["12.3 Transfer"]
+  N4["12.4 Continuing development"]
+  N5["12.5 Legacy"]
+  N6["12.6 Worked case"]
+  N7["12.8 Reflecting on judgment"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Portfolio review]
+    |
+    v
+[12.2 Defence]
+    |
+    v
+[12.3 Transfer]
+    |
+    v
+[12.4 Continuing development]
+    |
+    v
+[12.5 Legacy]
+    |
+    v
+[12.6 Worked case]
+    |
+    v
+[12.8 Reflecting on judgment]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

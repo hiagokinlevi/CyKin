@@ -1,7 +1,7 @@
 # Privacy and Data Protection: Rapid Course
 
 - Language: English (`en`); course 004, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and its output is embedded from a real run. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and its output is embedded from a real run. Independent review and the 300-page A4 verification remain open.
 - Audience: beginners who need a fast, practical start in privacy and data protection for a small business.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab compares fields a synthetic pharmacy loyalty app collects with the fields its stated purposes need. Legal analysis is teaching, not legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ Regulation (EU) 2016/679 (GDPR) Articles 4(1), 5, 9 and 28; Lei 13.709/2018 (LGP
 <a id="ch-01"></a>
 
 ## Chapter 1 — Privacy and data protection: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The course and the case"]
+  N2["1.2 What counts as personal data"]
+  N3["1.3 Special categories"]
+  N4["1.4 The principles"]
+  N5["1.5 A first decision"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The course and the case"]
+  N2["1.2 What counts as personal data"]
+  N3["1.3 Special categories"]
+  N4["1.4 The principles"]
+  N5["1.5 A first decision"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The course and the case]
+    |
+    v
+[1.2 What counts as personal data]
+    |
+    v
+[1.3 Special categories]
+    |
+    v
+[1.4 The principles]
+    |
+    v
+[1.5 A first decision]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -99,6 +154,61 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Agreeing the scope"]
+  N2["2.2 Safe handling during review"]
+  N3["2.3 When asked to go further"]
+  N4["2.4 Reporting problems"]
+  N5["2.5 Respecting staff"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Agreeing the scope"]
+  N2["2.2 Safe handling during review"]
+  N3["2.3 When asked to go further"]
+  N4["2.4 Reporting problems"]
+  N5["2.5 Respecting staff"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Agreeing the scope]
+    |
+    v
+[2.2 Safe handling during review]
+    |
+    v
+[2.3 When asked to go further]
+    |
+    v
+[2.4 Reporting problems]
+    |
+    v
+[2.5 Respecting staff]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) work within agreed permission when reviewing privacy; (2) handle customer data safely during a review; (3) report problems through the right channel.
@@ -161,6 +271,61 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Privacy and data protection: systems, data and dependencies
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Mapping the systems"]
+  N2["3.2 Following the flows"]
+  N3["3.3 Vendors and dependencies"]
+  N4["3.4 Lawful bases"]
+  N5["3.5 Retention"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Mapping the systems"]
+  N2["3.2 Following the flows"]
+  N3["3.3 Vendors and dependencies"]
+  N4["3.4 Lawful bases"]
+  N5["3.5 Retention"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Mapping the systems]
+    |
+    v
+[3.2 Following the flows]
+    |
+    v
+[3.3 Vendors and dependencies]
+    |
+    v
+[3.4 Lawful bases]
+    |
+    v
+[3.5 Retention]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) map Juniper's systems and data flows; (2) identify vendors and dependencies; (3) note lawful bases and retention.
@@ -221,6 +386,66 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Privacy and data protection: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The guided lab"]
+  N2["4.2 Interpreting the lab"]
+  N3["4.3 A short plan"]
+  N4["4.4 Presenting to the owner"]
+  N5["4.5 Checking and next steps"]
+  N6["Lab — Loyalty app fields versus stated purposes"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The guided lab"]
+  N2["4.2 Interpreting the lab"]
+  N3["4.3 A short plan"]
+  N4["4.4 Presenting to the owner"]
+  N5["4.5 Checking and next steps"]
+  N6["Lab — Loyalty app fields versus stated purposes"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The guided lab]
+    |
+    v
+[4.2 Interpreting the lab]
+    |
+    v
+[4.3 A short plan]
+    |
+    v
+[4.4 Presenting to the owner]
+    |
+    v
+[4.5 Checking and next steps]
+    |
+    v
+[Lab — Loyalty app fields versus stated purposes]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

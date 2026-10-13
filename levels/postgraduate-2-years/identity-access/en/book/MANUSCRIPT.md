@@ -1,7 +1,7 @@
 # Identity and Access Management: Postgraduate Specialisation
 
 - Language: English (`en`); course 148, Postgraduate specialisation (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: practitioners and postgraduates who lead privileged access and identity decisions in organisations.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only identity systems and accounts you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic accounts, entitlements, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,61 @@ NIST [SP 800-63-4](https://doi.org/10.6028/NIST.SP.800-63-4), [SP 800-63B-4](htt
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Decisions under uncertainty"]
+  N3["1.3 Weighing risk, cost and disruption"]
+  N4["1.4 Recording the reasoning"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Decisions under uncertainty"]
+  N3["1.3 Weighing risk, cost and disruption"]
+  N4["1.4 Recording the reasoning"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Decisions under uncertainty]
+    |
+    v
+[1.3 Weighing risk, cost and disruption]
+    |
+    v
+[1.4 Recording the reasoning]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -88,6 +143,56 @@ Good security decisions name options, weigh risk, cost and disruption openly and
 
 ## Chapter 2 — Identity and access management: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What privileged access means"]
+  N2["2.2 Common practices"]
+  N3["2.3 Corran against practice"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What privileged access means"]
+  N2["2.2 Common practices"]
+  N3["2.3 Corran against practice"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What privileged access means]
+    |
+    v
+[2.2 Common practices]
+    |
+    v
+[2.3 Corran against practice]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) describe current practice in privileged access management; (2) relate it to published guidance; (3) assess Corran against it.
@@ -137,6 +242,61 @@ Current practice separates, strengthens, limits and monitors privileged access; 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Identity and access management: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Measuring standing privilege"]
+  N2["Lab — Standing versus just-in-time"]
+  N3["3.2 Reading the result"]
+  N4["3.3 Interpreting carefully"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Measuring standing privilege"]
+  N2["Lab — Standing versus just-in-time"]
+  N3["3.2 Reading the result"]
+  N4["3.3 Interpreting carefully"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Measuring standing privilege]
+    |
+    v
+[Lab — Standing versus just-in-time]
+    |
+    v
+[3.2 Reading the result]
+    |
+    v
+[3.3 Interpreting carefully]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -204,6 +364,61 @@ Measuring standing versus needed privilege reveals exposure that serves no purpo
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Risk assessment"]
+  N2["4.2 Monitoring administrators"]
+  N3["4.3 Accountability and trust"]
+  N4["4.4 Data protection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Risk assessment"]
+  N2["4.2 Monitoring administrators"]
+  N3["4.3 Accountability and trust"]
+  N4["4.4 Data protection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Risk assessment]
+    |
+    v
+[4.2 Monitoring administrators]
+    |
+    v
+[4.3 Accountability and trust]
+    |
+    v
+[4.4 Data protection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) assess privileged access risk with evidence; (2) consider ethical issues in monitoring administrators; (3) balance accountability with trust.
@@ -253,6 +468,61 @@ Evidence-based risk rating and transparent, purpose-limited monitoring balance a
 <a id="ch-05"></a>
 
 ## Chapter 5 — Identity and access management: design alternatives
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Three designs"]
+  N2["5.2 Criteria and weights"]
+  N3["Lab — Weighted scoring"]
+  N4["5.3 Reading the scores"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Three designs"]
+  N2["5.2 Criteria and weights"]
+  N3["Lab — Weighted scoring"]
+  N4["5.3 Reading the scores"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Three designs]
+    |
+    v
+[5.2 Criteria and weights]
+    |
+    v
+[Lab — Weighted scoring]
+    |
+    v
+[5.3 Reading the scores]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -322,6 +592,61 @@ Realistic alternatives, agreed weights and sensitivity analysis make design choi
 
 ## Chapter 6 — Identity and access management: controlled evaluation
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Pilot design"]
+  N2["6.2 Results"]
+  N3["Lab — Out-of-window activations"]
+  N4["6.3 Reviewing activations"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Pilot design"]
+  N2["6.2 Results"]
+  N3["Lab — Out-of-window activations"]
+  N4["6.3 Reviewing activations"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Pilot design]
+    |
+    v
+[6.2 Results]
+    |
+    v
+[Lab — Out-of-window activations]
+    |
+    v
+[6.3 Reviewing activations]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) pilot the chosen design with a controlled comparison; (2) measure outcomes against a baseline; (3) review out-of-window activations.
@@ -389,6 +714,61 @@ A controlled pilot with a comparison group and reviewed activations shows both t
 
 ## Chapter 7 — Identity and access management: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Change management"]
+  N2["7.2 HR and lifecycle"]
+  N3["7.3 Incident response"]
+  N4["7.4 Ownership and training"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Change management"]
+  N2["7.2 HR and lifecycle"]
+  N3["7.3 Incident response"]
+  N4["7.4 Ownership and training"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Change management]
+    |
+    v
+[7.2 HR and lifecycle]
+    |
+    v
+[7.3 Incident response]
+    |
+    v
+[7.4 Ownership and training]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate the privileged access design with change management, HR and incident response; (2) assign ownership; (3) train staff.
@@ -438,6 +818,61 @@ Linking privileged access to change, HR, incident response and clear owners embe
 <a id="ch-08"></a>
 
 ## Chapter 8 — Identity and access management: difficult cases
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Service accounts"]
+  N2["8.2 Third-party administrators"]
+  N3["8.3 Legacy systems"]
+  N4["8.4 Residual risk"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Service accounts"]
+  N2["8.2 Third-party administrators"]
+  N3["8.3 Legacy systems"]
+  N4["8.4 Residual risk"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Service accounts]
+    |
+    v
+[8.2 Third-party administrators]
+    |
+    v
+[8.3 Legacy systems]
+    |
+    v
+[8.4 Residual risk]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 
@@ -489,6 +924,61 @@ Service accounts, suppliers and legacy systems need tailored controls, explicit 
 
 ## Chapter 9 — Identity and access management: leadership and assurance
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Reporting to the board"]
+  N2["9.2 Assurance"]
+  N3["9.3 Answering the insurer"]
+  N4["9.4 Leadership lessons"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Reporting to the board"]
+  N2["9.2 Assurance"]
+  N3["9.3 Answering the insurer"]
+  N4["9.4 Leadership lessons"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Reporting to the board]
+    |
+    v
+[9.2 Assurance]
+    |
+    v
+[9.3 Answering the insurer]
+    |
+    v
+[9.4 Leadership lessons]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) report privileged access status to the board; (2) provide assurance with evidence; (3) answer an insurer's questions.
@@ -538,6 +1028,61 @@ Plain board reporting, evidenced assurance and accurate external answers make pr
 <a id="ch-10"></a>
 
 ## Chapter 10 — Research reading and critique
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Reading critically"]
+  N2["10.2 Evidence quality"]
+  N3["10.3 Connecting to practice"]
+  N4["10.4 Writing a critique"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Reading critically"]
+  N2["10.2 Evidence quality"]
+  N3["10.3 Connecting to practice"]
+  N4["10.4 Writing a critique"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Reading critically]
+    |
+    v
+[10.2 Evidence quality]
+    |
+    v
+[10.3 Connecting to practice]
+    |
+    v
+[10.4 Writing a critique]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -591,6 +1136,61 @@ Critical reading matches each kind of evidence to what it can support and connec
 
 ## Chapter 11 — Applied project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Rollout"]
+  N2["11.2 Outcomes"]
+  N3["11.3 Unexpected effects"]
+  N4["11.4 Documenting lessons"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Rollout"]
+  N2["11.2 Outcomes"]
+  N3["11.3 Unexpected effects"]
+  N4["11.4 Documenting lessons"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Rollout]
+    |
+    v
+[11.2 Outcomes]
+    |
+    v
+[11.3 Unexpected effects]
+    |
+    v
+[11.4 Documenting lessons]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) roll out the design across Corran; (2) measure outcomes against the baseline; (3) document lessons.
@@ -640,6 +1240,61 @@ A careful rollout with consistent measurement, honest side effects and evidenced
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Final review"]
+  N2["12.2 Transfer to Corran"]
+  N3["12.3 Sustaining the change"]
+  N4["12.4 Professional reflection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Final review"]
+  N2["12.2 Transfer to Corran"]
+  N3["12.3 Sustaining the change"]
+  N4["12.4 Professional reflection"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Final review]
+    |
+    v
+[12.2 Transfer to Corran]
+    |
+    v
+[12.3 Sustaining the change]
+    |
+    v
+[12.4 Professional reflection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

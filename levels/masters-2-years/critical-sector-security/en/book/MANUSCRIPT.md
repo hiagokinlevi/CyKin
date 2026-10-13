@@ -1,7 +1,7 @@
 # Critical Infrastructure and Sector Security: Applied Research Design and the Master's Dissertation
 
 - Language: English (`en`); master's course, two years; approximately 1,200 hours of planned study (course 184 of 207 in the [study path](../../../../../STUDY_PATH.md)).
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: beginning researchers who know the field from practice or earlier study and now need to answer one bounded question about the security and resilience of critical infrastructure — healthcare, energy, water, transport, communications, finance and public services — with evidence that another person could check. Entry knowledge: the content planned for the [engineering](../../../../engineering-5-years/critical-sector-security/en/book/PLAN.md) or [bachelor's](../../../../bachelors-4-years/critical-sector-security/en/book/PLAN.md) tracks in this area (still outlines at the time of writing), or equivalent professional experience, plus introductory statistics (means, variance, confidence intervals, linear regression) and the ability to run a short Python script.
 - Relation to the doctoral course: the [doctoral book in this area](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) asks a researcher to make and defend an *original* contribution — a new method, validated independently, with a publication programme. This master's book asks for something different and earlier: to **design, pilot and execute one ethically reviewed empirical study well**, to report exactly what it can and cannot show, and to defend it before examiners. Where the doctoral book builds simulations and replicates baselines, this book works mostly with observational data, quasi-experimental designs and interviews, because that is what most master's projects in this field can access.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights and are not relicensed here.
@@ -55,6 +55,71 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 From topic to problem to question"]
+  N2["1.2 The estimand: say exactly what number you will p"]
+  N3["1.3 What a literature review is for"]
+  N4["1.4 Searching across disciplines"]
+  N5["1.5 From records to included studies"]
+  N6["1.6 Synthesis by concept, not by author"]
+  N7["1.7 Reading a study for design, not only for finding"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 From topic to problem to question"]
+  N2["1.2 The estimand: say exactly what number you will p"]
+  N3["1.3 What a literature review is for"]
+  N4["1.4 Searching across disciplines"]
+  N5["1.5 From records to included studies"]
+  N6["1.6 Synthesis by concept, not by author"]
+  N7["1.7 Reading a study for design, not only for finding"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 From topic to problem to question]
+    |
+    v
+[1.2 The estimand: say exactly what number you will p]
+    |
+    v
+[1.3 What a literature review is for]
+    |
+    v
+[1.4 Searching across disciplines]
+    |
+    v
+[1.5 From records to included studies]
+    |
+    v
+[1.6 Synthesis by concept, not by author]
+    |
+    v
+[1.7 Reading a study for design, not only for finding]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -347,6 +412,71 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Critical infrastructure and sector security: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 What the seminar is for"]
+  N2["2.2 Sector profiles"]
+  N3["2.3 How sector incidents become regional"]
+  N4["2.4 Public incident catalogues are samples, not popu"]
+  N5["2.5 When the first account is revised"]
+  N6["2.6 Reading a sector paper: a worked seminar"]
+  N7["2.7 Presenting in the seminar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 What the seminar is for"]
+  N2["2.2 Sector profiles"]
+  N3["2.3 How sector incidents become regional"]
+  N4["2.4 Public incident catalogues are samples, not popu"]
+  N5["2.5 When the first account is revised"]
+  N6["2.6 Reading a sector paper: a worked seminar"]
+  N7["2.7 Presenting in the seminar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 What the seminar is for]
+    |
+    v
+[2.2 Sector profiles]
+    |
+    v
+[2.3 How sector incidents become regional]
+    |
+    v
+[2.4 Public incident catalogues are samples, not popu]
+    |
+    v
+[2.5 When the first account is revised]
+    |
+    v
+[2.6 Reading a sector paper: a worked seminar]
+    |
+    v
+[2.7 Presenting in the seminar]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -558,6 +688,71 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 Designs for an event nobody assigned"]
+  N2["3.2 Threats to validity"]
+  N3["3.3 Design analysis before data"]
+  N4["3.4 Ethics review"]
+  N5["3.5 Data agreements and the data management plan"]
+  N6["3.6 A reproducible project from day one"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 Designs for an event nobody assigned"]
+  N2["3.2 Threats to validity"]
+  N3["3.3 Design analysis before data"]
+  N4["3.4 Ethics review"]
+  N5["3.5 Data agreements and the data management plan"]
+  N6["3.6 A reproducible project from day one"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 Designs for an event nobody assigned]
+    |
+    v
+[3.2 Threats to validity]
+    |
+    v
+[3.3 Design analysis before data]
+    |
+    v
+[3.4 Ethics review]
+    |
+    v
+[3.5 Data agreements and the data management plan]
+    |
+    v
+[3.6 A reproducible project from day one]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes and connection
 
@@ -848,6 +1043,71 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Critical infrastructure and sector security: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Multiple working hypotheses and strong inference"]
+  N2["4.2 What the spillover hypothesis predicts"]
+  N3["4.3 Rivals in the Spillover Study"]
+  N4["4.4 Causal diagrams"]
+  N5["4.5 Discriminating tools and their assumptions"]
+  N6["4.6 Competing explanations in documented cases"]
+  N7["4.8 Practical activity: the season that looked like"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Multiple working hypotheses and strong inference"]
+  N2["4.2 What the spillover hypothesis predicts"]
+  N3["4.3 Rivals in the Spillover Study"]
+  N4["4.4 Causal diagrams"]
+  N5["4.5 Discriminating tools and their assumptions"]
+  N6["4.6 Competing explanations in documented cases"]
+  N7["4.8 Practical activity: the season that looked like"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Multiple working hypotheses and strong inference]
+    |
+    v
+[4.2 What the spillover hypothesis predicts]
+    |
+    v
+[4.3 Rivals in the Spillover Study]
+    |
+    v
+[4.4 Causal diagrams]
+    |
+    v
+[4.5 Discriminating tools and their assumptions]
+    |
+    v
+[4.6 Competing explanations in documented cases]
+    |
+    v
+[4.8 Practical activity: the season that looked like]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -1093,6 +1353,71 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 The proposal as a contract"]
+  N2["5.2 Timeline and critical path"]
+  N3["5.3 The risk register"]
+  N4["5.4 Asking custodians for data"]
+  N5["5.5 What a pilot is for"]
+  N6["5.6 Progression criteria"]
+  N7["5.7 Practical activity: auditing the pilot extract"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 The proposal as a contract"]
+  N2["5.2 Timeline and critical path"]
+  N3["5.3 The risk register"]
+  N4["5.4 Asking custodians for data"]
+  N5["5.5 What a pilot is for"]
+  N6["5.6 Progression criteria"]
+  N7["5.7 Practical activity: auditing the pilot extract"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 The proposal as a contract]
+    |
+    v
+[5.2 Timeline and critical path]
+    |
+    v
+[5.3 The risk register]
+    |
+    v
+[5.4 Asking custodians for data]
+    |
+    v
+[5.5 What a pilot is for]
+    |
+    v
+[5.6 Progression criteria]
+    |
+    v
+[5.7 Practical activity: auditing the pilot extract]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes and connection
 
@@ -1364,6 +1689,71 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Data collection and analysis
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Collecting data with lineage"]
+  N2["6.2 The controlled interrupted time-series model"]
+  N3["6.3 Autocorrelation and robust intervals"]
+  N4["6.4 Placebo windows as evidence"]
+  N5["6.5 Practical activity: the main quantitative analys"]
+  N6["6.6 The qualitative strand"]
+  N7["6.7 Integration: the joint display"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Collecting data with lineage"]
+  N2["6.2 The controlled interrupted time-series model"]
+  N3["6.3 Autocorrelation and robust intervals"]
+  N4["6.4 Placebo windows as evidence"]
+  N5["6.5 Practical activity: the main quantitative analys"]
+  N6["6.6 The qualitative strand"]
+  N7["6.7 Integration: the joint display"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Collecting data with lineage]
+    |
+    v
+[6.2 The controlled interrupted time-series model]
+    |
+    v
+[6.3 Autocorrelation and robust intervals]
+    |
+    v
+[6.4 Placebo windows as evidence]
+    |
+    v
+[6.5 Practical activity: the main quantitative analys]
+    |
+    v
+[6.6 The qualitative strand]
+    |
+    v
+[6.7 Integration: the joint display]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -1607,6 +1997,71 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Structure: one job per chapter"]
+  N2["7.2 The argument and the results-to-claims register"]
+  N3["7.3 Reporting results honestly"]
+  N4["7.4 Number provenance"]
+  N5["7.5 Reporting guidelines as checklists"]
+  N6["7.6 Directional limitations"]
+  N7["7.7 Accessible figures and tables"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Structure: one job per chapter"]
+  N2["7.2 The argument and the results-to-claims register"]
+  N3["7.3 Reporting results honestly"]
+  N4["7.4 Number provenance"]
+  N5["7.5 Reporting guidelines as checklists"]
+  N6["7.6 Directional limitations"]
+  N7["7.7 Accessible figures and tables"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Structure: one job per chapter]
+    |
+    v
+[7.2 The argument and the results-to-claims register]
+    |
+    v
+[7.3 Reporting results honestly]
+    |
+    v
+[7.4 Number provenance]
+    |
+    v
+[7.5 Reporting guidelines as checklists]
+    |
+    v
+[7.6 Directional limitations]
+    |
+    v
+[7.7 Accessible figures and tables]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -1816,6 +2271,71 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 How examiners read"]
+  N2["8.2 Families of questions"]
+  N3["8.3 What if you had chosen differently? — the specif"]
+  N4["8.4 Preparing for the defense"]
+  N5["8.5 After the defense: corrections"]
+  N6["8.6 Sharing results responsibly"]
+  N7["8.8 Next steps after the master's"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 How examiners read"]
+  N2["8.2 Families of questions"]
+  N3["8.3 What if you had chosen differently? — the specif"]
+  N4["8.4 Preparing for the defense"]
+  N5["8.5 After the defense: corrections"]
+  N6["8.6 Sharing results responsibly"]
+  N7["8.8 Next steps after the master's"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 How examiners read]
+    |
+    v
+[8.2 Families of questions]
+    |
+    v
+[8.3 What if you had chosen differently? — the specif]
+    |
+    v
+[8.4 Preparing for the defense]
+    |
+    v
+[8.5 After the defense: corrections]
+    |
+    v
+[8.6 Sharing results responsibly]
+    |
+    v
+[8.8 Next steps after the master's]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 

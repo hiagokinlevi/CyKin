@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Uma Primeira Introdução
 
 - Idioma: português do Brasil (`pt`); curso rápido, um mês; aproximadamente 80 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito; os exercícios EX001–EX052 (treze por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito; os exercícios EX001–EX052 (treze por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: iniciantes sem função de segurança e com letramento digital básico, que querem entender o que a computação quântica significa para a segurança do dia a dia e concluir com segurança uma tarefa guiada.
 - Relação com os livros vizinhos: o [livro profissional](../../../../professional-6-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) ensina o fluxo de trabalho completo da migração; o [livro técnico](../../../../technical-18-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) ensina a configuração prática. **Este livro é uma introdução curta e cuidadosa**: as ideias centrais, a prática segura, como mapear aquilo de que uma pequena organização depende e um laboratório guiado.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -33,6 +33,71 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST [FIPS 203]
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Segurança quântica e pós-quântica: fundamentos e decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Cadeados e selos"]
+  N1["1.2 O que é um computador quântico"]
+  N2["1.3 O que quebraria e o que não quebraria"]
+  N3["1.4 Dois tipos de risco com momentos diferentes"]
+  N4["1.5 As novas normas"]
+  N5["1.6 Proteção híbrida"]
+  N6["1.7 Decidindo o quanto isso importa: Laboratório M"]
+  N7["1.8 Caso resolvido"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Cadeados e selos"]
+  N1["1.2 O que é um computador quântico"]
+  N2["1.3 O que quebraria e o que não quebraria"]
+  N3["1.4 Dois tipos de risco com momentos diferentes"]
+  N4["1.5 As novas normas"]
+  N5["1.6 Proteção híbrida"]
+  N6["1.7 Decidindo o quanto isso importa: Laboratório M"]
+  N7["1.8 Caso resolvido"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[1.1 Cadeados e selos]
+    |
+    v
+[1.2 O que é um computador quântico]
+    |
+    v
+[1.3 O que quebraria e o que não quebraria]
+    |
+    v
+[1.4 Dois tipos de risco com momentos diferentes]
+    |
+    v
+[1.5 As novas normas]
+    |
+    v
+[1.6 Proteção híbrida]
+    |
+    v
+[1.7 Decidindo o quanto isso importa: Laboratório M]
+    |
+    v
+[1.8 Caso resolvido]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -142,6 +207,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Por que a permissão importa"]
+  N1["2.2 Um escopo simples"]
+  N2["2.3 Coletando apenas o necessário"]
+  N3["2.4 Tratamento responsável"]
+  N4["2.5 Experimentos inseguros"]
+  N5["2.6 Relatando com clareza"]
+  N6["2.7 Caso resolvido"]
+  N7["2.8 Atividades práticas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Por que a permissão importa"]
+  N1["2.2 Um escopo simples"]
+  N2["2.3 Coletando apenas o necessário"]
+  N3["2.4 Tratamento responsável"]
+  N4["2.5 Experimentos inseguros"]
+  N5["2.6 Relatando com clareza"]
+  N6["2.7 Caso resolvido"]
+  N7["2.8 Atividades práticas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[2.1 Por que a permissão importa]
+    |
+    v
+[2.2 Um escopo simples]
+    |
+    v
+[2.3 Coletando apenas o necessário]
+    |
+    v
+[2.4 Tratamento responsável]
+    |
+    v
+[2.5 Experimentos inseguros]
+    |
+    v
+[2.6 Relatando com clareza]
+    |
+    v
+[2.7 Caso resolvido]
+    |
+    v
+[2.8 Atividades práticas]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar por que a permissão é essencial antes de verificar qualquer sistema; (2) escrever um escopo simples; (3) coletar apenas as informações de que precisa; (4) tratar com responsabilidade o que encontrar; (5) evitar "experimentos" inseguros; e (6) relatar com clareza.
@@ -230,6 +360,71 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Segurança quântica e pós-quântica: sistemas, dados e dependências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Listando os serviços"]
+  N1["3.2 Dados e tempos de vida"]
+  N2["3.3 Quem controla a segurança"]
+  N3["3.4 Registrando os fatos com a sua fonte"]
+  N4["3.5 Incógnitas são perguntas"]
+  N5["3.6 Atividade prática — Laboratório J"]
+  N6["3.7 Escolhendo prioridades"]
+  N7["3.8 Caso resolvido"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Listando os serviços"]
+  N1["3.2 Dados e tempos de vida"]
+  N2["3.3 Quem controla a segurança"]
+  N3["3.4 Registrando os fatos com a sua fonte"]
+  N4["3.5 Incógnitas são perguntas"]
+  N5["3.6 Atividade prática — Laboratório J"]
+  N6["3.7 Escolhendo prioridades"]
+  N7["3.8 Caso resolvido"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[3.1 Listando os serviços]
+    |
+    v
+[3.2 Dados e tempos de vida]
+    |
+    v
+[3.3 Quem controla a segurança]
+    |
+    v
+[3.4 Registrando os fatos com a sua fonte]
+    |
+    v
+[3.5 Incógnitas são perguntas]
+    |
+    v
+[3.6 Atividade prática — Laboratório J]
+    |
+    v
+[3.7 Escolhendo prioridades]
+    |
+    v
+[3.8 Caso resolvido]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -355,6 +550,71 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança quântica e pós-quântica: laboratório guiado e síntese aplicada
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["4.1 O laboratório guiado — Laboratório T"]
+  N1["4.2 Oferecido versus usado"]
+  N2["4.3 Verificando o seu próprio navegador com permissã"]
+  N3["4.4 Escrevendo uma nota de prontidão"]
+  N4["4.5 Perguntas para os provedores"]
+  N5["4.6 Síntese aplicada"]
+  N6["4.7 Próximos passos"]
+  N7["4.8 Caso resolvido"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 O laboratório guiado — Laboratório T"]
+  N1["4.2 Oferecido versus usado"]
+  N2["4.3 Verificando o seu próprio navegador com permissã"]
+  N3["4.4 Escrevendo uma nota de prontidão"]
+  N4["4.5 Perguntas para os provedores"]
+  N5["4.6 Síntese aplicada"]
+  N6["4.7 Próximos passos"]
+  N7["4.8 Caso resolvido"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
+```
+
+```text
+[4.1 O laboratório guiado — Laboratório T]
+    |
+    v
+[4.2 Oferecido versus usado]
+    |
+    v
+[4.3 Verificando o seu próprio navegador com permissã]
+    |
+    v
+[4.4 Escrevendo uma nota de prontidão]
+    |
+    v
+[4.5 Perguntas para os provedores]
+    |
+    v
+[4.6 Síntese aplicada]
+    |
+    v
+[4.7 Próximos passos]
+    |
+    v
+[4.8 Caso resolvido]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Métodos de Pesquisa de Doutorado e Prática de Tese
 
 - Idioma: português do Brasil (`pt`); trilha de pesquisa de doutorado, dois anos; aproximadamente 1.600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: pesquisadores avançados com experiência de pesquisa e uma pergunta defensável sobre as consequências da computação quântica para a segurança, a migração para a criptografia pós-quântica (PQC), os protocolos híbridos pós-quânticos/tradicionais (PQ/T) ou a agilidade criptográfica. Conhecimento de entrada: o conteúdo planejado para a trilha de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/PLAN.md) desta área, ou experiência equivalente, mais familiaridade prática com criptografia de chave pública, probabilidade discreta, álgebra linear básica sobre anéis finitos e uma família de protocolos, como TLS 1.3, PKI X.509 ou IKEv2.
 - Relação com os cursos vizinhos: um curso geral de criptografia estuda como as primitivas são construídas e demonstradas. **Este livro estuda a transição**: como uma comunidade descobre se a criptografia vulnerável à computação quântica foi encontrada, substituída, combinada com PQC e tornada novamente substituível, e como um pesquisador produz evidências sobre essa transição que resistem à crítica.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos.
@@ -48,6 +48,71 @@ As fontes primárias são citadas por identificador estável e foram verificadas
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridade e métodos de pesquisa avançada
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O objeto de estudo: uma transição, não uma primi"]
+  N1["1.2 Uma escada de alegações"]
+  N2["1.3 Prazos como pressupostos"]
+  N3["1.4 Não causar dano ao observar a criptografia"]
+  N4["1.5 Níveis de dados"]
+  N5["1.6 Métricas que resistem à manipulação"]
+  N6["1.8 Atividade prática — Laboratório 1: a desigualdad"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O objeto de estudo: uma transição, não uma primi"]
+  N1["1.2 Uma escada de alegações"]
+  N2["1.3 Prazos como pressupostos"]
+  N3["1.4 Não causar dano ao observar a criptografia"]
+  N4["1.5 Níveis de dados"]
+  N5["1.6 Métricas que resistem à manipulação"]
+  N6["1.8 Atividade prática — Laboratório 1: a desigualdad"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[1.1 O objeto de estudo: uma transição, não uma primi]
+    |
+    v
+[1.2 Uma escada de alegações]
+    |
+    v
+[1.3 Prazos como pressupostos]
+    |
+    v
+[1.4 Não causar dano ao observar a criptografia]
+    |
+    v
+[1.5 Níveis de dados]
+    |
+    v
+[1.6 Métricas que resistem à manipulação]
+    |
+    v
+[1.8 Atividade prática — Laboratório 1: a desigualdad]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -173,6 +238,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Segurança quântica e pós-quântica: fronteira da pesquisa
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Por que a fronteira é difícil de ver"]
+  N1["2.2 Famílias de pesquisa"]
+  N2["2.3 O que a padronização resolveu e o que não resolv"]
+  N3["2.4 Avaliação: o que torna crível um estudo de inven"]
+  N4["2.6 Atividade prática — Laboratório 2: codificar o m"]
+  N5["2.7 Uma lacuna falseável"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Por que a fronteira é difícil de ver"]
+  N1["2.2 Famílias de pesquisa"]
+  N2["2.3 O que a padronização resolveu e o que não resolv"]
+  N3["2.4 Avaliação: o que torna crível um estudo de inven"]
+  N4["2.6 Atividade prática — Laboratório 2: codificar o m"]
+  N5["2.7 Uma lacuna falseável"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[2.1 Por que a fronteira é difícil de ver]
+    |
+    v
+[2.2 Famílias de pesquisa]
+    |
+    v
+[2.3 O que a padronização resolveu e o que não resolv]
+    |
+    v
+[2.4 Avaliação: o que torna crível um estudo de inven]
+    |
+    v
+[2.6 Atividade prática — Laboratório 2: codificar o m]
+    |
+    v
+[2.7 Uma lacuna falseável]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) descrever as seis principais famílias de pesquisa em segurança quântica e pós-quântica e o tipo de evidência que cada uma produz; (2) explicar o que o processo de padronização do NIST resolveu e o que deixou em aberto; (3) avaliar um estudo de PQC quanto à validade de construto, à justiça da linha de base e à independência do corpus; (4) codificar um mapa da literatura e localizar uma célula vazia; e (5) enunciar uma lacuna falseável. Ele parte da escada de alegações do Capítulo 1 e fornece a pergunta que o Capítulo 3 transforma numa contribuição.
@@ -283,6 +408,61 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Tipos de contribuição"]
+  N1["3.2 O mecanismo: visibilidade complementar"]
+  N2["3.3 Modelo de observador"]
+  N3["3.4 Hipóteses e limiares"]
+  N4["3.5 Linhas de base e rivais"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Tipos de contribuição"]
+  N1["3.2 O mecanismo: visibilidade complementar"]
+  N2["3.3 Modelo de observador"]
+  N3["3.4 Hipóteses e limiares"]
+  N4["3.5 Linhas de base e rivais"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[3.1 Tipos de contribuição]
+    |
+    v
+[3.2 O mecanismo: visibilidade complementar]
+    |
+    v
+[3.3 Modelo de observador]
+    |
+    v
+[3.4 Hipóteses e limiares]
+    |
+    v
+[3.5 Linhas de base e rivais]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -401,6 +581,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 4 — Replicação das linhas de base e piloto
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Termos"]
+  N1["4.2 Diagnosticar uma reprodução fracassada: InvBench"]
+  N2["4.3 Verificar o instrumento"]
+  N3["4.4 Atividade prática — Laboratório 4: verificar o c"]
+  N4["4.5 Ajustar sem vazamento"]
+  N5["4.6 Um piloto delimitado"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Termos"]
+  N1["4.2 Diagnosticar uma reprodução fracassada: InvBench"]
+  N2["4.3 Verificar o instrumento"]
+  N3["4.4 Atividade prática — Laboratório 4: verificar o c"]
+  N4["4.5 Ajustar sem vazamento"]
+  N5["4.6 Um piloto delimitado"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[4.1 Termos]
+    |
+    v
+[4.2 Diagnosticar uma reprodução fracassada: InvBench]
+    |
+    v
+[4.3 Verificar o instrumento]
+    |
+    v
+[4.4 Atividade prática — Laboratório 4: verificar o c]
+    |
+    v
+[4.5 Ajustar sem vazamento]
+    |
+    v
+[4.6 Um piloto delimitado]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) distinguir repetibilidade, reprodutibilidade e replicabilidade; (2) diagnosticar por que um resultado de inventário publicado não se reproduz; (3) verificar um instrumento com entradas conhecidas antes de confiar na sua saída; (4) ajustar parâmetros sem vazar dados de teste; e (5) executar um piloto delimitado que termine numa decisão explícita de seguir ou não seguir. Ele aplica a proposta do Capítulo 3 antes do estudo principal do Capítulo 5.
@@ -502,6 +742,61 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Estudo principal e validação independente
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Desenho pareado"]
+  N1["5.2 Três incertezas"]
+  N2["5.3 Validação independente com regras congeladas"]
+  N3["5.4 Adjudicação cega"]
+  N4["5.5 Atividade prática — Laboratório 5: bootstrap par"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Desenho pareado"]
+  N1["5.2 Três incertezas"]
+  N2["5.3 Validação independente com regras congeladas"]
+  N3["5.4 Adjudicação cega"]
+  N4["5.5 Atividade prática — Laboratório 5: bootstrap par"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[5.1 Desenho pareado]
+    |
+    v
+[5.2 Três incertezas]
+    |
+    v
+[5.3 Validação independente com regras congeladas]
+    |
+    v
+[5.4 Adjudicação cega]
+    |
+    v
+[5.5 Atividade prática — Laboratório 5: bootstrap par]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) executar uma comparação pareada de dois métodos de inventário sobre os mesmos itens; (2) separar a incerteza amostral, a incerteza de medição e a incerteza de modelo; (3) validar num corpus independente com regras congeladas; (4) conduzir uma adjudicação cega e relatar a concordância; e (5) escrever um parágrafo de resultados honesto. Ele executa o desenho que o Capítulo 4 pilotou e fornece os resultados que o Capítulo 6 vai atacar.
@@ -601,6 +896,61 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 6 — Crítica de pares e revisão
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Objeções como testes"]
+  N1["6.2 Equipe vermelha contra as suas próprias alegaçõe"]
+  N2["6.3 A fronteira arquitetural"]
+  N3["6.4 Estreitar uma alegação"]
+  N4["6.5 Revisão de uso dual"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Objeções como testes"]
+  N1["6.2 Equipe vermelha contra as suas próprias alegaçõe"]
+  N2["6.3 A fronteira arquitetural"]
+  N3["6.4 Estreitar uma alegação"]
+  N4["6.5 Revisão de uso dual"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[6.1 Objeções como testes]
+    |
+    v
+[6.2 Equipe vermelha contra as suas próprias alegaçõe]
+    |
+    v
+[6.3 A fronteira arquitetural]
+    |
+    v
+[6.4 Estreitar uma alegação]
+    |
+    v
+[6.5 Revisão de uso dual]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Depois deste capítulo, você consegue (1) converter as objeções dos revisores em testes; (2) conduzir uma revisão interna de equipe vermelha das suas próprias alegações; (3) encontrar a fronteira arquitetural além da qual um método não consegue ver; (4) estreitar uma alegação sem abandoná-la; e (5) conduzir uma revisão de uso dual de um método de inventário. Ele toma os resultados do Capítulo 5 e prepara o argumento da tese do Capítulo 7.
@@ -667,6 +1017,66 @@ Siga para a próxima lição escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 O mapa do argumento"]
+  N1["7.2 Estrutura da tese"]
+  N2["7.3 Um arquivo em camadas"]
+  N3["7.4 Atividade prática — Laboratório 7: um manifesto"]
+  N4["7.5 Fichas de conjuntos de dados"]
+  N5["7.7 Implicações sem exagero"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 O mapa do argumento"]
+  N1["7.2 Estrutura da tese"]
+  N2["7.3 Um arquivo em camadas"]
+  N3["7.4 Atividade prática — Laboratório 7: um manifesto"]
+  N4["7.5 Fichas de conjuntos de dados"]
+  N5["7.7 Implicações sem exagero"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[7.1 O mapa do argumento]
+    |
+    v
+[7.2 Estrutura da tese]
+    |
+    v
+[7.3 Um arquivo em camadas]
+    |
+    v
+[7.4 Atividade prática — Laboratório 7: um manifesto]
+    |
+    v
+[7.5 Fichas de conjuntos de dados]
+    |
+    v
+[7.7 Implicações sem exagero]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -774,6 +1184,66 @@ Siga para a próxima lição escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 A auditoria das alegações"]
+  N1["8.2 Perguntas dos examinadores"]
+  N2["8.3 Plano de publicação"]
+  N3["8.4 Divulgação coordenada"]
+  N4["8.5 Informar um tomador de decisão"]
+  N5["8.6 Depois da defesa"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 A auditoria das alegações"]
+  N1["8.2 Perguntas dos examinadores"]
+  N2["8.3 Plano de publicação"]
+  N3["8.4 Divulgação coordenada"]
+  N4["8.5 Informar um tomador de decisão"]
+  N5["8.6 Depois da defesa"]
+  N6["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[8.1 A auditoria das alegações]
+    |
+    v
+[8.2 Perguntas dos examinadores]
+    |
+    v
+[8.3 Plano de publicação]
+    |
+    v
+[8.4 Divulgação coordenada]
+    |
+    v
+[8.5 Informar um tomador de decisão]
+    |
+    v
+[8.6 Depois da defesa]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem e conexão
 

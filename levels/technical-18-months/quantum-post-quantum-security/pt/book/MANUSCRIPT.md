@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Operações Práticas para Equipes Técnicas
 
 - Idioma: português do Brasil (`pt`); curso técnico, 18 meses; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito; os exercícios EX001–EX054 (três por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–18 de 18 têm texto didático escrito; os exercícios EX001–EX054 (três por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: operadores técnicos — engenheiros de service desk, operadores de sistemas e de redes, administradores júnior — que precisam verificar, configurar, diagnosticar e confirmar configurações pós-quânticas em serviços reais, sob supervisão. Conhecimento de entrada: redes, sistemas operacionais, scripts e prática segura de laboratório.
 - Relação com os livros vizinhos: o [livro de tecnólogo](../../../../technologist-3-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) trata de integração e automação com mais profundidade; o [livro profissional](../../../../professional-6-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) trata da governança da migração. **Este livro é prático**: comandos, verificações, logs, mudanças de configuração, verificação e trabalho seguro em laboratório.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -34,6 +34,61 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Arquitetura de computação e de serviços
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O mapa de serviços"]
+  N1["1.2 Onde a criptografia é usada"]
+  N2["1.3 O que os computadores quânticos ameaçam"]
+  N3["1.4 Caso resolvido"]
+  N4["1.5 Atividade prática"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O mapa de serviços"]
+  N1["1.2 Onde a criptografia é usada"]
+  N2["1.3 O que os computadores quânticos ameaçam"]
+  N3["1.4 Caso resolvido"]
+  N4["1.5 Atividade prática"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[1.1 O mapa de serviços]
+    |
+    v
+[1.2 Onde a criptografia é usada]
+    |
+    v
+[1.3 O que os computadores quânticos ameaçam]
+    |
+    v
+[1.4 Caso resolvido]
+    |
+    v
+[1.5 Atividade prática]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -94,6 +149,66 @@ Siga para a próxima lição escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["2.1 Três canais seguros"]
+  N1["2.2 Troca de chaves híbrida"]
+  N2["2.3 Lendo o grupo negociado"]
+  N3["2.4 Handshakes maiores"]
+  N4["2.5 Caso resolvido"]
+  N5["2.6 Atividade prática"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX004"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Três canais seguros"]
+  N1["2.2 Troca de chaves híbrida"]
+  N2["2.3 Lendo o grupo negociado"]
+  N3["2.4 Handshakes maiores"]
+  N4["2.5 Caso resolvido"]
+  N5["2.6 Atividade prática"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX004"]
+```
+
+```text
+[2.1 Três canais seguros]
+    |
+    v
+[2.2 Troca de chaves híbrida]
+    |
+    v
+[2.3 Lendo o grupo negociado]
+    |
+    v
+[2.4 Handshakes maiores]
+    |
+    v
+[2.5 Caso resolvido]
+    |
+    v
+[2.6 Atividade prática]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -165,6 +280,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 3 — Sistemas operacionais e identidades
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["3.1 Bibliotecas e versões"]
+  N1["3.2 Certificados e repositórios de confiança"]
+  N2["3.3 Manuseando chaves"]
+  N3["3.4 Caso resolvido"]
+  N4["3.5 Atividade prática"]
+  N5["3.7 Contas de serviço e permissões"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX007"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Bibliotecas e versões"]
+  N1["3.2 Certificados e repositórios de confiança"]
+  N2["3.3 Manuseando chaves"]
+  N3["3.4 Caso resolvido"]
+  N4["3.5 Atividade prática"]
+  N5["3.7 Contas de serviço e permissões"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX007"]
+```
+
+```text
+[3.1 Bibliotecas e versões]
+    |
+    v
+[3.2 Certificados e repositórios de confiança]
+    |
+    v
+[3.3 Manuseando chaves]
+    |
+    v
+[3.4 Caso resolvido]
+    |
+    v
+[3.5 Atividade prática]
+    |
+    v
+[3.7 Contas de serviço e permissões]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descobrir quais bibliotecas criptográficas um sistema usa; (2) verificar as versões que importam para o suporte pós-quântico; (3) explicar como funcionam os certificados e os repositórios de confiança num servidor; e (4) manusear chaves com segurança.
@@ -234,6 +409,71 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Scripts e formatos de dados
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["4.1 Formatos"]
+  N1["4.2 Atividade prática — Laboratório J"]
+  N2["4.3 Desconhecido não é não"]
+  N3["4.4 Scripts reexecutáveis"]
+  N4["4.5 Caso resolvido"]
+  N5["4.6 Atividade prática"]
+  N6["4.8 Um pequeno exemplo em CSV"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX010"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Formatos"]
+  N1["4.2 Atividade prática — Laboratório J"]
+  N2["4.3 Desconhecido não é não"]
+  N3["4.4 Scripts reexecutáveis"]
+  N4["4.5 Caso resolvido"]
+  N5["4.6 Atividade prática"]
+  N6["4.8 Um pequeno exemplo em CSV"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX010"]
+```
+
+```text
+[4.1 Formatos]
+    |
+    v
+[4.2 Atividade prática — Laboratório J]
+    |
+    v
+[4.3 Desconhecido não é não]
+    |
+    v
+[4.4 Scripts reexecutáveis]
+    |
+    v
+[4.5 Caso resolvido]
+    |
+    v
+[4.6 Atividade prática]
+    |
+    v
+[4.8 Um pequeno exemplo em CSV]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -339,6 +579,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Escopo de segurança e evidências
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["5.1 Escopo"]
+  N1["5.2 Evidências"]
+  N2["5.3 Dados sensíveis"]
+  N3["5.4 Relato"]
+  N4["5.5 Caso resolvido"]
+  N5["5.6 Atividade prática"]
+  N6["5.8 Quando algo dá errado"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Escopo"]
+  N1["5.2 Evidências"]
+  N2["5.3 Dados sensíveis"]
+  N3["5.4 Relato"]
+  N4["5.5 Caso resolvido"]
+  N5["5.6 Atividade prática"]
+  N6["5.8 Quando algo dá errado"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX013"]
+```
+
+```text
+[5.1 Escopo]
+    |
+    v
+[5.2 Evidências]
+    |
+    v
+[5.3 Dados sensíveis]
+    |
+    v
+[5.4 Relato]
+    |
+    v
+[5.5 Caso resolvido]
+    |
+    v
+[5.6 Atividade prática]
+    |
+    v
+[5.8 Quando algo dá errado]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar apenas dentro do escopo escrito; (2) coletar evidências que outras pessoas possam verificar; (3) proteger os dados sensíveis que encontrar; e (4) relatar constatações com clareza.
@@ -415,6 +720,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 6 — Segurança quântica e pós-quântica: modelo do sistema
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["6.1 O modelo"]
+  N1["6.2 Classes de exposição"]
+  N2["6.3 Escolhendo as primeiras ações"]
+  N3["6.4 Caso resolvido"]
+  N4["6.5 Atividade prática"]
+  N5["6.6 Usando a regra de Mosca"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 O modelo"]
+  N1["6.2 Classes de exposição"]
+  N2["6.3 Escolhendo as primeiras ações"]
+  N3["6.4 Caso resolvido"]
+  N4["6.5 Atividade prática"]
+  N5["6.6 Usando a regra de Mosca"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
+```
+
+```text
+[6.1 O modelo]
+    |
+    v
+[6.2 Classes de exposição]
+    |
+    v
+[6.3 Escolhendo as primeiras ações]
+    |
+    v
+[6.4 Caso resolvido]
+    |
+    v
+[6.5 Atividade prática]
+    |
+    v
+[6.6 Usando a regra de Mosca]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) construir um modelo simples do sistema que liste os usos criptográficos por serviço; (2) classificar cada uso pela exposição quântica; (3) registrar o responsável e a rota de mudança; e (4) usar o modelo para escolher as primeiras ações.
@@ -482,6 +847,71 @@ Siga para a próxima lição escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Segurança quântica e pós-quântica: dados e telemetria
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["7.1 Fontes"]
+  N1["7.2 Atividade prática — Laboratório I"]
+  N2["7.3 Registrando os algoritmos negociados"]
+  N3["7.4 Cobertura"]
+  N4["7.5 Caso resolvido"]
+  N5["7.6 Atividade prática"]
+  N6["7.7 Mantendo a CBOM atualizada"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX019"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Fontes"]
+  N1["7.2 Atividade prática — Laboratório I"]
+  N2["7.3 Registrando os algoritmos negociados"]
+  N3["7.4 Cobertura"]
+  N4["7.5 Caso resolvido"]
+  N5["7.6 Atividade prática"]
+  N6["7.7 Mantendo a CBOM atualizada"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX019"]
+```
+
+```text
+[7.1 Fontes]
+    |
+    v
+[7.2 Atividade prática — Laboratório I]
+    |
+    v
+[7.3 Registrando os algoritmos negociados]
+    |
+    v
+[7.4 Cobertura]
+    |
+    v
+[7.5 Caso resolvido]
+    |
+    v
+[7.6 Atividade prática]
+    |
+    v
+[7.7 Mantendo a CBOM atualizada]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -583,6 +1013,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 8 — Segurança quântica e pós-quântica: modos de falha
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["8.1 Modos de falha comuns"]
+  N1["8.2 Primeiras respostas seguras"]
+  N2["8.3 O fallback silencioso merece alertas"]
+  N3["8.4 Caso resolvido"]
+  N4["8.5 Atividade prática"]
+  N5["8.6 Regras de reversão"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Modos de falha comuns"]
+  N1["8.2 Primeiras respostas seguras"]
+  N2["8.3 O fallback silencioso merece alertas"]
+  N3["8.4 Caso resolvido"]
+  N4["8.5 Atividade prática"]
+  N5["8.6 Regras de reversão"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX022"]
+```
+
+```text
+[8.1 Modos de falha comuns]
+    |
+    v
+[8.2 Primeiras respostas seguras]
+    |
+    v
+[8.3 O fallback silencioso merece alertas]
+    |
+    v
+[8.4 Caso resolvido]
+    |
+    v
+[8.5 Atividade prática]
+    |
+    v
+[8.6 Regras de reversão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) listar as formas pelas quais as mudanças pós-quânticas podem falhar; (2) reconhecer cada uma pelos sintomas; (3) conhecer a primeira resposta segura; e (4) evitar correções que removem a proteção em todos os lugares.
@@ -650,6 +1140,71 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Segurança quântica e pós-quântica: ferramentas e métodos
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["9.1 Ferramentas de cliente"]
+  N1["9.2 Atividade prática — Laboratório B"]
+  N2["9.3 Validando ferramentas"]
+  N3["9.4 Um método repetível"]
+  N4["9.5 Caso resolvido"]
+  N5["9.6 Atividade prática"]
+  N6["9.7 Lendo tamanhos"]
+  N7["9.9 Comparando resultados ao longo do tempo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Ferramentas de cliente"]
+  N1["9.2 Atividade prática — Laboratório B"]
+  N2["9.3 Validando ferramentas"]
+  N3["9.4 Um método repetível"]
+  N4["9.5 Caso resolvido"]
+  N5["9.6 Atividade prática"]
+  N6["9.7 Lendo tamanhos"]
+  N7["9.9 Comparando resultados ao longo do tempo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX025"]
+```
+
+```text
+[9.1 Ferramentas de cliente]
+    |
+    v
+[9.2 Atividade prática — Laboratório B]
+    |
+    v
+[9.3 Validando ferramentas]
+    |
+    v
+[9.4 Um método repetível]
+    |
+    v
+[9.5 Caso resolvido]
+    |
+    v
+[9.6 Atividade prática]
+    |
+    v
+[9.7 Lendo tamanhos]
+    |
+    v
+[9.9 Comparando resultados ao longo do tempo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -756,6 +1311,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Segurança quântica e pós-quântica: configuração de controles
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["10.1 Configuração do TLS"]
+  N1["10.2 Configuração do SSH"]
+  N2["10.3 Atividade prática — Laboratório T"]
+  N3["10.4 Controle de mudanças"]
+  N4["10.5 Caso resolvido"]
+  N5["10.6 Atividade prática"]
+  N6["10.7 Mantenha o fallback por ora"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX028"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Configuração do TLS"]
+  N1["10.2 Configuração do SSH"]
+  N2["10.3 Atividade prática — Laboratório T"]
+  N3["10.4 Controle de mudanças"]
+  N4["10.5 Caso resolvido"]
+  N5["10.6 Atividade prática"]
+  N6["10.7 Mantenha o fallback por ora"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX028"]
+```
+
+```text
+[10.1 Configuração do TLS]
+    |
+    v
+[10.2 Configuração do SSH]
+    |
+    v
+[10.3 Atividade prática — Laboratório T]
+    |
+    v
+[10.4 Controle de mudanças]
+    |
+    v
+[10.5 Caso resolvido]
+    |
+    v
+[10.6 Atividade prática]
+    |
+    v
+[10.7 Mantenha o fallback por ora]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) configurar a troca de chaves híbrida em servidores TLS e SSH num laboratório; (2) auditar configurações quanto à presença e à preferência; (3) manter o fallback clássico durante a transição; e (4) aplicar as mudanças por meio do controle de mudanças.
@@ -856,6 +1476,71 @@ Siga para a próxima lição escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Segurança quântica e pós-quântica: verificação
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["11.1 Verifique a negociação, não a configuração"]
+  N1["11.2 Atividade prática — Laboratório V"]
+  N2["11.3 Controles negativos"]
+  N3["11.4 Encerrando com evidências"]
+  N4["11.5 Caso resolvido"]
+  N5["11.6 Atividade prática"]
+  N6["11.7 Verificando após outras mudanças"]
+  N7["11.9 O que a verificação não mostra"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Verifique a negociação, não a configuração"]
+  N1["11.2 Atividade prática — Laboratório V"]
+  N2["11.3 Controles negativos"]
+  N3["11.4 Encerrando com evidências"]
+  N4["11.5 Caso resolvido"]
+  N5["11.6 Atividade prática"]
+  N6["11.7 Verificando após outras mudanças"]
+  N7["11.9 O que a verificação não mostra"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[11.1 Verifique a negociação, não a configuração]
+    |
+    v
+[11.2 Atividade prática — Laboratório V]
+    |
+    v
+[11.3 Controles negativos]
+    |
+    v
+[11.4 Encerrando com evidências]
+    |
+    v
+[11.5 Caso resolvido]
+    |
+    v
+[11.6 Atividade prática]
+    |
+    v
+[11.7 Verificando após outras mudanças]
+    |
+    v
+[11.9 O que a verificação não mostra]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -970,6 +1655,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 12 — Laboratório controlado I
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["12.1 Montagem do laboratório"]
+  N1["12.2 Exercícios no laboratório"]
+  N2["12.3 Reproduzindo uma falha de tamanho"]
+  N3["12.4 Relatório de laboratório"]
+  N4["12.5 Caso resolvido"]
+  N5["12.6 Atividade prática"]
+  N6["12.7 Segurança do laboratório"]
+  N7["12.9 Ampliando o laboratório"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Montagem do laboratório"]
+  N1["12.2 Exercícios no laboratório"]
+  N2["12.3 Reproduzindo uma falha de tamanho"]
+  N3["12.4 Relatório de laboratório"]
+  N4["12.5 Caso resolvido"]
+  N5["12.6 Atividade prática"]
+  N6["12.7 Segurança do laboratório"]
+  N7["12.9 Ampliando o laboratório"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[12.1 Montagem do laboratório]
+    |
+    v
+[12.2 Exercícios no laboratório]
+    |
+    v
+[12.3 Reproduzindo uma falha de tamanho]
+    |
+    v
+[12.4 Relatório de laboratório]
+    |
+    v
+[12.5 Caso resolvido]
+    |
+    v
+[12.6 Atividade prática]
+    |
+    v
+[12.7 Segurança do laboratório]
+    |
+    v
+[12.9 Ampliando o laboratório]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) montar um laboratório isolado com TLS e SSH capazes de híbrido; (2) reproduzir uma implantação híbrida de ponta a ponta; (3) reproduzir uma falha comum; e (4) escrever um relatório de laboratório.
@@ -1051,6 +1801,71 @@ Siga para a próxima lição escrita.
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Segurança quântica e pós-quântica: diagnóstico de problemas
+
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["13.1 Método"]
+  N1["13.2 Atividade prática — Laboratório H"]
+  N2["13.3 Correções típicas"]
+  N3["13.4 Registro"]
+  N4["13.5 Caso resolvido"]
+  N5["13.6 Atividade prática"]
+  N6["13.7 Pedindo ajuda"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 Método"]
+  N1["13.2 Atividade prática — Laboratório H"]
+  N2["13.3 Correções típicas"]
+  N3["13.4 Registro"]
+  N4["13.5 Caso resolvido"]
+  N5["13.6 Atividade prática"]
+  N6["13.7 Pedindo ajuda"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX037"]
+```
+
+```text
+[13.1 Método]
+    |
+    v
+[13.2 Atividade prática — Laboratório H]
+    |
+    v
+[13.3 Correções típicas]
+    |
+    v
+[13.4 Registro]
+    |
+    v
+[13.5 Caso resolvido]
+    |
+    v
+[13.6 Atividade prática]
+    |
+    v
+[13.7 Pedindo ajuda]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1157,6 +1972,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 14 — Segurança quântica e pós-quântica: automação
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["14.1 Verificações rotineiras"]
+  N1["14.2 Atividade prática — Laboratório K"]
+  N2["14.3 Após as janelas de patches"]
+  N3["14.4 Scripts fáceis de manter"]
+  N4["14.5 Caso resolvido"]
+  N5["14.6 Atividade prática"]
+  N6["14.7 Automação e escopo"]
+  N7["14.9 Qualidade dos alertas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 Verificações rotineiras"]
+  N1["14.2 Atividade prática — Laboratório K"]
+  N2["14.3 Após as janelas de patches"]
+  N3["14.4 Scripts fáceis de manter"]
+  N4["14.5 Caso resolvido"]
+  N5["14.6 Atividade prática"]
+  N6["14.7 Automação e escopo"]
+  N7["14.9 Qualidade dos alertas"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
+```
+
+```text
+[14.1 Verificações rotineiras]
+    |
+    v
+[14.2 Atividade prática — Laboratório K]
+    |
+    v
+[14.3 Após as janelas de patches]
+    |
+    v
+[14.4 Scripts fáceis de manter]
+    |
+    v
+[14.5 Caso resolvido]
+    |
+    v
+[14.6 Atividade prática]
+    |
+    v
+[14.7 Automação e escopo]
+    |
+    v
+[14.9 Qualidade dos alertas]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) automatizar verificações rotineiras da negociação e da configuração; (2) usar limites de confiança para decidir quando uma etapa de implantação é segura; (3) agendar verificações após patches; e (4) manter os scripts fáceis de manter.
@@ -1258,6 +2138,71 @@ Siga para a próxima lição escrita.
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Segurança quântica e pós-quântica: integração e dependências
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["15.1 Todo salto conta"]
+  N1["15.2 Controladores"]
+  N2["15.3 Pedidos"]
+  N3["15.4 Atividade prática — Laboratório A"]
+  N4["15.5 Caso resolvido"]
+  N5["15.6 Atividade prática"]
+  N6["15.7 Acompanhando as dependências"]
+  N7["15.9 Contornando uma dependência"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 Todo salto conta"]
+  N1["15.2 Controladores"]
+  N2["15.3 Pedidos"]
+  N3["15.4 Atividade prática — Laboratório A"]
+  N4["15.5 Caso resolvido"]
+  N5["15.6 Atividade prática"]
+  N6["15.7 Acompanhando as dependências"]
+  N7["15.9 Contornando uma dependência"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX043"]
+```
+
+```text
+[15.1 Todo salto conta]
+    |
+    v
+[15.2 Controladores]
+    |
+    v
+[15.3 Pedidos]
+    |
+    v
+[15.4 Atividade prática — Laboratório A]
+    |
+    v
+[15.5 Caso resolvido]
+    |
+    v
+[15.6 Atividade prática]
+    |
+    v
+[15.7 Acompanhando as dependências]
+    |
+    v
+[15.9 Contornando uma dependência]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1370,6 +2315,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 16 — Documentação técnica e segurança
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["16.1 Runbooks"]
+  N1["16.2 Linhas de base"]
+  N2["16.3 Segurança e autorização"]
+  N3["16.4 Mantendo os documentos atualizados"]
+  N4["16.5 Caso resolvido"]
+  N5["16.6 Atividade prática"]
+  N6["16.7 Escrevendo para o turno da noite"]
+  N7["16.9 Compartilhando a documentação"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 Runbooks"]
+  N1["16.2 Linhas de base"]
+  N2["16.3 Segurança e autorização"]
+  N3["16.4 Mantendo os documentos atualizados"]
+  N4["16.5 Caso resolvido"]
+  N5["16.6 Atividade prática"]
+  N6["16.7 Escrevendo para o turno da noite"]
+  N7["16.9 Compartilhando a documentação"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[16.1 Runbooks]
+    |
+    v
+[16.2 Linhas de base]
+    |
+    v
+[16.3 Segurança e autorização]
+    |
+    v
+[16.4 Mantendo os documentos atualizados]
+    |
+    v
+[16.5 Caso resolvido]
+    |
+    v
+[16.6 Atividade prática]
+    |
+    v
+[16.7 Escrevendo para o turno da noite]
+    |
+    v
+[16.9 Compartilhando a documentação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever runbooks para as operações pós-quânticas; (2) documentar linhas de base de configuração; (3) seguir as regras de segurança e de autorização; e (4) manter a documentação atualizada.
@@ -1452,6 +2462,71 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 17 — Laboratório controlado II
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["17.1 Layout do laboratório"]
+  N1["17.2 Cenários"]
+  N2["17.3 Tempos"]
+  N3["17.4 Debriefing"]
+  N4["17.5 Caso resolvido"]
+  N5["17.6 Atividade prática"]
+  N6["17.7 Trabalhando em dupla"]
+  N7["17.9 Registrando o exercício"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 Layout do laboratório"]
+  N1["17.2 Cenários"]
+  N2["17.3 Tempos"]
+  N3["17.4 Debriefing"]
+  N4["17.5 Caso resolvido"]
+  N5["17.6 Atividade prática"]
+  N6["17.7 Trabalhando em dupla"]
+  N7["17.9 Registrando o exercício"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX049"]
+```
+
+```text
+[17.1 Layout do laboratório]
+    |
+    v
+[17.2 Cenários]
+    |
+    v
+[17.3 Tempos]
+    |
+    v
+[17.4 Debriefing]
+    |
+    v
+[17.5 Caso resolvido]
+    |
+    v
+[17.6 Atividade prática]
+    |
+    v
+[17.7 Trabalhando em dupla]
+    |
+    v
+[17.9 Registrando o exercício]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) executar um laboratório de múltiplos saltos com monitoramento; (2) injetar e diagnosticar falhas; (3) praticar runbooks sob pressão de tempo; e (4) fazer o debriefing e melhorar os documentos.
@@ -1533,6 +2608,71 @@ Siga para a próxima lição escrita.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["18.1 Escolhas de projeto"]
+  N1["18.2 Plano"]
+  N2["18.3 Execução"]
+  N3["18.4 Relatório e passagem"]
+  N4["18.5 Caso resolvido"]
+  N5["18.6 Atividade prática"]
+  N6["18.7 Refletindo sobre o projeto"]
+  N7["18.9 Avaliação"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX052"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Escolhas de projeto"]
+  N1["18.2 Plano"]
+  N2["18.3 Execução"]
+  N3["18.4 Relatório e passagem"]
+  N4["18.5 Caso resolvido"]
+  N5["18.6 Atividade prática"]
+  N6["18.7 Refletindo sobre o projeto"]
+  N7["18.9 Avaliação"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX052"]
+```
+
+```text
+[18.1 Escolhas de projeto]
+    |
+    v
+[18.2 Plano]
+    |
+    v
+[18.3 Execução]
+    |
+    v
+[18.4 Relatório e passagem]
+    |
+    v
+[18.5 Caso resolvido]
+    |
+    v
+[18.6 Atividade prática]
+    |
+    v
+[18.7 Refletindo sobre o projeto]
+    |
+    v
+[18.9 Avaliação]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Objetivos de aprendizagem
 

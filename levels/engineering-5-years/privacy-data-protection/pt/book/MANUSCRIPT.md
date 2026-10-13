@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os nove laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os nove laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,51 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Cálculo I
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Por que uma engenheira encontra a privacidade ce"]
+  N1["1.2 Taxas de variação"]
+  N2["1.4 Otimização como compromisso"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Por que uma engenheira encontra a privacidade ce"]
+  N1["1.2 Taxas de variação"]
+  N2["1.4 Otimização como compromisso"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 Por que uma engenheira encontra a privacidade ce]
+    |
+    v
+[1.2 Taxas de variação]
+    |
+    v
+[1.4 Otimização como compromisso]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -89,6 +134,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Matemática discreta
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["2.1 Contando combinações"]
+  N1["2.2 Conjuntos e categorias"]
+  N2["2.3 O princípio da casa dos pombos"]
+  N3["2.4 Grafos de relações"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX004"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Contando combinações"]
+  N1["2.2 Conjuntos e categorias"]
+  N2["2.3 O princípio da casa dos pombos"]
+  N3["2.4 Grafos de relações"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
+```
+
+```text
+[2.1 Contando combinações]
+    |
+    v
+[2.2 Conjuntos e categorias]
+    |
+    v
+[2.3 O princípio da casa dos pombos]
+    |
+    v
+[2.4 Grafos de relações]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) contar combinações de atributos; (2) usar conjuntos para descrever categorias de dados; (3) raciocinar sobre a unicidade com o princípio da casa dos pombos.
@@ -140,6 +235,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["3.1 Bits são físicos"]
+  N1["3.2 Memória flash e nivelamento de desgaste"]
+  N2["3.3 Energia e retenção"]
+  N3["3.4 Sinais e canais laterais"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX007"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Bits são físicos"]
+  N1["3.2 Memória flash e nivelamento de desgaste"]
+  N2["3.3 Energia e retenção"]
+  N3["3.4 Sinais e canais laterais"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[3.1 Bits são físicos]
+    |
+    v
+[3.2 Memória flash e nivelamento de desgaste]
+    |
+    v
+[3.3 Energia e retenção]
+    |
+    v
+[3.4 Sinais e canais laterais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -193,6 +338,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Programação I
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["4.1 Primeiros programas com dados pessoais"]
+  N1["4.2 Validando a entrada"]
+  N2["4.3 Funções e responsabilidade"]
+  N3["4.4 Testando com dados falsos"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX010"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Primeiros programas com dados pessoais"]
+  N1["4.2 Validando a entrada"]
+  N2["4.3 Funções e responsabilidade"]
+  N3["4.4 Testando com dados falsos"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX010"]
+```
+
+```text
+[4.1 Primeiros programas com dados pessoais]
+    |
+    v
+[4.2 Validando a entrada]
+    |
+    v
+[4.3 Funções e responsabilidade]
+    |
+    v
+[4.4 Testando com dados falsos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever programas simples que tratem dados pessoais com segurança; (2) evitar registrar identificadores em logs; (3) validar entradas para reduzir erros de coleta.
@@ -244,6 +439,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["5.1 Escrevendo para pacientes"]
+  N1["5.2 Informação em camadas"]
+  N2["5.3 Registros de decisões de projeto"]
+  N3["5.4 Explicando o risco com clareza"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Escrevendo para pacientes"]
+  N1["5.2 Informação em camadas"]
+  N2["5.3 Registros de decisões de projeto"]
+  N3["5.4 Explicando o risco com clareza"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
+```
+
+```text
+[5.1 Escrevendo para pacientes]
+    |
+    v
+[5.2 Informação em camadas]
+    |
+    v
+[5.3 Registros de decisões de projeto]
+    |
+    v
+[5.4 Explicando o risco com clareza]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -297,6 +542,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Cálculo II
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["6.1 Exposição acumulada"]
+  N1["6.2 Decaimento e obsolescência"]
+  N2["6.3 Séries e acumulação"]
+  N3["6.4 Aproximação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Exposição acumulada"]
+  N1["6.2 Decaimento e obsolescência"]
+  N2["6.3 Séries e acumulação"]
+  N3["6.4 Aproximação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[6.1 Exposição acumulada]
+    |
+    v
+[6.2 Decaimento e obsolescência]
+    |
+    v
+[6.3 Séries e acumulação]
+    |
+    v
+[6.4 Aproximação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) integrar a exposição ao longo do tempo; (2) modelar o decaimento exponencial do risco; (3) usar séries para acumular a perda de privacidade.
@@ -348,6 +643,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["7.1 Uma pergunta sensível"]
+  N1["7.2 Estimando a parcela"]
+  N2["7.3 O custo da negabilidade"]
+  N3["7.4 Respostas honestas como o ganho real"]
+  N4["Laboratório — Pesquisa por resposta aleatorizada sob"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX019"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Uma pergunta sensível"]
+  N1["7.2 Estimando a parcela"]
+  N2["7.3 O custo da negabilidade"]
+  N3["7.4 Respostas honestas como o ganho real"]
+  N4["Laboratório — Pesquisa por resposta aleatorizada sob"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX019"]
+```
+
+```text
+[7.1 Uma pergunta sensível]
+    |
+    v
+[7.2 Estimando a parcela]
+    |
+    v
+[7.3 O custo da negabilidade]
+    |
+    v
+[7.4 Respostas honestas como o ganho real]
+    |
+    v
+[Laboratório — Pesquisa por resposta aleatorizada sob]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -425,6 +775,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Arquitetura de computadores
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["8.1 Dados em muitos lugares"]
+  N1["8.2 Isolamento"]
+  N2["8.3 Hardware confiável para as chaves"]
+  N3["8.4 Compromissos de desempenho"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Dados em muitos lugares"]
+  N1["8.2 Isolamento"]
+  N2["8.3 Hardware confiável para as chaves"]
+  N3["8.4 Compromissos de desempenho"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX022"]
+```
+
+```text
+[8.1 Dados em muitos lugares]
+    |
+    v
+[8.2 Isolamento]
+    |
+    v
+[8.3 Hardware confiável para as chaves]
+    |
+    v
+[8.4 Compromissos de desempenho]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) rastrear onde os dados ficam na memória e nos caches; (2) entender o isolamento por hardware; (3) avaliar recursos de hardware para proteger dados de saúde.
@@ -476,6 +876,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["9.1 Separando os identificadores"]
+  N1["9.2 Verificações de acesso no código"]
+  N2["9.3 Testes baseados em propriedades"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Separando os identificadores"]
+  N1["9.2 Verificações de acesso no código"]
+  N2["9.3 Testes baseados em propriedades"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX025"]
+```
+
+```text
+[9.1 Separando os identificadores]
+    |
+    v
+[9.2 Verificações de acesso no código]
+    |
+    v
+[9.3 Testes baseados em propriedades]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -529,6 +974,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["10.1 Deveres de uma engenheira"]
+  N1["10.2 Além da conformidade"]
+  N2["10.3 Segurança dos pacientes"]
+  N3["10.4 Escalonamento"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX028"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Deveres de uma engenheira"]
+  N1["10.2 Além da conformidade"]
+  N2["10.3 Segurança dos pacientes"]
+  N3["10.4 Escalonamento"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX028"]
+```
+
+```text
+[10.1 Deveres de uma engenheira]
+    |
+    v
+[10.2 Além da conformidade]
+    |
+    v
+[10.3 Segurança dos pacientes]
+    |
+    v
+[10.4 Escalonamento]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar a ética da engenharia às decisões de privacidade; (2) reconhecer danos que vão além da conformidade legal; (3) decidir quando escalar preocupações.
@@ -580,6 +1075,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["11.1 Dados pessoais na rede"]
+  N1["11.2 Criptografia de transporte"]
+  N2["11.3 Minimização de metadados"]
+  N3["11.4 Chamadas a terceiros"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Dados pessoais na rede"]
+  N1["11.2 Criptografia de transporte"]
+  N2["11.3 Minimização de metadados"]
+  N3["11.4 Chamadas a terceiros"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
+```
+
+```text
+[11.1 Dados pessoais na rede]
+    |
+    v
+[11.2 Criptografia de transporte]
+    |
+    v
+[11.3 Minimização de metadados]
+    |
+    v
+[11.4 Chamadas a terceiros]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -633,6 +1178,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 12 — Sistemas operacionais
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["12.1 Permissões"]
+  N1["12.2 Logs do sistema"]
+  N2["12.3 Arquivos temporários"]
+  N3["12.4 Atualizações e correções"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Permissões"]
+  N1["12.2 Logs do sistema"]
+  N2["12.3 Arquivos temporários"]
+  N3["12.4 Atualizações e correções"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX034"]
+```
+
+```text
+[12.1 Permissões]
+    |
+    v
+[12.2 Logs do sistema]
+    |
+    v
+[12.3 Arquivos temporários]
+    |
+    v
+[12.4 Atualizações e correções]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar permissões de arquivo para proteger prontuários; (2) controlar os logs no nível do sistema operacional; (3) gerenciar arquivos temporários.
@@ -684,6 +1279,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de dados
+
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["13.1 A retenção como dado"]
+  N1["13.2 A consulta"]
+  N2["13.3 Eliminação segura"]
+  N3["13.4 Backups e réplicas"]
+  N4["Laboratório — Registros que passaram do prazo de ret"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 A retenção como dado"]
+  N1["13.2 A consulta"]
+  N2["13.3 Eliminação segura"]
+  N3["13.4 Backups e réplicas"]
+  N4["Laboratório — Registros que passaram do prazo de ret"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX037"]
+```
+
+```text
+[13.1 A retenção como dado]
+    |
+    v
+[13.2 A consulta]
+    |
+    v
+[13.3 Eliminação segura]
+    |
+    v
+[13.4 Backups e réplicas]
+    |
+    v
+[Laboratório — Registros que passaram do prazo de ret]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -770,6 +1420,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 14 — Engenharia de software
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["14.1 Histórias de privacidade"]
+  N1["14.2 Revisão de código"]
+  N2["14.3 Dados de teste"]
+  N3["14.4 Definição de pronto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 Histórias de privacidade"]
+  N1["14.2 Revisão de código"]
+  N2["14.3 Dados de teste"]
+  N3["14.4 Definição de pronto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
+```
+
+```text
+[14.1 Histórias de privacidade]
+    |
+    v
+[14.2 Revisão de código]
+    |
+    v
+[14.3 Dados de teste]
+    |
+    v
+[14.4 Definição de pronto]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever requisitos de privacidade como histórias de usuário; (2) incluir a privacidade na revisão de código; (3) gerenciar dados pessoais nos ambientes de teste.
@@ -821,6 +1521,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de segurança
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["15.1 A segurança serve à privacidade"]
+  N1["15.2 Autenticação"]
+  N2["15.3 As medidas do artigo 32"]
+  N3["15.4 Integridade para os pacientes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 A segurança serve à privacidade"]
+  N1["15.2 Autenticação"]
+  N2["15.3 As medidas do artigo 32"]
+  N3["15.4 Integridade para os pacientes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX043"]
+```
+
+```text
+[15.1 A segurança serve à privacidade]
+    |
+    v
+[15.2 Autenticação]
+    |
+    v
+[15.3 As medidas do artigo 32]
+    |
+    v
+[15.4 Integridade para os pacientes]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -874,6 +1624,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 16 — Engenharia de sistemas
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["16.1 Sistema de sistemas"]
+  N1["16.2 Rastreabilidade dos requisitos"]
+  N2["16.3 Ciclo de vida"]
+  N3["16.4 Interfaces com fornecedores"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 Sistema de sistemas"]
+  N1["16.2 Rastreabilidade dos requisitos"]
+  N2["16.3 Ciclo de vida"]
+  N3["16.4 Interfaces com fornecedores"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[16.1 Sistema de sistemas]
+    |
+    v
+[16.2 Rastreabilidade dos requisitos]
+    |
+    v
+[16.3 Ciclo de vida]
+    |
+    v
+[16.4 Interfaces com fornecedores]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever a plataforma da Pellmore como um sistema de sistemas; (2) rastrear os requisitos de privacidade através das interfaces; (3) gerenciar a privacidade ao longo do ciclo de vida.
@@ -925,6 +1725,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["17.1 Laços de realimentação"]
+  N1["17.2 Escolhendo os sinais"]
+  N2["17.3 Estabilidade"]
+  N3["17.4 Manipulação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 Laços de realimentação"]
+  N1["17.2 Escolhendo os sinais"]
+  N2["17.3 Estabilidade"]
+  N3["17.4 Manipulação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
+```
+
+```text
+[17.1 Laços de realimentação]
+    |
+    v
+[17.2 Escolhendo os sinais]
+    |
+    v
+[17.3 Estabilidade]
+    |
+    v
+[17.4 Manipulação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -978,6 +1828,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 18 — Arquitetura de segurança
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["18.1 Zonas"]
+  N1["18.2 Privilégio mínimo em escala"]
+  N2["18.3 Padrões de privacidade"]
+  N3["18.4 Avaliando o projeto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX052"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Zonas"]
+  N1["18.2 Privilégio mínimo em escala"]
+  N2["18.3 Padrões de privacidade"]
+  N3["18.4 Avaliando o projeto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX052"]
+```
+
+```text
+[18.1 Zonas]
+    |
+    v
+[18.2 Privilégio mínimo em escala]
+    |
+    v
+[18.3 Padrões de privacidade]
+    |
+    v
+[18.4 Avaliando o projeto]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar zonas e segmentação aos dados de saúde; (2) projetar o privilégio mínimo em escala; (3) avaliar a arquitetura à luz da proteção de dados desde a concepção.
@@ -1029,6 +1929,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa da aula
+
+Aula 19 publicada. Mapa, exemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["19.1 Identificadores e vinculação"]
+  N1["19.2 Hash com chave"]
+  N2["19.3 Escolhas de criptografia"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["19.1 Identificadores e vinculação"]
+  N1["19.2 Hash com chave"]
+  N2["19.3 Escolhas de criptografia"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX055"]
+```
+
+```text
+[19.1 Identificadores e vinculação]
+    |
+    v
+[19.2 Hash com chave]
+    |
+    v
+[19.3 Escolhas de criptografia]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1082,6 +2027,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 20 — Privacidade e proteção de dados: contexto de engenharia
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa da aula
+
+Aula 20 publicada. Mapa, exemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["20.1 As leis aplicáveis"]
+  N1["20.2 Controladores e operadores"]
+  N2["20.3 Frameworks e normas"]
+  N3["20.4 O papel da engenheira"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX058"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["20.1 As leis aplicáveis"]
+  N1["20.2 Controladores e operadores"]
+  N2["20.3 Frameworks e normas"]
+  N3["20.4 O papel da engenheira"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX058"]
+```
+
+```text
+[20.1 As leis aplicáveis]
+    |
+    v
+[20.2 Controladores e operadores]
+    |
+    v
+[20.3 Frameworks e normas]
+    |
+    v
+[20.4 O papel da engenheira]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear o arcabouço jurídico que molda a engenharia da Pellmore; (2) identificar os papéis de controlador e operador; (3) relacionar normas e frameworks ao trabalho de engenharia.
@@ -1134,6 +2129,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 21 — Privacidade e proteção de dados: requisitos
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa da aula
+
+Aula 21 publicada. Mapa, exemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["21.1 Dos princípios aos requisitos"]
+  N1["21.2 Redação testável"]
+  N2["21.3 Direitos como requisitos"]
+  N3["21.4 Priorização pelo risco"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX061"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["21.1 Dos princípios aos requisitos"]
+  N1["21.2 Redação testável"]
+  N2["21.3 Direitos como requisitos"]
+  N3["21.4 Priorização pelo risco"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
+```
+
+```text
+[21.1 Dos princípios aos requisitos]
+    |
+    v
+[21.2 Redação testável]
+    |
+    v
+[21.3 Direitos como requisitos]
+    |
+    v
+[21.4 Priorização pelo risco]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) derivar requisitos a partir dos princípios jurídicos; (2) tornar os requisitos testáveis; (3) priorizar os requisitos pelo risco.
@@ -1185,6 +2230,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Privacidade e proteção de dados: modelos de sistema e de dados
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa da aula
+
+Aula 22 publicada. Mapa, exemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["22.1 O inventário"]
+  N1["22.2 Verificações automatizadas"]
+  N2["22.3 Transferências"]
+  N3["22.4 Base para pesquisa"]
+  N4["Laboratório — Verificação de finalidade, base legal"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX064"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["22.1 O inventário"]
+  N1["22.2 Verificações automatizadas"]
+  N2["22.3 Transferências"]
+  N3["22.4 Base para pesquisa"]
+  N4["Laboratório — Verificação de finalidade, base legal"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
+```
+
+```text
+[22.1 O inventário]
+    |
+    v
+[22.2 Verificações automatizadas]
+    |
+    v
+[22.3 Transferências]
+    |
+    v
+[22.4 Base para pesquisa]
+    |
+    v
+[Laboratório — Verificação de finalidade, base legal]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1275,6 +2375,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 23 — Privacidade e proteção de dados: análise de ameaças e falhas
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa da aula
+
+Aula 23 publicada. Mapa, exemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["23.1 Ameaças à privacidade"]
+  N1["23.2 Modos de falha"]
+  N2["23.4 Ordenação das ameaças"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX067"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["23.1 Ameaças à privacidade"]
+  N1["23.2 Modos de falha"]
+  N2["23.4 Ordenação das ameaças"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX067"]
+```
+
+```text
+[23.1 Ameaças à privacidade]
+    |
+    v
+[23.2 Modos de falha]
+    |
+    v
+[23.4 Ordenação das ameaças]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar um modelo de ameaças à privacidade à plataforma; (2) analisar os modos de falha que prejudicam a privacidade; (3) incluir ameaças não maliciosas.
@@ -1326,6 +2471,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Privacidade e proteção de dados: métodos I
+
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa da aula
+
+Aula 24 publicada. Mapa, exemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["24.1 Quando a DPIA é necessária"]
+  N1["24.2 Pontuação dos riscos"]
+  N2["24.3 Medidas e risco residual"]
+  N3["24.4 Consulta prévia"]
+  N4["Laboratório — Pontuações de risco da DPIA antes e de"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX070"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["24.1 Quando a DPIA é necessária"]
+  N1["24.2 Pontuação dos riscos"]
+  N2["24.3 Medidas e risco residual"]
+  N3["24.4 Consulta prévia"]
+  N4["Laboratório — Pontuações de risco da DPIA antes e de"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX070"]
+```
+
+```text
+[24.1 Quando a DPIA é necessária]
+    |
+    v
+[24.2 Pontuação dos riscos]
+    |
+    v
+[24.3 Medidas e risco residual]
+    |
+    v
+[24.4 Consulta prévia]
+    |
+    v
+[Laboratório — Pontuações de risco da DPIA antes e de]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1404,6 +2604,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 25 — Ateliê de projeto I
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa da aula
+
+Aula 25 publicada. Mapa, exemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["25.1 O enunciado"]
+  N1["25.2 Alternativas"]
+  N2["25.3 Decisões automatizadas"]
+  N3["25.4 Crítica"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX073"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["25.1 O enunciado"]
+  N1["25.2 Alternativas"]
+  N2["25.3 Decisões automatizadas"]
+  N3["25.4 Crítica"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX073"]
+```
+
+```text
+[25.1 O enunciado]
+    |
+    v
+[25.2 Alternativas]
+    |
+    v
+[25.3 Decisões automatizadas]
+    |
+    v
+[25.4 Crítica]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar de ponta a ponta uma funcionalidade que preserve a privacidade; (2) apresentar alternativas de projeto; (3) responder às críticas em um ateliê.
@@ -1455,6 +2705,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Privacidade e proteção de dados: alternativas de arquitetura
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa da aula
+
+Aula 26 publicada. Mapa, exemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["26.1 Três arquiteturas"]
+  N1["26.2 Tecnologias de aprimoramento da privacidade"]
+  N2["26.3 Pontuação"]
+  N3["26.4 Decisão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX076"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["26.1 Três arquiteturas"]
+  N1["26.2 Tecnologias de aprimoramento da privacidade"]
+  N2["26.3 Pontuação"]
+  N3["26.4 Decisão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX076"]
+```
+
+```text
+[26.1 Três arquiteturas]
+    |
+    v
+[26.2 Tecnologias de aprimoramento da privacidade]
+    |
+    v
+[26.3 Pontuação]
+    |
+    v
+[26.4 Decisão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1508,6 +2808,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 27 — Privacidade e proteção de dados: projeto de controles
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa da aula
+
+Aula 27 publicada. Mapa, exemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["27.1 Tipos de controle"]
+  N1["27.2 Gestão do consentimento"]
+  N2["27.3 Controles ligados aos requisitos"]
+  N3["27.4 Responsáveis pelos controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX079"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["27.1 Tipos de controle"]
+  N1["27.2 Gestão do consentimento"]
+  N2["27.3 Controles ligados aos requisitos"]
+  N3["27.4 Responsáveis pelos controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX079"]
+```
+
+```text
+[27.1 Tipos de controle]
+    |
+    v
+[27.2 Gestão do consentimento]
+    |
+    v
+[27.3 Controles ligados aos requisitos]
+    |
+    v
+[27.4 Responsáveis pelos controles]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar controles de privacidade preventivos, detectivos e corretivos; (2) projetar a gestão do consentimento; (3) ligar os controles aos requisitos e aos riscos.
@@ -1560,6 +2910,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 28 — Privacidade e proteção de dados: implementação I
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa da aula
+
+Aula 28 publicada. Mapa, exemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["28.1 Marcações de finalidade no esquema"]
+  N1["28.2 Propagação do consentimento"]
+  N2["28.3 Implantação segura"]
+  N3["28.4 Documentação como código"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX082"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["28.1 Marcações de finalidade no esquema"]
+  N1["28.2 Propagação do consentimento"]
+  N2["28.3 Implantação segura"]
+  N3["28.4 Documentação como código"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX082"]
+```
+
+```text
+[28.1 Marcações de finalidade no esquema]
+    |
+    v
+[28.2 Propagação do consentimento]
+    |
+    v
+[28.3 Implantação segura]
+    |
+    v
+[28.4 Documentação como código]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar marcações de finalidade e verificações de acesso; (2) implementar a propagação do consentimento; (3) implantar mudanças com segurança.
@@ -1611,6 +3011,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Privacidade e proteção de dados: medição
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa da aula
+
+Aula 29 publicada. Mapa, exemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["29.1 Medir a minimização"]
+  N1["29.2 Agir a partir da medida"]
+  N2["29.3 Um conjunto de métricas"]
+  N3["29.4 Métricas sem novo risco"]
+  N4["Laboratório — Campos coletados versus necessários po"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX085"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["29.1 Medir a minimização"]
+  N1["29.2 Agir a partir da medida"]
+  N2["29.3 Um conjunto de métricas"]
+  N3["29.4 Métricas sem novo risco"]
+  N4["Laboratório — Campos coletados versus necessários po"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX085"]
+```
+
+```text
+[29.1 Medir a minimização]
+    |
+    v
+[29.2 Agir a partir da medida]
+    |
+    v
+[29.3 Um conjunto de métricas]
+    |
+    v
+[29.4 Métricas sem novo risco]
+    |
+    v
+[Laboratório — Campos coletados versus necessários po]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1690,6 +3145,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 30 — Laboratório de verificação I
 
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa da aula
+
+Aula 30 publicada. Mapa, exemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["30.1 Testes a partir das ameaças"]
+  N1["30.2 Testes de direitos"]
+  N2["30.3 Evidências"]
+  N3["30.4 Novos testes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX088"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["30.1 Testes a partir das ameaças"]
+  N1["30.2 Testes de direitos"]
+  N2["30.3 Evidências"]
+  N3["30.4 Novos testes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX088"]
+```
+
+```text
+[30.1 Testes a partir das ameaças]
+    |
+    v
+[30.2 Testes de direitos]
+    |
+    v
+[30.3 Evidências]
+    |
+    v
+[30.4 Novos testes]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) verificar controles de privacidade com testes; (2) projetar testes a partir das ameaças; (3) registrar evidências para a responsabilização.
@@ -1742,6 +3247,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 31 — Privacidade e proteção de dados: implementação II
 
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Mapa da aula
+
+Aula 31 publicada. Mapa, exemplo, EX091.
+
+```mermaid
+flowchart TD
+  N0["31.1 Portabilidade"]
+  N1["31.2 Integração com o fornecedor"]
+  N2["31.3 Novo projeto da análise de uso"]
+  N3["31.4 Qualidade do código"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX091"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["31.1 Portabilidade"]
+  N1["31.2 Integração com o fornecedor"]
+  N2["31.3 Novo projeto da análise de uso"]
+  N3["31.4 Qualidade do código"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX091"]
+```
+
+```text
+[31.1 Portabilidade]
+    |
+    v
+[31.2 Integração com o fornecedor]
+    |
+    v
+[31.3 Novo projeto da análise de uso]
+    |
+    v
+[31.4 Qualidade do código]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar a portabilidade de dados; (2) integrar os sistemas de um fornecedor ao atendimento dos direitos; (3) implementar uma análise de uso que preserve a privacidade.
@@ -1793,6 +3348,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Privacidade e proteção de dados: confiabilidade
+
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Mapa da aula
+
+Aula 32 publicada. Mapa, exemplo, EX094.
+
+```mermaid
+flowchart TD
+  N0["32.1 A eliminação como sistema em série"]
+  N1["32.2 Novas tentativas"]
+  N2["32.3 Falhas persistentes"]
+  N3["32.4 A hipótese de independência"]
+  N4["Laboratório — Confiabilidade da eliminação em cinco"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX094"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["32.1 A eliminação como sistema em série"]
+  N1["32.2 Novas tentativas"]
+  N2["32.3 Falhas persistentes"]
+  N3["32.4 A hipótese de independência"]
+  N4["Laboratório — Confiabilidade da eliminação em cinco"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX094"]
+```
+
+```text
+[32.1 A eliminação como sistema em série]
+    |
+    v
+[32.2 Novas tentativas]
+    |
+    v
+[32.3 Falhas persistentes]
+    |
+    v
+[32.4 A hipótese de independência]
+    |
+    v
+[Laboratório — Confiabilidade da eliminação em cinco]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1867,6 +3477,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 33 — Privacidade e proteção de dados: segurança operacional e resiliência
 
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Mapa da aula
+
+Aula 33 publicada. Mapa, exemplo, EX097.
+
+```mermaid
+flowchart TD
+  N0["33.1 Requisitos de resiliência"]
+  N1["33.2 Violações como incidentes"]
+  N2["33.3 Privacidade durante a recuperação"]
+  N3["33.4 Degradação controlada"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX097"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["33.1 Requisitos de resiliência"]
+  N1["33.2 Violações como incidentes"]
+  N2["33.3 Privacidade durante a recuperação"]
+  N3["33.4 Degradação controlada"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX097"]
+```
+
+```text
+[33.1 Requisitos de resiliência]
+    |
+    v
+[33.2 Violações como incidentes]
+    |
+    v
+[33.3 Privacidade durante a recuperação]
+    |
+    v
+[33.4 Degradação controlada]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) planejar para incidentes que afetem dados pessoais; (2) projetar uma resiliência que preserve a privacidade; (3) equilibrar disponibilidade e confidencialidade.
@@ -1918,6 +3578,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Privacidade e proteção de dados: integração
+
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Mapa da aula
+
+Aula 34 publicada. Mapa, exemplo, EX100.
+
+```mermaid
+flowchart TD
+  N0["34.1 Serviços compartilhados"]
+  N1["34.2 Laboratório parceiro"]
+  N2["34.3 Testes de ponta a ponta"]
+  N3["34.4 Controle de mudanças"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX100"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["34.1 Serviços compartilhados"]
+  N1["34.2 Laboratório parceiro"]
+  N2["34.3 Testes de ponta a ponta"]
+  N3["34.4 Controle de mudanças"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX100"]
+```
+
+```text
+[34.1 Serviços compartilhados]
+    |
+    v
+[34.2 Laboratório parceiro]
+    |
+    v
+[34.3 Testes de ponta a ponta]
+    |
+    v
+[34.4 Controle de mudanças]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1971,6 +3681,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 35 — Ateliê de projeto II
 
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Mapa da aula
+
+Aula 35 publicada. Mapa, exemplo, EX103.
+
+```mermaid
+flowchart TD
+  N0["35.1 O enunciado"]
+  N1["35.2 Compartilhamento granular"]
+  N2["35.3 Pacientes vulneráveis"]
+  N3["35.4 Apresentação à banca"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX103"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["35.1 O enunciado"]
+  N1["35.2 Compartilhamento granular"]
+  N2["35.3 Pacientes vulneráveis"]
+  N3["35.4 Apresentação à banca"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX103"]
+```
+
+```text
+[35.1 O enunciado]
+    |
+    v
+[35.2 Compartilhamento granular]
+    |
+    v
+[35.3 Pacientes vulneráveis]
+    |
+    v
+[35.4 Apresentação à banca]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar um novo uso de dados com base na integridade contextual; (2) considerar grupos vulneráveis; (3) apresentar a uma banca diversa.
@@ -2022,6 +3782,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Privacidade e proteção de dados: desempenho e escala
+
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Mapa da aula
+
+Aula 36 publicada. Mapa, exemplo, EX106.
+
+```mermaid
+flowchart TD
+  N0["36.1 Publicação de estatísticas das clínicas"]
+  N1["36.2 O laboratório do orçamento"]
+  N2["36.3 Efeitos de escala"]
+  N3["36.4 Engenharia do pipeline"]
+  N4["Laboratório — Divisão de um orçamento anual de priva"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX106"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["36.1 Publicação de estatísticas das clínicas"]
+  N1["36.2 O laboratório do orçamento"]
+  N2["36.3 Efeitos de escala"]
+  N3["36.4 Engenharia do pipeline"]
+  N4["Laboratório — Divisão de um orçamento anual de priva"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX106"]
+```
+
+```text
+[36.1 Publicação de estatísticas das clínicas]
+    |
+    v
+[36.2 O laboratório do orçamento]
+    |
+    v
+[36.3 Efeitos de escala]
+    |
+    v
+[36.4 Engenharia do pipeline]
+    |
+    v
+[Laboratório — Divisão de um orçamento anual de priva]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2093,6 +3908,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 37 — Privacidade e proteção de dados: operações
 
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Mapa da aula
+
+Aula 37 publicada. Mapa, exemplo, EX109.
+
+```mermaid
+flowchart TD
+  N0["37.1 Uma função de operações de privacidade"]
+  N1["37.2 Direitos em volume"]
+  N2["37.3 Monitoramento"]
+  N3["37.4 Melhoria contínua"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX109"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["37.1 Uma função de operações de privacidade"]
+  N1["37.2 Direitos em volume"]
+  N2["37.3 Monitoramento"]
+  N3["37.4 Melhoria contínua"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX109"]
+```
+
+```text
+[37.1 Uma função de operações de privacidade]
+    |
+    v
+[37.2 Direitos em volume]
+    |
+    v
+[37.3 Monitoramento]
+    |
+    v
+[37.4 Melhoria contínua]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir as operações de privacidade no dia a dia; (2) atender pedidos de direitos em volume; (3) operar o monitoramento e a resposta.
@@ -2144,6 +4009,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Privacidade e proteção de dados: validação
+
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Mapa da aula
+
+Aula 38 publicada. Mapa, exemplo, EX112.
+
+```mermaid
+flowchart TD
+  N0["38.1 Verificação e validação"]
+  N1["38.2 Usabilidade da privacidade"]
+  N2["38.3 Validação jurídica"]
+  N3["38.4 Validação diante das autoridades"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX112"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["38.1 Verificação e validação"]
+  N1["38.2 Usabilidade da privacidade"]
+  N2["38.3 Validação jurídica"]
+  N3["38.4 Validação diante das autoridades"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX112"]
+```
+
+```text
+[38.1 Verificação e validação]
+    |
+    v
+[38.2 Usabilidade da privacidade]
+    |
+    v
+[38.3 Validação jurídica]
+    |
+    v
+[38.4 Validação diante das autoridades]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2197,6 +4112,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 39 — Privacidade e proteção de dados: manutenibilidade
 
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Mapa da aula
+
+Aula 39 publicada. Mapa, exemplo, EX115.
+
+```mermaid
+flowchart TD
+  N0["39.1 Dívida de privacidade"]
+  N1["39.2 Controles legíveis"]
+  N2["39.3 Atualização de dependências"]
+  N3["39.4 Passagem de bastão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX115"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["39.1 Dívida de privacidade"]
+  N1["39.2 Controles legíveis"]
+  N2["39.3 Atualização de dependências"]
+  N3["39.4 Passagem de bastão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX115"]
+```
+
+```text
+[39.1 Dívida de privacidade]
+    |
+    v
+[39.2 Controles legíveis]
+    |
+    v
+[39.3 Atualização de dependências]
+    |
+    v
+[39.4 Passagem de bastão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) manter os controles de privacidade sustentáveis; (2) gerir a dívida técnica com impacto na privacidade; (3) documentar para futuros engenheiros.
@@ -2248,6 +4213,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Mapa da aula
+
+Aula 40 publicada. Mapa, exemplo, EX118.
+
+```mermaid
+flowchart TD
+  N0["40.1 Testes adversariais"]
+  N1["40.2 Correção do vazamento estatístico"]
+  N2["40.3 Testes independentes"]
+  N3["40.4 Relato à direção"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX118"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["40.1 Testes adversariais"]
+  N1["40.2 Correção do vazamento estatístico"]
+  N2["40.3 Testes independentes"]
+  N3["40.4 Relato à direção"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX118"]
+```
+
+```text
+[40.1 Testes adversariais]
+    |
+    v
+[40.2 Correção do vazamento estatístico]
+    |
+    v
+[40.3 Testes independentes]
+    |
+    v
+[40.4 Relato à direção]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2301,6 +4316,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 41 — Privacidade e proteção de dados: otimização do sistema
 
+<!-- cyberabc:lesson-figures:start ch-41 -->
+### Mapa da aula
+
+Aula 41 publicada. Mapa, exemplo, EX121.
+
+```mermaid
+flowchart TD
+  N0["41.2 Eliminação de redundâncias"]
+  N1["41.3 Trade-offs"]
+  N2["41.4 Medição do efeito"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX121"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["41.2 Eliminação de redundâncias"]
+  N1["41.3 Trade-offs"]
+  N2["41.4 Medição do efeito"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX121"]
+```
+
+```text
+[41.2 Eliminação de redundâncias]
+    |
+    v
+[41.3 Trade-offs]
+    |
+    v
+[41.4 Medição do efeito]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX121]
+```
+<!-- cyberabc:lesson-figures:end ch-41 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) otimizar a privacidade e a utilidade em conjunto; (2) eliminar tratamentos redundantes; (3) medir o efeito da otimização.
@@ -2352,6 +4412,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Privacidade e proteção de dados: pesquisa aplicada
+
+<!-- cyberabc:lesson-figures:start ch-42 -->
+### Mapa da aula
+
+Aula 42 publicada. Mapa, exemplo, EX124.
+
+```mermaid
+flowchart TD
+  N0["42.1 A questão"]
+  N1["42.2 Evidências"]
+  N2["42.3 Desenho do estudo"]
+  N3["42.4 Resultados e uso"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX124"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["42.1 A questão"]
+  N1["42.2 Evidências"]
+  N2["42.3 Desenho do estudo"]
+  N3["42.4 Resultados e uso"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX124"]
+```
+
+```text
+[42.1 A questão]
+    |
+    v
+[42.2 Evidências]
+    |
+    v
+[42.3 Desenho do estudo]
+    |
+    v
+[42.4 Resultados e uso]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX124]
+```
+<!-- cyberabc:lesson-figures:end ch-42 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2405,6 +4515,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
+<!-- cyberabc:lesson-figures:start ch-43 -->
+### Mapa da aula
+
+Aula 43 publicada. Mapa, exemplo, EX127.
+
+```mermaid
+flowchart TD
+  N0["43.1 Trabalho na governança"]
+  N1["43.2 Demandas conflitantes"]
+  N2["43.3 Conduta profissional"]
+  N3["43.4 Reflexão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX127"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["43.1 Trabalho na governança"]
+  N1["43.2 Demandas conflitantes"]
+  N2["43.3 Conduta profissional"]
+  N3["43.4 Reflexão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX127"]
+```
+
+```text
+[43.1 Trabalho na governança]
+    |
+    v
+[43.2 Demandas conflitantes]
+    |
+    v
+[43.3 Conduta profissional]
+    |
+    v
+[43.4 Reflexão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX127]
+```
+<!-- cyberabc:lesson-figures:end ch-43 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar dentro da governança de privacidade de uma organização; (2) lidar com demandas conflitantes das partes interessadas; (3) refletir sobre a prática profissional.
@@ -2456,6 +4616,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
+
+<!-- cyberabc:lesson-figures:start ch-44 -->
+### Mapa da aula
+
+Aula 44 publicada. Mapa, exemplo, EX130.
+
+```mermaid
+flowchart TD
+  N0["44.1 Escopo do projeto final"]
+  N1["44.2 Requisitos"]
+  N2["44.3 Riscos"]
+  N3["44.4 Plano de verificação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX130"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["44.1 Escopo do projeto final"]
+  N1["44.2 Requisitos"]
+  N2["44.3 Riscos"]
+  N3["44.4 Plano de verificação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX130"]
+```
+
+```text
+[44.1 Escopo do projeto final]
+    |
+    v
+[44.2 Requisitos]
+    |
+    v
+[44.3 Riscos]
+    |
+    v
+[44.4 Plano de verificação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX130]
+```
+<!-- cyberabc:lesson-figures:end ch-44 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2509,6 +4719,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 45 — Revisão independente de projeto
 
+<!-- cyberabc:lesson-figures:start ch-45 -->
+### Mapa da aula
+
+Aula 45 publicada. Mapa, exemplo, EX133.
+
+```mermaid
+flowchart TD
+  N0["45.1 Preparação da revisão"]
+  N1["45.2 Constatações"]
+  N2["45.3 Respostas"]
+  N3["45.4 Depois da revisão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX133"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["45.1 Preparação da revisão"]
+  N1["45.2 Constatações"]
+  N2["45.3 Respostas"]
+  N3["45.4 Depois da revisão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX133"]
+```
+
+```text
+[45.1 Preparação da revisão]
+    |
+    v
+[45.2 Constatações]
+    |
+    v
+[45.3 Respostas]
+    |
+    v
+[45.4 Depois da revisão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX133]
+```
+<!-- cyberabc:lesson-figures:end ch-45 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) preparar um projeto para revisão independente; (2) responder às constatações; (3) registrar as decisões depois da revisão.
@@ -2561,6 +4821,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 46 — Projeto final de engenharia II
 
+<!-- cyberabc:lesson-figures:start ch-46 -->
+### Mapa da aula
+
+Aula 46 publicada. Mapa, exemplo, EX136.
+
+```mermaid
+flowchart TD
+  N0["46.1 Construção"]
+  N1["46.2 Verificação"]
+  N2["46.3 Avaliação com pesquisadores"]
+  N3["46.4 Reflexão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX136"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["46.1 Construção"]
+  N1["46.2 Verificação"]
+  N2["46.3 Avaliação com pesquisadores"]
+  N3["46.4 Reflexão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX136"]
+```
+
+```text
+[46.1 Construção]
+    |
+    v
+[46.2 Verificação]
+    |
+    v
+[46.3 Avaliação com pesquisadores]
+    |
+    v
+[46.4 Reflexão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX136]
+```
+<!-- cyberabc:lesson-figures:end ch-46 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) construir o serviço de dados de pesquisa; (2) verificá-lo diante dos critérios de aceitação; (3) avaliá-lo com pesquisadores.
@@ -2612,6 +4922,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
+
+<!-- cyberabc:lesson-figures:start ch-47 -->
+### Mapa da aula
+
+Aula 47 publicada. Mapa, exemplo, EX139.
+
+```mermaid
+flowchart TD
+  N0["47.1 O cenário"]
+  N1["47.2 O relógio"]
+  N2["47.3 Comunicação com os pacientes"]
+  N3["47.4 Melhorias"]
+  N4["Laboratório — Linha do tempo da violação diante do p"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX139"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["47.1 O cenário"]
+  N1["47.2 O relógio"]
+  N2["47.3 Comunicação com os pacientes"]
+  N3["47.4 Melhorias"]
+  N4["Laboratório — Linha do tempo da violação diante do p"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX139"]
+```
+
+```text
+[47.1 O cenário]
+    |
+    v
+[47.2 O relógio]
+    |
+    v
+[47.3 Comunicação com os pacientes]
+    |
+    v
+[47.4 Melhorias]
+    |
+    v
+[Laboratório — Linha do tempo da violação diante do p]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX139]
+```
+<!-- cyberabc:lesson-figures:end ch-47 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2694,6 +5059,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 48 — Dossiê de evidências
 
+<!-- cyberabc:lesson-figures:start ch-48 -->
+### Mapa da aula
+
+Aula 48 publicada. Mapa, exemplo, EX142.
+
+```mermaid
+flowchart TD
+  N0["48.1 O que entra no dossiê"]
+  N1["48.2 Integridade"]
+  N2["48.3 Investigação da divergência"]
+  N3["48.4 Lições"]
+  N4["Laboratório — Conferência das evidências do dossiê c"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX142"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["48.1 O que entra no dossiê"]
+  N1["48.2 Integridade"]
+  N2["48.3 Investigação da divergência"]
+  N3["48.4 Lições"]
+  N4["Laboratório — Conferência das evidências do dossiê c"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX142"]
+```
+
+```text
+[48.1 O que entra no dossiê]
+    |
+    v
+[48.2 Integridade]
+    |
+    v
+[48.3 Investigação da divergência]
+    |
+    v
+[48.4 Lições]
+    |
+    v
+[Laboratório — Conferência das evidências do dossiê c]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX142]
+```
+<!-- cyberabc:lesson-figures:end ch-48 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) reunir evidências para a responsabilização; (2) proteger a integridade das evidências; (3) lidar com divergências de forma honesta.
@@ -2770,6 +5190,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 49 — Tese de engenharia
 
+<!-- cyberabc:lesson-figures:start ch-49 -->
+### Mapa da aula
+
+Aula 49 publicada. Mapa, exemplo, EX145.
+
+```mermaid
+flowchart TD
+  N0["49.1 A afirmação"]
+  N1["49.2 Capítulos de evidências"]
+  N2["49.4 Generalização"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX145"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["49.1 A afirmação"]
+  N1["49.2 Capítulos de evidências"]
+  N2["49.4 Generalização"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX145"]
+```
+
+```text
+[49.1 A afirmação]
+    |
+    v
+[49.2 Capítulos de evidências]
+    |
+    v
+[49.4 Generalização]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX145]
+```
+<!-- cyberabc:lesson-figures:end ch-49 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma tese de engenharia em torno de uma afirmação de projeto; (2) apresentar evidências e limites; (3) generalizar as lições com cuidado.
@@ -2821,6 +5286,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
+
+<!-- cyberabc:lesson-figures:start ch-50 -->
+### Mapa da aula
+
+Aula 50 publicada. Mapa, exemplo, EX148.
+
+```mermaid
+flowchart TD
+  N0["50.1 Preparação"]
+  N1["50.2 A defesa"]
+  N2["50.3 Desenvolvimento profissional"]
+  N3["50.4 Olhar para trás"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX148"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["50.1 Preparação"]
+  N1["50.2 A defesa"]
+  N2["50.3 Desenvolvimento profissional"]
+  N3["50.4 Olhar para trás"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX148"]
+```
+
+```text
+[50.1 Preparação]
+    |
+    v
+[50.2 A defesa]
+    |
+    v
+[50.3 Desenvolvimento profissional]
+    |
+    v
+[50.4 Olhar para trás]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX148]
+```
+<!-- cyberabc:lesson-figures:end ch-50 -->
+
 
 ### Objetivos de aprendizagem
 

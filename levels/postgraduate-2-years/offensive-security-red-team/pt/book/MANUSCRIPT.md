@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Especialista de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso de pós-graduação, dois anos; aproximadamente 600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: especialistas experientes que conduzem escolhas de testes autorizados em escala organizacional.
 - Relação com os livros vizinhos: o [livro do bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) constrói os fundamentos e um projeto final; o [livro do mestrado](../../../../masters-2-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) enfatiza o desenho de pesquisa. **Este livro enfatiza o julgamento do especialista, a leitura de testes guiados por ameaças e a liderança em garantia.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -35,6 +35,71 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Tomada de decisão avançada em segurança
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Objetos de decisão"]
+  N1["1.2 Tipos de incerteza"]
+  N2["1.3 Aceitação versus adiamento"]
+  N3["1.4 Legibilidade para o examinador"]
+  N4["1.5 Autoridade"]
+  N5["1.6 Prática"]
+  N6["1.7 Narrativa"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Objetos de decisão"]
+  N1["1.2 Tipos de incerteza"]
+  N2["1.3 Aceitação versus adiamento"]
+  N3["1.4 Legibilidade para o examinador"]
+  N4["1.5 Autoridade"]
+  N5["1.6 Prática"]
+  N6["1.7 Narrativa"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[1.1 Objetos de decisão]
+    |
+    v
+[1.2 Tipos de incerteza]
+    |
+    v
+[1.3 Aceitação versus adiamento]
+    |
+    v
+[1.4 Legibilidade para o examinador]
+    |
+    v
+[1.5 Autoridade]
+    |
+    v
+[1.6 Prática]
+    |
+    v
+[1.7 Narrativa]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -97,6 +162,71 @@ Decisões são objetos com responsável e com as incertezas nomeadas; slogans e 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Prática atual em segurança ofensiva autorizada
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["2.1 Panorama da prática"]
+  N1["2.2 Especificidades dos testes guiados por ameaças"]
+  N2["2.3 SP 800-115 e PTES"]
+  N3["2.4 Crítica a fornecedores"]
+  N4["2.5 Catálogo da MCH"]
+  N5["2.6 Atualidade"]
+  N6["2.7 Narrativa"]
+  N7["2.8 Riscos do arquivo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX006"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Panorama da prática"]
+  N1["2.2 Especificidades dos testes guiados por ameaças"]
+  N2["2.3 SP 800-115 e PTES"]
+  N3["2.4 Crítica a fornecedores"]
+  N4["2.5 Catálogo da MCH"]
+  N5["2.6 Atualidade"]
+  N6["2.7 Narrativa"]
+  N7["2.8 Riscos do arquivo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
+```
+
+```text
+[2.1 Panorama da prática]
+    |
+    v
+[2.2 Especificidades dos testes guiados por ameaças]
+    |
+    v
+[2.3 SP 800-115 e PTES]
+    |
+    v
+[2.4 Crítica a fornecedores]
+    |
+    v
+[2.5 Catálogo da MCH]
+    |
+    v
+[2.6 Atualidade]
+    |
+    v
+[2.7 Narrativa]
+    |
+    v
+[2.8 Riscos do arquivo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -163,6 +293,71 @@ A prática atual é um catálogo de atividades nomeadas com honestidade, e não 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Evidências de especialista
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["3.1 Nível de especialista"]
+  N1["3.2 Dados privilegiados"]
+  N2["3.3 Resistência ao questionamento"]
+  N3["3.4 Capturas de tela teatrais"]
+  N4["3.5 Cadeia de custódia"]
+  N5["3.6 Plataforma"]
+  N6["3.7 Narrativa"]
+  N7["3.8 Controles financiados por exercícios"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX011"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Nível de especialista"]
+  N1["3.2 Dados privilegiados"]
+  N2["3.3 Resistência ao questionamento"]
+  N3["3.4 Capturas de tela teatrais"]
+  N4["3.5 Cadeia de custódia"]
+  N5["3.6 Plataforma"]
+  N6["3.7 Narrativa"]
+  N7["3.8 Controles financiados por exercícios"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[3.1 Nível de especialista]
+    |
+    v
+[3.2 Dados privilegiados]
+    |
+    v
+[3.3 Resistência ao questionamento]
+    |
+    v
+[3.4 Capturas de tela teatrais]
+    |
+    v
+[3.5 Cadeia de custódia]
+    |
+    v
+[3.6 Plataforma]
+    |
+    v
+[3.7 Narrativa]
+    |
+    v
+[3.8 Controles financiados por exercícios]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -234,6 +429,71 @@ A evidência de especialista resiste ao questionamento; o teatro não entra no c
 
 ## Capítulo 4 — Risco avançado e ética
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["4.1 Risco sistêmico"]
+  N1["4.2 Conflitos"]
+  N2["4.3 Pressão pelas aparências"]
+  N3["4.4 Paradas em testes guiados por ameaças"]
+  N4["4.5 Uso dual"]
+  N5["4.6 Cuidado"]
+  N6["4.7 Narrativa"]
+  N7["4.8 Bloqueios de calendário"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Risco sistêmico"]
+  N1["4.2 Conflitos"]
+  N2["4.3 Pressão pelas aparências"]
+  N3["4.4 Paradas em testes guiados por ameaças"]
+  N4["4.5 Uso dual"]
+  N5["4.6 Cuidado"]
+  N6["4.7 Narrativa"]
+  N7["4.8 Bloqueios de calendário"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[4.1 Risco sistêmico]
+    |
+    v
+[4.2 Conflitos]
+    |
+    v
+[4.3 Pressão pelas aparências]
+    |
+    v
+[4.4 Paradas em testes guiados por ameaças]
+    |
+    v
+[4.5 Uso dual]
+    |
+    v
+[4.6 Cuidado]
+    |
+    v
+[4.7 Narrativa]
+    |
+    v
+[4.8 Bloqueios de calendário]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) pesar o risco sistêmico para a compensação; (2) lidar com conflitos de interesse; (3) resistir à pressão pelas aparências; (4) desenhar condições éticas de parada para o trabalho guiado por ameaças.
@@ -304,6 +564,71 @@ A ética na escala da compensação inclui o dano sistêmico, o impedimento, a r
 
 ## Capítulo 5 — Alternativas de desenho para programas de avaliação
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["5.1 Alternativas"]
+  N1["5.2 Pontuação"]
+  N2["5.3 Portfólio"]
+  N3["5.5 Sensibilidade"]
+  N4["5.6 Resultado"]
+  N5["5.7 Narrativa"]
+  N6["5.8 Líderes reservados a lápis"]
+  N7["5.9 Calendário sombreado"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Alternativas"]
+  N1["5.2 Pontuação"]
+  N2["5.3 Portfólio"]
+  N3["5.5 Sensibilidade"]
+  N4["5.6 Resultado"]
+  N5["5.7 Narrativa"]
+  N6["5.8 Líderes reservados a lápis"]
+  N7["5.9 Calendário sombreado"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[5.1 Alternativas]
+    |
+    v
+[5.2 Pontuação]
+    |
+    v
+[5.3 Portfólio]
+    |
+    v
+[5.5 Sensibilidade]
+    |
+    v
+[5.6 Resultado]
+    |
+    v
+[5.7 Narrativa]
+    |
+    v
+[5.8 Líderes reservados a lápis]
+    |
+    v
+[5.9 Calendário sombreado]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) gerar alternativas de programa; (2) pontuá-las em aprendizado, risco, custo e capacidade; (3) recomendar um portfólio; (4) documentar os não objetivos.
@@ -373,6 +698,71 @@ O desenho de programas é um portfólio pontuado com não objetivos, e não um �
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Avaliação controlada
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["6.1 Alvos da avaliação"]
+  N1["6.2 Laboratório de pontuação"]
+  N2["6.3 Pré-registro"]
+  N3["6.4 Linguagem de GAP"]
+  N4["6.5 Independência"]
+  N5["6.6 Ética"]
+  N6["6.7 Narrativa"]
+  N7["6.8 Notas de viabilidade"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX026"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Alvos da avaliação"]
+  N1["6.2 Laboratório de pontuação"]
+  N2["6.3 Pré-registro"]
+  N3["6.4 Linguagem de GAP"]
+  N4["6.5 Independência"]
+  N5["6.6 Ética"]
+  N6["6.7 Narrativa"]
+  N7["6.8 Notas de viabilidade"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[6.1 Alvos da avaliação]
+    |
+    v
+[6.2 Laboratório de pontuação]
+    |
+    v
+[6.3 Pré-registro]
+    |
+    v
+[6.4 Linguagem de GAP]
+    |
+    v
+[6.5 Independência]
+    |
+    v
+[6.6 Ética]
+    |
+    v
+[6.7 Narrativa]
+    |
+    v
+[6.8 Notas de viabilidade]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -467,6 +857,71 @@ A avaliação controlada pesa o aprendizado contra o risco e recusa a linguagem 
 
 ## Capítulo 7 — Integração organizacional
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["7.1 Mapa de integração"]
+  N1["7.2 Programas paralelos"]
+  N2["7.3 Cadência"]
+  N3["7.4 Métricas de saúde"]
+  N4["7.5 Cuidado com os participantes"]
+  N5["7.6 Modo de falha"]
+  N6["7.7 Narrativa"]
+  N7["7.8 Slide da anistia"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Mapa de integração"]
+  N1["7.2 Programas paralelos"]
+  N2["7.3 Cadência"]
+  N3["7.4 Métricas de saúde"]
+  N4["7.5 Cuidado com os participantes"]
+  N5["7.6 Modo de falha"]
+  N6["7.7 Narrativa"]
+  N7["7.8 Slide da anistia"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[7.1 Mapa de integração]
+    |
+    v
+[7.2 Programas paralelos]
+    |
+    v
+[7.3 Cadência]
+    |
+    v
+[7.4 Métricas de saúde]
+    |
+    v
+[7.5 Cuidado com os participantes]
+    |
+    v
+[7.6 Modo de falha]
+    |
+    v
+[7.7 Narrativa]
+    |
+    v
+[7.8 Slide da anistia]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) integrar os testes ao SOC, à gestão de riscos, à área jurídica e aos participantes; (2) desenhar fluxos de informação; (3) evitar programas paralelos; (4) medir a saúde da integração.
@@ -541,6 +996,71 @@ Integração é um só catálogo, destinatários nomeados e backlog no dia a dia
 
 ## Capítulo 8 — Casos difíceis
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["8.1 Escopo ambíguo"]
+  N1["8.2 Sensíveis a pessoas internas"]
+  N2["8.3 Recusa do fornecedor"]
+  N3["8.4 Registro sob estresse"]
+  N4["8.5 Tempo"]
+  N5["8.6 Apoio"]
+  N6["8.7 Narrativa"]
+  N7["8.8 Controle do roteiro de RH"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Escopo ambíguo"]
+  N1["8.2 Sensíveis a pessoas internas"]
+  N2["8.3 Recusa do fornecedor"]
+  N3["8.4 Registro sob estresse"]
+  N4["8.5 Tempo"]
+  N5["8.6 Apoio"]
+  N6["8.7 Narrativa"]
+  N7["8.8 Controle do roteiro de RH"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[8.1 Escopo ambíguo]
+    |
+    v
+[8.2 Sensíveis a pessoas internas]
+    |
+    v
+[8.3 Recusa do fornecedor]
+    |
+    v
+[8.4 Registro sob estresse]
+    |
+    v
+[8.5 Tempo]
+    |
+    v
+[8.6 Apoio]
+    |
+    v
+[8.7 Narrativa]
+    |
+    v
+[8.8 Controle do roteiro de RH]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) lidar com escopo ambíguo; (2) lidar com achados sensíveis envolvendo pessoas internas; (3) lidar com a recusa de fornecedores; (4) manter registros sob estresse.
@@ -610,6 +1130,71 @@ Os casos difíceis param à espera de algo escrito, protegem as pessoas e deixam
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Liderança e garantia
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["9.1 Linguagem de garantia"]
+  N1["9.2 Verificador na integração contínua"]
+  N2["9.3 Comportamentos de liderança"]
+  N3["9.4 Treinar a recusa"]
+  N4["9.5 Formação do conselho"]
+  N5["9.6 Sucessão"]
+  N6["9.7 Narrativa"]
+  N7["9.8 Cartas de advertência a fornecedores"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX041"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Linguagem de garantia"]
+  N1["9.2 Verificador na integração contínua"]
+  N2["9.3 Comportamentos de liderança"]
+  N3["9.4 Treinar a recusa"]
+  N4["9.5 Formação do conselho"]
+  N5["9.6 Sucessão"]
+  N6["9.7 Narrativa"]
+  N7["9.8 Cartas de advertência a fornecedores"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[9.1 Linguagem de garantia]
+    |
+    v
+[9.2 Verificador na integração contínua]
+    |
+    v
+[9.3 Comportamentos de liderança]
+    |
+    v
+[9.4 Treinar a recusa]
+    |
+    v
+[9.5 Formação do conselho]
+    |
+    v
+[9.6 Sucessão]
+    |
+    v
+[9.7 Narrativa]
+    |
+    v
+[9.8 Cartas de advertência a fornecedores]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -702,6 +1287,71 @@ Liderança é linguagem de garantia honesta, recusa treinada e elogio à conten�
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["10.1 Propósito da leitura"]
+  N1["10.2 Lista de verificação do resumo"]
+  N2["10.3 Teatro de citações"]
+  N3["10.4 Transferência"]
+  N4["10.5 Empatia com as limitações"]
+  N5["10.6 Seminário"]
+  N6["10.7 Narrativa"]
+  N7["10.8 Métrica dos trinta minutos de silêncio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Propósito da leitura"]
+  N1["10.2 Lista de verificação do resumo"]
+  N2["10.3 Teatro de citações"]
+  N3["10.4 Transferência"]
+  N4["10.5 Empatia com as limitações"]
+  N5["10.6 Seminário"]
+  N6["10.7 Narrativa"]
+  N7["10.8 Métrica dos trinta minutos de silêncio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[10.1 Propósito da leitura]
+    |
+    v
+[10.2 Lista de verificação do resumo]
+    |
+    v
+[10.3 Teatro de citações]
+    |
+    v
+[10.4 Transferência]
+    |
+    v
+[10.5 Empatia com as limitações]
+    |
+    v
+[10.6 Seminário]
+    |
+    v
+[10.7 Narrativa]
+    |
+    v
+[10.8 Métrica dos trinta minutos de silêncio]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -798,6 +1448,71 @@ A crítica exige n, limitações e ética; citações não lidas são teatro.
 
 ## Capítulo 11 — Projeto aplicado
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["11.1 Escopo do projeto"]
+  N1["11.3 Pré-registro"]
+  N2["11.4 Transferência para as operações"]
+  N3["11.5 Folha de rosto de ética"]
+  N4["11.6 Limite de tempo"]
+  N5["11.7 Narrativa"]
+  N6["11.9 Semana de execução solo"]
+  N7["11.10 Envelopes lacrados"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Escopo do projeto"]
+  N1["11.3 Pré-registro"]
+  N2["11.4 Transferência para as operações"]
+  N3["11.5 Folha de rosto de ética"]
+  N4["11.6 Limite de tempo"]
+  N5["11.7 Narrativa"]
+  N6["11.9 Semana de execução solo"]
+  N7["11.10 Envelopes lacrados"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[11.1 Escopo do projeto]
+    |
+    v
+[11.3 Pré-registro]
+    |
+    v
+[11.4 Transferência para as operações]
+    |
+    v
+[11.5 Folha de rosto de ética]
+    |
+    v
+[11.6 Limite de tempo]
+    |
+    v
+[11.7 Narrativa]
+    |
+    v
+[11.9 Semana de execução solo]
+    |
+    v
+[11.10 Envelopes lacrados]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) entregar um projeto de especialista para a MCH; (2) manter os não objetivos; (3) avaliar com pré-registro; (4) transferir o resultado para as operações.
@@ -871,6 +1586,71 @@ O projeto aplicado entrega ferramentas com salvaguardas, prova de execução sol
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["12.1 Portfólio"]
+  N1["12.2 Transferência"]
+  N2["12.3 Questões de pesquisa"]
+  N3["12.4 Uso dual"]
+  N4["12.5 Próximo curso"]
+  N5["12.6 Cuidado"]
+  N6["12.7 Narrativa"]
+  N7["12.8 Convite do observador"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX056"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Portfólio"]
+  N1["12.2 Transferência"]
+  N2["12.3 Questões de pesquisa"]
+  N3["12.4 Uso dual"]
+  N4["12.5 Próximo curso"]
+  N5["12.6 Cuidado"]
+  N6["12.7 Narrativa"]
+  N7["12.8 Convite do observador"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[12.1 Portfólio]
+    |
+    v
+[12.2 Transferência]
+    |
+    v
+[12.3 Questões de pesquisa]
+    |
+    v
+[12.4 Uso dual]
+    |
+    v
+[12.5 Próximo curso]
+    |
+    v
+[12.6 Cuidado]
+    |
+    v
+[12.7 Narrativa]
+    |
+    v
+[12.8 Convite do observador]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 

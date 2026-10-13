@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito; os exercícios EX001–EX150 (três por capítulo) têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–50 de 50 têm texto didático escrito; os exercícios EX001–EX150 (três por capítulo) têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: futuros projetistas de sistemas de segurança que vão especificar, construir, verificar e operar sistemas com IA que resistam a ataques e falhem de forma segura.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/ai-security/en/book/MANUSCRIPT.md) é mais amplo e menos voltado ao projeto; o [livro de pós-graduação](../../../../postgraduate-2-years/ai-security/en/book/MANUSCRIPT.md) pressupõe experiência profissional. **Este livro ensina a segurança de IA como uma disciplina de engenharia**: fundamentos de matemática e computação, requisitos, arquitetura, controles, medição, confiabilidade, safety, operações e um projeto final com dossiê de evidências e defesa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -35,6 +35,56 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Cálculo I
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Derivadas como sensibilidade"]
+  N1["1.2 Regras que você usará o tempo todo"]
+  N2["1.3 Conferindo derivadas numericamente"]
+  N3["1.4 Por que engenheiros de segurança se importam"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Derivadas como sensibilidade"]
+  N1["1.2 Regras que você usará o tempo todo"]
+  N2["1.3 Conferindo derivadas numericamente"]
+  N3["1.4 Por que engenheiros de segurança se importam"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 Derivadas como sensibilidade]
+    |
+    v
+[1.2 Regras que você usará o tempo todo]
+    |
+    v
+[1.3 Conferindo derivadas numericamente]
+    |
+    v
+[1.4 Por que engenheiros de segurança se importam]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -116,6 +166,56 @@ Derivadas quantificam a sensibilidade. Elas treinam modelos e também mostram ao
 
 ## Capítulo 2 — Matemática discreta
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["2.1 Conjuntos, funções e lógica"]
+  N1["2.2 Relações e grafos"]
+  N2["2.3 Contagem"]
+  N3["2.4 Indução e invariantes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX004"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Conjuntos, funções e lógica"]
+  N1["2.2 Relações e grafos"]
+  N2["2.3 Contagem"]
+  N3["2.4 Indução e invariantes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
+```
+
+```text
+[2.1 Conjuntos, funções e lógica]
+    |
+    v
+[2.2 Relações e grafos]
+    |
+    v
+[2.3 Contagem]
+    |
+    v
+[2.4 Indução e invariantes]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) usar conjuntos, relações, funções e lógica para descrever com precisão o comportamento de sistemas; (2) expressar políticas de acesso e de uso de ferramentas como predicados; (3) contar possibilidades para estimar espaços de busca; e (4) raciocinar sobre grafos de fluxo de dados e de controle em sistemas de IA.
@@ -162,6 +262,56 @@ A matemática discreta dá uma linguagem precisa para políticas, fluxos de dado
 
 ## Capítulo 3 — Física para computação
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["3.1 Sinais, ruído e amostragem"]
+  N1["3.2 Deslocamentos físicos versus ataques"]
+  N2["3.3 Energia, calor e canais laterais"]
+  N3["3.4 Especificando condições físicas de teste"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX007"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Sinais, ruído e amostragem"]
+  N1["3.2 Deslocamentos físicos versus ataques"]
+  N2["3.3 Energia, calor e canais laterais"]
+  N3["3.4 Especificando condições físicas de teste"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[3.1 Sinais, ruído e amostragem]
+    |
+    v
+[3.2 Deslocamentos físicos versus ataques]
+    |
+    v
+[3.3 Energia, calor e canais laterais]
+    |
+    v
+[3.4 Especificando condições físicas de teste]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) relacionar sinais, ruído e amostragem às entradas de sensores e câmeras; (2) explicar como condições físicas (luz, vibração, temperatura) deslocam as entradas de um modelo; (3) descrever, em nível conceitual, ataques adversariais no mundo físico e falsificação de sensores; e (4) especificar condições físicas de teste para um componente de IA.
@@ -207,6 +357,56 @@ A física determina quais entradas um componente de IA de fato recebe. Engenheir
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["4.1 Programas como instruções precisas"]
+  N1["4.2 Estruturas de dados"]
+  N2["4.3 Entrada não confiável"]
+  N3["4.5 Testes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX010"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Programas como instruções precisas"]
+  N1["4.2 Estruturas de dados"]
+  N2["4.3 Entrada não confiável"]
+  N3["4.5 Testes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX010"]
+```
+
+```text
+[4.1 Programas como instruções precisas]
+    |
+    v
+[4.2 Estruturas de dados]
+    |
+    v
+[4.3 Entrada não confiável]
+    |
+    v
+[4.5 Testes]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -274,6 +474,61 @@ Programar para a segurança de IA começa com um hábito: tratar tudo o que vem 
 
 ## Capítulo 5 — Comunicação em engenharia
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["5.1 Os documentos do engenheiro"]
+  N1["5.2 Comunicando incerteza"]
+  N2["5.3 Documentando componentes de IA"]
+  N3["5.4 Públicos"]
+  N4["5.5 Estrutura e rastreabilidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Os documentos do engenheiro"]
+  N1["5.2 Comunicando incerteza"]
+  N2["5.3 Documentando componentes de IA"]
+  N3["5.4 Públicos"]
+  N4["5.5 Estrutura e rastreabilidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
+```
+
+```text
+[5.1 Os documentos do engenheiro]
+    |
+    v
+[5.2 Comunicando incerteza]
+    |
+    v
+[5.3 Documentando componentes de IA]
+    |
+    v
+[5.4 Públicos]
+    |
+    v
+[5.5 Estrutura e rastreabilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever documentos técnicos claros (requisitos, notas de projeto, relatórios de teste, resumos de incidentes); (2) comunicar incerteza e risco com honestidade; (3) adaptar mensagens a engenheiros, gestores e reguladores; e (4) documentar componentes de IA com model cards e datasheets.
@@ -324,6 +579,56 @@ Uma comunicação clara e honesta — condições, intervalos, fatos separados d
 
 ## Capítulo 6 — Cálculo II
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["6.1 Derivadas parciais e gradientes"]
+  N1["6.2 A regra da cadeia multivariada"]
+  N2["6.3 Aproximação de Taylor e mudança no pior caso"]
+  N3["6.4 Constantes de Lipschitz"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Derivadas parciais e gradientes"]
+  N1["6.2 A regra da cadeia multivariada"]
+  N2["6.3 Aproximação de Taylor e mudança no pior caso"]
+  N3["6.4 Constantes de Lipschitz"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[6.1 Derivadas parciais e gradientes]
+    |
+    v
+[6.2 A regra da cadeia multivariada]
+    |
+    v
+[6.3 Aproximação de Taylor e mudança no pior caso]
+    |
+    v
+[6.4 Constantes de Lipschitz]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) calcular derivadas parciais e gradientes de funções de várias variáveis; (2) usar a regra da cadeia em composições (a base da retropropagação); (3) aplicar aproximações de Taylor para estimar mudanças na saída; e (4) relacionar normas de gradiente e constantes de Lipschitz à robustez.
@@ -369,6 +674,61 @@ Gradientes e normas transformam "mudança pequena" num número. Eles explicam po
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["7.1 Probabilidade condicional e Bayes"]
+  N1["7.2 O efeito da taxa de base"]
+  N2["7.3 Estimando taxas"]
+  N3["7.4 Distribuições e independência"]
+  N4["7.5 Comparando dois sistemas"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX019"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Probabilidade condicional e Bayes"]
+  N1["7.2 O efeito da taxa de base"]
+  N2["7.3 Estimando taxas"]
+  N3["7.4 Distribuições e independência"]
+  N4["7.5 Comparando dois sistemas"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX019"]
+```
+
+```text
+[7.1 Probabilidade condicional e Bayes]
+    |
+    v
+[7.2 O efeito da taxa de base]
+    |
+    v
+[7.3 Estimando taxas]
+    |
+    v
+[7.4 Distribuições e independência]
+    |
+    v
+[7.5 Comparando dois sistemas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -446,6 +806,56 @@ A probabilidade diz aos engenheiros o que um alerta realmente significa. Taxas d
 
 ## Capítulo 8 — Arquitetura de computadores
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["8.1 Processadores e aceleradores"]
+  N1["8.2 Formatos numéricos"]
+  N2["8.3 Superfícies de ataque arquiteturais"]
+  N3["8.4 Execução confiável e atestação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Processadores e aceleradores"]
+  N1["8.2 Formatos numéricos"]
+  N2["8.3 Superfícies de ataque arquiteturais"]
+  N3["8.4 Execução confiável e atestação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX022"]
+```
+
+```text
+[8.1 Processadores e aceleradores]
+    |
+    v
+[8.2 Formatos numéricos]
+    |
+    v
+[8.3 Superfícies de ataque arquiteturais]
+    |
+    v
+[8.4 Execução confiável e atestação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever CPUs, hierarquias de memória, GPUs e aceleradores usados em aprendizado de máquina; (2) explicar os formatos numéricos e seu efeito sobre o comportamento do modelo; (3) identificar superfícies de ataque arquiteturais (isolamento de memória, canais laterais, firmware); e (4) raciocinar sobre execução confiável para cargas de trabalho de IA.
@@ -491,6 +901,56 @@ A IA roda em hardware real, com precisão finita, recursos compartilhados e firm
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["9.1 Módulos e interfaces"]
+  N1["9.2 Dependências e cadeia de suprimentos"]
+  N2["9.3 Testes além de exemplos"]
+  N3["9.4 Um harness de avaliação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Módulos e interfaces"]
+  N1["9.2 Dependências e cadeia de suprimentos"]
+  N2["9.3 Testes além de exemplos"]
+  N3["9.4 Um harness de avaliação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
+```
+
+```text
+[9.1 Módulos e interfaces]
+    |
+    v
+[9.2 Dependências e cadeia de suprimentos]
+    |
+    v
+[9.3 Testes além de exemplos]
+    |
+    v
+[9.4 Um harness de avaliação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -538,6 +998,56 @@ Uma boa estrutura coloca as decisões de segurança em código pequeno e testáv
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["10.1 Deveres profissionais"]
+  N1["10.2 Safety e security"]
+  N2["10.3 Testes autorizados e divulgação"]
+  N3["10.4 Lei e regulação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX028"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Deveres profissionais"]
+  N1["10.2 Safety e security"]
+  N2["10.3 Testes autorizados e divulgação"]
+  N3["10.4 Lei e regulação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX028"]
+```
+
+```text
+[10.1 Deveres profissionais]
+    |
+    v
+[10.2 Safety e security]
+    |
+    v
+[10.3 Testes autorizados e divulgação]
+    |
+    v
+[10.4 Lei e regulação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar a ética profissional da engenharia a sistemas de IA; (2) distinguir safety (dano acidental) de security (dano intencional) e mostrar como elas interagem; (3) aplicar regras para testes autorizados e divulgação responsável; e (4) reconhecer deveres legais, como os previstos no AI Act da UE para sistemas de alto risco.
@@ -583,6 +1093,51 @@ A ética na engenharia de IA é concreta: limites honestos, safety e security ge
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["11.1 O caminho da requisição"]
+  N1["11.2 Ameaças específicas de APIs de IA"]
+  N2["11.3 Segmentação"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 O caminho da requisição"]
+  N1["11.2 Ameaças específicas de APIs de IA"]
+  N2["11.3 Segmentação"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
+```
+
+```text
+[11.1 O caminho da requisição]
+    |
+    v
+[11.2 Ameaças específicas de APIs de IA]
+    |
+    v
+[11.3 Segmentação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -653,6 +1208,56 @@ Serviços de IA são serviços de rede com requisições caras. TLS, segmentaç�
 
 ## Capítulo 12 — Sistemas operacionais
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["12.1 Processos e privilégios"]
+  N1["12.2 Mecanismos de isolamento"]
+  N2["12.4 Segredos e permissões de arquivos"]
+  N3["12.5 Logs"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Processos e privilégios"]
+  N1["12.2 Mecanismos de isolamento"]
+  N2["12.4 Segredos e permissões de arquivos"]
+  N3["12.5 Logs"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX034"]
+```
+
+```text
+[12.1 Processos e privilégios]
+    |
+    v
+[12.2 Mecanismos de isolamento]
+    |
+    v
+[12.4 Segredos e permissões de arquivos]
+    |
+    v
+[12.5 Logs]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar processos, usuários, permissões e isolamento; (2) colocar em sandbox os componentes que executam ações geradas pelo modelo; (3) configurar o menor privilégio para processos que servem modelos; e (4) coletar logs do sistema operacional úteis para investigar incidentes de IA.
@@ -703,6 +1308,56 @@ O isolamento do sistema operacional transforma "o modelo pode ser manipulado" em
 
 ## Capítulo 13 — Sistemas de dados
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["13.1 Esquemas, linhagem e versões"]
+  N1["13.2 Integridade dos dados de treinamento"]
+  N2["13.3 Repositórios de recuperação"]
+  N3["13.4 Proteção de dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 Esquemas, linhagem e versões"]
+  N1["13.2 Integridade dos dados de treinamento"]
+  N2["13.3 Repositórios de recuperação"]
+  N3["13.4 Proteção de dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
+```
+
+```text
+[13.1 Esquemas, linhagem e versões]
+    |
+    v
+[13.2 Integridade dos dados de treinamento]
+    |
+    v
+[13.3 Repositórios de recuperação]
+    |
+    v
+[13.4 Proteção de dados]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar conjuntos de dados com esquemas, linhagem e versões; (2) proteger os dados de treinamento e de recuperação contra adulteração e vazamento; (3) projetar repositórios de geração aumentada por recuperação (RAG) com controle de acesso; e (4) aplicar princípios de proteção de dados aos dados de IA.
@@ -748,6 +1403,56 @@ Os dados são a superfície de ataque que treina e informa os modelos. Linhagem,
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["14.1 Um ciclo de vida para software de IA"]
+  N1["14.2 Gerência de configuração de modelos e prompts"]
+  N2["14.3 Revisão e integração contínua"]
+  N3["14.4 Liberação e reversão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 Um ciclo de vida para software de IA"]
+  N1["14.2 Gerência de configuração de modelos e prompts"]
+  N2["14.3 Revisão e integração contínua"]
+  N3["14.4 Liberação e reversão"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
+```
+
+```text
+[14.1 Um ciclo de vida para software de IA]
+    |
+    v
+[14.2 Gerência de configuração de modelos e prompts]
+    |
+    v
+[14.3 Revisão e integração contínua]
+    |
+    v
+[14.4 Liberação e reversão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -795,6 +1500,56 @@ A engenharia de software de IA trata modelos, prompts e dados como artefatos ver
 
 ## Capítulo 15 — Fundamentos de segurança
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["15.1 CIA para a IA"]
+  N1["15.2 Ameaça, vulnerabilidade, risco, controle"]
+  N2["15.3 Defesa em profundidade"]
+  N3["15.4 O conhecimento e as capacidades do atacante"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 CIA para a IA"]
+  N1["15.2 Ameaça, vulnerabilidade, risco, controle"]
+  N2["15.3 Defesa em profundidade"]
+  N3["15.4 O conhecimento e as capacidades do atacante"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX043"]
+```
+
+```text
+[15.1 CIA para a IA]
+    |
+    v
+[15.2 Ameaça, vulnerabilidade, risco, controle]
+    |
+    v
+[15.3 Defesa em profundidade]
+    |
+    v
+[15.4 O conhecimento e as capacidades do atacante]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar confidencialidade, integridade e disponibilidade (CIA) a ativos de IA; (2) descrever com precisão ameaça, vulnerabilidade, risco e controle; (3) usar defesa em profundidade e menor privilégio; e (4) mapear ataques específicos de IA na taxonomia NIST AI 100-2 E2025.
@@ -840,6 +1595,56 @@ Os fundamentos de segurança se aplicam diretamente à IA: CIA para novos ativos
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["16.1 O modelo em V"]
+  N1["16.2 Decomposição de requisitos"]
+  N2["16.3 Interfaces e emergência"]
+  N3["16.4 Análise de perigos"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 O modelo em V"]
+  N1["16.2 Decomposição de requisitos"]
+  N2["16.3 Interfaces e emergência"]
+  N3["16.4 Análise de perigos"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[16.1 O modelo em V]
+    |
+    v
+[16.2 Decomposição de requisitos]
+    |
+    v
+[16.3 Interfaces e emergência]
+    |
+    v
+[16.4 Análise de perigos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -887,6 +1692,56 @@ A engenharia de sistemas dá à segurança de IA uma espinha dorsal: requisitos 
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["17.1 Realimentação e estabilidade"]
+  N1["17.2 Laços de realimentação em sistemas de IA"]
+  N2["17.3 Envelopes de operação segura"]
+  N3["17.4 Laços de monitoramento"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 Realimentação e estabilidade"]
+  N1["17.2 Laços de realimentação em sistemas de IA"]
+  N2["17.3 Envelopes de operação segura"]
+  N3["17.4 Laços de monitoramento"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
+```
+
+```text
+[17.1 Realimentação e estabilidade]
+    |
+    v
+[17.2 Laços de realimentação em sistemas de IA]
+    |
+    v
+[17.3 Envelopes de operação segura]
+    |
+    v
+[17.4 Laços de monitoramento]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever controle em malha aberta e fechada, realimentação, ganho e estabilidade; (2) reconhecer laços de realimentação em sistemas de IA (retreino sobre as próprias saídas, laços de recomendação, agentes agindo sobre os próprios resultados); (3) explicar como adversários exploram a realimentação; e (4) projetar envelopes de operação segura e intertravamentos para controle conduzido por IA.
@@ -933,6 +1788,56 @@ A realimentação torna os sistemas adaptativos e também exploráveis. Atualiza
 
 ## Capítulo 18 — Arquitetura de segurança
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["18.1 Princípios"]
+  N1["18.2 Fronteiras de confiança"]
+  N2["18.3 Uma arquitetura de referência para agentes"]
+  N3["18.4 Registros de decisão de arquitetura"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX052"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Princípios"]
+  N1["18.2 Fronteiras de confiança"]
+  N2["18.3 Uma arquitetura de referência para agentes"]
+  N3["18.4 Registros de decisão de arquitetura"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX052"]
+```
+
+```text
+[18.1 Princípios]
+    |
+    v
+[18.2 Fronteiras de confiança]
+    |
+    v
+[18.3 Uma arquitetura de referência para agentes]
+    |
+    v
+[18.4 Registros de decisão de arquitetura]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar princípios de arquitetura (menor privilégio, separação de funções, mediação completa, padrões seguros em falha, defesa em profundidade) a sistemas de IA; (2) definir fronteiras de confiança para modelos, dados e ferramentas; (3) projetar uma arquitetura de referência para um agente LLM; e (4) documentar decisões de arquitetura com ameaças e risco residual.
@@ -978,6 +1883,56 @@ A arquitetura é onde a segurança de IA se torna aplicável: fronteiras de conf
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa da aula
+
+Aula 19 publicada. Mapa, exemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["19.1 Identidades para agentes"]
+  N1["19.2 Hashing e manifestos"]
+  N2["19.3 Assinaturas e proveniência"]
+  N3["19.4 Criptografia"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["19.1 Identidades para agentes"]
+  N1["19.2 Hashing e manifestos"]
+  N2["19.3 Assinaturas e proveniência"]
+  N3["19.4 Criptografia"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
+```
+
+```text
+[19.1 Identidades para agentes]
+    |
+    v
+[19.2 Hashing e manifestos]
+    |
+    v
+[19.3 Assinaturas e proveniência]
+    |
+    v
+[19.4 Criptografia]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1058,6 +2013,56 @@ A identidade torna as ações dos agentes atribuíveis e limitadas; hashes, assi
 
 ## Capítulo 20 — Segurança de IA e aprendizado de máquina: contexto de engenharia
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa da aula
+
+Aula 20 publicada. Mapa, exemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["20.1 O ciclo de vida e sua superfície de ataque"]
+  N1["20.2 O NIST AI RMF como quadro organizador"]
+  N2["20.3 Qual framework para qual pergunta"]
+  N3["20.4 Escopo"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX058"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["20.1 O ciclo de vida e sua superfície de ataque"]
+  N1["20.2 O NIST AI RMF como quadro organizador"]
+  N2["20.3 Qual framework para qual pergunta"]
+  N3["20.4 Escopo"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX058"]
+```
+
+```text
+[20.1 O ciclo de vida e sua superfície de ataque]
+    |
+    v
+[20.2 O NIST AI RMF como quadro organizador]
+    |
+    v
+[20.3 Qual framework para qual pergunta]
+    |
+    v
+[20.4 Escopo]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o ciclo de vida da IA (dados, treinamento, avaliação, implantação, monitoramento, desativação) e suas superfícies de ataque; (2) usar as funções do NIST AI RMF para organizar o trabalho de engenharia; (3) situar os frameworks — NIST AI 100-2 E2025, OWASP LLM 2025, MITRE ATLAS, ISO/IEC 42001, EU AI Act — por finalidade; e (4) definir o escopo de uma tarefa de engenharia de segurança de IA.
@@ -1105,6 +2110,56 @@ A engenharia de segurança de IA começa pelo ciclo de vida, por um quadro organ
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Segurança de IA e aprendizado de máquina: requisitos
+
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa da aula
+
+Aula 21 publicada. Mapa, exemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["21.1 De casos de abuso a requisitos"]
+  N1["21.2 Tipos de requisito"]
+  N2["21.3 Escrevendo requisitos estatísticos verificáveis"]
+  N3["21.4 Rastreabilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX061"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["21.1 De casos de abuso a requisitos"]
+  N1["21.2 Tipos de requisito"]
+  N2["21.3 Escrevendo requisitos estatísticos verificáveis"]
+  N3["21.4 Rastreabilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
+```
+
+```text
+[21.1 De casos de abuso a requisitos]
+    |
+    v
+[21.2 Tipos de requisito]
+    |
+    v
+[21.3 Escrevendo requisitos estatísticos verificáveis]
+    |
+    v
+[21.4 Rastreabilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1154,6 +2209,56 @@ Bons requisitos de segurança de IA são afirmações mensuráveis sobre o compo
 
 ## Capítulo 22 — Segurança de IA e aprendizado de máquina: modelos de sistema e de dados
 
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa da aula
+
+Aula 22 publicada. Mapa, exemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["22.1 Diagramas de fluxo de dados para IA"]
+  N1["22.2 Proveniência e contaminação"]
+  N2["22.3 Ativos, pontos de entrada, sinks"]
+  N3["22.4 Modelos de dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX064"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["22.1 Diagramas de fluxo de dados para IA"]
+  N1["22.2 Proveniência e contaminação"]
+  N2["22.3 Ativos, pontos de entrada, sinks"]
+  N3["22.4 Modelos de dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX064"]
+```
+
+```text
+[22.1 Diagramas de fluxo de dados para IA]
+    |
+    v
+[22.2 Proveniência e contaminação]
+    |
+    v
+[22.3 Ativos, pontos de entrada, sinks]
+    |
+    v
+[22.4 Modelos de dados]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) construir diagramas de fluxo de dados para sistemas de IA com níveis de confiança; (2) modelar a proveniência e a contaminação (taint) dos dados; (3) identificar ativos, pontos de entrada e sinks privilegiados; e (4) usar os modelos como insumos para a análise de ameaças.
@@ -1199,6 +2304,61 @@ Modelos de sistema e de dados mostram onde dados não confiáveis entram e onde 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Segurança de IA e aprendizado de máquina: análise de ameaças e falhas
+
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa da aula
+
+Aula 23 publicada. Mapa, exemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["23.1 Análise de ameaças estruturada"]
+  N1["23.2 Mapeamento para catálogos compartilhados"]
+  N2["23.3 Combinando com a análise de falhas"]
+  N3["23.4 Classificação"]
+  N4["23.4b Mantendo a análise viva"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX067"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["23.1 Análise de ameaças estruturada"]
+  N1["23.2 Mapeamento para catálogos compartilhados"]
+  N2["23.3 Combinando com a análise de falhas"]
+  N3["23.4 Classificação"]
+  N4["23.4b Mantendo a análise viva"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX067"]
+```
+
+```text
+[23.1 Análise de ameaças estruturada]
+    |
+    v
+[23.2 Mapeamento para catálogos compartilhados]
+    |
+    v
+[23.3 Combinando com a análise de falhas]
+    |
+    v
+[23.4 Classificação]
+    |
+    v
+[23.4b Mantendo a análise viva]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1249,6 +2409,61 @@ A análise de ameaças transforma o modelo de sistema em uma lista classificada 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Segurança de IA e aprendizado de máquina: métodos I
+
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa da aula
+
+Aula 24 publicada. Mapa, exemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["24.1 Avaliação de evasão"]
+  N1["24.2 Avaliação de envenenamento"]
+  N2["24.3 Avaliação de inferência de pertencimento"]
+  N3["24.4 De brinquedos a componentes reais"]
+  N4["24.4b Lendo os resultados com responsabilidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX070"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["24.1 Avaliação de evasão"]
+  N1["24.2 Avaliação de envenenamento"]
+  N2["24.3 Avaliação de inferência de pertencimento"]
+  N3["24.4 De brinquedos a componentes reais"]
+  N4["24.4b Lendo os resultados com responsabilidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX070"]
+```
+
+```text
+[24.1 Avaliação de evasão]
+    |
+    v
+[24.2 Avaliação de envenenamento]
+    |
+    v
+[24.3 Avaliação de inferência de pertencimento]
+    |
+    v
+[24.4 De brinquedos a componentes reais]
+    |
+    v
+[24.4b Lendo os resultados com responsabilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1434,6 +2649,61 @@ Métodos básicos de avaliação adversarial — curvas de evasão, testes de en
 
 ## Capítulo 25 — Ateliê de projeto I
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa da aula
+
+Aula 25 publicada. Mapa, exemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["25.1 Formato do ateliê"]
+  N1["25.2 O briefing sintético"]
+  N2["25.3 O pacote de projeto"]
+  N3["25.4 Crítica"]
+  N4["25.4b Tabelas de trade-offs"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX073"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["25.1 Formato do ateliê"]
+  N1["25.2 O briefing sintético"]
+  N2["25.3 O pacote de projeto"]
+  N3["25.4 Crítica"]
+  N4["25.4b Tabelas de trade-offs"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX073"]
+```
+
+```text
+[25.1 Formato do ateliê]
+    |
+    v
+[25.2 O briefing sintético]
+    |
+    v
+[25.3 O pacote de projeto]
+    |
+    v
+[25.4 Crítica]
+    |
+    v
+[25.4b Tabelas de trade-offs]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar em equipe para projetar um subsistema com IA com requisitos de segurança; (2) apresentar alternativas de projeto e seus trade-offs; (3) receber críticas ao projeto e responder a elas; e (4) produzir um pacote de projeto (requisitos, arquitetura, modelo de ameaças, plano de verificação).
@@ -1486,6 +2756,56 @@ O ateliê pratica a habilidade central da engenharia: fazer trade-offs explícit
 
 ## Capítulo 26 — Segurança de IA e aprendizado de máquina: alternativas de arquitetura
 
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa da aula
+
+Aula 26 publicada. Mapa, exemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["26.1 Padrões para aplicações de LLM"]
+  N1["26.2 Padrões para serviços de ML preditivo"]
+  N2["26.3 Hospedado versus auto-hospedado"]
+  N3["26.4 Análise de trade-offs"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX076"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["26.1 Padrões para aplicações de LLM"]
+  N1["26.2 Padrões para serviços de ML preditivo"]
+  N2["26.3 Hospedado versus auto-hospedado"]
+  N3["26.4 Análise de trade-offs"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX076"]
+```
+
+```text
+[26.1 Padrões para aplicações de LLM]
+    |
+    v
+[26.2 Padrões para serviços de ML preditivo]
+    |
+    v
+[26.3 Hospedado versus auto-hospedado]
+    |
+    v
+[26.4 Análise de trade-offs]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar padrões arquiteturais para aplicações de LLM e serviços de ML por suas propriedades de segurança; (2) avaliar padrões como modelo duplo (privilegiado/em quarentena), planejar-e-depois-executar, isolamento da recuperação e humano no circuito; (3) escolher entre modelos hospedados e auto-hospedados com uma lente de ameaças; e (4) justificar uma escolha com uma tabela de trade-offs.
@@ -1535,6 +2855,56 @@ As escolhas de arquitetura determinam até onde a entrada não confiável pode c
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Segurança de IA e aprendizado de máquina: projeto de controles
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa da aula
+
+Aula 27 publicada. Mapa, exemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["27.1 Tipos de controle"]
+  N1["27.2 Guardrails e validação"]
+  N2["27.3 Controles para modelos preditivos"]
+  N3["27.4 Medindo a eficácia dos controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX079"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["27.1 Tipos de controle"]
+  N1["27.2 Guardrails e validação"]
+  N2["27.3 Controles para modelos preditivos"]
+  N3["27.4 Medindo a eficácia dos controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX079"]
+```
+
+```text
+[27.1 Tipos de controle]
+    |
+    v
+[27.2 Guardrails e validação]
+    |
+    v
+[27.3 Controles para modelos preditivos]
+    |
+    v
+[27.4 Medindo a eficácia dos controles]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1627,6 +2997,61 @@ O projeto de controles combina prevenção, detecção e correção em camadas, 
 
 ## Capítulo 28 — Segurança de IA e aprendizado de máquina: implementação I
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa da aula
+
+Aula 28 publicada. Mapa, exemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["28.1 Ponto de aplicação de políticas"]
+  N1["28.2 Rótulos de proveniência"]
+  N2["28.3 Validação de saída e varredura de segredos"]
+  N3["28.4 Testando a implementação"]
+  N4["28.6b Falha segura no ponto de aplicação"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX082"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["28.1 Ponto de aplicação de políticas"]
+  N1["28.2 Rótulos de proveniência"]
+  N2["28.3 Validação de saída e varredura de segredos"]
+  N3["28.4 Testando a implementação"]
+  N4["28.6b Falha segura no ponto de aplicação"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX082"]
+```
+
+```text
+[28.1 Ponto de aplicação de políticas]
+    |
+    v
+[28.2 Rótulos de proveniência]
+    |
+    v
+[28.3 Validação de saída e varredura de segredos]
+    |
+    v
+[28.4 Testando a implementação]
+    |
+    v
+[28.6b Falha segura no ponto de aplicação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar um ponto de aplicação de políticas para ações propostas pelo modelo; (2) implementar rótulos de proveniência nos prompts; (3) implementar validação de saída e varredura de segredos; e (4) testar a implementação com testes unitários, de propriedades e adversariais.
@@ -1691,6 +3116,56 @@ A implementação torna a arquitetura real: um ponto de aplicação pequeno e te
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Segurança de IA e aprendizado de máquina: medição
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa da aula
+
+Aula 29 publicada. Mapa, exemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["29.1 Métricas que correspondem às propriedades"]
+  N1["29.2 Incerteza"]
+  N2["29.3 Armadilhas"]
+  N3["29.4 Programas de medição"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX085"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["29.1 Métricas que correspondem às propriedades"]
+  N1["29.2 Incerteza"]
+  N2["29.3 Armadilhas"]
+  N3["29.4 Programas de medição"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX085"]
+```
+
+```text
+[29.1 Métricas que correspondem às propriedades]
+    |
+    v
+[29.2 Incerteza]
+    |
+    v
+[29.3 Armadilhas]
+    |
+    v
+[29.4 Programas de medição]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1778,6 +3253,56 @@ A medição transforma a segurança de IA em decisões: métricas emparelhadas c
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa da aula
+
+Aula 30 publicada. Mapa, exemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["30.1 Regras do laboratório"]
+  N1["30.2 Plano da campanha"]
+  N2["30.3 Executando a campanha"]
+  N3["30.4 O relatório de verificação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX088"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["30.1 Regras do laboratório"]
+  N1["30.2 Plano da campanha"]
+  N2["30.3 Executando a campanha"]
+  N3["30.4 O relatório de verificação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX088"]
+```
+
+```text
+[30.1 Regras do laboratório]
+    |
+    v
+[30.2 Plano da campanha]
+    |
+    v
+[30.3 Executando a campanha]
+    |
+    v
+[30.4 O relatório de verificação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1898,6 +3423,61 @@ Um laboratório de verificação testa os requisitos isoladamente, com rigor rea
 
 ## Capítulo 31 — Segurança de IA e aprendizado de máquina: implementação II
 
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Mapa da aula
+
+Aula 31 publicada. Mapa, exemplo, EX091.
+
+```mermaid
+flowchart TD
+  N0["31.1 Monitoramento e detecção de abuso"]
+  N1["31.2 Integridade do pipeline de dados"]
+  N2["31.3 Carregamento e atualização seguros de modelos"]
+  N3["31.4 Logging e alertas"]
+  N4["31.6b Testando alertas de ponta a ponta"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX091"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["31.1 Monitoramento e detecção de abuso"]
+  N1["31.2 Integridade do pipeline de dados"]
+  N2["31.3 Carregamento e atualização seguros de modelos"]
+  N3["31.4 Logging e alertas"]
+  N4["31.6b Testando alertas de ponta a ponta"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX091"]
+```
+
+```text
+[31.1 Monitoramento e detecção de abuso]
+    |
+    v
+[31.2 Integridade do pipeline de dados]
+    |
+    v
+[31.3 Carregamento e atualização seguros de modelos]
+    |
+    v
+[31.4 Logging e alertas]
+    |
+    v
+[31.6b Testando alertas de ponta a ponta]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar monitoramento e detecção de abuso para serviços de modelos; (2) implementar controles de integridade no pipeline de dados; (3) implementar carregamento e atualização seguros de modelos; e (4) integrar os controles a logging e alertas.
@@ -1989,6 +3569,56 @@ A implementação II acrescenta os controles detectivos e de integridade: monito
 
 ## Capítulo 32 — Segurança de IA e aprendizado de máquina: confiabilidade
 
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Mapa da aula
+
+Aula 32 publicada. Mapa, exemplo, EX094.
+
+```mermaid
+flowchart TD
+  N0["32.1 Confiabilidade para IA"]
+  N1["32.2 Calibração"]
+  N2["32.3 Redundância e degradação"]
+  N3["32.4 Confiabilidade ou ataque?"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX094"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["32.1 Confiabilidade para IA"]
+  N1["32.2 Calibração"]
+  N2["32.3 Redundância e degradação"]
+  N3["32.4 Confiabilidade ou ataque?"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX094"]
+```
+
+```text
+[32.1 Confiabilidade para IA]
+    |
+    v
+[32.2 Calibração]
+    |
+    v
+[32.3 Redundância e degradação]
+    |
+    v
+[32.4 Confiabilidade ou ataque?]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) definir confiabilidade para componentes de IA (comportamento correto e consistente ao longo do tempo e das condições); (2) quantificar a confiabilidade com taxas de erro estratificadas, calibração e disponibilidade; (3) projetar redundância e degradação controlada; e (4) distinguir falhas de confiabilidade de ataques na análise de incidentes.
@@ -2035,6 +3665,56 @@ Uma IA confiável é calibrada, estratificada, redundante de formas diversas e s
 
 ## Capítulo 33 — Segurança de IA e aprendizado de máquina: segurança física e resiliência
 
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Mapa da aula
+
+Aula 33 publicada. Mapa, exemplo, EX097.
+
+```mermaid
+flowchart TD
+  N0["33.1 Falha segura"]
+  N1["33.2 Resiliência"]
+  N2["33.3 Supervisão humana efetiva"]
+  N3["33.4 Uso indevido de capacidades generativas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX097"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["33.1 Falha segura"]
+  N1["33.2 Resiliência"]
+  N2["33.3 Supervisão humana efetiva"]
+  N3["33.4 Uso indevido de capacidades generativas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX097"]
+```
+
+```text
+[33.1 Falha segura]
+    |
+    v
+[33.2 Resiliência]
+    |
+    v
+[33.3 Supervisão humana efetiva]
+    |
+    v
+[33.4 Uso indevido de capacidades generativas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar sistemas de IA que permaneçam seguros quando componentes falham ou são atacados; (2) aplicar conceitos de resiliência (antecipar, resistir, recuperar, adaptar); (3) definir uma supervisão humana efetiva, e não apenas nominal; e (4) planejar para o uso indevido de capacidades generativas.
@@ -2080,6 +3760,61 @@ Segurança física e resiliência partem do princípio de que os controles às v
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Segurança de IA e aprendizado de máquina: integração
+
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Mapa da aula
+
+Aula 34 publicada. Mapa, exemplo, EX100.
+
+```mermaid
+flowchart TD
+  N0["34.1 Riscos de integração"]
+  N1["34.2 Identidade entre sistemas"]
+  N2["34.3 Contratos de dados"]
+  N3["34.4 Ecossistemas de ferramentas e conectores"]
+  N4["34.5 Testes de integração"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX100"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["34.1 Riscos de integração"]
+  N1["34.2 Identidade entre sistemas"]
+  N2["34.3 Contratos de dados"]
+  N3["34.4 Ecossistemas de ferramentas e conectores"]
+  N4["34.5 Testes de integração"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX100"]
+```
+
+```text
+[34.1 Riscos de integração]
+    |
+    v
+[34.2 Identidade entre sistemas]
+    |
+    v
+[34.3 Contratos de dados]
+    |
+    v
+[34.4 Ecossistemas de ferramentas e conectores]
+    |
+    v
+[34.5 Testes de integração]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2131,6 +3866,56 @@ A integração é onde a IA adquire poder real. Identidade delegada, contratos d
 
 ## Capítulo 35 — Ateliê de projeto II
 
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Mapa da aula
+
+Aula 35 publicada. Mapa, exemplo, EX103.
+
+```mermaid
+flowchart TD
+  N0["35.1 Briefing sintético"]
+  N1["35.2 O que há de novo em relação ao Ateliê I"]
+  N2["35.3 Banca multidisciplinar"]
+  N3["35.4 Iteração"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX103"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["35.1 Briefing sintético"]
+  N1["35.2 O que há de novo em relação ao Ateliê I"]
+  N2["35.3 Banca multidisciplinar"]
+  N3["35.4 Iteração"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX103"]
+```
+
+```text
+[35.1 Briefing sintético]
+    |
+    v
+[35.2 O que há de novo em relação ao Ateliê I]
+    |
+    v
+[35.3 Banca multidisciplinar]
+    |
+    v
+[35.4 Iteração]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) projetar um sistema completo com IA, com requisitos de segurança, segurança física e operação; (2) produzir um caso de segurança física e de segurança; (3) defender o projeto diante de uma banca multidisciplinar; e (4) iterar da crítica a uma linha de base revisada.
@@ -2176,6 +3961,56 @@ O Ateliê II faz o projeto argumentar a seu próprio favor: um caso de seguranç
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Segurança de IA e aprendizado de máquina: desempenho e escala
+
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Mapa da aula
+
+Aula 36 publicada. Mapa, exemplo, EX106.
+
+```mermaid
+flowchart TD
+  N0["36.1 Controles de segurança custam desempenho"]
+  N1["36.2 Consumo ilimitado"]
+  N2["36.3 Dimensionando cotas"]
+  N3["36.4 Escala e eficácia dos controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX106"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["36.1 Controles de segurança custam desempenho"]
+  N1["36.2 Consumo ilimitado"]
+  N2["36.3 Dimensionando cotas"]
+  N3["36.4 Escala e eficácia dos controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX106"]
+```
+
+```text
+[36.1 Controles de segurança custam desempenho]
+    |
+    v
+[36.2 Consumo ilimitado]
+    |
+    v
+[36.3 Dimensionando cotas]
+    |
+    v
+[36.4 Escala e eficácia dos controles]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2252,6 +4087,61 @@ Desempenho e segurança estão acoplados. Controles com orçamento, cotas atenta
 
 ## Capítulo 37 — Segurança de IA e aprendizado de máquina: operações
 
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Mapa da aula
+
+Aula 37 publicada. Mapa, exemplo, EX109.
+
+```mermaid
+flowchart TD
+  N0["37.1 Operações de segurança para IA"]
+  N1["37.2 Runbooks de incidentes de IA"]
+  N2["37.3 Gestão de vulnerabilidades"]
+  N3["37.4 Gestão de mudanças"]
+  N4["37.5 Métricas operacionais"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX109"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["37.1 Operações de segurança para IA"]
+  N1["37.2 Runbooks de incidentes de IA"]
+  N2["37.3 Gestão de vulnerabilidades"]
+  N3["37.4 Gestão de mudanças"]
+  N4["37.5 Métricas operacionais"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX109"]
+```
+
+```text
+[37.1 Operações de segurança para IA]
+    |
+    v
+[37.2 Runbooks de incidentes de IA]
+    |
+    v
+[37.3 Gestão de vulnerabilidades]
+    |
+    v
+[37.4 Gestão de mudanças]
+    |
+    v
+[37.5 Métricas operacionais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) operar sistemas de IA em produção com operações de segurança (monitoramento, resposta a incidentes, gestão de vulnerabilidades); (2) escrever runbooks para incidentes específicos de IA; (3) gerenciar operacionalmente as mudanças de modelos e prompts; e (4) relatar métricas operacionais.
@@ -2302,6 +4192,56 @@ As operações mantêm viva a segurança de IA após a liberação: telemetria n
 
 ## Capítulo 38 — Segurança de IA e aprendizado de máquina: validação
 
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Mapa da aula
+
+Aula 38 publicada. Mapa, exemplo, EX112.
+
+```mermaid
+flowchart TD
+  N0["38.1 Verificação versus validação"]
+  N1["38.2 Validação operacional"]
+  N2["38.3 Red teaming como validação"]
+  N3["38.4 Adequação ao propósito"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX112"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["38.1 Verificação versus validação"]
+  N1["38.2 Validação operacional"]
+  N2["38.3 Red teaming como validação"]
+  N3["38.4 Adequação ao propósito"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX112"]
+```
+
+```text
+[38.1 Verificação versus validação]
+    |
+    v
+[38.2 Validação operacional]
+    |
+    v
+[38.3 Red teaming como validação]
+    |
+    v
+[38.4 Adequação ao propósito]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) distinguir verificação (construído do jeito certo) de validação (construída a coisa certa); (2) validar a segurança de IA com usuários e operadores em condições realistas; (3) conduzir exercícios de red team como validação; e (4) decidir sobre a adequação ao propósito com evidências documentadas.
@@ -2347,6 +4287,61 @@ A validação pergunta se o sistema protegido funciona para pessoas reais sob pr
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Segurança de IA e aprendizado de máquina: manutenibilidade
+
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Mapa da aula
+
+Aula 39 publicada. Mapa, exemplo, EX115.
+
+```mermaid
+flowchart TD
+  N0["39.1 A mudança é constante"]
+  N1["39.2 Estratégia de atualização"]
+  N2["39.3 Mantendo o conhecimento atualizado"]
+  N3["39.4 Dívida técnica em segurança de IA"]
+  N4["39.5 Desativação"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX115"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["39.1 A mudança é constante"]
+  N1["39.2 Estratégia de atualização"]
+  N2["39.3 Mantendo o conhecimento atualizado"]
+  N3["39.4 Dívida técnica em segurança de IA"]
+  N4["39.5 Desativação"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX115"]
+```
+
+```text
+[39.1 A mudança é constante]
+    |
+    v
+[39.2 Estratégia de atualização]
+    |
+    v
+[39.3 Mantendo o conhecimento atualizado]
+    |
+    v
+[39.4 Dívida técnica em segurança de IA]
+    |
+    v
+[39.5 Desativação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2397,6 +4392,61 @@ Uma segurança de IA manutenível parte do princípio da mudança: atualizaçõe
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Mapa da aula
+
+Aula 40 publicada. Mapa, exemplo, EX118.
+
+```mermaid
+flowchart TD
+  N0["40.1 Campanhas integradas"]
+  N1["40.2 Critérios de aceitação"]
+  N2["40.3 Taxas de base na aceitação"]
+  N3["40.4 Pacote de evidências"]
+  N4["40.6b Repetindo a campanha após as correções"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX118"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["40.1 Campanhas integradas"]
+  N1["40.2 Critérios de aceitação"]
+  N2["40.3 Taxas de base na aceitação"]
+  N3["40.4 Pacote de evidências"]
+  N4["40.6b Repetindo a campanha após as correções"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX118"]
+```
+
+```text
+[40.1 Campanhas integradas]
+    |
+    v
+[40.2 Critérios de aceitação]
+    |
+    v
+[40.3 Taxas de base na aceitação]
+    |
+    v
+[40.4 Pacote de evidências]
+    |
+    v
+[40.6b Repetindo a campanha após as correções]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2517,6 +4567,51 @@ A verificação integrada encontra falhas nas interseções, julga os resultados
 
 ## Capítulo 41 — Segurança de IA e aprendizado de máquina: otimização do sistema
 
+<!-- cyberabc:lesson-figures:start ch-41 -->
+### Mapa da aula
+
+Aula 41 publicada. Mapa, exemplo, EX121.
+
+```mermaid
+flowchart TD
+  N0["41.2 Ajuste de limiares"]
+  N1["41.3 Posicionando controles"]
+  N2["41.4 Lei de Goodhart"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX121"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["41.2 Ajuste de limiares"]
+  N1["41.3 Posicionando controles"]
+  N2["41.4 Lei de Goodhart"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX121"]
+```
+
+```text
+[41.2 Ajuste de limiares]
+    |
+    v
+[41.3 Posicionando controles]
+    |
+    v
+[41.4 Lei de Goodhart]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX121]
+```
+<!-- cyberabc:lesson-figures:end ch-41 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) otimizar um sistema de IA considerando segurança, segurança física, utilidade e custo; (2) usar raciocínio multiobjetivo (fronteiras de Pareto) em vez de métricas únicas; (3) ajustar limiares e a posição dos controles com base em dados; e (4) evitar otimizar as métricas de segurança até que percam o sentido.
@@ -2563,6 +4658,56 @@ A otimização em segurança de IA é multiobjetivo: encontre a fronteira de Par
 
 ## Capítulo 42 — Segurança de IA e aprendizado de máquina: pesquisa aplicada
 
+<!-- cyberabc:lesson-figures:start ch-42 -->
+### Mapa da aula
+
+Aula 42 publicada. Mapa, exemplo, EX124.
+
+```mermaid
+flowchart TD
+  N0["42.1 Do problema à pergunta"]
+  N1["42.2 Revisão de literatura eficiente"]
+  N2["42.3 Experimentos pequenos e válidos"]
+  N3["42.4 Relatando para praticantes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX124"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["42.1 Do problema à pergunta"]
+  N1["42.2 Revisão de literatura eficiente"]
+  N2["42.3 Experimentos pequenos e válidos"]
+  N3["42.4 Relatando para praticantes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX124"]
+```
+
+```text
+[42.1 Do problema à pergunta]
+    |
+    v
+[42.2 Revisão de literatura eficiente]
+    |
+    v
+[42.3 Experimentos pequenos e válidos]
+    |
+    v
+[42.4 Relatando para praticantes]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX124]
+```
+<!-- cyberabc:lesson-figures:end ch-42 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pergunta de pesquisa aplicada a partir de um problema de engenharia; (2) revisar a literatura com eficiência usando taxonomias compartilhadas; (3) projetar um experimento pequeno e válido; e (4) relatar os achados com limitações úteis para os praticantes.
@@ -2608,6 +4753,56 @@ A pesquisa aplicada responde a perguntas de engenharia com experimentos pequenos
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
+
+<!-- cyberabc:lesson-figures:start ch-43 -->
+### Mapa da aula
+
+Aula 43 publicada. Mapa, exemplo, EX127.
+
+```mermaid
+flowchart TD
+  N0["43.2 Governança na prática"]
+  N1["43.3 Apenas trabalho autorizado"]
+  N2["43.4 Prática reflexiva"]
+  N3["43.4b Trabalhando com restrições"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX127"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["43.2 Governança na prática"]
+  N1["43.3 Apenas trabalho autorizado"]
+  N2["43.4 Prática reflexiva"]
+  N3["43.4b Trabalhando com restrições"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX127"]
+```
+
+```text
+[43.2 Governança na prática]
+    |
+    v
+[43.3 Apenas trabalho autorizado]
+    |
+    v
+[43.4 Prática reflexiva]
+    |
+    v
+[43.4b Trabalhando com restrições]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX127]
+```
+<!-- cyberabc:lesson-figures:end ch-43 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2696,6 +4891,61 @@ A prática revela como a segurança de IA funciona dentro das organizações: pr
 
 ## Capítulo 44 — Projeto final de engenharia I
 
+<!-- cyberabc:lesson-figures:start ch-44 -->
+### Mapa da aula
+
+Aula 44 publicada. Mapa, exemplo, EX130.
+
+```mermaid
+flowchart TD
+  N0["44.1 Escolhendo o projeto"]
+  N1["44.2 Plano do projeto"]
+  N2["44.3 Aprovação da linha de base"]
+  N3["44.4 Trabalho em equipe"]
+  N4["44.4b Ética e autorização no projeto final"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX130"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["44.1 Escolhendo o projeto"]
+  N1["44.2 Plano do projeto"]
+  N2["44.3 Aprovação da linha de base"]
+  N3["44.4 Trabalho em equipe"]
+  N4["44.4b Ética e autorização no projeto final"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX130"]
+```
+
+```text
+[44.1 Escolhendo o projeto]
+    |
+    v
+[44.2 Plano do projeto]
+    |
+    v
+[44.3 Aprovação da linha de base]
+    |
+    v
+[44.4 Trabalho em equipe]
+    |
+    v
+[44.4b Ética e autorização no projeto final]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX130]
+```
+<!-- cyberabc:lesson-figures:end ch-44 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) definir um projeto final de engenharia de segurança de IA com um cliente, requisitos e restrições; (2) planejá-lo com marcos, riscos e verificação; (3) produzir os requisitos do sistema e a linha de base da arquitetura; e (4) obter a aprovação para construir.
@@ -2745,6 +4995,61 @@ O projeto final I estabelece uma linha de base verificável: um problema realist
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão de projeto independente
+
+<!-- cyberabc:lesson-figures:start ch-45 -->
+### Mapa da aula
+
+Aula 45 publicada. Mapa, exemplo, EX133.
+
+```mermaid
+flowchart TD
+  N0["45.1 Independência"]
+  N1["45.2 Método de revisão"]
+  N2["45.3 Achados"]
+  N3["45.4 Recebendo uma revisão"]
+  N4["45.4b Critérios de gravidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX133"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["45.1 Independência"]
+  N1["45.2 Método de revisão"]
+  N2["45.3 Achados"]
+  N3["45.4 Recebendo uma revisão"]
+  N4["45.4b Critérios de gravidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX133"]
+```
+
+```text
+[45.1 Independência]
+    |
+    v
+[45.2 Método de revisão]
+    |
+    v
+[45.3 Achados]
+    |
+    v
+[45.4 Recebendo uma revisão]
+    |
+    v
+[45.4b Critérios de gravidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX133]
+```
+<!-- cyberabc:lesson-figures:end ch-45 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2796,6 +5101,61 @@ A revisão independente, com checklists estruturados mais perguntas guiadas por 
 
 ## Capítulo 46 — Projeto final de engenharia II
 
+<!-- cyberabc:lesson-figures:start ch-46 -->
+### Mapa da aula
+
+Aula 46 publicada. Mapa, exemplo, EX136.
+
+```mermaid
+flowchart TD
+  N0["46.1 Construindo segundo a linha de base"]
+  N1["46.2 Implementando os controles"]
+  N2["46.3 Estrutura de avaliação"]
+  N3["46.4 Defeitos e mudanças"]
+  N4["46.4b Demonstrações e evidências"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX136"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["46.1 Construindo segundo a linha de base"]
+  N1["46.2 Implementando os controles"]
+  N2["46.3 Estrutura de avaliação"]
+  N3["46.4 Defeitos e mudanças"]
+  N4["46.4b Demonstrações e evidências"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX136"]
+```
+
+```text
+[46.1 Construindo segundo a linha de base]
+    |
+    v
+[46.2 Implementando os controles]
+    |
+    v
+[46.3 Estrutura de avaliação]
+    |
+    v
+[46.4 Defeitos e mudanças]
+    |
+    v
+[46.4b Demonstrações e evidências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX136]
+```
+<!-- cyberabc:lesson-figures:end ch-46 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) construir e integrar o sistema do projeto final segundo a linha de base aprovada; (2) implementar controles de segurança e estruturas de avaliação; (3) gerenciar mudanças e defeitos; e (4) preparar-se para a verificação e para o ensaio de recuperação.
@@ -2846,6 +5206,61 @@ O projeto final II constrói o sistema como foi projetado: de forma incremental,
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
+<!-- cyberabc:lesson-figures:start ch-47 -->
+### Mapa da aula
+
+Aula 47 publicada. Mapa, exemplo, EX139.
+
+```mermaid
+flowchart TD
+  N0["47.1 Propósito"]
+  N1["47.2 Planejamento"]
+  N2["47.3 Métricas"]
+  N3["47.4 Revisão pós-ação"]
+  N4["47.6b Compartilhando o que o ensaio ensinou"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX139"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["47.1 Propósito"]
+  N1["47.2 Planejamento"]
+  N2["47.3 Métricas"]
+  N3["47.4 Revisão pós-ação"]
+  N4["47.6b Compartilhando o que o ensaio ensinou"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX139"]
+```
+
+```text
+[47.1 Propósito]
+    |
+    v
+[47.2 Planejamento]
+    |
+    v
+[47.3 Métricas]
+    |
+    v
+[47.4 Revisão pós-ação]
+    |
+    v
+[47.6b Compartilhando o que o ensaio ensinou]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX139]
+```
+<!-- cyberabc:lesson-figures:end ch-47 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) planejar e conduzir um ensaio controlado de falha e recuperação para um sistema de IA; (2) injetar falhas e ataques em um ambiente seguro; (3) medir os tempos de detecção, contenção e recuperação; e (4) melhorar runbooks e o projeto a partir das evidências do ensaio.
@@ -2895,6 +5310,56 @@ Ensaios de falha e recuperação transformam planos de recuperação em evidênc
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
+
+<!-- cyberabc:lesson-figures:start ch-48 -->
+### Mapa da aula
+
+Aula 48 publicada. Mapa, exemplo, EX142.
+
+```mermaid
+flowchart TD
+  N0["48.1 O que é o dossiê"]
+  N1["48.2 Estrutura"]
+  N2["48.3 Integridade e reprodutibilidade"]
+  N3["48.4 Risco residual honesto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX142"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["48.1 O que é o dossiê"]
+  N1["48.2 Estrutura"]
+  N2["48.3 Integridade e reprodutibilidade"]
+  N3["48.4 Risco residual honesto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX142"]
+```
+
+```text
+[48.1 O que é o dossiê]
+    |
+    v
+[48.2 Estrutura]
+    |
+    v
+[48.3 Integridade e reprodutibilidade]
+    |
+    v
+[48.4 Risco residual honesto]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX142]
+```
+<!-- cyberabc:lesson-figures:end ch-48 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -2985,6 +5450,56 @@ O dossiê de evidências torna o projeto final avaliável: afirmações ligadas 
 
 ## Capítulo 49 — Trabalho de conclusão de engenharia
 
+<!-- cyberabc:lesson-figures:start ch-49 -->
+### Mapa da aula
+
+Aula 49 publicada. Mapa, exemplo, EX145.
+
+```mermaid
+flowchart TD
+  N0["49.1 Estrutura do trabalho"]
+  N1["49.2 Posicionamento"]
+  N2["49.3 Avaliação crítica"]
+  N3["49.4 Escrevendo para dois públicos"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX145"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["49.1 Estrutura do trabalho"]
+  N1["49.2 Posicionamento"]
+  N2["49.3 Avaliação crítica"]
+  N3["49.4 Escrevendo para dois públicos"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX145"]
+```
+
+```text
+[49.1 Estrutura do trabalho]
+    |
+    v
+[49.2 Posicionamento]
+    |
+    v
+[49.3 Avaliação crítica]
+    |
+    v
+[49.4 Escrevendo para dois públicos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX145]
+```
+<!-- cyberabc:lesson-figures:end ch-49 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever um trabalho de conclusão de engenharia que apresente o problema, o projeto, a implementação, a verificação e as lições do projeto final; (2) posicionar o trabalho em relação a normas e à literatura; (3) avaliar o trabalho de forma crítica; e (4) escrever tanto para avaliadores técnicos quanto para praticantes.
@@ -3030,6 +5545,51 @@ O trabalho de conclusão de engenharia conta a história do projeto final como e
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
+
+<!-- cyberabc:lesson-figures:start ch-50 -->
+### Mapa da aula
+
+Aula 50 publicada. Mapa, exemplo, EX148.
+
+```mermaid
+flowchart TD
+  N0["50.1 Apresentação"]
+  N1["50.2 Perguntas prováveis"]
+  N2["50.3 Desenvolvimento profissional"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX148"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["50.1 Apresentação"]
+  N1["50.2 Perguntas prováveis"]
+  N2["50.3 Desenvolvimento profissional"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX148"]
+```
+
+```text
+[50.1 Apresentação]
+    |
+    v
+[50.2 Perguntas prováveis]
+    |
+    v
+[50.3 Desenvolvimento profissional]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX148]
+```
+<!-- cyberabc:lesson-figures:end ch-50 -->
+
 
 ### Objetivos de aprendizagem
 

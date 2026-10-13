@@ -1,7 +1,7 @@
 # Web3, Blockchain and Cryptoasset Security: Rapid Course
 
 - Language: English (`en`); course 009, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; One offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; One offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: managers and decision-makers who need to judge a blockchain or token proposal quickly and safely.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only contracts, wallets and systems you are authorised to assess, on local simulations or test networks; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic ledgers, transactions, contract inventories and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ Nakamoto, [Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf); Wood, [Ethereum
 <a id="ch-01"></a>
 
 ## Chapter 1 — Web3, blockchain and cryptoasset security: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case and the basics"]
+  N2["1.2 Tokens, keys and contracts"]
+  N3["1.3 Where risk sits and the first decision"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case and the basics"]
+  N2["1.2 Tokens, keys and contracts"]
+  N3["1.3 Where risk sits and the first decision"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case and the basics]
+    |
+    v
+[1.2 Tokens, keys and contracts]
+    |
+    v
+[1.3 Where risk sits and the first decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -91,6 +141,56 @@ Understanding tokens, keys and contracts lets a manager ask the questions that m
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Why scope matters"]
+  N2["2.2 Acting only with permission"]
+  N3["2.3 Working safely"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Why scope matters"]
+  N2["2.2 Acting only with permission"]
+  N3["2.3 Working safely"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Why scope matters]
+    |
+    v
+[2.2 Acting only with permission]
+    |
+    v
+[2.3 Working safely]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) set a written scope for any security review; (2) act only with permission; (3) work safely with synthetic data.
@@ -145,6 +245,56 @@ Written scope, proper permission and safe practice make a security review trustw
 
 ## Chapter 3 — Web3, blockchain and cryptoasset security: systems, data and dependencies
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Mapping the system"]
+  N2["3.2 Data on and off the ledger"]
+  N3["3.3 Dependencies and their risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Mapping the system"]
+  N2["3.2 Data on and off the ledger"]
+  N3["3.3 Dependencies and their risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Mapping the system]
+    |
+    v
+[3.2 Data on and off the ledger]
+    |
+    v
+[3.3 Dependencies and their risks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) map the loyalty system and its data; (2) decide what belongs on the ledger; (3) identify dependencies and their risks.
@@ -197,6 +347,61 @@ Mapping systems, placing data carefully and planning for dependencies keep contr
 <a id="ch-04"></a>
 
 ## Chapter 4 — Web3, blockchain and cryptoasset security: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The checklist"]
+  N2["Lab — Loyalty setup checklist"]
+  N3["4.2 Interpreting the gaps"]
+  N4["4.3 Deciding and planning"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The checklist"]
+  N2["Lab — Loyalty setup checklist"]
+  N3["4.2 Interpreting the gaps"]
+  N4["4.3 Deciding and planning"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The checklist]
+    |
+    v
+[Lab — Loyalty setup checklist]
+    |
+    v
+[4.2 Interpreting the gaps]
+    |
+    v
+[4.3 Deciding and planning]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

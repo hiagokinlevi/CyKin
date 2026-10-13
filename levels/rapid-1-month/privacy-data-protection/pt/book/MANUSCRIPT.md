@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 004, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: iniciantes que precisam de um começo rápido e prático em privacidade e proteção de dados para um pequeno negócio.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o laboratório compara os campos que o aplicativo de fidelidade sintético de uma farmácia coleta com os campos de que suas finalidades declaradas precisam. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,56 @@ Regulamento (UE) 2016/679 (GDPR), artigos 4(1), 5, 9 e 28; Lei nº 13.709/2018 (
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Privacidade e proteção de dados: fundamentos e decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O curso e o caso"]
+  N1["1.2 O que conta como dado pessoal"]
+  N2["1.3 Categorias especiais"]
+  N3["1.4 Os princípios"]
+  N4["1.5 Uma primeira decisão"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O curso e o caso"]
+  N1["1.2 O que conta como dado pessoal"]
+  N2["1.3 Categorias especiais"]
+  N3["1.4 Os princípios"]
+  N4["1.5 Uma primeira decisão"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 O curso e o caso]
+    |
+    v
+[1.2 O que conta como dado pessoal]
+    |
+    v
+[1.3 Categorias especiais]
+    |
+    v
+[1.4 Os princípios]
+    |
+    v
+[1.5 Uma primeira decisão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -99,6 +149,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Combinar o escopo"]
+  N1["2.2 Tratamento seguro durante a revisão"]
+  N2["2.3 Quando pedem para ir além"]
+  N3["2.4 Comunicar problemas"]
+  N4["2.5 Respeitar a equipe"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Combinar o escopo"]
+  N1["2.2 Tratamento seguro durante a revisão"]
+  N2["2.3 Quando pedem para ir além"]
+  N3["2.4 Comunicar problemas"]
+  N4["2.5 Respeitar a equipe"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
+```
+
+```text
+[2.1 Combinar o escopo]
+    |
+    v
+[2.2 Tratamento seguro durante a revisão]
+    |
+    v
+[2.3 Quando pedem para ir além]
+    |
+    v
+[2.4 Comunicar problemas]
+    |
+    v
+[2.5 Respeitar a equipe]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar dentro da permissão combinada ao revisar a privacidade; (2) tratar os dados dos clientes com segurança durante a revisão; (3) comunicar problemas pelo canal certo.
@@ -161,6 +261,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Privacidade e proteção de dados: sistemas, dados e dependências
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Mapear os sistemas"]
+  N1["3.2 Seguir os fluxos"]
+  N2["3.3 Fornecedores e dependências"]
+  N3["3.4 Bases legais"]
+  N4["3.5 Retenção"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Mapear os sistemas"]
+  N1["3.2 Seguir os fluxos"]
+  N2["3.3 Fornecedores e dependências"]
+  N3["3.4 Bases legais"]
+  N4["3.5 Retenção"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[3.1 Mapear os sistemas]
+    |
+    v
+[3.2 Seguir os fluxos]
+    |
+    v
+[3.3 Fornecedores e dependências]
+    |
+    v
+[3.4 Bases legais]
+    |
+    v
+[3.5 Retenção]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear os sistemas e os fluxos de dados da Juniper; (2) identificar fornecedores e dependências; (3) anotar as bases legais e a retenção.
@@ -221,6 +371,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Privacidade e proteção de dados: laboratório guiado e síntese aplicada
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["4.1 O laboratório guiado"]
+  N1["4.2 Interpretar o laboratório"]
+  N2["4.3 Um plano curto"]
+  N3["4.4 Apresentar ao dono"]
+  N4["4.5 Conferir e próximos passos"]
+  N5["Laboratório — Campos do aplicativo de fidelidade ver"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 O laboratório guiado"]
+  N1["4.2 Interpretar o laboratório"]
+  N2["4.3 Um plano curto"]
+  N3["4.4 Apresentar ao dono"]
+  N4["4.5 Conferir e próximos passos"]
+  N5["Laboratório — Campos do aplicativo de fidelidade ver"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[4.1 O laboratório guiado]
+    |
+    v
+[4.2 Interpretar o laboratório]
+    |
+    v
+[4.3 Um plano curto]
+    |
+    v
+[4.4 Apresentar ao dono]
+    |
+    v
+[4.5 Conferir e próximos passos]
+    |
+    v
+[Laboratório — Campos do aplicativo de fidelidade ver]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

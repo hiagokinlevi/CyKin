@@ -1,7 +1,7 @@
 # Security Governance, Risk and Compliance: Master's Course
 
 - Language: English (`en`); course 166, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students evaluating whether a governance control change improves a measurable security outcome.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compute requirement-to-evidence coverage, exact attribute-sampling bounds and a bootstrap difference in excess-access rates on synthetic data; no real accounts, employees or audits are involved. Mappings and audit-style tests here are teaching illustrations, not real attestations or legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ ISO/IEC 27001:2022 and 27002:2022; NIST [SP 800-53 Rev. 5](https://doi.org/10.60
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 From concern to question"]
+  N2["1.2 Making it answerable"]
+  N3["1.3 Searching systematically"]
+  N4["1.4 Reading standards as sources"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 From concern to question"]
+  N2["1.2 Making it answerable"]
+  N3["1.3 Searching systematically"]
+  N4["1.4 Reading standards as sources"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 From concern to question]
+    |
+    v
+[1.2 Making it answerable]
+    |
+    v
+[1.3 Searching systematically]
+    |
+    v
+[1.4 Reading standards as sources]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -88,6 +143,66 @@ A precise, answerable question and a reproducible search come before any data.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Security governance, risk and compliance: advanced seminar
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Framework landscape"]
+  N2["2.2 Coverage analysis"]
+  N3["Lab — Requirement, control and evidence coverage"]
+  N4["2.3 Critique of mapping"]
+  N5["2.4 Seminar discussion"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Framework landscape"]
+  N2["2.2 Coverage analysis"]
+  N3["Lab — Requirement, control and evidence coverage"]
+  N4["2.3 Critique of mapping"]
+  N5["2.4 Seminar discussion"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Framework landscape]
+    |
+    v
+[2.2 Coverage analysis]
+    |
+    v
+[Lab — Requirement, control and evidence coverage]
+    |
+    v
+[2.3 Critique of mapping]
+    |
+    v
+[2.4 Seminar discussion]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -166,6 +281,61 @@ Frameworks overlap; demonstrable coverage requires evidence, not just mappings.
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Choosing the design"]
+  N2["3.2 Ethics and approval"]
+  N3["3.3 Reproducible plan"]
+  N4["3.4 Pilot of the reviewer"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Choosing the design"]
+  N2["3.2 Ethics and approval"]
+  N3["3.3 Reproducible plan"]
+  N4["3.4 Pilot of the reviewer"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Choosing the design]
+    |
+    v
+[3.2 Ethics and approval]
+    |
+    v
+[3.3 Reproducible plan]
+    |
+    v
+[3.4 Pilot of the reviewer]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) design an observational comparison with confounders in mind; (2) obtain ethical and organisational approval; (3) plan reproducible analysis.
@@ -217,6 +387,61 @@ Observational designs need recorded confounders, approvals and a pre-registered 
 
 ## Chapter 4 — Security governance, risk and compliance: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Rival explanations"]
+  N2["4.2 Designing checks"]
+  N3["4.3 Literature on control effectiveness"]
+  N4["4.4 Judging plausibility"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Rival explanations"]
+  N2["4.2 Designing checks"]
+  N3["4.3 Literature on control effectiveness"]
+  N4["4.4 Judging plausibility"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Rival explanations]
+    |
+    v
+[4.2 Designing checks]
+    |
+    v
+[4.3 Literature on control effectiveness]
+    |
+    v
+[4.4 Judging plausibility]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) list rival explanations for an observed difference; (2) design checks that can distinguish them; (3) judge which explanations remain plausible.
@@ -267,6 +492,66 @@ Listing and checking rival explanations is the core of honest observational rese
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Why sample review records"]
+  N3["5.3 Piloting the sample"]
+  N4["Lab — Exact upper bounds for attribute samples"]
+  N5["5.4 Pilot lessons"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Why sample review records"]
+  N3["5.3 Piloting the sample"]
+  N4["Lab — Exact upper bounds for attribute samples"]
+  N5["5.4 Pilot lessons"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The proposal]
+    |
+    v
+[5.2 Why sample review records]
+    |
+    v
+[5.3 Piloting the sample]
+    |
+    v
+[Lab — Exact upper bounds for attribute samples]
+    |
+    v
+[5.4 Pilot lessons]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -347,6 +632,66 @@ Pilots set realistic sample sizes and sharpen definitions before the main study.
 
 ## Chapter 6 — Data collection and analysis
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Collecting the data"]
+  N2["6.2 The main estimate"]
+  N3["Lab — Bootstrap interval for the difference in exces"]
+  N4["6.3 Rival checks"]
+  N5["6.4 Cost"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Collecting the data"]
+  N2["6.2 The main estimate"]
+  N3["Lab — Bootstrap interval for the difference in exces"]
+  N4["6.3 Rival checks"]
+  N5["6.4 Cost"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Collecting the data]
+    |
+    v
+[6.2 The main estimate]
+    |
+    v
+[Lab — Bootstrap interval for the difference in exces]
+    |
+    v
+[6.3 Rival checks]
+    |
+    v
+[6.4 Cost]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) collect governance data under a pre-registered plan; (2) estimate a difference with a bootstrap interval; (3) run the planned rival-explanation checks.
@@ -423,6 +768,61 @@ A pre-registered analysis yields an uncertain but real difference, with rivals a
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Limitations"]
+  N3["7.3 Two audiences"]
+  N4["7.4 Linking to frameworks"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Limitations"]
+  N3["7.3 Two audiences"]
+  N4["7.4 Linking to frameworks"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Limitations]
+    |
+    v
+[7.3 Two audiences]
+    |
+    v
+[7.4 Linking to frameworks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a master's dissertation; (2) write a candid limitations section; (3) report results for both academic and practitioner readers.
@@ -473,6 +873,61 @@ Good dissertations make claims traceable, limits consequential and summaries fai
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense"]
+  N3["8.3 Outcome and dissemination"]
+  N4["8.4 What comes next"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense"]
+  N3["8.3 Outcome and dissemination"]
+  N4["8.4 What comes next"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent review]
+    |
+    v
+[8.2 The defense]
+    |
+    v
+[8.3 Outcome and dissemination]
+    |
+    v
+[8.4 What comes next]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

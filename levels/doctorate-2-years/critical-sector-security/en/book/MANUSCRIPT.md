@@ -1,7 +1,7 @@
 # Critical Infrastructure and Sector Security: Doctoral Research Methods and Thesis Practice
 
 - Language: English (`en`); doctoral research track, two years; approximately 1,600 hours of planned study (course 207 of 207, the final course in the [study path](../../../../../STUDY_PATH.md)).
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: advanced researchers who already hold research experience and a defensible question about the security and resilience of critical infrastructure — energy, water, healthcare, transport, communications, finance and public services. Entry knowledge: the content planned for the [master's](../../../../masters-2-years/critical-sector-security/en/book/PLAN.md) and [postgraduate](../../../../postgraduate-2-years/critical-sector-security/en/book/PLAN.md) tracks in this area (still outlines at the time of writing), or equivalent professional experience, plus working literacy in probability, basic graph theory, simulation and qualitative interviewing. The companion [doctoral OT, IoT and cyber-physical security course](../../../ot-iot-security/README.md) studies the control-system layer in depth; this book studies the *sector and cross-sector* layer that sits above it.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights and are not relicensed here.
 - Educational boundary: this track is an independent educational blueprint. It is not an accredited doctoral program, grants no degree, and grants no authority to access, scan, test or study any real infrastructure, operator, dataset or person. Every organization, region, asset, person, record, dataset, benchmark and numerical result in a worked example is **synthetic** unless a sentence explicitly cites a public source. Nothing in this book is an operational procedure for a real utility.
@@ -54,6 +54,71 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced research integrity and methods
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 What is being studied: services, functions and c"]
+  N2["1.2 Evidence in infrastructure research"]
+  N3["1.3 Integrity when partners are regulated operators"]
+  N4["1.4 Safety, dual use and ethics"]
+  N5["1.5 Protected information and data agreements"]
+  N6["1.6 Measurement: resilience and consequence metrics"]
+  N7["1.7 Common failure modes in infrastructure research"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 What is being studied: services, functions and c"]
+  N2["1.2 Evidence in infrastructure research"]
+  N3["1.3 Integrity when partners are regulated operators"]
+  N4["1.4 Safety, dual use and ethics"]
+  N5["1.5 Protected information and data agreements"]
+  N6["1.6 Measurement: resilience and consequence metrics"]
+  N7["1.7 Common failure modes in infrastructure research"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 What is being studied: services, functions and c]
+    |
+    v
+[1.2 Evidence in infrastructure research]
+    |
+    v
+[1.3 Integrity when partners are regulated operators]
+    |
+    v
+[1.4 Safety, dual use and ethics]
+    |
+    v
+[1.5 Protected information and data agreements]
+    |
+    v
+[1.6 Measurement: resilience and consequence metrics]
+    |
+    v
+[1.7 Common failure modes in infrastructure research]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -362,6 +427,71 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Critical infrastructure and sector security: research frontier
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Why the literature is hard to find"]
+  N2["2.2 Systematic scoping across disciplines"]
+  N3["2.3 The policy and standards landscape as a research"]
+  N4["2.4 Interdependency modelling families"]
+  N5["2.5 Detection and testbed research: evaluation as a"]
+  N6["2.6 Sector-specific and threat evidence"]
+  N7["2.7 Classifying the gap"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Why the literature is hard to find"]
+  N2["2.2 Systematic scoping across disciplines"]
+  N3["2.3 The policy and standards landscape as a research"]
+  N4["2.4 Interdependency modelling families"]
+  N5["2.5 Detection and testbed research: evaluation as a"]
+  N6["2.6 Sector-specific and threat evidence"]
+  N7["2.7 Classifying the gap"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Why the literature is hard to find]
+    |
+    v
+[2.2 Systematic scoping across disciplines]
+    |
+    v
+[2.3 The policy and standards landscape as a research]
+    |
+    v
+[2.4 Interdependency modelling families]
+    |
+    v
+[2.5 Detection and testbed research: evaluation as a]
+    |
+    v
+[2.6 Sector-specific and threat evidence]
+    |
+    v
+[2.7 Classifying the gap]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -589,6 +719,71 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 What kind of contribution?"]
+  N2["3.2 Restoration ordering as a scheduling problem"]
+  N3["3.3 Dependency graphs with buffers"]
+  N4["3.4 The mechanism"]
+  N5["3.5 Hypotheses, metrics and the smallest effect of i"]
+  N6["3.6 Baselines"]
+  N7["3.7 Rival explanations"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 What kind of contribution?"]
+  N2["3.2 Restoration ordering as a scheduling problem"]
+  N3["3.3 Dependency graphs with buffers"]
+  N4["3.4 The mechanism"]
+  N5["3.5 Hypotheses, metrics and the smallest effect of i"]
+  N6["3.6 Baselines"]
+  N7["3.7 Rival explanations"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 What kind of contribution?]
+    |
+    v
+[3.2 Restoration ordering as a scheduling problem]
+    |
+    v
+[3.3 Dependency graphs with buffers]
+    |
+    v
+[3.4 The mechanism]
+    |
+    v
+[3.5 Hypotheses, metrics and the smallest effect of i]
+    |
+    v
+[3.6 Baselines]
+    |
+    v
+[3.7 Rival explanations]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes and connection
 
@@ -818,6 +1013,71 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Reproduction, replication, robustness"]
+  N2["4.2 Reproducing a model calculation: the inoperabili"]
+  N3["4.3 The GridWater-Sim discrepancy synthetic"]
+  N4["4.4 Verifying a simulator"]
+  N5["4.5 Replicating a detection baseline: evaluation art"]
+  N6["4.6 Eliciting parameters"]
+  N7["4.7 The pilot"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Reproduction, replication, robustness"]
+  N2["4.2 Reproducing a model calculation: the inoperabili"]
+  N3["4.3 The GridWater-Sim discrepancy synthetic"]
+  N4["4.4 Verifying a simulator"]
+  N5["4.5 Replicating a detection baseline: evaluation art"]
+  N6["4.6 Eliciting parameters"]
+  N7["4.7 The pilot"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Reproduction, replication, robustness]
+    |
+    v
+[4.2 Reproducing a model calculation: the inoperabili]
+    |
+    v
+[4.3 The GridWater-Sim discrepancy synthetic]
+    |
+    v
+[4.4 Verifying a simulator]
+    |
+    v
+[4.5 Replicating a detection baseline: evaluation art]
+    |
+    v
+[4.6 Eliciting parameters]
+    |
+    v
+[4.7 The pilot]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes and connection
 
@@ -1075,6 +1335,71 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Designing the simulation experiment"]
+  N2["5.2 The confirmatory simulation study"]
+  N3["5.3 The operator tabletop study"]
+  N4["5.4 Validating the model"]
+  N5["5.5 Independent validation in a second context"]
+  N6["5.6 Reporting the main study"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Designing the simulation experiment"]
+  N2["5.2 The confirmatory simulation study"]
+  N3["5.3 The operator tabletop study"]
+  N4["5.4 Validating the model"]
+  N5["5.5 Independent validation in a second context"]
+  N6["5.6 Reporting the main study"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Designing the simulation experiment]
+    |
+    v
+[5.2 The confirmatory simulation study]
+    |
+    v
+[5.3 The operator tabletop study]
+    |
+    v
+[5.4 Validating the model]
+    |
+    v
+[5.5 Independent validation in a second context]
+    |
+    v
+[5.6 Reporting the main study]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes and connection
 
@@ -1374,6 +1699,71 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Peer critique and revision
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Critique as method"]
+  N2["6.2 The red-team report on the Cascade Study synthet"]
+  N3["6.3 Practical activity: boundary conditions, mismatc"]
+  N4["6.4 Sensitivity analysis beyond one factor at a time"]
+  N5["6.5 Negative results and narrowing"]
+  N6["6.6 Dual-use review of the findings"]
+  N7["6.7 Responding to reviewers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Critique as method"]
+  N2["6.2 The red-team report on the Cascade Study synthet"]
+  N3["6.3 Practical activity: boundary conditions, mismatc"]
+  N4["6.4 Sensitivity analysis beyond one factor at a time"]
+  N5["6.5 Negative results and narrowing"]
+  N6["6.6 Dual-use review of the findings"]
+  N7["6.7 Responding to reviewers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Critique as method]
+    |
+    v
+[6.2 The red-team report on the Cascade Study synthet]
+    |
+    v
+[6.3 Practical activity: boundary conditions, mismatc]
+    |
+    v
+[6.4 Sensitivity analysis beyond one factor at a time]
+    |
+    v
+[6.5 Negative results and narrowing]
+    |
+    v
+[6.6 Dual-use review of the findings]
+    |
+    v
+[6.7 Responding to reviewers]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -1577,6 +1967,71 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 The thesis as an argument"]
+  N2["7.2 Monograph or thesis by publication"]
+  N3["7.3 Structure of the Cascade Study thesis"]
+  N4["7.4 The reproducibility archive"]
+  N5["7.5 Synthetic data: invented versus calibrated"]
+  N6["7.6 Documenting models, data and studies"]
+  N7["7.7 Writing limitations"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 The thesis as an argument"]
+  N2["7.2 Monograph or thesis by publication"]
+  N3["7.3 Structure of the Cascade Study thesis"]
+  N4["7.4 The reproducibility archive"]
+  N5["7.5 Synthetic data: invented versus calibrated"]
+  N6["7.6 Documenting models, data and studies"]
+  N7["7.7 Writing limitations"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 The thesis as an argument]
+    |
+    v
+[7.2 Monograph or thesis by publication]
+    |
+    v
+[7.3 Structure of the Cascade Study thesis]
+    |
+    v
+[7.4 The reproducibility archive]
+    |
+    v
+[7.5 Synthetic data: invented versus calibrated]
+    |
+    v
+[7.6 Documenting models, data and studies]
+    |
+    v
+[7.7 Writing limitations]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes and connection
 
@@ -1783,6 +2238,71 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 The claim audit"]
+  N2["8.2 Preparing the defense"]
+  N3["8.3 Publication plan"]
+  N4["8.4 Coordinated disclosure and sector coordination"]
+  N5["8.5 Translating to policy and practice"]
+  N6["8.6 The post-doctoral program"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 The claim audit"]
+  N2["8.2 Preparing the defense"]
+  N3["8.3 Publication plan"]
+  N4["8.4 Coordinated disclosure and sector coordination"]
+  N5["8.5 Translating to policy and practice"]
+  N6["8.6 The post-doctoral program"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 The claim audit]
+    |
+    v
+[8.2 Preparing the defense]
+    |
+    v
+[8.3 Publication plan]
+    |
+    v
+[8.4 Coordinated disclosure and sector coordination]
+    |
+    v
+[8.5 Translating to policy and practice]
+    |
+    v
+[8.6 The post-doctoral program]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 

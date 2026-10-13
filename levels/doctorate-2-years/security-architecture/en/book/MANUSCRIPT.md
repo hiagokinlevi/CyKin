@@ -1,7 +1,7 @@
 # Security Architecture and Engineering: Doctoral Research Track
 
 - Language: English (`en`); course 191, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral candidates testing whether an architecture practice changes security outcomes.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compute agreement, a difference-in-differences estimate with a permutation check and archive digests on synthetic data; nothing touches a real organisation. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ Saltzer and Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.11
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced research integrity and methods
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The candidate and the question"]
+  N2["1.2 Why architecture claims are hard to test"]
+  N3["1.3 Methods that separate rivals"]
+  N4["1.4 Integrity rules before data"]
+  N5["1.5 Coding with measured agreement"]
+  N6["Lab — Coder agreement on defect class"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The candidate and the question"]
+  N2["1.2 Why architecture claims are hard to test"]
+  N3["1.3 Methods that separate rivals"]
+  N4["1.4 Integrity rules before data"]
+  N5["1.5 Coding with measured agreement"]
+  N6["Lab — Coder agreement on defect class"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The candidate and the question]
+    |
+    v
+[1.2 Why architecture claims are hard to test]
+    |
+    v
+[1.3 Methods that separate rivals]
+    |
+    v
+[1.4 Integrity rules before data]
+    |
+    v
+[1.5 Coding with measured agreement]
+    |
+    v
+[Lab — Coder agreement on defect class]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -110,6 +175,66 @@ Doctoral architecture research begins with a falsifiable question, a design that
 
 ## Chapter 2 — Security architecture and engineering: research frontier
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Bodies of knowledge"]
+  N2["2.2 Principles, frameworks, evidence"]
+  N3["2.3 Zero trust as a case"]
+  N4["2.4 The gap and the contribution"]
+  N5["2.5 Judging practitioner evidence"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Bodies of knowledge"]
+  N2["2.2 Principles, frameworks, evidence"]
+  N3["2.3 Zero trust as a case"]
+  N4["2.4 The gap and the contribution"]
+  N5["2.5 Judging practitioner evidence"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Bodies of knowledge]
+    |
+    v
+[2.2 Principles, frameworks, evidence]
+    |
+    v
+[2.3 Zero trust as a case]
+    |
+    v
+[2.4 The gap and the contribution]
+    |
+    v
+[2.5 Judging practitioner evidence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) map the main bodies of knowledge in security architecture; (2) separate principles, frameworks and empirical evidence; (3) locate the gap Amara's study addresses; (4) judge evidence quality in practitioner literature.
@@ -166,6 +291,66 @@ The frontier in security architecture is rich in principles and frameworks but t
 
 ## Chapter 3 — Original contribution proposal
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Hypotheses and measures"]
+  N2["3.2 Defining the intervention"]
+  N3["3.3 Sample size and effect"]
+  N4["3.4 Threats to validity"]
+  N5["3.5 Review and approval"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Hypotheses and measures"]
+  N2["3.2 Defining the intervention"]
+  N3["3.3 Sample size and effect"]
+  N4["3.4 Threats to validity"]
+  N5["3.5 Review and approval"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Hypotheses and measures]
+    |
+    v
+[3.2 Defining the intervention]
+    |
+    v
+[3.3 Sample size and effect]
+    |
+    v
+[3.4 Threats to validity]
+    |
+    v
+[3.5 Review and approval]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) write a proposal that states hypotheses, measures and analysis in advance; (2) define the intervention precisely enough to replicate; (3) plan sample size against realistic effect sizes; (4) anticipate threats to validity.
@@ -221,6 +406,66 @@ A strong proposal fixes hypotheses, intervention, sample plan and validity threa
 
 ## Chapter 4 — Baseline replication and pilot
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Why replicate first"]
+  N2["4.2 Baseline result"]
+  N3["4.3 Pilot goals"]
+  N4["4.4 Testing the pipeline"]
+  N5["4.5 Revising the protocol"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Why replicate first"]
+  N2["4.2 Baseline result"]
+  N3["4.3 Pilot goals"]
+  N4["4.4 Testing the pipeline"]
+  N5["4.5 Revising the protocol"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Why replicate first]
+    |
+    v
+[4.2 Baseline result]
+    |
+    v
+[4.3 Pilot goals]
+    |
+    v
+[4.4 Testing the pipeline]
+    |
+    v
+[4.5 Revising the protocol]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) replicate a published or prior baseline before extending it; (2) run a pilot to test procedures, not effects; (3) check data pipelines against known values; (4) revise the protocol from pilot evidence.
@@ -275,6 +520,71 @@ Replicating the baseline and piloting procedures exposes measurement errors befo
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Running the study"]
+  N2["5.2 Difference-in-differences"]
+  N3["Lab — Difference-in-differences with permutation che"]
+  N4["5.3 Reading the estimate"]
+  N5["5.4 Independent validation"]
+  N6["5.5 Reporting uncertainty"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Running the study"]
+  N2["5.2 Difference-in-differences"]
+  N3["Lab — Difference-in-differences with permutation che"]
+  N4["5.3 Reading the estimate"]
+  N5["5.4 Independent validation"]
+  N6["5.5 Reporting uncertainty"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Running the study]
+    |
+    v
+[5.2 Difference-in-differences]
+    |
+    v
+[Lab — Difference-in-differences with permutation che]
+    |
+    v
+[5.3 Reading the estimate]
+    |
+    v
+[5.4 Independent validation]
+    |
+    v
+[5.5 Reporting uncertainty]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -363,6 +673,66 @@ A main study earns credibility through comparison groups, blind measurement, ind
 
 ## Chapter 6 — Peer critique and revision
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Inviting hostile reading"]
+  N2["6.2 Classifying comments"]
+  N3["6.3 Testing the fatal objection"]
+  N4["6.4 Revising claims"]
+  N5["6.5 Documenting revisions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Inviting hostile reading"]
+  N2["6.2 Classifying comments"]
+  N3["6.3 Testing the fatal objection"]
+  N4["6.4 Revising claims"]
+  N5["6.5 Documenting revisions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Inviting hostile reading]
+    |
+    v
+[6.2 Classifying comments]
+    |
+    v
+[6.3 Testing the fatal objection]
+    |
+    v
+[6.4 Revising claims]
+    |
+    v
+[6.5 Documenting revisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) seek critique that could overturn your conclusions; (2) classify reviewer comments by their consequence; (3) revise claims, not just wording; (4) document revisions transparently.
@@ -417,6 +787,71 @@ Critique is most valuable when invited from opponents, sorted by consequence and
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Building the argument"]
+  N2["7.2 Proportionate contributions"]
+  N3["7.3 The reproducibility archive"]
+  N4["Lab — Archive manifest and verification"]
+  N5["7.4 Confidential versus shareable"]
+  N6["7.5 Writing limitations well"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Building the argument"]
+  N2["7.2 Proportionate contributions"]
+  N3["7.3 The reproducibility archive"]
+  N4["Lab — Archive manifest and verification"]
+  N5["7.4 Confidential versus shareable"]
+  N6["7.5 Writing limitations well"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Building the argument]
+    |
+    v
+[7.2 Proportionate contributions]
+    |
+    v
+[7.3 The reproducibility archive]
+    |
+    v
+[Lab — Archive manifest and verification]
+    |
+    v
+[7.4 Confidential versus shareable]
+    |
+    v
+[7.5 Writing limitations well]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -494,6 +929,66 @@ A thesis synthesis argues proportionately from linked evidence and leaves a veri
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Preparing the defense"]
+  N2["8.2 Answering examiners"]
+  N3["8.3 Publication plan"]
+  N4["8.4 Practitioner dissemination"]
+  N5["8.5 After the doctorate"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Preparing the defense"]
+  N2["8.2 Answering examiners"]
+  N3["8.3 Publication plan"]
+  N4["8.4 Practitioner dissemination"]
+  N5["8.5 After the doctorate"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Preparing the defense]
+    |
+    v
+[8.2 Answering examiners]
+    |
+    v
+[8.3 Publication plan]
+    |
+    v
+[8.4 Practitioner dissemination]
+    |
+    v
+[8.5 After the doctorate]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

@@ -1,7 +1,7 @@
 # Human Factors and Cyber Policy: Postgraduate Course
 
 - Language: English (`en`); course 144, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; six offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; six offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working security practitioners leading a human-centred security programme in a mid-sized organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compare expected loss, compute risk differences, test weight sensitivity, analyse a stepped rollout with a permutation test and summarise assurance and help desk data, all synthetic; no real staff, emails or accounts are involved. Any phishing simulation described is announced, approved by a panel including staff representatives and HR, avoids lures exploiting personal distress such as pay, bonuses or health, is reported only in aggregate and is never used in performance reviews. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ Hansche et al. (2024), NIST SP 800-50r1; Beautement, Sasse and Wonham (2008), [d
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Framing the decision"]
+  N2["1.2 Expected loss and burden"]
+  N3["Lab — Expected loss reduction and staff hours for tw"]
+  N4["1.3 Documenting rationale"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Framing the decision"]
+  N2["1.2 Expected loss and burden"]
+  N3["Lab — Expected loss reduction and staff hours for tw"]
+  N4["1.3 Documenting rationale"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Framing the decision]
+    |
+    v
+[1.2 Expected loss and burden]
+    |
+    v
+[Lab — Expected loss reduction and staff hours for tw]
+    |
+    v
+[1.3 Documenting rationale]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -100,6 +155,56 @@ Advanced decisions frame options, weigh loss and burden and record rationale ope
 
 ## Chapter 2 — Human factors and cyber policy: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Current practice"]
+  N2["2.2 Guidance"]
+  N3["2.3 Gaps"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Current practice"]
+  N2["2.2 Guidance"]
+  N3["2.3 Gaps"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Current practice]
+    |
+    v
+[2.2 Guidance]
+    |
+    v
+[2.3 Gaps]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) describe current practice in security awareness programmes; (2) relate practice to guidance such as NIST SP 800-50r1; (3) identify gaps between practice and evidence.
@@ -145,6 +250,61 @@ Current practice often lags evidence, and guidance helps map the gaps.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Human factors and cyber policy: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Appraising studies"]
+  N2["3.2 Effect sizes"]
+  N3["Lab — Risk difference and interval for two formats"]
+  N4["3.3 Transferability"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Appraising studies"]
+  N2["3.2 Effect sizes"]
+  N3["Lab — Risk difference and interval for two formats"]
+  N4["3.3 Transferability"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Appraising studies]
+    |
+    v
+[3.2 Effect sizes]
+    |
+    v
+[Lab — Risk difference and interval for two formats]
+    |
+    v
+[3.3 Transferability]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -208,6 +368,56 @@ Specialist evidence is appraised by design, read with uncertainty and transferre
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Human-centred risk"]
+  N2["4.2 Ethical issues"]
+  N3["4.3 Governance"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Human-centred risk"]
+  N2["4.2 Ethical issues"]
+  N3["4.3 Governance"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Human-centred risk]
+    |
+    v
+[4.2 Ethical issues]
+    |
+    v
+[4.3 Governance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) assess human-centred risks using SP 800-30r1 concepts; (2) analyse ethical issues in workplace security programmes; (3) set governance for ethical practice.
@@ -253,6 +463,61 @@ Human-centred risk points to process controls, and governance makes ethical prac
 <a id="ch-05"></a>
 
 ## Chapter 5 — Human factors and cyber policy: design alternatives
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Alternatives"]
+  N2["5.2 Evaluating"]
+  N3["Lab — Weighted scores and sensitivity for three desi"]
+  N4["5.3 Selecting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Alternatives"]
+  N2["5.2 Evaluating"]
+  N3["Lab — Weighted scores and sensitivity for three desi"]
+  N4["5.3 Selecting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Alternatives]
+    |
+    v
+[5.2 Evaluating]
+    |
+    v
+[Lab — Weighted scores and sensitivity for three desi]
+    |
+    v
+[5.3 Selecting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -322,6 +587,61 @@ Alternatives evaluated on agreed weights, with sensitivity tests, support robust
 <a id="ch-06"></a>
 
 ## Chapter 6 — Human factors and cyber policy: controlled evaluation
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Designing the evaluation"]
+  N2["6.2 Within-month analysis"]
+  N3["Lab — Stepped rollout analysis with permutation test"]
+  N4["6.3 Ethical constraints"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Designing the evaluation"]
+  N2["6.2 Within-month analysis"]
+  N3["Lab — Stepped rollout analysis with permutation test"]
+  N4["6.3 Ethical constraints"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Designing the evaluation]
+    |
+    v
+[6.2 Within-month analysis]
+    |
+    v
+[Lab — Stepped rollout analysis with permutation test]
+    |
+    v
+[6.3 Ethical constraints]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -397,6 +717,56 @@ Controlled evaluations can be fair, ethical and informative when rollout is stag
 
 ## Chapter 7 — Human factors and cyber policy: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Cross-department links"]
+  N2["7.2 Framework alignment"]
+  N3["7.3 Managing change"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Cross-department links"]
+  N2["7.2 Framework alignment"]
+  N3["7.3 Managing change"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Cross-department links]
+    |
+    v
+[7.2 Framework alignment]
+    |
+    v
+[7.3 Managing change]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate the programme with HR, finance and incident response; (2) align with governance frameworks; (3) manage change across departments.
@@ -443,6 +813,56 @@ Integration embeds the programme in other functions and treats resistance as inf
 
 ## Chapter 8 — Human factors and cyber policy: difficult cases
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Repeated clickers"]
+  N2["8.2 Executives"]
+  N3["8.3 Whistleblowing and reporting"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Repeated clickers"]
+  N2["8.2 Executives"]
+  N3["8.3 Whistleblowing and reporting"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Repeated clickers]
+    |
+    v
+[8.2 Executives]
+    |
+    v
+[8.3 Whistleblowing and reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) handle cases involving repeated clickers, executives and whistleblowing; (2) balance accountability with support; (3) apply consistent principles.
@@ -488,6 +908,61 @@ Difficult cases call for consistent principles that protect reporters and fix sy
 <a id="ch-09"></a>
 
 ## Chapter 9 — Human factors and cyber policy: leadership and assurance
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Leading the programme"]
+  N2["9.2 Assurance"]
+  N3["Lab — Quarterly assurance measures"]
+  N4["9.3 Communicating uncertainty"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Leading the programme"]
+  N2["9.2 Assurance"]
+  N3["Lab — Quarterly assurance measures"]
+  N4["9.3 Communicating uncertainty"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Leading the programme]
+    |
+    v
+[9.2 Assurance]
+    |
+    v
+[Lab — Quarterly assurance measures]
+    |
+    v
+[9.3 Communicating uncertainty]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -553,6 +1028,56 @@ Leadership creates safe conditions, and assurance reports evidence with honest u
 
 ## Chapter 10 — Research reading and critique
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Critical reading"]
+  N2["10.2 Structured critique"]
+  N3["10.3 Implications"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Critical reading"]
+  N2["10.2 Structured critique"]
+  N3["10.3 Implications"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Critical reading]
+    |
+    v
+[10.2 Structured critique]
+    |
+    v
+[10.3 Implications]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) read research papers critically; (2) write a structured critique; (3) identify implications for practice.
@@ -598,6 +1123,61 @@ Critical reading weighs what studies can support and translates them carefully i
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 The project"]
+  N2["11.2 Outcomes and burden"]
+  N3["Lab — Help desk calls before and after keys"]
+  N4["11.3 Reporting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 The project"]
+  N2["11.2 Outcomes and burden"]
+  N3["Lab — Help desk calls before and after keys"]
+  N4["11.3 Reporting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 The project]
+    |
+    v
+[11.2 Outcomes and burden]
+    |
+    v
+[Lab — Help desk calls before and after keys]
+    |
+    v
+[11.3 Reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -663,6 +1243,56 @@ Applied projects deliver controls with users, measure burden and report limits.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Reviewing the whole"]
+  N2["12.2 Transfer"]
+  N3["12.3 Continuing development"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Reviewing the whole"]
+  N2["12.2 Transfer"]
+  N3["12.3 Continuing development"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Reviewing the whole]
+    |
+    v
+[12.2 Transfer]
+    |
+    v
+[12.3 Continuing development]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

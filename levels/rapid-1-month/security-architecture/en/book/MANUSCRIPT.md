@@ -1,7 +1,7 @@
 # Security Architecture and Engineering: Rapid Course
 
 - Language: English (`en`); course 007, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: staff in small organisations who need a fast, practical start in security architecture.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs count supplier dependencies and check settings against a baseline, both on synthetic data; nothing touches a real system. Production designs use vetted products and standards; never roll your own cryptography. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,66 @@ Saltzer and Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.11
 <a id="ch-01"></a>
 
 ## Chapter 1 — Security architecture and engineering: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 What architecture means"]
+  N2["1.2 Why it matters to a small organisation"]
+  N3["1.3 Five principles"]
+  N4["1.4 Applying them at Saltmarsh"]
+  N5["1.5 Recording a decision"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 What architecture means"]
+  N2["1.2 Why it matters to a small organisation"]
+  N3["1.3 Five principles"]
+  N4["1.4 Applying them at Saltmarsh"]
+  N5["1.5 Recording a decision"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 What architecture means]
+    |
+    v
+[1.2 Why it matters to a small organisation]
+    |
+    v
+[1.3 Five principles]
+    |
+    v
+[1.4 Applying them at Saltmarsh]
+    |
+    v
+[1.5 Recording a decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -99,6 +159,66 @@ Security architecture is a written plan grounded in a few durable principles and
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Setting scope"]
+  N2["2.2 Written permission"]
+  N3["2.3 Safe handling of member data"]
+  N4["2.4 Stop conditions"]
+  N5["2.5 A finding under scope"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Setting scope"]
+  N2["2.2 Written permission"]
+  N3["2.3 Safe handling of member data"]
+  N4["2.4 Stop conditions"]
+  N5["2.5 A finding under scope"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Setting scope]
+    |
+    v
+[2.2 Written permission]
+    |
+    v
+[2.3 Safe handling of member data]
+    |
+    v
+[2.4 Stop conditions]
+    |
+    v
+[2.5 A finding under scope]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) set the scope of a small security review; (2) obtain written permission; (3) work safely with member data.
@@ -160,6 +280,71 @@ Scope, permission, safe data handling and stop conditions make reviews useful an
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security architecture and engineering: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Mapping systems"]
+  N2["3.2 Drawing data flows"]
+  N3["3.3 Suppliers and dependencies"]
+  N4["Lab — Counting services that depend on each supplier"]
+  N5["3.4 Single points of failure"]
+  N6["3.5 Using the map"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Mapping systems"]
+  N2["3.2 Drawing data flows"]
+  N3["3.3 Suppliers and dependencies"]
+  N4["Lab — Counting services that depend on each supplier"]
+  N5["3.4 Single points of failure"]
+  N6["3.5 Using the map"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Mapping systems]
+    |
+    v
+[3.2 Drawing data flows]
+    |
+    v
+[3.3 Suppliers and dependencies]
+    |
+    v
+[Lab — Counting services that depend on each supplier]
+    |
+    v
+[3.4 Single points of failure]
+    |
+    v
+[3.5 Using the map]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -246,6 +431,71 @@ Mapping systems, data flows and dependencies shows where protection and fallback
 <a id="ch-04"></a>
 
 ## Chapter 4 — Security architecture and engineering: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The guided lab"]
+  N2["Lab — Checking loan system settings against a baseli"]
+  N3["4.2 Reading the results"]
+  N4["4.3 Prioritising actions"]
+  N5["4.4 Verifying the fix"]
+  N6["4.5 Synthesis and plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The guided lab"]
+  N2["Lab — Checking loan system settings against a baseli"]
+  N3["4.2 Reading the results"]
+  N4["4.3 Prioritising actions"]
+  N5["4.4 Verifying the fix"]
+  N6["4.5 Synthesis and plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The guided lab]
+    |
+    v
+[Lab — Checking loan system settings against a baseli]
+    |
+    v
+[4.2 Reading the results]
+    |
+    v
+[4.3 Prioritising actions]
+    |
+    v
+[4.4 Verifying the fix]
+    |
+    v
+[4.5 Synthesis and plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

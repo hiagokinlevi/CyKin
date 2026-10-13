@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Professional Course
 
 - Language: English (`en`); course 037, Professional course (6 months).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working practitioners moving into application security who must find, explain and help fix dependency and build risks with development teams.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -38,6 +38,71 @@ Read in order: the chapters follow one quality engineer becoming an application 
 <a id="ch-01"></a>
 
 ## Chapter 1 — Security foundations for practitioners
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The opening case"]
+  N2["1.2 Security goals"]
+  N3["1.3 Why the case matters"]
+  N4["1.4 Frameworks used"]
+  N5["1.5 The professional role"]
+  N6["1.6 Course plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The opening case"]
+  N2["1.2 Security goals"]
+  N3["1.3 Why the case matters"]
+  N4["1.4 Frameworks used"]
+  N5["1.5 The professional role"]
+  N6["1.6 Course plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The opening case]
+    |
+    v
+[1.2 Security goals]
+    |
+    v
+[1.3 Why the case matters]
+    |
+    v
+[1.4 Frameworks used]
+    |
+    v
+[1.5 The professional role]
+    |
+    v
+[1.6 Course plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -96,6 +161,71 @@ Security goals extend to everything that goes into the software.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Application and software supply chain security: service and stakeholder context
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 The service"]
+  N2["2.2 Stakeholders"]
+  N3["2.3 Their priorities"]
+  N4["2.4 Agreeing ways of working"]
+  N5["2.5 The registry decision"]
+  N6["2.6 Stakeholder map"]
+  N7["Keeping stakeholders informed"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 The service"]
+  N2["2.2 Stakeholders"]
+  N3["2.3 Their priorities"]
+  N4["2.4 Agreeing ways of working"]
+  N5["2.5 The registry decision"]
+  N6["2.6 Stakeholder map"]
+  N7["Keeping stakeholders informed"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 The service]
+    |
+    v
+[2.2 Stakeholders]
+    |
+    v
+[2.3 Their priorities]
+    |
+    v
+[2.4 Agreeing ways of working]
+    |
+    v
+[2.5 The registry decision]
+    |
+    v
+[2.6 Stakeholder map]
+    |
+    v
+[Keeping stakeholders informed]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -159,6 +289,71 @@ Know the service and speak to each stakeholder's priority.
 
 ## Chapter 3 — Authorized practice and evidence handling
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Authorisation"]
+  N2["3.2 Defensive scope"]
+  N3["3.3 Evidence"]
+  N4["3.4 Personal data"]
+  N5["3.5 Decision records"]
+  N6["3.6 Sharing findings"]
+  N7["Handling credentials found"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Authorisation"]
+  N2["3.2 Defensive scope"]
+  N3["3.3 Evidence"]
+  N4["3.4 Personal data"]
+  N5["3.5 Decision records"]
+  N6["3.6 Sharing findings"]
+  N7["Handling credentials found"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Authorisation]
+    |
+    v
+[3.2 Defensive scope]
+    |
+    v
+[3.3 Evidence]
+    |
+    v
+[3.4 Personal data]
+    |
+    v
+[3.5 Decision records]
+    |
+    v
+[3.6 Sharing findings]
+    |
+    v
+[Handling credentials found]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) confirm authorisation before reviewing systems; (2) handle code, logs and findings as evidence; (3) protect personal data; (4) record decisions.
@@ -220,6 +415,71 @@ Work with written scope, careful evidence and recorded decisions.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Application and software supply chain security: core methods
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Dependency sources"]
+  N2["Lab — dependency sources"]
+  N3["4.2 Lab result"]
+  N4["4.3 Similar names"]
+  N5["4.4 Source controls"]
+  N6["4.5 Reviewing new dependencies"]
+  N7["Proxy registry"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Dependency sources"]
+  N2["Lab — dependency sources"]
+  N3["4.2 Lab result"]
+  N4["4.3 Similar names"]
+  N5["4.4 Source controls"]
+  N6["4.5 Reviewing new dependencies"]
+  N7["Proxy registry"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Dependency sources]
+    |
+    v
+[Lab — dependency sources]
+    |
+    v
+[4.2 Lab result]
+    |
+    v
+[4.3 Similar names]
+    |
+    v
+[4.4 Source controls]
+    |
+    v
+[4.5 Reviewing new dependencies]
+    |
+    v
+[Proxy registry]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -310,6 +570,71 @@ Control sources, pin hashes and review names.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Application and software supply chain security: tools and interpretation
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Scanner types"]
+  N2["Lab — finding triage"]
+  N3["5.2 Lab result"]
+  N4["5.3 Reachability"]
+  N5["5.4 Checking findings"]
+  N6["5.5 Alert fatigue"]
+  N7["Explaining findings"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Scanner types"]
+  N2["Lab — finding triage"]
+  N3["5.2 Lab result"]
+  N4["5.3 Reachability"]
+  N5["5.4 Checking findings"]
+  N6["5.5 Alert fatigue"]
+  N7["Explaining findings"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Scanner types]
+    |
+    v
+[Lab — finding triage]
+    |
+    v
+[5.2 Lab result]
+    |
+    v
+[5.3 Reachability]
+    |
+    v
+[5.4 Checking findings]
+    |
+    v
+[5.5 Alert fatigue]
+    |
+    v
+[Explaining findings]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -405,6 +730,71 @@ Deduplicate, rank by reachability and send checked findings.
 
 ## Chapter 6 — Application and software supply chain security: operational workflow
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 The workflow"]
+  N2["6.2 Targets"]
+  N3["6.3 Ownership"]
+  N4["6.4 Tracking"]
+  N5["6.5 Escalation"]
+  N6["6.6 Exceptions"]
+  N7["Weekly review"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 The workflow"]
+  N2["6.2 Targets"]
+  N3["6.3 Ownership"]
+  N4["6.4 Tracking"]
+  N5["6.5 Escalation"]
+  N6["6.6 Exceptions"]
+  N7["Weekly review"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 The workflow]
+    |
+    v
+[6.2 Targets]
+    |
+    v
+[6.3 Ownership]
+    |
+    v
+[6.4 Tracking]
+    |
+    v
+[6.5 Escalation]
+    |
+    v
+[6.6 Exceptions]
+    |
+    v
+[Weekly review]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) design a workflow from finding to fix; (2) assign owners and targets; (3) track progress; (4) escalate fairly.
@@ -466,6 +856,71 @@ A clear workflow turns findings into tracked fixes.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Application and software supply chain security: controls and verification
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Controls chosen"]
+  N2["7.2 Provenance"]
+  N3["7.3 Verifying controls"]
+  N4["7.4 Recording results"]
+  N5["7.5 Ongoing checks"]
+  N6["7.6 SSDF mapping"]
+  N7["Rolling out controls"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Controls chosen"]
+  N2["7.2 Provenance"]
+  N3["7.3 Verifying controls"]
+  N4["7.4 Recording results"]
+  N5["7.5 Ongoing checks"]
+  N6["7.6 SSDF mapping"]
+  N7["Rolling out controls"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Controls chosen]
+    |
+    v
+[7.2 Provenance]
+    |
+    v
+[7.3 Verifying controls]
+    |
+    v
+[7.4 Recording results]
+    |
+    v
+[7.5 Ongoing checks]
+    |
+    v
+[7.6 SSDF mapping]
+    |
+    v
+[Rolling out controls]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -529,6 +984,71 @@ Controls need tests that keep running.
 
 ## Chapter 8 — Application and software supply chain security: supervised case analysis
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 The case"]
+  N2["8.2 Timeline"]
+  N3["8.3 Causes"]
+  N4["8.4 Missed signals"]
+  N5["8.5 Recommendations"]
+  N6["8.6 Proportion"]
+  N7["Interviewing the team"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 The case"]
+  N2["8.2 Timeline"]
+  N3["8.3 Causes"]
+  N4["8.4 Missed signals"]
+  N5["8.5 Recommendations"]
+  N6["8.6 Proportion"]
+  N7["Interviewing the team"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 The case]
+    |
+    v
+[8.2 Timeline]
+    |
+    v
+[8.3 Causes]
+    |
+    v
+[8.4 Missed signals]
+    |
+    v
+[8.5 Recommendations]
+    |
+    v
+[8.6 Proportion]
+    |
+    v
+[Interviewing the team]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse a supply chain case under supervision; (2) build a timeline; (3) identify causes and missed signals; (4) recommend proportionate changes.
@@ -591,6 +1111,71 @@ Analyse cases fairly and recommend proportionate changes.
 
 ## Chapter 9 — Communication, ethics and reporting
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Readers"]
+  N2["9.2 Structure"]
+  N3["9.3 Uncertainty"]
+  N4["9.4 Ethics"]
+  N5["9.5 External reporting"]
+  N6["9.6 Tone"]
+  N7["Reporting to managers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Readers"]
+  N2["9.2 Structure"]
+  N3["9.3 Uncertainty"]
+  N4["9.4 Ethics"]
+  N5["9.5 External reporting"]
+  N6["9.6 Tone"]
+  N7["Reporting to managers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Readers]
+    |
+    v
+[9.2 Structure]
+    |
+    v
+[9.3 Uncertainty]
+    |
+    v
+[9.4 Ethics]
+    |
+    v
+[9.5 External reporting]
+    |
+    v
+[9.6 Tone]
+    |
+    v
+[Reporting to managers]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) write clear findings and reports for different readers; (2) communicate uncertainty; (3) act ethically with information; (4) report externally through proper channels.
@@ -652,6 +1237,71 @@ Write for the reader, state uncertainty and report responsibly.
 <a id="ch-10"></a>
 
 ## Chapter 10 — Application and software supply chain security: quality and troubleshooting
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Measuring"]
+  N2["Lab — remediation targets"]
+  N3["10.2 Lab result"]
+  N4["10.3 Finding causes"]
+  N5["10.4 Improvements"]
+  N6["10.5 Troubleshooting tools"]
+  N7["Reading the lab"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Measuring"]
+  N2["Lab — remediation targets"]
+  N3["10.2 Lab result"]
+  N4["10.3 Finding causes"]
+  N5["10.4 Improvements"]
+  N6["10.5 Troubleshooting tools"]
+  N7["Reading the lab"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Measuring]
+    |
+    v
+[Lab — remediation targets]
+    |
+    v
+[10.2 Lab result]
+    |
+    v
+[10.3 Finding causes]
+    |
+    v
+[10.4 Improvements]
+    |
+    v
+[10.5 Troubleshooting tools]
+    |
+    v
+[Reading the lab]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -736,6 +1386,71 @@ Measure targets, find causes and improve the workflow.
 
 ## Chapter 11 — Supervised laboratory
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 The exercise"]
+  N2["11.2 Steps"]
+  N3["11.3 Supervision"]
+  N4["11.4 The report"]
+  N5["11.5 Assessment"]
+  N6["11.6 Reflection"]
+  N7["Preparing for the lab"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 The exercise"]
+  N2["11.2 Steps"]
+  N3["11.3 Supervision"]
+  N4["11.4 The report"]
+  N5["11.5 Assessment"]
+  N6["11.6 Reflection"]
+  N7["Preparing for the lab"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 The exercise]
+    |
+    v
+[11.2 Steps]
+    |
+    v
+[11.3 Supervision]
+    |
+    v
+[11.4 The report]
+    |
+    v
+[11.5 Assessment]
+    |
+    v
+[11.6 Reflection]
+    |
+    v
+[Preparing for the lab]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) run a supervised end-to-end exercise on synthetic projects; (2) apply source checks, triage and targets; (3) produce a report; (4) reflect.
@@ -801,6 +1516,71 @@ Practise the whole method under supervision.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio contents"]
+  N2["12.2 Mapping"]
+  N3["12.3 Outcomes"]
+  N4["12.5 Reflection"]
+  N5["12.6 Development plan"]
+  N6["Assessor feedback"]
+  N7["Keeping the portfolio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio contents"]
+  N2["12.2 Mapping"]
+  N3["12.3 Outcomes"]
+  N4["12.5 Reflection"]
+  N5["12.6 Development plan"]
+  N6["Assessor feedback"]
+  N7["Keeping the portfolio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Portfolio contents]
+    |
+    v
+[12.2 Mapping]
+    |
+    v
+[12.3 Outcomes]
+    |
+    v
+[12.5 Reflection]
+    |
+    v
+[12.6 Development plan]
+    |
+    v
+[Assessor feedback]
+    |
+    v
+[Keeping the portfolio]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

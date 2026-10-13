@@ -1,7 +1,7 @@
 # Security Architecture and Engineering: Postgraduate Course
 
 - Language: English (`en`); course 145, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: practising architects and engineers who lead organisation-scale security architecture decisions.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compute zone reachability, weighted option scores with a sensitivity sweep, assurance-level counts and rubric comparisons on synthetic data; nothing touches a real network. Production designs use vetted products and standards; never roll your own cryptography. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,56 @@ NIST [SP 800-207](https://doi.org/10.6028/NIST.SP.800-207), [SP 800-160 Vol. 1 R
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The decision at Corvane"]
+  N2["1.2 Facts, assumptions and values"]
+  N3["1.3 Recording the decision"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The decision at Corvane"]
+  N2["1.2 Facts, assumptions and values"]
+  N3["1.3 Recording the decision"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The decision at Corvane]
+    |
+    v
+[1.2 Facts, assumptions and values]
+    |
+    v
+[1.3 Recording the decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -84,6 +134,56 @@ Advanced decisions improve when facts, assumptions and values are separated and 
 
 ## Chapter 2 — Security architecture and engineering: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What practitioners do"]
+  N2["2.2 Comparing with guidance"]
+  N3["2.3 Corvane's gaps"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What practitioners do"]
+  N2["2.2 Comparing with guidance"]
+  N3["2.3 Corvane's gaps"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What practitioners do]
+    |
+    v
+[2.2 Comparing with guidance]
+    |
+    v
+[2.3 Corvane's gaps]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) survey current architecture practice in health care; (2) compare it with published guidance; (3) identify gaps in Corvane's practice.
@@ -129,6 +229,61 @@ Comparing real practice with guidance reveals specific, rankable gaps, especiall
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security architecture and engineering: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Specialist sources"]
+  N2["3.2 Modelling reachability"]
+  N3["Lab — Zone reachability before and after segmentatio"]
+  N4["3.3 Proportionate evidence"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Specialist sources"]
+  N2["3.2 Modelling reachability"]
+  N3["Lab — Zone reachability before and after segmentatio"]
+  N4["3.3 Proportionate evidence"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Specialist sources]
+    |
+    v
+[3.2 Modelling reachability]
+    |
+    v
+[Lab — Zone reachability before and after segmentatio]
+    |
+    v
+[3.3 Proportionate evidence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -200,6 +355,56 @@ Specialist evidence and simple models turn complex configurations into proportio
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Risk with ranges"]
+  N2["4.2 Patient safety and other harms"]
+  N3["4.3 An ethical conflict"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Risk with ranges"]
+  N2["4.2 Patient safety and other harms"]
+  N3["4.3 An ethical conflict"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Risk with ranges]
+    |
+    v
+[4.2 Patient safety and other harms]
+    |
+    v
+[4.3 An ethical conflict]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) estimate risk with explicit uncertainty; (2) weigh patient safety against other harms; (3) handle an ethical conflict in architecture work.
@@ -245,6 +450,61 @@ Advanced risk work states uncertainty honestly, keeps safety visible and places 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security architecture and engineering: design alternatives
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Generating alternatives"]
+  N2["5.2 Attributes as criteria"]
+  N3["Lab — Attribute scores and a sensitivity sweep"]
+  N4["5.3 Trade-offs made explicit"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Generating alternatives"]
+  N2["5.2 Attributes as criteria"]
+  N3["Lab — Attribute scores and a sensitivity sweep"]
+  N4["5.3 Trade-offs made explicit"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Generating alternatives]
+    |
+    v
+[5.2 Attributes as criteria]
+    |
+    v
+[Lab — Attribute scores and a sensitivity sweep]
+    |
+    v
+[5.3 Trade-offs made explicit]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -315,6 +575,56 @@ Honest alternatives, attribute criteria and sensitivity checks make trade-offs e
 
 ## Chapter 6 — Security architecture and engineering: controlled evaluation
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Designing the pilot"]
+  N2["6.2 Measuring"]
+  N3["6.3 Interpreting carefully"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Designing the pilot"]
+  N2["6.2 Measuring"]
+  N3["6.3 Interpreting carefully"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Designing the pilot]
+    |
+    v
+[6.2 Measuring]
+    |
+    v
+[6.3 Interpreting carefully]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) design a controlled pilot of the hybrid design; (2) measure outcomes against a comparison group; (3) interpret limited results carefully.
@@ -360,6 +670,56 @@ A controlled pilot with pre-defined outcomes gives modest but credible evidence 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Security architecture and engineering: organizational integration
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Architecture and governance"]
+  N2["7.2 A review board that works"]
+  N3["7.3 Connecting to other functions"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Architecture and governance"]
+  N2["7.2 A review board that works"]
+  N3["7.3 Connecting to other functions"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Architecture and governance]
+    |
+    v
+[7.2 A review board that works]
+    |
+    v
+[7.3 Connecting to other functions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -407,6 +767,56 @@ Architecture lasts when it is embedded in the management system and a fast, pred
 
 ## Chapter 8 — Security architecture and engineering: difficult cases
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 The unpatchable scanner"]
+  N2["8.2 A merger"]
+  N3["8.3 When no answer is clean"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 The unpatchable scanner"]
+  N2["8.2 A merger"]
+  N3["8.3 When no answer is clean"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 The unpatchable scanner]
+    |
+    v
+[8.2 A merger]
+    |
+    v
+[8.3 When no answer is clean]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) handle a legacy device that cannot meet the architecture; (2) manage a merger of two networks; (3) reason through cases with no clean answer.
@@ -452,6 +862,61 @@ Difficult cases are handled by documented exceptions, staged plans and risk that
 <a id="ch-09"></a>
 
 ## Chapter 9 — Security architecture and engineering: leadership and assurance
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Leading the programme"]
+  N2["9.2 Assurance for the board"]
+  N3["Lab — Counting designed, implemented and verified co"]
+  N4["9.3 Honest metrics"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Leading the programme"]
+  N2["9.2 Assurance for the board"]
+  N3["Lab — Counting designed, implemented and verified co"]
+  N4["9.3 Honest metrics"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Leading the programme]
+    |
+    v
+[9.2 Assurance for the board]
+    |
+    v
+[Lab — Counting designed, implemented and verified co]
+    |
+    v
+[9.3 Honest metrics]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -518,6 +983,56 @@ Architecture leadership delegates through principles and offers assurance based 
 
 ## Chapter 10 — Research reading and critique
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Reading with purpose"]
+  N2["10.2 Judging transfer"]
+  N3["10.3 Writing the critique"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Reading with purpose"]
+  N2["10.2 Judging transfer"]
+  N3["10.3 Writing the critique"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Reading with purpose]
+    |
+    v
+[10.2 Judging transfer]
+    |
+    v
+[10.3 Writing the critique]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) read research papers on security architecture critically; (2) judge whether findings transfer to Corvane; (3) write a structured critique.
@@ -563,6 +1078,61 @@ Critical reading asks what was measured, how and whether mechanisms transfer, an
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 The project"]
+  N2["11.2 Assessment with a rubric"]
+  N3["Lab — Comparing self and assessor rubric scores"]
+  N4["11.3 Handover"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 The project"]
+  N2["11.2 Assessment with a rubric"]
+  N3["Lab — Comparing self and assessor rubric scores"]
+  N4["11.3 Handover"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 The project]
+    |
+    v
+[11.2 Assessment with a rubric]
+    |
+    v
+[Lab — Comparing self and assessor rubric scores]
+    |
+    v
+[11.3 Handover]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -630,6 +1200,56 @@ An applied project is complete when surprises are absorbed, a rubric is honestly
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 What changed"]
+  N2["12.2 Transfer to a new domain"]
+  N3["12.3 Continued development"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 What changed"]
+  N2["12.2 Transfer to a new domain"]
+  N3["12.3 Continued development"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 What changed]
+    |
+    v
+[12.2 Transfer to a new domain]
+    |
+    v
+[12.3 Continued development]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

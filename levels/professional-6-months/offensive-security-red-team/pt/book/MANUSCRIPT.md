@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Guia para o Profissional
 
 - Idioma: português do Brasil (`pt`); curso profissional, seis meses; aproximadamente 360 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em início de carreira que entram na equipe de segurança de uma organização.
 - Relação com os livros vizinhos: o [livro do curso rápido](../../../../rapid-1-month/offensive-security-red-team/pt/book/MANUSCRIPT.md) é uma introdução em quatro capítulos; o [livro do técnico](../../../../technical-18-months/offensive-security-red-team/pt/book/MANUSCRIPT.md) se aprofunda em ferramentas e verificação. **Este livro é um guia compacto para o profissional.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -35,6 +35,66 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Onde os testes ofensivos se encaixam"]
+  N1["1.2 CIA em uma cooperativa de crédito"]
+  N2["1.3 Menor privilégio e profundidade"]
+  N3["1.4 Referenciais que você vai citar"]
+  N4["1.5 O que os profissionais produzem"]
+  N5["1.6 Confiança dos associados"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Onde os testes ofensivos se encaixam"]
+  N1["1.2 CIA em uma cooperativa de crédito"]
+  N2["1.3 Menor privilégio e profundidade"]
+  N3["1.4 Referenciais que você vai citar"]
+  N4["1.5 O que os profissionais produzem"]
+  N5["1.6 Confiança dos associados"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[1.1 Onde os testes ofensivos se encaixam]
+    |
+    v
+[1.2 CIA em uma cooperativa de crédito]
+    |
+    v
+[1.3 Menor privilégio e profundidade]
+    |
+    v
+[1.4 Referenciais que você vai citar]
+    |
+    v
+[1.5 O que os profissionais produzem]
+    |
+    v
+[1.6 Confiança dos associados]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -94,6 +154,66 @@ Os testes autorizados ficam ao lado das outras práticas; CIA, menor privilégio
 
 ## Capítulo 2 — Contexto de serviços e partes interessadas
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["2.1 Serviços que importam"]
+  N1["2.2 Por que o núcleo bancário é excluído"]
+  N2["2.3 Partes interessadas"]
+  N3["2.4 Contexto no plano"]
+  N4["2.5 Terceiros"]
+  N5["2.6 Expectativas dos examinadores"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX006"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Serviços que importam"]
+  N1["2.2 Por que o núcleo bancário é excluído"]
+  N2["2.3 Partes interessadas"]
+  N3["2.4 Contexto no plano"]
+  N4["2.5 Terceiros"]
+  N5["2.6 Expectativas dos examinadores"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[2.1 Serviços que importam]
+    |
+    v
+[2.2 Por que o núcleo bancário é excluído]
+    |
+    v
+[2.3 Partes interessadas]
+    |
+    v
+[2.4 Contexto no plano]
+    |
+    v
+[2.5 Terceiros]
+    |
+    v
+[2.6 Expectativas dos examinadores]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar os serviços da HCU e quem é responsável por eles; (2) explicar por que o núcleo bancário costuma ficar fora do escopo; (3) mapear as partes interessadas de um engajamento; (4) escrever um parágrafo de contexto para um plano de teste.
@@ -151,6 +271,71 @@ Serviços, responsáveis, exclusões e terceiros entram no plano antes de qualqu
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e tratamento de evidências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["3.1 Checklist antes do kickoff"]
+  N1["3.2 Regras de evidências"]
+  N2["3.3 Cadeia de custódia"]
+  N3["3.4 Dispositivos pessoais"]
+  N4["3.5 Sala de aula versus produção"]
+  N5["3.6 Quando a checklist falha"]
+  N6["3.7 O acordo vence o hábito"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX011"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Checklist antes do kickoff"]
+  N1["3.2 Regras de evidências"]
+  N2["3.3 Cadeia de custódia"]
+  N3["3.4 Dispositivos pessoais"]
+  N4["3.5 Sala de aula versus produção"]
+  N5["3.6 Quando a checklist falha"]
+  N6["3.7 O acordo vence o hábito"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[3.1 Checklist antes do kickoff]
+    |
+    v
+[3.2 Regras de evidências]
+    |
+    v
+[3.3 Cadeia de custódia]
+    |
+    v
+[3.4 Dispositivos pessoais]
+    |
+    v
+[3.5 Sala de aula versus produção]
+    |
+    v
+[3.6 Quando a checklist falha]
+    |
+    v
+[3.7 O acordo vence o hábito]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -242,6 +427,66 @@ Sem contato de emergência, não há teste; as evidências são minimizadas, ret
 
 ## Capítulo 4 — Métodos centrais
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["4.1 A espinha dorsal do PTES"]
+  N1["4.2 Descoberta versus validação"]
+  N2["4.3 Exploração restrita"]
+  N3["4.4 Associar métodos às ROE"]
+  N4["4.5 Modelagem de ameaças leve"]
+  N5["4.7 O relatório como etapa do método"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 A espinha dorsal do PTES"]
+  N1["4.2 Descoberta versus validação"]
+  N2["4.3 Exploração restrita"]
+  N3["4.4 Associar métodos às ROE"]
+  N4["4.5 Modelagem de ameaças leve"]
+  N5["4.7 O relatório como etapa do método"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
+```
+
+```text
+[4.1 A espinha dorsal do PTES]
+    |
+    v
+[4.2 Descoberta versus validação]
+    |
+    v
+[4.3 Exploração restrita]
+    |
+    v
+[4.4 Associar métodos às ROE]
+    |
+    v
+[4.5 Modelagem de ameaças leve]
+    |
+    v
+[4.7 O relatório como etapa do método]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever as etapas do PTES em ordem; (2) separar descoberta de validação; (3) explicar por que a exploração é opcional e restrita; (4) escolher métodos compatíveis com as ROE da HCU.
@@ -303,6 +548,71 @@ Os métodos seguem a ordem do PTES e as ROE; a descoberta só vira constatação
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Ferramentas e interpretação
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["5.1 As ferramentas ajudam"]
+  N1["5.2 Piso de confiança"]
+  N2["5.3 Falsos positivos e negativos"]
+  N3["5.4 Versões e configurações"]
+  N4["5.5 O OWASP WSTG como ferramenta de raciocínio"]
+  N5["5.6 Interpretar banners"]
+  N6["5.7 Taxas de base"]
+  N7["5.8 Verificações manuais por amostragem"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 As ferramentas ajudam"]
+  N1["5.2 Piso de confiança"]
+  N2["5.3 Falsos positivos e negativos"]
+  N3["5.4 Versões e configurações"]
+  N4["5.5 O OWASP WSTG como ferramenta de raciocínio"]
+  N5["5.6 Interpretar banners"]
+  N6["5.7 Taxas de base"]
+  N7["5.8 Verificações manuais por amostragem"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[5.1 As ferramentas ajudam]
+    |
+    v
+[5.2 Piso de confiança]
+    |
+    v
+[5.3 Falsos positivos e negativos]
+    |
+    v
+[5.4 Versões e configurações]
+    |
+    v
+[5.5 O OWASP WSTG como ferramenta de raciocínio]
+    |
+    v
+[5.6 Interpretar banners]
+    |
+    v
+[5.7 Taxas de base]
+    |
+    v
+[5.8 Verificações manuais por amostragem]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -392,6 +702,71 @@ As ferramentas propõem; as pessoas decidem — filtrar, validar, registrar vers
 
 ## Capítulo 6 — Fluxo de trabalho operacional
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["6.1 A sequência do dia"]
+  N1["6.2 Registro de atividades"]
+  N2["6.3 Coordenação com o SOC"]
+  N3["6.4 Dúvidas no meio do teste"]
+  N4["6.5 Estado final"]
+  N5["6.6 Passagem entre testadores"]
+  N6["6.7 Disciplina no canal de comunicação"]
+  N7["6.8 Extensões de janela"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX026"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 A sequência do dia"]
+  N1["6.2 Registro de atividades"]
+  N2["6.3 Coordenação com o SOC"]
+  N3["6.4 Dúvidas no meio do teste"]
+  N4["6.5 Estado final"]
+  N5["6.6 Passagem entre testadores"]
+  N6["6.7 Disciplina no canal de comunicação"]
+  N7["6.8 Extensões de janela"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[6.1 A sequência do dia]
+    |
+    v
+[6.2 Registro de atividades]
+    |
+    v
+[6.3 Coordenação com o SOC]
+    |
+    v
+[6.4 Dúvidas no meio do teste]
+    |
+    v
+[6.5 Estado final]
+    |
+    v
+[6.6 Passagem entre testadores]
+    |
+    v
+[6.7 Disciplina no canal de comunicação]
+    |
+    v
+[6.8 Extensões de janela]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o fluxo de trabalho do dia do teste, do kickoff ao debrief; (2) manter um registro de atividades contemporâneo; (3) coordenar com o SOC; (4) lidar com uma dúvida de escopo no meio do teste.
@@ -457,6 +832,71 @@ O fluxo de trabalho é kickoff, trabalho registrado, visibilidade para o SOC e p
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Controles e verificação
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["7.1 Associar o controle à constatação"]
+  N1["7.2 Controles compensatórios"]
+  N2["7.3 Desenho do reteste"]
+  N3["7.4 O que significa verificado"]
+  N4["7.5 Acompanhamento"]
+  N5["7.6 Correções parciais"]
+  N6["7.7 Responsáveis pela verificação"]
+  N7["7.8 Vigilância de regressões"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Associar o controle à constatação"]
+  N1["7.2 Controles compensatórios"]
+  N2["7.3 Desenho do reteste"]
+  N3["7.4 O que significa verificado"]
+  N4["7.5 Acompanhamento"]
+  N5["7.6 Correções parciais"]
+  N6["7.7 Responsáveis pela verificação"]
+  N7["7.8 Vigilância de regressões"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[7.1 Associar o controle à constatação]
+    |
+    v
+[7.2 Controles compensatórios]
+    |
+    v
+[7.3 Desenho do reteste]
+    |
+    v
+[7.4 O que significa verificado]
+    |
+    v
+[7.5 Acompanhamento]
+    |
+    v
+[7.6 Correções parciais]
+    |
+    v
+[7.7 Responsáveis pela verificação]
+    |
+    v
+[7.8 Vigilância de regressões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -524,6 +964,71 @@ Os controles correspondem às constatações; os controles compensatórios compr
 
 ## Capítulo 8 — Análise supervisionada de casos
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["8.1 O dossiê do caso"]
+  N1["8.2 Fatos versus suposições"]
+  N2["8.3 Próximos passos dentro das ROE"]
+  N3["8.4 Escalonamento"]
+  N4["8.5 Rótulo do ATT&CK"]
+  N5["8.6 Escrever para o dossiê do caso"]
+  N6["8.7 Hora de escalar"]
+  N7["8.8 Colaboração com o SOC no caso"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 O dossiê do caso"]
+  N1["8.2 Fatos versus suposições"]
+  N2["8.3 Próximos passos dentro das ROE"]
+  N3["8.4 Escalonamento"]
+  N4["8.5 Rótulo do ATT&CK"]
+  N5["8.6 Escrever para o dossiê do caso"]
+  N6["8.7 Hora de escalar"]
+  N7["8.8 Colaboração com o SOC no caso"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[8.1 O dossiê do caso]
+    |
+    v
+[8.2 Fatos versus suposições]
+    |
+    v
+[8.3 Próximos passos dentro das ROE]
+    |
+    v
+[8.4 Escalonamento]
+    |
+    v
+[8.5 Rótulo do ATT&CK]
+    |
+    v
+[8.6 Escrever para o dossiê do caso]
+    |
+    v
+[8.7 Hora de escalar]
+    |
+    v
+[8.8 Colaboração com o SOC no caso]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) analisar um dossiê de caso sintético da HCU; (2) separar fatos de suposições; (3) propor os próximos passos autorizados; (4) escalar quando necessário.
@@ -590,6 +1095,71 @@ O trabalho de caso separa fatos de suposições, age apenas dentro do escopo e e
 
 ## Capítulo 9 — Comunicação, ética e relatórios
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["9.1 Duas vozes"]
+  N1["9.2 Pressão"]
+  N2["9.3 Tratamento responsável"]
+  N3["9.4 Estrutura do relatório"]
+  N4["9.5 Linguagem de testes guiados por ameaças"]
+  N5["9.6 Observações positivas"]
+  N6["9.7 Recomendações claras"]
+  N7["9.8 Revisão antes do envio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX041"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Duas vozes"]
+  N1["9.2 Pressão"]
+  N2["9.3 Tratamento responsável"]
+  N3["9.4 Estrutura do relatório"]
+  N4["9.5 Linguagem de testes guiados por ameaças"]
+  N5["9.6 Observações positivas"]
+  N6["9.7 Recomendações claras"]
+  N7["9.8 Revisão antes do envio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[9.1 Duas vozes]
+    |
+    v
+[9.2 Pressão]
+    |
+    v
+[9.3 Tratamento responsável]
+    |
+    v
+[9.4 Estrutura do relatório]
+    |
+    v
+[9.5 Linguagem de testes guiados por ameaças]
+    |
+    v
+[9.6 Observações positivas]
+    |
+    v
+[9.7 Recomendações claras]
+    |
+    v
+[9.8 Revisão antes do envio]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever para executivos e para engenheiros; (2) lidar com pressão para esconder constatações; (3) aplicar a ética da divulgação responsável; (4) estruturar o relatório da HCU.
@@ -655,6 +1225,71 @@ Diga a verdade na voz certa; nunca retire constatações sob pressão; mantenha 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Qualidade e solução de problemas
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["10.1 Tickets completos"]
+  N1["10.2 Correções paradas"]
+  N2["10.3 Métricas de qualidade"]
+  N3["10.4 Correções de processo sem culpados"]
+  N4["10.5 Solução de problemas nos testes"]
+  N5["10.6 Reprovações no reteste"]
+  N6["10.7 Qualidade por amostragem"]
+  N7["10.8 Escada de escalonamento"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Tickets completos"]
+  N1["10.2 Correções paradas"]
+  N2["10.3 Métricas de qualidade"]
+  N3["10.4 Correções de processo sem culpados"]
+  N4["10.5 Solução de problemas nos testes"]
+  N5["10.6 Reprovações no reteste"]
+  N6["10.7 Qualidade por amostragem"]
+  N7["10.8 Escada de escalonamento"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[10.1 Tickets completos]
+    |
+    v
+[10.2 Correções paradas]
+    |
+    v
+[10.3 Métricas de qualidade]
+    |
+    v
+[10.4 Correções de processo sem culpados]
+    |
+    v
+[10.5 Solução de problemas nos testes]
+    |
+    v
+[10.6 Reprovações no reteste]
+    |
+    v
+[10.7 Qualidade por amostragem]
+    |
+    v
+[10.8 Escada de escalonamento]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -750,6 +1385,71 @@ Qualidade é ter tickets completos, métricas honestas e correções de processo
 
 ## Capítulo 11 — Laboratório supervisionado
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["11.1 Instruções do laboratório"]
+  N1["11.2 Revisão por pares"]
+  N2["11.3 Reflexão"]
+  N3["11.4 Aprovação do supervisor"]
+  N4["11.5 Tempo limitado"]
+  N5["11.6 Regra de pares"]
+  N6["11.7 Pacote de evidências do laboratório"]
+  N7["11.8 Limpeza"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Instruções do laboratório"]
+  N1["11.2 Revisão por pares"]
+  N2["11.3 Reflexão"]
+  N3["11.4 Aprovação do supervisor"]
+  N4["11.5 Tempo limitado"]
+  N5["11.6 Regra de pares"]
+  N6["11.7 Pacote de evidências do laboratório"]
+  N7["11.8 Limpeza"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[11.1 Instruções do laboratório]
+    |
+    v
+[11.2 Revisão por pares]
+    |
+    v
+[11.3 Reflexão]
+    |
+    v
+[11.4 Aprovação do supervisor]
+    |
+    v
+[11.5 Tempo limitado]
+    |
+    v
+[11.6 Regra de pares]
+    |
+    v
+[11.7 Pacote de evidências do laboratório]
+    |
+    v
+[11.8 Limpeza]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) conduzir um laboratório supervisionado usando apenas dados sintéticos e os laboratórios anteriores; (2) produzir um minirrelatório; (3) revisar a verificação de escopo de outro aluno; (4) refletir sobre os erros.
@@ -821,6 +1521,71 @@ O laboratório supervisionado prova que você sabe recusar autorizações incomp
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["12.1 Conteúdo do portfólio"]
+  N1["12.2 Apresentação"]
+  N2["12.3 Lacunas"]
+  N3["12.4 Regras permanentes"]
+  N4["12.5 Passagem de bastão"]
+  N5["12.6 Integridade do portfólio"]
+  N6["12.7 Formação continuada"]
+  N7["12.8 Reafirmação de segurança na capa do portfólio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX056"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Conteúdo do portfólio"]
+  N1["12.2 Apresentação"]
+  N2["12.3 Lacunas"]
+  N3["12.4 Regras permanentes"]
+  N4["12.5 Passagem de bastão"]
+  N5["12.6 Integridade do portfólio"]
+  N6["12.7 Formação continuada"]
+  N7["12.8 Reafirmação de segurança na capa do portfólio"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[12.1 Conteúdo do portfólio]
+    |
+    v
+[12.2 Apresentação]
+    |
+    v
+[12.3 Lacunas]
+    |
+    v
+[12.4 Regras permanentes]
+    |
+    v
+[12.5 Passagem de bastão]
+    |
+    v
+[12.6 Integridade do portfólio]
+    |
+    v
+[12.7 Formação continuada]
+    |
+    v
+[12.8 Reafirmação de segurança na capa do portfólio]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 

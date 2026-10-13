@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 166, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que avaliam se uma mudança num controle de governança melhora um resultado de segurança mensurável.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam a cobertura de requisito a evidência, limites exatos de amostragem por atributos e uma diferença bootstrap entre taxas de acesso excessivo, sempre sobre dados sintéticos; nenhuma conta, funcionário ou auditoria real está envolvido. Os mapeamentos e os testes no estilo de auditoria são ilustrações didáticas, e não atestações reais nem aconselhamento jurídico. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,56 @@ ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) e 27002:2022; NIST [
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Da preocupação à pergunta"]
+  N1["1.2 Torná-la respondível"]
+  N2["1.3 Buscar de forma sistemática"]
+  N3["1.4 Ler normas como fontes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Da preocupação à pergunta"]
+  N1["1.2 Torná-la respondível"]
+  N2["1.3 Buscar de forma sistemática"]
+  N3["1.4 Ler normas como fontes"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 Da preocupação à pergunta]
+    |
+    v
+[1.2 Torná-la respondível]
+    |
+    v
+[1.3 Buscar de forma sistemática]
+    |
+    v
+[1.4 Ler normas como fontes]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -92,6 +142,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: seminário avançado
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Panorama dos frameworks"]
+  N1["2.2 Análise de cobertura"]
+  N2["Laboratório — Cobertura de requisitos, controles e e"]
+  N3["2.3 Crítica ao mapeamento"]
+  N4["2.4 Discussão no seminário"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Panorama dos frameworks"]
+  N1["2.2 Análise de cobertura"]
+  N2["Laboratório — Cobertura de requisitos, controles e e"]
+  N3["2.3 Crítica ao mapeamento"]
+  N4["2.4 Discussão no seminário"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[2.1 Panorama dos frameworks]
+    |
+    v
+[2.2 Análise de cobertura]
+    |
+    v
+[Laboratório — Cobertura de requisitos, controles e e]
+    |
+    v
+[2.3 Crítica ao mapeamento]
+    |
+    v
+[2.4 Discussão no seminário]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -174,6 +279,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Escolher o desenho"]
+  N1["3.2 Ética e aprovação"]
+  N2["3.3 Plano reproduzível"]
+  N3["3.4 Piloto do revisor"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Escolher o desenho"]
+  N1["3.2 Ética e aprovação"]
+  N2["3.3 Plano reproduzível"]
+  N3["3.4 Piloto do revisor"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
+```
+
+```text
+[3.1 Escolher o desenho]
+    |
+    v
+[3.2 Ética e aprovação]
+    |
+    v
+[3.3 Plano reproduzível]
+    |
+    v
+[3.4 Piloto do revisor]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar uma comparação observacional levando em conta os fatores de confusão; (2) obter aprovação ética e organizacional; (3) planejar uma análise reproduzível.
@@ -229,6 +384,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: explicações concorrentes
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Explicações rivais"]
+  N1["4.2 Desenhar as verificações"]
+  N2["4.3 Literatura sobre eficácia de controles"]
+  N3["4.4 Julgar a plausibilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Explicações rivais"]
+  N1["4.2 Desenhar as verificações"]
+  N2["4.3 Literatura sobre eficácia de controles"]
+  N3["4.4 Julgar a plausibilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[4.1 Explicações rivais]
+    |
+    v
+[4.2 Desenhar as verificações]
+    |
+    v
+[4.3 Literatura sobre eficácia de controles]
+    |
+    v
+[4.4 Julgar a plausibilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) listar explicações rivais para uma diferença observada; (2) desenhar verificações capazes de distingui-las; (3) julgar quais explicações continuam plausíveis.
@@ -283,6 +488,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 A proposta"]
+  N1["5.2 Por que amostrar os registros de revisão"]
+  N2["5.3 Pilotar a amostra"]
+  N3["5.4 Lições do piloto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 A proposta"]
+  N1["5.2 Por que amostrar os registros de revisão"]
+  N2["5.3 Pilotar a amostra"]
+  N3["5.4 Lições do piloto"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[5.1 A proposta]
+    |
+    v
+[5.2 Por que amostrar os registros de revisão]
+    |
+    v
+[5.3 Pilotar a amostra]
+    |
+    v
+[5.4 Lições do piloto]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -367,6 +622,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Coleta e análise de dados
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Coletar os dados"]
+  N1["6.2 A estimativa principal"]
+  N2["Laboratório — Intervalo bootstrap para a diferença n"]
+  N3["6.3 Verificações das rivais"]
+  N4["6.4 Custo"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Coletar os dados"]
+  N1["6.2 A estimativa principal"]
+  N2["Laboratório — Intervalo bootstrap para a diferença n"]
+  N3["6.3 Verificações das rivais"]
+  N4["6.4 Custo"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[6.1 Coletar os dados]
+    |
+    v
+[6.2 A estimativa principal]
+    |
+    v
+[Laboratório — Intervalo bootstrap para a diferença n]
+    |
+    v
+[6.3 Verificações das rivais]
+    |
+    v
+[6.4 Custo]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) coletar dados de governança segundo um plano pré-registrado; (2) estimar uma diferença com um intervalo bootstrap; (3) executar as verificações planejadas das explicações rivais.
@@ -447,6 +757,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estrutura"]
+  N1["7.2 Limitações"]
+  N2["7.3 Dois públicos"]
+  N3["7.4 Ligação com os frameworks"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estrutura"]
+  N1["7.2 Limitações"]
+  N2["7.3 Dois públicos"]
+  N3["7.4 Ligação com os frameworks"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+```
+
+```text
+[7.1 Estrutura]
+    |
+    v
+[7.2 Limitações]
+    |
+    v
+[7.3 Dois públicos]
+    |
+    v
+[7.4 Ligação com os frameworks]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação de mestrado; (2) escrever uma seção de limitações franca; (3) relatar os resultados para leitores acadêmicos e profissionais.
@@ -501,6 +861,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 Resultado e divulgação"]
+  N3["8.4 O que vem a seguir"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 Resultado e divulgação"]
+  N3["8.4 O que vem a seguir"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
+```
+
+```text
+[8.1 Revisão independente]
+    |
+    v
+[8.2 A defesa]
+    |
+    v
+[8.3 Resultado e divulgação]
+    |
+    v
+[8.4 O que vem a seguir]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

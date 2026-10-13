@@ -1,7 +1,7 @@
 # Human Factors and Cyber Policy: Doctoral Research Track
 
 - Language: English (`en`); course 190, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral candidates testing whether a change in security awareness practice changes real staff behaviour.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compute coder agreement, a stepped-design effect with a permutation check and archive digests on synthetic data; no real person, mailbox or simulation is involved. Phishing simulations described here follow an ethical protocol: organisational approval, no credential capture, no individual blame and aggregate reporting only. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,66 @@ Adams and Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/3227
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced research integrity and methods
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 A falsifiable question"]
+  N2["1.2 Why click rates mislead"]
+  N3["1.3 Integrity and ethics"]
+  N4["1.4 Coding reported emails"]
+  N5["Lab — Coder agreement on reported emails"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 A falsifiable question"]
+  N2["1.2 Why click rates mislead"]
+  N3["1.3 Integrity and ethics"]
+  N4["1.4 Coding reported emails"]
+  N5["Lab — Coder agreement on reported emails"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 A falsifiable question]
+    |
+    v
+[1.2 Why click rates mislead]
+    |
+    v
+[1.3 Integrity and ethics]
+    |
+    v
+[1.4 Coding reported emails]
+    |
+    v
+[Lab — Coder agreement on reported emails]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -108,6 +168,61 @@ Doctoral work on security behaviour needs a falsifiable outcome, strict ethics f
 
 ## Chapter 2 — Human factors and cyber policy: research frontier
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 From weakest link to partners"]
+  N2["2.2 Rational rejection and budgets"]
+  N3["2.3 Policy frameworks"]
+  N4["2.4 The gap"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 From weakest link to partners"]
+  N2["2.2 Rational rejection and budgets"]
+  N3["2.3 Policy frameworks"]
+  N4["2.4 The gap"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 From weakest link to partners]
+    |
+    v
+[2.2 Rational rejection and budgets]
+    |
+    v
+[2.3 Policy frameworks]
+    |
+    v
+[2.4 The gap]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) map the research frontier on awareness and behaviour; (2) identify gaps that matter for policy; (3) position a contribution against prior work.
@@ -160,6 +275,61 @@ The frontier has moved from blaming users to designing for them; a precise contr
 
 ## Chapter 3 — Original contribution proposal
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 The design"]
+  N2["3.2 Outcomes and sample"]
+  N3["3.3 Ethical and practical risks"]
+  N4["3.4 Committee review"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 The design"]
+  N2["3.2 Outcomes and sample"]
+  N3["3.3 Ethical and practical risks"]
+  N4["3.4 Committee review"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 The design]
+    |
+    v
+[3.2 Outcomes and sample]
+    |
+    v
+[3.3 Ethical and practical risks]
+    |
+    v
+[3.4 Committee review]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) write a doctoral proposal with a staggered design; (2) justify sample size; (3) anticipate ethical and practical risks.
@@ -211,6 +381,61 @@ A strong proposal randomises what it can, measures what matters, plans for ethic
 
 ## Chapter 4 — Baseline replication and pilot
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Replicating the baseline"]
+  N2["4.2 Running a pilot"]
+  N3["4.3 Refining instruments"]
+  N4["4.4 What the pilot does not show"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Replicating the baseline"]
+  N2["4.2 Running a pilot"]
+  N3["4.3 Refining instruments"]
+  N4["4.4 What the pilot does not show"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Replicating the baseline]
+    |
+    v
+[4.2 Running a pilot]
+    |
+    v
+[4.3 Refining instruments]
+    |
+    v
+[4.4 What the pilot does not show]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) replicate a baseline measurement; (2) run a pilot of the intervention; (3) refine instruments before the main study.
@@ -261,6 +486,66 @@ Replication fixes the baseline, and a pilot finds practical problems, but neithe
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Running the study"]
+  N2["5.2 Estimating the effect"]
+  N3["Lab — Stepped-design effect with a permutation check"]
+  N4["5.3 Reading the result"]
+  N5["5.4 Independent validation"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Running the study"]
+  N2["5.2 Estimating the effect"]
+  N3["Lab — Stepped-design effect with a permutation check"]
+  N4["5.3 Reading the result"]
+  N5["5.4 Independent validation"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Running the study]
+    |
+    v
+[5.2 Estimating the effect]
+    |
+    v
+[Lab — Stepped-design effect with a permutation check]
+    |
+    v
+[5.3 Reading the result]
+    |
+    v
+[5.4 Independent validation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -349,6 +634,61 @@ A stepped study with fidelity checks, permutation inference and independent vali
 
 ## Chapter 6 — Peer critique and revision
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 The critique"]
+  N2["6.2 Testing alternatives"]
+  N3["6.3 Avoiding p-hacking"]
+  N4["6.4 Ethical reporting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 The critique"]
+  N2["6.2 Testing alternatives"]
+  N3["6.3 Avoiding p-hacking"]
+  N4["6.4 Ethical reporting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 The critique]
+    |
+    v
+[6.2 Testing alternatives]
+    |
+    v
+[6.3 Avoiding p-hacking]
+    |
+    v
+[6.4 Ethical reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) respond to peer review of a behaviour study; (2) revise analyses without p-hacking; (3) strengthen ethical reporting.
@@ -399,6 +739,66 @@ Good revision tests alternatives, concedes limits, separates confirmatory from e
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Synthesis"]
+  N2["7.2 The archive"]
+  N3["Lab — Manifest digests for a reproducibility archive"]
+  N4["7.3 Protecting participants"]
+  N5["7.4 What the archive enables"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Synthesis"]
+  N2["7.2 The archive"]
+  N3["Lab — Manifest digests for a reproducibility archive"]
+  N4["7.3 Protecting participants"]
+  N5["7.4 What the archive enables"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Synthesis]
+    |
+    v
+[7.2 The archive]
+    |
+    v
+[Lab — Manifest digests for a reproducibility archive]
+    |
+    v
+[7.3 Protecting participants]
+    |
+    v
+[7.4 What the archive enables]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -471,6 +871,61 @@ A thesis synthesis states contributions and unknowns, and a privacy-aware archiv
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 The defense"]
+  N2["8.2 Policy implications"]
+  N3["8.3 Publication plan"]
+  N4["8.4 Post-doctoral agenda"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 The defense"]
+  N2["8.2 Policy implications"]
+  N3["8.3 Publication plan"]
+  N4["8.4 Post-doctoral agenda"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 The defense]
+    |
+    v
+[8.2 Policy implications]
+    |
+    v
+[8.3 Publication plan]
+    |
+    v
+[8.4 Post-doctoral agenda]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

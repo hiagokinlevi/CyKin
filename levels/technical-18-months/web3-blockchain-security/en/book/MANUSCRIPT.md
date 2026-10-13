@@ -1,7 +1,7 @@
 # Web3, Blockchain and Cryptoasset Security: Technical Course
 
 - Language: English (`en`); course 055, Technical course (18 months).
-- Editorial state: **draft**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technical trainees learning to run, monitor and troubleshoot blockchain services safely under supervision.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only contracts, wallets and systems you are authorised to assess, on local simulations or test networks; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic ledgers, transactions, contract inventories and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,56 @@ Nakamoto, [Bitcoin whitepaper](https://bitcoin.org/bitcoin.pdf); Wood, [Ethereum
 <a id="ch-01"></a>
 
 ## Chapter 1 — Computing and service architecture
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case and the service"]
+  N2["1.2 Components of the service"]
+  N3["1.3 Single points of failure"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case and the service"]
+  N2["1.2 Components of the service"]
+  N3["1.3 Single points of failure"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case and the service]
+    |
+    v
+[1.2 Components of the service]
+    |
+    v
+[1.3 Single points of failure]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -83,6 +133,56 @@ Knowing a service's components reveals where it can fail as a whole.
 
 ## Chapter 2 — Networks and protocols
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX005.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Mapping connections"]
+  N2["2.2 Restricting exposure"]
+  N3["2.3 Verifying connectivity safely"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX005"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Mapping connections"]
+  N2["2.2 Restricting exposure"]
+  N3["2.3 Verifying connectivity safely"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX005"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Mapping connections]
+    |
+    v
+[2.2 Restricting exposure]
+    |
+    v
+[2.3 Verifying connectivity safely]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX005]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) map network connections; (2) restrict exposure of node services; (3) verify connectivity safely.
@@ -127,6 +227,56 @@ Connection maps, restricted exposure and safe verification secure node networkin
 <a id="ch-03"></a>
 
 ## Chapter 3 — Operating systems and identities
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX009.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Service and administrator accounts"]
+  N2["3.2 Protecting key files"]
+  N3["3.3 Regular access reviews"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX009"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Service and administrator accounts"]
+  N2["3.2 Protecting key files"]
+  N3["3.3 Regular access reviews"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX009"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Service and administrator accounts]
+    |
+    v
+[3.2 Protecting key files]
+    |
+    v
+[3.3 Regular access reviews]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX009]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -173,6 +323,56 @@ Dedicated accounts, protected key files and regular reviews control server ident
 
 ## Chapter 4 — Scripting and data formats
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Small scripts"]
+  N2["4.2 Parsing common formats"]
+  N3["4.3 Validating data"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Small scripts"]
+  N2["4.2 Parsing common formats"]
+  N3["4.3 Validating data"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Small scripts]
+    |
+    v
+[4.2 Parsing common formats]
+    |
+    v
+[4.3 Validating data]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) write small scripts to read ledger data; (2) parse common formats; (3) validate data before use.
@@ -213,6 +413,56 @@ Small scripts that parse carefully and validate first make ledger data trustwort
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security scope and evidence
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX017.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Approved scope"]
+  N2["5.2 Collecting evidence"]
+  N3["5.3 Checkable records"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX017"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Approved scope"]
+  N2["5.2 Collecting evidence"]
+  N3["5.3 Checkable records"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX017"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Approved scope]
+    |
+    v
+[5.2 Collecting evidence]
+    |
+    v
+[5.3 Checkable records]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX017]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -259,6 +509,56 @@ Written scope, proper evidence and checkable records make technical security wor
 
 ## Chapter 6 — Web3, blockchain and cryptoasset security: system model
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 States and actions"]
+  N2["6.2 Rules of the system"]
+  N3["6.3 Who can change what"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 States and actions"]
+  N2["6.2 Rules of the system"]
+  N3["6.3 Who can change what"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 States and actions]
+    |
+    v
+[6.2 Rules of the system]
+    |
+    v
+[6.3 Who can change what]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) describe the deposit token system as states and actions; (2) list its rules; (3) identify who can change what.
@@ -303,6 +603,56 @@ A state, rule and role model shows a technician what normal looks like and what 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Web3, blockchain and cryptoasset security: data and telemetry
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Telemetry sources"]
+  N2["7.2 Collecting metrics"]
+  N3["7.3 Storing telemetry safely"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Telemetry sources"]
+  N2["7.2 Collecting metrics"]
+  N3["7.3 Storing telemetry safely"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Telemetry sources]
+    |
+    v
+[7.2 Collecting metrics]
+    |
+    v
+[7.3 Storing telemetry safely]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -349,6 +699,56 @@ Well-chosen, lightly collected and safely stored telemetry shows how a ledger be
 
 ## Chapter 8 — Web3, blockchain and cryptoasset security: failure modes
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Listing failure modes"]
+  N2["8.2 Linking failures to symptoms"]
+  N3["8.3 Prioritising by impact"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX029"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Listing failure modes"]
+  N2["8.2 Linking failures to symptoms"]
+  N3["8.3 Prioritising by impact"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX029"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Listing failure modes]
+    |
+    v
+[8.2 Linking failures to symptoms]
+    |
+    v
+[8.3 Prioritising by impact]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) list ways the deposit system can fail; (2) link failures to symptoms; (3) prioritise by impact.
@@ -393,6 +793,56 @@ Failure modes linked to symptoms and ranked by impact guide preparation.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Web3, blockchain and cryptoasset security: tools and methods
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Choosing tools"]
+  N2["9.2 A consistent method"]
+  N3["9.3 Interpreting results carefully"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Choosing tools"]
+  N2["9.2 A consistent method"]
+  N3["9.3 Interpreting results carefully"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Choosing tools]
+    |
+    v
+[9.2 A consistent method]
+    |
+    v
+[9.3 Interpreting results carefully]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -439,6 +889,56 @@ Trusted tools, a consistent method and careful interpretation make checks depend
 
 ## Chapter 10 — Web3, blockchain and cryptoasset security: control configuration
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Configuring node controls"]
+  N2["10.2 Service and ledger controls"]
+  N3["10.3 Checking against the record"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Configuring node controls"]
+  N2["10.2 Service and ledger controls"]
+  N3["10.3 Checking against the record"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Configuring node controls]
+    |
+    v
+[10.2 Service and ledger controls]
+    |
+    v
+[10.3 Checking against the record]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) configure controls on nodes and services; (2) document intended settings; (3) check settings against the record.
@@ -484,6 +984,56 @@ Carefully configured, documented and regularly compared controls stay effective.
 
 ## Chapter 11 — Web3, blockchain and cryptoasset security: verification
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Planned tests"]
+  N2["11.2 Using the test ledger safely"]
+  N3["11.3 Recording results"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Planned tests"]
+  N2["11.2 Using the test ledger safely"]
+  N3["11.3 Recording results"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Planned tests]
+    |
+    v
+[11.2 Using the test ledger safely]
+    |
+    v
+[11.3 Recording results]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) verify controls with planned tests; (2) use the test ledger safely; (3) record verification results.
@@ -524,6 +1074,61 @@ Planned tests on a separate ledger, with recorded results, verify controls hones
 <a id="ch-12"></a>
 
 ## Chapter 12 — Contained laboratory I
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Why verify backups"]
+  N2["Lab — Backup digest and age check"]
+  N3["12.2 Interpreting the results"]
+  N4["12.3 Acting on the results"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Why verify backups"]
+  N2["Lab — Backup digest and age check"]
+  N3["12.2 Interpreting the results"]
+  N4["12.3 Acting on the results"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Why verify backups]
+    |
+    v
+[Lab — Backup digest and age check]
+    |
+    v
+[12.2 Interpreting the results]
+    |
+    v
+[12.3 Acting on the results]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 
@@ -606,6 +1211,56 @@ Checking digest and age, then testing a restore, proves backups can be relied on
 
 ## Chapter 13 — Web3, blockchain and cryptoasset security: troubleshooting
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 A reported problem"]
+  N2["13.2 Testing hypotheses"]
+  N3["13.3 Recording and solving"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 A reported problem"]
+  N2["13.2 Testing hypotheses"]
+  N3["13.3 Recording and solving"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 A reported problem]
+    |
+    v
+[13.2 Testing hypotheses]
+    |
+    v
+[13.3 Recording and solving]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) troubleshoot methodically; (2) use telemetry to test hypotheses; (3) record solutions.
@@ -650,6 +1305,56 @@ Methodical troubleshooting follows evidence to the real cause, technical or not.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Web3, blockchain and cryptoasset security: automation
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Choosing what to automate"]
+  N2["14.2 Scheduling and reporting"]
+  N3["14.3 Keeping people in control"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Choosing what to automate"]
+  N2["14.2 Scheduling and reporting"]
+  N3["14.3 Keeping people in control"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX053"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Choosing what to automate]
+    |
+    v
+[14.2 Scheduling and reporting]
+    |
+    v
+[14.3 Keeping people in control]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX053]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes
 
@@ -696,6 +1401,56 @@ Read-only automation with named readers and heartbeats supports human decisions.
 
 ## Chapter 15 — Web3, blockchain and cryptoasset security: integration and dependencies
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 Documenting integrations"]
+  N2["15.2 Tracking dependencies"]
+  N3["15.3 Planning for changes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 Documenting integrations"]
+  N2["15.2 Tracking dependencies"]
+  N3["15.3 Planning for changes"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX057"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 Documenting integrations]
+    |
+    v
+[15.2 Tracking dependencies]
+    |
+    v
+[15.3 Planning for changes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX057]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) document integrations with other systems; (2) track dependencies and versions; (3) plan for dependency changes.
@@ -741,6 +1496,51 @@ Documented integrations and tracked dependencies make change predictable.
 
 ## Chapter 16 — Technical documentation and safety
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Writing clearly"]
+  N2["16.3 Keeping documents current"]
+  N3["Synthesis"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Writing clearly"]
+  N2["16.3 Keeping documents current"]
+  N3["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Writing clearly]
+    |
+    v
+[16.3 Keeping documents current]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes
 
 You will (1) write clear technical documents; (2) include safety and scope limits; (3) keep documents current.
@@ -785,6 +1585,61 @@ Clear, limited and current documentation lets others operate a system safely.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Contained laboratory II
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Why baselines help"]
+  N2["Lab — Transfer rate against a baseline"]
+  N3["17.2 Reading the result"]
+  N4["17.3 Improving the alert"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX065"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Why baselines help"]
+  N2["Lab — Transfer rate against a baseline"]
+  N3["17.2 Reading the result"]
+  N4["17.3 Improving the alert"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX065"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Why baselines help]
+    |
+    v
+[Lab — Transfer rate against a baseline]
+    |
+    v
+[17.2 Reading the result]
+    |
+    v
+[17.3 Improving the alert]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX065]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -859,6 +1714,56 @@ Baselines detect unusual activity, and context explains it without weakening ale
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical project
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Planning the project"]
+  N2["18.2 Testing and handing over"]
+  N3["18.3 Reflecting on the course"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX069"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Planning the project"]
+  N2["18.2 Testing and handing over"]
+  N3["18.3 Reflecting on the course"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX069"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Planning the project]
+    |
+    v
+[18.2 Testing and handing over]
+    |
+    v
+[18.3 Reflecting on the course]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX069]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes
 

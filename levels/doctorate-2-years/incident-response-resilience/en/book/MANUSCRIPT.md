@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Doctoral Research Methods and Thesis Practice
 
 - Language: English (`en`); doctoral research track, two years; approximately 1,600 hours of planned study (course 200 of 207 in the [study path](../../../../../STUDY_PATH.md)).
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: advanced researchers who already hold research experience and a defensible question about incident response or cyber resilience. Entry knowledge: the practitioner foundations of the [rapid](../../../../rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md), [professional](../../../../professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) and [technical](../../../../technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md) books, or equivalent experience, plus introductory statistics and qualitative-methods literacy.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights and are not relicensed here.
 - Educational boundary: this track is an independent educational blueprint. It is not an accredited doctoral program, grants no degree, and grants no authority to collect, access or study real incident records. Every organization, person, record, dataset, benchmark and result named in a worked example is **synthetic** unless a sentence explicitly cites a public source.
@@ -49,6 +49,71 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced research integrity and methods
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 Incident response as an object of research"]
+  N2["1.2 The epistemology of incident evidence"]
+  N3["1.3 Research integrity applied to incident-response"]
+  N4["1.4 Reproducibility and open science under constrain"]
+  N5["1.5 Ethics and authorization for studying real incid"]
+  N6["1.6 Measurement validity for response quality"]
+  N7["1.7 Common failure modes in incident-response resear"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 Incident response as an object of research"]
+  N2["1.2 The epistemology of incident evidence"]
+  N3["1.3 Research integrity applied to incident-response"]
+  N4["1.4 Reproducibility and open science under constrain"]
+  N5["1.5 Ethics and authorization for studying real incid"]
+  N6["1.6 Measurement validity for response quality"]
+  N7["1.7 Common failure modes in incident-response resear"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 Incident response as an object of research]
+    |
+    v
+[1.2 The epistemology of incident evidence]
+    |
+    v
+[1.3 Research integrity applied to incident-response]
+    |
+    v
+[1.4 Reproducibility and open science under constrain]
+    |
+    v
+[1.5 Ethics and authorization for studying real incid]
+    |
+    v
+[1.6 Measurement validity for response quality]
+    |
+    v
+[1.7 Common failure modes in incident-response resear]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -547,6 +612,71 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Research frontier in incident response systems
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX012.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Why the literature is harder to find in incident"]
+  N2["2.2 Systematic scoping"]
+  N3["2.3 Competing theoretical accounts of incident decis"]
+  N4["2.4 Unresolved evidence"]
+  N5["2.5 The contribution test"]
+  N6["2.7 Practical activity: build a literature map"]
+  N7["2.8 From map to frontier"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX012"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Why the literature is harder to find in incident"]
+  N2["2.2 Systematic scoping"]
+  N3["2.3 Competing theoretical accounts of incident decis"]
+  N4["2.4 Unresolved evidence"]
+  N5["2.5 The contribution test"]
+  N6["2.7 Practical activity: build a literature map"]
+  N7["2.8 From map to frontier"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX012"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Why the literature is harder to find in incident]
+    |
+    v
+[2.2 Systematic scoping]
+    |
+    v
+[2.3 Competing theoretical accounts of incident decis]
+    |
+    v
+[2.4 Unresolved evidence]
+    |
+    v
+[2.5 The contribution test]
+    |
+    v
+[2.7 Practical activity: build a literature map]
+    |
+    v
+[2.8 From map to frontier]
+    |
+    v
+[Worked example] --> [Exercise EX012]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -901,6 +1031,71 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Original response-science contribution proposal
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 What counts as a contribution"]
+  N2["3.2 Mechanism before measurement"]
+  N3["3.3 Hypotheses, outcomes and the smallest effect of"]
+  N4["3.4 Baselines and comparisons"]
+  N5["3.5 Alternative explanations and how to separate the"]
+  N6["3.6 Predeclared failure conditions"]
+  N7["3.7 Risk register"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 What counts as a contribution"]
+  N2["3.2 Mechanism before measurement"]
+  N3["3.3 Hypotheses, outcomes and the smallest effect of"]
+  N4["3.4 Baselines and comparisons"]
+  N5["3.5 Alternative explanations and how to separate the"]
+  N6["3.6 Predeclared failure conditions"]
+  N7["3.7 Risk register"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 What counts as a contribution]
+    |
+    v
+[3.2 Mechanism before measurement]
+    |
+    v
+[3.3 Hypotheses, outcomes and the smallest effect of]
+    |
+    v
+[3.4 Baselines and comparisons]
+    |
+    v
+[3.5 Alternative explanations and how to separate the]
+    |
+    v
+[3.6 Predeclared failure conditions]
+    |
+    v
+[3.7 Risk register]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -1192,6 +1387,71 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Replication of baselines and pilot protocol
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Why replicate a baseline first"]
+  N2["4.2 A reproduction procedure"]
+  N3["4.3 Dataset shift and temporal leakage"]
+  N4["4.4 Power and sample size"]
+  N5["4.5 Pilot studies: feasibility, not effect"]
+  N6["4.7 Making the computation reproducible"]
+  N7["4.8 Practical activity: write the pilot report"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Why replicate a baseline first"]
+  N2["4.2 A reproduction procedure"]
+  N3["4.3 Dataset shift and temporal leakage"]
+  N4["4.4 Power and sample size"]
+  N5["4.5 Pilot studies: feasibility, not effect"]
+  N6["4.7 Making the computation reproducible"]
+  N7["4.8 Practical activity: write the pilot report"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Why replicate a baseline first]
+    |
+    v
+[4.2 A reproduction procedure]
+    |
+    v
+[4.3 Dataset shift and temporal leakage]
+    |
+    v
+[4.4 Power and sample size]
+    |
+    v
+[4.5 Pilot studies: feasibility, not effect]
+    |
+    v
+[4.7 Making the computation reproducible]
+    |
+    v
+[4.8 Practical activity: write the pilot report]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -1476,6 +1736,71 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study of incident decision quality
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Decision quality as the outcome"]
+  N2["5.2 Assignment"]
+  N3["5.3 Blinded review"]
+  N4["5.4 Preserving raw decisions"]
+  N5["5.5 Analysis with uncertainty"]
+  N6["5.6 Deviations, missing data and exclusions"]
+  N7["5.7 Error analysis and harms"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Decision quality as the outcome"]
+  N2["5.2 Assignment"]
+  N3["5.3 Blinded review"]
+  N4["5.4 Preserving raw decisions"]
+  N5["5.5 Analysis with uncertainty"]
+  N6["5.6 Deviations, missing data and exclusions"]
+  N7["5.7 Error analysis and harms"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Decision quality as the outcome]
+    |
+    v
+[5.2 Assignment]
+    |
+    v
+[5.3 Blinded review]
+    |
+    v
+[5.4 Preserving raw decisions]
+    |
+    v
+[5.5 Analysis with uncertainty]
+    |
+    v
+[5.6 Deviations, missing data and exclusions]
+    |
+    v
+[5.7 Error analysis and harms]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes and connection
 
@@ -1775,6 +2100,71 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Independent validation across contexts
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Why incident-response results travel poorly"]
+  N2["6.2 Kinds of replication"]
+  N3["6.3 Heterogeneity"]
+  N4["6.4 Boundary conditions as findings"]
+  N5["6.5 Designing the second-context study"]
+  N6["6.7 Practical activity: transportability memo"]
+  N7["6.8 The generalizability problem, stated precisely"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Why incident-response results travel poorly"]
+  N2["6.2 Kinds of replication"]
+  N3["6.3 Heterogeneity"]
+  N4["6.4 Boundary conditions as findings"]
+  N5["6.5 Designing the second-context study"]
+  N6["6.7 Practical activity: transportability memo"]
+  N7["6.8 The generalizability problem, stated precisely"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Why incident-response results travel poorly]
+    |
+    v
+[6.2 Kinds of replication]
+    |
+    v
+[6.3 Heterogeneity]
+    |
+    v
+[6.4 Boundary conditions as findings]
+    |
+    v
+[6.5 Designing the second-context study]
+    |
+    v
+[6.7 Practical activity: transportability memo]
+    |
+    v
+[6.8 The generalizability problem, stated precisely]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -2047,6 +2437,71 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Peer critique and revision of claims
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Why critique is part of the method"]
+  N2["7.2 Organizing critique before submission"]
+  N3["7.3 Classifying critiques"]
+  N4["7.4 Reproducing contested analyses"]
+  N5["7.6 Negative and partial results"]
+  N6["7.7 Writing the response to reviewers"]
+  N7["7.8 Post-publication critique and correction"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Why critique is part of the method"]
+  N2["7.2 Organizing critique before submission"]
+  N3["7.3 Classifying critiques"]
+  N4["7.4 Reproducing contested analyses"]
+  N5["7.6 Negative and partial results"]
+  N6["7.7 Writing the response to reviewers"]
+  N7["7.8 Post-publication critique and correction"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Why critique is part of the method]
+    |
+    v
+[7.2 Organizing critique before submission]
+    |
+    v
+[7.3 Classifying critiques]
+    |
+    v
+[7.4 Reproducing contested analyses]
+    |
+    v
+[7.6 Negative and partial results]
+    |
+    v
+[7.7 Writing the response to reviewers]
+    |
+    v
+[7.8 Post-publication critique and correction]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes and connection
 
 By the end of this chapter the learner will be able to:
@@ -2269,6 +2724,71 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Thesis synthesis and reproducibility archive
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX050.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 The thesis as an argument"]
+  N2["8.2 Integrating failures and narrowed claims"]
+  N3["8.3 The reproducibility archive"]
+  N4["8.4 Data governance after submission"]
+  N5["8.5 Limitations and future work"]
+  N6["8.6 Preparing the defense"]
+  N7["8.8 Practical activity: archive audit"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX050"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 The thesis as an argument"]
+  N2["8.2 Integrating failures and narrowed claims"]
+  N3["8.3 The reproducibility archive"]
+  N4["8.4 Data governance after submission"]
+  N5["8.5 Limitations and future work"]
+  N6["8.6 Preparing the defense"]
+  N7["8.8 Practical activity: archive audit"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX050"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 The thesis as an argument]
+    |
+    v
+[8.2 Integrating failures and narrowed claims]
+    |
+    v
+[8.3 The reproducibility archive]
+    |
+    v
+[8.4 Data governance after submission]
+    |
+    v
+[8.5 Limitations and future work]
+    |
+    v
+[8.6 Preparing the defense]
+    |
+    v
+[8.8 Practical activity: archive audit]
+    |
+    v
+[Worked example] --> [Exercise EX050]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 

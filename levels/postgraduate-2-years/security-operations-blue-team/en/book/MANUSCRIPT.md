@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Postgraduate Course
 
 - Language: English (`en`); course 153, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: experienced practitioners who lead or shape security operations and must make, evaluate and defend SOC decisions.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,71 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Decisions under uncertainty"]
+  N2["1.2 The case"]
+  N3["1.3 Expected cost"]
+  N4["Lab — comparing response options"]
+  N5["1.4 Reading the result"]
+  N6["1.5 Beyond numbers"]
+  N7["1.6 Recording decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Decisions under uncertainty"]
+  N2["1.2 The case"]
+  N3["1.3 Expected cost"]
+  N4["Lab — comparing response options"]
+  N5["1.4 Reading the result"]
+  N6["1.5 Beyond numbers"]
+  N7["1.6 Recording decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Decisions under uncertainty]
+    |
+    v
+[1.2 The case]
+    |
+    v
+[1.3 Expected cost]
+    |
+    v
+[Lab — comparing response options]
+    |
+    v
+[1.4 Reading the result]
+    |
+    v
+[1.5 Beyond numbers]
+    |
+    v
+[1.6 Recording decisions]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -124,6 +189,71 @@ Make SOC decisions explicit: estimate probabilities and costs, compare options a
 
 ## Chapter 2 — Security operations and blue team: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 The modern SOC"]
+  N2["2.2 Detection engineering"]
+  N3["2.3 Alert overload"]
+  N4["2.4 Managed detection and response"]
+  N5["2.5 Maturity assessment"]
+  N6["2.6 Regulation"]
+  N7["2.7 Comparing with peers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 The modern SOC"]
+  N2["2.2 Detection engineering"]
+  N3["2.3 Alert overload"]
+  N4["2.4 Managed detection and response"]
+  N5["2.5 Maturity assessment"]
+  N6["2.6 Regulation"]
+  N7["2.7 Comparing with peers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 The modern SOC]
+    |
+    v
+[2.2 Detection engineering]
+    |
+    v
+[2.3 Alert overload]
+    |
+    v
+[2.4 Managed detection and response]
+    |
+    v
+[2.5 Maturity assessment]
+    |
+    v
+[2.6 Regulation]
+    |
+    v
+[2.7 Comparing with peers]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) survey current SOC practice and its tensions; (2) relate practice to published frameworks and studies; (3) assess one's own SOC against peers; (4) identify practices worth adopting.
@@ -189,6 +319,71 @@ Current practice blends engineering, automation and sourcing choices; compare wi
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security operations and blue team: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Specialist evidence"]
+  N2["3.2 Insider risk"]
+  N3["3.3 Peer baselines"]
+  N4["Lab — peer comparison"]
+  N5["3.4 Reading the result"]
+  N6["3.5 Interpreting outliers"]
+  N7["3.6 Fairness and privacy"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Specialist evidence"]
+  N2["3.2 Insider risk"]
+  N3["3.3 Peer baselines"]
+  N4["Lab — peer comparison"]
+  N5["3.4 Reading the result"]
+  N6["3.5 Interpreting outliers"]
+  N7["3.6 Fairness and privacy"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Specialist evidence]
+    |
+    v
+[3.2 Insider risk]
+    |
+    v
+[3.3 Peer baselines]
+    |
+    v
+[Lab — peer comparison]
+    |
+    v
+[3.4 Reading the result]
+    |
+    v
+[3.5 Interpreting outliers]
+    |
+    v
+[3.6 Fairness and privacy]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -277,6 +472,71 @@ Specialist evidence enables insider-risk monitoring, but only with fair baseline
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Risk and ethics together"]
+  N2["4.2 Ethical lenses"]
+  N3["4.3 Business pressure"]
+  N4["4.4 Employee trust"]
+  N5["4.5 Safeguards"]
+  N6["4.6 Third parties"]
+  N7["4.7 Accountability"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Risk and ethics together"]
+  N2["4.2 Ethical lenses"]
+  N3["4.3 Business pressure"]
+  N4["4.4 Employee trust"]
+  N5["4.5 Safeguards"]
+  N6["4.6 Third parties"]
+  N7["4.7 Accountability"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Risk and ethics together]
+    |
+    v
+[4.2 Ethical lenses]
+    |
+    v
+[4.3 Business pressure]
+    |
+    v
+[4.4 Employee trust]
+    |
+    v
+[4.5 Safeguards]
+    |
+    v
+[4.6 Third parties]
+    |
+    v
+[4.7 Accountability]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse SOC risk decisions with ethical frameworks; (2) balance security, privacy and employee trust; (3) handle conflicts between business pressure and duty; (4) design ethical safeguards into SOC processes.
@@ -343,6 +603,71 @@ Treat SOC risk decisions as ethical decisions; use several lenses, resist improp
 
 ## Chapter 5 — Security operations and blue team: design alternatives
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The design question"]
+  N2["5.2 Alternatives"]
+  N3["5.3 Criteria"]
+  N4["5.4 Scoring"]
+  N5["5.5 Sensitivity"]
+  N6["5.6 Risks of C"]
+  N7["5.7 Presenting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The design question"]
+  N2["5.2 Alternatives"]
+  N3["5.3 Criteria"]
+  N4["5.4 Scoring"]
+  N5["5.5 Sensitivity"]
+  N6["5.6 Risks of C"]
+  N7["5.7 Presenting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The design question]
+    |
+    v
+[5.2 Alternatives]
+    |
+    v
+[5.3 Criteria]
+    |
+    v
+[5.4 Scoring]
+    |
+    v
+[5.5 Sensitivity]
+    |
+    v
+[5.6 Risks of C]
+    |
+    v
+[5.7 Presenting]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) generate alternative designs for SOC coverage; (2) evaluate in-house, managed and hybrid options; (3) use weighted criteria and sensitivity checks; (4) present a recommendation with trade-offs.
@@ -408,6 +733,71 @@ Generate real alternatives, score them on agreed criteria, test sensitivity and 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Security operations and blue team: controlled evaluation
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 The change"]
+  N2["6.2 Evaluation design"]
+  N3["6.3 Measure"]
+  N4["Lab — bootstrap difference in medians"]
+  N5["6.4 Reading the result"]
+  N6["6.5 Accuracy"]
+  N7["6.6 Confounding"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 The change"]
+  N2["6.2 Evaluation design"]
+  N3["6.3 Measure"]
+  N4["Lab — bootstrap difference in medians"]
+  N5["6.4 Reading the result"]
+  N6["6.5 Accuracy"]
+  N7["6.6 Confounding"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 The change]
+    |
+    v
+[6.2 Evaluation design]
+    |
+    v
+[6.3 Measure]
+    |
+    v
+[Lab — bootstrap difference in medians]
+    |
+    v
+[6.4 Reading the result]
+    |
+    v
+[6.5 Accuracy]
+    |
+    v
+[6.6 Confounding]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -500,6 +890,71 @@ Controlled operational evaluations need fair assignment, robust statistics, accu
 
 ## Chapter 7 — Security operations and blue team: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 The SOC in the organisation"]
+  N2["7.2 Service levels"]
+  N3["7.3 Escalation paths"]
+  N4["7.4 Risk reporting"]
+  N5["7.5 Hybrid model integration"]
+  N6["7.6 Change management"]
+  N7["7.7 Relationships"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 The SOC in the organisation"]
+  N2["7.2 Service levels"]
+  N3["7.3 Escalation paths"]
+  N4["7.4 Risk reporting"]
+  N5["7.5 Hybrid model integration"]
+  N6["7.6 Change management"]
+  N7["7.7 Relationships"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 The SOC in the organisation]
+    |
+    v
+[7.2 Service levels]
+    |
+    v
+[7.3 Escalation paths]
+    |
+    v
+[7.4 Risk reporting]
+    |
+    v
+[7.5 Hybrid model integration]
+    |
+    v
+[7.6 Change management]
+    |
+    v
+[7.7 Relationships]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate the SOC with business units, IT, legal and HR; (2) define service levels and escalation paths; (3) align SOC work with enterprise risk management; (4) manage change across teams.
@@ -566,6 +1021,71 @@ Integrate the SOC through service levels, escalation paths, risk reporting and s
 
 ## Chapter 8 — Security operations and blue team: difficult cases
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Ambiguity"]
+  N2["8.2 Case one: the partner"]
+  N3["8.3 Conflicting evidence"]
+  N4["8.4 Actions"]
+  N5["8.5 Communicating uncertainty"]
+  N6["8.6 Revising"]
+  N7["8.7 Pressure"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Ambiguity"]
+  N2["8.2 Case one: the partner"]
+  N3["8.3 Conflicting evidence"]
+  N4["8.4 Actions"]
+  N5["8.5 Communicating uncertainty"]
+  N6["8.6 Revising"]
+  N7["8.7 Pressure"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Ambiguity]
+    |
+    v
+[8.2 Case one: the partner]
+    |
+    v
+[8.3 Conflicting evidence]
+    |
+    v
+[8.4 Actions]
+    |
+    v
+[8.5 Communicating uncertainty]
+    |
+    v
+[8.6 Revising]
+    |
+    v
+[8.7 Pressure]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) handle ambiguous cases where evidence conflicts; (2) manage cases involving staff, partners or regulators; (3) make and revise judgements under pressure; (4) communicate uncertainty to decision-makers.
@@ -631,6 +1151,71 @@ Difficult cases demand early proportionate action, clear communication of uncert
 <a id="ch-09"></a>
 
 ## Chapter 9 — Security operations and blue team: leadership and assurance
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Leadership"]
+  N2["9.2 Assurance"]
+  N3["Lab — assurance indicators"]
+  N4["9.3 Reading the result"]
+  N5["9.4 Honest reporting"]
+  N6["9.5 Culture"]
+  N7["9.6 People development"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Leadership"]
+  N2["9.2 Assurance"]
+  N3["Lab — assurance indicators"]
+  N4["9.3 Reading the result"]
+  N5["9.4 Honest reporting"]
+  N6["9.5 Culture"]
+  N7["9.6 People development"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Leadership]
+    |
+    v
+[9.2 Assurance]
+    |
+    v
+[Lab — assurance indicators]
+    |
+    v
+[9.3 Reading the result]
+    |
+    v
+[9.4 Honest reporting]
+    |
+    v
+[9.5 Culture]
+    |
+    v
+[9.6 People development]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -716,6 +1301,71 @@ SOC leadership pairs developing people with evidence-based, honest assurance.
 
 ## Chapter 10 — Research reading and critique
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Why read research"]
+  N2["10.2 Paper one"]
+  N3["10.3 Paper two"]
+  N4["10.4 Paper three"]
+  N5["10.5 Critique structure"]
+  N6["10.6 Relating to Meridian"]
+  N7["10.7 Avoiding cherry-picking"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Why read research"]
+  N2["10.2 Paper one"]
+  N3["10.3 Paper two"]
+  N4["10.4 Paper three"]
+  N5["10.5 Critique structure"]
+  N6["10.6 Relating to Meridian"]
+  N7["10.7 Avoiding cherry-picking"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Why read research]
+    |
+    v
+[10.2 Paper one]
+    |
+    v
+[10.3 Paper two]
+    |
+    v
+[10.4 Paper three]
+    |
+    v
+[10.5 Critique structure]
+    |
+    v
+[10.6 Relating to Meridian]
+    |
+    v
+[10.7 Avoiding cherry-picking]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) read SOC research papers critically; (2) assess methods, samples and claims; (3) relate findings to one's own SOC; (4) write a structured critique.
@@ -781,6 +1431,71 @@ Critical reading tests ideas before adoption and links research findings to meas
 <a id="ch-11"></a>
 
 ## Chapter 11 — Applied project
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 The project"]
+  N2["11.2 Baseline"]
+  N3["11.3 Interventions"]
+  N4["11.4 Stakeholders"]
+  N5["11.5 Risks"]
+  N6["11.6 Measurement"]
+  N7["11.7 Result"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 The project"]
+  N2["11.2 Baseline"]
+  N3["11.3 Interventions"]
+  N4["11.4 Stakeholders"]
+  N5["11.5 Risks"]
+  N6["11.6 Measurement"]
+  N7["11.7 Result"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 The project]
+    |
+    v
+[11.2 Baseline]
+    |
+    v
+[11.3 Interventions]
+    |
+    v
+[11.4 Stakeholders]
+    |
+    v
+[11.5 Risks]
+    |
+    v
+[11.6 Measurement]
+    |
+    v
+[11.7 Result]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -851,6 +1566,71 @@ Applied projects improve SOCs when baselines, interventions, risks and outcomes 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Looking back"]
+  N2["12.2 Transferable methods"]
+  N3["12.3 Transfer example"]
+  N4["12.4 Sustainability"]
+  N5["12.5 Final review"]
+  N6["12.6 Answers"]
+  N7["12.7 Development"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Looking back"]
+  N2["12.2 Transferable methods"]
+  N3["12.3 Transfer example"]
+  N4["12.4 Sustainability"]
+  N5["12.5 Final review"]
+  N6["12.6 Answers"]
+  N7["12.7 Development"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Looking back]
+    |
+    v
+[12.2 Transferable methods]
+    |
+    v
+[12.3 Transfer example]
+    |
+    v
+[12.4 Sustainability]
+    |
+    v
+[12.5 Final review]
+    |
+    v
+[12.6 Answers]
+    |
+    v
+[12.7 Development]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

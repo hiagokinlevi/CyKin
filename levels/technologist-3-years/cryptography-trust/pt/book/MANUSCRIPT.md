@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 077, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios analisam logs, planejam renovações, verificam HMACs e chamam o scrypt do hashlib contra um vetor publicado; não implementam nenhuma cifra. Sistemas de produção usam bibliotecas avaliadas, clientes ACME, HSMs e produtos de fornecedores; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -37,6 +37,51 @@ Leia na ordem. Os capítulos acompanham uma estudante de tecnólogo pelos fundam
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Sistemas computacionais
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O caso"]
+  N1["1.2 Hardware, software e serviços"]
+  N2["1.3 Dependências do dia a dia"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O caso"]
+  N1["1.2 Hardware, software e serviços"]
+  N2["1.3 Dependências do dia a dia"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 O caso]
+    |
+    v
+[1.2 Hardware, software e serviços]
+    |
+    v
+[1.3 Dependências do dia a dia]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -88,6 +133,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Redes e serviços de internet
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["2.1 Como uma requisição viaja"]
+  N1["2.2 O que um certificado prova"]
+  N2["2.3 Falhas comuns"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX004"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Como uma requisição viaja"]
+  N1["2.2 O que um certificado prova"]
+  N2["2.3 Falhas comuns"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX004"]
+```
+
+```text
+[2.1 Como uma requisição viaja]
+    |
+    v
+[2.2 O que um certificado prova]
+    |
+    v
+[2.3 Falhas comuns]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar o DNS, o HTTP e o TLS num serviço web municipal; (2) descrever o que os certificados TLS provam; (3) reconhecer falhas comuns no nível da rede.
@@ -137,6 +227,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Fundamentos de programação
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["3.1 Scripts para as operações"]
+  N1["Laboratório — Codificação não é cifração"]
+  N2["3.2 Ler o laboratório de codificação"]
+  N3["3.3 Segredos em scripts"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX007"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Scripts para as operações"]
+  N1["Laboratório — Codificação não é cifração"]
+  N2["3.2 Ler o laboratório de codificação"]
+  N3["3.3 Segredos em scripts"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[3.1 Scripts para as operações]
+    |
+    v
+[Laboratório — Codificação não é cifração]
+    |
+    v
+[3.2 Ler o laboratório de codificação]
+    |
+    v
+[3.3 Segredos em scripts]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -215,6 +355,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Modelos de dados
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["4.1 Modelar os objetos de confiança"]
+  N1["4.2 Projetar a tabela"]
+  N2["4.3 Manter os segredos de fora"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX010"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Modelar os objetos de confiança"]
+  N1["4.2 Projetar a tabela"]
+  N2["4.3 Manter os segredos de fora"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX010"]
+```
+
+```text
+[4.1 Modelar os objetos de confiança]
+    |
+    v
+[4.2 Projetar a tabela]
+    |
+    v
+[4.3 Manter os segredos de fora]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) modelar certificados, chaves e donos como dados; (2) projetar uma tabela de inventário simples; (3) manter valores sensíveis fora dos inventários.
@@ -264,6 +449,46 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["5.2 Associar as ferramentas"]
+  N1["5.3 Corrigir mal-entendidos"]
+  N2["Síntese"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.2 Associar as ferramentas"]
+  N1["5.3 Corrigir mal-entendidos"]
+  N2["Síntese"]
+  N0 --> N1 --> N2 --> Q["EX013"]
+```
+
+```text
+[5.2 Associar as ferramentas]
+    |
+    v
+[5.3 Corrigir mal-entendidos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -315,6 +540,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["6.1 Chaves nos servidores"]
+  N1["6.2 Clonagem e snapshots"]
+  N2["6.3 Aleatoriedade em máquinas virtuais"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Chaves nos servidores"]
+  N1["6.2 Clonagem e snapshots"]
+  N2["6.3 Aleatoriedade em máquinas virtuais"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX016"]
+```
+
+```text
+[6.1 Chaves nos servidores]
+    |
+    v
+[6.2 Clonagem e snapshots]
+    |
+    v
+[6.3 Aleatoriedade em máquinas virtuais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) proteger chaves em servidores Linux e máquinas virtuais; (2) entender os riscos da clonagem e dos snapshots; (3) usar a aleatoriedade segura do sistema operacional.
@@ -364,6 +634,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["7.1 Identidades e credenciais"]
+  N1["7.2 Implantação do multifator"]
+  N2["7.3 Entradas, mudanças e saídas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX019"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Identidades e credenciais"]
+  N1["7.2 Implantação do multifator"]
+  N2["7.3 Entradas, mudanças e saídas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX019"]
+```
+
+```text
+[7.1 Identidades e credenciais]
+    |
+    v
+[7.2 Implantação do multifator]
+    |
+    v
+[7.3 Entradas, mudanças e saídas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -415,6 +730,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["8.1 Fronteiras de confiança"]
+  N1["8.2 Posicionar os controles"]
+  N2["8.3 Pontos únicos de falha"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Fronteiras de confiança"]
+  N1["8.2 Posicionar os controles"]
+  N2["8.3 Pontos únicos de falha"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX022"]
+```
+
+```text
+[8.1 Fronteiras de confiança]
+    |
+    v
+[8.2 Posicionar os controles]
+    |
+    v
+[8.3 Pontos únicos de falha]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) traçar as fronteiras de confiança dos serviços da prefeitura; (2) posicionar o TLS, as assinaturas e a cifração nas fronteiras certas; (3) identificar pontos únicos de falha na infraestrutura de confiança.
@@ -464,6 +824,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidências e medição
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["9.1 Logs como evidência"]
+  N1["Laboratório — Resumo das falhas de handshake"]
+  N2["9.2 Ler o resumo"]
+  N3["9.3 Relatar com clareza"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Logs como evidência"]
+  N1["Laboratório — Resumo das falhas de handshake"]
+  N2["9.2 Ler o resumo"]
+  N3["9.3 Relatar com clareza"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
+```
+
+```text
+[9.1 Logs como evidência]
+    |
+    v
+[Laboratório — Resumo das falhas de handshake]
+    |
+    v
+[9.2 Ler o resumo]
+    |
+    v
+[9.3 Relatar com clareza]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -549,6 +959,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Criptografia e serviços de confiança: orientação
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["10.1 Serviços de confiança em torno da prefeitura"]
+  N1["10.2 Quem confia em quem"]
+  N2["10.3 A prefeitura como provedora"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX028"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Serviços de confiança em torno da prefeitura"]
+  N1["10.2 Quem confia em quem"]
+  N2["10.3 A prefeitura como provedora"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX028"]
+```
+
+```text
+[10.1 Serviços de confiança em torno da prefeitura]
+    |
+    v
+[10.2 Quem confia em quem]
+    |
+    v
+[10.3 A prefeitura como provedora]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) definir os serviços de confiança de que uma prefeitura depende; (2) explicar quem confia em quem em cada um; (3) identificar os papéis da prefeitura como consumidora e como provedora de confiança.
@@ -598,6 +1053,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Criptografia e serviços de confiança: ativos e contexto
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["11.1 Montar a lista de ativos"]
+  N1["11.2 Classificar a importância"]
+  N2["11.3 Registrar o contexto"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Montar a lista de ativos"]
+  N1["11.2 Classificar a importância"]
+  N2["11.3 Registrar o contexto"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
+```
+
+```text
+[11.1 Montar a lista de ativos]
+    |
+    v
+[11.2 Classificar a importância]
+    |
+    v
+[11.3 Registrar o contexto]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -649,6 +1149,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 12 — Criptografia e serviços de confiança: fluxos de dados
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["12.1 Rastrear os fluxos"]
+  N1["12.2 Encontrar as lacunas"]
+  N2["12.3 Priorizar as correções"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Rastrear os fluxos"]
+  N1["12.2 Encontrar as lacunas"]
+  N2["12.3 Priorizar as correções"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX034"]
+```
+
+```text
+[12.1 Rastrear os fluxos]
+    |
+    v
+[12.2 Encontrar as lacunas]
+    |
+    v
+[12.3 Priorizar as correções]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) rastrear os fluxos de dados entre os serviços da prefeitura e os parceiros; (2) identificar lacunas de proteção em cada fluxo; (3) priorizar as correções pela sensibilidade e pela exposição.
@@ -699,6 +1244,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 13 — Criptografia e serviços de confiança: cenários de risco
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["13.1 Escrever os cenários"]
+  N1["13.2 Estimar o risco"]
+  N2["13.3 Tratamentos e donos"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 Escrever os cenários"]
+  N1["13.2 Estimar o risco"]
+  N2["13.3 Tratamentos e donos"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX037"]
+```
+
+```text
+[13.1 Escrever os cenários]
+    |
+    v
+[13.2 Estimar o risco]
+    |
+    v
+[13.3 Tratamentos e donos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever cenários de risco para os serviços de confiança; (2) estimar a probabilidade e o impacto; (3) escolher tratamentos e donos.
@@ -748,6 +1338,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Criptografia e serviços de confiança: métodos I
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["14.1 Webhooks assinados"]
+  N1["Laboratório — Verificação de webhooks"]
+  N2["14.2 Ler a execução do webhook"]
+  N3["14.3 Combinar as verificações"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 Webhooks assinados"]
+  N1["Laboratório — Verificação de webhooks"]
+  N2["14.2 Ler a execução do webhook"]
+  N3["14.3 Combinar as verificações"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
+```
+
+```text
+[14.1 Webhooks assinados]
+    |
+    v
+[Laboratório — Verificação de webhooks]
+    |
+    v
+[14.2 Ler a execução do webhook]
+    |
+    v
+[14.3 Combinar as verificações]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -831,6 +1471,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 15 — Criptografia e serviços de confiança: laboratório guiado
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["15.1 Montagem do laboratório"]
+  N1["15.2 Emitir e validar"]
+  N2["15.3 Observar as falhas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 Montagem do laboratório"]
+  N1["15.2 Emitir e validar"]
+  N2["15.3 Observar as falhas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX043"]
+```
+
+```text
+[15.1 Montagem do laboratório]
+    |
+    v
+[15.2 Emitir e validar]
+    |
+    v
+[15.3 Observar as falhas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) montar uma autoridade certificadora de teste num laboratório; (2) emitir e validar certificados de servidor; (3) observar com segurança as falhas comuns de validação.
@@ -880,6 +1565,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Criptografia e serviços de confiança: métodos II
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["16.1 Hash resistente em memória"]
+  N1["Laboratório — scrypt com um vetor de teste"]
+  N2["16.2 Ler a execução do scrypt"]
+  N3["16.3 Planejar a migração"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 Hash resistente em memória"]
+  N1["Laboratório — scrypt com um vetor de teste"]
+  N2["16.2 Ler a execução do scrypt"]
+  N3["16.3 Planejar a migração"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[16.1 Hash resistente em memória]
+    |
+    v
+[Laboratório — scrypt com um vetor de teste]
+    |
+    v
+[16.2 Ler a execução do scrypt]
+    |
+    v
+[16.3 Planejar a migração]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -957,6 +1692,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 17 — Criptografia e serviços de confiança: ferramentas
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["17.1 Categorias de ferramentas"]
+  N1["17.2 Avaliar as ferramentas"]
+  N2["17.3 Documentar o uso"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 Categorias de ferramentas"]
+  N1["17.2 Avaliar as ferramentas"]
+  N2["17.3 Documentar o uso"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX049"]
+```
+
+```text
+[17.1 Categorias de ferramentas]
+    |
+    v
+[17.2 Avaliar as ferramentas]
+    |
+    v
+[17.3 Documentar o uso]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher ferramentas para a descoberta de certificados, a renovação e o armazenamento de segredos; (2) avaliar as ferramentas em relação aos requisitos; (3) documentar o uso das ferramentas com segurança.
@@ -1007,6 +1787,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 18 — Criptografia e serviços de confiança: controles
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["18.1 Proteger a chave de assinatura"]
+  N1["18.2 Privilégio mínimo e controle duplo"]
+  N2["18.3 Evidências"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX052"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Proteger a chave de assinatura"]
+  N1["18.2 Privilégio mínimo e controle duplo"]
+  N2["18.3 Evidências"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX052"]
+```
+
+```text
+[18.1 Proteger a chave de assinatura]
+    |
+    v
+[18.2 Privilégio mínimo e controle duplo]
+    |
+    v
+[18.3 Evidências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) definir os controles da chave de assinatura de documentos; (2) aplicar o privilégio mínimo e o controle duplo; (3) coletar evidências de que os controles funcionam.
@@ -1056,6 +1881,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Criptografia e serviços de confiança: monitoramento
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa da aula
+
+Aula 19 publicada. Mapa, exemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["19.1 O que monitorar"]
+  N1["Laboratório — Alerta de taxa de falhas"]
+  N2["19.2 Ler o alerta"]
+  N3["19.3 Responder aos alertas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["19.1 O que monitorar"]
+  N1["Laboratório — Alerta de taxa de falhas"]
+  N2["19.2 Ler o alerta"]
+  N3["19.3 Responder aos alertas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
+```
+
+```text
+[19.1 O que monitorar]
+    |
+    v
+[Laboratório — Alerta de taxa de falhas]
+    |
+    v
+[19.2 Ler o alerta]
+    |
+    v
+[19.3 Responder aos alertas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1140,6 +2015,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 20 — Criptografia e serviços de confiança: solução de problemas
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa da aula
+
+Aula 20 publicada. Mapa, exemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["20.1 Um método"]
+  N1["20.2 Causas-raiz comuns"]
+  N2["20.3 Corrigir as causas-raiz"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX058"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["20.1 Um método"]
+  N1["20.2 Causas-raiz comuns"]
+  N2["20.3 Corrigir as causas-raiz"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX058"]
+```
+
+```text
+[20.1 Um método]
+    |
+    v
+[20.2 Causas-raiz comuns]
+    |
+    v
+[20.3 Corrigir as causas-raiz]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) resolver problemas de certificados e de TLS de forma sistemática; (2) usar evidências em vez de palpites; (3) corrigir as causas-raiz, e não apenas os sintomas.
@@ -1190,6 +2110,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 21 — Criptografia e serviços de confiança: integração de serviços
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa da aula
+
+Aula 21 publicada. Mapa, exemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["21.1 Chega um novo serviço"]
+  N1["21.2 Lista de verificação da integração"]
+  N2["21.3 Verificar antes da entrada em produção"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX061"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["21.1 Chega um novo serviço"]
+  N1["21.2 Lista de verificação da integração"]
+  N2["21.3 Verificar antes da entrada em produção"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
+```
+
+```text
+[21.1 Chega um novo serviço]
+    |
+    v
+[21.2 Lista de verificação da integração]
+    |
+    v
+[21.3 Verificar antes da entrada em produção]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) integrar um novo serviço aos serviços de confiança da prefeitura; (2) definir uma lista de verificação de integração; (3) verificar a integração antes da entrada em produção.
@@ -1239,6 +2204,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Criptografia e serviços de confiança: automação
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa da aula
+
+Aula 22 publicada. Mapa, exemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["22.1 Por que automatizar"]
+  N1["Laboratório — Planejador de renovações"]
+  N2["22.2 Ler o planejador"]
+  N3["22.3 Pessoas e exceções"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX064"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["22.1 Por que automatizar"]
+  N1["Laboratório — Planejador de renovações"]
+  N2["22.2 Ler o planejador"]
+  N3["22.3 Pessoas e exceções"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX064"]
+```
+
+```text
+[22.1 Por que automatizar]
+    |
+    v
+[Laboratório — Planejador de renovações]
+    |
+    v
+[22.2 Ler o planejador]
+    |
+    v
+[22.3 Pessoas e exceções]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1318,6 +2333,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 23 — Criptografia e serviços de confiança: avaliação
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa da aula
+
+Aula 23 publicada. Mapa, exemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["23.1 Funcionou?"]
+  N1["23.2 Medidas"]
+  N2["23.3 Relato honesto"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX067"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["23.1 Funcionou?"]
+  N1["23.2 Medidas"]
+  N2["23.3 Relato honesto"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX067"]
+```
+
+```text
+[23.1 Funcionou?]
+    |
+    v
+[23.2 Medidas]
+    |
+    v
+[23.3 Relato honesto]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) avaliar se as mudanças nos serviços de confiança funcionaram; (2) escolher medidas de antes e depois; (3) relatar os resultados com honestidade.
@@ -1367,6 +2427,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
+
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa da aula
+
+Aula 24 publicada. Mapa, exemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["24.1 Enquadrar uma questão"]
+  N1["24.2 Coleta ética de dados"]
+  N2["24.3 Conclusões cautelosas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX070"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["24.1 Enquadrar uma questão"]
+  N1["24.2 Coleta ética de dados"]
+  N2["24.3 Conclusões cautelosas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX070"]
+```
+
+```text
+[24.1 Enquadrar uma questão]
+    |
+    v
+[24.2 Coleta ética de dados]
+    |
+    v
+[24.3 Conclusões cautelosas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1418,6 +2523,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 25 — Ateliê de projeto em equipe
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa da aula
+
+Aula 25 publicada. Mapa, exemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["25.1 O projeto"]
+  N1["25.2 Papéis e acompanhamento"]
+  N2["25.3 Revisão de segurança"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX073"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["25.1 O projeto"]
+  N1["25.2 Papéis e acompanhamento"]
+  N2["25.3 Revisão de segurança"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX073"]
+```
+
+```text
+[25.1 O projeto]
+    |
+    v
+[25.2 Papéis e acompanhamento]
+    |
+    v
+[25.3 Revisão de segurança]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) planejar um projeto em equipe sobre serviços de confiança; (2) dividir os papéis e acompanhar o trabalho; (3) revisar o trabalho uns dos outros quanto à segurança.
@@ -1467,6 +2617,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Criptografia e serviços de confiança: passagem operacional
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa da aula
+
+Aula 26 publicada. Mapa, exemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["26.1 O que significa a passagem"]
+  N1["26.2 Runbooks e propriedade"]
+  N2["26.3 Ensaio"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX076"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["26.1 O que significa a passagem"]
+  N1["26.2 Runbooks e propriedade"]
+  N2["26.3 Ensaio"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX076"]
+```
+
+```text
+[26.1 O que significa a passagem]
+    |
+    v
+[26.2 Runbooks e propriedade]
+    |
+    v
+[26.3 Ensaio]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1518,6 +2713,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 27 — Implantação e validação
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa da aula
+
+Aula 27 publicada. Mapa, exemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["27.1 Planejar a implantação"]
+  N1["27.2 Validação"]
+  N2["27.3 Reversão"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX079"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["27.1 Planejar a implantação"]
+  N1["27.2 Validação"]
+  N2["27.3 Reversão"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX079"]
+```
+
+```text
+[27.1 Planejar a implantação]
+    |
+    v
+[27.2 Validação]
+    |
+    v
+[27.3 Reversão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) planejar a implantação segura de mudanças na configuração de TLS; (2) validar as mudanças em relação aos requisitos; (3) reverter quando a validação falha.
@@ -1567,6 +2807,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Prática de campo
+
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa da aula
+
+Aula 28 publicada. Mapa, exemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["28.1 O trabalho no estágio"]
+  N1["28.2 Registro profissional"]
+  N2["28.3 Refletir sobre o retorno"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX082"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["28.1 O trabalho no estágio"]
+  N1["28.2 Registro profissional"]
+  N2["28.3 Refletir sobre o retorno"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX082"]
+```
+
+```text
+[28.1 O trabalho no estágio]
+    |
+    v
+[28.2 Registro profissional]
+    |
+    v
+[28.3 Refletir sobre o retorno]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1618,6 +2903,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 29 — Construção do projeto final
 
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa da aula
+
+Aula 29 publicada. Mapa, exemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["29.1 Escopo do projeto final"]
+  N1["29.2 Verificações de qualidade e de segurança"]
+  N2["29.3 Documentação"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX085"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["29.1 Escopo do projeto final"]
+  N1["29.2 Verificações de qualidade e de segurança"]
+  N2["29.3 Documentação"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX085"]
+```
+
+```text
+[29.1 Escopo do projeto final]
+    |
+    v
+[29.2 Verificações de qualidade e de segurança]
+    |
+    v
+[29.3 Documentação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) construir uma entrega de projeto final que integre as competências do curso; (2) aplicar verificações de qualidade e de segurança; (3) documentá-la para outras pessoas.
@@ -1667,6 +2997,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa da aula
+
+Aula 30 publicada. Mapa, exemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["30.1 Apresentação"]
+  N1["30.2 Defender as escolhas"]
+  N2["30.3 Desenvolvimento contínuo"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX088"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["30.1 Apresentação"]
+  N1["30.2 Defender as escolhas"]
+  N2["30.3 Desenvolvimento contínuo"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX088"]
+```
+
+```text
+[30.1 Apresentação]
+    |
+    v
+[30.2 Defender as escolhas]
+    |
+    v
+[30.3 Desenvolvimento contínuo]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Objetivos de aprendizagem
 

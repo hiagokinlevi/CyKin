@@ -1,7 +1,7 @@
 # OT, IoT and Cyber-Physical Security: Postgraduate Practice and Leadership
 
 - Language: English (`en`); postgraduate course, two years part-time; approximately 600 hours of planned study.
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: experienced practitioners who lead OT, IoT and cyber-physical security decisions at organisation scale.
 - Relation to neighbouring books: the [bachelor's book](../../../../bachelors-4-years/ot-iot-security/en/book/MANUSCRIPT.md) builds foundations; the [master's book](../../../../masters-2-years/ot-iot-security/en/book/MANUSCRIPT.md) teaches the research cycle. **This book is practice-led**: deciding, evaluating, integrating and assuring.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -35,6 +35,61 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Decisions, not findings"]
+  N2["1.2 Expected loss is necessary but not sufficient"]
+  N3["1.3 Reading the comparison"]
+  N4["1.4 Value of information"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Decisions, not findings"]
+  N2["1.2 Expected loss is necessary but not sufficient"]
+  N3["1.3 Reading the comparison"]
+  N4["1.4 Value of information"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Decisions, not findings]
+    |
+    v
+[1.2 Expected loss is necessary but not sufficient]
+    |
+    v
+[1.3 Reading the comparison]
+    |
+    v
+[1.4 Value of information]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -113,6 +168,61 @@ Leaders decide with expected loss, worst credible case, explicit owners and revi
 
 ## Chapter 2 — OT, IoT and cyber-physical security: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What current guidance expects"]
+  N2["2.2 Documented versus performed"]
+  N3["2.3 Building the gap list"]
+  N4["2.4 Prioritising"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What current guidance expects"]
+  N2["2.2 Documented versus performed"]
+  N3["2.3 Building the gap list"]
+  N4["2.4 Prioritising"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What current guidance expects]
+    |
+    v
+[2.2 Documented versus performed]
+    |
+    v
+[2.3 Building the gap list]
+    |
+    v
+[2.4 Prioritising]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) benchmark an organisation's OT security programme against NIST SP 800-82r3 and IEC 62443-2-1 themes; (2) distinguish documented practice from performed practice; (3) produce a gap list with evidence; and (4) prioritise gaps for leadership.
@@ -171,6 +281,61 @@ Current-practice reviews compare evidence of what is done, not what is written, 
 
 ## Chapter 3 — OT, IoT and cyber-physical security: specialist evidence
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Sources and their blind spots"]
+  N2["3.2 Conflicts are information"]
+  N3["3.3 Appraising external claims"]
+  N4["3.4 Confidence statements"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Sources and their blind spots"]
+  N2["3.2 Conflicts are information"]
+  N3["3.3 Appraising external claims"]
+  N4["3.4 Confidence statements"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Sources and their blind spots]
+    |
+    v
+[3.2 Conflicts are information]
+    |
+    v
+[3.3 Appraising external claims]
+    |
+    v
+[3.4 Confidence statements]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) appraise the quality of OT security evidence sources; (2) reconcile conflicting evidence from network, host and process data; (3) assess vendor and advisory claims critically; and (4) write an evidence appraisal that states confidence levels.
@@ -228,6 +393,61 @@ Specialist evidence work triangulates sources with known blind spots, treats con
 <a id="ch-04"></a>
 
 ## Chapter 4 — Advanced risk and ethics
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Distributions over point estimates"]
+  N2["4.2 Reading the tail"]
+  N3["4.3 Who bears the risk"]
+  N4["4.4 Transparency versus exposure"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Distributions over point estimates"]
+  N2["4.2 Reading the tail"]
+  N3["4.3 Who bears the risk"]
+  N4["4.4 Transparency versus exposure"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Distributions over point estimates]
+    |
+    v
+[4.2 Reading the tail]
+    |
+    v
+[4.3 Who bears the risk]
+    |
+    v
+[4.4 Transparency versus exposure]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -306,6 +526,61 @@ Advanced risk work reports distributions and tails, names who bears the residual
 
 ## Chapter 5 — OT, IoT and cyber-physical security: design alternatives
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The problem"]
+  N2["5.2 Three alternatives"]
+  N3["5.3 Evaluating them"]
+  N4["5.4 Recording rejections"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The problem"]
+  N2["5.2 Three alternatives"]
+  N3["5.3 Evaluating them"]
+  N4["5.4 Recording rejections"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The problem]
+    |
+    v
+[5.2 Three alternatives]
+    |
+    v
+[5.3 Evaluating them]
+    |
+    v
+[5.4 Recording rejections]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) generate genuinely different design alternatives for securing remote lift stations; (2) evaluate them against operational, security and lifecycle criteria; (3) use IEC 62443 zone and conduit concepts to describe each; and (4) document why rejected alternatives were rejected.
@@ -363,6 +638,61 @@ Good design work produces real alternatives, evaluates them across their lifecyc
 <a id="ch-06"></a>
 
 ## Chapter 6 — OT, IoT and cyber-physical security: controlled evaluation
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Same data, two treatments"]
+  N2["6.2 Reading the result"]
+  N3["6.3 Making the call"]
+  N4["6.4 Threats to validity"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Same data, two treatments"]
+  N2["6.2 Reading the result"]
+  N3["6.3 Making the call"]
+  N4["6.4 Threats to validity"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Same data, two treatments]
+    |
+    v
+[6.2 Reading the result]
+    |
+    v
+[6.3 Making the call]
+    |
+    v
+[6.4 Threats to validity]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -453,6 +783,61 @@ A controlled evaluation pairs treatments on identical labelled data, reports cou
 
 ## Chapter 7 — OT, IoT and cyber-physical security: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 The ownership problem"]
+  N2["7.2 A RACI for three processes"]
+  N3["7.3 Change management"]
+  N4["7.4 Metrics"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 The ownership problem"]
+  N2["7.2 A RACI for three processes"]
+  N3["7.3 Change management"]
+  N4["7.4 Metrics"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 The ownership problem]
+    |
+    v
+[7.2 A RACI for three processes]
+    |
+    v
+[7.3 Change management]
+    |
+    v
+[7.4 Metrics]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) design OT security roles and responsibilities across IT, operations and engineering; (2) build a RACI for key OT security processes; (3) integrate OT security into change management; and (4) set metrics that drive the right behaviour.
@@ -511,6 +896,61 @@ Integration is explicit authority, embedded change questions and metrics with de
 
 ## Chapter 8 — OT, IoT and cyber-physical security: difficult cases
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 When containment endangers the process"]
+  N2["8.2 Insiders"]
+  N3["8.3 Supplier compromise"]
+  N4["8.4 Communicating under uncertainty"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 When containment endangers the process"]
+  N2["8.2 Insiders"]
+  N3["8.3 Supplier compromise"]
+  N4["8.4 Communicating under uncertainty"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 When containment endangers the process]
+    |
+    v
+[8.2 Insiders]
+    |
+    v
+[8.3 Supplier compromise]
+    |
+    v
+[8.4 Communicating under uncertainty]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) lead a response when containment and process safety conflict; (2) handle an insider scenario with fairness and evidence; (3) manage a supplier compromise affecting multiple sites; and (4) communicate under uncertainty with regulators and the public.
@@ -566,6 +1006,66 @@ Difficult cases demand sequencing that keeps the process safe, fairness toward p
 <a id="ch-09"></a>
 
 ## Chapter 9 — OT, IoT and cyber-physical security: leadership and assurance
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Claims, arguments, evidence"]
+  N2["9.2 Reading the check"]
+  N3["9.3 Assurance is not compliance"]
+  N4["9.4 Evidence freshness"]
+  N5["9.5 Reporting to a board"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Claims, arguments, evidence"]
+  N2["9.2 Reading the check"]
+  N3["9.3 Assurance is not compliance"]
+  N4["9.4 Evidence freshness"]
+  N5["9.5 Reporting to a board"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Claims, arguments, evidence]
+    |
+    v
+[9.2 Reading the check]
+    |
+    v
+[9.3 Assurance is not compliance]
+    |
+    v
+[9.4 Evidence freshness]
+    |
+    v
+[9.5 Reporting to a board]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -660,6 +1160,66 @@ Assurance makes leadership claims auditable: every top claim decomposes to fresh
 
 ## Chapter 10 — Research reading and critique
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Choosing papers"]
+  N2["10.2 Critiquing the threat model"]
+  N3["10.3 Critiquing method and evaluation"]
+  N4["10.4 Transfer to practice"]
+  N5["10.5 Writing the critique"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Choosing papers"]
+  N2["10.2 Critiquing the threat model"]
+  N3["10.3 Critiquing method and evaluation"]
+  N4["10.4 Transfer to practice"]
+  N5["10.5 Writing the critique"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Choosing papers]
+    |
+    v
+[10.2 Critiquing the threat model]
+    |
+    v
+[10.3 Critiquing method and evaluation]
+    |
+    v
+[10.4 Transfer to practice]
+    |
+    v
+[10.5 Writing the critique]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) critique a peer-reviewed OT security paper's threat model, method and evaluation; (2) judge whether results transfer to your organisation; (3) synthesise across papers; and (4) write a structured critique a practitioner audience can use.
@@ -724,6 +1284,66 @@ Critique evaluates threat model, method and transfer, then turns a paper into th
 
 ## Chapter 11 — Applied project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Choosing the project"]
+  N2["11.2 Stakeholders and constraints"]
+  N3["11.3 Milestones and risks"]
+  N4["11.4 Success measures"]
+  N5["11.5 The dossier"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Choosing the project"]
+  N2["11.2 Stakeholders and constraints"]
+  N3["11.3 Milestones and risks"]
+  N4["11.4 Success measures"]
+  N5["11.5 The dossier"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Choosing the project]
+    |
+    v
+[11.2 Stakeholders and constraints]
+    |
+    v
+[11.3 Milestones and risks]
+    |
+    v
+[11.4 Success measures]
+    |
+    v
+[11.5 The dossier]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) scope an applied OT security project inside a real organisational constraint; (2) plan stakeholders, milestones and risks; (3) deliver an artefact plus an evidence dossier; and (4) define success measures before starting.
@@ -787,6 +1407,61 @@ An applied project closes a real gap under real constraints, with success define
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 The portfolio view"]
+  N2["12.2 Transfer to another sector"]
+  N3["12.3 Transfer brief"]
+  N4["12.4 Continuing development"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 The portfolio view"]
+  N2["12.2 Transfer to another sector"]
+  N3["12.3 Transfer brief"]
+  N4["12.4 Continuing development"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 The portfolio view]
+    |
+    v
+[12.2 Transfer to another sector]
+    |
+    v
+[12.3 Transfer brief]
+    |
+    v
+[12.4 Continuing development]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

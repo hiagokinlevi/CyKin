@@ -1,7 +1,7 @@
 # OT, IoT and Cyber-Physical Security: Doctoral Research Methods and Thesis Practice
 
 - Language: English (`en`); doctoral research track, two years; approximately 1,600 hours of planned study.
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: advanced researchers with research experience and a defensible question about the security of industrial control systems (ICS), operational technology (OT), the industrial Internet of Things (IIoT) or other cyber-physical systems (CPS). Entry knowledge: the content planned for the [master's](../../../../masters-2-years/ot-iot-security/en/book/PLAN.md) track in this area or equivalent experience, plus working literacy in control theory (state-space models, feedback loops), probability and statistics, and at least one industrial protocol such as Modbus or DNP3.
 - Relationship to neighbouring courses: the [doctoral critical-infrastructure course](../../../critical-sector-security/README.md) studies services, sectors and cross-sector cascades; the [doctoral incident-response course](../../../incident-response-resilience/README.md) studies organizational detection and response. **This book studies the control loop itself**: sensors, actuators, controllers, the physical process, industrial protocols and the safety functions that keep people alive when everything else fails.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights.
@@ -66,6 +66,71 @@ Generic methodological vocabulary (verification versus validation, common random
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced research integrity and methods
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 The object of study: a control loop with consequ"]
+  N2["1.2 A ladder of claims"]
+  N3["1.3 Safety before integrity of results"]
+  N4["1.4 Ethics and dual use"]
+  N5["1.5 Data that describes a plant is sensitive"]
+  N6["1.6 Metrics that resist gaming"]
+  N7["1.8 Practical activity — Lab 1: point adjustment inf"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 The object of study: a control loop with consequ"]
+  N2["1.2 A ladder of claims"]
+  N3["1.3 Safety before integrity of results"]
+  N4["1.4 Ethics and dual use"]
+  N5["1.5 Data that describes a plant is sensitive"]
+  N6["1.6 Metrics that resist gaming"]
+  N7["1.8 Practical activity — Lab 1: point adjustment inf"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 The object of study: a control loop with consequ]
+    |
+    v
+[1.2 A ladder of claims]
+    |
+    v
+[1.3 Safety before integrity of results]
+    |
+    v
+[1.4 Ethics and dual use]
+    |
+    v
+[1.5 Data that describes a plant is sensitive]
+    |
+    v
+[1.6 Metrics that resist gaming]
+    |
+    v
+[1.8 Practical activity — Lab 1: point adjustment inf]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -196,6 +261,71 @@ OT research studies control loops whose failure is physical. Climb the claim lad
 
 ## Chapter 2 — OT, IoT and cyber-physical security: research frontier
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Why the frontier is hard to see"]
+  N2["2.2 Research families"]
+  N3["2.3 Standards as hypotheses"]
+  N4["2.4 Appraisal: what makes an OT detection paper cred"]
+  N5["2.6 Practical activity — Lab 2: code the map"]
+  N6["2.7 A falsifiable gap"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Why the frontier is hard to see"]
+  N2["2.2 Research families"]
+  N3["2.3 Standards as hypotheses"]
+  N4["2.4 Appraisal: what makes an OT detection paper cred"]
+  N5["2.6 Practical activity — Lab 2: code the map"]
+  N6["2.7 A falsifiable gap"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Why the frontier is hard to see]
+    |
+    v
+[2.2 Research families]
+    |
+    v
+[2.3 Standards as hypotheses]
+    |
+    v
+[2.4 Appraisal: what makes an OT detection paper cred]
+    |
+    v
+[2.6 Practical activity — Lab 2: code the map]
+    |
+    v
+[2.7 A falsifiable gap]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) organize the OT security literature into research families, (2) read standards as testable hypotheses, (3) appraise detection papers against known evaluation pitfalls, (4) use public incidents only at the level their analysts published, and (5) state a falsifiable gap. It builds on the claim ladder of Chapter 1 and feeds the proposal of Chapter 3.
@@ -282,6 +412,66 @@ The frontier lies across communities; read it with synonyms, treat standards as 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 Types of contribution"]
+  N2["3.2 The mechanism as a physical invariant"]
+  N3["3.3 Attacker model"]
+  N4["3.4 Hypotheses and thresholds"]
+  N5["3.5 Baselines and rivals"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 Types of contribution"]
+  N2["3.2 The mechanism as a physical invariant"]
+  N3["3.3 Attacker model"]
+  N4["3.4 Hypotheses and thresholds"]
+  N5["3.5 Baselines and rivals"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 Types of contribution]
+    |
+    v
+[3.2 The mechanism as a physical invariant]
+    |
+    v
+[3.3 Attacker model]
+    |
+    v
+[3.4 Hypotheses and thresholds]
+    |
+    v
+[3.5 Baselines and rivals]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes and connection
 
@@ -406,6 +596,66 @@ A strong proposal positions itself honestly, expresses the mechanism as a physic
 
 ## Chapter 4 — Baseline replication and pilot
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Terms"]
+  N2["4.2 Diagnosing a failed reproduction: TankBench-21"]
+  N3["4.3 Verifying the simulator"]
+  N4["4.4 Tuning without leakage: Lab 6"]
+  N5["4.5 A bounded pilot on Testbed T2"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Terms"]
+  N2["4.2 Diagnosing a failed reproduction: TankBench-21"]
+  N3["4.3 Verifying the simulator"]
+  N4["4.4 Tuning without leakage: Lab 6"]
+  N5["4.5 A bounded pilot on Testbed T2"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Terms]
+    |
+    v
+[4.2 Diagnosing a failed reproduction: TankBench-21]
+    |
+    v
+[4.3 Verifying the simulator]
+    |
+    v
+[4.4 Tuning without leakage: Lab 6]
+    |
+    v
+[4.5 A bounded pilot on Testbed T2]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) distinguish reproduction, replication and re-implementation, (2) diagnose why a published OT detection result cannot be reproduced, (3) verify a process simulator before trusting it, (4) design a bounded pilot on an isolated rig, and (5) make a predeclared go/no-go decision. It takes the hypotheses of Chapter 3 and prepares the main study of Chapter 5.
@@ -497,6 +747,66 @@ Reproduce baselines with a predeclared tolerance and diagnose gaps systematicall
 
 ## Chapter 5 — Main study and independent validation
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Paired design"]
+  N2["5.2 Three kinds of uncertainty"]
+  N3["5.3 Independent validation on Testbed T2"]
+  N4["5.4 The blinded operator review"]
+  N5["5.5 Writing mixed results honestly"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Paired design"]
+  N2["5.2 Three kinds of uncertainty"]
+  N3["5.3 Independent validation on Testbed T2"]
+  N4["5.4 The blinded operator review"]
+  N5["5.5 Writing mixed results honestly"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Paired design]
+    |
+    v
+[5.2 Three kinds of uncertainty]
+    |
+    v
+[5.3 Independent validation on Testbed T2]
+    |
+    v
+[5.4 The blinded operator review]
+    |
+    v
+[5.5 Writing mixed results honestly]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) design a paired experiment with common random numbers, (2) report uncertainty that separates simulation noise from model uncertainty, (3) validate on an independent second context, (4) incorporate a blinded operator review, and (5) write an honest results paragraph including mixed results. It executes the plan piloted in Chapter 4 and produces the claims Chapter 6 will attack.
@@ -580,6 +890,66 @@ Paired designs sharpen comparisons; uncertainty has three kinds and intervals ca
 
 ## Chapter 6 — Peer critique and revision
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Objections as hypotheses"]
+  N2["6.2 Boundary conditions"]
+  N3["6.3 The narrowed claim"]
+  N4["6.4 Dual-use review"]
+  N5["6.5 Responding to reviewers"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Objections as hypotheses"]
+  N2["6.2 Boundary conditions"]
+  N3["6.3 The narrowed claim"]
+  N4["6.4 Dual-use review"]
+  N5["6.5 Responding to reviewers"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Objections as hypotheses]
+    |
+    v
+[6.2 Boundary conditions]
+    |
+    v
+[6.3 The narrowed claim]
+    |
+    v
+[6.4 Dual-use review]
+    |
+    v
+[6.5 Responding to reviewers]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) organize an internal red-team review of your own claims, (2) convert objections into testable hypotheses, (3) characterize boundary conditions instead of hiding them, (4) perform a dual-use review of a paper before submission, and (5) write a responsive reviewer letter. It attacks the results of Chapter 5 and feeds the thesis argument of Chapter 7.
@@ -647,6 +1017,66 @@ Critique is data: convert objections into tests, let them narrow the claim, publ
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Argument map"]
+  N2["7.2 Format"]
+  N3["7.3 Tiered archive"]
+  N4["7.4 Documenting synthetic data and models"]
+  N5["7.5 Directional limitations"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Argument map"]
+  N2["7.2 Format"]
+  N3["7.3 Tiered archive"]
+  N4["7.4 Documenting synthetic data and models"]
+  N5["7.5 Directional limitations"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Argument map]
+    |
+    v
+[7.2 Format]
+    |
+    v
+[7.3 Tiered archive]
+    |
+    v
+[7.4 Documenting synthetic data and models]
+    |
+    v
+[7.5 Directional limitations]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes and connection
 
@@ -741,6 +1171,71 @@ The thesis is an argument whose every element points to evidence; the archive re
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 Claim-register audit"]
+  N2["8.2 Examiner question families"]
+  N3["8.3 Publication sequencing"]
+  N4["8.4 Coordinated disclosure"]
+  N5["8.5 Translation for practice"]
+  N6["8.6 Post-doctoral program"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 Claim-register audit"]
+  N2["8.2 Examiner question families"]
+  N3["8.3 Publication sequencing"]
+  N4["8.4 Coordinated disclosure"]
+  N5["8.5 Translation for practice"]
+  N6["8.6 Post-doctoral program"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 Claim-register audit]
+    |
+    v
+[8.2 Examiner question families]
+    |
+    v
+[8.3 Publication sequencing]
+    |
+    v
+[8.4 Coordinated disclosure]
+    |
+    v
+[8.5 Translation for practice]
+    |
+    v
+[8.6 Post-doctoral program]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 

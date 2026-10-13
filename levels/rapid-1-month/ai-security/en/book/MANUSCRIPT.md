@@ -1,7 +1,7 @@
 # AI and Machine-Learning Security: A One-Month Rapid Course Book
 
 - Language: English (`en`); rapid course, one month; approximately 60 hours of planned study.
-- Editorial state: **draft**. Chapters 1–4 of 4 have authored teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; offline labs use the Python 3 standard library and their printed outputs were produced by real runs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–4 of 4 have authored teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; offline labs use the Python 3 standard library and their printed outputs were produced by real runs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: busy professionals — IT generalists, managers, analysts — who need a safe, practical orientation to AI security in one month.
 - Relation to neighbouring books: the [professional book](../../../../professional-6-months/ai-security/en/book/MANUSCRIPT.md) develops each topic into day-to-day practice. **This book is an orientation**: the key decisions, safe practice, how AI systems are exposed, and one guided lab that ties it together.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -32,6 +32,66 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 <a id="ch-01"></a>
 
 ## Chapter 1 — AI and machine-learning security: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 How AI systems work, briefly"]
+  N2["1.2 How they fail or are attacked"]
+  N3["1.3 Organising the decision"]
+  N4["1.4 Options"]
+  N5["1.5 Recording the decision"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 How AI systems work, briefly"]
+  N2["1.2 How they fail or are attacked"]
+  N3["1.3 Organising the decision"]
+  N4["1.4 Options"]
+  N5["1.5 Recording the decision"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 How AI systems work, briefly]
+    |
+    v
+[1.2 How they fail or are attacked]
+    |
+    v
+[1.3 Organising the decision]
+    |
+    v
+[1.4 Options]
+    |
+    v
+[1.5 Recording the decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -111,6 +171,66 @@ AI systems are models wrapped with instructions, data and tools; they can be ste
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Permission"]
+  N2["2.2 Scope and rules"]
+  N3["2.3 Safe environments"]
+  N4["2.4 Evidence and measurement"]
+  N5["2.5 Handling findings"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Permission"]
+  N2["2.2 Scope and rules"]
+  N3["2.3 Safe environments"]
+  N4["2.4 Evidence and measurement"]
+  N5["2.5 Handling findings"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Permission]
+    |
+    v
+[2.2 Scope and rules]
+    |
+    v
+[2.3 Safe environments]
+    |
+    v
+[2.4 Evidence and measurement]
+    |
+    v
+[2.5 Handling findings]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -224,6 +344,66 @@ Safe practice means permission, clear scope, synthetic data, careful evidence, h
 <a id="ch-03"></a>
 
 ## Chapter 3 — AI and machine-learning security: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Drawing the flow"]
+  N2["3.2 Untrusted content"]
+  N3["3.3 Data access"]
+  N4["3.4 Dependencies"]
+  N5["3.5 Controls that bound harm"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Drawing the flow"]
+  N2["3.2 Untrusted content"]
+  N3["3.3 Data access"]
+  N4["3.4 Dependencies"]
+  N5["3.5 Controls that bound harm"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Drawing the flow]
+    |
+    v
+[3.2 Untrusted content]
+    |
+    v
+[3.3 Data access]
+    |
+    v
+[3.4 Dependencies]
+    |
+    v
+[3.5 Controls that bound harm]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -371,6 +551,71 @@ Map where untrusted content enters and where actions leave; limit data access; q
 <a id="ch-04"></a>
 
 ## Chapter 4 — AI and machine-learning security: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Lab rules"]
+  N2["4.2 Lab 1 — evasion"]
+  N3["4.4 Lab 3 — base rates"]
+  N4["4.5 Lab 4 — measuring defences"]
+  N5["4.6 The adoption plan"]
+  N6["4.8 Next learning"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Lab rules"]
+  N2["4.2 Lab 1 — evasion"]
+  N3["4.4 Lab 3 — base rates"]
+  N4["4.5 Lab 4 — measuring defences"]
+  N5["4.6 The adoption plan"]
+  N6["4.8 Next learning"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Lab rules]
+    |
+    v
+[4.2 Lab 1 — evasion]
+    |
+    v
+[4.4 Lab 3 — base rates]
+    |
+    v
+[4.5 Lab 4 — measuring defences]
+    |
+    v
+[4.6 The adoption plan]
+    |
+    v
+[4.8 Next learning]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

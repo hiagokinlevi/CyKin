@@ -1,7 +1,7 @@
 # Governança de Dados: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 003, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: iniciantes que precisam de um começo rápido e prático em governança de dados para um pequeno negócio.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o laboratório confere uma lista sintética de doze linhas de inscrições de um café em busca de e-mails em branco, endereços malformados, duplicatas e marcações de consentimento. A legislação é citada pela edição e parafraseada; nada aqui é aconselhamento jurídico. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,56 @@ GDPR; LGPD. Lista completa em [Referências](#references).
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Governança de dados: fundamentos e primeiras decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O aprendiz e o café"]
+  N1["1.2 O que significa governança de dados"]
+  N2["1.3 Os dados da Copperleaf"]
+  N3["1.4 Por que isso importa"]
+  N4["1.5 Três primeiras decisões"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O aprendiz e o café"]
+  N1["1.2 O que significa governança de dados"]
+  N2["1.3 Os dados da Copperleaf"]
+  N3["1.4 Por que isso importa"]
+  N4["1.5 Três primeiras decisões"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 O aprendiz e o café]
+    |
+    v
+[1.2 O que significa governança de dados]
+    |
+    v
+[1.3 Os dados da Copperleaf]
+    |
+    v
+[1.4 Por que isso importa]
+    |
+    v
+[1.5 Três primeiras decisões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -99,6 +149,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Responsabilidade, regras e práticas seguras
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Regras simples"]
+  N1["2.2 Pedindo só o necessário"]
+  N2["2.3 Hábitos de segurança"]
+  N3["2.4 Guardar e eliminar"]
+  N4["2.5 Obtendo a concordância"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Regras simples"]
+  N1["2.2 Pedindo só o necessário"]
+  N2["2.3 Hábitos de segurança"]
+  N3["2.4 Guardar e eliminar"]
+  N4["2.5 Obtendo a concordância"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
+```
+
+```text
+[2.1 Regras simples]
+    |
+    v
+[2.2 Pedindo só o necessário]
+    |
+    v
+[2.3 Hábitos de segurança]
+    |
+    v
+[2.4 Guardar e eliminar]
+    |
+    v
+[2.5 Obtendo a concordância]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever regras simples para cada tipo de dado; (2) aplicar hábitos básicos de segurança; (3) decidir por quanto tempo guardar os registros.
@@ -161,6 +261,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Qualidade, sistemas e fornecedores
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 Qualidade em palavras simples"]
+  N1["3.2 Onde os dados ficam"]
+  N2["3.3 Fornecedores"]
+  N3["3.4 Pagamentos e notas fiscais"]
+  N4["3.5 Verificações simples"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Qualidade em palavras simples"]
+  N1["3.2 Onde os dados ficam"]
+  N2["3.3 Fornecedores"]
+  N3["3.4 Pagamentos e notas fiscais"]
+  N4["3.5 Verificações simples"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[3.1 Qualidade em palavras simples]
+    |
+    v
+[3.2 Onde os dados ficam]
+    |
+    v
+[3.3 Fornecedores]
+    |
+    v
+[3.4 Pagamentos e notas fiscais]
+    |
+    v
+[3.5 Verificações simples]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) conferir a qualidade dos dados em um pequeno negócio; (2) mapear onde os dados ficam guardados; (3) avaliar os fornecedores que lidam com os dados do café.
@@ -221,6 +371,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Laboratório guiado e plano de ação
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["4.1 A lista de inscrições"]
+  N1["4.2 O que o laboratório encontra"]
+  N2["4.3 Decidindo para quem enviar"]
+  N3["4.4 O plano de ação"]
+  N4["4.5 Depois do curso"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 A lista de inscrições"]
+  N1["4.2 O que o laboratório encontra"]
+  N2["4.3 Decidindo para quem enviar"]
+  N3["4.4 O plano de ação"]
+  N4["4.5 Depois do curso"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+```
+
+```text
+[4.1 A lista de inscrições]
+    |
+    v
+[4.2 O que o laboratório encontra]
+    |
+    v
+[4.3 Decidindo para quem enviar]
+    |
+    v
+[4.4 O plano de ação]
+    |
+    v
+[4.5 Depois do curso]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

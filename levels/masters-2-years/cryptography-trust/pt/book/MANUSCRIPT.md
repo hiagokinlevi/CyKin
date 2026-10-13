@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 169, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que vão conduzir um estudo reprodutível sobre como as organizações operam certificados e a confiança em chaves públicas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o livro estuda como são operadas ferramentas avaliadas de TLS, X.509 e ACME. Ele nunca ensina a construir primitivas criptográficas para produção; os laboratórios calculam datas, contagens, taxas e pseudônimos com chave sobre dados sintéticos. Pessoas, organizações e hosts são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,66 @@ Leia na ordem. Os capítulos acompanham um mestrando que pergunta por que certif
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O caso"]
+  N1["1.2 Afinar a pergunta"]
+  N2["1.3 Uma busca documentada"]
+  N3["Laboratório — Funil de triagem"]
+  N4["1.4 Ler o funil"]
+  N5["1.5 Registrar as decisões"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O caso"]
+  N1["1.2 Afinar a pergunta"]
+  N2["1.3 Uma busca documentada"]
+  N3["Laboratório — Funil de triagem"]
+  N4["1.4 Ler o funil"]
+  N5["1.5 Registrar as decisões"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[1.1 O caso]
+    |
+    v
+[1.2 Afinar a pergunta]
+    |
+    v
+[1.3 Uma busca documentada]
+    |
+    v
+[Laboratório — Funil de triagem]
+    |
+    v
+[1.4 Ler o funil]
+    |
+    v
+[1.5 Registrar as decisões]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -133,6 +193,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: seminário avançado
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 O que um certificado afirma"]
+  N1["2.2 Certificados no TLS 1.3"]
+  N2["2.3 Por que as validades continuam encolhendo"]
+  N3["Laboratório — Leitura do inventário"]
+  N4["2.4 Ler o inventário"]
+  N5["2.5 Do seminário ao estudo"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 O que um certificado afirma"]
+  N1["2.2 Certificados no TLS 1.3"]
+  N2["2.3 Por que as validades continuam encolhendo"]
+  N3["Laboratório — Leitura do inventário"]
+  N4["2.4 Ler o inventário"]
+  N5["2.5 Do seminário ao estudo"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[2.1 O que um certificado afirma]
+    |
+    v
+[2.2 Certificados no TLS 1.3]
+    |
+    v
+[2.3 Por que as validades continuam encolhendo]
+    |
+    v
+[Laboratório — Leitura do inventário]
+    |
+    v
+[2.4 Ler o inventário]
+    |
+    v
+[2.5 Do seminário ao estudo]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -237,6 +357,66 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Escolher um desenho observacional"]
+  N1["3.2 Ética e aprovação"]
+  N2["3.3 Pseudônimos com chave"]
+  N3["Laboratório — Pseudônimos com chave"]
+  N4["3.4 Ler os pseudônimos"]
+  N5["3.5 Plano de reprodutibilidade"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Escolher um desenho observacional"]
+  N1["3.2 Ética e aprovação"]
+  N2["3.3 Pseudônimos com chave"]
+  N3["Laboratório — Pseudônimos com chave"]
+  N4["3.4 Ler os pseudônimos"]
+  N5["3.5 Plano de reprodutibilidade"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[3.1 Escolher um desenho observacional]
+    |
+    v
+[3.2 Ética e aprovação]
+    |
+    v
+[3.3 Pseudônimos com chave]
+    |
+    v
+[Laboratório — Pseudônimos com chave]
+    |
+    v
+[3.4 Ler os pseudônimos]
+    |
+    v
+[3.5 Plano de reprodutibilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher um desenho observacional adequado aos registros de certificados existentes; (2) pseudonimizar nomes de host com uma função com chave; (3) planejar um estudo que outras pessoas possam reproduzir.
@@ -334,6 +514,66 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Criptografia e serviços de confiança: explicações concorrentes
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Três explicações rivais"]
+  N1["Laboratório — Tabulação cruzada das explicações"]
+  N2["4.2 Ler a tabulação cruzada"]
+  N3["4.3 Confusão em termos simples"]
+  N4["4.4 Onde entra a colisão com mudanças"]
+  N5["4.5 O que os dados conseguem decidir"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Três explicações rivais"]
+  N1["Laboratório — Tabulação cruzada das explicações"]
+  N2["4.2 Ler a tabulação cruzada"]
+  N3["4.3 Confusão em termos simples"]
+  N4["4.4 Onde entra a colisão com mudanças"]
+  N5["4.5 O que os dados conseguem decidir"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[4.1 Três explicações rivais]
+    |
+    v
+[Laboratório — Tabulação cruzada das explicações]
+    |
+    v
+[4.2 Ler a tabulação cruzada]
+    |
+    v
+[4.3 Confusão em termos simples]
+    |
+    v
+[4.4 Onde entra a colisão com mudanças]
+    |
+    v
+[4.5 O que os dados conseguem decidir]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) confrontar explicações rivais para a expiração de certificados; (2) ler uma tabulação cruzada em busca de confusão; (3) decidir quais explicações os dados conseguem e não conseguem distinguir.
@@ -429,6 +669,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Proposta e piloto
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 A proposta"]
+  N1["5.2 Ligar certificados a incidentes"]
+  N2["5.3 Conduzir o piloto"]
+  N3["5.4 Corrigir os instrumentos"]
+  N4["5.5 O que o piloto não diz"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 A proposta"]
+  N1["5.2 Ligar certificados a incidentes"]
+  N2["5.3 Conduzir o piloto"]
+  N3["5.4 Corrigir os instrumentos"]
+  N4["5.5 O que o piloto não diz"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[5.1 A proposta]
+    |
+    v
+[5.2 Ligar certificados a incidentes]
+    |
+    v
+[5.3 Conduzir o piloto]
+    |
+    v
+[5.4 Corrigir os instrumentos]
+    |
+    v
+[5.5 O que o piloto não diz]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma proposta que se compromete com desfechos, estratos e análise; (2) pilotar a extração de dados numa pequena fatia; (3) corrigir os erros de extração antes da coleta completa.
@@ -492,6 +787,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 O conjunto de dados montado"]
+  N1["6.2 Taxas e a razão de taxas"]
+  N2["Laboratório — Razão de taxas com bootstrap"]
+  N3["6.3 Ler o intervalo"]
+  N4["6.4 Estratificar pela propriedade"]
+  N5["6.5 A descrição da colisão com mudanças"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 O conjunto de dados montado"]
+  N1["6.2 Taxas e a razão de taxas"]
+  N2["Laboratório — Razão de taxas com bootstrap"]
+  N3["6.3 Ler o intervalo"]
+  N4["6.4 Estratificar pela propriedade"]
+  N5["6.5 A descrição da colisão com mudanças"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[6.1 O conjunto de dados montado]
+    |
+    v
+[6.2 Taxas e a razão de taxas]
+    |
+    v
+[Laboratório — Razão de taxas com bootstrap]
+    |
+    v
+[6.3 Ler o intervalo]
+    |
+    v
+[6.4 Estratificar pela propriedade]
+    |
+    v
+[6.5 A descrição da colisão com mudanças]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -589,6 +944,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estruturar em torno da afirmação"]
+  N1["7.2 Escrever os resultados com simplicidade"]
+  N2["7.3 Limitações específicas"]
+  N3["7.4 Recomendações proporcionais às evidências"]
+  N4["7.5 Escrever sobre criptografia com responsabilidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estruturar em torno da afirmação"]
+  N1["7.2 Escrever os resultados com simplicidade"]
+  N2["7.3 Limitações específicas"]
+  N3["7.4 Recomendações proporcionais às evidências"]
+  N4["7.5 Escrever sobre criptografia com responsabilidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[7.1 Estruturar em torno da afirmação]
+    |
+    v
+[7.2 Escrever os resultados com simplicidade]
+    |
+    v
+[7.3 Limitações específicas]
+    |
+    v
+[7.4 Recomendações proporcionais às evidências]
+    |
+    v
+[7.5 Escrever sobre criptografia com responsabilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação para que cada capítulo sirva à afirmação principal; (2) escrever limitações específicas e úteis; (3) transformar os achados em recomendações que respeitem a força das evidências.
@@ -652,6 +1062,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Exame externo"]
+  N1["8.2 Responder à questão dos intermediários"]
+  N2["8.3 Perguntas sobre a criptografia"]
+  N3["8.4 Disseminação para os profissionais"]
+  N4["8.5 Encerrar o estudo"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Exame externo"]
+  N1["8.2 Responder à questão dos intermediários"]
+  N2["8.3 Perguntas sobre a criptografia"]
+  N3["8.4 Disseminação para os profissionais"]
+  N4["8.5 Encerrar o estudo"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[8.1 Exame externo]
+    |
+    v
+[8.2 Responder à questão dos intermediários]
+    |
+    v
+[8.3 Perguntas sobre a criptografia]
+    |
+    v
+[8.4 Disseminação para os profissionais]
+    |
+    v
+[8.5 Encerrar o estudo]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

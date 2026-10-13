@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Métodos de Pesquisa e Prática de Dissertação de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso de mestrado, dois anos; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: pesquisadores iniciantes com sólida base na área e domínio de métodos de pesquisa, que vão formular uma pergunta, avaliar trabalhos anteriores e produzir resultados reprodutíveis em segurança quântica e pós-quântica. Conhecimento de entrada: o conteúdo de [pós-graduação](../../../../postgraduate-2-years/quantum-post-quantum-security/en/book/PLAN.md) ou de [engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/PLAN.md) desta área, ou equivalente: TLS 1.3, criptografia de chave pública, estatística básica.
 - Relação com o [curso de doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md): o doutorado estuda a descoberta da criptografia vulnerável à computação quântica em toda uma organização. **Este livro estuda a fundo uma pergunta de implantação** — o que acontece com as conexões reais quando se ativa uma troca de chaves híbrida pós-quântica/tradicional (PQ/T) — e ensina, em torno dela, o ciclo completo de uma dissertação de mestrado.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos.
@@ -34,6 +34,56 @@ A pergunta se apoia em experiência pública: quando o Chrome passou a oferecer 
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Da reclamação à pergunta"]
+  N1["1.2 Por que o tamanho é plausível"]
+  N2["1.3 FINER"]
+  N3["1.4 Uma busca documentada"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Da reclamação à pergunta"]
+  N1["1.2 Por que o tamanho é plausível"]
+  N2["1.3 FINER"]
+  N3["1.4 Uma busca documentada"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 Da reclamação à pergunta]
+    |
+    v
+[1.2 Por que o tamanho é plausível]
+    |
+    v
+[1.3 FINER]
+    |
+    v
+[1.4 Uma busca documentada]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -105,6 +155,56 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Segurança quântica e pós-quântica: seminário avançado
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Colete agora, decifre depois"]
+  N1["2.2 O ML-KEM em uma página"]
+  N2["2.3 Combinadores híbridos"]
+  N3["2.4 Famílias comparadas"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Colete agora, decifre depois"]
+  N1["2.2 O ML-KEM em uma página"]
+  N2["2.3 Combinadores híbridos"]
+  N3["2.4 Famílias comparadas"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[2.1 Colete agora, decifre depois]
+    |
+    v
+[2.2 O ML-KEM em uma página]
+    |
+    v
+[2.3 Combinadores híbridos]
+    |
+    v
+[2.4 Famílias comparadas]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Você vai (1) explicar por que o estabelecimento de chaves é migrado antes das assinaturas; (2) descrever a estrutura do ML-KEM e de um combinador híbrido PQ/T no nível necessário para raciocinar sobre a implantação; (3) comparar as famílias pós-quânticas por tamanho e pressuposto; e (4) criticar um artigo de seminário. O capítulo aprofunda o contexto do Capítulo 1 e fundamenta o desenho do estudo do Capítulo 3.
@@ -170,6 +270,61 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["3.1 Desenhos"]
+  N1["3.2 Definição das variáveis"]
+  N2["3.3 Ética e minimização"]
+  N3["3.4 Taxas e intervalos"]
+  N4["3.5 Plano de reprodutibilidade"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Desenhos"]
+  N1["3.2 Definição das variáveis"]
+  N2["3.3 Ética e minimização"]
+  N3["3.4 Taxas e intervalos"]
+  N4["3.5 Plano de reprodutibilidade"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[3.1 Desenhos]
+    |
+    v
+[3.2 Definição das variáveis]
+    |
+    v
+[3.3 Ética e minimização]
+    |
+    v
+[3.4 Taxas e intervalos]
+    |
+    v
+[3.5 Plano de reprodutibilidade]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -280,6 +435,56 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 4 — Segurança quântica e pós-quântica: explicações concorrentes
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX020.
+
+```mermaid
+flowchart TD
+  N0["4.1 Rivais para o aumento das falhas"]
+  N1["4.2 Previsões"]
+  N2["4.3 Atividade prática — Laboratório 4: estratificar"]
+  N3["4.4 Inversões na agregação"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX020"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Rivais para o aumento das falhas"]
+  N1["4.2 Previsões"]
+  N2["4.3 Atividade prática — Laboratório 4: estratificar"]
+  N3["4.4 Inversões na agregação"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX020"]
+```
+
+```text
+[4.1 Rivais para o aumento das falhas]
+    |
+    v
+[4.2 Previsões]
+    |
+    v
+[4.3 Atividade prática — Laboratório 4: estratificar]
+    |
+    v
+[4.4 Inversões na agregação]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX020]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Você vai (1) listar explicações rivais para um efeito observado; (2) prever o que cada rival implica nos dados que você pode coletar; (3) usar a estratificação para discriminar entre os rivais; e (4) reconhecer quando um padrão se inverte na agregação. O capítulo aplica o desenho do Capítulo 3 e molda a proposta do Capítulo 5.
@@ -367,6 +572,51 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 5 — Proposta e piloto
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["5.1 Estrutura da proposta"]
+  N1["5.2 Hipóteses"]
+  N2["5.3 Critérios e execução do piloto"]
+  N3["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX026"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Estrutura da proposta"]
+  N1["5.2 Hipóteses"]
+  N2["5.3 Critérios e execução do piloto"]
+  N3["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX026"]
+```
+
+```text
+[5.1 Estrutura da proposta]
+    |
+    v
+[5.2 Hipóteses]
+    |
+    v
+[5.3 Critérios e execução do piloto]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Você vai (1) escrever uma proposta de dissertação com objetivos, hipóteses e plano de análise; (2) fixar critérios de sucesso para o piloto; (3) executar com segurança um pequeno piloto em bancada; e (4) revisar o protocolo com base no piloto. O capítulo transforma os rivais do Capítulo 4 num plano e prepara a coleta de dados do Capítulo 6.
@@ -426,6 +676,61 @@ Siga para a próxima lição escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["6.1 Coleta"]
+  N1["6.2 Codificação das falhas"]
+  N2["6.3 Diferença-em-diferenças"]
+  N3["6.4 Resultados da bancada"]
+  N4["6.5 Validação no Fenwick College"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Coleta"]
+  N1["6.2 Codificação das falhas"]
+  N2["6.3 Diferença-em-diferenças"]
+  N3["6.4 Resultados da bancada"]
+  N4["6.5 Validação no Fenwick College"]
+  N5["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX034"]
+```
+
+```text
+[6.1 Coleta]
+    |
+    v
+[6.2 Codificação das falhas]
+    |
+    v
+[6.3 Diferença-em-diferenças]
+    |
+    v
+[6.4 Resultados da bancada]
+    |
+    v
+[6.5 Validação no Fenwick College]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -515,6 +820,56 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX038.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estrutura"]
+  N1["7.2 Redação dos resultados"]
+  N2["7.3 Limitações com direção"]
+  N3["7.4 Recomendações"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX038"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estrutura"]
+  N1["7.2 Redação dos resultados"]
+  N2["7.3 Limitações com direção"]
+  N3["7.4 Recomendações"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX038"]
+```
+
+```text
+[7.1 Estrutura]
+    |
+    v
+[7.2 Redação dos resultados]
+    |
+    v
+[7.3 Limitações com direção]
+    |
+    v
+[7.4 Recomendações]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX038]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem e conexão
 
 Você vai (1) estruturar uma dissertação de modo que cada capítulo responda a uma pergunta; (2) escrever resultados que separem estimativa, incerteza e interpretação; (3) escrever limitações com direção e consequência; e (4) fazer recomendações proporcionais à evidência. O capítulo transforma os resultados do Capítulo 6 no documento examinado no Capítulo 8.
@@ -582,6 +937,56 @@ Siga para a próxima lição escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX044.
+
+```mermaid
+flowchart TD
+  N0["8.1 Pacote de reprodutibilidade"]
+  N1["8.2 Perguntas dos examinadores"]
+  N2["8.3 Divulgação"]
+  N3["8.4 Informe aos operadores"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX044"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Pacote de reprodutibilidade"]
+  N1["8.2 Perguntas dos examinadores"]
+  N2["8.3 Divulgação"]
+  N3["8.4 Informe aos operadores"]
+  N4["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX044"]
+```
+
+```text
+[8.1 Pacote de reprodutibilidade]
+    |
+    v
+[8.2 Perguntas dos examinadores]
+    |
+    v
+[8.3 Divulgação]
+    |
+    v
+[8.4 Informe aos operadores]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX044]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem e conexão
 

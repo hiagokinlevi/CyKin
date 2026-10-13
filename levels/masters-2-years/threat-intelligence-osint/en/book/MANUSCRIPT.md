@@ -1,7 +1,7 @@
 # Threat Intelligence and OSINT: A Master's Research Book
 
 - Language: English (`en`); master's course, two years.
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX056 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX056 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students who will design and defend a bounded empirical study in cyber threat intelligence (CTI) or OSINT practice.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical boundary: no collection on real private individuals, no terms-of-service evasion, no access to adversary systems. Organisations, people and datasets are **synthetic** unless a sentence cites a public source.
@@ -35,6 +35,61 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 From worry to question"]
+  N2["1.2 Search method"]
+  N3["1.3 Grading sources"]
+  N4["1.4 The search log"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 From worry to question"]
+  N2["1.2 Search method"]
+  N3["1.3 Grading sources"]
+  N4["1.4 The search log"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 From worry to question]
+    |
+    v
+[1.2 Search method]
+    |
+    v
+[1.3 Grading sources]
+    |
+    v
+[1.4 The search log]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -93,6 +148,66 @@ Structure the question, document the search, keep source strands separate, and l
 <a id="ch-02"></a>
 
 ## Chapter 2 — Threat intelligence and OSINT: advanced seminar
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Cycle versus practice"]
+  N2["2.2 Three levels"]
+  N3["2.3 Models as tools for tasks"]
+  N4["2.4 OSINT at seminar depth"]
+  N5["2.5 TLP and sharing culture"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Cycle versus practice"]
+  N2["2.2 Three levels"]
+  N3["2.3 Models as tools for tasks"]
+  N4["2.4 OSINT at seminar depth"]
+  N5["2.5 TLP and sharing culture"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Cycle versus practice]
+    |
+    v
+[2.2 Three levels]
+    |
+    v
+[2.3 Models as tools for tasks]
+    |
+    v
+[2.4 OSINT at seminar depth]
+    |
+    v
+[2.5 TLP and sharing culture]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -160,6 +275,61 @@ Know where the cycle breaks, label the level, prefer durable behaviour descripti
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.2 Handling confounders"]
+  N2["3.3 Consent and TLP"]
+  N3["3.4 Personal data"]
+  N4["3.5 Reproducibility plan"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.2 Handling confounders"]
+  N2["3.3 Consent and TLP"]
+  N3["3.4 Personal data"]
+  N4["3.5 Reproducibility plan"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.2 Handling confounders]
+    |
+    v
+[3.3 Consent and TLP]
+    |
+    v
+[3.4 Personal data]
+    |
+    v
+[3.5 Reproducibility plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) choose between observational and quasi-experimental designs; (2) identify confounders in sharing studies; (3) obtain consent from sharing-community members for research use; (4) plan a reproducible analysis.
@@ -225,6 +395,71 @@ Name confounders early, pick a design that weakens them, obtain board and member
 <a id="ch-04"></a>
 
 ## Chapter 4 — Threat intelligence and OSINT: competing explanations
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Why competing explanations"]
+  N2["Lab 1 — ACH matrix"]
+  N3["4.2 Reading the matrix"]
+  N4["4.3 Estimative language"]
+  N5["4.4 Change triggers"]
+  N6["4.5 ATT&CK as evidence vocabulary"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Why competing explanations"]
+  N2["Lab 1 — ACH matrix"]
+  N3["4.2 Reading the matrix"]
+  N4["4.3 Estimative language"]
+  N5["4.4 Change triggers"]
+  N6["4.5 ATT&CK as evidence vocabulary"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Why competing explanations]
+    |
+    v
+[Lab 1 — ACH matrix]
+    |
+    v
+[4.2 Reading the matrix]
+    |
+    v
+[4.3 Estimative language]
+    |
+    v
+[4.4 Change triggers]
+    |
+    v
+[4.5 ATT&CK as evidence vocabulary]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -321,6 +556,66 @@ List rivals, seek inconsistencies, report survivors with calibrated words, and w
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Aims and measures"]
+  N2["5.2 Data dictionary"]
+  N3["5.3 Pilot"]
+  N4["5.4 Revising without drifting"]
+  N5["5.5 Indicator formats"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX029"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Aims and measures"]
+  N2["5.2 Data dictionary"]
+  N3["5.3 Pilot"]
+  N4["5.4 Revising without drifting"]
+  N5["5.5 Indicator formats"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX029"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Aims and measures]
+    |
+    v
+[5.2 Data dictionary]
+    |
+    v
+[5.3 Pilot]
+    |
+    v
+[5.4 Revising without drifting]
+    |
+    v
+[5.5 Indicator formats]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write a dissertation proposal with measurable aims; (2) define each variable in a data dictionary; (3) run a pilot to check feasibility; (4) revise the plan from pilot evidence without changing the question.
@@ -386,6 +681,71 @@ Measurable aims, a precise dictionary, a pilot aimed at feasibility, and revisio
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Validate first"]
+  N2["Lab 2 — STIX property check"]
+  N3["6.2 What the check shows"]
+  N4["Lab 3 — time-to-block medians"]
+  N5["6.3 Reading the medians"]
+  N6["6.4 Description versus cause"]
+  N7["6.5 Reporting data quality back"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Validate first"]
+  N2["Lab 2 — STIX property check"]
+  N3["6.2 What the check shows"]
+  N4["Lab 3 — time-to-block medians"]
+  N5["6.3 Reading the medians"]
+  N6["6.4 Description versus cause"]
+  N7["6.5 Reporting data quality back"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Validate first]
+    |
+    v
+[Lab 2 — STIX property check]
+    |
+    v
+[6.2 What the check shows]
+    |
+    v
+[Lab 3 — time-to-block medians]
+    |
+    v
+[6.3 Reading the medians]
+    |
+    v
+[6.4 Description versus cause]
+    |
+    v
+[6.5 Reporting data quality back]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -505,6 +865,66 @@ Validate before counting, prefer medians for skewed times, show sample sizes and
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure follows questions"]
+  N2["7.2 Strong limitations"]
+  N3["7.3 Two audiences"]
+  N4["7.4 Restricted data in writing"]
+  N5["7.5 Judgment language"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure follows questions"]
+  N2["7.2 Strong limitations"]
+  N3["7.3 Two audiences"]
+  N4["7.4 Restricted data in writing"]
+  N5["7.5 Judgment language"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure follows questions]
+    |
+    v
+[7.2 Strong limitations]
+    |
+    v
+[7.3 Two audiences]
+    |
+    v
+[7.4 Restricted data in writing]
+    |
+    v
+[7.5 Judgment language]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a dissertation around research questions; (2) write a limitations section that strengthens rather than apologises; (3) present results to two audiences — examiners and practitioners; (4) handle restricted data in the written product.
@@ -570,6 +990,66 @@ Let questions shape the text, write limitations with direction and mitigation, b
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX050.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent methods review"]
+  N2["8.2 Likely viva questions"]
+  N3["8.3 Responding to findings"]
+  N4["8.4 Returning value"]
+  N5["8.5 After the defence"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX050"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent methods review"]
+  N2["8.2 Likely viva questions"]
+  N3["8.3 Responding to findings"]
+  N4["8.4 Returning value"]
+  N5["8.5 After the defence"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX050"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent methods review]
+    |
+    v
+[8.2 Likely viva questions]
+    |
+    v
+[8.3 Responding to findings]
+    |
+    v
+[8.4 Returning value]
+    |
+    v
+[8.5 After the defence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX050]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

@@ -1,7 +1,7 @@
 # Cryptography and Trust Services: Master's Course
 
 - Language: English (`en`); course 169, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; five offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; five offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students who will run a reproducible study on how organisations operate certificates and public-key trust.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the book studies how vetted TLS, X.509 and ACME tooling is operated. It never teaches building cryptographic primitives for production; labs compute dates, counts, rates and keyed pseudonyms on synthetic data. All people, organisations and hosts are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ Read in order. The chapters follow one master's student asking why TLS certifica
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Sharpening the question"]
+  N3["1.3 A documented search"]
+  N4["Lab — Screening funnel"]
+  N5["1.4 Reading the funnel"]
+  N6["1.5 Recording decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Sharpening the question"]
+  N3["1.3 A documented search"]
+  N4["Lab — Screening funnel"]
+  N5["1.4 Reading the funnel"]
+  N6["1.5 Recording decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Sharpening the question]
+    |
+    v
+[1.3 A documented search]
+    |
+    v
+[Lab — Screening funnel]
+    |
+    v
+[1.4 Reading the funnel]
+    |
+    v
+[1.5 Recording decisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -123,6 +188,71 @@ A narrow question with a fair unit, a replayable search and a full decision log 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Cryptography and trust services: advanced seminar
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What a certificate asserts"]
+  N2["2.2 Certificates in TLS 1.3"]
+  N3["2.3 Why lifetimes keep shrinking"]
+  N4["Lab — Inventory read"]
+  N5["2.4 Reading the inventory"]
+  N6["2.5 From seminar to study"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What a certificate asserts"]
+  N2["2.2 Certificates in TLS 1.3"]
+  N3["2.3 Why lifetimes keep shrinking"]
+  N4["Lab — Inventory read"]
+  N5["2.4 Reading the inventory"]
+  N6["2.5 From seminar to study"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What a certificate asserts]
+    |
+    v
+[2.2 Certificates in TLS 1.3]
+    |
+    v
+[2.3 Why lifetimes keep shrinking]
+    |
+    v
+[Lab — Inventory read]
+    |
+    v
+[2.4 Reading the inventory]
+    |
+    v
+[2.5 From seminar to study]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -217,6 +347,71 @@ Certificates are signed, time-bounded assertions that TLS enforces strictly; lif
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Choosing an observational design"]
+  N2["3.2 Ethics and approval"]
+  N3["3.3 Keyed pseudonyms"]
+  N4["Lab — Keyed pseudonyms"]
+  N5["3.4 Reading the pseudonyms"]
+  N6["3.5 Reproducibility plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Choosing an observational design"]
+  N2["3.2 Ethics and approval"]
+  N3["3.3 Keyed pseudonyms"]
+  N4["Lab — Keyed pseudonyms"]
+  N5["3.4 Reading the pseudonyms"]
+  N6["3.5 Reproducibility plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Choosing an observational design]
+    |
+    v
+[3.2 Ethics and approval]
+    |
+    v
+[3.3 Keyed pseudonyms]
+    |
+    v
+[Lab — Keyed pseudonyms]
+    |
+    v
+[3.4 Reading the pseudonyms]
+    |
+    v
+[3.5 Reproducibility plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) choose an observational design suited to existing certificate records; (2) pseudonymise hostnames with a keyed function; (3) plan for a study others can reproduce.
@@ -305,6 +500,71 @@ An honest observational design, keyed pseudonyms held by the partner and a teste
 
 ## Chapter 4 — Cryptography and trust services: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Three rival explanations"]
+  N2["Lab — Explanation cross-tab"]
+  N3["4.2 Reading the cross-tab"]
+  N4["4.3 Confounding in plain terms"]
+  N5["4.4 Where change collision fits"]
+  N6["4.5 What the data can decide"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Three rival explanations"]
+  N2["Lab — Explanation cross-tab"]
+  N3["4.2 Reading the cross-tab"]
+  N4["4.3 Confounding in plain terms"]
+  N5["4.4 Where change collision fits"]
+  N6["4.5 What the data can decide"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Three rival explanations]
+    |
+    v
+[Lab — Explanation cross-tab]
+    |
+    v
+[4.2 Reading the cross-tab]
+    |
+    v
+[4.3 Confounding in plain terms]
+    |
+    v
+[4.4 Where change collision fits]
+    |
+    v
+[4.5 What the data can decide]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) set rival explanations for certificate expiry against each other; (2) read a cross-tabulation for confounding; (3) decide which explanation the data can and cannot distinguish.
@@ -391,6 +651,66 @@ Rival explanations predict different patterns; testing them requires rates, stra
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Linking certificates to incidents"]
+  N3["5.3 Running the pilot"]
+  N4["5.4 Fixing the instruments"]
+  N5["5.5 What the pilot does not tell"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Linking certificates to incidents"]
+  N3["5.3 Running the pilot"]
+  N4["5.4 Fixing the instruments"]
+  N5["5.5 What the pilot does not tell"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The proposal]
+    |
+    v
+[5.2 Linking certificates to incidents]
+    |
+    v
+[5.3 Running the pilot]
+    |
+    v
+[5.4 Fixing the instruments]
+    |
+    v
+[5.5 What the pilot does not tell]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write a proposal that commits to outcomes, strata and analysis; (2) pilot data extraction on a small slice; (3) fix extraction errors before full collection.
@@ -445,6 +765,71 @@ A specific proposal plus a pilot aimed at extraction faults makes the full datas
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 The assembled dataset"]
+  N2["6.2 Rates and the rate ratio"]
+  N3["Lab — Rate ratio with bootstrap"]
+  N4["6.3 Reading the interval"]
+  N5["6.4 Stratifying by ownership"]
+  N6["6.5 The change-collision description"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 The assembled dataset"]
+  N2["6.2 Rates and the rate ratio"]
+  N3["Lab — Rate ratio with bootstrap"]
+  N4["6.3 Reading the interval"]
+  N5["6.4 Stratifying by ownership"]
+  N6["6.5 The change-collision description"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 The assembled dataset]
+    |
+    v
+[6.2 Rates and the rate ratio]
+    |
+    v
+[Lab — Rate ratio with bootstrap]
+    |
+    v
+[6.3 Reading the interval]
+    |
+    v
+[6.4 Stratifying by ownership]
+    |
+    v
+[6.5 The change-collision description]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -533,6 +918,66 @@ Rates, intervals and strata together show a robust association between automatio
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure around the claim"]
+  N2["7.2 Writing results plainly"]
+  N3["7.3 Specific limitations"]
+  N4["7.4 Recommendations proportional to evidence"]
+  N5["7.5 Writing about cryptography responsibly"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure around the claim"]
+  N2["7.2 Writing results plainly"]
+  N3["7.3 Specific limitations"]
+  N4["7.4 Recommendations proportional to evidence"]
+  N5["7.5 Writing about cryptography responsibly"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure around the claim]
+    |
+    v
+[7.2 Writing results plainly]
+    |
+    v
+[7.3 Specific limitations]
+    |
+    v
+[7.4 Recommendations proportional to evidence]
+    |
+    v
+[7.5 Writing about cryptography responsibly]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a dissertation so each chapter serves the main claim; (2) write limitations that are specific and useful; (3) turn findings into recommendations that respect evidence strength.
@@ -587,6 +1032,66 @@ A claim-led structure, specific limitations and evidence-graded recommendations 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 External examination"]
+  N2["8.2 Answering the intermediate question"]
+  N3["8.3 Questions about the cryptography"]
+  N4["8.4 Dissemination to practitioners"]
+  N5["8.5 Closing the study"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 External examination"]
+  N2["8.2 Answering the intermediate question"]
+  N3["8.3 Questions about the cryptography"]
+  N4["8.4 Dissemination to practitioners"]
+  N5["8.5 Closing the study"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 External examination]
+    |
+    v
+[8.2 Answering the intermediate question]
+    |
+    v
+[8.3 Questions about the cryptography]
+    |
+    v
+[8.4 Dissemination to practitioners]
+    |
+    v
+[8.5 Closing the study]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

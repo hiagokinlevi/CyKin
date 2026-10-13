@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Master's Course
 
 - Language: English (`en`); course 176, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students who will design, run and defend an applied study of security-operations practice.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,71 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 From problem to question"]
+  N2["1.2 Parts of a good question"]
+  N3["1.3 Searching the literature"]
+  N4["1.4 Appraising sources"]
+  N5["1.5 What the literature says"]
+  N6["1.6 The search log"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 From problem to question"]
+  N2["1.2 Parts of a good question"]
+  N3["1.3 Searching the literature"]
+  N4["1.4 Appraising sources"]
+  N5["1.5 What the literature says"]
+  N6["1.6 The search log"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 From problem to question]
+    |
+    v
+[1.2 Parts of a good question]
+    |
+    v
+[1.3 Searching the literature]
+    |
+    v
+[1.4 Appraising sources]
+    |
+    v
+[1.5 What the literature says]
+    |
+    v
+[1.6 The search log]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -110,6 +175,71 @@ A researchable question has measurable parts; a logged, appraised literature sea
 
 ## Chapter 2 — Security operations and blue team: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What a SOC does"]
+  N2["2.2 Detection engineering"]
+  N3["2.3 Continuous monitoring"]
+  N4["2.4 Metrics and side effects"]
+  N5["2.5 Maturity models"]
+  N6["2.6 Seminar format"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What a SOC does"]
+  N2["2.2 Detection engineering"]
+  N3["2.3 Continuous monitoring"]
+  N4["2.4 Metrics and side effects"]
+  N5["2.5 Maturity models"]
+  N6["2.6 Seminar format"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What a SOC does]
+    |
+    v
+[2.2 Detection engineering]
+    |
+    v
+[2.3 Continuous monitoring]
+    |
+    v
+[2.4 Metrics and side effects]
+    |
+    v
+[2.5 Maturity models]
+    |
+    v
+[2.6 Seminar format]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) discuss SOC models and functions critically; (2) relate detection engineering to frameworks; (3) debate metrics and their side effects; (4) present a seminar argument with sources.
@@ -181,6 +311,71 @@ Advanced SOC practice links detections to frameworks, assets and maturity, and j
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Design choice"]
+  N2["3.2 Ground truth for attacks"]
+  N3["3.3 Ethics"]
+  N4["3.4 Reproducibility"]
+  N5["3.5 Threats to validity"]
+  N6["3.6 Registration"]
+  N7["Stopping rule"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Design choice"]
+  N2["3.2 Ground truth for attacks"]
+  N3["3.3 Ethics"]
+  N4["3.4 Reproducibility"]
+  N5["3.5 Threats to validity"]
+  N6["3.6 Registration"]
+  N7["Stopping rule"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Design choice]
+    |
+    v
+[3.2 Ground truth for attacks]
+    |
+    v
+[3.3 Ethics]
+    |
+    v
+[3.4 Reproducibility]
+    |
+    v
+[3.5 Threats to validity]
+    |
+    v
+[3.6 Registration]
+    |
+    v
+[Stopping rule]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -256,6 +451,71 @@ Operational studies need comparison groups, defined ground truth, protected data
 <a id="ch-04"></a>
 
 ## Chapter 4 — Security operations and blue team: competing explanations
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The observation"]
+  N2["4.2 Comparison group"]
+  N3["Lab — difference-in-differences"]
+  N4["4.3 Reading the result"]
+  N5["4.4 Testing specific alternatives"]
+  N6["4.5 Parallel trends"]
+  N7["4.6 Remaining uncertainty"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The observation"]
+  N2["4.2 Comparison group"]
+  N3["Lab — difference-in-differences"]
+  N4["4.3 Reading the result"]
+  N5["4.4 Testing specific alternatives"]
+  N6["4.5 Parallel trends"]
+  N7["4.6 Remaining uncertainty"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The observation]
+    |
+    v
+[4.2 Comparison group]
+    |
+    v
+[Lab — difference-in-differences]
+    |
+    v
+[4.3 Reading the result]
+    |
+    v
+[4.4 Testing specific alternatives]
+    |
+    v
+[4.5 Parallel trends]
+    |
+    v
+[4.6 Remaining uncertainty]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -350,6 +610,71 @@ Before crediting an intervention, list rivals, subtract shared effects and test 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Why label a sample"]
+  N3["Lab — stratified sample"]
+  N4["5.3 Reading the result"]
+  N5["5.4 The pilot"]
+  N6["5.5 Logistics found"]
+  N7["5.6 Proposal approval"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Why label a sample"]
+  N3["Lab — stratified sample"]
+  N4["5.3 Reading the result"]
+  N5["5.4 The pilot"]
+  N6["5.5 Logistics found"]
+  N7["5.6 Proposal approval"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The proposal]
+    |
+    v
+[5.2 Why label a sample]
+    |
+    v
+[Lab — stratified sample]
+    |
+    v
+[5.3 Reading the result]
+    |
+    v
+[5.4 The pilot]
+    |
+    v
+[5.5 Logistics found]
+    |
+    v
+[5.6 Proposal approval]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -448,6 +773,71 @@ A proposal sets the plan; a pilot tests definitions and logistics; sampling make
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Collection"]
+  N2["6.2 Labelling results"]
+  N3["6.3 Checking allow-lists against ground truth"]
+  N4["Lab — allow-list replay"]
+  N5["6.4 Reading the result"]
+  N6["6.5 Handling the finding"]
+  N7["6.6 Overall results"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Collection"]
+  N2["6.2 Labelling results"]
+  N3["6.3 Checking allow-lists against ground truth"]
+  N4["Lab — allow-list replay"]
+  N5["6.4 Reading the result"]
+  N6["6.5 Handling the finding"]
+  N7["6.6 Overall results"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Collection]
+    |
+    v
+[6.2 Labelling results]
+    |
+    v
+[6.3 Checking allow-lists against ground truth]
+    |
+    v
+[Lab — allow-list replay]
+    |
+    v
+[6.4 Reading the result]
+    |
+    v
+[6.5 Handling the finding]
+    |
+    v
+[6.6 Overall results]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -551,6 +941,71 @@ Measure volume, composition and safety together; when ground truth exposes a hol
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Writing results"]
+  N3["7.3 The discussion"]
+  N4["7.4 Limitations"]
+  N5["7.5 Recommendations"]
+  N6["7.6 Proportion"]
+  N7["7.7 Writing process"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Writing results"]
+  N3["7.3 The discussion"]
+  N4["7.4 Limitations"]
+  N5["7.5 Recommendations"]
+  N6["7.6 Proportion"]
+  N7["7.7 Writing process"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Writing results]
+    |
+    v
+[7.3 The discussion]
+    |
+    v
+[7.4 Limitations]
+    |
+    v
+[7.5 Recommendations]
+    |
+    v
+[7.6 Proportion]
+    |
+    v
+[7.7 Writing process]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a master's dissertation; (2) write results without overclaiming; (3) write a strong limitations section; (4) make recommendations proportional to evidence.
@@ -627,6 +1082,71 @@ Report measured results plainly, interpret in discussion, analyse limitations wi
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense format"]
+  N3["8.3 Likely questions"]
+  N4["8.4 Answering well"]
+  N5["8.5 Returning results"]
+  N6["8.6 Sharing safely"]
+  N7["8.7 Afterwards"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense format"]
+  N3["8.3 Likely questions"]
+  N4["8.4 Answering well"]
+  N5["8.5 Returning results"]
+  N6["8.6 Sharing safely"]
+  N7["8.7 Afterwards"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent review]
+    |
+    v
+[8.2 The defense format]
+    |
+    v
+[8.3 Likely questions]
+    |
+    v
+[8.4 Answering well]
+    |
+    v
+[8.5 Returning results]
+    |
+    v
+[8.6 Sharing safely]
+    |
+    v
+[8.7 Afterwards]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

@@ -1,7 +1,7 @@
 # OT, IoT and Cyber-Physical Security: Engineering Secure Control Systems
 
 - Language: English (`en`); engineering course, five years; approximately 4,000 hours of planned study.
-- Editorial state: **draft**. Chapters 1–50 of 50 have authored teaching text; exercises EX001–EX150 have matching worked results; offline labs use Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–50 of 50 have authored teaching text; exercises EX001–EX150 have matching worked results; offline labs use Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: future engineers who will design, implement and verify security for industrial control, OT and cyber-physical systems.
 - Relation to neighbouring books: the critical-infrastructure engineering book emphasises sectors; the master's OT book emphasises empirical study design. **This book is about building control-system security**.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -36,6 +36,56 @@ Chapters 1–19 build foundations applied to OT from the first page. Chapter 20 
 <a id="ch-01"></a>
 
 ## Chapter 1 — Calculus I
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Level is accumulated flow"]
+  N2["1.2 Why a security engineer cares"]
+  N3["1.3 Varying draw"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Level is accumulated flow"]
+  N2["1.2 Why a security engineer cares"]
+  N3["1.3 Varying draw"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Level is accumulated flow]
+    |
+    v
+[1.2 Why a security engineer cares]
+    |
+    v
+[1.3 Varying draw]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -103,6 +153,56 @@ Hold-up time is an integral and a security budget at once: it bounds how late de
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Graphs of conduits"]
+  N2["2.2 Reachability"]
+  N3["2.3 Monotonicity proof"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Graphs of conduits"]
+  N2["2.2 Reachability"]
+  N3["2.3 Monotonicity proof"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Graphs of conduits]
+    |
+    v
+[2.2 Reachability]
+    |
+    v
+[2.3 Monotonicity proof]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -176,6 +276,56 @@ Zones and conduits are a graph; reachability, not rule-by-rule reading, answers 
 
 ## Chapter 3 — Physics for computing
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Bits on a wire"]
+  N2["3.2 Process time constants"]
+  N3["3.3 Physical-layer manipulation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Bits on a wire"]
+  N2["3.2 Process time constants"]
+  N3["3.3 Physical-layer manipulation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Bits on a wire]
+    |
+    v
+[3.2 Process time constants]
+    |
+    v
+[3.3 Physical-layer manipulation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) compute serial-link timing for fieldbus polling; (2) relate physical process speed to required control cycle times; (3) recognise that physical signals can be manipulated outside the network.
@@ -245,6 +395,61 @@ Physics sets the timing budget for control and for any security device you put i
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Decisions as functions"]
+  N2["4.2 Exact types"]
+  N3["4.3 Tests on synthetic decoded frames"]
+  N4["4.3b Logging what the function decided"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Decisions as functions"]
+  N2["4.2 Exact types"]
+  N3["4.3 Tests on synthetic decoded frames"]
+  N4["4.3b Logging what the function decided"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Decisions as functions]
+    |
+    v
+[4.2 Exact types]
+    |
+    v
+[4.3 Tests on synthetic decoded frames]
+    |
+    v
+[4.3b Logging what the function decided]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -326,6 +531,61 @@ Pure, typed, tested permit functions are the smallest trustworthy unit of OT sec
 
 ## Chapter 5 — Engineering communication
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Three audiences"]
+  N2["5.2 Bounded consequences"]
+  N3["5.3 Structure of a short report"]
+  N4["5.3b Words to avoid and words to use"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Three audiences"]
+  N2["5.2 Bounded consequences"]
+  N3["5.3 Structure of a short report"]
+  N4["5.3b Words to avoid and words to use"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Three audiences]
+    |
+    v
+[5.2 Bounded consequences]
+    |
+    v
+[5.3 Structure of a short report]
+    |
+    v
+[5.3b Words to avoid and words to use]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write OT security findings that operators and safety engineers can act on; (2) separate observation, consequence and recommendation; (3) avoid alarmist or unbounded language.
@@ -377,6 +637,61 @@ Good OT findings are bounded, name protective layers and give each audience what
 <a id="ch-06"></a>
 
 ## Chapter 6 — Calculus II
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Geometric retries on a fieldbus"]
+  N2["6.2 Alarm backlog as a rate equation"]
+  N3["6.3 When continuous is enough"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Geometric retries on a fieldbus"]
+  N2["6.2 Alarm backlog as a rate equation"]
+  N3["6.3 When continuous is enough"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Geometric retries on a fieldbus]
+    |
+    v
+[6.2 Alarm backlog as a rate equation]
+    |
+    v
+[6.3 When continuous is enough]
+    |
+    v
+[Practice note]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -447,6 +762,61 @@ Series and rates turn "try again" and "hire someone" into numbers that fit a com
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Rates and intervals"]
+  N2["7.2 Comparing detectors"]
+  N3["7.3 Base rates in the control room"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Rates and intervals"]
+  N2["7.2 Comparing detectors"]
+  N3["7.3 Base rates in the control room"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Rates and intervals]
+    |
+    v
+[7.2 Comparing detectors]
+    |
+    v
+[7.3 Base rates in the control room]
+    |
+    v
+[Practice note]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -531,6 +901,61 @@ Detection claims need intervals, attack class and base-rate honesty — not a si
 
 ## Chapter 8 — Computer architecture
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Privilege in the plant"]
+  N2["8.2 Independence is physical"]
+  N3["8.3 Evidence without writing to the PLC"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Privilege in the plant"]
+  N2["8.2 Independence is physical"]
+  N3["8.3 Evidence without writing to the PLC"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Privilege in the plant]
+    |
+    v
+[8.2 Independence is physical]
+    |
+    v
+[8.3 Evidence without writing to the PLC]
+    |
+    v
+[Practice note]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) place PLC, SIS and SCADA on a privilege and dependency map; (2) explain why safety systems need independent hardware; (3) design evidence collection that does not require writing to the PLC.
@@ -580,6 +1005,66 @@ Keep safety logic independent in hardware and conduits; collect evidence without
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Schema without payloads"]
+  N2["9.2 Idempotent upserts"]
+  N3["9.3 Property tests for zones"]
+  N4["Practice note"]
+  N5["9.1b Schema evolution without downtime"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Schema without payloads"]
+  N2["9.2 Idempotent upserts"]
+  N3["9.3 Property tests for zones"]
+  N4["Practice note"]
+  N5["9.1b Schema evolution without downtime"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Schema without payloads]
+    |
+    v
+[9.2 Idempotent upserts]
+    |
+    v
+[9.3 Property tests for zones]
+    |
+    v
+[Practice note]
+    |
+    v
+[9.1b Schema evolution without downtime]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -637,6 +1122,61 @@ Schemas, idempotency and properties keep OT security tooling boring — in the g
 
 ## Chapter 10 — Engineering ethics and safety
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Authorization is not enthusiasm"]
+  N2["10.2 Dual use"]
+  N3["10.3 Stop conditions that protect the process"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Authorization is not enthusiasm"]
+  N2["10.2 Dual use"]
+  N3["10.3 Stop conditions that protect the process"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Authorization is not enthusiasm]
+    |
+    v
+[10.2 Dual use]
+    |
+    v
+[10.3 Stop conditions that protect the process]
+    |
+    v
+[Practice note]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) refuse unauthorized plant access and dual-use requests; (2) apply stop conditions that protect process safety; (3) document consent so a review can reconstruct it.
@@ -693,6 +1233,66 @@ Written permission, process-first stop conditions and a refusal habit are safety
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Observation points"]
+  N2["11.2 Ports are not semantics"]
+  N3["11.3 Denies are coverage"]
+  N4["Practice note"]
+  N5["11.1b Protocol families in the work permit"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Observation points"]
+  N2["11.2 Ports are not semantics"]
+  N3["11.3 Denies are coverage"]
+  N4["Practice note"]
+  N5["11.1b Protocol families in the work permit"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Observation points]
+    |
+    v
+[11.2 Ports are not semantics]
+    |
+    v
+[11.3 Denies are coverage]
+    |
+    v
+[Practice note]
+    |
+    v
+[11.1b Protocol families in the work permit]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -780,6 +1380,66 @@ Scope OT protocols by semantics (codes, registers, stations); celebrate denies t
 
 ## Chapter 12 — Operating systems
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Workstations are part of the control system"]
+  N2["12.2 Least privilege for engineers"]
+  N3["12.3 Patch windows"]
+  N4["Practice note"]
+  N5["12.1b Image and offline analysis"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Workstations are part of the control system"]
+  N2["12.2 Least privilege for engineers"]
+  N3["12.3 Patch windows"]
+  N4["Practice note"]
+  N5["12.1b Image and offline analysis"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Workstations are part of the control system]
+    |
+    v
+[12.2 Least privilege for engineers]
+    |
+    v
+[12.3 Patch windows]
+    |
+    v
+[Practice note]
+    |
+    v
+[12.1b Image and offline analysis]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Learning outcomes
 
 You will (1) harden HMI and engineering workstations without breaking control; (2) collect OS evidence under least privilege; (3) plan patching inside maintenance windows.
@@ -863,6 +1523,66 @@ Harden and patch workstations as if they were controllers — because for malwar
 
 ## Chapter 13 — Data systems
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Historians are crown jewels"]
+  N2["13.2 Minimize extracts"]
+  N3["13.3 Synthetic process data"]
+  N4["Practice note"]
+  N5["13.1b Row-level and column-level controls"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Historians are crown jewels"]
+  N2["13.2 Minimize extracts"]
+  N3["13.3 Synthetic process data"]
+  N4["Practice note"]
+  N5["13.1b Row-level and column-level controls"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Historians are crown jewels]
+    |
+    v
+[13.2 Minimize extracts]
+    |
+    v
+[13.3 Synthetic process data]
+    |
+    v
+[Practice note]
+    |
+    v
+[13.1b Row-level and column-level controls]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) protect historian and recipe data without blocking operations; (2) scope database assessment without extracting proprietary batches; (3) design synthetic datasets for labs.
@@ -924,6 +1644,66 @@ Minimize data, test roles, synthesize for teaching. The historian is not a troph
 <a id="ch-14"></a>
 
 ## Chapter 14 — Software engineering
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Tools are products"]
+  N2["14.2 Gate widening"]
+  N3["14.3 CI fixtures"]
+  N4["Practice note"]
+  N5["14.1b Release trains vs hotfixes"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Tools are products"]
+  N2["14.2 Gate widening"]
+  N3["14.3 CI fixtures"]
+  N4["Practice note"]
+  N5["14.1b Release trains vs hotfixes"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Tools are products]
+    |
+    v
+[14.2 Gate widening]
+    |
+    v
+[14.3 CI fixtures]
+    |
+    v
+[Practice note]
+    |
+    v
+[14.1b Release trains vs hotfixes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes
 
@@ -987,6 +1767,66 @@ Treat OT security software like production software: versions, review gates, syn
 
 ## Chapter 15 — Security fundamentals
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 CIA plus safety"]
+  N2["15.2 Vulnerability, exposure, risk"]
+  N3["15.3 Empty scores"]
+  N4["Practice note"]
+  N5["15.1b From property to test"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 CIA plus safety"]
+  N2["15.2 Vulnerability, exposure, risk"]
+  N3["15.3 Empty scores"]
+  N4["Practice note"]
+  N5["15.1b From property to test"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 CIA plus safety]
+    |
+    v
+[15.2 Vulnerability, exposure, risk]
+    |
+    v
+[15.3 Empty scores]
+    |
+    v
+[Practice note]
+    |
+    v
+[15.1b From property to test]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) map CIA and safety to OT assessment questions; (2) distinguish vulnerability, exposure and process risk; (3) refuse empty security scores.
@@ -1044,6 +1884,66 @@ Name the property, separate exposure from process risk, prefer measures you can 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Systems engineering
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Testable requirements"]
+  N2["16.2 Traceability"]
+  N3["16.3 Interfaces"]
+  N4["Practice note"]
+  N5["16.1b Glossary and retirement"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Testable requirements"]
+  N2["16.2 Traceability"]
+  N3["16.3 Interfaces"]
+  N4["Practice note"]
+  N5["16.1b Glossary and retirement"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Testable requirements]
+    |
+    v
+[16.2 Traceability]
+    |
+    v
+[16.3 Interfaces]
+    |
+    v
+[Practice note]
+    |
+    v
+[16.1b Glossary and retirement]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Learning outcomes
 
@@ -1104,6 +2004,66 @@ Requirements you can test, links you can follow, interfaces you version.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 PI in one page"]
+  N2["17.2 Sensors in the loop"]
+  N3["17.3 Alert storms"]
+  N4["Practice note"]
+  N5["17.1b Set-points and human placement"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 PI in one page"]
+  N2["17.2 Sensors in the loop"]
+  N3["17.3 Alert storms"]
+  N4["Practice note"]
+  N5["17.1b Set-points and human placement"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 PI in one page]
+    |
+    v
+[17.2 Sensors in the loop]
+    |
+    v
+[17.3 Alert storms]
+    |
+    v
+[Practice note]
+    |
+    v
+[17.1b Set-points and human placement]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -1186,6 +2146,66 @@ Understand the loop before inserting security; damp alerts so process alarms sta
 <a id="ch-18"></a>
 
 ## Chapter 18 — Security architecture
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Zones that match safety"]
+  N2["18.2 Engineering access"]
+  N3["18.3 Synthetic ranges"]
+  N4["Practice note"]
+  N5["18.1b Jump hosts and egress"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Zones that match safety"]
+  N2["18.2 Engineering access"]
+  N3["18.3 Synthetic ranges"]
+  N4["Practice note"]
+  N5["18.1b Jump hosts and egress"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Zones that match safety]
+    |
+    v
+[18.2 Engineering access]
+    |
+    v
+[18.3 Synthetic ranges]
+    |
+    v
+[Practice note]
+    |
+    v
+[18.1b Jump hosts and egress]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes
 
@@ -1273,6 +2293,66 @@ Zones, engineering-access boundaries and honest limits on what a twin can prove.
 
 ## Chapter 19 — Identity and cryptography
 
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 Identity in the plant"]
+  N2["19.2 Evidence hashing"]
+  N3["19.3 Secrets"]
+  N4["Practice note"]
+  N5["19.1b Certificates and break-glass"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 Identity in the plant"]
+  N2["19.2 Evidence hashing"]
+  N3["19.3 Secrets"]
+  N4["Practice note"]
+  N5["19.1b Certificates and break-glass"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 Identity in the plant]
+    |
+    v
+[19.2 Evidence hashing]
+    |
+    v
+[19.3 Secrets]
+    |
+    v
+[Practice note]
+    |
+    v
+[19.1b Certificates and break-glass]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
+
 ### Learning outcomes
 
 You will (1) assess OT identity without attacking crypto; (2) use hashing for evidence integrity; (3) handle engineering credentials safely.
@@ -1333,6 +2413,66 @@ Read identity config; hash evidence; keep secrets in a vault.
 
 ## Chapter 20 — OT, IoT and cyber-physical security: engineering context
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 Discipline map"]
+  N2["20.2 What we build"]
+  N3["20.3 Safety boundary"]
+  N4["Practice note"]
+  N5["20.1b Neighbouring courses and deliverables"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 Discipline map"]
+  N2["20.2 What we build"]
+  N3["20.3 Safety boundary"]
+  N4["Practice note"]
+  N5["20.1b Neighbouring courses and deliverables"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 Discipline map]
+    |
+    v
+[20.2 What we build]
+    |
+    v
+[20.3 Safety boundary]
+    |
+    v
+[Practice note]
+    |
+    v
+[20.1b Neighbouring courses and deliverables]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes
 
 You will (1) place OT security engineering among SP 800-82, ISA/IEC 62443 and ATT&CK for ICS; (2) define what this degree programme builds; (3) state the safety boundary for all later chapters.
@@ -1391,6 +2531,66 @@ Engineers enable authorized OT hardening; they do not replace process safety wit
 
 ## Chapter 21 — OT, IoT and cyber-physical security: requirements
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 Sources"]
+  N2["21.2 Three families"]
+  N3["21.3 Acceptance criteria"]
+  N4["Practice note"]
+  N5["21.1b MoSCoW under safety"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 Sources"]
+  N2["21.2 Three families"]
+  N3["21.3 Acceptance criteria"]
+  N4["Practice note"]
+  N5["21.1b MoSCoW under safety"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 Sources]
+    |
+    v
+[21.2 Three families]
+    |
+    v
+[21.3 Acceptance criteria]
+    |
+    v
+[Practice note]
+    |
+    v
+[21.1b MoSCoW under safety]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Learning outcomes
 
 You will (1) elicit requirements from process safety, operations and security; (2) separate functional, safety and measurement requirements; (3) write acceptance criteria a tester can run on synthetic fixtures.
@@ -1448,6 +2648,61 @@ CNHP requirements come from the plant's operators and engineers, split into fami
 <a id="ch-22"></a>
 
 ## Chapter 22 — OT, IoT and cyber-physical security: system and data models
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 Entities"]
+  N2["22.2 Keys"]
+  N3["22.3 Forbidden attributes"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 Entities"]
+  N2["22.2 Keys"]
+  N3["22.3 Forbidden attributes"]
+  N4["Practice note"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 Entities]
+    |
+    v
+[22.2 Keys]
+    |
+    v
+[22.3 Forbidden attributes]
+    |
+    v
+[Practice note]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Learning outcomes
 
@@ -1513,6 +2768,66 @@ Model assets, zones, versions, findings and hashes — not attacks.
 <a id="ch-23"></a>
 
 ## Chapter 23 — OT, IoT and cyber-physical security: threat and failure analysis
+
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 The programme can fail dangerously"]
+  N2["23.2 STRIDE on CNHP tools"]
+  N3["23.3 Plant threats stay in hazard analysis"]
+  N4["Practice note"]
+  N5["23.1b Abuse vs misuse and backlog"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 The programme can fail dangerously"]
+  N2["23.2 STRIDE on CNHP tools"]
+  N3["23.3 Plant threats stay in hazard analysis"]
+  N4["Practice note"]
+  N5["23.1b Abuse vs misuse and backlog"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 The programme can fail dangerously]
+    |
+    v
+[23.2 STRIDE on CNHP tools]
+    |
+    v
+[23.3 Plant threats stay in hazard analysis]
+    |
+    v
+[Practice note]
+    |
+    v
+[23.1b Abuse vs misuse and backlog]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
 
 ### Learning outcomes
 
@@ -1609,6 +2924,71 @@ Analyse how your programme can hurt the plant or lie; mitigate those first.
 
 ## Chapter 24 — OT, IoT and cyber-physical security: methods I
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 Sequence"]
+  N2["24.2 Method cards"]
+  N3["24.3 Done means artefacts"]
+  N4["Practice note"]
+  N5["24.1b Quiet vs noisy and dependencies"]
+  N6["Field note — method freeze in practice"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 Sequence"]
+  N2["24.2 Method cards"]
+  N3["24.3 Done means artefacts"]
+  N4["Practice note"]
+  N5["24.1b Quiet vs noisy and dependencies"]
+  N6["Field note — method freeze in practice"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 Sequence]
+    |
+    v
+[24.2 Method cards]
+    |
+    v
+[24.3 Done means artefacts]
+    |
+    v
+[Practice note]
+    |
+    v
+[24.1b Quiet vs noisy and dependencies]
+    |
+    v
+[Field note — method freeze in practice]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Learning outcomes
 
 You will (1) sequence work-permit to discovery to validation to reporting; (2) pick methods that match authorization and process risk; (3) define done for a method without writing to a PLC.
@@ -1675,6 +3055,71 @@ Methods are authorized, carded and done when artefacts exist.
 
 ## Chapter 25 — Design studio I
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 Studio problem"]
+  N2["25.2 Trade-offs"]
+  N3["25.3 Decision record"]
+  N4["Practice note"]
+  N5["25.1b Constraint cards and gallery"]
+  N6["Field note — labelling before layout"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 Studio problem"]
+  N2["25.2 Trade-offs"]
+  N3["25.3 Decision record"]
+  N4["Practice note"]
+  N5["25.1b Constraint cards and gallery"]
+  N6["Field note — labelling before layout"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 Studio problem]
+    |
+    v
+[25.2 Trade-offs]
+    |
+    v
+[25.3 Decision record]
+    |
+    v
+[Practice note]
+    |
+    v
+[25.1b Constraint cards and gallery]
+    |
+    v
+[Field note — labelling before layout]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Learning outcomes
 
 You will (1) sketch the allow/deny pipeline for ABP's serial monitor; (2) justify trade-offs in a short design review; (3) produce a one-page decision record.
@@ -1738,6 +3183,71 @@ Studio work ends in a recorded decision, not a vibe.
 <a id="ch-26"></a>
 
 ## Chapter 26 — OT, IoT and cyber-physical security: architecture alternatives
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 Alternatives"]
+  N2["26.2 Criteria"]
+  N3["26.3 Decision"]
+  N4["Practice note"]
+  N5["26.1b Cost, skills and revisit triggers"]
+  N6["Field note — skill assumptions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 Alternatives"]
+  N2["26.2 Criteria"]
+  N3["26.3 Decision"]
+  N4["Practice note"]
+  N5["26.1b Cost, skills and revisit triggers"]
+  N6["Field note — skill assumptions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 Alternatives]
+    |
+    v
+[26.2 Criteria]
+    |
+    v
+[26.3 Decision]
+    |
+    v
+[Practice note]
+    |
+    v
+[26.1b Cost, skills and revisit triggers]
+    |
+    v
+[Field note — skill assumptions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Learning outcomes
 
@@ -1804,6 +3314,71 @@ Choose architecture against weighted constraints; record rejected options.
 <a id="ch-27"></a>
 
 ## Chapter 27 — OT, IoT and cyber-physical security: control design
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Three kinds"]
+  N2["27.2 Operator skill"]
+  N3["27.3 Compensation"]
+  N4["Practice note"]
+  N5["27.1b Ownership and break-glass detection"]
+  N6["Field note — control health day"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Three kinds"]
+  N2["27.2 Operator skill"]
+  N3["27.3 Compensation"]
+  N4["Practice note"]
+  N5["27.1b Ownership and break-glass detection"]
+  N6["Field note — control health day"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Three kinds]
+    |
+    v
+[27.2 Operator skill]
+    |
+    v
+[27.3 Compensation]
+    |
+    v
+[Practice note]
+    |
+    v
+[27.1b Ownership and break-glass detection]
+    |
+    v
+[Field note — control health day]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Learning outcomes
 
@@ -1896,6 +3471,71 @@ Controls are preventive/detective/corrective, owned, and operable without exploi
 <a id="ch-28"></a>
 
 ## Chapter 28 — OT, IoT and cyber-physical security: implementation I
+
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 Implementation shape"]
+  N2["28.2 Clause tests"]
+  N3["28.3 Logging"]
+  N4["Practice note"]
+  N5["28.1b Reason catalogue and fuzzing"]
+  N6["Field note — fuzz findings"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 Implementation shape"]
+  N2["28.2 Clause tests"]
+  N3["28.3 Logging"]
+  N4["Practice note"]
+  N5["28.1b Reason catalogue and fuzzing"]
+  N6["Field note — fuzz findings"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 Implementation shape]
+    |
+    v
+[28.2 Clause tests]
+    |
+    v
+[28.3 Logging]
+    |
+    v
+[Practice note]
+    |
+    v
+[28.1b Reason catalogue and fuzzing]
+    |
+    v
+[Field note — fuzz findings]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
 
 ### Learning outcomes
 
@@ -1996,6 +3636,71 @@ Pure predicate, clause tests, safe logs.
 
 ## Chapter 29 — OT, IoT and cyber-physical security: measurement
 
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 Coverage needs a plan"]
+  N2["29.2 Activity vs outcome"]
+  N3["29.3 Detector honesty"]
+  N4["Practice note"]
+  N5["29.1b Sampling and cohort comparisons"]
+  N6["Field note — methodology lines on charts"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 Coverage needs a plan"]
+  N2["29.2 Activity vs outcome"]
+  N3["29.3 Detector honesty"]
+  N4["Practice note"]
+  N5["29.1b Sampling and cohort comparisons"]
+  N6["Field note — methodology lines on charts"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 Coverage needs a plan]
+    |
+    v
+[29.2 Activity vs outcome]
+    |
+    v
+[29.3 Detector honesty]
+    |
+    v
+[Practice note]
+    |
+    v
+[29.1b Sampling and cohort comparisons]
+    |
+    v
+[Field note — methodology lines on charts]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
+
 ### Learning outcomes
 
 You will (1) define coverage with a denominator; (2) separate activity metrics from outcome metrics; (3) evaluate detectors with attack class and intervals (Urbina/Giraldo lessons).
@@ -2095,6 +3800,71 @@ Plan the denominator; measure outcomes; evaluate detectors by class with interva
 
 ## Chapter 30 — Verification laboratory I
 
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 Plan"]
+  N2["30.2 Execution"]
+  N3["30.3 Report"]
+  N4["Practice note"]
+  N5["30.1b Golden fixtures and inventory"]
+  N6["Field note — independent green"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 Plan"]
+  N2["30.2 Execution"]
+  N3["30.3 Report"]
+  N4["Practice note"]
+  N5["30.1b Golden fixtures and inventory"]
+  N6["Field note — independent green"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 Plan]
+    |
+    v
+[30.2 Execution]
+    |
+    v
+[30.3 Report]
+    |
+    v
+[Practice note]
+    |
+    v
+[30.1b Golden fixtures and inventory]
+    |
+    v
+[Field note — independent green]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
+
 ### Learning outcomes
 
 You will (1) run a verification plan against ABP's monitor and zoning; (2) record pass/fail with evidence hashes; (3) stop the lab if a safety test fails.
@@ -2192,6 +3962,71 @@ Verify safety first; stop on fail-open or SIS exposure; hash everything.
 
 ## Chapter 31 — OT, IoT and cyber-physical security: implementation II
 
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Lesson map
+
+Lesson 31 published. Map, example, EX091.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["31.1 Upsert"]
+  N2["31.2 Validate on write"]
+  N3["31.3 API versioning"]
+  N4["Practice note"]
+  N5["31.1b Partial updates and concurrency"]
+  N6["Field note — bulk import incident"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX091"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["31.1 Upsert"]
+  N2["31.2 Validate on write"]
+  N3["31.3 API versioning"]
+  N4["Practice note"]
+  N5["31.1b Partial updates and concurrency"]
+  N6["Field note — bulk import incident"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX091"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[31.1 Upsert]
+    |
+    v
+[31.2 Validate on write]
+    |
+    v
+[31.3 API versioning]
+    |
+    v
+[Practice note]
+    |
+    v
+[31.1b Partial updates and concurrency]
+    |
+    v
+[Field note — bulk import incident]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
+
 ### Learning outcomes
 
 You will (1) add idempotent finding upserts; (2) enforce schema validation on write; (3) version API responses for CNHP tools.
@@ -2267,6 +4102,71 @@ Idempotent writes, strict schema, explicit versions.
 
 ## Chapter 32 — OT, IoT and cyber-physical security: reliability
 
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Lesson map
+
+Lesson 32 published. Map, example, EX094.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["32.1 Targets"]
+  N2["32.2 Retries"]
+  N3["32.3 Safe degradation"]
+  N4["Practice note"]
+  N5["32.1b Error budgets and health checks"]
+  N6["Field note — queue back-pressure"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX094"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["32.1 Targets"]
+  N2["32.2 Retries"]
+  N3["32.3 Safe degradation"]
+  N4["Practice note"]
+  N5["32.1b Error budgets and health checks"]
+  N6["Field note — queue back-pressure"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX094"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[32.1 Targets]
+    |
+    v
+[32.2 Retries]
+    |
+    v
+[32.3 Safe degradation]
+    |
+    v
+[Practice note]
+    |
+    v
+[32.1b Error budgets and health checks]
+    |
+    v
+[Field note — queue back-pressure]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
+
 ### Learning outcomes
 
 You will (1) set availability targets for OT security tools; (2) use retries with budgets that respect cycle time; (3) degrade safely when a dependency fails.
@@ -2336,6 +4236,71 @@ Reliable denies, budgeted retries, degrade closed.
 
 ## Chapter 33 — OT, IoT and cyber-physical security: safety and resilience
 
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Lesson map
+
+Lesson 33 published. Map, example, EX097.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["33.1 Executable stops"]
+  N2["33.2 Rollback"]
+  N3["33.3 Tabletop"]
+  N4["Practice note"]
+  N5["33.1b Secondary contacts and resume authority"]
+  N6["Field note — resume token"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX097"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["33.1 Executable stops"]
+  N2["33.2 Rollback"]
+  N3["33.3 Tabletop"]
+  N4["Practice note"]
+  N5["33.1b Secondary contacts and resume authority"]
+  N6["Field note — resume token"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX097"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[33.1 Executable stops]
+    |
+    v
+[33.2 Rollback]
+    |
+    v
+[33.3 Tabletop]
+    |
+    v
+[Practice note]
+    |
+    v
+[33.1b Secondary contacts and resume authority]
+    |
+    v
+[Field note — resume token]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
+
 ### Learning outcomes
 
 You will (1) write stop conditions as executable checks; (2) plan rollback of tool changes mid-window; (3) run a tabletop on a deny-list or cycle-time miss.
@@ -2404,6 +4369,71 @@ Stops the monitor can execute, rollbacks the site can perform, tabletops that up
 <a id="ch-34"></a>
 
 ## Chapter 34 — OT, IoT and cyber-physical security: integration
+
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Lesson map
+
+Lesson 34 published. Map, example, EX100.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["34.1 Event contract"]
+  N2["34.2 Idempotent consumers"]
+  N3["34.3 Contract tests"]
+  N4["Practice note"]
+  N5["34.1b Dead letters and schema drills"]
+  N6["Field note — poison quarantine"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX100"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["34.1 Event contract"]
+  N2["34.2 Idempotent consumers"]
+  N3["34.3 Contract tests"]
+  N4["Practice note"]
+  N5["34.1b Dead letters and schema drills"]
+  N6["Field note — poison quarantine"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX100"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[34.1 Event contract]
+    |
+    v
+[34.2 Idempotent consumers]
+    |
+    v
+[34.3 Contract tests]
+    |
+    v
+[Practice note]
+    |
+    v
+[34.1b Dead letters and schema drills]
+    |
+    v
+[Field note — poison quarantine]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
 
 ### Learning outcomes
 
@@ -2484,6 +4514,71 @@ Contracts, idempotent consumers, fixture tests.
 
 ## Chapter 35 — Design studio II
 
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Lesson map
+
+Lesson 35 published. Map, example, EX103.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["35.1 Problem"]
+  N2["35.2 Copy"]
+  N3["35.3 Review"]
+  N4["Practice note"]
+  N5["35.1b Accessibility and export truth"]
+  N6["Field note — CFO explain task"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX103"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["35.1 Problem"]
+  N2["35.2 Copy"]
+  N3["35.3 Review"]
+  N4["Practice note"]
+  N5["35.1b Accessibility and export truth"]
+  N6["Field note — CFO explain task"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX103"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[35.1 Problem]
+    |
+    v
+[35.2 Copy]
+    |
+    v
+[35.3 Review]
+    |
+    v
+[Practice note]
+    |
+    v
+[35.1b Accessibility and export truth]
+    |
+    v
+[Field note — CFO explain task]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
+
 ### Learning outcomes
 
 You will (1) redesign CNHP's coverage UI against under-claim principles; (2) defend the design in a review; (3) produce UI copy that refuses empty scores.
@@ -2558,6 +4653,71 @@ UI that teaches the metric, not a traffic light of vibes.
 <a id="ch-36"></a>
 
 ## Chapter 36 — OT, IoT and cyber-physical security: performance and scale
+
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Lesson map
+
+Lesson 36 published. Map, example, EX106.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["36.1 Cycle time is first-class"]
+  N2["36.2 Assessment traffic"]
+  N3["36.3 Canaries"]
+  N4["Practice note"]
+  N5["36.1b Fairness and warm-up"]
+  N6["Field note — warm-up schedule"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX106"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["36.1 Cycle time is first-class"]
+  N2["36.2 Assessment traffic"]
+  N3["36.3 Canaries"]
+  N4["Practice note"]
+  N5["36.1b Fairness and warm-up"]
+  N6["Field note — warm-up schedule"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX106"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[36.1 Cycle time is first-class]
+    |
+    v
+[36.2 Assessment traffic]
+    |
+    v
+[36.3 Canaries]
+    |
+    v
+[Practice note]
+    |
+    v
+[36.1b Fairness and warm-up]
+    |
+    v
+[Field note — warm-up schedule]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
 
 ### Learning outcomes
 
@@ -2649,6 +4809,71 @@ Budget first, scale second, canary always.
 <a id="ch-37"></a>
 
 ## Chapter 37 — OT, IoT and cyber-physical security: operations
+
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Lesson map
+
+Lesson 37 published. Map, example, EX109.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["37.1 Runbook contents"]
+  N2["37.2 Handover"]
+  N3["37.3 Close-out"]
+  N4["Practice note"]
+  N5["37.1b Calendar and spare kits"]
+  N6["Field note — offline kit"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX109"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["37.1 Runbook contents"]
+  N2["37.2 Handover"]
+  N3["37.3 Close-out"]
+  N4["Practice note"]
+  N5["37.1b Calendar and spare kits"]
+  N6["Field note — offline kit"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX109"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[37.1 Runbook contents]
+    |
+    v
+[37.2 Handover]
+    |
+    v
+[37.3 Close-out]
+    |
+    v
+[Practice note]
+    |
+    v
+[37.1b Calendar and spare kits]
+    |
+    v
+[Field note — offline kit]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
 
 ### Learning outcomes
 
@@ -2750,6 +4975,71 @@ Operate with runbooks, handovers and ruthless close-out.
 
 ## Chapter 38 — OT, IoT and cyber-physical security: validation
 
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Lesson map
+
+Lesson 38 published. Map, example, EX112.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["38.1 Re-test design"]
+  N2["38.2 Negative results"]
+  N3["38.3 No new methods"]
+  N4["Practice note"]
+  N5["38.1b Evidence of validation and adjudication"]
+  N6["Field note — sample re-test"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX112"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["38.1 Re-test design"]
+  N2["38.2 Negative results"]
+  N3["38.3 No new methods"]
+  N4["Practice note"]
+  N5["38.1b Evidence of validation and adjudication"]
+  N6["Field note — sample re-test"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX112"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[38.1 Re-test design]
+    |
+    v
+[38.2 Negative results]
+    |
+    v
+[38.3 No new methods]
+    |
+    v
+[Practice note]
+    |
+    v
+[38.1b Evidence of validation and adjudication]
+    |
+    v
+[Field note — sample re-test]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
+
 ### Learning outcomes
 
 You will (1) validate fixes with re-tests; (2) avoid validation that reintroduces process risk; (3) record negative results.
@@ -2820,6 +5110,71 @@ Validate narrowly; keep negatives; don't widen methods.
 <a id="ch-39"></a>
 
 ## Chapter 39 — OT, IoT and cyber-physical security: maintainability
+
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Lesson map
+
+Lesson 39 published. Map, example, EX115.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["39.1 Churn"]
+  N2["39.2 Thin adapters"]
+  N3["39.3 Ownership"]
+  N4["Practice note"]
+  N5["39.1b Deprecation and deletion plans"]
+  N6["Field note — vacation blocker"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX115"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["39.1 Churn"]
+  N2["39.2 Thin adapters"]
+  N3["39.3 Ownership"]
+  N4["Practice note"]
+  N5["39.1b Deprecation and deletion plans"]
+  N6["Field note — vacation blocker"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX115"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[39.1 Churn]
+    |
+    v
+[39.2 Thin adapters]
+    |
+    v
+[39.3 Ownership]
+    |
+    v
+[Practice note]
+    |
+    v
+[39.1b Deprecation and deletion plans]
+    |
+    v
+[Field note — vacation blocker]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
 
 ### Learning outcomes
 
@@ -2899,6 +5254,71 @@ Pins, adapters and named owners keep tools alive safely.
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Lesson map
+
+Lesson 40 published. Map, example, EX118.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["40.1 End-to-end"]
+  N2["40.2 Faults"]
+  N3["40.3 Sign-off"]
+  N4["Practice note"]
+  N5["40.1b Observability and parity"]
+  N6["Field note — malicious pack"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX118"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["40.1 End-to-end"]
+  N2["40.2 Faults"]
+  N3["40.3 Sign-off"]
+  N4["Practice note"]
+  N5["40.1b Observability and parity"]
+  N6["Field note — malicious pack"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX118"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[40.1 End-to-end]
+    |
+    v
+[40.2 Faults]
+    |
+    v
+[40.3 Sign-off]
+    |
+    v
+[Practice note]
+    |
+    v
+[40.1b Observability and parity]
+    |
+    v
+[Field note — malicious pack]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Learning outcomes
 
@@ -3005,6 +5425,71 @@ E2E with faults; green safety; two signatures.
 
 ## Chapter 41 — OT, IoT and cyber-physical security: system optimization
 
+<!-- cyberabc:lesson-figures:start ch-41 -->
+### Lesson map
+
+Lesson 41 published. Map, example, EX121.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["41.1 Profile first"]
+  N2["41.2 Constraint-preserving"]
+  N3["41.3 Safety veto"]
+  N4["Practice note"]
+  N5["41.1b Load shedding and N+1"]
+  N6["Field note — safety paragraph"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX121"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["41.1 Profile first"]
+  N2["41.2 Constraint-preserving"]
+  N3["41.3 Safety veto"]
+  N4["Practice note"]
+  N5["41.1b Load shedding and N+1"]
+  N6["Field note — safety paragraph"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX121"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[41.1 Profile first]
+    |
+    v
+[41.2 Constraint-preserving]
+    |
+    v
+[41.3 Safety veto]
+    |
+    v
+[Practice note]
+    |
+    v
+[41.1b Load shedding and N+1]
+    |
+    v
+[Field note — safety paragraph]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX121]
+```
+<!-- cyberabc:lesson-figures:end ch-41 -->
+
+
 ### Learning outcomes
 
 You will (1) profile OT security pipelines ethically; (2) optimize under cycle-time and ROE constraints; (3) reject optimizations that weaken safety.
@@ -3100,6 +5585,71 @@ Speed under constraints; safety has veto power.
 
 ## Chapter 42 — OT, IoT and cyber-physical security: applied research
 
+<!-- cyberabc:lesson-figures:start ch-42 -->
+### Lesson map
+
+Lesson 42 published. Map, example, EX124.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["42.1 Questions that fit"]
+  N2["42.2 Design"]
+  N3["42.3 Disclosure"]
+  N4["Practice note"]
+  N5["42.1b Data sharing and negative results"]
+  N6["Field note — amendment log"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX124"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["42.1 Questions that fit"]
+  N2["42.2 Design"]
+  N3["42.3 Disclosure"]
+  N4["Practice note"]
+  N5["42.1b Data sharing and negative results"]
+  N6["Field note — amendment log"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX124"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[42.1 Questions that fit]
+    |
+    v
+[42.2 Design]
+    |
+    v
+[42.3 Disclosure]
+    |
+    v
+[Practice note]
+    |
+    v
+[42.1b Data sharing and negative results]
+    |
+    v
+[Field note — amendment log]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX124]
+```
+<!-- cyberabc:lesson-figures:end ch-42 -->
+
+
 ### Learning outcomes
 
 You will (1) frame a research question about OT security programmes; (2) choose measures and baselines with detector-evaluation hygiene; (3) keep dual-use out of student research.
@@ -3179,6 +5729,71 @@ Research the programme and process; leave weaponization alone.
 
 ## Chapter 43 — Industry or public-service practice
 
+<!-- cyberabc:lesson-figures:start ch-43 -->
+### Lesson map
+
+Lesson 43 published. Map, example, EX127.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["43.1 Placement"]
+  N2["43.2 Sanitized reporting"]
+  N3["43.3 Translation"]
+  N4["Practice note"]
+  N5["43.1b Clearance and conflicts"]
+  N6["Field note — constraints appendix"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX127"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["43.1 Placement"]
+  N2["43.2 Sanitized reporting"]
+  N3["43.3 Translation"]
+  N4["Practice note"]
+  N5["43.1b Clearance and conflicts"]
+  N6["Field note — constraints appendix"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX127"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[43.1 Placement]
+    |
+    v
+[43.2 Sanitized reporting]
+    |
+    v
+[43.3 Translation]
+    |
+    v
+[Practice note]
+    |
+    v
+[43.1b Clearance and conflicts]
+    |
+    v
+[Field note — constraints appendix]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX127]
+```
+<!-- cyberabc:lesson-figures:end ch-43 -->
+
+
 ### Learning outcomes
 
 You will (1) adapt CNHP engineering to a host organization's constraints; (2) write a practice report without proprietary detail; (3) translate between process safety, ops and engineering.
@@ -3253,6 +5868,71 @@ Practice is real constraints plus sanitized learning artefacts.
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
+
+<!-- cyberabc:lesson-figures:start ch-44 -->
+### Lesson map
+
+Lesson 44 published. Map, example, EX130.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["44.1 Proposal"]
+  N2["44.2 Non-goals"]
+  N3["44.3 Milestone 1"]
+  N4["Practice note"]
+  N5["44.1b Success metrics and checkpoints"]
+  N6["Field note — ethics early"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX130"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["44.1 Proposal"]
+  N2["44.2 Non-goals"]
+  N3["44.3 Milestone 1"]
+  N4["Practice note"]
+  N5["44.1b Success metrics and checkpoints"]
+  N6["Field note — ethics early"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX130"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[44.1 Proposal]
+    |
+    v
+[44.2 Non-goals]
+    |
+    v
+[44.3 Milestone 1]
+    |
+    v
+[Practice note]
+    |
+    v
+[44.1b Success metrics and checkpoints]
+    |
+    v
+[Field note — ethics early]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX130]
+```
+<!-- cyberabc:lesson-figures:end ch-44 -->
+
 
 ### Learning outcomes
 
@@ -3333,6 +6013,71 @@ Ship safety-relevant programme value; freeze non-goals early.
 
 ## Chapter 45 — Independent design review
 
+<!-- cyberabc:lesson-figures:start ch-45 -->
+### Lesson map
+
+Lesson 45 published. Map, example, EX133.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["45.1 Review rights"]
+  N2["45.2 Checklist"]
+  N3["45.3 Dissent"]
+  N4["Practice note"]
+  N5["45.1b External reviewers and SLOs"]
+  N6["Field note — Friday merge ban"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX133"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["45.1 Review rights"]
+  N2["45.2 Checklist"]
+  N3["45.3 Dissent"]
+  N4["Practice note"]
+  N5["45.1b External reviewers and SLOs"]
+  N6["Field note — Friday merge ban"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX133"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[45.1 Review rights]
+    |
+    v
+[45.2 Checklist]
+    |
+    v
+[45.3 Dissent]
+    |
+    v
+[Practice note]
+    |
+    v
+[45.1b External reviewers and SLOs]
+    |
+    v
+[Field note — Friday merge ban]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX133]
+```
+<!-- cyberabc:lesson-figures:end ch-45 -->
+
+
 ### Learning outcomes
 
 You will (1) run a review that can reject; (2) use a checklist tied to safety requirements; (3) record dissenting opinions.
@@ -3411,6 +6156,71 @@ Reviews that can say no, with a checklist and a memory.
 <a id="ch-46"></a>
 
 ## Chapter 46 — Engineering capstone II
+
+<!-- cyberabc:lesson-figures:start ch-46 -->
+### Lesson map
+
+Lesson 46 published. Map, example, EX136.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["46.1 Freeze"]
+  N2["46.2 Verify"]
+  N3["46.3 Docs"]
+  N4["Practice note"]
+  N5["46.1b Demo script and handover"]
+  N6["Field note — silent run stall"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX136"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["46.1 Freeze"]
+  N2["46.2 Verify"]
+  N3["46.3 Docs"]
+  N4["Practice note"]
+  N5["46.1b Demo script and handover"]
+  N6["Field note — silent run stall"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX136"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[46.1 Freeze]
+    |
+    v
+[46.2 Verify]
+    |
+    v
+[46.3 Docs]
+    |
+    v
+[Practice note]
+    |
+    v
+[46.1b Demo script and handover]
+    |
+    v
+[Field note — silent run stall]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX136]
+```
+<!-- cyberabc:lesson-figures:end ch-46 -->
+
 
 ### Learning outcomes
 
@@ -3510,6 +6320,71 @@ Freeze, verify, document, name ops — then operate.
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
+
+<!-- cyberabc:lesson-figures:start ch-47 -->
+### Lesson map
+
+Lesson 47 published. Map, example, EX139.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["47.1 Script"]
+  N2["47.2 Measures"]
+  N3["47.3 Corrective actions"]
+  N4["Practice note"]
+  N5["47.1b Blameless correction and recurrence"]
+  N6["Field note — zero-ticket smell"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX139"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["47.1 Script"]
+  N2["47.2 Measures"]
+  N3["47.3 Corrective actions"]
+  N4["Practice note"]
+  N5["47.1b Blameless correction and recurrence"]
+  N6["Field note — zero-ticket smell"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX139"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[47.1 Script]
+    |
+    v
+[47.2 Measures]
+    |
+    v
+[47.3 Corrective actions]
+    |
+    v
+[Practice note]
+    |
+    v
+[47.1b Blameless correction and recurrence]
+    |
+    v
+[Field note — zero-ticket smell]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX139]
+```
+<!-- cyberabc:lesson-figures:end ch-47 -->
+
 
 ### Learning outcomes
 
@@ -3621,6 +6496,71 @@ Break it on purpose; measure; ticket the gaps.
 
 ## Chapter 48 — Evidence dossier
 
+<!-- cyberabc:lesson-figures:start ch-48 -->
+### Lesson map
+
+Lesson 48 published. Map, example, EX142.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["48.1 Contents"]
+  N2["48.2 Retention"]
+  N3["48.3 Exclusions"]
+  N4["Practice note"]
+  N5["48.1b Reader checklist and redaction log"]
+  N6["Field note — automated dossier"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX142"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["48.1 Contents"]
+  N2["48.2 Retention"]
+  N3["48.3 Exclusions"]
+  N4["Practice note"]
+  N5["48.1b Reader checklist and redaction log"]
+  N6["Field note — automated dossier"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX142"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[48.1 Contents]
+    |
+    v
+[48.2 Retention]
+    |
+    v
+[48.3 Exclusions]
+    |
+    v
+[Practice note]
+    |
+    v
+[48.1b Reader checklist and redaction log]
+    |
+    v
+[Field note — automated dossier]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX142]
+```
+<!-- cyberabc:lesson-figures:end ch-48 -->
+
+
 ### Learning outcomes
 
 You will (1) assemble a dossier a third party can re-hash; (2) structure retention classes; (3) exclude dual-use and proprietary material.
@@ -3704,6 +6644,71 @@ Dossiers are verifiable, classified and boringly safe.
 
 ## Chapter 49 — Engineering thesis
 
+<!-- cyberabc:lesson-figures:start ch-49 -->
+### Lesson map
+
+Lesson 49 published. Map, example, EX145.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["49.1 Claim"]
+  N2["49.2 Body"]
+  N3["49.3 Citations"]
+  N4["Practice note"]
+  N5["49.1b Related work honesty and reproducibility"]
+  N6["Field note — claim on page one"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX145"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["49.1 Claim"]
+  N2["49.2 Body"]
+  N3["49.3 Citations"]
+  N4["Practice note"]
+  N5["49.1b Related work honesty and reproducibility"]
+  N6["Field note — claim on page one"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX145"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[49.1 Claim]
+    |
+    v
+[49.2 Body]
+    |
+    v
+[49.3 Citations]
+    |
+    v
+[Practice note]
+    |
+    v
+[49.1b Related work honesty and reproducibility]
+    |
+    v
+[Field note — claim on page one]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX145]
+```
+<!-- cyberabc:lesson-figures:end ch-49 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a thesis around a programme claim; (2) defend measures and limits; (3) cite SP 800-82, 62443, ATT&CK for ICS and evaluation papers correctly.
@@ -3782,6 +6787,71 @@ One claim, honest limits, real citations.
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
+
+<!-- cyberabc:lesson-figures:start ch-50 -->
+### Lesson map
+
+Lesson 50 published. Map, example, EX148.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["50.1 Talk structure"]
+  N2["50.2 Likely questions"]
+  N3["50.3 Reflection"]
+  N4["Practice note"]
+  N5["50.1b Examiner packet and aftercare"]
+  N6["Field note — ninety-day review"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX148"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["50.1 Talk structure"]
+  N2["50.2 Likely questions"]
+  N3["50.3 Reflection"]
+  N4["Practice note"]
+  N5["50.1b Examiner packet and aftercare"]
+  N6["Field note — ninety-day review"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX148"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[50.1 Talk structure]
+    |
+    v
+[50.2 Likely questions]
+    |
+    v
+[50.3 Reflection]
+    |
+    v
+[Practice note]
+    |
+    v
+[50.1b Examiner packet and aftercare]
+    |
+    v
+[Field note — ninety-day review]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX148]
+```
+<!-- cyberabc:lesson-figures:end ch-50 -->
+
 
 ### Learning outcomes
 

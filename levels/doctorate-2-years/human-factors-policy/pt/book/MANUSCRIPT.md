@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Trilha de Pesquisa de Doutorado
 
 - Idioma: português do Brasil (`pt`); curso 190, trilha de pesquisa de doutorado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: doutorandos que testam se uma mudança na prática de conscientização em segurança muda o comportamento real dos funcionários.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam a concordância entre codificadores, o efeito de um desenho escalonado com verificação por permutação e digests de arquivo, sempre sobre dados sintéticos; nenhuma pessoa, caixa de e-mail ou simulação real está envolvida. As simulações de phishing descritas aqui seguem um protocolo ético: aprovação organizacional, nenhuma captura de credenciais, nenhuma culpa individual e relatórios apenas agregados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -37,6 +37,61 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Uma pergunta falseável"]
+  N1["1.2 Por que a taxa de cliques engana"]
+  N2["1.3 Integridade e ética"]
+  N3["1.4 Codificar e-mails reportados"]
+  N4["Laboratório — Concordância entre codificadores nos e"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Uma pergunta falseável"]
+  N1["1.2 Por que a taxa de cliques engana"]
+  N2["1.3 Integridade e ética"]
+  N3["1.4 Codificar e-mails reportados"]
+  N4["Laboratório — Concordância entre codificadores nos e"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[1.1 Uma pergunta falseável]
+    |
+    v
+[1.2 Por que a taxa de cliques engana]
+    |
+    v
+[1.3 Integridade e ética]
+    |
+    v
+[1.4 Codificar e-mails reportados]
+    |
+    v
+[Laboratório — Concordância entre codificadores nos e]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -112,6 +167,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Fatores humanos e política cibernética: fronteira da pesquisa
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Do elo mais fraco a parceiros"]
+  N1["2.2 Rejeição racional e orçamentos"]
+  N2["2.3 Frameworks de políticas"]
+  N3["2.4 A lacuna"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Do elo mais fraco a parceiros"]
+  N1["2.2 Rejeição racional e orçamentos"]
+  N2["2.3 Frameworks de políticas"]
+  N3["2.4 A lacuna"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[2.1 Do elo mais fraco a parceiros]
+    |
+    v
+[2.2 Rejeição racional e orçamentos]
+    |
+    v
+[2.3 Frameworks de políticas]
+    |
+    v
+[2.4 A lacuna]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear a fronteira da pesquisa sobre conscientização e comportamento; (2) identificar lacunas que importam para políticas; (3) posicionar uma contribuição em relação aos trabalhos anteriores.
@@ -168,6 +273,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Proposta de contribuição original
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 O desenho"]
+  N1["3.2 Desfechos e amostra"]
+  N2["3.3 Riscos éticos e práticos"]
+  N3["3.4 Revisão pela banca"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 O desenho"]
+  N1["3.2 Desfechos e amostra"]
+  N2["3.3 Riscos éticos e práticos"]
+  N3["3.4 Revisão pela banca"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX015"]
+```
+
+```text
+[3.1 O desenho]
+    |
+    v
+[3.2 Desfechos e amostra]
+    |
+    v
+[3.3 Riscos éticos e práticos]
+    |
+    v
+[3.4 Revisão pela banca]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma proposta de doutorado com desenho escalonado; (2) justificar o tamanho da amostra; (3) antecipar riscos éticos e práticos.
@@ -223,6 +378,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Replicação da linha de base e piloto
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Replicar a linha de base"]
+  N1["4.2 Executar um piloto"]
+  N2["4.3 Refinar os instrumentos"]
+  N3["4.4 O que o piloto não mostra"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Replicar a linha de base"]
+  N1["4.2 Executar um piloto"]
+  N2["4.3 Refinar os instrumentos"]
+  N3["4.4 O que o piloto não mostra"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[4.1 Replicar a linha de base]
+    |
+    v
+[4.2 Executar um piloto]
+    |
+    v
+[4.3 Refinar os instrumentos]
+    |
+    v
+[4.4 O que o piloto não mostra]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) replicar uma medição de linha de base; (2) executar um piloto da intervenção; (3) refinar os instrumentos antes do estudo principal.
@@ -277,6 +482,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Executar o estudo"]
+  N1["5.2 Estimar o efeito"]
+  N2["Laboratório — Efeito no desenho escalonado com verif"]
+  N3["5.3 Ler o resultado"]
+  N4["5.4 Validação independente"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Executar o estudo"]
+  N1["5.2 Estimar o efeito"]
+  N2["Laboratório — Efeito no desenho escalonado com verif"]
+  N3["5.3 Ler o resultado"]
+  N4["5.4 Validação independente"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[5.1 Executar o estudo]
+    |
+    v
+[5.2 Estimar o efeito]
+    |
+    v
+[Laboratório — Efeito no desenho escalonado com verif]
+    |
+    v
+[5.3 Ler o resultado]
+    |
+    v
+[5.4 Validação independente]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -369,6 +629,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Crítica por pares e revisão
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 A crítica"]
+  N1["6.2 Testar alternativas"]
+  N2["6.3 Evitar p-hacking"]
+  N3["6.4 Relato ético"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 A crítica"]
+  N1["6.2 Testar alternativas"]
+  N2["6.3 Evitar p-hacking"]
+  N3["6.4 Relato ético"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
+```
+
+```text
+[6.1 A crítica]
+    |
+    v
+[6.2 Testar alternativas]
+    |
+    v
+[6.3 Evitar p-hacking]
+    |
+    v
+[6.4 Relato ético]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) responder à revisão por pares de um estudo de comportamento; (2) revisar análises sem p-hacking; (3) fortalecer o relato ético.
@@ -423,6 +733,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Síntese"]
+  N1["7.2 O arquivo"]
+  N2["Laboratório — Digests de manifesto para um arquivo d"]
+  N3["7.3 Proteger os participantes"]
+  N4["7.4 O que o arquivo possibilita"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Síntese"]
+  N1["7.2 O arquivo"]
+  N2["Laboratório — Digests de manifesto para um arquivo d"]
+  N3["7.3 Proteger os participantes"]
+  N4["7.4 O que o arquivo possibilita"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[7.1 Síntese]
+    |
+    v
+[7.2 O arquivo]
+    |
+    v
+[Laboratório — Digests de manifesto para um arquivo d]
+    |
+    v
+[7.3 Proteger os participantes]
+    |
+    v
+[7.4 O que o arquivo possibilita]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -499,6 +864,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 A defesa"]
+  N1["8.2 Implicações para políticas"]
+  N2["8.3 Plano de publicação"]
+  N3["8.4 Agenda pós-doutoral"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 A defesa"]
+  N1["8.2 Implicações para políticas"]
+  N2["8.3 Plano de publicação"]
+  N3["8.4 Agenda pós-doutoral"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX045"]
+```
+
+```text
+[8.1 A defesa]
+    |
+    v
+[8.2 Implicações para políticas]
+    |
+    v
+[8.3 Plano de publicação]
+    |
+    v
+[8.4 Agenda pós-doutoral]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

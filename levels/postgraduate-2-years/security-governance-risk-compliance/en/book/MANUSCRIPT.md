@@ -1,7 +1,7 @@
 # Security Governance, Risk and Compliance: Postgraduate Course
 
 - Language: English (`en`); course 143, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: postgraduate practitioners improving how an organisation quantifies cyber risk, oversees suppliers and informs its board.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs run a FAIR-style Monte Carlo loss model, a permutation test on review durations and an appetite comparison on synthetic data. Risk figures are illustrations, standards are cited by edition and paraphrased, and nothing here is a real audit, attestation or legal advice; SOC 2 reports described are fictional. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ Freund and Jones (2015), [doi:10.1016/C2013-0-09966-5](https://doi.org/10.1016/C
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Decisions under uncertainty"]
+  N2["1.2 Decision versus outcome"]
+  N3["1.3 Biases"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Decisions under uncertainty"]
+  N2["1.2 Decision versus outcome"]
+  N3["1.3 Biases"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Decisions under uncertainty]
+    |
+    v
+[1.2 Decision versus outcome]
+    |
+    v
+[1.3 Biases]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -83,6 +133,56 @@ Good security decisions are judged by reasoning under uncertainty and protected 
 
 ## Chapter 2 — Security governance, risk and compliance: current practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Frameworks in use"]
+  N2["2.2 Halbrook's practice"]
+  N3["2.3 Trends"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Frameworks in use"]
+  N2["2.2 Halbrook's practice"]
+  N3["2.3 Trends"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Frameworks in use]
+    |
+    v
+[2.2 Halbrook's practice]
+    |
+    v
+[2.3 Trends]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) survey current GRC frameworks and their uses; (2) assess Halbrook's practice against them; (3) identify trends shaping the field.
@@ -128,6 +228,61 @@ Current practice combines frameworks; Halbrook's gaps lie in expressing risk, ov
 <a id="ch-03"></a>
 
 ## Chapter 3 — Security governance, risk and compliance: specialist evidence
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 FAIR structure"]
+  N2["3.2 The simulation"]
+  N3["Lab — Monte Carlo loss distribution for a supplier b"]
+  N4["3.3 Explaining it"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 FAIR structure"]
+  N2["3.2 The simulation"]
+  N3["Lab — Monte Carlo loss distribution for a supplier b"]
+  N4["3.3 Explaining it"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 FAIR structure]
+    |
+    v
+[3.2 The simulation]
+    |
+    v
+[Lab — Monte Carlo loss distribution for a supplier b]
+    |
+    v
+[3.3 Explaining it]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -204,6 +359,56 @@ Quantitative risk estimates show both quiet years and severe tails when explaine
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Ethics of numbers"]
+  N2["4.2 Conflicts of interest"]
+  N3["4.3 Protecting people"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Ethics of numbers"]
+  N2["4.2 Conflicts of interest"]
+  N3["4.3 Protecting people"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Ethics of numbers]
+    |
+    v
+[4.2 Conflicts of interest]
+    |
+    v
+[4.3 Protecting people]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) identify ethical issues in risk quantification and assurance; (2) handle conflicts of interest; (3) protect people affected by risk decisions.
@@ -250,6 +455,56 @@ Ethical GRC practice documents estimates, manages conflicts and protects those a
 
 ## Chapter 5 — Security governance, risk and compliance: design alternatives
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Three alternatives"]
+  N2["5.2 Comparison"]
+  N3["5.3 Selection"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Three alternatives"]
+  N2["5.2 Comparison"]
+  N3["5.3 Selection"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Three alternatives]
+    |
+    v
+[5.2 Comparison]
+    |
+    v
+[5.3 Selection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) design alternative approaches to supplier oversight; (2) compare them on effectiveness, cost and burden; (3) select an approach for evaluation.
@@ -295,6 +550,61 @@ Designing alternatives and evaluating the chosen one guards against expensive mi
 <a id="ch-06"></a>
 
 ## Chapter 6 — Security governance, risk and compliance: controlled evaluation
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Design"]
+  N2["6.2 Speed"]
+  N3["Lab — Permutation test on review duration"]
+  N4["6.3 Depth"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Design"]
+  N2["6.2 Speed"]
+  N3["Lab — Permutation test on review duration"]
+  N4["6.3 Depth"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Design]
+    |
+    v
+[6.2 Speed]
+    |
+    v
+[Lab — Permutation test on review duration]
+    |
+    v
+[6.3 Depth]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -366,6 +676,56 @@ Controlled evaluation with blinded depth checks shows whether faster processes s
 
 ## Chapter 7 — Security governance, risk and compliance: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Procurement integration"]
+  N2["7.2 Lines of responsibility"]
+  N3["7.3 Managing change"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Procurement integration"]
+  N2["7.2 Lines of responsibility"]
+  N3["7.3 Managing change"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Procurement integration]
+    |
+    v
+[7.2 Lines of responsibility]
+    |
+    v
+[7.3 Managing change]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate supplier tiering into procurement and risk; (2) align three lines of responsibility; (3) manage change across departments.
@@ -412,6 +772,56 @@ Integration places governance steps inside workflows and respects clear lines of
 
 ## Chapter 8 — Security governance, risk and compliance: difficult cases
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 A critical supplier fails"]
+  N2["8.2 Incomplete evidence"]
+  N3["8.3 Escalation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 A critical supplier fails"]
+  N2["8.2 Incomplete evidence"]
+  N3["8.3 Escalation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 A critical supplier fails]
+    |
+    v
+[8.2 Incomplete evidence]
+    |
+    v
+[8.3 Escalation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) handle conflicts between compliance and risk; (2) decide under incomplete evidence; (3) escalate appropriately.
@@ -457,6 +867,61 @@ Difficult cases call for limiting exposure, reading assurance carefully and esca
 <a id="ch-09"></a>
 
 ## Chapter 9 — Security governance, risk and compliance: leadership and assurance
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Quantified appetite"]
+  N2["9.2 Comparing with appetite"]
+  N3["Lab — Loss exceedance estimates against board appeti"]
+  N4["9.3 Board assurance"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Quantified appetite"]
+  N2["9.2 Comparing with appetite"]
+  N3["Lab — Loss exceedance estimates against board appeti"]
+  N4["9.3 Board assurance"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Quantified appetite]
+    |
+    v
+[9.2 Comparing with appetite]
+    |
+    v
+[Lab — Loss exceedance estimates against board appeti]
+    |
+    v
+[9.3 Board assurance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -525,6 +990,56 @@ Quantified appetite lets boards see where severe risks breach tolerance and gove
 
 ## Chapter 10 — Research reading and critique
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Reading strategy"]
+  N2["10.2 Assessing methods"]
+  N3["10.3 Relating to practice"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Reading strategy"]
+  N2["10.2 Assessing methods"]
+  N3["10.3 Relating to practice"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Reading strategy]
+    |
+    v
+[10.2 Assessing methods]
+    |
+    v
+[10.3 Relating to practice]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) read GRC research critically; (2) assess methods and claims; (3) relate findings to practice.
@@ -571,6 +1086,56 @@ Critical reading separates kinds of evidence and checks whether findings fit the
 
 ## Chapter 11 — Applied project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Project scope"]
+  N2["11.2 Results"]
+  N3["11.3 Handover"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Project scope"]
+  N2["11.2 Results"]
+  N3["11.3 Handover"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Project scope]
+    |
+    v
+[11.2 Results]
+    |
+    v
+[11.3 Handover]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) deliver an applied GRC improvement; (2) measure results against objectives; (3) document for handover.
@@ -616,6 +1181,56 @@ Applied projects succeed when results are measured honestly and work is handed o
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Final review"]
+  N2["12.2 Transfer"]
+  N3["12.3 Continuing development"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Final review"]
+  N2["12.2 Transfer"]
+  N3["12.3 Continuing development"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Final review]
+    |
+    v
+[12.2 Transfer]
+    |
+    v
+[12.3 Continuing development]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Rapid Course
 
 - Language: English (`en`); course 014, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: people who look after a small organisation's website and need practical, proportionate application and software supply chain security in one month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ Read in order: the chapters follow the only IT person at a small charity from a 
 <a id="ch-01"></a>
 
 ## Chapter 1 — Application and software supply chain security: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The opening case"]
+  N2["1.2 What the subject covers"]
+  N3["1.3 Main risks"]
+  N4["1.4 Proportionate decisions"]
+  N5["1.5 Frameworks as guides"]
+  N6["1.6 The month's plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The opening case"]
+  N2["1.2 What the subject covers"]
+  N3["1.3 Main risks"]
+  N4["1.4 Proportionate decisions"]
+  N5["1.5 Frameworks as guides"]
+  N6["1.6 The month's plan"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The opening case]
+    |
+    v
+[1.2 What the subject covers]
+    |
+    v
+[1.3 Main risks]
+    |
+    v
+[1.4 Proportionate decisions]
+    |
+    v
+[1.5 Frameworks as guides]
+    |
+    v
+[1.6 The month's plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -112,6 +177,71 @@ Know the components, fix cheap high-value risks first and plan the month.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Permission"]
+  N2["2.2 Scope"]
+  N3["2.3 Safe practice"]
+  N4["2.4 Donor data"]
+  N5["2.5 Defensive only"]
+  N6["2.6 When to ask for help"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Permission"]
+  N2["2.2 Scope"]
+  N3["2.3 Safe practice"]
+  N4["2.4 Donor data"]
+  N5["2.5 Defensive only"]
+  N6["2.6 When to ask for help"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Permission]
+    |
+    v
+[2.2 Scope]
+    |
+    v
+[2.3 Safe practice]
+    |
+    v
+[2.4 Donor data]
+    |
+    v
+[2.5 Defensive only]
+    |
+    v
+[2.6 When to ask for help]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -190,6 +320,71 @@ Permission, scope, backups and staging make changes safe.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Application and software supply chain security: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Listing components"]
+  N2["Lab — component review"]
+  N3["3.2 Lab result"]
+  N4["3.3 Why maintenance matters"]
+  N5["3.4 Data flows"]
+  N6["3.5 Deciding"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Listing components"]
+  N2["Lab — component review"]
+  N3["3.2 Lab result"]
+  N4["3.3 Why maintenance matters"]
+  N5["3.4 Data flows"]
+  N6["3.5 Deciding"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Listing components]
+    |
+    v
+[Lab — component review]
+    |
+    v
+[3.2 Lab result]
+    |
+    v
+[3.3 Why maintenance matters]
+    |
+    v
+[3.4 Data flows]
+    |
+    v
+[3.5 Deciding]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -294,6 +489,71 @@ Inventory, check and decide for each component.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Application and software supply chain security: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The update"]
+  N2["Lab — release checklist"]
+  N3["4.2 Lab result"]
+  N4["4.3 Why a checklist"]
+  N5["4.4 Routines"]
+  N6["4.5 Putting it together"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The update"]
+  N2["Lab — release checklist"]
+  N3["4.2 Lab result"]
+  N4["4.3 Why a checklist"]
+  N5["4.4 Routines"]
+  N6["4.5 Putting it together"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The update]
+    |
+    v
+[Lab — release checklist]
+    |
+    v
+[4.2 Lab result]
+    |
+    v
+[4.3 Why a checklist]
+    |
+    v
+[4.4 Routines]
+    |
+    v
+[4.5 Putting it together]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

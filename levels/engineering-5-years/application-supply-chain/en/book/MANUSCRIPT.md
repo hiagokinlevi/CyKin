@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Engineering Course
 
 - Language: English (`en`); course 129, Engineering course (5 years).
-- Editorial state: **draft**. Chapters 1–50 of 50 have hand-written teaching text; exercises EX001–EX150 have matching worked results with 0–3 rubrics; Nine offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–50 of 50 have hand-written teaching text; exercises EX001–EX150 have matching worked results with 0–3 rubrics; Nine offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: engineering students who will design, build and verify secure applications and software supply chains.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -40,6 +40,61 @@ Read in order: the chapters follow one engineering student through foundations, 
 <a id="ch-01"></a>
 
 ## Chapter 1 — Calculus I
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Rates of change"]
+  N3["1.3 Accumulation"]
+  N4["1.4 Reading graphs"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Rates of change"]
+  N3["1.3 Accumulation"]
+  N4["1.4 Reading graphs"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Rates of change]
+    |
+    v
+[1.3 Accumulation]
+    |
+    v
+[1.4 Reading graphs]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -100,6 +155,71 @@ Rates and areas give a language for growth and exposure in software.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Graphs"]
+  N2["2.2 Transitive closure"]
+  N3["Lab — Lab — reaching dependencies"]
+  N4["2.3 Lab result"]
+  N5["2.4 Why it matters"]
+  N6["2.5 Cycles"]
+  N7["Counting paths"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Graphs"]
+  N2["2.2 Transitive closure"]
+  N3["Lab — Lab — reaching dependencies"]
+  N4["2.3 Lab result"]
+  N5["2.4 Why it matters"]
+  N6["2.5 Cycles"]
+  N7["Counting paths"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Graphs]
+    |
+    v
+[2.2 Transitive closure]
+    |
+    v
+[Lab — Lab — reaching dependencies]
+    |
+    v
+[2.3 Lab result]
+    |
+    v
+[2.4 Why it matters]
+    |
+    v
+[2.5 Cycles]
+    |
+    v
+[Counting paths]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -191,6 +311,71 @@ Dependencies form graphs; the transitive set is what really runs.
 
 ## Chapter 3 — Physics for computing
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Bits as physics"]
+  N2["3.2 Storage reliability"]
+  N3["3.3 Integrity checks"]
+  N4["3.4 Heat and performance"]
+  N5["3.5 The mirror mismatch"]
+  N6["Redundancy"]
+  N7["Checksums in practice"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Bits as physics"]
+  N2["3.2 Storage reliability"]
+  N3["3.3 Integrity checks"]
+  N4["3.4 Heat and performance"]
+  N5["3.5 The mirror mismatch"]
+  N6["Redundancy"]
+  N7["Checksums in practice"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Bits as physics]
+    |
+    v
+[3.2 Storage reliability]
+    |
+    v
+[3.3 Integrity checks]
+    |
+    v
+[3.4 Heat and performance]
+    |
+    v
+[3.5 The mirror mismatch]
+    |
+    v
+[Redundancy]
+    |
+    v
+[Checksums in practice]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) explain the physical basis of computation and storage; (2) relate energy and heat to reliability; (3) explain how physical faults can corrupt data; (4) justify integrity checks on stored artifacts.
@@ -260,6 +445,71 @@ Physics makes corruption possible; digests make it detectable.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Small functions"]
+  N2["4.2 Explicit errors"]
+  N3["4.3 Testing"]
+  N4["4.4 Secure defaults"]
+  N5["4.5 Readability"]
+  N6["4.6 CWE vocabulary"]
+  N7["Version control"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Small functions"]
+  N2["4.2 Explicit errors"]
+  N3["4.3 Testing"]
+  N4["4.4 Secure defaults"]
+  N5["4.5 Readability"]
+  N6["4.6 CWE vocabulary"]
+  N7["Version control"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Small functions]
+    |
+    v
+[4.2 Explicit errors]
+    |
+    v
+[4.3 Testing]
+    |
+    v
+[4.4 Secure defaults]
+    |
+    v
+[4.5 Readability]
+    |
+    v
+[4.6 CWE vocabulary]
+    |
+    v
+[Version control]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -337,6 +587,71 @@ Small, tested functions with safe defaults are the first security control.
 
 ## Chapter 5 — Engineering communication
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Audiences"]
+  N2["5.2 Report structure"]
+  N3["5.3 Diagrams"]
+  N4["5.4 Uncertainty"]
+  N5["5.5 Responsible detail"]
+  N6["Written decisions"]
+  N7["Feedback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Audiences"]
+  N2["5.2 Report structure"]
+  N3["5.3 Diagrams"]
+  N4["5.4 Uncertainty"]
+  N5["5.5 Responsible detail"]
+  N6["Written decisions"]
+  N7["Feedback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Audiences]
+    |
+    v
+[5.2 Report structure]
+    |
+    v
+[5.3 Diagrams]
+    |
+    v
+[5.4 Uncertainty]
+    |
+    v
+[5.5 Responsible detail]
+    |
+    v
+[Written decisions]
+    |
+    v
+[Feedback]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write clear technical reports; (2) present security findings to mixed audiences; (3) use diagrams effectively; (4) communicate uncertainty.
@@ -407,6 +722,66 @@ Communicate to each audience accurately, with diagrams and honest uncertainty.
 
 ## Chapter 6 — Calculus II
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Compounding"]
+  N2["6.2 Decay models"]
+  N3["6.3 Linear versus exponential"]
+  N4["6.4 Using the models"]
+  N5["6.5 Honest fit"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Compounding"]
+  N2["6.2 Decay models"]
+  N3["6.3 Linear versus exponential"]
+  N4["6.4 Using the models"]
+  N5["6.5 Honest fit"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Compounding]
+    |
+    v
+[6.2 Decay models]
+    |
+    v
+[6.3 Linear versus exponential]
+    |
+    v
+[6.4 Using the models]
+    |
+    v
+[6.5 Honest fit]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) use series and growth models to reason about compounding effects; (2) model decay of unpatched versions in a user base; (3) compare exponential and linear models; (4) interpret model fit honestly.
@@ -468,6 +843,71 @@ Series and decay models make compounding and slow updating visible, within hones
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Rare events and base rates"]
+  N2["7.2 Lookalike names"]
+  N3["Lab — Lab — name similarity"]
+  N4["7.3 Lab result"]
+  N5["7.4 Choosing a threshold"]
+  N6["7.5 Statistics for decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Rare events and base rates"]
+  N2["7.2 Lookalike names"]
+  N3["Lab — Lab — name similarity"]
+  N4["7.3 Lab result"]
+  N5["7.4 Choosing a threshold"]
+  N6["7.5 Statistics for decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Rare events and base rates]
+    |
+    v
+[7.2 Lookalike names]
+    |
+    v
+[Lab — Lab — name similarity]
+    |
+    v
+[7.3 Lab result]
+    |
+    v
+[7.4 Choosing a threshold]
+    |
+    v
+[7.5 Statistics for decisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -559,6 +999,71 @@ Similarity checks help when paired with human review and honest counts.
 
 ## Chapter 8 — Computer architecture
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Execution"]
+  N2["8.2 Memory and weaknesses"]
+  N3["8.3 Hardware help"]
+  N4["8.4 Language choice"]
+  N5["8.5 Isolation by design"]
+  N6["Measuring isolation"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Execution"]
+  N2["8.2 Memory and weaknesses"]
+  N3["8.3 Hardware help"]
+  N4["8.4 Language choice"]
+  N5["8.5 Isolation by design"]
+  N6["Measuring isolation"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Execution]
+    |
+    v
+[8.2 Memory and weaknesses]
+    |
+    v
+[8.3 Hardware help]
+    |
+    v
+[8.4 Language choice]
+    |
+    v
+[8.5 Isolation by design]
+    |
+    v
+[Measuring isolation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) explain how processors execute code and isolate processes; (2) relate memory layout to classes of software weaknesses; (3) explain hardware security features that support software; (4) connect architecture to language choice.
@@ -624,6 +1129,71 @@ Architecture and language choices shape which weaknesses exist and how far damag
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Allowlists"]
+  N2["Lab — Lab — validating fields"]
+  N3["9.2 Lab result"]
+  N4["9.3 Where to validate"]
+  N5["9.4 Error handling"]
+  N6["9.5 Testing rules"]
+  N7["Canonical forms"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Allowlists"]
+  N2["Lab — Lab — validating fields"]
+  N3["9.2 Lab result"]
+  N4["9.3 Where to validate"]
+  N5["9.4 Error handling"]
+  N6["9.5 Testing rules"]
+  N7["Canonical forms"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Allowlists]
+    |
+    v
+[Lab — Lab — validating fields]
+    |
+    v
+[9.2 Lab result]
+    |
+    v
+[9.3 Where to validate]
+    |
+    v
+[9.4 Error handling]
+    |
+    v
+[9.5 Testing rules]
+    |
+    v
+[Canonical forms]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -712,6 +1282,71 @@ Validate with allowlists on the server, test boundaries and keep rules aligned w
 
 ## Chapter 10 — Engineering ethics and safety
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Duties"]
+  N2["10.2 Responsible handling"]
+  N3["10.3 Disclosure"]
+  N4["10.4 Safety and availability"]
+  N5["10.5 Conflicts of interest"]
+  N6["10.6 Codes of conduct"]
+  N7["Whistleblowing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Duties"]
+  N2["10.2 Responsible handling"]
+  N3["10.3 Disclosure"]
+  N4["10.4 Safety and availability"]
+  N5["10.5 Conflicts of interest"]
+  N6["10.6 Codes of conduct"]
+  N7["Whistleblowing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Duties]
+    |
+    v
+[10.2 Responsible handling]
+    |
+    v
+[10.3 Disclosure]
+    |
+    v
+[10.4 Safety and availability]
+    |
+    v
+[10.5 Conflicts of interest]
+    |
+    v
+[10.6 Codes of conduct]
+    |
+    v
+[Whistleblowing]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) apply professional ethics to software security work; (2) handle discovered flaws responsibly; (3) weigh public safety and service availability; (4) recognise conflicts of interest.
@@ -783,6 +1418,71 @@ Act within authority, disclose responsibly and weigh safety, availability and ho
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Web requests"]
+  N2["11.2 TLS"]
+  N3["11.3 Package downloads"]
+  N4["11.4 Restricting egress"]
+  N5["11.5 Internal mirror"]
+  N6["11.6 Monitoring"]
+  N7["Certificate checks in code"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Web requests"]
+  N2["11.2 TLS"]
+  N3["11.3 Package downloads"]
+  N4["11.4 Restricting egress"]
+  N5["11.5 Internal mirror"]
+  N6["11.6 Monitoring"]
+  N7["Certificate checks in code"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Web requests]
+    |
+    v
+[11.2 TLS]
+    |
+    v
+[11.3 Package downloads]
+    |
+    v
+[11.4 Restricting egress]
+    |
+    v
+[11.5 Internal mirror]
+    |
+    v
+[11.6 Monitoring]
+    |
+    v
+[Certificate checks in code]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -856,6 +1556,71 @@ Protect the path packages travel and limit where builds can connect.
 
 ## Chapter 12 — Operating systems
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Processes and users"]
+  N2["12.2 Least privilege"]
+  N3["12.3 Build isolation"]
+  N4["12.4 Secrets on the system"]
+  N5["12.5 OS logs"]
+  N6["12.6 Patching the OS"]
+  N7["File permissions review"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Processes and users"]
+  N2["12.2 Least privilege"]
+  N3["12.3 Build isolation"]
+  N4["12.4 Secrets on the system"]
+  N5["12.5 OS logs"]
+  N6["12.6 Patching the OS"]
+  N7["File permissions review"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Processes and users]
+    |
+    v
+[12.2 Least privilege]
+    |
+    v
+[12.3 Build isolation]
+    |
+    v
+[12.4 Secrets on the system]
+    |
+    v
+[12.5 OS logs]
+    |
+    v
+[12.6 Patching the OS]
+    |
+    v
+[File permissions review]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Learning outcomes
 
 You will (1) explain processes, users and permissions; (2) apply least privilege to application services; (3) isolate build jobs; (4) use operating-system logs for security evidence.
@@ -927,6 +1692,71 @@ Least privilege and isolated, recorded builds limit damage.
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
+
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Data design"]
+  N2["13.2 Queries and injection"]
+  N3["Lab — Lab — parameterised queries"]
+  N4["13.3 Lab result"]
+  N5["13.4 Access to data"]
+  N6["13.5 Backups and retention"]
+  N7["Encryption at rest"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Data design"]
+  N2["13.2 Queries and injection"]
+  N3["Lab — Lab — parameterised queries"]
+  N4["13.3 Lab result"]
+  N5["13.4 Access to data"]
+  N6["13.5 Backups and retention"]
+  N7["Encryption at rest"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Data design]
+    |
+    v
+[13.2 Queries and injection]
+    |
+    v
+[Lab — Lab — parameterised queries]
+    |
+    v
+[13.3 Lab result]
+    |
+    v
+[13.4 Access to data]
+    |
+    v
+[13.5 Backups and retention]
+    |
+    v
+[Encryption at rest]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
 
 ### Learning outcomes
 
@@ -1017,6 +1847,71 @@ Keep input as data, store less sensitive data and limit access by role.
 
 ## Chapter 14 — Software engineering
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Lifecycle"]
+  N2["14.2 The SSDF"]
+  N3["14.3 Code review"]
+  N4["14.4 Continuous integration"]
+  N5["14.5 Dependency policy"]
+  N6["14.6 Release"]
+  N7["Definition of done"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Lifecycle"]
+  N2["14.2 The SSDF"]
+  N3["14.3 Code review"]
+  N4["14.4 Continuous integration"]
+  N5["14.5 Dependency policy"]
+  N6["14.6 Release"]
+  N7["Definition of done"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Lifecycle]
+    |
+    v
+[14.2 The SSDF]
+    |
+    v
+[14.3 Code review]
+    |
+    v
+[14.4 Continuous integration]
+    |
+    v
+[14.5 Dependency policy]
+    |
+    v
+[14.6 Release]
+    |
+    v
+[Definition of done]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Learning outcomes
 
 You will (1) use a development lifecycle that builds in security; (2) apply code review and continuous integration; (3) manage dependencies deliberately; (4) map practices to the SSDF.
@@ -1093,6 +1988,71 @@ Security belongs in every step of the lifecycle, mapped and checked.
 
 ## Chapter 15 — Security fundamentals
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 CIA"]
+  N2["15.2 Assets and threats"]
+  N3["15.3 OWASP Top 10:2021"]
+  N4["15.4 Controls"]
+  N5["15.5 Defence in depth"]
+  N6["Security requirements early"]
+  N7["Least privilege principle"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 CIA"]
+  N2["15.2 Assets and threats"]
+  N3["15.3 OWASP Top 10:2021"]
+  N4["15.4 Controls"]
+  N5["15.5 Defence in depth"]
+  N6["Security requirements early"]
+  N7["Least privilege principle"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 CIA]
+    |
+    v
+[15.2 Assets and threats]
+    |
+    v
+[15.3 OWASP Top 10:2021]
+    |
+    v
+[15.4 Controls]
+    |
+    v
+[15.5 Defence in depth]
+    |
+    v
+[Security requirements early]
+    |
+    v
+[Least privilege principle]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) explain confidentiality, integrity and availability for applications; (2) identify assets, threats and controls; (3) describe the OWASP Top 10 categories; (4) apply defence in depth.
@@ -1163,6 +2123,71 @@ CIA, threats and layered controls frame every later chapter.
 
 ## Chapter 16 — Systems engineering
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 The whole system"]
+  N2["16.2 Boundaries"]
+  N3["16.3 Interfaces"]
+  N4["16.4 Traceability"]
+  N5["16.5 Change management"]
+  N6["16.6 Interfaces as risk"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 The whole system"]
+  N2["16.2 Boundaries"]
+  N3["16.3 Interfaces"]
+  N4["16.4 Traceability"]
+  N5["16.5 Change management"]
+  N6["16.6 Interfaces as risk"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 The whole system]
+    |
+    v
+[16.2 Boundaries]
+    |
+    v
+[16.3 Interfaces]
+    |
+    v
+[16.4 Traceability]
+    |
+    v
+[16.5 Change management]
+    |
+    v
+[16.6 Interfaces as risk]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes
 
 You will (1) treat an application and its pipeline as one system; (2) define system boundaries and interfaces; (3) trace requirements to components; (4) manage change across the system.
@@ -1230,6 +2255,71 @@ See the application and its pipeline as one system with owned, checked interface
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Feedback loops"]
+  N2["17.2 The advisory loop"]
+  N3["17.3 Delays"]
+  N4["17.4 Oscillation"]
+  N5["17.5 Positive feedback"]
+  N6["17.6 Measuring the loop"]
+  N7["Setting targets"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Feedback loops"]
+  N2["17.2 The advisory loop"]
+  N3["17.3 Delays"]
+  N4["17.4 Oscillation"]
+  N5["17.5 Positive feedback"]
+  N6["17.6 Measuring the loop"]
+  N7["Setting targets"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Feedback loops]
+    |
+    v
+[17.2 The advisory loop]
+    |
+    v
+[17.3 Delays]
+    |
+    v
+[17.4 Oscillation]
+    |
+    v
+[17.5 Positive feedback]
+    |
+    v
+[17.6 Measuring the loop]
+    |
+    v
+[Setting targets]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -1303,6 +2393,71 @@ Short, stable feedback loops keep security work under control.
 
 ## Chapter 18 — Security architecture
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Layers"]
+  N2["18.2 Trust boundaries"]
+  N3["18.3 Pipeline architecture"]
+  N4["18.4 Signing"]
+  N5["18.5 Decisions"]
+  N6["18.6 Threat of the builder"]
+  N7["Network segmentation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Layers"]
+  N2["18.2 Trust boundaries"]
+  N3["18.3 Pipeline architecture"]
+  N4["18.4 Signing"]
+  N5["18.5 Decisions"]
+  N6["18.6 Threat of the builder"]
+  N7["Network segmentation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Layers]
+    |
+    v
+[18.2 Trust boundaries]
+    |
+    v
+[18.3 Pipeline architecture]
+    |
+    v
+[18.4 Signing]
+    |
+    v
+[18.5 Decisions]
+    |
+    v
+[18.6 Threat of the builder]
+    |
+    v
+[Network segmentation]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Learning outcomes
 
 You will (1) design layered security for a web application and pipeline; (2) apply trust boundaries and least privilege; (3) choose architectural controls for supply-chain integrity; (4) document architecture decisions.
@@ -1374,6 +2529,71 @@ Layer controls across application, data and pipeline, with checked trust boundar
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 Hashes"]
+  N2["Lab — Lab — verifying an artifact"]
+  N3["19.2 Lab result"]
+  N4["19.3 Signatures"]
+  N5["19.4 Keys and identities"]
+  N6["19.5 Encryption"]
+  N7["19.6 Key management"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 Hashes"]
+  N2["Lab — Lab — verifying an artifact"]
+  N3["19.2 Lab result"]
+  N4["19.3 Signatures"]
+  N5["19.4 Keys and identities"]
+  N6["19.5 Encryption"]
+  N7["19.6 Key management"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 Hashes]
+    |
+    v
+[Lab — Lab — verifying an artifact]
+    |
+    v
+[19.2 Lab result]
+    |
+    v
+[19.3 Signatures]
+    |
+    v
+[19.4 Keys and identities]
+    |
+    v
+[19.5 Encryption]
+    |
+    v
+[19.6 Key management]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Learning outcomes
 
@@ -1471,6 +2691,71 @@ Hashes, signatures and managed identities let you trust what you deploy.
 
 ## Chapter 20 — Application and software supply chain security: engineering context
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 The chain"]
+  N2["20.2 Attack classes"]
+  N3["20.3 Coastline's controls"]
+  N4["20.4 Standards"]
+  N5["20.5 Open source realities"]
+  N6["20.6 Engineering context"]
+  N7["Responsibility"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 The chain"]
+  N2["20.2 Attack classes"]
+  N3["20.3 Coastline's controls"]
+  N4["20.4 Standards"]
+  N5["20.5 Open source realities"]
+  N6["20.6 Engineering context"]
+  N7["Responsibility"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 The chain]
+    |
+    v
+[20.2 Attack classes]
+    |
+    v
+[20.3 Coastline's controls]
+    |
+    v
+[20.4 Standards]
+    |
+    v
+[20.5 Open source realities]
+    |
+    v
+[20.6 Engineering context]
+    |
+    v
+[Responsibility]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes
 
 You will (1) describe the software supply chain from source to user; (2) identify actors and stages; (3) relate known attack classes to stages; (4) place Coastline's controls on the chain.
@@ -1543,6 +2828,71 @@ Map the chain, its actors and controls, then engineer the gaps closed.
 
 ## Chapter 21 — Application and software supply chain security: requirements
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 Sources of requirements"]
+  N2["21.2 Writing them well"]
+  N3["21.3 Application requirements"]
+  N4["21.4 Pipeline requirements"]
+  N5["21.5 Prioritising"]
+  N6["21.6 Acceptance tests"]
+  N7["Traceability to tests"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 Sources of requirements"]
+  N2["21.2 Writing them well"]
+  N3["21.3 Application requirements"]
+  N4["21.4 Pipeline requirements"]
+  N5["21.5 Prioritising"]
+  N6["21.6 Acceptance tests"]
+  N7["Traceability to tests"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 Sources of requirements]
+    |
+    v
+[21.2 Writing them well]
+    |
+    v
+[21.3 Application requirements]
+    |
+    v
+[21.4 Pipeline requirements]
+    |
+    v
+[21.5 Prioritising]
+    |
+    v
+[21.6 Acceptance tests]
+    |
+    v
+[Traceability to tests]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Learning outcomes
 
 You will (1) write verifiable security requirements for an application and its pipeline; (2) derive requirements from standards and threats; (3) prioritise requirements; (4) define acceptance tests.
@@ -1614,6 +2964,71 @@ Derive testable requirements from threats and standards and give each an accepta
 <a id="ch-22"></a>
 
 ## Chapter 22 — Application and software supply chain security: system and data models
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 Data flow diagrams"]
+  N2["22.2 Trust boundaries"]
+  N3["22.3 Software as data"]
+  N4["22.4 Linking models"]
+  N5["22.5 Model upkeep"]
+  N6["22.6 Simplicity"]
+  N7["Verifying flows"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 Data flow diagrams"]
+  N2["22.2 Trust boundaries"]
+  N3["22.3 Software as data"]
+  N4["22.4 Linking models"]
+  N5["22.5 Model upkeep"]
+  N6["22.6 Simplicity"]
+  N7["Verifying flows"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 Data flow diagrams]
+    |
+    v
+[22.2 Trust boundaries]
+    |
+    v
+[22.3 Software as data]
+    |
+    v
+[22.4 Linking models]
+    |
+    v
+[22.5 Model upkeep]
+    |
+    v
+[22.6 Simplicity]
+    |
+    v
+[Verifying flows]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Learning outcomes
 
@@ -1691,6 +3106,71 @@ Model flows, boundaries and software metadata, and keep the models current.
 
 ## Chapter 23 — Application and software supply chain security: threat and failure analysis
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 STRIDE"]
+  N2["23.2 Examples"]
+  N3["23.3 Failure modes"]
+  N4["23.4 Ranking"]
+  N5["23.5 Linking to controls"]
+  N6["23.6 Review"]
+  N7["Abuse cases"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 STRIDE"]
+  N2["23.2 Examples"]
+  N3["23.3 Failure modes"]
+  N4["23.4 Ranking"]
+  N5["23.5 Linking to controls"]
+  N6["23.6 Review"]
+  N7["Abuse cases"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 STRIDE]
+    |
+    v
+[23.2 Examples]
+    |
+    v
+[23.3 Failure modes]
+    |
+    v
+[23.4 Ranking]
+    |
+    v
+[23.5 Linking to controls]
+    |
+    v
+[23.6 Review]
+    |
+    v
+[Abuse cases]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Learning outcomes
 
 You will (1) apply STRIDE to the system model; (2) analyse failure modes of pipeline components; (3) rank threats and failures; (4) link each to controls.
@@ -1766,6 +3246,71 @@ STRIDE and failure analysis turn models into ranked, controlled risks.
 <a id="ch-24"></a>
 
 ## Chapter 24 — Application and software supply chain security: methods I
+
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 Generating SBOMs"]
+  N2["24.2 Matching advisories"]
+  N3["Lab — Lab — SBOM against advisories"]
+  N4["24.3 Lab result"]
+  N5["24.4 Prioritising"]
+  N6["24.5 In CI"]
+  N7["Handling false matches"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 Generating SBOMs"]
+  N2["24.2 Matching advisories"]
+  N3["Lab — Lab — SBOM against advisories"]
+  N4["24.3 Lab result"]
+  N5["24.4 Prioritising"]
+  N6["24.5 In CI"]
+  N7["Handling false matches"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 Generating SBOMs]
+    |
+    v
+[24.2 Matching advisories]
+    |
+    v
+[Lab — Lab — SBOM against advisories]
+    |
+    v
+[24.3 Lab result]
+    |
+    v
+[24.4 Prioritising]
+    |
+    v
+[24.5 In CI]
+    |
+    v
+[Handling false matches]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
 
 ### Learning outcomes
 
@@ -1860,6 +3405,71 @@ SBOMs plus correct version matching and context-aware prioritisation make adviso
 
 ## Chapter 25 — Design studio I
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 The brief"]
+  N2["25.2 Alternatives"]
+  N3["25.3 Critique"]
+  N4["25.4 Prototype"]
+  N5["25.5 Presentation"]
+  N6["25.6 Peer review"]
+  N7["Team roles"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 The brief"]
+  N2["25.2 Alternatives"]
+  N3["25.3 Critique"]
+  N4["25.4 Prototype"]
+  N5["25.5 Presentation"]
+  N6["25.6 Peer review"]
+  N7["Team roles"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 The brief]
+    |
+    v
+[25.2 Alternatives]
+    |
+    v
+[25.3 Critique]
+    |
+    v
+[25.4 Prototype]
+    |
+    v
+[25.5 Presentation]
+    |
+    v
+[25.6 Peer review]
+    |
+    v
+[Team roles]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Learning outcomes
 
 You will (1) work in a team on a supply-chain design problem; (2) produce alternative designs; (3) critique designs against requirements; (4) present a recommendation.
@@ -1936,6 +3546,71 @@ Compare alternatives against requirements, prototype and accept critique.
 
 ## Chapter 26 — Application and software supply chain security: architecture alternatives
 
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 The question"]
+  N2["26.2 Risk trade-offs"]
+  N3["26.3 Build options"]
+  N4["26.4 Reproducibility"]
+  N5["26.5 Usability"]
+  N6["26.6 Decision"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 The question"]
+  N2["26.2 Risk trade-offs"]
+  N3["26.3 Build options"]
+  N4["26.4 Reproducibility"]
+  N5["26.5 Usability"]
+  N6["26.6 Decision"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 The question]
+    |
+    v
+[26.2 Risk trade-offs]
+    |
+    v
+[26.3 Build options]
+    |
+    v
+[26.4 Reproducibility]
+    |
+    v
+[26.5 Usability]
+    |
+    v
+[26.6 Decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
+
 ### Learning outcomes
 
 You will (1) compare architectural options for dependency management and build integrity; (2) evaluate trade-offs in cost, risk and usability; (3) use evidence from the literature to justify choices; (4) record decisions.
@@ -2003,6 +3678,71 @@ Choose architectures that balance control, update speed and usability, with reco
 <a id="ch-27"></a>
 
 ## Chapter 27 — Application and software supply chain security: control design
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Source controls"]
+  N2["27.2 Dependency controls"]
+  N3["27.3 Build controls"]
+  N4["27.4 Deployment controls"]
+  N5["27.5 Failure behaviour"]
+  N6["27.6 Exceptions"]
+  N7["Policy testing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Source controls"]
+  N2["27.2 Dependency controls"]
+  N3["27.3 Build controls"]
+  N4["27.4 Deployment controls"]
+  N5["27.5 Failure behaviour"]
+  N6["27.6 Exceptions"]
+  N7["Policy testing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Source controls]
+    |
+    v
+[27.2 Dependency controls]
+    |
+    v
+[27.3 Build controls]
+    |
+    v
+[27.4 Deployment controls]
+    |
+    v
+[27.5 Failure behaviour]
+    |
+    v
+[27.6 Exceptions]
+    |
+    v
+[Policy testing]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Learning outcomes
 
@@ -2076,6 +3816,71 @@ Write controls as reviewed policy, make them fail closed and govern exceptions.
 
 ## Chapter 28 — Application and software supply chain security: implementation I
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 Output encoding"]
+  N2["28.2 Authorisation"]
+  N3["28.3 Upgrading tmpl"]
+  N4["28.4 Implementing the gate"]
+  N5["28.5 Regression review"]
+  N6["28.6 Rollback plan"]
+  N7["Code review focus"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 Output encoding"]
+  N2["28.2 Authorisation"]
+  N3["28.3 Upgrading tmpl"]
+  N4["28.4 Implementing the gate"]
+  N5["28.5 Regression review"]
+  N6["28.6 Rollback plan"]
+  N7["Code review focus"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 Output encoding]
+    |
+    v
+[28.2 Authorisation]
+    |
+    v
+[28.3 Upgrading tmpl]
+    |
+    v
+[28.4 Implementing the gate]
+    |
+    v
+[28.5 Regression review]
+    |
+    v
+[28.6 Rollback plan]
+    |
+    v
+[Code review focus]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Learning outcomes
 
 You will (1) implement output encoding and authorisation checks in the application; (2) fix the tmpl advisory safely; (3) implement the dependency gate; (4) review implementation for regressions.
@@ -2147,6 +3952,71 @@ Implement defaults that encode and authorise, and upgrade with tests behind you.
 <a id="ch-29"></a>
 
 ## Chapter 29 — Application and software supply chain security: measurement
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 What to measure"]
+  N2["Lab — Lab — remediation times"]
+  N3["29.2 Lab result"]
+  N4["29.3 Late items"]
+  N5["29.4 Perverse incentives"]
+  N6["29.5 Freshness"]
+  N7["Reading the dashboard"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 What to measure"]
+  N2["Lab — Lab — remediation times"]
+  N3["29.2 Lab result"]
+  N4["29.3 Late items"]
+  N5["29.4 Perverse incentives"]
+  N6["29.5 Freshness"]
+  N7["Reading the dashboard"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 What to measure]
+    |
+    v
+[Lab — Lab — remediation times]
+    |
+    v
+[29.2 Lab result]
+    |
+    v
+[29.3 Late items]
+    |
+    v
+[29.4 Perverse incentives]
+    |
+    v
+[29.5 Freshness]
+    |
+    v
+[Reading the dashboard]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Learning outcomes
 
@@ -2237,6 +4107,71 @@ Measure remediation, provenance and freshness, find causes and guard against gam
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 Why test security rules"]
+  N2["Lab — Lab — refund authorisation tests"]
+  N3["30.2 Lab result"]
+  N4["30.3 Negative cases"]
+  N5["30.4 In CI"]
+  N6["30.5 Mutation thinking"]
+  N7["Test naming"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 Why test security rules"]
+  N2["Lab — Lab — refund authorisation tests"]
+  N3["30.2 Lab result"]
+  N4["30.3 Negative cases"]
+  N5["30.4 In CI"]
+  N6["30.5 Mutation thinking"]
+  N7["Test naming"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 Why test security rules]
+    |
+    v
+[Lab — Lab — refund authorisation tests]
+    |
+    v
+[30.2 Lab result]
+    |
+    v
+[30.3 Negative cases]
+    |
+    v
+[30.4 In CI]
+    |
+    v
+[30.5 Mutation thinking]
+    |
+    v
+[Test naming]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Learning outcomes
 
@@ -2330,6 +4265,71 @@ Test allowed and refused cases at the boundaries, in CI, and check the tests can
 
 ## Chapter 31 — Application and software supply chain security: implementation II
 
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Lesson map
+
+Lesson 31 published. Map, example, EX091.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["31.1 Provenance in CI"]
+  N2["31.2 Signing"]
+  N3["31.3 Storage"]
+  N4["31.4 Deployment verification"]
+  N5["31.5 End-to-end test"]
+  N6["31.6 Performance"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX091"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["31.1 Provenance in CI"]
+  N2["31.2 Signing"]
+  N3["31.3 Storage"]
+  N4["31.4 Deployment verification"]
+  N5["31.5 End-to-end test"]
+  N6["31.6 Performance"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX091"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[31.1 Provenance in CI]
+    |
+    v
+[31.2 Signing]
+    |
+    v
+[31.3 Storage]
+    |
+    v
+[31.4 Deployment verification]
+    |
+    v
+[31.5 End-to-end test]
+    |
+    v
+[31.6 Performance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
+
 ### Learning outcomes
 
 You will (1) implement build provenance and signing in CI; (2) implement deployment verification; (3) integrate SBOM storage with artifacts; (4) test the full path end to end.
@@ -2397,6 +4397,71 @@ Generate, store and verify provenance and signatures end to end, and test that f
 <a id="ch-32"></a>
 
 ## Chapter 32 — Application and software supply chain security: reliability
+
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Lesson map
+
+Lesson 32 published. Map, example, EX094.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["32.1 Reliable controls"]
+  N2["32.2 External dependencies"]
+  N3["32.3 Fail closed, recover fast"]
+  N4["32.4 Measuring availability"]
+  N5["32.5 Redundancy"]
+  N6["32.6 Testing failure"]
+  N7["Error messages"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX094"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["32.1 Reliable controls"]
+  N2["32.2 External dependencies"]
+  N3["32.3 Fail closed, recover fast"]
+  N4["32.4 Measuring availability"]
+  N5["32.5 Redundancy"]
+  N6["32.6 Testing failure"]
+  N7["Error messages"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX094"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[32.1 Reliable controls]
+    |
+    v
+[32.2 External dependencies]
+    |
+    v
+[32.3 Fail closed, recover fast]
+    |
+    v
+[32.4 Measuring availability]
+    |
+    v
+[32.5 Redundancy]
+    |
+    v
+[32.6 Testing failure]
+    |
+    v
+[Error messages]
+    |
+    v
+[Worked example] --> [Exercise EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
 
 ### Learning outcomes
 
@@ -2474,6 +4539,71 @@ Controls must be reliable, with tested fallbacks that keep integrity.
 
 ## Chapter 33 — Application and software supply chain security: safety and resilience
 
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Lesson map
+
+Lesson 33 published. Map, example, EX097.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["33.1 Assume compromise"]
+  N2["33.2 Response plan"]
+  N3["33.3 Known-good state"]
+  N4["33.4 Rider safety"]
+  N5["33.5 Exercise"]
+  N6["33.6 Lessons"]
+  N7["Communication"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX097"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["33.1 Assume compromise"]
+  N2["33.2 Response plan"]
+  N3["33.3 Known-good state"]
+  N4["33.4 Rider safety"]
+  N5["33.5 Exercise"]
+  N6["33.6 Lessons"]
+  N7["Communication"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX097"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[33.1 Assume compromise]
+    |
+    v
+[33.2 Response plan]
+    |
+    v
+[33.3 Known-good state]
+    |
+    v
+[33.4 Rider safety]
+    |
+    v
+[33.5 Exercise]
+    |
+    v
+[33.6 Lessons]
+    |
+    v
+[Communication]
+    |
+    v
+[Worked example] --> [Exercise EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
+
 ### Learning outcomes
 
 You will (1) plan for compromise of a dependency or the pipeline; (2) design response and recovery for supply-chain incidents; (3) protect riders during incidents; (4) learn from exercises.
@@ -2550,6 +4680,71 @@ Plan for compromise: find, stop, roll back, rotate and keep the service running.
 
 ## Chapter 34 — Application and software supply chain security: integration
 
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Lesson map
+
+Lesson 34 published. Map, example, EX100.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["34.1 One workflow"]
+  N2["34.2 Aligning teams"]
+  N3["34.3 Avoiding duplication"]
+  N4["34.4 Developer experience"]
+  N5["34.5 Integration testing"]
+  N6["34.6 SAMM view"]
+  N7["Documentation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX100"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["34.1 One workflow"]
+  N2["34.2 Aligning teams"]
+  N3["34.3 Avoiding duplication"]
+  N4["34.4 Developer experience"]
+  N5["34.5 Integration testing"]
+  N6["34.6 SAMM view"]
+  N7["Documentation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX100"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[34.1 One workflow]
+    |
+    v
+[34.2 Aligning teams]
+    |
+    v
+[34.3 Avoiding duplication]
+    |
+    v
+[34.4 Developer experience]
+    |
+    v
+[34.5 Integration testing]
+    |
+    v
+[34.6 SAMM view]
+    |
+    v
+[Documentation]
+    |
+    v
+[Worked example] --> [Exercise EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate application security and supply-chain controls into one workflow; (2) align teams and tools; (3) avoid duplicated or conflicting checks; (4) manage the developer experience.
@@ -2625,6 +4820,71 @@ Integrate checks into one clear workflow owned by aligned teams.
 <a id="ch-35"></a>
 
 ## Chapter 35 — Design studio II
+
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Lesson map
+
+Lesson 35 published. Map, example, EX103.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["35.1 The brief"]
+  N2["35.2 Vendor risk"]
+  N3["35.3 Technical isolation"]
+  N4["35.4 Contractual controls"]
+  N5["35.5 Monitoring"]
+  N6["35.6 Presentation"]
+  N7["Exit planning"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX103"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["35.1 The brief"]
+  N2["35.2 Vendor risk"]
+  N3["35.3 Technical isolation"]
+  N4["35.4 Contractual controls"]
+  N5["35.5 Monitoring"]
+  N6["35.6 Presentation"]
+  N7["Exit planning"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX103"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[35.1 The brief]
+    |
+    v
+[35.2 Vendor risk]
+    |
+    v
+[35.3 Technical isolation]
+    |
+    v
+[35.4 Contractual controls]
+    |
+    v
+[35.5 Monitoring]
+    |
+    v
+[35.6 Presentation]
+    |
+    v
+[Exit planning]
+    |
+    v
+[Worked example] --> [Exercise EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
 
 ### Learning outcomes
 
@@ -2706,6 +4966,71 @@ Third-party code needs technical isolation, contractual terms and monitoring.
 
 ## Chapter 36 — Application and software supply chain security: performance and scale
 
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Lesson map
+
+Lesson 36 published. Map, example, EX106.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["36.1 Growth"]
+  N2["36.2 Incremental checks"]
+  N3["36.3 Safe caching"]
+  N4["36.4 Parallelism"]
+  N5["36.5 Measuring cost"]
+  N6["36.6 Scale of data"]
+  N7["Planning for growth"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX106"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["36.1 Growth"]
+  N2["36.2 Incremental checks"]
+  N3["36.3 Safe caching"]
+  N4["36.4 Parallelism"]
+  N5["36.5 Measuring cost"]
+  N6["36.6 Scale of data"]
+  N7["Planning for growth"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX106"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[36.1 Growth]
+    |
+    v
+[36.2 Incremental checks]
+    |
+    v
+[36.3 Safe caching]
+    |
+    v
+[36.4 Parallelism]
+    |
+    v
+[36.5 Measuring cost]
+    |
+    v
+[36.6 Scale of data]
+    |
+    v
+[Planning for growth]
+    |
+    v
+[Worked example] --> [Exercise EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
+
 ### Learning outcomes
 
 You will (1) keep security controls fast as the codebase and team grow; (2) scale SBOM and advisory checks; (3) cache safely; (4) measure the cost of controls.
@@ -2777,6 +5102,71 @@ Scale checks with incremental work, safe caching and measured cost.
 <a id="ch-37"></a>
 
 ## Chapter 37 — Application and software supply chain security: operations
+
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Lesson map
+
+Lesson 37 published. Map, example, EX109.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["37.1 Monitoring"]
+  N2["37.2 Alerts"]
+  N3["37.3 Patching"]
+  N4["37.4 Configuration"]
+  N5["37.5 On-call"]
+  N6["37.6 Working with operations"]
+  N7["Incident handover"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX109"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["37.1 Monitoring"]
+  N2["37.2 Alerts"]
+  N3["37.3 Patching"]
+  N4["37.4 Configuration"]
+  N5["37.5 On-call"]
+  N6["37.6 Working with operations"]
+  N7["Incident handover"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX109"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[37.1 Monitoring]
+    |
+    v
+[37.2 Alerts]
+    |
+    v
+[37.3 Patching]
+    |
+    v
+[37.4 Configuration]
+    |
+    v
+[37.5 On-call]
+    |
+    v
+[37.6 Working with operations]
+    |
+    v
+[Incident handover]
+    |
+    v
+[Worked example] --> [Exercise EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
 
 ### Learning outcomes
 
@@ -2857,6 +5247,71 @@ Operate with logs, alerts, drift detection and on-call aligned to the pipeline.
 <a id="ch-38"></a>
 
 ## Chapter 38 — Application and software supply chain security: validation
+
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Lesson map
+
+Lesson 38 published. Map, example, EX112.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["38.1 What validation means"]
+  N2["Lab — Lab — provenance policy"]
+  N3["38.2 Lab result"]
+  N4["38.3 Investigating denials"]
+  N5["38.4 Evidence for auditors"]
+  N6["38.5 Continuous validation"]
+  N7["Validation coverage"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX112"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["38.1 What validation means"]
+  N2["Lab — Lab — provenance policy"]
+  N3["38.2 Lab result"]
+  N4["38.3 Investigating denials"]
+  N5["38.4 Evidence for auditors"]
+  N6["38.5 Continuous validation"]
+  N7["Validation coverage"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX112"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[38.1 What validation means]
+    |
+    v
+[Lab — Lab — provenance policy]
+    |
+    v
+[38.2 Lab result]
+    |
+    v
+[38.3 Investigating denials]
+    |
+    v
+[38.4 Evidence for auditors]
+    |
+    v
+[38.5 Continuous validation]
+    |
+    v
+[Validation coverage]
+    |
+    v
+[Worked example] --> [Exercise EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
 
 ### Learning outcomes
 
@@ -2949,6 +5404,71 @@ Validate continuously that what runs meets the provenance policy, and keep evide
 
 ## Chapter 39 — Application and software supply chain security: maintainability
 
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Lesson map
+
+Lesson 39 published. Map, example, EX115.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["39.1 Abandoned components"]
+  N2["39.2 Replacement planning"]
+  N3["39.3 Reducing dependencies"]
+  N4["39.4 Ownership"]
+  N5["39.5 Supporting upstream"]
+  N6["39.6 Control maintenance"]
+  N7["Choosing new dependencies"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX115"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["39.1 Abandoned components"]
+  N2["39.2 Replacement planning"]
+  N3["39.3 Reducing dependencies"]
+  N4["39.4 Ownership"]
+  N5["39.5 Supporting upstream"]
+  N6["39.6 Control maintenance"]
+  N7["Choosing new dependencies"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX115"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[39.1 Abandoned components]
+    |
+    v
+[39.2 Replacement planning]
+    |
+    v
+[39.3 Reducing dependencies]
+    |
+    v
+[39.4 Ownership]
+    |
+    v
+[39.5 Supporting upstream]
+    |
+    v
+[39.6 Control maintenance]
+    |
+    v
+[Choosing new dependencies]
+    |
+    v
+[Worked example] --> [Exercise EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
+
 ### Learning outcomes
 
 You will (1) keep dependencies and controls maintainable over years; (2) plan replacement of abandoned components; (3) reduce dependency count; (4) document ownership.
@@ -3028,6 +5548,71 @@ Maintainable supply chains have fewer, owned, maintained components and supporte
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Lesson map
+
+Lesson 40 published. Map, example, EX118.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["40.1 Authorisation"]
+  N2["40.2 WSTG structure"]
+  N3["40.3 Pipeline review"]
+  N4["40.4 Evidence"]
+  N5["40.5 Results"]
+  N6["40.6 Reporting"]
+  N7["Retesting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX118"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["40.1 Authorisation"]
+  N2["40.2 WSTG structure"]
+  N3["40.3 Pipeline review"]
+  N4["40.4 Evidence"]
+  N5["40.5 Results"]
+  N6["40.6 Reporting"]
+  N7["Retesting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX118"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[40.1 Authorisation]
+    |
+    v
+[40.2 WSTG structure]
+    |
+    v
+[40.3 Pipeline review]
+    |
+    v
+[40.4 Evidence]
+    |
+    v
+[40.5 Results]
+    |
+    v
+[40.6 Reporting]
+    |
+    v
+[Retesting]
+    |
+    v
+[Worked example] --> [Exercise EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Learning outcomes
 
@@ -3109,6 +5694,71 @@ Authorised, structured verification with evidence closes the loop on requirement
 
 ## Chapter 41 — Application and software supply chain security: system optimization
 
+<!-- cyberabc:lesson-figures:start ch-41 -->
+### Lesson map
+
+Lesson 41 published. Map, example, EX121.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["41.1 Whole-system view"]
+  N2["41.2 Finding the bottleneck"]
+  N3["41.3 Changing the system"]
+  N4["41.4 Cost and risk"]
+  N5["41.5 Choosing next improvements"]
+  N6["41.6 Avoiding local optimisation"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX121"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["41.1 Whole-system view"]
+  N2["41.2 Finding the bottleneck"]
+  N3["41.3 Changing the system"]
+  N4["41.4 Cost and risk"]
+  N5["41.5 Choosing next improvements"]
+  N6["41.6 Avoiding local optimisation"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX121"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[41.1 Whole-system view]
+    |
+    v
+[41.2 Finding the bottleneck]
+    |
+    v
+[41.3 Changing the system]
+    |
+    v
+[41.4 Cost and risk]
+    |
+    v
+[41.5 Choosing next improvements]
+    |
+    v
+[41.6 Avoiding local optimisation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX121]
+```
+<!-- cyberabc:lesson-figures:end ch-41 -->
+
+
 ### Learning outcomes
 
 You will (1) optimise the security system as a whole rather than individual controls; (2) find bottlenecks in remediation; (3) balance risk reduction against cost; (4) use data to choose the next improvement.
@@ -3176,6 +5826,71 @@ Optimise the whole flow from advisory to deployment, guided by measured bottlene
 <a id="ch-42"></a>
 
 ## Chapter 42 — Application and software supply chain security: applied research
+
+<!-- cyberabc:lesson-figures:start ch-42 -->
+### Lesson map
+
+Lesson 42 published. Map, example, EX124.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["42.1 The question"]
+  N2["42.2 Design"]
+  N3["42.3 Results"]
+  N4["42.4 Interpretation"]
+  N5["42.5 Limitations"]
+  N6["42.6 Reporting"]
+  N7["Ethics of the study"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX124"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["42.1 The question"]
+  N2["42.2 Design"]
+  N3["42.3 Results"]
+  N4["42.4 Interpretation"]
+  N5["42.5 Limitations"]
+  N6["42.6 Reporting"]
+  N7["Ethics of the study"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX124"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[42.1 The question]
+    |
+    v
+[42.2 Design]
+    |
+    v
+[42.3 Results]
+    |
+    v
+[42.4 Interpretation]
+    |
+    v
+[42.5 Limitations]
+    |
+    v
+[42.6 Reporting]
+    |
+    v
+[Ethics of the study]
+    |
+    v
+[Worked example] --> [Exercise EX124]
+```
+<!-- cyberabc:lesson-figures:end ch-42 -->
+
 
 ### Learning outcomes
 
@@ -3253,6 +5968,71 @@ Applied research turns engineering changes into evidence, with honest limits.
 
 ## Chapter 43 — Industry or public-service practice
 
+<!-- cyberabc:lesson-figures:start ch-43 -->
+### Lesson map
+
+Lesson 43 published. Map, example, EX127.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["43.1 The placement"]
+  N2["43.2 Tasks"]
+  N3["43.3 Conduct"]
+  N4["43.4 Public service"]
+  N5["43.5 Mentoring"]
+  N6["43.6 Reflection"]
+  N7["Working with operations"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX127"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["43.1 The placement"]
+  N2["43.2 Tasks"]
+  N3["43.3 Conduct"]
+  N4["43.4 Public service"]
+  N5["43.5 Mentoring"]
+  N6["43.6 Reflection"]
+  N7["Working with operations"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX127"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[43.1 The placement]
+    |
+    v
+[43.2 Tasks]
+    |
+    v
+[43.3 Conduct]
+    |
+    v
+[43.4 Public service]
+    |
+    v
+[43.5 Mentoring]
+    |
+    v
+[43.6 Reflection]
+    |
+    v
+[Working with operations]
+    |
+    v
+[Worked example] --> [Exercise EX127]
+```
+<!-- cyberabc:lesson-figures:end ch-43 -->
+
+
 ### Learning outcomes
 
 You will (1) work in a professional engineering team on security tasks; (2) apply course knowledge in a real organisation; (3) follow professional conduct and confidentiality; (4) reflect on practice.
@@ -3329,6 +6109,71 @@ Placements test course knowledge against real constraints and conduct.
 
 ## Chapter 44 — Engineering capstone I
 
+<!-- cyberabc:lesson-figures:start ch-44 -->
+### Lesson map
+
+Lesson 44 published. Map, example, EX130.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["44.1 The need"]
+  N2["44.2 Requirements"]
+  N3["44.3 Success measures"]
+  N4["44.4 Plan"]
+  N5["44.5 Risks"]
+  N6["44.6 Agreement"]
+  N7["Scope control"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX130"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["44.1 The need"]
+  N2["44.2 Requirements"]
+  N3["44.3 Success measures"]
+  N4["44.4 Plan"]
+  N5["44.5 Risks"]
+  N6["44.6 Agreement"]
+  N7["Scope control"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX130"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[44.1 The need]
+    |
+    v
+[44.2 Requirements]
+    |
+    v
+[44.3 Success measures]
+    |
+    v
+[44.4 Plan]
+    |
+    v
+[44.5 Risks]
+    |
+    v
+[44.6 Agreement]
+    |
+    v
+[Scope control]
+    |
+    v
+[Worked example] --> [Exercise EX130]
+```
+<!-- cyberabc:lesson-figures:end ch-44 -->
+
+
 ### Learning outcomes
 
 You will (1) define a capstone project addressing a real supply-chain need; (2) set requirements and success measures; (3) plan work and risks; (4) secure stakeholder agreement.
@@ -3404,6 +6249,71 @@ A good capstone starts from a real need with measurable success and managed risk
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
+
+<!-- cyberabc:lesson-figures:start ch-45 -->
+### Lesson map
+
+Lesson 45 published. Map, example, EX133.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["45.1 Preparing"]
+  N2["45.2 Reviewers"]
+  N3["45.3 Findings"]
+  N4["45.4 Responses"]
+  N5["45.5 Traceability"]
+  N6["45.6 Value"]
+  N7["Review meeting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX133"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["45.1 Preparing"]
+  N2["45.2 Reviewers"]
+  N3["45.3 Findings"]
+  N4["45.4 Responses"]
+  N5["45.5 Traceability"]
+  N6["45.6 Value"]
+  N7["Review meeting"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX133"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[45.1 Preparing]
+    |
+    v
+[45.2 Reviewers]
+    |
+    v
+[45.3 Findings]
+    |
+    v
+[45.4 Responses]
+    |
+    v
+[45.5 Traceability]
+    |
+    v
+[45.6 Value]
+    |
+    v
+[Review meeting]
+    |
+    v
+[Worked example] --> [Exercise EX133]
+```
+<!-- cyberabc:lesson-figures:end ch-45 -->
+
 
 ### Learning outcomes
 
@@ -3485,6 +6395,71 @@ Independent review finds what authors miss; respond traceably.
 
 ## Chapter 46 — Engineering capstone II
 
+<!-- cyberabc:lesson-figures:start ch-46 -->
+### Lesson map
+
+Lesson 46 published. Map, example, EX136.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["46.1 Building"]
+  N2["46.2 Testing"]
+  N3["46.3 Timing"]
+  N4["46.4 Unexpected problem"]
+  N5["46.5 Documentation"]
+  N6["46.6 Handover readiness"]
+  N7["Code quality"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX136"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["46.1 Building"]
+  N2["46.2 Testing"]
+  N3["46.3 Timing"]
+  N4["46.4 Unexpected problem"]
+  N5["46.5 Documentation"]
+  N6["46.6 Handover readiness"]
+  N7["Code quality"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX136"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[46.1 Building]
+    |
+    v
+[46.2 Testing]
+    |
+    v
+[46.3 Timing]
+    |
+    v
+[46.4 Unexpected problem]
+    |
+    v
+[46.5 Documentation]
+    |
+    v
+[46.6 Handover readiness]
+    |
+    v
+[Code quality]
+    |
+    v
+[Worked example] --> [Exercise EX136]
+```
+<!-- cyberabc:lesson-figures:end ch-46 -->
+
+
 ### Learning outcomes
 
 You will (1) build and test the capstone system; (2) measure against success criteria; (3) handle unexpected problems; (4) document the implementation.
@@ -3560,6 +6535,71 @@ Build to the same standard you enforce and measure against agreed criteria.
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
+
+<!-- cyberabc:lesson-figures:start ch-47 -->
+### Lesson map
+
+Lesson 47 published. Map, example, EX139.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["47.1 The trial"]
+  N2["47.2 Expectations"]
+  N3["47.3 Observations"]
+  N4["47.4 Recovery"]
+  N5["47.5 Lessons"]
+  N6["47.6 Measuring"]
+  N7["Safety of the trial"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX139"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["47.1 The trial"]
+  N2["47.2 Expectations"]
+  N3["47.3 Observations"]
+  N4["47.4 Recovery"]
+  N5["47.5 Lessons"]
+  N6["47.6 Measuring"]
+  N7["Safety of the trial"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX139"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[47.1 The trial]
+    |
+    v
+[47.2 Expectations]
+    |
+    v
+[47.3 Observations]
+    |
+    v
+[47.4 Recovery]
+    |
+    v
+[47.5 Lessons]
+    |
+    v
+[47.6 Measuring]
+    |
+    v
+[Safety of the trial]
+    |
+    v
+[Worked example] --> [Exercise EX139]
+```
+<!-- cyberabc:lesson-figures:end ch-47 -->
+
 
 ### Learning outcomes
 
@@ -3641,6 +6681,71 @@ Planned failure trials prove that controls hold and recovery works.
 
 ## Chapter 48 — Evidence dossier
 
+<!-- cyberabc:lesson-figures:start ch-48 -->
+### Lesson map
+
+Lesson 48 published. Map, example, EX142.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["48.1 Purpose"]
+  N2["48.2 Structure"]
+  N3["48.3 Evidence types"]
+  N4["48.4 Gaps"]
+  N5["48.5 Usability"]
+  N6["48.6 Maintenance"]
+  N7["Audience needs"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX142"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["48.1 Purpose"]
+  N2["48.2 Structure"]
+  N3["48.3 Evidence types"]
+  N4["48.4 Gaps"]
+  N5["48.5 Usability"]
+  N6["48.6 Maintenance"]
+  N7["Audience needs"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX142"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[48.1 Purpose]
+    |
+    v
+[48.2 Structure]
+    |
+    v
+[48.3 Evidence types]
+    |
+    v
+[48.4 Gaps]
+    |
+    v
+[48.5 Usability]
+    |
+    v
+[48.6 Maintenance]
+    |
+    v
+[Audience needs]
+    |
+    v
+[Worked example] --> [Exercise EX142]
+```
+<!-- cyberabc:lesson-figures:end ch-48 -->
+
+
 ### Learning outcomes
 
 You will (1) assemble evidence that the system meets its requirements; (2) organise evidence by requirement; (3) include test results, reviews and trials; (4) make the dossier useful to assessors and operators.
@@ -3721,6 +6826,71 @@ An evidence dossier links each requirement to proof and states gaps openly.
 
 ## Chapter 49 — Engineering thesis
 
+<!-- cyberabc:lesson-figures:start ch-49 -->
+### Lesson map
+
+Lesson 49 published. Map, example, EX145.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["49.1 Structure"]
+  N2["49.2 Literature connections"]
+  N3["49.3 Discussion"]
+  N4["49.4 Limitations"]
+  N5["49.5 Future work"]
+  N6["49.6 Academic standards"]
+  N7["Writing process"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX145"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["49.1 Structure"]
+  N2["49.2 Literature connections"]
+  N3["49.3 Discussion"]
+  N4["49.4 Limitations"]
+  N5["49.5 Future work"]
+  N6["49.6 Academic standards"]
+  N7["Writing process"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX145"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[49.1 Structure]
+    |
+    v
+[49.2 Literature connections]
+    |
+    v
+[49.3 Discussion]
+    |
+    v
+[49.4 Limitations]
+    |
+    v
+[49.5 Future work]
+    |
+    v
+[49.6 Academic standards]
+    |
+    v
+[Writing process]
+    |
+    v
+[Worked example] --> [Exercise EX145]
+```
+<!-- cyberabc:lesson-figures:end ch-49 -->
+
+
 ### Learning outcomes
 
 You will (1) write an engineering thesis on the capstone; (2) connect design, implementation and evidence to the literature; (3) discuss limitations and future work; (4) meet academic standards.
@@ -3800,6 +6970,71 @@ An engineering thesis ties built systems to literature and states their limits.
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
+
+<!-- cyberabc:lesson-figures:start ch-50 -->
+### Lesson map
+
+Lesson 50 published. Map, example, EX148.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["50.1 Presentation"]
+  N2["50.2 Technical questions"]
+  N3["50.3 Ethical questions"]
+  N4["50.4 Reflection"]
+  N5["50.5 Development"]
+  N6["50.6 Thanks"]
+  N7["Preparing the defense"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX148"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["50.1 Presentation"]
+  N2["50.2 Technical questions"]
+  N3["50.3 Ethical questions"]
+  N4["50.4 Reflection"]
+  N5["50.5 Development"]
+  N6["50.6 Thanks"]
+  N7["Preparing the defense"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX148"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[50.1 Presentation]
+    |
+    v
+[50.2 Technical questions]
+    |
+    v
+[50.3 Ethical questions]
+    |
+    v
+[50.4 Reflection]
+    |
+    v
+[50.5 Development]
+    |
+    v
+[50.6 Thanks]
+    |
+    v
+[Preparing the defense]
+    |
+    v
+[Worked example] --> [Exercise EX148]
+```
+<!-- cyberabc:lesson-figures:end ch-50 -->
+
 
 ### Learning outcomes
 

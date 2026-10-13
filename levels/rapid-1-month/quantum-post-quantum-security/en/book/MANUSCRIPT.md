@@ -1,7 +1,7 @@
 # Quantum and Post-Quantum Security: A First Introduction
 
 - Language: English (`en`); rapid course, one month; approximately 80 hours of planned study.
-- Editorial state: **draft**. Chapters 1–4 of 4 have authored teaching text; exercises EX001–EX052 (thirteen per chapter) have matching worked results; offline labs use the Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–4 of 4 have authored teaching text; exercises EX001–EX052 (thirteen per chapter) have matching worked results; offline labs use the Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: new learners with no security role and basic digital literacy who want to understand what quantum computing means for everyday security and complete one guided task safely.
 - Relation to neighbouring books: the [professional book](../../../../professional-6-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) teaches the full migration workflow; the [technical book](../../../../technical-18-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) teaches hands-on configuration. **This book is a short, careful introduction**: core ideas, safe practice, how to map what a small organization depends on, and one guided lab.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -35,6 +35,71 @@ Primary sources were checked on 12 October 2026: NIST [FIPS 203](https://doi.org
 <a id="ch-01"></a>
 
 ## Chapter 1 — Quantum and post-quantum security: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Locks and seals"]
+  N2["1.2 What a quantum computer is"]
+  N3["1.3 What would and would not break"]
+  N4["1.4 Two kinds of risk with different timing"]
+  N5["1.5 The new standards"]
+  N6["1.6 Hybrid protection"]
+  N7["1.7 Deciding how much it matters: Lab M"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Locks and seals"]
+  N2["1.2 What a quantum computer is"]
+  N3["1.3 What would and would not break"]
+  N4["1.4 Two kinds of risk with different timing"]
+  N5["1.5 The new standards"]
+  N6["1.6 Hybrid protection"]
+  N7["1.7 Deciding how much it matters: Lab M"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Locks and seals]
+    |
+    v
+[1.2 What a quantum computer is]
+    |
+    v
+[1.3 What would and would not break]
+    |
+    v
+[1.4 Two kinds of risk with different timing]
+    |
+    v
+[1.5 The new standards]
+    |
+    v
+[1.6 Hybrid protection]
+    |
+    v
+[1.7 Deciding how much it matters: Lab M]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -140,6 +205,71 @@ Quantum computers, if built at scale, would break today's methods for agreeing k
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Why permission matters"]
+  N2["2.2 A simple scope"]
+  N3["2.3 Collecting only what you need"]
+  N4["2.4 Responsible handling"]
+  N5["2.5 Unsafe experiments"]
+  N6["2.6 Reporting clearly"]
+  N7["2.8 Practice activities"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Why permission matters"]
+  N2["2.2 A simple scope"]
+  N3["2.3 Collecting only what you need"]
+  N4["2.4 Responsible handling"]
+  N5["2.5 Unsafe experiments"]
+  N6["2.6 Reporting clearly"]
+  N7["2.8 Practice activities"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Why permission matters]
+    |
+    v
+[2.2 A simple scope]
+    |
+    v
+[2.3 Collecting only what you need]
+    |
+    v
+[2.4 Responsible handling]
+    |
+    v
+[2.5 Unsafe experiments]
+    |
+    v
+[2.6 Reporting clearly]
+    |
+    v
+[2.8 Practice activities]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) explain why permission is essential before checking any system; (2) write a simple scope; (3) collect only the information you need; (4) handle what you find responsibly; (5) avoid unsafe "experiments"; and (6) report clearly.
@@ -224,6 +354,71 @@ Safe practice starts with permission and a clear scope, collects only what is ne
 <a id="ch-03"></a>
 
 ## Chapter 3 — Quantum and post-quantum security: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Listing services"]
+  N2["3.2 Data and lifetimes"]
+  N3["3.3 Who controls security"]
+  N4["3.4 Recording facts with their source"]
+  N5["3.5 Unknowns are questions"]
+  N6["3.6 Practical activity — Lab J"]
+  N7["3.7 Choosing priorities"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Listing services"]
+  N2["3.2 Data and lifetimes"]
+  N3["3.3 Who controls security"]
+  N4["3.4 Recording facts with their source"]
+  N5["3.5 Unknowns are questions"]
+  N6["3.6 Practical activity — Lab J"]
+  N7["3.7 Choosing priorities"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Listing services]
+    |
+    v
+[3.2 Data and lifetimes]
+    |
+    v
+[3.3 Who controls security]
+    |
+    v
+[3.4 Recording facts with their source]
+    |
+    v
+[3.5 Unknowns are questions]
+    |
+    v
+[3.6 Practical activity — Lab J]
+    |
+    v
+[3.7 Choosing priorities]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -345,6 +540,71 @@ Mapping services, data lifetimes and who controls each service, with sourced fac
 <a id="ch-04"></a>
 
 ## Chapter 4 — Quantum and post-quantum security: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The guided lab — Lab T"]
+  N2["4.2 Offered versus used"]
+  N3["4.3 Checking your own browser with permission"]
+  N4["4.4 Writing a readiness note"]
+  N5["4.5 Questions for providers"]
+  N6["4.6 Applied synthesis"]
+  N7["4.7 Next steps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The guided lab — Lab T"]
+  N2["4.2 Offered versus used"]
+  N3["4.3 Checking your own browser with permission"]
+  N4["4.4 Writing a readiness note"]
+  N5["4.5 Questions for providers"]
+  N6["4.6 Applied synthesis"]
+  N7["4.7 Next steps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The guided lab — Lab T]
+    |
+    v
+[4.2 Offered versus used]
+    |
+    v
+[4.3 Checking your own browser with permission]
+    |
+    v
+[4.4 Writing a readiness note]
+    |
+    v
+[4.5 Questions for providers]
+    |
+    v
+[4.6 Applied synthesis]
+    |
+    v
+[4.7 Next steps]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

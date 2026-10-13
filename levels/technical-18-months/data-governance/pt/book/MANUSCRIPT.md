@@ -1,7 +1,7 @@
 # Governança de Dados: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 049, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que se preparam para trabalhar como técnicos de dados, registrando, conferindo, corrigindo e protegendo dados segundo regras acordadas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios comparam uma tabela de horários sintética com os registros de contagem de passageiros para encontrar, por linha, as viagens sem contagem, e normalizam nomes sintéticos de pontos de ônibus para descobrir quantos pontos reais existem por trás das variações. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,51 @@ Wang e Strong (1996); GDPR; LGPD. Lista completa em [Referências](#references).
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Começando na Southport
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 A estudante"]
+  N1["1.2 Governança para técnicos"]
+  N2["1.3 Aprendendo na prática"]
+  N3["1.4 As necessidades da Linkway"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 A estudante"]
+  N1["1.2 Governança para técnicos"]
+  N2["1.3 Aprendendo na prática"]
+  N3["1.4 As necessidades da Linkway"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 A estudante]
+    |
+    v
+[1.2 Governança para técnicos]
+    |
+    v
+[1.3 Aprendendo na prática]
+    |
+    v
+[1.4 As necessidades da Linkway]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -86,6 +131,46 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Dados em uma empresa de ônibus
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX005.
+
+```mermaid
+flowchart TD
+  N0["2.1 Principais dados"]
+  N1["2.2 Como as contagens são coletadas"]
+  N2["2.3 Quem usa as contagens"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX005"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Principais dados"]
+  N1["2.2 Como as contagens são coletadas"]
+  N2["2.3 Quem usa as contagens"]
+  N0 --> N1 --> N2 --> Q["EX005"]
+```
+
+```text
+[2.1 Principais dados]
+    |
+    v
+[2.2 Como as contagens são coletadas]
+    |
+    v
+[2.3 Quem usa as contagens]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX005]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) listar os principais dados de uma empresa de ônibus; (2) acompanhar como as contagens de passageiros são coletadas; (3) identificar quem as usa.
@@ -134,6 +219,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Registros e formulários
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX009.
+
+```mermaid
+flowchart TD
+  N0["3.1 Formulários em papel e em tela"]
+  N1["3.2 Um desenho melhor"]
+  N2["3.3 Dados de contato"]
+  N3["3.4 Testando com os usuários"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX009"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Formulários em papel e em tela"]
+  N1["3.2 Um desenho melhor"]
+  N2["3.3 Dados de contato"]
+  N3["3.4 Testando com os usuários"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX009"]
+```
+
+```text
+[3.1 Formulários em papel e em tela]
+    |
+    v
+[3.2 Um desenho melhor]
+    |
+    v
+[3.3 Dados de contato]
+    |
+    v
+[3.4 Testando com os usuários]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX009]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -184,6 +314,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Planilhas feitas com segurança
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["4.1 Uma planilha bagunçada"]
+  N1["4.2 Organizando"]
+  N2["4.3 Verificações"]
+  N3["4.4 Versões"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Uma planilha bagunçada"]
+  N1["4.2 Organizando"]
+  N2["4.3 Verificações"]
+  N3["4.4 Versões"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX013"]
+```
+
+```text
+[4.1 Uma planilha bagunçada]
+    |
+    v
+[4.2 Organizando]
+    |
+    v
+[4.3 Verificações]
+    |
+    v
+[4.4 Versões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) organizar planilhas com clareza; (2) proteger fórmulas e acrescentar verificações; (3) manter as versões sob controle.
@@ -232,6 +407,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Conferindo dados com Python
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX017.
+
+```mermaid
+flowchart TD
+  N0["5.1 Lendo um arquivo"]
+  N1["5.2 Verificações simples"]
+  N2["5.3 Resumos"]
+  N3["5.4 Salvando e compartilhando"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX017"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Lendo um arquivo"]
+  N1["5.2 Verificações simples"]
+  N2["5.3 Resumos"]
+  N3["5.4 Salvando e compartilhando"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX017"]
+```
+
+```text
+[5.1 Lendo um arquivo]
+    |
+    v
+[5.2 Verificações simples]
+    |
+    v
+[5.3 Resumos]
+    |
+    v
+[5.4 Salvando e compartilhando]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX017]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -282,6 +502,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Fundamentos de qualidade de dados
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["6.1 Dimensões"]
+  N1["6.2 Aplicando às contagens"]
+  N2["6.3 Escolhendo as verificações"]
+  N3["6.4 Qualidade para uma finalidade"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Dimensões"]
+  N1["6.2 Aplicando às contagens"]
+  N2["6.3 Escolhendo as verificações"]
+  N3["6.4 Qualidade para uma finalidade"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
+```
+
+```text
+[6.1 Dimensões]
+    |
+    v
+[6.2 Aplicando às contagens]
+    |
+    v
+[6.3 Escolhendo as verificações]
+    |
+    v
+[6.4 Qualidade para uma finalidade]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) nomear dimensões comuns de qualidade de dados; (2) aplicá-las aos dados de passageiros; (3) escolher a verificação certa para cada uma.
@@ -330,6 +595,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Viagens sem contagem
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["7.1 A verificação"]
+  N1["7.2 Resultados"]
+  N2["7.3 Encontrando a causa"]
+  N3["7.4 Relatório"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 A verificação"]
+  N1["7.2 Resultados"]
+  N2["7.3 Encontrando a causa"]
+  N3["7.4 Relatório"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX025"]
+```
+
+```text
+[7.1 A verificação]
+    |
+    v
+[7.2 Resultados]
+    |
+    v
+[7.3 Encontrando a causa]
+    |
+    v
+[7.4 Relatório]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -402,6 +712,46 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Nomes, códigos e padrões
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX029.
+
+```mermaid
+flowchart TD
+  N0["8.1 Nomes de pontos inconsistentes"]
+  N1["8.2 Normalizando"]
+  N2["8.4 Uma lista padrão"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX029"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Nomes de pontos inconsistentes"]
+  N1["8.2 Normalizando"]
+  N2["8.4 Uma lista padrão"]
+  N0 --> N1 --> N2 --> Q["EX029"]
+```
+
+```text
+[8.1 Nomes de pontos inconsistentes]
+    |
+    v
+[8.2 Normalizando]
+    |
+    v
+[8.4 Uma lista padrão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) identificar nomes inconsistentes; (2) normalizar textos com regras simples; (3) acordar uma lista padrão com um dono.
@@ -471,6 +821,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 9 — Dados pessoais no trabalho
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["9.1 O que conta"]
+  N1["9.2 Princípios"]
+  N2["9.3 Cuidados diários"]
+  N3["9.4 Na dúvida"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 O que conta"]
+  N1["9.2 Princípios"]
+  N2["9.3 Cuidados diários"]
+  N3["9.4 Na dúvida"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX033"]
+```
+
+```text
+[9.1 O que conta]
+    |
+    v
+[9.2 Princípios]
+    |
+    v
+[9.3 Cuidados diários]
+    |
+    v
+[9.4 Na dúvida]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) reconhecer dados pessoais; (2) aplicar princípios básicos de proteção de dados; (3) tratar dados pessoais com cuidado nas tarefas diárias.
@@ -519,6 +914,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Mantendo os dados seguros
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["10.1 Contas e senhas"]
+  N1["10.2 Acesso por necessidade"]
+  N2["10.3 Phishing"]
+  N3["10.4 Dispositivos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Contas e senhas"]
+  N1["10.2 Acesso por necessidade"]
+  N2["10.3 Phishing"]
+  N3["10.4 Dispositivos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX037"]
+```
+
+```text
+[10.1 Contas e senhas]
+    |
+    v
+[10.2 Acesso por necessidade]
+    |
+    v
+[10.3 Phishing]
+    |
+    v
+[10.4 Dispositivos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -569,6 +1009,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Compartilhamento e solicitações
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["11.1 Canais aprovados"]
+  N1["11.2 Solicitações de pessoas"]
+  N2["11.3 Preparando dados para parceiros"]
+  N3["11.4 Compartilhando agregados"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX041"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Canais aprovados"]
+  N1["11.2 Solicitações de pessoas"]
+  N2["11.3 Preparando dados para parceiros"]
+  N3["11.4 Compartilhando agregados"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX041"]
+```
+
+```text
+[11.1 Canais aprovados]
+    |
+    v
+[11.2 Solicitações de pessoas]
+    |
+    v
+[11.3 Preparando dados para parceiros]
+    |
+    v
+[11.4 Compartilhando agregados]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) compartilhar dados pelos canais aprovados; (2) apoiar solicitações de pessoas; (3) preparar dados para parceiros.
@@ -617,6 +1102,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Guardando e eliminando registros
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["12.1 A tabela"]
+  N1["12.2 Encontrando registros antigos"]
+  N2["12.3 Eliminando com aprovação"]
+  N3["12.4 Tornando rotina"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 A tabela"]
+  N1["12.2 Encontrando registros antigos"]
+  N2["12.3 Eliminando com aprovação"]
+  N3["12.4 Tornando rotina"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX045"]
+```
+
+```text
+[12.1 A tabela]
+    |
+    v
+[12.2 Encontrando registros antigos]
+    |
+    v
+[12.3 Eliminando com aprovação]
+    |
+    v
+[12.4 Tornando rotina]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -667,6 +1197,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 13 — Relatando problemas
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["13.1 O que faz um bom relato"]
+  N1["13.2 O registro de problemas"]
+  N2["13.3 Acompanhando até o fim"]
+  N3["13.4 Percebendo padrões"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 O que faz um bom relato"]
+  N1["13.2 O registro de problemas"]
+  N2["13.3 Acompanhando até o fim"]
+  N3["13.4 Percebendo padrões"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX049"]
+```
+
+```text
+[13.1 O que faz um bom relato]
+    |
+    v
+[13.2 O registro de problemas]
+    |
+    v
+[13.3 Acompanhando até o fim]
+    |
+    v
+[13.4 Percebendo padrões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) relatar problemas de dados com clareza; (2) usar um registro de problemas; (3) acompanhar os problemas até a correção.
@@ -715,6 +1290,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Documentação simples
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX053.
+
+```mermaid
+flowchart TD
+  N0["14.1 Verbetes do dicionário"]
+  N1["14.2 Um procedimento curto"]
+  N2["14.3 Testando os documentos"]
+  N3["14.4 Encontrando os documentos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX053"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 Verbetes do dicionário"]
+  N1["14.2 Um procedimento curto"]
+  N2["14.3 Testando os documentos"]
+  N3["14.4 Encontrando os documentos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX053"]
+```
+
+```text
+[14.1 Verbetes do dicionário]
+    |
+    v
+[14.2 Um procedimento curto]
+    |
+    v
+[14.3 Testando os documentos]
+    |
+    v
+[14.4 Encontrando os documentos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX053]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -765,6 +1385,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 15 — Trabalhando com um curador
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX057.
+
+```mermaid
+flowchart TD
+  N0["15.1 O papel da curadora"]
+  N1["15.2 Apoio regular"]
+  N2["15.3 Escalando decisões"]
+  N3["15.4 Mantendo registros"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX057"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 O papel da curadora"]
+  N1["15.2 Apoio regular"]
+  N2["15.3 Escalando decisões"]
+  N3["15.4 Mantendo registros"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX057"]
+```
+
+```text
+[15.1 O papel da curadora]
+    |
+    v
+[15.2 Apoio regular]
+    |
+    v
+[15.3 Escalando decisões]
+    |
+    v
+[15.4 Mantendo registros]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX057]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) entender o papel do curador de dados; (2) apoiar um curador em tarefas regulares; (3) escalar decisões corretamente.
@@ -813,6 +1478,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Prática no trabalho
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["16.1 O estágio"]
+  N1["16.2 Pressão e atalhos"]
+  N2["16.3 Comunicação"]
+  N3["16.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX061"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 O estágio"]
+  N1["16.2 Pressão e atalhos"]
+  N2["16.3 Comunicação"]
+  N3["16.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
+```
+
+```text
+[16.1 O estágio]
+    |
+    v
+[16.2 Pressão e atalhos]
+    |
+    v
+[16.3 Comunicação]
+    |
+    v
+[16.4 Reflexão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -863,6 +1573,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 17 — Avaliação prática
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX065.
+
+```mermaid
+flowchart TD
+  N0["17.1 A tarefa"]
+  N1["17.2 Fazendo as verificações"]
+  N2["17.3 Preparando o arquivo"]
+  N3["17.4 Explicando ao avaliador"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX065"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 A tarefa"]
+  N1["17.2 Fazendo as verificações"]
+  N2["17.3 Preparando o arquivo"]
+  N3["17.4 Explicando ao avaliador"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX065"]
+```
+
+```text
+[17.1 A tarefa]
+    |
+    v
+[17.2 Fazendo as verificações]
+    |
+    v
+[17.3 Preparando o arquivo]
+    |
+    v
+[17.4 Explicando ao avaliador]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX065]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) concluir uma tarefa prática com dados sob avaliação; (2) documentar seu trabalho; (3) explicar suas escolhas a um avaliador.
@@ -911,6 +1666,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Revisão e próximos passos
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX069.
+
+```mermaid
+flowchart TD
+  N0["18.1 Competências adquiridas"]
+  N1["18.2 Devolutiva"]
+  N2["18.3 Governança no trabalho"]
+  N3["18.4 Próximos passos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX069"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Competências adquiridas"]
+  N1["18.2 Devolutiva"]
+  N2["18.3 Governança no trabalho"]
+  N3["18.4 Próximos passos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX069"]
+```
+
+```text
+[18.1 Competências adquiridas]
+    |
+    v
+[18.2 Devolutiva]
+    |
+    v
+[18.3 Governança no trabalho]
+    |
+    v
+[18.4 Próximos passos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX069]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Objetivos de aprendizagem
 

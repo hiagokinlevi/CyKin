@@ -1,7 +1,7 @@
 # Cryptography and Trust Services: Postgraduate Course
 
 - Language: English (`en`); course 146, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: experienced practitioners leading organisation-scale cryptographic decisions.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: labs summarise inventories, scores, sizes and evaluation data; they implement no cryptography. Production systems use vetted libraries, HSMs and supplier products; never roll your own cryptography. All people, organisations and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ Katz and Lindell (3rd ed.); Boneh and Shoup, [*A Graduate Course in Applied Cryp
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced security decision-making
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Facts, assumptions and values"]
+  N3["1.3 Decision rules"]
+  N4["1.4 Writing the decision record"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Facts, assumptions and values"]
+  N3["1.3 Decision rules"]
+  N4["1.4 Writing the decision record"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Facts, assumptions and values]
+    |
+    v
+[1.3 Decision rules]
+    |
+    v
+[1.4 Writing the decision record]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -86,6 +141,66 @@ Organisation-scale cryptographic decisions improve when facts, assumptions and v
 <a id="ch-02"></a>
 
 ## Chapter 2 — Cryptography and trust services: current practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 What current practice means"]
+  N2["Lab — Endpoint inventory"]
+  N3["2.2 Reading the inventory"]
+  N4["2.3 Key types and certificates"]
+  N5["2.4 Where Corvane lags"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 What current practice means"]
+  N2["Lab — Endpoint inventory"]
+  N3["2.2 Reading the inventory"]
+  N4["2.3 Key types and certificates"]
+  N5["2.4 Where Corvane lags"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 What current practice means]
+    |
+    v
+[Lab — Endpoint inventory]
+    |
+    v
+[2.2 Reading the inventory]
+    |
+    v
+[2.3 Key types and certificates]
+    |
+    v
+[2.4 Where Corvane lags]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -169,6 +284,66 @@ Current practice is defined by standards; an inventory translates it into specif
 
 ## Chapter 3 — Cryptography and trust services: specialist evidence
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Specialist questions"]
+  N2["Lab — Post-quantum sizes"]
+  N3["3.2 Reading the sizes"]
+  N4["3.3 Where sizes matter at Corvane"]
+  N5["3.4 Judging evidence quality"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Specialist questions"]
+  N2["Lab — Post-quantum sizes"]
+  N3["3.2 Reading the sizes"]
+  N4["3.3 Where sizes matter at Corvane"]
+  N5["3.4 Judging evidence quality"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Specialist questions]
+    |
+    v
+[Lab — Post-quantum sizes]
+    |
+    v
+[3.2 Reading the sizes]
+    |
+    v
+[3.3 Where sizes matter at Corvane]
+    |
+    v
+[3.4 Judging evidence quality]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) gather specialist evidence on post-quantum readiness; (2) read standards for sizes and performance implications; (3) judge evidence quality for decisions.
@@ -249,6 +424,61 @@ Specialist evidence from standards and local testing, graded honestly, shows whe
 
 ## Chapter 4 — Advanced risk and ethics
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Long-lived confidentiality"]
+  N2["4.2 Risk scenarios"]
+  N3["4.3 Ethical duties"]
+  N4["4.4 Supplier weakness disclosure"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Long-lived confidentiality"]
+  N2["4.2 Risk scenarios"]
+  N3["4.3 Ethical duties"]
+  N4["4.4 Supplier weakness disclosure"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Long-lived confidentiality]
+    |
+    v
+[4.2 Risk scenarios]
+    |
+    v
+[4.3 Ethical duties]
+    |
+    v
+[4.4 Supplier weakness disclosure]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) assess risk for long-lived confidential data; (2) weigh ethical duties to partners and customers; (3) decide on disclosure of cryptographic weaknesses in supplier products.
@@ -298,6 +528,66 @@ Advanced risk work governs uncertain assumptions through scenarios and treats et
 <a id="ch-05"></a>
 
 ## Chapter 5 — Cryptography and trust services: design alternatives
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Three alternatives"]
+  N2["Lab — Weighted decision matrix"]
+  N3["5.2 Reading the matrix"]
+  N4["5.3 Hidden trade-offs"]
+  N5["5.4 Presenting alternatives"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Three alternatives"]
+  N2["Lab — Weighted decision matrix"]
+  N3["5.2 Reading the matrix"]
+  N4["5.3 Hidden trade-offs"]
+  N5["5.4 Presenting alternatives"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Three alternatives]
+    |
+    v
+[Lab — Weighted decision matrix]
+    |
+    v
+[5.2 Reading the matrix]
+    |
+    v
+[5.3 Hidden trade-offs]
+    |
+    v
+[5.4 Presenting alternatives]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -378,6 +668,66 @@ Comparing key-management alternatives with tested weights and explicit trade-off
 
 ## Chapter 6 — Cryptography and trust services: controlled evaluation
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Designing the evaluation"]
+  N2["Lab — Paired evaluation"]
+  N3["6.2 Reading the results"]
+  N4["6.3 Threats to the conclusion"]
+  N5["6.4 From evaluation to decision"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Designing the evaluation"]
+  N2["Lab — Paired evaluation"]
+  N3["6.2 Reading the results"]
+  N4["6.3 Threats to the conclusion"]
+  N5["6.4 From evaluation to decision"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Designing the evaluation]
+    |
+    v
+[Lab — Paired evaluation]
+    |
+    v
+[6.2 Reading the results]
+    |
+    v
+[6.3 Threats to the conclusion]
+    |
+    v
+[6.4 From evaluation to decision]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) design a controlled evaluation of a cryptographic baseline rollout; (2) analyse paired before-and-after data; (3) report effect, uncertainty and threats.
@@ -455,6 +805,61 @@ Pre-registered paired evaluations, with threats and costs, turn a promising base
 
 ## Chapter 7 — Cryptography and trust services: organizational integration
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Standards into processes"]
+  N2["7.2 Ownership across units"]
+  N3["7.3 Procurement and suppliers"]
+  N4["7.4 Change management"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Standards into processes"]
+  N2["7.2 Ownership across units"]
+  N3["7.3 Procurement and suppliers"]
+  N4["7.4 Change management"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Standards into processes]
+    |
+    v
+[7.2 Ownership across units]
+    |
+    v
+[7.3 Procurement and suppliers]
+    |
+    v
+[7.4 Change management]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) embed cryptographic standards into organisational processes; (2) assign ownership across units; (3) integrate with procurement, architecture review and change management.
@@ -504,6 +909,61 @@ Cryptography becomes organisational practice when standards drive processes, own
 <a id="ch-08"></a>
 
 ## Chapter 8 — Cryptography and trust services: difficult cases
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 TLS inspection"]
+  N2["8.2 Lawful access requests"]
+  N3["8.3 Availability versus protection"]
+  N4["8.4 Learning from difficult cases"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 TLS inspection"]
+  N2["8.2 Lawful access requests"]
+  N3["8.3 Availability versus protection"]
+  N4["8.4 Learning from difficult cases"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 TLS inspection]
+    |
+    v
+[8.2 Lawful access requests]
+    |
+    v
+[8.3 Availability versus protection]
+    |
+    v
+[8.4 Learning from difficult cases]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 
@@ -555,6 +1015,61 @@ Difficult cases force trade-offs between security, operations and law; documente
 
 ## Chapter 9 — Cryptography and trust services: leadership and assurance
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Leading the programme"]
+  N2["9.2 Assurance to the board"]
+  N3["9.3 Independent assurance"]
+  N4["9.4 Regulatory engagement"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Leading the programme"]
+  N2["9.2 Assurance to the board"]
+  N3["9.3 Independent assurance"]
+  N4["9.4 Regulatory engagement"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Leading the programme]
+    |
+    v
+[9.2 Assurance to the board]
+    |
+    v
+[9.3 Independent assurance]
+    |
+    v
+[9.4 Regulatory engagement]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) lead a cryptographic modernisation programme; (2) provide assurance to boards and regulators; (3) define programme metrics and reporting.
@@ -604,6 +1119,61 @@ Leadership turns cryptographic plans into delivered change, and honest metrics w
 <a id="ch-10"></a>
 
 ## Chapter 10 — Research reading and critique
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Reading as a practitioner"]
+  N2["10.2 Evaluating attack claims"]
+  N3["10.3 Evaluating performance claims"]
+  N4["10.4 Translating research"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Reading as a practitioner"]
+  N2["10.2 Evaluating attack claims"]
+  N3["10.3 Evaluating performance claims"]
+  N4["10.4 Translating research"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Reading as a practitioner]
+    |
+    v
+[10.2 Evaluating attack claims]
+    |
+    v
+[10.3 Evaluating performance claims]
+    |
+    v
+[10.4 Translating research]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -655,6 +1225,61 @@ Practitioners read research for claims, threat models and conditions, then trans
 
 ## Chapter 11 — Applied project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Project definition"]
+  N2["11.2 Partner transition"]
+  N3["11.3 Technical changes"]
+  N4["11.4 Outcomes and residual risk"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Project definition"]
+  N2["11.2 Partner transition"]
+  N3["11.3 Technical changes"]
+  N4["11.4 Outcomes and residual risk"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Project definition]
+    |
+    v
+[11.2 Partner transition]
+    |
+    v
+[11.3 Technical changes]
+    |
+    v
+[11.4 Outcomes and residual risk]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) deliver an applied project retiring legacy EDI cryptography; (2) coordinate partners through a transition; (3) measure outcomes and residual risk.
@@ -704,6 +1329,61 @@ Applied projects succeed when technical change is paired with partner support, m
 <a id="ch-12"></a>
 
 ## Chapter 12 — Final review and transfer
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Results against goals"]
+  N2["12.2 Transfer to operations"]
+  N3["12.3 Continuing improvement"]
+  N4["12.4 Personal development"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Results against goals"]
+  N2["12.2 Transfer to operations"]
+  N3["12.3 Continuing improvement"]
+  N4["12.4 Personal development"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Results against goals]
+    |
+    v
+[12.2 Transfer to operations]
+    |
+    v
+[12.3 Continuing improvement]
+    |
+    v
+[12.4 Personal development]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

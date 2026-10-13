@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso Prático de Um Mês
 
 - Idioma: português do Brasil (`pt`); curso 005, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 estão escritos; os exercícios EX001–EX050 têm resoluções correspondentes. O capítulo 1 e os exercícios EX001–EX005 são texto do autor original, traduzido com fidelidade e sem alterações de conteúdo; os capítulos 2–4 e os exercícios EX006–EX050 continuam o mesmo caso Northstar, com rubricas de 0 a 3. Os laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. A contagem de páginas A4 não foi verificada.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 estão escritos; os exercícios EX001–EX050 têm resoluções correspondentes. O capítulo 1 e os exercícios EX001–EX005 são texto do autor original, traduzido com fidelidade e sem alterações de conteúdo; os capítulos 2–4 e os exercícios EX006–EX050 continuam o mesmo caso Northstar, com rubricas de 0 a 3. Os laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. A contagem de páginas A4 não foi verificada.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); [escopo e exceções](../../../../../RIGHTS.md); as obras citadas mantêm seus direitos.
 
 [Página do curso](../../README.md) · [Índice de capítulos](../SUBJECTS.md) · [Plano do livro](PLAN.md) · [Skill do curso](../../skill/SKILL.md) · [Resoluções](#worked-results)
@@ -36,6 +36,71 @@ NIST [Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29); NIST [
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Governança, riscos e compliance de segurança: fundamentos e decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O problema de decisão"]
+  N1["1.2 Comece por um serviço, não por um produto"]
+  N2["1.3 Traduza uma ameaça em um cenário de negócio"]
+  N3["1.4 Escolha resultados que possam ser verificados"]
+  N4["1.5 Defina prioridades sob um limite real"]
+  N5["1.6 Um exemplo curto de trabalho"]
+  N6["1.7 O teste da estratégia em uma página"]
+  N7["EX001 — Atividade ou resultado"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O problema de decisão"]
+  N1["1.2 Comece por um serviço, não por um produto"]
+  N2["1.3 Traduza uma ameaça em um cenário de negócio"]
+  N3["1.4 Escolha resultados que possam ser verificados"]
+  N4["1.5 Defina prioridades sob um limite real"]
+  N5["1.6 Um exemplo curto de trabalho"]
+  N6["1.7 O teste da estratégia em uma página"]
+  N7["EX001 — Atividade ou resultado"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[1.1 O problema de decisão]
+    |
+    v
+[1.2 Comece por um serviço, não por um produto]
+    |
+    v
+[1.3 Traduza uma ameaça em um cenário de negócio]
+    |
+    v
+[1.4 Escolha resultados que possam ser verificados]
+    |
+    v
+[1.5 Defina prioridades sob um limite real]
+    |
+    v
+[1.6 Um exemplo curto de trabalho]
+    |
+    v
+[1.7 O teste da estratégia em uma página]
+    |
+    v
+[EX001 — Atividade ou resultado]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -163,6 +228,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["2.1 Por que o escopo vem primeiro"]
+  N1["2.2 Permissão e autoridade"]
+  N2["2.3 Tratar dados pessoais com segurança"]
+  N3["2.4 Desenhar um exercício seguro"]
+  N4["2.5 Registrar o que foi feito"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX006"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Por que o escopo vem primeiro"]
+  N1["2.2 Permissão e autoridade"]
+  N2["2.3 Tratar dados pessoais com segurança"]
+  N3["2.4 Desenhar um exercício seguro"]
+  N4["2.5 Registrar o que foi feito"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
+```
+
+```text
+[2.1 Por que o escopo vem primeiro]
+    |
+    v
+[2.2 Permissão e autoridade]
+    |
+    v
+[2.3 Tratar dados pessoais com segurança]
+    |
+    v
+[2.4 Desenhar um exercício seguro]
+    |
+    v
+[2.5 Registrar o que foi feito]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) definir por escrito o escopo de uma revisão de governança; (2) obter e registrar permissão antes de tocar em sistemas ou dados; (3) planejar a coleta de evidências e exercícios que não possam prejudicar serviços nem pessoas.
@@ -230,6 +350,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Governança, riscos e compliance de segurança: sistemas, dados e dependências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["3.1 De serviços a componentes"]
+  N1["3.2 Como ler o mapa de dependências"]
+  N2["Laboratório — Mapa de dependências e donos da Norths"]
+  N3["3.3 Os dados e para onde eles vão"]
+  N4["3.4 Dependências fora da organização"]
+  N5["3.5 Do mapa aos cenários e às evidências"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 De serviços a componentes"]
+  N1["3.2 Como ler o mapa de dependências"]
+  N2["Laboratório — Mapa de dependências e donos da Norths"]
+  N3["3.3 Os dados e para onde eles vão"]
+  N4["3.4 Dependências fora da organização"]
+  N5["3.5 Do mapa aos cenários e às evidências"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[3.1 De serviços a componentes]
+    |
+    v
+[3.2 Como ler o mapa de dependências]
+    |
+    v
+[Laboratório — Mapa de dependências e donos da Norths]
+    |
+    v
+[3.3 Os dados e para onde eles vão]
+    |
+    v
+[3.4 Dependências fora da organização]
+    |
+    v
+[3.5 Do mapa aos cenários e às evidências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -328,6 +508,71 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: laboratório guiado e síntese aplicada
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["4.1 Executar o exercício"]
+  N1["4.2 Como ler os tempos"]
+  N2["Laboratório — Cronometrando o exercício de restauraç"]
+  N3["4.3 O que o resultado significa"]
+  N4["4.4 Registrar a decisão"]
+  N5["4.5 Atualizar a estratégia de uma página"]
+  N6["Síntese"]
+  N7["EX001 — Resolução"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Executar o exercício"]
+  N1["4.2 Como ler os tempos"]
+  N2["Laboratório — Cronometrando o exercício de restauraç"]
+  N3["4.3 O que o resultado significa"]
+  N4["4.4 Registrar a decisão"]
+  N5["4.5 Atualizar a estratégia de uma página"]
+  N6["Síntese"]
+  N7["EX001 — Resolução"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[4.1 Executar o exercício]
+    |
+    v
+[4.2 Como ler os tempos]
+    |
+    v
+[Laboratório — Cronometrando o exercício de restauraç]
+    |
+    v
+[4.3 O que o resultado significa]
+    |
+    v
+[4.4 Registrar a decisão]
+    |
+    v
+[4.5 Atualizar a estratégia de uma página]
+    |
+    v
+[Síntese]
+    |
+    v
+[EX001 — Resolução]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 

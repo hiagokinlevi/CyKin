@@ -1,7 +1,7 @@
 # OT, IoT and Cyber-Physical Security: Master's Research Methods and Dissertation Practice
 
 - Language: English (`en`); master's course, two years; approximately 1,200 hours of planned study.
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent review and the 300-page A4 verification remain open.
 - Audience: beginning researchers with strong domain foundations and research-method literacy who will formulate a question, evaluate prior work and produce reproducible findings in OT, IoT and cyber-physical security.
 - Relationship to neighbouring courses: the [master's critical-infrastructure course](../../../critical-sector-security/README.md) studies sectors and cascades; the [doctoral OT course](../../../../doctorate-2-years/ot-iot-security/README.md) deepens research integrity and thesis practice. **This book** trains you to design and complete a master's dissertation on the control-system layer: PLCs, industrial protocols, physics-based detection, safety–security co-engineering and Purdue/ISA-62443 architecture.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text under [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -51,6 +51,56 @@ Keep five labels in every note: observation, inference, claim, decision, physica
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 From interest to question"]
+  N2["1.2 Searching two communities"]
+  N3["1.3 Screening and agreement"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 From interest to question"]
+  N2["1.2 Searching two communities"]
+  N3["1.3 Screening and agreement"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 From interest to question]
+    |
+    v
+[1.2 Searching two communities]
+    |
+    v
+[1.3 Screening and agreement]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -151,6 +201,61 @@ A master's project starts with a question that already names its failure conditi
 
 ## Chapter 2 — OT, IoT and cyber-physical security: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Architecture: Purdue and zones"]
+  N2["2.2 Protocols"]
+  N3["2.3 Detection families"]
+  N4["2.4 Threat evidence"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Architecture: Purdue and zones"]
+  N2["2.2 Protocols"]
+  N3["2.3 Detection families"]
+  N4["2.4 Threat evidence"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Architecture: Purdue and zones]
+    |
+    v
+[2.2 Protocols]
+    |
+    v
+[2.3 Detection families]
+    |
+    v
+[2.4 Threat evidence]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) explain Purdue levels and ISA/IEC 62443 zones, (2) describe why classic industrial protocols lack authentication, (3) contrast network and physics-based detection, (4) read ATT&CK for ICS as capability evidence not frequency evidence, and (5) extract a falsifiable gap from a literature map.
@@ -212,6 +317,61 @@ The seminar gives you architecture, protocols, detection families and threat evi
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 Design matches question"]
+  N2["3.2 Pre-data simulation"]
+  N3["3.3 Ethics and safety"]
+  N4["3.4 Reproducibility plan"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 Design matches question"]
+  N2["3.2 Pre-data simulation"]
+  N3["3.3 Ethics and safety"]
+  N4["3.4 Reproducibility plan"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 Design matches question]
+    |
+    v
+[3.2 Pre-data simulation]
+    |
+    v
+[3.3 Ethics and safety]
+    |
+    v
+[3.4 Reproducibility plan]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes and connection
 
@@ -310,6 +470,51 @@ Design before data, simulate before commit, bound every physical experiment, and
 
 ## Chapter 4 — OT, IoT and cyber-physical security: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Rivals for a CUSUM advantage"]
+  N2["4.2 Architectural rival"]
+  N3["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Rivals for a CUSUM advantage"]
+  N2["4.2 Architectural rival"]
+  N3["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Rivals for a CUSUM advantage]
+    |
+    v
+[4.2 Architectural rival]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) list rival explanations for a detection result, (2) design observations that discriminate among them, and (3) revise claims when a rival survives.
@@ -359,6 +564,56 @@ Rivals with tests turn a comparison into a contribution; confirmed boundaries be
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Proposal skeleton"]
+  N2["5.2 Pilot purpose"]
+  N3["5.4 Proposal checklist before supervisor review"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Proposal skeleton"]
+  N2["5.2 Pilot purpose"]
+  N3["5.4 Proposal checklist before supervisor review"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Proposal skeleton]
+    |
+    v
+[5.2 Pilot purpose]
+    |
+    v
+[5.4 Proposal checklist before supervisor review]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) write a proposal with hypotheses and abandonment conditions, (2) define go/no-go criteria for a rig pilot, and (3) keep pilot data out of hypothesis tests.
@@ -407,6 +662,61 @@ A proposal that states how it can fail, and a pilot that only asks whether the s
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Collection discipline"]
+  N2["6.2 Lab 6 — sensitivity to orifice coefficient"]
+  N3["6.3 Honest results paragraph"]
+  N4["6.5 From numbers to claims"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Collection discipline"]
+  N2["6.2 Lab 6 — sensitivity to orifice coefficient"]
+  N3["6.3 Honest results paragraph"]
+  N4["6.5 From numbers to claims"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Collection discipline]
+    |
+    v
+[6.2 Lab 6 — sensitivity to orifice coefficient]
+    |
+    v
+[6.3 Honest results paragraph]
+    |
+    v
+[6.5 From numbers to claims]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes and connection
 
@@ -498,6 +808,61 @@ Frozen plans, paired designs, sensitivity sweeps and honest paragraphs — inclu
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Argument structure"]
+  N2["7.2 Directional limitations"]
+  N3["7.3 Archive"]
+  N4["7.5 Abstract surgery"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Argument structure"]
+  N2["7.2 Directional limitations"]
+  N3["7.3 Archive"]
+  N4["7.5 Abstract surgery"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Argument structure]
+    |
+    v
+[7.2 Directional limitations]
+    |
+    v
+[7.3 Archive]
+    |
+    v
+[7.5 Abstract surgery]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) structure the dissertation argument, (2) write directional limitations, (3) build a minimal tiered archive, and (4) avoid overclaiming in the abstract.
@@ -552,6 +917,71 @@ Write the argument so a skeptical reader can find evidence, scope and directiona
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 Claim audit"]
+  N2["8.2 Examiner families"]
+  N3["8.3 Disclosure"]
+  N4["8.4 Operator brief"]
+  N5["8.6 After the defense"]
+  N6["Chapter synthesis"]
+  N7["Chapter 1"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 Claim audit"]
+  N2["8.2 Examiner families"]
+  N3["8.3 Disclosure"]
+  N4["8.4 Operator brief"]
+  N5["8.6 After the defense"]
+  N6["Chapter synthesis"]
+  N7["Chapter 1"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 Claim audit]
+    |
+    v
+[8.2 Examiner families]
+    |
+    v
+[8.3 Disclosure]
+    |
+    v
+[8.4 Operator brief]
+    |
+    v
+[8.6 After the defense]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Chapter 1]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 

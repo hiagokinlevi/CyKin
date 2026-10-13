@@ -1,7 +1,7 @@
 # Seguridad de TO, IoT y sistemas ciberfísicos: libro de práctica para tecnólogos
 
 - Idioma: español neutro (`es`); curso de tecnólogo, tres años; aproximadamente 2.400 horas de estudio planificado. Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–30 de 30 tienen texto didáctico escrito a mano; los ejercicios EX001–EX090 tienen sus resultados resueltos correspondientes; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas se incluyen a partir de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4.
+- Estado editorial: **publicado**. Los capítulos 1–30 de 30 tienen texto didáctico escrito a mano; los ejercicios EX001–EX090 tienen sus resultados resueltos correspondientes; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas se incluyen a partir de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4.
 - Público: tecnólogos que instalarán, operarán, supervisarán y mejorarán la seguridad de sistemas de TO e IoT en emplazamientos reales.
 - Relación con los libros vecinos: el [libro del curso técnico](../../../../technical-18-months/ot-iot-security/en/book/MANUSCRIPT.md) es más breve y más procedimental; el [libro de grado](../../../../bachelors-4-years/ot-iot-security/es/book/MANUSCRIPT.md) añade teoría e investigación. **Este libro se centra en la implantación.**
 - Autoría: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus derechos.
@@ -35,6 +35,56 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Sistemas informáticos
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Muchos ordenadores, pocos evidentes"]
+  N2["1.2 Embebido frente a propósito general"]
+  N3["1.3 Primero, la disponibilidad"]
+  N4["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Muchos ordenadores, pocos evidentes"]
+  N2["1.2 Embebido frente a propósito general"]
+  N3["1.3 Primero, la disponibilidad"]
+  N4["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[1.1 Muchos ordenadores, pocos evidentes]
+    |
+    v
+[1.2 Embebido frente a propósito general]
+    |
+    v
+[1.3 Primero, la disponibilidad]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje
 
@@ -81,6 +131,61 @@ Ver todos los ordenadores de una instalación, y saber lo que cuesta el fallo de
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes y servicios de internet
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["2.1 Direcciones y subredes"]
+  N2["2.2 VLAN y cortafuegos"]
+  N3["2.3 Conexiones salientes a la nube"]
+  N4["2.4 Resolución de nombres"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX004"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["2.1 Direcciones y subredes"]
+  N2["2.2 VLAN y cortafuegos"]
+  N3["2.3 Conexiones salientes a la nube"]
+  N4["2.4 Resolución de nombres"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX004"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[2.1 Direcciones y subredes]
+    |
+    v
+[2.2 VLAN y cortafuegos]
+    |
+    v
+[2.3 Conexiones salientes a la nube]
+    |
+    v
+[2.4 Resolución de nombres]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Resultados de aprendizaje
 
@@ -130,6 +235,61 @@ Las direcciones, las VLAN, las reglas y el DNS determinan qué conversaciones so
 
 ## Capítulo 3 — Fundamentos de programación
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Por qué los tecnólogos escriben scripts"]
+  N2["3.2 Diccionarios para búsquedas"]
+  N3["3.3 Los datos ausentes son un resultado"]
+  N4["3.4 Salida legible"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX007"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Por qué los tecnólogos escriben scripts"]
+  N2["3.2 Diccionarios para búsquedas"]
+  N3["3.3 Los datos ausentes son un resultado"]
+  N4["3.4 Salida legible"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX007"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[3.1 Por qué los tecnólogos escriben scripts]
+    |
+    v
+[3.2 Diccionarios para búsquedas]
+    |
+    v
+[3.3 Los datos ausentes son un resultado]
+    |
+    v
+[3.4 Salida legible]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) escribir programas breves en Python usando solo la biblioteca estándar; (2) usar listas, diccionarios y bucles para procesar registros; (3) tratar los datos ausentes de forma explícita; y (4) mantener los scripts legibles para colegas que no son programadores.
@@ -178,6 +338,61 @@ Los scripts pequeños y legibles que informan de cada fila, incluidas las ausent
 
 ## Capítulo 4 — Modelos de datos
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Tablas, claves y atributos"]
+  N2["4.2 Relaciones"]
+  N3["4.3 Qué no guardar"]
+  N4["4.4 Campos de calidad de los datos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX010"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Tablas, claves y atributos"]
+  N2["4.2 Relaciones"]
+  N3["4.3 Qué no guardar"]
+  N4["4.4 Campos de calidad de los datos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX010"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[4.1 Tablas, claves y atributos]
+    |
+    v
+[4.2 Relaciones]
+    |
+    v
+[4.3 Qué no guardar]
+    |
+    v
+[4.4 Campos de calidad de los datos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) diseñar una tabla de activos sencilla con claves y atributos; (2) elegir identificadores que sobrevivan a la sustitución de dispositivos; (3) representar relaciones como «la pasarela da servicio a los registradores»; y (4) mantener los atributos sensibles fuera de las tablas generales.
@@ -225,6 +440,61 @@ Un modelo de datos pequeño y estable, con claves, relaciones y fechas, es lo qu
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Alfabetización en seguridad
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["5.1 Qué importa en NCS"]
+  N2["5.2 Fuentes de amenaza"]
+  N3["5.3 Leer un aviso"]
+  N4["5.4 ATT&CK for ICS"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX013"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["5.1 Qué importa en NCS"]
+  N2["5.2 Fuentes de amenaza"]
+  N3["5.3 Leer un aviso"]
+  N4["5.4 ATT&CK for ICS"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX013"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[5.1 Qué importa en NCS]
+    |
+    v
+[5.2 Fuentes de amenaza]
+    |
+    v
+[5.3 Leer un aviso]
+    |
+    v
+[5.4 ATT&CK for ICS]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Resultados de aprendizaje
 
@@ -276,6 +546,61 @@ La alfabetización en seguridad consiste en clasificar las consecuencias con hon
 
 ## Capítulo 6 — Sistemas operativos y virtualización
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["6.1 La HMI como equipo Windows"]
+  N2["6.2 Historiadores virtualizados"]
+  N3["6.3 Las instantáneas no son copias de seguridad"]
+  N4["6.4 Mínimo privilegio en los equipos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX016"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["6.1 La HMI como equipo Windows"]
+  N2["6.2 Historiadores virtualizados"]
+  N3["6.3 Las instantáneas no son copias de seguridad"]
+  N4["6.4 Mínimo privilegio en los equipos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[6.1 La HMI como equipo Windows]
+    |
+    v
+[6.2 Historiadores virtualizados]
+    |
+    v
+[6.3 Las instantáneas no son copias de seguridad]
+    |
+    v
+[6.4 Mínimo privilegio en los equipos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) identificar los riesgos a nivel de sistema operativo en las HMI y los historiadores; (2) explicar qué cambia la virtualización para los servidores de TO; (3) planificar instantáneas y copias de seguridad que de verdad se restauren; y (4) respetar las restricciones de soporte del proveedor al bastionar.
@@ -325,6 +650,66 @@ La seguridad de los sistemas operativos y la virtualización en TO consiste sobr
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fundamentos de identidad y acceso
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["7.1 Contraseñas compartidas"]
+  N2["7.2 Roles"]
+  N3["7.3 Empresas contratistas"]
+  N4["7.4 Autenticación multifactor"]
+  N5["7.5 Revisiones"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX019"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["7.1 Contraseñas compartidas"]
+  N2["7.2 Roles"]
+  N3["7.3 Empresas contratistas"]
+  N4["7.4 Autenticación multifactor"]
+  N5["7.5 Revisiones"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[7.1 Contraseñas compartidas]
+    |
+    v
+[7.2 Roles]
+    |
+    v
+[7.3 Empresas contratistas]
+    |
+    v
+[7.4 Autenticación multifactor]
+    |
+    v
+[7.5 Revisiones]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Resultados de aprendizaje
 
@@ -380,6 +765,61 @@ Las cuentas nominativas, los roles ajustados, el acceso de las empresas contrati
 
 ## Capítulo 8 — Fundamentos de arquitectura de seguridad
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["8.1 Zonas para NCS"]
+  N2["8.2 Conductos"]
+  N3["8.3 Por qué una DMZ"]
+  N4["8.4 Defensa en profundidad"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX022"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["8.1 Zonas para NCS"]
+  N2["8.2 Conductos"]
+  N3["8.3 Por qué una DMZ"]
+  N4["8.4 Defensa en profundidad"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX022"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[8.1 Zonas para NCS]
+    |
+    v
+[8.2 Conductos]
+    |
+    v
+[8.3 Por qué una DMZ]
+    |
+    v
+[8.4 Defensa en profundidad]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) dividir una instalación pequeña en zonas; (2) definir conductos entre zonas con el tráfico permitido; (3) situar una DMZ para los servicios compartidos; y (4) explicar la defensa en profundidad con capas concretas.
@@ -429,6 +869,66 @@ Las zonas, los conductos y una DMZ convierten «segmentar la red» en un diseño
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidencia y medición
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa de la lección
+
+Lección 09 publicada. Mapa, ejemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["9.1 Registrar la evidencia"]
+  N2["9.2 Observación y conclusión"]
+  N3["9.3 Denominadores"]
+  N4["9.4 Incertidumbre"]
+  N5["9.5 Cadena de custodia en un emplazamiento pequeño"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX025"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["9.1 Registrar la evidencia"]
+  N2["9.2 Observación y conclusión"]
+  N3["9.3 Denominadores"]
+  N4["9.4 Incertidumbre"]
+  N5["9.5 Cadena de custodia en un emplazamiento pequeño"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX025"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[9.1 Registrar la evidencia]
+    |
+    v
+[9.2 Observación y conclusión]
+    |
+    v
+[9.3 Denominadores]
+    |
+    v
+[9.4 Incertidumbre]
+    |
+    v
+[9.5 Cadena de custodia en un emplazamiento pequeño]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Resultados de aprendizaje
 
@@ -486,6 +986,61 @@ La evidencia se vuelve fiable cuando tiene marca de tiempo y hash, se cuenta fre
 
 ## Capítulo 10 — Seguridad de TO, IoT y sistemas ciberfísicos: orientación
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa de la lección
+
+Lección 10 publicada. Mapa, ejemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["10.1 Tres términos que se solapan"]
+  N2["10.2 El lazo de refrigeración"]
+  N3["10.3 Mapa de orientaciones"]
+  N4["10.4 La seguridad funcional queda aparte"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX028"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["10.1 Tres términos que se solapan"]
+  N2["10.2 El lazo de refrigeración"]
+  N3["10.3 Mapa de orientaciones"]
+  N4["10.4 La seguridad funcional queda aparte"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX028"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[10.1 Tres términos que se solapan]
+    |
+    v
+[10.2 El lazo de refrigeración]
+    |
+    v
+[10.3 Mapa de orientaciones]
+    |
+    v
+[10.4 La seguridad funcional queda aparte]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) definir TO, IoT y sistemas ciberfísicos en los términos de NCS; (2) describir el lazo de control de la refrigeración; (3) nombrar los principales documentos de orientación y a quién se dirigen; y (4) explicar por qué los sistemas de seguridad funcional quedan fuera de los cambios de seguridad.
@@ -533,6 +1088,61 @@ Orientarse significa ver el lazo físico, saber qué orientación corresponde a 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Seguridad de TO, IoT y sistemas ciberfísicos: activos y contexto
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa de la lección
+
+Lección 11 publicada. Mapa, ejemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["11.1 Dos fuentes, ninguna completa"]
+  N2["11.2 Leer los conflictos"]
+  N3["11.3 Contexto"]
+  N4["11.4 Dispositivos desconocidos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX031"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["11.1 Dos fuentes, ninguna completa"]
+  N2["11.2 Leer los conflictos"]
+  N3["11.3 Contexto"]
+  N4["11.4 Dispositivos desconocidos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[11.1 Dos fuentes, ninguna completa]
+    |
+    v
+[11.2 Leer los conflictos]
+    |
+    v
+[11.3 Contexto]
+    |
+    v
+[11.4 Dispositivos desconocidos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Resultados de aprendizaje
 
@@ -603,6 +1213,61 @@ Un inventario digno de confianza concilia documentos, observación y recorridos 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Seguridad de TO, IoT y sistemas ciberfísicos: flujos de datos
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa de la lección
+
+Lección 12 publicada. Mapa, ejemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["12.1 La matriz de flujos"]
+  N2["12.2 Flujos no aprobados"]
+  N3["12.3 Aprobados pero sin uso"]
+  N4["12.4 De la comparación al cambio"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX034"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["12.1 La matriz de flujos"]
+  N2["12.2 Flujos no aprobados"]
+  N3["12.3 Aprobados pero sin uso"]
+  N4["12.4 De la comparación al cambio"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX034"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[12.1 La matriz de flujos]
+    |
+    v
+[12.2 Flujos no aprobados]
+    |
+    v
+[12.3 Aprobados pero sin uso]
+    |
+    v
+[12.4 De la comparación al cambio]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Resultados de aprendizaje
 
@@ -675,6 +1340,61 @@ Comparar los flujos observados con una matriz aprobada encuentra los caminos que
 
 ## Capítulo 13 — Seguridad de TO, IoT y sistemas ciberfísicos: escenarios de riesgo
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa de la lección
+
+Lección 13 publicada. Mapa, ejemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["13.1 Estructura del escenario"]
+  N2["13.2 Escalas"]
+  N3["13.3 Salvaguardas"]
+  N4["13.4 Ordenación"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX037"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["13.1 Estructura del escenario"]
+  N2["13.2 Escalas"]
+  N3["13.3 Salvaguardas"]
+  N4["13.4 Ordenación"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX037"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[13.1 Estructura del escenario]
+    |
+    v
+[13.2 Escalas]
+    |
+    v
+[13.3 Salvaguardas]
+    |
+    v
+[13.4 Ordenación]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) redactar escenarios de riesgo que vinculen una amenaza, un camino y una consecuencia física; (2) estimar probabilidad y consecuencia en escalas sencillas; (3) identificar las salvaguardas existentes; y (4) ordenar los escenarios para actuar.
@@ -722,6 +1442,61 @@ Los escenarios conectan los caminos cibernéticos con las consecuencias físicas
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos I
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa de la lección
+
+Lección 14 publicada. Mapa, ejemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["14.1 Recorrido por la planta"]
+  N2["14.2 Entrevistas"]
+  N3["14.3 Revisión de la configuración"]
+  N4["14.4 Reunir los hallazgos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX040"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["14.1 Recorrido por la planta"]
+  N2["14.2 Entrevistas"]
+  N3["14.3 Revisión de la configuración"]
+  N4["14.4 Reunir los hallazgos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX040"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[14.1 Recorrido por la planta]
+    |
+    v
+[14.2 Entrevistas]
+    |
+    v
+[14.3 Revisión de la configuración]
+    |
+    v
+[14.4 Reunir los hallazgos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Resultados de aprendizaje
 
@@ -772,6 +1547,61 @@ Los recorridos por la planta, las entrevistas y las revisiones de configuración
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Seguridad de TO, IoT y sistemas ciberfísicos: laboratorio guiado
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa de la lección
+
+Lección 15 publicada. Mapa, ejemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["15.1 La pregunta del laboratorio"]
+  N2["15.2 Interpretación"]
+  N3["15.3 Qué cambiaría un atacante"]
+  N4["15.4 Registrar el resultado"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX043"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["15.1 La pregunta del laboratorio"]
+  N2["15.2 Interpretación"]
+  N3["15.3 Qué cambiaría un atacante"]
+  N4["15.4 Registrar el resultado"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[15.1 La pregunta del laboratorio]
+    |
+    v
+[15.2 Interpretación]
+    |
+    v
+[15.3 Qué cambiaría un atacante]
+    |
+    v
+[15.4 Registrar el resultado]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Resultados de aprendizaje
 
@@ -842,6 +1672,61 @@ Un laboratorio guiado convierte lecturas en bruto en una afirmación reproducibl
 
 ## Capítulo 16 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos II
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa de la lección
+
+Lección 16 publicada. Mapa, ejemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["16.1 Una pasada rápida de modelado de amenazas"]
+  N2["16.2 Preguntas de base sobre el producto"]
+  N3["16.3 Leer las afirmaciones del proveedor"]
+  N4["16.4 Supuestos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX046"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["16.1 Una pasada rápida de modelado de amenazas"]
+  N2["16.2 Preguntas de base sobre el producto"]
+  N3["16.3 Leer las afirmaciones del proveedor"]
+  N4["16.4 Supuestos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[16.1 Una pasada rápida de modelado de amenazas]
+    |
+    v
+[16.2 Preguntas de base sobre el producto]
+    |
+    v
+[16.3 Leer las afirmaciones del proveedor]
+    |
+    v
+[16.4 Supuestos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) aplicar una pasada sencilla de modelado de amenazas al sistema de registradores; (2) evaluar un producto IoT frente a las disposiciones de ETSI EN 303 645; (3) revisar la documentación del proveedor en busca de afirmaciones de seguridad; y (4) registrar los supuestos de los que depende el modelo.
@@ -890,6 +1775,61 @@ Un modelado de amenazas rápido, las preguntas de base y los supuestos por escri
 
 ## Capítulo 17 — Seguridad de TO, IoT y sistemas ciberfísicos: herramientas
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa de la lección
+
+Lección 17 publicada. Mapa, ejemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["17.1 Primero lo pasivo"]
+  N2["17.2 Preparar una captura"]
+  N3["17.3 Análisis fuera de línea"]
+  N4["17.4 Controlar las herramientas"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX049"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["17.1 Primero lo pasivo"]
+  N2["17.2 Preparar una captura"]
+  N3["17.3 Análisis fuera de línea"]
+  N4["17.4 Controlar las herramientas"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[17.1 Primero lo pasivo]
+    |
+    v
+[17.2 Preparar una captura]
+    |
+    v
+[17.3 Análisis fuera de línea]
+    |
+    v
+[17.4 Controlar las herramientas]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) elegir herramientas seguras para la observación en TO; (2) configurar una captura pasiva en un puerto espejo; (3) usar herramientas de análisis fuera de línea con archivos de captura; y (4) controlar el uso de herramientas mediante permisos de trabajo y registros de cambios.
@@ -937,6 +1877,66 @@ Las herramientas de TO son pasivas por defecto, se configuran bajo control de ca
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Seguridad de TO, IoT y sistemas ciberfísicos: controles
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa de la lección
+
+Lección 18 publicada. Mapa, ejemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["18.1 Asignar controles a escenarios"]
+  N2["18.2 Efectos en las operaciones"]
+  N3["18.3 Controles compensatorios"]
+  N4["18.4 Registrar los controles"]
+  N5["18.5 Priorizar con un presupuesto limitado"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX052"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["18.1 Asignar controles a escenarios"]
+  N2["18.2 Efectos en las operaciones"]
+  N3["18.3 Controles compensatorios"]
+  N4["18.4 Registrar los controles"]
+  N5["18.5 Priorizar con un presupuesto limitado"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX052"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[18.1 Asignar controles a escenarios]
+    |
+    v
+[18.2 Efectos en las operaciones]
+    |
+    v
+[18.3 Controles compensatorios]
+    |
+    v
+[18.4 Registrar los controles]
+    |
+    v
+[18.5 Priorizar con un presupuesto limitado]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Resultados de aprendizaje
 
@@ -991,6 +1991,61 @@ Los controles se eligen para los escenarios, se contrastan con los días malos, 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Seguridad de TO, IoT y sistemas ciberfísicos: supervisión
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa de la lección
+
+Lección 19 publicada. Mapa, ejemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["19.1 Líneas base"]
+  N2["19.2 Leer las alertas"]
+  N3["19.3 Clasificación junto con operaciones"]
+  N4["19.4 Ajuste"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX055"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["19.1 Líneas base"]
+  N2["19.2 Leer las alertas"]
+  N3["19.3 Clasificación junto con operaciones"]
+  N4["19.4 Ajuste"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX055"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[19.1 Líneas base]
+    |
+    v
+[19.2 Leer las alertas]
+    |
+    v
+[19.3 Clasificación junto con operaciones]
+    |
+    v
+[19.4 Ajuste]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Resultados de aprendizaje
 
@@ -1060,6 +2115,61 @@ Las líneas base convierten la regularidad de la TO en detección; la clasificac
 
 ## Capítulo 20 — Seguridad de TO, IoT y sistemas ciberfísicos: resolución de problemas
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa de la lección
+
+Lección 20 publicada. Mapa, ejemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["20.1 La mayoría de las averías no son ataques"]
+  N2["20.2 Un método por capas"]
+  N3["20.3 Hábitos que preservan la evidencia"]
+  N4["20.4 Detenerse y escalar"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX058"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["20.1 La mayoría de las averías no son ataques"]
+  N2["20.2 Un método por capas"]
+  N3["20.3 Hábitos que preservan la evidencia"]
+  N4["20.4 Detenerse y escalar"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX058"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[20.1 La mayoría de las averías no son ataques]
+    |
+    v
+[20.2 Un método por capas]
+    |
+    v
+[20.3 Hábitos que preservan la evidencia]
+    |
+    v
+[20.4 Detenerse y escalar]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) distinguir las causas cibernéticas de las averías ordinarias; (2) resolver fallos de comunicación con método; (3) evitar pasos de resolución de problemas que destruyen evidencia; y (4) saber cuándo detenerse y escalar.
@@ -1107,6 +2217,61 @@ Resuelva los problemas con método, suponga primero una avería, preserve la evi
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Seguridad de TO, IoT y sistemas ciberfísicos: integración de servicios
+
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa de la lección
+
+Lección 21 publicada. Mapa, ejemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["21.1 El negocio quiere datos"]
+  N2["21.2 Patrones"]
+  N3["21.3 Seguridad de las API"]
+  N4["21.4 Dependencias"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX061"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["21.1 El negocio quiere datos"]
+  N2["21.2 Patrones"]
+  N3["21.3 Seguridad de las API"]
+  N4["21.4 Dependencias"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX061"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[21.1 El negocio quiere datos]
+    |
+    v
+[21.2 Patrones]
+    |
+    v
+[21.3 Seguridad de las API]
+    |
+    v
+[21.4 Dependencias]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
 
 ### Resultados de aprendizaje
 
@@ -1157,6 +2322,61 @@ La integración da al negocio sus datos mediante copias, caminos unidireccionale
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Seguridad de TO, IoT y sistemas ciberfísicos: automatización
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa de la lección
+
+Lección 22 publicada. Mapa, ejemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["22.1 Qué automatizar"]
+  N2["22.2 Leer el informe"]
+  N3["22.3 Informar, no modificar"]
+  N4["22.4 Programación y registro"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX064"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["22.1 Qué automatizar"]
+  N2["22.2 Leer el informe"]
+  N3["22.3 Informar, no modificar"]
+  N4["22.4 Programación y registro"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[22.1 Qué automatizar]
+    |
+    v
+[22.2 Leer el informe]
+    |
+    v
+[22.3 Informar, no modificar]
+    |
+    v
+[22.4 Programación y registro]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Resultados de aprendizaje
 
@@ -1230,6 +2450,61 @@ Automatice las comprobaciones que informan con claridad y fallan de forma ruidos
 
 ## Capítulo 23 — Seguridad de TO, IoT y sistemas ciberfísicos: evaluación
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa de la lección
+
+Lección 23 publicada. Mapa, ejemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["23.1 ¿Funcionó?"]
+  N2["23.2 Pruebas con resultados esperados"]
+  N3["23.3 Antes y después"]
+  N4["23.4 Informar con honestidad"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX067"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["23.1 ¿Funcionó?"]
+  N2["23.2 Pruebas con resultados esperados"]
+  N3["23.3 Antes y después"]
+  N4["23.4 Informar con honestidad"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX067"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[23.1 ¿Funcionó?]
+    |
+    v
+[23.2 Pruebas con resultados esperados]
+    |
+    v
+[23.3 Antes y después]
+    |
+    v
+[23.4 Informar con honestidad]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) evaluar si los controles lograron su propósito; (2) diseñar pruebas sencillas con resultados esperados; (3) medir antes y después; y (4) informar con honestidad de la eficacia, incluidos los fallos.
@@ -1278,6 +2553,61 @@ La evaluación convierte «más seguro» en pruebas concretas con resultados esp
 
 ## Capítulo 24 — Métodos de investigación aplicada
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa de la lección
+
+Lección 24 publicada. Mapa, ejemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["24.1 Preguntas que nacen de la práctica"]
+  N2["24.2 Datos y método"]
+  N3["24.3 Medidas y comparaciones"]
+  N4["24.4 Fuentes"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX070"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["24.1 Preguntas que nacen de la práctica"]
+  N2["24.2 Datos y método"]
+  N3["24.3 Medidas y comparaciones"]
+  N4["24.4 Fuentes"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX070"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[24.1 Preguntas que nacen de la práctica]
+    |
+    v
+[24.2 Datos y método]
+    |
+    v
+[24.3 Medidas y comparaciones]
+    |
+    v
+[24.4 Fuentes]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) plantear una pequeña pregunta de investigación aplicada a partir de la práctica operativa; (2) elegir datos y un método adecuados; (3) definir una medida y una comparación; y (4) encontrar y usar fuentes creíbles.
@@ -1325,6 +2655,66 @@ La investigación aplicada plantea una pregunta real del emplazamiento, mide fre
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Taller de proyecto en equipo
+
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa de la lección
+
+Lección 25 publicada. Mapa, ejemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["25.1 El proyecto del taller"]
+  N2["25.2 Funciones"]
+  N3["25.3 Revisiones"]
+  N4["25.4 Alcance y dependencias"]
+  N5["25.5 Entregables utilizables"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX073"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["25.1 El proyecto del taller"]
+  N2["25.2 Funciones"]
+  N3["25.3 Revisiones"]
+  N4["25.4 Alcance y dependencias"]
+  N5["25.5 Entregables utilizables"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX073"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[25.1 El proyecto del taller]
+    |
+    v
+[25.2 Funciones]
+    |
+    v
+[25.3 Revisiones]
+    |
+    v
+[25.4 Alcance y dependencias]
+    |
+    v
+[25.5 Entregables utilizables]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
 
 ### Resultados de aprendizaje
 
@@ -1377,6 +2767,61 @@ El trabajo de taller sale bien cuando las funciones, las revisiones y las depend
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Seguridad de TO, IoT y sistemas ciberfísicos: traspaso operativo
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa de la lección
+
+Lección 26 publicada. Mapa, ejemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["26.1 Los proyectos terminan, los sistemas continúan"]
+  N2["26.2 Leer la comprobación"]
+  N3["26.3 Firma de aceptación"]
+  N4["26.4 Acompañamiento intensivo"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX076"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["26.1 Los proyectos terminan, los sistemas continúan"]
+  N2["26.2 Leer la comprobación"]
+  N3["26.3 Firma de aceptación"]
+  N4["26.4 Acompañamiento intensivo"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX076"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[26.1 Los proyectos terminan, los sistemas continúan]
+    |
+    v
+[26.2 Leer la comprobación]
+    |
+    v
+[26.3 Firma de aceptación]
+    |
+    v
+[26.4 Acompañamiento intensivo]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Resultados de aprendizaje
 
@@ -1444,6 +2889,61 @@ Un traspaso está completo cuando el paquete está entero, el responsable lo ha 
 
 ## Capítulo 27 — Despliegue y validación
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa de la lección
+
+Lección 27 publicada. Mapa, ejemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["27.1 El cambio"]
+  N2["27.2 El plan"]
+  N3["27.3 Comprobaciones de validación"]
+  N4["27.4 Registro"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX079"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["27.1 El cambio"]
+  N2["27.2 El plan"]
+  N3["27.3 Comprobaciones de validación"]
+  N4["27.4 Registro"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX079"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[27.1 El cambio]
+    |
+    v
+[27.2 El plan]
+    |
+    v
+[27.3 Comprobaciones de validación]
+    |
+    v
+[27.4 Registro]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) planificar el despliegue de un cambio de seguridad en un emplazamiento de TO; (2) definir las comprobaciones de validación y la reversión; (3) coordinarse con operaciones y con las empresas contratistas; y (4) registrar el despliegue como evidencia.
@@ -1491,6 +2991,61 @@ En TO, un despliegue se planifica, se valida frente a comprobaciones definidas d
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Práctica de campo
+
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa de la lección
+
+Lección 28 publicada. Mapa, ejemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["28.1 Primero, la seguridad en el emplazamiento"]
+  N2["28.2 Permisos de trabajo y bloqueo"]
+  N3["28.3 Comunicación"]
+  N4["28.4 Reflexión"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX082"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["28.1 Primero, la seguridad en el emplazamiento"]
+  N2["28.2 Permisos de trabajo y bloqueo"]
+  N3["28.3 Comunicación"]
+  N4["28.4 Reflexión"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX082"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[28.1 Primero, la seguridad en el emplazamiento]
+    |
+    v
+[28.2 Permisos de trabajo y bloqueo]
+    |
+    v
+[28.3 Comunicación]
+    |
+    v
+[28.4 Reflexión]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
 
 ### Resultados de aprendizaje
 
@@ -1540,6 +3095,61 @@ La práctica de campo crea los hábitos que mantienen a salvo a las personas y l
 
 ## Capítulo 29 — Construcción del proyecto final
 
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa de la lección
+
+Lección 29 publicada. Mapa, ejemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["29.1 El encargo del proyecto final"]
+  N2["29.2 Incrementos"]
+  N3["29.3 Registro de decisiones"]
+  N4["29.4 Listo para la evaluación"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX085"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["29.1 El encargo del proyecto final"]
+  N2["29.2 Incrementos"]
+  N3["29.3 Registro de decisiones"]
+  N4["29.4 Listo para la evaluación"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX085"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[29.1 El encargo del proyecto final]
+    |
+    v
+[29.2 Incrementos]
+    |
+    v
+[29.3 Registro de decisiones]
+    |
+    v
+[29.4 Listo para la evaluación]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) construir un artefacto de proyecto final que resuelva un problema definido de NCS; (2) trabajar por incrementos con pruebas; (3) llevar un registro de decisiones; y (4) preparar el artefacto para la evaluación y el traspaso.
@@ -1587,6 +3197,61 @@ Construir un proyecto final es avanzar por pequeños incrementos, probar los cas
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Evaluación del proyecto final
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa de la lección
+
+Lección 30 publicada. Mapa, ejemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["30.1 Criterios"]
+  N2["30.2 Demostración"]
+  N3["30.3 Preguntas para las que prepararse"]
+  N4["30.4 Próximos pasos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX088"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["30.1 Criterios"]
+  N2["30.2 Demostración"]
+  N3["30.3 Preguntas para las que prepararse"]
+  N4["30.4 Próximos pasos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX088"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[30.1 Criterios]
+    |
+    v
+[30.2 Demostración]
+    |
+    v
+[30.3 Preguntas para las que prepararse]
+    |
+    v
+[30.4 Próximos pasos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Resultados de aprendizaje
 

@@ -1,7 +1,7 @@
 # Human Factors and Cyber Policy: Rapid Course
 
 - Language: English (`en`); course 006, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: staff and volunteers in small charities and community organisations who need a fast, practical start in human-centred security.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs count systems each role can reach and summarise reporting times in a guided test, both on synthetic data; no real staff, volunteers, donors, emails or accounts are involved. The guided test uses a test email account and volunteers who know the purpose. The course recommends no simulated phishing; if ever used, it must be announced, agreed with staff and volunteer representatives, avoid lures about money, food or hardship, give kind feedback and report only totals. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,66 @@ Adams and Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/3227
 <a id="ch-01"></a>
 
 ## Chapter 1 — Human factors and cyber policy: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 People and security"]
+  N2["1.2 Not the enemy"]
+  N3["1.3 Deception tactics"]
+  N4["1.4 Knowledge is not enough"]
+  N5["1.5 Three early decisions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 People and security"]
+  N2["1.2 Not the enemy"]
+  N3["1.3 Deception tactics"]
+  N4["1.4 Knowledge is not enough"]
+  N5["1.5 Three early decisions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 People and security]
+    |
+    v
+[1.2 Not the enemy]
+    |
+    v
+[1.3 Deception tactics]
+    |
+    v
+[1.4 Knowledge is not enough]
+    |
+    v
+[1.5 Three early decisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -99,6 +159,66 @@ Security in small organisations starts with people, simple procedures and a welc
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Setting scope"]
+  N2["2.2 Permission"]
+  N3["2.3 Handling reports safely"]
+  N4["2.4 Simulations and ethics"]
+  N5["2.5 Safe practice summary"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Setting scope"]
+  N2["2.2 Permission"]
+  N3["2.3 Handling reports safely"]
+  N4["2.4 Simulations and ethics"]
+  N5["2.5 Safe practice summary"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Setting scope]
+    |
+    v
+[2.2 Permission]
+    |
+    v
+[2.3 Handling reports safely]
+    |
+    v
+[2.4 Simulations and ethics]
+    |
+    v
+[2.5 Safe practice summary]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) set the scope of security work in a small charity; (2) obtain permission and respect boundaries; (3) practise safely and ethically, including on simulations.
@@ -160,6 +280,71 @@ Clear scope, permission and ethical habits make security work trustworthy.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Human factors and cyber policy: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Mapping systems"]
+  N2["3.2 Data and people"]
+  N3["Lab — Counting systems each role can reach"]
+  N4["3.3 Single points of failure"]
+  N5["3.4 Simple fixes"]
+  N6["3.5 Checking the fixes"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Mapping systems"]
+  N2["3.2 Data and people"]
+  N3["Lab — Counting systems each role can reach"]
+  N4["3.3 Single points of failure"]
+  N5["3.4 Simple fixes"]
+  N6["3.5 Checking the fixes"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Mapping systems]
+    |
+    v
+[3.2 Data and people]
+    |
+    v
+[Lab — Counting systems each role can reach]
+    |
+    v
+[3.3 Single points of failure]
+    |
+    v
+[3.4 Simple fixes]
+    |
+    v
+[3.5 Checking the fixes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -239,6 +424,71 @@ Mapping systems, data and people reveals single points of failure that simple fi
 <a id="ch-04"></a>
 
 ## Chapter 4 — Human factors and cyber policy: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Reporting route"]
+  N2["4.2 Guided lab"]
+  N3["Lab — Reporting times and success in the guided lab"]
+  N4["4.3 Learning from the test"]
+  N5["4.4 One-month plan"]
+  N6["4.5 Synthesis"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Reporting route"]
+  N2["4.2 Guided lab"]
+  N3["Lab — Reporting times and success in the guided lab"]
+  N4["4.3 Learning from the test"]
+  N5["4.4 One-month plan"]
+  N6["4.5 Synthesis"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Reporting route]
+    |
+    v
+[4.2 Guided lab]
+    |
+    v
+[Lab — Reporting times and success in the guided lab]
+    |
+    v
+[4.3 Learning from the test]
+    |
+    v
+[4.4 One-month plan]
+    |
+    v
+[4.5 Synthesis]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

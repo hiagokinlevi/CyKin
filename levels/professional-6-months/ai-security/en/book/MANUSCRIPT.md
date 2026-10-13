@@ -1,7 +1,7 @@
 # AI and Machine-Learning Security: A Professional Practice Book
 
 - Language: English (`en`); professional course, six months; approximately 300 hours of planned study.
-- Editorial state: **draft**. Chapters 1–12 of 12 have authored teaching text; exercises EX001–EX060 (five per chapter) have matching worked results with 0–3 rubrics; offline labs use the Python 3 standard library and their printed outputs were produced by real runs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–12 of 12 have authored teaching text; exercises EX001–EX060 (five per chapter) have matching worked results with 0–3 rubrics; offline labs use the Python 3 standard library and their printed outputs were produced by real runs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: working practitioners — analysts, service owners, auditors, career changers — who need to handle AI-security work competently under supervision.
 - Relation to neighbouring books: the [technical book](../../../../technical-18-months/ai-security/en/book/MANUSCRIPT.md) is longer and more hands-on; the [rapid book](../../../../rapid-1-month/ai-security/en/book/MANUSCRIPT.md) is a one-month orientation. **This book is workflow-focused**: methods, tools, controls, cases and reporting for day-to-day practice.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -34,6 +34,61 @@ Sources were checked on 12 October 2026: NIST [AI 100-1](https://doi.org/10.6028
 <a id="ch-01"></a>
 
 ## Chapter 1 — Security foundations for practitioners
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The CIA triad applied to AI"]
+  N2["1.2 Basic vocabulary"]
+  N3["1.3 Frameworks and their uses"]
+  N4["1.4 Why AI needs specific attention"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The CIA triad applied to AI"]
+  N2["1.2 Basic vocabulary"]
+  N3["1.3 Frameworks and their uses"]
+  N4["1.4 Why AI needs specific attention"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The CIA triad applied to AI]
+    |
+    v
+[1.2 Basic vocabulary]
+    |
+    v
+[1.3 Frameworks and their uses]
+    |
+    v
+[1.4 Why AI needs specific attention]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -101,6 +156,66 @@ Practitioners start with shared vocabulary and frameworks, then apply them to th
 <a id="ch-02"></a>
 
 ## Chapter 2 — AI and machine-learning security: service and stakeholder context
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Purpose, users, affected people"]
+  N2["2.2 Stakeholders"]
+  N3["2.3 A simple data-flow picture"]
+  N4["2.4 AI assets"]
+  N5["2.5 Which services first"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Purpose, users, affected people"]
+  N2["2.2 Stakeholders"]
+  N3["2.3 A simple data-flow picture"]
+  N4["2.4 AI assets"]
+  N5["2.5 Which services first"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Purpose, users, affected people]
+    |
+    v
+[2.2 Stakeholders]
+    |
+    v
+[2.3 A simple data-flow picture]
+    |
+    v
+[2.4 AI assets]
+    |
+    v
+[2.5 Which services first]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -204,6 +319,71 @@ Context — purpose, people, stakeholders, flows and assets — decides what mat
 <a id="ch-03"></a>
 
 ## Chapter 3 — Authorized practice and evidence handling
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Authorisation"]
+  N2["3.2 Safe environments"]
+  N3["3.3 Evidence"]
+  N4["3.4 Sensitive findings"]
+  N5["3.5 Repeat and quantify"]
+  N6["3.7b Storing evidence safely"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Authorisation"]
+  N2["3.2 Safe environments"]
+  N3["3.3 Evidence"]
+  N4["3.4 Sensitive findings"]
+  N5["3.5 Repeat and quantify"]
+  N6["3.7b Storing evidence safely"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Authorisation]
+    |
+    v
+[3.2 Safe environments]
+    |
+    v
+[3.3 Evidence]
+    |
+    v
+[3.4 Sensitive findings]
+    |
+    v
+[3.5 Repeat and quantify]
+    |
+    v
+[3.7b Storing evidence safely]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -318,6 +498,66 @@ Authorised, safe testing with careful evidence and responsible escalation is the
 
 ## Chapter 4 — AI and machine-learning security: core methods
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Attack classes"]
+  N2["4.2 Testing for injection"]
+  N3["4.3 Testing classifiers"]
+  N4["4.4 Privacy attacks"]
+  N5["4.5 Matching methods to risks"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Attack classes"]
+  N2["4.2 Testing for injection"]
+  N3["4.3 Testing classifiers"]
+  N4["4.4 Privacy attacks"]
+  N5["4.5 Matching methods to risks"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Attack classes]
+    |
+    v
+[4.2 Testing for injection]
+    |
+    v
+[4.3 Testing classifiers]
+    |
+    v
+[4.4 Privacy attacks]
+    |
+    v
+[4.5 Matching methods to risks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) describe the main attack classes and how each is tested; (2) test LLM applications for direct and indirect prompt injection; (3) test classifiers for evasion; (4) understand privacy attacks; and (5) choose methods to match risks.
@@ -430,6 +670,66 @@ Core methods test each attack class where the system is exposed, judged by effec
 
 ## Chapter 5 — AI and machine-learning security: tools and interpretation
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Harness and logs"]
+  N2["5.2 Rates and intervals"]
+  N3["5.3 Base rates"]
+  N4["5.4 Vendor tools"]
+  N5["5.5 Common misreadings"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Harness and logs"]
+  N2["5.2 Rates and intervals"]
+  N3["5.3 Base rates"]
+  N4["5.4 Vendor tools"]
+  N5["5.5 Common misreadings"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Harness and logs]
+    |
+    v
+[5.2 Rates and intervals]
+    |
+    v
+[5.3 Base rates]
+    |
+    v
+[5.4 Vendor tools]
+    |
+    v
+[5.5 Common misreadings]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) use a simple test harness and logs; (2) interpret results with rates and intervals; (3) account for base rates in detection; (4) evaluate vendor security tools; and (5) avoid common misreadings.
@@ -523,6 +823,71 @@ Tools produce numbers; practitioners interpret them with intervals, base rates a
 <a id="ch-06"></a>
 
 ## Chapter 6 — AI and machine-learning security: operational workflow
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Workflow"]
+  N2["6.2 Triage"]
+  N3["6.3 Remediation tracking"]
+  N4["6.4 Change management"]
+  N5["6.5 Working with operations"]
+  N6["6.7b Closing the loop with the reporter"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Workflow"]
+  N2["6.2 Triage"]
+  N3["6.3 Remediation tracking"]
+  N4["6.4 Change management"]
+  N5["6.5 Working with operations"]
+  N6["6.7b Closing the loop with the reporter"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Workflow]
+    |
+    v
+[6.2 Triage]
+    |
+    v
+[6.3 Remediation tracking]
+    |
+    v
+[6.4 Change management]
+    |
+    v
+[6.5 Working with operations]
+    |
+    v
+[6.7b Closing the loop with the reporter]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -636,6 +1001,66 @@ A clear workflow — intake to closure, with triage, tracking and change managem
 <a id="ch-07"></a>
 
 ## Chapter 7 — AI and machine-learning security: controls and verification
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Controls that bound harm"]
+  N2["7.2 Configuring controls"]
+  N3["7.3 Confirmation"]
+  N4["7.4 Verification"]
+  N5["7.5 Evidence"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Controls that bound harm"]
+  N2["7.2 Configuring controls"]
+  N3["7.3 Confirmation"]
+  N4["7.4 Verification"]
+  N5["7.5 Evidence"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Controls that bound harm]
+    |
+    v
+[7.2 Configuring controls]
+    |
+    v
+[7.3 Confirmation]
+    |
+    v
+[7.4 Verification]
+    |
+    v
+[7.5 Evidence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -751,6 +1176,66 @@ Controls that bound harm live outside the model; configure them carefully, confi
 
 ## Chapter 8 — AI and machine-learning security: supervised case analysis
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Case analysis"]
+  N2["8.2 Timeline"]
+  N3["8.3 Causes and contributing factors"]
+  N4["8.4 Proportionate fixes"]
+  N5["8.5 Writing it up"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Case analysis"]
+  N2["8.2 Timeline"]
+  N3["8.3 Causes and contributing factors"]
+  N4["8.4 Proportionate fixes"]
+  N5["8.5 Writing it up"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Case analysis]
+    |
+    v
+[8.2 Timeline]
+    |
+    v
+[8.3 Causes and contributing factors]
+    |
+    v
+[8.4 Proportionate fixes]
+    |
+    v
+[8.5 Writing it up]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse an AI incident or near miss under supervision; (2) reconstruct a timeline from evidence; (3) separate causes and contributing factors; (4) recommend proportionate fixes; and (5) write a case analysis.
@@ -816,6 +1301,71 @@ Supervised case analysis turns incidents into learning: evidence-based timelines
 <a id="ch-09"></a>
 
 ## Chapter 9 — Communication, ethics and reporting
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Audiences"]
+  N2["9.2 Honest uncertainty"]
+  N3["9.3 Ethical pressure"]
+  N4["9.4 Protecting affected people"]
+  N5["9.5 Incident communication"]
+  N6["9.7b Checking the message before it goes"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Audiences"]
+  N2["9.2 Honest uncertainty"]
+  N3["9.3 Ethical pressure"]
+  N4["9.4 Protecting affected people"]
+  N5["9.5 Incident communication"]
+  N6["9.7b Checking the message before it goes"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Audiences]
+    |
+    v
+[9.2 Honest uncertainty]
+    |
+    v
+[9.3 Ethical pressure]
+    |
+    v
+[9.4 Protecting affected people]
+    |
+    v
+[9.5 Incident communication]
+    |
+    v
+[9.7b Checking the message before it goes]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -890,6 +1440,66 @@ Good communication tailors facts to audiences, states uncertainty plainly, holds
 <a id="ch-10"></a>
 
 ## Chapter 10 — AI and machine-learning security: quality and troubleshooting
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Quality checks"]
+  N2["10.2 Troubleshooting steps"]
+  N3["10.3 Accident or attack"]
+  N4["10.4 Preventing recurrence"]
+  N5["10.5 Self-review"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Quality checks"]
+  N2["10.2 Troubleshooting steps"]
+  N3["10.3 Accident or attack"]
+  N4["10.4 Preventing recurrence"]
+  N5["10.5 Self-review"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Quality checks]
+    |
+    v
+[10.2 Troubleshooting steps]
+    |
+    v
+[10.3 Accident or attack]
+    |
+    v
+[10.4 Preventing recurrence]
+    |
+    v
+[10.5 Self-review]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Learning outcomes
 
@@ -1008,6 +1618,71 @@ Quality and troubleshooting go together: repeatable, effect-based work, systemat
 <a id="ch-11"></a>
 
 ## Chapter 11 — Supervised laboratory
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Setup"]
+  N2["11.2 Part A — assistant"]
+  N3["11.3 Part B — scoring API"]
+  N4["11.3b Adaptive round"]
+  N5["11.4 Side effects"]
+  N6["11.5 Report"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Setup"]
+  N2["11.2 Part A — assistant"]
+  N3["11.3 Part B — scoring API"]
+  N4["11.3b Adaptive round"]
+  N5["11.4 Side effects"]
+  N6["11.5 Report"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Setup]
+    |
+    v
+[11.2 Part A — assistant]
+    |
+    v
+[11.3 Part B — scoring API]
+    |
+    v
+[11.3b Adaptive round]
+    |
+    v
+[11.4 Side effects]
+    |
+    v
+[11.5 Report]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -1144,6 +1819,71 @@ The supervised lab rehearses the whole practice cycle — baseline, configure, r
 <a id="ch-12"></a>
 
 ## Chapter 12 — Practice portfolio and final review
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio"]
+  N2["12.2 Principles to keep"]
+  N3["12.3 Readiness and gaps"]
+  N4["12.4 Continuing development"]
+  N5["12.5 Ethics"]
+  N6["12.5b Using the portfolio"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Portfolio"]
+  N2["12.2 Principles to keep"]
+  N3["12.3 Readiness and gaps"]
+  N4["12.4 Continuing development"]
+  N5["12.5 Ethics"]
+  N6["12.5b Using the portfolio"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Portfolio]
+    |
+    v
+[12.2 Principles to keep]
+    |
+    v
+[12.3 Readiness and gaps]
+    |
+    v
+[12.4 Continuing development]
+    |
+    v
+[12.5 Ethics]
+    |
+    v
+[12.5b Using the portfolio]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

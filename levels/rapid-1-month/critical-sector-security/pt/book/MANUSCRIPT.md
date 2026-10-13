@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Uma Primeira Introdução
 
 - Idioma: português do Brasil (`pt`); curso rápido, um mês; aproximadamente 80 horas de estudo planejado (curso 023 de 207 da [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–4 de 4 têm texto didático escrito, um laboratório offline, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito, um laboratório offline, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: **iniciantes** sem função de segurança e com letramento digital básico — estudantes, pessoas em transição de carreira e funcionários ou voluntários que acabaram de entrar num hospital, numa clínica, numa empresa de água ou de energia, numa operadora de transporte, num banco, numa escola ou numa prefeitura e querem entender por que o seu local de trabalho é tratado como "crítico".
 - Como este curso difere dos vizinhos. O [livro profissional](../../../../professional-6-months/critical-sector-security/en/book/MANUSCRIPT.md) ensina coordenadores a conduzir a governança: registros de riscos, RACI, contratos com fornecedores, prazos de notificação e exercícios de mesa. O [livro técnico](../../../../technical-18-months/critical-sector-security/en/book/MANUSCRIPT.md) ensina profundidade prática em protocolos e endurecimento. **Este livro rápido é um primeiro olhar e uma primeira prática segura.** Ele ensina você a reconhecer o que torna um serviço crítico, a explicar os seus riscos centrais em palavras simples, a ficar dentro do que você tem permissão para fazer, a ver como os serviços dependem uns dos outros e a concluir uma pequena tarefa guiada. Ele não faz de você um coordenador, um engenheiro ou um respondedor de incidentes, e nunca pede que você toque um sistema real.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de titularidade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -57,6 +57,71 @@ Toda afirmação factual sobre um framework público, uma lei, uma orientação 
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Infraestrutura crítica e segurança setorial: fundamentos e decisões
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O que torna um serviço crítico"]
+  N1["1.2 Consequência primeiro"]
+  N2["1.3 Três incidentes públicos, em resumo"]
+  N3["1.4 Escrevendo uma frase de risco"]
+  N4["Visual 1 — da frase de risco à decisão"]
+  N5["1.5 As três decisões do iniciante"]
+  N6["1.7 Atividade prática"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O que torna um serviço crítico"]
+  N1["1.2 Consequência primeiro"]
+  N2["1.3 Três incidentes públicos, em resumo"]
+  N3["1.4 Escrevendo uma frase de risco"]
+  N4["Visual 1 — da frase de risco à decisão"]
+  N5["1.5 As três decisões do iniciante"]
+  N6["1.7 Atividade prática"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[1.1 O que torna um serviço crítico]
+    |
+    v
+[1.2 Consequência primeiro]
+    |
+    v
+[1.3 Três incidentes públicos, em resumo]
+    |
+    v
+[1.4 Escrevendo uma frase de risco]
+    |
+    v
+[Visual 1 — da frase de risco à decisão]
+    |
+    v
+[1.5 As três decisões do iniciante]
+    |
+    v
+[1.7 Atividade prática]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -204,6 +269,71 @@ Siga para a próxima lição escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["2.1 Autorização e escopo"]
+  N1["Visual 2 — o limite da autorização"]
+  N2["2.2 Por que só dar uma conferida é perigoso aqui"]
+  N3["2.4 Relatando bem"]
+  N4["2.5 Compartilhando informações com cuidado: TLP"]
+  N5["2.6 Lugares seguros para praticar"]
+  N6["2.8 Atividade prática"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX014"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Autorização e escopo"]
+  N1["Visual 2 — o limite da autorização"]
+  N2["2.2 Por que só dar uma conferida é perigoso aqui"]
+  N3["2.4 Relatando bem"]
+  N4["2.5 Compartilhando informações com cuidado: TLP"]
+  N5["2.6 Lugares seguros para praticar"]
+  N6["2.8 Atividade prática"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[2.1 Autorização e escopo]
+    |
+    v
+[Visual 2 — o limite da autorização]
+    |
+    v
+[2.2 Por que só dar uma conferida é perigoso aqui]
+    |
+    v
+[2.4 Relatando bem]
+    |
+    v
+[2.5 Compartilhando informações com cuidado: TLP]
+    |
+    v
+[2.6 Lugares seguros para praticar]
+    |
+    v
+[2.8 Atividade prática]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -362,6 +492,71 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Infraestrutura crítica e segurança setorial: sistemas, dados e dependências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["3.1 As cinco partes de um serviço"]
+  N1["3.2 Um olhar tranquilo sobre a tecnologia operaciona"]
+  N2["3.3 Os dados e o que pode dar errado"]
+  N3["3.4 Dependências"]
+  N4["3.5 Fornecedores e acesso remoto"]
+  N5["Visual 3 — dependências da clínica sintético"]
+  N6["3.7 Atividade prática"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 As cinco partes de um serviço"]
+  N1["3.2 Um olhar tranquilo sobre a tecnologia operaciona"]
+  N2["3.3 Os dados e o que pode dar errado"]
+  N3["3.4 Dependências"]
+  N4["3.5 Fornecedores e acesso remoto"]
+  N5["Visual 3 — dependências da clínica sintético"]
+  N6["3.7 Atividade prática"]
+  N7["Síntese do capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[3.1 As cinco partes de um serviço]
+    |
+    v
+[3.2 Um olhar tranquilo sobre a tecnologia operaciona]
+    |
+    v
+[3.3 Os dados e o que pode dar errado]
+    |
+    v
+[3.4 Dependências]
+    |
+    v
+[3.5 Fornecedores e acesso remoto]
+    |
+    v
+[Visual 3 — dependências da clínica sintético]
+    |
+    v
+[3.7 Atividade prática]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem e conexão
 
@@ -523,6 +718,71 @@ Siga para a próxima lição escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Infraestrutura crítica e segurança setorial: laboratório guiado e síntese aplicada
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX050.
+
+```mermaid
+flowchart TD
+  N0["4.1 Cascatas"]
+  N1["Visual 4 — por que o gerador pode não salvar a clíni"]
+  N2["4.2 Laboratório 4 — o que mais falha? sintético"]
+  N3["4.4 Atividade prática e rubrica de avaliação"]
+  N4["Síntese do capítulo"]
+  N5["Capítulo 1"]
+  N6["Capítulo 2"]
+  N7["Capítulo 3"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX050"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Cascatas"]
+  N1["Visual 4 — por que o gerador pode não salvar a clíni"]
+  N2["4.2 Laboratório 4 — o que mais falha? sintético"]
+  N3["4.4 Atividade prática e rubrica de avaliação"]
+  N4["Síntese do capítulo"]
+  N5["Capítulo 1"]
+  N6["Capítulo 2"]
+  N7["Capítulo 3"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX050"]
+```
+
+```text
+[4.1 Cascatas]
+    |
+    v
+[Visual 4 — por que o gerador pode não salvar a clíni]
+    |
+    v
+[4.2 Laboratório 4 — o que mais falha? sintético]
+    |
+    v
+[4.4 Atividade prática e rubrica de avaliação]
+    |
+    v
+[Síntese do capítulo]
+    |
+    v
+[Capítulo 1]
+    |
+    v
+[Capítulo 2]
+    |
+    v
+[Capítulo 3]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX050]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem e conexão
 

@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Prática Especializada para Decisões em Escala Organizacional
 
 - Idioma: português do Brasil (`pt`); curso de especialização de pós-graduação, dois anos em tempo parcial; aproximadamente 600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito; os exercícios EX001–EX060 (cinco por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–12 de 12 têm texto didático escrito; os exercícios EX001–EX060 (cinco por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: especialistas experientes em segurança — arquitetos, líderes de PKI e de redes, gestores de risco e de garantia — que já conhecem a criptografia clássica e as operações corporativas e agora precisam liderar a migração pós-quântica numa grande organização. Conhecimento de entrada: uma graduação anterior ou experiência profissional equivalente em segurança.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) constrói os fundamentos e o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta e constrói migrações; o [livro de mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) as estuda como pesquisa. **Este livro trata da prática especializada: decidir, justificar, integrar e assegurar a migração em escala organizacional.** Ele pressupõe a matemática e se concentra no julgamento sob incerteza, nos padrões de evidência e na liderança.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -35,6 +35,66 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Tomada de decisão avançada em segurança
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Incerteza profunda"]
+  N1["1.2 Três regras de decisão"]
+  N2["1.3 Os modelos codificam valores"]
+  N3["1.4 Atividade prática — Laboratório D"]
+  N4["1.5 Comprando informação"]
+  N5["1.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Incerteza profunda"]
+  N1["1.2 Três regras de decisão"]
+  N2["1.3 Os modelos codificam valores"]
+  N3["1.4 Atividade prática — Laboratório D"]
+  N4["1.5 Comprando informação"]
+  N5["1.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[1.1 Incerteza profunda]
+    |
+    v
+[1.2 Três regras de decisão]
+    |
+    v
+[1.3 Os modelos codificam valores]
+    |
+    v
+[1.4 Atividade prática — Laboratório D]
+    |
+    v
+[1.5 Comprando informação]
+    |
+    v
+[1.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -126,6 +186,61 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 2 — Segurança quântica e pós-quântica: prática atual
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["2.1 Normas"]
+  N1["2.2 Orientações de transição"]
+  N2["2.3 Implantação"]
+  N3["2.4 Caso resolvido"]
+  N4["2.5 Tarefa prática"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX006"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Normas"]
+  N1["2.2 Orientações de transição"]
+  N2["2.3 Implantação"]
+  N3["2.4 Caso resolvido"]
+  N4["2.5 Tarefa prática"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
+```
+
+```text
+[2.1 Normas]
+    |
+    v
+[2.2 Orientações de transição]
+    |
+    v
+[2.3 Implantação]
+    |
+    v
+[2.4 Caso resolvido]
+    |
+    v
+[2.5 Tarefa prática]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) resumir a situação das normas, das orientações e da implantação na data das fontes; (2) distinguir documentos finais, rascunhos e em desenvolvimento; (3) descrever como a troca de chaves híbrida chegou à implantação em larga escala; (4) avaliar a aplicabilidade das orientações nacionais e setoriais; e (5) manter um resumo vivo do "estado da prática" para uma organização.
@@ -185,6 +300,66 @@ Siga para a próxima lição escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Segurança quântica e pós-quântica: evidências especializadas
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["3.1 O inventário como programa"]
+  N1["3.2 Graduação das evidências"]
+  N2["3.3 Atividade prática — Laboratório I"]
+  N3["3.4 Evidências dos fornecedores"]
+  N4["3.5 Apresentando as evidências"]
+  N5["3.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX011"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 O inventário como programa"]
+  N1["3.2 Graduação das evidências"]
+  N2["3.3 Atividade prática — Laboratório I"]
+  N3["3.4 Evidências dos fornecedores"]
+  N4["3.5 Apresentando as evidências"]
+  N5["3.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
+```
+
+```text
+[3.1 O inventário como programa]
+    |
+    v
+[3.2 Graduação das evidências]
+    |
+    v
+[3.3 Atividade prática — Laboratório I]
+    |
+    v
+[3.4 Evidências dos fornecedores]
+    |
+    v
+[3.5 Apresentando as evidências]
+    |
+    v
+[3.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -282,6 +457,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 4 — Risco e ética avançados
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["4.1 Risco latente e irreversível"]
+  N1["4.2 Falsificação posterior e risco sistêmico"]
+  N2["4.3 Obrigações para com os titulares dos dados"]
+  N3["4.4 Uso dual e divulgação"]
+  N4["4.5 Aceitação do risco residual"]
+  N5["4.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Risco latente e irreversível"]
+  N1["4.2 Falsificação posterior e risco sistêmico"]
+  N2["4.3 Obrigações para com os titulares dos dados"]
+  N3["4.4 Uso dual e divulgação"]
+  N4["4.5 Aceitação do risco residual"]
+  N5["4.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX016"]
+```
+
+```text
+[4.1 Risco latente e irreversível]
+    |
+    v
+[4.2 Falsificação posterior e risco sistêmico]
+    |
+    v
+[4.3 Obrigações para com os titulares dos dados]
+    |
+    v
+[4.4 Uso dual e divulgação]
+    |
+    v
+[4.5 Aceitação do risco residual]
+    |
+    v
+[4.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) quantificar o risco quântico com medidas de exposição baseadas em cenários; (2) tratar os riscos com longa latência e dano irreversível; (3) analisar as obrigações éticas para com os titulares dos dados cujo dano ultrapassa o horizonte da organização; (4) lidar com as questões de uso dual e de divulgação no nível especializado; e (5) documentar adequadamente a aceitação do risco residual.
@@ -351,6 +586,61 @@ Siga para a próxima lição escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Segurança quântica e pós-quântica: alternativas de projeto
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["5.1 Alternativas de estabelecimento de chaves"]
+  N1["5.2 Alternativas de autenticação"]
+  N2["5.3 Atividade prática — Laboratório B"]
+  N3["5.4 Política de parâmetros"]
+  N4["5.5 Caso resolvido"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Alternativas de estabelecimento de chaves"]
+  N1["5.2 Alternativas de autenticação"]
+  N2["5.3 Atividade prática — Laboratório B"]
+  N3["5.4 Política de parâmetros"]
+  N4["5.5 Caso resolvido"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[5.1 Alternativas de estabelecimento de chaves]
+    |
+    v
+[5.2 Alternativas de autenticação]
+    |
+    v
+[5.3 Atividade prática — Laboratório B]
+    |
+    v
+[5.4 Política de parâmetros]
+    |
+    v
+[5.5 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -438,6 +728,66 @@ Siga para a próxima lição escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Segurança quântica e pós-quântica: avaliação controlada
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["6.1 Perguntas de avaliação"]
+  N1["6.2 Limiares antes dos dados"]
+  N2["6.3 Atividade prática — Laboratório K"]
+  N3["6.4 Matrizes de interoperabilidade"]
+  N4["6.5 Validade"]
+  N5["6.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX026"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Perguntas de avaliação"]
+  N1["6.2 Limiares antes dos dados"]
+  N2["6.3 Atividade prática — Laboratório K"]
+  N3["6.4 Matrizes de interoperabilidade"]
+  N4["6.5 Validade"]
+  N5["6.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
+```
+
+```text
+[6.1 Perguntas de avaliação]
+    |
+    v
+[6.2 Limiares antes dos dados]
+    |
+    v
+[6.3 Atividade prática — Laboratório K]
+    |
+    v
+[6.4 Matrizes de interoperabilidade]
+    |
+    v
+[6.5 Validade]
+    |
+    v
+[6.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -530,6 +880,71 @@ Siga para a próxima lição escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Segurança quântica e pós-quântica: integração organizacional
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["7.1 Não um projeto, uma capacidade"]
+  N1["7.2 Plataformas orientadas por política"]
+  N2["7.3 Atividade prática — Laboratório A"]
+  N3["7.4 Governança e direitos de decisão"]
+  N4["7.5 Ciclos de renovação e orçamento"]
+  N5["7.6 Medindo o progresso"]
+  N6["7.7 Caso resolvido"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Não um projeto, uma capacidade"]
+  N1["7.2 Plataformas orientadas por política"]
+  N2["7.3 Atividade prática — Laboratório A"]
+  N3["7.4 Governança e direitos de decisão"]
+  N4["7.5 Ciclos de renovação e orçamento"]
+  N5["7.6 Medindo o progresso"]
+  N6["7.7 Caso resolvido"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[7.1 Não um projeto, uma capacidade]
+    |
+    v
+[7.2 Plataformas orientadas por política]
+    |
+    v
+[7.3 Atividade prática — Laboratório A]
+    |
+    v
+[7.4 Governança e direitos de decisão]
+    |
+    v
+[7.5 Ciclos de renovação e orçamento]
+    |
+    v
+[7.6 Medindo o progresso]
+    |
+    v
+[7.7 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -638,6 +1053,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 8 — Segurança quântica e pós-quântica: casos difíceis
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["8.1 Dispositivos médicos e embarcados"]
+  N1["8.2 PKI interna"]
+  N2["8.3 Assinaturas baseadas em hash com estado"]
+  N3["8.4 Assinaturas e arquivos de longo prazo"]
+  N4["8.5 Resposta à quebra de um algoritmo"]
+  N5["8.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Dispositivos médicos e embarcados"]
+  N1["8.2 PKI interna"]
+  N2["8.3 Assinaturas baseadas em hash com estado"]
+  N3["8.4 Assinaturas e arquivos de longo prazo"]
+  N4["8.5 Resposta à quebra de um algoritmo"]
+  N5["8.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
+```
+
+```text
+[8.1 Dispositivos médicos e embarcados]
+    |
+    v
+[8.2 PKI interna]
+    |
+    v
+[8.3 Assinaturas baseadas em hash com estado]
+    |
+    v
+[8.4 Assinaturas e arquivos de longo prazo]
+    |
+    v
+[8.5 Resposta à quebra de um algoritmo]
+    |
+    v
+[8.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) analisar migrações que envolvem dispositivos médicos e embarcados, a PKI interna, arquivos de longo prazo e terceiros; (2) aplicar controles compensatórios onde a migração é impossível; (3) gerenciar as assinaturas baseadas em hash com estado; (4) planejar a validade das assinaturas de longo prazo; e (5) raciocinar sobre a resposta à quebra de um algoritmo.
@@ -709,6 +1184,66 @@ Siga para a próxima lição escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Segurança quântica e pós-quântica: liderança e garantia
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["9.1 Liderança do programa"]
+  N1["9.2 Três linhas de garantia"]
+  N2["9.3 Evidências para auditores e reguladores"]
+  N3["9.4 Comunicação"]
+  N4["9.5 Sustentação"]
+  N5["9.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX041"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Liderança do programa"]
+  N1["9.2 Três linhas de garantia"]
+  N2["9.3 Evidências para auditores e reguladores"]
+  N3["9.4 Comunicação"]
+  N4["9.5 Sustentação"]
+  N5["9.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
+```
+
+```text
+[9.1 Liderança do programa]
+    |
+    v
+[9.2 Três linhas de garantia]
+    |
+    v
+[9.3 Evidências para auditores e reguladores]
+    |
+    v
+[9.4 Comunicação]
+    |
+    v
+[9.5 Sustentação]
+    |
+    v
+[9.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -782,6 +1317,66 @@ Siga para a próxima lição escrita.
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["10.1 Lendo criptoanálise"]
+  N1["10.2 Lendo estimativas de recursos"]
+  N2["10.3 Lendo estudos de implantação"]
+  N3["10.4 Preprints e pesquisas de fornecedores"]
+  N4["10.5 Crítica estruturada"]
+  N5["10.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Lendo criptoanálise"]
+  N1["10.2 Lendo estimativas de recursos"]
+  N2["10.3 Lendo estudos de implantação"]
+  N3["10.4 Preprints e pesquisas de fornecedores"]
+  N4["10.5 Crítica estruturada"]
+  N5["10.6 Caso resolvido"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX046"]
+```
+
+```text
+[10.1 Lendo criptoanálise]
+    |
+    v
+[10.2 Lendo estimativas de recursos]
+    |
+    v
+[10.3 Lendo estudos de implantação]
+    |
+    v
+[10.4 Preprints e pesquisas de fornecedores]
+    |
+    v
+[10.5 Crítica estruturada]
+    |
+    v
+[10.6 Caso resolvido]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) ler criticamente artigos de criptoanálise, de estimativa de recursos e de implantação; (2) extrair as hipóteses e avaliar o seu realismo; (3) julgar adequadamente os preprints e as pesquisas de fornecedores; (4) traduzir a pesquisa em implicações para a prática; e (5) escrever uma crítica estruturada.
@@ -853,6 +1448,71 @@ Siga para a próxima lição escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Projeto aplicado
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["11.1 Tipos de projeto"]
+  N1["11.2 Delimitando com um patrocinador"]
+  N2["11.3 Entregas"]
+  N3["11.4 Proteção dos dados"]
+  N4["11.5 Avaliação do impacto"]
+  N5["11.6 Caso resolvido"]
+  N6["11.8 Lidando com a resistência"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Tipos de projeto"]
+  N1["11.2 Delimitando com um patrocinador"]
+  N2["11.3 Entregas"]
+  N3["11.4 Proteção dos dados"]
+  N4["11.5 Avaliação do impacto"]
+  N5["11.6 Caso resolvido"]
+  N6["11.8 Lidando com a resistência"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[11.1 Tipos de projeto]
+    |
+    v
+[11.2 Delimitando com um patrocinador]
+    |
+    v
+[11.3 Entregas]
+    |
+    v
+[11.4 Proteção dos dados]
+    |
+    v
+[11.5 Avaliação do impacto]
+    |
+    v
+[11.6 Caso resolvido]
+    |
+    v
+[11.8 Lidando com a resistência]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -929,6 +1589,71 @@ Siga para a próxima lição escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["12.1 Revisão do portfólio"]
+  N1["12.2 Defesa"]
+  N2["12.3 Transferência"]
+  N3["12.4 Desenvolvimento contínuo"]
+  N4["12.5 Legado"]
+  N5["12.6 Caso resolvido"]
+  N6["12.8 Refletindo sobre o julgamento"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX056"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Revisão do portfólio"]
+  N1["12.2 Defesa"]
+  N2["12.3 Transferência"]
+  N3["12.4 Desenvolvimento contínuo"]
+  N4["12.5 Legado"]
+  N5["12.6 Caso resolvido"]
+  N6["12.8 Refletindo sobre o julgamento"]
+  N7["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[12.1 Revisão do portfólio]
+    |
+    v
+[12.2 Defesa]
+    |
+    v
+[12.3 Transferência]
+    |
+    v
+[12.4 Desenvolvimento contínuo]
+    |
+    v
+[12.5 Legado]
+    |
+    v
+[12.6 Caso resolvido]
+    |
+    v
+[12.8 Refletindo sobre o julgamento]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 

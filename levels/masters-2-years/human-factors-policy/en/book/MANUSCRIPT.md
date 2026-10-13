@@ -1,7 +1,7 @@
 # Human Factors and Cyber Policy: Master's Course
 
 - Language: English (`en`); course 167, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students evaluating how a security policy change affects staff behaviour and workload.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs fit an interrupted time series, bootstrap a survey difference and run a leave-one-month-out check on synthetic data; no real staff, passwords or accounts are involved. Surveys described here never ask for passwords and are anonymous. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ Adams and Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/3227
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 From problem to question"]
+  N2["1.2 Why the question matters"]
+  N3["1.3 A structured search"]
+  N4["1.4 What the search found"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 From problem to question"]
+  N2["1.2 Why the question matters"]
+  N3["1.3 A structured search"]
+  N4["1.4 What the search found"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 From problem to question]
+    |
+    v
+[1.2 Why the question matters]
+    |
+    v
+[1.3 A structured search]
+    |
+    v
+[1.4 What the search found]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -89,6 +144,61 @@ A focused question and a recorded, repeatable search give a dissertation a defen
 
 ## Chapter 2 — Human factors and cyber policy: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Theories of behaviour"]
+  N2["2.2 Applying the models"]
+  N3["2.3 Critique"]
+  N4["2.4 Policy relevance"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Theories of behaviour"]
+  N2["2.2 Applying the models"]
+  N3["2.3 Critique"]
+  N4["2.4 Policy relevance"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Theories of behaviour]
+    |
+    v
+[2.2 Applying the models]
+    |
+    v
+[2.3 Critique]
+    |
+    v
+[2.4 Policy relevance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) critique key human factors theories; (2) compare behavioural models for security; (3) apply them to the trust's password change.
@@ -141,6 +251,61 @@ Behavioural theories are useful when they make distinct, testable predictions ab
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Mixed methods"]
+  N2["3.2 Ethical approval"]
+  N3["3.3 Self-report risks"]
+  N4["3.4 Reproducibility plan"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Mixed methods"]
+  N2["3.2 Ethical approval"]
+  N3["3.3 Self-report risks"]
+  N4["3.4 Reproducibility plan"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Mixed methods]
+    |
+    v
+[3.2 Ethical approval]
+    |
+    v
+[3.3 Self-report risks]
+    |
+    v
+[3.4 Reproducibility plan]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) design a mixed-methods study of a policy change; (2) obtain ethical approval for staff research; (3) plan for reproducibility.
@@ -191,6 +356,66 @@ Mixed methods with careful ethics and an honest reproducibility plan suit resear
 <a id="ch-04"></a>
 
 ## Chapter 4 — Human factors and cyber policy: competing explanations
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Possible explanations"]
+  N2["4.2 Checks for each"]
+  N3["Lab — Interrupted time series of monthly resets per"]
+  N4["4.3 What the checks show"]
+  N5["4.4 Deciding what is supported"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Possible explanations"]
+  N2["4.2 Checks for each"]
+  N3["Lab — Interrupted time series of monthly resets per"]
+  N4["4.3 What the checks show"]
+  N5["4.4 Deciding what is supported"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Possible explanations]
+    |
+    v
+[4.2 Checks for each]
+    |
+    v
+[Lab — Interrupted time series of monthly resets per]
+    |
+    v
+[4.3 What the checks show]
+    |
+    v
+[4.4 Deciding what is supported]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -269,6 +494,61 @@ Listing and checking competing explanations lets a study rank its conclusions ho
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Piloting the survey"]
+  N3["5.3 Piloting interviews"]
+  N4["5.4 Recording revisions"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Piloting the survey"]
+  N3["5.3 Piloting interviews"]
+  N4["5.4 Recording revisions"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The proposal]
+    |
+    v
+[5.2 Piloting the survey]
+    |
+    v
+[5.3 Piloting interviews]
+    |
+    v
+[5.4 Recording revisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write a dissertation proposal; (2) pilot the survey and interview guide; (3) revise instruments from pilot evidence.
@@ -319,6 +599,66 @@ Pilots test whether instruments mean what the researcher intends, and logged rev
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Collecting data"]
+  N2["6.2 Analysing survey change"]
+  N3["Lab — Bootstrap interval for change in writing passw"]
+  N4["6.3 Coding interviews"]
+  N5["6.4 Bringing results together"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Collecting data"]
+  N2["6.2 Analysing survey change"]
+  N3["Lab — Bootstrap interval for change in writing passw"]
+  N4["6.3 Coding interviews"]
+  N5["6.4 Bringing results together"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Collecting data]
+    |
+    v
+[6.2 Analysing survey change]
+    |
+    v
+[Lab — Bootstrap interval for change in writing passw]
+    |
+    v
+[6.3 Coding interviews]
+    |
+    v
+[6.4 Bringing results together]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -396,6 +736,66 @@ Combining counts, survey change and interview themes gives a fuller and more hon
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Robustness"]
+  N3["Lab — Leave-one-month-out check on the level change"]
+  N4["7.3 Useful limitations"]
+  N5["7.4 Implications"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Robustness"]
+  N3["Lab — Leave-one-month-out check on the level change"]
+  N4["7.3 Useful limitations"]
+  N5["7.4 Implications"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Robustness]
+    |
+    v
+[Lab — Leave-one-month-out check on the level change]
+    |
+    v
+[7.3 Useful limitations]
+    |
+    v
+[7.4 Implications]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a dissertation chapter by chapter; (2) write limitations that inform rather than excuse; (3) test the robustness of the main result.
@@ -472,6 +872,61 @@ Robustness checks and directional limitations make a dissertation's conclusions 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense"]
+  N3["8.3 Sharing with the trust"]
+  N4["8.4 After the degree"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 The defense"]
+  N3["8.3 Sharing with the trust"]
+  N4["8.4 After the degree"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent review]
+    |
+    v
+[8.2 The defense]
+    |
+    v
+[8.3 Sharing with the trust]
+    |
+    v
+[8.4 After the degree]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

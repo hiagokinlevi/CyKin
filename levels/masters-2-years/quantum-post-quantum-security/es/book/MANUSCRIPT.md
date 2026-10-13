@@ -1,7 +1,7 @@
 # Seguridad cuántica y poscuántica: métodos de investigación y práctica del trabajo de fin de máster
 
 - Idioma: español (`es`), edición en español neutro internacional; maestría, dos años; aproximadamente 1200 horas de estudio planificado. Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–8 de 8 tienen texto didáctico escrito, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4.
+- Estado editorial: **publicado**. Los capítulos 1–8 de 8 tienen texto didáctico escrito, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4.
 - Público: investigadores principiantes con una base sólida en el área y formación en métodos de investigación que van a formular una pregunta, evaluar el trabajo previo y producir hallazgos reproducibles en seguridad cuántica y poscuántica. Conocimientos de entrada: el contenido de [posgrado](../../../../postgraduate-2-years/quantum-post-quantum-security/en/book/PLAN.md) o de [ingeniería](../../../../engineering-5-years/quantum-post-quantum-security/en/book/PLAN.md) de esta área o equivalente: TLS 1.3, criptografía de clave pública, estadística básica.
 - Relación con el [curso de doctorado](../../../../doctorate-2-years/quantum-post-quantum-security/es/book/MANUSCRIPT.md): el doctorado estudia el descubrimiento de la criptografía vulnerable a la computación cuántica en toda una organización. **Este libro estudia en profundidad una sola pregunta de despliegue** —qué ocurre con las conexiones reales cuando se activa un intercambio de claves híbrido poscuántico/tradicional (PQ/T)— y enseña en torno a ella el ciclo completo de un trabajo de fin de máster.
 - Autoría y responsabilidad editorial: [hiagokinlevi](https://github.com/hiagokinlevi). El texto original del mantenedor se dedica bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus propios derechos.
@@ -34,6 +34,61 @@ La pregunta se apoya en la experiencia pública: cuando Chrome empezó a ofrecer
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pregunta de investigación y método de revisión de la literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 De la queja a la pregunta"]
+  N2["1.2 Por qué el tamaño es plausible"]
+  N3["1.3 FINER"]
+  N4["1.4 Una búsqueda documentada"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 De la queja a la pregunta"]
+  N2["1.2 Por qué el tamaño es plausible"]
+  N3["1.3 FINER"]
+  N4["1.4 Una búsqueda documentada"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[1.1 De la queja a la pregunta]
+    |
+    v
+[1.2 Por qué el tamaño es plausible]
+    |
+    v
+[1.3 FINER]
+    |
+    v
+[1.4 Una búsqueda documentada]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje y conexión
 

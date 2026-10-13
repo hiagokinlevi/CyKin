@@ -1,7 +1,7 @@
 # Information Security: Rapid Course
 
 - Language: English (`en`); course 002, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: managers and staff of very small organisations who need to fix the most common security weaknesses in a month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab counts synthetic shared files open to anyone with the link, by folder. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ ISO/IEC 27000:2026. Full list in [References](#references).
 <a id="ch-01"></a>
 
 ## Chapter 1 — A month to get the basics right
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The learner"]
+  N2["1.2 The practice"]
+  N3["1.3 What the clinic holds"]
+  N4["1.4 What cannot be lost"]
+  N5["1.5 Ground rules"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The learner"]
+  N2["1.2 The practice"]
+  N3["1.3 What the clinic holds"]
+  N4["1.4 What cannot be lost"]
+  N5["1.5 Ground rules"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The learner]
+    |
+    v
+[1.2 The practice]
+    |
+    v
+[1.3 What the clinic holds]
+    |
+    v
+[1.4 What cannot be lost]
+    |
+    v
+[1.5 Ground rules]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -98,6 +153,66 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Accounts, devices and sharing
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Own accounts"]
+  N2["2.2 Second factor"]
+  N3["2.3 Devices"]
+  N4["Lab — Shared files open to anyone with the link, by"]
+  N5["2.4 Over-shared files"]
+  N6["2.5 Closing the gaps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Own accounts"]
+  N2["2.2 Second factor"]
+  N3["2.3 Devices"]
+  N4["Lab — Shared files open to anyone with the link, by"]
+  N5["2.4 Over-shared files"]
+  N6["2.5 Closing the gaps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Own accounts]
+    |
+    v
+[2.2 Second factor]
+    |
+    v
+[2.3 Devices]
+    |
+    v
+[Lab — Shared files open to anyone with the link, by]
+    |
+    v
+[2.4 Over-shared files]
+    |
+    v
+[2.5 Closing the gaps]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -189,6 +304,61 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Email, fraud and people
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Phishing signs"]
+  N2["3.2 Invoice fraud"]
+  N3["3.3 The rule in action"]
+  N4["3.4 Short training"]
+  N5["3.5 Reporting without blame"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Phishing signs"]
+  N2["3.2 Invoice fraud"]
+  N3["3.3 The rule in action"]
+  N4["3.4 Short training"]
+  N5["3.5 Reporting without blame"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Phishing signs]
+    |
+    v
+[3.2 Invoice fraud]
+    |
+    v
+[3.3 The rule in action]
+    |
+    v
+[3.4 Short training]
+    |
+    v
+[3.5 Reporting without blame]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) recognise phishing and invoice fraud; (2) set a payment verification rule; (3) build a short, blame-free reporting habit.
@@ -249,6 +419,61 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Backups, incidents and the plan ahead
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Backups"]
+  N2["4.2 Testing a restore"]
+  N3["4.3 An incident card"]
+  N4["4.4 A practice drill"]
+  N5["4.5 The plan ahead"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Backups"]
+  N2["4.2 Testing a restore"]
+  N3["4.3 An incident card"]
+  N4["4.4 A practice drill"]
+  N5["4.5 The plan ahead"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Backups]
+    |
+    v
+[4.2 Testing a restore]
+    |
+    v
+[4.3 An incident card]
+    |
+    v
+[4.4 A practice drill]
+    |
+    v
+[4.5 The plan ahead]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

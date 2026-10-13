@@ -1,7 +1,7 @@
 # OT, IoT and Cyber-Physical Security: A Rapid Introduction
 
 - Language: English (`en`); rapid course, one month; approximately 80 hours of planned study.
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results; offline labs use the Python 3 standard library and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: new learners with no prior OT background.
 - Relation to neighbouring books: the [professional course book](../../../../professional-6-months/ot-iot-security/en/book/MANUSCRIPT.md) develops each topic into practice. **This book is a four-chapter introduction.**
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -35,6 +35,66 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC
 <a id="ch-01"></a>
 
 ## Chapter 1 — What OT, IoT and cyber-physical security are
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Three overlapping terms"]
+  N2["1.2 A solar and battery site"]
+  N3["1.3 Priorities"]
+  N4["1.4 Why it is a real concern"]
+  N5["1.5 The guidance map"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Three overlapping terms"]
+  N2["1.2 A solar and battery site"]
+  N3["1.3 Priorities"]
+  N4["1.4 Why it is a real concern"]
+  N5["1.5 The guidance map"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Three overlapping terms]
+    |
+    v
+[1.2 A solar and battery site]
+    |
+    v
+[1.3 Priorities]
+    |
+    v
+[1.4 Why it is a real concern]
+    |
+    v
+[1.5 The guidance map]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -107,6 +167,66 @@ OT, IoT and CPS join computing to physical equipment; at an energy site safety a
 <a id="ch-02"></a>
 
 ## Chapter 2 — Assets, networks and exposure
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Inventory first"]
+  N2["2.2 Reading the lab"]
+  N3["2.3 Separating the network"]
+  N4["2.4 Exposure and remote access"]
+  N5["2.5 Cloud portals"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Inventory first"]
+  N2["2.2 Reading the lab"]
+  N3["2.3 Separating the network"]
+  N4["2.4 Exposure and remote access"]
+  N5["2.5 Cloud portals"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Inventory first]
+    |
+    v
+[2.2 Reading the lab]
+    |
+    v
+[2.3 Separating the network]
+    |
+    v
+[2.4 Exposure and remote access]
+    |
+    v
+[2.5 Cloud portals]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -203,6 +323,71 @@ Know every device, fix defaults and old firmware through planned work, separate 
 
 ## Chapter 3 — Recognising and reporting problems
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Normal first"]
+  N2["3.2 Reading the lab"]
+  N3["3.3 Naming what you saw"]
+  N4["3.4 Other warning signs"]
+  N5["3.5 Reporting"]
+  N6["3.6 Safety comes first"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Normal first"]
+  N2["3.2 Reading the lab"]
+  N3["3.3 Naming what you saw"]
+  N4["3.4 Other warning signs"]
+  N5["3.5 Reporting"]
+  N6["3.6 Safety comes first"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Normal first]
+    |
+    v
+[3.2 Reading the lab]
+    |
+    v
+[3.3 Naming what you saw]
+    |
+    v
+[3.4 Other warning signs]
+    |
+    v
+[3.5 Reporting]
+    |
+    v
+[3.6 Safety comes first]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) describe normal behaviour at Elmstead; (2) spot a command that does not fit the schedule; (3) describe what you saw using ATT&CK for ICS names; and (4) write a short, factual report.
@@ -298,6 +483,61 @@ Write down normal, notice what does not fit, describe it plainly with shared nam
 <a id="ch-04"></a>
 
 ## Chapter 4 — Safe habits, response basics and next steps
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Everyday habits"]
+  N2["4.2 Responding to an incident"]
+  N3["4.3 Updates and devices"]
+  N4["4.5 Where next"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Everyday habits"]
+  N2["4.2 Responding to an incident"]
+  N3["4.3 Updates and devices"]
+  N4["4.5 Where next"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Everyday habits]
+    |
+    v
+[4.2 Responding to an incident]
+    |
+    v
+[4.3 Updates and devices]
+    |
+    v
+[4.5 Where next]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

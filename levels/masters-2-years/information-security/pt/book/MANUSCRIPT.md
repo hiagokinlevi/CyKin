@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 163, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que avaliam se o feedback imediato sobre phishing reduz os cliques em simulações de phishing numa organização de saúde.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios separam os cliques de pré-carregamento do scanner de e-mail dos cliques humanos num log sintético de simulação de phishing e estimam um efeito de diferença em diferenças sobre taxas sintéticas de cliques com um intervalo bootstrap. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,51 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 A estudante e o contexto"]
+  N1["1.2 Formulando a pergunta"]
+  N2["1.3 Buscando na literatura"]
+  N3["1.4 Registrando as decisões"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 A estudante e o contexto"]
+  N1["1.2 Formulando a pergunta"]
+  N2["1.3 Buscando na literatura"]
+  N3["1.4 Registrando as decisões"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 A estudante e o contexto]
+    |
+    v
+[1.2 Formulando a pergunta]
+    |
+    v
+[1.3 Buscando na literatura]
+    |
+    v
+[1.4 Registrando as decisões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -95,6 +140,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Segurança da informação: seminário avançado
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 A visão das normas"]
+  N1["2.2 Catálogos de controles e frameworks"]
+  N2["2.3 Princípios de projeto"]
+  N3["2.4 O argumento do seminário"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 A visão das normas"]
+  N1["2.2 Catálogos de controles e frameworks"]
+  N2["2.3 Princípios de projeto"]
+  N3["2.4 O argumento do seminário"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX008"]
+```
+
+```text
+[2.1 A visão das normas]
+    |
+    v
+[2.2 Catálogos de controles e frameworks]
+    |
+    v
+[2.3 Princípios de projeto]
+    |
+    v
+[2.4 O argumento do seminário]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) relacionar o treinamento de conscientização às normas de gestão e aos catálogos de controles; (2) ligar o comportamento dos usuários aos princípios de projeto; (3) construir um argumento que liga a intervenção ao desfecho.
@@ -153,6 +243,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Escolhendo um desenho"]
+  N1["3.2 Verificando os pressupostos"]
+  N2["3.3 Ética"]
+  N3["3.4 Análise reproduzível"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Escolhendo um desenho"]
+  N1["3.2 Verificando os pressupostos"]
+  N2["3.3 Ética"]
+  N3["3.4 Análise reproduzível"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX015"]
+```
+
+```text
+[3.1 Escolhendo um desenho]
+    |
+    v
+[3.2 Verificando os pressupostos]
+    |
+    v
+[3.3 Ética]
+    |
+    v
+[3.4 Análise reproduzível]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escolher um desenho quase experimental quando a randomização é impossível; (2) obter aprovação ética para a pesquisa em segurança no local de trabalho; (3) fixar um plano de análise antes da coleta de dados.
@@ -209,6 +344,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Segurança da informação: explicações concorrentes
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Por que as rivais importam"]
+  N1["4.2 Desenhando as verificações"]
+  N2["4.3 A explicação dos relatos"]
+  N3["4.4 Evidências que enfraqueceriam a hipótese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Por que as rivais importam"]
+  N1["4.2 Desenhando as verificações"]
+  N2["4.3 A explicação dos relatos"]
+  N3["4.4 Evidências que enfraqueceriam a hipótese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
+```
+
+```text
+[4.1 Por que as rivais importam]
+    |
+    v
+[4.2 Desenhando as verificações]
+    |
+    v
+[4.3 A explicação dos relatos]
+    |
+    v
+[4.4 Evidências que enfraqueceriam a hipótese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) listar explicações rivais para uma melhora de segurança; (2) desenhar verificações para cada rival; (3) declarar as evidências que enfraqueceriam sua hipótese.
@@ -264,6 +444,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Propósito do piloto"]
+  N1["5.2 O laboratório dos cliques"]
+  N2["Laboratório — Cliques de pré-carregamento do scanner"]
+  N3["5.3 Conferindo a regra"]
+  N4["5.4 Refinando a proposta"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Propósito do piloto"]
+  N1["5.2 O laboratório dos cliques"]
+  N2["Laboratório — Cliques de pré-carregamento do scanner"]
+  N3["5.3 Conferindo a regra"]
+  N4["5.4 Refinando a proposta"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[5.1 Propósito do piloto]
+    |
+    v
+[5.2 O laboratório dos cliques]
+    |
+    v
+[Laboratório — Cliques de pré-carregamento do scanner]
+    |
+    v
+[5.3 Conferindo a regra]
+    |
+    v
+[5.4 Refinando a proposta]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -350,6 +580,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Coleta e análise de dados
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Coletando os dados"]
+  N1["6.2 A estimativa"]
+  N2["Laboratório — Diferença em diferenças das taxas de c"]
+  N3["6.3 Conferindo as rivais"]
+  N4["6.4 O que a estimativa significa"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Coletando os dados"]
+  N1["6.2 A estimativa"]
+  N2["Laboratório — Diferença em diferenças das taxas de c"]
+  N3["6.3 Conferindo as rivais"]
+  N4["6.4 O que a estimativa significa"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
+```
+
+```text
+[6.1 Coletando os dados]
+    |
+    v
+[6.2 A estimativa]
+    |
+    v
+[Laboratório — Diferença em diferenças das taxas de c]
+    |
+    v
+[6.3 Conferindo as rivais]
+    |
+    v
+[6.4 O que a estimativa significa]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) coletar os dados de desfecho sob um plano congelado; (2) estimar um efeito de diferença em diferenças com um intervalo bootstrap; (3) conferir as explicações rivais contra os dados.
@@ -433,6 +713,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estrutura"]
+  N1["7.2 Limitações"]
+  N2["7.3 Achados versus recomendações"]
+  N3["7.4 Escrevendo para dois públicos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estrutura"]
+  N1["7.2 Limitações"]
+  N2["7.3 Achados versus recomendações"]
+  N3["7.4 Escrevendo para dois públicos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX039"]
+```
+
+```text
+[7.1 Estrutura]
+    |
+    v
+[7.2 Limitações]
+    |
+    v
+[7.3 Achados versus recomendações]
+    |
+    v
+[7.4 Escrevendo para dois públicos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação em torno de uma pergunta; (2) escrever limitações específicas; (3) separar os achados das recomendações.
@@ -488,6 +813,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 A entrega"]
+  N3["8.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 A entrega"]
+  N3["8.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX045"]
+```
+
+```text
+[8.1 Revisão independente]
+    |
+    v
+[8.2 A defesa]
+    |
+    v
+[8.3 A entrega]
+    |
+    v
+[8.4 Reflexão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

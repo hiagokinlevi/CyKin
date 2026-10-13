@@ -1,7 +1,7 @@
 # Authorized Offensive Security and Red Team: A Master's Research Book
 
 - Language: English (`en`); master's programme, two years; approximately 1,600 hours of planned study.
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; offline labs use the Python 3 standard library and their printed outputs were produced by real runs against synthetic data only. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; offline labs use the Python 3 standard library and their printed outputs were produced by real runs against synthetic data only. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: beginning researchers who will design, run and defend a supervised dissertation in authorized offensive security and red-team practice.
 - Relation to neighbouring books: the [postgraduate book](../../../../postgraduate-2-years/offensive-security-red-team/en/book/MANUSCRIPT.md) is practice-led; the [doctoral book](../../../../doctorate-2-years/offensive-security-red-team/en/book/MANUSCRIPT.md) asks for an original contribution tested independently. **This book teaches the full research cycle once, under supervision**: question, literature, design, competing explanations, pilot, analysis, writing and defence.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
@@ -39,6 +39,71 @@ Sources checked 12 October 2026: [NIST SP 800-115](https://doi.org/10.6028/NIST.
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 From placement to question"]
+  N2["1.2 Literature method"]
+  N3["1.3 Related-work map"]
+  N4["1.4 Choosing a measure"]
+  N5["1.5 Asset context"]
+  N6["1.5b Note hygiene"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 From placement to question"]
+  N2["1.2 Literature method"]
+  N3["1.3 Related-work map"]
+  N4["1.4 Choosing a measure"]
+  N5["1.5 Asset context"]
+  N6["1.5b Note hygiene"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 From placement to question]
+    |
+    v
+[1.2 Literature method]
+    |
+    v
+[1.3 Related-work map]
+    |
+    v
+[1.4 Choosing a measure]
+    |
+    v
+[1.5 Asset context]
+    |
+    v
+[1.5b Note hygiene]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -142,6 +207,71 @@ Seminar and literature habits turn red-team practice into researchable questions
 <a id="ch-02"></a>
 
 ## Chapter 2 — Authorized offensive security and red team: advanced seminar
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Seminar practice"]
+  N2["2.2 ATT&CK vocabulary"]
+  N3["2.3 Findings without payloads"]
+  N4["2.4 Threat-led vs checklist"]
+  N5["2.5 Feedback craft"]
+  N6["2.5b Comparing frameworks in one slide"]
+  N7["2.5c Reading a framework critically"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Seminar practice"]
+  N2["2.2 ATT&CK vocabulary"]
+  N3["2.3 Findings without payloads"]
+  N4["2.4 Threat-led vs checklist"]
+  N5["2.5 Feedback craft"]
+  N6["2.5b Comparing frameworks in one slide"]
+  N7["2.5c Reading a framework critically"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Seminar practice]
+    |
+    v
+[2.2 ATT&CK vocabulary]
+    |
+    v
+[2.3 Findings without payloads]
+    |
+    v
+[2.4 Threat-led vs checklist]
+    |
+    v
+[2.5 Feedback craft]
+    |
+    v
+[2.5b Comparing frameworks in one slide]
+    |
+    v
+[2.5c Reading a framework critically]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -291,6 +421,71 @@ Seminar and literature habits turn red-team practice into researchable questions
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Design options"]
+  N2["3.2 Ethics and authorization"]
+  N3["3.3 Reproducibility plan"]
+  N4["3.4 Sample size sketch"]
+  N5["3.5 Stop conditions for source assessments"]
+  N6["3.5b Data minimisation"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Design options"]
+  N2["3.2 Ethics and authorization"]
+  N3["3.3 Reproducibility plan"]
+  N4["3.4 Sample size sketch"]
+  N5["3.5 Stop conditions for source assessments"]
+  N6["3.5b Data minimisation"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Design options]
+    |
+    v
+[3.2 Ethics and authorization]
+    |
+    v
+[3.3 Reproducibility plan]
+    |
+    v
+[3.4 Sample size sketch]
+    |
+    v
+[3.5 Stop conditions for source assessments]
+    |
+    v
+[3.5b Data minimisation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) choose a study design that compares reporting formats fairly; (2) define inclusion and ethics rules; (3) plan reproducibility from day one; (4) size the sample from a pilot guess; and (5) write stop conditions for the assessment work that generates findings.
@@ -411,6 +606,71 @@ Design, ethics and reproducibility decisions are made before tickets accrue — 
 
 ## Chapter 4 — Authorized offensive security and red team: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Rival explanations"]
+  N2["4.2 Designing discriminators"]
+  N3["4.3 Base rates in queues"]
+  N4["4.4 Empty scores"]
+  N5["4.5 Claims you will refuse"]
+  N6["4.5b Pre-mortem"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Rival explanations"]
+  N2["4.2 Designing discriminators"]
+  N3["4.3 Base rates in queues"]
+  N4["4.4 Empty scores"]
+  N5["4.5 Claims you will refuse"]
+  N6["4.5b Pre-mortem"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Rival explanations]
+    |
+    v
+[4.2 Designing discriminators]
+    |
+    v
+[4.3 Base rates in queues]
+    |
+    v
+[4.4 Empty scores]
+    |
+    v
+[4.5 Claims you will refuse]
+    |
+    v
+[4.5b Pre-mortem]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) list alternative explanations for a remediation-rate difference; (2) design checks that separate them; (3) use base rates when interpreting ticket alerts; (4) avoid empty security scores; and (5) pre-specify which explanations you can test.
@@ -512,6 +772,71 @@ Competing explanations keep you honest: design checks for rivals and refuse clai
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Proposal contents"]
+  N2["5.2 Templates"]
+  N3["5.3 Pilot protocol"]
+  N4["5.4 Instrument lock"]
+  N5["5.5 Go / no-go"]
+  N6["5.5b Early-signal discipline"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Proposal contents"]
+  N2["5.2 Templates"]
+  N3["5.3 Pilot protocol"]
+  N4["5.4 Instrument lock"]
+  N5["5.5 Go / no-go"]
+  N6["5.5b Early-signal discipline"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Proposal contents]
+    |
+    v
+[5.2 Templates]
+    |
+    v
+[5.3 Pilot protocol]
+    |
+    v
+[5.4 Instrument lock]
+    |
+    v
+[5.5 Go / no-go]
+    |
+    v
+[5.5b Early-signal discipline]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -640,6 +965,71 @@ Proposal and pilot turn a question into locked instruments and a realistic go / 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Collection"]
+  N2["6.2 Primary analysis"]
+  N3["6.3 Secondary analyses"]
+  N4["6.4 Missingness and exclusions"]
+  N5["6.5 Timeline discipline"]
+  N6["6.5b Handling exclusions honestly"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Collection"]
+  N2["6.2 Primary analysis"]
+  N3["6.3 Secondary analyses"]
+  N4["6.4 Missingness and exclusions"]
+  N5["6.5 Timeline discipline"]
+  N6["6.5b Handling exclusions honestly"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Collection]
+    |
+    v
+[6.2 Primary analysis]
+    |
+    v
+[6.3 Secondary analyses]
+    |
+    v
+[6.4 Missingness and exclusions]
+    |
+    v
+[6.5 Timeline discipline]
+    |
+    v
+[6.5b Handling exclusions honestly]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -792,6 +1182,66 @@ Collection protects blinding; analysis respects the pre-registered primary measu
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Writing findings"]
+  N3["7.3 Limitations that protect readers"]
+  N4["7.4 Reproducibility appendix"]
+  N5["7.5 Practitioner brief"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure"]
+  N2["7.2 Writing findings"]
+  N3["7.3 Limitations that protect readers"]
+  N4["7.4 Reproducibility appendix"]
+  N5["7.5 Practitioner brief"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Writing findings]
+    |
+    v
+[7.3 Limitations that protect readers]
+    |
+    v
+[7.4 Reproducibility appendix]
+    |
+    v
+[7.5 Practitioner brief]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure the dissertation around the research cycle; (2) write findings without exploit detail; (3) state limitations that bound claims; (4) prepare a reproducibility appendix; and (5) draft a practitioner brief.
@@ -924,6 +1374,66 @@ Writing makes the cycle inspectable: structured claims, bounded limits, runnable
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 Defence posture"]
+  N3["8.3 Dual-use challenges"]
+  N4["8.4 Dissemination"]
+  N5["8.5 Closing the placement"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent review"]
+  N2["8.2 Defence posture"]
+  N3["8.3 Dual-use challenges"]
+  N4["8.4 Dissemination"]
+  N5["8.5 Closing the placement"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent review]
+    |
+    v
+[8.2 Defence posture]
+    |
+    v
+[8.3 Dual-use challenges]
+    |
+    v
+[8.4 Dissemination]
+    |
+    v
+[8.5 Closing the placement]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

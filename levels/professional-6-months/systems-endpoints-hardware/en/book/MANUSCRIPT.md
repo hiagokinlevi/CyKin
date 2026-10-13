@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Professional Course
 
 - Language: English (`en`); course 035, Professional course (6 months).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working IT managers and practitioners who must turn an endpoint hardening audit finding into a governed, measured programme.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,66 @@ NIST [SP 800-123](https://doi.org/10.6028/NIST.SP.800-123), [SP 800-40r4](https:
 <a id="ch-01"></a>
 
 ## Chapter 1 — From audit finding to programme
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Reading the finding"]
+  N3["1.3 Scope and time"]
+  N4["1.4 Outcomes"]
+  N5["1.5 Stakeholders"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 Reading the finding"]
+  N3["1.3 Scope and time"]
+  N4["1.4 Outcomes"]
+  N5["1.5 Stakeholders"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 Reading the finding]
+    |
+    v
+[1.3 Scope and time]
+    |
+    v
+[1.4 Outcomes]
+    |
+    v
+[1.5 Stakeholders]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -92,6 +152,66 @@ A clear charter turns an uncomfortable audit finding into a bounded, measurable 
 
 ## Chapter 2 — Writing a hardening standard
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Choosing references"]
+  N2["2.2 Tailoring"]
+  N3["2.3 Structure"]
+  N4["2.4 Approval"]
+  N5["Versioning the standard"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Choosing references"]
+  N2["2.2 Tailoring"]
+  N3["2.3 Structure"]
+  N4["2.4 Approval"]
+  N5["Versioning the standard"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Choosing references]
+    |
+    v
+[2.2 Tailoring]
+    |
+    v
+[2.3 Structure]
+    |
+    v
+[2.4 Approval]
+    |
+    v
+[Versioning the standard]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) choose reference baselines; (2) tailor them; (3) get approval.
@@ -145,6 +265,71 @@ A tailored, approved standard based on recognised references is the core evidenc
 <a id="ch-03"></a>
 
 ## Chapter 3 — Measuring coverage
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 What to measure"]
+  N2["3.2 Data sources"]
+  N3["Lab — Coverage by device group"]
+  N4["3.3 Reading the table"]
+  N5["3.4 Presenting"]
+  N6["Validating the consoles and setting the rhythm"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 What to measure"]
+  N2["3.2 Data sources"]
+  N3["Lab — Coverage by device group"]
+  N4["3.3 Reading the table"]
+  N5["3.4 Presenting"]
+  N6["Validating the consoles and setting the rhythm"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 What to measure]
+    |
+    v
+[3.2 Data sources]
+    |
+    v
+[Lab — Coverage by device group]
+    |
+    v
+[3.3 Reading the table]
+    |
+    v
+[3.4 Presenting]
+    |
+    v
+[Validating the consoles and setting the rhythm]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -224,6 +409,71 @@ Coverage by group shows where the risk sits.
 
 ## Chapter 4 — Prioritising gaps
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Listing gaps"]
+  N2["4.2 Scoring"]
+  N3["Lab — Ranking the gaps"]
+  N4["4.3 Discussion"]
+  N5["4.4 Agreement"]
+  N6["Using and revisiting the ranking"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Listing gaps"]
+  N2["4.2 Scoring"]
+  N3["Lab — Ranking the gaps"]
+  N4["4.3 Discussion"]
+  N5["4.4 Agreement"]
+  N6["Using and revisiting the ranking"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Listing gaps]
+    |
+    v
+[4.2 Scoring]
+    |
+    v
+[Lab — Ranking the gaps]
+    |
+    v
+[4.3 Discussion]
+    |
+    v
+[4.4 Agreement]
+    |
+    v
+[Using and revisiting the ranking]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) score gaps by risk; (2) consider effort; (3) agree priorities.
@@ -299,6 +549,71 @@ Simple, visible scoring helps leaders agree priorities.
 
 ## Chapter 5 — Privileged access on servers
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Admin accounts"]
+  N2["5.2 MFA"]
+  N3["5.3 Linux sudo"]
+  N4["5.4 Standing privilege"]
+  N5["Break-glass access"]
+  N6["Logging admin activity and service accounts"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Admin accounts"]
+  N2["5.2 MFA"]
+  N3["5.3 Linux sudo"]
+  N4["5.4 Standing privilege"]
+  N5["Break-glass access"]
+  N6["Logging admin activity and service accounts"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Admin accounts]
+    |
+    v
+[5.2 MFA]
+    |
+    v
+[5.3 Linux sudo]
+    |
+    v
+[5.4 Standing privilege]
+    |
+    v
+[Break-glass access]
+    |
+    v
+[Logging admin activity and service accounts]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) require MFA for admin access; (2) separate admin accounts; (3) limit standing privilege.
@@ -360,6 +675,71 @@ Named accounts, MFA and limited standing privilege protect the most powerful acc
 <a id="ch-06"></a>
 
 ## Chapter 6 — Warehouse PCs
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 The environment"]
+  N2["6.2 Individual sign-in"]
+  N3["6.3 Agents"]
+  N4["6.4 Encryption timing"]
+  N5["Physical security"]
+  N6["Working with warehouse managers"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 The environment"]
+  N2["6.2 Individual sign-in"]
+  N3["6.3 Agents"]
+  N4["6.4 Encryption timing"]
+  N5["Physical security"]
+  N6["Working with warehouse managers"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 The environment]
+    |
+    v
+[6.2 Individual sign-in]
+    |
+    v
+[6.3 Agents]
+    |
+    v
+[6.4 Encryption timing]
+    |
+    v
+[Physical security]
+    |
+    v
+[Working with warehouse managers]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -423,6 +803,71 @@ Shared PCs can be accountable and protected without slowing work.
 
 ## Chapter 7 — Linux server baseline
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Applying"]
+  N2["7.2 Testing"]
+  N3["7.3 Checking"]
+  N4["7.4 Exceptions"]
+  N5["Benchmark items in practice"]
+  N6["Updates, drift lessons and reporting"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Applying"]
+  N2["7.2 Testing"]
+  N3["7.3 Checking"]
+  N4["7.4 Exceptions"]
+  N5["Benchmark items in practice"]
+  N6["Updates, drift lessons and reporting"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Applying]
+    |
+    v
+[7.2 Testing]
+    |
+    v
+[7.3 Checking]
+    |
+    v
+[7.4 Exceptions]
+    |
+    v
+[Benchmark items in practice]
+    |
+    v
+[Updates, drift lessons and reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) apply the CIS Benchmark to Linux servers; (2) automate checks; (3) handle exceptions.
@@ -484,6 +929,71 @@ Defining baselines in code keeps servers consistent and measurable.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Patching programme
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Targets"]
+  N2["8.2 Tail"]
+  N3["8.3 Servers"]
+  N4["8.4 Reporting"]
+  N5["Measuring the tail"]
+  N6["Third-party applications"]
+  N7["Outages, emergency and firmware patches"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Targets"]
+  N2["8.2 Tail"]
+  N3["8.3 Servers"]
+  N4["8.4 Reporting"]
+  N5["Measuring the tail"]
+  N6["Third-party applications"]
+  N7["Outages, emergency and firmware patches"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Targets]
+    |
+    v
+[8.2 Tail]
+    |
+    v
+[8.3 Servers]
+    |
+    v
+[8.4 Reporting]
+    |
+    v
+[Measuring the tail]
+    |
+    v
+[Third-party applications]
+    |
+    v
+[Outages, emergency and firmware patches]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 
@@ -557,6 +1067,71 @@ Risk-based targets and attention to the tail improve patching.
 
 ## Chapter 9 — Exceptions and risk acceptance
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Register"]
+  N2["9.2 Approval"]
+  N3["9.3 Review"]
+  N4["9.4 Reporting"]
+  N5["Writing a good exception"]
+  N6["Residual risk reporting"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Register"]
+  N2["9.2 Approval"]
+  N3["9.3 Review"]
+  N4["9.4 Reporting"]
+  N5["Writing a good exception"]
+  N6["Residual risk reporting"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Register]
+    |
+    v
+[9.2 Approval]
+    |
+    v
+[9.3 Review]
+    |
+    v
+[9.4 Reporting]
+    |
+    v
+[Writing a good exception]
+    |
+    v
+[Residual risk reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) run an exceptions register; (2) review quarterly; (3) report residual risk.
@@ -627,6 +1202,71 @@ A governed register makes residual risk visible.
 
 ## Chapter 10 — Evidence for auditors and insurers
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Evidence pack"]
+  N2["10.2 Questionnaires"]
+  N3["10.3 Maintenance"]
+  N4["10.4 Honesty"]
+  N5["Organising the pack"]
+  N6["Mapping to frameworks and follow-up"]
+  N7["Insurer questions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Evidence pack"]
+  N2["10.2 Questionnaires"]
+  N3["10.3 Maintenance"]
+  N4["10.4 Honesty"]
+  N5["Organising the pack"]
+  N6["Mapping to frameworks and follow-up"]
+  N7["Insurer questions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Evidence pack]
+    |
+    v
+[10.2 Questionnaires]
+    |
+    v
+[10.3 Maintenance]
+    |
+    v
+[10.4 Honesty]
+    |
+    v
+[Organising the pack]
+    |
+    v
+[Mapping to frameworks and follow-up]
+    |
+    v
+[Insurer questions]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) assemble evidence; (2) answer questionnaires; (3) maintain an evidence pack.
@@ -696,6 +1336,71 @@ A maintained evidence pack answers audits and insurers efficiently.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Results and sustainment
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Results"]
+  N2["11.2 Routines"]
+  N3["11.3 Ownership"]
+  N4["Comparing fairly"]
+  N5["Cost, effort and owner feedback"]
+  N6["Handover of routines"]
+  N7["Remaining gaps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Results"]
+  N2["11.2 Routines"]
+  N3["11.3 Ownership"]
+  N4["Comparing fairly"]
+  N5["Cost, effort and owner feedback"]
+  N6["Handover of routines"]
+  N7["Remaining gaps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Results]
+    |
+    v
+[11.2 Routines]
+    |
+    v
+[11.3 Ownership]
+    |
+    v
+[Comparing fairly]
+    |
+    v
+[Cost, effort and owner feedback]
+    |
+    v
+[Handover of routines]
+    |
+    v
+[Remaining gaps]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -774,6 +1479,71 @@ Measured results and routines sustain the programme.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Lessons for practitioners
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Lessons"]
+  N2["12.2 Next steps"]
+  N3["12.3 Sharing"]
+  N4["12.4 Career"]
+  N5["What surprised Seun"]
+  N6["What he would do differently"]
+  N7["Applying the pattern and developing further"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Lessons"]
+  N2["12.2 Next steps"]
+  N3["12.3 Sharing"]
+  N4["12.4 Career"]
+  N5["What surprised Seun"]
+  N6["What he would do differently"]
+  N7["Applying the pattern and developing further"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Lessons]
+    |
+    v
+[12.2 Next steps]
+    |
+    v
+[12.3 Sharing]
+    |
+    v
+[12.4 Career]
+    |
+    v
+[What surprised Seun]
+    |
+    v
+[What he would do differently]
+    |
+    v
+[Applying the pattern and developing further]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

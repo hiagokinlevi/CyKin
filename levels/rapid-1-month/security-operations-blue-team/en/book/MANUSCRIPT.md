@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Rapid Course
 
 - Language: English (`en`); course 015, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; One offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; One offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: managers and staff in small organisations who need basic security operations habits in one month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 <a id="ch-01"></a>
 
 ## Chapter 1 — Security operations in one month: seeing what matters
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 What security operations means"]
+  N3["1.3 What to protect"]
+  N4["1.4 A few good signals"]
+  N5["1.5 Who watches, who acts"]
+  N6["1.6 Frameworks in plain words"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 What security operations means"]
+  N3["1.3 What to protect"]
+  N4["1.4 A few good signals"]
+  N5["1.5 Who watches, who acts"]
+  N6["1.6 Frameworks in plain words"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 What security operations means]
+    |
+    v
+[1.3 What to protect]
+    |
+    v
+[1.4 A few good signals]
+    |
+    v
+[1.5 Who watches, who acts]
+    |
+    v
+[1.6 Frameworks in plain words]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -114,6 +179,71 @@ Small firms need the same habits as a SOC: know what matters, watch a few good s
 <a id="ch-02"></a>
 
 ## Chapter 2 — Spotting the signs
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Sign-in records"]
+  N2["Lab — unusual sign-ins"]
+  N3["2.2 Lab result"]
+  N4["2.3 Forwarding rules"]
+  N5["2.4 The story"]
+  N6["2.5 Not jumping to conclusions"]
+  N7["2.6 ATT&CK"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Sign-in records"]
+  N2["Lab — unusual sign-ins"]
+  N3["2.2 Lab result"]
+  N4["2.3 Forwarding rules"]
+  N5["2.4 The story"]
+  N6["2.5 Not jumping to conclusions"]
+  N7["2.6 ATT&CK"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Sign-in records]
+    |
+    v
+[Lab — unusual sign-ins]
+    |
+    v
+[2.2 Lab result]
+    |
+    v
+[2.3 Forwarding rules]
+    |
+    v
+[2.4 The story]
+    |
+    v
+[2.5 Not jumping to conclusions]
+    |
+    v
+[2.6 ATT&CK]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -216,6 +346,71 @@ Unusual sign-ins plus a hidden forwarding rule told the story; check innocent ex
 
 ## Chapter 3 — Acting fast and calmly
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Order of actions"]
+  N2["3.2 Timing"]
+  N3["3.3 Checking the money"]
+  N4["3.4 Warning clients"]
+  N5["3.5 Reporting"]
+  N6["3.6 Recording"]
+  N7["Telling staff"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Order of actions"]
+  N2["3.2 Timing"]
+  N3["3.3 Checking the money"]
+  N4["3.4 Warning clients"]
+  N5["3.5 Reporting"]
+  N6["3.6 Recording"]
+  N7["Telling staff"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Order of actions]
+    |
+    v
+[3.2 Timing]
+    |
+    v
+[3.3 Checking the money]
+    |
+    v
+[3.4 Warning clients]
+    |
+    v
+[3.5 Reporting]
+    |
+    v
+[3.6 Recording]
+    |
+    v
+[Telling staff]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) contain a compromised email account in the right order; (2) warn clients without causing panic; (3) check whether money was lost; (4) record actions and times.
@@ -296,6 +491,71 @@ Contain in the right order, chase the money quickly, warn calmly and record ever
 <a id="ch-04"></a>
 
 ## Chapter 4 — Keeping watch and getting better
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Ongoing alerts"]
+  N2["4.2 Measuring usefulness"]
+  N3["4.3 Reducing noise"]
+  N4["4.4 Lessons review"]
+  N5["4.5 Continuous monitoring"]
+  N6["4.6 Next steps"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Ongoing alerts"]
+  N2["4.2 Measuring usefulness"]
+  N3["4.3 Reducing noise"]
+  N4["4.4 Lessons review"]
+  N5["4.5 Continuous monitoring"]
+  N6["4.6 Next steps"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Ongoing alerts]
+    |
+    v
+[4.2 Measuring usefulness]
+    |
+    v
+[4.3 Reducing noise]
+    |
+    v
+[4.4 Lessons review]
+    |
+    v
+[4.5 Continuous monitoring]
+    |
+    v
+[4.6 Next steps]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

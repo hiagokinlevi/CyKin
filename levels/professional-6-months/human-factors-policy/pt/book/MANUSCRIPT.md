@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso Profissional
 
 - Idioma: português do Brasil (`pt`); curso 029, curso profissional (6 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–12 de 12 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em atividade que migram para funções de coordenação de segurança e apoiam o reporte pelos funcionários, os procedimentos de verificação e um relato honesto às lideranças.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam barreiras de um questionário, calculam tempos até o veredito, apuram fatores de quase-incidentes, montam um gráfico de reportes mensais e comparam duas versões de veredito, sempre sobre dados sintéticos; nenhum funcionário, inquilino, e-mail ou conta real está envolvido. Os procedimentos são praticados com encenação anunciada e testados com voluntários que conhecem o propósito. O livro não recomenda phishing simulado no primeiro ano; qualquer simulação posterior deve ser anunciada, acordada com os representantes dos funcionários, evitar iscas sobre salário, moradia ou saúde, dar um retorno gentil, permanecer agregada e ficar fora dos processos de desempenho. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,46 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Ideias centrais"]
+  N1["1.2 O papel do profissional"]
+  N2["Síntese"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Ideias centrais"]
+  N1["1.2 O papel do profissional"]
+  N2["Síntese"]
+  N0 --> N1 --> N2 --> Q["EX001"]
+```
+
+```text
+[1.1 Ideias centrais]
+    |
+    v
+[1.2 O papel do profissional]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -91,6 +131,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Fatores humanos e política cibernética: contexto de serviços e partes interessadas
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["2.1 Serviços e pessoas"]
+  N1["2.2 Pontos de decisão"]
+  N2["2.3 Preocupações das partes interessadas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX006"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Serviços e pessoas"]
+  N1["2.2 Pontos de decisão"]
+  N2["2.3 Preocupações das partes interessadas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX006"]
+```
+
+```text
+[2.1 Serviços e pessoas]
+    |
+    v
+[2.2 Pontos de decisão]
+    |
+    v
+[2.3 Preocupações das partes interessadas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear os serviços e as partes interessadas da Ferngate; (2) identificar onde as pessoas enfrentam decisões de segurança; (3) entender as preocupações das partes interessadas.
@@ -145,6 +230,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Prática autorizada e manuseio de evidências
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["3.1 Autorização"]
+  N1["3.2 Manuseio de evidências"]
+  N2["3.3 Proteção da privacidade"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX011"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Autorização"]
+  N1["3.2 Manuseio de evidências"]
+  N2["3.3 Proteção da privacidade"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX011"]
+```
+
+```text
+[3.1 Autorização]
+    |
+    v
+[3.2 Manuseio de evidências]
+    |
+    v
+[3.3 Proteção da privacidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar dentro de uma autorização por escrito; (2) manusear com segurança as evidências vindas dos reportes; (3) proteger a privacidade no trabalho de segurança.
@@ -198,6 +328,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Fatores humanos e política cibernética: métodos centrais
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["4.1 Um questionário curto"]
+  N1["Laboratório — Barreiras entre 126 respostas de funci"]
+  N2["4.2 Conversas estruturadas"]
+  N3["4.3 Definição de prioridades"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Um questionário curto"]
+  N1["Laboratório — Barreiras entre 126 respostas de funci"]
+  N2["4.2 Conversas estruturadas"]
+  N3["4.3 Definição de prioridades"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[4.1 Um questionário curto]
+    |
+    v
+[Laboratório — Barreiras entre 126 respostas de funci]
+    |
+    v
+[4.2 Conversas estruturadas]
+    |
+    v
+[4.3 Definição de prioridades]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -271,6 +451,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Fatores humanos e política cibernética: ferramentas e interpretação
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["5.1 Ferramentas simples"]
+  N1["5.2 Interpretação das medidas"]
+  N2["Laboratório — Mediana do tempo até o veredito antes"]
+  N3["5.3 Comparações enganosas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Ferramentas simples"]
+  N1["5.2 Interpretação das medidas"]
+  N2["Laboratório — Mediana do tempo até o veredito antes"]
+  N3["5.3 Comparações enganosas"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX021"]
+```
+
+```text
+[5.1 Ferramentas simples]
+    |
+    v
+[5.2 Interpretação das medidas]
+    |
+    v
+[Laboratório — Mediana do tempo até o veredito antes]
+    |
+    v
+[5.3 Comparações enganosas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) usar ferramentas simples para acompanhar reportes e vereditos; (2) interpretar corretamente medidas básicas; (3) evitar comparações enganosas.
@@ -340,6 +570,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Fatores humanos e política cibernética: fluxo operacional
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["6.1 Fluxo diário"]
+  N1["6.2 Tempos e responsabilidades"]
+  N2["6.3 Picos e ausências"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX026"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Fluxo diário"]
+  N1["6.2 Tempos e responsabilidades"]
+  N2["6.3 Picos e ausências"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX026"]
+```
+
+```text
+[6.1 Fluxo diário]
+    |
+    v
+[6.2 Tempos e responsabilidades]
+    |
+    v
+[6.3 Picos e ausências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar o fluxo diário de reporte; (2) definir tempos de resposta e responsabilidades; (3) lidar com picos e ausências.
@@ -394,6 +669,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Fatores humanos e política cibernética: controles e verificação
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["7.1 Procedimento para o telefone"]
+  N1["7.2 Controle de retorno de ligação"]
+  N2["7.3 Verificação e ajuste"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Procedimento para o telefone"]
+  N1["7.2 Controle de retorno de ligação"]
+  N2["7.3 Verificação e ajuste"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
+```
+
+```text
+[7.1 Procedimento para o telefone]
+    |
+    v
+[7.2 Controle de retorno de ligação]
+    |
+    v
+[7.3 Verificação e ajuste]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) introduzir um procedimento para pedidos por telefone e um controle de retorno de ligação para prestadores; (2) verificar se os controles funcionam na prática; (3) ajustar os controles depois do retorno recebido.
@@ -447,6 +767,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fatores humanos e política cibernética: análise de caso supervisionada
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["8.1 O quase-incidente"]
+  N1["8.2 Fatores contribuintes"]
+  N2["Laboratório — Fatores contribuintes em quatro quase-"]
+  N3["8.3 Recomendações"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 O quase-incidente"]
+  N1["8.2 Fatores contribuintes"]
+  N2["Laboratório — Fatores contribuintes em quatro quase-"]
+  N3["8.3 Recomendações"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
+```
+
+```text
+[8.1 O quase-incidente]
+    |
+    v
+[8.2 Fatores contribuintes]
+    |
+    v
+[Laboratório — Fatores contribuintes em quatro quase-]
+    |
+    v
+[8.3 Recomendações]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -519,6 +889,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 9 — Comunicação, ética e relatórios
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["9.1 Comunicar sem medo"]
+  N1["9.2 Decisão sobre simulações"]
+  N2["9.3 Prestar contas para cima"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX041"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Comunicar sem medo"]
+  N1["9.2 Decisão sobre simulações"]
+  N2["9.3 Prestar contas para cima"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX041"]
+```
+
+```text
+[9.1 Comunicar sem medo]
+    |
+    v
+[9.2 Decisão sobre simulações]
+    |
+    v
+[9.3 Prestar contas para cima]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) comunicar mensagens de segurança sem medo; (2) decidir com ética sobre as simulações; (3) prestar contas aos gestores e ao conselho.
@@ -572,6 +987,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Fatores humanos e política cibernética: qualidade e solução de problemas
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["10.1 Verificações de qualidade"]
+  N1["10.2 Solução de problemas"]
+  N2["Laboratório — Reportes mensais dos agentes de habita"]
+  N3["10.3 Melhoria contínua"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Verificações de qualidade"]
+  N1["10.2 Solução de problemas"]
+  N2["Laboratório — Reportes mensais dos agentes de habita"]
+  N3["10.3 Melhoria contínua"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[10.1 Verificações de qualidade]
+    |
+    v
+[10.2 Solução de problemas]
+    |
+    v
+[Laboratório — Reportes mensais dos agentes de habita]
+    |
+    v
+[10.3 Melhoria contínua]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -645,6 +1110,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 11 — Laboratório supervisionado
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["11.1 O teste"]
+  N1["11.2 Comparação dos resultados"]
+  N2["Laboratório — Julgamentos corretos depois das versõe"]
+  N3["11.3 Adoção"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 O teste"]
+  N1["11.2 Comparação dos resultados"]
+  N2["Laboratório — Julgamentos corretos depois das versõe"]
+  N3["11.3 Adoção"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
+```
+
+```text
+[11.1 O teste]
+    |
+    v
+[11.2 Comparação dos resultados]
+    |
+    v
+[Laboratório — Julgamentos corretos depois das versõe]
+    |
+    v
+[11.3 Adoção]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) testar com voluntários uma mudança nas mensagens de veredito; (2) comparar a compreensão entre as versões; (3) decidir sobre a adoção.
@@ -712,6 +1227,46 @@ Continue para a próxima aula já escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["12.1 O portfólio"]
+  N1["12.3 Desenvolvimento contínuo"]
+  N2["Síntese"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX056"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 O portfólio"]
+  N1["12.3 Desenvolvimento contínuo"]
+  N2["Síntese"]
+  N0 --> N1 --> N2 --> Q["EX056"]
+```
+
+```text
+[12.1 O portfólio]
+    |
+    v
+[12.3 Desenvolvimento contínuo]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 

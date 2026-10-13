@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 075, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os catorze laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os catorze laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que constroem, configuram e operam controles de segurança centrados nas pessoas e serviços de reporte em organizações pequenas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios totalizam reportes, contam avisos, calculam medianas, ordenam cenários, comparam tempos de tarefa e proporções por clínica, conferem logs de automação e sinalizam cadastros de fornecedores, sempre sobre dados sintéticos; nenhum funcionário, paciente, e-mail ou conta real está envolvido. Os testes de usabilidade usam caixas postais de teste com voluntários que sabem que estão testando ferramentas; os procedimentos de verificação são praticados em dramatizações anunciadas, nunca por engano secreto. Toda simulação de phishing mencionada é anunciada, acordada com os funcionários e relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,51 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Sistemas computacionais
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Sistemas das clínicas"]
+  N1["1.2 Pontos de contato com a segurança"]
+  N2["1.3 Carga de trabalho e comportamento"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Sistemas das clínicas"]
+  N1["1.2 Pontos de contato com a segurança"]
+  N2["1.3 Carga de trabalho e comportamento"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 Sistemas das clínicas]
+    |
+    v
+[1.2 Pontos de contato com a segurança]
+    |
+    v
+[1.3 Carga de trabalho e comportamento]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -85,6 +130,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Redes e serviços de internet
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["2.1 Conexões das clínicas"]
+  N1["2.2 Explorar os serviços"]
+  N2["2.3 Pistas úteis"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX004"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Conexões das clínicas"]
+  N1["2.2 Explorar os serviços"]
+  N2["2.3 Pistas úteis"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX004"]
+```
+
+```text
+[2.1 Conexões das clínicas]
+    |
+    v
+[2.2 Explorar os serviços]
+    |
+    v
+[2.3 Pistas úteis]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar como as clínicas se conectam ao e-mail, ao agendamento e aos serviços em nuvem; (2) descrever como os atacantes exploram os serviços de internet para enganar os funcionários; (3) identificar pistas técnicas simples que ajudam os funcionários.
@@ -132,6 +222,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Fundamentos de programação
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["3.1 Um resumo dos reportes"]
+  N1["Laboratório — Reportes semanais por clínica e catego"]
+  N2["3.2 Funções e laços"]
+  N3["3.3 Tratamento seguro dos dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX007"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Um resumo dos reportes"]
+  N1["Laboratório — Reportes semanais por clínica e catego"]
+  N2["3.2 Funções e laços"]
+  N3["3.3 Tratamento seguro dos dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[3.1 Um resumo dos reportes]
+    |
+    v
+[Laboratório — Reportes semanais por clínica e catego]
+    |
+    v
+[3.2 Funções e laços]
+    |
+    v
+[3.3 Tratamento seguro dos dados]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -201,6 +341,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Modelos de dados
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["4.1 Modelar os reportes"]
+  N1["4.2 Campos e valores"]
+  N2["4.3 Minimizar os dados pessoais"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX010"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Modelar os reportes"]
+  N1["4.2 Campos e valores"]
+  N2["4.3 Minimizar os dados pessoais"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX010"]
+```
+
+```text
+[4.1 Modelar os reportes]
+    |
+    v
+[4.2 Campos e valores]
+    |
+    v
+[4.3 Minimizar os dados pessoais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar um modelo de dados simples para reportes e vereditos; (2) definir campos e valores permitidos; (3) evitar guardar dados pessoais desnecessários.
@@ -249,6 +434,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 5 — Letramento em segurança
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["5.1 Técnicas comuns"]
+  N1["5.2 Por que as pessoas caem"]
+  N2["5.3 Papel da conscientização"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX013"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Técnicas comuns"]
+  N1["5.2 Por que as pessoas caem"]
+  N2["5.3 Papel da conscientização"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX013"]
+```
+
+```text
+[5.1 Técnicas comuns]
+    |
+    v
+[5.2 Por que as pessoas caem]
+    |
+    v
+[5.3 Papel da conscientização]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) explicar técnicas comuns de engenharia social; (2) descrever por que as pessoas caem nelas; (3) explicar o papel das orientações de conscientização.
@@ -296,6 +526,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["6.1 Contas e bloqueios"]
+  N1["6.2 Testes seguros"]
+  N2["6.3 Menos avisos"]
+  N3["Laboratório — Avisos durante o horário de funcioname"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Contas e bloqueios"]
+  N1["6.2 Testes seguros"]
+  N2["6.3 Menos avisos"]
+  N3["Laboratório — Avisos durante o horário de funcioname"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[6.1 Contas e bloqueios]
+    |
+    v
+[6.2 Testes seguros]
+    |
+    v
+[6.3 Menos avisos]
+    |
+    v
+[Laboratório — Avisos durante o horário de funcioname]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -360,6 +640,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["7.1 Menor privilégio"]
+  N1["7.2 Autenticação multifator"]
+  N2["7.3 Entradas, mudanças e saídas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX019"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Menor privilégio"]
+  N1["7.2 Autenticação multifator"]
+  N2["7.3 Entradas, mudanças e saídas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX019"]
+```
+
+```text
+[7.1 Menor privilégio]
+    |
+    v
+[7.2 Autenticação multifator]
+    |
+    v
+[7.3 Entradas, mudanças e saídas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) aplicar o menor privilégio às funções das clínicas; (2) introduzir a autenticação multifator de forma usável; (3) gerir entradas, mudanças de função e saídas.
@@ -408,6 +733,46 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["8.1 Camadas"]
+  N1["8.2 Papéis humanos"]
+  N2["Síntese"]
+  N0 --> N1 --> N2
+  N2 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Camadas"]
+  N1["8.2 Papéis humanos"]
+  N2["Síntese"]
+  N0 --> N1 --> N2 --> Q["EX022"]
+```
+
+```text
+[8.1 Camadas]
+    |
+    v
+[8.2 Papéis humanos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever defesas em camadas para um grupo de clínicas; (2) situar os papéis humanos na arquitetura; (3) projetar para que um único erro seja contido.
@@ -455,6 +820,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidências e medição
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["9.1 Escolher as medidas"]
+  N1["9.2 Calcular os tempos"]
+  N2["Laboratório — Mediana do tempo até o primeiro report"]
+  N3["9.3 Apresentação justa"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX025"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Escolher as medidas"]
+  N1["9.2 Calcular os tempos"]
+  N2["Laboratório — Mediana do tempo até o primeiro report"]
+  N3["9.3 Apresentação justa"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX025"]
+```
+
+```text
+[9.1 Escolher as medidas]
+    |
+    v
+[9.2 Calcular os tempos]
+    |
+    v
+[Laboratório — Mediana do tempo até o primeiro report]
+    |
+    v
+[9.3 Apresentação justa]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -520,6 +935,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 10 — Fatores humanos e política cibernética: orientação
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["10.1 Escopo"]
+  N1["10.2 A política molda o comportamento"]
+  N2["10.3 As políticas da Brightwell"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX028"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Escopo"]
+  N1["10.2 A política molda o comportamento"]
+  N2["10.3 As políticas da Brightwell"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX028"]
+```
+
+```text
+[10.1 Escopo]
+    |
+    v
+[10.2 A política molda o comportamento]
+    |
+    v
+[10.3 As políticas da Brightwell]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) descrever o escopo dos fatores humanos e da política cibernética; (2) explicar como a política molda o comportamento; (3) apresentar em linhas gerais as políticas atuais da Brightwell.
@@ -567,6 +1027,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Fatores humanos e política cibernética: ativos e contexto
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["11.1 Ativos"]
+  N1["11.2 Contexto de decisão"]
+  N2["11.3 Priorização pelo dano"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Ativos"]
+  N1["11.2 Contexto de decisão"]
+  N2["11.3 Priorização pelo dano"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX031"]
+```
+
+```text
+[11.1 Ativos]
+    |
+    v
+[11.2 Contexto de decisão]
+    |
+    v
+[11.3 Priorização pelo dano]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -618,6 +1123,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 12 — Fatores humanos e política cibernética: fluxos de dados
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["12.1 Mapeamento dos fluxos"]
+  N1["12.2 Pontos de pressão"]
+  N2["12.3 Fluxos mais seguros"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX034"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Mapeamento dos fluxos"]
+  N1["12.2 Pontos de pressão"]
+  N2["12.3 Fluxos mais seguros"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX034"]
+```
+
+```text
+[12.1 Mapeamento dos fluxos]
+    |
+    v
+[12.2 Pontos de pressão]
+    |
+    v
+[12.3 Fluxos mais seguros]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear como os dados de pacientes e de pagamento fluem entre pessoas e sistemas; (2) encontrar os pontos em que as pessoas lidam com dados sob pressão; (3) propor fluxos mais seguros.
@@ -667,6 +1217,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Fatores humanos e política cibernética: cenários de risco
+
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa da aula
+
+Aula 13 publicada. Mapa, exemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["13.1 Escrita de cenários"]
+  N1["13.2 Estimativa do risco"]
+  N2["Laboratório — Ordenação dos cenários de risco"]
+  N3["13.3 Ligação com os controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX037"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["13.1 Escrita de cenários"]
+  N1["13.2 Estimativa do risco"]
+  N2["Laboratório — Ordenação dos cenários de risco"]
+  N3["13.3 Ligação com os controles"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
+```
+
+```text
+[13.1 Escrita de cenários]
+    |
+    v
+[13.2 Estimativa do risco]
+    |
+    v
+[Laboratório — Ordenação dos cenários de risco]
+    |
+    v
+[13.3 Ligação com os controles]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -733,6 +1333,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fatores humanos e política cibernética: métodos I
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa da aula
+
+Aula 14 publicada. Mapa, exemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["14.1 Questionário"]
+  N1["Laboratório — Barreiras no questionário entre 150 re"]
+  N2["14.2 Entrevistas"]
+  N3["14.3 Resumo para a ação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX040"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["14.1 Questionário"]
+  N1["Laboratório — Barreiras no questionário entre 150 re"]
+  N2["14.2 Entrevistas"]
+  N3["14.3 Resumo para a ação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX040"]
+```
+
+```text
+[14.1 Questionário]
+    |
+    v
+[Laboratório — Barreiras no questionário entre 150 re]
+    |
+    v
+[14.2 Entrevistas]
+    |
+    v
+[14.3 Resumo para a ação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -802,6 +1452,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 15 — Fatores humanos e política cibernética: laboratório guiado
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa da aula
+
+Aula 15 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["15.1 Montagem do teste"]
+  N1["15.2 Resultados"]
+  N2["Laboratório — Tempos de tarefa: encaminhamento versu"]
+  N3["15.3 Problemas de usabilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["15.1 Montagem do teste"]
+  N1["15.2 Resultados"]
+  N2["Laboratório — Tempos de tarefa: encaminhamento versu"]
+  N3["15.3 Problemas de usabilidade"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX043"]
+```
+
+```text
+[15.1 Montagem do teste]
+    |
+    v
+[15.2 Resultados]
+    |
+    v
+[Laboratório — Tempos de tarefa: encaminhamento versu]
+    |
+    v
+[15.3 Problemas de usabilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) testar um botão de reporte com voluntários num ambiente de teste; (2) medir tempo e sucesso; (3) registrar problemas de usabilidade.
@@ -865,6 +1565,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Fatores humanos e política cibernética: métodos II
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa da aula
+
+Aula 16 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["16.1 Antes e depois"]
+  N1["16.2 Implantação escalonada"]
+  N2["Laboratório — Clínicas adiantadas e atrasadas durant"]
+  N3["16.3 Interpretação cuidadosa"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["16.1 Antes e depois"]
+  N1["16.2 Implantação escalonada"]
+  N2["Laboratório — Clínicas adiantadas e atrasadas durant"]
+  N3["16.3 Interpretação cuidadosa"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[16.1 Antes e depois]
+    |
+    v
+[16.2 Implantação escalonada]
+    |
+    v
+[Laboratório — Clínicas adiantadas e atrasadas durant]
+    |
+    v
+[16.3 Interpretação cuidadosa]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -931,6 +1681,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 17 — Fatores humanos e política cibernética: ferramentas
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa da aula
+
+Aula 17 publicada. Mapa, exemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["17.1 Seleção de ferramentas"]
+  N1["17.2 Configuração de privacidade"]
+  N2["17.3 Automação da triagem"]
+  N3["Laboratório — Reportes que precisam de revisão human"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX049"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["17.1 Seleção de ferramentas"]
+  N1["17.2 Configuração de privacidade"]
+  N2["17.3 Automação da triagem"]
+  N3["Laboratório — Reportes que precisam de revisão human"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX049"]
+```
+
+```text
+[17.1 Seleção de ferramentas]
+    |
+    v
+[17.2 Configuração de privacidade]
+    |
+    v
+[17.3 Automação da triagem]
+    |
+    v
+[Laboratório — Reportes que precisam de revisão human]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) selecionar ferramentas para reporte e triagem; (2) configurar as ferramentas pensando na privacidade; (3) automatizar etapas simples da triagem.
@@ -995,6 +1795,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 18 — Fatores humanos e política cibernética: controles
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa da aula
+
+Aula 18 publicada. Mapa, exemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["18.1 Verificação de pagamentos"]
+  N1["18.2 Procedimentos claros"]
+  N2["18.3 Teste com encenação"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX052"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["18.1 Verificação de pagamentos"]
+  N1["18.2 Procedimentos claros"]
+  N2["18.3 Teste com encenação"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX052"]
+```
+
+```text
+[18.1 Verificação de pagamentos]
+    |
+    v
+[18.2 Procedimentos claros]
+    |
+    v
+[18.3 Teste com encenação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) implementar procedimentos de verificação para pagamentos e acesso remoto; (2) escrever procedimentos que os funcionários consigam seguir sob pressão; (3) testar os procedimentos com encenação.
@@ -1044,6 +1889,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Fatores humanos e política cibernética: monitoramento
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa da aula
+
+Aula 19 publicada. Mapa, exemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["19.1 Monitoramento contínuo"]
+  N1["19.2 Limiares"]
+  N2["Laboratório — Medidas mensais contra os limiares"]
+  N3["19.3 Revisão das tendências"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["19.1 Monitoramento contínuo"]
+  N1["19.2 Limiares"]
+  N2["Laboratório — Medidas mensais contra os limiares"]
+  N3["19.3 Revisão das tendências"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX055"]
+```
+
+```text
+[19.1 Monitoramento contínuo]
+    |
+    v
+[19.2 Limiares]
+    |
+    v
+[Laboratório — Medidas mensais contra os limiares]
+    |
+    v
+[19.3 Revisão das tendências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1116,6 +2011,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 20 — Fatores humanos e política cibernética: solução de problemas
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa da aula
+
+Aula 20 publicada. Mapa, exemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["20.1 Uma queda repentina"]
+  N1["20.2 Separação das causas"]
+  N2["20.3 Causas-raiz"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX058"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["20.1 Uma queda repentina"]
+  N1["20.2 Separação das causas"]
+  N2["20.3 Causas-raiz"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX058"]
+```
+
+```text
+[20.1 Uma queda repentina]
+    |
+    v
+[20.2 Separação das causas]
+    |
+    v
+[20.3 Causas-raiz]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) investigar problemas no serviço de reporte; (2) separar causas técnicas de causas humanas; (3) corrigir as causas-raiz, e não os sintomas.
@@ -1166,6 +2106,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 21 — Fatores humanos e política cibernética: integração de serviços
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa da aula
+
+Aula 21 publicada. Mapa, exemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["21.1 Reporte e resposta"]
+  N1["21.2 Financeiro e fornecedores"]
+  N2["21.3 Manter a simplicidade"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX061"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["21.1 Reporte e resposta"]
+  N1["21.2 Financeiro e fornecedores"]
+  N2["21.3 Manter a simplicidade"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX061"]
+```
+
+```text
+[21.1 Reporte e resposta]
+    |
+    v
+[21.2 Financeiro e fornecedores]
+    |
+    v
+[21.3 Manter a simplicidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) integrar o reporte à resposta a incidentes numa organização pequena; (2) conectar os controles de verificação ao financeiro e à gestão de fornecedores; (3) manter a integração simples o bastante para ser sustentada.
@@ -1215,6 +2200,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Fatores humanos e política cibernética: automação
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa da aula
+
+Aula 22 publicada. Mapa, exemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["22.1 Automação segura"]
+  N1["22.2 Preservar o julgamento"]
+  N2["22.3 Monitoramento da automação"]
+  N3["Laboratório — Verificação semanal do log da automaçã"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX064"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["22.1 Automação segura"]
+  N1["22.2 Preservar o julgamento"]
+  N2["22.3 Monitoramento da automação"]
+  N3["Laboratório — Verificação semanal do log da automaçã"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX064"]
+```
+
+```text
+[22.1 Automação segura]
+    |
+    v
+[22.2 Preservar o julgamento]
+    |
+    v
+[22.3 Monitoramento da automação]
+    |
+    v
+[Laboratório — Verificação semanal do log da automaçã]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1285,6 +2320,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 23 — Fatores humanos e política cibernética: avaliação
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa da aula
+
+Aula 23 publicada. Mapa, exemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["Laboratório — Resumo da avaliação de antes e depois"]
+  N1["23.2 Visão dos funcionários"]
+  N2["23.3 Próximos passos"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX067"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["Laboratório — Resumo da avaliação de antes e depois"]
+  N1["23.2 Visão dos funcionários"]
+  N2["23.3 Próximos passos"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX067"]
+```
+
+```text
+[Laboratório — Resumo da avaliação de antes e depois]
+    |
+    v
+[23.2 Visão dos funcionários]
+    |
+    v
+[23.3 Próximos passos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) avaliar o programa diante de seus objetivos depois de seis meses; (2) combinar as medidas com a visão dos funcionários; (3) recomendar os próximos passos.
@@ -1352,6 +2432,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa da aula
+
+Aula 24 publicada. Mapa, exemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["24.1 Formulação da pergunta"]
+  N1["24.2 Desenho simples"]
+  N2["Laboratório — Comparação crossover dos tipos de lemb"]
+  N3["24.3 Ética e dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX070"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["24.1 Formulação da pergunta"]
+  N1["24.2 Desenho simples"]
+  N2["Laboratório — Comparação crossover dos tipos de lemb"]
+  N3["24.3 Ética e dados"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX070"]
+```
+
+```text
+[24.1 Formulação da pergunta]
+    |
+    v
+[24.2 Desenho simples]
+    |
+    v
+[Laboratório — Comparação crossover dos tipos de lemb]
+    |
+    v
+[24.3 Ética e dados]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) formular uma pequena pergunta de pesquisa aplicada; (2) escolher um desenho simples adequado a um local de trabalho; (3) tratar a ética e os dados com responsabilidade.
@@ -1416,6 +2546,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 25 — Ateliê de projeto em equipe
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa da aula
+
+Aula 25 publicada. Mapa, exemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["25.1 O briefing"]
+  N1["25.2 Testes com usuários"]
+  N2["25.3 Apresentação das escolhas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX073"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["25.1 O briefing"]
+  N1["25.2 Testes com usuários"]
+  N2["25.3 Apresentação das escolhas"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX073"]
+```
+
+```text
+[25.1 O briefing]
+    |
+    v
+[25.2 Testes com usuários]
+    |
+    v
+[25.3 Apresentação das escolhas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) trabalhar em equipe para desenhar um guia de reporte para pacientes; (2) testá-lo com usuários; (3) apresentar as escolhas de design.
@@ -1466,6 +2641,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 26 — Fatores humanos e política cibernética: passagem operacional
 
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa da aula
+
+Aula 26 publicada. Mapa, exemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["26.1 Planejamento da passagem"]
+  N1["26.2 Runbooks"]
+  N2["26.3 Treinamento dos sucessores"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX076"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["26.1 Planejamento da passagem"]
+  N1["26.2 Runbooks"]
+  N2["26.3 Treinamento dos sucessores"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX076"]
+```
+
+```text
+[26.1 Planejamento da passagem]
+    |
+    v
+[26.2 Runbooks]
+    |
+    v
+[26.3 Treinamento dos sucessores]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) passar o programa para a gerente da clínica e o prestador de TI; (2) escrever runbooks para as tarefas rotineiras; (3) treinar os sucessores.
@@ -1515,6 +2735,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa da aula
+
+Aula 27 publicada. Mapa, exemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["27.1 Implantação"]
+  N1["27.2 Validação"]
+  N2["Laboratório — Proporção reportada nas clínicas novas"]
+  N3["27.3 Adaptação local"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX079"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["27.1 Implantação"]
+  N1["27.2 Validação"]
+  N2["Laboratório — Proporção reportada nas clínicas novas"]
+  N3["27.3 Adaptação local"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX079"]
+```
+
+```text
+[27.1 Implantação]
+    |
+    v
+[27.2 Validação]
+    |
+    v
+[Laboratório — Proporção reportada nas clínicas novas]
+    |
+    v
+[27.3 Adaptação local]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1582,6 +2852,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 28 — Prática de campo
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa da aula
+
+Aula 28 publicada. Mapa, exemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["28.1 Prática supervisionada"]
+  N1["28.2 Atendimento respeitoso"]
+  N2["28.3 Reflexão"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX082"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["28.1 Prática supervisionada"]
+  N1["28.2 Atendimento respeitoso"]
+  N2["28.3 Reflexão"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX082"]
+```
+
+```text
+[28.1 Prática supervisionada]
+    |
+    v
+[28.2 Atendimento respeitoso]
+    |
+    v
+[28.3 Reflexão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) praticar trabalho de segurança centrado nas pessoas num ambiente real, sob supervisão; (2) tratar com respeito as dúvidas reais dos funcionários; (3) refletir sobre a conduta profissional.
@@ -1631,6 +2946,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa da aula
+
+Aula 29 publicada. Mapa, exemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["29.1 Escolha da construção"]
+  N1["29.2 Construção e testes"]
+  N2["Laboratório — Fornecedores com nova verificação pend"]
+  N3["29.3 Documentação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX085"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["29.1 Escolha da construção"]
+  N1["29.2 Construção e testes"]
+  N2["Laboratório — Fornecedores com nova verificação pend"]
+  N3["29.3 Documentação"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX085"]
+```
+
+```text
+[29.1 Escolha da construção]
+    |
+    v
+[29.2 Construção e testes]
+    |
+    v
+[Laboratório — Fornecedores com nova verificação pend]
+    |
+    v
+[29.3 Documentação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -1699,6 +3064,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa da aula
+
+Aula 30 publicada. Mapa, exemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["30.1 Avaliação da ferramenta"]
+  N1["30.2 Apresentação"]
+  N2["30.3 Reflexão sobre o papel"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX088"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["30.1 Avaliação da ferramenta"]
+  N1["30.2 Apresentação"]
+  N2["30.3 Reflexão sobre o papel"]
+  N3["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX088"]
+```
+
+```text
+[30.1 Avaliação da ferramenta]
+    |
+    v
+[30.2 Apresentação]
+    |
+    v
+[30.3 Reflexão sobre o papel]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Objetivos de aprendizagem
 

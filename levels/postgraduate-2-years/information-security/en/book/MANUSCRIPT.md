@@ -1,7 +1,7 @@
 # Information Security: Postgraduate Course
 
 - Language: English (`en`); course 140, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: experienced IT practitioners building a risk-based information security programme for a multi-site healthcare organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs measure critical patch compliance per clinic on synthetic device data and flag lookalike sender domains by edit distance in a synthetic mail log. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022; ISO/IEC 27002:2022; NIST SP 800-53 Rev. 
 <a id="ch-01"></a>
 
 ## Chapter 1 — The practitioner and Moorfield Dental Group
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The practitioner"]
+  N2["1.2 The organisation"]
+  N3["1.3 What the course adds"]
+  N4["1.4 Learning goals"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The practitioner"]
+  N2["1.2 The organisation"]
+  N3["1.3 What the course adds"]
+  N4["1.4 Learning goals"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The practitioner]
+    |
+    v
+[1.2 The organisation]
+    |
+    v
+[1.3 What the course adds]
+    |
+    v
+[1.4 Learning goals]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -87,6 +137,56 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Security governance and the management system
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Governance structure"]
+  N2["2.2 Management system concepts"]
+  N3["2.3 Risk appetite"]
+  N4["2.4 Scope"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Governance structure"]
+  N2["2.2 Management system concepts"]
+  N3["2.3 Risk appetite"]
+  N4["2.4 Scope"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Governance structure]
+    |
+    v
+[2.2 Management system concepts]
+    |
+    v
+[2.3 Risk appetite]
+    |
+    v
+[2.4 Scope]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) design a governance structure for security; (2) apply ISO/IEC 27001 management system concepts; (3) set risk appetite with a board.
@@ -136,6 +236,56 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Risk assessment for a clinic network
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Method"]
+  N2["3.2 Consistent ratings"]
+  N3["3.3 Results"]
+  N4["3.4 Treatment"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Method"]
+  N2["3.2 Consistent ratings"]
+  N3["3.3 Results"]
+  N4["3.4 Treatment"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Method]
+    |
+    v
+[3.2 Consistent ratings]
+    |
+    v
+[3.3 Results]
+    |
+    v
+[3.4 Treatment]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -187,6 +337,56 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Asset and supplier inventory
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Assets across sites"]
+  N2["4.2 Classifying information"]
+  N3["4.3 Suppliers"]
+  N4["4.4 Ownership"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Assets across sites"]
+  N2["4.2 Classifying information"]
+  N3["4.3 Suppliers"]
+  N4["4.4 Ownership"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Assets across sites]
+    |
+    v
+[4.2 Classifying information]
+    |
+    v
+[4.3 Suppliers]
+    |
+    v
+[4.4 Ownership]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) build a reliable asset inventory across sites; (2) identify suppliers with access to data; (3) assign owners and classifications.
@@ -236,6 +436,61 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Patch and vulnerability management
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Measuring compliance"]
+  N2["5.2 The patch lab"]
+  N3["Lab — Critical patch compliance per clinic on synthe"]
+  N4["5.3 Causes and support"]
+  N5["5.4 Constrained systems"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Measuring compliance"]
+  N2["5.2 The patch lab"]
+  N3["Lab — Critical patch compliance per clinic on synthe"]
+  N4["5.3 Causes and support"]
+  N5["5.4 Constrained systems"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Measuring compliance]
+    |
+    v
+[5.2 The patch lab]
+    |
+    v
+[Lab — Critical patch compliance per clinic on synthe]
+    |
+    v
+[5.3 Causes and support]
+    |
+    v
+[5.4 Constrained systems]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -317,6 +572,56 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Identity and access
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Roles"]
+  N2["6.2 Emergency access"]
+  N3["6.3 Access reviews"]
+  N4["6.4 Privileged and remote access"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Roles"]
+  N2["6.2 Emergency access"]
+  N3["6.3 Access reviews"]
+  N4["6.4 Privileged and remote access"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Roles]
+    |
+    v
+[6.2 Emergency access]
+    |
+    v
+[6.3 Access reviews]
+    |
+    v
+[6.4 Privileged and remote access]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) design role-based access for clinical systems; (2) review access across sites; (3) protect privileged and remote access.
@@ -366,6 +671,61 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Phishing and email security
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 The problem"]
+  N2["7.2 The lookalike lab"]
+  N3["Lab — Flagging lookalike sender domains by edit dist"]
+  N4["7.3 Technical controls"]
+  N5["7.4 Human controls"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 The problem"]
+  N2["7.2 The lookalike lab"]
+  N3["Lab — Flagging lookalike sender domains by edit dist"]
+  N4["7.3 Technical controls"]
+  N5["7.4 Human controls"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 The problem]
+    |
+    v
+[7.2 The lookalike lab]
+    |
+    v
+[Lab — Flagging lookalike sender domains by edit dist]
+    |
+    v
+[7.3 Technical controls]
+    |
+    v
+[7.4 Human controls]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -448,6 +808,56 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Backup, ransomware and recovery
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Backup design"]
+  N2["8.2 Recovery objectives"]
+  N3["8.3 Testing"]
+  N4["8.4 Clinic continuity"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Backup design"]
+  N2["8.2 Recovery objectives"]
+  N3["8.3 Testing"]
+  N4["8.4 Clinic continuity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Backup design]
+    |
+    v
+[8.2 Recovery objectives]
+    |
+    v
+[8.3 Testing]
+    |
+    v
+[8.4 Clinic continuity]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) design backups resistant to ransomware; (2) test recovery against objectives; (3) plan clinic continuity.
@@ -497,6 +907,56 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Incident response and notification
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Process"]
+  N2["9.2 Notification"]
+  N3["9.3 Exercise"]
+  N4["9.4 Learning"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Process"]
+  N2["9.2 Notification"]
+  N3["9.3 Exercise"]
+  N4["9.4 Learning"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Process]
+    |
+    v
+[9.2 Notification]
+    |
+    v
+[9.3 Exercise]
+    |
+    v
+[9.4 Learning]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -548,6 +1008,56 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Metrics, reporting and the board
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Measures"]
+  N2["10.2 Baselines"]
+  N3["10.3 Board report"]
+  N4["10.4 Driving decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Measures"]
+  N2["10.2 Baselines"]
+  N3["10.3 Board report"]
+  N4["10.4 Driving decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Measures]
+    |
+    v
+[10.2 Baselines]
+    |
+    v
+[10.3 Board report]
+    |
+    v
+[10.4 Driving decisions]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) choose measures linked to risks; (2) report to a non-specialist board; (3) use measures to drive decisions.
@@ -598,6 +1108,56 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Capstone project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Choosing the project"]
+  N2["11.2 Success criteria"]
+  N3["11.3 Delivery"]
+  N4["11.4 Evaluation"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Choosing the project"]
+  N2["11.2 Success criteria"]
+  N3["11.3 Delivery"]
+  N4["11.4 Evaluation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Choosing the project]
+    |
+    v
+[11.2 Success criteria]
+    |
+    v
+[11.3 Delivery]
+    |
+    v
+[11.4 Evaluation]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) define a capstone improvement project; (2) deliver it with evidence; (3) evaluate results against goals.
@@ -647,6 +1207,56 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone presentation and next steps
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Presentation"]
+  N2["12.2 Challenges"]
+  N3["12.3 Outcome"]
+  N4["12.4 Next steps"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Presentation"]
+  N2["12.2 Challenges"]
+  N3["12.3 Outcome"]
+  N4["12.4 Next steps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Presentation]
+    |
+    v
+[12.2 Challenges]
+    |
+    v
+[12.3 Outcome]
+    |
+    v
+[12.4 Next steps]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

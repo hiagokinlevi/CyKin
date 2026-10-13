@@ -1,7 +1,7 @@
 # Threat Intelligence and OSINT: A Bachelor's Book
 
 - Language: English (`en`); bachelor's course, four years.
-- Editorial state: **draft**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; seven offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; seven offline labs use only the Python 3 standard library on synthetic data, with outputs embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: undergraduates preparing to work as junior cyber threat intelligence (CTI) analysts or to continue into research.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical boundary: no collection on real private individuals, no terms-of-service evasion, no deanonymisation, no contact with adversary infrastructure. Organisations, people and indicators are **synthetic** unless a sentence cites a public source; addresses use RFC 5737 ranges and domains use `.example`.
@@ -38,6 +38,66 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 <a id="ch-01"></a>
 
 ## Chapter 1 — Mathematical reasoning
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Three kinds of inference"]
+  N2["1.2 Fallacies in reports"]
+  N3["1.3 Proportions and ratios"]
+  N4["1.4 Assumptions"]
+  N5["Estimating before computing"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Three kinds of inference"]
+  N2["1.2 Fallacies in reports"]
+  N3["1.3 Proportions and ratios"]
+  N4["1.4 Assumptions"]
+  N5["Estimating before computing"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Three kinds of inference]
+    |
+    v
+[1.2 Fallacies in reports]
+    |
+    v
+[1.3 Proportions and ratios]
+    |
+    v
+[1.4 Assumptions]
+    |
+    v
+[Estimating before computing]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -98,6 +158,71 @@ Name your inference type, catch fallacies, give numerators with percentages and 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Computing systems
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 The estate"]
+  N2["2.2 Logs as sensors"]
+  N3["2.3 Enforcement points"]
+  N4["2.4 Medical devices"]
+  N5["2.5 Asset inventory"]
+  N6["Cloud and supplier systems"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 The estate"]
+  N2["2.2 Logs as sensors"]
+  N3["2.3 Enforcement points"]
+  N4["2.4 Medical devices"]
+  N5["2.5 Asset inventory"]
+  N6["Cloud and supplier systems"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 The estate]
+    |
+    v
+[2.2 Logs as sensors]
+    |
+    v
+[2.3 Enforcement points]
+    |
+    v
+[2.4 Medical devices]
+    |
+    v
+[2.5 Asset inventory]
+    |
+    v
+[Cloud and supplier systems]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -165,6 +290,71 @@ Know the estate, its logs and enforcement points, treat medical devices separate
 
 ## Chapter 3 — Programming I
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Why analysts program"]
+  N2["3.2 Types for intelligence"]
+  N3["3.3 Classifying values"]
+  N4["3.4 Explicit failure"]
+  N5["3.5 No hidden collection"]
+  N6["Readable code"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Why analysts program"]
+  N2["3.2 Types for intelligence"]
+  N3["3.3 Classifying values"]
+  N4["3.4 Explicit failure"]
+  N5["3.5 No hidden collection"]
+  N6["Readable code"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Why analysts program]
+    |
+    v
+[3.2 Types for intelligence]
+    |
+    v
+[3.3 Classifying values]
+    |
+    v
+[3.4 Explicit failure]
+    |
+    v
+[3.5 No hidden collection]
+    |
+    v
+[Readable code]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) write Python functions that clean and classify indicators; (2) use strings, lists, sets and dictionaries; (3) handle bad input explicitly; (4) keep scripts free of network collection.
@@ -230,6 +420,71 @@ Use the right data type, validate shape, fail explicitly and keep scripts local.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Academic writing
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Claim, evidence, reasoning"]
+  N2["4.2 Citation"]
+  N3["4.3 Hedging"]
+  N4["4.4 Academic versus intelligence style"]
+  N5["4.5 Revision"]
+  N6["Writing for non-specialists"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Claim, evidence, reasoning"]
+  N2["4.2 Citation"]
+  N3["4.3 Hedging"]
+  N4["4.4 Academic versus intelligence style"]
+  N5["4.5 Revision"]
+  N6["Writing for non-specialists"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Claim, evidence, reasoning]
+    |
+    v
+[4.2 Citation]
+    |
+    v
+[4.3 Hedging]
+    |
+    v
+[4.4 Academic versus intelligence style]
+    |
+    v
+[4.5 Revision]
+    |
+    v
+[Writing for non-specialists]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -297,6 +552,71 @@ One claim per paragraph, cite precisely and lawfully, hedge honestly and know wh
 
 ## Chapter 5 — Security literacy
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Core terms"]
+  N2["5.2 The CTI life cycle"]
+  N3["5.3 Three levels"]
+  N4["5.4 Why healthcare"]
+  N5["5.5 Intelligence versus information"]
+  N6["Who consumes intelligence at HCHT"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Core terms"]
+  N2["5.2 The CTI life cycle"]
+  N3["5.3 Three levels"]
+  N4["5.4 Why healthcare"]
+  N5["5.5 Intelligence versus information"]
+  N6["Who consumes intelligence at HCHT"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Core terms]
+    |
+    v
+[5.2 The CTI life cycle]
+    |
+    v
+[5.3 Three levels]
+    |
+    v
+[5.4 Why healthcare]
+    |
+    v
+[5.5 Intelligence versus information]
+    |
+    v
+[Who consumes intelligence at HCHT]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) define threat, vulnerability, risk and control; (2) describe the CTI life cycle; (3) distinguish strategic, operational and tactical intelligence; (4) explain why healthcare is attractive to attackers.
@@ -362,6 +682,71 @@ Use core terms precisely, start the cycle with direction, match the level to the
 <a id="ch-06"></a>
 
 ## Chapter 6 — Discrete structures
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Sets and relations"]
+  N2["6.2 Graphs"]
+  N3["6.3 Paths and components"]
+  N4["6.4 Shared infrastructure trap"]
+  N5["6.5 Directed versus undirected"]
+  N6["6.6 Degree as a warning sign"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Sets and relations"]
+  N2["6.2 Graphs"]
+  N3["6.3 Paths and components"]
+  N4["6.4 Shared infrastructure trap"]
+  N5["6.5 Directed versus undirected"]
+  N6["6.6 Degree as a warning sign"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Sets and relations]
+    |
+    v
+[6.2 Graphs]
+    |
+    v
+[6.3 Paths and components]
+    |
+    v
+[6.4 Shared infrastructure trap]
+    |
+    v
+[6.5 Directed versus undirected]
+    |
+    v
+[6.6 Degree as a warning sign]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -431,6 +816,71 @@ Sets and graphs organise intelligence; check high-degree nodes, keep direction a
 
 ## Chapter 7 — Networks and protocols
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 DNS"]
+  N2["7.2 HTTP and HTTPS"]
+  N3["7.3 SMTP and headers"]
+  N4["7.4 Ports and services"]
+  N5["7.5 Time and addresses"]
+  N6["7.6 Authentication results in practice"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 DNS"]
+  N2["7.2 HTTP and HTTPS"]
+  N3["7.3 SMTP and headers"]
+  N4["7.4 Ports and services"]
+  N5["7.5 Time and addresses"]
+  N6["7.6 Authentication results in practice"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 DNS]
+    |
+    v
+[7.2 HTTP and HTTPS]
+    |
+    v
+[7.3 SMTP and headers]
+    |
+    v
+[7.4 Ports and services]
+    |
+    v
+[7.5 Time and addresses]
+    |
+    v
+[7.6 Authentication results in practice]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) explain DNS, HTTP(S) and SMTP at the level CTI needs; (2) read email headers for sender clues; (3) understand why encrypted traffic limits visibility; (4) relate protocols to ATT&CK techniques.
@@ -498,6 +948,71 @@ DNS, web and mail logs are the CTI analyst's main checkpoints; read headers crit
 <a id="ch-08"></a>
 
 ## Chapter 8 — Programming II
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Feeds as files"]
+  N2["Lab — validating a feed"]
+  N3["8.2 Reading the result"]
+  N4["8.3 Validation rules"]
+  N5["8.4 Never silently drop"]
+  N6["8.5 Idempotence"]
+  N7["8.6 Encoding and delimiters"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Feeds as files"]
+  N2["Lab — validating a feed"]
+  N3["8.2 Reading the result"]
+  N4["8.3 Validation rules"]
+  N5["8.4 Never silently drop"]
+  N6["8.5 Idempotence"]
+  N7["8.6 Encoding and delimiters"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Feeds as files]
+    |
+    v
+[Lab — validating a feed]
+    |
+    v
+[8.2 Reading the result]
+    |
+    v
+[8.3 Validation rules]
+    |
+    v
+[8.4 Never silently drop]
+    |
+    v
+[8.5 Idempotence]
+    |
+    v
+[8.6 Encoding and delimiters]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 
@@ -599,6 +1114,71 @@ Parse with code, validate explicitly, report rejections and keep imports idempot
 
 ## Chapter 9 — Data and databases
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Why a database"]
+  N2["9.2 Table design"]
+  N3["Lab — querying the store"]
+  N4["9.3 Reading the result"]
+  N5["9.4 Indicator ageing"]
+  N6["9.5 Parameterised queries"]
+  N7["9.6 Keeping history"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Why a database"]
+  N2["9.2 Table design"]
+  N3["Lab — querying the store"]
+  N4["9.3 Reading the result"]
+  N5["9.4 Indicator ageing"]
+  N6["9.5 Parameterised queries"]
+  N7["9.6 Keeping history"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Why a database]
+    |
+    v
+[9.2 Table design]
+    |
+    v
+[Lab — querying the store]
+    |
+    v
+[9.3 Reading the result]
+    |
+    v
+[9.4 Indicator ageing]
+    |
+    v
+[9.5 Parameterised queries]
+    |
+    v
+[9.6 Keeping history]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes
 
 You will (1) design a small indicator table; (2) query it with SQL through Python's `sqlite3`; (3) find stale indicators; (4) store handling labels alongside data.
@@ -694,6 +1274,71 @@ Model indicators with labels and dates, query safely, age indicators and keep hi
 
 ## Chapter 10 — Ethics and authorized practice
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Public is not unlimited"]
+  N2["10.2 Terms of service"]
+  N3["10.3 Authorisation"]
+  N4["10.4 Proportionality"]
+  N5["10.5 Stop and ask"]
+  N6["10.6 Ethics codes and peers"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Public is not unlimited"]
+  N2["10.2 Terms of service"]
+  N3["10.3 Authorisation"]
+  N4["10.4 Proportionality"]
+  N5["10.5 Stop and ask"]
+  N6["10.6 Ethics codes and peers"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Public is not unlimited]
+    |
+    v
+[10.2 Terms of service]
+    |
+    v
+[10.3 Authorisation]
+    |
+    v
+[10.4 Proportionality]
+    |
+    v
+[10.5 Stop and ask]
+    |
+    v
+[10.6 Ethics codes and peers]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) state the legal and ethical limits of OSINT collection; (2) respect platform terms of service; (3) apply data-protection principles; (4) recognise when to stop and ask.
@@ -762,6 +1407,71 @@ Collect lawfully, follow terms, stay within mandate, weigh proportionality and a
 
 ## Chapter 11 — Operating systems
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Processes and command interpreters"]
+  N2["11.2 Privilege"]
+  N3["11.3 Endpoint telemetry"]
+  N4["11.4 Reading a technique page"]
+  N5["11.5 Remote services"]
+  N6["11.6 Patching and support status"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Processes and command interpreters"]
+  N2["11.2 Privilege"]
+  N3["11.3 Endpoint telemetry"]
+  N4["11.4 Reading a technique page"]
+  N5["11.5 Remote services"]
+  N6["11.6 Patching and support status"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Processes and command interpreters]
+    |
+    v
+[11.2 Privilege]
+    |
+    v
+[11.3 Endpoint telemetry]
+    |
+    v
+[11.4 Reading a technique page]
+    |
+    v
+[11.5 Remote services]
+    |
+    v
+[11.6 Patching and support status]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) relate operating-system concepts to ATT&CK techniques; (2) identify endpoint telemetry useful for checking intelligence; (3) explain privilege and its abuse; (4) read a technique page critically.
@@ -829,6 +1539,71 @@ Map OS behaviour to techniques, use endpoint telemetry to check reports, and rec
 <a id="ch-12"></a>
 
 ## Chapter 12 — Probability and statistics
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Words of estimative probability"]
+  N2["Lab — checking estimative words"]
+  N3["12.2 Reading the result"]
+  N4["12.3 Base rates"]
+  N5["12.4 False precision"]
+  N6["12.5 Likelihood versus confidence"]
+  N7["12.6 Small samples"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Words of estimative probability"]
+  N2["Lab — checking estimative words"]
+  N3["12.2 Reading the result"]
+  N4["12.3 Base rates"]
+  N5["12.4 False precision"]
+  N6["12.5 Likelihood versus confidence"]
+  N7["12.6 Small samples"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Words of estimative probability]
+    |
+    v
+[Lab — checking estimative words]
+    |
+    v
+[12.2 Reading the result]
+    |
+    v
+[12.3 Base rates]
+    |
+    v
+[12.4 False precision]
+    |
+    v
+[12.5 Likelihood versus confidence]
+    |
+    v
+[12.6 Small samples]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 
@@ -923,6 +1698,71 @@ Use a shared scale, check base rates, avoid false precision and state both likel
 
 ## Chapter 13 — Identity and access
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Identity as the perimeter"]
+  N2["13.2 Multi-factor authentication"]
+  N3["13.3 Credential exposure reports"]
+  N4["13.4 Service and supplier accounts"]
+  N5["13.5 Measuring control effect"]
+  N6["13.6 Least privilege and reviews"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Identity as the perimeter"]
+  N2["13.2 Multi-factor authentication"]
+  N3["13.3 Credential exposure reports"]
+  N4["13.4 Service and supplier accounts"]
+  N5["13.5 Measuring control effect"]
+  N6["13.6 Least privilege and reviews"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Identity as the perimeter]
+    |
+    v
+[13.2 Multi-factor authentication]
+    |
+    v
+[13.3 Credential exposure reports]
+    |
+    v
+[13.4 Service and supplier accounts]
+    |
+    v
+[13.5 Measuring control effect]
+    |
+    v
+[13.6 Least privilege and reviews]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) explain why credentials are a prime target; (2) connect identity intelligence to controls; (3) handle credential-exposure reports responsibly; (4) recognise multi-factor fatigue and session theft at a conceptual level.
@@ -990,6 +1830,71 @@ Treat identity as the perimeter, turn credential intelligence into identity cont
 <a id="ch-14"></a>
 
 ## Chapter 14 — Privacy foundations
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Personal data in CTI"]
+  N2["14.2 Redaction before sharing"]
+  N3["Lab — redacting a sample"]
+  N4["14.3 Reading the result"]
+  N5["14.4 Minimisation and retention"]
+  N6["14.5 Patient data"]
+  N7["14.6 Pseudonymisation versus anonymisation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Personal data in CTI"]
+  N2["14.2 Redaction before sharing"]
+  N3["Lab — redacting a sample"]
+  N4["14.3 Reading the result"]
+  N5["14.4 Minimisation and retention"]
+  N6["14.5 Patient data"]
+  N7["14.6 Pseudonymisation versus anonymisation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Personal data in CTI]
+    |
+    v
+[14.2 Redaction before sharing]
+    |
+    v
+[Lab — redacting a sample]
+    |
+    v
+[14.3 Reading the result]
+    |
+    v
+[14.4 Minimisation and retention]
+    |
+    v
+[14.5 Patient data]
+    |
+    v
+[14.6 Pseudonymisation versus anonymisation]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes
 
@@ -1081,6 +1986,71 @@ Find personal data, redact with care, keep the indicators, minimise, retain brie
 
 ## Chapter 15 — Evidence and measurement
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 Three layers"]
+  N2["15.2 Provenance"]
+  N3["15.3 Measuring intelligence"]
+  N4["15.4 Feedback"]
+  N5["15.5 Timeliness"]
+  N6["15.6 Precision and recall for blocks"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 Three layers"]
+  N2["15.2 Provenance"]
+  N3["15.3 Measuring intelligence"]
+  N4["15.4 Feedback"]
+  N5["15.5 Timeliness"]
+  N6["15.6 Precision and recall for blocks"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 Three layers]
+    |
+    v
+[15.2 Provenance]
+    |
+    v
+[15.3 Measuring intelligence]
+    |
+    v
+[15.4 Feedback]
+    |
+    v
+[15.5 Timeliness]
+    |
+    v
+[15.6 Precision and recall for blocks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) distinguish observation, inference and assessment; (2) record provenance for each piece of evidence; (3) measure the usefulness of intelligence; (4) separate activity metrics from outcome metrics.
@@ -1148,6 +2118,71 @@ Separate evidence layers, keep provenance, measure outcomes and feed back to pro
 <a id="ch-16"></a>
 
 ## Chapter 16 — Security architecture
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Layers"]
+  N2["16.2 CTI at each layer"]
+  N3["16.3 Segmentation"]
+  N4["16.4 Choosing enforcement"]
+  N5["16.5 Architecture reviews"]
+  N6["16.6 Backups as a CTI consumer"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Layers"]
+  N2["16.2 CTI at each layer"]
+  N3["16.3 Segmentation"]
+  N4["16.4 Choosing enforcement"]
+  N5["16.5 Architecture reviews"]
+  N6["16.6 Backups as a CTI consumer"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Layers]
+    |
+    v
+[16.2 CTI at each layer]
+    |
+    v
+[16.3 Segmentation]
+    |
+    v
+[16.4 Choosing enforcement]
+    |
+    v
+[16.5 Architecture reviews]
+    |
+    v
+[16.6 Backups as a CTI consumer]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Learning outcomes
 
@@ -1217,6 +2252,71 @@ Feed each layer the intelligence it can use, enforce where reliable and harmless
 
 ## Chapter 17 — Cryptography concepts
 
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Hashes"]
+  N2["17.2 Encryption"]
+  N3["17.3 Signatures and certificates"]
+  N4["17.4 Certificate transparency"]
+  N5["17.5 Protecting intelligence"]
+  N6["17.6 Fuzzy and partial matching"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Hashes"]
+  N2["17.2 Encryption"]
+  N3["17.3 Signatures and certificates"]
+  N4["17.4 Certificate transparency"]
+  N5["17.5 Protecting intelligence"]
+  N6["17.6 Fuzzy and partial matching"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Hashes]
+    |
+    v
+[17.2 Encryption]
+    |
+    v
+[17.3 Signatures and certificates]
+    |
+    v
+[17.4 Certificate transparency]
+    |
+    v
+[17.5 Protecting intelligence]
+    |
+    v
+[17.6 Fuzzy and partial matching]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
+
 ### Learning outcomes
 
 You will (1) explain hashing, encryption and signatures at concept level; (2) understand what a file hash proves; (3) relate certificates to phishing infrastructure; (4) handle encrypted intelligence channels.
@@ -1284,6 +2384,71 @@ Understand what cryptographic artefacts prove, use certificate transparency pass
 <a id="ch-18"></a>
 
 ## Chapter 18 — Research methods I
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Research questions"]
+  N2["18.2 Methods"]
+  N3["18.3 Coding scheme"]
+  N4["18.4 Sampling"]
+  N5["18.5 Ethics"]
+  N6["18.6 Literature search"]
+  N7["Reliability between coders"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Research questions"]
+  N2["18.2 Methods"]
+  N3["18.3 Coding scheme"]
+  N4["18.4 Sampling"]
+  N5["18.5 Ethics"]
+  N6["18.6 Literature search"]
+  N7["Reliability between coders"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Research questions]
+    |
+    v
+[18.2 Methods]
+    |
+    v
+[18.3 Coding scheme]
+    |
+    v
+[18.4 Sampling]
+    |
+    v
+[18.5 Ethics]
+    |
+    v
+[18.6 Literature search]
+    |
+    v
+[Reliability between coders]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes
 
@@ -1357,6 +2522,71 @@ Ask narrow questions, mix methods sensibly, code consistently, admit sampling bi
 
 ## Chapter 19 — Threat intelligence and OSINT: scope and theory
 
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 Definitions"]
+  N2["19.2 Models"]
+  N3["19.3 Sharing standards"]
+  N4["19.4 CTI and risk"]
+  N5["19.5 Theory and practice"]
+  N6["19.6 Choosing a model"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 Definitions"]
+  N2["19.2 Models"]
+  N3["19.3 Sharing standards"]
+  N4["19.4 CTI and risk"]
+  N5["19.5 Theory and practice"]
+  N6["19.6 Choosing a model"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 Definitions]
+    |
+    v
+[19.2 Models]
+    |
+    v
+[19.3 Sharing standards]
+    |
+    v
+[19.4 CTI and risk]
+    |
+    v
+[19.5 Theory and practice]
+    |
+    v
+[19.6 Choosing a model]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
+
 ### Learning outcomes
 
 You will (1) define CTI and OSINT; (2) explain the role of models such as the kill chain and Diamond Model; (3) describe sharing frameworks — STIX, TAXII, TLP; (4) locate CTI in risk management.
@@ -1424,6 +2654,71 @@ CTI is decision-support built on models and shared through standards; choose the
 <a id="ch-20"></a>
 
 ## Chapter 20 — Threat intelligence and OSINT: foundational cases
+
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 The kill chain paper"]
+  N2["20.2 Group reporting"]
+  N3["20.3 Ransomware against health"]
+  N4["20.4 Supply chain"]
+  N5["20.5 Reading cases ethically"]
+  N6["20.6 Comparing cases"]
+  N7["From case to local question"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 The kill chain paper"]
+  N2["20.2 Group reporting"]
+  N3["20.3 Ransomware against health"]
+  N4["20.4 Supply chain"]
+  N5["20.5 Reading cases ethically"]
+  N6["20.6 Comparing cases"]
+  N7["From case to local question"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 The kill chain paper]
+    |
+    v
+[20.2 Group reporting]
+    |
+    v
+[20.3 Ransomware against health]
+    |
+    v
+[20.4 Supply chain]
+    |
+    v
+[20.5 Reading cases ethically]
+    |
+    v
+[20.6 Comparing cases]
+    |
+    v
+[From case to local question]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
 
 ### Learning outcomes
 
@@ -1497,6 +2792,71 @@ Foundational cases teach durable lessons: reuse intelligence across intrusions, 
 
 ## Chapter 21 — Threat intelligence and OSINT: system models
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 Intelligence as a system"]
+  N2["21.2 Bottlenecks"]
+  N3["21.3 Feedback loops"]
+  N4["21.4 STIX as a data model"]
+  N5["21.5 Boundaries"]
+  N6["21.6 Capacity arithmetic"]
+  N7["Service levels"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 Intelligence as a system"]
+  N2["21.2 Bottlenecks"]
+  N3["21.3 Feedback loops"]
+  N4["21.4 STIX as a data model"]
+  N5["21.5 Boundaries"]
+  N6["21.6 Capacity arithmetic"]
+  N7["Service levels"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 Intelligence as a system]
+    |
+    v
+[21.2 Bottlenecks]
+    |
+    v
+[21.3 Feedback loops]
+    |
+    v
+[21.4 STIX as a data model]
+    |
+    v
+[21.5 Boundaries]
+    |
+    v
+[21.6 Capacity arithmetic]
+    |
+    v
+[Service levels]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Learning outcomes
 
 You will (1) model the HCHT intelligence system as inputs, processes and outputs; (2) identify feedback loops; (3) find bottlenecks; (4) express the model in STIX object terms.
@@ -1569,6 +2929,71 @@ Model CTI as a system, manage bottlenecks, watch feedback loops and map data to 
 
 ## Chapter 22 — Threat intelligence and OSINT: data and dependencies
 
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 Source catalogue"]
+  N2["22.2 Dependencies"]
+  N3["22.3 Terms and licences"]
+  N4["22.4 Single points of failure"]
+  N5["22.5 Coverage gaps"]
+  N6["22.6 Source evaluation over time"]
+  N7["Internal sources"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 Source catalogue"]
+  N2["22.2 Dependencies"]
+  N3["22.3 Terms and licences"]
+  N4["22.4 Single points of failure"]
+  N5["22.5 Coverage gaps"]
+  N6["22.6 Source evaluation over time"]
+  N7["Internal sources"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 Source catalogue]
+    |
+    v
+[22.2 Dependencies]
+    |
+    v
+[22.3 Terms and licences]
+    |
+    v
+[22.4 Single points of failure]
+    |
+    v
+[22.5 Coverage gaps]
+    |
+    v
+[22.6 Source evaluation over time]
+    |
+    v
+[Internal sources]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
+
 ### Learning outcomes
 
 You will (1) catalogue HCHT's intelligence sources and their dependencies; (2) assess single points of failure; (3) evaluate source licences and terms; (4) plan for source loss.
@@ -1640,6 +3065,71 @@ Know your sources, their terms and dependencies, and plan for their failure.
 <a id="ch-23"></a>
 
 ## Chapter 23 — Threat intelligence and OSINT: methods I
+
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 Coding reports"]
+  N2["Lab — technique frequency"]
+  N3["23.2 Reading the result"]
+  N4["23.3 Caution"]
+  N5["23.4 From frequency to priority"]
+  N6["23.5 Recording"]
+  N7["23.6 Coding granularity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 Coding reports"]
+  N2["Lab — technique frequency"]
+  N3["23.2 Reading the result"]
+  N4["23.3 Caution"]
+  N5["23.4 From frequency to priority"]
+  N6["23.5 Recording"]
+  N7["23.6 Coding granularity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 Coding reports]
+    |
+    v
+[Lab — technique frequency]
+    |
+    v
+[23.2 Reading the result]
+    |
+    v
+[23.3 Caution]
+    |
+    v
+[23.4 From frequency to priority]
+    |
+    v
+[23.5 Recording]
+    |
+    v
+[23.6 Coding granularity]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
 
 ### Learning outcomes
 
@@ -1739,6 +3229,71 @@ Code carefully, count honestly, read counts in context and combine them with exp
 
 ## Chapter 24 — Threat intelligence and OSINT: controls
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 From technique to mitigation"]
+  N2["24.2 The control request"]
+  N3["24.3 Side effects"]
+  N4["24.4 Verification"]
+  N5["24.5 Decay"]
+  N6["24.6 Detection as a control"]
+  N7["Prioritising requests"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 From technique to mitigation"]
+  N2["24.2 The control request"]
+  N3["24.3 Side effects"]
+  N4["24.4 Verification"]
+  N5["24.5 Decay"]
+  N6["24.6 Detection as a control"]
+  N7["Prioritising requests"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 From technique to mitigation]
+    |
+    v
+[24.2 The control request]
+    |
+    v
+[24.3 Side effects]
+    |
+    v
+[24.4 Verification]
+    |
+    v
+[24.5 Decay]
+    |
+    v
+[24.6 Detection as a control]
+    |
+    v
+[Prioritising requests]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Learning outcomes
 
 You will (1) map techniques to mitigations using ATT&CK; (2) write an intelligence-driven control request; (3) estimate the cost and side effects of a control; (4) verify that a control works.
@@ -1810,6 +3365,71 @@ Map techniques to mitigations, ask with evidence, weigh side effects, verify and
 <a id="ch-25"></a>
 
 ## Chapter 25 — Threat intelligence and OSINT: Laboratory I
+
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 Lab design"]
+  N2["25.2 Environment rules"]
+  N3["25.3 Steps"]
+  N4["25.4 The lab report"]
+  N5["25.5 Assessment"]
+  N6["25.6 Reproducibility"]
+  N7["25.7 Pairing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 Lab design"]
+  N2["25.2 Environment rules"]
+  N3["25.3 Steps"]
+  N4["25.4 The lab report"]
+  N5["25.5 Assessment"]
+  N6["25.6 Reproducibility"]
+  N7["25.7 Pairing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 Lab design]
+    |
+    v
+[25.2 Environment rules]
+    |
+    v
+[25.3 Steps]
+    |
+    v
+[25.4 The lab report]
+    |
+    v
+[25.5 Assessment]
+    |
+    v
+[25.6 Reproducibility]
+    |
+    v
+[25.7 Pairing]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
 
 ### Learning outcomes
 
@@ -1884,6 +3504,71 @@ Combine the pieces, follow lab rules, report honestly and make your work reprodu
 <a id="ch-26"></a>
 
 ## Chapter 26 — Threat intelligence and OSINT: methods II
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 Two letters, two questions"]
+  N2["Lab — grading and use"]
+  N3["26.2 Reading the result"]
+  N4["26.3 Decision rules"]
+  N5["26.4 Reasons"]
+  N6["26.5 Re-grading"]
+  N7["26.6 Grading OSINT"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 Two letters, two questions"]
+  N2["Lab — grading and use"]
+  N3["26.2 Reading the result"]
+  N4["26.3 Decision rules"]
+  N5["26.4 Reasons"]
+  N6["26.5 Re-grading"]
+  N7["26.6 Grading OSINT"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 Two letters, two questions]
+    |
+    v
+[Lab — grading and use]
+    |
+    v
+[26.2 Reading the result]
+    |
+    v
+[26.3 Decision rules]
+    |
+    v
+[26.4 Reasons]
+    |
+    v
+[26.5 Re-grading]
+    |
+    v
+[26.6 Grading OSINT]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Learning outcomes
 
@@ -1980,6 +3665,71 @@ Grade source and information separately, decide by agreed rules, record reasons 
 
 ## Chapter 27 — Threat intelligence and OSINT: verification
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Passive verification"]
+  N2["27.2 Independence"]
+  N3["27.3 Environmental match"]
+  N4["27.4 Internal corroboration"]
+  N5["27.5 Recording"]
+  N6["27.6 Verifying claims, not only indicators"]
+  N7["Time-boxing verification"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Passive verification"]
+  N2["27.2 Independence"]
+  N3["27.3 Environmental match"]
+  N4["27.4 Internal corroboration"]
+  N5["27.5 Recording"]
+  N6["27.6 Verifying claims, not only indicators"]
+  N7["Time-boxing verification"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Passive verification]
+    |
+    v
+[27.2 Independence]
+    |
+    v
+[27.3 Environmental match]
+    |
+    v
+[27.4 Internal corroboration]
+    |
+    v
+[27.5 Recording]
+    |
+    v
+[27.6 Verifying claims, not only indicators]
+    |
+    v
+[Time-boxing verification]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Learning outcomes
 
 You will (1) verify indicators passively before action; (2) corroborate claims with independent sources; (3) check whether intelligence matches HCHT's environment; (4) record verification steps.
@@ -2052,6 +3802,71 @@ Verify passively, demand independence, match to the environment, prize internal 
 
 ## Chapter 28 — Threat intelligence and OSINT: failure analysis
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 Kinds of failure"]
+  N2["28.2 Cognitive biases"]
+  N3["28.3 Blameless review"]
+  N4["28.4 Timeline first"]
+  N5["28.5 Lessons that change things"]
+  N6["28.6 Near misses"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 Kinds of failure"]
+  N2["28.2 Cognitive biases"]
+  N3["28.3 Blameless review"]
+  N4["28.4 Timeline first"]
+  N5["28.5 Lessons that change things"]
+  N6["28.6 Near misses"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 Kinds of failure]
+    |
+    v
+[28.2 Cognitive biases]
+    |
+    v
+[28.3 Blameless review]
+    |
+    v
+[28.4 Timeline first]
+    |
+    v
+[28.5 Lessons that change things]
+    |
+    v
+[28.6 Near misses]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Learning outcomes
 
 You will (1) analyse intelligence failures without blame; (2) distinguish collection, analysis and dissemination failures; (3) recognise cognitive biases; (4) produce actionable lessons.
@@ -2120,6 +3935,71 @@ Classify failures by stage, guard against bias, review without blame and write l
 
 ## Chapter 29 — Threat intelligence and OSINT: operations
 
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 Weekly rhythm"]
+  N2["29.2 Requirements"]
+  N3["29.3 TLP in practice"]
+  N4["29.4 Work log"]
+  N5["29.5 Handover"]
+  N6["29.6 Urgent path"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 Weekly rhythm"]
+  N2["29.2 Requirements"]
+  N3["29.3 TLP in practice"]
+  N4["29.4 Work log"]
+  N5["29.5 Handover"]
+  N6["29.6 Urgent path"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 Weekly rhythm]
+    |
+    v
+[29.2 Requirements]
+    |
+    v
+[29.3 TLP in practice]
+    |
+    v
+[29.4 Work log]
+    |
+    v
+[29.5 Handover]
+    |
+    v
+[29.6 Urgent path]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
+
 ### Learning outcomes
 
 You will (1) run a weekly CTI cycle; (2) prioritise with intelligence requirements; (3) apply TLP correctly in daily handling; (4) maintain a work log.
@@ -2187,6 +4067,71 @@ Run a steady rhythm, steer by requirements, apply TLP exactly and keep a log.
 <a id="ch-30"></a>
 
 ## Chapter 30 — Threat intelligence and OSINT: Laboratory II
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 The task"]
+  N2["30.2 Why by hand"]
+  N3["30.3 Patterns"]
+  N4["30.4 Peer review"]
+  N5["30.5 Memo"]
+  N6["30.6 Identifiers and versions"]
+  N7["30.7 Assessment"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 The task"]
+  N2["30.2 Why by hand"]
+  N3["30.3 Patterns"]
+  N4["30.4 Peer review"]
+  N5["30.5 Memo"]
+  N6["30.6 Identifiers and versions"]
+  N7["30.7 Assessment"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 The task]
+    |
+    v
+[30.2 Why by hand]
+    |
+    v
+[30.3 Patterns]
+    |
+    v
+[30.4 Peer review]
+    |
+    v
+[30.5 Memo]
+    |
+    v
+[30.6 Identifiers and versions]
+    |
+    v
+[30.7 Assessment]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Learning outcomes
 
@@ -2261,6 +4206,71 @@ Hand-build a small bundle to learn STIX, review rigorously and explain your mode
 <a id="ch-31"></a>
 
 ## Chapter 31 — Threat intelligence and OSINT: advanced cases
+
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Lesson map
+
+Lesson 31 published. Map, example, EX091.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["31.1 From events to phases"]
+  N2["Lab — ordering phases"]
+  N3["31.2 Reading the result"]
+  N4["31.3 A labelling caution"]
+  N5["31.4 Tempo"]
+  N6["31.5 Opportunities"]
+  N7["31.6 Presenting timelines"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX091"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["31.1 From events to phases"]
+  N2["Lab — ordering phases"]
+  N3["31.2 Reading the result"]
+  N4["31.3 A labelling caution"]
+  N5["31.4 Tempo"]
+  N6["31.5 Opportunities"]
+  N7["31.6 Presenting timelines"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX091"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[31.1 From events to phases]
+    |
+    v
+[Lab — ordering phases]
+    |
+    v
+[31.2 Reading the result]
+    |
+    v
+[31.3 A labelling caution]
+    |
+    v
+[31.4 Tempo]
+    |
+    v
+[31.5 Opportunities]
+    |
+    v
+[31.6 Presenting timelines]
+    |
+    v
+[Worked example] --> [Exercise EX091]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
 
 ### Learning outcomes
 
@@ -2358,6 +4368,71 @@ Order events into phases, name terms precisely, read the tempo and pick controls
 
 ## Chapter 32 — Threat intelligence and OSINT: interdisciplinary interfaces
 
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Lesson map
+
+Lesson 32 published. Map, example, EX094.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["32.1 Legal"]
+  N2["32.2 Privacy"]
+  N3["32.3 Clinical leadership"]
+  N4["32.4 Communications"]
+  N5["32.5 Procurement"]
+  N6["32.6 Shared vocabulary"]
+  N7["Human resources and insiders"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX094"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["32.1 Legal"]
+  N2["32.2 Privacy"]
+  N3["32.3 Clinical leadership"]
+  N4["32.4 Communications"]
+  N5["32.5 Procurement"]
+  N6["32.6 Shared vocabulary"]
+  N7["Human resources and insiders"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX094"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[32.1 Legal]
+    |
+    v
+[32.2 Privacy]
+    |
+    v
+[32.3 Clinical leadership]
+    |
+    v
+[32.4 Communications]
+    |
+    v
+[32.5 Procurement]
+    |
+    v
+[32.6 Shared vocabulary]
+    |
+    v
+[Human resources and insiders]
+    |
+    v
+[Worked example] --> [Exercise EX094]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
+
 ### Learning outcomes
 
 You will (1) work with legal, privacy, clinical and communications colleagues; (2) translate CTI for each; (3) recognise their constraints; (4) avoid overstepping roles.
@@ -2429,6 +4504,71 @@ Serve each profession in its language, respect their decisions and keep uncertai
 <a id="ch-33"></a>
 
 ## Chapter 33 — Research methods II
+
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Lesson map
+
+Lesson 33 published. Map, example, EX097.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["33.1 From codes to tables"]
+  N2["33.2 Agreement"]
+  N3["33.3 Uncertainty"]
+  N4["33.4 Methods section"]
+  N5["33.5 Open materials"]
+  N6["33.6 Negative results"]
+  N7["Choosing charts"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX097"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["33.1 From codes to tables"]
+  N2["33.2 Agreement"]
+  N3["33.3 Uncertainty"]
+  N4["33.4 Methods section"]
+  N5["33.5 Open materials"]
+  N6["33.6 Negative results"]
+  N7["Choosing charts"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX097"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[33.1 From codes to tables]
+    |
+    v
+[33.2 Agreement]
+    |
+    v
+[33.3 Uncertainty]
+    |
+    v
+[33.4 Methods section]
+    |
+    v
+[33.5 Open materials]
+    |
+    v
+[33.6 Negative results]
+    |
+    v
+[Choosing charts]
+    |
+    v
+[Worked example] --> [Exercise EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
 
 ### Learning outcomes
 
@@ -2502,6 +4642,71 @@ Tabulate honestly, measure agreement with chance correction, respect uncertainty
 
 ## Chapter 34 — Comparative project
 
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Lesson map
+
+Lesson 34 published. Map, example, EX100.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["34.1 The project"]
+  N2["34.2 Fair criteria"]
+  N3["34.3 Evidence"]
+  N4["34.4 Scoring"]
+  N5["34.5 Recommendation"]
+  N6["34.6 Comparing like with like"]
+  N7["Stakeholder input"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX100"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["34.1 The project"]
+  N2["34.2 Fair criteria"]
+  N3["34.3 Evidence"]
+  N4["34.4 Scoring"]
+  N5["34.5 Recommendation"]
+  N6["34.6 Comparing like with like"]
+  N7["Stakeholder input"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX100"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[34.1 The project]
+    |
+    v
+[34.2 Fair criteria]
+    |
+    v
+[34.3 Evidence]
+    |
+    v
+[34.4 Scoring]
+    |
+    v
+[34.5 Recommendation]
+    |
+    v
+[34.6 Comparing like with like]
+    |
+    v
+[Stakeholder input]
+    |
+    v
+[Worked example] --> [Exercise EX100]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
+
 ### Learning outcomes
 
 You will (1) compare two intelligence-sharing arrangements; (2) build fair comparison criteria; (3) gather evidence lawfully; (4) recommend with stated trade-offs.
@@ -2573,6 +4778,71 @@ Fix criteria first, gather evidence lawfully, score with reasons, test sensitivi
 <a id="ch-35"></a>
 
 ## Chapter 35 — Capstone proposal
+
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Lesson map
+
+Lesson 35 published. Map, example, EX103.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["35.1 Choosing a topic"]
+  N2["35.2 Structure"]
+  N3["35.3 Scope"]
+  N4["35.4 Success measures"]
+  N5["35.5 Data and ethics"]
+  N6["35.6 Risks"]
+  N7["35.7 Supervision agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX103"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["35.1 Choosing a topic"]
+  N2["35.2 Structure"]
+  N3["35.3 Scope"]
+  N4["35.4 Success measures"]
+  N5["35.5 Data and ethics"]
+  N6["35.6 Risks"]
+  N7["35.7 Supervision agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX103"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[35.1 Choosing a topic]
+    |
+    v
+[35.2 Structure]
+    |
+    v
+[35.3 Scope]
+    |
+    v
+[35.4 Success measures]
+    |
+    v
+[35.5 Data and ethics]
+    |
+    v
+[35.6 Risks]
+    |
+    v
+[35.7 Supervision agreement]
+    |
+    v
+[Worked example] --> [Exercise EX103]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
 
 ### Learning outcomes
 
@@ -2652,6 +4922,71 @@ Choose a bounded, lawful problem, scope it, measure success realistically and pl
 
 ## Chapter 36 — Field or community practice
 
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Lesson map
+
+Lesson 36 published. Map, example, EX106.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["36.1 Placement"]
+  N2["36.2 Preparing a contribution"]
+  N3["36.3 Community norms"]
+  N4["36.4 Feedback"]
+  N5["36.5 Reflection"]
+  N6["36.6 Community practice beyond work"]
+  N7["Mentoring"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX106"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["36.1 Placement"]
+  N2["36.2 Preparing a contribution"]
+  N3["36.3 Community norms"]
+  N4["36.4 Feedback"]
+  N5["36.5 Reflection"]
+  N6["36.6 Community practice beyond work"]
+  N7["Mentoring"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX106"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[36.1 Placement]
+    |
+    v
+[36.2 Preparing a contribution]
+    |
+    v
+[36.3 Community norms]
+    |
+    v
+[36.4 Feedback]
+    |
+    v
+[36.5 Reflection]
+    |
+    v
+[36.6 Community practice beyond work]
+    |
+    v
+[Mentoring]
+    |
+    v
+[Worked example] --> [Exercise EX106]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
+
 ### Learning outcomes
 
 You will (1) contribute to a sharing community responsibly; (2) prepare an item for HSSC; (3) give and receive feedback in a community; (4) reflect on professional conduct.
@@ -2723,6 +5058,71 @@ Contribute verified, redacted, labelled items; honour norms; welcome feedback; r
 <a id="ch-37"></a>
 
 ## Chapter 37 — Evidence review seminar
+
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Lesson map
+
+Lesson 37 published. Map, example, EX109.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["37.1 The seminar"]
+  N2["37.2 ICD 203 standards"]
+  N3["37.3 Evidence versus assertion"]
+  N4["37.4 Alternatives"]
+  N5["37.5 Constructive critique"]
+  N6["37.6 Commercial context"]
+  N7["Leading the discussion"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX109"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["37.1 The seminar"]
+  N2["37.2 ICD 203 standards"]
+  N3["37.3 Evidence versus assertion"]
+  N4["37.4 Alternatives"]
+  N5["37.5 Constructive critique"]
+  N6["37.6 Commercial context"]
+  N7["Leading the discussion"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX109"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[37.1 The seminar]
+    |
+    v
+[37.2 ICD 203 standards]
+    |
+    v
+[37.3 Evidence versus assertion]
+    |
+    v
+[37.4 Alternatives]
+    |
+    v
+[37.5 Constructive critique]
+    |
+    v
+[37.6 Commercial context]
+    |
+    v
+[Leading the discussion]
+    |
+    v
+[Worked example] --> [Exercise EX109]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
 
 ### Learning outcomes
 
@@ -2796,6 +5196,71 @@ Read reports against standards, demand evidence, seek alternatives, note interes
 
 ## Chapter 38 — Capstone implementation
 
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Lesson map
+
+Lesson 38 published. Map, example, EX112.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["38.1 Small steps"]
+  N2["38.2 Decision log"]
+  N3["38.3 Scope changes"]
+  N4["38.4 Data protection"]
+  N5["38.5 Weekly checks"]
+  N6["38.6 Testing with synthetic inputs"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX112"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["38.1 Small steps"]
+  N2["38.2 Decision log"]
+  N3["38.3 Scope changes"]
+  N4["38.4 Data protection"]
+  N5["38.5 Weekly checks"]
+  N6["38.6 Testing with synthetic inputs"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX112"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[38.1 Small steps]
+    |
+    v
+[38.2 Decision log]
+    |
+    v
+[38.3 Scope changes]
+    |
+    v
+[38.4 Data protection]
+    |
+    v
+[38.5 Weekly checks]
+    |
+    v
+[38.6 Testing with synthetic inputs]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX112]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
+
 ### Learning outcomes
 
 You will (1) implement the capstone process in small, testable steps; (2) keep a decision log; (3) manage scope changes; (4) protect data during implementation.
@@ -2863,6 +5328,71 @@ Build in tested steps, log decisions, control scope, protect data and leave acti
 <a id="ch-39"></a>
 
 ## Chapter 39 — Capstone evaluation
+
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Lesson map
+
+Lesson 39 published. Map, example, EX115.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["39.1 Against the proposal"]
+  N2["39.2 Results"]
+  N3["39.3 Recall"]
+  N4["39.4 User feedback"]
+  N5["39.5 Limitations"]
+  N6["39.6 Future work"]
+  N7["39.7 Cost and benefit"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX115"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["39.1 Against the proposal"]
+  N2["39.2 Results"]
+  N3["39.3 Recall"]
+  N4["39.4 User feedback"]
+  N5["39.5 Limitations"]
+  N6["39.6 Future work"]
+  N7["39.7 Cost and benefit"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX115"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[39.1 Against the proposal]
+    |
+    v
+[39.2 Results]
+    |
+    v
+[39.3 Recall]
+    |
+    v
+[39.4 User feedback]
+    |
+    v
+[39.5 Limitations]
+    |
+    v
+[39.6 Future work]
+    |
+    v
+[39.7 Cost and benefit]
+    |
+    v
+[Worked example] --> [Exercise EX115]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
 
 ### Learning outcomes
 
@@ -2941,6 +5471,71 @@ Measure against the plan, report precision and partial recall, listen to users a
 <a id="ch-40"></a>
 
 ## Chapter 40 — Thesis and presentation
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Lesson map
+
+Lesson 40 published. Map, example, EX118.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["40.1 Thesis structure"]
+  N2["40.2 Public versus restricted"]
+  N3["40.3 The presentation"]
+  N4["40.4 Two audiences"]
+  N5["40.5 Answering questions"]
+  N6["40.6 After the thesis"]
+  N7["Citing standards correctly"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX118"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["40.1 Thesis structure"]
+  N2["40.2 Public versus restricted"]
+  N3["40.3 The presentation"]
+  N4["40.4 Two audiences"]
+  N5["40.5 Answering questions"]
+  N6["40.6 After the thesis"]
+  N7["Citing standards correctly"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX118"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[40.1 Thesis structure]
+    |
+    v
+[40.2 Public versus restricted]
+    |
+    v
+[40.3 The presentation]
+    |
+    v
+[40.4 Two audiences]
+    |
+    v
+[40.5 Answering questions]
+    |
+    v
+[40.6 After the thesis]
+    |
+    v
+[Citing standards correctly]
+    |
+    v
+[Worked example] --> [Exercise EX118]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Learning outcomes
 

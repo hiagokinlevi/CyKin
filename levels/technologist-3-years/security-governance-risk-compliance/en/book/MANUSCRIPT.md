@@ -1,7 +1,7 @@
 # Security Governance, Risk and Compliance: Technologist Course
 
 - Language: English (`en`); course 074, Technologist course (3 years).
-- Editorial state: **draft**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; five offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; five offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technologist students who build, run and evaluate the practical GRC processes of a multi-site organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs check evidence freshness, compute expected loss, summarise control test CSVs, track an indicator against a threshold and reconcile a roster with accounts on synthetic data. Risk figures are illustrations, standards are cited by edition and paraphrased, and nothing here is a real audit, attestation or legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ ISO 31000:2018; ISO/IEC 27001:2022 and 27002:2022; NIST [CSF 2.0](https://doi.or
 <a id="ch-01"></a>
 
 ## Chapter 1 — Computing systems
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Riverton's systems"]
+  N2["1.2 Assets to cover"]
+  N3["1.3 Systems and services"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Riverton's systems"]
+  N2["1.2 Assets to cover"]
+  N3["1.3 Systems and services"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Riverton's systems]
+    |
+    v
+[1.2 Assets to cover]
+    |
+    v
+[1.3 Systems and services]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -81,6 +131,56 @@ Knowing systems, assets and the services they support is where governance begins
 
 ## Chapter 2 — Networks and internet services
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Clinic networks"]
+  N2["2.2 Data in transit"]
+  N3["2.3 Network risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Clinic networks"]
+  N2["2.2 Data in transit"]
+  N3["2.3 Network risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Clinic networks]
+    |
+    v
+[2.2 Data in transit]
+    |
+    v
+[2.3 Network risks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) describe clinic networks and cloud connections; (2) identify where sensitive data travel; (3) note network risks for governance.
@@ -124,6 +224,56 @@ Network maps reveal where data travel unprotected and where segmentation is need
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming foundations
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Reading lists"]
+  N2["3.2 Filtering"]
+  N3["3.3 Clear output"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Reading lists"]
+  N2["3.2 Filtering"]
+  N3["3.3 Clear output"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Reading lists]
+    |
+    v
+[3.2 Filtering]
+    |
+    v
+[3.3 Clear output]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -169,6 +319,56 @@ Simple scripts with clear output make governance checks repeatable and actionabl
 
 ## Chapter 4 — Data models
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Tables"]
+  N2["4.2 Relationships"]
+  N3["4.3 Consistency"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Tables"]
+  N2["4.2 Relationships"]
+  N3["4.3 Consistency"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Tables]
+    |
+    v
+[4.2 Relationships]
+    |
+    v
+[4.3 Consistency]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) model governance data as related tables; (2) define keys and relationships; (3) avoid duplication and inconsistency.
@@ -212,6 +412,56 @@ Related tables with keys and validation keep governance data consistent.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security literacy
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Clinic threats"]
+  N2["5.2 Simple controls"]
+  N3["5.3 Talking to clinicians"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Clinic threats"]
+  N2["5.2 Simple controls"]
+  N3["5.3 Talking to clinicians"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Clinic threats]
+    |
+    v
+[5.2 Simple controls]
+    |
+    v
+[5.3 Talking to clinicians]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -257,6 +507,56 @@ Security literacy ties common threats to simple, existing controls and respectfu
 
 ## Chapter 6 — Operating systems and virtualization
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Settings and policies"]
+  N2["6.2 Virtualisation and cloud"]
+  N3["6.3 Consistency"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Settings and policies"]
+  N2["6.2 Virtualisation and cloud"]
+  N3["6.3 Consistency"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Settings and policies]
+    |
+    v
+[6.2 Virtualisation and cloud]
+    |
+    v
+[6.3 Consistency]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) relate operating system settings to Riverton's policies; (2) understand virtual machines and cloud hosting; (3) check configuration consistency across clinics.
@@ -300,6 +600,56 @@ Settings enforce policy, but exceptions and shared responsibilities need explici
 <a id="ch-07"></a>
 
 ## Chapter 7 — Identity and access foundations
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Life cycle"]
+  N2["7.2 Roles"]
+  N3["7.3 Shared accounts"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Life cycle"]
+  N2["7.2 Roles"]
+  N3["7.3 Shared accounts"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Life cycle]
+    |
+    v
+[7.2 Roles]
+    |
+    v
+[7.3 Shared accounts]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -345,6 +695,56 @@ Identity governance handles temporary staff, role-based access and usable altern
 
 ## Chapter 8 — Security architecture basics
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Standard clinic"]
+  N2["8.2 Layers"]
+  N3["8.3 Deviations"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Standard clinic"]
+  N2["8.2 Layers"]
+  N3["8.3 Deviations"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Standard clinic]
+    |
+    v
+[8.2 Layers]
+    |
+    v
+[8.3 Deviations]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) describe a standard secure clinic design; (2) apply layered protection; (3) record deviations from the standard.
@@ -388,6 +788,61 @@ Standard designs with layered protection and a deviation register keep multi-sit
 <a id="ch-09"></a>
 
 ## Chapter 9 — Evidence and measurement
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Evidence log"]
+  N2["9.2 Checking freshness"]
+  N3["Lab — Checking evidence freshness"]
+  N4["9.3 Reporting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Evidence log"]
+  N2["9.2 Checking freshness"]
+  N3["Lab — Checking evidence freshness"]
+  N4["9.3 Reporting"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Evidence log]
+    |
+    v
+[9.2 Checking freshness]
+    |
+    v
+[Lab — Checking evidence freshness]
+    |
+    v
+[9.3 Reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -456,6 +911,56 @@ Evidence freshness rules keep assurance current and highlight what needs refresh
 
 ## Chapter 10 — Security governance, risk and compliance: orientation
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Three parts"]
+  N2["10.2 Obligations"]
+  N3["10.3 Roles"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Three parts"]
+  N2["10.2 Obligations"]
+  N3["10.3 Roles"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Three parts]
+    |
+    v
+[10.2 Obligations]
+    |
+    v
+[10.3 Roles]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) explain governance, risk management and compliance in a clinic group; (2) identify Riverton's obligations; (3) describe the roles involved.
@@ -499,6 +1004,56 @@ GRC orientation connects direction, risk management and obligations through clea
 <a id="ch-11"></a>
 
 ## Chapter 11 — Security governance, risk and compliance: assets and context
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Context"]
+  N2["11.2 Classification"]
+  N3["11.3 Risk criteria"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Context"]
+  N2["11.2 Classification"]
+  N3["11.3 Risk criteria"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Context]
+    |
+    v
+[11.2 Classification]
+    |
+    v
+[11.3 Risk criteria]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -544,6 +1099,56 @@ Context, classification and agreed criteria make risk assessments consistent and
 
 ## Chapter 12 — Security governance, risk and compliance: data flows
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Mapping flows"]
+  N2["12.2 Third parties"]
+  N3["12.3 Flow risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Mapping flows"]
+  N2["12.2 Third parties"]
+  N3["12.3 Flow risks"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Mapping flows]
+    |
+    v
+[12.2 Third parties]
+    |
+    v
+[12.3 Flow risks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Learning outcomes
 
 You will (1) map flows of patient data; (2) identify third parties receiving data; (3) assess risks in each flow.
@@ -588,6 +1193,56 @@ Data flow maps reveal third-party and minimisation risks that asset lists miss.
 
 ## Chapter 13 — Security governance, risk and compliance: risk scenarios
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Writing scenarios"]
+  N2["13.2 Causes and consequences"]
+  N3["13.3 Choosing scenarios"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Writing scenarios"]
+  N2["13.2 Causes and consequences"]
+  N3["13.3 Choosing scenarios"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Writing scenarios]
+    |
+    v
+[13.2 Causes and consequences]
+    |
+    v
+[13.3 Choosing scenarios]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) write risk scenarios for Riverton; (2) identify causes and consequences; (3) choose scenarios for detailed analysis.
@@ -631,6 +1286,61 @@ Concrete scenarios link causes to prevention and consequences to response.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Security governance, risk and compliance: methods I
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Estimating"]
+  N2["14.2 Comparing"]
+  N3["Lab — Expected annual loss for four Riverton scenari"]
+  N4["14.3 Uncertainty"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Estimating"]
+  N2["14.2 Comparing"]
+  N3["Lab — Expected annual loss for four Riverton scenari"]
+  N4["14.3 Uncertainty"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Estimating]
+    |
+    v
+[14.2 Comparing]
+    |
+    v
+[Lab — Expected annual loss for four Riverton scenari]
+    |
+    v
+[14.3 Uncertainty]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes
 
@@ -696,6 +1406,56 @@ Expected loss puts different scenarios on one scale but must be read with its un
 
 ## Chapter 15 — Security governance, risk and compliance: guided lab
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 Workshop"]
+  N2["15.2 Register"]
+  N3["15.3 Owners and dates"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 Workshop"]
+  N2["15.2 Register"]
+  N3["15.3 Owners and dates"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 Workshop]
+    |
+    v
+[15.2 Register]
+    |
+    v
+[15.3 Owners and dates]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes
 
 You will (1) carry out a guided risk assessment workshop; (2) record results in a register; (3) agree treatment owners.
@@ -740,6 +1500,56 @@ Guided workshops with independent views and agreed owners produce actionable reg
 
 ## Chapter 16 — Security governance, risk and compliance: methods II
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Treatment options"]
+  N2["16.2 Residual risk"]
+  N3["16.3 Acceptance"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Treatment options"]
+  N2["16.2 Residual risk"]
+  N3["16.3 Acceptance"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Treatment options]
+    |
+    v
+[16.2 Residual risk]
+    |
+    v
+[16.3 Acceptance]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes
 
 You will (1) choose risk treatment options; (2) estimate residual risk after treatment; (3) document risk acceptance decisions.
@@ -783,6 +1593,61 @@ Treatment choices, residual estimates and formal acceptance complete the risk pr
 <a id="ch-17"></a>
 
 ## Chapter 17 — Security governance, risk and compliance: tooling
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Test results as data"]
+  N2["17.2 Per-clinic summary"]
+  N3["Lab — Pass rates per clinic from a CSV file"]
+  N4["17.3 Patterns"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Test results as data"]
+  N2["17.2 Per-clinic summary"]
+  N3["Lab — Pass rates per clinic from a CSV file"]
+  N4["17.3 Patterns"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Test results as data]
+    |
+    v
+[17.2 Per-clinic summary]
+    |
+    v
+[Lab — Pass rates per clinic from a CSV file]
+    |
+    v
+[17.3 Patterns]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -864,6 +1729,56 @@ Simple tooling summarises results and reveals cross-site patterns pointing to ro
 
 ## Chapter 18 — Security governance, risk and compliance: controls
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Documenting controls"]
+  N2["18.2 Mapping to obligations"]
+  N3["18.3 Statement of applicability"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Documenting controls"]
+  N2["18.2 Mapping to obligations"]
+  N3["18.3 Statement of applicability"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Documenting controls]
+    |
+    v
+[18.2 Mapping to obligations]
+    |
+    v
+[18.3 Statement of applicability]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Learning outcomes
 
 You will (1) document controls with owners and frequencies; (2) map controls to obligations; (3) prepare a simple statement of applicability.
@@ -907,6 +1822,61 @@ Documented controls mapped to obligations show what each control is for and what
 <a id="ch-19"></a>
 
 ## Chapter 19 — Security governance, risk and compliance: monitoring
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 Choosing indicators"]
+  N2["19.2 The trend"]
+  N3["Lab — Vulnerability indicator trend against a thresh"]
+  N4["19.3 Responding"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 Choosing indicators"]
+  N2["19.2 The trend"]
+  N3["Lab — Vulnerability indicator trend against a thresh"]
+  N4["19.3 Responding"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 Choosing indicators]
+    |
+    v
+[19.2 The trend]
+    |
+    v
+[Lab — Vulnerability indicator trend against a thresh]
+    |
+    v
+[19.3 Responding]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Learning outcomes
 
@@ -973,6 +1943,56 @@ Indicators warn only when owners watch them and agreed actions follow breaches.
 
 ## Chapter 20 — Security governance, risk and compliance: troubleshooting
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 A failing control"]
+  N2["20.2 Diagnosis"]
+  N3["20.3 Fixing"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 A failing control"]
+  N2["20.2 Diagnosis"]
+  N3["20.3 Fixing"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 A failing control]
+    |
+    v
+[20.2 Diagnosis]
+    |
+    v
+[20.3 Fixing]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes
 
 You will (1) investigate why a control is not working; (2) separate design, operation and evidence problems; (3) fix the right thing.
@@ -1017,6 +2037,56 @@ Troubleshooting controls means diagnosing design, operation and evidence problem
 
 ## Chapter 21 — Security governance, risk and compliance: service integration
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 Integration"]
+  N2["21.2 Changes and incidents"]
+  N3["21.3 Tickets as evidence"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 Integration"]
+  N2["21.2 Changes and incidents"]
+  N3["21.3 Tickets as evidence"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 Integration]
+    |
+    v
+[21.2 Changes and incidents]
+    |
+    v
+[21.3 Tickets as evidence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Learning outcomes
 
 You will (1) integrate GRC with IT service management; (2) link changes and incidents to risk; (3) use tickets as evidence.
@@ -1060,6 +2130,61 @@ Integrating GRC with service management makes daily work produce governance evid
 <a id="ch-22"></a>
 
 ## Chapter 22 — Security governance, risk and compliance: automation
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 Reconciliation"]
+  N2["22.2 Findings"]
+  N3["Lab — Reconciling the HR roster with system accounts"]
+  N4["22.3 Humans in the loop"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 Reconciliation"]
+  N2["22.2 Findings"]
+  N3["Lab — Reconciling the HR roster with system accounts"]
+  N4["22.3 Humans in the loop"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 Reconciliation]
+    |
+    v
+[22.2 Findings]
+    |
+    v
+[Lab — Reconciling the HR roster with system accounts]
+    |
+    v
+[22.3 Humans in the loop]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Learning outcomes
 
@@ -1125,6 +2250,56 @@ Automation should do repetitive comparison while people make contextual decision
 
 ## Chapter 23 — Security governance, risk and compliance: evaluation
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 Evaluation questions"]
+  N2["23.2 Findings"]
+  N3["23.3 Recommendations"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 Evaluation questions"]
+  N2["23.2 Findings"]
+  N3["23.3 Recommendations"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 Evaluation questions]
+    |
+    v
+[23.2 Findings]
+    |
+    v
+[23.3 Recommendations]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Learning outcomes
 
 You will (1) evaluate the GRC programme's first year; (2) use evidence to judge progress; (3) recommend improvements.
@@ -1168,6 +2343,56 @@ Multi-source evaluation shows progress and points to specific improvements.
 <a id="ch-24"></a>
 
 ## Chapter 24 — Applied research methods
+
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 Question"]
+  N2["24.2 Method"]
+  N3["24.3 Findings"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 Question"]
+  N2["24.2 Method"]
+  N3["24.3 Findings"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 Question]
+    |
+    v
+[24.2 Method]
+    |
+    v
+[24.3 Findings]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
 
 ### Learning outcomes
 
@@ -1213,6 +2438,56 @@ Small, well-designed applied studies support decisions when their limits are sta
 
 ## Chapter 25 — Team project studio
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 The brief"]
+  N2["25.2 Peer review"]
+  N3["25.3 Client presentation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 The brief"]
+  N2["25.2 Peer review"]
+  N3["25.3 Client presentation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 The brief]
+    |
+    v
+[25.2 Peer review]
+    |
+    v
+[25.3 Client presentation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Learning outcomes
 
 You will (1) work in a team on a GRC deliverable; (2) divide work and review each other's output; (3) present to a client.
@@ -1256,6 +2531,56 @@ Team projects succeed through clear roles, peer review and responsiveness to cli
 <a id="ch-26"></a>
 
 ## Chapter 26 — Security governance, risk and compliance: operational handoff
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 Runbooks"]
+  N2["26.2 Readiness"]
+  N3["26.3 Ownership"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 Runbooks"]
+  N2["26.2 Readiness"]
+  N3["26.3 Ownership"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 Runbooks]
+    |
+    v
+[26.2 Readiness]
+    |
+    v
+[26.3 Ownership]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Learning outcomes
 
@@ -1301,6 +2626,56 @@ Handoffs succeed when runbooks are tested by new owners and support has a clear 
 
 ## Chapter 27 — Deployment and validation
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Deployment"]
+  N2["27.2 Validation"]
+  N3["27.3 Evidence"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Deployment"]
+  N2["27.2 Validation"]
+  N3["27.3 Evidence"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Deployment]
+    |
+    v
+[27.2 Validation]
+    |
+    v
+[27.3 Evidence]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Learning outcomes
 
 You will (1) deploy the standard clinic design at a new site; (2) validate controls before opening; (3) record validation evidence.
@@ -1344,6 +2719,56 @@ Validating controls before go-live gives management a clear, evidence-based basi
 <a id="ch-28"></a>
 
 ## Chapter 28 — Field practice
+
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 Placement"]
+  N2["28.2 Assessment support"]
+  N3["28.3 Professional conduct"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 Placement"]
+  N2["28.2 Assessment support"]
+  N3["28.3 Professional conduct"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 Placement]
+    |
+    v
+[28.2 Assessment support]
+    |
+    v
+[28.3 Professional conduct]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
 
 ### Learning outcomes
 
@@ -1389,6 +2814,56 @@ Field practice shows that GRC work is steady, design-shaped and grounded in hone
 
 ## Chapter 29 — Capstone build
 
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 The tool"]
+  N2["29.2 Testing"]
+  N3["29.3 Documentation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 The tool"]
+  N2["29.2 Testing"]
+  N3["29.3 Documentation"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 The tool]
+    |
+    v
+[29.2 Testing]
+    |
+    v
+[29.3 Documentation]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
+
 ### Learning outcomes
 
 You will (1) build a capstone GRC tool for Riverton; (2) test it with users; (3) document it for maintenance.
@@ -1432,6 +2907,56 @@ A capstone tool must be tested with users and documented for others to maintain.
 <a id="ch-30"></a>
 
 ## Chapter 30 — Capstone assessment
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 Presentation"]
+  N2["30.2 Evaluation"]
+  N3["30.3 Reflection"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 Presentation"]
+  N2["30.2 Evaluation"]
+  N3["30.3 Reflection"]
+  N4["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 Presentation]
+    |
+    v
+[30.2 Evaluation]
+    |
+    v
+[30.3 Reflection]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Learning outcomes
 

@@ -1,7 +1,7 @@
 # Seguridad de la IA y del aprendizaje automático: guía de investigación de maestría
 
 - Idioma: español neutro (`es`); programa de maestría, dos años; aproximadamente 1.600 horas de estudio planificado. Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–8 de 8 tienen texto didáctico de autor; los ejercicios EX001–EX050 tienen sus resultados resueltos correspondientes con rúbricas de 0 a 3; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas impresas proceden de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4. Que los capítulos estén en borrador no significa que el libro esté terminado.
+- Estado editorial: **publicado**. Los capítulos 1–8 de 8 tienen texto didáctico de autor; los ejercicios EX001–EX050 tienen sus resultados resueltos correspondientes con rúbricas de 0 a 3; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas impresas proceden de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4. Que los capítulos estén en borrador no significa que el libro esté terminado.
 - Público: investigadores principiantes que diseñarán, realizarán y defenderán un trabajo de fin de máster supervisado en seguridad de la IA y del aprendizaje automático.
 - Relación con los libros vecinos: el [libro de posgrado](../../../../postgraduate-2-years/ai-security/en/book/MANUSCRIPT.md) se centra en la práctica; el [libro de doctorado](../../../../doctorate-2-years/ai-security/es/book/MANUSCRIPT.md) exige una contribución original puesta a prueba de forma independiente. **Este libro enseña el ciclo completo de investigación una vez, bajo supervisión**: pregunta, literatura, diseño, explicaciones alternativas, piloto, análisis, redacción y defensa.
 - Autoría: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus derechos.
@@ -39,6 +39,66 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pregunta de investigación y método de revisión de la literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Del tema a la pregunta"]
+  N2["1.2 Una búsqueda documentada"]
+  N3["1.3 Extracción de la evidencia"]
+  N4["1.4 Juzgar las fuentes"]
+  N5["1.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Del tema a la pregunta"]
+  N2["1.2 Una búsqueda documentada"]
+  N3["1.3 Extracción de la evidencia"]
+  N4["1.4 Juzgar las fuentes"]
+  N5["1.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[1.1 Del tema a la pregunta]
+    |
+    v
+[1.2 Una búsqueda documentada]
+    |
+    v
+[1.3 Extracción de la evidencia]
+    |
+    v
+[1.4 Juzgar las fuentes]
+    |
+    v
+[1.6 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje
 
@@ -133,6 +193,71 @@ Un buen trabajo de fin de máster empieza con una pregunta acotada y viable y co
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Seguridad de la IA y del aprendizaje automático: seminario avanzado
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["2.1 El formato del seminario"]
+  N2["2.2 Evasión"]
+  N3["2.3 Envenenamiento y puertas traseras"]
+  N4["2.4 Ataques contra la privacidad"]
+  N5["2.5 Extracción de modelos"]
+  N6["2.6 Inyección de instrucciones y aplicaciones de LLM"]
+  N7["2.8 Actividades de práctica"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX008"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["2.1 El formato del seminario"]
+  N2["2.2 Evasión"]
+  N3["2.3 Envenenamiento y puertas traseras"]
+  N4["2.4 Ataques contra la privacidad"]
+  N5["2.5 Extracción de modelos"]
+  N6["2.6 Inyección de instrucciones y aplicaciones de LLM"]
+  N7["2.8 Actividades de práctica"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[2.1 El formato del seminario]
+    |
+    v
+[2.2 Evasión]
+    |
+    v
+[2.3 Envenenamiento y puertas traseras]
+    |
+    v
+[2.4 Ataques contra la privacidad]
+    |
+    v
+[2.5 Extracción de modelos]
+    |
+    v
+[2.6 Inyección de instrucciones y aplicaciones de LLM]
+    |
+    v
+[2.8 Actividades de práctica]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Resultados de aprendizaje
 
@@ -273,6 +398,66 @@ El seminario aporta soltura en las clases de ataque y en la lectura crítica. Ca
 
 ## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Elegir un diseño"]
+  N2["3.2 Variables y controles"]
+  N3["3.3 Ética y protección de datos"]
+  N4["3.4 Reproducible desde el diseño"]
+  N5["3.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX015"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Elegir un diseño"]
+  N2["3.2 Variables y controles"]
+  N3["3.3 Ética y protección de datos"]
+  N4["3.4 Reproducible desde el diseño"]
+  N5["3.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[3.1 Elegir un diseño]
+    |
+    v
+[3.2 Variables y controles]
+    |
+    v
+[3.3 Ética y protección de datos]
+    |
+    v
+[3.4 Reproducible desde el diseño]
+    |
+    v
+[3.6 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) elegir un diseño (experimento controlado, estudio observacional, estudio de caso) que se ajuste a la pregunta; (2) definir las variables, los controles, la aleatorización y el tamaño muestral; (3) planificar el tratamiento de los datos y la ética para datos personales o sensibles; (4) hacer el estudio reproducible desde el principio; y (5) documentar el plan para que un supervisor pueda aprobarlo.
@@ -371,6 +556,66 @@ El diseño determina lo que se puede concluir. Las variables controladas, el mue
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Seguridad de la IA y del aprendizaje automático: explicaciones alternativas
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Por qué importan las explicaciones alternativas"]
+  N2["4.2 Un catálogo de alternativas en seguridad de la I"]
+  N3["4.3 Ablaciones y controles"]
+  N4["4.4 Razonar sobre los mecanismos con los laboratorio"]
+  N5["4.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX021"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Por qué importan las explicaciones alternativas"]
+  N2["4.2 Un catálogo de alternativas en seguridad de la I"]
+  N3["4.3 Ablaciones y controles"]
+  N4["4.4 Razonar sobre los mecanismos con los laboratorio"]
+  N5["4.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[4.1 Por qué importan las explicaciones alternativas]
+    |
+    v
+[4.2 Un catálogo de alternativas en seguridad de la I]
+    |
+    v
+[4.3 Ablaciones y controles]
+    |
+    v
+[4.4 Razonar sobre los mecanismos con los laboratorio]
+    |
+    v
+[4.6 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Resultados de aprendizaje
 
@@ -482,6 +727,66 @@ Los efectos necesitan explicaciones, y las explicaciones necesitan pruebas. Las 
 
 ## Capítulo 5 — Propuesta y piloto
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["5.1 La propuesta"]
+  N2["5.2 El piloto"]
+  N3["5.3 Tamaño muestral y potencia"]
+  N4["5.4 Revisar el plan"]
+  N5["5.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX027"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["5.1 La propuesta"]
+  N2["5.2 El piloto"]
+  N3["5.3 Tamaño muestral y potencia"]
+  N4["5.4 Revisar el plan"]
+  N5["5.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[5.1 La propuesta]
+    |
+    v
+[5.2 El piloto]
+    |
+    v
+[5.3 Tamaño muestral y potencia]
+    |
+    v
+[5.4 Revisar el plan]
+    |
+    v
+[5.6 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) redactar una propuesta de trabajo de fin de máster con la pregunta, los antecedentes, el diseño, el plan de análisis, la ética, los riesgos y el calendario; (2) realizar un piloto para comprobar la viabilidad y estimar la variabilidad; (3) calcular tamaños muestrales; (4) revisar el plan a partir de la evidencia del piloto; y (5) obtener la aprobación con un registro claro de las decisiones.
@@ -586,6 +891,66 @@ La propuesta fija lo que hará y cómo lo analizará; el piloto muestra si puede
 
 ## Capítulo 6 — Recogida y análisis de datos
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["6.1 Ejecutar el estudio principal"]
+  N2["6.2 Comprobaciones de la calidad de los datos"]
+  N3["6.3 Análisis principal"]
+  N4["6.4 Resultados secundarios y costes"]
+  N5["6.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX033"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["6.1 Ejecutar el estudio principal"]
+  N2["6.2 Comprobaciones de la calidad de los datos"]
+  N3["6.3 Análisis principal"]
+  N4["6.4 Resultados secundarios y costes"]
+  N5["6.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX033"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[6.1 Ejecutar el estudio principal]
+    |
+    v
+[6.2 Comprobaciones de la calidad de los datos]
+    |
+    v
+[6.3 Análisis principal]
+    |
+    v
+[6.4 Resultados secundarios y costes]
+    |
+    v
+[6.6 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) ejecutar los experimentos principales exactamente según lo planificado y registrar las desviaciones; (2) comprobar la calidad de los datos antes del análisis; (3) calcular los resultados principales con su incertidumbre (intervalos de Wilson, *bootstrap*, variación entre semillas); (4) analizar comparaciones emparejadas y resultados secundarios; y (5) presentar los resultados en tablas y figuras que respondan a la pregunta de investigación.
@@ -683,6 +1048,71 @@ El análisis es donde el diseño cuidadoso da fruto: las ejecuciones intercalada
 
 ## Capítulo 7 — Redacción del trabajo de fin de máster y limitaciones
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["7.1 Estructura"]
+  N2["7.2 Hallazgos frente a interpretación"]
+  N3["7.3 Limitaciones por tipo de validez"]
+  N4["7.4 Escribir sobre ataques con responsabilidad"]
+  N5["7.5 Anexo de artefactos"]
+  N6["7.7 Actividades de práctica"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX039"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["7.1 Estructura"]
+  N2["7.2 Hallazgos frente a interpretación"]
+  N3["7.3 Limitaciones por tipo de validez"]
+  N4["7.4 Escribir sobre ataques con responsabilidad"]
+  N5["7.5 Anexo de artefactos"]
+  N6["7.7 Actividades de práctica"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[7.1 Estructura]
+    |
+    v
+[7.2 Hallazgos frente a interpretación]
+    |
+    v
+[7.3 Limitaciones por tipo de validez]
+    |
+    v
+[7.4 Escribir sobre ataques con responsabilidad]
+    |
+    v
+[7.5 Anexo de artefactos]
+    |
+    v
+[7.7 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Resultados de aprendizaje
 
 Usted será capaz de (1) estructurar un trabajo de fin de máster de modo que cada capítulo sirva a la pregunta de investigación; (2) redactar los resultados y la discusión separando los hallazgos de la interpretación; (3) redactar una sección de limitaciones organizada por tipo de validez; (4) tratar con responsabilidad por escrito los detalles sensibles para la seguridad; y (5) elaborar un anexo de artefactos que permita la reproducción.
@@ -772,6 +1202,66 @@ Un trabajo de fin de máster se juzga por lo claramente que sus afirmaciones se 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisión independiente y defensa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["8.1 Revisión independiente antes de la entrega"]
+  N2["8.2 La presentación de la defensa"]
+  N3["8.3 Responder a los examinadores"]
+  N4["8.4 Correcciones y difusión"]
+  N5["8.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX045"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["8.1 Revisión independiente antes de la entrega"]
+  N2["8.2 La presentación de la defensa"]
+  N3["8.3 Responder a los examinadores"]
+  N4["8.4 Correcciones y difusión"]
+  N5["8.6 Actividades de práctica"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[8.1 Revisión independiente antes de la entrega]
+    |
+    v
+[8.2 La presentación de la defensa]
+    |
+    v
+[8.3 Responder a los examinadores]
+    |
+    v
+[8.4 Correcciones y difusión]
+    |
+    v
+[8.6 Actividades de práctica]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Resultados de aprendizaje
 

@@ -1,7 +1,7 @@
 # Critical Infrastructure and Sector Security: Engineering Secure and Resilient Systems
 
 - Language: English (`en`); engineering course, five years; approximately 4,000 hours of planned study (course 138 of 207 in the [study path](../../../../../STUDY_PATH.md)).
-- Editorial state: **draft**. Chapters 1–50 of 50 have authored teaching text; exercises EX001–EX100 (two per chapter) have matching worked results; seventeen offline labs are embedded with their verified output. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. The plan's target of three exercises per chapter is not yet met. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–50 of 50 have authored teaching text; exercises EX001–EX100 (two per chapter) have matching worked results; seventeen offline labs are embedded with their verified output. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. The plan's target of three exercises per chapter is not yet met. Draft-chapter coverage is not a completed book.
 - Audience: future security systems designers for critical services — water, electricity, healthcare, transport, finance and communications. Entry knowledge: secondary-school mathematics and physics; the book builds calculus, probability, programming, networks and systems engineering from Chapter 1.
 - Relation to the other books in this area: the [master's book](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) teaches how to design, pilot and defend one ethically reviewed empirical study; the [doctoral book](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) asks for an original, independently validated contribution to knowledge. **This engineering book is about building things**: deriving requirements from consequences, choosing architectures, implementing and verifying controls, measuring reliability and performance, trialling recovery and defending a designed system with evidence. Its research chapter (42) exists to settle design decisions, not to publish.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights and are not relicensed here.
@@ -93,6 +93,61 @@ The [worked results](#worked-results) contain EX001–EX100. A [glossary](#gloss
 <a id="ch-01"></a>
 
 ## Chapter 1 — Calculus I
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 Why an infrastructure engineer needs calculus"]
+  N2["1.2 Derivatives you will use"]
+  N3["1.3 Integrals and accumulated quantities"]
+  N4["1.5 Practical activity: Lab 1"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 Why an infrastructure engineer needs calculus"]
+  N2["1.2 Derivatives you will use"]
+  N3["1.3 Integrals and accumulated quantities"]
+  N4["1.5 Practical activity: Lab 1"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 Why an infrastructure engineer needs calculus]
+    |
+    v
+[1.2 Derivatives you will use]
+    |
+    v
+[1.3 Integrals and accumulated quantities]
+    |
+    v
+[1.5 Practical activity: Lab 1]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -191,6 +246,56 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Discrete mathematics
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX003.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Logic is the language of permissives"]
+  N2["2.2 Graphs model dependency"]
+  N3["2.5 Practical activity: Lab 2"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX003"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Logic is the language of permissives"]
+  N2["2.2 Graphs model dependency"]
+  N3["2.5 Practical activity: Lab 2"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX003"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Logic is the language of permissives]
+    |
+    v
+[2.2 Graphs model dependency]
+    |
+    v
+[2.5 Practical activity: Lab 2]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX003]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) write interlock and permissive conditions as Boolean expressions and check them exhaustively with a truth table; (2) model infrastructure dependencies as a directed graph and compute what fails when one node fails; (3) use sets, relations and counting to bound how many states a control system can be in; and (4) state precisely when an exhaustive check is feasible and when it is not. The chapter builds on Chapter 1's stock-and-flow view and prepares Chapter 4, where you will implement these models in code.
@@ -288,6 +393,66 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Physics for computing
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 Electricity for the systems engineer"]
+  N2["3.2 Signals, noise and links"]
+  N3["3.3 Heat and lifetime"]
+  N4["3.4 Physics and security"]
+  N5["3.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 Electricity for the systems engineer"]
+  N2["3.2 Signals, noise and links"]
+  N3["3.3 Heat and lifetime"]
+  N4["3.4 Physics and security"]
+  N5["3.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 Electricity for the systems engineer]
+    |
+    v
+[3.2 Signals, noise and links]
+    |
+    v
+[3.3 Heat and lifetime]
+    |
+    v
+[3.4 Physics and security]
+    |
+    v
+[3.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) use Ohm's law, power and energy to size backup supplies for control and communication equipment; (2) explain signal propagation, noise and attenuation well enough to read a link budget; (3) relate heat, temperature and component life to the reliability of field cabinets; and (4) identify physical side channels and electromagnetic effects that matter to security. It builds on Chapters 1–2 and prepares Chapter 8 (computer architecture) and Chapter 11 (networks).
@@ -352,6 +517,61 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Programs as precise descriptions"]
+  N2["4.2 Implementing a protocol checksum"]
+  N3["4.3 Defensive parsing"]
+  N4["4.5 Practical activity: Lab 3"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Programs as precise descriptions"]
+  N2["4.2 Implementing a protocol checksum"]
+  N3["4.3 Defensive parsing"]
+  N4["4.5 Practical activity: Lab 3"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Programs as precise descriptions]
+    |
+    v
+[4.2 Implementing a protocol checksum]
+    |
+    v
+[4.3 Defensive parsing]
+    |
+    v
+[4.5 Practical activity: Lab 3]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes and connection
 
@@ -455,6 +675,71 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Engineering communication
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Writing for decisions"]
+  N2["5.2 Requirements that can be verified"]
+  N3["5.3 Numbers, uncertainty and figures"]
+  N4["5.4 Communicating risk to different readers"]
+  N5["5.5 Sensitive information"]
+  N6["5.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Writing for decisions"]
+  N2["5.2 Requirements that can be verified"]
+  N3["5.3 Numbers, uncertainty and figures"]
+  N4["5.4 Communicating risk to different readers"]
+  N5["5.5 Sensitive information"]
+  N6["5.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Writing for decisions]
+    |
+    v
+[5.2 Requirements that can be verified]
+    |
+    v
+[5.3 Numbers, uncertainty and figures]
+    |
+    v
+[5.4 Communicating risk to different readers]
+    |
+    v
+[5.5 Sensitive information]
+    |
+    v
+[5.7 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) write a requirement that can be verified; (2) produce a one-page design note, a decision record and a test report that another engineer can check; (3) present risk and uncertainty to operators, managers and regulators without overstating or hiding it; and (4) handle sensitive infrastructure detail appropriately in documents. It builds on Chapters 1–4, whose numbers you now have to communicate, and prepares the design studios (Chapters 25 and 35).
@@ -525,6 +810,66 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Calculus II
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Stocks with feedback become differential equatio"]
+  N2["6.2 The linear first-order solution and the time con"]
+  N3["6.3 Numerical solution and error"]
+  N4["6.4 Sensitivity: which assumption matters?"]
+  N5["6.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Stocks with feedback become differential equatio"]
+  N2["6.2 The linear first-order solution and the time con"]
+  N3["6.3 Numerical solution and error"]
+  N4["6.4 Sensitivity: which assumption matters?"]
+  N5["6.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Stocks with feedback become differential equatio]
+    |
+    v
+[6.2 The linear first-order solution and the time con]
+    |
+    v
+[6.3 Numerical solution and error]
+    |
+    v
+[6.4 Sensitivity: which assumption matters?]
+    |
+    v
+[6.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) write a first-order ordinary differential equation (ODE) for a stock with inflow and outflow; (2) solve linear first-order ODEs analytically, including exponential approach to equilibrium and its time constant; (3) solve ODEs numerically and control the step-size error; and (4) use series and sensitivity (partial derivatives) to see which parameter matters most to a resilience margin. It extends Chapter 1 and prepares Chapter 17 (control).
@@ -585,6 +930,71 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Probability as a model of uncertainty"]
+  N2["7.2 Bayes' rule and the base-rate problem"]
+  N3["7.3 Redundancy and common cause"]
+  N4["7.4 Rare events: the Poisson model"]
+  N5["7.5 Describing data honestly"]
+  N6["7.7 Practical activity: Lab 4"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Probability as a model of uncertainty"]
+  N2["7.2 Bayes' rule and the base-rate problem"]
+  N3["7.3 Redundancy and common cause"]
+  N4["7.4 Rare events: the Poisson model"]
+  N5["7.5 Describing data honestly"]
+  N6["7.7 Practical activity: Lab 4"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Probability as a model of uncertainty]
+    |
+    v
+[7.2 Bayes' rule and the base-rate problem]
+    |
+    v
+[7.3 Redundancy and common cause]
+    |
+    v
+[7.4 Rare events: the Poisson model]
+    |
+    v
+[7.5 Describing data honestly]
+    |
+    v
+[7.7 Practical activity: Lab 4]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes and connection
 
@@ -683,6 +1093,66 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Computer architecture
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 The machine model"]
+  N2["8.2 PLCs, RTUs and embedded controllers"]
+  N3["8.3 Hardware support for security"]
+  N4["8.4 When speed creates leakage"]
+  N5["8.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 The machine model"]
+  N2["8.2 PLCs, RTUs and embedded controllers"]
+  N3["8.3 Hardware support for security"]
+  N4["8.4 When speed creates leakage"]
+  N5["8.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 The machine model]
+    |
+    v
+[8.2 PLCs, RTUs and embedded controllers]
+    |
+    v
+[8.3 Hardware support for security]
+    |
+    v
+[8.4 When speed creates leakage]
+    |
+    v
+[8.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) describe how a processor, memory hierarchy and I/O interact, and why this matters for real-time control; (2) explain the architecture of programmable logic controllers (PLCs), RTUs and embedded controllers; (3) relate hardware features — privilege levels, memory protection, secure boot, hardware roots of trust — to security guarantees; and (4) explain how performance optimisations such as caching and speculation create vulnerabilities. It builds on Chapter 3 and prepares Chapter 12 (operating systems).
@@ -748,6 +1218,66 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX017.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["9.1 Modules, interfaces and invariants"]
+  N2["9.2 State machines"]
+  N3["9.3 Testing"]
+  N4["9.4 Errors, time and concurrency"]
+  N5["9.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX017"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["9.1 Modules, interfaces and invariants"]
+  N2["9.2 State machines"]
+  N3["9.3 Testing"]
+  N4["9.4 Errors, time and concurrency"]
+  N5["9.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX017"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[9.1 Modules, interfaces and invariants]
+    |
+    v
+[9.2 State machines]
+    |
+    v
+[9.3 Testing]
+    |
+    v
+[9.4 Errors, time and concurrency]
+    |
+    v
+[9.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX017]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes and connection
 
@@ -815,6 +1345,66 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Engineering ethics and safety
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["10.1 Duties of an engineer"]
+  N2["10.2 Safety and security together"]
+  N3["10.3 Authorisation and law"]
+  N4["10.4 Deciding under uncertainty"]
+  N5["10.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["10.1 Duties of an engineer"]
+  N2["10.2 Safety and security together"]
+  N3["10.3 Authorisation and law"]
+  N4["10.4 Deciding under uncertainty"]
+  N5["10.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[10.1 Duties of an engineer]
+    |
+    v
+[10.2 Safety and security together]
+    |
+    v
+[10.3 Authorisation and law]
+    |
+    v
+[10.4 Deciding under uncertainty]
+    |
+    v
+[10.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) apply professional codes of ethics to infrastructure security decisions; (2) explain the relationship between safety and security and where they conflict; (3) recognise legal and authorisation boundaries on testing and research; and (4) make and document an ethical decision under uncertainty, including when to escalate. It builds on Chapter 5 and frames every later chapter, particularly testing (Chapters 30 and 40) and practice (Chapter 43).
@@ -878,6 +1468,66 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["11.1 Layers and what they promise"]
+  N2["11.2 Industrial protocols"]
+  N3["11.3 Latency, jitter and polling"]
+  N4["11.4 Zones, conduits and allowlists"]
+  N5["11.6 Practical activity: Lab 5"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["11.1 Layers and what they promise"]
+  N2["11.2 Industrial protocols"]
+  N3["11.3 Latency, jitter and polling"]
+  N4["11.4 Zones, conduits and allowlists"]
+  N5["11.6 Practical activity: Lab 5"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[11.1 Layers and what they promise]
+    |
+    v
+[11.2 Industrial protocols]
+    |
+    v
+[11.3 Latency, jitter and polling]
+    |
+    v
+[11.4 Zones, conduits and allowlists]
+    |
+    v
+[11.6 Practical activity: Lab 5]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes and connection
 
@@ -974,6 +1624,66 @@ Continue to the next authored lesson.
 
 ## Chapter 12 — Operating systems
 
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX023.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["12.1 What an operating system does"]
+  N2["12.2 Real-time operating systems"]
+  N3["12.3 OS security mechanisms"]
+  N4["12.4 Patching under availability constraints"]
+  N5["12.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX023"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["12.1 What an operating system does"]
+  N2["12.2 Real-time operating systems"]
+  N3["12.3 OS security mechanisms"]
+  N4["12.4 Patching under availability constraints"]
+  N5["12.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX023"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[12.1 What an operating system does]
+    |
+    v
+[12.2 Real-time operating systems]
+    |
+    v
+[12.3 OS security mechanisms]
+    |
+    v
+[12.4 Patching under availability constraints]
+    |
+    v
+[12.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX023]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) explain processes, threads, scheduling, memory management and file systems; (2) distinguish general-purpose and real-time operating systems and choose between them; (3) apply OS security mechanisms — accounts, permissions, isolation, logging, patching — to control-centre servers and engineering workstations; and (4) plan patching and hardening under the availability constraints of operational technology. It builds on Chapter 8 and prepares Chapters 18 and 39.
@@ -1042,6 +1752,66 @@ Continue to the next authored lesson.
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
+
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["13.1 Models for operational data"]
+  N2["13.2 Transactions, consistency and replication"]
+  N3["13.3 Integrity: what each mechanism detects"]
+  N4["13.4 Getting data out without letting attacks in"]
+  N5["13.6 Practical activity: Lab 6"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["13.1 Models for operational data"]
+  N2["13.2 Transactions, consistency and replication"]
+  N3["13.3 Integrity: what each mechanism detects"]
+  N4["13.4 Getting data out without letting attacks in"]
+  N5["13.6 Practical activity: Lab 6"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[13.1 Models for operational data]
+    |
+    v
+[13.2 Transactions, consistency and replication]
+    |
+    v
+[13.3 Integrity: what each mechanism detects]
+    |
+    v
+[13.4 Getting data out without letting attacks in]
+    |
+    v
+[13.6 Practical activity: Lab 6]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
 
 ### Learning outcomes and connection
 
@@ -1139,6 +1909,71 @@ Continue to the next authored lesson.
 
 ## Chapter 14 — Software engineering
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["14.1 Why process matters"]
+  N2["14.2 A secure development lifecycle"]
+  N3["14.3 Reviews and inspections"]
+  N4["14.4 Dependencies and the supply chain"]
+  N5["14.5 Releases for long-lived systems"]
+  N6["14.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["14.1 Why process matters"]
+  N2["14.2 A secure development lifecycle"]
+  N3["14.3 Reviews and inspections"]
+  N4["14.4 Dependencies and the supply chain"]
+  N5["14.5 Releases for long-lived systems"]
+  N6["14.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[14.1 Why process matters]
+    |
+    v
+[14.2 A secure development lifecycle]
+    |
+    v
+[14.3 Reviews and inspections]
+    |
+    v
+[14.4 Dependencies and the supply chain]
+    |
+    v
+[14.5 Releases for long-lived systems]
+    |
+    v
+[14.7 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) apply a secure software development lifecycle to infrastructure software; (2) manage requirements, design reviews, code review and inspections; (3) manage dependencies and the software supply chain with SBOMs and provenance; and (4) plan releases and updates for long-lived embedded and OT software. It builds on Chapters 5 and 9 and prepares Chapters 28, 31 and 39.
@@ -1211,6 +2046,66 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Security fundamentals
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["15.1 The properties"]
+  N2["15.2 Threat, vulnerability, risk"]
+  N3["15.3 Controls and principles"]
+  N4["15.4 Frameworks"]
+  N5["15.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX029"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["15.1 The properties"]
+  N2["15.2 Threat, vulnerability, risk"]
+  N3["15.3 Controls and principles"]
+  N4["15.4 Frameworks"]
+  N5["15.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX029"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[15.1 The properties]
+    |
+    v
+[15.2 Threat, vulnerability, risk]
+    |
+    v
+[15.3 Controls and principles]
+    |
+    v
+[15.4 Frameworks]
+    |
+    v
+[15.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) define confidentiality, integrity and availability and explain why their priority differs in infrastructure; (2) describe threats, vulnerabilities, risk and controls and relate them in a risk assessment; (3) apply design principles from the security literature; and (4) map a system's controls to a recognised framework. It integrates Chapters 1–14 and prepares the security architecture and identity chapters (18–19) and the sector chapters (20 onward).
@@ -1282,6 +2177,66 @@ Continue to the next authored lesson.
 
 ## Chapter 16 — Systems engineering
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["16.1 The lifecycle and the V"]
+  N2["16.2 Needs, requirements, traceability"]
+  N3["16.3 Interfaces and configuration"]
+  N4["16.4 Security as a systems engineering discipline"]
+  N5["16.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["16.1 The lifecycle and the V"]
+  N2["16.2 Needs, requirements, traceability"]
+  N3["16.3 Interfaces and configuration"]
+  N4["16.4 Security as a systems engineering discipline"]
+  N5["16.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[16.1 The lifecycle and the V]
+    |
+    v
+[16.2 Needs, requirements, traceability]
+    |
+    v
+[16.3 Interfaces and configuration]
+    |
+    v
+[16.4 Security as a systems engineering discipline]
+    |
+    v
+[16.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) apply the systems engineering lifecycle — concept, requirements, architecture, design, integration, verification, validation, operation, retirement — to a security programme; (2) decompose stakeholder needs into system and subsystem requirements with traceability; (3) manage interfaces and configuration; and (4) integrate security engineering into systems engineering rather than bolting it on. It builds on Chapters 5 and 14 and frames the whole second half of the book.
@@ -1347,6 +2302,66 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["17.1 Feedback"]
+  N2["17.2 PI control"]
+  N3["17.3 False data and the trusting controller"]
+  N4["17.4 Residual-based detection"]
+  N5["17.6 Practical activity: Lab 7"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["17.1 Feedback"]
+  N2["17.2 PI control"]
+  N3["17.3 False data and the trusting controller"]
+  N4["17.4 Residual-based detection"]
+  N5["17.6 Practical activity: Lab 7"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[17.1 Feedback]
+    |
+    v
+[17.2 PI control]
+    |
+    v
+[17.3 False data and the trusting controller]
+    |
+    v
+[17.4 Residual-based detection]
+    |
+    v
+[17.6 Practical activity: Lab 7]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes and connection
 
@@ -1451,6 +2466,71 @@ Continue to the next authored lesson.
 
 ## Chapter 18 — Security architecture
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX035.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["18.1 Layered OT architectures"]
+  N2["18.2 The DMZ and data brokering"]
+  N3["18.3 Zero trust in OT"]
+  N4["18.4 Remote access"]
+  N5["18.5 Monitoring architecture"]
+  N6["18.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX035"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["18.1 Layered OT architectures"]
+  N2["18.2 The DMZ and data brokering"]
+  N3["18.3 Zero trust in OT"]
+  N4["18.4 Remote access"]
+  N5["18.5 Monitoring architecture"]
+  N6["18.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX035"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[18.1 Layered OT architectures]
+    |
+    v
+[18.2 The DMZ and data brokering]
+    |
+    v
+[18.3 Zero trust in OT]
+    |
+    v
+[18.4 Remote access]
+    |
+    v
+[18.5 Monitoring architecture]
+    |
+    v
+[18.7 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX035]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) describe reference architectures for operational technology, including layered models and DMZs; (2) apply zero-trust principles where they fit OT and explain where they do not; (3) design remote access, logging and monitoring architectures; and (4) evaluate an architecture against consequence, not just control count. It builds on Chapters 11, 12 and 15 and prepares Chapters 26 and 27.
@@ -1522,6 +2602,66 @@ Continue to the next authored lesson.
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX018.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["19.1 Primitives"]
+  N2["19.2 Authenticating telemetry"]
+  N3["19.3 Key management"]
+  N4["19.4 Identity for people and devices"]
+  N5["19.6 Practical activity: Lab 8"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX018"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["19.1 Primitives"]
+  N2["19.2 Authenticating telemetry"]
+  N3["19.3 Key management"]
+  N4["19.4 Identity for people and devices"]
+  N5["19.6 Practical activity: Lab 8"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX018"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[19.1 Primitives]
+    |
+    v
+[19.2 Authenticating telemetry]
+    |
+    v
+[19.3 Key management]
+    |
+    v
+[19.4 Identity for people and devices]
+    |
+    v
+[19.6 Practical activity: Lab 8]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX018]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Learning outcomes and connection
 
@@ -1625,6 +2765,66 @@ Continue to the next authored lesson.
 
 ## Chapter 20 — Critical infrastructure and sector security: engineering context
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["20.1 What makes infrastructure critical"]
+  N2["20.2 Sectors as engineering systems"]
+  N3["20.3 Interdependency"]
+  N4["20.4 Learning from documented incidents"]
+  N5["20.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["20.1 What makes infrastructure critical"]
+  N2["20.2 Sectors as engineering systems"]
+  N3["20.3 Interdependency"]
+  N4["20.4 Learning from documented incidents"]
+  N5["20.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[20.1 What makes infrastructure critical]
+    |
+    v
+[20.2 Sectors as engineering systems]
+    |
+    v
+[20.3 Interdependency]
+    |
+    v
+[20.4 Learning from documented incidents]
+    |
+    v
+[20.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) describe how critical infrastructure is defined and organised into sectors, and the regulatory landscape engineers work within; (2) characterise sectors by their physical processes, consequence units and technology; (3) describe interdependencies between sectors; and (4) learn from documented incidents at the level their public sources support. It is the bridge from foundations (Chapters 1–19) to the field chapters (21–50).
@@ -1697,6 +2897,66 @@ Continue to the next authored lesson.
 <a id="ch-21"></a>
 
 ## Chapter 21 — Critical infrastructure and sector security: requirements
+
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["21.1 Sources of requirements"]
+  N2["21.2 Requirements for degraded operation"]
+  N3["21.3 Security levels and component requirements"]
+  N4["21.4 Conflicts and negotiation"]
+  N5["21.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["21.1 Sources of requirements"]
+  N2["21.2 Requirements for degraded operation"]
+  N3["21.3 Security levels and component requirements"]
+  N4["21.4 Conflicts and negotiation"]
+  N5["21.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[21.1 Sources of requirements]
+    |
+    v
+[21.2 Requirements for degraded operation]
+    |
+    v
+[21.3 Security levels and component requirements]
+    |
+    v
+[21.4 Conflicts and negotiation]
+    |
+    v
+[21.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
 
 ### Learning outcomes and connection
 
@@ -1774,6 +3034,66 @@ Continue to the next authored lesson.
 
 ## Chapter 22 — Critical infrastructure and sector security: system and data models
 
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["22.1 Inventory first"]
+  N2["22.2 Three views of a system"]
+  N3["22.3 Degraded states"]
+  N4["22.4 The model as sensitive information"]
+  N5["22.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["22.1 Inventory first"]
+  N2["22.2 Three views of a system"]
+  N3["22.3 Degraded states"]
+  N4["22.4 The model as sensitive information"]
+  N5["22.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[22.1 Inventory first]
+    |
+    v
+[22.2 Three views of a system]
+    |
+    v
+[22.3 Degraded states]
+    |
+    v
+[22.4 The model as sensitive information]
+    |
+    v
+[22.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) build an asset inventory and a system model that supports security analysis; (2) model functional dependencies, data flows and trust boundaries; (3) represent degraded states, not just up/down; and (4) keep the model current and protected as sensitive information. It builds on Chapters 2, 13 and 21 and prepares Chapter 23 (threat and failure analysis).
@@ -1845,6 +3165,66 @@ Continue to the next authored lesson.
 <a id="ch-23"></a>
 
 ## Chapter 23 — Critical infrastructure and sector security: threat and failure analysis
+
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["23.1 Threat modelling"]
+  N2["23.2 Fault trees"]
+  N3["23.3 Attack trees and bow-ties"]
+  N4["23.4 Combining failures and attacks"]
+  N5["23.6 Practical activity: Lab 9"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["23.1 Threat modelling"]
+  N2["23.2 Fault trees"]
+  N3["23.3 Attack trees and bow-ties"]
+  N4["23.4 Combining failures and attacks"]
+  N5["23.6 Practical activity: Lab 9"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[23.1 Threat modelling]
+    |
+    v
+[23.2 Fault trees]
+    |
+    v
+[23.3 Attack trees and bow-ties]
+    |
+    v
+[23.4 Combining failures and attacks]
+    |
+    v
+[23.6 Practical activity: Lab 9]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
 
 ### Learning outcomes and connection
 
@@ -1945,6 +3325,66 @@ Continue to the next authored lesson.
 
 ## Chapter 24 — Critical infrastructure and sector security: methods I
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX047.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["24.1 Matching method to question"]
+  N2["24.2 Structured risk assessment"]
+  N3["24.3 Simulation with verification and validation"]
+  N4["24.4 Exercises with people"]
+  N5["24.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX047"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["24.1 Matching method to question"]
+  N2["24.2 Structured risk assessment"]
+  N3["24.3 Simulation with verification and validation"]
+  N4["24.4 Exercises with people"]
+  N5["24.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX047"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[24.1 Matching method to question]
+    |
+    v
+[24.2 Structured risk assessment]
+    |
+    v
+[24.3 Simulation with verification and validation]
+    |
+    v
+[24.4 Exercises with people]
+    |
+    v
+[24.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX047]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) select analysis methods appropriate to a design question — risk assessment, STPA, simulation, testbed experiment, tabletop exercise; (2) run a structured risk assessment and document it reproducibly; (3) plan a simulation study with explicit verification and validation; and (4) choose evidence proportionate to the decision. It builds on Chapters 15, 21 and 23 and prepares the design studio (Chapter 25).
@@ -2021,6 +3461,71 @@ Continue to the next authored lesson.
 <a id="ch-25"></a>
 
 ## Chapter 25 — Design studio I
+
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["25.1 What a studio is"]
+  N2["25.2 The brief"]
+  N3["25.3 Generating alternatives"]
+  N4["25.4 Weighted evaluation"]
+  N5["25.5 Presenting and responding to review"]
+  N6["25.6 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["25.1 What a studio is"]
+  N2["25.2 The brief"]
+  N3["25.3 Generating alternatives"]
+  N4["25.4 Weighted evaluation"]
+  N5["25.5 Presenting and responding to review"]
+  N6["25.6 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[25.1 What a studio is]
+    |
+    v
+[25.2 The brief]
+    |
+    v
+[25.3 Generating alternatives]
+    |
+    v
+[25.4 Weighted evaluation]
+    |
+    v
+[25.5 Presenting and responding to review]
+    |
+    v
+[25.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
 
 ### Learning outcomes and connection
 
@@ -2102,6 +3607,66 @@ Continue to the next authored lesson.
 <a id="ch-26"></a>
 
 ## Chapter 26 — Critical infrastructure and sector security: architecture alternatives
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["26.1 Centralised and distributed control"]
+  N2["26.2 Redundancy patterns"]
+  N3["26.3 Diversity"]
+  N4["26.4 Unidirectional flows and local autonomy"]
+  N5["26.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["26.1 Centralised and distributed control"]
+  N2["26.2 Redundancy patterns"]
+  N3["26.3 Diversity"]
+  N4["26.4 Unidirectional flows and local autonomy"]
+  N5["26.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[26.1 Centralised and distributed control]
+    |
+    v
+[26.2 Redundancy patterns]
+    |
+    v
+[26.3 Diversity]
+    |
+    v
+[26.4 Unidirectional flows and local autonomy]
+    |
+    v
+[26.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Learning outcomes and connection
 
@@ -2185,6 +3750,61 @@ Continue to the next authored lesson.
 
 ## Chapter 27 — Critical infrastructure and sector security: control design
 
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["27.1 From scenario to control"]
+  N2["27.3 Independent layers"]
+  N3["27.4 Specifying controls"]
+  N4["27.6 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["27.1 From scenario to control"]
+  N2["27.3 Independent layers"]
+  N3["27.4 Specifying controls"]
+  N4["27.6 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX053"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[27.1 From scenario to control]
+    |
+    v
+[27.3 Independent layers]
+    |
+    v
+[27.4 Specifying controls]
+    |
+    v
+[27.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX053]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) design controls that address specific scenarios with defined performance; (2) combine preventive, detective and recovery controls into defence in depth whose layers fail independently; (3) prefer engineered, physics-based limits for the worst consequences; and (4) specify each control so that it can be verified. It applies Chapters 15, 23 and 26 and prepares Chapters 28 and 30.
@@ -2254,6 +3874,66 @@ Continue to the next authored lesson.
 <a id="ch-28"></a>
 
 ## Chapter 28 — Critical infrastructure and sector security: implementation I
+
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["28.1 From specification to code"]
+  N2["28.2 Secure coding for control paths"]
+  N3["28.3 The test bench"]
+  N4["28.4 Evidence"]
+  N5["28.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["28.1 From specification to code"]
+  N2["28.2 Secure coding for control paths"]
+  N3["28.3 The test bench"]
+  N4["28.4 Evidence"]
+  N5["28.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[28.1 From specification to code]
+    |
+    v
+[28.2 Secure coding for control paths]
+    |
+    v
+[28.3 The test bench]
+    |
+    v
+[28.4 Evidence]
+    |
+    v
+[28.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
 
 ### Learning outcomes and connection
 
@@ -2329,6 +4009,66 @@ Continue to the next authored lesson.
 <a id="ch-29"></a>
 
 ## Chapter 29 — Critical infrastructure and sector security: measurement
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["29.1 What to measure"]
+  N2["29.2 Detection metrics"]
+  N3["29.3 Resilience as performance over time"]
+  N4["29.4 Metrics that mislead"]
+  N5["29.6 Practical activity: Lab 10"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["29.1 What to measure"]
+  N2["29.2 Detection metrics"]
+  N3["29.3 Resilience as performance over time"]
+  N4["29.4 Metrics that mislead"]
+  N5["29.6 Practical activity: Lab 10"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX057"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[29.1 What to measure]
+    |
+    v
+[29.2 Detection metrics]
+    |
+    v
+[29.3 Resilience as performance over time]
+    |
+    v
+[29.4 Metrics that mislead]
+    |
+    v
+[29.6 Practical activity: Lab 10]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX057]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Learning outcomes and connection
 
@@ -2415,6 +4155,66 @@ Continue to the next authored lesson.
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX059.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["30.1 Verification as a campaign"]
+  N2["30.2 Kinds of test"]
+  N3["30.3 Reproducibility"]
+  N4["30.4 Failed tests"]
+  N5["30.6 Practical activity: Lab 11"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX059"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["30.1 Verification as a campaign"]
+  N2["30.2 Kinds of test"]
+  N3["30.3 Reproducibility"]
+  N4["30.4 Failed tests"]
+  N5["30.6 Practical activity: Lab 11"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX059"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[30.1 Verification as a campaign]
+    |
+    v
+[30.2 Kinds of test]
+    |
+    v
+[30.3 Reproducibility]
+    |
+    v
+[30.4 Failed tests]
+    |
+    v
+[30.6 Practical activity: Lab 11]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX059]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Learning outcomes and connection
 
@@ -2527,6 +4327,66 @@ Continue to the next authored lesson.
 
 ## Chapter 31 — Critical infrastructure and sector security: implementation II
 
+<!-- cyberabc:lesson-figures:start ch-31 -->
+### Lesson map
+
+Lesson 31 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["31.1 Staged deployment"]
+  N2["31.2 Production key and secret management"]
+  N3["31.3 Legacy integration"]
+  N4["31.4 Commissioning and handover"]
+  N5["31.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["31.1 Staged deployment"]
+  N2["31.2 Production key and secret management"]
+  N3["31.3 Legacy integration"]
+  N4["31.4 Commissioning and handover"]
+  N5["31.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[31.1 Staged deployment]
+    |
+    v
+[31.2 Production key and secret management]
+    |
+    v
+[31.3 Legacy integration]
+    |
+    v
+[31.4 Commissioning and handover]
+    |
+    v
+[31.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-31 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) deploy controls into operational environments through staged rollout with rollback; (2) manage keys, configuration and secrets in production; (3) integrate legacy equipment through gateways and compensating controls; and (4) commission a control with acceptance tests and operator handover. It moves Chapter 28's bench implementation into the field and prepares Chapters 32–34.
@@ -2596,6 +4456,61 @@ Continue to the next authored lesson.
 <a id="ch-32"></a>
 
 ## Chapter 32 — Critical infrastructure and sector security: reliability
+
+<!-- cyberabc:lesson-figures:start ch-32 -->
+### Lesson map
+
+Lesson 32 published. Map, example, EX063.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["32.1 Measures"]
+  N2["32.2 Repairable redundancy"]
+  N3["32.3 Induced failures"]
+  N4["32.5 Practical activity: Lab 12"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX063"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["32.1 Measures"]
+  N2["32.2 Repairable redundancy"]
+  N3["32.3 Induced failures"]
+  N4["32.5 Practical activity: Lab 12"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX063"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[32.1 Measures]
+    |
+    v
+[32.2 Repairable redundancy]
+    |
+    v
+[32.3 Induced failures]
+    |
+    v
+[32.5 Practical activity: Lab 12]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX063]
+```
+<!-- cyberabc:lesson-figures:end ch-32 -->
+
 
 ### Learning outcomes and connection
 
@@ -2681,6 +4596,61 @@ Continue to the next authored lesson.
 
 ## Chapter 33 — Critical infrastructure and sector security: safety and resilience
 
+<!-- cyberabc:lesson-figures:start ch-33 -->
+### Lesson map
+
+Lesson 33 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["33.1 STPA"]
+  N2["33.2 Safety instrumented systems and independence"]
+  N3["33.3 Resilience"]
+  N4["33.5 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["33.1 STPA"]
+  N2["33.2 Safety instrumented systems and independence"]
+  N3["33.3 Resilience"]
+  N4["33.5 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[33.1 STPA]
+    |
+    v
+[33.2 Safety instrumented systems and independence]
+    |
+    v
+[33.3 Resilience]
+    |
+    v
+[33.5 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-33 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) apply System-Theoretic Process Analysis (STPA) to a control structure, including security-related causes; (2) describe safety instrumented systems and why they need independence; (3) define and engineer resilience — anticipate, withstand, recover, adapt; and (4) integrate safety, security and resilience in one analysis. It builds on Chapters 10, 17, 23 and 32 and prepares Chapters 34 and 47.
@@ -2739,6 +4709,66 @@ Continue to the next authored lesson.
 <a id="ch-34"></a>
 
 ## Chapter 34 — Critical infrastructure and sector security: integration
+
+<!-- cyberabc:lesson-figures:start ch-34 -->
+### Lesson map
+
+Lesson 34 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["34.1 Incremental integration"]
+  N2["34.2 Emergent behaviour"]
+  N3["34.3 Operations integration"]
+  N4["34.4 Organisational interfaces"]
+  N5["34.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["34.1 Incremental integration"]
+  N2["34.2 Emergent behaviour"]
+  N3["34.3 Operations integration"]
+  N4["34.4 Organisational interfaces"]
+  N5["34.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[34.1 Incremental integration]
+    |
+    v
+[34.2 Emergent behaviour]
+    |
+    v
+[34.3 Operations integration]
+    |
+    v
+[34.4 Organisational interfaces]
+    |
+    v
+[34.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-34 -->
+
 
 ### Learning outcomes and connection
 
@@ -2810,6 +4840,61 @@ Continue to the next authored lesson.
 
 ## Chapter 35 — Design studio II
 
+<!-- cyberabc:lesson-figures:start ch-35 -->
+### Lesson map
+
+Lesson 35 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["35.1 From concept to detailed design"]
+  N2["35.2 Assurance arguments"]
+  N3["35.3 Studio II brief synthetic"]
+  N4["35.5 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX069"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["35.1 From concept to detailed design"]
+  N2["35.2 Assurance arguments"]
+  N3["35.3 Studio II brief synthetic"]
+  N4["35.5 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX069"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[35.1 From concept to detailed design]
+    |
+    v
+[35.2 Assurance arguments]
+    |
+    v
+[35.3 Studio II brief synthetic]
+    |
+    v
+[35.5 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX069]
+```
+<!-- cyberabc:lesson-figures:end ch-35 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) carry a design from concept to detailed design with quantitative justification; (2) integrate reliability, safety, security, performance and cost analyses into one argument; (3) build a structured assurance argument linking claims to evidence; and (4) defend detailed design decisions under review. It integrates Chapters 26–34 and prepares Chapters 36–40.
@@ -2870,6 +4955,66 @@ Continue to the next authored lesson.
 <a id="ch-36"></a>
 
 ## Chapter 36 — Critical infrastructure and sector security: performance and scale
+
+<!-- cyberabc:lesson-figures:start ch-36 -->
+### Lesson map
+
+Lesson 36 published. Map, example, EX071.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["36.1 Queues everywhere"]
+  N2["36.2 The cost of security"]
+  N3["36.3 Peak, degraded and attack load"]
+  N4["36.4 Scale"]
+  N5["36.6 Practical activity: Lab 13"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX071"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["36.1 Queues everywhere"]
+  N2["36.2 The cost of security"]
+  N3["36.3 Peak, degraded and attack load"]
+  N4["36.4 Scale"]
+  N5["36.6 Practical activity: Lab 13"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX071"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[36.1 Queues everywhere]
+    |
+    v
+[36.2 The cost of security]
+    |
+    v
+[36.3 Peak, degraded and attack load]
+    |
+    v
+[36.4 Scale]
+    |
+    v
+[36.6 Practical activity: Lab 13]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX071]
+```
+<!-- cyberabc:lesson-figures:end ch-36 -->
+
 
 ### Learning outcomes and connection
 
@@ -2958,6 +5103,66 @@ Continue to the next authored lesson.
 
 ## Chapter 37 — Critical infrastructure and sector security: operations
 
+<!-- cyberabc:lesson-figures:start ch-37 -->
+### Lesson map
+
+Lesson 37 published. Map, example, EX074.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["37.1 Security operations in OT"]
+  N2["37.2 Playbooks"]
+  N3["37.3 Change, access and vulnerability management"]
+  N4["37.4 Learning without blame"]
+  N5["37.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX074"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["37.1 Security operations in OT"]
+  N2["37.2 Playbooks"]
+  N3["37.3 Change, access and vulnerability management"]
+  N4["37.4 Learning without blame"]
+  N5["37.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX074"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[37.1 Security operations in OT]
+    |
+    v
+[37.2 Playbooks]
+    |
+    v
+[37.3 Change, access and vulnerability management]
+    |
+    v
+[37.4 Learning without blame]
+    |
+    v
+[37.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX074]
+```
+<!-- cyberabc:lesson-figures:end ch-37 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) design security operations for OT — monitoring, triage, escalation, coordination with process operations; (2) write operational procedures and playbooks that operators can execute under stress; (3) manage change, access and vulnerabilities in daily operations; and (4) learn from incidents and near misses without blame. It builds on Chapters 18, 29 and 34 and prepares Chapters 38 and 47.
@@ -3024,6 +5229,66 @@ Continue to the next authored lesson.
 <a id="ch-38"></a>
 
 ## Chapter 38 — Critical infrastructure and sector security: validation
+
+<!-- cyberabc:lesson-figures:start ch-38 -->
+### Lesson map
+
+Lesson 38 published. Map, example, EX075.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["38.1 Verification is not validation"]
+  N2["38.2 Traceability as an evidence map"]
+  N3["38.3 Stakeholder validation"]
+  N4["38.4 Reporting partial results"]
+  N5["38.6 Practical activity: Lab 14"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX075"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["38.1 Verification is not validation"]
+  N2["38.2 Traceability as an evidence map"]
+  N3["38.3 Stakeholder validation"]
+  N4["38.4 Reporting partial results"]
+  N5["38.6 Practical activity: Lab 14"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX075"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[38.1 Verification is not validation]
+    |
+    v
+[38.2 Traceability as an evidence map]
+    |
+    v
+[38.3 Stakeholder validation]
+    |
+    v
+[38.4 Reporting partial results]
+    |
+    v
+[38.6 Practical activity: Lab 14]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX075]
+```
+<!-- cyberabc:lesson-figures:end ch-38 -->
+
 
 ### Learning outcomes and connection
 
@@ -3114,6 +5379,66 @@ Continue to the next authored lesson.
 
 ## Chapter 39 — Critical infrastructure and sector security: maintainability
 
+<!-- cyberabc:lesson-figures:start ch-39 -->
+### Lesson map
+
+Lesson 39 published. Map, example, EX078.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["39.1 Long lifecycles"]
+  N2["39.2 Technical debt and obsolescence"]
+  N3["39.3 Cryptographic agility"]
+  N4["39.4 Secure decommissioning"]
+  N5["39.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX078"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["39.1 Long lifecycles"]
+  N2["39.2 Technical debt and obsolescence"]
+  N3["39.3 Cryptographic agility"]
+  N4["39.4 Secure decommissioning"]
+  N5["39.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX078"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[39.1 Long lifecycles]
+    |
+    v
+[39.2 Technical debt and obsolescence]
+    |
+    v
+[39.3 Cryptographic agility]
+    |
+    v
+[39.4 Secure decommissioning]
+    |
+    v
+[39.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX078]
+```
+<!-- cyberabc:lesson-figures:end ch-39 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) design for maintainability over long lifecycles — updates, spares, skills, documentation; (2) manage technical debt and obsolescence in OT; (3) plan cryptographic agility and the transition to post-quantum cryptography; and (4) plan decommissioning securely. It builds on Chapters 8, 14 and 31 and prepares Chapters 41 and 44.
@@ -3180,6 +5505,61 @@ Continue to the next authored lesson.
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
+
+<!-- cyberabc:lesson-figures:start ch-40 -->
+### Lesson map
+
+Lesson 40 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["40.1 Fault injection"]
+  N2["40.2 Oracles and classification"]
+  N3["40.3 Seeds, rates and coverage"]
+  N4["40.5 Practical activity: Lab 15"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["40.1 Fault injection"]
+  N2["40.2 Oracles and classification"]
+  N3["40.3 Seeds, rates and coverage"]
+  N4["40.5 Practical activity: Lab 15"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[40.1 Fault injection]
+    |
+    v
+[40.2 Oracles and classification]
+    |
+    v
+[40.3 Seeds, rates and coverage]
+    |
+    v
+[40.5 Practical activity: Lab 15]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-40 -->
+
 
 ### Learning outcomes and connection
 
@@ -3279,6 +5659,66 @@ Continue to the next authored lesson.
 
 ## Chapter 41 — Critical infrastructure and sector security: system optimization
 
+<!-- cyberabc:lesson-figures:start ch-41 -->
+### Lesson map
+
+Lesson 41 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["41.1 Formulating the problem"]
+  N2["41.2 Exact and heuristic solutions"]
+  N3["41.3 Multiple objectives and uncertainty"]
+  N4["41.4 Interactions"]
+  N5["41.6 Practical activity: Lab 16"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["41.1 Formulating the problem"]
+  N2["41.2 Exact and heuristic solutions"]
+  N3["41.3 Multiple objectives and uncertainty"]
+  N4["41.4 Interactions"]
+  N5["41.6 Practical activity: Lab 16"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[41.1 Formulating the problem]
+    |
+    v
+[41.2 Exact and heuristic solutions]
+    |
+    v
+[41.3 Multiple objectives and uncertainty]
+    |
+    v
+[41.4 Interactions]
+    |
+    v
+[41.6 Practical activity: Lab 16]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-41 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) formulate security investment as an optimisation problem with objectives and constraints; (2) solve small problems exactly and understand why greedy heuristics can fail; (3) handle multiple objectives and uncertainty with Pareto analysis and sensitivity; and (4) present optimisation results as decision support, not decisions. It builds on Chapters 25, 32 and 36 and prepares the capstone.
@@ -3370,6 +5810,66 @@ Continue to the next authored lesson.
 
 ## Chapter 42 — Critical infrastructure and sector security: applied research
 
+<!-- cyberabc:lesson-figures:start ch-42 -->
+### Lesson map
+
+Lesson 42 published. Map, example, EX083.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["42.1 Engineering research versus academic research"]
+  N2["42.2 Designing a small study"]
+  N3["42.3 Public datasets and testbeds"]
+  N4["42.4 Ethics and authorisation"]
+  N5["42.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX083"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["42.1 Engineering research versus academic research"]
+  N2["42.2 Designing a small study"]
+  N3["42.3 Public datasets and testbeds"]
+  N4["42.4 Ethics and authorisation"]
+  N5["42.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX083"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[42.1 Engineering research versus academic research]
+    |
+    v
+[42.2 Designing a small study]
+    |
+    v
+[42.3 Public datasets and testbeds]
+    |
+    v
+[42.4 Ethics and authorisation]
+    |
+    v
+[42.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX083]
+```
+<!-- cyberabc:lesson-figures:end ch-42 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) frame an engineering question that needs new evidence; (2) design a small applied study — testbed experiment, simulation study or field measurement — with controls and reproducibility; (3) use public datasets and testbeds responsibly; and (4) report results with their limits. It is the engineering counterpart of the master's and doctoral research books and prepares the capstone and thesis (Chapters 44–49).
@@ -3435,6 +5935,66 @@ Continue to the next authored lesson.
 <a id="ch-43"></a>
 
 ## Chapter 43 — Industry or public-service practice
+
+<!-- cyberabc:lesson-figures:start ch-43 -->
+### Lesson map
+
+Lesson 43 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["43.1 Purpose of practice"]
+  N2["43.2 Placement agreement"]
+  N3["43.3 Reflective practice log"]
+  N4["43.4 Common placement work"]
+  N5["43.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["43.1 Purpose of practice"]
+  N2["43.2 Placement agreement"]
+  N3["43.3 Reflective practice log"]
+  N4["43.4 Common placement work"]
+  N5["43.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[43.1 Purpose of practice]
+    |
+    v
+[43.2 Placement agreement]
+    |
+    v
+[43.3 Reflective practice log]
+    |
+    v
+[43.4 Common placement work]
+    |
+    v
+[43.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-43 -->
+
 
 ### Learning outcomes and connection
 
@@ -3504,6 +6064,66 @@ Continue to the next authored lesson.
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
+
+<!-- cyberabc:lesson-figures:start ch-44 -->
+### Lesson map
+
+Lesson 44 published. Map, example, EX087.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["44.1 What a capstone is"]
+  N2["44.2 Scoping"]
+  N3["44.3 Planning"]
+  N4["44.4 Environment"]
+  N5["44.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX087"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["44.1 What a capstone is"]
+  N2["44.2 Scoping"]
+  N3["44.3 Planning"]
+  N4["44.4 Environment"]
+  N5["44.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX087"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[44.1 What a capstone is]
+    |
+    v
+[44.2 Scoping]
+    |
+    v
+[44.3 Planning]
+    |
+    v
+[44.4 Environment]
+    |
+    v
+[44.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX087]
+```
+<!-- cyberabc:lesson-figures:end ch-44 -->
+
 
 ### Learning outcomes and connection
 
@@ -3575,6 +6195,66 @@ Continue to the next authored lesson.
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
+
+<!-- cyberabc:lesson-figures:start ch-45 -->
+### Lesson map
+
+Lesson 45 published. Map, example, EX089.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["45.1 Independence and purpose"]
+  N2["45.2 Review criteria"]
+  N3["45.3 Writing findings"]
+  N4["45.4 Responding to review"]
+  N5["45.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX089"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["45.1 Independence and purpose"]
+  N2["45.2 Review criteria"]
+  N3["45.3 Writing findings"]
+  N4["45.4 Responding to review"]
+  N5["45.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX089"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[45.1 Independence and purpose]
+    |
+    v
+[45.2 Review criteria]
+    |
+    v
+[45.3 Writing findings]
+    |
+    v
+[45.4 Responding to review]
+    |
+    v
+[45.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX089]
+```
+<!-- cyberabc:lesson-figures:end ch-45 -->
+
 
 ### Learning outcomes and connection
 
@@ -3649,6 +6329,61 @@ Continue to the next authored lesson.
 
 ## Chapter 46 — Engineering capstone II
 
+<!-- cyberabc:lesson-figures:start ch-46 -->
+### Lesson map
+
+Lesson 46 published. Map, example, EX080.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["46.1 Finishing the build"]
+  N2["46.2 Executing verification"]
+  N3["46.3 Critical design review"]
+  N4["46.5 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX080"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["46.1 Finishing the build"]
+  N2["46.2 Executing verification"]
+  N3["46.3 Critical design review"]
+  N4["46.5 Practical activity"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX080"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[46.1 Finishing the build]
+    |
+    v
+[46.2 Executing verification]
+    |
+    v
+[46.3 Critical design review]
+    |
+    v
+[46.5 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX080]
+```
+<!-- cyberabc:lesson-figures:end ch-46 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) complete implementation of the capstone artefact; (2) execute the full verification plan and record results; (3) close review findings; and (4) pass a critical design review with evidence. It continues Chapter 44 after the independent review and prepares the failure and recovery trial (Chapter 47).
@@ -3717,6 +6452,61 @@ Continue to the next authored lesson.
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
+
+<!-- cyberabc:lesson-figures:start ch-47 -->
+### Lesson map
+
+Lesson 47 published. Map, example, EX093.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["47.1 Why trial recovery"]
+  N2["47.2 Designing the trial"]
+  N3["47.3 Critical path"]
+  N4["47.5 Practical activity: Lab 17"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX093"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["47.1 Why trial recovery"]
+  N2["47.2 Designing the trial"]
+  N3["47.3 Critical path"]
+  N4["47.5 Practical activity: Lab 17"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX093"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[47.1 Why trial recovery]
+    |
+    v
+[47.2 Designing the trial]
+    |
+    v
+[47.3 Critical path]
+    |
+    v
+[47.5 Practical activity: Lab 17]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX093]
+```
+<!-- cyberabc:lesson-figures:end ch-47 -->
+
 
 ### Learning outcomes and connection
 
@@ -3806,6 +6596,66 @@ Continue to the next authored lesson.
 
 ## Chapter 48 — Evidence dossier
 
+<!-- cyberabc:lesson-figures:start ch-48 -->
+### Lesson map
+
+Lesson 48 published. Map, example, EX095.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["48.1 What the dossier is"]
+  N2["48.2 Provenance"]
+  N3["48.3 Sensitivity"]
+  N4["48.4 Consistency check"]
+  N5["48.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX095"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["48.1 What the dossier is"]
+  N2["48.2 Provenance"]
+  N3["48.3 Sensitivity"]
+  N4["48.4 Consistency check"]
+  N5["48.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX095"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[48.1 What the dossier is]
+    |
+    v
+[48.2 Provenance]
+    |
+    v
+[48.3 Sensitivity]
+    |
+    v
+[48.4 Consistency check]
+    |
+    v
+[48.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX095]
+```
+<!-- cyberabc:lesson-figures:end ch-48 -->
+
+
 ### Learning outcomes and connection
 
 After this chapter you can (1) assemble an engineering evidence dossier that supports the capstone's claims; (2) organise evidence by claim with provenance; (3) protect sensitive evidence while keeping it reviewable; and (4) check the dossier for consistency before submission. It gathers Chapters 44–47 and prepares the engineering thesis.
@@ -3881,6 +6731,66 @@ Continue to the next authored lesson.
 <a id="ch-49"></a>
 
 ## Chapter 49 — Engineering thesis
+
+<!-- cyberabc:lesson-figures:start ch-49 -->
+### Lesson map
+
+Lesson 49 published. Map, example, EX097.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["49.1 The engineering thesis"]
+  N2["49.2 Structure"]
+  N3["49.3 Results and limitations"]
+  N4["49.4 Writing well"]
+  N5["49.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX097"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["49.1 The engineering thesis"]
+  N2["49.2 Structure"]
+  N3["49.3 Results and limitations"]
+  N4["49.4 Writing well"]
+  N5["49.6 Practical activity"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX097"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[49.1 The engineering thesis]
+    |
+    v
+[49.2 Structure]
+    |
+    v
+[49.3 Results and limitations]
+    |
+    v
+[49.4 Writing well]
+    |
+    v
+[49.6 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX097]
+```
+<!-- cyberabc:lesson-figures:end ch-49 -->
+
 
 ### Learning outcomes and connection
 
@@ -3959,6 +6869,71 @@ Continue to the next authored lesson.
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
+
+<!-- cyberabc:lesson-figures:start ch-50 -->
+### Lesson map
+
+Lesson 50 published. Map, example, EX099.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["50.1 What examiners test"]
+  N2["50.2 The presentation"]
+  N3["50.3 Question families"]
+  N4["50.4 Honest answers"]
+  N5["50.5 After the defense"]
+  N6["50.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX099"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["50.1 What examiners test"]
+  N2["50.2 The presentation"]
+  N3["50.3 Question families"]
+  N4["50.4 Honest answers"]
+  N5["50.5 After the defense"]
+  N6["50.7 Practical activity"]
+  N7["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX099"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[50.1 What examiners test]
+    |
+    v
+[50.2 The presentation]
+    |
+    v
+[50.3 Question families]
+    |
+    v
+[50.4 Honest answers]
+    |
+    v
+[50.5 After the defense]
+    |
+    v
+[50.7 Practical activity]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX099]
+```
+<!-- cyberabc:lesson-figures:end ch-50 -->
+
 
 ### Learning outcomes and connection
 

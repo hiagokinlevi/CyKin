@@ -1,7 +1,7 @@
 # Cloud and Container Security: Technologist Course
 
 - Language: English (`en`); course 082, Technologist course (3 years).
-- Editorial state: **draft**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; seven offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; seven offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technologist students learning to build, run and improve practical cloud and container security at a small hosting company.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -39,6 +39,66 @@ NIST [SP 800-145](https://doi.org/10.6028/NIST.SP.800-145), [SP 800-210](https:/
 <a id="ch-01"></a>
 
 ## Chapter 1 — Computing systems
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Starting the placement"]
+  N2["1.2 Hardware under the cloud"]
+  N3["1.3 Processes and programs"]
+  N4["1.4 Memory and storage"]
+  N5["1.5 Files and permissions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Starting the placement"]
+  N2["1.2 Hardware under the cloud"]
+  N3["1.3 Processes and programs"]
+  N4["1.4 Memory and storage"]
+  N5["1.5 Files and permissions"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Starting the placement]
+    |
+    v
+[1.2 Hardware under the cloud]
+    |
+    v
+[1.3 Processes and programs]
+    |
+    v
+[1.4 Memory and storage]
+    |
+    v
+[1.5 Files and permissions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -91,6 +151,71 @@ Cloud services still run on processes, memory, storage and permissions; security
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and internet services
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX004.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Addresses and ports"]
+  N2["2.2 A web request"]
+  N3["2.3 Encryption in transit"]
+  N4["2.4 Private and public networks"]
+  N5["2.5 Load balancers and proxies"]
+  N6["2.6 Network diagrams"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX004"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Addresses and ports"]
+  N2["2.2 A web request"]
+  N3["2.3 Encryption in transit"]
+  N4["2.4 Private and public networks"]
+  N5["2.5 Load balancers and proxies"]
+  N6["2.6 Network diagrams"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX004"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Addresses and ports]
+    |
+    v
+[2.2 A web request]
+    |
+    v
+[2.3 Encryption in transit]
+    |
+    v
+[2.4 Private and public networks]
+    |
+    v
+[2.5 Load balancers and proxies]
+    |
+    v
+[2.6 Network diagrams]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -147,6 +272,71 @@ Follow each request hop by hop and check encryption rather than assuming it.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming foundations
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX007.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Why scripting helps"]
+  N2["3.2 Values, lists and dictionaries"]
+  N3["3.3 Loops and conditions"]
+  N4["3.4 Clear output"]
+  N5["3.5 Standard library only"]
+  N6["3.6 Reading before running"]
+  N7["Comments and names"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX007"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Why scripting helps"]
+  N2["3.2 Values, lists and dictionaries"]
+  N3["3.3 Loops and conditions"]
+  N4["3.4 Clear output"]
+  N5["3.5 Standard library only"]
+  N6["3.6 Reading before running"]
+  N7["Comments and names"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX007"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Why scripting helps]
+    |
+    v
+[3.2 Values, lists and dictionaries]
+    |
+    v
+[3.3 Loops and conditions]
+    |
+    v
+[3.4 Clear output]
+    |
+    v
+[3.5 Standard library only]
+    |
+    v
+[3.6 Reading before running]
+    |
+    v
+[Comments and names]
+    |
+    v
+[Worked example] --> [Exercise EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -208,6 +398,71 @@ Small, readable scripts turn slow manual searches into quick, repeatable checks.
 
 ## Chapter 4 — Data models
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX010.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 What to record"]
+  N2["4.2 Consistent names"]
+  N3["4.3 Identifiers"]
+  N4["4.4 Tables and files"]
+  N5["4.5 Keeping data current"]
+  N6["4.6 Sensitive fields"]
+  N7["Checking the model"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX010"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 What to record"]
+  N2["4.2 Consistent names"]
+  N3["4.3 Identifiers"]
+  N4["4.4 Tables and files"]
+  N5["4.5 Keeping data current"]
+  N6["4.6 Sensitive fields"]
+  N7["Checking the model"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX010"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 What to record]
+    |
+    v
+[4.2 Consistent names]
+    |
+    v
+[4.3 Identifiers]
+    |
+    v
+[4.4 Tables and files]
+    |
+    v
+[4.5 Keeping data current]
+    |
+    v
+[4.6 Sensitive fields]
+    |
+    v
+[Checking the model]
+    |
+    v
+[Worked example] --> [Exercise EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) model hosting assets as records; (2) choose fields that answer security questions; (3) keep records consistent.
@@ -267,6 +522,71 @@ Model only what answers real questions, and keep names and identifiers consisten
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security literacy
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Three goals"]
+  N2["5.2 Shared responsibility"]
+  N3["5.3 Common failures"]
+  N4["5.4 Threats and vulnerabilities"]
+  N5["5.5 Risk"]
+  N6["5.6 Ethics of access"]
+  N7["Words to use"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Three goals"]
+  N2["5.2 Shared responsibility"]
+  N3["5.3 Common failures"]
+  N4["5.4 Threats and vulnerabilities"]
+  N5["5.5 Risk"]
+  N6["5.6 Ethics of access"]
+  N7["Words to use"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Three goals]
+    |
+    v
+[5.2 Shared responsibility]
+    |
+    v
+[5.3 Common failures]
+    |
+    v
+[5.4 Threats and vulnerabilities]
+    |
+    v
+[5.5 Risk]
+    |
+    v
+[5.6 Ethics of access]
+    |
+    v
+[Words to use]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -328,6 +648,71 @@ Security goals and responsibilities must be clear before controls make sense.
 
 ## Chapter 6 — Operating systems and virtualization
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Virtual machines"]
+  N2["6.2 Containers"]
+  N3["6.3 Isolation differences"]
+  N4["6.4 Images"]
+  N5["6.5 Tags and digests"]
+  N6["6.6 Running as root"]
+  N7["Hosts and nodes"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Virtual machines"]
+  N2["6.2 Containers"]
+  N3["6.3 Isolation differences"]
+  N4["6.4 Images"]
+  N5["6.5 Tags and digests"]
+  N6["6.6 Running as root"]
+  N7["Hosts and nodes"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Virtual machines]
+    |
+    v
+[6.2 Containers]
+    |
+    v
+[6.3 Isolation differences]
+    |
+    v
+[6.4 Images]
+    |
+    v
+[6.5 Tags and digests]
+    |
+    v
+[6.6 Running as root]
+    |
+    v
+[Hosts and nodes]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) explain virtual machines and containers; (2) compare their isolation; (3) describe what a container image contains.
@@ -387,6 +772,71 @@ Know what is inside an image and pin it by digest when evidence matters.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Identity and access foundations
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX019.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Who and what"]
+  N2["7.2 Least privilege"]
+  N3["7.3 Kubernetes RBAC"]
+  N4["7.4 Service accounts"]
+  N5["7.5 Leavers"]
+  N6["7.6 Multi-factor authentication"]
+  N7["Reviewing access regularly"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX019"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Who and what"]
+  N2["7.2 Least privilege"]
+  N3["7.3 Kubernetes RBAC"]
+  N4["7.4 Service accounts"]
+  N5["7.5 Leavers"]
+  N6["7.6 Multi-factor authentication"]
+  N7["Reviewing access regularly"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX019"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Who and what]
+    |
+    v
+[7.2 Least privilege]
+    |
+    v
+[7.3 Kubernetes RBAC]
+    |
+    v
+[7.4 Service accounts]
+    |
+    v
+[7.5 Leavers]
+    |
+    v
+[7.6 Multi-factor authentication]
+    |
+    v
+[Reviewing access regularly]
+    |
+    v
+[Worked example] --> [Exercise EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -452,6 +902,71 @@ Give each identity only what it needs and remove what is no longer used.
 
 ## Chapter 8 — Security architecture basics
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Layers"]
+  N2["8.2 Trust boundaries"]
+  N3["8.3 Zero trust ideas"]
+  N4["8.4 Separation of clients"]
+  N5["8.5 Simplicity"]
+  N6["8.6 Architecture records"]
+  N7["Architecture and clients"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX022"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Layers"]
+  N2["8.2 Trust boundaries"]
+  N3["8.3 Zero trust ideas"]
+  N4["8.4 Separation of clients"]
+  N5["8.5 Simplicity"]
+  N6["8.6 Architecture records"]
+  N7["Architecture and clients"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Layers]
+    |
+    v
+[8.2 Trust boundaries]
+    |
+    v
+[8.3 Zero trust ideas]
+    |
+    v
+[8.4 Separation of clients]
+    |
+    v
+[8.5 Simplicity]
+    |
+    v
+[8.6 Architecture records]
+    |
+    v
+[Architecture and clients]
+    |
+    v
+[Worked example] --> [Exercise EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) describe defence in depth; (2) place controls at layers of a hosting platform; (3) explain trust boundaries.
@@ -515,6 +1030,71 @@ Put controls at each boundary and keep the design simple enough to maintain.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Evidence and measurement
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 What counts as evidence"]
+  N2["9.2 Timestamps and sources"]
+  N3["9.3 Simple measures"]
+  N4["9.4 Baselines and trends"]
+  N5["9.5 Misleading numbers"]
+  N6["9.6 Storing evidence"]
+  N7["Measurement plan"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 What counts as evidence"]
+  N2["9.2 Timestamps and sources"]
+  N3["9.3 Simple measures"]
+  N4["9.4 Baselines and trends"]
+  N5["9.5 Misleading numbers"]
+  N6["9.6 Storing evidence"]
+  N7["Measurement plan"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 What counts as evidence]
+    |
+    v
+[9.2 Timestamps and sources]
+    |
+    v
+[9.3 Simple measures]
+    |
+    v
+[9.4 Baselines and trends]
+    |
+    v
+[9.5 Misleading numbers]
+    |
+    v
+[9.6 Storing evidence]
+    |
+    v
+[Measurement plan]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -580,6 +1160,71 @@ Collect timed, sourced evidence and measure trends with counts.
 
 ## Chapter 10 — Cloud and container security: orientation
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX028.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 The field"]
+  N2["10.2 Cobalt's problem"]
+  N3["10.3 Main areas"]
+  N4["10.4 Kubernetes security docs"]
+  N5["10.5 Plan"]
+  N6["10.6 Agreement"]
+  N7["Learning resources"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX028"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 The field"]
+  N2["10.2 Cobalt's problem"]
+  N3["10.3 Main areas"]
+  N4["10.4 Kubernetes security docs"]
+  N5["10.5 Plan"]
+  N6["10.6 Agreement"]
+  N7["Learning resources"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX028"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 The field]
+    |
+    v
+[10.2 Cobalt's problem]
+    |
+    v
+[10.3 Main areas]
+    |
+    v
+[10.4 Kubernetes security docs]
+    |
+    v
+[10.5 Plan]
+    |
+    v
+[10.6 Agreement]
+    |
+    v
+[Learning resources]
+    |
+    v
+[Worked example] --> [Exercise EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) map the cloud and container security field; (2) locate Cobalt's problem within it; (3) plan the rest of the course.
@@ -643,6 +1288,71 @@ Locate a concrete problem in the field before choosing tools.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Cloud and container security: assets and context
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 From model to inventory"]
+  N2["11.2 Approved images"]
+  N3["Lab — image inventory"]
+  N4["11.3 Reading the result"]
+  N5["11.4 Context for each finding"]
+  N6["11.5 Owners"]
+  N7["Regenerating"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 From model to inventory"]
+  N2["11.2 Approved images"]
+  N3["Lab — image inventory"]
+  N4["11.3 Reading the result"]
+  N5["11.4 Context for each finding"]
+  N6["11.5 Owners"]
+  N7["Regenerating"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 From model to inventory]
+    |
+    v
+[11.2 Approved images]
+    |
+    v
+[Lab — image inventory]
+    |
+    v
+[11.3 Reading the result]
+    |
+    v
+[11.4 Context for each finding]
+    |
+    v
+[11.5 Owners]
+    |
+    v
+[Regenerating]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes
 
@@ -724,6 +1434,71 @@ An inventory linked to an approved list turns advisories into quick lookups.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Cloud and container security: data flows
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Why flows matter"]
+  N2["12.2 Recording flows"]
+  N3["Lab — data flows"]
+  N4["12.3 Reading the result"]
+  N5["12.4 Following up"]
+  N6["12.5 Data minimisation"]
+  N7["12.6 Keeping the list current"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Why flows matter"]
+  N2["12.2 Recording flows"]
+  N3["Lab — data flows"]
+  N4["12.3 Reading the result"]
+  N5["12.4 Following up"]
+  N6["12.5 Data minimisation"]
+  N7["12.6 Keeping the list current"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Why flows matter]
+    |
+    v
+[12.2 Recording flows]
+    |
+    v
+[Lab — data flows]
+    |
+    v
+[12.3 Reading the result]
+    |
+    v
+[12.4 Following up]
+    |
+    v
+[12.5 Data minimisation]
+    |
+    v
+[12.6 Keeping the list current]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 
@@ -812,6 +1587,71 @@ Map where data goes and fix flows that leave unprotected.
 
 ## Chapter 13 — Cloud and container security: risk scenarios
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["13.1 Writing scenarios"]
+  N2["13.2 Four scenarios"]
+  N3["13.3 Rating"]
+  N4["13.4 Prioritising"]
+  N5["13.5 Residual risk"]
+  N6["13.6 Sharing"]
+  N7["Scenario register"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["13.1 Writing scenarios"]
+  N2["13.2 Four scenarios"]
+  N3["13.3 Rating"]
+  N4["13.4 Prioritising"]
+  N5["13.5 Residual risk"]
+  N6["13.6 Sharing"]
+  N7["Scenario register"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[13.1 Writing scenarios]
+    |
+    v
+[13.2 Four scenarios]
+    |
+    v
+[13.3 Rating]
+    |
+    v
+[13.4 Prioritising]
+    |
+    v
+[13.5 Residual risk]
+    |
+    v
+[13.6 Sharing]
+    |
+    v
+[Scenario register]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes
 
 You will (1) write plain risk scenarios; (2) rate likelihood and impact; (3) prioritise fixes.
@@ -874,6 +1714,71 @@ Plain scenarios with reasons help clients and staff agree on priorities.
 
 ## Chapter 14 — Cloud and container security: methods I
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX040.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["14.1 Benchmarks"]
+  N2["14.2 Choosing checks"]
+  N3["14.3 Why each matters"]
+  N4["14.4 Writing it down"]
+  N5["14.5 Managed services"]
+  N6["14.6 Exceptions"]
+  N7["Version control for the baseline"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX040"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["14.1 Benchmarks"]
+  N2["14.2 Choosing checks"]
+  N3["14.3 Why each matters"]
+  N4["14.4 Writing it down"]
+  N5["14.5 Managed services"]
+  N6["14.6 Exceptions"]
+  N7["Version control for the baseline"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX040"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[14.1 Benchmarks]
+    |
+    v
+[14.2 Choosing checks]
+    |
+    v
+[14.3 Why each matters]
+    |
+    v
+[14.4 Writing it down]
+    |
+    v
+[14.5 Managed services]
+    |
+    v
+[14.6 Exceptions]
+    |
+    v
+[Version control for the baseline]
+    |
+    v
+[Worked example] --> [Exercise EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Learning outcomes
 
 You will (1) use benchmarks to define a configuration baseline; (2) select checks suitable for small clusters; (3) document the baseline.
@@ -933,6 +1838,71 @@ Choose a small, justified baseline and grow it.
 <a id="ch-15"></a>
 
 ## Chapter 15 — Cloud and container security: guided lab
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX043.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["15.1 Setup"]
+  N2["Lab — baseline check"]
+  N3["15.2 Reading the result"]
+  N4["15.3 Why client-b differs"]
+  N5["15.4 Plan"]
+  N6["15.5 Total"]
+  N7["Running safely"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX043"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["15.1 Setup"]
+  N2["Lab — baseline check"]
+  N3["15.2 Reading the result"]
+  N4["15.3 Why client-b differs"]
+  N5["15.4 Plan"]
+  N6["15.5 Total"]
+  N7["Running safely"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX043"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[15.1 Setup]
+    |
+    v
+[Lab — baseline check]
+    |
+    v
+[15.2 Reading the result]
+    |
+    v
+[15.3 Why client-b differs]
+    |
+    v
+[15.4 Plan]
+    |
+    v
+[15.5 Total]
+    |
+    v
+[Running safely]
+    |
+    v
+[Worked example] --> [Exercise EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Learning outcomes
 
@@ -1020,6 +1990,71 @@ Run the baseline, explain each failure, and fix with care.
 
 ## Chapter 16 — Cloud and container security: methods II
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["16.1 Pod Security Standards"]
+  N2["16.2 Network policies"]
+  N3["16.3 Secrets"]
+  N4["16.4 Starting with warn"]
+  N5["16.5 Fixing workloads"]
+  N6["16.6 Recording progress"]
+  N7["Namespaces and labels"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["16.1 Pod Security Standards"]
+  N2["16.2 Network policies"]
+  N3["16.3 Secrets"]
+  N4["16.4 Starting with warn"]
+  N5["16.5 Fixing workloads"]
+  N6["16.6 Recording progress"]
+  N7["Namespaces and labels"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[16.1 Pod Security Standards]
+    |
+    v
+[16.2 Network policies]
+    |
+    v
+[16.3 Secrets]
+    |
+    v
+[16.4 Starting with warn]
+    |
+    v
+[16.5 Fixing workloads]
+    |
+    v
+[16.6 Recording progress]
+    |
+    v
+[Namespaces and labels]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Learning outcomes
 
 You will (1) apply Pod Security Standards; (2) use network policies; (3) handle secrets safely.
@@ -1089,6 +2124,71 @@ Apply workload controls gradually, observing before enforcing.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Cloud and container security: tooling
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["17.1 Needs first"]
+  N2["17.2 Options"]
+  N3["17.3 Criteria"]
+  N4["17.5 Prioritising findings"]
+  N5["17.6 Sprawl"]
+  N6["Testing a tool"]
+  N7["Output handling"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["17.1 Needs first"]
+  N2["17.2 Options"]
+  N3["17.3 Criteria"]
+  N4["17.5 Prioritising findings"]
+  N5["17.6 Sprawl"]
+  N6["Testing a tool"]
+  N7["Output handling"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[17.1 Needs first]
+    |
+    v
+[17.2 Options]
+    |
+    v
+[17.3 Criteria]
+    |
+    v
+[17.5 Prioritising findings]
+    |
+    v
+[17.6 Sprawl]
+    |
+    v
+[Testing a tool]
+    |
+    v
+[Output handling]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes
 
@@ -1161,6 +2261,71 @@ Pick few, understood tools that fit real needs.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Cloud and container security: controls
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX052.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["18.1 Control types"]
+  N2["18.2 Cobalt's controls"]
+  N3["18.3 Framework mapping"]
+  N4["18.4 Gaps"]
+  N5["18.5 Owners and evidence"]
+  N6["18.6 Clients"]
+  N7["Testing controls"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX052"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["18.1 Control types"]
+  N2["18.2 Cobalt's controls"]
+  N3["18.3 Framework mapping"]
+  N4["18.4 Gaps"]
+  N5["18.5 Owners and evidence"]
+  N6["18.6 Clients"]
+  N7["Testing controls"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX052"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[18.1 Control types]
+    |
+    v
+[18.2 Cobalt's controls]
+    |
+    v
+[18.3 Framework mapping]
+    |
+    v
+[18.4 Gaps]
+    |
+    v
+[18.5 Owners and evidence]
+    |
+    v
+[18.6 Clients]
+    |
+    v
+[Testing controls]
+    |
+    v
+[Worked example] --> [Exercise EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes
 
@@ -1235,6 +2400,71 @@ Combine control types, map them and test them.
 <a id="ch-19"></a>
 
 ## Chapter 19 — Cloud and container security: monitoring
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Lesson map
+
+Lesson 19 published. Map, example, EX055.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["19.1 Audit logs"]
+  N2["Lab — audit summary"]
+  N3["19.2 Reading the result"]
+  N4["19.3 Investigating"]
+  N5["19.4 Alerts"]
+  N6["19.5 Noise"]
+  N7["Retention"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["19.1 Audit logs"]
+  N2["Lab — audit summary"]
+  N3["19.2 Reading the result"]
+  N4["19.3 Investigating"]
+  N5["19.4 Alerts"]
+  N6["19.5 Noise"]
+  N7["Retention"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[19.1 Audit logs]
+    |
+    v
+[Lab — audit summary]
+    |
+    v
+[19.2 Reading the result]
+    |
+    v
+[19.3 Investigating]
+    |
+    v
+[19.4 Alerts]
+    |
+    v
+[19.5 Noise]
+    |
+    v
+[Retention]
+    |
+    v
+[Worked example] --> [Exercise EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Learning outcomes
 
@@ -1328,6 +2558,71 @@ Summarise logs, investigate flags, and alert only on actionable events.
 
 ## Chapter 20 — Cloud and container security: troubleshooting
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Lesson map
+
+Lesson 20 published. Map, example, EX058.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["20.1 Common breakages"]
+  N2["20.2 Method"]
+  N3["20.3 Example one"]
+  N4["20.4 Example two"]
+  N5["20.5 Rolling back"]
+  N6["20.6 Learning"]
+  N7["A shared guide"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX058"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["20.1 Common breakages"]
+  N2["20.2 Method"]
+  N3["20.3 Example one"]
+  N4["20.4 Example two"]
+  N5["20.5 Rolling back"]
+  N6["20.6 Learning"]
+  N7["A shared guide"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX058"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[20.1 Common breakages]
+    |
+    v
+[20.2 Method]
+    |
+    v
+[20.3 Example one]
+    |
+    v
+[20.4 Example two]
+    |
+    v
+[20.5 Rolling back]
+    |
+    v
+[20.6 Learning]
+    |
+    v
+[A shared guide]
+    |
+    v
+[Worked example] --> [Exercise EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Learning outcomes
 
 You will (1) diagnose failures caused by security controls; (2) restore service safely; (3) learn from incidents.
@@ -1400,6 +2695,71 @@ Fix the specific need instead of weakening the control.
 
 ## Chapter 21 — Cloud and container security: service integration
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Lesson map
+
+Lesson 21 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["21.1 Managed services"]
+  N2["21.2 Stored keys"]
+  N3["21.3 Workload identity"]
+  N4["21.4 Least privilege for services"]
+  N5["21.5 Storage exposure"]
+  N6["21.6 Reviewing integrations"]
+  N7["Integration checklist"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["21.1 Managed services"]
+  N2["21.2 Stored keys"]
+  N3["21.3 Workload identity"]
+  N4["21.4 Least privilege for services"]
+  N5["21.5 Storage exposure"]
+  N6["21.6 Reviewing integrations"]
+  N7["Integration checklist"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[21.1 Managed services]
+    |
+    v
+[21.2 Stored keys]
+    |
+    v
+[21.3 Workload identity]
+    |
+    v
+[21.4 Least privilege for services]
+    |
+    v
+[21.5 Storage exposure]
+    |
+    v
+[21.6 Reviewing integrations]
+    |
+    v
+[Integration checklist]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Learning outcomes
 
 You will (1) connect cluster workloads to managed cloud services securely; (2) use workload identities instead of stored keys; (3) review integrations.
@@ -1461,6 +2821,71 @@ Replace stored keys with workload identities and narrow each integration.
 <a id="ch-22"></a>
 
 ## Chapter 22 — Cloud and container security: automation
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Lesson map
+
+Lesson 22 published. Map, example, EX064.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["22.1 Shift checks earlier"]
+  N2["22.2 IaC smells"]
+  N3["Lab — pipeline checks"]
+  N4["22.3 Reading the result"]
+  N5["22.4 Explaining blocks"]
+  N6["22.5 Exceptions"]
+  N7["Measuring the checks"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX064"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["22.1 Shift checks earlier"]
+  N2["22.2 IaC smells"]
+  N3["Lab — pipeline checks"]
+  N4["22.3 Reading the result"]
+  N5["22.4 Explaining blocks"]
+  N6["22.5 Exceptions"]
+  N7["Measuring the checks"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX064"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[22.1 Shift checks earlier]
+    |
+    v
+[22.2 IaC smells]
+    |
+    v
+[Lab — pipeline checks]
+    |
+    v
+[22.3 Reading the result]
+    |
+    v
+[22.4 Explaining blocks]
+    |
+    v
+[22.5 Exceptions]
+    |
+    v
+[Measuring the checks]
+    |
+    v
+[Worked example] --> [Exercise EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Learning outcomes
 
@@ -1554,6 +2979,71 @@ Block risky changes early with clear explanations and keep detection for the res
 
 ## Chapter 23 — Cloud and container security: evaluation
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Lesson map
+
+Lesson 23 published. Map, example, EX067.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["23.1 What to compare"]
+  N2["Lab — before and after"]
+  N3["23.2 Reading the result"]
+  N4["23.3 Checking the advisory time"]
+  N5["23.5 Remaining items"]
+  N6["Sharing results"]
+  N7["Honest framing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX067"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["23.1 What to compare"]
+  N2["Lab — before and after"]
+  N3["23.2 Reading the result"]
+  N4["23.3 Checking the advisory time"]
+  N5["23.5 Remaining items"]
+  N6["Sharing results"]
+  N7["Honest framing"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX067"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[23.1 What to compare]
+    |
+    v
+[Lab — before and after]
+    |
+    v
+[23.2 Reading the result]
+    |
+    v
+[23.3 Checking the advisory time]
+    |
+    v
+[23.5 Remaining items]
+    |
+    v
+[Sharing results]
+    |
+    v
+[Honest framing]
+    |
+    v
+[Worked example] --> [Exercise EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Learning outcomes
 
 You will (1) compare measures before and after improvements; (2) judge whether changes worked; (3) state limits honestly.
@@ -1639,6 +3129,71 @@ Measure again, compare fairly, and state limits.
 
 ## Chapter 24 — Applied research methods
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Lesson map
+
+Lesson 24 published. Map, example, EX070.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["24.1 A question from practice"]
+  N2["24.2 Method"]
+  N3["24.3 Reading research"]
+  N4["24.4 Analysis"]
+  N5["24.5 Ethics"]
+  N6["24.6 Writing up"]
+  N7["Choosing method"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX070"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["24.1 A question from practice"]
+  N2["24.2 Method"]
+  N3["24.3 Reading research"]
+  N4["24.4 Analysis"]
+  N5["24.5 Ethics"]
+  N6["24.6 Writing up"]
+  N7["Choosing method"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[24.1 A question from practice]
+    |
+    v
+[24.2 Method]
+    |
+    v
+[24.3 Reading research]
+    |
+    v
+[24.4 Analysis]
+    |
+    v
+[24.5 Ethics]
+    |
+    v
+[24.6 Writing up]
+    |
+    v
+[Choosing method]
+    |
+    v
+[Worked example] --> [Exercise EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Learning outcomes
 
 You will (1) ask a focused practical question; (2) collect and analyse data carefully; (3) read relevant research.
@@ -1712,6 +3267,71 @@ Small focused studies can guide practical decisions.
 <a id="ch-25"></a>
 
 ## Chapter 25 — Team project studio
+
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Lesson map
+
+Lesson 25 published. Map, example, EX073.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["25.1 The project"]
+  N2["25.2 Dividing work"]
+  N3["25.3 Reviews"]
+  N4["25.4 Communication"]
+  N5["25.5 Client voice"]
+  N6["25.6 Result"]
+  N7["Working agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX073"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["25.1 The project"]
+  N2["25.2 Dividing work"]
+  N3["25.3 Reviews"]
+  N4["25.4 Communication"]
+  N5["25.5 Client voice"]
+  N6["25.6 Result"]
+  N7["Working agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[25.1 The project]
+    |
+    v
+[25.2 Dividing work]
+    |
+    v
+[25.3 Reviews]
+    |
+    v
+[25.4 Communication]
+    |
+    v
+[25.5 Client voice]
+    |
+    v
+[25.6 Result]
+    |
+    v
+[Working agreement]
+    |
+    v
+[Worked example] --> [Exercise EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
 
 ### Learning outcomes
 
@@ -1790,6 +3410,71 @@ Shared work needs owners, reviews and the reader's language.
 <a id="ch-26"></a>
 
 ## Chapter 26 — Cloud and container security: operational handoff
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Lesson map
+
+Lesson 26 published. Map, example, EX076.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["26.1 Why handoff"]
+  N2["26.2 Runbooks"]
+  N3["26.3 Owners"]
+  N4["26.4 Alert routes"]
+  N5["26.6 Practice"]
+  N6["Knowledge transfer sessions"]
+  N7["Ownership agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX076"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["26.1 Why handoff"]
+  N2["26.2 Runbooks"]
+  N3["26.3 Owners"]
+  N4["26.4 Alert routes"]
+  N5["26.6 Practice"]
+  N6["Knowledge transfer sessions"]
+  N7["Ownership agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX076"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[26.1 Why handoff]
+    |
+    v
+[26.2 Runbooks]
+    |
+    v
+[26.3 Owners]
+    |
+    v
+[26.4 Alert routes]
+    |
+    v
+[26.6 Practice]
+    |
+    v
+[Knowledge transfer sessions]
+    |
+    v
+[Ownership agreement]
+    |
+    v
+[Worked example] --> [Exercise EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Learning outcomes
 
@@ -1872,6 +3557,71 @@ Hand off with runbooks, owners and practice.
 <a id="ch-27"></a>
 
 ## Chapter 27 — Deployment and validation
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Lesson map
+
+Lesson 27 published. Map, example, EX079.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["27.1 Handoff checklist"]
+  N2["Lab — handoff check"]
+  N3["27.2 Reading the result"]
+  N4["27.3 Restore test"]
+  N5["27.4 Client contact"]
+  N6["27.5 Validation in production"]
+  N7["Why a checklist"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX079"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["27.1 Handoff checklist"]
+  N2["Lab — handoff check"]
+  N3["27.2 Reading the result"]
+  N4["27.3 Restore test"]
+  N5["27.4 Client contact"]
+  N6["27.5 Validation in production"]
+  N7["Why a checklist"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX079"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[27.1 Handoff checklist]
+    |
+    v
+[Lab — handoff check]
+    |
+    v
+[27.2 Reading the result]
+    |
+    v
+[27.3 Restore test]
+    |
+    v
+[27.4 Client contact]
+    |
+    v
+[27.5 Validation in production]
+    |
+    v
+[Why a checklist]
+    |
+    v
+[Worked example] --> [Exercise EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Learning outcomes
 
@@ -1975,6 +3725,71 @@ Check the pack, validate in production and close gaps.
 
 ## Chapter 28 — Field practice
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Lesson map
+
+Lesson 28 published. Map, example, EX082.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["28.1 The advisory"]
+  N2["28.2 Response"]
+  N3["28.3 Prioritising"]
+  N4["28.4 Communication"]
+  N5["28.5 Record"]
+  N6["28.6 Comparison"]
+  N7["Using severity and EPSS"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX082"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["28.1 The advisory"]
+  N2["28.2 Response"]
+  N3["28.3 Prioritising"]
+  N4["28.4 Communication"]
+  N5["28.5 Record"]
+  N6["28.6 Comparison"]
+  N7["Using severity and EPSS"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX082"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[28.1 The advisory]
+    |
+    v
+[28.2 Response]
+    |
+    v
+[28.3 Prioritising]
+    |
+    v
+[28.4 Communication]
+    |
+    v
+[28.5 Record]
+    |
+    v
+[28.6 Comparison]
+    |
+    v
+[Using severity and EPSS]
+    |
+    v
+[Worked example] --> [Exercise EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Learning outcomes
 
 You will (1) respond to a real-style advisory using the new tools; (2) communicate with clients; (3) record the response.
@@ -2052,6 +3867,71 @@ Good preparation makes advisories routine.
 <a id="ch-29"></a>
 
 ## Chapter 29 — Capstone build
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Lesson map
+
+Lesson 29 published. Map, example, EX085.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["29.1 Capstone"]
+  N2["29.2 Criteria"]
+  N3["29.3 Build"]
+  N4["29.4 Testing"]
+  N5["29.5 Fixes"]
+  N6["29.6 Safety"]
+  N7["Repository layout"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX085"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["29.1 Capstone"]
+  N2["29.2 Criteria"]
+  N3["29.3 Build"]
+  N4["29.4 Testing"]
+  N5["29.5 Fixes"]
+  N6["29.6 Safety"]
+  N7["Repository layout"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX085"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[29.1 Capstone]
+    |
+    v
+[29.2 Criteria]
+    |
+    v
+[29.3 Build]
+    |
+    v
+[29.4 Testing]
+    |
+    v
+[29.5 Fixes]
+    |
+    v
+[29.6 Safety]
+    |
+    v
+[Repository layout]
+    |
+    v
+[Worked example] --> [Exercise EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Learning outcomes
 
@@ -2142,6 +4022,71 @@ Build, test with others and fix assumptions.
 <a id="ch-30"></a>
 
 ## Chapter 30 — Capstone assessment
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Lesson map
+
+Lesson 30 published. Map, example, EX088.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["30.1 Presentation"]
+  N2["30.2 Assessment"]
+  N3["30.3 Reflection"]
+  N4["30.4 Next steps"]
+  N5["30.5 Lessons"]
+  N6["30.6 Thanks"]
+  N7["Examiner feedback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX088"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["30.1 Presentation"]
+  N2["30.2 Assessment"]
+  N3["30.3 Reflection"]
+  N4["30.4 Next steps"]
+  N5["30.5 Lessons"]
+  N6["30.6 Thanks"]
+  N7["Examiner feedback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX088"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[30.1 Presentation]
+    |
+    v
+[30.2 Assessment]
+    |
+    v
+[30.3 Reflection]
+    |
+    v
+[30.4 Next steps]
+    |
+    v
+[30.5 Lessons]
+    |
+    v
+[30.6 Thanks]
+    |
+    v
+[Examiner feedback]
+    |
+    v
+[Worked example] --> [Exercise EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Learning outcomes
 

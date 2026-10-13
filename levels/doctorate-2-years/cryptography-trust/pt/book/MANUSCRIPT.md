@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Trilha de Pesquisa de Doutorado
 
 - Idioma: português do Brasil (`pt`); curso 192, trilha de pesquisa de doutorado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: doutorandos que estudam como o uso indevido de criptografia em software pode ser medido e reduzido como controle de engenharia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: este livro estuda o *uso* de bibliotecas criptográficas avaliadas. Ele nunca ensina a projetar nem a implementar à mão primitivas para produção; os pequenos laboratórios com a biblioteca padrão apenas medem, contam e calculam hashes de dados sintéticos. Pessoas, organizações, chaves e achados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -36,6 +36,66 @@ Katz e Lindell, *Introduction to Modern Cryptography* (3ª ed.); Boneh e Shoup, 
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O caso"]
+  N1["1.2 O que conta como uso indevido"]
+  N2["Laboratório — Concordância entre codificadores"]
+  N3["1.3 Ler a concordância"]
+  N4["1.4 Integridade e divulgação"]
+  N5["1.5 Validade desde o início"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O caso"]
+  N1["1.2 O que conta como uso indevido"]
+  N2["Laboratório — Concordância entre codificadores"]
+  N3["1.3 Ler a concordância"]
+  N4["1.4 Integridade e divulgação"]
+  N5["1.5 Validade desde o início"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[1.1 O caso]
+    |
+    v
+[1.2 O que conta como uso indevido]
+    |
+    v
+[Laboratório — Concordância entre codificadores]
+    |
+    v
+[1.3 Ler a concordância]
+    |
+    v
+[1.4 Integridade e divulgação]
+    |
+    v
+[1.5 Validade desde o início]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -143,6 +203,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Criptografia e serviços de confiança: fronteira da pesquisa
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 O que está resolvido"]
+  N1["Laboratório — Risco de colisão de nonces aleatórios"]
+  N2["2.3 Ler a curva"]
+  N3["2.4 Trabalhos sobre resistência a uso indevido e usa"]
+  N4["2.5 Posicionar a contribuição"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 O que está resolvido"]
+  N1["Laboratório — Risco de colisão de nonces aleatórios"]
+  N2["2.3 Ler a curva"]
+  N3["2.4 Trabalhos sobre resistência a uso indevido e usa"]
+  N4["2.5 Posicionar a contribuição"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[2.1 O que está resolvido]
+    |
+    v
+[Laboratório — Risco de colisão de nonces aleatórios]
+    |
+    v
+[2.3 Ler a curva]
+    |
+    v
+[2.4 Trabalhos sobre resistência a uso indevido e usa]
+    |
+    v
+[2.5 Posicionar a contribuição]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear a fronteira da pesquisa sobre criptografia usável e resistente a uso indevido; (2) quantificar um risco de uso indevido a partir do limite declarado numa norma; (3) posicionar uma questão original em relação ao que as normas já resolvem.
@@ -239,6 +354,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Proposta de contribuição original
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Da pergunta às hipóteses"]
+  N1["3.2 Escolher o desfecho"]
+  N2["3.3 Desenho e poder estatístico"]
+  N3["3.4 Registro e plano de análise"]
+  N4["3.5 Riscos para a parceira"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Da pergunta às hipóteses"]
+  N1["3.2 Escolher o desfecho"]
+  N2["3.3 Desenho e poder estatístico"]
+  N3["3.4 Registro e plano de análise"]
+  N4["3.5 Riscos para a parceira"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[3.1 Da pergunta às hipóteses]
+    |
+    v
+[3.2 Escolher o desfecho]
+    |
+    v
+[3.3 Desenho e poder estatístico]
+    |
+    v
+[3.4 Registro e plano de análise]
+    |
+    v
+[3.5 Riscos para a parceira]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever hipóteses falseáveis para um estudo de redução do uso indevido; (2) escolher um desfecho primário e a análise antes de ver os dados; (3) registrar o plano para que mudanças posteriores fiquem visíveis.
@@ -302,6 +472,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Por que primeiro uma linha de base"]
+  N1["Laboratório — Auditoria de linha de base"]
+  N2["4.2 Ler a linha de base"]
+  N3["4.3 Planejar a partir da linha de base"]
+  N4["4.4 O piloto"]
+  N5["4.5 Revisões antes do estudo principal"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Por que primeiro uma linha de base"]
+  N1["Laboratório — Auditoria de linha de base"]
+  N2["4.2 Ler a linha de base"]
+  N3["4.3 Planejar a partir da linha de base"]
+  N4["4.4 O piloto"]
+  N5["4.5 Revisões antes do estudo principal"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[4.1 Por que primeiro uma linha de base]
+    |
+    v
+[Laboratório — Auditoria de linha de base]
+    |
+    v
+[4.2 Ler a linha de base]
+    |
+    v
+[4.3 Planejar a partir da linha de base]
+    |
+    v
+[4.4 O piloto]
+    |
+    v
+[4.5 Revisões antes do estudo principal]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -396,6 +626,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Randomização e condução"]
+  N1["5.2 Análise primária"]
+  N2["Laboratório — Teste de permutação"]
+  N3["5.3 Ler o resultado"]
+  N4["5.4 Validação independente"]
+  N5["5.5 Ameaças que permanecem"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Randomização e condução"]
+  N1["5.2 Análise primária"]
+  N2["Laboratório — Teste de permutação"]
+  N3["5.3 Ler o resultado"]
+  N4["5.4 Validação independente"]
+  N5["5.5 Ameaças que permanecem"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[5.1 Randomização e condução]
+    |
+    v
+[5.2 Análise primária]
+    |
+    v
+[Laboratório — Teste de permutação]
+    |
+    v
+[5.3 Ler o resultado]
+    |
+    v
+[5.4 Validação independente]
+    |
+    v
+[5.5 Ameaças que permanecem]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -493,6 +783,61 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Crítica por pares e revisão
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Convidar uma leitura hostil"]
+  N1["6.2 A objeção do criptógrafo"]
+  N2["6.3 A objeção do metodologista"]
+  N3["6.4 A objeção do engenheiro"]
+  N4["6.5 Escrever a carta de resposta"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Convidar uma leitura hostil"]
+  N1["6.2 A objeção do criptógrafo"]
+  N2["6.3 A objeção do metodologista"]
+  N3["6.4 A objeção do engenheiro"]
+  N4["6.5 Escrever a carta de resposta"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[6.1 Convidar uma leitura hostil]
+    |
+    v
+[6.2 A objeção do criptógrafo]
+    |
+    v
+[6.3 A objeção do metodologista]
+    |
+    v
+[6.4 A objeção do engenheiro]
+    |
+    v
+[6.5 Escrever a carta de resposta]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) organizar uma crítica estruturada por pares de um estudo de campo em criptografia; (2) separar as objeções fatais das corrigíveis; (3) revisar um manuscrito com uma carta de resposta rastreável.
@@ -556,6 +901,66 @@ Continue para a próxima aula já escrita.
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Um argumento, não cinco artigos"]
+  N1["7.2 O que entra no arquivo"]
+  N2["7.3 Detectar edições silenciosas"]
+  N3["Laboratório — Manifesto de hashes"]
+  N4["7.4 Ler o manifesto"]
+  N5["7.5 Decisões de divulgação"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Um argumento, não cinco artigos"]
+  N1["7.2 O que entra no arquivo"]
+  N2["7.3 Detectar edições silenciosas"]
+  N3["Laboratório — Manifesto de hashes"]
+  N4["7.4 Ler o manifesto"]
+  N5["7.5 Decisões de divulgação"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[7.1 Um argumento, não cinco artigos]
+    |
+    v
+[7.2 O que entra no arquivo]
+    |
+    v
+[7.3 Detectar edições silenciosas]
+    |
+    v
+[Laboratório — Manifesto de hashes]
+    |
+    v
+[7.4 Ler o manifesto]
+    |
+    v
+[7.5 Decisões de divulgação]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -652,6 +1057,61 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Preparar-se para as perguntas difíceis"]
+  N1["8.2 Responder sem exagerar"]
+  N2["8.3 Escolher os veículos"]
+  N3["8.4 Divulgação coordenada com a parceira"]
+  N4["8.5 Pesquisas de continuidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Preparar-se para as perguntas difíceis"]
+  N1["8.2 Responder sem exagerar"]
+  N2["8.3 Escolher os veículos"]
+  N3["8.4 Divulgação coordenada com a parceira"]
+  N4["8.5 Pesquisas de continuidade"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[8.1 Preparar-se para as perguntas difíceis]
+    |
+    v
+[8.2 Responder sem exagerar]
+    |
+    v
+[8.3 Escolher os veículos]
+    |
+    v
+[8.4 Divulgação coordenada com a parceira]
+    |
+    v
+[8.5 Pesquisas de continuidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

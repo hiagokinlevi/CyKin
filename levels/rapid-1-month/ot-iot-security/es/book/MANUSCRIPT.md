@@ -1,7 +1,7 @@
 # Seguridad de TO, IoT y sistemas ciberfísicos: una introducción rápida
 
 - Idioma: español neutro (`es`); curso rápido, un mes; aproximadamente 80 horas de estudio planificado. Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–4 de 4 tienen texto didáctico escrito a mano; los ejercicios EX001–EX050 tienen sus resultados resueltos correspondientes; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas se incluyen a partir de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4.
+- Estado editorial: **publicado**. Los capítulos 1–4 de 4 tienen texto didáctico escrito a mano; los ejercicios EX001–EX050 tienen sus resultados resueltos correspondientes; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas se incluyen a partir de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4.
 - Público: personas que empiezan, sin conocimientos previos de TO.
 - Relación con los libros vecinos: el [libro del curso profesional](../../../../professional-6-months/ot-iot-security/es/book/MANUSCRIPT.md) desarrolla cada tema en la práctica. **Este libro es una introducción de cuatro capítulos.**
 - Autoría: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus derechos.
@@ -35,6 +35,66 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Qué son la seguridad de TO, de IoT y de los sistemas ciberfísicos
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Tres términos que se solapan"]
+  N2["1.2 Una planta solar con baterías"]
+  N3["1.3 Prioridades"]
+  N4["1.4 Por qué es una preocupación real"]
+  N5["1.5 El mapa de guías"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Tres términos que se solapan"]
+  N2["1.2 Una planta solar con baterías"]
+  N3["1.3 Prioridades"]
+  N4["1.4 Por qué es una preocupación real"]
+  N5["1.5 El mapa de guías"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[1.1 Tres términos que se solapan]
+    |
+    v
+[1.2 Una planta solar con baterías]
+    |
+    v
+[1.3 Prioridades]
+    |
+    v
+[1.4 Por qué es una preocupación real]
+    |
+    v
+[1.5 El mapa de guías]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje
 
@@ -101,6 +161,66 @@ La TO, el IoT y los CPS unen la computación con equipos físicos; en una planta
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Activos, redes y exposición
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX014.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["2.1 Primero, el inventario"]
+  N2["2.2 Lectura del laboratorio"]
+  N3["2.3 Separar la red"]
+  N4["2.4 Exposición y acceso remoto"]
+  N5["2.5 Portales en la nube"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX014"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["2.1 Primero, el inventario"]
+  N2["2.2 Lectura del laboratorio"]
+  N3["2.3 Separar la red"]
+  N4["2.4 Exposición y acceso remoto"]
+  N5["2.5 Portales en la nube"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[2.1 Primero, el inventario]
+    |
+    v
+[2.2 Lectura del laboratorio]
+    |
+    v
+[2.3 Separar la red]
+    |
+    v
+[2.4 Exposición y acceso remoto]
+    |
+    v
+[2.5 Portales en la nube]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Resultados de aprendizaje
 
@@ -189,6 +309,71 @@ Conozca todos los dispositivos, corrija las contraseñas por defecto y el firmwa
 
 ## Capítulo 3 — Reconocer y notificar problemas
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Primero, lo normal"]
+  N2["3.2 Lectura del laboratorio"]
+  N3["3.3 Poner nombre a lo que vio"]
+  N4["3.4 Otras señales de alerta"]
+  N5["3.5 Notificar"]
+  N6["3.6 La seguridad física va primero"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX027"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Primero, lo normal"]
+  N2["3.2 Lectura del laboratorio"]
+  N3["3.3 Poner nombre a lo que vio"]
+  N4["3.4 Otras señales de alerta"]
+  N5["3.5 Notificar"]
+  N6["3.6 La seguridad física va primero"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[3.1 Primero, lo normal]
+    |
+    v
+[3.2 Lectura del laboratorio]
+    |
+    v
+[3.3 Poner nombre a lo que vio]
+    |
+    v
+[3.4 Otras señales de alerta]
+    |
+    v
+[3.5 Notificar]
+    |
+    v
+[3.6 La seguridad física va primero]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Resultados de aprendizaje
 
 Usted podrá (1) describir el comportamiento normal de Elmstead; (2) detectar una orden que no encaja con el calendario; (3) describir lo que vio con los nombres de ATT&CK for ICS; y (4) redactar un informe breve y basado en hechos.
@@ -274,6 +459,61 @@ Ponga por escrito lo normal, advierta lo que no encaja, descríbalo con claridad
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Hábitos seguros, nociones de respuesta y próximos pasos
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Hábitos cotidianos"]
+  N2["4.2 Responder a un incidente"]
+  N3["4.3 Actualizaciones y dispositivos"]
+  N4["4.5 Próximos pasos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX039"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Hábitos cotidianos"]
+  N2["4.2 Responder a un incidente"]
+  N3["4.3 Actualizaciones y dispositivos"]
+  N4["4.5 Próximos pasos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[4.1 Hábitos cotidianos]
+    |
+    v
+[4.2 Responder a un incidente]
+    |
+    v
+[4.3 Actualizaciones y dispositivos]
+    |
+    v
+[4.5 Próximos pasos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Resultados de aprendizaje
 

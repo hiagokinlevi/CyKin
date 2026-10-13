@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Professional Course
 
 - Language: English (`en`); course 038, Professional course (6 months).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working IT and security professionals who must set up or run a security operations function in a mid-sized organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -37,6 +37,66 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 <a id="ch-01"></a>
 
 ## Chapter 1 — Security operations for working professionals
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 What the function does"]
+  N3["1.3 Models"]
+  N4["1.4 Mission and scope"]
+  N5["1.5 Frameworks"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 What the function does"]
+  N3["1.3 Models"]
+  N4["1.4 Mission and scope"]
+  N5["1.5 Frameworks"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 What the function does]
+    |
+    v
+[1.3 Models]
+    |
+    v
+[1.4 Mission and scope]
+    |
+    v
+[1.5 Frameworks]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -91,6 +151,71 @@ Start with mission, scope and model before buying tools.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Governance and authority
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Why authority matters"]
+  N2["2.2 The charter"]
+  N3["2.3 Pre-approved actions"]
+  N4["2.4 Escalation"]
+  N5["2.5 Reporting"]
+  N6["2.6 Privacy"]
+  N7["Reviewing the charter"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Why authority matters"]
+  N2["2.2 The charter"]
+  N3["2.3 Pre-approved actions"]
+  N4["2.4 Escalation"]
+  N5["2.5 Reporting"]
+  N6["2.6 Privacy"]
+  N7["Reviewing the charter"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Why authority matters]
+    |
+    v
+[2.2 The charter]
+    |
+    v
+[2.3 Pre-approved actions]
+    |
+    v
+[2.4 Escalation]
+    |
+    v
+[2.5 Reporting]
+    |
+    v
+[2.6 Privacy]
+    |
+    v
+[Reviewing the charter]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -153,6 +278,71 @@ Write authority down, pre-approve safe actions and report to the board.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Log sources and coverage
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Choosing sources"]
+  N2["Lab — measuring coverage"]
+  N3["3.2 Lab result"]
+  N4["3.3 Prioritising"]
+  N5["3.4 Retention and time"]
+  N6["3.5 Cost"]
+  N7["Audit settings"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Choosing sources"]
+  N2["Lab — measuring coverage"]
+  N3["3.2 Lab result"]
+  N4["3.3 Prioritising"]
+  N5["3.4 Retention and time"]
+  N6["3.5 Cost"]
+  N7["Audit settings"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Choosing sources]
+    |
+    v
+[Lab — measuring coverage]
+    |
+    v
+[3.2 Lab result]
+    |
+    v
+[3.3 Prioritising]
+    |
+    v
+[3.4 Retention and time]
+    |
+    v
+[3.5 Cost]
+    |
+    v
+[Audit settings]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -239,6 +429,71 @@ Collect logs according to risk, measure coverage and record gaps with compensati
 
 ## Chapter 4 — Detection with ATT&CK and Sigma
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Starting from threats"]
+  N2["4.2 Shared rules"]
+  N3["4.3 Adapting"]
+  N4["4.4 Testing"]
+  N5["4.5 Honest coverage"]
+  N6["4.6 D3FEND"]
+  N7["Rule ownership"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Starting from threats"]
+  N2["4.2 Shared rules"]
+  N3["4.3 Adapting"]
+  N4["4.4 Testing"]
+  N5["4.5 Honest coverage"]
+  N6["4.6 D3FEND"]
+  N7["Rule ownership"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Starting from threats]
+    |
+    v
+[4.2 Shared rules]
+    |
+    v
+[4.3 Adapting]
+    |
+    v
+[4.4 Testing]
+    |
+    v
+[4.5 Honest coverage]
+    |
+    v
+[4.6 D3FEND]
+    |
+    v
+[Rule ownership]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) map threats to ATT&CK techniques; (2) select detections from shared Sigma rules; (3) adapt rules to the environment; (4) record coverage honestly.
@@ -304,6 +559,71 @@ Plan detections from real threats, adapt shared rules and count only tested cove
 <a id="ch-05"></a>
 
 ## Chapter 5 — Triage and the alert pipeline
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The pipeline"]
+  N2["5.2 Priorities"]
+  N3["5.3 Service levels"]
+  N4["5.4 Triage notes"]
+  N5["5.5 Unowned queues"]
+  N6["5.6 New hire"]
+  N7["Closing well"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The pipeline"]
+  N2["5.2 Priorities"]
+  N3["5.3 Service levels"]
+  N4["5.4 Triage notes"]
+  N5["5.5 Unowned queues"]
+  N6["5.6 New hire"]
+  N7["Closing well"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The pipeline]
+    |
+    v
+[5.2 Priorities]
+    |
+    v
+[5.3 Service levels]
+    |
+    v
+[5.4 Triage notes]
+    |
+    v
+[5.5 Unowned queues]
+    |
+    v
+[5.6 New hire]
+    |
+    v
+[Closing well]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -371,6 +691,71 @@ Every alert needs an owner, a priority and a service level.
 
 ## Chapter 6 — Working with a managed security provider
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Agreement"]
+  N2["6.2 Context"]
+  N3["6.3 Daily handover"]
+  N4["6.4 Monthly review"]
+  N5["6.5 Testing the provider"]
+  N6["6.6 Exit plan"]
+  N7["Communication channels"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Agreement"]
+  N2["6.2 Context"]
+  N3["6.3 Daily handover"]
+  N4["6.4 Monthly review"]
+  N5["6.5 Testing the provider"]
+  N6["6.6 Exit plan"]
+  N7["Communication channels"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Agreement]
+    |
+    v
+[6.2 Context]
+    |
+    v
+[6.3 Daily handover]
+    |
+    v
+[6.4 Monthly review]
+    |
+    v
+[6.5 Testing the provider]
+    |
+    v
+[6.6 Exit plan]
+    |
+    v
+[Communication channels]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) write a clear service agreement with a provider; (2) share business context; (3) review provider performance; (4) manage the hybrid handover.
@@ -432,6 +817,71 @@ A provider works well only with a clear agreement, shared context and regular te
 <a id="ch-07"></a>
 
 ## Chapter 7 — Measuring and tuning detections
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Precision"]
+  N2["Lab — rule precision"]
+  N3["7.2 Lab result"]
+  N4["7.3 Base rate"]
+  N5["7.4 Tuning"]
+  N6["7.5 Recording"]
+  N7["Validation alongside precision"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Precision"]
+  N2["Lab — rule precision"]
+  N3["7.2 Lab result"]
+  N4["7.3 Base rate"]
+  N5["7.4 Tuning"]
+  N6["7.5 Recording"]
+  N7["Validation alongside precision"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Precision]
+    |
+    v
+[Lab — rule precision]
+    |
+    v
+[7.2 Lab result]
+    |
+    v
+[7.3 Base rate]
+    |
+    v
+[7.4 Tuning]
+    |
+    v
+[7.5 Recording]
+    |
+    v
+[Validation alongside precision]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -514,6 +964,71 @@ Measure precision, tune with care and keep real cases detectable.
 
 ## Chapter 8 — Incident response planning
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 The plan"]
+  N2["8.2 Roles"]
+  N3["8.3 Severity"]
+  N4["8.4 Playbooks"]
+  N5["8.5 Communications"]
+  N6["8.6 Exercises"]
+  N7["Contact lists and access"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 The plan"]
+  N2["8.2 Roles"]
+  N3["8.3 Severity"]
+  N4["8.4 Playbooks"]
+  N5["8.5 Communications"]
+  N6["8.6 Exercises"]
+  N7["Contact lists and access"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 The plan]
+    |
+    v
+[8.2 Roles]
+    |
+    v
+[8.3 Severity]
+    |
+    v
+[8.4 Playbooks]
+    |
+    v
+[8.5 Communications]
+    |
+    v
+[8.6 Exercises]
+    |
+    v
+[Contact lists and access]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) write an incident response plan aligned with SP 800-61r3; (2) define roles and severity; (3) prepare playbooks for likely incidents; (4) plan communications and legal duties.
@@ -579,6 +1094,71 @@ A response plan names roles, sets severity, holds playbooks and is tested.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Investigation and timelines
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Why timelines"]
+  N2["Lab — merging sources"]
+  N3["9.2 Lab result"]
+  N4["9.3 Facts and inferences"]
+  N5["9.4 Scope"]
+  N6["9.5 Evidence"]
+  N7["9.6 Research"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Why timelines"]
+  N2["Lab — merging sources"]
+  N3["9.2 Lab result"]
+  N4["9.3 Facts and inferences"]
+  N5["9.4 Scope"]
+  N6["9.5 Evidence"]
+  N7["9.6 Research"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Why timelines]
+    |
+    v
+[Lab — merging sources]
+    |
+    v
+[9.2 Lab result]
+    |
+    v
+[9.3 Facts and inferences]
+    |
+    v
+[9.4 Scope]
+    |
+    v
+[9.5 Evidence]
+    |
+    v
+[9.6 Research]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -665,6 +1245,71 @@ Merge sources, separate fact from inference and state scope and gaps clearly.
 
 ## Chapter 10 — Metrics and reporting to the board
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Choosing metrics"]
+  N2["10.2 Medians and trends"]
+  N3["10.3 Misleading metrics"]
+  N4["10.4 The board page"]
+  N5["10.5 Decisions"]
+  N6["10.6 Honesty"]
+  N7["Audience"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Choosing metrics"]
+  N2["10.2 Medians and trends"]
+  N3["10.3 Misleading metrics"]
+  N4["10.4 The board page"]
+  N5["10.5 Decisions"]
+  N6["10.6 Honesty"]
+  N7["Audience"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Choosing metrics]
+    |
+    v
+[10.2 Medians and trends]
+    |
+    v
+[10.3 Misleading metrics]
+    |
+    v
+[10.4 The board page]
+    |
+    v
+[10.5 Decisions]
+    |
+    v
+[10.6 Honesty]
+    |
+    v
+[Audience]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) choose metrics that show SOC value; (2) present trends and risks to non-specialists; (3) avoid misleading metrics; (4) link reporting to decisions.
@@ -731,6 +1376,71 @@ Report a few honest metrics that lead to decisions.
 
 ## Chapter 11 — Maturity and continuous improvement
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 SOC-CMM"]
+  N2["11.2 Continuous monitoring"]
+  N3["11.3 Research"]
+  N4["11.4 Year-two plan"]
+  N5["11.5 Lessons loop"]
+  N6["Improvement backlog"]
+  N7["External views"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 SOC-CMM"]
+  N2["11.2 Continuous monitoring"]
+  N3["11.3 Research"]
+  N4["11.4 Year-two plan"]
+  N5["11.5 Lessons loop"]
+  N6["Improvement backlog"]
+  N7["External views"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 SOC-CMM]
+    |
+    v
+[11.2 Continuous monitoring]
+    |
+    v
+[11.3 Research]
+    |
+    v
+[11.4 Year-two plan]
+    |
+    v
+[11.5 Lessons loop]
+    |
+    v
+[Improvement backlog]
+    |
+    v
+[External views]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) assess SOC capability with SOC-CMM; (2) apply continuous monitoring ideas from SP 800-137; (3) plan year-two improvements; (4) learn from research on SOC practice.
@@ -792,6 +1502,71 @@ Assess honestly, monitor continuously and close improvement actions.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone: the first year in review
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 Goals revisited"]
+  N2["12.2 Real incident"]
+  N3["12.3 Comparison with March"]
+  N4["12.4 Reflection"]
+  N5["12.5 Ethics"]
+  N6["12.6 Next steps"]
+  N7["Costs"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 Goals revisited"]
+  N2["12.2 Real incident"]
+  N3["12.3 Comparison with March"]
+  N4["12.4 Reflection"]
+  N5["12.5 Ethics"]
+  N6["12.6 Next steps"]
+  N7["Costs"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 Goals revisited]
+    |
+    v
+[12.2 Real incident]
+    |
+    v
+[12.3 Comparison with March]
+    |
+    v
+[12.4 Reflection]
+    |
+    v
+[12.5 Ethics]
+    |
+    v
+[12.6 Next steps]
+    |
+    v
+[Costs]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

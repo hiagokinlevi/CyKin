@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro de Prática Profissional
 
 - Idioma: português do Brasil (`pt`); curso profissional, seis meses; aproximadamente 300 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito; os exercícios EX001–EX060 (cinco por capítulo) têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–12 de 12 têm texto didático escrito; os exercícios EX001–EX060 (cinco por capítulo) têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: profissionais em atividade — analistas, responsáveis por serviços, auditores, pessoas em transição de carreira — que precisam conduzir trabalhos de segurança de IA com competência, sob supervisão.
 - Relação com os livros vizinhos: o [livro técnico](../../../../technical-18-months/ai-security/en/book/MANUSCRIPT.md) é mais longo e mais prático; o [livro rápido](../../../../rapid-1-month/ai-security/en/book/MANUSCRIPT.md) é uma orientação de um mês. **Este livro é centrado no fluxo de trabalho**: métodos, ferramentas, controles, casos e relatos para a prática do dia a dia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -34,6 +34,56 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 A tríade CIA aplicada à IA"]
+  N1["1.2 Vocabulário básico"]
+  N2["1.3 Referenciais e seus usos"]
+  N3["1.4 Por que a IA precisa de atenção específica"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 A tríade CIA aplicada à IA"]
+  N1["1.2 Vocabulário básico"]
+  N2["1.3 Referenciais e seus usos"]
+  N3["1.4 Por que a IA precisa de atenção específica"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 A tríade CIA aplicada à IA]
+    |
+    v
+[1.2 Vocabulário básico]
+    |
+    v
+[1.3 Referenciais e seus usos]
+    |
+    v
+[1.4 Por que a IA precisa de atenção específica]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -89,6 +139,61 @@ Os profissionais partem de um vocabulário e de referenciais compartilhados e de
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança de IA e aprendizado de máquina: contexto do serviço e das partes interessadas
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["2.1 Finalidade, usuários, pessoas afetadas"]
+  N1["2.2 Partes interessadas"]
+  N2["2.3 Um quadro simples do fluxo de dados"]
+  N3["2.4 Ativos de IA"]
+  N4["2.5 Quais serviços primeiro"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX006"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Finalidade, usuários, pessoas afetadas"]
+  N1["2.2 Partes interessadas"]
+  N2["2.3 Um quadro simples do fluxo de dados"]
+  N3["2.4 Ativos de IA"]
+  N4["2.5 Quais serviços primeiro"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
+```
+
+```text
+[2.1 Finalidade, usuários, pessoas afetadas]
+    |
+    v
+[2.2 Partes interessadas]
+    |
+    v
+[2.3 Um quadro simples do fluxo de dados]
+    |
+    v
+[2.4 Ativos de IA]
+    |
+    v
+[2.5 Quais serviços primeiro]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -180,6 +285,66 @@ O contexto — finalidade, pessoas, partes interessadas, fluxos e ativos — dec
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e tratamento de evidências
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["3.1 Autorização"]
+  N1["3.2 Ambientes seguros"]
+  N2["3.3 Evidências"]
+  N3["3.4 Constatações sensíveis"]
+  N4["3.5 Repetir e quantificar"]
+  N5["3.7b Guardar as evidências com segurança"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX011"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Autorização"]
+  N1["3.2 Ambientes seguros"]
+  N2["3.3 Evidências"]
+  N3["3.4 Constatações sensíveis"]
+  N4["3.5 Repetir e quantificar"]
+  N5["3.7b Guardar as evidências com segurança"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
+```
+
+```text
+[3.1 Autorização]
+    |
+    v
+[3.2 Ambientes seguros]
+    |
+    v
+[3.3 Evidências]
+    |
+    v
+[3.4 Constatações sensíveis]
+    |
+    v
+[3.5 Repetir e quantificar]
+    |
+    v
+[3.7b Guardar as evidências com segurança]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -277,6 +442,61 @@ Testes autorizados e seguros, com evidências cuidadosas e escalonamento respons
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança de IA e aprendizado de máquina: métodos centrais
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["4.1 Classes de ataque"]
+  N1["4.2 Testar injeção"]
+  N2["4.3 Testar classificadores"]
+  N3["4.4 Ataques à privacidade"]
+  N4["4.5 Ajustar os métodos aos riscos"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX016"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Classes de ataque"]
+  N1["4.2 Testar injeção"]
+  N2["4.3 Testar classificadores"]
+  N3["4.4 Ataques à privacidade"]
+  N4["4.5 Ajustar os métodos aos riscos"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX016"]
+```
+
+```text
+[4.1 Classes de ataque]
+    |
+    v
+[4.2 Testar injeção]
+    |
+    v
+[4.3 Testar classificadores]
+    |
+    v
+[4.4 Ataques à privacidade]
+    |
+    v
+[4.5 Ajustar os métodos aos riscos]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -376,6 +596,61 @@ Os métodos centrais testam cada classe de ataque onde o sistema está exposto, 
 
 ## Capítulo 5 — Segurança de IA e aprendizado de máquina: ferramentas e interpretação
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["5.1 Harness e registros"]
+  N1["5.2 Taxas e intervalos"]
+  N2["5.3 Taxas de base"]
+  N3["5.4 Ferramentas de fornecedores"]
+  N4["5.5 Leituras equivocadas comuns"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Harness e registros"]
+  N1["5.2 Taxas e intervalos"]
+  N2["5.3 Taxas de base"]
+  N3["5.4 Ferramentas de fornecedores"]
+  N4["5.5 Leituras equivocadas comuns"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[5.1 Harness e registros]
+    |
+    v
+[5.2 Taxas e intervalos]
+    |
+    v
+[5.3 Taxas de base]
+    |
+    v
+[5.4 Ferramentas de fornecedores]
+    |
+    v
+[5.5 Leituras equivocadas comuns]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) usar um *harness* de teste simples e registros; (2) interpretar resultados com taxas e intervalos; (3) levar em conta as taxas de base na detecção; (4) avaliar ferramentas de segurança de fornecedores; e (5) evitar leituras equivocadas comuns.
@@ -455,6 +730,66 @@ As ferramentas produzem números; os profissionais os interpretam com intervalos
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Segurança de IA e aprendizado de máquina: fluxo de trabalho operacional
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["6.1 Fluxo de trabalho"]
+  N1["6.2 Triagem"]
+  N2["6.3 Acompanhamento da remediação"]
+  N3["6.4 Gestão de mudanças"]
+  N4["6.5 Trabalho com a operação"]
+  N5["6.7b Dar retorno a quem relatou"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX026"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Fluxo de trabalho"]
+  N1["6.2 Triagem"]
+  N2["6.3 Acompanhamento da remediação"]
+  N3["6.4 Gestão de mudanças"]
+  N4["6.5 Trabalho com a operação"]
+  N5["6.7b Dar retorno a quem relatou"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
+```
+
+```text
+[6.1 Fluxo de trabalho]
+    |
+    v
+[6.2 Triagem]
+    |
+    v
+[6.3 Acompanhamento da remediação]
+    |
+    v
+[6.4 Gestão de mudanças]
+    |
+    v
+[6.5 Trabalho com a operação]
+    |
+    v
+[6.7b Dar retorno a quem relatou]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -554,6 +889,61 @@ Um fluxo de trabalho claro — da entrada ao encerramento, com triagem, acompanh
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Segurança de IA e aprendizado de máquina: controles e verificação
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["7.1 Controles que limitam o dano"]
+  N1["7.2 Configurar os controles"]
+  N2["7.3 Confirmação"]
+  N3["7.4 Verificação"]
+  N4["7.5 Evidências"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX031"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Controles que limitam o dano"]
+  N1["7.2 Configurar os controles"]
+  N2["7.3 Confirmação"]
+  N3["7.4 Verificação"]
+  N4["7.5 Evidências"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[7.1 Controles que limitam o dano]
+    |
+    v
+[7.2 Configurar os controles]
+    |
+    v
+[7.3 Confirmação]
+    |
+    v
+[7.4 Verificação]
+    |
+    v
+[7.5 Evidências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -655,6 +1045,61 @@ Os controles que limitam o dano ficam fora do modelo; configure-os com cuidado, 
 
 ## Capítulo 8 — Segurança de IA e aprendizado de máquina: análise supervisionada de casos
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["8.1 Análise de caso"]
+  N1["8.2 Linha do tempo"]
+  N2["8.3 Causas e fatores contribuintes"]
+  N3["8.4 Correções proporcionais"]
+  N4["8.5 Redigir o relato"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Análise de caso"]
+  N1["8.2 Linha do tempo"]
+  N2["8.3 Causas e fatores contribuintes"]
+  N3["8.4 Correções proporcionais"]
+  N4["8.5 Redigir o relato"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
+```
+
+```text
+[8.1 Análise de caso]
+    |
+    v
+[8.2 Linha do tempo]
+    |
+    v
+[8.3 Causas e fatores contribuintes]
+    |
+    v
+[8.4 Correções proporcionais]
+    |
+    v
+[8.5 Redigir o relato]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) analisar um incidente ou quase incidente de IA sob supervisão; (2) reconstruir uma linha do tempo a partir de evidências; (3) separar causas e fatores contribuintes; (4) recomendar correções proporcionais; e (5) escrever uma análise de caso.
@@ -706,6 +1151,66 @@ A análise supervisionada de casos transforma incidentes em aprendizado: linhas 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatos
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa da aula
+
+Aula 09 publicada. Mapa, exemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["9.1 Públicos"]
+  N1["9.2 Incerteza honesta"]
+  N2["9.3 Pressão ética"]
+  N3["9.4 Proteger as pessoas afetadas"]
+  N4["9.5 Comunicação de incidentes"]
+  N5["9.7b Conferir a mensagem antes do envio"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX041"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["9.1 Públicos"]
+  N1["9.2 Incerteza honesta"]
+  N2["9.3 Pressão ética"]
+  N3["9.4 Proteger as pessoas afetadas"]
+  N4["9.5 Comunicação de incidentes"]
+  N5["9.7b Conferir a mensagem antes do envio"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX041"]
+```
+
+```text
+[9.1 Públicos]
+    |
+    v
+[9.2 Incerteza honesta]
+    |
+    v
+[9.3 Pressão ética]
+    |
+    v
+[9.4 Proteger as pessoas afetadas]
+    |
+    v
+[9.5 Comunicação de incidentes]
+    |
+    v
+[9.7b Conferir a mensagem antes do envio]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -762,6 +1267,61 @@ Uma boa comunicação ajusta os fatos aos públicos, declara a incerteza com cla
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Segurança de IA e aprendizado de máquina: qualidade e solução de problemas
+
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa da aula
+
+Aula 10 publicada. Mapa, exemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["10.1 Verificações de qualidade"]
+  N1["10.2 Etapas de solução de problemas"]
+  N2["10.3 Acidente ou ataque"]
+  N3["10.4 Evitar a recorrência"]
+  N4["10.5 Autorrevisão"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX046"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["10.1 Verificações de qualidade"]
+  N1["10.2 Etapas de solução de problemas"]
+  N2["10.3 Acidente ou ataque"]
+  N3["10.4 Evitar a recorrência"]
+  N4["10.5 Autorrevisão"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX046"]
+```
+
+```text
+[10.1 Verificações de qualidade]
+    |
+    v
+[10.2 Etapas de solução de problemas]
+    |
+    v
+[10.3 Acidente ou ataque]
+    |
+    v
+[10.4 Evitar a recorrência]
+    |
+    v
+[10.5 Autorrevisão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -868,6 +1428,66 @@ Qualidade e solução de problemas andam juntas: trabalho repetível e baseado e
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa da aula
+
+Aula 11 publicada. Mapa, exemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["11.1 Preparação"]
+  N1["11.2 Parte A — assistente"]
+  N2["11.3 Parte B — API de pontuação"]
+  N3["11.3b Rodada adaptativa"]
+  N4["11.4 Efeitos colaterais"]
+  N5["11.5 Relatório"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["11.1 Preparação"]
+  N1["11.2 Parte A — assistente"]
+  N2["11.3 Parte B — API de pontuação"]
+  N3["11.3b Rodada adaptativa"]
+  N4["11.4 Efeitos colaterais"]
+  N5["11.5 Relatório"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
+```
+
+```text
+[11.1 Preparação]
+    |
+    v
+[11.2 Parte A — assistente]
+    |
+    v
+[11.3 Parte B — API de pontuação]
+    |
+    v
+[11.3b Rodada adaptativa]
+    |
+    v
+[11.4 Efeitos colaterais]
+    |
+    v
+[11.5 Relatório]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -988,6 +1608,66 @@ O laboratório supervisionado ensaia o ciclo completo da prática — linha de b
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa da aula
+
+Aula 12 publicada. Mapa, exemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["12.1 Portfólio"]
+  N1["12.2 Princípios a manter"]
+  N2["12.3 Prontidão e lacunas"]
+  N3["12.4 Desenvolvimento contínuo"]
+  N4["12.5 Ética"]
+  N5["12.5b Usar o portfólio"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX056"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["12.1 Portfólio"]
+  N1["12.2 Princípios a manter"]
+  N2["12.3 Prontidão e lacunas"]
+  N3["12.4 Desenvolvimento contínuo"]
+  N4["12.5 Ética"]
+  N5["12.5b Usar o portfólio"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX056"]
+```
+
+```text
+[12.1 Portfólio]
+    |
+    v
+[12.2 Princípios a manter]
+    |
+    v
+[12.3 Prontidão e lacunas]
+    |
+    v
+[12.4 Desenvolvimento contínuo]
+    |
+    v
+[12.5 Ética]
+    |
+    v
+[12.5b Usar o portfólio]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Objetivos de aprendizagem
 

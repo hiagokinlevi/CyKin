@@ -26,6 +26,71 @@ The exercise allocation is a planning minimum, not a claim that the missing ques
 
 ## Chapter 1 — Cybersecurity: foundations and decisions
 
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 Start with the service and the people"]
+  N2["1.2 Name assets and dependencies"]
+  N3["1.3 Three properties of information"]
+  N4["1.4 Distinguish threat, vulnerability, event, and ri"]
+  N5["1.5 Controls must answer a specific concern"]
+  N6["1.6 Use evidence without overclaiming"]
+  N7["1.7 A small guided analysis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 Start with the service and the people"]
+  N2["1.2 Name assets and dependencies"]
+  N3["1.3 Three properties of information"]
+  N4["1.4 Distinguish threat, vulnerability, event, and ri"]
+  N5["1.5 Controls must answer a specific concern"]
+  N6["1.6 Use evidence without overclaiming"]
+  N7["1.7 A small guided analysis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 Start with the service and the people]
+    |
+    v
+[1.2 Name assets and dependencies]
+    |
+    v
+[1.3 Three properties of information]
+    |
+    v
+[1.4 Distinguish threat, vulnerability, event, and ri]
+    |
+    v
+[1.5 Controls must answer a specific concern]
+    |
+    v
+[1.6 Use evidence without overclaiming]
+    |
+    v
+[1.7 A small guided analysis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
+
 ### Learning outcomes
 
 After this chapter, you should be able to:
@@ -196,6 +261,71 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Curiosity needs a boundary"]
+  N2["2.2 Write an authorization brief"]
+  N3["2.3 Decide what information is necessary"]
+  N4["2.4 Define stop conditions before the exercise"]
+  N5["2.5 Report a finding with calibrated language"]
+  N6["2.6 Lab: a bounded tabletop"]
+  N7["Chapter 2 summary"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Curiosity needs a boundary"]
+  N2["2.2 Write an authorization brief"]
+  N3["2.3 Decide what information is necessary"]
+  N4["2.4 Define stop conditions before the exercise"]
+  N5["2.5 Report a finding with calibrated language"]
+  N6["2.6 Lab: a bounded tabletop"]
+  N7["Chapter 2 summary"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Curiosity needs a boundary]
+    |
+    v
+[2.2 Write an authorization brief]
+    |
+    v
+[2.3 Decide what information is necessary]
+    |
+    v
+[2.4 Define stop conditions before the exercise]
+    |
+    v
+[2.5 Report a finding with calibrated language]
+    |
+    v
+[2.6 Lab: a bounded tabletop]
+    |
+    v
+[Chapter 2 summary]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 After this chapter, you should be able to define an allowed study activity, identify who can authorize it, write stop conditions, choose a synthetic data set, and report an observation without collecting unnecessary personal information.
@@ -333,6 +463,71 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Cybersecurity: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 A model answers a question; it is not the servic"]
+  N2["3.2 Name the parts and their owners"]
+  N3["3.3 Follow the information, including copies"]
+  N4["3.4 Draw a flow and mark the boundaries"]
+  N5["3.5 Dependencies change with the outcome"]
+  N6["3.6 Guided lab: a decision from a stale snapshot"]
+  N7["3.7 A reviewable model record"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 A model answers a question; it is not the servic"]
+  N2["3.2 Name the parts and their owners"]
+  N3["3.3 Follow the information, including copies"]
+  N4["3.4 Draw a flow and mark the boundaries"]
+  N5["3.5 Dependencies change with the outcome"]
+  N6["3.6 Guided lab: a decision from a stale snapshot"]
+  N7["3.7 A reviewable model record"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 A model answers a question; it is not the servic]
+    |
+    v
+[3.2 Name the parts and their owners]
+    |
+    v
+[3.3 Follow the information, including copies]
+    |
+    v
+[3.4 Draw a flow and mark the boundaries]
+    |
+    v
+[3.5 Dependencies change with the outcome]
+    |
+    v
+[3.6 Guided lab: a decision from a stale snapshot]
+    |
+    v
+[3.7 A reviewable model record]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 

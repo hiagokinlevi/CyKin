@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Companheiro de Pesquisa para o Doutorado
 
 - Idioma: português do Brasil (`pt`); trilha de pesquisa de doutorado, dois anos; aproximadamente 1.600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais, apenas sobre dados sintéticos. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os laboratórios offline usam a biblioteca padrão do Python 3, e as saídas impressas foram produzidas por execuções reais, apenas sobre dados sintéticos. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: pesquisadores avançados que vão projetar, conduzir e defender uma contribuição original em medição, ética ou metodologia de segurança ofensiva autorizada e de red team.
 - Relação com os livros vizinhos: o [livro de mestrado](../../../../masters-2-years/offensive-security-red-team/en/book/MANUSCRIPT.md) ensina uma primeira dissertação supervisionada; o [livro de pós-graduação](../../../../postgraduate-2-years/offensive-security-red-team/en/book/MANUSCRIPT.md) ensina a prática especializada. **Este livro trata de produzir e defender conhecimento novo**: integridade, mapeamento da fronteira, uma proposta falseável, replicação da linha de base, um estudo principal com validação independente, crítica, um arquivo e uma defesa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -39,6 +39,61 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Integridade como método de pesquisa"]
+  N1["1.2 Autorização, escopo e condições de parada"]
+  N2["1.3 Medidas que importam"]
+  N3["1.4 Disciplina de uso dual"]
+  N4["1.5 Trilha de evidências"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Integridade como método de pesquisa"]
+  N1["1.2 Autorização, escopo e condições de parada"]
+  N2["1.3 Medidas que importam"]
+  N3["1.4 Disciplina de uso dual"]
+  N4["1.5 Trilha de evidências"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[1.1 Integridade como método de pesquisa]
+    |
+    v
+[1.2 Autorização, escopo e condições de parada]
+    |
+    v
+[1.3 Medidas que importam]
+    |
+    v
+[1.4 Disciplina de uso dual]
+    |
+    v
+[1.5 Trilha de evidências]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -185,6 +240,56 @@ A integridade de doutorado em segurança ofensiva autorizada significa permissã
 
 ## Capítulo 2 — Segurança ofensiva autorizada e red team: fronteira da pesquisa
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Famílias de metodologia"]
+  N1["2.2 Problemas em aberto"]
+  N2["2.3 Crítica das pontuações fracas"]
+  N3["2.4 O ATT&CK como vocabulário"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Famílias de metodologia"]
+  N1["2.2 Problemas em aberto"]
+  N2["2.3 Crítica das pontuações fracas"]
+  N3["2.4 O ATT&CK como vocabulário"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[2.1 Famílias de metodologia]
+    |
+    v
+[2.2 Problemas em aberto]
+    |
+    v
+[2.3 Crítica das pontuações fracas]
+    |
+    v
+[2.4 O ATT&CK como vocabulário]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear as principais famílias de metodologia e os frameworks guiados por ameaças; (2) localizar problemas de pesquisa em aberto em medição, ética e garantia; (3) criticar esquemas de pontuação fracos; (4) posicionar o ATT&CK como vocabulário, não como prova de completude; e (5) escrever uma nota de fronteira que motive um doutorado.
@@ -311,6 +416,66 @@ A fronteira da pesquisa está onde metodologia, medição e ética se encontram 
 
 ## Capítulo 3 — Proposta de contribuição original
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Perguntas falseáveis"]
+  N1["3.2 Pré-registro"]
+  N2["3.3 Protocolo ético"]
+  N3["3.4 Linhas de base e tamanho da amostra"]
+  N4["3.5 Aprovação"]
+  N5["3.5b Modos de falha da proposta"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Perguntas falseáveis"]
+  N1["3.2 Pré-registro"]
+  N2["3.3 Protocolo ético"]
+  N3["3.4 Linhas de base e tamanho da amostra"]
+  N4["3.5 Aprovação"]
+  N5["3.5b Modos de falha da proposta"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX015"]
+```
+
+```text
+[3.1 Perguntas falseáveis]
+    |
+    v
+[3.2 Pré-registro]
+    |
+    v
+[3.3 Protocolo ético]
+    |
+    v
+[3.4 Linhas de base e tamanho da amostra]
+    |
+    v
+[3.5 Aprovação]
+    |
+    v
+[3.5b Modos de falha da proposta]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) escrever uma pergunta de pesquisa falseável; (2) especificar hipóteses, medidas e análise antes de coletar dados; (3) projetar um protocolo ético para estudos autorizados em laboratório; (4) planejar linhas de base e tamanhos de amostra; e (5) obter a aprovação da orientação e do comitê de ética.
@@ -412,6 +577,66 @@ Uma proposta de doutorado se compromete com uma pergunta falseável, medidas pr�
 
 ## Capítulo 4 — Replicação da linha de base e piloto
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Linha de base"]
+  N1["4.2 Piloto da intervenção"]
+  N2["4.3 Estimação"]
+  N3["4.4 Refinamento dos instrumentos"]
+  N4["4.5 Go / no-go"]
+  N5["4.5b Briefing dos operadores"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Linha de base"]
+  N1["4.2 Piloto da intervenção"]
+  N2["4.3 Estimação"]
+  N3["4.4 Refinamento dos instrumentos"]
+  N4["4.5 Go / no-go"]
+  N5["4.5b Briefing dos operadores"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[4.1 Linha de base]
+    |
+    v
+[4.2 Piloto da intervenção]
+    |
+    v
+[4.3 Estimação]
+    |
+    v
+[4.4 Refinamento dos instrumentos]
+    |
+    v
+[4.5 Go / no-go]
+    |
+    v
+[4.5b Briefing dos operadores]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) replicar um método de linha de base sob ROE em prosa; (2) conduzir um piloto da intervenção; (3) estimar taxas e variâncias; (4) refinar os instrumentos sem espiar as conclusões finais; e (5) decidir se o estudo principal segue ou não (go / no-go).
@@ -509,6 +734,66 @@ A linha de base e o piloto produzem taxas comparáveis, expõem problemas dos in
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Seguindo o plano"]
+  N1["5.2 Análise"]
+  N2["5.3 Validação independente"]
+  N3["5.4 Confirmatório vs exploratório"]
+  N4["5.4b Resultados negativos"]
+  N5["5.4c Análises de sensibilidade"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Seguindo o plano"]
+  N1["5.2 Análise"]
+  N2["5.3 Validação independente"]
+  N3["5.4 Confirmatório vs exploratório"]
+  N4["5.4b Resultados negativos"]
+  N5["5.4c Análises de sensibilidade"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[5.1 Seguindo o plano]
+    |
+    v
+[5.2 Análise]
+    |
+    v
+[5.3 Validação independente]
+    |
+    v
+[5.4 Confirmatório vs exploratório]
+    |
+    v
+[5.4b Resultados negativos]
+    |
+    v
+[5.4c Análises de sensibilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -608,6 +893,61 @@ O estudo principal segue o plano, quantifica a incerteza, busca olhares independ
 
 ## Capítulo 6 — Crítica por pares e revisão
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Quem critica"]
+  N1["6.2 Maior vs menor"]
+  N2["6.3 Revisão sem troca"]
+  N3["6.4 Modelo de ameaças do estudo"]
+  N4["6.4b Tradução para a prática"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Quem critica"]
+  N1["6.2 Maior vs menor"]
+  N2["6.3 Revisão sem troca"]
+  N3["6.4 Modelo de ameaças do estudo"]
+  N4["6.4b Tradução para a prática"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[6.1 Quem critica]
+    |
+    v
+[6.2 Maior vs menor]
+    |
+    v
+[6.3 Revisão sem troca]
+    |
+    v
+[6.4 Modelo de ameaças do estudo]
+    |
+    v
+[6.4b Tradução para a prática]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) solicitar crítica de especialistas em metodologia e em prática; (2) separar questões maiores de menores; (3) revisar sem trocar o desfecho; (4) atualizar o modelo de ameaças do seu próprio estudo; e (5) registrar uma trilha de resposta aos revisores.
@@ -705,6 +1045,66 @@ A crítica melhora a honestidade. Revise o que as evidências sustentam; nunca m
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Alegações a partir das evidências"]
+  N1["7.2 Limitações"]
+  N2["7.3 Arquivo de reprodutibilidade"]
+  N3["7.4 Segredos vs ciência"]
+  N4["7.5 Estrutura da tese"]
+  N5["7.5b Guia de leitura para profissionais"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Alegações a partir das evidências"]
+  N1["7.2 Limitações"]
+  N2["7.3 Arquivo de reprodutibilidade"]
+  N3["7.4 Segredos vs ciência"]
+  N4["7.5 Estrutura da tese"]
+  N5["7.5b Guia de leitura para profissionais"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[7.1 Alegações a partir das evidências]
+    |
+    v
+[7.2 Limitações]
+    |
+    v
+[7.3 Arquivo de reprodutibilidade]
+    |
+    v
+[7.4 Segredos vs ciência]
+    |
+    v
+[7.5 Estrutura da tese]
+    |
+    v
+[7.5b Guia de leitura para profissionais]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) sintetizar alegações que decorrem das evidências; (2) declarar limitações sem teatro de desculpas; (3) montar um arquivo de reprodutibilidade que outros possam executar; (4) separar artefatos científicos de segredos operacionais; e (5) preparar a estrutura da tese.
@@ -794,6 +1194,61 @@ A síntese vincula as alegações às evidências; o arquivo permite que outros 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Plano de defesa e publicação
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Postura na defesa"]
+  N1["8.2 Respostas sobre uso dual"]
+  N2["8.3 Plano de publicação"]
+  N3["8.4 Pesquisa seguinte"]
+  N4["8.5 Deixando o laboratório mais seguro"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Postura na defesa"]
+  N1["8.2 Respostas sobre uso dual"]
+  N2["8.3 Plano de publicação"]
+  N3["8.4 Pesquisa seguinte"]
+  N4["8.5 Deixando o laboratório mais seguro"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[8.1 Postura na defesa]
+    |
+    v
+[8.2 Respostas sobre uso dual]
+    |
+    v
+[8.3 Plano de publicação]
+    |
+    v
+[8.4 Pesquisa seguinte]
+    |
+    v
+[8.5 Deixando o laboratório mais seguro]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

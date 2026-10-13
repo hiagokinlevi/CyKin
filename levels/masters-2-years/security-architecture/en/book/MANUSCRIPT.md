@@ -1,7 +1,7 @@
 # Security Architecture and Engineering: Master's Course
 
 - Language: English (`en`); course 168, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: beginning researchers in security architecture and engineering.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs count screening records, compute graph reachability under three synthetic segmentation policies and bootstrap paired results; they never scan or touch a real network. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ NIST [SP 800-207](https://doi.org/10.6028/NIST.SP.800-207), [SP 800-160 Vol. 1 R
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 From interest to question"]
+  N2["1.2 Why this question works"]
+  N3["1.3 Designing the search"]
+  N4["1.4 Screening and recording"]
+  N5["Lab — Screening flow counts"]
+  N6["1.5 What the literature says"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 From interest to question"]
+  N2["1.2 Why this question works"]
+  N3["1.3 Designing the search"]
+  N4["1.4 Screening and recording"]
+  N5["Lab — Screening flow counts"]
+  N6["1.5 What the literature says"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 From interest to question]
+    |
+    v
+[1.2 Why this question works]
+    |
+    v
+[1.3 Designing the search]
+    |
+    v
+[1.4 Screening and recording]
+    |
+    v
+[Lab — Screening flow counts]
+    |
+    v
+[1.5 What the literature says]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -114,6 +179,66 @@ A good master's question is narrow, answerable and honest about its proxy, and a
 
 ## Chapter 2 — Security architecture and engineering: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Three views of architecture"]
+  N2["2.2 Principles behind segmentation"]
+  N3["2.3 Critiquing a framework claim"]
+  N4["2.4 Evidence in seminar argument"]
+  N5["2.5 Seminar output"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Three views of architecture"]
+  N2["2.2 Principles behind segmentation"]
+  N3["2.3 Critiquing a framework claim"]
+  N4["2.4 Evidence in seminar argument"]
+  N5["2.5 Seminar output"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Three views of architecture]
+    |
+    v
+[2.2 Principles behind segmentation]
+    |
+    v
+[2.3 Critiquing a framework claim]
+    |
+    v
+[2.4 Evidence in seminar argument]
+    |
+    v
+[2.5 Seminar output]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) compare enterprise, systems-engineering and threat-driven views of security architecture; (2) relate design principles to segmentation; (3) critique a framework claim; (4) present a seminar argument with evidence.
@@ -169,6 +294,71 @@ An advanced seminar trains the student to move between architecture views, tie d
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Simulation design"]
+  N2["3.2 The reachability model"]
+  N3["Lab — Reachability under three policies"]
+  N4["3.3 Ethics with a real partner"]
+  N5["3.4 Reproducibility plan"]
+  N6["3.5 Pre-specifying analysis"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Simulation design"]
+  N2["3.2 The reachability model"]
+  N3["Lab — Reachability under three policies"]
+  N4["3.3 Ethics with a real partner"]
+  N5["3.4 Reproducibility plan"]
+  N6["3.5 Pre-specifying analysis"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Simulation design]
+    |
+    v
+[3.2 The reachability model]
+    |
+    v
+[Lab — Reachability under three policies]
+    |
+    v
+[3.3 Ethics with a real partner]
+    |
+    v
+[3.4 Reproducibility plan]
+    |
+    v
+[3.5 Pre-specifying analysis]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -263,6 +453,66 @@ A sound simulation study controls comparisons, states pessimistic assumptions, p
 
 ## Chapter 4 — Security architecture and engineering: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Rivals to the main hypothesis"]
+  N2["4.2 Checks that separate rivals"]
+  N3["4.3 Modelling artefacts"]
+  N4["4.4 What would change the conclusion"]
+  N5["4.5 Discussing rivals with practitioners"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Rivals to the main hypothesis"]
+  N2["4.2 Checks that separate rivals"]
+  N3["4.3 Modelling artefacts"]
+  N4["4.4 What would change the conclusion"]
+  N5["4.5 Discussing rivals with practitioners"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Rivals to the main hypothesis]
+    |
+    v
+[4.2 Checks that separate rivals]
+    |
+    v
+[4.3 Modelling artefacts]
+    |
+    v
+[4.4 What would change the conclusion]
+    |
+    v
+[4.5 Discussing rivals with practitioners]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) list rival explanations for an expected result; (2) design checks that distinguish them; (3) recognise artefacts of modelling choices; (4) decide in advance what would change your conclusion.
@@ -318,6 +568,66 @@ Listing rivals, testing each with a designed check and fixing overturn condition
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Pilot goals"]
+  N3["5.3 How many networks"]
+  N4["5.4 Adjusting the plan"]
+  N5["5.5 Pilot reporting"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 The proposal"]
+  N2["5.2 Pilot goals"]
+  N3["5.3 How many networks"]
+  N4["5.4 Adjusting the plan"]
+  N5["5.5 Pilot reporting"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 The proposal]
+    |
+    v
+[5.2 Pilot goals]
+    |
+    v
+[5.3 How many networks]
+    |
+    v
+[5.4 Adjusting the plan]
+    |
+    v
+[5.5 Pilot reporting]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) write a concise dissertation proposal; (2) run a pilot to test code and parameters; (3) estimate how many simulated networks are needed; (4) adjust the plan from pilot evidence.
@@ -372,6 +682,71 @@ A short proposal and an honest pilot turn a research plan into a tested pipeline
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Running the main study"]
+  N2["6.2 Bootstrap comparison"]
+  N3["Lab — Bootstrap comparison of policies"]
+  N4["6.3 Rival checks"]
+  N5["6.4 The complexity trade-off"]
+  N6["6.5 Presenting results honestly"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Running the main study"]
+  N2["6.2 Bootstrap comparison"]
+  N3["Lab — Bootstrap comparison of policies"]
+  N4["6.3 Rival checks"]
+  N5["6.4 The complexity trade-off"]
+  N6["6.5 Presenting results honestly"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Running the main study]
+    |
+    v
+[6.2 Bootstrap comparison]
+    |
+    v
+[Lab — Bootstrap comparison of policies]
+    |
+    v
+[6.3 Rival checks]
+    |
+    v
+[6.4 The complexity trade-off]
+    |
+    v
+[6.5 Presenting results honestly]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes
 
@@ -456,6 +831,66 @@ Careful analysis reports pre-specified comparisons with intervals, tests every r
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Structure around the argument"]
+  N2["7.2 Specific limitations"]
+  N3["7.3 Connecting to practice"]
+  N4["7.4 The practitioner brief"]
+  N5["7.5 Writing process"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Structure around the argument"]
+  N2["7.2 Specific limitations"]
+  N3["7.3 Connecting to practice"]
+  N4["7.4 The practitioner brief"]
+  N5["7.5 Writing process"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Structure around the argument]
+    |
+    v
+[7.2 Specific limitations]
+    |
+    v
+[7.3 Connecting to practice]
+    |
+    v
+[7.4 The practitioner brief]
+    |
+    v
+[7.5 Writing process]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes
 
 You will (1) structure a dissertation around its argument; (2) write limitations that are specific and useful; (3) connect findings to architecture practice responsibly; (4) prepare a practitioner brief.
@@ -510,6 +945,66 @@ A dissertation persuades when every claim traces to a result, limitations are sp
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Independent code review"]
+  N2["8.2 Preparing the defense"]
+  N3["8.3 Responding to criticism"]
+  N4["8.4 Corrections and archiving"]
+  N5["8.5 Follow-up work"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Independent code review"]
+  N2["8.2 Preparing the defense"]
+  N3["8.3 Responding to criticism"]
+  N4["8.4 Corrections and archiving"]
+  N5["8.5 Follow-up work"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Independent code review]
+    |
+    v
+[8.2 Preparing the defense]
+    |
+    v
+[8.3 Responding to criticism]
+    |
+    v
+[8.4 Corrections and archiving]
+    |
+    v
+[8.5 Follow-up work]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

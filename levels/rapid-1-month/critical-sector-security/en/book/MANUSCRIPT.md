@@ -1,7 +1,7 @@
 # Critical Infrastructure and Sector Security: A First Introduction
 
 - Language: English (`en`); rapid course, one month; approximately 80 hours of planned study (course 023 of 207 in the [study path](../../../../../STUDY_PATH.md)).
-- Editorial state: **draft**. Chapters 1–4 of 4 have authored teaching text, one offline lab, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–4 of 4 have authored teaching text, one offline lab, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
 - Audience: **new learners** with no security role and basic digital literacy — students, career changers, and staff or volunteers who have just joined a hospital, clinic, water or power company, transport operator, bank, school or local council and want to understand why their workplace is treated as "critical".
 - How this course differs from its neighbours. The [professional book](../../../../professional-6-months/critical-sector-security/en/book/MANUSCRIPT.md) teaches coordinators to run governance: risk registers, RACI, supplier contracts, notification clocks and tabletop exercises. The [technical book](../../../../technical-18-months/critical-sector-security/en/book/MANUSCRIPT.md) teaches hands-on protocol and hardening depth. **This rapid book is a first look and a first safe practice.** It teaches you to recognize what makes a service critical, to explain its core risks in plain words, to stay inside what you are allowed to do, to see how services depend on each other, and to complete one small guided task. It does not make you a coordinator, an engineer or an incident responder, and it never asks you to touch a real system.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights and are not relicensed here.
@@ -57,6 +57,71 @@ Every factual statement about a public framework, law, guidance or incident link
 <a id="ch-01"></a>
 
 ## Chapter 1 — Critical infrastructure and sector security: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 What makes a service critical"]
+  N2["1.2 Consequence first"]
+  N3["1.3 Three public incidents, briefly"]
+  N4["1.4 Writing a risk sentence"]
+  N5["Visual 1 — a risk statement that leads to a decision"]
+  N6["1.5 The newcomer's three decisions"]
+  N7["1.7 Practical activity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 What makes a service critical"]
+  N2["1.2 Consequence first"]
+  N3["1.3 Three public incidents, briefly"]
+  N4["1.4 Writing a risk sentence"]
+  N5["Visual 1 — a risk statement that leads to a decision"]
+  N6["1.5 The newcomer's three decisions"]
+  N7["1.7 Practical activity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 What makes a service critical]
+    |
+    v
+[1.2 Consequence first]
+    |
+    v
+[1.3 Three public incidents, briefly]
+    |
+    v
+[1.4 Writing a risk sentence]
+    |
+    v
+[Visual 1 — a risk statement that leads to a decision]
+    |
+    v
+[1.5 The newcomer's three decisions]
+    |
+    v
+[1.7 Practical activity]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -204,6 +269,71 @@ Continue to the next authored lesson.
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Authorization and scope"]
+  N2["Visual 2 — the permission boundary"]
+  N3["2.2 Why just checking is dangerous here"]
+  N4["2.3 The newcomer's boundaries"]
+  N5["2.4 Reporting well"]
+  N6["2.5 Sharing information carefully: TLP"]
+  N7["2.6 Safe places to practise"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Authorization and scope"]
+  N2["Visual 2 — the permission boundary"]
+  N3["2.2 Why just checking is dangerous here"]
+  N4["2.3 The newcomer's boundaries"]
+  N5["2.4 Reporting well"]
+  N6["2.5 Sharing information carefully: TLP"]
+  N7["2.6 Safe places to practise"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Authorization and scope]
+    |
+    v
+[Visual 2 — the permission boundary]
+    |
+    v
+[2.2 Why just checking is dangerous here]
+    |
+    v
+[2.3 The newcomer's boundaries]
+    |
+    v
+[2.4 Reporting well]
+    |
+    v
+[2.5 Sharing information carefully: TLP]
+    |
+    v
+[2.6 Safe places to practise]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes and connection
 
@@ -362,6 +492,71 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Critical infrastructure and sector security: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 The five parts of a service"]
+  N2["3.2 A gentle look at operational technology"]
+  N3["3.3 Data and what could go wrong"]
+  N4["3.4 Dependencies"]
+  N5["3.5 Suppliers and remote access"]
+  N6["Visual 3 — the clinic's dependencies synthetic"]
+  N7["3.7 Practical activity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 The five parts of a service"]
+  N2["3.2 A gentle look at operational technology"]
+  N3["3.3 Data and what could go wrong"]
+  N4["3.4 Dependencies"]
+  N5["3.5 Suppliers and remote access"]
+  N6["Visual 3 — the clinic's dependencies synthetic"]
+  N7["3.7 Practical activity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 The five parts of a service]
+    |
+    v
+[3.2 A gentle look at operational technology]
+    |
+    v
+[3.3 Data and what could go wrong]
+    |
+    v
+[3.4 Dependencies]
+    |
+    v
+[3.5 Suppliers and remote access]
+    |
+    v
+[Visual 3 — the clinic's dependencies synthetic]
+    |
+    v
+[3.7 Practical activity]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes and connection
 
@@ -523,6 +718,71 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Critical infrastructure and sector security: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX050.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Cascades"]
+  N2["Visual 4 — why a power backup may not save the clini"]
+  N3["4.2 Lab 4 — what else fails? synthetic"]
+  N4["4.4 Practical activity and assessment rubric"]
+  N5["Chapter synthesis"]
+  N6["Chapter 1"]
+  N7["Chapter 2"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX050"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Cascades"]
+  N2["Visual 4 — why a power backup may not save the clini"]
+  N3["4.2 Lab 4 — what else fails? synthetic"]
+  N4["4.4 Practical activity and assessment rubric"]
+  N5["Chapter synthesis"]
+  N6["Chapter 1"]
+  N7["Chapter 2"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX050"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Cascades]
+    |
+    v
+[Visual 4 — why a power backup may not save the clini]
+    |
+    v
+[4.2 Lab 4 — what else fails? synthetic]
+    |
+    v
+[4.4 Practical activity and assessment rubric]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Chapter 1]
+    |
+    v
+[Chapter 2]
+    |
+    v
+[Worked example] --> [Exercise EX050]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes and connection
 

@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Technical Foundations and Lab Practice
 
 - Language: English (`en`); technical course, up to 18 months; approximately 1,200 hours of planned study.
-- Editorial state: **draft**. Chapters 1–18 of 18, EX001–EX072 and their worked results are authored. Substantial expansion, source review, technical and accessibility review, and the 300-page A4 verification remain open. Full draft-chapter coverage is not a completed book.
+- Editorial state: **published**. Chapters 1–18 of 18, EX001–EX072 and their worked results are authored. Substantial expansion, source review, technical and accessibility review, and the 300-page A4 verification remain open. Full draft-chapter coverage is not a completed book.
 - Audience: technical operators learning to model services, interpret evidence and verify controls under supervision. Entry knowledge: basic networking, operating systems, scripting and permitted lab practice.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited standards retain their own rights.
 - Educational boundary: every system, account, log and address in the Lumen Library Reservations case is synthetic. This book grants no access or change authority for a real environment.
@@ -40,6 +40,71 @@ The worked-results appendix contains EX001–EX072, four per authored chapter. S
 <a id="ch-01"></a>
 
 ## Chapter 1 — Computing and service architecture
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 Model the service outcome first"]
+  N2["1.2 Separate the planes and boundaries"]
+  N3["1.4 Offline lab: compute a conservative dependency c"]
+  N4["1.5 Failure and rollback evidence"]
+  N5["1.6 Convert a component graph into an outcome contra"]
+  N6["1.7 Guided paper lab: predicted impact versus observ"]
+  N7["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 Model the service outcome first"]
+  N2["1.2 Separate the planes and boundaries"]
+  N3["1.4 Offline lab: compute a conservative dependency c"]
+  N4["1.5 Failure and rollback evidence"]
+  N5["1.6 Convert a component graph into an outcome contra"]
+  N6["1.7 Guided paper lab: predicted impact versus observ"]
+  N7["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 Model the service outcome first]
+    |
+    v
+[1.2 Separate the planes and boundaries]
+    |
+    v
+[1.4 Offline lab: compute a conservative dependency c]
+    |
+    v
+[1.5 Failure and rollback evidence]
+    |
+    v
+[1.6 Convert a component graph into an outcome contra]
+    |
+    v
+[1.7 Guided paper lab: predicted impact versus observ]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -168,6 +233,71 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Networks and protocols
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX005.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Five questions in one request path"]
+  N2["2.2 Synthetic trace with event and collection times"]
+  N3["2.3 Choose a capture point by decision value"]
+  N4["2.4 Offline lab: classify the supplied chain"]
+  N5["2.5 Time and failure-domain caution"]
+  N6["2.6 Evaluate evidence across protocol boundaries"]
+  N7["2.7 Guided replay: choose a discriminator before a r"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX005"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Five questions in one request path"]
+  N2["2.2 Synthetic trace with event and collection times"]
+  N3["2.3 Choose a capture point by decision value"]
+  N4["2.4 Offline lab: classify the supplied chain"]
+  N5["2.5 Time and failure-domain caution"]
+  N6["2.6 Evaluate evidence across protocol boundaries"]
+  N7["2.7 Guided replay: choose a discriminator before a r"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX005"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Five questions in one request path]
+    |
+    v
+[2.2 Synthetic trace with event and collection times]
+    |
+    v
+[2.3 Choose a capture point by decision value]
+    |
+    v
+[2.4 Offline lab: classify the supplied chain]
+    |
+    v
+[2.5 Time and failure-domain caution]
+    |
+    v
+[2.6 Evaluate evidence across protocol boundaries]
+    |
+    v
+[2.7 Guided replay: choose a discriminator before a r]
+    |
+    v
+[Worked example] --> [Exercise EX005]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 The learner will trace a reservation request across name lookup, transport, TLS and HTTP, say exactly what each observation establishes, and choose a bounded next evidence source. Chapter 1 supplied the components and trust boundaries; Chapter 2 tests whether a network record can identify the failing **segment** without overclaiming the responsible system or actor. Chapter 3 will add host processes and identity records. The protocol descriptions use [RFC 9110 for HTTP semantics](https://www.rfc-editor.org/rfc/rfc9110.html) and [RFC 8446 for TLS 1.3](https://www.rfc-editor.org/rfc/rfc8446.html); LLR's trace and thresholds are invented.
@@ -277,6 +407,71 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Operating systems and identities
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX009.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 Name the layers before joining them"]
+  N2["3.2 Synthetic host/identity/application bundle"]
+  N3["3.3 A timeline with uncertainty and hypothesis branc"]
+  N4["3.4 Worked join audit"]
+  N5["3.5 Safe next actions and verification design"]
+  N6["3.6 Identifier scope, lifetime and fan-out"]
+  N7["3.7 Paper decision lab: approval is not attribution"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX009"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 Name the layers before joining them"]
+  N2["3.2 Synthetic host/identity/application bundle"]
+  N3["3.3 A timeline with uncertainty and hypothesis branc"]
+  N4["3.4 Worked join audit"]
+  N5["3.5 Safe next actions and verification design"]
+  N6["3.6 Identifier scope, lifetime and fan-out"]
+  N7["3.7 Paper decision lab: approval is not attribution"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX009"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 Name the layers before joining them]
+    |
+    v
+[3.2 Synthetic host/identity/application bundle]
+    |
+    v
+[3.3 A timeline with uncertainty and hypothesis branc]
+    |
+    v
+[3.4 Worked join audit]
+    |
+    v
+[3.5 Safe next actions and verification design]
+    |
+    v
+[3.6 Identifier scope, lifetime and fan-out]
+    |
+    v
+[3.7 Paper decision lab: approval is not attribution]
+    |
+    v
+[Worked example] --> [Exercise EX009]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes and connection
 
 The learner will distinguish a **host process**, an **operating-system account**, an **identity principal**, a **session** and a **human**; reconstruct only supported joins across host, IdP and application records; and specify a safe collection request when a join key is missing. Chapter 2 left the API-path explanation open. This chapter asks whether identity and host records narrow an observed reservation change without turning a service account into a person. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) informs coordinated response, while [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) provides forensic vocabulary from 2006; current OS/vendor collection details require separate verification.
@@ -381,6 +576,66 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Scripting and data formats
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX013.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 A parser is a claim-making instrument"]
+  N2["4.2 Worked fixture: two accepted rows and three reje"]
+  N3["4.3 Normalize only with an audit trail"]
+  N4["4.4 A CSV record is not always a physical line"]
+  N5["4.5 Make the transformation independently reviewable"]
+  N6["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX013"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 A parser is a claim-making instrument"]
+  N2["4.2 Worked fixture: two accepted rows and three reje"]
+  N3["4.3 Normalize only with an audit trail"]
+  N4["4.4 A CSV record is not always a physical line"]
+  N5["4.5 Make the transformation independently reviewable"]
+  N6["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX013"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 A parser is a claim-making instrument]
+    |
+    v
+[4.2 Worked fixture: two accepted rows and three reje]
+    |
+    v
+[4.3 Normalize only with an audit trail]
+    |
+    v
+[4.4 A CSV record is not always a physical line]
+    |
+    v
+[4.5 Make the transformation independently reviewable]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes and connection
 
@@ -521,6 +776,71 @@ Continue to the next authored lesson.
 
 ## Chapter 5 — Security scope and evidence
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX017.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Authority has fields, not a feeling"]
+  N2["5.2 Original bytes, derived rows and receipts"]
+  N3["5.3 Worked decision: reject expansion, preserve a us"]
+  N4["5.4 Reproducibility and limitation checklist"]
+  N5["5.5 Custody is a sequence of bounded claims"]
+  N6["5.6 Offline byte-identity and privacy replay"]
+  N7["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX017"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Authority has fields, not a feeling"]
+  N2["5.2 Original bytes, derived rows and receipts"]
+  N3["5.3 Worked decision: reject expansion, preserve a us"]
+  N4["5.4 Reproducibility and limitation checklist"]
+  N5["5.5 Custody is a sequence of bounded claims"]
+  N6["5.6 Offline byte-identity and privacy replay"]
+  N7["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX017"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Authority has fields, not a feeling]
+    |
+    v
+[5.2 Original bytes, derived rows and receipts]
+    |
+    v
+[5.3 Worked decision: reject expansion, preserve a us]
+    |
+    v
+[5.4 Reproducibility and limitation checklist]
+    |
+    v
+[5.5 Custody is a sequence of bounded claims]
+    |
+    v
+[5.6 Offline byte-identity and privacy replay]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX017]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes and connection
 
 The learner will distinguish a proposed evidence request from an approved scope, demonstrate byte-level integrity on an offline copy, and write a receipt that lets another operator reconstruct who collected what and when. Chapter 4 produced accepted and rejected rows; Chapter 5 asks whether the **original** and **derived** objects can be traced to a custodian and whether the requested collection was permitted. Chapter 6 will use those limits when comparing response options. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response actions and records within risk management; [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) describes IT forensic practice and data sources. The latter dates from 2006 and is not a current OS tool recipe or legal opinion. The L5 receipt is an original classroom design.
@@ -627,6 +947,61 @@ Continue to the next authored lesson.
 <a id="ch-06"></a>
 
 ## Chapter 6 — Response system models and service dependencies
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Route-Specific Service Dependencies: From Archit"]
+  N2["6.2 Offline route-impact model"]
+  N3["6.3 Choose controls using both positive and negative"]
+  N4["6.4 Recovery point is a business-data question"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Route-Specific Service Dependencies: From Archit"]
+  N2["6.2 Offline route-impact model"]
+  N3["6.3 Choose controls using both positive and negative"]
+  N4["6.4 Recovery point is a business-data question"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Route-Specific Service Dependencies: From Archit]
+    |
+    v
+[6.2 Offline route-impact model]
+    |
+    v
+[6.3 Choose controls using both positive and negative]
+    |
+    v
+[6.4 Recovery point is a business-data question]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes and connection
 
@@ -1952,6 +2327,61 @@ Continue to the next authored lesson.
 
 ## Chapter 7 — Event-source mapping and log retention
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Ask what the source can decide"]
+  N2["7.2 Calculate, then challenge, an expiry hypothesis"]
+  N3["7.3 Build a bounded preservation queue"]
+  N4["7.4 Coverage test as a small experiment"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX025"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Ask what the source can decide"]
+  N2["7.2 Calculate, then challenge, an expiry hypothesis"]
+  N3["7.3 Build a bounded preservation queue"]
+  N4["7.4 Coverage test as a small experiment"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX025"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Ask what the source can decide]
+    |
+    v
+[7.2 Calculate, then challenge, an expiry hypothesis]
+    |
+    v
+[7.3 Build a bounded preservation queue]
+    |
+    v
+[7.4 Coverage test as a small experiment]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes and connection
 
 The learner will map a decision question to producers and fields, distinguish event, ingestion, collection and query time, and prioritize a short-lived source without turning a retention label into a guaranteed deletion deadline. Chapter 6 posed route and control questions; Chapter 7 constructs a request plan that could answer them. Chapter 8 will test how missing or delayed records affect competing failure hypotheses. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) is older, high-level guidance for log-management processes; this chapter's source inventory and clock exercise are original, not prescribed by NIST.
@@ -2037,6 +2467,61 @@ Continue to the next authored lesson.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Identity, host and network failure modes
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX029.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 Name the failure layer and the user outcome"]
+  N2["8.2 Normalize clocks without pretending to order eve"]
+  N3["8.3 Competing hypotheses and discriminators"]
+  N4["8.4 A two-step supervised troubleshooting lab"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX029"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 Name the failure layer and the user outcome"]
+  N2["8.2 Normalize clocks without pretending to order eve"]
+  N3["8.3 Competing hypotheses and discriminators"]
+  N4["8.4 A two-step supervised troubleshooting lab"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX029"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 Name the failure layer and the user outcome]
+    |
+    v
+[8.2 Normalize clocks without pretending to order eve]
+    |
+    v
+[8.3 Competing hypotheses and discriminators]
+    |
+    v
+[8.4 A two-step supervised troubleshooting lab]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 
@@ -2133,6 +2618,61 @@ Continue to the next authored lesson.
 
 ## Chapter 9 — Host and network evidence collection methods
 
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["9.1 The K9–K13 workshop boundary"]
+  N2["9.2 Order by volatility, value and side effects"]
+  N3["9.3 A byte-level receipt on an offline packet"]
+  N4["9.4 Review a collection proposal"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["9.1 The K9–K13 workshop boundary"]
+  N2["9.2 Order by volatility, value and side effects"]
+  N3["9.3 A byte-level receipt on an offline packet"]
+  N4["9.4 Review a collection proposal"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[9.1 The K9–K13 workshop boundary]
+    |
+    v
+[9.2 Order by volatility, value and side effects]
+    |
+    v
+[9.3 A byte-level receipt on an offline packet]
+    |
+    v
+[9.4 Review a collection proposal]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
+
 ### Learning outcomes and connection
 
 The learner will choose a collection order for host, gateway and application records, specify a narrow authority request, distinguish a network observation from an application outcome, and write a receipt for the bytes actually supplied. Chapter 8 compared failure explanations; Chapter 9 asks what evidence can test them before a volatile source disappears. Chapter 10 will use the resulting limits to evaluate a reversible containment proposal. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) describes files, operating systems, network traffic and applications as forensic data sources from an IT perspective. Published in 2006, it is neither a current command recipe nor legal advice. The collection packet below is original, fictional training material.
@@ -2218,6 +2758,56 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Containment control configuration in a lab
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX037.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["10.1 Specify a control contract before a command"]
+  N2["10.2 Offline before/after/rollback simulation"]
+  N3["10.3 Security effectiveness and business acceptance"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX037"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["10.1 Specify a control contract before a command"]
+  N2["10.2 Offline before/after/rollback simulation"]
+  N3["10.3 Security effectiveness and business acceptance"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX037"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[10.1 Specify a control contract before a command]
+    |
+    v
+[10.2 Offline before/after/rollback simulation]
+    |
+    v
+[10.3 Security effectiveness and business acceptance]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes and connection
 
 The learner will define a temporary rule's exact subject, action and expiration, simulate its security effect, test a legitimate workflow and rollback, and document evidence needed before any real change. Chapter 9 established an incomplete record: K-G1 traffic and K-A1 queue acceptance do not prove a commit, actor or compromise. Chapter 10 therefore uses a **separate K10 sandbox proposal**, not a response order for the K9 packet. Chapter 11 will verify clocks and record integrity before stronger temporal claims. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) frames response choices within risk management; the rule, test accounts and expected results here are original teaching artifacts.
@@ -2295,6 +2885,61 @@ Continue to the next authored lesson.
 <a id="ch-11"></a>
 
 ## Chapter 11 — Clock-offset and record-integrity verification
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["11.1 Keep four times and a measurement"]
+  N2["11.2 Reproduce a corrected timeline"]
+  N3["11.3 Byte integrity is not source truth"]
+  N4["11.4 A bounded timeline review"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["11.1 Keep four times and a measurement"]
+  N2["11.2 Reproduce a corrected timeline"]
+  N3["11.3 Byte integrity is not source truth"]
+  N4["11.4 A bounded timeline review"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[11.1 Keep four times and a measurement]
+    |
+    v
+[11.2 Reproduce a corrected timeline]
+    |
+    v
+[11.3 Byte integrity is not source truth]
+    |
+    v
+[11.4 A bounded timeline review]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Learning outcomes and connection
 
@@ -2392,6 +3037,61 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Laboratory: ingest and preserve synthetic incident records
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["12.1 Freeze the intake contract"]
+  N2["12.2 Offline parser and rejection report"]
+  N3["12.3 Manifest, normalized view and query boundary"]
+  N4["12.4 Reviewer walkthrough and failure modes"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["12.1 Freeze the intake contract"]
+  N2["12.2 Offline parser and rejection report"]
+  N3["12.3 Manifest, normalized view and query boundary"]
+  N4["12.4 Reviewer walkthrough and failure modes"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[12.1 Freeze the intake contract]
+    |
+    v
+[12.2 Offline parser and rejection report]
+    |
+    v
+[12.3 Manifest, normalized view and query boundary]
+    |
+    v
+[12.4 Reviewer walkthrough and failure modes]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes and connection
 
@@ -2514,6 +3214,61 @@ Continue to the next authored lesson.
 
 ## Chapter 13 — Troubleshooting conflicting alerts and missing telemetry
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Lesson map
+
+Lesson 13 published. Map, example, EX049.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["13.1 Translate prose back into predicates"]
+  N2["13.2 An offline predicate check"]
+  N3["13.3 Diagnose disagreement with a coverage contract"]
+  N4["13.4 A versioned escalation"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX049"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["13.1 Translate prose back into predicates"]
+  N2["13.2 An offline predicate check"]
+  N3["13.3 Diagnose disagreement with a coverage contract"]
+  N4["13.4 A versioned escalation"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX049"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[13.1 Translate prose back into predicates]
+    |
+    v
+[13.2 An offline predicate check]
+    |
+    v
+[13.3 Diagnose disagreement with a coverage contract]
+    |
+    v
+[13.4 A versioned escalation]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Learning outcomes and connection
 
 The learner will reconstruct two alert predicates from the K12 accepted records, identify where their claims exceed their inputs, treat missing telemetry as a coverage question, and write a versioned escalation that does not choose an actor prematurely. Chapter 12 produced four accepted and two rejected rows; Chapter 13 asks what a detection rule may safely say about them. Chapter 14 will automate part of this triage while retaining an auditable exception path. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) describes incident response as part of risk management, and [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) discusses log management at a high level. Neither publication validates the invented K13 alerts or prescribes this classroom's rules.
@@ -2594,6 +3349,56 @@ Continue to the next authored lesson.
 <a id="ch-14"></a>
 
 ## Chapter 14 — Scripted triage with bounded inputs and audit logs
+
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Lesson map
+
+Lesson 14 published. Map, example, EX053.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["14.1 The data contract is the control"]
+  N2["14.2 Offline lab: a deterministic review packet"]
+  N3["14.3 Failure injection and review gate"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["14.1 The data contract is the control"]
+  N2["14.2 Offline lab: a deterministic review packet"]
+  N3["14.3 Failure injection and review gate"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX053"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[14.1 The data contract is the control]
+    |
+    v
+[14.2 Offline lab: a deterministic review packet]
+    |
+    v
+[14.3 Failure injection and review gate]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX053]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
 
 ### Learning outcomes and connection
 
@@ -2703,6 +3508,56 @@ Continue to the next authored lesson.
 
 ## Chapter 15 — Cross-service incident timeline integration
 
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Lesson map
+
+Lesson 15 published. Map, example, EX057.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["15.1 A timeline has more than one axis"]
+  N2["15.2 Offline join-quality worksheet"]
+  N3["15.3 Build a defensible case narrative"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["15.1 A timeline has more than one axis"]
+  N2["15.2 Offline join-quality worksheet"]
+  N3["15.3 Build a defensible case narrative"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX057"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[15.1 A timeline has more than one axis]
+    |
+    v
+[15.2 Offline join-quality worksheet]
+    |
+    v
+[15.3 Build a defensible case narrative]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX057]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
+
 ### Learning outcomes and connection
 
 The learner will assemble a timeline across identity, host, application and support-desk records without promoting a matching label to a proven event chain. Chapter 14 yielded a deterministic set of claims and exceptions. Chapter 15 adds **event time**, **source time**, **collection time**, **identifier namespace**, **join quality**, **missingness** and alternative interpretations. An operator should be able to show a timeline to a service owner and state exactly which transitions remain unsupported. NIST [SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) informs response governance; the K15 packet is wholly synthetic.
@@ -2774,6 +3629,56 @@ Continue to the next authored lesson.
 <a id="ch-16"></a>
 
 ## Chapter 16 — Technical documentation and safety
+
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Lesson map
+
+Lesson 16 published. Map, example, EX061.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["16.1 Diagnose the unsafe draft"]
+  N2["16.2 A reviewable runbook card"]
+  N3["16.3 Offline state-machine check"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX061"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["16.1 Diagnose the unsafe draft"]
+  N2["16.2 A reviewable runbook card"]
+  N3["16.3 Offline state-machine check"]
+  N4["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX061"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[16.1 Diagnose the unsafe draft]
+    |
+    v
+[16.2 A reviewable runbook card]
+    |
+    v
+[16.3 Offline state-machine check]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
 
 ### Learning outcomes and connection
 
@@ -2849,6 +3754,61 @@ Continue to the next authored lesson.
 <a id="ch-17"></a>
 
 ## Chapter 17 — Laboratory: compare containment and restoration options
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Lesson map
+
+Lesson 17 published. Map, example, EX065.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["17.1 Define acceptance before selecting a control"]
+  N2["17.2 Side-by-side classroom measurements"]
+  N3["17.3 Reproducible gate and negative variant"]
+  N4["17.4 Decision record and restoration boundary"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX065"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["17.1 Define acceptance before selecting a control"]
+  N2["17.2 Side-by-side classroom measurements"]
+  N3["17.3 Reproducible gate and negative variant"]
+  N4["17.4 Decision record and restoration boundary"]
+  N5["Subject synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX065"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[17.1 Define acceptance before selecting a control]
+    |
+    v
+[17.2 Side-by-side classroom measurements]
+    |
+    v
+[17.3 Reproducible gate and negative variant]
+    |
+    v
+[17.4 Decision record and restoration boundary]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX065]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Learning outcomes and connection
 
@@ -2940,6 +3900,71 @@ Continue to the next authored lesson.
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical incident case and handoff
+
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Lesson map
+
+Lesson 18 published. Map, example, EX069.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["18.1 Stage the case without backdating knowledge"]
+  N2["18.2 Required dossier and evidence manifest"]
+  N3["18.3 Supervised walkthrough and peer challenge"]
+  N4["18.4 Closing the loop"]
+  N5["Subject synthesis"]
+  N6["Subject 1: EX001–EX004"]
+  N7["Subject 2: EX005–EX008"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX069"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["18.1 Stage the case without backdating knowledge"]
+  N2["18.2 Required dossier and evidence manifest"]
+  N3["18.3 Supervised walkthrough and peer challenge"]
+  N4["18.4 Closing the loop"]
+  N5["Subject synthesis"]
+  N6["Subject 1: EX001–EX004"]
+  N7["Subject 2: EX005–EX008"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX069"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[18.1 Stage the case without backdating knowledge]
+    |
+    v
+[18.2 Required dossier and evidence manifest]
+    |
+    v
+[18.3 Supervised walkthrough and peer challenge]
+    |
+    v
+[18.4 Closing the loop]
+    |
+    v
+[Subject synthesis]
+    |
+    v
+[Subject 1: EX001–EX004]
+    |
+    v
+[Subject 2: EX005–EX008]
+    |
+    v
+[Worked example] --> [Exercise EX069]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
 
 ### Learning outcomes and connection
 

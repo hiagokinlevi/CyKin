@@ -1,7 +1,7 @@
 # Seguridad de TO, IoT y sistemas ciberfísicos: guía para profesionales en ejercicio
 
 - Idioma: español neutro (`es`); curso profesional, seis meses; aproximadamente 360 horas de estudio planificado. Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–12 de 12 tienen texto didáctico escrito a mano; los ejercicios EX001–EX060 tienen sus resultados resueltos correspondientes; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas se incluyen a partir de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4.
+- Estado editorial: **publicado**. Los capítulos 1–12 de 12 tienen texto didáctico escrito a mano; los ejercicios EX001–EX060 tienen sus resultados resueltos correspondientes; los laboratorios sin conexión usan la biblioteca estándar de Python 3 y sus salidas se incluyen a partir de ejecuciones reales. Siguen pendientes la revisión independiente y la verificación de 300 páginas A4.
 - Público: profesionales de seguridad de nivel inicial que se incorporan a una organización, aquí un hospital, cuyos sistemas del edificio y de las instalaciones son ciberfísicos.
 - Relación con los libros vecinos: el [libro del curso rápido](../../../../rapid-1-month/ot-iot-security/es/book/MANUSCRIPT.md) es una introducción de cuatro capítulos; el [libro técnico](../../../../technical-18-months/ot-iot-security/es/book/MANUSCRIPT.md) profundiza en los procedimientos de planta. **Este libro es una guía compacta para profesionales construida sobre los sistemas del edificio.**
 - Autoría: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus derechos.
@@ -35,6 +35,61 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Los sistemas del edificio como sistemas ciberfísicos
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Qué hace funcionar el edificio de un hospital"]
+  N2["1.2 Por qué son ciberfísicos"]
+  N3["1.3 Consecuencias para los pacientes"]
+  N4["1.4 Quién es su responsable"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["1.1 Qué hace funcionar el edificio de un hospital"]
+  N2["1.2 Por qué son ciberfísicos"]
+  N3["1.3 Consecuencias para los pacientes"]
+  N4["1.4 Quién es su responsable"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[1.1 Qué hace funcionar el edificio de un hospital]
+    |
+    v
+[1.2 Por qué son ciberfísicos]
+    |
+    v
+[1.3 Consecuencias para los pacientes]
+    |
+    v
+[1.4 Quién es su responsable]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje
 
@@ -87,6 +142,66 @@ Los sistemas del edificio de un hospital mueven aire, gases, personas y puertas;
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Seguridad del paciente, contingencia y autoridad
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX006.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["2.1 Primero la seguridad clínica"]
+  N2["2.2 La contingencia ya existe"]
+  N3["2.3 Autoridad"]
+  N4["2.4 Permisos en los hospitales"]
+  N5["2.5 Hablar con los profesionales clínicos"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX006"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["2.1 Primero la seguridad clínica"]
+  N2["2.2 La contingencia ya existe"]
+  N3["2.3 Autoridad"]
+  N4["2.4 Permisos en los hospitales"]
+  N5["2.5 Hablar con los profesionales clínicos"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[2.1 Primero la seguridad clínica]
+    |
+    v
+[2.2 La contingencia ya existe]
+    |
+    v
+[2.3 Autoridad]
+    |
+    v
+[2.4 Permisos en los hospitales]
+    |
+    v
+[2.5 Hablar con los profesionales clínicos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Resultados de aprendizaje
 
@@ -142,6 +257,66 @@ La seguridad clínica marca los tiempos; los planes de contingencia hacen posibl
 
 ## Capítulo 3 — Redes y protocolos en los sistemas del edificio
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX011.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Capas de campo y de supervisión"]
+  N2["3.2 Confianza por defecto"]
+  N3["3.3 Dónde se encuentran las redes"]
+  N4["3.4 Qué hace un analista"]
+  N5["3.5 Inalámbrico"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX011"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["3.1 Capas de campo y de supervisión"]
+  N2["3.2 Confianza por defecto"]
+  N3["3.3 Dónde se encuentran las redes"]
+  N4["3.4 Qué hace un analista"]
+  N5["3.5 Inalámbrico"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX011"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[3.1 Capas de campo y de supervisión]
+    |
+    v
+[3.2 Confianza por defecto]
+    |
+    v
+[3.3 Dónde se encuentran las redes]
+    |
+    v
+[3.4 Qué hace un analista]
+    |
+    v
+[3.5 Inalámbrico]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Resultados de aprendizaje
 
 Usted podrá (1) describir cómo se comunican los controladores del BMS; (2) explicar por qué los protocolos de los edificios suelen carecer de autenticación; y (3) identificar dónde tocan las redes del edificio la red del hospital.
@@ -195,6 +370,71 @@ Los controladores del edificio confían en quien los alcanza, así que importa c
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Un inventario de los dispositivos del edificio
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Qué registrar"]
+  N2["4.2 Agrupación"]
+  N3["4.3 Lectura de la salida"]
+  N4["4.4 Uso del inventario"]
+  N5["4.5 De dónde salen los datos"]
+  N6["4.6 Columna de consecuencia"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX016"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["4.1 Qué registrar"]
+  N2["4.2 Agrupación"]
+  N3["4.3 Lectura de la salida"]
+  N4["4.4 Uso del inventario"]
+  N5["4.5 De dónde salen los datos"]
+  N6["4.6 Columna de consecuencia"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[4.1 Qué registrar]
+    |
+    v
+[4.2 Agrupación]
+    |
+    v
+[4.3 Lectura de la salida]
+    |
+    v
+[4.4 Uso del inventario]
+    |
+    v
+[4.5 De dónde salen los datos]
+    |
+    v
+[4.6 Columna de consecuencia]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Resultados de aprendizaje
 
@@ -283,6 +523,66 @@ Un inventario agrupado por sistema y con el estado del soporte muestra a los res
 
 ## Capítulo 5 — Cuentas, valores por defecto y configuraciones de referencia de los dispositivos
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["5.1 Valores por defecto en los edificios"]
+  N2["5.2 Cuentas compartidas de mantenimiento"]
+  N3["5.3 Una configuración de referencia para las compras"]
+  N4["5.4 Normas que el personal de mantenimiento pueda se"]
+  N5["5.5 Comprobar que el cambio funcionó"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX021"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["5.1 Valores por defecto en los edificios"]
+  N2["5.2 Cuentas compartidas de mantenimiento"]
+  N3["5.3 Una configuración de referencia para las compras"]
+  N4["5.4 Normas que el personal de mantenimiento pueda se"]
+  N5["5.5 Comprobar que el cambio funcionó"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[5.1 Valores por defecto en los edificios]
+    |
+    v
+[5.2 Cuentas compartidas de mantenimiento]
+    |
+    v
+[5.3 Una configuración de referencia para las compras]
+    |
+    v
+[5.4 Normas que el personal de mantenimiento pueda se]
+    |
+    v
+[5.5 Comprobar que el cambio funcionó]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Resultados de aprendizaje
 
 Usted podrá (1) encontrar cuentas por defecto y compartidas en los sistemas del edificio; (2) aplicar las ideas de ETSI EN 303 645 y NIST IR 8259 a las compras; y (3) fijar normas prácticas de contraseñas para el personal de mantenimiento.
@@ -336,6 +636,66 @@ Los valores por defecto cambiados, las cuentas nominativas, las contraseñas en 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Exposición a internet de los sistemas del edificio
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX026.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["6.1 Cómo ocurre"]
+  N2["6.2 Comprobar la exposición"]
+  N3["6.3 Lectura del resultado"]
+  N4["6.4 Respuesta"]
+  N5["6.5 Evitar que se repita"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX026"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["6.1 Cómo ocurre"]
+  N2["6.2 Comprobar la exposición"]
+  N3["6.3 Lectura del resultado"]
+  N4["6.4 Respuesta"]
+  N5["6.5 Evitar que se repita"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX026"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[6.1 Cómo ocurre]
+    |
+    v
+[6.2 Comprobar la exposición]
+    |
+    v
+[6.3 Lectura del resultado]
+    |
+    v
+[6.4 Respuesta]
+    |
+    v
+[6.5 Evitar que se repita]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Resultados de aprendizaje
 
@@ -412,6 +772,61 @@ Solo la pasarela da a internet; cualquier otra cosa que se encuentre se notifica
 
 ## Capítulo 7 — Acceso remoto de contratistas y fabricantes
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["7.1 Muchas manos"]
+  N2["7.2 Lecciones de AA21-042A"]
+  N3["7.3 Un proceso controlado"]
+  N4["7.4 Retirar las vías antiguas"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX031"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["7.1 Muchas manos"]
+  N2["7.2 Lecciones de AA21-042A"]
+  N3["7.3 Un proceso controlado"]
+  N4["7.4 Retirar las vías antiguas"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[7.1 Muchas manos]
+    |
+    v
+[7.2 Lecciones de AA21-042A]
+    |
+    v
+[7.3 Un proceso controlado]
+    |
+    v
+[7.4 Retirar las vías antiguas]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Resultados de aprendizaje
 
 Usted podrá (1) inventariar todas las vías remotas hacia los sistemas del edificio; (2) aplicar las lecciones de CISA AA21-042A; y (3) diseñar un proceso de acceso remoto controlado para los contratistas.
@@ -461,6 +876,66 @@ Toda ayuda remota pasa por una única pasarela con cuentas nominativas, con aute
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Segmentación de las redes del edificio
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["8.1 Zonas"]
+  N2["8.2 Conductos y reglas"]
+  N3["8.3 Corregir la estación de trabajo conectada a dos"]
+  N4["8.4 Migrar con seguridad"]
+  N5["8.5 Documentación"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX036"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["8.1 Zonas"]
+  N2["8.2 Conductos y reglas"]
+  N3["8.3 Corregir la estación de trabajo conectada a dos"]
+  N4["8.4 Migrar con seguridad"]
+  N5["8.5 Documentación"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX036"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[8.1 Zonas]
+    |
+    v
+[8.2 Conductos y reglas]
+    |
+    v
+[8.3 Corregir la estación de trabajo conectada a dos]
+    |
+    v
+[8.4 Migrar con seguridad]
+    |
+    v
+[8.5 Documentación]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Resultados de aprendizaje
 
@@ -515,6 +990,71 @@ Las zonas con conductos estrechos impiden que los compromisos de la oficina alca
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Supervisión de tendencias y registros
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa de la lección
+
+Lección 09 publicada. Mapa, ejemplo, EX041.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["9.1 Las tendencias como evidencia"]
+  N2["9.2 Ventanas de cambio"]
+  N3["9.3 Lectura de la salida"]
+  N4["9.4 Combinar fuentes"]
+  N5["9.5 Alertas"]
+  N6["9.6 Conservar la evidencia"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX041"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["9.1 Las tendencias como evidencia"]
+  N2["9.2 Ventanas de cambio"]
+  N3["9.3 Lectura de la salida"]
+  N4["9.4 Combinar fuentes"]
+  N5["9.5 Alertas"]
+  N6["9.6 Conservar la evidencia"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX041"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[9.1 Las tendencias como evidencia]
+    |
+    v
+[9.2 Ventanas de cambio]
+    |
+    v
+[9.3 Lectura de la salida]
+    |
+    v
+[9.4 Combinar fuentes]
+    |
+    v
+[9.5 Alertas]
+    |
+    v
+[9.6 Conservar la evidencia]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Resultados de aprendizaje
 
@@ -595,6 +1135,71 @@ Los registros de tendencias muestran qué cambió y cuándo; combinados con los 
 
 ## Capítulo 10 — Avisos y parches para los sistemas del edificio
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa de la lección
+
+Lección 10 publicada. Mapa, ejemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["10.1 Fuentes"]
+  N2["10.2 Correspondencia"]
+  N3["10.3 Elegir"]
+  N4["10.4 Seguimiento"]
+  N5["10.5 Pruebas tras el parche"]
+  N6["10.6 Contacto con el fabricante"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX046"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["10.1 Fuentes"]
+  N2["10.2 Correspondencia"]
+  N3["10.3 Elegir"]
+  N4["10.4 Seguimiento"]
+  N5["10.5 Pruebas tras el parche"]
+  N6["10.6 Contacto con el fabricante"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[10.1 Fuentes]
+    |
+    v
+[10.2 Correspondencia]
+    |
+    v
+[10.3 Elegir]
+    |
+    v
+[10.4 Seguimiento]
+    |
+    v
+[10.5 Pruebas tras el parche]
+    |
+    v
+[10.6 Contacto con el fabricante]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Resultados de aprendizaje
 
 Usted podrá (1) hacer corresponder los avisos con el inventario del edificio; (2) decidir entre aplicar un parche o una mitigación; y (3) hacer el seguimiento de las decisiones a lo largo del tiempo.
@@ -653,6 +1258,66 @@ Los avisos se cotejan, se mitigan con rapidez, se parchean en franjas reservadas
 
 ## Capítulo 11 — Respuesta a incidentes en los sistemas del edificio de un hospital
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa de la lección
+
+Lección 11 publicada. Mapa, ejemplo, EX051.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["11.1 Planificar con antelación"]
+  N2["11.2 Detectar y evaluar"]
+  N3["11.3 Contener"]
+  N4["11.4 Evidencia y recuperación"]
+  N5["11.5 Comunicación"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX051"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["11.1 Planificar con antelación"]
+  N2["11.2 Detectar y evaluar"]
+  N3["11.3 Contener"]
+  N4["11.4 Evidencia y recuperación"]
+  N5["11.5 Comunicación"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX051"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[11.1 Planificar con antelación]
+    |
+    v
+[11.2 Detectar y evaluar]
+    |
+    v
+[11.3 Contener]
+    |
+    v
+[11.4 Evidencia y recuperación]
+    |
+    v
+[11.5 Comunicación]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Resultados de aprendizaje
 
 Usted podrá (1) adaptar los pasos de respuesta a incidentes a los sistemas del edificio; (2) decidir cuándo aislar el BMS; y (3) coordinarse con los equipos clínicos, de mantenimiento y de informática.
@@ -706,6 +1371,71 @@ La seguridad clínica va primero, el control local mantiene las instalaciones, e
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Proyecto final: un informe de riesgos de los sistemas del edificio
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa de la lección
+
+Lección 12 publicada. Mapa, ejemplo, EX056.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje"]
+  N1["12.1 Estructura"]
+  N2["12.2 Valoración"]
+  N3["12.3 Recomendaciones"]
+  N4["12.4 Presentación"]
+  N5["12.5 Anexo de evidencia"]
+  N6["12.6 Después de la reunión"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX056"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje"]
+  N1["12.1 Estructura"]
+  N2["12.2 Valoración"]
+  N3["12.3 Recomendaciones"]
+  N4["12.4 Presentación"]
+  N5["12.5 Anexo de evidencia"]
+  N6["12.6 Después de la reunión"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX056"]
+```
+
+```text
+[Resultados de aprendizaje]
+    |
+    v
+[12.1 Estructura]
+    |
+    v
+[12.2 Valoración]
+    |
+    v
+[12.3 Recomendaciones]
+    |
+    v
+[12.4 Presentación]
+    |
+    v
+[12.5 Anexo de evidencia]
+    |
+    v
+[12.6 Después de la reunión]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Resultados de aprendizaje
 

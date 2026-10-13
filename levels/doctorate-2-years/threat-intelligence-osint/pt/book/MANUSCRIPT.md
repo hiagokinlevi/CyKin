@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de pesquisa para o doutorado
 
 - Idioma: português do Brasil (`pt`); trilha de pesquisa de doutorado, dois anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito; os exercícios EX001–EX056 têm resoluções correspondentes com rubricas de 0 a 3; três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas vêm de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito; os exercícios EX001–EX056 têm resoluções correspondentes com rubricas de 0 a 3; três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas vêm de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: doutorandos que desenham uma contribuição original e testável ao método de inteligência de ameaças cibernéticas (CTI) ou de inteligência de fontes abertas (OSINT).
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização, nenhuma intrusão na infraestrutura de adversários. Todos os conjuntos de dados, pessoas e organizações são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -35,6 +35,56 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 Por que a pesquisa em CTI precisa de regras próp"]
+  N1["1.2 Poder versus ter permissão"]
+  N2["1.3 Pré-registro"]
+  N3["1.4 O dossiê de ética"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 Por que a pesquisa em CTI precisa de regras próp"]
+  N1["1.2 Poder versus ter permissão"]
+  N2["1.3 Pré-registro"]
+  N3["1.4 O dossiê de ética"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[1.1 Por que a pesquisa em CTI precisa de regras próp]
+    |
+    v
+[1.2 Poder versus ter permissão]
+    |
+    v
+[1.3 Pré-registro]
+    |
+    v
+[1.4 O dossiê de ética]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -88,6 +138,56 @@ Registre a base legal, os termos, a minimização e a retenção antes de coleta
 
 ## Capítulo 2 — Inteligência de ameaças e OSINT: fronteira da pesquisa
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Três modelos, três afirmações"]
+  N1["2.2 Problemas em aberto"]
+  N2["2.3 Fronteira do método OSINT"]
+  N3["2.4 Escrevendo a lacuna"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Três modelos, três afirmações"]
+  N1["2.2 Problemas em aberto"]
+  N2["2.3 Fronteira do método OSINT"]
+  N3["2.4 Escrevendo a lacuna"]
+  N4["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX008"]
+```
+
+```text
+[2.1 Três modelos, três afirmações]
+    |
+    v
+[2.2 Problemas em aberto]
+    |
+    v
+[2.3 Fronteira do método OSINT]
+    |
+    v
+[2.4 Escrevendo a lacuna]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) mapear os principais problemas em aberto no método de CTI; (2) distinguir os modelos (kill chain, Diamond, ATT&CK) pelo que cada um afirma; (3) identificar onde a evidência da literatura é escassa; (4) escrever uma declaração de lacuna que um revisor não possa descartar como mero resumo da literatura.
@@ -139,6 +239,61 @@ Saiba o que cada modelo afirma, encontre lacunas precisas e ligadas a decisões,
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Perguntas falseáveis"]
+  N1["3.2 Constructos e medidas"]
+  N2["3.3 Um desenho que pode falhar"]
+  N3["3.4 Ameaças à validade"]
+  N4["3.5 A afirmação de contribuição"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Perguntas falseáveis"]
+  N1["3.2 Constructos e medidas"]
+  N2["3.3 Um desenho que pode falhar"]
+  N3["3.4 Ameaças à validade"]
+  N4["3.5 A afirmação de contribuição"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX015"]
+```
+
+```text
+[3.1 Perguntas falseáveis]
+    |
+    v
+[3.2 Constructos e medidas]
+    |
+    v
+[3.3 Um desenho que pode falhar]
+    |
+    v
+[3.4 Ameaças à validade]
+    |
+    v
+[3.5 A afirmação de contribuição]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -195,6 +350,66 @@ Arrisque-se à refutação, defina as medidas em um livro de códigos, desenhe a
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["4.1 Por que replicar primeiro"]
+  N1["Laboratório 1 — sobreposição da linha de base"]
+  N2["4.2 Lendo a sobreposição"]
+  N3["Laboratório 2 — piloto de calibração"]
+  N4["4.3 Lendo o piloto"]
+  N5["4.4 Decisão de viabilidade"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX022"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Por que replicar primeiro"]
+  N1["Laboratório 1 — sobreposição da linha de base"]
+  N2["4.2 Lendo a sobreposição"]
+  N3["Laboratório 2 — piloto de calibração"]
+  N4["4.3 Lendo o piloto"]
+  N5["4.4 Decisão de viabilidade"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX022"]
+```
+
+```text
+[4.1 Por que replicar primeiro]
+    |
+    v
+[Laboratório 1 — sobreposição da linha de base]
+    |
+    v
+[4.2 Lendo a sobreposição]
+    |
+    v
+[Laboratório 2 — piloto de calibração]
+    |
+    v
+[4.3 Lendo o piloto]
+    |
+    v
+[4.4 Decisão de viabilidade]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -295,6 +510,66 @@ Replique o que é simples, confira o código contra o cálculo manual, trate os 
 
 ## Capítulo 5 — Estudo principal e validação independente
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX029.
+
+```mermaid
+flowchart TD
+  N0["5.1 Dupla codificação"]
+  N1["Laboratório 3 — concordância"]
+  N2["5.2 Lendo o kappa"]
+  N3["5.3 Arbitragem"]
+  N4["5.4 Validação independente"]
+  N5["5.5 Compartilhando resultados em formato padrão"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX029"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Dupla codificação"]
+  N1["Laboratório 3 — concordância"]
+  N2["5.2 Lendo o kappa"]
+  N3["5.3 Arbitragem"]
+  N4["5.4 Validação independente"]
+  N5["5.5 Compartilhando resultados em formato padrão"]
+  N6["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX029"]
+```
+
+```text
+[5.1 Dupla codificação]
+    |
+    v
+[Laboratório 3 — concordância]
+    |
+    v
+[5.2 Lendo o kappa]
+    |
+    v
+[5.3 Arbitragem]
+    |
+    v
+[5.4 Validação independente]
+    |
+    v
+[5.5 Compartilhando resultados em formato padrão]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX029]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) organizar a dupla codificação cega de um corpus; (2) calcular a concordância entre avaliadores com o kappa de Cohen; (3) arbitrar divergências sem contaminar os dados; (4) providenciar a validação por uma equipe que não construiu o pipeline.
@@ -374,6 +649,61 @@ Codifique às cegas e em dobro, corrija o acaso, arbitre com transparência, val
 
 ## Capítulo 6 — Crítica por pares e revisão
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX036.
+
+```mermaid
+flowchart TD
+  N0["6.1 Convidando o leitor mais duro"]
+  N1["6.2 A ICD 203 como lente"]
+  N2["6.3 Respostas ponto a ponto"]
+  N3["6.4 Substantivo versus cosmético"]
+  N4["6.5 Hipóteses alternativas"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX036"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Convidando o leitor mais duro"]
+  N1["6.2 A ICD 203 como lente"]
+  N2["6.3 Respostas ponto a ponto"]
+  N3["6.4 Substantivo versus cosmético"]
+  N4["6.5 Hipóteses alternativas"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX036"]
+```
+
+```text
+[6.1 Convidando o leitor mais duro]
+    |
+    v
+[6.2 A ICD 203 como lente]
+    |
+    v
+[6.3 Respostas ponto a ponto]
+    |
+    v
+[6.4 Substantivo versus cosmético]
+    |
+    v
+[6.5 Hipóteses alternativas]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) solicitar uma crítica adversarial do próprio estudo; (2) aplicar os padrões de *tradecraft* da ICD 203 como lente de revisão; (3) responder aos revisores ponto a ponto; (4) distinguir as revisões que mudam conclusões das que melhoram a apresentação.
@@ -432,6 +762,61 @@ Convide a leitura hostil, cobre de si mesmo o padrão da ICD 203, responda a tod
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["7.1 Uma afirmação por capítulo"]
+  N1["7.2 O que o arquivo contém"]
+  N2["7.3 Ambiente"]
+  N3["7.4 Declaração de disponibilidade de dados"]
+  N4["7.5 Saídas legíveis por máquina"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX043"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Uma afirmação por capítulo"]
+  N1["7.2 O que o arquivo contém"]
+  N2["7.3 Ambiente"]
+  N3["7.4 Declaração de disponibilidade de dados"]
+  N4["7.5 Saídas legíveis por máquina"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX043"]
+```
+
+```text
+[7.1 Uma afirmação por capítulo]
+    |
+    v
+[7.2 O que o arquivo contém]
+    |
+    v
+[7.3 Ambiente]
+    |
+    v
+[7.4 Declaração de disponibilidade de dados]
+    |
+    v
+[7.5 Saídas legíveis por máquina]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma tese de modo que cada capítulo carregue uma afirmação; (2) montar um arquivo de reprodutibilidade que exclua legalmente os dados restritos; (3) documentar o ambiente de software e as sementes aleatórias; (4) escrever uma declaração de disponibilidade de dados honesta sobre as restrições.
@@ -487,6 +872,61 @@ Uma afirmação por capítulo, um arquivo que reconstrói tudo o que é legítim
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Plano de defesa e publicação
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX050.
+
+```mermaid
+flowchart TD
+  N0["8.1 Postura na defesa"]
+  N1["8.2 Veículos"]
+  N2["8.3 Sensibilidade dos fornecedores"]
+  N3["8.4 O TLP nas saídas"]
+  N4["8.5 Trabalho futuro"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX050"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Postura na defesa"]
+  N1["8.2 Veículos"]
+  N2["8.3 Sensibilidade dos fornecedores"]
+  N3["8.4 O TLP nas saídas"]
+  N4["8.5 Trabalho futuro"]
+  N5["Síntese"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX050"]
+```
+
+```text
+[8.1 Postura na defesa]
+    |
+    v
+[8.2 Veículos]
+    |
+    v
+[8.3 Sensibilidade dos fornecedores]
+    |
+    v
+[8.4 O TLP nas saídas]
+    |
+    v
+[8.5 Trabalho futuro]
+    |
+    v
+[Síntese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX050]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

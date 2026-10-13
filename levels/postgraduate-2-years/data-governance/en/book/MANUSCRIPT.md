@@ -1,7 +1,7 @@
 # Data Governance: Postgraduate Course
 
 - Language: English (`en`); course 141, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working practitioners on a part-time postgraduate route who must lead data governance in their own organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs measure the share of synthetic carrier tracking events arriving within fifteen minutes and review stale and unapproved accounts on a synthetic shipment data set. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,56 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Wang and Strong (1996
 <a id="ch-01"></a>
 
 ## Chapter 1 — The practitioner and Corran Freight
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The student"]
+  N2["1.2 Corran Freight"]
+  N3["1.3 The problems"]
+  N4["1.4 Work-based learning"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The student"]
+  N2["1.2 Corran Freight"]
+  N3["1.3 The problems"]
+  N4["1.4 Work-based learning"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The student]
+    |
+    v
+[1.2 Corran Freight]
+    |
+    v
+[1.3 The problems]
+    |
+    v
+[1.4 Work-based learning]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -87,6 +137,56 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Governance operating model
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX006.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Models"]
+  N2["2.2 Choosing for Corran"]
+  N3["2.3 The governance group"]
+  N4["2.4 Starting small"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX006"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Models"]
+  N2["2.2 Choosing for Corran"]
+  N3["2.3 The governance group"]
+  N4["2.4 Starting small"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX006"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Models]
+    |
+    v
+[2.2 Choosing for Corran]
+    |
+    v
+[2.3 The governance group]
+    |
+    v
+[2.4 Starting small]
+    |
+    v
+[Worked example] --> [Exercise EX006]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) compare governance operating models; (2) select one for a mid-sized company; (3) define a governance group's mandate.
@@ -136,6 +236,56 @@ Continue to the next authored lesson.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Data ownership in a logistics network
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX011.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Internal domains"]
+  N2["3.2 Partner data"]
+  N3["3.3 Ownership statements"]
+  N4["3.4 Testing ownership"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX011"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Internal domains"]
+  N2["3.2 Partner data"]
+  N3["3.3 Ownership statements"]
+  N4["3.4 Testing ownership"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX011"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Internal domains]
+    |
+    v
+[3.2 Partner data]
+    |
+    v
+[3.3 Ownership statements]
+    |
+    v
+[3.4 Testing ownership]
+    |
+    v
+[Worked example] --> [Exercise EX011]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -187,6 +337,56 @@ Continue to the next authored lesson.
 
 ## Chapter 4 — Quality management for shipment data
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Expectations"]
+  N2["4.2 The quality cycle"]
+  N3["4.3 Cost of poor quality"]
+  N4["4.4 Fixing proof of delivery"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX016"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Expectations"]
+  N2["4.2 The quality cycle"]
+  N3["4.3 Cost of poor quality"]
+  N4["4.4 Fixing proof of delivery"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX016"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Expectations]
+    |
+    v
+[4.2 The quality cycle]
+    |
+    v
+[4.3 Cost of poor quality]
+    |
+    v
+[4.4 Fixing proof of delivery]
+    |
+    v
+[Worked example] --> [Exercise EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes
 
 You will (1) define quality expectations for shipment data; (2) build a quality management cycle; (3) prioritise issues by cost.
@@ -236,6 +436,61 @@ Continue to the next authored lesson.
 <a id="ch-05"></a>
 
 ## Chapter 5 — Timeliness of carrier events
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Why timeliness matters"]
+  N2["Lab — Share of synthetic carrier events arriving wit"]
+  N3["5.2 Results"]
+  N4["5.3 Fair comparison"]
+  N5["5.4 Using the results"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Why timeliness matters"]
+  N2["Lab — Share of synthetic carrier events arriving wit"]
+  N3["5.2 Results"]
+  N4["5.3 Fair comparison"]
+  N5["5.4 Using the results"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Why timeliness matters]
+    |
+    v
+[Lab — Share of synthetic carrier events arriving wit]
+    |
+    v
+[5.2 Results]
+    |
+    v
+[5.3 Fair comparison]
+    |
+    v
+[5.4 Using the results]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Learning outcomes
 
@@ -307,6 +562,56 @@ Continue to the next authored lesson.
 
 ## Chapter 6 — Metadata, lineage and catalogue
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Definitions"]
+  N2["6.2 Lineage"]
+  N3["6.3 A lightweight catalogue"]
+  N4["6.4 Communicating the change"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Definitions"]
+  N2["6.2 Lineage"]
+  N3["6.3 A lightweight catalogue"]
+  N4["6.4 Communicating the change"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Definitions]
+    |
+    v
+[6.2 Lineage]
+    |
+    v
+[6.3 A lightweight catalogue]
+    |
+    v
+[6.4 Communicating the change]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) document definitions behind key measures; (2) trace lineage of a board measure; (3) build a lightweight catalogue.
@@ -356,6 +661,61 @@ Continue to the next authored lesson.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Access governance
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX031.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 Why review access"]
+  N2["Lab — Stale and unapproved accounts on a synthetic s"]
+  N3["7.2 Results"]
+  N4["7.3 Acting on results"]
+  N5["7.4 Making it recurring"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX031"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 Why review access"]
+  N2["Lab — Stale and unapproved accounts on a synthetic s"]
+  N3["7.2 Results"]
+  N4["7.3 Acting on results"]
+  N5["7.4 Making it recurring"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX031"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 Why review access]
+    |
+    v
+[Lab — Stale and unapproved accounts on a synthetic s]
+    |
+    v
+[7.2 Results]
+    |
+    v
+[7.3 Acting on results]
+    |
+    v
+[7.4 Making it recurring]
+    |
+    v
+[Worked example] --> [Exercise EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -433,6 +793,56 @@ Continue to the next authored lesson.
 
 ## Chapter 8 — Privacy and driver data
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX036.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Telematics"]
+  N2["8.2 Assessment"]
+  N3["8.3 Involving drivers"]
+  N4["8.4 Minimisation"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX036"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Telematics"]
+  N2["8.2 Assessment"]
+  N3["8.3 Involving drivers"]
+  N4["8.4 Minimisation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX036"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Telematics]
+    |
+    v
+[8.2 Assessment]
+    |
+    v
+[8.3 Involving drivers]
+    |
+    v
+[8.4 Minimisation]
+    |
+    v
+[Worked example] --> [Exercise EX036]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Learning outcomes
 
 You will (1) assess privacy risks in vehicle telematics; (2) apply purpose limitation and minimisation; (3) involve affected people.
@@ -482,6 +892,56 @@ Continue to the next authored lesson.
 <a id="ch-09"></a>
 
 ## Chapter 9 — Third-party data and contracts
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX041.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["9.1 Data flows with partners"]
+  N2["9.2 Data clauses"]
+  N3["9.3 Monitoring partners"]
+  N4["9.4 Ending relationships"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX041"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["9.1 Data flows with partners"]
+  N2["9.2 Data clauses"]
+  N3["9.3 Monitoring partners"]
+  N4["9.4 Ending relationships"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX041"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[9.1 Data flows with partners]
+    |
+    v
+[9.2 Data clauses]
+    |
+    v
+[9.3 Monitoring partners]
+    |
+    v
+[9.4 Ending relationships]
+    |
+    v
+[Worked example] --> [Exercise EX041]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Learning outcomes
 
@@ -533,6 +993,56 @@ Continue to the next authored lesson.
 
 ## Chapter 10 — Metrics, reporting and the board
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Lesson map
+
+Lesson 10 published. Map, example, EX046.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["10.1 Choosing metrics"]
+  N2["10.2 Building the report"]
+  N3["10.3 Attribution"]
+  N4["10.4 Decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX046"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["10.1 Choosing metrics"]
+  N2["10.2 Building the report"]
+  N3["10.3 Attribution"]
+  N4["10.4 Decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX046"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[10.1 Choosing metrics]
+    |
+    v
+[10.2 Building the report]
+    |
+    v
+[10.3 Attribution]
+    |
+    v
+[10.4 Decisions]
+    |
+    v
+[Worked example] --> [Exercise EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Learning outcomes
 
 You will (1) design governance metrics for executives; (2) link metrics to business outcomes; (3) report honestly on progress.
@@ -583,6 +1093,56 @@ Continue to the next authored lesson.
 
 ## Chapter 11 — Capstone project
 
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Lesson map
+
+Lesson 11 published. Map, example, EX051.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["11.1 Choosing the intervention"]
+  N2["11.2 Design"]
+  N3["11.3 Implementation"]
+  N4["11.4 Evaluation"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["11.1 Choosing the intervention"]
+  N2["11.2 Design"]
+  N3["11.3 Implementation"]
+  N4["11.4 Evaluation"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX051"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[11.1 Choosing the intervention]
+    |
+    v
+[11.2 Design]
+    |
+    v
+[11.3 Implementation]
+    |
+    v
+[11.4 Evaluation]
+    |
+    v
+[Worked example] --> [Exercise EX051]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
+
 ### Learning outcomes
 
 You will (1) design a capstone governance intervention; (2) implement it with stakeholders; (3) evaluate results against a baseline.
@@ -632,6 +1192,56 @@ Continue to the next authored lesson.
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone presentation and next steps
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Lesson map
+
+Lesson 12 published. Map, example, EX056.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["12.1 The presentation"]
+  N2["12.2 Assessor questions"]
+  N3["12.3 Professional reflection"]
+  N4["12.4 Next steps"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX056"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["12.1 The presentation"]
+  N2["12.2 Assessor questions"]
+  N3["12.3 Professional reflection"]
+  N4["12.4 Next steps"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX056"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[12.1 The presentation]
+    |
+    v
+[12.2 Assessor questions]
+    |
+    v
+[12.3 Professional reflection]
+    |
+    v
+[12.4 Next steps]
+    |
+    v
+[Worked example] --> [Exercise EX056]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Learning outcomes
 

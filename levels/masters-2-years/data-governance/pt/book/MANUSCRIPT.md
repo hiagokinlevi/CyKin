@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 164, mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que avaliam se a curadoria de dados (*data stewardship*) melhora a qualidade dos dados em um órgão público.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam endereços duplicados antes e depois da normalização em um cadastro sintético e estimam um efeito de diferenças em diferenças sobre tempos sintéticos de correção, com intervalo por *bootstrap*. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública. O código dos laboratórios e suas saídas são mantidos exatamente como na edição em inglês.
@@ -36,6 +36,51 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-1:2022; Khatri e Brown (2010)
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa da aula
+
+Aula 01 publicada. Mapa, exemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["1.1 O estudante e o contexto"]
+  N1["1.2 Formulando a pergunta"]
+  N2["1.3 Buscando na literatura"]
+  N3["1.4 Registrando as decisões"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX001"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["1.1 O estudante e o contexto"]
+  N1["1.2 Formulando a pergunta"]
+  N2["1.3 Buscando na literatura"]
+  N3["1.4 Registrando as decisões"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX001"]
+```
+
+```text
+[1.1 O estudante e o contexto]
+    |
+    v
+[1.2 Formulando a pergunta]
+    |
+    v
+[1.3 Buscando na literatura]
+    |
+    v
+[1.4 Registrando as decisões]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -89,6 +134,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 2 — Governança de dados: seminário avançado
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa da aula
+
+Aula 02 publicada. Mapa, exemplo, EX008.
+
+```mermaid
+flowchart TD
+  N0["2.1 Modelos de governança"]
+  N1["2.2 Onde entram os curadores"]
+  N2["2.3 Normas de qualidade"]
+  N3["2.4 O argumento do seminário"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX008"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["2.1 Modelos de governança"]
+  N1["2.2 Onde entram os curadores"]
+  N2["2.3 Normas de qualidade"]
+  N3["2.4 O argumento do seminário"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX008"]
+```
+
+```text
+[2.1 Modelos de governança]
+    |
+    v
+[2.2 Onde entram os curadores]
+    |
+    v
+[2.3 Normas de qualidade]
+    |
+    v
+[2.4 O argumento do seminário]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) comparar modelos de governança de forma crítica; (2) relacionar a curadoria com direitos de decisão e normas; (3) apresentar um argumento em seminário.
@@ -141,6 +231,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa da aula
+
+Aula 03 publicada. Mapa, exemplo, EX015.
+
+```mermaid
+flowchart TD
+  N0["3.1 Escolhendo o desenho"]
+  N1["3.2 Verificando as suposições"]
+  N2["3.3 Ética"]
+  N3["3.4 Análise reproduzível"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX015"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["3.1 Escolhendo o desenho"]
+  N1["3.2 Verificando as suposições"]
+  N2["3.3 Ética"]
+  N3["3.4 Análise reproduzível"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX015"]
+```
+
+```text
+[3.1 Escolhendo o desenho]
+    |
+    v
+[3.2 Verificando as suposições]
+    |
+    v
+[3.3 Ética]
+    |
+    v
+[3.4 Análise reproduzível]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) desenhar uma avaliação quase experimental; (2) tratar da ética na pesquisa em ambiente de trabalho; (3) planejar uma análise reproduzível.
@@ -192,6 +327,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 4 — Governança de dados: explicações concorrentes
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa da aula
+
+Aula 04 publicada. Mapa, exemplo, EX021.
+
+```mermaid
+flowchart TD
+  N0["4.1 Por que as rivais importam"]
+  N1["4.2 Desenhando verificações"]
+  N2["4.3 A explicação cultural"]
+  N3["4.4 Evidências que enfraqueceriam a hipótese"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX021"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["4.1 Por que as rivais importam"]
+  N1["4.2 Desenhando verificações"]
+  N2["4.3 A explicação cultural"]
+  N3["4.4 Evidências que enfraqueceriam a hipótese"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX021"]
+```
+
+```text
+[4.1 Por que as rivais importam]
+    |
+    v
+[4.2 Desenhando verificações]
+    |
+    v
+[4.3 A explicação cultural]
+    |
+    v
+[4.4 Evidências que enfraqueceriam a hipótese]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) listar explicações rivais para um efeito esperado; (2) desenhar verificações para cada uma; (3) decidir que evidências enfraqueceriam a hipótese principal.
@@ -242,6 +422,56 @@ Continue para a próxima aula já escrita.
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Projeto e piloto
+
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa da aula
+
+Aula 05 publicada. Mapa, exemplo, EX027.
+
+```mermaid
+flowchart TD
+  N0["5.1 Finalidade do piloto"]
+  N1["5.2 O laboratório de duplicatas"]
+  N2["5.3 Tempos de correção"]
+  N3["5.4 Refinando o projeto"]
+  N4["Laboratório — Endereços duplicados antes e depois da"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX027"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["5.1 Finalidade do piloto"]
+  N1["5.2 O laboratório de duplicatas"]
+  N2["5.3 Tempos de correção"]
+  N3["5.4 Refinando o projeto"]
+  N4["Laboratório — Endereços duplicados antes e depois da"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+```
+
+```text
+[5.1 Finalidade do piloto]
+    |
+    v
+[5.2 O laboratório de duplicatas]
+    |
+    v
+[5.3 Tempos de correção]
+    |
+    v
+[5.4 Refinando o projeto]
+    |
+    v
+[Laboratório — Endereços duplicados antes e depois da]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
 
 ### Objetivos de aprendizagem
 
@@ -326,6 +556,56 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 6 — Coleta e análise de dados
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa da aula
+
+Aula 06 publicada. Mapa, exemplo, EX033.
+
+```mermaid
+flowchart TD
+  N0["6.1 Coletando os dados"]
+  N1["6.2 A estimativa"]
+  N2["6.3 Verificando as rivais"]
+  N3["6.4 O que a estimativa significa"]
+  N4["Laboratório — Diferenças em diferenças dos tempos de"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX033"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["6.1 Coletando os dados"]
+  N1["6.2 A estimativa"]
+  N2["6.3 Verificando as rivais"]
+  N3["6.4 O que a estimativa significa"]
+  N4["Laboratório — Diferenças em diferenças dos tempos de"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX033"]
+```
+
+```text
+[6.1 Coletando os dados]
+    |
+    v
+[6.2 A estimativa]
+    |
+    v
+[6.3 Verificando as rivais]
+    |
+    v
+[6.4 O que a estimativa significa]
+    |
+    v
+[Laboratório — Diferenças em diferenças dos tempos de]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) coletar dados de desfecho no nível do departamento; (2) estimar um efeito de diferenças em diferenças com intervalo por *bootstrap*; (3) verificar as explicações rivais.
@@ -401,6 +681,51 @@ Continue para a próxima aula já escrita.
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa da aula
+
+Aula 07 publicada. Mapa, exemplo, EX039.
+
+```mermaid
+flowchart TD
+  N0["7.1 Estrutura"]
+  N1["7.2 Limitações"]
+  N2["7.3 Achados versus recomendações"]
+  N3["7.4 Escrevendo para dois públicos"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX039"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["7.1 Estrutura"]
+  N1["7.2 Limitações"]
+  N2["7.3 Achados versus recomendações"]
+  N3["7.4 Escrevendo para dois públicos"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX039"]
+```
+
+```text
+[7.1 Estrutura]
+    |
+    v
+[7.2 Limitações]
+    |
+    v
+[7.3 Achados versus recomendações]
+    |
+    v
+[7.4 Escrevendo para dois públicos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Objetivos de aprendizagem
 
 Você vai (1) estruturar uma dissertação de mestrado; (2) escrever limitações que informem o leitor; (3) separar achados de recomendações.
@@ -451,6 +776,51 @@ Continue para a próxima aula já escrita.
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa da aula
+
+Aula 08 publicada. Mapa, exemplo, EX045.
+
+```mermaid
+flowchart TD
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 A entrega"]
+  N3["8.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3
+  N3 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX045"]
+```
+
+### Desenho lógico
+
+```mermaid
+flowchart LR
+  N0["8.1 Revisão independente"]
+  N1["8.2 A defesa"]
+  N2["8.3 A entrega"]
+  N3["8.4 Reflexão"]
+  N0 --> N1 --> N2 --> N3 --> Q["EX045"]
+```
+
+```text
+[8.1 Revisão independente]
+    |
+    v
+[8.2 A defesa]
+    |
+    v
+[8.3 A entrega]
+    |
+    v
+[8.4 Reflexão]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Objetivos de aprendizagem
 

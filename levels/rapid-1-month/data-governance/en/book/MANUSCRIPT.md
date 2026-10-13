@@ -1,7 +1,7 @@
 # Data Governance: Rapid Course
 
 - Language: English (`en`); course 003, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: beginners who need a fast, practical start in data governance for a small business.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab checks a twelve-row synthetic café sign-up list for blank emails, malformed addresses, duplicates and consent ticks. Law is cited by edition and paraphrased; nothing here is legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,61 @@ GDPR. Full list in [References](#references).
 <a id="ch-01"></a>
 
 ## Chapter 1 — Data governance: foundations and first decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The learner and the café"]
+  N2["1.2 What data governance means"]
+  N3["1.3 Copperleaf's data"]
+  N4["1.4 Why it matters"]
+  N5["1.5 Three first decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The learner and the café"]
+  N2["1.2 What data governance means"]
+  N3["1.3 Copperleaf's data"]
+  N4["1.4 Why it matters"]
+  N5["1.5 Three first decisions"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The learner and the café]
+    |
+    v
+[1.2 What data governance means]
+    |
+    v
+[1.3 Copperleaf's data]
+    |
+    v
+[1.4 Why it matters]
+    |
+    v
+[1.5 Three first decisions]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -99,6 +154,61 @@ Continue to the next authored lesson.
 
 ## Chapter 2 — Ownership, rules and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Simple rules"]
+  N2["2.2 Asking only for what is needed"]
+  N3["2.3 Security habits"]
+  N4["2.4 Keeping and deleting"]
+  N5["2.5 Getting agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Simple rules"]
+  N2["2.2 Asking only for what is needed"]
+  N3["2.3 Security habits"]
+  N4["2.4 Keeping and deleting"]
+  N5["2.5 Getting agreement"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Simple rules]
+    |
+    v
+[2.2 Asking only for what is needed]
+    |
+    v
+[2.3 Security habits]
+    |
+    v
+[2.4 Keeping and deleting]
+    |
+    v
+[2.5 Getting agreement]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) write simple rules for each kind of data; (2) apply basic security habits; (3) decide how long to keep records.
@@ -161,6 +271,61 @@ Continue to the next authored lesson.
 
 ## Chapter 3 — Quality, systems and suppliers
 
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Quality in plain words"]
+  N2["3.2 Where data live"]
+  N3["3.3 Suppliers"]
+  N4["3.4 Payments and invoices"]
+  N5["3.5 Simple checks"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Quality in plain words"]
+  N2["3.2 Where data live"]
+  N3["3.3 Suppliers"]
+  N4["3.4 Payments and invoices"]
+  N5["3.5 Simple checks"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Quality in plain words]
+    |
+    v
+[3.2 Where data live]
+    |
+    v
+[3.3 Suppliers]
+    |
+    v
+[3.4 Payments and invoices]
+    |
+    v
+[3.5 Simple checks]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
+
 ### Learning outcomes
 
 You will (1) check data quality in a small business; (2) map where data are stored; (3) check suppliers who handle the café's data.
@@ -221,6 +386,66 @@ Continue to the next authored lesson.
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided lab and action plan
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The sign-up list"]
+  N2["Lab — Checking a synthetic café sign-up list for bla"]
+  N3["4.2 What the lab finds"]
+  N4["4.3 Deciding who to email"]
+  N5["4.4 The action plan"]
+  N6["4.5 After the course"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The sign-up list"]
+  N2["Lab — Checking a synthetic café sign-up list for bla"]
+  N3["4.2 What the lab finds"]
+  N4["4.3 Deciding who to email"]
+  N5["4.4 The action plan"]
+  N6["4.5 After the course"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The sign-up list]
+    |
+    v
+[Lab — Checking a synthetic café sign-up list for bla]
+    |
+    v
+[4.2 What the lab finds]
+    |
+    v
+[4.3 Deciding who to email]
+    |
+    v
+[4.4 The action plan]
+    |
+    v
+[4.5 After the course]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 

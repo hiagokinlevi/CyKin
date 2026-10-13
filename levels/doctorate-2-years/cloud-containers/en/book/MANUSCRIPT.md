@@ -1,7 +1,7 @@
 # Cloud and Container Security: A Doctoral Research Book
 
 - Language: English (`en`); course 197, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral candidates designing an original, measurable contribution to cloud and container security.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -36,6 +36,71 @@ NIST [SP 800-145](https://doi.org/10.6028/NIST.SP.800-145), [SP 800-210](https:/
 <a id="ch-01"></a>
 
 ## Chapter 1 — Advanced research integrity and methods
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The opening case"]
+  N2["1.2 The research question"]
+  N3["1.3 Integrity with operational data"]
+  N4["1.4 Choosing methods"]
+  N5["1.5 Reproducibility from the start"]
+  N6["1.6 Grounding in sources"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The opening case"]
+  N2["1.2 The research question"]
+  N3["1.3 Integrity with operational data"]
+  N4["1.4 Choosing methods"]
+  N5["1.5 Reproducibility from the start"]
+  N6["1.6 Grounding in sources"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The opening case]
+    |
+    v
+[1.2 The research question]
+    |
+    v
+[1.3 Integrity with operational data]
+    |
+    v
+[1.4 Choosing methods]
+    |
+    v
+[1.5 Reproducibility from the start]
+    |
+    v
+[1.6 Grounding in sources]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -106,6 +171,71 @@ A precise question, written integrity rules and early reproducibility shape the 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Cloud and container security: research frontier
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Foundations"]
+  N2["2.2 Shared responsibility"]
+  N3["2.3 Configuration as code"]
+  N4["2.4 Isolation and multi-tenancy"]
+  N5["2.5 Access control and zero trust"]
+  N6["2.6 The gap"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Foundations"]
+  N2["2.2 Shared responsibility"]
+  N3["2.3 Configuration as code"]
+  N4["2.4 Isolation and multi-tenancy"]
+  N5["2.5 Access control and zero trust"]
+  N6["2.6 The gap"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Foundations]
+    |
+    v
+[2.2 Shared responsibility]
+    |
+    v
+[2.3 Configuration as code]
+    |
+    v
+[2.4 Isolation and multi-tenancy]
+    |
+    v
+[2.5 Access control and zero trust]
+    |
+    v
+[2.6 The gap]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Learning outcomes
 
@@ -178,6 +308,71 @@ Map what is known, what is claimed and what is missing.
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX015.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 The contribution"]
+  N2["3.2 Defining risky"]
+  N3["3.3 Labelling and agreement"]
+  N4["Lab — labelling agreement"]
+  N5["3.4 Lab result"]
+  N6["3.5 Decision rules"]
+  N7["Sampling hard cases"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX015"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 The contribution"]
+  N2["3.2 Defining risky"]
+  N3["3.3 Labelling and agreement"]
+  N4["Lab — labelling agreement"]
+  N5["3.4 Lab result"]
+  N6["3.5 Decision rules"]
+  N7["Sampling hard cases"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX015"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 The contribution]
+    |
+    v
+[3.2 Defining risky]
+    |
+    v
+[3.3 Labelling and agreement]
+    |
+    v
+[Lab — labelling agreement]
+    |
+    v
+[3.4 Lab result]
+    |
+    v
+[3.5 Decision rules]
+    |
+    v
+[Sampling hard cases]
+    |
+    v
+[Worked example] --> [Exercise EX015]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -266,6 +461,71 @@ Testable claims need public definitions, reliable labels and rules set in advanc
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 Why replicate first"]
+  N2["Lab — workload checks"]
+  N3["4.2 Lab result"]
+  N4["4.3 The pilot"]
+  N5["4.4 Protocol changes"]
+  N6["4.5 CIS and provider benchmarks"]
+  N7["Recording the replication"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX021"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 Why replicate first"]
+  N2["Lab — workload checks"]
+  N3["4.2 Lab result"]
+  N4["4.3 The pilot"]
+  N5["4.4 Protocol changes"]
+  N6["4.5 CIS and provider benchmarks"]
+  N7["Recording the replication"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 Why replicate first]
+    |
+    v
+[Lab — workload checks]
+    |
+    v
+[4.2 Lab result]
+    |
+    v
+[4.3 The pilot]
+    |
+    v
+[4.4 Protocol changes]
+    |
+    v
+[4.5 CIS and provider benchmarks]
+    |
+    v
+[Recording the replication]
+    |
+    v
+[Worked example] --> [Exercise EX021]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
@@ -370,6 +630,71 @@ Replicate the baseline and pilot the method before the main study.
 
 ## Chapter 5 — Main study and independent validation
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["5.1 Design"]
+  N2["5.2 Exposure outcome"]
+  N3["Lab — exposure window"]
+  N4["5.3 Lab result"]
+  N5["5.4 Cost"]
+  N6["5.5 Independent validation"]
+  N7["Threats to validity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["5.1 Design"]
+  N2["5.2 Exposure outcome"]
+  N3["Lab — exposure window"]
+  N4["5.3 Lab result"]
+  N5["5.4 Cost"]
+  N6["5.5 Independent validation"]
+  N7["Threats to validity"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[5.1 Design]
+    |
+    v
+[5.2 Exposure outcome]
+    |
+    v
+[Lab — exposure window]
+    |
+    v
+[5.3 Lab result]
+    |
+    v
+[5.4 Cost]
+    |
+    v
+[5.5 Independent validation]
+    |
+    v
+[Threats to validity]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes
 
 You will (1) run the main comparison; (2) estimate the effect with an interval; (3) measure cost; (4) have results validated independently.
@@ -465,6 +790,71 @@ Estimate with intervals, measure costs and invite independent reruns.
 
 ## Chapter 6 — Peer critique and revision
 
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX033.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["6.1 Seeking critique"]
+  N2["6.2 Objections received"]
+  N3["6.3 Responding"]
+  N4["6.4 Claim revision"]
+  N5["6.5 Recording changes"]
+  N6["Group critique"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX033"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["6.1 Seeking critique"]
+  N2["6.2 Objections received"]
+  N3["6.3 Responding"]
+  N4["6.4 Claim revision"]
+  N5["6.5 Recording changes"]
+  N6["Group critique"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX033"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[6.1 Seeking critique]
+    |
+    v
+[6.2 Objections received]
+    |
+    v
+[6.3 Responding]
+    |
+    v
+[6.4 Claim revision]
+    |
+    v
+[6.5 Recording changes]
+    |
+    v
+[Group critique]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX033]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
+
 ### Learning outcomes
 
 You will (1) invite structured critique of the study; (2) separate valid objections from preferences; (3) revise claims and analyses; (4) record changes transparently.
@@ -533,6 +923,71 @@ Critique strengthens claims when answered with evidence.
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
+
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["7.1 The argument"]
+  N2["7.2 The archive"]
+  N3["7.3 Integrity manifest"]
+  N4["Lab — archive verification"]
+  N5["7.4 Lab result"]
+  N6["7.5 What cannot be archived"]
+  N7["Writing for examiners"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["7.1 The argument"]
+  N2["7.2 The archive"]
+  N3["7.3 Integrity manifest"]
+  N4["Lab — archive verification"]
+  N5["7.4 Lab result"]
+  N6["7.5 What cannot be archived"]
+  N7["Writing for examiners"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[7.1 The argument]
+    |
+    v
+[7.2 The archive]
+    |
+    v
+[7.3 Integrity manifest]
+    |
+    v
+[Lab — archive verification]
+    |
+    v
+[7.4 Lab result]
+    |
+    v
+[7.5 What cannot be archived]
+    |
+    v
+[Writing for examiners]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
 
 ### Learning outcomes
 
@@ -621,6 +1076,71 @@ A verified archive lets others rerun the thesis.
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX045.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["8.1 Preparing"]
+  N2["8.2 Expected questions"]
+  N3["8.3 Publications"]
+  N4["8.4 Data release"]
+  N5["8.5 Communicating with practitioners"]
+  N6["8.6 Future work"]
+  N7["After the defence"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX045"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["8.1 Preparing"]
+  N2["8.2 Expected questions"]
+  N3["8.3 Publications"]
+  N4["8.4 Data release"]
+  N5["8.5 Communicating with practitioners"]
+  N6["8.6 Future work"]
+  N7["After the defence"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX045"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[8.1 Preparing]
+    |
+    v
+[8.2 Expected questions]
+    |
+    v
+[8.3 Publications]
+    |
+    v
+[8.4 Data release]
+    |
+    v
+[8.5 Communicating with practitioners]
+    |
+    v
+[8.6 Future work]
+    |
+    v
+[After the defence]
+    |
+    v
+[Worked example] --> [Exercise EX045]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes
 

@@ -1,7 +1,7 @@
 # Quantum and Post-Quantum Security: Master's Research Methods and Dissertation Practice
 
 - Language: English (`en`); master's course, two years; approximately 1,200 hours of planned study.
-- Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent subject-matter review, source re-verification, accessibility review, language editing and the 300-page A4 verification remain open.
 - Audience: beginning researchers with strong domain foundations and research-method literacy who will formulate a question, evaluate prior work and produce reproducible findings in quantum and post-quantum security. Entry knowledge: the [postgraduate](../../../../postgraduate-2-years/quantum-post-quantum-security/en/book/PLAN.md) or [engineering](../../../../engineering-5-years/quantum-post-quantum-security/en/book/PLAN.md) content in this area or equivalent: TLS 1.3, public-key cryptography, basic statistics.
 - Relationship to the [doctoral course](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md): the doctorate studies discovery of quantum-vulnerable cryptography across an organization. **This book studies one deployment question in depth** — what happens to real connections when a post-quantum/traditional (PQ/T) hybrid key exchange is switched on — and teaches the full cycle of a master's dissertation around it.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); cited works keep their own rights.
@@ -34,6 +34,61 @@ The question is grounded in public experience: when Chrome began offering a hybr
 <a id="ch-01"></a>
 
 ## Chapter 1 — Research question and literature method
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["1.1 From complaint to question"]
+  N2["1.2 Why size is plausible"]
+  N3["1.3 FINER"]
+  N4["1.4 A documented search"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["1.1 From complaint to question"]
+  N2["1.2 Why size is plausible"]
+  N3["1.3 FINER"]
+  N4["1.4 A documented search"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[1.1 From complaint to question]
+    |
+    v
+[1.2 Why size is plausible]
+    |
+    v
+[1.3 FINER]
+    |
+    v
+[1.4 A documented search]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes and connection
 
@@ -101,6 +156,61 @@ A researchable question separates intervention, outcome, population and cause, r
 
 ## Chapter 2 — Quantum and post-quantum security: advanced seminar
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX008.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["2.1 Harvest now, decrypt later"]
+  N2["2.2 ML-KEM in one page"]
+  N3["2.3 Hybrid combiners"]
+  N4["2.4 Families compared"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX008"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["2.1 Harvest now, decrypt later"]
+  N2["2.2 ML-KEM in one page"]
+  N3["2.3 Hybrid combiners"]
+  N4["2.4 Families compared"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX008"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[2.1 Harvest now, decrypt later]
+    |
+    v
+[2.2 ML-KEM in one page]
+    |
+    v
+[2.3 Hybrid combiners]
+    |
+    v
+[2.4 Families compared]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX008]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes and connection
 
 You will (1) explain why key establishment is migrated before signatures; (2) describe the structure of ML-KEM and of a PQ/T hybrid combiner at the level needed to reason about deployment; (3) compare post-quantum families by size and assumption; and (4) critique a seminar paper. It deepens the background of Chapter 1 and grounds the study design of Chapter 3.
@@ -162,6 +272,66 @@ Key establishment migrates first because recorded traffic can be decrypted later
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["3.1 Designs"]
+  N2["3.2 Defining the variables"]
+  N3["3.3 Ethics and minimization"]
+  N4["3.4 Rates and intervals"]
+  N5["3.5 Reproducibility plan"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["3.1 Designs"]
+  N2["3.2 Defining the variables"]
+  N3["3.3 Ethics and minimization"]
+  N4["3.4 Rates and intervals"]
+  N5["3.5 Reproducibility plan"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[3.1 Designs]
+    |
+    v
+[3.2 Defining the variables]
+    |
+    v
+[3.3 Ethics and minimization]
+    |
+    v
+[3.4 Rates and intervals]
+    |
+    v
+[3.5 Reproducibility plan]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes and connection
 
@@ -268,6 +438,61 @@ A staggered-rollout quasi-experiment plus a testbed replication, with pre-define
 
 ## Chapter 4 — Quantum and post-quantum security: competing explanations
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX020.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["4.1 Rivals for the failure rise"]
+  N2["4.2 Predictions"]
+  N3["4.3 Practical activity — Lab 4: stratify by path"]
+  N4["4.4 Aggregation reversals"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX020"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["4.1 Rivals for the failure rise"]
+  N2["4.2 Predictions"]
+  N3["4.3 Practical activity — Lab 4: stratify by path"]
+  N4["4.4 Aggregation reversals"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX020"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[4.1 Rivals for the failure rise]
+    |
+    v
+[4.2 Predictions]
+    |
+    v
+[4.3 Practical activity — Lab 4: stratify by path]
+    |
+    v
+[4.4 Aggregation reversals]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX020]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Learning outcomes and connection
 
 You will (1) list rival explanations for an observed effect; (2) predict what each rival implies in data you can collect; (3) use stratification to discriminate between rivals; and (4) recognize when a pattern reverses on aggregation. It applies the design of Chapter 3 and shapes the proposal of Chapter 5.
@@ -351,6 +576,56 @@ An effect has rivals; each rival predicts a fingerprint; stratification and test
 
 ## Chapter 5 — Proposal and pilot
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX026.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["5.1 Proposal structure"]
+  N2["5.2 Hypotheses"]
+  N3["5.3 Pilot criteria and run"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4
+  N4 --> EX["Worked example"]
+  EX --> Q["Exercise EX026"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["5.1 Proposal structure"]
+  N2["5.2 Hypotheses"]
+  N3["5.3 Pilot criteria and run"]
+  N4["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX026"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[5.1 Proposal structure]
+    |
+    v
+[5.2 Hypotheses]
+    |
+    v
+[5.3 Pilot criteria and run]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX026]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Learning outcomes and connection
 
 You will (1) write a dissertation proposal with aims, hypotheses and an analysis plan; (2) set pilot success criteria; (3) run a small testbed pilot safely; and (4) revise the protocol on the basis of the pilot. It turns the rivals of Chapter 4 into a plan and prepares data collection in Chapter 6.
@@ -406,6 +681,66 @@ A proposal turns rivals into falsifiable hypotheses with a decisive mechanism te
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX034.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["6.1 Collection"]
+  N2["6.2 Coding failures"]
+  N3["6.3 Difference-in-differences"]
+  N4["6.4 Testbed results"]
+  N5["6.5 Validation on Fenwick College"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX034"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["6.1 Collection"]
+  N2["6.2 Coding failures"]
+  N3["6.3 Difference-in-differences"]
+  N4["6.4 Testbed results"]
+  N5["6.5 Validation on Fenwick College"]
+  N6["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[6.1 Collection]
+    |
+    v
+[6.2 Coding failures]
+    |
+    v
+[6.3 Difference-in-differences]
+    |
+    v
+[6.4 Testbed results]
+    |
+    v
+[6.5 Validation on Fenwick College]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Learning outcomes and connection
 
@@ -491,6 +826,61 @@ Frozen scripts, double coding with κ, a difference-in-differences estimate by p
 
 ## Chapter 7 — Dissertation writing and limitations
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX038.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["7.1 Structure"]
+  N2["7.2 Writing results"]
+  N3["7.3 Limitations with direction"]
+  N4["7.4 Recommendations"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX038"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["7.1 Structure"]
+  N2["7.2 Writing results"]
+  N3["7.3 Limitations with direction"]
+  N4["7.4 Recommendations"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX038"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[7.1 Structure]
+    |
+    v
+[7.2 Writing results]
+    |
+    v
+[7.3 Limitations with direction]
+    |
+    v
+[7.4 Recommendations]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX038]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Learning outcomes and connection
 
 You will (1) structure a dissertation so that each chapter answers a question; (2) write results that separate estimate, uncertainty and interpretation; (3) write limitations with direction and consequence; and (4) make recommendations proportionate to evidence. It turns Chapter 6's results into a document examined in Chapter 8.
@@ -554,6 +944,61 @@ A dissertation answers its question chapter by chapter, separates estimates from
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
+
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX044.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes and connection"]
+  N1["8.1 Reproducibility package"]
+  N2["8.2 Examiner questions"]
+  N3["8.3 Disclosure"]
+  N4["8.4 Operator briefing"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX044"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes and connection"]
+  N1["8.1 Reproducibility package"]
+  N2["8.2 Examiner questions"]
+  N3["8.3 Disclosure"]
+  N4["8.4 Operator briefing"]
+  N5["Chapter synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX044"]
+```
+
+```text
+[Learning outcomes and connection]
+    |
+    v
+[8.1 Reproducibility package]
+    |
+    v
+[8.2 Examiner questions]
+    |
+    v
+[8.3 Disclosure]
+    |
+    v
+[8.4 Operator briefing]
+    |
+    v
+[Chapter synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX044]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
 
 ### Learning outcomes and connection
 

@@ -8,9 +8,9 @@ Each subject is one lesson and one chapter in its language edition's single publ
 
 | Language | Public manuscripts / 207 | Numbered lessons / planned | Lessons with explicit example heading | Lessons with detected exercise | Lessons with navigation | Lessons with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4007/4186 | 3867/4007 | 4007/4007 | 4007/4007 | 4/4007 |
-| Português | 124/207 | 2509/4186 | 2412/2509 | 2509/2509 | 2509/2509 | 4/2509 |
-| Español | 26/207 | 512/4186 | 470/512 | 512/512 | 512/512 | 4/512 |
+| English | 199/207 | 4007/4186 | 3867/4007 | 4007/4007 | 4007/4007 | 4007/4007 |
+| Português | 124/207 | 2509/4186 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
+| Español | 26/207 | 512/4186 | 470/512 | 512/512 | 512/512 | 512/512 |
 
 The example and visual columns detect explicit headings and Mermaid/image syntax. They are conservative signals: prose examples, tables and logical drawings may exist without matching those patterns. An exercise is counted when its ID appears inside the chapter; this table does not certify its quality or worked answer. No count is raised by an empty template or a link to a plan.
 

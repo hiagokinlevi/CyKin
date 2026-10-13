@@ -1,7 +1,7 @@
 # Infraestructura crítica y seguridad sectorial: práctica aplicada para tecnólogos
 
 - Idioma: español neutro (`es`); curso de tecnólogo, tres años; aproximadamente 2.400 horas de estudio planificado (curso 092 de 207 en la [ruta de estudio](../../../../../STUDY_PATH.md)). Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador**. Los capítulos 1–30 de 30 tienen texto didáctico escrito, diecisiete laboratorios sin conexión, los ejercicios EX001–EX090 y sus resultados resueltos correspondientes. Siguen pendientes la revisión independiente por especialistas, la nueva verificación de las fuentes, la revisión de accesibilidad, la edición lingüística y la verificación de las 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
+- Estado editorial: **publicado**. Los capítulos 1–30 de 30 tienen texto didáctico escrito, diecisiete laboratorios sin conexión, los ejercicios EX001–EX090 y sus resultados resueltos correspondientes. Siguen pendientes la revisión independiente por especialistas, la nueva verificación de las fuentes, la revisión de accesibilidad, la edición lingüística y la verificación de las 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
 - Público: profesionales que implantan y administran tecnología (administradores de sistemas y de redes, técnicos de TO y de sistemas de edificios, personal del centro de servicios y de plataformas, analistas de seguridad júnior) que ya se ganan la vida gestionando ordenadores y ahora tienen que **construir, operar y evidenciar** la seguridad de un servicio del que dependen las personas. Conocimientos de entrada: fundamentos de informática e introducción a las operaciones de seguridad; soltura con la línea de órdenes; capacidad de leer y modificar ligeramente un script breve de Python.
 - En qué se diferencia este curso de sus vecinos. El [libro de grado](../../../../bachelors-4-years/critical-sector-security/es/book/MANUSCRIPT.md) construye los fundamentos conceptuales del campo asignatura por asignatura. El [libro de ingeniería](../../../../engineering-5-years/critical-sector-security/es/book/MANUSCRIPT.md) diseña, modela y verifica sistemas a partir de los requisitos. El [libro de posgrado](../../../../postgraduate-2-years/critical-sector-security/es/book/MANUSCRIPT.md) enseña a los especialistas a dirigir y justificar decisiones a escala de la organización. **Este libro de tecnólogo trata de la implantación y la operación**: tomar un diseño que otra persona aprobó, construirlo correctamente, operarlo cada día, demostrar con evidencia que sus controles funcionan, descubrir rápidamente cuándo dejan de funcionar y traspasarlo para que el siguiente turno pueda continuar. Explica la teoría solo hasta donde un implantador la necesita para tomar decisiones acertadas ante el teclado y en la reunión de cambios.
 - Autoría y responsabilidad editorial: [hiagokinlevi](https://github.com/hiagokinlevi). El texto didáctico original del mantenedor se dedica bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus propios derechos y no se relicencian aquí.
@@ -87,6 +87,66 @@ Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [G
 <a id="ch-01"></a>
 
 ## Capítulo 1 — Sistemas informáticos
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Mapa de la lección
+
+Lección 01 publicada. Mapa, ejemplo, EX001.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 Un equipo como conjunto de recursos finitos"]
+  N2["1.3 El margen de capacidad, y por qué «suficiente» n"]
+  N3["1.4 Prever el agotamiento"]
+  N4["1.5 Modos de fallo silenciosos"]
+  N5["1.7 Actividad práctica: margen de capacidad"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX001"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["1.1 Un equipo como conjunto de recursos finitos"]
+  N2["1.3 El margen de capacidad, y por qué «suficiente» n"]
+  N3["1.4 Prever el agotamiento"]
+  N4["1.5 Modos de fallo silenciosos"]
+  N5["1.7 Actividad práctica: margen de capacidad"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX001"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[1.1 Un equipo como conjunto de recursos finitos]
+    |
+    v
+[1.3 El margen de capacidad, y por qué «suficiente» n]
+    |
+    v
+[1.4 Prever el agotamiento]
+    |
+    v
+[1.5 Modos de fallo silenciosos]
+    |
+    v
+[1.7 Actividad práctica: margen de capacidad]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -206,6 +266,61 @@ Continúe con la siguiente lección escrita.
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes y servicios de internet
+
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Mapa de la lección
+
+Lección 02 publicada. Mapa, ejemplo, EX004.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 De las direcciones a las zonas"]
+  N2["2.2 Servicios, puertos y lo que implican"]
+  N3["2.3 Lo declarado frente a lo observado"]
+  N4["2.5 Actividad práctica: flujos frente a conductos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX004"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["2.1 De las direcciones a las zonas"]
+  N2["2.2 Servicios, puertos y lo que implican"]
+  N3["2.3 Lo declarado frente a lo observado"]
+  N4["2.5 Actividad práctica: flujos frente a conductos"]
+  N5["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX004"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[2.1 De las direcciones a las zonas]
+    |
+    v
+[2.2 Servicios, puertos y lo que implican]
+    |
+    v
+[2.3 Lo declarado frente a lo observado]
+    |
+    v
+[2.5 Actividad práctica: flujos frente a conductos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX004]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -336,6 +451,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Fundamentos de programación
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Mapa de la lección
+
+Lección 03 publicada. Mapa, ejemplo, EX007.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 Entradas no confiables"]
+  N2["3.2 Capas de validación"]
+  N3["3.3 Rechazar, poner en cuarentena, aceptar"]
+  N4["3.4 Disciplina del código pequeño"]
+  N5["3.6 Actividad práctica: validador y casos de prueba"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX007"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["3.1 Entradas no confiables"]
+  N2["3.2 Capas de validación"]
+  N3["3.3 Rechazar, poner en cuarentena, aceptar"]
+  N4["3.4 Disciplina del código pequeño"]
+  N5["3.6 Actividad práctica: validador y casos de prueba"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX007"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[3.1 Entradas no confiables]
+    |
+    v
+[3.2 Capas de validación]
+    |
+    v
+[3.3 Rechazar, poner en cuarentena, aceptar]
+    |
+    v
+[3.4 Disciplina del código pequeño]
+    |
+    v
+[3.6 Actividad práctica: validador y casos de prueba]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX007]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -481,6 +656,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 4 — Modelos de datos
 
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Mapa de la lección
+
+Lección 04 publicada. Mapa, ejemplo, EX010.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Entidades, atributos y claves"]
+  N2["4.2 Restricciones: hacer imposibles los registros im"]
+  N3["4.3 Los valores ausentes son hallazgos"]
+  N4["4.4 Las combinaciones responden a las preguntas real"]
+  N5["4.6 Actividad práctica: consultas al inventario"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX010"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["4.1 Entidades, atributos y claves"]
+  N2["4.2 Restricciones: hacer imposibles los registros im"]
+  N3["4.3 Los valores ausentes son hallazgos"]
+  N4["4.4 Las combinaciones responden a las preguntas real"]
+  N5["4.6 Actividad práctica: consultas al inventario"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX010"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[4.1 Entidades, atributos y claves]
+    |
+    v
+[4.2 Restricciones: hacer imposibles los registros im]
+    |
+    v
+[4.3 Los valores ausentes son hallazgos]
+    |
+    v
+[4.4 Las combinaciones responden a las preguntas real]
+    |
+    v
+[4.6 Actividad práctica: consultas al inventario]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX010]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -610,6 +845,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 5 — Alfabetización en seguridad
 
+<!-- cyberabc:lesson-figures:start ch-05 -->
+### Mapa de la lección
+
+Lección 05 publicada. Mapa, ejemplo, EX013.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 Términos básicos"]
+  N2["5.2 Prioridades en un servicio esencial"]
+  N3["5.3 Prevenir, detectar, recuperar"]
+  N4["5.4 Leer incidentes públicos"]
+  N5["5.6 Actividad práctica: una ficha de control"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX013"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["5.1 Términos básicos"]
+  N2["5.2 Prioridades en un servicio esencial"]
+  N3["5.3 Prevenir, detectar, recuperar"]
+  N4["5.4 Leer incidentes públicos"]
+  N5["5.6 Actividad práctica: una ficha de control"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX013"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[5.1 Términos básicos]
+    |
+    v
+[5.2 Prioridades en un servicio esencial]
+    |
+    v
+[5.3 Prevenir, detectar, recuperar]
+    |
+    v
+[5.4 Leer incidentes públicos]
+    |
+    v
+[5.6 Actividad práctica: una ficha de control]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX013]
+```
+<!-- cyberabc:lesson-figures:end ch-05 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -696,6 +991,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operativos y virtualización
+
+<!-- cyberabc:lesson-figures:start ch-06 -->
+### Mapa de la lección
+
+Lección 06 publicada. Mapa, ejemplo, EX016.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 El bastionado como sustracción"]
+  N2["6.2 Cuentas de servicio y mínimo privilegio"]
+  N3["6.3 Los archivos de configuración son relevantes par"]
+  N4["6.4 Líneas base de integridad de archivos"]
+  N5["6.5 Virtualización"]
+  N6["6.7 Actividad práctica: línea base de integridad de"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX016"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["6.1 El bastionado como sustracción"]
+  N2["6.2 Cuentas de servicio y mínimo privilegio"]
+  N3["6.3 Los archivos de configuración son relevantes par"]
+  N4["6.4 Líneas base de integridad de archivos"]
+  N5["6.5 Virtualización"]
+  N6["6.7 Actividad práctica: línea base de integridad de"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX016"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[6.1 El bastionado como sustracción]
+    |
+    v
+[6.2 Cuentas de servicio y mínimo privilegio]
+    |
+    v
+[6.3 Los archivos de configuración son relevantes par]
+    |
+    v
+[6.4 Líneas base de integridad de archivos]
+    |
+    v
+[6.5 Virtualización]
+    |
+    v
+[6.7 Actividad práctica: línea base de integridad de]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX016]
+```
+<!-- cyberabc:lesson-figures:end ch-06 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -828,6 +1188,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 7 — Fundamentos de identidad y acceso
 
+<!-- cyberabc:lesson-figures:start ch-07 -->
+### Mapa de la lección
+
+Lección 07 publicada. Mapa, ejemplo, EX019.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 Identificar, autenticar, autorizar"]
+  N2["7.2 Tipos de cuenta"]
+  N3["7.3 El proceso de altas, cambios y bajas"]
+  N4["7.4 La revisión de accesos"]
+  N5["7.6 Actividad práctica: revisión de accesos"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX019"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["7.1 Identificar, autenticar, autorizar"]
+  N2["7.2 Tipos de cuenta"]
+  N3["7.3 El proceso de altas, cambios y bajas"]
+  N4["7.4 La revisión de accesos"]
+  N5["7.6 Actividad práctica: revisión de accesos"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX019"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[7.1 Identificar, autenticar, autorizar]
+    |
+    v
+[7.2 Tipos de cuenta]
+    |
+    v
+[7.3 El proceso de altas, cambios y bajas]
+    |
+    v
+[7.4 La revisión de accesos]
+    |
+    v
+[7.6 Actividad práctica: revisión de accesos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX019]
+```
+<!-- cyberabc:lesson-figures:end ch-07 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -958,6 +1378,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 8 — Fundamentos de arquitectura de seguridad
 
+<!-- cyberabc:lesson-figures:start ch-08 -->
+### Mapa de la lección
+
+Lección 08 publicada. Mapa, ejemplo, EX022.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 Zonas, conductos y el sentido de la confianza"]
+  N2["8.2 Defensa en profundidad y mínimo privilegio"]
+  N3["8.3 Los caminos de gestión forman parte de la arquit"]
+  N4["8.4 Diseñar para la operabilidad"]
+  N5["8.5 Erosión: cómo se degradan las arquitecturas"]
+  N6["8.7 Actividad práctica: dibuje el camino de gestión"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX022"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["8.1 Zonas, conductos y el sentido de la confianza"]
+  N2["8.2 Defensa en profundidad y mínimo privilegio"]
+  N3["8.3 Los caminos de gestión forman parte de la arquit"]
+  N4["8.4 Diseñar para la operabilidad"]
+  N5["8.5 Erosión: cómo se degradan las arquitecturas"]
+  N6["8.7 Actividad práctica: dibuje el camino de gestión"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX022"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[8.1 Zonas, conductos y el sentido de la confianza]
+    |
+    v
+[8.2 Defensa en profundidad y mínimo privilegio]
+    |
+    v
+[8.3 Los caminos de gestión forman parte de la arquit]
+    |
+    v
+[8.4 Diseñar para la operabilidad]
+    |
+    v
+[8.5 Erosión: cómo se degradan las arquitecturas]
+    |
+    v
+[8.7 Actividad práctica: dibuje el camino de gestión]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX022]
+```
+<!-- cyberabc:lesson-figures:end ch-08 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1032,6 +1517,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidencia y medición
+
+<!-- cyberabc:lesson-figures:start ch-09 -->
+### Mapa de la lección
+
+Lección 09 publicada. Mapa, ejemplo, EX025.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["9.1 Lo que indica una buena medida"]
+  N2["9.2 Distribuciones, no solo medias"]
+  N3["9.3 Elementos abiertos y supervivencia"]
+  N4["9.4 Las muestras pequeñas necesitan intervalos"]
+  N5["9.6 Actividad práctica: medidas honestas"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX025"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["9.1 Lo que indica una buena medida"]
+  N2["9.2 Distribuciones, no solo medias"]
+  N3["9.3 Elementos abiertos y supervivencia"]
+  N4["9.4 Las muestras pequeñas necesitan intervalos"]
+  N5["9.6 Actividad práctica: medidas honestas"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX025"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[9.1 Lo que indica una buena medida]
+    |
+    v
+[9.2 Distribuciones, no solo medias]
+    |
+    v
+[9.3 Elementos abiertos y supervivencia]
+    |
+    v
+[9.4 Las muestras pequeñas necesitan intervalos]
+    |
+    v
+[9.6 Actividad práctica: medidas honestas]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX025]
+```
+<!-- cyberabc:lesson-figures:end ch-09 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1145,6 +1690,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 10 — Infraestructura crítica y seguridad sectorial: orientación
 
+<!-- cyberabc:lesson-figures:start ch-10 -->
+### Mapa de la lección
+
+Lección 10 publicada. Mapa, ejemplo, EX028.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["10.1 Qué hace que un servicio sea crítico"]
+  N2["10.2 En qué se diferencian los sectores"]
+  N3["10.3 Dependencias e interdependencias"]
+  N4["10.4 Las obligaciones del operador y su parte en ell"]
+  N5["10.6 Actividad práctica: tabla de consecuencias y pl"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX028"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["10.1 Qué hace que un servicio sea crítico"]
+  N2["10.2 En qué se diferencian los sectores"]
+  N3["10.3 Dependencias e interdependencias"]
+  N4["10.4 Las obligaciones del operador y su parte en ell"]
+  N5["10.6 Actividad práctica: tabla de consecuencias y pl"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX028"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[10.1 Qué hace que un servicio sea crítico]
+    |
+    v
+[10.2 En qué se diferencian los sectores]
+    |
+    v
+[10.3 Dependencias e interdependencias]
+    |
+    v
+[10.4 Las obligaciones del operador y su parte en ell]
+    |
+    v
+[10.6 Actividad práctica: tabla de consecuencias y pl]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX028]
+```
+<!-- cyberabc:lesson-figures:end ch-10 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1225,6 +1830,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Infraestructura crítica y seguridad sectorial: activos y contexto
+
+<!-- cyberabc:lesson-figures:start ch-11 -->
+### Mapa de la lección
+
+Lección 11 publicada. Mapa, ejemplo, EX031.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["11.1 Qué registrar y por qué"]
+  N2["11.2 Las fuentes y sus puntos ciegos"]
+  N3["11.3 Descubrimiento seguro en redes operativas"]
+  N4["11.4 Conciliación"]
+  N5["11.5 Activos sin soporte"]
+  N6["11.7 Actividad práctica: conciliación de tres fuente"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX031"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["11.1 Qué registrar y por qué"]
+  N2["11.2 Las fuentes y sus puntos ciegos"]
+  N3["11.3 Descubrimiento seguro en redes operativas"]
+  N4["11.4 Conciliación"]
+  N5["11.5 Activos sin soporte"]
+  N6["11.7 Actividad práctica: conciliación de tres fuente"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX031"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[11.1 Qué registrar y por qué]
+    |
+    v
+[11.2 Las fuentes y sus puntos ciegos]
+    |
+    v
+[11.3 Descubrimiento seguro en redes operativas]
+    |
+    v
+[11.4 Conciliación]
+    |
+    v
+[11.5 Activos sin soporte]
+    |
+    v
+[11.7 Actividad práctica: conciliación de tres fuente]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX031]
+```
+<!-- cyberabc:lesson-figures:end ch-11 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1308,6 +1978,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Infraestructura crítica y seguridad sectorial: flujos de datos
+
+<!-- cyberabc:lesson-figures:start ch-12 -->
+### Mapa de la lección
+
+Lección 12 publicada. Mapa, ejemplo, EX034.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["12.1 El registro"]
+  N2["12.2 Clases de datos"]
+  N3["12.3 Verificar el registro"]
+  N4["12.4 Los flujos nuevos necesitan revisión antes de e"]
+  N5["12.6 Actividad práctica: comprobación del registro"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX034"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["12.1 El registro"]
+  N2["12.2 Clases de datos"]
+  N3["12.3 Verificar el registro"]
+  N4["12.4 Los flujos nuevos necesitan revisión antes de e"]
+  N5["12.6 Actividad práctica: comprobación del registro"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX034"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[12.1 El registro]
+    |
+    v
+[12.2 Clases de datos]
+    |
+    v
+[12.3 Verificar el registro]
+    |
+    v
+[12.4 Los flujos nuevos necesitan revisión antes de e]
+    |
+    v
+[12.6 Actividad práctica: comprobación del registro]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX034]
+```
+<!-- cyberabc:lesson-figures:end ch-12 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1439,6 +2169,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 13 — Infraestructura crítica y seguridad sectorial: escenarios de riesgo
 
+<!-- cyberabc:lesson-figures:start ch-13 -->
+### Mapa de la lección
+
+Lección 13 publicada. Mapa, ejemplo, EX037.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["13.1 Escenarios, no categorías"]
+  N2["13.2 Primero la consecuencia"]
+  N3["13.3 Controles existentes y riesgo residual"]
+  N4["13.4 De los escenarios al trabajo"]
+  N5["13.6 Actividad práctica: ordenación de escenarios"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX037"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["13.1 Escenarios, no categorías"]
+  N2["13.2 Primero la consecuencia"]
+  N3["13.3 Controles existentes y riesgo residual"]
+  N4["13.4 De los escenarios al trabajo"]
+  N5["13.6 Actividad práctica: ordenación de escenarios"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX037"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[13.1 Escenarios, no categorías]
+    |
+    v
+[13.2 Primero la consecuencia]
+    |
+    v
+[13.3 Controles existentes y riesgo residual]
+    |
+    v
+[13.4 De los escenarios al trabajo]
+    |
+    v
+[13.6 Actividad práctica: ordenación de escenarios]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX037]
+```
+<!-- cyberabc:lesson-figures:end ch-13 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1559,6 +2349,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 14 — Infraestructura crítica y seguridad sectorial: métodos I
 
+<!-- cyberabc:lesson-figures:start ch-14 -->
+### Mapa de la lección
+
+Lección 14 publicada. Mapa, ejemplo, EX040.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["14.1 Líneas base de configuración"]
+  N2["14.2 Un control de cambios que la gente use"]
+  N3["14.3 Planificar un cambio en un entorno operativo"]
+  N4["14.4 Evidencia del cambio"]
+  N5["14.6 Actividad práctica: redacte un plan de cambio n"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX040"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["14.1 Líneas base de configuración"]
+  N2["14.2 Un control de cambios que la gente use"]
+  N3["14.3 Planificar un cambio en un entorno operativo"]
+  N4["14.4 Evidencia del cambio"]
+  N5["14.6 Actividad práctica: redacte un plan de cambio n"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX040"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[14.1 Líneas base de configuración]
+    |
+    v
+[14.2 Un control de cambios que la gente use]
+    |
+    v
+[14.3 Planificar un cambio en un entorno operativo]
+    |
+    v
+[14.4 Evidencia del cambio]
+    |
+    v
+[14.6 Actividad práctica: redacte un plan de cambio n]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX040]
+```
+<!-- cyberabc:lesson-figures:end ch-14 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1640,6 +2490,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Infraestructura crítica y seguridad sectorial: laboratorio guiado
+
+<!-- cyberabc:lesson-figures:start ch-15 -->
+### Mapa de la lección
+
+Lección 15 publicada. Mapa, ejemplo, EX043.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["15.1 Integridad y autenticidad"]
+  N2["15.2 Forma canónica"]
+  N3["15.3 Comparación en tiempo constante"]
+  N4["15.4 Frescura y orden"]
+  N5["15.5 Construcción guiada"]
+  N6["15.6 Lo que esta construcción no hace"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX043"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["15.1 Integridad y autenticidad"]
+  N2["15.2 Forma canónica"]
+  N3["15.3 Comparación en tiempo constante"]
+  N4["15.4 Frescura y orden"]
+  N5["15.5 Construcción guiada"]
+  N6["15.6 Lo que esta construcción no hace"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX043"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[15.1 Integridad y autenticidad]
+    |
+    v
+[15.2 Forma canónica]
+    |
+    v
+[15.3 Comparación en tiempo constante]
+    |
+    v
+[15.4 Frescura y orden]
+    |
+    v
+[15.5 Construcción guiada]
+    |
+    v
+[15.6 Lo que esta construcción no hace]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX043]
+```
+<!-- cyberabc:lesson-figures:end ch-15 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1776,6 +2691,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 16 — Infraestructura crítica y seguridad sectorial: métodos II
 
+<!-- cyberabc:lesson-figures:start ch-16 -->
+### Mapa de la lección
+
+Lección 16 publicada. Mapa, ejemplo, EX046.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["16.1 Recepción de vulnerabilidades y aplicabilidad"]
+  N2["16.2 Priorización"]
+  N3["16.3 Tratamiento cuando no se puede parchear con rap"]
+  N4["16.4 Verificación"]
+  N5["16.5 Copias de seguridad y pruebas de restauración"]
+  N6["16.7 Actividad práctica: registro de vulnerabilidad"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX046"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["16.1 Recepción de vulnerabilidades y aplicabilidad"]
+  N2["16.2 Priorización"]
+  N3["16.3 Tratamiento cuando no se puede parchear con rap"]
+  N4["16.4 Verificación"]
+  N5["16.5 Copias de seguridad y pruebas de restauración"]
+  N6["16.7 Actividad práctica: registro de vulnerabilidad"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX046"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[16.1 Recepción de vulnerabilidades y aplicabilidad]
+    |
+    v
+[16.2 Priorización]
+    |
+    v
+[16.3 Tratamiento cuando no se puede parchear con rap]
+    |
+    v
+[16.4 Verificación]
+    |
+    v
+[16.5 Copias de seguridad y pruebas de restauración]
+    |
+    v
+[16.7 Actividad práctica: registro de vulnerabilidad]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX046]
+```
+<!-- cyberabc:lesson-figures:end ch-16 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -1859,6 +2839,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Infraestructura crítica y seguridad sectorial: herramientas
+
+<!-- cyberabc:lesson-figures:start ch-17 -->
+### Mapa de la lección
+
+Lección 17 publicada. Mapa, ejemplo, EX049.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["17.1 Qué registrar"]
+  N2["17.2 La hora"]
+  N3["17.3 Registros estructurados y syslog"]
+  N4["17.4 Normalización"]
+  N5["17.5 Herramientas en las que se puede confiar"]
+  N6["17.7 Actividad práctica: normalizador"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX049"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["17.1 Qué registrar"]
+  N2["17.2 La hora"]
+  N3["17.3 Registros estructurados y syslog"]
+  N4["17.4 Normalización"]
+  N5["17.5 Herramientas en las que se puede confiar"]
+  N6["17.7 Actividad práctica: normalizador"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX049"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[17.1 Qué registrar]
+    |
+    v
+[17.2 La hora]
+    |
+    v
+[17.3 Registros estructurados y syslog]
+    |
+    v
+[17.4 Normalización]
+    |
+    v
+[17.5 Herramientas en las que se puede confiar]
+    |
+    v
+[17.7 Actividad práctica: normalizador]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX049]
+```
+<!-- cyberabc:lesson-figures:end ch-17 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -1987,6 +3032,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 18 — Infraestructura crítica y seguridad sectorial: controles
 
+<!-- cyberabc:lesson-figures:start ch-18 -->
+### Mapa de la lección
+
+Lección 18 publicada. Mapa, ejemplo, EX052.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["18.1 Del escenario al conjunto de controles"]
+  N2["18.2 Los catálogos como listas de comprobación de la"]
+  N3["18.3 Cualidades de la implementación"]
+  N4["18.4 Un control que es un proceso: el ciclo de vida"]
+  N5["18.5 Evidencia de que un control funciona"]
+  N6["18.7 Actividad práctica: manual de operación para la"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX052"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["18.1 Del escenario al conjunto de controles"]
+  N2["18.2 Los catálogos como listas de comprobación de la"]
+  N3["18.3 Cualidades de la implementación"]
+  N4["18.4 Un control que es un proceso: el ciclo de vida"]
+  N5["18.5 Evidencia de que un control funciona"]
+  N6["18.7 Actividad práctica: manual de operación para la"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX052"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[18.1 Del escenario al conjunto de controles]
+    |
+    v
+[18.2 Los catálogos como listas de comprobación de la]
+    |
+    v
+[18.3 Cualidades de la implementación]
+    |
+    v
+[18.4 Un control que es un proceso: el ciclo de vida]
+    |
+    v
+[18.5 Evidencia de que un control funciona]
+    |
+    v
+[18.7 Actividad práctica: manual de operación para la]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX052]
+```
+<!-- cyberabc:lesson-figures:end ch-18 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -2073,6 +3183,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Infraestructura crítica y seguridad sectorial: monitorización
+
+<!-- cyberabc:lesson-figures:start ch-19 -->
+### Mapa de la lección
+
+Lección 19 publicada. Mapa, ejemplo, EX055.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["19.1 De dónde salen las reglas"]
+  N2["19.2 La ausencia es una señal"]
+  N3["19.3 Eventos, episodios y calidad de las alertas"]
+  N4["19.4 Encaminamiento y primera acción"]
+  N5["19.5 Monitorizar la monitorización"]
+  N6["19.7 Actividad práctica: reglas sobre eventos"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX055"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["19.1 De dónde salen las reglas"]
+  N2["19.2 La ausencia es una señal"]
+  N3["19.3 Eventos, episodios y calidad de las alertas"]
+  N4["19.4 Encaminamiento y primera acción"]
+  N5["19.5 Monitorizar la monitorización"]
+  N6["19.7 Actividad práctica: reglas sobre eventos"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[19.1 De dónde salen las reglas]
+    |
+    v
+[19.2 La ausencia es una señal]
+    |
+    v
+[19.3 Eventos, episodios y calidad de las alertas]
+    |
+    v
+[19.4 Encaminamiento y primera acción]
+    |
+    v
+[19.5 Monitorizar la monitorización]
+    |
+    v
+[19.7 Actividad práctica: reglas sobre eventos]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX055]
+```
+<!-- cyberabc:lesson-figures:end ch-19 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -2202,6 +3377,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 20 — Infraestructura crítica y seguridad sectorial: resolución de problemas
 
+<!-- cyberabc:lesson-figures:start ch-20 -->
+### Mapa de la lección
+
+Lección 20 publicada. Mapa, ejemplo, EX058.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["20.1 Un método"]
+  N2["20.2 Conserve antes de cambiar"]
+  N3["20.3 Cuándo una avería se convierte en incidente"]
+  N4["20.4 Datos que faltan: cuatro causas habituales"]
+  N5["20.6 Actividad práctica: discrimine las causas"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX058"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["20.1 Un método"]
+  N2["20.2 Conserve antes de cambiar"]
+  N3["20.3 Cuándo una avería se convierte en incidente"]
+  N4["20.4 Datos que faltan: cuatro causas habituales"]
+  N5["20.6 Actividad práctica: discrimine las causas"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX058"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[20.1 Un método]
+    |
+    v
+[20.2 Conserve antes de cambiar]
+    |
+    v
+[20.3 Cuándo una avería se convierte en incidente]
+    |
+    v
+[20.4 Datos que faltan: cuatro causas habituales]
+    |
+    v
+[20.6 Actividad práctica: discrimine las causas]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX058]
+```
+<!-- cyberabc:lesson-figures:end ch-20 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -2325,6 +3560,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 21 — Infraestructura crítica y seguridad sectorial: integración del servicio
 
+<!-- cyberabc:lesson-figures:start ch-21 -->
+### Mapa de la lección
+
+Lección 21 publicada. Mapa, ejemplo, EX061.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["21.1 Las interfaces son acuerdos"]
+  N2["21.2 Matrices de responsabilidades"]
+  N3["21.3 Integración de los proveedores"]
+  N4["21.4 La gestión de incidentes se encuentra con la co"]
+  N5["21.6 Actividad práctica: acuerdos de interfaz"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX061"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["21.1 Las interfaces son acuerdos"]
+  N2["21.2 Matrices de responsabilidades"]
+  N3["21.3 Integración de los proveedores"]
+  N4["21.4 La gestión de incidentes se encuentra con la co"]
+  N5["21.6 Actividad práctica: acuerdos de interfaz"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX061"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[21.1 Las interfaces son acuerdos]
+    |
+    v
+[21.2 Matrices de responsabilidades]
+    |
+    v
+[21.3 Integración de los proveedores]
+    |
+    v
+[21.4 La gestión de incidentes se encuentra con la co]
+    |
+    v
+[21.6 Actividad práctica: acuerdos de interfaz]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX061]
+```
+<!-- cyberabc:lesson-figures:end ch-21 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -2402,6 +3697,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Infraestructura crítica y seguridad sectorial: automatización
+
+<!-- cyberabc:lesson-figures:start ch-22 -->
+### Mapa de la lección
+
+Lección 22 publicada. Mapa, ejemplo, EX064.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["22.1 La configuración como código"]
+  N2["22.2 Planificar y después actuar"]
+  N3["22.3 Autocorrección segura frente a incidencia"]
+  N4["22.5 La automatización es código: trátela como tal"]
+  N5["22.7 Actividad práctica: plan de deriva"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX064"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["22.1 La configuración como código"]
+  N2["22.2 Planificar y después actuar"]
+  N3["22.3 Autocorrección segura frente a incidencia"]
+  N4["22.5 La automatización es código: trátela como tal"]
+  N5["22.7 Actividad práctica: plan de deriva"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX064"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[22.1 La configuración como código]
+    |
+    v
+[22.2 Planificar y después actuar]
+    |
+    v
+[22.3 Autocorrección segura frente a incidencia]
+    |
+    v
+[22.5 La automatización es código: trátela como tal]
+    |
+    v
+[22.7 Actividad práctica: plan de deriva]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX064]
+```
+<!-- cyberabc:lesson-figures:end ch-22 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -2529,6 +3884,66 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 23 — Infraestructura crítica y seguridad sectorial: evaluación
 
+<!-- cyberabc:lesson-figures:start ch-23 -->
+### Mapa de la lección
+
+Lección 23 publicada. Mapa, ejemplo, EX067.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["23.1 Qué probar"]
+  N2["23.2 Reglas de enfrentamiento"]
+  N3["23.3 Reglas de afirmación"]
+  N4["23.4 De los resultados al trabajo"]
+  N5["23.6 Actividad práctica: evalúe los controles"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX067"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["23.1 Qué probar"]
+  N2["23.2 Reglas de enfrentamiento"]
+  N3["23.3 Reglas de afirmación"]
+  N4["23.4 De los resultados al trabajo"]
+  N5["23.6 Actividad práctica: evalúe los controles"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX067"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[23.1 Qué probar]
+    |
+    v
+[23.2 Reglas de enfrentamiento]
+    |
+    v
+[23.3 Reglas de afirmación]
+    |
+    v
+[23.4 De los resultados al trabajo]
+    |
+    v
+[23.6 Actividad práctica: evalúe los controles]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX067]
+```
+<!-- cyberabc:lesson-figures:end ch-23 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -2641,6 +4056,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 24 — Métodos de investigación aplicada
 
+<!-- cyberabc:lesson-figures:start ch-24 -->
+### Mapa de la lección
+
+Lección 24 publicada. Mapa, ejemplo, EX070.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["24.1 De la pregunta al estudio"]
+  N2["24.2 Las comparaciones y sus trampas"]
+  N3["24.3 Recoger datos en un entorno operativo"]
+  N4["24.4 Un análisis ajustado a los datos"]
+  N5["24.5 Informe"]
+  N6["24.7 Actividad práctica: diseñe un estudio"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX070"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["24.1 De la pregunta al estudio"]
+  N2["24.2 Las comparaciones y sus trampas"]
+  N3["24.3 Recoger datos en un entorno operativo"]
+  N4["24.4 Un análisis ajustado a los datos"]
+  N5["24.5 Informe"]
+  N6["24.7 Actividad práctica: diseñe un estudio"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX070"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[24.1 De la pregunta al estudio]
+    |
+    v
+[24.2 Las comparaciones y sus trampas]
+    |
+    v
+[24.3 Recoger datos en un entorno operativo]
+    |
+    v
+[24.4 Un análisis ajustado a los datos]
+    |
+    v
+[24.5 Informe]
+    |
+    v
+[24.7 Actividad práctica: diseñe un estudio]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX070]
+```
+<!-- cyberabc:lesson-figures:end ch-24 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -2725,6 +4205,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 25 — Taller de proyecto en equipo
 
+<!-- cyberabc:lesson-figures:start ch-25 -->
+### Mapa de la lección
+
+Lección 25 publicada. Mapa, ejemplo, EX073.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["25.1 El equipo y sus roles"]
+  N2["25.2 Elementos de trabajo con criterios de aceptació"]
+  N3["25.3 La revisión como control"]
+  N4["25.4 Ritmo"]
+  N5["25.5 Revisiones sin culpables"]
+  N6["25.7 Actividad práctica: cartera de trabajo del proy"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX073"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["25.1 El equipo y sus roles"]
+  N2["25.2 Elementos de trabajo con criterios de aceptació"]
+  N3["25.3 La revisión como control"]
+  N4["25.4 Ritmo"]
+  N5["25.5 Revisiones sin culpables"]
+  N6["25.7 Actividad práctica: cartera de trabajo del proy"]
+  N7["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX073"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[25.1 El equipo y sus roles]
+    |
+    v
+[25.2 Elementos de trabajo con criterios de aceptació]
+    |
+    v
+[25.3 La revisión como control]
+    |
+    v
+[25.4 Ritmo]
+    |
+    v
+[25.5 Revisiones sin culpables]
+    |
+    v
+[25.7 Actividad práctica: cartera de trabajo del proy]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX073]
+```
+<!-- cyberabc:lesson-figures:end ch-25 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -2805,6 +4350,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Infraestructura crítica y seguridad sectorial: traspaso operativo
+
+<!-- cyberabc:lesson-figures:start ch-26 -->
+### Mapa de la lección
+
+Lección 26 publicada. Mapa, ejemplo, EX076.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["26.1 Qué se traspasa"]
+  N2["26.2 Manuales de operación que funcionan a las 03:00"]
+  N3["26.3 Evidencia de salud"]
+  N4["26.4 Llevar a cabo el traspaso"]
+  N5["26.6 Actividad práctica: redacte y pruebe un manual"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX076"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["26.1 Qué se traspasa"]
+  N2["26.2 Manuales de operación que funcionan a las 03:00"]
+  N3["26.3 Evidencia de salud"]
+  N4["26.4 Llevar a cabo el traspaso"]
+  N5["26.6 Actividad práctica: redacte y pruebe un manual"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX076"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[26.1 Qué se traspasa]
+    |
+    v
+[26.2 Manuales de operación que funcionan a las 03:00]
+    |
+    v
+[26.3 Evidencia de salud]
+    |
+    v
+[26.4 Llevar a cabo el traspaso]
+    |
+    v
+[26.6 Actividad práctica: redacte y pruebe un manual]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX076]
+```
+<!-- cyberabc:lesson-figures:end ch-26 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -2890,6 +4495,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Despliegue y validación
+
+<!-- cyberabc:lesson-figures:start ch-27 -->
+### Mapa de la lección
+
+Lección 27 publicada. Mapa, ejemplo, EX079.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["27.1 Comprobaciones previas"]
+  N2["27.2 Canarios y criterios de promoción"]
+  N3["27.3 Validación después del despliegue"]
+  N4["27.4 Lo que la ventana no puede mostrar"]
+  N5["27.6 Actividad práctica: decisión sobre el canario"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX079"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["27.1 Comprobaciones previas"]
+  N2["27.2 Canarios y criterios de promoción"]
+  N3["27.3 Validación después del despliegue"]
+  N4["27.4 Lo que la ventana no puede mostrar"]
+  N5["27.6 Actividad práctica: decisión sobre el canario"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX079"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[27.1 Comprobaciones previas]
+    |
+    v
+[27.2 Canarios y criterios de promoción]
+    |
+    v
+[27.3 Validación después del despliegue]
+    |
+    v
+[27.4 Lo que la ventana no puede mostrar]
+    |
+    v
+[27.6 Actividad práctica: decisión sobre el canario]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX079]
+```
+<!-- cyberabc:lesson-figures:end ch-27 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -3003,6 +4668,71 @@ Continúe con la siguiente lección escrita.
 
 ## Capítulo 28 — Práctica sobre el terreno
 
+<!-- cyberabc:lesson-figures:start ch-28 -->
+### Mapa de la lección
+
+Lección 28 publicada. Mapa, ejemplo, EX082.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["28.1 Planificar una visita"]
+  N2["28.2 La seguridad física, primero"]
+  N3["28.3 Recogida de evidencia en el emplazamiento"]
+  N4["28.4 Soportes extraíbles y portátiles de campo"]
+  N5["28.5 Trabajar con operaciones"]
+  N6["28.6 Ejercicios con los operadores"]
+  N7["28.8 Actividad práctica: plan de trabajo en el empla"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX082"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["28.1 Planificar una visita"]
+  N2["28.2 La seguridad física, primero"]
+  N3["28.3 Recogida de evidencia en el emplazamiento"]
+  N4["28.4 Soportes extraíbles y portátiles de campo"]
+  N5["28.5 Trabajar con operaciones"]
+  N6["28.6 Ejercicios con los operadores"]
+  N7["28.8 Actividad práctica: plan de trabajo en el empla"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX082"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[28.1 Planificar una visita]
+    |
+    v
+[28.2 La seguridad física, primero]
+    |
+    v
+[28.3 Recogida de evidencia en el emplazamiento]
+    |
+    v
+[28.4 Soportes extraíbles y portátiles de campo]
+    |
+    v
+[28.5 Trabajar con operaciones]
+    |
+    v
+[28.6 Ejercicios con los operadores]
+    |
+    v
+[28.8 Actividad práctica: plan de trabajo en el empla]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX082]
+```
+<!-- cyberabc:lesson-figures:end ch-28 -->
+
+
 ### Resultados de aprendizaje y conexión
 
 Al terminar este capítulo, usted debería ser capaz de:
@@ -3088,6 +4818,66 @@ Continúe con la siguiente lección escrita.
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construcción del proyecto final
+
+<!-- cyberabc:lesson-figures:start ch-29 -->
+### Mapa de la lección
+
+Lección 29 publicada. Mapa, ejemplo, EX085.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["29.1 Lo que debe demostrar el proyecto final"]
+  N2["29.2 La construcción"]
+  N3["29.3 Leer el registro de evidencia"]
+  N4["29.4 Un defecto que solo aparece en combinación"]
+  N5["29.5 Construir el proyecto final real"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX085"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["29.1 Lo que debe demostrar el proyecto final"]
+  N2["29.2 La construcción"]
+  N3["29.3 Leer el registro de evidencia"]
+  N4["29.4 Un defecto que solo aparece en combinación"]
+  N5["29.5 Construir el proyecto final real"]
+  N6["Síntesis del capítulo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX085"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[29.1 Lo que debe demostrar el proyecto final]
+    |
+    v
+[29.2 La construcción]
+    |
+    v
+[29.3 Leer el registro de evidencia]
+    |
+    v
+[29.4 Un defecto que solo aparece en combinación]
+    |
+    v
+[29.5 Construir el proyecto final real]
+    |
+    v
+[Síntesis del capítulo]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX085]
+```
+<!-- cyberabc:lesson-figures:end ch-29 -->
+
 
 ### Resultados de aprendizaje y conexión
 
@@ -3225,6 +5015,71 @@ Continúe con la siguiente lección escrita.
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Evaluación del proyecto final
+
+<!-- cyberabc:lesson-figures:start ch-30 -->
+### Mapa de la lección
+
+Lección 30 publicada. Mapa, ejemplo, EX088.
+
+```mermaid
+flowchart TD
+  N0["Resultados de aprendizaje y conexión"]
+  N1["30.1 La revisión del diseño"]
+  N2["30.2 Evidencia operativa"]
+  N3["30.3 Rúbrica de evaluación"]
+  N4["30.4 Fallos habituales en los proyectos finales"]
+  N5["30.6 Mirando atrás: el método"]
+  N6["30.7 Práctica continua"]
+  N7["30.8 Actividad práctica: autoevaluación"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Ejemplo resuelto"]
+  EX --> Q["Ejercicio EX088"]
+```
+
+### Dibujo lógico
+
+```mermaid
+flowchart LR
+  N0["Resultados de aprendizaje y conexión"]
+  N1["30.1 La revisión del diseño"]
+  N2["30.2 Evidencia operativa"]
+  N3["30.3 Rúbrica de evaluación"]
+  N4["30.4 Fallos habituales en los proyectos finales"]
+  N5["30.6 Mirando atrás: el método"]
+  N6["30.7 Práctica continua"]
+  N7["30.8 Actividad práctica: autoevaluación"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX088"]
+```
+
+```text
+[Resultados de aprendizaje y conexión]
+    |
+    v
+[30.1 La revisión del diseño]
+    |
+    v
+[30.2 Evidencia operativa]
+    |
+    v
+[30.3 Rúbrica de evaluación]
+    |
+    v
+[30.4 Fallos habituales en los proyectos finales]
+    |
+    v
+[30.6 Mirando atrás: el método]
+    |
+    v
+[30.7 Práctica continua]
+    |
+    v
+[30.8 Actividad práctica: autoevaluación]
+    |
+    v
+[Ejemplo resuelto] --> [Ejercicio EX088]
+```
+<!-- cyberabc:lesson-figures:end ch-30 -->
+
 
 ### Resultados de aprendizaje y conexión
 

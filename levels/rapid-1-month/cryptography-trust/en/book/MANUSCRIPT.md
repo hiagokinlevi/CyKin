@@ -1,7 +1,7 @@
 # Cryptography and Trust Services: Rapid Course
 
 - Language: English (`en`); course 008, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: new learners with no prior security role.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: labs compute SHA-256 fingerprints and call hashlib's scrypt on synthetic data; they implement no cipher. Real systems use vetted libraries and products; never roll your own cryptography. All people, organisations and data are **synthetic** unless a sentence cites a public source.
@@ -35,6 +35,71 @@ Read in order. Four chapters follow one new learner helping a small community li
 <a id="ch-01"></a>
 
 ## Chapter 1 — Cryptography and trust services: foundations and decisions
+
+<!-- cyberabc:lesson-figures:start ch-01 -->
+### Lesson map
+
+Lesson 01 published. Map, example, EX001.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 What cryptography protects"]
+  N3["1.3 Four kinds of transformation"]
+  N4["Lab — One letter changes the fingerprint"]
+  N5["1.4 The padlock and the certificate"]
+  N6["1.5 Simple safe decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX001"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["1.1 The case"]
+  N2["1.2 What cryptography protects"]
+  N3["1.3 Four kinds of transformation"]
+  N4["Lab — One letter changes the fingerprint"]
+  N5["1.4 The padlock and the certificate"]
+  N6["1.5 Simple safe decisions"]
+  N7["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX001"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[1.1 The case]
+    |
+    v
+[1.2 What cryptography protects]
+    |
+    v
+[1.3 Four kinds of transformation]
+    |
+    v
+[Lab — One letter changes the fingerprint]
+    |
+    v
+[1.4 The padlock and the certificate]
+    |
+    v
+[1.5 Simple safe decisions]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX001]
+```
+<!-- cyberabc:lesson-figures:end ch-01 -->
+
 
 ### Learning outcomes
 
@@ -119,6 +184,61 @@ Cryptography keeps promises of confidentiality, integrity and authenticity throu
 
 ## Chapter 2 — Scope, permission and safe practice
 
+<!-- cyberabc:lesson-figures:start ch-02 -->
+### Lesson map
+
+Lesson 02 published. Map, example, EX014.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["2.1 Permission first"]
+  N2["2.2 A small, safe scope"]
+  N3["2.3 Personal data and secrets"]
+  N4["2.4 Reporting responsibly"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5
+  N5 --> EX["Worked example"]
+  EX --> Q["Exercise EX014"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["2.1 Permission first"]
+  N2["2.2 A small, safe scope"]
+  N3["2.3 Personal data and secrets"]
+  N4["2.4 Reporting responsibly"]
+  N5["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[2.1 Permission first]
+    |
+    v
+[2.2 A small, safe scope]
+    |
+    v
+[2.3 Personal data and secrets]
+    |
+    v
+[2.4 Reporting responsibly]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX014]
+```
+<!-- cyberabc:lesson-figures:end ch-02 -->
+
+
 ### Learning outcomes
 
 You will (1) explain why permission comes before any check; (2) define a small, safe scope; (3) handle personal data and secrets with care; (4) report problems responsibly.
@@ -176,6 +296,66 @@ Safe practice means getting permission, keeping a small scope, handling personal
 <a id="ch-03"></a>
 
 ## Chapter 3 — Cryptography and trust services: systems, data and dependencies
+
+<!-- cyberabc:lesson-figures:start ch-03 -->
+### Lesson map
+
+Lesson 03 published. Map, example, EX027.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["3.1 Systems and their cryptography"]
+  N2["3.2 How passwords should be stored"]
+  N3["Lab — Salted password storage"]
+  N4["3.3 Depending on suppliers"]
+  N5["3.4 Why things expire"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX027"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["3.1 Systems and their cryptography"]
+  N2["3.2 How passwords should be stored"]
+  N3["Lab — Salted password storage"]
+  N4["3.3 Depending on suppliers"]
+  N5["3.4 Why things expire"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX027"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[3.1 Systems and their cryptography]
+    |
+    v
+[3.2 How passwords should be stored]
+    |
+    v
+[Lab — Salted password storage]
+    |
+    v
+[3.3 Depending on suppliers]
+    |
+    v
+[3.4 Why things expire]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX027]
+```
+<!-- cyberabc:lesson-figures:end ch-03 -->
+
 
 ### Learning outcomes
 
@@ -258,6 +438,66 @@ Small organisations depend on cryptography in many systems and suppliers, so the
 <a id="ch-04"></a>
 
 ## Chapter 4 — Cryptography and trust services: guided lab and applied synthesis
+
+<!-- cyberabc:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX039.
+
+```mermaid
+flowchart TD
+  N0["Learning outcomes"]
+  N1["4.1 The guided task"]
+  N2["Lab — Checking a download fingerprint"]
+  N3["4.2 Reading the result"]
+  N4["4.3 Summarising for the team"]
+  N5["4.4 What comes next"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
+  N6 --> EX["Worked example"]
+  EX --> Q["Exercise EX039"]
+```
+
+### Logical drawing
+
+```mermaid
+flowchart LR
+  N0["Learning outcomes"]
+  N1["4.1 The guided task"]
+  N2["Lab — Checking a download fingerprint"]
+  N3["4.2 Reading the result"]
+  N4["4.3 Summarising for the team"]
+  N5["4.4 What comes next"]
+  N6["Synthesis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+```
+
+```text
+[Learning outcomes]
+    |
+    v
+[4.1 The guided task]
+    |
+    v
+[Lab — Checking a download fingerprint]
+    |
+    v
+[4.2 Reading the result]
+    |
+    v
+[4.3 Summarising for the team]
+    |
+    v
+[4.4 What comes next]
+    |
+    v
+[Synthesis]
+    |
+    v
+[Worked example] --> [Exercise EX039]
+```
+<!-- cyberabc:lesson-figures:end ch-04 -->
+
 
 ### Learning outcomes
 
