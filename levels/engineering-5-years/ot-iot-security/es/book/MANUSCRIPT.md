@@ -29,7 +29,7 @@ Los capítulos 1–19 construyen fundamentos aplicados a la TO desde la primera 
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1522,7 +1522,468 @@ Los métodos están autorizados, tienen ficha y están terminados cuando existen
 
 ### Siga estudiando — capítulo 24 de 50
 
-[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](../../en/book/MANUSCRIPT.md#ch-25)
+[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Taller de diseño I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) esbozar la canalización de permitir/denegar del monitor serie de ABP; (2) justificar las concesiones en una breve revisión de diseño; (3) producir un registro de decisión de una página.
+
+### 25.1 Problema del taller
+
+Diseño: trama de entrada → decodificar → cargar ConduitSet/lista de permitidos → evaluar permit → emitir evento → reenviar o descartar. Opciones: política incrustada en el código frente a archivo de datos firmado; alertas síncronas frente a asíncronas ante las denegaciones. El equipo de taller de Lena en ABP esboza todo el camino en una página y marca dónde se deniega una trama si falta la política. Las dos elecciones debatidas fueron si la lista de permitidos vive en el código o en un archivo de datos firmado, y si las alertas sobre denegaciones se envían de forma síncrona o se encolan. Cada opción se pone por escrito con sus consecuencias antes de que nadie defienda una.
+
+### 25.2 Concesiones
+
+La política como datos firmados permite publicar actualizaciones sin volver a desplegar el firmware, pero necesita verificación de firma y fallo cerrado ante firmas incorrectas. Las alertas asíncronas escalan, pero pueden desordenarse; para las denegaciones en el camino del SIS, prefiera la alerta síncrona. El equipo de Lena acuerda que una firma incorrecta debe detener todo el tráfico no esencial, exactamente como exige el requisito S-1 cuando falta la política. Las alertas síncronas se reservan para las denegaciones de códigos de escritura y de caminos relacionados con el SIS, donde el retraso importa; las denegaciones rutinarias de lectura se encolan. El equipo registra también qué ocurre si se pierde la clave de firma: el monitor conserva la última lista válida y genera una alarma, y no se acepta ninguna actualización sin firmar.
+
+### 25.3 Registro de decisión
+
+Una página: contexto, opciones, decisión, consecuencias, fecha, responsables. Guárdelo junto al código.
+
+> **Caso sintético — Ashford Batch Plant.** El taller eligió listas de permitidos en JSON firmado, camino síncrono para las denegaciones que afectan a códigos de escritura y procesamiento masivo asíncrono para las lecturas rutinarias. El ADR-004 lo recoge.
+
+El ADR-004 registra en este formato la decisión del taller sobre las listas de permitidos en JSON firmado, con Lena y el responsable de ingeniería de control como responsables. Está en el repositorio junto al código de la política, para que cualquiera que modifique el cargador pueda leer por qué funciona como funciona.
+
+### 25.4 Errores y límites
+
+Los talleres que se saltan los requisitos de seguridad funcional producen diagramas bonitos que fallan de forma abierta. El taller de Lena se niega a revisar un diseño hasta que muestre dónde deniega el tráfico el monitor cuando falta la lista de permitidos o falla su firma. Los diseños que no pueden responder se devuelven antes de cualquier discusión sobre disposición o herramientas. Las tarjetas de restricciones hacen visibles sobre la mesa los requisitos de seguridad funcional desde el primer minuto, para que no se olviden en el entusiasmo por una arquitectura ingeniosa. Los diseños rechazados también se registran.
+
+### Nota práctica
+
+Los facilitadores detienen la sala con: «¿Dónde DENEGAMOS si falta la política?». Si nadie puede responder, la arquitectura no está lista.
+
+### 25.1b Tarjetas de restricciones y galería
+
+Entregue a cada equipo del taller tarjetas de restricciones: residencia de datos, operación con dos ingenieros, fallo cerrado, nada de puntuaciones vacías, independencia del SIS. Los diseños que violan una tarjeta se rechazan antes del debate estético. Los talleres terminan con una galería: los equipos exponen sus borradores de ADR y los demás intentan encontrar un camino de fallo abierto en cinco minutos. Un esbozo de taller debe nombrar por escrito los límites de confianza, los almacenes de datos y el camino de fallo cerrado. Diez minutos de etiquetado valen más que una hora de diseño estético. Los caminos de fallo abierto encontrados en la galería se escriben en el ADR antes de aceptarlo.
+
+### Nota de campo: etiquetar antes de maquetar
+
+Los equipos de taller que dedicaron los primeros veinte minutos a nombrar los puntos de DENEGACIÓN y los límites de confianza produjeron ADR que superaron la revisión. Los equipos que empezaron por las paletas de colores redescubrieron caminos de fallo abierto durante la galería. El CNHP exige ahora un camino de fallo cerrado etiquetado en la fotografía de la pizarra adjunta a cada ADR.
+
+### Ejercicios — capítulo 25
+
+- **EX073 — Opciones.** Dos opciones para entregar la política y un riesgo de cada una. Rúbrica: 3 = dos + riesgos; 2 = opciones; 1 = una; 0 = nada.
+- **EX074 — ADR.** Línea de decisión para las alertas síncronas de denegación sobre códigos de escritura. Rúbrica: 3 = decisión clara + por qué; 2 = solo la decisión; 1 = vago; 0 = nada.
+- **EX075 — Revisión.** Tres preguntas que debe hacer un revisor. Rúbrica: 3 = fallo cerrado, autenticación de la política, presupuesto de latencia; 2 = dos; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+El trabajo de taller termina en una decisión registrada, no en una impresión.
+
+### Siga estudiando — capítulo 25 de 50
+
+[← Capítulo 24 (borrador)](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 (borrador) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Seguridad de TO, IoT y sistemas ciberfísicos: alternativas de arquitectura
+
+### Resultados de aprendizaje
+
+Usted podrá (1) comparar monitores locales con analítica en la nube para los datos de TO; (2) evaluar frente a las restricciones de residencia de datos y de seguridad de procesos; (3) elegir una alternativa rechazando explícitamente las demás.
+
+### 26.1 Alternativas
+
+A: monitores serie/IP locales con detectores locales. B: recogida local con analítica en el historiador del sitio. C: analítica SaaS en la nube que recibe valores de proceso. Cada una responde a restricciones distintas. Lena describe cada opción para ABP con la misma estructura: adónde van los datos de proceso, quién los opera, cómo falla y cuánto cuesta. La opción C enviaría valores de proceso fuera del sitio, lo que plantea de inmediato cuestiones de residencia de datos y de confidencialidad de las recetas. Las opciones A y B mantienen los datos en el sitio, pero difieren en la rapidez con que pueden aplicar decisiones en el camino de escritura.
+
+### 26.2 Criterios
+
+Independencia de la seguridad de procesos, residencia de datos, comportamiento de fallo cerrado, operabilidad por el equipo del sitio, coste. Dé más peso a la seguridad funcional y a la residencia que a la novedad. Lena acuerda los pesos con el ingeniero de seguridad de procesos y el jefe de planta antes de puntuar. La independencia de la seguridad funcional y la residencia de datos tienen el mayor peso, porque un fallo en ellas no puede deshacerse con correcciones posteriores. Cada opción se puntúa con evidencia, y las opciones que no cumplen un criterio de seguridad funcional se rechazan sean cuales sean sus demás puntuaciones. Los pesos se publican en el análisis para que los revisores puedan cuestionarlos.
+
+### 26.3 Decisión
+
+ABP rechazó C porque las tendencias cercanas a las recetas no deben salir del sitio sin una excepción aprobada por el consejo de administración. Eligió A para la aplicación en el camino de escritura, con B para la investigación de detección a más largo plazo sobre réplicas.
+
+> **Caso sintético — Ashford Batch Plant.** Una demostración de C por parte de un proveedor parecía impecable; la asesoría jurídica y seguridad de procesos bloquearon la subida sin restricciones. El ADR-011 registra el rechazo.
+
+El ADR-011 registra esta decisión. Las razones son breves: la opción A aplica las decisiones localmente en el camino de escritura y pueden operarla los ingenieros del sitio; la opción B añade investigación de detección, pero necesita competencias de las que carece el turno de noche, así que se reserva para el trabajo diurno sobre réplicas. La opción C sigue rechazada hasta que cambien las normas de residencia, que es su desencadenante de revisión registrado.
+
+### 26.4 Errores y límites
+
+Un análisis de alternativas que ignora las cláusulas de datos del permiso de trabajo es teatro. En ABP, las cláusulas de datos del permiso prohíben que los valores de proceso salgan del sitio sin una excepción del consejo de administración, así que la opción C quedó descartada antes de cualquier comparación técnica. Lena registra esa restricción al principio del análisis, para que los lectores vean por qué se rechazó C sin leer la puntuación. Un análisis que hubiera puntuado alto a C ignorando el permiso habría hecho perder el tiempo al consejo y podría haber presionado a alguien para conceder una excepción.
+
+### Nota práctica
+
+Documente las competencias que exige cada alternativa. Una canalización en la nube que nadie en el sitio sabe operar falla de forma abierta en lo social, aunque falle de forma cerrada en lo técnico.
+
+### 26.1b Coste, competencias y desencadenantes de revisión
+
+Incluya el coste anual aproximado y las competencias que exige cada alternativa. Una opción que necesita seis personas a tiempo completo para operar con fallo cerrado no es gratuita. Termine el análisis de alternativas con una decisión, las opciones rechazadas con sus motivos y un desencadenante de revisión (reabrir si cambia la ley de residencia de datos). Los costes de cambio importan: un monolito que ya exporta listas de permitidos firmadas puede crecer hacia servicios; un contrato SaaS con excepciones de residencia es más difícil de deshacer en mitad de un incidente. Prefiera las opciones que conservan una salida de emergencia sin conexión para denegar/permitir.
+
+El ADR-011 indica su desencadenante de revisión.
+
+### Nota de campo: supuestos sobre competencias
+
+La vía analítica de la opción B suponía un ingeniero del sitio que entendiera el orden de los eventos. ABP no tenía a esa persona en el turno de noche. Hasta que la contratación se puso al día, Lena mantuvo la aplicación en el camino de escritura con la opción A y limitó B a la investigación diurna sobre réplicas. Una arquitectura que supone competencias no disponibles falla de forma abierta en lo social.
+
+### Ejercicios — capítulo 26
+
+- **EX076 — Criterio.** Añada un criterio para los datos del SIS y puntúe A/B/C. Rúbrica: 3 = criterio sensato + puntuaciones; 2 = criterio; 1 = vago; 0 = nada.
+- **EX077 — Rechazar C.** Frase de rechazo con un motivo de residencia/seguridad funcional. Rúbrica: 3 = clara; 2 = parcial; 1 = solo el coste; 0 = acepta C.
+- **EX078 — Alternativa de respaldo.** ¿Cuándo es A, puramente local, el modo de ejecución adecuado? Rúbrica: 3 = caída de la WAN / simulacro de aislamiento; 2 = vago; 1 = siempre; 0 = nunca.
+
+### Síntesis del capítulo
+
+Elija la arquitectura frente a restricciones ponderadas; registre las opciones rechazadas.
+
+### Siga estudiando — capítulo 26 de 50
+
+[← Capítulo 25 (borrador)](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 (borrador) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Seguridad de TO, IoT y sistemas ciberfísicos: diseño de controles
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diseñar controles preventivos, detectivos y correctivos para el CNHP; (2) vincular los controles a los requisitos; (3) evitar controles que exijan competencias de explotación para operarlos.
+
+### 27.1 Tres tipos
+
+Preventivo: lista de permitidos antes de reenviar. Detectivo: alerta ante códigos de escritura denegados. Correctivo: desactivar automáticamente una cuenta de ingeniería comprometida al final de la ventana. Cada uno se asocia a un identificador de requisito. En ABP, la lista de permitidos del monitor serie es preventiva, la alerta cuando HMI-1 intenta escribir fuera de 40001 a 40010 es detectiva y la desactivación de las cuentas temporales de ingeniería al final de cada ventana es correctiva. Lena registra el identificador del requisito junto a cada control, para que un revisor pueda ver qué requisito falla si el control se elimina o se debilita.
+
+### 27.2 Competencia del operador
+
+Los controles deben poder operarlos ingenieros que siguen procedimientos operativos, no solo especialistas en explotación. Un control que necesita shellcode a medida para verificarse es el control equivocado para este programa. Lena redacta una entrada de procedimiento para cada control del CNHP que describe cómo comprobarlo con herramientas ordinarias, como reproducir una trama sintética en el banco y leer el registro de decisiones. Si un control solo puede verificarlo alguien que escriba código de explotación, lo sustituye por otro que los propios ingenieros del sitio puedan comprobar con seguridad durante el trabajo rutinario.
+
+### 27.3 Compensación
+
+Si un PLC heredado no puede aplicar listas de permitidos, añada monitorización detectiva y una aprobación humana más estricta para el acceso de ingeniería. Documente la compensación en el permiso de trabajo.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Salida esperada:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+> **Caso sintético — Ashford Batch Plant.** Las escrituras fuera de 40001-40010 se deniegan: un control preventivo con un evento detectivo cuando alguien lo intenta.
+
+En ABP, la compensación se escribe en el permiso de trabajo con un responsable y una fecha de revisión, para que se compruebe en lugar de darse por supuesta. Para un PLC heredado que no puede aplicar una lista de permitidos, Lena combina la monitorización detectiva en su línea troncal con la aprobación de dos personas para el acceso de ingeniería.
+
+### 27.4 Errores y límites
+
+Las pilas de controles compensatorios sin responsable se convierten en alertas ignoradas. El registro de controles de Lena enumera cada control compensatorio de ABP con su responsable, sus alertas y la fecha de su última prueba. Un control sin responsable recibe uno antes de la siguiente ventana, o se retira del registro y su requisito se marca como no cumplido. Los controles que nadie vigila se cuentan como ausentes, porque sus alertas se ignorarán cuando por fin salten. La asignación de responsables se revisa en cada jornada de salud de los controles.
+
+### Nota práctica
+
+Programe una jornada trimestral de salud de los controles: rompa cada control preventivo en un laboratorio sintético y confirme que saltan los controles detectivos. Los controles no probados son deseos.
+
+### 27.1b Responsables y detección del acceso de emergencia
+
+Cada control tiene un responsable que recibe sus alertas y una fecha de revisión. Registre cuándo un operador usa el acceso de emergencia para saltarse la doble aprobación. Un acceso de emergencia sin detección no es más que un control único oculto. La revisión semanal de los eventos de acceso de emergencia forma parte del diseño de controles, y cada revisión nombra quién lo usó y el motivo alegado. La entrada de cada control en el registro indica también cómo falla: que una lista de permitidos rota bloquee el tráfico o lo deje pasar decide qué alerta detectiva debe saltar primero; en la línea troncal del PLC-A es la alerta de política ausente, que avisa al responsable de la ventana.
+
+### Nota de campo: jornada de salud de los controles
+
+En la jornada de salud de marzo, el equipo borró la lista de permitidos de un monitor de banco y confirmó que la alerta detectiva saltaba en 12 segundos. El camino preventivo denegó las escrituras de inmediato. Un control compensatorio de un PLC heredado no tenía responsable; recibió uno antes de la siguiente ventana.
+
+### Ejercicios — capítulo 27
+
+- **EX079 — Mapa.** Un control preventivo y uno detectivo contra la manipulación de la evidencia. Rúbrica: 3 = ambos; 2 = uno; 1 = vago; 0 = nada.
+- **EX080 — Operable.** ¿Por qué «verificar volviendo a explotar» es un mal control? Rúbrica: 3 = doble uso + inestable + competencia equivocada; 2 = una razón; 1 = vago; 0 = lo defiende.
+- **EX081 — Laboratorio.** ¿Qué regla bloquea HIST-1 fc=16? Rúbrica: 3 = fc-not-allowed; 2 = denegación vaga; 1 = incorrecta; 0 = nada.
+
+### Síntesis del capítulo
+
+Los controles son preventivos, detectivos o correctivos, tienen responsable y se operan sin exploits.
+
+### Siga estudiando — capítulo 27 de 50
+
+[← Capítulo 26 (borrador)](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 (borrador) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Seguridad de TO, IoT y sistemas ciberfísicos: implementación I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) implementar permit() con códigos de motivo explícitos; (2) añadir pruebas para cada cláusula; (3) registrar sin almacenar secretos.
+
+### 28.1 Forma de la implementación
+
+Función pura: entradas origen, código de función, registro y AllowListVersion, y salida (allow: bool, reason: str). Ninguna E/S de red dentro del predicado. Eso mantiene las pruebas rápidas y libres de contacto con la planta. La función de permiso de Lena en ABP sigue exactamente esta forma: recibe los campos de la trama decodificada y la versión de la lista de permitidos y devuelve una decisión con un motivo. La carga de la lista de permitidos y la escritura de los registros ocurren fuera de la función, de modo que sus pruebas se ejecutan en milisegundos con datos sintéticos y nunca corren el riesgo de tocar la planta.
+
+### 28.2 Pruebas por cláusula
+
+Un archivo de pruebas por cláusula: estación permitida, código de función, rango de registros, política no disponible. Solo datos de prueba sintéticos. Mutación: rompa una cláusula y observe cómo falla la prueba.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Salida esperada:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+Lena mantiene un archivo de pruebas por cláusula para la función de permiso de ABP, con datos de prueba que llevan el nombre del requisito que comprueban. Las pruebas de mutación confirmaron que cada archivo falla cuando se rompe su cláusula: borrar la comprobación del rango de registros, por ejemplo, hizo fallar de inmediato las pruebas fuera de rango. Una cláusula cuyas pruebas sobreviven a una mutación se considera no probada.
+
+### 28.3 Registro
+
+Registre la decisión, el motivo, la versión de la política y el actor. No registre contraseñas ni cargas útiles completas de las tramas que puedan contener datos propietarios de recetas. Oculte lo que haga falta.
+
+> **Caso sintético — Ashford Batch Plant.** La implementación I entregó códigos de motivo que muestra la interfaz de la cronología: los operadores vieron por fin por qué se bloqueó una escritura a las 03:12.
+
+Los registros de Lena muestran qué versión de la política tomó cada decisión. Las cargas útiles de las tramas se dejan fuera porque pueden contener valores de recetas. Lena revisa una muestra de registros después de cada versión para confirmar que no se ha colado nada sensible.
+
+### 28.4 Errores y límites
+
+Los motivos tipados como cadenas libres derivan; use una enumeración compartida con el tablero de cobertura. La implementación de Lena usa una lista compartida de códigos de motivo, como register-out-of-range y policy-unavailable, publicada como documento con versión. El tablero de cobertura y la vista de cronología leen la misma lista, de modo que un código nuevo no puede aparecer en los registros sin entenderse en otros lugares. Los consumidores que ven un código desconocido lo tratan como una denegación y generan una alerta para el responsable de la herramienta. El documento se revisa con cada cambio del predicado.
+
+### Nota práctica
+
+Someta el predicado a fuzzing con estaciones y códigos aleatorios y UTF-8 roto. Debe DENEGAR o fallar de forma cerrada, nunca PERMITIR ante un error de análisis.
+
+### 28.1b Catálogo de motivos y fuzzing
+
+El catálogo enumera, para cada código de motivo, la cláusula que lo emite y la prueba que lo fija: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Las entradas de fuzzing que alguna vez encontraron un error se suman a una lista de regresión que se reproduce en cada versión, incluido el nombre de estación UTF-8 que una vez hizo caer el decodificador. Las listas de comprobación de revisión de código para los cambios del predicado incluyen: cláusula nueva, pruebas nuevas, documentación de los códigos de motivo, caso de fuzzing, fallo cerrado ante errores de análisis. Los revisores que se saltan la lista hacen una revisión social, no una revisión de seguridad.
+
+La lista de comprobación de Lena se adjunta a cada revisión del predicado.
+
+### Nota de campo: hallazgos del fuzzing
+
+Un arnés de fuzzing de cinco minutos lanzó un nombre de estación UTF-8 que antes hacía caer el decodificador en una excepción no capturada, que el llamador trataba como ALLOW. La corrección devolvió DENY parse-error, y el arnés se ejecuta ahora en la integración continua con cada cambio del predicado.
+
+
+### 28.5 Ejemplo resuelto: una prueba de cláusula que detectó un error real (ABP sintética)
+
+Cada cláusula de la función de permiso tiene su propia prueba: origen permitido, código de función permitido, registro dentro de rango, denegación predeterminada. El arnés de fuzzing de Lena alimenta después 10.000 ternas aleatorias (origen, función, registro) tomadas de un generador con semilla y comprueba que cada PASS cumple todas las cláusulas. En la primera ejecución descubrió que el código de función 23 (lectura/escritura de múltiples registros) pasaba para HMI-1 porque la implementación solo comprobaba la mitad de lectura de la solicitud. La corrección rechaza el 23 salvo que figure explícitamente, una prueba de cláusula lo fija ahora y la nota del incidente registra qué semilla reprodujo el fallo, para que cualquiera pueda volver a ejecutarlo.
+
+### Ejercicios — capítulo 28
+
+- **EX082 — Firma.** Firma de tipos de permit y por qué AllowListVersion es un argumento. Rúbrica: 3 = firma + razón de fijar la versión; 2 = firma; 1 = vago; 0 = nada.
+- **EX083 — Mutación.** ¿Qué prueba falla si se ignora el rango de registros? Rúbrica: 3 = 40050 espera BLOCK; 2 = vago; 1 = incorrecto; 0 = nada.
+- **EX084 — Ocultación.** Dos campos de registro que deben ocultarse. Rúbrica: 3 = p. ej., contraseñas, cargas útiles completas con datos de recetas; 2 = uno; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Predicado puro, pruebas por cláusula, registros seguros.
+
+### Siga estudiando — capítulo 28 de 50
+
+[← Capítulo 27 (borrador)](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 (borrador) →](#ch-29)
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Seguridad de TO, IoT y sistemas ciberfísicos: medición
+
+### Resultados de aprendizaje
+
+Usted podrá (1) definir la cobertura con un denominador; (2) separar las métricas de actividad de las de resultado; (3) evaluar detectores con clase de ataque e intervalos (lecciones de Urbina/Giraldo).
+
+### 29.1 La cobertura necesita un plan
+
+La cobertura de ATT&CK for ICS es lo observado intersecado con lo planificado, dividido entre lo planificado; no lo observado dividido entre todas las técnicas. Sin un plan, la cobertura es vanidad. En ABP, Lena redacta antes de cada evaluación el plan de técnicas que se probarán, y el tablero de cobertura cuenta solo esas. Las técnicas observadas fuera del plan se notifican por separado. La cifra de 31 de 44 técnicas planificadas observadas significa algo porque las 44 se eligieron de antemano y la guía de planificación se publica con el tablero. El plan se fija antes de las pruebas.
+
+### 29.2 Actividad frente a resultado
+
+Actividad: tramas decodificadas, herramientas lanzadas. Resultado: correcciones verificadas, alcanzabilidad del SIS todavía falsa, tasa de falsas alarmas con la tasa base de la planta. Dirija según los resultados. El informe mensual del CNHP de Lena empieza por los resultados: correcciones verificadas mediante nueva prueba, si el SIS-B sigue siendo inalcanzable desde L4 y la tasa de falsas alarmas del detector con la tasa base de ABP. Los conteos de actividad, como las tramas decodificadas, aparecen solo en un apéndice de capacidad. Dirigir según la actividad premiaría ejecutar más herramientas en lugar de resolver más problemas. Los resultados son lo que financia el jefe de planta.
+
+### 29.3 Honestidad de los detectores
+
+Informe los intervalos de falsas alarmas, el retardo de detección y la clase de ataque. Un detector de banda que no detecta ataques sigilosos sobre los residuos no equivale a un CUSUM que sí los detecta; el laboratorio lo hace visible.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Salida esperada:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+> **Caso sintético — Ashford Batch Plant.** El CNHP informa de la cobertura de técnicas planificadas y de las FA/retardo del detector por clase, no de un único porcentaje de «seguro».
+
+El informe piloto de Lena para ABP enumera los resultados por clase de ataque. Cada clase tiene su propio intervalo de falsas alarmas y su retardo medio, de modo que el lector puede ver que el CUSUM detectó los ataques sigilosos sobre los residuos que el detector de banda pasó por alto.
+
+### 29.4 Errores y límites
+
+Los denominadores tomados de otra planta invalidan la métrica. Los ataques sintéticos no son el adversario. Lena nunca toma prestado un denominador del plan de otro sitio, porque las técnicas, los activos y los procesos de ABP son distintos. Si hace falta una comparación con otra planta, ambos sitios deben usar las mismas reglas de planificación, y el informe lo dice. También indica en cada informe que los ataques sintéticos representan clases elegidas, no el comportamiento de un adversario real, para que los lectores no sobrevaloren las cifras de detección. Ambas advertencias aparecen en todos los informes.
+
+### Nota práctica
+
+Ponga a cada widget del tablero un pie con la fórmula y el identificador de la planta. Un widget sin fórmula es decoración y debe eliminarse en la revisión.
+
+### 29.1b Muestreo y comparaciones entre cohortes
+
+Si muestrea 50 de 500 activos, dígalo y no extrapole los hallazgos como si hubiera visitado los 500. Comparar la cobertura entre ventanas exige las mismas reglas de planificación. Publique la guía de planificación junto al tablero de cobertura para que un 71 % en marzo signifique el mismo tipo de denominador que un 71 % en septiembre. La selección de la muestra se registra con su semilla o su regla, para que los mismos activos puedan volver a visitarse en la nueva prueba. Prefiera las métricas que infravaloran el éxito, como contar una corrección solo después de la nueva prueba.
+
+La guía de planificación de ABP se publica junto al tablero.
+
+### Nota de campo: líneas de metodología en los gráficos
+
+Cuando el CNHP cambió las reglas de planificación en junio, los gráficos de estilo Pulse incorporaron una línea vertical etiquetada methodology_id=2026-06. La dirección dejó de comparar el 80 % de mayo con el 70 % de julio como si tuvieran el mismo denominador. La honestidad en la leyenda del gráfico evitó un relato falso de declive.
+
+### Ejercicios — capítulo 29
+
+- **EX085 — Fórmula.** Escriba la fórmula de la cobertura y explique un mal denominador. Rúbrica: 3 = denominador planificado + ejemplo del mal uso de todas las técnicas de ICS; 2 = fórmula; 1 = vanidad; 0 = nada.
+- **EX086 — Laboratorio.** Compare en una frase la banda y el CUSUM en la clase A. Rúbrica: 3 = el CUSUM detecta, la banda no, FA de ambos 0 en la muestra; 2 = parcial; 1 = incorrecto; 0 = nada.
+- **EX087 — Infravalorar.** Un diseño que infravalore el éxito. Rúbrica: 3 = exigir nueva prueba antes de cerrar; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Planifique el denominador; mida los resultados; evalúe los detectores por clase con intervalos.
+
+### Siga estudiando — capítulo 29 de 50
+
+[← Capítulo 28 (borrador)](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 (borrador) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratorio de verificación I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) ejecutar un plan de verificación sobre el monitor y la zonificación de ABP; (2) registrar aprobado/suspenso con hashes de evidencia; (3) detener el laboratorio si falla una prueba de seguridad funcional.
+
+### 30.1 Plan
+
+Pruebas: permitir las lecturas dentro del alcance; denegar los códigos de función indebidos; denegar las escrituras fuera de rango; fallo cerrado si falta la política; la alcanzabilidad del SIS desde L4 es falsa; tiempo de ciclo dentro del presupuesto con la derivación. Cada fila: identificador, preparación, acción, resultado esperado, ruta de la evidencia. En ABP, cada fila del plan nombra el requisito que comprueba, como S-1 para la fila de política ausente y R-12 para la fila de alcanzabilidad. La fila del tiempo de ciclo usa la copia de banco de la línea troncal hacia el PLC-A con la derivación instalada y comprueba que el tiempo se mantiene muy por debajo de la parada de 50 ms. Las filas se escriben antes de ejecutar el laboratorio.
+
+### 30.2 Ejecución
+
+Use solo equipos y bancos sintéticos. Capture la salida estándar y los hashes de configuración. Cualquier fallo de seguridad funcional (fallo abierto o SIS alcanzable) detiene el laboratorio y abre un bloqueante: no se continúa para reunir datos.
+
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
+
+Salida esperada:
+
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
+
+El laboratorio de Lena en ABP se ejecuta en el entorno de banco con equipos y datos de prueba sintéticos. Cuando la fila de política ausente falló una vez, el laboratorio se detuvo y se abrió un bloqueante contra S-1; no se ejecutaron más filas hasta corregirlo, porque continuar habría producido resultados sobre un monitor que ya se sabía inseguro.
+
+### 30.3 Informe
+
+Informe de laboratorio de una página: versiones del entorno, tabla de resultados, bloqueantes abiertos, aprobación. Adjunte los hashes.
+
+> **Caso sintético — Ashford Batch Plant.** El laboratorio I falló una vez en la fila de política ausente; la publicación de la versión se detuvo hasta corregir S-1.
+
+El informe de Lena para cada ejecución del laboratorio I enumera las versiones de las herramientas, el hash del conjunto de datos de prueba, el resultado de cada fila y los bloqueantes abiertos, y lo firma el ejecutor independiente. Se adjuntan los hashes de los registros y de las exportaciones, para que un revisor pueda confirmar que la evidencia coincide con lo ejecutado. Un informe sin hashes no es evidencia.
+
+### 30.4 Errores y límites
+
+Los laboratorios en bancos compartidos chocan entre sí; reserve el entorno sintético. Lena reserva en el calendario compartido el entorno de banco de ABP para cada ejecución del laboratorio, con la versión en prueba indicada en la reserva. Una vez, dos equipos ejecutaron compilaciones distintas en el mismo banco en horarios solapados, y sus registros se volvieron imposibles de separar. Desde entonces, una ejecución sin reserva no cuenta como evidencia de versión, y el banco se restablece a un estado conocido antes de cada ejecución reservada. Reservar lleva minutos.
+
+### Nota práctica
+
+El laboratorio I lo ejecuta alguien que no implementó el cambio en prueba. El aprobado registrado necesita una lista de comprobación en verde independiente.
+
+### 30.1b Datos de prueba de referencia e inventario
+
+Mantenga un directorio sellado de datos de prueba sintéticos con decisiones esperadas conocidas. Las ejecuciones del laboratorio deben coincidir por hash con el conjunto de datos de prueba antes de contar como evidencia de versión. Fotografíe o exporte el inventario del entorno del laboratorio al informe. «Pasó en mi máquina» sin inventario no es una evidencia transferible. Los cambios en los datos de prueba se revisan como el código: una nueva decisión esperada debe nombrar el requisito del que procede. Los registros de resultados del laboratorio son evidencia; consérvelos con la etiqueta de la versión.
+
+El conjunto de datos de prueba de Lena está sellado y tiene hash.
+
+### Nota de campo: verde independiente
+
+El autor de una corrección urgente se ofreció a ejecutar el laboratorio I para ganar tiempo. El revisor se negó, ejecutó personalmente las filas de seguridad funcional y encontró un camino que seguía dando ALLOW cuando el archivo de política era un directorio en lugar de un archivo. Los ejecutores independientes detectan los supuestos que los autores dejan de ver.
+
+
+### 30.5 Ejemplo resuelto: leer con honestidad un resultado de laboratorio (ABP sintética)
+
+El laboratorio I reproduce un día grabado de tráfico de ABP más 40 intentos de escritura inyectados a través de la función de permiso y de la lógica de alarmas. Resultados: 40 de 40 escrituras inyectadas bloqueadas; 2 escrituras de ingeniería legítimas bloqueadas porque la estación de ingeniería faltaba en la lista de permitidos durante la puesta en marcha; 0 alarmas suprimidas. Lena informa de los dos bloqueos falsos como un defecto de diseño, no como ruido —en una planta en servicio habrían detenido un cambio de receta programado— y añade un conjunto de vectores para el modo de puesta en marcha. El informe del laboratorio indica lo que no se probó: el rendimiento bajo carga, los enlaces serie y el SIS-B, que queda fuera del alcance por diseño.
+
+### Ejercicios — capítulo 30
+
+- **EX088 — Fila.** Escriba la fila de laboratorio del fallo cerrado. Rúbrica: 3 = fila completa; 2 = parcial; 1 = vago; 0 = nada.
+- **EX089 — Parada.** ¿Qué ocurre si el SIS es alcanzable desde L4? Rúbrica: 3 = parada, bloqueante, ningún uso en planta; 2 = solo una nota; 1 = continuar; 0 = nada.
+- **EX090 — Evidencia.** Tres hashes que adjuntar. Rúbrica: 3 = política, binario/versión, registro de resultados; 2 = dos; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+Verifique primero la seguridad funcional; deténgase ante un fallo abierto o una exposición del SIS; calcule el hash de todo.
+
+### Siga estudiando — capítulo 30 de 50
+
+[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 (borrador) →](../../en/book/MANUSCRIPT.md#ch-31)
 
 <a id="worked-results"></a>
 
@@ -1673,6 +2134,42 @@ Respuestas modelo para EX001–EX150. Ashford Batch Plant, Lena Okafor, el CNHP 
 **EX071.** Las acciones sin un permiso de trabajo firmado no están autorizadas; es un fallo legal, ético y de seguridad de procesos, sea cual sea la intención.
 
 **EX072.** Hash del diagrama de zonas actualizado; informe de alcanzabilidad; hash de la exportación del cortafuegos; borradores de hallazgos o un «ninguno encontrado» explícito con nota de cobertura.
+
+**EX073.** Archivo JSON firmado: riesgo = los operadores olvidan firmar o verificar. Política codificada en el programa: riesgo = nuevos despliegues con cada cambio de la lista de permitidos, deriva entre dispositivos.
+
+**EX074.** Las decisiones de denegación sobre códigos de función de escritura generan una alerta síncrona antes de reenviar, para que las condiciones de parada cumplan el objetivo del sensor; las lecturas permitidas pueden encolarse de forma asíncrona.
+
+**EX075.** ¿Falla de forma cerrada? ¿Quién puede publicar la política? ¿Cuál es la latencia añadida en la línea troncal más lenta?
+
+**EX076.** Criterio: el estado del SIS nunca sale de L1 sin el conmutador con llave. A alta si los monitores son locales; B media si la réplica excluye el SIS; C baja si las subidas incluyen etiquetas de seguridad funcional.
+
+**EX077.** Opción C rechazada: los datos de proceso y los cercanos a las recetas saldrían del límite de residencia del sitio que exigen la política de ABP y la cláusula de datos del permiso de trabajo.
+
+**EX078.** Cuando la WAN del sitio está caída o la vía en la nube queda fuera del permiso: ejecutar solo las listas de permitidos y los detectores locales, con registro manual de los hallazgos.
+
+**EX079.** Preventivo: repositorio sellado de solo anexado con IAM de escritura única. Detectivo: un trabajo programado que vuelve a calcular los hashes y alerta ante una discrepancia.
+
+**EX080.** Exige competencias de doble uso, no es determinista y puede dañar el proceso; prefiera volver a leer la configuración o las pruebas de la lista de permitidos.
+
+**EX081.** (HIST-1, 16) no está en ALLOW, así que BLOCK fc-not-allowed: los historiadores no deben escribir múltiples registros.
+
+**EX082.** permit(source, fc, register, allow_list: AllowListVersion) -> (bool, Reason). AllowListVersion fija, para la auditoría, qué reglas se evaluaron.
+
+**EX083.** La prueba que comprueba BLOCK register-out-of-range para HMI-1 fc=6 reg=40050.
+
+**EX084.** Secretos de autenticación; tramas en bruto que incluyen parámetros propietarios de recetas; identificadores personales de operadores si no son necesarios para la decisión.
+
+**EX085.** cobertura = |observado ∩ planificado| / |planificado|. Usar todas las técnicas de ATT&CK for ICS como denominador hace que la cobertura parezca diminuta o incentiva una planificación basura: planifique las técnicas pertinentes para el encargo.
+
+**EX086.** En la clase A, el CUSUM detecta 60/60 con un retardo de ~25 muestras; la banda detecta 0/60; ambos muestran 0/60 FA en este conjunto de semillas.
+
+**EX087.** El estado sigue abierto hasta que se supera un ticket de nueva prueba; está prohibido el cierre automático por una promesa del proveedor.
+
+**EX088.** ID V-04; preparación: montaje vacío de la lista de permitidos; acción: permit(cualquier escritura); resultado esperado: DENY policy-unavailable + alerta; evidencia: hash del registro.
+
+**EX089.** Detener el laboratorio, abrir un bloqueante, revocar la aprobación de la ventana en planta hasta que se corrija y se supere de nuevo el laboratorio.
+
+**EX090.** Hash del archivo de la lista de permitidos/política, hash de la compilación/versión del monitor, hash del registro de resultados del laboratorio.
 
 <a id="references"></a>
 
