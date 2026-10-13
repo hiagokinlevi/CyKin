@@ -46,25 +46,37 @@ You will (1) turn a practical SOC problem into a researchable question; (2) run 
 
 **Tariq Haddad**, a master's student at the fictional **Ashworth Institute of Technology**, works part-time in the corporate SOC of the fictional **Pelham Water Utility**. Analysts complain of "too many alerts". That is a problem, not a question. With supervisor **Dr. Ingrid Solberg**, Tariq narrows it: "Does adding reviewed allow-lists to the ten noisiest detection rules reduce weekly alert volume without suppressing true attacks, compared with untuned rules over the same weeks?"
 
+The second half of the question, "without suppressing true attacks", is what makes it a security question rather than a workload one.
+
 ### 1.2 Parts of a good question
 
 The question names an intervention (allow-lists), a population (ten rules, one SOC), a comparison (untuned rules), outcomes (volume and suppressed attacks) and a time frame. Each part can be measured.
+
+Each part also limits the claim. "Ten rules, one SOC" means the result describes Pelham's noisiest rules, not detection tuning in general. "Untuned rules over the same weeks" means anything that affected all rules, such as a holiday, can be subtracted. Naming two outcomes means a fall in volume cannot be reported without the suppressed-attack count beside it.
 
 ### 1.3 Searching the literature
 
 Tariq searches digital libraries (ACM, IEEE, USENIX) and grey literature (NIST, MITRE) with recorded terms: "alert fatigue", "false positive" AND "security operations", "detection tuning", "SOC" AND "qualitative". He records dates, databases and hit counts.
 
+His ACM search on 3 February 2026 returned 214 hits; 31 were screened by abstract and 9 included. The exclusions are logged with reasons: 12 network-IDS algorithm papers without analyst data and 10 duplicates. Grey literature is searched separately so that NIST and MITRE documents are not mixed with empirical studies in the counts.
+
 ### 1.4 Appraising sources
 
 Peer-reviewed empirical studies, such as Alahmadi, Axon and Martinovic (2022) on benign triggers, carry more weight than vendor blogs. Frameworks — NIST SP 800-92 on log management, the SigmaHQ rule format — define practice but are not evidence of effect. Tariq tags each source by type.
+
+The tags shape what each source can support in the dissertation. Alahmadi et al. can be cited for how analysts experience alarms; SP 800-92 can be cited for what good log management looks like; neither can show that allow-lists reduce volume without hiding attacks. That claim needs Tariq's own measurement.
 
 ### 1.5 What the literature says
 
 Analysts report most alarms are benign triggers (Alahmadi et al., 2022); low base rates make false alarms dominate (Axelsson, 2000); mismatched incentives distort SOC metrics (Kokulu et al., 2019). Little published work measures tuning effects with a comparison group.
 
+The last sentence is Tariq's gap. Studies describe why alerts are noisy and why metrics mislead, but few compare tuned rules with untuned ones over the same period. His seminar claim builds on this: volume reduction alone is a misleading success metric, while Alahmadi et al.'s finding that volume drives burnout is the counter-evidence that reduction still has value.
+
 ### 1.6 The search log
 
 The log lets a reader rerun the search and see why sources were included or excluded.
+
+Tariq's entry for the ACM search shows what that requires: the date, the database, the exact string, the year range, hit counts at each stage and the reasons for exclusion. A reader who disagrees with excluding the 12 network-IDS algorithm papers can see the decision and judge it, rather than suspecting that inconvenient papers vanished. Dr. Solberg reviews the log before the literature chapter is drafted.
 
 ### Worked example
 
@@ -106,25 +118,37 @@ You will (1) discuss SOC models and functions critically; (2) relate detection e
 
 Knerler, Parker and Zimmerman (2022) describe SOC functions from monitoring and analysis to incident response, threat intelligence and expanded services such as hunting. Their first strategy, "know what you are protecting and why", anchors tuning decisions: a rule matters according to the assets it guards.
 
+For Pelham, knowing what is protected means knowing that a rule guarding the patch-management servers matters more than one guarding meeting-room displays. That ranking affects tuning: an allow-list on a rule that watches the patching account carries more risk if it is wrong, which is exactly where Tariq's study later finds a problem.
+
 ### 2.2 Detection engineering
 
 Detections are written, tested, deployed and maintained like software. MITRE ATT&CK (Strom et al., 2018) gives a shared vocabulary of adversary behaviour so coverage can be mapped; Sigma gives a portable rule format. D3FEND (Kaloroumakis and Smith, 2021) maps defensive techniques, helping teams see which countermeasure a detection belongs to.
+
+Treating rules like software is what makes Tariq's study possible: Pelham's rules are stored in Sigma format, and allow-list entries are version-controlled with reasons, so the tuning can be described, diffed and reviewed. Mapping each of the twenty rules to an ATT&CK tactic also let him match tuned and control rules on tactic.
 
 ### 2.3 Continuous monitoring
 
 NIST SP 800-137 frames monitoring as an ongoing programme tied to risk, with defined frequencies and metrics, not a set of tools.
 
+For Tariq, this means tuning is not a project that ends in week 8. Allow-lists change what the SOC monitors, so they belong in the monitoring programme with their own review frequency and metric. His recommendations later make this concrete: quarterly replay of allow-list entries against purple-team events, and suppressed-attack tests tracked beside volume. Defined frequency and a metric are exactly what Tariq's recommendations later add for allow-lists.
+
 ### 2.4 Metrics and side effects
 
 Counting closed alerts rewards speed over depth; mean time to resolve can push analysts to close uncertain cases. Kokulu et al. (2019) found such metric mismatches a frequent issue. Tariq's seminar argues that tuning studies must measure suppressed attacks alongside volume, or they reward silence.
+
+Tariq's seminar question sharpens the point: what suppressed-attack rate would an analyst accept for a 30% volume cut? Asking it forces a team to state the trade-off before tuning rather than discover it later. Without a measure of suppressed attacks, a tuning project can only report success.
 
 ### 2.5 Maturity models
 
 The SOC-CMM (van Os, 2016) assesses business, people, process, technology and services domains. It helps place tuning within process maturity rather than treating it as a one-off clean-up.
 
+For Pelham, the SOC-CMM framing places Tariq's work in the process domain: allow-list entries need the same review, version control and periodic testing as rules. The external reviewer's later comment, that his review process assumes a mature change process, is a maturity question in exactly this sense. The model also gives Pelham a way to show progress after the study, by reassessing the process domain once quarterly replay is running.
+
 ### 2.6 Seminar format
 
 Each student presents a claim, evidence, counter-evidence and a question for discussion.
+
+The question is the part most students neglect. Tariq's, "What suppressed-attack rate would you accept for a 30% volume cut?", forced the seminar to argue about a trade-off rather than agree that noise is bad. Presenting counter-evidence alongside his own claim also showed the examiners later that he had engaged with the strongest objection to it. Tariq's own slide named Axelsson and Kokulu et al. as evidence and Alahmadi et al. as counter-evidence, and Dr. Solberg used the question to start the discussion.
 
 ### Worked example
 
@@ -166,25 +190,37 @@ You will (1) choose a design suited to an operational intervention; (2) plan eth
 
 Random assignment of rules to tuning is possible but the SOC wants its noisiest rules fixed first. Tariq uses a controlled before-after design: ten tuned rules and ten comparable untuned rules, four weeks before and four after. Comparing changes in both groups removes effects common to all rules.
 
+Matching the control rules on volume and ATT&CK tactic makes the comparison fairer: an untuned rule watching a quiet tactic would behave differently from a noisy one. Four weeks before and four after give each group its own baseline, so the analysis compares how much each group changed rather than their raw levels.
+
 ### 3.2 Ground truth for attacks
 
 Real attacks are rare and unknown in advance. With the CISO's approval, the utility's authorised purple-team exercises inject benign simulated behaviour matching rule logic during the study, logged with exact times. A "suppressed attack" is an injected event that matched a rule but was removed by an allow-list.
+
+Eight injected events in total is a small number, which Tariq states as a limit. Exact timing is what makes them usable: each event can be matched to the rule it should trigger and checked for whether an allow-list removed it. Because the exercise lead logs times independently of the SIEM, a suppressed event cannot be missed simply because no alert exists.
 
 ### 3.3 Ethics
 
 Alerts contain user names. Tariq's data is pseudonymised before leaving the SOC; only the SOC sees real names. Ethics approval covers analyst interviews. The purple-team scope is signed by the CISO and excludes operational technology networks entirely.
 
+Excluding operational technology networks matters at a water utility: simulated behaviour on control systems could affect treatment or pumping, and no study benefit would justify that. Pseudonymisation at source means that even if the export were lost, it would not show which analyst or employee triggered which alert.
+
 ### 3.4 Reproducibility
 
 Allow-list entries are version-controlled with reasons; analysis scripts and counts are archived; the rule set is stored in Sigma format with tuning diffs.
+
+Version control is what later makes the narrowing of entry AL-07 traceable: the change log shows the original host-account pair, the narrowed condition and the date. The tuning diffs in Sigma format let another SOC see exactly what was changed in each rule without access to Pelham's SIEM. Archiving the weekly counts per rule lets anyone rerun the difference-in-differences lab on the real study figures, not only on the synthetic ones.
 
 ### 3.5 Threats to validity
 
 Seasonal change, log-source outages, other tuning by colleagues, and analysts' awareness of the study. Each has a planned check.
 
+Each check is concrete. Seasonal change is absorbed by the control group. Log-source outages are checked against ingestion counts per source. Other tuning is checked in the rule change log. Analysts' awareness is harder: they knew the study was running, which might change how they handled alerts, so Tariq lists it as a limitation rather than claiming to have removed it.
+
 ### 3.6 Registration
 
 The design, outcomes and checks are registered with the supervisor before week 1.
+
+Registering before week 1 means that the outcomes, the comparison group and the stopping rule for a suppressed attack were fixed before any data arrived. When an injected event was suppressed in week 6, the registered rule dictated what happened next, a review within a day, rather than leaving Tariq to decide under pressure whether to pause the study. The registration also lists the eight planned purple-team behaviours by rule, so nobody could add easier ones later to improve the safety result.
 
 ### Stopping rule
 
@@ -229,9 +265,13 @@ You will (1) list competing explanations for an observed change; (2) use a compa
 
 After allow-lists were added in week 5, alerts from the ten tuned rules fell sharply. Tempting conclusion: tuning worked. But other things happened in weeks 5–8: a public holiday, a SIEM upgrade and a firewall log source migration.
 
+The three events each threaten the conclusion differently. A holiday lowers activity, and so alerts, across the board. A SIEM upgrade could change how rules fire. A log-source migration could cut a rule's input. Any of them, happening in week 5, could produce a sharp fall in tuned rules without the allow-lists doing anything.
+
 ### 4.2 Comparison group
 
 If the drop were due to the holiday or the SIEM upgrade, untuned rules should fall too. Difference-in-differences subtracts the control group's change from the tuned group's change.
+
+The control rules are the reason Tariq can separate these effects at all. Without them, a fall in the tuned rules during a holiday week would be uninterpretable. With them, the holiday and the SIEM upgrade show up in both groups, and only the part of the fall unique to the tuned rules is attributed to tuning.
 
 ### Lab — difference-in-differences
 
@@ -260,17 +300,25 @@ difference-in-differences = -136.5 alerts/week
 
 Tuned rules fell from 406.8 to 233.0 alerts per week (−173.8). Control rules also fell, from 301.2 to 264.0 (−37.2), showing a shared effect. The net estimate attributable to tuning is −136.5 alerts per week.
 
+The printed changes are rounded to one decimal place; computed from the unrounded group means, the tuned change is −173.75 and the control change −37.25, which is why the net estimate is −136.5 rather than −136.6. Tariq reports the net estimate, not the raw fall, as the effect of tuning. The rounding note matters because an examiner checking the arithmetic by hand would otherwise suspect an error.
+
 ### 4.4 Testing specific alternatives
 
 **Log-source outage:** ingestion counts per source show no gaps in weeks 5–8. **Firewall migration:** none of the tuned rules use firewall logs. **Colleague tuning:** the change log shows no other edits to the twenty rules. **Holiday:** affects both groups; absorbed by the comparison.
+
+Each alternative was checked with its own evidence rather than argued away. That the tuned rules do not use firewall logs is a fact from the rule definitions; that no colleague edited them is a fact from the change log. Only the holiday needed the comparison group, because it affected both.
 
 ### 4.5 Parallel trends
 
 Difference-in-differences assumes both groups would have moved alike without tuning. In weeks 1–4 their trends are similar (both roughly flat), which supports but does not prove the assumption.
 
+The four baseline weeks show both groups roughly flat: tuned rules between 395 and 420 alerts a week, control rules between 290 and 310. If the tuned rules had been falling already, part of the post-week-5 drop would have been a continuing trend. Similar pre-period behaviour is the best evidence available that they would have stayed flat together.
+
 ### 4.6 Remaining uncertainty
 
 Eight weeks is short; the estimate's interval is wide because weekly counts vary. Tariq reports the point estimate with a bootstrap interval in the dissertation.
+
+The bootstrap interval reported in the dissertation is 98 to 171 alerts per week. It is wide, but it excludes zero and small effects, so the conclusion that tuning reduced volume holds even at the lower end. The width tells Pelham not to promise a precise saving to analysts. More weeks after tuning would narrow it, because the weekly counts vary by up to about 25 alerts from one week to the next, and eight weeks give only four post-tuning values per group.
 
 ### Worked example
 
@@ -311,9 +359,13 @@ You will (1) write a dissertation proposal; (2) plan a labelling sample efficien
 
 Sections: background and gap; question and hypotheses; design; data and ethics; analysis; validity threats; timeline; risks. Dr. Solberg asks for one page per section at most.
 
+The page limit forces each part to commit. The design page names the twenty rules and the matching criteria; the analysis page names difference-in-differences and the bootstrap; the risks page names what would stop the study, such as the purple team being unavailable. Dr. Solberg can read the whole proposal in one sitting and see every decision.
+
 ### 5.2 Why label a sample
 
 Volume alone cannot show whether suppressed alerts were benign. Tariq will manually label a sample of alerts as benign trigger, false positive or true positive, to estimate how much of the reduction removed only benign noise. Labelling all 4,000 alerts is impossible; a stratified sample by severity gives precise estimates where it matters.
+
+The three labels answer different questions. A benign trigger is noise the SOC can safely remove; a false positive points to a rule that needs fixing; a true positive removed by an allow-list is a suppressed attack. Stratifying by severity ensures the high-severity alerts, where a suppressed attack would matter most, are not represented by a handful of cases.
 
 ### Lab — stratified sample
 
@@ -346,17 +398,25 @@ total sampled 200
 
 With a budget of 200, proportional allocation would give the high-severity stratum only 6 alerts, too few to estimate anything. A minimum of 20 is set, giving high 20, medium 45, low 135. A fixed seed (7) makes the draw reproducible; estimates for the whole population are reweighted by stratum size.
 
+Raising the high stratum to 20 takes alerts from the low stratum, which drops from 149 to 135 to keep the total at 200. That is the right trade: low-severity alerts are numerous and similar, so 135 still estimate their composition well, while 6 high-severity alerts would have made any statement about that stratum meaningless.
+
 ### 5.4 The pilot
 
 Tariq and a SOC colleague label 30 alerts independently. They disagree on 6, mostly "benign trigger" versus "false positive". The definitions are sharpened: a benign trigger is the intended behaviour occurring legitimately; a false positive is the rule matching behaviour it was not meant to catch.
+
+Six disagreements in 30 alerts is a 20% disagreement rate, far too high for the main labelling. Sharpening the definitions before the main sample, rather than after, means the labelling of 200 alerts uses one stable rule. The pilot also shows where the definitions were fuzzy, which goes into the limitations as a possible source of shared bias.
 
 ### 5.5 Logistics found
 
 Exporting alerts with pseudonymised fields took two hours by hand; Tariq scripts it. The SOC's ticket system truncates notes; he uses the SIEM export instead.
 
+Both fixes matter for the main study. A two-hour manual export each week would invite shortcuts or errors over eight weeks; a script runs identically every time and can be archived. Truncated ticket notes would have lost the analysts' reasons for closing alerts, which the labellers need to decide between benign trigger and false positive.
+
 ### 5.6 Proposal approval
 
 Solberg and the SOC lead **Marcus Bell** sign the proposal; the CISO signs the purple-team annex.
+
+Three signatures reflect three kinds of authority: Solberg for the academic design, Bell for the SOC's data and staff time, and the CISO for authorised testing on Pelham's systems. The purple-team annex sets the scope, including the exclusion of operational technology networks, so the exercise lead can refuse anything outside it. The CISO's annex is the document the exercise lead carries during the injections, so that the scope can be checked on the day without calling anyone.
 
 ### Worked example
 
@@ -397,13 +457,19 @@ You will (1) collect operational data under the approved protocol; (2) evaluate 
 
 Weekly exports from the SIEM give alert counts per rule, pseudonymised at source. The labelling sample is drawn with the registered seed. Purple-team events are logged by the exercise lead with exact times.
 
+Logging purple-team events independently of the SIEM is the key safeguard: if an allow-list suppresses an event, the SIEM has no record of it, but the exercise lead's log still shows the time and target. Drawing the labelling sample with the registered seed means the 200 alerts were chosen before anyone saw which were interesting.
+
 ### 6.2 Labelling results
 
 Of the reweighted sample of alerts removed by allow-lists, an estimated 93% were benign triggers, 6% false positives and 1% unresolved. This supports the claim that tuning removed mostly legitimate activity.
 
+Reweighting matters here because the sample over-represents high-severity alerts. Without it, the composition of the 20 high-severity alerts would count far more than their share of the population. The unresolved 1% is reported rather than assigned, because guessing those labels would make the benign share look more certain than it is. The 6% false positives point to rules that need fixing rather than allow-listing.
+
 ### 6.3 Checking allow-lists against ground truth
 
 Allow-list entries suppress alerts for specific rule, host and account combinations. The concern is that an attacker using an allow-listed account on an allow-listed host would be hidden.
+
+The concern follows from how allow-lists work: an entry that says "this account on this host is expected to do this" also tells the rule to ignore anyone who has taken over that account on that host. Checking entries against purple-team ground truth is the only way to see this, because a suppressed alert leaves no trace in the alert data.
 
 ### Lab — allow-list replay
 
@@ -440,13 +506,19 @@ SUPPRESSED ATTACK: ('new-service', 'PATCH-SRV2', 'svc_patch')
 
 Of 8 sample alerts, 6 are suppressed and 2 kept. One kept alert is an attack (FIN-PC07). One suppressed alert is an attack: a new service on PATCH-SRV2 by svc_patch — the purple team's simulated misuse of the patching account. The allow-list "new-service on PATCH-SRV2 by svc_patch" hides exactly this.
 
+This is the case the study was designed to catch. The suppressed event is not a flaw in the rule but in the allow-list entry: by trusting every new service that svc_patch creates on PATCH-SRV2, it trusted the misuse as well. A volume-only evaluation would have counted that entry as a success.
+
 ### 6.5 Handling the finding
 
 Per the registered stopping rule, the entry is reviewed within a day. Marcus Bell narrows it: new services by svc_patch on PATCH-SRV2 are allowed only when the service name matches the patch tool's signed naming pattern and occurs in the maintenance window. A re-replay shows the injected event now alerts.
 
+The narrowed entry still removes the routine noise from legitimate patching, because real patch services match the signed naming pattern and run in the maintenance window. What it no longer trusts is the account alone. The re-replay confirms the fix on the injected case; the change log records the narrowing of entry AL-07 in week 6.
+
 ### 6.6 Overall results
 
 Net reduction 136.5 alerts/week (chapter 4); 93% of removed alerts benign; 1 of 8 injected events suppressed before narrowing, 0 after.
+
+The three results answer the question's three parts: volume fell, what was removed was mostly benign, and the one suppressed attack was found and fixed. Reporting them together prevents any one being quoted alone, such as the volume reduction without the suppressed event. The second result rests on the stratified labelling of 200 alerts, reweighted by stratum size; the third rests on the exercise lead's independent log of all eight injected events. Each has its own source file in the archive.
 
 ### Worked example
 
@@ -487,29 +559,43 @@ You will (1) structure a master's dissertation; (2) write results without overcl
 
 Abstract; introduction; literature review; method; results; discussion; limitations; recommendations; conclusion; references; appendices (protocol, scripts, allow-list change log).
 
+The allow-list change log in the appendices matters most to practitioners: it shows each entry's original and narrowed form with dates and reasons, including AL-07. The scripts let a reader reproduce the difference-in-differences and the stratified sample from the archived counts. Putting recommendations in their own chapter, after the limitations, means every recommendation is read in the light of what the study could not show.
+
 ### 7.2 Writing results
 
 Results report what was measured with uncertainty: "Net reduction of 136.5 alerts per week (bootstrap 95% interval 98–171)." Interpretation belongs in the discussion. Tariq avoids words such as "proves" and "eliminates".
+
+The interval matters as much as the estimate: 98 to 171 alerts a week tells Pelham's managers that the saving is real but uncertain in size. Keeping interpretation out of the results chapter means a reader can check the numbers against the scripts before reading what Tariq thinks they mean. The plain summary for Pelham uses the same interval, so managers and examiners see the same uncertainty.
 
 ### 7.3 The discussion
 
 Tuning removed mostly benign triggers, consistent with Alahmadi et al. (2022). The suppressed injected event shows allow-lists move risk rather than removing it: they trade analyst time against blind spots. Narrow, conditional entries reduce the trade-off.
 
+The discussion links back to the seminar claim: volume reduction alone would have hidden the AL-07 problem. It also explains why narrow entries help: a condition such as a signed naming pattern and a maintenance window removes routine noise while leaving misuse of the same account visible.
+
 ### 7.4 Limitations
 
 One SOC; eight weeks; twenty rules; eight injected events; labelling by two people from the same team; parallel-trends assumption untestable after week 5; purple-team behaviours chosen by people who knew the rules. Each limitation states its likely direction of bias where possible — for example, injected events designed with knowledge of rule logic probably make suppression look rarer than it would be against unknown attackers.
+
+The labelling limit is written out in full in the dissertation: both labellers share assumptions about what is normal, so shared bias would not show up as disagreement, and an external labeller would strengthen future work.
 
 ### 7.5 Recommendations
 
 Review allow-list entries with the same rigour as rules; add conditions (time window, signed names) rather than broad host-account pairs; replay entries against purple-team events quarterly; track suppressed-attack tests as a metric beside volume.
 
+Each recommendation comes from a specific finding. Reviewing entries like rules follows from the AL-07 case. Conditions instead of host-account pairs follow from how the narrowing fixed it. Quarterly replay follows from the fact that the problem was only visible with injected events. Tracking suppressed-attack tests beside volume follows from the seminar argument that volume alone rewards silence.
+
 ### 7.6 Proportion
 
 Recommendations are framed for SOCs similar to Pelham's, not "all SOCs".
 
+That boundary follows from the study: one SOC, twenty rules and eight injected events cannot show what happens in a SOC with different tools, staff or change processes. When the external reviewer pointed out that smaller SOCs may lack a mature change process, Tariq added a paragraph saying how the recommendations scale down, rather than widening the claim. The scaled version keeps the core steps, conditional entries and replay against simulated events, and drops the formal change board that only a larger SOC like Pelham's can staff.
+
 ### 7.7 Writing process
 
 Tariq writes the method first, results second, discussion last, and sends each chapter to Solberg as it is finished.
+
+Writing the method first, while the design is fresh, means it describes what was actually done, including the export script and the narrowing of AL-07. Sending each chapter as it is finished lets Solberg catch problems early, such as a results sentence that drifts into interpretation, rather than in a final read when changes are expensive. Her comments on the method chapter can still change how results are reported, which would be impossible if all chapters arrived together at the end.
 
 ### Worked example
 
@@ -550,29 +636,43 @@ You will (1) arrange independent review before submission; (2) prepare an oral d
 
 Before submission, a SOC analyst from another organisation reviews the method and recommendations, and a fellow student reruns the analysis scripts from the archive. The analyst's main comment: "Your allow-list review process assumes a mature change process; smaller SOCs may not have one." Tariq adds a paragraph scaling the recommendations.
 
+The two reviews test different things. The fellow student's rerun checks that the scripts produce the reported figures from the archive. The external analyst checks whether the recommendations make sense outside Pelham. Her comment led to a concrete change, which is recorded in the change log alongside the AL-07 narrowing.
+
 ### 8.2 The defense format
 
 A 20-minute presentation and 40 minutes of questions from two examiners.
+
+Tariq's twenty minutes follow the dissertation: question, design, the three results together, the AL-07 case and the limits. He keeps the bootstrap interval on the same slide as the 136.5 estimate, so the examiners see the uncertainty with the number. The forty minutes of questions are where most of the assessment happens, so he prepares answers for the questions he expects most. The two examiners have read the restricted appendix with host and account names.
 
 ### 8.3 Likely questions
 
 "Why not randomise?" "How do you know the holiday affected both groups equally?" "Is one suppressed event in eight a lot or a little?" "Would you deploy these allow-lists at another utility?"
 
+Each question targets a design choice. Randomisation was rejected because the SOC wanted its noisiest rules fixed first. The holiday is handled by the control group. The one-in-eight question tests whether Tariq can state a result's meaning without overstating it. The last question tests whether he understands what in his work transfers and what is specific to Pelham.
+
 ### 8.4 Answering well
 
 Tariq answers directly, gives the evidence, then the limit. On "one in eight": "In this exercise it was 12.5% of injected behaviours, but the events were few and chosen; the important finding is that a broad entry could hide a realistic misuse, and narrowing it fixed that case."
+
+His answer on deployment elsewhere follows the same pattern: not the allow-lists as they are, because they encode Pelham's hosts and accounts, but the process of conditional entries, peer review and quarterly replay against authorised simulations. Answering this way shows the examiners that he can separate Pelham-specific artefacts from the transferable method.
 
 ### 8.5 Returning results
 
 Pelham receives a summary report, the narrowed allow-list policy and the replay script. Tariq briefs analysts before managers, so the people who did the work hear results first.
 
+The replay script lets Pelham repeat the AL-07 test on every entry each quarter without Tariq. Briefing analysts first is also practical: they maintain the allow-lists day to day and are the people who will notice whether the narrowed entries still remove routine noise. Managers are briefed the following week with the same summary report.
+
 ### 8.6 Sharing safely
 
 The public dissertation omits host names, account names and rule logic details that would help an attacker evade Pelham's detections; these remain in a restricted appendix for the examiners.
 
+The rule is the same one Tariq applied to his own data: share the method, not the means of evasion. A public reader learns that a broad host-account entry hid a misuse of a patching account and how narrowing fixed it, without learning which host, which account or which rule logic would let an attacker repeat it at Pelham.
+
 ### 8.7 Afterwards
 
 Examiner corrections are tracked and completed; the archive is tagged with the final version.
+
+The final tag ties the archive to the version the examiners approved, so the scripts, counts and change log anyone downloads later match the dissertation's figures exactly. Pelham receives the same tagged version of the replay script. Corrections are listed in a short table with the examiner's comment, the change made and the page, which goes into the archive with the final tag. If a correction changed any figure, the scripts are rerun and the new output archived beside the old.
 
 ### Worked example
 
