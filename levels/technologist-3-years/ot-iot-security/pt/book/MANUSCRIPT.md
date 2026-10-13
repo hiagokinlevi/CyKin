@@ -77,7 +77,7 @@ Um CLP roda um único programa de controle num laço fixo e pode ficar ligado po
 
 ### 1.3 Disponibilidade primeiro
 
-Se um PC do escritório reinicia, alguém perde dez minutos. Se o PLC-R1 para, a pressão de sucção dos compressores deriva e a câmara de congelados aquece cerca de um grau a cada 15–20 minutos; depois de algumas horas, um estoque que vale centenas de milhares pode ser condenado. Essa consequência molda todas as decisões posteriores: quando aplicar patches, como testar, quem precisa estar presente. Na NCS, é por isso que uma correção de firmware do PLC-R1 espera uma janela de manutenção com a empresa de refrigeração presente, e por isso que a mudança de firewall de Priya, mais adiante, no Capítulo 27, tem uma reversão ensaiada de dois minutos: um fluxo ausente que cegue a HMI-C por uma hora importa mais que a própria mudança.
+Se um PC do escritório reinicia, alguém perde dez minutos. Se o PLC-R1 para, a pressão de sucção dos compressores deriva e a câmara de congelados aquece cerca de um grau a cada 15–20 minutos; depois de algumas horas, um estoque que vale centenas de milhares pode ser condenado. Essa consequência molda todas as decisões posteriores: quando aplicar patches, como testar, quem precisa estar presente. Na NCS, é por isso que uma correção de firmware do PLC-R1 espera uma janela de manutenção com a empresa de refrigeração presente, e por isso que a mudança de firewall de Priya, mais adiante, no Capítulo 27, tem uma reversão ensaiada de dois minutos: um fluxo ausente que deixe o historiador sem registrar por uma hora importa mais que a própria mudança.
 
 ### Exemplo resolvido (NCS sintética)
 
@@ -181,7 +181,7 @@ Quando um valor está ausente, diga isso na saída. `dict.get(key)` devolve `Non
 
 ### 3.4 Saída legível
 
-Alinhe as colunas com larguras de f-string (`f"{name:9}"`) e coloque a decisão no fim de cada linha. Um revisor pode então percorrer a última coluna em busca de qualquer coisa que não seja "match". Na saída do Capítulo 11, a última coluna diz match, match, only-on-network, only-in-docs e VERSION-CONFLICT, de modo que um gerente de instalações encontra as três linhas que pedem ação sem ler as strings de firmware. Os nomes dos dispositivos são preenchidos até nove caracteres, o que mantém alinhadas as colunas de documentação e de rede mesmo para a CAM-DOCK. Um revisor que veja um estado fora dos cinco valores documentados sabe que o script encontrou uma entrada que não entende.
+Alinhe as colunas com larguras de f-string (`f"{name:9}"`) e coloque a decisão no fim de cada linha. Um revisor pode então percorrer a última coluna em busca de qualquer coisa que não seja "match". Na saída do Capítulo 11, a última coluna diz only-on-network, match, only-in-docs, match e VERSION-CONFLICT, de modo que um gerente de instalações encontra as três linhas que pedem ação sem ler as strings de firmware. Os nomes dos dispositivos são preenchidos até nove caracteres, o que mantém alinhadas as colunas de documentação e de rede mesmo para a CAM-DOCK. Um revisor que veja um estado fora dos cinco valores documentados sabe que o script encontrou uma entrada que não entende.
 
 ### Exemplo resolvido (NCS sintética)
 
@@ -596,7 +596,7 @@ Você vai (1) construir um inventário combinando documentação com observaçã
 A documentação da empresa de refrigeração lista o que foi instalado; a observação passiva do tráfego de rede mostra o que está conversando agora. A documentação deixa escapar acréscimos posteriores; a observação deixa escapar dispositivos silenciosos ou desligados. O NIST SP 800-82r3 recomenda combinar métodos em vez de depender de varredura ativa, que pode perturbar dispositivos frágeis.
 
 ```python
-"""Lab 11: merge two synthetic NCSW asset lists and flag conflicts (no scanning)."""
+"""Lab 11: merge two synthetic NCS asset lists and flag conflicts (no scanning)."""
 eng = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.4", "HMI-C": "win10-ltsc", "GW-LOG": "fw 1.9"}
 seen = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.1", "GW-LOG": "fw 1.9", "CAM-DOCK": "fw ?"}
 for a in sorted(set(eng) | set(seen)):

@@ -56,7 +56,7 @@ Priya's notebook records the class in its type column, and the three classes lea
 
 If an office PC reboots, someone loses ten minutes. If PLC-R1 stops, compressor suction pressure drifts and the freezer warms by roughly a degree every 15–20 minutes; after a few hours stock worth hundreds of thousands may be condemned. That consequence shapes every later decision: when to patch, how to test, who must be present.
 
-At NCS this is why a firmware fix for PLC-R1 waits for a maintenance window with the refrigeration contractor present, and why Priya's later firewall change in Chapter 27 has a two-minute rehearsed rollback: a missing flow that blinds HMI-C for an hour matters more than the change itself.
+At NCS this is why a firmware fix for PLC-R1 waits for a maintenance window with the refrigeration contractor present, and why Priya's later firewall change in Chapter 27 has a two-minute rehearsed rollback: a missing flow that stops the historian recording for an hour matters more than the change itself.
 
 ### Worked example (synthetic NCS)
 
@@ -168,7 +168,7 @@ Priya's first draft did exactly that: it looped over matches only, so CAM-DOCK, 
 
 Align columns with f-string widths (`f"{name:9}"`) and put the decision at the end of each line. A reviewer can then scan the last column for anything that is not "match".
 
-In the Chapter 11 output the last column reads match, match, only-on-network, only-in-docs and VERSION-CONFLICT, so a facilities manager can find the three lines that need action without reading the firmware strings. The device names are padded to nine characters, which keeps the documentation and network columns aligned even for CAM-DOCK. A reviewer who sees a status that is not one of the five documented values knows the script has met an input it does not understand.
+In the Chapter 11 output the last column reads only-on-network, match, only-in-docs, match and VERSION-CONFLICT, so a facilities manager can find the three lines that need action without reading the firmware strings. The device names are padded to nine characters, which keeps the documentation and network columns aligned even for CAM-DOCK. A reviewer who sees a status that is not one of the five documented values knows the script has met an input it does not understand.
 
 ### Worked example (synthetic NCS)
 
@@ -619,7 +619,7 @@ You will (1) build an inventory by combining documentation with passive observat
 Documentation from the refrigeration contractor lists what was installed; passive observation of network traffic shows what is talking now. Documentation misses later additions; observation misses devices that are quiet or switched off. NIST SP 800-82r3 recommends combining methods rather than relying on active scanning, which can disturb fragile devices.
 
 ```python
-"""Lab 11: merge two synthetic NCSW asset lists and flag conflicts (no scanning)."""
+"""Lab 11: merge two synthetic NCS asset lists and flag conflicts (no scanning)."""
 eng = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.4", "HMI-C": "win10-ltsc", "GW-LOG": "fw 1.9"}
 seen = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.1", "GW-LOG": "fw 1.9", "CAM-DOCK": "fw ?"}
 for a in sorted(set(eng) | set(seen)):
