@@ -1774,7 +1774,7 @@ Congele os métodos durante uma janela do mesmo modo que congela os condutos: m�
 
 Os métodos silenciosos (decodificação somente de escuta, exportação de configuração) cabem em mais janelas. Os métodos ruidosos precisam de limites de taxa mais apertados e, muitas vezes, de horários fora do pico. Codifique as dependências entre métodos no plano, para que as revisões não sejam agendadas contra uma lista de ativos vazia. O plano de Lena lista, para cada método, os métodos anteriores de cujos artefatos ele precisa.
 
-Fichas de método sem o campo "ruidoso" são o motivo de as janelas de lote da manhã ficarem congestionadas. Os métodos ruidosos são reservados contra o cronograma de lotes com uma semana de antecedência, para que o líder de turno saiba quando esperar tráfego extra.
+Fichas de método sem o campo "ruidoso" são o motivo de as janelas de lote da manhã ficarem congestionadas. Os métodos ruidosos são reservados contra o cronograma de lotes com uma semana de antecedência, fora da fase de carga do R-101, e cada reserva nomeia o tronco e a sua parada por tempo de ciclo em 50 ms.
 
 Lena agenda os métodos silenciosos primeiro.
 
@@ -2004,7 +2004,7 @@ Programe um dia trimestral de saúde dos controles: quebre cada controle prevent
 
 Todo controle tem um dono que recebe os seus alertas e uma data de revisão. Registre quando um operador usa a quebra de vidro para pular a dupla aprovação. Uma quebra de vidro sem detecção é só um controle único escondido. A revisão semanal dos eventos de quebra de vidro faz parte do projeto do controle, e cada revisão nomeia quem usou a quebra de vidro e o motivo informado.
 
-A entrada de cada controle no registro também declara como ele falha: se uma lista de permissões quebrada bloqueia ou deixa passar o tráfego decide qual alerta detectivo precisa disparar primeiro e quem é acionado quando ele dispara.
+A entrada de cada controle no registro também declara como ele falha: se uma lista de permissões quebrada bloqueia ou deixa passar o tráfego decide qual alerta detectivo precisa disparar primeiro; no tronco do PLC-A, é o alerta de política ausente, que aciona o líder da janela.
 
 ### Nota de campo — dia de saúde dos controles
 
@@ -2096,7 +2096,7 @@ Faça fuzzing do predicado com estações, códigos e UTF-8 quebrado aleatórios
 
 ### 28.1b Catálogo de motivos e fuzzing
 
-O catálogo lista, para cada código de motivo, a cláusula que o emite e o teste que o fixa: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. As entradas de fuzzing que um dia encontraram um defeito entram numa lista de regressão reproduzida em cada versão, com a semente que as produziu.
+O catálogo lista, para cada código de motivo, a cláusula que o emite e o teste que o fixa: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. As entradas de fuzzing que um dia encontraram um defeito entram numa lista de regressão reproduzida em cada versão, incluindo o nome de estação em UTF-8 que um dia derrubou o decodificador.
 
 As listas de verificação da revisão de código para mudanças no predicado incluem: nova cláusula, novos testes, documentação dos códigos de motivo, caso de fuzzing, falha fechada em erro de parsing. Revisores que pulam a lista estão fazendo revisão social, não revisão de segurança.
 
@@ -2345,7 +2345,7 @@ Na ABP, os ids das constatações vêm do cliente na criação e são reutilizad
 
 Rejeite campos desconhecidos e nomes proibidos; force a severidade por um enum. Os erros de validação retornam códigos legíveis por máquina.
 
-O repositório de constatações de Lena na ABP rejeita qualquer registro com um campo desconhecido ou um nome proibido, como payload ou password, e retorna um código dizendo qual campo falhou. A severidade aceita apenas os valores acordados. O mesmo validador roda para as criações interativas e para as importações em massa, então nenhum caminho de entrada é mais confiável do que outro e toda rejeição é relatada no mesmo formato. Os erros são documentados com exemplos.
+O repositório de constatações de Lena na ABP rejeita qualquer registro com um campo desconhecido ou um nome proibido, como payload ou password, e retorna um código dizendo qual campo falhou. A severidade aceita apenas os valores acordados. O mesmo validador roda para as criações interativas e para as importações em massa, então nenhum caminho de entrada é mais confiável do que outro, e uma importação de scanner que envia risk_score é recusada com o mesmo código que o cliente móvel. Os erros são documentados com exemplos.
 
 ### 31.3 Versionamento da API
 
@@ -2585,7 +2585,7 @@ Cada evento enviado à fila de mensagens mortas guarda o erro de validação que
 
 Uma execução agendada que falha abre um ticket para a equipe do produtor, não para a do consumidor. A idade das mensagens mortas é um gráfico de SLO ao lado da latência do caminho de negação.
 
-A ABP faz um exercício de esquema a cada período. Os resultados dos exercícios são registrados com as versões do produtor e do consumidor envolvidas.
+A ABP faz um exercício de esquema a cada período. Os resultados dos exercícios são registrados com as versões do produtor e do consumidor envolvidas, como o exercício que acrescentou o horário de recebimento ao lado do horário do evento nas negações do PLC-A.
 
 ### Nota de campo — quarentena de eventos envenenados
 
@@ -2593,7 +2593,7 @@ Um defeito num produtor emitiu eventos com timestamps em 2099. A quarentena de m
 
 Inclua um canário do consumidor que reprove a implantação se os eventos envenenados não forem postos em quarentena em até um minuto na homologação.
 
-Cada exercício termina com o novo campo visível num ticket de homologação e com a duração do exercício registrada, para que o próximo exercício possa ser comparado com ele.
+Cada exercício termina com o novo campo visível num ticket de homologação para uma negação sintética do PLC-A, e com a duração do exercício registrada.
 
 ### 34.5 Exemplo resolvido — integrando os alertas ao sistema de manutenção (ABP sintética)
 
@@ -2996,7 +2996,7 @@ Escreva uma nota de fator ônibus: quem pode publicar versões, quem entende a p
 
 Anuncie as descontinuações da API com datas; mantenha períodos de execução dupla. A manutenibilidade inclui saber como aposentar uma ferramenta: exportar os dossiês, revogar as credenciais, arquivar o código. Reserve no calendário um mês anual de atualização de dependências, para que as fixações por CVE não esperem por uma emergência.
 
-As sessões de treinamento cruzado usam os mesmos dados de teste sintéticos do Laboratório I, para que um substituto pratique com as entradas pelas quais a versão será julgada e possa rodar o laboratório sozinho depois.
+As sessões de treinamento cruzado usam os mesmos dados de teste sintéticos do Laboratório I, para que um substituto pratique com as entradas pelas quais a versão será julgada; depois de uma sessão, o substituto treinado rodou o Laboratório I sozinho e a versão retida foi publicada.
 
 Lena aplica esse plano a toda ferramenta do CNHP, inclusive ao adaptador substituído. A sua aposentadoria foi anunciada com antecedência.
 
@@ -3546,7 +3546,7 @@ O projeto final de Lena congelou na v1.0 do seu compilador. Depois do congelamen
 
 O projeto final precisa passar no Laboratório II (Capítulo 40) sobre dados de teste sintéticos, com o checklist assinado.
 
-Lena rodou de novo o Laboratório II para o compilador numa máquina limpa construída a partir da tag v1.0, usando apenas dados de teste sintéticos. A máquina limpa não tinha artefatos de build em cache, então todo resultado veio do código-fonte marcado. O checklist foi assinado por Lena e pelo seu revisor, e o relatório listou todo teste pulado, com o motivo. Lena guardou o log de build da máquina limpa com a tag, para que um examinador possa repetir a nova execução exatamente.
+Lena rodou de novo o Laboratório II para o compilador numa máquina limpa construída a partir da tag v1.0, usando apenas dados de teste sintéticos. A máquina limpa não tinha artefatos de build em cache, então todo resultado veio do código-fonte marcado. O checklist foi assinado por Lena e pelo seu revisor, e o relatório listou todo teste pulado, com o motivo. Lena guardou o log de build da máquina limpa ao lado da tag v1.0, e ele registra a execução travada do carregador de vetores além da aprovada.
 
 ### 46.3 Documentação
 
@@ -3574,7 +3574,7 @@ worst source before: comm loss PLC-A (38% of load)
 
 > **Caso sintético — Ashford Batch Plant.** Uma equipe do Projeto Final II na turma de Lena entregou a distribuição de listas de permissões assinadas; Laboratório II verde; runbook atualizado no mesmo dia.
 
-O projeto dessa equipe era separado do projeto final de Lena, o compilador. A documentação do compilador foi assinada pela operação antes da tag, e o seu tutorial do operador usa capturas de tela apenas do modelo sintético de nove condutos. A operação conferiu o tutorial seguindo-o uma vez na bancada.
+O projeto dessa equipe era separado do projeto final de Lena, o compilador. A documentação do compilador foi assinada pela operação antes da tag, e o seu tutorial do operador usa capturas de tela apenas do modelo sintético de nove condutos. Um engenheiro de operação seguiu o tutorial uma vez na cópia de bancada do modelo de nove condutos antes de assinar.
 
 ### 46.4 Erros e limites
 
@@ -3759,7 +3759,7 @@ Nada de payloads, credenciais em uso ou genealogia proprietária de lotes. Se n�
 
 > **Caso sintético — Ashford Batch Plant.** O dossiê v3 teve os hashes recalculados sem divergências depois de um incidente de edição do findings.json; nota de processo incluída.
 
-Lena confere cada arquivo contra a lista de exclusões antes do lacre; uma única correspondência para o build e nomeia o arquivo culpado. Depois que um arquivo de constatações foi editado por engano, a versão três teve os hashes recalculados, e a nota de processo explica como o erro foi encontrado.
+Lena confere cada arquivo contra a lista de exclusões antes do lacre; uma única correspondência para o build e nomeia o arquivo culpado, e foi assim que uma captura bruta esquecida na pasta de trabalho da versão dois foi pega. Depois que um arquivo de constatações foi editado por engano, a versão três teve os hashes recalculados, e a nota de processo explica como o erro foi encontrado.
 
 ### 48.4 Erros e limites
 
@@ -3855,7 +3855,7 @@ Cite os frameworks que você de fato usou. Encher os trabalhos relacionados com 
 
 As notas de "como foi usado" acabam de vez com o enchimento de citações na revisão do orientador. Deixar em branco a página de ameaças à validade reprova a tese no portão, qualquer que seja a qualidade da implementação.
 
-A página de ameaças de Lena lista, como primeira ameaça, a dependência do compilador de um modelo de zonas correto.
+A página de ameaças de Lena lista, como primeira ameaça, a dependência do compilador de um modelo de zonas correto, a mesma limitação que ela nomeia na defesa.
 
 ### Nota de campo — a afirmação na primeira página
 
@@ -3899,7 +3899,7 @@ Você vai (1) apresentar a afirmação e as evidências em 20 minutos; (2) respo
 
 Afirmação; demonstração sobre dados sintéticos; resultados da verificação; uma lição do ensaio de falha; limites; perguntas. Nada de demonstração de invasão de uma planta em operação.
 
-A defesa de Lena seguiu essa ordem. Ela declarou a sua afirmação sobre o compilador, mostrou-o no modelo sintético de nove condutos da ABP, apresentou os resultados de equivalência e de vetores e, em seguida, a sua reflexão sobre uma falha. Ela encerrou com o slide de limitações e uma frase sobre o que as evidências sustentam. Nada na apresentação tocou um sistema em operação, e todo número nos seus slides apontava para um artefato do dossiê.
+A defesa de Lena seguiu essa ordem. Ela declarou a sua afirmação sobre o compilador, mostrou-o no modelo sintético de nove condutos da ABP, apresentou os resultados de equivalência e de vetores e, em seguida, a sua reflexão sobre uma falha. Ela encerrou com o slide de limitações e uma frase sobre o que as evidências sustentam: regras equivalentes ao projeto em nove de nove condutos e três erros que a revisão manual deixou passar. Nada na apresentação tocou um sistema em operação, e todo número nos seus slides apontava para um artefato do dossiê.
 
 ### 50.2 Perguntas prováveis
 
