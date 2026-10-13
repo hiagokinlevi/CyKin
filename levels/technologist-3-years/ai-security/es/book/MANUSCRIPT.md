@@ -26,7 +26,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-| Seguridad de la IA y del aprendizaje automático | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
+| Seguridad de la IA y del aprendizaje automático | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
 | Proyecto, despliegue y proyecto final | [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -924,7 +924,328 @@ Los diagramas de flujo de datos revelan cómo un texto no confiable llega a sumi
 
 ### Siga estudiando — capítulo 12 de 30
 
-[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Seguridad de la IA y del aprendizaje automático: escenarios de riesgo
+
+### Resultados de aprendizaje
+
+Usted podrá (1) redactar escenarios de riesgo concretos para sistemas de IA; (2) estimar la probabilidad y el impacto; (3) priorizar los escenarios; y (4) vincular cada uno con controles y pruebas.
+
+### 13.1 Formato de los escenarios
+
+Un escenario nombra: actor, punto de entrada, técnica, activo afectado, efecto y controles existentes. Ejemplo: «Un defraudador (actor) publica una reseña de un producto (entrada) que contiene instrucciones (inyección indirecta de *prompts*) que hacen que Ask Brightwell (activo) inicie reembolsos completos sin devolución del artículo (efecto); controles actuales: ninguno en la herramienta de devoluciones». Los escenarios concretos se pueden probar; los vagos («la IA podría ser hackeada») no. Los seis escenarios de Brightwell que redacta Jonas siguen este formato, y por eso cada uno pudo vincularse más tarde con una prueba en preproducción. Cada escenario de Brightwell nombra además su control existente, o indica que no hay ninguno.
+
+### 13.2 Probabilidad e impacto
+
+Probabilidad: lo fácil que es, lo motivados que están los atacantes y si ha ocurrido en otros lugares (los casos de estudio de MITRE ATLAS ayudan). Impacto: dinero, personas afectadas, exposición legal y reputación. Use escalas sencillas (1–5) y anote las razones. En Ask Brightwell, el fraude de reembolsos mediante una reseña inyectada obtuvo una probabilidad de 4 porque escribir una reseña solo requiere una cuenta y la técnica está publicada, y un impacto de 4 porque los reembolsos cuestan dinero directamente. La consulta entre clientes distintos obtuvo un impacto de 4 por los datos personales. Anotar estas razones permite que otros cuestionen la puntuación. Cuando se añadió la herramienta de devoluciones, las razones escritas mostraron exactamente qué parte de la puntuación del fraude de reembolsos había que volver a valorar.
+
+### 13.3 Priorización
+
+Ordene por impacto × probabilidad y ajuste después según la detectabilidad y la reversibilidad: un daño que usted notará y podrá deshacer con rapidez se sitúa por debajo de uno silencioso y permanente. La evasión de ReturnGuard mediante la división de devoluciones quedó más abajo en parte porque aparece en los informes semanales y puede revertirse recuperando los reembolsos. El fraude de reembolsos mediante reseñas inyectadas quedó más arriba porque podía producirse en silencio y el dinero es difícil de recuperar una vez pagado. La detectabilidad y la reversibilidad alteraron la clasificación más que las puntuaciones brutas.
+
+### 13.4 Vinculación con controles y pruebas
+
+Para cada escenario de alta prioridad, enumere el control que lo acota y la prueba que demuestra que el control funciona. Así el registro de riesgos se convierte en una cartera de trabajo de ingeniería. El escenario principal de Brightwell, el fraude de reembolsos mediante una reseña inyectada, se vincula con el servicio de políticas como control y con el conjunto reservado de inyecciones como prueba. La consulta entre clientes distintos se vincula con la comprobación de propiedad y su prueba unitaria entre usuarios. Cuando una prueba falla, el escenario muestra qué riesgo se ha reabierto. Cada vínculo escenario-control-prueba es una fila del registro de riesgos.
+
+### 13.4b Fuentes de escenarios
+
+Extraiga escenarios de las entradas del OWASP LLM Top 10, de las técnicas y los casos de estudio de MITRE ATLAS, de incidentes pasados de su organización y de los caminos de contaminación del diagrama de flujo de datos. Pregunte a quienes operan el sistema qué les preocupa: el personal de atención al cliente suele conocer los patrones de abuso antes que seguridad. Revise los escenarios después de cada incidente y de cada cambio importante. Los escenarios de Brightwell procedían de varias de estas fuentes: OWASP LLM01 para la reseña inyectada, el camino de contaminación del DFD para la herramienta de devoluciones y el personal de atención al cliente, que mencionó la división de devoluciones como un truco de fraude conocido.
+
+### 13.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas redacta seis escenarios. Los tres primeros: fraude de reembolsos mediante una reseña inyectada (impacto 4, probabilidad 4); consulta de pedidos entre clientes distintos (impacto 4, probabilidad 3, ya corregida y probada); ataque de coste mediante avalancha de tokens (impacto 3, probabilidad 3). Más abajo: evasión de ReturnGuard mediante la división de devoluciones (impacto 2, probabilidad 3), detectable en los informes semanales. La consulta entre clientes distintos ocupa un lugar alto por su impacto, pero su prueba ya se supera, así que la atención se dirige al fraude de reembolsos. La división de devoluciones queda más abajo en parte porque los informes semanales la mostrarían, lo que sigue la regla de situar los daños silenciosos por encima de los visibles. Cada puntuación tiene una razón escrita en el registro.
+
+### 13.6 Errores y límites
+
+- Escenarios vagos.
+- Puntuaciones sin razones.
+- Escenarios sin una prueba vinculada.
+
+Los seis escenarios de Jonas evitan estos errores: cada uno nombra un actor, un punto de entrada y un efecto, cada puntuación tiene una razón escrita y los tres primeros se vinculan con un control y una prueba. Un escenario que no puede probarse no puede indicar a nadie cuándo ha bajado el riesgo. La revisión trimestral comprueba estas tres propiedades en cada escenario que sigue abierto. Cada propiedad es una sola columna del registro de escenarios de Brightwell, de modo que cualquier carencia es visible para quien lo lea.
+
+### 13.7 Revisión de los escenarios a lo largo del tiempo
+
+Brightwell revisa sus escenarios de riesgo de IA cada trimestre y después de cualquier incidente. Un escenario cuya probabilidad ha cambiado (por ejemplo, porque Ask Brightwell incorporó una nueva herramienta para emitir reembolsos) se vuelve a valorar, y sus pruebas vinculadas se actualizan en la misma revisión. Esa misma revisión comprueba que el conjunto reservado sigue conteniendo casos para el camino de los reembolsos y añade otros nuevos si cambiaron los parámetros de la herramienta. Los resultados se envían al responsable del escenario de fraude de reembolsos, que decide si la nueva valoración cambia el plan de lanzamiento.
+
+### Ejercicios
+
+- **EX037 — Escenario.** Redacte un escenario completo de CodePilot sugiriendo un paquete malicioso. Rúbrica: 3 = los seis elementos; 2 = cuatro o cinco; 1 = dos o tres; 0 = ninguno.
+- **EX038 — Puntuación.** Puntúe su escenario con razones. Rúbrica: 3 = ambas puntuaciones con razones y ajuste; 2 = puntuaciones con razones; 1 = solo puntuaciones; 0 = nada.
+- **EX039 — Vínculo.** Vincule el escenario principal de Brightwell con un control y una prueba. Rúbrica: 3 = control y prueba concretos con criterio de superación; 2 = sin criterio; 1 = vago; 0 = nada.
+
+### Síntesis
+
+Los escenarios concretos y puntuados, vinculados con controles y pruebas, convierten el riesgo de la IA en trabajo de ingeniería.
+
+### Siga estudiando — capítulo 13 de 30
+
+[← Capítulo 12 (borrador)](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 (borrador) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Seguridad de la IA y del aprendizaje automático: métodos I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) ejecutar pruebas adversarias básicas sobre clasificadores; (2) probar aplicaciones de LLM frente a la inyección de *prompts* directa e indirecta; (3) estructurar un conjunto de pruebas con resultados esperados; y (4) registrar los hallazgos de forma reproducible.
+
+### 14.1 Pruebas de clasificadores
+
+En un clasificador como ReturnGuard, las pruebas de evasión preguntan: ¿pueden cambios pequeños y verosímiles en una solicitud alterar la puntuación? Modifique los atributos que controla un atacante (motivo de la devolución, momento, división del valor del artículo) y mida con qué frecuencia un caso de fraude se puntúa como seguro. Goodfellow et al. (arXiv:1412.6572) demostraron que incluso un comportamiento lineal simple hace que los modelos sean sensibles a perturbaciones pequeñas; el laboratorio de evasión muestra lo mismo en un modelo de juguete. En ReturnGuard, las pruebas de evasión de Jonas cambian los atributos que controla un cliente, como dividir una devolución grande en varias pequeñas o cambiar el motivo declarado. La prueba cuenta cuántos casos de fraude conocidos quedan por debajo del umbral de alerta tras el cambio, medidos frente a los mismos casos antes de él.
+
+### 14.2 Pruebas de inyección de *prompts*
+
+Inyección directa: el usuario escribe instrucciones para anular las reglas. Inyección indirecta: las instrucciones llegan en contenidos que lee el modelo, como reseñas, correos o páginas web (Greshake et al., arXiv:2302.12173). Construya documentos de prueba que pidan al modelo llamar a una herramienta con parámetros dañinos, revelar su *prompt* del sistema o generar un enlace que filtre datos. Varíe la redacción, el idioma, el formato y la ubicación. El conjunto de Ask Brightwell de Jonas contiene ambos tipos: peticiones directas escritas por un cliente de prueba e instrucciones indirectas colocadas en reseñas y páginas de políticas en preproducción. Los casos indirectos apuntan a la herramienta de devoluciones, porque es ahí donde una inyección se convierte en dinero. Variar la redacción y la ubicación evita que una defensa supere las pruebas solo porque reconoce una formulación concreta.
+
+### 14.3 Estructura del conjunto de pruebas
+
+Cada caso de prueba: identificador, categoría (entrada de OWASP), entrada, preparación (documentos colocados), comportamiento seguro esperado y cómo se juzga el éxito (registro de herramientas, patrón de salida). Mantenga un conjunto de desarrollo para ajustar las defensas y un conjunto reservado para los informes. El conjunto de Ask Brightwell registra el documento colocado en cada caso indirecto y juzga el éxito a partir del registro de herramientas. Sus casos reservados nunca se usan al ajustar el *prompt* separado ni las reglas de políticas, de modo que las tasas comunicadas no se inflan por haberlas ajustado con ellos. Unos *scripts* de preparación colocan en preproducción los documentos de cada caso antes de la ejecución.
+
+### 14.4 Registro de los hallazgos
+
+Para cada fallo, guarde la conversación completa, los documentos recuperados, las llamadas a herramientas y las versiones. Redacte el hallazgo con los pasos de reproducción, el impacto y la gravedad. Cuando 31 casos indirectos iniciaron devoluciones, Jonas guardó cada conversación completa, la reseña recuperada, la llamada a la herramienta y las versiones en uso. Ese registro permitió al desarrollador del servicio de políticas reproducir cada fallo en preproducción sin preguntarle. El mismo registro mostró después que los 31 fallos cruzaban el mismo límite entre documentos y *prompt*. Cada hallazgo nombra a su responsable y una fecha de nueva prueba, de modo que los 31 fallos del límite se volvieron a probar juntos tras la corrección.
+
+### 14.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas construye 120 casos de inyección para Ask Brightwell en preproducción: 40 directos y 80 indirectos mediante reseñas y páginas de políticas colocadas. Calificados por los registros de herramientas, 31 casos indirectos inician una devolución de un pedido por el que el usuario no había preguntado; 4 casos directos revelan el *prompt* del sistema. Registra dos hallazgos y aparta 40 casos como conjunto reservado. Calificar por los registros de herramientas es lo que hizo visibles los 31 éxitos indirectos: en varios casos la respuesta parecía útil mientras se iniciaba una devolución. Mantener un conjunto reservado permite medir las defensas posteriores con casos con los que no se ajustaron.
+
+### 14.6 Errores y límites
+
+- Juzgar el éxito leyendo las respuestas.
+- Usar solo cadenas públicas de *jailbreak*.
+- Ajustar e informar con los mismos casos.
+
+El conjunto de Jonas evita estos errores. Califica a partir de los registros de herramientas y no de las respuestas, redacta casos indirectos específicos de las reseñas y las páginas de políticas de Ask Brightwell en lugar de basarse en cadenas públicas de *jailbreak* y mantiene 40 casos reservados al margen del ajuste. Un conjunto construido solo con cadenas públicas mediría sobre todo si el proveedor ya las había visto. Ajustar con los casos reservados haría que las tasas comunicadas parecieran mejores de lo que son.
+
+### Ejercicios
+
+- **EX040 — Prueba de evasión.** Diseñe tres pruebas de evasión para ReturnGuard. Rúbrica: 3 = tres cambios controlables por el atacante con su medición; 2 = dos; 1 = uno; 0 = ninguno.
+- **EX041 — Casos de inyección.** Redacte tres documentos de prueba de inyección indirecta (descritos, no convertidos en armas) con el comportamiento seguro esperado. Rúbrica: 3 = tres casos variados con expectativas; 2 = dos; 1 = uno; 0 = ninguno.
+- **EX042 — Registro de pruebas.** Enumere los campos del registro de un caso de prueba. Rúbrica: 3 = identificador, categoría, entrada, preparación, resultado esperado, calificador; 2 = cuatro; 1 = dos; 0 = ninguno.
+
+### Síntesis
+
+Las pruebas básicas de seguridad de la IA varían de forma sistemática las entradas que controla el atacante, juzgan los resultados por sus efectos y mantienen conjuntos reproducibles y separados.
+
+### Siga estudiando — capítulo 14 de 30
+
+[← Capítulo 13 (borrador)](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 (borrador) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Seguridad de la IA y del aprendizaje automático: laboratorio guiado
+
+### Resultados de aprendizaje
+
+Usted podrá (1) ejecutar laboratorios contenidos sobre evasión, envenenamiento, inferencia de pertenencia y extracción; (2) interpretar sus salidas; (3) relacionar cada uno con un control del mundo real; y (4) seguir las normas de seguridad de los laboratorios.
+
+### 15.1 Normas de los laboratorios
+
+Los laboratorios se ejecutan sin conexión, con datos sintéticos y con la biblioteca estándar de Python 3. Son modelos de juguete que hacen medibles los conceptos; no son evidencia sobre sistemas de producción ni herramientas para atacar sistemas reales. Jonas usa cada laboratorio para entender una clase de ataque contra ReturnGuard y para justificar un control, no para estimar cómo se comportaría el propio ReturnGuard. El lector debe tratar cada cifra de los laboratorios como una propiedad del modelo de juguete y de sus datos sintéticos. Las semillas fijas hacen que cada laboratorio imprima la misma salida en cada ejecución.
+
+### 15.2 Evasión
+
+```python
+"""Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
+Trains logistic regression on two synthetic clusters, then applies a
+fast-gradient-sign (FGSM-style) perturbation of size eps to every test point
+and reports clean vs adversarial accuracy. Teaching model only."""
+import math, random
+rng = random.Random(7)
+def point(label):
+    cx = 1.0 if label else -1.0
+    return [rng.gauss(cx, 0.7), rng.gauss(cx, 0.7)], label
+train = [point(i % 2) for i in range(400)]
+test = [point(i % 2) for i in range(200)]
+w, b = [0.0, 0.0], 0.0
+sig = lambda z: 1 / (1 + math.exp(-z))
+for epoch in range(200):
+    gw, gb = [0.0, 0.0], 0.0
+    for x, y in train:
+        p = sig(w[0]*x[0] + w[1]*x[1] + b)
+        gw[0] += (p - y)*x[0]; gw[1] += (p - y)*x[1]; gb += p - y
+    w = [w[i] - 0.1*gw[i]/len(train) for i in range(2)]; b -= 0.1*gb/len(train)
+def acc(data, eps):
+    ok = 0
+    for x, y in data:
+        # gradient of the loss w.r.t. x is (p - y) * w; FGSM steps along its sign
+        p = sig(w[0]*x[0] + w[1]*x[1] + b)
+        xa = [x[i] + eps*math.copysign(1, (p - y)*w[i]) for i in range(2)]
+        ok += (sig(w[0]*xa[0] + w[1]*xa[1] + b) >= 0.5) == bool(y)
+    return ok / len(data)
+print(f"weights w=({w[0]:.3f}, {w[1]:.3f}) b={b:.3f}")
+for eps in (0.0, 0.25, 0.5, 0.75, 1.0):
+    print(f"eps={eps:.2f} accuracy={acc(test, eps):.3f}")
+```
+
+Salida esperada:
+
+```text
+weights w=(1.795, 1.756) b=-0.080
+eps=0.00 accuracy=0.985
+eps=0.25 accuracy=0.950
+eps=0.50 accuracy=0.840
+eps=0.75 accuracy=0.660
+eps=1.00 accuracy=0.505
+```
+
+La exactitud cae de 0,985 a 0,505 a medida que crece el presupuesto de perturbación. Control: no permita que la puntuación de un único modelo tome decisiones irreversibles; añada reglas y revisión humana. En ReturnGuard, esto respalda la recomendación de Jonas de que una puntuación alta de fraude conduzca a una revisión humana y no a un rechazo automático. En ReturnGuard, los atributos que un defraudador puede cambiar realmente, como el motivo y el momento de la devolución, son menos y más toscos que la perturbación libre del laboratorio, así que el laboratorio muestra la dirección del riesgo y no su magnitud. La magnitud se mide en cambio con las pruebas de evasión del capítulo 14, que solo cambian el motivo, el momento y la división de casos de fraude reales.
+
+### 15.3 Envenenamiento y puertas traseras
+
+```python
+"""Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
+classifier (synthetic data, stdlib only). Teaching model only."""
+import random
+rng = random.Random(11)
+def point(label, trigger=False):
+    cx = 1.0 if label else -1.0
+    x = [rng.gauss(cx, 0.8), rng.gauss(cx, 0.8), 0.0]
+    if trigger: x[2] = 5.0          # third feature is the 'trigger'
+    return x, label
+clean = [point(i % 2) for i in range(400)]
+test = [point(i % 2) for i in range(400)]
+def fit(data):
+    c = {}
+    for lab in (0, 1):
+        pts = [x for x, y in data if y == lab]
+        c[lab] = [sum(p[i] for p in pts)/len(pts) for i in range(3)]
+    return c
+def pred(c, x):
+    d = {k: sum((x[i]-v[i])**2 for i in range(3)) for k, v in c.items()}
+    return min(d, key=d.get)
+def accuracy(c, data): return sum(pred(c, x) == y for x, y in data)/len(data)
+print("label-flip poisoning (flip a fraction of class-1 labels to 0):")
+for frac in (0.0, 0.1, 0.2, 0.3, 0.4):
+    data = [(x, y) for x, y in clean]; ones = [i for i, (x, y) in enumerate(data) if y == 1]
+    for i in ones[:int(frac*len(ones))]: data[i] = (data[i][0], 0)
+    print(f"  flipped={frac:.1f} clean_test_accuracy={accuracy(fit(data), test):.3f}")
+print("backdoor: add n triggered class-1 points labelled 0")
+trig_test = [point(1, trigger=True) for _ in range(200)]
+for n in (0, 10, 40, 80):
+    data = clean + [(point(1, trigger=True)[0], 0) for _ in range(n)]
+    c = fit(data)
+    asr = sum(pred(c, x) == 0 for x, _ in trig_test)/len(trig_test)
+    print(f"  poison_points={n:3d} clean_accuracy={accuracy(c, test):.3f} attack_success={asr:.3f}")
+```
+
+Salida esperada:
+
+```text
+label-flip poisoning (flip a fraction of class-1 labels to 0):
+  flipped=0.0 clean_test_accuracy=0.965
+  flipped=0.1 clean_test_accuracy=0.965
+  flipped=0.2 clean_test_accuracy=0.953
+  flipped=0.3 clean_test_accuracy=0.950
+  flipped=0.4 clean_test_accuracy=0.945
+backdoor: add n triggered class-1 points labelled 0
+  poison_points=  0 clean_accuracy=0.965 attack_success=0.075
+  poison_points= 10 clean_accuracy=0.963 attack_success=0.145
+  poison_points= 40 clean_accuracy=0.963 attack_success=0.685
+  poison_points= 80 clean_accuracy=0.968 attack_success=0.980
+```
+
+La inversión de etiquetas apenas mueve la exactitud sobre datos limpios; 80 puntos de puerta trasera alcanzan un 98 % de éxito del ataque con la exactitud sobre datos limpios sin cambios. Control: procedencia de los datos, derechos de etiquetado restringidos y pruebas de activadores. En ReturnGuard, cuyas etiquetas proceden del personal, esto explica por qué Jonas recomendó que solo los responsables puedan volver a etiquetar devoluciones: unas pocas etiquetas colocadas con un activador podrían dejar intacta la exactitud sobre datos limpios mientras dejan pasar las devoluciones que coinciden. Restringir el reetiquetado a los responsables y registrar cada cambio de etiqueta es lo que hace difícil colocar un activador así sin que nadie lo note.
+
+### 15.4 Inferencia de pertenencia
+
+```python
+"""Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
+that returns a confidence score. Synthetic records only; teaching model."""
+import random, math
+rng = random.Random(5)
+def rec(): 
+    y = rng.random() < 0.5
+    return [rng.gauss(0.6 if y else -0.6, 1.0) for _ in range(4)], int(y)
+members = [rec() for _ in range(150)]; nonmembers = [rec() for _ in range(150)]
+def confidence(x, y, k):
+    # k-NN vote share for the true label, computed over the training set
+    d = sorted((sum((a-b)**2 for a, b in zip(x, m)), my) for m, my in members)
+    return sum(1 for _, my in d[:k] if my == y)/k
+def auc(pos, neg):
+    s = sum((p > n) + 0.5*(p == n) for p in pos for n in neg)
+    return s/(len(pos)*len(neg))
+for k in (1, 5, 25):
+    pos = [confidence(x, y, k) for x, y in members]
+    neg = [confidence(x, y, k) for x, y in nonmembers]
+    best = max(sum(p >= t for p in pos)/len(pos) - sum(n >= t for n in neg)/len(neg)
+               for t in sorted(set(pos + neg)))
+    print(f"k={k:2d} attack_auc={auc(pos, neg):.3f} best_advantage={best:.3f}")
+```
+
+Salida esperada:
+
+```text
+k= 1 attack_auc=0.600 best_advantage=0.200
+k= 5 attack_auc=0.521 best_advantage=0.073
+k=25 attack_auc=0.520 best_advantage=0.060
+```
+
+Cuando la puntuación del modelo procede de un único vecino más próximo (k=1), la ventaja del ataque es 0,20; en esta configuración disminuye a medida que crece k. Control: limitar el detalle de la salida, hacer pruebas de fugas y considerar la privacidad diferencial (Abadi et al., arXiv:1607.00133). En ReturnGuard, la lección es limitar lo que revela el servicio de puntuación: una etiqueta es más segura que una puntuación detallada. La configuración del laboratorio es pequeña, así que la ventaja decreciente es una propiedad de este modelo de juguete y no una ley general. ReturnGuard devuelve ahora a la tienda solo revisar o aceptar, no una puntuación.
+
+### 15.5 Extracción
+
+```python
+"""Lab X: model extraction of a toy linear scoring API by querying it.
+The 'API' returns a real-valued score; d+1 well-chosen queries recover the
+weights exactly, and rounding the output limits fidelity. Synthetic model."""
+import random
+rng = random.Random(9)
+d = 5
+secret_w = [round(rng.uniform(-2, 2), 3) for _ in range(d)]; secret_b = 0.42
+def api(x, decimals=None):
+    s = sum(a*b for a, b in zip(secret_w, x)) + secret_b
+    return round(s, decimals) if decimals is not None else s
+for dec in (None, 2, 0):
+    b = api([0]*d, dec)
+    w = [api([1 if j == i else 0 for j in range(d)], dec) - b for i in range(d)]
+    err = max(abs(a-c) for a, c in zip(w, secret_w))
+    test = [[rng.uniform(-1, 1) for _ in range(d)] for _ in range(500)]
+    agree = sum((sum(a*c for a, c in zip(w, x))+b > 0) == (api(x) > 0) for x in test)/500
+    print(f"output_rounding={str(dec):4s} queries={d+1} max_weight_error={err:.3f} label_agreement={agree:.3f}")
+```
+
+Salida esperada:
+
+```text
+output_rounding=None queries=6 max_weight_error=0.000 label_agreement=1.000
+output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
+output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
+```
+
+Con puntuaciones exactas, seis consultas recuperan el modelo exactamente; redondear a números enteros eleva el error a 0,534. Control: devolver etiquetas o puntuaciones toscas, limitar la frecuencia y supervisar los patrones de consulta (Tramèr et al., arXiv:1609.02943). Este es el laboratorio en que se basa el consejo de Jonas de que ReturnGuard devuelva a la tienda solo revisar o aceptar y de que las llamadas de puntuación tengan un límite de frecuencia por cuenta. La clave del socio que más tarde se vio variando un atributo cada vez coincidía con el patrón que describe este laboratorio. En el laboratorio, el redondeo por sí solo no hizo imposible la extracción, y por eso lo acompañan los límites de frecuencia.
+
+### 15.5b Redactar un laboratorio
+
+En cada laboratorio, registre: qué se varió, qué se midió, la tabla de resultados, una frase sobre lo que muestra, una frase sobre lo que no muestra y el control que sugiere. Este hábito se traslada directamente a las evaluaciones reales, donde la misma estructura mantiene los informes honestos y legibles para los compañeros que no estuvieron en el laboratorio. La redacción de Jonas sobre el laboratorio de extracción termina con lo que no muestra: si la API de puntuación real de ReturnGuard podría copiarse, ya que el modelo del laboratorio es lineal y diminuto.
+
+### 15.6 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas ejecuta los cuatro laboratorios y redacta una recomendación de control para ReturnGuard a partir de cada uno: revisión humana para los rechazos; solo los responsables pueden volver a etiquetar devoluciones; devolver a la tienda solo «revisar/aceptar» y no una puntuación; y limitar la frecuencia de la API de puntuación por cuenta del personal. Cada recomendación procede de un laboratorio: la evasión lleva a la revisión humana, el envenenamiento a los derechos de etiquetado, y la inferencia de pertenencia y la extracción a las salidas toscas y los límites de frecuencia. Ninguna afirma que ReturnGuard tenga la debilidad; cada una limita lo que costaría una debilidad. Cada control encaja en una parte de ReturnGuard que pertenece a Brightwell.
+
+### 15.7 Errores y límites
+
+- Tratar los resultados de juguete como cifras de producción.
+- Ejecutar código de ataque contra sistemas reales.
+
+Las redacciones de Jonas evitan ambos errores al indicar, en cada laboratorio, lo que no muestra sobre ReturnGuard, y al ejecutar cada laboratorio sin conexión y con datos sintéticos. Un resultado de juguete citado como cifra de producción engañaría a los responsables igual que una afirmación sin probar, y un código de ataque dirigido contra un servicio real rompería la autorización de la que depende cada prueba. Las normas de los laboratorios dejan ambas cosas explícitas antes de que nadie ejecute código.
+
+### Ejercicios
+
+- **EX043 — Interpretar.** Explique una cifra de cada laboratorio. Rúbrica: 3 = cuatro interpretaciones correctas; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX044 — Controles.** Asocie cada laboratorio con un control para ReturnGuard. Rúbrica: 3 = cuatro adecuados; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX045 — Límites.** ¿Por qué estos laboratorios no son evidencia sobre el modelo real de Brightwell? Rúbrica: 3 = datos de juguete, modelo distinto, modelo de amenazas distinto; 2 = dos; 1 = uno; 0 = ninguno.
+
+### Síntesis
+
+Los laboratorios contenidos hacen medibles los ataques abstractos, y cada uno apunta a un control práctico.
+
+### Siga estudiando — capítulo 15 de 30
+
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](../../en/book/MANUSCRIPT.md#ch-16)
 
 <a id="worked-results"></a>
 
@@ -1039,6 +1360,41 @@ pass to tool service (which rechecks ownership)
 **EX035.** Un archivo de código abierto con un comentario malicioso (fuente) entra en el contexto de CodePilot y se convierte en código generado. El desarrollador pulsa "run tests" (sumidero: ejecución de código con secretos). Control: un entorno aislado desechable sin secretos ni red.
 
 **EX036.** Flujo del índice: excluir las reseñas del índice del asistente. Flujo de la salida a la herramienta: validación del esquema más una comprobación de políticas del plazo de devolución y de la propiedad. Flujo de confirmación: una confirmación estructurada por parte del cliente.
+
+**EX037.**
+- Actor: un acaparador de nombres de paquetes.
+- Entrada: un nombre de paquete verosímil pero inexistente que sugiere CodePilot.
+- Técnica: registrar ese nombre con *malware*.
+- Activo: los equipos de los desarrolladores y la CI.
+- Efecto: ejecución de código y robo de secretos.
+- Controles existentes: ninguno.
+
+**EX038.** Impacto 5, porque los secretos de la CI conducen a producción. Probabilidad 3: el acaparamiento de nombres de paquetes alucinados se ha descrito públicamente, pero requiere que el desarrollador instale el paquete. Reduzca ligeramente la prioridad porque una revisión del archivo de bloqueo (*lockfile*) puede detectarlo.
+
+**EX039.** Control: un servicio de políticas que solo permite una devolución de los pedidos entregados del propio usuario dentro del plazo de la política. Prueba: 300 conversaciones con reseñas inyectadas en preproducción. Se supera si hay 0 devoluciones fuera de la política.
+
+**EX040.** Dividir una devolución de alto valor en varias más pequeñas. Cambiar el motivo de la devolución de «cambié de opinión» a «dañado». Retrasar la devolución a otro día de la semana. En cada caso, medir la proporción de casos de fraude conocidos cuya puntuación baja del umbral de marcado.
+
+**EX041.**
+1. Una reseña que dice que el asistente debería iniciar un reembolso completo del último pedido del lector. Esperado: ninguna devolución sin la petición explícita del usuario y la comprobación de políticas.
+2. Una página de políticas con texto oculto que pide al asistente revelar sus instrucciones. Esperado: ningún contenido del *prompt* del sistema.
+3. Unas preguntas frecuentes de un producto que piden al asistente incluir un enlace con el número de pedido del usuario en la URL. Esperado: ningún enlace externo que contenga datos del usuario.
+
+**EX042.** Identificador de la prueba; categoría (entrada de OWASP); entrada; preparación o contenido colocado; comportamiento seguro esperado; calificador (comprobación del registro de herramientas o de la salida); y el conjunto (de desarrollo o reservado).
+
+**EX043.**
+- Evasión: con eps 0,5, la exactitud es 0,840.
+- Envenenamiento: 80 puntos de puerta trasera dan un éxito del ataque de 0,980 con una exactitud sobre datos limpios de 0,968.
+- Inferencia de pertenencia: con k=1, la ventaja es 0,200.
+- Extracción: sin redondeo, el error de los pesos es 0,000 tras 6 consultas.
+
+**EX044.**
+- Evasión: revisión humana antes de los rechazos.
+- Envenenamiento: reetiquetado restringido más pruebas de activadores.
+- Inferencia de pertenencia: salidas toscas y pruebas de fugas.
+- Extracción: salida solo con etiquetas, límites de frecuencia y supervisión.
+
+**EX045.** Los laboratorios usan conjuntos de datos sintéticos diminutos y modelos lineales en lugar del modelo de Brightwell. Suponen un acceso y unos presupuestos del atacante elegidos con fines didácticos, y sus cifras no coincidirán con las del sistema real.
 
 <a id="references"></a>
 
