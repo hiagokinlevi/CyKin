@@ -2852,9 +2852,13 @@ limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
 limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 ```
 
+If the worker pool can send faster than the ROE allows, the first busy morning will break the client's fare API. Making the token bucket the bottleneck means a bug that spawns extra workers still cannot exceed the signed rate. Sam sizes pools from the bucket, then proves it with a synthetic flood that stays clipped while a normal client continues. The pool size is stored next to the bucket rates so a later engineer cannot raise workers without seeing the ROE numbers.
+
 ### 36.2 Token buckets
 
 Capacity = burst; refill = sustained rate. Lab shows flood clients get clipped while normal clients proceed.
+
+Burst capacity covers short legitimate spikes; the refill rate is the sustained promise in the ROE. The lab's flood client hitting the clip while a normal client proceeds is the behaviour Sam wants on the depot uplink. He prints both numbers in the kickoff slide next to the 5/s and burst-20 figures from the Riverstone case. Changing either number requires the same authorization path as a ROE edit, not a silent config push.
 
 ### 36.3 Canaries
 
@@ -2862,21 +2866,31 @@ A synthetic canary request every minute tracks latency/error rate; stop conditio
 
 > **Synthetic case — Riverstone Transit.** Bucket 5/s burst 20 kept the fare API under 5% of capacity during the window.
 
+A canary every minute is a sensor for the stop loop, not a performance trophy. When latency or errors cross the threshold, stop fires before riders notice a slow fare purchase. Sam ties the canary's threshold to the same stop conditions already coded for deny-lists and kill-switch files.
+
 ### 36.4 Errors and limits
 
 Distributed scanners need a coordinated global bucket or they N× the limit.
+
+Five scanners each obeying a local 5/s limit are a 25/s attack from the client's point of view. A global bucket, or a single scheduler that hands out tokens, is mandatory when methods run on more than one host. Sam fails a design review that cannot name where the global counter lives. Last year's design that trusted per-host files was rejected when five jump hosts were added to the pool.
 
 ### 36.2b Fairness among methods
 
 When several methods share one bucket, a noisy enumerator can starve a quiet config review. Weight or separate buckets by method class so authorized quiet work still completes inside the window.
 
+A noisy enumerator that empties a shared bucket leaves the authenticated config review starved until the window ends. Separate buckets by method class, or weights that reserve a minimum for quiet work, keep the ROE's authorized quiet checks from being casualties of someone else's scan. Sam's scheduler shows per-class remaining tokens on the lead's dashboard.
+
 ### 36.3b Latency budgets
 
 Allocate milliseconds across DNS, TCP, TLS, predicate, event write. When the budget is exceeded, shed work; do not skip the predicate. Publish the budget in the runbook so optimizations have a yardstick.
 
+Skipping the predicate to "make the budget" is how fail-open returns under a performance ticket. Shedding discovery work is allowed; shedding the allow/deny decision is not. Sam publishes the millisecond split in the runbook so a profiler-driven change has a yardstick and a veto. A pull request that removed event-write time from the budget to "look faster" was closed with a link to this rule.
+
 ### 36.1b Warm-up and cool-down
 
 Ramp traffic at window start and drain before hard stop. Instant full-rate starts look like floods to defenders and trip unrelated alerts. Encode ramp in the scheduler, not as tribal knowledge.
+
+Instant full rate at minute zero trips flood detectors that the engagement never intended to test. Ramping in the scheduler, and draining before the hard stop, keeps Riverstone's defenders from paging on a signed window. Sam encodes the ramp as config next to the bucket rates, not as a note in chat.
 
 ### Practice note
 
@@ -2890,6 +2904,8 @@ Separate buckets for quiet versus noisy methods so a hungry enumerator cannot st
 ### 36.4b Load tests that respect the client
 
 Performance tests of TrackScope and the method runners use synthetic targets only. Rates measured there become the ceiling allowed in engagements, always below the client's agreed limit, so speed improvements never translate into more traffic on client systems than was signed for.
+
+Speed measured on synthetic targets becomes the engagement ceiling only after it is checked against the signed client limit. A TrackScope build that got faster must not quietly push more packets at the fare API than Monday's ROE allowed. Sam's load-test report lists both numbers side by side before any pool size increases.
 
 ### Exercises
 
@@ -2917,9 +2933,13 @@ You will (1) write an engagement runbook; (2) hand over between shifts; (3) mana
 
 Contacts, ROE pointer, tool versions, stop conditions, escalation tree, evidence paths. Keep it short enough to use under stress.
 
+Under stress, people open one short page or none. Contacts, ROE pointer, tool versions, stops, escalation and evidence paths are the minimum that still works when SSO is slow. Sam prints that page for the jump-host binder and diffs it against the wiki whenever either changes. The binder page carries the wiki revision hash so a stale print is obvious at kickoff.
+
 ### 37.2 Handover
 
 Shift log: open findings, last event ids, pending approvals, kill-switch state. Verbal handover plus the log.
+
+Verbal handover without the log loses event ids and kill-switch state at shift change. The log's pending-approvals line is what stops a tired engineer from widening scope that was already refused. Sam requires both the spoken brief and the pasted log before the outgoing lead leaves the channel. A shift that skipped the pasted log once left a pending widen approval invisible until the client asked why testing had stopped.
 
 ### 37.3 Close-out
 
@@ -2959,21 +2979,31 @@ open=5 sla_breaches=3
 
 > **Synthetic case — Riverstone Transit.** Close-out caught SYN-005 still BREACH past SLA — escalated before the retro.
 
+Memory misses open accounts and unrotated secrets. The checklist that caught SYN-005 still in BREACH past SLA is the argument for never skipping close-out to "make the retro." Sam will not mark the engagement sealed until every checkbox has a UTC time and an actor. SYN-005's escalation before the retro is filed under the close-out checklist id, not under a hallway conversation.
+
 ### 37.4 Errors and limits
 
 Runbooks in wikis nobody can access from the jump host fail; keep an offline copy.
+
+A wiki that the jump host cannot reach is a runbook that does not exist during a stop. The offline copy in the ops kit is exercised in the tabletop when SSO is simulated down. Sam's close-out includes verifying the binder page matches the hashed wiki revision. A mismatch fails kickoff the same way a wrong TrackScope SHA does. Sam once found a binder page two revisions behind after a weekend wiki edit; kickoff stopped until the print was replaced.
 
 ### 37.2b On-call hygiene
 
 On-call for assessment tools is not a license to widen scope. Pages are about tool safety and ROE enforcement; client asset incidents route to the client's IR path. Keep the escalations separate in the runbook so tired engineers do not merge them.
 
+Mixing tool pages with client IR pages is how a scope question becomes an unplanned incident bridge. Assessment on-call fixes TrackScope and ROE enforcement; asset incidents go to Riverstone's own path. Sam's runbook puts the two trees on separate pages with different phone numbers.
+
 ### 37.3b Calendar integration
 
 Engagement windows belong on a shared calendar with ROE version in the description. Accidental overlap of two noisy methods on the same CIDR is an operations failure, not a clever parallelization.
 
+Two noisy methods on one CIDR without a calendar entry look clever until the depot uplink saturates. The shared calendar carries the ROE version in the description so overlap review is mechanical. Sam's scheduler refuses to start a noisy method that lacks a calendar block for its window. Overlap review runs automatically when two blocks share a CIDR and either is marked noisy.
+
 ### 37.1b Spare consumables
 
 Ops kits include spare jump-host images, printed contact cards, and offline ROE copies. When SSO is down, the engagement still needs a documented stop path.
+
+When SSO dies, the engagement still needs a stop path that does not depend on the identity provider. Spare jump-host images, printed contacts and an offline ROE are what make that real. Sam checks the kit the morning of the window, not after the first failed login. The kit checklist is a close-out item too, so borrowed images are restored before the next client.
 
 ### Practice note
 
@@ -2991,6 +3021,8 @@ Handover includes reading the last ten TrackScope denies aloud to the incoming l
 ### 37.4b Measuring the runbook
 
 After each engagement the lead notes which runbook steps were skipped, unclear or out of date. Sam tallies these over a quarter; steps skipped most often are rewritten or removed, and the runbook's revision history shows each change with its reason.
+
+Steps skipped most often are either wrong or too hard under stress. Quarterly tallies turn complaints into edits with reasons in the revision history. Sam's last rewrite removed a step that asked for a screenshot of a page the jump host could not open, which had been skipped in four engagements running.
 
 ### Exercises
 
@@ -3018,9 +3050,13 @@ You will (1) validate fixes with re-tests; (2) avoid validation that reintroduce
 
 Same vantage, least privilege, same evidence standard. For default password: confirm login fails; do not spray variants.
 
+Spraying password variants turns validation into a new attack. Confirming the default login fails, from the same vantage and privilege, is enough to close SYN-001. Sam's re-test card names the exact request and the expected 401, nothing more. A request to try alternate passwords on the same form is recorded as a refused method, not as thoroughness. The refusal is visible on the ticket so a later auditor sees the boundary was held.
+
 ### 38.2 Negative results
 
 "Still open" is a valid validation outcome. PulseMap and FindingsDesk must accept it without forcing close.
+
+Forcing every ticket closed trains people to lie when a fix failed. "Still open" with fresh evidence is how SYN-005 stayed honest until the group membership actually changed. FindingsDesk accepts that status without a close reason, and PulseMap counts it as incomplete validation, not as success. Closing SYN-005 required a second re-test after the group membership finally disappeared, with a new evidence hash. The SLA clock did not reset on the failed first re-test; it kept running until the second green.
 
 ### 38.3 No new methods
 
@@ -3028,21 +3064,31 @@ Validation uses the method that found the issue, or a weaker read-only check —
 
 > **Synthetic case — Riverstone Transit.** Re-test of SYN-001: default login returned 401; ticket closed with evidence hash. SYN-005 still had group membership — left open.
 
+Validation is not a second engagement. Using a weaker read-only check, or the same method that found the issue, keeps the ROE stable. Sam rejected a proposal to "just check one more port" during the SYN-001 re-test; that port belonged on the next engagement's plan if the client wanted it.
+
 ### 38.4 Errors and limits
 
 Different environment (staging vs prod) means you validated staging.
+
+Closing a production finding because staging looks fixed is how breaches return after go-live. The re-test record must name the environment. Sam's ticket template refuses a close when the environment field still says staging and the finding's asset is production. Staging greens may be attached as supporting notes but never as the sole close evidence. A production re-test window is booked on the same calendar as discovery so it cannot be forgotten.
 
 ### 38.2b Sampling re-tests
 
 When many similar findings share a root cause (fleet-wide header missing), re-test a sample plus the originally reported hosts, and say so. Claiming "all 200 closed" after checking five is a measurement lie.
 
+Re-testing every low finding can burn the window; saying you sampled, and how, keeps the claim honest. Stratify by severity so criticals are never in the unsampled remainder. Sam's validation report for a fifty-finding engagement listed the ten sampled lows and the rule that picked them. Critical and high findings were re-tested at 100% in that engagement; the sample applied only to lows.
+
 ### 38.3b Automating re-test safely
 
 Automated re-tests are allow-listed checks (HTTP status, group membership read) with hard timeouts. They never include credential stuffing or exploit retries. If automation cannot validate safely, schedule a human read-only check.
 
+Automation that replays the original exploit path is out of bounds for this programme. Safe automation means authorized reads and expected status codes, like the 401 check on SYN-001. Sam's automation library will not load a method card marked noisy for validation. Cards marked quiet may automate; anything that needs a rate-limit exception stays manual.
+
 ### 38.1b Evidence of validation
 
 Validation tickets link to the original finding, the method used, the timestamp, and the hash of the new evidence. "Looks good to me" without those fields does not close a critical.
+
+A comment that says "looks fixed" is not evidence. Hashes of the new response, time, vantage and account belong on the ticket the same way discovery evidence did. Sam closes only when those fields are present and the hash matches the sealed store. A close comment without a hash is rejected by FindingsDesk the same way an empty severity is.
 
 ### Practice note
 
@@ -3056,6 +3102,8 @@ Require the re-test method id on every transition to closed for critical and hig
 ### 38.4b Communicating a failed re-test
 
 When a re-test shows a fix did not work, the report says so plainly, includes the evidence and the date, and avoids suggesting blame. The Riverstone Transit owner receives it privately first, so the team can plan a new fix before the result reaches wider governance meetings.
+
+Owners deserve a clear "still open" with the new evidence, not silence until the retro. The message reuses the finding id and avoids new attack detail. Sam's template for SYN-005 named the still-present group membership and the SLA clock still running, then offered a re-test slot after the next change.
 
 ### Exercises
 
@@ -3083,9 +3131,13 @@ You will (1) budget for policy and dependency updates; (2) keep adapters thin; (
 
 ATT&CK techniques, IdP APIs and ROE templates change. Budget calendar time for updates; pin versions and watch advisories.
 
+Dependencies that move every week force TrackScope into permanent firefighting. Pinning versions and reviewing upgrades as changes, not as background noise, keeps fail-closed behaviour testable. Sam's dependabot rules require a Lab I green on safety rows before a pin moves. Pins that sit behind safety rows cannot use the ordinary dependency train without that green. Ordinary library bumps that do not touch safety rows may still use the weekly train.
+
 ### 39.2 Thin adapters
 
 Isolate third-party SDKs behind interfaces so upgrades do not rewrite FindingsDesk core.
+
+A thick wrapper around a scanner invites unreviewed behaviour when the scanner updates. Thin adapters that only translate results into FindingsDesk schema keep the dangerous logic outside the trust boundary you maintain. Sam's adapter for the name-similarity check is under two hundred lines and has no shell-out. When the upstream scanner added a "auto-exploit" flag, the thin adapter ignored it and never exposed a switch in TrackScope. The adapter's tests include a fixture where the upstream flag is true and assert FindingsDesk never sees it.
 
 ### 39.3 Ownership
 
@@ -3093,21 +3145,31 @@ Every service has a named owning squad and a backup. CODEOWNERS enforces review.
 
 > **Synthetic case — Riverstone Transit.** PulseMap's ATT&CK mapper is an adapter; upgrading the technique list is a data PR, not a rewrite.
 
+CODEOWNERS on safety paths means a merge cannot land without someone who understands deny semantics. Orphan modules are how fail-open returns after a refactor. Sam's review of a "cleanup" PR that touched allowed() required two safety owners, not one casual approve. The cleanup author had to pair with a safety owner before the merge button enabled.
+
 ### 39.4 Errors and limits
 
 Orphan tools rot into fail-open museums.
+
+Abandoned tools still appear in ROE text and mislead the next lead. A yearly prune of the catalogue, with ROE templates updated in the same change, is maintenance, not housework. Sam removed three method cards last year whose binaries were no longer on the jump image. ROE templates that still named them failed a lint until the strings were removed in the same change. Catalogue prune and ROE lint share one pull request so they cannot drift a week apart.
 
 ### 39.2b Dependency risk
 
 Track libraries that parse CIDRs, YAML policy, or crypto. An RCE in a policy parser is a fail-open incident waiting to happen — pin, monitor CVEs, and prefer small parsers under your tests.
 
+A library that parses host strings sits on the fail-closed path; its CVEs are engagement blockers, not backlog trivia. Sam tracks those libraries on a short list next to the predicate and pages on new advisories the same day. An advisory on the host-parser library last quarter blocked two engagements until the pin moved and Lab I re-ran.
+
 ### 39.3b Deletion plan
 
 Maintainability includes knowing how to retire a tool: export dossiers, revoke credentials, archive code, mark PulseMap sources deprecated. Orphan services attract unowned risk.
 
+Deleting a service without a date leaves ghost event types on the bus. The deletion plan names consumers, the last engagement that may use it, and the purge of its secrets. Sam's PulseMap-v1 retirement date sat on the calendar beside the ROE that still cited it, until both changed together. Secrets for the retired service were rotated on the purge date, not left "in case we roll back."
+
 ### 39.1b API deprecation windows
 
 Announce deprecations with dates; keep dual-run periods for PulseMap consumers. Sudden removals of reason codes break timelines mid-engagement.
+
+Clients need calendar time before /v1/ goes dark. A deprecation window with dual-run and a named end date beats a surprise 404 during a client engagement. Sam announced FindingsDesk field retirements ninety days out and failed CI for new callers of the old names after day thirty. Mobile clients that still called the old field received a dedicated error code pointing at the migration guide.
 
 ### Practice note
 
@@ -3134,6 +3196,8 @@ Cross-training sessions use the same synthetic fixtures as Lab I so teaching tim
 
 Every module in the platform has a short README stating its purpose, owner, inputs, outputs and the tests that guard it. Sam updates these in the same pull request as code changes; reviewers reject changes that leave the README describing behaviour that no longer exists.
 
+A runbook that describes buttons the UI no longer has is worse than none. Doc changes ride in the same pull request as the UI change, reviewed by an operator who was not the author. Sam's last UI rename was blocked until the offline binder page was updated and re-hashed.
+
 ### Exercises
 
 - **EX115 — Pin.** How do you pin TrackScope for an engagement and still allow security patches? Rubric: 3 = version range/policy + re-verify; 2 = partial; 1 = latest always; 0 = none.
@@ -3159,6 +3223,8 @@ You will (1) verify end-to-end flow from action to ticket to coverage; (2) injec
 ### 40.1 End-to-end
 
 Synthetic action → TrackScope decision → event → FindingsDesk ticket → PulseMap coverage update. Record hashes at each hop.
+
+Unit greens can still hide a broken event path into FindingsDesk. End-to-end on synthetic fixtures exercises allow, deny, fail-closed and a full finding upsert before a release candidate is cut. Sam's Lab II script is the gate named in Capstone II. Capstone II cannot cite a unit-only green as Lab II evidence; the script must print the FindingsDesk finding id so the checklist can link it.
 
 ### 40.2 Faults
 
@@ -3195,27 +3261,39 @@ roe.pdf          OK
 scope.csv        OK
 ```
 
+Injecting a missing policy file and a dead FindingsDesk in the lab is how safe degradation stays proven. The expected outcome is deny-all and queued drafts, never an allow. Sam fails Lab II if either inject produces an allow or a lost draft count. The fourteen-draft outage story is the fixture size used for the dead-FindingsDesk inject. Operators watch queue depth climb to fourteen and fall to zero during replay as part of the scored run.
+
 ### 40.3 Sign-off
 
 Release candidate checklist signed by implementer and reviewer; safety rows must be green.
 
 > **Synthetic case — Riverstone Transit.** Lab II found coverage updated before ticket create on retry — fixed ordering with outbox.
 
+Independent sign-off is the same incentive rule as Lab I: the implementer does not green their own release. The checklist names tool SHAs, fixture hashes and the fault-inject results. Sam's release notes link the signed checklist, not a screenshot of a local demo. An implementer who signs their own checklist is rejected by the release script before the tag is created.
+
 ### 40.4 Errors and limits
 
 E2E without fault injection only proves the happy path.
+
+Flaky end-to-end runs train people to re-click until green. Quarantine flakes, fix them, or delete the test — do not skip Lab II. Sam's last flake was a clock skew in the hours gate; it blocked two releases until the fixture used fixed UTC times. A flake on a fail-closed row now opens a P1 with the same severity as a production deny bug. Re-clicking until green is recorded as a process incident when it touches those rows.
 
 ### 40.2b Observability in the lab
 
 Lab II enables debug logs temporarily but seals a redacted copy. Leaving debug on in engagement builds can leak tokens into log aggregates. Toggle is part of the sign-off checklist.
 
+If the lab cannot show deny reason codes and queue depth, operators will be blind in a real outage. Lab II asserts those dashboards update during the fault injects. Sam watches the same panels in the synthetic range that on-call will watch on a Friday night. If the reason-code panel stays empty during a deny inject, Lab II fails even when the HTTP status looks right.
+
 ### 40.3b Flaky tests
 
 A flaky Lab II is a blocker, not a retry-until-green ritual. Quarantine the test, fix the race (clocks, ordering), then re-run. Shipping with "sometimes fail-closed" is shipping fail-open.
 
+A flake that touches fail-closed rows is a P1, not a statistical curiosity. Quarantine removes it from the merge gate only with an owner and a due date. Sam's board shows quarantined safety tests in red until they return stable for a week of runs. Quarantine without a due date is rejected by the board automation.
+
 ### 40.1b Environment parity
 
 Lab II environment mirrors production tool versions and policy signing keys (test keys). Parity gaps explain "green in lab, red in engagement" surprises.
+
+Lab II on a laptop layout that differs from the jump host proves the laptop, not the engagement path. Parity means the same policy loader, bucket config and event sink type. Sam's lab image is rebuilt from the same golden branch as the jump host each Monday. A laptop-only pass is labelled demo and cannot satisfy Capstone II.
 
 ### Practice note
 
@@ -3237,6 +3315,8 @@ Happy-path green with malicious-pack red still fails Lab II sign-off.
 ### 40.4b Sign-off evidence
 
 The Laboratory II sign-off pack holds the test plan, the run logs, the list of injected faults with observed behaviour, and the open issues with owners. An independent engineer signs only after reproducing two randomly chosen results from the pack.
+
+The signed checklist, fixture hashes and fault-inject logs are sealed next to the binary tag. Without them, "Lab II green" is a rumour. Sam's artefact store rejects a release tag that lacks the checklist hash in its metadata. Missing metadata is how a hallway green once almost shipped; the store check stopped it.
 
 ### Exercises
 
