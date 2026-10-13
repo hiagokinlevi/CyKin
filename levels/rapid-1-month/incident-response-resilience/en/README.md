@@ -1,26 +1,26 @@
 # Incident response and cyber resilience — Rapid course — English
 
-**Duration:** 1 month · **Publication:** public principal manuscript available for study. **Editorial review:** draft; full technical, editorial and current-source A4 review pending.
+**Nominal duration:** 1 month · **Published for study:** one English book with four weekly chapters and 20 daily lessons. **Editorial review:** whole-volume technical, editorial and current-source A4 verification pending.
 
-[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Read public book](book/MANUSCRIPT.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Published manuscript](book/MANUSCRIPT.md) · [Playbooks](../../../../playbooks/incident-response-resilience/README.md)
+[Home](../../../../README.md) · [Course home](../README.md) · [20-lesson index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Read the book](book/MANUSCRIPT.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/incident-response-resilience/README.md)
 
-This language edition has one principal study book. Each curricular subject is one chapter with teaching, examples, exercises and, in the final book appendix, worked answers. The plan and chapter index map the intended material. They do not establish that unwritten chapters or translated lessons exist.
+This language edition has one principal study book. Its four curricular subjects organize modules; each weekly chapter has five authored weekday lessons. Every daily lesson contains teaching, a worked checkpoint, at least one exercise and a link to its result in the [final appendix](book/MANUSCRIPT.md#answers). The month and 20 lessons are a minimum sequence, not a limit on depth or future lessons. The [index](SUBJECTS.md) is the authoritative reading order; the [plan](book/PLAN.md) is a guide, not substitute teaching.
 
-**Published update — 2026-10-13:** The early Chapter 2 corrections and subsequent [HOLD2 request-binding and scope review](book/MANUSCRIPT.md#ir-rapid-ch02-hold2-binding) are integrated into the principal book, its programs and the [worked-results appendix](book/MANUSCRIPT.md#answers). HOLD2 now has 33 reproduced output lines: the earlier 19 plus 14 acceptance controls, with 114 additional local regression assertions. The temporary correction path remains navigation only. Existing exercise IDs and canonical evidence-release boundaries are preserved. The previous 337-page report remains stale; no complete-book approval or new A4 measurement is claimed. The next independent editorial review position is [section 2.9, cross-source correlation](book/MANUSCRIPT.md#ir-rapid-ch02-q1-lab), not a new learner completion requirement.
+**Technical continuity:** The earlier Module 2 corrections and [HOLD2 request-binding and scope review](book/MANUSCRIPT.md#ir-rapid-ch02-hold2-binding) remain integrated in the book and its [worked-results appendix](book/MANUSCRIPT.md#answers). The 50 exercise IDs and case-card release boundaries are preserved. Prior A4 measurements belong to earlier source hashes; this four-chapter, 20-lesson edition requires a new render and whole-volume review before book approval.
 
 ## Read the principal book in order
 
-| Position | Open the authored chapter |
-|---|---|
-| 1 | [Incident readiness, roles and authorized scope](book/MANUSCRIPT.md#ch-01) |
-| 2 | [Alert triage and evidence preservation](book/MANUSCRIPT.md#ch-02) |
-| 3 | [Containment, eradication and recovery decisions](book/MANUSCRIPT.md#ch-03) |
-| 4 | [Guided incident simulation and after-action review](book/MANUSCRIPT.md#ch-04) |
+| Module / instructional week | Open its first daily lesson | Continue |
+|---|---|---|
+| 1 · Readiness, roles and authorized scope | [Lesson 01](book/MANUSCRIPT.md#lesson-01) | Lessons 01–05 |
+| 2 · Alert triage and evidence preservation | [Lesson 06](book/MANUSCRIPT.md#lesson-06) | Lessons 06–10 |
+| 3 · Containment, eradication and recovery | [Lesson 11](book/MANUSCRIPT.md#lesson-11) | Lessons 11–15 |
+| 4 · Guided simulation and after-action review | [Lesson 16](book/MANUSCRIPT.md#lesson-16) | Lessons 16–20 |
 
-**Chapter 2 practice:** Read the [priority-reassessment explanation](book/MANUSCRIPT.md#ir-rapid-ch02-tri2-teaching), predict and run the [integrated TRI2 program](book/MANUSCRIPT.md#ir-rapid-ch02-tri2-lab), and compare your transcript with the [TRI2 worked result](book/MANUSCRIPT.md#ir-rapid-ch02-tri2-result). Continue through the chapter's preservation, temporal and evidence-package activities before attempting [EX014–EX019 in the Chapter 2 exercise section](book/MANUSCRIPT.md#chapter-2-exercises). Consult their numbered entries in the [final worked-results appendix](book/MANUSCRIPT.md#answers) after preparing your own answers. The [single course skill](../skill/SKILL.md) guides tutoring and assessment; it is not a second textbook.
+The [20-lesson index](SUBJECTS.md) lists every day, exercise assignment and next step. For a worked route, read the [priority-reassessment explanation](book/MANUSCRIPT.md#ir-rapid-ch02-tri2-teaching), predict and run the [TRI2 program](book/MANUSCRIPT.md#ir-rapid-ch02-tri2-lab), then compare with its [worked result](book/MANUSCRIPT.md#ir-rapid-ch02-tri2-result). EX014–EX019 are assigned across Lessons 06–08. Attempt each before opening its numbered answer. The [single course skill](../skill/SKILL.md) supports tutoring; it is not a second textbook.
 
-**Reading and review are separate:** Continue studying Chapter 2 in its published order. The editor's next independent review position is [2.9 — cross-source correlation](book/MANUSCRIPT.md#ir-rapid-ch02-q1-lab); this does not certify earlier learner completion or imply that later teaching is unwritten.
+**Reading and review are separate:** Follow Lessons 01–20 within Chapters 01–04. The editor's prior scoped review position at [2.9 — cross-source correlation](book/MANUSCRIPT.md#ir-rapid-ch02-q1-lab) is a source-section reference, not a learner completion checkpoint.
 
-English is the reference edition. English, Portuguese and Spanish are current lesson-writing priorities; every edition requires its own technical and language review.
+English is the reference edition and current writing priority. Translation begins after the English collection is written and reviewed; every later edition needs its own technical and language review.
 
-**Publication gate:** at least 300 actual A4 pages, 50 substantive exercises with worked results, verified sources, safe reproducible practice, technical and language review. Course titles do not confer accreditation.
+**Completion gate:** at least 300 verified A4 pages for this level, 50 substantial exercises with worked results, verified sources, safe reproducible practice, and technical, rights, accessibility and editorial review. A public manuscript can be studied before the gate passes. Course titles do not confer accreditation.

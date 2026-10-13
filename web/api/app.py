@@ -22,7 +22,9 @@ GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/CyKin/main/"
 GITHUB_VIEW = "https://github.com/hiagokinlevi/CyKin/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>\s*$', re.M)
+LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>\s*$', re.M)
 EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
+EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
 ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$', re.M)
 MCP_VERSION = "2025-06-18"
 ALLOWED_ORIGINS = {"https://cykin.org", "https://www.cykin.org", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
@@ -156,8 +158,33 @@ def chapter_sections(markdown: str) -> dict[int, dict[str, str]]:
     return chapters
 
 
-def worked_answers(book: str, chapter: str) -> str:
-    numbers = set(EXERCISE.findall(chapter))
+def lesson_sections(markdown: str) -> dict[int, dict[str, Any]]:
+    """Return authored daily lessons and their enclosing weekly chapters."""
+    lessons: dict[int, dict[str, Any]] = {}
+    anchors = list(LESSON_ANCHOR.finditer(markdown))
+    chapters = list(ANCHOR.finditer(markdown))
+    appendix = re.search(r'^<a id="answers"></a>\s*$', markdown, re.M)
+    for index, match in enumerate(anchors):
+        stops = [chap.start() for chap in chapters if chap.start() > match.start()]
+        if index + 1 < len(anchors):
+            stops.append(anchors[index + 1].start())
+        if appendix and appendix.start() > match.start():
+            stops.append(appendix.start())
+        body = markdown[match.start():min(stops) if stops else len(markdown)].strip()
+        heading = re.search(r'^#{3,4}\s+(.+)$', body, re.M)
+        if heading is None:
+            continue
+        week = next((int(chap.group(1)) for chap in reversed(chapters) if chap.start() < match.start()), None)
+        lessons[int(match.group(1))] = {
+            "title": re.sub(r'^(?:Lesson|Aula|Lección)\s+\d+\s+[—-]\s*', '', heading.group(1).strip()),
+            "markdown": body, "chapter": week,
+            "exercise_ids": sorted(set(EXERCISE_HEADING.findall(body))),
+        }
+    return lessons
+
+
+def worked_answers(book: str, chapter: str, exercise_ids: list[str] | None = None) -> str:
+    numbers = set(exercise_ids) if exercise_ids is not None else set(EXERCISE.findall(chapter))
     if not numbers:
         return ""
     matches = list(ANSWER.finditer(book))
@@ -208,22 +235,32 @@ async def course_details(request: Request, level: str, area: str, language: str)
     period_kind, schedule = course_schedule(subjects or "")
     planned = chapter_sections(plan)
     authored = chapter_sections(book) if book is not None else {}
-    daily_schedule_ready = len(planned) >= item["daily_lesson_target"]
+    planned_daily = lesson_sections(plan)
+    authored_daily = lesson_sections(book) if book is not None else {}
+    has_daily_lessons = bool(planned_daily or authored_daily)
+    daily_schedule_ready = has_daily_lessons and len(planned_daily.keys() | authored_daily.keys()) >= item["daily_lesson_target"]
     lessons = []
     modules: list[dict[str, Any]] = []
-    for number in sorted(planned.keys() | authored.keys()):
-        title = (authored[number] if number in authored else planned[number])["title"]
-        period, subject = ((number - 1) // 5 + 1, title) if daily_schedule_ready else schedule.get(number, (1, title))
+    source_planned = planned_daily if has_daily_lessons else planned
+    source_authored = authored_daily if has_daily_lessons else authored
+    for number in sorted(source_planned.keys() | source_authored.keys()):
+        section = source_authored[number] if number in source_authored else source_planned[number]
+        title = section["title"]
+        if has_daily_lessons:
+            period = section.get("chapter") or (number - 1) // 5 + 1
+            subject = re.sub(r'^(?:Chapter|Capítulo)\s+\d+\s+[—-]\s*', '', (authored.get(period) or planned.get(period) or {"title": title})["title"])
+        else:
+            period, subject = schedule.get(number, (1, title))
         lessons.append({
             "chapter": number,
             "title": title,
             "subject": subject,
             "module": period,
-            "published": number in authored,
-            "source_url": GITHUB_VIEW + (manuscript_path if number in authored else plan_path) + f"#ch-{number:02d}",
+            "published": number in source_authored,
+            "source_url": GITHUB_VIEW + (manuscript_path if number in source_authored else plan_path) + f"#{'lesson' if has_daily_lessons else 'ch'}-{number:02d}",
         })
         if not modules or modules[-1]["number"] != period:
-            modules.append({"number": period, "kind": "Week" if daily_schedule_ready else period_kind, "chapters": []})
+            modules.append({"number": period, "kind": "Chapter" if has_daily_lessons else period_kind, "title": subject, "chapters": []})
         modules[-1]["chapters"].append(number)
     return {
         "course": item,
@@ -232,6 +269,9 @@ async def course_details(request: Request, level: str, area: str, language: str)
         "modules": modules,
         "published_chapters": len(authored),
         "planned_chapters": len(planned.keys() | authored.keys()),
+        "published_lessons": len(authored_daily),
+        "planned_lessons": len(planned_daily.keys() | authored_daily.keys()) if has_daily_lessons else item["daily_lesson_target"],
+        "has_daily_lessons": has_daily_lessons,
         "daily_schedule_ready": daily_schedule_ready,
         "book_url": GITHUB_VIEW + manuscript_path if authored else None,
         "source_branch": "main",
@@ -247,21 +287,24 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
     book = await source_text(request, path)
     if book is None:
         raise HTTPException(404, "This edition has no authored manuscript yet")
-    sections = chapter_sections(book)
+    daily = lesson_sections(book)
+    sections = daily if daily else chapter_sections(book)
     section = sections.get(chapter)
     if section is None:
         raise HTTPException(404, "This chapter is still a plan")
     chapters = sorted(sections)
+    exercise_ids = section.get("exercise_ids", sorted(set(EXERCISE.findall(section["markdown"]))))
     return {
         "course": {"level": level, "area": area, "language": language},
         "chapter": chapter,
         "title": section["title"],
         "markdown": section["markdown"],
-        "worked_answers": worked_answers(book, section["markdown"]),
-        "exercise_ids": sorted(set(EXERCISE.findall(section["markdown"]))),
+        "worked_answers": worked_answers(book, section["markdown"], exercise_ids),
+        "exercise_ids": exercise_ids,
+        "week_chapter": section.get("chapter"),
         "previous": max((n for n in chapters if n < chapter), default=None),
         "next": min((n for n in chapters if n > chapter), default=None),
-        "source_url": GITHUB_VIEW + path + f"#ch-{chapter:02d}",
+        "source_url": GITHUB_VIEW + path + f"#{'lesson' if daily else 'ch'}-{chapter:02d}",
         "source_branch": "main",
         "editorial_note": "Public teaching text; publication does not certify that the complete book passed editorial review.",
     }

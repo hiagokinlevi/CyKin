@@ -17,7 +17,7 @@ function sourcePath(url: URL): string | null {
 }
 
 export function internalSourceLink(href: string, sourceUrl: string, language: string, mode: 'book' | 'lesson' | 'reference' = 'lesson'): string | null {
-  if (href.startsWith('#') && (mode !== 'lesson' || !/^#ch-\d{2,4}$/i.test(href))) return href;
+  if (href.startsWith('#') && (mode !== 'lesson' || !/^#(?:ch|lesson)-\d{2,4}$/i.test(href))) return href;
   let url: URL;
   try { url = new URL(href, sourceUrl); } catch { return null; }
   const path = sourcePath(url);
@@ -31,13 +31,17 @@ export function internalSourceLink(href: string, sourceUrl: string, language: st
     const coursePage = `/courses/${level}/${area}/`;
     if (file === 'book/MANUSCRIPT.md') {
       if (mode === 'book' && sourcePath(new URL(sourceUrl)) === path && url.hash) return url.hash;
+      const lesson = url.hash.match(/^#lesson-(\d{2,4})$/i);
+      if (lesson) { query.set('chapter', String(Number(lesson[1]))); return coursePage + '?' + query; }
       const chapter = url.hash.match(/^#ch-(\d{2,4})$/i);
-      if (chapter) { query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
+      if (chapter && mode === 'lesson' && !/^#lesson-\d{2,4}$/i.test(new URL(sourceUrl).hash)) { query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
       return '/book/?' + new URLSearchParams({ level, area, lang }) + url.hash;
     }
     if (file === 'SUBJECTS.md' || file === 'README.md') {
+      const lesson = url.hash.match(/^#lesson-(\d{2,4})$/i);
       const chapter = url.hash.match(/^#ch-(\d{2,4})$/i);
-      if (chapter) query.set('chapter', String(Number(chapter[1])));
+      if (chapter) return '/book/?' + new URLSearchParams({ level, area, lang }) + url.hash;
+      if (lesson) query.set('chapter', String(Number(lesson[1])));
       return coursePage + '?' + query;
     }
   }

@@ -17,7 +17,7 @@ const levelName = catalog.level_names[course.level].en;
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>
       <div class="eyebrow">COURSE {String(course.number).padStart(3, '0')} · <span>{levelName}</span></div>
       <h1>{course.title}</h1>
-      <p>One course, one book. The weekday calendar sets a minimum number of lessons and no maximum. Read the English chapters already published below.</p>
+      <p>One course, one book. Study one lesson each weekday, normally in a weekly chapter with five lessons. Each lesson has a worked example and an exercise. Read what is published below.</p>
       <div class="course-heading-actions">
         <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
@@ -27,7 +27,7 @@ const levelName = catalog.level_names[course.level].en;
       <div id="course-facts" class="course-facts" hidden></div>
     </div></section>
     <section class="course-workspace shell">
-      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE CONTENTS</div><h2>Modules and lessons</h2><p>Published chapters and current curriculum blocks.</p><a id="course-overview-link" href="?lang=en">← Course overview</a></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
+      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE CONTENTS</div><h2>Chapters and lessons</h2><p>Open each chapter to find its daily lessons.</p><a id="course-overview-link" href="?lang=en">← Course overview</a></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
       <div class="card course-reader">
         <div id="course-lesson-top" class="course-lesson-top" hidden><span id="course-position"></span><a id="course-top-overview" href="?lang=en">Course overview</a></div>
         <div id="course-kicker" class="reader-kicker">COURSE {String(course.number).padStart(3, '0')}</div>
@@ -53,8 +53,8 @@ const levelName = catalog.level_names[course.level].en;
     import { siteLanguage } from '../../../../lib/i18n';
 
     type Lesson = { chapter: number; title: string; subject: string; module: number; published: boolean; source_url: string };
-    type Module = { number: number; kind: string; chapters: number[] };
-    type Details = { course: { instructional_weeks: number; study_days_per_week: number; daily_lesson_target: number; minimum_exercises: number; minimum_a4_pages: number }; lessons: Lesson[]; modules: Module[]; published_chapters: number; planned_chapters: number; daily_schedule_ready: boolean; book_url: string | null };
+    type Module = { number: number; kind: string; title: string; chapters: number[] };
+    type Details = { course: { instructional_weeks: number; study_days_per_week: number; daily_lesson_target: number; minimum_exercises: number; minimum_a4_pages: number }; lessons: Lesson[]; modules: Module[]; published_chapters: number; planned_chapters: number; published_lessons: number; planned_lessons: number; has_daily_lessons: boolean; daily_schedule_ready: boolean; book_url: string | null };
     type LessonData = { chapter: number; title: string; markdown: string; worked_answers: string; exercise_ids: string[]; source_url: string };
     const $ = (id: string) => document.getElementById(id)!;
     const root = $('course-root');
@@ -82,12 +82,12 @@ const levelName = catalog.level_names[course.level].en;
     function link(label: string, href: string, className = 'button secondary') {
       const a = document.createElement('a'); a.href = href; a.className = className; a.textContent = label; return a;
     }
-    function moduleLabel(module: Module) { return module.kind === 'Module' ? `Module ${module.number}` : `Module ${module.number} · ${module.kind} ${module.number}`; }
+    function moduleLabel(module: Module) { return module.kind === 'Chapter' ? `Chapter ${String(module.number).padStart(2, '0')} · ${module.title}` : module.kind === 'Module' ? `Module ${module.number}` : `Module ${module.number} · ${module.kind} ${module.number}`; }
     function moduleFor(chapter: number) { return details?.modules.find(module => module.chapters.includes(chapter)); }
     function lessonLink(lesson: Lesson, className: string) {
       const item = link('', chapterUrl(lesson.chapter), className);
       const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(lesson.chapter).padStart(2, '0');
-      const subject = document.createElement('span'); subject.className = 'lesson-subject'; subject.textContent = lesson.subject;
+      const subject = document.createElement('span'); subject.className = 'lesson-subject'; subject.textContent = lesson.title;
       const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = lesson.published ? 'Read lesson →' : 'Not published';
       item.append(number, subject, state);
       item.addEventListener('click', event => { event.preventDefault(); void openLesson(lesson.chapter, true); });
@@ -119,11 +119,15 @@ const levelName = catalog.level_names[course.level].en;
       if (!details) return;
       const overview = $('course-overview'); overview.replaceChildren();
       const cadence = document.createElement('section'); cadence.className = 'course-cadence';
-      const cadenceLabel = document.createElement('div'); cadenceLabel.className = 'eyebrow'; cadenceLabel.textContent = 'HOW TO STUDY';
-      const cadenceTitle = document.createElement('h3'); cadenceTitle.textContent = 'Minimum lessons, no maximum';
-      const cadenceCopy = document.createElement('p'); cadenceCopy.textContent = 'Study one lesson on a weekday. The planning minimum for this level is a floor. If an idea needs another lesson to be taught well, the course grows. Chapter length follows the idea.';
-      const availability = document.createElement('p'); availability.className = 'course-availability'; availability.textContent = `${details.published_chapters} lessons published in this edition. Planning minimum: ${details.course.daily_lesson_target}. An outline is not a lesson.`;
-      cadence.append(cadenceLabel, cadenceTitle, cadenceCopy, availability); overview.append(cadence);
+      const cadenceLabel = document.createElement('div'); cadenceLabel.className = 'eyebrow'; cadenceLabel.textContent = 'WEEKDAY STUDY PLAN';
+      const cadenceTitle = document.createElement('h3'); cadenceTitle.textContent = `${details.course.instructional_weeks} weeks · ${details.course.daily_lesson_target} daily lessons`;
+      const cadenceCopy = document.createElement('p'); cadenceCopy.textContent = 'One lesson each Monday–Friday, normally five lessons in a weekly chapter. Learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.';
+      const weekdays = document.createElement('div'); weekdays.className = 'course-weekdays';
+      for (const day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']) { const chip = document.createElement('span'); chip.textContent = day; weekdays.append(chip); }
+      const availability = document.createElement('p'); availability.className = 'course-availability'; availability.textContent = details.has_daily_lessons
+        ? `${details.published_chapters} chapters and ${details.published_lessons} of ${details.planned_lessons} indexed daily lessons published in this edition.`
+        : `${details.published_chapters} current subject chapters published. Distinct daily lessons have not yet been indexed for this edition; the ${details.course.daily_lesson_target}-lesson baseline is a plan, not published content.`;
+      cadence.append(cadenceLabel, cadenceTitle, cadenceCopy, weekdays, availability); overview.append(cadence);
       const heading = document.createElement('h3'); heading.textContent = 'Your course roadmap'; overview.append(heading);
       const modules = document.createElement('div'); modules.className = 'course-module-grid';
       for (const module of details.modules) {
@@ -145,7 +149,7 @@ const levelName = catalog.level_names[course.level].en;
     function renderFacts() {
       if (!details) return;
       const facts = $('course-facts'); facts.replaceChildren(); facts.hidden = false;
-      for (const value of [`${details.published_chapters} lessons published`, `Planning minimum ${details.course.daily_lesson_target}`, 'English lessons first']) {
+      for (const value of [`${details.course.instructional_weeks} weekly chapters planned`, `${details.course.daily_lesson_target} daily lessons planned`, `${details.published_chapters} chapters published`, `${details.published_lessons} daily lessons published`]) {
         const fact = document.createElement('span'); fact.textContent = value; facts.append(fact);
       }
     }
@@ -214,16 +218,18 @@ const levelName = catalog.level_names[course.level].en;
       if (!item) {
         $('course-kicker').textContent = `COURSE ${String(number).padStart(3, '0')}`;
         $('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
-        $('course-intro').textContent = `${details.published_chapters} lessons published in this edition. Planning minimum: ${details.course.daily_lesson_target}. An outline is not a lesson.`;
+        $('course-intro').textContent = details.has_daily_lessons
+          ? `${details.published_chapters} chapters and ${details.published_lessons} daily lessons are published in this edition.`
+          : `${details.published_chapters} legacy subject chapters are published. The daily lessons are still being developed.`;
         if (details.book_url) source.append(link('Read the full book here →', `/book/?${new URLSearchParams({ level, area, lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}`));
         renderOverview();
         return;
       }
       const module = moduleFor(chapter);
-      $('course-position').textContent = `${module ? moduleLabel(module) + ' · ' : ''}Lesson ${chapter} of ${details.planned_chapters}`;
+      $('course-position').textContent = `${module ? moduleLabel(module) + ' · ' : ''}${details.has_daily_lessons ? 'Lesson' : 'Legacy chapter'} ${chapter} of ${details.has_daily_lessons ? details.planned_lessons : details.planned_chapters}`;
       $('course-kicker').textContent = `LESSON ${String(chapter).padStart(2, '0')} · COURSE ${String(number).padStart(3, '0')}`;
-      $('course-reader-title').textContent = item.subject;
-      if (item.published) source.append(link('Read the full book here →', `/book/?${new URLSearchParams({ level, area, lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}#ch-${String(chapter).padStart(2, '0')}`));
+      $('course-reader-title').textContent = item.title;
+      if (item.published) source.append(link('Read the full book here →', `/book/?${new URLSearchParams({ level, area, lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}#${details.has_daily_lessons ? 'lesson' : 'ch'}-${String(chapter).padStart(2, '0')}`));
       if (!item.published) { $('course-intro').textContent = 'This lesson has not been published in this edition yet. Choose another available lesson or return to the course overview.'; return; }
       $('course-intro').textContent = 'Loading the published lesson…';
       try {
@@ -235,7 +241,7 @@ const levelName = catalog.level_names[course.level].en;
         await renderMarkdown($('course-markdown'), lesson.markdown, lesson.source_url, language);
         if (id !== requestId) return;
         $('course-markdown').hidden = false;
-        const exerciseHeading = [...$('course-markdown').querySelectorAll('h2,h3,h4')].find(element => /chapter\s+\d+\s+exercises/i.test(element.textContent || ''));
+        const exerciseHeading = [...$('course-markdown').querySelectorAll('h2,h3,h4')].find(element => /(?:chapter|lesson)\s+\d+\s+(?:exercises|practice)|practice\s+—\s+(?:chapter|lesson)\s+\d+/i.test(element.textContent || ''));
         if (exerciseHeading) { exerciseHeading.id = 'lesson-exercises'; source.append(link('Jump to exercises ↓', '#lesson-exercises')); }
         if (lesson.worked_answers) { await renderMarkdown($('course-answer-markdown'), lesson.worked_answers, lesson.source_url, language); $('course-answers').hidden = false; }
         if (id === requestId) void showProgress(lesson);

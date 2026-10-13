@@ -11,8 +11,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const plan = path.match(/^levels\/([a-z0-9-]+)\/([a-z0-9-]+)\/(en|pt|es|he|fr|ru|de|zh|ja)\/book\/PLAN\.md$/);
     if (plan) {
       const [, level, area, lang] = plan;
+      const lesson = location.hash.match(/^#lesson-(\d{2,4})$/)?.[1];
       const chapter = location.hash.match(/^#ch-(\d{2,4})$/)?.[1];
-      location.replace(`/courses/${level}/${area}/?${new URLSearchParams({ lang, ...(chapter ? { chapter: String(Number(chapter)) } : {}) })}`);
+      if (chapter) location.replace(`/book/?${new URLSearchParams({ level, area, lang })}#ch-${chapter}`);
+      else location.replace(`/courses/${level}/${area}/?${new URLSearchParams({ lang, ...(lesson ? { chapter: String(Number(lesson)) } : {}) })}`);
     } else if (!path.endsWith('.md') || path.includes('..') || path.startsWith('/')) status.textContent = 'Choose a document from a course page.';
     else {
       try {

@@ -2,40 +2,46 @@
 
 - Language: English (`en`)
 - Level: rapid course, one month; approximately 80 hours of planned study
-- Editorial state: **published**. All 4 subject-chapters have initial teaching text, 50 specified exercises and corresponding worked results. Substantive teaching expansion, specialist review, editing and A4 page verification remain pending.
-- Public access: this draft is available to read and study; it is **not an editorially completed book**, accredited program or qualification. A previous source met the A4 *length floor*, but the current revised source has no new verified rendering.
+- Editorial state: **published learning text, editorial review pending**. The four subject modules are now four weekly chapters containing 20 daily lessons with 50 specified exercises and corresponding worked results. Whole-book specialist review, editing and A4 verification remain pending.
+- Public access: this public edition is available to read and study; it is **not an editorially completed book**, accredited program or qualification. A previous source met the A4 *length floor*, but the current revised source has no new verified rendering.
 - Authorship and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Rights: original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); cited sources retain their own rights.
 
 **Publication update — 2026-10-13:** The six early Chapter 2 correction units are integrated into this public principal manuscript, including their executable programs and matching worked results. The material is available for study now; no separate correction chapter is required. Review in this update is limited to sections 2.1–2.8 and the affected exercise/answer material. Full-volume technical, language, rights, accessibility and A4 verification remain pending under the [book standard](../../../../../BOOK_STANDARD.md); the book remains an editorial draft, not an approved complete edition. The earlier 337-page report must not be treated as a measurement of this changed source.
 
-**Publication update — 2026-10-13, English rapid edition (maintainer editorial responsibility: hiagokinlevi):** The substantive CH04 early corrections were consolidated into Chapter 4 and its corresponding final answers, including the distinction between a proposed preservation request, simulated approval, actual collection, a later branch report and post-release evidence. Added four classroom-only learning units R1X–R4X to deepen readiness, release-aware triage, independent service-acceptance gates and frozen-artifact scoring. These units do not create new R-series cards, credentials or additional numbered exercises. The final source must be re-rendered before an A4 page figure can be claimed for this edition; the maintainer's **343-page A4 measurement applied only to the earlier SHA-256 `1353d6f595a18018b315126f7791aa0e32767c097bb78cf26ad41fc498b8af64`**. This editorial pass is not a signed external specialist review, complete accessibility/rightsholder audit, whole-book technical verification or evidence of actual student proficiency. Remain **DRAFT** until all [publication-gate](../../../../../BOOK_STANDARD.md) items are independently documented.
+**Publication update — 2026-10-13, English rapid edition (maintainer editorial responsibility: hiagokinlevi):** The substantive CH04 early corrections were consolidated into Chapter 4 and its corresponding final answers, including the distinction between a proposed preservation request, simulated approval, actual collection, a later branch report and post-release evidence. Added four classroom-only learning units R1X–R4X to deepen readiness, release-aware triage, independent service-acceptance gates and frozen-artifact scoring. These units do not create new R-series cards, credentials or additional numbered exercises. The final source must be re-rendered before an A4 page figure can be claimed for this edition; the maintainer's **343-page A4 measurement applied only to the earlier SHA-256 `1353d6f595a18018b315126f7791aa0e32767c097bb78cf26ad41fc498b8af64`**. This editorial pass is not a signed external specialist review, complete accessibility/rightsholder audit, whole-book technical verification or evidence of actual student proficiency. Remain **under editorial review** until all [publication-gate](../../../../../BOOK_STANDARD.md) items are independently documented.
 
-[Course overview](../README.md) · [Four-subject chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md) · [Book plan](PLAN.md) · [Practice playbooks](../../../../../playbooks/incident-response-resilience/README.md)
+[Course overview](../README.md) · [Twenty-lesson index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md) · [Book plan](PLAN.md) · [Practice playbooks](../../../../../playbooks/incident-response-resilience/README.md)
 
-[Chapter 1](#ch-01) · [Chapter 2](#ch-02) · [Chapter 3](#ch-03) · [Chapter 4](#ch-04) · [Worked results](#answers)
+[Lesson 01](#lesson-01) · [Lesson 02](#lesson-02) · [Lesson 03](#lesson-03) · [Lesson 04](#lesson-04) · [Lesson 05](#lesson-05) · [Lesson 06](#lesson-06) · [Lesson 07](#lesson-07) · [Lesson 08](#lesson-08) · [Lesson 09](#lesson-09) · [Lesson 10](#lesson-10) · [Lesson 11](#lesson-11) · [Lesson 12](#lesson-12) · [Lesson 13](#lesson-13) · [Lesson 14](#lesson-14) · [Lesson 15](#lesson-15) · [Lesson 16](#lesson-16) · [Lesson 17](#lesson-17) · [Lesson 18](#lesson-18) · [Lesson 19](#lesson-19) · [Lesson 20](#lesson-20) · [Worked results](#answers)
 
-## How to study this draft
+## How to study this public edition
 
-Read a chapter's explanation and worked case before looking at its exercises. Record observations, assumptions, decisions and missing information separately. Use only the fictional systems and records provided here, or an environment you own and are authorized to test. The worked results at the end illustrate acceptable reasoning; an answer that identifies different defensible assumptions may also be valid.
+Read each daily lesson's explanation and worked example before looking at its exercises. Record observations, assumptions, decisions and missing information separately. Use only the fictional systems and records provided here, or an environment you own and are authorized to test. The worked results at the end illustrate acceptable reasoning; an answer that identifies different defensible assumptions may also be valid.
 
-The one-book curriculum has four subjects: (1) incident readiness, roles and authorized scope; (2) alert triage and evidence preservation; (3) containment, eradication and recovery decisions; and (4) a guided simulation with an after-action review. Each subject is one chapter. The current draft contains 50 exercises, with their worked results in the final appendix. The exercise count alone does not satisfy the full publication standard.
+The one-book curriculum has four modules: (1) incident readiness, roles and authorized scope; (2) alert triage and evidence preservation; (3) containment, eradication and recovery decisions; and (4) a guided simulation with an after-action review. Each weekly chapter contains five daily lessons; more may be added as needed. The current book contains 50 exercises, with their worked results in the final appendix. The exercise count alone does not satisfy the full publication standard.
 
-| Chapter | Subject | Planned exercises | Written exercises | State |
+| Weekly chapter | Subject | Daily lessons | Written exercises | State |
 |---|---|---:|---:|---|
-| 1 | Incident readiness, roles and authorized scope | 13 | 13 | Draft; technical and editorial review pending |
-| 2 | Alert triage and evidence preservation | 13 | 13 | Draft; technical and editorial review pending |
-| 3 | Containment, eradication and recovery decisions | 12 | 12 | Draft; technical and editorial review pending |
-| 4 | Guided incident simulation and after-action review | 12 | 12 | Draft; technical and editorial review pending |
+| 1 | Incident readiness, roles and authorized scope | 01–05 | 13 | Published; whole-book review pending |
+| 2 | Alert triage and evidence preservation | 06–10 | 13 | Published; whole-book review pending |
+| 3 | Containment, eradication and recovery decisions | 11–15 | 12 | Published; whole-book review pending |
+| 4 | Guided incident simulation and after-action review | 16–20 | 12 | Published; whole-book review pending |
 
+
+**Weekly-chapter edition note:** The four subject modules are the weekly book chapters; their teaching is assigned to Lessons 01–20 and the 50 exercises sit with their daily lessons. A lesson may be expanded beyond the nominal four-week minimum when the subject requires it. This structural pass does not by itself certify technical accuracy, measured A4 length or final-book completion.
+
+<a id="week-01"></a>
 <a id="ch-01"></a>
 
-## Chapter 1 — Incident readiness, roles and authorized scope
+## Chapter 01 — Incident readiness, roles and authorized scope
 
-<!-- cykin:lesson-figures:start ch-01 -->
-### Lesson map
+**Five daily lessons · week 1 of four.** This chapter groups the original section identifiers 1.x. Lesson numbers identify a learner day; section identifiers remain stable so existing source references and laboratory instructions still work.
 
-Lesson 01 published. Map, example, EX013.
+<!-- cykin:lesson-figures:start week-01 -->
+#### Module map
+
+Module 1 overview: five daily lessons below provide the teaching, examples, exercises and worked-answer links.
 
 ```mermaid
 flowchart TD
@@ -52,7 +58,7 @@ flowchart TD
   EX --> Q["Exercise EX013"]
 ```
 
-### Logical drawing
+#### Module logical drawing
 
 ```mermaid
 flowchart LR
@@ -94,12 +100,12 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cykin:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end week-01 -->
 
 
-### Learning outcomes
+#### Module learning outcomes
 
-By the end of this chapter, a learner should be able to:
+Across these five daily lessons, a learner should be able to:
 
 1. Explain why incident response begins before an alert appears and continues after service recovery.
 2. Distinguish an observation from an interpretation, a response decision and a confirmed fact.
@@ -109,7 +115,34 @@ By the end of this chapter, a learner should be able to:
 6. Describe a safe first action when a suspicious signal has not yet been verified.
 7. Turn a service dependency map into a bounded evidence-readiness plan without treating a planned log source as a collected fact.
 
-### 1.1 Response is part of risk management
+#### Shared Round A case packet
+
+The following eight rows are synthetic classroom inputs for Chapters 01–05. Section 1.7 later explains their provenance and limits; this preview makes the same packet available before the first daily exercise. All times are UTC on 2026-10-11. A row reports source content, not a proved cause or human identity.
+
+| ID | Time | Source | Reported observation |
+|---|---|---|---|
+| R1 | 08:40 | Identity log | `desk-a` signed in successfully |
+| R2 | 08:42 | Application log | `desk-a` opened the booking dashboard |
+| R3 | 08:43 | Application log | Booking B17 changed from Room 2 to Room 4 |
+| R4 | 08:44 | Application log | Booking B18 was cancelled |
+| R5 | 08:48 | Help desk | A patron reported that B18 disappeared |
+| R6 | 08:50 | Staff calendar | Front-desk training was scheduled for 08:30–09:00 |
+| R7 | 08:52 | Backup monitor | The previous night's backup completed successfully |
+| R8 | 08:55 | Network summary | Destination detail is absent; no relevant network conclusion follows |
+
+#### Module 1 exercise rules
+
+Work from **only R1–R8** and the fictional authority rules in Module 1. The case is synthetic. At the 09:00 intake and 09:05 decision checkpoints, do not cite records or interviews released in later chapters, claim a production collection took place, or infer a person's identity from an account label. Write any imagined future signal as **hypothetical**. For each answer: (1) write `HL-IR-001` and the exercise ID; (2) copy the relevant record IDs and UTC times; (3) fill the named output fields; (4) mark each conclusion as observed, inferred, unknown or proposed; (5) name an owner and approval for any new collection or service change; and (6) compare the result with the worked answer at the end of the book. The submitted table, note or decision card is the expected evidence of learning; a label without its supporting record is insufficient.
+
+**Common assessment rubric:** score an exercise **0** if its artifact is missing or presents an unsupported attribution or action as fact; **1** if it answers the question but omits a required source, limit, authority or test; **2** if all named fields are present, the reasoning follows the supplied evidence and the next step is bounded and authorized. The local requirements below specify what earns 2 points. A claimed compromise, successful restore or absence of data transfer based only on R1–R8 must be corrected regardless of the numerical score. No real website, account or patron data is needed.
+
+<a id="lesson-01"></a>
+
+### Lesson 01 — Evidence readiness and the first case question
+
+**Week 1, day 1.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 1.1 Response is part of risk management
 
 An incident response team does more than react to an alarm. It prepares contacts and authority, recognizes potentially harmful activity, preserves facts, makes proportionate decisions, restores services and learns from the result. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident response recommendations throughout cybersecurity risk management as described by the [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework/faqs). The framework's Govern, Identify, Protect, Detect, Respond and Recover functions are concurrent and continuous activities. A team should not wait for “Respond” to think about owners, backups, communications or evidence.
 
@@ -121,7 +154,7 @@ Consider a small library that provides room reservations online. An alert may sa
 
 The first useful question is: **Which service and people could be harmed, and what is known right now?** A team that records uncertainty can act quickly without pretending to know a root cause. A team that labels every alert “breach” risks needless disruption; a team that dismisses every alert risks delayed containment.
 
-### 1.2 A fictional service map
+#### 1.2 A fictional service map
 
 The course uses **Harbor Library**, a fictional organization. No personal records or real network are involved. Residents reserve study rooms through a website. Front-desk staff can edit bookings. A separate event-newsletter list contains contact addresses. The booking service depends on a web application, an identity service, a database, a nightly backup and a staff help desk.
 
@@ -135,7 +168,7 @@ The course uses **Harbor Library**, a fictional organization. No personal record
 
 This map is incomplete on purpose. It does not say whether the application uses third-party hosting, how clocks are synchronized, or who can approve a service outage. A response team should record those as **readiness gaps** before a crisis. If one dependency fails, the team can then ask the correct owner for evidence and options.
 
-#### From dependency map to evidence-readiness contract
+##### From dependency map to evidence-readiness contract
 
 A service map names components and owners; it does **not** show that an investigator could answer a specific question on time. A useful next step is an **evidence-readiness contract**: a short, testable agreement about which source would record an event, what its fields mean, who may retrieve it, how long a useful record can remain available and how a second analyst could reproduce the selection. This is a CyKin teaching device, not a required form from [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). NIST's incident-response guidance places preparation, service knowledge and response roles within broader risk management; the contract below turns that general orientation into a small fictional library exercise.
 
@@ -163,21 +196,21 @@ The four-row card is a **summary**, not a completed six-field contract. For the 
 | Retention and failure signals | Ask the custodian to demonstrate the oldest retrievable test event, collector lag and a visible failure indicator. Until this check, do not write a retention guarantee or call an empty query complete. |
 | Falsifiable rehearsal | If an isolated test is approved, predeclare a synthetic edit at 10:00 UTC and an out-of-range control at 10:10 UTC. Expect only the first inside the bounded query; save the exact filter, execution time and any missing-field or collection failure. This is a proposed procedure, not a reported result. |
 
-The four-row decision card is deliberately **two-sided**. It names a source, then names what would still be unknown after seeing it. That prevents the familiar slide from “log exists” to “question answered.” Its first row also distinguishes an *activity record* from a *state-of-the-world record*. If an application audit says B18 was cancelled but the restricted current-state copy is missing, the analyst can report the recorded cancellation and request the state comparison. The analyst cannot certify the live schedule from the audit alone. Its second row anticipates Chapter 2's correlation exercise: even a supplied exact session-key match narrows a record relationship, not the identity or authorization of a person.
+The four-row decision card is deliberately **two-sided**. It names a source, then names what would still be unknown after seeing it. That prevents the familiar slide from “log exists” to “question answered.” Its first row also distinguishes an *activity record* from a *state-of-the-world record*. If an application audit says B18 was cancelled but the restricted current-state copy is missing, the analyst can report the recorded cancellation and request the state comparison. The analyst cannot certify the live schedule from the audit alone. Its second row anticipates Module 2's correlation exercise: even a supplied exact session-key match narrows a record relationship, not the identity or authorization of a person.
 
 **Trace where an observation could be lost.** A missing search result has several different causes. The producer might never emit the event; an emitted event might fail collection; a collected record might arrive after the query; an available record might already have aged out; access controls might deny the selected view; the query might use the wrong booking ID, timezone or time window; or a reviewer might misread a real row. The response to these failures differs. Repeating the same query cannot repair non-emission, and asking for a broad export is not a substitute for fixing a wrong filter. A readiness review therefore records the *last confirmed point* in the path from producer to learner and a named owner for the next check. Do not collapse every empty result into “the system had no activity.”
 
 **Make a rehearsal falsifiable.** In an isolated, explicitly approved training copy, an owner could predeclare one synthetic booking change and one deliberately out-of-range control event. The application custodian would record the test request ID and UTC event time; the collector would record receipt time and source; the analyst would run a bounded query and save the exact filter and run time. The expected result is the in-range change and its agreed fields, with the out-of-range control excluded by the declared interval. If the expected row is missing, the team investigates emission, transport, retention, access and query scope in order. If the out-of-range row appears, the filter or time interpretation needs correction. Passing this small rehearsal shows only that the tested path and interval behaved as stated. It does not prove all future events will be collected, or that the event proves why a person acted.
 
-Rehearsal evidence should include the **negative and failure cases**, not only a successful dashboard screenshot. A copy of a search result without its source, filters and collection boundary may be impossible to reproduce. A source timestamp and an analyst's discovery time should occupy separate fields; otherwise a delayed record can seem to have happened later than it did. The plan should also say how a source error is noticed: for example, a missing expected test event, a delayed collection receipt, a schema change or an expired retention window. Chapter 2 will exercise those distinctions with synthetic records. They belong in readiness because a responder cannot reconstruct a record that was never retained.
+Rehearsal evidence should include the **negative and failure cases**, not only a successful dashboard screenshot. A copy of a search result without its source, filters and collection boundary may be impossible to reproduce. A source timestamp and an analyst's discovery time should occupy separate fields; otherwise a delayed record can seem to have happened later than it did. The plan should also say how a source error is noticed: for example, a missing expected test event, a delayed collection receipt, a schema change or an expired retention window. Module 2 will exercise those distinctions with synthetic records. They belong in readiness because a responder cannot reconstruct a record that was never retained.
 
 **Scope and privacy follow the question.** The booking question does not authorize opening the separate newsletter list. The D1 card names minimal booking and session fields to request, the custodians who could provide them and the approval to seek. If a later, supported observation raises a data-exposure concern, the incident lead and privacy contact can define a new purpose and boundary. Collecting an entire identity history or patron database merely because it is technically accessible would enlarge the case and the number of people exposed to those records. A good evidence plan makes the smallest useful selection reproducible and records what it excluded. The exact retention, access and privacy rules of a real organization must come from its own policy and applicable obligations; this fictional card does not supply them.
 
-After reading the dataset in section 1.7, apply the contract to the **actual Chapter 1 snapshot** without importing D1 as evidence. R1 reports a `desk-a` sign-in, but no device, session-key semantics or person. R3 and R4 record booking edits, but the supplied table does not contain an owner-approved target or a fresh authoritative state comparison. R5 records a patron's report, not a count of all affected users. R6 schedules training, but does not list the approved booking tasks. R7 reports a completed backup job, not an isolated restore. R8 explicitly lacks destination detail, so it cannot establish absence of data transfer. At 09:05 the analyst can open a bounded case, preserve the supplied pointers and ask the named owners for the missing discriminators. The analyst cannot claim that the proposed D1 logging fields or rehearsals were already implemented.
+After reading the dataset in section 1.7, apply the contract to the **actual Module 1 snapshot** without importing D1 as evidence. R1 reports a `desk-a` sign-in, but no device, session-key semantics or person. R3 and R4 record booking edits, but the supplied table does not contain an owner-approved target or a fresh authoritative state comparison. R5 records a patron's report, not a count of all affected users. R6 schedules training, but does not list the approved booking tasks. R7 reports a completed backup job, not an isolated restore. R8 explicitly lacks destination detail, so it cannot establish absence of data transfer. At 09:05 the analyst can open a bounded case, preserve the supplied pointers and ask the named owners for the missing discriminators. The analyst cannot claim that the proposed D1 logging fields or rehearsals were already implemented.
 
-An evidence-readiness contract is useful only if someone owns its **maintenance**. A service change may rename a booking field, split a write path, move a log producer or shorten retention. The owner would then re-run the authorized test and update the contract's source, meaning and collection route. The document should show its last tested scope and next review trigger; an old “green” status without those details is weaker than a current, explicit unknown. This connects Chapter 1's service map to Chapter 2's evidence handling, Chapter 3's control and recovery checks and Chapter 4's after-action improvements. It remains a preparation artifact, not a substitute for case evidence or a completed investigation.
+An evidence-readiness contract is useful only if someone owns its **maintenance**. A service change may rename a booking field, split a write path, move a log producer or shorten retention. The owner would then re-run the authorized test and update the contract's source, meaning and collection route. The document should show its last tested scope and next review trigger; an old “green” status without those details is weaker than a current, explicit unknown. This connects Module 1's service map to Module 2's evidence handling, Module 3's control and recovery checks and Module 4's after-action improvements. It remains a preparation artifact, not a substitute for case evidence or a completed investigation.
 
-#### Test whether readiness is usable
+##### Test whether readiness is usable
 
 A response team may possess a policy, a contact list, monitoring software and nightly backups while still being unable to make a safe decision under pressure. The existence of a component says little about whether the team can use it correctly when a particular service is threatened.
 
@@ -198,9 +231,39 @@ Consider the following contrasting rehearsal results:
 
 Readiness tests should expose their own limitations. Passing one retrieval rehearsal validates the tested path and interval, not every collector, account or future day. A signed approval for one mock change does not establish authority to make any other change.
 
-### 1.2a Normal booking behavior and service invariants
+#### Worked checkpoint
 
-#### What does it mean for a service to work correctly?
+R1 records a successful account sign-in; R3 and R4 record booking changes. The records establish sequence, while the identity of the person and approval of the changes remain unknown. The first decision is a bounded question to the owner, not a compromise verdict.
+
+#### Practice — Lesson 01
+
+##### EX001 — Observation or inference
+
+**Objective:** separate the content of a record from an explanation of that content. **Inputs:** R1, R3, R4, R5 and R7, all within the R1–R8 Round A release at 09:05. These are the exact source pointers for the four statements; do not use R9 or any later case result. **Output:** a four-row table with statement, classification, supporting record and one sentence describing the record's limit. Classify: (a) “R4 records a cancellation of B18”; (b) “`desk-a` was compromised”; (c) “R5 reports that B18 disappeared”; (d) “R7 proves the service can be restored in ten minutes.” Use the categories direct observation, hypothesis requiring confirmation and unsupported conclusion. A score of 2 requires distinguishing the *fact of a patron report* from independent proof of the patron's full experience.
+
+**Extension:** For each original statement, rewrite any unsupported conclusion into the narrowest defensible wording. Add one source that would be needed to upgrade the claim.
+
+**For full credit:** A 2-point answer must distinguish "R5 records a patron report" from "the booking interface was independently proved incorrect," and "R7 reports backup completion" from "recovery was tested." Merely selecting a label without a limiting sentence earns at most 1.
+
+**Worked answer:** [EX001 in the final appendix](#ex001--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-01 -->
+#### Continue studying — lesson 01 of at least 20
+
+[← Course overview](../../README.md) · [Course lesson index](../SUBJECTS.md) · [Lesson 02 →](#lesson-02)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-02"></a>
+
+### Lesson 02 — Booking invariants and behavioral baselines
+
+**Week 1, day 2.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 1.2a Normal booking behavior and service invariants
+
+##### What does it mean for a service to work correctly?
 
 Incident readiness is easier to discuss when the organization can explain what its service promises to legitimate users. A web page can respond while the function behind it is wrong. For a study-room service, a patron may see a confirmation yet not obtain a valid room, or may see a cancellation while the room remains unavailable to someone else. These situations have different operational causes, but they illustrate a common preparation problem: knowing that software is reachable is not enough to specify a correct business outcome.
 
@@ -212,7 +275,7 @@ This is related to identifying important services and their consequences for org
 
 At introductory level, the learner should ask three questions: What legitimate task does the user expect to complete? What result would be unacceptable even though the application remains reachable? Which conditions must be specified before we can judge that result? A clear answer is more useful than an unexplained green health indicator.
 
-#### Trace the legitimate user journey before imagining an attacker
+##### Trace the legitimate user journey before imagining an attacker
 
 A useful behavior baseline begins with a normal user journey. In a hypothetical Harbor Library service, a patron chooses a room and time, submits a request, receives an accepted or rejected response and later looks up the resulting booking. A permitted staff member might move or cancel that booking. The canonical R1–R8 table does not specify actual endpoints, database transaction rules or the organization's full approval workflow, so this journey is a **proposed teaching model**, not a verified implementation.
 
@@ -232,7 +295,7 @@ Notice also that the positive and negative outcomes are different. Showing that 
 
 The journey should include its *boundaries*: the intended room type, the time period tested, permitted roles and what counts as a completed booking. A library might have shared rooms or provisional reservations, but those capabilities are not specified in the exercise. The learner must not assume them simply to explain an observed problem away.
 
-#### Convert vague expectations into testable invariants
+##### Convert vague expectations into testable invariants
 
 An **invariant** is a property that should stay true whenever its stated conditions apply. For a simplified single-occupancy study room, one plausible rule is that two **confirmed** bookings must not occupy overlapping time intervals in the same room. A second rule may be that a cancelled booking does not occupy its old slot. A third may require every accepted interval to end later than it starts.
 
@@ -252,7 +315,7 @@ That finding would still not identify the cause. It might result from a programm
 
 This separation lets the analyst state a useful technical problem without claiming more than the evidence supports: "The supplied model contains an overlap that violates the declared occupancy rule" is defensible for the fixture; "the attacker stole a staff account and corrupted reservations" is not.
 
-#### Time boundaries are part of service semantics
+##### Time boundaries are part of service semantics
 
 Room reservations are time-based commitments. If one booking uses Room A from 09:00 to 10:00 and another uses the room from 10:00 to 11:00, their time boundaries meet but do not necessarily conflict. If the first ends at 10:30, the second overlaps it. A policy must specify how it treats starts and ends.
 
@@ -266,7 +329,7 @@ A real application would also need to define operating hours, timezones, dayligh
 
 Also keep **booking time** distinct from **incident evidence time**. R1 and R3 contain source-event timestamps used to understand the canonical case. The BSL1 room intervals describe times when a customer could occupy a space. One type of time is not a substitute for the other. A source event at 08:43 does not mean the reservation it changed was scheduled for 08:43.
 
-#### A reservation's status changes how its interval is interpreted
+##### A reservation's status changes how its interval is interpreted
 
 Consider two records for the same room and time. If both are confirmed, the simplified policy sees a conflict. If one is cancelled, the cancelled record no longer occupies the slot under this rule. Counting every historical row as active would produce false positives; treating every unfamiliar status as harmless could hide real conflicts.
 
@@ -278,7 +341,7 @@ The status rule is therefore a **preparation aid**. It lets a team articulate wh
 
 A useful control question is: "If the status input changes while room and time stay constant, which result should change?" The BSL1 negative variant later alters a cancelled item to confirmed and thereby introduces another overlap. This shows that the model is sensitive to the status field rather than hardcoding a preferred answer.
 
-#### Approval of a business rule must be versioned
+##### Approval of a business rule must be versioned
 
 The meaning of a correct booking can change. A library might introduce shared rooms, alter operating hours, allow temporary holds or change cancellation behavior. In that situation, a test that correctly enforced last year's rule might be wrong for today's approved service.
 
@@ -292,7 +355,7 @@ In the canonical Harbor Library record, R6 only shows that front-desk training w
 
 A beginner should understand the distinction between "the program is wrong" and "our documented expectation is wrong." Those lead to different next steps. Fixing the program without confirming the policy can create a new error; revising a policy simply to excuse an unexplained failure can conceal a problem. An approved contract and reproducible test help a reviewer identify which assumption requires correction.
 
-#### Baseline violations do not prove cyber compromise
+##### Baseline violations do not prove cyber compromise
 
 A security alert and a failed business invariant can appear together or separately. Neither automatically explains the other.
 
@@ -311,7 +374,7 @@ Use a four-level vocabulary:
 
 BSL1 reaches the second level only. R1–R8 do not prove the third or fourth through association with BSL1. Keeping these claims separate helps the response team investigate a genuine service fault promptly without automatically accusing a user or minimizing a possible security concern.
 
-#### Positive tests, negative tests and control conditions
+##### Positive tests, negative tests and control conditions
 
 A useful readiness rehearsal should not simply seek a green result. It should show that valid input is accepted **and** invalid input is rejected under known conditions.
 
@@ -327,7 +390,7 @@ A third sensitivity test removes an overlapping row from a working input. The ch
 
 Every one of these results needs a scope limitation. A successful adjacent-interval comparison says nothing about every room or day. A flagged overlap is not a measured patron impact. A missing overlap in an incomplete input is not proof of a safe schedule.
 
-#### Distinguish contract failure, input failure and source absence
+##### Distinguish contract failure, input failure and source absence
 
 When a checker returns a problem, the learner should classify what kind of problem it is.
 
@@ -343,7 +406,7 @@ The fact that a Python assertion succeeds does not authenticate the input source
 
 A novice should be able to explain the result in one sentence: "In the provided BSL1 data, the checker found one active room conflict and one invalid duration; its broader correctness claims are limited to the six synthetic rows and the stated policy."
 
-#### A contrasting wrong and correct interpretation
+##### A contrasting wrong and correct interpretation
 
 **Plausible but incorrect:**
 
@@ -359,7 +422,7 @@ The better interpretation identifies a valid next question while preserving the 
 
 The official [NIST SP 800-34 Rev. 1 updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) addresses evaluating systems and operations for contingency requirements and priorities. It does not define Harbor Library's booking policy or confirm any R-series event. The teaching application here is that an organization benefits from understanding critical service outcomes before disruption, rather than inventing a correctness test only after something looks suspicious.
 
-#### Make the baseline portable across a service change
+##### Make the baseline portable across a service change
 
 A rule should remain understandable when software or hosting changes. The statement "the database query returned zero rows" depends on a particular implementation and selection. The statement "two confirmed single-occupancy bookings must not overlap in the same room" expresses a business expectation that can be evaluated through different authorized test paths.
 
@@ -371,7 +434,7 @@ Consider a fictional software update that changes how cancelled bookings are rep
 
 The service owner should define the intended user outcome and approve changes to its meaning. The technical team can express and rehearse the rule in code. The incident-response team can later use the approved rule as a reference while investigating a reported service failure. None of these roles gains authority to inspect real patron data merely because a demonstration program exists.
 
-#### A reporting template for the first-month learner
+##### A reporting template for the first-month learner
 
 After a baseline rehearsal, a learner should produce a **contract report**, not an incident report. The document should identify its rule version, input IDs, assumed room occupancy, status semantics, interval convention, positive and negative expected results, executed or reasoned output, and the exact claims the check cannot establish.
 
@@ -385,7 +448,7 @@ For a beginner, the accepted result is not complicated mathematics or a comprehe
 
 This report complements, rather than replaces, the existing D1 evidence-readiness contract, R1–R8 claim-review laboratory and case handoff. The tools answer different questions, and a mature readiness packet keeps those boundaries explicit.
 
-#### Section synthesis: preparedness begins with an explicit promise
+##### Section synthesis: preparedness begins with an explicit promise
 
 The service map says what systems may matter. The behavior baseline says what legitimate service is supposed to achieve. The evidence-readiness plan says which authorized sources might later support or challenge a claim. The case decision record states what the team actually knows and which next action requires approval. These are complementary artifacts with distinct purposes.
 
@@ -395,7 +458,7 @@ A sound first-month student should finish by being able to explain why an allowe
 
 <a id="ir-rapid-ch01-bsl1-lab"></a>
 
-### BSL1 offline laboratory — booking invariants
+#### BSL1 offline laboratory — booking invariants
 
 **Goal:** Reproduce a deterministic business-invariant check for a small fictional booking set, then demonstrate how a status change or missing input changes what the checker can report.
 
@@ -416,7 +479,7 @@ A sound first-month student should finish by being able to explain why an allowe
 
 Before running, predict the base findings. Explain why S01 and S02 do not overlap, and why S05 does not occupy its room slot. Then predict the outcome when S05 alone changes to confirmed and when S04 is intentionally omitted from an incomplete working copy.
 
-#### Reproducible Python 3 program
+##### Reproducible Python 3 program
 
 ~~~python
 from itertools import combinations
@@ -509,9 +572,55 @@ assert len(missing) == 1
 
 Compare the printed result and its limits with the [BSL1 worked result](#ir-rapid-ch01-bsl1-result) in the final appendix. The six S-series inputs are a separate preparation fixture, never case evidence for R1–R8.
 
-### 1.2b Essential service paths and degraded modes
+#### Worked checkpoint
 
-#### A running component is not a delivered business service
+A successful edit call is not proof that the booking state meets the owner-approved rule. In the BSL1 fixture, first compare the final reservation state with the stated invariant; then test the controlled status-change variant separately. Neither result becomes an R-series incident fact.
+
+#### Practice — Lesson 02
+
+##### EX002 — First two questions
+
+**Objective:** choose checks that could change the restriction decision. **Inputs:** R1–R6 and the service/authority tables. **Output:** two rows with a precise question, the fact that makes it relevant, the authorized custodian or person to ask, and how either answer changes the decision. One question must test the training explanation; the other must test who used the account or whether edits continue. Record requests rather than saying the interview or log review has already occurred. A score of 2 requires different discriminators and a named approval path for any new identity collection.
+
+**Behavior-baseline extension:** In the training question, specify which owner-approved behavior for B17/B18 must be checked beyond R6's calendar entry. In the account question, separate a source discriminator from the still-open business-contract question. BSL1's S-series results are not evidence about B17/B18.
+
+**Worked answer:** [EX002 in the final appendix](#ex002--worked-result).
+
+##### EX005 — Timeline
+
+**Objective:** preserve event order without turning sequence into causation. **Inputs:** R1, R3, R4 and R5. **Output:** a four-row UTC table with record ID, source, time and observed event, followed by an ordering sentence and a separate unsupported-causality sentence. Keep the 09:00 case-open time outside the event table. A score of 2 orders the four events correctly and explains why precedence alone does not identify the human actor or prove why the patron's view changed.
+
+**Extension:** Add a separate checkpoint note `case opened 09:00; decision 09:05; available R1–R8`. Explain why the case-open and decision times must not be inserted into the four-row source-event chronology as if they were source events.
+
+**For full credit:** A 2-point answer preserves chronology while rejecting human attribution and unsupported causality.
+
+**Worked answer:** [EX005 in the final appendix](#ex005--worked-result).
+
+##### EX010 — Communication draft
+
+**Objective:** communicate useful action without premature attribution. **Inputs:** R1–R8 and the 09:00 intake state, *before* the 09:05 decision. **Output:** exactly two sentences for an internal service-owner audience: the first states observed service signals and uncertainty; the second names a **proposed** next check, its owner and the expected 09:05 decision checkpoint. Do not say preservation, an interview or a restriction has already been approved or performed. A score of 2 gives a source pointer and an unambiguous distinction between planned and completed work.
+
+**Behavior-baseline extension:** Keep exactly two sentences at the 09:00 intake checkpoint. Distinguish the R3/R4 edit records and R5 patron report from a verified incorrect business state; name a proposed service-owner check of expected behavior before the 09:05 decision.
+
+**Worked answer:** [EX010 in the final appendix](#ex010--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-02 -->
+#### Continue studying — lesson 02 of at least 20
+
+[← Lesson 01](#lesson-01) · [Course lesson index](../SUBJECTS.md) · [Lesson 03 →](#lesson-03)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-03"></a>
+
+### Lesson 03 — Service paths, dependencies and degraded modes
+
+**Week 1, day 3.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 1.2b Essential service paths and degraded modes
+
+##### A running component is not a delivered business service
 
 A library website may respond while the underlying booking system cannot display current rooms or accept a reservation. A backup monitor may report a completed job while no one has shown that the resulting copy can restore a correct schedule. A help desk may still take a patron's request while the computer-based reservation cannot be accepted. All three situations illustrate the same preparedness problem: the organization can truthfully say that *some* technology remains operational without establishing that the user's promised outcome is available.
 
@@ -521,7 +630,7 @@ A **service function** is a specific operation with a defined useful result. A *
 
 These distinctions are consistent with the emphasis on service dependencies and business function recovery in [NIST SP 800-184, *Guide for Cybersecurity Event Recovery*](https://csrc.nist.gov/pubs/sp/800/184/final) and with risk-aware response preparation in [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). Those NIST publications do not specify Harbor Library's internal routes; PATH1 is original classroom reasoning material.
 
-#### Begin with the promise made to a patron
+##### Begin with the promise made to a patron
 
 Imagine five distinguishable functions for a hypothetical reservation service: an informational page responding, a current list of rooms being displayed, an authorized staff member editing a booking, a front-desk employee recording a pending request, and a new backup job obtaining its source data.
 
@@ -533,7 +642,7 @@ At rapid-course depth, learners should identify the **unit of success** before s
 
 This framing also improves incident communication. The service owner may legitimately approve a limited request-intake workaround, but staff must not announce that rooms are confirmed while writes are unavailable. An honest degraded-service notice should explain what the user can do, what remains pending and what must occur before confirmation is possible.
 
-#### Express path assumptions as a small dependency table
+##### Express path assumptions as a small dependency table
 
 The PATH1 teaching model uses components named `web`, `identity`, `database`, `helpdesk` and `backup`. These categories resemble the service map, but their **specific connections are invented**. The canonical R1–R8 records do not confirm this topology.
 
@@ -551,7 +660,7 @@ These limitations are not weaknesses to conceal. They define which engineering q
 
 By contrast, D1's source contract asks whether an application audit or identity record could prove what actually happened. BSL1's business-rule exercise checks overlaps and cancellation semantics using separate invented booking records. PATH1 does neither. It asks which *functions* could lose their modeled prerequisites under component loss.
 
-#### A single component failure may impair several different functions
+##### A single component failure may impair several different functions
 
 Consider the independent hypothetical case where the PATH1 database becomes unavailable. Because `room_view`, `staff_edit` and `new_backup_job` all list it as required, the model predicts those three functions are impaired. The informational page and manual help-desk intake do not list it, so they remain structurally possible in this simplified design.
 
@@ -563,7 +672,7 @@ A help-desk failure can remove the manual fallback while website-mediated paths 
 
 The correct incident question is therefore not simply "which component is red?" It is **which useful function is affected, what other path remains, and what legitimate promise can still be made?** Component counts cannot substitute for that analysis.
 
-#### Single points of failure must name their affected outcome
+##### Single points of failure must name their affected outcome
 
 Calling a component a "single point of failure" is incomplete without naming the function it can prevent. In PATH1, failure of `web` alone prevents the informational page, room view and staff-edit route. It does not, under the stated fixture, prevent help-desk request intake or a new backup job.
 
@@ -575,7 +684,7 @@ This beginner model deliberately avoids probability estimates. A list of compone
 
 The preparedness value of this reasoning is asking a service owner to identify what is truly essential and which alternate route can safely meet a narrower requirement. It does not authorize changing a production configuration.
 
-#### Available, degraded, unavailable and unknown are different conclusions
+##### Available, degraded, unavailable and unknown are different conclusions
 
 A route can be **modeled available**, **modeled impaired**, **observed to work in a bounded test**, or **not yet tested**. These statements should not be collapsed into a single green/red label.
 
@@ -587,7 +696,7 @@ A successful response from a web endpoint also does not prove that a booking cha
 
 An accurate report might say, "under the selected model, the informational page path remains structurally possible, while the booking write path is predicted unavailable." It should not claim that real patrons can safely use the service without a corresponding test and owner acceptance.
 
-#### Design a degraded mode with explicit boundaries
+##### Design a degraded mode with explicit boundaries
 
 A degraded mode is not simply "whatever still works." It should be defined in advance by the service owner, with conditions for activation, an approved workflow, a duration or review trigger, a message that accurately describes service limits, and a path back to normal operations.
 
@@ -602,13 +711,13 @@ For a hypothetical request-only help-desk mode, the owner would need to answer:
 7. Who authorizes eventual reconciliation and confirms the resulting business state?
 8. What observable result ends the degraded mode?
 
-This is a **proposed business contract**, not a claim that the canonical Harbor Library help desk followed such a procedure. The later Chapter 3 MQ3 laboratory teaches detailed request reconciliation, but PATH1 asks an earlier, different question: *Would that kind of fallback function remain technically possible under a specified component fault?*
+This is a **proposed business contract**, not a claim that the canonical Harbor Library help desk followed such a procedure. The later Module 3 MQ3 laboratory teaches detailed request reconciliation, but PATH1 asks an earlier, different question: *Would that kind of fallback function remain technically possible under a specified component fault?*
 
 Manual intake may be unavailable by policy even when the help desk is working. Staff may lack capacity, approved paper procedures or privacy safeguards. A model's technical possibility never overrides the service owner's operating constraints.
 
 A safe degraded-mode statement says, "the request may be recorded for review." A dangerous statement says, "the room is booked" when the accepted reservation has not been established.
 
-#### Readiness needs a verification plan for each function
+##### Readiness needs a verification plan for each function
 
 Before accepting the function table, a service owner and technical custodian should identify the test that would challenge it. A useful test plan includes:
 
@@ -628,7 +737,7 @@ This plan should be compared with existing D1 and BSL1 artifacts **without copyi
 
 If the expected negative test fails, record the failure rather than silently weakening the acceptance rule. If the input data are incomplete or the supposed fault was not actually induced, report an **inconclusive test** rather than a clean pass.
 
-#### Contrast a tempting wrong conclusion with a defensible one
+##### Contrast a tempting wrong conclusion with a defensible one
 
 **Incorrect hypothetical analysis:**
 
@@ -642,7 +751,7 @@ This assumes that the informational page represents all booking functions; that 
 
 The improvement is not simply cautious language. It identifies the **unit of service**, the **source of the claim** and the **missing acceptance evidence**.
 
-#### Compare fault scenarios without turning them into canonical events
+##### Compare fault scenarios without turning them into canonical events
 
 A useful offline rehearsal changes one modeled condition at a time and records which functions change classification. The student should begin with the baseline, simulate a database failure, restore the baseline and simulate identity failure. The same process can be used for help-desk and web failures.
 
@@ -654,7 +763,7 @@ A two-component failure is useful as a negative control. With both database and 
 
 The fixture provides **no frequency, probability or severity score** for these scenarios. Those require information from the service owner and measured operational evidence outside the classroom.
 
-#### Relationship to incident decisions at 09:05
+##### Relationship to incident decisions at 09:05
 
 Return to the actual fictional Round A source set. R1 reports a `desk-a` sign-in, R3 and R4 report booking changes, R5 is a patron concern, R6 describes scheduled training, R7 reports a backup-job completion and R8 lacks sufficient destination detail. These records support questions about approval, service state and identity context. They do **not** establish any PATH1 component outage.
 
@@ -664,7 +773,7 @@ A PATH1 scenario must never be inserted as an additional R-series row or used to
 
 A high-quality responder can maintain two ledgers: the **canonical evidence ledger**, limited to released case records, and a **model/test ledger**, containing declared assumptions and hypothetical outcomes. This separation permits technically useful planning without fictionalizing production observations.
 
-#### Section synthesis: resilience is a bounded service promise
+##### Section synthesis: resilience is a bounded service promise
 
 Resilience is not a guarantee that every component stays online. It is the ability to define important user outcomes, identify how component failure could affect them, prepare acceptable narrower modes, and test what those modes actually deliver.
 
@@ -674,7 +783,7 @@ The PATH1 laboratory is purposely small. It trains one transferable habit: **pre
 
 <a id="ir-rapid-ch01-path1-lab"></a>
 
-#### PATH1 Offline Laboratory — Functional Dependencies and Degraded Service
+##### PATH1 Offline Laboratory — Functional Dependencies and Degraded Service
 
 **Classification:** Independent, entirely synthetic modeling exercise. Not R1–R24, not the BSL1 booking-state fixture, not the technical-level L6 architecture and not a recorded Harbor Library outage.
 
@@ -684,7 +793,7 @@ The PATH1 laboratory is purposely small. It trains one transferable habit: **pre
 
 The summary mode classifies only the staff-edit and request-intake paths. Read the separate `available` list before saying whether room viewing or any other function remains possible.
 
-##### Complete Python program
+###### Complete Python program
 
 ~~~python
 ROUTES = {
@@ -733,7 +842,59 @@ assert "room_view" not in assess_failed({"database"})[0]
 
 Predict the six output lines before running the program, then compare your result with the [PATH1 worked result](#ir-rapid-ch01-path1-result) in the final appendix. Keep PATH1 separate from the R-series case evidence.
 
-### 1.3 Roles and decision authority
+#### Worked checkpoint
+
+If the booking application responds but the authoritative reservation state is unknown, availability is not business correctness. A manual intake path may preserve a limited user promise, but it cannot be called confirmed booking acceptance without owner-approved reconciliation.
+
+#### Practice — Lesson 03
+
+##### EX003 — Service dependency
+
+**Objective:** connect an incident signal to service outcomes and evidence owners. **Inputs:** the section 1.2 service map and R1–R8. **Output:** a two-row dependency card with dependency, possible user harm, supplied pointer, missing discriminating evidence and custodian. Choose two dependencies; for each, explain what an authorized check would distinguish. Do not call a potential harm a confirmed outage. A score of 2 needs two different dependencies and a test that could separate a service-state problem from account misuse.
+
+**Extension:** For each of the two chosen service dependencies, distinguish a *possible downstream business harm* from an actual observation. Name one negative test that could weaken the proposed explanation and identify who would be authorized to request it.
+
+**For full credit:** A 2-point answer explicitly connects different technical sources to different decisions. The database's current booking values cannot be inferred directly from R3–R4's edit history.
+
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** After the existing two dependency cards, choose one PATH1 modeled function and identify a component fault that would impair it. State an authorized *functional* check and a separate *business correctness* check. Do not claim that the PATH1 fault occurred in canonical R1–R8.
+
+**Worked answer:** [EX003 in the final appendix](#ex003--worked-result).
+
+##### EX008 — Evidence quality
+
+**Objective:** limit claims to what three different source types actually say. **Inputs:** R6–R8. **Output:** a three-row evidence-limit table with ID and time, narrow supported conclusion, tempting unsupported conclusion, and a follow-up source or test. A score of 2 treats a scheduled activity as distinct from an approved booking change, a completed backup job as distinct from a proven restore, and a summary missing destination detail as distinct from a verified absence of transfer.
+
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** In the R7 backup-status row, explain why modeled `new_backup_job` availability would not verify usable restore, acceptable elapsed recovery or owner-approved booking correctness. Preserve the original R6 training and R8 network-summary source limitations.
+
+**Worked answer:** [EX008 in the final appendix](#ex008--worked-result).
+
+##### EX011 — Escalation trigger
+
+**Objective:** specify when the initial choice must be reopened. **Inputs:** the R1–R8 snapshot and section 1.9. **Output:** two **hypothetical** observation/response rows with source that would verify the signal, harm or uncertainty affected, decision owner and next action. One trigger should concern continued booking change; the other should concern breadth or service impact. A score of 2 states that neither observation is present at 09:05 and avoids an automatic production action without approval.
+
+**Behavior-baseline extension:** For the hypothetical service-impact trigger, specify a future owner-approved booking-state comparison against the applicable policy version, with the service owner confirming rule and scope. Keep the other trigger about a separately verified new unexplained edit. Neither signal is present in R1–R8; a rule mismatch does not prove cyber compromise.
+
+**Worked answer:** [EX011 in the final appendix](#ex011--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-03 -->
+#### Continue studying — lesson 03 of at least 20
+
+[← Lesson 02](#lesson-02) · [Course lesson index](../SUBJECTS.md) · [Lesson 04 →](#lesson-04)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-04"></a>
+
+### Lesson 04 — Authority, delegation and pre-incident rehearsal
+
+**Week 1, day 4.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 1.3 Roles and decision authority
 
 A small organization may assign several roles to one person, but the decisions remain distinct:
 
@@ -749,7 +910,7 @@ The analyst should not shut down a service merely because a dashboard looks unus
 
 A useful **decision record** contains a timestamp, the current situation, available options, the chosen action, the person who approved it, the evidence supporting it, expected effects and a review time. Record rejected options as well when they explain an important tradeoff. A terse record made during the incident is more reliable than a reconstructed story written weeks later.
 
-#### Separate recommendation, approval, execution and verification
+##### Separate recommendation, approval, execution and verification
 
 One person can perform more than one role in a small team, but four verbs should remain visible in the case record. The **analyst recommends** an action and cites observations. An accountable person **approves** its scope and tradeoff. An operator **executes** the bounded change. A reviewer **verifies** whether the change achieved its objective and records any harm. None of these verbs can be inferred safely from a job title alone. [NIST SP 800-61 Rev. 3, sections 2.2–2.3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) discusses distributed response roles and the need for documented authorities and procedures; the four-verb record below is CyKin's teaching device for making those authorities observable.
 
@@ -763,9 +924,9 @@ These assignments are **fictional exercise rules**. They are not a claim about a
 
 Consider a recommendation to restrict `desk-a` after R1–R5. The analyst can state a plausible benefit: additional unauthorized edits might stop. The analyst must also state a plausible cost: front-desk staff might lose access during a busy period. Neither benefit nor cost is yet measured. A decision record that says “account compromised; disable immediately” hides both uncertainty and authority. A better provisional record is: “At 09:05 UTC, preserve the supplied records and seek the training owner's confirmation by 09:15; if an unexplained new booking edit appears, reconvene the incident lead, service owner and identity administrator for an approved restriction.” The time and threshold here belong to this synthetic case, not to a universal response policy.
 
-### 1.3a Rehearsing authority before an incident
+#### 1.3a Rehearsing authority before an incident
 
-#### 1.3a.1 From knowing a job title to proving a usable decision route
+##### 1.3a.1 From knowing a job title to proving a usable decision route
 
 A response plan may correctly say that the service owner approves an interruption and the incident lead approves a bounded collection. That statement is necessary but not enough to know that a future decision can be executed lawfully and safely. What if the primary owner changed positions last month? What if the listed alternate can authorize a small room-booking pause but not an export of unrelated patron data? What if the approval route works during office hours but nobody has tested the designated contact channel? What if the delegation was revoked or its date passed?
 
@@ -775,7 +936,7 @@ Section 1.3 distinguishes recommendation, approval, execution and verification. 
 
 [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident-response planning and coordination within Cybersecurity Framework 2.0 risk management. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) addresses the design, conduct and evaluation of IT plan tests and exercises. The versioned authority-register and validation procedure developed here are **original educational techniques** for exploring those documented concerns, not forms prescribed by NIST.
 
-#### 1.3a.2 A role name is not proof that a particular person holds authority
+##### 1.3a.2 A role name is not proof that a particular person holds authority
 
 A service map may name "service owner," "identity administrator," "application custodian" and "incident lead." Each label describes responsibility, but the label alone does not establish which person currently fills the role, which specific actions they can approve, or whether a listed alternate is allowed to sign on the primary's behalf.
 
@@ -785,7 +946,7 @@ Before an incident, a reviewer should be able to locate the actual authoritative
 
 A name typed into a spreadsheet is weaker evidence than a current, owner-reviewed appointment supported by the organization's authoritative process. A contact-list entry may remain useful after a person leaves a role, but it is no longer a valid decision source unless the governance system says otherwise. If the reviewer cannot establish the appointment, the correct outcome is to **hold the action and escalate**, not to treat familiarity with the person's name as proof of authority.
 
-#### 1.3a.3 Establish a versioned register with explicit acceptance questions
+##### 1.3a.3 Establish a versioned register with explicit acceptance questions
 
 A useful **authority readiness register** needs more than columns for name and phone number. It must tell an independent reviewer whether the proposed decision route is valid for the operation under consideration. At minimum, it should identify:
 
@@ -808,7 +969,7 @@ The register itself also needs **provenance**. A file named `latest-authority.xl
 
 A register can be a paper table for the introductory exercise. The skill being taught is validating an explicit set of claims, not choosing a particular database or ticketing vendor. Its fields are fictional instructional design choices; no NIST source is presented as requiring this exact schema.
 
-#### 1.3a.4 Scope belongs to the delegation, not merely to the original request
+##### 1.3a.4 Scope belongs to the delegation, not merely to the original request
 
 Suppose the service owner can authorize a temporary pause of one staff-booking write route. An alternate may be delegated authority for **that specific pause**, for a short period. That delegation does not automatically allow the alternate to approve a production database restore, disable every account, retrieve patron newsletter records or extend the pause indefinitely.
 
@@ -820,7 +981,7 @@ This is a rehearsal of **route validity**, not the execution of either action. T
 
 Scope checking should fail closed. If the request includes an unrelated object, the checker should not silently ignore that object and approve the rest as if the original request were unchanged. It should return a hold condition and require an explicitly corrected request.
 
-#### 1.3a.5 Validity periods and expiry are operational safety controls
+##### 1.3a.5 Validity periods and expiry are operational safety controls
 
 An alternate's authority may be valid only for a specified interval. A reviewer needs to know both the effective start and the last valid instant, and should use a consistent time basis. In the AR1 teaching model, the delegation is effective from 13:00 to **before 14:30 UTC** on the fictional rehearsal date. A check at 14:15 can satisfy the time condition; a check at 14:31 cannot.
 
@@ -832,7 +993,7 @@ If a timestamp is missing or cannot be compared, do not select the value that ma
 
 An approaching expiry can also be a readiness maintenance trigger. The team should review critical delegations before their deadlines, identify the next approved owner and rehearse the updated route. This prevents a contact list from becoming a silent single point of failure.
 
-#### 1.3a.6 The owner, approver and custodian can be different people
+##### 1.3a.6 The owner, approver and custodian can be different people
 
 A request might be valid in business purpose but routed to the wrong custodian. For example, a service owner may approve a limited interruption while an application operator is the only role permitted to apply it. An incident lead may approve a narrow evidence request while the application custodian retrieves records. A collector may not be authorized to approve expanded collection merely because they possess technical access.
 
@@ -844,7 +1005,7 @@ This is not meant to impose an organization-wide requirement that every small-te
 
 When the same individual would propose, approve and execute a high-impact change, the organization may require additional independent review according to its actual governance. AR1 does not create such a requirement or grant exceptions. It teaches learners to record the unresolved policy question rather than invent a separation-of-duties rule.
 
-#### 1.3a.7 Use a registered confirmation route rather than an unverified reply
+##### 1.3a.7 Use a registered confirmation route rather than an unverified reply
 
 Knowing the correct role is not enough if the request arrives through an untrusted or unregistered channel. A message from an account displaying a familiar name may not authenticate the person or their current role. A successful email delivery indicator does not establish decision authority.
 
@@ -856,9 +1017,9 @@ The pre-incident question is: does the plan name a tested route that would let a
 
 A negative rehearsal should deliberately supply an unregistered messaging channel and confirm that the proposed action is held. Another should withhold confirmation even when the name and route match. In neither case may the team interpret silence as approval.
 
-This concept differs from the Chapter 4 DEL4 laboratory, which tests message delivery, version acknowledgement and read-back **during simulated incident coordination**. AR1 tests **pre-incident trust in the authority path itself**, before any incident action is selected.
+This concept differs from the Module 4 DEL4 laboratory, which tests message delivery, version acknowledgement and read-back **during simulated incident coordination**. AR1 tests **pre-incident trust in the authority path itself**, before any incident action is selected.
 
-#### 1.3a.8 An approval receipt must identify the bounded decision
+##### 1.3a.8 An approval receipt must identify the bounded decision
 
 A fictional reviewer may receive a response saying "approved." That word alone is insufficient if it does not identify the request, target and scope, the respondent's role, the applicable register version and whether the approval remains current. An approval can be genuine for one task and irrelevant to another.
 
@@ -870,7 +1031,7 @@ This is an important epistemic limit. Software can check that fields exist and t
 
 During a rehearsal, explicitly label the result `valid simulated path, not executed`. This avoids the failure mode in which a "successful drill" is copied into an actual incident ticket and mistaken for a real approval.
 
-#### 1.3a.9 Two complete contrasting examples: a valid delegation and an unsafe substitute
+##### 1.3a.9 Two complete contrasting examples: a valid delegation and an unsafe substitute
 
 **Correct example — limited, current, confirmed route in a pre-incident rehearsal.**
 
@@ -890,7 +1051,7 @@ The **correct response** is to hold collection or service change, identify the a
 
 These two examples are not events in the R1–R8 incident and must not be inserted into its 09:05 timeline.
 
-#### 1.3a.10 A safe escalation path does not grant permission
+##### 1.3a.10 A safe escalation path does not grant permission
 
 An emergency contact path may be necessary when the ordinary approver or alternate cannot be validated. But the word "escalate" is often misused to mean "find anyone senior enough to say yes." That approach undermines the reason for recording delegations and bounded authority.
 
@@ -902,9 +1063,9 @@ AR1 includes `SAFE_ESCALATION`. The output is `ESCALATE_HOLD_DELEGATION_EXPIRED`
 
 A stronger real-world program might have a separately documented emergency authorization mechanism. If so, its scope, prerequisites, accountable approver and verification would need to be tested as another explicitly versioned authority rule. AR1 neither assumes nor invents such a mechanism.
 
-This differs from the Chapter 4 F1 replay, where an approver becomes unavailable **during** a fictional response. The current exercise instead tests whether the **pre-incident register and fallback process are ready and current**, well before any R-series incident starts.
+This differs from the Module 4 F1 replay, where an approver becomes unavailable **during** a fictional response. The current exercise instead tests whether the **pre-incident register and fallback process are ready and current**, well before any R-series incident starts.
 
-#### 1.3a.11 A register must be tested against negative controls
+##### 1.3a.11 A register must be tested against negative controls
 
 A contact list can appear correct in the easiest path but fail when a person leaves, a delegation expires or a request changes scope. A meaningful readiness test therefore needs both **positive and negative controls**.
 
@@ -918,7 +1079,7 @@ The lab outputs one primary rejection code for reproducibility. In an actual rev
 
 A negative control does not create an incident. Changing a training receipt's date to simulate expiry does not mean anyone's real delegation expired.
 
-#### 1.3a.12 Version drift and parallel copies
+##### 1.3a.12 Version drift and parallel copies
 
 Authority records frequently change when employees rotate, services move between teams or emergency contacts are updated. A pre-incident rehearsal should include a **version consistency check**. The requester, approving role and custodian should have a reliable way to determine that they are using the same current register edition.
 
@@ -930,7 +1091,7 @@ These checks answer different questions. A **version mismatch** means the reques
 
 If two remote copies disagree, no spreadsheet title or locally cached value should win merely because it is convenient. The organization's governance owner needs a defined authoritative source and correction path. The response lead should hold any action whose authority cannot be resolved safely.
 
-#### 1.3a.13 Proof of identity and proof of authority are independent
+##### 1.3a.13 Proof of identity and proof of authority are independent
 
 A caller may genuinely be the person they claim to be, yet lack authority for a particular collection or disruption. Conversely, a directory entry may correctly list a role that belongs to someone else now. The exercise should therefore distinguish **identity confidence** from **decision-scope confidence**.
 
@@ -942,7 +1103,7 @@ An introductory student should be able to say: "The synthetic identity field mat
 
 The reviewer must also avoid using the registry as permission to gather unrelated identity records. Authority to approve a booking-audit request is not an unlimited right to investigate everyone associated with the service.
 
-#### 1.3a.14 Rehearsal artifacts and closure evidence
+##### 1.3a.14 Rehearsal artifacts and closure evidence
 
 A useful pre-incident rehearsal leaves behind more than a passing screenshot. The evidence package should identify the tested register version, simulated operation, affected object scope, check time, primary and alternate decision roles, designated custodian, confirmation-route requirement, fixture input, expected status and actual status.
 
@@ -954,7 +1115,7 @@ For example, a stale-delegation correction could require: a named register stewa
 
 The training evaluator should avoid assigning a percentage of "organizational authority correctness" based on the toy cases. A small synthetic test validates only its specified fixtures.
 
-#### 1.3a.15 How to use this preparation without contaminating Round A
+##### 1.3a.15 How to use this preparation without contaminating Round A
 
 The canonical Harbor Library incident begins with R1–R8, not the AR1 rehearsal. The R-series table reports a sign-in, dashboard access, booking changes, a patron report, scheduled training, backup-job completion and a network summary with missing destination detail. It does not contain AR1's roster, delegation issue dates, approval receipts, or confirmation routes.
 
@@ -966,7 +1127,7 @@ In a future organization, pre-incident authority validation reduces a type of un
 
 This is the key distinction from D1 (does the proposed evidence source exist and work?), BSL1 (does the service meet an approved business invariant?), PATH1 (which functions depend on which components?), and F1 (what happens when an approver is unavailable during an incident?). **AR1 evaluates the governed permission path in preparation**, before any of those actions is needed.
 
-#### 1.3a.16 Section synthesis
+##### 1.3a.16 Section synthesis
 
 An authority map is not complete just because its role names are sensible. A team should be able to determine whether the current register version is valid, whether the correct person or documented delegate may approve an exact operation and object scope, whether the designated custodian is appropriate, whether the decision was confirmed through an approved route, and whether a missing or invalid condition stops the request.
 
@@ -976,7 +1137,7 @@ The following Python fixture provides a reproducible set of positive and negativ
 
 <a id="ir-rapid-ch01-ar1-lab"></a>
 
-### 1.3b AR1 offline laboratory — versioned authority and delegation checks
+#### 1.3b AR1 offline laboratory — versioned authority and delegation checks
 
 **Classification:** Entirely fictional, pre-incident laboratory performed against an invented register. It is **not** an incident, real employee directory, organizational approval, authenticated callback, R-series evidence or the in-incident F1 replay.
 
@@ -986,7 +1147,7 @@ The following Python fixture provides a reproducible set of positive and negativ
 
 **Fixture:** The artificial authority register is `AR-3`, declared valid September 1 to before October 1, 2026. The separate delegate `alternate-sim` is permitted to fill the service-owner role only for the training `pause_staff_writes` operation on `staff-write-route` from 13:00 to before 14:30 UTC on September 15, unless revoked. The training-audit example concerns only `TR-01` and `TR-02`. Literal identities are role aliases and do not correspond to real humans.
 
-#### Reproducible program
+##### Reproducible program
 
 ~~~python
 from datetime import datetime
@@ -1171,7 +1332,7 @@ assert (evaluate(CASES[-1][1])
         == "ESCALATE_HOLD_DELEGATION_EXPIRED")
 ~~~
 
-#### Request-bound approval check (supplementary AR1 rehearsal)
+##### Request-bound approval check (supplementary AR1 rehearsal)
 
 The existing AR1 program correctly models the governed register's revocation flag, nonempty object scope, valid delegates, permitted custodian and approved confirmation channel. Its fifteen published results reproduce correctly. However, the core `evaluate` function tests whether a simulated approval item **exists**; it does not test whether the **issuing decision record** binds that item to the *specific* request identifier, operation, source and set of objects.
 
@@ -1179,7 +1340,7 @@ For example, the original `BASE` proposal requests `TR-01` and includes a fictio
 
 The pre-incident governance lesson should not call that second request approved. The simulated approval record must be associated with a stable request identifier **and** its approved operation, resource, objects and role. The following supplementary check introduces a small, independent *fictional issuer-side record* that the requester cannot silently redefine inside the evaluated card. It does not provide real identity authentication, a digital signature or a valid production permission.
 
-#### Supplementary AR1 Python 3 listing — run after the existing complete AR1 program
+##### Supplementary AR1 Python 3 listing — run after the existing complete AR1 program
 
 ~~~python
 # These are invented issuer-side approval records for the classroom.
@@ -1260,14 +1421,14 @@ assert (
 
 Before running either program, predict which paths pass, which are held and whether escalation changes authority. Run the original listing first and compare its 15-line transcript with the [AR1 worked result](#ir-rapid-ch01-ar1-result). Then run the supplementary listing in the **same Python session** and compare its four additional lines with the request-bound worked result. Explain why `TR-02` passes the original routing check but fails the separate approval-binding check. In particular, the **register**, not the request, controls revocation; an empty object set is not a valid bounded request.
 
-### 1.3c AR1 two-role readiness rehearsal
+#### 1.3c AR1 two-role readiness rehearsal
 **Objective:** Before a simulated incident, verify that a second person can reconstruct the correct authority route from the **current register and request packet**, identify an expired or out-of-scope delegation, and choose a safe escalation without asking the packet author to invent a missing approval.
 
 **Roles:** **Register Steward / Packet Author** and **Independent Readiness Reviewer**. A facilitator may observe but does not change the declared outcomes after seeing the reviewer's first answer.
 
 **Only permitted data:** The artificial AR1 register, synthetic request and simulated receipts. No real employee details, company directories, telephones, credentials or services may be used.
 
-#### Phase 1 — Author freezes the packet
+##### Phase 1 — Author freezes the packet
 
 The steward prepares `AR1-packet-v1` and records:
 
@@ -1282,7 +1443,7 @@ The steward prepares `AR1-packet-v1` and records:
 
 The packet must be frozen before the reviewer begins. A missing field is kept missing; the author may not silently repair the record after learning the reviewer's objection.
 
-#### Phase 2 — Reviewer reconstructs independently
+##### Phase 2 — Reviewer reconstructs independently
 
 Give the reviewer a clearly labelled **valid scenario** and an **expired-delegate scenario**, in that order. Without help from the packet author, the reviewer must identify: current register edition; correct approval roles; whether the named delegate is still valid for the exact request; correct custodian; approved confirmation route; whether all required simulated receipts are present; and the decision to **hold** or **escalate** if any condition fails.
 
@@ -1290,19 +1451,73 @@ The reviewer submits `AR1-review-v1` with a small field-by-field table and one p
 
 The reviewer may consult the frozen register and request but may not ask the author whether a missing delegation "probably exists." If a field needed for authorization is absent, the correct response is **unknown/hold** with a request for an authoritative source.
 
-#### Phase 3 — Preserve and adjudicate
+##### Phase 3 — Preserve and adjudicate
 
 Freeze the first response. Compare its decision with the source fields and code output. Record each discrepancy as a **missing packet field**, **incorrect interpretation**, or **unresolved source/authority question**. Do not erase the first submission when corrected evidence becomes available.
 
 A follow-up `AR1-packet-v2` can replace an expired delegation with a newly approved fictitious record, but that new version needs its own validity and confirmation tests. The second attempt is not proof that the first packet was adequate.
 
-#### Acceptance and failure rules
+##### Acceptance and failure rules
 
 A **bounded pass** requires the reviewer to identify the correct version, service/operation/scope, valid or invalid delegation, custodian, confirmation requirement and safe hold/escalation condition, without claiming execution. A **critical fail** occurs if the reviewer accepts an expired/revoked alternate, wrong person, unauthorized objects, missing decision receipt or unverified channel as permission to proceed. A **correctable fail** includes a missing version reference or unclear packet pointer that leaves the reviewer unable to determine authority; the current request remains held until corrected.
 
 This is a **preparedness rehearsal**. Its performance does not say what happened in Harbor Library's R1–R8 incident. It measures a small versioned authority-check procedure, not the actual reliability of a real organization's emergency staffing.
 
-### 1.4 Scope, authorization and safety
+#### Worked checkpoint
+
+A named substitute in an old contact list cannot approve a new collection by title alone. Compare the current register version, object scope, expiry and registered confirmation path; if one fails, record the approval as pending and escalate through the designated route.
+
+#### Practice — Lesson 04
+
+##### EX006 — Role assignment
+
+**Objective:** make recommendation, approval, execution and verification visible. **Inputs:** section 1.3's fictional roles, R7 and the classroom scope. **Output:** a four-row responsibility table for a possible booking outage, preservation of R1–R5, coordination of the next review and a contained restore test. Name the task owner, who approves it under the exercise rules and what would verify completion. Distinguish **planning** a restore test from having performed one. A score of 2 does not delegate an outage decision to the analyst or treat R7 as a tested restore.
+
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** Keep the original four-row role matrix. For the possible booking outage, distinguish an approved manual-request intake procedure from actual booking acceptance; name the service owner of the hypothetical degraded-mode decision, the help-desk custodian of receipts and the reviewer who would authorize reconciliation.
+
+
+**AR1 supplementary task (after the required artifact):**
+
+**Additional check:** Preserve the **original four-row responsibility table**. For the evidence-preservation and possible booking-outage rows, add a short reference to where a **current owner/delegate appointment and custodian assignment** would be checked before relying on it. State which approval remains pending if a substitute is expired, and what evidence would verify that an authorized operator actually performed a later action.
+
+**Full-credit criterion:** The analyst, incident lead, service owner, custodian/operator and reviewer retain distinct logical responsibilities. A published directory listing is not enough to prove a valid delegate, and a positive rehearsal is not an executed collection or service change.
+
+**Worked answer:** [EX006 in the final appendix](#ex006--worked-result).
+
+##### EX013 — Readiness gap
+
+**Objective:** turn an exercise weakness into a measurable preparation change. **Inputs:** the service map, authority table, R7–R8 and the section 1.8 workshop. **Output:** a three-row gap register with missing capability, consequence and owner; then an improvement ticket with priority rationale, specific change, deadline and a pass/fail drill. A score of 2 names a test that would actually demonstrate the change, such as an owner-and-alternate decision drill or a contained restore rehearsal, rather than merely publishing a policy page.
+
+**Extension:** The improvement ticket must include a falsifiable rehearsal with a pass and failure criterion. A fallback-authority drill can test an unavailable primary approver; alternative defensible tickets may test log retrieval or isolated recovery.
+
+**For full credit:** Merely writing or publishing a policy does not satisfy an exercise that asks the learner to demonstrate a capability.
+
+
+**AR1 supplementary task (after the required artifact):**
+
+**Additional check:** Retain the **three-row gap register plus one improvement ticket**. Where the owner/alternate record is identified as a gap, require a versioned authority-register review and a negative readiness drill checking an expired delegate, wrong approver or excess scope. Define the accountable register steward, completion evidence and a fail/reopen rule. Do not duplicate the in-incident F1 replay.
+
+**Full-credit criterion:** The ticket cannot close merely when a contact list is edited. It must demonstrate, under a frozen simulated version, that a valid path passes and invalid routes remain blocked, with the original inputs and independent result preserved.
+
+**Worked answer:** [EX013 in the final appendix](#ex013--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-04 -->
+#### Continue studying — lesson 04 of at least 20
+
+[← Lesson 03](#lesson-03) · [Course lesson index](../SUBJECTS.md) · [Lesson 05 →](#lesson-05)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-05"></a>
+
+### Lesson 05 — Scope, case record and bounded first decision
+
+**Week 1, day 5.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 1.4 Scope, authorization and safety
 
 This book's labs use synthetic records only. In real work, incident authority comes from organizational policy, a contract, employment duties or explicit written approval. The authorization should identify the systems, accounts, data, time window and actions allowed. Investigating a partner's system, collecting personal data, changing access rights or taking a production service offline may require additional approval.
 
@@ -1310,7 +1525,7 @@ Use the smallest action that answers the immediate question. Reading a prepared 
 
 For the Harbor Library exercise, the permitted scope is a fictional table of eight records in this chapter. Learners may annotate, sort and reason about the table. They may not attempt to contact a real library, probe a real domain or test a real account.
 
-#### Write scope as an executable boundary
+##### Write scope as an executable boundary
 
 “Investigate the alert” is too vague to guide safe practice. A useful classroom scope has an **object** (R1–R8), an **allowed operation** (read, annotate and compare), an **excluded operation** (connect to any real service or account), a **time boundary** (the session), an **owner** (the course facilitator or learner for the local copy), and a **stop condition** (the supplied records do not answer the question). A real response plan must also specify the organization and system authority, data handling and escalation route. The classroom scope is deliberately narrower.
 
@@ -1318,7 +1533,7 @@ Suppose a learner wants to investigate the device or sign-in origin associated w
 
 Scope also affects the strength of a conclusion. If only R1–R8 are in scope, the sentence “No exfiltration occurred” is unsupported. R8 explicitly lacks destination detail, and the learner has no additional network records. A defensible sentence is “The supplied network summary does not permit a conclusion about data transfer.” This is not evasive writing: it tells the next reviewer exactly which kind of evidence is missing.
 
-### 1.5 The first incident record
+#### 1.5 The first incident record
 
 Open one record before investigating deeply. A practical minimum is:
 
@@ -1337,13 +1552,13 @@ Open one record before investigating deeply. A practical minimum is:
 
 Use **UTC consistently** in this exercise. If a source uses another timezone, retain its original timestamp and record the conversion, including the offset. Never silently reorder events whose clocks may differ. Give each evidence item an identifier so that a later statement can cite its basis.
 
-### 1.6 Worked example: the unusual sign-in
+#### 1.6 Worked example: the unusual sign-in
 
 The synthetic records in section 1.7 provide the single source of case facts for this example. R1 records a `desk-a` sign-in at 08:40 UTC, R3 a change to B17 at 08:43, R4 a cancellation of B18 at 08:44, and R5 a patron report at 08:48. The team can say that the sign-in preceded both edits and the report. It **cannot yet say** that the account was stolen, that either edit caused every aspect of the report, or that data was exfiltrated. A safe next step is to preserve the relevant record identifiers, ask the service owner whether the edits match scheduled work, and request staff-account context through an authorized channel. Depending on organizational procedure and new evidence, the incident lead may then authorize additional collection or containment.
 
 The alternative “disable the account immediately” has a possible benefit if the account is compromised, but it may stop front-desk work and obscure whether the staff member is actively making legitimate changes. The correct decision depends on impact, confidence, authority and available alternatives. Record that reasoning rather than presenting a guess as a universal rule.
 
-### 1.7 A contained practice dataset
+#### 1.7 A contained practice dataset
 
 Use only these synthetic records for the exercises. They extend the worked example; they are not evidence of a real event.
 
@@ -1360,7 +1575,7 @@ Use only these synthetic records for the exercises. They extend the worked examp
 
 R6 is a reason to check whether the edits were part of training; it is not proof that they were. R7 may support recovery planning but does not prove that a restore works. R8 cannot prove absence of data transfer. The lesson is to connect a claim to the evidence that actually supports it.
 
-#### A three-hypothesis reading of the same records
+##### A three-hypothesis reading of the same records
 
 Start with three explanations that are meaningfully different. **H1: authorized training** caused the booking changes. R6 makes this plausible because training was scheduled; R6 does not identify which bookings were meant to change. **H2: someone used `desk-a` without authorization.** R1–R4 are compatible with this, but they contain no proof about who controlled the session. **H3: the patron view and authoritative booking state differ.** R5 suggests a user-visible discrepancy, but R4 records a cancellation in the application audit, so H3 cannot by itself explain every observation. All three are hypotheses, and more than one contributing condition could be present.
 
@@ -1374,7 +1589,7 @@ The next check should be chosen for its ability to **discriminate** among these 
 
 This is an example of **evidence discipline**, not a probabilistic verdict. With this small dataset, no defensible numerical probability of compromise can be calculated. A score invented from intuition would add apparent precision without adding evidence.
 
-#### Let the service outcome set the evidence question
+##### Let the service outcome set the evidence question
 
 An alert title tells a responder what a detector noticed. It does not tell the responder which business result is at risk. For Harbor Library, the meaningful outcome is that residents can see and reserve the intended study rooms and that authorized staff can manage bookings without silently corrupting the schedule.
 
@@ -1390,7 +1605,7 @@ A useful evidence question has two outcomes, not one. Ask: "What would I conclud
 
 For instance, the scheduled training in R6 makes an approved-operation explanation plausible, but R6 does not list B17 or B18 as approved tasks. A bounded request for the dated task list could strengthen or weaken that explanation. A broad network search, by contrast, cannot substitute for the missing task authorization merely because it might produce more data.
 
-#### Keep a claim ledger with falsifiers
+##### Keep a claim ledger with falsifiers
 
 A record has a **producer**, a **reported event**, a **timestamp**, and a **scope**. The analyst adds an interpretation. Keeping those elements separate prevents a common logical shortcut: replacing "this source reports X" with "X happened exactly as I imagine it."
 
@@ -1410,7 +1625,7 @@ A credible conclusion also needs a **falsifier**: an observation that would forc
 
 When the evidence is incomplete, "unknown" is an informative state. It identifies an unfinished dependency between question and proof. It must not be changed to "false" merely because a field or record is missing. R8 illustrates this directly: the absence of destination detail is not evidence that there was no transfer.
 
-#### Keep the 09:05 information boundary explicit
+##### Keep the 09:05 information boundary explicit
 
 Incident records use more than one time concept. An event timestamp describes what a producer reported. A case-open time describes when the response record began. A decision time describes when particular information and authority were used. Later discovery is not retroactive access to evidence.
 
@@ -1422,7 +1637,7 @@ A peer reviewer can now ask whether every claimed fact was available to the deci
 
 Keep hypothetical injects in separate cards. If a trainer says "imagine another edit happens at 09:08," the learner may explain how the decision *would* change, but must not silently append the imagined event to R1–R8. Restoring the baseline after the counterfactual is part of the exercise.
 
-### 1.8 Guided readiness workshop: prepare the first decision
+#### 1.8 Guided readiness workshop: prepare the first decision
 
 This paper-and-pencil lab turns the eight fictional records into a reproducible case artifact. It requires no software, network connection, account, secret or real person. Work from the table in section 1.7 and the role and scope rules above. The outputs are a service card, an evidence ledger and a decision card. Keep the three artifacts together under the synthetic case ID `HL-IR-001`.
 
@@ -1438,7 +1653,7 @@ This paper-and-pencil lab turns the eight fictional records into a reproducible 
 
 **Assessment rubric:** award one point each for accurate event pointers and UTC ordering, clear separation of fact from hypothesis, explicit current authority and scope, a proportionate option comparison, and a review trigger with owner. A score of 5/5 shows the artifact is internally complete for this introductory exercise; it does **not** certify incident-response competence or prove the fictional case's cause. An omitted scope or approval item must be corrected even if the other four points are present. A worked example appears in the final answer section after EX013.
 
-### 1.9 Build a decision gate from incomplete evidence
+#### 1.9 Build a decision gate from incomplete evidence
 
 An initial response is a series of **bounded decisions**, not a search for certainty before anyone acts. At the 09:05 UTC checkpoint, the Harbor Library analyst has eight supplied records, a scheduled training interval and two booking changes. The records do not say who controlled `desk-a`, whether B17 and B18 were authorized training tasks, or whether a backup could actually restore a correct schedule. These unknowns call for discriminating questions, not invented answers. The decision gate below is an original teaching model for this fictional case. It illustrates the documented roles, authority and review practices discussed in [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final); it is not a NIST-prescribed severity scale.
 
@@ -1453,11 +1668,11 @@ An initial response is a series of **bounded decisions**, not a search for certa
 
 One defensible choice is to preserve the supplied records, ask the training owner about B17/B18 and reconvene at the review time. This avoids an immediate service interruption but accepts the possibility of a further edit. Another defensible choice, if the service owner describes a high impact of continued changes and the approving roles are available, is to seek a temporary account restriction with a defined end and a way for staff to continue essential work. **The analyst's recommendation is not permission to execute either change.** A reviewer should ask what fact would reverse the choice, who can authorize the reversal, and how quickly the resulting harm can be observed.
 
-If the training owner confirms that B17 and B18 were on an approved task list, that weakens the hypothesis that *those two* edits were unauthorized. It does not prove the person controlling the session, nor does it settle any later B19 edit introduced in Chapter 2. If the task list excludes B18 and the owner confirms the list is complete, the training explanation for B18 weakens. If the list is unavailable, the answer is **unknown**, not “training was ruled out.” This distinction between a contradictory observation and a missing observation is fundamental to responsible incident decisions.
+If the training owner confirms that B17 and B18 were on an approved task list, that weakens the hypothesis that *those two* edits were unauthorized. It does not prove the person controlling the session, nor does it settle any later B19 edit introduced in Module 2. If the task list excludes B18 and the owner confirms the list is complete, the training explanation for B18 weakens. If the list is unavailable, the answer is **unknown**, not “training was ruled out.” This distinction between a contradictory observation and a missing observation is fundamental to responsible incident decisions.
 
-To make the gate reproducible, a second analyst should be able to read the same R1–R8 table, recover the same event order, locate the supporting record for each claim and see the approval path. If the second analyst cannot tell whether a sentence is a supplied fact, a hypothesis or a proposed action, rewrite it. Chapter 2 adds evidence preservation and discovery-time discipline to this same case; the later records must not be imported backward into the 09:05 decision.
+To make the gate reproducible, a second analyst should be able to read the same R1–R8 table, recover the same event order, locate the supporting record for each claim and see the approval path. If the second analyst cannot tell whether a sentence is a supplied fact, a hypothesis or a proposed action, rewrite it. Module 2 adds evidence preservation and discovery-time discipline to this same case; the later records must not be imported backward into the 09:05 decision.
 
-#### Make the first decision a reproducible handoff
+##### Make the first decision a reproducible handoff
 
 A handoff should allow a second learner to answer six questions without asking the original analyst for undocumented context:
 
@@ -1480,7 +1695,7 @@ The longer message is not better simply because it has more words. Each clause a
 
 <a id="ir-rapid-ch01-claim-lab"></a>
 
-### 1.10 Offline laboratory: evidence-bound claim review
+#### 1.10 Offline laboratory: evidence-bound claim review
 
 **Goal:** Classify claims against the exact Round A release and demonstrate how a missing source changes a supported teaching statement without changing the canonical incident.
 
@@ -1539,7 +1754,7 @@ print(
 print("EVENTS_IN_ROUND_A", len(events))
 ~~~
 
-#### Exact expected output
+##### Exact expected output
 
 ~~~text
 C01 RECORD_CONTENT_ONLY
@@ -1552,7 +1767,7 @@ NEGATIVE_R6_MISSING NOT_IN_RELEASE
 EVENTS_IN_ROUND_A 8
 ~~~
 
-#### Worked interpretation
+##### Worked interpretation
 
 **C01:** R1 is available. The learner may report that the *synthetic identity record* states a successful `desk-a` sign-in. The output is not an independent authentication of the record or a human attribution.
 
@@ -1568,7 +1783,7 @@ EVENTS_IN_ROUND_A 8
 
 **Negative test:** Removing R6 from a temporary set makes the training-hypothesis card lack one of its referenced sources. The result changes to `NOT_IN_RELEASE` *for the temporary variant*. No historical event or canonical R6 record has changed.
 
-#### Validation, failure modes and limits
+##### Validation, failure modes and limits
 
 The first two assertions detect duplicate identifiers or unsorted printed timestamps in this literal fixture. They do not verify synchronization of independent real systems. The algorithm deliberately checks source *availability* and a simplified claim class; it does not perform semantic parsing of incident narratives, cryptographic integrity checks, authorization checks or independent source verification.
 
@@ -1576,7 +1791,7 @@ A learner who obtains the expected output has reproduced the stated classroom lo
 
 **Required artifact:** Submit (a) the exact transcript, (b) a six-row claim ledger with evidence ID, supported wording and limitation, and (c) a two-sentence difference report for the negative test. Pass only when all original Round A facts remain unchanged, unsupported findings stay blocked and the hypothetical source removal is not represented as real evidence loss.
 
-### 1.10a Readiness depends on authorized evidence, not a green inventory
+#### 1.10a Readiness depends on authorized evidence, not a green inventory
 
 **Learning objective:** For the early R1–R8 Harbor Library checkpoint, distinguish an operational capability, a decision owner, an authorized evidence route and a demonstrated rehearsal. Each item has a different source and a different possible failure. A junior responder should be able to identify the next safe request without inventing a completed collection.
 
@@ -1590,7 +1805,7 @@ Draw a four-edge dependency path: **business question → authority → producer
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses preparation and incident response as linked risk-management activities. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) distinguishes discussion exercises from measured component tests. The following original learning classifier is only an **in-memory classroom fixture**, not a source/approval verifier.
 
-#### R1X offline rehearsal — first unsupported readiness link
+##### R1X offline rehearsal — first unsupported readiness link
 
 Run in isolated Python 3. Inputs are invented, reset between rows. No files, network calls, credentials or actual system changes are involved.
 
@@ -1631,9 +1846,9 @@ TOY_PASS FIXTURE_DECLARED_REHEARSAL_ONLY
 
 **Practice and criterion:** Submit the five output lines, a dependency/owner map and a two-sentence handoff that explains a missing authorized alternate. Full credit requires the R1–R8 release boundary, an observable training test and the difference between proposed, approved and actually collected evidence. R9 cannot be used at Round A merely because its source event time is earlier than the 09:05 review.
 
-**Synthesis:** Readiness requires an owner-governed answer to a bounded question, not a green dashboard label. Chapter 2 will test the source, clock and collection decisions. This addendum creates no new Harbor Library incident record.
+**Synthesis:** Readiness requires an owner-governed answer to a bounded question, not a green dashboard label. Module 2 will test the source, clock and collection decisions. This addendum creates no new Harbor Library incident record.
 
-### 1.11 Common errors and chapter synthesis
+#### 1.11 Common errors and chapter synthesis
 
 - **Confusing suspicion with confirmation.** Use a hypothesis and state what would confirm or weaken it.
 - **Skipping the service owner.** A technically plausible action can cause avoidable harm to users.
@@ -1642,41 +1857,15 @@ TOY_PASS FIXTURE_DECLARED_REHEARSAL_ONLY
 - **Treating a backup status as a restoration test.** A successful backup run is one fact, not a recovery guarantee.
 - **Treating an absence in incomplete logs as evidence of absence.** State the collection limit.
 
-Readiness is the ability to answer, under pressure, who owns the service, who can approve a decision, where trustworthy evidence can be found, and how a decision will be reviewed. This chapter prepares the alert-triage and evidence-preservation work in Chapter 2.
+Readiness is the ability to answer, under pressure, who owns the service, who can approve a decision, where trustworthy evidence can be found, and how a decision will be reviewed. This chapter prepares the alert-triage and evidence-preservation work in Module 2.
 
-### Chapter 1 exercises
+#### Worked checkpoint
 
-Work from **only R1–R8** and the fictional authority rules in Chapter 1. The case is synthetic. At the 09:00 intake and 09:05 decision checkpoints, do not cite records or interviews released in later chapters, claim a production collection took place, or infer a person's identity from an account label. Write any imagined future signal as **hypothetical**. For each answer: (1) write `HL-IR-001` and the exercise ID; (2) copy the relevant record IDs and UTC times; (3) fill the named output fields; (4) mark each conclusion as observed, inferred, unknown or proposed; (5) name an owner and approval for any new collection or service change; and (6) compare the result with the worked answer at the end of the book. The submitted table, note or decision card is the expected evidence of learning; a label without its supporting record is insufficient.
+At 09:05 the case contains only R1–R8. A decision card may recommend a restricted check with its owner, alternative and 09:15 review trigger; it must not report an interview, export or service change as performed until a separate execution record exists.
 
-**Common assessment rubric:** score an exercise **0** if its artifact is missing or presents an unsupported attribution or action as fact; **1** if it answers the question but omits a required source, limit, authority or test; **2** if all named fields are present, the reasoning follows the supplied evidence and the next step is bounded and authorized. The local requirements below specify what earns 2 points. A claimed compromise, successful restore or absence of data transfer based only on R1–R8 must be corrected regardless of the numerical score. No real website, account or patron data is needed.
+#### Practice — Lesson 05
 
-#### EX001 — Observation or inference
-
-**Objective:** separate the content of a record from an explanation of that content. **Inputs:** R1, R3, R4, R5 and R7, all within the R1–R8 Round A release at 09:05. These are the exact source pointers for the four statements; do not use R9 or any later case result. **Output:** a four-row table with statement, classification, supporting record and one sentence describing the record's limit. Classify: (a) “R4 records a cancellation of B18”; (b) “`desk-a` was compromised”; (c) “R5 reports that B18 disappeared”; (d) “R7 proves the service can be restored in ten minutes.” Use the categories direct observation, hypothesis requiring confirmation and unsupported conclusion. A score of 2 requires distinguishing the *fact of a patron report* from independent proof of the patron's full experience.
-
-**Extension:** For each original statement, rewrite any unsupported conclusion into the narrowest defensible wording. Add one source that would be needed to upgrade the claim.
-
-**For full credit:** A 2-point answer must distinguish "R5 records a patron report" from "the booking interface was independently proved incorrect," and "R7 reports backup completion" from "recovery was tested." Merely selecting a label without a limiting sentence earns at most 1.
-
-#### EX002 — First two questions
-
-**Objective:** choose checks that could change the restriction decision. **Inputs:** R1–R6 and the service/authority tables. **Output:** two rows with a precise question, the fact that makes it relevant, the authorized custodian or person to ask, and how either answer changes the decision. One question must test the training explanation; the other must test who used the account or whether edits continue. Record requests rather than saying the interview or log review has already occurred. A score of 2 requires different discriminators and a named approval path for any new identity collection.
-
-**Behavior-baseline extension:** In the training question, specify which owner-approved behavior for B17/B18 must be checked beyond R6's calendar entry. In the account question, separate a source discriminator from the still-open business-contract question. BSL1's S-series results are not evidence about B17/B18.
-
-#### EX003 — Service dependency
-
-**Objective:** connect an incident signal to service outcomes and evidence owners. **Inputs:** the section 1.2 service map and R1–R8. **Output:** a two-row dependency card with dependency, possible user harm, supplied pointer, missing discriminating evidence and custodian. Choose two dependencies; for each, explain what an authorized check would distinguish. Do not call a potential harm a confirmed outage. A score of 2 needs two different dependencies and a test that could separate a service-state problem from account misuse.
-
-**Extension:** For each of the two chosen service dependencies, distinguish a *possible downstream business harm* from an actual observation. Name one negative test that could weaken the proposed explanation and identify who would be authorized to request it.
-
-**For full credit:** A 2-point answer explicitly connects different technical sources to different decisions. The database's current booking values cannot be inferred directly from R3–R4's edit history.
-
-**PATH1 supplementary task (after the required artifact):**
-
-**Additional requirement:** After the existing two dependency cards, choose one PATH1 modeled function and identify a component fault that would impair it. State an authorized *functional* check and a separate *business correctness* check. Do not claim that the PATH1 fault occurred in canonical R1–R8.
-
-#### EX004 — Scope boundary
+##### EX004 — Scope boundary
 
 **Objective:** apply an authorization boundary to a tempting next action. **Inputs:** the section 1.4 scope statement and R1–R8. **Output:** a short scope decision with proposed action, permitted objects and operations, reason for rejection, contained alternative, and stop or escalation condition. A learner wants to search a real public library website for a matching account name. Explain what the eight supplied records permit instead, and write a hypothetical request for the additional detail if it would matter to the case. A score of 2 explicitly excludes real-site access and names the responsible approver for any future expanded scope.
 
@@ -1687,44 +1876,17 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Full-credit criterion:** Keep the original permitted objects, reason for rejecting real-site access, contained alternative and stop/escalation condition. An expired delegation or unverified confirmation path must block the proposed additional collection. No simulated valid AR1 result grants permission over a real website.
 
-#### EX005 — Timeline
+**Worked answer:** [EX004 in the final appendix](#ex004--worked-result).
 
-**Objective:** preserve event order without turning sequence into causation. **Inputs:** R1, R3, R4 and R5. **Output:** a four-row UTC table with record ID, source, time and observed event, followed by an ordering sentence and a separate unsupported-causality sentence. Keep the 09:00 case-open time outside the event table. A score of 2 orders the four events correctly and explains why precedence alone does not identify the human actor or prove why the patron's view changed.
-
-**Extension:** Add a separate checkpoint note `case opened 09:00; decision 09:05; available R1–R8`. Explain why the case-open and decision times must not be inserted into the four-row source-event chronology as if they were source events.
-
-**For full credit:** A 2-point answer preserves chronology while rejecting human attribution and unsupported causality.
-
-#### EX006 — Role assignment
-
-**Objective:** make recommendation, approval, execution and verification visible. **Inputs:** section 1.3's fictional roles, R7 and the classroom scope. **Output:** a four-row responsibility table for a possible booking outage, preservation of R1–R5, coordination of the next review and a contained restore test. Name the task owner, who approves it under the exercise rules and what would verify completion. Distinguish **planning** a restore test from having performed one. A score of 2 does not delegate an outage decision to the analyst or treat R7 as a tested restore.
-
-**PATH1 supplementary task (after the required artifact):**
-
-**Additional requirement:** Keep the original four-row role matrix. For the possible booking outage, distinguish an approved manual-request intake procedure from actual booking acceptance; name the service owner of the hypothetical degraded-mode decision, the help-desk custodian of receipts and the reviewer who would authorize reconciliation.
-
-
-**AR1 supplementary task (after the required artifact):**
-
-**Additional check:** Preserve the **original four-row responsibility table**. For the evidence-preservation and possible booking-outage rows, add a short reference to where a **current owner/delegate appointment and custodian assignment** would be checked before relying on it. State which approval remains pending if a substitute is expired, and what evidence would verify that an authorized operator actually performed a later action.
-
-**Full-credit criterion:** The analyst, incident lead, service owner, custodian/operator and reviewer retain distinct logical responsibilities. A published directory listing is not enough to prove a valid delegate, and a positive rehearsal is not an executed collection or service change.
-
-#### EX007 — Minimal incident record
+##### EX007 — Minimal incident record
 
 **Objective:** open a case that another analyst can continue. **Inputs:** R1–R8 and the 09:00 intake checkpoint. **Output:** exactly seven labeled fields: case ID and open time; service; reporter and source; observed signal with record IDs; current assessment and uncertainty; permitted scope and authority; next question, owner and review time. Related details may share a field. A score of 2 retains the `T-104` help-desk context from section 1.5, distinguishes the report from an independently checked booking state, and does not claim the later 09:05 decision was already executed at 09:00.
 
 **Behavior-baseline extension:** Keep exactly seven opening fields. In the existing uncertainty field, note that a recorded edit and patron report do not establish the owner-approved correct current booking state. Do not import the separate BSL1 fixture or a later decision.
 
-#### EX008 — Evidence quality
+**Worked answer:** [EX007 in the final appendix](#ex007--worked-result).
 
-**Objective:** limit claims to what three different source types actually say. **Inputs:** R6–R8. **Output:** a three-row evidence-limit table with ID and time, narrow supported conclusion, tempting unsupported conclusion, and a follow-up source or test. A score of 2 treats a scheduled activity as distinct from an approved booking change, a completed backup job as distinct from a proven restore, and a summary missing destination detail as distinct from a verified absence of transfer.
-
-**PATH1 supplementary task (after the required artifact):**
-
-**Additional requirement:** In the R7 backup-status row, explain why modeled `new_backup_job` availability would not verify usable restore, acceptable elapsed recovery or owner-approved booking correctness. Preserve the original R6 training and R8 network-summary source limitations.
-
-#### EX009 — Decision alternatives
+##### EX009 — Decision alternatives
 
 **Objective:** justify a proportionate 09:05 decision under uncertainty. **Inputs:** R1–R8 and the section 1.9 gate. **Output:** a two-row option matrix for (A) seeking a temporary restriction of `desk-a` and (B) preserving R1–R8, asking the training owner and reviewing before restriction. Record expected benefit, possible service or delay cost, approver, observable success or failure and a 09:15 review trigger for each. Choose one provisionally and explain what new evidence would reverse it. A score of 2 identifies a separate approval for restriction and does not describe either risk as an already observed event.
 
@@ -1745,19 +1907,9 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Full-credit criterion:** Recommendation and approval remain separate; no missing reply is treated as permission. The chosen provisional option continues to be justified by available case evidence, not by a fabricated expired owner at 09:05.
 
-#### EX010 — Communication draft
+**Worked answer:** [EX009 in the final appendix](#ex009--worked-result).
 
-**Objective:** communicate useful action without premature attribution. **Inputs:** R1–R8 and the 09:00 intake state, *before* the 09:05 decision. **Output:** exactly two sentences for an internal service-owner audience: the first states observed service signals and uncertainty; the second names a **proposed** next check, its owner and the expected 09:05 decision checkpoint. Do not say preservation, an interview or a restriction has already been approved or performed. A score of 2 gives a source pointer and an unambiguous distinction between planned and completed work.
-
-**Behavior-baseline extension:** Keep exactly two sentences at the 09:00 intake checkpoint. Distinguish the R3/R4 edit records and R5 patron report from a verified incorrect business state; name a proposed service-owner check of expected behavior before the 09:05 decision.
-
-#### EX011 — Escalation trigger
-
-**Objective:** specify when the initial choice must be reopened. **Inputs:** the R1–R8 snapshot and section 1.9. **Output:** two **hypothetical** observation/response rows with source that would verify the signal, harm or uncertainty affected, decision owner and next action. One trigger should concern continued booking change; the other should concern breadth or service impact. A score of 2 states that neither observation is present at 09:05 and avoids an automatic production action without approval.
-
-**Behavior-baseline extension:** For the hypothetical service-impact trigger, specify a future owner-approved booking-state comparison against the applicable policy version, with the service owner confirming rule and scope. Keep the other trigger about a separately verified new unexplained edit. Neither signal is present in R1–R8; a rule mismatch does not prove cyber compromise.
-
-#### EX012 — Practice record
+##### EX012 — Practice record
 
 **Objective:** make a bounded decision auditable. **Inputs:** R1–R8, the fictional 09:05 checkpoint and section 1.3's authority matrix. **Output:** one decision log with time, action, reason with source IDs, approving role, executing role, evidence-copy scope, rejected alternative, next review time and reversal trigger. The scenario grants classroom permission for the bounded copy; do not describe a production export. A score of 2 states the question to the service owner as **pending** until answered and preserves uncertainty about account control.
 
@@ -1765,37 +1917,35 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **For full credit:** A 2-point answer never reports a hypothetical request as a completed interview or a production evidence collection.
 
-#### EX013 — Readiness gap
+**Worked answer:** [EX012 in the final appendix](#ex012--worked-result).
 
-**Objective:** turn an exercise weakness into a measurable preparation change. **Inputs:** the service map, authority table, R7–R8 and the section 1.8 workshop. **Output:** a three-row gap register with missing capability, consequence and owner; then an improvement ticket with priority rationale, specific change, deadline and a pass/fail drill. A score of 2 names a test that would actually demonstrate the change, such as an owner-and-alternate decision drill or a contained restore rehearsal, rather than merely publishing a policy page.
+<!-- cykin:lesson-navigation:start lesson-05 -->
+#### Continue studying — lesson 05 of at least 20
 
-**Extension:** The improvement ticket must include a falsifiable rehearsal with a pass and failure criterion. A fallback-authority drill can test an unavailable primary approver; alternative defensible tickets may test log retrieval or isolated recovery.
+[← Lesson 04](#lesson-04) · [Course lesson index](../SUBJECTS.md) · [Lesson 06 →](#lesson-06)
 
-**For full credit:** Merely writing or publishing a policy does not satisfy an exercise that asks the learner to demonstrate a capability.
-
-
-**AR1 supplementary task (after the required artifact):**
-
-**Additional check:** Retain the **three-row gap register plus one improvement ticket**. Where the owner/alternate record is identified as a gap, require a versioned authority-register review and a negative readiness drill checking an expired delegate, wrong approver or excess scope. Define the accountable register steward, completion evidence and a fail/reopen rule. Do not duplicate the in-incident F1 replay.
-
-**Full-credit criterion:** The ticket cannot close merely when a contact list is edited. It must demonstrate, under a frozen simulated version, that a valid path passes and invalid routes remain blocked, with the original inputs and independent result preserved.
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
 
 <!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 04
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+[← Course overview](../../README.md) · [Course lesson index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
-Continue to the next authored lesson.
+The next chapter contains the following instructional week.
 <!-- cykin:chapter-navigation:end -->
 
+<a id="week-02"></a>
 <a id="ch-02"></a>
 
-## Chapter 2 — Alert triage and evidence preservation
+## Chapter 02 — Alert triage and evidence preservation
 
-<!-- cykin:lesson-figures:start ch-02 -->
-### Lesson map
+**Five daily lessons · week 2 of four.** This chapter groups the original section identifiers 2.x. Lesson numbers identify a learner day; section identifiers remain stable so existing source references and laboratory instructions still work.
 
-Lesson 02 published. Map, example, EX018.
+<!-- cykin:lesson-figures:start week-02 -->
+#### Module map
+
+Module 2 overview: five daily lessons below provide the teaching, examples, exercises and worked-answer links.
 
 ```mermaid
 flowchart TD
@@ -1812,7 +1962,7 @@ flowchart TD
   EX --> Q["Exercise EX018"]
 ```
 
-### Logical drawing
+#### Module logical drawing
 
 ```mermaid
 flowchart LR
@@ -1854,12 +2004,12 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX018]
 ```
-<!-- cykin:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end week-02 -->
 
 
-### Learning outcomes
+#### Module learning outcomes
 
-By the end of this chapter, a learner should be able to:
+Across these five daily lessons, a learner should be able to:
 
 1. Turn a reported alert into a short triage question, without treating its label as a fact.
 2. Compare a small set of hypotheses against an evidence table and state what remains unknown.
@@ -1874,9 +2024,23 @@ By the end of this chapter, a learner should be able to:
 11. Distinguish a proposed preservation request, approved source hold, reported application, bounded effect check, expiry and release from a separately retained copy.
 12. Reassess a provisional priority at 09:05 and 09:20 using only released records, separating record availability, interpretation, cause, reported versus verified harm, source-preservation urgency and continuing-activity review.
 
-### 2.1 An alert is a question to investigate
+#### Module 2 exercise rules
 
-Chapter 1 established owners and a bounded record. Triage now asks what the signal means, what might be affected, how soon a decision is needed and which authorized check would reduce uncertainty. A detector may produce the label “suspicious login,” but that label is neither an identity proof nor a conclusion that the account was compromised. The analyst must retain the detector's raw observation, collection time and rule context while testing alternative explanations.
+Use only records R1–R16 and the fictional authority described here; the exercise-only T1 card is available **only** where a question names it. No answer may claim to have queried a real service, received an unprovided identity detail, proved compromise or completed an export that the learner did not make. For each exercise, cite the relevant record IDs, state the observation before the inference, and give a bounded next action or test. The named output is the artifact to submit; the worked results at the end show acceptable reasoning.
+
+**Common procedure and expected evidence:** (1) Write the exercise ID, case ID and evidence boundary at the top of the response. (2) Read the named input records and copy their IDs and relevant UTC times into the requested table or note. (3) Complete that exercise's output fields, marking unknown facts and unperformed actions rather than filling them with guesses. (4) Add the decision owner or custodian for any proposed collection or service change and a sentence limiting the conclusion. (5) Compare the resulting artifact with its matching worked result in the final appendix. Submit the named table or note with its source pointers and limits; a bare multiple-choice label or unsupported conclusion is not sufficient evidence of learning. No real account, patron record or production log is needed.
+
+Score each numbered exercise **0** when its artifact is absent or asserts an unsupported fact, **1** when it addresses the question but omits a required evidence, scope or limitation field, and **2** when the stated fields are present, reproducible and appropriately authorized. A false claim about who controlled `desk-a`, a fabricated collection time or an invented log query must be corrected regardless of the other fields. This common rubric applies to all thirteen questions; a local instruction below adds required fields for a score of 2.
+
+<a id="lesson-06"></a>
+
+### Lesson 06 — A bounded triage question and revisable priority
+
+**Week 2, day 1.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 2.1 An alert is a question to investigate
+
+Module 1 established owners and a bounded record. Triage now asks what the signal means, what might be affected, how soon a decision is needed and which authorized check would reduce uncertainty. A detector may produce the label “suspicious login,” but that label is neither an identity proof nor a conclusion that the account was compromised. The analyst must retain the detector's raw observation, collection time and rule context while testing alternative explanations.
 
 For Harbor Library, the first two hypotheses are **H1: the booking edits were scheduled training** and **H2: the account was used outside the planned training**. A third possibility, **H3: the patron's report reflects a display or synchronization problem**, reminds us that the reported symptom and the booking changes might have different causes. These hypotheses are teaching devices. They are not exhaustive and should be revised when evidence appears.
 
@@ -1889,7 +2053,7 @@ For Harbor Library, the first two hypotheses are **H1: the booking edits were sc
 
 The initial action should be the smallest authorized check that could change the next decision. If a new edit is causing immediate harm, the incident lead can seek an urgent containment decision while collection continues. If the signal is stale and service impact is unknown, preserving records and checking the owner may be the more informative first step. Triage and containment can overlap; they are not a rigid sequence.
 
-### 2.2 Prioritize harm, urgency and confidence separately
+#### 2.2 Prioritize harm, urgency and confidence separately
 
 This book uses an **illustrative classroom matrix**, not a universal severity standard. Keep three judgments separate:
 
@@ -1903,9 +2067,9 @@ A case can be urgent even when confidence is low: continued edits could affect p
 
 <a id="ir-rapid-ch02-tri2-teaching"></a>
 
-### 2.2a Reassessing triage priority under changing evidence
+#### 2.2a Reassessing triage priority under changing evidence
 
-#### 2.2a.1 Why a priority decision must be revisable
+##### 2.2a.1 Why a priority decision must be revisable
 
 The existing §2.2 distinguishes potential harm, time sensitivity, and confidence using a small qualitative matrix. That is a sound starting point, but an analyst needs to know **how to revisit all three dimensions when information changes**. A record can have an earlier event timestamp yet arrive later. A new source may support a previously uncertain fact while leaving its cause unknown. Evidence can become harder to preserve even while there is no proof of an attacker. A service owner may verify a booking-state mismatch without establishing who caused it.
 
@@ -1915,7 +2079,7 @@ A provisional priority is not the answer to "Did a cyberattack occur?" It is an 
 
 [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) explains incident response as part of cybersecurity risk management and emphasizes organizational context. [NIST CSF 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf) provides flexible high-level outcomes for understanding, assessing, prioritizing and communicating cybersecurity risks. Neither establishes the specific categories, labels or decision thresholds in this exercise. **TRI2 is an original CyKin method** for teaching bounded reassessment, not a NIST-defined incident classification or automatic containment policy.
 
-#### 2.2a.2 First freeze what the analyst actually knows
+##### 2.2a.2 First freeze what the analyst actually knows
 
 Before comparing possible harm or urgency, identify the **decision checkpoint and released sources**. Otherwise an apparently precise priority record may rely on information the earlier responder did not have.
 
@@ -1927,7 +2091,7 @@ The correct interpretation is not that the Round A analyst ignored R9. The learn
 
 The TRI2 code checks this boundary. A deliberate attempt to cite R9 during Round A is rejected before any interpretation or priority discussion occurs. That output represents a classroom release rule; it is not a statement that the underlying event did not occur.
 
-#### 2.2a.3 Confidence is not one number
+##### 2.2a.3 Confidence is not one number
 
 A single "confidence: medium" label mixes several logically independent questions. A beginner can reason more accurately by writing three separate fields:
 
@@ -1945,7 +2109,7 @@ This is more useful than labeling the entire case "high confidence" without sayi
 
 TRI2 uses descriptive statuses rather than calibrated probabilities. The code cannot authenticate any real source or measure an actual probability of compromise, and its labels must not be interpreted as a universal confidence scale.
 
-#### 2.2a.4 A record can be reliable while the hypothesis remains weak
+##### 2.2a.4 A record can be reliable while the hypothesis remains weak
 
 An analyst sometimes treats independent evidence as a vote: three records agree, therefore the cause is established. But agreement depends on **what proposition the sources actually address**. R9 describes an application edit; R10 is a training-plan document; R12 is a staff recollection. These do not measure the same fact. Their differing contents can legitimately strengthen the need for an authorization check without proving account theft.
 
@@ -1961,7 +2125,7 @@ The first two follow from the records' stated contents. The third is a causal at
 
 A full, owner-confirmed task list that includes a particular booking could reduce concern that *that booking's task* was outside the plan. It still does not prove the human operator, establish every booking state, or resolve evidence-retention risk. A separate valid observation is required for each stronger claim.
 
-#### 2.2a.5 Potential harm and verified impact are different dimensions
+##### 2.2a.5 Potential harm and verified impact are different dimensions
 
 A patron report is evidence of a reported problem, not automatic proof of an incorrect authoritative reservation value. At 09:05, R5 records a concern about B18. At 09:20, R11 adds a B19 concern, but neither record provides an owner-approved comparison of current versus expected booking values.
 
@@ -1975,7 +2139,7 @@ For example, a future **independent synthetic variant** in which an owner-approv
 
 At both checkpoints, the correct discipline is to state: potential consequences are being assessed; measured impact remains unknown unless an appropriate source has actually verified it.
 
-#### 2.2a.6 Split time sensitivity into preservation and containment concerns
+##### 2.2a.6 Split time sensitivity into preservation and containment concerns
 
 The original matrix places multiple urgent issues in one time-sensitivity column. For decision making, it helps to track **two independent urgency questions**.
 
@@ -1989,7 +2153,7 @@ At that same checkpoint, R9 and R11 merit investigation and continued review, bu
 
 A team may honestly say that evidence-preservation contact is time-sensitive while its cause attribution remains low or unproven. Those statements do not conflict.
 
-#### 2.2a.7 A quiet query is not a negative observation until its scope is understood
+##### 2.2a.7 A quiet query is not a negative observation until its scope is understood
 
 A common reassessment error is:
 
@@ -2005,7 +2169,7 @@ A *valid negative result* can narrow the concern for a specified tested path and
 
 TRI2 emits `QUIET_NOT_NEGATIVE_PROOF` when a case relies on an apparently quiet summary whose coverage is not established. That warning does not claim that a new edit occurred; it prevents the unsupported opposite conclusion.
 
-#### 2.2a.8 How to write an evidence-changing review checkpoint
+##### 2.2a.8 How to write an evidence-changing review checkpoint
 
 A useful priority note is not merely a timestamp followed by a color. It should answer these seven questions:
 
@@ -2025,7 +2189,7 @@ For Round B, the incident lead can keep a prompt, bounded review at **09:35 or e
 
 The note should distinguish "will request" from "requested," "approved," "collected" and "verified." None of those latter states is supplied for a real Round B collection or hold. An attractive priority label cannot substitute for authorization.
 
-#### 2.2a.9 Example one — correct 09:05 assessment without hindsight
+##### 2.2a.9 Example one — correct 09:05 assessment without hindsight
 
 **Correct record, canonical Round A only:**
 
@@ -2037,7 +2201,7 @@ A reviewer must not say that the 09:05 lead already knew B19 was changed at 09:0
 
 Neither the original note nor the comparison claims a real identity operation, account restriction, source copy or production log review. The phrase **prompt review** is a locally reasoned fictional priority description, not a NIST-prescribed severity grade.
 
-#### 2.2a.10 Example two — incorrect 09:20 downgrade
+##### 2.2a.10 Example two — incorrect 09:20 downgrade
 
 **Incorrect synthetic Round B handoff:**
 
@@ -2053,7 +2217,7 @@ The correction preserves each level of confidence separately. It treats the pres
 
 A good learner can explain why the priority is provisional without saying "we have no confidence in anything." The source cards are available, the authorization hypothesis is contested and the actor is unknown; those are different propositions.
 
-#### 2.2a.11 Reassess sequentially when a new card arrives
+##### 2.2a.11 Reassess sequentially when a new card arrives
 
 A review must start with the **previous frozen decision**, not a blank slate. A useful sequence is:
 
@@ -2070,7 +2234,7 @@ The change from Round A to Round B is not automatically an escalation in every d
 
 This process allows the team to be responsive without treating every new card as equal in significance. A retention notice may change how quickly the team contacts a custodian, while an owner-approved task addendum may change the interpretation of one booking. Neither must move every dimension in the same direction.
 
-#### 2.2a.12 Reassess on conflicting signals without forcing a verdict
+##### 2.2a.12 Reassess on conflicting signals without forcing a verdict
 
 Incident sources may pull the interpretation in different directions. R9 reports B19 edited, R10 omits B19 from the supplied plan and R12 records that the staff member does not remember B19. These facts create uncertainty about authorization. They do not independently prove account takeover, identity theft or deliberate action.
 
@@ -2089,7 +2253,7 @@ The proper output is often a **specific unresolved hypothesis**, not "medium con
 
 The TRI2 `CONFLICTING_SIGNALS` variant models an incomplete approved-task addendum: the analyst cannot downgrade solely because a document is present if its scope or completeness is not verified.
 
-#### 2.2a.13 Reassess on increased preservation risk without claiming a breach
+##### 2.2a.13 Reassess on increased preservation risk without claiming a breach
 
 At 09:20, R15 reports a 24-hour policy for detailed booking-audit records, subject to an authorized copy. The record does not identify the event/ingestion/storage anchor, the exact deletion job, the oldest still-accessible relevant row, or a confirmed effective hold. That uncertainty is itself operationally meaningful.
 
@@ -2101,19 +2265,19 @@ The existing HOLD2 chapter addition teaches how to distinguish source hold reque
 
 A useful phrase is: "Evidence-availability concern is time-sensitive; cause confidence remains unproven; exact deletion deadline unknown." Those three facts can all be true at the same checkpoint.
 
-#### 2.2a.14 A new verified edit is a conditional review trigger, not a command
+##### 2.2a.14 A new verified edit is a conditional review trigger, not a command
 
 An incident lead may specify that a **future, source-verified unexplained booking edit** should cause an immediate reevaluation of containment options. This does not mean such an edit has occurred after the 09:20 Round B review. It is a conditional threshold attached to the provisional decision.
 
 A trigger must say what counts as verified for the specific purpose. At minimum, a relevant custodian would need to check the source, timestamp semantics, selected booking/object, possible approved task and source coverage. The team would then bring the result to the incident lead and service owner for a decision.
 
-The trigger does **not** authorize an automatic account disable, pause or data collection outside scope. Choosing a containment action requires its own risk and authorization assessment, and the later Chapter 3 comparison is outside the two checkpoints here.
+The trigger does **not** authorize an automatic account disable, pause or data collection outside scope. Choosing a containment action requires its own risk and authorization assessment, and the later Module 3 comparison is outside the two checkpoints here.
 
 TRI2 includes a fictional `NEW_EDIT_VERIFIED` input as an independent scenario. The code marks it **variant-only**; an attempt to insert the same flag into a canonical snapshot is explicitly rejected. This guards against a common learning error: performing an interesting counterfactual and then treating its event as if it had appeared in the R-series evidence.
 
 The proper human question after a verified new edit is which intervention, if any, would now be proportionate, given potential harm and business costs. The toy classifier deliberately does not make that selection.
 
-#### 2.2a.15 A justified downgrade must specify which concern decreased
+##### 2.2a.15 A justified downgrade must specify which concern decreased
 
 "Priority lowered" is not a complete assessment. Which aspect became less concerning, what new evidence justified that change, and what remained unresolved?
 
@@ -2127,7 +2291,7 @@ TRI2 provides two contrasting downgrade cases: one with a **declared synthetic s
 
 A downgrade based solely on R14's quiet summary with unknown filters is unjustified. A contradiction in a source should be resolved by obtaining stronger evidence, not by choosing whichever report supports the desired lower priority.
 
-#### 2.2a.16 What the model can and cannot classify
+##### 2.2a.16 What the model can and cannot classify
 
 The TRI2 script deliberately prints **descriptive evidence states**, not a numeric severity, risk score, attack probability or action recommendation. Its six columns mean:
 
@@ -2148,7 +2312,7 @@ The code first checks the evidence release boundary. If a Round A packet referen
 
 The source and event confidence categories do not attempt to measure real probabilities. A real organization would need its own criteria, evidence quality controls, authorized response plan and responsible decision makers. For the rapid course, the aim is to make unsupported claims and reassessment points visible.
 
-#### 2.2a.17 Versioned priority notes prevent hindsight revision
+##### 2.2a.17 Versioned priority notes prevent hindsight revision
 
 When the team receives new information, preserve the old decision rather than silently replacing it. A minimal revision log might contain:
 
@@ -2169,9 +2333,9 @@ A revision should identify which evidence caused the change. "Updated priority a
 
 A reviewer should also ask whether the new priority note still includes the original bounded approval constraints. A source becoming more urgent does not dissolve the need for permission, and a new suspicion does not identify an attacker.
 
-#### 2.2a.18 Section synthesis: urgency and certainty can move independently
+##### 2.2a.18 Section synthesis: urgency and certainty can move independently
 
-The Chapter 2 triage skill is not selecting the most alarming label. It is writing a provisional decision note that distinguishes **what the records say**, **what those events mean**, **who or what caused them**, **what harm could follow**, **what harm has been verified**, **which evidence may disappear**, and **whether continuing activity requires urgent owner review**.
+The Module 2 triage skill is not selecting the most alarming label. It is writing a provisional decision note that distinguishes **what the records say**, **what those events mean**, **who or what caused them**, **what harm could follow**, **what harm has been verified**, **which evidence may disappear**, and **whether continuing activity requires urgent owner review**.
 
 At 09:05, R1–R8 permit a prompt assessment, training-owner question and bounded review. At 09:20, R9–R16 add a B19 authorization question, a second patron report, an imperfect quiet-query summary and a short-retention notice with no confirmed anchor. Preservation concern can rise while cause attribution remains unknown.
 
@@ -2183,7 +2347,7 @@ The following offline lab uses these principles as **structural review labels**.
 
 <a id="ir-rapid-ch02-tri2-lab"></a>
 
-### 2.2b TRI2 offline laboratory — reassessment under incomplete evidence
+#### 2.2b TRI2 offline laboratory — reassessment under incomplete evidence
 
 **Classification:** Independent teaching-only fixture. The labels TRI2 and its Boolean variant fields are not original Harbor Library records, measured operational outcomes, or accepted source-hold receipts.
 
@@ -2193,11 +2357,11 @@ The following offline lab uses these principles as **structural review labels**.
 
 **Important model contract:** The `R:SUPPLIED_NOT_AUTHENTICATED` output means a synthetic case card is present for the learner. It does not mean a producer's log has been independently authenticated. `H:VERIFIED_BOUNDED` and `P:SOURCE_PROTECTED_IN_VARIANT` are assertions made **inside invented variant inputs**; the program does not actually conduct an impact comparison or source-hold test. `C:ACTOR_UNPROVEN` always remains true because no simulated human attribution is established.
 
-#### Input and predictive exercise
+##### Input and predictive exercise
 
 Before executing, predict why R9 is unavailable at 09:05, why R14's quiet summary cannot prove no more edits, why an R15 loss concern cannot become a deletion deadline, and why a valid addendum might justify a **narrow B19 explanation reassessment** without ending preservation work. Then execute the exact program.
 
-#### Full Python 3 code
+##### Full Python 3 code
 
 ~~~python
 from copy import deepcopy
@@ -2455,7 +2619,7 @@ The original three release-guard controls remain required. The five additional c
 
 A declared variant can still contain an invented `owner_state_check=True` or source-safeguard flag. These guards do not verify those assertions. They validate classroom structure and provenance boundaries, not source truth, actual harm, probability, severity or permission. TRI2 remains an original CyKin method rather than a NIST classification policy. The renamed `TASK_SCOPE` labels concern authorization of the task, not a demonstrated causal mechanism or human actor.
 
-#### Limitations and diagnostic negative tests
+##### Limitations and diagnostic negative tests
 
 The program does **not** read any case files, query logs, test retention policies, authenticate a source, assess human identity, or verify a business state. Values such as `owner_state_check=True`, `no_new_edits_verified=True` and `source_safeguard_confirmed=True` are **invented premises** for independent variants, not real evidence collected by the script. It cannot calculate probabilities, incident severity, actual retention deadlines or appropriate live containment.
 
@@ -2469,13 +2633,13 @@ The result labels are educational and may be rejected or refined by an organizat
 
 ---
 
-### 2.2c Two-role practical activity — frozen priority review and independent reassessment
+#### 2.2c Two-role practical activity — frozen priority review and independent reassessment
 
 **Purpose:** Determine whether a reviewer can explain why a provisional priority changed, stayed open or narrowed using the actually released source cards, without the writer's retrospective coaching or invented production evidence.
 
 **Roles:** **Round A/B Triage Analyst** prepares and freezes the two source-bounded decision packets. **Independent Review Lead** evaluates the packet using the permitted R-series table and produces a separate, frozen reassessment. A facilitator may observe but must not supply missing evidence or reveal later cards prematurely.
 
-#### Preparation and sealed packet
+##### Preparation and sealed packet
 
 The analyst creates `TRI2-A-v1` with checkpoint 09:05, R1–R8 evidence pointers, reported versus inferred statements, potential harm, separate confidence layers, owner, a proposed authorized training-owner check and 09:15 review condition. The analyst then freezes that packet unchanged.
 
@@ -2483,7 +2647,7 @@ Only then does the facilitator release R9–R16 for the 09:20 reassessment. The 
 
 The analyst may add a **separately marked synthetic variant** card illustrating an approved addendum or custodian unavailability, but must give it a distinct name and must not mix its result into the canonical Round B note.
 
-#### Independent review
+##### Independent review
 
 Without asking the analyst to explain what they intended, the review lead:
 
@@ -2498,7 +2662,7 @@ Without asking the analyst to explain what they intended, the review lead:
 
 The lead writes `TRI2-review-v1` and freezes it **before** the two roles discuss disagreements. A reviewer who uses R9 to fault the 09:05 analyst for ignoring it fails the chronological requirement. A reviewer who describes the notice as proof that logs were deleted also fails the source-semantics requirement.
 
-#### Adjudication and improvement
+##### Adjudication and improvement
 
 Compare the two frozen notes and receiver answer with the canonical sources. Record whether a problem came from a missing source pointer, an unsupported interpretation, an inappropriate priority change, an incomplete owner/request field or a violation of the release boundary.
 
@@ -2510,7 +2674,57 @@ If the packet requires correction, create `TRI2-A-v2` or `TRI2-B-v2` with a docu
 
 **Limits:** This practice tests two learners' written reasoning under a synthetic tabletop, not the actual capacity of an organization to contact a custodian or contain a cyberattack. A correct priority note does not prove the next request was performed.
 
-### 2.3 Preserve what supports the next decision
+#### Worked checkpoint
+
+At the 09:05 checkpoint, classify only released observations and state a provisional priority. At 09:20, reopen the assessment with newly released records. The later conclusion does not rewrite the earlier evidence boundary.
+
+#### Practice — Lesson 06
+
+##### EX014 — Triage question
+
+**Objective:** turn a detector label into testable questions. **Inputs:** R9–R16 and the Module 1 service map. **Output:** a two-row table with question, relevant supplied record, authorized owner or source to ask next, and an answer that would change triage. Begin with the label “suspicious booking edit” and avoid using the label as evidence. A score of 2 requires two different discriminating questions and a bounded source for each.
+
+**TRI2 refinement:** In each of the same two rows, distinguish (a) the supplied record statement, (b) the interpretation the authorized check could strengthen or weaken, and (c) the causal or human-actor claim still unproved afterward. A B19 task-scope check and a booking-state comparison answer different questions. Do not add a third row or report a proposed check as completed.
+
+**Worked answer:** [EX014 in the final appendix](#ex014--worked-result).
+
+##### EX015 — Hypothesis table
+
+**Objective:** keep competing explanations live. **Inputs:** H1–H3 from section 2.1 and R1–R16. **Output:** three rows, each with a supporting record, a contradiction or limit, a narrow next authorized check and what result would weaken that hypothesis. You may state that a record is weak support. A score of 2 requires at least one check that could genuinely discriminate between explanations rather than simply restating the same log.
+
+**Discriminator check:** In each row, the named check must be capable of producing the stated weakening result. Identify the correct producer and field: R9 reports a booking-audit room change, whereas R11 reports a time-display concern. A task-approval document and identity-session detail answer different questions. This is a requirement within the existing three-row artifact and 0–2 rubric.
+
+**Worked answer:** [EX015 in the final appendix](#ex015--worked-result).
+
+##### EX016 — Priority without false certainty
+
+**Objective:** set urgency without inventing a severity fact. **Inputs:** R9–R16 at the 09:20 discovery point. **Output:** a short decision note with separate fields for potential patron harm, retention or ongoing-activity urgency, confidence in the leading hypothesis, provisional priority, decision owner and an observable review trigger. A score of 2 requires a reason for the priority and a deadline or event, not merely a color or number.
+
+**Extension:** Require one sentence explaining why retention urgency can be high while evidence of account compromise remains inconclusive. Identify what would cause the priority to increase and what would justify a less urgent review. Do not turn an unknown deadline into a guessed timestamp.
+
+**For full credit:** The learner identifies R15's possible evidence-loss path, R9/R11's potential booking harm, unresolved attribution, the incident lead's decision authority and the 09:35 review or an earlier verified trigger.
+
+**Additional IM2 discriminator for EX016:** At Round B, distinguish the R15 concern about **detailed booking-audit records relevant to R9** from the retention of R11's help-desk report or R13's identity source, whose policies are not supplied. Separately assess potential booking harm, uncertain cause and the absence of a measured affected-patron total. The independent IM2 fixture supplies no Harbor Library outcome. Keep the same short decision note and 0–2 rubric.
+
+**TRI2 refinement:** Keep the note short. State separately that the synthetic records are supplied, B19 task authorization is unresolved, and cause or human attribution is unproved. Split time sensitivity into source-preservation contact and a conditional human review of containment; R14's quiet summary has incomplete coverage and R15 has no confirmed deletion anchor. Name the authorized P-A or impact-check request, the incident lead, and the 09:35 or earlier evidence-triggered review. This adds precision to the same artifact and 0–2 rubric, not another exercise.
+
+**Worked answer:** [EX016 in the final appendix](#ex016--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-06 -->
+#### Continue studying — lesson 06 of at least 20
+
+[← Lesson 05](#lesson-05) · [Course lesson index](../SUBJECTS.md) · [Lesson 07 →](#lesson-07)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-07"></a>
+
+### Lesson 07 — Preservation, timestamps and package integrity
+
+**Week 2, day 2.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 2.3 Preserve what supports the next decision
 
 [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) provides guidance on incorporating forensic techniques into incident response, including work with different data sources. Its publication page expressly frames the guidance as an IT investigation aid and calls for management and legal consultation on applicable requirements. This rapid course therefore teaches a **minimal reproducibility record**, not a certified forensic collection method or a legal chain of custody.
 
@@ -2531,11 +2745,11 @@ An integrity hash can detect whether a particular byte sequence changes between 
 
 This table is a model for an **exercise note**. A real organization needs its approved preservation, retention, privacy and evidence-transfer procedures. Never collect broader data merely to make a training exercise look realistic.
 
-#### Prioritize a preservation request before copying
+##### Prioritize a preservation request before copying
 
 [NIST SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) addresses the provenance, integrity and restricted access of response records, and the collection and retention of incident data under an organization's procedures. The **preservation queue** below is CyKin's classroom method for deciding what to request next; it is not a NIST form or a substitute for an organization's policy. The question is not “Which source contains the most data?” It is “Which authorized, minimal observation could change the next decision, and which opportunity to obtain it may be lost?”
 
-Write a separate card for each candidate source. Name the **decision it could change**, the smallest relevant field and interval, its custodian, the known or unknown loss path, the approval needed, the expected handoff artifact and the claim that would remain unproved even after collection. This reuses Chapter 1's proposed evidence-readiness contract, but now the case has a live decision point. A source that may expire soon deserves immediate contact even if the cause is uncertain; a source with no confirmed loss clock may still need a parallel availability check. Do not convert the words “high priority” into an unverified deadline. Conversely, an indefinitely retained document is not automatically less important to the hypothesis: it may simply permit a later request after the fragile source is safeguarded.
+Write a separate card for each candidate source. Name the **decision it could change**, the smallest relevant field and interval, its custodian, the known or unknown loss path, the approval needed, the expected handoff artifact and the claim that would remain unproved even after collection. This reuses Module 1's proposed evidence-readiness contract, but now the case has a live decision point. A source that may expire soon deserves immediate contact even if the cause is uncertain; a source with no confirmed loss clock may still need a parallel availability check. Do not convert the words “high priority” into an unverified deadline. Conversely, an indefinitely retained document is not automatically less important to the hypothesis: it may simply permit a later request after the fragile source is safeguarded.
 
 For a **copy request**, distinguish four states: **proposed**, a bounded request has been written; **approved**, an accountable owner has authorized its stated scope; **collected**, a specified copy has actually been acquired with an acquisition receipt; and **verified**, a reviewer has performed and recorded specified checks on that item. State what was verified: bytes, selection, provenance or another named property, not “everything.” Protecting records in place does not itself move a copy request to collected. A source-hold request follows a separate control lifecycle, including reported application and a bounded effect check where such a mechanism exists. Neither lifecycle substitutes for the other. Record each actual state change, actor, time and source pointer; leave missing receipts pending. This is the book's teaching model, not a required NIST form. The relevant NIST principles concern recording investigative actions and preserving the integrity and provenance of incident information under organizational procedures; see [SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf).
 
@@ -2550,17 +2764,17 @@ When two requests compete for attention, compare them without inventing a numeri
 
 The first contact may be the incident lead to obtain approval, the source custodian to establish a retention anchor, or both through an approved escalation path. Several requests can proceed **in parallel**; the queue ranks decision and loss concerns, not a fixed order of technical commands. Keep the case record and the protected evidence store separate. A case note may point to an item and its access owner without copying sensitive raw records into a widely read ticket. Record the retention rule for the *collected copy* separately from the source's own deletion rule. If an expected source is unavailable, record who confirmed that, which interval or field is missing and how the next decision must be narrowed. Do not fill the gap with an invented export.
 
-#### Event time, discovery time and collection time are different facts
+##### Event time, discovery time and collection time are different facts
 
 An event may occur at one time, enter a logging service later and be seen by an analyst later still. In the supplied classroom table, R9 says that an edit was recorded at 09:03 UTC. R15, at 09:14, communicates a retention rule; it does not restart the retention period for R9. Without the actual source's deletion policy, no learner can calculate an exact expiry from those two timestamps. The safe operational question is: **What is the oldest relevant record's retention deadline at its source, and how soon can an authorized custodian preserve a narrow copy?** Escalate that uncertainty instead of writing a fabricated deadline.
 
 When merging records from different systems, retain the original timestamp and its timezone or offset. Add a normalized UTC field separately and record how it was obtained. A timestamp without an offset is ambiguous; a clock that is five minutes slow may reverse apparent order. The case table supplies UTC for teaching, but a real analyst would check source clock configuration and collection delay before claiming a precise cross-system sequence. R13's summary omits device and location detail, so the absence of those fields is a **source limitation**, not a negative finding about the session.
 
-Preservation should also be **proportionate**. For the next Harbor Library decision, a bounded booking-audit interval and the account's relevant sign-in summary may be useful. Exporting all patrons, all departments or unrelated accounts could increase privacy risk without improving the decision. A narrow export can still omit a relevant event; record the selection rule and keep an authorized unmodified original when available. Chapter 2 teaches the logic of a collection request and a copy-integrity check. Production evidence handling belongs to the organization's approved procedures and qualified personnel.
+Preservation should also be **proportionate**. For the next Harbor Library decision, a bounded booking-audit interval and the account's relevant sign-in summary may be useful. Exporting all patrons, all departments or unrelated accounts could increase privacy risk without improving the decision. A narrow export can still omit a relevant event; record the selection rule and keep an authorized unmodified original when available. Module 2 teaches the logic of a collection request and a copy-integrity check. Production evidence handling belongs to the organization's approved procedures and qualified personnel.
 
 <a id="four-clock-ledger-and-learner-release"></a>
 
-#### Source time, arrival, visibility, query, release and collection
+##### Source time, arrival, visibility, query, release and collection
 
 A timestamp must identify both **whose clock** it uses and **what transition** it describes. A useful ledger distinguishes these fields:
 
@@ -2579,9 +2793,9 @@ In the canonical Round B packet, R9 reports a 09:03 booking edit; R10 has a 09:0
 
 The difference from a source-card time to 09:20 is therefore a **source-to-learner-release interval**, not a measured transport or ingestion delay. Preserve the original text and offset, the normalized UTC value, its source-time kind and the release boundary. [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html) documents date-time representations and offsets; an offset does not authenticate a clock or reconstruct a missing timestamp. R9 remains unavailable to the 09:05 R1–R8 decision despite its earlier event time.
 
-### 2.4 Worked example: the second alert
+#### 2.4 Worked example: the second alert
 
-The following records are also fictional and extend Chapter 1. They are the complete input for this chapter's exercises. No live system or external account is involved. **Exercise timing:** the Chapter 1 analyst made the 09:05 decision from the then-supplied R1–R8 snapshot. This chapter releases R9–R16 to the learner at the simulated 09:20 review. Several events in the new table have earlier timestamps; the time an event occurred and the time the analyst received its record are different facts.
+The following records are also fictional and extend Module 1. They are the complete input for this chapter's exercises. No live system or external account is involved. **Exercise timing:** the Module 1 analyst made the 09:05 decision from the then-supplied R1–R8 snapshot. This chapter releases R9–R16 to the learner at the simulated 09:20 review. Several events in the new table have earlier timestamps; the time an event occurred and the time the analyst received its record are different facts.
 
 | ID | UTC time | Source | Observation |
 |---|---|---|---|
@@ -2614,9 +2828,9 @@ A later correct view cannot, without historical evidence, prove that the earlier
 |---|---|---|---|
 | Preserve the supplied booking and identity records in the classroom case note; request an authorized impact check in a real response. | The `B19` edit is not yet explained and detailed audit retention is short. | Incident lead is the proposed approval owner for bounded analysis and a separate source request; analyst records only the synthetic case note unless a local exercise copy is actually created and documented. P-A/P-B remain proposed. | Training-owner answer, new booking edit or the next review at 09:35 UTC. |
 
-This decision does **not** clear or accuse the staff member. It states what is known, what can be lost and who may authorize the next action. If the impact check found broad damage, a containment proposal would need to reach the service owner and incident lead promptly; Chapter 3 will compare those options.
+This decision does **not** clear or accuse the staff member. It states what is known, what can be lost and who may authorize the next action. If the impact check found broad damage, a containment proposal would need to reach the service owner and incident lead promptly; Module 3 will compare those options.
 
-#### Worked 09:20 preservation queue
+##### Worked 09:20 preservation queue
 
 The learner receives R9–R16 at the **simulated 09:20 review**. R9 reports a 09:03 edit, but was not available for the learner's 09:05 decision. R15 reports a 24-hour policy concerning detailed booking-audit records, not a measured countdown or a completed deletion. The policy anchor, oldest-row availability, enforcement behavior and any authorized copy or source hold remain unconfirmed. Ask the custodian what the copy provision means in this source's actual procedure; do not assume that saving an export changes the source's removal mechanism. The queue records **proposed requests**, not approvals or completed preservation. R15's rule must not be borrowed for R14's separately labeled application-audit source, R11's help-desk record or R13's identity source without an explicit custodial mapping and policy confirmation.
 
@@ -2633,7 +2847,7 @@ Suppose the application custodian later returns a restricted file. The analyst w
 
 A concise 09:20 handoff can therefore say: “R9 records a B19 edit at 09:03 UTC; R10 omits B19 from the listed training tasks, and R15 reports a 24-hour detailed-audit retention rule whose anchor we have not verified. At 09:20 we **propose** `P-A` to the incident lead and ask the application custodian to confirm availability, selection and the actual policy deadline; no production copy, hold or account restriction is recorded here.” This wording lets the next analyst see both the reason for urgency and the boundary of current evidence. Exercise EX018 asks the learner to make that request independently.
 
-#### Preservation as an authorized transaction
+##### Preservation as an authorized transaction
 
 A useful preservation request names *why* a source matters before specifying how much data should be copied. The next question is whether B19 was an approved operation and whether the booking service's current state matches what the service owner expects. This favors bounded booking-change evidence, an approved task-list version and appropriately limited identity details—not a bulk export of all patron records.
 
@@ -2653,7 +2867,7 @@ The states **proposed → approved → collected → verified** are not intercha
 
 [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) discusses forensic work across data sources from an IT incident-response perspective and expressly does not offer legal advice or an all-inclusive procedure. Harbor Library's request card is a beginner teaching method, not a chain-of-custody certification or permission to collect real personal data.
 
-### 2.5 Contained lab: preserve and check a synthetic extract
+#### 2.5 Contained lab: preserve and check a synthetic extract
 
 The lab below is deliberately smaller than a forensic acquisition. It teaches which **bytes** a digest covers and which conclusions still require other evidence. Use a new, empty, authorized scratch directory on a computer you control, with Python 3 and no network connection. The generated text is invented for this book; it contains no real account, endpoint or patron data. Running the script creates two small files in the current directory and refuses to overwrite existing names. If either name already exists, stop and choose a different scratch directory; do not remove an existing file to make the lab run.
 
@@ -2689,7 +2903,7 @@ The byte count is a useful reproducibility check, but equal length is not equal 
 
 **Expected submission:** the two byte counts and digests, one sentence explaining why the hashes differ, a collection note for `E1.txt`, and two explicit limits on the integrity claim. **Rubric:** one point each for correct byte/digest comparison, correctly identified modification, complete source-and-authority note, and limits that distinguish copy integrity from source truth. A score of 4/4 means the classroom task is reproducible, not that a real forensic process has been completed. The exact expected output and a model note are in the final worked-results section after EX026.
 
-### 2.6 Temporal coverage lab: what the analyst knew, and when
+#### 2.6 Temporal coverage lab: what the analyst knew, and when
 
 A useful timeline has at least two clocks: **event time**, as recorded by a source, and **discovery time**, when the responder received or recognized that record. A third time, **collection time**, marks when a copy was created and should be recorded separately. A query also has a **coverage interval**: the source and filters searched, the beginning and end of the search, and any ingestion delay or missing fields. These fields answer different questions. Sorting on one timestamp without naming which clock it represents can produce a fluent but false case history.
 
@@ -2756,9 +2970,9 @@ Predict the original three intervals and all four rejection reasons before runni
 
 **Expected evidence:** R9 is 09:03 UTC and released to the learner 17 minutes later; R10 is 09:04 UTC and released 16 minutes later; R15 is 09:14 UTC and released six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 reports a 24-hour detailed booking-audit policy with an authorized-copy provision; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
 
-**Assessment rubric:** one point each for correct R10 normalization, three correct source-to-learner-release intervals, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
+**Assessment rubric:** one point each for correct R10 normalization, three correct source-to-learner-release intervals, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Module 2 synthetic-extract result in the final appendix.
 
-#### A query envelope is narrower than a case conclusion
+##### A query envelope is narrower than a case conclusion
 
 A log search is a measurement operation over a specified source and filter, not a universal statement about everything that happened. An empty or apparently quiet result is meaningful only in the context of its **query envelope**:
 
@@ -2780,7 +2994,7 @@ The existing T1 exercise supplies illustrative metadata only when expressly invo
 
 [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) provides primary guidance on log generation, collection and management. This older publication supports the need to understand those stages; the envelope and acceptance gate are original instructional models, not a NIST query specification.
 
-### 2.7 Delayed log arrival: when a quiet query changes
+#### 2.7 Delayed log arrival: when a quiet query changes
 
 Section 2.6 established a **query envelope**: source, event-time interval, account filter and time at which a query was run. A fifth field matters when records travel through a collection pipeline: **ingestion time**, when a record becomes available to the queried store. An event may have occurred inside the requested interval yet be absent from a query run before its arrival. The absence is a statement about the store's visible contents at that query time, not a final statement about every event that happened in the interval. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) treats log management as a process of generating, transmitting, storing and using records. It is a 2006 high-level guide, not a specification for the exercise algorithm below. This book's delayed-arrival fixture and scoring rule are original classroom material.
 
@@ -2788,9 +3002,9 @@ Use four different times or bounds in the case note. The **event time** comes fr
 
 The canonical Harbor Library R14 card says only that its available query showed no further booking edits after R9 **within its queried range**. T1 in section 2.6 adds an exercise-only event window and account filter. It does not supply an ingestion-completeness guarantee. At a real response desk, an analyst might request source health, pipeline delay and collector error information from the logging owner, but this beginner exercise supplies no such operating measurements. An empty interval should therefore be written as “no matching row visible in this query as run,” followed by its bounds. It should not be written as “no edit occurred.”
 
-#### Optional T2 replay: a late row in the same event window
+##### Optional T2 replay: a late row in the same event window
 
-T2 is a **separate counterfactual replay**, not a new R-series record and not an amendment to the main case. Reset to the fictional 09:12 query snapshot, then imagine the following four synthetic rows. L1 transcribes R9 for this replay. L2–L4 are invented only to exercise query semantics; do not use them in EX014–EX026, Chapter 3 or the Chapter 4 tabletop unless a question explicitly names T2.
+T2 is a **separate counterfactual replay**, not a new R-series record and not an amendment to the main case. Reset to the fictional 09:12 query snapshot, then imagine the following four synthetic rows. L1 transcribes R9 for this replay. L2–L4 are invented only to exercise query semantics; do not use them in EX014–EX026, Module 3 or the Module 4 tabletop unless a question explicitly names T2.
 
 | Replay row | Account | Event UTC | Ingested UTC | Classroom observation |
 |---|---|---|---|---|
@@ -2866,9 +3080,9 @@ The `OMITTED_L2` case is equally important: every remaining field is well formed
 
 The replay makes a useful operational distinction. A **complete interval** would require credible evidence that the source generated expected events, the transport accepted them, any buffering and retries were accounted for, the queried store indexed them, and the query covered the relevant source and filters through a defensible cutoff. An analyst cannot establish all that from the latest row's timestamp. A logging owner might supply a documented ingestion-lag bound or an independently monitored **watermark**, but the owner would have to state what that watermark means and what failures it excludes. This book supplies neither a watermark nor a service-level promise. A second empty query would remain bounded by its own run time and pipeline state.
 
-**Submission and rubric.** Submit a two-row `query time | returned IDs | reason for every excluded ID` table, a one-sentence correction of the overclaim “nothing happened after R9,” and a request to the fictional application/logging custodian naming the event window, account filter, query run time and ingestion-health question. Score one point each for the 09:12 result, 09:20 result, correct explanations of L3 and L4, recognition that L2's *event* time did not move, and an authorized follow-up that distinguishes query coverage from account attribution. A 5/5 answer is a sound classroom interpretation; it is not verification of a real logging pipeline. The exact output and a worked answer appear in the final appendix after the Chapter 2 temporal-coverage result.
+**Submission and rubric.** Submit a two-row `query time | returned IDs | reason for every excluded ID` table, a one-sentence correction of the overclaim “nothing happened after R9,” and a request to the fictional application/logging custodian naming the event window, account filter, query run time and ingestion-health question. Score one point each for the 09:12 result, 09:20 result, correct explanations of L3 and L4, recognition that L2's *event* time did not move, and an authorized follow-up that distinguishes query coverage from account attribution. A 5/5 answer is a sound classroom interpretation; it is not verification of a real logging pipeline. The exact output and a worked answer appear in the final appendix after the Module 2 temporal-coverage result.
 
-### 2.8 Evidence package audit: integrity is one link in a longer chain
+#### 2.8 Evidence package audit: integrity is one link in a longer chain
 
 The E1 file in section 2.5 is a **synthetic transcription** of book records R9 and R14. Its SHA-256 value can help a second learner check whether the working bytes changed. To assess a claim about the underlying booking service, a reviewer would still need to know who supplied the source, what query or export produced it, which fields or rows were excluded, what transformations were made, whether the source clock and logging path were functioning, and whether collection was permitted. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) discusses evidence work across data sources but explicitly does not offer an all-inclusive forensic or legal procedure. The exercise below is a training review of a small invented package, not a chain-of-custody certification.
 
@@ -2893,9 +3107,9 @@ The second learner should check the manifest against the *actual file and script
 
 The acceptance criterion is deliberately narrow. **Variant A** can pass the classroom copy-integrity check if the reviewer repeats the calculation; it still cannot prove R14's underlying query was complete. **Variant B** fails the claimed byte identity, regardless of whether the change was accidental or deliberate; that causal question is not answered by the digest mismatch. **Variant C** can have identical bytes yet fail the provenance and authorization review. A simple five-point rubric awards one point for distinguishing A's two kinds of claim, one for correctly rejecting B's recorded digest match, one for C's missing provenance and authority, one for a specific repair request for each variant, and one for a handoff sentence that labels every unperformed check. A model comparison is given in the final appendix.
 
-When preparing a real handoff, ask the next analyst to **reproduce one consequential claim**: locate its source pointer, re-run or review the approved selection, verify the copy if one exists, and identify the decision that would change if the claim fails. This is a quality check on the team's reasoning. It does not replace specialist evidence handling where legal, privacy, disciplinary or contractual obligations apply. Chapter 3 will use the same separation when it asks whether a successful backup job is also a tested and accepted recovery.
+When preparing a real handoff, ask the next analyst to **reproduce one consequential claim**: locate its source pointer, re-run or review the approved selection, verify the copy if one exists, and identify the decision that would change if the claim fails. This is a quality check on the team's reasoning. It does not replace specialist evidence handling where legal, privacy, disciplinary or contractual obligations apply. Module 3 will use the same separation when it asks whether a successful backup job is also a tested and accepted recovery.
 
-#### Distinguish source, copy and interpretation
+##### Distinguish source, copy and interpretation
 
 A digest can support a byte-consistency comparison for a named object at named checks. It does not prove that the source exporter was authorized, that every relevant event was emitted, that the source clock was correct, or that the copied rows identify a human.
 
@@ -2913,9 +3127,79 @@ A common false positive is to interpret R13's one-session summary as proof of a 
 
 <a id="ir-rapid-ch02-hold2-teaching"></a>
 
-### 2.8a Verify a source preservation hold separately from a retained copy
+#### Worked checkpoint
 
-#### 2.8a.1 A request to preserve data is not the preservation itself
+A matching digest demonstrates that the classroom copy still matches the digest used for comparison. It does not authenticate the original producer, fill a missing time window or prove that a requested source was actually retained.
+
+#### Practice — Lesson 07
+
+##### EX017 — What the summary cannot prove
+
+**Objective:** test the limits of negative evidence. **Inputs:** R13, R14 and, for this question only, the optional T1 metadata. **Output:** two short claim/limit pairs and one proposed follow-up query. First assess R14 *without* T1; then state exactly what T1 adds and what it still cannot cover after 09:12. Explain why R13 does not establish that the `desk-a` session came from the expected staff device. A score of 2 distinguishes missing device fields from a negative device finding and names the query's filter and interval.
+
+**Extension:** Before using optional T1, describe exactly which fields of R14's query envelope are missing. When using T1, distinguish a bounded event-time filter from an ingestion-completeness guarantee; name the first excluded boundary.
+
+**For full credit:** The learner says that even optional T1 ends before 09:12 and does not authenticate logging completeness, another account or activity at and after 09:12. R13's missing device field remains unknown rather than a negative device finding.
+
+**Worked answer:** [EX017 in the final appendix](#ex017--worked-result).
+
+##### EX019 — Collection note
+
+**Objective:** make an exercise extract reviewable. **Inputs:** the E1 fixture in section 2.5 and R9/R14. **Output:** a collection-note table with case/item ID, source and event range, collector, authority, actual local collection time *if a file was created*, copy location, transformation and limitation. If no file was created, label the note **planned** and leave collection time and digest **not applicable**; do not pretend an export occurred. A score of 2 identifies E1 as a synthetic transcription, distinguishes original book text from the working file and records access scope. A made-up digest is not required.
+
+**State criterion within the existing 0–2 rubric:** A completed local E1 file, a second-file failure and a planned collection are different states. Record only the file, time, integrity measurement, transfer or disposal actually evidenced; mark unrecorded or unperformed fields explicitly. Do not claim that failure to create the second file invalidated or erased an already created first file. A retained copy is not an applied source hold. This criterion adds no row-count requirement, exercise ID or production permission.
+
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Keep E1's original provenance and state requirements. Add a separate *planned derivative manifest*: original source pointer, approved row interval/objects, fields retained, fields excluded, transformation version and intended recipient. Do not reuse E1's digest as if it authenticated new derived bytes; compute a new digest only if a local file was actually created and measured.
+
+**For full credit:** Source and derived views are explicitly distinguished, and no collection/creation time or digest is fabricated. The original E1 transcript and its existing instructions remain unchanged.
+
+**HOLD2 supplementary task (after the required artifact):** Preserve the original **collection-note table** for E1 and its actual-versus-planned status. Add a **separate named source-hold ledger reference** with its own proposal, authority, reported control, effect check and release/expiry fields. If no source hold was executed, mark these fields **not applicable or not supplied**, rather than repeating E1's copy hash as proof of source preservation.
+
+**For full credit:** Source-control lifecycle and copied-item custody are distinct. The original E1 byte/transformation and access limits remain as written; no source hold, collection time or digest is fabricated.
+
+**Worked answer:** [EX019 in the final appendix](#ex019--worked-result).
+
+##### EX020 — Hash claim
+
+**Objective:** bound an integrity claim. **Inputs:** the named E1 bytes, the two digest checks and section 2.5. **Output:** a five-row claim table: two statements the comparison supports and three it does not, each with a one-sentence reason. Specify which file and times were checked rather than saying “the evidence is authentic.” A score of 2 distinguishes copy consistency from source truth, completeness and collection authority.
+
+**Extension:** For one claim that a matching E1 digest supports, name its exact evidence layer (copy). For one claim it cannot support, name the missing source/selection or interpretation layer. Keep the E1 lab's original numbers and bytes unchanged.
+
+**For full credit:** Matching hashes concern chosen bytes; they do not attest producer completeness, collection permission or the person responsible for B19.
+
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Keep the existing five-row supported/unsupported hash-claim table. Add one sentence explaining why equal digests of a source copy do not authorize sharing the source's personal fields with a broader team, and why a projected view requires its own recorded transformation and limits.
+
+**For full credit:** Byte consistency remains separate from source authenticity, completeness, permission and confidentiality. No statement that masking or hashing makes information automatically anonymous is accepted.
+
+**Worked answer:** [EX020 in the final appendix](#ex020--worked-result).
+
+##### EX021 — Time ordering
+
+**Objective:** separate event order from causal inference. **Inputs:** R9, R10, R12, R15 and R16; use T1 only for the optional final sentence. **Output:** five ordered rows with ID, UTC event time, source and one uncertainty about cause. Mark that R9–R16 reached the learner at 09:20 despite earlier event times. Optionally state which interval T1 leaves uncovered. A score of 2 preserves event/discovery separation and does not treat temporal precedence as authorization or attribution.
+
+**Worked answer:** [EX021 in the final appendix](#ex021--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-07 -->
+#### Continue studying — lesson 07 of at least 20
+
+[← Lesson 06](#lesson-06) · [Course lesson index](../SUBJECTS.md) · [Lesson 08 →](#lesson-08)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-08"></a>
+
+### Lesson 08 — A source hold is a separate lifecycle
+
+**Week 2, day 3.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 2.8a Verify a source preservation hold separately from a retained copy
+
+##### 2.8a.1 A request to preserve data is not the preservation itself
 
 A responder may correctly recognize that useful source records could disappear. They can write an urgent, well-scoped request, obtain a decision from an accountable person and contact the custodian. None of those steps alone establishes that the underlying source has changed its deletion behavior.
 
@@ -2925,7 +3209,7 @@ A **preservation request** asks that specified information be protected under th
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final), especially RS.AN-06 and RS.AN-07, addresses records of investigative actions and the integrity, provenance, collection and retention of incident data. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) describes source-aware collection and preservation from an IT incident-response perspective, not as a legal preservation order. The specific hold lifecycle below is an **original CyKin teaching model**; the cited sources do not prescribe its exact fields or claim that Harbor Library has such a capability.
 
-#### 2.8a.2 Separate three objects that may be confused
+##### 2.8a.2 Separate three objects that may be confused
 
 A useful incident note keeps three inventories rather than one ambiguous entry named "evidence saved":
 
@@ -2941,7 +3225,7 @@ Conversely, a confirmed source hold might keep selected records available withou
 
 The existing E1 laboratory teaches a digest-based check on a synthetic transcription; MIN2 teaches a restricted working view. HOLD2 does not repeat either. It asks whether the *claimed source-level preservation effect* was actually checked and what remains unproven even after a narrow positive check.
 
-#### 2.8a.3 Start with a decision question for P-A and P-B
+##### 2.8a.3 Start with a decision question for P-A and P-B
 
 At 09:20, the learner can propose two separate information paths. **P-A** concerns booking/application audit data relevant to the B19 edit and the limits of R14's earlier quiet-query summary. **P-B** concerns possible identity details that could clarify whether a session relationship is worth investigating. Their evidence value, custodians, privacy limits and loss concerns differ.
 
@@ -2953,7 +3237,7 @@ The current investigation question might be: "Can we preserve the permitted deta
 
 The state of both P-A and P-B at the supplied Round B checkpoint is **proposed**. This supplement does not create a fictitious canonical approval or hold to move either card into a completed state.
 
-#### 2.8a.4 Define source-hold coverage as a contract, not a title
+##### 2.8a.4 Define source-hold coverage as a contract, not a title
 
 A ticket titled "hold B19 logs" is insufficient to know what would be protected. The receiving custodian needs an unambiguous control target and an authorized selection. A reviewable request should cover at least:
 
@@ -2972,7 +3256,7 @@ The field list is a **teaching contract**, not a legal specification or a promis
 
 A hold on `booking-audit` is not necessarily a hold on `application-audit` or `identity-detail`. A hold covering 09:10–09:35 cannot establish coverage of a requested 09:00–09:30 interval. A hold covering one booking ID cannot establish coverage of every named object. Scope must be compared, not assumed from the presence of a control identifier.
 
-#### 2.8a.5 Approval and application produce different receipts
+##### 2.8a.5 Approval and application produce different receipts
 
 Suppose the fictional incident lead approves a P-A request to preserve a narrow source interval. The approval should name exactly what may be preserved and who will carry out the work. It does **not** establish that the custodian enabled a protective mechanism, or that the source supports one.
 
@@ -2990,7 +3274,7 @@ A custodian message saying "done" should therefore be followed by precise questi
 
 The HOLD2 script models these conditions as structured artificial fields. In a real case, a Boolean `approved=True` would not authenticate an actual person's decision. The team needs organizationally valid decision evidence and source-provided receipts, protected according to the applicable access and retention rules.
 
-#### 2.8a.6 Verify an effect without running an unsafe deletion test
+##### 2.8a.6 Verify an effect without running an unsafe deletion test
 
 A retention hold is often intended to prevent loss of data. It might appear that the simplest test is to try deleting a protected record. That can be unsafe, destructive, unauthorized or misleading. **This course performs no deletion and does not recommend testing a real hold by deleting incident evidence.**
 
@@ -3002,7 +3286,7 @@ A meaningful verification report should state the **source and scope checked**, 
 
 The HOLD2 fixture uses synthetic flags for an "effect check" and an "oldest relevant row." Those are declarations inside a lab, not independent proof. The lab's strongest result is explicitly called **bounded source hold confirmed in fixture**, never "all deletion stopped in Harbor Library."
 
-#### 2.8a.7 The oldest requested row is a critical but limited sentinel
+##### 2.8a.7 The oldest requested row is a critical but limited sentinel
 
 Why check an older row at all? If the request is intended to protect records already near a retention boundary, inspecting only a recent event may give false reassurance. A source might retain new rows while the oldest relevant data have already been removed.
 
@@ -3014,7 +3298,7 @@ A custodian should document whether the row existed at the intended source befor
 
 A future source-preservation mechanism cannot retroactively recreate data already removed. The team may consider authorized alternate sources or copies, but any resulting reconstruction must be documented separately from the original source hold.
 
-#### 2.8a.8 A hold can be valid now yet have a finite term
+##### 2.8a.8 A hold can be valid now yet have a finite term
 
 A source-protection mechanism may have a defined duration, expiration condition or required review. The record should separate:
 
@@ -3031,7 +3315,7 @@ In HOLD2, the independent fixture provides a technical `term_end`. If the lab's 
 
 A valid hold receipt also should say what happens if review cannot be completed. A safe plan may require escalation before expiration, a separately approved renewal, or continuing safeguards as defined by the actual policy. The analyst cannot assume that a prior approval renews itself.
 
-#### 2.8a.9 Release and expiration must not erase the earlier lifecycle
+##### 2.8a.9 Release and expiration must not erase the earlier lifecycle
 
 An important archival principle applies even after the preservation reason has ended: **historical decisions and receipts should remain reviewable within the organization's authorized recordkeeping rules**. Closing the active hold state is not permission to rewrite its earlier existence.
 
@@ -3043,7 +3327,7 @@ A release receipt is another distinct operational event. Someone may approve the
 
 The HOLD2 laboratory appends a fictitious `RELEASE_RECORDED` entry while retaining all earlier entries. The result is **RELEASE_RECORDED_RECHECK_REQUIRED**, deliberately avoiding the stronger claim that every deletion behavior after release was measured. The lab performs **no deletion or modification of a source**.
 
-#### 2.8a.10 The copy remains governed separately after a source hold ends
+##### 2.8a.10 The copy remains governed separately after a source hold ends
 
 A particular collected copy may remain subject to the organization's evidence-retention rules after a source hold is released. Conversely, a copy may have its own permitted deletion or access conditions while a source-level hold remains active. Those are separate governance and custody decisions.
 
@@ -3056,9 +3340,9 @@ They should not share one ambiguous status. A checked digest for `copy_item_id` 
 
 The current book already discusses source/copy/interpretation and a minimized technical-review view. HOLD2 contributes the **lifecycle linkage**: a hold record can point to a separately authorized copy without becoming that copy, and release of one should not silently alter the other's governance.
 
-The AR1 authority-readiness exercise in Chapter 1 may help identify a valid approver under a separate pre-incident process. It does **not** replace the case-specific approval required for P-A or P-B; nor does it provide evidence that a hold was applied during Round B.
+The AR1 authority-readiness exercise in Module 1 may help identify a valid approver under a separate pre-incident process. It does **not** replace the case-specific approval required for P-A or P-B; nor does it provide evidence that a hold was applied during Round B.
 
-#### 2.8a.11 Custodian unavailable: treat nonresponse as an escalation condition
+##### 2.8a.11 Custodian unavailable: treat nonresponse as an escalation condition
 
 A time-sensitive request may reach an organizational mailbox while the responsible custodian is unavailable. The responder must distinguish a **dispatch attempt**, an acknowledgement by a role, a custodian's confirmation of applicability and an actual application/effect receipt.
 
@@ -3070,7 +3354,7 @@ The analyst must not bypass source access controls or execute retention changes 
 
 The HOLD2 `CUSTODIAN_UNAVAILABLE` negative case returns that status rather than fabricating application or verification. It does not prove records were lost or that the custodian was negligent.
 
-#### 2.8a.12 Contrastive example — a wrong "hold complete" message
+##### 2.8a.12 Contrastive example — a wrong "hold complete" message
 
 **Incorrect synthetic Round B conclusion:**
 
@@ -3082,7 +3366,7 @@ A source reviewer cannot repair the conclusion by calculating a different timest
 
 A valid next step would identify the bounded P-A source request, obtain an accountable decision, ask the custodian which mechanism if any can protect it, and document only the receipts actually returned. P-B proceeds as a separate availability inquiry with its own owner and scope.
 
-#### 2.8a.13 Correct example — a complete but explicitly hypothetical hold receipt
+##### 2.8a.13 Correct example — a complete but explicitly hypothetical hold receipt
 
 **Entirely invented HOLD2 rehearsal, not a Harbor Library event.** On the artificial date 2040-03-15, a team prepares a request for two artificial booking-audit items, `BX-01` and `BX-02`, over an event-time interval from 09:00 inclusive to 09:30 exclusive.
 
@@ -3096,7 +3380,7 @@ This positive example includes source, objects, interval, authority, custodian, 
 
 A different result is just as educational. If the receipt covers `identity-detail-sim` instead of `booking-audit-sim`, the program refuses source coverage even if every other field looks valid. If the oldest row cannot be retrieved, the team must investigate historical coverage rather than silently mark the hold complete. If the hold term has elapsed, the earlier positive check cannot establish continued current protection.
 
-#### 2.8a.14 A review decision must be different from a routine expiry
+##### 2.8a.14 A review decision must be different from a routine expiry
 
 At a stated review time, the owner may decide to maintain, narrow, extend, release or escalate the hold under the organization's actual policy and legal requirements. The custodian may have technical facts about control capabilities, but those facts do not automatically grant authority to make a broader business or legal preservation decision.
 
@@ -3108,7 +3392,7 @@ An expiry record may be derived from comparing time with a declared technical te
 
 These distinctions make handoffs safer. The next analyst can see which source was protected during what interval, which claims were actually verified, and which new authorization is required before the team changes a preservation control.
 
-#### 2.8a.15 Two different negative source outcomes
+##### 2.8a.15 Two different negative source outcomes
 
 A source hold can fail acceptance in at least two important ways:
 
@@ -3122,7 +3406,7 @@ These outcomes are different from VQ2. VQ2 concerns whether a query result suppo
 
 <a id="ir-rapid-ch02-hold2-binding"></a>
 
-#### 2.8a.15a Accept a linked evidence chain, not a collection of reassuring fields
+##### 2.8a.15a Accept a linked evidence chain, not a collection of reassuring fields
 
 A positive result needs more than a source name and several true flags. It needs agreement between the **request**, the **permission actually granted**, the **reported control**, and the **observation used to assess that control**. The purpose of this check is not to add paperwork: it is to prevent a valid receipt for one operation from answering a different question.
 
@@ -3149,7 +3433,7 @@ These checks implement an original CyKin teaching contract. [NIST SP 800-61 Rev.
 
 **Apply the reasoning before running Python.** For EX018, keep the three-row P-A request and two-row P-A/P-B comparison; use their existing authority and receipt fields to ask for a request-bound permission, the permitted selection and the matching application/effect record. For EX019, keep E1's collection note separate from any source-control reference. For EX022, retain the five-sentence handoff and its proposed status. For EX024, keep two hypothetical trigger/response pairs: an inconsistent receipt calls for clarification and a new authorized review, not automatic containment or proof of deletion. All unprovided P-A/P-B details remain pending at 09:20. No HOLD2 identifier, timestamp or passing run belongs in R1–R16.
 
-#### 2.8a.16 Section synthesis — preserve the source, the copy and the decision trail separately
+##### 2.8a.16 Section synthesis — preserve the source, the copy and the decision trail separately
 
 The learner should finish with three defensible habits. First, name the source, authorized objects and interval precisely enough that a custodian can say what is and is not protected. Second, separate requested, approved, applied and verified states, and use non-destructive source observations to bound any effect claim. Third, keep a versioned or append-only lifecycle through review, expiry and release without erasing earlier decisions or equating a protected copy with protected source retention.
 
@@ -3157,20 +3441,20 @@ For Harbor Library at 09:20, **P-A and P-B remain proposed**. R15 leaves the exa
 
 <a id="ir-rapid-ch02-hold2-lab"></a>
 
-### 2.8b HOLD2 offline laboratory — source hold lifecycle and coverage
+#### 2.8b HOLD2 offline laboratory — source hold lifecycle and coverage
 
 **Environment:** Python 3 standard library, entirely in memory. No file creation, network access, credentials, data collection, retention-setting changes, destructive probes or deletion.
 
 **Fixture classification:** A separate artificial 2040-03-15 scenario; the source names `booking-audit-sim` and `identity-detail-sim`, objects `BX-01`/`BX-02` and hold receipts are invented. They are **not** R-series records or real P-A/P-B execution evidence.
 **Goal:** Decide whether a described source hold has sufficient **bounded** simulated source/custodian/scope/effect evidence, and refuse broader conclusions when a required step is missing or a term has elapsed.
 
-#### Assumptions and observations to predict
+##### Assumptions and observations to predict
 
 A request covers two artificial records in the interval `09:00 ≤ event < 09:30 UTC`. An invented approving role has accepted its scoped source, and the invented application custodian reports applying a control at 09:40 that covers 08:55–09:35. The fixture checks state at 10:00 with an artificial effect-check flag and oldest-row availability flag. Its reported technical term ends at 11:30.
 
 The program verifies *declared consistency* and prints a reason when it refuses acceptance. The Boolean fields are invented teaching assertions, not authenticated approval, actual source protection or proof of deletion prevention.
 
-#### Complete Python 3 program
+##### Complete Python 3 program
 
 **Execution contract:** Run this whole listing in a fresh Python 3 session, not after another laboratory that reuses `BASE` or `utc`. It prints 33 lines: the previous sixteen baseline lines, three chronology controls and fourteen additional acceptance controls. All times belong to the artificial UTC date 2040-03-15. The explicit authorization, request/control IDs and sentinel binding are invented additions to HOLD2 only. They do not authenticate an issuer or add a case approval to R1–R16.
 
@@ -3538,25 +3822,25 @@ Before reading the final appendix, predict all 33 output lines: sixteen baseline
 
 **Five-point assessment for this unnumbered lab:** One point each for exact output; correct source/object/interval coverage and authorization reasoning; separation of copy from source control; correct treatment of unavailable custodian or a specifically identified oldest row; and complete request-bound lifecycle, expiry/release history and explicit effect limits. Assess the added controls within these same five criteria. The lab adds **no new EX identifier**.
 
-### 2.8c Practical two-role activity — custodian packet and independent review
+#### 2.8c Practical two-role activity — custodian packet and independent review
 
 **Purpose:** Demonstrate that a second person can distinguish a requested, approved, applied and verified source hold **without relying on the packet author's explanation**.
 
 **Roles:** **Custodian / Packet Author** and **Independent Reviewer**. The incident-lead approval is represented only by a fictional classroom request card. There is no real source custodian, logging system or deletion mechanism involved.
 
-#### Step 1 — Freeze the source-hold request
+##### Step 1 — Freeze the source-hold request
 
 The packet author creates `HOLD2-request-v1` with the fictional source, object IDs, time interval, purpose, proposed approval, custodian, requested hold mechanism, earliest relevant row and expected review terms. Mark the actual custodian acknowledgement, control identifier, effect check and observed oldest-row state **not supplied** until the artificial receipt card is given.
 
 Keep a separate copy-item card, if using one, with its own retention and integrity fields. Do not allow a saved copy to change the source-hold status.
 
-#### Step 2 — Prepare and freeze one simulated custodian response
+##### Step 2 — Prepare and freeze one simulated custodian response
 
 Choose the valid HOLD2 fixture or a wrong-source, oldest-missing, reused-approval or wrong-effect-control variant. Record the requested selection, the explicit authorization envelope, request and control IDs, application time, technical term, declared sentinel, check response and missing fields. Keep the complete modeled lifecycle and distinguish an unverified issuer from a structurally matching identifier. Freeze the packet as `HOLD2-custodian-v1`; a positive script result does not replace the receiver's independent reconstruction.
 
 The reviewer must not see the author's private reasoning or a corrected answer. The packet may include explicit approved source pointers and the relevant original teaching rules.
 
-#### Step 3 — Independent review with no author assistance
+##### Step 3 — Independent review with no author assistance
 
 The reviewer receives the two frozen cards and must answer:
 
@@ -3570,7 +3854,7 @@ The reviewer receives the two frozen cards and must answer:
 
 The reviewer saves `HOLD2-review-v1` before discussion. Missing fields must remain missing. The reviewer should not claim that a source was deleted or that a hold succeeded solely because the author used reassuring wording.
 
-#### Step 4 — Evaluate, then correct with a new version
+##### Step 4 — Evaluate, then correct with a new version
 
 Compare the frozen response with the request and receipt. Identify whether a discrepancy came from the packet's missing field, the reviewer's interpretation, or an unavailable custodian/source. Retain the original versions. If a change is needed, write `HOLD2-request-v2` or `HOLD2-custodian-v2` and run another separately marked review; do not rewrite the first attempt.
 
@@ -3582,7 +3866,47 @@ Compare the frozen response with the request and receipt. Identify whether a dis
 
 <a id="ir-rapid-ch02-q1-lab"></a>
 
-### 2.9 Contained lab: correlate records without inventing an actor
+#### Worked checkpoint
+
+A custodian may acknowledge a hold request while its effect remains unverified. The case record should show request, approval, application report, effect check and expiry separately; a downloaded copy has its own custody trail.
+
+#### Practice — Lesson 08
+
+##### EX018 — Retention decision
+
+**Objective:** prepare a proportionate preservation decision. **Inputs:** R9, R13–R15, the collection-note fields in section 2.3 and the worked queue in section 2.4. **Output:** a three-row `P-A` request to the application custodian stating each source and proposed event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add one sentence explaining why preservation may precede root-cause knowledge. Then add a two-row comparison of `P-A` with `P-B`: decision each could change, known or unknown loss path, owner, present state and why the second availability check may proceed in parallel. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp or claim either source was collected. A score of 2 identifies the time-sensitive risk, privacy boundary and proposal-versus-collection distinction for both sources.
+
+**Extension:** Include a specific question that the application custodian must answer about the deletion-policy **anchor** and a separate question about whether the oldest requested row is still retrievable. State the status of P-A and P-B using the exact words `proposed`, `approved`, `collected` or `verified`, without skipping intermediate states.
+
+**For full credit:** A 24-hour rule is a duration, not a confirmed deletion instant; P-A's potential urgency does not authorize a bulk export or establish that a hold took effect.
+
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Alongside the P-A and P-B proposed requests, identify the specific columns necessary for the next decision and a category of source field that should **not** automatically be distributed to the technical reviewer. Distinguish retention of a permitted source object from permission to distribute every column. Preserve the existing R15 unknown policy anchor and proposal-versus-collection states.
+
+**For full credit:** The request names the business purpose, source selection, custodians, approving role and restricted reviewer scope. No completed export or broad personal-data permission is invented.
+
+**HOLD2 supplementary task (after the required artifact):** Keep the original **three-row P-A request** and **two-row P-A/P-B comparison**. Add to the existing custodian-question field the exact source-hold receipt requirements: source namespace, approved booking/object IDs, event interval/time semantics, accountable authority, custodian, reported activation, review/expiry terms, observed effect and an explicit limit. State that a missing oldest requested row requires investigation rather than a fabricated expiry. Do not change P-A or P-B from **proposed** merely because HOLD2 contains a positive artificial run.
+
+**For full credit:** The request remains a proposed authorized next step at 09:20, the R15 policy anchor remains unknown, the P-B retention rule remains unspecified, and neither a source hold nor a copy is claimed performed.
+
+**Worked answer:** [EX018 in the final appendix](#ex018--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-08 -->
+#### Continue studying — lesson 08 of at least 20
+
+[← Lesson 07](#lesson-07) · [Course lesson index](../SUBJECTS.md) · [Lesson 09 →](#lesson-09)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-09"></a>
+
+### Lesson 09 — Correlation, quiet queries and reviewer handoff
+
+**Week 2, day 4.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 2.9 Contained lab: correlate records without inventing an actor
 
 The earlier labs examined *when* a row became visible and whether a copied file changed. A responder also needs to ask whether records from two systems refer to the **same activity**. An account label, a session identifier and a human identity are different things. If an application audit records `desk-a` but omits its session identifier, several identity sessions for that account could fit the same time. A nearby timestamp cannot choose one by itself. An exact identifier can narrow a candidate relationship, but it still does not identify the person who used the session or establish that the edit was authorized. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) provides high-level log-management background, and [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) discusses investigation across source types. Neither older publication prescribes this book's matching code or claims that an account/time join proves attribution. The following method is an original beginner-level teaching fixture.
 
@@ -3609,7 +3933,7 @@ The **first pass** checks account label and interval. E-A falls inside both S-A 
 
 The **second pass** asks whether the apparent matches deserve trust. The two tables might cover different collection windows, use clocks with different error, or have been filtered on different account identifiers. Q1 does not provide a query manifest, source-clock check, application schema showing that both `session_id` fields share one namespace, or a record of session rotation. E-C's zero matches therefore means **no row matched in this supplied table under this rule**, not that no session existed at 09:18. E-D's key mismatch may point to a missing identity row, a malformed application field or a wrong assumption about key namespaces. Its cause is unknown. Even E-B's one exact-key match does not prove who controlled S-B or why the edit occurred.
 
-#### Reproduce the four classifications locally
+##### Reproduce the four classifications locally
 
 The Python 3 standard-library program below keeps the invented rows in memory. It opens no file, makes no network request and alters no source. It validates that supplied session IDs are unique and that every interval has a start before its end; it then prints the candidates under the classroom rule. Use a scratch interpreter or reason through the rows on paper. If you change a fixture, label it a **variant** rather than rewriting Q1's original result.
 
@@ -3665,17 +3989,17 @@ The method has an important asymmetry. An explicit key that fails to match is **
 
 **Practice task.** Submit a four-row result table with event ID, status, candidate session IDs and one sentence stating what the result **cannot** establish. Then write a bounded custodian request for the missing query range, source-clock quality and shared session-key semantics. Identify the fictional incident lead as the person who must authorize any additional collection under the classroom role boundary; no learner may query a real identity or booking system. Finally, create a variant `Q1-V`: remove only E-B's explicit `S-B` key and predict which classification changes. Do not treat a changed result as a new canonical event.
 
-**Expected evidence:** four classifications matching the printed program output, a limitation for each, a request that names the smallest useful source and fields, and the Q1-V prediction. **Rubric (six points):** one point for correctly identifying both E-A candidates; one for E-B's key-and-window match without human attribution; one for E-C's zero-match limit; one for preserving E-D's explicit-key mismatch; one for a proportionate request including clock, coverage and schema; and one for predicting that E-B becomes ambiguous when its key is removed. A 6/6 score verifies reasoning on this fixture, not the trustworthiness of a real log join. The exact output and model request appear in the final answer appendix after the Chapter 2 evidence-package audit result.
+**Expected evidence:** four classifications matching the printed program output, a limitation for each, a request that names the smallest useful source and fields, and the Q1-V prediction. **Rubric (six points):** one point for correctly identifying both E-A candidates; one for E-B's key-and-window match without human attribution; one for E-C's zero-match limit; one for preserving E-D's explicit-key mismatch; one for a proportionate request including clock, coverage and schema; and one for predicting that E-B becomes ambiguous when its key is removed. A 6/6 score verifies reasoning on this fixture, not the trustworthiness of a real log join. The exact output and model request appear in the final answer appendix after the Module 2 evidence-package audit result.
 
 <a id="ir-rapid-ch02-q1-scope"></a>
 
-#### Q1-S — qualify identifiers and test sensitivity to clock uncertainty
+##### Q1-S — qualify identifiers and test sensitivity to clock uncertainty
 
 **Learning goal:** Explain why equal key text is not enough to join two sources, calculate which session intervals could contain an uncertain event time, and keep input defects separate from an absence of matching evidence. Complete the four original Q1 cases first. This extension changes neither their inputs nor their four expected output lines.
 
 **Classification and safety:** Q1-S is a separate, entirely invented fixture dated **2040-03-16**. Its realms, account and correlation keys are harmless labels, not authentication material, Harbor Library observations or additions to R1–R16. The laboratory uses only Python's standard library and in-memory data. It performs no collection, login, session access, network request, source modification or cleanup operation.
 
-##### Equal text versus an equal identifier
+###### Equal text versus an equal identifier
 
 A **namespace** is the context in which an identifier has its meaning. A **qualified key** retains that context with the value. In this exercise, the qualified key is the pair `(realm, key)`. Thus `(realm-a, K7)` and `(realm-b, K7)` are different identifiers even though their last component is identical. A real source contract might instead need an issuer, tenant, application, generation or another documented qualifier. Do not assume that this two-field classroom key is sufficient for every platform.
 
@@ -3708,7 +4032,7 @@ Three concepts must also remain separate. A **session correlation label** relate
 
 Do not make a correlation exercise an excuse to copy live session secrets. OWASP's [session logging guidance](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#logging-sessions-life-cycle-monitoring-creation-usage-and-destruction-of-session-ids) warns against recording raw session IDs and describes a protected correlation approach. For a real review, request only the approved non-secret correlation representation, its scope and its documented mapping. Q1-S already supplies safe invented labels; it teaches no token acquisition or session replay.
 
-##### Time uncertainty changes a set of candidates, not the event's history
+###### Time uncertainty changes a set of candidates, not the event's history
 
 The original Q1 tests one stated event time against exact supplied session endpoints. Q1-S asks a different question: what changes when the event's comparable time is known only to lie in a **closed range** `[low, high]`? The range is an explicit assumption, not an ingestion delay, a measured probability interval or permission to use a later-released record at an earlier checkpoint.
 
@@ -3736,7 +4060,7 @@ One all-times candidate is **not** a unique attribution: K7 remains possible if 
 
 This model treats session endpoints as exact and varies only the event time. Uncertain session clocks, changes in clock offset, session-key reuse and incomplete exports require additional evidence or a different model. Do not import the example's two-minute event range into the canonical 09:20 decision.
 
-##### Complete independent input and execution contract
+###### Complete independent input and execution contract
 
 The program uses **integer minutes after midnight UTC** on its artificial date: 09:00 is 540, 09:02 is 542, 09:07 is 547, 09:11 is 551, 09:12 is 552, 09:13 is 553 and 09:15 is 555. Integer endpoints make the arithmetic inspectable; the program is not a parser for production timestamps or sub-minute evidence.
 
@@ -3866,7 +4190,7 @@ Report input defect              Namespace and time bound supplied?
 
 **Text equivalent:** Malformed input cannot support a match. Missing namespace or time information produces an unresolved result. Otherwise preserve the stated realm, account and any explicit key, compute possible and all-times sets, and explain their limits. No branch approves collection, selects a human actor or triggers containment. The implementation reports the first applicable problem rather than proving every untested field valid.
 
-##### Practice, evidence and assessment
+###### Practice, evidence and assessment
 
 Keep the original Q1 six-point task unchanged. For this separate **Q1-S practice**, submit the eleven-line transcript and an eleven-row ledger with `case | what changed | result | blocked conclusion | smallest repair or follow-up`. Then solve four variations without changing the original packet: **(A)** set the key to K7 in the boundary-uncertain case; **(B)** use K7 with the exact range `(542, 542)`; **(C)** use K7 with `(552, 553)`; **(D)** reverse the input row order for the qualified-key case. For each, predict both candidate sets or the reason no test is possible.
 
@@ -3878,7 +4202,7 @@ Finally, write one bounded request identifying the source/realm mapping, permitt
 
 <a id="ir-rapid-ch02-vq2-lab"></a>
 
-### 2.10 Offline laboratory: when is a quiet-query claim defensible?
+#### 2.10 Offline laboratory: when is a quiet-query claim defensible?
 
 **Learning purpose:** Check evidence release, query scope, ingestion-coverage metadata and an unknown retention anchor without replaying the existing T1/T2 search or E1 hash laboratory.
 
@@ -3886,7 +4210,7 @@ Finally, write one bounded request identifying the source/realm mapping, permitt
 
 **Environment:** Python 3 standard library, in memory. No files, network operations, credentials or service changes.
 
-#### Input interpretation and acceptance contract
+##### Input interpretation and acceptance contract
 
 The VQ2 scenarios ask a *hypothetical custodian* whether a claim of no additional matching edit is even conditionally defensible for the **application-audit / desk-a / 09:00 ≤ event < 09:12 UTC** scope.
 
@@ -3900,7 +4224,7 @@ The fixture includes an artificial returned teaching identifier, `VQ-01`. This i
 - A watermark later than its own query-run time is internally inconsistent in this simplified fixture.
 - A 24-hour retention period without an anchor never yields a valid deletion deadline.
 
-#### Reproducible Python 3 code
+##### Reproducible Python 3 code
 
 ~~~python
 RELEASE = {"R9": "09:20", "R14": "09:20", "R15": "09:20"}
@@ -3985,7 +4309,7 @@ print("BAD_CLOCK:", assess({**base, "run": "25:99"}))
 assert assess({**base, "run": "25:99"}) == "INVALID_CLOCK"
 ~~~
 
-#### Exact expected output — executed against the displayed fixture
+##### Exact expected output — executed against the displayed fixture
 
 ~~~text
 release: R9@09:05=NO R9@09:20=YES
@@ -3998,7 +4322,7 @@ R15_DEADLINE: UNKNOWN
 BAD_CLOCK: INVALID_CLOCK
 ~~~
 
-#### Annotated results and negative controls
+##### Annotated results and negative controls
 
 - `release` establishes only **learner availability** of R9: absent at the 09:05 Round A decision and available by the Round B review. The program has no authentic source-ingestion timestamps.
 - `CANONICAL_R14` lacks sufficient metadata. The correct conclusion is **unknown query envelope**, not "no edits happened."
@@ -4014,7 +4338,7 @@ BAD_CLOCK: INVALID_CLOCK
 
 **Pass criteria:** Exact reproducibility; no release-boundary violation; no unsupported retention arithmetic; clear distinction between a declared watermark and authenticated completeness; no merger of VQ2 into R1–R16.
 
-### 2.11 Contrastive 09:20 decision example
+#### 2.11 Contrastive 09:20 decision example
 
 **Incorrect handoff:**
 
@@ -4028,7 +4352,7 @@ The sentence makes several unsupported jumps. R9 is an application-related booki
 
 The better version does not avoid making a decision. It makes a *specific, reviewable next decision* without asserting evidence that is not present.
 
-### 2.12 Three-lane handoff for independent review
+#### 2.12 Three-lane handoff for independent review
 
 A handoff is complete when another analyst can trace important claims to sources, identify why an apparently stronger conclusion was rejected, and continue through an authorized next step. Include an exact checkpoint, the original record IDs, owner of the next request, decision status and revisit condition.
 
@@ -4042,15 +4366,59 @@ A compact handoff has three lanes:
 
 A receiver should be able to challenge the assessment without questioning whether an unseen action occurred. The handoff should say "requested" when requested, "approved" only when approval is documented, and "collected" only when a collection receipt exists. This discipline also prevents an exercise-only query manifest from being misreported as an operational source observation.
 
-The next chapter may consider containment and recovery decisions, but Chapter 2 cannot pre-authorize those changes or introduce Round C evidence. Its immediate result is a bounded, preservation-aware decision ready for review.
+The next chapter may consider containment and recovery decisions, but Module 2 cannot pre-authorize those changes or introduce Round C evidence. Its immediate result is a bounded, preservation-aware decision ready for review.
 
-### 2.13 Handoff and common errors
+#### 2.13 Handoff and common errors
 
 A useful handoff lets a second analyst reconstruct the decision without guessing: case ID; current time and timezone; affected service; observed facts with record IDs; live hypotheses; confidence and limits; known service impact; actions completed under which authority; evidence locations; next question; decision owner; review deadline. It should also separate the source's event time from the time the analyst learned of the event.
 
 Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. T1 shows why “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, the 09:03 event time does not mean R9 was available for a 09:05 decision. T2 adds a second trap: repeating an event-time query after delayed ingestion can reveal another row without changing the event's occurrence time. The E1 package audit keeps byte integrity, source provenance and authority separate. Q1 adds a cross-source trap: an account/time overlap is a candidate relationship, while a missing or unmatched session key cannot be repaired by confidently naming a person.
 
-### 2.14 Define the thing you are trying to count
+#### Worked checkpoint
+
+Two records may share a booking key and fall inside a declared time window while still leaving the human actor unknown. A quiet query is bounded by source, filter, ingestion cutoff and coverage; without those fields it cannot establish absence.
+
+#### Practice — Lesson 09
+
+##### EX022 — Handoff
+
+**Objective:** allow a second analyst to continue without guessing. **Inputs:** the Round B snapshot R1–R16 and the fictional approval path. **Output:** a five-sentence handoff at 09:20 UTC that includes case ID and service, at least two evidence IDs, a live hypothesis and alternative, one uncertainty, an authorized next action, the custodian or owner, and the 09:35 review or an observable earlier trigger. A score of 2 distinguishes a request or proposal from a completed action.
+
+**Extension:** Preserve the existing five-sentence maximum. Require three distinct verbal states in those sentences: a direct record observation, an assessment with its limitation, and a next action stated as **proposed** unless actual approval/execution is supplied. Do not imply that an approved classroom exercise is a completed production collection.
+
+**For full credit:** The handoff names R9, R10 or R11 as appropriate, identifies unresolved B19 authorization, keeps R15's deadline uncertain and states the 09:35 review or earlier verified trigger.
+
+**HOLD2 supplementary task (after the required artifact):** Preserve the **five-sentence maximum** at 09:20, with case ID, two evidence IDs, competing hypotheses, uncertainty, a proposed authorized next action, owner and 09:35 or earlier review. Within those sentences, say whether P-A/P-B are merely **proposed** and whether there is any confirmed source-hold effect. Do not insert HOLD2's simulated positive result or later R17–R24 evidence.
+
+**For full credit:** The handoff gives a second analyst a clear request to the custodian about the R15 policy anchor and source-hold feasibility, without claiming a completed hold or an exact deletion instant.
+
+**Worked answer:** [EX022 in the final appendix](#ex022--worked-result).
+
+##### EX024 — Escalation threshold
+
+**Objective:** define a testable escalation rule. **Inputs:** the 09:20 case state and R15's retention notice. **Output:** two **hypothetical** observation/response pairs, each naming who verifies the new signal, why it raises harm or urgency, who decides on the appropriate response and when they reconvene. Containment and preservation require separate decisions. Do not claim either event happened. A score of 2 uses observable triggers rather than “if things get worse.”
+
+**HOLD2/TRI2 refinement:** Keep exactly **two hypothetical observation/response pairs**. One concerns a future source-verified unexplained edit or owner-confirmed material booking mismatch, followed by human review of proportionate, separately authorized containment. The other concerns a future custodian-confirmed source-preservation failure, inability to retrieve the selected oldest item, or inability to clarify a material retention risk through the approved escalation route. Name the source, verifier, harm or loss rationale, decision owner and earlier review trigger for each. Neither trigger is observed in R1–R16.
+
+**For full credit:** A source-hold failure trigger is distinct from confirmed malicious activity or proven deletion. The incident lead coordinates an authorized preservation alternative, not an automatic disruptive action.
+
+**Worked answer:** [EX024 in the final appendix](#ex024--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-09 -->
+#### Continue studying — lesson 09 of at least 20
+
+[← Lesson 08](#lesson-08) · [Course lesson index](../SUBJECTS.md) · [Lesson 10 →](#lesson-10)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-10"></a>
+
+### Lesson 10 — Impact bounds, denominators and privacy
+
+**Week 2, day 5.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 2.14 Define the thing you are trying to count
 
 "How many were affected?" is not an answerable technical question until an analyst defines what an *affected unit* is.
 
@@ -4070,7 +4438,7 @@ The second question requires additional relationships and harm criteria. A room 
 
 The general incident-response goal is to assess scope and consequences based on available evidence. [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response analysis and decisions within cybersecurity risk management; the measurement contract below is original instructional material, not a prescribed NIST impact score.
 
-### 2.15 Establish four levels of impact claim
+#### 2.15 Establish four levels of impact claim
 
 It helps beginners to classify claims before attempting to calculate a total.
 
@@ -4085,7 +4453,7 @@ These classifications can apply to the same booking; they are not mutually exclu
 
 A state discrepancy must also have a defensible reference target. "The current room is different from the old room" does not necessarily mean it is wrong: a legitimate staff edit could have been approved. The target needs an owner, version, applicable time and authority. If the target is missing, record the comparison as **unverified**, not automatically a mismatch.
 
-### 2.16 The numerator and denominator have different evidence requirements
+#### 2.16 The numerator and denominator have different evidence requirements
 
 A count needs a **numerator**, the items meeting the definition, and a **denominator**, the items in the defined population against which the count could be interpreted.
 
@@ -4113,7 +4481,7 @@ Do not silently exclude unknown items from the report just to make the ratio loo
 
 This approach is useful even when no percentage is calculated. Counts expressed with explicit scopes let the next analyst decide whether to broaden the inquiry or correct known business state immediately.
 
-### 2.17 Deduplicating does not mean discarding evidence
+#### 2.17 Deduplicating does not mean discarding evidence
 
 A help-desk queue may contain repeated calls, email replies or follow-up tickets about one booking. Deduplication can prevent overcounting *booking identifiers*, but it must not destroy the fact that multiple reports were received.
 
@@ -4125,7 +4493,7 @@ A dangerous shortcut is to treat multiple independent reports as multiple verifi
 
 The source/copy/interpretation separation explained in Chapter 02 also applies here. A normalized, deduplicated view is a **derived analytical product**. Keep the source pointers and transformations visible. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) discusses log-management processes and the handling of event records at an organizational level. It does not specify the fictional deduplication procedure in this section.
 
-### 2.18 Missing information is an impact result, not a reason to guess
+#### 2.18 Missing information is an impact result, not a reason to guess
 
 An absent owner-approved target, missing current-state row, incomplete query filter or unreliable source timestamp makes some impact claims **unverified**. This classification does not say the booking is healthy or broken.
 
@@ -4139,7 +4507,7 @@ A query that returns no relevant audit rows while collection health is unknown b
 
 R14's quiet summary is a reminder: a bounded log query cannot certify that no changes occurred outside its query envelope. R15's 24-hour retention policy adds urgency to preserving the source needed for an impact comparison, but its exact deletion anchor remains unknown. These limits affect what can be measured as well as what can be investigated.
 
-### 2.19 A defensible impact ledger
+#### 2.19 A defensible impact ledger
 
 A useful impact ledger contains one row per selected business object, with separate columns for the sources that describe it. It should not put a free-form narrative in place of a test result.
 
@@ -4159,7 +4527,7 @@ An analyst should not add patron names or unrelated account details to a shared 
 
 The impact ledger's **selection reason** is especially important. If every row was selected because someone complained, a ratio from those rows cannot estimate how common a problem is among people who did not complain. If the source is a partial application audit, the ledger cannot measure omitted write paths or disappeared records. State the missing part of the frame before recommending a new collection.
 
-### 2.20 Contrastive worked example at the Round B decision
+#### 2.20 Contrastive worked example at the Round B decision
 
 **Plausible but incorrect assessment:**
 
@@ -4173,7 +4541,7 @@ This is an invalid unit conversion. The three application changes are not five d
 
 This assessment makes a useful decision while refusing a fabricated count. It does not need to delay all protective action until every record is available; urgency, ongoing potential harm and evidence loss remain separate considerations.
 
-### 2.21 Communicate a lower bound without claiming completeness
+#### 2.21 Communicate a lower bound without claiming completeness
 
 If an authorized comparison later verifies that two selected booking states are inconsistent with approved targets, the analyst can sometimes state **at least two identified mismatches among the checked items**. That is a lower bound for the known, explicitly identified objects under the test assumptions. It is not the total affected booking count unless the investigated frame is complete.
 
@@ -4181,7 +4549,7 @@ For a public message, even a correct internal count may be too specific if it ex
 
 A review should ask which wording remains true if additional relevant source records arrive later. "Two mismatches were identified in the approved five-object comparison" remains true, assuming that comparison was valid. "Only two bookings were affected" can become false as soon as an additional affected object is found. The first is therefore a more resilient and auditable statement.
 
-### 2.22 Failure modes and acceptance limits
+#### 2.22 Failure modes and acceptance limits
 
 | Failure mode | Misleading conclusion | Safer interpretation |
 |---|---|---|
@@ -4198,7 +4566,7 @@ A beginner has met this section's objective when they can select the correct uni
 
 <a id="ir-rapid-ch02-im2-lab"></a>
 
-### 2.23 Offline laboratory — IM2: Reports, distinct bookings and confirmed mismatches
+#### 2.23 Offline laboratory — IM2: Reports, distinct bookings and confirmed mismatches
 
 **Classification:** Independently invented, offline-only teaching fixture. IM2 is **not** an additional Harbor Library R-series release, not an approved production comparison, and not P1/C1 from Chapter 03. Identifiers X01–X05 and X99 are fictitious classroom business objects; T01–T04 are fictitious report references.
 
@@ -4309,9 +4677,9 @@ assert compare_one(
 
 Compare your result with the [IM2 worked transcript and interpretation](#ir-rapid-ch02-im2-result) in the final answer appendix. The silent equality assertion checks the same comparison rule used by the baseline and missing-target variant; an existing target does not always imply a mismatch.
 
-### 2.24 Privacy-aware evidence selection and reproducible review views
+#### 2.24 Privacy-aware evidence selection and reproducible review views
 
-#### A complete source and a useful analyst view are not the same object
+##### A complete source and a useful analyst view are not the same object
 
 An incident investigation often needs enough information to distinguish competing explanations. That does not mean every analyst needs every field from an application export. A raw system record may contain account labels, booking identifiers, timestamps, request identifiers and additional contact information. Some fields could help answer the immediate incident question; others may reveal personal information unrelated to it.
 
@@ -4327,7 +4695,7 @@ A review view is not a more authentic original just because it looks tidy. It is
 
 [NIST SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)*](https://csrc.nist.gov/pubs/sp/800/122/final) provides primary guidance on identifying and protecting PII according to risk and context. It is focused on U.S. federal agencies and does not establish the privacy law or authorization rules governing the fictional Harbor Library. The field-level exercise below is original CyKin instructional material.
 
-#### Begin with a permitted decision question, not a list of available columns
+##### Begin with a permitted decision question, not a list of available columns
 
 Consider the question available at the 09:20 Round B review:
 
@@ -4343,7 +4711,7 @@ The correct goal is **proportionate access without destroying legitimate investi
 
 At rapid level, the student should state the question, list each requested field, describe its purpose and identify a permitted alternative if that field cannot be shared.
 
-#### Separate record selection from field projection
+##### Separate record selection from field projection
 
 Two distinct filtering operations commonly occur when preparing evidence for review.
 
@@ -4357,7 +4725,7 @@ The selection plan should name the producer, approved query interval, relevant a
 
 A changed selection or projection produces a different analytical artifact and must be versioned, not silently substituted for the first output.
 
-#### The minimum view must still answer the question
+##### The minimum view must still answer the question
 
 Removing irrelevant data is valuable only if the remaining view can support a defensible conclusion. Suppose an analyst wants to associate an application change with a reported booking symptom. If the view removes the booking identifier, the analyst may not be able to connect the records. A row with only an operation and time can be insufficient, especially when multiple requests occurred nearby.
 
@@ -4367,7 +4735,7 @@ An application-account label such as `desk-a` can itself be sensitive operationa
 
 A field checklist therefore needs two explanations: **why retained** and **why not retained**. For example, keep a stable source event identifier so another reviewer can retrieve the correct raw row through an authorized custodian. Keep an operation type to distinguish edit from view. Omit a contact address if the current question does not need it. If a field's necessity is unknown, pause the release decision and ask the approving role rather than selecting it automatically.
 
-#### Pseudonymization is not the same as anonymity
+##### Pseudonymization is not the same as anonymity
 
 Sometimes a team wants to replace a directly identifying value with a less revealing label. For example, a review table might use an internal case alias instead of a patron contact address, while a restricted custodian maintains the approved mapping. Such a transformation may reduce unnecessary exposure, but it does **not** establish that a person can no longer be identified.
 
@@ -4379,7 +4747,7 @@ The MIN2 laboratory deliberately **omits** contact fields rather than generating
 
 Anonymity is a much stronger claim than "a visible name has been replaced." Nothing in this chapter's fixture establishes irreversible anonymity.
 
-#### Keep the original available under an appropriately controlled procedure
+##### Keep the original available under an appropriately controlled procedure
 
 A bounded review view should not overwrite or replace the original record set. An analyst may need to verify whether a transformation omitted a relevant field or merged two events incorrectly. If the original was deleted, that review may no longer be possible.
 
@@ -4391,7 +4759,7 @@ In Chapter 02, the E1 exercise already distinguishes a synthetic transcription f
 
 An effective manifest records: source identity, query selection, collection status, reviewer access scope, fields retained, fields deliberately omitted, transformation version, creator and creation time *if actually performed*, and the known limits. A planned transformation with no created output must remain **planned**, with no fabricated timestamp or digest.
 
-#### Privacy and investigative value can fail in opposite directions
+##### Privacy and investigative value can fail in opposite directions
 
 A review view can fail through **excess** or **insufficiency**.
 
@@ -4405,7 +4773,7 @@ The negative controls in MIN2 test all three conditions separately: removing the
 
 This is an original data-handling acceptance contract. It does not attempt to determine every possible category of personally identifiable information or replace a full privacy impact assessment.
 
-#### Contrastive worked example: "we have only the facts we need"
+##### Contrastive worked example: "we have only the facts we need"
 
 **Incorrect hypothetical assessment:**
 
@@ -4419,7 +4787,7 @@ The first step lacks a specific decision purpose for unrelated contact data. The
 
 The proposal answers a specific question, names the custodian and leaves missing proof visible. It also prevents the opposite error: removing every identifier and then attributing events through timestamps alone.
 
-#### Release boundaries still govern restricted views
+##### Release boundaries still govern restricted views
 
 A projection cannot make later evidence available earlier. At the 09:05 Round A checkpoint, R9–R16 do not exist in the learner's released set, even though R9 reports an event at 09:03. A review view derived from R9 is therefore **not available** for the Round A decision.
 
@@ -4429,7 +4797,7 @@ R15 adds a separate urgency to determine source retention, but its 24-hour delet
 
 The MIN2 rows are exercise-only symbols. They are not the same as the original R-series booking values, and they cannot be used to assert how many Harbor Library patrons were affected. The IM2 exercise addresses a separate counting problem, with its own X-series data and limits; MIN2 addresses how a narrowly scoped *review view* should be constructed and rejected when its field or object policy is violated.
 
-#### Different reviewers should not automatically receive identical views
+##### Different reviewers should not automatically receive identical views
 
 Operational teams contain distinct roles. A technical analyst investigating whether a booking edit and session event might be related may need an account label and source identifier. A service owner deciding whether booking state should be corrected may need booking IDs and approved targets. A communications contact preparing a patron-facing update may need a description of the service consequence, not an internal account name or raw contact list.
 
@@ -4439,7 +4807,7 @@ Do not treat role restriction as a replacement for source integrity. The service
 
 The fictional case does not define an organizational data-classification scheme or actual permissions. A course learner can design candidate views and approval questions while leaving operational implementation pending. It would be misleading to name a specific privacy law or notification threshold without the jurisdictional and organizational facts required.
 
-#### Source identifiers and account labels retain uncertainty
+##### Source identifiers and account labels retain uncertainty
 
 A source event identifier lets a reviewer ask a custodian for the precise original row. It does not by itself authenticate the producer or prove that the data were complete. A booking ID connects a review row with a business object under that source's semantics; it may not be globally unique across all environments or time periods.
 
@@ -4449,7 +4817,7 @@ These limits are important because a carefully minimized view may look authorita
 
 MIN2's `actor_account` column is therefore a fictional correlation candidate, not a human attribution result. Its inclusion is allowed only within the exercise's explicitly defined technical-review policy, not as permission to publish account details widely.
 
-#### Record transformation without pretending the source changed
+##### Record transformation without pretending the source changed
 
 A derived review view is not a modified original source; it is a new analytical artifact. A transformation log should allow another authorized reviewer to repeat the same row selection and field projection if the original is still available under the applicable retention rules.
 
@@ -4470,7 +4838,7 @@ A report saying only "personal details removed" omits too much. It does not iden
 
 The test should include negative cases. If the policy requires a booking ID and it is removed, the view must fail the task's acceptance condition. If a contact email is added, it must fail the field-minimization gate. If an unrelated booking is selected, it must fail the row-scope gate. Rejecting an unsafe requested view before producing it is a legitimate successful outcome for this exercise.
 
-#### An authorized extension is not automatic scope creep
+##### An authorized extension is not automatic scope creep
 
 Sometimes the initial view is genuinely insufficient. Perhaps an authorized investigator cannot distinguish two records without a session identifier held in a different source. The right response is not to silently broaden every analyst's access. The investigator should document which decision depends on the missing field, why the current view is insufficient, and which custodian and approver can evaluate a targeted extension.
 
@@ -4480,7 +4848,7 @@ A useful stopping rule is: if the evidence required for a claim is not inside th
 
 A practical incident process balances confidentiality, integrity and availability of evidence. Preserving too little can prevent a needed investigation; distributing too much can create another exposure. A well-specified purpose and validation rule keeps both risks visible.
 
-#### Section synthesis: minimize the view without minimizing the truth
+##### Section synthesis: minimize the view without minimizing the truth
 
 Evidence work needs two kinds of discipline at once. The source and its provenance must remain trustworthy and correctly scoped, while each review copy should contain only the information required for that receiver's approved question. Neither a complete original nor a minimal view automatically produces a correct causal conclusion.
 
@@ -4490,7 +4858,7 @@ The transferable beginner skill is to explain **what was included, what was omit
 
 <a id="ir-rapid-ch02-min2-lab"></a>
 
-#### MIN2 Offline Laboratory — Select a Review View Without Losing Correlation
+##### MIN2 Offline Laboratory — Select a Review View Without Losing Correlation
 
 **Status:** Entirely synthetic and isolated. MIN2 is not R1–R16, not a real patron export and not the earlier E1, Q1, VQ2 or IM2 fixture.
 
@@ -4500,7 +4868,7 @@ The transferable beginner skill is to explain **what was included, what was omit
 
 **Input meaning:** `Q11` is the only approved booking ID in this exercise. The invented `patron_email` values use reserved `example.test` addresses. The `actor_account` field is a fictitious technical label, not a human identity. A `READY` label does not prove the source is authentic, the selection complete or the query authorized in a real setting.
 
-##### Executable Python code
+###### Executable Python code
 
 ~~~python
 EVENTS = [
@@ -4595,7 +4963,7 @@ assert EVENTS == SOURCE_SNAPSHOT
 
 Predict the six baseline and four additional output lines; explain the three original rejected variants and the two new empty-selection controls before checking the [MIN2 worked result](#ir-rapid-ch02-min2-result) in the final appendix. The fixture contains no real personal data. The returned projected view is for the approved fictional review role only; `READY` does not establish source authenticity, complete collection or real custodian permission.
 
-### 2.24a Evidence availability is not the same as event time
+#### 2.24a Evidence availability is not the same as event time
 
 **Learning outcome:** Before making a triage or preservation decision, distinguish when a fact allegedly occurred, when the producer recorded it, when a custodian acquired it, and when the responder could actually use it. The same record can have a very early event time and still be **unavailable at a prior decision**. This is not a pedantic issue: the ability to defend a proportionate decision depends on knowing which facts the decision maker could have seen.
 
@@ -4609,7 +4977,7 @@ When building an evidence ledger, record these separate attributes: **source eve
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) provides the current risk-management setting for incident response; [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final), published in 2006, supplies foundational but dated discussion of forensic source handling. The release schedule below is an original CyKin teaching rule, not a NIST timetabling requirement.
 
-#### R2X offline lab — prove the decision's evidence horizon
+##### R2X offline lab — prove the decision's evidence horizon
 
 Use Python 3 offline, with no imports, files or network. The values are **pedagogical release levels** for selected case cards, not actual service event times. The two D stages are intentionally separated: D1 is the branch-only checkpoint, D2 follows P1/C1 release. V1 remains a later independent card.
 
@@ -4647,111 +5015,13 @@ LATER_P1 RELEASED
 
 **Synthesis:** More data at a later checkpoint can improve the next decision. It cannot establish that an earlier decision was supported by information the responder did not yet have.
 
-### Chapter 2 exercises
+#### Worked checkpoint
 
-Use only records R1–R16 and the fictional authority described here; the exercise-only T1 card is available **only** where a question names it. No answer may claim to have queried a real service, received an unprovided identity detail, proved compromise or completed an export that the learner did not make. For each exercise, cite the relevant record IDs, state the observation before the inference, and give a bounded next action or test. The named output is the artifact to submit; the worked results at the end show acceptable reasoning.
+When two supplied reports describe the same booking, count one distinct booking and retain both pointers. If the authoritative state is unavailable, place the booking in an unknown bucket rather than the confirmed-correct or confirmed-wrong count.
 
-**Common procedure and expected evidence:** (1) Write the exercise ID, case ID and evidence boundary at the top of the response. (2) Read the named input records and copy their IDs and relevant UTC times into the requested table or note. (3) Complete that exercise's output fields, marking unknown facts and unperformed actions rather than filling them with guesses. (4) Add the decision owner or custodian for any proposed collection or service change and a sentence limiting the conclusion. (5) Compare the resulting artifact with its matching worked result in the final appendix. Submit the named table or note with its source pointers and limits; a bare multiple-choice label or unsupported conclusion is not sufficient evidence of learning. No real account, patron record or production log is needed.
+#### Practice — Lesson 10
 
-Score each numbered exercise **0** when its artifact is absent or asserts an unsupported fact, **1** when it addresses the question but omits a required evidence, scope or limitation field, and **2** when the stated fields are present, reproducible and appropriately authorized. A false claim about who controlled `desk-a`, a fabricated collection time or an invented log query must be corrected regardless of the other fields. This common rubric applies to all thirteen questions; a local instruction below adds required fields for a score of 2.
-
-#### EX014 — Triage question
-
-**Objective:** turn a detector label into testable questions. **Inputs:** R9–R16 and the Chapter 1 service map. **Output:** a two-row table with question, relevant supplied record, authorized owner or source to ask next, and an answer that would change triage. Begin with the label “suspicious booking edit” and avoid using the label as evidence. A score of 2 requires two different discriminating questions and a bounded source for each.
-
-**TRI2 refinement:** In each of the same two rows, distinguish (a) the supplied record statement, (b) the interpretation the authorized check could strengthen or weaken, and (c) the causal or human-actor claim still unproved afterward. A B19 task-scope check and a booking-state comparison answer different questions. Do not add a third row or report a proposed check as completed.
-
-#### EX015 — Hypothesis table
-
-**Objective:** keep competing explanations live. **Inputs:** H1–H3 from section 2.1 and R1–R16. **Output:** three rows, each with a supporting record, a contradiction or limit, a narrow next authorized check and what result would weaken that hypothesis. You may state that a record is weak support. A score of 2 requires at least one check that could genuinely discriminate between explanations rather than simply restating the same log.
-
-**Discriminator check:** In each row, the named check must be capable of producing the stated weakening result. Identify the correct producer and field: R9 reports a booking-audit room change, whereas R11 reports a time-display concern. A task-approval document and identity-session detail answer different questions. This is a requirement within the existing three-row artifact and 0–2 rubric.
-
-#### EX016 — Priority without false certainty
-
-**Objective:** set urgency without inventing a severity fact. **Inputs:** R9–R16 at the 09:20 discovery point. **Output:** a short decision note with separate fields for potential patron harm, retention or ongoing-activity urgency, confidence in the leading hypothesis, provisional priority, decision owner and an observable review trigger. A score of 2 requires a reason for the priority and a deadline or event, not merely a color or number.
-
-**Extension:** Require one sentence explaining why retention urgency can be high while evidence of account compromise remains inconclusive. Identify what would cause the priority to increase and what would justify a less urgent review. Do not turn an unknown deadline into a guessed timestamp.
-
-**For full credit:** The learner identifies R15's possible evidence-loss path, R9/R11's potential booking harm, unresolved attribution, the incident lead's decision authority and the 09:35 review or an earlier verified trigger.
-
-**Additional IM2 discriminator for EX016:** At Round B, distinguish the R15 concern about **detailed booking-audit records relevant to R9** from the retention of R11's help-desk report or R13's identity source, whose policies are not supplied. Separately assess potential booking harm, uncertain cause and the absence of a measured affected-patron total. The independent IM2 fixture supplies no Harbor Library outcome. Keep the same short decision note and 0–2 rubric.
-
-**TRI2 refinement:** Keep the note short. State separately that the synthetic records are supplied, B19 task authorization is unresolved, and cause or human attribution is unproved. Split time sensitivity into source-preservation contact and a conditional human review of containment; R14's quiet summary has incomplete coverage and R15 has no confirmed deletion anchor. Name the authorized P-A or impact-check request, the incident lead, and the 09:35 or earlier evidence-triggered review. This adds precision to the same artifact and 0–2 rubric, not another exercise.
-
-#### EX017 — What the summary cannot prove
-
-**Objective:** test the limits of negative evidence. **Inputs:** R13, R14 and, for this question only, the optional T1 metadata. **Output:** two short claim/limit pairs and one proposed follow-up query. First assess R14 *without* T1; then state exactly what T1 adds and what it still cannot cover after 09:12. Explain why R13 does not establish that the `desk-a` session came from the expected staff device. A score of 2 distinguishes missing device fields from a negative device finding and names the query's filter and interval.
-
-**Extension:** Before using optional T1, describe exactly which fields of R14's query envelope are missing. When using T1, distinguish a bounded event-time filter from an ingestion-completeness guarantee; name the first excluded boundary.
-
-**For full credit:** The learner says that even optional T1 ends before 09:12 and does not authenticate logging completeness, another account or activity at and after 09:12. R13's missing device field remains unknown rather than a negative device finding.
-
-#### EX018 — Retention decision
-
-**Objective:** prepare a proportionate preservation decision. **Inputs:** R9, R13–R15, the collection-note fields in section 2.3 and the worked queue in section 2.4. **Output:** a three-row `P-A` request to the application custodian stating each source and proposed event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add one sentence explaining why preservation may precede root-cause knowledge. Then add a two-row comparison of `P-A` with `P-B`: decision each could change, known or unknown loss path, owner, present state and why the second availability check may proceed in parallel. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp or claim either source was collected. A score of 2 identifies the time-sensitive risk, privacy boundary and proposal-versus-collection distinction for both sources.
-
-**Extension:** Include a specific question that the application custodian must answer about the deletion-policy **anchor** and a separate question about whether the oldest requested row is still retrievable. State the status of P-A and P-B using the exact words `proposed`, `approved`, `collected` or `verified`, without skipping intermediate states.
-
-**For full credit:** A 24-hour rule is a duration, not a confirmed deletion instant; P-A's potential urgency does not authorize a bulk export or establish that a hold took effect.
-
-**MIN2 supplementary task (after the required artifact):**
-
-**Additional task:** Alongside the P-A and P-B proposed requests, identify the specific columns necessary for the next decision and a category of source field that should **not** automatically be distributed to the technical reviewer. Distinguish retention of a permitted source object from permission to distribute every column. Preserve the existing R15 unknown policy anchor and proposal-versus-collection states.
-
-**For full credit:** The request names the business purpose, source selection, custodians, approving role and restricted reviewer scope. No completed export or broad personal-data permission is invented.
-
-**HOLD2 supplementary task (after the required artifact):** Keep the original **three-row P-A request** and **two-row P-A/P-B comparison**. Add to the existing custodian-question field the exact source-hold receipt requirements: source namespace, approved booking/object IDs, event interval/time semantics, accountable authority, custodian, reported activation, review/expiry terms, observed effect and an explicit limit. State that a missing oldest requested row requires investigation rather than a fabricated expiry. Do not change P-A or P-B from **proposed** merely because HOLD2 contains a positive artificial run.
-
-**For full credit:** The request remains a proposed authorized next step at 09:20, the R15 policy anchor remains unknown, the P-B retention rule remains unspecified, and neither a source hold nor a copy is claimed performed.
-
-#### EX019 — Collection note
-
-**Objective:** make an exercise extract reviewable. **Inputs:** the E1 fixture in section 2.5 and R9/R14. **Output:** a collection-note table with case/item ID, source and event range, collector, authority, actual local collection time *if a file was created*, copy location, transformation and limitation. If no file was created, label the note **planned** and leave collection time and digest **not applicable**; do not pretend an export occurred. A score of 2 identifies E1 as a synthetic transcription, distinguishes original book text from the working file and records access scope. A made-up digest is not required.
-
-**State criterion within the existing 0–2 rubric:** A completed local E1 file, a second-file failure and a planned collection are different states. Record only the file, time, integrity measurement, transfer or disposal actually evidenced; mark unrecorded or unperformed fields explicitly. Do not claim that failure to create the second file invalidated or erased an already created first file. A retained copy is not an applied source hold. This criterion adds no row-count requirement, exercise ID or production permission.
-
-**MIN2 supplementary task (after the required artifact):**
-
-**Additional task:** Keep E1's original provenance and state requirements. Add a separate *planned derivative manifest*: original source pointer, approved row interval/objects, fields retained, fields excluded, transformation version and intended recipient. Do not reuse E1's digest as if it authenticated new derived bytes; compute a new digest only if a local file was actually created and measured.
-
-**For full credit:** Source and derived views are explicitly distinguished, and no collection/creation time or digest is fabricated. The original E1 transcript and its existing instructions remain unchanged.
-
-**HOLD2 supplementary task (after the required artifact):** Preserve the original **collection-note table** for E1 and its actual-versus-planned status. Add a **separate named source-hold ledger reference** with its own proposal, authority, reported control, effect check and release/expiry fields. If no source hold was executed, mark these fields **not applicable or not supplied**, rather than repeating E1's copy hash as proof of source preservation.
-
-**For full credit:** Source-control lifecycle and copied-item custody are distinct. The original E1 byte/transformation and access limits remain as written; no source hold, collection time or digest is fabricated.
-
-#### EX020 — Hash claim
-
-**Objective:** bound an integrity claim. **Inputs:** the named E1 bytes, the two digest checks and section 2.5. **Output:** a five-row claim table: two statements the comparison supports and three it does not, each with a one-sentence reason. Specify which file and times were checked rather than saying “the evidence is authentic.” A score of 2 distinguishes copy consistency from source truth, completeness and collection authority.
-
-**Extension:** For one claim that a matching E1 digest supports, name its exact evidence layer (copy). For one claim it cannot support, name the missing source/selection or interpretation layer. Keep the E1 lab's original numbers and bytes unchanged.
-
-**For full credit:** Matching hashes concern chosen bytes; they do not attest producer completeness, collection permission or the person responsible for B19.
-
-**MIN2 supplementary task (after the required artifact):**
-
-**Additional task:** Keep the existing five-row supported/unsupported hash-claim table. Add one sentence explaining why equal digests of a source copy do not authorize sharing the source's personal fields with a broader team, and why a projected view requires its own recorded transformation and limits.
-
-**For full credit:** Byte consistency remains separate from source authenticity, completeness, permission and confidentiality. No statement that masking or hashing makes information automatically anonymous is accepted.
-
-#### EX021 — Time ordering
-
-**Objective:** separate event order from causal inference. **Inputs:** R9, R10, R12, R15 and R16; use T1 only for the optional final sentence. **Output:** five ordered rows with ID, UTC event time, source and one uncertainty about cause. Mark that R9–R16 reached the learner at 09:20 despite earlier event times. Optionally state which interval T1 leaves uncovered. A score of 2 preserves event/discovery separation and does not treat temporal precedence as authorization or attribution.
-
-#### EX022 — Handoff
-
-**Objective:** allow a second analyst to continue without guessing. **Inputs:** the Round B snapshot R1–R16 and the fictional approval path. **Output:** a five-sentence handoff at 09:20 UTC that includes case ID and service, at least two evidence IDs, a live hypothesis and alternative, one uncertainty, an authorized next action, the custodian or owner, and the 09:35 review or an observable earlier trigger. A score of 2 distinguishes a request or proposal from a completed action.
-
-**Extension:** Preserve the existing five-sentence maximum. Require three distinct verbal states in those sentences: a direct record observation, an assessment with its limitation, and a next action stated as **proposed** unless actual approval/execution is supplied. Do not imply that an approved classroom exercise is a completed production collection.
-
-**For full credit:** The handoff names R9, R10 or R11 as appropriate, identifies unresolved B19 authorization, keeps R15's deadline uncertain and states the 09:35 review or earlier verified trigger.
-
-**HOLD2 supplementary task (after the required artifact):** Preserve the **five-sentence maximum** at 09:20, with case ID, two evidence IDs, competing hypotheses, uncertainty, a proposed authorized next action, owner and 09:35 or earlier review. Within those sentences, say whether P-A/P-B are merely **proposed** and whether there is any confirmed source-hold effect. Do not insert HOLD2's simulated positive result or later R17–R24 evidence.
-
-**For full credit:** The handoff gives a second analyst a clear request to the custodian about the R15 policy anchor and source-hold feasibility, without claiming a completed hold or an exact deletion instant.
-
-#### EX023 — Impact check
+##### EX023 — Impact check
 
 **Objective:** size possible service harm without exporting unrelated patron data. **Inputs:** R9, R11, R14–R16 and the service map. **Output:** a short query request naming approver, custodian, booking identifiers or short event range, necessary fields, expected result table and privacy/access limit. The table should distinguish an audit edit, an owner-approved state and an unresolved mismatch. A score of 2 does not claim a completed count or that R14 covers the whole period.
 
@@ -4769,15 +5039,9 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 ---
 
-#### EX024 — Escalation threshold
+**Worked answer:** [EX023 in the final appendix](#ex023--worked-result).
 
-**Objective:** define a testable escalation rule. **Inputs:** the 09:20 case state and R15's retention notice. **Output:** two **hypothetical** observation/response pairs, each naming who verifies the new signal, why it raises harm or urgency, who decides on the appropriate response and when they reconvene. Containment and preservation require separate decisions. Do not claim either event happened. A score of 2 uses observable triggers rather than “if things get worse.”
-
-**HOLD2/TRI2 refinement:** Keep exactly **two hypothetical observation/response pairs**. One concerns a future source-verified unexplained edit or owner-confirmed material booking mismatch, followed by human review of proportionate, separately authorized containment. The other concerns a future custodian-confirmed source-preservation failure, inability to retrieve the selected oldest item, or inability to clarify a material retention risk through the approved escalation route. Name the source, verifier, harm or loss rationale, decision owner and earlier review trigger for each. Neither trigger is observed in R1–R16.
-
-**For full credit:** A source-hold failure trigger is distinct from confirmed malicious activity or proven deletion. The incident lead coordinates an authorized preservation alternative, not an automatic disruptive action.
-
-#### EX025 — Correct a faulty note
+##### EX025 — Correct a faulty note
 
 **Faulty hypothetical note to repair (exercise text, not an R-series record):**
 
@@ -4787,26 +5051,41 @@ This deliberately defective note asserts account theft and an identified actor, 
 
 **Objective:** repair unsupported attribution and scope. **Inputs:** R9, R11, R13 and R8. **Output:** a replacement of at most three sentences with one observed booking fact, one evidence limit and one next authorized check. Then underline or list the three unsupported claims removed from the faulty note. A score of 2 does not equate R8's missing destination detail with proof of no transfer either.
 
-#### EX026 — Reproducible review
+**Worked answer:** [EX025 in the final appendix](#ex025--worked-result).
+
+##### EX026 — Reproducible review
 
 **Objective:** challenge an overconfident peer conclusion constructively. **Inputs:** R6, R9, R10 and R12. **Output:** a four-field review note: claim, directly supported facts, missing discriminator for B19, and authorized way to obtain it. Explain what outcome would change your view. A score of 2 preserves the possibility that training explains B17/B18 while leaving B19 unresolved; it does not assume the staff member is lying.
+
+**Worked answer:** [EX026 in the final appendix](#ex026--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-10 -->
+#### Continue studying — lesson 10 of at least 20
+
+[← Lesson 09](#lesson-09) · [Course lesson index](../SUBJECTS.md) · [Lesson 11 →](#lesson-11)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
 
 <!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 04
 
-[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+[← Chapter 01](#ch-01) · [Course lesson index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
-Continue to the next authored lesson.
+The next chapter contains the following instructional week.
 <!-- cykin:chapter-navigation:end -->
 
+<a id="week-03"></a>
 <a id="ch-03"></a>
 
-## Chapter 3 — Containment, eradication and recovery decisions
+## Chapter 03 — Containment, eradication and recovery decisions
 
-<!-- cykin:lesson-figures:start ch-03 -->
-### Lesson map
+**Five daily lessons · week 3 of four.** This chapter groups the original section identifiers 3.x. Lesson numbers identify a learner day; section identifiers remain stable so existing source references and laboratory instructions still work.
 
-Lesson 03 published. Map, example, EX038.
+<!-- cykin:lesson-figures:start week-03 -->
+#### Module map
+
+Module 3 overview: five daily lessons below provide the teaching, examples, exercises and worked-answer links.
 
 ```mermaid
 flowchart TD
@@ -4823,7 +5102,7 @@ flowchart TD
   EX --> Q["Exercise EX038"]
 ```
 
-### Logical drawing
+#### Module logical drawing
 
 ```mermaid
 flowchart LR
@@ -4865,12 +5144,12 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX038]
 ```
-<!-- cykin:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end week-03 -->
 
 
-### Learning outcomes
+#### Module learning outcomes
 
-By the end of this chapter, a learner should be able to:
+Across these five daily lessons, a learner should be able to:
 
 1. Distinguish a temporary containment action from cause removal and verified service recovery.
 2. Compare two response options against harm reduction, operational cost, reversibility, authority and evidence loss.
@@ -4881,13 +5160,25 @@ By the end of this chapter, a learner should be able to:
 7. Test a proposed containment control against the write paths in scope, distinguishing an observed block from a quiet log or an untested path.
 8. Compare competing cause hypotheses and specify an authorized test, cause-specific correction and verification limit before claiming eradication.
 
-### 3.1 A decision loop rather than a fixed sequence
+#### Module 3 exercise rules
 
-Chapter 2 left `B19` unexplained and identified a time-sensitive preservation risk: R15 supplies a 24-hour retention duration for detailed booking-audit records, but not the policy anchor or any verified deletion deadline. As evidence changes, the incident lead needs a repeated loop: **observe → assess possible harm → compare authorized options → act → verify effect → reassess**. Containment aims to limit further harm while the cause remains under investigation. Eradication addresses a confirmed cause or persistence mechanism when the team can identify it. Recovery restores useful service under explicit checks and monitoring. These activities can overlap, and an intervention may have to be rolled back if its cost or side effects exceed its benefit.
+Use the synthetic case only. R1–R24 are available for all twelve exercises; P1/C1 and V1 are available only where an exercise explicitly calls for the Module 3 recovery lab. The Module 4 branches are **not** evidence at the 09:37 decision point. R17's 09:22 task list names B17/B18 only; the later B20 edit in R18 is evaluated against that already supplied list, not known to the training owner in advance. For each response, first name its record IDs and decision time; then separate observed fact from inference or proposal; finally name an authorized owner, an observable check and a limit. Submit the requested matrix, note or test plan so a reader can reproduce the reasoning from this book alone. The worked results at the end provide examples, while alternative choices pass when their assumptions and verification are explicit.
+
+Use a compact 0–2 check per exercise: **0** if the requested artifact is missing or asserts an unsupported fact, **1** if the artifact answers the question but omits evidence, authority or an important limit, and **2** if it is evidence-linked, bounded and testable. This is a practice rubric for the draft, not a formal grade. Where a question names several fields, all are required for a 2. A claim of executed action before the branch card or of complete recovery after a failed V1 audit check must be revised even if other fields are present.
+
+<a id="lesson-11"></a>
+
+### Lesson 11 — Containment options and their service cost
+
+**Week 3, day 1.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 3.1 A decision loop rather than a fixed sequence
+
+Module 2 left `B19` unexplained and identified a time-sensitive preservation risk: R15 supplies a 24-hour retention duration for detailed booking-audit records, but not the policy anchor or any verified deletion deadline. As evidence changes, the incident lead needs a repeated loop: **observe → assess possible harm → compare authorized options → act → verify effect → reassess**. Containment aims to limit further harm while the cause remains under investigation. Eradication addresses a confirmed cause or persistence mechanism when the team can identify it. Recovery restores useful service under explicit checks and monitoring. These activities can overlap, and an intervention may have to be rolled back if its cost or side effects exceed its benefit.
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats response and recovery as part of wider cybersecurity risk management. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) addresses recovery from cybersecurity events. The classroom decision table below is a teaching model built for Harbor Library, not a universal playbook or an assertion that NIST mandates these exact steps.
 
-#### Three independent checks for a response control
+##### Three independent checks for a response control
 
 A response measure may stop a suspicious operation and still create unacceptable harm. Conversely, it may keep the service available while failing to block the concerning activity. The incident lead must not call either result unqualified success.
 
@@ -4901,7 +5192,7 @@ For the Harbor Library booking service, separate three questions before selectin
 
 [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response activities within wider cybersecurity risk-management decisions. The three-question contract here is an original teaching method, not a mandatory NIST form. It matters because containment can reduce one risk while increasing another; the record must show both.
 
-### 3.2 The case changes
+#### 3.2 The case changes
 
 These additional records are invented. Use them with R1–R16; the timestamps are UTC and the records are the only authorized evidence for this exercise.
 
@@ -4918,7 +5209,7 @@ These additional records are invented. Use them with R1–R16; the timestamps ar
 
 R17 and R18 make the authorized-training explanation for all edits less plausible and raise concern about ongoing harm. They still do not prove who controlled the session or why the edits occurred. R22 is limited to its range; R24 is a statement about the current evidence, not a finding that no exposure occurred. The lead should update confidence and urgency without converting uncertainty into an accusation.
 
-### 3.3 Compare containment options
+#### 3.3 Compare containment options
 
 At 09:37 UTC, the team considers the following **hypothetical options**. No action has been taken in this text.
 
@@ -4930,7 +5221,7 @@ At 09:37 UTC, the team considers the following **hypothetical options**. No acti
 
 The best option depends on current activity, confidence, reversibility and the service owner's tolerance. A **reasoned classroom proposal** is to ask the incident lead and identity owner to authorize session revocation, preserve the available narrow records and have the service owner ready to pause staff writes if edits continue. Another team might choose the short write pause first if the identity session cannot be linked reliably to the edits. The learner must explain the decision, authority and fallback; no fixed option is automatically correct.
 
-#### Recommendation, approval, execution and verification receipts
+##### Recommendation, approval, execution and verification receipts
 
 A decision is auditable only when each state has its own evidence. The distinction is practical, not linguistic:
 
@@ -4947,7 +5238,7 @@ For the fifteen-minute pause, R21 provides a business *tolerance statement*, not
 
 A verified control result has **scope**. If one approved test shows a selected session can no longer authenticate, it does not establish that every previous token was invalidated. If one staff route rejects a write, it does not establish that a legacy route is blocked. The existing W1 fixture examines those route-specific failures independently; this expansion adds the state and acceptance logic that should surround any such test.
 
-#### Make the comparison observable
+##### Make the comparison observable
 
 A response option is an **intervention**, not a verdict about the cause. Compare it with the same questions you would ask of a testable claim: What should change? What might break? How will we notice both effects? Who is allowed to make and reverse the change? A short decision table is more useful than assigning unexplained numerical risk scores:
 
@@ -4963,11 +5254,11 @@ The **no-intervention option** also needs a test and a deadline. “Observe” i
 
 Preserve the narrow records that are likely to matter before a disruptive change *when doing so does not dangerously prolong harm*. The incident lead should record which sources were captured, which could not be captured in time and why. Waiting indefinitely for a perfect evidence set could expose more patrons; acting without an evidence note can make later review harder. A proportionate decision records both costs. The comparison follows the risk-management orientation of [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final); the Harbor Library choices and matrix are original teaching examples.
 
-#### Contained W1 lab: test whether a proposed write pause actually holds
+##### Contained W1 lab: test whether a proposed write pause actually holds
 
 A change ticket saying *pause enabled* records an operator's intention, not the control's effect. A quiet booking audit could mean the pause worked, no one tried to edit, the query omitted a path, or logging failed. To evaluate the proposed pause in section 3.3, define its **claim** before testing: during a bounded interval, staff-originated booking writes through both the ordinary interface and the legacy application route should be blocked, while read access and the approved manual queue remain usable. This is a service-specific classroom requirement, not a universal containment recommendation. A real team would identify all relevant routes with the service owner and test only under its change, privacy and safety rules. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) frames effective response and recovery as part of risk management; the W1 test design and pass criteria are original teaching material, not a NIST procedure.
 
-W1 is a **separate fictional branch**. Its special card W1-A says that, for an isolated training copy only, the fictional service owner and incident lead approve a 09:40–09:55 UTC staff-write pause test with a manual queue. This approval does **not** exist in R1–R24. In particular, R21 says a pause is tolerable; it does not authorize one. W1's later timestamps and observations cannot be cited as facts available to the 09:37 canonical decision or the Chapter 4 tabletop. No learner is to submit a write to a live service, use a real account or infer a real incident outcome from these invented rows.
+W1 is a **separate fictional branch**. Its special card W1-A says that, for an isolated training copy only, the fictional service owner and incident lead approve a 09:40–09:55 UTC staff-write pause test with a manual queue. This approval does **not** exist in R1–R24. In particular, R21 says a pause is tolerable; it does not authorize one. W1's later timestamps and observations cannot be cited as facts available to the 09:37 canonical decision or the Module 4 tabletop. No learner is to submit a write to a live service, use a real account or infer a real incident outcome from these invented rows.
 
 Before reading the outcomes, put four questions on a test sheet: (1) Did the ordinary interface reject a labeled write and leave the isolated booking value unchanged? (2) Did the legacy route do the same? (3) Was a manual request recorded for later reconciliation rather than applied to the booking state? (4) Did a read-only request still work? Use independent *before/after state* beside the response and audit label. A response string alone can disagree with the resulting state; an absent audit line is not evidence of a block. The fixture supplies one trial per route, so even a clean result would support only those paths, values and times.
 
@@ -5040,7 +5331,7 @@ print(f"write_pause_claim: {claim}")
 
 The final `claim` line deliberately says `SUPPORTED_FOR_TESTED_PATHS` even in a hypothetical all-blocked variant. It would still say nothing about undiscovered routes, future time windows, queue capacity or why the earlier anomalous edits occurred. In the printed W1 fixture the output is `NOT_ESTABLISHED`; the legacy-route state change is a concrete failure of the proposed write-pause claim in the isolated test. The incident lead should keep the result as a **failed validation**, ask the service owner to correct or narrow the control design, and require a new authorized test before relying on it. A manual queue may reduce service disruption, but it does not compensate for an uncontrolled write route.
 
-#### W1-SCOPE supplemental check — required route and service coverage
+##### W1-SCOPE supplemental check — required route and service coverage
 
 The original W1 classifier gives a correct result for its complete fixture, but its final `all()` test silently accepts missing required routes: with only W-UI or with no rows, it can print `SUPPORTED_FOR_TESTED_PATHS`. A read response can also name `Room 2` when the independent value is actually `Room 4`. These are defects in the *teaching evaluator*, not observations of an actual control. Run the following supplemental audit **after both original W1 listings in the same scratch session**. It does not alter the five original output lines. Here W-UI and W-API are the two required write routes; W-QUEUE and W-READ are separate legitimate-service functions.
 
@@ -5118,9 +5409,9 @@ Predict the six additional results before looking at the [W1-SCOPE worked result
 
 <a id="ir-rapid-ch03-rb3-teaching"></a>
 
-#### RB3 — Preparing and verifying containment reversal
+##### RB3 — Preparing and verifying containment reversal
 
-#### RB3.1 Containment introduces a second risk that must be managed
+##### RB3.1 Containment introduces a second risk that must be managed
 
 Containment is intended to limit a particular harmful path. It can simultaneously interrupt ordinary work, prevent approved users from accessing a necessary function, or fail to block the activity the incident team intended to stop. A team that can enable a control but has no prepared way to reconsider or reverse it may turn a temporary protective measure into a prolonged service problem.
 
@@ -5130,7 +5421,7 @@ A reversal can involve restoring an earlier configuration, stopping a temporary 
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) connects incident response and recovery with risk management throughout an incident. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) addresses planned recovery, testing and improvement. These sources support careful planning and evaluation; the precise **RB3 reversal contract** is an original CyKin teaching construct, not a mandatory NIST workflow.
 
-#### RB3.2 Write down the purpose of reversal before selecting a command
+##### RB3.2 Write down the purpose of reversal before selecting a command
 
 The phrase "undo the containment" conceals at least two different reasons for taking action.
 
@@ -5144,7 +5435,7 @@ The intervention decision and the reversal decision are separate. Even if a chan
 
 At rapid level, the learner should describe the trigger in operational language: **which function or expected protective result failed, how was that observed, and what is the narrowest next decision it justifies?**
 
-#### RB3.3 Establish a verified pre-intervention state, not an idealized past
+##### RB3.3 Establish a verified pre-intervention state, not an idealized past
 
 A useful reversal plan starts **before** applying the original control. It records the last verified configuration or state relevant to the proposed change: the affected component, configuration version, tested legitimate service behavior, observed protective posture, dependencies, owner and source of the baseline record.
 
@@ -5166,7 +5457,7 @@ For a service that has been changing during an incident, simply replaying a save
 
 The RB3 lab uses the entirely invented identifier `CFG-GOOD-7` and a Boolean `baseline_verified`. Neither is evidence that a real baseline exists. The positive fixture models the discipline of requiring a known starting reference; it does not check the contents or authenticity of an actual configuration.
 
-#### RB3.4 Define the original intervention as an exact bounded change
+##### RB3.4 Define the original intervention as an exact bounded change
 
 A reversal can only be compared with an intervention if the first change is itself traceable. The original action record needs its own proposal, approval, object scope, effective window, operator receipt, expected protection and service impact. Otherwise the team may not know what needs undoing.
 
@@ -5180,7 +5471,7 @@ The safe preparation step is to identify a precise rollback target and its permi
 
 This is deliberately different from W1, which checks specific write routes under a pause. RB3 does not inject writes, run a gateway test or determine whether W1's legacy route was blocked. It checks whether the **proposed inverse** has a reviewable evidence chain.
 
-#### RB3.5 Approval must name the reversal, its window and its business cost
+##### RB3.5 Approval must name the reversal, its window and its business cost
 
 A rollback request should identify the specific control being reconsidered, the intended target state, the components or functions affected, the justification, the risks reintroduced and the authorization window. An approval for the original pause does not necessarily approve ending that pause, and R21's tolerance statement cannot be used as approval for any live change.
 
@@ -5201,7 +5492,7 @@ A missing or expired approval is a **hold condition**, not a license to treat ur
 
 RB3 checks a small fictional approved window, 14:05–14:25 UTC on an entirely invented date. The clock is a consistency input, not a measured Harbor Library outage or recovery objective.
 
-#### RB3.6 Specify a trigger that can be falsified
+##### RB3.6 Specify a trigger that can be falsified
 
 The team should be able to say what observation would cause a planned reversal to be requested and what observation would show that the trigger did **not** occur.
 
@@ -5222,9 +5513,9 @@ The RB3 fixture uses either `SERVICE_HARM` or `PROTECTION_FAILURE` as the artifi
 
 The negative variant `TRIGGER_NOT_OBSERVED` deliberately removes the supporting observation. The validator then refuses to convert a plausible rollback proposal into an executed action.
 
-#### RB3.7 Proposed reversal, approved reversal, executed reversal and checked effect
+##### RB3.7 Proposed reversal, approved reversal, executed reversal and checked effect
 
-The same action-state discipline used elsewhere in Chapter 3 applies to the reversal **as a new operation**. A team should not merge the original control ticket with the inverse action and then declare both successful.
+The same action-state discipline used elsewhere in Module 3 applies to the reversal **as a new operation**. A team should not merge the original control ticket with the inverse action and then declare both successful.
 
 | Reversal stage | Narrow supported claim | What must remain blocked |
 |---|---|---|
@@ -5242,7 +5533,7 @@ After execution, the team needs an observation of the resulting state and two di
 
 This section does not repeat G3-DG's generic decision-gate tutorial. It applies those distinctions to the **risk-bearing inverse operation**, including the verified baseline, trigger and competing post-reversal outcomes.
 
-#### RB3.8 Verify protective behavior **after** rollback, not just restored availability
+##### RB3.8 Verify protective behavior **after** rollback, not just restored availability
 
 Removing a disruptive restriction may restore legitimate service while also reintroducing the harmful path that containment was intended to limit. A successful rollback command is therefore not sufficient, and even a successful booking operation may be too narrow.
 
@@ -5256,7 +5547,7 @@ Do not interpret this as a universal instruction to keep every harmful control i
 
 No real security-control test is performed in RB3. The `protection_check` field is an invented Boolean and cannot establish that a live system is safe.
 
-#### RB3.9 Verify legitimate service after rollback, not merely configuration identity
+##### RB3.9 Verify legitimate service after rollback, not merely configuration identity
 
 The inverse operation may report that a previous configuration was restored while the original business problem remains. A dependency may still be unavailable; a required approval workflow may still fail; data may still be wrong; or the configuration switch may not control the user-facing function the team intended to restore.
 
@@ -5270,7 +5561,7 @@ A configuration equality test also cannot prove full booking-state correctness. 
 
 The correct report is "post-reversal legitimate function not accepted in this fixture," not "the entire library remains down" or "the data were destroyed."
 
-#### RB3.10 A valid reversal can still leave open human decisions
+##### RB3.10 A valid reversal can still leave open human decisions
 
 Why not mark everything recovered when both post-reversal checks pass? Because the checks cover only their stated function and scenario. The original incident may have an unresolved cause, untested paths, preservation needs, pending communication decisions and business-state errors that the inverse operation did not address.
 
@@ -5278,11 +5569,11 @@ A safe reversal record keeps a **human review item explicitly open** with an own
 
 The RB3 positive case returns `BOUNDED_REVERSAL_CHECKED_REVIEW_OPEN`. The final words are intentional: the simulated reversal met two bounded post-state checks, but it is **not incident closure**. A negative case with `human_review_open=False` fails because the teaching contract requires an accountable human reassessment even after technically favorable observations.
 
-The output must not be equated with RTO or RPO attainment. Chapter 3's RTE3 exercise measures scoped interruption-to-acceptance under a different contract; RB3 has no completed service-owner recovery-acceptance timeline. This is a **reversal readiness and verification** model.
+The output must not be equated with RTO or RPO attainment. Module 3's RTE3 exercise measures scoped interruption-to-acceptance under a different contract; RB3 has no completed service-owner recovery-acceptance timeline. This is a **reversal readiness and verification** model.
 
 A team may legitimately leave a temporary restriction partially active while awaiting review; if so, it must say which service and protective conditions are still in effect. Silent assumption of normal service is not an acceptable outcome.
 
-#### RB3.11 Full wrong example: automatically undoing a harmful pause
+##### RB3.11 Full wrong example: automatically undoing a harmful pause
 
 **Synthetic classroom contrast; none of these events occurred at Harbor Library's 09:37 checkpoint.**
 
@@ -5296,7 +5587,7 @@ A superficially reassuring case note would compound the error by replacing the o
 
 **Correct handling of this wrong case:** Hold any further unapproved change, preserve the relevant source and configuration history, identify the precise previously verified state, seek the accountable rollback decision, specify both protection and legitimate-service checks, and record open human review. If the first change has already occurred under an unverified route, the team must document that fact and obtain an owner-governed safe next decision. It must not invent a retroactive approval.
 
-#### RB3.12 Full correct example: a reviewed, narrow reversal with residual risk open
+##### RB3.12 Full correct example: a reviewed, narrow reversal with residual risk open
 
 **Independent RB3 invented variant, dated 2040-04-10; not canonical Harbor Library evidence.**
 
@@ -5312,7 +5603,7 @@ A second positive scenario changes the trigger to **PROTECTION_FAILURE**, with a
 
 A full report preserves the original baseline reference, intervention approval, trigger, new rollback approval, receipt, two check results and open human-review status as **separate historical entries**.
 
-#### RB3.13 Negative evidence and the need to stop before compounding harm
+##### RB3.13 Negative evidence and the need to stop before compounding harm
 
 A failed condition can call for holding a reversal proposal, reassessing an already reported action, or escalating immediately to the appropriate owner depending on when it is discovered.
 
@@ -5326,7 +5617,7 @@ An **unknown baseline** or **expired window** is also significant. An inverse pl
 
 This is why rollback readiness should be prepared alongside containment, not improvised after a failed intervention. A team needs an authorized response even when its first solution makes conditions worse.
 
-#### RB3.14 A reversal card must preserve history, not overwrite the initial decision
+##### RB3.14 A reversal card must preserve history, not overwrite the initial decision
 
 A reviewable reversal card should link three distinct records: the pre-intervention baseline, the original intervention and the proposed or executed reversal. Each has its own evidence and authorization.
 
@@ -5350,7 +5641,7 @@ In the canonical 09:37 decision, no reversal record exists because no interventi
 
 The correct practice is to **append** the reversal record as a new dated activity rather than replacing the Round C proposal or asserting that a later action had already happened. This preserves the distinction between history and hindsight.
 
-#### RB3.15 Preparing the next safe action when a reversal fails
+##### RB3.15 Preparing the next safe action when a reversal fails
 
 What should the learner propose if an RB3 negative case appears?
 
@@ -5362,7 +5653,7 @@ If legitimate service remains down after rollback, the result should be escalate
 
 For all these cases, preserve current evidence, avoid adding unexplained changes and assign an owner and review trigger. An apparently successful inverse is only one step of managing an incident; unresolved cause, correct booking state and actual user acceptance remain separate tasks.
 
-#### RB3.16 Teaching synthesis and relationship to other Chapter 3 laboratories
+##### RB3.16 Teaching synthesis and relationship to other Module 3 laboratories
 
 **W1** tests whether a proposed write pause actually blocks the stated isolated routes. **G3-DG** distinguishes generic approval, execution and acceptance states. **MQ3** checks duplicate/manual-queue processing decisions. **RTE3** measures scoped time and data recovery evidence. **RB3** instead tests whether a *new inverse of a disruptive or ineffective intervention* has a verified baseline, bounded new authority, observed trigger, exact execution target, independent post-reversal protective and business checks, and explicit human review.
 
@@ -5372,7 +5663,7 @@ A rapid-course learner has met this section's objective when they can decide **w
 
 <a id="ir-rapid-ch03-rb3-lab"></a>
 
-#### RB3 offline laboratory — Containment Reversal Readiness and Verification
+##### RB3 offline laboratory — Containment Reversal Readiness and Verification
 
 **Classification:** Independent, entirely synthetic laboratory. All identifiers, times, flags, approvals, execution receipts and post-state results are invented for RB3. Nothing relates to actual Harbor Library operations, R1–R24, Branch S/P or other labs.
 
@@ -5380,13 +5671,13 @@ A rapid-course learner has met this section's objective when they can decide **w
 
 **Environment:** Python 3 standard library, in memory. No files, network, accounts, logins, real controls, destructive commands, configuration updates or production access.
 
-##### Inputs and expected rule
+###### Inputs and expected rule
 
 The fictitious date is 2040-04-10 UTC. The verified pre-state reference is `CFG-GOOD-7`; the prior approved and reported-applied containment reference is `CTRL-PAUSE-9`, affecting only `staff-write`. Its application receipt is a declared fixture value, not an authenticated event. Reversal requires a separate `ServiceOwnerSim` approval receipt and a 14:05–14:25 UTC window, and the proposed rollback targets that same narrow function. A service-harm or protection-failure observation is needed before an inverse is pursued. The operator's execution time must follow the approval decision and fall inside its window. The returned target and the separately observed post-state target must match the plan. The trigger receipt must agree with the declared trigger kind.
 
 In this controlled fixture, `protection_check=True` means a **declared** residual protective check passed for the tested scope *after* the inverse. It does not mean the original blocking control remained active. `legitimate_service_check=True` means the declared permitted business check passed. Neither Boolean proves a real system property. A positive result **must retain** `human_review_open=True`.
 
-##### Full executable Python 3 program
+###### Full executable Python 3 program
 
 ~~~python
 from copy import deepcopy
@@ -5540,7 +5831,7 @@ assert (
 
 
 
-#### RB3-RECHECK supplemental audit — bind receipts to time and scope
+##### RB3-RECHECK supplemental audit — bind receipts to time and scope
 
 The baseline RB3 validator checks declared values but cannot inspect whether an approval was actually recorded before execution, whether a trigger was observed before approval, or whether the two post-state checks occurred after execution. A positive baseline label therefore does not establish that sequence. In a **fresh RB3-only scratch session**, run this supplement after the full 22-case program. Its receipts are new, invented classroom inputs; they are not R-series facts, authenticated records, or W1 observations. `approval_time == decision_time` and `execution_receipt_time == execution_time` are explicit assumptions of this small fixture, not universal operational rules.
 
@@ -5626,13 +5917,13 @@ Predict the eight additional results and compare the [RB3-RECHECK worked result]
 
 **Before running:** predict the twenty-two scenario lines and record which gate each case tests. Run only the offline in-memory program; then compare with the [RB3 worked result](#ir-rapid-ch03-rb3-result) in the final appendix. The printed positive status describes a bounded synthetic reversal check with human review still open, never full incident recovery.
 
-#### RB3 two-role practical exercise — Frozen Reversal Packet and Independent Decision
+##### RB3 two-role practical exercise — Frozen Reversal Packet and Independent Decision
 
 **Roles:** **Reversal Packet Author** and **Independent Reviewer**. The roles are fictional classroom assignments; no participant receives real production privileges.
 
 **Objective:** Test whether another learner can determine from a sealed record whether a proposed reversal has a verified baseline, justified trigger, correct approver and scope, actual execution receipt and two independent post-reversal results **without asking the author for undocumented context**.
 
-##### Procedure
+###### Procedure
 
 1. **Choose the fixture.** Use the artificial `VALID_WITH_OPEN_REVIEW` case or one negative RB3 variant. Do not use R1–R24 as executed rollback evidence. State the fictional date and scope.
 2. **Author prepares the packet.** Include baseline reference and its asserted check, intervention reference and prior approval status, trigger observation, proposed inverse target and objects, required owner, approval window, receipt status, post-state protection and legitimate-service results, and review owner.
@@ -5648,13 +5939,57 @@ Predict the eight additional results and compare the [RB3-RECHECK worked result]
 
 **Limit:** Passing the two-role tabletop does not demonstrate reliability of a real rollback mechanism. It tests an independent person's understanding of a fictional control-decision packet.
 
-### 3.4 Eradication requires a supported cause
+#### Worked checkpoint
+
+A write pause is only effective for the routes actually tested. Blocking W-UI while W-API remains unmeasured does not justify a full containment claim; a separate legitimate-service check identifies the cost to users.
+
+#### Practice — Lesson 11
+
+##### EX027 — Three different goals
+
+**Objective:** distinguish a control action from a cause fix and a service test. **Inputs:** R17–R23 and sections 3.3–3.5 at 09:37 UTC. **Output:** a three-row table for proposed session revocation, credential reset and isolated restore test, with primary goal, prerequisite authority or evidence, observable success check, and one important limit. Do not claim that any of these actions has occurred. A score of 2 identifies the credential reset as only a *candidate* eradication action if credential compromise is supported, and keeps a test of a copy distinct from live-service acceptance.
+
+**Worked answer:** [EX027 in the final appendix](#ex027--worked-result).
+
+##### EX028 — Changed assessment
+
+**Objective:** update hypotheses without rewriting the earlier decision. **Inputs:** R9, R10, R12 and R17–R18. **Output:** a before/after 09:37 assessment note with the earlier unresolved B19 issue, what R17 adds about approved tasks, what R18 adds about B20, the hypothesis weakened, the concern strengthened, and a fact that remains unproved. Record event and availability times separately. A score of 2 does not claim the learner knew R17–R18 at the 09:20 Module 2 review or identify the human behind `desk-a`.
+
+**Worked answer:** [EX028 in the final appendix](#ex028--worked-result).
+
+##### EX029 — Decision matrix
+
+**Objective:** select a bounded containment proposal. **Inputs:** R18–R21 and the section 3.3 comparison. **Output:** a two-row matrix for session revocation and the fifteen-minute staff-write pause, each with intended effect, path it does not cover, operational cost, approving role, executing role, post-action check and rollback. Add one sentence choosing an option provisionally at 09:37. A score of 2 names R21 as tolerance for a pause, **not** proof that a pause was approved and executed, and verifies the service cost as well as the intended block.
+
+**Additional queue requirement for EX029:** For the pause option, distinguish R21 tolerability from later approval, execution and verification. Name the front-desk queue owner, the receipt and current-state checks needed before applying an item, and a hold for a conflict or absent approval. A pending request is not an accepted booking.
+
+**RB3 extension:** **Additional requirement:** Within the existing two-row comparison for session revocation and the fifteen-minute staff-write pause, add for each option (a) the pre-intervention state that would have to be verified, (b) an observable **service-harm or protection-failure trigger** that would justify seeking reversal, (c) the accountable approver of that *new reversal decision*, and (d) separate protection and legitimate-service checks after a reported inverse. Do not create a third row, reuse W1 probe outcomes as canonical facts or claim the option was executed at 09:37.
+
+**RB3 2-point refinement:** Both original intended effects and service costs remain explicit, with R21 labeled tolerance only. The reversal is a separately approved proposal with exact target and review conditions; a hypothetical fallback does not prove recovery.
+
+**Worked answer:** [EX029 in the final appendix](#ex029--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-11 -->
+#### Continue studying — lesson 11 of at least 20
+
+[← Lesson 10](#lesson-10) · [Course lesson index](../SUBJECTS.md) · [Lesson 12 →](#lesson-12)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-12"></a>
+
+### Lesson 12 — Cause-specific correction and initial recovery gates
+
+**Week 3, day 2.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 3.4 Eradication requires a supported cause
 
 Revoking a session is a containment action. It is **not proof** that a compromised credential, malicious browser extension, faulty training script or application bug has been removed. Before proposing eradication, the team needs to identify a cause well enough to choose a specific fix and a verification test. Examples of possible fixes include resetting a confirmed compromised credential, removing an identified malicious component, correcting a faulty application change or repairing an authorization rule. None of those causes is established in R1–R24. The case record should therefore say “cause unresolved; eradication plan pending evidence,” while continuing to check whether edits stop.
 
 For example, suppose the session is revoked after 09:37 UTC and a **new** narrow query shows no later edits. That observation is compatible with at least three explanations: the revoked session caused the edits, the real source stopped independently, or the audit query missed later activity. R22, which was recorded at 09:32 UTC, cannot be used to verify a later revocation. Neither query can isolate a root cause. A proposed credential reset would become better supported if authorized identity evidence established credential misuse, but it would still require checking other sessions, tokens and recovery paths. A proposed application fix would require a reproducible software fault and a negative test demonstrating that the same unauthorized change no longer succeeds. The lesson is to match the **fix and its verification** to a supported mechanism.
 
-#### From a plausible story to a falsifiable cause test
+##### From a plausible story to a falsifiable cause test
 
 An eradication plan begins with a claim about **how** the unwanted change could occur, not with the name of a tool to run. In the fictional Harbor Library case, R17 says the training owner's listed work covered B17 and B18; R18 shows a later B20 edit associated with `desk-a`. That discrepancy deserves investigation, but the account label alone cannot identify the person, device or mechanism. R22's earlier quiet query, R23's backup-job status and R24's unattributed exposure concern do not close the causal gap. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident analysis, mitigation and learning within the wider response process. The following test design is CyKin's classroom adaptation; it is not a finding about an actual service.
 
@@ -5668,7 +6003,7 @@ Write each candidate explanation so that a different observation could weaken it
 
 These are **competing tests**, not three diagnoses. A negative check is meaningful only inside its coverage. If an identity export omits older sessions, it cannot exclude older credential use; if an isolated application test exercises only the current build, it cannot exclude a fault in the earlier build. Record the source version, query interval, filters, clock assumptions and missing fields alongside the result. If a control change has already been made, preserve relevant pre-change evidence and note that a later failed reproduction may reflect the new control rather than the original behavior. A beginner can document these limits without touching a production system.
 
-#### Build a cause-to-fix contract
+##### Build a cause-to-fix contract
 
 For each supported mechanism, link **evidence → authorized change → pre-change baseline → post-change test → monitoring → rollback or re-open trigger**. The arrows express a decision sequence, not proof that a change succeeds. Containment can proceed while the mechanism remains uncertain; eradication requires a supported cause and a test tied to that cause. The incident lead may keep multiple hypotheses open and seek specialist help when no safe discriminator exists.
 
@@ -5682,7 +6017,7 @@ The decision owner should sign a short **verification contract** before any caus
 
 Rebuilds, account deletion and broad purges are high-impact actions. They may destroy evidence or create recovery problems. They need the relevant owners, scope and change controls. A beginner should avoid treating “wipe and restore” as a synonym for responsible response.
 
-### 3.5 Verify recovery, not merely activity
+#### 3.5 Verify recovery, not merely activity
 
 The recovery lead needs more than R23's successful backup status. A restore claim should name the copy, time, environment, expected contents and test result. [NIST SP 800-34 Rev. 1, updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) discusses contingency planning and recovery priorities; this classroom example adapts that idea to a small booking service. A safe test uses an authorized isolated copy, not the live database during an unresolved event.
 
@@ -5696,7 +6031,7 @@ For Harbor Library, a proposed **return-to-service checklist** is:
 
 If the cause is unresolved, the lead may allow limited service with temporary safeguards and close monitoring, or may keep a restricted mode. The record must state that residual uncertainty. “The page loads” is not evidence that bookings are correct or that unauthorized edits have stopped.
 
-#### Recovery objectives are promises to test, not facts supplied by a backup status
+##### Recovery objectives are promises to test, not facts supplied by a backup status
 
 The service owner may define a **recovery time objective (RTO)** for how long a service can remain unavailable and a **recovery point objective (RPO)** for how far back its data can acceptably be restored. [NIST SP 800-34 Rev. 1, section 3.2](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf) distinguishes these objectives in contingency planning. CyKin applies them here as planning questions for a fictional small service; a particular organization's definitions and approved targets must come from its own business-impact analysis.
 
@@ -5704,7 +6039,7 @@ As a **hypothetical planning exercise**, imagine the library says room booking s
 
 Keep **technical restoration** and **service acceptance** separate. The recovery lead can report that a controlled copy starts and passes defined integrity checks. The service owner must still decide whether bookings are correct, manual-queue requests are reconciled and patrons can use the service with known limitations. The privacy contact reviews any newly supported exposure concern; R24 does not close that question. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) emphasizes planning, testing and improving recovery. The tests below are a classroom adaptation, not a claim that a backup, a single successful login or a quiet dashboard proves recovery.
 
-### 3.6 Guided reconciliation and return-to-service lab
+#### 3.6 Guided reconciliation and return-to-service lab
 
 This is a **paper or local-text simulation**, with no live database, account or customer data. First choose and justify either proposed containment option from section 3.3. Then use the new exercise-only cards below. They are introduced to test recovery reasoning; they were **not** present in R1–R24 and must not be retroactively cited as evidence available to the 09:37 decision.
 
@@ -5729,7 +6064,7 @@ This is a **paper or local-text simulation**, with no live database, account or 
 
 **Expected evidence:** a four-row reconciliation table, a three-claim test assessment, a branch-specific queue or identity note, and a signed-off *proposal* for restricted or restored operation. **Assessment rubric:** one point each for correct mismatch identification, justified correction authority, accurate V1 interpretation, branch-specific service cost, and an honest acceptance state with an owner and review trigger. A five-point response is coherent for this lab; it is not a production recovery certificate. The worked result follows EX038 in the final answer section.
 
-### 3.7 Contained lab: validate a recovery comparison before proposing changes
+#### 3.7 Contained lab: validate a recovery comparison before proposing changes
 
 The paper comparison in section 3.6 assumes that every booking ID appears once, that the owner-approved target and the current copy use the same fields, and that the copy can be traced to a particular point in time. Those assumptions are easy to lose in a spreadsheet or an improvised script. A duplicate ID might cause one row to silently replace another in a dictionary; a missing ID might disappear from an inner join; an extra booking could be mistaken for an approved correction. This lab turns those cases into explicit **failures or review items** before anyone considers changing a booking.
 
@@ -5813,7 +6148,7 @@ except ValueError as error:
     print("rejected variant:", error)
 ```
 
-#### Supplemental frame check for the declared four-ID P1 exercise
+##### Supplemental frame check for the declared four-ID P1 exercise
 
 The read-only Listing 3.1 reports differences in *supplied* rows. It cannot detect a booking ID absent from **both** files: removing B19 from P1 and C1 yields `MATCH=2, MISMATCH=1` with zero missing-current rows; comparing two header-only files produces four zero counters. Neither output establishes that the approved four-booking test frame was present. Keep the original listing and its six-line transcript as a demonstration of a row comparison, then run the following **standalone** frame check. Its expected IDs are an independently declared premise of this fictional P1 exercise, not a method for discovering every real booking.
 
@@ -5882,7 +6217,45 @@ Compare its five-line result with the [supplemental worked output](#ir-rapid-ch0
 
 **Assessment:** award one point each for (1) rejecting a duplicate instead of silently choosing a row, (2) identifying B19/B20 as mismatches while retaining B17/B18 as matches, (3) distinguishing missing and unexpected IDs in the method, (4) recording that target approval and copy provenance are external to the script, and (5) proposing an authorized, newly verified correction without claiming it occurred. A passing 5/5 demonstrates sound use of this small comparison, not recovery of a real service. If Python is unavailable, trace the four iterations and duplicate check on paper; the expected statuses and limits are the same.
 
-### 3.8 Guided backup-candidate and isolated-restore lab
+#### Worked checkpoint
+
+A suspicious account and an application fault imply different corrections. The response lead can compare a narrow test for each cause, name approval and reversal conditions, and keep eradication unclaimed while the discriminator is missing.
+
+#### Practice — Lesson 12
+
+##### EX030 — Risk of observation
+
+**Objective:** make non-intervention an explicit, reviewable choice. **Inputs:** R18, R21–R22 and the 09:37 checkpoint. **Output:** an observation decision card with approver, ten-minute deadline, proposed audit source and interval, query-coverage limit, verified trigger for early intervention, and accepted harm if another edit occurs. State what happens if logging is unavailable or the query is incomplete. A score of 2 does not treat R22's earlier narrow zero result as evidence that the next ten minutes will be quiet.
+
+**Worked answer:** [EX030 in the final appendix](#ex030--worked-result).
+
+##### EX031 — Evidence before change
+
+**Objective:** preserve enough context without turning preservation into a reason for unbounded delay. **Inputs:** R9–R10, R13, R15 and R17–R20, all available within R1–R24 at the 09:37 checkpoint; use only the values supplied. R15 states a duration but not its deletion-clock anchor or an exact loss time. **Output:** a four-row preservation request naming the source/item, bounded purpose, custodian or approval, and what the item cannot establish. Add a decision rule for when verified ongoing harm justifies an approved containment action before all four requests finish; record any omitted item and reason. A score of 2 calls the records **requests or supplied summaries** unless a new collection actually occurred and avoids bulk patron-data copying.
+
+**Worked answer:** [EX031 in the final appendix](#ex031--worked-result).
+
+##### EX032 — Avoid premature eradication
+
+**Objective:** repair an unsupported closure claim by making two causes testable. **Inputs:** R17–R24 and sections 3.3–3.4. **Output:** (1) a three-sentence correction stating what a *proposed* session revocation is intended to contain, which actor/cause/path questions remain, and why eradication is not established; (2) a two-row hypothesis card for credential/session misuse and an application authorization fault, each with supplied support, an authorized discriminator, a result that would weaken it and a conditional fix-verification pair; and (3) one sentence explaining why R22, recorded before 09:37, cannot verify the later proposal. Keep planned tests separate from supplied observations. A score of 2 names at least one positive and one negative synthetic test for a proposed fix, plus a scope or provenance limit; it does not assert that revocation, root-cause testing or a fix happened.
+
+**Worked answer:** [EX032 in the final appendix](#ex032--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-12 -->
+#### Continue studying — lesson 12 of at least 20
+
+[← Lesson 11](#lesson-11) · [Course lesson index](../SUBJECTS.md) · [Lesson 13 →](#lesson-13)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-13"></a>
+
+### Lesson 13 — Backup provenance, freshness and recovery objectives
+
+**Week 3, day 3.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 3.8 Guided backup-candidate and isolated-restore lab
 
 Section 3.5 introduced recovery objectives; section 3.6 compared booking states; section 3.7 checked whether the comparison itself silently discarded rows. A recovery lead must join those three kinds of evidence before proposing a return to service. The most recent copy can contain the very error being investigated. An older copy can appear correct for the four displayed bookings while omitting legitimate work. A valid checksum can show that a particular copy matches a recorded digest without showing that its source was trustworthy or that its contents meet the service owner's target. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) provides recovery-planning and testing guidance; the three-candidate gate below is an original, deliberately small classroom method.
 
@@ -5898,7 +6271,7 @@ This is an **optional exercise-only replay**, introduced after P1/C1 and V1. It 
 
 The data-point ages relative to the hypothetical 09:45 interruption are **45, 25 and 7 minutes** respectively. The thirty-minute RPO would screen out K-A *as a stand-alone copy* if there were no verified way to recover legitimate changes after 09:00. K-B is within the time target, but its digest mismatch is a **stop-and-investigate** result: a responder cannot replace the recorded digest with one from the observed bytes and call the copy verified. K-C is fresh enough by the timestamp alone, yet its B19/B20 state conflicts with the later owner-approved P1 target. The matching digest does not cure that logical error. These observations do not prove that K-A is clean throughout, that K-B is malicious, or that K-C is unusable for every limited purpose.
 
-#### Four separate gates before a restore proposal
+##### Four separate gates before a restore proposal
 
 1. **Provenance and permission.** Identify the snapshot identifier, originating system, claimed creation time and clock basis, capture method, recorded digest, custody of the copy, allowed test environment and owner who approved the test. K1 omits most of these details. A custodian should supply them in an actual case; a learner should leave the fields open rather than infer them from the candidate label. Preserve the original candidate and test a controlled working copy.
 2. **Copy integrity and usability.** Compare bytes with the previously recorded digest, then attempt a bounded isolated import with error logging and a repeatable test. A match supports only a limited byte-integrity claim; a successful import shows that the tested platform read the copy under the trial conditions. K-B fails the first check and has no second check. Neither K-A's nor K-C's successful import proves that the complete database, dependencies or access controls work.
@@ -5907,21 +6280,21 @@ The data-point ages relative to the hypothetical 09:45 interruption are **45, 25
 
 These gates can fail independently. A candidate can pass an integrity check and fail the owner's data comparison; another can match four rows and fail freshness; a third can be fresh but have an unverified copy. Writing one label such as “good backup” hides the decision. Use `PASS`, `FAIL` or `UNKNOWN` **per gate**, with the supplied observation beside it. `UNKNOWN` is not an implied pass. Where a source cannot be trusted, the correct next step is to seek a more reliable copy or independent corroboration, not to force the matrix to a single winner.
 
-#### An RPO calculation is only a screening calculation
+##### An RPO calculation is only a screening calculation
 
 For this replay, subtract the claimed snapshot time from 09:45: K-A is 45 minutes old; K-B is 25 minutes; K-C is 7 minutes. That arithmetic tests the *age of the stated recovery point*. It does not measure the number of valid bookings lost, the effect of a write queue, whether a snapshot is internally consistent, or how far a restored application would lag once other dependencies are rebuilt. If the clock or source metadata is wrong, even the age calculation is only conditional. An RPO pass needs an acceptable recovered data point under the service owner's rules, not merely a recent filename.
 
 Likewise, **11 or 14 minutes of isolated import** is not an RTO result. The two-hour target concerns usable service after the interruption. A meaningful elapsed time would need a defined start and stop, a tested platform, data and access checks, downstream dependencies, and an acceptance decision. In this fixture, no production restart or owner acceptance occurred. Record the isolated times as component measurements and leave the service-level recovery time **unmeasured**. This avoids an attractive but invalid equation: `import duration = outage duration`.
 
-#### Practice: write a candidate decision card
+##### Practice: write a candidate decision card
 
 Create a four-row gate matrix for each candidate, using the gate names above. For each row, state one K1/P1/V1 observation and the reason the result is `PASS`, `FAIL` or `UNKNOWN`. Then write a six-line recommendation: (1) the 09:46 review time and status as *proposal*; (2) whether any candidate independently supports both data-point and correctness claims; (3) which copy, if any, merits a further isolated trial and under whose approval; (4) what records are needed to reconstruct legitimate changes after its snapshot; (5) how the failed V1 actor field and unresolved cause affect acceptance; and (6) the next review trigger and named owner. Do not combine K1 with the canonical case history as though these candidate tests had actually happened.
 
 For a variation, imagine that the only independent transaction journal also contains a gap from 09:10 to 09:18 UTC. Explain why a “replay all missing transactions” plan is no longer verified. Identify the narrowest additional source or service-owner decision that could bound the missing interval. This inject belongs to the exercise only. Removing it returns you to the K1 facts; do not add it to R1–R24 or assert a real journal gap.
 
-**Expected submission:** three candidate matrices, the six-line decision card and a two-sentence variation response. **Assessment rubric (six points):** one point each for correct age arithmetic; treating K-B's mismatch as a failed integrity gate; distinguishing K-A's four-row match from complete or timely recovery; identifying K-C's B19/B20 conflict; keeping isolated import time separate from RTO and V1's audit failure open; and proposing an authorized, reviewable next test without claiming a completed production restore. A 6/6 answer is coherent for this fixture only. The model result follows the Chapter 3 source-reading answer in the final appendix.
+**Expected submission:** three candidate matrices, the six-line decision card and a two-sentence variation response. **Assessment rubric (six points):** one point each for correct age arithmetic; treating K-B's mismatch as a failed integrity gate; distinguishing K-A's four-row match from complete or timely recovery; identifying K-C's B19/B20 conflict; keeping isolated import time separate from RTO and V1's audit failure open; and proposing an authorized, reviewable next test without claiming a completed production restore. A 6/6 answer is coherent for this fixture only. The model result follows the Module 3 source-reading answer in the final appendix.
 
-#### Return to service is a separate decision
+##### Return to service is a separate decision
 
 A team can reduce further edits while leaving the service unusable or its booking data wrong. Equally, a restored interface may allow unauthorized changes or fail to produce an attributable audit. The return-to-service owner therefore needs a **paired gate**: acceptable protective behavior and acceptable legitimate business behavior, plus correct state and sufficient observability. A failed mandatory gate means the full acceptance claim is blocked.
 
@@ -5929,9 +6302,9 @@ Rollback is not simply "reverse the command." It needs a named owner, scope, the
 
 The last exercise of the chapter should therefore leave four distinct artifacts: a response decision with approval state, a causal hypothesis and falsifier, an isolated recovery test request with gate results, and an owner-reviewed service acceptance decision. No one artifact alone proves the others.
 
-### 3.8a Measure recovery time and the recovered data point
+#### 3.8a Measure recovery time and the recovered data point
 
-#### Learning objectives and instructional fit
+##### Learning objectives and instructional fit
 
 After this supplement, a new incident-response learner should be able to explain **which two events bound an outage-to-service-acceptance measurement**, calculate elapsed time from those events when trustworthy timestamps exist, and identify why a short installation or import time is not the same measurement. The learner should also screen snapshot age against a *hypothetical* recovery-point target without presenting age as a count or duration of actually lost business transactions.
 
@@ -5939,7 +6312,7 @@ The earlier Chapter 03 teaches that R23's backup-job success does not establish 
 
 The method below uses invented small records and standard-library Python. It deliberately avoids repeating the K1 candidates, using P1's four booking values as synthetic output, simulating a live write pause, or replacing the chapter's separate access-and-audit tests. The aim is to improve reasoning from the evidence the learner actually possesses.
 
-#### RTE3.1 Define the unit of service that starts and stops the clock
+##### RTE3.1 Define the unit of service that starts and stops the clock
 
 A statement such as "the system recovered in twelve minutes" is uninterpretable until it identifies *which system function*, the starting event, the stopping event and the source of both times. A server process might restart in twelve minutes while a customer-facing booking workflow remains unavailable. A database might become queryable while staff writes are still blocked. Neither event necessarily proves that the library resumed its accepted reservation service.
 
@@ -5949,7 +6322,7 @@ This is an **operational measurement contract chosen for RTE3**, not a universal
 
 The interval only answers an honest question if both endpoints apply to the **same declared service scope**. A start time for staff booking writes and an end time for the home page are mismatched endpoints. A measured end for one isolated test copy does not prove a live service accepted production requests. Every measurement card should therefore name the function and whether the environment is an isolated training fixture, an authorized rehearsal or a real system under appropriate controls.
 
-#### RTE3.2 An RTO target is not an observed recovery duration
+##### RTE3.2 An RTO target is not an observed recovery duration
 
 An **objective** expresses how quickly a function should recover under an owner-approved plan. A **measurement** reports how long an identified event actually took under a specified method. A **pass/fail comparison** requires both the approved objective and enough evidence for the corresponding measurement. It is improper to report "RTO achieved" merely because someone proposed a target or because a restore command ended within that target.
 
@@ -5959,7 +6332,7 @@ To make measurement defensible, use at least three distinct time concepts. **Int
 
 If the technical environment starts at 10:20 but the service owner accepts the complete scoped service only at 11:10, the recovery interval does not end at 10:20 under RTE3's contract. Those fifty minutes may contain evidence reviews, identity tests, corrections, queue reconciliation and owner decision-making. Ignoring them makes a technical component look faster than the service actually became acceptable to use.
 
-#### RTE3.3 Construct a milestone ledger with traceable meanings
+##### RTE3.3 Construct a milestone ledger with traceable meanings
 
 A recovery measurement ledger should capture **what each timestamp means and what produced it**, not simply a sequence of clock readings. The following columns form a useful minimum:
 
@@ -5979,7 +6352,7 @@ A timestamp should be stored together with its timezone, source and uncertainty.
 
 The ledger also needs a **status**, such as planned, performed, verified, failed or unavailable, for every milestone. It is inaccurate to fill a planned 11:10 acceptance slot with a value and later report it as measured if the owner never accepted the service. Preserve the original planned time and mark the actual receipt missing.
 
-#### RTE3.4 What counts as an acceptable stopping event?
+##### RTE3.4 What counts as an acceptable stopping event?
 
 The end of the recovery interval must be tied to the declared outcome. For a fictional booking service, plausible acceptance gates include:
 
@@ -5995,7 +6368,7 @@ Owner acceptance itself should state its boundary. A service may be conditionall
 
 An observed technical-ready time is valuable as a phase measurement. It can help a team understand how long platform work took. It is not, by itself, the stopping event of the declared end-to-end service-acceptance measurement.
 
-#### RTE3.5 Contrastive worked example: measured service acceptance
+##### RTE3.5 Contrastive worked example: measured service acceptance
 
 **Entirely synthetic RTE3 example, not a Harbor Library event.** Imagine an isolated training service on a fictional date with the following documented teaching milestones:
 
@@ -6018,7 +6391,7 @@ Suppose the recovery lead's candidate copy is labeled 09:35 and the interruption
 
 The useful conclusion is precise: "The isolated RTE3 scenario reached owner acceptance after 85 minutes under the listed fixture gates; the copy was labeled ten minutes old at the declared interruption; and data coverage is assessed separately." It is not a claim of full operational recovery.
 
-#### RTE3.6 Incorrect example: the eleven-minute import
+##### RTE3.6 Incorrect example: the eleven-minute import
 
 Consider the following **incorrect** fictional handoff:
 
@@ -6034,7 +6407,7 @@ This alternative is less dramatic but more useful. It tells the next responder e
 
 The distinction applies directly to K1's isolated import durations of 11 and 14 minutes. Those existing numbers describe **only the classroom import-and-read trial**. They do not measure a completed production outage, and they must not be reused as proof that the owner accepted correct Harbor Library booking service.
 
-#### RTE3.7 A copy's age screens risk; it does not measure lost transactions
+##### RTE3.7 A copy's age screens risk; it does not measure lost transactions
 
 A **recovery point objective (RPO)** describes the point in time to which data must be recovered after an outage under the approved organizational requirement. The [NIST RPO glossary](https://csrc.nist.gov/glossary/term/recovery_point_objective) links the definition to NIST SP 800-34 Rev. 1. The classroom's hypothetical RPO magnitude is **30 minutes**; that is a target, not an operational result.
 
@@ -6046,7 +6419,7 @@ The correct sequence is: verify copy identity and time basis; identify the last 
 
 K1 itself illustrates why copy age is not sufficient: K-B's digest mismatch blocks its integrity gate, K-C's recent state conflicts with the known approved four-booking target, and K-A's selected matches do not establish completeness of other legitimate work. RTE3 preserves those separate results rather than overwriting them.
 
-#### RTE3.8 Distinguish a data-point gap from a proved loss count
+##### RTE3.8 Distinguish a data-point gap from a proved loss count
 
 Suppose a candidate snapshot is labeled 09:35 and two **fictional accepted writes** are recorded after that time, at 09:38 and 09:42. These teaching operation IDs are `W-A` and `W-B`. If the isolated restored state demonstrably includes both accepted effects, the controlled comparison has **zero known unrecovered writes within those two listed operations**.
 
@@ -6058,7 +6431,7 @@ The learner should maintain three separate fields: **claimed snapshot time**, **
 
 A transaction's timestamp is not automatically the moment it became durable and accepted under every system design. In real recovery, the source owner must define its commit/acknowledgement semantics and correlation keys. Our toy IDs deliberately avoid making that assumption about Harbor Library's live reservation database.
 
-#### RTE3.9 When accepted operations are missing, stop the shortcut to RPO success
+##### RTE3.9 When accepted operations are missing, stop the shortcut to RPO success
 
 The most tempting mistake in a recovery report is to declare an RPO pass because the snapshot age is below the target, even though a known accepted operation was not recovered. A data-point screen does not repair a business-state discrepancy.
 
@@ -6070,7 +6443,7 @@ This is particularly important when multiple people are working during a disrupt
 
 RTE3 uses one simple boolean `ledger_complete` for the synthetic scope. In practice, proving coverage requires retention, time-window, source-health, inclusion and reconciliation checks. The boolean is a teaching premise, not an independently authenticated production attestation.
 
-#### RTE3.10 What to do when the interruption timestamp is missing
+##### RTE3.10 What to do when the interruption timestamp is missing
 
 Sometimes a team knows that restoration work started but cannot establish when the essential business service became unavailable. It might have an alert receipt time, a patron complaint or an operator's recollection. Those observations can help reconstruct an interval, but they are not necessarily the actual outage onset.
 
@@ -6082,7 +6455,7 @@ In the offline lab, `MISSING_INTERRUPTION` sets the start to `None` while retain
 
 That result is a successful demonstration of evidence discipline. It is not a failed calculation in the sense of arithmetic error; it correctly declines to report an unsupported measurement.
 
-#### RTE3.11 What to do when the acceptance receipt is missing or negative
+##### RTE3.11 What to do when the acceptance receipt is missing or negative
 
 A recovery team may finish all of its planned technical checks yet lack an owner decision for returning the service to use. The correct status is not "accepted by default." An absent owner receipt is a missing business decision, and the elapsed interval to owner acceptance remains **unmeasured** under RTE3's endpoint contract.
 
@@ -6094,7 +6467,7 @@ An accountable owner could separately approve a restricted operating mode with e
 
 No real approval, production restoration or scoped risk exception is supplied by RTE3. All owner flags are artificial program inputs.
 
-#### RTE3.12 When clocks disagree, the measurement needs verification
+##### RTE3.12 When clocks disagree, the measurement needs verification
 
 Calculating a duration assumes that the two endpoint times can be compared. A timestamp may have the wrong timezone, a clock offset, an imprecise event definition or an ingestion delay. Merely formatting it as ISO 8601 does not establish accuracy.
 
@@ -6106,7 +6479,7 @@ If the reported technical-ready time precedes the interruption under the same cl
 
 An owner who receives an inconsistent timeline should not simply choose the timestamp that yields a passing target. Corrections need source pointers, reasoning, version history and reviewer acceptance.
 
-#### RTE3.13 Use an evidence matrix rather than one recovery percentage
+##### RTE3.13 Use an evidence matrix rather than one recovery percentage
 
 A single score such as "recovery 95%" can hide the facts a service owner actually needs. At the rapid level, a more useful assessment lists separate questions:
 
@@ -6125,7 +6498,7 @@ The matrix avoids turning one satisfied row into a universal pass. A service can
 
 A useful handoff preserves all these statuses and names who owns the unresolved decision. The incident lead should not force a single green/red result when different functions and evidence sources remain in different states.
 
-#### RTE3.14 Reproducible measurement contracts support later improvement
+##### RTE3.14 Reproducible measurement contracts support later improvement
 
 A recovery exercise can improve the organization only if the next rehearsal can use the same definitions. Record the version of the measurement contract, objective owner, starting event, stopping event, required gates, source timestamps, missing-data rules, and tests for an unacceptable condition. A second analyst should be able to repeat the calculation and explain why an unknown result stayed unknown.
 
@@ -6135,7 +6508,7 @@ These measures can reveal process gaps. If technical readiness occurs promptly b
 
 [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) describes the role of planned recovery testing and improvement in cyber resilience. RTE3's precise timeline and fixture arithmetic are original examples built to make that principle learnable at the rapid level.
 
-#### RTE3.15 Release integrity and conclusion boundaries
+##### RTE3.15 Release integrity and conclusion boundaries
 
 The canonical case's release boundary is not relaxed by this supplement. At 09:37, the learner has R1–R24 but **not** the later Branch S/P outcome or the separately released P1/C1 and V1 cards. R23 says the last backup job succeeded and the most recent documented restore test was thirty days earlier. It does not provide an interruption timestamp, accepted-service time or data-loss ledger. No canonical RTO or actual RPO result follows.
 
@@ -6146,7 +6519,7 @@ The practical success of this section is a student able to make three different 
 If any input is missing, the conclusion must narrow rather than expand. Unknown timing is not proof of a target miss or target pass; unknown ledger completeness is not zero loss; and unverified service acceptance is not recovery completion.
 
 <a id="ir-rapid-ch03-rte3-lab"></a>
-#### RTE3 offline laboratory — measure only what the receipts support
+##### RTE3 offline laboratory — measure only what the receipts support
 
 **Classification:** Entirely fictional, independent RTE3 exercise. The date, interruption time, snapshot label, W-A/W-B operations, readiness milestone, gate flags and owner receipt have **no relationship to R1–R24, K1, P1/C1, V1, W1, G3-DG, MQ3 or the Branch S/P cards**.
 
@@ -6154,7 +6527,7 @@ If any input is missing, the conclusion must narrow rather than expand. Unknown 
 
 **Environment:** Python 3 standard library, no files, network connections, accounts, personal data or service operations. All rows are reset independently.
 
-##### Inputs and step-by-step reproduction
+###### Inputs and step-by-step reproduction
 
 The baseline's interruption is the invented 09:45 service failure on 2026-01-15 UTC; the copy is labeled 09:35, technical readiness is 10:20 and owner acceptance is recorded at 11:10. Required toy gates cover data comparison, permitted access, denied unauthorized operation and audit attribution. The declared accepted-operation set after the copy consists only of `W-A` and `W-B`; both are initially represented in the recovered set. A `ledger_complete=True` flag is an explicit **toy premise for that selected ledger**, not proof about all bookings.
 
@@ -6298,7 +6671,7 @@ assert measure(BASE) == (
 )
 ~~~
 
-##### Supplemental RTE3 full-service acceptance filter
+###### Supplemental RTE3 full-service acceptance filter
 
 The original eight-case program reproduces its stated fixture, but its `RTO` branch trusts gate flags without checking that the four required gates exist, the declared ledger is complete, all accepted writes were restored, or a technical-ready milestone exists. With otherwise green flags, removing W-B only from `restored_writes` still prints `RTO=85m_WITHIN_120m`; setting `gates={}` does the same. This is an **unsafe full-service acceptance inference**. An elapsed interval between supplied timestamps can be arithmetically plausible even when acceptance is unsupported. The supplemental validator below retains the original fixture and demonstrates why those cases must not receive a favorable *full-service* result.
 
@@ -6387,7 +6760,7 @@ The student should submit a matrix with scenario, start evidence, snapshot-age s
 
 ---
 
-#### Practical activity — Build a Recovery Evidence Receipt
+##### Practical activity — Build a Recovery Evidence Receipt
 
 **Learning goal:** Turn a loose recovery statement into an auditable, owner-reviewable recovery measurement request.
 
@@ -6408,13 +6781,53 @@ The student should submit a matrix with scenario, start evidence, snapshot-age s
 
 **Evaluation:** Full credit requires distinguishable start and stop conditions, independently supported acceptance gates, age-versus-loss separation, explicit missing-data states, source attribution and permission boundaries. A paper calculation alone does not prove a restore occurred.
 
-#### Section synthesis
+##### Section synthesis
 
 A recoverable copy, a short import, an owner-approved service and a valid recovery objective are distinct concepts. To measure interruption-to-service-acceptance time, define the user-facing service, verify the start event, keep intermediate readiness tests separate, require all mandatory acceptance evidence and record the owner's decision as the scoped stop event. To discuss the recovery point, screen timestamp age but separately establish what accepted business changes are recoverable, missing, unverified or outside source coverage.
 
 RTE3 is deliberately fictional and offline. Its results do not change the canonical Harbor Library chronology, the separate K1/P1/C1/V1 evidence or the public book's completion status.
 
-### 3.9 Sourced case study: recovery beyond the backup copy
+#### Worked checkpoint
+
+A completed backup job gives a candidate to evaluate, not a usable service. An isolated restore must compare provenance, recovered data point, elapsed recovery time and owner-approved booking correctness before any return decision.
+
+#### Practice — Lesson 13
+
+##### EX033 — Recovery test
+
+**Objective:** distinguish restoration planning from a measured result. **Inputs:** R23 and, **after the later lab card is released**, P1; V1 remains a separate access-and-audit trial. **Output:** a one-paragraph isolated-copy test plan plus a four-row B17–B20 expected-state table. Name the copy identifier and timestamp as fields to collect, actual restore start/end as fields to measure, service-owner-approved target, pass/fail/not-tested rule, and privacy boundary. A score of 2 keeps all four rows *not tested* until the restore is performed and never changes a live booking.
+
+**RTE3 extension:** Extend the original one-paragraph isolated-copy plan with a separate, compact measurement card naming (a) the owner-defined *service interruption start* and source, (b) isolated restoration start and technical-ready times, (c) the booking, access and audit gate receipt fields, (d) the owner acceptance timestamp and scope, and (e) the rule for declaring elapsed time **unknown**. The existing B17–B20 target table remains `not tested` until the relevant later card and actual isolated result are supplied.
+
+**RTE3 scoring note:** A plan with no actual outage or acceptance timestamps does not report achieved RTO. The learner distinguishes proposed and executed steps, remains within an authorized isolated environment and does not infer an accepted service from a copied test plan.
+
+**Worked answer:** [EX033 in the final appendix](#ex033--worked-result).
+
+##### EX034 — Backup limit
+
+**Objective:** test what a successful backup job can and cannot demonstrate. **Inputs:** R23 and the **hypothetical** two-hour RTO, thirty-minute RPO, midnight-only copy and 09:45 interruption in section 3.5. **Output:** a calculation note with `09:45 − 00:00`, comparison to the thirty-minute target, the missing timing measurement for RTO, and two additional authorized checks before calling the service recoverable. Do **not** assert that the fictional library approved those targets or that the actual backup was made at midnight. A score of 2 shows the arithmetic, separates copy age from actual data-loss measurement and identifies booking-state and elapsed-restore tests.
+
+**RTE3 extension:** Keep the existing midnight-to-09:45 arithmetic and hypothetical 30-minute RPO/120-minute RTO. Add three explicit columns: **copy age screen**, **accepted-transaction evidence after the copy**, and **actual restored/verified transaction result**. Ask whether any record proves a specific legitimate write was irrecoverably lost. If the accepted ledger, replay evidence or clock semantics are missing, record **unknown**, not "9 hours 45 minutes of data lost."
+
+**RTE3 scoring note:** Correct age arithmetic must be paired with an appropriately limited inference. R23 supplies only a backup-job status and old restore-test record, not interruption, service acceptance, actual recovered point or measured data loss. An isolated import duration alone is not a service-level RTO.
+
+**Worked answer:** [EX034 in the final appendix](#ex034--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-13 -->
+#### Continue studying — lesson 13 of at least 20
+
+[← Lesson 12](#lesson-12) · [Course lesson index](../SUBJECTS.md) · [Lesson 14 →](#lesson-14)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-14"></a>
+
+### Lesson 14 — Evidence-linked recovery decision records
+
+**Week 3, day 4.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 3.9 Sourced case study: recovery beyond the backup copy
 
 Harbor Library is invented. A useful real-world contrast is the [British Library's own March 2024 review of the October 2023 cyber-attack](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=). The report is the institution's retrospective account, written after investigation; it is **not** a raw event log, a finding about Harbor Library or a template for a one-month course to reproduce. Its exact descriptions are time-bound to the review date. Read the cited pages when using the case and avoid extending the report's conclusions to unexamined systems.
 
@@ -6430,7 +6843,7 @@ The same report describes strategic and operational crisis groups coordinating t
 
 **Guided source-reading activity:** write a three-row claim ledger with (1) a fact from the British Library report and its page or section, (2) one planning question it raises for the fictional booking service, and (3) one conclusion it cannot support about B17–B20. Include at least one row about restoration infrastructure and one about partial service. Then compare the source date with the time of your own course reading: a 2024 retrospective cannot by itself tell you the Library's current service state. The report also expresses uncertainty about the exact initial intrusion point; do not turn a likely entry point into a certain one. A model ledger appears in the final answer section. This supplementary source analysis is separate from EX027–EX038.
 
-#### Contrast: a decision record at 09:37
+##### Contrast: a decision record at 09:37
 
 **Plausible but incorrect:** "At 09:37 we know B20 was an attack. R21 authorizes a write pause, R22 proves the writes have stopped, and R23 proves recovery is ready. Apply the pause and close the incident after the page loads."
 
@@ -6440,7 +6853,7 @@ Each asserted upgrade is wrong. R18 reports a B20 change but no human attacker o
 
 This record does not avoid action. It prevents recommendation, approval, execution and success from becoming a single unsupported sentence.
 
-### 3.10 Worked decision record and synthesis
+#### 3.10 Worked decision record and synthesis
 
 Audit the defensible 09:37 proposal above as four separate receipts. This prevents a well-worded recommendation from being mistaken for a change that happened:
 
@@ -6453,11 +6866,11 @@ Audit the defensible 09:37 proposal above as four separate receipts. This preven
 
 The proposal should set a 09:45 review or earlier review on a verified new unexplained edit. Root cause and personal-data exposure remain unresolved; the four rows do not claim a production action.
 
-This chapter converts the earlier timeline into a bounded decision. Chapter 4 will test the whole response: intake, evidence, authority, proportionate action, recovery criteria and a review of what the team would change before another incident.
+This chapter converts the earlier timeline into a bounded decision. Module 4 will test the whole response: intake, evidence, authority, proportionate action, recovery criteria and a review of what the team would change before another incident.
 
 <a id="ir-rapid-ch03-g3-lab"></a>
 
-### 3.11 Offline laboratory: decision and recovery gates
+#### 3.11 Offline laboratory: decision and recovery gates
 
 **Purpose:** Validate the logical separation of proposal, approval, execution, protective verification, legitimate service continuity, data correctness and audit attribution. This is a *new independent classroom branch*, not a replay of W1 write-path tests, the P1/C1 booking-value comparison, V1's specific observations or K1 copy selection.
 
@@ -6465,7 +6878,7 @@ This chapter converts the earlier timeline into a bounded decision. Chapter 4 wi
 
 **Inputs and meanings:** A value of `True` means the corresponding *fictional test card asserts* that a gate passed in its limited scope; `False` means the card asserts a failed gate; `None` means no test result is supplied. The flags are **not real approval receipts, collection evidence or actual restorations**. `protective` concerns the bounded harmful operation, `legitimate` the required legitimate business function, `data` an isolated owner-approved data check and `audit` sufficient attribution for the tested operation. The model intentionally requires all four for its most favorable limited label.
 
-#### Executable fixture
+##### Executable fixture
 
 ~~~python
 SCENARIOS = [
@@ -6512,7 +6925,7 @@ print(
 )
 ~~~
 
-#### Exact expected output — executed against the displayed fixture
+##### Exact expected output — executed against the displayed fixture
 
 ~~~text
 G3-P PROPOSED_ONLY
@@ -6528,7 +6941,7 @@ G3-X INVALID_UNAPPROVED_EXECUTION
 NEGATIVE_AUDIT AUDIT_GATE_FAIL
 ~~~
 
-#### G3-DG adversarial follow-up: a failed gate outranks an unknown one
+##### G3-DG adversarial follow-up: a failed gate outranks an unknown one
 
 The first G3-DG listing reports only one state per card. Its ordering hides a *known failed* protection test when the service test is unknown: `gate(True, True, False, None, True, True)` returns `EXECUTED_UNVERIFIED`. Likewise, `gate(True, True, True, True, False, None)` returns `RECOVERY_CHECKS_PENDING` despite a known failed data test. These results reproduce the code's branch order, not a defensible acceptance decision. First ask whether a required test is known to have failed; only then classify the remaining unknowns. This follow-up is a separate logic-only check and leaves the eleven original lines intact.
 
@@ -6581,7 +6994,7 @@ EXECUTED_WITHOUT_APPROVAL: INVALID_UNAPPROVED_EXECUTION
 
 Predict which gate wins when one test is `False` and another is `None`, then compare with the seven lines. `ALL_FLAGS_TRUE` is an internally consistent *assertion* in a synthetic card; it does not authenticate an approver, operator, source, clock or test scope. A real decision requires separate receipts and a service-owner acceptance decision. Neither this fixture nor its output adds an R-series observation.
 
-#### Interpretation and negative control
+##### Interpretation and negative control
 
 G3-P records only a proposal. G3-A adds a fictional approval but no execution. G3-E claims execution while omitting effectiveness checks; it cannot be described as successful containment. G3-C and G3-B show why the protective and legitimate-service tests are independently necessary. G3-I has both of those bounded passes but no recovery-data or audit result. G3-D fails data correctness. G3-U fails audit attribution. G3-V passes the **declared classroom gates for that one modeled test**, but does not establish root cause, complete route coverage, production authorization or service-owner acceptance. G3-X contains an internally unacceptable claim of execution without approval and is rejected even when all other flags are true.
 
@@ -6593,13 +7006,55 @@ The negative control changes only the audit flag of the favorable test to `False
 
 **Acceptance rubric (five-point lab, supplementary rather than a new numbered exercise):** one point each for exact output; correct lifecycle separation; independent protective and service gates; distinct data and audit failure interpretation; and an explicit bounded-evidence/canonical-release limitation. Do not claim the classroom `True` inputs were verified production observations.
 
-### 3.12 Reconcile a manual queue before resuming writes
+#### Worked checkpoint
 
-#### Why a pause ending is not proof that bookings are safe to accept again
+An attractive restore candidate can pass integrity but fail the owner target or a bounded RPO test. The decision record should state the failed gate, a safe alternative and the next observation that could change the verdict.
+
+#### Practice — Lesson 14
+
+##### EX035 — Return-to-service criteria
+
+**Objective:** require evidence for a proposed return to service. **Inputs:** P1/C1 and V1 **only after their later release**, plus the section 3.5 checklist. **Output:** three measurable acceptance rows for booking correctness, tested access behavior and audit attribution, each with expected result, current supplied result, owner and action needed. Conclude with a proposed service state, next review and one rollback trigger. A score of 2 marks B19/B20 as mismatched in C1, V1's tested access checks as limited passes, and the blank audit actor as a failure, so it does not declare unrestricted recovery.
+
+**Additional queue gate for EX035:** If the later Branch P is chosen and only after it is released, add a fourth acceptance row for its two unnamed pending manual requests. The row must require a bounded manifest, owner-approved dispositions and a check of current authoritative booking state; do not borrow MQ3 outcomes, W1 or P1/C1 as the branch queue. The B19/B20 mismatches and V1 missing actor remain independent failed gates.
+
+**RTE3 extension:** Retain the original booking-correctness, permitted/denied access and audit acceptance conditions and the conditional Branch P queue gate after its proper release. Add an **acceptance-time evidence row**: actual interruption timestamp/source, last passed mandatory gate, owner acceptance (or rejection) timestamp, scope and outcome. If P1/C1 or V1 reports a failed gate in its later isolated test, explain why no full-service recovery completion time is established by those cards.
+
+**RTE3 scoring note:** Do not turn the existing V1 limited access results into a completed restore, turn a blank actor into a pass, treat a pending queue as reconciled, or report a measured RTO without comparable start/end receipts and owner-approved acceptance.
+
+**Worked answer:** [EX035 in the final appendix](#ex035--worked-result).
+
+##### EX036 — Decision record
+
+**Objective:** keep a response recommendation auditable before execution. **Inputs:** R17–R21 and the 09:37 checkpoint. **Output:** a six-field card covering time and status, evidence and uncertainty, chosen action and scope, approvers/executor, intended effect plus service side effect, and verification/fallback/review. Name the identity owner and incident lead for the proposed revocation; use R21 only for a possible pause fallback. A score of 2 gives an observable post-action test and says **proposed**, not completed.
+
+**RB3 extension:** **Additional requirement:** Keep the original six-field card for the 09:37 **proposal**. In field 6 (verification/fallback/review), add a short **conditional reversal subcard**: last verified configuration reference to obtain, observable trigger, scope and window to request, authority needed, operator/effect receipt to require, post-reversal protection and legitimate-service checks, and the accountable human-review item. Use `pending/not supplied` for every rollback execution or test not contained in R17–R24.
+
+**RB3 2-point refinement:** The historical action remains a proposal, the new inverse is not silently authorized, and later branch or RB3 exercise observations never enter the canonical 09:37 decision.
+
+**Worked answer:** [EX036 in the final appendix](#ex036--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-14 -->
+#### Continue studying — lesson 14 of at least 20
+
+[← Lesson 13](#lesson-13) · [Course lesson index](../SUBJECTS.md) · [Lesson 15 →](#lesson-15)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-15"></a>
+
+### Lesson 15 — Queue reconciliation before return to service
+
+**Week 3, day 5.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 3.12 Reconcile a manual queue before resuming writes
+
+##### Why a pause ending is not proof that bookings are safe to accept again
 
 A bounded staff-write pause can be a reasonable containment choice while the incident lead investigates unexplained booking edits. It may also create a second operational risk: new requests arrive while ordinary application writes are blocked. If staff record those requests manually, they become **pending obligations**, not automatically accepted reservations.
 
-The existing Chapter 3 already teaches how to propose a pause, validate the configured write paths through the separate W1 laboratory, and compare authoritative booking states through P1/C1. It also says queued requests must be reconciled before approved resumption. The missing intermediate skill is determining **whether each request remains valid, has already been applied, conflicts with current state, or lacks the evidence required to apply it safely**.
+The existing Module 3 already teaches how to propose a pause, validate the configured write paths through the separate W1 laboratory, and compare authoritative booking states through P1/C1. It also says queued requests must be reconciled before approved resumption. The missing intermediate skill is determining **whether each request remains valid, has already been applied, conflicts with current state, or lacks the evidence required to apply it safely**.
 
 A pause does not make every queued instruction correct. During a pause, a staff member might copy the same request twice, a patron might retry after receiving no confirmation, an appointment time might become unavailable, or someone might submit a request that was never approved. When writes are reenabled, automatically replaying everything in arrival order could create duplicate reservations, overwrite legitimate later changes, or mislead a patron into believing an unaccepted request was confirmed.
 
@@ -6607,7 +7062,7 @@ The required outcome is not "empty the queue." It is **account for every queued 
 
 [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses incident response as part of cybersecurity risk management, including considering operational consequences. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) discusses recovery planning and tests. The queue contract below is an original Harbor Library teaching method, not a prescribed NIST process or evidence of any real library service.
 
-#### Five states of a pending booking request
+##### Five states of a pending booking request
 
 Before discussing a replay or service resumption, distinguish five questions about every proposed manual request.
 
@@ -6638,7 +7093,7 @@ A beginner-friendly queue ledger records both the original request and its evolv
 
 For Harbor Library, these are **proposed educational fields**. The canonical Branch P card does not provide any actual queue manifest. Its statement "two pending requests" cannot support claims about which rooms were requested, who submitted them or whether either can safely be applied.
 
-#### Duplicate receipts are not necessarily duplicate business actions
+##### Duplicate receipts are not necessarily duplicate business actions
 
 Imagine a patron asks to move a booking. The front desk writes down the request, receives a repeated call, and writes a second note. Two receipts may describe **one logical requested change**.
 
@@ -6650,7 +7105,7 @@ A key alone cannot prevent duplicates if it is stored only in temporary client m
 
 The rapid course need not implement a distributed transaction manager. It must recognize why **"the staff did not receive a confirmation" is not the same as "the write did not occur."** The correct next step under that uncertainty is to verify the prior effect using an authorized source, not replay blindly.
 
-#### State versions prevent silent lost updates
+##### State versions prevent silent lost updates
 
 A manual request should identify what state it assumed. Suppose an instruction means "change booking X10 from its version 2 state to Room D." If another approved operation already advanced X10 to version 3, applying the old instruction without review could overwrite that newer decision.
 
@@ -6664,7 +7119,7 @@ In a real concurrent database, comparing a version and updating a value in two u
 
 This also explains why an older backup is not automatically a valid replay baseline. A recovered booking state must be reconciled with accepted work and current authority before pending manual instructions can be applied. The original P1/C1 and K1 laboratories examine different parts of that recovery question; MQ3 does not supply their evidence or alter their results.
 
-#### A safe queue review is a decision sequence, not a bulk command
+##### A safe queue review is a decision sequence, not a bulk command
 
 For each request, a fictional service owner or delegated authorized reviewer should apply the following sequence:
 
@@ -6679,7 +7134,7 @@ For each request, a fictional service owner or delegated authorized reviewer sho
 
 This is a **processing model**, not an instruction to execute a queue against a real library. If no suitable authoritative state or approval is available, the defensible disposition is **hold**. A student should never guess a current value in order to make the simulation pass.
 
-#### Worked contrast: a confident but unsafe restart
+##### Worked contrast: a confident but unsafe restart
 
 **Incorrect reasoning:**
 
@@ -6693,17 +7148,17 @@ The sentence contains several unsupported conversions. R21 records tolerance, no
 
 This version identifies precisely which missing evidence a later decision would need. It does not borrow the W1 test's single queued item or the P1/C1 booking comparison as if they described Branch P's two actual pending requests.
 
-#### Separate the reconciliation result from return-to-service acceptance
+##### Separate the reconciliation result from return-to-service acceptance
 
 A manual queue with every item assigned a disposition is better controlled than an unexplained queue. Still, its completion does not alone justify unrestricted booking writes.
 
-The service owner must consider at least four separate gates: (a) the control is in the intended state after the approved change; (b) the authoritative booking values are correct under an owner-approved target; (c) relevant authorized and unauthorized tests behave as expected; and (d) changes produce adequate audit identity and time fields. The Chapter 3 V1 fixture separately shows why two narrow access successes do not repair an audit record with a blank actor field.
+The service owner must consider at least four separate gates: (a) the control is in the intended state after the approved change; (b) the authoritative booking values are correct under an owner-approved target; (c) relevant authorized and unauthorized tests behave as expected; and (d) changes produce adequate audit identity and time fields. The Module 3 V1 fixture separately shows why two narrow access successes do not repair an audit record with a blank actor field.
 
 Likewise, clearing a queue by rejecting all items is not evidence of useful service. A legitimate booking function must work when permitted. A successful replay also cannot repair an unresolved account-cause hypothesis or prove that other staff-write routes are closed.
 
 A good handoff for a manual queue reports **counts with their units**, such as receipts reviewed, distinct operations recognized, simulated applications, duplicate receipts, unresolved approvals and conflicts. It never reports "all patrons served" without a source supporting that much broader claim. When one logical operation has two receipts, count both receipts in the custody ledger but count its accepted business effect only once.
 
-#### Failure modes and defensive review
+##### Failure modes and defensive review
 
 | Failure mode | Attractive but wrong conclusion | Required countercheck |
 |---|---|---|
@@ -6720,7 +7175,7 @@ The most important technical habit is to leave ambiguous items **visible and own
 
 <a id="ir-rapid-ch03-mq3-lab"></a>
 
-### 3.13 MQ3 offline laboratory — Replaying a hypothetical queue without a live write
+#### 3.13 MQ3 offline laboratory — Replaying a hypothetical queue without a live write
 
 **Objective:** Distinguish duplicate receipts, conflicting key reuse, missing approval, stale state and changed processing order. This is a wholly independent synthetic laboratory. Identifiers `MQ-01`–`MQ-08`, `X10`–`X12` and `KEY-*` are **not** canonical Harbor Library records or the two unnamed Branch P requests.
 
@@ -6819,7 +7274,7 @@ for label, sequence in [
 
 Compare your predictions with the [MQ3 worked transcript and review](#ir-rapid-ch03-mq3-result) in the final answer appendix.
 
-#### MQ3 intake preflight: receipt identity before simulated effect
+##### MQ3 intake preflight: receipt identity before simulated effect
 
 The original `simulate()` remembers an operation key only after `SIMULATED_APPLY`; it does not check whether a receipt ID was used before. In adversarial runs, two different operations both labeled `MQ-01` can both return `SIMULATED_APPLY`. If a stale X11 request first uses `KEY-Z`, a different X12 request can later reuse `KEY-Z` and apply, because the first request was never stored in `applied`. These results are limits of the teaching simulator, not evidence of real queue behavior.
 
@@ -6878,7 +7333,7 @@ for label, rows in VARIANTS:
 
 Predict the eight baseline receipts and three two-row variants in the [supplemental worked transcript](#ir-rapid-ch03-mq3-intake-result). Explain why `MQ-02` is not yet a verified duplicate *effect*, why a held/stale first attempt still reserves its key's intent for conflict review, and why two competing new intents cannot be safely ordered by whichever file is read first. This in-memory check cannot authenticate approvals, guarantee atomic writes, resolve Branch P's two unnamed requests or certify durable exactly-once processing. In a real system, conditional state updates and key-to-result records would require a controlled, durable consistency design.
 
-### 3.13a Safe return to service is a conjunction, not a single green result
+#### 3.13a Safe return to service is a conjunction, not a single green result
 
 **Learning objective:** Explain why a successful configuration change, a quiet audit query, correct booking values, accessible user functions and reliable attribution are **different acceptance dimensions**. A beginner does not need to implement transaction isolation or perform a live restore, but should be able to state what evidence would prevent premature reopening.
 
@@ -6892,7 +7347,7 @@ Define **protection acceptance** as evidence that the harmful or prohibited oper
 
 A deliberately important comparison: a **verified duplicate receipt** need not create a second business effect, whereas a **different operation using the same key** demands a conflict hold. Even if all pending items have dispositions, the service still needs independent booking, access and audit gates. The [NIST SP 800-184 recovery guide](https://csrc.nist.gov/pubs/sp/800/184/final) emphasizes planning, testing and improvement, not a one-signal recovery declaration. The following classroom condition checker is a teaching model rather than NIST-mandated acceptance logic.
 
-#### R3X offline lab — mandatory gates and a queue that remains pending
+##### R3X offline lab — mandatory gates and a queue that remains pending
 
 This standard-library Python 3 fixture is wholly invented. Each row is an independent reset; `True`, `False` and `None` mean declared pass, declared failure and untested, not authenticated receipts. No file, service, network or real booking is touched.
 
@@ -6935,83 +7390,21 @@ TOY_SCOPED_PASS SYNTHETIC_SCOPED_GATES_PASS_ONLY
 
 **Reproducible task:** Write a five-column plan listing the required owner, source, expected observation, failure action and status of each gate. Then reproduce all six lines, identify a failed data gate and a failed audit gate after the later P1/C1 and V1 releases, and state what the queue owner would need **before** reading either pending Branch P request. A full result refuses to borrow W1, MQ3 or RTE3 synthetic outcomes as Harbor Library operations and keeps incident root cause and identity questions open.
 
-**Synthesis:** A temporary successful control, an accepted limited operating mode, and an eradicated cause are different decisions. Chapter 4 tests whether the learner can maintain these boundaries while cards are gradually released and the receiving shift lacks the author's explanations.
+**Synthesis:** A temporary successful control, an accepted limited operating mode, and an eradicated cause are different decisions. Module 4 tests whether the learner can maintain these boundaries while cards are gradually released and the receiving shift lacks the author's explanations.
 
-### Chapter 3 exercises
+#### Worked checkpoint
 
-Use the synthetic case only. R1–R24 are available for all twelve exercises; P1/C1 and V1 are available only where an exercise explicitly calls for the Chapter 3 recovery lab. The Chapter 4 branches are **not** evidence at the 09:37 decision point. R17's 09:22 task list names B17/B18 only; the later B20 edit in R18 is evaluated against that already supplied list, not known to the training owner in advance. For each response, first name its record IDs and decision time; then separate observed fact from inference or proposal; finally name an authorized owner, an observable check and a limit. Submit the requested matrix, note or test plan so a reader can reproduce the reasoning from this book alone. The worked results at the end provide examples, while alternative choices pass when their assumptions and verification are explicit.
+If a manual request has no unambiguous disposition, reopening writes can duplicate or lose a reservation. Preserve the receipt, owner and reconciliation state; keep the service restricted until the unresolved queue and the other mandatory gates are reviewed.
 
-Use a compact 0–2 check per exercise: **0** if the requested artifact is missing or asserts an unsupported fact, **1** if the artifact answers the question but omits evidence, authority or an important limit, and **2** if it is evidence-linked, bounded and testable. This is a practice rubric for the draft, not a formal grade. Where a question names several fields, all are required for a 2. A claim of executed action before the branch card or of complete recovery after a failed V1 audit check must be revised even if other fields are present.
+#### Practice — Lesson 15
 
-#### EX027 — Three different goals
+##### EX037 — Residual risk
 
-**Objective:** distinguish a control action from a cause fix and a service test. **Inputs:** R17–R23 and sections 3.3–3.5 at 09:37 UTC. **Output:** a three-row table for proposed session revocation, credential reset and isolated restore test, with primary goal, prerequisite authority or evidence, observable success check, and one important limit. Do not claim that any of these actions has occurred. A score of 2 identifies the credential reset as only a *candidate* eradication action if credential compromise is supported, and keeps a test of a copy distinct from live-service acceptance.
+**Objective:** distinguish page availability from safe, correct service. **Inputs:** R20, R22–R24 and a **hypothetical** observation that the page loads after an approved revocation; this is not the Module 4 branch result. **Output:** a claim/limit note with two unresolved questions, a test and owner for each, and a proposed case status. A score of 2 asks about booking correctness and adequate post-action audit coverage, and does not use R24 to claim that no personal-data access occurred.
 
-#### EX028 — Changed assessment
+**Worked answer:** [EX037 in the final appendix](#ex037--worked-result).
 
-**Objective:** update hypotheses without rewriting the earlier decision. **Inputs:** R9, R10, R12 and R17–R18. **Output:** a before/after 09:37 assessment note with the earlier unresolved B19 issue, what R17 adds about approved tasks, what R18 adds about B20, the hypothesis weakened, the concern strengthened, and a fact that remains unproved. Record event and availability times separately. A score of 2 does not claim the learner knew R17–R18 at the 09:20 Chapter 2 review or identify the human behind `desk-a`.
-
-#### EX029 — Decision matrix
-
-**Objective:** select a bounded containment proposal. **Inputs:** R18–R21 and the section 3.3 comparison. **Output:** a two-row matrix for session revocation and the fifteen-minute staff-write pause, each with intended effect, path it does not cover, operational cost, approving role, executing role, post-action check and rollback. Add one sentence choosing an option provisionally at 09:37. A score of 2 names R21 as tolerance for a pause, **not** proof that a pause was approved and executed, and verifies the service cost as well as the intended block.
-
-**Additional queue requirement for EX029:** For the pause option, distinguish R21 tolerability from later approval, execution and verification. Name the front-desk queue owner, the receipt and current-state checks needed before applying an item, and a hold for a conflict or absent approval. A pending request is not an accepted booking.
-
-**RB3 extension:** **Additional requirement:** Within the existing two-row comparison for session revocation and the fifteen-minute staff-write pause, add for each option (a) the pre-intervention state that would have to be verified, (b) an observable **service-harm or protection-failure trigger** that would justify seeking reversal, (c) the accountable approver of that *new reversal decision*, and (d) separate protection and legitimate-service checks after a reported inverse. Do not create a third row, reuse W1 probe outcomes as canonical facts or claim the option was executed at 09:37.
-
-**RB3 2-point refinement:** Both original intended effects and service costs remain explicit, with R21 labeled tolerance only. The reversal is a separately approved proposal with exact target and review conditions; a hypothetical fallback does not prove recovery.
-
-#### EX030 — Risk of observation
-
-**Objective:** make non-intervention an explicit, reviewable choice. **Inputs:** R18, R21–R22 and the 09:37 checkpoint. **Output:** an observation decision card with approver, ten-minute deadline, proposed audit source and interval, query-coverage limit, verified trigger for early intervention, and accepted harm if another edit occurs. State what happens if logging is unavailable or the query is incomplete. A score of 2 does not treat R22's earlier narrow zero result as evidence that the next ten minutes will be quiet.
-
-#### EX031 — Evidence before change
-
-**Objective:** preserve enough context without turning preservation into a reason for unbounded delay. **Inputs:** R9–R10, R13, R15 and R17–R20, all available within R1–R24 at the 09:37 checkpoint; use only the values supplied. R15 states a duration but not its deletion-clock anchor or an exact loss time. **Output:** a four-row preservation request naming the source/item, bounded purpose, custodian or approval, and what the item cannot establish. Add a decision rule for when verified ongoing harm justifies an approved containment action before all four requests finish; record any omitted item and reason. A score of 2 calls the records **requests or supplied summaries** unless a new collection actually occurred and avoids bulk patron-data copying.
-
-#### EX032 — Avoid premature eradication
-
-**Objective:** repair an unsupported closure claim by making two causes testable. **Inputs:** R17–R24 and sections 3.3–3.4. **Output:** (1) a three-sentence correction stating what a *proposed* session revocation is intended to contain, which actor/cause/path questions remain, and why eradication is not established; (2) a two-row hypothesis card for credential/session misuse and an application authorization fault, each with supplied support, an authorized discriminator, a result that would weaken it and a conditional fix-verification pair; and (3) one sentence explaining why R22, recorded before 09:37, cannot verify the later proposal. Keep planned tests separate from supplied observations. A score of 2 names at least one positive and one negative synthetic test for a proposed fix, plus a scope or provenance limit; it does not assert that revocation, root-cause testing or a fix happened.
-
-#### EX033 — Recovery test
-
-**Objective:** distinguish restoration planning from a measured result. **Inputs:** R23 and, **after the later lab card is released**, P1; V1 remains a separate access-and-audit trial. **Output:** a one-paragraph isolated-copy test plan plus a four-row B17–B20 expected-state table. Name the copy identifier and timestamp as fields to collect, actual restore start/end as fields to measure, service-owner-approved target, pass/fail/not-tested rule, and privacy boundary. A score of 2 keeps all four rows *not tested* until the restore is performed and never changes a live booking.
-
-**RTE3 extension:** Extend the original one-paragraph isolated-copy plan with a separate, compact measurement card naming (a) the owner-defined *service interruption start* and source, (b) isolated restoration start and technical-ready times, (c) the booking, access and audit gate receipt fields, (d) the owner acceptance timestamp and scope, and (e) the rule for declaring elapsed time **unknown**. The existing B17–B20 target table remains `not tested` until the relevant later card and actual isolated result are supplied.
-
-**RTE3 scoring note:** A plan with no actual outage or acceptance timestamps does not report achieved RTO. The learner distinguishes proposed and executed steps, remains within an authorized isolated environment and does not infer an accepted service from a copied test plan.
-
-#### EX034 — Backup limit
-
-**Objective:** test what a successful backup job can and cannot demonstrate. **Inputs:** R23 and the **hypothetical** two-hour RTO, thirty-minute RPO, midnight-only copy and 09:45 interruption in section 3.5. **Output:** a calculation note with `09:45 − 00:00`, comparison to the thirty-minute target, the missing timing measurement for RTO, and two additional authorized checks before calling the service recoverable. Do **not** assert that the fictional library approved those targets or that the actual backup was made at midnight. A score of 2 shows the arithmetic, separates copy age from actual data-loss measurement and identifies booking-state and elapsed-restore tests.
-
-**RTE3 extension:** Keep the existing midnight-to-09:45 arithmetic and hypothetical 30-minute RPO/120-minute RTO. Add three explicit columns: **copy age screen**, **accepted-transaction evidence after the copy**, and **actual restored/verified transaction result**. Ask whether any record proves a specific legitimate write was irrecoverably lost. If the accepted ledger, replay evidence or clock semantics are missing, record **unknown**, not "9 hours 45 minutes of data lost."
-
-**RTE3 scoring note:** Correct age arithmetic must be paired with an appropriately limited inference. R23 supplies only a backup-job status and old restore-test record, not interruption, service acceptance, actual recovered point or measured data loss. An isolated import duration alone is not a service-level RTO.
-
-#### EX035 — Return-to-service criteria
-
-**Objective:** require evidence for a proposed return to service. **Inputs:** P1/C1 and V1 **only after their later release**, plus the section 3.5 checklist. **Output:** three measurable acceptance rows for booking correctness, tested access behavior and audit attribution, each with expected result, current supplied result, owner and action needed. Conclude with a proposed service state, next review and one rollback trigger. A score of 2 marks B19/B20 as mismatched in C1, V1's tested access checks as limited passes, and the blank audit actor as a failure, so it does not declare unrestricted recovery.
-
-**Additional queue gate for EX035:** If the later Branch P is chosen and only after it is released, add a fourth acceptance row for its two unnamed pending manual requests. The row must require a bounded manifest, owner-approved dispositions and a check of current authoritative booking state; do not borrow MQ3 outcomes, W1 or P1/C1 as the branch queue. The B19/B20 mismatches and V1 missing actor remain independent failed gates.
-
-**RTE3 extension:** Retain the original booking-correctness, permitted/denied access and audit acceptance conditions and the conditional Branch P queue gate after its proper release. Add an **acceptance-time evidence row**: actual interruption timestamp/source, last passed mandatory gate, owner acceptance (or rejection) timestamp, scope and outcome. If P1/C1 or V1 reports a failed gate in its later isolated test, explain why no full-service recovery completion time is established by those cards.
-
-**RTE3 scoring note:** Do not turn the existing V1 limited access results into a completed restore, turn a blank actor into a pass, treat a pending queue as reconciled, or report a measured RTO without comparable start/end receipts and owner-approved acceptance.
-
-#### EX036 — Decision record
-
-**Objective:** keep a response recommendation auditable before execution. **Inputs:** R17–R21 and the 09:37 checkpoint. **Output:** a six-field card covering time and status, evidence and uncertainty, chosen action and scope, approvers/executor, intended effect plus service side effect, and verification/fallback/review. Name the identity owner and incident lead for the proposed revocation; use R21 only for a possible pause fallback. A score of 2 gives an observable post-action test and says **proposed**, not completed.
-
-**RB3 extension:** **Additional requirement:** Keep the original six-field card for the 09:37 **proposal**. In field 6 (verification/fallback/review), add a short **conditional reversal subcard**: last verified configuration reference to obtain, observable trigger, scope and window to request, authority needed, operator/effect receipt to require, post-reversal protection and legitimate-service checks, and the accountable human-review item. Use `pending/not supplied` for every rollback execution or test not contained in R17–R24.
-
-**RB3 2-point refinement:** The historical action remains a proposal, the new inverse is not silently authorized, and later branch or RB3 exercise observations never enter the canonical 09:37 decision.
-
-#### EX037 — Residual risk
-
-**Objective:** distinguish page availability from safe, correct service. **Inputs:** R20, R22–R24 and a **hypothetical** observation that the page loads after an approved revocation; this is not the Chapter 4 branch result. **Output:** a claim/limit note with two unresolved questions, a test and owner for each, and a proposed case status. A score of 2 asks about booking correctness and adequate post-action audit coverage, and does not use R24 to claim that no personal-data access occurred.
-
-#### EX038 — Alternative defensible choice
+##### EX038 — Alternative defensible choice
 
 **Objective:** defend a different containment path without inventing a unique right answer. **Inputs:** R18–R21 and the section 3.3 matrix. **Output:** a pause-first proposal with two assumptions, approving role, manual-queue plan, one immediate effectiveness check, a 15-minute review time and a condition for changing to narrower session action or a longer restriction. A score of 2 states that R21 records tolerance rather than execution, and includes reconciliation and service-owner sign-off before resuming writes.
 
@@ -7021,22 +7414,35 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 
 **RB3 2-point refinement:** R21 remains a tolerability statement; the proposed pause and any later reversal have independent authorization and verification. The ledger format stays empty and unchanged, and resumption remains conditional on booking/queue review and owner sign-off.
 
+**Worked answer:** [EX038 in the final appendix](#ex038--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-15 -->
+#### Continue studying — lesson 15 of at least 20
+
+[← Lesson 14](#lesson-14) · [Course lesson index](../SUBJECTS.md) · [Lesson 16 →](#lesson-16)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
 <!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 04
 
-[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+[← Chapter 02](#ch-02) · [Course lesson index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
-Continue to the next authored lesson.
+The next chapter contains the following instructional week.
 <!-- cykin:chapter-navigation:end -->
 
+<a id="week-04"></a>
 <a id="ch-04"></a>
 
-## Chapter 4 — Guided incident simulation and after-action review
+## Chapter 04 — Guided incident simulation and after-action review
 
-<!-- cykin:lesson-figures:start ch-04 -->
-### Lesson map
+**Five daily lessons · week 4 of four.** This chapter groups the original section identifiers 4.x. Lesson numbers identify a learner day; section identifiers remain stable so existing source references and laboratory instructions still work.
 
-Lesson 04 published. Map, example, EX048.
+<!-- cykin:lesson-figures:start week-04 -->
+#### Module map
+
+Module 4 overview: five daily lessons below provide the teaching, examples, exercises and worked-answer links.
 
 ```mermaid
 flowchart TD
@@ -7053,7 +7459,7 @@ flowchart TD
   EX --> Q["Exercise EX048"]
 ```
 
-### Logical drawing
+#### Module logical drawing
 
 ```mermaid
 flowchart LR
@@ -7095,12 +7501,12 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX048]
 ```
-<!-- cykin:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end week-04 -->
 
 
-### Learning outcomes
+#### Module learning outcomes
 
-By the end of this chapter, a learner should be able to:
+Across these five daily lessons, a learner should be able to:
 
 1. Run a contained response exercise from initial alert through an owner-approved service decision.
 2. Produce a case record that separates observations, hypotheses, approvals, actions and results.
@@ -7110,22 +7516,34 @@ By the end of this chapter, a learner should be able to:
 6. Draft audience-specific, versioned status messages that separate operational coordination from an unverified exposure report and any formal notification decision.
 7. Calibrate a tabletop score against frozen artifacts, resolve reviewer disagreement with evidence and propose a revision without changing the earlier decision record.
 
-### 4.1 Exercise purpose and boundaries
+#### Module 4 exercise rules
+
+Use the four rounds and choose either Branch S or Branch P for your final decisions. Record **event time and card-release round separately**. Round A has R1–R8, Round B adds R9–R16, Round C adds R17–R24, and Round D first supplies a branch result and only later P1/C1 and V1. Do not cite a later card to justify an earlier action; do not invent a real export, restore, account action or person behind `desk-a`. For each answer, submit the named artifact with case ID, source IDs, current round, observation versus proposal or reported action, decision owner, remaining limit and next review. A solo learner may write all roles, but must still record who would approve and who would verify a change.
+
+**Numbered-exercise rubric:** score **0** for an absent artifact or an unsupported breach, actor, executed action or recovered-service claim; **1** for an artifact that addresses the task but omits a required source, release boundary, authority or verification; **2** for an evidence-linked, authorized and reviewable artifact with every local field below. This is distinct from the six-output tabletop rubric in section 4.5. Each worked result shows one acceptable path; a different branch or conclusion can earn 2 when its assumptions, evidence and constraints are explicit.
+
+<a id="lesson-16"></a>
+
+### Lesson 16 — Release-aware tabletop and scored handoff
+
+**Week 4, day 1.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 4.1 Exercise purpose and boundaries
 
 This is a **tabletop simulation**, not an instruction to touch a real account. It uses the fictional Harbor Library records in Chapters 1–3. Learners may write notes, compare options and role-play approvals. They may not contact a real library or use a production system. A solo learner can fill every role; a group should assign an incident lead, analyst, service owner, recovery lead and communications contact. Each role must identify what it can decide and what needs another owner's approval.
 
 [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) describes designing, conducting and evaluating IT plan exercises. This course uses that general idea to evaluate reasoning and coordination. The exercise does not test actual organizational readiness, because the people, data, systems and consequences are invented.
 
-**Inputs:** R1–R24, the service map, a case-note template from Chapter 1, the decision/collection fields from Chapters 2–3, and the Chapter 3 P1/C1 and V1 cards when the facilitator releases them. **Timebox:** four rounds of ten to fifteen minutes, then a twenty-minute review. **Outputs:** one case timeline, one hypothesis table, one approved-action record, one recovery test plan, one internal status message and one improvement ticket. Each output may fit on one page; completeness and reasoning matter more than length.
+**Inputs:** R1–R24, the service map, a case-note template from Module 1, the decision/collection fields from Chapters 2–3, and the Module 3 P1/C1 and V1 cards when the facilitator releases them. **Timebox:** four rounds of ten to fifteen minutes, then a twenty-minute review. **Outputs:** one case timeline, one hypothesis table, one approved-action record, one recovery test plan, one internal status message and one improvement ticket. Each output may fit on one page; completeness and reasoning matter more than length.
 
-### 4.2 Release the injects in order
+#### 4.2 Release the injects in order
 
 | Round | Facilitator reveals | Learner decision | Evidence to retain |
 |---|---|---|---|
 | A — readiness and intake | R1–R8 and a patron ticket | Identify service owner, authorized scope, observations and first questions. | Case ID, raw record IDs, UTC timeline and uncertainty. |
 | B — triage | R9–R16 and the 24-hour retention notice | Update hypotheses, priority and preservation request. | Supporting and contradicting records, collector, authority and deadline. |
 | C — response | R17–R24 and the owner's fifteen-minute write-pause tolerance | Compare at least two containment options; obtain a fictional approval and set a review time. | Decision owner, expected effects, side effects, fallback and verification. |
-| D — recovery branch | The branch card below, then P1/C1 and V1 from Chapter 3 | Test whether booking state and audit coverage justify limited service or further restriction. | Test result, residual uncertainty, service-owner decision and monitoring trigger. |
+| D — recovery branch | The branch card below, then P1/C1 and V1 from Module 3 | Test whether booking state and audit coverage justify limited service or further restriction. | Test result, residual uncertainty, service-owner decision and monitoring trigger. |
 
 The facilitator should not reveal later records early. In a solo session, cover the later rows until each round is complete. If a learner chooses a different defensible action than the worked example, continue with the corresponding branch and state the assumptions rather than forcing the reference answer.
 
@@ -7135,13 +7553,13 @@ The facilitator should not reveal later records early. In a solo session, cover 
 
 For either branch, R23 still says the last documented restore test was thirty days earlier. After discussing the branch result, reveal P1/C1 and then V1 as **later exercise cards**. P1/C1 shows two booking mismatches that require owner-reviewed correction; V1's isolated-copy test supports the two tested access claims but fails actor attribution in the test audit. Neither card proves that production corrections ran. The recovery lead should propose an isolated check of the booking state and a narrow audit check before declaring normal service. The privacy contact should review any new evidence of personal-data access; R24 alone is not clearance.
 
-### 4.3 Worked tabletop: one acceptable path
+#### 4.3 Worked tabletop: one acceptable path
 
 **Round A.** The learner opens `HL-IR-001`, notes that R1 precedes booking edits, names the service owner as pending, records compromise as a hypothesis and asks whether the edits were training work. **Round B.** R9–R16 add an unexplained `B19` edit and a time-sensitive source-preservation risk; R15 states a 24-hour duration without its deletion-clock anchor, so an exact deadline is unknown. In this worked path the analyst proposes a bounded preservation request for the application custodian. A separately recorded classroom approval may authorize the request, but neither approval nor request establishes that a source hold or collection occurred. Set a 09:35 review to check receipt and expiry semantics. **Round C.** R17–R18 add an unplanned `B20` edit. The analyst proposes narrow session revocation; the lead and identity owner are the required approvers and may record a **separate classroom role-play decision**, not a supplied R-series approval. Without that decision receipt, approval is pending. The service owner stands by for a separate short write-pause decision if edits continue. **Round D.** Branch S reports the revocation and no later edits in a limited query. P1/C1 then reveals that B19 and B20 are still inconsistent with the approved target. V1's isolated-copy trial has a blank audit actor field. The learner requests owner-approved correction, a bounded restore test and audit remediation, keeps the cause unresolved, and proposes restricted or explicitly approved limited operation with monitoring rather than closing the case.
 
 This is one acceptable path. A team that prefers Branch P can pass if it explains the service cost, establishes approval, plans for the two queued requests and states how it will decide when writes may resume. In either path the later P1/C1 and V1 cards prevent an unsupported “fully recovered” conclusion. The exercise assesses **decision quality under incomplete information**, not agreement with a preselected action.
 
-### 4.4 Run a reproducible handoff drill
+#### 4.4 Run a reproducible handoff drill
 
 The facilitator or solo learner should keep a **release ledger** with three columns: time the fictional event occurred, time the learner received the card and the round in which the card became usable. For example, R9 describes an edit at 09:03 UTC but enters the learner's evidence set only in Round B; P1 describes an owner target at 09:40 and belongs to Round D, after the 09:37 containment proposal. This prevents a polished final answer from quietly using later evidence to justify an earlier decision. The ledger can be written in Markdown alongside the case note and should retain the original record IDs.
 
@@ -7165,7 +7583,7 @@ The handoff must reach a person who was not in the tabletop. Give that person th
 
 **Failure inject for review, not for the live round:** suppose a team reports “all bookings correct” after seeing only the V1 access test. Ask which supplied card tests that sentence. V1 does not compare booking states; C1 contradicts the sentence for B19 and B20. A defensible revision is: “The isolated-copy access checks passed, while B19 and B20 remain pending owner-approved correction and the audit actor field failed its test.” This exercise in claim repair is as important as selecting the initial containment action.
 
-### 4.5 Score the evidence and the handoff
+#### 4.5 Score the evidence and the handoff
 
 Use this simple rubric for each of the six outputs: **0 = absent or unsupported; 1 = present but incomplete; 2 = specific, evidence-linked, authorized and clear about limits**. Maximum score is 12. A passing classroom submission should score at least 9, with **no zero** for approval or evidence scope. This is an editorial practice rubric, not a credential or formal academic grade.
 
@@ -7180,7 +7598,7 @@ Use this simple rubric for each of the six outputs: **0 = absent or unsupported;
 
 A learner should also note inaccessible evidence and why it was not collected. Do not award points for inventing device detail, a data breach, an attacker identity or a successful restore that the scenario never supplied.
 
-#### Calibrate a score against the artifact that existed at the checkpoint
+##### Calibrate a score against the artifact that existed at the checkpoint
 
 A rubric is useful only if two reviewers can apply it to the **same submission**, not to what they remember the learner saying later. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) describes exercise evaluation against criteria identified before the event. The six-output rubric above and the worked comparison below are original classroom choices. They evaluate a learner's records, not Harbor Library's real readiness.
 
@@ -7214,7 +7632,53 @@ The reconciled sum is **8/12** (2 + 2 + 1 + 0 + 2 + 1). It is below the classroo
 
 **Practice check:** score the six L2 excerpts yourself before reading the reconciled column. For each disagreement, point to the missing or contradicting record and decide whether the correct label is *absent/unsupported*, *incomplete* or *evidence-linked and bounded*. Then write three one-sentence revision requests for the action, recovery and improvement artifacts. The worked comparison above supplies the target scores and the paragraph above supplies acceptable revisions; EX050 asks you to perform the same calibration on your own final handoff. No production system or real personal record is needed.
 
-### 4.6 After-action review
+#### Worked checkpoint
+
+At an early exercise checkpoint, score only the cards actually released and the learner artifact frozen at that time. A later worked solution may teach a better answer; it cannot retroactively improve the earlier artifact score.
+
+#### Practice — Lesson 16
+
+##### EX039 — Role and scope card
+
+**Objective:** assign authority before observing the case outcome. **Inputs:** Round A, Module 1's role table and synthetic R1–R8. **Output:** a five-row role card for incident lead, analyst, service owner, recovery lead and communications contact; name each responsibility, one approval or escalation boundary and one verifiable output. Add a single sentence defining permitted objects, actions and exclusions. A score of 2 makes clear that neither a learner nor analyst can independently disrupt a real booking service.
+
+**DEL4 extension:** In the same five-row card, add the role responsible for receiving and acknowledging each critical update. For one role, give the message ID/version and an expected read-back question. Keep an unknown alternate unknown; do not invent a working channel.
+
+**Worked answer:** [EX039 in the final appendix](#ex039--worked-result).
+
+##### EX040 — Intake artifact
+
+**Objective:** produce a reproducible first handoff without hindsight. **Inputs:** Round A only, R1–R8 and the 09:00 case-open time. **Output:** exactly four labeled lines covering case/time/service, at least two observed source events, current status and unknowns, and the owner question plus proposed 09:05 checkpoint. Cite record IDs and mark R5 as a patron report. A score of 2 does not cite R9, R17 or a later branch result and does not treat proposed preservation as already performed.
+
+**Worked answer:** [EX040 in the final appendix](#ex040--worked-result).
+
+##### EX041 — Evidence chronology
+
+**Objective:** separate source-event time from learner availability. **Inputs:** R1–R24 after Round C; **no** Round D card. **Output:** a six-row table with ID, UTC event time, source, release round and observation, using at least one item from each of Rounds A, B and C. Add one ordering fact and one causal or identity claim that the sequence cannot prove. A score of 2 retains that R9's 09:03 event reached the learner only in Round B, while R17–R18 could not guide the 09:20 decision.
+
+**Worked answer:** [EX041 in the final appendix](#ex041--worked-result).
+
+##### EX042 — Competing explanations
+
+**Objective:** maintain discriminating hypotheses at the 09:20 review. **Inputs:** R1–R16 only. **Output:** three rows for authorized training, unauthorized use of `desk-a` and display/state divergence, each with supporting record, contrary or limiting record, narrow authorized check and a result that would weaken it. Do not use R17–R18 or P1/C1; those arrive later. A score of 2 says B19 is unresolved rather than proving one explanation from the account label or a patron report.
+
+**Worked answer:** [EX042 in the final appendix](#ex042--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-16 -->
+#### Continue studying — lesson 16 of at least 20
+
+[← Lesson 15](#lesson-15) · [Course lesson index](../SUBJECTS.md) · [Lesson 17 →](#lesson-17)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-17"></a>
+
+### Lesson 17 — After-action review and unavailable-approver branch
+
+**Week 4, day 2.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 4.6 After-action review
 
 Close the tabletop with three questions: **What helped us decide? What slowed us down? What will we change and how will we check it?** Separate a one-time case correction from a reusable program improvement. For example, correcting `B19` and `B20` fixes two bookings; naming the booking service owner and rehearsing the approval path improves readiness for the next event. A good improvement ticket has an owner, a deadline and an observable test.
 
@@ -7222,7 +7686,7 @@ For this case, the team can turn the V1 audit failure into a testable improvemen
 
 The team should not call the case “resolved” merely because the tabletop ends. In the fictional facts, identity attribution and root cause remain open. The course ends when the learner can hand off that uncertainty safely, describe what evidence would close it and show how the organization will review its response process.
 
-### 4.7 What this exercise can measure
+#### 4.7 What this exercise can measure
 
 An exercise can produce an excellent discussion while leaving a technical control untested. [NIST SP 800-84, sections 4–6](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) distinguishes tabletop exercises, functional exercises and tests. Its 2006 examples need local review before use in a contemporary environment; the distinction between **talking through a plan** and **measuring a system** remains useful here. The Harbor Library tabletop asks participants to reason from supplied records. It does not contact an identity provider, pause writes or restore a database. Its score is evidence about a learner's reasoning in this classroom, not a measurement of a real organization's recovery capability.
 
@@ -7243,7 +7707,7 @@ An observer must record **what participants did**, not only what they said they 
 
 **A two-minute review:** for each of the six artifacts, draw two columns labeled *observed in exercise* and *requires another test or source*. Put the approved-action record in the first column if its fictional approvals are recorded. Put restore time, production audit coverage and a real customer impact measurement in the second. If an item appears in both columns, narrow the claim until the columns no longer conflict. This review is optional practice and is not one of EX039–EX050.
 
-### 4.8 A worked after-action report and improvement plan
+#### 4.8 A worked after-action report and improvement plan
 
 [NIST SP 800-84, section 4.5 and Appendix A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) describes evaluation that records exercise background, observations and recommendations. The following **original classroom report** applies that general structure to the Harbor Library model path; it is not a copied NIST template and is not a report from an actual organization. It shows a learner how to connect each proposed improvement to an observation and to a later verification activity. In a real exercise, the report author must obtain the actual facilitator notes and participant feedback rather than infer that the model path occurred.
 
@@ -7265,7 +7729,7 @@ The table does not claim these improvements have been implemented. A recommendat
 
 **What to report to management.** A concise summary can state that the model discussion surfaced a missing initial owner contact, a preservation request without a copy receipt, and two failed recovery acceptance criteria; it can name the proposed owners and next tests. It should also state that no live system was exercised. The report should not say “the incident was contained,” “the backup worked,” “no personal data was affected” or “the cause was found.” Those sentences exceed the supplied cards. The after-action report's function is to guide a better next exercise and test, not to manufacture a resolved case.
 
-### 4.9 Optional replay lab: the service owner cannot be reached
+#### 4.9 Optional replay lab: the service owner cannot be reached
 
 This **separate replay variant** starts from the Round C decision point; it does not alter R1–R24 or the reference Branch S/P cards. Keep your original Round C note, then make a fresh copy labeled `HL-IR-001-REPLAY-F1`. The purpose is to test whether a learner can continue evidence work while withholding an action whose required approver is unavailable. The replay is a discussion only. It does not authorize a real session change, write pause or data collection.
 
@@ -7273,13 +7737,13 @@ This **separate replay variant** starts from the Round C decision point; it does
 
 **Task:** write two decision records at 09:37. Record A is a bounded recommendation that the reachable incident lead and identity owner could approve or reject for the current `desk-a` session. Record B is a proposed staff-write pause marked **approval pending**, with a reason it might be needed, its service cost, who is being contacted, what evidence can still be reviewed meanwhile and a stop or escalation trigger. Then prepare a one-sentence handoff for the next response lead that says which action, if any, was *reported executed* at 09:37. No execution card exists at this point, so the answer must say none is reported. The objective is not to force Record A to be approved; a learner may defer it with an explicit risk and review time.
 
-**Inputs and authority check:** use R17, R18, R21, the option matrix in section 3.3 and the Chapter 1 role boundary. The incident lead can coordinate an escalation and request a contact check; the identity owner can approve or reject the scoped session action with the incident lead in this fictional exercise. Neither role has been given authority to approve the booking-service write pause alone. The analyst may prepare a reversible option and examine already supplied records; a production audit export would still require its own collection authority and custody record. Do not call a missing reply consent.
+**Inputs and authority check:** use R17, R18, R21, the option matrix in section 3.3 and the Module 1 role boundary. The incident lead can coordinate an escalation and request a contact check; the identity owner can approve or reject the scoped session action with the incident lead in this fictional exercise. Neither role has been given authority to approve the booking-service write pause alone. The analyst may prepare a reversible option and examine already supplied records; a production audit export would still require its own collection authority and custody record. Do not call a missing reply consent.
 
 **Expected artifacts and rubric:** submit Records A and B plus the one-sentence handoff. Award one point each for (1) preserving the distinction between R21 tolerance and approval, (2) recording the two reachable approvers and a bounded verification for Record A, (3) leaving Record B pending and documenting the affected queue/service cost, (4) naming an allowed next evidence or escalation step with a review trigger, and (5) stating that no 09:37 execution has been reported. A 5/5 response can choose a different defensible risk tradeoff; it cannot invent an alternate owner, use a later branch result or claim that a write pause was already enacted. A model answer appears after the 50 numbered worked results.
 
 **Why replay matters:** if two students choose different proposals yet both respect the same approval boundary, the exercise can distinguish justified decisions from lucky outcomes. If F1 changes the decision, compare the original and replay records field by field: which observation changed, which authority became unavailable, which action was held and which review trigger became more urgent? Only the authority fact changed; the underlying R17/R18 evidence did not. That comparison teaches a reusable response habit without treating a fictional facilitator card as real incident evidence.
 
-### 4.10 Optional communication replay: a request for reassurance and an unverified claim
+#### 4.10 Optional communication replay: a request for reassurance and an unverified claim
 
 An incident can have a technically careful case record and still cause harm if its updates promise more than the evidence supports. The operational team may need details about a specific account and booking IDs; patrons need a useful description of the affected service and where to get help. A privacy contact may need the exact origin of a new exposure claim. These audiences do not need identical messages, and an internal coordination note is not automatically a public statement or a formal notification. [NIST SP 800-61 Rev. 3, RS.CO and RC.CO](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) discusses incident reporting, coordination and approved recovery communications. The message cards, word limits and scoring rule here are original teaching devices, not prescribed NIST wording or a determination of any notification duty.
 
@@ -7289,7 +7753,7 @@ This **separate after-Round-D replay** uses Branch S unless a learner clearly ma
 
 **Card M2, released at simulated 09:52 UTC.** The communications contact receives a forwarded internal chat sentence: “Someone said the newsletter list was stolen.” It contains no original author, time of alleged access, source system, export record or case reference. It establishes that an **unverified statement was received**, not that data was accessed or exported. R24, recorded at 09:36, says that no record then established access to the newsletter list or another personal-data store. R24 is not a permanent all-clear; M2 is not proof that R24 was wrong. The privacy contact and incident lead should receive a narrowly framed verification request through the fictional approval route, with the original forwarded item preserved as a *report of a claim* and its provenance gap stated.
 
-#### Decide which communication you are drafting
+##### Decide which communication you are drafting
 
 An **incident coordination update** tells the response roles which action was reported, what test failed, who is doing the next check and when the next decision is due. It can include restricted case identifiers if sent through an approved internal channel. A **service status draft** gives patrons a useful description of a booking discrepancy and a safe way to check their own booking, without revealing an account label, unsupported root cause or another patron's information. A **formal incident or privacy notification** is a separate, approval-dependent decision made under applicable procedure by designated roles; the sparse classroom record cannot resolve it. A rumor should be routed for assessment, not quietly appended to a patron message as if verified.
 
@@ -7307,7 +7771,7 @@ Use this small **claim-to-message ledger** before drafting:
 
 The ledger deliberately distinguishes **false or contradicted**, **unverified**, and **conditionally useful** claims. A sentence may be accurate for one restricted audience but inappropriate in a public draft because it exposes unnecessary operational detail. A status note should tell its reader what to do with the information. “Investigating” alone does not tell a front-desk worker how to handle a disputed booking; “all clear” would be worse. The correct short update states the present limit and the next responsible check.
 
-#### Practice: produce a versioned communication packet
+##### Practice: produce a versioned communication packet
 
 Write four Markdown artifacts, all marked **draft, not sent**. First, a five-row claim ledger based on the table above, adding the record or card ID and the earliest round in which each claim became assessable. Second, a restricted **09:54 internal update** of 80–120 words for the incident lead, service owner, front-desk supervisor and privacy contact. State what Branch S reported, which booking and audit criteria remain open, the status of M2 and who will check each issue. Give a fictional next review at 10:05 UTC; it is a planned checkpoint, not a guaranteed restoration time.
 
@@ -7321,7 +7785,61 @@ Fourth, write a **privacy assessment request** of three to five sentences: ident
 
 **Assessment rubric (six points):** one point for a ledger that dates and classifies all five claims; one for an internal update that distinguishes Branch S's narrow action from the unresolved booking and audit checks; one for a patron draft that is useful without premature restoration or breach claims; one for routing M2 to a bounded privacy assessment without treating R24 as a permanent all-clear; one for naming approvals, audience and a 10:05 checkpoint; and one for retaining version history and correctly handling the Branch P or correction variation. A perfect classroom score demonstrates careful wording under these supplied facts. It does not establish that the communications route works in a real incident or that a legal notice is unnecessary. A model packet follows the F1 replay result in the final appendix.
 
-### 4.11 Controlled injects and disciplined replay
+#### Worked checkpoint
+
+An unavailable service owner creates an approval gap. The team may preserve facts and seek the documented alternate, but neither an unanswered message nor an exercise role-play grants permission for an unapproved service change.
+
+#### Practice — Lesson 17
+
+##### EX043 — Preservation request
+
+**Objective:** request time-sensitive evidence without a fabricated deadline. **Inputs:** Round B, R9, R14–R15 and Module 2's preservation fields. **Output:** a request naming source, booking IDs or bounded event interval, necessary fields, policy-clock question, approving role, collector, restricted storage/access and actual collection status. R15 says detailed audit records are deleted after 24 hours unless copied; ask the custodian what starts that clock rather than calculating an exact expiry from R9 alone. A score of 2 says **requested** until a copy and collection time are documented.
+
+**DEL4 extension:** Separate a preservation request drafted, its receipt by the authorized custodian, and a collected and checked copy. State the escalation when receipt is unconfirmed; none of these stages supplies R15’s missing policy-clock anchor.
+
+**Worked answer:** [EX043 in the final appendix](#ex043--worked-result).
+
+##### EX044 — Decision checkpoint
+
+**Objective:** make a reversible 09:37 recommendation. **Inputs:** Round C, R17–R21 and the section 3.3 option matrix. **Output:** a decision card with current evidence and uncertainty, chosen proposal, approver and executor, intended benefit, uncovered path, service cost, preservation note, fallback, verification plan and 09:45 review. Give separate **proposed, approved, executed and verified** states; mark any state without a receipt *pending*. Include one check for the protective effect and a different check for legitimate staff service. A score of 2 treats R21 as tolerance rather than approval or execution and does not cite the Branch S/P result before Round D.
+
+**DEL4 extension:** Add a separate coordination-message field for proposed, authorized-to-send, attempted, delivered and current-version role acknowledgement. A recipient’s read-back of the *proposal* is not action approval or evidence that a control was executed.
+
+**Worked answer:** [EX044 in the final appendix](#ex044--worked-result).
+
+##### EX045 — Branch S review
+
+**Objective:** bound what a successful session action actually demonstrates. **Inputs:** Round D **Branch S only**, before P1/C1 or V1; earlier R1–R24 remain available. **Output:** a four-row claim ledger with two supported claims and two unestablished claims, each with branch pointer and limit, plus one authorized next check with scope and owner. A score of 2 limits the “no later edit” observation to the branch query's range and does not claim eradication or correct booking state.
+
+**BH4 blind-receiver check:** For each existing row, verify that a cold receiver can locate the Branch S pointer and explain its limit without asking the sender. A missing pointer is a packet defect, not proof that a booking check passed or that revocation failed. Keep this answer at the branch-only checkpoint.
+
+**Worked answer:** [EX045 in the final appendix](#ex045--worked-result).
+
+##### EX046 — Branch P review
+
+**Objective:** account for operational effects of the pause. **Inputs:** Round D **Branch P only**, before P1/C1 or V1; R21's tolerance. **Output:** a queue-and-return note with the two pending requests, who holds them, a verification that writes were blocked, an owner-approved resume condition, a signal to keep the restriction, and the next checkpoint. A score of 2 does not mark the two requests fulfilled or the cause resolved and gives an explicit reconciliation step before resumption.
+
+**DEL4 extension:** In Branch P only, add a proposed instruction envelope for the front-desk receiving role: the two requests stay pending until owner-approved reconciliation. Version, authorized route and read-back are required in a future test; mark all actual dispatch and receipt fields not supplied here.
+
+**BH4 blind-receiver check:** Have a receiver state what is known about the two unnamed pending requests, who may approve resumption, and what current write state remains unverified. Do not import MQ3 or the later P1/C1/V1 cards, and do not infer automatic return from the fifteen-minute plan.
+
+**Worked answer:** [EX046 in the final appendix](#ex046--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-17 -->
+#### Continue studying — lesson 17 of at least 20
+
+[← Lesson 16](#lesson-16) · [Course lesson index](../SUBJECTS.md) · [Lesson 18 →](#lesson-18)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-18"></a>
+
+### Lesson 18 — Frozen evidence, communication and improvement closure
+
+**Week 4, day 3.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 4.11 Controlled injects and disciplined replay
 
 An inject is useful when it changes what the team could reasonably decide. Merely adding alarming words does not produce better learning. In the Harbor Library curriculum, each release has a defined question: Round A tests first-response boundaries; Round B tests B19 explanation and preservation urgency; Round C tests protective action versus legitimate service; Round D tests whether reported containment and later recovery checks support service acceptance.
 
@@ -7333,7 +7851,7 @@ Counterfactual branches require a reset. After Branch S, ask how the decision wo
 
 The facilitator also should not reward a student for making a production-like change when the exercise permits only tabletop role-play. Instead, score whether the student specified the approval required, the exact target and a test that would detect both intended effect and legitimate-service harm. An explicit "execution not performed" field is a valid outcome.
 
-### 4.12 Audit the six artifacts as one decision chain
+#### 4.12 Audit the six artifacts as one decision chain
 
 This exercise requires a timeline, hypothesis table, action record, recovery plan, internal status message and improvement ticket. The artifacts are not six independent writing assignments: each has an input and output relationship with the others. A late inconsistency in one may reveal an earlier missing assumption.
 
@@ -7351,7 +7869,7 @@ This exercise requires a timeline, hypothesis table, action record, recovery pla
 
 The six documents must agree on unresolved conditions. A status message claiming full recovery is inconsistent with a recovery plan that records failed booking and audit gates. A summary saying a session was revoked at 09:37 is inconsistent with the frozen Round C action proposal and the later 09:45 branch report. An evaluator should treat those as material reasoning defects, not stylistic differences.
 
-### 4.13 Compare the operational liabilities of both branches
+#### 4.13 Compare the operational liabilities of both branches
 
 Choosing Branch S or Branch P does not change the canonical pre-branch evidence. It changes what the learner must verify and hand off.
 
@@ -7363,7 +7881,7 @@ A comparison worksheet should not ask simply "Which branch stopped the attack?" 
 
 A good reversal rule is observable. For Branch S, a verified unexplained booking change after the tested session revocation can trigger reassessment of other paths and proposed controls. For Branch P, an inability to reconcile queued requests or a failed business correctness check can block write resumption. Those are criteria for another decision, not automatic authority for a real intervention.
 
-### 4.14 Control the audience and approval of each message
+#### 4.14 Control the audience and approval of each message
 
 Different audiences legitimately require different levels of technical detail. The incident lead needs decisions and pending authorities. Front-desk supervisors need permitted operating workarounds. Patrons need an accurate, usable service instruction. The privacy contact needs sufficient provenance to assess an alleged data-access event. These are related messages but not interchangeable disclosures.
 
@@ -7379,7 +7897,7 @@ Different audiences legitimately require different levels of technical detail. T
 
 A message is itself a controlled artifact with version, audience, approval, release time and superseded-version links. A draft is not an issued notice. When a fact changes after a message was actually sent, an authorized communications role would need to preserve the original and assess a correction; silently overwriting it destroys the history of what recipients were told. The fictional case supplies no record that an erroneous public message was sent.
 
-### 4.15 Verify improvement closure with a measured test
+#### 4.15 Verify improvement closure with a measured test
 
 An improvement ticket is not complete when a team marks a task "done." Completion should mean that the identified capability passed a defined test and a reviewer accepted evidence of the result. Prefer one owner and one verifiable weakness per ticket rather than an unbounded "improve the SOC" assignment.
 
@@ -7399,7 +7917,7 @@ A failure should create a *new decision*, not force the score to pass. Record wh
 
 For a restore-readiness ticket, require an actual isolated import and owner comparison; the mere presence of a backup file does not close it. For a handoff-readiness ticket, require a blind receiver to identify current branch status, approval state, failed gates and next action without asking the original analyst. The blind handoff is a measured learning task, not proof of future production performance.
 
-### 4.16 Choose metrics that cannot be gamed by easy exercises
+#### 4.16 Choose metrics that cannot be gamed by easy exercises
 
 Measure outcomes rather than counts of meetings or pages. "All personnel attended training" does not show that an analyst can distinguish an unapproved action from a proposed one. "Ten backup jobs succeeded" does not show that one approved booking dataset can be restored correctly and on time.
 
@@ -7409,7 +7927,7 @@ The facilitator can also measure **decision latency** from card release to a jus
 
 For an improvement rehearsal, predefine an allowed response window and what constitutes an acceptable decision. Record the actual fictional start/end and whether the learner met *both* the time and safety criteria. Do not infer a real organization's response-level agreement or compliance posture from this classroom score.
 
-### 4.17 A valid exercise can end with open conditions
+#### 4.17 A valid exercise can end with open conditions
 
 A tabletop may end while the fictional incident remains unresolved. That is a valid learning result when the packet makes open questions actionable.
 
@@ -7421,7 +7939,7 @@ Before handing in the final packet, run a **contradiction review**: Does the sta
 
 <a id="ir-rapid-ch04-f4-audit-lab"></a>
 
-### 4.18 Offline laboratory: F4-AUDIT release and assessment gate
+#### 4.18 Offline laboratory: F4-AUDIT release and assessment gate
 
 **Purpose:** Demonstrate that a six-artifact packet can score well yet fail a critical approval gate, and that a later release cannot repair an earlier frozen decision. This classroom evaluator complements the L2 scoring case, F1 unavailable-approver rehearsal and M1/M2 message activity; it does not substitute for their evidence analysis.
 
@@ -7501,9 +8019,43 @@ print("NEGATIVE_NO_APPROVAL:", score((2, 2, 2, 1, 2, 2), False, True))
 
 [Check the exact output and interpretation in the final worked results.](#ir-rapid-ch04-f4-audit-result)
 
-### 4.19 Verify the delivery side of incident coordination
+#### Worked checkpoint
 
-#### 4.19.1 An accurate message can fail operationally after approval
+A corrective-action ticket with an owner and date is still open until a measured rehearsal tests the failure mode. The replay should preserve the original score and produce a separate versioned artifact for the next assessment.
+
+#### Practice — Lesson 18
+
+##### EX047 — Recovery acceptance
+
+**Objective:** decide whether the supplied recovery evidence permits full release. **Inputs:** chosen branch, then the later P1/C1 and V1 cards. **Output:** a four-row return-to-service checklist covering booking correctness, authorized access, denied unauthorized access and actor/time audit visibility. For each, state expected result, current card result, owner and next test or correction; add a provisional service status and rollback trigger. A score of 2 marks B19/B20 mismatched and V1's blank actor as failed criteria rather than calling the book's simulated case recovered.
+
+**BH4 blind-receiver check:** A new responder must locate each P1/C1 or V1 source and classify booking correctness and actor attribution as failed, the two isolated access observations as limited passes, and any untested production condition as unknown. The next correction and retest require the relevant owner approval.
+
+**Worked answer:** [EX047 in the final appendix](#ex047--worked-result).
+
+##### EX049 — Improvement ticket
+
+**Objective:** turn a case observation into a program improvement with proof of closure. **Inputs:** all four rounds, R23 or V1, and sections 4.6 and 4.15. **Output:** one ticket with gap and evidence pointer, accountable owner, due date, bounded change, interim control, a positive acceptance observation, a negative failure control, retained test receipt and action if the test fails. Choose either stale restore evidence or blank audit actor; do not bundle unrelated work into an untestable “improve security” task. A score of 2 explains why correcting B19/B20 alone would not close the selected program gap.
+
+**Worked answer:** [EX049 in the final appendix](#ex049--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-18 -->
+#### Continue studying — lesson 18 of at least 20
+
+[← Lesson 17](#lesson-17) · [Course lesson index](../SUBJECTS.md) · [Lesson 19 →](#lesson-19)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-19"></a>
+
+### Lesson 19 — Message delivery and read-back as separate gates
+
+**Week 4, day 4.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 4.19 Verify the delivery side of incident coordination
+
+##### 4.19.1 An accurate message can fail operationally after approval
 
 Previous sections teach how to write a defensible update and decide which audience should receive it. An additional operational question remains: **How does the response lead know that a time-critical instruction reached the role that must act on it, with the correct version and meaning?**
 
@@ -7515,7 +8067,7 @@ Consider a fictional staff-write pause. If a front-desk supervisor continues to 
 
 The rapid-course outcome is specific: a learner should be able to say whether a message was *drafted, authorized for transmission, attempted, delivered, acknowledged for a particular version, correctly read back, or still unresolved*. A claim of completed operational action needs independent execution and verification evidence; no communication receipt automatically supplies it.
 
-#### 4.19.2 Build a chain of receipts, not a single "sent" checkbox
+##### 4.19.2 Build a chain of receipts, not a single "sent" checkbox
 
 Treat the communication lifecycle as several distinguishable claims:
 
@@ -7535,7 +8087,7 @@ The training contract should therefore define each event with a **producer and l
 
 A response lead also should avoid treating silence as consent. A recipient who fails to answer may be busy, disconnected, off shift, unable to access the selected channel, or unsure of the request. Those possibilities do not grant the sender approval to execute a service change. The appropriate outcome is a planned escalation through previously authorized contacts and procedures, recorded as a separate event.
 
-#### 4.19.3 Message approval and action approval are different decisions
+##### 4.19.3 Message approval and action approval are different decisions
 
 An especially dangerous ambiguity arises when a carefully approved message describes a *proposed* operational control. The message may be cleared for internal coordination while the proposed action remains unapproved.
 
@@ -7552,7 +8104,7 @@ The useful negative test is to ask whether a recipient could mistake the communi
 
 This separation prevents a successful read-back from being used as false evidence that an earlier control was validly approved. The recipient can correctly repeat an instruction that was never authorized. The response lead must inspect *both* the sender's permission and the recipient's comprehension before relying on the communication as coordination evidence.
 
-#### 4.19.4 Define a message envelope that identifies the exact instruction
+##### 4.19.4 Define a message envelope that identifies the exact instruction
 
 For internal incident coordination, content alone is not enough to tell whether a receipt refers to the right instruction. Two updates might mention the same case and the same account but give different operational directions.
 
@@ -7578,7 +8130,7 @@ The message ID and version are especially useful when two messages concern a cha
 
 A valid envelope does not magically authenticate its producer. An attacker or mistaken operator can place plausible IDs in a forged message. In an actual organization, role identity and channel trust must be addressed through approved authentication and verification processes. Our offline lab models role/version checks using simple literal fields and explicitly does not perform cryptographic authentication.
 
-#### 4.19.5 Distinguish transport evidence from proof of comprehension
+##### 4.19.5 Distinguish transport evidence from proof of comprehension
 
 Imagine an approved internal instruction to the fictional front desk has been transmitted through the designated channel. The sender sees a delivery indication. The coordinator might then say, "The front desk knows what to do."
 
@@ -7595,7 +8147,7 @@ The read-back need not reproduce every word verbatim in a real-world design, but
 
 Even a perfect read-back does not establish that the manual queue is properly kept, that a system is paused or that booking data is correct. Those outcomes need separate operational evidence. It is possible for a person to understand an instruction yet be unable to execute it because the necessary software, authorization or resources are unavailable.
 
-#### 4.19.6 Use stage-aware messages in the Harbor Library tabletop
+##### 4.19.6 Use stage-aware messages in the Harbor Library tabletop
 
 A useful communication rehearsal should check whether the message contains **only facts available at the checkpoint when it is supposedly drafted or issued**. An accurate later sentence may have been unavailable earlier.
 
@@ -7611,7 +8163,7 @@ At the **first Round D branch release, 09:45**, select **either Branch S or Bran
 
 This stage discipline is already taught in the book's F4-AUDIT exercise. The **new** challenge here is whether the correct stage-aware message was routed, received, acknowledged and read back in the declared scope. Passing the first part does not prove the second.
 
-#### 4.19.7 Channel failure is an operational condition, not permission to broaden recipients
+##### 4.19.7 Channel failure is an operational condition, not permission to broaden recipients
 
 During a disruption, the normal coordination channel might be unavailable. A recovery plan should define **approved alternatives before the incident**. An alternative route may be an organizational telephone tree, an approved independent messaging service or a designated communications coordinator. The right choice depends on local policy, trust, confidentiality, accessibility and records requirements.
 
@@ -7627,7 +8179,7 @@ The fallback must not be treated as successful simply because the sender clicked
 
 [NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) addresses notification and coordination in contingency planning. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) discusses training and exercises for plan capabilities. Neither source specifies Harbor Library's channels or approves sending messages on personal accounts. The specific fallback steps above are an original small-team teaching contract.
 
-#### 4.19.8 Set an acknowledgement rule without inventing a service-level agreement
+##### 4.19.8 Set an acknowledgement rule without inventing a service-level agreement
 
 An instruction may be urgent because a front-desk team needs to know whether writes are currently paused. A response lead might define a target response window for that internal role. However, the canonical Harbor Library exercise supplies **no operational messaging service-level agreement**, no contact reliability measurement and no approved fallback roster. The learner should not invent a real organization's maximum acknowledgement latency.
 
@@ -7645,7 +8197,7 @@ Do not confuse response-time measurement with event-time ordering. A valid ackno
 
 An escalation route should identify who owns the risk decision when the communication remains uncertain. It should not give the coordinator unrestricted authority to interrupt a service or publicize technical details.
 
-#### 4.19.9 Version changes and delayed acknowledgements create a different hazard
+##### 4.19.9 Version changes and delayed acknowledgements create a different hazard
 
 A communication update may be issued because the team's recommendation or service state changed. A recipient might have acknowledged version 1, while version 2 is now the operative message. If the incident record stores only "acknowledged = yes," the coordinator may mistakenly conclude that the current instruction was accepted.
 
@@ -7659,19 +8211,19 @@ Multiple messages can also cross in transit. The more recent one may arrive firs
 
 This is separate from L2's revision scoring. L2 asks whether a learner's **artifact** was complete at its frozen checkpoint. The issue here is whether a **recipient** has acknowledged the *current authorized operational meaning* of a specific message version.
 
-#### 4.19.10 Retries are not evidence of more independent instructions
+##### 4.19.10 Retries are not evidence of more independent instructions
 
 When delivery is uncertain, a coordinator may need to retry through an approved route. That introduces two counting problems. First, multiple attempts may refer to the same logical message. Second, the recipient may encounter duplicate copies after having already acknowledged one.
 
 A delivery ledger should preserve **all attempts** for auditability but group them under the same message ID and version for the purpose of deciding whether the operational instruction is current. Sending the same version twice does not create two independent approvals or two separate write-pause decisions. If two attempts use different channels, each attempt retains its own routing evidence and trust limitation.
 
-The difference is similar to the manual-queue reconciliation problem in Chapter 3, but it concerns **communications**, not business booking writes. The fact that one logical message has two attempts does not guarantee exactly-once reading or exactly-once operational execution. A later recipient who sees the retry might mistakenly perform the instruction twice unless the instruction and action workflow have appropriate safeguards.
+The difference is similar to the manual-queue reconciliation problem in Module 3, but it concerns **communications**, not business booking writes. The fact that one logical message has two attempts does not guarantee exactly-once reading or exactly-once operational execution. A later recipient who sees the retry might mistakenly perform the instruction twice unless the instruction and action workflow have appropriate safeguards.
 
 An acknowledgement should therefore avoid ambiguous references such as "I handled your second message." It should identify the specific message ID/version and what action, if any, is proposed or already completed. The coordinator records whether the recipient's read-back was checked and whether an execution receipt is still pending elsewhere.
 
 Retry success should also be measured honestly. If a primary attempt was never confirmed and a fallback produced a valid read-back, the ledger should retain the primary gap and the fallback success. Rewriting the whole incident communication as "delivered on first attempt" would hide the very weakness the after-action review should address.
 
-#### 4.19.11 Role identity and device delivery are not equivalent
+##### 4.19.11 Role identity and device delivery are not equivalent
 
 Many organizations have roles shared across shifts. The "front desk" is an operational function, not necessarily one named person's permanent device. A response instruction might arrive on the shift mailbox when the responsible supervisor has just left. A success indicator for that mailbox says little about whether the *current accountable role* is prepared to act.
 
@@ -7689,7 +8241,7 @@ This is distinct from F1. F1 asks what to do when the **service owner who approv
 
 An authorized functional exercise could test this with role rotation and a bounded delivery simulation. This chapter's offline lab uses literal role names without contacting any real device or authenticating a real person.
 
-#### 4.19.12 Operational handoff requires a confirmed next holder of the task
+##### 4.19.12 Operational handoff requires a confirmed next holder of the task
 
 A response team may transfer an open task between shifts. A handoff note can be complete on paper yet fail operationally if nobody assumes responsibility for the next check. The sending responder should identify the exact recipient role, the current decision, the open obligations, the next checkpoint and the source pointers needed to proceed.
 
@@ -7709,7 +8261,7 @@ The handoff packet should also identify which planned work has **not** been appr
 
 A recipient challenge is appropriate: ask the new role holder to state one reason why the service must remain restricted or why a particular verification is still pending. A correct answer demonstrates useful comprehension in the classroom. It does not prove actual technical recovery.
 
-#### 4.19.13 Audience restrictions apply to the fallback path too
+##### 4.19.13 Audience restrictions apply to the fallback path too
 
 An internal operational instruction may contain details that should not appear in a patron-facing status. Sending it through a fallback channel does not change the audience classification. A communication failure is not permission to forward account names, booking identifiers or unverified exposure rumors broadly.
 
@@ -7721,7 +8273,7 @@ A safe fallback might send a minimal contact request through an approved alterna
 
 The extra verification requirement is not bureaucratic decoration. During a stressful incident, recipients may act on whichever message they see first. Separating role, version, authorization and channel trust prevents a perfectly formatted but misrouted instruction from becoming an avoidable additional service failure.
 
-#### 4.19.14 Contrastive worked example: delivered does not mean safely coordinated
+##### 4.19.14 Contrastive worked example: delivered does not mean safely coordinated
 
 **Incorrect fictitious conclusion after a Branch P release:**
 
@@ -7737,7 +8289,7 @@ This preserves three boundaries at once: what evidence was released, what commun
 
 In a technical incident review, a precise statement such as "the current front-desk instruction version has a valid read-back in the approved classroom route" is more defensible than "all staff were informed." The former identifies exactly what was demonstrated; the latter suggests a coverage the fixture does not measure.
 
-#### 4.19.15 An after-action review should locate the failed communication link
+##### 4.19.15 An after-action review should locate the failed communication link
 
 If the coordination process fails, the improvement plan should address the **specific link** that failed. "Communicate faster next time" is too general to test. Possible defects include an outdated contact route, missing alternate, unclear message version, absent role acknowledgement, an insecure fallback, or an instruction whose critical condition was not reflected in the read-back.
 
@@ -7755,7 +8307,7 @@ The exercise should make a distinction between a **working process** and a **pla
 
 [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) offers general exercise and evaluation guidance. Its functional-exercise examples illustrate that participants can rehearse notification procedures; our precise receipt statuses and negative controls are original teaching constructs, not a direct copy or NIST pass standard.
 
-#### 4.19.16 Measure recipient coverage without fabricating a success rate
+##### 4.19.16 Measure recipient coverage without fabricating a success rate
 
 A team may report "100% communicated" after receiving one acknowledgement. That statement is meaningless without a declared set of required recipient roles and a rule for which receipts count.
 
@@ -7769,7 +8321,7 @@ Time can also be measured, but it must be interpreted carefully. A short delay t
 
 Never report transport-delivered percentage as operator-comprehension percentage unless the evidence contract actually connects those measurements.
 
-#### 4.19.17 From tabletop reasoning to an authorized functional rehearsal
+##### 4.19.17 From tabletop reasoning to an authorized functional rehearsal
 
 This rapid course exercises reasoning with synthetic records. It cannot validate the reliability of a real email service, telephone tree, emergency contact list or authentication control. A later authorized functional test would require additional procedures and safeguards.
 
@@ -7781,7 +8333,7 @@ A passing functional notification test would support only the tested participant
 
 This is a useful bridge from an introductory tabletop to later technical education: describe the required signal and proof, test it in isolation, identify the condition that would invalidate the conclusion, and preserve the limits.
 
-#### 4.19.18 Section synthesis: coordination is verified at the receiving boundary
+##### 4.19.18 Section synthesis: coordination is verified at the receiving boundary
 
 Incident coordination is not complete merely because a good message was drafted or approved. The response team needs a bounded record showing that the **right role** received the **current version** through an **approved route**, that a valid acknowledgement and read-back were obtained when required, and that unanswered contacts were escalated without inventing permission.
 
@@ -7793,7 +8345,7 @@ The Harbor Library release rules remain unchanged: Round A R1–R8, Round B R9�
 
 <a id="ir-rapid-ch04-del4-lab"></a>
 
-### 4.20 DEL4 offline laboratory — read-back and message-delivery gate
+#### 4.20 DEL4 offline laboratory — read-back and message-delivery gate
 
 **Laboratory status:** Entirely synthetic, in-memory exercise. DEL4 does **not** send any messages, authenticate recipients or interact with a booking system. The fixture selects a hypothetical Branch P communication context **after** a Branch P release; it does not assert the canonical branch occurred outside that exercise.
 
@@ -7803,7 +8355,7 @@ The Harbor Library release rules remain unchanged: Round A R1–R8, Round B R9�
 
 **Fixture fields:** The strings are simulated assertions; `authorized=True` represents only fictitious permission to dispatch a message, *not* approval to execute a service change. `delivered=True` is a synthetic transport field, not proof of human reception. Exact text equality implements this laboratory's narrow read-back check, not a universal natural-language comprehension test. `overdue` is a facilitator-supplied Boolean, not a measured contractual deadline.
 
-#### Reproducible Python 3 program
+##### Reproducible Python 3 program
 
 ~~~python
 RELEASE = {
@@ -7893,7 +8445,7 @@ assert evaluate(FIXTURES[10]) == "READBACK_CONFIRMED_IN_FIXTURE"
 assert evaluate(FIXTURES[12]) == "FUTURE_RELEASE"
 ~~~
 
-#### Exact expected output — executed in Python 3
+##### Exact expected output — executed in Python 3
 
 ~~~text
 C-COORD: READBACK_CONFIRMED_IN_FIXTURE
@@ -7913,7 +8465,7 @@ M2-PRIVACY: FUTURE_RELEASE
 RETRY_CHECK attempts=2 logical_versions=1
 ~~~
 
-#### Worked interpretation
+##### Worked interpretation
 
 **C-COORD** simulates a correctly read-back Round C coordination message saying only "Review proposal only." It does not approve or execute the session restriction or write pause.
 
@@ -7929,7 +8481,7 @@ RETRY_CHECK attempts=2 logical_versions=1
 
 **RETRY_CHECK** prints two attempt records for one logical message ID/version pair. The attempts should remain separately auditable, but they do not create two independent instructions or acknowledgements.
 
-#### Negative tests, safeguards and limits
+##### Negative tests, safeguards and limits
 
 Before running, predict which of the statuses would require immediate fictional escalation and which would require correcting the audience, message version or wording. The learner may change only a copy of one fixture row at a time, label the variant and rerun. For example, replacing `P-STALE-VERSION`'s acknowledgement version with 2 should allow the later read-back check to pass under its other assumptions. Replacing `P-VERIFIED-READBACK`'s message branch with S must make the same row fail in the selected Branch P context.
 
@@ -7939,10 +8491,37 @@ The code is **not** a communications platform. It cannot verify whether a messag
 
 **Supplementary laboratory rubric (five points):** one point for exact output; one for the approval/send distinction; one for correct role/version/read-back interpretation; one for the stage and branch exclusions; and one for evidence, security and operational-limit reasoning. The laboratory does not create a new EX039–EX050 identifier or change the canonical exercise count.
 
+#### Worked checkpoint
 
-### 4.21 Blind handoff and independent state reconstruction
+A status message can be accurate and approved yet fail to reach the intended operator. Record the approved content, route, receipt, acknowledgement and read-back independently; a transport success is not proof of comprehension.
 
-#### 4.21.1 The missing question in a conventional handoff
+#### Practice — Lesson 19
+
+##### EX048 — Internal update
+
+**Objective:** report the action while preserving uncertainty. **Inputs:** chosen Round D branch at 09:45 UTC, **before** P1/C1 and V1 are released. **Output:** exactly two sentences for an internal service-owner audience, naming the service, a supported observation and reported branch action, current uncertainty, owner and next checkpoint. For Branch P mention the manual queue; for Branch S mention reauthentication. A score of 2 does not assert breach, attacker identity, complete recovery, a validated restore or results from later cards.
+
+**DEL4 extension:** Keep the status draft at exactly two sentences. Add a separate metadata line for intended recipient role, proposed message version, approved-route requirement and acknowledgement status; this is not a third sentence of the message.
+
+**Worked answer:** [EX048 in the final appendix](#ex048--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-19 -->
+#### Continue studying — lesson 19 of at least 20
+
+[← Lesson 18](#lesson-18) · [Course lesson index](../SUBJECTS.md) · [Lesson 20 →](#lesson-20)
+
+Continue to the next authored daily lesson.
+<!-- cykin:lesson-navigation:end -->
+
+<a id="lesson-20"></a>
+
+### Lesson 20 — Blind handoff and independent reconstruction
+
+**Week 4, day 5.** Work through the teaching and the worked checkpoint before attempting the assigned exercise(s). Compare your artifact with the final worked result only afterward.
+
+#### 4.21 Blind handoff and independent state reconstruction
+
+##### 4.21.1 The missing question in a conventional handoff
 
 An analyst can write an accurate history yet leave the next responder unable to act safely. The writer remembers the discussion, knows which colleague supplied context and remembers why certain options were rejected. A new on-call responder may possess only the saved case packet. If that document says "account handled, recovery pending," the receiver must guess which account action occurred, whether it was proposed or executed, what was tested, and who owns the remaining work.
 
@@ -7952,7 +8531,7 @@ The target is a repeatable two-role exercise: a sender freezes an evidence-linke
 
 [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) gives official guidance for designing, conducting and evaluating IT training and exercises. The [FEMA HSEEP guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance) addresses evaluation of observable exercise capabilities and improvement planning. The specific blind reconstruction contract is original CyKin teaching material, not a scoring scheme mandated by either source.
 
-#### 4.21.2 Define what blind means before starting
+##### 4.21.2 Define what blind means before starting
 
 Blind does **not** mean withholding valid evidence. The receiver may open the permitted canonical R-series table, the chosen branch card and the later P1/C1/V1 material if those cards have been released for the selected checkpoint. Blind means **no explanation from the person who wrote the packet** while the first reconstruction is being prepared.
 
@@ -7964,7 +8543,7 @@ The facilitator may permit two distinct phases. First, an **unaided reconstructi
 
 A passing blind handoff demonstrates a narrow educational capability: two people can transfer a bounded fictional incident decision using written sources. It does not prove live-system containment, real communication delivery, tested backups or operational staffing readiness.
 
-#### 4.21.3 Separate three documents with three different owners
+##### 4.21.3 Separate three documents with three different owners
 
 The exercise uses a **sender packet**, a **receiver reconstruction** and an **evaluation record**. Combining them makes it harder to determine whether the receiver derived the answer or was simply given it.
 
@@ -7978,7 +8557,7 @@ A missing pointer is primarily a packet problem if the source cannot be located 
 
 Each outcome requires a different improvement. A sender cannot fix a missing document by saying "I explained it during the meeting," because that explanation is exactly the dependency a blind test is intended to reveal.
 
-#### 4.21.4 Reconstruct the knowledge boundary before the incident story
+##### 4.21.4 Reconstruct the knowledge boundary before the incident story
 
 One of the receiver's first tasks is to identify what **could be known at the relevant decision time**. This is not the same as arranging every event in chronological order.
 
@@ -7990,7 +8569,7 @@ A useful sender packet therefore has **event-time** and **available-at** columns
 
 A packet that backdates a later source can reach a plausible final conclusion for the wrong reason. The blind test must reject that causal and temporal shortcut, even when the student happened to know the later result from reading the book.
 
-#### 4.21.5 Locate the evidence; do not merely repeat a conclusion
+##### 4.21.5 Locate the evidence; do not merely repeat a conclusion
 
 "See attached logs" is not a sufficient source pointer. The receiver must know which R-series item, branch report or exercise card substantiates each material statement. In a classroom manuscript, the record ID and correct chapter link can serve as a test locator. In a real authorized investigation, the source might require a restricted evidence store, collection receipt and access permissions.
 
@@ -8002,7 +8581,7 @@ An important source rule is **locatable does not mean sufficient**. A functionin
 
 If a required source pointer is absent, record "not located from this packet" and request correction. Do not treat missing information as evidence that the tested outcome was negative or safe.
 
-#### 4.21.6 Reconstruct recommendation, approval, execution and verification separately
+##### 4.21.6 Reconstruct recommendation, approval, execution and verification separately
 
 The sender may compress an intervention into a phrase such as "session contained." A blind receiver must unpack it into states with source support.
 
@@ -8016,7 +8595,7 @@ A precise handoff distinguishes **proposed at checkpoint C**, **approved or repo
 
 This is why merely finding an approval signature or reading a message is not enough. A separate operational result must support an execution or effectiveness claim. The blind test evaluates whether the responder knows when to stop short of that claim.
 
-#### 4.21.7 A last reported state is not a verified current state
+##### 4.21.7 A last reported state is not a verified current state
 
 A new on-call responder often asks, "What is the system doing right now?" The packet may not contain a fresh observation at the moment of handoff. The correct answer then distinguishes a **last reported condition** from a **current independently observed condition**.
 
@@ -8030,7 +8609,7 @@ An incorrect entry such as "pause automatically ended at 10:00" invents a transi
 
 The baseline BH4 script below deliberately requires the separate state "not independently verified" even when a historical branch report is available.
 
-#### 4.21.8 Reconstruct the failed gates without replacing them with hope
+##### 4.21.8 Reconstruct the failed gates without replacing them with hope
 
 After P1/C1 and V1 are released, the next responder should understand why full service acceptance is not supported. P1/C1 shows B17 and B18 matching their approved target but B19 and B20 different. The four-booking correctness gate therefore has **failed items** requiring owner-reviewed correction.
 
@@ -8042,7 +8621,7 @@ Neither the P1/C1 comparison nor V1 says that the actual production system has b
 
 A good receiver can turn these failures into a narrow request for the service owner and audit owner. A bad receiver might choose the newest backup or close the case despite the unresolved mismatches; that is precisely the next-action failure this exercise must detect.
 
-#### 4.21.9 The next safe act is a request, not an unapproved repair
+##### 4.21.9 The next safe act is a request, not an unapproved repair
 
 Reconstructing the past is only useful if it supports a responsible next decision. Ask the receiver to state **one next action**, the person authorized to approve it, the evidence the action requires and the review trigger.
 
@@ -8056,11 +8635,11 @@ The next review should include an observable event or deadline: a verified new u
 
 The receiver's next-action card should therefore distinguish **may request now** from **may execute only after specified authorization**.
 
-#### 4.21.10 A sealed packet must identify its exact inputs
+##### 4.21.10 A sealed packet must identify its exact inputs
 
 The sender should freeze an inventory with version and contents before handing it over. The manifest need not reproduce every record, but it must identify the allowed source and the exact records or sections that support important claims.
 
-A late Round D packet for Branch S might cite R17/R18 in Chapter 3, Branch S in Chapter 4, and the separately released P1/C1 and V1 in Chapter 3. The receiving responder can then follow those pointers to verify the narrow statement about training authorization, later booking changes, branch action, incorrect selected booking values and failed audit actor.
+A late Round D packet for Branch S might cite R17/R18 in Module 3, Branch S in Module 4, and the separately released P1/C1 and V1 in Module 3. The receiving responder can then follow those pointers to verify the narrow statement about training authorization, later booking changes, branch action, incorrect selected booking values and failed audit actor.
 
 If C1 is missing from the manifest, an assertion that B19/B20 fail the approved target is not independently reconstructible from the packet alone. The correct test result is **missing pointer**, not proof of correct bookings.
 
@@ -8070,7 +8649,7 @@ A source locator is not permission to bypass actual access rules. In real respon
 
 An effective packet can be short if its pointers and decisions are precise. Adding pages of narrative cannot replace an absent source or owner.
 
-#### 4.21.11 Two roles, two independent records
+##### 4.21.11 Two roles, two independent records
 
 The sender writes the packet, then stops contributing information. The receiver reviews the packet and permitted citations without verbal or written assistance from the sender. The evaluator compares the receiver's first frozen answer with the canonical cards.
 
@@ -8089,7 +8668,7 @@ The sender should not be permitted to correct a receiver's answer until the rece
 
 A first attempt should remain frozen and attributable to the learner's work, even if later revisions demonstrate substantial improvement.
 
-#### 4.21.12 A third-party observation must distinguish packet defects from learner defects
+##### 4.21.12 A third-party observation must distinguish packet defects from learner defects
 
 An evaluator should not reduce all reconstruction failures to "poor communication." The root of a failed handoff may lie in the sender's evidence pointers, in the receiver's interpretation, or in an explicitly unavailable source.
 
@@ -8101,7 +8680,7 @@ The evaluator should retain the packet version, receiver version, test checkpoin
 
 This is important when the organization later reports exercise improvement. A high pass rate after sender coaching should not be described as the same outcome as independent first-attempt reconstruction.
 
-#### 4.21.13 Hard failures and ordinary deficiencies are not equivalent
+##### 4.21.13 Hard failures and ordinary deficiencies are not equivalent
 
 The blind-handoff contract should have **non-negotiable safety boundaries**. A receiver who cites a future card at an earlier checkpoint, merges Branch S and P, invents approval or execution, declares full recovery despite P1/C1/V1 failures, or recommends an unapproved live change has failed even if every other paragraph is well written.
 
@@ -8109,11 +8688,11 @@ Other deficiencies are more localized but still matter: missing a source locator
 
 The learning test therefore uses two layers. First, detect critical breaches of source release, action history and authorization. Second, assess completeness of the remaining required fields and the receiver's reconstruction. A passing packet needs both.
 
-This does **not** change Chapter 4's existing six-output 0–2 rubric. That rubric still totals 12 across timeline, hypothesis table, action record, recovery plan, internal status message and improvement ticket. The blind test is a **validation attachment**, not a seventh scored output.
+This does **not** change Module 4's existing six-output 0–2 rubric. That rubric still totals 12 across timeline, hypothesis table, action record, recovery plan, internal status message and improvement ticket. The blind test is a **validation attachment**, not a seventh scored output.
 
 A packet can score highly in its six documentation categories and still fail blind reconstruction. That distinction is the principal instructional contribution of this supplement.
 
-#### 4.21.14 Wrong worked handoff
+##### 4.21.14 Wrong worked handoff
 
 **Incorrect synthetic summary at a later Branch S checkpoint:**
 
@@ -8127,19 +8706,19 @@ A receiver should refuse to accept the stated closure, record why the source cla
 
 If the handoff was already frozen, the sender cannot make it retroactively correct by saying "I meant only the current session." The correction belongs in a new version with specific evidence and scope.
 
-#### 4.21.15 Correct worked handoff
+##### 4.21.15 Correct worked handoff
 
 **Correct bounded synthetic Branch S summary after the separately released P1/C1 and V1 cards:**
 
 > "Case HL-IR-001: At the 09:37 Round C checkpoint, R17 and R18 supported reviewing an unexplained B20 edit outside the known approved training list; the bounded session response was proposed then. Branch S later reports revocation of the identified current desk-a session at 09:45, staff reauthentication and a quiet result only inside the branch's query range. Other routes, the human operator and current technical state beyond that report remain unverified. The later P1/C1 comparison shows B19/B20 inconsistent with the approved targets; V1 has limited access passes but a failed actor-attribution field. Full service acceptance is not established. The service owner should decide on a bounded correction request and new comparison; the application/audit owner should repair and retest attribution; the lead reconvenes on a verified unexplained edit or failed retest."
 
-The receiver can locate R17/R18 in Chapter 3, Branch S in Chapter 4 and P1/C1/V1 through their later Chapter 3 teaching cards. The wording distinguishes proposal, reported execution, known test limits and proposed correction. It also does not treat the source set as proving real production recovery.
+The receiver can locate R17/R18 in Module 3, Branch S in Module 4 and P1/C1/V1 through their later Module 3 teaching cards. The wording distinguishes proposal, reported execution, known test limits and proposed correction. It also does not treat the source set as proving real production recovery.
 
 For an equally defensible Branch P packet, replace the session report with the pause and two pending manual items at 09:45. The service owner must still decide whether or when writes resume and how the queue is reconciled. Never mix the two alternative reports in one chosen branch history.
 
 The packet's adequacy is still subject to an independent receiver test. A model answer written by the author is not evidence that another participant can reconstruct it unaided.
 
-#### 4.21.16 Use failed reconstruction to improve the actual packet
+##### 4.21.16 Use failed reconstruction to improve the actual packet
 
 The blind exercise should conclude with a short, evidence-linked improvement task. If the receiver incorrectly called the 09:37 proposal executed, specify whether the packet lacked action-state labels or the receiver misinterpreted a clear source. If the receiver could not locate C1, verify whether the manifest contained a working source pointer. If the receiver recommended immediate production correction, check whether the packet clearly marked owner approval as required.
 
@@ -8153,7 +8732,7 @@ A good improvement ticket has one observed failure, its frozen packet and receiv
 
 This turns a vague recommendation to "improve handoffs" into a specific capability test. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) and [FEMA's exercise-evaluation guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance) support the broader practice of documenting observed exercise performance and corrective actions; the exact card and thresholds here are CyKin's own.
 
-#### 4.21.17 A passing tabletop does not measure real incident capability
+##### 4.21.17 A passing tabletop does not measure real incident capability
 
 The BH4 program checks invented dictionaries, not actual source provenance, live systems or human comprehension. An ordinary participant could correctly answer all six questions in a quiet classroom and still struggle with missing evidence, inaccessible sources or time pressure during an actual event.
 
@@ -8163,7 +8742,7 @@ The exercise should record these boundaries explicitly. A successful BH4 script 
 
 An instructor should not turn the classroom score into an accreditation claim. CyKin is a learning collection; the materials develop reasoning through controlled and auditable practice.
 
-#### 4.21.18 Section synthesis and next learning step
+##### 4.21.18 Section synthesis and next learning step
 
 The essential outcome is an **independent receiver who can continue a case safely**. The receiver must identify the checkpoint, select the right branch, locate permitted evidence, distinguish proposed from reported executed actions, mark failed and untested service criteria, request the next owner-approved action and identify what would trigger a new decision.
 
@@ -8171,7 +8750,7 @@ A handoff without those properties may be readable but incomplete. A detailed ha
 
 This lesson does not alter the canonical Harbor Library timeline or any already released fixture. It adds a reproducible exercise that makes the sender's documentation and the new receiver's unaided understanding observable and correctable.
 
-### 4.22 BH4 offline laboratory — reconstruction state and negative controls
+#### 4.22 BH4 offline laboratory — reconstruction state and negative controls
 
 <a id="ir-rapid-ch04-bh4-lab"></a>
 
@@ -8183,7 +8762,7 @@ This lesson does not alter the canonical Harbor Library timeline or any already 
 
 **Fixture scope:** The baseline is a fictional Branch S reconstruction *after* P1/C1 and V1 have been separately released. It keeps Round C action status `PROPOSED`, the later Branch S 09:45 status `REPORTED`, and the present technical effect `NOT_INDEPENDENTLY_VERIFIED`. Its data and audit gates remain failed. A separate valid Branch P variant uses the other mutually exclusive branch. The exact strings are classroom assertions, not authenticated operational receipts.
 
-#### Complete Python 3 code
+##### Complete Python 3 code
 
 ~~~python
 from copy import deepcopy
@@ -8342,13 +8921,13 @@ print("BASE_P", inspect(p))
 
 Compare your run with the [worked BH4 transcript and limitations](#ir-rapid-ch04-bh4-result) after recording predictions.
 
-#### Practice and submission
+##### Practice and submission
 
 **Negative experiment:** Change only the receiver's `D_report` value and observe `FAIL_RECEIVER_RECONSTRUCTION:D_report`; restore it to the reported branch status for the baseline. Alternatively, remove C1's manifest pointer and observe `FAIL_MISSING_POINTER:C1`. Never treat a missing pointer as proof that the booking comparison passed.
 
 **Required lab submission:** Twelve output lines, a per-variant failure table, the identified source-release boundary, a one-paragraph distinction between packet validity and independent human reconstruction, and a proposed next safe request for each selected branch.
 
-### 4.23 Two-role practical — a handoff without the author
+#### 4.23 Two-role practical — a handoff without the author
 
 **Roles:** Sender and Receiver. A facilitator may evaluate them separately but is not required for the basic two-role activity. All notes concern fictional records only.
 
@@ -8371,7 +8950,7 @@ Compare your run with the [worked BH4 transcript and limitations](#ir-rapid-ch04
 
 ---
 
-### 4.23a A good tabletop score must survive a frozen-evidence audit
+#### 4.23a A good tabletop score must survive a frozen-evidence audit
 
 **Learning objective:** Distinguish a participant's documented decision from the facilitator's intended storyline and from the end-of-exercise model answer. Before scoring, identify which cards and independently produced receipts the learner could see at the assessed checkpoint. An excellent final narrative cannot repair a contaminated early decision without preserving both versions.
 
@@ -8383,7 +8962,7 @@ The **facilitator release ledger** records the permitted inputs for Round A (R1�
 
 This is why both **artifact quality** and **exercise validity** must be reviewed. If a facilitator revealed P1 early, the observer should mark the affected round contaminated and conduct a fresh frozen checkpoint rather than awarding retrospective credit to a decision influenced by future evidence. A tabletop is a discussion-based exercise; [NIST SP 800-84, Section 4.5, p. 4-5](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) explains that participant debrief comments, evaluator observations and recommendations belong in an after-action report. It does not certify Harbor Library's grading scale or measure a production security control. A separate authorized functional test would be needed to establish system behavior.
 
-#### R4X offline lab — score an artifact and reject invalid evidence separately
+##### R4X offline lab — score an artifact and reject invalid evidence separately
 
 **Safety and data:** Python 3 standard library, entirely in memory; no access to sources, mail, cloud accounts or real service actions. Each input is an invented reviewer declaration. `claimed_collected` and `receipt_present` refer only to a proposed classroom preservation assertion, not a verified Harbor Library artifact.
 
@@ -8423,73 +9002,13 @@ SYNTHETIC_PASS PASS_TOTAL_10
 
 **Chapter synthesis:** Harbor Library can teach an honest handoff without closing its fictional incident. A successful participant outcome is a **reproducible decision under released evidence**, plus clear owners and tests for unresolved data, audit and service gates—not a dramatic story of recovery. The book's final exercise result must not be treated as evidence of what a learner actually did.
 
-### Chapter 4 exercises
+#### Worked checkpoint
 
-Use the four rounds and choose either Branch S or Branch P for your final decisions. Record **event time and card-release round separately**. Round A has R1–R8, Round B adds R9–R16, Round C adds R17–R24, and Round D first supplies a branch result and only later P1/C1 and V1. Do not cite a later card to justify an earlier action; do not invent a real export, restore, account action or person behind `desk-a`. For each answer, submit the named artifact with case ID, source IDs, current round, observation versus proposal or reported action, decision owner, remaining limit and next review. A solo learner may write all roles, but must still record who would approve and who would verify a change.
+The next analyst should reconstruct the evidence boundary and outstanding decisions from a sealed packet without coaching from its author. If they cannot identify the current owner or pending approval, the handoff is incomplete even when the original author understood the case.
 
-**Numbered-exercise rubric:** score **0** for an absent artifact or an unsupported breach, actor, executed action or recovered-service claim; **1** for an artifact that addresses the task but omits a required source, release boundary, authority or verification; **2** for an evidence-linked, authorized and reviewable artifact with every local field below. This is distinct from the six-output tabletop rubric in section 4.5. Each worked result shows one acceptable path; a different branch or conclusion can earn 2 when its assumptions, evidence and constraints are explicit.
+#### Practice — Lesson 20
 
-#### EX039 — Role and scope card
-
-**Objective:** assign authority before observing the case outcome. **Inputs:** Round A, Chapter 1's role table and synthetic R1–R8. **Output:** a five-row role card for incident lead, analyst, service owner, recovery lead and communications contact; name each responsibility, one approval or escalation boundary and one verifiable output. Add a single sentence defining permitted objects, actions and exclusions. A score of 2 makes clear that neither a learner nor analyst can independently disrupt a real booking service.
-
-**DEL4 extension:** In the same five-row card, add the role responsible for receiving and acknowledging each critical update. For one role, give the message ID/version and an expected read-back question. Keep an unknown alternate unknown; do not invent a working channel.
-
-#### EX040 — Intake artifact
-
-**Objective:** produce a reproducible first handoff without hindsight. **Inputs:** Round A only, R1–R8 and the 09:00 case-open time. **Output:** exactly four labeled lines covering case/time/service, at least two observed source events, current status and unknowns, and the owner question plus proposed 09:05 checkpoint. Cite record IDs and mark R5 as a patron report. A score of 2 does not cite R9, R17 or a later branch result and does not treat proposed preservation as already performed.
-
-#### EX041 — Evidence chronology
-
-**Objective:** separate source-event time from learner availability. **Inputs:** R1–R24 after Round C; **no** Round D card. **Output:** a six-row table with ID, UTC event time, source, release round and observation, using at least one item from each of Rounds A, B and C. Add one ordering fact and one causal or identity claim that the sequence cannot prove. A score of 2 retains that R9's 09:03 event reached the learner only in Round B, while R17–R18 could not guide the 09:20 decision.
-
-#### EX042 — Competing explanations
-
-**Objective:** maintain discriminating hypotheses at the 09:20 review. **Inputs:** R1–R16 only. **Output:** three rows for authorized training, unauthorized use of `desk-a` and display/state divergence, each with supporting record, contrary or limiting record, narrow authorized check and a result that would weaken it. Do not use R17–R18 or P1/C1; those arrive later. A score of 2 says B19 is unresolved rather than proving one explanation from the account label or a patron report.
-
-#### EX043 — Preservation request
-
-**Objective:** request time-sensitive evidence without a fabricated deadline. **Inputs:** Round B, R9, R14–R15 and Chapter 2's preservation fields. **Output:** a request naming source, booking IDs or bounded event interval, necessary fields, policy-clock question, approving role, collector, restricted storage/access and actual collection status. R15 says detailed audit records are deleted after 24 hours unless copied; ask the custodian what starts that clock rather than calculating an exact expiry from R9 alone. A score of 2 says **requested** until a copy and collection time are documented.
-
-**DEL4 extension:** Separate a preservation request drafted, its receipt by the authorized custodian, and a collected and checked copy. State the escalation when receipt is unconfirmed; none of these stages supplies R15’s missing policy-clock anchor.
-
-#### EX044 — Decision checkpoint
-
-**Objective:** make a reversible 09:37 recommendation. **Inputs:** Round C, R17–R21 and the section 3.3 option matrix. **Output:** a decision card with current evidence and uncertainty, chosen proposal, approver and executor, intended benefit, uncovered path, service cost, preservation note, fallback, verification plan and 09:45 review. Give separate **proposed, approved, executed and verified** states; mark any state without a receipt *pending*. Include one check for the protective effect and a different check for legitimate staff service. A score of 2 treats R21 as tolerance rather than approval or execution and does not cite the Branch S/P result before Round D.
-
-**DEL4 extension:** Add a separate coordination-message field for proposed, authorized-to-send, attempted, delivered and current-version role acknowledgement. A recipient’s read-back of the *proposal* is not action approval or evidence that a control was executed.
-
-#### EX045 — Branch S review
-
-**Objective:** bound what a successful session action actually demonstrates. **Inputs:** Round D **Branch S only**, before P1/C1 or V1; earlier R1–R24 remain available. **Output:** a four-row claim ledger with two supported claims and two unestablished claims, each with branch pointer and limit, plus one authorized next check with scope and owner. A score of 2 limits the “no later edit” observation to the branch query's range and does not claim eradication or correct booking state.
-
-**BH4 blind-receiver check:** For each existing row, verify that a cold receiver can locate the Branch S pointer and explain its limit without asking the sender. A missing pointer is a packet defect, not proof that a booking check passed or that revocation failed. Keep this answer at the branch-only checkpoint.
-
-#### EX046 — Branch P review
-
-**Objective:** account for operational effects of the pause. **Inputs:** Round D **Branch P only**, before P1/C1 or V1; R21's tolerance. **Output:** a queue-and-return note with the two pending requests, who holds them, a verification that writes were blocked, an owner-approved resume condition, a signal to keep the restriction, and the next checkpoint. A score of 2 does not mark the two requests fulfilled or the cause resolved and gives an explicit reconciliation step before resumption.
-
-**DEL4 extension:** In Branch P only, add a proposed instruction envelope for the front-desk receiving role: the two requests stay pending until owner-approved reconciliation. Version, authorized route and read-back are required in a future test; mark all actual dispatch and receipt fields not supplied here.
-
-**BH4 blind-receiver check:** Have a receiver state what is known about the two unnamed pending requests, who may approve resumption, and what current write state remains unverified. Do not import MQ3 or the later P1/C1/V1 cards, and do not infer automatic return from the fifteen-minute plan.
-
-#### EX047 — Recovery acceptance
-
-**Objective:** decide whether the supplied recovery evidence permits full release. **Inputs:** chosen branch, then the later P1/C1 and V1 cards. **Output:** a four-row return-to-service checklist covering booking correctness, authorized access, denied unauthorized access and actor/time audit visibility. For each, state expected result, current card result, owner and next test or correction; add a provisional service status and rollback trigger. A score of 2 marks B19/B20 mismatched and V1's blank actor as failed criteria rather than calling the book's simulated case recovered.
-
-**BH4 blind-receiver check:** A new responder must locate each P1/C1 or V1 source and classify booking correctness and actor attribution as failed, the two isolated access observations as limited passes, and any untested production condition as unknown. The next correction and retest require the relevant owner approval.
-
-#### EX048 — Internal update
-
-**Objective:** report the action while preserving uncertainty. **Inputs:** chosen Round D branch at 09:45 UTC, **before** P1/C1 and V1 are released. **Output:** exactly two sentences for an internal service-owner audience, naming the service, a supported observation and reported branch action, current uncertainty, owner and next checkpoint. For Branch P mention the manual queue; for Branch S mention reauthentication. A score of 2 does not assert breach, attacker identity, complete recovery, a validated restore or results from later cards.
-
-**DEL4 extension:** Keep the status draft at exactly two sentences. Add a separate metadata line for intended recipient role, proposed message version, approved-route requirement and acknowledgement status; this is not a third sentence of the message.
-
-#### EX049 — Improvement ticket
-
-**Objective:** turn a case observation into a program improvement with proof of closure. **Inputs:** all four rounds, R23 or V1, and sections 4.6 and 4.15. **Output:** one ticket with gap and evidence pointer, accountable owner, due date, bounded change, interim control, a positive acceptance observation, a negative failure control, retained test receipt and action if the test fails. Choose either stale restore evidence or blank audit actor; do not bundle unrelated work into an untestable “improve security” task. A score of 2 explains why correcting B19/B20 alone would not close the selected program gap.
-
-#### EX050 — Final handoff and self-assessment
+##### EX050 — Final handoff and self-assessment
 
 **Objective:** give a new responder a complete, auditable state without overstating closure. **Inputs:** all rounds, one chosen branch, P1/C1, V1 and the section 4.5 rubric and L2 calibration. **Output:** a one-paragraph handoff naming case and evidence, proposal versus branch-reported action and fictional approvers, current booking and audit failures, unresolved cause, owners, next review and rollback trigger. Add a six-row self-score (0–2 per tabletop output, maximum 12), identify the weakest output and write one contested-score note: which artifact a second reviewer might score differently, which exact supplied record or missing field resolves the disagreement, and what revision should be versioned rather than silently replacing an earlier round. A score of 2 requires a defensible score explanation and no zero for approval or evidence scope; the handoff must distinguish the branch result from unexecuted correction or restore work.
 
@@ -8497,12 +9016,22 @@ Use the four rounds and choose either Branch S or Branch P for your final decisi
 
 **BH4 validation attachment (separate from the six scored outputs):** Preserve a frozen sender packet and unaided receiver version, declared checkpoint and branch, permitted source inventory, proposal versus branch-report state, failed gates, next safe request, approval owner, reassessment trigger and independent reconstruction result. Version a correction after feedback; do not backdate it or add a seventh score.
 
+**Worked answer:** [EX050 in the final appendix](#ex050--worked-result).
+
+<!-- cykin:lesson-navigation:start lesson-20 -->
+#### Continue studying — lesson 20 of at least 20
+
+[← Lesson 19](#lesson-19) · [Course lesson index](../SUBJECTS.md) · [Next course via lesson index →](../SUBJECTS.md)
+
+This is the last published daily lesson in the current sequence. Use the course index to reach the next English course.
+<!-- cykin:lesson-navigation:end -->
+
 <!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 04
 
-[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course lesson index](../SUBJECTS.md) · [Next course via lesson index →](../SUBJECTS.md)
 
-This is the final chapter of this course; the index links the next course in the full study path.
+This is the last weekly chapter in the current sequence.
 <!-- cykin:chapter-navigation:end -->
 
 <a id="answers"></a>
@@ -8514,7 +9043,7 @@ These results are placed after the chapter material as the book's developing ans
 <!-- cykin:bsl1-worked:start -->
 <a id="ir-rapid-ch01-bsl1-result"></a>
 
-### Chapter 1 BSL1 offline laboratory — worked result
+### Module 1 BSL1 offline laboratory — worked result
 
 ~~~text
 BASE CONFLICT S03/S04
@@ -8806,7 +9335,7 @@ This entry does not claim the service owner has answered, that a production expo
 
 A high-value readiness ticket addresses the missing certainty about service owner and alternate assignments. The incident lead and designated register steward create or review a **versioned, source-linked authority record** showing primary role, restricted alternate, operation/object scope, effective interval, revocation state, named custodian and approved confirmation route. The rehearsal runs at least one positive valid path and one expired or unauthorized negative path using invented identities. It passes when the independent reviewer reconstructs the expected routing from the frozen packet, the valid test remains explicitly **not executed**, and invalid tests return holds or a hold-and-escalate status. It fails if an expired delegate, wrong person, widened scope or absent receipt is accepted; the steward must correct the governed source, version the packet and retest. Publishing a contact spreadsheet without demonstrated failure detection does not close the ticket. The separate F1 incident replay remains outside this pre-incident exercise.
 
-### Chapter 1 readiness workshop — worked result
+### Module 1 readiness workshop — worked result
 
 **Service card:** case `HL-IR-001`; outcome: residents can see and reserve the correct room; dependencies: staff identity service and booking database; current collection authority: the fictional incident lead permits analysis of R1–R8 only; service owner must be consulted before a booking outage. The identity administrator is listed as the custodian for a *possible* future request, not as someone already interviewed.
 
@@ -8820,7 +9349,7 @@ A high-value readiness ticket addresses the missing certainty about service owne
 
 <a id="ir-rapid-ch01-ar1-result"></a>
 
-### Chapter 1 AR1 offline laboratory — worked result
+### Module 1 AR1 offline laboratory — worked result
 
 #### Exact expected output — executed with Python 3
 ~~~text
@@ -9244,13 +9773,13 @@ NAIVE_REVIEW lacks the explicit UTC basis required by the fixed-date exercise. I
 
 **Model application to the existing numbered exercises:** EX018 requests both a selection that covers the decision question and authorization that covers the intended operation; at 09:20, IDs and receipts remain to be obtained. EX019 records only the local E1 creation and checks actually performed, with a separate pending source-control reference. EX022 asks the custodian to clarify those missing facts without saying a hold was applied. EX024 keeps receipt inconsistency separate from substantiated imminent source loss: each needs a named verifier and incident-lead review, not an automatic production action. Preserve the original artifact sizes and common 0–2 rubric; the additional program controls belong to the existing five-point HOLD2 assessment and create no new exercise ID.
 
-### Chapter 2 synthetic-extract lab — worked result
+### Module 2 synthetic-extract lab — worked result
 
 The script writes **235 bytes** to each file. The SHA-256 digest for `E1.txt` is `dc973f580305633eb0a75317c5bdbd9886a8fc015e14a0b17bae09be5e3a6e37`; the digest for `E1-modified.txt` is `15287410550f021dcb81e10fc1833297ffa840ee8ffa8e75867de36df64ffa4d`. The strings have equal byte length because the single ASCII digit `3` was replaced with `4`; their different digests show the modified copy is not byte-identical to the saved original. Learners should calculate the values locally rather than trust a copied answer.
 
 A completed-run model note must be populated from the learner's actual work: “HL-IR-001/E1; local teaching transcription of R9 and R14, not a production export; original source retained in this public book; learner-created E1.txt in the recorded authorized scratch location; actual local creation time or recorded operation interval attached, or explicitly not recorded; classroom scope limited to the supplied synthetic material; 235 bytes and the measured SHA-256 value attached; access limited to the permitted learner/reviewer; retention and any disposal remain subject to the authorized exercise procedure.” This is a template, not evidence that the learner ran the program. A planned or partially failed attempt must keep its actual state. Do not claim deletion after the exercise unless a separately authorized disposal actually occurred and was recorded; retain material needed for the stated peer comparison until that review is complete. The hash does not prove R14's query coverage, source truth, actor identity or collection authority.
 
-### Chapter 2 temporal-coverage lab — worked result
+### Module 2 temporal-coverage lab — worked result
 
 The optional Python script prints the following seven lines for the supplied fixture:
 
@@ -9268,7 +9797,7 @@ R10's explicit `05:04-04:00` normalizes to 09:04 UTC. The source-to-release inte
 
 With exercise-only T1, the strongest negative statement is: “The specified `application-audit` query for `desk-a` booking edits in `09:00 ≤ event < 09:12 UTC` showed no further matching edit after R9.” R14 *without* T1 lacks those exact bounds. Neither version proves that no edit occurred after 09:12, through another account or in an unexamined source. A bounded request to the authorized application custodian should specify source, account filters, the new interval, an ingestion/completeness check, collector and collection time. R15 calls for a prompt retention decision; the exact deletion instant depends on policy detail not supplied here. A full-credit answer records these limits rather than filling gaps with confident words.
 
-### Chapter 2 delayed-arrival T2 replay — worked result
+### Module 2 delayed-arrival T2 replay — worked result
 
 The optional in-memory program prints:
 
@@ -9287,7 +9816,7 @@ The strongest correction is: “At 09:12, the specified query showed no other vi
 
 The first two output lines are unchanged: the late L2 becomes visible without moving its 09:10 event time; L4 remains excluded at the 09:12 exclusive end. The next three lines demonstrate input rejection, not observed incident events. The last line comes from a separate packet lacking L2: its quiet result is compatible with missing input and cannot prove no matching event occurred. Source coverage requires independent, appropriately authorized evidence about the producer, collection/index path and selection, not just successful filtering of available rows.
 
-### Chapter 2 evidence-package peer audit — worked result
+### Module 2 evidence-package peer audit — worked result
 
 | Variant | Byte and manifest finding | Defensible classroom use | Blocked claim and repair request |
 |---|---|---|---|
@@ -9297,7 +9826,7 @@ The first two output lines are unchanged: the late L2 becomes visible without mo
 
 A handoff that preserves these limits can say: “We can reproduce the digest of the supplied synthetic E1 bytes; we have not verified an original application export, its query completeness, a real collector's authority or the identity behind `desk-a`.” This is a better answer than “the evidence is authentic” because the latter does not identify *which* link was checked. The peer-audit drill is supplemental; it does not increase the count of 50 numbered exercises.
 
-### Chapter 2 Q1 correlation lab — worked result
+### Module 2 Q1 correlation lab — worked result
 
 The unmodified Python fixture in section 2.9 prints exactly:
 
@@ -9386,7 +9915,7 @@ At 09:37 these are classifications and proposed checks, **not executed events**.
 
 ### EX028 — Worked result
 
-**Before the new release:** at the 09:20 Chapter 2 review, R9 showed a 09:03 B19 edit, R10 named B17/B18 in the training plan, and R12 supplied a staff recollection. B19 remained unexplained; H1 could plausibly explain the earlier planned edits but did not cover every known item. **New at 09:37:** R17, recorded 09:22, says the approved task list named B17/B18 only and no addendum was known. R18, recorded 09:24, adds a B20 edit under `desk-a`. The new edit falls outside the known task list and raises concern about continued booking changes. H1 as a **complete explanation of all four bookings** weakens; H2, account use outside the plan, gains plausibility. Neither R17 nor R18 identifies the human, device, mechanism or root cause. An unrecorded authorized change, a faulty process or a source error remains possible until checked. Event time is not the time the learner knew the item; do not justify the earlier 09:20 decision retroactively.
+**Before the new release:** at the 09:20 Module 2 review, R9 showed a 09:03 B19 edit, R10 named B17/B18 in the training plan, and R12 supplied a staff recollection. B19 remained unexplained; H1 could plausibly explain the earlier planned edits but did not cover every known item. **New at 09:37:** R17, recorded 09:22, says the approved task list named B17/B18 only and no addendum was known. R18, recorded 09:24, adds a B20 edit under `desk-a`. The new edit falls outside the known task list and raises concern about continued booking changes. H1 as a **complete explanation of all four bookings** weakens; H2, account use outside the plan, gains plausibility. Neither R17 nor R18 identifies the human, device, mechanism or root cause. An unrecorded authorized change, a faulty process or a source error remains possible until checked. Event time is not the time the learner knew the item; do not justify the earlier 09:20 decision retroactively.
 
 ### EX029 — Worked result
 
@@ -9438,7 +9967,7 @@ If a verified sequence of harmful edits is continuing and waiting for all four r
 | Credential or session misuse | R18 associates the B20 edit with `desk-a`; R17's task list does not approve B20. Neither record attributes a person or proves credential theft. | Identity owner requests bounded session and token events matched by IDs to the B20 edit. A verified different principal or a route that works without the session would weaken this claim. Missing older-session events limit a negative result. | **Only if supported:** owner-approved credential/session changes, then a synthetic old-credential attempt that fails, a legitimate new-credential attempt that succeeds, and audit/state evidence with the relevant time window. Other tokens remain a separate check. |
 | Application authorization fault | B20 changed outside the supplied task list, but R1–R24 contain no reproducible application-fault test. | Application owner attempts the same kind of edit with an unauthorized synthetic identity in an isolated pre-change copy. A reliable denial with unchanged state would weaken this mechanism for that build and route, not all builds and routes. | **Only if reproduced:** a scoped server-side fix, repeat of the failing request that is now denied with unchanged state and linked audit, plus an authorized synthetic edit that still succeeds. Monitor other routes and re-open on an unexplained state change. |
 
-R22 was recorded at 09:32 UTC, before the proposed 09:37 revocation. Its unspecified queried range cannot verify a later action, and a zero result within a narrow range would not distinguish cause removal from a missed edit. A learner may write a *conditional* “after approval and execution” note but must not turn the later Chapter 4 branch into evidence at this checkpoint.
+R22 was recorded at 09:32 UTC, before the proposed 09:37 revocation. Its unspecified queried range cannot verify a later action, and a zero result within a narrow range would not distinguish cause removal from a missed edit. A learner may write a *conditional* “after approval and execution” note but must not turn the later Module 4 branch into evidence at this checkpoint.
 
 ### EX033 — Worked result
 
@@ -9515,7 +10044,7 @@ If Branch P is separately chosen and released, add its queue gate only after a b
 | 5. Intended effect and side effect | Try to stop edits through that session; legitimate staff may need to reauthenticate and booking work may slow. |
 | 6. Verify, fallback and review | Check a specific identity revocation result, later bounded booking audit and desk impact at 09:45 UTC. If a verified edit continues, seek service-owner approval for a fifteen-minute write pause under R21's stated tolerance. |
 
-R21 does **not** mean the fallback has already been implemented. Before any Chapter 4 branch result is released, a completed-action sentence is unsupported.
+R21 does **not** mean the fallback has already been implemented. Before any Module 4 branch result is released, a completed-action sentence is unsupported.
 
 For full credit, the six-field proposal names the decision owners and prospective operator while marking their approval, execution and effect receipts **pending**. R21 establishes tolerance for a possible short pause, not authority to implement either action.
 
@@ -9711,7 +10240,7 @@ A real process would need to check all those properties through the application'
 
 **Submission:** Before consulting the worked result, provide a table with the eight receipt statuses and reasons, identify the two requests whose order changes the result, and propose one owner-approved rule that would make their sequencing defensible. Explain why the two simulated changes are not a safe plan for Branch P's unnamed pending requests. A full-credit answer must preserve duplicate receipts, hold ambiguous actions, mention version/authorization limits and avoid asserting a live booking change.
 
-### Chapter 3 reconciliation lab — worked result
+### Module 3 reconciliation lab — worked result
 
 **Row-by-row comparison:** B17 and B18 already match the P1 approved target. B19 is Room 3 in C1 but should be Room 1; B20 is Room 1 in C1 but should be Room 3. The service owner must approve those two bounded corrections against the authoritative schedule before an authorized operator makes them. The analyst should retain the pre-correction C1 values, record the approval and later compare a new restricted copy with P1. The lab does not imply that a correction has actually been executed.
 
@@ -9719,7 +10248,7 @@ A real process would need to check all those properties through the application'
 
 **Branch and acceptance:** In Branch S, confirm the old session was revoked and monitor for new changes, but keep other sessions and the unresolved cause on the case record. In Branch P, the service owner must reconcile both queued requests before approving resumed staff writes. An acceptable proposal is *restricted or conditionally monitored service*, with the service owner and incident lead recording whether a temporary compensating check can cover the missing actor field while the application/audit owner repairs it. Set a named next review and reapply a restriction or escalate if an unexplained edit recurs. Neither branch, P1 nor V1 alone establishes full recovery. Award the five rubric points only if the row mismatches, correction authority, V1 limitation, branch cost and honest acceptance state are all explicit.
 
-### Chapter 3 CSV comparison lab — worked result
+### Module 3 CSV comparison lab — worked result
 
 Executing the complete Python 3 fixture in section 3.7 with the supplied strings prints:
 
@@ -9749,7 +10278,7 @@ The comparison performs **no repair**. It says B17 and B18 match the P1 target i
 
 A responsible next artifact is a **request** for the service owner to confirm the approved P1 target and authorize correction of B19/B20 only. Record the C1 copy's provenance, the planned operator and a new post-change comparison. Keep the cause, other bookings and V1's failed actor attribution open. If the malformed variant is tested, label its rejection as a validation result, never as a fifth Harbor Library booking event.
 
-### Chapter 3 real-case source reading — worked result
+### Module 3 real-case source reading — worked result
 
 | Reported fact and location in the [British Library review](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=) | Harbor Library planning question | Unsupported leap to avoid |
 |---|---|---|
@@ -9759,7 +10288,7 @@ A responsible next artifact is a **request** for the service owner to confirm th
 
 The report is dated **8 March 2024** and discusses an incident in **October 2023**. Its findings must be read as a dated institutional account, not a live service dashboard or an independent forensic dataset. A good answer names both the supported fact and the decision it motivates without importing British Library facts into R1–R24. The exact initial intrusion point remains uncertain in the report; a learner who states a definitive entry mechanism from this source must revise the claim.
 
-### Chapter 3 backup-candidate lab — worked result
+### Module 3 backup-candidate lab — worked result
 
 This model uses K1 only as an optional replay **after** P1/C1 and V1. Each `PASS` below is restricted to the stated check; it is not a certificate for the entire candidate. A real assessor would ask for the missing provenance before relying on the listed snapshot times or digests.
 
@@ -9838,7 +10367,7 @@ In the missing-write and incomplete-ledger variants, a claimed 09:45–11:10 int
 
 **UNVERIFIED_CLOCK:** Copy age and outage elapsed time remain unknown because the declared clock-check premise is false. The two listed write IDs remain a separate toy comparison; their presence cannot repair the timing deficit.
 
-### Chapter 3 W1 write-pause verification lab — worked result
+### Module 3 W1 write-pause verification lab — worked result
 
 The unmodified in-memory program in section 3.3 prints:
 
@@ -9970,7 +10499,7 @@ All three remain live at 09:20. R17's later task-list statement and R18's B20 ed
 
 **Next check:** the service owner authorizes a restricted comparison of B19's current state with an approved target, while the application custodian documents the query range and retention limit. Do not borrow the later P1/C1 rows to answer this pre-card review. No supported claim of eradication follows from a narrow quiet query.
 
-**BH4 worked refinement:** At the Branch S-only checkpoint, the specified current `desk-a` session was **reported revoked** at 09:45, and the branch's narrow booking query reported no later matching edits within its queried range. Those are the two bounded supported claims. The identity of the human behind the original edits is not established, and the report does not show that every booking is correct or every access path is closed. A blind receiver should locate the Branch S card in Chapter 4 and explain its narrow scope. P1/C1 and V1 remain withheld; they cannot appear in this four-row answer. If the branch card is missing from the sealed packet, the correct output is a missing-pointer defect and a request for the source, not a claim that revocation failed or booking correctness passed.
+**BH4 worked refinement:** At the Branch S-only checkpoint, the specified current `desk-a` session was **reported revoked** at 09:45, and the branch's narrow booking query reported no later matching edits within its queried range. Those are the two bounded supported claims. The identity of the human behind the original edits is not established, and the report does not show that every booking is correct or every access path is closed. A blind receiver should locate the Branch S card in Module 4 and explain its narrow scope. P1/C1 and V1 remain withheld; they cannot appear in this four-row answer. If the branch card is missing from the sealed packet, the correct output is a missing-pointer defect and a request for the source, not a claim that revocation failed or booking correctness passed.
 
 ### EX046 — Worked result
 
@@ -10034,7 +10563,7 @@ The supplementary BH4 attachment should preserve `BH4-packet-v1` and `BH4-receiv
 
 <a id="ir-rapid-ch04-del4-result"></a>
 
-### Chapter 4 DEL4 offline laboratory — worked result
+### Module 4 DEL4 offline laboratory — worked result
 
 The chapter's exact Python 3 fixture prints fifteen lines:
 
@@ -10058,7 +10587,7 @@ RETRY_CHECK attempts=2 logical_versions=1
 
 The most favorable row is a match among the fixture's assumed role, version, transport flag and exact read-back string. It does not authenticate a person, approve the underlying write pause, reconcile the two Branch P requests or prove production delivery. C-COORD conveys only a review proposal. An unconfirmed or overdue acknowledgement is unresolved or escalated, never consent. The S-BRANCH, D-RECOVERY and M2-PRIVACY rows are rejected by branch or release boundaries. The final line counts two auditable attempts at one logical message/version. For the five-point supplementary rubric, compare the learner's full output, approval/send separation, role/version/read-back explanation, stage and branch exclusions, and stated evidence limits. This laboratory is separate from the fifty numbered exercises.
 
-### Chapter 4 F1 replay lab — worked result
+### Module 4 F1 replay lab — worked result
 
 **Record A — current-session option, 09:37 UTC, replay only.** “R17 limits the approved training plan to B17/B18 and R18 records a B20 edit outside that plan. I recommend that the fictional incident lead and identity owner consider revoking the *current* `desk-a` session after a bounded preservation check of the supplied records. The intended benefit is to stop further changes through that session; the cost is staff reauthentication, and other sessions or paths remain untested. Approval is **requested**, not presumed. The identity administrator would report execution only after both fictional approvers agree; the response lead would then check a newly authorized audit range and staff impact at the next checkpoint. An unexplained fresh edit or inability to verify the session result triggers reassessment.” This is a proposal at 09:37, even if the original Branch S card later reports an action in a different run.
 
@@ -10068,7 +10597,7 @@ The most favorable row is a match among the fixture's assumed role, version, tra
 
 **Rubric check:** R21 is not treated as approval (1); Record A names both fictional approvers and a bounded result check (1); Record B retains the service cost and pending authority (1); escalation and a review trigger are specified (1); the handoff states no execution at 09:37 (1). **Model score: 5/5.** A learner who recommends waiting on both options can also receive 5/5 if the record explains the residual booking risk, identifies who can decide, and fixes a prompt review time. A learner who uses the 09:45 Branch S result to justify the 09:37 proposal loses the evidence-timing point because that result was unavailable then.
 
-### Chapter 4 communication replay — worked result
+### Module 4 communication replay — worked result
 
 The following packet is **draft, not sent**, for the optional M1/M2 replay after Round D. It uses Branch S. No message in this example is an actual Harbor Library or British Library communication. The 10:05 checkpoint is a proposed classroom review, not a predicted restoration time.
 
@@ -10102,7 +10631,7 @@ Before any real public message, the owners must confirm that the front-desk rout
 
 <a id="ir-rapid-ch04-f4-audit-result"></a>
 
-### Chapter 4 F4-AUDIT laboratory — worked result
+### Module 4 F4-AUDIT laboratory — worked result
 
 ~~~text
 A-timeline: IN_SCOPE
@@ -10135,7 +10664,7 @@ The frozen example totals 8/12, below the declared classroom threshold. The revi
 
 <a id="ir-rapid-ch04-bh4-result"></a>
 
-### Chapter 4 BH4 offline laboratory — worked result
+### Module 4 BH4 offline laboratory — worked result
 
 The revised branch-matched fixture prints twelve lines:
 
@@ -10166,7 +10695,7 @@ BASE_P PASS_BOUNDED_RECONSTRUCTION
 
 The script checks literal values and release stages. It does not authenticate real source files, test link availability, perform natural-language comprehension, verify live approvals or record human performance. Even the `receiver` dictionary is a fabricated response, not a real student submission.
 
-### Chapter 4 tabletop — six-artifact model submission
+### Module 4 tabletop — six-artifact model submission
 
 This **model submission** uses Branch S and is assembled from fictional records. At 09:37 the action was proposed; the separately released Branch S card reports a 09:45 revocation under fictional incident-lead approval, but does not supply an additional identity-owner approval receipt. Copy the artifact structure for a Branch P alternative, not its conclusions.
 
@@ -10192,7 +10721,7 @@ These explanations need not be mutually exclusive. Their table entries are hypot
 
 The model earns full credit only if the learner's own six artifacts preserve the same evidence boundaries and state which checks remain unperformed. A polished handoff with an invented successful restore or an unrecorded approval fails the relevant rubric row even if its prose is clear.
 
-## Chapter 1 glossary
+## Module 1 glossary
 
 - **Service function:** a distinct user-facing operation with a defined useful result.
 - **Technical dependency:** a component required for an operation under a declared model.
@@ -10216,7 +10745,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Revocation:** withdrawal of a delegation before its stated expiry; the governed register, rather than the requester, supplies its status in the AR1 exercise.
 - **Custodian:** the role responsible for a source or service action, distinct from the person who approves the decision.
 
-## Chapter 2 glossary
+## Module 2 glossary
 
 - **Derived review view:** a purpose-limited selection and projection made from a source under recorded authority, not a replacement for that source.
 - **Row selection:** the rule deciding which records or business objects enter a review view.
@@ -10241,7 +10770,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Impact unit:** the object being counted, such as a ticket, booking, edit or person; different units cannot be interchanged.
 - **Unverified comparison:** a selected object for which the approved target or current authoritative value is unavailable.
 
-## Chapter 3 glossary
+## Module 3 glossary
 
 - **Containment:** a bounded action intended to limit further harm while investigation continues.
 - **Control effectiveness:** the observed effect of a proposed safeguard within a named scope and test window; an enabled setting or quiet log alone does not establish it.
@@ -10257,7 +10786,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Expected version:** the business-object state a queued request assumed; a mismatch requires review rather than a blind overwrite.
 - **Queue disposition:** the documented result or hold condition for each original manual receipt, with an accountable owner.
 
-## Chapter 4 glossary
+## Module 4 glossary
 
 - **After-action report:** a documented account of exercise scope, observations, limits and proposed improvements; a model classroom report is not an operational incident finding.
 - **After-action review:** a structured review of decisions, evidence, coordination and improvements after an exercise or event.
@@ -10276,20 +10805,20 @@ The model earns full credit only if the learner's own six artifacts preserve the
 1. NIST, [SP 800-61 Rev. 3, *Incident Response Recommendations and Considerations for Cybersecurity Risk Management*](https://csrc.nist.gov/pubs/sp/800/61/r3/final), April 2025. Used for the integration of response across risk-management activities.
 2. NIST, [Cybersecurity Framework 2.0 FAQ](https://www.nist.gov/cyberframework/faqs), section “Framework Components.” Used for the six concurrent and continuous functions.
 3. CyKin, [incident-response practice playbook index](../../../../../playbooks/incident-response-resilience/README.md). This index points to revision-pinned source playbooks; it is supplementary to the book. Source repositories retain their own rights.
-4. NIST, [SP 800-86, *Guide to Integrating Forensic Techniques into Incident Response*](https://csrc.nist.gov/pubs/sp/800/86/final), August 2006. Used for the limited, authorized evidence-collection lesson in Chapter 2; this introductory exercise is not a substitute for a forensic or legal procedure.
-5. NIST, [SP 800-184, *Guide for Cybersecurity Event Recovery*](https://csrc.nist.gov/pubs/sp/800/184/final), December 2016. Used for the Chapter 3 emphasis on planned, verifiable recovery.
+4. NIST, [SP 800-86, *Guide to Integrating Forensic Techniques into Incident Response*](https://csrc.nist.gov/pubs/sp/800/86/final), August 2006. Used for the limited, authorized evidence-collection lesson in Module 2; this introductory exercise is not a substitute for a forensic or legal procedure.
+5. NIST, [SP 800-184, *Guide for Cybersecurity Event Recovery*](https://csrc.nist.gov/pubs/sp/800/184/final), December 2016. Used for the Module 3 emphasis on planned, verifiable recovery.
 6. NIST, [SP 800-34 Rev. 1, *Contingency Planning Guide for Federal Information Systems*, updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final), November 2010. Used for the distinction between a backup status and a tested recovery plan.
-7. NIST, [SP 800-84, *Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities*](https://csrc.nist.gov/pubs/sp/800/84/final), September 2006. Used for the Chapter 4 design, conduct and evaluation of a tabletop exercise.
-8. British Library, [*Learning Lessons from the Cyber-Attack: British Library Cyber Incident Review*](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=), 8 March 2024. Primary institutional account used for the separate real-world source-reading activity in Chapter 3. Its text and findings are cited, not copied or relicensed.
-9. NIST, [SP 800-92, *Guide to Computer Security Log Management*](https://csrc.nist.gov/pubs/sp/800/92/final), September 2006. Background on log-management processes for Chapter 2. Its age and high-level scope are stated beside the original delayed-arrival exercise; it does not prescribe the fictional fixture or its query algorithm.
+7. NIST, [SP 800-84, *Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities*](https://csrc.nist.gov/pubs/sp/800/84/final), September 2006. Used for the Module 4 design, conduct and evaluation of a tabletop exercise.
+8. British Library, [*Learning Lessons from the Cyber-Attack: British Library Cyber Incident Review*](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=), 8 March 2024. Primary institutional account used for the separate real-world source-reading activity in Module 3. Its text and findings are cited, not copied or relicensed.
+9. NIST, [SP 800-92, *Guide to Computer Security Log Management*](https://csrc.nist.gov/pubs/sp/800/92/final), September 2006. Background on log-management processes for Module 2. Its age and high-level scope are stated beside the original delayed-arrival exercise; it does not prescribe the fictional fixture or its query algorithm.
 
 10. IETF, [RFC 9110 §9.2.2, *HTTP Semantics: Idempotent Methods*](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2), June 2022. Used only to distinguish HTTP method retry semantics from this book's fictional application-level operation keys; it does not guarantee exactly-once booking effects.
 
-11. NIST, [SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information*](https://csrc.nist.gov/pubs/sp/800/122/final), April 2010. Used for the Chapter 2 purpose-limited reviewer-view lesson; it does not establish Harbor Library’s legal basis or authorize a real export.
+11. NIST, [SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information*](https://csrc.nist.gov/pubs/sp/800/122/final), April 2010. Used for the Module 2 purpose-limited reviewer-view lesson; it does not establish Harbor Library’s legal basis or authorize a real export.
 
 12. NIST CSRC, [Recovery Time Objective](https://csrc.nist.gov/glossary/term/recovery_time_objective) and [Recovery Point Objective](https://csrc.nist.gov/glossary/term/recovery_point_objective) glossary entries. Used in the RTE3 teaching to distinguish approved recovery objectives from the separately declared classroom measurement contract.
 
-13. FEMA, [Homeland Security Exercise and Evaluation Program (HSEEP) 2020 — Policy and Guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance). Used for the Chapter 4 discussion of observable exercise performance and corrective-action tracking. The BH4 contract and fictional fixture are CyKin originals, not FEMA requirements.
+13. FEMA, [Homeland Security Exercise and Evaluation Program (HSEEP) 2020 — Policy and Guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance). Used for the Module 4 discussion of observable exercise performance and corrective-action tracking. The BH4 contract and fictional fixture are CyKin originals, not FEMA requirements.
 
 14. NIST, [Cybersecurity Framework 2.0 (CSWP 29)](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf), February 2024. Provides flexible risk-management outcomes used as context for the TRI2 priority-review lesson; it does not prescribe TRI2 labels, decision thresholds or a universal incident-severity matrix.
 

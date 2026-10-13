@@ -14,7 +14,7 @@ flowchart LR
     Access --> D1[D1 lesson and exercise progress]
 ```
 
-The repository is the canonical source for one `MANUSCRIPT.md` per course and language. `SUBJECTS.md` organizes modules, `PLAN.md` records the editorial sequence, and the site reads **authored** chapters, examples and worked answers from the manuscript. The weekday calendar sets a lesson minimum and no maximum. A new book commit appears in the API and reader when fetched from `main`; a structural catalog or frontend change requires a validated local build and Worker deploy. Only optional saved progress crosses the Access boundary and uses D1.
+The repository is the canonical source for one `MANUSCRIPT.md` per course and language. `SUBJECTS.md` lists chapters and their daily lessons; `PLAN.md` records the editorial sequence. The default hierarchy is **course → weekly chapter → five weekday lessons → examples, exercise and worked answer**. Longer courses have more and deeper chapters. Astro builds the catalog locally and carries each level's planning baseline of 20–1,300 weekday lessons. That baseline is separate from legacy subject chapters and actually authored lessons. The API reads `ch-NN` and `lesson-NN` anchors when an edition has the weekly structure; it continues to serve older books as legacy chapter blocks without inventing daily lessons. A new book commit appears in the API and reader when fetched from `main`; a catalog or frontend change requires a validated local build and Worker deploy. Only optional saved progress crosses the Access boundary and uses D1.
 
 ## Local development
 
@@ -32,7 +32,7 @@ Open `http://localhost:8787/`. The site and `/api/*` and `/mcp` are public. The 
 
 Readers use the separate **By level** and **By subject** menus. `/levels/` and `/subjects/` open distinct directories; `/levels/{level}/` lists the 23 separate courses at that level, and `/subjects/{area}/` lists the nine distinct levels of that subject. Each `/courses/{level}/{area}/?lang=...` page has its own lesson guide, lesson reader and navigation. `/book/?level=...&area=...&lang=...` displays the complete manuscript, and `/read/?path=...` displays course references and plans. Old `/learn/` links redirect to the corresponding course or directory. These pages render Markdown within CyKin and route book, chapter, index and reference links internally. Readers can select any of the nine planned book editions; availability is shown from the actual manuscript. The interface starts in English, follows a supported browser language (English, Portuguese or Spanish), and offers a persistent interface-language switch. The selected course edition (`lang`) remains separate from the interface translation (`ui`); an outline is never shown as a written lesson.
 
-The same quality rule applies to all nine language editions. The site shows the chapters that exist. It does not require a book to grow to a fixed lesson count. The API can address a chapter id that is present in the manuscript; it does not invent missing lesson text. See the [curriculum grid](../CURRICULUM_GRID.md) and [book standard](../BOOK_STANDARD.md).
+The daily curriculum target applies to all nine language editions. Current subject chapters remain visible as legacy content blocks until an edition is expanded into weekly chapters and daily lessons. The API supports chapter and lesson identifiers through `1300` and exercise identifiers through `EX1300`; it does not invent missing teaching. The course route keeps the existing `?chapter=N` parameter as a compatibility URL for the numbered lesson, and the full-book reader links to `#ch-NN` and `#lesson-NN` inside the site. See the [curriculum grid](../CURRICULUM_GRID.md) and [book standard](../BOOK_STANDARD.md) for authoring and release criteria.
 
 ## Student sign-in and progress
 
@@ -57,8 +57,8 @@ For a content-only publication, push the Markdown to GitHub; the reader fetches 
 ## Public AI interface
 
 - `GET /api/catalog` lists 207 courses and build-time edition hints.
-- `GET /api/courses/{level}/{area}/{language}` distinguishes authored chapters from outlines.
-- `GET /api/lessons/{level}/{area}/{language}/{chapter}` returns a chapter, exercises, worked answers and its GitHub source URL.
+- `GET /api/courses/{level}/{area}/{language}` distinguishes authored weekly chapters and daily lessons from legacy subject chapters and outlines.
+- `GET /api/lessons/{level}/{area}/{language}/{chapter}` returns a numbered daily lesson when the edition has `lesson-NN` anchors; older editions return their existing subject chapter. The response includes exercises, worked answers and its public source URL.
 - `GET /api/books/{level}/{area}/{language}` returns the current Markdown manuscript.
 - `GET /api/source?path=...` returns a public Markdown course reference for internal reading routes.
 - `GET /api/search/{level}/{area}/{language}?q=...` searches the current book.

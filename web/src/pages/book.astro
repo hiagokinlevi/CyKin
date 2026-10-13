@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Read a book · CyKin" description="Read a complete public CyKin course book on the site.">
   <section class="book-heading"><div class="shell"><div class="eyebrow">OPEN BOOK · NO ACCOUNT REQUIRED</div><h1 id="book-title">Public course book</h1><p id="book-status" role="status">Loading the current book…</p><a id="book-guide" class="button secondary" href="/levels/">Course lesson guide →</a></div></section>
-  <section class="section"><div class="shell book-grid"><aside class="card book-index"><div class="eyebrow">CHAPTERS</div><nav id="book-chapters" aria-label="Book chapters"></nav></aside><article id="book-content" class="card prose book-content"></article></div></section>
+  <section class="section"><div class="shell book-grid"><aside class="card book-index"><div class="eyebrow">CHAPTERS & LESSONS</div><nav id="book-chapters" aria-label="Book chapters and lessons"></nav></aside><article id="book-content" class="card prose book-content"></article></div></section>
   <script>
     import { renderMarkdown, sourceUrlFor } from '../lib/reader';
     import { siteLanguage } from '../lib/i18n';
@@ -25,12 +25,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const details = await response.json();
         title.textContent = details.course.title;
         document.title = details.course.title + ' · CyKin';
-        for (const lesson of details.lessons) {
-          const a = document.createElement('a');
-          const target = new URLSearchParams(route); target.set('chapter', String(lesson.chapter));
-          a.href = `/courses/${level}/${area}/?${target}`;
-          a.textContent = `${String(lesson.chapter).padStart(2,'0')} · ${lesson.title}${lesson.published ? '' : ' · planned'}`;
-          index.append(a);
+        for (const module of details.modules) {
+          const group = document.createElement('section'); group.className = 'book-index-group';
+          const heading = document.createElement('a'); heading.className = 'book-index-heading';
+          if (details.has_daily_lessons) {
+            heading.href = `#ch-${String(module.number).padStart(2, '0')}`;
+            heading.textContent = `Chapter ${String(module.number).padStart(2, '0')} · ${module.title}`;
+          } else {
+            heading.href = guide.href;
+            heading.textContent = `${module.kind} ${module.number}`;
+          }
+          group.append(heading);
+          for (const number of module.chapters) {
+            const lesson = details.lessons.find((item: { chapter: number }) => item.chapter === number);
+            if (!lesson) continue;
+            const a = document.createElement('a');
+            const target = new URLSearchParams(route); target.set('chapter', String(lesson.chapter));
+            a.href = lesson.published ? `#${details.has_daily_lessons ? 'lesson' : 'ch'}-${String(lesson.chapter).padStart(2, '0')}` : `/courses/${level}/${area}/?${target}`;
+            a.textContent = `${String(lesson.chapter).padStart(2,'0')} · ${lesson.title}${lesson.published ? '' : ' · planned'}`;
+            group.append(a);
+          }
+          index.append(group);
         }
         if (!details.book_url) {
           status.textContent = 'This edition has a plan, but its book has not been written yet.';
@@ -42,7 +57,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           const book = await fetch(`/api/books/${level}/${area}/${lang}`);
           if (!book.ok) throw new Error('The book is temporarily unavailable.');
           const markdown = await book.text();
-          status.textContent = `${details.published_chapters} written chapters · Read here or choose one lesson from the guide.`;
+          status.textContent = details.has_daily_lessons ? `${details.published_chapters} written chapters · ${details.published_lessons} daily lessons · Read here or choose one lesson from the guide.` : `${details.published_chapters} legacy subject chapters · Read here or open the course guide.`;
           await renderMarkdown(content, markdown, sourceUrlFor(`levels/${level}/${area}/${lang}/book/MANUSCRIPT.md`), lang, 'book');
           if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
         }
@@ -52,6 +67,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 <style>
   .book-heading { padding: 72px 0 45px; background: var(--bg-2); border-bottom: 1px solid var(--line); }.book-heading h1 { font-size: clamp(2.5rem,5vw,4.5rem); }.book-heading p { color: var(--muted); }.book-heading .button { margin-top: 12px; }
-  .book-grid { display: grid; grid-template-columns: 290px minmax(0,1fr); gap: 24px; align-items: start; }.book-index { position: sticky; top: 96px; max-height: calc(100vh - 115px); overflow: auto; padding: 23px; }.book-index nav { display: grid; margin-top: 15px; gap: 8px; }.book-index a { padding: 7px 0; border-bottom: 1px solid var(--line); font-size: .83rem; }.book-index a:hover { color: var(--gold); }.book-content { padding: clamp(25px,4vw,55px); min-height: 440px; }
+  .book-grid { display: grid; grid-template-columns: 290px minmax(0,1fr); gap: 24px; align-items: start; }.book-index { position: sticky; top: 96px; max-height: calc(100vh - 115px); overflow: auto; padding: 23px; }.book-index nav { display: grid; margin-top: 15px; gap: 12px; }.book-index-group { display: grid; gap: 4px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }.book-index a { display: block; padding: 6px 0; font-size: .83rem; }.book-index .book-index-heading { color: var(--gold); font-weight: 600; }.book-index a:hover { color: var(--gold); }.book-content { padding: clamp(25px,4vw,55px); min-height: 440px; }
   @media(max-width:800px){.book-grid{grid-template-columns:1fr}.book-index{position:static;max-height:330px}.book-heading{padding-top:48px}}
 </style>

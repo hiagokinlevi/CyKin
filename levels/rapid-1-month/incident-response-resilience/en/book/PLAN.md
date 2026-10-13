@@ -1,108 +1,227 @@
 # Principal book plan — Incident response and cyber resilience / Rapid course / English
 
-**One book for this course and language.** 4 curricular subjects are its chapters. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience.
+**One book, at least four weekly chapters and 20 daily lessons.** The course is an introductory, contained learning path of approximately 80 hours. The published teaching lives in [the principal manuscript](MANUSCRIPT.md); this file explains its sequence and does not substitute for a lesson. A chapter or the study timeline may grow when the technical concept requires more depth.
 
-**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
+**Editorial state:** all four weekly chapters, 20 daily lessons and 50 exercise/answer pairs are present. Whole-volume technical, editorial, rights, accessibility and A4 verification remain open. Do not infer finished-book approval from chapter count.
 
-[Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
+[Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md) · [Book standard](../../../../../BOOK_STANDARD.md)
 
-## Book requirements
+## Module structure
 
-A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 320-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
+1. [Readiness, roles and authorized scope](MANUSCRIPT.md#week-01): service promises, evidence readiness, booking invariants, authority rehearsal and a bounded first decision.
+2. [Alert triage and evidence preservation](MANUSCRIPT.md#week-02): priority under changing evidence, source-hold and copy lifecycles, correlation, impact and privacy.
+3. [Containment, eradication and recovery](MANUSCRIPT.md#week-03): authorized options, cause-specific checks, isolated restore, recovery gates and queue reconciliation.
+4. [Guided simulation and after-action review](MANUSCRIPT.md#week-04): released injects, frozen-artifact scoring, communication, delivery/read-back and blind handoff.
 
-## Primary source starting points
+## Daily lesson briefs
 
-- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
-- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
-- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
-- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
-
-These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
-
-## Contents and chapter summaries
-
-These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+These short lesson briefs route the reader to published teaching inside four weekly chapters. The exercise IDs below refer to the full prompts in each lesson and worked results in the same book.
 
 <a id="ch-01"></a>
 
-### Chapter 01 — Incident readiness, roles and authorized scope
+## Chapter 01 — Incident readiness, roles and authorized scope
 
-**Stage 1; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
+**Instructional week 1.** Five daily lessons follow. The chapter may be expanded when the subject demands more depth.
 
-**Teaching purpose and relevance:** Show that an incident decision depends on prior ownership, service knowledge, evidence readiness and permission; prevent a suspicious signal from becoming an unauthorized investigation.
+<a id="lesson-01"></a>
 
-**Concepts and techniques:** Service dependencies; testable evidence-readiness contract; source lineage and missingness; incident record; observation versus conclusion; decision owner; scoped authorization.
+### Lesson 01 — Evidence readiness and the first case question
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+**Chapter 1, day 1.** [Read the complete lesson](MANUSCRIPT.md#lesson-01). Its teaching develops evidence readiness and the first case question, includes a worked checkpoint and assigns EX001. Attempt the prompts in the lesson before reading their final results.
 
-**Worked example:** A synthetic Harbor Library booking service, a proposed D1 evidence contract and an unusual staff sign-in.
+**Continue studying — lesson 01 of at least 20:** [← Course home](../../README.md) · [Course lesson index](../SUBJECTS.md) · [Lesson 02 →](MANUSCRIPT.md#lesson-02)
 
-**Practice and exercises:** Map dependencies to bounded decision questions and source limits, assign owners and open a case record without treating planned telemetry as collected evidence. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
+<a id="lesson-02"></a>
 
-**Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+### Lesson 02 — Booking invariants and behavioral baselines
 
-**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
+**Chapter 1, day 2.** [Read the complete lesson](MANUSCRIPT.md#lesson-02). Its teaching develops booking invariants and behavioral baselines, includes a worked checkpoint and assigns EX002, EX005, EX010. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 02 of at least 20:** [← Lesson 01](MANUSCRIPT.md#lesson-01) · [Course lesson index](../SUBJECTS.md) · [Lesson 03 →](MANUSCRIPT.md#lesson-03)
+
+<a id="lesson-03"></a>
+
+### Lesson 03 — Service paths, dependencies and degraded modes
+
+**Chapter 1, day 3.** [Read the complete lesson](MANUSCRIPT.md#lesson-03). Its teaching develops service paths, dependencies and degraded modes, includes a worked checkpoint and assigns EX003, EX008, EX011. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 03 of at least 20:** [← Lesson 02](MANUSCRIPT.md#lesson-02) · [Course lesson index](../SUBJECTS.md) · [Lesson 04 →](MANUSCRIPT.md#lesson-04)
+
+<a id="lesson-04"></a>
+
+### Lesson 04 — Authority, delegation and pre-incident rehearsal
+
+**Chapter 1, day 4.** [Read the complete lesson](MANUSCRIPT.md#lesson-04). Its teaching develops authority, delegation and pre-incident rehearsal, includes a worked checkpoint and assigns EX006, EX013. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 04 of at least 20:** [← Lesson 03](MANUSCRIPT.md#lesson-03) · [Course lesson index](../SUBJECTS.md) · [Lesson 05 →](MANUSCRIPT.md#lesson-05)
+
+<a id="lesson-05"></a>
+
+### Lesson 05 — Scope, case record and bounded first decision
+
+**Chapter 1, day 5.** [Read the complete lesson](MANUSCRIPT.md#lesson-05). Its teaching develops scope, case record and bounded first decision, includes a worked checkpoint and assigns EX004, EX007, EX009, EX012. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 05 of at least 20:** [← Lesson 04](MANUSCRIPT.md#lesson-04) · [Course lesson index](../SUBJECTS.md) · [Lesson 06 →](MANUSCRIPT.md#lesson-06)
+
+### Continue studying — chapter 01 of 04
+
+[← Course overview](../../README.md) · [Course lesson index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 <a id="ch-02"></a>
 
-### Chapter 02 — Alert triage and evidence preservation
+## Chapter 02 — Alert triage and evidence preservation
 
-**Stage 2; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
+**Instructional week 2.** Five daily lessons follow. The chapter may be expanded when the subject demands more depth.
 
-**Teaching purpose and relevance:** Teach a defensible first assessment and a decision-oriented preservation queue that keeps requests, approvals, collected items and verified limits separate.
+<a id="lesson-06"></a>
 
-**Concepts and techniques:** Triage question; event, discovery and ingestion time; query coverage; evidence pointer; preservation priority and loss path; approval and collection states; copy integrity; package provenance; cross-source correlation keys and ambiguous joins; uncertainty and severity.
+### Lesson 06 — A bounded triage question and revisable priority
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+**Chapter 2, day 1.** [Read the complete lesson](MANUSCRIPT.md#lesson-06). Its teaching develops a bounded triage question and revisable priority, includes a worked checkpoint and assigns EX014, EX015, EX016. Attempt the prompts in the lesson before reading their final results.
 
-**Worked example:** Synthetic R9–R16 booking, identity, training and help-desk records with a 24-hour retention notice, plus separate delayed-arrival and overlapping-session replays.
+**Continue studying — lesson 06 of at least 20:** [← Lesson 05](MANUSCRIPT.md#lesson-05) · [Course lesson index](../SUBJECTS.md) · [Lesson 07 →](MANUSCRIPT.md#lesson-07)
 
-**Practice and exercises:** Build a bounded timeline, rank minimal source requests, distinguish booking from application audit, test quiet-query limits, audit a synthetic evidence package and classify cross-source matches without inferring a human actor. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
+<a id="lesson-07"></a>
 
-**Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
+### Lesson 07 — Preservation, timestamps and package integrity
 
-**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
+**Chapter 2, day 2.** [Read the complete lesson](MANUSCRIPT.md#lesson-07). Its teaching develops preservation, timestamps and package integrity, includes a worked checkpoint and assigns EX017, EX019, EX020, EX021. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 07 of at least 20:** [← Lesson 06](MANUSCRIPT.md#lesson-06) · [Course lesson index](../SUBJECTS.md) · [Lesson 08 →](MANUSCRIPT.md#lesson-08)
+
+<a id="lesson-08"></a>
+
+### Lesson 08 — A source hold is a separate lifecycle
+
+**Chapter 2, day 3.** [Read the complete lesson](MANUSCRIPT.md#lesson-08). Its teaching develops a source hold is a separate lifecycle, includes a worked checkpoint and assigns EX018. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 08 of at least 20:** [← Lesson 07](MANUSCRIPT.md#lesson-07) · [Course lesson index](../SUBJECTS.md) · [Lesson 09 →](MANUSCRIPT.md#lesson-09)
+
+<a id="lesson-09"></a>
+
+### Lesson 09 — Correlation, quiet queries and reviewer handoff
+
+**Chapter 2, day 4.** [Read the complete lesson](MANUSCRIPT.md#lesson-09). Its teaching develops correlation, quiet queries and reviewer handoff, includes a worked checkpoint and assigns EX022, EX024. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 09 of at least 20:** [← Lesson 08](MANUSCRIPT.md#lesson-08) · [Course lesson index](../SUBJECTS.md) · [Lesson 10 →](MANUSCRIPT.md#lesson-10)
+
+<a id="lesson-10"></a>
+
+### Lesson 10 — Impact bounds, denominators and privacy
+
+**Chapter 2, day 5.** [Read the complete lesson](MANUSCRIPT.md#lesson-10). Its teaching develops impact bounds, denominators and privacy, includes a worked checkpoint and assigns EX023, EX025, EX026. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 10 of at least 20:** [← Lesson 09](MANUSCRIPT.md#lesson-09) · [Course lesson index](../SUBJECTS.md) · [Lesson 11 →](MANUSCRIPT.md#lesson-11)
+
+### Continue studying — chapter 02 of 04
+
+[← Chapter 01](#ch-01) · [Course lesson index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 <a id="ch-03"></a>
 
-### Chapter 03 — Containment, eradication and recovery decisions
+## Chapter 03 — Containment, eradication and recovery decisions
 
-**Stage 3; 80 planned A4 pages; 12 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
+**Instructional week 3.** Five daily lessons follow. The chapter may be expanded when the subject demands more depth.
 
-**Teaching purpose and relevance:** Explain how a response choice can reduce harm while risking service disruption, evidence loss or premature closure.
+<a id="lesson-11"></a>
 
-**Concepts and techniques:** Containment options; approval; tested control effectiveness across write routes; competing cause hypotheses and cause-to-fix verification; backup candidate provenance, freshness and correctness; isolated restore; rollback and review time.
+### Lesson 11 — Containment options and their service cost
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+**Chapter 3, day 1.** [Read the complete lesson](MANUSCRIPT.md#lesson-11). Its teaching develops containment options and their service cost, includes a worked checkpoint and assigns EX027, EX028, EX029. Attempt the prompts in the lesson before reading their final results.
 
-**Worked example:** The fictional booking service with suspicious staff-account activity, a separate isolated write-pause validation branch, a conditional credential-versus-application-fault cause test, a successful backup job without a recent restore test, and a three-candidate recovery replay.
+**Continue studying — lesson 11 of at least 20:** [← Lesson 10](MANUSCRIPT.md#lesson-10) · [Course lesson index](../SUBJECTS.md) · [Lesson 12 →](MANUSCRIPT.md#lesson-12)
 
-**Practice and exercises:** Compare bounded actions, test whether a proposed pause blocks its stated write routes, design a cause-specific eradication test, reconcile booking states, screen candidate copies against recovery objectives and define service-acceptance evidence. The planned allocation is 12 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
+<a id="lesson-12"></a>
 
-**Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
+### Lesson 12 — Cause-specific correction and initial recovery gates
 
-**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
+**Chapter 3, day 2.** [Read the complete lesson](MANUSCRIPT.md#lesson-12). Its teaching develops cause-specific correction and initial recovery gates, includes a worked checkpoint and assigns EX030, EX031, EX032. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 12 of at least 20:** [← Lesson 11](MANUSCRIPT.md#lesson-11) · [Course lesson index](../SUBJECTS.md) · [Lesson 13 →](MANUSCRIPT.md#lesson-13)
+
+<a id="lesson-13"></a>
+
+### Lesson 13 — Backup provenance, freshness and recovery objectives
+
+**Chapter 3, day 3.** [Read the complete lesson](MANUSCRIPT.md#lesson-13). Its teaching develops backup provenance, freshness and recovery objectives, includes a worked checkpoint and assigns EX033, EX034. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 13 of at least 20:** [← Lesson 12](MANUSCRIPT.md#lesson-12) · [Course lesson index](../SUBJECTS.md) · [Lesson 14 →](MANUSCRIPT.md#lesson-14)
+
+<a id="lesson-14"></a>
+
+### Lesson 14 — Evidence-linked recovery decision records
+
+**Chapter 3, day 4.** [Read the complete lesson](MANUSCRIPT.md#lesson-14). Its teaching develops evidence-linked recovery decision records, includes a worked checkpoint and assigns EX035, EX036. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 14 of at least 20:** [← Lesson 13](MANUSCRIPT.md#lesson-13) · [Course lesson index](../SUBJECTS.md) · [Lesson 15 →](MANUSCRIPT.md#lesson-15)
+
+<a id="lesson-15"></a>
+
+### Lesson 15 — Queue reconciliation before return to service
+
+**Chapter 3, day 5.** [Read the complete lesson](MANUSCRIPT.md#lesson-15). Its teaching develops queue reconciliation before return to service, includes a worked checkpoint and assigns EX037, EX038. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 15 of at least 20:** [← Lesson 14](MANUSCRIPT.md#lesson-14) · [Course lesson index](../SUBJECTS.md) · [Lesson 16 →](MANUSCRIPT.md#lesson-16)
+
+### Continue studying — chapter 03 of 04
+
+[← Chapter 02](#ch-02) · [Course lesson index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 <a id="ch-04"></a>
 
-### Chapter 04 — Guided incident simulation and after-action review
+## Chapter 04 — Guided incident simulation and after-action review
 
-**Stage 4; 80 planned A4 pages; 12 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
+**Instructional week 4.** Five daily lessons follow. The chapter may be expanded when the subject demands more depth.
 
-**Teaching purpose and relevance:** Integrate readiness, triage and recovery into one controlled case and show how learning is recorded without claiming an untested return to service.
+<a id="lesson-16"></a>
 
-**Concepts and techniques:** Tabletop inject; decision log; evidence-linked score calibration and versioned artifact revision; audience-specific status communication; measurement contract; after-action report; corrective-action closure.
+### Lesson 16 — Release-aware tabletop and scored handoff
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+**Chapter 4, day 1.** [Read the complete lesson](MANUSCRIPT.md#lesson-16). Its teaching develops release-aware tabletop and scored handoff, includes a worked checkpoint and assigns EX039, EX040, EX041, EX042. Attempt the prompts in the lesson before reading their final results.
 
-**Worked example:** A synthetic Harbor Library scenario with staged evidence, a two-reviewer L2 scoring comparison, an unavailable-approver replay and a separate unverified-exposure message replay.
+**Continue studying — lesson 16 of at least 20:** [← Lesson 15](MANUSCRIPT.md#lesson-15) · [Course lesson index](../SUBJECTS.md) · [Lesson 17 →](MANUSCRIPT.md#lesson-17)
 
-**Practice and exercises:** Complete a guided tabletop and six-artifact case record, reconcile contested scores against frozen evidence, compare exercise findings with technical tests, draft bounded messages and plan evidence-linked improvements. The planned allocation is 12 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
+<a id="lesson-17"></a>
 
-**Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+### Lesson 17 — After-action review and unavailable-approver branch
 
-**Continue studying — chapter 04 of 04 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Chapter 4, day 2.** [Read the complete lesson](MANUSCRIPT.md#lesson-17). Its teaching develops after-action review and unavailable-approver branch, includes a worked checkpoint and assigns EX043, EX044, EX045, EX046. Attempt the prompts in the lesson before reading their final results.
 
-## Practical and assessment plan
+**Continue studying — lesson 17 of at least 20:** [← Lesson 16](MANUSCRIPT.md#lesson-16) · [Course lesson index](../SUBJECTS.md) · [Lesson 18 →](MANUSCRIPT.md#lesson-18)
 
-Practice: follow a contained worked example. Assessment: short quiz, observed lab and a small annotated artifact. Allocate at least one authored exercise to every chapter and at least 50 in the whole book. Each technical exercise needs a goal, inputs, authorized scope, steps, expected evidence and a worked or rubric-based result. The final book requires a glossary, references and an A4 rendering verified under the [book standard](../../../../../BOOK_STANDARD.md).
+<a id="lesson-18"></a>
+
+### Lesson 18 — Frozen evidence, communication and improvement closure
+
+**Chapter 4, day 3.** [Read the complete lesson](MANUSCRIPT.md#lesson-18). Its teaching develops frozen evidence, communication and improvement closure, includes a worked checkpoint and assigns EX047, EX049. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 18 of at least 20:** [← Lesson 17](MANUSCRIPT.md#lesson-17) · [Course lesson index](../SUBJECTS.md) · [Lesson 19 →](MANUSCRIPT.md#lesson-19)
+
+<a id="lesson-19"></a>
+
+### Lesson 19 — Message delivery and read-back as separate gates
+
+**Chapter 4, day 4.** [Read the complete lesson](MANUSCRIPT.md#lesson-19). Its teaching develops message delivery and read-back as separate gates, includes a worked checkpoint and assigns EX048. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 19 of at least 20:** [← Lesson 18](MANUSCRIPT.md#lesson-18) · [Course lesson index](../SUBJECTS.md) · [Lesson 20 →](MANUSCRIPT.md#lesson-20)
+
+<a id="lesson-20"></a>
+
+### Lesson 20 — Blind handoff and independent reconstruction
+
+**Chapter 4, day 5.** [Read the complete lesson](MANUSCRIPT.md#lesson-20). Its teaching develops blind handoff and independent reconstruction, includes a worked checkpoint and assigns EX050. Attempt the prompts in the lesson before reading their final results.
+
+**Continue studying — lesson 20 of at least 20:** [← Lesson 19](MANUSCRIPT.md#lesson-19) · [Course lesson index](../SUBJECTS.md) · [Next course via lesson index →](../SUBJECTS.md)
+
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — incident response in cybersecurity risk management.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, tests and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; review its age and scope before applying details.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques; verify older technical details against current practice.
+
+Harbor Library and all R-series classroom records are synthetic. Follow the manuscript citations for claims about real sources. The plan is not evidence of an accredited program or an approved complete book.
+
+### Continue studying — chapter 04 of 04
+
+[← Chapter 03](#ch-03) · [Course lesson index](../SUBJECTS.md) · [Next course via lesson index →](../SUBJECTS.md)

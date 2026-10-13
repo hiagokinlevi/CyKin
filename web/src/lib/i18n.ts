@@ -63,6 +63,8 @@ const copy: Record<string, [string, string]> = {
   'Course language': ['Idioma do curso', 'Idioma del curso'],
   'COURSE CONTENTS': ['CONTEÚDO DO CURSO', 'CONTENIDO DEL CURSO'],
   'Modules and lessons': ['Módulos e aulas', 'Módulos y lecciones'],
+  'Chapters and lessons': ['Capítulos e aulas', 'Capítulos y lecciones'],
+  'Open each chapter to find its daily lessons.': ['Abra cada capítulo para encontrar as aulas diárias.', 'Abre cada capítulo para encontrar las lecciones diarias.'],
   'Published chapters and current curriculum blocks.': ['Capítulos publicados e blocos curriculares atuais.', 'Capítulos publicados y bloques curriculares actuales.'],
   'WEEKDAY STUDY PLAN': ['PLANO DE ESTUDO EM DIAS ÚTEIS', 'PLAN DE ESTUDIO DE LUNES A VIERNES'],
   'HOW TO STUDY': ['COMO ESTUDAR', 'CÓMO ESTUDIAR'],
@@ -74,10 +76,10 @@ const copy: Record<string, [string, string]> = {
   'Length follows the idea': ['O tamanho segue a ideia', 'El tamaño sigue la idea'],
   'English first, then translation': ['Inglês primeiro, depois a tradução', 'Inglés primero, luego la traducción'],
   'One chapter each Monday–Friday: learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.': ['Um capítulo de segunda a sexta: aprenda o conceito, acompanhe um exemplo resolvido e faça um exercício. O plano vale para todos os idiomas.', 'Un capítulo de lunes a viernes: aprende el concepto, sigue un ejemplo resuelto y haz un ejercicio. El plan se aplica a todos los idiomas.'],
+  'One lesson each Monday–Friday, normally five lessons in a weekly chapter. Learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.': ['Uma aula por dia útil, normalmente cinco aulas em cada capítulo semanal. Aprenda o conceito, acompanhe um exemplo resolvido e faça um exercício. O plano vale para todos os idiomas.', 'Una lección por día hábil, normalmente cinco lecciones en cada capítulo semanal. Aprende el concepto, sigue un ejemplo resuelto y resuelve un ejercicio. El plan se aplica a todos los idiomas.'],
   'Mon': ['Seg', 'Lun'], 'Tue': ['Ter', 'Mar'], 'Wed': ['Qua', 'Mié'], 'Thu': ['Qui', 'Jue'], 'Fri': ['Sex', 'Vie'],
   'One course, one book. The study target is one chapter each weekday, with a worked example and an exercise. Read the chapters already published below.': ['Um curso, um livro. A meta é um capítulo por dia útil, com exemplo resolvido e exercício. Leia abaixo os capítulos já publicados.', 'Un curso, un libro. La meta es un capítulo por día hábil, con ejemplo resuelto y ejercicio. Lee abajo los capítulos ya publicados.'],
-  'One course, one book. A lesson is as long as its idea. Read the chapters already published below.': ['Um curso, um livro. A aula tem o tamanho da ideia. Leia abaixo os capítulos já publicados.', 'Un curso, un libro. La lección tiene el tamaño de la idea. Lee abajo los capítulos ya publicados.'],
-  'One course, one book. The weekday calendar sets a minimum number of lessons and no maximum. Read the English chapters already published below.': ['Um curso, um livro. O calendário de dias úteis define um mínimo de aulas e não um máximo. Leia abaixo os capítulos em inglês já publicados.', 'Un curso, un libro. El calendario de días hábiles fija un mínimo de lecciones y no un máximo. Lee abajo los capítulos en inglés ya publicados.'],
+  'One course, one book. Study one lesson each weekday, normally in a weekly chapter with five lessons. Each lesson has a worked example and an exercise. Read what is published below.': ['Um curso, um livro. Estude uma aula por dia útil, normalmente em um capítulo semanal de cinco aulas. Cada aula traz um exemplo resolvido e um exercício. Leia abaixo o que já foi publicado.', 'Un curso, un libro. Estudia una lección por día hábil, normalmente en un capítulo semanal de cinco lecciones. Cada lección incluye un ejemplo resuelto y un ejercicio. Lee lo ya publicado.'],
   'Follow the subjects in their curricular order.': ['Siga as matérias na ordem curricular.', 'Sigue las materias en orden curricular.'],
   '← Course overview': ['← Visão geral do curso', '← Vista general del curso'],
   'Course overview': ['Visão geral do curso', 'Vista general del curso'],
@@ -146,6 +148,8 @@ const copy: Record<string, [string, string]> = {
   'Knowledge': ['Conhecimento', 'Conocimiento'],
   'technical, open': ['técnico, aberto', 'técnico, abierto'],
   'One lesson per chapter': ['Uma aula por capítulo', 'Una lección por capítulo'],
+  'One lesson each weekday': ['Uma aula por dia útil', 'Una lección por día hábil'],
+  'five in a weekly chapter': ['cinco em um capítulo semanal', 'cinco en un capítulo semanal'],
   'with exercises': ['com exercícios', 'con ejercicios'],
   'Living source': ['Fonte viva', 'Fuente viva'],
   'books kept current': ['livros atualizados', 'libros actualizados'],
@@ -172,8 +176,7 @@ const copy: Record<string, [string, string]> = {
   'FROM CONCEPT TO PRACTICE': ['DO CONCEITO À PRÁTICA', 'DEL CONCEPTO A LA PRÁCTICA'],
   'Learning you can verify.': ['Aprendizado que você pode verificar.', 'Aprendizaje que puedes verificar.'],
   'Each course has one book. Subjects organize modules, and the study target is one chapter every weekday, with a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.': ['Cada curso tem um livro. As matérias organizam módulos; a meta é um capítulo por dia útil, com exemplo resolvido e exercício. O leitor mostra o que foi publicado e mantém a navegação entre aulas.', 'Cada curso tiene un libro. Las materias organizan módulos; la meta es un capítulo por día hábil, con ejemplo resuelto y ejercicio. El lector muestra lo publicado y mantiene la navegación entre lecciones.'],
-  'Each course has one book. A lesson is one chapter, as long as the idea needs, with a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.': ['Cada curso tem um livro. Uma aula é um capítulo, do tamanho que a ideia pede, com exemplo resolvido e exercício. O leitor mostra o que foi publicado e mantém a navegação entre aulas.', 'Cada curso tiene un libro. Una lección es un capítulo, del tamaño que la idea pide, con ejemplo resuelto y ejercicio. El lector muestra lo publicado y mantiene la navegación entre lecciones.'],
-  'Each course has one book. A lesson is one chapter, as long as the idea needs, with a worked example and an exercise. The weekday calendar sets a minimum and no maximum: the book grows when the subject needs another lesson. The reader shows the English lessons already published.': ['Cada curso tem um livro. Uma aula é um capítulo, do tamanho que a ideia pede, com exemplo resolvido e exercício. O calendário de dias úteis define um mínimo e não um máximo: o livro cresce quando o assunto precisa de outra aula. O leitor mostra as aulas em inglês já publicadas.', 'Cada curso tiene un libro. Una lección es un capítulo, del tamaño que la idea pide, con ejemplo resuelto y ejercicio. El calendario de días hábiles fija un mínimo y no un máximo: el libro crece cuando el tema necesita otra lección. El lector muestra las lecciones en inglés ya publicadas.'],
+  'Each course has one book. Subjects organize modules, weekly chapters group daily lessons, and each lesson has a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.': ['Cada curso tem um livro. As matérias organizam módulos, os capítulos semanais reúnem aulas diárias e cada aula tem exemplo resolvido e exercício. O leitor mostra o que foi publicado e mantém a navegação entre aulas.', 'Cada curso tiene un libro. Las materias organizan módulos, los capítulos semanales reúnen lecciones diarias y cada lección tiene un ejemplo resuelto y un ejercicio. El lector muestra lo publicado y mantiene la navegación entre lecciones.'],
   'Read the editorial standard →': ['Leia o padrão editorial →', 'Lee el estándar editorial →'],
   'Transparent source': ['Fonte transparente', 'Fuente transparente'],
   'Open text with its course and edition identified.': ['Texto aberto com curso e edição identificados.', 'Texto abierto con curso y edición identificados.'],
@@ -234,6 +237,8 @@ const copy: Record<string, [string, string]> = {
   'Loading the current book…': ['Carregando o livro atual…', 'Cargando el libro actual…'],
   'Course lesson guide →': ['Guia de aulas do curso →', 'Guía de lecciones del curso →'],
   'CHAPTERS': ['CAPÍTULOS', 'CAPÍTULOS'],
+  'CHAPTERS & LESSONS': ['CAPÍTULOS E AULAS', 'CAPÍTULOS Y LECCIONES'],
+  'Book chapters and lessons': ['Capítulos e aulas do livro', 'Capítulos y lecciones del libro'],
   'Book chapters': ['Capítulos do livro', 'Capítulos del libro'],
   'Choose a course from the study guide.': ['Escolha um curso no guia de estudo.', 'Elige un curso en la guía de estudio.'],
   'The course guide could not be loaded.': ['Não foi possível carregar o guia do curso.', 'No se pudo cargar la guía del curso.'],
@@ -309,6 +314,28 @@ const copy: Record<string, [string, string]> = {
 };
 
 function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null {
+  const chapterLessonPosition = english.match(/^Chapter (\d+) · (.+) · Lesson (\d+) of (\d+)$/);
+  if (chapterLessonPosition) return `${lang === 'pt' ? 'Capítulo' : 'Capítulo'} ${chapterLessonPosition[1]} · ${chapterLessonPosition[2]} · ${lang === 'pt' ? 'Aula' : 'Lección'} ${chapterLessonPosition[3]} de ${chapterLessonPosition[4]}`;
+  const chapterLabel = english.match(/^Chapter (\d+) · (.+)$/);
+  if (chapterLabel) return `Capítulo ${chapterLabel[1]} · ${chapterLabel[2]}`;
+  const weeklyChapters = english.match(/^(\d+) weekly chapters planned$/);
+  if (weeklyChapters) return lang === 'pt' ? `${weeklyChapters[1]} capítulos semanais previstos` : `${weeklyChapters[1]} capítulos semanales previstos`;
+  const chaptersPublished = english.match(/^(\d+) chapters published$/);
+  if (chaptersPublished) return `${chaptersPublished[1]} capítulos publicados`;
+  const lessonsPublished = english.match(/^(\d+) daily lessons published$/);
+  if (lessonsPublished) return lang === 'pt' ? `${lessonsPublished[1]} aulas diárias publicadas` : `${lessonsPublished[1]} lecciones diarias publicadas`;
+  const chapterAvailability = english.match(/^(\d+) chapters and (\d+) of (\d+) indexed daily lessons published in this edition\.$/);
+  if (chapterAvailability) return lang === 'pt' ? `${chapterAvailability[1]} capítulos e ${chapterAvailability[2]} de ${chapterAvailability[3]} aulas diárias indexadas publicados nesta edição.` : `${chapterAvailability[1]} capítulos y ${chapterAvailability[2]} de ${chapterAvailability[3]} lecciones diarias indexadas publicados en esta edición.`;
+  const legacyChapterAvailability = english.match(/^(\d+) current subject chapters published\. Distinct daily lessons have not yet been indexed for this edition; the (\d+)-lesson baseline is a plan, not published content\.$/);
+  if (legacyChapterAvailability) return lang === 'pt' ? `${legacyChapterAvailability[1]} capítulos antigos de matérias publicados. Aulas diárias distintas ainda não foram indexadas nesta edição; a base de ${legacyChapterAvailability[2]} aulas é um plano, não conteúdo publicado.` : `${legacyChapterAvailability[1]} capítulos anteriores de materias publicados. Aún no se han indexado lecciones diarias distintas en esta edición; la base de ${legacyChapterAvailability[2]} lecciones es un plan, no contenido publicado.`;
+  const dailyIntro = english.match(/^(\d+) chapters and (\d+) daily lessons are published in this edition\.$/);
+  if (dailyIntro) return lang === 'pt' ? `${dailyIntro[1]} capítulos e ${dailyIntro[2]} aulas diárias estão publicados nesta edição.` : `${dailyIntro[1]} capítulos y ${dailyIntro[2]} lecciones diarias están publicados en esta edición.`;
+  const legacyIntro = english.match(/^(\d+) legacy subject chapters are published\. The daily lessons are still being developed\.$/);
+  if (legacyIntro) return lang === 'pt' ? `${legacyIntro[1]} capítulos antigos de matérias estão publicados. As aulas diárias ainda estão em desenvolvimento.` : `${legacyIntro[1]} capítulos anteriores de materias están publicados. Las lecciones diarias siguen en desarrollo.`;
+  const bookDaily = english.match(/^(\d+) written chapters · (\d+) daily lessons · Read here or choose one lesson from the guide\.$/);
+  if (bookDaily) return lang === 'pt' ? `${bookDaily[1]} capítulos escritos · ${bookDaily[2]} aulas diárias · Leia aqui ou escolha uma aula no guia.` : `${bookDaily[1]} capítulos escritos · ${bookDaily[2]} lecciones diarias · Lee aquí o elige una lección de la guía.`;
+  const bookLegacy = english.match(/^(\d+) legacy subject chapters · Read here or open the course guide\.$/);
+  if (bookLegacy) return lang === 'pt' ? `${bookLegacy[1]} capítulos antigos de matérias · Leia aqui ou abra o guia do curso.` : `${bookLegacy[1]} capítulos anteriores de materias · Lee aquí o abre la guía del curso.`;
   const bareModule = english.match(/^Module (\d+)$/);
   if (bareModule) return `Módulo ${bareModule[1]}`;
   const weeks = english.match(/^(\d+) instructional weeks$/);

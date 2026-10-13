@@ -41,19 +41,22 @@ def test_public_guide_and_lesson(client):
     assert guide.status_code == 200
     assert guide.json()["planned_chapters"] == 4
     assert guide.json()["published_chapters"] == 4
-    assert [lesson["chapter"] for lesson in guide.json()["lessons"]] == [1, 2, 3, 4]
+    assert guide.json()["planned_lessons"] == guide.json()["published_lessons"] == 20
+    assert [lesson["chapter"] for lesson in guide.json()["lessons"]] == list(range(1, 21))
     assert [(module["kind"], module["number"], module["chapters"]) for module in guide.json()["modules"]] == [
-        ("Week", number, [number]) for number in range(1, 5)
+        ("Chapter", number, list(range((number - 1) * 5 + 1, number * 5 + 1))) for number in range(1, 5)
     ]
     assert guide.json()["lessons"][0]["subject"] == "Incident readiness, roles and authorized scope"
-    assert guide.json()["daily_schedule_ready"] is False
+    assert guide.json()["daily_schedule_ready"] is True
 
     lesson = client.get("/api/lessons/rapid-1-month/incident-response-resilience/en/1")
     assert lesson.status_code == 200
-    assert "Incident readiness" in lesson.json()["title"]
+    assert lesson.json()["title"] == "Evidence readiness and the first case question"
     assert lesson.json()["next"] == 2
-    assert lesson.json()["exercise_ids"]
+    assert lesson.json()["week_chapter"] == 1
+    assert lesson.json()["exercise_ids"] == ["001"]
     assert "EX001" in lesson.json()["worked_answers"]
+    assert "EX002" not in lesson.json()["worked_answers"]
 
 
 def test_unwritten_chapter_is_not_served_as_lesson(client):
@@ -100,9 +103,13 @@ def test_long_course_chapter_and_exercise_numbers():
     assert "A worked answer" in worked_answers(book, chapter)
 
 
-def test_full_weekday_plan_groups_130_chapters_into_26_weeks(client):
-    plan = "\n\n".join(f'<a id="ch-{n:02d}"></a>\n## Lesson {n}' for n in range(1, 131))
-    book = '<a id="ch-100"></a>\n## Lesson 100\n\nExercise EX1000\n\n## Worked answers\n\n### EX1000\nWorked result.\n'
+def test_weekly_chapters_group_130_daily_lessons_into_26_weeks(client):
+    plan = "\n\n".join(
+        f'<a id="ch-{week:02d}"></a>\n## Chapter {week}\n' +
+        "\n".join(f'<a id="lesson-{n:02d}"></a>\n### Lesson {n}' for n in range((week - 1) * 5 + 1, week * 5 + 1))
+        for week in range(1, 27)
+    )
+    book = '<a id="ch-20"></a>\n## Chapter 20\n<a id="lesson-100"></a>\n### Lesson 100\n\n#### Practice\n\n##### EX1000 — Test\nSolve it.\n\n## Worked answers\n\n### EX1000\nWorked result.\n'
 
     async def source(path):
         if path.endswith('/book/PLAN.md'):
@@ -119,8 +126,11 @@ def test_full_weekday_plan_groups_130_chapters_into_26_weeks(client):
         assert len(guide['modules']) == 26
         assert guide['modules'][19]['chapters'] == [96, 97, 98, 99, 100]
         assert guide['published_chapters'] == 1
+        assert guide['published_lessons'] == 1
+        assert guide['planned_lessons'] == 130
         lesson = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/100').json()
         assert lesson['exercise_ids'] == ['1000']
+        assert lesson['week_chapter'] == 20
         assert 'Worked result' in lesson['worked_answers']
     finally:
         app.state.source_override = original_source

@@ -1,21 +1,19 @@
-# Course duration and lesson quality
+# Weekly chapters and daily lessons by level
 
-Each academic area offers one course at each of nine levels and one principal book per language edition. Curricular subjects are **modules**. A lesson is one chapter. On the weekday calendar, one lesson is studied on each of the five weekdays. The counts below are **planning minimums per course and theme**. They are not a maximum. If an idea needs more lessons to be taught well, the course grows. A chapter is as long as that idea needs. Do not pad a chapter, and do not add an empty lesson just to reach the minimum.
+Each academic area offers one course at each of nine levels and one principal book per language edition. Curricular subjects organize modules. The default book groups **five daily lessons in one weekly chapter**. Every instructional weekday has a distinct lesson with technical teaching, a worked example, a substantive exercise and a worked answer. The counts below are **minimum planning baselines, never upper limits**: add lessons, chapters and time when depth requires them. Longer programs have more weekly chapters and need deeper treatment. The baselines apply to `en`, `pt`, `es`, `he`, `fr`, `ru`, `de`, `zh` and `ja`; they are not claims that those editions are already authored or accredited.
 
-Author and deepen the **English** lesson first. Translate only after that English teaching exists. These rows are not claims that the editions are authored or accredited.
+| Formation level | Nominal duration | Legacy subject modules | Baseline weeks / weekly chapters | Baseline daily lessons / book | Per daily lesson | Browse |
+|---|---:|---:|---:|---:|---|---|
+| Rapid course | 1 month | 4 | 4 | 20 | Worked example, exercise, answer | [Open 23 areas](levels/rapid-1-month/README.md) |
+| Professional course | 6 months | 12 | 26 | 130 | Worked example, exercise, answer | [Open 23 areas](levels/professional-6-months/README.md) |
+| Technical course | 18 months | 18 | 78 | 390 | Worked example, exercise, answer | [Open 23 areas](levels/technical-18-months/README.md) |
+| Technologist course | 3 years | 30 | 156 | 780 | Worked example, exercise, answer | [Open 23 areas](levels/technologist-3-years/README.md) |
+| Bachelor's course | 4 years | 40 | 208 | 1,040 | Worked example, exercise, answer | [Open 23 areas](levels/bachelors-4-years/README.md) |
+| Engineering course | 5 years | 50 | 260 | 1,300 | Worked example, exercise, answer | [Open 23 areas](levels/engineering-5-years/README.md) |
+| Postgraduate course | 2 years | 12 | 104 | 520 | Worked example, exercise, answer | [Open 23 areas](levels/postgraduate-2-years/README.md) |
+| Master's course | 2 years | 8 | 104 | 520 | Worked example, exercise, answer | [Open 23 areas](levels/masters-2-years/README.md) |
+| Doctoral research track | 2 years | 8 | 104 | 520 | Worked example, exercise, answer | [Open 23 areas](levels/doctorate-2-years/README.md) |
 
-| Formation level | Duration | Minimum lessons | Current subject modules | Browse |
-|---|---:|---:|---:|---|
-| Rapid course | 1 month | 20 | 4 | [Open 23 areas](levels/rapid-1-month/README.md) |
-| Professional course | 6 months | 130 | 12 | [Open 23 areas](levels/professional-6-months/README.md) |
-| Technical course | 18 months | 390 | 18 | [Open 23 areas](levels/technical-18-months/README.md) |
-| Technologist course | 3 years | 780 | 30 | [Open 23 areas](levels/technologist-3-years/README.md) |
-| Bachelor's course | 4 years | 1,040 | 40 | [Open 23 areas](levels/bachelors-4-years/README.md) |
-| Engineering course | 5 years | 1,300 | 50 | [Open 23 areas](levels/engineering-5-years/README.md) |
-| Postgraduate course | 2 years | 520 | 12 | [Open 23 areas](levels/postgraduate-2-years/README.md) |
-| Master's course | 2 years | 520 | 8 | [Open 23 areas](levels/masters-2-years/README.md) |
-| Doctoral research track | 2 years | 520 | 8 | [Open 23 areas](levels/doctorate-2-years/README.md) |
+The normalized baseline uses four weeks for the rapid month, 26 for six months, 78 for 18 months and 52 per year for longer tracks. These are **instructional weeks**, independent of start date, holidays and vacations; actual study pace may vary, and additional lessons can extend the schedule. Longer courses should become larger through substantive teaching, not an artificial page quota. A4 renderings are measured and reported separately. See [the book standard](BOOK_STANDARD.md).
 
-The minimums follow five weekday lessons and the level's duration: 20, 130, 390, 780, 1,040, 1,300, 520, 520 and 520. There is no upper cap. Page count is not a writing target. See [the book standard](BOOK_STANDARD.md).
-
-The subject-module counts are the current index, not a ceiling. Keep authored text. Add a real English chapter when the next idea needs its own example and exercise. Do not mark an outline as a lesson. A translated plan is not a published lesson.
+Most existing plans and manuscripts still use earlier subject-chapter counts (4, 12, 18, 30, 40, 50, 12, 8, 8). Those counts are **legacy module coverage**, not weekly-chapter or daily-lesson coverage. The [rapid Incident Response English book](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) is an edition-specific example of four weekly chapters containing 20 authored daily lessons; it does not change another edition automatically. During migration, preserve authored content and show current chapter and lesson availability separately from the minimum baselines. Complete and review the English collection before translating it into Portuguese, Spanish and the remaining editions. A translated plan is not a published lesson.

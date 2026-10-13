@@ -1,16 +1,16 @@
 # CyKin — complete sequential study path
 
-**One route:** 9 levels × 23 area courses = **207 courses** and **4,186 English chapter positions**. Numbering here fixes navigation; it is not a claim that the lessons or books are complete.
+**One route:** 9 levels × 23 area courses = **207 courses**. The **4,186 positions and global ranges below belong to the older subject-module grid**, not to the new weekday-lesson sequence or completed books. Use each edition's current `SUBJECTS.md` for its actual daily lesson numbers. The minimum weekday baselines by level are in the [curriculum grid](CURRICULUM_GRID.md); they are not caps.
 
 **Start:** course 001, Rapid course / Cybersecurity, [lesson 01](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01). **Finish:** course 207, Doctoral research track / Critical infrastructure and sector security, [lesson 08 draft](levels/doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md#ch-08). Check the editorial state before studying.
 
-**First unwritten stop in the strict route:** course 001 / Cybersecurity, [chapter 04 plan](levels/rapid-1-month/cybersecurity/en/book/PLAN.md#ch-04). This outline shows what will be taught; it does not close the learning gap.
+**First known outline stop in the legacy route:** course 001 / Cybersecurity, [module chapter 04 plan](levels/rapid-1-month/cybersecurity/en/book/PLAN.md#ch-04). The course has not yet been expanded into four weekly chapters and 20 daily lessons, so its old chapter coverage cannot certify a complete weekday route. This outline does not close the learning gap.
 
 [Home](README.md) · [All levels](levels/README.md) · [AI reading guide](AI_GUIDE.md) · [Writing status](COURSE_WRITING_PROGRESS.md)
 
 ## How to follow the route
 
-1. Start in the first row below. Open its **chapter index** and read rows 01 through the last numbered chapter in order. Each subject is one chapter of that course's single principal book. Do the examples and exercises before checking the worked answers in the same manuscript.
+1. Start in the first course row below. Open that edition's **current chapter index** and read Chapters 01 through its last numbered row in order. Subjects group modules; a migrated edition has a weekly book chapter containing five daily lessons by default. Do the examples and exercises before checking worked answers in the same manuscript.
 2. At the end of each chapter, use its **Continue studying** block to open the previous chapter, course chapter index or next chapter directly. The book plan has the same navigation, but it remains an outline; follow a draft link for authored teaching. At the end of a course, follow **Continue** from its chapter index to the next course. After course 023, the next course is 024 at the professional level; the same rule applies at every level boundary.
 3. A **Draft** link means authored teaching exists but may still need expansion and review. A **Plan** link is a chapter summary, not a lesson. When a required chapter has only a plan, record the route as pending at that chapter. You may inspect later plans, but do not mark the chapter or course studied or completed from an outline alone.
 4. Keep a study record with language, course number, chapter number, source link, exercises attempted, result and unanswered questions. Before moving on, check the course's entry knowledge and whether its book has actually met the publication gate; course duration and level names are educational plans, not credentials.
@@ -21,15 +21,15 @@
 |---|---|---:|---|---|---|---|
 | `en` | `001 / Cybersecurity` | `01` | [Open current source](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01); check its draft status | Record the actual exercise IDs and your evidence | Record unclear terms or source limits | Return to the chapter index, check chapter 02, then proceed only after completing your own review |
 
-A next-course link preserves the *planned order* even when an earlier chapter remains an outline; it does not certify completion. The [Incident Response rapid draft](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) at course 016 may be read independently, but doing so does not fill skipped courses in this full route.
+A next-course link preserves the *planned order* even when an earlier chapter remains an outline; it does not certify completion. The [20 daily lessons in four weekly chapters of rapid Incident Response](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) at course 016 may be read independently, but doing so does not fill skipped courses in this full route.
 
 **Current Incident Response technical checkpoint:** course 062 has [18 English chapter drafts and 72 worked exercises](levels/technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md#ch-01). Chapters 1–5 received an additional teaching pass; Chapter 6.1 now teaches four route contracts and seven reproducible offline fault scenarios, with EX021 and its worked answer in the book. Follow [its chapter index](levels/technical-18-months/incident-response-resilience/en/SUBJECTS.md) in order and use the [course skill](levels/technical-18-months/incident-response-resilience/skill/SKILL.md) for source and assessment boundaries. This checkpoint does not fill the earlier plan-only stops or complete the 300-page book.
 
-**Rapid Incident Response editorial checkpoint (2026-10-13):** Course 016's single [English principal draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-01) contains all four authored chapters, integrated Chapter 2/4 correction teaching, the R1X–R4X offline rehearsals and [50 paired exercises/worked answers](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#answers). Read chapters 1→4 in their existing order; each chapter retains one previous/index/next navigation block. The old CH04 correction file has been consolidated into the book, not promoted to an extra chapter. Four draft chapters mean **100% draft coverage**, not a verified complete edition. The historical 343-page A4 rendering applies only to a preceding source hash; the current source awaits rerendering, external technical/editorial and accessibility/rights checks. The next editorial action is a full-volume independent review, not an unwritten lesson.
+**Rapid Incident Response editorial checkpoint (2026-10-13):** Course 016's [single English book](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-01) now contains four modules and **20 authored daily lessons in four weekly chapters** with [50 paired exercises and worked answers](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#answers). Read Lessons 01→20 via the [edition index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md); every daily lesson has previous/index/next navigation. The old corrections remain integrated in the book. Legacy **4/4 subject-module coverage** is not book approval or a daily progress measure. Earlier A4 renders belong to preceding source hashes; whole-volume technical, source, accessibility, rights and editorial reviews remain open.
 
 ## Language rule
 
-Follow one language code throughout a pass of the route. The tables below link the **English reference edition**. Each course home links its nine editions; every edition's `SUBJECTS.md` follows the same course and chapter order and points to the next course in that language. Production proceeds English → Portuguese → Spanish → Hebrew → French → Russian → German → Chinese → Japanese. The non-English indexes currently hold English working outlines; they are not translated lessons.
+Follow one language code throughout a pass of the route. The tables below link the **English reference edition**. Each course home links its nine planned editions; each edition's `SUBJECTS.md` must reflect its own actual published chapters and link to the next course in that language. Production proceeds English → Portuguese → Spanish → Hebrew → French → Russian → German → Chinese → Japanese after the English collection is written and reviewed. The non-English indexes may still contain English working outlines; they are not translated lessons.
 
 ## Instructions for AI tutors
 
@@ -37,13 +37,13 @@ Use the exact course number, language and chapter index as the learner's current
 
 ## Course-by-course map
 
-The **global lesson range** is continuous across the 207 courses. Within a course, use its chapter numbers 01 through the final row. `Draft starts` counts English chapters with at least 300 words of teaching; it does not measure book completion.
+The **legacy global module-position range** is continuous across the 207 courses. It preserves the old catalog order and is not a daily-lesson number. Within a course, use its current edition index from Chapter 01 through its final row. `Draft starts` is legacy English subject-module coverage, not daily lessons or book completion.
 
 ### Rapid course — 1 month
 
 [All 23 courses at this level](levels/rapid-1-month/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 001 | [Cybersecurity](levels/rapid-1-month/cybersecurity/README.md) | 1–4 | [Open lessons](levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [01 · Draft](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | [04 · Plan](levels/rapid-1-month/cybersecurity/en/book/PLAN.md#ch-04) | 3/4 | [002 →](levels/rapid-1-month/information-security/en/SUBJECTS.md) |
 | 002 | [Information security](levels/rapid-1-month/information-security/README.md) | 5–8 | [Open lessons](levels/rapid-1-month/information-security/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/information-security/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/information-security/en/book/PLAN.md#ch-04) | 0/4 | [003 →](levels/rapid-1-month/data-governance/en/SUBJECTS.md) |
@@ -60,7 +60,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 | 013 | [Cloud and container security](levels/rapid-1-month/cloud-containers/README.md) | 49–52 | [Open lessons](levels/rapid-1-month/cloud-containers/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/cloud-containers/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/cloud-containers/en/book/PLAN.md#ch-04) | 0/4 | [014 →](levels/rapid-1-month/application-supply-chain/en/SUBJECTS.md) |
 | 014 | [Application and software supply chain security](levels/rapid-1-month/application-supply-chain/README.md) | 53–56 | [Open lessons](levels/rapid-1-month/application-supply-chain/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/application-supply-chain/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/application-supply-chain/en/book/PLAN.md#ch-04) | 0/4 | [015 →](levels/rapid-1-month/security-operations-blue-team/en/SUBJECTS.md) |
 | 015 | [Security operations and blue team](levels/rapid-1-month/security-operations-blue-team/README.md) | 57–60 | [Open lessons](levels/rapid-1-month/security-operations-blue-team/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/security-operations-blue-team/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/security-operations-blue-team/en/book/PLAN.md#ch-04) | 0/4 | [016 →](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) |
-| 016 | [Incident response and cyber resilience](levels/rapid-1-month/incident-response-resilience/README.md) | 61–64 | [Open lessons](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) | [01 · Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-01) | [04 · Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-04) | 4/4 | [017 →](levels/rapid-1-month/digital-forensics-malware/en/SUBJECTS.md) |
+| 016 | [Incident response and cyber resilience](levels/rapid-1-month/incident-response-resilience/README.md) | 61–64 | [Open lessons](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) | [01 · Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-01) | [04 · Authored](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-04) | 4 weekly chapters; 20 daily lessons | [017 →](levels/rapid-1-month/digital-forensics-malware/en/SUBJECTS.md) |
 | 017 | [Digital forensics and malware analysis](levels/rapid-1-month/digital-forensics-malware/README.md) | 65–68 | [Open lessons](levels/rapid-1-month/digital-forensics-malware/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/digital-forensics-malware/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/digital-forensics-malware/en/book/PLAN.md#ch-04) | 0/4 | [018 →](levels/rapid-1-month/threat-intelligence-osint/en/SUBJECTS.md) |
 | 018 | [Threat intelligence and OSINT](levels/rapid-1-month/threat-intelligence-osint/README.md) | 69–72 | [Open lessons](levels/rapid-1-month/threat-intelligence-osint/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/threat-intelligence-osint/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/threat-intelligence-osint/en/book/PLAN.md#ch-04) | 0/4 | [019 →](levels/rapid-1-month/offensive-security-red-team/en/SUBJECTS.md) |
 | 019 | [Authorized offensive security and red team](levels/rapid-1-month/offensive-security-red-team/README.md) | 73–76 | [Open lessons](levels/rapid-1-month/offensive-security-red-team/en/SUBJECTS.md) | [01 · Plan](levels/rapid-1-month/offensive-security-red-team/en/book/PLAN.md#ch-01) | [04 · Plan](levels/rapid-1-month/offensive-security-red-team/en/book/PLAN.md#ch-04) | 0/4 | [020 →](levels/rapid-1-month/ai-security/en/SUBJECTS.md) |
@@ -73,7 +73,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/professional-6-months/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 024 | [Cybersecurity](levels/professional-6-months/cybersecurity/README.md) | 93–104 | [Open lessons](levels/professional-6-months/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/professional-6-months/cybersecurity/en/book/PLAN.md#ch-01) | [12 · Plan](levels/professional-6-months/cybersecurity/en/book/PLAN.md#ch-12) | 0/12 | [025 →](levels/professional-6-months/information-security/en/SUBJECTS.md) |
 | 025 | [Information security](levels/professional-6-months/information-security/README.md) | 105–116 | [Open lessons](levels/professional-6-months/information-security/en/SUBJECTS.md) | [01 · Plan](levels/professional-6-months/information-security/en/book/PLAN.md#ch-01) | [12 · Plan](levels/professional-6-months/information-security/en/book/PLAN.md#ch-12) | 0/12 | [026 →](levels/professional-6-months/data-governance/en/SUBJECTS.md) |
@@ -103,7 +103,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/technical-18-months/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 047 | [Cybersecurity](levels/technical-18-months/cybersecurity/README.md) | 369–386 | [Open lessons](levels/technical-18-months/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/technical-18-months/cybersecurity/en/book/PLAN.md#ch-01) | [18 · Plan](levels/technical-18-months/cybersecurity/en/book/PLAN.md#ch-18) | 0/18 | [048 →](levels/technical-18-months/information-security/en/SUBJECTS.md) |
 | 048 | [Information security](levels/technical-18-months/information-security/README.md) | 387–404 | [Open lessons](levels/technical-18-months/information-security/en/SUBJECTS.md) | [01 · Plan](levels/technical-18-months/information-security/en/book/PLAN.md#ch-01) | [18 · Plan](levels/technical-18-months/information-security/en/book/PLAN.md#ch-18) | 0/18 | [049 →](levels/technical-18-months/data-governance/en/SUBJECTS.md) |
@@ -133,7 +133,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/technologist-3-years/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 070 | [Cybersecurity](levels/technologist-3-years/cybersecurity/README.md) | 783–812 | [Open lessons](levels/technologist-3-years/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/technologist-3-years/cybersecurity/en/book/PLAN.md#ch-01) | [30 · Plan](levels/technologist-3-years/cybersecurity/en/book/PLAN.md#ch-30) | 0/30 | [071 →](levels/technologist-3-years/information-security/en/SUBJECTS.md) |
 | 071 | [Information security](levels/technologist-3-years/information-security/README.md) | 813–842 | [Open lessons](levels/technologist-3-years/information-security/en/SUBJECTS.md) | [01 · Plan](levels/technologist-3-years/information-security/en/book/PLAN.md#ch-01) | [30 · Plan](levels/technologist-3-years/information-security/en/book/PLAN.md#ch-30) | 0/30 | [072 →](levels/technologist-3-years/data-governance/en/SUBJECTS.md) |
@@ -163,7 +163,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/bachelors-4-years/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 093 | [Cybersecurity](levels/bachelors-4-years/cybersecurity/README.md) | 1,473–1,512 | [Open lessons](levels/bachelors-4-years/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/bachelors-4-years/cybersecurity/en/book/PLAN.md#ch-01) | [40 · Plan](levels/bachelors-4-years/cybersecurity/en/book/PLAN.md#ch-40) | 0/40 | [094 →](levels/bachelors-4-years/information-security/en/SUBJECTS.md) |
 | 094 | [Information security](levels/bachelors-4-years/information-security/README.md) | 1,513–1,552 | [Open lessons](levels/bachelors-4-years/information-security/en/SUBJECTS.md) | [01 · Plan](levels/bachelors-4-years/information-security/en/book/PLAN.md#ch-01) | [40 · Plan](levels/bachelors-4-years/information-security/en/book/PLAN.md#ch-40) | 0/40 | [095 →](levels/bachelors-4-years/data-governance/en/SUBJECTS.md) |
@@ -193,7 +193,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/engineering-5-years/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 116 | [Cybersecurity](levels/engineering-5-years/cybersecurity/README.md) | 2,393–2,442 | [Open lessons](levels/engineering-5-years/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/engineering-5-years/cybersecurity/en/book/PLAN.md#ch-01) | [50 · Plan](levels/engineering-5-years/cybersecurity/en/book/PLAN.md#ch-50) | 0/50 | [117 →](levels/engineering-5-years/information-security/en/SUBJECTS.md) |
 | 117 | [Information security](levels/engineering-5-years/information-security/README.md) | 2,443–2,492 | [Open lessons](levels/engineering-5-years/information-security/en/SUBJECTS.md) | [01 · Plan](levels/engineering-5-years/information-security/en/book/PLAN.md#ch-01) | [50 · Plan](levels/engineering-5-years/information-security/en/book/PLAN.md#ch-50) | 0/50 | [118 →](levels/engineering-5-years/data-governance/en/SUBJECTS.md) |
@@ -223,7 +223,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/postgraduate-2-years/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 139 | [Cybersecurity](levels/postgraduate-2-years/cybersecurity/README.md) | 3,543–3,554 | [Open lessons](levels/postgraduate-2-years/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/postgraduate-2-years/cybersecurity/en/book/PLAN.md#ch-01) | [12 · Plan](levels/postgraduate-2-years/cybersecurity/en/book/PLAN.md#ch-12) | 0/12 | [140 →](levels/postgraduate-2-years/information-security/en/SUBJECTS.md) |
 | 140 | [Information security](levels/postgraduate-2-years/information-security/README.md) | 3,555–3,566 | [Open lessons](levels/postgraduate-2-years/information-security/en/SUBJECTS.md) | [01 · Plan](levels/postgraduate-2-years/information-security/en/book/PLAN.md#ch-01) | [12 · Plan](levels/postgraduate-2-years/information-security/en/book/PLAN.md#ch-12) | 0/12 | [141 →](levels/postgraduate-2-years/data-governance/en/SUBJECTS.md) |
@@ -253,7 +253,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/masters-2-years/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 162 | [Cybersecurity](levels/masters-2-years/cybersecurity/README.md) | 3,819–3,826 | [Open lessons](levels/masters-2-years/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/masters-2-years/cybersecurity/en/book/PLAN.md#ch-01) | [08 · Plan](levels/masters-2-years/cybersecurity/en/book/PLAN.md#ch-08) | 0/8 | [163 →](levels/masters-2-years/information-security/en/SUBJECTS.md) |
 | 163 | [Information security](levels/masters-2-years/information-security/README.md) | 3,827–3,834 | [Open lessons](levels/masters-2-years/information-security/en/SUBJECTS.md) | [01 · Plan](levels/masters-2-years/information-security/en/book/PLAN.md#ch-01) | [08 · Plan](levels/masters-2-years/information-security/en/book/PLAN.md#ch-08) | 0/8 | [164 →](levels/masters-2-years/data-governance/en/SUBJECTS.md) |
@@ -283,7 +283,7 @@ The **global lesson range** is continuous across the 207 courses. Within a cours
 
 [All 23 courses at this level](levels/doctorate-2-years/README.md)
 
-| Course # | Academic area / course | Global lessons | Chapter index | Begin | Last chapter | Draft starts | Continue |
+| Course # | Academic area / course | Legacy module positions | Chapter index | Begin | Last chapter | Draft starts | Continue |
 |---:|---|---:|---|---|---|---:|---|
 | 185 | [Cybersecurity](levels/doctorate-2-years/cybersecurity/README.md) | 4,003–4,010 | [Open lessons](levels/doctorate-2-years/cybersecurity/en/SUBJECTS.md) | [01 · Plan](levels/doctorate-2-years/cybersecurity/en/book/PLAN.md#ch-01) | [08 · Plan](levels/doctorate-2-years/cybersecurity/en/book/PLAN.md#ch-08) | 0/8 | [186 →](levels/doctorate-2-years/information-security/en/SUBJECTS.md) |
 | 186 | [Information security](levels/doctorate-2-years/information-security/README.md) | 4,011–4,018 | [Open lessons](levels/doctorate-2-years/information-security/en/SUBJECTS.md) | [01 · Plan](levels/doctorate-2-years/information-security/en/book/PLAN.md#ch-01) | [08 · Plan](levels/doctorate-2-years/information-security/en/book/PLAN.md#ch-08) | 0/8 | [187 →](levels/doctorate-2-years/data-governance/en/SUBJECTS.md) |
