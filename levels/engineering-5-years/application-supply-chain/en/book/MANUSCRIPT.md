@@ -421,7 +421,7 @@ The series converges only when the average is below one; at one or above, each a
 
 After Coastline releases a fixed version of its mobile ticket app, users update gradually. If 10% of the remaining old installations update each day, the share still on the old version after t days is 0.9^t: about 35% after 10 days and 4% after 30. This exponential decay model helps plan how long old server-side support for the vulnerable version must continue.
 
-The model assumes each remaining user is equally likely to update on any day, which is the assumption the next comparison tests. Real riders do not behave that way.
+The model assumes each remaining user is equally likely to update on any day, which is the assumption the next comparison tests. Real users do not behave that way.
 
 ### 6.3 Linear versus exponential
 
