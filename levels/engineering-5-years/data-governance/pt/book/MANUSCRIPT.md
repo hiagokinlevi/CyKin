@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 118, engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3; os capítulos 11–50 (EX031–EX150) e os quatro laboratórios estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3; os capítulos 21–50 (EX061–EX150) e os quatro laboratórios estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar a governança de dados de medidores e sensores de uma companhia de saneamento.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios rastreiam a linhagem a montante e lacunas de titularidade em um grafo sintético de *pipeline*, calculam taxas de aprovação de três regras de leitura de medidores, medem a pontualidade dos fluxos em relação a um nível de serviço às 06:00 e conciliam leituras de campo sintéticas com o faturamento. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -435,11 +435,411 @@ A pressão ética costuma ser sutil; registre as decisões e seus motivos.
 - **EX029 — Cuidado com o cadastro.** O que Kofi recomendou para o cadastro prioritário? *Rubrica:* 3 = confirmação anual e acesso restrito;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX030 — Competência.** Por que Kofi encaminhou a mudança na qualidade da água? *Rubrica:* 3 = faltava-lhe competência em química;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) rastrear como os dados de medidores e sensores atravessam as redes; (2) avaliar escolhas de protocolo quanto à integridade e à disponibilidade; (3) documentar os fluxos de dados na rede para fins de governança.
+
+### 11.1 Caminhos pela rede
+
+As leituras dos medidores viajam por rádio até concentradores instalados em postes, depois por uma rede móvel até a plataforma central (*head-end*) de um fornecedor e, por fim, pela internet até o data center da Tidewater. As leituras dos sensores seguem um caminho separado, por uma rede industrial privada, até o sistema de controle. Kofi desenha os dois caminhos e identifica cada salto com o protocolo, o operador e se os dados estão criptografados. Ele descobre que o responsável pela governança muda a cada fronteira, o que explica por que ninguém conseguia responder a perguntas sobre atrasos ou perdas de ponta a ponta.
+
+### 11.2 Protocolos e integridade
+
+O caminho dos medidores usa um protocolo criptografado e autenticado do concentrador até o *head-end*, de modo que as leituras ficam protegidas contra adulteração em trânsito. A rede industrial usa um protocolo mais antigo, sem autenticação, que depende do isolamento da rede. Kofi observa que isso não torna errados os dados dos sensores, mas significa que a Tidewater não consegue provar, só pelo protocolo, que uma leitura veio de um sensor genuíno. Ele registra a lacuna e recomenda monitorar o aparecimento de dispositivos inesperados na rede industrial. Agora um alerta dispara para dispositivos desconhecidos.
+
+### 11.3 Disponibilidade e armazenamento temporário
+
+Falhas de rede atrasam os dados. Os concentradores guardam leituras por até dois dias, e a rede móvel às vezes cai por horas. Kofi mede, em registros sintéticos, com que frequência as leituras chegam com mais de seis horas de atraso e descobre que a maioria dos atrasos se concentra em períodos de tempestade. Ele argumenta que os consumidores dos dados, como o faturamento, precisam saber com quanto atraso os dados podem chegar legitimamente, para não tratarem leituras atrasadas como ausentes nem estimarem contas sem necessidade antes da chegada das leituras reais. A equipe de faturamento agora espera quarenta e oito horas.
+
+### 11.4 Documentando os fluxos
+
+Kofi produz um documento de fluxos de dados na rede com cada salto, responsável, protocolo, criptografia, armazenamento temporário e latência típica. O documento é revisado pela equipe de redes e pelo líder de governança de dados. Ele passa a ser a referência quando a Tidewater negocia um acordo de nível de serviço com o fornecedor de medição. A Profa. Varga observa que um responsável pela governança não pode prestar contas por dados que não consegue ver, e que documentar os fluxos através das fronteiras organizacionais é o que torna a responsabilização possível na prática. O acordo com o fornecedor agora inclui um atraso máximo para leituras armazenadas depois de uma falha.
+
+### Exemplo resolvido
+
+Kofi rastreia os caminhos de medidores e sensores, encontra um protocolo industrial sem autenticação, mede atrasos ligados a tempestades e documenta cada salto com responsáveis e latências.
+
+> **Caso sintético.** As redes são sintéticas.
+
+### Erros e limites
+
+Documentos de fluxo envelhecem depressa; revise-os depois de mudanças na rede.
+
+### Exercícios
+
+- **EX031 — Troca de responsável.** Por que ninguém conseguia responder a perguntas de ponta a ponta? *Rubrica:* 3 = o responsável pela governança muda a cada fronteira;; 2 = menciona fronteiras;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Lacuna industrial.** Que lacuna Kofi encontrou na rede industrial? *Rubrica:* 3 = protocolo sem autenticação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Dados atrasados.** Quando os atrasos se concentram? *Rubrica:* 3 = em períodos de tempestade;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar os controles do sistema operacional à proteção de dados; (2) gerenciar com confiabilidade as rotinas agendadas de dados; (3) manter úteis os registros de auditoria.
+
+### 12.1 Arquivos e permissões
+
+O processamento de dados da Tidewater roda em servidores Linux. Kofi revisa as permissões de arquivo dos diretórios que guardam extratos de clientes e descobre que um deles pode ser lido por qualquer usuário do servidor. Ele explica que as permissões do sistema operacional são a última linha de defesa quando os controles da aplicação falham. Ele restringe a leitura do diretório à conta de processamento e ao grupo da equipe de dados e documenta as permissões esperadas, para que verificações posteriores comparem a configuração real com a pretendida. Um script semanal faz essa comparação.
+
+### 12.2 Rotinas agendadas
+
+Rotinas noturnas carregam as leituras dos medidores, aplicam as regras de qualidade e publicam relatórios. Kofi descobre que, se uma rotina falha, a seguinte roda mesmo assim sobre dados incompletos e publica resultados enganosos. Ele altera o agendamento para que cada rotina verifique se a anterior terminou com sucesso e produziu a contagem de linhas esperada. Rotinas que não podem rodar enviam um alerta. Ele observa que as dependências entre rotinas são, na prática, linhagem de dados, e que torná-las explícitas impede a propagação silenciosa de falhas. O alerta vai para o engenheiro de dados de plantão.
+
+### 12.3 Registros de auditoria
+
+O sistema operacional registra logins e comandos. Kofi verifica se os registros dos servidores de dados são enviados a um repositório central, onde os administradores não podem alterá-los, e se são mantidos por um ano. Ele encontra um servidor cujos registros ficavam apenas na máquina e eram sobrescritos depois de uma semana. Sem registros, a Tidewater não conseguiria mostrar, durante uma investigação, quem acessou um extrato de clientes. Ele inclui o servidor no registro centralizado e cria uma verificação semanal de que todos os servidores de dados estão enviando registros. A verificação avisa por e-mail quais servidores estão faltando.
+
+### 12.4 Atualizações e mudanças
+
+Kofi participa do ciclo mensal de atualizações de segurança. Antes de atualizar os servidores de dados, a equipe roda uma rotina de teste em um servidor de homologação para confirmar que as novas bibliotecas não alteram os resultados. Em um ciclo, uma biblioteca de datas atualizada muda a forma de interpretar carimbos de data e hora ambíguos. O teste detecta a diferença antes da produção. Ele aprende que a manutenção dos sistemas pode alterar o processamento de dados em silêncio, por isso a governança precisa de testes de regressão para os resultados dos dados, e não só para as funcionalidades das aplicações. O script de comparação é mantido e passa a rodar em todo ciclo de atualização.
+
+### Exemplo resolvido
+
+Kofi restringe um diretório de extratos legível por todos, encadeia as rotinas ao sucesso das anteriores, centraliza os registros de um servidor e detecta em homologação uma mudança na interpretação de datas antes da atualização.
+
+> **Caso sintético.** Os servidores são sintéticos.
+
+### Erros e limites
+
+As permissões se desviam depois de correções emergenciais; verifique-as com regularidade.
+
+### Exercícios
+
+- **EX034 — Correção de permissão.** O que Kofi mudou no diretório de extratos? *Rubrica:* 3 = leitura só pela conta de processamento e pela equipe de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Encadeamento de rotinas.** Como as rotinas agora se protegem de entradas ruins? *Rubrica:* 3 = cada uma verifica se a anterior teve sucesso com as contagens esperadas;; 2 = menciona a anterior;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Achado da homologação.** O que o teste em homologação detectou? *Rubrica:* 3 = uma mudança na interpretação de carimbos de data e hora;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar esquemas que codifiquem regras de governança; (2) usar restrições e dados de referência; (3) gerenciar dados mestres de clientes e imóveis.
+
+### 13.1 Esquemas como regras
+
+Kofi projeta um esquema relacional para clientes, imóveis, medidores e leituras. As chaves primárias tornam cada entidade única, e as chaves estrangeiras garantem que uma leitura se refira a um medidor real e um medidor a um imóvel real. Restrições de não nulidade impõem os campos obrigatórios. Ele explica que colocar as regras no esquema faz com que o próprio banco de dados recuse dados inválidos, em vez de depender de cada aplicação para verificá-los. O esquema se torna uma declaração precisa e aplicável de parte do padrão de dados da Tidewater. As inserções rejeitadas são registradas com os motivos.
+
+### 13.2 Dados de referência
+
+Códigos de tarifa, tipos de medidor e códigos de distrito são dados de referência: listas pequenas e controladas, usadas por vários sistemas. Kofi encontra três versões da lista de distritos em sistemas diferentes, com um distrito renomeado em apenas duas delas. Ele propõe uma única tabela de referência, sob responsabilidade da equipe de planejamento da rede, com cada mudança datada e aprovada. O DAMA-DMBOK2 trata os dados de referência e os dados mestres como uma área de gestão própria, porque as inconsistências em listas compartilhadas se propagam para todos os relatórios que as usam. Os outros sistemas agora copiam a tabela todas as noites.
+
+### 13.3 Dados mestres
+
+Os registros de clientes e imóveis são dados mestres, compartilhados pelo faturamento, pelo atendimento e pelas operações de campo. Kofi encontra imóveis duplicados, criados quando a equipe de campo cadastra novas ligações sem pesquisar antes. Ele projeta uma etapa de correspondência que compara endereços normalizados e coordenadas antes de criar um imóvel novo, e um papel de curador nas operações de atendimento, responsável por resolver as possíveis duplicatas. Ele observa que a qualidade dos dados mestres depende tanto do processo e da titularidade quanto do projeto do banco de dados. O curador esvazia toda semana a fila de possíveis duplicatas.
+
+### 13.4 Histórico e mudanças
+
+Clientes se mudam, tarifas mudam e medidores são trocados. Kofi projeta tabelas que guardam o histórico com datas de início e fim de vigência, para que contas antigas possam ser explicadas com os fatos que valiam na época. Sem histórico, um cliente que questionasse uma conta antiga veria a tarifa de hoje e ficaria confuso. Ele testa o projeto com exemplos sintéticos, inclusive um medidor trocado no meio do mês, e confirma que os cálculos de faturamento batem com os fatos de cada período. A equipe de atendimento confirma que a visão de histórico responde a dúvidas que antes ela encaminhava ao faturamento.
+
+### Exemplo resolvido
+
+Kofi codifica chaves e restrições em um esquema, consolida três listas de distritos em dados de referência com responsável, acrescenta a correspondência de imóveis duplicados com um curador e guarda o histórico datado.
+
+> **Caso sintético.** Os esquemas são sintéticos; o DAMA-DMBOK2 é real.
+
+### Erros e limites
+
+Restrições podem bloquear correções urgentes; defina um processo controlado de exceção.
+
+### Exercícios
+
+- **EX037 — Finalidade da chave estrangeira.** O que as chaves estrangeiras garantem aqui? *Rubrica:* 3 = leituras se referem a medidores reais, e medidores a imóveis reais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Listas de distritos.** Quantas versões da lista de distritos existiam? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX039 — Finalidade do histórico.** Por que guardar datas de início e fim de vigência? *Rubrica:* 3 = para explicar contas antigas com os fatos da época;; 2 = menciona o passado;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar práticas de requisitos e testes a *pipelines* de dados; (2) gerenciar as versões da lógica de dados; (3) projetar pensando na manutenibilidade.
+
+### 14.1 Requisitos para pipelines
+
+Kofi escreve os requisitos do *pipeline* de dados de medidores como afirmações testáveis: toda leitura aceita tem medidor e unidade válidos; as leituras rejeitadas são relatadas com os motivos em até uma hora; os totais diários de cada distrito batem com a soma das leituras. Cada requisito tem um responsável e um teste de aceitação. Ele explica que requisitos vagos, como os dados devem ser exatos, não podem ser testados e, portanto, não se pode demonstrar que foram cumpridos nem rastrear sua falha. Os responsáveis aprovam cada teste de aceitação.
+
+### 14.2 Testando pipelines
+
+Kofi monta três camadas de testes. Os testes unitários verificam regras individuais. Os testes de integração passam um pequeno conjunto de dados sintéticos por todo o *pipeline* e comparam os resultados com os esperados. Os testes de dados rodam sobre os resultados de produção e verificam propriedades como contagens de linhas dentro das faixas esperadas e ausência de consumo negativo. Os testes de dados detectam um problema que os unitários não poderiam pegar: um arquivo do fornecedor chega com uma nova ordem de colunas, e as leituras caem nos campos errados até que o leitor seja atualizado. Agora uma verificação dos nomes das colunas roda primeiro.
+
+### 14.3 Gestão de versões
+
+As mudanças na lógica do *pipeline* seguem um processo de liberação: revisão de código, testes, uma execução em homologação sobre a réplica sintética do mês anterior e uma comparação dos resultados. Diferenças acima das tolerâncias acordadas precisam ser explicadas antes da liberação. Kofi argumenta que as versões do *pipeline* merecem o mesmo cuidado que o software voltado aos clientes, porque uma pequena mudança em uma regra pode alterar milhares de contas. Cada nota de versão aponta para o registro de decisão que justificou a mudança da regra. No último trimestre, duas versões foram retidas porque diferenças não explicadas excederam as tolerâncias.
+
+### 14.4 Manutenibilidade
+
+Kofi documenta o *pipeline* com um diagrama, um catálogo de regras e um guia de operação. Ele remove código sem uso e substitui limiares fixos no código por valores de configuração que os donos dos dados podem revisar. A Profa. Varga explica que a manutenibilidade é uma preocupação de governança: quando a pessoa que construiu um *pipeline* vai embora, a organização ainda precisa conseguir explicá-lo e alterá-lo. *Pipelines* sem manutenção viram caixas-pretas cujos resultados ninguém consegue justificar. Uma nova integrante da equipe usa o guia de operação para reexecutar uma carga com falha em sua primeira semana, sem ajuda.
+
+### Exemplo resolvido
+
+Kofi escreve requisitos testáveis para o *pipeline*, monta testes unitários, de integração e de dados que detectam uma mudança na ordem das colunas, acrescenta comparações nas liberações e documenta o *pipeline* para facilitar a manutenção.
+
+> **Caso sintético.** O *pipeline* é sintético.
+
+### Erros e limites
+
+Tolerâncias largas demais escondem mudanças reais; revise-as com os responsáveis.
+
+### Exercícios
+
+- **EX040 — Requisito testável.** Dê um requisito testável do *pipeline*. *Rubrica:* 3 = leituras aceitas têm medidor e unidade válidos; rejeitos relatados em uma hora; totais conciliam;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Achado dos testes de dados.** O que os testes de dados detectaram? *Rubrica:* 3 = um arquivo do fornecedor com nova ordem de colunas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Valores fixos.** O que substituiu os limiares fixos no código? *Rubrica:* 3 = valores de configuração revisados pelos donos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar confidencialidade, integridade e disponibilidade aos dados de uma companhia de saneamento; (2) escolher controles de acesso para conjuntos de dados; (3) relacionar incidentes de segurança à governança de dados.
+
+### 15.1 Três propriedades
+
+Kofi aplica as propriedades clássicas de segurança aos dados da Tidewater. A confidencialidade protege os dados dos clientes e o cadastro de atendimento prioritário. A integridade protege as leituras dos medidores e os valores dos sensores contra alterações não autorizadas, o que importa para o faturamento e para a segurança das pessoas. A disponibilidade garante que os operadores vejam os dados dos sensores durante incidentes. Conjuntos de dados diferentes exigem ênfases diferentes: os dados do sistema de controle precisam primeiro de disponibilidade e integridade, enquanto os dados de clientes precisam de confidencialidade. A governança atribui essas prioridades para que os engenheiros saibam quais concessões são aceitáveis. As prioridades ficam registradas no catálogo de cada conjunto de dados, para que os engenheiros as vejam ao construir sistemas.
+
+### 15.2 Acesso por papel
+
+Kofi projeta um controle de acesso baseado em papéis para os conjuntos de dados. Os analistas de faturamento veem leituras e tarifas, mas não o cadastro prioritário. A equipe de campo vê os dados de imóvel e medidor das ordens de serviço atribuídas a ela. Os cientistas de dados trabalham com extratos pseudonimizados, com os identificadores de clientes substituídos. Cada papel é aprovado pelo dono dos dados. Ele descobre que os analistas compartilham uma única conta no *data warehouse*, o que impede a responsabilização, e a substitui por contas nominais ligadas a papéis. Cada dono revisa os acessos a cada trimestre, e papéis sem uso são removidos.
+
+### 15.3 Incidentes e dados
+
+Quando o notebook de um prestador de serviço com um extrato de clientes é furtado, Kofi ajuda a analisar o incidente. O extrato continha nomes e endereços de um distrito e não estava criptografado. Como se tratava de dados pessoais, o encarregado de proteção de dados avalia a notificação prevista no artigo 33 do GDPR (no Brasil, a comunicação equivalente à autoridade nacional e aos titulares está no art. 48 da LGPD). Kofi rastreia por que o extrato existia: um pedido avulso aprovado informalmente. Ele recomenda que os extratos sigam um processo de solicitação com aprovação do dono, campos mínimos, criptografia e data de expiração. Os clientes do distrito recebem uma carta explicando o que aconteceu.
+
+### 15.4 Segurança e governança juntas
+
+Kofi observa que os controles de segurança protegem os dados, enquanto a governança decide que dados devem existir, quem é dono deles e para quais finalidades. O extrato furtado teria sido inofensivo se a governança tivesse recusado campos desnecessários ou exigido pseudonimização. A Profa. Varga explica que as duas disciplinas compartilham ferramentas como controle de acesso e registros, mas respondem a perguntas diferentes, e que organizações eficazes as conectam por meio de titularidade e políticas compartilhadas. Na Tidewater, o gerente de segurança e o líder de governança de dados agora se reúnem todo mês e mantêm um único registro de riscos de dados.
+
+### Exemplo resolvido
+
+Kofi atribui prioridades de segurança por conjunto de dados, projeta um acesso por papéis com contas nominais no *data warehouse*, analisa um extrato furtado e recomenda um processo governado de extratos.
+
+> **Caso sintético.** O incidente é sintético; o artigo 33 do GDPR e o art. 48 da LGPD são reais.
+
+### Erros e limites
+
+Dados pseudonimizados continuam sendo dados pessoais; proteja-os de acordo.
+
+### Exercícios
+
+- **EX043 — Prioridade dos dados de controle.** Quais propriedades vêm primeiro para os dados do sistema de controle? *Rubrica:* 3 = disponibilidade e integridade;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+- **EX044 — Conta compartilhada.** Que problema do *data warehouse* Kofi corrigiu? *Rubrica:* 3 = conta compartilhada de analistas substituída por contas nominais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Regras para extratos.** Cite duas regras para extratos futuros. *Rubrica:* 3 = aprovação do dono, campos mínimos, criptografia, expiração;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) enxergar a governança de dados como parte de um sistema de sistemas; (2) gerenciar interfaces e requisitos entre equipes; (3) aplicar o pensamento de ciclo de vida aos dados.
+
+### 16.1 Um sistema de sistemas
+
+O ambiente de dados da Tidewater inclui medidores, o *head-end* do fornecedor, o faturamento, o atendimento ao cliente, o sistema de controle, o *data warehouse* e os relatórios regulatórios. Cada um pertence a uma equipe ou empresa diferente. Kofi usa a engenharia de sistemas para enxergá-los como um único sistema cujo comportamento emerge das interações. Um problema de qualidade costuma aparecer longe de sua causa, como quando um defeito de firmware em medidores surge na forma de uma reclamação de conta. O pensamento sistêmico o ajuda a rastrear efeitos através das fronteiras, em vez de corrigir sintomas localmente. Kofi rastreia assim três reclamações recentes.
+
+### 16.2 Controle de interfaces
+
+Kofi escreve documentos de controle de interface para as principais trocas de dados: o arquivo de leituras de medidores enviado pelo fornecedor e o fluxo diário de volumes vindo do sistema de controle. Cada documento define campos, unidades, formatos, horários, tratamento de erros e a quem recorrer. Quando o fornecedor muda um campo, o documento exige aviso prévio e testes. Ele explica que os documentos de interface transformam suposições informais em requisitos acordados, que são a base para cobrar dos parceiros quando os dados não chegam como esperado. Os dois parceiros assinam formalmente os documentos.
+
+### 16.3 Ciclo de vida dos dados
+
+Kofi mapeia o ciclo de vida dos dados de medição: criação no medidor, transmissão, validação, uso no faturamento, análise, arquivamento e eliminação. Em cada etapa, anota o responsável, as regras de qualidade, os controles de segurança e o prazo de retenção. A ISO/IEC 38505-1 incentiva os órgãos de governança a considerar o valor, o risco e as restrições dos dados ao longo de todo o ciclo de vida. Kofi descobre que a eliminação é a etapa menos definida; ninguém havia decidido quando as leituras horárias deveriam ser eliminadas ou agregadas depois do fim dos prazos de evidência de faturamento. O conselho é chamado a tomar essa decisão.
+
+### 16.4 Rastreabilidade de requisitos
+
+Kofi monta uma matriz de rastreabilidade que liga os requisitos de governança, como faturamento exato e limites de retenção, aos requisitos de sistema, aos testes e às evidências. Cada obrigação regulatória remete a pelo menos um controle e um teste. Aparecem lacunas onde as obrigações não têm teste, como a eliminação dos dados horários depois de sete anos. Ele acrescenta requisitos e testes para cobri-las. A Profa. Varga observa que a rastreabilidade permite aos engenheiros responder às perguntas dos auditores com evidências, e não com promessas. A matriz é atualizada sempre que muda uma norma ou um sistema e é revisada a cada trimestre.
+
+### Exemplo resolvido
+
+Kofi trata os dados da Tidewater como um sistema de sistemas, escreve documentos de controle de interface, mapeia o ciclo de vida dos dados e constata que a eliminação não está definida, e monta uma matriz de rastreabilidade.
+
+> **Caso sintético.** Os sistemas são sintéticos; a ISO/IEC 38505-1:2017 é real.
+
+### Erros e limites
+
+Documentos de interface falham se os parceiros não estiverem obrigados a cumpri-los; cite-os nos contratos.
+
+### Exercícios
+
+- **EX046 — Sintoma distante.** Como um defeito de firmware em medidores pode aparecer? *Rubrica:* 3 = como uma reclamação de conta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Campos da interface.** O que define um documento de controle de interface? *Rubrica:* 3 = campos, unidades, formatos, horários, tratamento de erros, contatos;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
+- **EX048 — Etapa mais fraca.** Qual etapa do ciclo de vida estava menos definida? *Rubrica:* 3 = a eliminação;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar conceitos de realimentação aos processos de qualidade de dados; (2) projetar malhas de medição e correção; (3) evitar malhas instáveis ou lentas.
+
+### 17.1 Malhas de realimentação
+
+Um sistema de controle mede uma saída, compara-a com uma meta e age para reduzir a diferença. Kofi enxerga a gestão da qualidade de dados da mesma forma: medir as taxas de rejeição, compará-las com metas e corrigir as causas. A Tidewater já mede os rejeitos, mas não tem uma etapa confiável de ação, então a malha está aberta. Ele propõe uma revisão semanal em que os donos dos dados recebem seus números de rejeição e precisam registrar uma ação corretiva para qualquer número acima da meta, fechando a malha. A revisão leva trinta minutos às segundas-feiras.
+
+### 17.2 Atraso e estabilidade
+
+Malhas de realimentação com atrasos longos podem oscilar. Kofi percebe que a Tidewater muda os limiares de validação dos medidores depois das reclamações de cada mês, mas as reclamações chegam semanas depois das contas, de modo que os limiares vão e voltam. Ele recomenda basear as mudanças nos dados semanais de rejeição, que chegam depressa, e limitar as alterações de limiar a pequenos passos. Ele explica que os mesmos princípios que estabilizam bombas e válvulas também estabilizam os processos organizacionais que reagem a medições de qualidade de dados. Agora, mudanças de limiar exigem uma justificativa escrita e uma verificação uma semana depois.
+
+### 17.3 Causas-raiz
+
+Uma boa malha corrige causas, não sintomas. Quando as leituras de um distrito falham repetidamente na validação, a equipe as libera manualmente toda semana. Kofi rastreia as falhas até um lote de medidores com um defeito de firmware e pede ao fornecedor que o corrija. As liberações manuais cessam. Ele observa que corrigir registros individuais para sempre é como um controlador que compensa um sensor quebrado sem que ninguém o conserte, e que a análise de causa-raiz deve fazer parte de toda malha de qualidade. O fornecedor entrega a correção de firmware em um mês.
+
+### 17.4 Medindo a malha
+
+Kofi mede a própria malha: o tempo entre um número ultrapassar a meta e o registro de uma ação, e o tempo entre a ação e a melhora. No início, as ações levam três semanas para ser registradas. Depois da nomeação de responsáveis, levam uma semana. Ele apresenta o desempenho da malha ao grupo de governança de dados como evidência de que o processo funciona. A Profa. Varga observa que os processos de governança, assim como os sistemas de controle, devem ser medidos pela qualidade de sua resposta, e não apenas pelo fato de existirem. A melhora vem, em média, cerca de duas semanas depois.
+
+### Exemplo resolvido
+
+Kofi fecha uma malha de qualidade aberta com ações semanais dos donos, estabiliza limiares oscilantes com dados mais rápidos e passos pequenos, corrige uma causa de firmware e mede o tempo de resposta da malha.
+
+> **Caso sintético.** Os processos são sintéticos.
+
+### Erros e limites
+
+Metas demais sobrecarregam os donos; mantenha as malhas focadas.
+
+### Exercícios
+
+- **EX049 — Malha aberta.** Por que a malha de qualidade da Tidewater estava aberta? *Rubrica:* 3 = não havia uma etapa confiável de ação corretiva;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Correção da oscilação.** Como Kofi impediu que os limiares oscilassem? *Rubrica:* 3 = dados semanais de rejeição e passos pequenos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX051 — Velocidade da malha.** Com que rapidez as ações passaram a ser registradas depois da nomeação de responsáveis? *Rubrica:* 3 = uma semana em vez de três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar proteção em camadas para plataformas de dados; (2) separar ambientes; (3) posicionar os controles de governança na arquitetura.
+
+### 18.1 Camadas
+
+Kofi projeta uma arquitetura de segurança para a plataforma de dados da Tidewater em camadas: segmentação de rede separando o sistema de controle dos sistemas corporativos, gestão de identidades e acessos, criptografia em repouso e em trânsito, registros e monitoramento, e controles no nível dos dados, como o mascaramento dos identificadores de clientes. Ele explica que as camadas fazem com que a falha de um controle não exponha tudo. A arquitetura é revisada em conjunto pela equipe de segurança e pelo líder de governança de dados, já que cada camada afeta as duas áreas. Cada camada tem um responsável nomeado e um calendário de testes.
+
+### 18.2 Ambientes
+
+Os ambientes de desenvolvimento, teste e produção são separados. Kofi descobre que os desenvolvedores vinham copiando dados reais de clientes da produção para os ambientes de teste a fim de reproduzir defeitos. Ele propõe um gerador de dados sintéticos que produza clientes, imóveis e leituras realistas, com as mesmas propriedades estatísticas, além de uma regra rígida: dados pessoais de produção nunca entram em teste. A NIST SP 800-188 discute dados sintéticos e abordagens de desidentificação, e ele a usa para julgar quais propriedades o gerador deve preservar. O próprio gerador é testado para garantir que nenhum registro real possa ser reproduzido a partir de sua saída.
+
+### 18.3 Controles de governança na arquitetura
+
+Kofi posiciona os controles de governança em pontos específicos: regras de qualidade na ingestão, etiquetas de classificação em cada conjunto de dados do catálogo, políticas de acesso aplicadas pelo *data warehouse* com base nessas etiquetas e rotinas de retenção que leem as etiquetas para decidir a eliminação. Ele argumenta que controles atrelados a metadados escalam melhor do que controles escritos em cada aplicação. Quando um novo conjunto de dados é etiquetado como contendo dados pessoais, as proteções se aplicam automaticamente, em vez de depender de alguém se lembrar. As mudanças de etiqueta são registradas e revisadas pelo dono.
+
+### 18.4 Revisão
+
+A revisão de arquitetura levanta preocupações sobre o desempenho do mascaramento em consultas grandes e sobre quem mantém as etiquetas de classificação. Kofi roda um teste mostrando que o mascaramento acrescenta um atraso aceitável e propõe que os donos dos dados aprovem as etiquetas ao registrar os conjuntos de dados. A Profa. Varga observa que a arquitetura é um conjunto de decisões com concessões, e que registrar as alternativas rejeitadas, como criptografar cada coluna individualmente, ajuda os futuros engenheiros a entender o projeto escolhido. O registro de decisão lista essa alternativa, seu custo e o motivo pelo qual a banca de revisão não a escolheu.
+
+### Exemplo resolvido
+
+Kofi projeta a segurança em camadas da plataforma de dados, substitui dados de produção por dados sintéticos nos testes, atrela acesso e retenção a etiquetas de classificação e registra as concessões discutidas na revisão.
+
+> **Caso sintético.** A arquitetura é sintética; a NIST SP 800-188 é real.
+
+### Erros e limites
+
+As etiquetas só valem o que vale sua manutenção; audite-as.
+
+### Exercícios
+
+- **EX052 — Regra para dados de teste.** Que regra Kofi propôs para os ambientes de teste? *Rubrica:* 3 = dados pessoais de produção nunca entram em teste;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX053 — Controles por etiqueta.** Por que atrelar os controles a etiquetas de metadados? *Rubrica:* 3 = as proteções se aplicam automaticamente e escalam;; 2 = menciona automático;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Responsável pelas etiquetas.** Quem aprova as etiquetas de classificação? *Rubrica:* 3 = os donos dos dados, no registro;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) gerenciar identidades de pessoas e de dispositivos; (2) usar *hashes* para pseudonimização; (3) governar chaves criptográficas.
+
+### 19.1 Pessoas e dispositivos
+
+A Tidewater gerencia identidades de funcionários, prestadores de serviço e 90.000 medidores. Cada medidor tem uma identidade criptográfica usada para autenticar suas leituras. Kofi aprende que as identidades de dispositivos precisam ser governadas como as contas de funcionários: emitidas, registradas, renovadas e revogadas quando um medidor é retirado. Ele encontra 230 medidores retirados de serviço cujas identidades continuavam válidas na plataforma *head-end*. Um medidor furtado poderia, portanto, continuar enviando leituras que seriam aceitas, e por isso ele recomenda vincular a revogação à ordem de serviço de retirada do medidor. A etapa de revogação agora é automática.
+
+### 19.2 Pseudonimização com hashes com chave
+
+Para as análises, os cientistas de dados precisam ligar as leituras de um cliente ao longo do tempo sem ver nomes nem números de conta. Kofi substitui os números de conta por *hashes* com chave, usando o módulo hmac do Python e uma chave secreta guardada pela equipe de dados. A mesma conta sempre produz o mesmo pseudônimo, o que permite a ligação, enquanto a chave impede que outras pessoas o recalculem. Ele observa que o resultado é pseudonimizado, não anônimo, e por isso continua sendo dado pessoal segundo o GDPR (e também segundo a LGPD) e precisa de proteção. Apenas duas pessoas nomeadas podem ler a chave.
+
+### 19.3 Gestão de chaves
+
+As chaves protegem os dados dos medidores, a criptografia do *data warehouse* e os pseudônimos. Kofi redige as regras de governança das chaves: cada chave tem um responsável, uma finalidade, um local de armazenamento, um calendário de renovação e um procedimento de recuperação. As chaves dos pseudônimos são renovadas todo ano, e as antigas são guardadas apenas pelo tempo necessário para ligar análises históricas. Ele encontra uma chave de pseudonimização gravada em um arquivo de script e a transfere para o serviço de gestão de chaves, com acesso limitado a duas pessoas. Os procedimentos de recuperação são testados uma vez por ano, restaurando uma chave do backup em um exercício controlado.
+
+### 19.4 Criptografia e confiança
+
+Kofi reflete que a criptografia oferece garantias técnicas fortes, mas transfere a confiança para as chaves e para as pessoas que as gerenciam. Se os detentores das chaves saírem sem passar o bastão, os dados podem se tornar inutilizáveis; se as chaves vazarem, as proteções desaparecem. A Profa. Varga explica que é por isso que a gestão de chaves é um tema de governança, e não apenas técnico, e que as decisões sobre quem pode deter chaves devem ser registradas e revisadas como qualquer outra decisão sobre dados. Os detentores de chaves da Tidewater agora constam do registro de governança de dados e são revistos anualmente.
+
+### Exemplo resolvido
+
+Kofi encontra 230 medidores retirados com identidades válidas, vincula a revogação às ordens de serviço, pseudonimiza contas com *hashes* com chave, redige a governança de chaves e tira uma chave de dentro de um script.
+
+> **Caso sintético.** As identidades e as chaves são sintéticas.
+
+### Erros e limites
+
+*Hashes* com chave resistem a pessoas de fora, mas não a quem detém a chave.
+
+### Exercícios
+
+- **EX055 — Identidades obsoletas.** Quantos medidores retirados ainda tinham identidades válidas? *Rubrica:* 3 = 230;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX056 — Status do pseudônimo.** Pseudônimos gerados por *hash* com chave são anônimos? *Rubrica:* 3 = não, continuam sendo dados pessoais;; 2 = correto;; 1 = sim;; 0 = nenhuma.
+- **EX057 — Local da chave.** Onde uma chave estava guardada indevidamente? *Rubrica:* 3 = em um arquivo de script;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Governança de dados: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir governança de dados para uma organização de engenharia; (2) mapear direitos de decisão; (3) delimitar o escopo dos capítulos especializados.
+
+### 20.1 O que governança significa aqui
+
+Kofi define a governança de dados na Tidewater como o sistema de direitos de decisão, políticas, papéis e controles que garante que os dados de medidores, sensores, clientes e ativos sejam adequados aos seus usos e tratados de forma lícita. O DAMA-DMBOK2 descreve a governança como autoridade e controle sobre ativos de dados, enquanto a ISO/IEC 38505-1 pede ao órgão de governança que dirija, avalie e monitore o uso dos dados. Ele observa que os dezenove capítulos anteriores forneceram os fundamentos de engenharia dos quais a governança agora depende. Kofi apresenta essa definição à chefe de dados, que a adota no estatuto de governança da Tidewater.
+
+### 20.2 Direitos de decisão
+
+Kofi usa os domínios de Khatri e Brown para mapear os direitos de decisão na Tidewater: princípios de dados, qualidade, metadados, acesso e ciclo de vida. Para cada um, registra quem decide, quem contribui e quem é informado. O mapa mostra que as regras de qualidade dos dados de medidores são decididas por quem escreve o código do *pipeline*, enquanto as decisões de retenção não são tomadas por ninguém. Ele apresenta essas lacunas à chefe de dados, que concorda em designar responsáveis para cada domínio. Cada designação é datada e registrada no estatuto.
+
+### 20.3 Papéis
+
+Kofi propõe papéis: um conselho de governança de dados presidido pelo diretor de operações, donos de dados para cada grande domínio, curadores que mantêm regras e definições no dia a dia e custodiantes em TI que operam os sistemas. Ele escreve uma descrição curta das decisões e deveres de cada papel. Ele insiste que os donos precisam ter autoridade sobre os processos que geram seus dados; caso contrário, passam a responder por problemas que não conseguem resolver, o que gera frustração em vez de melhoria. O conselho aprova as descrições dos papéis.
+
+### 20.4 Escopo do trabalho especializado
+
+Kofi define o escopo dos capítulos restantes: requisitos, modelos, ameaças, métodos, arquitetura, controles, implementação, medição, confiabilidade, segurança, integração, desempenho, operação, validação e manutenibilidade, tudo aplicado à cadeia de dados da Tidewater que vai do medidor ao relatório do conselho. A Profa. Varga aprova o foco no indicador de perdas informado ao regulador, porque ele depende de muitos sistemas e equipes, o que o torna um bom teste de governança através das fronteiras da engenharia. O indicador de perdas combina leituras de medidores, vazões de sensores, cadastros de ativos da rede e estimativas, de modo que cada capítulo especializado a seguir testa uma parte diferente da mesma cadeia, do medidor ao regulador.
+
+### Exemplo resolvido
+
+Kofi define a governança para a Tidewater, mapeia os direitos de decisão e descobre que a qualidade é decidida por quem escreve o código e a retenção por ninguém, propõe os papéis de conselho, dono, curador e custodiante e delimita o trabalho seguinte em torno do indicador de perdas.
+
+> **Caso sintético.** A Tidewater é sintética; DAMA-DMBOK2, ISO/IEC 38505-1:2017 e Khatri e Brown (2010) são reais.
+
+### Erros e limites
+
+Organogramas de papéis não criam autoridade; confirme-a nas descrições de cargo.
+
+### Exercícios
+
+- **EX058 — Direitos sobre retenção.** Quem decidia a retenção antes do mapa? *Rubrica:* 3 = ninguém;; 2 = correto;; 1 = alguém;; 0 = nenhuma.
+- **EX059 — Dever do curador.** O que fazem os curadores? *Rubrica:* 3 = mantêm regras e definições no dia a dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Indicador de foco.** Que indicador os capítulos seguintes acompanham? *Rubrica:* 3 = o indicador de perdas informado ao regulador;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de 2,16 milhões de leituras por dia.
 
@@ -501,10 +901,70 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 
 **EX030.** Faltava-lhe competência para julgar o risco de contaminação.
 
+**EX031.** A titularidade mudava a cada fronteira da rede.
+
+**EX032.** Seu protocolo não autentica os sensores.
+
+**EX033.** Em períodos de tempestade.
+
+**EX034.** Limitou o acesso à conta de processamento e ao grupo da equipe de dados.
+
+**EX035.** Cada rotina verifica se a anterior terminou com as contagens de linhas esperadas.
+
+**EX036.** A atualização de uma biblioteca de datas que mudava a interpretação dos carimbos de data e hora.
+
+**EX037.** Que as leituras apontem para medidores reais, e os medidores para imóveis reais.
+
+**EX038.** Três.
+
+**EX039.** Para que contas antigas possam ser explicadas com os fatos que valiam na época.
+
+**EX040.** Toda leitura aceita tem medidor e unidade válidos.
+
+**EX041.** Um arquivo do fornecedor que chegou com uma nova ordem de colunas.
+
+**EX042.** Valores de configuração que os donos dos dados podem revisar.
+
+**EX043.** Disponibilidade e integridade.
+
+**EX044.** Uma conta compartilhada de analistas, substituída por contas nominais.
+
+**EX045.** Aprovação do dono e criptografia.
+
+**EX046.** Como uma reclamação de conta de cliente, longe de sua causa.
+
+**EX047.** Campos, unidades, formatos, horários, tratamento de erros e contatos.
+
+**EX048.** A eliminação.
+
+**EX049.** Os rejeitos eram medidos, mas ninguém agia sobre eles de forma confiável.
+
+**EX050.** Usar dados semanais de rejeição e limitar as mudanças a passos pequenos.
+
+**EX051.** Uma semana, em vez de três.
+
+**EX052.** Dados pessoais de produção nunca entram em teste; usam-se dados sintéticos.
+
+**EX053.** Novos conjuntos etiquetados recebem as proteções automaticamente.
+
+**EX054.** Os donos dos dados, no registro dos conjuntos de dados.
+
+**EX055.** 230.
+
+**EX056.** Não; são pseudonimizados e continuam sendo dados pessoais.
+
+**EX057.** Em um arquivo de script; agora está no serviço de gestão de chaves.
+
+**EX058.** Ninguém.
+
+**EX059.** Mantêm regras e definições no dia a dia.
+
+**EX060.** O indicador de perdas informado ao regulador.
+
 <a id="references"></a>
 ## Referências
 
-Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro; nenhuma das normas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
+Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro, acrescida apenas da LGPD, citada nesta edição como referência brasileira; nenhuma das normas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
 
 - Batini, C., Cappiello, C., Francalanci, C., & Maurino, A. (2009). Methodologies for data quality assessment and improvement. *ACM Computing Surveys, 41*(3), 1–52. https://doi.org/10.1145/1541880.1541883
 - DAMA International. (2017). *DAMA-DMBOK: Data management body of knowledge* (2nd ed., D. Henderson & S. Earley, Eds.). Technics Publications. ISBN 978-1-63462-234-9.
@@ -516,3 +976,4 @@ Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas 
 - Joint Task Force Transformation Initiative. (2012). *Guide for conducting risk assessments* (NIST SP 800-30 Rev. 1). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-30r1
 - Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to data consumers. *Journal of Management Information Systems, 12*(4), 5–33. https://doi.org/10.1080/07421222.1996.11518099
 - Shadish, W. R., Cook, T. D., & Campbell, D. T. (2002). *Experimental and quasi-experimental designs for generalized causal inference*. Houghton Mifflin.
+- Brasil. (2018). *Lei nº 13.709, de 14 de agosto de 2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)*. Diário Oficial da União. <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm>
