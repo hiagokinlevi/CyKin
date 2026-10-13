@@ -64,10 +64,10 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 26. [Infraestructura crítica y seguridad sectorial: métodos II](#ch-26)
 27. [Infraestructura crítica y seguridad sectorial: verificación](#ch-27)
 28. [Infraestructura crítica y seguridad sectorial: análisis de fallas](#ch-28)
-29. [Infraestructura crítica y seguridad sectorial: operaciones](../../en/book/MANUSCRIPT.md#ch-29)
-30. [Laboratorio II](../../en/book/MANUSCRIPT.md#ch-30)
-31. [Infraestructura crítica y seguridad sectorial: casos avanzados](../../en/book/MANUSCRIPT.md#ch-31)
-32. [Infraestructura crítica y seguridad sectorial: interfaces interdisciplinarias](../../en/book/MANUSCRIPT.md#ch-32)
+29. [Infraestructura crítica y seguridad sectorial: operaciones](#ch-29)
+30. [Laboratorio II](#ch-30)
+31. [Infraestructura crítica y seguridad sectorial: casos avanzados](#ch-31)
+32. [Infraestructura crítica y seguridad sectorial: interfaces interdisciplinarias](#ch-32)
 33. [Métodos de investigación II](../../en/book/MANUSCRIPT.md#ch-33)
 34. [Proyecto comparativo](../../en/book/MANUSCRIPT.md#ch-34)
 35. [Propuesta del proyecto final](../../en/book/MANUSCRIPT.md#ch-35)
@@ -2122,7 +2122,271 @@ Los árboles de fallas y el FMEA hacen explícitos los supuestos sobre las falla
 <!-- cyberabc:chapter-navigation:start ch-28 -->
 ### Siga estudiando — capítulo 28 de 40
 
-[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](../../en/book/MANUSCRIPT.md#ch-29)
+[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Infraestructura crítica y seguridad sectorial: operaciones
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) describir las operaciones de seguridad de un operador de servicios críticos: supervisión, triaje, escalado, gestión de cambios y de vulnerabilidades; (2) adaptar la respuesta a incidentes a la tecnología operativa, donde mantener seguro el proceso es lo primero; (3) medir el desempeño operativo con el tiempo de detección y el tiempo de recuperación mediante medianas y percentiles; y (4) redactar un paso de un manual de respuesta que respete tanto la seguridad como las operaciones. Se apoya en los capítulos 12, 15, 24, 27 y 28 y prepara el Laboratorio II (capítulo 30).
+
+### 29.1 Qué hacen las operaciones de seguridad
+
+En el día a día, una función de operaciones de seguridad **supervisa** (registros, tráfico de red, alertas), **hace el triaje** (¿es real?, ¿qué gravedad tiene?), **escala** (¿a quién?, ¿con qué rapidez?), **coordina los cambios** (ningún cambio por sorpresa en los sistemas de TO) y **gestiona las vulnerabilidades** (capítulos 5, 9 y 11). Para un operador de servicios críticos, el rasgo definitorio es la colaboración con **operaciones**: el personal de la sala de control, los ingenieros y los clínicos saben cómo es la normalidad del proceso y son responsables de las decisiones que lo afectan. Unas operaciones de seguridad que no hablan con la sala de control interpretarán mal las alertas y, peor aún, tomarán medidas que dañen el servicio.
+
+### 29.2 Respuesta a incidentes en TO
+
+Las recomendaciones del NIST sobre respuesta a incidentes, revisadas en 2025, sitúan la respuesta dentro de la gestión global del riesgo de ciberseguridad y de las funciones del CSF 2.0 ([SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final)). En la TO cambia el orden de prioridades: **primero mantener seguro el proceso** (lo que puede implicar pasar a control manual o local), **después contener** (aislar los segmentos de TI o TO afectados sin cortar lo que el proceso necesita) y **después investigar y recuperar**. Desconectar un servidor comprometido es un acto reflejo en TI; en TO, el operador debe saber primero qué hace ese servidor: desconectar el historiador es inocuo, desconectar el único servidor SCADA puede dejar ciegos a los operadores durante una tormenta. También debe preservarse la evidencia: imágenes de las estaciones de ingeniería, configuraciones de los controladores, capturas de red y el registro del operador. Los manuales de respuesta se acuerdan de antemano con operaciones, seguridad funcional y, cuando puedan intervenir datos personales, protección de datos (capítulo 14).
+
+### 29.3 Medir las operaciones
+
+Las medidas habituales son el **tiempo de detección** (TTD: desde la primera actividad maliciosa o defectuosa hasta la detección) y el **tiempo de recuperación** (TTR: desde la detección hasta el servicio restablecido). Sus distribuciones son asimétricas (capítulo 12): la mayoría de los incidentes se resuelven rápidamente; unos pocos llevan días. Informe de la **mediana**, el **percentil 90** y el **tamaño de la muestra**, e inspeccione los valores atípicos uno por uno: la cola larga es donde están las lecciones. Cuidado con los incentivos: un objetivo de TTD puede animar a registrar con generosidad la hora de «detección». Los 15 registros del Lab 12 muestran por qué: media de 27,2 horas, mediana de 4. Inspeccione individualmente la detección de 240 horas; fue un uso indebido lento de credenciales.
+
+### 29.4 Ejemplo resuelto y Lab 12 (sintético)
+
+**Este caso es sintético.** Los miembros de la CRP pusieron en común 15 registros de incidentes depurados de los dos últimos años.
+
+```python
+# Lab 12 - time to detect and recover: mean, median and percentiles from synthetic tickets (offline)
+import statistics as st
+TTD_H = [0.5, 1, 1, 2, 2, 3, 3, 4, 6, 8, 12, 20, 36, 70, 240]   # hours from first malicious activity to detection
+TTR_H = [2, 3, 3, 4, 5, 5, 6, 8, 8, 10, 12, 16, 24, 48, 96]
+for name, xs in (("time to detect", TTD_H), ("time to recover", TTR_H)):
+    q = st.quantiles(xs, n=10, method="inclusive")
+    print(f"{name}: n={len(xs)} mean={st.mean(xs):.1f} median={st.median(xs):.1f} p90={q[8]:.1f} max={max(xs)}")
+print("mean TTD without the 240 h outlier:", round(st.mean(TTD_H[:-1]), 1))
+```
+
+Salida esperada:
+
+```text
+time to detect: n=15 mean=27.2 median=4.0 p90=56.4 max=240
+time to recover: n=15 mean=16.7 median=8.0 p90=38.4 max=96
+mean TTD without the 240 h outlier: 12.0
+```
+
+El tiempo medio de detección (27,2 h) no describe ningún incidente real: la mitad se detectaron en 4 horas y uno tardó diez días. Eliminar ese único registro reduce la media a menos de la mitad. El informe útil dice: «mediana de 4 h, percentil 90 de unas 56 h, n = 15; el caso de 240 horas fue un uso indebido lento de credenciales descubierto durante una revisión de accesos», y después pregunta por qué la supervisión no lo detectó. Los percentiles sobre 15 registros son aproximados; debe indicarse el método para calcularlos (aquí, el método «inclusive» de `statistics.quantiles` de Python).
+
+### 29.5 Un paso de un manual de respuesta (sintético)
+
+*Manual de respuesta de CPN, paso 3: sospecha de compromiso de una estación de ingeniería:* (1) El analista de seguridad informa al supervisor de la sala de control; el supervisor confirma que ninguna maniobra depende ahora de la estación. (2) El supervisor autoriza el aislamiento; el analista aísla el puerto de red de la estación y la deja encendida (para preservar la memoria). (3) Un ingeniero comprueba las configuraciones de los controladores que la estación podría haber cambiado, comparándolas con la última copia de seguridad conocida como buena. (4) El analista registra las horas, las decisiones y quién las autorizó en el registro del incidente. Cada paso indica quién decide y por qué importa el orden. Si un ingeniero de CPN estuviera a mitad de una maniobra de transferencia de carga en torno a la Subestación Norte desde esa estación, desconectar su puerto de red dejaría la operación a medias, con la sala de control sin saber qué interruptores se habían movido.
+
+### 29.6 Errores comunes y límites
+
+- Equipos de seguridad que actúan sobre la TO sin autorización de operaciones.
+- Cortar la alimentación o borrar sistemas antes de preservar la evidencia.
+- Informar de tiempos medios con datos asimétricos.
+- Manuales de respuesta que solo existen en los sistemas que el incidente ha inutilizado.
+
+El manual de CPN evita los dos primeros haciendo que el supervisor autorice el aislamiento y dejando encendida la estación. El Lab 12 muestra el tercero. El cuarto explica por qué los miembros de la CRP guardan copias impresas de los manuales en cada sala de control, ya que un incidente puede inutilizar el sistema documental que los contiene.
+
+### Ejercicios — capítulo 29
+
+**EX057 — Informe de la cola.** *Objetivo:* resumir con honestidad datos asimétricos. *Entradas:* el Lab 12. *Pasos:* escriba un resumen de 100 palabras para el consejo de la CRP sobre el TTD y el TTR, que incluya el tamaño de la muestra, una limitación y una pregunta sobre el caso más largo. *Evidencia esperada:* el resumen. *Rúbrica:* 3 = medianas y p90 con n, se señala la distorsión de la media, limitación (pocos registros, depurados, horas de detección autodeclaradas), pregunta incisiva; 2 = números sin salvedades; 1 = solo medias; 0 = nada.
+
+**EX058 — Contención segura.** *Objetivo:* ordenar las acciones de respuesta en TO. *Entradas:* se detecta ransomware en el servidor historiador de CW en la zona de control; los servidores SCADA parecen no estar afectados. *Pasos:* escriba las cinco primeras acciones en orden, con quién decide cada una. *Evidencia esperada:* lista ordenada. *Rúbrica:* 3 = confirmar el estado del proceso con operaciones; preparar la operación manual/local; aislar el historiador de la zona de control con la aprobación de operaciones; preservar la evidencia; comprobar el SCADA y los controladores frente a una referencia conocida como buena, con los roles nombrados; 2 = razonable pero sin orden o sin roles; 1 = al estilo de TI, «apagarlo todo»; 0 = nada.
+
+### Síntesis del capítulo
+
+Las operaciones de seguridad en los servicios críticos trabajan codo con codo con operaciones: primero mantener seguro el proceso, contener sin dejar ciegos a los operadores, preservar la evidencia y recuperar. Mida con medianas, percentiles y tamaños de muestra, e investigue los valores atípicos que los promedios ocultan.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Siga estudiando — capítulo 29 de 40
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratorio II
+
+### Resultados de aprendizaje y conexión
+
+Después de este laboratorio usted podrá (1) conducir un ejercicio acotado en dos partes (un ejercicio de mesa facilitado y un análisis de evidencias sin conexión) para un escenario intersectorial; (2) reconstruir una cronología a partir de registros sintéticos y verificar la integridad de los registros; (3) evaluar las decisiones frente a los planes y las medidas; y (4) redactar un informe posterior a la acción con un plan de mejora. Integra los capítulos 17, 21, 22, 26, 27 y 29 y es el segundo punto de control del proyecto.
+
+### 30.1 Escenario (sintético)
+
+**Este escenario es sintético.** A las 02:10 de una noche de invierno, la sala de control de Calder Water informa de que el punto de consigna de nivel de la estación de bombeo PS2 cambió de 4,1 m a 2,0 m a las 01:52. Nadie admite haber hecho el cambio. A las 02:30, CPN informa de una falla en la Subestación Norte cuya reparación llevará 6 horas. El responsable de guardia del CEDC pregunta si el suministro de agua del hospital está en riesgo. Equipos de cuatro personas desempeñan los papeles de operaciones de CW, seguridad de CW, control de CPN y mantenimiento de instalaciones del CVH; un facilitador introduce las inyecciones. Calder Water podría investigar el cambio del punto de consigna de PS2, y CPN podría reparar la Subestación Norte en 6 horas; juntos plantean la pregunta que ninguno puede responder por separado: si el agua del hospital aguanta mientras ninguno de los dos problemas está resuelto.
+
+### 30.2 Parte A: ejercicio de mesa (90 minutos)
+
+Objetivos: (1) decidir en 20 minutos si se pasa PS2 a control local; (2) elaborar un estado consolidado de todos los operadores para el CEDC antes de las 03:00; (3) decidir qué evidencia preservar. Inyecciones: 02:40, seguridad de CW descubre que una sesión remota de un proveedor estuvo activa de 01:45 a 01:58; 02:55, mantenimiento de instalaciones del CVH informa de que tiene combustible para 72 h en el generador, pero pregunta por el agua; 03:20, un periodista local llama a CW. Los observadores registran las horas de las decisiones, quién decidió y con qué evidencia. Los observadores deben anotar el minuto en que se tomó cada decisión, quién la tomó y con qué evidencia, para que el informe posterior a la acción pueda comparar los tiempos con los objetivos. El objetivo de 20 minutos para PS2 empieza a contar a las 02:10.
+
+### 30.3 Parte B: análisis de evidencias (sin conexión)
+
+Con la función de cadena de *hashes* del Lab 8, los equipos reciben tres archivos: el registro del operador, la cabeza anclada procedente del servidor de anclaje separado y el registro de la sesión del proveedor. Recalculan la cadena, encuentran qué entrada (si la hay) se alteró y la alinean con las horas de la sesión. Con el modelo de autonomía del Lab 9 (capítulo 22) y el corte de 6 horas, indican qué servicios se pierden y cuándo, y si el agua del hospital depende de PS2. Todo resultado debe ser reproducible: *hash* del script, versión de Python, salida. Con 10 horas de almacenamiento de agua tratada frente a un corte de 6 horas, el agua del hospital debería aguantar según las cifras del Lab 9; la pregunta abierta para los equipos es si esa cifra de almacenamiento sigue siendo válida con el punto de consigna de PS2 en 2,0 m en lugar de los 4,1 m habituales.
+
+### 30.4 Ejemplo resuelto: la cronología y sus límites (sintético)
+
+| Hora | Evento | Fuente | Confianza |
+|---|---|---|---|
+| 01:45 | Se abre la sesión remota del proveedor | Registro de acceso remoto | Alta (registro del sistema) |
+| 01:52 | Punto de consigna de PS2 4,1 → 2,0 m | Entrada 2 del registro del operador | Media: el recálculo de la cadena muestra que la entrada 2 no coincide con la cabeza anclada, por lo que el registro se alteró a posteriori |
+| 01:58 | Se cierra la sesión del proveedor | Registro de acceso remoto | Alta |
+| 02:10 | Los operadores lo advierten | Registro de turno | Alta |
+| 02:30 | Falla en la Subestación Norte (6 h) | Control de CPN | Alta |
+
+Interpretación: el cambio del punto de consigna coincide con la sesión del proveedor, y la entrada del registro que lo recoge fue alterada, lo que es coherente con un cambio malicioso o descuidado ocultado después, pero no prueba quién lo hizo. Intersectorial: con un corte de la red de 6 horas, las bombas de CW se detienen de inmediato y el almacenamiento de agua tratada (10 h) mantiene el suministro (Lab 9); un punto de consigna rebajado significa menos agua almacenada de lo previsto, lo que acorta esa autonomía: la interacción peligrosa se da entre dos eventos que, por separado, son manejables. Decisiones: pasar PS2 a control local y restablecer el punto de consigna (operaciones); suspender el acceso remoto de los proveedores (seguridad, con el director de CW); preservar el registro de la sesión del proveedor, la imagen del servidor de registros y el ancla (seguridad); informar al CEDC y al CVH con un intervalo estimado de autonomía del agua (operaciones, antes de las 03:00); y remitir a los medios al portavoz acordado.
+
+### 30.5 Informe posterior a la acción
+
+Estructura: objetivos y si se cumplieron (con horas); qué salió bien; qué no; causas raíz (sistémicas, sin culpables; capítulo 28); acciones de mejora con responsables y fechas; apéndice de evidencias. Distinga los **artefactos del ejercicio** (cosas que ocurrieron solo porque era un ejercicio) de los hallazgos reales. En este escenario, la llamada del periodista a las 03:20 pone a prueba un procedimiento real; una inyección tardía del facilitador es un artefacto del ejercicio. Las acciones de mejora se derivan de las causas raíz, como el acceso remoto sin gestionar de los proveedores, no de errores individuales. Para la acción sobre el acceso de los proveedores, la verificación consistiría en comprobar que la cuenta del proveedor está deshabilitada fuera de los tiques aprobados y que puede recuperarse el registro de la sesión de las 01:52.
+
+### 30.6 Rúbrica de evaluación
+
+| Criterio | 3 | 2 | 1 | 0 |
+|---|---|---|---|---|
+| Decisiones | Oportunas, con responsable, basadas en evidencia | Oportunas o basadas en evidencia | Tardías o sin responsable | Ninguna |
+| Cronología | Con fuentes, confianza graduada, integridad comprobada | Con fuentes | Sin fuentes | Ninguna |
+| Razonamiento intersectorial | Interacción identificada y cuantificada | Identificada | Un solo sector | Ninguno |
+| Informe | Acciones con responsable y fecha; artefactos separados | Acciones vagas | Solo narración | Ninguno |
+
+Un equipo que restablece rápidamente el punto de consigna pero no sabe decir quién lo decidió obtiene un 2 en decisiones. Una cronología cuya fila de las 01:52 se marca con confianza alta pese a la entrada alterada del registro obtiene un 1. El razonamiento intersectorial obtiene un 3 solo si se estima la autonomía del agua acortada, no si solo se menciona.
+
+### Ejercicios — capítulo 30
+
+**EX059 — Gradación de la confianza.** *Objetivo:* justificar el peso de la evidencia. *Entradas:* la cronología resuelta de este laboratorio. *Pasos:* explique la confianza de cada fila y qué evidencia adicional elevaría la fila de las 01:52 a alta. *Evidencia esperada:* explicaciones. *Rúbrica:* 3 = registros del sistema, alta; entrada del registro alterada, media, porque se desconocen la hora y el valor de la entrada original; para elevarla se necesitan los registros de eventos del PLC o controlador, la tendencia del punto de consigna en el historiador y la grabación de la sesión en el lado del proveedor; 2 = parcial; 1 = afirmaciones; 0 = nada.
+
+**EX060 — Plan de mejora.** *Objetivo:* convertir los hallazgos en acciones. *Entradas:* el escenario. *Pasos:* escriba cinco acciones de mejora con responsable, fecha y cómo se verificará su cumplimiento. *Evidencia esperada:* tabla. *Rúbrica:* 3 = p. ej., aprobación y grabación de las sesiones de los proveedores por sesión, alarmas de cambio del punto de consigna con límites, ancla en el sistema de otro equipo, plantilla de estado común a los operadores, ejercicio conjunto con CPN; cada una verificable; 2 = acciones sin verificación; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+El Laboratorio II combina personas y evidencias: decidir bajo presión de tiempo, reconstruir cronologías a partir de fuentes con confianza graduada, verificar la integridad y razonar entre sectores. Las situaciones más peligrosas suelen surgir de la interacción de dos eventos que, por separado, son manejables.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Siga estudiando — capítulo 30 de 40
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Infraestructura crítica y seguridad sectorial: casos avanzados
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) analizar casos en los que el daño llegó a través del proceso físico, los sistemas de seguridad o los proveedores compartidos, y no mediante el robo de datos; (2) comparar casos sistemáticamente según la causa, la ruta, la consecuencia, la detección y la recuperación; (3) razonar sobre el riesgo de la cadena de suministro y de concentración entre sectores; y (4) extraer lecciones defendibles y acotadas para un operador. Se apoya en el capítulo 20 y en los capítulos 21–30, y prepara el proyecto comparativo (capítulo 34).
+
+### 31.1 Más allá del titular
+
+El análisis avanzado de casos no pregunta «¿qué ocurrió?», sino «¿qué supuesto falló y está presente aquí ese supuesto?». Tres familias de casos ilustran supuestos en los que se apoyan los servicios críticos. **Manipulación del proceso diseñada para pasar inadvertida.** El análisis de Langner sobre Stuxnet describe un malware que manipulaba controladores industriales que accionaban centrifugadoras mientras mostraba a los operadores valores de apariencia normal ([Langner, 2011](https://doi.org/10.1109/MSP.2011.67)). *Supuesto fallido:* lo que ve el operador es lo que hace el proceso. *Lección trasladable:* rutas de medición independientes para las variables críticas y límites físicos que no dependan del controlador.
+
+**Ataques a la capa de seguridad funcional.** El análisis de TRITON/HatMan describe un malware dirigido contra un controlador de un sistema instrumentado de seguridad ([CISA MAR-17-352-01](https://www.cisa.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%20-%20Safety%20System%20Targeted%20Malware%20%28Update%20B%29.pdf)). *Supuesto fallido:* el sistema de seguridad funcional es independiente de las redes a las que puede llegar un atacante. *Lección:* imponer físicamente los modos de programación del SIS (interruptores de llave), separar las redes del SIS y tratar las estaciones de ingeniería del SIS como los activos más sensibles.
+
+**Falla de una dependencia compartida.** La actualización de seguridad defectuosa de julio de 2024, que bloqueó unos 8,5 millones de dispositivos Windows ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)), y la parada de precaución de 2021 tras un ransomware en la red de TI de una empresa de oleoductos ([CISA AA21-131A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a)) muestran daños que llegan a través de las dependencias y no del sistema de control. *Supuesto fallido:* nuestro riesgo está acotado por nuestros propios sistemas. *Lección:* cartografiar la concentración (muchos servicios que dependen de un mismo producto, proveedor o región de la nube), escalonar las actualizaciones y planificar una operación degradada que no necesite la TI de negocio.
+
+### 31.2 Cadenas de suministro
+
+Todo operador ejecuta software y hardware construidos por otros, a menudo a través de largas cadenas de componentes. Entre las medidas públicas figuran las **listas de materiales de software** (SBOM), que enumeran los componentes ([CISA SBOM](https://www.cisa.gov/sbom)), los marcos para la integridad de la compilación como SLSA ([SLSA](https://slsa.dev/)), las prácticas de desarrollo seguro para los proveedores ([NIST SSDF, SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)) y las expectativas de «seguridad desde el diseño» para los fabricantes ([CISA Secure by Design](https://www.cisa.gov/securebydesign)). En el nivel de grado, las palancas del operador son principalmente contractuales y arquitectónicas: exigir SBOM y divulgación de vulnerabilidades, probar las actualizaciones antes de desplegarlas, escalonar los despliegues, conservar la capacidad de revertirlos y evitar que la falla de un solo proveedor detenga a la vez varias funciones críticas.
+
+### 31.3 Un marco de comparación
+
+| Dimensión | Stuxnet (según el análisis) | TRITON/HatMan | Interrupción por la actualización de 2024 |
+|---|---|---|---|
+| Causa | Deliberada, dirigida | Deliberada, dirigida | Accidental |
+| Ruta | Hacia los controladores | Hacia el controlador de seguridad | A través de un producto compartido |
+| Consecuencia | Daño físico oculto a la vista | Posible pérdida de la protección | Pérdida masiva de disponibilidad |
+| Supuesto fallido | Vista = realidad | Independencia del SIS | Riesgo acotado por los propios sistemas |
+| Control genérico | Medición independiente, límites físicos | Controles físicos del SIS, segregación | Actualizaciones escalonadas, cartografía de la concentración, modos degradados |
+
+Lea primero la fila «Supuesto fallido»; es la parte trasladable. Cada control genérico aborda ese supuesto y no la técnica concreta.
+
+### 31.4 Ejemplo resuelto: concentración en Calder (sintético)
+
+**Este caso es sintético.** La CRP encuesta a sus miembros: el CVH, el CEDC y Calder Mutual usan el mismo producto de seguridad de *endpoint*, configurado con actualizaciones automáticas; el CEDC y CT usan la misma región de la nube para el CAD y la programación; CW y CPN usan el mismo integrador de TO, con acceso remoto a ambos. Eventos únicos que podrían afectar a la vez a varios sectores: una actualización defectuosa del *endpoint* (hospital, despacho y banco simultáneamente); una caída de la región de la nube (despacho y transporte); un compromiso del integrador (agua y electricidad). Recomendaciones: escalonar las actualizaciones del *endpoint* (primero un pequeño grupo canario, las consolas críticas de despacho al final); confirmar que el respaldo de papel y radio del CEDC no necesita la nube; exigir aprobación por sesión y credenciales separadas para el integrador en cada operador, e incluirlo en el ejercicio conjunto. La cuestión no es que estos proveedores sean malos; es que el riesgo del condado es compartido y debe analizarse de forma conjunta.
+
+### 31.5 Errores comunes y límites
+
+- Extraer lecciones de detalles llamativos pero sin fuentes.
+- Tratar las operaciones estatales dirigidas como la amenaza típica para todo operador.
+- Ignorar las fallas accidentales de dependencias compartidas porque no interviene ningún adversario.
+- Enseñar técnicas en lugar de supuestos fallidos.
+
+El ejemplo de concentración de Calder los evita: no usa ningún detalle técnico, trata una actualización accidental del *endpoint* con la misma seriedad que un compromiso del integrador y no presupone un actor estatal. Repetir afirmaciones sin fuentes sobre el origen de Stuxnet sería el primer error. El cuarto error convertiría una lección de TRITON en una descripción de cómo llegar a un controlador de seguridad.
+
+### Ejercicios — capítulo 31
+
+**EX061 — Encuentre el supuesto.** *Objetivo:* abstraer un caso. *Entradas:* el caso de Ucrania 2015 (capítulo 20). *Pasos:* indique dos supuestos que fallaron y uno que se mantuvo y ayudó a la recuperación, con respaldo de las fuentes. *Evidencia esperada:* tres supuestos. *Rúbrica:* 3 = p. ej., el acceso remoto y las estaciones de los operadores eran de confianza (falló), los centros de atención telefónica seguirían accesibles (falló), la operación manual era posible (se mantuvo), cada uno vinculado a la alerta de CISA; 2 = dos; 1 = uno; 0 = nada.
+
+**EX062 — Mapa de concentración.** *Objetivo:* identificar las dependencias compartidas. *Entradas:* la encuesta de concentración de Calder del ejemplo resuelto de este capítulo. *Pasos:* dibuje un mapa bipartito (proveedores ↔ operadores), marque el proveedor con mayor alcance y proponga una medida por proveedor. *Evidencia esperada:* mapa y medidas. *Rúbrica:* 3 = el producto de *endpoint* alcanza a tres operadores de tres sectores (el mayor), medidas específicas (actualizaciones escalonadas, independencia de los respaldos, controles sobre el integrador); 2 = mapa sin medidas; 1 = lista; 0 = nada.
+
+### Síntesis del capítulo
+
+Los casos avanzados enseñan a través de los supuestos fallidos: lo que ven los operadores es real, los sistemas de seguridad son independientes, el riesgo está acotado por nuestros propios sistemas. Compare los casos según la causa, la ruta, la consecuencia y el supuesto; gestione el riesgo de la cadena de suministro y de concentración de forma conjunta entre operadores; y convierta las lecciones en controles genéricos y no en conocimiento de técnicas.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Siga estudiando — capítulo 31 de 40
+
+[← Capítulo 30](#ch-30) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Infraestructura crítica y seguridad sectorial: interfaces interdisciplinarias
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar cómo el derecho y la regulación, la economía, la ingeniería de seguridad funcional, los factores humanos y la comunicación pública dan forma a las decisiones de seguridad en los servicios críticos; (2) traducir un hallazgo técnico para juristas, responsables financieros, clínicos, ingenieros y el público; (3) reconocer cuándo un problema de seguridad es en realidad un problema de incentivos u organizativo; y (4) trabajar entre disciplinas sin sobrepasar su propia competencia. Se apoya en los capítulos 10, 14, 19 y 28–31 y prepara la práctica de campo (capítulo 36) y el proyecto final.
+
+### 32.1 Derecho y regulación
+
+Los servicios críticos están regulados. Ejemplos consultados para este libro: la Directiva NIS2 de la UE establece obligaciones de gestión de riesgos y de notificación de incidentes para las entidades esenciales e importantes ([NIS2](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/)); DORA establece requisitos de riesgo de las TIC para las entidades financieras ([DORA](https://eur-lex.europa.eu/eli/reg/2022/2554/oj)); en Norteamérica, las normas de protección de infraestructuras críticas (CIP) de NERC se aplican al sistema eléctrico de gran escala ([NERC CIP](https://www.nerc.com/pa/Stand/Pages/CIPStandards.aspx)); en el sector del agua de EE. UU., la America's Water Infrastructure Act de 2018 exigió evaluaciones de riesgo y resiliencia y planes de respuesta a emergencias a los sistemas comunitarios de agua por encima de un umbral de tamaño ([EPA, AWIA](https://www.epa.gov/waterresilience/americas-water-infrastructure-act-2018-risk-assessments-and-emergency-response-plans)). Como profesional de la seguridad, usted necesita saber que existen estas obligaciones, dónde encontrar el texto vigente y cuándo recurrir a la asesoría jurídica, no interpretarlas por su cuenta. El cumplimiento es un mínimo: cumplir una norma no demuestra que el servicio sea resiliente.
+
+### 32.2 Economía e incentivos
+
+Gran parte de la infraestructura está operada por empresas privadas, pero su falla perjudica a personas que no son sus clientes: una **externalidad**. Las inversiones que protegen frente a eventos raros compiten con costes visibles y a corto plazo, y el beneficio (un corte que no se produjo) es invisible. La regulación, los seguros, los requisitos de contratación y la información pública son formas de cambiar los incentivos. Reconocer un problema de incentivos evita un error habitual: proponer un control técnicamente excelente que ningún responsable presupuestario tiene motivos para financiar. El planteamiento de la pérdida esperada y del peor evento creíble del capítulo 1 es el puente hacia un público financiero.
+
+### 32.3 Ingeniería de seguridad funcional y factores humanos
+
+Los ingenieros de seguridad funcional tienen una larga práctica en el análisis de peligros, las capas de protección independientes y la gestión del cambio (capítulos 26 y 28). La seguridad de la información y la seguridad funcional pueden entrar en conflicto (un bloqueo de cuenta que impide actuar a un operador en una emergencia; un parche que invalida una certificación de seguridad funcional) y deben conciliarse de forma conjunta. Los especialistas en factores humanos estudian cómo trabajan realmente las personas: avalanchas de alarmas, fatiga en los turnos de noche, atajos cuando los procedimientos no se ajustan a la realidad. El trabajo de Reason presenta los errores como consecuencias del diseño del sistema ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)). Un control que los operadores no pueden usar bajo estrés acabará eludiéndose (la aceptabilidad psicológica de Saltzer y Schroeder).
+
+### 32.4 Comunicación
+
+Públicos distintos necesitan traducciones distintas del mismo hallazgo. Los **clínicos** necesitan conocer el efecto sobre la atención a los pacientes y qué deben hacer de otra manera. Los **ingenieros** necesitan el mecanismo técnico y las restricciones. **Finanzas** necesita los costes, las pérdidas evitadas y las opciones. Los **juristas** necesitan hechos, fechas y las obligaciones que se activan. **El público** necesita información honesta y oportuna sobre el servicio y sobre lo que debe hacer, sin detalles que ayuden a los atacantes. Los portavoces acordados y las plantillas de mensajes aprobadas de antemano forman parte de la preparación ante incidentes (la inyección del periodista del capítulo 30). El hallazgo sobre el BMS del CVH se traduce así a continuación: una comprobación de la ventilación para el responsable de quirófanos, los detalles de la VLAN y del enclavamiento para mantenimiento de instalaciones, unas 25 000 £ frente a la cancelación de intervenciones para finanzas y una declaración de ausencia de obligaciones para el área jurídica.
+
+### 32.5 Ejemplo resuelto: un hallazgo, cuatro públicos (sintético)
+
+**Este caso es sintético.** Hallazgo: la ventilación de los quirófanos del CVH puede modificarse desde el BMS, que es accesible desde la red corporativa con autenticación solo por contraseña.
+
+- *Responsable de quirófanos:* «Un uso indebido del sistema del edificio podría reducir las renovaciones de aire de los quirófanos. Hasta que lo corrijamos, mantenimiento de instalaciones comprobará las lecturas de ventilación al inicio de cada sesión quirúrgica, y usted debe notificar de inmediato cualquier alarma».
+- *Ingeniero de mantenimiento de instalaciones:* «Interfaz de administración del BMS accesible desde la VLAN corporativa; solo contraseña. Propuesta: lista de permitidos limitada a dos estaciones de mantenimiento, MFA, enclavamiento cableado de caudal mínimo de aire».
+- *Finanzas:* «Coste de unas 25 000 £, pago único; aborda un escenario cuyo peor resultado creíble es la cancelación de intervenciones quirúrgicas durante varios días. Se adjuntan las alternativas y sus costes».
+- *Protección de datos y asesoría jurídica:* «No intervienen datos personales; el hallazgo por sí mismo no activa ninguna obligación de notificación; lo reevaluaremos si se detecta una explotación».
+
+### 32.6 Errores comunes y límites
+
+- Emitir opiniones jurídicas sin asesoría jurídica.
+- Proponer controles sin un argumento de financiación.
+- Ignorar las consecuencias para la seguridad funcional o clínicas de los controles de seguridad.
+- Un mismo mensaje para todos los públicos.
+
+El ejemplo resuelto evita cada uno: el mensaje jurídico dice qué se comprobó y cuándo se reevaluará; el mensaje financiero da un coste y su peor resultado creíble; el mensaje para quirófanos nombra la comprobación clínica; y cuatro públicos reciben cuatro mensajes. Un único correo técnico para todos habría fallado al responsable de quirófanos y a finanzas.
+
+### Ejercicios — capítulo 32
+
+**EX063 — Tradúzcalo para el consejo.** *Objetivo:* comunicar entre disciplinas. *Entradas:* el resultado del Lab 11 (la ruta cibernética aproximadamente duplica la probabilidad de perder la alimentación crítica en el modelo sintético). *Pasos:* escriba una nota de 120 palabras para el consejo del CVH con el hallazgo, la corrección de ingeniería propuesta, el planteamiento de costes y los límites del modelo. *Evidencia esperada:* nota. *Rúbrica:* 3 = lenguaje claro, consecuencia para los pacientes, la corrección restablece la independencia, honestidad sobre los números sintéticos y sobre el comportamiento no aleatorio del adversario; 2 = parcial; 1 = jerga; 0 = nada.
+
+**EX064 — Conflicto entre seguridad funcional y seguridad.** *Objetivo:* conciliar deberes. *Entradas:* una política de bloquear las cuentas de la HMI tras cinco intentos fallidos de inicio de sesión. *Pasos:* explique el riesgo para la seguridad funcional y proponga una alternativa que cumpla el propósito de seguridad. *Evidencia esperada:* explicación y alternativa. *Rúbrica:* 3 = operador bloqueado durante una emergencia; alternativas como una consola con control de acceso físico y supervisión, limitación de tasa sin bloqueo, alertas ante fallos, anulación de emergencia con auditoría; 2 = una; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad en los servicios críticos se sitúa entre el derecho, la economía, la seguridad funcional, los factores humanos y la comunicación. Sepa dónde están las obligaciones y cuándo llamar a la asesoría jurídica, reconozca los problemas de incentivos, concilie de forma conjunta la seguridad funcional y la seguridad, diseñe para personas bajo estrés y traduzca cada hallazgo para el público que debe actuar en consecuencia.
+
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Siga estudiando — capítulo 32 de 40
+
+[← Capítulo 31](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 →](../../en/book/MANUSCRIPT.md#ch-33)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2244,6 +2508,22 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX055.** Con la ruta del BMS que ahora requiere un corte de la red: falla del respaldo = $1 - 0.98 \times 0.995 \times 0.99 \times 0.998 \approx 0.03658$; evento superior = $0.05 \times 0.03658 \approx 0.001829$, aproximadamente la mitad del 0,003729 anterior y solo ligeramente por encima del 0,001733 del caso solo físico. La ruta cibernética necesita ahora un corte de la red coincidente, lo que restablece la estructura de dos eventos; un adversario capaz de provocar también un corte de la red sigue siendo un riesgo residual.
 
 **EX056.** La bomba dosificadora funciona al máximo: sobredosificación, agua insegura; detectado por la alarma de valor alto del analizador de salida; límite de caudal cableado, disparo por el analizador. La bomba se detiene: desinfección insuficiente; alarma de valor bajo del analizador, señal de bomba en marcha; bomba de servicio/reserva. El analizador lee bajo (deriva): el controlador aumenta la dosificación; comparación con una muestra manual o un segundo analizador; programa de calibración. El analizador está congelado: no responde a los cambios reales; alarma de «valor obsoleto» ante una lectura invariable; comprobaciones de mantenimiento.
+
+**EX057.** Modelo: «De los 15 incidentes compartidos por los miembros de la CRP, la mitad se detectaron en 4 horas; el percentil 90 fue de unas 56 horas; un caso tardó 240 horas. La recuperación llevó una mediana de 8 horas (percentil 90 de unas 38 horas). El tiempo medio de detección (27 h) está distorsionado por el único caso más largo. Los registros son pocos, están depurados y dependen de horas de inicio autodeclaradas. ¿Por qué la supervisión no detectó durante diez días el uso indebido de credenciales de 240 horas?».
+
+**EX058.** (1) Operaciones confirma el estado del proceso y que el SCADA y los controladores se comportan con normalidad: supervisor de la sala de control. (2) Preparar la operación local/manual de las estaciones críticas por si el SCADA se ve afectado: director de operaciones. (3) Aislar el historiador de la zona de control (y de los conductos de la DMZ): analista de seguridad con la autorización del supervisor. (4) Preservar la evidencia: imagen de memoria y de disco del historiador, registros del cortafuegos y de flujos: seguridad. (5) Comprobar los servidores SCADA, las estaciones de ingeniería y las configuraciones de los controladores frente a líneas base conocidas como buenas: ingeniero de TO con seguridad. Después, las decisiones de recuperación y notificación.
+
+**EX059.** Los registros del sistema (registros de acceso remoto, control de CPN) tienen confianza alta porque los generan automáticamente sistemas separados. Que los operadores lo advirtieran a las 02:10 tiene confianza alta (registro de turno, varios testigos). El cambio del punto de consigna de las 01:52 tiene confianza media: la cabeza anclada muestra que el registro se alteró, por lo que no puede confiarse ni en la hora ni en el valor registrados. Para elevarla a alta se necesitan el propio registro de eventos del PLC o su pista de auditoría de puntos de consigna, la tendencia del punto de consigna y del nivel del depósito en el historiador, y la grabación de la sesión del proveedor.
+
+**EX060.** Acciones: aprobación por sesión de los proveedores con grabación (seguridad de TO de CW, 1 mes; verificar mediante los registros de sesiones); alarma ante cambios del punto de consigna fuera de límites o de ritmo (ingeniería de CW, 2 meses; verificar con un cambio de prueba); trasladar el ancla del registro a un sistema gestionado por otro equipo (TI de CW, 1 mes; verificar mediante una revisión de accesos); plantilla de estado común a los operadores y lista de contactos (coordinador de la CRP, 6 semanas; verificar en el próximo ejercicio); ejercicio conjunto de CW y CPN sobre eventos combinados de la red eléctrica y del proceso (CRP, 6 meses; verificar mediante el informe posterior a la acción).
+
+**EX061.** Fallaron: que las estaciones de los operadores y el acceso remoto solo podían usarlos el personal legítimo (CISA informa de la operación remota de interruptores); que los centros de atención telefónica seguirían disponibles para los clientes (CISA informa de la interrupción de los centros de atención telefónica a los clientes). Se mantuvo: que la operación manual de las subestaciones era posible; CISA informa de que el suministro se restableció pasando al modo manual.
+
+**EX062.** Mapa: producto de *endpoint* ↔ CVH, CEDC, Calder Mutual (alcance 3, tres sectores: el mayor); región de la nube ↔ CEDC, CT (alcance 2); integrador de TO ↔ CW, CPN (alcance 2). Medidas: actualizaciones escalonadas del *endpoint* con grupos canario y una reversión probada; confirmar que los respaldos del CEDC y de CT funcionan sin la región de la nube; credenciales del integrador separadas por operador, aprobación por sesión y supervisión conjunta.
+
+**EX063.** Modelo: «Nuestro modelo de resiliencia eléctrica (con números sintéticos) muestra que el diseño de respaldo del CVH necesita dos fallas para cortar la alimentación a las áreas críticas: un corte de la red y una falla del respaldo. Una debilidad elude esto: el sistema de gestión del edificio puede desconectar por sí solo los circuitos críticos. Si se usara indebidamente, los pacientes de quirófanos y cuidados intensivos podrían quedarse sin alimentación sin ningún problema en la red. Proponemos un cambio de ingeniería (unas 25 000 £, cifra ilustrativa) para que el sistema del edificio no pueda desconectar los circuitos críticos. Las probabilidades del modelo son estimaciones y un atacante no se comporta de forma aleatoria, por lo que el argumento se basa en eliminar el punto único de falla, no en los números exactos».
+
+**EX064.** Riesgo: un operador que teclea mal una contraseña bajo estrés, o un atacante que introduce deliberadamente contraseñas erróneas, bloquea la HMI durante una emergencia e impide el control. Alternativas: ningún bloqueo en las HMI de la sala de control, combinado con control de acceso físico a la sala, limitación de tasa, alertas ante fallos repetidos y un procedimiento de anulación de emergencia con auditoría; autenticación robusta donde no obstaculice la respuesta (p. ej., tarjetas inteligentes).
 
 <a id="glossary"></a>
 
