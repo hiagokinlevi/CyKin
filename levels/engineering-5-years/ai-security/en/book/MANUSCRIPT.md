@@ -1241,6 +1241,8 @@ You will (1) design identity and access for users, services and AI agents; (2) a
 
 Every action must be attributable. An AI agent should act *on behalf of* a user with delegated, scoped permissions (for example OAuth tokens restricted to specific scopes) rather than with a powerful service account. Short-lived credentials limit damage if leaked; never place credentials in prompts.
 
+Delegation means the agent can never do more than the user could, and logs show both: the user on whose behalf the action ran and the agent that proposed it. A shared service account erases that distinction, so after an incident nobody can tell which conversation caused which action. Tokens lasting minutes rather than months also mean a credential copied out of a log is useless by the time anyone tries it.
+
 ### 19.2 Hashing and manifests
 
 A cryptographic hash such as SHA-256 maps a file to a fixed-size digest; any change — even one bit — produces a different digest. A manifest lists the expected digest of every artefact (weights, tokenizer, configuration). The lab detects both a one-bit change in weights and an added configuration line.
@@ -1276,23 +1278,33 @@ model.bin       MISMATCH
 tokenizer.json  OK
 ```
 
+The output shows why every file needs its own entry: the tokenizer was untouched and passes, while two different changes in two files are each caught independently. A single flipped bit at offset 5000 is enough to change the weight file's digest completely.
+
 ### 19.3 Signatures and provenance
 
 A hash proves a file matches a manifest; a *digital signature* on the manifest proves who produced it. Signing model artefacts and recording provenance (which data, code and pipeline produced them) lets consumers verify origin. This addresses OWASP LLM03 (*supply chain*) and backdoor risks from third-party models (Gu et al., arXiv:1708.06733).
+
+Signatures move the trust question to the signing key: who holds it, how it is protected and how a consumer learns which key to expect. Provenance adds context that a signature alone cannot give, such as the dataset version used, so a consumer can judge whether the model is fit for their use and not merely genuine.
 
 ### 19.4 Encryption
 
 Encrypt training data and weights at rest and all traffic in transit (TLS). Encryption protects confidentiality against storage theft and interception but not against a legitimate-looking query that extracts information from the model.
 
+Keys must be managed separately from the data they protect; an encrypted weight file stored next to its key protects nothing. Encryption also leaves the model's own behaviour untouched. A user with ordinary query access can still extract training data or reconstruct a model through its answers, so encryption is paired with query limits and output controls. Engineers record which threats each encryption control addresses and which it explicitly does not.
+
 ### 19.5 Worked example (synthetic NRS case)
 
 NRS receives TrackEye model updates from a vision-model supplier. Sam required a signed manifest with SHA-256 digests for each file, verified on the inspection-train computer before loading. In a test, a modified configuration enabling remote code loading was rejected, matching the lab's `config.yaml MISMATCH`.
+
+Verifying on the train rather than in the depot matters because the files could be altered anywhere between the supplier and the device. The manifest's signature is checked first; the file hashes are trusted only once the signature is shown to come from the supplier's expected key.
 
 ### 19.6 Errors and limits
 
 - Agents using shared admin service accounts.
 - Hashes fetched from the same place as the files (an attacker can change both).
 - Assuming encryption prevents model-level leakage.
+
+Shared admin accounts make every agent action as powerful as the most powerful task any agent needs. A hash downloaded from the same server as the file proves only that the server is consistent with itself, so the expected digest must arrive through a separate, trusted channel such as a signed manifest. Encryption protects data at rest and in transit, but a model answering queries can still reveal what it learned.
 
 ### Exercises
 
@@ -1320,9 +1332,13 @@ You will (1) describe the AI lifecycle (data, training, evaluation, deployment, 
 
 Data collection can be poisoned; labelling can be corrupted; training pipelines and third-party models can carry backdoors; evaluation can be gamed or leaked; deployed models face evasion, extraction, membership inference and prompt injection; monitoring can be blinded; retired models may leave data behind. Each stage needs owners and controls.
 
+Laying the stages out shows that most attacks need no access to the deployed model at all: a poisoned label or a swapped third-party file does its damage long before deployment. Naming an owner for each stage prevents the common gap where data teams assume security handles it and security teams assume data quality is someone else's job.
+
 ### 20.2 The NIST AI RMF as an organising frame
 
 NIST AI 100-1 defines four functions. *Govern*: policies, roles, accountability. *Map*: context, intended use, stakeholders, risks. *Measure*: analyse, assess and track risks with appropriate methods. *Manage*: prioritise and act on risks. NIST AI 600-1 profiles these for generative AI and lists risks such as information security, confabulation and data privacy with suggested actions. Engineers mostly work in Map, Measure and Manage, inside Govern's rules.
+
+The functions repeat rather than run once: measurements feed management decisions, which change the system and require new measurement.
 
 ### 20.3 Which framework for which question
 
@@ -1333,19 +1349,27 @@ NIST AI 100-1 defines four functions. *Govern*: policies, roles, accountability.
 
 Frameworks give vocabulary and checklists; they are not evidence that a system is secure.
 
+Using the wrong framework for a question produces gaps, as when an organisational standard is read as a list of attacks.
+
 ### 20.4 Scoping
 
 An engineering task needs a scope: which system, which lifecycle stages, which threats, what assets and what is out of scope. Explicit exclusions prevent false assurance.
 
+A scope also sets expectations. If model extraction is out of scope, a later report cannot be read as saying extraction was tested and found impossible. Each exclusion carries a reason and a date for review, so it does not quietly become permanent. Sam's scopes also list assumptions, such as 'no external API is exposed', because an exclusion that rests on an assumption must be revisited as soon as the assumption changes.
+
 ### 20.5 Worked example (synthetic NRS case)
 
 NRS asked Sam to "secure the AI". Sam turned it into three scoped workstreams: TrackEye integrity (poisoning via labelling contractor; physical adversarial markings; supply-chain of model updates), Wrench agency (prompt injection; excessive agency; sensitive disclosure), and Pulse resilience (sensor spoofing; feedback-loop drift). Model extraction was explicitly out of scope for this quarter because no AI API is exposed externally.
+
+Each workstream follows the assets and threats of one system, so owners and success measures are clear. The extraction exclusion rests on an assumption, no external API, which Sam lists with a trigger: if NRS ever exposes an AI service externally, extraction returns to scope.
 
 ### 20.6 Errors and limits
 
 - Using a framework checklist as proof of security.
 - Scopes with no exclusions.
 - Ignoring early lifecycle stages (data, labelling).
+
+A completed checklist shows that topics were considered, not that controls work; evidence comes from tests and measurements. A scope with no exclusions implies that everything was examined, which is rarely true. Early lifecycle stages are easy to ignore because they feel like data management rather than security, yet poisoning and labelling attacks start there and are the hardest to find later, once a model has learned from the bad data.
 
 ### Exercises
 
@@ -1373,6 +1397,8 @@ You will (1) write security requirements for AI components that are specific, me
 
 An abuse case describes how someone could misuse the system: "A supplier embeds an instruction in a bulletin that causes Wrench to schedule unnecessary maintenance." Each abuse case yields requirements that prevent, detect or limit it.
 
+Writing abuse cases as stories with an actor, a goal and a route makes them concrete enough to test. The bulletin case gives three requirements: label bulletin text as untrusted (prevent), alert on instruction-like content in bulletins (detect), and require confirmation for work orders (limit). Having all three means one failing does not leave the abuse case open.
+
 ### 21.2 Kinds of requirement
 
 - **Functional security**: "Work orders require technician confirmation."
@@ -1381,23 +1407,33 @@ An abuse case describes how someone could misuse the system: "A supplier embeds 
 - **Data**: "Training images carry provenance; contractor relabels are sampled and reviewed at 5%."
 - **Operational**: "Per-user action budget of 20 work orders per hour; alerts above 3× baseline page the on-call."
 
+The 600-case minimum is twice the 300-case suite that blocked the friendlier prompt, because a smaller suite gives an upper bound too wide to show a rate near 2%.
+
 ### 21.3 Writing verifiable statistical requirements
 
 State the population (test suite), metric, threshold, confidence level and minimum sample size. "Robust to attacks" is not verifiable. "Accuracy under PGD with L∞ ε = 4/255 ≥ 70% on the held-out set" is — and it states the threat model implicitly.
+
+The PGD example names the attack, the norm and the budget, so testers know exactly what to run and readers know what the result does not cover: larger budgets, other norms and physical attacks. A statistical requirement also needs enough data to decide. If the test set is too small, the upper bound may exceed the threshold even when the model is good, and the requirement cannot be shown to pass. The sample size is therefore part of the requirement itself.
 
 ### 21.4 Traceability
 
 Link each requirement to its source (abuse case, OWASP entry, AI Act article, ISO/IEC 42001 control objective) and its verification method. EU AI Act Article 15 requires high-risk systems to be resilient against attempts to alter use or performance by exploiting vulnerabilities, naming data poisoning, model poisoning, adversarial examples and confidentiality attacks; requirements addressing each make compliance arguments traceable.
 
+A trace table runs both ways: from each source to the requirements that answer it, and from each requirement to its test. Gaps then appear as empty cells.
+
 ### 21.5 Worked example (synthetic NRS case)
 
 Sam wrote REQ-AI-014: "TrackEye false-negative rate for defects ≥ 10 mm shall be ≤ 1.5% with 95% upper bound, per condition stratum (day, dawn/dusk, night, rain), on a held-out set of ≥ 1,000 defects per stratum; verified by test report at each release." Source: hazard H-03 and AI Act Art. 15 (accuracy). REQ-AI-015 addressed adversarial markings: "No single marking ≤ 20 × 20 cm placed ≥ 0.5 m from the rail shall reduce detection of an adjacent defect below 95% in the physical test campaign."
+
+The stratum rule closes the dawn gap: a good overall rate can no longer hide a weak condition.
 
 ### 21.6 Errors and limits
 
 - Requirements without thresholds or test sets.
 - Thresholds without confidence bounds.
 - Requirements that cannot be verified with available data.
+
+Without a threshold and a test set, nobody can say whether a requirement has been met. A threshold without a confidence bound can be passed by luck on a small sample. A requirement needing data that does not exist, such as a thousand night-time defects per stratum when only two hundred have been recorded, must either be rewritten or come with a plan to collect the data before the release that depends on it.
 
 ### Exercises
 
