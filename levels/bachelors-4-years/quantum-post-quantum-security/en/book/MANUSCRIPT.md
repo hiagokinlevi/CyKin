@@ -85,11 +85,15 @@ Factoring an n-bit RSA modulus: classical GNFS (heuristic) vs Shor gate count ~n
 
 Read the output as a table of growth rates, not as predicted run times: the numbers ignore constants, error correction and hardware speed, which Chapter 19 treats as explicit assumptions.
 
+Two contrasts stand out. For symmetric keys, Grover's search halves the exponent, so a 256-bit key still leaves a very large problem. For RSA, the gap is far wider: the classical cost grows faster than any polynomial in the key size, while Shor's cost grows only as the cube of it. Doubling the key from 1024 to 2048 bits adds a lot of classical work but only a few bits of quantum work. That difference is why RSA must be replaced rather than lengthened.
+
 ### 1.5 Common errors and limits
 
 - Treating "secure if problem X is hard" as an unconditional proof.
 - Comparing operation counts across machines as if a quantum gate and a classical instruction cost the same.
 - Reading the heuristic factoring estimates as exact; they are order-of-magnitude guides.
+
+Each error comes from forgetting what the calculation leaves out. Security proofs are conditional, so the condition must be stated beside the result. Operation counts compare growth, not wall-clock time, since a single error-corrected quantum operation may take far longer than a classical one. Heuristic estimates are useful for deciding which algorithms are in danger, not for predicting a date. A careful student writes the assumption next to every number.
 
 ### Exercises
 
@@ -128,15 +132,21 @@ Today's devices are noisy. Running Shor against RSA-2048 needs *error-corrected 
 
 Map HCU's mobile banking login. The phone's secure enclave holds a device key (hardware); the phone OS provides a keystore (operating system); the app's TLS library negotiates key exchange with the server (library); the server's load balancer terminates TLS using a certificate from HCU's CA (infrastructure); the core banking application checks a signed session token (application). Five layers, at least four quantum-relevant algorithms, three different owners.
 
+Five layers each hold a key or a check, and each could need a different change in a migration. The device key and the TLS key exchange are both quantum-vulnerable if they use elliptic curves. The session token's signature may be checked only on the server, which is easier to change. Mapping the login this way shows the HCU team that the app is not one cryptographic decision but several, owned by different people.
+
 ### 2.4 Practical activity
 
 Choose a device you own. List its layers and, for each, one cryptographic function you believe it performs. Mark each belief as *observed* (you saw configuration or documentation) or *assumed*. Keep the list; Chapter 22 turns such lists into an inventory.
+
+Most students find more assumed entries than observed ones, especially in firmware and hardware. That gap is the point of the exercise: an organisation's knowledge of its own cryptography is usually incomplete, and the first job of a migration is to find out what is really there. Note where you would look to confirm each assumption, such as a settings screen or a vendor's documentation.
 
 ### 2.5 Common errors and limits
 
 - Assuming "quantum computer" means a faster laptop.
 - Forgetting firmware and hardware when listing cryptography.
 - Quoting a qubit count without the error rate and run time it assumes.
+
+A quantum computer is a different kind of machine that is faster only for certain problems; for most tasks it offers no advantage. Firmware and hardware are often missed because nobody configures them day to day, yet they verify signatures and hold keys. A qubit count alone says little, since useful algorithms need error-corrected qubits and long run times, and published estimates make those assumptions explicit.
 
 ### Exercises
 
@@ -173,6 +183,8 @@ Cryptographic functions operate on bytes, not text. In Python, `"abc"` is text (
 
 `secrets.token_bytes(32)` returns 32 bytes from the operating system's cryptographically secure generator; the `random` module is *not* suitable for keys because its output is predictable from its seed. `hashlib.sha256(data).hexdigest()` computes a SHA-256 digest; `hashlib.sha3_256` and `hashlib.shake_128` compute members of the SHA-3 family used inside ML-KEM and ML-DSA. To compare secret values use `hmac.compare_digest`, which takes time independent of where the inputs differ.
 
+Known-answer tests use published inputs and outputs, so a wrong implementation fails at once. The SHA-3 family is useful in this book because ML-KEM and ML-DSA use it internally. Never print secret bytes while debugging; print their length or a digest instead.
+
 ### 3.4 Worked example
 
 An HCU intern writes a function to fingerprint certificates:
@@ -187,15 +199,21 @@ print("fingerprint test passed")
 
 The assertion uses the published digest of the empty string as a known answer. If someone later changes the function to hash text, the test fails immediately.
 
+The test checks the function against an outside fact, not against its own output, which is what makes it able to fail. A second test with a real certificate's bytes and its published fingerprint would catch a different mistake, such as hashing a text encoding of the certificate instead of its raw bytes. The intern adds both tests to HCU's repository so that every later change is checked automatically.
+
 ### 3.5 Practical activity
 
 Write `is_valid_length(alg, data)` that returns `True` only if `data` has the length expected for that algorithm, using a dictionary such as `{"ML-KEM-768-ek": 1184}` (the encapsulation-key size in FIPS 203). Test one correct and two incorrect inputs.
+
+A length check is not a security check; it only catches gross errors such as truncated or concatenated values. It is still worth having, because many integration bugs in post-quantum migrations come from buffers sized for classical keys. Take the expected sizes from the standard itself rather than from a blog post, and note the document and table you used, so a reviewer can verify each number.
 
 ### 3.6 Common errors and limits
 
 - Using `random` for keys or nonces.
 - Mixing text and bytes, or printing secrets in logs while debugging.
 - Writing tests that cannot fail (asserting a value against itself).
+
+Each mistake produces code that seems to work. A key from the random module looks random but can be predicted by anyone who learns the seed. A digest of the wrong bytes looks like a digest and fails only when compared with another system. A test that compares a value with itself always passes, so it gives false confidence. Logging secrets leaves them in files that more people can read than the program itself.
 
 ### Exercises
 
@@ -230,6 +248,8 @@ Cryptographic writing depends on standards whose status changes. Cite the docume
 
 Nobody knows when a cryptographically relevant quantum computer will exist. Good writing turns that uncertainty into explicit assumptions: "If such a machine exists within 15 years, records with a 30-year confidentiality requirement are already exposed to harvest-now-decrypt-later collection." Avoid both false precision ("in 2031") and dismissal ("decades away, ignore it"). Use ranges, state who made an estimate and when, and show how your recommendation changes across the range.
 
+Two-part statements of this kind let the reader replace your assumption with their own and still use your reasoning. Say who made each estimate you cite and when.
+
 ### 4.4 Worked example
 
 A draft sentence reads: "Quantum computers will break our encryption by 2030, so NIST requires us to switch to Kyber immediately." Rewritten: "Public estimates of when a quantum computer could break RSA-2048 vary widely and none is authoritative. NIST published ML-KEM, derived from CRYSTALS-Kyber, as FIPS 203 in 2024, and its draft IR 8547 proposes deprecating quantum-vulnerable algorithms after 2030 and disallowing them after 2035. Because our mortgage archive must stay confidential for 30 years, we recommend starting key-exchange migration for archive transfers this year." Each claim is now sourced, dated and qualified.
@@ -238,11 +258,15 @@ A draft sentence reads: "Quantum computers will break our encryption by 2030, so
 
 Take a one-page news article about quantum computing. Mark every factual claim, find its primary source if one exists, and rewrite the article's main conclusion in three sentences that respect the evidence.
 
+Most news articles mix accurate facts with claims that have no source or that overstate one. Writing your three sentences forces you to decide what the evidence actually supports. Compare your version with a classmate's: if they differ, check whether one of you relied on a claim the other could not source. Keep the primary sources you found, as you will reuse them in later chapters.
+
 ### 4.6 Common errors and limits
 
 - Citing a vendor blog for a standard's content.
 - Presenting a draft's proposed dates as mandatory.
 - Writing "quantum-proof" or "unbreakable"; prefer "designed to resist known quantum attacks".
+
+A vendor blog may describe a standard accurately, but it may also mix in product claims or an earlier draft. Cite the standard itself. Draft documents propose dates for comment; they are not requirements until published in final form. Absolute words such as unbreakable promise more than any cryptographer can deliver, and readers who later learn of an attack will distrust everything else in the report.
 
 ### Exercises
 
@@ -269,6 +293,8 @@ You will (1) define confidentiality, integrity, availability and authenticity; (
 
 *Confidentiality* means only authorized parties can read information; *integrity* means unauthorized changes are detected or prevented; *availability* means authorized users can use the service when needed; *authenticity* means we can tell who produced a message. Cryptography mainly serves confidentiality (encryption, key exchange), integrity and authenticity (message authentication codes and signatures). Availability is easy to forget in cryptographic changes: a migration that makes handshakes fail is an availability incident even if it improves confidentiality.
 
+In HCU's case, a gateway that rejects members' older phones after a change of algorithm would be a security failure even if no data leaked.
+
 ### 5.2 Assets, threats, vulnerabilities, controls
 
 An *asset* is something of value — member data, the ability to approve payments. A *threat* is a potential cause of harm, usually an actor with a capability and motive. A *vulnerability* is a weakness the threat can exploit. A *control* reduces likelihood or impact. Risk is the combination of likelihood and impact for a scenario linking these elements. In quantum security the vulnerability is often not a bug but a mathematical property of an algorithm that becomes exploitable once a new capability exists.
@@ -281,15 +307,21 @@ An *asset* is something of value — member data, the ability to approve payment
 
 HCU risk statement, draft: "Risk of quantum attack: high." Improved: "Asset: mortgage archive transfers between branches and the data centre (confidentiality required 30 years). Threat: a well-resourced adversary recording WAN traffic. Vulnerability: VPN key exchange uses ECDH only. Impact if realized: disclosure of member financial histories. Likelihood: collection plausible now; decryption depends on an uncertain future capability. Control options: hybrid post-quantum key exchange, reduced data in transit." The improved statement supports a decision; the draft does not.
 
+The improved version names each element of the risk separately, so readers can disagree with one part without rejecting the whole. It also shows why the risk is urgent despite the uncertain date: collection can happen today. A reviewer can check each part against evidence, such as the VPN configuration or the archive's retention policy.
+
 ### 5.5 Practical activity
 
 Write risk statements in the improved format for two HCU assets: card authorization messages and the mobile app's code-signing key. Note how their time horizons differ.
+
+Card authorization messages need confidentiality only for a short time, so harvest now, decrypt later matters little there; the concern is authentication. The code-signing key matters for as long as old app versions are trusted, which makes forge-later the main concern. Writing both statements in the same format makes these differences visible, and the comparison helps decide which asset to migrate first.
 
 ### 5.6 Common errors and limits
 
 - Treating every cryptographic use as equally urgent.
 - Ignoring availability when changing algorithms.
 - Confusing a threat (actor) with a vulnerability (weakness).
+
+Urgency depends on how long data must stay confidential and how long signatures must be trusted. Treating every use as equally urgent spreads effort thinly and delays the cases that matter most. Ignoring availability can turn a security improvement into an outage that members notice. Confusing threats with vulnerabilities leads to controls aimed at the wrong thing, such as trying to stop an adversary rather than removing the weakness they would exploit.
 
 ### Exercises
 
@@ -350,15 +382,21 @@ a*a  = [6, 4, 12, 6]
 
 Check by hand: (1 + 2*x* + 3*x*³)·*x* = *x* + 2*x*² + 3*x*⁴ = −3 + *x* + 2*x*² ≡ 14 + *x* + 2*x*² (mod 17).
 
+The lab multiplies two small polynomials in a ring with toy parameters and prints the result. Doing one product by hand, as shown, is the best way to see where the sign flip happens. Real parameters are far larger, but the rule is the same, and the libraries you will use apply it with much faster algorithms. The toy ring is not secure; it exists only to make the arithmetic visible.
+
 ### 6.4 Worked example
 
 An HCU developer asks why their post-quantum library "multiplies polynomials" when RSA "exponentiates numbers". RSA works in the multiplicative group modulo *N*, where a hidden period exists and Shor can find it. ML-KEM works with noisy linear algebra over polynomial rings, where no such period structure is known to help. The arithmetic looks different because the hard problem is different.
+
+The developer's question is a good one to answer before any migration work, because it explains why the new algorithms need new review skills. Code that handles polynomials and noise has different failure modes from code that handles large integers, such as mistakes in reduction or in sampling the noise.
 
 ### 6.5 Common errors and limits
 
 - Forgetting the sign flip when reducing *x*^*n* to −1.
 - Believing the ring structure alone provides security; without noise the equations are easy to solve.
 - Assuming "no known attack" means "proved secure".
+
+The sign flip is the most common hand-calculation mistake, and tests with known answers catch it. The second error matters more: the ring makes the arithmetic convenient, but the security comes from the added noise. Without it, the equations are ordinary linear algebra and easy to solve. No known attack is a statement about current knowledge, so standards include security margins and are reviewed as research continues.
 
 ### Exercises
 
