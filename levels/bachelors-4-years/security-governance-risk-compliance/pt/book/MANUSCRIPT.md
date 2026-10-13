@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 097, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 40 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3; os capítulos 9–40 (EX025–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–18 de 40 já estão escritos em português, com os exercícios EX001–EX054 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 19–40 (EX055–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a construir, operar e avaliar um programa de GRC proporcional numa organização pequena.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de riscos em SQLite e calculam intervalos de Wilson, medianas de patch, níveis de fornecedores, ordenações de matriz contra perda esperada e um resumo de lacunas do CSF, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
-Capítulos 9–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 19–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-19), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -324,11 +324,435 @@ Erros de correspondência geram falsos alarmes. As fontes podem compartilhar o m
 - **EX023 — Problema da junção.** Por que Sofia precisou de uma tabela de correspondência? *Rubrica:* 3 = as fontes usam identificadores diferentes;; 2 = identificadores;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Conta órfã.** O que é uma conta órfã nesta verificação? *Rubrica:* 3 = uma conta ativa que não corresponde a nenhum funcionário;; 2 = órfã;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Dados e bancos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) guardar um registro de riscos num banco de dados; (2) consultá-lo em busca de prioridades e lacunas; (3) entender por que a estrutura melhora os dados de governança.
+
+### 9.1 O registro num banco de dados
+
+O registro de riscos da Elmfield é uma planilha com células mescladas e texto livre. Sofia leva uma amostra de seis riscos para um pequeno banco SQLite com colunas definidas: identificador, título, responsável, probabilidade de um a cinco e impacto de um a cinco. Colunas definidas permitem consultas que seriam lentas e sujeitas a erro se feitas à mão. Ela aprende que a estrutura é o que transforma um registro de documento em dados capazes de responder a perguntas. Células mescladas e texto livre, por exemplo, impedem ordenar os riscos pela nota ou listar os que não têm responsável.
+
+### 9.2 Consultas
+
+O laboratório executa duas consultas. A primeira ordena os riscos pela nota, probabilidade vezes impacto. Dados de inquilinos enviados por e-mail à pessoa errada e um notebook perdido com anotações de casos empatam em doze, seguidos de ransomware no servidor de arquivos, com dez. A segunda lista os riscos sem responsável: o de mau uso da conta do prestador de manutenção e o de senhas fracas no portal do conselho. Sofia observa que os empates mostram os limites de uma escala de cinco pontos, incapaz de separar riscos que podem diferir muito nas consequências reais. Os dois riscos sem responsável são uma lacuna de governança mais clara do que o empate, porque ninguém vai agir sobre eles.
+
+### Laboratório — Consultas a um registro de riscos sintético
+
+```python
+"""A synthetic Elmfield risk register in SQLite: top risks and unowned entries."""
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.execute("create table risk(id text, title text, owner text, likelihood int, impact int)")
+db.executemany("insert into risk values (?,?,?,?,?)", [
+    ("R1", "tenant data emailed to wrong person", "Housing", 4, 3), ("R2", "ransomware on file server", "IT", 2, 5),
+    ("R3", "repairs contractor account misuse", None, 3, 3), ("R4", "rent payment page outage", "Finance", 3, 2),
+    ("R5", "lost laptop with case notes", "Housing", 3, 4), ("R6", "weak passwords on board portal", None, 2, 2)])
+for row in db.execute("select id, title, likelihood*impact s from risk order by s desc limit 3"):
+    print("top", *row)
+print("unowned:", [r[0] for r in db.execute("select id from risk where owner is null")])
+```
+
+Execute com `python3 lab_sqlite.py`. Saída verificada:
+
+```text
+top R1 tenant data emailed to wrong person 12
+top R5 lost laptop with case notes 12
+top R2 ransomware on file server 10
+unowned: ['R3', 'R6']
+```
+
+### 9.3 Por que a estrutura ajuda
+
+Com dados estruturados, a Elmfield pode acompanhar como as notas mudam ao longo do tempo, conferir se todo risco tem responsável e produzir automaticamente os relatórios para o conselho. Sofia também acrescenta uma restrição para que probabilidade e impacto fiquem entre um e cinco, evitando erros de digitação; uma probabilidade 33 digitada por engano não vai mais parar silenciosamente no topo da lista. O Dr. Haddad observa que os bancos de dados não melhoram sozinhos os julgamentos de risco, mas os tornam visíveis, consistentes e fáceis de revisar, o que melhora a governança ao expor as lacunas.
+
+### Exemplo resolvido
+
+Sofia carrega seis riscos no SQLite, encontra dois empatados em doze e dois riscos sem responsável e acrescenta restrições de faixa.
+
+> **Caso sintético.** O registro é sintético.
+
+### Erros e limites
+
+Dados estruturados ainda podem conter julgamentos ruins. As escalas causam empates.
+
+### Exercícios
+
+- **EX025 — Fórmula da nota.** Como a nota de risco é calculada? *Rubrica:* 3 = probabilidade vezes impacto;; 2 = produto;; 1 = soma;; 0 = nenhuma.
+- **EX026 — Riscos empatados.** Que dois riscos empataram no topo? *Rubrica:* 3 = dados de inquilinos mal endereçados e notebook perdido, ambos 12;; 2 = empate;; 1 = ransomware;; 0 = nenhuma.
+- **EX027 — Lista sem responsável.** Que riscos não tinham responsável? *Rubrica:* 3 = R3 mau uso pelo prestador e R6 senhas do portal do conselho;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e prática autorizada
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar só dentro do escopo autorizado; (2) tratar com ética os dados pessoais durante o trabalho de governança; (3) relatar os achados com responsabilidade.
+
+### 10.1 Autorização
+
+O trabalho de Sofia na Elmfield precisa de autorização por escrito. O Dr. Haddad explica que mesmo verificações bem-intencionadas, como testar se uma senha é fraca, podem violar regras ou leis se feitas sem permissão. A diretora da Elmfield assina uma carta que define o que Sofia pode fazer: ler exportações do inventário e das contas, entrevistar funcionários e revisar documentos. Os testes ativos em sistemas ficam excluídos. Ela aprende que um escopo claro a protege, assim como a organização e as pessoas cujos dados ela pode ver. A carta também avisa os funcionários do que esperar, para que um pedido de entrevista não pareça uma investigação.
+
+### 10.2 Dados pessoais
+
+As exportações de contas e as listas de desligamentos contêm dados pessoais. Sofia as guarda só no notebook criptografado que a Elmfield lhe forneceu para o estágio, remove os nomes ao compartilhar resultados com o tutor e apaga as cópias no fim. Ela aprende que o trabalho de governança precisa seguir os mesmos princípios de proteção de dados que promove: usar o mínimo de dados necessário, mantê-los seguros e guardá-los só pelo tempo preciso. Remover os nomes antes de compartilhar é a minimização aplicada ao próprio trabalho. Fazer diferente minaria sua credibilidade e poderia prejudicar inquilinos e funcionários.
+
+### 10.3 Relato responsável
+
+Quando encontra o serviço de área de trabalho remota exposto, Sofia o relata imediatamente ao líder de TI da Elmfield, em vez de esperar pelo relatório final, porque os atacantes poderiam explorá-lo a qualquer momento. Ela o descreve de forma factual, sem culpar quem o configurou. Relatar em particular, e não numa reunião, também evita chamar atenção para a exposição antes que seja fechada. Ela aprende que os achados urgentes exigem relato rápido e reservado pelos canais combinados, enquanto os riscos menores podem esperar o relatório escrito. O relato responsável equilibra rapidez, exatidão e respeito pelos colegas.
+
+### Exemplo resolvido
+
+Sofia trabalha sob um escopo assinado, protege os dados pessoais no próprio trabalho e relata um achado urgente prontamente e sem culpar ninguém.
+
+> **Caso sintético.** A carta de escopo e os achados são sintéticos.
+
+### Erros e limites
+
+Os escopos podem ser ambíguos. Os julgamentos de urgência variam.
+
+### Exercícios
+
+- **EX028 — Atividade excluída.** Que atividade ficou fora do escopo de Sofia? *Rubrica:* 3 = testes ativos em sistemas;; 2 = testes;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Tratamento dos dados.** Como Sofia tratou os dados pessoais das exportações? *Rubrica:* 3 = notebook criptografado, nomes removidos ao compartilhar, apagados no fim;; 2 = minimizar;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Relato urgente.** Por que relatar imediatamente a exposição da área de trabalho remota? *Rubrica:* 3 = os atacantes poderiam explorá-la a qualquer momento;; 2 = urgência;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar as configurações do sistema operacional à política; (2) conferir os notebooks contra um baseline simples; (3) planejar as atualizações como um processo governado.
+
+### 11.1 Configurações e política
+
+A política da Elmfield diz que os notebooks precisam ser criptografados, bloquear a tela depois de alguns minutos ociosos, receber atualizações automaticamente e não dar direitos de administrador aos funcionários. Sofia aprende que cada afirmação corresponde a configurações do sistema operacional. A criptografia é uma configuração do disco, o bloqueio de tela é uma configuração de energia e segurança, as atualizações são geridas pelo serviço de atualização e os direitos de administrador dependem da participação em grupos, que pode ser lida em cada notebook. Ligar as afirmações da política às configurações é o que torna uma política aplicável e conferível, e não um desejo.
+
+### 11.2 Conferência do baseline
+
+Sofia usa o console de gestão de dispositivos para exportar as configurações de cento e vinte notebooks e as compara com o baseline da política. A maioria está conforme, mas nove não têm criptografia, todos notebooks da equipe de manutenção comprados localmente, e catorze usuários ainda têm direitos de administrador concedidos por causa de softwares antigos. Ela lista cada um com seu responsável. Aprende que as conferências de baseline revelam não só lacunas técnicas, mas lacunas de processo, como dispositivos comprados fora do caminho normal. O Dr. Haddad pergunta à turma quem deveria responder pela correção desses nove notebooks.
+
+### 11.3 Atualizações como processo
+
+As atualizações corrigem vulnerabilidades, mas podem quebrar softwares. A Elmfield precisa de um processo governado: testar as atualizações em poucos dispositivos, implantá-las em todos dentro de um prazo definido e acompanhar as exceções. Sofia redige o processo com o líder de TI, fixando trinta dias para as atualizações críticas, meta que ela vai medir no capítulo 15. Ela aprende que a política de atualização é um equilíbrio entre rapidez e estabilidade, e que escrever a meta e medir contra ela permite à Elmfield ver se a prática corresponde à intenção, em vez de apenas supor que corresponde.
+
+### Exemplo resolvido
+
+Sofia liga a política às configurações, encontra nove notebooks sem criptografia e catorze administradores e redige um processo de atualização.
+
+> **Caso sintético.** As contagens de notebooks são sintéticas.
+
+### Erros e limites
+
+As exportações do console deixam de fora os dispositivos não gerenciados. As metas de atualização precisam de exceções.
+
+### Exercícios
+
+- **EX031 — Da política à configuração.** Que configuração impõe a regra de não haver administradores? *Rubrica:* 3 = participação em grupos;; 2 = grupos;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Causa raiz.** Por que nove notebooks não tinham criptografia? *Rubrica:* 3 = foram comprados localmente fora do caminho normal;; 2 = compras;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Meta de atualização.** Que meta Sofia fixou para as atualizações críticas? *Rubrica:* 3 = trinta dias;; 2 = 30;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar uma proporção com um intervalo; (2) comparar equipes de forma justa apesar dos tamanhos diferentes; (3) evitar ler demais em amostras pequenas.
+
+### 12.1 Proporções com intervalos
+
+A Elmfield pede a cada equipe que confirme ciência da política atualizada de tratamento de informações. Sofia aprende que uma proporção vinda de uma amostra ou de uma equipe pequena deve vir com um intervalo que mostre a incerteza. Ela usa o intervalo de Wilson, que se comporta bem com contagens pequenas e proporções próximas de zero ou de um. O intervalo mostra aos gestores a faixa de valores compatível com os dados, o que é mais honesto do que uma porcentagem única e ajuda a evitar decisões baseadas em diferenças casuais. Para uma equipe de quinze pessoas, o intervalo será muito mais largo do que para uma de sessenta.
+
+### 12.2 Comparar equipes
+
+O laboratório calcula as taxas de ciência. Habitação tem cinquenta e dois de sessenta, oitenta e sete por cento, com intervalo de setenta e seis a noventa e três por cento. Manutenção tem dezoito de trinta, sessenta por cento, com intervalo de quarenta e dois a setenta e cinco. Finanças tem catorze de quinze, noventa e três por cento, mas seu intervalo vai de setenta a noventa e nove, porque a equipe é pequena. A manutenção está claramente abaixo da habitação, já que os intervalos mal se tocam. Finanças e habitação não podem ser distinguidas, e relatar os intervalos impede apresentar os noventa e três por cento de finanças como melhores.
+
+### Laboratório — Intervalos de Wilson para a ciência da política
+
+```python
+"""Wilson 95% interval for a proportion (policy acknowledgement), stdlib only."""
+from math import sqrt
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n; c = (p + z*z/(2*n))/d; h = z*sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c-h, c+h
+for team, k, n in [("housing", 52, 60), ("repairs", 18, 30), ("finance", 14, 15)]:
+    lo, hi = wilson(k, n); print(f"{team}: {k}/{n} = {k/n:.0%}, 95% interval {lo:.0%} to {hi:.0%}")
+```
+
+Execute com `python3 lab_wilson.py`. Saída verificada:
+
+```text
+housing: 52/60 = 87%, 95% interval 76% to 93%
+repairs: 18/30 = 60%, 95% interval 42% to 75%
+finance: 14/15 = 93%, 95% interval 70% to 99%
+```
+
+### 12.3 Amostras pequenas
+
+Sofia observa que a porcentagem alta de finanças impressiona, mas se apoia em quinze pessoas; uma confirmação a mais ou a menos a moveria vários pontos. Ela recomenda que a Elmfield concentre o apoio na manutenção, onde a lacuna é clara, e pergunta por que os funcionários da manutenção acham a confirmação mais difícil. Descobre que eles raramente usam notebooks e que a política foi enviada por e-mail. A estatística revelou a lacuna; conversar com as pessoas revelou a causa e uma correção simples: confirmar a ciência em tablets durante as reuniões de equipe, o que se encaixa no modo como a manutenção já trabalha.
+
+### Exemplo resolvido
+
+Sofia calcula intervalos de Wilson, constata que a manutenção está claramente abaixo da habitação e rastreia a causa até o envio por e-mail.
+
+> **Caso sintético.** As contagens de ciência são sintéticas.
+
+### Erros e limites
+
+Confirmar ciência não significa entender. Os intervalos supõem independência.
+
+### Exercícios
+
+- **EX034 — Motivo do Wilson.** Por que usar o intervalo de Wilson? *Rubrica:* 3 = comporta-se bem com contagens pequenas e proporções extremas;; 2 = amostras pequenas;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Intervalo da manutenção.** Qual é o intervalo da equipe de manutenção? *Rubrica:* 3 = 42% a 75%;; 2 = largo;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Causa na manutenção.** Por que a equipe de manutenção confirmou menos? *Rubrica:* 3 = raramente usa notebooks e a política chegou por e-mail;; 2 = canal;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) gerir as identidades na admissão, na movimentação e no desligamento; (2) aplicar o menor privilégio; (3) conduzir uma revisão de acessos simples.
+
+### 13.1 Ciclo de vida
+
+Sofia mapeia o ciclo de vida das identidades na Elmfield. O RH avisa a TI quando alguém entra, e as contas são criadas. Quando os funcionários mudam de equipe, pedem novos acessos, mas raramente perdem os antigos. Quando saem, as contas deveriam ser desativadas no último dia, mas a lista de desligamentos chega atrasada à TI. Ela encontra quatro contas ativas de desligados. Propõe que o RH envie os avisos de desligamento automaticamente antes do último dia e que a TI confirme cada desativação num ticket. Os acessos antigos de quem mudou de equipe são outra lacuna, que a revisão de acessos da seção 13.3 foi pensada para apanhar.
+
+### 13.2 Menor privilégio
+
+Menor privilégio significa que cada pessoa tem só os acessos de que seu papel precisa. Sofia revisa o sistema de gestão habitacional e descobre que todos os agentes de habitação veem o registro completo de qualquer inquilino, incluindo necessidades de apoio e anotações de proteção (safeguarding). Só a equipe especializada de apoio precisa dessas anotações. Ela recomenda acesso baseado em papéis que restrinja os campos sensíveis. A ISO/IEC 27002:2022 traz orientações sobre controle de acesso e direitos de acesso que apoiam isso, e os inquilinos, cuja situação pode expô-los a riscos se for vista amplamente, têm forte interesse nessa restrição.
+
+### 13.3 Revisão de acessos
+
+Sofia conduz a primeira revisão de acessos da Elmfield, no sistema financeiro. Envia a cada gestor uma lista dos acessos de sua equipe e pede que confirme ou remova cada item. A maioria responde em uma semana; dois precisam de lembretes. Sete direitos de acesso são removidos. Ela registra a data, o revisor e as mudanças como evidência. Aprende que as revisões funcionam melhor quando as listas são curtas, claras e enviadas a quem realmente sabe o que sua equipe faz. Os sete direitos removidos mostram que os acessos tinham se acumulado com o tempo, e por isso a revisão deve ser repetida regularmente.
+
+### Exemplo resolvido
+
+Sofia corrige o processo de desligamento, restringe por papel as anotações sensíveis dos inquilinos e conduz uma revisão de acessos financeiros que remove sete direitos.
+
+> **Caso sintético.** As contas e as revisões são sintéticas; a ISO/IEC 27002:2022 é real.
+
+### Erros e limites
+
+Os gestores podem aprovar sem conferir. O desenho de papéis leva tempo.
+
+### Exercícios
+
+- **EX037 — Correção do desligamento.** Como Sofia corrigiu os avisos de desligamento atrasados? *Rubrica:* 3 = avisos automáticos do RH antes do último dia, com confirmação em ticket;; 2 = automação;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Campos sensíveis.** Quem deve ver as anotações de proteção? *Rubrica:* 3 = só a equipe especializada de apoio;; 2 = equipe de apoio;; 1 = todos os agentes;; 0 = nenhuma.
+- **EX039 — Resultado da revisão.** Quantos direitos de acesso a revisão removeu? *Rubrica:* 3 = sete;; 2 = 7;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar os princípios de proteção de dados aos dados dos inquilinos; (2) mapear o tratamento de dados pessoais; (3) ligar a governança de privacidade à de segurança.
+
+### 14.1 Princípios
+
+Sofia estuda os princípios de proteção de dados comuns às leis de privacidade modernas: tratamento lícito e leal, limitação da finalidade, minimização, exatidão, limitação da conservação, segurança e responsabilização. Ela os aplica à Elmfield. Os dados dos inquilinos são coletados para gerir locações e manutenções, então usá-los para marketing sem relação violaria a limitação da finalidade. Guardar por décadas os registros de antigos inquilinos viola a limitação da conservação. Ela observa que esses princípios se sobrepõem à segurança, mas também cobrem a lealdade e os direitos das pessoas; a lealdade não tem um controle de segurança direto e precisa de atenção própria.
+
+### 14.2 Mapa do tratamento
+
+Sofia monta um registro das atividades de tratamento: que dados pessoais a Elmfield tem, por quê, de onde vêm, quem os recebe e por quanto tempo são guardados. Descobre que os prestadores de manutenção recebem dados demais, que as necessidades de apoio ficam guardadas em dois sistemas e que ninguém sabe por quanto tempo as gravações de chamadas são mantidas, uma lacuna de conservação que precisa de uma decisão de retenção e de um responsável. O NIST Privacy Framework oferece uma estrutura para gerir o risco de privacidade, que ela usa para organizar esses achados ao lado dos de segurança.
+
+### 14.3 Juntar privacidade e segurança
+
+Sofia recomenda que a Elmfield conduza juntas a governança de privacidade e a de segurança, com um único registro de riscos e responsáveis compartilhados. Um e-mail mal endereçado é ao mesmo tempo um incidente de segurança e uma violação de dados pessoais que pode precisar ser comunicada. As regras de retenção reduzem os dados que um atacante poderia roubar. Ela aprende que privacidade e segurança são distintas, mas fortemente ligadas, e que programas separados muitas vezes duplicam esforços e deixam escapar os riscos que ficam entre eles, como o compartilhamento excessivo de dados com prestadores, encontrado tanto no trabalho de rede quanto no de privacidade.
+
+### Exemplo resolvido
+
+Sofia aplica os princípios de privacidade, mapeia o tratamento com três lacunas e recomenda uma governança conjunta de privacidade e segurança.
+
+> **Caso sintético.** O tratamento de dados da Elmfield é sintético; o NIST Privacy Framework é real.
+
+### Erros e limites
+
+As leis variam de país para país. Os mapeamentos ficam desatualizados.
+
+### Exercícios
+
+- **EX040 — Violação de finalidade.** Que uso dos dados dos inquilinos violaria a limitação da finalidade? *Rubrica:* 3 = marketing sem relação;; 2 = marketing;; 1 = manutenção;; 0 = nenhuma.
+- **EX041 — Lacunas do tratamento.** Cite duas lacunas encontradas no mapa do tratamento. *Rubrica:* 3 = dados demais para prestadores e retenção das gravações desconhecida;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Exemplo conjunto.** Por que um e-mail mal endereçado é assunto de segurança e de privacidade? *Rubrica:* 3 = é incidente de segurança e violação de dados pessoais;; 2 = ambos;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher medidas que reflitam o desempenho dos controles; (2) usar medianas e limiares para dados assimétricos; (3) apresentar as medidas com honestidade.
+
+### 15.1 Escolher as medidas
+
+A Elmfield quer saber se seu processo de atualização funciona. Sofia escolhe duas medidas: a mediana de dias para aplicar as atualizações críticas e a proporção aplicada dentro da meta de trinta dias. Ela aprende que as medidas devem se relacionar ao propósito do controle, que é encurtar o tempo em que as vulnerabilidades ficam abertas. Contar as atualizações instaladas seria uma medida de atividade; o tempo até a instalação é uma medida de desempenho, mais próxima do que importa para o risco. Dez de quinze atualizações em até trinta dias é um número de desempenho; quinze atualizações instaladas mostraria só atividade.
+
+### 15.2 Dados assimétricos
+
+O laboratório examina quinze atualizações críticas. A mediana é de vinte e um dias, e dez de quinze, sessenta e sete por cento, foram aplicadas em até trinta dias. As três mais lentas levaram quarenta e oito, sessenta e dois e noventa dias. Sofia observa que a média seria puxada para cima por esses atrasos longos, então a mediana descreve melhor uma atualização típica, enquanto os casos mais lentos merecem atenção separada. A maioria das atualizações lentas afetava o servidor de arquivos, que os funcionários evitam reiniciar no horário de trabalho, um padrão que liga os números a uma causa que uma janela de manutenção pode resolver.
+
+### Laboratório — Dias até o patch: mediana e proporção dentro da meta
+
+```python
+"""Days to patch for 15 synthetic critical updates: median and share within 30 days."""
+from statistics import median
+days = [3, 5, 7, 8, 12, 14, 15, 21, 25, 29, 33, 41, 48, 62, 90]
+print(f"updates {len(days)}; median {median(days)} days")
+w = sum(d <= 30 for d in days); print(f"within 30 days {w}/{len(days)} = {w/len(days):.0%}")
+print(f"slowest three {days[-3:]}")
+```
+
+Execute com `python3 lab_patch.py`. Saída verificada:
+
+```text
+updates 15; median 21 days
+within 30 days 10/15 = 67%
+slowest three [48, 62, 90]
+```
+
+### 15.3 Apresentação honesta
+
+Sofia apresenta as duas medidas com a lista das atualizações lentas e sua causa. Evita dizer que a maioria das atualizações está no prazo sem acrescentar que um terço não está. Recomenda uma janela mensal de manutenção para o servidor de arquivos. O Dr. Haddad observa que o NIST SP 800-55v1 discute a seleção e o uso de medidas de segurança da informação, e que boas medidas provocam decisões em vez de enfeitar relatórios; a medida de Sofia leva diretamente à decisão da janela de manutenção. Mostrar as atualizações lentas pelo nome permite ao líder de TI agir sobre o servidor, e não sobre os notebooks em geral.
+
+### Exemplo resolvido
+
+Sofia mede uma mediana de vinte e um dias, com sessenta e sete por cento dentro da meta, e rastreia as atualizações lentas até o servidor de arquivos.
+
+> **Caso sintético.** Os dados de atualização são sintéticos; o NIST SP 800-55v1 é real.
+
+### Erros e limites
+
+Amostras pequenas variam. As medianas escondem os casos mais lentos.
+
+### Exercícios
+
+- **EX043 — Medida de desempenho.** Por que o tempo até a instalação é melhor medida do que as atualizações instaladas? *Rubrica:* 3 = relaciona-se a quanto tempo as vulnerabilidades ficam abertas;; 2 = desempenho;; 1 = atividade;; 0 = nenhuma.
+- **EX044 — Resultados de patch.** Que mediana e que proporção na meta o laboratório relatou? *Rubrica:* 3 = 21 dias, 67%;; 2 = mediana 21;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Causa da lentidão.** Por que as atualizações mais lentas atrasaram? *Rubrica:* 3 = o servidor de arquivos não era reiniciado no horário de trabalho;; 2 = servidor;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever uma arquitetura de segurança simples para uma organização pequena; (2) aplicar a defesa em camadas; (3) documentar as escolhas de projeto.
+
+### 16.1 Uma arquitetura simples
+
+Sofia esboça a arquitetura-alvo da Elmfield. A identidade é central: todos os funcionários entram uma única vez, com autenticação multifator, para chegar ao e-mail em nuvem, ao sistema habitacional e aos arquivos. Os dispositivos são gerenciados e criptografados. Os dados sensíveis ficam em poucos lugares bem controlados. Os backups ficam separados e são testados. A rede do escritório deixa de ser confiável por padrão. Cada elemento responde a uma lacuna encontrada antes, como os notebooks sem criptografia e a área de trabalho remota exposta. Ela aprende que organizações pequenas podem alcançar uma segurança forte com poucas decisões de projeto bem escolhidas, em vez de muitas ferramentas complexas.
+
+### 16.2 Camadas
+
+Sofia aplica a defesa em camadas ao ransomware. A filtragem de e-mail bloqueia muitas mensagens maliciosas. A autenticação multifator limita as senhas roubadas. Os controles de dispositivo bloqueiam programas desconhecidos. Os direitos de administrador limitados reduzem a propagação. Os backups offline permitem a recuperação. Nenhuma camada é perfeita, mas juntas reduzem a chance de uma única falha causar um desastre. Ela observa que camadas com uma fraqueza em comum, como uma única conta de administrador que controla todas, enfraqueceriam muito essa proteção. O Dr. Haddad pergunta que camada falhou num caso real estudado pela turma, para mostrar que o backup offline muitas vezes foi a última a resistir.
+
+### 16.3 Documentar as escolhas
+
+Sofia escreve notas curtas de decisão para cada escolha importante: por que a identidade em nuvem foi escolhida, por que o servidor de arquivos vai migrar para um serviço em nuvem e por que os backups continuam offline. Cada nota registra as alternativas e os riscos aceitos; a dos backups, por exemplo, registra que um backup só em nuvem foi considerado e rejeitado porque o ransomware poderia alcançá-lo. Ela aprende que as decisões documentadas ajudam futuros funcionários a entender a arquitetura e mostram aos auditores que o risco foi considerado. A diretora da Elmfield aprecia as notas porque explicam decisões técnicas numa linguagem que o conselho acompanha.
+
+### Exemplo resolvido
+
+Sofia esboça uma arquitetura centrada na identidade, põe em camadas as defesas contra ransomware e documenta as decisões principais.
+
+> **Caso sintético.** A arquitetura é sintética.
+
+### Erros e limites
+
+As camadas podem compartilhar fraquezas. As migrações para a nuvem trazem risco de fornecedor.
+
+### Exercícios
+
+- **EX046 — Elemento central.** O que é central na arquitetura-alvo da Elmfield? *Rubrica:* 3 = a identidade com autenticação multifator;; 2 = identidade;; 1 = rede;; 0 = nenhuma.
+- **EX047 — Fraqueza compartilhada.** O que poderia enfraquecer a defesa em camadas? *Rubrica:* 3 = uma única conta de administrador controlando todas as camadas;; 2 = administrador compartilhado;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Notas de decisão.** O que as notas de decisão de Sofia registram? *Rubrica:* 3 = as alternativas e os riscos aceitos;; 2 = alternativas;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o que a criptografia e o hash protegem; (2) relacioná-los a decisões de política; (3) gerenciar chaves e certificados como itens governados.
+
+### 17.1 O que a criptografia protege
+
+Sofia aprende que a criptografia mantém os dados confidenciais diante de quem não tem a chave, enquanto o hash produz uma impressão digital que muda se os dados mudarem, o que apoia as verificações de integridade. As assinaturas digitais combinam as duas ideias para mostrar quem criou algo e que não foi alterado. Na Elmfield, a criptografia dos notebooks protege os dispositivos perdidos, as conexões seguras protegem os dados em trânsito e os hashes podem mostrar que os arquivos de evidência não foram alterados depois da coleta. Mais adiante no curso, o hash das evidências do teste de backup será um uso direto dessa propriedade de integridade.
+
+### 17.2 Decisões de política
+
+A criptografia exige decisões de política: que dados precisam ser criptografados, onde e com que métodos aprovados. Sofia redige um padrão curto de criptografia para a Elmfield que remete à classificação de dados: dados pessoais dos inquilinos criptografados em repouso nos dispositivos e em trânsito; documentos do conselho criptografados quando compartilhados fora do portal. Ela aprende que a ISO/IEC 27002:2022 espera regras sobre o uso da criptografia e sobre a gestão de chaves, e que regras simples e claras funcionam melhor do que longos documentos técnicos que ninguém lê; uma regra de duas linhas para os documentos do conselho tem mais chance de ser seguida do que um capítulo sobre cifras.
+
+### 17.3 Chaves e certificados
+
+Sofia lista os certificados e as chaves de recuperação da Elmfield. O certificado do site se renova automaticamente, mas as chaves de recuperação dos notebooks ficam guardadas só no console de dispositivos, que uma única pessoa administra. Se essa pessoa saísse, a recuperação poderia falhar. Ela recomenda um segundo administrador e um procedimento de recuperação documentado, o que elimina o ponto único de falha sem nenhuma mudança na criptografia em si. Ela aprende que a maioria das falhas criptográficas em organizações pequenas são falhas de gestão, como certificados vencidos ou chaves perdidas, e não algoritmos quebrados.
+
+### Exemplo resolvido
+
+Sofia explica a criptografia e o hash, redige um padrão curto de criptografia e corrige um risco de chave dependente de um único administrador.
+
+> **Caso sintético.** As chaves da Elmfield são sintéticas; a ISO/IEC 27002:2022 é real.
+
+### Erros e limites
+
+A criptografia não impede o mau uso autorizado. Os procedimentos de chaves precisam ser testados.
+
+### Exercícios
+
+- **EX049 — Papel do hash.** O que o hash apoia? *Rubrica:* 3 = verificações de integridade;; 2 = integridade;; 1 = confidencialidade;; 0 = nenhuma.
+- **EX050 — Regra dos documentos do conselho.** Quando os documentos do conselho precisam ser criptografados pelo padrão proposto? *Rubrica:* 3 = quando compartilhados fora do portal;; 2 = fora do portal;; 1 = nunca;; 0 = nenhuma.
+- **EX051 — Risco das chaves.** Qual era o risco das chaves de recuperação dos notebooks? *Rubrica:* 3 = um único administrador controlava o único repositório;; 2 = administrador único;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta pesquisável sobre governança; (2) escolher adequadamente entre entrevistas e questionários; (3) planejar uma coleta de dados ética.
+
+### 18.1 Uma pergunta de pesquisa
+
+O primeiro projeto de pesquisa de Sofia pergunta por que algumas equipes da Elmfield cumprem as tarefas de segurança no prazo e outras não. Ela a reduz à revisão trimestral de acessos: o que ajuda ou atrapalha os gestores a concluí-la? Aprende que boas perguntas são específicas, respondíveis com os dados disponíveis e úteis para alguém. Perguntar se a cultura de segurança é boa seria vago demais; perguntar o que ajuda os gestores a concluir uma tarefa definida pode levar a melhorias práticas. Focar a revisão trimestral também lhe dá uma tarefa com datas e registros de conclusão que ela pode examinar.
+
+### 18.2 Escolher os métodos
+
+Com só doze gestores, um questionário teria pouco poder estatístico. Sofia escolhe entrevistas semiestruturadas, que permitem aos gestores explicar seus motivos com as próprias palavras. Ela escreve um roteiro de entrevista com perguntas abertas e estímulos, pilota-o com um gestor e revisa duas perguntas confusas antes que distorcessem as outras onze entrevistas. Aprende que as entrevistas servem a grupos pequenos e a perguntas do tipo "por quê", enquanto os questionários servem a grupos grandes e a perguntas do tipo "quantos", e que a escolha deve seguir a pergunta, e não o hábito.
+
+### 18.3 Ética
+
+Sofia submete um pedido curto de aprovação ética ao Brightwater College. A participação é voluntária, as entrevistas só são gravadas com consentimento, as transcrições removem os nomes e a diretora da Elmfield verá só os temas, e não quem disse o quê, o que protege os gestores que criticaram o processo de revisão. Ela aprende que mesmo pesquisas de baixo risco sobre locais de trabalho exigem cuidado, porque os gestores podem temer críticas, e proteger sua identidade incentiva respostas honestas. A aprovação ética chega em duas semanas, e ela começa as entrevistas com folhas de informação claras para cada participante.
+
+### Exemplo resolvido
+
+Sofia formula uma pergunta específica sobre a conclusão da revisão de acessos, escolhe entrevistas para doze gestores e obtém a aprovação ética.
+
+> **Caso sintético.** O estudo é sintético.
+
+### Erros e limites
+
+As entrevistas refletem o que as pessoas dizem, nem sempre o que fazem. Grupos pequenos limitam a generalização.
+
+### Exercícios
+
+- **EX052 — Pergunta reduzida.** A que a pergunta de Sofia foi reduzida? *Rubrica:* 3 = o que ajuda ou atrapalha os gestores a concluir a revisão de acessos;; 2 = específica;; 1 = cultura;; 0 = nenhuma.
+- **EX053 — Escolha do método.** Por que entrevistas em vez de questionário? *Rubrica:* 3 = só doze gestores e uma pergunta do tipo por quê;; 2 = grupo pequeno;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Acesso da diretora.** O que a diretora da Elmfield verá? *Rubrica:* 3 = só os temas, não quem disse o quê;; 2 = temas;; 1 = transcrições;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Reyes, o Dr. Malik Haddad, o Brightwater College, a Elmfield Housing Association, o Corbridge Community Trust e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX054 (as de EX055–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Reyes, o Dr. Malik Haddad, o Brightwater College, a Elmfield Housing Association, o Corbridge Community Trust e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cinco pontos percentuais (uma redução à metade em termos relativos).
 
@@ -377,6 +801,66 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX120 estão na edição em i
 **EX023.** Porque o sistema de identidade usa endereços de e-mail e o RH usa números de matrícula.
 
 **EX024.** Uma conta ativa que não corresponde a nenhum funcionário.
+
+**EX025.** Probabilidade multiplicada pelo impacto.
+
+**EX026.** Dados de inquilinos enviados por e-mail à pessoa errada e o notebook perdido com anotações de casos, ambos com nota 12.
+
+**EX027.** R3, mau uso da conta do prestador de manutenção, e R6, senhas fracas no portal do conselho.
+
+**EX028.** Testes ativos em sistemas.
+
+**EX029.** Guardou-os num notebook criptografado da Elmfield, removeu os nomes ao compartilhar e apagou as cópias no fim.
+
+**EX030.** Porque os atacantes poderiam explorá-la a qualquer momento, então esperar deixaria o dano possível.
+
+**EX031.** A participação no grupo de administradores em cada notebook.
+
+**EX032.** Eram notebooks da manutenção comprados localmente, fora do caminho normal de compras.
+
+**EX033.** Trinta dias.
+
+**EX034.** Porque se comporta bem com contagens pequenas e proporções próximas de zero ou de um.
+
+**EX035.** 42% a 75%.
+
+**EX036.** Porque raramente usam notebooks e a política foi enviada por e-mail.
+
+**EX037.** O RH envia os avisos de desligamento automaticamente antes do último dia e a TI confirma cada desativação num ticket.
+
+**EX038.** Só a equipe especializada de apoio.
+
+**EX039.** Sete.
+
+**EX040.** Usar os dados de locação e manutenção para marketing sem relação.
+
+**EX041.** Os prestadores de manutenção recebem dados demais e a retenção das gravações de chamadas é desconhecida (também as necessidades de apoio guardadas em dois lugares).
+
+**EX042.** Porque é um incidente de segurança e uma violação de dados pessoais que pode precisar ser comunicada.
+
+**EX043.** Porque mede quanto tempo as vulnerabilidades ficam abertas, que é o propósito do controle.
+
+**EX044.** Uma mediana de 21 dias, com 10 de 15 (67%) em até 30 dias.
+
+**EX045.** Afetavam o servidor de arquivos, que os funcionários evitam reiniciar no horário de trabalho.
+
+**EX046.** A identidade, com login único e autenticação multifator.
+
+**EX047.** Uma fraqueza compartilhada, como uma única conta de administrador que controla todas as camadas.
+
+**EX048.** A escolha, suas alternativas e os riscos aceitos.
+
+**EX049.** Verificações de integridade, porque a impressão digital muda se os dados mudarem.
+
+**EX050.** Quando compartilhados fora do portal do conselho.
+
+**EX051.** Só uma pessoa administrava o console que as guardava, então a recuperação poderia falhar se ela saísse.
+
+**EX052.** O que ajuda ou atrapalha os gestores a concluir a revisão trimestral de acessos.
+
+**EX053.** Porque são só doze gestores e a pergunta é do tipo por quê.
+
+**EX054.** Só os temas, não quem disse o quê.
 
 <a id="references"></a>
 ## Referências
