@@ -3197,17 +3197,25 @@ You will (1) work within an organisation's AI governance and security processes;
 
 A placement connects coursework with organisational reality: budgets, deadlines, legacy systems, procurement and regulation. Agree goals with the host and the university: typically one deliverable (an assessment, a control implementation, an evaluation suite) plus participation in routine processes.
 
+One deliverable gives the placement a clear purpose and something the host can keep using; joining routine processes, such as change boards or incident reviews, shows how decisions are actually made. Goals are written down in the first week with the host supervisor and the academic tutor, so all three agree what success looks like and what the student may access.
+
 ### 43.2 Governance in practice
 
 Organisations adopting ISO/IEC 42001 or the NIST AI RMF have AI policies, inventories, risk assessments and approval boards. Learn how an AI system is proposed, assessed, approved and monitored, who signs off and what evidence they expect.
+
+Watching a real approval shows what the frameworks look like in daily use. A board may ask for a risk assessment, a model card and a test summary before approving a pilot, and for monitoring data before approving full use. Students learn which evidence decision-makers read and which they skip, which shapes how they write their own reports. They also see how long approval takes and plan their work around it.
 
 ### 43.3 Authorised work only
 
 All testing on placement is governed by written authorization from the system owner, specifying scope, methods and time. Use non-production environments where possible. Report findings through the host's channels; never disclose them externally without permission.
 
+Being on placement does not grant permission to test anything. The written authorization names the systems, the methods and the dates, and a student who finds an interesting system outside it asks before touching it. Non-production environments protect the host's operations and the student, since an accidental outage caused during testing can end a placement. Findings belong to the host, who decides how and whether they are shared.
+
 ### 43.4 Reflective practice
 
 Keep a weekly log: what you did, what evidence you produced, what surprised you, what you would do differently. Reflection turns experience into transferable skill and is assessed.
+
+A useful entry goes beyond 'I reviewed the inventory'. It notes what was hard, for example that business owners did not know whether their spreadsheet tools counted as AI, and what the student would change next time, such as asking about add-ins explicitly. Reading entries back at the end shows patterns that single weeks hide, and gives concrete examples for job interviews and later assessments.
 
 ### 43.4b Working with constraints
 
@@ -3252,11 +3260,15 @@ invoice-ocr-model  score= 5 owasp=LLM01
 churn-predictor    score= 3 owasp=LLM02
 ```
 
+The lab's scoring explains the result: autonomy to decide, personal data and untrusted CVs put the screener near the top of the list.
+
 ### 43.6 Errors and limits
 
 - Testing beyond the written scope.
 - Placement deliverables nobody will maintain.
 - Reflection logs that only list tasks.
+
+Testing beyond scope is the most serious, because good intentions do not make unauthorised access lawful or safe. Deliverables that rely on the student to maintain them stop working when the placement ends, so handover to a named owner is part of the work. Logs that only list tasks miss the learning the assessment is looking for: what changed in the student's understanding and why it changed.
 
 ### Exercises
 
@@ -3284,17 +3296,25 @@ You will (1) define a capstone AI-security engineering project with a client, re
 
 A good capstone has a real (or realistic synthetic) client, an AI component with meaningful security risk, a deliverable that can be built and verified in two semesters, and a clear evaluation. Examples: a secured RAG assistant with enforcement and evaluation harness; a poisoning-resistant data pipeline; a monitoring service for extraction and abuse.
 
+Two semesters pass quickly, so a project that needs months of data collection before anything can be built is usually too large. The examples share a pattern: a clear threat, a component the team can build and control, and a measurement that will show whether it works. A client gives the project real requirements and a reviewer outside the university.
+
 ### 44.2 Project plan
 
 Include: problem statement; stakeholders; scope and exclusions; requirements (functional, security, statistical, operational) with verification methods; architecture with trust boundaries; threat model; verification plan; risk register for the project itself (data access, compute, team availability); milestones and deliverables; ethics and authorization.
+
+The plan's risk register covers the project, not the system: a delayed data agreement, a cloud budget that runs out or a team member falling ill. Each risk has a mitigation, such as synthetic data prepared in advance. Milestones are spaced so that each produces something the panel can inspect, which keeps progress visible and problems early.
 
 ### 44.3 Baseline approval
 
 A review panel approves the baseline: requirements, architecture and plan. After approval, changes go through change control, so scope creep is visible and justified.
 
+Change control does not forbid change. It asks that each change state what it adds, what it costs and which requirements or tests it affects, and that the panel or client agree. A team that adds image attachments to Bulletin Gate halfway through must show the schedule still works and the new threats are covered, or defer the feature as originally planned.
+
 ### 44.4 Teamwork
 
 Assign roles (lead, security architect, ML engineer, test lead) but rotate review duties so everyone understands the whole. Keep decisions in ADRs and meetings brief with recorded actions.
+
+Fixed roles make responsibility clear, but rotating reviews spreads understanding, so the project survives if one member is absent. A security architect reviewing the ML engineer's data pipeline, and the reverse, catches problems neither would see alone. Short meetings with written actions avoid decisions that exist only in someone's memory, and decision records explain choices to the panel later.
 
 ### 44.4b Ethics and authorization for the capstone
 
@@ -3304,11 +3324,15 @@ Even synthetic projects need an authorization note: which environments, data and
 
 Sam's team chose "Bulletin Gate": a service that ingests supplier bulletins, extracts structured maintenance facts with a quarantined model, flags instruction-like content, and passes only structured records to Wrench. Requirements included: extraction accuracy ≥ 95% on 500 held-out bulletins; zero instruction text in output records (schema-enforced); ≤ 2 s median latency; full provenance. Exclusions: image attachments (deferred). The panel approved with one condition: add an adaptive-attack test set written by another team.
 
+The schema-enforced requirement is notable because it is absolute rather than statistical: the output format has no field that can hold free instruction text.
+
 ### 44.6 Errors and limits
 
 - Capstones too large to verify.
 - Requirements without verification methods.
 - No change control after approval.
+
+An oversized capstone ends with a system that is partly built and barely tested, which makes a weak dossier. Requirements without verification methods cannot be shown to pass and invite arguments at the final review. Without change control, scope drifts quietly, deadlines slip and the panel cannot tell what was approved. Sam's team reviewed scope against verification effort at every milestone. Cutting scope early cost less than cutting tests late.
 
 ### Exercises
 
@@ -3336,17 +3360,25 @@ You will (1) conduct an independent security design review of another team's AI 
 
 Reviewers must not have designed the system. They need the design package, access to designers for questions, and enough time. Independence reveals assumptions that designers cannot see.
 
+A designer reads the design with knowledge of what was intended and fills gaps without noticing. A reviewer reads only what is written. That difference finds assumptions such as 'retrieval is filtered somewhere' that the designers never wrote down. Access to the designers matters too, but questions and answers are recorded, so the explanation ends up in the design rather than in the reviewer's notes.
+
 ### 45.2 Review method
 
 Combine a checklist and threat-driven exploration. Checklist items: trust boundaries drawn; enforcement outside the model; least-privilege tools; delegated identity; provenance and taint; output handling; supply-chain verification; data protection; monitoring and runbooks; evaluation gates with held-out suites; human-oversight design; failure modes and safe states. Threat-driven: walk OWASP LLM 2025 entries and relevant MITRE ATLAS techniques against the design and ask, for each, "what stops this, and what if that fails?"
+
+The checklist ensures coverage, and the threat walk-through finds problems specific to the design.
 
 ### 45.3 Findings
 
 Each finding: title; severity (with criteria); description; evidence (diagram, document section); impact; recommendation; and status. Separate findings from observations and positive notes. Be specific enough that the designers can act.
 
+A finding such as 'retrieval may be insecure' gives designers nothing to act on. 'Retrieval uses a service account with access to all depots; filtering happens only in the prompt; a user could ask for another depot's documents' states the evidence and impact, and the fix follows naturally. Positive notes matter as well, because they show which practices to keep when the design changes.
+
 ### 45.4 Receiving a review
 
 Thank reviewers, clarify misunderstandings in the design documents (if a reviewer misunderstood, others will), accept or contest findings with evidence, and track every finding to closure.
+
+Contesting a finding is legitimate when evidence supports it, for example a test showing the reviewer's attack path is blocked. Tracking every finding to closure, including contested ones, keeps the review from being forgotten after the meeting. A short response table with each finding, the decision and the evidence is usually enough, and it goes into the dossier.
 
 ### 45.4b Severity criteria
 
@@ -3356,11 +3388,15 @@ Agree severity criteria before the review. For example: *critical* — an extern
 
 Sam reviewed another team's "Crew Chat" design (an assistant for track crews). High finding: the assistant's retrieval used a service account with access to all depots' documents, filtering results only in the prompt ("only answer about your depot"). Recommendation: per-user retrieval permissions enforced in the vector store query. Medium: no output escaping for a web view. Positive: excellent provenance labelling. The team fixed the high finding before the next milestone.
 
+Filtering in the prompt is a request to the model, not access control; a well-phrased question could retrieve and reveal another depot's documents.
+
 ### 45.6 Errors and limits
 
 - Reviews by the designers themselves.
 - Vague findings without evidence.
 - Ignoring reviews that are inconvenient.
+
+Self-review rarely finds the assumptions that caused a problem, because the same person made them. Findings without evidence are hard to act on and easy to dismiss. Ignoring an inconvenient review wastes the effort that went into it and leaves the risk in place, often to be rediscovered later in an incident. Sam's team kept every finding in a tracker that the panel could read. Closed items stayed visible.
 
 ### Exercises
 
@@ -3388,17 +3424,25 @@ You will (1) build and integrate the capstone system to its approved baseline; (
 
 Implement in increments, each ending with tests and a short demo. Keep requirements traceability current: each requirement points to code, configuration and tests. Use the CI security gate from Chapter 14 from the first increment.
 
+Increments keep the gap between design and code small, so problems surface while they are cheap to fix. A demo at the end of each increment shows the client real progress and invites early feedback. Running the security gate from the start means the first version already has a baseline to compare against, rather than discovering many failures at once at the end.
+
 ### 46.2 Implementing controls
 
 Implement the enforcement point, provenance handling, output validation, monitoring and supply-chain checks as separate, testable modules. Avoid "temporary" bypasses; if one is necessary for development, gate it behind configuration that cannot be enabled in the release build.
+
+Separate modules let each control be tested and reviewed on its own, and replaced without disturbing the others. Temporary bypasses are a classic source of incidents: a flag that disables the enforcement point for local testing is harmless until it reaches production. Making the release build unable to enable it turns a promise into a check that the pipeline enforces.
 
 ### 46.3 Evaluation harness
 
 Build the harness that runs held-out benign and adversarial suites, computes metrics with intervals and stores raw outputs. Include the independent adaptive-attack set provided by another team. Run it nightly and at each release candidate.
 
+The adaptive set from another team is the most valuable part, because its authors did not know which attacks the design anticipated. Nightly runs catch regressions within a day of the change that caused them. Stored raw outputs let the team investigate a failure without rerunning the model, and support later questions from the panel.
+
 ### 46.4 Defects and changes
 
 Track defects with severity; security defects block release until fixed or formally accepted with a risk owner. Changes to scope or requirements go through the change control agreed in Capstone I.
+
+A formally accepted security defect names who accepted it, why and until when, so it does not become permanent by default. Blocking release on unfixed security defects can feel slow, but it prevents the common pattern of known weaknesses shipping because a deadline arrived. Scope changes during the build use the same process as before, keeping the baseline meaningful.
 
 ### 46.4b Demonstrations and evidence
 
@@ -3408,11 +3452,15 @@ End each increment with a short demonstration to the client that includes at lea
 
 During build, Bulletin Gate's quarantined model sometimes copied instruction-like sentences into a free-text "notes" field of its output schema. The schema was tightened: notes became an enumeration of predefined maintenance categories plus numeric fields. The adaptive set from the other team then produced zero instruction strings in outputs across 300 cases (95% upper bound ≈ 1%), while extraction accuracy fell from 96.4% to 95.3% — still meeting the requirement.
 
+The fix was structural rather than a better filter: removing free text took away the place where instructions could hide.
+
 ### 46.6 Errors and limits
 
 - Free-text fields that reopen injection paths.
 - Development bypasses shipped to production.
 - Harnesses run only at the end.
+
+A free-text field in a supposedly structured output gives injected instructions a path through the quarantine, as the notes field showed. Development bypasses that ship turn a convenience into an open door. A harness run only at the end finds every problem at once, too late to fix them well. Sam's team kept the harness, the release-build check and the schema review in the definition of done for every increment.
 
 ### Exercises
 
