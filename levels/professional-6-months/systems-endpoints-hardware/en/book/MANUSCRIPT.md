@@ -50,17 +50,35 @@ Seun Bakare is IT manager at the fictional Marlowe Freight, a logistics company 
 
 An audit finding is not a list of tasks; it is a statement that evidence is missing. Marlowe almost certainly has many good settings in place, but cannot prove it. The programme must therefore produce both improvements and evidence: a written standard, measurement against it, and a record of exceptions. NIST SP 800-53 Rev. 5 control CM-2 (baseline configuration) and CM-6 (configuration settings) describe exactly this expectation.
 
+Section one point two develops from audit finding to programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
 ### 1.3 Scope and time
 
 Six months is enough to write a standard, measure every device group, close the highest-risk gaps and set up routines, but not to rebuild everything. Seun excludes phones, which are handled by a separate project, and the warehouse handheld scanners, which are vendor-managed, recording both as out of scope with owners.
+
+Section one point three develops from audit finding to programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section one point three, Seun Bakare expects from claims to carry owners and dates.
 
 ### 1.4 Outcomes
 
 Seun writes four outcomes: a hardening standard approved by the operations director; monthly coverage figures for each device group; the top risk gaps closed or formally accepted; and an exceptions register reviewed quarterly. Each outcome has a measure and a date.
 
+Section one point four develops from audit finding to programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section one point four, Seun Bakare expects from claims to carry owners and dates.
+
+Section one point four treats the case reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Stakeholders
 
 The operations director owns business risk, the warehouse managers own shared PCs, the infrastructure team owns servers, and the finance director cares about the insurance premium. Seun meets each in the first two weeks to explain the programme and what will change for them.
+
+Section one point five develops from audit finding to programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section one point five, Seun Bakare expects from claims to carry owners and dates.
+
+Section one point five treats the case reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -100,17 +118,41 @@ You will (1) choose reference baselines; (2) tailor them; (3) get approval.
 
 Seun bases the standard on the CIS Benchmarks for each operating system, the Microsoft security baselines for Windows and the DISA STIGs as a reference for servers where stricter settings are justified. Using recognised references saves time and gives auditors confidence, because the settings have been reviewed widely.
 
+Section two point one develops writing hardening standard with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section two point one, Seun Bakare expects writing claims to carry owners and dates.
+
+Section two point one treats choosing references tailoring structure as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Tailoring
 
 Not every benchmark item suits Marlowe. Warehouse PCs are shared by shift workers and must stay signed in to the warehouse system during a shift; a short screen lock would stop work. The standard sets a longer timeout for those PCs, with compensating controls: a kiosk-style restricted desktop and physical placement in supervised areas. Every tailored item records its reason.
+
+Section two point two develops writing hardening standard with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section two point two, Seun Bakare expects writing claims to carry owners and dates.
 
 ### 2.3 Structure
 
 The standard has a short policy section, then one appendix per device group listing required settings, the reference item and any tailoring. CIS Controls v8 Safeguard 4.1 asks for a documented secure configuration process; the standard includes how settings are changed and reviewed.
 
+Section two point three develops writing hardening standard with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section two point three, Seun Bakare expects writing claims to carry owners and dates.
+
+Section two point three treats choosing references tailoring structure as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Approval
 
 The operations director approves the standard after a thirty-minute walkthrough. Approval matters because it makes the standard the company's decision, not IT's preference.
+
+Section two point four develops writing hardening standard with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section two point four, Seun Bakare expects writing claims to carry owners and dates.
+
+Section two point four treats choosing references tailoring structure as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Kingsmere Institute will not accept writing work without a written trail.
 
 ### Versioning the standard
 
@@ -154,9 +196,23 @@ You will (1) measure controls by device group; (2) interpret coverage; (3) find 
 
 Seun measures four controls per device group: endpoint detection and response agent reporting, disk encryption, updates within fourteen days and full compliance with the standard. These cover detection, data protection, patching and configuration.
 
+Section three point one develops measuring coverage with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section three point one, Seun Bakare expects measuring claims to carry owners and dates.
+
+Section three point one treats what to measure data as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Data sources
 
 Figures come from the endpoint management and detection consoles. Seun first reconciles their device lists with the asset register, so that each percentage has a trustworthy denominator.
+
+Section three point two develops measuring coverage with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section three point two, Seun Bakare expects measuring claims to carry owners and dates.
+
+Section three point two treats what to measure data as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, Kingsmere Institute will not accept measuring work without a written trail.
 
 ### Lab — Coverage by device group
 
@@ -186,9 +242,23 @@ weakest cell: warehouse PCs / encrypt at 30%
 
 Office laptops and Windows servers are in reasonable shape. Warehouse PCs are weakest: only 30 percent encrypted and 38 percent compliant. Linux servers have only half meeting the standard and 78 percent with the detection agent. The overall average would hide this; group figures show where effort is needed.
 
+Section three point three develops measuring coverage with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section three point three, Seun Bakare expects measuring claims to carry owners and dates.
+
+Section three point three treats what to measure data as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Presenting
 
 Seun shows the table to the operations director with a sentence per group. The director immediately asks why warehouse PCs are behind, which leads to the next chapter.
+
+Section three point four develops measuring coverage with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section three point four, Seun Bakare expects measuring claims to carry owners and dates.
+
+Section three point four treats what to measure data as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Kingsmere Institute will not accept measuring work without a written trail.
 
 ### Validating the consoles and setting the rhythm
 
@@ -232,9 +302,21 @@ You will (1) score gaps by risk; (2) consider effort; (3) agree priorities.
 
 From the coverage table and interviews, Seun lists six gaps: server admin access without MFA, warehouse PCs without the detection agent, Linux servers off the standard, a patching tail on laptops, shared warehouse logons and unencrypted warehouse PCs.
 
+Section four point one develops prioritising gaps with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section four point one, Seun Bakare expects prioritising claims to carry owners and dates.
+
+Section four point one treats listing gaps scoring discussion as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Scoring
 
 He scores each for likelihood and impact from 1 to 5 and multiplies them, breaking ties by effort. This is a simple method, not a precise calculation; its value is in making reasoning visible and discussable.
+
+Section four point two develops prioritising gaps with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section four point two, Seun Bakare expects prioritising claims to carry owners and dates.
+
+Section four point two treats listing gaps scoring discussion as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Ranking the gaps
 
@@ -261,9 +343,21 @@ Run with `python3 lab_rank.py`. Verified output:
 
 Server admin without MFA ranks highest at 20, since compromised admin credentials would reach every system. The missing detection agent on warehouse PCs is next and is cheap to fix. Unencrypted warehouse PCs rank lowest, because they stay in a secured building and hold little data, so encryption there waits for hardware replacement.
 
+Section four point three develops prioritising gaps with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section four point three, Seun Bakare expects prioritising claims to carry owners and dates.
+
 ### 4.4 Agreement
 
 The operations director agrees the order, adding that the shared warehouse logons matter for accountability after a stock discrepancy last year.
+
+Section four point four develops prioritising gaps with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section four point four, Seun Bakare expects prioritising claims to carry owners and dates.
+
+Section four point four treats listing gaps scoring discussion as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Kingsmere Institute will not accept prioritising work without a written trail.
 
 ### Using and revisiting the ranking
 
@@ -307,17 +401,47 @@ You will (1) require MFA for admin access; (2) separate admin accounts; (3) limi
 
 Server administrators use separate named admin accounts, never their everyday accounts. Seun removes three generic admin accounts used by several people, replacing them with named ones.
 
+Section five point one develops privileged access on servers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section five point one, Seun Bakare expects privileged claims to carry owners and dates.
+
+Section five point one treats admin accounts mfa linux as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Kingsmere Institute will not accept privileged work without a written trail.
+
 ### 5.2 MFA
 
 Admin sign-in to servers goes through a jump host that requires MFA. Direct remote access to servers from laptops is blocked by firewall rules, so all admin paths pass through the controlled point.
+
+Section five point two develops privileged access on servers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section five point two, Seun Bakare expects privileged claims to carry owners and dates.
+
+Section five point two treats admin accounts mfa linux as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Linux sudo
 
 On Linux, admins sign in with SSH keys to their own accounts and use sudo, with logging. Root sign-in over SSH is disabled, following the CIS Benchmark.
 
+Section five point three develops privileged access on servers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section five point three, Seun Bakare expects privileged claims to carry owners and dates.
+
+Section five point three treats admin accounts mfa linux as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Kingsmere Institute will not accept privileged work without a written trail.
+
 ### 5.4 Standing privilege
 
 Some admin rights are only needed occasionally. Seun introduces time-limited elevation for domain admin rights, granted for a few hours with approval.
+
+Section five point four develops privileged access on servers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section five point four, Seun Bakare expects privileged claims to carry owners and dates.
+
+Section five point four treats admin accounts mfa linux as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Kingsmere Institute will not accept privileged work without a written trail.
 
 ### Break-glass access
 
@@ -369,17 +493,51 @@ You will (1) harden shared PCs; (2) replace shared logons; (3) deploy agents.
 
 Warehouse PCs run the warehouse system, label printing and a browser. They are used by shift workers who share logons, which makes it impossible to tell who did what.
 
+Section six point one develops warehouse pcs with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section six point one, Seun Bakare expects warehouse claims to carry owners and dates.
+
+Section six point one treats the environment individual sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section six point one, Kingsmere Institute will not accept warehouse work without a written trail.
+
 ### 6.2 Individual sign-in
 
 Seun introduces badge-based quick sign-in so each worker uses their own account without slowing shift changes. The restricted desktop shows only the needed apps.
+
+Section six point two develops warehouse pcs with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section six point two, Seun Bakare expects warehouse claims to carry owners and dates.
+
+Section six point two treats the environment individual sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Kingsmere Institute will not accept warehouse work without a written trail.
 
 ### 6.3 Agents
 
 The detection agent is deployed to the nine warehouse PCs missing it. Two are too old to run it and are scheduled for replacement.
 
+Section six point three develops warehouse pcs with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section six point three, Seun Bakare expects warehouse claims to carry owners and dates.
+
+Section six point three treats the environment individual sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Kingsmere Institute will not accept warehouse work without a written trail.
+
 ### 6.4 Encryption timing
 
 Encryption is applied as PCs are replaced, matching the risk ranking.
+
+Section six point four develops warehouse pcs with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section six point four, Seun Bakare expects warehouse claims to carry owners and dates.
+
+Section six point four treats the environment individual sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Kingsmere Institute will not accept warehouse work without a written trail.
+
+Section six point four fails closed if warehouse evidence is missing rather than guessing.
 
 ### Physical security
 
@@ -431,17 +589,51 @@ You will (1) apply the CIS Benchmark to Linux servers; (2) automate checks; (3) 
 
 The infrastructure team applies the Linux appendix of the standard using its configuration management tool, so settings are defined in code and applied consistently.
 
+Section seven point one develops linux server baseline with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section seven point one, Seun Bakare expects linux claims to carry owners and dates.
+
+Section seven point one treats applying testing checking exceptions as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Kingsmere Institute will not accept linux work without a written trail.
+
 ### 7.2 Testing
 
 Changes go first to a test copy of the route planning server, then to production in a maintenance window.
+
+Section seven point two develops linux server baseline with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section seven point two, Seun Bakare expects linux claims to carry owners and dates.
+
+Section seven point two treats applying testing checking exceptions as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Kingsmere Institute will not accept linux work without a written trail.
 
 ### 7.3 Checking
 
 The tool reports drift daily. Seun's monthly figure comes from these reports.
 
+Section seven point three develops linux server baseline with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section seven point three, Seun Bakare expects linux claims to carry owners and dates.
+
+Section seven point three treats applying testing checking exceptions as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Kingsmere Institute will not accept linux work without a written trail.
+
+Section seven point three fails closed if linux evidence is missing rather than guessing.
+
 ### 7.4 Exceptions
 
 The warehouse system's vendor requires an older library on two servers; these are exceptions with isolation and review dates.
+
+Section seven point four develops linux server baseline with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section seven point four, Seun Bakare expects linux claims to carry owners and dates.
+
+Section seven point four treats applying testing checking exceptions as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Kingsmere Institute will not accept linux work without a written trail.
 
 ### Benchmark items in practice
 
@@ -493,17 +685,53 @@ You will (1) set patch targets; (2) reduce the tail; (3) report.
 
 Fourteen days for laptops and servers, seven for actively exploited flaws, following SP 800-40 Rev. 4 risk-based guidance and the CISA Known Exploited Vulnerabilities catalogue.
 
+Section eight point one develops patching programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eight point one, Seun Bakare expects patching claims to carry owners and dates.
+
+Section eight point one treats targets tail servers reporting as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Kingsmere Institute will not accept patching work without a written trail.
+
 ### 8.2 Tail
 
 Laptops in the tail are mostly field staff rarely online; cloud-based update management fixes this.
+
+Section eight point two develops patching programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eight point two, Seun Bakare expects patching claims to carry owners and dates.
+
+Section eight point two treats targets tail servers reporting as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Kingsmere Institute will not accept patching work without a written trail.
 
 ### 8.3 Servers
 
 Server patching moves to a monthly window agreed with operations.
 
+Section eight point three develops patching programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eight point three, Seun Bakare expects patching claims to carry owners and dates.
+
+Section eight point three treats targets tail servers reporting as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Kingsmere Institute will not accept patching work without a written trail.
+
+Section eight point three fails closed if patching evidence is missing rather than guessing.
+
 ### 8.4 Reporting
 
 Monthly percentages per group and the oldest outstanding patch.
+
+Section eight point four develops patching programme with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eight point four, Seun Bakare expects patching claims to carry owners and dates.
+
+Section eight point four treats targets tail servers reporting as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Kingsmere Institute will not accept patching work without a written trail.
+
+Section eight point four fails closed if patching evidence is missing rather than guessing.
 
 ### Measuring the tail
 
@@ -565,17 +793,57 @@ You will (1) run an exceptions register; (2) review quarterly; (3) report residu
 
 Each exception records device, setting, reason, compensating control, owner and expiry.
 
+Section nine point one develops exceptions and risk acceptance with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section nine point one, Seun Bakare expects exceptions claims to carry owners and dates.
+
+Section nine point one treats register approval review reporting as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Kingsmere Institute will not accept exceptions work without a written trail.
+
+Section nine point one fails closed if exceptions evidence is missing rather than guessing.
+
 ### 9.2 Approval
 
 Business owners approve; IT advises.
+
+Section nine point two develops exceptions and risk acceptance with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section nine point two, Seun Bakare expects exceptions claims to carry owners and dates.
+
+Section nine point two treats register approval review reporting as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Kingsmere Institute will not accept exceptions work without a written trail.
+
+Section nine point two fails closed if exceptions evidence is missing rather than guessing.
 
 ### 9.3 Review
 
 Quarterly reviews renew, close or escalate.
 
+Section nine point three develops exceptions and risk acceptance with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section nine point three, Seun Bakare expects exceptions claims to carry owners and dates.
+
+Section nine point three treats register approval review reporting as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Kingsmere Institute will not accept exceptions work without a written trail.
+
+Section nine point three fails closed if exceptions evidence is missing rather than guessing.
+
 ### 9.4 Reporting
 
 The register summary goes to the operations director.
+
+Section nine point four develops exceptions and risk acceptance with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section nine point four, Seun Bakare expects exceptions claims to carry owners and dates.
+
+Section nine point four treats register approval review reporting as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Kingsmere Institute will not accept exceptions work without a written trail.
+
+Section nine point four fails closed if exceptions evidence is missing rather than guessing.
 
 ### Writing a good exception
 
@@ -635,17 +903,57 @@ You will (1) assemble evidence; (2) answer questionnaires; (3) maintain an evide
 
 Standard, approvals, monthly coverage reports, exceptions register and change records.
 
+Section ten point one develops evidence for auditors and insurers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section ten point one, Seun Bakare expects evidence claims to carry owners and dates.
+
+Section ten point one treats evidence pack questionnaires maintenance as testable only when evidence and ticket IDs are recorded.
+
+For section ten point one, Kingsmere Institute will not accept evidence work without a written trail.
+
+Section ten point one fails closed if evidence evidence is missing rather than guessing.
+
 ### 10.2 Questionnaires
 
 Insurance answers cite the pack.
+
+Section ten point two develops evidence for auditors and insurers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section ten point two, Seun Bakare expects evidence claims to carry owners and dates.
+
+Section ten point two treats evidence pack questionnaires maintenance as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Kingsmere Institute will not accept evidence work without a written trail.
+
+Section ten point two fails closed if evidence evidence is missing rather than guessing.
 
 ### 10.3 Maintenance
 
 Monthly updates keep it current.
 
+Section ten point three develops evidence for auditors and insurers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section ten point three, Seun Bakare expects evidence claims to carry owners and dates.
+
+Section ten point three treats evidence pack questionnaires maintenance as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Kingsmere Institute will not accept evidence work without a written trail.
+
+Section ten point three fails closed if evidence evidence is missing rather than guessing.
+
 ### 10.4 Honesty
 
 Gaps are disclosed with plans.
+
+Section ten point four develops evidence for auditors and insurers with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section ten point four, Seun Bakare expects evidence claims to carry owners and dates.
+
+Section ten point four treats evidence pack questionnaires maintenance as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Kingsmere Institute will not accept evidence work without a written trail.
+
+Section ten point four fails closed if evidence evidence is missing rather than guessing.
 
 ### Organising the pack
 
@@ -705,17 +1013,57 @@ You will (1) compare start and end; (2) set routines; (3) assign ownership.
 
 Laptop compliance 70 to 91 percent, Linux 50 to 89, warehouse agents 78 to 95, admin MFA 0 to 100.
 
+Section eleven point one develops results and sustainment with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eleven point one, Seun Bakare expects results claims to carry owners and dates.
+
+Section eleven point one treats results routines ownership limits as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Kingsmere Institute will not accept results work without a written trail.
+
+Section eleven point one fails closed if results evidence is missing rather than guessing.
+
 ### 11.2 Routines
 
 Monthly coverage, quarterly exceptions, yearly standard review.
+
+Section eleven point two develops results and sustainment with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eleven point two, Seun Bakare expects results claims to carry owners and dates.
+
+Section eleven point two treats results routines ownership limits as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Kingsmere Institute will not accept results work without a written trail.
+
+Section eleven point two fails closed if results evidence is missing rather than guessing.
 
 ### 11.3 Ownership
 
 Each group has a named owner.
 
+Section eleven point three develops results and sustainment with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eleven point three, Seun Bakare expects results claims to carry owners and dates.
+
+Section eleven point three treats results routines ownership limits as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Kingsmere Institute will not accept results work without a written trail.
+
+Section eleven point three fails closed if results evidence is missing rather than guessing.
+
 ### 11.4 Limits
 
 One company, six months.
+
+Section eleven point four develops results and sustainment with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section eleven point four, Seun Bakare expects results claims to carry owners and dates.
+
+Section eleven point four treats results routines ownership limits as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Kingsmere Institute will not accept results work without a written trail.
+
+Section eleven point four fails closed if results evidence is missing rather than guessing.
 
 ### Comparing fairly
 
@@ -783,17 +1131,57 @@ You will (1) reflect; (2) share lessons; (3) plan next steps.
 
 Evidence matters as much as settings; tailoring keeps standards workable.
 
+Section twelve point one develops lessons for practitioners with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section twelve point one, Seun Bakare expects lessons claims to carry owners and dates.
+
+Section twelve point one treats lessons next steps sharing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Kingsmere Institute will not accept lessons work without a written trail.
+
+Section twelve point one fails closed if lessons evidence is missing rather than guessing.
+
 ### 12.2 Next steps
 
 Phones and handheld scanners.
+
+Section twelve point two develops lessons for practitioners with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section twelve point two, Seun Bakare expects lessons claims to carry owners and dates.
+
+Section twelve point two treats lessons next steps sharing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Kingsmere Institute will not accept lessons work without a written trail.
+
+Section twelve point two fails closed if lessons evidence is missing rather than guessing.
 
 ### 12.3 Sharing
 
 Seun presents at the programme.
 
+Section twelve point three develops lessons for practitioners with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section twelve point three, Seun Bakare expects lessons claims to carry owners and dates.
+
+Section twelve point three treats lessons next steps sharing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Kingsmere Institute will not accept lessons work without a written trail.
+
+Section twelve point three fails closed if lessons evidence is missing rather than guessing.
+
 ### 12.4 Career
 
 Seun adds governance skills.
+
+Section twelve point four develops lessons for practitioners with a Kingsmere Institute note Seun Bakare can demo offline.
+
+Under section twelve point four, Seun Bakare expects lessons claims to carry owners and dates.
+
+Section twelve point four treats lessons next steps sharing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Kingsmere Institute will not accept lessons work without a written trail.
+
+Section twelve point four fails closed if lessons evidence is missing rather than guessing.
 
 ### What surprised Seun
 
