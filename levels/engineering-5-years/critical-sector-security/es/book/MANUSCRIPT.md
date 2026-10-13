@@ -59,9 +59,9 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 21. [Infraestructura crítica y seguridad sectorial: requisitos](#ch-21)
 22. [Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos](#ch-22)
 23. [Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas](#ch-23)
-24. [Infraestructura crítica y seguridad sectorial: métodos I](../../en/book/MANUSCRIPT.md#ch-24)
-25. [Taller de diseño I](../../en/book/MANUSCRIPT.md#ch-25)
-26. [Infraestructura crítica y seguridad sectorial: alternativas de arquitectura](../../en/book/MANUSCRIPT.md#ch-26)
+24. [Infraestructura crítica y seguridad sectorial: métodos I](#ch-24)
+25. [Taller de diseño I](#ch-25)
+26. [Infraestructura crítica y seguridad sectorial: alternativas de arquitectura](#ch-26)
 27. [Infraestructura crítica y seguridad sectorial: diseño de controles](../../en/book/MANUSCRIPT.md#ch-27)
 28. [Infraestructura crítica y seguridad sectorial: implementación I](../../en/book/MANUSCRIPT.md#ch-28)
 29. [Infraestructura crítica y seguridad sectorial: medición](../../en/book/MANUSCRIPT.md#ch-29)
@@ -1883,7 +1883,227 @@ Los modelos de amenazas generan lo que podría salir mal en cada frontera de con
 <!-- cyberabc:chapter-navigation:start ch-23 -->
 ### Siga estudiando — capítulo 23 de 50
 
-[← Capítulo 22](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 →](../../en/book/MANUSCRIPT.md#ch-24)
+[← Capítulo 22](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Infraestructura crítica y seguridad sectorial: métodos I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) seleccionar métodos de análisis adecuados para una pregunta de diseño: evaluación de riesgos, STPA, simulación, experimento en banco de pruebas, ejercicio de mesa; (2) realizar una evaluación de riesgos estructurada y documentarla de forma reproducible; (3) planificar un estudio de simulación con verificación y validación explícitas; y (4) elegir una evidencia proporcionada a la decisión. Se apoya en los capítulos 15, 21 y 23 y prepara el taller de diseño (capítulo 25).
+
+### 24.1 Ajustar el método a la pregunta
+
+| Pregunta | Método | Evidencia típica |
+|---|---|---|
+| ¿Qué escenarios importan más? | Evaluación de riesgos (SP 800-30, IEC 62443-3-2) | Tabla de escenarios, justificación |
+| ¿Qué acciones de control son inseguras? | STPA ([Leveson, 2004](https://doi.org/10.1016/S0925-7535(03)00047-X)) | Acciones de control inseguras, escenarios de pérdida |
+| ¿Cómo responde el proceso? | Simulación (Labs 1, 7) | Modelo, registro de V&V, ejecuciones |
+| ¿Funciona el control en la práctica? | Experimento en banco de pruebas | Plan de pruebas, resultados, registros |
+| ¿Pueden las personas ejecutar el plan? | Ejercicio de mesa o funcional | Informe posterior a la acción |
+| ¿Es sólido el diseño? | Revisión independiente (capítulo 45) | Hallazgos de la revisión y respuestas |
+
+Los proyectos de ingeniería usan varios; un error común es usar un método para responder la pregunta de otro, por ejemplo, un ejercicio de mesa que «muestra» que un tiempo de restauración es alcanzable.
+
+### 24.2 Evaluación de riesgos estructurada
+
+Una evaluación reproducible documenta: alcance y supuestos; versión del modelo del sistema; fuentes de amenaza y sus capacidades supuestas; escenarios (evento de amenaza → vulnerabilidad → consecuencia); controles existentes; escalas de probabilidad y de consecuencia con sus definiciones; calificaciones con su justificación; y controles recomendados. Las escalas deben definirse en los términos de la organización (personas-hora sin agua, no «alto»). Las calificaciones sin justificación son opiniones; con justificación, pueden cuestionarse y mejorarse. Las escalas del TMRP usan personas-hora sin agua en el hospital y en los demás clientes, de modo que las calificaciones significan lo mismo para los operadores y para los directivos.
+
+### 24.3 Simulación con verificación y validación
+
+La **verificación** pregunta si el modelo está implementado correctamente (¿hace el código lo que dice el modelo?); la **validación** pregunta si el modelo representa la realidad lo bastante bien para su propósito. [Sargent (2013)](https://doi.org/10.1057/jos.2012.20) describe técnicas: comparación con resultados analíticos (el Euler del Lab 1 frente a la solución exacta), pruebas en condiciones extremas, comparación con datos históricos, validez aparente ante los operadores y análisis de sensibilidad. Enuncie el uso previsto del modelo; un modelo válido para estimar la autonomía puede no serlo para analizar los transitorios de presión.
+
+Para el TMRP, el modelo de autonomía se valida con una interrupción planificada histórica antes de usarlo en el escenario combinado de pérdida de la red eléctrica y de la telemetría.
+
+### 24.4 Ejercicios con personas
+
+Los ejercicios de mesa recorren con un equipo un escenario para probar los planes, los roles y las decisiones; los ejercicios funcionales realizan algunas acciones de verdad. Diséñelos con objetivos, inyecciones, observadores y un informe posterior a la acción que registre las carencias sin culpar a nadie. Muestran si las personas saben qué hacer y dónde los planes son ambiguos; no miden el desempeño de los equipos. El ejercicio funcional nocturno del TMRP sobre el modo manual local en PS3 y PS4 es el ejemplo: usa la dotación real de la noche, registra el tiempo necesario para establecer la operación manual e informa de las carencias que encuentra, pero no puede mostrar si las bombas o las pasarelas cumplen sus propios requisitos.
+
+### 24.5 Ejemplo resuelto: elegir los métodos del TMRP (sintético)
+
+El TMRP tiene cuatro preguntas abiertas: (1) qué escenarios merecen financiación: evaluación de riesgos con escalas de consecuencia en personas-hora; (2) si los operadores pueden pasar PS3/PS4 a manual local en menos de 1 h: un ejercicio funcional nocturno con la dotación real; (3) si la pasarela rechaza las tramas falsificadas y repetidas: pruebas T1–T2 en banco; (4) si el depósito dura lo suficiente durante una interrupción combinada de la red eléctrica y la telemetría: simulación al estilo del Lab 1, validada con una interrupción planificada histórica. El plan nombra la evidencia de cada método y su límite, para que nadie cite después el ejercicio de mesa como prueba de R6.
+
+### 24.6 Actividad práctica
+
+Realice con dos compañeros un ejercicio de mesa de 45 minutos sobre el escenario «servidores SCADA cifrados a las 02:00», usando el conjunto de requisitos del TMRP. Registre las decisiones, los tiempos y las carencias en un informe posterior a la acción. Asigne los roles antes de empezar: el operador nocturno, el responsable de turno y un facilitador que entrega las inyecciones. Use los requisitos del TMRP como vara de medir, en especial la operación manual local en menos de una hora y la restauración de la operación remota en menos de ocho. Registre cada decisión con su hora y quién la tomó. El informe posterior a la acción debe enumerar lo que el plan no cubría, sin señalar a nadie como causa, y debe indicar que un ejercicio de mesa no puede mostrar si la restauración en ocho horas es alcanzable.
+
+### 24.7 Errores comunes y límites
+
+- Estirar un único método para responder todas las preguntas.
+- Escalas de probabilidad y de consecuencia sin definir.
+- Simulaciones presentadas sin V&V ni uso previsto.
+- Informes de ejercicios que culpan a personas o registran solo los éxitos.
+- Evidencia desproporcionada respecto de la decisión (demasiado poca para lo crítico para la seguridad funcional, demasiada para lo trivial).
+
+El plan de métodos del TMRP se protege del primer error nombrando el límite de cada método, de modo que un ejercicio de mesa nunca se cite como prueba de que R6 se cumple. Sus escalas de probabilidad y de consecuencia se definen en personas-hora, y la simulación de autonomía enuncia su uso previsto.
+
+### Ejercicios — capítulo 24
+
+**EX047 — Ajuste del método.** *Objetivo:* seleccionar métodos. *Entradas:* cuatro preguntas: (a) ¿provocarían sobrepresión las consignas falsificadas en PS4? (b) ¿encuentra el detector de anomalías del proveedor las inundaciones de escrituras Modbus? (c) ¿puede el responsable de turno autorizar el modo manual local de noche? (d) ¿cuál es la clasificación anual de riesgos de ocho escenarios? *Pasos:* elija para cada una un método, su evidencia y su principal límite. *Evidencia esperada:* tabla. *Rúbrica:* 3 = (a) simulación o análisis hidráulico más STPA, (b) experimento en banco de pruebas, (c) ejercicio, (d) evaluación de riesgos, con límites honestos; 2 = un desajuste; 1 = un solo método para todo; 0 = nada.
+
+**EX048 — Valide un modelo.** *Objetivo:* planificar la V&V. *Entradas:* el modelo del Lab 1. *Pasos:* proponga tres comprobaciones de verificación y tres de validación, incluida una con datos históricos, e indique el uso previsto del modelo y un uso para el que no es válido. *Evidencia esperada:* lista. *Rúbrica:* 3 = verificación y validación diferenciadas, comparación histórica especificada, uso no válido identificado (p. ej., transitorios de presión, calidad del agua); 2 = se mezclan las dos V; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Asigne a cada pregunta un método capaz de responderla y conozca el límite de cada método. Haga reproducibles las evaluaciones de riesgos con escalas definidas y justificación; verifique y valide las simulaciones para un propósito enunciado; use los ejercicios para probar a las personas y los planes, no los equipos; y gradúe la evidencia según la decisión que respalda.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Siga estudiando — capítulo 24 de 50
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Taller de diseño I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) conducir un taller de diseño estructurado, desde el encargo hasta un concepto revisado; (2) generar alternativas de concepto y compararlas con criterios ponderados; (3) presentar un concepto con sus supuestos, sus riesgos y su plan de verificación ante un panel de revisión crítico; y (4) responder de forma constructiva a los hallazgos de la revisión. Integra los capítulos 16–24 en el primer artefacto de diseño completo y prepara el capítulo 26.
+
+### 25.1 Qué es un taller
+
+Un taller de diseño es un ejercicio de diseño iterativo y sometido a crítica. Los equipos reciben un encargo, producen conceptos, los presentan a revisores que cuestionan los supuestos, y los revisan. Su valor es la crítica: los diseños mejoran más rápido cuando alguien competente intenta romperlos pronto. En este curso, cada taller produce un **expediente de concepto**: enunciado del problema, extracto de los requisitos, alternativas, evaluación, concepto seleccionado, registro de riesgos, plan de verificación y preguntas abiertas. Para el TMRP, el expediente del Taller I cubre la operación remota de las seis estaciones de bombeo y de la planta de Fenwick.
+
+### 25.2 El encargo
+
+**Encargo del Taller I (sintético):** LRWA debe proteger la operación remota de PS1–PS6 y de la planta de Fenwick. Restricciones: presupuesto de 250 k (Lab 16); PS1 y PS2 tienen unidades RTU-A heredadas que no pueden sustituirse durante tres años; la LTE privada es el único enlace económico; una sala de control con personal 24/7 y un solo operador de noche; el hospital necesita una interrupción ≤ 4 h. Entregables: de dos a cuatro conceptos, evaluación, selección y plan de verificación. La restricción de la dotación nocturna es la que más condiciona los conceptos, porque cualquier diseño que exija que alguien vaya en coche a una estación para cada cambio deja a un único operador sin capacidad de atender seis sitios.
+
+### 25.3 Generar alternativas
+
+Genere conceptos que difieran en principio, no en detalle: (A) LTE cifrada por el operador con solo un cortafuegos central; (B) túneles IPsec desde las RTU nuevas y pasarelas para las heredadas; (C) autenticación en la capa de aplicación con pasarelas y una fuerte autonomía local; (D) ningún control remoto: solo monitoreo, con operadores enviados para cada cambio. Incluir un extremo (D) aclara cuánto vale el control remoto. Los cuatro conceptos difieren en dónde se produce la autenticación y en si existe o no el control remoto. La puntuación de operabilidad muy baja del concepto D en la evaluación muestra por qué vale la pena incluir un extremo.
+
+### 25.4 Evaluación ponderada
+
+Defina los criterios a partir de los requisitos y las restricciones, pondérelos antes de puntuar, puntúe cada concepto con evidencia y compruebe si la clasificación resiste cambios plausibles de los pesos (sensibilidad). Una suma ponderada es una conversación estructurada, no un oráculo.
+
+| Criterio (peso) | A | B | C | D |
+|---|---:|---:|---:|---:|
+| Impide órdenes falsificadas, R1 (0,30) | 1 | 4 | 4 | 5 |
+| Servicio durante la pérdida de la red, R4 (0,20) | 2 | 3 | 5 | 5 |
+| Operabilidad con un operador nocturno (0,20) | 5 | 4 | 4 | 1 |
+| Costo dentro de 250 k (0,15) | 5 | 2 | 4 | 4 |
+| Compatibilidad con lo heredado (0,15) | 5 | 3 | 4 | 5 |
+| **Puntuación ponderada** | **3,20** | **3,35** | **4,20** | **4,05** |
+
+D puntúa cerca de C porque es muy seguro, pero su puntuación de operabilidad refleja que un operador nocturno no puede desplazarse a seis sitios; en la práctica, incumple la necesidad del hospital. El desafío del panel al equipo es mostrar que la ventaja de C resiste si la operabilidad pesa 0,10 y R1 pesa 0,40 (EX049).
+
+### 25.5 Presentar y responder a la revisión
+
+Presente: el problema en una frase, las restricciones, las alternativas, la evaluación, la selección, los riesgos y lo que no ha verificado. Los revisores atacarán los supuestos; registre cada hallazgo, responda (aceptar, rechazar con un motivo, aplazar con un responsable) y revise. Un equipo a la defensiva no aprende nada; un equipo que acepta todos los comentarios no tiene diseño. Los hallazgos del panel del EX050 son típicos del TMRP: la pasarela como punto único de falla, el modo manual local que elude la autenticación y la falta del costo de personal para la gestión de claves. Cada uno necesita una respuesta registrada con un responsable. El segundo puede responderse con evidencia que ya existe, porque el interruptor de llave, la alarma y el registro local quedaron registrados cuando se resolvió el conflicto entre R4 y R1.
+
+### 25.6 Actividad práctica
+
+Produzca el expediente de concepto para el encargo del Taller I en no más de ocho páginas y celebre una revisión de 20 minutos con dos compañeros que actúen como panel. Limítese a ocho páginas para que el panel pueda leerlo antes de la revisión. Presente los cuatro conceptos en la tabla ponderada, muestre la comprobación de sensibilidad e indique lo que no se ha verificado. Pida a cada compañero que ataque un supuesto, como la estimación de costos o la puntuación de operabilidad nocturna. Registre sus hallazgos en un registro de respuestas con aceptar, rechazar o aplazar y un responsable, como pide el EX050, y revise el concepto antes de entregar el expediente.
+
+### 25.7 Errores comunes y límites
+
+- Alternativas que son variaciones de una sola idea.
+- Pesos elegidos después de puntuar.
+- Puntuaciones sin evidencia.
+- Sin comprobación de sensibilidad.
+- Tratar la revisión como un examen que aprobar y no como información.
+
+El Taller I se protege de estos errores: sus cuatro conceptos difieren en principio, sus pesos se fijaron antes de puntuar y el EX049 comprueba si la ventaja del concepto C resiste otros pesos. El desafío del panel al concepto D, que puntúa bien en seguridad pero incumple la operabilidad nocturna, es el tipo de hallazgo que debe producir una revisión. Cada puntuación cita evidencia.
+
+### Ejercicios — capítulo 25
+
+**EX049 — Sensibilidad a los pesos.** *Objetivo:* probar la solidez de una selección. *Entradas:* la tabla de §25.4. *Pasos:* vuelva a calcular con los pesos (R1 0,40, pérdida de red 0,20, operabilidad 0,10, costo 0,15, heredado 0,15) y con (R1 0,20, pérdida de red 0,20, operabilidad 0,30, costo 0,15, heredado 0,15). *Evidencia esperada:* puntuaciones y conclusión. *Rúbrica:* 3 = aritmética correcta y una conclusión honesta sobre cuándo D supera a C y qué implica; 2 = un error aritmético; 1 = un solo escenario; 0 = nada.
+
+**EX050 — Registro de respuestas a la revisión.** *Objetivo:* responder a la crítica. *Entradas:* tres hallazgos del panel: «la pasarela es un punto único de falla»; «el modo manual local elude la autenticación»; «la estimación de costos ignora el personal para la gestión de claves». *Pasos:* escriba una entrada del registro de respuestas para cada uno (aceptar/rechazar/aplazar, motivo, cambio, responsable). *Evidencia esperada:* registro. *Rúbrica:* 3 = respuestas sustantivas con cambios de diseño cuando procede (p. ej., pasarelas duplicadas o caída a automático local; interruptor de llave y alarma; añadir una línea de costo operativo); 2 = una respuesta despectiva; 1 = acepta todo sin cambios; 0 = nada.
+
+### Síntesis del capítulo
+
+Un taller convierte el conocimiento en un diseño sometido a crítica. Genere alternativas realmente distintas, incluidos los extremos; pondere los criterios antes de puntuar y compruebe la sensibilidad; presente abiertamente los supuestos y las afirmaciones no verificadas; y trate los hallazgos de la revisión como información de diseño, con respuestas registradas.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Siga estudiando — capítulo 25 de 50
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Infraestructura crítica y seguridad sectorial: alternativas de arquitectura
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) comparar patrones de arquitectura para sistemas críticos: control centralizado frente a distribuido, esquemas de redundancia, diversidad, flujos unidireccionales, autonomía local; (2) analizar el comportamiento de cada patrón ante fallas y ataques; (3) cuantificar las compensaciones con los modelos de disponibilidad, latencia y costo de capítulos anteriores; y (4) documentar las decisiones de arquitectura con sus consecuencias. Desarrolla el concepto seleccionado en el Taller I y prepara el capítulo 27.
+
+### 26.1 Control centralizado y distribuido
+
+El control centralizado (un SCADA que dirige dispositivos de campo sencillos) da a los operadores una vista única y facilita la coordinación, pero concentra tanto la falla como el ataque. El control distribuido (controladores de campo capaces, que funcionan localmente y aceptan objetivos de supervisión) se degrada con suavidad cuando se pierden el centro o la red, a costa de más dispositivos que proteger y configurar. La mayoría de los diseños resilientes son jerárquicos: el control local mantiene de forma autónoma una operación segura; el centro optimiza y coordina.
+
+La elección del TMRP, el C2 jerárquico, mantiene el control automático local en cada estación.
+
+### 26.2 Patrones de redundancia
+
+- **Reserva en caliente:** una segunda unidad en marcha y lista para tomar el relevo automáticamente (pares de servidores SCADA).
+- **Reserva en frío:** un repuesto que hay que arrancar o instalar (RTU de repuesto en un estante).
+- **N+1:** una unidad más de las necesarias (tres bombas donde dos cubren la demanda).
+- **Votación k de n:** se usa en los sistemas de seguridad funcional (sensores 2 de 3) para tolerar una entrada defectuosa o falsificada.
+
+Cada patrón debe juzgarse frente a las causas comunes (capítulo 7): dos servidores idénticos con software idéntico son redundantes frente a una falla de hardware y no frente al malware.
+
+### 26.3 Diversidad
+
+La diversidad (tecnologías, proveedores, caminos o equipos distintos) reduce las causas comunes. Cuesta más, aumenta las competencias necesarias y puede añadir superficie de ataque. Úsela donde una causa común sería inaceptable: un segundo camino de comunicación a través de otro operador y con otra alimentación; un disparo de seguridad cableado independiente del software; un indicador manual que un operador puede leer cuando toda la electrónica es sospechosa. En LRWA, el argumento a favor de la diversidad es más claro en el camino de telemetría, donde un segundo operador con alimentación separada eliminaría la dependencia compartida del alimentador F1, y en Hollin Hill, donde un indicador de nivel manual da a los operadores una lectura fiable cuando toda la electrónica es sospechosa.
+
+### 26.4 Flujos unidireccionales y autonomía local
+
+Las pasarelas unidireccionales imponen físicamente un flujo de datos solo de salida; eliminan toda una clase de ataques entrantes contra el lado protegido, pero también eliminan el control remoto a través de ese camino. La autonomía local (la capacidad de un sitio para funcionar con seguridad sin el centro) es un patrón de resiliencia que además limita la consecuencia de un ataque: un centro comprometido puede perturbar la optimización, pero no debería poder llevar un sitio fuera de sus límites seguros si esos límites se imponen localmente (R3).
+
+La opción C3 del TMRP lleva esto a su extremo para el monitoreo.
+
+### 26.5 Ejemplo resuelto: tres arquitecturas del TMRP comparadas (sintético)
+
+| Propiedad | C1: central + IPsec | C2: jerárquica + autenticación en la capa de aplicación (elección del Taller I) | C3: jerárquica + diodo para el monitoreo, control solo local |
+|---|---|---|---|
+| Orden remota falsificada | Exige la clave del túnel o comprometer el SCADA | Exige la clave por estación o comprometer el SCADA | Imposible a distancia |
+| Centro comprometido | Puede dar órdenes a cualquier sitio dentro de los límites de la RTU | Puede dar órdenes a cualquier sitio dentro de los límites impuestos localmente | No puede dar órdenes |
+| Pérdida de la red | Los sitios mantienen el último estado | Los sitios funcionan en automático local 72 h | Los sitios funcionan en automático local |
+| Operabilidad | Alta | Alta | Baja de noche (hay que enviar personal) |
+| Indisponibilidad de comunicaciones, dos operadores, β = 0,05 | 0,00136 | 0,00136 | n/a para el control |
+| Costo | Medio | Medio | Capital bajo, personal alto |
+
+La tabla hace explícito el riesgo residual de C2: un centro SCADA comprometido aún puede emitir órdenes autenticadas dentro de los límites locales. Ese residuo se acepta sobre la base del monitoreo, la aprobación por dos personas de los cambios masivos de consigna y los límites locales que mantienen seguro el proceso.
+
+### 26.6 Actividad práctica
+
+Escriba un ADR que elija entre C2 y C3 específicamente para PS4 (la alimentación del hospital), teniendo en cuenta que las consignas de PS4 cambian rara vez. Parta de la tabla comparativa y de lo que hace especial a PS4: abastece directamente a St Brenna's y sus consignas cambian rara vez. Sopese la seguridad de eliminar las escrituras remotas de consigna frente al costo de enviar a un técnico para cada cambio, sobre todo de noche con un solo operador de guardia. Indique qué le haría revisar la decisión, como un aumento de la frecuencia de los cambios de consigna. La defensa del capítulo 50 se refiere más adelante a un ADR con exactamente esta opción de solo local para PS4.
+
+### 26.7 Errores comunes y límites
+
+- Redundancia sin diversidad, presentada como resiliencia frente al ataque.
+- Diversidad en todas partes, que desborda la capacidad de mantenimiento.
+- Centralización por comodidad, sin límites seguros locales.
+- Ignorar el costo operativo de las arquitecturas que eliminan el control remoto.
+- Comparaciones de arquitectura sin números cuando hay números disponibles.
+
+La tabla del TMRP evita el último error poniendo números donde existen, como la indisponibilidad de las comunicaciones con un factor de causa común, y declarando con claridad el costo de personal de C3. También acepta abiertamente el residuo de C2 en lugar de afirmar que su redundancia protege frente al ataque.
+
+### Ejercicios — capítulo 26
+
+**EX051 — Votación frente a la falsificación.** *Objetivo:* analizar la votación 2 de 3. *Entradas:* tres transmisores de nivel en Hollin Hill; selección de la mediana. *Pasos:* explique qué puede y qué no puede hacer un transmisor falsificado; qué puede hacer un atacante que controle la RTU común que lee los tres; y cómo restablecer la independencia. *Evidencia esperada:* media página. *Rúbrica:* 3 = la mediana tolera una entrada falsificada, la RTU común anula la votación, independencia mediante E/S o controladores separados; 2 = se omite la RTU común; 1 = genérico; 0 = nada.
+
+**EX052 — Decisión de arquitectura para PS4.** *Objetivo:* redactar un registro de decisión. *Entradas:* §26.6. *Pasos:* redacte el ADR con contexto, opciones, decisión, consecuencias y condiciones de revisión. *Evidencia esperada:* ADR. *Rúbrica:* 3 = decisión justificada por la criticidad de PS4 y por la rareza de los cambios de consigna (C3, o C2 con escrituras de consigna solo locales, defendida), consecuencias que incluyen el costo operativo, desencadenantes de revisión; 2 = consecuencias débiles; 1 = sin opciones; 0 = nada.
+
+### Síntesis del capítulo
+
+Elija la arquitectura según cómo falla y cómo puede atacarse. El control jerárquico con límites seguros locales combina la operabilidad con la degradación suave. La redundancia protege frente a las fallas independientes, la diversidad frente a las causas comunes; los flujos unidireccionales eliminan los caminos de ataque entrantes junto con el control remoto. Cuantifique donde pueda y documente el riesgo residual que acepta.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Siga estudiando — capítulo 26 de 50
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 →](../../en/book/MANUSCRIPT.md#ch-27)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2031,6 +2251,24 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX045.** PS3 = PS4 = 1: superior = P(TANK) = 0,03. G1 = G2 = 1: el camino B se pierde; el camino A se pierde si falla PS4 o GEN: 1 − 0,98 × 0,95 = 0,069; superior = 0,03 × 0,069 = 0,00207. Interpretación: la autenticación de las órdenes remotas elimina el camino más barato para el adversario (el evento superior baja de 0,03 a 9,1 × 10⁻⁵); si un adversario puede cortar ambos alimentadores, el generador y el tanque del hospital se convierten en las barreras decisivas: hay que mantenerlos y probarlos.
 
 **EX046.** Suplantación: tramas falsificadas (ATT&CK for ICS: Spoof Reporting Message) → MAC por estación. Manipulación: valores modificados en tránsito → MAC. Repudio: disputas sobre las órdenes → registros firmados o con MAC y anclas. Divulgación de información: telemetría leída en la red del operador → cifrado del operador más cifrado opcional de la carga útil. Denegación de servicio: inhibición de señal o inundación (Denial of Service; Block Reporting Message) → recurso al automático local, alarma de estación sin datos, limitación de frecuencia. Elevación de privilegios: compromiso de la pasarela para emitir órdenes → endurecimiento de la pasarela, filtrado de códigos de función, límites locales.
+
+### Capítulo 24
+
+**EX047.** (a) Simulación hidráulica más STPA del camino de la consigna; límite: fidelidad del modelo para los transitorios. (b) Experimento en banco de pruebas con inundaciones etiquetadas; límite: el tráfico de laboratorio difiere del del sitio. (c) Ejercicio funcional nocturno; límite: una sola ocasión, efecto del observador. (d) Evaluación de riesgos estructurada con escalas definidas; límite: estimaciones, no mediciones.
+
+**EX048.** Verificación: comparar Euler con la integral exacta (Lab 1); pruebas unitarias de `demand` y `drawn`; casos extremos (demanda cero → autonomía infinita; demanda constante → V/q). Validación: comparar la caída de nivel predicha con los datos del historiador de una parada planificada de bombas; validez aparente de la curva de demanda ante los operadores; sensibilidad a la amplitud de la demanda. Uso previsto: estimación de la autonomía para la planificación. No válido para los transitorios de presión, la calidad del agua ni la hidráulica de la red.
+
+### Capítulo 25
+
+**EX049.** Pesos (0,40; 0,20; 0,10; 0,15; 0,15): A 2,80; B 3,35; C 4,20; D 4,45: D supera a C. Pesos (0,20; 0,20; 0,30; 0,15; 0,15): A 3,60; B 3,35; C 4,20; D 3,65. La ventaja de C depende de que la operabilidad tenga un peso real; si quienes deciden valoran la prevención de órdenes falsificadas muy por encima de la operabilidad, D gana sobre el papel, pero en la práctica D incumple de noche la necesidad del hospital, lo que sugiere que la operabilidad se expresa mejor como restricción que como peso.
+
+**EX050.** Pasarela como punto único de falla: aceptar; la falla de la pasarela debe llevar al automático local con alarma; añadir una pasarela de reserva en frío por región. Elusión mediante el modo manual: aceptar; interruptor de llave en el panel, alarma en el SCADA ante el cambio de modo, registro local. Personal para la gestión de claves: aceptar; añadir al caso de negocio 0,2 ETC de costo operativo y el mantenimiento del HSM; responsable: el gerente del TMRP.
+
+### Capítulo 26
+
+**EX051.** La mediana de tres tolera un transmisor falsificado o averiado. Un atacante que controle la RTU que lee los tres puede falsificarlos todos de forma coherente y anular la votación. Restablezca la independencia cableando los transmisores a módulos de E/S o controladores separados, con comunicaciones separadas, de modo que ningún compromiso individual controle dos de las tres entradas.
+
+**EX052.** ADR modelo: contexto: PS4 es la alimentación directa del hospital y sus consignas cambian aproximadamente una vez al mes; opciones: C2 (remoto dentro de límites) o C3/variante de C2 (escrituras de consigna solo locales, monitoreo remoto); decisión: escrituras de consigna solo locales en PS4, manteniendo el arranque y la parada remotos con autenticación; consecuencias: visita mensual al sitio para los cambios de consigna, procedimientos de respuesta local más rápidos, riesgo residual D1 en PS4 reducido al arranque y la parada; revisar si aumenta la frecuencia de los cambios de consigna o cambia la dotación de personal.
 
 <a id="glossary"></a>
 
