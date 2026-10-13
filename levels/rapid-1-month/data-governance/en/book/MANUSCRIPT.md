@@ -1,7 +1,7 @@
 # Data Governance: Rapid Course
 
 - Language: English (`en`); course 003, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX058 have matching worked results with 0–3 rubrics; one offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: beginners who need a fast, practical start in data governance for a small business.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab checks a twelve-row synthetic café sign-up list for blank emails, malformed addresses, duplicates and consent ticks. Law is cited by edition and paraphrased; nothing here is legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -10,7 +10,7 @@
 
 ## How to use this draft
 
-Read in order. The four chapters follow one shift supervisor through a one-month course: foundations and first decisions, ownership and safe practice, quality, systems and suppliers, and a guided lab that becomes a short action plan. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics.
+Read in order. The four chapters follow one shift supervisor through a one-month course: foundations and first decisions, ownership and safe practice, quality, systems and suppliers, and a guided lab that becomes a short action plan. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics. Each chapter also has a concept table, a data table, a decision flowchart and a second worked example. EX051–EX058 apply those tools to a new café fact.
 
 ### Synthetic running case
 
@@ -40,7 +40,7 @@ GDPR. Full list in [References](#references).
 <!-- cyberabc:lesson-figures:start ch-01 -->
 ### Lesson map
 
-Lesson 01 published. Map, example, EX001.
+Lesson 01 published. Map, example, EX051.
 
 ```mermaid
 flowchart TD
@@ -50,9 +50,11 @@ flowchart TD
   N3["1.3 Copperleaf's data"]
   N4["1.4 Why it matters"]
   N5["1.5 Three first decisions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
+  N6["Concepts — responsibility, rules, and checks"]
+  N7["Data — what Copperleaf holds, and the harm Kwame nam"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
 ```
 
 ### Logical drawing
@@ -65,7 +67,9 @@ flowchart LR
   N3["1.3 Copperleaf's data"]
   N4["1.4 Why it matters"]
   N5["1.5 Three first decisions"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+  N6["Concepts — responsibility, rules, and checks"]
+  N7["Data — what Copperleaf holds, and the harm Kwame nam"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
 ```
 
 ```text
@@ -87,7 +91,13 @@ flowchart LR
 [1.5 Three first decisions]
     |
     v
-[Worked example] --> [Exercise EX001]
+[Concepts — responsibility, rules, and checks]
+    |
+    v
+[Data — what Copperleaf holds, and the harm Kwame nam]
+    |
+    v
+[Worked example] --> [Exercise EX051]
 ```
 <!-- cyberabc:lesson-figures:end ch-01 -->
 
@@ -126,6 +136,57 @@ Kwame defines governance as responsibility, rules and checks, lists Copperleaf's
 
 Thinking governance needs expensive tools delays simple decisions that help immediately.
 
+### Concepts — responsibility, rules, and checks
+
+Ms. Fischer's one sentence has three parts. Copperleaf can use them before it buys anything.
+
+| Part | Question this week | Copperleaf's first answer | What is still missing |
+|---|---|---|---|
+| Responsibility | Who answers if this data is wrong or lost? | Mrs. Adeyemi is accountable. Kwame looks after it day to day | A named person for every kind of data |
+| Rules | What may this data be used for, and where may it sit? | No customer or staff data leave approved systems | The page of rules comes in the next chapter |
+| Checks | How will someone see that the rule held? | The three decisions are written on one page and told to staff | A dated check, not only an announcement |
+
+Allergy notes are not "just another customer note". They are health information. The GDPR treats that as special-category data, so the extra care is part of the rule, not a later upgrade.
+
+### Data — what Copperleaf holds, and the harm Kwame named
+
+| Data | Where Kwame found it | Personal data? | Harm he named |
+|---|---|---|---|
+| Newsletter emails | Sign-up sheet | Yes | Emailing someone who never agreed |
+| Staff names, numbers, rotas | Café records | Yes | Sharing a phone number with the wrong person |
+| Supplier contacts and invoices | Email and paper | Business, with people attached | Paying a supplier twice from two copies |
+| Card-payment reports | Till provider | Yes, about payments | A report leaving the approved system |
+| Allergy notes | A few regulars | Yes, health information | Serving the wrong food |
+| Event photos | Recent event | Often yes | Kept with no agreed end |
+
+### Decision flow — a new fact about a person
+
+```mermaid
+flowchart TD
+  A["A new fact about a customer or a staff member"] --> B{"Is Mrs. Adeyemi still the person accountable for all Copperleaf data?"}
+  B -->|No| C["Stop. The first decision is missing"]
+  B -->|Yes| D{"Does this kind of data already have a named day-to-day person?"}
+  D -->|No| E["Name that person before the fact is copied anywhere"]
+  D -->|Yes| F{"Would the fact leave an approved café system?"}
+  F -->|Yes| G["Refuse. The third decision forbids it"]
+  F -->|No| H{"Is it health information, such as an allergy?"}
+  H -->|Yes| I["Extra care. Record where it is kept"]
+  H -->|No| J["Add it to Kwame's list with its place"]
+  I --> K["Write the decision on the one page and tell staff"]
+  J --> K
+```
+
+### Worked example — an allergy on a napkin
+
+A regular writes "no milk" on a napkin. A barista photographs the napkin on a personal phone so the next shift can see it. Kwame stops that copy. The note is health information, and a personal phone is not an approved café system, so the third decision already forbids the photograph. He writes the allergy onto the café's own list, records where that list is kept, and tells Mrs. Adeyemi the same day because she is accountable. The napkin is not left on the counter.
+
+> **Synthetic case.** The milk scribble, the camera roll and the same-afternoon counter check are invented. The GDPR is real. This is not legal advice.
+
+### Apply
+
+- **EX051 — Napkin photograph.** Why is the personal-phone photograph refused, and who must be told the same day? *Rubric:* 3 = a personal phone is not an approved system, and the note is health information; Mrs. Adeyemi, because she is accountable;; 2 = the approved-system rule only;; 1 = vague;; 0 = none.
+- **EX052 — Missing name.** Staff rotas have no named day-to-day person yet. Which of the three decisions is incomplete, and what is written before the rota is copied to a new place? *Rubric:* 3 = the second decision; name the person, on the one page, before any copy;; 2 = name a person, without the page;; 1 = vague;; 0 = none.
+
 ### Exercises
 
 - **EX001 — Café size.** How many cafés does Copperleaf run? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
@@ -157,7 +218,7 @@ Continue to the next authored lesson.
 <!-- cyberabc:lesson-figures:start ch-02 -->
 ### Lesson map
 
-Lesson 02 published. Map, example, EX014.
+Lesson 02 published. Map, example, EX053.
 
 ```mermaid
 flowchart TD
@@ -167,9 +228,11 @@ flowchart TD
   N3["2.3 Security habits"]
   N4["2.4 Keeping and deleting"]
   N5["2.5 Getting agreement"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
+  N6["Concepts — a rule that staff can finish"]
+  N7["Data — fields the new sheet drops"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
 ```
 
 ### Logical drawing
@@ -182,7 +245,9 @@ flowchart LR
   N3["2.3 Security habits"]
   N4["2.4 Keeping and deleting"]
   N5["2.5 Getting agreement"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+  N6["Concepts — a rule that staff can finish"]
+  N7["Data — fields the new sheet drops"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -204,7 +269,13 @@ flowchart LR
 [2.5 Getting agreement]
     |
     v
-[Worked example] --> [Exercise EX014]
+[Concepts — a rule that staff can finish]
+    |
+    v
+[Data — fields the new sheet drops]
+    |
+    v
+[Worked example] --> [Exercise EX053]
 ```
 <!-- cyberabc:lesson-figures:end ch-02 -->
 
@@ -227,7 +298,7 @@ Kwame lists habits for staff: lock the till computer screen when stepping away, 
 
 ### 2.4 Keeping and deleting
 
-Kwame sets keeping periods. Newsletter emails are kept while the customer stays subscribed and deleted soon after they unsubscribe. Old rotas are kept for the period employment rules require, then deleted. Invoices are kept for the period tax rules require. Allergy notes are reviewed every six months with the customer. Photos from events are deleted after a year unless people agreed to longer use. He writes each period beside the matching rule. Mrs. Adeyemi checks the tax and employment periods with her accountant.
+Kwame sets keeping periods. Newsletter emails are kept while the customer stays subscribed and deleted soon after they unsubscribe. Old rotas are kept for the period employment rules require, then deleted. Supplier bills remain until the accountant names the tax retention end, and only then are they shredded. Allergy notes are reviewed every six months with the customer. Photos from events are deleted after a year unless people agreed to longer use. He writes each period beside the matching rule. Mrs. Adeyemi checks the tax and employment periods with her accountant.
 
 ### 2.5 Getting agreement
 
@@ -242,6 +313,57 @@ Kwame writes rules naming who is responsible, cuts the sign-up sheet to first na
 ### Errors and limits
 
 Copying a large company's long policy into a café produces rules nobody reads.
+
+### Concepts — a rule that staff can finish
+
+A café rule fails when it is long, when it collects data nobody will use, or when the only way to obey it is a private text message.
+
+| Test | Passes at Copperleaf | Fails |
+|---|---|---|
+| One job | Newsletter emails are used only for the newsletter | Using that list to advertise a supplier |
+| Least data | New sheet keeps first name and email | The old sheet's phone, birthday and home address |
+| A channel the café controls | Rotas and shift swaps stay in the paid messaging group | A personal text, which spreads phone numbers |
+| A period | Allergy notes are reviewed with the customer every six months | "Keep it until someone remembers" |
+| A person | Each rule names who to ask | A page with no name |
+
+Mrs. Adeyemi checks the tax and employment periods with the accountant. Kwame does not invent those periods.
+
+### Data — fields the new sheet drops
+
+| Old field | Kept? | Why |
+|---|---|---|
+| First name | Yes | Makes the newsletter greeting usable |
+| Email | Yes | The only address the newsletter needs |
+| Phone | No | Not needed to send the newsletter |
+| Birthday | No | Not needed, and it is extra personal data |
+| Home address | No | Not needed, and it is extra personal data |
+
+Less data means less to protect, less to lose and fewer questions from customers. The new sheet is also faster, which is why more people signed up in the first week.
+
+### Decision flow — someone wants one more field
+
+```mermaid
+flowchart TD
+  A["A form asks for another customer field"] --> B{"Does the newsletter or the order need that field?"}
+  B -->|No| C["Remove it. Do not store it just in case"]
+  B -->|Yes| D{"Is there already an approved place and a named person?"}
+  D -->|No| E["Do not collect it this week"]
+  D -->|Yes| F{"Can staff obey the rule without a personal text or a personal phone photo?"}
+  F -->|No| G["Change the channel first. Paid group, not a private text"]
+  F -->|Yes| H["Add the field, the period and the person on the one-page rules"]
+  H --> I["Mrs. Adeyemi signs. Kwame explains the change. He does not only announce it"]
+```
+
+### Worked example — a birthday for a free cake
+
+A supplier offers a free cake if the sign-up sheet collects birthdays. Kwame refuses the field. The newsletter needs a first name and an email, which is the reason the old birthday column was removed. A cake is not a new purpose written on the rules page. If Mrs. Adeyemi later wants a birthday offer, that is a separate rule: a named person, a period, and a channel that is not a personal phone. It is not added in the margin of the newsletter sheet.
+
+> **Synthetic case.** The free-cake bargain and the handwritten margin are invented.
+
+### Apply
+
+- **EX053 — Birthday field.** Why does the birthday stay off the newsletter sheet, and what would a later birthday offer need before any date is collected? *Rubric:* 3 = the newsletter does not need it; a later offer needs its own rule, a named person, a period and an approved channel;; 2 = the newsletter does not need it;; 1 = vague;; 0 = none.
+- **EX054 — Shift text.** Two staff swap a shift by private text. Which signed rule did they miss, and where must the swap go? *Rubric:* 3 = swaps go through the paid messaging group so numbers stay private;; 2 = the paid group, without the reason;; 1 = vague;; 0 = none.
 
 ### Exercises
 
@@ -274,7 +396,7 @@ Continue to the next authored lesson.
 <!-- cyberabc:lesson-figures:start ch-03 -->
 ### Lesson map
 
-Lesson 03 published. Map, example, EX027.
+Lesson 03 published. Map, example, EX055.
 
 ```mermaid
 flowchart TD
@@ -284,9 +406,11 @@ flowchart TD
   N3["3.3 Suppliers"]
   N4["3.4 Payments and invoices"]
   N5["3.5 Simple checks"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
+  N6["Concepts — quality, place, and the other organisatio"]
+  N7["Data — where the data sit after the map"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
 ```
 
 ### Logical drawing
@@ -299,7 +423,9 @@ flowchart LR
   N3["3.3 Suppliers"]
   N4["3.4 Payments and invoices"]
   N5["3.5 Simple checks"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+  N6["Concepts — quality, place, and the other organisatio"]
+  N7["Data — where the data sit after the map"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -321,7 +447,13 @@ flowchart LR
 [3.5 Simple checks]
     |
     v
-[Worked example] --> [Exercise EX027]
+[Concepts — quality, place, and the other organisatio]
+    |
+    v
+[Data — where the data sit after the map]
+    |
+    v
+[Worked example] --> [Exercise EX055]
 ```
 <!-- cyberabc:lesson-figures:end ch-03 -->
 
@@ -360,6 +492,60 @@ Kwame defines quality with completeness, validity, accuracy and duplicates, maps
 
 Free personal apps used for business data often lack the terms a business needs.
 
+### Concepts — quality, place, and the other organisation
+
+Four quality questions, then a place, then a supplier. Copperleaf does not treat a convenient app as a supplier until its terms match the café's rules.
+
+| Question or check | Newsletter meaning | Money meaning |
+|---|---|---|
+| Complete | Every row has an email | An invoice has supplier, date and amount |
+| Valid | The address looks real | The copy is one invoice, not a second scan |
+| Accurate | It belongs to the person who signed | The emailed copy is the one that is entered |
+| Duplicate | The same person is not listed twice | Email plus paper must not be paid twice |
+| Place | Newsletter service, not the forgotten laptop spreadsheet | One shared folder, filed by supplier and date |
+| Supplier terms | Secure, used only for Copperleaf, deleted when the contract ends | Same three commitments |
+
+The free personal messaging app failed the terms test. The paid business version replaced it. Kwame files the paid-app contract beside the newsletter and till terms, so the three commitments can be reread without opening each vendor site.
+
+### Data — where the data sit after the map
+
+| Place | Who can see it | Protected? | Action |
+|---|---|---|---|
+| Paper sign-up sheet | Whoever stands at the counter | Only if it is kept out of customers' reach | Replace with the short sheet |
+| Newsletter service | The service and Kwame | Terms include the three commitments | Keep |
+| Till provider | The provider and the café | Terms include the three commitments | Keep |
+| Staff messaging | Current staff, once the group is cleaned | Paid business version | Leave the free personal app |
+| Invoice folder | Office | One entry point: the emailed copy | Mark the paper copy as received |
+| Locked allergy folder | Staff preparing that order | Locked, reviewed every six months | Keep |
+| Old laptop spreadsheet | Whoever opens the laptop | Forgotten, nobody uses it | Delete after checking it holds nothing needed |
+
+### Decision flow — a supplier or a second copy
+
+```mermaid
+flowchart TD
+  A["A supplier or a second copy of a record"] --> B{"Do the terms promise security, use only for Copperleaf, and deletion when the contract ends?"}
+  B -->|No| C["Do not put customer or staff data there"]
+  B -->|Yes| D{"Is this a second copy of an invoice or a customer list?"}
+  D -->|Yes| E["Enter once. Mark the other copy as received. Do not pay it again"]
+  D -->|No| F{"Is the place on Kwame's map, with a person who can see it?"}
+  F -->|No| G["Add it to the map or do not use it"]
+  F -->|Yes| H["Keep the terms in the shared folder"]
+  C --> I["Record the date and the finding in the notebook"]
+  E --> I
+  H --> I
+```
+
+### Worked example — a cheaper till that wants the newsletter
+
+A new till provider offers a lower rate if it may email Copperleaf's customers with its own offers. Kwame refuses. The terms would use café data for the provider, not only for Copperleaf. A lower card rate does not excuse skipping security, Copperleaf-only use, or deletion at the end of the contract. The rate is not a reason to skip the three commitments. He writes the refusal in the notebook and leaves the current till provider in place.
+
+> **Synthetic case.** The cheaper till offer is invented.
+
+### Apply
+
+- **EX055 — Cheaper till.** Which commitment fails, and what is written in the notebook? *Rubric:* 3 = the provider would use the data for its own offers, not only for Copperleaf; the refusal and the date;; 2 = the use limit only;; 1 = vague;; 0 = none.
+- **EX056 — Second paper invoice.** An emailed invoice is already entered. The paper copy arrives with a slightly different date. What is entered, what is marked, and what is not paid? *Rubric:* 3 = enter the emailed copy once; mark the paper copy received; do not pay the paper copy as a second bill;; 2 = do not pay twice;; 1 = vague;; 0 = none.
+
 ### Exercises
 
 - **EX027 — Quality questions.** What three quality questions does Ms. Fischer use? *Rubric:* 3 = complete, valid, accurate;; 2 = all;; 1 = some;; 0 = none.
@@ -390,7 +576,7 @@ Continue to the next authored lesson.
 <!-- cyberabc:lesson-figures:start ch-04 -->
 ### Lesson map
 
-Lesson 04 published. Map, example, EX039.
+Lesson 04 published. Map, example, EX057.
 
 ```mermaid
 flowchart TD
@@ -401,9 +587,10 @@ flowchart TD
   N4["4.3 Deciding who to email"]
   N5["4.4 The action plan"]
   N6["4.5 After the course"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
+  N7["Concepts — a row is not a permission"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
 ```
 
 ### Logical drawing
@@ -417,7 +604,8 @@ flowchart LR
   N4["4.3 Deciding who to email"]
   N5["4.4 The action plan"]
   N6["4.5 After the course"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+  N7["Concepts — a row is not a permission"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -442,7 +630,10 @@ flowchart LR
 [4.5 After the course]
     |
     v
-[Worked example] --> [Exercise EX039]
+[Concepts — a row is not a permission]
+    |
+    v
+[Worked example] --> [Exercise EX057]
 ```
 <!-- cyberabc:lesson-figures:end ch-04 -->
 
@@ -507,6 +698,59 @@ Kwame checks twelve synthetic sign-up rows, finding two blanks, one malformed ad
 
 Counting rows instead of unique, valid, consented addresses overstates who may be emailed.
 
+### Concepts — a row is not a permission
+
+The script does not ask how many lines are on the paper. It asks which addresses are unique, valid and ticked `yes` after the address is trimmed and lowercased. The tick itself is not lowercased. `Yes` is not `yes`.
+
+| Lab result on 12 synthetic rows | Count | May that row be emailed? |
+|---|---:|---|
+| Blank email | 2 | No. There is no address |
+| Malformed address | 1 | No. `dee@example` has no proper ending after @ |
+| Duplicate rows | 2 | The repeat is not a second person |
+| Unique valid address with tick `yes` | 5 | Yes. This is the only send list |
+| Tick blank or `no`, including `eli@example.org` | Not in the 5 | No. Consent was not given |
+
+Twelve rows became five people. Emailing the other seven because they appear on the paper overstates the list. That is the error in this chapter.
+
+### Data — the five actions and the one that slipped
+
+| Action | Person | Done when Kwame reviewed the month? |
+|---|---|---|
+| Short sheet with a clear consent box and the date | Kwame | Yes |
+| Run this check each month on the typed list | Kwame | Yes |
+| Delete the forgotten spreadsheet after the check | Kwame | Yes |
+| Finish the paid messaging app | Mrs. Adeyemi and Kwame | Yes |
+| Explain the rules at the staff meeting | Kwame | No. The meeting moved to the next week |
+
+The plan stays five actions. A slipped date is written down. It is not deleted from the plan to make the month look finished.
+
+### Decision flow — may this address receive the newsletter?
+
+```mermaid
+flowchart TD
+  A["One typed row"] --> B["Trim spaces and lowercase the address. Do not change the tick"]
+  B --> C{"Is the address blank or malformed?"}
+  C -->|Yes| D["Do not email"]
+  C -->|No| E{"Is this address already in the send list?"}
+  E -->|Yes| F["Duplicate. Do not count a second person"]
+  E -->|No| G{"Is the tick exactly yes?"}
+  G -->|No| H["Do not email. Ask the person to sign the new sheet"]
+  G -->|Yes| I["Include this one address"]
+  I --> J["Record the decision and the date in the notebook"]
+  H --> J
+```
+
+### Worked example — a capital Yes and a regular who ticked no
+
+A row reads `Ina@Example.org` with the tick `Yes`. Ina's typed capitals become a usable address, yet the consent box is stored exactly as written. The send rule accepts only `yes`, so the exact-match test leaves her outside the five. Kwame does not "fix" the tick in the script to raise the count. He asks Ina to sign the new sheet. The same week Mrs. Adeyemi wants to email `eli@example.org`, a regular who ticked `no`. Kwame refuses. A regular is not a substitute for the tick. Eli can join by signing the new sheet in person. Both decisions go in the notebook with the date.
+
+> **Synthetic case.** Ina's row and the request to email Eli are invented. The tick rule is the one in lab_signups.py. This is not legal advice.
+
+### Apply
+
+- **EX057 — Capital Yes.** What does the script do to `Ina@Example.org` and to the tick `Yes`, and is that row emailed? *Rubric:* 3 = the address is trimmed and lowercased; the tick stays `Yes`; the row is not emailed because only `yes` counts;; 2 = the address is cleaned and the row is not emailed;; 1 = one of those;; 0 = none.
+- **EX058 — Regular who ticked no.** May `eli@example.org` be emailed because Eli is a regular, and what is Eli offered instead? *Rubric:* 3 = no; Eli may sign the new sheet in person; the refusal is dated in the notebook;; 2 = no, without the sheet;; 1 = yes;; 0 = none.
+
 ### Exercises
 
 - **EX039 — Lab rows.** How many rows does the synthetic list have? *Rubric:* 3 = twelve;; 2 = partly correct;; 1 = wrong;; 0 = none.
@@ -534,7 +778,7 @@ The chapter index leads to the next course in the study path.
 
 ## Worked results
 
-Model answers for EX001–EX050. Kwame Boateng, Ms. Lena Fischer, Riverside Adult Learning Centre, Copperleaf Café and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX058. Kwame Boateng, Ms. Lena Fischer, Riverside Adult Learning Centre, Copperleaf Café and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** Two.
 
@@ -635,6 +879,23 @@ Model answers for EX001–EX050. Kwame Boateng, Ms. Lena Fischer, Riverside Adul
 **EX049.** Explaining the rules at the staff meeting, moved a week.
 
 **EX050.** Privacy and data protection.
+
+
+**EX051.** A personal phone is not an approved system, and the note is health information. Mrs. Adeyemi must be told the same day because she is accountable.
+
+**EX052.** The second decision is incomplete. Name the day-to-day person on the one page before the rota is copied anywhere.
+
+**EX053.** The newsletter does not need a birthday. A later birthday offer would need its own rule, a named person, a keeping period and an approved channel before any date is collected.
+
+**EX054.** Shift swaps go through the paid messaging group so phone numbers stay private.
+
+**EX055.** The provider would use Copperleaf's data for its own offers, not only for Copperleaf. The notebook records the refusal and the date.
+
+**EX056.** Enter the emailed copy once, mark the paper copy as received, and do not pay the paper copy as a second bill.
+
+**EX057.** The script trims and lowercases the address. The tick stays `Yes`. The row is not emailed, because only an exact `yes` counts.
+
+**EX058.** No. Eli may sign the new sheet in person. The refusal is dated in the notebook.
 
 <a id="references"></a>
 ## References

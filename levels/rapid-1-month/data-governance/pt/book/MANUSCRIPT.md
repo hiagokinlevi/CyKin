@@ -1,7 +1,7 @@
 # Governança de Dados: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 003, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX058 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: iniciantes que precisam de um começo rápido e prático em governança de dados para um pequeno negócio.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o laboratório confere uma lista sintética de doze linhas de inscrições de um café em busca de e-mails em branco, endereços malformados, duplicatas e marcações de consentimento. A legislação é citada pela edição e parafraseada; nada aqui é aconselhamento jurídico. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -10,7 +10,7 @@
 
 ## Como usar este rascunho
 
-Leia na ordem. Os quatro capítulos acompanham um supervisor de turno ao longo de um curso de um mês: fundamentos e primeiras decisões, responsabilidade e práticas seguras, qualidade, sistemas e fornecedores, e um laboratório guiado que se transforma em um plano de ação curto. Execute o laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
+Leia na ordem. Os quatro capítulos acompanham um supervisor de turno ao longo de um curso de um mês: fundamentos e primeiras decisões, responsabilidade e práticas seguras, qualidade, sistemas e fornecedores, e um laboratório guiado que se transforma em um plano de ação curto. Execute o laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas. Cada capítulo traz também uma tabela de conceitos, uma tabela de dados, um fluxograma de decisão e um segundo exemplo resolvido. EX051–EX058 aplicam essas ferramentas a um fato novo do café.
 
 ### Caso sintético
 
@@ -40,7 +40,7 @@ GDPR; LGPD. Lista completa em [Referências](#references).
 <!-- cyberabc:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
-Aula 01 publicada. Mapa, exemplo, EX001.
+Aula 01 publicada. Mapa, exemplo, EX051.
 
 ```mermaid
 flowchart TD
@@ -49,9 +49,12 @@ flowchart TD
   N2["1.3 Os dados da Copperleaf"]
   N3["1.4 Por que isso importa"]
   N4["1.5 Três primeiras decisões"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
+  N5["Conceitos — responsabilidade, regras e verificações"]
+  N6["Dados — o que a Copperleaf guarda e o dano que Kwame"]
+  N7["Fluxo de decisão — um fato novo sobre uma pessoa"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
 ```
 
 ### Desenho lógico
@@ -63,7 +66,10 @@ flowchart LR
   N2["1.3 Os dados da Copperleaf"]
   N3["1.4 Por que isso importa"]
   N4["1.5 Três primeiras decisões"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+  N5["Conceitos — responsabilidade, regras e verificações"]
+  N6["Dados — o que a Copperleaf guarda e o dano que Kwame"]
+  N7["Fluxo de decisão — um fato novo sobre uma pessoa"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
 ```
 
 ```text
@@ -82,7 +88,16 @@ flowchart LR
 [1.5 Três primeiras decisões]
     |
     v
-[Exemplo resolvido] --> [Exercício EX001]
+[Conceitos — responsabilidade, regras e verificações]
+    |
+    v
+[Dados — o que a Copperleaf guarda e o dano que Kwame]
+    |
+    v
+[Fluxo de decisão — um fato novo sobre uma pessoa]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
 ```
 <!-- cyberabc:lesson-figures:end ch-01 -->
 
@@ -121,6 +136,57 @@ Kwame define a governança como responsabilidades, regras e verificações, list
 
 Achar que a governança exige ferramentas caras atrasa decisões simples que ajudam de imediato.
 
+### Conceitos — responsabilidade, regras e verificações
+
+A frase da Sra. Fischer tem três partes. A Copperleaf pode usá-las antes de comprar qualquer coisa.
+
+| Parte | Pergunta desta semana | Primeira resposta da Copperleaf | O que ainda falta |
+|---|---|---|---|
+| Responsabilidade | Quem responde se este dado estiver errado ou se perder? | A Sra. Adeyemi é responsável. Kwame cuida no dia a dia | Uma pessoa nomeada para cada tipo de dado |
+| Regras | Para que este dado pode ser usado, e onde pode ficar? | Dados de clientes ou da equipe não saem dos sistemas aprovados | A página de regras vem no capítulo seguinte |
+| Verificações | Como alguém verá que a regra se manteve? | As três decisões estão numa página e foram ditas à equipe | Uma verificação com data, não só um aviso |
+
+As notas de alergia não são "mais uma nota de cliente". São informação de saúde. O GDPR trata isso como dado de categoria especial, então o cuidado extra faz parte da regra.
+
+### Dados — o que a Copperleaf guarda e o dano que Kwame nomeou
+
+| Dado | Onde Kwame encontrou | Dado pessoal? | Dano que ele nomeou |
+|---|---|---|---|
+| E-mails do boletim | Folha de inscrição | Sim | Escrever a quem nunca concordou |
+| Nomes, telefones e escalas da equipe | Registros do café | Sim | Entregar um telefone à pessoa errada |
+| Contatos e faturas de fornecedores | E-mail e papel | Negócio, com pessoas ligadas | Pagar um fornecedor duas vezes por duas cópias |
+| Relatórios de pagamento com cartão | Provedor do caixa | Sim, sobre pagamentos | Um relatório sair do sistema aprovado |
+| Notas de alergia | Alguns clientes habituais | Sim, informação de saúde | Servir o alimento errado |
+| Fotos do evento | Evento recente | Muitas vezes sim | Guardadas sem um fim combinado |
+
+### Fluxo de decisão — um fato novo sobre uma pessoa
+
+```mermaid
+flowchart TD
+  A["Um fato novo sobre um cliente ou alguém da equipe"] --> B{"A Sra. Adeyemi continua responsável por todos os dados da Copperleaf?"}
+  B -->|Não| C["Pare. A primeira decisão está faltando"]
+  B -->|Sim| D{"Este tipo de dado já tem uma pessoa do dia a dia?"}
+  D -->|Não| E["Nomeie essa pessoa antes de copiar o fato"]
+  D -->|Sim| F{"O fato sairia de um sistema aprovado do café?"}
+  F -->|Sim| G["Recuse. A terceira decisão proíbe"]
+  F -->|Não| H{"É informação de saúde, como uma alergia?"}
+  H -->|Sim| I["Cuidado extra. Registre onde fica"]
+  H -->|Não| J["Inclua na lista de Kwame, com o lugar"]
+  I --> K["Escreva a decisão na página e avise a equipe"]
+  J --> K
+```
+
+### Exemplo resolvido — uma alergia num guardanapo
+
+Um cliente habitual escreve "sem leite" num guardanapo. Um barista fotografa o guardanapo no celular pessoal para o turno seguinte ver. Kwame impede essa cópia. A nota é informação de saúde, e um celular pessoal não é um sistema aprovado do café, então a terceira decisão já proíbe a fotografia. Ele escreve a alergia na lista do próprio café, registra onde a lista fica e avisa a Sra. Adeyemi no mesmo dia, porque ela é a responsável. O guardanapo não fica no balcão.
+
+> **Caso sintético.** O guardanapo, o cliente e a fotografia são inventados. O GDPR e a LGPD são reais. Isto não é aconselhamento jurídico.
+
+### Aplicar
+
+- **EX051 — Fotografia do guardanapo.** Por que a fotografia no celular pessoal é recusada, e quem precisa ser avisado no mesmo dia? *Rubrica:* 3 = um celular pessoal não é um sistema aprovado, e a nota é informação de saúde; a Sra. Adeyemi, porque é a responsável;; 2 = só a regra do sistema aprovado;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Nome ausente.** As escalas ainda não têm uma pessoa do dia a dia. Qual das três decisões está incompleta, e o que se escreve antes de copiar a escala para outro lugar? *Rubrica:* 3 = a segunda decisão; nomear a pessoa, na página, antes de qualquer cópia;; 2 = nomear uma pessoa, sem a página;; 1 = vago;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX001 — Tamanho do negócio.** Quantos cafés a Copperleaf tem? *Rubrica:* 3 = dois;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
@@ -152,7 +218,7 @@ Continue para a próxima aula já escrita.
 <!-- cyberabc:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
-Aula 02 publicada. Mapa, exemplo, EX014.
+Aula 02 publicada. Mapa, exemplo, EX053.
 
 ```mermaid
 flowchart TD
@@ -161,9 +227,12 @@ flowchart TD
   N2["2.3 Hábitos de segurança"]
   N3["2.4 Guardar e eliminar"]
   N4["2.5 Obtendo a concordância"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
+  N5["Conceitos — uma regra que a equipe consegue cumprir"]
+  N6["Dados — campos que a folha nova deixa de fora"]
+  N7["Fluxo de decisão — alguém quer mais um campo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX053"]
 ```
 
 ### Desenho lógico
@@ -175,7 +244,10 @@ flowchart LR
   N2["2.3 Hábitos de segurança"]
   N3["2.4 Guardar e eliminar"]
   N4["2.5 Obtendo a concordância"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
+  N5["Conceitos — uma regra que a equipe consegue cumprir"]
+  N6["Dados — campos que a folha nova deixa de fora"]
+  N7["Fluxo de decisão — alguém quer mais um campo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -194,7 +266,16 @@ flowchart LR
 [2.5 Obtendo a concordância]
     |
     v
-[Exemplo resolvido] --> [Exercício EX014]
+[Conceitos — uma regra que a equipe consegue cumprir]
+    |
+    v
+[Dados — campos que a folha nova deixa de fora]
+    |
+    v
+[Fluxo de decisão — alguém quer mais um campo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX053]
 ```
 <!-- cyberabc:lesson-figures:end ch-02 -->
 
@@ -217,7 +298,7 @@ Kwame lista hábitos para a equipe: bloquear a tela do computador do caixa ao se
 
 ### 2.4 Guardar e eliminar
 
-Kwame define os prazos de guarda. Os e-mails do boletim são guardados enquanto o cliente continuar inscrito e eliminados logo depois do cancelamento. As escalas antigas são guardadas pelo período exigido pelas regras trabalhistas e depois eliminadas. As notas fiscais são guardadas pelo período exigido pelas regras fiscais. As anotações de alergia são revistas com o cliente a cada seis meses. As fotos de eventos são eliminadas após um ano, salvo se as pessoas concordaram com um uso mais longo. Ele escreve cada prazo ao lado da regra correspondente. A Sra. Adeyemi confere os prazos fiscais e trabalhistas com seu contador.
+Kwame define os prazos de guarda. Os e-mails do boletim são guardados enquanto o cliente continuar inscrito e eliminados logo depois do cancelamento. As escalas antigas são guardadas pelo período exigido pelas regras trabalhistas e depois eliminadas. As contas dos fornecedores permanecem até o contador indicar o fim da retenção fiscal e, só então, são picotadas. As anotações de alergia são revistas com o cliente a cada seis meses. As fotos de eventos são eliminadas após um ano, salvo se as pessoas concordaram com um uso mais longo. Ele escreve cada prazo ao lado da regra correspondente. A Sra. Adeyemi confere os prazos fiscais e trabalhistas com seu contador.
 
 ### 2.5 Obtendo a concordância
 
@@ -232,6 +313,57 @@ Kwame escreve regras que nomeiam os responsáveis, reduz a folha de inscrição 
 ### Erros e limites
 
 Copiar a política longa de uma grande empresa para um café produz regras que ninguém lê.
+
+### Conceitos — uma regra que a equipe consegue cumprir
+
+Uma regra de café falha quando é longa, quando coleta um dado que ninguém vai usar, ou quando o único modo de cumpri-la é uma mensagem particular.
+
+| Teste | Passa na Copperleaf | Falha |
+|---|---|---|
+| Um uso | Os e-mails do boletim servem só ao boletim | Usar essa lista para anunciar um fornecedor |
+| Menos dados | A folha nova guarda o primeiro nome e o e-mail | Telefone, aniversário e endereço da folha antiga |
+| Um canal que o café controla | Escalas e trocas ficam no grupo pago | Uma mensagem particular, que espalha telefones |
+| Um prazo | As notas de alergia são revistas com o cliente a cada seis meses | "Guardar até alguém lembrar" |
+| Uma pessoa | Cada regra diz a quem perguntar | Uma página sem nome |
+
+A Sra. Adeyemi confere os prazos fiscais e trabalhistas com a contadora. Kwame não inventa esses prazos.
+
+### Dados — campos que a folha nova deixa de fora
+
+| Campo antigo | Fica? | Por quê |
+|---|---|---|
+| Primeiro nome | Sim | Torna a saudação do boletim utilizável |
+| E-mail | Sim | O único endereço de que o boletim precisa |
+| Telefone | Não | Não é necessário para enviar o boletim |
+| Aniversário | Não | Não é necessário, e é um dado pessoal a mais |
+| Endereço | Não | Não é necessário, e é um dado pessoal a mais |
+
+Menos dados significam menos o que proteger, menos o que perder e menos perguntas dos clientes. A folha nova também é mais rápida, e por isso mais pessoas se inscreveram na primeira semana.
+
+### Fluxo de decisão — alguém quer mais um campo
+
+```mermaid
+flowchart TD
+  A["Um formulário pede outro campo do cliente"] --> B{"O boletim ou o pedido precisa desse campo?"}
+  B -->|Não| C["Retire. Não guarde por precaução"]
+  B -->|Sim| D{"Já existe um lugar aprovado e uma pessoa nomeada?"}
+  D -->|Não| E["Não colete nesta semana"]
+  D -->|Sim| F{"A equipe consegue cumprir a regra sem mensagem particular nem foto no celular?"}
+  F -->|Não| G["Mude o canal antes. Grupo pago, não mensagem particular"]
+  F -->|Sim| H["Acrescente o campo, o prazo e a pessoa na página de regras"]
+  H --> I["A Sra. Adeyemi assina. Kwame explica a mudança. Ele não apenas anuncia"]
+```
+
+### Exemplo resolvido — um bolo grátis em troca do aniversário
+
+Um fornecedor oferece um bolo grátis se a folha de inscrição coletar aniversários. Kwame recusa o campo. O boletim precisa de um primeiro nome e de um e-mail, que foi o motivo de a coluna antiga ter saído. Um bolo não é uma finalidade nova escrita na página de regras. Se a Sra. Adeyemi quiser depois uma oferta de aniversário, isso é outra regra: uma pessoa nomeada, um prazo e um canal que não seja um celular pessoal. Não entra na margem da folha do boletim.
+
+> **Caso sintético.** A oferta do bolo é inventada.
+
+### Aplicar
+
+- **EX053 — Campo de aniversário.** Por que o aniversário fica fora da folha do boletim, e o que uma oferta posterior precisaria antes de qualquer data ser coletada? *Rubrica:* 3 = o boletim não precisa dele; uma oferta posterior precisa de regra própria, pessoa nomeada, prazo e canal aprovado;; 2 = o boletim não precisa dele;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Mensagem de troca.** Duas pessoas trocam um turno por mensagem particular. Qual regra assinada falhou, e para onde a troca precisa ir? *Rubrica:* 3 = as trocas passam pelo grupo pago, para os números continuarem reservados;; 2 = o grupo pago, sem o motivo;; 1 = vago;; 0 = nenhuma.
 
 ### Exercícios
 
@@ -264,7 +396,7 @@ Continue para a próxima aula já escrita.
 <!-- cyberabc:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
-Aula 03 publicada. Mapa, exemplo, EX027.
+Aula 03 publicada. Mapa, exemplo, EX055.
 
 ```mermaid
 flowchart TD
@@ -273,9 +405,12 @@ flowchart TD
   N2["3.3 Fornecedores"]
   N3["3.4 Pagamentos e notas fiscais"]
   N4["3.5 Verificações simples"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
+  N5["Conceitos — qualidade, lugar e a outra organização"]
+  N6["Dados — onde os dados ficam depois do mapa"]
+  N7["Fluxo de decisão — um fornecedor ou uma segunda cópi"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
 ```
 
 ### Desenho lógico
@@ -287,7 +422,10 @@ flowchart LR
   N2["3.3 Fornecedores"]
   N3["3.4 Pagamentos e notas fiscais"]
   N4["3.5 Verificações simples"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+  N5["Conceitos — qualidade, lugar e a outra organização"]
+  N6["Dados — onde os dados ficam depois do mapa"]
+  N7["Fluxo de decisão — um fornecedor ou uma segunda cópi"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -306,7 +444,16 @@ flowchart LR
 [3.5 Verificações simples]
     |
     v
-[Exemplo resolvido] --> [Exercício EX027]
+[Conceitos — qualidade, lugar e a outra organização]
+    |
+    v
+[Dados — onde os dados ficam depois do mapa]
+    |
+    v
+[Fluxo de decisão — um fornecedor ou uma segunda cópi]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
 ```
 <!-- cyberabc:lesson-figures:end ch-03 -->
 
@@ -345,6 +492,60 @@ Kwame define a qualidade com completude, validade, exatidão e duplicatas, mapei
 
 Aplicativos pessoais gratuitos usados para dados do negócio muitas vezes não têm os termos de que uma empresa precisa.
 
+### Conceitos — qualidade, lugar e a outra organização
+
+Quatro perguntas de qualidade, depois um lugar, depois um fornecedor. A Copperleaf não trata um aplicativo cômodo como fornecedor enquanto os termos não coincidirem com as regras do café.
+
+| Pergunta ou verificação | No boletim | No dinheiro |
+|---|---|---|
+| Completo | Cada linha tem um e-mail | A fatura tem fornecedor, data e valor |
+| Válido | O endereço parece real | A cópia é uma fatura, não uma segunda digitalização |
+| Exato | Pertence a quem se inscreveu | A cópia enviada por e-mail é a que se lança |
+| Duplicata | A mesma pessoa não aparece duas vezes | E-mail mais papel não podem ser pagos duas vezes |
+| Lugar | Serviço do boletim, não a planilha esquecida no portátil | Uma pasta compartilhada, por fornecedor e data |
+| Termos do fornecedor | Segurança, uso só para a Copperleaf, exclusão no fim do contrato | Os mesmos três compromissos |
+
+O aplicativo pessoal e gratuito de mensagens falhou no teste dos termos. A versão empresarial paga o substituiu. Kwame guarda uma cópia dos termos de cada fornecedor na pasta compartilhada.
+
+### Dados — onde os dados ficam depois do mapa
+
+| Lugar | Quem pode ver | Protegido? | Ação |
+|---|---|---|---|
+| Folha de papel | Quem está no balcão | Só se ficar fora do alcance dos clientes | Trocar pela folha curta |
+| Serviço do boletim | O serviço e Kwame | Os termos incluem os três compromissos | Manter |
+| Provedor do caixa | O provedor e o café | Os termos incluem os três compromissos | Manter |
+| Mensagens da equipe | Equipe atual, depois da limpeza do grupo | Versão empresarial paga | Sair do aplicativo pessoal gratuito |
+| Pasta de faturas | Escritório | Um ponto de lançamento: a cópia do e-mail | Marcar a cópia em papel como recebida |
+| Pasta trancada de alergias | Quem prepara aquele pedido | Trancada, revista a cada seis meses | Manter |
+| Planilha antiga no portátil | Quem abrir o portátil | Esquecida, ninguém usa | Apagar depois de conferir que não guarda nada necessário |
+
+### Fluxo de decisão — um fornecedor ou uma segunda cópia
+
+```mermaid
+flowchart TD
+  A["Um fornecedor ou uma segunda cópia de um registro"] --> B{"Os termos prometem segurança, uso só para a Copperleaf e exclusão no fim do contrato?"}
+  B -->|Não| C["Não coloque ali dados de clientes ou da equipe"]
+  B -->|Sim| D{"Isto é uma segunda cópia de uma fatura ou de uma lista de clientes?"}
+  D -->|Sim| E["Lance uma vez. Marque a outra cópia como recebida. Não pague de novo"]
+  D -->|Não| F{"O lugar está no mapa de Kwame, com uma pessoa que pode vê-lo?"}
+  F -->|Não| G["Inclua no mapa ou não use"]
+  F -->|Sim| H["Guarde os termos na pasta compartilhada"]
+  C --> I["Registre a data e o achado no caderno"]
+  E --> I
+  H --> I
+```
+
+### Exemplo resolvido — um caixa mais barato que quer o boletim
+
+Um provedor novo de caixa oferece uma taxa menor se puder escrever aos clientes da Copperleaf com ofertas próprias. Kwame recusa. Os termos usariam os dados do café para o provedor, não só para a Copperleaf. Isso falha no mesmo teste que tirou o aplicativo gratuito de mensagens. A taxa não é motivo para pular os três compromissos. Ele escreve a recusa no caderno e mantém o provedor atual.
+
+> **Caso sintético.** A oferta do caixa mais barato é inventada.
+
+### Aplicar
+
+- **EX055 — Caixa mais barato.** Qual compromisso falha, e o que se escreve no caderno? *Rubrica:* 3 = o provedor usaria os dados para ofertas próprias, não só para a Copperleaf; a recusa e a data;; 2 = só o limite de uso;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Segunda fatura em papel.** Uma fatura enviada por e-mail já foi lançada. A cópia em papel chega com uma data um pouco diferente. O que se lança, o que se marca e o que não se paga? *Rubrica:* 3 = lançar uma vez a cópia do e-mail; marcar o papel como recebido; não pagar o papel como segunda conta;; 2 = não pagar duas vezes;; 1 = vago;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX027 — Perguntas de qualidade.** Que três perguntas de qualidade a Sra. Fischer usa? *Rubrica:* 3 = completo, válido, exato;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
@@ -375,7 +576,7 @@ Continue para a próxima aula já escrita.
 <!-- cyberabc:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
-Aula 04 publicada. Mapa, exemplo, EX039.
+Aula 04 publicada. Mapa, exemplo, EX057.
 
 ```mermaid
 flowchart TD
@@ -384,9 +585,12 @@ flowchart TD
   N2["4.3 Decidindo para quem enviar"]
   N3["4.4 O plano de ação"]
   N4["4.5 Depois do curso"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
+  N5["Conceitos — uma linha não é uma permissão"]
+  N6["Dados — as cinco ações e a que escorregou"]
+  N7["Fluxo de decisão — este endereço pode receber o bole"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX057"]
 ```
 
 ### Desenho lógico
@@ -398,7 +602,10 @@ flowchart LR
   N2["4.3 Decidindo para quem enviar"]
   N3["4.4 O plano de ação"]
   N4["4.5 Depois do curso"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+  N5["Conceitos — uma linha não é uma permissão"]
+  N6["Dados — as cinco ações e a que escorregou"]
+  N7["Fluxo de decisão — este endereço pode receber o bole"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -417,7 +624,16 @@ flowchart LR
 [4.5 Depois do curso]
     |
     v
-[Exemplo resolvido] --> [Exercício EX039]
+[Conceitos — uma linha não é uma permissão]
+    |
+    v
+[Dados — as cinco ações e a que escorregou]
+    |
+    v
+[Fluxo de decisão — este endereço pode receber o bole]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX057]
 ```
 <!-- cyberabc:lesson-figures:end ch-04 -->
 
@@ -480,6 +696,59 @@ Kwame confere doze linhas sintéticas de inscrição e encontra dois e-mails em 
 
 Contar linhas em vez de endereços únicos, válidos e com consentimento superestima quem pode receber e-mails.
 
+### Conceitos — uma linha não é uma permissão
+
+O script não pergunta quantas linhas há no papel. Ele pergunta quais endereços são únicos, válidos e marcados com `yes` depois de o endereço ser aparado e posto em minúsculas. A marca em si não é posta em minúsculas. `Yes` não é `yes`.
+
+| Resultado do laboratório em 12 linhas sintéticas | Contagem | Essa linha pode receber e-mail? |
+|---|---:|---|
+| E-mail em branco | 2 | Não. Não há endereço |
+| Endereço malformado | 1 | Não. `dee@example` não tem um fim adequado depois de @ |
+| Linhas duplicadas | 2 | A repetição não é uma segunda pessoa |
+| Endereço único e válido com marca `yes` | 5 | Sim. Esta é a única lista de envio |
+| Marca em branco ou `no`, inclusive `eli@example.org` | Fora dos 5 | Não. Não houve consentimento |
+
+Doze linhas viraram cinco pessoas. Enviar às outras sete porque aparecem no papel superestima a lista. Esse é o erro deste capítulo.
+
+### Dados — as cinco ações e a que escorregou
+
+| Ação | Pessoa | Feita quando Kwame revisou o mês? |
+|---|---|---|
+| Folha curta com caixa clara de consentimento e a data | Kwame | Sim |
+| Rodar esta verificação todo mês na lista digitada | Kwame | Sim |
+| Apagar a planilha esquecida depois da conferência | Kwame | Sim |
+| Concluir o aplicativo pago de mensagens | Sra. Adeyemi e Kwame | Sim |
+| Explicar as regras na reunião da equipe | Kwame | Não. A reunião foi para a semana seguinte |
+
+O plano continua com cinco ações. Uma data que escorrega é anotada. Ela não sai do plano para o mês parecer concluído.
+
+### Fluxo de decisão — este endereço pode receber o boletim?
+
+```mermaid
+flowchart TD
+  A["Uma linha digitada"] --> B["Apare espaços e ponha o endereço em minúsculas. Não altere a marca"]
+  B --> C{"O endereço está em branco ou malformado?"}
+  C -->|Sim| D["Não envie"]
+  C -->|Não| E{"Este endereço já está na lista de envio?"}
+  E -->|Sim| F["Duplicata. Não conte uma segunda pessoa"]
+  E -->|Não| G{"A marca é exatamente yes?"}
+  G -->|Não| H["Não envie. Peça à pessoa que assine a folha nova"]
+  G -->|Sim| I["Inclua este único endereço"]
+  I --> J["Registre a decisão e a data no caderno"]
+  H --> J
+```
+
+### Exemplo resolvido — um Yes maiúsculo e um habitual que marcou não
+
+Uma linha traz `Ina@Example.org` com a marca `Yes`. O script põe o endereço em minúsculas, `ina@example.org`, que é válido, e deixa a marca como `Yes`. A regra de envio aceita só `yes`, então Ina não está entre as cinco. Kwame não "corrige" a marca no script para aumentar a contagem. Ele pede a Ina que assine a folha nova. Na mesma semana a Sra. Adeyemi quer escrever a `eli@example.org`, um habitual que marcou `no`. Kwame recusa. Ser habitual não substitui a marca. Eli pode entrar assinando a folha nova pessoalmente. As duas decisões vão para o caderno, com a data.
+
+> **Caso sintético.** A linha de Ina e o pedido de escrever a Eli são inventados. A regra da marca é a de lab_signups.py. Isto não é aconselhamento jurídico.
+
+### Aplicar
+
+- **EX057 — Yes maiúsculo.** O que o script faz com `Ina@Example.org` e com a marca `Yes`, e essa linha recebe e-mail? *Rubrica:* 3 = o endereço é aparado e posto em minúsculas; a marca continua `Yes`; a linha não recebe e-mail porque só `yes` conta;; 2 = o endereço é limpo e a linha não recebe e-mail;; 1 = um desses;; 0 = nenhuma.
+- **EX058 — Habitual que marcou não.** `eli@example.org` pode receber e-mail por Eli ser habitual, e o que se oferece a Eli? *Rubrica:* 3 = não; Eli pode assinar a folha nova pessoalmente; a recusa fica datada no caderno;; 2 = não, sem a folha;; 1 = sim;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX039 — Linhas do laboratório.** Quantas linhas tem a lista sintética? *Rubrica:* 3 = doze;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
@@ -507,7 +776,7 @@ O índice aponta para o próximo curso do percurso de estudos.
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX050. Kwame Boateng, a Sra. Lena Fischer, o Riverside Adult Learning Centre, o Copperleaf Café e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX058. Kwame Boateng, a Sra. Lena Fischer, o Riverside Adult Learning Centre, o Copperleaf Café e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Dois.
 
@@ -608,6 +877,23 @@ Respostas-modelo para EX001–EX050. Kwame Boateng, a Sra. Lena Fischer, o River
 **EX049.** A explicação das regras na reunião da equipe, adiada em uma semana.
 
 **EX050.** Privacidade e proteção de dados.
+
+
+**EX051.** Um celular pessoal não é um sistema aprovado, e a nota é informação de saúde. A Sra. Adeyemi precisa ser avisada no mesmo dia porque é a responsável.
+
+**EX052.** A segunda decisão está incompleta. Nomeie a pessoa do dia a dia na página antes de copiar a escala para qualquer lugar.
+
+**EX053.** O boletim não precisa do aniversário. Uma oferta posterior precisaria de regra própria, pessoa nomeada, prazo e canal aprovado antes de qualquer data ser coletada.
+
+**EX054.** As trocas de turno passam pelo grupo pago, para os telefones continuarem reservados.
+
+**EX055.** O provedor usaria os dados da Copperleaf para ofertas próprias, não só para a Copperleaf. O caderno registra a recusa e a data.
+
+**EX056.** Lance uma vez a cópia enviada por e-mail, marque o papel como recebido e não pague o papel como segunda conta.
+
+**EX057.** O script apara o endereço e o põe em minúsculas. A marca continua `Yes`. A linha não recebe e-mail, porque só um `yes` exato conta.
+
+**EX058.** Não. Eli pode assinar a folha nova pessoalmente. A recusa fica datada no caderno.
 
 <a id="references"></a>
 ## Referências
