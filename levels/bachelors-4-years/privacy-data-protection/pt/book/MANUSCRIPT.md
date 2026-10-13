@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–35 de 40 já estão escritos em português, com os exercícios EX001–EX105 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 36–40 (EX106–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) |
 
-Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 36–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-36), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1379,11 +1379,211 @@ Os fornecedores podem confirmar a exclusão sem verificá-la; peça evidências 
 - **EX089 — Processo de saída.** O que Elena acrescentou ao processo de saída? *Rubrica:* 3 = confirmação de exclusão pelos fornecedores, com lembrete em duas semanas;; 2 = menciona confirmação;; 1 = nada;; 0 = nenhuma.
 - **EX090 — Fronteiras.** Por que o segundo laboratório encontrou lacunas mais graves? *Rubrica:* 3 = as falhas costumam ocorrer nas fronteiras entre sistemas e fornecedores;; 2 = menciona fronteiras;; 1 = sorte;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Privacidade e proteção de dados: casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos difíceis envolvendo dados de crianças; (2) ponderar direitos em conflito; (3) documentar o raciocínio das decisões contestadas.
+
+### 31.1 Pais separados
+
+Um pai que não mora com o filho pede os registros escolares da criança. A mãe se opõe. Elena estuda o caso com o responsável pela proteção de dados. O direito dos pais à informação educacional pode vir da legislação educacional, enquanto o acesso aos dados pessoais vem da legislação de proteção de dados. Uma ordem judicial pode restringir o acesso de um dos pais. Ela aprende que esses casos exigem uma verificação cuidadosa da situação jurídica e que a segurança da criança precisa ser considerada, especialmente quando há preocupações de proteção em relação a um dos pais.
+
+### 31.2 O pedido da própria aluna
+
+Uma aluna de catorze anos pede para ver o que a escola guarda sobre ela, sem contar aos pais. Elena aprende que as crianças podem exercer os próprios direitos quando os compreendem, e que a escola deve, em geral, responder diretamente à criança. As Diretrizes 01/2022 do EDPB tratam dos pedidos feitos por crianças e em nome delas; no Brasil, o art. 14 da LGPD exige que o tratamento de dados de crianças e adolescentes atenda ao seu melhor interesse. O caso mostra que as crianças são titulares de direitos em nome próprio, e não só por meio dos pais. A resposta depende da maturidade dela.
+
+### 31.3 Pedido da polícia
+
+A polícia pede a uma escola os registros de frequência de um aluno para uma investigação. Elena aprende que a divulgação às autoridades pode ser lícita por dispositivos específicos, mas precisa ser verificada: o pedido deve ser por escrito, indicar a finalidade e a base legal e se limitar ao necessário. O responsável pela proteção de dados decide, documenta a decisão e divulga apenas as datas de frequência pedidas. Ela observa que a urgência não dispensa o registro do que foi compartilhado e por quê. Um registro é mantido para cada divulgação feita às autoridades.
+
+### 31.4 Documentar as decisões contestadas
+
+Em cada caso, Elena ajuda a redigir um registro de decisão: fatos, base legal, direitos considerados, decisão e revisor. Ela explica que as decisões contestadas podem ser questionadas mais tarde por um pai, por um regulador ou por um tribunal, e que um registro claro mostra que a rede agiu com cuidado. O Dr. Asante observa que bons registros protegem tanto as crianças quanto os funcionários, porque mostram que as decisões foram tomadas com reflexão, e não sob pressão. Cada registro indica a decisão, os motivos e quem a aprovou, e fica guardado para revisão.
+
+### Exemplo resolvido
+
+Elena analisa o pedido de um pai separado, o pedido de acesso da própria aluna e um pedido da polícia, e escreve registros de decisão para cada caso contestado.
+
+> **Caso sintético.** Os casos são sintéticos; as Diretrizes 01/2022 do EDPB e o art. 14 da LGPD são reais.
+
+### Erros e limites
+
+As regras de divulgação a familiares e à polícia variam conforme a jurisdição; confirme sempre a legislação local.
+
+### Exercícios
+
+- **EX091 — Aluna solicitante.** Como a escola deve responder ao pedido de acesso de uma aluna madura? *Rubrica:* 3 = em geral, diretamente à aluna, como titular de direitos;; 2 = menciona a aluna;; 1 = só aos pais;; 0 = nenhuma.
+- **EX092 — Verificações do pedido policial.** O que um pedido da polícia deve conter antes da divulgação? *Rubrica:* 3 = pedido escrito com finalidade e base legal, limitado aos dados necessários;; 2 = dois;; 1 = divulgar tudo;; 0 = nenhuma.
+- **EX093 — Registros de decisão.** Por que manter registros de decisão nos casos contestados? *Rubrica:* 3 = as decisões podem ser questionadas depois, e os registros mostram um raciocínio cuidadoso;; 2 = menciona questionamento;; 1 = opcional;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Privacidade e proteção de dados: interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar com profissionais da educação, da proteção das crianças e do direito; (2) traduzir entre disciplinas; (3) resolver conflitos entre objetivos profissionais.
+
+### 32.1 Trabalho com educadores
+
+Os professores querem ferramentas que ajudem as crianças a aprender. Elena aprende a apresentar a privacidade como parte do bom ensino: um aplicativo que perfila crianças para publicidade mina a confiança entre a escola e a família. Ela trabalha com uma coordenadora pedagógica para incluir perguntas de privacidade no processo de escolha de recursos. Traduzir a privacidade para a linguagem da educação, ela descobre, conquista mais apoio do que apresentá-la como uma exigência legal imposta de fora. Os professores respondem a exemplos de sala de aula, como um aplicativo de leitura; eles querem exemplos, não regras.
+
+### 32.2 Trabalho com a proteção das crianças
+
+Os responsáveis pela proteção das crianças precisam compartilhar informações para protegê-las, às vezes depressa. Elena aprende que a legislação de proteção de dados não impede o compartilhamento para proteger uma criança em risco, e que o medo de violar regras de privacidade nunca deve atrasar uma proteção necessária. Ela ajuda a escrever orientações dizendo que as informações de proteção podem ser compartilhadas quando necessário para proteger uma criança, registradas depois e limitadas ao necessário. As orientações reduzem a hesitação sem abandonar o cuidado, e a equipe passa a compartilhar as preocupações com mais rapidez e confiança.
+
+### 32.3 Trabalho com advogados
+
+O assessor jurídico da rede interpreta a lei; Elena explica os sistemas. Numa discussão sobre retenção, o assessor explica os prazos legais e Elena explica quais sistemas conseguem aplicá-los automaticamente. Juntos, produzem uma tabela de temporalidade ao mesmo tempo lícita e implementável. Ela aprende que advogados e tecnólogos têm, cada um, metade da resposta, e que os projetos dão errado quando um dos lados supõe que o outro cuidou da sua parte. O advogado redige os termos, enquanto Elena confere os fatos técnicos por trás deles, e os dois revisam os rascunhos.
+
+### 32.4 Resolução de conflitos
+
+Surgem conflitos. A coordenadora pedagógica quer uma análise de aprendizagem que acompanhe cada clique; Elena prefere dados agregados. Elas combinam resumos semanais por aluno, guardados durante o ano letivo, que dão aos professores o que precisam sem um rastreamento detalhado. O Dr. Asante observa que o trabalho interdisciplinar dá certo quando cada lado declara seu objetivo real, e não sua solução preferida, porque os objetivos muitas vezes podem ser atingidos de mais de uma maneira. Declarar primeiro os objetivos transformou um impasse sobre um aplicativo de lição de casa numa solução compartilhada.
+
+### Exemplo resolvido
+
+Elena apresenta a privacidade em termos educacionais, escreve orientações para que o medo de violar a privacidade não atrase o compartilhamento de proteção, desenha com o assessor jurídico uma tabela de temporalidade implementável e negocia resumos semanais de análise de aprendizagem.
+
+> **Caso sintético.** Os colegas e as decisões são sintéticos.
+
+### Erros e limites
+
+Traduzir entre disciplinas pode simplificar demais; confira os significados com cada profissional.
+
+### Exercícios
+
+- **EX094 — Orientação de proteção.** O que a orientação de proteção das crianças diz sobre a privacidade? *Rubrica:* 3 = o compartilhamento para proteger uma criança em risco é permitido, registrado e limitado ao necessário;; 2 = menciona compartilhamento;; 1 = proíbe;; 0 = nenhuma.
+- **EX095 — Advogados e engenheiros.** O que Elena aprende trabalhando com o assessor jurídico? *Rubrica:* 3 = cada disciplina tem metade da resposta;; 2 = menciona cooperação;; 1 = os advogados decidem tudo;; 0 = nenhuma.
+- **EX096 — Acordo sobre a análise.** Que acordo sobre a análise de aprendizagem foi feito? *Rubrica:* 3 = resumos semanais por aluno guardados durante o ano letivo;; 2 = menciona resumos;; 1 = rastrear cliques;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar dados qualitativos de entrevistas; (2) combinar evidências qualitativas e quantitativas; (3) relatar os achados com seus limites.
+
+### 33.1 Análise das entrevistas
+
+Elena conduz as dez entrevistas com professores planejadas no Capítulo 18. Ela as transcreve, remove qualquer nome e codifica os motivos recorrentes para adotar aplicativos sem verificação. Surgem quatro temas: a pressão do tempo, a confiança na popularidade, o desconhecimento do processo de triagem e a crença de que aplicativos gratuitos são inofensivos. Ela conta quantos professores mencionam cada tema e guarda citações ilustrativas sem detalhes identificadores. A pressão do tempo é a mais citada, geralmente quando um professor começa um novo conteúdo de última hora. A codificação é conferida duas vezes.
+
+### 33.2 Combinação de evidências
+
+Elena compara os temas com o registro de aplicativos. Os professores que disseram não conhecer o processo davam aula nas escolas com mais aplicativos não aprovados. A combinação de evidências qualitativas e quantitativas fortalece sua interpretação: é o desconhecimento, e não a resistência, que leva à maior parte das adoções sem verificação. Ela observa que os métodos mistos permitem que cada fonte confira a outra e dão um retrato mais completo do que qualquer uma sozinha. O registro mostra muitos aplicativos não avaliados justamente nas matérias em que os professores descreveram a maior pressão de tempo, então as duas fontes concordam.
+
+### 33.3 Recomendações
+
+Com base nos achados, Elena recomenda um guia de dois minutos sobre a triagem na integração de novos funcionários, um catálogo de aplicativos aprovados na intranet e uma revisão rápida dos aplicativos solicitados em até cinco dias letivos. Ela liga cada recomendação a um tema. Também recomenda explicar por que aplicativos gratuitos podem custar às crianças os seus dados, tratando diretamente do quarto tema com exemplos tirados das pontuações da triagem. A triagem mais rápida vem primeiro, com meta de cinco dias para aplicativos simples, seguida de contatos claros da equipe de triagem.
+
+### 33.4 Limites
+
+Elena relata os limites: dez professores, um possível desejo de agradar e o seu papel no estágio. As duas entrevistas conduzidas por uma colega produziram temas semelhantes, o que oferece algum conforto. Ela evita afirmar que os achados valem para todas as escolas. O Dr. Asante elogia a ligação clara entre evidências e recomendações e a honestidade sobre os limites, observando que estudos pequenos são úteis quando informam decisões específicas. Dez entrevistas numa única rede não representam todos os professores, mas explicam os padrões desta rede bem o bastante para orientar os próximos passos.
+
+### Exemplo resolvido
+
+Elena encontra quatro temas (pressão do tempo, popularidade, desconhecimento e a crença de que gratuito é inofensivo), liga o desconhecimento aos aplicativos não aprovados do registro e recomenda orientação na integração, um catálogo e revisões rápidas.
+
+> **Caso sintético.** As entrevistas e os temas são sintéticos.
+
+### Erros e limites
+
+As contagens de temas dependem da codificação; um segundo codificador melhora a confiabilidade.
+
+### Exercícios
+
+- **EX097 — Principal motivador.** Segundo as evidências combinadas, o que leva à maior parte das adoções sem verificação? *Rubrica:* 3 = o desconhecimento do processo;; 2 = menciona conhecimento;; 1 = resistência;; 0 = nenhuma.
+- **EX098 — Revisão rápida.** Que revisão rápida Elena recomendou? *Rubrica:* 3 = revisão dos aplicativos solicitados em até cinco dias letivos;; 2 = menciona rapidez;; 1 = nenhuma;; 0 = nenhuma.
+- **EX099 — Segunda entrevistadora.** Por que uma colega conduziu duas entrevistas? *Rubrica:* 3 = para verificar se o papel de Elena influenciava as respostas;; 2 = menciona viés;; 1 = sem motivo;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar a prática de privacidade de duas organizações; (2) usar critérios consistentes; (3) aprender com as diferenças sem ranquear de forma injusta.
+
+### 34.1 A comparação
+
+Elena compara a Brindle Valley com a fictícia Harrow Lane Academy, uma única escola grande de ensino fundamental II e médio. Ela usa critérios consistentes: registro das atividades de tratamento, triagem de aplicativos, atendimento aos direitos, retenção e treinamento. Reúne evidências por meio de documentos e de entrevistas com o responsável pela proteção de dados de cada organização. A comparação busca aprender o que funciona, e não ranquear escolas publicamente, o que as duas organizações aceitam antes de participar. As duas compartilham abertamente políticas e evidências, e a Harrow Lane entra porque seu responsável se ofereceu como voluntário.
+
+### 34.2 Achados
+
+A Harrow Lane tem um processo de retenção mais forte, com exclusão automática em seu sistema de gestão, enquanto a Brindle Valley tem uma triagem de aplicativos mais forte depois do trabalho de Elena. A Harrow Lane responde aos pedidos de direitos mais depressa, porque um único setor cuida deles, mas seu treinamento se limita a um vídeo anual. Cada organização tem algo a aprender com a outra. Elena apresenta os achados em uma tabela, com evidências para cada avaliação. A Harrow Lane automatiza a retenção, enquanto a Brindle Valley treina a equipe com mais frequência, e as duas aprendem algo.
+
+### 34.3 Contexto
+
+Elena observa que o contexto explica as diferenças. Uma única escola de ensino médio tem alunos mais velhos, mais funcionários num só lugar e um administrador dedicado. Uma rede de escolas de ensino fundamental tem alunos mais novos e funcionários espalhados por várias unidades. As práticas precisam se ajustar ao contexto. Ela evita recomendar que uma organização simplesmente copie a outra e identifica, em vez disso, os princípios por trás das boas práticas, como a automação da retenção, que podem ser adaptados. Os tamanhos e os orçamentos são muito diferentes, assim como a dedicação do responsável pela proteção de dados em cada lugar.
+
+### 34.4 Compartilhamento
+
+As duas organizações recebem o relatório e concordam em compartilhar práticas. A Harrow Lane adota os critérios de triagem da Brindle Valley; a Brindle Valley estuda a retenção automatizada. Elena reflete que a comparação funciona melhor com consentimento e colaboração, e que respeitar o contexto evita julgamentos injustos. O Dr. Asante observa que o aprendizado setorial é valioso porque as organizações pequenas raramente têm tempo de desenvolver sozinhas todas as práticas. Os achados são apresentados de forma anônima numa reunião regional de responsáveis pela proteção de dados escolares, onde outras redes reconhecem os mesmos padrões.
+
+### Exemplo resolvido
+
+Elena compara a rede com a Harrow Lane Academy usando cinco critérios, encontra forças complementares, explica as diferenças pelo contexto e ajuda as duas organizações a compartilhar práticas.
+
+> **Caso sintético.** As duas organizações são sintéticas.
+
+### Erros e limites
+
+A comparação baseada em documentos pode não captar a prática; as entrevistas reduzem essa lacuna, mas não a eliminam.
+
+### Exercícios
+
+- **EX100 — Força da Harrow Lane.** O que a Harrow Lane faz melhor? *Rubrica:* 3 = retenção automática e atendimento mais rápido aos direitos;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX101 — O contexto importa.** Por que uma organização não deve simplesmente copiar a outra? *Rubrica:* 3 = o contexto é diferente, então os princípios precisam ser adaptados;; 2 = menciona contexto;; 1 = copiar;; 0 = nenhuma.
+- **EX102 — Ética da comparação.** Com o que as duas organizações concordaram antes de participar? *Rubrica:* 3 = o objetivo é aprender, e não ranquear publicamente;; 2 = menciona consentimento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta de projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) propor um projeto final que melhore a prática; (2) definir critérios de sucesso; (3) planejar os riscos e a ética.
+
+### 35.1 Proposta
+
+Elena propõe como projeto final um sistema de comunicação com as famílias atento à privacidade, que substitua o e-mail para os relatórios sensíveis. Os relatórios seriam compartilhados por um portal seguro com autenticação, de modo que e-mails enviados ao destinatário errado, como o incidente do Capítulo 28, se tornem impossíveis para esses documentos. Ela define o escopo: relatórios e cartas sobre alunos individuais, e não boletins gerais. Explica o problema com evidências do registro de incidentes e da análise de falhas. Os pais entrariam no portal para ler os relatórios, e a equipe os enviaria uma única vez.
+
+### 35.2 Critérios
+
+Os critérios de sucesso são: nenhum relatório sensível enviado por e-mail depois da implantação; pelo menos 85% dos pais conseguindo acessar o portal em um período letivo; pedidos de pais sem acesso à internet atendidos por alternativas; e nenhum aumento do tempo de trabalho da equipe. Ela define como cada um será medido. Observa que o terceiro critério protege a justiça, porque algumas famílias têm acesso digital limitado e não podem ser excluídas das informações sobre os próprios filhos. Os quatro critérios são fixados antes da construção, e cada um é mensurável.
+
+### 35.3 Riscos
+
+Elena lista os riscos: pais que não conseguem entrar, uma violação do portal que exponha muitos relatórios, funcionários que voltem ao e-mail sob pressão de tempo e a dependência do fornecedor. Os controles incluem suporte às famílias, segurança forte e monitoramento, um portal mais rápido que o e-mail para a equipe e cláusulas contratuais. Ela planeja uma DPIA, porque o portal trata dados de crianças em grande escala, conforme os critérios do WP248; na LGPD, o equivalente é o relatório de impacto do art. 38. Os riscos incluem vínculos com o responsável errado, senhas fracas e a exclusão de famílias sem dispositivos.
+
+### 35.4 Ética e aprovação
+
+O projeto final envolve processos reais, mas Elena testa com dados sintéticos até que o responsável pela proteção de dados da rede aprove a DPIA. As famílias são informadas antes da implantação. O Dr. Asante aprova a proposta com a condição de que Elena meça os resultados com honestidade, inclusive se o portal não atender a algum critério. Ela registra a condição no plano, reconhecendo que um projeto final é tanto um experimento quanto um projeto. O conselho revisa o plano antes que qualquer dado real de família seja usado.
+
+### Exemplo resolvido
+
+Elena propõe um portal seguro para os relatórios sensíveis, com quatro critérios de sucesso, incluindo a justiça para famílias sem internet, lista os riscos e planeja uma DPIA conforme os critérios do WP248.
+
+> **Caso sintético.** A proposta é sintética; o WP248 rev.01 e o art. 38 da LGPD são reais.
+
+### Erros e limites
+
+Os portais podem deslocar o risco em vez de eliminá-lo; uma violação poderia expor muitos relatórios de uma vez.
+
+### Exercícios
+
+- **EX103 — Finalidade do portal.** Que problema o portal resolve? *Rubrica:* 3 = o envio de relatórios sensíveis por e-mail ao destinatário errado;; 2 = menciona e-mail;; 1 = nenhum;; 0 = nenhuma.
+- **EX104 — Critério de justiça.** Por que incluir alternativas para os pais sem internet? *Rubrica:* 3 = para que as famílias com acesso digital limitado não sejam excluídas;; 2 = menciona justiça;; 1 = ignorar;; 0 = nenhuma.
+- **EX105 — Necessidade da DPIA.** Por que planejar uma DPIA para o portal? *Rubrica:* 3 = trata dados de crianças em grande escala, atendendo aos critérios do WP248;; 2 = menciona crianças;; 1 = desnecessária;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX105 (as de EX106–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -1564,6 +1764,36 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em i
 **EX089.** A exigência de confirmação de exclusão pelos fornecedores, com um lembrete depois de duas semanas.
 
 **EX090.** Porque os problemas tendem a aparecer onde sistemas e organizações se encontram.
+
+**EX091.** Em geral, diretamente à aluna, que é titular do direito em nome próprio.
+
+**EX092.** Um pedido escrito que indique a finalidade e a base legal, com a divulgação limitada ao necessário.
+
+**EX093.** Os registros mostram como e por que as decisões foram tomadas, caso sejam questionadas.
+
+**EX094.** O compartilhamento necessário para proteger uma criança é permitido; deve ser registrado e limitado.
+
+**EX095.** Regras lícitas e implementáveis exigem interpretação jurídica e conhecimento dos sistemas.
+
+**EX096.** Resumos semanais por aluno, guardados durante o ano letivo.
+
+**EX097.** O desconhecimento do processo de triagem, e não a resistência.
+
+**EX098.** Revisar os aplicativos solicitados em até cinco dias letivos.
+
+**EX099.** Para ver se os temas mudavam sem a influência do papel de Elena no estágio.
+
+**EX100.** Exclui registros automaticamente e responde mais depressa aos pedidos de direitos.
+
+**EX101.** Diferenças de tamanho, de idade dos alunos e de estrutura fazem com que as práticas precisem ser adaptadas.
+
+**EX102.** Que a comparação serve para aprender, e não para ranquear publicamente.
+
+**EX103.** Impede que relatórios sensíveis sejam enviados por e-mail ao destinatário errado.
+
+**EX104.** Para garantir que as famílias com acesso digital limitado continuem recebendo as informações.
+
+**EX105.** O tratamento em grande escala de dados de crianças atende a vários critérios de alto risco.
 
 <a id="references"></a>
 ## Referências
