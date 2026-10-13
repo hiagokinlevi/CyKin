@@ -161,7 +161,7 @@ Base claims about a control on its maturity. At Corvane, Amira relies on mature 
 
 ### 2.5 Worked example (synthetic Corvane case)
 
-Amira maps Dispatch Copilot. Retrieval of carrier emails creates LLM01 (indirect injection) exposure; refund and rebooking tools create LLM06 (excessive agency); customer addresses in context create LLM02; free text rendered in the staff console creates LLM05. In ATLAS terms she lists prompt injection and exfiltration via the agent's tools. The lab shows the pattern behind her design: keyword filtering only cuts exfiltration calls from 17/20 to 10/20 but only tool allow-listing and separating untrusted content from instructions reach 0/20.
+Amira maps Dispatch Copilot. Retrieval of carrier emails creates LLM01 (indirect injection) exposure; refund and rebooking tools create LLM06 (excessive agency); customer addresses in context create LLM02; free text rendered in the staff console creates LLM05. In ATLAS terms she lists prompt injection and exfiltration via the agent's tools. The lab shows the pattern behind her design: keyword filtering only cuts exfiltration calls from 17/20 to 10/20, while only tool allow-listing and separating untrusted content from instructions reach 0/20.
 
 Each mapping names a control owner in her register.
 
@@ -970,7 +970,7 @@ Each error limits the project's value. Without a decision owner, results have no
 - **EX051 — Scope.** Write a one-page scope for an applied project on DocRead robustness. Rubric: 3 = decision, owner, scope, authorisation, data, criteria, timeline; 2 = five; 1 = three; 0 = none.
 - **EX052 — Project risks.** List four project risks with mitigations. Rubric: 3 = four apt; 2 = three; 1 = one or two; 0 = none.
 - **EX053 — Live vulnerability.** During the project you find customers' addresses exposed through Copilot. What do you do? Rubric: 3 = stop, escalate, preserve evidence, follow incident process; 2 = partial; 1 = note in report; 0 = continue.
-- **EX054 — MIA lab.** Interpret the lab rows for the deduplication question. Rubric: 3 = duplicates increase advantage, link to dedup, toy caveat; 2 = partial; 1 = vague; 0 = wrong.
+- **EX054 — MIA lab.** Interpret the lab rows for the deduplication question. Rubric: 3 = memorisation (k = 1) gives the highest advantage, link to dedup, toy caveat; 2 = partial; 1 = vague; 0 = wrong.
 - **EX055 — Handover.** List the handover package for Tomás's project. Rubric: 3 = report, harness, suites, config, runbook, risks; 2 = four; 1 = two; 0 = none.
 
 ### Synthesis
@@ -1229,7 +1229,7 @@ Recommendation: B.
 
 **EX053.** Stop that line of testing. Preserve evidence. Report through the incident process to the security lead immediately. Follow containment guidance. Resume the project only when cleared.
 
-**EX054.** Records that appear once in the lab give the highest attack advantage (0.20), and advantage falls at higher repeat counts, so the setting changes how much membership leaks. On Corvane's copy, deduplication cut the advantage from 0.17 to 0.06. This supports deduplication as a mitigation, but the lab is a toy, so verify on the real fine-tune.
+**EX054.** In the lab, the model that effectively memorises its training records (k = 1) gives the highest attack advantage (0.20), and advantage falls to about 0.06–0.07 as larger k makes it generalise, so memorisation drives how much membership leaks; duplicated messages encourage exactly that memorisation. On Corvane's copy, deduplication cut the advantage from 0.17 to 0.06. This supports deduplication as a mitigation, but the lab is a toy, so verify on the real fine-tune.
 
 **EX055.** The report, the evaluation harness, the test suites, the deduplication job and its configuration, a retest runbook, and an open-risks list with owners.
 
