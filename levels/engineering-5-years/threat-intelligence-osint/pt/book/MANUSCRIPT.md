@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 50 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–50 (EX046–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–22 de 50 já estão escritos em português, com os exercícios EX001–EX066 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 23–50 (EX067–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) |
 
-Capítulos 16–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 23–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-23), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -964,11 +964,403 @@ Aplique a tríade CID à própria inteligência, situe a CTI no CSF e proteja a 
 
 [← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir a fronteira de um sistema e suas partes interessadas; (2) escrever um conceito de operações para uma plataforma de CTI; (3) gerenciar interfaces com um documento de controle de interface; (4) planejar o ciclo de vida, do conceito à desativação.
+
+### 16.1 Fronteira e partes interessadas
+
+A fronteira do Lantern inclui coletores, armazenamento, enriquecimento, interface do analista e disseminação. Fora dela: servidores dos parceiros, firewalls e SIEM da BEN, o ISAC do setor. As partes interessadas incluem analistas do SOC, engenheiros de OT, o encarregado de privacidade, parceiros e executivos. Traçar a linha mostra à equipe o que ela controla e o que só pode influenciar. Um firewall fora da fronteira pode rejeitar uma regra enviada pelo Lantern, e o Lantern precisa lidar com isso em vez de presumir sucesso. Kofi encontrou uma parte interessada ausente no primeiro rascunho: a equipe de operações de rede, dona dos firewalls, que precisa concordar com toda mudança na forma como as regras chegam.
+
+### 16.2 Conceito de operações
+
+Um ConOps descreve, com as palavras dos operadores, como o sistema é usado: "Às 07:00 o analista de plantão revisa os indicadores de alta confiança da noite; bloqueios automáticos se aplicam apenas aos segmentos de TI; bloqueios de OT aguardam aprovação." Ele é a referência para os requisitos. Kofi escreveu o primeiro rascunho passando uma manhã ao lado da analista de plantão e anotando o que ela fazia, e depois perguntando o que ela gostaria que o sistema fizesse. Os operadores corrigiram várias etapas ao lê-lo, incluindo a ordem em que verificam os alertas da noite. Cada requisito escrito depois pode ser rastreado até uma frase dessa descrição, o que mostra por que ele existe.
+
+### 16.3 Controle de interfaces
+
+Cada interface — TAXII 2.1 com os parceiros, a API do SIEM, o envio aos firewalls — tem um documento de controle de interface: formatos de dados, taxas, autenticação, tratamento de erros e responsáveis dos dois lados. Sem esse documento, cada lado presume que o outro trata os erros. Kofi descobriu que a equipe do SIEM esperava que o Lantern repetisse as entregas que falhavam, enquanto o Lantern esperava que o SIEM pedisse os dados ausentes. Escrever a interface expôs a lacuna antes que uma interrupção o fizesse. Cada documento indica um contato de cada lado e é revisado sempre que um dos sistemas muda seu formato ou seus limites.
+
+### 16.4 Ciclo de vida
+
+Conceito, requisitos, projeto, construção, verificação, validação, operação e desativação. A desativação importa em CTI: descomissionar um feed significa avisar o parceiro, apagar os dados restritos retidos e remover as credenciais. O plano de Kofi para cada feed inclui seu fim: quem avisa o parceiro, quais registros armazenados precisam sair segundo o acordo, quais credenciais são revogadas e quais regras de firewall derivadas do feed são revisadas. Quando a BEN mais tarde abandonou um feed comercial de pouco valor, o plano transformou o que poderia ter sido uma semana confusa em uma lista de verificação concluída em dois dias.
+
+### 16.5 Estudos de compromisso
+
+Construir ou comprar, local ou em nuvem, plataformas de inteligência de ameaças de código aberto ou comerciais: os estudos de compromisso ponderam custo, controle, integração e risco com critérios explícitos. O estudo de Kofi para a plataforma listou primeiro os critérios e os ponderou com o líder de CTI antes de pontuar qualquer opção, para que a resposta preferida não moldasse os pesos. A integração com o SIEM existente da BEN e a capacidade de manter os dados restritos dos parceiros nos próprios servidores da BEN tiveram o maior peso. As pontuações e o raciocínio foram guardados, de modo que a decisão possa ser revista quando as circunstâncias mudarem, em vez de discutida de memória.
+
+### Nota de prática — Mapa de partes interessadas
+
+Kofi desenha um mapa das partes interessadas com seu interesse e sua influência. O encarregado de privacidade tem alta influência e interesse restrito; os parceiros têm influência moderada e forte interesse em reciprocidade. O mapa orienta quem revisa quais documentos e evita surpresas tardias. Kofi mantém o ConOps em quatro páginas para que os operadores realmente o leiam e corrijam.
+
+### Exemplo resolvido
+
+Kofi escreve o ICD do envio aos firewalls: indicadores STIX convertidos para o formato de regra do fornecedor; no máximo 5.000 regras por envio; TLS mútuo; uma falha retorna erro e mantém o conjunto de regras anterior; responsáveis — equipe do Lantern e operações de rede.
+
+> **Caso sintético.** Os valores do ICD são inventados.
+
+### Erros e limites
+
+Papelada de engenharia de sistemas que ninguém lê é desperdício; mantenha os documentos curtos e em uso. Partes interessadas esquecidas aparecem tarde e saem caro.
+
+### Exercícios
+
+- **EX046 — Decisão de fronteira.** O servidor TAXII do ISAC do setor está dentro da fronteira do Lantern? Explique. *Rubrica:* 3 = não; interface externa de propriedade do ISAC; 2 = não; 1 = sim; 0 = nenhuma.
+- **EX047 — Campos do ICD.** Liste cinco campos de um documento de controle de interface. *Rubrica:* 3 = cinco entre formato, taxa, autenticação, tratamento de erros, responsáveis, versionamento; 2 = três; 1 = um; 0 = nenhuma.
+- **EX048 — Etapas de desativação.** Quais três ações desativam o feed de um parceiro? *Rubrica:* 3 = avisar o parceiro, apagar os dados restritos retidos, revogar as credenciais; 2 = duas; 1 = desligar o coletor; 0 = nenhuma.
+
+### Síntese
+
+Trace a fronteira, fale a língua dos operadores, controle as interfaces e planeje a desativação desde o primeiro dia.
+
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o ciclo de inteligência como um laço de realimentação; (2) identificar sensores, controladores e atuadores em um fluxo de trabalho de CTI; (3) reconhecer oscilação e atraso; (4) projetar a realimentação dos consumidores para os produtores.
+
+### 17.1 Laços
+
+Um termostato mede a temperatura, compara-a com um valor de referência e age. O Lantern mede as taxas de falsos positivos dos bloqueios, compara-as com uma meta e ajusta os limiares de confiança. Sem medição o laço fica aberto e deriva. A grandeza medida precisa ser uma que o laço consiga de fato mudar. O Lantern não pode alterar diretamente a qualidade do feed de um parceiro, mas pode mudar quanto peso os indicadores desse feed carregam. Kofi escolheu o limiar como valor ajustável porque movê-lo tem um efeito previsível sobre quantos bloqueios chegam aos firewalls.
+
+### 17.2 Partes do laço
+
+Sensor: os chamados do SOC que marcam bloqueios como falsos positivos. Controlador: a regra que sobe ou desce o limiar. Atuador: a lista de bloqueio enviada aos firewalls. Perturbação: um parceiro que de repente publica indicadores de baixa qualidade. Nomear as partes mostra por onde os erros entram. Se os analistas param de marcar falsos positivos porque o formulário do chamado é lento, o sensor silencia e o controlador vê um sistema falsamente saudável. Por isso Kofi transformou a marcação em um único clique dentro da tela do alerta. A perturbação não pode ser eliminada, mas o laço pode ser projetado para se recuperar dela em poucos dias.
+
+### 17.3 Atraso e oscilação
+
+Se o limiar muda todo dia com base nas reclamações de ontem, ele pode passar do ponto: rígido demais em um dia, frouxo demais no seguinte. O amortecimento — passos pequenos, média ao longo de uma semana — estabiliza o laço. Kofi simulou as duas versões com um mês de chamados antigos. Ajustes diários de tamanho cheio fizeram o limiar subir e descer quase todo dia, enquanto médias semanais com passos limitados a um valor pequeno se estabilizaram em duas semanas. O laço mais lento reage mais tarde a uma mudança real, e esse é o preço da estabilidade. Um problema grande e repentino é tratado à parte, por um analista que pausa a fonte.
+
+### 17.4 Realimentação aos produtores
+
+O NIST SP 800-150 incentiva relações de compartilhamento nos dois sentidos. Dizer aos parceiros quais de seus indicadores causaram falsos positivos melhora o laço de toda a comunidade, desde que respeite o TLP e os acordos. A realimentação de Kofi a um parceiro lista os identificadores dos indicadores que deram problema e o tipo de problema, como o bloqueio de um fornecedor legítimo, sem enviar o texto interno dos chamados da BEN. Parceiros que recebem esse retorno corrigiram erros recorrentes em poucas semanas. Como os indicadores vieram do próprio parceiro, devolver seus identificadores não amplia seu público.
+
+### 17.5 Humano no laço
+
+O controle automatizado serve para bloqueios de baixo impacto no perímetro de TI; nos segmentos de OT, uma pessoa aprova cada mudança, o que desacelera deliberadamente o laço onde os erros custam caro. Kofi mediu o custo dessa escolha. Mudanças aprovadas nos firewalls das subestações levaram uma mediana de várias horas, contra minutos nos segmentos corporativos. O gerente de operações aceitou o atraso porque um bloqueio errado em uma subestação poderia esconder a telemetria de que a sala de controle precisa. Existem caminhos rápidos para emergências, mas cada um exige um aprovador nomeado que registra o motivo.
+
+### Nota de prática — Valores de referência vindos da política
+
+A taxa-alvo de falsos positivos não é uma escolha só de engenharia. Os gerentes de operações decidem quanta interrupção é tolerável, e o controlador do Lantern usa esse valor de referência. Escrever o valor de referência na política faz de ajustes posteriores uma decisão governada, e não uma mudança silenciosa no código.
+
+### Exemplo resolvido
+
+Os chamados de falso positivo saltam de 3 para 25 depois que um parceiro acrescenta uma grande lista não verificada. O controlador de Kofi reduz o peso do parceiro em 10% por dia, com teto de 30% no total, em vez de desativá-lo de uma vez, e envia ao parceiro um resumo dos indicadores afetados.
+
+> **Caso sintético.** As contagens de chamados e os pesos são inventados.
+
+### Erros e limites
+
+Os sinais de realimentação podem ser enviesados: os analistas relatam falsos positivos mais do que detecções perdidas. Meça os dois.
+
+### Exercícios
+
+- **EX049 — Nomeie as partes.** Identifique sensor, controlador e atuador no laço de limiar do Lantern. *Rubrica:* 3 = chamados de FP; regra do limiar; lista de bloqueio enviada; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX050 — Escolha de amortecimento.** Por que limitar a mudança de peso a 10% por dia? *Rubrica:* 3 = evita oscilação/reação exagerada a um sinal ruidoso; 2 = cautela, de forma vaga; 1 = mais rápido é melhor; 0 = nenhuma.
+- **EX051 — Sinal enviesado.** Por que depender só de chamados de falso positivo pode enviesar o laço? *Rubrica:* 3 = ignora falsos negativos; empurra para a permissividade; 2 = parcial; 1 = não há viés; 0 = nenhuma.
+
+### Síntese
+
+Feche o laço com medição, amorteça-o para evitar oscilação, compartilhe a realimentação com quem produz e mantenha pessoas onde os erros custam caro.
+
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) situar o Lantern nas zonas e conduítes da BEN; (2) projetar fronteiras de confiança entre as redes de TI, de OT e dos parceiros; (3) aplicar defesa em profundidade a uma plataforma de inteligência; (4) escolher onde os indicadores são aplicados.
+
+### 18.1 Zonas
+
+A BEN separa a TI corporativa, a zona do SOC, uma DMZ para trocas externas e as zonas de OT das subestações. Os coletores do Lantern ficam na DMZ; seu armazenamento e a interface do analista, na zona do SOC; nada do Lantern roda em OT. Manter o Lantern fora das zonas de OT significa que o comprometimento da plataforma não coloca um atacante ao lado dos equipamentos das subestações. Sua influência sobre a OT só chega por meio de listas de bloqueio que passam por aprovação. Os coletores ficam na DMZ porque conversam com servidores externos, o que os torna os componentes mais expostos a entradas hostis.
+
+### 18.2 Conduítes
+
+Os dados fluem dos coletores da DMZ para o armazenamento do SOC por um único conduíte inspecionado. As listas de bloqueio fluem do SOC para os firewalls de TI automaticamente e para os firewalls de OT por meio de um serviço de aprovação. Cada conduíte tem um responsável e um conjunto de regras. Um único conduíte é mais fácil de inspecionar e registrar do que muitas conexões espalhadas. As verificações de fluxo de Kofi comparam o tráfego observado com essa lista, de modo que qualquer caminho novo entre zonas aparece como achado. O serviço de aprovação para a OT é ele mesmo um conduíte, com seu próprio responsável em operações de rede.
+
+### 18.3 Profundidade
+
+Segmentação de rede, TLS mútuo entre componentes, mensagens internas assinadas, acesso baseado em papéis para os analistas e registro de auditoria formam camadas independentes. O comprometimento de um coletor não deve entregar o armazenamento. Kofi verificou isso perguntando o que um atacante em um coletor poderia fazer. Ele poderia ler a configuração do próprio coletor e enviar mensagens ao armazenamento, mas essas mensagens precisam ser assinadas com uma chave que o coletor só mantém em um serviço restrito. Uma mensagem forjada falharia nas verificações e seria registrada.
+
+### 18.4 Pontos de aplicação
+
+Os indicadores podem ser aplicados em resolvedores DNS, proxies web, firewalls e agentes de endpoint. Cada um tem um risco colateral diferente: o DNS bloqueia um nome com precisão; um bloqueio de firewall em um endereço compartilhado afeta muitos sites. A regra de roteamento de Kofi envia cada indicador ao ponto mais preciso capaz de agir sobre ele. Domínios vão para os resolvedores DNS, endereços web completos vão para o proxy e só endereços sem uso compartilhado conhecido vão para os firewalls. Hashes de arquivo vão para os agentes de endpoint. A escolha é registrada com o bloqueio, o que ajuda quando alguém pergunta por que um site ficou inacessível.
+
+### 18.5 Estações de trabalho dos analistas
+
+Os analistas abrem relatórios e amostras suspeitos. Suas estações de trabalho precisam de isolamento dos sistemas de produção e de um ambiente de navegação separado para a pesquisa OSINT, para não expor a identidade da BEN. Quando um analista visita um site suspeito a partir da rede da BEN, o operador do site pode ver um endereço registrado em nome de uma empresa de energia e descobrir que está sendo observado. O projeto de Kofi dá aos analistas um ambiente de pesquisa separado, com conexão não atribuída e sem acesso à zona do SOC. Arquivos baixados ali vão para a sandbox de análise por uma transferência controlada e nunca são abertos na estação principal.
+
+### Nota de prática — Verificação da arquitetura
+
+Kofi confronta o diagrama com a realidade usando registros de fluxo: toda conexão observada entre zonas precisa corresponder a um conduíte aprovado. Fluxos inesperados viram achados. Isso pega os atalhos que surgem durante incidentes e nunca são removidos. Os achados são acompanhados até que o fluxo desviante seja aprovado pelo controle de mudanças ou removido.
+
+### Exemplo resolvido
+
+Uma revisão de arquitetura descobre que o serviço de enriquecimento na zona do SOC chama APIs externas de consulta diretamente. Kofi move as chamadas de enriquecimento de saída para um proxy na DMZ, para que a zona do SOC não tenha acesso direto à internet.
+
+> **Caso sintético.** O achado da revisão é inventado.
+
+### Erros e limites
+
+Os diagramas se afastam da realidade; verifique os fluxos com evidências da rede. O projeto de OT precisa envolver engenheiros de OT.
+
+### Exercícios
+
+- **EX052 — Posição em OT.** Por que nenhum componente do Lantern roda dentro das zonas de OT? *Rubrica:* 3 = manter a OT mínima/isolada; reduzir a superfície de ataque e o risco à segurança operacional; 2 = parcial; 1 = deveria rodar em OT; 0 = nenhuma.
+- **EX053 — Escolha do ponto de aplicação.** Para um domínio malicioso em hospedagem compartilhada, qual ponto de aplicação é preferível e por quê? *Rubrica:* 3 = bloqueio do domínio no DNS/proxy; preciso, evita dano colateral; 2 = só o ponto; 1 = bloqueio de IP no firewall; 0 = nenhuma.
+- **EX054 — Saída do enriquecimento.** Que risco foi reduzido ao mover as chamadas de enriquecimento para um proxy na DMZ? *Rubrica:* 3 = exposição direta da zona do SOC à internet/caminho de exfiltração; 2 = vago; 1 = desempenho; 0 = nenhuma.
+
+### Síntese
+
+Divida a plataforma em zonas, controle os conduítes, empilhe as defesas, aplique com precisão e mantenha a pesquisa dos analistas separada.
+
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) autenticar parceiros e analistas com a força adequada; (2) usar assinaturas digitais para proteger a integridade dos feeds; (3) gerenciar chaves e certificados ao longo de seu ciclo de vida; (4) aplicar acesso baseado em papéis a conteúdo rotulado com TLP.
+
+### 19.1 Identidade dos parceiros
+
+Servidores TAXII 2.1 autenticam os clientes, em geral com autenticação HTTP sobre TLS ou com certificados de cliente. O TLS mútuo permite que os dois lados provem sua identidade. As credenciais são por parceiro, para que uma possa ser revogada sem afetar as outras. Kofi mantém um registro das credenciais dos parceiros com suas datas de expiração e responsáveis. Quando um funcionário de um parceiro sai, o parceiro pode pedir a troca da credencial sem interromper os outros feeds. Credenciais compartilhadas entre parceiros tornariam isso impossível e esconderiam qual parceiro fez determinada requisição.
+
+### 19.2 Assinaturas
+
+Uma assinatura sobre um pacote exportado permite ao destinatário verificar que ele veio do Lantern e não foi alterado. Calcule primeiro o hash (SHA-256), assine o hash com uma chave privada mantida em hardware e publique a chave pública por um canal confiável. Se a verificação falhar, o pacote é posto de lado e os dois lados são avisados, porque ou o conteúdo mudou no caminho ou a chave errada está em uso. A tarefa de exportação de Kofi assina automaticamente, e a impressão digital da chave pública é lida em voz alta em uma chamada com cada novo parceiro.
+
+### 19.3 Ciclo de vida das chaves
+
+Gerar, distribuir, usar, rotacionar, revogar, destruir. Certificados expiram; certificados expirados em um cliente TAXII interrompem a coleta no pior momento. Coloque-os na agenda e monitore-os. O exemplo resolvido mostra o custo de pular essa etapa. O registro de Kofi lista cada certificado e cada chave com sua expiração, seu responsável e as etapas de substituição, e os alertas chegam com semanas de antecedência. A revogação é testada uma vez por ano com um certificado de teste, para que a equipe saiba que as etapas funcionam antes de precisar delas. Chaves destruídas são registradas com data e método, o que um auditor pode pedir para ver.
+
+### 19.4 Acesso dos analistas
+
+Os papéis seguem o TLP: todos os analistas leem CLEAR e GREEN; a equipe do SOC lê AMBER; o conteúdo AMBER+STRICT fica limitado à BEN; relatórios RED vão para as pessoas nomeadas em cada relatório. As decisões de acesso são registradas. O mapeamento fica no sistema de identidade, e não no código do Lantern, de modo que mudar quem pode ler conteúdo AMBER é uma mudança de acesso com aprovação própria. Kofi revisa mensalmente a composição dos grupos com o líder do SOC. Para relatórios RED, o Lantern verifica a lista de destinatários de cada relatório em vez de um grupo, o que corresponde ao significado do rótulo: apenas pessoas nomeadas.
+
+### 19.5 Múltiplos fatores
+
+O acesso dos analistas ao Lantern exige MFA. A técnica T1078 Valid Accounts do ATT&CK descreve adversários que usam credenciais legítimas; o MFA aumenta o custo. Uma senha roubada, sozinha, então não abre a plataforma. Kofi escolheu chaves de hardware para os analistas com acesso a material AMBER e RED, porque códigos enviados por mensagem de texto podem ser interceptados ou desviados. Contas de serviço não podem usar um segundo fator da mesma forma, então dependem de certificados e restrições de rede. Logins a partir de dispositivos novos são registrados e revisados toda semana.
+
+### Nota de prática — Acesso de emergência
+
+Se o provedor de identidade falhar durante um incidente, os analistas ainda precisam do Lantern. Uma conta de emergência lacrada, com uma senha aleatória longa, guardada offline e registrada a cada uso, dá esse acesso. Seu uso dispara um alerta e uma revisão posterior, para que o acesso de emergência nunca vire rotina. Cada uso da conta de emergência é revisado em até um dia útil por alguém que não seja quem a usou.
+
+### Exemplo resolvido
+
+O certificado de cliente de um parceiro expira em um domingo e interrompe seu feed. Kofi acrescenta monitoramento de expiração de certificados com alertas a 30, 14 e 3 dias e documenta com o parceiro um roteiro de rotação.
+
+> **Caso sintético.** O incidente de expiração é inventado.
+
+### Erros e limites
+
+Assinaturas provam origem e integridade, não a veracidade do conteúdo. Contas compartilhadas pela equipe anulam os registros de acesso.
+
+### Exercícios
+
+- **EX055 — Limite da assinatura.** O que uma assinatura válida em um feed prova, e o que ela não prova? *Rubrica:* 3 = origem/integridade; não a exatidão dos indicadores; 2 = uma das metades; 1 = prova a verdade; 0 = nenhuma.
+- **EX056 — Acesso a RED.** Quem pode ler um relatório TLP:RED no Lantern? *Rubrica:* 3 = apenas os destinatários nomeados no relatório; 2 = uma equipe pequena; 1 = todo o SOC; 0 = nenhuma.
+- **EX057 — Alertas de expiração.** Proponha um calendário de alertas para a expiração de certificados. *Rubrica:* 3 = várias antecedências (p. ex., 30/14/3 dias) + responsável; 2 = um alerta; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Autentique por parceiro, assine as exportações, gerencie o ciclo de vida das chaves e associe os papéis ao TLP com acesso registrado.
+
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Inteligência de ameaças e OSINT: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o ciclo de vida da CTI como um serviço projetado; (2) distinguir dados, informação e inteligência; (3) identificar os consumidores e suas decisões; (4) formular a missão do Lantern em uma frase.
+
+### 20.1 Dados, informação, inteligência
+
+Dados são observações brutas: um domínio em um feed. Informação são dados organizados: o domínio foi visto em phishing contra concessionárias. Inteligência é informação analisada e relevante para uma decisão: a BEN deve bloquear o domínio no DNS e procurar contatos passados porque a campanha mira operadores de distribuição. A diferença está na análise e na decisão. Um feed cheio de domínios continua sendo dados, por maior que seja. Kofi pergunta, de cada produto do Lantern, qual decisão ele apoia; se nenhuma, ainda não é inteligência.
+
+### 20.2 Consumidores e decisões
+
+Os consumidores incluem analistas do SOC (bloquear, caçar, escalar), engenheiros de OT (aprovar mudanças), gestores de risco (priorizar investimentos), executivos (aceitar riscos) e parceiros (suas próprias decisões). Cada um precisa de formatos e prazos diferentes. Kofi lista cada consumidor com a decisão que ele toma, com que rapidez precisa do insumo e em que forma. O SOC quer indicadores legíveis por máquina em minutos; os executivos querem uma página trimestral em linguagem simples. Um único produto não atende bem aos dois. A lista também mostra consumidores que ninguém atendia, como compras, que precisava de alertas sobre fornecedores.
+
+### 20.3 A visão de serviço
+
+O Lantern é um serviço com entradas (feeds, OSINT, telemetria interna), processamento (validação, enriquecimento, análise) e saídas (bloqueios, relatórios, objetos compartilhados). Níveis de serviço se aplicam: por exemplo, indicadores de alta confiança chegam à aplicação em TI em até 30 minutos. Pensar no Lantern como serviço lhe dá promessas mensuráveis. Uma promessa como a meta de trinta minutos pode ser verificada nos registros toda semana, e uma meta perdida vira um problema a investigar. Kofi relata mensalmente o desempenho em cada nível de serviço, o que mostra aos consumidores com o que podem contar e aos engenheiros onde trabalhar.
+
+### 20.4 Declaração de missão
+
+"O Lantern transforma informação de ameaças compartilhada e de fontes abertas em inteligência oportuna, confiável e coletada legalmente, que ajuda a BEN a prevenir e detectar ataques a seus ambientes de TI e OT." Todo requisito posterior deve ser rastreável até ela. Kofi testa cada funcionalidade proposta contra a declaração. Uma proposta de coletar perfis sociais pessoais de supostos agentes falha em "coletada legalmente". Uma funcionalidade que acrescenta dados que os analistas nunca usam falha em "ajuda a BEN a prevenir ou detectar". A declaração é curta o bastante para ser lembrada, e é por isso que funciona em reuniões de projeto.
+
+### 20.5 Frameworks como contexto
+
+O Diamond Model, a kill chain, o ATT&CK, STIX/TAXII e o TLP dão uma linguagem comum com os parceiros. A engenharia os adota onde ajudam a interoperabilidade e a análise, não como decoração. Kofi adotou os frameworks por etapas. STIX e TAXII vieram primeiro, porque os parceiros já os usavam. As marcações do ATT&CK foram acrescentadas quando os analistas foram treinados para atribuí-las de forma consistente; antes disso, as marcações eram aplicadas de modo desigual e as comparações entre relatórios enganavam. Cada framework é listado com o problema que resolve para a BEN, para que seu uso possa ser revisto.
+
+### Nota de prática — Retorno dos consumidores
+
+Kofi acrescenta a cada relatório do Lantern um controle de um clique, "útil / não útil". As contagens são grosseiras, mas fecham um laço que o ciclo de inteligência costuma deixar aberto e revelam quais produtos merecem investimento.
+
+### Exemplo resolvido
+
+Kofi entrevista cinco consumidores. O engenheiro de OT diz: "Não quero indicadores; quero saber se uma campanha mira o fornecedor dos nossos relés." Essa é uma necessidade estratégico-operacional, então o Lantern acrescenta um relatório de vigilância de fornecedores em vez de mais feeds.
+
+> **Caso sintético.** As entrevistas são inventadas.
+
+### Erros e limites
+
+Mais feeds não significam mais inteligência. Missões que prometem "visibilidade completa" não podem ser verificadas.
+
+### Exercícios
+
+- **EX058 — Escada DII.** Classifique "domínio visto em phishing contra concessionárias". *Rubrica:* 3 = informação (contexto organizado, ainda não específico de uma decisão); 2 = certo com razão fraca; 1 = inteligência; 0 = nenhuma.
+- **EX059 — Necessidade do consumidor.** Que saída atende melhor à necessidade declarada pelo engenheiro de OT? *Rubrica:* 3 = relatório/vigilância de campanhas focado no fornecedor; 2 = relatório vago; 1 = mais indicadores; 0 = nenhuma.
+- **EX060 — Teste da missão.** Qual expressão da declaração de missão do Lantern compromete com a OSINT legal? *Rubrica:* 3 = "coletada legalmente" identificada; 2 = aponta para a coleta; 1 = errada; 0 = nenhuma.
+
+### Síntese
+
+Suba de dados para inteligência, atenda a decisões nomeadas e ancore tudo em uma missão testável.
+
+### Continue estudando — capítulo 20 de 50
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Inteligência de ameaças e OSINT: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) coletar requisitos prioritários de inteligência (PIRs) junto às partes interessadas; (2) transformar PIRs em requisitos de sistema; (3) escrever requisitos verificáveis; (4) manter a rastreabilidade.
+
+### 21.1 PIRs
+
+Requisitos prioritários de inteligência são perguntas que os tomadores de decisão precisam ver respondidas: "Quais adversários miram distribuidoras de eletricidade na nossa região?" "Nossos fornecedores de OT estão sendo visados?" Eles orientam a coleta e a análise e devem ser revistos a cada trimestre. Kofi reuniu as perguntas da BEN perguntando ao CISO, ao líder do SOC e ao chefe de operações de rede o que eles gostariam de saber antes de sua próxima grande decisão. Muitas respostas se sobrepunham, e cinco perguntas cobriam quase tudo o que foi pedido. Uma pergunta sobre a qual ninguém pode agir é descartada, por mais interessante que pareça aos analistas.
+
+### 21.2 Do PIR ao requisito de sistema
+
+Um PIR sobre fornecedores de OT implica requisitos: ingerir os avisos dos fornecedores; marcar os objetos com o nome dos fornecedores; alertar quando uma campanha mencionar um fornecedor marcado. Cada um é uma declaração com "deve" e um método de verificação. Kofi escreve o método de verificação ao lado de cada declaração no momento em que a escreve: um teste com dados sintéticos, uma inspeção de configuração ou uma medição nos registros de produção. Se ele não consegue dizer como uma declaração seria verificada, a redação ainda não está precisa o bastante. Cada requisito também indica a pergunta a que serve, para que seu propósito continue visível depois que quem perguntou tiver seguido adiante.
+
+### 21.3 Redação verificável
+
+"O sistema deve ser rápido" não pode ser verificado. "O Lantern deve entregar indicadores com confiança ≥ 70 à aplicação por DNS em TI em até 30 minutos após a ingestão, para 95% dos indicadores em cada mês" pode. A segunda versão nomeia a população, o limiar, o destino, o prazo, a fração que precisa cumpri-lo e o período em que é julgada. Os registros do Lantern guardam os horários de ingestão e de entrega, então o número pode ser calculado todo mês sem esforço extra. Kofi reescreveu uma dúzia de declarações vagas nessa forma; três se mostraram impossíveis de medir com o registro atual, o que virou itens de trabalho próprios.
+
+### 21.4 Requisitos não funcionais
+
+Confidencialidade (aplicação do TLP), integridade (verificação de assinatura onde oferecida), disponibilidade (99,5% ao mês), privacidade (nenhuma coleta em redes sociais pessoais), retenção e auditabilidade também são requisitos, não reflexões tardias. Cada um deles é escrito e testado como qualquer declaração funcional. O requisito de privacidade, por exemplo, é verificado inspecionando o registro de fontes e o código dos coletores em busca de qualquer conector de rede social. A disponibilidade é medida por verificações de saúde a cada minuto. Deixar essas necessidades sem registro costuma significar descobri-las durante um incidente ou uma auditoria, quando mudar o projeto custa muito mais.
+
+### 21.5 Matriz de rastreabilidade
+
+Uma tabela liga PIRs → requisitos → elementos de projeto → testes. Quando um PIR é aposentado, seus requisitos podem ser revistos para remoção. Kofi mantém a tabela em uma planilha gerada a partir de marcações no documento de requisitos e dos nomes dos testes, de modo que ela se atualiza sozinha em vez de depender de alguém para editá-la. As lacunas saltam aos olhos: um requisito sem teste, ou um elemento de projeto que não serve a nenhum requisito. Quando a revisão trimestral aposentou uma pergunta sobre um agente regional, a tabela mostrou duas fontes de enriquecimento que existiam só para ela, e ambas foram abandonadas depois.
+
+### Nota de prática — Revisões de requisitos
+
+Os requisitos são revistos com as partes interessadas que são donas deles. O líder do SOC aprova os prazos, o encarregado de privacidade a minimização, o engenheiro de OT as etapas de aprovação. Um requisito sem dono é candidato à exclusão.
+
+### Exemplo resolvido
+
+Kofi converte o PIR sobre fornecedores de OT em quatro requisitos e escreve um teste para cada um, como "Dado um aviso sintético que nomeia o fornecedor V, o Lantern emite um alerta ao canal de OT em até 15 minutos."
+
+> **Caso sintético.** O fornecedor V, seu aviso e o prazo de 15 minutos são inventados.
+
+### Erros e limites
+
+Requisitos que copiam as funcionalidades do produto de um fornecedor não são necessidades das partes interessadas. PIRs demais significam que nenhum é prioridade.
+
+### Exercícios
+
+- **EX061 — Reescrita verificável.** Reescreva "O Lantern deve compartilhar rapidamente com os parceiros" como requisito verificável. *Rubrica:* 3 = métrica, limiar, escopo, percentual/prazo; 2 = só a métrica; 1 = inalterado; 0 = nenhuma.
+- **EX062 — Derivação de PIR.** Derive um requisito de sistema de "Quais adversários miram distribuidoras regionais?" *Rubrica:* 3 = declaração específica com "deve" (p. ex., marcar/relatar agente que mira o setor) com verificação; 2 = vago; 1 = sem relação; 0 = nenhuma.
+- **EX063 — Requisito de privacidade.** Escreva um requisito de privacidade para o módulo de OSINT do Lantern. *Rubrica:* 3 = proibição/limite verificável (nenhum perfil social pessoal; só fontes organizacionais) + teste; 2 = declaração sem teste; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Pergunte aos tomadores de decisão, derive "deves" verificáveis, inclua as necessidades não funcionais e rastreie tudo.
+
+### Continue estudando — capítulo 21 de 50
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Inteligência de ameaças e OSINT: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar os dados do Lantern com objetos e relacionamentos STIX 2.1; (2) escolher quais objetos STIX suportar; (3) modelar procedência e confiança; (4) validar objetos contra as propriedades obrigatórias.
+
+### 22.1 Núcleo do STIX 2.1
+
+O STIX 2.1 define objetos de domínio (indicator, malware, threat-actor, campaign, attack-pattern, report e outros), objetos observáveis cibernéticos (domain-name, ipv4-addr, file) e objetos de relacionamento e de avistamento. Todo objeto de domínio precisa de `type`, `spec_version`, `id`, `created` e `modified`; os indicadores também precisam de `pattern`, `pattern_type` e `valid_from`. O validador do Lantern verifica essas propriedades obrigatórias em cada objeto antes de qualquer outra coisa. Indicadores são o tipo que a maioria dos parceiros envia, e seu campo de padrão contém a condição a casar, como o valor de um domínio. Kofi mantém um guia interno curto com exemplos de objetos válidos para cada tipo suportado, que os parceiros acharam útil ao depurar as próprias exportações.
+
+### 22.2 Escolhendo um subconjunto
+
+O Lantern suporta indicator, attack-pattern (ligado a IDs do ATT&CK por referências externas), campaign, threat-actor, malware, report, relationship e sighting. Tipos não suportados são armazenados de forma opaca e sinalizados para revisão, em vez de descartados. Kofi escolheu o subconjunto contando o que os parceiros de fato enviaram em três meses e o que os analistas de fato consultaram. Tipos que apareciam raramente e que ninguém pesquisava ficaram de fora, o que poupou a construção de telas e regras de validação para eles. Armazenar os objetos não suportados como registros opacos significa que nada se perde se surgir uma necessidade depois, e a sinalização para revisão mostra com que frequência chega cada tipo não suportado.
+
+### 22.3 Confiança e marcações
+
+O STIX oferece uma propriedade `confidence` (0–100) e definições de marcação, incluindo marcações TLP. O Lantern converte sua confiança interna com decaimento para essa propriedade na exportação e anexa marcações TLP 2.0 a todo objeto compartilhado. Como cada produtor define a confiança à sua maneira, o Lantern registra o valor enviado pelo parceiro ao lado de sua própria pontuação. Assim os analistas veem quando a visão da BEN difere da visão da fonte. Na exportação, a marcação TLP é escolhida pelo rótulo mais restritivo entre as fontes, e um objeto sem rótulo de sua fonte não é compartilhado até que um analista lhe atribua um.
+
+### 22.4 Validação
+
+Antes de armazenar, o validador verifica as propriedades obrigatórias e o formato do identificador. O laboratório de mestrado desta família de cursos verifica as mesmas regras; o Lantern as aplica no pipeline e conta as falhas por fonte. As contagens de falhas por fonte alimentam os relatórios de qualidade de dados dos parceiros. Kofi descobriu que a maioria das falhas vinha de dois parceiros, ambos enviando carimbos de tempo sem fuso horário. Uma nota curta a cada parceiro, com exemplos, resolveu o problema em um mês. O validador rejeita em vez de consertar, porque um carimbo de tempo consertado dependeria de um palpite sobre o fuso que o parceiro pretendia.
+
+### 22.5 Modelo do sistema
+
+Além dos dados: os componentes (coletor, validador, armazenamento, enriquecedor, interface do analista, publicador), suas interfaces e seus estados. Uma máquina de estados para um indicador — novo, ativo, decaído, aposentado — torna o comportamento explícito. A máquina de estados impede combinações estranhas, como um indicador aposentado ainda sendo enviado aos firewalls. Kofi listou cada transição permitida com seu gatilho: um objeto novo fica ativo após a validação, decai com o passar do tempo sem avistamentos e é aposentado quando cruza o piso. Um avistamento pode levar um indicador decaído de volta a ativo. Qualquer transição fora da lista é um erro e é registrada.
+
+### Nota de prática — Mapeando referências externas
+
+Objetos attack-pattern carregam referências externas às páginas de técnicas do ATT&CK, por exemplo T1566 Phishing. O Lantern valida que essas referências usem IDs de técnica reais, porque IDs digitados errado quebram silenciosamente os relatórios de cobertura de detecção que agrupam os achados por técnica.
+
+### Exemplo resolvido
+
+Um parceiro envia um objeto threat-actor sem `spec_version`. O Lantern o rejeita com um motivo, armazena o hash e avisa o contato de dados do parceiro. A exportação seguinte do parceiro inclui a propriedade.
+
+> **Caso sintético.** O objeto e o parceiro são inventados.
+
+### Erros e limites
+
+O STIX é expressivo; suportar tudo acrescenta complexidade sem valor. Números de confiança de produtores diferentes não são diretamente comparáveis.
+
+### Exercícios
+
+- **EX064 — Extras do indicador.** Quais três propriedades um indicador precisa ter além das comuns? *Rubrica:* 3 = pattern, pattern_type, valid_from; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX065 — Tipo não suportado.** Como o Lantern deve tratar um tipo STIX que não suporta? *Rubrica:* 3 = armazenar de forma opaca + sinalizar para revisão, não descartar; 2 = sinalizar; 1 = descartar; 0 = nenhuma.
+- **EX066 — Máquina de estados.** Liste os estados do indicador e um gatilho de transição. *Rubrica:* 3 = novo/ativo/decaído/aposentado + gatilho válido (sem avistamentos com o tempo, aposentadoria abaixo do piso, novo avistamento); 2 = só os estados; 1 = parcial; 0 = nenhuma.
+
+### Síntese
+
+Use um subconjunto deliberado do STIX, valide as propriedades obrigatórias, carregue confiança e marcações TLP e torne os estados explícitos.
+
+### Continue estudando — capítulo 22 de 50
+
+[← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX066 (as de EX067–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -1059,6 +1451,48 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em i
 **EX044.** Exemplo: Detect — indicadores e técnicas viram regras de detecção; Identify — perfis de ameaça alimentam a avaliação de riscos. Respond (contexto durante incidentes) e Govern (acordos de compartilhamento) também pontuam.
 
 **EX045.** Detecta entradas envenenadas ou equivocadas que bloqueariam serviços de que a BEN depende, antes que cheguem aos controles.
+
+**EX046.** Não. É um sistema externo de propriedade do ISAC; o Lantern interage com ele por meio de uma interface TAXII controlada.
+
+**EX047.** Formato dos dados, limites de taxa, autenticação, tratamento de erros, responsáveis de cada lado (versionamento também conta).
+
+**EX048.** Avisar o parceiro, apagar os dados retidos que o acordo exige apagar e revogar as credenciais usadas pelo feed.
+
+**EX049.** Sensor: chamados de falso positivo do SOC. Controlador: a regra de ajuste do limiar. Atuador: a lista de bloqueio enviada aos firewalls.
+
+**EX050.** Passos pequenos evitam reagir demais a um dia ruidoso e impedem que o limiar oscile entre rígido demais e frouxo demais.
+
+**EX051.** Detecções perdidas raramente geram chamados, então um laço guiado só por reclamações deriva para menos bloqueios e mais ameaças perdidas.
+
+**EX052.** As zonas de OT devem conter só o que a operação precisa; acrescentar uma plataforma de CTI aumenta a superfície de ataque e o risco à segurança operacional, então a OT recebe apenas saídas aprovadas.
+
+**EX053.** Um bloqueio do domínio no resolvedor DNS ou no proxy web, porque mira o nome malicioso sem bloquear milhares de sites sem relação no endereço compartilhado.
+
+**EX054.** Removeu o acesso direto da zona do SOC à internet, reduzindo a exposição e um possível caminho de exfiltração a partir do armazenamento.
+
+**EX055.** Prova que o pacote veio de quem detém a chave e não foi alterado; não prova que os indicadores estão corretos.
+
+**EX056.** Apenas as pessoas nomeadas como destinatárias naquele relatório.
+
+**EX057.** Alertas 30, 14 e 3 dias antes da expiração para o engenheiro responsável e o contato do parceiro, com um link para o roteiro de rotação.
+
+**EX058.** Informação — organizada e contextualizada, mas ainda não analisada para dizer o que a BEN deve fazer.
+
+**EX059.** Um relatório de vigilância de fornecedores que diga ao engenheiro de OT se campanhas miram o fornecedor de relés da BEN, com ações recomendadas.
+
+**EX060.** "Coletada legalmente" — compromete a OSINT e os feeds do Lantern com uma coleta legal, que respeita os termos de uso.
+
+**EX061.** Exemplo: "O Lantern deve publicar indicadores TLP:GREEN aprovados por analista na coleção TAXII do ISAC em até 60 minutos após a aprovação, para 95% dos indicadores em cada mês."
+
+**EX062.** Exemplo: "O Lantern deve marcar objetos threat-actor cujos relatórios citem ataques à distribuição de eletricidade e produzir um resumo mensal de agentes; verificado por um teste com relatório sintético."
+
+**EX063.** Exemplo: "O módulo de OSINT deve coletar apenas de fontes organizacionais (domínios, certificados, avisos) e não deve armazenar perfis pessoais de redes sociais; verificado por revisão de código e por um teste que rejeita essas fontes."
+
+**EX064.** `pattern`, `pattern_type` e `valid_from`.
+
+**EX065.** Armazená-lo de forma opaca, com a procedência, e sinalizá-lo para revisão, para que nada se perca silenciosamente.
+
+**EX066.** novo → ativo → decaído → aposentado. Exemplos de gatilho: ativo → decaído com o passar do tempo sem avistamentos; decaído → aposentado quando a confiança cai abaixo do piso; decaído → ativo com um novo avistamento.
 
 <a id="references"></a>
 ## Referências
