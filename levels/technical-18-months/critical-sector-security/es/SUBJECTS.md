@@ -15,10 +15,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 1 | [03](book/PLAN.md#ch-03) | Sistemas operativos e identidades | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
 | 1 | [04](book/PLAN.md#ch-04) | Scripts y formatos de datos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
 | 1 | [05](book/PLAN.md#ch-05) | Alcance de seguridad y evidencia | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
-| 1 | [06](book/PLAN.md#ch-06) | Infraestructura crítica y seguridad sectorial: modelo del sistema | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Infraestructura crítica y seguridad sectorial: datos y telemetría | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Infraestructura crítica y seguridad sectorial: modos de fallo | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Infraestructura crítica y seguridad sectorial: herramientas y métodos | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
+| 1 | [06](book/PLAN.md#ch-06) | Infraestructura crítica y seguridad sectorial: modelo del sistema | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Infraestructura crítica y seguridad sectorial: datos y telemetría | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Infraestructura crítica y seguridad sectorial: modos de fallo | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Infraestructura crítica y seguridad sectorial: herramientas y métodos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Plan](book/PLAN.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Infraestructura crítica y seguridad sectorial: configuración de controles | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Infraestructura crítica y seguridad sectorial: verificación | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
 | 2 | [12](book/PLAN.md#ch-12) | Laboratorio contenido I | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plan](book/PLAN.md#ch-13) |
