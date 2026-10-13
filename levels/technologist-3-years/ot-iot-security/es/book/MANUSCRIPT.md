@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -836,7 +836,323 @@ Un laboratorio guiado convierte lecturas en bruto en una afirmación reproducibl
 
 ### Siga estudiando — capítulo 15 de 30
 
-[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](../../en/book/MANUSCRIPT.md#ch-16)
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos II
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar una pasada sencilla de modelado de amenazas al sistema de registradores; (2) evaluar un producto IoT frente a las disposiciones de ETSI EN 303 645; (3) revisar la documentación del proveedor en busca de afirmaciones de seguridad; y (4) registrar los supuestos de los que depende el modelo.
+
+### 16.1 Una pasada rápida de modelado de amenazas
+
+Dibuje el sistema de registradores: registradores → radio → GW-LOG → cortafuegos → nube del proveedor → portal web que usa el responsable de calidad. En cada flecha pregunte: ¿puede alguien hacerse pasar por el emisor, cambiar los datos, leerlos, bloquearlos u obtener más control del previsto? Esta lista de preguntas, adaptada de STRIDE, produce una breve lista de amenazas en menos de una hora. La pasada de Priya en NCS produjo, entre otras entradas, «reproducción por radio de lecturas antiguas», con el supuesto de que un atacante tendría que estar a unos 100 m de los registradores.
+
+### 16.2 Preguntas de base sobre el producto
+
+ETSI EN 303 645 ofrece preguntas concretas para cada producto IoT: ¿se entrega con una contraseña por defecto universal (5.1)? ¿Publica el proveedor una forma de notificar vulnerabilidades (5.2)? ¿Puede actualizarse su software de forma segura (5.3)? ¿Se comunica de forma segura (5.5)? ¿Están protegidos los datos personales (5.8)? Las respuestas pueden proceder de la documentación, de un cuestionario al proveedor y, para algunos puntos, de una comprobación en el banco. Las respuestas del proveedor de los registradores al cuestionario de Priya: contraseñas únicas por dispositivo en las etiquetas (5.1 cumplido), una página de divulgación (5.2 cumplido), actualizaciones firmadas que solo aplica el proveedor en remoto (5.3 cumplido con una dependencia) y TLS hacia la nube pero un enlace de radio sin cifrar (5.5 cumplido en parte).
+
+### 16.3 Leer las afirmaciones del proveedor
+
+«Cifrado de nivel bancario» no es una respuesta a 5.5; «TLS 1.2 o posterior con validación del certificado del servidor y certificados fijados a la CA del proveedor» sí lo es. Pida detalles concretos y anote cuándo el proveedor no puede darlos. La respuesta del proveedor de los registradores de NCS para 5.5 era lo bastante concreta como para actuar: TLS hacia la nube, pero sin cifrado en el enlace de radio entre los registradores y GW-LOG. Ese «cumplido en parte» es más útil que una frase comercial segura de sí misma, porque indica a Priya exactamente dónde debe ir el control compensatorio: comparar las lecturas de los registradores con las sondas de los PLC, como en el capítulo 18. Un proveedor que solo pudiera decir «comunicación segura» habría dejado el enlace de radio sin examinar.
+
+### 16.4 Supuestos
+
+Los modelos de amenazas descansan en supuestos: el alcance del enlace de radio es de unos 100 m; el portal usa MFA; la nube del proveedor se opera de forma segura. Anótelos; si uno resulta falso, revise el modelo. La lista de Priya para el sistema de registradores incluye el alcance de radio de unos 100 m, que define quién puede intentar reproducir lecturas antiguas; la declaración del proveedor de que aplica en remoto las actualizaciones firmadas, de la que depende 5.3; y que el portal del responsable de calidad usa MFA, algo que ella no había verificado. Si resultara que el portal no tiene MFA, el «compromiso de la cuenta en la nube» subiría en su lista, así que el supuesto queda marcado para comprobarse en la próxima revisión del proveedor.
+
+### Ejemplo resuelto (NCS sintética)
+
+El cuestionario de Priya al proveedor devuelve: contraseña única por dispositivo impresa en la etiqueta (5.1 cumplido); existe una página de política de divulgación (5.2 cumplido); actualizaciones de firmware firmadas pero aplicadas solo por el proveedor en remoto (5.3 cumplido con una dependencia); TLS hacia la nube, pero el enlace de radio entre los registradores y la pasarela no está cifrado (5.5 cumplido en parte). Su lista de amenazas incorpora «reproducción por radio de lecturas antiguas» con el supuesto «atacante a menos de ~100 m».
+
+> **Caso sintético — Northgate Cold Storage.** Las respuestas del proveedor son inventadas.
+
+### Errores y límites
+
+Las respuestas a un cuestionario son afirmaciones; verifique las más importantes. ETSI EN 303 645 se dirige al IoT de consumo; para pasarelas industriales, IEC 62443-4-2 puede ser una referencia mejor.
+
+### Ejercicios — capítulo 16
+
+- **EX046 — Preguntas STRIDE en el portal.** Dé una amenaza de suplantación y una de divulgación de información para el portal del responsable de calidad. *Rúbrica:* 3 = dos amenazas plausibles; 2 = una; 1 = genérica; 0 = nada.
+- **EX047 — Una afirmación vaga.** Reescriba la pregunta que devolvería a un proveedor que dice «seguridad de grado militar». *Rúbrica:* 3 = pregunta concreta sobre protocolo, versiones y validación; 2 = parcial; 1 = acepta la afirmación; 0 = nada.
+- **EX048 — Poner a prueba un supuesto.** ¿Cómo comprobaría de forma segura el supuesto de «unos 100 m de alcance de radio»? *Rúbrica:* 3 = especificación del proveedor más una prueba a pie con un receptor y un registrador de banco en zonas permitidas; 2 = parcial; 1 = transmitir a registradores en servicio; 0 = nada.
+
+### Síntesis del capítulo
+
+Un modelado de amenazas rápido, las preguntas de base y los supuestos por escrito permiten a un tecnólogo evaluar un producto IoT en días, no en meses.
+
+### Siga estudiando — capítulo 16 de 30
+
+[← Capítulo 15 (borrador)](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 (borrador) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Seguridad de TO, IoT y sistemas ciberfísicos: herramientas
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) elegir herramientas seguras para la observación en TO; (2) configurar una captura pasiva en un puerto espejo; (3) usar herramientas de análisis fuera de línea con archivos de captura; y (4) controlar el uso de herramientas mediante permisos de trabajo y registros de cambios.
+
+### 17.1 Primero lo pasivo
+
+Las herramientas pasivas escuchan; las activas envían. En TO, las herramientas pasivas son la opción por defecto porque las sondas activas pueden alterar dispositivos antiguos. NIST SP 800-82r3 trata el riesgo del escaneo activo en entornos de TO y el valor de la supervisión pasiva. Un puerto espejo (SPAN) en el conmutador de la zona de control copia el tráfico a un portátil o sensor de supervisión sin modificar el propio tráfico. La captura de Priya usó el puerto 24 del conmutador de la zona de control SW-C, que reflejaba los puertos 1–8, donde se conectan los PLC, HMI-C y HIST. La réplica solo requirió un cambio de configuración en SW-C, hecho por el responsable de la red, sin reiniciar ningún dispositivo de los puertos 1–8.
+
+### 17.2 Preparar una captura
+
+Acuerde el puerto del conmutador con el responsable de la red; configure la réplica en una ventana de cambios; conecte un equipo de captura cuya interfaz de red no tenga dirección IP, para que no pueda transmitir. Registre las horas de inicio y fin, el conmutador, los puertos reflejados y los contadores de pérdida de paquetes. El plan de Priya para NCS: el puerto 24 de SW-C refleja los puertos 1–8, el equipo de captura tiene la IP desactivada y la captura dura 72 horas para incluir un ciclo de desescarche, cuando cambian los patrones de tráfico. Los contadores de pérdida se leen al principio y al final, y el permiso de trabajo nombra al responsable de instalaciones como la persona que puede detener el trabajo.
+
+### 17.3 Análisis fuera de línea
+
+Analice las capturas en una estación de trabajo aislada: los decodificadores de protocolos identifican los códigos de función Modbus, las listas de conversaciones muestran quién habla con quién, y scripts de Python sencillos como los de los capítulos 11–12 comparan los resultados con el inventario y la matriz de flujos. La captura de 72 horas de SW-C de Priya alimentó tanto la comparación de inventario del capítulo 11 como la comparación de flujos del capítulo 12. También se le escapó algo: la consulta del historiador a PLC-R2 no apareció en la ventana, y por eso HIST → PLC-R2 faltaba en la matriz de flujos y el primer despliegue del cortafuegos del capítulo 27 tuvo que revertirse. El análisis fuera de línea solo puede informar de lo que contiene la captura.
+
+### 17.4 Controlar las herramientas
+
+Cada herramienta que se usa en el emplazamiento figura en el permiso de trabajo con su versión y su modo (solo pasivo). Las herramientas de ingeniería de la empresa contratista, como el software de programación de los PLC, no son herramientas de seguridad; su uso corresponde a la empresa contratista, bajo control de cambios. El permiso de Priya recoge la herramienta de captura y su versión, solo en modo pasivo, y el cambio de configuración del conmutador para el puerto espejo, que hace el responsable de la red. También recoge las condiciones de parada: cualquier alarma de la HMI que los operadores no sepan explicar, o un aviso de CPU del conmutador, pone fin a la captura, y se informa primero al responsable de instalaciones. Una captura detenida se anota en el registro de evidencia con su duración.
+
+### Ejemplo resuelto (NCS sintética)
+
+El plan de captura de Priya: el puerto 24 del conmutador SW-C refleja los puertos 1–8 (PLC, HMI-C, HIST); el equipo de captura tiene la IP desactivada; captura de 72 horas para incluir un ciclo de desescarche; contadores de pérdida comprobados al inicio y al final. El permiso de trabajo recoge la herramienta de captura y su versión y nombra al responsable de instalaciones como la persona que puede detener el trabajo.
+
+> **Caso sintético — Northgate Cold Storage.** Los puertos y las duraciones son inventados.
+
+### Errores y límites
+
+Un puerto espejo puede descartar paquetes cuando está sobrecargado; compruebe los contadores antes de fiarse de un «no se vio nada». Los archivos de captura pueden contener datos sensibles; guárdelos cifrados y elimínelos según el calendario previsto.
+
+### Ejercicios — capítulo 17
+
+- **EX049 — ¿Por qué sin dirección IP?** Explique por qué la interfaz del equipo de captura no tiene dirección IP. *Rúbrica:* 3 = no puede transmitir ni interactuar por accidente con los dispositivos de TO; 2 = parcial; 1 = velocidad; 0 = nada.
+- **EX050 — ¿Por qué 72 horas?** Justifique la duración de 72 horas de la captura. *Rúbrica:* 3 = incluir eventos periódicos como el desescarche y los cambios de turno; 2 = parcial; 1 = arbitraria; 0 = nada.
+- **EX051 — Tratamiento del archivo de captura.** Escriba dos reglas de tratamiento para el archivo de captura. *Rúbrica:* 3 = almacenamiento cifrado con acceso limitado; fecha de eliminación; 2 = una; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Las herramientas de TO son pasivas por defecto, se configuran bajo control de cambios y se documentan para que sus resultados sean fiables y sus riesgos queden contenidos.
+
+### Siga estudiando — capítulo 17 de 30
+
+[← Capítulo 16 (borrador)](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 (borrador) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Seguridad de TO, IoT y sistemas ciberfísicos: controles
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) seleccionar controles para los escenarios principales de NCS; (2) asignarlos a los requisitos fundamentales de IEC 62443-3-3; (3) comprobar el efecto de cada control en las operaciones; y (4) planificar controles compensatorios cuando los dispositivos no pueden corregirse.
+
+### 18.1 Asignar controles a escenarios
+
+Escenario 1 (uso indebido de la herramienta remota de la empresa contratista): sustituir la herramienta siempre activa por sesiones supervisadas a través de un servidor de salto (FR 1, identificación y autenticación; FR 5, flujo de datos restringido) y grabar las sesiones (FR 6, respuesta oportuna a los eventos). Escenario 2 (un ransomware de la oficina llega a HMI-C): eliminar la regla 9 (FR 5), aplicar una lista de aplicaciones permitidas en HMI-C (FR 3, integridad del sistema) y mantener copias de seguridad fuera de línea (FR 7, disponibilidad de los recursos).
+
+La primera entrada del registro de Priya es C-04, sesiones supervisadas de la empresa contratista, vinculada solo al escenario 1: no hace nada contra los escenarios del ransomware de la oficina ni de la cámara, que necesitan sus propios controles. Su prueba, un intento de sesión sin aprobación que debe rechazarse, es lo bastante concreta como para que el responsable de instalaciones la repita sin ella.
+
+### 18.2 Efectos en las operaciones
+
+Pregunte de cada control: ¿qué ocurre en un mal día? Las sesiones supervisadas significan que la empresa contratista espera la aprobación a las 3 de la madrugada; NCS necesita una persona aprobadora de guardia. La lista de aplicaciones permitidas puede bloquear una herramienta de diagnóstico de emergencia; mantenga un proceso de excepciones documentado y supervisado. NCS respondió a la primera pregunta con un turno rotativo de aprobadores de guardia, que más tarde pasó a la primera página del paquete para las visitas de la empresa contratista. Cuando la operadora de noche probó la primera versión del paquete, no encontró en ninguna parte el número del aprobador, así que el turno rotativo se convirtió en la línea más importante del paquete. Para la lista de aplicaciones permitidas, el proceso de excepciones nombra a quién puede aprobar una herramienta de emergencia y cómo se registra y se revisa después su uso.
+
+### 18.3 Controles compensatorios
+
+El enlace de radio de los registradores de temperatura no está cifrado y no puede cambiarse (capítulo 16). Compensación: comparar los datos de los registradores con las sondas de los PLC (detectar la falsificación); alertar ante cambios bruscos en escalón; preguntar al proveedor por modelos cifrados en la próxima compra. PLC-R2 no puede autenticar a los clientes Modbus; se compensa permitiendo que solo HMI-C y HIST lleguen a él. El miniestudio de Priya del capítulo 24 pone a prueba el primer control compensatorio: en cuatro semanas sintéticas con diez falsificaciones inyectadas, la comparación de dos sondas señaló las diez en menos de 10 minutos. La alerta propia de la nube no señaló ninguna, porque los valores falsificados se mantenían dentro del rango.
+
+### 18.4 Registrar los controles
+
+Un registro de controles enumera control, escenario, requisito fundamental, responsable, método de prueba y fecha de la última prueba. Los controles no probados figuran como «supuestos». El registro de Priya recoge C-04, sesiones supervisadas de la empresa contratista, como probado el 2026-04-02 y superado. La eliminación de la regla 9 figura con su prueba, un intento de conexión de OFFICE-7 a PLC-R2:502 que se espera rechazado. La lista de aplicaciones permitidas en HMI-C figura como «supuesta» hasta que se despliegue la política probada por el proveedor y se registre un ejecutable de prueba bloqueado. La etiqueta «supuesto» mantiene honesto el registro: la dirección puede ver que el plan tiene más controles que evidencia. El capítulo 23 convierte la mayoría de las entradas supuestas en probadas, y una de ellas falla su primera prueba.
+
+### Ejemplo resuelto (NCS sintética)
+
+Fila del registro de Priya: «C-04 Sesiones supervisadas de la empresa contratista a través del servidor de salto; escenario 1; FR 1/FR 5/FR 6; responsable: responsable de instalaciones; prueba: intentar una sesión sin aprobación, se espera el rechazo; última prueba 2026-04-02, superada».
+
+> **Caso sintético — Northgate Cold Storage.** Las entradas del registro son inventadas.
+
+### 18.5 Priorizar con un presupuesto limitado
+
+NCS no puede comprarlo todo a la vez. Priya ordena los controles según cuántos escenarios reduce cada uno y lo barato que es: eliminar la regla 9 cuesta una ventana de mantenimiento y reduce dos escenarios, así que va primero; la lista de aplicaciones permitidas necesita pruebas del proveedor y va segunda; sustituir los registradores por modelos cifrados espera al ciclo normal de renovación, con la comprobación compensatoria por comparación en funcionamiento mientras tanto. El orden se ve en la evaluación de Priya seis meses después: la regla 9 eliminada, las sesiones supervisadas probadas, los certificados automatizados y los registradores todavía sin sustituir.
+
+### Errores y límites
+
+Asignar controles a requisitos fundamentales muestra la cobertura, no la suficiencia. Un control que se elude «temporalmente» durante meses no es un control.
+
+### Ejercicios — capítulo 18
+
+- **EX052 — Asignar la lista de aplicaciones permitidas.** ¿Qué requisito fundamental respalda la lista de aplicaciones permitidas en la HMI? *Rúbrica:* 3 = FR 3, integridad del sistema, con su razón; 2 = solo el FR; 1 = FR 4; 0 = nada.
+- **EX053 — La comprobación del mal día.** Describa el efecto de las sesiones supervisadas en un mal día y su mitigación. *Rúbrica:* 3 = retraso nocturno; aprobador de guardia; 2 = uno; 1 = vago; 0 = nada.
+- **EX054 — Compensar en PLC-R2.** Enumere dos controles compensatorios para la falta de autenticación de PLC-R2. *Rúbrica:* 3 = restringir los orígenes a HMI-C/HIST; supervisar las escrituras desde otros equipos; 2 = uno; 1 = «añadir una contraseña»; 0 = nada.
+
+### Síntesis del capítulo
+
+Los controles se eligen para los escenarios, se contrastan con los días malos, se compensan donde los dispositivos no pueden cambiar y se registran con sus pruebas.
+
+### Siga estudiando — capítulo 18 de 30
+
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Seguridad de TO, IoT y sistemas ciberfísicos: supervisión
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) construir una línea base de la comunicación normal; (2) detectar equipos nuevos frente a esa línea base; (3) clasificar las alertas junto con operaciones; y (4) ajustar la supervisión para evitar la fatiga de alertas.
+
+### 19.1 Líneas base
+
+Las redes de TO son repetitivas: los mismos dispositivos hablan con los mismos interlocutores siguiendo el mismo calendario. Eso convierte una línea base, el conjunto de equipos y flujos vistos durante un periodo representativo, en un detector potente. Todo lo nuevo merece una mirada. NIST SP 800-82r3 recomienda una supervisión adaptada al tráfico predecible de la TO.
+
+```python
+"""Lab 19: flag hosts not present in a 7-day baseline of synthetic flow records."""
+baseline_days = {"HMI-C", "PLC-R1", "PLC-R2", "HIST", "GW-LOG"}
+today = ["HMI-C", "PLC-R1", "HIST", "LAPTOP-V3", "GW-LOG", "LAPTOP-V3", "PLC-R2", "UNKNOWN-10.4.2.77"]
+new = []
+for h in today:
+    if h not in baseline_days and h not in new: new.append(h)
+print("new talkers:", new)
+print("events:", len(today), "unique hosts:", len(set(today)), "new:", len(new))
+```
+
+Ejecútelo con `python3 lab_talkers.py`. Salida verificada:
+
+```text
+new talkers: ['LAPTOP-V3', 'UNKNOWN-10.4.2.77']
+events: 8 unique hosts: 7 new: 2
+```
+
+La captura de Priya en SW-C proporcionó la línea base que usa el laboratorio: cinco equipos, HMI-C, PLC-R1, PLC-R2, HIST y GW-LOG, vistos durante siete días. Cualquier cosa fuera de ese conjunto genera una alerta de interlocutor nuevo, y por eso tanto el portátil de la empresa contratista como la impresora del muelle aparecen en la salida del laboratorio.
+
+### 19.2 Leer las alertas
+
+LAPTOP-V3 apareció dos veces; UNKNOWN-10.4.2.77, una. El portátil es probablemente el de la empresa contratista (compruebe el registro de visitas). La dirección desconocida no pertenece a ninguna subred de NCS, y eso es más urgente, porque sugiere un dispositivo mal configurado o un camino que la arquitectura no contempla. Ambas se resolvieron en menos de una hora. El registro de visitas mostraba a la empresa contratista en el emplazamiento con el portátil V3 de 09:00 a 11:30, en coincidencia con las horas de las alertas, así que esa alerta se cerró con la referencia de la visita. La dirección 10.4.2.77 resultó ser una impresora del muelle con una dirección tomada del plan de otro emplazamiento.
+
+### 19.3 Clasificación junto con operaciones
+
+El analista llama al responsable de instalaciones antes de actuar: ¿hay alguien de la empresa contratista en el emplazamiento? ¿Ha añadido alguien un equipo? El contexto de operaciones resuelve la mayoría de las alertas en minutos. Solo se escalan las alertas sin explicar. En NCS, los dos interlocutores nuevos del laboratorio se explicaron así. El registro de visitas del responsable de instalaciones mostraba a la empresa contratista en el emplazamiento con el portátil V3 de 09:00 a 11:30, así que esa alerta se cerró con la referencia de la visita. La dirección desconocida 10.4.2.77 requirió ir al muelle, donde se encontró una impresora de logística en un puerto de la zona de cámaras. Ninguna de las dos exigió tocar la red de control. Si el registro de visitas no hubiera mostrado a nadie de la empresa contratista esa mañana, LAPTOP-V3 se habría escalado de inmediato.
+
+### 19.4 Ajuste
+
+Los cambios previstos, como las visitas programadas de la empresa contratista o un registrador nuevo, deben añadirse a la línea base mediante un tique de cambio, no silenciarse con una regla general. Revise mensualmente el número de alertas; si la mayoría son eventos rutinarios explicados, mejore el vínculo con los tiques de cambio en lugar de subir los umbrales. En NCS, las visitas de la empresa contratista llevan un tique, así que el vínculo con el registro de visitas del paquete para la empresa contratista del capítulo 25 permite asociar automáticamente la aparición de LAPTOP-V3 a un tique abierto. Una alerta sin tique asociado va entonces al responsable de seguridad en lugar de que la cierre el operador.
+
+### Ejemplo resuelto (NCS sintética)
+
+El registro de visitas muestra a la empresa contratista en el emplazamiento con el portátil V3 de 09:00 a 11:30, en coincidencia con las horas de las alertas. Priya cierra esa alerta con la referencia de la visita. La dirección 10.4.2.77 pertenece a una impresora del muelle instalada por el equipo de logística con una dirección estática tomada del plan de otro emplazamiento; estaba conectada a un puerto de la zona de cámaras. Se traslada, se le asigna una nueva dirección y se añade al inventario.
+
+> **Caso sintético — Northgate Cold Storage.** Los equipos y la historia de la impresora son inventados.
+
+### Errores y límites
+
+Una línea base capturada mientras el sistema estaba comprometido trata al atacante como normal. Siete días pueden no captar la actividad mensual.
+
+### Ejercicios — capítulo 19
+
+- **EX055 — Ampliar la línea base.** Si se añade LAPTOP-V3 a `baseline_days`, ¿qué imprime el laboratorio como interlocutores nuevos? *Rúbrica:* 3 = `['UNKNOWN-10.4.2.77']` y `new: 1`; 2 = solo la lista; 1 = sin cambios; 0 = nada.
+- **EX056 — Por qué la dirección desconocida es urgente.** Explíquelo en dos frases. *Rúbrica:* 3 = fuera de cualquier subred de NCS, implica un camino no planificado o una mala configuración; 2 = parcial; 1 = vago; 0 = nada.
+- **EX057 — Ajustar sin quedarse ciego.** Proponga cómo deberían dejar de generar alertas sin explicar las visitas programadas de la empresa contratista. *Rúbrica:* 3 = el tique de la visita añade el portátil a una lista de permitidos o anotación limitada en el tiempo; 2 = parcial; 1 = ignorar los portátiles; 0 = nada.
+
+### Síntesis del capítulo
+
+Las líneas base convierten la regularidad de la TO en detección; la clasificación junto con operaciones y el ajuste vinculado a los cambios mantienen el sentido de las alertas.
+
+### Siga estudiando — capítulo 19 de 30
+
+[← Capítulo 18 (borrador)](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 (borrador) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Seguridad de TO, IoT y sistemas ciberfísicos: resolución de problemas
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) distinguir las causas cibernéticas de las averías ordinarias; (2) resolver fallos de comunicación con método; (3) evitar pasos de resolución de problemas que destruyen evidencia; y (4) saber cuándo detenerse y escalar.
+
+### 20.1 La mayoría de las averías no son ataques
+
+Cuando HMI-C muestra valores congelados, la causa suele ser un cable, un puerto del conmutador, una fuente de alimentación averiada o una licencia caducada. Trátelo primero como una avería, pero tenga presente la posibilidad de seguridad y preserve la evidencia mientras trabaja. Saltar a «nos han hackeado» hace perder tiempo; ignorar la posibilidad puede destruir el registro que necesitaría una investigación. La primera avería de valores congelados de Priya en PLC-R2 fue un latiguillo con errores CRC en aumento; la segunda, una semana después, no lo fue.
+
+### 20.2 Un método por capas
+
+Suba por la pila: luces de alimentación y de enlace; estado y errores del puerto del conmutador; alcanzabilidad IP desde un equipo de la misma subred (con permiso); la sesión del protocolo (¿muestra HMI-C un código de error de comunicación?); y después la configuración de la aplicación. Cambie una sola cosa cada vez y anote cada paso y su resultado. La primera avería de PLC-R2 siguió este orden: luz de enlace encendida, puerto del conmutador con errores CRC en aumento, latiguillo nuevo, los errores cesan, los valores se actualizan. Priya registró la avería como física, con los contadores de errores como evidencia. Detenerse en la primera capa que explicaba el síntoma le evitó tocar el PLC en absoluto.
+
+### 20.3 Hábitos que preservan la evidencia
+
+Antes de reiniciar un equipo que podría estar comprometido, exporte sus registros y anote sus procesos en ejecución. Antes de sustituir un dispositivo, fotografíe sus etiquetas y su configuración. Un reinicio borra la memoria que podría mostrar software malicioso; una sustitución elimina el estado original del firmware. Cuando los valores de PLC-R2 volvieron a congelarse una semana después sin errores en el puerto, Priya comparó su programa con la copia de seguridad antes de que nadie lo reiniciara, y encontró una diferencia. Un reinicio habría vuelto a ejecutar el mismo programa modificado, así que no habría arreglado nada, y habría borrado el estado de ejecución y el búfer de diagnóstico del controlador. El siguiente paso habitual tras un reinicio fallido, descargar la copia de seguridad, habría sobrescrito el programa modificado, que era la principal evidencia de quién lo cambió y cuándo. Escaló el caso con la salida de la comparación y los contadores del puerto adjuntos.
+
+### 20.4 Detenerse y escalar
+
+Deténgase y llame al responsable de seguridad si encuentra procesos o cuentas desconocidos, cambios de configuración que nadie hizo, tráfico hacia destinos desconocidos o un dispositivo cuyo programa difiere de la copia de seguridad. En NCS, la segunda congelación de PLC-R2 cumplía la cuarta condición: el programa del controlador difería de la copia de seguridad, así que Priya escaló en lugar de reiniciar. La misma regla se aplicó en su tercera visita al emplazamiento, cuando un operador le pidió que «reiniciara rápidamente» una HMI bloqueada. Se negó, comprobó en modo de solo lectura los contadores del puerto del conmutador y llamó a la empresa contratista, que encontró una fuente de alimentación que estaba fallando. Si el bloqueo hubiera tenido una causa cibernética, el reinicio habría borrado lo que necesitaba la investigación.
+
+### Ejemplo resuelto (NCS sintética)
+
+HMI-C muestra valores congelados de PLC-R2. Priya comprueba: luz de enlace encendida; el puerto del conmutador muestra errores CRC en aumento; un latiguillo nuevo corrige los errores y los valores se actualizan. Registra la avería como física, con los contadores de errores como evidencia. Una semana después, los valores de PLC-R2 vuelven a congelarse sin errores en el puerto; esta vez la comparación del programa del PLC con la copia de seguridad muestra una diferencia, y ella escala en lugar de reiniciar el controlador.
+
+> **Caso sintético — Northgate Cold Storage.** Ambos eventos son inventados.
+
+### Errores y límites
+
+Hacer ping repetidamente a dispositivos frágiles puede causar problemas por sí mismo; mantenga las comprobaciones ligeras. La resolución de problemas en controladores en servicio corresponde a la empresa contratista o al ingeniero de planta.
+
+### Ejercicios — capítulo 20
+
+- **EX058 — Las tres primeras comprobaciones.** Enumere las tres primeras comprobaciones ante valores congelados en la HMI. *Rúbrica:* 3 = alimentación/enlace, estado/errores del puerto, error de protocolo en la HMI (en ese orden); 2 = dos; 1 = reiniciar primero; 0 = nada.
+- **EX059 — Antes de reiniciar.** ¿Qué dos cosas captura antes de reiniciar una HMI-C posiblemente comprometida? *Rúbrica:* 3 = exportación de registros y procesos/conexiones en ejecución; 2 = una; 1 = nada; 0 = nada.
+- **EX060 — El desencadenante de la escalada.** ¿Qué observación del segundo evento desencadenó la escalada y por qué? *Rúbrica:* 3 = el programa difiere de la copia de seguridad sin registro de cambio; posible manipulación; 2 = solo la observación; 1 = errores; 0 = nada.
+
+### Síntesis del capítulo
+
+Resuelva los problemas con método, suponga primero una avería, preserve la evidencia mientras trabaja y deténgase en cuanto algo haya cambiado sin que nadie lo cambiara.
+
+### Siga estudiando — capítulo 20 de 30
+
+[← Capítulo 19 (borrador)](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 (borrador) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Seguridad de TO, IoT y sistemas ciberfísicos: integración de servicios
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) integrar los datos de TO con los servicios de negocio sin abrir caminos hacia el control; (2) diseñar transferencias de datos unidireccionales o intermediadas; (3) proteger las conexiones de API con servicios en la nube; y (4) documentar las dependencias de la integración.
+
+### 21.1 El negocio quiere datos
+
+Los clientes quieren certificados de temperatura de sus mercancías almacenadas; finanzas quiere el consumo energético de los compresores; el sistema de logística quiere el estado de las puertas del muelle. Cada petición tienta a alguien a conectar un sistema de negocio directamente a un PLC. El principio de integración es: los sistemas de negocio leen copias en la DMZ o en la nube, nunca directamente en la zona de control. La macro energética de OFFICE-7 era esa tentación en la práctica: leía las horas de funcionamiento de los compresores directamente en PLC-R2 hasta que Priya la trasladó a la réplica. Las consultas de la macro también añadían carga a PLC-R2 en momentos que nadie había previsto.
+
+### 21.2 Patrones
+
+La replicación del historiador envía los datos desde la zona de control a una réplica en la DMZ (capítulo 8). Para garantías más fuertes, un diodo de datos o pasarela unidireccional solo permite el tráfico en un sentido por diseño del hardware. Para los servicios en la nube, la pasarela inicia conexiones TLS salientes y nunca acepta conexiones entrantes. La integración mediante archivos, como una exportación CSV nocturna a una carpeta compartida, es aceptable si la carpeta compartida está en la DMZ y solo admite escritura desde el lado de control.
+
+En NCS, HIST envía a la réplica de la DMZ, y GW-LOG llega a la nube del proveedor solo en sentido saliente a través de la regla 21.
+
+### 21.3 Seguridad de las API
+
+La generación de certificados para clientes usa la API en la nube del proveedor de los registradores. Use una clave de API dedicada por integración con el mínimo privilegio (leer temperaturas de salas concretas), guárdela en un almacén de secretos, rótela y registre su uso. Nunca incruste claves en hojas de cálculo ni en scripts de unidades compartidas. Para los certificados de clientes de NCS, la clave se limitaría a leer las temperaturas de las salas que ocupan las mercancías de ese cliente, se guardaría en la entrada del almacén de secretos referenciada desde la tabla de activos, se rotaría al menos una vez al año y ante cualquier cambio de personal, y su uso se registraría para que aflore un patrón inusual, como lecturas de todas las salas. Una clave encontrada en una hoja de cálculo de la unidad compartida daría a cualquiera con acceso a la unidad el historial de todas las salas.
+
+### 21.4 Dependencias
+
+Anote las dependencias de cada integración: la nube del proveedor, el DNS, los certificados, la clave de API, la carpeta compartida de la DMZ. Cuando una falla, sabrá qué más se detiene. Para la integración de certificados en NCS: la nube del proveedor de los registradores y su API, el DNS del nombre de la nube, la cadena de certificados TLS, la clave de API en el almacén de secretos y la carpeta compartida de la DMZ donde quedan los certificados generados. El certificado caducado de LOG-03 del capítulo 22 recuerda que una dependencia puede fallar en silencio: el registrador dejó de subir datos el 5 de octubre, y el certificado del cliente para esa sala habría tenido un hueco de siete días sin el historial de la sonda del PLC en HIST.
+
+### Ejemplo resuelto (NCS sintética)
+
+La macro energética del equipo de finanzas (capítulo 12) se rehace: HIST envía cada hora las horas de funcionamiento de los compresores a la réplica de la DMZ; el informe de finanzas lee la réplica por HTTPS con una cuenta de solo lectura. La herramienta de certificados para clientes usa una clave de API limitada a datos de temperatura de solo lectura de las salas con contratos activos, que se rota cada 90 días.
+
+> **Caso sintético — Northgate Cold Storage.** Las integraciones son inventadas.
+
+### Errores y límites
+
+Los protocolos «de solo lectura» pueden sobrecargar igualmente un dispositivo si se consulta con demasiada frecuencia; consulte el historiador, no el PLC. Los diodos de datos requieren una configuración cuidadosa para los protocolos que esperan acuses de recibo.
+
+### Ejercicios — capítulo 21
+
+- **EX061 — Elegir un patrón.** Logística quiere el estado de las puertas del muelle cada minuto. ¿Qué patrón y por qué? *Rúbrica:* 3 = réplica del historiador/DMZ o envío unidireccional, sin acceso directo al PLC; 2 = solo el patrón; 1 = consulta directa; 0 = nada.
+- **EX062 — Limitar el alcance de una clave de API.** Escriba el alcance de la clave de API de la herramienta de certificados. *Rúbrica:* 3 = solo lectura, salas o clientes concretos, sin escritura ni administración, rotación; 2 = parcial; 1 = acceso total; 0 = nada.
+- **EX063 — Una lista de dependencias de la integración.** Enumere cuatro dependencias de la integración de certificados para clientes. *Rúbrica:* 3 = cuatro pertinentes; 2 = tres; 1 = una o dos; 0 = nada.
+
+### Síntesis del capítulo
+
+La integración da al negocio sus datos mediante copias, caminos unidireccionales y credenciales de alcance limitado, nunca mediante puertas nuevas hacia la zona de control.
+
+### Siga estudiando — capítulo 21 de 30
+
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](../../en/book/MANUSCRIPT.md#ch-22)
 
 <a id="worked-results"></a>
 
@@ -933,6 +1249,42 @@ Respuestas modelo para EX001–EX090. Northgate Cold Storage, Priya Nair y todas
 **EX044.** La lectura del minuto 50 inicia una nueva desviación (`start = 50`), pero el bucle termina antes de que ninguna lectura vuelva a ≤ 5 °C, así que no se imprime nada. Corrección: tras el bucle, si `start is not None`, imprimir la desviación abierta con «en curso en la última muestra».
 
 **EX045.** Comparar cada lectura del registrador con la sonda propia del PLC registrada en HIST (o con un segundo registrador en la misma sala) y señalar cualquier intervalo en que difieran más de una tolerancia acordada, por ejemplo 2 °C.
+
+**EX046.** Suplantación: un atacante obtiene mediante phishing la contraseña del portal del responsable de calidad e inicia sesión como él. Divulgación de información: si los controles de acceso son débiles, la función de exportación del portal expone los historiales de temperatura del almacenamiento de otros clientes.
+
+**EX047.** «Indique el protocolo y la versión que se usan entre la pasarela y su nube, cómo valida la pasarela el certificado del servidor y si el enlace de radio entre el registrador y la pasarela está cifrado y autenticado (y con qué algoritmo)».
+
+**EX048.** Usar la especificación de radio del proveedor y, después, con permiso, colocar un registrador de banco y un receptor del kit de herramientas del proveedor a distancias crecientes dentro del perímetro de NCS, anotando dónde se pierde la recepción; sin transmitir a los registradores en servicio.
+
+**EX049.** Sin dirección IP, el equipo no puede enviar paquetes a la red de control, así que la captura no puede interactuar por accidente con los PLC, la HMI o el historiador ni perturbarlos.
+
+**EX050.** Setenta y dos horas abarcan varios ciclos de desescarche, cambios de turno y el patrón de un fin de semana, de modo que los flujos periódicos que una captura corta no vería quedan registrados en la línea base.
+
+**EX051.** Guardar la captura solo en un volumen cifrado accesible a los analistas designados; eliminarla (con todas sus copias) 90 días después de que se acepte el informe, y dejar constancia de la eliminación.
+
+**EX052.** FR 3, integridad del sistema: la lista de aplicaciones permitidas impide que se ejecute software no autorizado en HMI-C y protege la integridad del equipo del que dependen los operadores.
+
+**EX053.** Una avería a las 3 de la madrugada significa que la empresa contratista no puede conectarse hasta que alguien apruebe la sesión, lo que retrasa la reparación mientras los congeladores se calientan; se mitiga con un turno rotativo de aprobadores de guardia y un número de teléfono al que la empresa contratista pueda llamar.
+
+**EX054.** Permitir Modbus hacia PLC-R2 solo desde HMI-C y HIST en el cortafuegos, y alertar ante cualquier escritura Modbus en PLC-R2 desde otro origen que detecte la supervisión pasiva.
+
+**EX055.** `new talkers: ['UNKNOWN-10.4.2.77']`, y la línea de resumen pasa a ser `events: 8 unique hosts: 7 new: 1`.
+
+**EX056.** 10.4.2.77 no está en ninguna de las tres subredes de NCS, así que o bien un dispositivo está mal configurado o bien llega tráfico por un camino que la arquitectura no contempla. En ambos casos hay que investigar con prontitud antes de que se convierta en algo normal.
+
+**EX057.** Cuando se reserva una visita de la empresa contratista, el tique registra la identidad del portátil y la ventana de la visita, y la herramienta de supervisión anota las alertas de ese portátil durante la ventana como «prevista – tique N», sin dejar de registrarlas.
+
+**EX058.** (1) Las luces de alimentación y de enlace de PLC-R2 y de su puerto del conmutador; (2) el estado y los contadores de errores del puerto del conmutador; (3) el código de error o el estado de comunicación que muestra HMI-C para PLC-R2.
+
+**EX059.** Exportar los registros de eventos de Windows y anotar la lista de procesos en ejecución y de conexiones de red activas (con la hora y el hash de los archivos exportados).
+
+**EX060.** La comparación del programa mostró que la lógica de PLC-R2 difería de la copia de seguridad guardada sin ningún registro de cambio, lo que podría indicar una manipulación; reiniciar o volver a cargar destruiría esa evidencia, así que lo primero es escalar.
+
+**EX061.** Registrar en HIST el estado de las puertas que tiene el PLC y enviarlo a la réplica de la DMZ (o mediante una exportación unidireccional), y dejar que el sistema de logística lea la réplica; el sistema de logística nunca se conecta a la zona de control.
+
+**EX062.** Acceso de solo lectura a las series de temperatura de las salas con contratos de clientes activos; sin permisos de escritura, configuración ni gestión de usuarios; clave guardada en el almacén de secretos y rotada cada 90 días, con su uso registrado.
+
+**EX063.** La API en la nube del proveedor de los registradores y su disponibilidad; la clave de API de alcance limitado en el almacén de secretos; la resolución DNS del equipo de la API; la cadena de certificados TLS que usa la API (y el servidor de la herramienta de certificados).
 
 <a id="references"></a>
 
