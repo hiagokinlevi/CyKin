@@ -8,6 +8,10 @@ Signals per numbered section (### N.M ...):
   LEAD  opening paragraph whose sentences each restate a bullet of the list that follows
         (>= 60% of its sentences have cosine >= --lead to some bullet)
   CLOSE 'Closing note'/'In short'/'To sum up' paragraph with cosine >= --para to the rest of the section
+  WEX   short trailing example (unnumbered '### Worked example'/'Example'/'Exemplo resolvido'/'Ejemplo resuelto'
+        heading inside a numbered section, prose body <= --wexmax (80) words) whose content words are mostly
+        already in the section before it: novel-token share <= --wexnov (0.25). Tuned on #1406/#1413/#1420/#1431.
+        --wexdebug prints cos/novelty for every short example.
   COPY  sentence (>= 12 words) appearing verbatim (normalized) in another section or book
   HEAD  placeholder heading (Bit2, Story, 3.q10, x.x, TODO) or doubled number ('3.9 3.x')
 TF-IDF: lowercase word tokens, stopwords removed, crude suffix stemming, IDF over the book's sections.
@@ -55,6 +59,7 @@ def parse(path):
             m=re.match(r'^#{3,4}\s+(\d+\.\d+)\b\s*(.*)',l)
             if m: cur={'id':m.group(1),'title':m.group(2),'line':i,'blocks':[]}; secs.append(cur)
             elif l.startswith('## '): cur=None
+            elif cur is not None: cur['blocks'].append(('head',l))
             continue
         if not l.strip() or l.strip().startswith('<'): flush(); continue
         if block and re.match(r'\s*([-*+]|\d+[.)])\s',l) and not re.match(r'\s*([-*+]|\d+[.)])\s',block[0]): flush()
@@ -70,11 +75,12 @@ class TFIDF:
     @staticmethod
     def cos(a,b): return sum(x*b.get(w,0) for w,x in a.items())
 CLOSERX=re.compile(r'^(\*\*)?(closing note|in short|to sum up|in summary|the point is|put simply|in other words|overall)',re.I)
+WEXRX=re.compile(r'^#{3,5}\s+(worked example|example|exemplo resolvido|exemplo|ejemplo resuelto|ejemplo)\b',re.I)
 def norm(s): return ' '.join(re.findall(r'[a-z0-9]+',s.lower()))
 def scan(path,a,copyidx):
     secs,heads=parse(path); out=[]
-    words=sum(len(t.split()) if k!='list' else sum(len(x.split()) for x in t) for s in secs for k,t in s['blocks'])
-    tf=TFIDF([' '.join(t if k!='list' else ' '.join(t) for k,t in s['blocks']) for s in secs])
+    words=sum(len(t.split()) if k!='list' else sum(len(x.split()) for x in t) for s in secs for k,t in s['blocks'] if k!='head')
+    tf=TFIDF([' '.join(t if k!='list' else ' '.join(t) for k,t in s['blocks'] if k!='head') for s in secs])
     for s in secs:
         B=s['blocks']; paras=[(i,t) for i,(k,t) in enumerate(B) if k=='para']
         for (i,x),(j,y) in zip(paras,paras[1:]):
@@ -83,7 +89,7 @@ def scan(path,a,copyidx):
                 if c>=a.para: out.append(('PARA',s,round(c,2),y[:110]))
         seen=[];seenw=set()
         for k,t in B:
-            if k in ('table',): continue
+            if k in ('table','head'): continue
             for x in (sents(t) if k!='list' else t):
                 if re.match(r'\W*EX\d+',x): continue
                 tx=set(toks(x)); vx=tf.vec(x)
@@ -99,9 +105,23 @@ def scan(path,a,copyidx):
                     if hit/len(ss)>=0.6: out.append(('LEAD',s,round(hit/len(ss),2),t[:110]))
         for idx,(k,t) in enumerate(B):
             if k=='para' and CLOSERX.match(t) and idx>0:
-                rest=' '.join(x if kk!='list' else ' '.join(x) for kk,x in B[:idx])
+                rest=' '.join(x if kk!='list' else ' '.join(x) for kk,x in B[:idx] if kk!='head')
                 c=tf.cos(tf.vec(t),tf.vec(rest))
                 if c>=a.para: out.append(('CLOSE',s,round(c,2),t[:110]))
+        for h,(k,t) in enumerate(B):
+            if k!='head' or not WEXRX.match(t): continue
+            body=[];
+            for kk,x in B[h+1:]:
+                if kk!='para': break
+                body.append(x)
+            ex=' '.join(body); nw=len(ex.split())
+            if not ex or nw>a.wexmax: continue
+            before=' '.join(x if kk!='list' else ' '.join(x) for kk,x in B[:h] if kk not in ('head','table'))
+            tx=set(toks(ex)); 
+            if len(tx)<3: continue
+            nov=len(tx-set(toks(before)))/len(tx); c=tf.cos(tf.vec(ex),tf.vec(before))
+            if a.wexdebug: print(f"WEXDBG {path.split('/')[1][:5]}/{path.split('/')[2][:12]} {s['id']} cos={c:.2f} nov={nov:.2f} w={nw} {ex[:90]}")
+            if nov<=a.wexnov: out.append(('WEX',s,f"{c:.2f}/n{nov:.2f}",ex[:110]))
         if copyidx is not None:
             for k,t in B:
                 for x in (sents(t) if k!='list' else t):
@@ -115,7 +135,7 @@ def scan(path,a,copyidx):
 def main():
     p=argparse.ArgumentParser(); p.add_argument('paths',nargs='*'); p.add_argument('--lang',default='en')
     p.add_argument('--para',type=float,default=0.35); p.add_argument('--lead',type=float,default=0.35)
-    p.add_argument('--sent',type=float,default=0.45); p.add_argument('--novel',type=int,default=2); p.add_argument('--rank',action='store_true'); p.add_argument('--show',action='store_true'); p.add_argument('--nocopy',action='store_true'); p.add_argument('--boiler',type=int,default=4,help='ignore sentences shared by more than N books (course template)')
+    p.add_argument('--sent',type=float,default=0.45); p.add_argument('--novel',type=int,default=2); p.add_argument('--rank',action='store_true'); p.add_argument('--show',action='store_true'); p.add_argument('--nocopy',action='store_true'); p.add_argument('--wexmax',type=int,default=80); p.add_argument('--wexnov',type=float,default=0.25); p.add_argument('--wexdebug',action='store_true'); p.add_argument('--boiler',type=int,default=4,help='ignore sentences shared by more than N books (course template)')
     a=p.parse_args(); paths=a.paths or sorted(glob.glob(f'levels/*/*/{a.lang}/book/MANUSCRIPT.md'))
     copyidx=None
     if not a.nocopy:
@@ -134,6 +154,6 @@ def main():
             for kind,s,v,t in out: print(f"{kind:5} {s['id']:>6} L{s['line']:<5} {v}  {t}")
     if a.rank or not a.show:
         for score,f,w,c,n in sorted(rows,reverse=True):
-            print(f"{score:6} per10k  secs={n:3} {' '.join(f'{k}={c[k]}' for k in ('SENT','PARA','LEAD','CLOSE','COPY','HEAD'))}  {f.split('/')[1]}/{f.split('/')[2]}  ({w}w)")
+            print(f"{score:6} per10k  secs={n:3} {' '.join(f'{k}={c[k]}' for k in ('SENT','PARA','LEAD','CLOSE','WEX','COPY','HEAD'))}  {f.split('/')[1]}/{f.split('/')[2]}  ({w}w)")
     sys.exit(0)
 if __name__=='__main__': main()
