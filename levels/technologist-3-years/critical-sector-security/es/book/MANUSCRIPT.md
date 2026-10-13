@@ -2163,7 +2163,7 @@ Salida esperada (Python 3.13.5):
 alerts: 4 | rule B fired per event, not per episode: 2
 ```
 
-Cuente las alertas por episodio, no por línea: las cuatro alertas de la salida son tres episodios, y ajustar la regla B para que alerte una vez y actualice un recuento las deja en tres.
+Cuente las alertas por episodio, no por línea: las cuatro alertas de la salida son tres episodios (regla A para 192.0.2.44, regla B para la estación de trabajo 10.40.3.7, regla C para PS-09), y ajustar la regla B para que alerte una vez y actualice un recuento las deja en tres. Compruebe también lo que permanece en silencio: el único inicio de sesión fallido de `e.strand` desde 10.40.9.9 queda por debajo del umbral de la regla A, correctamente, porque una contraseña mal escrita una vez no es un episodio.
 
 ### 19.8 Errores frecuentes y límites
 
