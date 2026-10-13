@@ -49,13 +49,19 @@ You will (1) model an alert queue with rates of change; (2) read a derivative as
 
 Security operations handle flows: alerts arrive, analysts clear them, and the backlog is what is left. Calculus is the language of change. If A(t) is the arrival rate and C(t) the clearing rate, the backlog B(t) changes as dB/dt = A(t) − C(t). When arrivals exceed capacity, the backlog rises; when capacity exceeds arrivals, it falls.
 
+The same equation describes a bath filling while the plug is half open. For a SOC lead, its value is that it separates two questions people often mix up: how many alerts arrived today, and how fast they arrived compared with how fast the team can work. A day with a modest total can still overwhelm a shift if most alerts arrive within two hours.
+
 ### 1.2 The course case
 
 **Amara Osei**, an engineering student at the fictional **Kingsbridge Engineering University**, joins the security operations centre of the fictional **Lindqvist Freight** on placement. Her mentor is detection engineer **Paolo Ricci**. On her first day the customer portal suffers a burst of failed logins, and the alert queue grows faster than the two analysts on shift can clear it.
 
+The burst is a common pattern on public login pages: many failed attempts against many usernames, often from a small range of addresses. Amara's first task is not to decide whether an attack happened but to understand why the queue grew, which leads directly into rates. The same incident returns throughout the book, each chapter looking at it through a different tool.
+
 ### 1.3 From continuous to discrete
 
 Real data comes in hourly counts, not smooth curves. The derivative becomes a difference: backlog change per hour equals arrivals that hour minus alerts handled. The integral — total backlog — becomes a running sum.
+
+In symbols, B[n] = B[n−1] + A[n] − C[n], with the rule that backlog cannot fall below zero, since an idle analyst cannot clear alerts that do not exist yet. The hourly step is a choice; per-minute counts would show more detail but more noise. Amara builds the running sum in a spreadsheet first, one row per hour, so every step can be checked by hand.
 
 ### Lab — queue as a rate
 
@@ -92,9 +98,13 @@ peak backlog 65 | backlog at 16:00 20
 
 With a capacity of 60 alerts per hour, the backlog stays at zero until 10:00, then grows at +10, +30 and +25 per hour, peaking at 65 alerts by 13:00. It only begins to fall at 14:00 and is still 20 at 16:00. The peak follows the area between the arrival curve and the capacity line, not the single worst hour.
 
+The surprise for Amara is that the backlog keeps rising after the worst hour has passed. As long as arrivals exceed sixty, the queue grows, even if more slowly. It falls only once arrivals drop below capacity, and then only by the size of that gap each hour. That is why the queue lingered into the afternoon although the burst itself was over by early afternoon.
+
 ### 1.5 Engineering meaning
 
 Adding one analyst at 10:00 would raise capacity above the peak arrival rate and keep the backlog near zero. Rates, not daily totals, tell you when help is needed.
+
+The same model answers other questions too: how long a backlog of 65 takes to clear at a given spare capacity, or how early help must arrive to keep the peak under a target. Paolo points out that real analysts do not clear alerts at a fixed rate, since hard alerts take longer, so the model gives a planning estimate rather than a precise forecast.
 
 ### Worked example
 
@@ -132,25 +142,37 @@ You will (1) use sets and relations to describe users, hosts and alerts; (2) app
 
 A detection often asks set questions. Which users failed to log in from network N? Which of them later succeeded? If F is the set of usernames with failures and S the set with successes from the same network, F ∩ S are accounts that may have been guessed correctly.
 
+Set notation turns a vague hunch into a precise query. The intersection does not prove compromise; a customer who mistyped a password twice and then succeeded also lands in F ∩ S. What it does is shrink the list from everyone who failed to the few worth a closer look, which is what a triage step should do.
+
 ### 2.2 Logic
 
 Rule conditions are logical formulas. "Process is PowerShell AND parent is an Office application" is a conjunction; adding OR widens a rule; adding NOT narrows it. Writing conditions in logic makes their scope explicit and testable, which is how the Sigma format expresses detection logic.
+
+Mistakes in logic produce real errors: writing OR where AND was meant can turn a precise rule into one that fires on every Office document. Truth tables help check small rules by listing every combination of conditions and the expected outcome. Sigma rules use named selections joined in a condition line, which keeps the logic readable even when each selection has many fields.
 
 ### 2.3 Relations and graphs
 
 A logon from user u to host h is a pair (u, h). Together the pairs form a bipartite graph. An account that suddenly connects to many new hosts shows as a node whose degree jumps.
 
+Degree here means the number of distinct hosts an account touches in a time window. A help-desk account might normally connect to dozens, while a payroll clerk connects to two or three, so the jump matters relative to each account's own history. Graphs also show paths, such as an account reaching a server through an intermediate host, which lists of pairs hide.
+
 ### 2.4 Counting
 
 Correlation rules combine events. With 7 event types, a rule over any 3 types in order has 7 × 6 × 5 = 210 possibilities. Counting shows why exhaustive correlation explodes and why rules must be chosen from threat knowledge, such as MITRE ATT&CK techniques.
+
+If order does not matter, the count drops to 7 choose 3, which is 35, but adding time windows and field conditions multiplies the possibilities again. No team can write and test hundreds of correlations, so threat knowledge narrows the search to sequences attackers actually use. ATT&CK provides that grounding by describing techniques observed in real intrusions.
 
 ### 2.5 Case use
 
 During the portal burst, Amara lists F (usernames with failures from 203.0.113.0/24) and S (usernames with success from the same network). One name, u5, is in both: a candidate compromised customer account.
 
+The address range 203.0.113.0/24 is reserved for documentation, which suits a synthetic case. Amara writes both sets out explicitly, which lets Paolo check her reasoning line by line. The next step is not to lock u5 at once but to check the success's details, such as time, device and what the session did, before deciding on action.
+
 ### 2.6 Precision of language
 
 Discrete maths forces exact language: "many" becomes "more than 5 distinct usernames in 10 minutes". That precision makes rules reviewable.
+
+Reviewable means another analyst can read the rule and agree, or disagree, on what it should catch. 'Many' invites arguments; 'more than five in ten minutes' invites a test. The precise version can also be tuned with evidence, by counting how often legitimate users exceed five failures in ten minutes and adjusting the threshold with data rather than opinion. Units belong in every threshold.
 
 ### Worked example
 
@@ -188,25 +210,37 @@ You will (1) relate physical limits to sensor and storage design; (2) reason abo
 
 Physics describes measurements as signal plus noise. Telemetry is similar: real attack activity is the signal, normal activity is the noise. A sensor that samples too rarely misses short signals, just as a slow oscilloscope misses fast pulses.
 
+The ratio between the two decides how easy detection is. A loud attack against a quiet network stands out; a quiet attack hidden in busy normal traffic does not. Defenders can improve the ratio by collecting fields that separate the two, such as process parentage, rather than simply collecting more data that adds noise as quickly as signal.
+
 ### 3.2 Sampling
 
 If a network sensor exports flow summaries every 5 minutes, a 20-second burst appears smeared into one record. Faster sampling resolves bursts but multiplies data volume. Engineering chooses a rate that resolves the signals of interest at acceptable cost.
+
+The smearing is an averaging effect: the burst's intensity spread across five minutes looks like a mild rise rather than a spike. A rule tuned on per-minute data would then miss it. Amara compares the portal's per-request web logs with the five-minute flow summaries for the same period and sees the burst clearly in one and barely in the other.
 
 ### 3.3 Energy and heat
 
 A SIEM cluster draws electrical power and turns it into heat. Doubling ingestion may need more servers, more cooling and more rack space. Physical capacity limits how much telemetry a SOC can keep.
 
+Each server's power use turns almost entirely into heat that cooling must remove, so power and cooling budgets grow together. A data room with fixed cooling can reach its limit before the budget for servers runs out. Planning ingestion growth therefore involves facilities staff, not just the SIEM team, and long retention may be cheaper on slower, cooler archive storage.
+
 ### 3.4 Physical failures
 
 Disks wear out, power supplies fail, fibres get cut. Monitoring infrastructure needs redundancy; a single failed collector can silence a whole site's logs.
+
+A silent collector is worse than a noisy one, because the absence of logs can look like the absence of attacks. SOCs therefore monitor the monitoring: each source has an expected volume, and a sharp drop raises its own alert. Redundant collectors, dual power supplies and separate network paths reduce the chance that one failure blinds a whole site.
 
 ### 3.5 Time and clocks
 
 Clocks drift because oscillators are physical devices. NTP keeps them close, but drift of seconds can reorder events across hosts. NIST SP 800-92 stresses time synchronisation in log management.
 
+Order matters in investigations: did the login come before the file access or after? Network Time Protocol adjusts each clock against reference servers, typically keeping drift to milliseconds on a healthy network. Logs should record times in UTC with the zone stated, so events from different regions can be compared without conversion mistakes.
+
 ### 3.6 Case link
 
 The Lindqvist portal logs come from three web servers. One server's clock is 4 seconds fast, so failures logged there appear slightly later than they happened.
+
+Four seconds sounds trivial, but during a burst of several attempts per second it reorders events across servers. A success on another server could appear to happen before the failures that preceded it. Amara notes the offset in her analysis and corrects for it rather than editing the logs, and the operations team fixes the server's time synchronisation.
 
 ### Electromagnetic and physical security
 
@@ -248,25 +282,37 @@ You will (1) write small programs that read and summarise log records; (2) use v
 
 A program is a procedure a computer follows exactly. In a SOC, small programs count, filter and summarise records faster and more consistently than people. Because they are exact, mistakes in them are repeated exactly too, so they must be tested.
 
+A person counting failed logins by eye might miss a few lines or count one twice, and each count would differ slightly. A program gives the same answer every time, which is reassuring when it is right and dangerous when it is wrong. That is why SOC scripts are reviewed and tested like any other engineering artefact before analysts rely on their output.
+
 ### 4.2 Core constructs
 
 Variables hold values such as a count. Loops visit every record. Conditions choose what to count. Functions package a step, such as "extract the /24 network from an address", so it can be reused and tested alone.
+
+Amara's first script uses all four: a dictionary of counts keyed by network, a loop over log lines, a condition selecting failed logins and a function returning the /24 prefix. Keeping the prefix step in its own function means she can test it with tricky addresses, such as ones at the edge of a range, without running the whole script.
 
 ### 4.3 Reading records
 
 Logs arrive as lines of text or structured records. A program splits each line into fields, converts types (text to numbers or times) and handles malformed lines without crashing, recording how many were skipped.
 
+Real logs contain truncated lines, unexpected encodings and fields in odd formats. A script that crashes on the first bad line gives no answer at all; one that silently ignores bad lines may give a wrong one. Counting skipped lines and reporting them alongside results lets the reader judge whether the data were clean enough to trust.
+
 ### 4.4 Testing on known input
 
 Before running on real logs, Amara feeds her function five hand-made lines whose correct answer she already knows. If the output differs, the code is wrong, not the data.
+
+Her five lines include an ordinary failure, a success, a malformed line, an address at the boundary of a /24 range and a line with a time from a different zone. Each tests one possible mistake. When the first run counts the malformed line as a failure, she fixes the parser and reruns before touching real data.
 
 ### 4.5 Readability
 
 Short functions, clear names and comments on intent help Paolo review her code. Code that only its author understands is a risk in operations.
 
+In a SOC, scripts are often run at 3 a.m. by someone other than their author, during an incident. A function named `failed_logins_by_network` explains itself; one named `proc2` does not. Comments should say why a step exists, for example that one log source writes local time, rather than restating what the code does.
+
 ### 4.6 Standard library first
 
 Python's standard library reads CSV, JSON and dates. Using it avoids installing unreviewed packages on SOC machines.
+
+Every installed package is code from outside the organisation running on machines that see sensitive data. Each one needs review, updates and trust in its maintainers. For counting, filtering and parsing common formats, the standard library is enough, and SOC machines stay simpler to secure and rebuild. Larger tools are added deliberately when a real need appears. Paolo keeps a short list of approved packages, each with a named owner who tracks its updates.
 
 ### Version control
 
@@ -308,25 +354,37 @@ You will (1) write clear technical notes, tickets and design documents; (2) adap
 
 Analysts need exact fields and times; managers need impact and decisions; customers need what happened and what to do. One incident produces several documents, each written for its reader.
 
+Writing one document for all three fails each of them: analysts lose detail, managers drown in it, customers get jargon. Amara starts each piece by asking what the reader must do after reading it. That question decides what to include, from field names for the analyst to a single recommended decision for the manager.
+
 ### 5.2 Tickets
 
 A good SOC ticket states what was observed, when (with time zone), on which assets, what was done, and what is still unknown. Knerler, Parker and Zimmerman (2022) emphasise clear communication as a SOC strategy in its own right.
+
+Stating what is unknown is the part most often skipped, yet it tells the next shift where to look. A time without a zone forces a reader to guess, and a wrong guess can reorder the story. Assets should be named by identifiers the asset inventory uses, so other teams can find them without asking.
 
 ### 5.3 Design documents
 
 Engineering changes, such as a new detection, need a short design document: problem, proposal, alternatives, risks, test plan and rollback.
 
+Writing alternatives forces the author to show why the proposal beats other options, not just that it works. A test plan states how the detection will be shown to fire on the target behaviour and stay quiet on normal activity. Rollback explains how to remove the change quickly if it floods the queue after deployment. Paolo reviews each document before the rule goes live.
+
 ### 5.4 Honest charts
 
 Charts must start axes at zero for counts, label units and time zones, and avoid smoothing away spikes that matter.
+
+A count axis starting at 900 can make a rise from 950 to 1,000 look like a doubling. Unlabelled time zones can shift a spike into the wrong shift. Smoothing with a long moving average makes trend lines look tidy but can erase the very burst an incident chart is meant to show, so raw counts should appear alongside any smoothed line. Captions state the data source.
 
 ### 5.5 Words for uncertainty
 
 "Confirmed", "likely" and "possible" should be used consistently. Amara's team defines them in a style guide so readers know how sure the writer is.
 
+Without agreed meanings, one writer's 'likely' is another's 'possible', and a manager may act on a stronger claim than the evidence supports. The style guide links each word to the evidence expected: 'confirmed' needs direct evidence such as a log entry, 'likely' needs several consistent indicators, and 'possible' marks a lead not yet checked. The guide fits on one page.
+
 ### 5.6 Case
 
 After the portal burst, Amara writes three items: the analyst ticket, a manager summary and a draft customer notice for account u5's owner, reviewed by Paolo and the communications team.
+
+The ticket lists the failure counts, the network, u5's successful login time and session actions, with times in UTC. The manager summary gives the impact in two sentences and asks for approval to force a password reset. The customer notice explains in plain words that unusual sign-in activity was seen and what the customer should do.
 
 ### Review before sending
 
