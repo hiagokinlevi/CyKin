@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Master's Course
 
 - Language: English (`en`); course 175, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students who must design, run and defend an empirical study of an application-security practice.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -49,21 +49,31 @@ Sofia Almeida is a master's student at the fictional Kingsreach University, supe
 
 "Why do we keep getting this?" becomes: "Do automated authorisation tests derived from an explicit role matrix reduce the reintroduction of broken access control in a web application, and what else explains the change?" The question names an intervention, an outcome and a demand for alternative explanations.
 
+The second half of the question matters as much as the first. Tallyline changed more than its tests during the study period, and a question that asked only whether findings fell would invite Sofia to credit the tests with everything. Asking what else explains the change commits her, before any data, to look for rival causes such as the framework upgrade.
+
 ### 1.3 Shared vocabulary
 
 The OWASP Top 10:2021 ranks Broken Access Control (A01) first; the CWE Top 25 lists related weaknesses such as missing authorisation (CWE-862) and authorisation bypass through a user-controlled key (CWE-639). OWASP ASVS 4.0.3 chapter V4 and ASVS 5.0.0's authorisation chapter give verifiable requirements. Using these names lets Sofia's findings be compared with others.
+
+The March flaw maps cleanly onto this vocabulary: changing a number in the address to view another business's invoice is CWE-639, and the refunds flaw two releases later is a case of missing authorisation, CWE-862. Recording both identifiers for each finding lets Sofia's counts be compared with published data on the same weaknesses.
 
 ### 1.4 Search method
 
 Sofia searches two digital libraries and the OWASP project pages with terms for access control, authorisation testing and regression. She records the date, database, query and number of hits, screens titles and abstracts against inclusion criteria (empirical, web applications, access control), and keeps a log of exclusions with reasons.
 
+Her log turned 412 records into 38 after title screening and 11 after full text. Only two of the eleven studied authorisation regression in web applications directly, and none used role-matrix tests in a real team. Because each exclusion has a reason in the log, Dr Lee could accept that gap as defensible rather than as a sign that the search was too narrow.
+
 ### 1.5 Grey literature
 
 Standards and testing guides such as the OWASP Web Security Testing Guide (WSTG v4.2) are not peer-reviewed research but define practice; Sofia uses them for definitions, not as evidence of effectiveness.
 
+In practice, the WSTG supplies the description of how to test each role against each endpoint, which Sofia's matrix tests follow. It cannot tell her whether doing so reduces recurring flaws; that is what her twelve releases are for. Keeping the two uses apart prevents a testing guide from being cited as evidence for an effect it never measured.
+
 ### 1.6 Developer behaviour
 
 Johnson et al. (2013) found developers avoid static analysis tools that produce many false positives and poor explanations; Sofia notes that any test approach must be usable by Tallyline's developers, or it will be ignored.
+
+This shapes the design of Sofia's tests. Each failing test names the role, the endpoint and the intended decision, so a developer can see at once that, for example, support should not be able to issue refunds. Developers later reported finding the failures clear, which is the usability Johnson et al. found missing in static tools.
 
 ### Worked example
 
@@ -105,25 +115,37 @@ You will (1) critically discuss secure development frameworks; (2) compare verif
 
 NIST SP 800-218, the SSDF (Souppaya et al., 2022), groups practices into preparing the organisation, protecting software, producing well-secured software and responding to vulnerabilities. OWASP SAMM v2 (2020) measures maturity in governance, design, implementation, verification and operations. Sofia's intervention sits in SSDF PW.8 (test executable code) and SAMM's verification function.
 
+Placing the intervention in both frameworks lets Tallyline report it in the language its auditors and customers already use. PW.8 asks for executable code to be tested, and the role-matrix tests do exactly that for authorisation; SAMM's verification function gives Tallyline a way to describe how far its testing practice has matured.
+
 ### 2.2 ASVS versions
 
 ASVS 4.0.3 (2021) and 5.0.0 (2025) both require that access control is enforced on a trusted service layer and that users cannot access records by manipulating identifiers. Version 5.0.0 reorganised chapters and requirement numbering, so Sofia records both identifiers for each test.
+
+Recording both identifiers keeps the tests traceable whichever version a customer or auditor uses. Sofia's seminar slide maps each Tallyline test to its 4.0.3 requirement, its 5.0.0 equivalent, an SSDF practice and a SAMM activity; Dr Lee suggested adding the CWE entry as well, so findings link to weakness data.
 
 ### 2.3 Threat modelling
 
 Shostack (2014) describes threat modelling around four questions: what are we working on, what can go wrong, what are we going to do about it, and did we do a good job. Tallyline's role matrix is a product of the first two questions applied to authorisation.
 
+The matrix answers "what are we working on" by listing roles and endpoints, and "what can go wrong" by stating, for each pair, what must be refused. The March invoice flaw and the later refunds flaw are both cases where the answer to the second question had never been written down.
+
 ### 2.4 Supply chain links
 
 Access checks often live in shared libraries or frameworks. If a team upgrades an authorisation library and its defaults change, flaws can return. Sofia notes the SLSA v1.0 idea that build inputs should be known and traceable; knowing which library version ran in each release helps explain regressions.
+
+For Tallyline, this idea has a direct example: the framework upgrade in release 8 added a default deny for unmapped routes. A change in a dependency's defaults can remove flaws as well as add them, so Sofia records which framework version ran in each release. Without that record, the fall in findings after release 8 could not be split between the tests and the upgrade.
 
 ### 2.5 Seminar argument
 
 Sofia argues that tests encoding the intended access model are a verification practice that also documents design intent, linking SSDF PW.8, SAMM verification and ASVS requirements.
 
+Her slide made the link concrete for each test: the test that a customer cannot read another business's invoice maps to an ASVS requirement on manipulated identifiers, to PW.8 and to SAMM verification. A test that documents intended behaviour also helps when roles change, because the matrix shows what the old decision was before anyone edits it.
+
 ### 2.6 Critique
 
 A classmate argues that tests only check the cases someone wrote down; missing roles or endpoints stay untested. Sofia accepts this and plans to measure matrix completeness.
+
+The pilot later proved the classmate right: the matrix initially missed the "export" endpoint, and a completeness check found three more unmapped routes, internal health checks. Sofia's answer was a check that lists all routes from the framework and flags any missing from the matrix, which turns the critique into a measured quantity.
 
 ### Worked example
 
@@ -165,25 +187,37 @@ You will (1) design a before-and-after study in a live development team; (2) han
 
 An interrupted time series: six releases before the authorisation tests were introduced and six after. The outcome is access-control findings per release from Tallyline's regular penetration tests and bug reports, normalised by lines of code changed.
 
+Twelve releases give six on each side of the change, enough to see whether findings fall at the point the tests were introduced rather than drifting down throughout. Using Tallyline's regular penetration tests and bug reports means the outcome was collected the same way before and after, rather than by a new process that might find more or fewer flaws.
+
 ### 3.2 Why normalise
 
 A quiet release with little change will naturally have fewer findings. Findings per thousand changed lines (KLOC) adjusts for this.
+
+The after period in fact changed more code, 52 KLOC against 41, so normalising works against the tests rather than in their favour. Without it, a reader could fairly ask whether quieter releases explained the drop. Using lines changed rather than total code size matters too: Tallyline's codebase grows every release, but findings come mostly from new or modified code. A KLOC-changed denominator ties the rate to the work that could introduce a flaw.
 
 ### 3.3 Ethics
 
 Developers are not being evaluated; findings are attributed to releases, not people. Tallyline's legal team approves the use of anonymised finding counts. No real vulnerability details leave the company; the dissertation uses synthetic examples.
 
+The ethics committee also asked whether developers might feel blamed if findings rose. Sofia added a statement to the participant information sheet and agreed with the engineering manager that results would not be used in performance reviews. Attributing findings to releases makes that promise easy to keep, because no table has a column for people.
+
 ### 3.4 Confidentiality of flaws
 
 Unfixed flaws are never described in the dissertation. Every finding counted is fixed before publication.
+
+In Tallyline's case that is straightforward, because the study counts findings from past releases, all of which were fixed. The dissertation's examples, such as a customer reading another business's invoice, are synthetic versions written to show the kind of flaw without the real endpoint, parameters or customer. The same rule covers the pilot. The two mismatches the role-matrix tests found, a customer reading another business's invoice and support issuing refunds, were fixed within a day, before any write-up. If a finding were still open at submission, it would be counted in the tables but left out of the text until fixed.
 
 ### 3.5 Reproducibility
 
 Sofia publishes her analysis scripts and a synthetic dataset with the same structure, so others can run the analysis without Tallyline's data.
 
+The synthetic dataset mirrors Tallyline's fields: release number, access-control findings, lines changed, tester-days and notable events. An examiner can run every script on it and see each table produced, even though the figures differ from Tallyline's. After the defence, an examiner asked Sofia to share the dataset with a course on secure development, which she did under CC0.
+
 ### 3.6 Measurement plan
 
 Two people classify each finding as access control or not, using the OWASP Top 10 A01 definition, with disagreements discussed and logged.
+
+Using the A01 definition keeps the classification tied to a public standard rather than Sofia's judgement alone. The disagreement log matters for the analysis: if the two classifiers disagreed often about borderline findings, the before-and-after counts could shift depending on who classified them. In the main data they agreed on 46 of 48. Sofia logs each disagreement with both classifiers' reasons, so a reader can see which findings were borderline and check whether moving them would change the before-and-after counts.
 
 ### Data management
 
@@ -232,25 +266,37 @@ You will (1) identify alternative explanations for a security improvement; (2) d
 
 If access-control findings fall after tests are added, other things might explain it: fewer pentest days, a new framework, a senior developer joining, or testers focusing elsewhere.
 
+Each alternative predicts a different pattern. Fewer pentest days would lower all findings, not just access control. A new framework would lower findings mainly in the routes it changed. A senior developer would show up as a change in review practice. Tester focus elsewhere would appear in the pentest scopes. Listing them before the results lets each be checked against data.
+
 ### 4.2 Pentest effort
 
 Sofia records tester-days per release. They were stable (four days each), so reduced effort does not explain a fall.
+
+Stable effort rules out the simplest alternative. If tester-days had fallen from four to two after the tests were introduced, fewer findings would be expected whatever the tests did, and the comparison would need to be adjusted for effort. Recording tester-days per release is cheap and closes that question for all twelve releases. Effort also stays comparable across the two periods because the same pentest supplier ran every test; Sofia records the supplier with the tester-days so this is checkable.
 
 ### 4.3 Framework change
 
 In release 8 Tallyline upgraded its web framework, which added a default deny for unmapped routes. This could reduce flaws by itself. Sofia separates findings in routes the upgrade affected from others.
 
+Separating the routes gives a cleaner test. In routes the upgrade affected, the default deny and the tests could both explain a fall. In routes the upgrade did not affect, only the tests (and the other alternatives) could. Sofia found that findings still fell sharply in the unaffected routes, which supports a real effect of the tests, though smaller than the raw comparison suggests.
+
 ### 4.4 People
 
 A senior developer joined at release 7. Sofia notes the date and asks reviewers whether review practice changed; it did, slightly.
+
+Release 7 is one release before the tests and the framework upgrade, so a change in review practice would overlap with both. Sofia cannot separate its effect statistically with twelve releases. She records it as a possible contributor and lets the reviewers' account of a slight change stand as the evidence. Asking reviewers rather than inferring from the data is deliberate: twelve releases cannot separate a person's effect statistically, but reviewers can say what they did differently. Their answer, a slight change, is reported as it was given.
 
 ### 4.5 Tester focus
 
 Pentest scopes are checked: authorisation was in scope for all twelve releases.
 
+That check matters because a fall in access-control findings could simply mean the testers stopped looking for them. Since authorisation stayed in scope throughout, a release with no access-control findings means testers looked and found none, not that they did not look. The same four tester-days per release support this. Sofia checks the scope documents for all twelve releases rather than a sample, because a single release where authorisation was dropped from scope would produce a misleading zero. The scope check takes an afternoon and closes the question fully.
+
 ### 4.6 Weighing
 
 Some of the improvement may come from the framework default and the new developer; the tests are one cause among several. Sofia plans to report this honestly rather than credit everything to tests.
+
+Weighing the alternatives together leads to a ranked account rather than a single cause: the tests have the strongest support, because findings fell even in routes the framework change did not affect; the framework default explains part of the fall in the routes it did affect; and the senior developer may have contributed through slightly changed review practice.
 
 ### Unchecked explanations
 
@@ -299,11 +345,15 @@ You will (1) write a dissertation proposal; (2) pilot the role-matrix test appro
 
 Background, question, design, ethics, alternative explanations, timeline and risks, in ten pages approved by Dr Lee.
 
+Ten pages forces each part to be specific. The alternative-explanations part lists pentest effort, the framework change, the senior developer and tester focus, each with the data that will check it. The timeline fixes when the before and after periods begin. The risks part names the main threat to the design: a small number of findings. Dr Lee's approval also fixes the analysis before data collection, which is what later lets the examiners see that the framework separation was planned, not added after results arrived.
+
 ### 5.2 Role matrix
 
 For each role (customer, support, finance) and each endpoint, the matrix states whether access is allowed. Tests call each endpoint as each role in a test environment and compare the result with the matrix. This follows the WSTG's authorisation testing guidance, applied to Tallyline's own system with permission.
 
-### Lab — Lab — matrix check
+Three roles keep Tallyline's matrix small enough to review by hand, and the six decisions in the lab are a small part of it. The matrix's value comes from being complete: a role or endpoint missing from it is never tested, which is why Sofia added the route completeness check after the pilot.
+
+### Lab — matrix check
 
 ```python
 """Compare a synthetic app's actual access decisions with the intended role matrix."""
@@ -331,13 +381,19 @@ MISMATCH support  POST /refunds          intended=False actual=True
 
 Two of six decisions are wrong: a customer can read another business's invoice (intended no), and support can issue refunds (intended no). Both match the kinds of flaw that had recurred.
 
+The two wrong decisions mirror the history that started the study: the March flaw let a customer view another business's invoice, and a similar flaw reappeared in refunds. A test suite that encodes the intended matrix would have failed on both before release, which is the mechanism Sofia's study puts to the test.
+
 ### 5.4 Pilot lessons
 
 The matrix initially missed the "export" endpoint; Sofia adds a check that lists all routes from the framework and flags any not in the matrix, addressing the completeness critique from chapter 2.
 
+The completeness check later found three more unmapped routes, all internal health checks, which were added as "deny for all user roles". The two pilot mismatches were fixed within a day. Each addition to the matrix is recorded, which is why the examiners later asked for route and role counts over time.
+
 ### 5.5 Developer feedback
 
 Developers found failing tests clear because each names the role, endpoint and intended decision, avoiding the usability problems Johnson et al. (2013) reported for static tools.
+
+The clarity matters because tests that developers distrust get disabled. A failing test saying "support, POST /refunds, intended deny, got allow" tells the developer exactly what to fix and where, without anyone needing to interpret a scanner's output. That is part of why developers later said the tests caught problems before review. Because each test is a single call compared against one matrix cell, a developer can fix a failure without knowing how the rest of the suite works.
 
 ### Timeline
 
@@ -390,7 +446,9 @@ You will (1) collect release-level findings and change size; (2) compute rates a
 
 For each of twelve releases Sofia records access-control findings, lines changed, pentest days and notable events. Two classifiers agree on 46 of 48 findings' categories; the two disagreements are resolved by discussion.
 
-### Lab — Lab — findings per release
+Notable events, such as the framework upgrade in release 8 and the senior developer joining at release 7, are recorded beside the counts so that the time series can be read against them. The classifiers' high agreement means the access-control counts do not depend on who classified the findings. Recording these items for every release, not just the ones where something happened, is what makes the before and after periods comparable.
+
+### Lab — findings per release
 
 ```python
 """Access-control findings per release before and after authorisation tests were added (synthetic)."""
@@ -411,7 +469,9 @@ after  releases=6 findings=3 mean per release=0.50
 
 Before tests: 17 findings over six releases, 2.83 per release. After: 3 findings, 0.50 per release.
 
-### Lab — Lab — rate per KLOC
+The raw counts are the starting point, not the result. Seventeen findings before and three after is a large fall, but it does not yet account for change size, the framework upgrade or the other alternatives, which is why the next steps normalise by KLOC and separate the routes affected by the upgrade. Expressed per release, that is close to three findings before against one every two releases after. The framework-separated comparison and the KLOC rate then test how much of that fall the tests can claim.
+
+### Lab — rate per KLOC
 
 ```python
 """Findings per 1,000 changed lines, and the rate ratio after/before (synthetic)."""
@@ -431,13 +491,19 @@ before 0.415 per KLOC, after 0.058 per KLOC, rate ratio 0.14
 
 Normalised by change size, the rate falls from 0.415 to 0.058 findings per KLOC, a rate ratio of 0.14. The after period actually changed more code (52 versus 41 KLOC), so the fall is not due to quieter releases.
 
+A rate ratio of 0.14 means the after-period rate is about one seventh of the before-period rate. Because the after period changed more code, the normalised fall is if anything larger than the raw fall, which removes "quieter releases" as an explanation. Sofia states it next to the framework-separated result, so the ratio is never read as the tests' effect alone.
+
 ### 6.4 Interpreting
 
 Twelve releases and twenty findings are a small sample; Sofia reports the ratio with its uncertainty and avoids saying "86% reduction caused by tests".
 
+The uncertainty matters because twenty findings split over twelve releases leave many releases with zero or one finding. A single release with three more findings after the tests would change the ratio noticeably. Sofia's wording, "was followed by" and "is consistent with", keeps the claim within what such small counts can support. Sofia's table gives the ratio with an interval rather than a single figure.
+
 ### 6.5 Team observations
 
 In interviews, developers say failing authorisation tests often caught problems before review. One says the matrix forced product managers to decide roles explicitly, which reduced arguments.
+
+The interviews do not measure an effect; they explain a mechanism. Catching problems before review suggests the tests work at the point developers write code, and the product managers' explicit role decisions suggest the matrix also changes how requirements are written. Sofia reports both as developers' accounts, alongside the counts. Sofia reports them as developers' accounts of how the tests worked, not as evidence that findings fell; that evidence comes from the counts.
 
 ### Uncertainty
 
@@ -486,25 +552,37 @@ You will (1) structure a dissertation for a security audience; (2) write limitat
 
 Introduction, literature, method, results, competing explanations, discussion, limitations, conclusion. Each chapter answers one question.
 
+Giving competing explanations their own chapter, before the discussion, makes the reader meet the framework change, the senior developer and pentest effort before any interpretation of the 0.14 ratio. Each chapter answers one question, so the examiners can find, for example, how tester focus was checked without reading the whole results chapter. The structure also mirrors the proposal Dr Lee approved, so an examiner can compare what was planned with what was done chapter by chapter. Any change between the two is listed in the method chapter with its reason.
+
 ### 7.2 Limitations
 
 One company, one application, twelve releases; a framework change during the study; pentest skill variation; tests in a test environment. Each limitation says what it means for the claim and how future work could address it.
+
+Dr Lee called this the most useful part for practitioners, because it tells them when the approach may not work. Apps with hundreds of dynamic roles, for example, may not be manageable with a hand-written matrix; the dissertation says so, and proposes generating the matrix from the role definitions as future work.
 
 ### 7.3 Confidentiality
 
 Tallyline is named only with permission, figures are rounded, and examples are synthetic versions of real flaws.
 
+Rounding stops a reader from linking a figure to a specific Tallyline release or customer. The synthetic examples keep the shape of the real flaws, such as reading another business's invoice by changing a number, without the real endpoint names or parameters. Tallyline's legal team reviewed the final text against these rules before submission, the same team that approved use of the anonymised finding counts at the start. Their review is recorded with the ethics approval.
+
 ### 7.4 Linking to standards
 
 The discussion recommends role-matrix tests as a way to meet ASVS authorisation requirements continuously and to evidence SSDF PW.8 and SAMM verification.
+
+Continuously means on every build, not once a year: a role-matrix test that fails the build gives Tallyline evidence for PW.8 every time it runs. The discussion also notes the limit: the tests check only what the matrix lists, so ASVS requirements for complete coverage depend on the route completeness check as well. For that reason it recommends running the route check in the same build as the tests, so an unmapped route fails the build just as a wrong decision does.
 
 ### 7.5 Plain summary
 
 A one-page summary for Tallyline's engineering team avoids jargon.
 
+It gives the main result as "access-control findings fell sharply after the tests; part of the fall came from the framework upgrade", states that results were never used to assess individuals, and asks developers to keep the matrix and route check up to date. Each sentence matches a claim in the dissertation. The summary also explains the route completeness check in one sentence, because it is the step most likely to be dropped once the study ends and the person who wrote it moves on. A matrix that stops matching the routes would quietly stop testing new endpoints.
+
 ### 7.6 Writing style
 
 Claims are tied to evidence with hedges where needed: "was followed by", "is consistent with".
+
+When a sentence in the draft said the tests "reduced" findings, Sofia changed it to "was followed by a reduction", because the design shows sequence and association rather than proof of cause. The framework change makes the hedge necessary, not merely cautious. The hedges are not decoration: each one corresponds to a limitation stated in the limitations chapter, such as the framework change or the twelve-release sample, so a reader can see why the claim is worded as it is.
 
 ### Figures
 
@@ -557,25 +635,37 @@ You will (1) obtain independent review of findings; (2) defend methods and claim
 
 A security engineer from another company reviews the method and synthetic dataset, re-running the scripts. She confirms the numbers and suggests reporting the routes count over time.
 
+Re-running the scripts on the synthetic dataset tests the method and code, not Tallyline's figures. The reviewer's suggestion, reporting the routes count over time, addresses a reader's obvious question: whether the matrix kept up with the app. Sofia adds it, and the examiners later ask for the same information. Her re-run used only the published scripts and the CC0 dataset, which is the same route any later reader would take.
+
 ### 8.2 Defense
 
 Twenty minutes plus questions, with two examiners.
+
+Sofia's talk follows the dissertation's order: question, design, competing explanations, results with uncertainty, limitations. She keeps the 0.14 ratio on the same slide as the framework-separated result, so the examiners never see one without the other. Sofia rehearses the talk with Dr Lee using the questions she expects most: the credibility of the 0.14 ratio with twenty findings, the framework change in release 8, and whether the matrix could miss tests. The route completeness check is ready on a backup slide, and the defence is held after Tallyline's legal team has approved the final text.
 
 ### 8.3 Questions
 
 "Is the 0.14 ratio credible with 20 findings?" Sofia answers that it is imprecise, but direction and size are consistent with other evidence. "Would mutation of the matrix catch missing tests?" She explains the route completeness check.
 
+Both answers rest on earlier work: the imprecision is acknowledged in the results chapter, and the route completeness check came from the pilot, where the matrix had missed the export endpoint. The examiners' questions test whether those choices were deliberate, and the dissertation shows that they were.
+
 ### 8.4 Examiner advice
 
 Report how many routes and roles exist over time, so readers see the matrix scale.
+
+The advice matches the independent reviewer's suggestion. Showing how many routes and roles the matrix covers at each release lets readers judge whether the approach would scale to their own apps, and whether the fall in findings happened while the matrix was growing or stable. Sofia adds a table to the results chapter with the number of routes and roles at each of the twelve releases, drawn from the framework's route list that the completeness check already produces. No new data collection is needed, because the check has been running since the pilot.
 
 ### 8.5 Dissemination
 
 A conference short paper, a Tallyline engineering blog post with synthetic examples, and an OWASP community talk.
 
+Each output reaches a different audience: researchers through the short paper, Tallyline's developers and customers through the blog, and practitioners through the OWASP talk. All three use the synthetic examples and the CC0 dataset, so none needs Tallyline's internal data. The blog post and the talk carry the same hedged wording as the dissertation: findings fell after the tests, and part of the fall is explained by the framework default. Using the CC0 synthetic dataset in all three means readers can reproduce the examples without any Tallyline data.
+
 ### 8.6 Next steps
 
 Tallyline extends the matrix approach to its mobile API.
+
+The mobile API serves the same customer, support and finance roles, so the matrix can be extended rather than rebuilt. The route completeness check will need a mobile equivalent, because the API's endpoints are listed differently from the web framework's routes. Mobile clients often call endpoints the web app never uses, so the first step is listing every mobile endpoint and adding it to the matrix with an intended decision for each role. The same three roles mean existing decisions carry over where endpoints are shared. Sofia's scripts can then compare mobile findings before and after, as the dissertation did for the web app.
 
 ### Lessons
 

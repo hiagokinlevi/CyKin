@@ -275,7 +275,7 @@ You will (1) replicate the existing daily scan on synthetic workloads; (2) confi
 
 Before comparing designs, Amara checks that the measurement tool reproduces what the existing scanner reports. If the checks disagree with the scanner, any later difference could come from the tool, not the control.
 
-Agreement on the same inputs is the test. If the tool flagged fewer violations than the scanner, exposure under scanning would be undercounted; if more, the scanning arm would look worse. Either way, the later comparison would measure a difference between tools rather than between controls. The scanner's report is the reference here.
+Agreement on the same inputs is the test. If the tool flagged fewer violations than the scanner, exposure under scanning would be undercounted; if more, the scanning arm would look worse. Either way, the later comparison would measure a difference between tools rather than between controls. Agreement on the five synthetic pods, seven violations from each, is the precondition for comparing designs at all.
 
 ### Lab — workload checks
 
@@ -333,7 +333,7 @@ Without this change, a workload with a privileged container that was redeployed 
 
 The CIS Benchmarks for Kubernetes include similar checks; Amara notes overlaps so results can be related to them.
 
-The overlap is close for the four checks in Amara's definition: privileged containers, host path volumes, running as root and privilege escalation all appear in the benchmarks' pod security recommendations. Noting the matching benchmark entries lets a reader who uses CIS rather than Pod Security Standards relate the results to their own controls without reinterpreting the definition. Amara's appendix lists the benchmark entry beside each of her four checks.
+The overlap is close for the four checks in Amara's definition: privileged containers, host path volumes, running as root and privilege escalation all appear in the benchmarks' pod security recommendations. Noting the matching benchmark entries lets a reader who uses CIS rather than Pod Security Standards relate the results to their own controls without reinterpreting the definition. Her appendix places the matching benchmark recommendation beside each of the four Pod Security Standards checks: privileged containers, host path volumes, running as root and privilege escalation.
 
 ### Recording the replication
 
@@ -422,7 +422,7 @@ Under scanning, exposure depends on when a configuration goes live relative to t
 
 Deployment rejections fall from 7% in the first fortnight to 3% after, below the 5% ceiling; exception requests total 11, of which 9 are approved with reasons.
 
-The fall from 7% to 3% reflects teams learning the rules in the first fortnight, which is why the ceiling applies after it. The 11 exception requests are the second cost: each takes a reviewer's time and leaves a risky configuration live. In the step-two clusters, exceptions approved without end dates raised exposure, and Meridian added 30-day expiry. Two exception requests were refused.
+The fall from 7% to 3% reflects teams learning the rules in the first fortnight, which is why the ceiling applies after it. The 11 exception requests are the second cost: each takes a reviewer's time and leaves a risky configuration live. In the step-two clusters, exceptions approved without end dates raised exposure, and Meridian added 30-day expiry. The 2 refused requests are recorded with their reasons, so the panel's condition that exception workloads be reported separately covers refusals as well as approvals.
 
 ### 5.5 Independent validation
 
@@ -473,7 +473,7 @@ You will (1) invite structured critique of the study; (2) separate valid objecti
 
 Amara presents to the research group and sends the draft paper to two external reviewers: a platform engineer and a measurement researcher. She asks each to identify the weakest claim and the weakest analysis.
 
-The two reviewers cover different weaknesses: a platform engineer knows how teams react to blocked deployments, while a measurement researcher knows how outcome definitions can hide effects. Asking each for the weakest claim and the weakest analysis invites specific objections rather than general praise. Both reviewers receive the full method chapter.
+The two reviewers cover different weaknesses: a platform engineer knows how teams react to blocked deployments, while a measurement researcher knows how outcome definitions can hide effects. Asking each for the weakest claim and the weakest analysis invites specific objections rather than general praise. Both receive the exposure definition, including the rule that a blocked deployment counts as zero exposure, which is where both later aim their objections.
 
 ### 6.2 Objections received
 
@@ -497,7 +497,7 @@ The revised claim keeps the measured size of the effect and adds what qualifies 
 
 A revision log lists each critique, the response and any change in text or analysis, kept in the archive.
 
-For Amara's thesis the log has entries for both external reviewers' objections, the exception-scope analysis, the workaround sensitivity analysis, and the reviewer who preferred a different statistical test, where both tests agreed and the difference was recorded as preference. Keeping the log in the archive lets examiners see that each critique was answered with evidence. Each entry is dated and cites the file it changed.
+For Amara's thesis the log has entries for both external reviewers' objections, the exception-scope analysis, the workaround sensitivity analysis, and the reviewer who preferred a different statistical test, where both tests agreed and the difference was recorded as preference. Keeping the log in the archive lets examiners see that each critique was answered with evidence. The workaround search, for example, appears with the two development-namespace workloads it found and the sensitivity analysis it added.
 
 ### Group critique
 
@@ -548,13 +548,13 @@ Stating limits in each chapter means the reader meets them where they arise: the
 
 The archive contains synthetic and de-identified datasets, analysis scripts, policy configurations used in the study, the label guide, the revision log and a README explaining how to rerun every figure.
 
-The README is tested, not just written: before submission someone other than Amara follows it from a clean machine. The policy configurations matter because they define what admission enforcement actually checked; without them, another researcher could not tell whether a different result came from different clusters or different policies. Each item is listed in the manifest.
+The README is tested, not just written: before submission someone other than Amara follows it from a clean machine. The policy configurations matter because they define what admission enforcement actually checked; without them, another researcher could not tell whether a different result came from different clusters or different policies. Every one of these files is listed in the SHA-256 manifest, including config/policies.yaml, the file whose late edit the verification later caught.
 
 ### 7.3 Integrity manifest
 
 A SHA-256 manifest lists every file. Before submission, the archive is verified against it so examiners can trust that results come from the archived files.
 
-The manifest also protects Amara. If an examiner's rerun gave a different figure, the first question would be whether a file had changed, and the manifest answers it in seconds. Verifying before submission found exactly such a change in her real archive: a late edit to a policy file that had not been recorded. The manifest itself is hashed in the README.
+The manifest also protects Amara. If an examiner's rerun gave a different figure, the first question would be whether a file had changed, and the manifest answers it in seconds. Verifying before submission found exactly such a change in her real archive: a late edit to a policy file that had not been recorded. That check is what caught the unrecorded edit to the policy file before submission.
 
 ### Lab — archive verification
 
@@ -585,7 +585,7 @@ The real case is the important one: an unrecorded edit to the policy file meant 
 
 Raw audit logs from Meridian cannot leave the partner; the archive explains how equivalent data can be generated synthetically using the provided generator.
 
-The generator produces audit records with the same fields, formats and timing patterns as Meridian's exports, so every script runs on it unchanged. It cannot reproduce Meridian's actual results, and the README says so: synthetic runs test the method, while the reported figures come from the partner data that stayed with Meridian. Meridian keeps the raw logs for the agreed period.
+The generator produces audit records with the same fields, formats and timing patterns as Meridian's exports, so every script runs on it unchanged. It cannot reproduce Meridian's actual results, and the README says so: synthetic runs test the method, while the reported figures come from the partner data that stayed with Meridian. The README states which fields of Meridian's audit logs the generator imitates and that the 30-day retention used in the study clusters is a property of Meridian's setup, not of the generator.
 
 ### Writing for examiners
 
@@ -630,7 +630,7 @@ You will (1) prepare for the defence; (2) anticipate examiner questions; (3) pla
 
 Amara rehearses a 30-minute talk: problem, gap, method, result, limits and contribution. Mock examiners ask about generalisation, measurement validity and ethics.
 
-The talk keeps the result in proportion: one slide gives the 14.5-hour median difference with its interval, and the next gives the exceptions, workarounds and rejection rates. Mock examiners' questions on generalisation, measurement validity and ethics map onto the limits already stated in each chapter, so rehearsal tests whether Amara can find them quickly. Prof. Lund chairs the mock panel.
+The talk keeps the result in proportion: one slide gives the 14.5-hour median difference with its interval, and the next gives the exceptions, workarounds and rejection rates. Mock examiners' questions on generalisation, measurement validity and ethics map onto the limits already stated in each chapter, so rehearsal tests whether Amara can find them quickly. The rehearsal also tests the answer to the calendar-time question that the real examiners later asked, using the stepped design.
 
 ### 8.2 Expected questions
 
@@ -660,7 +660,7 @@ Meridian's own experience gives the guidance its examples: exceptions approved w
 
 Extending the method to infrastructure-as-code checks before deployment and to multiple organisations.
 
-Checking infrastructure-as-code before deployment would move detection even earlier than admission, into pull requests, and the same exposure measure could compare it with admission enforcement. Extending to several organisations would address the main limit on generalisation: whether a reduction measured at Meridian holds in clusters run by teams with different practices. The archived generator and scripts are designed to make both extensions possible. Both are listed in the thesis's final chapter.
+Checking infrastructure-as-code before deployment would move detection even earlier than admission, into pull requests, and the same exposure measure could compare it with admission enforcement. Extending to several organisations would address the main limit on generalisation: whether a reduction measured at Meridian holds in clusters run by teams with different practices. The archived generator and scripts are designed to make both extensions possible. Meridian's adoption of exception expiry across all clusters gives a natural first follow-up: whether exposure from exceptions falls when every exception has a 30-day end date.
 
 ### After the defence
 

@@ -229,7 +229,7 @@ Writing the plan first prevents choosing the analysis after seeing which compari
 
 The outcome is drift during the six months; candidate explanations are local admin, remote working and department.
 
-The outcome is binary for each laptop: drifted at least once in the six months, or not. Each candidate explanation becomes a group comparison: admin versus none, remote versus office, engineering versus other departments. Coding them this way makes the three comparisons directly comparable in the same units, a risk ratio, which is what lets Chloé say which association is strongest. Each comparison uses the same 600 laptops.
+The outcome is binary for each laptop: drifted at least once in the six months, or not. Each candidate explanation becomes a group comparison: admin versus none, remote versus office, engineering versus other departments. Coding them this way makes the three comparisons directly comparable in the same units, a risk ratio, which is what lets Chloé say which association is strongest. All three comparisons divide the same 600 laptops differently: 120 admin against 480 others, 200 remote against 400 office, and 150 engineering against 450 in other departments.
 
 ### 3.5 Bias
 
@@ -518,13 +518,13 @@ This is the overlap Chloé planned for. The remote result in the main comparison
 
 Admin devices drifted on many settings, matching Explanation A's prediction.
 
-Non-admin remote devices, by contrast, drifted mainly on settings that a missed refresh would leave behind, which is the small residual effect of Explanation B. Engineering devices showed no concentration of firewall drift, consistent with the weak department result. The settings pattern therefore points the same way as the risk ratios, through a different route, which makes the conclusion more convincing than either alone. Chloé reports the settings counts per group in a table beside the risk ratios.
+This is the second test planned in Chapter 4, separate from the risk ratios: Explanation A predicted many settings changing together on admin devices, which the seminar sample already hinted at when the laptop with two extra administrators also had SMB1 on and a 15-minute screen lock. The comparison lab reports drift per group, not per setting, so the settings pattern rests on the per-device records Chloé kept for this purpose. A reader who wants to check it needs those records, which is why the archive includes them in pseudonymised form alongside the extract.
 
 ### 6.5 Conclusion
 
 Local admin rights are the strongest association; remote working adds little once admin rights are considered; department shows no clear association.
 
-Each part of the conclusion carries its own evidence: a risk ratio equal to 3.67 and chi-square equal to 86.7 for admin rights; a remote effect equal to 1.45 that largely disappears within admin strata; and an engineering chi-square equal to 2.1, below the threshold. The wording stays associational, as in Chloé's research question, because the design observed existing records and changed nothing. Removing admin rights is therefore the first thing to test.
+Each part of the conclusion carries its own evidence: a risk ratio equal to 3.67 and chi-square equal to 86.7 for admin rights; a remote effect equal to 1.45 that largely disappears within admin strata; and an engineering chi-square equal to 2.1, below the threshold. The wording stays associational, as in Chloé's research question, because the design observed existing records and changed nothing. That is why Halvorsen's follow-up targets the 120 admin devices rather than remote policy refreshes or engineering software.
 
 ### Effect size and significance
 
@@ -587,7 +587,7 @@ You will (1) write findings clearly; (2) state limitations honestly; (3) connect
 
 The dissertation follows question, literature, design, results and discussion, with each figure traceable to code.
 
-Traceability means each table and figure is produced by a named script from the extract, and the dissertation cites the script beside the figure. The second examiner relies on this when re-running the analysis. Chapter order follows the logic of the study: the reader meets the three explanations and their predictions before seeing any results, so the results can be read as tests. Appendices hold the plan and its revisions.
+Traceability means each table and figure is produced by a named script from the extract, and the dissertation cites the script beside the figure. The second examiner relies on this when re-running the analysis. Chapter order follows the logic of the study: the reader meets the three explanations and their predictions before seeing any results, so the results can be read as tests. The appendices hold the dated analysis plan, the pilot-driven rules for missing fields and the dated predictions Chloé added on Dr Mehta's advice, so a reader can check that each result was tested as planned.
 
 ### 7.2 Linking literature
 
@@ -678,13 +678,13 @@ You will (1) undergo independent review; (2) defend findings; (3) plan follow-up
 
 A second examiner re-runs the analysis from the code and extract and obtains the same tables.
 
-Re-running from the extract tests more than arithmetic: it checks that the pseudonymised extract, the coding rules for missing fields and the scripts together produce the dissertation's tables. A difference would point to an undocumented manual step. The second examiner's identical tables also confirm that the risk ratio equal to 3.67 and the other headline figures were not mistyped. His report is filed with the dissertation.
+Re-running from the extract tests more than arithmetic: it checks that the pseudonymised extract, the coding rules for missing fields and the scripts together produce the dissertation's tables. A difference would point to an undocumented manual step. The second examiner's identical tables also confirm that the risk ratio equal to 3.67 and the other headline figures were not mistyped. His tables, including 66 of 120 admin laptops drifted, match the dissertation figure for figure.
 
 ### 8.2 Defense questions
 
 Examiners ask about the remote result, missing data and generalisation.
 
-Each question targets a choice that could change the conclusion. The remote result tests whether Chloé understood the overlap with admin rights. Missing data tests whether the no-refresh coding biased Explanation B's test. Generalisation tests whether she claims more than one manufacturer's fleet can show. Chloé prepared each answer from the dissertation's own tables, not from memory. None of the three questions asked about the admin result itself, which suggests the examiners found its evidence clear.
+Each question targets a choice that could change the conclusion. The remote result tests whether Chloé understood the overlap with admin rights. Missing data tests whether the no-refresh coding biased Explanation B's test. Generalisation tests whether she claims more than one manufacturer's fleet can show. Chloé prepared each answer from the dissertation's own tables, not from memory. All three questions concern results that depend on design choices, the stratification, the no-refresh coding and the single partner, rather than on arithmetic.
 
 ### 8.3 Answers
 
@@ -696,7 +696,7 @@ Each answer points to a decision made before the data: the stratification was in
 
 Halvorsen removes standing admin rights from 120 devices; a follow-up six months later will test whether drift falls.
 
-The 120 devices are exactly the admin group in Chloé's data. The follow-up will compare their drift rate after six months with the 55.0% before, using the same monthly checks and coding rules. Halvorsen's same-day elevation process, which reduced complaints, is recorded too, so that a change in drift can be read alongside how often temporary elevation was used. Chloé's code will run unchanged on the new extract.
+The 120 devices are exactly the admin group in Chloé's data. The follow-up will compare their drift rate after six months with the 55.0% before, using the same monthly checks and coding rules. Halvorsen's same-day elevation process, which reduced complaints, is recorded too, so that a change in drift can be read alongside how often temporary elevation was used. Using the same coding rules for missing fields means the before and after drift rates are directly comparable.
 
 ### 8.5 Reflection
 
