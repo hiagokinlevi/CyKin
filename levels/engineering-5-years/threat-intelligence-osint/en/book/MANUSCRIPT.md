@@ -116,10 +116,10 @@ Treat events, infrastructure, capabilities and victims as nodes and their links 
 
 The hop count in the lab therefore doubles as a trust measure. One hop from an event is something the evidence shows directly; three hops is a chain of inferences, each of which could be wrong.
 
-### Lab 2 — pivot graph
+### Lab 1 — pivot graph
 
 ```python
-"""Lab 2 (ch 02): breadth-first pivot over a synthetic Diamond-style relationship graph."""
+"""Lab 1 (ch 02): breadth-first pivot over a synthetic Diamond-style relationship graph."""
 from collections import deque
 edges = [("event-1", "c2.example"), ("c2.example", "event-4"), ("event-4", "victim-B"),
          ("event-1", "victim-A"), ("event-7", "loader-x"), ("loader-x", "event-9")]
@@ -216,7 +216,7 @@ The worked example adds overhead and schedules the transfer at 02:00 for this re
 
 Storing 50,000 STIX objects per day at about 2 KB each is roughly 100 MB per day, around 36 GB per year before indexes. Indexes and enrichment can triple that. Retention policies are therefore engineering inputs.
 
-Kofi turns these figures into a retention question for the CTI lead: how long must expired indicators stay searchable? Keeping two years of raw objects plus indexes could approach two hundred gigabytes, while summarising expired items after ninety days keeps the store far smaller. The answer depends on whether investigations need old indicators, and that is a requirement to agree with analysts rather than a choice for the storage team.
+Kofi turns these figures into a retention question for the CTI lead: how long must expired indicators stay searchable? Keeping two years of raw objects plus indexes could exceed two hundred gigabytes, while summarising expired items after ninety days keeps the store far smaller. The answer depends on whether investigations need old indicators, and that is a requirement to agree with analysts rather than a choice for the storage team.
 
 ### 3.4 Clocks
 
@@ -406,10 +406,10 @@ c(t) = c₀ · e^(−t·ln2/h), where h is the half-life in days. After one half
 
 In words, the score falls by the same fraction every day, so the drop is large while confidence is high and small near the floor. The second formula answers the practical question: how many days until this indicator needs review? Kofi uses it to schedule re-validation rather than letting entries linger. Changing the half-life changes the slope, but the shape stays the same.
 
-### Lab 1 — decay
+### Lab 2 — decay
 
 ```python
-"""Lab 1 (ch 06): exponential confidence decay for a synthetic indicator, c(t) = c0 * exp(-t * ln2 / h)."""
+"""Lab 2 (ch 06): exponential confidence decay for a synthetic indicator, c(t) = c0 * exp(-t * ln2 / h)."""
 import math
 c0, half_life_days, floor = 90.0, 14.0, 30.0
 for t in (0, 7, 14, 21, 28):
