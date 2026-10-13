@@ -176,13 +176,13 @@ Each error has a guard. Write the rung next to every claim in your notes. Call a
 
 Rubric for all exercises in this book: **3** = correct, scoped, evidence-labelled and honest about limits; **2** = correct with a minor gap in scope or evidence; **1** = partially correct or unlabelled claims; **0** = missing, unsafe or overclaiming.
 
-- **EX001** — *Objective:* classify claims. *Input:* the statement "Our detector stops tank overflows." *Steps:* rewrite it as one claim on each of rungs 1–4 of the ladder for a Modbus setpoint attack. *Evidence:* four scoped claims. *Constraint:* no rung-5 claim without protection-layer data.
-- **EX002** — *Objective:* bound an experiment. For an attack on Testbed T2's pump, state the worst credible outcome, the independent protection layer and the stop authority. *Evidence:* a three-row table.
-- **EX003** — *Objective:* passive versus active. Classify five data-collection methods (span-port capture, PLC polling, historian export, engineering-workstation project upload, firmware dump) as passive or active and give one risk each.
-- **EX004** — *Objective:* Menlo analysis. Apply the four principles to publishing a new evasion technique against physics-based detectors. *Evidence:* one paragraph per principle and a publication decision.
-- **EX005** — *Objective:* data tiers. Assign T0–T3 to: a PLC ladder program, an anonymized alarm-count table, a network capture with IP addresses, a P&ID, a synthetic simulator. Justify each.
-- **EX006** — *Objective:* metrics. Using Lab 1, compute event-level detection delay for each segment and explain why point adjustment hides it.
-- **EX007** — *Objective:* protocol. Draft the ten headings of a Setpoint Study protocol including stop and abandonment conditions.
+- **EX001 — Ladder claims for overflow slogan.** *Objective:* classify claims. *Input:* the statement "Our detector stops tank overflows." *Steps:* rewrite it as one claim on each of rungs 1–4 of the ladder for a Modbus setpoint attack. *Evidence:* four scoped claims. *Constraint:* no rung-5 claim without protection-layer data. *Rubric:* 3 = four rungs with Modbus FC6/40001, setpoint 50→80, trajectory, modelled trip; no rung-5 without protection data; 2 = four rungs but thin process link; 1 = drops a rung or invents rung-5; 0 = slogan restated.
+- **EX002 — Bound the T2 pump experiment.** *Objective:* bound an experiment. For an attack on Testbed T2's pump, state the worst credible outcome, the independent protection layer and the stop authority. *Evidence:* a three-row table. *Rubric:* 3 = overflow≈2 L, float valve+10 L tray, named manager with e-stop; PLC-only layer ≤1; 2 = three rows but weak independence; 1 = missing stop authority; 0 = unbounded.
+- **EX003 — Passive versus active collection.** *Objective:* passive versus active. Classify five data-collection methods (span-port capture, PLC polling, historian export, engineering-workstation project upload, firmware dump) as passive or active and give one risk each. *Rubric:* 3 = five methods with passive/active and one risk each (span, poll, historian, project upload, firmware); 2 = four correct; 1 = two; 0 = none.
+- **EX004 — Menlo review of publishing evasion.** *Objective:* Menlo analysis. Apply the four principles to publishing a new evasion technique against physics-based detectors. *Evidence:* one paragraph per principle and a publication decision. *Rubric:* 3 = Menlo four principles + publish class/defence, withhold product steps; 2 = principles without decision; 1 = one principle; 0 = none.
+- **EX005 — Tier ladder program through simulator.** *Objective:* data tiers. Assign T0–T3 to: a PLC ladder program, an anonymized alarm-count table, a network capture with IP addresses, a P&ID, a synthetic simulator. Justify each. *Rubric:* 3 = ladder T2/T3, alarms T1, IP capture T2, P&ID T2/T3, simulator T0 with reasons; 2 = four correct; 1 = two; 0 = none.
+- **EX006 — Event delay versus point adjustment.** *Objective:* metrics. Using Lab 1, compute event-level detection delay for each segment and explain why point adjustment hides it. *Rubric:* 3 = delays 20 and 5 samples + why point adjustment hides them; 2 = delays only; 1 = one delay; 0 = none.
+- **EX007 — Setpoint Study protocol headings.** *Objective:* protocol. Draft the ten headings of a Setpoint Study protocol including stop and abandonment conditions. *Rubric:* 3 = ten headings including stop (float valve, restart, log loss>1%) and abandonment; 2 = headings without stop/abandon; 1 = partial list; 0 = none.
 
 ### Chapter synthesis
 
@@ -263,13 +263,13 @@ A vendor paper can point to a question but cannot answer it. ATT&CK tells you th
 
 ### Exercises — chapter 2
 
-- **EX008** — Build a synonym table with at least four terms from control engineering and four from security for the concept "detect manipulated sensor data".
-- **EX009** — Map the Setpoint Study's Plant A components to Purdue levels 0–3 and name the conduit a historian query crosses.
-- **EX010** — Rewrite one IEC 62443 zone-and-conduit recommendation as a measurable hypothesis.
-- **EX011** — Appraise study S4 with five questions from §2.4 and state what result it can support.
-- **EX012** — Choose two ATT&CK for ICS techniques relevant to the Setpoint Study and explain why their presence in the matrix is not evidence of frequency.
-- **EX013** — Run Lab 2, change S5's adversary coding to "yes", and report how the gap statement changes.
-- **EX014** — Write a weak and a strong gap statement for a different OT topic (for example DNP3 Secure Authentication adoption).
+- **EX008 — Synonyms for manipulated sensors.** Build a synonym table with at least four terms from control engineering and four from security for the concept "detect manipulated sensor data". *Rubric:* 3 = ≥4 control + ≥4 security terms for manipulated sensors; 2 = 3+3; 1 = one side only; 0 = none.
+- **EX009 — Purdue map of Plant A.** Map the Setpoint Study's Plant A components to Purdue levels 0–3 and name the conduit a historian query crosses. *Rubric:* 3 = L0–L3 components + historian query crosses IT/OT DMZ (3.5) and 3–2; 2 = levels without conduit; 1 = partial; 0 = none.
+- **EX010 — 62443 zone hypothesis.** Rewrite one IEC 62443 zone-and-conduit recommendation as a measurable hypothesis. *Rubric:* 3 = measurable hypothesis with ≥90% write-reachability cut and measurement method; 2 = hypothesis without metric; 1 = slogan; 0 = none.
+- **EX011 — Appraise study S4.** Appraise study S4 with five questions from §2.4 and state what result it can support. *Rubric:* 3 = five appraisal points + support ceiling (flags some samples; not delay/impact/generalization); 2 = appraisal without ceiling; 1 = vague; 0 = none.
+- **EX012 — Two ATT&CK for ICS techniques.** Choose two ATT&CK for ICS techniques relevant to the Setpoint Study and explain why their presence in the matrix is not evidence of frequency. *Rubric:* 3 = Spoof Reporting Message + Modify Parameter and no base-rate claim; 2 = techniques without caveat; 1 = one technique; 0 = none.
+- **EX013 — Flip S5 adversary coding.** Run Lab 2, change S5's adversary coding to "yes", and report how the gap statement changes. *Rubric:* 3 = aware count→3, drop absolute 'no aware study', keep combination gap; 2 = count only; 1 = wrong count; 0 = none.
+- **EX014 — Weak and strong DNP3-SA gaps.** Write a weak and a strong gap statement for a different OT topic (for example DNP3 Secure Authentication adoption). *Rubric:* 3 = weak vs strong with public sample + latency prediction; 2 = weak/strong without numbers; 1 = one statement; 0 = none.
 
 ### Chapter synthesis
 
@@ -387,12 +387,12 @@ Each of these errors has a visible symptom in a proposal: a contribution sentenc
 
 ### Exercises — chapter 3
 
-- **EX015** — Classify the Setpoint Study's contribution type and write a two-sentence positioning statement citing prior work.
-- **EX016** — Derive the equilibrium level of the Lab 3 tank when inflow is 1.05 and explain what this means for the attacker's goal.
-- **EX017** — Extend the attacker-model table with a class C attacker who controls the PLC logic itself; predict the outcome for each detector.
-- **EX018** — Modify Lab 3 to record true overfill *at the alarm time* and test H3.
-- **EX019** — Justify a different delay threshold for H1 using a stated high-high trip level and the overfill rate.
-- **EX020** — List three rival explanations for a CUSUM advantage and the test that would rule each out.
+- **EX015 — Position the Setpoint contribution.** Classify the Setpoint Study's contribution type and write a two-sentence positioning statement citing prior work. *Rubric:* 3 = measurement-backed comparison + cites Page 1954 and Giraldo et al. 2018; 2 = type without cites; 1 = claims inventing CUSUM; 0 = none.
+- **EX016 — Equilibrium level under extra inflow.** Derive the equilibrium level of the Lab 3 tank when inflow is 1.05 and explain what this means for the attacker's goal. *Rubric:* 3 = L*=52.5 and attacker needs larger forcing/blocked outlet; 2 = 52.5 only; 1 = wrong equilibrium; 0 = none.
+- **EX017 — Class C attacker against detectors.** Extend the attacker-model table with a class C attacker who controls the PLC logic itself; predict the outcome for each detector. *Rubric:* 3 = class C evades in-PLC band/CUSUM; external independent CUSUM still detects; 2 = evasion without external case; 1 = vague; 0 = none.
+- **EX018 — Overfill at alarm time for H3.** Modify Lab 3 to record true overfill *at the alarm time* and test H3. *Rubric:* 3 = overfill≈1.22 mean/1.60 max at CUSUM alarm; band never fires; H3 supported in that setup; 2 = numbers without H3; 1 = qualitative only; 0 = none.
+- **EX019 — Justify a delay threshold for H1.** Justify a different delay threshold for H1 using a stated high-high trip level and the overfill rate. *Rubric:* 3 = trip/margin/rate → ≈60-step threshold with reasoning; 2 = threshold without derivation; 1 = arbitrary number; 0 = none.
+- **EX020 — Three rivals for a CUSUM advantage.** List three rival explanations for a CUSUM advantage and the test that would rule each out. *Rubric:* 3 = three rivals (tuning, clean sim, gain choice) each with a ruling-out test; 2 = rivals without tests; 1 = one rival; 0 = none.
 
 ### Chapter synthesis
 
@@ -478,12 +478,12 @@ Each error lets a result look better than it is. A re-scoring with point adjustm
 
 ### Exercises — chapter 4
 
-- **EX021** — Classify three activities (rerunning your own Lab 3, a colleague running your archive, a colleague building their own tank model) under ACM terms.
-- **EX022** — Write a reproduction log entry for TankBench-21 with the four hypotheses, tests and outcomes.
-- **EX023** — Write and run a verification test for mass conservation in the noise-free Lab 3 model.
-- **EX024** — Using Lab 6, choose k for a plant where calibration bias up to 0.4 is expected and justify it with two numbers.
-- **EX025** — Write go/no-go criteria for a T2 pilot including a safety criterion and a data-quality criterion.
-- **EX026** — Explain why the reproduced 0.94 is not evidence that the TankBench-21 detector is good.
+- **EX021 — ACM repeatability terms.** Classify three activities (rerunning your own Lab 3, a colleague running your archive, a colleague building their own tank model) under ACM terms. *Rubric:* 3 = repeatability / reproducibility / replicability correctly assigned; 2 = two correct; 1 = one; 0 = none.
+- **EX022 — TankBench-21 reproduction log.** Write a reproduction log entry for TankBench-21 with the four hypotheses, tests and outcomes. *Rubric:* 3 = four hypotheses with tests/outcomes including point-adjust→0.94; 2 = hypotheses without outcomes; 1 = partial; 0 = none.
+- **EX023 — Mass-conservation verification test.** Write and run a verification test for mass conservation in the noise-free Lab 3 model. *Rubric:* 3 = noise-free equilibrium≈50 and inflow−outflow identity check; 2 = equilibrium only; 1 = vague; 0 = none.
+- **EX024 — Choose k under calibration bias.** Using Lab 6, choose k for a plant where calibration bias up to 0.4 is expected and justify it with two numbers. *Rubric:* 3 = k=0.8 with 0/100 FA vs k=0.6 4/100 FA and delay trade-off; 2 = k choice without both numbers; 1 = k only; 0 = none.
+- **EX025 — T2 pilot go/no-go criteria.** Write go/no-go criteria for a T2 pilot including a safety criterion and a data-quality criterion. *Rubric:* 3 = safety (float valve), data (<1% loss), restart, e-stop pretest; 2 = missing one; 1 = vague go; 0 = none.
+- **EX026 — Why reproduced 0.94 is not goodness.** Explain why the reproduced 0.94 is not evidence that the TankBench-21 detector is good. *Rubric:* 3 = point-adjusted score ≠ delay/FA/shift performance + possible test-set tuning; 2 = one reason; 1 = 'too high'; 0 = none.
 
 ### Chapter synthesis
 
@@ -561,12 +561,12 @@ Each item has a concrete check in this study: Lab 5 uses common random numbers, 
 
 ### Exercises — chapter 5
 
-- **EX027** — Rerun Lab 5 with independent seeds for the two settings and compare interval widths with the paired version.
-- **EX028** — Classify six sources of uncertainty in the Setpoint Study as stochastic, parametric or structural.
-- **EX029** — Write the freeze rule for thresholds before T2 validation and explain what would invalidate the validation.
-- **EX030** — Explain how right-censoring biases the Plant B mean and propose a better summary.
-- **EX031** — Turn the operator-review finding into one design recommendation and one limitation.
-- **EX032** — Write a 120-word results paragraph for a study where H1 failed on T2.
+- **EX027 — Independent seeds versus paired.** Rerun Lab 5 with independent seeds for the two settings and compare interval widths with the paired version. *Rubric:* 3 = unpaired Plant A width≈3.2 vs paired≈0.9 and Plant B comparison; 2 = direction only; 1 = wrong direction; 0 = none.
+- **EX028 — Six uncertainty sources classified.** Classify six sources of uncertainty in the Setpoint Study as stochastic, parametric or structural. *Rubric:* 3 = stochastic/parametric/structural with two examples each class; 2 = classes without examples; 1 = one class; 0 = none.
+- **EX029 — Freeze rule before T2 validation.** Write the freeze rule for thresholds before T2 validation and explain what would invalidate the validation. *Rubric:* 3 = freeze k=0.8 h=6 hashed before T2 load + what invalidates; 2 = freeze without invalidation; 1 = vague; 0 = none.
+- **EX030 — Right-censoring on Plant B.** Explain how right-censoring biases the Plant B mean and propose a better summary. *Rubric:* 3 = mean as lower bound + report detection proportion/median among detected or KM-style; 2 = bias without better summary; 1 = vague; 0 = none.
+- **EX031 — Operator-review into design and limit.** Turn the operator-review finding into one design recommendation and one limitation. *Rubric:* 3 = show predicted vs reported on HMI + synthetic-operator limit; 2 = one of two; 1 = vague; 0 = none.
+- **EX032 — Results paragraph when H1 fails on T2.** Write a 120-word results paragraph for a study where H1 failed on T2. *Rubric:* 3 = ~120 words with T2 9/20 vs sim 100/100 and lag/allowance explanation; 2 = numbers without lag; 1 = short fail note; 0 = none.
 
 ### Chapter synthesis
 
@@ -629,12 +629,12 @@ Each error turns critique into defence. Treat each objection as a hypothesis wit
 
 ### Exercises — chapter 6
 
-- **EX033** — Turn the objection "your threshold is overfitted" into a hypothesis and a test.
-- **EX034** — Modify Lab 3 to sweep attack gain (0.005, 0.01, 0.02, 0.05) for CUSUM and report detection and worst overfill.
-- **EX035** — Write the boundary-condition paragraph for the abstract in ≤ 80 words.
-- **EX036** — Rewrite the claim "the method secures water utilities" as a narrowed claim.
-- **EX037** — Conduct a dual-use review for publishing the exact flow-meter spoofing sequence used on T2.
-- **EX038** — Write a reviewer response to "Testbed results are not representative of real plants."
+- **EX033 — Overfitting objection as a test.** Turn the objection "your threshold is overfitted" into a hypothesis and a test. *Rubric:* 3 = hypothesis of drop on unseen seeds/T2 + tune 0–99 / eval 1000–1099 & T2; 2 = hypothesis without protocol; 1 = restate objection; 0 = none.
+- **EX034 — Sweep attack gain for CUSUM.** Modify Lab 3 to sweep attack gain (0.005, 0.01, 0.02, 0.05) for CUSUM and report detection and worst overfill. *Rubric:* 3 = four gains with detect counts, delays, worst overfill matching lab sweep; 2 = two gains; 1 = qualitative; 0 = none.
+- **EX035 — Boundary paragraph for the abstract.** Write the boundary-condition paragraph for the abstract in ≤ 80 words. *Rubric:* 3 = ≤80 words: independent second measurement, model error < attack, slow attacks ≤1.37 overfill; 2 = boundaries without numbers; 1 = overclaim; 0 = none.
+- **EX036 — Narrow the water-utilities claim.** Rewrite the claim "the method secures water utilities" as a narrowed claim. *Rubric:* 3 = two synthetic contexts + independent flow + class B failure; 2 = narrowed but still 'utilities'; 1 = minor edit; 0 = original claim.
+- **EX037 — Dual-use on exact T2 spoof sequence.** Conduct a dual-use review for publishing the exact flow-meter spoofing sequence used on T2. *Rubric:* 3 = publish class+defence; exact T2 sequence only under CVD/vendor; 2 = withhold without path; 1 = publish all; 0 = none.
+- **EX038 — Response to testbed representativeness.** Write a reviewer response to "Testbed results are not representative of real plants.". *Rubric:* 3 = agree difference, point to narrowed claims + frozen thresholds on T2 + residual risk; 2 = agree without evidence pointers; 1 = dismiss; 0 = none.
 
 ### Chapter synthesis
 
@@ -723,12 +723,12 @@ An archive that releases everything leaks plant-level detail; one that releases 
 
 ### Exercises — chapter 7
 
-- **EX039** — Draw (as a table) the Toulmin map of the narrowed claim with chapter references.
-- **EX040** — Fix Lab 7 so tiers compare numerically and add a T10 test case.
-- **EX041** — Assign tiers to eight Setpoint Study artifacts and justify two borderline choices.
-- **EX042** — Write a dataset card for the Lab 3 simulator (purpose, parameters, invented/calibrated, prohibited uses).
-- **EX043** — Add two rows to the directional limitations table.
-- **EX044** — Argue for monograph or publication-based format for the Setpoint Study.
+- **EX039 — Toulmin map of the narrowed claim.** Draw (as a table) the Toulmin map of the narrowed claim with chapter references. *Rubric:* 3 = claim/data/warrant/backing/qualifier/rebuttal with chapter refs; 2 = map missing one element; 1 = claim only; 0 = none.
+- **EX040 — Fix Lab 7 tier comparison.** Fix Lab 7 so tiers compare numerically and add a T10 test case. *Rubric:* 3 = int(tier[1:]) compare + T10 vs T1 excludes; 2 = int fix without T10; 1 = string sort note; 0 = none.
+- **EX041 — Tier eight Setpoint artifacts.** Assign tiers to eight Setpoint Study artifacts and justify two borderline choices. *Rubric:* 3 = eight artifacts with tiers + two borderline justifications; 2 = tiers without borderline; 1 = four artifacts; 0 = none.
+- **EX042 — Dataset card for Lab 3 simulator.** Write a dataset card for the Lab 3 simulator (purpose, parameters, invented/calibrated, prohibited uses). *Rubric:* 3 = purpose, parameters, invented status, prohibited uses; 2 = missing one field; 1 = purpose only; 0 = none.
+- **EX043 — Two more directional limitations.** Add two rows to the directional limitations table. *Rubric:* 3 = two rows with direction (*unknown*/*overstates* etc.); 2 = one row; 1 = undirected; 0 = none.
+- **EX044 — Monograph versus publication-based.** Argue for monograph or publication-based format for the Setpoint Study. *Rubric:* 3 = choose format with three-paper mapping or integrated argument reason; 2 = choice without reason; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -810,12 +810,12 @@ Each extension tests one boundary the thesis measured but could not cross. Multi
 
 ### Exercises — chapter 8
 
-- **EX045** — Audit three claims from your own Chapter 5 results paragraph using Lab 8's criteria.
-- **EX046** — Write model answers to the positioning and safety examiner questions.
-- **EX047** — Sequence three papers with venues of the right type (security, control, human factors) and justify order.
-- **EX048** — Decide whether each of three findings is a disclosure case: Modbus lacks authentication; a PLC firmware accepts writes to a protected register; T2's PLC shares wiring for both sensors.
-- **EX049** — Write the operator brief's three confidence statements for a study where class B was not tested.
-- **EX050** — Outline a two-year post-doctoral program with two falsifiable hypotheses.
+- **EX045 — Audit three Chapter 5 claims.** Audit three claims from your own Chapter 5 results paragraph using Lab 8's criteria. *Rubric:* 3 = three claims tagged PASS/REVISE with scope fixes; 2 = two claims; 1 = one; 0 = none.
+- **EX046 — Positioning and safety viva answers.** Write model answers to the positioning and safety examiner questions. *Rubric:* 3 = positioning beyond Page/Giraldo + T2 bound/e-stop safety answer; 2 = one family; 1 = vague; 0 = none.
+- **EX047 — Sequence three papers by venue type.** Sequence three papers with venues of the right type (security, control, human factors) and justify order. *Rubric:* 3 = security→control/CPS→HF order with dependency reason; 2 = three venues wrong order; 1 = one paper; 0 = none.
+- **EX048 — Three disclosure decisions.** Decide whether each of three findings is a disclosure case: Modbus lacks authentication; a PLC firmware accepts writes to a protected register; T2's PLC shares wiring for both sensors. *Rubric:* 3 = Modbus=documented; protected-register write=CVD; T2 shared wiring=lab owner not product CVD; 2 = two correct; 1 = one; 0 = none.
+- **EX049 — Confidence statements without class B.** Write the operator brief's three confidence statements for a study where class B was not tested. *Rubric:* 3 = high/medium/unknown with class B untested explicit; 2 = missing unknown; 1 = one level; 0 = none.
+- **EX050 — Two-year postdoc with two hypotheses.** Outline a two-year post-doctoral program with two falsifiable hypotheses. *Rubric:* 3 = two-year plan with two falsifiable H including metrics/FA bounds; 2 = plan without falsifiable H; 1 = topics only; 0 = none.
 
 ### Chapter synthesis
 
@@ -829,80 +829,122 @@ Audit every claim, prepare for the six question families, publish in an order th
 
 ## Worked results
 
-Each answer shows one defensible response; the rubric (§1.9) rewards alternatives that meet the same standard of evidence, scope and honesty. All numbers are from the synthetic labs.
+Each answer shows one defensible response; the per-exercise rubrics rewards alternatives that meet the same standard of evidence, scope and honesty. All numbers are from the synthetic labs.
 
 ### Chapter 1
 
-- **EX001** — Rung 1: "A Modbus write (function code 6) to holding register 40001 on unit 1 was observed." Rung 2: "The level setpoint changed from 50 to 80." Rung 3: "The level trajectory rose toward 80, consistent with the new setpoint." Rung 4: "In the model the trajectory would cross the high-high trip at t+420 s absent intervention." Rung 5 is withheld: no data on the mechanical relief layer. "Stops overflows" is replaced by "raised an alarm N s before the modelled trip".
-- **EX002** — Worst outcome: upper tank overflows into the drip tray (≈2 L water). Independent layer: mechanical float valve closing the inlet, plus drip tray sized for 10 L. Stop authority: named lab manager with a physical e-stop cutting pump power. Rubric: a PLC interlock as the only layer scores ≤1.
-- **EX003** — Span capture: passive; risk = sensitive data at rest. PLC polling: active; adds load to scan cycle. Historian export: passive to the PLC but active on the historian; risk = server load and data volume. Project upload from engineering workstation: active; can trigger controller mode changes on some products. Firmware dump: active and potentially disruptive; may require stopping the controller.
-- **EX004** — Respect for persons: no humans directly; vendors' customers are indirectly affected. Beneficence: defenders learn to require independent sensing; attackers gain little beyond documented manipulation-of-view tactics if product-specific steps are withheld. Justice: small utilities, least able to patch, bear risk — publish low-cost mitigations. Law/public interest: check disclosure obligations and export rules. Decision: publish the capability class and defence; withhold product-specific sequences until coordinated disclosure completes.
-- **EX005** — Ladder program: T2/T3 (reveals logic and safety interlocks). Anonymized alarm counts: T1. Capture with IPs: T2 (topology). P&ID: T3 for real plants, T2 for a rig. Synthetic simulator: T0.
-- **EX006** — Segment 1 starts at index 20; first alarm at 40 → delay 20 samples. Segment 2 starts at 80; first alarm at 85 → delay 5. Point adjustment credits all 30 and 10 points as detected, hiding the 20-sample delay during which the process moved.
-- **EX007** — Title and question; background and gap; hypotheses H1–H4; attacker model; systems (simulator, T2) and safety bounds; data tiers and handling; metrics; analysis plan with frozen thresholds; stop conditions (float valve reached, unplanned restart, log loss >1%) and abandonment conditions (T2 cannot be made safe; simulator fails verification); ethics and disclosure plan.
+**EX001.** Rung 1: "A Modbus write (function code 6) to holding register 40001 on unit 1 was observed." Rung 2: "The level setpoint changed from 50 to 80." Rung 3: "The level trajectory rose toward 80, consistent with the new setpoint." Rung 4: "In the model the trajectory would cross the high-high trip at t+420 s absent intervention." Rung 5 is withheld: no data on the mechanical relief layer. "Stops overflows" is replaced by "raised an alarm N s before the modelled trip".
+**EX002.** Worst outcome: upper tank overflows into the drip tray (≈2 L water). Independent layer: mechanical float valve closing the inlet, plus drip tray sized for 10 L. Stop authority: named lab manager with a physical e-stop cutting pump power. Rubric: a PLC interlock as the only layer scores ≤1.
+**EX003.** Span capture: passive; risk = sensitive data at rest. PLC polling: active; adds load to scan cycle. Historian export: passive to the PLC but active on the historian; risk = server load and data volume. Project upload from engineering workstation: active; can trigger controller mode changes on some products. Firmware dump: active and potentially disruptive; may require stopping the controller.
+**EX004.** Respect for persons: no humans directly; vendors' customers are indirectly affected. Beneficence: defenders learn to require independent sensing; attackers gain little beyond documented manipulation-of-view tactics if product-specific steps are withheld. Justice: small utilities, least able to patch, bear risk — publish low-cost mitigations. Law/public interest: check disclosure obligations and export rules. Decision: publish the capability class and defence; withhold product-specific sequences until coordinated disclosure completes.
+**EX005.** Ladder program: T2/T3 (reveals logic and safety interlocks). Anonymized alarm counts: T1. Capture with IPs: T2 (topology). P&ID: T3 for real plants, T2 for a rig. Synthetic simulator: T0.
+**EX006.** Segment 1 starts at index 20; first alarm at 40 → delay 20 samples. Segment 2 starts at 80; first alarm at 85 → delay 5. Point adjustment credits all 30 and 10 points as detected, hiding the 20-sample delay during which the process moved.
+**EX007.** Title and question; background and gap; hypotheses H1–H4; attacker model; systems (simulator, T2) and safety bounds; data tiers and handling; metrics; analysis plan with frozen thresholds; stop conditions (float valve reached, unplanned restart, log loss >1%) and abandonment conditions (T2 cannot be made safe; simulator fails verification); ethics and disclosure plan.
 
 ### Chapter 2
 
-- **EX008** — Control: fault detection and isolation, residual generation, analytical redundancy, observer-based monitoring, sensor validation. Security: false data injection, sensor spoofing, manipulation of view, replay attack, physics-based anomaly detection.
-- **EX009** — Level 0: tank, pump, level transmitter, flow meter. Level 1: PLC. Level 2: SCADA/HMI. Level 3: historian (operations). A historian query from the enterprise crosses the IT/OT DMZ conduit (level 3.5) and the level 3–2 conduit.
-- **EX010** — "Zones between level 2 and level 1 with a conduit limited to read function codes reduce the number of hosts able to issue Modbus writes to PLCs by ≥90% compared with a flat network, measured by reachability analysis of the synthetic topology."
-- **EX011** — S4: testbed data; adversary unaware; threshold on test set; no impact; point-adjusted F1. It supports at most "the detector flags some samples within these attack segments on this testbed"; not generalization, delay or impact claims.
-- **EX012** — *Spoof Reporting Message* and *Modify Parameter*. The matrix documents that adversaries have used or could use a technique, grounded in public reports; it does not count occurrences across all plants, so it gives no base rate.
-- **EX013** — Adversary-aware count becomes 3 (S2, S5, S7). The gap statement must drop "no study has a detector-aware adversary" and keep the combination gap (aware + frozen thresholds + impact + two contexts), which still no single study satisfies — S5 reports impact only partially.
-- **EX014** — Weak: "DNP3-SA is rarely used." Strong: "No measurement reports the proportion of DNP3 outstations in a defined public sample that negotiate Secure Authentication, nor the latency it adds on serial links; we predict adoption below 10% and latency above the polling budget on 9.6 kbit/s links, and would be refuted by adoption above 30%."
+**EX008.** Control: fault detection and isolation, residual generation, analytical redundancy, observer-based monitoring, sensor validation. Security: false data injection, sensor spoofing, manipulation of view, replay attack, physics-based anomaly detection.
+**EX009.** Level 0: tank, pump, level transmitter, flow meter. Level 1: PLC. Level 2: SCADA/HMI. Level 3: historian (operations). A historian query from the enterprise crosses the IT/OT DMZ conduit (level 3.5) and the level 3–2 conduit.
+**EX010.** "Zones between level 2 and level 1 with a conduit limited to read function codes reduce the number of hosts able to issue Modbus writes to PLCs by ≥90% compared with a flat network, measured by reachability analysis of the synthetic topology."
+**EX011.** S4: testbed data; adversary unaware; threshold on test set; no impact; point-adjusted F1. It supports at most "the detector flags some samples within these attack segments on this testbed"; not generalization, delay or impact claims.
+**EX012.** *Spoof Reporting Message* and *Modify Parameter*. The matrix documents that adversaries have used or could use a technique, grounded in public reports; it does not count occurrences across all plants, so it gives no base rate.
+**EX013.** Adversary-aware count becomes 3 (S2, S5, S7). The gap statement must drop "no study has a detector-aware adversary" and keep the combination gap (aware + frozen thresholds + impact + two contexts), which still no single study satisfies — S5 reports impact only partially.
+**EX014.** Weak: "DNP3-SA is rarely used." Strong: "No measurement reports the proportion of DNP3 outstations in a defined public sample that negotiate Secure Authentication, nor the latency it adds on serial links; we predict adoption below 10% and latency above the polling budget on 9.6 kbit/s links, and would be refuted by adoption above 30%."
 
 ### Chapter 3
 
-- **EX015** — Contribution type: measurement-backed comparison with characterized limits. "We do not propose a new detector; building on CUSUM (Page, 1954) and residual-based detection (Giraldo et al., 2018), we measure when a cross-sensor mass-balance invariant detects manipulation of view, and the attacker capability at which it fails."
-- **EX016** — Equilibrium L* = inflow/0.02 = 1.05/0.02 = 52.5 units. A persistent 0.05 extra inflow raises the level by only 2.5 units at steady state; the attacker needs larger forcing (or a blocked outlet) to reach a trip, which affects which gains are realistic in Chapter 6.
-- **EX017** — Class C modifies PLC logic, so it can forge both reported values consistently and suppress alarms computed in the PLC. Band alarm: evaded. CUSUM in the PLC: evaded. CUSUM computed outside the PLC on independently wired sensors: still detects. Conclusion: detector placement matters as much as algorithm.
-- **EX018** — Recording `true_level − 50` at the first alarm gives, for CUSUM and gain 0.05, a mean overfill of 1.22 units and a maximum of 1.60 at alarm time; the band alarm never fires after onset, so its overfill grows to the window maximum of 3.36. H3 is supported in the model.
-- **EX019** — Suppose the high-high trip is at 56 (margin 6) and the attack drives level up at up to ≈0.05 units/step initially. Half the margin (3 units) would be reached in roughly 60–80 steps once the exponential approach is accounted for; a 60-step threshold is conservative. A different trip level justifies a different threshold by the same arithmetic.
-- **EX020** — (1) Threshold tuning on test data → tune on separate seeds (Lab 6) and freeze. (2) Simulator too clean → add calibration bias and validate on T2. (3) Attack magnitude chosen to suit method → sweep gains (EX034) and report the full curve.
+**EX015.** Contribution type: measurement-backed comparison with characterized limits. "We do not propose a new detector; building on CUSUM (Page, 1954) and residual-based detection (Giraldo et al., 2018), we measure when a cross-sensor mass-balance invariant detects manipulation of view, and the attacker capability at which it fails."
+**EX016.** Equilibrium L* = inflow/0.02 = 1.05/0.02 = 52.5 units. A persistent 0.05 extra inflow raises the level by only 2.5 units at steady state; the attacker needs larger forcing (or a blocked outlet) to reach a trip, which affects which gains are realistic in Chapter 6.
+**EX017.** Class C modifies PLC logic, so it can forge both reported values consistently and suppress alarms computed in the PLC. Band alarm: evaded. CUSUM in the PLC: evaded. CUSUM computed outside the PLC on independently wired sensors: still detects. Conclusion: detector placement matters as much as algorithm.
+**EX018.** Recording `true_level − 50` at the first alarm gives, for CUSUM and gain 0.05, a mean overfill of 1.22 units and a maximum of 1.60 at alarm time; the band alarm never fires after onset, so its overfill grows to the window maximum of 3.36. H3 is supported in the model.
+**EX019.** Suppose the high-high trip is at 56 (margin 6) and the attack drives level up at up to ≈0.05 units/step initially. Half the margin (3 units) would be reached in roughly 60–80 steps once the exponential approach is accounted for; a 60-step threshold is conservative. A different trip level justifies a different threshold by the same arithmetic.
+**EX020.** (1) Threshold tuning on test data → tune on separate seeds (Lab 6) and freeze. (2) Simulator too clean → add calibration bias and validate on T2. (3) Attack magnitude chosen to suit method → sweep gains (EX034) and report the full curve.
 
 ### Chapter 4
 
-- **EX021** — Rerunning own Lab 3: repeatability. Colleague running your archive: reproducibility. Colleague building their own tank model: replicability.
-- **EX022** — Hypotheses: scoring convention, threshold leakage, label alignment, sampling. Tests: re-score with point adjustment (→0.94, within ±0.05: explains gap); retune on train split (no further change); shift labels to first process deviation (small change); downsample (small change). Outcome: reproduction of the reported number succeeds only under point adjustment; event-level metrics adopted.
-- **EX023** — Run the noise-free model `true += 1.0 - 0.02*true` for 1,000 steps from 50.0; the result is 50.000000, confirming equilibrium; a stricter test computes accumulated inflow minus outflow and checks it equals final minus initial level within floating-point tolerance.
-- **EX024** — k = 0.8: with 0.4 bias it has 0/100 false-alarm runs and 100/100 detections (delay 55.6), whereas k = 0.6 has 4/100 false-alarm runs. The 7–10 step delay cost is accepted for zero false alarms.
-- **EX025** — Go if: three consecutive runs complete without the float valve being reached (safety); historian log loss <1% at 1 Hz (data); no unplanned PLC restart (stability); e-stop tested before each session. Otherwise no-go and revise.
-- **EX026** — Because 0.94 reproduces a point-adjusted score that credits whole segments for a single alarm; it says nothing about delay or false alarms per shift, and thresholds may have been tuned on test data.
+**EX021.** Rerunning own Lab 3: repeatability. Colleague running your archive: reproducibility. Colleague building their own tank model: replicability.
+**EX022.** Hypotheses: scoring convention, threshold leakage, label alignment, sampling. Tests: re-score with point adjustment (→0.94, within ±0.05: explains gap); retune on train split (no further change); shift labels to first process deviation (small change); downsample (small change). Outcome: reproduction of the reported number succeeds only under point adjustment; event-level metrics adopted.
+**EX023.** Run the noise-free model `true += 1.0 - 0.02*true` for 1,000 steps from 50.0; the result is 50.000000, confirming equilibrium; a stricter test computes accumulated inflow minus outflow and checks it equals final minus initial level within floating-point tolerance.
+**EX024.** k = 0.8: with 0.4 bias it has 0/100 false-alarm runs and 100/100 detections (delay 55.6), whereas k = 0.6 has 4/100 false-alarm runs. The 7–10 step delay cost is accepted for zero false alarms.
+**EX025.** Go if: three consecutive runs complete without the float valve being reached (safety); historian log loss <1% at 1 Hz (data); no unplanned PLC restart (stability); e-stop tested before each session. Otherwise no-go and revise.
+**EX026.** Because 0.94 reproduces a point-adjusted score that credits whole segments for a single alarm; it says nothing about delay or false alarms per shift, and thresholds may have been tuned on test data.
 
 ### Chapter 5
 
-- **EX027** — Replacing the paired seed for k = 0.6 with seed i+1000 gives Plant A 6.9 steps, CI [5.3, 8.5] (width 3.2) versus paired [6.5, 7.4] (width 0.9); Plant B 47.3, CI [36.5, 58.6] versus [38.4, 53.0]. Pairing narrows intervals because shared noise cancels.
-- **EX028** — Stochastic: sensor noise draws, inflow noise. Parametric: orifice coefficient, calibration bias. Structural: single-tank model, ignoring flow-meter lag.
-- **EX029** — "Allowance k = 0.8 and threshold h = 6.0 are fixed, hashed and recorded before any T2 attack data are loaded." Inspecting T2 attack data before freezing, or changing k after seeing T2 results, invalidates the validation.
-- **EX030** — Undetected runs set to 400 make the mean a lower bound. Report detection proportion separately and median delay among detected, or a Kaplan–Meier style curve of time to detection.
-- **EX031** — Recommendation: show predicted versus reported level on the HMI. Limitation: synthetic operators; preferences may not predict real response times.
-- **EX032** — Example: "H1 was not supported on T2: the residual CUSUM detected 9 of 20 class A episodes, compared with 100 of 100 in simulation. Flow-meter lag of several seconds produced residual transients that required a larger allowance, which then masked small manipulations. False alarms remained zero. We conclude the simulator overstated the signal-to-noise ratio and that instrument dynamics must be modelled before deployment claims are made."
+**EX027.** Replacing the paired seed for k = 0.6 with seed i+1000 gives Plant A 6.9 steps, CI [5.3, 8.5] (width 3.2) versus paired [6.5, 7.4] (width 0.9); Plant B 47.3, CI [36.5, 58.6] versus [38.4, 53.0]. Pairing narrows intervals because shared noise cancels.
+**EX028.** Stochastic: sensor noise draws, inflow noise. Parametric: orifice coefficient, calibration bias. Structural: single-tank model, ignoring flow-meter lag.
+**EX029.** "Allowance k = 0.8 and threshold h = 6.0 are fixed, hashed and recorded before any T2 attack data are loaded." Inspecting T2 attack data before freezing, or changing k after seeing T2 results, invalidates the validation.
+**EX030.** Undetected runs set to 400 make the mean a lower bound. Report detection proportion separately and median delay among detected, or a Kaplan–Meier style curve of time to detection.
+**EX031.** Recommendation: show predicted versus reported level on the HMI. Limitation: synthetic operators; preferences may not predict real response times.
+**EX032.** Example: "H1 was not supported on T2: the residual CUSUM detected 9 of 20 class A episodes, compared with 100 of 100 in simulation. Flow-meter lag of several seconds produced residual transients that required a larger allowance, which then masked small manipulations. False alarms remained zero. We conclude the simulator overstated the signal-to-noise ratio and that instrument dynamics must be modelled before deployment claims are made."
 
 ### Chapter 6
 
-- **EX033** — Hypothesis: performance drops when thresholds are evaluated on seeds or testbeds unseen during tuning. Test: tune on seeds 0–99, evaluate on 1000–1099 and on T2 with frozen values; compare detection and false alarms.
-- **EX034** — Sweep result: gain 0.005 → 14/100 detected, mean delay 186.0, worst overfill 1.12; 0.01 → 55/100, 168.3, 1.37; 0.02 → 100/100, 90.4, 1.87; 0.05 → 100/100, 31.8, 3.36. Slow attacks evade but achieve limited overfill in the window.
-- **EX035** — "The method requires an independently wired second measurement linked to the attacked one by a known mass balance; model error must be smaller than the attack signal. Attacks slower than the allowance may evade but achieved ≤1.37 units of modelled overfill in 300 steps. It gives no protection when one attacker controls both measurements."
-- **EX036** — "In two synthetic contexts, a residual CUSUM using an independently wired flow meter detected single-sensor level replay that a band alarm missed; it does not protect against an attacker who controls both measurements."
-- **EX037** — Publishing the exact T2 sequence gives attackers a ready recipe for a specific product configuration while defenders need only the capability class and architectural fix. Decision: publish the class and the defence; share exact sequences only with the vendor under coordinated disclosure, if a product flaw is involved.
-- **EX038** — "We agree that testbeds differ from plants and have narrowed our claims to the two contexts studied (§6.3). We tested structural uncertainty by validating thresholds frozen on simulation on an independent testbed with different instruments (§5.3), report the resulting recall loss, and list plant-scale validation as future work (§8.6)."
+**EX033.** Hypothesis: performance drops when thresholds are evaluated on seeds or testbeds unseen during tuning. Test: tune on seeds 0–99, evaluate on 1000–1099 and on T2 with frozen values; compare detection and false alarms.
+**EX034.** Sweep result: gain 0.005 → 14/100 detected, mean delay 186.0, worst overfill 1.12; 0.01 → 55/100, 168.3, 1.37; 0.02 → 100/100, 90.4, 1.87; 0.05 → 100/100, 31.8, 3.36. Slow attacks evade but achieve limited overfill in the window.
+**EX035.** "The method requires an independently wired second measurement linked to the attacked one by a known mass balance; model error must be smaller than the attack signal. Attacks slower than the allowance may evade but achieved ≤1.37 units of modelled overfill in 300 steps. It gives no protection when one attacker controls both measurements."
+**EX036.** "In two synthetic contexts, a residual CUSUM using an independently wired flow meter detected single-sensor level replay that a band alarm missed; it does not protect against an attacker who controls both measurements."
+**EX037.** Publishing the exact T2 sequence gives attackers a ready recipe for a specific product configuration while defenders need only the capability class and architectural fix. Decision: publish the class and the defence; share exact sequences only with the vendor under coordinated disclosure, if a product flaw is involved.
+**EX038.** "We agree that testbeds differ from plants and have narrowed our claims to the two contexts studied (§6.3). We tested structural uncertainty by validating thresholds frozen on simulation on an independent testbed with different instruments (§5.3), report the resulting recall loss, and list plant-scale validation as future work (§8.6)."
 
 ### Chapter 7
 
-- **EX039** — Claim: narrowed claim (Ch 6.3). Data: Lab 3, Lab 5, T2 (Ch 3, 5). Warrant: mass balance links flow and level (Ch 3.2). Backing: verification tests, CUSUM theory (Ch 4.3). Qualifier: two synthetic contexts (Ch 5). Rebuttal: class B, slow ramps, lag (Ch 5–6).
-- **EX040** — Store tiers as integers (`int(e["tier"][1:])`) and compare numbers; a T10 entry with release maximum T1 is then excluded rather than wrongly passing as "T10" < "T2".
-- **EX041** — Simulator code T0; synthetic traces T1; Lab notebooks T1; T2 rig wiring diagram T2; T2 PLC program T2; operator review notes T2; Plant A-style real configs T3; pilot videos T2. Borderline: wiring diagram (T2 because it reveals the shared-PLC weakness); operator notes (T2 because identifiable quotes).
-- **EX042** — Purpose: teaching and method demonstration. Parameters: inflow 1.0±0.05, outflow 0.02×level, level noise σ = 0.3, flow noise σ = 0.02, attack gain 0.05 at step 300. Status: invented, not calibrated. Prohibited uses: claims about real plants, benchmarking products.
-- **EX043** — Fixed attack onset at step 300 (*unknown*; may favour detectors with warm-up). Single attacker goal (*overstates* generality).
-- **EX044** — Publication-based suits it: three separable contributions (metrics, comparison, operator study) with a linking chapter; a monograph is defensible if the institution prefers one integrated argument.
+**EX039.** Claim: narrowed claim (Ch 6.3). Data: Lab 3, Lab 5, T2 (Ch 3, 5). Warrant: mass balance links flow and level (Ch 3.2). Backing: verification tests, CUSUM theory (Ch 4.3). Qualifier: two synthetic contexts (Ch 5). Rebuttal: class B, slow ramps, lag (Ch 5–6).
+**EX040.** Store tiers as integers (`int(e["tier"][1:])`) and compare numbers; a T10 entry with release maximum T1 is then excluded rather than wrongly passing as "T10" < "T2".
+**EX041.** Simulator code T0; synthetic traces T1; Lab notebooks T1; T2 rig wiring diagram T2; T2 PLC program T2; operator review notes T2; Plant A-style real configs T3; pilot videos T2. Borderline: wiring diagram (T2 because it reveals the shared-PLC weakness); operator notes (T2 because identifiable quotes).
+**EX042.** Purpose: teaching and method demonstration. Parameters: inflow 1.0±0.05, outflow 0.02×level, level noise σ = 0.3, flow noise σ = 0.02, attack gain 0.05 at step 300. Status: invented, not calibrated. Prohibited uses: claims about real plants, benchmarking products.
+**EX043.** Fixed attack onset at step 300 (*unknown*; may favour detectors with warm-up). Single attacker goal (*overstates* generality).
+**EX044.** Publication-based suits it: three separable contributions (metrics, comparison, operator study) with a linking chapter; a monograph is defensible if the institution prefers one integrated argument.
 
 ### Chapter 8
 
-- **EX045** — Using the EX032 or §5.5 paragraph: "detected class A replay in simulation" → PASS with scope; "robust to calibration bias" → REVISE: add scope (≤0.4 units); "works on real plants" → REVISE: overreach.
-- **EX046** — Positioning: "The CUSUM and residuals are established; our contribution is measuring delay and impact at detection for manipulation of view across two contexts and identifying the attacker capability at which the method fails." Safety: "All attacks ran in simulation or on T2 with a mechanical float valve independent of the PLC, a drip tray, a physical e-stop and a named stop authority; no production system was touched."
-- **EX047** — 1: methodology paper at a security venue (establishes metrics); 2: comparison at a control/CPS security venue (uses those metrics); 3: operator study at a human-factors venue. Order builds the vocabulary later papers depend on.
-- **EX048** — Modbus lacks authentication: documented design property, not a disclosure. PLC accepts writes to a protected register: implementation flaw → coordinated disclosure. Shared wiring on T2: lab configuration issue → tell the lab owner; not a product vulnerability.
-- **EX049** — High: band alarms alone miss replayed level readings. Medium: independent flow measurement plus residual detects single-sensor replay. Unknown: protection against an attacker controlling both measurements was not tested — do not assume it.
-- **EX050** — Year 1: multi-loop calibrated model; H: residual detection recall ≥80% with false alarms ≤1 per shift when loops couple. Year 2: consenting operator study; H: displaying predicted-versus-reported values reduces time to correct diagnosis by ≥20%. Both with frozen thresholds and refutation criteria.
+**EX045.** Using the EX032 or §5.5 paragraph: "detected class A replay in simulation" → PASS with scope; "robust to calibration bias" → REVISE: add scope (≤0.4 units); "works on real plants" → REVISE: overreach.
+**EX046.** Positioning: "The CUSUM and residuals are established; our contribution is measuring delay and impact at detection for manipulation of view across two contexts and identifying the attacker capability at which the method fails." Safety: "All attacks ran in simulation or on T2 with a mechanical float valve independent of the PLC, a drip tray, a physical e-stop and a named stop authority; no production system was touched."
+**EX047.** 1: methodology paper at a security venue (establishes metrics); 2: comparison at a control/CPS security venue (uses those metrics); 3: operator study at a human-factors venue. Order builds the vocabulary later papers depend on.
+**EX048.** Modbus lacks authentication: documented design property, not a disclosure. PLC accepts writes to a protected register: implementation flaw → coordinated disclosure. Shared wiring on T2: lab configuration issue → tell the lab owner; not a product vulnerability.
+**EX049.** High: band alarms alone miss replayed level readings. Medium: independent flow measurement plus residual detects single-sensor replay. Unknown: protection against an attacker controlling both measurements was not tested — do not assume it.
+**EX050.** Year 1: multi-loop calibrated model; H: residual detection recall ≥80% with false alarms ≤1 per shift when loops couple. Year 2: consenting operator study; H: displaying predicted-versus-reported values reduces time to correct diagnosis by ≥20%. Both with frozen thresholds and refutation criteria.
 
 **End of the worked results.** Return to the [course chapter index](../SUBJECTS.md).
+
+## Glossary
+
+**ATT&CK for ICS.** MITRE knowledge base of adversary tactics and techniques against industrial control systems; documents possibility, not base rates.
+
+**Class A / class B attacker (Setpoint Study).** Class A spoofs a single sensor (for example level) while an independent measurement remains honest; class B controls both measurements consistently so a mass-balance residual sees no disagreement.
+
+**CUSUM.** Cumulative sum test (Page, 1954) used here on a mass-balance residual between independently wired measurements.
+
+**Data tiers T0–T3.** Handling labels from synthetic/public (T0–T1) through identifiable rig or plant artefacts (T2–T3) used in the Setpoint Study archive rules.
+
+**Event-level detection delay.** Samples from attack-segment start to first true alarm; contrasts with point-adjusted scores that credit whole segments.
+
+**Manipulation of view.** Adversary goal of feeding operators or detectors false process readings while the plant state diverges.
+
+**Menlo Report.** U.S. DHS (2012) ethical principles for ICT research: respect for persons, beneficence, justice, respect for law and public interest.
+
+**Plant A.** Synthetic single-tank context in the Setpoint Study used for simulation experiments and threshold tuning.
+
+**Purdue model / zones and conduits.** Layered ICS architecture (NIST SP 800-82) and ISA/IEC 62443-3-2 segmentation framing.
+
+**Setpoint Study.** Running doctoral case: measuring when a cross-sensor residual CUSUM detects level replay versus a band alarm, and where class B defeats it.
+
+**Testbed T2.** Isolated laboratory water-tank rig with mechanical float valve, drip tray and named e-stop authority; used for frozen-threshold validation.
+
+**TankBench-21.** Prior published benchmark whose point-adjusted scores the thesis re-implements to expose metric effects.
+
+## References
+
+Links checked 13 October 2026; re-verify editions before citing.
+
+- ACM. Artifact Review and Badging, Version 1.1. <https://www.acm.org/publications/policies/artifact-review-and-badging-current>
+- Arp, D. et al. Dos and Don'ts of Machine Learning in Computer Security. USENIX Security 2022. <https://www.usenix.org/conference/usenixsecurity22/presentation/arp>
+- CISA. Coordinated Vulnerability Disclosure Program. <https://www.cisa.gov/coordinated-vulnerability-disclosure-process>
+- Giraldo, J. et al. A Survey of Physics-Based Attack Detection in Cyber-Physical Systems. *ACM Computing Surveys* 51(4), 2018. <https://doi.org/10.1145/3203245>
+- IEC 62443-3-2. Security for industrial automation and control systems — Security risk assessment for system design. IEC.
+- iTrust, SUTD. Secure Water Treatment (SWaT) and related datasets (public page). <https://itrust.sutd.edu.sg/itrust-labs_datasets/>
+- MITRE. ATT&CK for Industrial Control Systems. <https://attack.mitre.org/matrices/ics/>
+- NIST SP 800-82 Rev. 3. Guide to Operational Technology (OT) Security. <https://doi.org/10.6028/NIST.SP.800-82r3>
+- Page, E. S. Continuous Inspection Schemes. *Biometrika* 41(1–2), 1954. <https://doi.org/10.1093/biomet/41.1-2.100>
+- Urbina, D. et al. Limiting the Impact of Stealthy Attacks on Industrial Control Systems. ACM CCS 2016. <https://doi.org/10.1145/2976749.2978389>
+- U.S. DHS. The Menlo Report: Ethical Principles Guiding Information and Communication Technology Research (2012). <https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf>
