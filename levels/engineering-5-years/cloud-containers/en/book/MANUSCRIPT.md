@@ -812,29 +812,43 @@ You will (1) explain cloud virtual networks, subnets and security groups; (2) de
 
 A cloud virtual network is a private address space divided into subnets. Route tables decide where traffic goes, and security groups or firewall rules decide which connections are allowed. Solent's meterhub cluster runs in private subnets; only a load balancer sits in a public subnet.
 
+Keeping nodes in private subnets means they have no public addresses at all, so nothing on the internet can open a connection to them directly. The load balancer becomes the single front door, where TLS, request limits and logging are applied. Elena draws the subnets and route tables for meterhub and confirms that no route sends internet traffic straight to a node, which would undo the separation without anyone noticing.
+
 ### 11.2 Kubernetes networking
 
 Every pod gets its own IP address and, by default, can reach every other pod in the cluster. Services give stable names and addresses in front of groups of pods. This flat model is convenient, but it is why meterhub's missing network policies let any pod reach the database.
+
+In practice, the metrics pod, the report API and a forgotten debugging pod could all open connections to the database, though only the ingest and API services ever needed to. Nothing in the default model distinguishes them. Network policies add that distinction by selecting pods with labels and listing which other pods may connect, turning a flat network into one where each path must be stated.
 
 ### 11.3 Control points
 
 Traffic can be controlled at the cloud level (security groups between nodes and external services), at the cluster level (network policies between pods, enforced by the network plugin) and at the application level (authentication between services). Each catches different mistakes.
 
+Security groups stop a node from reaching services it never should, such as another team's database. Network policies stop one pod from reaching another inside the same cluster. Service authentication stops a request that arrives on an allowed path but from the wrong caller. A mistake at one layer, such as an over-broad policy, is then caught by another, which is why Solent uses all three.
+
 ### 11.4 Encryption in transit
 
 External traffic uses TLS at the load balancer. Internal service-to-service traffic is also encrypted in Solent's design so that a compromised node cannot read readings in transit.
+
+Without internal encryption, anyone able to capture traffic on a node, whether an attacker who has compromised it or a misconfigured monitoring tool, could read meter readings as they pass. Encrypting service-to-service traffic, often with mutual TLS, also lets each side check the other's identity. The cost is certificate management, which Solent automates so that certificates rotate without manual work.
 
 ### 11.5 DNS
 
 Cluster DNS resolves service names; egress to external DNS is limited so pods cannot reach arbitrary internet hosts.
 
+DNS is also a channel for data: a compromised pod could encode readings in lookups for names under a domain an attacker controls. Restricting pods to the cluster resolver, and letting that resolver forward only to approved upstream servers, closes that path. Elena checks that the resolver logs queries, so unusual lookups can be investigated. Blocked lookups are logged as well, since repeated attempts to reach outside resolvers may show a misbehaving pod.
+
 ### 11.6 Egress
 
 By default pods can usually reach the internet. Limiting egress reduces what a compromised or misconfigured workload can send out, which would also have limited the use of a leaked key from inside the cluster.
 
+A pod that pulls images or calls one external weather service needs only those destinations. Allowing everything means a compromised pod could upload readings anywhere or download further tools. Listing allowed destinations, often through an egress gateway or proxy, keeps outbound traffic visible and limited. A leaked key used from inside the cluster would have had nowhere to send its results.
+
 ### 11.7 Mapping traffic
 
 Before writing rules, engineers need to know which traffic is legitimate. Elena uses flow logs from the test cluster to list observed connections.
+
+Writing rules from memory or diagrams misses flows that were never documented, such as a nightly export job. Flow logs show what actually happens over days of normal use, including peaks. Elena groups the observed connections by source and destination service, marks each as expected or unexplained, and asks service owners about the unexplained ones before any rule is written.
 
 ### Worked example
 
@@ -872,9 +886,13 @@ You will (1) explain how containers use Linux kernel features; (2) describe capa
 
 Containers are processes isolated by Linux namespaces: each sees its own process list, network interfaces, mount points and hostname. Isolation comes from the shared kernel, so kernel settings matter.
 
+A container's process list shows only its own processes because of the PID namespace; its network namespace gives it a separate interface and routing table. These are views provided by the kernel, not separate machines. A flaw in the kernel, or a setting that grants access to the host's namespaces, breaks the illusion, which is why host-level settings such as hostNetwork are checked closely.
+
 ### 12.2 Capabilities
 
 Linux splits root privileges into capabilities such as NET_BIND_SERVICE (bind low ports), CHOWN (change file owners) and SYS_ADMIN (a very broad set of administrative powers). A container should drop all and add only what it needs; NIST SP 800-190 recommends limiting container privileges.
+
+Running as root inside a container used to mean holding every capability, including powerful ones like loading kernel modules. Splitting them lets a web server bind to port 443 without also being able to reconfigure the network. Dropping all and adding back only what is needed makes each container's power explicit and reviewable.
 
 ### Lab — Lab — container capabilities
 
@@ -900,17 +918,25 @@ node-agent    extra capabilities: NET_ADMIN, SYS_ADMIN
 
 meter-ingest has two extra capabilities, CHOWN and SETUID, beyond the NET_BIND_SERVICE it needs. report-api has none extra. node-agent has NET_ADMIN and SYS_ADMIN beyond the SYS_PTRACE it needs. SYS_ADMIN is the most serious because it grants broad control close to full root.
 
+CHOWN and SETUID on meter-ingest are probably leftovers from a base image or an old setup step; removing them should be tested but is unlikely to break anything. node-agent's case needs more care, since it monitors the node and genuinely needs some power, but SYS_ADMIN is far more than tracing requires. Elena raises it as the top finding with a suggested reduced set.
+
 ### 12.4 Running as non-root
 
 Containers should run as a non-root user with a read-only root filesystem where possible. The Restricted profile of the Pod Security Standards requires runAsNonRoot and disallows privilege escalation.
+
+A process running as root inside a container is one kernel flaw away from root on the host. Running as an ordinary user removes that step. A read-only root filesystem stops an attacker from writing tools or changing binaries inside the container; writable space is given only where needed, through specific volumes.
 
 ### 12.5 Seccomp
 
 Seccomp profiles limit which system calls a container may make. The runtime default profile blocks many rarely needed calls and is required by the Restricted profile.
 
+Many system calls exist for rare administrative tasks that ordinary applications never use. Each one is a possible path into the kernel if it contains a bug. Blocking unused calls shrinks that attack surface. The runtime default suits most applications; where a workload needs an unusual call, a custom profile adds it explicitly. Profiles are kept in version control.
+
 ### 12.6 Checking in practice
 
 Capability sets come from pod specifications; Elena's checker compares them with a documented "needed" list per workload.
+
+The 'needed' list is written by each workload's owner with a short reason for every capability. Elena's checker then reports any capability in the spec that is not on the list, and any listed capability that the spec no longer uses. Both kinds of difference prompt a review, keeping the list and the deployment in step. The list is reviewed when a workload's owner changes, so knowledge of why each capability exists is not lost.
 
 ### Worked example
 
@@ -948,25 +974,37 @@ You will (1) design storage for meter readings with security in mind; (2) apply 
 
 meterhub stores readings (meter ID, timestamp, value) in a time-series database and customer details (name, address) in a separate customer system. Linking requires a lookup the API controls, reducing what a database leak reveals.
 
+If the readings database leaked alone, an attacker would see meter IDs and values but not names or addresses. Linking them requires the customer system, which holds different credentials and is accessed only through the API's controlled lookup. Separation does not make readings harmless, but it raises the effort needed to identify households.
+
 ### 13.2 Encryption at rest
 
 Cloud storage and databases encrypt data at rest by default with provider-managed keys. Solent uses customer-managed keys for readings so it can control and audit key use, as CSA CCM v4's cryptography domain describes.
+
+Provider-managed keys protect against stolen disks but are used automatically, so their use reveals little. Customer-managed keys let Solent set who can use them and see every use in audit logs. Disabling the key makes the data unreadable, which is a strong control in an emergency but also a risk if done by mistake.
 
 ### 13.3 Access control
 
 Only the ingest service writes readings; the API reads them; analysts get aggregated views without meter IDs. Database credentials are short-lived and issued per service.
 
+Each service gets the narrowest access that its job requires: ingest can write but not read customer details; the API can read but not write. Aggregated views for analysts remove meter IDs, so analysis does not expose individuals. Short-lived credentials limit how long a stolen credential stays useful. Each grant is recorded with its owner and reviewed twice a year.
+
 ### 13.4 Retention
 
 Fine-grained readings are kept 13 months for billing disputes, then aggregated to daily values. Retention is enforced by lifecycle rules, not manual deletion.
+
+Thirteen months covers a full billing year plus time for disputes. After that, daily aggregates still support long-term planning while revealing much less about daily household routines. Lifecycle rules apply automatically and consistently, whereas manual deletion is easily forgotten or done unevenly. Elena checks that aggregation runs before deletion, so no month is lost if a job fails, and that failures raise an alert.
 
 ### 13.5 Backups
 
 Daily snapshots are copied to a separate account so that a compromised production account cannot delete them. Restores are tested quarterly.
 
+An attacker who gains control of the production account might try to delete backups before encrypting or destroying data. Copies in a separate account, with different credentials, survive that. Quarterly restore tests prove the copies are usable and show how long recovery takes, which matters for planning. The backup account allows writes from production but no deletes, and its own administrators use separate credentials and MFA.
+
 ### 13.6 Data in logs
 
 Logs must not contain readings linked to addresses; Elena adds a check for meter IDs in application logs.
+
+Developers often log request details while debugging and forget to remove them. A log line containing a meter ID and an address would recreate the link the data model was designed to prevent. Elena's check searches log samples for patterns matching meter IDs and raises an issue for the owning team. Teams fix findings at the source by changing log statements, not by filtering logs afterwards, which could fail silently.
 
 ### Restore tests
 
@@ -1008,29 +1046,43 @@ You will (1) apply software engineering practices to infrastructure and platform
 
 Solent defines its cloud networks, clusters and storage in code templates, and Kubernetes workloads in manifests, all in version control. Every change is a reviewed pull request, giving history and accountability.
 
+Defining infrastructure in code means the same template produces the same network or cluster every time, unlike manual console changes that drift. Reviews catch mistakes before they reach production. History shows who changed what and when, which helps investigations and audits. Console changes are blocked in production except through an emergency procedure that is logged and reviewed.
+
 ### 14.2 Security smells
 
 Rahman et al. (2019) identified recurring security smells in infrastructure-as-code: hard-coded secrets, admin by default, empty passwords, unrestricted IP addresses, use of HTTP and weak cryptography. Elena adds checks for several of these to the pipeline.
+
+A smell is a pattern that often indicates a problem, not proof of one. A hard-coded secret in a template is visible to anyone with repository access; an unrestricted address range opens a service to the world. Automated checks find these patterns quickly so reviewers can focus on design.
 
 ### 14.3 Pipelines
 
 A pipeline validates templates, runs policy checks, builds and scans images, and deploys to test before production. Failures stop the change.
 
+Each stage catches a different kind of problem: template validation finds syntax errors, policy checks find insecure settings, image scans find known vulnerabilities and embedded secrets. Deploying to test first shows whether the change works. Stopping on failure keeps unsafe changes out of production. Each failure message names the stage and the rule that failed, so developers can fix problems without asking the platform team for help.
+
 ### 14.4 Small changes
 
 Small, frequent changes are easier to review and roll back than large ones.
+
+A change touching one service and two settings can be reviewed in minutes, and if it breaks something the cause is obvious. A change touching twenty services makes review superficial and diagnosis slow. Small changes also make rollback safer, since undoing one does not undo unrelated work. Solent's guideline asks for changes that a reviewer can understand in fifteen minutes; larger work is split into a series of steps, each deployable on its own.
 
 ### 14.5 Environments
 
 Test, staging and production are separate accounts with separate credentials; promotion uses the same artifacts.
 
+Separate accounts mean a mistake or compromise in test cannot reach production data. Promoting the same artifacts, rather than rebuilding them, ensures that what was tested is what runs in production. Credentials for each environment are held by different people or systems. Configuration that differs between environments, such as hostnames and sizes, lives in separate parameter files reviewed like code, so the differences are visible and deliberate rather than hidden in manual steps.
+
 ### 14.6 Peer review
 
 Reviewers check intent, security settings and blast radius: what else could this change affect?
 
+Intent asks whether the change does what its description says. Security settings are checked against policy. Blast radius asks what else could break, such as a network rule that also affects a monitoring service. Reviewers who ask these questions consistently catch problems that tests alone miss. Solent requires one reviewer for routine changes and two for changes to network policies, access rules or the pipeline itself, since mistakes there have the widest effect.
+
 ### 14.7 Documentation
 
 README files in each repository explain how to deploy and roll back.
+
+A deployment that only one person knows how to run or undo is a risk when that person is away. README files give the steps, prerequisites and how to check success. Rollback instructions are tested, so they work when needed under pressure. Each README also lists the owner and an escalation contact. Elena tests two READMEs by following them on the test cluster without help, and fixes the steps that were missing or out of date.
 
 ### Console changes
 
@@ -1080,25 +1132,37 @@ You will (1) apply confidentiality, integrity and availability to meterhub; (2) 
 
 Confidentiality: readings and customer details stay private. Integrity: readings are not altered, since bills and grid planning depend on them. Availability: ingest keeps up so data are not lost.
 
+Each property has concrete consequences. A confidentiality breach exposes households' routines; an integrity failure could produce wrong bills or mislead grid planning; an availability failure loses readings that cannot be recollected. Elena uses these to rank risks during design. She also notes that integrity failures may go unnoticed longer than outages, since wrong values look normal.
+
 ### 15.2 Assets
 
 Readings, customer data, cloud credentials, container images, cluster configuration and the deployment pipeline. The leaked key showed that credentials and images are assets as important as data.
+
+Listing assets broadly avoids focusing only on the database. A cloud credential can unlock many resources at once; a container image can carry secrets or vulnerabilities into production; the pipeline can deploy anything. Protecting these is as important as protecting the data itself. Each asset has a named owner in Solent's register, together with its sensitivity and where it is stored.
 
 ### 15.3 Threats
 
 Credential leaks, misconfigured access, vulnerable images, compromised dependencies, insider misuse and outages. Each threat maps to controls.
 
+Mapping each threat to controls shows where defences are strong and where they are thin. Credential leaks map to secret scanning and short-lived keys; vulnerable images to scanning and patching; outages to redundancy and backups. Threats with no mapped control become priorities. Insider misuse is easy to overlook in a small co-operative where everyone knows each other, but access logs and separation of duties still apply. Outages are included because availability failures can lose readings permanently.
+
 ### 15.4 Defence in depth
 
 The key leak could have been prevented (no secrets in images), detected (secret scanning before push), limited (key with narrow permissions, egress limits) and recovered from (fast revocation). Several layers each reduce risk.
+
+Any one of these layers might have stopped the leak from causing harm. Together they make it much less likely that a single mistake leads to a breach. Elena uses the key leak as a worked example when explaining layered controls to Solent's managers. She shows how each layer applies to other threats too.
 
 ### 15.5 Shared responsibility
 
 The AWS, Azure and Google Cloud shared responsibility documents agree that customers secure identities, data, configurations and workloads; providers secure the physical infrastructure and managed service internals. Managed Kubernetes moves the control plane to the provider but leaves workloads to the customer.
 
+Misunderstanding the split is a common cause of cloud incidents: customers assume the provider secures their storage permissions, which it does not. Managed Kubernetes relieves Solent of patching the control plane but not of configuring pods, network policies and access. Elena lists Solent's responsibilities explicitly in the design note.
+
 ### 15.6 Zero trust
 
 NIST SP 800-207 recommends authenticating and authorising every request; network location alone is not trusted. This principle drives meterhub's service authentication and network policies.
+
+In meterhub, being inside the cluster no longer grants access by itself: each service proves its identity and is authorised for specific actions. Network policies limit who can even attempt a connection. If one pod is compromised, it cannot freely reach everything else simply because it shares a network. Every connection decision is logged, so denied attempts become evidence for investigation.
 
 ### Workload identity
 
