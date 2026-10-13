@@ -1040,9 +1040,7 @@ A tool failure, such as a crash or empty output, is logged together with the too
 
 Symptom, steps, screenshots, time, what you already ruled out.
 
-The last good hash tells on-call which evidence file was intact before the problem, so nobody re-collects it blindly.
-
-Sam's ENG-512 escalation packet has four fields: the ticket identifier, the last good hash, the exact stop message that was posted and the owner's contact details. It takes about five minutes to assemble and saves the on-call engineer a long verbal story. Listing what has already been ruled out stops the engineer repeating checks Sam made an hour earlier.
+Sam's ENG-512 escalation packet has four fields: the ticket identifier, the last good hash, the exact stop message that was posted and the owner's contact details. The last good hash tells on-call which evidence file was intact before the problem, so nobody re-collects it blindly. It takes about five minutes to assemble and saves the on-call engineer a long verbal story. Listing what has already been ruled out stops the engineer repeating checks Sam made an hour earlier.
 
 ### 13.4 Workarounds
 
@@ -1074,13 +1072,13 @@ After fifteen minutes alone, he must ask for help. Heroic silence wastes engagem
 
 The time box exists to protect the ENG-512 window from pride. Fifteen minutes stuck on a tool means escalating to the pair or the lead, not trying one more flag in silence. When ego does delay the call, the after-action review names it plainly and records how many minutes were lost, so the pattern is visible to the whole team. Early escalation is rewarded in that review rather than treated as a sign of weakness.
 
-### 13.9 13.x Field discipline
+### 13.9 Field discipline
 
 Sam's troubleshooting notes use the same Fact/Guess labels as casework. "Guess: WAF blocking my IP" becomes a Fact only after the WAF log shows the block. That discipline keeps him from "fixing" the WAF with volume to see what happens — a behaviour that looks like a DoS and violates the ROE.
 
 Field discipline for troubleshooting is tree, baseline, pair, time box, stop on rider impact. Sam's after-action rewards early escalation. Those habits matter more than solving every fault, because each one keeps a stuck session from turning into unapproved or unsafe testing.
 
-### 13.10 13.y Closing note
+### 13.10 Closing note
 
 When escalation is required, Sam notifies the engagement lead and the product owner together so nobody hears second-hand that staging is unhealthy.
 
@@ -1167,21 +1165,19 @@ Automation has a global disable flag the SOC can request. Sam tests that flag on
 
 With that one flag, Sam can turn off all ENG automation if the journey planner misbehaves. The disable test is a Lab II item, and the switch must be exercised end to end in rehearsal; a switch that exists only on paper keeps the job off the Saturday list. Testing it early means that, if it is ever needed during a live window, nobody is discovering for the first time whether it actually works.
 
-### 14.9 14.x Field discipline
+### 14.9 Field discipline
 
 Automation pull requests need a safety block: rate limits, kill switch, dry-run, and which ROE clause allows the job. Without that block, reviewers reject the PR. Sam added the template after a well-meaning script once ran outside the window because cron used UTC and the author thought in local time.
 
 Field discipline for automation is windowed, loop-aware, reviewed, disableable. Unattended cleverness is not a goal at NMT. A job that fails any one of those four properties stays off the Saturday list until the gap is fixed and reviewed again by a peer.
 
-### 14.10 14.y Closing note
+### 14.10 Closing note
 
 Sam charts automation runtime per night. A job that suddenly takes ten times longer may be stuck in a loop or hitting a larger inventory — both deserve a human look before the next window.
 
-Closing note: automation multiplies good method cards and also multiplies mistakes. Sam ships jobs only after a manual ENG-512 proved the path.
+Automation multiplies good method cards and also multiplies mistakes. Sam therefore automates a job only after a manual ENG-512 run has succeeded on the same path, with the method card, rate and evidence already reviewed. Automating an unproven path simply repeats an untested mistake on every scheduled run.
 
-In practice that means a job is automated only after a manual ENG-512 run has succeeded on the same path, with the method card, rate and evidence already reviewed. Automating an unproven path simply repeats an untested mistake on every scheduled run.
-
-### 14.11 14.z Extra
+### 14.11 Extra
 
 Caps include both retry count and wall-clock minutes. Sam's port-diff job dies after 20 minutes and pages him; a silent hang is treated like a failed stop switch.
 
@@ -1268,19 +1264,17 @@ Secret scans run on NMT-owned repos listed in the ROE, not on every public fork 
 
 Secret scanning scope stays inside the NMT repositories authorized for ENG-512, and the scope text names repository paths rather than the whole internet. Scanning a vendor's public GitHub without written leave is out of scope, however tempting a quick search may be. The path allow list for the scanners is reviewed whenever new NMT repositories appear, so coverage grows only through a recorded scope decision.
 
-### 15.9 15.x Field discipline
+### 15.9 Field discipline
 
 Sam's dependency map includes a "data shared" column: what NMT sends to each vendor. If NMT should not send rider phone numbers to the map tile provider, that becomes both a privacy control and a test check: inspect outbound requests for unexpected fields during authorized staging tests.
 
 Field discipline for dependencies is matrix, separate auth, NMT-side fixes first. Fare vendors stay out of ordinary probes. The data-shared column ties these together, because it shows which vendor flows NMT can test on its own side and which belong to the vendor.
 
-### 15.10 15.y Closing note
+### 15.10 Closing note
 
 If a vendor asks Sam to "just quickly test" their portal using NMT credentials, he refuses and points them to their own authorization process. NMT credentials do not travel.
 
-Closing note: dependency clarity keeps Sam from promising SWIFT-like coverage NMT never bought — here, fare-processor coverage it never authorized.
-
-The dependency chapter therefore ends where the scope table does: by stating plainly which vendor systems NMT did not authorize for testing. Sam repeats that list in the report, so readers do not assume fare-processor coverage that Northline Municipal Transit never purchased.
+The dependency chapter ends where the scope table does: by stating plainly which vendor systems NMT did not authorize for testing. Sam repeats that list in the report, so readers do not assume fare-processor coverage that Northline Municipal Transit never purchased. The same list goes into the handover note, so the next technician inherits the exclusions along with the findings.
 
 ### Worked example (synthetic NMT)
 
@@ -1363,19 +1357,19 @@ If a contractor shift speaks another language, critical stop warnings appear in 
 
 The wording of stop phrases is agreed once with the SOC and then reused, rather than improvised during an incident. Freelanced empathy or softened wording in a stop message is not a control. The agreed halt phrases are versioned beside the ethics charter excerpt, so any edit to them needs the same owners as an edit to the ethics text and cannot slip in unnoticed between windows.
 
-### 16.9 16.x Field discipline
+### 16.9 Field discipline
 
 When a stop incident happens, Sam updates the runbook the same week or files a ticket why not. Documentation delayed until "after the busy period" is documentation that never happens. His managers accept shorter runbooks that are current over long ones that describe retired tools.
 
 Field discipline for documentation is versioned, warned, retired cleanly, synthetic screenshots. Sam's ENG-512 depends on the tagged runbook, not memory. A runbook that cannot be followed without asking Sam is treated as unfinished, whatever its length or polish.
 
-### 16.10 16.y Closing note
+### 16.10 Closing note
 
 Obsolete runbooks are moved to an /archive folder that CI checks no active link points to. Broken links to retired methods fail the documentation build.
 
 Documentation is how NMT survives Sam's holiday. A deputy must be able to find the stop phrases and the fare exclusion in the runbook without asking Sam, so a missing stop phrase is treated as a defect rather than a style choice. When the documents are complete and current, the programme can keep testing safely while the usual lead is on leave.
 
-### 16.11 16.z Extra
+### 16.11 Extra
 
 Sam prints the stop-conditions page of the active runbook and keeps it on the desk during windows — screens lock, paper still readable when seconds matter.
 
@@ -1462,23 +1456,19 @@ Each Lab II ends with three minutes of after-action: what almost went wrong, wha
 
 The after-action produces three improvements for the next ENG-512. Each improvement is ticketed and linked from the Lab II report before sign-off, and the supervisor will not ink the sign-off until all three tickets exist. Without them, Lab II stays incomplete on the roster. Requiring tickets rather than spoken ideas means the lessons from a near miss actually reach the runbook instead of fading after the session.
 
-### 17.9 17.x Field discipline
+### 17.9 Field discipline
 
 Laboratory II's peer challenge is play-acting pressure: "just attach it, the hash is close enough". The correct answer is always refuse. Sam has heard similar pressure in real engagements about unverified scanner output. Practising the refusal with a peer makes the real refusal easier.
 
-Field discipline for Lab II is drill, evidence, peer challenge, pass bar. The lab exists to make ENG-512 boringly safe. The pass bar is the planted NOT APPROVED listener found and a stop message rehearsed, with nothing negotiable below that.
+Field discipline for Lab II is drill, evidence, peer challenge, pass bar. The lab exists to make ENG-512 boringly safe. Two parts of the pass bar in 17.6 are never negotiable: the planted NOT APPROVED listener must be found and the stop message must be rehearsed cleanly.
 
-Printed runbooks older than the ROE git tag are refused at kickoff and replaced from the tagged tree.
-
-### 17.10 17.y Closing note
+### 17.10 Closing note
 
 Sam's stop message in the drill uses the same template as production engagements, so wording muscle memory transfers. Fancy prose is discouraged; facts win.
 
-Closing note: Lab II is the last gate before Sam's project. A failed stop drill blocks portfolio credit until rehearsed clean.
+Lab II is the last gate before Sam's project, and a failed stop drill blocks portfolio credit until it is rehearsed clean. The block is enforced in practice: project repositories stay locked until the learner's stop drill shows a clean peer pass, so the gate cannot be skipped by starting the project early. A learner who fails the drill simply rehearses again until it is clean.
 
-The block is enforced in practice: project repositories stay locked until the learner's stop drill shows a clean peer pass, so the gate cannot be skipped by starting the project early. A learner who fails the drill simply rehearses again until it is clean.
-
-### 17.11 17.z Extra
+### 17.11 Extra
 
 If the stop drill message is late, the lab fails even if the report is perfect. Speed of stopping is the skill being measured.
 
@@ -1567,21 +1557,19 @@ Supervisor feedback becomes two runbook edits within a week — project done mea
 
 Supervisor comments become runbook patches in the same week, and Sam never archives feedback unread. The links to those same-week patches are pasted into the project handover note. A handover note without them is sent back as incomplete until the links are present, which ensures that the feedback has visibly changed the process rather than being acknowledged and forgotten. The supervisor can then see each comment matched to the change it produced.
 
-### 18.9 18.x Field discipline
+### 18.9 Field discipline
 
 The supervised project cover sheet is single-page: synthetic-only declaration, engagement id of the classroom data pack, list of deliverables with hashes, supervisor signature, and Sam's statement of limits. Without the cover sheet the project is incomplete even if the technical work is excellent.
 
 Field discipline for the project is brief, limits, safety cover, clean repo, honest STILL OPEN. Those five are the pass bar. A project that meets all five passes even when it reports open items, while a project missing one of them fails however polished its findings look.
 
-### 18.10 18.y Closing note
+### 18.10 Closing note
 
 After acceptance, Sam books a thirty-minute coaching session on OWASP WSTG access-control topics he wants to deepen — continuous learning is part of the project grade at NMT.
 
-Closing note: the project proves Sam can run ENG-512 habits without a teacher in the room. Portfolio credit needs artefacts, not intention. Portfolio credit needs artefacts proving solo ENG-512 habits — intention is not enough.
+The project proves Sam can run ENG-512 habits without a teacher in the room, and portfolio credit needs artefacts proving those solo habits; intention is not enough. The artefacts are the evidence that those habits are real: a pack that shows the stop drill, the hashes and the honest retest statuses earns the mark, while a promise to work that way does not.
 
-The artefacts are the evidence that those habits are real: a pack that shows the stop drill, the hashes and the honest retest statuses earns the mark, while a promise to work that way does not.
-
-### 18.11 18.z Extra
+### 18.11 Extra
 
 The SOC observer's question is usually about detection: Sam prepares one ATT&CK technique and one log source he would recommend for each finding.
 
