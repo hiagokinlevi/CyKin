@@ -112,7 +112,7 @@ As detecções são escritas, testadas, implantadas e mantidas como software. O 
 
 ### 2.3 Monitoramento contínuo
 
-A NIST SP 800-137 enquadra o monitoramento como um programa contínuo ligado ao risco, com frequências e métricas definidas, e não como um conjunto de ferramentas. Para Tariq, isso significa que o ajuste não é um projeto que termina na semana 8. As listas de permissão mudam o que o SOC monitora, então pertencem ao programa de monitoramento, com sua própria frequência de revisão e sua métrica. As recomendações dele depois tornam isso concreto: reprodução trimestral das entradas das listas de permissão contra eventos de *purple team*, e testes de ataques suprimidos acompanhados ao lado do volume.
+A NIST SP 800-137 enquadra o monitoramento como um programa contínuo ligado ao risco, com frequências e métricas definidas, e não como um conjunto de ferramentas. Para Tariq, isso significa que o ajuste não é um projeto que termina na semana 8. As listas de permissão mudam o que o SOC monitora, inclusive na regra que vigia a conta de aplicação de patches, então pertencem ao programa de monitoramento, com sua própria frequência de revisão e sua métrica. As recomendações dele depois tornam isso concreto: reprodução trimestral das entradas das listas de permissão contra eventos de *purple team*, e testes de ataques suprimidos acompanhados ao lado do volume.
 
 ### 2.4 Métricas e efeitos colaterais
 

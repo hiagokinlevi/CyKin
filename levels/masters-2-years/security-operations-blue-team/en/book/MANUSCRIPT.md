@@ -130,7 +130,7 @@ Treating rules like software is what makes Tariq's study possible: Pelham's rule
 
 NIST SP 800-137 frames monitoring as an ongoing programme tied to risk, with defined frequencies and metrics, not a set of tools.
 
-For Tariq, this means tuning is not a project that ends in week 8. Allow-lists change what the SOC monitors, so they belong in the monitoring programme with their own review frequency and metric. His recommendations later make this concrete: quarterly replay of allow-list entries against purple-team events, and suppressed-attack tests tracked beside volume.
+For Tariq, this means tuning is not a project that ends in week 8. Allow-lists change what the SOC monitors, including on the rule that watches the patching account, so they belong in the monitoring programme with their own review frequency and metric. His recommendations later make this concrete: quarterly replay of allow-list entries against purple-team events, and suppressed-attack tests tracked beside volume.
 
 ### 2.4 Metrics and side effects
 
