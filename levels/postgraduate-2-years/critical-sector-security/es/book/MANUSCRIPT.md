@@ -38,7 +38,7 @@ Toda afirmación factual sobre una ley, una norma, un incidente público o un es
 
 1. [Toma de decisiones de seguridad avanzada](#ch-01): plantear decisiones, objetivos en unidades de servicio, valor esperado, arrepentimiento y robustez, valor de la información, sesgos y el registro de decisión.
 2. [Infraestructura crítica y seguridad sectorial: práctica actual](#ch-02): qué exigen las líneas base y los regímenes en los distintos sectores, cobertura declarada frente a verificada y priorización por consecuencias.
-3. [Infraestructura crítica y seguridad sectorial: evidencia especializada](../../en/book/MANUSCRIPT.md#ch-03): evidencia en entornos de TO y mixtos, relojes y cronologías, preservación sin perturbar el proceso y hallazgos que separan la observación de la inferencia.
+3. [Infraestructura crítica y seguridad sectorial: evidencia especializada](#ch-03): evidencia en entornos de TO y mixtos, relojes y cronologías, preservación sin perturbar el proceso y hallazgos que separan la observación de la inferencia.
 4. [Riesgo y ética avanzados](../../en/book/MANUSCRIPT.md#ch-04): riesgo cuantificado con incertidumbre, excedencia de pérdidas, apetito de riesgo en unidades de servicio y quién soporta el riesgo residual.
 5. [Infraestructura crítica y seguridad sectorial: alternativas de diseño](../../en/book/MANUSCRIPT.md#ch-05): comparar arquitecturas como grafos de ataque y como sistemas operables, modos de fallo de los controles y registros de decisiones de arquitectura.
 6. [Infraestructura crítica y seguridad sectorial: evaluación controlada](../../en/book/MANUSCRIPT.md#ch-06): probar las detecciones y los simulacros antes de confiar en ellos, intervalos, carga de falsas alarmas y diseño seguro de las pruebas.
@@ -413,7 +413,178 @@ La práctica actual es la intersección de la obligación, la orientación y la 
 <!-- cyberabc:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 12
 
-[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](../../en/book/MANUSCRIPT.md#ch-03)
+[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-03"></a>
+
+## Capítulo 3 — Infraestructura crítica y seguridad sectorial: evidencia especializada
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Identificar las fuentes de evidencia disponibles en un entorno mixto de TI y TO y lo que cada una puede y no puede mostrar.
+2. Reconstruir una cronología a partir de fuentes cuyos relojes discrepan, usando eventos ancla, e indicar la incertidumbre restante.
+3. Planificar una preservación de evidencias que no ponga en peligro el proceso físico.
+4. Generar explicaciones alternativas e identificar la evidencia que permitiría discriminar entre ellas.
+5. Redactar hallazgos que separen la observación, la inferencia y el juicio, con un nivel de confianza que la evidencia respalde.
+6. Cumplir las obligaciones de notificación sin exagerar lo que se sabe.
+
+El capítulo 2 calificó la evidencia de que los controles están implantados. Este capítulo trata de la evidencia sobre **lo que ocurrió**: el material que un especialista aporta a una revisión de incidentes, a un regulador, a una aseguradora o a un tribunal. El capítulo 6 aplica la misma disciplina a las pruebas planificadas.
+
+### 3.1 El deber probatorio del especialista
+
+Cuando ocurre algo inexplicado en un servicio esencial, muchas personas se forman rápidamente un relato: el proveedor, los operadores, la prensa, el regulador. El deber del especialista es establecer qué respalda la evidencia, con qué confianza, y qué sigue sin conocerse, y mantener esas cosas separadas bajo presión. Las recomendaciones del NIST sobre respuesta a incidentes enmarcan la respuesta como parte de la gestión global del riesgo, con la preparación, la detección, el análisis y la mejora vinculados a la gobernanza ([NIST SP 800-61 Rev. 3, 2025](https://csrc.nist.gov/pubs/sp/800/61/r3/final)). Para la TO, la NIST SP 800-82 Rev. 3 añade que la respuesta debe proteger primero la seguridad funcional y el proceso ([NIST, 2023](https://doi.org/10.6028/NIST.SP.800-82r3)).
+
+El caso del sector del agua del capítulo 2 muestra por qué esto importa. En febrero de 2021, un aviso describió el compromiso del sistema de control de una instalación de tratamiento de agua de EE. UU. mediante software de acceso remoto ([CISA, AA21-042A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-042a)). En 2023 se informó de que el antiguo gerente municipal había dicho que el suceso fue probablemente un error de un empleado y no una intrusión externa ([WUSF, 2023](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021)). Sea cual sea la verdad, el episodio muestra cómo un primer relato público puede endurecerse antes de que la evidencia esté completa, y cuánto depende el análisis posterior de lo que se preservó en su momento.
+
+### 3.2 Fuentes de evidencia en un entorno mixto
+
+| Fuente | Qué puede mostrar | Debilidades típicas |
+|---|---|---|
+| Registros del cortafuegos y de la VPN | Sesiones, cuentas, direcciones y horas en el perímetro | Retención corta; la NAT oculta los equipos; sin contenido |
+| Registros del proveedor de identidad y del servidor de salto | Quién se autenticó, desde dónde, qué sesiones | Las cuentas compartidas o de servicio impiden la atribución |
+| Registros de sistema Windows/Linux en HMI y estaciones de ingeniería | Inicios de sesión, procesos, cambios en archivos | A menudo desactivados en equipos de TO; los pequeños búferes locales se sobrescriben |
+| Historiador del SCADA | Valores del proceso y órdenes de los operadores con etiquetas de origen | Hora tomada del reloj del servidor del historiador; la compresión puede descartar eventos breves; el «origen» puede ser una estación, no una persona |
+| Estado y archivos de proyecto de los controladores (PLC) | Lógica y configuración actuales; a veces, contadores de cambios | La lectura puede requerir herramientas del proveedor; la interacción en línea entraña riesgo para el proceso |
+| Capturas de red en la zona de control | Exactamente qué órdenes de protocolo se enviaron | Rara vez se recogen de forma continua; voluminosas |
+| Cuadernos de los operadores y relevos de turno | Observaciones y decisiones humanas | Resolución de minutos o peor; escritos a posteriori; relojes de pared sin sincronizar |
+| Entrevistas | Intención, contexto, acciones no registradas | La memoria reconstruye; los incentivos moldean los relatos |
+| Registros de proveedores y suministradores | Sesiones remotas, mantenimiento, actualizaciones | En poder de un tercero; el acceso requiere cláusulas contractuales |
+
+Un especialista conoce estas fuentes **antes** de un incidente y corrige las debilidades que más importan: hora sincronizada, retención más larga para los registros del perímetro y de identidad, cuentas nominativas y acceso contractual a los registros de los proveedores. El catálogo de controles del NIST incluye requisitos sobre el contenido, la retención y las marcas de tiempo de los registros de auditoría precisamente por esta razón ([NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)).
+
+### 3.3 El tiempo es evidencia
+
+El orden de los eventos suele decidir la explicación: ¿la sesión remota empezó antes o después de que cambiara el punto de consigna? Cada fuente registra la hora con su propio reloj, y los relojes de TO están con frecuencia sin sincronizar, desviados o ajustados a mano. Tres prácticas hacen defendibles las cronologías:
+
+1. **Elija un reloj de referencia** cuya sincronización pueda verificar (por ejemplo, un cortafuegos sincronizado con una fuente horaria conocida y comprobado) y exprese en él todos los eventos.
+2. **Estime el desfase de cada fuente a partir de eventos ancla**: un único momento real registrado por dos fuentes, como los dos extremos de la misma sesión de red o una consulta de sincronización que atraviesa un cortafuegos. Dos anclas independientes por fuente son mejores que una; la discrepancia entre ellas revela la deriva.
+3. **Indique la incertidumbre residual** de cada fuente (la precisión del propio ancla, la resolución, pues un registro manuscrito puede tener solo minutos, y la deriva a lo largo del intervalo) y compruebe si alguna conclusión depende de una ordenación más ajustada que esa incertidumbre.
+
+### 3.4 Preservar sin causar daño
+
+La preservación de evidencias en la TO no debe crear el daño que investiga. Principios:
+
+- **Primero la seguridad funcional y el proceso.** El responsable de operaciones decide si un sistema puede tocarse. Los pasos de preservación se planifican con él, no se imponen.
+- **Recoja primero de la fuente menos intrusiva.** Los registros del perímetro, los registros de identidad, las exportaciones del historiador y las copias de seguridad suelen poder recogerse sin tocar la red de control. El estado de los controladores debe leerse con las herramientas soportadas por el proveedor y bajo control de cambios, o no leerse hasta que el proceso sea seguro.
+- **Preserve la evidencia volátil cuando sea seguro.** La memoria y el estado de las conexiones activas en las HMI basadas en Windows y en los servidores de salto desaparecen al reiniciar; captúrelos si se puede prescindir del equipo.
+- **Registre la cadena de custodia.** Quién recogió qué, cuándo, cómo y con qué hashes: la misma disciplina que en cualquier trabajo forense. Un hash criptográfico como SHA-256 ([FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)) demuestra después que un archivo exportado no se alteró.
+- **Pregunte pronto a los proveedores.** Los registros de sesiones de los proveedores y de soporte remoto a menudo se sobrescriben según el calendario del propio proveedor.
+
+### 3.5 Explicaciones alternativas
+
+Un cambio del punto de consigna con una sesión remota cercana invita al relato «lo hizo un atacante». Un especialista enumera todas las explicaciones que podrían producir la misma evidencia y se pregunta qué las distinguiría: el método de las hipótesis de trabajo múltiples ([Chamberlin, 1965 reprint](https://doi.org/10.1126/science.148.3671.754)). Para un cambio inexplicado de la dosificación, las candidatas incluyen un intruso externo que usa una credencial robada, un ingeniero legítimo del proveedor que hace un cambio no registrado, un error de un operador en una HMI local, un script o una receta automatizados, un error de etiquetado del historiador y un fallo de un instrumento que el operador corrigió a mano. Cada una predice rastros distintos: el cambio de un intruso debería proceder de la estación remota después del inicio de sesión remoto; el trabajo planificado de un proveedor debería coincidir con un tique y con un patrón observado en otros emplazamientos; un error de un operador debería proceder de una estación local; una receta debería repetirse según un calendario; un error de etiquetado debería discrepar del registro propio del controlador.
+
+### 3.6 Redactar hallazgos
+
+Un hallazgo tiene cuatro partes: la **observación** con su fuente; la **inferencia** con sus supuestos; la **confianza**, en palabras que correspondan a rangos explícitos si su organización los usa; y la **consecuencia** para las decisiones. Por ejemplo: «El historiador registra un cambio del punto de consigna de dosificación de 1,8 a 2,6 mg/L atribuido a la estación HMI-JH2 a las 02:23:03 (hora del cortafuegos, ±10 s). La estación HMI-JH2 es el cliente de HMI del servidor de salto JH-2. La única sesión interactiva en JH-2 en ese momento era la de la cuenta vendor-svc, que se conectó a través de la VPN desde las 02:11:40. Evaluamos con confianza moderada que el cambio se hizo dentro de la sesión de vendor-svc; todavía no podemos decir quién usó esa cuenta. La cuenta la comparten cuatro ingenieros de Corvane». Esto es mucho más útil para quien decide que «la cuenta del proveedor fue comprometida».
+
+### 3.7 Notificar por obligación
+
+Muchos regímenes exigen ahora notificar pronto y por etapas los incidentes significativos. NIS2, por ejemplo, prevé una alerta temprana, una notificación más completa y un informe final en plazos fijos ([Directive (EU) 2022/2555](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/)); NERC CIP y otras normas sectoriales tienen sus propios plazos. Las notificaciones tempranas deben hacerse antes de conocer los hechos. La contribución del especialista es hacer que sean **exactas sobre la incertidumbre**: decir qué se ha observado, qué se está investigando y qué no se sabe todavía, y evitar una atribución que la evidencia posterior pueda revocar. Haga un seguimiento de cada declaración externa para que los informes posteriores puedan corregir explícitamente los anteriores.
+
+### 3.8 Ejemplo resuelto: una noche en Hollin (sintético)
+
+En la planta de tratamiento de Hollin, el punto de consigna de dosificación de cloro subió brevemente de 1,8 a 2,6 mg/L y volvió a su valor en menos de un minuto. El cuaderno manuscrito del operador dice que el operador advirtió una alarma a las «02:20» y restableció el punto de consigna. El especialista reunió los registros del cortafuegos, del servidor de salto y del historiador. Con una lectura ingenua, el historiador muestra el cambio a las 02:06, *antes* de que comenzara la sesión VPN de vendor-svc a las 02:11, lo que exculparía a la sesión remota. Pero se sabe que el reloj del servidor del historiador no está sincronizado. Existen dos anclas: el inicio de una sesión TCP visto tanto por el cortafuegos como por el servidor de salto, y la propia consulta de sincronización del historiador que atraviesa el cortafuegos.
+
+### 3.9 Actividad práctica: una cronología con relojes que discrepan
+
+```python
+# Lab 3 - reconstructing a timeline from sources whose clocks disagree (offline, standard library only)
+# Synthetic: Merrow Water, Hollin treatment works, night of an unexplained chlorine dosing setpoint change.
+# Each source records time in its own clock. Anchor events were seen by two sources at the same real moment.
+from datetime import datetime, timedelta
+T = lambda s: datetime.strptime(s, "%H:%M:%S")
+EVENTS = [  # (source, local clock time, description)
+    ("firewall",  "02:11:40", "VPN session opened for account vendor-svc"),
+    ("firewall",  "02:13:05", "RDP from VPN pool to jump host JH-2 allowed"),
+    ("jumphost",  "02:20:31", "interactive logon vendor-svc on JH-2"),
+    ("jumphost",  "02:22:58", "HMI client launched on JH-2"),
+    ("historian", "02:06:12", "dosing setpoint changed 1.8 -> 2.6 mg/L, source HMI-JH2"),
+    ("historian", "02:06:50", "dosing setpoint restored 2.6 -> 1.8 mg/L, source HMI-OPS1"),
+    ("ops-log",   "02:20",    "operator notices dosing alarm, restores setpoint (handwritten, minute only)"),
+    ("firewall",  "02:31:10", "VPN session closed for vendor-svc"),
+]
+ANCHORS = [  # the same real moment seen by two sources: (source_a, time_a, source_b, time_b)
+    ("firewall", "02:13:07", "jumphost", "02:20:33"),   # TCP session start seen at both ends
+    ("firewall", "02:14:30", "historian", "01:57:39"),  # historian's NTP query passing the firewall
+]
+offset = {"firewall": timedelta(0)}  # firewall is the reference clock (NTP-synchronized, checked)
+for a, ta, b, tb in ANCHORS:
+    offset[b] = (T(ta) - T(tb)) + offset[a]
+offset["ops-log"] = timedelta(0)  # a handwritten log has no known offset, only minute resolution
+def show(title, rows):
+    print(title)
+    for t, src, d in rows: print(f"  {t.strftime('%H:%M:%S')}  {src:9s} {d}")
+naive = sorted((T(t) if len(t) > 5 else T(t + ':00'), s, d) for s, t, d in EVENTS)
+show("Naive order (raw clocks):", naive)
+fixed = sorted(((T(t) if len(t) > 5 else T(t + ':00')) + offset[s], s, d) for s, t, d in EVENTS)
+show("Corrected to firewall time:", fixed)
+print("offsets:", {k: int(v.total_seconds()) for k, v in offset.items()}, "seconds")
+```
+
+Salida esperada:
+
+```text
+Naive order (raw clocks):
+  02:06:12  historian dosing setpoint changed 1.8 -> 2.6 mg/L, source HMI-JH2
+  02:06:50  historian dosing setpoint restored 2.6 -> 1.8 mg/L, source HMI-OPS1
+  02:11:40  firewall  VPN session opened for account vendor-svc
+  02:13:05  firewall  RDP from VPN pool to jump host JH-2 allowed
+  02:20:00  ops-log   operator notices dosing alarm, restores setpoint (handwritten, minute only)
+  02:20:31  jumphost  interactive logon vendor-svc on JH-2
+  02:22:58  jumphost  HMI client launched on JH-2
+  02:31:10  firewall  VPN session closed for vendor-svc
+Corrected to firewall time:
+  02:11:40  firewall  VPN session opened for account vendor-svc
+  02:13:05  firewall  RDP from VPN pool to jump host JH-2 allowed
+  02:13:05  jumphost  interactive logon vendor-svc on JH-2
+  02:15:32  jumphost  HMI client launched on JH-2
+  02:20:00  ops-log   operator notices dosing alarm, restores setpoint (handwritten, minute only)
+  02:23:03  historian dosing setpoint changed 1.8 -> 2.6 mg/L, source HMI-JH2
+  02:23:41  historian dosing setpoint restored 2.6 -> 1.8 mg/L, source HMI-OPS1
+  02:31:10  firewall  VPN session closed for vendor-svc
+offsets: {'firewall': 0, 'jumphost': -446, 'historian': 1011, 'ops-log': 0} seconds
+```
+
+**Interpretación.** El servidor de salto va 446 segundos (7 min 26 s) adelantado respecto del cortafuegos; el historiador va 1.011 segundos (16 min 51 s) atrasado. Una vez corregido, el orden se invierte: la sesión de vendor-svc se abre a las 02:11:40, el inicio de sesión en el servidor de salto sigue a la conexión RDP permitida dentro del mismo segundo (una comprobación de coherencia que respalda la primera ancla), el cliente de HMI arranca a las 02:15:32 y el cambio del punto de consigna desde la estación HMI-JH2 se produce a las 02:23:03, con un restablecimiento desde la estación de los operadores 38 segundos después. La cronología ingenua habría exculpado a la sesión remota; la corregida sitúa el cambio dentro de ella. Observe la incoherencia que queda: las «02:20» del registro manuscrito son tres minutos *antes* del cambio que describen. La explicación probable es que el reloj de pared de la sala de control va atrasado, pero eso es una inferencia; debe comprobarse contra el reloj de pared y registrarse, no «arreglarse» en silencio. El hallazgo sigue refiriéndose a la **sesión**, no a una persona, y las explicaciones alternativas (§3.5), un cambio legítimo pero no registrado de un ingeniero del proveedor frente al uso indebido de la cuenta compartida, siguen abiertas.
+
+### 3.10 Errores comunes y límites
+
+- Ordenar los eventos de distintas fuentes por sus marcas de tiempo sin corregir.
+- Corregir los relojes con una sola ancla y no contrastarla nunca con una segunda.
+- Tratar la etiqueta de «origen» del historiador como una persona.
+- Tocar los controladores para recoger evidencias sin la decisión del responsable de operaciones.
+- Dejar que el primer relato plausible defina qué evidencias se recogen.
+- Escribir «comprometido» o «ataque» en las notificaciones tempranas cuando la evidencia solo respalda «cambio inexplicado durante una sesión remota».
+- Olvidar que los registros de los proveedores caducan.
+
+El límite es que la evidencia puede reducir las explicaciones, pero rara vez las elimina todas menos una. Un especialista informa de qué explicaciones siguen en pie y de qué las separaría; la decisión de actuar (por ejemplo, suspender el acceso de un proveedor) puede, y a menudo debe, tomarse antes de que se resuelva la atribución.
+
+### Ejercicios — capítulo 3
+
+**EX011 — Robustez del orden.** *Objetivo:* cuantificar cuánto depende una conclusión cronológica de una sola ancla. *Entradas:* el Lab 3. *Restricciones:* considere errores solo en el ancla del historiador. *Pasos:* (1) calcule cuántos segundos antes tendría que estar el cambio corregido del punto de consigna para preceder al arranque del cliente de HMI en JH-2; (2) cambie en un minuto la hora del cortafuegos del ancla del historiador (02:14:30 → 02:15:30), vuelva a ejecutarlo e informe de si cambia el orden; (3) indique qué evidencia independiente confirmaría el desfase del historiador. *Evidencia esperada:* cálculo, salida de la nueva ejecución y un párrafo. *Rúbrica:* 3 = margen calculado (451 s), la nueva ejecución muestra que el orden no cambia, se propone una segunda ancla independiente; 2 = falta una parte; 1 = no ejecutado; 0 = nada.
+
+**EX012 — Plan de preservación.** *Objetivo:* planificar una recogida segura de evidencias. *Entradas:* el suceso de Hollin. *Restricciones:* la planta debe seguir produciendo agua; el responsable de operaciones tiene autoridad sobre los sistemas de control. *Pasos:* enumere las fuentes en orden de recogida con el método, quién lo aprueba, la volatilidad y el riesgo para el proceso; incluya la cadena de custodia y las solicitudes a los proveedores. *Evidencia esperada:* tabla y una justificación de un párrafo. *Rúbrica:* 3 = lo menos intrusivo primero, captura volátil de JH-2 antes de cualquier reinicio, lecturas de los controladores con aprobación de operaciones y herramientas del proveedor, hashes y custodia, registros de sesiones de Corvane solicitados de inmediato; 2 = orden parcialmente erróneo; 1 = pone en peligro el proceso; 0 = nada.
+
+**EX013 — Redacte el hallazgo.** *Objetivo:* separar la observación, la inferencia, la confianza y la consecuencia. *Entradas:* la salida del Lab 3. *Restricciones:* 200 palabras; ninguna atribución a una persona. *Pasos:* redacte el hallazgo para el consejo y una versión de una frase para la notificación temprana al regulador. *Evidencia esperada:* ambos textos. *Rúbrica:* 3 = observaciones con su fuente, su base horaria y su incertidumbre, inferencia explícita, confianza indicada, consecuencia clara para las decisiones (por ejemplo, suspender la cuenta compartida), frase para el regulador exacta sobre lo desconocido; 2 = un elemento mezclado; 1 = afirma el compromiso como un hecho; 0 = nada.
+
+**EX014 — Evidencia que discrimina.** *Objetivo:* aplicar las hipótesis de trabajo múltiples. *Entradas:* las seis explicaciones candidatas del §3.5. *Restricciones:* para cada una, una predicción que las demás no compartan. *Pasos:* construya una tabla con la explicación, la predicción distintiva, la fuente de evidencia y el estado actual (respaldada, contradicha, abierta). *Evidencia esperada:* tabla. *Rúbrica:* 3 = predicciones realmente discriminantes, estados coherentes con el Lab 3 (error del operador en una estación local contradicho para el propio cambio; uso legítimo del proveedor frente a uso indebido, abierto), siguiente evidencia identificada; 2 = algunas predicciones compartidas; 1 = solo una lista; 0 = nada.
+
+**EX015 — Notificación por etapas.** *Objetivo:* redactar declaraciones externas que resistan la evidencia posterior. *Entradas:* el suceso de Hollin; suponga que Merrow Water está sujeta a un régimen de notificación de incidentes por etapas similar al del artículo 23 de NIS2. *Restricciones:* no interprete la legislación real para una entidad real; use marcadores para los plazos. *Pasos:* redacte la alerta temprana, la notificación y el esquema del informe final, mostrando cómo cada uno corrige o amplía el anterior. *Evidencia esperada:* tres textos breves. *Rúbrica:* 3 = alerta temprana factual y explícita sobre la incertidumbre, la notificación añade la cronología corregida y las acciones, el esquema del informe final incluye la causa raíz, las correcciones y las lecciones; 2 = el texto temprano exagera; 1 = afirma la atribución; 0 = nada.
+
+### Síntesis del capítulo
+
+La evidencia especializada es el material sobre el que descansan las decisiones y la rendición de cuentas. Conozca sus fuentes antes de un incidente y corrija las debilidades que importan: la hora, la retención, las cuentas nominativas y el acceso a los proveedores. Trate el tiempo como evidencia: elija un reloj de referencia, estime los desfases a partir de anclas e indique la incertidumbre residual. Preserve sin dañar el proceso, lo menos intrusivo primero y con cadena de custodia. Genere explicaciones alternativas y busque la evidencia que discrimine entre ellas. Redacte hallazgos que mantengan separadas la observación, la inferencia, la confianza y la consecuencia, y notifique pronto de un modo que la evidencia posterior amplíe en lugar de contradecir.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Siga estudiando — capítulo 03 de 12
+
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -447,6 +618,18 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX009 — Operador sujeto a varios regímenes.** Regímenes candidatos: NIS2 (agua y electricidad como sectores esenciales), CER (resiliencia de las entidades críticas), DORA (filial de pagos) y, posiblemente, los códigos nacionales del sector eléctrico. Un único conjunto interno de controles con correspondencias con cada uno; los plazos de notificación de incidentes (alerta temprana / notificación / informe final según NIS2; notificación de incidentes de TIC según DORA; cualquier plazo específico del sector eléctrico) conciliados en un único procedimiento. Preguntas específicas para los asesores jurídicos: qué entidades están designadas; qué plazos vinculan a qué filial; si un solo informe puede satisfacer varios regímenes.
 
 **EX010 — Critique una práctica.** El consejo quiere saber si un atacante puede perturbar la atención clínica. Una prueba externa anual sobre una muestra de la red clínica responde a una pregunta estrecha sobre esa muestra en esa ventana, con técnicas atenuadas por seguridad y, a menudo, excluyendo los dispositivos médicos. Una cartera mejor: una revisión guiada por las consecuencias de los peores resultados clínicos; monitorización continua y pruebas de restauración; pruebas en un entorno no productivo representativo; y una evaluación centrada en las rutas de los dispositivos médicos y de los proveedores. Límites: ninguna cartera elimina el riesgo residual; cada método necesita el consentimiento de operaciones.
+
+### Capítulo 3: EX011–EX015
+
+**EX011 — Robustez del orden.** El cambio corregido es a las 02:23:03 y el arranque del cliente de HMI a las 02:15:32: un margen de 451 segundos. Desplazar un minuto el ancla del historiador mueve el cambio a las 02:24:03; el orden no cambia. Confirme el desfase con una segunda ancla independiente (por ejemplo, un evento del proceso registrado tanto por el historiador como por un analizador con un reloj conocido, o una segunda consulta NTP).
+
+**EX012 — Plan de preservación.** Orden: registros del cortafuegos y de la VPN (exportación, hash); registros de identidad y del servidor de salto; captura volátil de JH-2 si es seguro; exportación del historiador para la ventana; cuadernos de los operadores; registros de sesiones de Corvane (solicitud contractual inmediata); estado de los controladores solo con aprobación de operaciones y con herramientas del proveedor. Cadena de custodia para cada elemento. Ninguna interacción en línea con los controladores sin el responsable de operaciones.
+
+**EX013 — Redacte el hallazgo.** Observación: cronología corregida con desfases e incertidumbre de ±10 s; cambio atribuido a HMI-JH2 durante la sesión de vendor-svc. Inferencia: el cambio se hizo dentro de esa sesión; la persona es desconocida porque la cuenta es compartida. Confianza: moderada. Consecuencia: suspender la cuenta compartida; exigir cuentas nominativas; pedir a Corvane los registros de sesiones. Frase para el regulador: «Se produjo un cambio inexplicado del punto de consigna de dosificación durante una sesión remota de un proveedor; el punto de consigna se restableció en menos de un minuto; la investigación continúa; no hay evidencia de que saliera de la planta agua no segura».
+
+**EX014 — Evidencia que discrimina.** Un intruso externo predice una IP de origen desconocida y técnicas nuevas: abierta. Un cambio legítimo del proveedor predice un tique y un patrón en otros emplazamientos: contradicho por la ausencia de tique; patrón abierto. Un error local del operador predice una estación local como origen: contradicho para el cambio (HMI-JH2). Una receta automatizada predice un calendario: abierta, compruébese el historiador. Un error de etiquetado predice una discrepancia con el controlador: abierta. El uso indebido de la cuenta compartida predice una sesión sin tique correspondiente: respaldada hasta ahora. Siguiente: registros de sesiones de Corvane y comparación con cuentas nominativas.
+
+**EX015 — Notificación por etapas.** Alerta temprana: el hecho del suceso, el impacto en el servicio (ninguno duradero), investigación abierta. Notificación: cronología corregida, acciones (cuenta suspendida, cuentas nominativas exigidas), preguntas abiertas. Esquema final: causa raíz, correcciones a las declaraciones anteriores, lecciones, riesgo residual. La máxima puntuación nunca afirma pronto un «ataque» ni nombra a una persona.
 
 <a id="glossary"></a>
 

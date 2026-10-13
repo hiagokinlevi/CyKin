@@ -11,8 +11,8 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | Semestre | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Toma de decisiones de seguridad avanzada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Infraestructura crítica y seguridad sectorial: práctica actual | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Infraestructura crítica y seguridad sectorial: evidencia especializada | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-03)) | [04 · Plan](book/PLAN.md#ch-04) |
+| 1 | [02](book/PLAN.md#ch-02) | Infraestructura crítica y seguridad sectorial: práctica actual | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Infraestructura crítica y seguridad sectorial: evidencia especializada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Riesgo y ética avanzados | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
 | 2 | [05](book/PLAN.md#ch-05) | Infraestructura crítica y seguridad sectorial: alternativas de diseño | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
 | 2 | [06](book/PLAN.md#ch-06) | Infraestructura crítica y seguridad sectorial: evaluación controlada | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
