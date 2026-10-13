@@ -2070,29 +2070,43 @@ You will (1) build correlation detections across sources; (2) choose time window
 
 Single events are often ambiguous: a sign-in from abroad may be travel; a new mailbox rule may be routine. Together, a risky sign-in followed soon by a forwarding or deleting rule is much stronger evidence of compromise.
 
+In the campaign, s2047's sign-in from the Netherlands alone might have been a student abroad, and its forwarding rule alone might have been a student copying mail to a personal account. The two together, six minutes apart, left little doubt. Correlation lets the SOC alert on that combination without alerting on every trip or every new rule.
+
 ### 26.2 Designing the correlation
 
 Lucas's rule: a sign-in flagged as new-country, followed within a time window by mailbox-rule creation for the same user. The window must allow for mail audit delay (up to 30 minutes) and for attacker behaviour.
+
+Lucas writes the rule in plain logic before implementing it: for each new-country sign-in, look for a rule created by the same user within the window; if found, alert with both events. Writing it this way let Dr. Kim check the logic before any code existed, and made the test cases in the laboratory easy to derive.
 
 ### 26.3 Choosing the window
 
 Too short a window misses slow attackers; too long a window links unrelated events. Lucas starts with 60 minutes and evaluates it on known cases from the campaign in Laboratory II.
 
+Sixty minutes was chosen because s2047's rule appeared six minutes after sign-in, and Lucas assumed attackers act quickly once inside an account. That assumption is exactly what the laboratory tests. Starting with a stated window and a stated reason makes it easy to see, later, which assumption failed when a case is missed.
+
 ### 26.4 Delayed sources
 
 Because mail audit events can arrive late, the rule waits 30 minutes after a risky sign-in before deciding no rule followed.
+
+Without this wait, a sign-in at 02:14 followed by a rule at 02:20 whose audit event arrived at 02:45 could be judged at 02:30 as having no rule, and the alert would never fire. The wait adds half an hour to detection time, a cost Lucas accepts because a missed alert is worse. The rule's documentation records the delay and its reason, so a later engineer does not remove it as an apparent inefficiency and quietly reintroduce missed alerts.
 
 ### 26.5 Noise
 
 Students travelling abroad who also tidy their inbox will match. Requiring the rule to forward externally or delete messages by keyword reduces this.
 
+The restriction reflects what attackers in the campaign actually did: s2047's rule forwarded externally and s3310's deleted by keyword. Ordinary students' rules usually move newsletters into folders. Narrowing the rule types removes most benign matches while keeping the behaviour that indicates compromise, as the worked example's test on last month's data shows. Benign forwarding remains possible, but the forwarding block now limits it to approved exceptions.
+
 ### 26.6 Rule documentation
 
 The rule records its purpose, logic, window, known benign matches and response steps.
 
+For the correlation, the known benign matches include staff travelling abroad who forward mail to a personal account under an approved exception. The response steps name the service desk ticket to raise and the evidence to export first. A student analyst meeting the alert for the first time at night can follow the documentation without calling anyone. When the window later changed after the laboratory, the documentation was updated in the same change, with the reason and the date, so readers never see a rule that behaves differently from its description.
+
 ### 26.7 ATT&CK reference
 
 Mailbox rules used to hide or forward mail relate to email collection and hiding techniques in ATT&CK; referencing them helps coverage tracking.
+
+Lucas tags the correlation with email collection, since forwarding rules collect mail for the attacker, and with the hiding technique for deletion rules like s3310's. These tags feed the coverage count in the verification chapter, where an untested rule under a technique does not count as coverage until it has been shown to fire. Tags also help when comparing with other universities.
 
 ### Suppressing duplicates
 
@@ -2134,9 +2148,13 @@ You will (1) verify that detections work as specified; (2) measure ATT&CK covera
 
 Verification checks that each rule fires on the behaviour it targets and stays quiet otherwise. It uses safe synthetic events in a test environment or approved test accounts in production.
 
+For the correlation rule, verification means a test account signs in from a test address flagged as a new country, creates a forwarding rule, and the SOC confirms an alert appears with both events. A second test creates an ordinary folder rule after the same sign-in and confirms no alert appears.
+
 ### 27.2 Coverage honestly measured
 
 Coverage is the share of priority ATT&CK techniques with a tested detection. A rule that exists but has never been tested is not counted as coverage, because it may silently fail.
+
+Counting untested rules would have hidden the broken email collection rule found in the worked example below: it existed, appeared on the coverage chart and had not matched anything for months, because the field it relied on had been renamed. Honest counting turned a reassuring number into a list of work.
 
 ### Lab — coverage status
 
@@ -2165,17 +2183,25 @@ gaps: ['T1021', 'T1048']
 
 Of eight priority techniques, four (50%) have tested detections, two (25%) have rules not yet tested, and two (25%) — remote services (T1021) and exfiltration over alternative protocols (T1048) — have nothing.
 
+The figures describe Riverton's SOC fairly: the techniques seen in the phishing campaign and the ransomware exercise have tested detections, while those involving research servers and DNS have none. The gaps reflect where the SOC's data sources are weakest, as the data chapter showed, rather than where attackers are least likely to go.
+
 ### 27.4 Planning
 
 Untested rules are tested first because it is cheap. The two gaps need data sources: remote-service logons on research servers and DNS-based exfiltration detection using resolver logs.
+
+Testing the two untested rules needed only a test account and an afternoon. Filling the gaps needs more: research servers must forward remote-service logons reliably, and DNS exfiltration detection needs resolver logs with enough detail to spot unusually long or frequent queries. Lucas's plan lists the owner and the first step for each.
 
 ### 27.5 Test design
 
 Each test states input, expected result and pass criteria. For mailbox rules, a test account creates a forwarding rule after a simulated risky sign-in from a test address.
 
+For the mailbox test, the pass criterion is an alert within the window plus the audit delay, naming the test account and listing the rule. A test that produced an alert without the rule details would fail, since analysts need both events to triage quickly. Stating criteria in advance prevents a partial result from being counted as a pass.
+
 ### 27.6 Recording
 
 Results are stored with date, rule version and tester, and repeated each term.
+
+Repeating each term catches silent breakage like the renamed field. Storing the rule version with each result shows which version passed, so if a later change breaks the rule, the last working version can be found. The record also shows the next tester exactly what was done before. For the correlation rule, the first record lists the test account, the sign-in address, the rule created, the alert time and the tester's name. The second, a term later, repeated the same steps after the window change and confirmed the new version still fired.
 
 ### Who tests
 
@@ -2217,29 +2243,43 @@ You will (1) analyse why detections or responses failed; (2) use timelines and c
 
 After the campaign, Riverton holds a review. Its aim is learning: what happened, why defences and response worked or failed, and what to change. NIST SP 800-61r3 treats such lessons as part of continuous improvement.
 
+Riverton's review was held a week after the campaign, when containment was complete but memories were still fresh. It included student analysts, the duty engineers, the service desk and the DPO. Its terms stated that the aim was to improve systems, not to assign fault, which shaped how openly people described their decisions that night.
+
 ### 28.2 Timeline
 
 The review builds a timeline from email delivery (01:50) to last containment (s3310 at 11:20). Each entry cites its source.
+
+Building it required matching times from the mail service, identity provider, SIEM, case system and service desk tickets, all converted to UTC. Lucas's case notes from the day supplied the analyst actions. Each entry cites its source so that anyone questioning a time can check it against the original export. The finished timeline showed the long quiet stretch between s3310's sign-in at 02:31 and any SOC action, which became the review's central question. A timeline built from memory would have blurred that gap.
 
 ### 28.3 What failed
 
 s3310 was compromised at 02:31 but not contained until 11:20. Its attacker created a rule deleting messages containing "phishing" — hiding warnings — but no alert fired, because the correlation window had not yet existed and the z-score did not flag s3310 (it sent few messages).
 
+The gap of almost nine hours for s3310 matters because its deletion rule was removing warnings, including a classmate's question, while the attacker could keep sending mail from the account. Detection had been built around the s2047 pattern of heavy sending, and an attacker who behaved more quietly fell through.
+
 ### 28.4 Contributing factors
 
 No MFA for students; legacy protocol enabled; batch detection; no rule for keyword-deletion rules; only one analyst on the early shift.
+
+None of these factors alone explains the outcome. Without MFA, stolen passwords worked; with legacy protocols, MFA could have been bypassed even if enrolled; batch detection delayed s2047's alert; the missing deletion-rule alert left s3310 unseen; and a single early analyst could not handle reports and alerts together. Each factor became an action. Listing them separately also shows which were already fixed.
 
 ### 28.5 Blameless approach
 
 The review focuses on systems and decisions, not individuals. People speak openly when they are not blamed.
 
+In the review, the analyst on the early shift explained that she had seen several phishing reports but had not linked them to compromised accounts, because the reports described the email rather than any account. Without blame, that insight was recorded: reports and account alerts lived in different queues, which made the connection hard to see. The action list later added a link between the two queues.
+
 ### 28.6 Actions
 
 Each factor becomes an action with owner and date: MFA requirement, legacy shutdown, 15-minute checks, correlation rule, an extra early shift during campaigns.
 
+The extra early shift during campaigns responds directly to the single-analyst factor. The fifteen-minute checks replace the morning batch that delayed s2047's alert. Each action names who will do it and by when, and the review report lists them in a table so their progress can be checked. Owners report progress at the monthly review, and an action whose date passes without completion is raised with Dr. Kim rather than silently extended.
+
 ### 28.7 Follow-up
 
 Actions are tracked until closed and checked in the next exercise.
+
+Dr. Kim reviews open actions monthly. The next purple exercise included a slow mailbox-rule attacker similar to s3310, to check that the new keyword-deletion alert fired. It did, and the action was closed with a reference to the exercise report. Actions closed without such a check are reopened. The MFA requirement was followed up differently: Lucas compared risky sign-in alerts before and after, as the controls chapter showed, and the falling count of foreign sign-ins without MFA was recorded as evidence that the action had worked.
 
 ### Writing the review
 
@@ -2281,29 +2321,43 @@ You will (1) run shifts and handovers in a student-staffed SOC; (2) manage queue
 
 Riverton's SOC runs staffed hours from 08:00 to 20:00 on weekdays, with on-call engineers outside them. Student analysts work four-hour shifts around classes.
 
+The staffed hours explain the campaign's timeline: it began at 01:50, outside them, and the first analyst arrived at 08:00. Overnight, only the on-call engineer could act, and only if paged. The trial paging for high scores, described in the system models chapter, is meant to narrow that gap without staffing nights. Student shifts are timed around lectures, so cover is thinnest at the start of the day, when overnight activity is first seen.
+
 ### 29.2 Handovers
 
 Each shift ends with a handover note: open alerts, cases in progress, system issues and expected events, such as a planned phishing simulation.
+
+A handover note from the campaign's evening might read: s2047 contained, s3310 under investigation, external forwarding block deployed, campus notice sent, expect more reports overnight. The next shift starts knowing what matters, rather than rediscovering it from the queue. Notes are kept with the case records. A good note is brief enough to read in two minutes and specific enough that nothing important depends on memory. The incoming analyst confirms they have read it before the outgoing one leaves.
 
 ### 29.3 Escalation
 
 Student analysts escalate to the duty engineer for anything involving staff accounts, research systems or personal data exposure. Escalation is encouraged; nobody is criticised for escalating in good faith.
 
+The rule is broad on purpose: student analysts are learning, and a missed escalation costs more than an unnecessary one. In the research server case later in the book, the student who saw the night logins escalated at once because it involved a research system, which brought the duty engineer in early.
+
 ### 29.4 Queues
 
 The queue is ordered by the scoring from Laboratory I. During campaigns, the duty engineer may assign alerts directly.
+
+Direct assignment during campaigns prevents several analysts from working the same report while others are untouched. In the exam-week campaign, the duty engineer assigned one analyst to reports and one to account alerts, which addressed the review's finding that the two queues had been hard to connect. Scores still guide each analyst within their assigned work. After the campaign, the engineer returns the queue to normal ordering, and the assignments are recorded in the shift log for later review.
 
 ### 29.5 Learning
 
 Student analysts follow a training path: shadowing, supervised triage, then independent triage of low-severity alerts.
 
+Each stage has a checklist. Shadowing ends when the student can explain the triage guide; supervised triage ends when a senior analyst agrees with most of their decisions over several shifts. Independent work starts with low-severity alerts and moves to higher ones as confidence grows. Lucas followed this path in his first term. Progress is recorded so the next supervisor knows where each student stands, and students who struggle with a stage repeat it rather than being rushed forward.
+
 ### 29.6 Wellbeing
 
 Studies such as Alahmadi et al. (2022) link alert overload to burnout. Shifts are short; analysts rotate between alert types; exam periods have reduced rosters.
 
+Riverton's four-hour shifts limit continuous alert exposure, and rotating between phishing reports and identity alerts reduces monotony. During exams, the reduced roster shifts more work to staff engineers. These choices accept slightly slower triage in exchange for students who stay alert and remain in the programme. Analysts can also ask to step away from a distressing case, such as one involving harassment, without explaining why.
+
 ### 29.7 Communication
 
 The SOC sends campus notices during campaigns: what the email looks like, what to do if you clicked, and how to report.
+
+Notices are short and practical. During the exam-week campaign, the notice showed the subject line, said what to do if you had clicked, and linked to the report button. It went out within an hour, and reports then rose sharply, which helped the SOC find compromised accounts more quickly. Notices avoid blame and technical terms, and the SOC sends a short follow-up when the campaign is over, so people know the danger has passed.
 
 ### Shift metrics
 
@@ -2349,9 +2403,13 @@ You will (1) test a correlation detection against known cases; (2) analyse why a
 
 Laboratory II tests the correlation rule from chapter 26 against the synthetic reconstruction of the campaign, where the right answers are known.
 
+Known answers make the test meaningful: s2047 and s3310 were both compromised, and s1001 was not. A correct rule must alert on both and stay quiet on s1001. Testing on these cases before deploying shows whether the rule would have helped during the campaign itself. A rule that fails on these known cases would certainly fail on new ones. Passing them is only a first step, since real attackers will vary their timing, which is why the lab also asks what the rule would miss.
+
 ### 30.2 Setup
 
 The lab contains synthetic sign-ins and mailbox-rule events for s2047, s3310 and s1001, with times in minutes since midnight.
+
+The times match the campaign: minute 134 is 02:14, when s2047 signed in, and minute 151 is 02:31, s3310's successful sign-in. Using minutes since midnight keeps the lab simple, though the real rule uses full timestamps in UTC, as the time-handling chapters require. The data contain only these three accounts and four events, which is small enough to check every result by hand. Lucas computes the expected output on paper before running the script, so any difference points to a mistake in either the rule or his understanding of it.
 
 ### Lab — correlation against known cases
 
@@ -2379,17 +2437,25 @@ no match s3310: rule 'delete if 'phishing'' 149 min after sign-in (outside windo
 
 The rule alerts on s2047: a risky sign-in at minute 134 (02:14) followed by an external forwarding rule six minutes later. It misses s3310: the deletion rule came 149 minutes after the risky sign-in, outside the 60-minute window.
 
+The s1001 events produce no output because its sign-in was normal and the loop skips it. That silence is correct: the newsletter rule should not alert. The lab therefore shows one true positive, one false negative and one true negative. A false negative on a real compromise is the most important finding.
+
 ### 30.4 Analysing the miss
 
 s3310's attacker waited over two hours before hiding warnings, perhaps after seeing replies. Attackers do not follow the defender's assumptions about timing.
+
+Lucas's original window assumed attackers act fast, which s2047's did. s3310's attacker created the deletion rule at minute 300, about 05:00, perhaps after seeing replies questioning the email. The gap shows that a rule built from one case risks matching only that case. Lucas also asked what other timings attackers might use. An attacker who waits a day before acting would escape even a six-hour window, which is one reason the separate keyword rule does not depend on timing at all.
 
 ### 30.5 Adjusting
 
 Extending the window to 6 hours catches s3310 but risks linking unrelated events. Lucas adds a second, separate rule: any keyword-deletion rule matching words like "phishing" or "hacked" alerts on its own, regardless of sign-in, because such rules are rare and suspicious in themselves.
 
+The two changes work differently. The longer window still depends on a risky sign-in, so it catches s3310 only because its sign-in was flagged. The keyword rule needs no sign-in at all, so it would also catch an attacker whose sign-in looked normal. Together they cover both timing and the absence of a sign-in signal.
+
 ### 30.6 Re-test
 
 With the 6-hour window plus the keyword rule, both compromised accounts alert and s1001's ordinary folder rule does not.
+
+Rerunning the same three accounts confirms the expected outcomes, but the dataset is tiny. Lucas notes that a longer window could match more ordinary rules in real traffic, which is why the monitoring described below follows. A pass on three synthetic accounts is necessary but not sufficient. The next real test is a month of live traffic. Lucas sets a threshold for acceptable false alerts before that month starts, so he cannot decide afterwards that whatever happened was acceptable.
 
 ### Monitoring after change
 
@@ -2431,29 +2497,43 @@ You will (1) analyse complex cases involving several systems and teams; (2) hand
 
 In spring term, the SOC sees unusual SSH logins to a research server from a collaborator's university at night, followed by large outbound transfers. The research group says the collaborator is legitimate; the transfers are larger than usual.
 
+Unlike the phishing campaign, nothing here is clearly malicious on its own: collaborators do log in, sometimes late, and research groups do move data. The difficulty is deciding whether the same activity is legitimate this time. The case tests the skills from earlier chapters under real uncertainty.
+
 ### 31.2 Competing explanations
 
 Possibilities: the collaborator is working late on a big dataset; the collaborator's account at the partner university was compromised; or someone in the group shared credentials. Each predicts different evidence.
+
+Late work predicts the collaborator will confirm the activity; a compromised partner account predicts an unusual sign-in at the partner university; shared credentials predict logins from a Riverton group member's usual location. Listing predictions first tells Lucas what to look for, rather than gathering everything and hoping a pattern emerges.
 
 ### 31.3 Gathering evidence
 
 Lucas checks: login times compared with the collaborator's usual pattern; files transferred (names and sizes from server logs); whether the partner university's SOC sees anything unusual. Contacting the partner goes through Dr. Kim.
 
+Going through Dr. Kim matters because contacting another university's SOC involves sharing information about a person and a research project. She knows the partner's contacts and can agree what may be shared. Lucas prepares the questions and the evidence, but the formal request comes from her. File names alone answer much.
+
 ### 31.4 Findings
 
 The partner SOC reports that the collaborator's account signed in from an unusual country that night, and the collaborator confirms they were not working. The transfers were of a shared dataset, not personal data.
+
+The evidence fits the second explanation and rules out the first: the collaborator was not working, and their partner account showed an unusual country. Nothing suggested shared credentials. Lucas records which predictions were confirmed and which were not, so the conclusion can be traced back to the evidence.
 
 ### 31.5 Coordinated response
 
 The research group disables the collaborator's server access; the partner resets the account; Riverton reviews which data left and informs the data owner.
 
+Each organisation acts on what it controls. Riverton cannot reset the partner account, and the partner cannot disable access to Riverton's server. Clear division of tasks, agreed on a call between the two SOCs, avoided duplicated work and gaps. Informing the data owner let them judge whether the shared dataset's release mattered. Both SOCs kept notes of the call.
+
 ### 31.6 Uncertainty
 
 Some questions stay open: whether the attacker targeted the research or simply used any access found. The report states this.
 
+Lucas's report states that the evidence cannot distinguish a targeted attack on the research from opportunistic use of any access found. It explains what would help: logs from the partner showing the attacker's other activity. Stating the unknown prevents readers from assuming either answer. The report also notes that the partner's logs may never be shared in full, since they concern the partner's own users and systems. Lucas's recommendation therefore does not depend on resolving that question.
+
 ### 31.7 Lessons
 
 Research collaborations need shared contacts between SOCs and a way to verify unusual access quickly.
+
+Before this case, nobody at Riverton knew whom to call at the partner's SOC. The lessons led to a list of contacts for each university with research collaborations, and an agreement that unusual access by a collaborator can be checked with a phone call rather than a formal letter. The termly review of external collaborators with server access, recommended in the worked example, makes it easier to answer the first question in any future case quickly: should this person have access at all, and who at their home institution vouches for them?
 
 ### Time pressure
 
@@ -2495,29 +2575,43 @@ You will (1) work with legal, privacy, HR, communications and academic staff; (2
 
 SOC incidents touch law (data protection, evidence), HR (staff misconduct), student affairs (student discipline), communications (public statements) and academic departments (research data). Each has its own duties and language.
 
+The s2047 case alone involved the DPO for the exposed marks; the research server case involved a professor and a data owner. Each office asks different questions: the DPO asks what personal data left, the professor asks whether participants are affected. The SOC must answer each in the right terms. Lucas notes each office's questions.
+
 ### 32.2 Legal and privacy
 
 The data protection officer decides on breach notifications; the SOC supplies facts. Legal staff advise when evidence may be needed in proceedings.
+
+In the s2047 case, Lucas supplied the list of forwarded messages and their subjects; the DPO decided that three students must be informed. Legal staff would have been involved if the evidence had been needed for disciplinary proceedings, which would have required the chain-of-custody record from the evidence chapter. Lucas never offers an opinion on whether notification is legally required, even when asked informally. Doing so could mislead people who later rely on the DPO's actual decision.
 
 ### 32.3 HR and student affairs
 
 If an incident suggests misconduct by staff or students, the SOC passes facts to HR or student affairs and does not investigate the person beyond the security question.
 
+The limit protects people's rights. If logs suggested a student had shared their password with a friend, the SOC's question would be whether the account is secure; whether the student broke rules is for student affairs. The SOC reports facts and stops there. In such a referral, Lucas's note states only what the logs show and when, without conclusions about intent. Student affairs may ask further questions through Dr. Kim, never directly to an analyst.
+
 ### 32.4 Communications
 
 Public statements are written by the communications office with SOC facts; analysts do not speak to journalists.
+
+During the exam-week campaign, the communications office published the campus notice using facts from the SOC: the subject line, what to do and how to report. When a student newspaper asked about the campaign, the query went to the communications office, which answered without naming any affected account. Lucas forwarded the newspaper's query without replying, as the procedure requires. Analysts who speak informally to reporters may reveal details that identify victims or tell attackers what the SOC knows, so even friendly questions are passed on.
 
 ### 32.5 Academics
 
 Researchers value openness; security requirements must be explained in terms of protecting their work and participants.
 
+For the physics group, restricting SSH was presented as protecting their GPU time and datasets from misuse, not as a rule from central IT. The trial week, during which remote collaborators used the VPN, showed the change would not stop their work, which made agreement easy. Lucas also met the group's postdocs, who ran most of the jobs, to explain the change in person. Their questions about connecting from conferences abroad led to clear VPN instructions being added to the group's wiki before the restriction took effect.
+
 ### 32.6 Translating
 
 Lucas practises explaining "risky sign-in followed by forwarding rule" as "someone else logged in as the student and set the mailbox to copy their mail elsewhere".
 
+The plain version avoids "sign-in", "forwarding rule" and "compromise" without losing accuracy. Lucas tests it on a friend outside computing. If she can repeat the meaning, the translation works. He keeps a short glossary of such translations for common alert types. Translation also works in reverse: when the professor asked whether "the data got out", Lucas confirmed which data, to where and when, before answering, so his reply addressed the real question.
+
 ### 32.7 Joint procedures
 
 A shared procedure lists who is informed for each incident type, within what time and through which channel.
+
+For a personal data exposure, Riverton's procedure says the SOC informs the DPO within four hours by phone and follows up in writing. For a research system incident, the group's head and the data owner are told the same day. Agreeing these in advance removes guesswork during an incident. The procedure is reviewed at the termly meetings with partner offices, and changes are dated. During an incident, nobody has to remember who should be called; they read the table and act.
 
 ### Regular contact
 
