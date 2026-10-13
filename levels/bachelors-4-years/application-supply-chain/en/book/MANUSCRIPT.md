@@ -2817,25 +2817,37 @@ You will (1) apply application security skills in a community setting; (2) suppo
 
 Lena volunteers with a local charity that runs a food-bank booking website built by volunteers. Under a written agreement with the charity, she helps review its development practices, not to test live systems without permission.
 
+The agreement names the charity's coordinator as her contact, lists what she may look at, such as the code repository, hosting settings and dependency files, and excludes anything containing client information. Lena brings the habits she learned at CampusEats, but she knows the charity's needs and resources are different, so she starts by listening to how the volunteers actually work.
+
 ### 36.2 What she finds
 
 The site's repository is private but shared with many past volunteers; three still have write access. Dependencies have not been updated for a year; two have high-severity advisories. A database password is stored in a configuration file in the repository.
+
+Lena reports these to the coordinator in plain language, ranking them by how much harm each could cause and how easy each is to fix. The password in the repository is the most urgent, since anyone with old access could read it, and it echoes the token leak at CampusEats. She does not try to check whether anyone has misused the access, since that falls outside her agreement.
 
 ### 36.3 What she does
 
 She helps the charity remove old access, move the password to the hosting platform's secret settings and rotate it, and set up an update bot. She explains each step so volunteers can continue.
 
+Each change is made by a charity volunteer with Lena watching, so the volunteers know how to repeat it. The two vulnerable dependencies are updated through the bot's first pull requests, and the site is tested together before deployment. Lena writes a one-page note listing what changed, why and who now owns each task, so the work does not depend on her staying involved.
+
 ### 36.4 Teaching
 
 Lena runs a two-hour workshop for the charity's volunteers on secrets, updates and access, using the CampusEats case cards.
+
+The workshop uses real examples from CampusEats, with names removed, so volunteers see that the same problems happen elsewhere and are not a sign of carelessness. Each part ends with a short exercise on the charity's own setup, such as checking who has access to the repository. Lena asks for feedback at the end and adjusts the cards for future use.
 
 ### 36.5 Boundaries
 
 Lena does not access the food bank's client data; she works only on code and configuration with the charity's coordinator present.
 
+Keeping to these limits protects the charity's clients, many of whom are in difficult circumstances, and it protects Lena from handling data she has no reason to see. When a configuration question would have required looking at a database table, she asked a charity volunteer to check the structure instead. She records each session's activities in her placement log.
+
 ### 36.6 Reflection
 
 Lena notes that small organisations need simple, sustainable practices more than advanced tools.
+
+The charity has no budget, little time and volunteers who change often. Signing and provenance would add little for its site; removing old access, moving a secret and automating updates removed most of the risk in an afternoon. Lena's log records this as the main lesson of the placement, and she later uses it when designing the starter template, which aims for simple defaults rather than every possible control.
 
 ### Agreement
 
@@ -2877,25 +2889,37 @@ You will (1) critically review published evidence on supply-chain security; (2) 
 
 Lena's seminar group reviews five studies: Ohm et al. (2020) on malicious packages, Zimmermann et al. (2019) on npm ecosystem risk, Decan et al. (2018) on vulnerability propagation, Kula et al. (2018) on dependency updating and Wermke et al. (2022) on open-source trust.
 
+The group chooses studies that cover different parts of the supply chain and different research designs, so the review is not dominated by one method or one kind of evidence. Each member reads two studies in full and summarises them using a common template covering question, data, method, findings and limits.
+
 ### 37.2 Designs
 
 Two are case collections, two are large-scale measurement studies, one is an interview study. Each design answers different questions: what happens, how often, and why.
+
+Knowing the design tells the reader what a study can and cannot claim. Case collections can show what attacks look like but not how common they are; measurement studies show scale but not motivation; interviews explain reasons but cannot show frequency. Lena's group marks each finding with its design, so readers can judge its strength.
 
 ### 37.3 Limits
 
 Case collections show only discovered cases; measurement studies depend on data quality and ecosystem; interview studies have small, self-selected samples.
 
+The group also notes that most studies examine the npm ecosystem, which may differ from others CampusEats depends on, and that ecosystems and registry policies have changed since some of the data was collected. Limits do not make a study useless, but they set the boundary of what it can support, and the group states each limit next to the finding it affects.
+
 ### 37.4 Synthesis
 
 Together they suggest: risk concentrates in widely used packages; updates lag; malicious packages exploit trust and install-time behaviour; maintainers vary widely in security practice.
+
+Each point is supported by at least two studies of different designs, which makes it stronger than a finding from one source. The group separates these from points supported only once, such as specific maintainer practices, and presents them as less certain. They also note questions none of the studies answered, such as how small teams decide which updates to trust.
 
 ### 37.5 Implications
 
 For small projects: fewer dependencies, prompt updates, install-time restrictions, and checks on new names and maintainers.
 
+Each implication is something CampusEats already does or can do cheaply, and the group links each to the studies that support it. Fewer dependencies reduces exposure to every risk at once; prompt updates address the lag measured in the literature; install-time restrictions and name checks address the patterns found in malicious packages. The list becomes a checklist in the starter template. Each item cites its supporting studies.
+
 ### 37.6 Presentation
 
 The group presents a balanced view, separating strong findings from tentative ones.
+
+Strong findings are those supported by several studies and designs; tentative ones rest on a single study or a narrow sample. The group gives each finding a short label and explains why. Grace asks how the conclusions would change for a project much larger than CampusEats, and the group answers that most would still hold, though the effort needed would grow. The slides mark each finding with its label, so the audience can see at a glance which conclusions are firm.
 
 ### Reading critically
 
@@ -2941,25 +2965,37 @@ You will (1) build the secure project starter template; (2) integrate checks int
 
 Lena builds the template: CI configuration with tests, secret scanning, lockfile checks, SBOM generation, signing and provenance; an update bot configuration; a set of ASVS-based tests for sessions, headers and authorisation; and a README with setup steps.
 
+Each part comes from practice tested at CampusEats, adjusted to work for a new project with no history. The README explains what each check does and why, using short examples, since a check that members do not understand is likely to be disabled at the first false alarm.
+
 ### 38.2 Self-application
 
 The template itself follows its own rules: its dependencies are minimal and updated by the bot, and its releases are signed.
+
+Lena reasons that a template asking projects to follow rules it breaks itself would not be trusted. Its own release verification report is published with each version, using the same format as CampusEats. When the template's scanner flagged its own documentation during the pilot, that showed the rules were genuinely applied, and the fix made the template better for everyone.
 
 ### 38.3 Pilot
 
 Two student projects, a society events app and a study-room booking tool, adopt it.
 
+The two projects differ in size and type, which tests whether the template is general enough. Lena meets each team before setup to explain the pilot and agree what will be measured, and she watches the first setup without helping unless asked, so the timing reflects what a new team would experience. Each team has a named contact for questions. Both teams agreed to share their setup times and problems.
+
 ### 38.4 Problems found
 
 Setup took 2.5 hours, not under one, mainly because of signing configuration. The secret scanner flagged sample keys in the template's own documentation.
+
+Lena records each problem with the time it cost and how the team worked around it. The signing configuration needed several manual steps that were easy to get wrong, and the flagged sample keys confused one team, who thought the template contained real secrets. Both problems would discourage adoption, so they are fixed before the template is offered more widely.
 
 ### 38.5 Fixes
 
 A setup script automates signing configuration; documentation sample keys are marked and allowlisted.
 
+The setup script asks for two values and configures the rest, and it checks the result by producing a signed test release. Sample keys are now clearly fake and listed in the scanner's allow list with a comment explaining why. Lena tests both fixes with a member who has never used the template, since she can no longer judge setup difficulty herself. The fixes are recorded in the template's change log.
+
 ### 38.6 After fixes
 
 Setup time falls to 40 minutes in a third trial.
+
+The third trial uses a new team and the updated README, timed the same way as the first two. Forty minutes is within the one-hour criterion in the proposal, and most of the remaining time is spent reading the README, which Lena considers time well spent. She records the three setup times in the evaluation and notes that one trial after fixes is a small sample. Further trials happen during the evaluation.
 
 ### Documentation
 
@@ -3005,25 +3041,37 @@ You will (1) evaluate the capstone against success criteria; (2) collect quantit
 
 Five projects adopted the template in the term, above the target of four.
 
+The five projects include the two pilot teams and three that joined after the workshop. Lena reports how each heard about the template, which suggests the workshop drove most adoption. She notes that adoption counts projects that completed setup, not those that downloaded the template, since the second figure would be larger but less meaningful. All five had completed a working first build with every check enabled, which Lena confirmed from their CI records.
+
 ### 39.2 Secrets
 
 No secrets reached public repositories in adopting projects; the scanner caught two before push.
+
+The criterion is met, but the term is short and the number of projects small, so Lena does not claim the template prevents all leaks. The two caught secrets show that the hook works in other projects as it did at CampusEats. Both developers fixed the problem before pushing, and neither secret needed rotation. Lena confirmed this from the scanner logs of each adopting project, with the teams' permission.
 
 ### 39.3 Setup time
 
 Median setup 40 minutes across five projects.
 
+The median is well within the one-hour criterion in the proposal. Lena reports every project's setup time alongside it, since a median from five values can hide one slow case, and she notes where the time went: most of it was spent reading the README and creating the signing identity with the new setup script. Teams whose CI service needed extra permissions took longest, so the README now lists those permissions at the start. The measure counts only setup, not the time teams later spent learning to read the results
+
 ### 39.4 Feedback
 
 Teams liked ready-made tests; some found SBOM output confusing. Lena adds a short guide.
+
+Feedback came from a short survey and a conversation with each team. The ready-made tests saved teams from writing basic session and header checks themselves. The SBOM confusion came from long output that nobody had explained; the guide shows how to search it during an advisory, which is how CampusEats uses it. Lena lists each request and whether she acted on it. Teams also asked for help with update pull requests.
 
 ### 39.5 Limits
 
 One term, five projects, volunteers who may have been more security-minded than average.
 
+Lena also notes that adopting projects were mostly new, so the template's effect on established projects with existing habits is unknown. She cannot separate the template's effect from the workshop's, since every adopting team attended it. Each limit is stated with its likely effect, and she suggests a follow-up study with older projects and teams that did not attend the workshop. The evaluation also states the dates covered.
+
 ### 39.6 Handover
 
 Grace's office takes ownership with a named maintainer; the monthly update job runs automatically.
+
+The maintainer has access to the repository and a handover note covering the release process, the scanner allow list and the support questions received so far. Lena stays available as a contributor. Handover before graduation meets the risk in the proposal about maintenance after she leaves, and Grace's office adds the template to its annual review. The note is stored in the template's repository, where any future maintainer can find it.
 
 ### Qualitative evidence
 
@@ -3073,25 +3121,37 @@ You will (1) write a bachelor's thesis on the capstone; (2) connect it to standa
 
 Introduction (CampusEats incidents), background (OWASP, SSDF, SLSA, SBOM, literature), method (template design and pilot), results, discussion, limitations, conclusion.
 
+Each chapter answers one question and points to evidence: lab records, release verification reports, trial data and survey results. Lena drafts the method and results first, since they are the most concrete, and writes the introduction last, when she knows exactly what the thesis shows. Synthetic data from the reproducibility package is labelled clearly in figures and captions. Grace reviews the outline before drafting begins.
+
 ### 40.2 Connections
 
 The template implements SSDF practices across all four groups and SLSA build provenance; its tests draw on ASVS. The discussion relates findings to Johnson et al. (2013) on tool adoption: the template worked because it made secure defaults easy.
+
+The discussion also notes where the template goes beyond what the frameworks require and where it falls short, such as not reaching the highest SLSA level. Lena maps each check in the template to the practice or requirement it supports, in a table in an appendix, so examiners can see the connections without searching the text.
 
 ### 40.3 Presentation
 
 Fifteen minutes to examiners, Grace and student project leads: the problem, the template, results, limits and handover.
 
+Lena prepares two versions: a technical talk for examiners and a shorter one for project leads that focuses on setup and benefits. She rehearses with society members and cuts slides that need long explanation. Evidence for each claim is kept in backup slides, ready for questions. Project leads receive the README and setup guide after the talk, so they can try the template themselves.
+
 ### 40.4 Questions
 
 "Would this work for larger projects?" Lena explains it would need customisation and stronger review processes, and suggests a study.
+
+She explains that larger projects have more dependencies, more contributors and often their own CI rules, so the template would serve as a starting point rather than a finished setup. The suggested study would compare setup effort and outcomes in projects of different sizes. Examiners also ask about the small sample, and Lena points to the limits stated in her evaluation rather than defending the numbers beyond what they show.
 
 ### 40.5 Reflection
 
 From logic statements about access rules in year one to a template used by five projects, Lena sees security as a habit built into everyday tools.
 
+The token leak and the hash mismatch from her first month run through the whole thesis: one showed what happens without good habits, the other what happens when a simple check is respected. Lena's main conclusion is that controls work best when they are easy, explained and owned by someone. She keeps her first-year notes.
+
 ### 40.6 Next steps
 
 Lena plans a master's degree and continues to maintain the template as a volunteer.
+
+She hands her CampusEats roles to newer members with the same care she applied to the template, reviewing access and updating the owner lists. Her final log entry lists what she would do differently, starting with measuring sooner, and the open questions she leaves for the next student. The society keeps her decision records, so later members can understand why CampusEats works the way it does.
 
 ### Writing the thesis
 
