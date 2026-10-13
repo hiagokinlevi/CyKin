@@ -1,7 +1,7 @@
 # Privacy and Data Protection: Rapid Course
 
 - Language: English (`en`); course 004, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and its output is embedded from a real run. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX058 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and its output is embedded from a real run. Independent review and the 300-page A4 verification remain open.
 - Audience: beginners who need a fast, practical start in privacy and data protection for a small business.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab compares fields a synthetic pharmacy loyalty app collects with the fields its stated purposes need. Legal analysis is teaching, not legal advice. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -10,7 +10,7 @@
 
 ## How to use this draft
 
-Read in order. The four chapters follow one pharmacy assistant through a one-month course: foundations and first decisions, scope and safe practice, systems, data and vendors, and a guided lab that becomes a short action plan. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics.
+Read in order. The four chapters follow one pharmacy assistant through a one-month course: foundations and first decisions, scope and safe practice, systems, data and vendors, and a guided lab that becomes a short action plan. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics. Each chapter now separates a definition from the test that applies it: whether an item identifies a person, whether it is health data, whether a copy stays inside the signed scope, whether a basis belongs to that purpose, and whether a laboratory field name hides a value the script never reads. EX051–EX058 use those tests on a new shop fact.
 
 ### Synthetic running case
 
@@ -40,7 +40,7 @@ Regulation (EU) 2016/679 (GDPR) Articles 4(1), 5, 9 and 28; Lei 13.709/2018 (LGP
 <!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
-Lesson 01 published. Map, example, EX001.
+Lesson 01 published. Map, example, EX051.
 
 ```mermaid
 flowchart TD
@@ -50,9 +50,11 @@ flowchart TD
   N3["1.3 Special categories"]
   N4["1.4 The principles"]
   N5["1.5 A first decision"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
+  N6["Concepts — three different tests"]
+  N7["Data — one slip, two layers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
 ```
 
 ### Logical drawing
@@ -65,7 +67,9 @@ flowchart LR
   N3["1.3 Special categories"]
   N4["1.4 The principles"]
   N5["1.5 A first decision"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+  N6["Concepts — three different tests"]
+  N7["Data — one slip, two layers"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
 ```
 
 ```text
@@ -87,7 +91,13 @@ flowchart LR
 [1.5 A first decision]
     |
     v
-[Worked example] --> [Exercise EX001]
+[Concepts — three different tests]
+    |
+    v
+[Data — one slip, two layers]
+    |
+    v
+[Worked example] --> [Exercise EX051]
 ```
 <!-- cykin:lesson-figures:end ch-01 -->
 
@@ -126,6 +136,57 @@ Sofia defines personal and special category data with pharmacy examples, writes 
 
 Definitions are broad; when unsure whether data are personal, treat them as personal.
 
+### Concepts — three different tests
+
+Article 4(1) asks whether Juniper is dealing with a living person. Article 9 asks a second question, about health. The counter-photo decision in this chapter asked a third: would the person expect this use? Passing one test does not pass the others.
+
+| Test | Question Sofia asks | Juniper example | Result |
+|---|---|---|---|
+| Named | Does this item name a living person? | A name on a prescription | Personal data at once |
+| Linkable | If not, can Juniper connect it to one person? | Loyalty number 44021 on a slip with no name | Still personal data |
+| Health | Does the content state a condition, or reveal one? | A stapled line, "insulin 10 ml" | Also special-category health data |
+| Shop, not a person | Can Sofia point to no customer at all? | Tuesday's total takings, with no receipt attached | Not personal data |
+| Expectation | Even if it is ordinary personal data, did the person expect this use? | A counter photo posted for promotion | Still refuse, as in the first decision |
+
+If Sofia cannot tell whether an item is linkable, she treats it as personal. That limit stays. It is not a reason to call the day's takings a customer record.
+
+### Data — one slip, two layers
+
+| What she is holding | Personal data? | Health data? | Why the answers differ |
+|---|---|---|---|
+| Loyalty number 44021 alone | Yes | No | The dispensing system links 44021 to one customer; points state no illness |
+| The same slip plus "insulin 10 ml" | Yes | Yes | The medicine line reveals a condition; the number had already identified who |
+| A CCTV still of the counter, no caption | Yes | Not by itself | A face identifies the person; the still does not state a diagnosis |
+| Tuesday's total takings | No | No | The figure is not about one living person |
+
+### Decision flow — classify before you decide the use
+
+```mermaid
+flowchart TD
+  A["An item from the shop"] --> B{"Does it name a living person, or can Juniper link it to one?"}
+  B -->|No| C["Not personal data, unless Sofia is unsure"]
+  C --> D["If unsure, treat it as personal and stop the guess"]
+  B -->|Yes| E["Personal data. The Article 5 checklist applies"]
+  E --> F{"Does the content state a condition, or reveal one, as insulin does?"}
+  F -->|Yes| G["Health data. The purpose will need an Article 9 condition"]
+  F -->|No| H["Ordinary personal data"]
+  G --> I{"Is the proposed use one the person would expect?"}
+  H --> I
+  I -->|No| J["Refuse that use, even though the item is already classified"]
+  I -->|Yes| K["Record the class and go on to purpose and minimisation"]
+```
+
+### Worked example — a nameless slip, then a stapled line
+
+A receipt shows loyalty number 44021 and no name. Sofia marks it personal data because the dispensing system links 44021 to one customer. She does not mark it health data: the slip lists points, not a medicine. The pharmacist staples on "insulin 10 ml". Only the health answer changes. The number was already personal; the medicine makes the slip health data as well. The staple does not reopen the expectation test already settled for promotion.
+
+> **Synthetic case.** Number 44021 and the stapled millilitre line are invented. Articles 4(1) and 9 are real. This is not legal advice.
+
+### Apply
+
+- **EX051 — Nameless number.** Why is loyalty number 44021 personal data when the slip has no name, and why is it not yet health data? *Rubric:* 3 = Juniper can link the number to one customer, so it is personal; points do not state or reveal an illness;; 2 = it is personal because of the link;; 1 = vague;; 0 = none.
+- **EX052 — Stapled line.** What changes when "insulin 10 ml" is added, and what does not? *Rubric:* 3 = the slip becomes health data because the line reveals a condition; it was already personal data; the counter-photo refusal is unchanged;; 2 = it becomes health data;; 1 = vague;; 0 = none.
+
 ### Exercises
 
 - **EX001 — Loyalty number.** Is a loyalty number personal data? *Rubric:* 3 = yes, it can be linked to a person;; 2 = yes;; 1 = no;; 0 = none.
@@ -157,7 +218,7 @@ Continue to the next authored lesson.
 <!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
-Lesson 02 published. Map, example, EX014.
+Lesson 02 published. Map, example, EX053.
 
 ```mermaid
 flowchart TD
@@ -167,9 +228,11 @@ flowchart TD
   N3["2.3 When asked to go further"]
   N4["2.4 Reporting problems"]
   N5["2.5 Respecting staff"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
+  N6["Concepts — the signed page decides, a copy counts as"]
+  N7["Data — five requests against the signed page"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
 ```
 
 ### Logical drawing
@@ -182,7 +245,9 @@ flowchart LR
   N3["2.3 When asked to go further"]
   N4["2.4 Reporting problems"]
   N5["2.5 Respecting staff"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+  N6["Concepts — the signed page decides, a copy counts as"]
+  N7["Data — five requests against the signed page"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -204,7 +269,13 @@ flowchart LR
 [2.5 Respecting staff]
     |
     v
-[Worked example] --> [Exercise EX014]
+[Concepts — the signed page decides, a copy counts as]
+    |
+    v
+[Data — five requests against the signed page]
+    |
+    v
+[Worked example] --> [Exercise EX053]
 ```
 <!-- cykin:lesson-figures:end ch-02 -->
 
@@ -243,6 +314,51 @@ Sofia agrees a signed scope, uses a test customer and encrypted notes, declines 
 
 Verbal permission is easily disputed; get scope changes in writing.
 
+### Concepts — the signed page decides, a copy counts as a look
+
+A scope is a list, not a mood. Photographing a live dispensing screen copies the record that is on it. The copy is the same exclusion as reading that customer.
+
+| Question | Allowed this week | Not allowed |
+|---|---|---|
+| What may she open? | Loyalty settings, the privacy notice, how paper prescriptions are filed, the staff access list, CCTV signs | One named customer's record |
+| What may she keep? | Settings screenshots; notes in the locked drawer and the encrypted folder on the shop computer | A customer screen on her personal phone |
+| The ask grows | The owner adds the new item in writing before she looks | A spoken "just this once" |
+| She finds exposed records | Report the place, the time and what she saw, the same day | Moving the copies, or reading them |
+
+### Data — five requests against the signed page
+
+| Request | On the page the owner signed? | What Sofia does |
+|---|---|---|
+| Screenshot the loyalty settings | Yes | Settings only, not a customer |
+| See how paper prescriptions are filed | Yes, the method | She does not open a named person's file |
+| Has the neighbour collected a prescription? | No | Refuse, and write the request in the review log |
+| Look at the driver's phone | No, until the owner adds it in writing | Wait |
+| A box of old prescription copies, unlocked | The finding is a report, not permission to handle them | Do not move or read; tell the owner and Mr. Patel |
+
+### Decision flow — look, copy, or keep
+
+```mermaid
+flowchart TD
+  A["Someone asks Sofia to look, copy or keep something"] --> B{"Is that action on the page the owner signed?"}
+  B -->|No| C["Stop. A written addition comes before any look"]
+  B -->|Yes| D{"Would it show or copy a real customer's record?"}
+  D -->|Yes| E["Refuse. Use the invented test customer"]
+  D -->|No| F{"Would the notes leave the locked drawer and the encrypted shop folder?"}
+  F -->|Yes| G["Refuse that copy. A personal phone is outside the review"]
+  F -->|No| H["Proceed. Exposed records are reported by place, time and what she saw"]
+```
+
+### Worked example — a photo of the live screen
+
+A colleague asks Sofia to photograph a live dispensing screen "so the review can show the layout". The screen names a real customer and a medicine. Staff access is on the signed page; an individual record is not. The photograph would also put that record on a phone. Sofia refuses. The pharmacist builds the invented test customer, and Sofia screenshots that screen into the encrypted folder on the shop computer. The colleague's request is in the review log the same day.
+
+> **Synthetic case.** The Tuesday handset picture of the layout is invented.
+
+### Apply
+
+- **EX053 — Live screen.** Why is the photograph refused, and what replaces it? *Rubric:* 3 = a live screen is a real customer record, which the scope excludes, and the phone would copy it; use the invented test customer and the encrypted shop folder;; 2 = the scope excludes real records;; 1 = vague;; 0 = none.
+- **EX054 — The box.** Which three facts does the same-day report contain, and which two actions does Sofia not take? *Rubric:* 3 = place, time and what she saw; she does not move the copies and does not read them;; 2 = she reports and does not read them;; 1 = vague;; 0 = none.
+
 ### Exercises
 
 - **EX014 — Scope exclusions.** Name two things excluded from Sofia's scope. *Rubric:* 3 = reading customer records, contacting customers, changing settings;; 2 = two;; 1 = one;; 0 = none.
@@ -274,7 +390,7 @@ Continue to the next authored lesson.
 <!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
-Lesson 03 published. Map, example, EX027.
+Lesson 03 published. Map, example, EX055.
 
 ```mermaid
 flowchart TD
@@ -284,9 +400,11 @@ flowchart TD
   N3["3.3 Vendors and dependencies"]
   N4["3.4 Lawful bases"]
   N5["3.5 Retention"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
+  N6["Concepts — the basis does not travel to the next pur"]
+  N7["Data — four flows that leave the shop"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
 ```
 
 ### Logical drawing
@@ -299,7 +417,9 @@ flowchart LR
   N3["3.3 Vendors and dependencies"]
   N4["3.4 Lawful bases"]
   N5["3.5 Retention"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+  N6["Concepts — the basis does not travel to the next pur"]
+  N7["Data — four flows that leave the shop"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -321,7 +441,13 @@ flowchart LR
 [3.5 Retention]
     |
     v
-[Worked example] --> [Exercise EX027]
+[Concepts — the basis does not travel to the next pur]
+    |
+    v
+[Data — four flows that leave the shop]
+    |
+    v
+[Worked example] --> [Exercise EX055]
 ```
 <!-- cykin:lesson-figures:end ch-03 -->
 
@@ -360,6 +486,56 @@ Sofia maps seven systems, traces flows including medicine purchases to the loyal
 
 A map drawn once becomes outdated; update it when systems change.
 
+### Concepts — the basis does not travel to the next purpose
+
+Sofia already records one basis for each purpose, before processing starts. A basis chosen for points does not cover a new purpose. Health data keeps that rule and adds an Article 9 condition for the purpose that actually uses the health data.
+
+| Purpose already in her table | Basis she recorded | Health condition as well? | What would not be enough |
+|---|---|---|---|
+| Dispensing a prescription | Providing health care | Yes, Article 9(2)(h) | The consent collected for the newsletter |
+| Keeping the prescription record | A legal obligation on pharmacies | The record is health data; the obligation is why it is kept | A shorter period Sofia invents |
+| Newsletter | Consent | No, while the mail is not about a condition | The loyalty membership |
+| Points for members | Contract with those members | No, while the record is points and non-medicine spend | Using that contract for a medicine-named offer |
+| A text tied to a named medicine | Not in the table | The text would use health data | The loyalty contract, or ordinary newsletter consent |
+
+### Data — four flows that leave the shop
+
+| Flow | Receiver | Article 28 terms in the contract? | Retention she found |
+|---|---|---|---|
+| Prescriptions and payment claims | Dispensing supplier | Yes | Professional rules for pharmacies; she does not rewrite them |
+| Mailing-list addresses | Newsletter tool | Yes | No period yet for people who never open a mail |
+| Each till item, including medicines | Loyalty vendor, every night | No | Loyalty data have no end date |
+| Name, address, sealed-bag description | Delivery firm | No | Kept on the driver's phone with no end date |
+
+### Decision flow — the owner proposes one new use
+
+```mermaid
+flowchart TD
+  A["A new use of data Juniper already holds"] --> B{"Is this purpose already in Sofia's basis table?"}
+  B -->|No| C["Do not start. Record a basis for this purpose first"]
+  B -->|Yes| D{"Does this use contain a medicine name or other health data?"}
+  D -->|Yes| E{"Is an Article 9 condition already recorded for this same purpose?"}
+  E -->|No| F["Stop. The loyalty contract is not that condition"]
+  E -->|Yes| G["Go on to the receiver"]
+  D -->|No| G
+  G --> H{"Would a vendor receive it under a contract with no Article 28 terms?"}
+  H -->|Yes| I["Flag the contract. Do not add a new flow on those terms"]
+  H -->|No| J{"Is there a written retention period for this data?"}
+  J -->|No| K["Set a period before keeping more. Do not invent the pharmacy rule"]
+  J -->|Yes| L["Write the use into the table"]
+```
+
+### Worked example — a text when insulin is sold
+
+The owner wants the loyalty app to text a voucher whenever a member buys insulin. Sofia will not switch it on. The members' contract covers points. It does not cover a message triggered by a named medicine, and that message is a new purpose which uses health data. The shop has not collected the explicit consent that purpose needs. The loyalty contract also still lacks Article 28 terms. A voucher based only on total points, with no medicine named, would be a different proposal and would go through this flow from the start. This proposal names insulin, so it stays off.
+
+> **Synthetic case.** The insulin voucher text is invented. Articles 9 and 28 are real. This is not legal advice.
+
+### Apply
+
+- **EX055 — Insulin text.** Which recorded basis fails, and what must exist before any such text is sent? *Rubric:* 3 = the loyalty contract does not cover a medicine-named offer; the shop needs explicit consent for that purpose, and the loyalty contract still lacks Article 28 terms;; 2 = explicit consent;; 1 = vague;; 0 = none.
+- **EX056 — No end date.** Which principle fails for the delivery records on the driver's phone, and what does Sofia not invent? *Rubric:* 3 = storage limitation, because there is no end date; the owner sets a delivery period; she does not invent the professional period for prescriptions;; 2 = set a delivery period;; 1 = vague;; 0 = none.
+
 ### Exercises
 
 - **EX027 — Hidden flow.** Which flow had the owner not realised? *Rubric:* 3 = till sends medicine purchases to the loyalty app;; 2 = mentions loyalty;; 1 = vague;; 0 = none.
@@ -390,7 +566,7 @@ Continue to the next authored lesson.
 <!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
-Lesson 04 published. Map, example, EX039.
+Lesson 04 published. Map, example, EX057.
 
 ```mermaid
 flowchart TD
@@ -401,9 +577,10 @@ flowchart TD
   N4["4.4 Presenting to the owner"]
   N5["4.5 Checking and next steps"]
   N6["Lab — Loyalty app fields versus stated purposes"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
+  N7["Concepts — the script tests names, not values"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
 ```
 
 ### Logical drawing
@@ -417,7 +594,8 @@ flowchart LR
   N4["4.4 Presenting to the owner"]
   N5["4.5 Checking and next steps"]
   N6["Lab — Loyalty app fields versus stated purposes"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX039"]
+  N7["Concepts — the script tests names, not values"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -442,7 +620,10 @@ flowchart LR
 [Lab — Loyalty app fields versus stated purposes]
     |
     v
-[Worked example] --> [Exercise EX039]
+[Concepts — the script tests names, not values]
+    |
+    v
+[Worked example] --> [Exercise EX057]
 ```
 <!-- cykin:lesson-figures:end ch-04 -->
 
@@ -515,6 +696,56 @@ Sofia finds five of ten loyalty fields (50%) unneeded, including prescription it
 
 Purposes listed in a notice may be incomplete; ask the business whether any other purpose exists before deleting fields.
 
+### Concepts — the script tests names, not values
+
+`lab_loyalty.py` builds `used` as the union of the three purpose sets, then asks whether each collected name is in that union. A field prints `needed` when its name is a member. The script never opens the field and reads what was stored inside it.
+
+| Step | What the script uses | What it cannot see |
+|---|---|---|
+| Build `used` | The union of points, birthday voucher and marketing emails | Whether that purpose is lawful |
+| Mark each collected name | Membership of the name in `used` | The values stored under the name |
+| Count | Names in `collected` that are absent from `used` | A medicine hidden inside `purchase_history` |
+
+`purchase_history` is in the points set, so the script prints `needed`. `prescription_items` is in no set, so it prints `NOT NEEDED`. The later till check is a second test: total spend and non-medicine categories may remain; a medicine name may not. Passing the field list does not pass the content check.
+
+### Data — membership against the three sets
+
+| Collected name | Purpose set that contains it | Script mark | Content rule from the two-week check |
+|---|---|---|---|
+| name, email | Points | needed | Stay |
+| date_of_birth | Birthday voucher | needed | Stay |
+| marketing_choice | Marketing emails | needed | Stay |
+| purchase_history | Points | needed | Must not carry a medicine name |
+| phone, postcode, gender, location_trail, prescription_items | None | NOT NEEDED | Remove |
+
+The count stays the verified one: 10 collected names, 5 absent from the union.
+
+### Decision flow — someone says the form is fixed
+
+```mermaid
+flowchart TD
+  A["A claim that the loyalty change is done"] --> B["Run lab_loyalty.py on the new form"]
+  B --> C{"Are phone, postcode, prescription_items, gender and location_trail absent?"}
+  C -->|No| D["The field check failed"]
+  C -->|Yes| E{"Does the till export still name a medicine?"}
+  E -->|Yes| F["The field list passed and the content check failed"]
+  E -->|No| G["Both checks passed: five fields, totals and non-medicine categories"]
+  D --> H["Write which check failed, and the date. Leave the action open"]
+  F --> H
+  G --> I["Record both results. The action can close"]
+```
+
+### Worked example — five clean names, one insulin line
+
+The new form asks for name, email, date of birth, purchase history and the marketing choice. Sofia runs the script. All five names sit in the union, and none of the five rejected names remains. She then opens one night's till export and finds a line that reads insulin. The field check has passed. The content check has failed, because `purchase_history` is allowed as a name and the script never reads inside it. She leaves the action open and tells the owner that the export still carries a medicine. Points and the birthday voucher do not need that name.
+
+> **Synthetic case.** Vial-44021 in the Tuesday-night file is invented. The membership rule is the one in lab_loyalty.py. This is not legal advice.
+
+### Apply
+
+- **EX057 — Inside the field.** Why can `purchase_history` print `needed` while an insulin line stored in it is still a failure? *Rubric:* 3 = the script tests the field name against the union, not the values inside the field; a medicine name must stay out of the export;; 2 = the script does not read inside the field;; 1 = vague;; 0 = none.
+- **EX058 — Two checks.** The form has the five allowed fields and the export still lists insulin. Which check passed, which failed, and does Sofia close the action? *Rubric:* 3 = the field check passed; the content check failed; she does not close the action;; 2 = she does not close it;; 1 = she closes it;; 0 = none.
+
 ### Exercises
 
 - **EX039 — Unneeded share.** What share of loyalty fields were unneeded? *Rubric:* 3 = 5 of 10, 50%;; 2 = partly correct;; 1 = wrong;; 0 = none.
@@ -542,7 +773,7 @@ The chapter index leads to the next course in the study path.
 
 ## Worked results
 
-Model answers for EX001–EX050. Sofia Mendes, Mr. Raj Patel, Brightwater Community Learning Centre, Juniper Pharmacy and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX058. Sofia Mendes, Mr. Raj Patel, Brightwater Community Learning Centre, Juniper Pharmacy and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** Yes, because Juniper can link it to an identifiable customer.
 
@@ -643,6 +874,23 @@ Model answers for EX001–EX050. Sofia Mendes, Mr. Raj Patel, Brightwater Commun
 **EX049.** To confirm the plan worked rather than assume it.
 
 **EX050.** Governance, risk and compliance.
+
+
+**EX051.** Juniper can link 44021 to one customer, so the number is personal data even without a name. Points do not state or reveal an illness, so it is not yet health data.
+
+**EX052.** The stapled line makes the slip health data because it reveals a condition. The slip was already personal data. The refusal of the counter photo does not change.
+
+**EX053.** A live dispensing screen is a real customer record, which the signed scope excludes, and the phone would copy it. She uses the invented test customer and stores the screenshot in the encrypted shop folder.
+
+**EX054.** The report contains the place, the time and what she saw. She does not move the copies and does not read them.
+
+**EX055.** The loyalty contract does not cover a medicine-named offer. Before any such text, the shop needs explicit consent for that purpose, and the loyalty contract still needs Article 28 terms.
+
+**EX056.** Storage limitation fails because the delivery records have no end date. The owner sets a delivery period. Sofia does not invent the professional retention period for prescriptions.
+
+**EX057.** The script tests whether the field name is in the purpose union. It does not read the values inside `purchase_history`. A medicine name in the export is still a failure of the content check.
+
+**EX058.** The field check passed and the content check failed. Sofia does not close the action.
 
 <a id="references"></a>
 

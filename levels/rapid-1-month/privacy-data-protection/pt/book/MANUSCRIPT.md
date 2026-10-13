@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 004, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX058 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: iniciantes que precisam de um começo rápido e prático em privacidade e proteção de dados para um pequeno negócio.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o laboratório compara os campos que o aplicativo de fidelidade sintético de uma farmácia coleta com os campos de que suas finalidades declaradas precisam. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -10,7 +10,7 @@
 
 ## Como usar este rascunho
 
-Leia na ordem. Os quatro capítulos acompanham uma atendente de farmácia ao longo de um curso de um mês: fundamentos e primeiras decisões, escopo e prática segura, sistemas, dados e fornecedores, e um laboratório guiado que vira um plano de ação curto. Execute o laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
+Leia na ordem. Os quatro capítulos acompanham uma atendente de farmácia ao longo de um curso de um mês: fundamentos e primeiras decisões, escopo e prática segura, sistemas, dados e fornecedores, e um laboratório guiado que vira um plano de ação curto. Execute o laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas. Cada capítulo agora separa a definição do teste que a aplica: se o item identifica uma pessoa, se é dado de saúde, se a cópia cabe no escopo assinado, se a base pertence àquela finalidade, e se o nome de um campo do laboratório esconde um valor que o script não lê. EX051–EX058 usam esses testes num fato novo da loja.
 
 ### Caso sintético
 
@@ -40,7 +40,7 @@ Regulamento (UE) 2016/679 (GDPR), artigos 4(1), 5, 9 e 28; Lei nº 13.709/2018 (
 <!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
-Aula 01 publicada. Mapa, exemplo, EX001.
+Aula 01 publicada. Mapa, exemplo, EX051.
 
 ```mermaid
 flowchart TD
@@ -49,9 +49,12 @@ flowchart TD
   N2["1.3 Categorias especiais"]
   N3["1.4 Os princípios"]
   N4["1.5 Uma primeira decisão"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
+  N5["Conceitos — três testes diferentes"]
+  N6["Dados — um papel, duas camadas"]
+  N7["Fluxo de decisão — classificar antes de decidir o us"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
 ```
 
 ### Desenho lógico
@@ -63,7 +66,10 @@ flowchart LR
   N2["1.3 Categorias especiais"]
   N3["1.4 Os princípios"]
   N4["1.5 Uma primeira decisão"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+  N5["Conceitos — três testes diferentes"]
+  N6["Dados — um papel, duas camadas"]
+  N7["Fluxo de decisão — classificar antes de decidir o us"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
 ```
 
 ```text
@@ -82,7 +88,16 @@ flowchart LR
 [1.5 Uma primeira decisão]
     |
     v
-[Exemplo resolvido] --> [Exercício EX001]
+[Conceitos — três testes diferentes]
+    |
+    v
+[Dados — um papel, duas camadas]
+    |
+    v
+[Fluxo de decisão — classificar antes de decidir o us]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
 ```
 <!-- cykin:lesson-figures:end ch-01 -->
 
@@ -121,6 +136,57 @@ Sofia define dado pessoal e dado de categoria especial com exemplos da farmácia
 
 As definições são amplas; na dúvida sobre se um dado é pessoal, trate-o como pessoal.
 
+### Conceitos — três testes diferentes
+
+O artigo 4(1) pergunta se a Juniper está diante de uma pessoa viva. O artigo 9 faz uma segunda pergunta, sobre saúde. A decisão da foto do balcão, neste capítulo, fez uma terceira: a pessoa esperaria esse uso? Passar num teste não faz passar nos outros.
+
+| Teste | Pergunta da Sofia | Exemplo da Juniper | Resultado |
+|---|---|---|---|
+| Nomeado | Este item nomeia uma pessoa viva? | Um nome numa receita | Dado pessoal na hora |
+| Ligável | Se não, a Juniper consegue ligá-lo a uma pessoa? | O número de fidelidade 44021 num papel sem nome | Continua sendo dado pessoal |
+| Saúde | O conteúdo declara uma condição, ou a revela? | Uma linha grampeada, "insulina 10 ml" | Também dado de saúde, categoria especial |
+| A loja, não uma pessoa | Dá para não apontar cliente nenhum? | O total de terça, sem cupom ligado | Não é dado pessoal |
+| Expectativa | Mesmo sendo dado pessoal comum, a pessoa esperava esse uso? | Uma foto do balcão publicada para promoção | Recusar ainda, como na primeira decisão |
+
+Se Sofia não consegue saber se o item é ligável, ela o trata como pessoal. Esse limite continua. Ele não serve para chamar o total do dia de registro de cliente.
+
+### Dados — um papel, duas camadas
+
+| O que ela tem na mão | Dado pessoal? | Dado de saúde? | Por que as respostas diferem |
+|---|---|---|---|
+| Só o número de fidelidade 44021 | Sim | Não | O sistema de dispensação liga 44021 a um cliente; pontos não declaram doença |
+| O mesmo papel mais "insulina 10 ml" | Sim | Sim | A linha do medicamento revela uma condição; o número já identificava quem |
+| Um fotograma do CFTV do balcão, sem legenda | Sim | Não por si | Um rosto identifica a pessoa; o fotograma não declara um diagnóstico |
+| O total de terça | Não | Não | O número não é sobre uma pessoa viva |
+
+### Fluxo de decisão — classificar antes de decidir o uso
+
+```mermaid
+flowchart TD
+  A["Um item da loja"] --> B{"Ele nomeia uma pessoa viva, ou a Juniper consegue ligá-lo a uma?"}
+  B -->|Não| C["Não é dado pessoal, salvo se Sofia estiver em dúvida"]
+  C --> D["Na dúvida, tratar como pessoal e parar o palpite"]
+  B -->|Sim| E["Dado pessoal. A lista do artigo 5 se aplica"]
+  E --> F{"O conteúdo declara uma condição, ou a revela, como a insulina?"}
+  F -->|Sim| G["Dado de saúde. A finalidade vai precisar de uma condição do artigo 9"]
+  F -->|Não| H["Dado pessoal comum"]
+  G --> I{"O uso proposto é um que a pessoa esperaria?"}
+  H --> I
+  I -->|Não| J["Recusar esse uso, mesmo com o item já classificado"]
+  I -->|Sim| K["Registrar a classe e seguir para finalidade e minimização"]
+```
+
+### Exemplo resolvido — um papel sem nome, depois uma linha grampeada
+
+Um cupom mostra o número de fidelidade 44021 e nenhum nome. Sofia o marca como dado pessoal porque o sistema de dispensação liga 44021 a um cliente. Ela não o marca como dado de saúde: o papel lista pontos, não um medicamento. O farmacêutico grampeia "insulina 10 ml". Só a resposta sobre saúde muda. O número já era pessoal; o medicamento torna o papel também dado de saúde. Ela ainda não publicaria uma foto desse cliente no balcão. Classificação e a decisão da promoção são testes separados, e a foto falha na expectativa mesmo quando não há diagnóstico escrito.
+
+> **Caso sintético.** O número 44021 e a linha dos mililitros grampeada são inventados. Os artigos 4(1) e 9 são reais. Isto não é aconselhamento jurídico.
+
+### Aplicar
+
+- **EX051 — Número sem nome.** Por que o número de fidelidade 44021 é dado pessoal se o papel não tem nome, e por que ainda não é dado de saúde? *Rúbrica:* 3 = a Juniper consegue ligar o número a um cliente, então é pessoal; pontos não declaram nem revelam uma doença;; 2 = é pessoal por causa do vínculo;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Linha grampeada.** O que muda quando se acrescenta "insulina 10 ml", e o que não muda? *Rúbrica:* 3 = o papel passa a ser dado de saúde porque a linha revela uma condição; ele já era dado pessoal; a recusa da foto do balcão continua;; 2 = passa a ser dado de saúde;; 1 = vago;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX001 — Número de fidelidade.** O número de fidelidade é dado pessoal? *Rubrica:* 3 = sim, pode ser ligado a uma pessoa;; 2 = sim;; 1 = não;; 0 = nenhuma.
@@ -152,7 +218,7 @@ Continue para a próxima aula já escrita.
 <!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
-Aula 02 publicada. Mapa, exemplo, EX014.
+Aula 02 publicada. Mapa, exemplo, EX053.
 
 ```mermaid
 flowchart TD
@@ -161,9 +227,12 @@ flowchart TD
   N2["2.3 Quando pedem para ir além"]
   N3["2.4 Comunicar problemas"]
   N4["2.5 Respeitar a equipe"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
+  N5["Conceitos — a página assinada decide, e uma cópia co"]
+  N6["Dados — cinco pedidos contra a página assinada"]
+  N7["Fluxo de decisão — olhar, copiar ou guardar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX053"]
 ```
 
 ### Desenho lógico
@@ -175,7 +244,10 @@ flowchart LR
   N2["2.3 Quando pedem para ir além"]
   N3["2.4 Comunicar problemas"]
   N4["2.5 Respeitar a equipe"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX014"]
+  N5["Conceitos — a página assinada decide, e uma cópia co"]
+  N6["Dados — cinco pedidos contra a página assinada"]
+  N7["Fluxo de decisão — olhar, copiar ou guardar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -194,7 +266,16 @@ flowchart LR
 [2.5 Respeitar a equipe]
     |
     v
-[Exemplo resolvido] --> [Exercício EX014]
+[Conceitos — a página assinada decide, e uma cópia co]
+    |
+    v
+[Dados — cinco pedidos contra a página assinada]
+    |
+    v
+[Fluxo de decisão — olhar, copiar ou guardar]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX053]
 ```
 <!-- cykin:lesson-figures:end ch-02 -->
 
@@ -233,6 +314,51 @@ Sofia combina um escopo assinado, usa um cliente de teste e anotações criptogr
 
 A permissão verbal é fácil de contestar; registre as mudanças de escopo por escrito.
 
+### Conceitos — a página assinada decide, e uma cópia conta como consulta
+
+O escopo é uma lista, não um humor. Fotografar uma tela viva de dispensação copia o registro que está nela. A cópia é a mesma exclusão que ler aquele cliente.
+
+| Pergunta | Permitido nesta semana | Não permitido |
+|---|---|---|
+| O que ela pode abrir? | Configurações da fidelidade, o aviso de privacidade, o modo de arquivar receitas em papel, a lista de acessos da equipe, as placas de CFTV | O registro de um cliente nomeado |
+| O que ela pode guardar? | Capturas das configurações; anotações na gaveta trancada e na pasta criptografada do computador da loja | Uma tela de cliente no celular pessoal |
+| O pedido cresce | O dono acrescenta o item por escrito antes de ela olhar | Um "só desta vez" falado |
+| Ela acha registros expostos | Comunicar o local, a hora e o que viu, no mesmo dia | Mover as cópias, ou lê-las |
+
+### Dados — cinco pedidos contra a página assinada
+
+| Pedido | Está na página que o dono assinou? | O que Sofia faz |
+|---|---|---|
+| Capturar as configurações da fidelidade | Sim | Só configurações, não um cliente |
+| Ver como as receitas em papel são arquivadas | Sim, o método | Ela não abre o arquivo de uma pessoa nomeada |
+| A vizinha já retirou a receita? | Não | Recusar, e escrever o pedido no diário da revisão |
+| Olhar o celular do entregador | Não, até o dono acrescentar por escrito | Esperar |
+| Uma caixa de cópias antigas de receitas, destrancada | O achado é uma comunicação, não permissão para manuseá-las | Não mover nem ler; avisar o dono e o Sr. Patel |
+
+### Fluxo de decisão — olhar, copiar ou guardar
+
+```mermaid
+flowchart TD
+  A["Alguém pede a Sofia que olhe, copie ou guarde algo"] --> B{"Essa ação está na página que o dono assinou?"}
+  B -->|Não| C["Parar. O acréscimo por escrito vem antes de qualquer olhada"]
+  B -->|Sim| D{"Isso mostraria ou copiaria o registro de um cliente real?"}
+  D -->|Sim| E["Recusar. Usar o cliente de teste inventado"]
+  D -->|Não| F{"As anotações sairiam da gaveta trancada e da pasta criptografada da loja?"}
+  F -->|Sim| G["Recusar essa cópia. O celular pessoal fica fora da revisão"]
+  F -->|Não| H["Seguir. Registros expostos são comunicados pelo local, pela hora e pelo que ela viu"]
+```
+
+### Exemplo resolvido — uma foto da tela viva
+
+Uma colega pede a Sofia que fotografe uma tela viva de dispensação "para a revisão mostrar o leiaute". A tela nomeia um cliente real e um medicamento. O acesso da equipe está na página assinada; um registro individual, não. A fotografia ainda poria esse registro num celular. Sofia recusa. O farmacêutico cria o cliente de teste inventado, e Sofia faz a captura dessa tela para a pasta criptografada do computador da loja. O pedido da colega entra no diário da revisão no mesmo dia.
+
+> **Caso sintético.** A fotografia do leiaute e a tela viva são inventadas.
+
+### Aplicar
+
+- **EX053 — Tela viva.** Por que a fotografia é recusada, e o que a substitui? *Rúbrica:* 3 = uma tela viva é o registro de um cliente real, o que o escopo exclui, e o celular o copiaria; usar o cliente de teste inventado e a pasta criptografada da loja;; 2 = o escopo exclui registros reais;; 1 = vago;; 0 = nenhuma.
+- **EX054 — A caixa.** Que três fatos a comunicação do mesmo dia contém, e que duas ações Sofia não faz? *Rúbrica:* 3 = local, hora e o que viu; ela não move as cópias e não as lê;; 2 = ela comunica e não as lê;; 1 = vago;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX014 — Exclusões do escopo.** Cite duas coisas excluídas do escopo de Sofia. *Rubrica:* 3 = ler registros de clientes, contatar clientes, mudar configurações;; 2 = duas;; 1 = uma;; 0 = nenhuma.
@@ -264,7 +390,7 @@ Continue para a próxima aula já escrita.
 <!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
-Aula 03 publicada. Mapa, exemplo, EX027.
+Aula 03 publicada. Mapa, exemplo, EX055.
 
 ```mermaid
 flowchart TD
@@ -273,9 +399,12 @@ flowchart TD
   N2["3.3 Fornecedores e dependências"]
   N3["3.4 Bases legais"]
   N4["3.5 Retenção"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
+  N5["Conceitos — a base não viaja para a finalidade segui"]
+  N6["Dados — quatro fluxos que saem da loja"]
+  N7["Fluxo de decisão — o dono propõe um uso novo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
 ```
 
 ### Desenho lógico
@@ -287,7 +416,10 @@ flowchart LR
   N2["3.3 Fornecedores e dependências"]
   N3["3.4 Bases legais"]
   N4["3.5 Retenção"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+  N5["Conceitos — a base não viaja para a finalidade segui"]
+  N6["Dados — quatro fluxos que saem da loja"]
+  N7["Fluxo de decisão — o dono propõe um uso novo"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -306,7 +438,16 @@ flowchart LR
 [3.5 Retenção]
     |
     v
-[Exemplo resolvido] --> [Exercício EX027]
+[Conceitos — a base não viaja para a finalidade segui]
+    |
+    v
+[Dados — quatro fluxos que saem da loja]
+    |
+    v
+[Fluxo de decisão — o dono propõe um uso novo]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
 ```
 <!-- cykin:lesson-figures:end ch-03 -->
 
@@ -345,6 +486,56 @@ Sofia mapeia sete sistemas, rastreia os fluxos, incluindo as compras de medicame
 
 Um mapa desenhado uma vez fica desatualizado; atualize-o quando os sistemas mudarem.
 
+### Conceitos — a base não viaja para a finalidade seguinte
+
+Sofia já anota uma base para cada finalidade, antes de o tratamento começar. Uma base escolhida para pontos não cobre uma finalidade nova. Dado de saúde mantém essa regra e acrescenta uma condição do artigo 9 para a finalidade que de fato usa o dado de saúde. Na LGPD, a tutela da saúde do art. 11, II, "f", continua sendo a condição que a edição já registrou para a dispensação, e o operador segue as instruções do controlador, pelo art. 39.
+
+| Finalidade já na tabela dela | Base que ela registrou | Condição de saúde também? | O que não bastaria |
+|---|---|---|---|
+| Dispensar uma receita | Prestação de cuidados de saúde | Sim, artigo 9(2)(h); na LGPD, art. 11, II, "f" | O consentimento colhido para a newsletter |
+| Guardar o registro da receita | Uma obrigação legal das farmácias | O registro é dado de saúde; a obrigação é o motivo de guardá-lo | Um prazo mais curto que Sofia invente |
+| Newsletter | Consentimento | Não, enquanto a mensagem não for sobre uma condição | A adesão à fidelidade |
+| Pontos para os membros | Contrato com esses membros | Não, enquanto o registro for pontos e gasto que não é medicamento | Usar esse contrato para uma oferta com o nome do medicamento |
+| Uma mensagem ligada a um medicamento nomeado | Não está na tabela | A mensagem usaria dado de saúde | O contrato da fidelidade, ou o consentimento comum da newsletter |
+
+### Dados — quatro fluxos que saem da loja
+
+| Fluxo | Quem recebe | O contrato tem os termos do artigo 28? | Retenção que ela encontrou |
+|---|---|---|---|
+| Receitas e cobranças | Fornecedor da dispensação | Sim | Regras profissionais das farmácias; ela não as reescreve |
+| Endereços da lista | Ferramenta de newsletter | Sim | Ainda sem prazo para quem nunca abre a mensagem |
+| Cada item do caixa, inclusive medicamentos | Fornecedor da fidelidade, toda noite | Não | Os dados de fidelidade não têm data de fim |
+| Nome, endereço, descrição do pacote lacrado | Empresa de entregas | Não | Ficam no celular do entregador sem data de fim |
+
+### Fluxo de decisão — o dono propõe um uso novo
+
+```mermaid
+flowchart TD
+  A["Um uso novo de dados que a Juniper já tem"] --> B{"Essa finalidade já está na tabela de bases da Sofia?"}
+  B -->|Não| C["Não começar. Registrar uma base para esta finalidade primeiro"]
+  B -->|Sim| D{"Este uso contém o nome de um medicamento ou outro dado de saúde?"}
+  D -->|Sim| E{"Já há uma condição do artigo 9 registrada para esta mesma finalidade?"}
+  E -->|Não| F["Parar. O contrato da fidelidade não é essa condição"]
+  E -->|Sim| G["Seguir para quem recebe"]
+  D -->|Não| G
+  G --> H{"Um fornecedor receberia isso sob um contrato sem os termos do artigo 28?"}
+  H -->|Sim| I["Marcar o contrato. Não acrescentar um fluxo novo nesses termos"]
+  H -->|Não| J{"Há um prazo de retenção escrito para este dado?"}
+  J -->|Não| K["Definir um prazo antes de guardar mais. Não inventar a regra da farmácia"]
+  J -->|Sim| L["Escrever o uso na tabela"]
+```
+
+### Exemplo resolvido — uma mensagem quando se vende insulina
+
+O dono quer que o aplicativo de fidelidade envie uma mensagem com um vale sempre que um membro comprar insulina. Sofia não liga isso. O contrato dos membros cobre pontos. Não cobre uma mensagem disparada por um medicamento nomeado, e essa mensagem é uma finalidade nova que usa dado de saúde. A loja não colheu o consentimento explícito de que essa finalidade precisa. O contrato da fidelidade também ainda não tem os termos do artigo 28, e o operador continuaria sem instrução clara do controlador. Um vale só pelo total de pontos, sem nomear medicamento, seria outra proposta e percorreria este fluxo desde o início. Esta proposta nomeia a insulina, então fica desligada.
+
+> **Caso sintético.** A mensagem do vale de insulina é inventada. Os artigos 9 e 28 são reais, como os arts. 11 e 39 da LGPD já citados neste capítulo. Isto não é aconselhamento jurídico.
+
+### Aplicar
+
+- **EX055 — Mensagem da insulina.** Que base registrada falha, e o que precisa existir antes de qualquer mensagem dessas? *Rúbrica:* 3 = o contrato da fidelidade não cobre uma oferta com o nome do medicamento; a loja precisa de consentimento explícito para essa finalidade, e o contrato da fidelidade ainda não tem os termos do artigo 28;; 2 = consentimento explícito;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Sem data de fim.** Que princípio falha nos registros de entrega no celular do entregador, e o que Sofia não inventa? *Rúbrica:* 3 = a limitação da conservação, porque não há data de fim; o dono define um prazo de entrega; ela não inventa o prazo profissional das receitas;; 2 = definir um prazo de entrega;; 1 = vago;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX027 — Fluxo oculto.** Que fluxo o dono não conhecia? *Rubrica:* 3 = o caixa envia as compras de medicamentos ao aplicativo de fidelidade;; 2 = menciona fidelidade;; 1 = vago;; 0 = nenhuma.
@@ -375,7 +566,7 @@ Continue para a próxima aula já escrita.
 <!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
-Aula 04 publicada. Mapa, exemplo, EX039.
+Aula 04 publicada. Mapa, exemplo, EX057.
 
 ```mermaid
 flowchart TD
@@ -385,9 +576,11 @@ flowchart TD
   N3["4.4 Apresentar ao dono"]
   N4["4.5 Conferir e próximos passos"]
   N5["Laboratório — Campos do aplicativo de fidelidade ver"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
+  N6["Conceitos — o script testa nomes, não valores"]
+  N7["Dados — pertinência aos três conjuntos"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX057"]
 ```
 
 ### Desenho lógico
@@ -400,7 +593,9 @@ flowchart LR
   N3["4.4 Apresentar ao dono"]
   N4["4.5 Conferir e próximos passos"]
   N5["Laboratório — Campos do aplicativo de fidelidade ver"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+  N6["Conceitos — o script testa nomes, não valores"]
+  N7["Dados — pertinência aos três conjuntos"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -422,7 +617,13 @@ flowchart LR
 [Laboratório — Campos do aplicativo de fidelidade ver]
     |
     v
-[Exemplo resolvido] --> [Exercício EX039]
+[Conceitos — o script testa nomes, não valores]
+    |
+    v
+[Dados — pertinência aos três conjuntos]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX057]
 ```
 <!-- cykin:lesson-figures:end ch-04 -->
 
@@ -495,6 +696,56 @@ Sofia descobre que cinco de dez campos da fidelidade (50%) são desnecessários,
 
 As finalidades listadas num aviso podem estar incompletas; pergunte ao negócio se existe outra finalidade antes de excluir campos.
 
+### Conceitos — o script testa nomes, não valores
+
+`lab_loyalty.py` monta `used` como a união dos três conjuntos de finalidade e pergunta se cada nome coletado está nessa união. Um campo imprime `needed` quando o nome é membro. O script não abre o campo para ler o que foi guardado dentro dele.
+
+| Passo | O que o script usa | O que ele não vê |
+|---|---|---|
+| Montar `used` | A união de pontos, vale de aniversário e e-mails de marketing | Se essa finalidade é lícita |
+| Marcar cada nome coletado | Se o nome pertence a `used` | Os valores guardados sob o nome |
+| Contar | Nomes em `collected` que estão fora de `used` | Um medicamento escondido dentro de `purchase_history` |
+
+`purchase_history` está no conjunto dos pontos, então o script imprime `needed`. `prescription_items` não está em conjunto nenhum, então imprime `NOT NEEDED`. A conferência posterior do caixa é um segundo teste: o gasto total e as categorias que não são medicamentos podem ficar; o nome de um medicamento, não. Passar na lista de campos não faz passar na conferência do conteúdo.
+
+### Dados — pertinência aos três conjuntos
+
+| Nome coletado | Conjunto de finalidade que o contém | Marca do script | Regra de conteúdo da conferência de duas semanas |
+|---|---|---|---|
+| `name`, `email` | Pontos | `needed` | Ficam |
+| `date_of_birth` | Vale de aniversário | `needed` | Fica |
+| `marketing_choice` | E-mails de marketing | `needed` | Fica |
+| `purchase_history` | Pontos | `needed` | Não pode carregar o nome de um medicamento |
+| `phone`, `postcode`, `gender`, `location_trail`, `prescription_items` | Nenhum | `NOT NEEDED` | Sair |
+
+A contagem continua a verificada: 10 nomes coletados, 5 fora da união.
+
+### Fluxo de decisão — alguém diz que o formulário foi corrigido
+
+```mermaid
+flowchart TD
+  A["Alguém afirma que a mudança da fidelidade está pronta"] --> B["Rodar lab_loyalty.py no formulário novo"]
+  B --> C{"phone, postcode, prescription_items, gender e location_trail saíram?"}
+  C -->|Não| D["A conferência dos campos falhou"]
+  C -->|Sim| E{"A exportação do caixa ainda nomeia um medicamento?"}
+  E -->|Sim| F["A lista de campos passou e a conferência do conteúdo falhou"]
+  E -->|Não| G["As duas passaram: cinco campos, totais e categorias que não são medicamentos"]
+  D --> H["Escrever qual conferência falhou, e a data. Deixar a ação aberta"]
+  F --> H
+  G --> I["Registrar os dois resultados. A ação pode fechar"]
+```
+
+### Exemplo resolvido — cinco nomes limpos, uma linha de insulina
+
+O formulário novo pede nome, e-mail, data de nascimento, histórico de compras e a escolha de marketing. Sofia roda o script. Os cinco nomes estão na união, e nenhum dos cinco nomes rejeitados permanece. Ela abre então a exportação de uma noite do caixa e encontra uma linha que diz insulina. A conferência dos campos passou. A conferência do conteúdo falhou, porque `purchase_history` é permitido como nome e o script nunca lê o interior. Ela deixa a ação aberta e diz ao dono que a exportação ainda carrega um medicamento. Pontos e o vale de aniversário não precisam desse nome.
+
+> **Caso sintético.** O frasco 44021 no arquivo de terça à noite é inventado. A regra de pertinência é a de lab_loyalty.py. Isto não é aconselhamento jurídico.
+
+### Aplicar
+
+- **EX057 — Dentro do campo.** Por que `purchase_history` pode imprimir `needed` enquanto uma linha de insulina guardada nele ainda é uma falha? *Rúbrica:* 3 = o script testa o nome do campo contra a união, não os valores dentro do campo; o nome de um medicamento tem de ficar fora da exportação;; 2 = o script não lê o interior do campo;; 1 = vago;; 0 = nenhuma.
+- **EX058 — Duas conferências.** O formulário tem os cinco campos permitidos e a exportação ainda lista insulina. Qual conferência passou, qual falhou, e Sofia fecha a ação? *Rúbrica:* 3 = a conferência dos campos passou; a do conteúdo falhou; ela não fecha a ação;; 2 = ela não fecha;; 1 = ela fecha;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX039 — Parcela desnecessária.** Que parcela dos campos da fidelidade era desnecessária? *Rubrica:* 3 = 5 de 10, 50%;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
@@ -522,7 +773,7 @@ O índice aponta para o próximo curso do percurso de estudos.
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX050. Sofia Mendes, o Sr. Raj Patel, o Brightwater Community Learning Centre, a Juniper Pharmacy e todos os números são sintéticos. As respostas do laboratório citam a saída verificada. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX058. Sofia Mendes, o Sr. Raj Patel, o Brightwater Community Learning Centre, a Juniper Pharmacy e todos os números são sintéticos. As respostas do laboratório citam a saída verificada. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sim, porque a Juniper consegue ligá-lo a um cliente identificável.
 
@@ -623,6 +874,23 @@ Respostas-modelo para EX001–EX050. Sofia Mendes, o Sr. Raj Patel, o Brightwate
 **EX049.** Para confirmar que o plano funcionou, em vez de supor.
 
 **EX050.** Governança, riscos e compliance.
+
+
+**EX051.** A Juniper consegue ligar 44021 a um cliente, então o número é dado pessoal mesmo sem nome. Pontos não declaram nem revelam uma doença, então ainda não é dado de saúde.
+
+**EX052.** A linha grampeada torna o papel dado de saúde porque revela uma condição. O papel já era dado pessoal. A recusa da foto do balcão não muda.
+
+**EX053.** Uma tela viva de dispensação é o registro de um cliente real, o que o escopo assinado exclui, e o celular o copiaria. Ela usa o cliente de teste inventado e guarda a captura na pasta criptografada da loja.
+
+**EX054.** A comunicação contém o local, a hora e o que ela viu. Ela não move as cópias e não as lê.
+
+**EX055.** O contrato da fidelidade não cobre uma oferta com o nome do medicamento. Antes de qualquer mensagem dessas, a loja precisa de consentimento explícito para essa finalidade, e o contrato da fidelidade ainda precisa dos termos do artigo 28.
+
+**EX056.** A limitação da conservação falha porque os registros de entrega não têm data de fim. O dono define um prazo de entrega. Sofia não inventa o prazo profissional de retenção das receitas.
+
+**EX057.** O script testa se o nome do campo está na união das finalidades. Ele não lê os valores dentro de `purchase_history`. O nome de um medicamento na exportação continua sendo falha da conferência de conteúdo.
+
+**EX058.** A conferência dos campos passou e a do conteúdo falhou. Sofia não fecha a ação.
 
 <a id="references"></a>
 ## Referências
