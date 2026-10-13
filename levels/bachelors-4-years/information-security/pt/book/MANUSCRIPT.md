@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 094, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem como uma pequena organização financeira protege as informações dos seus associados por meio da governança, dos controles técnicos, das operações e da medição.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios revisam acessos sintéticos a aplicações em relação à situação no RH e ao cargo, medem achados sintéticos de vulnerabilidades em relação às metas de correção e geram hashes de senhas sintéticas com PBKDF2 com sal, conferindo-as contra uma pequena lista de senhas vazadas. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -904,11 +904,483 @@ Culpar os funcionários pelos cliques desestimula as comunicações que detectam
 
 - **EX060 — Cautela com os cliques.** Por que evitar usar apenas as taxas de cliques? *Rubrica:* 3 = dependem da dificuldade da simulação;; 2 = correto;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Gestão de vulnerabilidades
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o ciclo de gestão de vulnerabilidades; (2) medir os achados em relação às metas de correção; (3) priorizar as correções pela gravidade e pela exposição.
+
+### 21.1 O ciclo
+
+No terceiro ano, Aisha estuda a gestão de vulnerabilidades: encontrar as fraquezas, avaliá-las, corrigi-las e conferir as correções. A Ashfield faz uma varredura mensal dos seus computadores e servidores, que produz uma lista de achados com classificações de gravidade. Sua norma interna define metas de correção: os achados críticos em até catorze dias, os altos em até trinta e os médios em até noventa. O Dr. Carrow explica que varrer sem corrigir não leva a nada, então o ciclo precisa ser medido na etapa da correção, e não apenas na etapa da descoberta. Aisha revisa a varredura mais recente.
+
+### 21.2 O laboratório de vulnerabilidades
+
+O laboratório monta uma lista sintética de 400 achados em aberto, com a gravidade e a idade em dias. Dos 29 achados críticos, cinco têm mais de catorze dias, 17,2 por cento. Dos 103 achados altos, 27 estão atrasados em relação aos trinta dias, 26,2 por cento. Dos 268 achados médios, 57 estão atrasados em relação aos noventa dias, 21,3 por cento. No total, 89 dos 400 achados estão atrasados. Aisha observa que os cinco achados críticos atrasados merecem atenção primeiro, embora os achados altos tenham a maior parcela de atraso. Ela mostra ao gerente de TI uma tabela dos achados atrasados por gravidade, com os cinco itens críticos listados por sistema e idade, para que ele possa distribuí-los à equipe no mesmo dia.
+
+### Laboratório — Achados de vulnerabilidades atrasados em relação às metas de correção
+
+```python
+"""Find vulnerability findings overdue against remediation targets (stdlib only)."""
+import random
+from collections import Counter
+random.seed(21)
+target = {"critical": 14, "high": 30, "medium": 90}
+finds = []
+for _ in range(400):
+    sev = random.choices(["critical", "high", "medium"], [1, 4, 10])[0]
+    finds.append((sev, int(random.expovariate(1 / (target[sev] * 0.7)))))
+total = Counter(s for s, _ in finds)
+over = Counter(s for s, a in finds if a > target[s])
+for s in target:
+    print(f"{s}: {total[s]} open, {over[s]} overdue ({over[s]/total[s]:.1%}) against {target[s]} days")
+print(f"all: {len(finds)} open, {sum(over.values())} overdue")
+```
+
+Execute com `python3 lab_vulns.py`. Saída verificada:
+
+```text
+critical: 29 open, 5 overdue (17.2%) against 14 days
+high: 103 open, 27 overdue (26.2%) against 30 days
+medium: 268 open, 57 overdue (21.3%) against 90 days
+all: 400 open, 89 overdue
+```
+
+### 21.3 Priorizando
+
+A gravidade sozinha não basta. Aisha acrescenta a exposição: se o sistema pode ser alcançado a partir da internet e se a vulnerabilidade é sabidamente explorada em ataques reais. Dois dos cinco achados críticos atrasados estão no servidor de internet banking, que fica exposto à internet, então vêm primeiro. Os demais estão em sistemas internos. Ela aprende que combinar a gravidade, a exposição e as evidências de exploração no mundo real dá uma ordem de trabalho melhor do que as classificações de gravidade sozinhas. Ela registra a ordem e seus motivos numa breve nota para o gerente de TI.
+
+### 21.4 Causas do atraso
+
+Aisha pergunta por que os achados ficam atrasados. Alguns precisam de uma atualização do fornecedor ainda não lançada; alguns exigem uma parada a que as agências resistem; alguns foram simplesmente esquecidos. Para os atrasos de fornecedores, ela recomenda medidas temporárias, como restringir o acesso ao serviço afetado. Para as paradas, ela propõe uma janela de manutenção mensal acordada com os gerentes das agências. Para os itens esquecidos, ela sugere uma lista semanal de atrasados enviada a cada dono. O Dr. Carrow observa que cada causa precisa do seu próprio remédio. Os gerentes das agências aceitam a janela de manutenção depois de ver os achados críticos atrasados.
+
+### Exemplo resolvido
+
+Aisha mede 400 achados sintéticos em relação às metas, encontra 89 atrasados, entre eles 5 críticos, prioriza os sistemas expostos à internet e trata as causas do atraso.
+
+> **Caso sintético.** Os achados são sintéticos; as saídas vêm de lab_vulns.py.
+
+### Erros e limites
+
+Priorizar apenas pela gravidade ignora a exposição e a exploração ativa.
+
+### Exercícios
+
+- **EX061 — Críticos atrasados.** Quantos achados críticos estão atrasados? *Rubrica:* 3 = cinco, 17,2 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX062 — Altos atrasados.** Que parcela dos achados altos está atrasada? *Rubrica:* 3 = 26,2 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX063 — Total de atrasados.** Quantos achados estão atrasados no total? *Rubrica:* 3 = 89 de 400;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Configuração segura
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar por que as configurações padrão são arriscadas; (2) aplicar linhas de base de configuração; (3) conferir as configurações regularmente.
+
+### 22.1 Os riscos do padrão
+
+Os sistemas chegam configurados para a conveniência. As senhas padrão, os serviços desnecessários e as configurações permissivas ajudam na instalação, mas também ajudam os atacantes. Aisha descobre que um roteador sintético de uma agência da Ashfield ainda usa a senha de administrador de fábrica, publicada no manual do fabricante. Qualquer pessoa na rede da agência poderia entrar e alterar suas configurações. Ela recomenda trocar todas as senhas padrão durante a instalação como um passo padrão, registrado na lista de verificação da instalação para que não possa ser pulado. O gerente de TI troca a senha do roteador na mesma tarde e confere os roteadores das outras agências.
+
+### 22.2 Linhas de base
+
+Uma linha de base de configuração lista as configurações seguras que todo sistema de um tipo deve ter. Aisha redige uma linha de base para os computadores de mesa da Ashfield: atualizações automáticas ativadas, cifração de disco habilitada, bloqueio de tela após cinco minutos, contas de usuário comuns para a equipe e software desnecessário removido. Ela a baseia em orientações publicadas e a adapta às necessidades da Ashfield. O Dr. Carrow observa que as linhas de base transformam o conhecimento de segurança em configurações repetíveis, que não dependem da memória de cada técnico. O gerente de TI revisa o rascunho e o aprova para todas as novas instalações de computadores de mesa.
+
+### 22.3 Conferindo
+
+As configurações se desviam à medida que as pessoas as alteram por conveniência ou para resolver problemas. Aisha escreve um pequeno script que lê exportações sintéticas de configuração e relata que computadores diferem da linha de base. Ela encontra alguns com o bloqueio de tela desativado, a maioria numa agência em que os funcionários o achavam irritante nos períodos de movimento. Ela conversa sobre isso com o gerente da agência, que concorda com um tempo de espera mais longo, em vez de nenhum. Ela aprende que entender por que as configurações se desviam ajuda a corrigir a causa. O script roda mensalmente e envia ao gerente de TI uma breve lista por e-mail.
+
+### 22.4 Controle de mudanças
+
+As mudanças de configuração devem ser planejadas, aprovadas e registradas. Aisha descobre que a equipe de TI da Ashfield faz mudanças no firewall sem registros, de modo que ninguém consegue explicar depois por que uma regra existe. Ela propõe um registro de mudanças simples: o que mudou, por quê, quem aprovou e como reverter. O Dr. Carrow explica que os registros de mudanças também ajudam durante os incidentes, porque os investigadores podem ver rapidamente se uma mudança recente causou um problema ou abriu uma lacuna. O gerente de TI adota o registro de mudanças na semana seguinte e registra o motivo de cada regra existente que ainda consegue explicar.
+
+### Exemplo resolvido
+
+Aisha encontra uma senha padrão num roteador, redige uma linha de base para os computadores de mesa, confere os desvios com um script e introduz um registro de mudanças para o firewall.
+
+> **Caso sintético.** As configurações são sintéticas.
+
+### Erros e limites
+
+As senhas padrão publicadas nos manuais dão aos atacantes um acesso fácil.
+
+### Exercícios
+
+- **EX064 — Problema do roteador.** O que havia de errado com o roteador da agência? *Rubrica:* 3 = a senha padrão de fábrica;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX065 — Item da linha de base.** Cite uma configuração da linha de base dos computadores de mesa. *Rubrica:* 3 = cifração de disco habilitada;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX066 — Solução do bloqueio de tela.** Que meio-termo é acordado para o bloqueio de tela? *Rubrica:* 3 = um tempo de espera mais longo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Registro de logs e monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher que eventos registrar em log; (2) revisar os logs em busca de atividades suspeitas; (3) proteger os logs contra adulteração.
+
+### 23.1 O que registrar
+
+Os logs registram eventos: logins, falhas de login, mudanças em contas, acessos a registros sensíveis e erros do sistema. Aisha ajuda a Ashfield a decidir o que registrar. Ela pergunta que perguntas um investigador precisaria responder, como quem viu o registro deste associado na semana passada ou quem criou esta conta. Cada pergunta aponta para eventos que precisam ser registrados. O Dr. Carrow observa que registrar tudo produz volume demais para revisar, enquanto registrar de menos deixa os investigadores às cegas. Ela lista seis perguntas de investigação e os eventos que cada uma exige numa tabela.
+
+### 23.2 Revisando os logs
+
+Os logs só ajudam se alguém olhar para eles. A Ashfield é pequena demais para ter uma equipe de monitoramento em tempo integral, então Aisha propõe alertas automatizados para alguns eventos de alto valor: logins de administrador fora do horário de trabalho, muitas falhas de login numa mesma conta e a visualização em massa de registros de associados por um mesmo funcionário. O gerente de TI revisa os alertas toda manhã. Ela aprende que uma lista curta de alertas significativos é mais eficaz do que uma lista longa que ninguém lê. A revisão leva cerca de dez minutos toda manhã e é registrada num breve log.
+
+### 23.3 Um padrão real
+
+Numa revisão sintética, Aisha descobre que uma conta de funcionário visualizou mais de trezentos registros de associados numa tarde, muito mais do que o normal. A investigação mostra que o funcionário estava preparando uma lista de mala direta legítima para uma assembleia anual, aprovada por um gerente. O alerta funcionou corretamente, mas a atividade era autorizada. Ela recomenda que as tarefas em massa sejam avisadas com antecedência, para que os alertas possam ser conferidos rapidamente e o uso indevido genuíno se destaque. O gerente de operações concorda em enviar um e-mail à TI antes de qualquer tarefa em massa aprovada, o que leva apenas um minuto e economiza tempo de investigação.
+
+### 23.4 Protegendo os logs
+
+Os atacantes que obtêm o controle muitas vezes apagam os logs para esconder suas ações. Aisha recomenda enviar os logs para um sistema separado, que os administradores comuns não conseguem alterar, e guardá-los por um período definido, acordado com o responsável pela conformidade. Ela também recomenda que os relógios de todos os sistemas sejam sincronizados, para que os eventos de sistemas diferentes possam ser colocados em ordem. O Dr. Carrow observa que os logs são evidências, e as evidências precisam ser confiáveis. O responsável pela conformidade define um período de retenção de doze meses, depois do qual o sistema central apaga automaticamente os logs antigos, e o gerente de TI confirma que os relógios estão sincronizados.
+
+### Exemplo resolvido
+
+Aisha escolhe os eventos a partir das perguntas de investigação, define três alertas automatizados, investiga um alerta de visualização em massa que se mostra autorizado e protege os logs de forma centralizada, com relógios sincronizados.
+
+> **Caso sintético.** Os logs são sintéticos.
+
+### Erros e limites
+
+Os logs guardados apenas onde os administradores podem alterá-los são evidências fracas.
+
+### Exercícios
+
+- **EX067 — Eventos de alerta.** Cite um evento de alerta automatizado. *Rubrica:* 3 = logins de administrador fora do horário de trabalho;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX068 — Visualização em massa.** Por que uma conta visualizou muitos registros? *Rubrica:* 3 = preparava uma lista de mala direta aprovada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX069 — Sincronização dos relógios.** Por que sincronizar os relógios? *Rubrica:* 3 = para ordenar os eventos entre os sistemas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Resposta a incidentes
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever as fases da resposta a incidentes; (2) preparar um plano de resposta; (3) praticar a resposta com um exercício.
+
+### 24.1 Fases
+
+Aisha estuda as fases da resposta a incidentes: preparação, detecção e análise, contenção, erradicação, recuperação e lições aprendidas. O Cybersecurity Framework 2.0 do NIST agrupa os resultados relacionados nas suas funções Responder e Recuperar. Na Ashfield, um incidente poderia ser um comprometimento por phishing, um ransomware, um notebook perdido ou um funcionário que usa mal seu acesso. O Dr. Carrow explica que as fases dão estrutura sob pressão, quando as pessoas, de outra forma, agem de maneira incoerente ou esquecem passos importantes. Ela escreve no diário um exemplo da Ashfield para cada fase, o que a ajuda a ver como um comprometimento por phishing passaria pela detecção, pela contenção, pela recuperação e pelas lições aprendidas.
+
+### 24.2 O plano
+
+Aisha redige um plano de resposta a incidentes para a Ashfield. Ele define o que conta como incidente, quem lidera a resposta, como contatar as pessoas-chave fora do expediente, quando informar o conselho, os reguladores, os associados e a seguradora e onde encontrar os procedimentos técnicos. Ela mantém o plano principal em quatro páginas, com os contatos na primeira página. O Dr. Carrow observa que os planos são usados sob estresse, então a brevidade e a clareza importam. O diretor executivo aprova o plano, e uma cópia impressa é guardada em cada agência.
+
+### 24.3 Decisões de contenção
+
+A contenção limita o dano, mas pode atrapalhar o negócio. Se um ransomware for encontrado num computador de uma agência, desconectar a rede da agência impede a propagação, mas interrompe ali o atendimento aos associados. Aisha escreve uma orientação de decisão: isolar primeiro o computador afetado e depois a agência, se for detectada propagação, com o diretor executivo informado de qualquer isolamento no nível da agência. Ela aprende que combinar as regras de decisão com antecedência evita atrasos e discussões durante um incidente. Ela acrescenta ao plano um fluxograma simples, que mostra cada ponto de decisão e quem decide, para que a pessoa de plantão possa segui-lo rapidamente, mesmo sem conhecimento técnico.
+
+### 24.4 Exercício
+
+Aisha conduz um exercício de mesa com os gerentes da Ashfield. O cenário: um funcionário de finanças comunica um e-mail do diretor executivo pedindo um pagamento urgente a um novo fornecedor. Os gerentes discutem suas ações. Eles percebem que o plano não diz quem decide se o banco deve ser contatado para sustar um pagamento. Aisha acrescenta isso ao plano. O Dr. Carrow observa que os exercícios encontram as lacunas a baixo custo, antes que um incidente real as encontre. Os gerentes concordam em repetir o exercício todos os anos, com um cenário diferente escolhido pelo gerente de TI.
+
+### Exemplo resolvido
+
+Aisha aprende as fases da resposta, redige um plano de quatro páginas, escreve regras de decisão para a contenção e conduz um exercício que revela uma decisão faltante sobre sustar pagamentos.
+
+> **Caso sintético.** Os planos e os exercícios são sintéticos.
+
+### Erros e limites
+
+Um plano de incidentes que nunca é exercitado costuma conter lacunas.
+
+### Exercícios
+
+- **EX070 — Extensão do plano.** Qual é a extensão do plano principal? *Rubrica:* 3 = quatro páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX071 — Primeira contenção.** O que é isolado primeiro num caso de ransomware? *Rubrica:* 3 = o computador afetado;; 2 = correto;; 1 = a agência;; 0 = nenhuma.
+
+- **EX072 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = quem decide contatar o banco para sustar um pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Backup e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar backups para ameaças diferentes; (2) testar as restaurações; (3) definir objetivos de recuperação com os donos do negócio.
+
+### 25.1 Projeto dos backups
+
+Os backups protegem contra falhas de hardware, erros e ransomware, mas cada ameaça exige um projeto diferente. A falha de hardware exige uma cópia em outro lugar; os erros exigem versões mais antigas; o ransomware exige cópias que os atacantes não consigam alcançar nem alterar. Aisha revisa os backups da Ashfield: cópias noturnas para um dispositivo de armazenamento na sede, alcançável pela rede. Ela recomenda uma cópia adicional offline ou imutável, mantida longe da sede, para que um único evento não possa destruir tudo. O diretor executivo aprova o custo de uma cópia adicional guardada num prestador especializado em outra cidade.
+
+### 25.2 Testando as restaurações
+
+Um backup só é útil se puder ser restaurado. Aisha pergunta quando a Ashfield restaurou pela última vez um sistema completo a partir do backup. Ninguém se lembra. Ela organiza uma restauração de teste das pastas compartilhadas para um computador separado e compara as impressões digitais dos arquivos com as dos originais usando o hashlib. Alguns arquivos falham porque estavam abertos durante o backup. Ela recomenda agendar os backups para quando os arquivos estiverem fechados e testar as restaurações a cada trimestre. O gerente de TI inclui o teste trimestral de restauração no calendário e registra cada resultado com o número de arquivos conferidos e verificados.
+
+### 25.3 Objetivos de recuperação
+
+Aisha trabalha com os gerentes para definir os objetivos de recuperação. Para o sistema bancário central, eles aceitam perder no máximo quinze minutos de transações e precisam do serviço de volta em até quatro horas. Para as pastas compartilhadas, perder um dia é aceitável, e a recuperação em até dois dias está bem. Ela aprende que os objetivos vêm das necessidades do negócio, e não de preferências técnicas, e que eles determinam a frequência dos backups e os métodos de recuperação necessários. Os gerentes assinam os objetivos acordados, e Aisha confere se os backups atuais conseguem atendê-los. Os backups do sistema central rodam hoje de hora em hora, então ela recomenda cópias mais frequentes.
+
+### 25.4 Plano de recuperação
+
+Aisha escreve um plano de recuperação que lista a ordem dos sistemas a restaurar, os passos de cada um e as pessoas responsáveis. O sistema bancário central vem primeiro, porque os associados dependem dele, seguido do e-mail e depois das pastas compartilhadas. Ela anota as dependências: o sistema central precisa do serviço de diretório para os logins, então este precisa ser restaurado antes. O Dr. Carrow observa que, se não for planejada, a ordem de recuperação muitas vezes só é descoberta durante uma crise real. O gerente de TI percorre o plano com ela e acrescenta dois passos que faltavam.
+
+### Exemplo resolvido
+
+Aisha acrescenta uma cópia offline, testa uma restauração com impressões digitais e encontra falhas por arquivos abertos, define objetivos com os gerentes e escreve uma ordem de recuperação que respeita as dependências.
+
+> **Caso sintético.** Os backups são sintéticos.
+
+### Erros e limites
+
+Os backups alcançáveis pela rede podem ser destruídos por um ransomware.
+
+### Exercícios
+
+- **EX073 — Cópia faltante.** Que cópia de backup extra Aisha recomenda? *Rubrica:* 3 = uma cópia offline ou imutável longe da sede;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX074 — Falhas na restauração.** Por que alguns arquivos não foram restaurados? *Rubrica:* 3 = estavam abertos durante o backup;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX075 — Objetivos do sistema central.** Quais são os objetivos do sistema bancário central? *Rubrica:* 3 = quinze minutos de dados, quatro horas para restaurar;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Senhas na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) armazenar senhas com segurança, usando hash com sal; (2) conferir senhas contra listas de senhas vazadas; (3) definir regras práticas de senha.
+
+### 26.1 Armazenando senhas
+
+Os sistemas nunca devem armazenar senhas em forma legível. Em vez disso, armazenam um hash produzido por uma função lenta com um sal aleatório, um valor único para cada senha. Aisha aprende que a lentidão torna a adivinhação cara para os atacantes que roubam os hashes, e que os sais impedem os atacantes de comparar os hashes entre as contas. O módulo hashlib do Python oferece o PBKDF2, uma função de hash lenta padronizada, que ela usa no laboratório com senhas sintéticas. Ela confirma com o fornecedor do internet banking que as senhas dos associados são armazenadas como hashes com sal.
+
+### 26.2 O laboratório de senhas
+
+O laboratório gera o hash da mesma senha com dois sais diferentes e confirma que os resultados diferem, e é por isso que senhas idênticas não podem ser identificadas a partir dos hashes armazenados. Em seguida, ele confere 300 senhas sintéticas de associados contra uma pequena lista de senhas sabidamente vazadas e encontra seis correspondências, 2,0 por cento. O laboratório usa apenas mil iterações de hash, para rodar depressa em aula. Aisha observa que os sistemas reais usam muito mais iterações, seguindo as orientações atuais. Ela explica os resultados ao seu grupo de seminário com um exemplo impresso dos dois hashes.
+
+### Laboratório — Hash PBKDF2 com sal e conferência de senhas vazadas sobre dados sintéticos
+
+```python
+"""Salted PBKDF2 password hashing and a breached-password check on synthetic data (stdlib only)."""
+import hashlib, random
+random.seed(9)
+ITER = 1000  # kept low for a classroom run; real systems use far more iterations
+breached = {"password1", "letmein", "qwerty123", "summer2024", "creditunion"}
+pool = [f"word{n}-{n*7}" for n in range(1000)] + sorted(breached)
+members = [random.choice(pool) if random.random() < 0.97 else random.choice(sorted(breached)) for _ in range(300)]
+def h(pw, salt): return hashlib.pbkdf2_hmac("sha256", pw.encode(), salt, ITER).hex()
+s1, s2 = bytes(16), bytes([1]) + bytes(15)
+print("same password, different salts give different hashes:", h("letmein", s1) != h("letmein", s2))
+hit = sum(pw in breached for pw in members)
+print(f"members {len(members)}; passwords found in breached list {hit} ({hit/len(members):.1%})")
+```
+
+Execute com `python3 lab_passwords.py`. Saída verificada:
+
+```text
+same password, different salts give different hashes: True
+members 300; passwords found in breached list 6 (2.0%)
+```
+
+### 26.3 Senhas vazadas
+
+As senhas que aparecem em listas de vazamentos são as primeiras que os atacantes testam. Aisha recomenda que o internet banking da Ashfield confira as novas senhas contra uma lista de senhas vazadas e recuse as correspondências, com uma mensagem clara explicando o motivo. Ela observa que as conferências precisam acontecer quando as senhas são definidas, porque o sistema não consegue ler as senhas armazenadas depois. Para as seis correspondências sintéticas, ela sugere pedir aos associados que troquem a senha no próximo login. O fornecedor do internet banking confirma que seu sistema consegue fazer essas conferências, e a Ashfield pede que o recurso seja ativado na próxima atualização.
+
+### 26.4 Regras práticas
+
+Aisha revisa as regras de senha da Ashfield, que exigem trocas frequentes e caracteres complexos. Ela aprende que as trocas forçadas frequentes muitas vezes levam a padrões previsíveis, como acrescentar um número a cada vez. Ela recomenda frases-senha mais longas, a conferência contra senhas vazadas, a autenticação multifator e trocas apenas quando houver suspeita de comprometimento. O Dr. Carrow observa que as boas regras de senha consideram como as pessoas realmente se comportam, o que se liga ao princípio da aceitabilidade psicológica. O gerente de TI atualiza a norma de senhas da Ashfield de acordo, e a mudança é anunciada à equipe com uma breve explicação de por que as frases-senha mais longas são mais fáceis e mais seguras.
+
+### Exemplo resolvido
+
+Aisha gera hashes de senhas com PBKDF2 com sal, mostra que sais diferentes dão hashes diferentes, encontra 6 de 300 senhas sintéticas numa lista de senhas vazadas e recomenda regras práticas.
+
+> **Caso sintético.** As senhas são sintéticas; as saídas vêm de lab_passwords.py.
+
+### Erros e limites
+
+Armazenar senhas sem sal permite que os atacantes identifiquem senhas idênticas.
+
+### Exercícios
+
+- **EX076 — Propósito do sal.** Por que usar um sal único? *Rubrica:* 3 = impede comparar os hashes entre as contas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX077 — Correspondências vazadas.** Quantas senhas sintéticas estavam vazadas? *Rubrica:* 3 = seis, 2,0 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX078 — Trocas forçadas.** Por que evitar as trocas forçadas frequentes? *Rubrica:* 3 = levam a padrões previsíveis;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Fornecedores e terceiros
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar os riscos de segurança dos fornecedores; (2) avaliar os fornecedores de forma proporcional; (3) gerenciar os acessos e os contratos dos fornecedores.
+
+### 27.1 Risco dos fornecedores
+
+A Ashfield depende de fornecedores: um provedor do sistema bancário central, um processador de cartões, uma empresa de suporte de TI e um serviço de e-mail em nuvem. Cada um tem acesso aos dados ou aos sistemas da Ashfield, então a segurança deles afeta a da Ashfield. Aisha lista os fornecedores com os dados que tratam e os acessos que têm. Ela descobre que a empresa de suporte de TI tem acesso remoto permanente a todos os servidores. O Dr. Carrow observa que muitas violações começam num fornecedor com segurança mais fraca do que a do seu cliente. Ela registra os acessos e os dados de cada fornecedor num registro compartilhado.
+
+### 27.2 Avaliação proporcional
+
+Aisha não consegue avaliar a fundo todos os fornecedores, então os agrupa pelo risco. Os fornecedores com acesso aos dados dos associados ou aos sistemas recebem um questionário e pedidos de evidências, como certificações. Os fornecedores de baixo risco, como a empresa de limpeza do escritório, recebem apenas cláusulas contratuais básicas. Ela aprende que a certificação ISO/IEC 27001 pode ser uma evidência útil, mas somente se o escopo do certificado abranger os serviços que a Ashfield usa. Ela envia questionários aos quatro fornecedores de maior risco e registra suas respostas e evidências no registro de fornecedores, anotando as lacunas que exigem acompanhamento.
+
+### 27.3 Gerenciando os acessos
+
+Aisha recomenda que o acesso permanente da empresa de suporte de TI seja substituído por um acesso habilitado apenas quando um pedido de suporte for aprovado, registrado em log e desabilitado depois. A empresa concorda depois de uma breve conversa. Ela também recomenda que as contas dos fornecedores sejam revisadas na revisão trimestral de acessos, junto com as contas dos funcionários. Ela aprende que os acessos dos fornecedores muitas vezes são esquecidos porque os fornecedores não estão na lista de funcionários. O novo arranjo é testado no pedido de suporte seguinte, que avança sem atrasos, e a conta do fornecedor é desabilitada de novo quando o trabalho termina.
+
+### 27.4 Contratos e saída
+
+Aisha revisa os contratos dos fornecedores em busca de cláusulas de segurança: proteção dos dados, notificação de incidentes, direito de auditoria e devolução ou eliminação dos dados quando o contrato termina. Dois contratos não têm cláusulas de eliminação. Ela recomenda acrescentá-las na renovação. Ela observa que planejar a saída importa, porque trocar de fornecedor sem recuperar e eliminar os dados deixa cópias em lugares que a Ashfield já não controla. O chefe de operações acrescenta as cláusulas de eliminação à lista de verificação da renovação. Aisha também sugere que, quando um contrato terminar, a Ashfield peça uma confirmação por escrito de que seus dados foram eliminados.
+
+### Exemplo resolvido
+
+Aisha lista os acessos dos fornecedores, escalona as avaliações pelo risco, substitui o acesso permanente do suporte por sessões aprovadas e acrescenta as cláusulas de eliminação que faltavam.
+
+> **Caso sintético.** Os fornecedores são sintéticos.
+
+### Erros e limites
+
+A evidência de certificação só é útil se seu escopo abranger os serviços usados.
+
+### Exercícios
+
+- **EX079 — Acesso permanente.** Que fornecedor tinha acesso remoto permanente? *Rubrica:* 3 = a empresa de suporte de TI;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX080 — Cautela com o certificado.** Quando a certificação ISO/IEC 27001 é uma evidência útil? *Rubrica:* 3 = quando seu escopo abrange os serviços usados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX081 — Cláusulas faltantes.** O que faltava em dois contratos? *Rubrica:* 3 = cláusulas de eliminação de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Segurança física
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger as instalações e os equipamentos; (2) proteger o papel e as mídias removíveis; (3) considerar as ameaças ambientais.
+
+### 28.1 Instalações
+
+A segurança física protege os prédios, as salas e os equipamentos. Aisha percorre uma agência sintética da Ashfield. A área de atendimento ao público é separada da área da equipe por uma porta trancada, mas a porta fica escorada aberta nos dias de movimento. O armário dos servidores tem fechadura, mas a chave fica pendurada ao lado. Ela recomenda uma porta com fechamento automático e um cofre para chaves. O Dr. Carrow observa que as fraquezas físicas muitas vezes derrotam os controles técnicos, porque um atacante com acesso físico consegue contornar boa parte da proteção da rede. O gerente da agência concorda.
+
+### 28.2 Papel e mídias
+
+A Ashfield ainda lida com papel: pedidos de empréstimo, cópias de documentos de identidade e relatórios impressos. Aisha encontra listas impressas de associados deixadas numa impressora durante a noite. Ela recomenda a impressão segura, em que os documentos só são liberados quando o usuário está na impressora, e lixeiras trancadas para descarte confidencial. Ela também encontra pen drives sem cifração usados para levar arquivos entre as agências e recomenda, em vez disso, dispositivos cifrados ou uma transferência segura de arquivos. O gerente de TI encomenda pen drives cifrados para as agências e configura as impressoras para a liberação segura. A equipe se adapta em uma semana, e as lixeiras de descarte confidencial são esvaziadas por uma empresa certificada de fragmentação.
+
+### 28.3 Equipamentos
+
+Os notebooks saem do prédio. Aisha recomenda a cifração de disco completo, o bloqueio de tela e um registro de quem está com cada notebook. Quando um notebook sintético é dado como perdido num trem, o gerente de TI confirma que ele estava cifrado e desativa suas contas remotamente, de modo que nenhum dado de associado é exposto. Ela aprende que a cifração transforma uma possível violação de dados numa simples perda de equipamento, o que importa tanto para os associados quanto para os reguladores. O registro dos notebooks é atualizado toda vez que um notebook é entregue ou devolvido, e o gerente de TI o confere todo mês.
+
+### 28.4 Ambiente
+
+As ameaças físicas incluem incêndio, inundação, falta de energia e superaquecimento. A sala de servidores da sede fica num subsolo. Aisha confere o risco de inundação e descobre que o prédio foi inundado uma vez em vinte anos. Ela recomenda elevar os equipamentos acima do piso e manter backups em outro local. O Dr. Carrow observa que as ameaças ambientais costumam ter baixa probabilidade, mas alto impacto, então as medidas preventivas baratas muitas vezes valem a pena. O gerente de TI providencia a transferência dos equipamentos para racks elevados na janela de manutenção seguinte e acrescenta um sensor de água à sala.
+
+### Exemplo resolvido
+
+Aisha encontra uma porta escorada e uma chave pendurada, recomenda a impressão segura e mídias cifradas, mostra que a cifração limita o impacto de um notebook perdido e eleva os equipamentos do subsolo.
+
+> **Caso sintético.** As instalações são sintéticas.
+
+### Erros e limites
+
+Uma chave pendurada ao lado da sua fechadura não oferece proteção alguma.
+
+### Exercícios
+
+- **EX082 — Problema da porta.** O que enfraquece a porta da área da equipe? *Rubrica:* 3 = fica escorada aberta nos dias de movimento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX083 — Notebook perdido.** Por que nenhum dado foi exposto com o notebook perdido? *Rubrica:* 3 = ele estava cifrado;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX084 — Medida para o subsolo.** O que se recomenda para os equipamentos do subsolo? *Rubrica:* 3 = elevá-los acima do piso;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Medindo a segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher medidas de segurança significativas; (2) evitar métricas enganosas; (3) relatar tendências aos líderes.
+
+### 29.1 Escolhendo as medidas
+
+Aisha ajuda a Ashfield a escolher medidas de segurança para o conselho. Ela seleciona medidas ligadas aos principais riscos: a parcela de vulnerabilidades críticas corrigidas dentro da meta, os desligados removidos em até um dia, os funcionários que comunicam o phishing simulado, os backups restaurados com sucesso nos testes e os incidentes por tipo. Cada medida tem uma definição, uma fonte de dados, um dono e uma meta. O Dr. Carrow observa que as medidas devem ajudar nas decisões, então cada uma precisa se ligar a um risco ou objetivo que importe ao conselho. O conselho aprova as cinco medidas para os relatórios trimestrais.
+
+### 29.2 Métricas enganosas
+
+Algumas métricas enganam. Contar os ataques bloqueados no firewall produz números grandes, que parecem impressionantes, mas dizem pouco sobre o risco. Contar as conclusões de treinamento mostra a presença, e não o comportamento. Aisha explica esses limites ao gerente de TI e os substitui por medidas ligadas a resultados. Ela aprende que as métricas que sempre parecem boas ou que sempre sobem sem significado devem ser vistas com desconfiança. O gerente de TI concorda e retira a contagem do firewall do relatório ao conselho, mantendo-a apenas como um número operacional interno para a sua equipe, onde ainda tem algum valor.
+
+### 29.3 Usando os resultados dos laboratórios
+
+Aisha inclui os resultados dos seus laboratórios anteriores como linhas de base: as dez contas ativas de desligados encontradas na revisão de acessos, os 89 de 400 achados de vulnerabilidades atrasados e os 2,0 por cento de senhas sintéticas de associados encontradas numa lista de senhas vazadas. Ela define metas para cada um e planeja medir de novo em seis meses. Ela observa que as linhas de base tornam a melhoria visível, e que sem elas ninguém consegue dizer se a segurança está melhorando. O gerente de TI concorda com as metas e atribui a cada medida um dono, que vai relatar o progresso na reunião trimestral de segurança.
+
+### 29.4 Relatando tendências
+
+Aisha projeta um relatório trimestral de uma página para o conselho: cada medida com seu valor atual, sua meta, uma seta de tendência e um breve comentário. As medidas fora da meta incluem uma ação planejada e um dono. O conselho consegue ver de relance que riscos estão melhorando. O Dr. Carrow observa que as tendências importam mais do que os valores isolados, porque um único trimestre pode ser atípico, enquanto uma tendência mostra a direção. O presidente do conselho diz que o novo relatório leva cinco minutos para ser lido e dá um quadro mais claro do que o antigo relatório de doze páginas dava.
+
+### Exemplo resolvido
+
+Aisha liga as medidas aos principais riscos, substitui as métricas de vaidade, usa os resultados dos laboratórios como linhas de base e projeta um relatório de tendências de uma página.
+
+> **Caso sintético.** As medidas são sintéticas.
+
+### Erros e limites
+
+Contar os ataques bloqueados parece impressionante, mas diz pouco sobre o risco.
+
+### Exercícios
+
+- **EX085 — Métrica de vaidade.** Que métrica diz pouco sobre o risco? *Rubrica:* 3 = os ataques bloqueados no firewall;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX086 — Linha de base dos desligados.** Qual é a linha de base dos desligados? *Rubrica:* 3 = dez contas ativas de desligados;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX087 — Formato do relatório.** O que o relatório ao conselho mostra para cada medida? *Rubrica:* 3 = valor, meta, tendência e comentário;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Sistemas de gestão e auditoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever um sistema de gestão da segurança da informação; (2) preparar uma auditoria interna; (3) tratar os achados de auditoria.
+
+### 30.1 Sistema de gestão
+
+Aisha aprende que a ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) descreve um sistema de gestão da segurança da informação: um conjunto de políticas, processos e responsabilidades que uma organização usa para gerenciar os riscos de segurança da informação e melhorar com o tempo. Ela exige entender o contexto, o comprometimento da liderança, a avaliação e o tratamento de riscos, o apoio, a operação, a avaliação do desempenho e a melhoria. A Ashfield não busca a certificação, mas seu conselho quer usar a estrutura para organizar o trabalho. Aisha mapeia os documentos existentes da Ashfield para as principais cláusulas e descobre que a avaliação do desempenho e a melhoria são as áreas mais fracas.
+
+### 30.2 Auditoria interna
+
+Aisha participa da primeira auditoria interna de segurança da Ashfield, conduzida por um contador externo que audita outras áreas. Eles conferem se as políticas são seguidas, usando amostras. Para o controle de acesso, eles selecionam dez desligados e conferem se as contas foram desativadas em até um dia. Oito foram; duas levaram uma semana. O Dr. Carrow observa que as auditorias testam se a prática corresponde à política, o que é diferente de conferir se uma política existe. O contador registra o resultado com os nomes dos dois desligados e as datas em que suas contas foram desativadas.
+
+### 30.3 Achados
+
+A auditoria produz quatro achados: remoção tardia de desligados, registros de mudanças faltantes, recuperação não testada de um sistema e nenhuma revisão dos acessos dos fornecedores. Cada achado declara o requisito, a evidência e o risco. Aisha ajuda os gerentes a escrever planos de ação com donos e datas. Ela aprende que os achados são oportunidades de melhoria, e que as respostas defensivas desperdiçam um tempo que seria mais bem gasto corrigindo os problemas identificados. O conselho revisa os achados e os planos de ação na sua reunião seguinte e pede que o gerente de TI relate o progresso a cada trimestre até que os quatro achados sejam encerrados.
+
+### 30.4 Melhoria contínua
+
+O sistema de gestão inclui a melhoria contínua: as lições das auditorias, dos incidentes e das medidas realimentam as políticas e os controles. Aisha sugere uma reunião trimestral de segurança em que o gerente de TI, o responsável pela conformidade e o chefe de operações revisem as medidas, os achados e os incidentes e decidam as ações. O Dr. Carrow explica que esse ciclo, planejar, fazer, checar e agir, mantém a segurança sensível às mudanças, em vez de congelada no momento em que as políticas foram escritas. A primeira reunião leva uma hora e produz cinco ações, cada uma com um dono e uma data.
+
+### Exemplo resolvido
+
+Aisha estuda a estrutura do sistema de gestão da ISO/IEC 27001, participa de uma auditoria interna que encontra a remoção tardia de desligados, ajuda a planejar as ações e define uma reunião trimestral de revisão.
+
+> **Caso sintético.** A auditoria é sintética.
+
+### Erros e limites
+
+Conferir que uma política existe não é o mesmo que conferir que ela é seguida.
+
+### Exercícios
+
+- **EX088 — Resultado da amostra.** Quantos desligados da amostra foram removidos em até um dia? *Rubrica:* 3 = oito de dez;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX089 — Achado de auditoria.** Cite um achado da auditoria. *Rubrica:* 3 = nenhuma revisão dos acessos dos fornecedores;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX090 — Ciclo de melhoria.** Que ciclo mantém a segurança sensível às mudanças? *Rubrica:* 3 = planejar, fazer, checar, agir;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Rahimi, o Dr. Neil Carrow, a Pennick University, a Ashfield Credit Union e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Rahimi, o Dr. Neil Carrow, a Pennick University, a Ashfield Credit Union e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Aproximadamente 35.000 associados.
 
@@ -1029,6 +1501,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em i
 **EX059.** Várias agências receberam a mesma ligação suspeita.
 
 **EX060.** Elas dependem da dificuldade de cada simulação.
+
+**EX061.** Cinco de 29, 17,2 por cento.
+
+**EX062.** 27 de 103, 26,2 por cento.
+
+**EX063.** 89 de 400 achados.
+
+**EX064.** Ele ainda usava a senha de administrador de fábrica.
+
+**EX065.** A cifração de disco habilitada.
+
+**EX066.** Um tempo de espera mais longo, em vez de nenhum.
+
+**EX067.** Os logins de administrador fora do horário de trabalho.
+
+**EX068.** O funcionário estava preparando uma lista de mala direta aprovada.
+
+**EX069.** Para que os eventos de sistemas diferentes possam ser colocados em ordem.
+
+**EX070.** Quatro páginas, com os contatos na primeira.
+
+**EX071.** O computador afetado.
+
+**EX072.** Quem decide se o banco deve ser contatado para sustar um pagamento.
+
+**EX073.** Uma cópia offline ou imutável mantida longe da sede.
+
+**EX074.** Eles estavam abertos durante o backup.
+
+**EX075.** No máximo quinze minutos de perda de dados e quatro horas para restaurar.
+
+**EX076.** Ele impede que os atacantes comparem os hashes entre as contas.
+
+**EX077.** Seis de 300, 2,0 por cento.
+
+**EX078.** Elas levam a padrões previsíveis.
+
+**EX079.** A empresa de suporte de TI.
+
+**EX080.** Quando seu escopo abrange os serviços que a Ashfield usa.
+
+**EX081.** Cláusulas para a eliminação dos dados no fim do contrato.
+
+**EX082.** Ela fica escorada aberta nos dias de movimento.
+
+**EX083.** Ele estava cifrado, e suas contas foram desativadas.
+
+**EX084.** Elevá-los acima do piso e manter backups em outro local.
+
+**EX085.** Contar os ataques bloqueados no firewall.
+
+**EX086.** Dez contas ativas de desligados.
+
+**EX087.** O valor atual, a meta, uma seta de tendência e um comentário.
+
+**EX088.** Oito de dez.
+
+**EX089.** Nenhuma revisão dos acessos dos fornecedores.
+
+**EX090.** Planejar, fazer, checar e agir.
 
 <a id="references"></a>
 ## Referências
