@@ -54,7 +54,7 @@ const levelName = catalog.level_names[course.level].en;
 
     type Lesson = { chapter: number; title: string; subject: string; module: number; published: boolean; source_url: string };
     type Module = { number: number; kind: string; title: string; chapters: number[] };
-    type Details = { course: { instructional_weeks: number; study_days_per_week: number; daily_lesson_target: number; minimum_exercises: number; minimum_a4_pages: number }; lessons: Lesson[]; modules: Module[]; published_chapters: number; planned_chapters: number; published_lessons: number; planned_lessons: number; has_daily_lessons: boolean; daily_schedule_ready: boolean; book_url: string | null };
+    type Details = { course: { instructional_weeks: number; study_days_per_week: number; daily_lesson_target: number }; lessons: Lesson[]; modules: Module[]; published_chapters: number; planned_chapters: number; published_lessons: number; planned_lessons: number; has_daily_lessons: boolean; daily_schedule_ready: boolean; book_url: string | null };
     type LessonData = { chapter: number; title: string; markdown: string; worked_answers: string; exercise_ids: string[]; source_url: string };
     const $ = (id: string) => document.getElementById(id)!;
     const root = $('course-root');

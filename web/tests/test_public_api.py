@@ -34,8 +34,10 @@ def test_public_guide_and_lesson(client):
     assert len(catalog.json()["courses"]) == 207
     rapid = next(course for course in catalog.json()["courses"] if course["level"] == "rapid-1-month")
     engineering = next(course for course in catalog.json()["courses"] if course["level"] == "engineering-5-years")
-    assert (rapid["instructional_weeks"], rapid["daily_lesson_target"], rapid["minimum_exercises"]) == (4, 20, 50)
-    assert (engineering["instructional_weeks"], engineering["daily_lesson_target"], engineering["minimum_exercises"]) == (260, 1300, 1300)
+    assert (rapid["instructional_weeks"], rapid["daily_lesson_target"]) == (4, 20)
+    assert (engineering["instructional_weeks"], engineering["daily_lesson_target"]) == (260, 1300)
+    assert "minimum_a4_pages" not in rapid
+    assert "minimum_exercises" not in rapid
 
     guide = client.get("/api/courses/rapid-1-month/incident-response-resilience/en")
     assert guide.status_code == 200

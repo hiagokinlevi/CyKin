@@ -72,8 +72,6 @@ def build() -> dict:
             "instructional_weeks": INSTRUCTIONAL_WEEKS[level],
             "study_days_per_week": 5,
             "daily_lesson_target": INSTRUCTIONAL_WEEKS[level] * 5,
-            "minimum_exercises": max(50, INSTRUCTIONAL_WEEKS[level] * 5),
-            "minimum_a4_pages": 300 + INSTRUCTIONAL_WEEKS[level] * 5 - 20,
             "editions": editions,
             "github": f"https://github.com/hiagokinlevi/CyKin/tree/main/levels/{level}/{area}",
         })
