@@ -344,7 +344,12 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 ### 3.7 Errors and limits
 
-Four errors recur: members and non-members drawn from different distributions; one seed per condition; using real personal data where synthetic data would do; and hard-coded paths and settings that make reruns impossible. Each error undermines the result. Members and non-members from different distributions let the attack detect shift rather than membership. One seed cannot show variability, which Lab S makes visible. Real personal data creates the harm being studied when synthetic data would serve, as Leo's synthetic notes do. Hard-coded paths make reruns fail for anyone else, including examiners. Check your design for all four.
+Four errors recur, and each undermines the result; check your design for all four:
+
+- Members and non-members drawn from different distributions; this lets the attack detect shift rather than membership.
+- One seed per condition; one seed cannot show variability, which Lab S makes visible.
+- Using real personal data where synthetic data would do; real personal data creates the harm being studied when synthetic data would serve, as Leo's synthetic notes do.
+- Hard-coded paths and settings that make reruns impossible; they make reruns fail for anyone else, including examiners.
 
 ### Exercises
 
@@ -449,7 +454,12 @@ In pilot data under the calibrated attack, deduplication reduced TPR at 1% FPR f
 
 ### 4.7 Errors and limits
 
-Four errors recur: reporting an effect without testing alternatives; ablations that change several things at once; using only a weak attack to evaluate a privacy defence; and claiming mechanism from correlation alone. Each error lets a competing explanation survive. An effect without alternatives tested may be size, shift or chance. An ablation that changes several things cannot attribute the effect. A weak attack can make any defence look good, which is why Leo added the calibrated attack. Correlation, such as leakage tracking duplication, does not by itself show mechanism without controls like random removal. Check your plan for all four.
+Four errors recur, and each lets a competing explanation survive; check your plan for all four:
+
+- Reporting an effect without testing alternatives; an effect without alternatives tested may be size, shift or chance.
+- Ablations that change several things at once; such an ablation cannot attribute the effect.
+- Using only a weak attack to evaluate a privacy defence; a weak attack can make any defence look good, which is why Leo added the calibrated attack.
+- Claiming mechanism from correlation alone; correlation, such as leakage tracking duplication, does not by itself show mechanism without controls like random removal.
 
 ### Exercises
 
@@ -548,7 +558,12 @@ eps=1.00 accuracy=0.505
 
 ### 5.7 Errors and limits
 
-Four errors recur: proposals without an analysis plan; reporting pilot results as findings; using test data in the pilot; and ignoring floor or ceiling effects. Each error weakens the study. Without an analysis plan, later choices can be steered by results. Pilot results are not findings, because the pilot was not designed or sized for testing. Test data used in a pilot is no longer unseen. A floor effect, such as Leo's simple attack at 1–2% in every condition, hides real differences. Check your proposal for all four.
+Four errors recur, and each weakens the study; check your proposal for all four:
+
+- Proposals without an analysis plan; without one, later choices can be steered by results.
+- Reporting pilot results as findings; they are not findings, because the pilot was not designed or sized for testing.
+- Using test data in the pilot; test data used in a pilot is no longer unseen.
+- Ignoring floor or ceiling effects; a floor effect, such as Leo's simple attack at 1–2% in every condition, hides real differences.
 
 ### Exercises
 
