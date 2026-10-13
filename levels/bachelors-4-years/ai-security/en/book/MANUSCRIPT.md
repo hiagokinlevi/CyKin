@@ -958,21 +958,31 @@ You will (1) explain authentication, authorization and accounting; (2) design ro
 
 Authentication proves who someone is; authorization decides what they may do; accounting records what they did. Strong authentication (multi-factor) protects accounts; precise authorization limits damage; accounting enables investigation.
 
+For Ask Lumen, authentication is the patient's sign-in to the clinic portal; authorization is the rule that a booking may only be for that patient or someone they are a registered carer for; accounting is the log linking each booking to the conversation and session that produced it. A weakness in any one undermines the others: perfect logs do not help if the booking tool never checked who was asking.
+
 ### 13.2 Role- and attribute-based access
 
 Roles (patient, receptionist, clinician) group permissions. Attributes (clinic, relationship to patient, time) refine them. Ask Lumen's booking tool should check "is the requester the patient or their registered carer, for this clinic?" rather than "is the chatbot service allowed to book?".
+
+The second question is the wrong one because the chatbot service is always allowed; asking it turns the service's broad rights into everyone's rights. Attributes such as clinic and carer relationship let the rule follow real situations without creating a new role for each.
 
 ### 13.3 Delegation for AI agents
 
 When an AI agent acts, it should use a token delegated by the user with limited scope and lifetime, so it can never do more than that user. A powerful service account turns any manipulation of the model into a privilege escalation — the *confused deputy* problem, where a trusted component is tricked into misusing its authority.
 
+A delegated token carries the patient's identity, so the scheduling system can apply the patient's rights directly. Its short lifetime limits the damage if it is leaked through a log or a manipulated tool call.
+
 ### 13.4 Accounting for AI actions
 
 Log which user, which conversation, which model proposal and which approval led to each action. Without this chain, incidents cannot be explained.
 
+The chain for one booking might read: patient session 7f2, conversation c-118, model proposal at 10:14:03 to book clinic C3 on a given date, policy check passed, patient confirmed at 10:14:20, booking ID written. If a patient later disputes a booking, every step can be shown. If the model proposed something the policy blocked, that is logged too, which helps detect manipulation attempts.
+
 ### 13.5 Worked example (synthetic LCH case)
 
 Ask Lumen booked appointments through a service account allowed to book for any patient. Rina showed in the test environment that a crafted message naming another synthetic patient's ID led the model to propose a booking for that patient, which the service account executed. The fix used a per-session delegated token bound to the logged-in patient (and registered carers) and a policy check comparing the booking's patient with the token's subject.
+
+The test shows the confused deputy directly: the model did nothing wrong by its own logic, and the service account did what it was allowed to do.
 
 ### 13.6 Errors and limits
 
@@ -980,10 +990,13 @@ Ask Lumen booked appointments through a service account allowed to book for any 
 - Authorization decided by the model.
 - Missing links between conversations and actions in logs.
 
+Broad service accounts make every prompt injection a potential privilege escalation, as the worked example showed. Letting the model decide authorization puts the rule where text can argue with it. Missing links between conversations and actions leave investigators unable to say which message caused which booking. Delegated tokens, an external policy check and request IDs address the three in turn.
 
 ### 13.6b Reviewing agent permissions
 
 Every quarter, LCH lists what the Ask Lumen booking tool can actually do and compares it with what the chatbot needs. A review found the tool's account could also edit clinician schedules; that right was removed, and the review record notes who approved the remaining permissions.
+
+Permissions tend to grow as features are added, and nobody removes them unless a review asks. The schedule-editing right had been added for a pilot that ended, and no one had noticed it was still granted.
 
 ### Exercises
 
@@ -1010,6 +1023,8 @@ You will (1) explain data-protection principles and personal data; (2) describe 
 ### 14.1 Principles
 
 Data-protection laws such as the EU GDPR require a lawful basis, purpose limitation, data minimisation, accuracy, storage limitation, security and accountability. Health data is a special category with stricter rules.
+
+For Ask Lumen, purpose limitation means conversation logs kept for quality review are not reused to train marketing models; minimisation means the prompt includes only what is needed to answer; storage limitation means logs are deleted after their retention period. Because health data is a special category, LCH's lawful basis and safeguards are documented in its impact assessment before any new use.
 
 ### 14.2 Privacy attacks on ML
 
@@ -1047,27 +1062,39 @@ k= 5 attack_auc=0.521 best_advantage=0.073
 k=25 attack_auc=0.520 best_advantage=0.060
 ```
 
+Lab M makes the effect measurable: with k of 1 the attack reaches an AUC of 0.600, while with k of 25 it falls to 0.520, close to chance. Training on fewer passes reduces memorisation of individual patients.
+
 ### 14.3 Privacy-enhancing techniques
 
 Minimise and pseudonymise data; deduplicate training records; limit output detail (labels rather than confidences); apply differential privacy during training (Abadi et al., arXiv:1607.00133); control who can query models; and never put personal data into prompts unnecessarily.
+
+Each technique targets a part of the risk. Deduplication removes repeated records that models tend to memorise. Returning labels rather than confidences removes the signal Lab M's attack uses. Differential privacy bounds how much any one record can affect the trained model, at some cost in accuracy. Query controls limit who can probe the model at all. LCH's NoShow change used three of these together.
 
 ### 14.4 Privacy risk assessment
 
 Ask: what personal data enters training, retrieval, prompts and logs? Who can query the model, and what do outputs reveal? What happens if logs leak? A data-protection impact assessment documents the answers and controls.
 
+For NoShow, the answers showed that personal data entered training, that any staff member could query any patient ID, and that outputs gave precise probabilities. Each finding led to a control: restricted queries, category outputs and minimised features. The assessment is updated when the system changes, not filed once and forgotten.
+
 ### 14.4b Prompts and logs
 
 Personal data also flows through prompts and logs. If staff paste patient details into an AI assistant, those details may be stored by the provider or appear in logs. Configure retention and training opt-outs where the provider offers them, redact identifiers before sending when possible, and train staff on what may be shared.
 
+Redaction can be automated for structured identifiers such as patient numbers, but free text needs care: a patient may type a diagnosis or a relative's name anywhere in a message.
+
 ### 14.5 Worked example (synthetic LCH case)
 
 NoShow's API returned a precise probability for any patient ID. Rina showed on synthetic data that confidence differed between patients in the training set and new patients, enabling membership inference ("was this person treated at LCH last year?"). LCH changed the API to return only a reminder category to authorised staff and retrained with deduplicated, minimised features.
+
+Returning a category rather than a probability removed most of the signal, and limiting access to authorised staff reduced who could ask the question at all.
 
 ### 14.6 Errors and limits
 
 - Treating models as if they contained no personal data.
 - Detailed confidence outputs to broad audiences.
 - Logs full of personal data with no retention limit.
+
+Models trained on patient records carry information about those records, as membership inference shows. Detailed confidence scores to broad audiences give attackers the signal they need. Logs full of personal data with no retention limit become a store of sensitive information that grows every day. LCH's changes to NoShow and its log retention rules address all three, and the impact assessment records why.
 
 ### Exercises
 
@@ -1095,31 +1122,45 @@ You will (1) choose metrics that match security questions; (2) design test sets 
 
 "Does the chatbot leak other patients' data?" needs a leakage rate on a test suite of attempts. "Does the filter catch injections?" needs TPR at a fixed FPR. "Does the defence harm usefulness?" needs task success on normal requests. Use several metrics; one number rarely answers a security question.
 
+Fixing the false-positive rate before comparing filters ensures that a filter cannot look better simply by flagging more conversations. Staff time spent reviewing false alarms is a real cost for the clinics.
+
 ### 15.2 Test sets and leakage
 
 Keep test data separate from anything used to build or tune the system. Near-duplicates across sets inflate results (Kapoor and Narayanan, arXiv:2207.07048). For prompt attacks, build test cases from templates you did not use while developing defences.
+
+If Rina tuned a defence on the same injection templates she later tested it on, her success rate would measure memorisation of those templates rather than the defence's general strength. She keeps a separate set of attack templates written by a classmate and opens it only for the final evaluation. Checking for near-duplicates between sets, such as the same attack with a changed name, is part of building them.
 
 ### 15.3 Evidence handling
 
 Record inputs, outputs, versions (model, prompt, code) and timestamps. Store evidence with integrity hashes and access control. In incident work, preserve original logs before analysis.
 
+Versions matter because the same prompt can give different results after a model update by the provider. Rina records the model identifier returned by the API, the system prompt's hash and the code commit for each test run. Hashing the transcripts lets her show later that they were not edited. Original logs are copied and hashed before any analysis, and analysis is done on the copy.
+
 ### 15.4 Reporting
 
 State the question, method, sample, results with intervals, conditions and limitations. Arp et al. (arXiv:2010.09470) list pitfalls such as sampling bias and inappropriate baselines; check yours against them.
+
+Rina's leakage report follows this order: question, 400 synthetic attempts, results for two versions with Wilson intervals, conditions such as English-only prompts, and limitations. Checking against Arp et al.'s list, she found one pitfall in her draft: she had compared version 2 against version 1 tested months earlier with a different model release, which she then repeated on the same release.
 
 ### 15.4b Baselines and comparisons
 
 A number means little without a baseline. Report the undefended system's result next to the defended one, and a simple strong alternative (for example, a tool allowlist) next to your elaborate defence. If the simple alternative achieves most of the benefit, say so: it is useful knowledge for practitioners and protects you from overclaiming.
 
+For Ask Lumen, a strong simple baseline is removing the cancel tool entirely, which no injection can then misuse. Any proposed defence should be compared with that option.
+
 ### 15.5 Worked example (synthetic LCH case)
 
 Rina measured Ask Lumen's leakage with 400 synthetic attempts to obtain another patient's appointment. Version 1 leaked in 14 cases (3.5%, Wilson 95% interval 2.1–5.8%). After the delegated-token fix, version 2 leaked in 0 of 400 (upper bound about 0.9%). She stored transcripts with hashes and noted that attempts were in English only.
+
+The interval matters: 14 of 400 is consistent with a true rate between about 2.1% and 5.8%, so the fix's effect is clear even allowing for chance. Zero leaks in 400 does not mean zero risk; the upper bound of about 0.9% is what the test can support. Noting the English-only limit tells readers that other languages remain untested.
 
 ### 15.6 Errors and limits
 
 - Tuning on the test set.
 - Reporting without versions.
 - Ignoring the language or format limits of a test suite.
+
+Tuning on the test set inflates results without improving the system. Reporting without versions makes results impossible to reproduce once the model or prompt changes. Ignoring language or format limits leads readers to assume coverage that was never tested, for example attacks written in another language or hidden in a document format the test suite did not include, such as a scanned PDF.
 
 ### Exercises
 
@@ -1147,27 +1188,39 @@ You will (1) apply least privilege, defence in depth, complete mediation and fai
 
 *Least privilege*: give the model and its tools only the permissions needed. *Defence in depth*: combine input labelling, output validation, policy checks, monitoring and human review. *Complete mediation*: check every action, every time. *Fail-safe defaults*: deny when unsure.
 
+For Ask Lumen, least privilege is the delegated token; defence in depth combines labelling of retrieved text, output parsing, the policy check and logging; complete mediation means every booking goes through the policy check, including those proposed late in a long conversation; fail-safe defaults mean an unparseable or doubtful proposal is refused, and the patient is told how to book by phone.
+
 ### 16.2 Trust boundaries in LLM applications
 
 A language model receives trusted instructions (from developers), partly trusted input (from users) and untrusted content (retrieved documents, web pages, tool results) in a single sequence of tokens. It cannot reliably tell them apart, which is why indirect prompt injection works (Greshake et al., arXiv:2302.12173). The architecture must therefore enforce consequences outside the model.
+
+For Ask Lumen, the system prompt is trusted, the patient's message is partly trusted, and retrieved clinic documents, especially partner uploads, are untrusted. Labelling them helps the model but cannot guarantee it ignores instructions inside a document, so the booking tool's own checks are what bound the outcome.
 
 ### 16.3 The policy enforcement point
 
 The model *proposes* actions; a separate, small, tested component *decides* whether to execute them based on the user's identity, the action, its parameters and whether untrusted content influenced it. High-impact actions require human confirmation. OWASP LLM06 (*excessive agency*) is addressed here.
 
+Keeping this component small is deliberate: a few hundred lines of code can be reviewed and tested thoroughly, unlike the model. In Ask Lumen, the policy point compares the booking's patient with the token's subject, checks the clinic and date rules, and requires confirmation for cancellations. Every decision, allowed or refused, is logged with the request ID.
+
 ### 16.4 Comparing options
 
 Options for a booking chatbot range from no tools (answers only) to free tool use. Between them: tools with policy checks and confirmations. Compare by residual risk, usefulness and cost, and record the decision with its reasoning.
 
+Residual risk is what remains after controls; usefulness is how many patients can complete their task; cost includes building and operating each option. A table with these three columns makes the trade-off visible. Recording the reasoning lets a later team understand why the choice was made, and revisit it if conditions change, such as a new tool being added.
+
 ### 16.5 Worked example (synthetic LCH case)
 
 Rina's architecture note for Ask Lumen v2 listed three options: (a) model books directly; (b) model proposes, policy checks patient identity and clinic, patient confirms in the UI; (c) chatbot gives instructions and patients book themselves. LCH chose (b): confirmation adds one click, but injected text can no longer book or cancel without the patient's action.
+
+Option (a) was rejected because a single injected document could act; option (c) because it removed most of the chatbot's value. The research study in the research-methods chapter later measured the cost of (b)'s extra click.
 
 ### 16.6 Errors and limits
 
 - Security rules written only in the system prompt.
 - Tools with broader permissions than users.
 - No record of why an architecture was chosen.
+
+Rules written only in the system prompt can be overridden by persuasive text, since the model treats both as language. Tools with broader permissions than users let a manipulated model exceed what any user could do. Without a record of why an architecture was chosen, later changes may remove a control without realising what it protected against, such as the confirmation step that stops injected bookings.
 
 ### Exercises
 
@@ -1194,6 +1247,8 @@ You will (1) explain hashing, symmetric and public-key encryption and digital si
 ### 17.1 Core primitives
 
 *Hash functions* (such as SHA-256) map data to a short digest; changing one bit changes the digest. *Symmetric encryption* (such as AES) protects data with a shared key. *Public-key cryptography* lets anyone encrypt to, or verify signatures from, a key holder. *Digital signatures* prove who created data and that it is unchanged.
+
+In LCH's systems, hashes check model files, symmetric encryption protects stored conversation logs, public-key cryptography secures TLS to the model provider, and signatures prove that DocSort releases come from the vendor. Each primitive answers a different question, and using the wrong one leaves a gap: a hash alone shows a file is unchanged but not who produced it.
 
 ### 17.2 Protecting AI artefacts
 
@@ -1230,17 +1285,25 @@ model.bin       MISMATCH
 tokenizer.json  OK
 ```
 
+Lab H checks integrity but not origin, because an attacker who can change the files might also change an unsigned manifest. Signing closes that gap, since the key is not on the server.
+
 ### 17.3 What cryptography cannot do
 
 Encryption does not stop an authorised query from extracting information from a model, does not prevent prompt injection, and does not make a poisoned dataset clean — it only proves the poisoned data is the data you signed. Cryptography protects data and artefacts; behaviour needs other controls.
+
+For Ask Lumen, every message travels encrypted and every model file is verified, yet a patient can still type an injection and a partner document can still carry hostile text. Those risks need the policy point, labelling and monitoring. Rina's architecture note lists which threats each layer addresses, so nobody assumes encryption covers more than it does.
 
 ### 17.4 Keys
 
 Security depends on keys: store them in key-management services, restrict access, rotate them and never place them in prompts or code repositories.
 
+The API key for LCH's model provider is a clear example: anyone holding it can run queries billed to LCH and possibly read logs. LCH stores it in the cloud key-management service, gives only the application server access, rotates it every quarter and scans repositories for accidental commits. A leaked key is revoked first, then investigated, and the logs reviewed.
+
 ### 17.5 Worked example (synthetic LCH case)
 
 LCH's DocSort vendor began signing releases. Rina configured the deployment script to fetch the vendor's public key from LCH's own trusted store (not from the release server), verify the signature on the manifest, then verify each file's digest. A test release with a modified file was rejected.
+
+Fetching the key from LCH's own store matters because an attacker who controls the release server could otherwise supply both a malicious file and a matching key. The rejected test release confirms the check works end to end.
 
 ### 17.6 Errors and limits
 
@@ -1248,10 +1311,13 @@ LCH's DocSort vendor began signing releases. Rina configured the deployment scri
 - Assuming encryption prevents model leakage.
 - Keys in source code.
 
+Fetching digests and keys from the same place as the files means one compromise defeats the check, which is why LCH keeps the DocSort key in its own store. Encryption does not prevent a model from revealing training data through its answers. Keys in source code end up in repositories and backups where many people can read them, so they are scanned for and rotated when found.
 
 ### 17.6b Verifying signatures in practice
 
 Signing NoShow's model file helps only if the loader checks the signature every time and refuses to start on failure. LCH tested this by loading a copy with one byte changed: the service refused, logged the event and kept running the previous verified version.
+
+Keeping the previous verified version running avoided an outage while the problem was investigated, which made refusing safe. The vendor then reissued a correctly signed release. Staff noticed no change in DocSort while the old version kept sorting documents.
 
 ### Exercises
 
@@ -1279,31 +1345,45 @@ You will (1) formulate research questions in AI security; (2) find and evaluate 
 
 A good question is specific, answerable and useful: "Does requiring patient confirmation reduce unauthorised bookings by Ask Lumen under injected documents, and what does it cost in completed bookings?" It names the system, the intervention, the outcome and the comparison.
 
+The comparison is the part most often missing: without it, a result such as "no unauthorised bookings" cannot be attributed to confirmation rather than to the test cases being easy. Naming the cost, completed bookings, makes the study useful to LCH, which must weigh security against service.
+
 ### 18.2 Literature
 
 Start from overviews — NIST AI 100-2 E2025 for adversarial ML terminology, OWASP LLM 2025 for LLM application risks, MITRE ATLAS for real-world techniques — then read key papers and note threat model, method, metrics and limitations. Verify every reference.
+
+For her confirmation study, Rina reads work on indirect prompt injection and on human confirmation in automated systems, noting for each paper what attack it assumes and how success was measured. She records where papers disagree and why, often because of different threat models. Verifying references is the habit from the writing chapter, now applied to a full literature review.
 
 ### 18.3 Experiments
 
 Change one thing at a time; keep a control condition; use held-out test data; repeat with several seeds; record versions. Decide metrics and thresholds before running, so results cannot steer the analysis.
 
+In Rina's study, the one change is confirmation on or off; the control is the same chatbot without it; test documents are written separately from development; and the metrics, bookings caused by injected documents and normal bookings completed, are fixed in advance with a plan for intervals, written before any run.
+
 ### 18.4 Honest reporting
 
 Report all conditions, not only the best; give intervals; describe what was not tested. Lipton and Steinhardt (arXiv:1807.03341) describe "troubling trends" such as unclear sources of gains; avoid them by explaining which change caused which effect.
+
+Rina's report includes the drop in completed bookings, which some readers might see as weakening the case for confirmation. Leaving it out would mislead LCH about the cost. She also explains that confirmation, not any other change, caused the effect, because only that setting differed between conditions. What she did not test, such as other languages, is listed.
 
 ### 18.4b Ethics in research design
 
 AI-security experiments can create harm: payloads that work on real products, datasets with personal data, or tests on systems you do not own. Use synthetic data and isolated systems, keep payloads harmless (for example aimed at reserved `.invalid` domains), obtain ethics approval when people participate, and plan disclosure if you discover a real vulnerability.
 
+Rina's injected documents try to book appointments for a synthetic patient ID in the isolated copy, so nothing affects real patients or real systems. No clinic staff are deceived.
+
 ### 18.5 Worked example (synthetic LCH case)
 
 Rina's first study compared Ask Lumen with and without confirmation on 300 synthetic injected documents and 300 normal booking conversations. Without confirmation, 21 injected documents caused bookings (7.0%); with confirmation, 0 (upper bound ≈ 1%). Normal bookings completed fell from 97% to 94% because some test users abandoned at the confirmation step. She reported both effects and noted that test users were classmates, not patients.
+
+The 7.0% rate has a Wilson interval of about 4.6% to 10.5%, clearly above the confirmed condition, so the difference is not a chance result. The three-point drop in normal bookings is the cost.
 
 ### 18.6 Errors and limits
 
 - Questions too broad.
 - No control condition.
 - Reporting only favourable results.
+
+A question too broad, such as "is Ask Lumen secure?", cannot be answered by any single study. Without a control condition, an observed result cannot be attributed to the intervention. Reporting only favourable results, for example the security gain without the drop from 97% to 94% in completed bookings, misleads decision makers about trade-offs. Rina's study design avoids each of these by naming the comparison, the cost and the limits in advance.
 
 ### Exercises
 
