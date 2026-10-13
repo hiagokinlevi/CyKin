@@ -56,10 +56,10 @@ Toda afirmación factual sobre una ley, un estándar, un protocolo, un incidente
 3. [Fundamentos de programación](#ch-03): escribir herramientas pequeñas, correctas y comprobables; validar las entradas no fiables.
 4. [Modelos de datos](#ch-04): inventarios, esquemas y restricciones que hacen fiables los datos operativos.
 5. [Cultura de seguridad](#ch-05): el vocabulario de las amenazas, los controles y la evidencia para un servicio esencial.
-6. [Sistemas operativos y virtualización](../../en/book/MANUSCRIPT.md#ch-06): bastionado, servicios, integridad de archivos y plataformas virtuales.
-7. [Fundamentos de identidad y acceso](../../en/book/MANUSCRIPT.md#ch-07): cuentas, autenticación, privilegios y revisión de accesos.
-8. [Fundamentos de arquitectura de seguridad](../../en/book/MANUSCRIPT.md#ch-08): zonas y conductos, defensa en profundidad y diseño para la operabilidad.
-9. [Evidencia y medición](../../en/book/MANUSCRIPT.md#ch-09): métricas que dicen la verdad, denominadores y honestidad con muestras pequeñas.
+6. [Sistemas operativos y virtualización](#ch-06): bastionado, servicios, integridad de archivos y plataformas virtuales.
+7. [Fundamentos de identidad y acceso](#ch-07): cuentas, autenticación, privilegios y revisión de accesos.
+8. [Fundamentos de arquitectura de seguridad](#ch-08): zonas y conductos, defensa en profundidad y diseño para la operabilidad.
+9. [Evidencia y medición](#ch-09): métricas que dicen la verdad, denominadores y honestidad con muestras pequeñas.
 10. [Infraestructura crítica y seguridad sectorial: orientación](../../en/book/MANUSCRIPT.md#ch-10): qué hace crítico un servicio y en qué se diferencian los sectores.
 11. [Infraestructura crítica y seguridad sectorial: activos y contexto](../../en/book/MANUSCRIPT.md#ch-11): inventario, titularidad, dependencias y estado del soporte.
 12. [Infraestructura crítica y seguridad sectorial: flujos de datos](../../en/book/MANUSCRIPT.md#ch-12): registros de flujos, clasificación, conservación y verificación.
@@ -688,7 +688,455 @@ El vocabulario preciso es un control de seguridad: hace comprobables las afirmac
 <!-- cyberabc:chapter-navigation:start ch-05 -->
 ### Siga estudiando — capítulo 05 de 30
 
-[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](../../en/book/MANUSCRIPT.md#ch-06)
+[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Sistemas operativos y virtualización
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- bastionar un servidor eliminando lo que no necesita y restringiendo lo que sí necesita;
+- ejecutar un servicio con una cuenta dedicada y sin privilegios, con solo los archivos y puertos que necesita;
+- construir y usar una **línea base de integridad de archivos** para detectar cambios no aprobados;
+- explicar qué cambia la virtualización para la seguridad, y qué no cambia.
+
+Los retransmisores y el historiador de LANTERN son servidores corrientes. La mayoría de los compromisos de este tipo de servidores, y muchas interrupciones, no proceden de fallos exóticos, sino de cosas que se dejaron en ellos: un servicio sin usar que escucha en todas las interfaces, una opción de depuración, un archivo con permiso de escritura para todos, una cuenta antigua. Este capítulo trata de mantener un servidor pequeño, conocido y comprobable.
+
+### 6.1 El bastionado como sustracción
+
+**Bastionar** significa reducir un sistema a lo que exige su función y configurar de forma segura lo que queda. La guía de seguridad de servidores del NIST recomienda eliminar o desactivar los servicios, aplicaciones y protocolos de red innecesarios, configurar la autenticación y los controles de recursos, y mantener el sistema parcheado y monitorizado ([NIST SP 800-123](https://csrc.nist.gov/pubs/sp/800/123/final)). Para un retransmisor, eso significa: ningún entorno de escritorio, ningún compilador, ningún servicio de compartición de archivos, SSH escuchando solo en la interfaz de gestión, el proceso del retransmisor escuchando solo en su dirección y puerto declarados, y nada escuchando en `0.0.0.0` sin un motivo por escrito.
+
+### 6.2 Cuentas de servicio y mínimo privilegio
+
+Ejecute cada servicio con su propia cuenta sin privilegios (`relay`, no `root`). Dé a esa cuenta acceso de lectura a su configuración, acceso de escritura solo a sus propios directorios de datos y de registros, y ningún inicio de sesión con intérprete de órdenes. Use el gestor de servicios del sistema operativo para reiniciarlo si falla y para aplicar restricciones adicionales (por ejemplo, una vista de solo lectura de la mayor parte del sistema de archivos). Si el proceso del retransmisor llega a verse comprometido, estas decisiones determinan si el atacante controla un servicio o el equipo entero. En RLY-01, esta es la definición del servicio cuyos permisos cambiaron a `0666`.
+
+### 6.3 Los archivos de configuración son relevantes para la seguridad
+
+En un retransmisor, los archivos más relevantes para la seguridad son su configuración (en qué escucha, a dónde reenvía, dónde está su clave), su lista de estaciones permitidas y su definición de servicio (con qué cuenta se ejecuta y con qué restricciones). Un cambio en cualquiera de ellos cambia la seguridad del servicio. Los permisos de los archivos importan tanto como su contenido: una definición de servicio que se ha vuelto modificable por cualquier usuario permite a cualquier usuario local decidir qué se ejecuta como el servicio. RLY-01 mostró ambos tipos: un cambio de contenido, `debug_listen 0.0.0.0:9000`, y un cambio de permisos a `0666`.
+
+### 6.4 Líneas base de integridad de archivos
+
+Una **línea base de integridad de archivos** registra un hash criptográfico y los permisos de cada archivo importante en un momento conocido como correcto. Las instantáneas posteriores se comparan con ella; cada diferencia o bien se explica mediante un registro de cambio aprobado, o bien se investiga. SHA-256, especificado en [FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final), es una elección estándar: cualquier cambio en el contenido del archivo cambia su resumen. La propia línea base debe protegerse (almacenada fuera del equipo o firmada), porque un atacante que puede cambiar un archivo y también la línea base puede ocultar el cambio.
+
+### 6.5 Virtualización
+
+La virtualización ejecuta varios sistemas operativos en un único equipo físico mediante un **hipervisor**. Ayuda a la operación (instantáneas, reconstrucciones rápidas, invitados separados para funciones separadas) y crea cosas nuevas que proteger. La guía del NIST sobre virtualización completa señala que el hipervisor y sus interfaces de gestión se convierten en objetivos de alto valor, y que los invitados de un mismo equipo comparten recursos físicos y pueden afectarse entre sí ([NIST SP 800-125](https://csrc.nist.gov/pubs/sp/800/125/final)). Consecuencias prácticas: la red de gestión del hipervisor es una zona propia; quien administra el hipervisor administra en la práctica todos los invitados; las instantáneas contienen secretos y deben protegerse como las copias de seguridad; y colocar en el mismo equipo un retransmisor orientado a las estaciones y un servidor de informes orientado a la zona corporativa une dos zonas mediante hardware compartido y un administrador compartido.
+
+### 6.6 Ejemplo resuelto: una línea base detecta un puerto de depuración (sintético)
+
+Usted crea la línea base de los tres archivos de configuración de RLY-01. Una semana después, la comparación muestra cuatro diferencias. La lista de permitidos ganó `PS-11` con el cambio aprobado CHG-118: explicado. La configuración del retransmisor ganó `debug_listen 0.0.0.0:9000` sin registro de cambio: alguien habilitó un puerto de depuración en todas las interfaces, quizá mientras resolvía un problema, y lo dejó así. Los permisos de la definición del servicio pasaron de `0640` a `0666`: cualquier usuario local puede ahora reescribirla. Apareció un archivo nuevo, `helper.sh`, en el directorio de unidades. Tres cambios no aprobados en un equipo crítico son una investigación, no una limpieza: antes de revertir nada, conserve los archivos actuales y la salida de la comparación, y pregunte quién cambió qué (capítulo 20).
+
+### 6.7 Actividad práctica: línea base de integridad de archivos
+
+**Lab 6** (guárdelo como `lab06.py` y ejecútelo con `python3 lab06.py`):
+
+```python
+# Lab 6 - a file-integrity baseline for the relay host's configuration (offline, standard library only)
+# Synthetic files are created in a temporary directory; nothing outside it is read or changed.
+import hashlib, json, os, tempfile
+def digest(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(65536), b""):
+            h.update(block)
+    return h.hexdigest()
+def snapshot(root):
+    out = {}
+    for d, _, files in os.walk(root):
+        for name in sorted(files):
+            p = os.path.join(d, name)
+            st = os.stat(p)
+            out[os.path.relpath(p, root)] = {"sha256": digest(p), "mode": oct(st.st_mode & 0o777)}
+    return out
+with tempfile.TemporaryDirectory() as root:
+    files = {"relay.conf": "listen 10.30.0.5:8443\nupstream hist-01:443\nhmac_key_file /etc/relay/key\n",
+             "allow.list": "PS-04\nPS-07\nPS-09\n", "units/relay.service": "[Service]\nUser=relay\n"}
+    for rel, text in files.items():
+        p = os.path.join(root, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "w") as f: f.write(text)
+        os.chmod(p, 0o640)
+    base = snapshot(root)
+    print("baseline entries:", len(base), "| relay.conf", base["relay.conf"]["sha256"][:16])
+    # simulated changes: one approved (change ticket CHG-118), one not, one permission change, one new file
+    with open(os.path.join(root, "allow.list"), "a") as f: f.write("PS-11\n")
+    with open(os.path.join(root, "relay.conf"), "a") as f: f.write("debug_listen 0.0.0.0:9000\n")
+    os.chmod(os.path.join(root, "units/relay.service"), 0o666)
+    with open(os.path.join(root, "units/helper.sh"), "w") as f: f.write("#!/bin/sh\n")
+    approved = {"allow.list": "CHG-118"}
+    now = snapshot(root)
+    for rel in sorted(set(base) | set(now)):
+        b, n = base.get(rel), now.get(rel)
+        if b == n: continue
+        kind = "added" if b is None else "removed" if n is None else "content" if b["sha256"] != n["sha256"] else "mode " + b["mode"] + "->" + n["mode"]
+        print(f"{rel:<20} {kind:<16} {'approved ' + approved[rel] if rel in approved else 'UNAPPROVED - investigate'}")
+    print("baseline json bytes:", len(json.dumps(base, sort_keys=True)))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+baseline entries: 3 | relay.conf 1defd9289ede0120
+allow.list           content          approved CHG-118
+relay.conf           content          UNAPPROVED - investigate
+units/helper.sh      added            UNAPPROVED - investigate
+units/relay.service  mode 0o640->0o666 UNAPPROVED - investigate
+baseline json bytes: 342
+```
+
+El script crea sus archivos en un directorio temporal, así que puede ejecutarlo en cualquier sitio. Observe que el resumen impreso para `relay.conf` depende solo del contenido del archivo: si cambia un carácter del contenido sintético en el script, el resumen cambia por completo.
+
+Compare la salida con la semana de RLY-01 descrita arriba: cuatro diferencias, de las que solo la entrada `PS-11` de la lista de permitidos, con CHG-118, tiene registro de cambio. Después haga una modificación propia dentro del script, por ejemplo añadir una segunda línea de depuración o cambiar un modo de `0640` a `0644`, vuelva a ejecutarlo y confirme que la comparación informa exactamente de esa diferencia y de nada más. Una línea base que informa de más o de menos de lo que usted cambió todavía no es lo bastante fiable para servir de evidencia en una investigación.
+
+### 6.8 Errores frecuentes y límites
+
+- Bastionar una vez al construir el sistema y no volver a comprobarlo nunca.
+- Ejecutar servicios como root «porque así era más fácil que funcionara».
+- Guardar la línea base de integridad en el mismo equipo, modificable por los mismos administradores.
+- Alertar de cada cambio de archivo en un sistema con mucha actividad, de modo que las alertas se ignoran; cree la línea base de los archivos que importan.
+- Tratar una instantánea como una copia de seguridad sin probar la restauración, o dejar sin proteger instantáneas que contienen claves.
+- Alojar invitados de zonas distintas en un mismo hipervisor sin registrar que esas zonas comparten ahora un fallo y un administrador.
+
+La integridad de archivos detecta cambios; no le dice si el cambio fue malicioso, y no dice nada de los cambios en memoria ni en archivos que no incluyó en la línea base.
+
+### Ejercicios — capítulo 6
+
+**EX016 — Revisión de bastionado.** *Objetivo:* aplicar el bastionado como sustracción. *Entradas:* un listado sintético de RLY-02: escucha en `0.0.0.0:22`, `10.30.0.6:8443`, `0.0.0.0:9000`, `0.0.0.0:111`; los paquetes instalados incluyen un compilador y un entorno de escritorio; el retransmisor se ejecuta como `root`. *Restricciones:* proponga solo cambios; cada uno necesita un motivo. *Pasos:* (1) enumere todos los cambios; (2) marque cuáles necesitan una solicitud de cambio y cuáles pueden hacerse en el próximo cambio estándar. *Evidencia esperada:* tabla. *Rúbrica:* 3 = SSH limitado a la interfaz de gestión, eliminado el puerto de depuración 9000, desactivado el puerto 111 (RPC), eliminados el compilador y el escritorio, retransmisor trasladado a una cuenta sin privilegios con restricciones; clasificación sensata de los cambios; 2 = la mayoría; 1 = genérico; 0 = nada.
+
+**EX017 — Proteja la línea base.** *Objetivo:* diseñar el almacenamiento de la línea base. *Entradas:* el Lab 6. *Restricciones:* dos diseños. *Pasos:* (1) describa el almacenamiento de la línea base fuera del equipo, en una ubicación de escritura única; (2) describa la firma de la línea base con una clave que no esté en el retransmisor; (3) compare frente a qué protege cada uno. *Evidencia esperada:* media página. *Rúbrica:* 3 = ambos diseños correctos; señala que un atacante con root en el retransmisor puede cambiar archivos pero no puede cambiar sin ser detectado una línea base externa o firmada; señala que la propia herramienta de comparación en el equipo puede subvertirse, así que la comparación debería ejecutarse también desde fuera; 2 = un diseño; 1 = vago; 0 = nada.
+
+**EX018 — Ubicación en el hipervisor.** *Objetivo:* razonar sobre plataformas compartidas. *Entradas:* propuesta de ejecutar RLY-01 (orientado a las estaciones), HIST-01 (orientado a la zona corporativa) y la pasarela clínica del hospital como invitados de un único hipervisor de FSTS para ahorrar costes. *Restricciones:* no la rechace automáticamente; indique condiciones. *Pasos:* (1) enumere lo que las zonas compartirían a partir de entonces; (2) enumere las condiciones con las que la aceptaría; (3) nombre el riesgo residual y su responsable. *Evidencia esperada:* una página. *Rúbrica:* 3 = hardware, administradores del hipervisor, red de gestión y almacenamiento compartidos, y un único punto de fallo para dos sectores; condiciones como zona de gestión separada, grupo de administración restringido con MFA, redes virtuales separadas sin puentes, margen de capacidad documentado y un plan para la pérdida del equipo; riesgo residual asumido por responsables de servicio con nombre; 2 = parcial; 1 = un sí o no sin matices; 0 = nada.
+
+### Síntesis del capítulo
+
+Mantenga los servidores pequeños y conocidos: elimine lo que la función no necesita, ejecute los servicios con cuentas dedicadas sin privilegios, vincule los puertos de escucha a direcciones declaradas y trate los archivos de configuración y sus permisos como relevantes para la seguridad. Cree una línea base de los archivos que importan con un hash criptográfico, proteja esa línea base e investigue cada diferencia sin explicar. La virtualización simplifica la operación, pero concentra el control en el hipervisor y sus administradores; registre qué zonas comparten un equipo.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Siga estudiando — capítulo 06 de 30
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Fundamentos de identidad y acceso
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- distinguir identificación, autenticación y autorización, y decir qué control actúa en cada paso;
+- elegir la robustez de la autenticación según lo que puede hacer una cuenta, no según quién la tiene;
+- gestionar los cuatro tipos de cuenta presentes en todo servicio crítico (personales, privilegiadas, de servicio y de proveedor) y las cuentas compartidas que no deberían existir;
+- realizar una **revisión de accesos** que compare las cuentas con una plantilla de referencia y una declaración de necesidades.
+
+En los informes de incidentes del capítulo 5, el acceso es un hilo recurrente: acceso remoto con contraseñas compartidas, cuentas de proveedor que nunca se eliminaron. Para un implementador, la identidad no es un producto; es un conjunto de registros y rutinas que deben mantenerse exactos a medida que las personas se incorporan, cambian de puesto y se van.
+
+### 7.1 Identificar, autenticar, autorizar
+
+La **identificación** consiste en declarar una identidad («soy b.lind»). La **autenticación** consiste en demostrarla, con algo que se sabe (una contraseña), que se tiene (una llave de hardware, una aplicación de autenticación) o que se es (un rasgo biométrico). La **autorización** consiste en decidir qué puede hacer esa identidad. Las directrices de identidad digital del NIST describen los tipos de autenticadores y los niveles de garantía, y recomiendan una autenticación multifactor resistente al phishing para los accesos de mayor garantía ([NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final)). En la práctica: todo acceso privilegiado o remoto a un equipo de LANTERN requiere autenticación multifactor (MFA), y el factor debería resistir el phishing cuando la plataforma lo permita.
+
+### 7.2 Tipos de cuenta
+
+- Las **cuentas personales** pertenecen a una persona y son la opción por defecto para todo ser humano.
+- Las **cuentas privilegiadas** pueden cambiar la configuración, las cuentas o los ajustes de seguridad. Deberían estar separadas de la cuenta cotidiana de la persona, exigir MFA y ser pocas.
+- Las **cuentas de servicio** las usa el software (el retransmisor que escribe en el historiador). Deberían tener solo los permisos que el software necesita, ningún inicio de sesión interactivo y credenciales que se rotan y se guardan en un lugar protegido, no en un script.
+- Las **cuentas de proveedor** dan acceso a un tercero. Deberían estar **limitadas en el tiempo**: habilitadas para un trabajo concreto, vigiladas mientras se usan y deshabilitadas después.
+- Las **cuentas compartidas** ("opsuser") las usan varias personas. Destruyen la rendición de cuentas (el registro dice que lo hizo "opsuser") y su contraseña se filtra con cada baja. Cuando un dispositivo realmente no admite cuentas individuales, controle la credencial compartida en una bóveda que registre quién la retiró y cuándo.
+
+### 7.3 El proceso de altas, cambios y bajas
+
+Las cuentas fallan en las transiciones. Una **alta** recibe un acceso copiado de un compañero y hereda privilegios que no necesita. Un **cambio** de puesto conserva el acceso antiguo al obtener el nuevo. Las cuentas de una **baja** siguen habilitadas porque nadie avisó al responsable del sistema. La solución es un proceso vinculado a una fuente de referencia (la plantilla de Recursos Humanos) y una **revisión de accesos** periódica que detecte lo que el proceso no captó. La exportación del Lab 7 muestra los tres fallos: `c.mendes` es una baja cuya cuenta siguió habilitada después del 31 de agosto, `d.reyes` conserva un acceso de administración al historiador que Ingeniería Clínica no necesita, y `vendor-kell` es un acceso permanente de proveedor que nunca se vinculó a una incidencia.
+
+### 7.4 La revisión de accesos
+
+Una revisión de accesos compara tres cosas: las **cuentas** que existen en un sistema (exportadas de él, no de memoria), la **plantilla** de personas y su situación, y una declaración de **necesidades**: qué funciones requiere cada equipo en cada sistema. Los hallazgos son de tipos reconocibles: huérfanas (cuentas sin persona correspondiente), bajas aún habilitadas (peor si se usaron después de la baja), funciones no justificadas, accesos privilegiados sin MFA, cuentas inactivas, cuentas compartidas y accesos permanentes de proveedor. Para RLY-01 y HIST-01, la exportación enumera nueve cuentas y la plantilla le indica que `f.ito` no corresponde a nadie.
+
+### 7.5 Ejemplo resuelto: revisión trimestral de RLY-01 y HIST-01 (sintético)
+
+La exportación tiene nueve cuentas; el Lab 7 encuentra nueve hallazgos repartidos en cinco de ellas. Dos exigen actuar de inmediato, no una incidencia para el próximo trimestre. `c.mendes` se fue el 31 de agosto y la cuenta se **usó el 14 de septiembre**: es un posible incidente, no una limpieza administrativa; conserve los registros, deshabilite la cuenta y averigüe si otra persona usó las credenciales (capítulo 20). `vendor-kell` es una cuenta de administrador permanente en el retransmisor, sin MFA, inactiva desde hace 85 días. Los demás hallazgos son graves pero rutinarios: `d.reyes` tiene acceso de administración al historiador, que Ingeniería Clínica no necesita, sin MFA, y no ha iniciado sesión en 224 días; `opsuser` es un administrador compartido sin MFA; `f.ito` no figura en absoluto en la plantilla: quizá un contratista registrado en otro sitio, quizá una cuenta que nadie sabe explicar.
+
+Fíjese en lo que el script *no* señala: `svc-relay` no tiene MFA, lo que es normal en una cuenta de servicio, pero el almacenamiento y la rotación de su credencial no son visibles en esta exportación y deben comprobarse por separado.
+
+### 7.6 Actividad práctica: revisión de accesos
+
+**Lab 7** (guárdelo como `lab07.py` y ejecútelo con `python3 lab07.py`):
+
+```python
+# Lab 7 - quarterly access review for the relay and historian (offline, standard library only)
+# Synthetic account export and HR roster; "today" is 2026-10-12.
+from datetime import date
+today = date(2026, 10, 12)
+roster = {"a.okafor": ("Water Ops", "active"), "b.lind": ("FSTS Security", "active"),
+          "c.mendes": ("Water Ops", "left 2026-08-31"), "d.reyes": ("Clinical Eng", "active"),
+          "e.strand": ("FSTS Platform", "active")}
+accounts = [  # name, system, role, last_login, mfa, kind
+    ("a.okafor", "HIST-01", "operator", "2026-10-10", True, "person"),
+    ("b.lind", "RLY-01", "admin", "2026-10-11", True, "person"),
+    ("c.mendes", "HIST-01", "engineer", "2026-09-14", True, "person"),
+    ("d.reyes", "HIST-01", "admin", "2026-03-02", False, "person"),
+    ("e.strand", "RLY-01", "admin", "2026-10-01", True, "person"),
+    ("opsuser", "HIST-01", "admin", "2026-10-11", False, "shared"),
+    ("svc-relay", "HIST-01", "writer", "2026-10-12", False, "service"),
+    ("vendor-kell", "RLY-01", "admin", "2026-07-19", False, "vendor"),
+    ("f.ito", "RLY-01", "operator", "2026-10-05", True, "person")]
+need = {("Water Ops", "HIST-01"): {"operator", "engineer"}, ("FSTS Security", "RLY-01"): {"admin"},
+        ("FSTS Platform", "RLY-01"): {"admin"}, ("Clinical Eng", "HIST-01"): set()}
+findings = []
+for name, sysid, role, last, mfa, kind in accounts:
+    idle = (today - date.fromisoformat(last)).days
+    if kind == "person":
+        if name not in roster: findings.append((name, sysid, "not on HR roster (orphan)"))
+        else:
+            dept, status = roster[name]
+            if status != "active": findings.append((name, sysid, f"leaver ({status}) still enabled; used after leaving" if last > status[5:] else f"leaver ({status})"))
+            elif role not in need.get((dept, sysid), set()): findings.append((name, sysid, f"role {role} not justified for {dept}"))
+    if kind == "shared": findings.append((name, sysid, "shared account: no individual accountability"))
+    if kind == "vendor" and idle > 30: findings.append((name, sysid, f"vendor account standing, idle {idle} d: make time-bound"))
+    if role == "admin" and not mfa and kind != "service": findings.append((name, sysid, "privileged without MFA"))
+    if idle > 90 and kind == "person": findings.append((name, sysid, f"dormant {idle} d"))
+for f in findings: print(f"{f[0]:<12} {f[1]:<8} {f[2]}")
+print("accounts:", len(accounts), "findings:", len(findings), "accounts with >=1 finding:", len({f[0] for f in findings}))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+c.mendes     HIST-01  leaver (left 2026-08-31) still enabled; used after leaving
+d.reyes      HIST-01  role admin not justified for Clinical Eng
+d.reyes      HIST-01  privileged without MFA
+d.reyes      HIST-01  dormant 224 d
+opsuser      HIST-01  shared account: no individual accountability
+opsuser      HIST-01  privileged without MFA
+vendor-kell  RLY-01   vendor account standing, idle 85 d: make time-bound
+vendor-kell  RLY-01   privileged without MFA
+f.ito        RLY-01   not on HR roster (orphan)
+accounts: 9 findings: 9 accounts with >=1 finding: 5
+```
+
+Ordene los nueve hallazgos según lo que debe ocurrir hoy. `c.mendes`, usada el 14 de septiembre después de la baja del 31 de agosto, pasa al proceso de incidentes: conserve los registros de autenticación antes de deshabilitar la cuenta. `vendor-kell`, un administrador permanente en el retransmisor sin MFA y con 85 días de inactividad, se deshabilita y solo se vuelve a habilitar mediante incidencia. `d.reyes`, `opsuser` y `f.ito` se convierten en incidencias con responsable. Después busque lo que el script no puede ver, como la forma en que se guarda la credencial de `svc-relay` y cuándo se rotó por última vez.
+
+### 7.7 Errores frecuentes y límites
+
+- Revisar las cuentas a partir de una lista que alguien tecleó, en lugar de una exportación del sistema.
+- Copiar el acceso de un compañero para una alta.
+- Tratar como un asunto de mantenimiento la cuenta de una baja que se *usó* después de irse.
+- Dar a las cuentas de proveedor acceso permanente «para ganar tiempo en una emergencia»; diseñe en su lugar un proceso de habilitación rápido y registrado.
+- Exigir MFA a las personas pero dejar los secretos de las cuentas de servicio en scripts en texto plano.
+- Eliminar una cuenta compartida en un dispositivo de control antes de confirmar cómo iniciarán sesión los operadores durante una emergencia.
+
+Una revisión de accesos muestra el estado de las cuentas en un momento dado. No muestra cómo se usan las credenciales, para lo que se necesitan registros (capítulo 17), y solo es tan buena como la plantilla y la declaración de necesidades.
+
+### Ejercicios — capítulo 7
+
+**EX019 — Priorice los hallazgos.** *Objetivo:* separar los incidentes del mantenimiento. *Entradas:* la salida del Lab 7. *Restricciones:* tres franjas de prioridad: hoy, esta semana, este trimestre. *Pasos:* (1) ponga cada hallazgo en una franja; (2) para cada elemento de «hoy», escriba en orden las dos primeras acciones. *Evidencia esperada:* tabla. *Rúbrica:* 3 = el uso de c.mendes tras la baja y el administrador permanente del proveedor sin MFA en «hoy», con «conservar registros» antes de «deshabilitar» para c.mendes y confirmación con Kell antes de deshabilitar cuando la operación dependa de ello; d.reyes y opsuser esta semana; f.ito investigada esta semana; 2 = franjas sensatas, acciones en orden erróneo; 1 = todo «hoy»; 0 = nada.
+
+**EX020 — Acceso de proveedor limitado en el tiempo.** *Objetivo:* diseñar un proceso de habilitación de proveedores. *Entradas:* Kell Instruments necesita acceso de administración al retransmisor unas cuatro veces al año, a veces con urgencia por la noche. *Restricciones:* debe poder usarlo a las 03:00 el tecnólogo de guardia; debe dejar evidencia. *Pasos:* (1) describa la solicitud, la aprobación, la habilitación, la vigilancia y la deshabilitación; (2) indique el tiempo máximo de habilitación; (3) indique qué evidencia se conserva. *Evidencia esperada:* procedimiento de diez pasos como máximo. *Rúbrica:* 3 = solicitud vinculada a una incidencia, aprobación de la guardia con información a operaciones, cuenta habilitada durante una ventana fija con MFA, sesión grabada o registrada, caducidad automática, revisión el siguiente día laborable; 2 = falta la caducidad o la evidencia; 1 = «habilitar cuando lo pidan»; 0 = nada.
+
+**EX021 — Amplíe la revisión.** *Objetivo:* añadir una comprobación a la herramienta. *Entradas:* el Lab 7. *Restricciones:* solo la biblioteca estándar. *Pasos:* (1) añada una comprobación que señale a cualquier persona con acceso de administración tanto en RLY-01 como en HIST-01 (una concentración de privilegios); (2) añada una cuenta `b.lind` en `HIST-01` como `admin`, con MFA y la fecha de hoy como último inicio de sesión; (3) ejecute e informe del nuevo hallazgo. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = comprobación implementada sobre toda la lista de cuentas, b.lind señalada, sin falsos positivos; además señala que la propia cuenta nueva no está justificada porque FSTS Security no tiene necesidades declaradas en HIST-01; 2 = funciona sin advertir el hallazgo de necesidad; 1 = no se ejecutó; 0 = nada.
+
+### Síntesis del capítulo
+
+La identidad es un conjunto de registros y rutinas. Autentique según lo que puede hacer una cuenta; separe las cuentas personales, privilegiadas, de servicio y de proveedor, y elimine las compartidas o contrólelas en una bóveda; vincule las cuentas al proceso de altas, cambios y bajas; y revíselas con regularidad frente a una exportación, una plantilla y una declaración de necesidades. Algunos hallazgos de la revisión (la cuenta de una baja usada después de irse) son incidentes, y la evidencia va antes que la limpieza.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 30
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Fundamentos de arquitectura de seguridad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- leer y dibujar una arquitectura de **zonas y conductos** de un servicio, incluidos los caminos de gestión;
+- aplicar la defensa en profundidad y el mínimo privilegio para que un control fallido no sea un servicio fallido;
+- diseñar para la **operabilidad**: mantenimiento, acceso de emergencia y modos de fallo como parte de la arquitectura;
+- reconocer los atajos arquitectónicos que erosionan la separación con el tiempo.
+
+El capítulo 2 comparó los flujos observados con los conductos declarados. Este capítulo trata de la propia declaración: por qué LANTERN tiene la forma que tiene y qué debe proteger un implementador al construirlo. Rara vez diseñará usted solo un sistema crítico completo, pero tomará decenas de pequeñas decisiones que preservan el diseño o lo deshacen sin hacer ruido.
+
+### 8.1 Zonas, conductos y el sentido de la confianza
+
+En LANTERN, los datos fluyen *hacia arriba*: estaciones → retransmisor → historiador → informes. Las órdenes a las estaciones no pasan en absoluto por LANTERN; los operadores controlan las estaciones desde el sistema independiente de la sala de control. Esta es la propiedad más importante del diseño. Si el retransmisor se ve comprometido, un atacante puede falsificar o bloquear la telemetría (algo grave), pero no puede dar órdenes a una bomba a través de él. Cada cambio propuesto debería contrastarse con esta propiedad: «¿crea esto un camino para que las órdenes, o los sistemas corporativos, alcancen la zona de estaciones?».
+
+La segmentación de las redes de control respecto de las redes de negocio, con caminos controlados y vigilados entre ellas, es una pauta constante en las fuentes de seguridad de TO ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC 62443 overview](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). Los cortafuegos la implementan; la guía del NIST sobre cortafuegos recomienda políticas de denegación por defecto que solo permitan el tráfico necesario ([NIST SP 800-41 Rev. 1](https://csrc.nist.gov/pubs/sp/800/41/r1/final)).
+
+### 8.2 Defensa en profundidad y mínimo privilegio
+
+La **defensa en profundidad** consiste en varios controles independientes, de modo que un fallo no lleve directamente a un daño. Para que un mensaje de telemetría falsificado engañe a un operador, tendría que alcanzar el retransmisor (segmentación), llevar un código de autenticación válido (capítulo 15), superar la validación (capítulo 3) y no disparar las alertas sobre valores inverosímiles (capítulo 19). Cada capa debe ser *independiente*: dos controles que dependen de la misma contraseña son un solo control. El **mínimo privilegio** (dar a cada usuario y proceso solo el acceso que necesita) figura entre los principios de diseño clásicos de Saltzer y Schroeder ([Saltzer and Schroeder, 1975](https://doi.org/10.1109/PROC.1975.9939)), junto con los valores por defecto a prueba de fallos y la economía de mecanismo. Para un implementador son concretos: la cuenta de servicio del retransmisor no puede escribir en su propia configuración; la cuenta del historiador que usa el retransmisor puede insertar telemetría, pero no borrarla.
+
+### 8.3 Los caminos de gestión forman parte de la arquitectura
+
+Muchos diagramas muestran el camino de los datos y omiten el **camino de gestión**: cómo llegan a cada equipo los administradores, los sistemas de copia de seguridad, los agentes de monitorización y los proveedores. Los caminos de gestión suelen transportar el acceso más poderoso del sistema. En LANTERN, la administración llega a los retransmisores solo desde un servidor de salto de gestión en la zona corporativa, con MFA; los proveedores llegan al servidor de salto mediante una cuenta limitada en el tiempo (capítulo 7); la monitorización recibe los registros que los retransmisores envían *desde* ellos, en lugar de iniciar sesión en ellos. El RLY-02 del Lab 22, que consulta servidores de hora públicos, es un camino de gestión que nadie dibujó.
+
+### 8.4 Diseñar para la operabilidad
+
+Un diseño seguro que los operadores no pueden hacer funcionar acabará eludiéndose. Pregunte por cada control: ¿cómo se mantiene? ¿Qué ocurre a las 03:00 cuando falla? ¿Cómo obtiene un ingeniero acceso de emergencia y cómo queda registrado ese acceso? ¿Qué hace el servicio cuando el retransmisor está caído: saben los operadores que su vista del historiador está desfasada? Diseñe los **modos degradados** de forma deliberada: las estaciones de LANTERN almacenan localmente 24 horas de lecturas, así que un corte del retransmisor hace perder actualidad, no datos; la pantalla del operador muestra la antigüedad de cada valor.
+
+### 8.5 Erosión: cómo se degradan las arquitecturas
+
+Las arquitecturas se erosionan mediante excepciones que parecen razonables: una regla de cortafuegos «temporal» para un proveedor, un portátil conectado a dos redes usado para configurar, un servidor de informes trasladado a la zona de control «para que vaya más rápido», una cuenta de administrador compartida por comodidad. Cada una es pequeña; juntas eliminan la separación. Las defensas son rutinarias: conductos registrados con responsable y caducidad (capítulo 2), revisiones de flujos, revisiones de reglas y la negativa a aceptar excepciones no documentadas. Fallowmere muestra cada tipo. La estación de trabajo corporativa que habla Modbus con PS-04 es un hábito de conexión a dos redes; el módem celular que Kell dejó en el PLC de PS-07 es una excepción de proveedor olvidada que ningún registro de flujo muestra; y la petición de enviar puntos de consigna recomendados del historiador a PS-07 habría sido una excepción de apariencia razonable que invertía el sentido de la confianza.
+
+### 8.6 Ejemplo resuelto: una petición que cruza zonas (sintético)
+
+Operaciones de Agua pide que el historiador envíe cada semana un archivo de «punto de consigna recomendado» al PLC de PS-07, para automatizar una optimización. Contrastada con el capítulo 8 («Zonas, conductos y el sentido de la confianza»), la petición rompe la propiedad más importante: crea un camino de la zona corporativa a la zona de estaciones que transporta información de *control*. No la rechace de plano; devuelva la cuestión de diseño a su responsable con alternativas: que un operador revise la recomendación en el sistema de la sala de control y la aplique allí; o que el archivo vaya al sistema de la sala de control, que lo valida y lo deja preparado para la aprobación del operador. Cualquiera de las dos preserva el sentido de la confianza. Su papel es mostrar la consecuencia y las alternativas, y registrar la decisión.
+
+### 8.7 Actividad práctica: dibuje el camino de gestión
+
+Dibuje las zonas y los conductos de LANTERN del capítulo 2 y añada después todos los caminos de gestión: SSH de administración a través del servidor de salto, acceso de proveedores, copia de seguridad, monitorización, hora, actualizaciones de paquetes. Para cada uno, registre origen, destino, protocolo, autenticación y responsable. Marque cualquier camino que permita a una sola credencial alcanzar tanto la zona corporativa como la de estaciones. En LANTERN, el camino que hay que vigilar es la vía del proveedor: la cuenta limitada en el tiempo de Kell llega al servidor de salto, y el servidor de salto llega a los retransmisores. Si esa misma cuenta, o una credencial compartida `opsuser`, abre también el recurso compartido de archivos corporativo, una sola contraseña robada cruza ambas zonas. Marque también el camino de la hora, ya que se descubrió que el RLY-02 del Lab 22 usaba servidores de hora públicos que ningún diagrama mostraba.
+
+### 8.8 Errores frecuentes y límites
+
+- Diagramas que solo muestran caminos de datos.
+- Tratar como independientes dos controles que comparten una credencial, un administrador o un proveedor.
+- Permitir un camino bidireccional porque el protocolo «solo lee».
+- Diseñar solo para el día normal, sin modos degradados ni acceso de emergencia.
+- Aceptar excepciones sin responsable ni caducidad.
+
+La arquitectura limita lo que puede ocurrir; no muestra lo que ocurre. La verificación necesita flujos, registros y pruebas (capítulos 2, 19 y 23). Un ejemplo de Fallowmere: las fichas de control del riesgo R2 (capítulo 18) serían menos independientes de lo que parecen si el registro de sesiones del proveedor y la cuenta del proveedor se administraran con el mismo inicio de sesión de Kell.
+
+### Ejercicios — capítulo 8
+
+**EX022 — Compruebe el sentido de la confianza.** *Objetivo:* evaluar peticiones de cambio frente a la propiedad clave del diseño. *Entradas:* tres peticiones: (a) el retransmisor descarga cada hora una nueva lista de estaciones permitidas desde el historiador; (b) el SIEM envía una orden de bloqueo automática al cortafuegos de las estaciones cuando ve un ataque; (c) el retransmisor reenvía telemetría a Halden Cloud para una prueba de analítica. *Restricciones:* acepte, rechace o rediseñe cada una con un párrafo. *Pasos:* evalúe cada una frente a las cuatro propiedades de diseño del capítulo 8 (sentido de la confianza, mínimo privilegio, caminos de gestión, operabilidad). *Evidencia esperada:* tres párrafos. *Rúbrica:* 3 = (a) rediseñar: la configuración debería llegar desde el control de versiones mediante el proceso de cambios, no descargarse desde una zona de menor confianza; (b) rediseñar con cuidado: el bloqueo automático en un camino de TO necesita el acuerdo de operaciones, un fallo seguro y confirmación manual; (c) aceptable solo como un nuevo conducto declarado con entrada en el registro de flujos de datos (capítulo 12), contrato y monitorización; 2 = dos bien argumentadas; 1 = respuestas sin matices; 0 = nada.
+
+**EX023 — Independencia de las capas.** *Objetivo:* poner a prueba la defensa en profundidad. *Entradas:* capas propuestas para proteger el retransmisor: cortafuegos gestionado por E. Strand; administración del retransmisor por E. Strand; clave HMAC generada y guardada por E. Strand en el retransmisor; reglas de monitorización escritas por E. Strand. *Restricciones:* no suponga mala intención. *Pasos:* (1) identifique la dependencia común; (2) indique qué suceso único anula todas las capas; (3) proponga dos cambios que restablezcan la independencia. *Evidencia esperada:* media página. *Rúbrica:* 3 = una sola persona y un solo conjunto de credenciales; el compromiso o el error de una cuenta anula todo; cambios como funciones de administración separadas, clave guardada en un almacén aparte con custodios distintos, reglas de monitorización a cargo del equipo de seguridad, que también las revisa; 2 = parcial; 1 = «añadir más controles»; 0 = nada.
+
+**EX024 — Modo degradado.** *Objetivo:* diseñar la operabilidad. *Entradas:* el retransmisor está caído durante cuatro horas por la noche. *Restricciones:* tenga en cuenta a los operadores, los datos y las alertas. *Pasos:* (1) describa lo que ven los operadores; (2) qué ocurre con los datos; (3) qué alertas saltan y quién las recibe; (4) qué ocurre cuando vuelve el retransmisor. *Evidencia esperada:* una página. *Rúbrica:* 3 = las pantallas muestran la antigüedad del dato, no valores congelados como si fueran actuales; las estaciones almacenan localmente; las alertas de silencio de estación y de salud del retransmisor llegan a la guardia; el regreso provoca una carga del atraso que necesita margen (capítulo 1) y no dispara erróneamente las comprobaciones de reproducción; 2 = falta un aspecto; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+La propiedad arquitectónica más importante de LANTERN es el sentido de la confianza: los datos fluyen hacia arriba y las órdenes nunca bajan a través de él. Proteja esa propiedad en cada cambio, mantenga las capas realmente independientes, ponga los caminos de gestión en el diagrama y diseñe de forma deliberada los modos degradados y el acceso de emergencia. Las arquitecturas se degradan mediante excepciones; registre cada una con un responsable y una caducidad, y compruébelas.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 30
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Evidencia y medición
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- elegir una medida que responda a una pregunta operativa e indicar su **numerador, denominador y periodo**;
+- informar de las distribuciones con medianas y percentiles altos, y decir qué oculta una media;
+- incluir **lo que aún no ha ocurrido** (los elementos abiertos) en las medidas de latencia;
+- informar de una tasa de éxito obtenida con pocos ensayos mediante un intervalo honesto.
+
+Todos los capítulos posteriores le piden demostrar algo con evidencia: que un control funciona, que los parches se aplican a tiempo, que una restauración cumple su objetivo. Medir es la forma en que un implementador convierte «está bien» en una afirmación que otra persona puede comprobar. También es la forma en que las organizaciones se engañan a sí mismas, normalmente no mintiendo, sino eligiendo un denominador conveniente.
+
+### 9.1 Lo que indica una buena medida
+
+Una medida es útil cuando otra persona podría volver a calcularla. Indique la **pregunta** («¿con qué rapidez instalamos las correcciones del proveedor en los controladores de las estaciones?»), la **población** (qué activos, qué correcciones), el **numerador y el denominador**, el **periodo**, la **fuente** de los datos y qué se **excluye** y por qué. Una cifra de cumplimiento de parches del «96 %» sin denominador podría referirse al 96 % de los portátiles de oficina, lo que no dice nada de las estaciones de bombeo. La mediana conjunta de 9 días del Lab 9 no supera esta prueba: no indica población, y su denominador excluye en silencio siete correcciones abiertas.
+
+### 9.2 Distribuciones, no solo medias
+
+Las magnitudes operativas (tiempo hasta el parche, tiempo hasta la restauración, tiempo de respuesta a una alerta) suelen ser asimétricas: la mayoría son rápidas, unas pocas son muy lentas, y las lentas son las que importan. La **mediana** describe el caso típico; el **percentil 90** (p90) describe los casos malos; la **media** se ve arrastrada por los valores atípicos y no describe bien ninguno de los dos. Informe de la mediana y del p90 juntos, y mire el máximo. En el Lab 9, la mediana de 95 días de los controladores de las estaciones, con cinco correcciones aún abiertas, es la cifra que ocultaba la mediana conjunta.
+
+### 9.3 Elementos abiertos y supervivencia
+
+Un error frecuente en las medidas de latencia es calcularlas solo sobre los elementos **completados**. Si se han publicado cinco correcciones para los controladores de las estaciones pero no se han instalado, son las más lentas de todas, y son invisibles para una mediana calculada sobre las correcciones instaladas. Informe siempre de cuántos elementos siguen abiertos y de su antigüedad. La guía del NIST sobre gestión de parches en la empresa trata la aplicación de parches como un proceso de respuesta al riesgo con una puntualidad medible, y recomienda métricas que la reflejen ([NIST SP 800-40 Rev. 4](https://csrc.nist.gov/pubs/sp/800/40/r4/final)).
+
+Agrupar conjuntos con comportamientos muy distintos es la trampa relacionada. Una única mediana para la TI de oficina, los servidores y los controladores de las estaciones queda dominada por el grupo con más elementos (normalmente la TI de oficina) y oculta el grupo de mayores consecuencias.
+
+### 9.4 Las muestras pequeñas necesitan intervalos
+
+Las pruebas en servicios críticos son caras, así que las muestras son pequeñas: diez simulacros de restauración, ocho alertas de prueba inyectadas. «9 de 10 simulacros cumplieron el objetivo» es un hecho; «nuestra tasa de éxito en restauraciones es del 90 %» es una afirmación excesiva. Un **intervalo de confianza** muestra el rango de tasas subyacentes compatibles con los datos. Para proporciones de muestras pequeñas, el **intervalo de puntuación de Wilson** se comporta bien ([Wilson, 1927](https://doi.org/10.1080/01621459.1927.10502953)). Para 9 de 10, el intervalo de Wilson al 95 % va aproximadamente de 0,60 a 0,98: la tasa real podría ser razonablemente tan baja como el 60 %. Por eso la restauración de copias de seguridad del Lab 23, con 9 de 10 simulacros dentro del objetivo, sigue sin cumplir una regla de afirmación cuyo límite inferior debe llegar a 0,70.
+
+### 9.5 Ejemplo resuelto: latencia de parches y simulacros de restauración (sintético)
+
+El informe mensual de FSTS dice: «latencia mediana de parches: 9 días». El Lab 9 la vuelve a calcular por grupos. TI corporativa: 12 de 12 correcciones instaladas, mediana de 5,5 días, p90 de unos 9. Retransmisor/historiador: 6 de 8 instaladas, mediana de 18,5 días, p90 de unos 31,5, dos aún abiertas. PLC/RTU de las estaciones: solo 3 de 8 instaladas, mediana de 95 días, cinco aún abiertas. La mediana conjunta de 9 días es aritméticamente correcta y operativamente engañosa: describe portátiles y omite las siete correcciones abiertas, cinco de ellas en los activos de mayores consecuencias.
+
+Los controladores de las estaciones tardan más en parchearse por buenas razones: los proveedores deben certificar las correcciones, y la instalación puede requerir una visita a la instalación y una ventana de corte acordada con operaciones (capítulo 16). La medida no debería castigarlo; debería mostrarlo, para que puedan justificarse controles compensatorios durante el periodo de exposición.
+
+### 9.6 Actividad práctica: medidas honestas
+
+**Lab 9** (guárdelo como `lab09.py` y ejecútelo con `python3 lab09.py`):
+
+```python
+# Lab 9 - measuring patch latency and a restore drill honestly (offline, standard library only)
+# Synthetic: days from vendor fix release to installation, Fallowmere estate, last two quarters.
+import math, statistics as st
+latency = {"corp IT": [3, 5, 4, 9, 6, 2, 7, 5, 30, 4, 6, 8],
+           "relay/historian": [12, 19, 15, 41, 22, 18],
+           "station PLC/RTU": [64, 140, 95]}
+not_yet = {"corp IT": 0, "relay/historian": 2, "station PLC/RTU": 5}  # fixes released but not installed
+def pct(xs, p):
+    xs = sorted(xs); k = (len(xs) - 1) * p; f = math.floor(k); c = math.ceil(k)
+    return xs[f] + (xs[c] - xs[f]) * (k - f)
+for g, xs in latency.items():
+    n = len(xs) + not_yet[g]
+    print(f"{g:<16} installed {len(xs):>2}/{n:<2} median {st.median(xs):>5.1f} d  p90 {pct(xs, .9):>6.1f} d  mean {st.mean(xs):>5.1f} d")
+allx = [x for xs in latency.values() for x in xs]
+print(f"pooled (misleading) median {st.median(allx):.1f} d over {len(allx)} installed fixes; {sum(not_yet.values())} still open are invisible to it")
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z*z/n; c = (p + z*z/(2*n)) / d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n)) / d
+    return c - h, c + h
+k, n = 9, 10  # restore drills that met the 4-hour target
+lo, hi = wilson(k, n)
+print(f"restore drills within target: {k}/{n} = {k/n:.0%}, 95% Wilson interval [{lo:.2f}, {hi:.2f}]")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+corp IT          installed 12/12 median   5.5 d  p90    8.9 d  mean   7.4 d
+relay/historian  installed  6/8  median  18.5 d  p90   31.5 d  mean  21.2 d
+station PLC/RTU  installed  3/8  median  95.0 d  p90  131.0 d  mean  99.7 d
+pooled (misleading) median 9.0 d over 21 installed fixes; 7 still open are invisible to it
+restore drills within target: 9/10 = 90%, 95% Wilson interval [0.60, 0.98]
+```
+
+Escriba la línea de informe que enviaría en lugar de «latencia mediana de parches: 9 días». Debería caber en dos frases.
+
+Una línea de dos frases que aprobaría: «La TI corporativa instaló 12 de 12 correcciones, con una mediana de 5,5 días; el retransmisor y el historiador, 6 de 8, con una mediana de 18,5 días y dos abiertas. Los controladores de las estaciones instalaron 3 de 8, con una mediana de 95 días y cinco correcciones abiertas bajo controles compensatorios y con planes fechados». Es más larga que «9 días», pero ahora el lector puede ver dónde está el riesgo, y los controladores de las estaciones ya no quedan ocultos detrás de los portátiles de oficina.
+
+### 9.7 Errores frecuentes y límites
+
+- Informar de un porcentaje sin su denominador.
+- Medias para magnitudes asimétricas.
+- Calcular la latencia solo sobre los elementos cerrados.
+- Agrupar conjuntos de modo que el grupo grande y de pocas consecuencias oculte el pequeño y de muchas consecuencias.
+- Convertir un número pequeño de ensayos con éxito en una tasa sin intervalo.
+- Cambiar la definición de una medida entre informes sin decirlo.
+
+Las medidas describen lo que se registró. Si los datos de origen están incompletos (correcciones no registradas, simulacros no anotados), ninguna estadística lo reparará. En el Lab 9, la mediana conjunta muestra tres de estos errores a la vez: sin denominador, con los elementos abiertos excluidos y con los grupos agrupados.
+
+### Ejercicios — capítulo 9
+
+**EX025 — Reescriba la línea del informe.** *Objetivo:* comunicar una medida con honestidad. *Entradas:* la salida del Lab 9. *Restricciones:* dos frases como máximo; incluya denominadores y elementos abiertos. *Pasos:* escríbala y después enumere lo que dejó fuera y por qué. *Evidencia esperada:* la línea y una nota. *Rúbrica:* 3 = medianas o p90 por grupo con recuentos de instaladas/total, correcciones abiertas de las estaciones mencionadas expresamente, ninguna cifra conjunta presentada como titular; 2 = en su mayor parte; 1 = repite la mediana conjunta; 0 = nada.
+
+**EX026 — Calcule la antigüedad de los elementos abiertos.** *Objetivo:* incluir los elementos abiertos en la medida. *Entradas:* las cinco correcciones abiertas de las estaciones se publicaron hace 20, 45, 70, 130 y 200 días; las dos correcciones abiertas del retransmisor/historiador, hace 10 y 35 días. *Restricciones:* trate la antigüedad de cada corrección abierta como un límite inferior de su latencia. *Pasos:* (1) combine las latencias instaladas con las antigüedades abiertas de los PLC/RTU de las estaciones; (2) calcule una mediana que sea un límite inferior; (3) explique por qué es un límite inferior y no una estimación. *Evidencia esperada:* cálculo y explicación. *Rúbrica:* 3 = valores combinados 20, 45, 64, 70, 95, 130, 140, 200 → límite inferior de la mediana 82,5 días, correctamente explicado (los elementos abiertos solo pueden envejecer); 2 = error aritmético; 1 = ignora los elementos abiertos; 0 = nada.
+
+**EX027 — ¿Cuántos simulacros?** *Objetivo:* planificar el tamaño de la muestra a partir de un intervalo. *Entradas:* la función de Wilson del Lab 9. *Restricciones:* suponga que todos los simulacros tienen éxito. *Pasos:* (1) encuentre el menor número de simulacros consecutivos con éxito para el que el límite inferior de Wilson al 95 % sea al menos 0,80; (2) indique si es asumible a un simulacro por mes y qué haría en su lugar. *Evidencia esperada:* el número, con la ejecución que lo muestra, y un párrafo. *Rúbrica:* 3 = 16 simulacros (límite inferior ≈ 0,806; 15 da ≈ 0,796), reconocidos como 16 meses a uno por mes, con alternativas sensatas como restauraciones parciales más pequeñas y frecuentes o pruebas de restauración automatizadas; 2 = número correcto, sin plan; 1 = adivinado; 0 = nada.
+
+### Síntesis del capítulo
+
+Una medida es útil cuando indica su pregunta, población, numerador, denominador, periodo, fuente y exclusiones. Informe de medianas con percentiles altos para las magnitudes asimétricas; incluya los elementos abiertos; no agrupe conjuntos con consecuencias distintas; y acompañe de intervalos las tasas de éxito de muestras pequeñas. El objetivo no es una cifra favorecedora, sino una que otra persona pueda volver a calcular y sobre la que pueda actuar.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Siga estudiando — capítulo 09 de 30
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -738,6 +1186,38 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX014 — Prevenir, detectar, recuperar.** Prevenir: cambios en la configuración del retransmisor solo a través de un estado deseado bajo control de versiones con revisión por pares (evidencia: configuración de rama protegida y registros de revisión). Detectar: alerta de integridad de archivos sobre la configuración del retransmisor y regla de silencio de estación (evidencia: un cambio de prueba inyectado y un silencio de prueba produjeron cada uno una alerta dentro del objetivo; capítulo 23). Recuperar: configuración versionada con un manual de vuelta atrás probado (evidencia: vuelta atrás cronometrada en un retransmisor de prueba). La máxima puntuación aporta evidencia comprobable, no «configurado».
 
 **EX015 — Lectura de un informe de incidente.** Según CISA AA21-042A, el aviso recomendaba, entre otras medidas, restringir y proteger el software de acceso remoto, no compartir contraseñas, usar sistemas operativos actualizados y con soporte y mantener los sistemas de control sin exposición directa a internet, con cortafuegos. El relato de WUSF (abril de 2023) informa de que un antiguo responsable municipal dijo que el suceso fue probablemente un error de un empleado; eso cambia la *atribución*, no el valor de las lecciones de higiene, y muestra que los primeros relatos pueden revisarse. Reglas de LANTERN: ninguna herramienta de acceso remoto en ningún equipo de control o retransmisor salvo a través del camino de salto (capítulo 8); ninguna cuenta de administrador compartida (capítulo 7); toda sesión privilegiada registrada para poder responder después a «qué ocurrió» (capítulo 17).
+
+### Capítulo 6: EX016–EX018
+
+**EX016 — Revisión de bastionado.** Limitar SSH a la interfaz de gestión (cambio normal, porque un error deja fuera a los administradores); eliminar el puerto de depuración en 0.0.0.0:9000 (cambio normal, después de conservar la evidencia de quién lo habilitó; capítulo 20); desactivar RPC en el puerto 111 (cambio estándar si existe un procedimiento); eliminar el compilador y el entorno de escritorio (cambio estándar); trasladar el retransmisor de `root` a una cuenta dedicada `relay` con restricciones del sistema de archivos (cambio normal con pruebas). Cada cambio tiene un motivo vinculado a las secciones 6.1 y 6.2.
+
+**EX017 — Proteja la línea base.** Diseño 1: tras cada cambio aprobado, la línea base se exporta a un almacén de escritura única fuera del equipo (un contenedor de solo anexado o un servidor que los administradores del retransmisor no pueden modificar). Diseño 2: el archivo de la línea base se firma con una clave que custodia el equipo de seguridad, no el retransmisor; la comparación verifica primero la firma. Un atacante con root en el retransmisor puede alterar archivos e incluso la copia local de la línea base, pero no puede alterar sin ser detectado la línea base externa o firmada. Como la propia herramienta de comparación del retransmisor podría subvertirse, ejecute también la comparación desde fuera (recogiendo los hashes de forma remota o comparando fuera del equipo los archivos recogidos).
+
+**EX018 — Ubicación en el hipervisor.** Compartido: el hardware físico y sus fallos; los administradores del hipervisor (que en la práctica administran todos los invitados); la red de gestión; el almacenamiento y las instantáneas; el calendario de parches. Condiciones para aceptarla: gestión del hipervisor en una zona propia, alcanzable solo desde el servidor de salto; un grupo pequeño de administración del hipervisor con MFA y registro; redes virtuales separadas sin puentes entre los invitados orientados a las estaciones y los orientados a la zona corporativa; margen de capacidad documentado para todos los invitados en el pico; plan probado para la pérdida del equipo (qué falla a la vez para el agua *y* para el hospital). Riesgo residual: un compromiso o fallo del hipervisor afecta a dos sectores; lo aceptan conjuntamente los responsables de los servicios de Agua y del hospital. Rechazarla de plano sin condiciones obtiene menos puntuación que esto.
+
+### Capítulo 7: EX019–EX021
+
+**EX019 — Priorice los hallazgos.** Hoy: `c.mendes`, usada después de la baja: (1) conservar los registros de autenticación y de sesión de HIST-01, (2) deshabilitar la cuenta y abrir un incidente; `vendor-kell`, administrador permanente sin MFA: (1) confirmar con Agua que no hay ningún trabajo de Kell en curso, (2) deshabilitar la cuenta y pasar a una habilitación limitada en el tiempo. Esta semana: `d.reyes` (retirar el acceso de administración, confirmar la necesidad con Ingeniería Clínica), `opsuser` (planificar la migración a cuentas personales o a una bóveda sin romper la operación de emergencia), `f.ito` (identificarla; deshabilitarla si nadie responde por ella). Este trimestre: correcciones del proceso para las fuentes de altas y bajas. La máxima puntuación pone la conservación antes de la deshabilitación.
+
+**EX020 — Acceso de proveedor limitado en el tiempo.** (1) Kell abre una incidencia o llama a la guardia de FSTS con una referencia de trabajo; (2) la guardia comprueba el trabajo con el jefe de turno de Agua; (3) la guardia habilita `vendor-kell` mediante la herramienta de acceso durante una ventana fija (por ejemplo, cuatro horas), con el objetivo de tardar menos de 15 minutos desde la solicitud; (4) Kell se autentica con MFA a través del servidor de salto; (5) la sesión se graba o se registra; (6) salta una alerta ante cualquier inicio de sesión de Kell fuera de una ventana habilitada; (7) la cuenta caduca automáticamente; (8) el siguiente día laborable, FSTS Security revisa el registro de la sesión frente al trabajo. Evidencia conservada: incidencia, aprobación, registros de habilitación y caducidad, grabación de la sesión y nota de revisión.
+
+**EX021 — Amplíe la revisión.** Añada después del bucle: construya `admins = {}`, que asigna a cada persona el conjunto de sistemas en los que tiene acceso de administración, y señale a quien tenga a la vez `RLY-01` y `HIST-01`. Con la cuenta nueva `("b.lind", "HIST-01", "admin", "2026-10-12", True, "person")`, la salida añade `b.lind       HIST-01  role admin not justified for FSTS Security` y el hallazgo de concentración `b.lind admin on both RLY-01 and HIST-01`. No se señala a ninguna otra persona (e.strand y d.reyes tienen acceso de administración en un solo sistema cada una). La máxima puntuación advierte el hallazgo «no justificado»: la tabla de necesidades no da a FSTS Security ninguna función en HIST-01.
+
+### Capítulo 8: EX022–EX024
+
+**EX022 — Compruebe el sentido de la confianza.** (a) Rediseñar: una lista de estaciones permitidas descargada del historiador convierte un sistema de la zona corporativa en la fuente de la configuración de seguridad del retransmisor; en su lugar, la lista procede del control de versiones a través del proceso de cambios (capítulo 14) y se despliega en los retransmisores. (b) Rediseñar con cuidado: el bloqueo automático en el cortafuegos de las estaciones podría cortar telemetría legítima o el acceso de ingeniería durante un incidente; necesita el acuerdo de Agua, un modo de fallo seguro y un alcance limitado al tráfico ajeno al proceso, o bien limitarse a alertar con una confirmación humana de un solo clic. (c) Aceptable solo con un nuevo conducto declarado, una entrada en el registro de flujos de datos (capítulo 12), condiciones contractuales y de conservación con Halden, cifrado y monitorización, y la fecha de fin de la prueba.
+
+**EX023 — Independencia de las capas.** La dependencia común es una persona y un conjunto de credenciales: el cortafuegos, la administración del retransmisor, la custodia de la clave y la monitorización dependen de E. Strand. Un único suceso (el compromiso de la cuenta de E. Strand, o un error bienintencionado) puede desactivar todas las capas y también su detección. Cambios: separar las funciones (el equipo de red es responsable del cortafuegos; el de plataforma, del retransmisor; el de seguridad, de las reglas de monitorización y de su revisión), y guardar las claves en un almacén con custodios distintos, para que los administradores del retransmisor no puedan leerlas ni sustituirlas sin que se note.
+
+**EX024 — Modo degradado.** Operadores: las pantallas del historiador muestran que la antigüedad de los valores aumenta y un aviso de «retransmisor fuera de línea», no valores congelados presentados como actuales. Datos: las estaciones almacenan localmente (24 h). Alertas: las alertas de salud del retransmisor y de silencio de estación llegan a la guardia de FSTS y a la sala de control de Agua en 15 a 20 minutos. Regreso: las estaciones cargan el atraso; el retransmisor necesita margen para la ráfaga (capítulo 1); los mensajes atrasados son más antiguos que la ventana temporal en vivo y deben aceptarse por un camino explícito para el atraso que siga comprobando el MAC y la secuencia (capítulo 15), de modo que la comprobación de reproducción no los rechace erróneamente y tampoco se convierta en un hueco para reproducciones.
+
+### Capítulo 9: EX025–EX027
+
+**EX025 — Reescriba la línea del informe.** «Correcciones del proveedor instaladas: TI corporativa 12/12 (mediana de 5,5 días); retransmisor/historiador 6/8 (mediana de 18,5 días, 2 abiertas); controladores de las estaciones 3/8 (mediana de 95 días, 5 aún abiertas, todas bajo controles compensatorios). No se informa de la mediana conjunta de 9 días porque mezcla grupos y excluye las correcciones abiertas». Se deja fuera: los valores p90 y las medias (disponibles en el anexo del informe), para que el titular sea breve.
+
+**EX026 — Calcule la antigüedad de los elementos abiertos.** Valores de las estaciones: instaladas 64, 95, 140; antigüedades abiertas 20, 45, 70, 130, 200. Ordenados: 20, 45, 64, 70, 95, 130, 140, 200; mediana = (70 + 95) / 2 = 82,5 días. Es un límite inferior porque la latencia final de cada corrección abierta será al menos su antigüedad actual; la mediana real solo puede subir a medida que envejecen las correcciones abiertas. Difiere de la mediana calculada solo con las instaladas (95 días), aquí más baja porque varias correcciones abiertas son recientes, lo que muestra por qué deben comunicarse ambas juntas en lugar de elegir una.
+
+**EX027 — ¿Cuántos simulacros?** Al calcular el límite inferior de Wilson para n éxitos de n: 15/15 da alrededor de 0,796 y 16/16, alrededor de 0,806. Así que se necesitan 16 simulacros consecutivos con éxito: 16 meses a un simulacro por mes. Alternativas: hacer restauraciones parciales más pequeñas y frecuentes (una tabla o un día de datos cada semana), automatizar pruebas de restauración en una instancia de pruebas y mantener el simulacro completo cada trimestre; informe de cada tipo por separado para que la afirmación corresponda a la prueba.
 
 <a id="glossary"></a>
 

@@ -1102,7 +1102,7 @@ This is why Lab 23's backup restore, 9 of 10 drills on target, still fails a cla
 
 ### 9.5 Worked example: patch latency and restore drills (synthetic)
 
-FSTS's monthly report says "median patch latency: 9 days". Lab 9 recomputes it by group. Corporate IT: 12 of 12 fixes installed, median 5.5 days, p90 about 9. Relay/historian: 6 of 8 installed, median 18.5 days, p90 about 31, two still open. Station PLC/RTU: only 3 of 8 installed, median 95 days, five still open. The pooled median of 9 days is arithmetically correct and operationally misleading: it describes laptops, and it omits the seven open fixes — five of them on the highest-consequence assets.
+FSTS's monthly report says "median patch latency: 9 days". Lab 9 recomputes it by group. Corporate IT: 12 of 12 fixes installed, median 5.5 days, p90 about 9. Relay/historian: 6 of 8 installed, median 18.5 days, p90 about 31.5, two still open. Station PLC/RTU: only 3 of 8 installed, median 95 days, five still open. The pooled median of 9 days is arithmetically correct and operationally misleading: it describes laptops, and it omits the seven open fixes — five of them on the highest-consequence assets.
 
 Station controllers are slower to patch for good reasons: vendors must certify fixes, installation may need a site visit and an outage window agreed with operations (Chapter 16). The measure should not punish that; it should show it, so that compensating controls can be justified for the period of exposure.
 
@@ -3495,7 +3495,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 **EX020 — Time-bound supplier access.** (1) Kell opens a ticket or calls the FSTS on-call with a job reference; (2) on-call checks the job with the Water duty manager; (3) on-call enables `vendor-kell` through the access tool for a fixed window (for example four hours) — target under 15 minutes from request; (4) Kell authenticates with MFA via the jump host; (5) the session is recorded or logged; (6) an alert fires on any Kell login outside an enabled window; (7) the account expires automatically; (8) next working day, FSTS Security reviews the session log against the job. Evidence kept: ticket, approval, enablement and expiry logs, session record, review note.
 
-**EX021 — Extend the review.** Add after the loop: build `admins = {}` mapping each person to the set of systems where they hold admin, then flag anyone with both `RLY-01` and `HIST-01`. With the new account `("b.lind", "HIST-01", "admin", "2026-10-12", True, "person")`, the output adds `b.lind HIST-01 role admin not justified for FSTS Security` and the concentration finding `b.lind admin on both RLY-01 and HIST-01`. No other person is flagged (e.strand and d.reyes each hold admin on one system). Full credit notices the "not justified" finding: the need table gives FSTS Security no role on HIST-01.
+**EX021 — Extend the review.** Add after the loop: build `admins = {}` mapping each person to the set of systems where they hold admin, then flag anyone with both `RLY-01` and `HIST-01`. With the new account `("b.lind", "HIST-01", "admin", "2026-10-12", True, "person")`, the output adds `b.lind       HIST-01  role admin not justified for FSTS Security` and the concentration finding `b.lind admin on both RLY-01 and HIST-01`. No other person is flagged (e.strand and d.reyes each hold admin on one system). Full credit notices the "not justified" finding: the need table gives FSTS Security no role on HIST-01.
 
 ### Chapter 8: EX022–EX024
 
