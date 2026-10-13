@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 118, engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120, suas resoluções com rubricas de 0 a 3 e os quatro laboratórios (capítulos 22, 28, 29 e 32); os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline (capítulos 22, 28, 29 e 32) usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar a governança de dados de medidores e sensores de uma companhia de saneamento.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios rastreiam a linhagem a montante e lacunas de titularidade em um grafo sintético de *pipeline*, calculam taxas de aprovação de três regras de leitura de medidores, medem a pontualidade dos fluxos em relação a um nível de serviço às 06:00 e conciliam leituras de campo sintéticas com o faturamento. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
-
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1742,12 +1740,412 @@ Testar só o caminho principal deixa escapar rotas laterais para os dados govern
 - **EX119 — Correção dos contatos.** O que substituiu a lista de contatos desatualizada? *Rubrica:* 3 = links para a escala de plantão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX120 — Lição das rotas laterais.** De onde vieram as duas falhas? *Rubrica:* 3 = de componentes fora do caminho principal;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-41"></a>
+
+## Capítulo 41 — Governança de dados: otimização de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) otimizar a cadeia governada como um todo; (2) equilibrar qualidade, custo e pontualidade; (3) evitar otimizar uma parte à custa das demais.
+
+### 41.1 Visão da cadeia inteira
+
+Kofi procura melhorias em toda a cadeia de perdas, e não dentro de equipes isoladas. O faturamento havia ajustado sua extração para rodar mais rápido pulando uma etapa de validação, o que empurrou os erros para a conciliação, mais adiante, onde corrigi-los levava muito mais tempo. Ele mostra o dilema com tempos de execução e contagens de quebras. A cadeia inteira funciona melhor quando o faturamento restaura a validação, mesmo que a etapa do faturamento em si fique mais lenta. A otimização local tinha piorado o sistema como um todo, enquanto cada equipe acreditava estar ajudando. O faturamento concorda.
+
+### 41.2 Equilibrando objetivos
+
+Qualidade, custo e pontualidade puxam em direções diferentes. Prazos mais cedo deixam menos tempo para as verificações; mais verificações custam mais computação e tempo de pessoal. Kofi monta uma tabela simples que mostra, para várias opções de agenda, as taxas esperadas de pontualidade, a cobertura das verificações e o custo. Os donos escolhem uma opção que mantém as verificações completas para os dados de alto risco e leva as verificações de baixo risco para mais tarde no dia. Ele explica que tornar os dilemas explícitos permite que os donos escolham conscientemente, em vez de descobri-los quando algo quebra inesperadamente. A opção escolhida é registrada com suas razões.
+
+### 41.3 Gargalos
+
+Kofi identifica o gargalo da cadeia: a aprovação manual das correções de leituras, que espera por um único supervisor. As correções se acumulam antes do fim do mês, atrasando a conciliação e o número de perdas. Ele propõe delegar a aprovação das correções pequenas a curadores treinados, com os supervisores aprovando as grandes e revisando uma amostra das pequenas. A fila anda mais rápido, e a amostragem de auditoria não mostra aumento de correções incorretas. Melhorar o gargalo ajuda a cadeia inteira muito mais do que acelerar etapas que já eram rápidas. Os supervisores concordam.
+
+### 41.4 Medindo a melhora
+
+Kofi mede a cadeia antes e depois das mudanças: o tempo entre a leitura do medidor e o número de perdas, a parcela de números publicados no prazo e o número de reapresentações. Os três melhoram no trimestre seguinte. A Profa. Varga observa que medidas do sistema impedem que as equipes declarem sucesso em medidas locais enquanto o resultado geral fica estagnado, e que a pontualidade e a estabilidade do número de perdas são o que o regulador e os engenheiros de rede de fato vivenciam. Kofi acrescenta as três medidas da cadeia ao painel mensal do comitê de governança, para que qualquer tendência de piora fique visível cedo para todos.
+
+### Exemplo resolvido
+
+Kofi reverte um atalho local do faturamento que prejudicava a cadeia, apresenta dilemas explícitos, alivia o gargalo de aprovação de correções delegando aprovações a curadores e mede a melhora no nível da cadeia.
+
+> **Caso sintético.** Os tempos são sintéticos.
+
+### Erros e limites
+
+Otimizar a medida de uma equipe pode prejudicar o sistema; meça a cadeia.
+
+### Exercícios
+
+- **EX121 — Atalho do faturamento.** O que o atalho do faturamento causou? *Rubrica:* 3 = erros empurrados para a conciliação, mais lenta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX122 — Gargalo.** Qual era o gargalo? *Rubrica:* 3 = a aprovação manual das correções por um único supervisor;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX123 — Medidas da cadeia.** Cite as três medidas da cadeia. *Rubrica:* 3 = tempo da leitura ao número, parcela no prazo e reapresentações;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Governança de dados: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa a partir da prática de governança; (2) desenhar um estudo com dados sintéticos; (3) relatar as constatações com seus limites.
+
+### 42.1 A pergunta
+
+A pesquisa aplicada de Kofi pergunta se as quebras de conciliação preveem erros nas estimativas de perdas por distrito. Se previrem, a contagem de quebras poderia servir de alerta antecipado antes da publicação dos números. Ele formula a pergunta com precisão: em dados distritais sintéticos, o número de quebras de conciliação em um mês está associado ao tamanho das correções posteriores do número de perdas daquele distrito? Ele observa que a pergunta é útil para a Tidewater porque permitiria aos curadores concentrar o esforço de verificação onde os erros são prováveis. A Profa. Varga a aprova.
+
+### 42.2 Desenho do estudo
+
+Kofi gera dados sintéticos para quarenta distritos ao longo de vinte e quatro meses, com quebras e correções ligadas por uma relação conhecida mais ruído. Ele ajusta uma relação linear simples usando o módulo statistics do Python e verifica se a inclinação estimada recupera a relação que ele mesmo embutiu. Ele explica que testar métodos em dados sintéticos com respostas conhecidas mostra se a análise consegue encontrar um efeito real antes de aplicá-la a dados reais, nos quais a resposta verdadeira é desconhecida. Ele fixa a semente aleatória para que os resultados se repitam exatamente.
+
+### 42.3 Interpretando os resultados
+
+A análise recupera uma associação positiva próxima do valor embutido, com grande variação entre os distritos. Kofi adverte que recuperar um efeito plantado mostra apenas que o método funciona, não que os distritos reais se comportem assim. Ele esboça um plano para aplicar o método a dados distritais reais anonimizados, com a aprovação da Tidewater, usando a discussão de validade de Shadish, Cook e Campbell para orientar quais explicações alternativas, como o tamanho do distrito, precisam ser verificadas. Ele observa também que a força da associação nos dados reais pode ser muito menor do que no exemplo plantado.
+
+### 42.4 Relatando
+
+Kofi escreve um artigo curto com a pergunta, o desenho sintético, os resultados, os limites e um plano para os dados reais. Ele compartilha o código para que outros possam reproduzir os resultados sintéticos. A Profa. Varga observa que uma declaração clara do que o estudo pode e não pode mostrar é a parte mais valiosa da pesquisa aplicada para os profissionais, que de outro modo leem nos resultados mais do que eles sustentam, sobretudo quando os resultados confirmam o que já queriam acreditar. O artigo é apresentado em um seminário do departamento, onde as perguntas afiam a seção de limites.
+
+### Exemplo resolvido
+
+Kofi pergunta se as quebras de conciliação preveem correções das perdas, testa o método em distritos sintéticos com uma relação plantada, recupera-a, declara os limites e planeja um estudo com dados reais.
+
+> **Caso sintético.** Os dados são sintéticos; Shadish, Cook e Campbell (2002) é real.
+
+### Erros e limites
+
+Recuperar um efeito plantado não prova um efeito real.
+
+### Exercícios
+
+- **EX124 — Pergunta de pesquisa.** O que Kofi perguntou? *Rubrica:* 3 = se as quebras preveem correções posteriores das perdas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX125 — Propósito do sintético.** Por que usar dados sintéticos com respostas conhecidas? *Rubrica:* 3 = para verificar se o método consegue encontrar um efeito real;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX126 — Explicação alternativa.** Cite uma explicação alternativa a verificar. *Rubrica:* 3 = o tamanho do distrito;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar a governança em uma empresa de saneamento em funcionamento; (2) adaptar métodos acadêmicos a restrições práticas; (3) refletir sobre a conduta profissional.
+
+### 43.1 O estágio
+
+Kofi passa um período de estágio na equipe de dados da Tidewater. Ele sai dos exercícios do curso para o trabalho diário real, embora todos os exemplos deste livro continuem sintéticos. Ele participa da triagem matinal, escreve *runbooks* e apoia um envio regulatório. Ele percebe que restrições práticas, como tempo limitado, prioridades concorrentes e sistemas legados, moldam o que a governança consegue alcançar. Os métodos do curso continuam úteis, mas precisam de adaptação, por exemplo uma análise de falhas mais leve para mudanças pequenas. Ele mantém um diário semanal do que adapta e por quê.
+
+### 43.2 Trabalhando com os donos
+
+Os donos têm outros trabalhos. Kofi aprende a preparar resumos curtos com perguntas claras, para que os donos possam decidir depressa. Quando o gerente de medição está ocupado demais para revisar as mudanças de regras, Kofi propõe uma revisão mensal em lote, em vez de pedidos avulsos, o que o gerente aceita. Ele reflete que respeitar o tempo dos donos torna mais provável o apoio à governança, enquanto exigir atenção para cada pequena pergunta tende a fazer os donos evitarem o processo. Outros donos pedem o mesmo arranjo mensal, que se torna a abordagem padrão da equipe.
+
+### 43.3 Um envio regulatório
+
+Kofi ajuda a preparar o envio anual sobre perdas. Ele reúne as evidências: linhagem, resultados dos controles, conciliação, relatórios de serviço e constatações da validação. O revisor do regulador pergunta como a Tidewater sabe que os sensores de vazão são precisos. Kofi apresenta as verificações com o medidor de referência e seus limites e cita as melhorias planejadas. O revisor aceita as evidências e registra os limites. Ele vê como o trabalho de governança dos capítulos anteriores se transforma em respostas que terceiros consideram críveis. O revisor também pede que o envio do ano seguinte mostre o progresso nas melhorias que Kofi listou, e a equipe as acrescenta ao seu plano.
+
+### 43.4 Conduta profissional
+
+Durante o estágio, Kofi percebe que um colega está editando uma leitura sem a aprovação exigida, para cumprir um prazo. Ele trata do assunto em particular, explicando o risco, e o colega submete a edição à aprovação. Kofi reflete sobre o dever de manter os controles mesmo sob pressão. A Profa. Varga observa que os conselhos profissionais esperam que os engenheiros ajam com integridade e manifestem suas preocupações, e que pequenos deslizes tolerados sob pressão enfraquecem aos poucos os controles que protegem os clientes e o público. Ele não leva o caso adiante, pois a edição foi corrigida.
+
+### Exemplo resolvido
+
+Kofi adapta os métodos durante o estágio, agrupa as revisões dos donos, apoia um envio regulatório com evidências e limites e trata com profissionalismo uma edição não aprovada.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Contornar controles sob pressão de prazo os corrói; manifeste suas preocupações.
+
+### Exercícios
+
+- **EX127 — Tempo dos donos.** Como Kofi respeitou o tempo do gerente de medição? *Rubrica:* 3 = com uma revisão mensal em lote das mudanças de regras;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX128 — Pergunta do regulador.** O que o revisor do regulador perguntou? *Rubrica:* 3 = como a Tidewater sabe que os sensores de vazão são precisos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX129 — Edição não aprovada.** Como Kofi lidou com a edição não aprovada? *Rubrica:* 3 = tratou do assunto em particular e a edição foi submetida à aprovação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir um projeto final sobre dados governados; (2) planejar escopo, riscos e evidências; (3) acordar os critérios de sucesso.
+
+### 44.1 Escolha do projeto
+
+O projeto final de Kofi consiste em projetar e demonstrar um pacote de governança para o programa de gestão de pressão, que ajusta válvulas para reduzir as perdas. Os dados de pressão afetam a segurança e as perdas, de modo que o projeto combina lições de todo o curso. Ele o escolhe porque o programa está em expansão e seus dados hoje não têm donos, regras nem linhagem. O projeto final precisa produzir uma demonstração funcional com dados sintéticos, documentação e evidências de que os controles funcionam. O diretor de operação apoia a escolha e concorda em ceder um engenheiro como contato, o que torna o projeto relevante para a Tidewater.
+
+### 44.2 Escopo
+
+Kofi limita o escopo aos dados dos sensores de pressão, às configurações das válvulas e ao vínculo entre as mudanças de pressão e as estimativas de perdas em três distritos sintéticos. Ele exclui a lógica de controle das próprias válvulas, que pertence aos engenheiros de operação. Um escopo claro impede que o projeto cresça além do que um único estudante consegue entregar em um semestre. Ele lista as entregas: linhagem, mapa de donos, catálogo de regras, testes dos controles, um esboço de painel e um registro de decisão para cada escolha importante. A declaração de escopo é assinada pela Profa. Varga e pelo engenheiro de operação.
+
+### 44.3 Riscos
+
+Ele identifica os riscos do projeto: dados sintéticos que não reflitam o comportamento real da pressão, acesso limitado aos engenheiros de operação e tempo perdido com problemas de ferramentas. Para cada risco ele planeja uma resposta, como validar cedo os padrões sintéticos com um engenheiro de operação e manter o código simples, usando apenas a biblioteca padrão. Ele revisa os riscos toda semana. A Profa. Varga lembra-o de que a gestão de riscos de projeto é uma competência profissional por si só, separada do conteúdo técnico. O registro de riscos é guardado junto com os arquivos do projeto.
+
+### 44.4 Critérios de sucesso
+
+Kofi acorda os critérios de sucesso com a Profa. Varga e um engenheiro de operação: donos nomeados e aceitos para todos os conjuntos de dados do escopo, regras que cubram os limiares relevantes para a segurança, erros injetados detectados a uma taxa acordada e uma demonstração compreendida por um público da operação. Cada critério tem uma medida. Ele observa que acordar os critérios no início evita disputas posteriores sobre o sucesso do projeto e concentra o esforço no que importa para as pessoas que usarão os resultados. Os critérios são escritos no plano do projeto e não podem ser mudados sem acordo.
+
+### Exemplo resolvido
+
+Kofi escolhe a governança da gestão de pressão, limita o escopo a sensores, configurações de válvulas e três distritos, planeja os riscos com validação antecipada e acorda critérios de sucesso mensuráveis.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+Escopo pouco claro é a falha mais comum em projetos finais; escreva-o.
+
+### Exercícios
+
+- **EX130 — Área excluída.** O que Kofi excluiu do escopo? *Rubrica:* 3 = a lógica de controle das válvulas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX131 — Resposta ao risco sintético.** Como Kofi vai verificar os dados sintéticos de pressão? *Rubrica:* 3 = validando cedo os padrões com um engenheiro de operação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX132 — Critério de público.** Quem precisa compreender a demonstração? *Rubrica:* 3 = um público da operação;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder às constatações dos revisores; (3) registrar as decisões após a revisão.
+
+### 45.1 Preparação
+
+Na metade do projeto final, o projeto de Kofi passa por uma revisão independente feita por um engenheiro de outra empresa de saneamento e por um consultor de governança de dados, nenhum deles envolvido no trabalho. Ele prepara um pacote de revisão: enunciado do problema, escopo, projeto, registros de decisão, planos de teste e fragilidades conhecidas. Ele lista as fragilidades abertamente, para que os revisores gastem seu tempo com os problemas desconhecidos. A Profa. Varga explica que a revisão independente é valiosa justamente porque os revisores não têm as premissas do projetista e vão questionar o que ele dá como certo. O pacote é enviado com uma semana de antecedência.
+
+### 45.2 Constatações
+
+Os revisores levantam três constatações. Primeira: as regras tratam todos os sensores de pressão da mesma forma, embora os sensores em pontos críticos precisem de limiares mais rigorosos. Segunda: a linhagem termina na estimativa de perdas e não mostra onde os dados de pressão alimentam a análise de reclamações de clientes. Terceira: o mapa de donos nomeia o gerente de operação para todos os dados de pressão, o que concentra demais em uma única pessoa. Eles também elogiam os registros de decisão, que tornam o raciocínio fácil de acompanhar e de testar. Cada constatação é escrita com uma explicação e as evidências que levaram os revisores a levantá-la.
+
+### 45.3 Respondendo
+
+Kofi responde por escrito a cada constatação: acrescenta categorias de sensores com limiares diferentes, estende a linhagem até a análise de reclamações depois de confirmar a dependência com a equipe de atendimento e divide a titularidade entre o gerente de operação, para os locais críticos, e os gerentes distritais, para os demais. Para cada resposta ele registra a mudança, o raciocínio e a preocupação residual. Ele discute uma constatação da qual discorda em parte, explicando suas razões, e os revisores aceitam um meio-termo. O meio-termo diz respeito ao número de categorias de sensores, que é reduzido de cinco para três.
+
+### 45.4 Depois da revisão
+
+O registro da revisão lista as constatações, as respostas, as mudanças e os itens em aberto. Ele entra no dossiê de evidências do projeto final. Kofi reflete que os revisores encontraram problemas que ele não tinha visto, apesar do trabalho cuidadoso, porque a familiaridade esconde as lacunas. A Profa. Varga observa que acolher a revisão, em vez de se defender dela, é sinal de um engenheiro maduro, e que uma trilha de revisão documentada mostra aos avaliadores como o projeto melhorou, o que convence mais do que um projeto apresentado como se fosse impecável desde o início. Os itens em aberto são agendados para a segunda metade do projeto final.
+
+### Exemplo resolvido
+
+Kofi prepara um pacote de revisão que lista as fragilidades, recebe três constatações sobre limiares, linhagem e titularidade, responde por escrito com mudanças e um meio-termo negociado e registra a revisão.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+Esconder fragilidades conhecidas desperdiça o tempo dos revisores.
+
+### Exercícios
+
+- **EX133 — Constatação sobre limiares.** O que os revisores disseram sobre os limiares? *Rubrica:* 3 = sensores críticos precisam de limiares mais rigorosos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX134 — Mudança de titularidade.** Como a titularidade foi dividida? *Rubrica:* 3 = gerente de operação para os locais críticos, gerentes distritais para os demais;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX135 — Por que revisar.** Por que os revisores independentes são valiosos? *Rubrica:* 3 = eles não têm as premissas do projetista;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir e testar o pacote de governança do projeto final; (2) demonstrá-lo; (3) avaliá-lo em relação aos critérios de sucesso.
+
+### 46.1 Construção
+
+Kofi constrói o pacote com dados sintéticos: um gerador de dados de pressão com ciclos diários realistas, a biblioteca de regras estendida com as categorias de sensores, a linhagem incluindo a análise de reclamações, as entradas de catálogo e um painel de alertas. Ele usa apenas a biblioteca padrão do Python, como planejado, o que mantém o código legível para os engenheiros de operação. Ele documenta cada componente com seu propósito, dono e teste. A construção segue o processo de versões dos capítulos anteriores, com revisão de código por um colega e testes antes de cada integração. Cada integração é registrada.
+
+### 46.2 Testes
+
+Ele injeta erros nos dados sintéticos: sensores travados, picos súbitos, horas ausentes e uma configuração de válvula alterada sem registro. Os controles detectam a maioria dos erros. As horas ausentes em um distrito são detectadas com atraso, porque a verificação de completude roda diariamente, e não a cada hora. Ele passa a verificação para horária nos locais críticos. Uma nova execução detecta todos os erros injetados dentro dos tempos acordados, e ele registra as duas execuções no registro de testes, com a mudança feita entre elas. A mudança é aprovada pelo engenheiro de operação.
+
+### 46.3 Demonstração
+
+Kofi demonstra o pacote para um público formado por pessoas da operação, um dono e a Profa. Varga. Ele percorre um incidente: um sensor travado em um local crítico, o alerta, o *runbook*, o procedimento de modo degradado e o efeito sobre a estimativa de perdas. As pessoas da operação fazem perguntas práticas sobre o volume de alertas e os alarmes falsos. Ele mostra as estatísticas de alertas do período de testes. O público confirma que entendeu a demonstração e que conseguiria usar o painel. Também sugere acrescentar mapas com a localização dos sensores, que Kofi inclui depois.
+
+### 46.4 Avaliação
+
+Kofi avalia o projeto em relação aos critérios de sucesso. Os donos estão nomeados e aceitos para todos os conjuntos de dados; as regras cobrem os limiares relevantes para a segurança; todos os erros injetados foram detectados depois da mudança para a verificação horária; o público da operação entendeu a demonstração. Ele registra os limites: dados sintéticos não captam todo o comportamento real, e a operação de longo prazo não foi testada. A Profa. Varga aprova a avaliação, elogiando a honestidade sobre os limites ao lado de evidências claras para cada critério. A avaliação é escrita como um relatório curto, em que cada critério é seguido de sua medida, do resultado alcançado e das evidências que o sustentam, para que os examinadores possam verificar cada afirmação.
+
+### Exemplo resolvido
+
+Kofi constrói com a biblioteca padrão um pacote de governança para os dados de pressão, encontra a detecção tardia de horas ausentes e passa a verificações horárias nos locais críticos, demonstra o percurso de um incidente e avalia o projeto pelos critérios.
+
+> **Caso sintético.** O pacote e os dados são sintéticos.
+
+### Erros e limites
+
+Demonstrações que escondem falhas enganam; mostre o registro de testes.
+
+### Exercícios
+
+- **EX136 — Detecção tardia.** O que foi detectado com atraso no início? *Rubrica:* 3 = horas ausentes em um distrito;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX137 — Correção da detecção tardia.** O que a corrigiu? *Rubrica:* 3 = verificações horárias de completude nos locais críticos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX138 — Limites declarados.** Cite um limite declarado por Kofi. *Rubrica:* 3 = dados sintéticos ou operação de longo prazo não testada;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um ensaio de falha e recuperação com dados governados; (2) medir a recuperação; (3) aprimorar os procedimentos de recuperação.
+
+### 47.1 O ensaio
+
+Kofi conduz um ensaio em que a plataforma de dados de pressão falha durante um dia simulado de alta demanda. O cenário sintético retira do ar o servidor de histórico principal por três horas. O ensaio testa se os operadores conseguem continuar com segurança usando os procedimentos de modo degradado, se os dados são recuperados por completo depois e se os registros de governança mostram o que aconteceu. Participam dois operadores, uma curadora de dados e o engenheiro de plantão. A Profa. Varga observa e registra os tempos sem intervir, para que o ensaio reflita como a equipe realmente responde. Todos recebem as instruções antes.
+
+### 47.2 Durante a falha
+
+Os operadores passam para os painéis locais e as leituras manuais em quinze minutos, seguindo o procedimento. O engenheiro de plantão recebe o alerta prontamente, mas perde tempo procurando as instruções de recuperação, que estavam guardadas no servidor que falhou. A curadora marca os dados afetados no registro. Kofi observa que guardar as instruções de recuperação no próprio sistema a ser recuperado é um erro clássico, e que o ensaio o revelou em um ambiente seguro, e não durante um incidente real. Ele registra o atraso para encontrar as instruções, com sua duração.
+
+### 47.3 Recuperação
+
+Depois que o servidor de histórico volta, as leituras armazenadas nos *buffers* dos dispositivos locais são recarregadas. Kofi concilia as leituras recarregadas com os *buffers* locais e encontra uma pequena lacuna em que um *buffer* ficou cheio e sobrescreveu dados mais antigos. Ele mede o tempo e a completude da recuperação e registra a lacuna com sua causa. A operação da rede concorda em aumentar o tamanho dos *buffers* nos locais críticos. Ele observa que a recuperação só está completa quando os dados estão conciliados, e não simplesmente quando os sistemas reiniciam. Os resultados da conciliação são anexados ao relatório do ensaio para o comitê de governança.
+
+### 47.4 Melhorias
+
+Kofi registra as melhorias: instruções de recuperação transferidas para um local separado, com cópias impressas, *buffers* maiores nos locais críticos e uma etapa de conciliação acrescentada ao *runbook* de recuperação. Um segundo ensaio curto confirma que o engenheiro encontra as instruções rapidamente. A Profa. Varga observa que os ensaios são valiosos porque expõem dependências que os documentos escondem, e que governar dados inclui planejar a sobrevivência dos dados às falhas, e não apenas sua qualidade na operação normal. O comitê pede que um ensaio semelhante seja realizado todo ano, com participantes e cenários diferentes.
+
+### Exemplo resolvido
+
+Kofi conduz um ensaio de falha do servidor de histórico, encontra instruções de recuperação guardadas no servidor que falhou e uma lacuna por sobrescrita de *buffer*, e aprimora a guarda das instruções, o tamanho dos *buffers* e a conciliação na recuperação.
+
+> **Caso sintético.** O ensaio é sintético.
+
+### Erros e limites
+
+Declarar a recuperação quando os sistemas reiniciam ignora os dados perdidos; concilie primeiro.
+
+### Exercícios
+
+- **EX139 — Problema das instruções.** Onde estavam guardadas as instruções de recuperação? *Rubrica:* 3 = no servidor que falhou;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX140 — Causa da lacuna.** O que causou a lacuna de dados? *Rubrica:* 3 = um *buffer* ficou cheio e sobrescreveu dados mais antigos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX141 — Definição de recuperação.** Quando a recuperação está completa? *Rubrica:* 3 = quando os dados estão conciliados;; 2 = correto;; 1 = ao reiniciar;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê de evidências para dados governados; (2) vincular as afirmações às evidências; (3) empacotá-lo para avaliadores e reguladores.
+
+### 48.1 Propósito
+
+Kofi monta um dossiê de evidências para o projeto final e para o trabalho mais amplo de governança das perdas. O dossiê deve permitir que um avaliador ou regulador verifique as afirmações sem pedir explicações a Kofi. Cada afirmação, como a de que os dados de pressão têm donos nomeados ou a de que os controles detectam sensores travados, aponta para evidências: registros de titularidade, registros de testes, constatações de revisão, relatórios de ensaios e registros de decisão. Ele explica que um dossiê é um argumento sustentado por evidências, e não uma pilha de documentos. Cada vínculo é conferido antes de o dossiê ser emitido.
+
+### 48.2 Estrutura
+
+Kofi estrutura o dossiê em torno dos requisitos: para cada requisito, a afirmação, os controles, as evidências e as limitações. Um índice permite saltar para qualquer requisito. Os arquivos de evidência são guardados com datas e versões, e sua integridade é registrada com *hashes* calculados com o hashlib do Python, para que os leitores possam confirmar que os arquivos não mudaram desde a montagem. Ele inclui também o registro da revisão independente e suas respostas, que mostram como o projeto evoluiu. O *hash* de cada arquivo aparece no índice ao lado de seu título, data e número de versão.
+
+### 48.3 Vinculando as afirmações
+
+Kofi verifica se cada afirmação tem evidência e encontra duas sem ela: a de que os curadores foram treinados e a de que as regras de retenção se aplicam aos dados de pressão. Para o treinamento, ele obtém as listas de presença. Para a retenção, descobre que a regra existe na política, mas nunca foi configurada para os dados de pressão; então ele a configura, testa e acrescenta o resultado. Ele observa que montar as evidências pode revelar distâncias entre a política e a prática que ninguém havia notado. As duas novas evidências entram no índice com seus *hashes*.
+
+### 48.4 Público
+
+Kofi escreve um resumo para não especialistas e deixa os detalhes técnicos nos apêndices. Ele pede a uma colega que não conhece o projeto que encontre as evidências de três afirmações escolhidas ao acaso, cronometrando a busca. Cada uma leva menos de cinco minutos. A Profa. Varga observa que os dossiês funcionam quando os leitores conseguem navegar neles sozinhos, e que a disciplina de comprovar cada afirmação torna os engenheiros mais cuidadosos com o que afirmam desde o início. Kofi revisa duas entradas do índice que atrasaram a colega, deixando seus títulos mais claros e acrescentando remissões a partir dos requisitos relacionados.
+
+### Exemplo resolvido
+
+Kofi estrutura um dossiê por requisito, com arquivos de evidência protegidos por *hash*, encontra duas afirmações sem sustentação e fecha uma lacuna na configuração da retenção, e testa a navegação com uma colega que não conhece o projeto.
+
+> **Caso sintético.** O dossiê é sintético.
+
+### Erros e limites
+
+Afirmações sem evidência enfraquecem o dossiê inteiro; retire-as ou sustente-as.
+
+### Exercícios
+
+- **EX142 — Propósito do hash.** Por que os arquivos de evidência recebem *hash*? *Rubrica:* 3 = para confirmar que não mudaram;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX143 — Lacuna de retenção.** O que a afirmação sobre retenção revelou? *Rubrica:* 3 = a regra nunca foi configurada para os dados de pressão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX144 — Teste de navegação.** Como a navegação foi testada? *Rubrica:* 3 = uma colega que não conhecia o projeto encontrou as evidências de afirmações aleatórias;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Trabalho de conclusão de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um trabalho de conclusão de engenharia sobre governança de dados; (2) apresentar projeto, evidências e avaliação; (3) discutir a contribuição e os limites.
+
+### 49.1 O argumento do trabalho
+
+O trabalho de conclusão de Kofi sustenta que métodos de engenharia, como controle de interfaces, verificação, análise de falhas e ensaios de recuperação, tornam a governança de dados em empresas de saneamento mais confiável do que abordagens baseadas apenas em políticas. Ele apoia o argumento no trabalho com a cadeia de perdas e no projeto final sobre pressão, ambos com dados sintéticos. Ele apresenta a contribuição como um método prático para aplicar a disciplina da engenharia à governança e a posiciona em relação ao DAMA-DMBOK2 e à ISO/IEC 38505-1, que descrevem as funções da governança, mas deixam em aberto os métodos de engenharia. A Profa. Varga aprova esse enquadramento depois de discuti-lo.
+
+### 49.2 Estrutura
+
+O trabalho tem capítulos sobre contexto, literatura, método, a cadeia de perdas, o projeto final, avaliação e discussão. O capítulo de literatura revisa os modelos de qualidade de dados, os direitos de decisão na governança, normas como a ISO 8000 e princípios de gestão de dados como os FAIR. O capítulo de método explica como cada técnica de engenharia foi adaptada. Os capítulos de resultados apresentam projetos, testes e ensaios com evidências tiradas do dossiê. Kofi escreve o capítulo de avaliação em torno dos critérios de sucesso acordados no início do projeto final. Cada capítulo começa com a afirmação que sustenta e termina com um resumo.
+
+### 49.3 Limites
+
+Kofi dedica uma seção aos limites. Todos os dados eram sintéticos, de modo que os efeitos sobre a operação real continuam sem teste. O trabalho se passou em uma única empresa fictícia, então generalizar para outras exige cuidado. Algumas avaliações dependeram de grupos pequenos de usuários. Ele sugere trabalhos futuros: aplicar os métodos a dados reais anonimizados, comparar com empresas que usam governança baseada em políticas e medir os custos de longo prazo. A Profa. Varga observa que uma seção de limites forte aumenta, em vez de reduzir, a credibilidade do trabalho. Cada limite é vinculado a um item específico de trabalho futuro.
+
+### 49.4 Processo de escrita
+
+Kofi escreve o trabalho ao longo de quatro meses, compartilhando os capítulos com a Profa. Varga para receber comentários. As primeiras versões descrevem as atividades em sequência; os comentários o levam a organizar o texto em torno do argumento. Ele confere cada citação com a fonte original e usa os registros de decisão e o dossiê como evidência primária. Ele reflete que escrever esclareceu seu próprio pensamento, porque explicar por que cada método importava expôs premissas que ele havia adotado sem perceber durante o projeto. Ele mantém um registro dos comentários recebidos e das mudanças feitas, que inclui como apêndice.
+
+### Exemplo resolvido
+
+Kofi sustenta que métodos de engenharia fortalecem a governança de dados em saneamento, estrutura o trabalho em torno de evidências e critérios, declara os limites dos dados sintéticos e do caso único e reorganiza as versões em torno do argumento.
+
+> **Caso sintético.** O trabalho é sintético; as normas e os modelos citados são reais.
+
+### Erros e limites
+
+Trabalhos organizados como diários escondem o argumento; organize-os em torno das afirmações.
+
+### Exercícios
+
+- **EX145 — Tese do trabalho.** O que o trabalho sustenta? *Rubrica:* 3 = que métodos de engenharia tornam a governança de dados em saneamento mais confiável;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX146 — Trabalho futuro.** Cite um item de trabalho futuro. *Rubrica:* 3 = dados reais anonimizados, comparação com outras empresas ou custos de longo prazo;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX147 — Mudança pelos comentários.** Como os comentários mudaram as versões? *Rubrica:* 3 = reorganizadas em torno do argumento;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) defender um trabalho de conclusão de engenharia diante de examinadores; (2) responder a questionamentos com evidências; (3) refletir sobre seu crescimento profissional.
+
+### 50.1 Preparando a defesa
+
+Kofi prepara uma apresentação de vinte minutos que cobre o argumento, os principais projetos, as evidências e os limites. Ele antecipa as perguntas pedindo aos colegas que façam o papel de examinadores e questionem cada afirmação. Ele prepara slides de reserva com registros de testes, tempos dos ensaios e constatações das revisões. Ele treina explicar os pontos técnicos em linguagem simples, já que um dos examinadores é do regulador e não engenheiro, e a apresentação precisa funcionar tanto para especialistas quanto para o público geral. Ele também ensaia o tempo com cuidado, cortando slides até que a fala caiba com folga no tempo permitido, sobrando espaço para uma pergunta inesperada no final.
+
+### 50.2 Perguntas
+
+Os examinadores perguntam por que resultados sintéticos deveriam convencer uma empresa a investir, como os métodos funcionariam em uma empresa menor, com menos pessoal, e se os controles de governança poderiam atrasar a resposta a emergências. Kofi responde com evidências e limites: os testes sintéticos mostram que os métodos funcionam mecanicamente, empresas menores poderiam adotar um conjunto reduzido, priorizado pelo risco, e os procedimentos de segurança mantêm as ações de emergência independentes da aprovação da governança, embora registradas para revisão posterior. Cada resposta remete a uma página específica do trabalho ou do dossiê, para que os examinadores possam conferir as evidências por conta própria.
+
+### 50.3 Um momento difícil
+
+O examinador do regulador contesta uma afirmação do trabalho de que os números de perdas ficaram mais precisos, apontando que as evidências mostram mais consistência, e não precisão comprovada. Kofi concorda, explica a diferença e se oferece para revisar a redação. Os examinadores apreciam a resposta. Mais tarde, a Profa. Varga lhe diz que aceitar com elegância um questionamento válido demonstrou a integridade que os examinadores procuram, e que afirmações exageradas são comuns em trabalhos de conclusão e fáceis de corrigir quando o autor escuta. A redação revisada passa a ser uma das pequenas correções exigidas.
+
+### 50.4 Reflexão
+
+Depois de ser aprovado com pequenas correções, Kofi reflete sobre seu crescimento ao longo de cinco anos: da programação e da medição básicas ao projeto, teste e defesa da governança de dados complexos de saneamento. O que ele mais valoriza são os hábitos da evidência, da revisão e da honestidade sobre os limites. Ele planeja entrar para a equipe de dados da Tidewater e continuar seu desenvolvimento profissional. O próximo curso desta área trata de privacidade e proteção de dados, onde os dados governados encontram os direitos das pessoas que eles descrevem. Ele agradece à orientadora e aos colegas nos agradecimentos.
+
+### Exemplo resolvido
+
+Kofi se prepara para uma banca mista, responde a perguntas sobre poder de convencimento, empresas pequenas e emergências, aceita um questionamento válido sobre precisão e consistência e reflete sobre cinco anos de crescimento.
+
+> **Caso sintético.** A defesa é sintética.
+
+### Erros e limites
+
+Defender uma afirmação exagerada prejudica a credibilidade; corrija-a.
+
+### Exercícios
+
+- **EX148 — Pergunta sobre emergências.** Como os procedimentos de segurança tratam as emergências? *Rubrica:* 3 = as ações de emergência ficam independentes da aprovação, mas são registradas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX149 — Questionamento sobre precisão.** O que o examinador do regulador contestou? *Rubrica:* 3 = afirmou-se precisão, mas mostrou-se consistência;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX150 — Hábitos valorizados.** Quais hábitos Kofi mais valoriza? *Rubrica:* 3 = evidência, revisão e honestidade sobre os limites;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de 2,16 milhões de leituras por dia.
 
@@ -1988,6 +2386,66 @@ Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em i
 **EX119.** Links para a escala de plantão.
 
 **EX120.** Componentes fora do caminho principal.
+
+**EX121.** Os erros foram empurrados para etapas posteriores, onde corrigi-los levava mais tempo.
+
+**EX122.** A aprovação manual das correções de leituras por um único supervisor.
+
+**EX123.** Tempo até o número, parcela no prazo e reapresentações.
+
+**EX124.** Se as quebras de conciliação preveem correções das perdas por distrito.
+
+**EX125.** Para verificar se o método recupera um efeito conhecido.
+
+**EX126.** O tamanho do distrito.
+
+**EX127.** Propondo uma revisão mensal em lote.
+
+**EX128.** Como a Tidewater sabe que os sensores de vazão são precisos.
+
+**EX129.** Ele tratou do assunto em particular, e o colega submeteu a edição à aprovação.
+
+**EX130.** A lógica de controle das válvulas.
+
+**EX131.** Validando cedo os padrões com um engenheiro de operação.
+
+**EX132.** Um público da operação.
+
+**EX133.** Sensores em pontos críticos precisam de limiares mais rigorosos.
+
+**EX134.** Os locais críticos ao gerente de operação; os demais, aos gerentes distritais.
+
+**EX135.** Eles não compartilham as premissas do projetista.
+
+**EX136.** Horas ausentes em um distrito.
+
+**EX137.** Verificações horárias de completude nos locais críticos.
+
+**EX138.** Dados sintéticos não captam todo o comportamento real.
+
+**EX139.** No servidor que havia falhado.
+
+**EX140.** Um *buffer* local ficou cheio e sobrescreveu leituras mais antigas.
+
+**EX141.** Quando os dados estão conciliados, e não quando os sistemas reiniciam.
+
+**EX142.** Para que os leitores possam confirmar que os arquivos não mudaram.
+
+**EX143.** A regra da política nunca havia sido configurada para os dados de pressão.
+
+**EX144.** Uma colega encontrou as evidências de três afirmações aleatórias, cada uma em menos de cinco minutos.
+
+**EX145.** Que métodos de engenharia tornam a governança de dados em saneamento mais confiável do que apenas as políticas.
+
+**EX146.** Aplicar os métodos a dados reais anonimizados.
+
+**EX147.** De uma sequência de atividades para uma estrutura baseada no argumento.
+
+**EX148.** As ações de emergência não esperam a aprovação da governança, mas são registradas para revisão.
+
+**EX149.** As evidências mostravam consistência, não precisão comprovada.
+
+**EX150.** Evidência, revisão e honestidade sobre os limites.
 
 <a id="references"></a>
 ## Referências
