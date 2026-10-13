@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Rapid Course
 
 - Language: English (`en`); course 014, Rapid course (1 month).
-- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: people who look after a small organisation's website and need practical, proportionate application and software supply chain security in one month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -49,21 +49,31 @@ Owen Clarke is the only IT person at the fictional charity Riverside Food Networ
 
 Application security protects the website's own code and settings. Software supply chain security protects everything the site is built from: the platform, its plugins, themes and the services they call, and the path by which each arrives and is updated. For a small charity, the supply chain is most of the website.
 
+Owen's site shows the split. The charity wrote almost nothing itself: its settings and a few page templates are its own code. The donation form, the event calendar, the photo gallery, the newsletter plugin, the theme and the platform all came from other people, and the error message a donor saw last month came from one of them.
+
 ### 1.3 Main risks
 
 Outdated components with known flaws (OWASP Top 10:2021 A06); components that are no longer maintained; components from unofficial sources; weak administrator sign-in (A07); and integrity failures, where an update or file is changed before it arrives (A08).
+
+Each risk has a face on Owen's site. The donation form was out of date and had a published advisory (A06). The event calendar had not been released for over four years. A component downloaded from an unofficial page could be anything. Three administrator accounts had no multi-factor sign-in (A07). And an update file changed on its way to him is what the hash check guards against (A08).
 
 ### 1.4 Proportionate decisions
 
 Owen has a few hours a week. He decides by asking three questions for each risk: how likely is it, how much harm would it cause to donors and the charity, and how cheap is the fix? Cheap fixes for likely, harmful risks go first.
 
+Turning on multi-factor sign-in for the three administrator accounts is the clearest example: an attack on a password is likely, an administrator account could change everything on the site, and the fix costs minutes. Replacing the event calendar is harmful to leave but takes longer, so it comes later in the month.
+
 ### 1.5 Frameworks as guides
 
 NIST SP 800-218 (SSDF) and OWASP SAMM v2 are written for software producers and larger organisations, but their ideas scale down: know your components, keep them updated, check what you install, and have a plan for problems.
 
+Owen's month uses each idea at his scale. "Know your components" is the plugin list he exports in week 3. "Keep them updated" is the donate-form update and the weekly routine. "Check what you install" is the hash comparison in the release checklist. "Have a plan" is his rule to stop and call the host and Nadia if he finds signs of misuse.
+
 ### 1.6 The month's plan
 
 Week 1 foundations and decisions; week 2 scope and safe practice; week 3 components, data and dependencies; week 4 guided lab and putting it together.
+
+The order matters. Owen cannot decide what to update until he knows what the site uses, and he should not change anything until he has permission, a backup and a staging copy. So the inventory comes in week 3, after the scope, and the donate-form update in week 4, after both. The first week's quick win, multi-factor sign-in, needs no inventory and starts at once.
 
 ### Worked example
 
@@ -111,25 +121,37 @@ You will (1) confirm permission before checking or changing the website; (2) set
 
 Owen is employed by the charity, but changes to the website still need the director's agreement, recorded in an email that names what he will check and change. The website host's terms also say what customers may test. Owen checks only the charity's own site and accounts; he does not probe the host's systems or other sites.
 
+The director's reply adds a condition: she wants to be told before any change that donors could notice. Owen treats the donate-form update as such a change and tells her before releasing it. Keeping the permission in an email means that, if something goes wrong, there is a record of what was agreed and by whom.
+
 ### 2.2 Scope
 
 The scope for the month: the donation website, its administrator accounts, its plugins and theme, and the charity's account with the website host. Out of scope: the payment provider's systems, which belong to the provider, and volunteers' personal devices.
+
+Leaving out the payment provider is a limit, not an oversight: card details go straight to the provider's page, and Owen has no right to test its systems. He checks only the hand-off, that the donation form sends donors to the provider's real page. In his final presentation he names this as one of the things he cannot check himself.
 
 ### 2.3 Safe practice
 
 Before any change, Owen takes a full backup and confirms it can be restored. He tests updates on a staging copy, a private copy of the site with donor data removed or replaced by synthetic records. He makes one change at a time and notes it in a simple change log.
 
+Owen proves the backup works before relying on it: he restores it once to staging in the first weeks. That restore also gives him the staging copy where he later tests the donate-form update with synthetic donations. Each line in the change log says what changed, when, and how to undo it, which is what the director needs if donors report a problem.
+
 ### 2.4 Donor data
 
 The site stores donor names, emails and donation amounts; card details stay with the payment provider. Owen never copies donor data to his own devices and uses synthetic records for testing.
+
+This rule also shapes the staging copy: it holds synthetic donors, so testing the donation form there cannot leak a real person's details. When event-calendar turned out to store volunteers' phone numbers, the same thinking applied: those numbers moved to the charity's volunteer system and were deleted from the website.
 
 ### 2.5 Defensive only
 
 The course teaches checking and fixing, not attacking. Owen does not run tools that try to break into the site; he reviews versions, settings and logs.
 
+His checks are all of this kind: the plugin list from the administration page, version numbers compared with published advisories, the hash of a download compared with the vendor's, and the list of administrator accounts. None of them sends unusual requests to the site, so none can break it or upset the host. If he wanted a deeper test, it would need the host's permission and a professional tester.
+
 ### 2.6 When to ask for help
 
 If he sees signs that the site has already been misused, such as unknown administrator accounts, Owen stops, preserves evidence and contacts the host's support and Nadia.
+
+Preserving evidence means not deleting the unknown account straight away: Owen notes its name and creation date, takes a screenshot, and asks the host for the access logs before anything changes. Deleting first might stop the attacker, but it would also remove the clues to how they got in and what else they touched. In Owen's month, the monthly account review found no unknown accounts.
 
 ### Worked example
 
@@ -177,7 +199,9 @@ You will (1) list the website's components and versions; (2) check advisories, m
 
 Owen exports the plugin list from the site's administration page: name, version and whether each is active. He adds the theme, the platform version and the outside services the site calls: the payment provider and the newsletter service. This list is the charity's inventory, the base for every other check.
 
-### Lab — Lab — component review
+Writing down which plugins are active matters: photo-gallery appears in the list but is not in use, and an unused plugin still has code on the server that an attacker could reach. Adding the payment provider and the newsletter service shows where donor data leaves the site, which is needed for the data-flow check later in the week.
+
+### Lab — component review
 
 ```python
 """Review a synthetic list of website components: advisories, maintenance and use (stdlib only)."""
@@ -214,17 +238,25 @@ newsletter      5.1.3  ok
 
 donate-form 3.2.0 must be updated to 3.2.4, the version that fixes a published advisory. event-calendar 1.4.1 is flagged UNMAINTAINED: its last release was 1,606 days ago. photo-gallery 2.0.0 is flagged REMOVE because it is not in use. newsletter 5.1.3 is ok. Each flag leads to a different action: update, replace or remove.
 
+The lab's rules are simple enough to check by hand. A component is UNMAINTAINED if its last release is more than 730 days, about two years, before the review date of 1 October 2026; event-calendar's last release was 9 May 2022. The script compares versions as numbers, so it would correctly flag a version like 3.10 as newer than 3.9.
+
 ### 3.3 Why maintenance matters
 
 A component with no releases for years will not receive fixes for future flaws. Kula et al. (2018) found that outdated dependencies are common because updating takes effort; Zimmermann et al. (2019) showed that a few maintainers can affect very many users. Small sites benefit from choosing popular, actively maintained components.
+
+Owen's event-calendar shows the risk: 1,606 days without a release means that any flaw found in it now will probably never be fixed. When he chooses a replacement, he checks the release history and how many sites use it, so that the new calendar is less likely to be abandoned too.
 
 ### 3.4 Data flows
 
 Donor details move from the donation form to the site's database, the card details go directly to the payment provider's page, and email addresses go to the newsletter service if the donor opts in. Each flow is a place to check: the form component, database access, the payment hand-off and the newsletter connection.
 
+The newsletter flow depends on the donor's choice: only donors who tick the box are sent to the newsletter service, so Owen checks that the box is unticked by default. The payment hand-off is the most sensitive point: if the form were changed to collect card numbers itself, they would pass through the charity's site, which is exactly what the current design avoids.
+
 ### 3.5 Deciding
 
 Update donate-form now (it handles donor data and has an advisory). Replace event-calendar with a maintained alternative within the month. Remove photo-gallery after confirming nobody needs it. Keep newsletter and turn on automatic security updates where the host supports them.
+
+Owen's later discovery changed one priority: event-calendar also stored volunteers' phone numbers for shift sign-ups, which nobody remembered. That moved its replacement up to week 3, with the phone numbers moved to the volunteer system and deleted from the website. A decision list is a plan, not a promise; it changes when new facts appear.
 
 ### Worked example
 
@@ -271,7 +303,9 @@ You will (1) prepare a safe update with a pre-release checklist; (2) verify down
 
 Owen prepares the donate-form update to 3.2.4. He downloads it from the plugin's official page, compares its SHA-256 hash with the one published by the vendor, takes a backup and tests it on staging with synthetic donations.
 
-### Lab — Lab — release checklist
+The hash comparison protects against a changed download: even if the official page were tampered with or the file damaged on the way, a different file gives a different hash. The test on staging with synthetic donations checks that the updated form still sends donors to the payment provider and records the donation correctly.
+
+### Lab — release checklist
 
 ```python
 """Pre-release checklist for a synthetic site update (stdlib only)."""
@@ -306,17 +340,25 @@ NOT READY: admin accounts use MFA
 
 Four items pass: official source used, hash matches vendor, backup taken and tested on staging copy. One fails: admin accounts use MFA, because one volunteer administrator has not finished setting up multi-factor sign-in. The lab prints NOT READY: admin accounts use MFA. Owen holds the release until the volunteer completes setup the next morning, then reruns the checklist and releases.
 
+The failed item is outside the update itself, which is why it belongs on the list. A newly updated form on a site where one administrator account still has only a password leaves the most powerful account as the easiest way in. Holding the release for one night costs little; the director had already been told the update was coming.
+
 ### 4.3 Why a checklist
 
 A checklist makes sure nothing is skipped under time pressure. Each item links to an earlier lesson: sources and hashes protect integrity, backups and staging protect availability, multi-factor sign-in protects the administrator accounts that could change everything else. SLSA v1.0 and Sigstore (Newman et al., 2022) show how larger projects automate similar integrity checks.
+
+For Owen, the list also replaces memory. He runs this release once, but the weekly routine will repeat the same steps for every update, sometimes in a hurry when an advisory is published. A written checklist means a second volunteer, who the director has asked to learn the routines, can follow the same steps without Owen there.
 
 ### 4.4 Routines
 
 Weekly: check for plugin updates and apply security updates after staging. Monthly: review the component list and administrator accounts. Yearly: review maintenance of each component and the restore test. All are noted in the change log.
 
+Each routine has an owner and a note. The weekly update check is Owen's, with the second volunteer as backup. The monthly account review would have caught the volunteer administrator who had not finished setting up multi-factor sign-in. The yearly maintenance review is where a component like event-calendar, quiet for years, would be spotted early.
+
 ### 4.5 Putting it together
 
 By the end of the month: multi-factor sign-in for all administrators, a component inventory, donate-form updated, event-calendar replaced, photo-gallery removed, automatic security updates on, and written routines.
+
+Each item has evidence in the change log or the inventory, which is what Owen showed the director and Nadia. The limits are written down too: he cannot check the payment provider's security, he relies on vendors publishing advisories, and he is one person. The second volunteer learning the routines answers the last of these.
 
 ### Worked example
 
