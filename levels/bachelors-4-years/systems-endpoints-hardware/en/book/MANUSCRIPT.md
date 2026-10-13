@@ -1313,14 +1313,6 @@ Aisha records the reasoning so the choice can be revisited if risks change.
 
 She also explains hashing with a practical example: Gareth checks the hash of a downloaded installer against the vendor's published value before deploying it, confirming the file was not corrupted or replaced.
 
-### Testing recovery
-
-Before full rollout, Gareth tests retrieving a recovery key for a lab laptop and unlocking it, timing the process.
-
-### Recovery keys
-
-Recovery keys are stored in the directory, not on paper in desks.
-
 ### Worked example
 
 During rollout, a laptop asks for its recovery key after a firmware update. Gareth retrieves it from the directory in two minutes, demonstrating why escrow matters.
@@ -1714,7 +1706,7 @@ reporting, not in register: BHA-L46, DESKTOP-7F2K
 
 The register lists 49 devices; 47 report. Four registered devices are not reporting: laptops L07, L19, L33 and server S04. Two reporting devices are not registered: L46 and DESKTOP-7F2K.
 
-The two totals differ by only two devices, but the lab finds six mismatches in total. Four devices are on the register but not reporting, and two report without being registered. The gap between 49 and 47 hides this detail, which is why Aisha prints both differences instead of the totals alone. Aisha reruns the lab and confirms the same six names appear, so the result does not depend on the order of the export.
+The two totals differ by only two devices, but the lab finds six mismatches in total. The gap between 49 and 47 hides this detail, which is why Aisha prints both differences instead of the totals alone. Aisha reruns the lab and confirms the same six names appear, so the result does not depend on the order of the export.
 
 ### 22.3 Investigating
 
@@ -2000,7 +1992,7 @@ Each cause points to a different fix and a different owner. The two non-reportin
 
 Agents fixed, disk cleaned, finance server window booked.
 
-Gareth repairs the agents on L19 and L33 so they report again, and the overdue updates install once they do. L03's full disk is cleaned up, and the critical update is then retried and confirmed installed. The finance server's critical update is booked into the next monthly window after month-end, and the delay is recorded with its reason and new date. The triage lab is rerun after each fix, and within two weeks the shared board shows no overdue items.
+Gareth repairs the agents on L19 and L33 so they report again, and the overdue updates install once they do. L03's full disk is cleaned up, and the critical update is then retried and confirmed installed. The finance server's critical update is booked into the next monthly window after month-end, and the delay is recorded with its reason and new date and reviewed weekly. The triage lab is rerun after each fix, and within two weeks the shared board shows no overdue items.
 
 ### Setting the policy
 
@@ -2013,10 +2005,6 @@ She also checks severity labels against vendor descriptions to make sure they ar
 ### Exploitation likelihood
 
 For overdue critical updates, Aisha checks whether the vulnerability is listed as likely to be exploited, using EPSS scores described by Jacobs et al. (2021), to decide which to fix first when several are overdue.
-
-### Exceptions
-
-If an update must be delayed, the delay is recorded with a reason and a new date, and reviewed weekly.
 
 ### Project log entry
 
@@ -2288,7 +2276,7 @@ The forced restart after seven days' notice, with a reminder on day five, target
 
 Next month failures fall.
 
-The following month, failures fall from 34 to 15, and pending reboots fall most. Aisha reports the change with the caveat that one month may vary, and repeats the grouping each month. The disk figure falls more slowly, because two disk upgrades are still waiting for delivery. Aisha keeps the monthly chart of failures by cause, so Gareth can see whether each fix holds after the first month. She notes that one month is too short to call the fall permanent, so the grouping continues each month.
+The following month, failures fall from 34 to 15, and pending reboots fall most. Aisha reports the change with the caveat that one month may vary. The disk figure falls more slowly, because two disk upgrades are still waiting for delivery. Aisha keeps the monthly chart of failures by cause, so Gareth can see whether each fix holds after the first month. She notes that one month is too short to call the fall permanent, so the grouping continues each month.
 
 ### Pending reboots
 
@@ -3101,7 +3089,7 @@ The routine now includes a monthly spot check of five laptops, with different la
 
 Evidence from one source should be cross-checked.
 
-Aisha applies the lesson to her other measures: patch figures are compared with laptops' own update history on the spot-checked machines, and the inventory comparison is checked against the asset register. Non-reporting devices are counted separately in every table, because a silent device can make one source look complete when it is not. Claims resting on one source are worded more cautiously in the dissertation than claims supported by two. Aisha applies it to staff feedback by comparing it with help request counts.
+Aisha applies the lesson to her other measures and to staff feedback, which she compares with help-request counts: patch figures are compared with laptops' own update history on the spot-checked machines, and the inventory comparison is checked against the asset register. Non-reporting devices are counted separately in every table, because a silent device can make one source look complete when it is not. Claims resting on one source are worded more cautiously in the dissertation than claims supported by two.
 
 ### Limitations
 
@@ -3122,10 +3110,6 @@ Seasonal patterns and staff changes may affect patch results.
 ### Reflection
 
 Aisha notes that she underestimated how long checking with staff would take.
-
-### Measurement limits
-
-Several measures depend on devices reporting. A device that stops reporting can look compliant by omission, so Aisha counts non-reporting devices separately in every result.
 
 ### Project log entry
 
@@ -3195,7 +3179,7 @@ The laptop is rebuilt from the management server using the documented process, w
 
 Completed in one term.
 
-One term covers implementation, verification and handover, with the baseline and the reminder study done in earlier terms. Aisha keeps a timeline in her project log showing when each stage started and finished. The two slipped tasks are shown on the timeline with their reasons, rather than removed from it. Aisha leaves two weeks for proofreading at the end, as her dissertation plan requires. Slipped tasks are given new owners, so they do not vanish when the term ends and Aisha leaves Bramley.
+One term covers implementation, verification and handover, with the baseline and the reminder study done in earlier terms. Aisha keeps a timeline in her project log showing when each stage started and finished. The two slipped tasks, the server replacement and phone management, both outside her control, are shown on the timeline with their reasons, rather than removed from it. Aisha leaves two weeks for proofreading at the end, as her dissertation plan requires. Slipped tasks are given new owners, so they do not vanish when the term ends and Aisha leaves Bramley.
 
 ### Structuring the dissertation
 
@@ -3213,17 +3197,9 @@ Aisha uses short sentences, active voice and defined terms. Each paragraph start
 
 All sources are cited; quoted text is marked; the tutor's suggestions are acknowledged.
 
-### Deadlines
-
-She plans two weeks for final proofreading.
-
 ### Appendices
 
 Appendices hold the labs, synthetic data, role documents and the routine, so the main text stays readable while every claim remains checkable.
-
-### Project log entry
-
-Implementation is tracked against the proposal's plan. Two tasks slip, the server replacement and phone management, both outside her control. She records the slips, their reasons and the new owners rather than quietly dropping them from the dissertation.
 
 ### Review with the tutor
 
