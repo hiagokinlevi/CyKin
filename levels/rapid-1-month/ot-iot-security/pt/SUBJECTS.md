@@ -1,18 +1,18 @@
-# Subjects and book chapters — OT, IoT and cyber-physical security / Rapid course / Português
+# Disciplinas e capítulos do livro — Segurança de TO, IoT e Sistemas Ciberfísicos / Rápido / Português
 
-**One course, one principal book, 4 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Um curso, um livro principal, 4 disciplinas e capítulos, uma skill do curso.** Apenas os links marcados como Rascunho levam a conteúdo didático escrito; um capítulo planejado é um resumo, não uma lição concluída.
 
-This is an English working index awaiting translation and review for this language.
+Edição em português do Brasil, escrita a partir da edição de referência em inglês; revisão técnica e linguística pendente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Início](../../../../README.md) · [Trilha de estudo completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md)
 
-**Course 022 of 207.** Read chapters 01–04 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 022 de 207.** Leia os capítulos 01–04 de cima para baixo. Para cada capítulo, use o link Rascunho; o link numerado do plano é apenas um resumo. Tente os exercícios antes de consultar as resoluções no fim do livro. A última linha leva ao próximo curso neste mesmo idioma.
 
-| Week | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semana | Capítulo / plano | Disciplina | Horas | Páginas A4 previstas | Meta de exercícios | Estado didático | Próximo passo |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | OT, IoT and cyber-physical security: foundations and decisions | 20 | 80 | 13 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 3 | [03](book/PLAN.md#ch-03) | OT, IoT and cyber-physical security: systems, data and dependencies | 20 | 80 | 12 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 4 | [04](book/PLAN.md#ch-04) | OT, IoT and cyber-physical security: guided lab and applied synthesis | 20 | 80 | 12 | Planned | [Course 023 →](../../critical-sector-security/pt/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | O que são a segurança de TO, de IoT e ciberfísica | 20 | 80 | 13 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
+| 2 | [02](book/PLAN.md#ch-02) | Ativos, redes e exposição | 20 | 80 | 13 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
+| 3 | [03](book/PLAN.md#ch-03) | Reconhecer e relatar problemas | 20 | 80 | 12 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
+| 4 | [04](book/PLAN.md#ch-04) | Hábitos seguros, noções de resposta e próximos passos | 20 | 80 | 12 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [Curso 023 →](../../critical-sector-security/pt/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
