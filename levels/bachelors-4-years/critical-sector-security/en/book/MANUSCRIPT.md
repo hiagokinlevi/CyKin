@@ -798,7 +798,7 @@ The `LEFT JOIN` shows HMI-01 with nulls in the advisory columns. "No advisory" m
 - Building SQL with string concatenation.
 - Trusting product names to match exactly across vendor feeds and local inventories.
 
-Lab 5 contains two of these errors deliberately. The version comparison would treat "3.10" as older than "3.4" if done as text, wrongly marking an updated RTU as vulnerable. The inner join drops HMI-01 silently. And the product names "RTU-K" and "VPN-G" only join because the sample was typed consistently; real vendor feeds spell products differently and need a mapping table.
+Lab 5 shows where three of these errors would bite. The version comparison would treat "3.10" as older than "3.4" if done as text, wrongly marking an updated RTU as vulnerable. The inner join drops HMI-01 silently. And the product names "RTU-K" and "VPN-G" only join because the sample was typed consistently; real vendor feeds spell products differently and need a mapping table.
 
 ### Exercises — chapter 9
 
@@ -2551,7 +2551,7 @@ After this project you can (1) compare three or more options against explicit cr
 
 Decisions about critical services involve several criteria that do not share a unit: consequence reduction, operational burden, cost, time to implement, strength of evidence that the option works. **Multi-criteria decision analysis** scores each option on each criterion, weights the criteria, and combines them — most simply as a weighted sum. Its value lies less in the final number than in making the criteria, scores and weights visible so that people can argue about them productively.
 
-In the unsupported-devices evaluation, the cost weight is printed beside each score, which is how a reader can see that the vendor gateway wins once that weight passes 0.45.
+In the unsupported-devices capstone evaluation (Chapter 39), the cost weight is printed beside each score, which is how a reader can see that the vendor gateway wins once that weight passes 0.45.
 
 ### 34.2 Doing it honestly
 
@@ -2609,7 +2609,7 @@ Backups with restore drills win under the agreed weights and remain ahead until 
 
 A 2,500-word comparative report on a question of your choice within the Calder case or a documented public topic (for example, three approaches to remote access, three backup strategies, three monitoring options): constraints, criteria with anchored scales, evidence per score, weights set in advance, sensitivity analysis, recommendation with reversal conditions, and limits.
 
-For the unsupported-devices comparison that weight is 0.45 on cost; below it isolation with monitoring wins, above it the vendor gateway does.
+For the unsupported-devices capstone comparison (Chapter 39) that weight is 0.45 on cost; below it isolation with monitoring wins, above it the vendor gateway does.
 
 State the reversal condition in words, as Lab 13's report does: the weight at which the recommendation would change and the value judgement that weight represents.
 
@@ -2870,7 +2870,7 @@ After this chapter you can (1) execute a capstone plan while controlling scope a
 
 Implementation turns the proposal (Chapter 35) into evidence. Keep three living documents. A **project log** (date, what you did, what you decided and why). An **evidence register** (item, source, date, type, how obtained, where stored, which criterion it supports — Chapter 15). A **change record** for any departure from the proposal, with your supervisor's agreement. Scope creep is the commonest capstone failure: new questions are interesting, but each must either replace something or wait for "future work".
 
-The record states what replaced it, a document review of two public guidance sources, and the validity cost: practitioner input now rests on one interview.
+In the week-14 checkpoint below, the change record states what replaced the declined second interview, a document review of two public guidance sources, and the validity cost: practitioner input now rests on one interview.
 
 ### 38.2 Building the supporting model
 
@@ -2943,7 +2943,7 @@ Asking a second person to score two options with your anchored scales is a quick
 
 Re-run your comparison under plausible variations: different weights (Lab 13), pessimistic and optimistic evidence (Chapter 22's halved autonomy), alternative model assumptions (Chapter 38's archive variant). A **robust** recommendation holds across most variations; a **fragile** one depends on a specific assumption, which you must name. Present the result as a short table: variation, winner, comment.
 
-They are a cost weight of 0.4, a cost weight of 0.6, archive-side controls added to the gateway and pessimistic evidence for isolation.
+In the worked evaluation the variations beyond the agreed weights are a cost weight of 0.4, a cost weight of 0.6, archive-side controls added to the gateway and pessimistic evidence for isolation.
 
 The worked evaluation shows a fragile result: the gateway wins once cost weight exceeds 0.45, and accelerated replacement wins when isolation's monitoring is assumed not to work. Both are named in the conclusion as reversal conditions, so a reader can see which value judgement and which assumption the recommendation rests on.
 
@@ -3040,7 +3040,7 @@ Write the method chapter first (you know it best), results second, introduction 
 
 A strong conclusion answers the question asked — not a broader one — and says how strongly. Compare: "Network isolation is the best way to secure medical devices" (overclaims) versus "For a mid-sized hospital with the synthetic inventory studied, isolation with monitored conduits reduced exposure most per pound, provided alerts are reviewed daily; the recommendation reverses if cost dominates the decision (weight above 0.45) or if monitoring is unstaffed." The second is narrower and far more useful.
 
-Those are a cost weight above 0.45 and unreviewed monitoring alerts, under which accelerated replacement wins.
+The reversal conditions in that conclusion are a cost weight above 0.45, under which the vendor gateway wins, and unreviewed monitoring alerts, under which accelerated replacement wins.
 
 ### 40.3 The presentation
 
