@@ -1192,6 +1192,8 @@ You will (1) gather evidence about cloud controls; (2) check audit logging cover
 
 The opening case could not measure how long the registry was open because logging was off. Audit logs record who changed what and when, and are the main evidence for investigations.
 
+Without them, the review could only say that the registry had been open at some point, not when it opened, who pulled images or whether records-api was among them. With them, the same questions would have had definite answers within an hour. That difference is why turning logging on everywhere was treated as urgent, even before the registry was fixed, and why coverage is now measured every month rather than assumed.
+
 ### Lab — Lab — logging coverage
 
 ```python
@@ -1217,21 +1219,31 @@ logging coverage 3/6
 
 Audit logging is missing in studyhub-test / eu-central and in both regions of research-sandbox. Coverage is 3 of 6 account-region pairs. studyhub-prod is fully covered; the gaps are in test and research accounts, which are exactly where mistakes are often made.
 
+Test and research accounts are created more often and with less ceremony than production, so a missed setting is more likely there. The opening case's missing logs were in one such account. A coverage figure for production alone would have looked perfect while hiding the very gaps that caused the review's main uncertainty, which is why Samuel reports coverage across every account and region.
+
 ### 15.3 Fixing gaps
 
 An organisation-wide logging configuration turns on audit logs for every account and region, sending them to a separate log account that individual accounts cannot alter.
+
+Central configuration removes the need to remember logging when a new account or region is added, which is how the original gap appeared. Sending logs to a separate account matters because an attacker or a careless administrator in one account cannot then delete the evidence of what they did. Samuel's lab check now confirms coverage remains complete each month.
 
 ### 15.4 Trustworthy evidence
 
 Logs are stored with integrity protection and restricted access. Evidence collected for reports records source, time and hash.
 
+Integrity protection means stored logs cannot be changed without detection, for example through a storage setting that prevents overwriting for a fixed period. Recording the hash of each extract lets Samuel show later that the figures in his report came from an unaltered file. Only the security team and auditors can read the log account directly. Samuel's evidence log follows the same pattern for every file he uses.
+
 ### 15.5 Measures
 
 Logging coverage, time to fix findings and number of high-risk configurations are tracked monthly.
 
+Each measure is defined once, with its formula and source, so that monthly figures are comparable. Coverage is account-region pairs with logging on, divided by all pairs. Time to fix is days from first detection to the checker no longer reporting the finding. The monthly report shows each measure with its trend over the previous six months. Changes to a definition are noted on the report, and earlier months are recalculated where possible, so a trend line never mixes two meanings.
+
 ### 15.6 Limits
 
 Logs show actions, not intentions; missing data must be stated in reports.
+
+In the sandbox example below, the log shows a researcher created a public bucket but not why; the friendly conversation that followed established it was a mistake. A report that says "no unusual pulls were logged" must also say which accounts were logging at the time, or readers will assume complete coverage that did not exist. Samuel's reports carry a short coverage statement near the top for that reason. Logs also miss actions taken outside the cloud platform, such as someone copying a downloaded image onto a laptop, which no cloud log can record.
 
 ### Evidence log
 
@@ -1277,29 +1289,43 @@ You will (1) design a layered architecture for StudyHub; (2) separate accounts a
 
 Westmere uses separate cloud accounts for production, test, research sandboxes, shared tooling and logs. Accounts are strong boundaries: a mistake in a sandbox cannot change production resources.
 
+The research sandbox shows why: researchers experiment freely there, and a mistake such as a public bucket stays inside that account. If the sandbox shared an account with StudyHub production, the same mistake could expose student services. Separate accounts also make it simpler to give each team full control of its own space without access to others.
+
 ### 16.2 Organisation guardrails
 
 Policies at the organisation level block public storage, restrict regions to the home region and prevent disabling audit logs. Guardrails apply to every account, including ones created in the future.
+
+Guardrails act before a mistake happens, while checkers find mistakes afterwards. The researcher's public bucket in the evidence chapter was blocked by a guardrail, not found later by a scan. Applying guardrails to future accounts closes the gap that created the opening case, where a new account missed a setting.
 
 ### 16.3 Cluster design
 
 Production and test clusters are separate. Within production, namespaces separate services, with default-deny network policies and Restricted pod security.
 
+Separate clusters mean a test deployment cannot accidentally affect production pods. Within production, default-deny network policies stop one compromised service from reaching others, and Restricted pod security limits what any single container can do. Each namespace belongs to one team, which keeps ownership clear. Test clusters may use relaxed settings for debugging, but they never hold real student data, and their credentials cannot reach production resources. Samuel's checker runs against both clusters, with the production checks treated as stricter.
+
 ### 16.4 Trust boundaries
 
 Internet to load balancer; cluster to managed database; build system to registry; registry to cluster; accounts to log account. Each boundary has authentication and logging.
+
+The build-to-registry boundary was where the opening case started: the registry trusted anonymous requests from anywhere. Now the build system authenticates with its own identity, and pulls by the cluster use the cluster's identity. Every push and pull is logged in the central log account, so the same question asked again would have an answer.
 
 ### 16.5 Zero trust
 
 Following NIST SP 800-207, services authenticate each other and every request is authorised, rather than trusting anything inside the network.
 
+In StudyHub, records-api no longer accepts any request simply because it comes from inside the cluster. Each calling service presents its own identity, and records-api checks that the caller is allowed the specific operation. A compromised pod elsewhere in the cluster therefore cannot query student records just by reaching the service on the network. Network policies still limit which pods can reach records-api, so the two layers support each other.
+
 ### 16.6 Documentation
 
 An architecture diagram and decision records explain each choice.
 
+Decision records state the problem, the options considered, the choice and its reasons. When a new team member asked why the sandbox had its own registry, the record answered the question in a few minutes. Without it, the reason might have been forgotten and the registries merged again for convenience. The diagram shows accounts, clusters, trust boundaries and the main flows on one page, and links to the detailed system model. Decision records are short, usually under a page, and are numbered so later records can refer to earlier ones. Superseded decisions stay in the repository with a note pointing to their replacement.
+
 ### 16.7 Review
 
 Architecture changes are reviewed by the cloud team and a security reviewer.
+
+The security reviewer looks particularly at new trust boundaries and changes to guardrails. A proposal to let the research sandbox pull from the production registry was rejected in review with a reference to the decision record, and the team found another way to share the base image the researchers needed. Reviews are recorded in the pull request, so the reasoning stays with the change. Small changes that do not touch boundaries or guardrails are reviewed by the cloud team alone, which keeps the security reviewer's time for the decisions that need it.
 
 ### Account creation
 
@@ -1341,29 +1367,43 @@ You will (1) explain encryption at rest and in transit; (2) describe key managem
 
 TLS protects traffic between users and StudyHub and between services. Certificates are issued and renewed automatically.
 
+Between services inside the cluster, TLS stops a compromised node or a misrouted network from exposing student records as they travel. Automatic issuance and renewal removes the expired-certificate outages that once tempted developers to switch off verification, which is the mistake Samuel found in records-api. Internal certificates come from a private authority with short lifetimes. Samuel's checker reports any service that accepts plain connections or skips certificate verification, and the first run found exactly one, records-api, as the worked example below describes.
+
 ### 17.2 Encryption at rest
 
 Managed storage and databases encrypt data at rest. Provider-managed keys are simplest; customer-managed keys in a key service add control over use and rotation, with audit logs of each use.
+
+StudyHub's student records database uses a customer-managed key, so Westmere can see every use of the key in the audit log and could disable it in an emergency. Less sensitive stores such as application logs use provider-managed keys, which are simpler and adequate for their risk. The choice is recorded in the data register for each store.
 
 ### 17.3 Key management
 
 Keys live in a managed key service, never in code or images. Access to use a key is granted to specific identities.
 
+Granting key use to specific identities means that even someone with storage access cannot decrypt the student records database's backups without also being allowed to use its key. This two-part check limits the effect of a mistake in either permission. The key service logs each use, which feeds the access review below. Samuel's checker also searches images and code for anything that looks like a key, which complements secret scanning.
+
 ### 17.4 Hashes
 
 An image digest is a hash of its content. Deploying by digest guarantees the exact image tested is the one running.
+
+A tag such as latest can be moved to point at a different image at any time, so two deployments of the same tag may run different code. Deploying by digest removes that doubt. StudyHub's deployment files record digests, and the evidence for a release includes the digest that passed testing. Samuel's checker flags deployments that use tags instead of digests, so drift is visible.
 
 ### 17.5 Signatures
 
 The build system signs images; the cluster verifies signatures before running them, so images from elsewhere are refused.
 
+Since the sandbox gained its own registry, a research image could only reach production by being signed by StudyHub's build system, which does not build research images. Signature verification adds a second barrier beyond registry separation. A failed verification blocks the pod and raises an alert. Signing keys are held in the key service and used only by the build system's identity, so a developer cannot sign an image from a laptop. Exceptions for third-party system images are verified with the publisher's own signature where one exists.
+
 ### 17.6 Mistakes
 
 Hard-coded keys, home-made encryption schemes and disabled certificate checks. All are avoided by using platform services.
 
+Each has a familiar cause: hard-coded keys are quick in development, home-made schemes seem simpler than learning a library, and disabled checks make a certificate error go away. Platform services make the secure option the easy one. Samuel's checker searches code and configuration for the most common signs of all three. Findings are explained to developers with the safer alternative, so the fix is easy to apply and the habit changes rather than just the line of code.
+
 ### 17.7 Secrets
 
 Connection strings and passwords belong in a secret manager, delivered to pods at run time, never baked into images like the one in the opening case.
+
+After the opening case, records-api receives its database credentials from the secret manager when the pod starts, and the credentials expire and are replaced automatically. The rebuilt image contains no connection string at all. Pre-push scanning now looks for secret patterns, so a repeat would be stopped before the image reached the registry. The old password was rotated as well.
 
 ### Rotation
 
@@ -1409,29 +1449,43 @@ You will (1) design a small study of StudyHub's configuration; (2) form a questi
 
 Samuel asks: "Are StudyHub images built from the shared base image less likely to contain high-severity vulnerabilities than images built from public bases?"
 
+The question is narrow and answerable with data the team already has: scan reports and the base image each team chose. It also matters to a real decision, since the team was considering whether to require the shared base. A broader question such as "are our images secure?" could not be answered in a month. Dr Jensen approved the question.
+
 ### 18.2 Hypothesis
 
 Images from the shared base, rebuilt weekly, have fewer high-severity findings.
+
+Writing the hypothesis down before looking at the data commits Samuel to a direction of effect. If public-base images turned out to have fewer findings, he would report that rather than rephrasing the question. The weekly rebuild is part of the hypothesis because it is the mechanism by which the shared base stays patched. Samuel also states what result would count against the hypothesis: no difference in the share of images with high findings, or a higher share among shared-base images. Stating it in advance makes the test honest.
 
 ### 18.3 Data
 
 Scan reports for 40 images over one month: 22 from the shared base, 18 from public bases.
 
+Forty images over a month is small but covers every StudyHub image in use. The scanner version stayed the same throughout, so differences cannot come from a tool update. The groups are unequal in size, which Samuel handles by reporting proportions as well as counts. Images were counted once each, using the most recent scan in the month, so frequently rebuilt images did not count more than others. Samuel records which scan was used for each image in his evidence log, with the scanner version and date.
+
 ### 18.4 Analysis
 
 Median high-severity findings: 0 for shared-base images, 3 for public-base images. Of public-base images, 12 of 18 had at least one high finding versus 3 of 22 shared-base images.
+
+In proportions, two thirds of public-base images had at least one high finding, against about one in seven shared-base images. The medians tell a similar story. Samuel reports both counts and proportions so readers can check the arithmetic and see the size of each group. He does not compute a formal test, since the groups were not randomly formed and a p-value would suggest more certainty than the design supports. Instead, he shows the counts in a small table with the two bases as rows and presence or absence of high findings as columns.
 
 ### 18.5 Limits
 
 Images were not randomly assigned to bases; teams using public bases may maintain their images less. Shu, Gu and Enck (2017) also found many vulnerable images on public registries, which is consistent but does not prove cause here.
 
+Samuel states the confounding directly: the difference may come from the base image, from how carefully each team maintains its images, or from both. The study cannot separate them. The recommendation is still reasonable, because moving to the shared base also brings weekly rebuilds, which addresses maintenance as well.
+
 ### 18.6 Ethics
 
 Data are scan reports about images, not people; team names are not reported.
 
+Not naming teams avoids turning the study into a league table, which could make teams defensive about adopting the shared base. The data contain no personal information, so no ethics review was needed beyond Dr Jensen's approval of the plan. Scan reports can still reveal which services are vulnerable, so the raw data stay in the team's restricted repository. Only aggregate figures appear in the report and slides, and Samuel's local copies are deleted after the analysis, as his access diary records.
+
 ### 18.7 Report
 
 A three-page report with method, results, limits and recommendation: move all images to the shared base.
+
+The recommendation follows from the result and from the practical fact that the shared base is already maintained. The report's limits paragraph sits beside the main finding, so readers who stop early still see that the evidence is observational. It names the decision the team must make, the evidence for it and what would make the recommendation wrong, such as the shared base itself falling behind on patches. Tom read it in one sitting, which was the aim.
 
 ### Planning the study
 
@@ -1477,25 +1531,37 @@ You will (1) define cloud and container security; (2) explain the theories behin
 
 Cloud and container security protects workloads, data and identities on shared, on-demand infrastructure and in containerised platforms. NIST SP 800-145 defines the cloud; NIST SP 800-190 sets out container risks: image, registry, orchestrator, container and host.
 
+For StudyHub, the definition covers the cluster, its images, the registry, the managed database and the identities that tie them together. The opening case touched three of SP 800-190's five risk areas. The definition matters because it decides what Samuel's checker must cover and what lies outside his project.
+
 ### 19.2 Isolation theory
 
 Security depends on separating tenants, workloads and privileges. Clouds use hypervisors and accounts; containers use kernel features; Kubernetes uses namespaces and policies.
+
+Each mechanism has a different strength. Hypervisors and accounts provide strong separation; kernel features are weaker because containers share one kernel; namespaces and policies depend entirely on correct configuration. StudyHub uses all three, with the strongest boundaries between production and everything else. That ranking guides where Westmere places its most important separations: student records sit in the production account, in their own namespace, behind network policies and with Restricted pods. If one layer fails, the others still separate records-api from less trusted workloads.
 
 ### 19.3 Least privilege
 
 Every identity has only needed permissions. Sandhu et al. (1996) formalised role-based access control, which cloud identity systems implement at scale.
 
+The role-path lab earlier showed least privilege failing gradually: each role grant looked reasonable, yet support-cy could reach cluster-admin. Role-based access control makes permissions manageable, but only if roles are designed narrowly and reviewed, as the identity chapter describes. Theory supplies the model; operations must keep it true. Roles drift as people add permissions to fix urgent problems and forget to remove them afterwards. Regular reviews and the graph analysis catch that drift, which is why both appear in Samuel's monthly checks.
+
 ### 19.4 Declarative configuration
 
 Kubernetes and infrastructure-as-code describe the desired state; controllers make reality match. Burns et al. (2016) explain this design. Declarative configuration can be reviewed and checked before it is applied.
+
+For Westmere, declarative configuration means a pod running as root can be caught by a check on the configuration file before it ever runs. The same idea underlies the admission enforcement in the operating systems chapter. Reviewing desired state is cheaper than inspecting running systems after the fact. Reviews of desired state also leave a record of who approved each change.
 
 ### 19.5 Shared responsibility
 
 Provider and customer responsibilities differ by service model, as provider documentation explains.
 
+For managed Kubernetes, the provider secures the control plane while Westmere secures workloads, images and access. The opening case's three findings all fell on Westmere's side. Samuel's diagram from the computing systems chapter marks the boundary for each StudyHub service. The boundary is not fixed across services: with a managed database the provider patches the engine, while with a database run on Westmere's own virtual machines Westmere would patch it. Samuel checks each service's documentation rather than assuming the same split everywhere, and records the result on the diagram.
+
 ### 19.6 Scope for the course
 
 Accounts and identity, networks, registries and images, clusters and workloads, data and logging, operations.
+
+These six areas map onto StudyHub's architecture and onto the opening case. Each later chapter returns to one or more of them. Topics outside the scope, such as the provider's data-centre security, are mentioned only where they affect Westmere's choices. Samuel's checker is organised the same way, with one group of checks per area, so its reports line up with the chapters. When a finding does not fit any area, that is a sign the scope may need extending, and Samuel raises it with Tom.
 
 ### Why theory matters
 
@@ -1537,25 +1603,37 @@ You will (1) study representative cloud security cases; (2) extract causes and l
 
 Common patterns in published incident reviews and research include public storage, leaked credentials in code or images, over-privileged identities and unpatched images. Samuel studies synthetic cases modelled on these patterns.
 
+Synthetic cases let Samuel study the patterns without relying on details of real organisations that may be incomplete or disputed. Each synthetic case is built from causes that appear repeatedly in published reviews, so the lessons transfer even though the companies are invented. Samuel writes each case in the same format: what happened, causes, effects and lessons. The common format makes comparison easier.
+
 ### 20.2 Case A: public storage
 
 A synthetic company's bucket of backups was public for months. Cause: a test setting copied to production. Lesson: account-level blocks and checks before deployment.
+
+Westmere's guardrail blocking public storage at the organisation level is the control this case argues for. It would have stopped the copied test setting from taking effect, whatever the deployment did. A pre-deployment check adds a second layer by catching the setting in review. The case also shows why months of exposure can pass unnoticed: nobody was checking. Samuel's weekly checker and the guardrail together would have both prevented and detected it.
 
 ### 20.3 Case B: credential in image
 
 A synthetic startup pushed an image with a cloud key to a public registry; the key was used to start costly machines. Cause: no secret scanning and long-lived keys. Lesson: short-lived identities and pre-push scanning.
 
+The cloud key in that image had broad rights, so the attacker could start machines and run up costs. Westmere's opening case was similar in mechanism but narrower in effect, because the connection string reached only a test database behind a network rule. Short-lived identities would have removed the secret entirely in both.
+
 ### 20.4 Case C: over-privileged pipeline
 
 A build system with administrator rights was misused after its token leaked. Lesson: narrow pipeline permissions.
+
+Westmere's pipeline role review, scheduled after the role-path lab, addresses this pattern. The lab showed dev-alice's path to cluster-admin through the pipeline, which is expected but must be protected. Narrowing the pipeline's permissions limits what a leaked token could do. Administrator rights were given to the build system for convenience, so any deployment could create whatever it needed without asking. Once the token leaked, the attacker had the same convenience. Westmere's deployer role is limited to the cluster namespaces it deploys to, and its tokens are short-lived, which limits a leak to a narrow scope.
 
 ### 20.5 Comparing
 
 Westmere's opening case resembles Case B, without misuse, partly because of network restrictions on the database.
 
+The comparison shows that luck and design both played a part. The network rule was design; the absence of real data in the test database was good practice; the fact that nobody misused the open registry, as far as anyone can tell, may have been luck. Samuel's report distinguishes the three. He also notes that the comparison may flatter Westmere, since the cases were chosen because they went badly.
+
 ### 20.6 Hindsight
 
 Decisions that look wrong afterwards may have been reasonable with what was known. Reviews focus on systems, not blame.
+
+The colleague who configured the registry had a reason at the time: a build server outside the network needed to pull images. The mistake was making whole repositories anonymous instead of giving the build server an identity. Understanding the reason helped the team design a fix that met the original need. Samuel's review report records that reason in one sentence, so readers see the decision in its context and do not conclude that the colleague was careless.
 
 ### Sources of cases
 
@@ -1601,29 +1679,43 @@ You will (1) model StudyHub's components, identities and data flows; (2) identif
 
 Load balancer, web front end, records-api, coursework service, message queue, managed database, storage buckets, registry, build system, identity provider, log account.
 
+Listing every component, including supporting ones such as the message queue and the log account, ensures none is forgotten when flows are drawn. The registry and build system are on the list because the opening case showed they belong to the attack surface as much as the services students use. Each component has an owner in the model, which tells reviewers whom to ask about it.
+
 ### 21.2 Identities
 
 Each service has a Kubernetes service account mapped to a cloud identity; people sign in through the identity provider; the build system has its own identity.
+
+Mapping each service account to a cloud identity means records-api's pods can reach the database with credentials that are issued at run time and limited to that service. The build system's identity is separate, so a compromise of the build cannot be used to read student records directly. The model lists each identity's permissions beside it, so reviewers can compare them with the flows the identity takes part in. Permissions with no matching flow are candidates for removal.
 
 ### 21.3 Data flows
 
 Students to web; web to records-api; records-api to database; coursework service to storage; build to registry; registry to cluster; all accounts to logs.
 
+Each flow has a source, a destination and a purpose. Drawing them shows, for example, that the coursework service writes to storage but never reads the database, which tells reviewers its identity needs no database access. Flows into the log account come from every account, so that boundary is the most widely used. Samuel numbers the flows so findings can refer to them briefly.
+
 ### 21.4 Trust boundaries
 
 Marked where flows cross networks, accounts or identity domains. Shostack's (2014) question "what can go wrong?" is asked at each boundary.
+
+At the boundary between the build system and the registry, the answer to Shostack's question was the opening case: anyone could pull images. At the boundary between the cluster and the database, it is a stolen connection string, which the network rule and now short-lived credentials address. Samuel writes the answers beside each boundary on the model, with the control that addresses each one. Boundaries with no listed control stand out immediately and go to the backlog.
 
 ### 21.5 Finding gaps
 
 For each flow, Samuel checks authentication, authorisation, encryption and logging. Gaps become backlog items.
 
+The flow from the coursework service to storage passed authentication and encryption but failed authorisation, because the role allowed deleting any object, as the worked example below shows. Logging was present. Recording all four checks per flow makes it obvious which control is missing. In total, the first pass across all StudyHub flows found a handful of gaps, each turned into a backlog item with an owner. The most serious, the coursework role, was fixed within the week; others, such as missing logging on the message queue, were scheduled for later sprints.
+
 ### 21.6 Keeping current
 
 The model is stored with the infrastructure code and updated in the same pull request as architecture changes.
 
+Updating the model in the same pull request ties it to the change that requires it. A reviewer who sees a new flow in the code but no update to the model can ask for one before approving. This keeps the model from becoming a picture of last year's system. The model is also reviewed once a term against flow logs, as described next, to catch flows that were added without anyone updating it.
+
 ### 21.7 Model limits
 
 The model shows intended flows; flow logs show actual flows. Comparing them finds surprises.
+
+Comparing the model with flow logs found one surprise: an old reporting job still connected directly to the database, a flow not on the model. It was the same analytics job described in the privacy chapter; its connection was added to the model and narrowed to read-only when the job was changed to produce counts directly. Samuel now runs the comparison each term. Flows that appear in the logs but not the model are investigated; flows that appear in the model but not the logs may be dead and are checked with their owners before removal.
 
 ### Drawing the model
 
