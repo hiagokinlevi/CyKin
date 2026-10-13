@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–27 de 50 já estão escritos em português, com os exercícios EX001–EX081 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 28–50 (EX082–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 28–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-28), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1663,11 +1663,198 @@ Codifique o TLP como barreira, falhe fechado, exija aprovação para ações de 
 
 [← Capítulo 26 (rascunho)](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 (rascunho) →](#ch-28)
 
+<a id="ch-28"></a>
+
+## Capítulo 28 — Inteligência de ameaças e OSINT: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar uma etapa de cliente TAXII 2.1 contra um servidor substituto sintético; (2) implementar as etapas de validação e normalização; (3) ligar as etapas com filas limitadas; (4) produzir métricas visíveis ao operador desde a primeira versão.
+
+### 28.1 Etapa do cliente
+
+O cliente descobre a raiz da API, lista as coleções permitidas e pede os objetos acrescentados depois do último ponto de controle salvo. Ele segue a paginação até o fim e só armazena o novo ponto de controle depois que o lote foi gravado com segurança, de modo que uma queda causa uma nova busca, e não uma lacuna. A ordem importa, como mostra o exemplo resolvido. Um ponto de controle salvo antes da gravação marca como recebidos objetos que não foram. Salvar depois da gravação significa que uma queda entre as duas etapas busca alguns objetos duas vezes, o que o armazenamento suporta porque as gravações são indexadas pelo identificador e gravações repetidas não mudam nada.
+
+### 28.2 Validação e normalização
+
+A validação impõe as propriedades obrigatórias do STIX e o formato do identificador. A normalização aplica as regras documentadas no Capítulo 13. As duas etapas emitem rejeições com motivos. Rodar a validação antes da normalização significa que as regras de formato são verificadas sobre o que o parceiro de fato enviou. Normalizar primeiro poderia esconder um valor malformado, transformando-o em algo que parece válido. Os registros da etapa de Kofi mostram contagens por fonte e por motivo, que viram os relatórios de qualidade dos parceiros. Um registro rejeitado aqui nunca chega ao armazenamento, então nenhum analista vê um valor limpo pela metade.
+
+### 28.3 Filas
+
+Filas limitadas ligam as etapas. Se o enriquecimento fica lento, a validação enche sua fila de saída e espera; o cliente pausa. Isso protege a memória e torna a lentidão visível. Kofi escolheu os tamanhos das filas a partir do uso de memória medido por objeto e de um limite que deixa espaço para o resto do host. Quando uma fila fica cheia por mais de alguns minutos, um alerta diz ao operador qual etapa está lenta. Filas ilimitadas esconderiam a lentidão até a memória acabar e o coletor inteiro parar de uma vez.
+
+### 28.4 Métricas desde o primeiro dia
+
+Objetos recebidos, aceitos e rejeitados por fonte; profundidade das filas; idade do ponto de controle; duração da consulta. Métricas são baratas de acrescentar cedo e caras de adaptar depois. Kofi acrescentou esses contadores na primeira semana, antes de qualquer trabalho de desempenho. Em poucos dias eles mostraram que as consultas a um parceiro demoravam muito mais que as demais, o que se revelou um servidor lento do lado do parceiro, e não um problema do Lantern. Sem a métrica de duração da consulta, a equipe poderia ter passado dias analisando o código errado. Cada métrica tem uma descrição curta e um responsável no painel.
+
+### 28.5 Servidor substituto sintético
+
+O desenvolvimento usa um substituto local que serve pacotes STIX sintéticos no formato TAXII 2.1. Nenhum tráfego de desenvolvimento toca os servidores dos parceiros, o que protege os parceiros e mantém os testes reproduzíveis. O substituto serve pacotes fixos a partir de arquivos, incluindo malformados para testes de erro, e pode ser instruído a responder devagar ou a recusar requisições. Isso permite à equipe testar tempos limite e recuos sem pedir a um parceiro um servidor quebrado. Como os pacotes são fixos, um teste que passa hoje passará amanhã, a menos que o código tenha mudado.
+
+### Configuração dos parceiros
+
+Cada entrada de parceiro na configuração indica a raiz da API, as coleções, o intervalo de consulta, a referência da credencial e o contato de dados. Acrescentar um parceiro é uma mudança de configuração revisada, não uma mudança de código, o que mantém genérica a etapa do cliente e torna auditável a própria lista de parceiros. Remover um parceiro segue as etapas de desativação do Capítulo 16.
+
+### Exemplo resolvido
+
+Na primeira execução de teste, o cliente salvou o ponto de controle antes de gravar o lote; uma queda forçada então perdeu 200 objetos. Kofi inverte as etapas — gravar, depois salvar o ponto de controle — e acrescenta um teste que provoca uma queda entre elas e verifica que nada se perde.
+
+> **Caso sintético.** O defeito e as contagens são inventados.
+
+### Erros e limites
+
+Entrega exatamente uma vez é difícil; projete para pelo menos uma vez com gravações idempotentes. Testar contra servidores reais de parceiros não é aceitável no desenvolvimento.
+
+### Exercícios
+
+- **EX082 — Ordem do ponto de controle.** Por que o ponto de controle precisa ser salvo depois que o lote é gravado? *Rubrica:* 3 = senão uma queda perde objetos; buscar de novo é seguro com gravações idempotentes; 2 = parcial; 1 = a ordem é irrelevante; 0 = nenhuma.
+- **EX083 — Razão do substituto.** Dê duas razões para desenvolver contra um substituto TAXII sintético. *Rubrica:* 3 = nenhuma carga/risco para os parceiros + testes reproduzíveis; 2 = uma; 1 = só mais rápido; 0 = nenhuma.
+- **EX084 — Métrica precoce.** Qual métrica revela um coletor parado, e por quê? *Rubrica:* 3 = idade do ponto de controle / objetos recebidos por fonte; sobe ou cai a zero quando parado; 2 = só a métrica; 1 = CPU; 0 = nenhuma.
+
+### Síntese
+
+Salve o ponto de controle depois de gravar, valide e normalize com rejeições, limite as filas e entregue métricas com a primeira versão.
+
+### Continue estudando — capítulo 28 de 50
+
+[← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Inteligência de ameaças e OSINT: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir a qualidade de um feed com precisão, revocação e F1 contra um conjunto rotulado; (2) construir um conjunto rotulado de avaliação de forma ética; (3) medir oportunidade e exclusividade; (4) relatar as métricas com seus limites.
+
+### 29.1 Conjuntos rotulados
+
+Para medir um feed, compare-o com a verdade de referência: indicadores confirmados como maliciosos em incidentes da BEN ou em investigações de parceiros confiáveis, mais valores confirmados como benignos. Os rótulos vêm de investigações concluídas, e não do próprio feed, para evitar circularidade. Usar as próprias entradas do feed como verdade faria qualquer feed parecer perfeito. O conjunto rotulado de Kofi se apoia em investigações encerradas nas quais um analista confirmou se um valor era hostil. Os rótulos benignos vêm da lista de permissões de fornecedores conhecidos da BEN e de valores investigados e liberados. Cada rótulo registra quem o atribuiu e quando.
+
+### Laboratório 6 — avaliação de feed
+
+```python
+"""Lab 6 (ch 29): precision and recall of a synthetic feed against a labelled ground-truth set."""
+truth_bad = {"a.example", "b.example", "c.example", "d.example", "e.example"}
+feed = {"a.example", "b.example", "c.example", "x.example", "y.example", "z.example"}
+tp = len(feed & truth_bad); fp = len(feed - truth_bad); fn = len(truth_bad - feed)
+p, r = tp / (tp + fp), tp / (tp + fn)
+print(f"TP={tp} FP={fp} FN={fn}")
+print(f"precision={p:.2f} recall={r:.2f} F1={2*p*r/(p+r):.2f}")
+```
+
+Execute com `python3 lab_feedeval.py`. Saída verificada:
+
+```text
+TP=3 FP=3 FN=2
+precision=0.50 recall=0.60 F1=0.55
+```
+
+### 29.2 Lendo as pontuações
+
+Três das seis entradas do feed são confirmadas como maliciosas (precisão 0,50); ele encontrou três de cinco valores maliciosos conhecidos (revocação 0,60); o F1 é 0,55. Metade do feed seria ruído se fosse bloqueada diretamente. As pontuações respondem a perguntas diferentes. A precisão diz à BEN quantos bloqueios vindos desse feed seriam equivocados. A revocação diz quanto da atividade hostil conhecida o feed teria pego. Um feed com revocação alta e precisão baixa ainda pode ajudar como fonte de enriquecimento, que é como o exemplo resolvido acaba usando-o.
+
+### 29.3 Oportunidade e exclusividade
+
+Um feed que lista indicadores uma semana depois que a BEN os viu tem pouco valor operacional. Meça a antecedência mediana em relação ao primeiro avistamento interno. A exclusividade — indicadores que nenhuma outra fonte fornece — mostra o valor marginal. Kofi mede a antecedência como a diferença entre o horário de publicação do feed e o primeiro avistamento do mesmo valor pela BEN. Uma antecedência positiva significa que o feed avisou a BEN com antecedência; uma negativa significa que chegou depois do fato. A exclusividade é medida contra todas as outras fontes do Lantern no mesmo período, já que um feed que duplica os outros acrescenta pouco, mesmo com qualidade alta.
+
+### 29.4 Limites
+
+A verdade de referência é incompleta: valores maliciosos desconhecidos contam como falsos positivos quando apenas não foram confirmados. Relate o período de avaliação, o tamanho do conjunto e o método de rotulagem com cada número. Por isso Kofi relata a precisão como limite inferior quando entradas não confirmadas são contadas como falsas. Ele também anota quantas entradas do feed não puderam ser rotuladas. Com um conjunto pequeno, um único valor rerrotulado pode mover as pontuações de forma perceptível, então o relatório traz as contagens por trás de cada razão. Os leitores podem então julgar quanto peso os números merecem.
+
+### 29.5 Usando os resultados
+
+As métricas alimentam os pesos das fontes no modelo de confiança do Lantern e informam as decisões de renovação de feeds pagos. Elas são compartilhadas com os parceiros de forma agregada quando os acordos permitem, apoiando a reciprocidade descrita no NIST SP 800-150. Kofi muda os pesos das fontes em passos pequenos e registra a avaliação que justificou cada mudança. A renovação de um feed pago depende das pontuações ao longo de um período contratual completo, e não de um trimestre. Quando a BEN compartilha resultados agregados com um parceiro, o parceiro descobre como seu feed se comporta no ambiente da BEN, o que o ajuda a melhorar sem expor detalhes dos incidentes da BEN.
+
+### Amostragem para rótulos
+
+Rotular todos os indicadores é impossível. Kofi sorteia uma amostra aleatória estratificada por tipo de indicador, rotula-a a partir dos registros de investigação e relata intervalos de confiança. Uma amostra de algumas centenas, sorteada honestamente, vale mais que uma enorme amostra de conveniência com o que por acaso foi investigado.
+
+### Exemplo resolvido
+
+Kofi avalia um feed pago ao longo de um trimestre: precisão 0,50, revocação 0,60, antecedência mediana de −2 dias (ele chega depois dos avistamentos internos). Ele recomenda mantê-lo apenas como fonte de enriquecimento e não renovar o nível premium.
+
+> **Caso sintético.** Os valores do feed são inventados.
+
+### Erros e limites
+
+Conjuntos rotulados pequenos dão estimativas instáveis. Não publique pontuações de fornecedores nomeados a partir de dados licenciados.
+
+### Exercícios
+
+- **EX085 — Citação das pontuações.** Cite a precisão, a revocação e o F1 do laboratório. *Rubrica:* 3 = 0,50, 0,60, 0,55; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX086 — Rótulo circular.** Por que os rótulos não podem vir do feed avaliado? *Rubrica:* 3 = a circularidade infla a precisão; 2 = viés, de forma vaga; 1 = tudo bem; 0 = nenhuma.
+- **EX087 — Antecedência negativa.** O que uma antecedência mediana de −2 dias significa operacionalmente? *Rubrica:* 3 = o feed chega depois da detecção interna; pouco valor preventivo; 2 = atrasado; 1 = adiantado; 0 = nenhuma.
+
+### Síntese
+
+Meça contra rótulos independentes, acrescente oportunidade e exclusividade e relate cada métrica com seus limites.
+
+### Continue estudando — capítulo 29 de 50
+
+[← Capítulo 28 (rascunho)](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 (rascunho) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever procedimentos de verificação rastreáveis até os requisitos; (2) executá-los com dados sintéticos; (3) registrar resultados de aprovação, falha e desvio; (4) distinguir verificação ("construído certo") de validação ("a coisa certa").
+
+### 30.1 Verificação versus validação
+
+A verificação confere se o Lantern atende aos requisitos escritos. A validação, no Capítulo 38, confere se ele atende às necessidades reais das partes interessadas. Uma plataforma pode passar na verificação e ainda falhar na validação se os requisitos estiverem errados. Kofi mantém as duas atividades em planos separados, com responsáveis separados. A verificação é conduzida pela equipe de engenharia contra o documento de requisitos. A validação envolve as pessoas que usam o Lantern e pergunta se ele ajuda no trabalho delas. Um requisito que passa na verificação, mas falha na validação, é evidência de que o próprio requisito precisa mudar.
+
+### 30.2 Procedimentos
+
+Cada procedimento indica o requisito, as pré-condições, os passos, o resultado esperado e os critérios de aprovação. "Carregar o pacote S-07 com 1.000 indicadores, dos quais 12 sem valid_from válido; esperar 988 armazenados e 12 rejeitados com motivo; aprovar se as contagens baterem exatamente." O exemplo mostra o nível de detalhe necessário: um pacote nomeado, contagens exatas e uma regra de aprovação clara. Duas pessoas que o sigam devem obter o mesmo resultado. Kofi escreve o procedimento antes de executá-lo, para que o resultado esperado não possa ser moldado pelo que o sistema por acaso produzir no dia.
+
+### 30.3 Cobertura
+
+A matriz de rastreabilidade mostra quais requisitos têm procedimentos. Requisitos descobertos são listados explicitamente; um requisito não testado é um risco aberto, não uma aprovação silenciosa. O relatório de cobertura de Kofi lista cada requisito com seus procedimentos e seu último resultado. Na primeira execução, vários requisitos não tinham procedimento, a maioria não funcionais, como a retenção. Cada lacuna foi preenchida com um procedimento ou registrada como risco aceito, com responsável e data de revisão. Ninguém podia marcar como atendido um requisito não testado.
+
+### 30.4 Desvios
+
+Quando um resultado difere, registre um desvio com severidade e responsável. Não edite o resultado esperado para casar com a saída sem uma mudança de requisito. Cada desvio registra o procedimento, o que era esperado, o que aconteceu e a evidência. A severidade segue o efeito sobre os usuários: uma falha na barreira de TLP é alta porque poderia vazar dados restritos; uma métrica ausente é menor. Kofi revisa semanalmente com a equipe os desvios abertos e só fecha cada um depois que o procedimento foi executado de novo e aprovado.
+
+### 30.5 Evidências
+
+Registros, instantâneos de métricas e hashes das saídas são armazenados com a execução do procedimento. Um revisor pode executar o mesmo procedimento com os mesmos dados sintéticos e comparar os hashes. Os hashes tornam a comparação rápida: se o arquivo de saída tem o mesmo hash da execução armazenada, o resultado é idêntico. Kofi guarda os dados sintéticos, a versão do código e a configuração com cada execução, para que um revisor meses depois possa reproduzi-la exatamente. Evidências que não podem ser reproduzidas pesam muito menos em uma auditoria.
+
+### Suíte de regressão
+
+Procedimentos aprovados viram testes de regressão automatizados executados a cada mudança. A suíte cresce com cada defeito corrigido, de modo que o mesmo erro não pode voltar em silêncio. Kofi marca cada teste com o ID de seu requisito, o que mantém a matriz de rastreabilidade atualizada sem esforço manual e mostra num relance quais requisitos perderam cobertura quando um teste foi removido.
+
+### Exemplo resolvido
+
+Kofi executa 42 procedimentos. 38 passam, 3 falham (a barreira de TLP permitiu um rótulo com espaço no final; faltou o motivo de rejeição para um tipo de erro; a métrica do ponto de controle não foi exportada) e 1 fica bloqueado pela falta de um dado de teste. Cada falha vira um defeito com responsável; o bloqueado é agendado.
+
+> **Caso sintético.** As contagens e os defeitos são inventados.
+
+### Erros e limites
+
+Uma execução de testes toda verde com dados sintéticos não prova robustez diante de todos os formatos de parceiros; amplie os dados de teste à medida que surgem formatos. Não conte procedimentos bloqueados como aprovados.
+
+### Exercícios
+
+- **EX088 — V e V.** Em uma frase cada, defina verificação e validação. *Rubrica:* 3 = construído conforme os requisitos; atende às necessidades reais; 2 = uma; 1 = trocadas; 0 = nenhuma.
+- **EX089 — Espaço no final.** Por que uma barreira de TLP que aceita "TLP:AMBER " (com um espaço) é um defeito? *Rubrica:* 3 = tratamento inconsistente do rótulo; deveria normalizar ou falhar fechado conforme o requisito; 2 = parcial; 1 = inofensivo; 0 = nenhuma.
+- **EX090 — Contagem do bloqueado.** Como o procedimento bloqueado deve ser relatado? *Rubrica:* 3 = à parte, como bloqueado/não executado, com plano; não é aprovação; 2 = não aprovado; 1 = aprovado; 0 = nenhuma.
+
+### Síntese
+
+Verifique contra os requisitos escritos com procedimentos rastreáveis, registre os desvios com honestidade e mantenha as evidências reexecutáveis.
+
+### Continue estudando — capítulo 30 de 50
+
+[← Capítulo 29 (rascunho)](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (rascunho) →](#ch-31)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX081 (as de EX082–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -1830,6 +2017,24 @@ Respostas-modelo para EX001–EX081 (as de EX082–EX150 estão na edição em i
 **EX080.** TLP:PURPLE não é um rótulo do TLP 2.0, então a barreira falha fechada e o bloqueia.
 
 **EX081.** O aprovador nomeado, o horário da aprovação, a versão exata da regra ou do objeto enviado e o motivo.
+
+**EX082.** Se o ponto de controle avança primeiro e o processo cai antes da gravação, esses objetos nunca são buscados de novo; gravar primeiro significa que uma queda só causa uma nova busca inofensiva, tornada segura pelas gravações idempotentes.
+
+**EX083.** O tráfego de desenvolvimento nunca carrega nem põe em risco os servidores dos parceiros, e os testes rodam sobre pacotes sintéticos fixos, então os resultados são reproduzíveis.
+
+**EX084.** A idade do ponto de controle (ou os objetos recebidos por fonte): se ela não para de crescer ou os recebimentos caem a zero, o coletor parou.
+
+**EX085.** precisão 0,50, revocação 0,60, F1 0,55.
+
+**EX086.** Usar as próprias afirmações do feed como verdade contaria toda entrada como correta, inflando a precisão; os rótulos precisam vir de investigações independentes.
+
+**EX087.** O feed costuma listar indicadores dois dias depois que a BEN já os viu, então acrescenta pouco valor preventivo.
+
+**EX088.** Verificação: confirmar que o Lantern atende aos requisitos escritos. Validação: confirmar que ele atende às necessidades reais das partes interessadas em uso.
+
+**EX089.** O tratamento dos rótulos precisa ser exato e especificado — normalizado por uma regra documentada ou rejeitado; aceitar em silêncio uma variante mostra que a barreira não se comporta como exigido.
+
+**EX090.** Como "bloqueado — não executado", listado à parte com o dado de teste ausente e uma data agendada; não é uma aprovação.
 
 <a id="references"></a>
 ## Referências
