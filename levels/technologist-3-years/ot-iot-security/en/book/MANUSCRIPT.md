@@ -1238,7 +1238,7 @@ Priya's first PLC-R2 fault followed this order: link light on, switch port showi
 
 Before rebooting a host that might be compromised, export its logs and note its running processes. Before replacing a device, photograph its labels and settings. A reboot clears memory that might show malware; a replacement removes the original firmware state.
 
-When PLC-R2's values froze again a week later with no port errors, Priya compared its program against the backup before anyone restarted it, and found a difference. A restart would have reloaded the program from the controller's memory and left the question of who changed it with less evidence. She escalated with the comparison output and the port counters attached.
+When PLC-R2's values froze again a week later with no port errors, Priya compared its program against the backup before anyone restarted it, and found a difference. A restart would have run the same changed program again, so it would not have fixed anything, and it would have cleared the controller's runtime state and diagnostic buffer. The usual next step after a failed restart, downloading the backup, would have overwritten the changed program, which was the main evidence of who changed it and when. She escalated with the comparison output and the port counters attached.
 
 ### 20.4 Stop and escalate
 
