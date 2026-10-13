@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 120, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de governança, riscos e compliance de segurança como um sistema de engenharia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam perda esperada, validação de registros, risco residual, taxas de aprovação de controles, falha em camadas, limites de amostragem por atributos, otimização de orçamento e digests de evidências, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -810,11 +810,418 @@ As obrigações legais precisam de revisão jurídica. Os papéis variam entre o
 - **EX059 — Independência.** Por que quem opera os controles não deve julgar se eles funcionam? *Rubrica:* 3 = cria um conflito de interesses que enfraquece a garantia;; 2 = independência;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Compulsório ou voluntário.** O alinhamento da Ardwell à ISO/IEC 27001:2022 é compulsório? *Rubrica:* 3 = não, é uma escolha do conselho;; 2 = voluntário;; 1 = compulsório;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Governança, riscos e compliance de segurança: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) derivar os requisitos do programa a partir das obrigações e do apetite a riscos; (2) escrever requisitos que possam ser testados; (3) priorizá-los.
+
+### 21.1 Das obrigações aos requisitos
+
+As obrigações costumam ser amplas. Nadia as transforma em requisitos específicos para o programa da Ardwell. Por exemplo, uma obrigação contratual de proteger os dados de cartão vira os requisitos de manter um inventário atual dos sistemas com dados do titular do cartão, restringir o acesso a eles conforme a necessidade do negócio e revisar esse acesso regularmente. A declaração de apetite do conselho de que nenhum incidente isolado deve interromper o fornecimento por mais de quatro horas vira um requisito de recuperação para os backups do sistema de controle e os equipamentos sobressalentes. O limite de quatro horas passa então a ser a régua contra a qual os testes de recuperação dos capítulos seguintes serão julgados.
+
+### 21.2 Requisitos testáveis
+
+Nadia aprende a escrever requisitos que possam ser testados. Um requisito vago, como "o acesso deve ser apropriado", não pode ser conferido. Uma versão testável diz que o acesso aos sistemas com dados do titular do cartão é revisado a cada trimestre e que o acesso excessivo encontrado é removido em até dez dias úteis. Cada requisito testável nomeia um responsável, uma frequência, uma condição mensurável e a evidência. Ela reescreve assim doze requisitos da Ardwell e descobre que três não tinham nenhum responsável claro. Esses três entram no registro como lacunas a atribuir antes que qualquer teste possa ser executado.
+
+### 21.3 Priorizar
+
+Nem todo requisito é igualmente urgente. Nadia os ordena pela consequência de uma falha e por serem ou não compulsórios. Os requisitos ligados à segurança do fornecimento de energia e às obrigações contratuais de cartão ficam no topo. Os que apoiam a certificação voluntária vêm em seguida. As melhorias de eficiência ficam por último. Ela apresenta a ordem ao gestor de segurança da informação com os motivos, para que o tempo limitado da equipe vá primeiro aos requisitos cuja falha prejudicaria clientes ou violaria obrigações. Ordenar com motivos também permite ao gestor contestar a ordem se um item voluntário tiver passado a ser contratual.
+
+### Exemplo resolvido
+
+Nadia deriva requisitos das obrigações e do apetite, reescreve doze deles como afirmações testáveis e os ordena pela consequência.
+
+> **Caso sintético.** Os requisitos são sintéticos.
+
+### Erros e limites
+
+A redação testável pode perder a intenção. As prioridades mudam com os incidentes.
+
+### Exercícios
+
+- **EX061 — Do apetite ao requisito.** Que requisito decorreu da declaração de apetite de quatro horas? *Rubrica:* 3 = um requisito de recuperação para backups e sobressalentes do sistema de controle;; 2 = recuperação;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Partes testáveis.** O que cada requisito testável nomeia? *Rubrica:* 3 = responsável, frequência, condição mensurável e evidência;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Prioridade máxima.** Que requisitos ficaram no topo? *Rubrica:* 3 = segurança do fornecimento e obrigações contratuais de cartão;; 2 = segurança;; 1 = eficiência;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Governança, riscos e compliance de segurança: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar as entidades de um programa de GRC; (2) definir as relações entre riscos, controles, obrigações e evidências; (3) usar o modelo para responder a perguntas de governança.
+
+### 22.1 Entidades centrais
+
+Nadia projeta um modelo de dados para o programa da Ardwell. Suas entidades centrais são ativos, riscos, controles, obrigações, testes, achados e responsáveis. Cada entidade tem atributos definidos, como o tipo, a frequência e o responsável de um controle, ou a gravidade e o prazo de um achado. Definir as entidades com clareza evita a confusão comum nas planilhas, em que uma coluna pode conter um risco numa linha e um controle em outra. Um modelo claro é a base de qualquer ferramenta de governança, comprada ou construída. O Prof. Brenner observa que uma entidade de achado com prazo definido é o que permite contar automaticamente os itens vencidos.
+
+### 22.2 Relações
+
+O valor está nas relações. Um risco afeta ativos e é tratado por controles. Um controle atende obrigações e é conferido por testes. Um teste produz evidências e pode gerar achados, cada um com um responsável. Nadia desenha isso num diagrama e observa que as ligações muitos-para-muitos são comuns: um controle pode tratar vários riscos e atender várias obrigações. Isso explica por que um único controle que falha pode gerar achados em várias auditorias, um padrão que os gestores da Ardwell tinham notado sem entender. O controle de backup pode atender ao mesmo tempo obrigações de cartão, de resiliência e de certificação, então uma falha aparece em três auditorias.
+
+### 22.3 Responder a perguntas
+
+Com o modelo, Nadia mostra como responder a perguntas que antes levavam dias. Que obrigações dependem do controle de backup? Que riscos são tratados só por controles que falharam no último teste? Que responsáveis têm achados vencidos? Ela escreve consultas de exemplo em linguagem simples e em pseudocódigo. O Prof. Brenner observa que bons modelos tornam baratas as perguntas de governança, o que incentiva os gestores a fazê-las com mais frequência e fortalece a supervisão em toda a organização. A pergunta sobre controles que falharam no último teste é justamente do tipo que as planilhas antigas não conseguiam responder.
+
+### Exemplo resolvido
+
+Nadia define sete entidades centrais, mapeia as relações muitos-para-muitos e mostra consultas que respondem a perguntas de governança.
+
+> **Caso sintético.** O modelo é um projeto didático; os dados da Ardwell são sintéticos.
+
+### Erros e limites
+
+Os modelos simplificam uma realidade bagunçada. A qualidade dos dados limita o valor das consultas.
+
+### Exercícios
+
+- **EX064 — Lista de entidades.** Cite quatro entidades centrais do modelo. *Rubrica:* 3 = ativos, riscos, controles, obrigações;; 2 = entidades;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Achados em cascata.** Por que um controle que falha pode gerar achados em várias auditorias? *Rubrica:* 3 = ele atende várias obrigações;; 2 = muitos-para-muitos;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Consulta de exemplo.** Dê uma pergunta de governança que o modelo responde depressa. *Rubrica:* 3 = que riscos dependem só de controles que falharam nos testes;; 2 = consulta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Governança, riscos e compliance de segurança: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar cenários de ameaça para a Ardwell; (2) analisar os modos de falha dos controles de governança; (3) combinar as visões de ameaça e de falha na identificação de riscos.
+
+### 23.1 Cenários de ameaça
+
+Nadia monta cenários de ameaça seguindo a estrutura do NIST SP 800-30 Rev. 1. Um grupo criminoso criptografa os sistemas do escritório e exige pagamento. Um insider do faturamento altera contas de clientes. O notebook comprometido de um fornecedor se conecta aos sistemas de controle. Um script de skimming de cartões é injetado no portal de pagamento. Cada cenário nomeia uma fonte de ameaça, um evento, as vulnerabilidades exploradas e o impacto. Os cenários tornam o risco concreto para os responsáveis, que julgam mais facilmente a probabilidade e o impacto de uma história do que de uma categoria abstrata. O cenário do notebook do fornecedor se liga diretamente às lacunas de acesso remoto encontradas no capítulo 11.
+
+### 23.2 Modos de falha
+
+Os próprios controles podem falhar. Nadia aplica o raciocínio de modos de falha à revisão de acessos da Ardwell: os revisores podem aprovar tudo sem conferir, a lista de contas pode estar incompleta, ou as remoções podem ser aprovadas e nunca executadas. Para cada modo de falha, ela pergunta como ele seria detectado e qual seria o efeito. A análise revela que ninguém confere se as remoções aprovadas acontecem. Ela propõe um teste de acompanhamento que compare as remoções aprovadas com as mudanças reais nas contas depois de cada revisão, o que apanharia o mais silencioso dos três modos de falha.
+
+### 23.3 Combinar as visões
+
+A análise de ameaças pergunta o que poderia atacar a Ardwell; a análise de falhas pergunta como suas defesas poderiam parar de funcionar em silêncio. Nadia as combina no registro de riscos, ligando os cenários aos controles de que dependem e aos modos de falha desses controles. Um cenário que depende de um controle com um modo de falha não detectado é mais arriscado do que parece. O Prof. Brenner observa que muitos incidentes reais combinam uma ameaça externa com uma falha de controle interno que ninguém notou, então as duas visões são necessárias. Um cenário de ransomware que depende de backups cuja restauração nunca foi testada é um exemplo claro desse risco oculto.
+
+### Exemplo resolvido
+
+Nadia escreve quatro cenários de ameaça, analisa os modos de falha da revisão de acessos e liga as duas visões no registro.
+
+> **Caso sintético.** Os cenários são sintéticos; o SP 800-30 Rev. 1 é real.
+
+### Erros e limites
+
+As listas de cenários nunca estão completas. A análise de falhas leva tempo.
+
+### Exercícios
+
+- **EX067 — Partes do cenário.** Que partes cada cenário nomeia? *Rubrica:* 3 = fonte de ameaça, evento, vulnerabilidades e impacto;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Falha oculta.** Que modo de falha da revisão de acessos ficava sem verificação? *Rubrica:* 3 = remoções aprovadas e nunca executadas;; 2 = acompanhamento;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Risco combinado.** Por que um cenário que depende de um controle com modo de falha não detectado é mais arriscado? *Rubrica:* 3 = a defesa pode ter parado de funcionar em silêncio;; 2 = falha oculta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Governança, riscos e compliance de segurança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir risco inerente de risco residual; (2) estimar o risco residual a partir da eficácia dos controles; (3) reconhecer riscos sem tratamento.
+
+### 24.1 Inerente e residual
+
+O risco inerente é o risco antes de considerar os controles; o risco residual é o que resta depois deles. Nadia aprende que essa distinção ajuda os conselhos a ver o que os controles alcançam e onde o risco continua acima do apetite. A ISO/IEC 27005:2022 descreve a análise e a avaliação de riscos dentro do sistema de gestão e espera que as organizações decidam o tratamento e aceitem formalmente os riscos residuais. Para a Ardwell, ela estima a perda esperada inerente de quatro riscos, em milhares, e a eficácia de cada controle como a fração da perda que ele remove. Expressar a eficácia como fração da perda removida é o que torna possível o cálculo residual da seção seguinte.
+
+### 24.2 Calcular o residual
+
+O laboratório multiplica a perda inerente por um menos a eficácia de cada controle, supondo que os controles atuem de forma independente. O ransomware cai de noventa mil para cerca de vinte e dois mil, uma redução de setenta e seis por cento, graças aos backups e à detecção nos endpoints. A interrupção do faturamento cai à metade, de sessenta para trinta mil, graças ao failover. O vazamento de cartões cai de setenta e cinco para cerca de onze mil, uma redução de oitenta e seis por cento, graças à tokenização e à segmentação. O mau uso por fornecedores fica em oitenta mil, porque nenhum controle o trata, e passa a ser o maior risco residual, embora sua perda inerente fosse menor que a do ransomware.
+
+### Laboratório — Risco inerente e residual com a eficácia dos controles
+
+```python
+"""Inherent vs residual risk with control effectiveness (synthetic, ALE in thousands)."""
+risks = {"ransomware": (90, [("offline backups", 0.6), ("EDR", 0.4)]),
+         "billing outage": (60, [("failover", 0.5)]),
+         "card breach": (75, [("tokenisation", 0.8), ("segmentation", 0.3)]),
+         "vendor misuse": (80, [])}
+for r, (inh, ctl) in risks.items():
+    res = inh
+    for _, e in ctl: res *= (1 - e)
+    print(f"{r}: inherent {inh}k residual {res:.1f}k reduction {1-res/inh:.0%}")
+```
+
+Execute com `python3 lab_residual.py`. Saída verificada:
+
+```text
+ransomware: inherent 90k residual 21.6k reduction 76%
+billing outage: inherent 60k residual 30.0k reduction 50%
+card breach: inherent 75k residual 10.5k reduction 86%
+vendor misuse: inherent 80k residual 80.0k reduction 0%
+```
+
+### 24.3 Interpretar os residuais
+
+O laboratório muda a ordem dos riscos. O ransomware era o primeiro em termos inerentes, mas o mau uso do acesso de fornecedores é o primeiro em termos residuais, porque não tem tratamento. Nadia recomenda que o tratamento do acesso de fornecedores vire prioridade. Também observa que a premissa de independência pode exagerar a eficácia combinada, já que backups e detecção podem falhar juntos num ataque bem planejado. Os números de eficácia são estimativas de oficinas e devem ser conferidos com evidências de testes ao longo do tempo, como mostrarão os capítulos sobre medição. A redução de setenta e seis por cento do ransomware deve ser revista quando os testes de restauração e de detecção produzirem dados.
+
+### Exemplo resolvido
+
+Nadia calcula as perdas residuais, encontra o mau uso por fornecedores sem tratamento em oitenta mil e recomenda tratá-lo primeiro.
+
+> **Caso sintético.** As perdas e os valores de eficácia são sintéticos; a ISO/IEC 27005:2022 é real.
+
+### Erros e limites
+
+A independência exagera o efeito combinado. As estimativas de eficácia são subjetivas.
+
+### Exercícios
+
+- **EX070 — Definição de residual.** Como o risco residual difere do inerente? *Rubrica:* 3 = é o que resta depois dos controles;; 2 = depois dos controles;; 1 = antes;; 0 = nenhuma.
+- **EX071 — Residual do ransomware.** Quanto os controles reduziram a perda do ransomware no laboratório? *Rubrica:* 3 = 76%, para 21,6 mil;; 2 = 76%;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Maior residual.** Que risco teve a maior perda residual, e por quê? *Rubrica:* 3 = mau uso por fornecedores, 80 mil, sem tratamento;; 2 = fornecedores;; 1 = ransomware;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma solução de governança para um problema definido; (2) apresentá-la para crítica; (3) revisá-la com base no retorno dos usuários.
+
+### 25.1 O briefing
+
+No primeiro ateliê de projeto, a equipe de Nadia recebe um briefing da Ardwell: projetar uma forma de gerenciar o acesso remoto de fornecedores que atenda à segurança, mantenha rápida a resposta a interrupções e produza evidências para auditorias. A equipe entrevista um engenheiro de controle, um técnico de fornecedor e o gestor de segurança da informação. Cada um quer algo diferente. O engenheiro quer fornecedores conectados em minutos durante as interrupções. O técnico quer um único login, e não cinco. O gestor quer cada sessão aprovada, registrada e revisada. Essas três posições viram as restrições do projeto: rapidez, login único e responsabilização completa.
+
+### 25.2 O projeto
+
+A equipe propõe um broker de acesso: os fornecedores entram com contas nominais e autenticação multifator, pedem uma sessão para um dispositivo específico, recebem a aprovação de um engenheiro de plantão por um aplicativo no celular e trabalham por um jump host gravado. Sessões emergenciais pré-aprovadas são permitidas durante interrupções declaradas, com revisão no dia seguinte. As sessões terminam automaticamente depois de quatro horas. O projeto atende à principal preocupação de cada parte e elimina a senha compartilhada e a conexão direta encontradas antes. O Prof. Brenner aponta que o caminho emergencial pré-aprovado é a via mais provável de mau uso, então sua revisão no dia seguinte precisa acontecer de fato.
+
+### 25.3 Crítica e revisão
+
+Na revisão do ateliê, um professor pergunta o que acontece se o aplicativo falhar durante uma tempestade. Outro pergunta quem revisa as gravações e com que frequência. A equipe acrescenta uma aprovação alternativa por telefonema, com uma referência registrada, e propõe amostrar dez por cento das gravações por mês, com foco nas sessões emergenciais, o que põe o esforço de revisão onde as aprovações eram mais fracas. Nadia aprende que a crítica é mais útil quando testa o projeto contra falhas realistas, e que um projeto não está pronto enquanto sua operação, incluindo a revisão, não estiver planejada.
+
+### Exemplo resolvido
+
+A equipe de Nadia projeta um broker de acesso de fornecedores que equilibra rapidez, usabilidade e evidência, e depois da crítica acrescenta a aprovação alternativa e a revisão das gravações.
+
+> **Caso sintético.** O briefing e o projeto são sintéticos.
+
+### Erros e limites
+
+Os projetos de ateliê pulam o detalhamento de custos. As entrevistas com as partes são amostras pequenas.
+
+### Exercícios
+
+- **EX073 — O que as partes querem.** O que o engenheiro de controle queria? *Rubrica:* 3 = fornecedores conectados em minutos durante as interrupções;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
+- **EX074 — Limite da sessão.** Quanto tempo uma sessão de fornecedor pode durar antes de terminar automaticamente? *Rubrica:* 3 = quatro horas;; 2 = 4 h;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Revisão das gravações.** Como as gravações serão revisadas? *Rubrica:* 3 = amostra mensal de dez por cento, com foco nas emergências;; 2 = amostragem;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Governança, riscos e compliance de segurança: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar arquiteturas alternativas para uma capacidade de GRC; (2) ponderar critérios com transparência; (3) documentar a escolha e seus riscos.
+
+### 26.1 Alternativas
+
+A Ardwell precisa decidir como operar seu programa de GRC no dia a dia. Nadia compara três alternativas. A primeira mantém planilhas e pastas compartilhadas, melhoradas com scripts de validação. A segunda compra uma plataforma comercial de governança que reúne riscos, controles e evidências num só lugar. A terceira constrói ferramentas leves sobre o sistema de tickets que a Ardwell já usa, em que os controles viram tarefas recorrentes e as evidências se anexam aos tickets. Cada uma tem custos, necessidades de competências e riscos de falha diferentes. As planilhas custam menos para começar, mas dependem de scripts de validação que alguém precisa manter.
+
+### 26.2 Critérios e pesos
+
+Nadia combina os critérios com o gestor de segurança: integridade dos dados e trilha de auditoria, esforço para os responsáveis pelos controles, relatórios ao conselho, custo em três anos e dependência de competências escassas. Ela dá os maiores pesos à integridade e ao esforço dos responsáveis, refletindo a constatação anterior de que os controles falham quando os responsáveis não têm tempo. As planilhas pontuam mal em integridade. A plataforma comercial pontua bem em relatórios, mas exige um administrador especializado. A opção dos tickets pontua bem no esforço dos responsáveis, porque a equipe já usa o sistema. Ela publica as notas e os pesos para que os revisores possam contestá-los.
+
+### 26.3 A escolha
+
+A opção dos tickets vence por pouco a plataforma. Nadia documenta a decisão com as alternativas e os riscos aceitos: os relatórios vão exigir trabalho extra, e o roadmap do fornecedor do sistema de tickets pode mudar. Ela recomenda rever a escolha depois de um ano, com medidas como as tarefas de controle vencidas e o tempo para preparar evidências de auditoria. Observa que o resultado apertado significa que os pesos importam, e registra que uma ponderação que favorecesse os relatórios ao conselho teria escolhido a plataforma. Esse registro permite ao conselho ver que a escolha foi apertada e revisitá-la se os relatórios virarem a prioridade.
+
+### Exemplo resolvido
+
+Nadia compara três opções de ferramentas de GRC com critérios ponderados, escolhe por pouco a abordagem baseada em tickets e registra a sensibilidade aos pesos.
+
+> **Caso sintético.** As opções, as notas e os custos são sintéticos.
+
+### Erros e limites
+
+Os pesos refletem opiniões. As alegações dos fornecedores precisam ser verificadas.
+
+### Exercícios
+
+- **EX076 — Três opções.** Quais são as três alternativas? *Rubrica:* 3 = planilhas com scripts, plataforma comercial, ferramentas baseadas em tickets;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX077 — Critérios mais pesados.** Que critérios receberam os maiores pesos? *Rubrica:* 3 = integridade dos dados e esforço dos responsáveis;; 2 = integridade;; 1 = custo;; 0 = nenhuma.
+- **EX078 — Nota de sensibilidade.** O que uma ponderação que favorecesse os relatórios ao conselho teria escolhido? *Rubrica:* 3 = a plataforma comercial;; 2 = plataforma;; 1 = planilhas;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Governança, riscos e compliance de segurança: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles com objetivos e atributos claros; (2) selecionar controles de um catálogo de referência; (3) documentar os controles para que possam ser testados.
+
+### 27.1 Objetivos de controle
+
+Nadia aprende que um controle bem projetado começa por um objetivo: que risco ele reduz e como. Para o acesso de fornecedores, o objetivo é que só fornecedores aprovados e identificados cheguem aos sistemas de controle, só para tarefas aprovadas e com um registro do que fizeram. Do objetivo ela deriva os atributos: tipo, frequência, responsável, nível de automação e evidência produzida. Sem um objetivo claro, os controles derivam para rituais executados, mas já desligados do risco que deveriam reduzir. O objetivo do acesso de fornecedores deixa claro, por exemplo, que a gravação das sessões existe para mostrar o que os fornecedores fizeram, e não só quem se conectou.
+
+### 27.2 Usar um catálogo
+
+Em vez de inventar controles, Nadia consulta a ISO/IEC 27002:2022 e o NIST SP 800-53 Rev. 5. Os catálogos oferecem ideias testadas: gestão de contas, acesso remoto, auditoria de sessões e controles de relacionamento com fornecedores. Ela os seleciona e adapta à Ardwell, registrando quais controles do catálogo são aplicados, adaptados ou excluídos, e por quê. Esse registro se parece com a declaração de aplicabilidade que a ISO/IEC 27001:2022 exige e mostra aos auditores que a seleção decorreu do risco, e não do hábito ou da conveniência. Excluir um controle exige um motivo ligado aos riscos da Ardwell, como um controle escrito para um tipo de sistema que ela não opera.
+
+### 27.3 Documentar para testar
+
+Cada descrição de controle responde a quem faz o quê, quando, com o quê, e que evidência resulta. Para a revisão mensal das gravações, a descrição nomeia o analista de segurança, a amostra de dez por cento, os critérios de preocupação e o relatório arquivado no sistema de tickets. Nadia confere se um testador independente conseguiria verificar o controle só com a descrição. O Prof. Brenner observa que descrições ambíguas são um problema comum de auditoria, porque testadores e responsáveis passam a discordar sobre o que o controle deveria fazer. A amostra nomeada de dez por cento dá ao testador um número fixo a conferir, em vez de uma instrução vaga de revisar gravações.
+
+### Exemplo resolvido
+
+Nadia declara um objetivo de controle, seleciona e adapta controles do catálogo com os motivos registrados e escreve descrições de controle testáveis.
+
+> **Caso sintético.** Os projetos de controle são sintéticos; a ISO/IEC 27002:2022, a 27001:2022 e o SP 800-53 Rev. 5 são reais.
+
+### Erros e limites
+
+Os catálogos são genéricos. As descrições podem retratar a intenção, e não a prática.
+
+### Exercícios
+
+- **EX079 — Papel do objetivo.** Por que todo controle deve começar por um objetivo? *Rubrica:* 3 = para continuar ligado ao risco que reduz;; 2 = objetivo;; 1 = nada;; 0 = nenhuma.
+- **EX080 — Registro da seleção.** Com que documento da ISO/IEC 27001:2022 o registro da seleção se parece? *Rubrica:* 3 = a declaração de aplicabilidade;; 2 = SoA;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Teste da descrição.** Como Nadia confere uma descrição de controle? *Rubrica:* 3 = um testador independente conseguiria verificá-lo só com a descrição;; 2 = testabilidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Governança, riscos e compliance de segurança: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar a implementação de controles com responsáveis e marcos; (2) gerir a mudança para as pessoas afetadas; (3) acompanhar com honestidade a situação da implementação.
+
+### 28.1 Planejamento
+
+A Ardwell aprova o broker de acesso de fornecedores e as ferramentas de GRC baseadas em tickets. Nadia ajuda a escrever o plano de implementação: fases, responsáveis, marcos, dependências e critérios de aceitação. A fase um leva ao broker os dois fornecedores de maior risco, de modo que as conexões mais arriscadas sejam intermediadas primeiro. A fase dois leva os demais. A fase três desativa a conexão direta e as senhas compartilhadas. Cada fase tem um teste que precisa passar antes de a seguinte começar. Ela aprende que os planos em fases reduzem o risco, porque os problemas aparecem enquanto o escopo ainda é pequeno.
+
+### 28.2 Pessoas e mudança
+
+Os novos controles mudam o trabalho das pessoas. Os técnicos dos fornecedores precisam aprender novos logins, e os engenheiros de plantão precisam aprovar sessões à noite. Nadia ajuda a preparar guias curtos, uma sessão de teste para cada fornecedor e um contato para problemas. Ela registra as preocupações, como a fadiga de aprovações à noite, e as respostas, como permitir janelas de manutenção pré-aprovadas, que reduzem as aprovações noturnas sem eliminar o registro de cada sessão. Ela aprende que os problemas de adoção costumam ser tratados como resistência dos usuários quando, na verdade, são questões de projeto que a equipe de implementação pode corrigir.
+
+### 28.3 Situação honesta
+
+Nadia monta um relatório de situação que mostra cada marco como concluído, no prazo, em risco ou atrasado, com os motivos. Quando o equipamento de um fornecedor não consegue usar o broker, ela marca o marco como atrasado e registra um controle compensatório temporário: sessões supervisionadas, com um engenheiro da Ardwell presente, que mantêm o trabalho desse fornecedor rastreável até o equipamento ser trocado ou atualizado. O Prof. Brenner elogia a honestidade. Ele observa que relatar tudo em verde até o prazo é uma falha comum, e que os conselhos só podem ajudar com problemas de que são informados a tempo.
+
+### Exemplo resolvido
+
+Nadia planeja uma implementação em fases, trata a fadiga de aprovações com janelas de manutenção e relata com honestidade um marco atrasado, com um controle compensatório.
+
+> **Caso sintético.** Os planos e os fornecedores são sintéticos.
+
+### Erros e limites
+
+Os planos encontram surpresas. Os controles compensatórios podem se tornar permanentes.
+
+### Exercícios
+
+- **EX082 — Fase um.** O que a fase um cobre? *Rubrica:* 3 = levar ao broker os dois fornecedores de maior risco;; 2 = dois fornecedores;; 1 = nada;; 0 = nenhuma.
+- **EX083 — Aprovações noturnas.** Como a fadiga de aprovações à noite foi tratada? *Rubrica:* 3 = janelas de manutenção pré-aprovadas;; 2 = janelas;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Controle compensatório.** Que controle compensatório cobriu o fornecedor cujo equipamento não podia usar o broker? *Rubrica:* 3 = sessões supervisionadas com um engenheiro da Ardwell;; 2 = supervisão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Governança, riscos e compliance de segurança: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir o desempenho dos controles pelos resultados dos testes; (2) fixar limiares para indicadores-chave de risco; (3) relatar as medidas sem esconder as áreas fracas.
+
+### 29.1 O que medir
+
+Nadia aprende a separar medidas de atividade, como o número de revisões feitas, de medidas de desempenho, como a parcela de testes de controle aprovados, e de medidas de resultado, como o acesso excessivo encontrado. O NIST CSF 2.0 incentiva as organizações a monitorar e melhorar seus resultados de cibersegurança, e a ISO/IEC 27001:2022 exige que a organização determine o que é medido e como os resultados são avaliados. Ela propõe que a Ardwell relate ao conselho sobretudo medidas de desempenho e de resultado. O acesso excessivo encontrado diz ao conselho se o risco está diminuindo, enquanto contar revisões feitas só mostra esforço.
+
+### 29.2 Taxas de aprovação e limiares
+
+Num trimestre, a Ardwell testa cinco famílias de controles. O laboratório calcula as taxas de aprovação e aplica os limiares combinados com a gestão: verde a partir de noventa e cinco por cento, âmbar a partir de oitenta, vermelho abaixo disso. Acessos passam em quarenta e cinco de quarenta e oito testes, noventa e quatro por cento, âmbar por pouco. Patching passa em trinta e um de quarenta, setenta e oito por cento, vermelho. Backup passa nos doze. Logs ficam em âmbar com oitenta e sete por cento, e gestão de mudanças, em vermelho com setenta e dois. No total, cento e trinta e dois de cento e cinquenta e cinco passam, oitenta e cinco por cento.
+
+### Laboratório — Taxas de aprovação dos controles contra os limiares
+
+```python
+"""Control test pass rates and key risk indicator thresholds (synthetic quarter)."""
+tests = {"access": (48, 45), "patching": (40, 31), "backup": (12, 12), "logging": (30, 26), "change": (25, 18)}
+for fam, (n, ok) in tests.items():
+    r = ok/n
+    status = "green" if r >= 0.95 else "amber" if r >= 0.80 else "red"
+    print(f"{fam}: {ok}/{n} = {r:.0%} {status}")
+n = sum(v[0] for v in tests.values()); ok = sum(v[1] for v in tests.values())
+print(f"overall {ok}/{n} = {ok/n:.0%}")
+```
+
+Execute com `python3 lab_kri.py`. Saída verificada:
+
+```text
+access: 45/48 = 94% amber
+patching: 31/40 = 78% red
+backup: 12/12 = 100% green
+logging: 26/30 = 87% amber
+change: 18/25 = 72% red
+overall 132/155 = 85%
+```
+
+### 29.3 Não esconder as áreas fracas
+
+O número geral de oitenta e cinco por cento parece razoável, mas esconde duas famílias vermelhas. Nadia relata cada família separadamente, começando pelas vermelhas e suas causas: atrasos de patching nos equipamentos das subestações e mudanças emergenciais sem revisão. Ela adverte que os limiares influenciam o comportamento; se as equipes forem julgadas só pelas taxas de aprovação, podem testar os casos fáceis. Recomenda alternar as amostras de teste e revisar como os testes são escolhidos, para que a medida continue honesta. Alternar as amostras impede que os testes de patching caiam sempre nas máquinas do escritório e deixem de fora os equipamentos das subestações.
+
+### Exemplo resolvido
+
+Nadia distingue medidas de atividade, desempenho e resultado, calcula cinco taxas de aprovação com limiares e relata primeiro as famílias vermelhas.
+
+> **Caso sintético.** Os resultados dos testes e os limiares são sintéticos; o CSF 2.0 e a ISO/IEC 27001:2022 são reais.
+
+### Erros e limites
+
+Os agregados escondem as áreas fracas. As medidas convidam à manipulação.
+
+### Exercícios
+
+- **EX085 — Tipos de medida.** Que três tipos de medida Nadia separou? *Rubrica:* 3 = atividade, desempenho e resultado;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX086 — Famílias vermelhas.** Que duas famílias de controles ficaram em vermelho? *Rubrica:* 3 = patching 78% e mudanças 72%;; 2 = duas vermelhas;; 1 = backup;; 0 = nenhuma.
+- **EX087 — Risco do agregado.** Por que os 85% gerais enganam? *Rubrica:* 3 = escondem duas famílias vermelhas;; 2 = escondem;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar que os controles operam como descritos; (2) coletar e registrar evidências corretamente; (3) relatar os achados da verificação.
+
+### 30.1 Planejar a verificação
+
+No laboratório de verificação, Nadia testa o broker de acesso de fornecedores contra as descrições dos controles. Para cada controle, escreve um passo de teste, o resultado esperado e a evidência a guardar. Confere que um fornecedor sem autenticação multifator não consegue entrar, que uma sessão sem aprovação não começa, que as sessões terminam depois de quatro horas e que as gravações aparecem no arquivo. Ela usa uma conta de fornecedor de teste numa cópia de laboratório do broker, para não perturbar a produção. Cada resultado esperado é escrito antes de o teste rodar, para que a aprovação não seja decidida depois de ver o resultado.
+
+### 30.2 Evidências
+
+Para cada teste, Nadia registra a data, o testador, os passos, o resultado e os artefatos de apoio, como capturas de tela e trechos de log. Nomeia os arquivos de forma consistente e os guarda onde não podem ser editados depois de arquivados. Ela aprende que a evidência precisa permitir que outra pessoa entenda e repita o teste. Um auditor não aceita a afirmação de que um teste passou sem ver o que foi feito e o que foi observado, e um futuro engenheiro vai precisar do mesmo detalhe. O Prof. Brenner pergunta se uma captura de tela bastaria, e Nadia acrescenta trechos de log, porque uma captura não mostra o que aconteceu antes ou depois dela.
+
+### 30.3 Achados
+
+A maioria dos testes passa, mas um falha: uma sessão aprovada para um dispositivo consegue alcançar um segundo dispositivo no mesmo segmento de rede. Nadia registra o achado com sua gravidade, a evidência e uma correção recomendada: restringir as rotas do jump host por sessão, o que fecha o caminho até o segundo dispositivo sem atrasar o trabalho aprovado. Ela o relata à equipe de implementação, que corrige o problema e pede um novo teste. O novo teste passa e é registrado. Ela aprende que a verificação é valiosa justamente porque encontra o que os projetistas supunham que não aconteceria.
+
+### Exemplo resolvido
+
+Nadia verifica quatro controles do broker numa cópia de laboratório, registra evidências repetíveis e encontra e testa de novo uma falha de restrição de rotas.
+
+> **Caso sintético.** O broker e os testes são sintéticos.
+
+### Erros e limites
+
+As cópias de laboratório diferem da produção. Os testes cobrem só os casos planejados.
+
+### Exercícios
+
+- **EX088 — Cópia de laboratório.** Por que testar numa cópia de laboratório? *Rubrica:* 3 = para não perturbar a produção;; 2 = segurança;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Campos da evidência.** O que Nadia registra para cada teste? *Rubrica:* 3 = data, testador, passos, resultado e artefatos;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = uma sessão aprovada conseguia alcançar um segundo dispositivo;; 2 = roteamento;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se o backlog de achados em aberto está diminuindo, estável ou crescendo.
 
@@ -935,6 +1342,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Porque isso cria um conflito de interesses e enfraquece a garantia.
 
 **EX060.** Não; é uma escolha voluntária do conselho, ao contrário das obrigações contratuais do PCI DSS.
+
+**EX061.** Um requisito de recuperação para os backups do sistema de controle e os equipamentos sobressalentes.
+
+**EX062.** Um responsável, uma frequência, uma condição mensurável e a evidência.
+
+**EX063.** Os ligados à segurança do fornecimento e às obrigações contratuais de cartão.
+
+**EX064.** Por exemplo, ativos, riscos, controles e obrigações (também testes, achados e responsáveis).
+
+**EX065.** Porque um controle atende várias obrigações e trata vários riscos.
+
+**EX066.** Por exemplo, que riscos são tratados só por controles que falharam no último teste.
+
+**EX067.** Uma fonte de ameaça, um evento, as vulnerabilidades exploradas e o impacto.
+
+**EX068.** Remoções aprovadas que nunca foram executadas de fato.
+
+**EX069.** Porque o controle de que ele depende pode ter parado de funcionar sem ninguém perceber.
+
+**EX070.** O risco residual é o que resta depois dos controles; o inerente é o anterior a eles.
+
+**EX071.** Em 76%, de 90 mil para 21,6 mil.
+
+**EX072.** O mau uso por fornecedores, com 80 mil, porque nenhum controle o trata.
+
+**EX073.** Fornecedores conectados em minutos durante as interrupções.
+
+**EX074.** Quatro horas.
+
+**EX075.** Amostrando dez por cento das gravações por mês, com foco nas sessões emergenciais.
+
+**EX076.** Planilhas melhoradas, uma plataforma comercial e ferramentas construídas sobre o sistema de tickets.
+
+**EX077.** Integridade dos dados com trilha de auditoria e esforço para os responsáveis pelos controles.
+
+**EX078.** A plataforma comercial.
+
+**EX079.** Para que continue ligado ao risco que deve reduzir, em vez de virar um ritual.
+
+**EX080.** A declaração de aplicabilidade.
+
+**EX081.** Confirmando que um testador independente conseguiria verificar o controle só com a descrição.
+
+**EX082.** Levar ao broker os dois fornecedores de maior risco.
+
+**EX083.** Permitindo janelas de manutenção pré-aprovadas.
+
+**EX084.** Sessões supervisionadas, com um engenheiro da Ardwell presente.
+
+**EX085.** Medidas de atividade, de desempenho e de resultado.
+
+**EX086.** Patching, com 78%, e gestão de mudanças, com 72%.
+
+**EX087.** Porque esconde duas famílias de controles abaixo do limiar vermelho.
+
+**EX088.** Para que os sistemas de produção não sejam perturbados pelos testes.
+
+**EX089.** A data, o testador, os passos, o resultado e os artefatos de apoio.
+
+**EX090.** Uma sessão aprovada para um dispositivo conseguia alcançar um segundo dispositivo no mesmo segmento.
 
 <a id="references"></a>
 ## Referências
