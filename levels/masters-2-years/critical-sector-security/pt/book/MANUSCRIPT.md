@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Desenho de Pesquisa Aplicada e a Dissertação de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso de mestrado, dois anos; aproximadamente 1.200 horas de estudo planejado (curso 184 de 207 da [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 8 já estão escritos em português, com os exercícios EX001–EX026 e suas resoluções; os capítulos 5–8 (EX027–EX050) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: pesquisadores iniciantes que conhecem a área pela prática ou por estudos anteriores e agora precisam responder a uma pergunta delimitada sobre a segurança e a resiliência da infraestrutura crítica — saúde, energia, água, transporte, comunicações, finanças e serviços públicos — com evidências que outra pessoa possa verificar. Conhecimento de entrada: o conteúdo planejado para as trilhas de [engenharia](../../../../engineering-5-years/critical-sector-security/en/book/PLAN.md) ou de [bacharelado](../../../../bachelors-4-years/critical-sector-security/en/book/PLAN.md) desta área (ainda esboços quando este texto foi escrito), ou experiência profissional equivalente, mais estatística introdutória (médias, variância, intervalos de confiança, regressão linear) e a capacidade de executar um script curto em Python.
 - Relação com o curso de doutorado: o [livro de doutorado desta área](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) pede a um pesquisador que faça e defenda uma contribuição *original* — um método novo, validado de forma independente, com um programa de publicações. Este livro de mestrado pede algo diferente e anterior: **desenhar, pilotar e executar bem um estudo empírico com revisão ética**, relatar exatamente o que ele pode e não pode mostrar e defendê-lo diante dos examinadores. Onde o livro de doutorado constrói simulações e replica linhas de base, este livro trabalha sobretudo com dados observacionais, desenhos quase experimentais e entrevistas, porque é a isso que a maioria dos projetos de mestrado nesta área consegue ter acesso.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de titularidade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -45,10 +45,12 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente público ou um e
 2. [Infraestrutura crítica e segurança setorial: seminário avançado](#ch-02) — perfis setoriais e unidades de consequência, o que os catálogos públicos de incidentes podem e não podem dizer, leitura e apresentação de um artigo setorial e casos documentados cujo primeiro relato foi revisado.
 3. [Desenho do estudo, ética e reprodutibilidade](#ch-03) — escolha entre desenhos quase experimentais e qualitativos, análise do desenho antes dos dados, revisão ética, proteção de dados e sensibilidade das informações de infraestrutura, e um projeto reprodutível.
 4. [Infraestrutura crítica e segurança setorial: explicações concorrentes](#ch-04) — múltiplas hipóteses de trabalho, diagramas causais, regiões de comparação, controles negativos, testes placebo e dose–resposta como evidência discriminante.
+5. [Proposta e piloto](#ch-05) — a proposta como contrato, cronograma e registro de riscos, acordos de acesso a dados, pilotos de viabilidade com critérios de prosseguir/não prosseguir declarados com antecedência e uma auditoria dos dados do piloto.
+6. [Coleta e análise dos dados](#ch-06) — séries temporais interrompidas controladas com intervalos robustos à autocorrelação, janelas placebo, entrevistas e análise temática, concordância entre codificadores e integração das duas vertentes.
+7. [Redação da dissertação e limitações](#ch-07) — estrutura e argumento, relato honesto dos resultados, procedência dos números, diretrizes de relato, limitações direcionais, figuras acessíveis e disponibilidade dos dados sob sensibilidade.
+8. [Revisão independente e defesa](#ch-08) — como os examinadores leem, curvas de especificação para perguntas do tipo "e se", a defesa oral, correções e o compartilhamento responsável dos resultados com o setor.
 
-Capítulos 5–8: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
-
-As [resoluções](#worked-results) contêm EX001–EX026. Um [glossário](#glossary) e as [referências](#references) encerram o livro.
+As [resoluções](#worked-results) contêm EX001–EX050. Um [glossário](#glossary) e as [referências](#references) encerram o livro.
 
 <a id="ch-01"></a>
 
@@ -1083,16 +1085,948 @@ Mantenha várias explicações ao mesmo tempo e procure observações que as sep
 <!-- cyberabc:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 08
 
-[← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 (inglês) →](../../en/book/MANUSCRIPT.md#ch-05)
+[← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Proposta e piloto
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Escrever uma proposta de pesquisa que funcione como um contrato com um orientador, um comitê e os parceiros de dados: específica o bastante para ser verificada, flexível apenas onde a flexibilidade for declarada.
+2. Planejar um projeto de mestrado de dois anos com o seu caminho crítico e manter um registro de riscos com gatilhos e responsáveis.
+3. Abordar os custodiantes dos dados com um pedido preciso e negociar um acesso a que o estudo consiga sobreviver.
+4. Desenhar um **piloto de viabilidade** cujo propósito é testar procedimentos, e não estimar efeitos, e explicar por que as estimativas de efeito do piloto não devem ser usadas para justificar o estudo principal.
+5. Definir de antemão **critérios de progressão (prosseguir/não prosseguir)**, incluindo um resultado de alterar e repetir o piloto.
+6. Auditar sistematicamente um extrato de dados do piloto e transformar cada constatação numa pergunta ao custodiante ou numa mudança de procedimento.
+
+Os Capítulos 1–4 produziram a pergunta, o mapa do seminário, o desenho e a tabela de rivais. Este capítulo os empacota numa proposta e testa se o estudo pode de fato ser feito. O Capítulo 6 o executa.
+
+### 5.1 A proposta como contrato
+
+Uma proposta responde a três públicos ao mesmo tempo. O **orientador** precisa saber que o projeto é viável e que o candidato o entende. O **comitê** (e, mais tarde, os examinadores) precisa ver que a pergunta, o desenho e a análise são coerentes. Os **parceiros de dados** precisam saber exatamente o que será solicitado, como será protegido e o que será publicado. Uma proposta que satisfaz os três é específica sobre o que está fixado e explícita sobre o que está em aberto.
+
+Uma estrutura padrão para o Spillover Study:
+
+1. **Título e resumo** (250 palavras): pergunta, desenho, dados, contribuição esperada.
+2. **Problema e justificativa:** a decisão que a resposta informa; a lacuna da matriz de conceitos (Capítulo 1).
+3. **Perguntas e estimandos:** RQ1–RQ3 com as definições dos estimandos.
+4. **Fundamentação:** um resumo da literatura centrado em conceitos, de duas páginas.
+5. **Desenho:** série temporal interrompida controlada e entrevistas; por que estes, e não outros.
+6. **Dados e acesso:** custodiantes, variáveis, período, agregação, acordos, fontes alternativas.
+7. **Ética e proteção da informação:** a submissão aprovada ou enviada; níveis de sensibilidade.
+8. **Plano de análise:** um resumo do plano de pré-análise, com link para o seu registro.
+9. **Rivais e robustez:** a tabela de rivais do Capítulo 4, com os testes.
+10. **Cronograma e marcos.**
+11. **Riscos e mitigações.**
+12. **Produtos:** dissertação, briefing aos parceiros, possível artigo; o que será e o que não será publicado.
+13. **Referências.**
+
+Marque cada elemento como **fixado** (mudanças exigem uma entrada datada no registro de desvios e a concordância do orientador) ou **em aberto** (a ser decidido até uma data declarada ou após o piloto). No Spillover Study, os estimandos, o desfecho primário, a região de comparação e o modelo estão fixados; o número exato de entrevistas (8–12) e a definição do desfecho secundário (dependendo do dicionário de dados do custodiante) estão em aberto.
+
+### 5.2 Cronograma e caminho crítico
+
+Um mestrado de dois anos, com cerca de 1.200 horas de estudo, deixa talvez 600–700 horas para a dissertação propriamente dita, uma vez contados os componentes de aulas; as demais horas deste curso são os capítulos que você está estudando. O recurso escasso não é o tempo de análise, mas o **tempo decorrido à espera de outras pessoas**: comitês de ética, custodiantes dos dados, equipes jurídicas dos parceiros e as agendas dos entrevistados. Planeje em torno dessas esperas, e não em torno das suas próprias horas de trabalho.
+
+| Semestre | Marcos | Dependências de tempo decorrido |
+|---|---|---|
+| 1 | Pergunta, busca e matriz de conceitos (Capítulo 1); seminário (Capítulo 2); primeiro contato com os custodiantes | As primeiras respostas dos custodiantes muitas vezes levam semanas |
+| 2 | Desenho, análise do desenho, submissão ao comitê de ética, acordos de dados, plano de pré-análise (Capítulos 3–4) | Revisão ética; revisão jurídica dos acordos — o **caminho crítico** |
+| 3 | Proposta aprovada; piloto; coleta principal de dados; entrevistas (Capítulos 5–6) | Repetição do piloto se os critérios falharem; agendamento das entrevistas |
+| 4 | Análise, redação, exame (Capítulos 6–8) | Período de revisão factual pelos parceiros; agendamento do exame |
+
+O **caminho crítico** é a cadeia de tarefas cujo atraso atrasa o projeto inteiro: aqui, a aprovação ética e os acordos de dados, que precisam ambos preceder o piloto. Comece-os cedo, mesmo antes de o desenho estar finalizado, compartilhando uma minuta do pedido de dados e perguntando aos custodiantes quais aprovações eles exigem.
+
+### 5.3 O registro de riscos
+
+| Risco | Probabilidade | Impacto | Mitigação | Gatilho para agir | Responsável |
+|---|---|---|---|---|---|
+| Custodiante atrasa os dados | Alta | Alto | Contato precoce; pedido mínimo; painel público como alternativa para Wexmoor | Nenhum acordo assinado até o fim do semestre 2 | Candidato, orientador |
+| Parceiro desiste após ver os resultados | Média | Alto | Acordo de publicação com revisão factual e sem veto, assinado antes do acesso | Pedido para suprimir constatações | Orientador |
+| Qualidade dos dados inadequada | Média | Alto | Auditoria no piloto com critérios de progressão | Os critérios falham duas vezes | Candidato |
+| Aprovação ética atrasada ou condicionada | Média | Médio | Submeter cedo; consultar previamente o comitê | Nenhuma decisão oito semanas após a submissão | Candidato |
+| Poucos entrevistados | Média | Médio | Recrutar pela coalizão; ampliar as funções | Menos de seis até a metade do semestre 3 | Candidato |
+| Expansão do escopo (acrescentar desfechos, regiões) | Alta | Médio | Elementos fixados; registro de desvios | Qualquer novo desfecho proposto | Orientador |
+| Parceiro sofre um novo incidente de segurança | Baixa | Alto | Pausar; nunca pedir detalhes do incidente; seguir as instruções do parceiro | Notificação do parceiro | Candidato |
+| Constatações julgadas sensíveis | Média | Médio | Níveis de sensibilidade; relato regional; encaminhamento privado das fraquezas específicas | Preocupação do parceiro ou do comitê | Orientador |
+
+Revise o registro em cada reunião de orientação. Um registro de riscos escrito uma vez para a proposta e nunca mais aberto é decoração.
+
+### 5.4 Pedindo dados aos custodiantes
+
+Os custodiantes recebem muitos pedidos vagos e respondem aos precisos. Um bom pedido declara: o propósito em duas frases; as variáveis exatas e suas definições, tal como você as entende; o período; a agregação (contagens diárias por DE; nenhum registro de pacientes); como os dados serão armazenados e destruídos; o que será publicado e de que forma; o status da aprovação ética; e o que você dará em troca (um briefing, uma verificação da qualidade dos dados deles). Faça ao custodiante três perguntas de que todo estudo de séries temporais precisa: *O sistema de registro, suas definições ou a área de captação do local mudaram durante o período? Há lacunas conhecidas ou dias de indisponibilidade? Como são tratados os lançamentos tardios e as correções?* As respostas muitas vezes importam mais do que os dados.
+
+No Spillover Study, Alder Point e Brookfield concordaram em fornecer agregados diários; Calloway concordou depois que a coalizão interveio; as contagens de Wexmoor vieram de um painel regional público cujos termos permitem o uso em pesquisa, o que o candidato registrou no plano de gestão de dados.
+
+### 5.5 Para que serve um piloto
+
+Um **piloto** ou **estudo de viabilidade** pergunta se o estudo principal pode ser feito como planejado: se os dados podem ser obtidos na forma esperada, se os participantes podem ser recrutados, se os procedimentos e instrumentos funcionam e quanto tempo levam. [Thabane et al. (2010)](https://doi.org/10.1186/1471-2288-10-1) oferecem um tutorial sobre o quê, o porquê e o como; [Lancaster, Dodd e Williamson (2004)](https://doi.org/10.1111/j..2002.384.doc.x) recomendam que os pilotos tenham objetivos de viabilidade claros e sejam analisados de forma descritiva; a [extensão do CONSORT para ensaios piloto e de viabilidade](https://doi.org/10.1136/bmj.i5239) (Eldridge et al., 2016) pede que os autores relatem os critérios usados para decidir se prosseguem. Embora essas fontes tratem de ensaios, sua lógica central se transfere diretamente para estudos observacionais e de métodos mistos.
+
+Para o que um piloto **não** serve: estimar o efeito, ou estimar o tamanho de efeito para um cálculo de poder. [Leon, Davis e Kraemer (2011)](https://doi.org/10.1016/j.jpsychires.2010.10.008) explicam por quê: as amostras dos pilotos são pequenas, então suas estimativas de efeito são imprecisas demais para orientar decisões de tamanho de amostra e podem enganar em qualquer direção. Num estudo observacional de evento há uma razão adicional: se o candidato examinar os dados de desfecho em torno do evento durante o "piloto", a análise subsequente deixa de ser planejada às cegas quanto ao resultado. O piloto de dados do Spillover Study usa, portanto, um **extrato de 35 dias de linha de base de Alder Point, inteiramente anterior ao dia −60**, e examina apenas a completude e a plausibilidade.
+
+O piloto do Spillover Study tem três componentes:
+
+1. **Piloto de dados:** o extrato de linha de base, auditado contra critérios definidos de antemão (Laboratório 5).
+2. **Piloto de entrevistas:** duas entrevistas com pessoas fora da amostra (uma gestora de DE aposentada e um educador de EMS de outra região), testando a clareza, a duração e a sensibilidade do roteiro.
+3. **Piloto do pipeline:** o código completo da análise executado de ponta a ponta sobre dados sintéticos (o gerador do Laboratório 4) para verificar se ele produz todas as tabelas e figuras planejadas.
+
+### 5.6 Critérios de progressão
+
+Os **critérios de progressão** declaram de antemão quais resultados do piloto levam a prosseguir, alterar ou parar. Um formato comum usa três zonas: *prosseguir* (seguir como planejado), *alterar* (seguir após mudanças especificadas, possivelmente repetindo o piloto) e *parar* (o estudo, tal como desenhado, não é viável). Os critérios de dados do Spillover Study:
+
+| Critério | Prosseguir | Alterar | Parar |
+|---|---|---|---|
+| Completude das células das quatro variáveis | ≥ 97% | 90–97% | < 90% após uma repetição do piloto |
+| Dias duplicados conflitantes | Nenhum | Explicados pelo custodiante | Sem explicação |
+| Dias de calendário ausentes | ≤ 1 | 2–5, explicados | > 5 ou sem explicação |
+| Valores fora da faixa (contagens negativas, desvio > 1.440 minutos por dia) | Nenhum | Corrigidos pelo custodiante | Persistentes |
+
+Critérios das entrevistas: o roteiro cabe em 45 minutos; nenhum dos participantes do piloto relata desconforto com alguma pergunta; ambos entendem todas as perguntas sem reformulação. Critério do pipeline: todos os produtos planejados gerados sem passos manuais.
+
+### 5.7 Atividade prática: auditando o extrato do piloto
+
+O laboratório abaixo audita um extrato sintético de 35 dias de Alder Point contra os critérios de §5.6. Ele verifica os códigos de local, as datas duplicadas (e se as duplicatas conflitam), os valores ausentes, os valores fora da faixa, os dias de calendário ausentes e os dias implausivelmente baixos, e relata uma decisão.
+
+```python
+# Lab 5 - audit a pilot extract against predeclared go/no-go criteria (offline, standard library only)
+# A synthetic 35-day daily extract from one neighbouring hospital (AP), as a partner might send it.
+import csv, io, datetime as dt
+
+EXTRACT = """date,site,amb_arrivals,walkins,diversion_min,median_wait_min
+2025-03-01,AP,41,96,0,27
+2025-03-02,AP,37,88,0,25
+2025-03-03,AP,44,102,35,31
+2025-03-04,AP,40,99,0,29
+2025-03-05,AP,39,,0,28
+2025-03-06,AP,42,101,0,30
+2025-03-07,AP,38,93,0,26
+2025-03-08,AP,36,90,0,24
+2025-03-09,AP,35,87,0,23
+2025-03-10,AP,45,104,120,33
+2025-03-11,AP,43,100,0,30
+2025-03-11,AP,43,100,0,30
+2025-03-12,AP,41,97,0,N/A
+2025-03-13,AP,40,95,0,29
+2025-03-15,AP,37,91,0,25
+2025-03-16,AP,36,89,0,24
+2025-03-17,AP,46,105,-15,34
+2025-03-18,AP,44,103,0,31
+2025-03-19,ALDR,42,98,0,29
+2025-03-20,AP,41,96,0,28
+2025-03-21,AP,39,94,0,27
+2025-03-22,AP,37,90,0,26
+2025-03-23,AP,35,86,0,24
+2025-03-24,AP,47,106,1600,35
+2025-03-25,AP,44,101,0,31
+2025-03-26,AP,43,99,0,30
+2025-03-27,AP,41,97,0,29
+2025-03-28,AP,40,95,0,28
+2025-03-29,AP,38,92,0,26
+2025-03-30,AP,23,55,0,25
+2025-03-31,AP,45,103,0,32
+2025-04-01,AP,44,102,0,31
+2025-04-02,AP,42,99,0,30
+2025-04-03,AP,40,96,0,29
+2025-04-04,AP,39,94,0,28
+"""
+FIELDS = ["amb_arrivals", "walkins", "diversion_min", "median_wait_min"]
+rows = list(csv.DictReader(io.StringIO(EXTRACT)))
+issues, seen, by_date = [], {}, {}
+for i, r in enumerate(rows, start=2):                      # line numbers as in the file
+    d = dt.date.fromisoformat(r["date"])
+    if r["site"] != "AP":
+        issues.append((i, "site code", r["site"]))
+    if d in seen:
+        same = all(r[f] == rows[seen[d] - 2][f] for f in FIELDS)
+        issues.append((i, "duplicate date", "identical" if same else "CONFLICTING"))
+        continue
+    seen[d] = i
+    by_date[d] = r
+    for f in FIELDS:
+        v = r[f].strip()
+        if v in ("", "N/A", "NA"):
+            issues.append((i, "missing", f))
+            continue
+        x = float(v)
+        if x < 0 or (f == "diversion_min" and x > 1440):
+            issues.append((i, "out of range", f"{f}={v}"))
+
+start, end = min(by_date), max(by_date)
+expected = (end - start).days + 1
+missing_days = [start + dt.timedelta(k) for k in range(expected) if start + dt.timedelta(k) not in by_date]
+cells = expected * len(FIELDS)
+bad_cells = sum(1 for _, kind, _ in issues if kind in ("missing", "out of range")) + len(missing_days) * len(FIELDS)
+arr = [int(by_date[d]["amb_arrivals"]) for d in sorted(by_date)]
+mu = sum(arr) / len(arr)
+low = [(str(d), int(r["amb_arrivals"])) for d, r in sorted(by_date.items()) if int(r["amb_arrivals"]) < 0.7 * mu]
+
+for line, kind, detail in issues:
+    print(f"line {line:2d}: {kind}: {detail}")
+print("missing calendar days:", [str(d) for d in missing_days])
+print("implausibly low days (<70% of mean):", low)
+complete = 1 - bad_cells / cells
+print(f"cell completeness {complete:.3f} over {expected} days x {len(FIELDS)} fields")
+CRITERIA = {                                                # predeclared in the pilot protocol
+    "completeness >= 0.97": complete >= 0.97,
+    "no conflicting duplicates": not any(d == "CONFLICTING" for _, k, d in issues if k == "duplicate date"),
+    "<= 1 missing calendar day": len(missing_days) <= 1,
+    "all values in range": not any(k == "out of range" for _, k, _ in issues),
+}
+for c, ok in CRITERIA.items():
+    print(f"  {'PASS' if ok else 'FAIL'}  {c}")
+print("decision:", "GO" if all(CRITERIA.values()) else "AMEND AND RE-PILOT (no outcome analysis)")
+```
+
+Saída esperada:
+
+```text
+line  6: missing: walkins
+line 13: duplicate date: identical
+line 14: missing: median_wait_min
+line 18: out of range: diversion_min=-15
+line 20: site code: ALDR
+line 25: out of range: diversion_min=1600
+missing calendar days: ['2025-03-14']
+implausibly low days (<70% of mean): [('2025-03-30', 23)]
+cell completeness 0.943 over 35 days x 4 fields
+  FAIL  completeness >= 0.97
+  PASS  no conflicting duplicates
+  PASS  <= 1 missing calendar day
+  FAIL  all values in range
+decision: AMEND AND RE-PILOT (no outcome analysis)
+```
+
+Cada constatação se torna uma pergunta, e não uma correção silenciosa:
+
+- **Linha 13, data duplicada (idêntica):** provavelmente um artefato da exportação. Pergunte como o extrato é produzido; remova a duplicata só depois que o custodiante confirmar.
+- **Linhas 6 e 14, valores ausentes:** pergunte se as chegadas espontâneas de 5 de março e o tempo de espera de 12 de março não foram registrados ou não foram exportados. Não faça imputação no piloto.
+- **Linha 18, desvio de −15 minutos; linha 25, 1.600 minutos:** valores impossíveis. Uma duração negativa sugere um erro de sinal ou de subtração; 1.600 minutos excedem um dia. Peça ao custodiante os registros de origem e como os minutos de desvio são calculados.
+- **Linha 20, código de local `ALDR`:** um código legado ou alternativo de Alder Point. Peça a lista de códigos; se `ALDR` for outro local, a linha precisa ser removida.
+- **14 de março ausente:** pergunte se o dia se perdeu na exportação ou não foi registrado.
+- **30 de março, 23 chegadas (cerca de 57% da média):** não é impossível, mas é implausível. No cenário sintético, o custodiante explica que Alder Point teve seis horas de indisponibilidade do prontuário eletrônico naquele dia; as chegadas foram registradas em papel e só parcialmente lançadas depois. Isso é um **artefato de medição num hospital vizinho** — exatamente o que um estudo sobre interrupções de TI precisa esperar. O estudo principal acrescenta uma regra: os dias sinalizados pelo custodiante como dias de indisponibilidade são identificados no livro de códigos e analisados com e sem eles.
+
+A completude é de 94,3%, na zona de *alterar*, e dois valores estão fora da faixa. A decisão é alterar e repetir o piloto — e, como a saída declara, **nenhuma análise de desfecho** de qualquer tipo é feita sobre o extrato do piloto.
+
+### 5.8 Exemplo resolvido: o relatório do piloto (sintético)
+
+O relatório do piloto do candidato ao orientador, em uma página:
+
+- **Dados.** O primeiro extrato falhou em dois critérios (completude de 94,3%; dois valores fora da faixa). O custodiante confirmou: a duplicata era um artefato da exportação; −15 deveria ser 15 e 1.600 deveria ser 160 (erros de digitação no sistema de origem); `ALDR` é o código legado de Alder Point; 14 de março foi omitido da exportação e foi fornecido; a contagem de chegadas espontâneas de 5 de março e o tempo de espera de 12 de março nunca foram registrados. Extrato corrigido: completude de 98,6%; todos os critérios aprovados → **prosseguir**. Mudança de procedimento: o livro de códigos agora registra os dias de indisponibilidade sinalizados pelo custodiante e os valores corrigidos, com a explicação do custodiante.
+- **Entrevistas.** As entrevistas do piloto levaram 68 e 72 minutos, contra uma meta de 45 minutos. Uma pergunta — "Que erros foram cometidos durante o desvio?" — deixou os dois participantes do piloto na defensiva. Mudanças: o roteiro foi cortado de 14 para 9 perguntas; a pergunta foi reescrita como "Conte-me as primeiras doze horas: que informações você tinha e o que decidiu em cada momento?" — ancorada no tempo e na informação, o que também reduz o viés de retrospectiva (Capítulo 4). Piloto repetido com um participante: 44 minutos → **prosseguir**.
+- **Pipeline.** O código de análise rodou de ponta a ponta sobre dados sintéticos e produziu todos os produtos planejados, exceto o gráfico de estudo de evento, que exigiu um ajuste manual de eixo; o ajuste foi levado para o código → **prosseguir**.
+- **Entradas no registro de desvios:** roteiro de entrevista revisado (antes de qualquer entrevista do estudo; nenhum dado de desfecho visto); regra dos dias de indisponibilidade acrescentada (antes que qualquer dado de desfecho em torno do evento fosse visto).
+
+### 5.9 Erros comuns e limites
+
+- Escrever uma proposta que não pode falhar: nenhum elemento fixado, nenhum critério declarado, nenhuma regra de desvios.
+- Ignorar as dependências de tempo decorrido; começar a ética e os acordos de dados depois que o desenho estiver "perfeito".
+- Um registro de riscos sem gatilhos nem responsáveis, nunca revisado.
+- Pedidos de dados vagos ("todos os dados relevantes") que os custodiantes não conseguem atender ou que pedem mais do que a pergunta precisa.
+- Usar um piloto para estimar o efeito ou para "ver se tem alguma coisa ali".
+- Corrigir problemas nos dados silenciosamente numa planilha, em vez de perguntar ao custodiante e registrar a correção.
+- Apagar dias implausíveis sem entendê-los — e, com isso, apagar a própria interrupção de que o estudo trata.
+- Critérios de progressão escritos depois que os resultados do piloto foram vistos.
+
+O limite de um piloto é o seu tamanho: passar nele mostra que os procedimentos podem funcionar, e não que os dados principais estarão limpos. Mantenha o script de auditoria e execute-o em cada extrato do estudo principal.
+
+### Exercícios — capítulo 5
+
+**EX027 — Resumo da proposta.** *Objetivo:* comprimir o estudo num resumo verificável. *Insumos:* Capítulos 1–4. *Restrições:* 250 palavras; precisa nomear a pergunta, o estimando, o desenho, a comparação, as fontes de dados, o status ético e a contribuição esperada; nenhuma alegação de resultados. *Passos:* (1) redigir; (2) marcar cada frase como fixada ou em aberto; (3) pedir a um colega que declare a estimativa primária do estudo apenas a partir do seu resumo. *Evidência esperada:* resumo e a reformulação do colega. *Rubrica:* 3 = o colega reformula o estimando corretamente, todos os elementos exigidos presentes, nada prometido que o desenho não possa entregar; 2 = falta um elemento; 1 = nível de tema; 0 = nada.
+
+**EX028 — Cronograma e registro de riscos.** *Objetivo:* planejar contra o tempo decorrido. *Insumos:* §5.2–5.3. *Restrições:* um estudo diferente: entrevistas com doze operadores de concessionárias de água sobre exercícios de incidentes cibernéticos, mais a análise dos relatórios de exercícios de três concessionárias. *Passos:* (1) montar um cronograma de quatro semestres; (2) identificar o caminho crítico; (3) escrever seis riscos com probabilidade, impacto, mitigação, gatilho e responsável. *Evidência esperada:* tabela e cronograma. *Rubrica:* 3 = caminho crítico corretamente identificado (aprovações e acesso aos relatórios de exercícios), gatilhos mensuráveis, mitigações específicas para concessionárias pequenas; 2 = um risco sem gatilho; 1 = genérico; 0 = nada.
+
+**EX029 — Auditoria e repetição do piloto.** *Objetivo:* aplicar as correções de um custodiante aos dados do extrato do piloto e decidir PROSSEGUIR ou NÃO PROSSEGUIR pela completude registrada, sem imputar valores que nunca foram registrados. *Insumos:* código do Laboratório 5. *Restrições:* off-line. *Passos:* (1) executar o laboratório e registrar a saída; (2) aplicar as correções do custodiante de §5.8 (remover a duplicata; acrescentar `2025-03-14,AP,38,92,0,27`; −15 → 15; 1.600 → 160; `ALDR` → `AP`; deixar ausentes os dois valores nunca registrados) e executar de novo; (3) relatar a completude e a decisão; (4) declarar o que a auditoria ainda relata e o que você fará a respeito. *Evidência esperada:* as duas saídas e um parágrafo. *Rubrica:* 3 = completude de 98,6% e GO relatados, células ausentes restantes e o dia baixo de 30 de março explicados com a regra da indisponibilidade, nenhuma imputação no piloto; 2 = um valor errado; 1 = não executado; 0 = nada.
+
+**EX030 — Piloto do roteiro de entrevista.** *Objetivo:* testar um instrumento. *Insumos:* um roteiro próprio para a RQ3 (pelo menos dez perguntas). *Restrições:* pilotar com uma ou duas pessoas fora da amostra pretendida; registrar a duração e cada ponto de confusão ou desconforto. *Passos:* (1) pilotar; (2) revisar; (3) documentar as mudanças e suas razões; (4) declarar se a revisão deve ser registrada no registro de desvios. *Evidência esperada:* roteiro original, roteiro revisado e registro de mudanças. *Rubrica:* 3 = revisões respondem aos problemas observados, perguntas ancoradas no tempo e na informação, decisão sobre o registro de desvios justificada; 2 = revisões cosméticas; 1 = sem piloto; 0 = nada.
+
+**EX031 — Critérios de progressão.** *Objetivo:* definir prosseguir/alterar/parar antes de ver os resultados do piloto. *Insumos:* um piloto de viabilidade para um questionário a 200 gestores de TI hospitalar sobre procedimentos de contingência. *Restrições:* pelo menos quatro critérios (por exemplo, taxa de resposta, preenchimento dos itens, tempo de preenchimento, compreensão). *Passos:* (1) definir os limiares de cada zona; (2) justificar cada um pelas necessidades do estudo principal; (3) declarar o que "alterar" muda em cada um. *Evidência esperada:* tabela e justificativa. *Rubrica:* 3 = limiares ligados à precisão ou à viabilidade do estudo principal, ações de alteração concretas, nenhum critério de tamanho de efeito; 2 = um limiar arbitrário; 1 = critérios sobre resultados, e não sobre viabilidade; 0 = nada.
+
+**EX032 — Memorando ao orientador sobre o escopo.** *Objetivo:* tomar e registrar uma decisão de escopo. *Insumos:* após o piloto, a coalizão oferece dados de pacientes sobre o atendimento de AVC no período do desvio, se o candidato acrescentar um desfecho de AVC. *Restrições:* uma página; considerar a ética, o cronograma, o desenho e a alegação. *Passos:* (1) listar benefícios e custos; (2) decidir; (3) escrever a entrada no registro de desvios; (4) se recusar, declarar como a oferta se torna trabalho futuro. *Evidência esperada:* memorando. *Rubrica:* 3 = reconhece a nova aprovação ética e os dados individuais, o impacto no cronograma, a multiplicidade e o desfecho primário fixado; decisão defensável em qualquer sentido; entrada de desvio completa; 2 = decisão sem custos; 1 = aceita sem aprovações; 0 = nada.
+
+### Síntese do capítulo
+
+Uma proposta é um contrato: ela fixa a pergunta, os estimandos, o desenho e a análise, declara o que permanece em aberto e diz como os desvios serão registrados. O caminho crítico de um projeto de mestrado passa pelo tempo de outras pessoas — ética, custodiantes, revisão jurídica —, então comece essas frentes cedo e mantenha um registro de riscos vivo. Faça aos custodiantes perguntas precisas, sobretudo sobre mudanças de sistema, lacunas e correções. Um piloto testa a viabilidade, e não os efeitos; nunca estime um efeito a partir dele e, num estudo de evento, nunca olhe para os desfechos em torno do evento. Defina de antemão os critérios de prosseguir/alterar/parar. Audite cada extrato com um script, transforme cada anomalia numa pergunta e trate os dias de indisponibilidade nos próprios hospitais que você estuda como artefatos de medição a sinalizar, e não como linhas a apagar.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — capítulo 05 de 08
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Coleta e análise dos dados
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Executar um procedimento de coleta de dados que preserve a linhagem: cada arquivo recebido, auditado, congelado e rastreável até a análise que o usou.
+2. Especificar e ajustar um modelo de série temporal interrompida controlada por regressão segmentada e interpretar cada coeficiente.
+3. Diagnosticar a autocorrelação dos resíduos e calcular intervalos robustos à autocorrelação (Newey–West), relatando como a escolha da defasagem os afeta.
+4. Usar janelas placebo como evidência baseada em postos e declarar o menor valor-p que um dado número de placebos pode produzir.
+5. Conduzir e analisar entrevistas com uma análise temática documentada e usar a concordância entre codificadores como verificação reflexiva, e não como garantia.
+6. Integrar as vertentes quantitativa e qualitativa num quadro conjunto, nomeando onde elas confirmam, ampliam ou conflitam.
+
+Este capítulo executa o plano fixado nos Capítulos 3 e 5 e confronta os rivais do Capítulo 4 com os dados. O Capítulo 7 escreve o que ele encontra; o Capítulo 8 o defende.
+
+### 6.1 Coletando dados com linhagem
+
+Cada número da dissertação precisa ser rastreável até um arquivo, um script e uma versão. Sem isso, nem o candidato, nem o orientador, nem um examinador consegue saber de qual extrato veio um resultado, se ele foi corrigido ou se o script que o produziu ainda é o mesmo. Um procedimento mínimo para cada extrato:
+
+1. **Receber** pelo canal indicado no acordo de dados; nunca por e-mail pessoal.
+2. **Registrar** o nome do arquivo, o remetente, a data de recebimento e uma soma de verificação criptográfica (por exemplo, SHA-256) num registro de dados.
+3. **Armazenar** o original somente para leitura na área restrita (os níveis do Capítulo 3).
+4. **Auditar** com o script do Laboratório 5; enviar as constatações ao custodiante; registrar suas respostas no livro de códigos.
+5. **Congelar**: quando um extrato for aprovado, registrar a sua soma de verificação como a versão da análise. Os arquivos derivados são produzidos apenas por scripts a partir de insumos congelados.
+6. **Capturar as fontes públicas** (aqui, o painel de Wexmoor) com a data da captura, porque os painéis são revisados.
+
+O Spillover Study recebeu agregados diários dos dias −180 a +89 de três custodiantes e capturou a série de Wexmoor do painel regional numa data registrada. Todos passaram na auditoria após uma rodada de correções, e os dias de indisponibilidade sinalizados pelos custodiantes foram registrados no livro de códigos. (O gerador do laboratório não simula dias de indisponibilidade, então os laboratórios analisam todos os dias.)
+
+### 6.2 O modelo de série temporal interrompida controlada
+
+Para cada DE vizinho, o desfecho no dia *t* é a razão logarítmica entre as suas chegadas e as chegadas agregadas de Wexmoor:
+
+*y*ₜ = log(*A*ₜ + 0.5) − log(*W*ₜ + 0.5) = β₀ + β₁·*t* + β₂·*D*ₜ + β₃·*P*ₜ + *e*ₜ
+
+em que *D*ₜ = 1 durante a janela do desvio (dias 0–20) e *P*ₜ = 1 depois dela (dias 21–89). Lendo os coeficientes:
+
+- **β₀, β₁:** o nível e a tendência linear pré-evento da razão. Se as regiões tratada e de comparação compartilham a estação, a razão é aproximadamente plana mesmo quando cada série não é.
+- **β₂:** a variação da razão logarítmica durante o desvio, em relação à tendência projetada. **exp(β₂) − 1 é a variação percentual estimada** — a estimativa primária.
+- **β₃:** a variação após o fim do desvio, que absorve qualquer cauda, de modo que os dias pós-evento não contaminem a tendência.
+
+As escolhas e suas razões, todas fixadas no plano de pré-análise: a **razão logarítmica** trata os efeitos como multiplicativos, o que convém a contagens cuja variabilidade cresce com o nível, e remove os padrões compartilhados de dia da semana e de estação; somar **0,5** evita log(0) em contagens muito pequenas e tem efeito desprezível nestes volumes; uma **tendência linear** ao longo de 180 dias capta a deriva lenta sem perseguir o ruído; um **degrau separado pós-janela** evita presumir que o sistema volta à sua tendência no dia em que o desvio termina. [Lopez Bernal, Cummins e Gasparrini (2017)](https://doi.org/10.1093/ije/dyw098) oferecem um tutorial de regressão segmentada para ITS, incluindo a necessidade de especificar de antemão o modelo de impacto (um degrau, uma mudança de inclinação ou ambos); o Spillover Study pré-especificou um degrau.
+
+### 6.3 Autocorrelação e intervalos robustos
+
+As séries operacionais diárias raramente são independentes de um dia para o outro: um dia movimentado pode ser seguido de outro dia movimentado. Os coeficientes de mínimos quadrados ordinários continuam não enviesados sob autocorrelação, mas seus erros-padrão usuais estão errados — geralmente pequenos demais quando a autocorrelação é positiva. Duas respostas são comuns:
+
+1. **Diagnosticar:** inspecionar a autocorrelação dos resíduos nas defasagens 1 e 7, ou calcular a estatística de Durbin–Watson ([Durbin e Watson, 1950](https://doi.org/10.1093/biomet/37.3-4.409)); valores perto de 2 sugerem pouca autocorrelação de primeira ordem.
+2. **Tornar a inferência robusta:** usar erros-padrão consistentes com heterocedasticidade e autocorrelação (HAC), como o estimador de [Newey–West (1987)](https://doi.org/10.2307/1913610), que pondera os produtos cruzados dos resíduos até uma defasagem escolhida *L* com pesos de Bartlett decrescentes 1 − *l*/(*L* + 1). Alternativamente, modelar diretamente o processo de erro (por exemplo, com erros ARIMA), como Lopez Bernal et al. discutem.
+
+O Spillover Study pré-especificou Newey–West com defasagem 7 (uma semana, coincidindo com o ciclo semanal) e uma análise de sensibilidade com as defasagens 0 e 14. Para Alder Point, os resíduos mostraram autocorrelação de 0,03 na defasagem 1, de −0,12 na defasagem 7 e uma estatística de Durbin–Watson de 1,92: a autocorrelação é fraca, então o intervalo robusto não deveria diferir muito do ingênuo — e não difere (EX034).
+
+### 6.4 Janelas placebo como evidência
+
+O Capítulo 4 introduziu os testes de placebo no tempo. Aqui eles se tornam precisos: ajuste o mesmo modelo a janelas falsas de 21 dias colocadas na linha de base, usando apenas dados anteriores ao evento real, e registre cada "efeito" falso. Se a estimativa real for maior do que todas as *k* estimativas placebo, seu posto é 1 de *k* + 1 e, sob o pressuposto de que a janela real é permutável com as falsas, a probabilidade unilateral de um posto tão extremo por acaso é 1/(*k* + 1). **Com 15 placebos, o menor valor atingível é 1/16 = 0,0625.** Os testes placebo, portanto, não conseguem chegar a 0,05 com menos de 19 janelas (nem ficar abaixo disso com menos de 20), sejam quais forem os dados; relate o posto, e não um valor-p enganoso. As janelas placebo também têm uma fraqueza: os ajustes perto do início da série se apoiam em períodos prévios curtos e são mais ruidosos do que o ajuste real, o que torna o teste conservador.
+
+### 6.5 Atividade prática: a análise quantitativa principal
+
+Salve o Laboratório 4 como `lab4_data.py` e o arquivo a seguir como `lab6_its.py` na mesma pasta (o Laboratório 8 o importa). Ele implementa mínimos quadrados por eliminação de Gauss–Jordan, erros-padrão de Newey–West e a ITS controlada de §6.2, ajusta-a para cada vizinho contra Wexmoor agregada, executa 15 janelas placebo por local e ajusta uma ITS não controlada para o tempo de espera de Alder Point.
+
+```python
+# Lab 6 - controlled interrupted time series with autocorrelation-robust intervals (offline)
+# Save Lab 4 as lab4_data.py in the same folder first. Save this file as lab6_its.py (Lab 8 imports it).
+import math
+from lab4_data import make_region, DAYS
+
+def solve(A, b):                                   # Gauss-Jordan with partial pivoting
+    n = len(A)
+    M = [row[:] + [b[i]] for i, row in enumerate(A)]
+    for c in range(n):
+        p = max(range(c, n), key=lambda r: abs(M[r][c]))
+        M[c], M[p] = M[p], M[c]
+        for r in range(n):
+            if r != c:
+                f = M[r][c] / M[c][c]
+                M[r] = [x - f * y for x, y in zip(M[r], M[c])]
+    return [M[i][n] / M[i][i] for i in range(n)]
+
+def inverse(A):
+    n = len(A)
+    cols = [solve(A, [1.0 if i == j else 0.0 for i in range(n)]) for j in range(n)]
+    return [[cols[j][i] for j in range(n)] for i in range(n)]
+
+def ols_nw(X, y, lag=7):
+    k = len(X[0])
+    XtX = [[sum(r[i] * r[j] for r in X) for j in range(k)] for i in range(k)]
+    beta = solve(XtX, [sum(r[i] * v for r, v in zip(X, y)) for i in range(k)])
+    e = [v - sum(b * x for b, x in zip(beta, r)) for r, v in zip(X, y)]
+    S = [[0.0] * k for _ in range(k)]
+    for l in range(lag + 1):                         # Newey-West with Bartlett weights
+        w = 1.0 if l == 0 else 1 - l / (lag + 1)
+        for t in range(l, len(y)):
+            for i in range(k):
+                for j in range(k):
+                    v = e[t] * e[t - l] * X[t][i] * X[t - l][j]
+                    S[i][j] += w * (v if l == 0 else v + e[t] * e[t - l] * X[t - l][i] * X[t][j])
+    B = inverse(XtX)
+    V = [[sum(B[i][a] * S[a][b] * B[b][j] for a in range(k) for b in range(k)) for j in range(k)] for i in range(k)]
+    return beta, [math.sqrt(V[i][i]) for i in range(k)], e
+
+def design_row(t, start, ev_len):
+    return [1.0, t / 100, 1.0 if start <= t < start + ev_len else 0.0, 1.0 if t >= start + ev_len else 0.0]
+
+def fit(treated, control, days, start, ev_len):
+    """log(treated) - log(control) = b0 + b1*t + b2*[event window] + b3*[after window]; b2 as % change."""
+    X = [design_row(t, start, ev_len) for t in days]
+    y = [math.log(treated[t] + 0.5) - math.log(control[t] + 0.5) for t in days]
+    beta, se, _ = ols_nw(X, y)
+    b, s = beta[2], se[2]
+    return math.exp(b) - 1, math.exp(b - 1.96 * s) - 1, math.exp(b + 1.96 * s) - 1
+
+def cits(treated, control, pre_len=180, ev_len=21, post_end=89, drop=frozenset()):
+    days = [t for t in range(-pre_len, post_end + 1) if t not in drop]
+    return fit(treated, control, days, 0, ev_len)
+
+def placebo(treated, control, ev_len=21, first=-150, last=-28, step=7):
+    """Fake event windows inside the baseline; each fit uses only days before the real event."""
+    out = []
+    for s in range(first, last - ev_len + 1, step):
+        days = range(-180, s + ev_len + 7)
+        out.append(fit(treated, control, days, s, ev_len)[0])
+    return out
+
+if __name__ == "__main__":
+    d = make_region()
+    comp = {t: d["W1"][t] + d["W2"][t] for t in DAYS}
+    print("site  effect  95% interval        placebo_min  placebo_max  rank")
+    for s in ("AP", "BF", "CG"):
+        est, lo, hi = cits(d[s], comp)
+        pl = placebo(d[s], comp)
+        rank = 1 + sum(p >= est for p in pl)
+        print(f"{s:4}  {est:+.3f}  ({lo:+.3f}, {hi:+.3f})  {min(pl):+11.3f}  {max(pl):+11.3f}  {rank}/{len(pl) + 1}")
+    # secondary outcome: AP median minutes to provider, uncontrolled ITS with linear trend (no comparison)
+    rows, y = [], []
+    for t in DAYS:
+        rows.append([1.0, t / 100, 1.0 if 0 <= t <= 20 else 0.0, 1.0 if t > 20 else 0.0])
+        y.append(d["AP_wait"][t])
+    beta, se, _ = ols_nw(rows, y)
+    print(f"AP wait: event-window change {beta[2]:+.1f} min (95% interval {beta[2] - 1.96 * se[2]:+.1f} to {beta[2] + 1.96 * se[2]:+.1f})")
+```
+
+Saída esperada (menos de um segundo):
+
+```text
+site  effect  95% interval        placebo_min  placebo_max  rank
+AP    +0.244  (+0.067, +0.449)       -0.190       +0.166  1/16
+BF    +0.058  (-0.067, +0.199)       -0.137       +0.255  8/16
+CG    +0.008  (-0.093, +0.121)       -0.104       +0.242  9/16
+AP wait: event-window change +5.9 min (95% interval +2.6 to +9.2)
+```
+
+Interpretação, escrita como o capítulo de resultados da dissertação a declararia:
+
+- **RQ1, Alder Point (6 km).** As chegadas de ambulâncias durante o desvio foram cerca de 24,4% maiores do que o esperado pela tendência pré-evento e pela variação simultânea de Wexmoor (intervalo de 95% de 6,7% a 44,9%). A estimativa superou todas as 15 estimativas placebo (posto 1 de 16). O valor verdadeiro do gerador é 22%; a estimativa está perto, mas o intervalo é largo — coerente com o alerta do Laboratório 3 sobre a precisão num único DE.
+- **RQ1, Brookfield (14 km).** +5,8% (−6,7% a +19,9%); posto 8 de 16. Os dados são compatíveis com nenhuma variação e com uma variação de cerca de 20%. O valor verdadeiro era 10%: o estudo **não detectou um efeito que existe**. A afirmação honesta é "inconclusivo", nunca "nenhum efeito".
+- **RQ1, Calloway (38 km).** +0,8% (−9,3% a +12,1%); posto 9 de 16. Compatível com nenhuma variação; aumentos acima de cerca de 12% são improváveis sob o modelo.
+- **RQ2, distância.** As estimativas pontuais diminuem com a distância (24,4%, 5,8%, 0,8%), coerentes com uma transferência de carga concentrada no DE mais próximo. Os intervalos de Brookfield e de Calloway se sobrepõem muito, então os dados não conseguem dizer se a queda é gradual ou confinada ao hospital mais próximo.
+- **Desfecho secundário, tempo de espera em Alder Point.** +5,9 minutos durante o desvio (2,6 a 9,2). Este modelo **não tem série de comparação**, porque Wexmoor não publica tempos de espera; a estimativa, portanto, inclui qualquer superlotação sazonal. No gerador sintético, a estação acrescenta até 3 minutos e o efeito verdadeiro do desvio é de 4 minutos; a estimativa combina os dois. A dissertação precisa dizer que a estimativa do tempo de espera está confundida pela estação e provavelmente superestima a contribuição do desvio.
+
+### 6.6 A vertente qualitativa
+
+#### 6.6.1 Amostragem e entrevistas
+
+A RQ3 pergunta como a carga foi redistribuída, o que só as pessoas envolvidas podem contar. A amostragem é **intencional**: a liderança dos DEs de cada vizinho, os supervisores de operações e de despacho do EMS e a equipe da coalizão. Quantas entrevistas bastam não tem uma resposta única. [Guest, Bunce e Johnson (2006)](https://doi.org/10.1177/1525822X05279903) constataram, num estudo com participantes relativamente homogêneos, que a maioria dos temas apareceu nas primeiras doze entrevistas; [Malterud, Siersma e Guassora (2016)](https://doi.org/10.1177/1049732315617444) propõem o **poder informacional**: quanto mais informação relevante cada participante detém para um objetivo estreito, menos participantes são necessários. O objetivo do Spillover Study é estreito e seus participantes detêm um conhecimento direto e específico; dez entrevistas (I01–I10) nas três funções deram um poder informacional adequado, um julgamento que a dissertação precisa explicar, e não apenas afirmar.
+
+As entrevistas seguiram o roteiro revisado (Capítulo 5), ancorado no tempo e na informação. Foram gravadas com consentimento, transcritas, desidentificadas (nomes, nomes das organizações, títulos de função únicos e datas substituídos), e as gravações foram destruídas após a transcrição, como o termo de consentimento declarava.
+
+#### 6.6.2 Análise temática
+
+[Braun e Clarke (2006)](https://doi.org/10.1191/1478088706qp063oa) descrevem a análise temática em seis fases: familiarização com os dados; geração dos códigos iniciais; busca de temas; revisão dos temas; definição e nomeação dos temas; e produção do relatório. Cada fase deixa um produto que outra pessoa pode inspecionar, e é isso que distingue uma análise documentada de uma leitura impressionista das transcrições. Mantenha uma **trilha de auditoria**: o livro de códigos com definições e exemplos, memorandos que expliquem cada decisão e as versões da estrutura de temas.
+
+#### 6.6.3 Concordância entre codificadores
+
+Se se deve medir a concordância entre codificadores é algo debatido. [O'Connor e Joffe (2020)](https://doi.org/10.1177/1609406919899220) revisam o debate e sugerem que a confiabilidade entre codificadores pode acrescentar rigor e transparência quando um livro de códigos é aplicado de forma consistente, enquanto se ajusta mal a abordagens interpretativas em que a perspectiva do pesquisador faz parte da análise. O Spillover Study usa uma abordagem baseada em livro de códigos para as perguntas operacionais, então um segundo codificador codificou independentemente uma amostra de trechos; a concordância foi medida com o kappa de Cohen (Capítulo 1) e cada divergência foi discutida e resolvida refinando as definições dos códigos. O kappa é relatado como evidência de que o livro de códigos pode ser aplicado de forma consistente — e não como prova de que os temas são verdadeiros.
+
+#### 6.6.4 Temas (sintéticos)
+
+| Tema | Descrição | Trecho desidentificado ilustrativo (sintético) |
+|---|---|---|
+| T1 A geografia viária governou os destinos | As equipes levaram os pacientes desviados ao DE aberto mais próximo na sua rota, que geralmente era Alder Point; não houve balanceamento regional da carga | "Se você está na estrada do vale e o Kestrel está fechado, Alder Point é simplesmente a próxima saída. Ninguém nos mandou distribuir." (operações do EMS) |
+| T2 Os vizinhos souberam tarde e informalmente | Alder Point soube do ataque pelas equipes que chegavam, horas antes de qualquer aviso formal | "Nosso primeiro aviso foi um socorrista dizendo: 'O Kestrel caiu, vocês vão receber tudo.'" (liderança do DE) |
+| T3 Sobrecarga no turno da noite | A carga extra chegou desproporcionalmente à noite, quando o quadro de pessoal era mais enxuto | "De dia a gente absorvia. À noite, às duas da manhã, já estávamos com pacientes no corredor." (liderança do DE) |
+| T4 O desvio durou tanto quanto os procedimentos de contingência | O Kestrel permaneceu em desvio até que seus sistemas pudessem sustentar uma triagem segura, e não até que o ataque fosse contido | "Eles não iam sair do desvio com prontuários em papel." (coalizão) |
+
+### 6.7 Integração: o quadro conjunto
+
+[Fetters, Curry e Creswell (2013)](https://doi.org/10.1111/1475-6773.12117) descrevem a integração nos níveis do desenho, dos métodos e da interpretação, e o **quadro conjunto** como uma forma de reunir os resultados. Cada linha emparelha um resultado quantitativo com uma constatação qualitativa e declara uma metainferência: **confirmação** (as duas vertentes concordam), **ampliação** (uma acrescenta algo à outra) ou **discordância** (elas conflitam, o que exige explicação).
+
+| Resultado quantitativo | Constatação qualitativa | Metainferência |
+|---|---|---|
+| Alder Point +24,4% (6,7% a 44,9%), o maior dos três | T1: a geografia viária mandou as ambulâncias desviadas para a próxima saída | **Confirmação e ampliação**: o gradiente tem um mecanismo — a rota, e não a distância enquanto tal |
+| Brookfield +5,8%, inconclusivo | Os dirigentes de Brookfield descreveram o período como "muito pesado" | **Discordância**. Explicações possíveis: baixo poder (efeito verdadeiro de 10% no gerador); Brookfield tinha uma falta simultânea de pessoal, então a mesma carga *pareceu* mais pesada; percepções ancoradas nas piores noites. A dissertação relata a discordância e não deixa nenhuma das vertentes se sobrepor à outra |
+| Tempo de espera +5,9 minutos, confundido pela estação | T3: sobrecarga concentrada à noite | **Ampliação**: as medianas diárias podem esconder picos noturnos; um estudo posterior deveria usar dados por hora |
+| Efeito confinado aos dias 0–20, com uma pequena cauda | T4: o desvio terminou quando os procedimentos de contingência puderam ser desativados | **Ampliação**: a duração do desvio dependeu da recuperação dos sistemas clínicos — uma alavanca para os planejadores |
+
+A linha da discordância não é uma fraqueza do estudo; é uma constatação. Uma dissertação que esconde a discordância para contar uma história mais limpa perde a parte mais informativa dos métodos mistos.
+
+### 6.8 Exemplo resolvido: o desvio que quase foi escondido (sintético)
+
+Após a análise principal, o candidato notou que retirar os dois feriados regionais mudava ligeiramente a estimativa de Brookfield e ficou tentado a relatar a versão sem os feriados, que "parecia mais com o gradiente esperado". A regra do orientador: o modelo pré-especificado é a análise primária; qualquer alternativa é relatada como verificação de robustez, com a razão pela qual foi examinada, no registro de desvios, datada, anotando que os resultados já tinham sido vistos. A curva de especificação do Capítulo 8 então relata todas as escolhas razoáveis em conjunto, de modo que nenhuma escolha isolada — feita depois de ver os resultados — sustente a conclusão. O episódio é típico: o risco da análise flexível não é a desonestidade, mas a atração silenciosa de uma história preferida ([Gelman e Loken, 2014](https://doi.org/10.1511/2014.111.460)).
+
+### 6.9 Erros comuns e limites
+
+- Editar dados à mão depois do congelamento, ou analisar um extrato cuja versão não pode ser identificada.
+- Ajustar uma ITS não controlada e chamar o resultado de efeito quando um choque compartilhado é plausível.
+- Relatar intervalos de mínimos quadrados ordinários para dados diários autocorrelacionados sem verificar.
+- Converter um posto placebo em "p < 0,05" quando o número de placebos torna isso impossível.
+- Relatar uma estimativa inconclusiva como "nenhum efeito".
+- Apresentar um desfecho secundário confundido com a mesma confiança que o desfecho primário controlado.
+- Alegar saturação ou adequação do número de entrevistas sem explicar o raciocínio.
+- Tratar um kappa alto como prova de que os temas são válidos.
+- Esconder a discordância entre as vertentes.
+- Escolher entre variantes da análise depois de ver os resultados e relatar apenas a preferida.
+
+O limite desta análise é que ela se apoia num único evento, numa única região de comparação e num modelo cujos pressupostos — tendências paralelas, uma tendência pré-evento linear, um efeito em forma de degrau — podem ser sondados, mas não provados. O Capítulo 8 testa quanto a conclusão depende deles.
+
+### Exercícios — capítulo 6
+
+**EX033 — Execute e relate a análise principal.** *Objetivo:* usar o Laboratório 6 e escrever os resultados. *Insumos:* Laboratórios 4 e 6. *Restrições:* off-line; não alterar as sementes. *Passos:* (1) executar o Laboratório 6 e registrar a saída; (2) escrever um parágrafo de resultados de 200 palavras para a RQ1 e a RQ2, usando estimativas, intervalos e postos placebo; (3) escrever uma frase sobre o resultado do tempo de espera que declare a sua limitação. *Evidência esperada:* saída e texto. *Rubrica:* 3 = números exatos, Brookfield descrito como inconclusivo, e não nulo, gradiente declarado com a ressalva da sobreposição, tempo de espera sinalizado como não controlado; 2 = um exagero; 1 = "significativo" usado como conclusão sem estimativas; 0 = nada.
+
+**EX034 — Sensibilidade à defasagem.** *Objetivo:* testar o método dos intervalos. *Insumos:* `lab6_its.py`. *Restrições:* alterar apenas a defasagem de Newey–West. *Passos:* (1) calcular o intervalo de Alder Point com as defasagens 0, 7 e 14; (2) calcular a autocorrelação dos resíduos nas defasagens 1 e 7 e a estatística de Durbin–Watson; (3) explicar por que uma defasagem maior nem sempre alarga o intervalo; (4) declarar o que você relataria. *Evidência esperada:* tabela e parágrafo. *Rubrica:* 3 = intervalos e diagnósticos corretos, comportamento não monotônico explicado (as autocovariâncias amostrais ponderadas por Bartlett podem ser negativas), defasagem pré-especificada relatada com a sensibilidade; 2 = um valor errado; 1 = escolhe o intervalo mais estreito; 0 = nada.
+
+**EX035 — Aritmética dos placebos.** *Objetivo:* interpretar evidência baseada em postos. *Insumos:* a saída placebo do Laboratório 6. *Restrições:* nenhum código novo necessário. *Passos:* (1) declarar o valor-p unilateral baseado em postos para cada local; (2) declarar quantas janelas placebo seriam necessárias para que o menor valor atingível chegue a 0,05 e a 0,01, e para que fique estritamente abaixo deles; (3) explicar por que as primeiras janelas placebo são mais ruidosas do que o ajuste real; (4) propor uma mudança que acrescente janelas sem usar dados pós-evento. *Evidência esperada:* respostas. *Rubrica:* 3 = 1/16, 8/16, 9/16 calculados; 19 e 99 janelas para chegar a 0,05 e 0,01, 20 e 100 para ficar abaixo; períodos prévios curtos explicados; uma proposta válida (por exemplo, inícios diários em vez de semanais, ou janelas de anos anteriores, se os dados existirem) com a sua ressalva de dependência; 2 = um erro; 1 = trata o p placebo como exato; 0 = nada.
+
+**EX036 — Repare o desfecho secundário.** *Objetivo:* tratar uma estimativa confundida. *Insumos:* o resultado do tempo de espera e §6.5. *Restrições:* nenhum dado novo pode ser inventado. *Passos:* (1) explicar o confundimento; (2) propor dois desenhos que possam removê-lo com dados obteníveis; (3) declarar a alegação que a estimativa atual sustenta; (4) escrever a frase para a seção de limitações. *Evidência esperada:* uma página. *Rubrica:* 3 = confundimento pela estação explicado, desenhos viáveis (Calloway como comparação dentro da região para o tempo de espera, dado o seu efeito nulo nas chegadas, ou uma série de comparação a partir de dados publicados de outra região), alegação limitada a "coerente com um aumento; magnitude confundida", limitação com direção; 2 = um desenho inviável; 1 = sem limitação; 0 = nada.
+
+**EX037 — Concordância entre codificadores.** *Objetivo:* aplicar e interpretar o kappa na codificação qualitativa. *Insumos:* doze trechos sintéticos codificados por dois codificadores com os códigos DIV (decisões de destino do EMS), INFO (informação e notificação), STAFF (pessoal e sobrecarga), PROC (procedimentos). Codificador A: DIV, INFO, STAFF, DIV, PROC, INFO, INFO, STAFF, DIV, PROC, INFO, STAFF. Codificador B: DIV, INFO, STAFF, STAFF, PROC, INFO, DIV, STAFF, DIV, PROC, PROC, STAFF. Trecho 4: "Tínhamos duas equipes esperando na porta e ninguém para receber a passagem do caso." Trecho 7: "O despacho não sabia que o Kestrel estava fechado, então a equipe decidiu na estrada." Trecho 11: "Não sabíamos se começávamos o processo de triagem em papel ou se esperávamos notícia da TI." *Restrições:* calcular à mão ou com a função do Laboratório 1. *Passos:* (1) calcular a concordância observada, a concordância ao acaso e o kappa; (2) para cada divergência, decidir se o problema é a definição do livro de códigos ou o trecho; (3) revisar uma definição. *Evidência esperada:* cálculo, análise e definição revisada. *Rubrica:* 3 = κ ≈ 0,67 calculado corretamente, divergências diagnosticadas como problemas de fronteira (trechos que se encaixam em dois códigos), uma revisão que permita ou regule a dupla codificação; 2 = cálculo correto, diagnóstico ralo; 1 = apenas a concordância bruta; 0 = nada.
+
+**EX038 — Quadro conjunto.** *Objetivo:* integrar as vertentes. *Insumos:* §6.5 e §6.6.4. *Restrições:* pelo menos quatro linhas; pelo menos uma discordância. *Passos:* (1) montar o quadro; (2) declarar a metainferência de cada linha; (3) para cada discordância, listar as explicações e as evidências que poderiam escolher entre elas. *Evidência esperada:* tabela e parágrafo. *Rubrica:* 3 = metainferências rotuladas corretamente, discordância explicada sem deixar uma vertente se sobrepor à outra, evidências de acompanhamento específicas; 2 = discordância omitida; 1 = vertentes lado a lado sem inferência; 0 = nada.
+
+### Síntese do capítulo
+
+Mantenha a linhagem: cada extrato registrado, auditado, congelado e usado apenas por meio de scripts. A ITS controlada modela a razão logarítmica entre as chegadas de um vizinho e as da região de comparação, com uma tendência, um degrau do desvio e um degrau pós-desvio; exp(β₂) − 1 é a estimativa. Verifique a autocorrelação e use intervalos robustos com uma defasagem pré-especificada e sensibilidade. Os postos placebo são evidências honestas cujo menor valor-p atingível depende do número de janelas. No Spillover Study sintético, as chegadas a Alder Point subiram cerca de um quarto durante o desvio, com um intervalo largo; o resultado de Brookfield é inconclusivo, embora um efeito real existisse; o de Calloway é compatível com nenhum; a estimativa do tempo de espera está confundida pela estação. As entrevistas explicam o gradiente pela geografia viária e revelam a notificação tardia, a sobrecarga noturna e a ligação entre a duração do desvio e a recuperação dos sistemas clínicos. Integre as vertentes num quadro conjunto e relate a discordância como uma constatação.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — capítulo 06 de 08
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redação da dissertação e limitações
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Estruturar uma dissertação de mestrado empírica de modo que cada capítulo tenha uma única função e o argumento corra visivelmente da pergunta à conclusão.
+2. Manter um **registro de resultados e alegações** que ligue cada alegação do resumo, da discussão e da conclusão a um resultado específico e aos seus limites.
+3. Relatar as estimativas com a sua incerteza, evitar a linguagem dicotômica da "significância" e calibrar os verbos causais ao desenho.
+4. Tornar cada número do texto rastreável até a saída da análise e verificá-lo com um script.
+5. Usar diretrizes de relato para dados observacionais, dados coletados rotineiramente e dados qualitativos como listas de verificação.
+6. Escrever limitações que declarem a **direção** e o tamanho provável de cada viés e o que o resolveria.
+7. Produzir figuras e tabelas acessíveis e uma declaração de disponibilidade de dados e código que respeite a sensibilidade da informação.
+
+Este capítulo transforma os Capítulos 1–6 num documento que um examinador pode avaliar. O Capítulo 8 prepara essa avaliação.
+
+### 7.1 Estrutura: uma função por capítulo
+
+Uma dissertação de mestrado empírica típica tem as partes a seguir. Os limites de palavras variam conforme a instituição; as proporções abaixo são um ponto de partida comum para uma dissertação de 20.000 palavras. O que importa não é a proporção exata, mas que cada parte faça apenas a sua função e não invada a das outras.
+
+| Parte | Sua única função | Parcela aproximada |
+|---|---|---|
+| Resumo | Declarar a pergunta, o desenho, os principais resultados com incerteza e a principal limitação | 300 palavras |
+| 1 Introdução | Estabelecer o problema, a decisão que ele afeta e as perguntas | 10% |
+| 2 Revisão da literatura | Mostrar o que se sabe e a lacuna, conceito por conceito (a matriz do Capítulo 1) | 20% |
+| 3 Métodos | Permitir que um leitor reproduza o estudo: desenho, dados, ética, análise, desvios | 20% |
+| 4 Resultados | Relatar o que foi encontrado para cada pergunta, sem interpretação além dos dados | 20% |
+| 5 Discussão | Responder às perguntas, relacioná-las com a literatura, explicar os mecanismos, declarar as implicações | 20% |
+| 6 Limitações e conclusão | Delimitar as alegações; dizer o que se segue e o que não se segue | 10% |
+| Apêndices | Livro de códigos, plano de pré-análise e registro de desvios, relatórios de auditoria, roteiro de entrevista, materiais de consentimento, listas de verificação de relato | — |
+
+Escreva primeiro os métodos (eles já estão no plano de pré-análise), depois os resultados, depois a discussão, e a introdução e o resumo por último, quando você souber o que a dissertação de fato mostra. Muitas dissertações fracas são fracas porque a introdução foi escrita primeiro e prometeu uma constatação que os resultados não entregaram.
+
+### 7.2 O argumento e o registro de resultados e alegações
+
+Os examinadores seguem o fio que vai das perguntas do Capítulo 1 às respostas da conclusão. Torne-o visível: cada pergunta de pesquisa é respondida explicitamente na discussão, com a mesma redação, e a conclusão repete essas respostas na sua forma delimitada.
+
+Um **registro de resultados e alegações** é uma tabela que você mantém enquanto escreve e anexa como apêndice ou usa em privado antes da entrega. Cada linha é uma alegação que aparece em algum ponto da dissertação:
+
+| ID | Alegação (tal como escrita) | Onde aparece | Resultado que a sustenta | Escopo e condições | Status |
+|---|---|---|---|---|---|
+| C1 | "As chegadas de ambulâncias ao DE vizinho mais próximo subiram cerca de um quarto durante o desvio." | Resumo, 5.1, 6 | Tabela 4.2: +24,4% (6,7% a 44,9%); posto placebo 1/16 | Um evento sintético; em relação a Wexmoor; tendências paralelas presumidas | Sustentada |
+| C2 | "O aumento diminuiu com a distância." | Resumo, 5.2 | Estimativas pontuais de 24,4%, 5,8%, 0,8% | Os intervalos de Brookfield e de Calloway se sobrepõem | Sustentada apenas para o mais próximo versus os demais |
+| C3 | "Brookfield não foi afetado." | Minuta de 5.2 | Tabela 4.2: +5,8% (−6,7% a 19,9%) | — | **Não sustentada** — inconclusiva, reescrever |
+| C4 | "O desvio aumentou os tempos de espera em seis minutos." | Minuta do resumo | Tabela 4.3: +5,9 (2,6 a 9,2), não controlada | Confundida pela estação | **Exagerada** — reescrever como coerente com um aumento cujo tamanho está confundido |
+| C5 | "A carga seguiu a geografia viária." | 5.3 | Tema T1 (I02, I04, I07, I09) e o gradiente | Relatos de entrevistas; uma região | Sustentada como mecanismo |
+
+O registro capta a falha mais comum: uma alegação que cresceu no caminho dos resultados ao resumo.
+
+### 7.3 Relatando os resultados com honestidade
+
+#### 7.3.1 Estimativas e intervalos, não veredictos
+
+Relate a estimativa, o seu intervalo e o que o intervalo descarta. "As chegadas a Alder Point subiram 24,4% (intervalo de 95% de 6,7% a 44,9%)" carrega informação; "um aumento estatisticamente significativo (p < 0,05)" carrega menos e convida a leituras erradas. A [declaração da American Statistical Association sobre os valores-p](https://doi.org/10.1080/00031305.2016.1154108) (Wasserstein e Lazar, 2016) estabelece princípios, entre eles o de que os valores-p não medem a probabilidade de uma hipótese ser verdadeira, o de que as conclusões científicas não devem se apoiar apenas em um valor-p ultrapassar um limiar e o de que um valor-p não mede o tamanho nem a importância de um efeito. Para um resultado inconclusivo, relate o que o intervalo exclui: o intervalo de Calloway exclui aumentos acima de cerca de 12%; o de Brookfield não exclui nem o zero nem um aumento de 20%.
+
+#### 7.3.2 Verbos calibrados
+
+| Sustentação do desenho | Redação adequada | Evitar |
+|---|---|---|
+| Contagem descritiva | "foi registrado", "foi observado" | "mostrou que X causa" |
+| Associação | "esteve associado a", "coocorreu com" | "levou a", "causou" |
+| Desenho controlado com pressupostos declarados | "subiu em relação à região de comparação", "estima-se que tenha aumentado, presumindo que…" | "prova", "demonstra conclusivamente" |
+| Evidências quantitativas e qualitativas convergentes | "é coerente com", "sugere que o mecanismo foi…" | "estabelece" |
+
+A linguagem causal não é proibida; uma ITS controlada é um desenho causal. Ela precisa vir acompanhada dos seus pressupostos no mesmo parágrafo.
+
+#### 7.3.3 Multiplicidade
+
+O Spillover Study teve um desfecho primário (chegadas), três locais e um desfecho secundário. Declare nos métodos quais estimativas são primárias, relate todas e não selecione a mais chamativa para o resumo. Quando muitos desfechos são examinados, alguns parecerão notáveis por acaso; o desfecho primário pré-especificado é a defesa.
+
+### 7.4 Proveniência dos números
+
+Cada número do texto deve vir da saída da análise, e não da memória ou de uma minuta anterior. Três práticas ajudam: gerar as tabelas de resultados diretamente a partir dos scripts; manter um arquivo de resultados legível por máquina da execução final; e conferir o texto contra ele antes da entrega. O Laboratório 7 abaixo automatiza uma primeira passada.
+
+O arredondamento merece uma regra própria. A estimativa principal do Spillover Study é 24,4% na Tabela 4.2 e 24% no resumo reescrito; as duas só estão corretas se a dissertação declarar que o resumo arredonda para percentuais inteiros. Mantenha a mesma precisão para a mesma grandeza em todos os capítulos e registre as unidades ao lado de cada valor no arquivo de resultados, para que um percentual não possa ser confundido com uma contagem de minutos. Quando um número muda numa reexecução tardia, procure o valor antigo no texto inteiro, incluindo as legendas, o resumo e os apêndices, antes de reenviar a minuta.
+
+### 7.5 Diretrizes de relato como listas de verificação
+
+As diretrizes de relato listam o que um leitor precisa para avaliar um estudo; usá-las como lista de verificação durante a redação evita omissões. As pertinentes a este campo:
+
+- **STROBE**, para estudos observacionais ([von Elm et al., 2007](https://doi.org/10.1016/S0140-6736(07)61602-X)).
+- **RECORD**, sua extensão para estudos que usam dados de saúde coletados rotineiramente ([Benchimol et al., 2015](https://doi.org/10.1371/journal.pmed.1001885)) — pertinente sempre que os dados vêm de sistemas operacionais não desenhados para a pesquisa, o que quase sempre é verdade na pesquisa de infraestrutura.
+- **SRQR** ([O'Brien et al., 2014](https://doi.org/10.1097/ACM.0000000000000388)) e **COREQ** ([Tong, Sainsbury e Craig, 2007](https://doi.org/10.1093/intqhc/mzm042)), para pesquisa qualitativa e entrevistas.
+- Para séries temporais interrompidas não há um padrão de relato único; [Lopez Bernal et al. (2017)](https://doi.org/10.1093/ije/dyw098) e a revisão metodológica de [Hategeka et al. (2020)](https://doi.org/10.1136/bmjgh-2020-003567) identificam o que os leitores precisam: o modelo de impacto, o tratamento da autocorrelação, da sazonalidade e das tendências, e a série de controle.
+
+Anexe as listas de verificação preenchidas como apêndices, com referências às páginas ou seções.
+
+### 7.6 Limitações com direção
+
+Uma lista de fraquezas ("amostra pequena; uma região; possível confundimento") não diz a um examinador nada que ele não pudesse ter adivinhado. Uma **limitação com direção** declara o problema, o seu efeito provável sobre a estimativa principal (direção e tamanho aproximado), o que o estudo fez a respeito e o que o resolveria.
+
+| Limitação | Efeito provável sobre a estimativa principal | O que foi feito | O que a resolveria |
+|---|---|---|---|
+| Tendências paralelas presumidas entre Tamsin Valley e Wexmoor | Qualquer direção; se a estação de Wexmoor foi mais branda, os efeitos estão superestimados | Razão pré-evento inspecionada; cada DE de Wexmoor usado separadamente (Capítulo 8) | Mais regiões de comparação; controle sintético com mais doadores |
+| Um evento, uma região | Nenhum viés em si; limita a transferência, sobretudo para regiões sem um sistema dominante | Estrutura da região descrita | Análise agregada de vários eventos com métodos para momentos escalonados |
+| As chegadas de ambulâncias medem transportes, e não necessidade | Subestima a carga se a gravidade subiu mais do que as contagens | Entrevistas sobre a gravidade (T3) | Contagens ponderadas pela gravidade a partir das categorias de triagem |
+| O modelo do tempo de espera não tem comparação | Superestima o efeito do desvio sobre o tempo de espera (estação incluída) | Relatado como confundido | Uma série de comparação para os tempos de espera |
+| Resolução diária | Subestima a sobrecarga de pico, que se concentrou à noite (T3) | Anotado na discussão | Dados por hora |
+| Brookfield com poder insuficiente | Enviesa a interpretação para "nenhum efeito", se mal lido | Relatado como inconclusivo, com o intervalo | Agregar os vizinhos; mais eventos |
+| Entrevistas depois do evento | A retrospectiva pode fazer o mecanismo parecer mais coerente do que foi | Perguntas ancoradas em registros datados | Registros contemporâneos; entrevistas logo após os eventos |
+| Revisão das minutas pelos parceiros | Possível pressão por uma redação mais branda | Acordo sem veto; mudanças registradas | Replicação independente |
+
+### 7.7 Figuras e tabelas acessíveis
+
+Siga as expectativas do [padrão do livro](../../../../../BOOK_STANDARD.md) no seu próprio trabalho: cada figura tem uma legenda que declara a sua mensagem e uma alternativa textual que transmite o seu conteúdo a um leitor que não pode vê-la; a cor nunca é o único portador de significado; as tabelas têm cabeçalhos descritivos e, quando complexas, um resumo de uma frase em linguagem simples. A alternativa textual de uma figura de estudo de evento poderia dizer: *"Razão logarítmica diária entre as chegadas de Alder Point e as de Wexmoor, dias −180 a +89, com a tendência ajustada. A razão é plana antes do dia 0, sobe cerca de 0,2 na escala logarítmica durante os dias 0–20 e volta para perto da tendência depois do dia 34."* Escreva os números no texto com a mesma precisão das tabelas.
+
+### 7.8 Disponibilidade de dados e código sob sensibilidade
+
+Os estudos de infraestrutura muitas vezes não podem liberar os seus dados. Diga o que está disponível, em que nível, e por que o resto não está:
+
+> *O código e os dados de teste sintéticos estão disponíveis no repositório do projeto [link], sob CC0. Os agregados diários dos DEs foram fornecidos pelos hospitais participantes sob acordos de dados que não permitem a redistribuição; os pesquisadores podem solicitar acesso aos custodiantes, cujas vias de contato estão listadas no Apêndice C. As transcrições das entrevistas não estão disponíveis porque se prometeu confidencialidade aos participantes e alguns poderiam ser identificados pela função. Os números de capacidade por instalação foram retidos por seu potencial de auxiliar na definição de alvos; os resumos regionais são relatados no Capítulo 4.*
+
+Uma declaração como esta atende ao espírito dos princípios FAIR para o que pode ser compartilhado e é honesta sobre o que não pode.
+
+### 7.9 Exemplo resolvido: reescrevendo o resumo (sintético)
+
+O primeiro resumo do candidato terminava assim: *"Este estudo prova que os ataques de ransomware aumentam significativamente a superlotação dos departamentos de emergência em toda a região, demonstrando a necessidade urgente de investimento em ciber-resiliência."* O registro de resultados e alegações sinalizou quatro problemas: "prova" (o desenho sustenta uma estimação sob pressupostos); "ransomware" (a exposição foi o desvio); "em toda a região" (só o DE mais próximo mostrou um aumento claro); "necessidade urgente de investimento" (o estudo não avaliou nenhum investimento). Conclusão reescrita do resumo:
+
+> *Durante um desvio de ambulâncias de 21 dias induzido por ransomware, numa região sintética, as chegadas de ambulâncias ao departamento de emergência vizinho mais próximo subiram cerca de 24% (intervalo de 95% de 7% a 45%) em relação a uma região de comparação não afetada; as estimativas nos departamentos mais distantes foram pequenas e inconclusivas. As entrevistas indicaram que as ambulâncias desviadas seguiram a geografia viária e que os vizinhos souberam do desvio informalmente. Os planos regionais de desvio podem precisar de arranjos explícitos de compartilhamento da carga e de notificação; se eles reduzem a sobrecarga não foi testado.*
+
+### 7.10 Atividade prática: proveniência dos números
+
+O laboratório guarda os resultados do Laboratório 6 e um parágrafo de minuta escrito em parte de memória. Ele extrai todos os números do texto, verifica se cada um corresponde a um resultado registrado (admitindo arredondamento) e sinaliza a redação que exagera.
+
+```python
+# Lab 7 - every number in the results text must trace to the analysis output (offline)
+# RESULTS mirrors the Lab 6 output; DRAFT is a synthetic dissertation paragraph written from memory.
+import re
+
+RESULTS = {                      # value, as a percentage or a count, from the analysis log
+    "AP_effect": 24.4, "AP_lo": 6.7, "AP_hi": 44.9,
+    "BF_effect": 5.8, "BF_lo": -6.7, "BF_hi": 19.9,
+    "CG_effect": 0.8, "CG_lo": -9.3, "CG_hi": 12.1,
+    "AP_naive": 33.0, "placebo_n": 15, "event_days": 21,
+}
+DRAFT = """During the 21-day diversion, ambulance arrivals at Alder Point rose by 24.4%
+(95% interval 6.7% to 44.9%) relative to the Wexmoor comparison hospitals, larger than any of
+the 16 placebo windows. Brookfield rose by 5.8% (-6.7% to 19.9%) and Calloway by 0.8%.
+A simple before-and-after comparison would have suggested a 33% rise. The attack caused
+a significant increase in arrivals at Brookfield, and waiting times rose by 6 minutes."""
+CAUSAL = ("caused", "proves", "significant increase", "due to the attack")
+
+values = set(RESULTS.values())
+def traced(x):
+    return any(abs(x - v) <= 0.05 or (float(x).is_integer() and abs(x - round(v)) == 0) for v in values)
+
+problems = []
+for m in re.finditer(r"-?\d+(?:\.\d+)?", DRAFT):
+    x = float(m.group())
+    if x == 95:                  # the interval level, declared in the methods
+        continue
+    if not traced(x):
+        problems.append(f"untraced number {m.group()!r}")
+for phrase in CAUSAL:
+    if phrase in DRAFT.lower():
+        problems.append(f"check wording: {phrase!r}")
+print("\n".join(problems) if problems else "all numbers traced")
+```
+
+Saída esperada:
+
+```text
+untraced number '16'
+check wording: 'caused'
+check wording: 'significant increase'
+```
+
+A verificação encontrou três problemas: "16 placebo windows" (eram 15; 16 é o denominador do posto), "caused" e "significant increase" aplicados a Brookfield, cujo resultado é inconclusivo. Ela **deixou passar** dois: "waiting times rose by 6 minutes" passou apenas porque 6 corresponde ao *percentual arredondado de Brookfield* (5,8%) — uma falsa correspondência entre unidades —, e o resultado do tempo de espera nem está em `RESULTS`; e a estimativa de Calloway é dada sem o seu intervalo. Um script é uma primeira passada: ele capta erros de transcrição a baixo custo, mas só um leitor com o registro de resultados e alegações capta uma alegação errada em substância. O EX039 pede que você melhore a verificação.
+
+### 7.11 Erros comuns e limites
+
+- Escrever a introdução primeiro e deixar que ela prometa resultados.
+- Alegações que crescem entre os resultados, a discussão e o resumo.
+- "Estatisticamente significativo" como conclusão; "não significativo" como "nenhum efeito".
+- Verbos causais sem pressupostos, ou timidez causal quando o desenho sustenta uma estimativa causal qualificada.
+- Números digitados de memória; tabelas coladas de uma execução anterior.
+- Uma seção de limitações que lista fraquezas sem direção nem resolução.
+- Figuras sem alternativas textuais; codificações apenas por cor.
+- Declarações de dados que prometem uma disponibilidade que os acordos não permitem, ou que publicam números sensíveis por instalação.
+
+O limite da boa redação é que ela não consegue salvar um desenho fraco; sua função é tornar visíveis as forças e as fraquezas do desenho, para que os leitores possam julgar as alegações corretamente.
+
+### Exercícios — capítulo 7
+
+**EX039 — Melhore a verificação de proveniência.** *Objetivo:* usar e estender o Laboratório 7. *Insumos:* o código do laboratório. *Restrições:* off-line. *Passos:* (1) executar o laboratório e registrar a saída; (2) alterar a verificação para que cada número seja comparado apenas com resultados da mesma unidade (percentual ou minutos), usando a palavra que segue o número; (3) acrescentar a `RESULTS` o resultado do tempo de espera (5,9 minutos, intervalo de 2,6 a 9,2) com a sua unidade; (4) acrescentar uma verificação de que cada estimativa de local é seguida de um intervalo; (5) reescrever a minuta para que a verificação passe e o texto fique exato. *Evidência esperada:* código, saída e parágrafo corrigido. *Rubrica:* 3 = a correspondência por unidade capta a falsa correspondência minutos/percentual, o intervalo ausente de Calloway é sinalizado, o parágrafo corrigido tem números exatos, verbos calibrados e Brookfield descrito como inconclusivo; 2 = falta uma verificação; 1 = apenas o texto corrigido; 0 = nada.
+
+**EX040 — Limitações com direção.** *Objetivo:* escrever limitações que informem. *Insumos:* um estudo sintético que estima o efeito de uma interrupção de um processador de pagamentos sobre as dispensações de receitas em farmácias, usando dados semanais de uma única rede. *Restrições:* pelo menos cinco limitações no formato de §7.6. *Passos:* para cada uma, declarar a direção provável e o tamanho aproximado do viés, o que foi feito e o que a resolveria; ordená-las pela ameaça à conclusão principal. *Evidência esperada:* tabela e ordenação. *Rubrica:* 3 = direções fundamentadas (por exemplo, a resolução semanal dilui um efeito de três dias em direção a zero; os clientes de uma rede podem migrar para os concorrentes, o que superestimaria a queda do total de dispensações), ordenação justificada; 2 = falta uma direção; 1 = lista sem direção; 0 = nada.
+
+**EX041 — Resumo estruturado.** *Objetivo:* comprimir sem exagerar. *Insumos:* a saída do Laboratório 6 e §6.6.4. *Restrições:* 300 palavras; contexto, objetivo, desenho, cenário, desfechos, resultados com intervalos, conclusões, principal limitação; status sintético declarado. *Passos:* (1) redigir; (2) conferir cada alegação contra o registro de resultados e alegações; (3) pedir a um colega que identifique a principal limitação apenas a partir do resumo. *Evidência esperada:* resumo e trecho do registro. *Rubrica:* 3 = números exatos com intervalos, exposição corretamente nomeada como o desvio, locais distantes descritos como inconclusivos, limitação explícita, status sintético declarado; 2 = um exagero; 1 = sem intervalos; 0 = nada.
+
+**EX042 — Mapeamento da lista de verificação de relato.** *Objetivo:* usar as diretrizes como listas de verificação. *Insumos:* a declaração RECORD e os métodos do Spillover Study tal como descritos nos Capítulos 3, 5 e 6. *Restrições:* mapear pelo menos oito itens. *Passos:* (1) listar oito itens do RECORD ou do STROBE pertinentes ao estudo; (2) indicar a seção que trata de cada um; (3) identificar qualquer item que o estudo ainda não trate e redigir o texto faltante. *Evidência esperada:* tabela de mapeamento e texto redigido. *Rubrica:* 3 = itens corretamente escolhidos (fontes de dados, validação dos códigos, vinculação, limpeza dos dados, acesso à população), seções exatas, uma lacuna genuína encontrada (por exemplo, como foram validadas as definições de chegada de ambulância dos custodiantes) e tratada; 2 = mapeamento superficial; 1 = lista copiada sem mapeamento; 0 = nada.
+
+**EX043 — Declaração de disponibilidade.** *Objetivo:* ser aberto dentro das restrições. *Insumos:* os níveis de sensibilidade do Capítulo 3 e um pedido de uma revista para que "todos os dados sejam disponibilizados publicamente". *Restrições:* um parágrafo mais uma resposta de duas frases ao editor. *Passos:* (1) listar o que pode ser liberado, em que nível; (2) escrever a declaração; (3) escrever a resposta explicando o que é retido e por quê, oferecendo uma alternativa (por exemplo, o acesso por meio dos custodiantes, ou dados sintéticos com a mesma estrutura). *Evidência esperada:* declaração e resposta. *Rubrica:* 3 = tudo o que é liberável é liberado, itens retidos justificados pelos acordos, pelo consentimento ou pelo risco de definição de alvos, via alternativa de acesso concreta; 2 = vago quanto às vias; 1 = promete liberar dados restritos; 0 = nada.
+
+**EX044 — Figura acessível.** *Objetivo:* comunicar um resultado a todos os leitores. *Insumos:* as estimativas do Laboratório 6 para os três locais. *Restrições:* uma descrição da figura (não é preciso desenhá-la), legenda, alternativa textual e resumo em linguagem simples; nenhuma codificação apenas por cor. *Passos:* (1) escolher um tipo de figura (por exemplo, estimativas com barras de intervalo contra a distância); (2) escrever a legenda declarando a mensagem; (3) escrever a alternativa textual com todos os valores; (4) escrever um resumo de uma frase em linguagem simples. *Evidência esperada:* os quatro textos. *Rubrica:* 3 = tipo de figura adequado à comparação, legenda declara a mensagem e as estimativas distantes inconclusivas, alternativa textual completa, resumo exato para um não especialista; 2 = um texto incompleto; 1 = a legenda descreve em vez de informar; 0 = nada.
+
+### Síntese do capítulo
+
+Dê a cada parte da dissertação uma única função e escreva-as na ordem que mantém as promessas honestas: métodos, resultados, discussão e, depois, introdução e resumo. Mantenha um registro de resultados e alegações para que as alegações não possam crescer no caminho até o resumo. Relate as estimativas com intervalos e com o que elas excluem; evite veredictos de significância; calibre os verbos causais ao desenho e declare os pressupostos junto com eles. Torne cada número rastreável e verifique-o com um script, sabendo que os scripts captam erros de transcrição, mas não alegações erradas. Use STROBE, RECORD, SRQR e COREQ como listas de verificação. Escreva as limitações com direção e resolução. Torne as figuras acessíveis e declare a disponibilidade dos dados com honestidade, dentro das restrições dos acordos, do consentimento e da sensibilidade da infraestrutura.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — capítulo 07 de 08
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Revisão independente e defesa
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Explicar como os examinadores costumam ler uma dissertação e preparar o documento e o candidato para essa leitura.
+2. Antecipar as famílias de perguntas que os examinadores fazem a um estudo aplicado e preparar respostas baseadas em evidências, incluindo respostas honestas do tipo "não sei".
+3. Responder a "e se você tivesse escolhido de outra forma?" com uma **curva de especificação** que mostre como a estimativa principal depende de escolhas analíticas defensáveis — e explicar por que a robustez às escolhas não é o mesmo que acurácia.
+4. Conduzir uma defesa simulada e usá-la para encontrar lacunas no trabalho, e não apenas na apresentação.
+5. Responder ao parecer dos examinadores com uma tabela de correções que associe cada comentário a uma ação e a um local.
+6. Compartilhar as constatações com os parceiros e com o setor sem revelar informações sensíveis, e encaminhar à parte certa qualquer fraqueza de segurança encontrada incidentalmente.
+
+Este capítulo fecha o ciclo da dissertação que começou no Capítulo 1. Ele se apoia em todos os capítulos anteriores: a pergunta e o escopo (1), a literatura e o mapa do seminário (2), o desenho e a ética (3), a tabela de rivais (4), os elementos fixados da proposta (5), a análise (6) e o registro de resultados e alegações (7).
+
+### 8.1 Como os examinadores leem
+
+Os formatos de exame variam muito. Algumas dissertações de mestrado são avaliadas apenas a partir do documento escrito, por um examinador interno e um externo; outras incluem uma defesa oral (viva voce) ou uma apresentação. Os resultados comuns incluem a aprovação, a aprovação com correções menores ou maiores, a reapresentação ou a reprovação; o regulamento da sua instituição é a única autoridade sobre quais se aplicam.
+
+A pesquisa sobre como examinadores experientes avaliam teses — sobretudo no nível do doutorado, mas instrutiva para o trabalho de mestrado — sugere padrões para os quais vale a pena se preparar. [Mullins e Kiley (2002)](https://doi.org/10.1080/0307507022000011507) entrevistaram examinadores experientes e relataram que eles geralmente esperam que uma tese seja aprovada, formam as primeiras impressões a partir dos capítulos de abertura e de fechamento, procuram coerência entre a pergunta, o trabalho e as conclusões e se irritam com o descuido na apresentação, que tinge a leitura do resto. As implicações práticas são simples: o resumo, a introdução e a conclusão precisam ser precisos e consistentes; as perguntas precisam ser respondidas visivelmente, na ordem em que foram feitas; e pequenos erros — números inconsistentes, referências quebradas, figuras sem rótulo — custam mais do que o seu tamanho sugere. A verificação de proveniência e o registro de resultados e alegações do Capítulo 7 existem exatamente para esse leitor.
+
+### 8.2 Famílias de perguntas
+
+As perguntas dos examinadores sobre um estudo aplicado de infraestrutura caem em famílias reconhecíveis. Prepare pelo menos duas perguntas por família, com respostas que citem as suas evidências.
+
+| Família | Pergunta típica | O que uma boa resposta contém |
+|---|---|---|
+| Pergunta e contribuição | "Por que esta pergunta importa, e o que o seu estudo acrescenta?" | A decisão que ela informa; a lacuna da matriz de conceitos; o que é novo (desenho controlado, gradiente de distância, mecanismo) |
+| Escolha do desenho | "Por que não um controle sintético?" | Conjunto de doadores pequeno demais (dois DEs de comparação); pressupostos de cada desenho comparados |
+| Dados e medição | "O que significa uma 'chegada de ambulância' nestes sistemas?" | As definições dos custodiantes; a auditoria; a regra dos dias de indisponibilidade; o que a contagem deixa de fora (a gravidade) |
+| Escolhas da análise | "E se você tivesse usado outra comparação ou outra linha de base?" | A curva de especificação (§8.3) |
+| Rivais | "A estação não poderia explicar isto?" | A previsão distinta do rival e o teste: Wexmoor, janelas placebo, tempo |
+| Ética e sensibilidade | "Os seus resultados poderiam ajudar um atacante?" | Níveis de sensibilidade; o que foi retido e por quê; relato regional |
+| Limitações | "Qual é a parte mais fraca do estudo?" | A limitação com direção mais bem classificada e o seu efeito provável |
+| Transferência | "Isto aconteceria numa cidade com dez hospitais?" | O mecanismo (transferência de carga limitada pela capacidade ociosa e pelas rotas dos pares) prevê efeitos menores por hospital onde a carga se espalha; não testado |
+| Implicações | "O que uma coalizão deveria fazer de diferente?" | Apenas o que as evidências sustentam, com o grau de confiança; o que não foi testado |
+| Próximo estudo | "Se você tivesse mais um ano?" | O estudo que mais reduziria a incerteza: mais eventos agregados, dados por hora, gravidade |
+
+### 8.3 "E se você tivesse escolhido de outra forma?" — a curva de especificação
+
+#### 8.3.1 A ideia
+
+Toda análise envolve escolhas defensáveis de mais de uma forma: a duração da linha de base, as unidades de comparação, a duração da janela do evento, a exclusão ou não dos feriados. Uma análise primária pré-especificada protege contra escolher depois de ver os resultados (Capítulo 6), mas um examinador pode razoavelmente perguntar se a conclusão depende das escolhas específicas feitas. Uma **curva de especificação** responde estimando o efeito sob todas as combinações de escolhas razoáveis e relatando a distribuição inteira ([Simonsohn, Simmons e Nelson, 2020](https://doi.org/10.1038/s41562-020-0912-z)); uma **análise multiverso** aplica a mesma ideia às escolhas de processamento dos dados ([Steegen et al., 2016](https://doi.org/10.1177/1745691616658637)). A estimativa pré-especificada continua primária; a curva mostra quão frágil ou robusta ela é.
+
+#### 8.3.2 Atividade prática: a curva de especificação do Spillover
+
+Salve primeiro o Laboratório 4 como `lab4_data.py` e o Laboratório 6 como `lab6_its.py`. O laboratório abaixo estima o efeito em Alder Point sob 54 especificações: linha de base de 90, 120 ou 180 dias; comparação W1, W2 ou agregada; janela do evento de 14, 21 ou 28 dias; feriados mantidos ou retirados.
+
+```python
+# Lab 8 - specification curve for the examiner's "what if you had chosen differently?" (offline)
+# Save Lab 4 as lab4_data.py and Lab 6 as lab6_its.py in the same folder first.
+import itertools, statistics
+from lab4_data import make_region, DAYS
+from lab6_its import cits
+
+d = make_region()
+controls = {"W1": d["W1"], "W2": d["W2"], "pooled": {t: d["W1"][t] + d["W2"][t] for t in DAYS}}
+specs = []
+for pre_len, ctrl, ev_len, drop_hol in itertools.product((90, 120, 180), controls, (14, 21, 28), (False, True)):
+    drop = frozenset({-100, 45}) if drop_hol else frozenset()
+    est, lo, hi = cits(d["AP"], controls[ctrl], pre_len=pre_len, ev_len=ev_len, drop=drop)
+    specs.append((est, lo, hi, pre_len, ctrl, ev_len, drop_hol))
+specs.sort()
+ests = [s[0] for s in specs]
+print(f"specifications: {len(specs)}")
+print(f"median effect {statistics.median(ests):+.3f}; range {ests[0]:+.3f} to {ests[-1]:+.3f}")
+print(f"intervals excluding zero: {sum(s[1] > 0 for s in specs)} of {len(specs)}")
+for label, idx in (("pre_len", 3), ("control", 4), ("event_len", 5), ("drop_holidays", 6)):
+    groups = {}
+    for s in specs:
+        groups.setdefault(s[idx], []).append(s[0])
+    print(label + ": " + ", ".join(f"{k}={statistics.median(v):+.3f}" for k, v in sorted(groups.items(), key=lambda kv: str(kv[0]))))
+print("lowest three:", [(round(s[0], 3), s[3], s[4], s[5], s[6]) for s in specs[:3]])
+```
+
+Saída esperada:
+
+```text
+specifications: 54
+median effect +0.245; range +0.199 to +0.332
+intervals excluding zero: 54 of 54
+pre_len: 120=+0.237, 180=+0.205, 90=+0.271
+control: W1=+0.221, W2=+0.259, pooled=+0.238
+event_len: 14=+0.237, 21=+0.260, 28=+0.217
+drop_holidays: False=+0.244, True=+0.246
+lowest three: [(0.199, 180, 'pooled', 14, False), (0.201, 180, 'pooled', 14, True), (0.202, 180, 'W2', 28, False)]
+```
+
+Lendo a curva:
+
+- **A conclusão de Alder Point é robusta a estas escolhas.** Todos os 54 intervalos excluem o zero; a estimativa mediana é +24,5% e a faixa vai de +19,9% a +33,2%. Nenhuma escolha razoável deste conjunto transforma o aumento em "nenhum efeito".
+- **As escolhas ainda movem a estimativa.** Linhas de base mais curtas dão estimativas maiores (mediana de +27,1% com 90 dias, +20,5% com 180), porque a tendência linear ajustada a um período mais curto é menos estável. W2 como única comparação dá estimativas maiores do que W1. Uma janela de 21 dias dá a maior mediana porque coincide com o período verdadeiro do desvio; 14 dias omitem parte dele e 28 dias o diluem com a cauda.
+- **Os feriados quase não importam** (mediana de +24,4% mantidos, +24,6% retirados): os feriados regionais caem fora da janela do evento e afetam as duas regiões.
+
+Executar a mesma curva para Brookfield (EX045) dá uma mediana de +2,5%, uma faixa de −1,5% a +6,9% e **nenhum** intervalo que exclua o zero. O resultado de Brookfield é robustamente inconclusivo — e, no entanto, o efeito verdadeiro do gerador era +10%, acima de cada uma das 54 estimativas pontuais. Este é o limite da curva de especificação: ela mostra quanto uma conclusão depende das *escolhas analíticas*, mas todas as especificações usam os mesmos dados, com o mesmo ruído. Robustez às escolhas não é acurácia. Só mais informação — mais eventos, mais vizinhos, dados mais finos — pode resolver Brookfield.
+
+### 8.4 Preparando-se para a defesa
+
+#### 8.4.1 O resumo de abertura
+
+Se o formato incluir uma defesa oral, geralmente lhe pedirão que resuma o trabalho em 10–15 minutos. Use a estrutura da apresentação do seminário (Capítulo 2) aplicada ao seu próprio trabalho: a pergunta e por que ela importa; o desenho e os dados; os principais resultados com intervalos; o que o desenho descarta e o que deixa em aberto; as limitações e o que vem a seguir. Mostre a curva de especificação se for provável que os examinadores perguntem sobre as escolhas. Termine com a resposta delimitada a cada pergunta de pesquisa, nas palavras da dissertação.
+
+#### 8.4.2 Defesas simuladas
+
+Peça a duas pessoas que o examinem por uma hora — idealmente um metodologista e um profissional do setor — com as famílias de perguntas de §8.2. Grave a sessão com o consentimento delas. Depois, classifique cada pergunta que você respondeu mal num de três tipos:
+
+1. **Lacunas de apresentação:** você sabia a resposta, mas não conseguiu encontrá-la ou dizê-la com clareza. Corrija com preparação.
+2. **Lacunas do documento:** a dissertação não contém informações que deveria conter. Corrija a dissertação antes da entrega, se possível, ou prepare uma resposta honesta.
+3. **Lacunas do trabalho:** o estudo não consegue responder à pergunta. Não as esconda; prepare-se para declará-las como limitações e para descrever o estudo que as trataria.
+
+#### 8.4.3 Respondendo
+
+Use os três registros do seminário: "a dissertação mostra…", "eu infiro…", "não sei; seria preciso…". Conceda prontamente o que deve ser concedido; defender um ponto indefensável prejudica a credibilidade dos defensáveis. Quando um examinador propuser uma análise alternativa, não improvise um resultado novo na sala; explique o que você esperaria e por quê, e ofereça-se para executá-la como correção, se for solicitado. Quando lhe perguntarem sobre o mundo real, lembre-se do escopo: no estudo sintético deste livro, nada se sabe sobre hospitais reais.
+
+### 8.5 Depois da defesa: as correções
+
+Os pareceres dos examinadores listam as correções exigidas, às vezes com recomendações. Responda com uma **tabela de correções**:
+
+| # | Comentário do examinador | Resposta | Ação | Local |
+|---|---|---|---|---|
+| 1 | "O resumo descreve o resultado de Brookfield como mostrando nenhum efeito." | De acordo; o resultado é inconclusivo. | Resumo e §5.2 reescritos com o intervalo e o que ele exclui. | Resumo; p. 54 |
+| 2 | "Justifique as dez entrevistas." | De acordo que a justificativa era rala. | Acrescentado um parágrafo sobre o poder informacional, com o objetivo, a especificidade da amostra e a qualidade do diálogo. | §3.6 |
+| 3 | "Execute a análise com Calloway como comparação adicional." | Parcialmente de acordo: Calloway faz parte da hipótese da distância, então usá-lo como comparação presume a resposta da RQ2. | Acrescentada como análise de sensibilidade apenas para a RQ1, com esta ressalva. | Apêndice F |
+| 4 | "O resultado do tempo de espera não deveria aparecer na conclusão." | De acordo. | Removido da conclusão; mantido nos resultados com a ressalva do confundimento. | §6 |
+
+Quando discordar, diga-o com polidez, com razões e evidências, como na linha 3; os examinadores geralmente aceitam uma concordância parcial fundamentada. Guarde a tabela junto com a dissertação corrigida.
+
+### 8.6 Compartilhando os resultados com responsabilidade
+
+#### 8.6.1 Primeiro os parceiros
+
+Antes de qualquer apresentação pública, dê aos parceiros a revisão factual e de informações protegidas prometida no acordo de dados (Capítulo 3), dentro do seu prazo fixo e sem veto sobre as constatações. Ofereça a cada parceiro um briefing privado que inclua tudo o que for específico dele — por exemplo, que o seu DE soube do desvio de forma informal e tardia. As constatações sobre as fraquezas de uma organização específica pertencem primeiro a essa organização.
+
+#### 8.6.2 O setor e o público
+
+Um briefing para a coalizão regional de saúde pode apresentar o padrão regional, o mecanismo e as recomendações com níveis de confiança:
+
+- *Confiança moderada:* o DE aberto mais próximo nas principais rotas das ambulâncias absorve a maior parte da carga desviada nos primeiros dias; os planos deveriam nomeá-lo e prever apoio para o pico.
+- *Confiança moderada:* os vizinhos precisam de uma notificação formal e precoce; o aviso informal pelas equipes que chegavam custou horas.
+- *Confiança baixa (não testada):* regras explícitas de compartilhamento da carga pelo EMS reduziriam a sobrecarga de pico do DE mais próximo.
+
+Não publique estimativas de capacidade ociosa por instalação nem uma lista ordenada de qual perda de hospital causaria a maior sobrecarga regional; esses produtos ajudariam quem buscasse maximizar o dano e acrescentariam pouco valor defensivo além das organizações em questão (aplicam-se as [questões de uso dual](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md#ch-06) do livro de doutorado). Regiões sintéticas ou anonimizadas são aceitáveis para publicação quando a estrutura não pode ser associada a um lugar real.
+
+#### 8.6.3 Constatações de segurança incidentais
+
+A pesquisa sobre operações às vezes revela uma fraqueza de segurança — um entrevistado menciona um serviço de acesso remoto exposto, ou um extrato de dados contém credenciais. Não a investigue, não a teste e não a descreva publicamente. Relate-a em privado à organização em questão, pelo contato indicado no seu acordo; se ela disser respeito a um produto de um fornecedor, e não à configuração de uma organização, a divulgação coordenada de vulnerabilidades por meio do fornecedor ou de um coordenador como o [programa de CVD da CISA](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program) é a via estabelecida. Registre o que você fez e informe o seu orientador e o comitê de ética, se o seu protocolo o exigir.
+
+### 8.7 Exemplo resolvido: uma troca na defesa simulada (sintético)
+
+**Examinador (metodologista):** "O seu resultado principal depende de Wexmoor ter tido a mesma estação. Como você sabe que teve?"
+
+**Candidato:** "A dissertação mostra que a razão pré-evento entre Alder Point e Wexmoor foi plana ao longo de 180 dias, sem ruptura de tendência, e que o resultado se mantém contra cada hospital de Wexmoor separadamente — a menor estimativa da curva de especificação é de cerca de 20%. Eu infiro que uma estação diferente em Wexmoor dificilmente explica todo o aumento. Não sei se a estação respiratória de Wexmoor começou exatamente no mesmo dia; seriam precisos dados regionais de vigilância que eu não tinha, e isso está nas limitações com a sua direção provável: se a estação de Wexmoor tivesse sido mais branda, a minha estimativa estaria alta demais."
+
+**Examinador (profissional):** "Os gestores de Brookfield disseram que ficaram sobrecarregados. Os seus números dizem que nada aconteceu. Quem tem razão?"
+
+**Candidato:** "Os meus números não dizem que nada aconteceu — a estimativa de Brookfield é +5,8%, com um intervalo de cerca de −7% a +20%, então eles não conseguem distinguir nenhuma variação de uma variação substancial. As entrevistas descrevem noites pesadas e uma falta simultânea de pessoal. O quadro conjunto relata isso como uma discordância, com três explicações possíveis. Resolvê-la exigiria dados por hora e registros de pessoal."
+
+**Examinador:** "Então as coalizões deveriam planejar para o transbordamento além do hospital mais próximo?"
+
+**Candidato:** "Este estudo não consegue dizer a elas quanto. Ele pode dizer que o DE mais próximo nas rotas principais recebeu a maior parte da carga neste evento e que a evidência para os hospitais mais distantes é inconclusiva, e não negativa."
+
+As respostas usam os três registros, concedem prontamente, citam evidências e mantêm as alegações dentro do desenho.
+
+### 8.8 Próximos passos depois do mestrado
+
+Uma dissertação concluída deixa uma lista de estudos que reduziriam a sua incerteza restante: agregar vários eventos de desvio com métodos para momentos escalonados; desfechos por hora e ponderados pela gravidade; avaliar um protocolo de compartilhamento da carga. Alguns deles são projetos práticos para um operador ou uma coalizão; outros têm escala de doutorado. O [curso de doutorado desta área](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) mostra como uma pergunta assim se torna uma contribuição original com validação independente. Na trilha de estudos, o próximo curso é a [trilha de doutorado em Cibersegurança](../../../../doctorate-2-years/cybersecurity/en/SUBJECTS.md).
+
+### 8.9 Erros comuns e limites
+
+- Tratar o resumo e a conclusão como formalidades; os examinadores os leem primeiro.
+- Preparar respostas sobre a apresentação, mas não sobre as lacunas reais do trabalho.
+- Tratar uma curva de especificação como prova de verdade, e não de robustez às escolhas.
+- Improvisar análises novas na defesa.
+- Defender todos os pontos por igual, incluindo os indefensáveis.
+- Responder às correções sem uma tabela que associe cada comentário a uma mudança.
+- Apresentar as constatações publicamente antes que os parceiros tenham feito a revisão acordada.
+- Publicar detalhes de capacidade ou de vulnerabilidade por instalação.
+- Investigar uma constatação de segurança incidental em vez de relatá-la em privado.
+
+O limite do exame é que ele julga a dissertação, e não o mundo. Ser aprovado confirma que o estudo foi feito com competência e que suas alegações estão delimitadas; não torna gerais as constatações sintéticas ou de uma única região.
+
+### Exercícios — capítulo 8
+
+**EX045 — Curvas de especificação para dois locais.** *Objetivo:* usar o Laboratório 8. *Insumos:* Laboratórios 4, 6 e 8. *Restrições:* off-line. *Passos:* (1) executar o Laboratório 8 e registrar a saída; (2) substituir `d["AP"]` por `d["BF"]` e registrar a saída; (3) comparar as duas curvas; (4) explicar por que o efeito verdadeiro de 10% de Brookfield fica acima de todas as estimativas pontuais e o que isso diz sobre as curvas de especificação. *Evidência esperada:* saídas e um parágrafo. *Rubrica:* 3 = as duas saídas corretas, Brookfield descrito como robustamente inconclusivo, o limite (mesmos dados, mesmo ruído; robustez não é acurácia) explicado; 2 = uma saída errada; 1 = Brookfield descrito como "nenhum efeito"; 0 = nada.
+
+**EX046 — Banco de perguntas.** *Objetivo:* preparar-se para os examinadores. *Insumos:* §8.2 e a sua dissertação ou a do Spillover. *Restrições:* duas perguntas por família; respostas de no máximo 120 palavras, citando evidências. *Passos:* (1) escrever as perguntas; (2) escrever as respostas usando os três registros; (3) marcar as três mais difíceis e a lacuna que cada uma revela (de apresentação, do documento ou do trabalho). *Evidência esperada:* banco de perguntas. *Rubrica:* 3 = as perguntas mais difíceis são de fato difíceis (tendências paralelas, discordância de Brookfield, transferência), as respostas citam evidências e concedem onde cabe, lacunas corretamente classificadas; 2 = respostas genéricas; 1 = perguntas fáceis; 0 = nada.
+
+**EX047 — Tabela de correções.** *Objetivo:* responder aos examinadores. *Insumos:* um parecer sintético com quatro comentários: (a) "A revisão da literatura é autor por autor"; (b) "Por que o degrau pós-desvio foi incluído? Parece um jeito de absorver dados inconvenientes"; (c) "A seção de ética não menciona a revisão pelos parceiros"; (d) "Por favor, acrescente desfechos de pacientes". *Restrições:* o formato de tabela de §8.5. *Passos:* responder a cada um com de acordo, parcialmente de acordo ou em desacordo, dando razões e ações. *Evidência esperada:* tabela. *Rubrica:* 3 = (a) aceito e reestruturado por conceito, (b) defendido com a pré-especificação e a razão (evitar a contaminação da tendência pela cauda) e uma análise de sensibilidade oferecida, (c) aceito e acrescentado, (d) recusado por estar fora do escopo e das aprovações, com uma nota de trabalho futuro; 2 = uma resposta sem fundamentação; 1 = aceita tudo, inclusive (d); 0 = nada.
+
+**EX048 — Defesa simulada e classificação das lacunas.** *Objetivo:* usar uma defesa simulada para melhorar o trabalho. *Insumos:* a sua dissertação ou os materiais do Spillover. *Restrições:* uma simulação de 45 minutos com dois examinadores; gravação consentida. *Passos:* (1) realizar a simulação; (2) listar cada resposta fraca; (3) classificá-las em lacunas de apresentação, do documento e do trabalho; (4) corrigir o que puder ser corrigido e redigir o texto de limitação para o resto. *Evidência esperada:* lista, classificação e correções. *Rubrica:* 3 = classificação honesta, com pelo menos uma lacuna do trabalho reconhecida, correções do documento feitas, texto de limitação com direção; 2 = todas as lacunas classificadas como de apresentação; 1 = sem simulação; 0 = nada.
+
+**EX049 — Briefing para a coalizão.** *Objetivo:* compartilhar as constatações com responsabilidade. *Insumos:* os resultados e os temas do Spillover. *Restrições:* uma página; recomendações com níveis de confiança; um parágrafo "o que este estudo não mostra"; nenhum número de capacidade por instalação. *Passos:* (1) redigir; (2) marcar cada frase com a sua fonte na dissertação; (3) listar o que foi compartilhado em privado com cada parceiro, em vez disso. *Evidência esperada:* briefing e lista. *Rubrica:* 3 = recomendações rastreáveis e calibradas, recomendações não testadas rotuladas, limites explícitos, detalhes sensíveis encaminhados em privado; 2 = uma recomendação não calibrada; 1 = fraquezas específicas de instalações publicadas; 0 = nada.
+
+**EX050 — O próximo estudo.** *Objetivo:* transformar as limitações numa proposta viável. *Insumos:* as limitações com direção de §7.6. *Restrições:* uma página; escolher a limitação cuja resolução mais mudaria as conclusões. *Passos:* (1) justificar a escolha; (2) declarar a pergunta e o estimando; (3) escolher um desenho e os dados de que ele precisa; (4) declarar o resultado que mudaria as decisões dos planejadores; (5) dizer se é um projeto de mestrado, de doutorado ou de profissionais, e por quê. *Evidência esperada:* proposta de uma página. *Rubrica:* 3 = a limitação escolhida é consequente (por exemplo, um único evento), desenho viável (eventos agregados com métodos para momentos escalonados, ou dados por hora ponderados pela gravidade), resultado relevante para decisões declarado, julgamento de escala fundamentado; 2 = desenho vago; 1 = repete o estudo original; 0 = nada.
+
+### Síntese do capítulo
+
+Os examinadores leem em busca de coerência e são influenciados pelo cuidado; torne o resumo, a introdução e a conclusão precisos e consistentes, e as respostas a cada pergunta visíveis. Prepare-se para famílias previsíveis de perguntas com evidências. Responda ao "e se" com uma curva de especificação que mantenha a estimativa pré-especificada como primária e mostre a sua dependência de escolhas razoáveis — lembrando que robustez às escolhas não é acurácia, como mostra a estimativa robustamente inconclusiva de um efeito real em Brookfield. Use as defesas simuladas para encontrar lacunas no trabalho, e não apenas na fala. Responda às correções com uma tabela associada e com razões. Compartilhe primeiro com os parceiros, publique padrões regionais em vez de fraquezas de instalações e encaminhe em privado as constatações de segurança incidentais. As limitações da dissertação tornam-se o próximo estudo.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — capítulo 08 de 08
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável e explica o que a rubrica recompensa. Uma resposta diferente pode receber a pontuação máxima quando atende ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com o Python 3 (a versão 3.13 foi usada neste rascunho) e apenas a biblioteca padrão; se sua saída for diferente, confira primeiro a versão do Python, a semente e se você mudou a ordem dos sorteios aleatórios. Esta edição parcial traz as resoluções de EX001–EX026; as de EX027–EX050 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável e explica o que a rubrica recompensa. Uma resposta diferente pode receber a pontuação máxima quando atende ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com o Python 3 (a versão 3.13 foi usada neste rascunho) e apenas a biblioteca padrão; se sua saída for diferente, confira primeiro a versão do Python, a semente e se você mudou a ordem dos sorteios aleatórios.
 
 ### Capítulo 1: EX001–EX007
 
@@ -1201,6 +2135,180 @@ A variação de Wexmoor agregada é +0,054. As estimativas ingênuas mudam (Alde
 
 **EX026 — A decisão como exposição.** A exposição do estudo é o desvio porque foi ele que deslocou as ambulâncias; o ataque importou por meio da decisão de desviar. Duas decisões alternativas: o Kestrel poderia ter permanecido aberto às ambulâncias com procedimentos de contingência (sem desvio, pouco transbordamento), ou desviado apenas categorias específicas, como AVC e trauma (transbordamento parcial concentrado nos centros especializados). Alegação reescrita: "Num evento sintético, um desvio de ambulâncias de 21 dias após um ataque de ransomware foi seguido de um aumento estimado de 24% nas chegadas de ambulâncias ao DE vizinho mais próximo; o resultado diz respeito às consequências do desvio tal como decidido, e não do ransomware enquanto tal." Pergunta posterior: "Que informações e critérios os dirigentes hospitalares usam para decidir se e por quanto tempo desviar ambulâncias durante um incidente cibernético, e como essas decisões variam?"
 
+### Capítulo 5: EX027–EX032
+
+**EX027 — Resumo da proposta.** Modelo (cerca de 200 palavras): "Quando um hospital desvia ambulâncias após um incidente cibernético, os departamentos de emergência vizinhos absorvem a carga, mas quanto e até onde ela se espalha raramente é medido. Este estudo pergunta como variaram as chegadas diárias de ambulâncias aos três DEs mais próximos da Kestrel Health durante o seu desvio de 21 dias relacionado a ransomware (RQ1), se a variação diminuiu com a distância (RQ2) e como a carga foi redistribuída na prática (RQ3). O estimando primário é, para cada DE, a diferença percentual entre a média diária de chegadas durante o desvio e as chegadas esperadas pela sua tendência pré-evento, ajustada pela variação simultânea em dois DEs de uma região não afetada (Wexmoor). O desenho é uma série temporal interrompida controlada sobre dados diários dos custodiantes (180 dias antes, 90 dias a partir do início do desvio), com janelas placebo e verificações de robustez pré-especificadas, e dez entrevistas semiestruturadas com a equipe dos DEs, do EMS e da coalizão, analisadas tematicamente e integradas num quadro conjunto. Aprovação ética [status]; acordos de dados [status]. O estudo contribuirá com uma estimativa com intervalo para cada DE, um relato do mecanismo e recomendações para o planejamento regional de desvios, e não estimará desfechos de pacientes." Fixados: pergunta, estimando, desenho, comparação e dados; em aberto: status da aprovação, número de entrevistas. A nota máxima exige que o colega reformule o estimando como "variação percentual em relação a uma tendência ajustada pela comparação", e não como "o aumento de pacientes".
+
+**EX028 — Cronograma e registro de riscos.** Caminho crítico: aprovação ética → acordo com cada concessionária para ver os seus relatórios de exercícios → coleta dos documentos; as entrevistas podem começar após a aprovação, mas o acesso aos relatórios depende da revisão jurídica de cada concessionária. Cronograma: semestre 1, pergunta e literatura, primeiros contatos; semestre 2, ética, acordos, roteiro de entrevista e piloto; semestre 3, entrevistas e análise documental; semestre 4, integração, redação e exame. Riscos (probabilidade/impacto; mitigação; gatilho; responsável): (1) as concessionárias se recusam a compartilhar os relatórios de exercícios (alta/alto; pedir resumos com tarjas, ou entrevistar sobre o exercício em vez de compartilhá-lo; nenhum acordo de duas das três concessionárias até o fim do semestre 2; candidato); (2) os operadores das concessionárias pequenas não podem ser liberados para as entrevistas (média/alto; oferecer versões de 30 minutos e horários fora do turno; menos de seis agendadas até a metade do semestre 3; candidato); (3) risco de identificação numa população minúscula (alta/médio; relato no nível do setor, revisão das citações; qualquer preocupação de um participante; orientador); (4) uma concessionária sofre um incidente durante o estudo (baixa/alto; pausar, nenhuma pergunta sobre o incidente; notificação da concessionária; candidato); (5) os relatórios de exercícios contêm detalhes sensíveis para a segurança (alta/médio; leitura no local ou com tarjas, sem cópias; qualquer documento marcado como sensível; orientador); (6) aprovação da agência estadual exigida para a participação (média/médio; consultar cedo a agência com primazia; pedido da agência; orientador).
+
+**EX029 — Auditoria e repetição do piloto.** (1) Primeira execução: completude de 0,943; FAIL na completude e na faixa; PASS nas duplicatas e nos dias de calendário → `AMEND AND RE-PILOT (no outcome analysis)`. (2–3) Saída do extrato corrigido:
+
+```text
+line  6: missing: walkins
+line 13: missing: median_wait_min
+missing calendar days: []
+implausibly low days (<70% of mean): [('2025-03-30', 23)]
+cell completeness 0.986 over 35 days x 4 fields
+  PASS  completeness >= 0.97
+  PASS  no conflicting duplicates
+  PASS  <= 1 missing calendar day
+  PASS  all values in range
+decision: GO
+```
+
+(Os números de linha mudam porque a duplicata foi removida: o tempo de espera ausente agora está na linha 13.) (4) A auditoria ainda relata duas células ausentes, que o custodiante confirmou nunca terem sido registradas; elas permanecem ausentes, e o plano do estudo principal declara como os valores ausentes são tratados (nenhum deles é o desfecho primário, as chegadas de ambulâncias). O dia baixo de 30 de março permanece porque é um dado real: o custodiante identificou seis horas de indisponibilidade do prontuário eletrônico, então, pela nova regra, o dia é sinalizado no livro de códigos e a análise principal é executada com e sem os dias sinalizados. Nada é imputado no piloto.
+
+**EX030 — Piloto do roteiro de entrevista.** Avaliado pela rubrica. Mudanças típicas de nota máxima: perguntas que pedem avaliações ("O desvio foi bem conduzido?") substituídas por perguntas ancoradas no tempo e nos registros ("O que você sabia às 06:00, e por quem?"); perguntas duplas desmembradas; jargão substituído pelos termos dos próprios participantes (por exemplo, "entrar em desvio"); duração reduzida à meta. Decisão sobre o registro de desvios: mudanças feitas antes de qualquer entrevista do estudo são registradas como emendas ao protocolo, com a data e a razão, e anotadas como feitas antes da coleta de qualquer dado; uma mudança depois que as entrevistas do estudo começaram é um desvio e é relatada como tal.
+
+**EX031 — Critérios de progressão.**
+
+| Critério | Prosseguir | Alterar | Parar | Justificativa e ação de alteração |
+|---|---|---|---|---|
+| Taxa de resposta na amostra do piloto | ≥ 30% | 15–30% | < 15% após uma repetição alterada do piloto | Com 30% de 200, cerca de 60 respostas dão a uma proporção um intervalo de 95% de aproximadamente ±13 pontos, o bastante para os objetivos descritivos principais; alterar = mudar a via de convite (por exemplo, pela associação hospitalar) e acrescentar dois lembretes |
+| Preenchimento dos itens (parcela mediana de itens respondidos) | ≥ 90% | 75–90% | < 75% | Um preenchimento baixo enviesa as estimativas dos itens; alterar = encurtar e remover os itens mais pulados |
+| Tempo mediano de preenchimento | ≤ 15 minutos | 15–25 | > 25 | Gestores ocupados abandonam questionários longos; alterar = cortar itens |
+| Compreensão (entrevistas cognitivas, 5 participantes) | Nenhum item mal entendido por ≥ 2 | 1–2 itens | ≥ 3 itens | Itens mal entendidos medem a coisa errada; alterar = reformular e testar de novo esses itens |
+
+Nenhum critério diz respeito ao que os respondentes responderam (por exemplo, a parcela com simulados de contingência): isso seria um desfecho, e não viabilidade.
+
+**EX032 — Memorando ao orientador sobre o escopo.** Benefícios: o atendimento de AVC é um desfecho sensível ao tempo que importa aos planejadores; os dados estão sendo oferecidos. Custos: os dados de saúde individuais exigem uma aprovação ética nova ou emendada e um novo acordo de dados (com implicações do artigo 9º do GDPR ou da HIPAA na jurisdição pertinente; no Brasil, da LGPD, art. 11, por se tratar de dado pessoal sensível) — meses no caminho crítico no semestre 3; o pequeno número de pacientes com AVC em 21 dias torna qualquer estimativa imprecisa; acrescentar um desfecho após o registro cria multiplicidade e não pode deslocar o desfecho primário fixado. Decisão (defensável): recusar para a dissertação, aceitar como trabalho futuro. Entrada no registro de desvios: "Data; oferta de dados de pacientes com AVC pela coalizão; recusada para este estudo por causa das aprovações, do cronograma e da precisão; nenhum dado de desfecho havia sido visto; registrada como proposta de trabalho futuro." Trabalho futuro: um estudo separado e aprovado que agregue vários eventos de desvio com dados de registros sobre os tempos da porta ao tratamento. Aceitar também é defensável se o cronograma permitir uma nova aprovação e o desfecho for rotulado como exploratório e secundário.
+
+### Capítulo 6: EX033–EX038
+
+**EX033 — Execute e relate a análise principal.** Saída do Laboratório 6: AP +0,244 (+0,067, +0,449), faixa placebo de −0,190 a +0,166, posto 1/16; BF +0,058 (−0,067, +0,199), posto 8/16; CG +0,008 (−0,093, +0,121), posto 9/16; tempo de espera em Alder Point +5,9 minutos (+2,6 a +9,2). Parágrafo modelo: "Durante o desvio de 21 dias, as chegadas de ambulâncias a Alder Point (6 km) foram 24,4% maiores do que o esperado pela sua tendência pré-evento em relação à comparação de Wexmoor (intervalo de 95% de 6,7% a 44,9%), maiores do que todas as 15 estimativas placebo das janelas pré-evento (posto 1 de 16). Em Brookfield (14 km) a estimativa foi +5,8% (−6,7% a 19,9%) e em Calloway (38 km), +0,8% (−9,3% a 12,1%); ambas são inconclusivas: os dados são compatíveis com nenhuma variação e com aumentos de até cerca de 20% e 12%, respectivamente, e ambas ficam no meio das suas distribuições placebo. As estimativas diminuem com a distância, mas os intervalos de Brookfield e de Calloway se sobrepõem muito, então os dados não conseguem distinguir uma queda gradual de um efeito confinado ao DE mais próximo." Frase do tempo de espera: "O tempo de espera mediano em Alder Point foi 5,9 minutos maior durante o desvio (2,6 a 9,2), mas este modelo não tem série de comparação e inclui a superlotação sazonal, então provavelmente superestima a contribuição do desvio."
+
+**EX034 — Sensibilidade à defasagem.**
+
+| Defasagem de Newey–West | Intervalo de 95% de Alder Point |
+|---:|---|
+| 0 (robusto apenas à heterocedasticidade) | +0,096 a +0,411 |
+| 7 (pré-especificada) | +0,067 a +0,449 |
+| 14 | +0,111 a +0,393 |
+
+Diagnósticos: autocorrelação dos resíduos de 0,03 na defasagem 1 e de −0,124 na defasagem 7; Durbin–Watson de 1,92. Uma defasagem maior nem sempre alarga o intervalo porque o estimador soma autocovariâncias amostrais do escore ponderadas por Bartlett, e estas podem ser negativas (como na defasagem 7 aqui); incluir mais defasagens pode acrescentar termos negativos e encolher a variância. Com pouca autocorrelação, os três intervalos refletem sobretudo o ruído amostral das autocovariâncias. Relate a defasagem 7 pré-especificada como primária, com as defasagens 0 e 14 como sensibilidade; nunca escolha a mais estreita depois de vê-la.
+
+**EX035 — Aritmética dos placebos.** (1) Com 15 janelas placebo mais a janela real, o valor-p unilateral baseado em postos é posto/16: Alder Point 1/16 = 0,0625, Brookfield 8/16 = 0,50, Calloway 9/16 ≈ 0,56. (2) O menor valor atingível é 1/(n+1): ele chega a 0,05 com n = 19 janelas (1/20) e a 0,01 com n = 99 (1/100); para ficar estritamente abaixo deles são necessárias 20 janelas (1/21 ≈ 0,048) e 100 janelas (1/101 ≈ 0,0099). (3) As primeiras janelas placebo têm períodos prévios curtos — a janela que começa no dia −150 tem apenas 30 dias de linha de base a partir do dia −180 —, então suas tendências são estimadas com imprecisão e suas estimativas variam mais do que o ajuste real, que tem 180 dias de linha de base; isso torna o teste placebo conservador. (4) Iniciar janelas placebo todos os dias em vez de a cada sete dias (o que acrescenta janelas, embora janelas sobrepostas sejam fortemente dependentes, de modo que o posto é menos informativo do que a contagem sugere), ou usar as mesmas janelas de calendário num ano anterior, se os custodiantes puderem fornecê-lo. Os dados pós-evento não podem ser usados.
+
+**EX036 — Repare o desfecho secundário.** Confundimento: o modelo do tempo de espera não tem série de comparação, então o aumento sazonal da superlotação durante a janela do evento entra na estimativa (no gerador, até 3 minutos de estação e um efeito verdadeiro do desvio de 4 minutos). Desenhos: (a) usar os tempos de espera de Calloway como comparação dentro da região, já que o seu efeito nas chegadas é próximo de zero — isso exige obter a série de tempos de espera de Calloway junto ao seu custodiante e ainda presume que Calloway compartilha o padrão de superlotação sazonal de Alder Point; (b) usar uma série publicada de tempos de espera dos DEs de outra região, se houver uma em resolução diária, como comparação externa. Alegação sustentada: "O tempo de espera mediano de Alder Point foi maior durante o desvio, coerente com um aumento atribuível ao desvio; a magnitude está confundida pela estação." Frase de limitação: "A estimativa do tempo de espera não tem série de comparação e, portanto, inclui a superlotação sazonal; provavelmente superestima o efeito do desvio."
+
+**EX037 — Concordância entre codificadores.** Concordância observada: 9 de 12 = 0,75 (divergências nos trechos 4, 7 e 11). Contagens marginais — A: DIV 3, INFO 4, STAFF 3, PROC 2; B: DIV 3, INFO 2, STAFF 4, PROC 3. Concordância ao acaso: (3·3 + 4·2 + 3·4 + 2·3)/144 = 35/144 ≈ 0,243. κ = (0,75 − 0,243)/(1 − 0,243) ≈ 0,670. Diagnósticos: o trecho 4 ("duas equipes esperando… ninguém para receber a passagem do caso") trata da consequência das chegadas desviadas para a equipe — encaixa-se em DIV e STAFF; o trecho 7 ("O despacho não sabia…, então a equipe decidiu na estrada") trata de uma informação ausente que causou uma decisão de destino — INFO e DIV; o trecho 11 ("se começávamos o processo de triagem em papel ou se esperávamos notícia da TI") é uma incerteza sobre o procedimento causada por informação ausente — INFO e PROC. Os três são problemas de fronteira no livro de códigos, e não erros dos codificadores. Definição revisada: "INFO — o conteúdo, o momento ou a ausência de informações sobre o incidente ou o desvio. Codifique INFO sempre que o ponto principal do trecho for o que alguém sabia ou não sabia; se o trecho também descrever a decisão ou a ação que se seguiu, codifique-o duplamente com DIV ou PROC." A dupla codificação muda a forma de calcular a concordância (por código, presença ou ausência), o que o livro de códigos precisa declarar.
+
+**EX038 — Quadro conjunto.** Use as quatro linhas de §6.7 e acrescente, por exemplo: *Quantitativo:* Calloway +0,8%, inconclusivo e centrado perto de zero. *Qualitativo:* a equipe de Calloway descreveu "nenhuma mudança perceptível", além de duas transferências. *Metainferência:* **confirmação** — as duas vertentes sugerem que pouca carga chegou ao DE mais distante. Para a discordância de Brookfield, explicações e evidências: baixo poder (verificar se o intervalo inclui o efeito na escala do gerador, o que ocorre); uma falta simultânea de pessoal em Brookfield (verificar as escalas ou as horas de pessoal terceirizado); percepções ancoradas nas piores noites (verificar as chegadas por hora ou os registros de pacientes em espera por leito em busca de picos noturnos); lembranças moldadas pela narrativa pós-ação da coalizão (comparar as entrevistas com registros contemporâneos datados). A nota máxima mantém a discordância no quadro e nomeia as evidências que poderiam resolvê-la, sem deixar nenhuma vertente se sobrepor à outra.
+
+### Capítulo 7: EX039–EX044
+
+**EX039 — Melhore a verificação de proveniência.** (1) Saída do Laboratório 7 como em §7.10. (2–4) Uma versão da verificação que leva em conta as unidades:
+
+```python
+# EX039 worked answer: unit-aware provenance check (extends Lab 7)
+import re
+RESULTS = {  # name: (value, unit)
+    "AP_effect": (24.4, "%"), "AP_lo": (6.7, "%"), "AP_hi": (44.9, "%"),
+    "BF_effect": (5.8, "%"), "BF_lo": (-6.7, "%"), "BF_hi": (19.9, "%"),
+    "CG_effect": (0.8, "%"), "CG_lo": (-9.3, "%"), "CG_hi": (12.1, "%"),
+    "AP_naive": (33.0, "%"), "placebo_n": (15, "count"), "event_days": (21, "day"),
+    "wait": (5.9, "min"), "wait_lo": (2.6, "min"), "wait_hi": (9.2, "min"),
+}
+UNITS = {"%": "%", "minutes": "min", "minute": "min", "day": "day", "days": "day",
+         "placebo": "count", "windows": "count"}
+CAUSAL = ("caused", "proves", "significant increase", "due to the attack")
+NUM = r"-?\d+(?:\.\d+)?"
+
+def unit_after(text, end):
+    m = re.match(r"\s*-?\s*(%|[A-Za-z]+)", text[end:])
+    if m and m.group(1).lower() == "to":              # "2.6 to 9.2 minutes": take the unit after the pair
+        m2 = re.match(r"\s*to\s*" + NUM, text[end:])
+        return unit_after(text, end + m2.end()) if m2 else None
+    return UNITS.get(m.group(1).lower()) if m else None
+
+def check(text):
+    problems = []
+    for m in re.finditer(NUM, text):
+        x, u = float(m.group()), unit_after(text, m.end())
+        if x == 95 and text[m.end():m.end() + 10] == "% interval":
+            continue                                  # the interval level, declared in the methods
+        ok = any(unit == u and (abs(x - v) <= 0.05 or (x.is_integer() and round(v) == x))
+                 for v, unit in RESULTS.values())
+        if not ok:
+            problems.append(f"untraced number {m.group()!r} (unit: {u})")
+    for site in ("Alder Point", "Brookfield", "Calloway"):
+        i = text.find(site)
+        if i >= 0 and not re.search(NUM + r"%?\s+to\s+" + NUM, text[i:i + 140]):
+            problems.append(f"no interval near {site}")
+    problems += [f"check wording: {p!r}" for p in CAUSAL if p in text.lower()]
+    return problems
+
+DRAFT = open("lab7_provenance.py").read().split('DRAFT = """')[1].split('"""')[0]
+FIXED = """During the 21-day diversion, ambulance arrivals at Alder Point rose by 24.4% (95% interval 6.7% to 44.9%)
+relative to the Wexmoor comparison hospitals, larger than all 15 placebo estimates. Brookfield's change of 5.8%
+(-6.7% to 19.9%) and Calloway's of 0.8% (-9.3% to 12.1%) were inconclusive. A simple before-and-after comparison
+would have suggested a 33% rise. Median waiting time at Alder Point was 5.9 minutes longer (2.6 to 9.2 minutes),
+an estimate without a comparison series that includes seasonal crowding."""
+for label, text in (("draft", DRAFT), ("fixed", FIXED)):
+    print(label + ":", "; ".join(check(text)) or "all numbers traced")
+```
+
+Saída:
+
+```text
+draft: untraced number '16' (unit: count); no interval near Calloway; check wording: 'caused'; check wording: 'significant increase'
+fixed: all numbers traced
+```
+
+A verificação agora compara cada número apenas com resultados da mesma unidade, herdando a unidade para o primeiro número de um par como "2.6 to 9.2 minutes". Constatações sobre a minuta: o "6 minutes" da minuta agora é rastreado até o resultado do tempo de espera (5,9 minutos, arredondado), em vez de corresponder falsamente aos 5,8% de Brookfield; "16 placebo windows" não é rastreado (há 15 janelas, sendo a 16ª estimativa a real); Calloway não tem intervalo; duas expressões causais são sinalizadas. Os intervalos de Alder Point e de Brookfield estão presentes na minuta e não são sinalizados. (5) O parágrafo corrigido (no script, como `FIXED`) usa "rose by" com "relative to the Wexmoor comparison hospitals" em vez de "caused", chama Brookfield e Calloway de inconclusivos, dá todos os intervalos e declara a limitação do tempo de espera. Um verificador não consegue julgar plenamente a redação: "were inconclusive" só está certo porque uma pessoa leu os intervalos.
+
+**EX040 — Limitações com direção.** Ordenadas pela ameaça à conclusão:
+
+| Ordem | Limitação | Direção e tamanho prováveis | O que foi feito | O que a resolveria |
+|---:|---|---|---|---|
+| 1 | Resolução semanal para uma interrupção de três dias | Em direção a zero: no máximo três sétimos da semana estão expostos, e a recuperação dentro da semana anula parte da queda — possivelmente reduzindo à metade o efeito aparente | Relatado por semana, com esta ressalva | Dados diários |
+| 2 | Dados de uma única rede | Superestima a queda do total de dispensações, porque os clientes migraram para concorrentes que não são observados | Declarado; dados dos concorrentes solicitados | Dados de autorizações de todo o mercado |
+| 3 | Eventos simultâneos (feriados, mudanças de operadoras) | Qualquer direção | Verificações de calendário e de pagadores | Uma rede ou região de comparação |
+| 4 | Dispensações datadas pelo processamento, e não pela entrega | Desloca a queda para mais tarde e cria um pico de rebote, exagerando os dois | Datas de processamento versus de dispensação verificadas | Datas de dispensação |
+| 5 | Evento único | Nenhum viés; limita a transferência | Contexto descrito | Mais eventos |
+
+**EX041 — Resumo estruturado.** Avaliado pela rubrica; as frases-chave: *Desenho* — "série temporal interrompida controlada das chegadas diárias de ambulâncias (180 dias antes, 90 dias a partir do início do desvio) com uma região de comparação não afetada, janelas placebo e dez entrevistas analisadas tematicamente; dados didáticos sintéticos." *Resultados* — Alder Point +24,4% (6,7% a 44,9%; posto 1 de 16 contra as janelas placebo); Brookfield +5,8% (−6,7% a 19,9%) e Calloway +0,8% (−9,3% a 12,1%), ambos inconclusivos; as entrevistas atribuíram os destinos à geografia viária e descreveram uma notificação tardia e informal. *Conclusões* — "Um desvio de ambulâncias de 21 dias foi seguido de um aumento substancial das chegadas ao DE mais próximo; os efeitos nos DEs mais distantes não puderam ser determinados." *Principal limitação* — "um evento e uma região de comparação; tendências sazonais paralelas presumidas." A exposição é nomeada como o desvio, e não como o ransomware.
+
+**EX042 — Mapeamento da lista de verificação de relato.** Mapeamento de exemplo (o RECORD estende o STROBE para dados coletados rotineiramente): desenho e cenário do estudo (STROBE 4–5) → Capítulo 3, §3.1 e o plano de pré-análise; participantes/unidades e fontes de dados (STROBE 6, 8; RECORD 6.1) → os três DEs vizinhos e os extratos dos custodiantes (Capítulo 6, §6.1); variáveis e suas definições (STROBE 7; RECORD 7.1, códigos e algoritmos) → o livro de códigos; acesso e limpeza dos dados (RECORD 12.1–12.2) → auditoria e correções do piloto (Capítulo 5); vinculação (RECORD 12.3) → não se aplica, declarado como tal; viés (STROBE 9) → tabela de rivais e controles negativos (Capítulo 4); métodos estatísticos (STROBE 12) → §6.2–6.4; limitações (STROBE 19) → §7.6; acessibilidade do protocolo e dos dados (RECORD 22.1) → declaração de disponibilidade. Lacuna genuína: como foram validadas as definições de "chegada de ambulância" dos custodiantes (por exemplo, se as transferências entre instituições contam e se a definição mudou durante o período do estudo). Texto redigido: "Cada custodiante forneceu a sua definição de chegada de ambulância; confirmamos que as três excluem as transferências entre instituições e que nenhuma definição mudou entre os dias −180 e 89, e comparamos os totais mensais do extrato com os relatórios anuais publicados pelos custodiantes."
+
+**EX043 — Declaração de disponibilidade.** Liberável: código de análise e dados sintéticos que reproduzem a estrutura da análise (público); livro de códigos e plano de pré-análise com o registro de desvios (público); tabelas de resultados agregados no nível regional (público). Retido: contagens diárias dos custodiantes (restritas pelos acordos de dados); transcrições (confidenciais, nos termos do consentimento); capturas de Wexmoor, se os termos do painel proibirem a redistribuição (o método é compartilhado em seu lugar); limiares de ajuda mútua da coalizão (sensíveis). Declaração: "O código de análise, um conjunto de dados sintético com a mesma estrutura, o livro de códigos, o plano de pré-análise e o registro de desvios estão disponíveis em [repositório e DOI]. As contagens diárias foram fornecidas sob acordos com os custodiantes dos dados e podem ser solicitadas a eles nas mesmas condições; as transcrições das entrevistas não podem ser compartilhadas porque os participantes consentiram apenas no uso de citações desidentificadas." Resposta ao editor: "Liberamos tudo o que os nossos acordos e o consentimento dos participantes permitem, incluindo um código que reproduz todos os resultados a partir de um conjunto de dados sintético. Os dados diários pertencem aos custodiantes, que concordaram em considerar pedidos de pesquisadores qualificados nos mesmos termos, e as transcrições não podem ser liberadas sem quebrar o consentimento dos participantes."
+
+**EX044 — Figura acessível.** Tipo de figura: um gráfico de pontos e intervalos, com a distância no eixo horizontal (6, 14, 38 km) e a variação percentual no eixo vertical, uma linha de referência no zero, cada local rotulado diretamente e nenhuma codificação por cor. Legenda: "As chegadas de ambulâncias subiram substancialmente no DE vizinho mais próximo durante o desvio de 21 dias; as variações nos dois DEs mais distantes não puderam ser distinguidas de zero. Pontos: variação percentual estimada em relação a uma tendência ajustada pela comparação; barras: intervalos de 95%. Dados didáticos sintéticos." Alternativa textual: "Alder Point, 6 km: +24,4% (6,7% a 44,9%). Brookfield, 14 km: +5,8% (−6,7% a 19,9%). Calloway, 38 km: +0,8% (−9,3% a 12,1%)." Resumo em linguagem simples: "Quando o hospital deixou de receber ambulâncias, o hospital vizinho mais próximo recebeu cerca de um quarto a mais de ambulâncias do que o esperado; não conseguimos dizer se os hospitais mais distantes foram afetados."
+
+### Capítulo 8: EX045–EX050
+
+**EX045 — Curvas de especificação para dois locais.** (1) Alder Point, como em §8.3.2: 54 especificações; mediana +0,245, faixa de +0,199 a +0,332; todos os 54 intervalos excluem o zero. (2) Brookfield:
+
+```text
+specifications: 54
+median effect +0.025; range -0.015 to +0.069
+intervals excluding zero: 0 of 54
+pre_len: 120=+0.005, 180=+0.034, 90=+0.022
+control: W1=+0.007, W2=+0.041, pooled=+0.022
+event_len: 14=+0.022, 21=+0.043, 28=+0.014
+drop_holidays: False=+0.025, True=+0.025
+lowest three: [(-0.015, 120, 'W1', 28, False), (-0.013, 120, 'W1', 28, True), (-0.008, 120, 'W1', 14, False)]
+```
+
+(3) A conclusão de Alder Point é robusta a todas as escolhas razoáveis; Brookfield é **robustamente inconclusivo** — nenhuma especificação exclui o zero e nenhuma chega ao efeito verdadeiro do gerador. (4) O efeito verdadeiro de 10% de Brookfield fica acima de todas as estimativas pontuais (o máximo é +6,9%) porque as 54 especificações analisam os mesmos dados realizados, com o mesmo ruído: nesta realização, as chegadas a Brookfield calharam de ficar abaixo do esperado, e nenhuma escolha de linha de base, comparação ou janela pode remover um ruído que está nos próprios dados. Uma curva de especificação mostra a sensibilidade às escolhas analíticas, e não a acurácia; robustez não é verdade. Descrever Brookfield como "nenhum efeito" seria errado — os intervalos incluem efeitos em torno de 20%.
+
+**EX046 — Banco de perguntas.** Avaliado pela rubrica. As três perguntas mais difíceis para a dissertação do Spillover costumam ser: "Por que deveríamos acreditar que a estação de Wexmoor coincidiu com a de Tamsin Valley?" (resposta: razão pré-evento plana, cada DE de Wexmoor separadamente na curva de especificação, mas as tendências paralelas não podem ser provadas — uma lacuna *do trabalho* se não houver uma terceira comparação); "As suas entrevistas dizem que Brookfield ficou pesado; os seus números dizem inconclusivo. Qual está certo?" (resposta: nenhum se sobrepõe ao outro; baixo poder, pessoal e picos noturnos são explicações, com as evidências que escolheriam entre elas — uma lacuna *do documento* se a discordância não foi discutida); "Isto se transferiria para uma cidade com dez hospitais?" (resposta: o mecanismo, a geografia viária, sugere que a carga se espalha de forma mais rala; a estimativa não se transfere — uma lacuna *de apresentação* se o candidato exagerar).
+
+**EX047 — Tabela de correções.**
+
+| # | Comentário | Resposta | Ação |
+|---|---|---|---|
+| (a) | A revisão da literatura é autor por autor | De acordo | Capítulo reestruturado por conceito usando a matriz de conceitos; cada seção termina com o que permanece desconhecido |
+| (b) | O degrau pós-desvio "absorve dados inconvenientes" | Em desacordo, com razões | O degrau foi pré-especificado no plano registrado (datado) para impedir que os efeitos de cauda depois do desvio contaminassem a tendência; acrescentada uma análise de sensibilidade sem o degrau e com os dias 21–89 excluídos, mostrando a variação da estimativa primária |
+| (c) | A seção de ética omite a revisão pelos parceiros | De acordo | Acrescentados o acordo de publicação (revisão factual, sem veto) e o registro das mudanças solicitadas pelos parceiros |
+| (d) | Acrescentar desfechos de pacientes | Em desacordo para esta dissertação | Fora do escopo aprovado e dos acordos de dados; exigiria novas aprovações e dados individuais; acrescentado ao trabalho futuro, com um esboço de desenho |
+
+**EX048 — Defesa simulada e classificação das lacunas.** Avaliado pela rubrica. A nota máxima exige pelo menos uma lacuna *do trabalho* honesta (por exemplo: "Não consigo mostrar tendências paralelas além da razão do período prévio"), correções do documento de fato feitas (por exemplo, o parágrafo da discordância acrescentado) e um texto de limitação que declare a direção ("se a estação de Wexmoor foi mais branda, as nossas estimativas estão superestimadas").
+
+**EX049 — Briefing para a coalizão.** Avaliado pela rubrica. Um briefing modelo declara o resultado principal com o seu intervalo; recomendações com níveis de confiança — por exemplo, "Notificar formalmente os DEs vizinhos até uma hora após a decisão de desvio (sustentado pelas entrevistas, T2; confiança alta de que a notificação foi tardia; o efeito de uma notificação mais precoce não foi testado)", "Considerar uma orientação de destino para o EMS que espalhe a carga além da saída mais próxima (sustentado por T1 e pela estimativa de Alder Point; intervenção não testada)"; um parágrafo "o que este estudo não mostra" (desfechos de pacientes, outras regiões, efeitos do ransomware enquanto tal); e nenhum número de capacidade por instalação, que vai em privado a cada parceiro, junto com qualquer fraqueza específica levantada nas entrevistas.
+
+**EX050 — O próximo estudo.** Limitação mais consequente: um evento e uma região. Pergunta: em muitos episódios de desvio de ambulâncias após incidentes cibernéticos, quanto variam as chegadas ao DE vizinho mais próximo, e como isso depende da densidade hospitalar regional? Estimando: a variação percentual média das chegadas aos vizinhos mais próximos durante o desvio, em relação às tendências ajustadas pela comparação, por faixa de densidade. Desenho: um estudo de evento agregado entre incidentes com momentos escalonados, usando estimadores robustos a efeitos heterogêneos (Roth et al., 2023; Goodman-Bacon, 2021), com dados obtidos dos custodiantes de várias regiões ou de uma base nacional de DEs, e eventos identificados a partir de fontes públicas de incidentes codificadas com proveniência e status (Capítulo 2). Resultado relevante para decisões: se os efeitos se concentram no DE mais próximo em regiões de baixa densidade, os planejadores deveriam priorizar ali a orientação de destino e o reforço de pessoal para picos. Escala: doutorado (vários acordos de dados, um catálogo de eventos, métodos novos), ou um projeto de profissionais dentro de uma agência nacional com acesso a dados já existente — não um projeto de mestrado.
+
 <a id="glossary"></a>
 
 ## Glossário
@@ -1249,7 +2357,7 @@ A variação de Wexmoor agregada é +0,054. As estimativas ingênuas mudam (Alde
 
 ## Referências
 
-Leis, orientações e páginas públicas de incidentes mudam. As versões e datas abaixo são as consultadas para este rascunho (outubro de 2026); verifique-as de novo antes de se apoiar nelas. A lista é idêntica à da edição em inglês, com o acréscimo da LGPD, citada na §3.4.
+Leis, orientações e páginas públicas de incidentes mudam. As versões e datas abaixo são as consultadas para este rascunho (outubro de 2026); verifique-as de novo antes de se apoiar nelas. A lista é idêntica à da edição em inglês, com o acréscimo da LGPD, citada na §3.4.1 e na resposta do EX032.
 
 **Políticas, leis e normas**
 
