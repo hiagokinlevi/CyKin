@@ -50,25 +50,37 @@ You will (1) use rates of change to describe how cloud resources and risks grow;
 
 Elena Petrova is a fifth-year engineering student at the fictional Brackenridge Institute of Technology, on an industry project with the fictional Solent Energy Co-op under industry supervisor Rosa Delgado and academic tutor Dr Felix Wagner. Solent runs meterhub, a Kubernetes-hosted platform that ingests smart-meter readings from 80,000 homes. Last spring a container image for meterhub with a cloud access key built into one layer was pushed to a public registry by mistake, and the meterhub namespace had no network policies, so any pod could reach the readings database. The key was revoked within hours and no misuse was found, but the review asked for an engineered approach rather than patches.
 
+The leak and the missing network policies give the course two threads to follow: how secrets end up where they should not, and how traffic inside a cluster is controlled. Elena's project brief asks her to understand both, design fixes that the small platform team can operate, and show with evidence that the fixes work. Each later chapter adds a tool she uses on that brief.
+
 ### 1.2 Rates of change
 
 Engineers describe systems by how quantities change. If the number of running pods P changes over time t, dP/dt is the rate of scaling. When meterhub's ingest rate rises in the evening, the derivative of request volume tells the autoscaler how quickly capacity must grow.
+
+The derivative matters because capacity cannot appear instantly: a new pod needs time to start, pull its image and pass its health checks. If demand rises faster than pods can start, requests queue or fail. Knowing the steepest evening rise lets Elena check whether the autoscaler's settings react quickly enough, or whether a small buffer of spare pods should run before the peak arrives.
 
 ### 1.3 Accumulation
 
 The integral of a rate gives a total. The integral of exposure over time, for example the number of reachable sensitive services multiplied by hours, gives a measure of accumulated risk. Elena uses this idea later to compare designs: a short, wide exposure can matter as much as a long, narrow one.
 
+Consider a database port accidentally reachable from the internet for two hours, against an internal admin service reachable from every pod for a month. The first is wide but brief; the second is narrow but long. Multiplying reach by time puts both on one scale, so the team can compare them honestly instead of reacting only to whichever sounds more alarming.
+
 ### 1.4 Growth of configuration
 
 Each new microservice adds configuration. If services grow linearly but permissions per service grow too, total permissions grow faster than linearly, which explains why manual review stops scaling.
+
+If each of ten services needs five permissions, a reviewer checks fifty entries; if forty services each need twelve, the count is 480, and many of them interact. Reviews that once took an afternoon now take a week and are done less carefully. This growth is the main argument for checking configuration with programs and policies rather than by reading every line by hand.
 
 ### 1.5 Approximation
 
 Small steps approximate continuous change: sampling metrics every 30 seconds approximates the true curve, and the sampling interval limits how fast a change can be seen.
 
+A spike lasting ten seconds may fall entirely between two 30-second samples and never appear in the graph. Shorter intervals reveal more but cost storage and processing. Elena checks the sampling interval of each metric she plans to use for alerts, because an alert can only fire on changes the samples actually capture. Alert rules state their interval.
+
 ### 1.6 Why maths first
 
 Later chapters use rates for autoscaling, statistics for alert latency and logic for policy evaluation. The foundations make those designs analysable rather than guessed.
+
+Guessed designs are hard to defend when someone asks why a threshold is five rather than ten, or why one design is safer than another. With rates, distributions and logic, Elena can show the reasoning and let others check it. The maths in these first chapters is kept to what the later engineering work actually uses.
 
 ### Worked example
 
@@ -106,9 +118,13 @@ You will (1) express access policies as logic and sets; (2) evaluate requests wi
 
 An access policy is a set of rules, each matching a principal, an action and a resource. A request is allowed if some allow rule matches and no deny rule matches; otherwise it is denied by default. This is a logical formula: allowed = (exists allow match) and not (exists deny match).
 
+Writing the rule as a formula makes its behaviour predictable. Two results follow directly: a request that matches nothing is denied, and a single matching deny beats any number of allows. Elena uses the formula to explain to the platform team why adding another allow rule did not fix a denied request, because a deny elsewhere was still matching it.
+
 ### 2.2 Sets and wildcards
 
 Wildcards describe sets: storage:Get* is the set of all get actions; readings/* is all objects under readings. Reasoning about overlaps between sets explains surprising results, such as a broad allow being overridden by a narrow deny.
+
+Wildcards are convenient but easy to over-grant: storage:* includes deletes and permission changes that the writer may never have intended. Thinking of each pattern as a set, and asking what is inside it, helps spot such over-reach. Overlaps also explain conflicts, since two rules with overlapping sets both match some requests and the combining rule decides the outcome.
 
 ### Lab — Lab — policy evaluation
 
@@ -148,13 +164,19 @@ billing-job   storage:GetObject     readings/2026/10.csv   DENY (default)
 
 meter-reader may get readings/2026/10.csv and put readings/raw/a.csv (ALLOW). meter-reader's delete of readings/raw/a.csv is DENY (explicit) because the deny on storage:Delete* for readings/* matches, overriding the broader allow. ops-admin's delete of readings/old.csv is also DENY (explicit): the deny rule applies to everyone. billing-job has no matching allow, so it is DENY (default).
 
+The lab's value is in the reasons as much as the outcomes. Two denials look the same to the caller but come from different causes: one from an explicit guardrail, one from a missing allow. Fixing them needs different actions. For billing-job, an allow must be added if the access is legitimate; for the delete guardrail, the team must decide whether any exception is justified at all.
+
 ### 2.4 Why this structure
 
 Default deny means forgotten cases fail safe. Explicit deny lets a security team set guardrails that application teams cannot override with broad allows. NIST SP 800-210 discusses such policy combination in cloud access control.
 
+Without default deny, a new resource created without a policy would be open until someone noticed. Without explicit deny, any team with permission to write allow rules could widen access beyond what the security team intended. Together they give a predictable floor and ceiling, within which application teams can grant what they need.
+
 ### 2.5 Proving properties
 
 With the formula, Elena can argue properties such as "no principal can delete readings" by showing the deny rule covers every delete action on readings, regardless of allows.
+
+A test checks a few cases; an argument from the formula covers all cases at once. If every delete on readings matches a deny, no allow can change the result, whatever principals or rules are added later. Elena still writes tests for a sample of cases, so a mistake in her reasoning or a change in the rules would be caught.
 
 ### Worked example
 
@@ -192,25 +214,37 @@ You will (1) relate physical limits to cloud systems; (2) reason about latency, 
 
 Signals in fibre travel at roughly two-thirds the speed of light, about 200 km per millisecond. A round trip between regions 1,000 km apart costs at least 10 ms before any processing. meterhub keeps its database in the same region as ingest for this reason.
 
+Ten milliseconds sounds small, but an application that makes twenty sequential database calls per request would add 200 ms if the database sat in another region. Users notice delays of that size. Physics sets a floor that no amount of engineering removes, which is why data placement is decided early in a design rather than adjusted later.
+
 ### 3.2 Zones and regions
 
 Providers group data centres into availability zones (separate power and cooling) within regions. Spreading workloads across zones protects against a single facility failure; regions protect against wider events.
+
+A zone failure might come from a power fault or a cooling problem in one facility; a regional event might be a major network outage or a natural disaster affecting several facilities. Spreading across zones is relatively cheap and handles the common case. Spreading across regions costs more, adds latency and complicates data protection, so it is reserved for services that truly need it.
 
 ### 3.3 Energy and heat
 
 Computing turns electrical energy into heat. Data-centre capacity is limited by power and cooling, which is why providers price resources and why idle over-provisioned clusters waste money and energy.
 
+Every idle node draws power and needs cooling even when it does no useful work. A cluster sized for the evening peak all day long wastes most of that energy in quiet hours. Autoscaling and right-sizing reduce both the cost and the energy used, which matters to an energy co-operative whose members care about efficiency.
+
 ### 3.4 Hardware failure
 
 Disks, memory and power supplies fail at measurable rates. At scale, failures are routine, so cloud systems are designed to replace failed parts automatically. Verma et al. (2015) describe how Google's Borg handled machine failures as normal events.
+
+At the scale of a large cloud, disks fail daily somewhere, so systems that treat failure as an emergency would be in permanent crisis. Borg's approach of rescheduling work automatically when a machine fails became a model for Kubernetes. For meterhub, it means pods should be written so that losing one and starting another elsewhere does no harm.
 
 ### 3.5 Location and data protection
 
 Meter readings are personal data about household behaviour. Where data are physically stored affects which laws apply; Solent keeps readings in one jurisdiction, recorded in its data register.
 
+Readings taken every half hour can reveal when a household wakes, leaves and returns, so they are personal data under most data protection laws. Storing them in one jurisdiction keeps the legal picture simple. The data register records where each data set lives, which lets Solent answer regulators and members accurately. Backups stay in-jurisdiction too.
+
 ### 3.6 Shared hardware
 
 Workloads from different customers may share physical machines. Ristenpart et al. (2009) showed that co-residence could leak information, which drove providers to strengthen isolation; customers handle the rest through their own configuration choices.
+
+Co-residence research showed that, under some conditions, one virtual machine could learn information about another on the same physical host. Providers responded with stronger isolation and placement controls. What remains for customers is their own configuration: who can reach their services, which secrets their workloads hold, and how their data are protected.
 
 ### Worked example
 
@@ -248,25 +282,37 @@ You will (1) write small, safe Python programs that read configuration data; (2)
 
 Cloud and container configuration is data: YAML, JSON and key-value settings. Engineers who can read and check that data with programs can review hundreds of resources reliably.
 
+A cluster with forty services may have hundreds of manifests and thousands of settings. Reading them by eye invites mistakes, especially late in a review. A short program can check every manifest for the same issues in seconds and produce a consistent list, which a human then examines with fresh attention. Rosa reviews each script's output.
+
 ### 4.2 Core structures
 
 Dictionaries map names to settings, lists hold resources, sets hold permissions. Elena represents each pod's security settings as a dictionary, which makes comparisons simple.
+
+Representing settings as dictionaries means a check like 'is privileged true?' is a single lookup. Lists of resources can be filtered and counted. Sets of permissions can be compared with set operations, such as finding permissions one role has that another lacks. Choosing the right structure keeps the code short and clear. Elena keeps each structure small.
 
 ### 4.3 Functions and tests
 
 A function such as check_pod(spec) returns a list of issues. Small tests with synthetic specs confirm it flags privileged pods and passes compliant ones.
 
+Returning a list of issues, rather than printing them, lets other code count, sort or filter the results. Synthetic specs give known answers: a pod with privileged set should produce exactly one issue, a compliant pod none. When the function is changed later, the tests show immediately if it still behaves correctly. Edge cases get their own tests.
+
 ### 4.4 Reading files safely
 
 Programs only read configuration exports; they never call cloud APIs to change anything. Inputs are treated as untrusted: missing fields are reported, not assumed.
+
+Reading exports avoids any chance of a script changing a live system by mistake, and it means the scripts need no cloud credentials. Treating inputs as untrusted guards against odd or malformed exports. A missing field reported as missing is honest; one silently treated as false could hide a real problem. Each script states which export it expects.
 
 ### 4.5 Stdlib only
 
 Labs use only Python's standard library (json, csv, hashlib, statistics, re), so they run anywhere without installing packages, and their behaviour is easy to review.
 
+Each external package is code from outside that may change, break or be compromised. The standard library covers parsing, hashing, statistics and pattern matching, which is enough for these labs. Students can run them on any machine with Python and review every line without needing to understand third-party code. The labs record the Python version used.
+
 ### 4.6 Clear output
 
 Output names the resource, the issue and the reason, so non-programmers can act on it.
+
+An output line such as 'ingest-7f9: privileged=true; privileged containers can access the host' tells a manager what is wrong and why it matters. Listing only a rule identifier would force them to look it up. Clear output also helps engineers fix issues quickly, because the resource and the reason are given together. Elena also sorts issues by severity, so the most serious appear first.
 
 ### Reading exports
 
@@ -308,25 +354,37 @@ You will (1) write clear technical documents for different audiences; (2) struct
 
 Rosa's platform team needs exact configuration changes; Solent's managers need risk and cost; the regulator needs evidence of controls. Elena writes one design note with a short summary for managers and detailed sections for engineers.
 
+Each audience reads for a different purpose. Engineers need to know exactly what to change and how to test it; managers need to decide whether to fund and approve; regulators need confidence that controls exist and work. Writing one document with layered sections serves all three without forcing anyone to read what they do not need.
+
 ### 5.2 Structure
 
 Context, problem, options, decision, consequences, open questions. This structure, common in architecture decision records, makes reasoning visible.
+
+A fixed structure helps readers find what they want and helps writers spot what they forgot. Writing options before the decision shows the choice was considered, not assumed. Consequences include costs and risks, not only benefits. Open questions show what is still uncertain, so readers know where judgement may change later. Elena's first note runs to two pages, with the manager summary in the first paragraph.
 
 ### 5.3 Diagrams
 
 A diagram of meterhub shows ingest, API, database and metrics pods, with arrows for allowed traffic. Trust boundaries are drawn as dashed lines. One diagram per question avoids clutter.
 
+Arrows for allowed traffic make it obvious what should and should not talk. Dashed trust boundaries show where checks must happen. A diagram trying to show deployment, data flow and permissions at once becomes unreadable, so Elena draws separate diagrams for each question and labels each one with its purpose. Each diagram is dated.
+
 ### 5.4 Incident summaries
 
 The key-leak summary states timeline, impact, cause, fixes and lessons, without blame and without guessing.
+
+Blame shuts down honest discussion; people who fear blame hide details. Guessing replaces evidence with stories that may be wrong. The summary sticks to what is known, says what is not, and focuses on fixes that change the system, such as scanning images for secrets before they are published. Elena drafts the summary from the recorded timeline and asks the engineers involved to correct any errors before it circulates.
 
 ### 5.5 Trade-offs
 
 Every option has costs. Elena writes "default-deny network policies will block undocumented traffic; we expect some breakage during rollout" rather than hiding it.
 
+Admitting expected breakage builds trust and helps planning. If teams know default-deny policies will block undocumented traffic, they can prepare by documenting flows and watching closely during rollout. Hiding the cost would only mean surprise and frustration later, and a design that loses support at the first problem. Rosa agrees with Elena on a rollback plan for each expected problem.
+
 ### 5.6 Review
 
 Documents are reviewed by an engineer and a non-engineer to check both clarity and accuracy.
+
+An engineer checks that the technical content is correct; a non-engineer checks that the summary and reasoning make sense to someone outside the field. Each catches different problems. Elena asks a Solent operations manager to read her design note and rewrites two paragraphs that the manager found confusing. Reviewers' comments and Elena's responses are kept with the note, so later readers can see what changed and why.
 
 ### Writing incident summaries
 
