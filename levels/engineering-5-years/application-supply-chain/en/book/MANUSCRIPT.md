@@ -3037,25 +3037,37 @@ You will (1) plan an authorised security test of the application and pipeline; (
 
 Testing requires written authorisation stating scope (staging ticket-web and pipeline), time window and contacts. Kwame's team tests only within that scope.
 
+Written scope protects everyone. Without it, a test that slows the staging site or touches the wrong system could be treated as an attack, and the testers could face disciplinary or legal consequences. The time window lets operations recognise test traffic, and named contacts mean a problem can be stopped quickly. Production is excluded because riders depend on it. If the team finds something that seems to reach outside scope, such as a link to a vendor system, it stops and asks rather than following it.
+
 ### 40.2 WSTG structure
 
 The OWASP Web Security Testing Guide v4.2 organises tests into areas such as configuration, identity, authentication, authorisation, session management, input validation and business logic. The team selects tests matching their ASVS Level 2 requirements.
+
+Selecting tests from the WSTG by matching them to chosen requirements keeps the effort focused. A test for business logic, for example, checks refund limits that no generic scanner understands. Each selected test names the requirement it covers, so results feed straight into the pass or fail table. Areas with no matching requirement are noted, in case the requirement set itself has a gap.
 
 ### 40.3 Pipeline review
 
 For the pipeline, the team reviews configuration: branch protection, secret exposure to forks, runner isolation, policy enforcement mode.
 
+These settings decide whether the pipeline controls actually hold. Branch protection that administrators can bypass, secrets visible to fork builds or a policy left in warn mode would each undo much of the design. The review compares the live settings with the intended ones and records any differences. Configuration is read through the CI system's own settings pages and exports, so no change is made during review, and findings are confirmed by a second team member before being reported.
+
 ### 40.4 Evidence
 
 Each ASVS requirement gets pass, fail or not applicable, with evidence such as screenshots of configuration or test logs.
+
+Evidence lets someone else confirm the result without repeating the test. A pass with no evidence is a claim; a pass with a log showing the refused request is a fact. Not applicable is recorded with a reason, such as a feature ticket-web does not offer, so reviewers can challenge it if they disagree. Evidence is stored with the report and referenced by requirement identifier, so a later reader can find each item quickly. Screenshots are checked for personal data before being saved.
 
 ### 40.5 Results
 
 30 application requirements: 27 pass, 2 fail (session timeout too long; missing rate limit on password reset), 1 not applicable. 12 pipeline requirements: 11 pass, 1 fail (a self-hosted runner still used for a reporting job).
 
+The failures are specific and fixable. A long session timeout leaves accounts open on shared devices; a missing rate limit on password reset lets someone flood riders with reset messages or guess codes. The self-hosted runner breaks the requirement that builds use hosted, isolated runners, even though the job only produces reports.
+
 ### 40.6 Reporting
 
 Findings describe the weakness, its impact and the fix, without step-by-step misuse instructions, and go to owners with target dates.
+
+Detailed misuse steps help attackers if the report leaks and add nothing for owners, who need to know what to fix. Each finding states the requirement it fails, the evidence, the likely impact on riders or Coastline, and a suggested fix. Target dates follow the remediation targets by severity. Reports go to the named owners and Ingrid, not to a broad mailing list, and are stored with restricted access until every finding is fixed.
 
 ### Retesting
 
@@ -3105,25 +3117,37 @@ You will (1) optimise the security system as a whole rather than individual cont
 
 Individual controls can each look good while the system performs poorly. Kwame maps the flow of an advisory from publication to deployed fix: detection (nightly check), triage (owner assigned), fix (code change), review, build, staging, production. He measures the median time in each step over six months of synthetic records.
 
+The point is to find where time actually goes, which intuition often gets wrong. Each record carries a timestamp for every step, so the medians come straight from the data. Steps owned by different teams are shown on the same chart, which makes handovers visible as well as work.
+
 ### 41.2 Finding the bottleneck
 
 Detection takes under a day, fix and review two days, but waiting for the next production release window takes a median of six days. The bottleneck is not security tooling; it is the release schedule.
+
+Without the measurements, the team would likely have bought a faster scanner, since tools are easy to blame. The data shows that a fix sits ready for most of its waiting time. Once the cause is the schedule, the fix is a change to how releases are planned, not a purchase.
 
 ### 41.3 Changing the system
 
 Coastline introduces a fast lane: security fixes that pass all checks can deploy any weekday morning with one approver. The median time from advisory to deployed fix falls from 10 to 4 days.
 
+The fast lane changes a policy rather than adding a tool. All the usual checks still apply: tests, gate, signing, provenance and verification. Only the waiting for a release window is removed. The six days saved come straight from the bottleneck measured earlier. Morning deployment keeps the team at hand if something goes wrong.
+
 ### 41.4 Cost and risk
 
 The fast lane adds some deployment risk, managed by automatic rollback and verification. Kwame compares expected exposure saved (6 days per advisory times about 20 relevant advisories a year) with the effort of extra deployments (about 30 minutes each).
+
+Six days times twenty advisories is 120 days of exposure avoided each year, while twenty extra deployments at thirty minutes each cost about ten hours of engineering time. The comparison is rough, but the gap is large enough that the decision does not depend on precise numbers.
 
 ### 41.5 Choosing next improvements
 
 With data on each step, the team ranks improvements by days saved per hour of effort. Faster triage through automatic owner assignment ranks next.
 
+Ranking by days saved per hour of effort favours small changes with big effects, which are often overlooked in favour of large projects. Automatic owner assignment uses the dependency ownership file to route each advisory immediately, removing the day or so currently spent finding the right person. The ranking is repeated after each change, since removing one bottleneck reveals the next.
+
 ### 41.6 Avoiding local optimisation
 
 Speeding up scanning further would save hours, not days; the system view keeps attention on what matters.
+
+Each team naturally improves the part it controls, which can make the overall flow look busy without becoming faster. A scanner that finishes in ten minutes instead of twenty makes no difference when a fix waits six days for release. Coastline asks every proposed improvement to state which step of the measured flow it shortens and by how much. Proposals that cannot answer are deferred until the measurement shows they matter. This keeps effort where riders feel the difference.
 
 ### Worked example
 
@@ -3161,25 +3185,37 @@ You will (1) formulate an applied research question from engineering practice; (
 
 Kwame asks: does requiring a written justification for new dependencies reduce the number added without lowering developer satisfaction? This connects to findings that dependency growth spreads risk (Zimmermann et al., 2019; Decan et al., 2018).
 
+A good applied question is narrow enough to answer with available data and matters to the people who will use the answer. Kwame's question has two outcomes, so the study can show whether a benefit comes with a hidden cost to developers. Linking it to published research shows why the answer matters beyond Coastline.
+
 ### 42.2 Design
 
 A before-and-after comparison over two six-month periods at Coastline, with dependency additions counted from the repository and satisfaction measured by a short anonymous survey. The study uses only repository metadata and anonymous survey answers, with Coastline's approval.
+
+Comparing two periods is the simplest design possible inside one company. Counting additions from repository history gives objective data that cannot be skewed by memory. The survey captures how developers feel, which the counts cannot. Approval from Coastline and the use of metadata only keep the study within what developers agreed to.
 
 ### 42.3 Results
 
 New direct dependencies fell from 34 to 19. Survey satisfaction with the dependency process stayed similar (3.8 to 3.7 on a 5-point scale). Justifications most often cited "needed for a new feature" and "replacing an abandoned package".
 
+The fall from 34 to 19 is a drop of about 44%, while the satisfaction score barely changed. The common justifications show that most additions had a clear purpose, which suggests the step filtered out casual additions rather than blocking needed ones. Only direct dependencies are counted, since transitive ones follow from them.
+
 ### 42.4 Interpretation
 
 The justification step seems to reduce casual additions without much frustration. But other changes happened at the same time, such as the new checklist and fewer new features in the second period.
+
+Kwame states both explanations openly. The justification step could explain the fall, but so could fewer new features, which would reduce the need for dependencies regardless of the process. Without a comparison group, the data cannot separate these causes, so Kwame describes the result as consistent with a benefit rather than proof of one.
 
 ### 42.5 Limitations
 
 One company, two periods, no control group; survey response rate 60%. The findings are suggestive, not conclusive.
 
+Each limit weakens the conclusion in a specific way. A single company may not represent others; two periods may reflect seasonal work patterns; with no control group, other changes cannot be ruled out; and the forty percent who did not answer may feel differently from those who did. Stating these lets readers judge how far to trust the findings and suggests how a better study could be designed, such as the staged rollout Kwame proposes in the worked example.
+
 ### 42.6 Reporting
 
 Kwame writes a short paper for a student conference and a summary for Coastline's engineering blog, using synthetic examples.
+
+Different readers need different forms. The conference paper describes methods and limits in full so other researchers can judge or repeat the work. The blog summary tells engineers what was tried and what seemed to help, in plain language. Both use synthetic examples, so no real code, names or internal details from Coastline appear. Coastline reviews both before publication to check nothing confidential slipped through.
 
 ### Ethics of the study
 
@@ -3225,25 +3261,37 @@ You will (1) work in a professional engineering team on security tasks; (2) appl
 
 Kwame spends twelve weeks at Coastline Transit as a placement engineer in Ingrid's platform team, working on the pipeline and the ticket-web application.
 
+Twelve weeks is long enough to take on real responsibilities and see work through from start to finish. Working in the platform team gives Kwame direct contact with the pipeline controls he studied, while the application work keeps him close to the code riders use. Learning goals are agreed in the first week and written into his placement plan.
+
 ### 43.2 Tasks
 
 He triages dependency advisories, writes authorisation tests, improves gate messages, joins on-call shadowing and helps prepare the annual security review.
+
+The tasks mix routine and project work, which reflects real engineering. Advisory triage teaches him how to read advisories quickly and decide what matters. Writing tests and improving messages produces visible results. On-call shadowing shows how alerts feel at night. Preparing the review shows how evidence is gathered across the whole organisation, and why records kept during the year matter.
 
 ### 43.3 Conduct
 
 He signs confidentiality terms, uses only approved systems and data, and never tests outside authorised scope. When he finds an issue in a vendor's widget, he reports it to Ingrid, who handles it with the vendor under the contract.
 
+Reporting the vendor issue through Ingrid, rather than contacting the vendor directly, respects the contract and the relationship Coastline manages. It also follows the practice from earlier chapters of acting within authority. Confidentiality terms cover rider data, internal systems and unreleased plans, and they continue after the placement ends.
+
 ### 43.4 Public service
 
 As a public transport operator, Coastline's priority is safe, reliable service for riders. Kwame sees how security work is balanced with service continuity, such as timing upgrades away from peak travel.
+
+A private company might accept brief outages for faster changes, but a transit operator's riders depend on the service to reach work, hospitals and schools. Security work is planned around that need. Kwame notices that upgrades are often scheduled for late evenings on quiet days, and that emergency fixes go through extra checks to avoid breaking ticket sales during peak hours.
 
 ### 43.5 Mentoring
 
 Weekly meetings with Ingrid review his work and learning goals.
 
+The meetings follow a simple pattern: what Kwame did, what he learned, what he found hard and what comes next. Ingrid asks him to explain his reasoning on one decision each week, which builds the habit of justifying choices. Learning goals are adjusted as the placement goes on, for example adding on-call shadowing once he was comfortable with triage. Notes from each meeting are kept by Kwame and shared with his course tutor, so the course can see his progress and offer support if needed.
+
 ### 43.6 Reflection
 
 Kwame keeps a journal of decisions and lessons, reviewed by his course tutor.
+
+Writing decisions down while they are fresh records the reasons as they were at the time, before hindsight changes them. The tutor's review asks what he would do differently and which course ideas proved useful or needed changing in practice. Kwame notes, for example, that the threat model he learned was helpful, but that real systems had more undocumented flows than expected. Entries avoid confidential details, so the journal can be shared with the course without breaching his placement terms.
 
 ### Working with operations
 
@@ -3289,25 +3337,37 @@ You will (1) define a capstone project addressing a real supply-chain need; (2) 
 
 Coastline's mobile app builds now run in CI, but the app has no independent check that what riders install matches the signed build. Kwame's capstone: design and build a verification service that checks published app versions against provenance and signatures, and alerts on mismatches.
 
+App stores add a step between Coastline's build and the rider's phone. If a release were altered there, or uploaded by someone who obtained store access, Coastline's own records would not show it. The service fills that gap by checking what the store actually distributes.
+
 ### 44.2 Requirements
 
 Check each new app store release within one hour; compare its digest with the signed build record; verify provenance policy; alert on mismatch; produce a monthly report.
+
+Each requirement is testable. One hour matches how quickly a released app spreads to riders' phones; comparing with the signed record checks integrity; the provenance check confirms the source and builder; alerts reach someone able to act, and the monthly report gives evidence over time. Kwame checks that none of them depends on a manual step, so the service keeps working when he is away.
 
 ### 44.3 Success measures
 
 All releases checked within one hour; zero missed mismatches in a test set of 20 synthetic releases with 5 deliberate mismatches; false alerts under one per month.
 
+The test set checks detection directly: five mismatches hidden among twenty releases, all of which must be found. The false alert limit protects the people who receive alerts, since a noisy verifier would be ignored. Measures are set before building, so they cannot be adjusted afterwards to fit the results. Ingrid agrees them in writing.
+
 ### 44.4 Plan
 
 Twelve weeks: design (2), build (5), test (3), report (2). Weekly reviews with Ingrid and a tutor.
+
+Building takes the largest share because it includes the store integration and the alerting. Three weeks of testing allows time for the test set and fixing what it reveals. Two weeks of reporting is planned rather than squeezed into the end. Weekly reviews catch delays early, while there is still time to adjust scope. Each phase ends with a short demonstration, so progress is shown rather than reported, and the plan states which features would be cut first if the schedule slipped.
 
 ### 44.5 Risks
 
 App store APIs may change; mitigation: abstract the fetch step. Access to signing records needs approval; mitigation: request early.
 
+Each risk has a mitigation the team can act on now. Wrapping store access in one module means an API change affects only that module. Requesting access to signing records early allows time for the approval process. Kwame reviews the risk list weekly and adds new ones, such as a reviewer's leave clashing with the testing phase, and records when each risk closes.
+
 ### 44.6 Agreement
 
 Ingrid and the course tutor sign the project plan.
+
+The signed plan records the scope, requirements, success measures and timeline that all parties accepted. It protects Kwame from requests that would expand the project beyond twelve weeks, and it gives Ingrid confidence that the result will be usable by the platform team. Changes later need agreement from both signers, with the reason recorded. The tutor's signature confirms the project meets the course's academic standards as well as Coastline's needs, so the work can be assessed fairly at the end.
 
 ### Scope control
 
@@ -3353,25 +3413,37 @@ You will (1) prepare a design for independent review; (2) receive and respond to
 
 Kwame prepares a design document: purpose, requirements, architecture, data flows, threat model (STRIDE), controls and test plan.
 
+A complete document lets reviewers judge the design without needing Kwame present. The threat model shows which risks he considered, so reviewers can focus on what he missed. The test plan shows how each requirement will be checked. He sends the document a week before the meeting, giving reviewers time to read it carefully. A short cover note lists the parts he is least sure of.
+
 ### 45.2 Reviewers
 
 A Coastline security engineer, an external engineer from another transit agency and a course tutor review it.
+
+Each reviewer brings a different view. The Coastline engineer knows the systems and constraints; the external engineer brings experience from another organisation and no attachment to Coastline's choices; the tutor checks the engineering method and the academic standard. Together they cover technical detail, outside perspective and rigour. Reviewers receive the design document a week ahead with a short list of questions Kwame is unsure about.
 
 ### 45.3 Findings
 
 Major: the verification service itself holds credentials to the app store API; if compromised, it could hide mismatches. Minor: logging retention unspecified; alert channel single point of failure.
 
+The major finding matters because a verifier that attackers can silence is worse than none: it gives false assurance. Minor findings would not break the design but leave gaps. Without a retention period, logs might be deleted before an investigation needs them or kept longer than necessary. With a single alert channel, one outage could hide every mismatch. Sorting findings by severity tells Kwame what must be resolved before building starts and what can be fixed alongside it.
+
 ### 45.4 Responses
 
 For the major issue, credentials are read-only and alerts are also sent to a separate system the service cannot modify. Minor issues are fixed with specific values and a second alert channel.
+
+Read-only credentials mean that even a compromised verifier cannot change app store releases. Sending alerts to a separate system means a compromised verifier could fail to raise an alert but could not delete one already sent, and a missing daily heartbeat from the verifier itself raises an alarm.
 
 ### 45.5 Traceability
 
 Every review comment links to the design change it caused, or a reason for no change.
 
+The link lets reviewers check that their comments were handled and see the reasoning when a suggestion was declined. A comment with no response is treated as unresolved. The table also helps future maintainers understand why the design looks as it does, so they do not undo a change made for a good reason. Kwame keeps it in the repository alongside the design document, versioned with each revision, so the history of decisions travels with the code and survives after he leaves.
+
 ### 45.6 Value
 
 Independent reviewers see assumptions the author cannot.
+
+Authors know what they meant, so they read their documents as they intended them, not as written. Kwame had not seen that the verifier's own credentials were a target, because he thought of it as a defender. A reviewer with no part in the design asked what an attacker would do with the verifier, and the major finding followed. The cost was two hours of meeting time and a week of revisions, far less than fixing the flaw after the service was running. Kwame now builds review time into every project plan.
 
 ### Review meeting
 
