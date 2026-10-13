@@ -3302,25 +3302,37 @@ You will (1) run a small applied study on the platform; (2) frame a question; (3
 
 Elena asks: "Since admission enforcement began, has the time from a risky workload configuration being proposed to being fixed fallen?" Before enforcement, risky settings were found by weekly scans after deployment.
 
+The question is narrow enough to answer with data Solent already holds, and it matters to developers as well as to security: a risky setting fixed within hours costs less than one found in production a week later. Elena writes the question, the measure and the comparison periods down before she looks at any numbers. Fixing them first stops her from choosing whichever measure happens to show the largest improvement once the results are in.
+
 ### 42.2 Data
 
 Pipeline and admission logs give the time a risky configuration first appeared in a pull request or admission request, and when a compliant version replaced it. Six months before and after are compared.
+
+For the period before enforcement, the start time comes from the pull request that introduced the setting and the end from the change that fixed it, found through the weekly scan records. Afterwards, the start is the rejected admission request and the end is the first accepted version of the same workload. Linking the two events needs a stable workload name, so records where a service was renamed between them are set aside and counted in the report.
 
 ### 42.3 Analysis
 
 Median time to fix falls from 9 days (found after deployment) to 4 hours (rejected at admission, fixed before deployment). Most fixes now happen before anything runs.
 
+Medians are used because a few very slow fixes would distort an average. Elena also reports the spread, since some fixes after enforcement still took days, mostly for workloads that needed an exception rather than a manifest change. Comparing nine days with four hours overstates the control's own effect, because part of the old figure was simply waiting for the weekly scan. She notes this in the results rather than leaving it for the limits.
+
 ### 42.4 Limits
 
 The before period relied on weekly scans, so measured times include detection delay; teams also improved through training; one organisation.
+
+Each limit points in a known direction. Detection delay and training both make the improvement look larger than enforcement alone would produce. A single organisation means the result may not hold where teams deploy less often or use other tools. Elena does not try to remove these effects with statistics the data cannot support; she names them, estimates the scan delay at up to a week, and states that the finding is a strong local improvement, not a general law.
 
 ### 42.5 Ethics
 
 Data are aggregated by namespace; no individual developer is identified.
 
+Individual-level data could be used to judge or rank developers, which was never the study's purpose and would make teams wary of the admission controls themselves. Aggregating by namespace answers the question without that risk. Elena also confirms with Rosa that using pipeline logs for an internal study fits the purpose they are kept for, and the study's script reads only the fields it needs: timestamps, namespace, workload name and the policy that was triggered.
+
 ### 42.6 Reporting
 
 A four-page report with method, results, limits and recommendations is shared internally and summarised for the regulator.
+
+The internal report keeps the method detailed enough to be repeated next year with the same script. The regulator's summary is one page: what was measured, the main result, the limits and what Solent is changing because of it, which is the secure service template. Both versions state the limits in the same words, so the shorter one does not sound more certain than the evidence. Elena files the data and script with the report.
 
 ### Data quality
 
@@ -3362,25 +3374,37 @@ You will (1) work within a real-style operations team; (2) apply course methods 
 
 Elena spends eight weeks embedded in Solent's platform team, joining on-call shadowing, change reviews and planning.
 
+The placement uses the same platform the course has studied, but now from inside the team that runs it, with its deadlines, handovers and priorities competing for attention. Elena has a supervisor, Rosa, and a written agreement stating what she may do: read access to repositories and dashboards, permission to comment on reviews and draft documents, and no production changes of her own. Clear limits let her contribute safely from the first week.
+
 ### 43.2 Change reviews
 
 She reviews 40 infrastructure pull requests, commenting on security-relevant settings. Twelve comments lead to changes; she learns to phrase comments as questions with references.
+
+A comment such as 'why does this job need write access to every bucket? The least-privilege requirement suggests listing the two it uses' invites the author to explain or fix, whereas 'this is insecure' tends to start an argument. Twelve accepted changes out of forty reviews is a reasonable rate: many pull requests had no security issue, and some comments were answered with a good reason that Elena had not known, which she records as learning rather than defeat.
 
 ### 43.3 Shadowing on-call
 
 Elena observes alert handling and drafts runbook improvements, approved by the team.
 
+Watching real alerts shows where the runbooks assume knowledge the reader may not have, such as which dashboard holds the admission logs or how to find a pod's owner. Elena notes each pause by the on-call engineer and drafts a change for it. The team reviews her drafts like any other change, and approval comes from the engineers who will use them at night, which is the test that matters for a runbook.
+
 ### 43.4 Working with developers
 
 A developer team asks for help moving a service to Restricted pod security. Elena pairs with them; the service is compliant in two days.
+
+Most of the work turns out to be small: setting the container to run as a non-root user, removing a capability the service never used, and moving a writable directory to a mounted volume. Pairing means the developers make the changes themselves while Elena explains each rejection message, so the next service they move will need less help. Two days compares well with the weeks such moves took when teams worked alone from documentation.
 
 ### 43.5 Professional lessons
 
 Security engineers succeed by making the secure path easy: templates, clear messages, help when stuck.
 
+The placement shows this repeatedly. Developers follow controls more readily when the template already does the right thing, when a rejection message says how to fix the manifest, and when someone can pair with them on a hard case. Blocking without help produces exceptions and workarounds. Elena also learns that her review comments carry more weight when she has helped the same team before, because trust earned through useful help makes later disagreement easier.
+
 ### 43.6 Supervision
 
 Rosa reviews Elena's work weekly; all production changes are made by team members.
+
+Weekly reviews let Rosa catch misunderstandings early and decide what Elena can take on next. The rule that only team members change production protects the platform and Elena alike: a student making a mistake in production would harm users and her own placement. Her contributions reach production through reviewed pull requests merged by the team. Rosa signs off each week's log, which becomes part of the placement evidence later in the course.
 
 ### Reflection log
 
@@ -3426,29 +3450,43 @@ You will (1) define the capstone project scope; (2) plan design, implementation 
 
 Elena's capstone is an automated "secure namespace" service: a request creates a namespace with default-deny network policies, Restricted pod security, workload identity binding, resource quotas and monitoring, all from reviewed templates.
 
+The project brings together controls built separately earlier in the course and makes them the default for every new service. A developer submits a short request naming the team, the service and the size needed; the service then creates the namespace and applies each template in a fixed order, so no namespace exists for long without its policies. The result is checked automatically before the requesting team is told it is ready.
+
 ### 44.2 Why
 
 The applied study showed new services generate most rejections. A secure-by-default namespace removes that friction and closes gaps like the opening case's missing policies.
+
+The worked example of the research study found that four in ten rejections came in a service's first week, and a template already halved them. A full namespace service extends that idea from the workload's manifest to everything around it. It also tackles the opening case directly, where a namespace existed without network policies: if every namespace is created with default-deny in place, that gap cannot appear through forgetfulness.
 
 ### 44.3 Scope
 
 Templates, a small request workflow, verification tests and documentation. Out of scope: changes to existing namespaces.
 
+Keeping existing namespaces out of scope is a deliberate trade. Converting them would mean negotiating with every team and handling many special cases, which could not fit into eight weeks and would put the core service at risk. Existing namespaces are already covered by admission controls and drift detection, so leaving them alone does not open a gap. The out-of-scope list is written into the plan, so later requests can be pointed to it.
+
 ### 44.4 Success criteria
 
 New namespaces pass all chapter 30 verification tests at creation; creation takes under 10 minutes; developers rate the process at least 4 of 5.
+
+Each criterion maps to a way of checking it. The verification tests run automatically after creation and either pass or fail. Creation time is read from the workflow's own logs for every request during the trial. The developer rating comes from a short question sent after each namespace is delivered. Agreeing the thresholds with Rosa and Dr Wagner before building stops them from being lowered later to match whatever the service achieves.
 
 ### 44.5 Risks
 
 Templates could become too rigid; the workflow could become a bottleneck; template errors would spread to every new namespace.
 
+Rigid templates would push teams to request exceptions or work around the service, recreating the problem it was built to solve. A slow workflow would make teams wait and resent the platform. The third risk is the most serious, because a mistake in one template is copied into every namespace created afterwards, turning a single error into a widespread weakness. Elena rates each risk by likelihood and impact and names an owner for watching it.
+
 ### 44.6 Mitigations
 
 Template tests in the pipeline; staged release; a documented way to request variations.
 
+Each mitigation targets one risk. Template tests and the canary namespace catch errors before they spread. A staged release starts with a few willing teams, so a slow or awkward workflow is noticed while few people depend on it. A documented variation request, reviewed by the platform team, gives teams with genuine special needs a legitimate route, which removes the temptation to bypass the service and keeps the variations visible.
+
 ### 44.7 Plan
 
 Eight weeks: design (2), implementation (3), verification (2), documentation and handover (1).
+
+Design comes first so the reviewers in the independent design review have something concrete to examine before code is written. Implementation takes the largest share because the workflow, templates and tests all need building. The two verification weeks run the full suite against new namespaces and include time to fix and retest. The final week is for documentation and the handover to the platform engineer who will own the service. Rosa reviews progress against the plan weekly.
 
 ### Stakeholder check
 
@@ -3456,7 +3494,7 @@ Before starting, Elena shows the plan to three developer teams who will use the 
 
 ### Timeline buffer
 
-The plan keeps one week of buffer inside the eight weeks for problems found in verification.
+The second verification week doubles as the buffer: it is planned for retesting fixes, so problems found in the first week do not push the handover back.
 
 ### Worked example
 
@@ -3494,25 +3532,37 @@ You will (1) submit the capstone design for independent review; (2) respond to f
 
 A platform engineer from another team and a security architect from a partner university review the design package.
 
+One reviewer knows how Solent's platform is run day to day; the other brings a wider view of security architecture from outside the company. Neither worked on the project, so they do not share Elena's assumptions. Both receive the same package: requirements, threat analysis, design, templates and test plan. They review independently before meeting, so one reviewer's opinion does not shape the other's first reading.
+
 ### 45.2 Findings
 
 The reviewers raise four points: quotas may be too small for data jobs; the workflow's own permissions are broad (it can create any namespace); monitoring setup assumes one log destination; templates lack versioning for rollback.
+
+The quota point comes from experience with data jobs, which use far more memory than the web services Elena had in mind. The permission point is a security flaw in the service itself: a tool that creates secure namespaces must not be able to weaken the existing ones. The logging point would tie the design to one setup, and the missing versioning would make a bad template hard to roll back.
 
 ### 45.3 Responses
 
 Quotas become size options; the workflow's identity is limited to creating namespaces with an approved label prefix and applying templates; log destination is a parameter; templates are versioned and namespaces record which version created them.
 
+Each response states what changed and how it will be verified. The narrowed identity is tested by asking the workflow to change a namespace without the prefix and expecting a refusal. Size options are checked against the memory needs of two real data jobs. Recording the template version in each namespace means that, if a template is found faulty, a simple query lists every namespace created from it, so all of them can be fixed.
+
 ### 45.4 Disagreement
 
 One reviewer suggests separate clusters per team. Elena explains the chapter 26 decision and criteria; the reviewer accepts, noting it as a future option.
+
+The earlier decision compared a single shared cluster, clusters per sensitivity tier and a cluster per service on blast radius, cost, upgrade effort and regulator expectations, and chose a high-sensitivity and a standard cluster with dedicated node pools, because a dozen clusters would be more than four engineers could keep upgraded. Elena shows the criteria and the evidence rather than simply restating the conclusion. The reviewer's concern is reasonable for teams with very different risk levels, so it is recorded as a condition under which the decision should be revisited.
 
 ### 45.5 Record
 
 A review log captures each finding, response and change.
 
+Each entry holds the finding as the reviewer wrote it, its severity, Elena's response, the change made and the test or document that shows the change works. Disagreements are recorded with both sides' reasoning, not only the outcome. The log goes into the evidence dossier, where an assessor can trace any design choice back to the review that shaped it, and the reviewers confirm the final version. A finding without a recorded test stays open in the log.
+
 ### 45.6 Learning
 
 Independent review catches issues the designer cannot see.
+
+A designer reads the design knowing what she intended, so gaps between intention and what is written are hard to see. The workflow's broad permissions are an example: Elena knew it would only create namespaces for valid requests, but nothing in the design enforced that. Reviewers read only what is there. Elena adds a line to her design checklist asking what each component's own identity could do if the component misbehaved. The question is now asked of every new design.
 
 ### Second round
 
