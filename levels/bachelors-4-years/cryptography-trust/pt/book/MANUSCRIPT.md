@@ -101,6 +101,10 @@ O sigilo perfeito só vale para chaves verdadeiramente aleatórias, nunca reutil
 
 - **EX003 — Resultado da reutilização do pad.** O que o laboratório recuperou, e por quê? *Rubrica:* 3 = FINE PAID 0938, porque c1 XOR c2 = p1 XOR p2 e p1 era conhecida;; 2 = a mensagem;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A criptografia começa com definições e provas precisas; o one-time pad mostra como um esquema perfeito desmorona quando uma condição é violada.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
@@ -138,6 +142,10 @@ A cifração em repouso não protege os dados em uso por uma aplicação comprom
 - **EX005 — Dados em uso.** O que protege principalmente os dados em uso? *Rubrica:* 3 = controle de acesso e isolamento do sistema operacional, já que os dados estão decifrados na memória;; 2 = controle de acesso;; 1 = cifração;; 0 = nenhuma.
 
 - **EX006 — Lacuna dos backups.** Que lacuna Priya encontrou, e o que ela recomendou? *Rubrica:* 3 = fitas de backup não cifradas; cifrar com chaves do consórcio e fazer backup das chaves;; 2 = lacuna;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A criptografia protege camadas e estados de dados específicos; mapeá-los revela lacunas, como backups não cifrados.
 
 <a id="ch-03"></a>
 
@@ -177,6 +185,10 @@ Hashes não escondem dados e não autenticam por si sós. Erros de codificação
 
 - **EX009 — Limite da ferramenta de integridade.** Que limite o verificador de integridade tem? *Rubrica:* 3 = um atacante que modifica os arquivos e a lista de digests esconde as mudanças; a lista precisa ser protegida ou assinada;; 2 = proteger a lista;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O manuseio cuidadoso de bytes, o hash verificado e a consciência do que um resumo prova são as primeiras competências criptográficas de quem programa.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
@@ -214,6 +226,10 @@ Citações de fontes secundárias podem carregar erros; confira o documento prim
 - **EX011 — Fontes primárias.** Que fontes primárias Priya citou para o SHA-256 e o Argon2? *Rubrica:* 3 = FIPS 180-4 e RFC 9106;; 2 = uma;; 1 = blog;; 0 = nenhuma.
 
 - **EX012 — Reescrita precisa.** Reescreva com precisão "o Argon2 torna as senhas inquebráveis". *Rubrica:* 3 = o Argon2id torna cada palpite custoso em tempo e memória, desacelerando a adivinhação offline; senhas fracas continuam em risco;; 2 = parcial;; 1 = inalterada;; 0 = nenhuma.
+
+### Síntese
+
+Uma boa escrita sobre segurança define os termos, cita fontes primárias e enuncia as afirmações com seus limites.
 
 <a id="ch-05"></a>
 
@@ -253,6 +269,10 @@ Tabelas simplificadas omitem nuances, como a cifração autenticada, que combina
 
 - **EX015 — Equívoco do cadeado.** Corrija "o cadeado significa que nossos dados estão seguros em toda parte". *Rubrica:* 3 = o TLS protege apenas a conexão, não os dados armazenados nos servidores;; 2 = parcial;; 1 = concorda;; 0 = nenhuma.
 
+### Síntese
+
+Saber o que cada ferramenta criptográfica alcança, e o que não alcança, é a base da alfabetização em segurança.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
@@ -290,6 +310,10 @@ O Diffie-Hellman não autenticado está aberto a ataques de intermediário (man-
 - **EX017 — Segredo compartilhado de brinquedo.** Que segredo compartilhado a troca de brinquedo produziu, e a partir de quais valores públicos? *Rubrica:* 3 = 2, a partir dos valores públicos 8 e 19;; 2 = só o segredo;; 1 = errado;; 0 = nenhuma.
 
 - **EX018 — Ameaça quântica.** Por que o algoritmo de Shor importa aqui? *Rubrica:* 3 = resolveria logaritmos discretos num computador quântico grande, motivando o FIPS 203;; 2 = quântico;; 1 = nenhum motivo;; 0 = nenhuma.
+
+### Síntese
+
+Os grupos e o problema do logaritmo discreto explicam o acordo de chaves; os sistemas reais usam curvas padronizadas dentro de protocolos autenticados.
 
 <a id="ch-07"></a>
 
@@ -329,6 +353,10 @@ Varrer sistemas sem permissão é antiético e pode ser ilegal. Um certificado v
 
 - **EX021 — Achado da varredura.** O que a varredura autorizada de Priya encontrou? *Rubrica:* 3 = a wiki da equipe aceitando TLS 1.0;; 2 = TLS antigo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O TLS 1.3 protege as conexões quando os certificados são validados e as configurações se mantêm atualizadas; a maioria das falhas hoje é operacional.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
@@ -366,6 +394,10 @@ As APIs de alto nível ainda precisam de um gerenciamento de chaves correto. Os 
 - **EX023 — Exceção genérica.** Por que unprotect lança uma única exceção genérica? *Rubrica:* 3 = para que quem chama ou atacantes não saibam por que um token falhou;; 2 = esconder o motivo;; 1 = mais simples;; 0 = nenhuma.
 
 - **EX024 — Teste de nonce novo.** O que proteger os mesmos dados duas vezes testa? *Rubrica:* 3 = os tokens diferem, confirmando nonces novos;; 2 = nonces;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um código criptográfico seguro se apoia em APIs de alto nível, num módulo pequeno e isolado e em testes negativos que comprovam a rejeição.
 
 <a id="ch-09"></a>
 
@@ -434,6 +466,10 @@ O hash lento não salva senhas muito fracas. Chaves de cifração guardadas ao l
 
 - **EX027 — Proteção mais forte.** O que Priya diz ser, muitas vezes, a proteção mais forte? *Rubrica:* 3 = apagar os dados que não são necessários;; 2 = apagar;; 1 = cifração;; 0 = nenhuma.
 
+### Síntese
+
+O hash de senhas lento e com salt, a cifração de campos e a minimização de dados protegem os dados dos leitores nos bancos de dados.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
@@ -472,6 +508,10 @@ A disponibilidade pública de dados vazados não torna ético o seu uso. Divulga
 
 - **EX030 — Passos da divulgação.** Como Priya tratou a falha de login por HTTP? *Rubrica:* 3 = parou de testar, relatou ao contato de segurança do fornecedor com prazo de noventa dias, informou o professor;; 2 = relatou;; 1 = explorou;; 0 = nenhuma.
 
+### Síntese
+
+Um escopo autorizado, o manuseio cuidadoso de segredos e a divulgação coordenada tornam éticos os testes criptográficos.
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
@@ -509,6 +549,10 @@ Chaves não exportáveis ainda podem ser usadas indevidamente enquanto o malware
 - **EX032 — Senhas temporárias.** Por que substituir random.choice por secrets.choice? *Rubrica:* 3 = o random é previsível; o secrets usa o gerador seguro do sistema operacional;; 2 = previsível;; 1 = velocidade;; 0 = nenhuma.
 
 - **EX033 — Suspensão versus hibernação.** Por que preferir a hibernação à suspensão em notebooks cifrados? *Rubrica:* 3 = a memória, incluindo as chaves do disco, continua energizada durante a suspensão;; 2 = chaves na memória;; 1 = bateria;; 0 = nenhuma.
+
+### Síntese
+
+Os sistemas operacionais protegem as chaves com repositórios não exportáveis, aleatoriedade segura e cifração de disco completo, quando configurados com cuidado.
 
 <a id="ch-12"></a>
 
@@ -575,6 +619,10 @@ Os cálculos em bits só se aplicam a escolhas uniformemente aleatórias. A limi
 
 - **EX036 — Frases humanas.** Por que uma frase escolhida por uma pessoa tem menos bits efetivos? *Rubrica:* 3 = os atacantes tentam primeiro as frases comuns; as escolhas não são uniformes;; 2 = previsível;; 1 = igual;; 0 = nenhuma.
 
+### Síntese
+
+Medir o espaço de adivinhação em bits mostra por que frases-senha aleatórias superam senhas curtas e complexas, desde que as escolhas sejam realmente aleatórias.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
@@ -613,6 +661,10 @@ Uma autenticação forte não corrige permissões excessivas. Os processos de re
 
 - **EX039 — Acessibilidade para os leitores.** Por que não exigir chaves de hardware dos leitores? *Rubrica:* 3 = excluiria muitos usuários;; 2 = exclusão;; 1 = só o custo;; 0 = nenhuma.
 
+### Síntese
+
+A criptografia fortalece a autenticação, dos códigos baseados em HMAC às chaves de segurança vinculadas à origem, mas o projeto de acesso precisa equilibrar segurança e inclusão.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
@@ -650,6 +702,10 @@ Dados pseudonimizados muitas vezes podem ser reidentificados. A cifração não 
 - **EX041 — Hash sem chave.** Por que o hash sem chave dos números dos cartões falha? *Rubrica:* 3 = o formato conhecido permite calcular o hash de todos e comparar;; 2 = adivinhável;; 1 = funciona;; 0 = nenhuma.
 
 - **EX042 — Exclusão por padrão.** Que padrão Priya recomenda para os históricos de empréstimos? *Rubrica:* 3 = apagar depois da devolução, a menos que os leitores optem por mantê-los;; 2 = apagar;; 1 = manter;; 0 = nenhuma.
+
+### Síntese
+
+A privacidade depende da minimização e dos limites de finalidade; a criptografia, como pseudônimos com chave e cifração, apoia esses princípios, mas não pode substituí-los.
 
 <a id="ch-15"></a>
 
@@ -721,6 +777,10 @@ As cadeias de hashes só detectam adulterações se a cabeça for protegida sepa
 
 - **EX045 — Proteger a cabeça.** Onde a cabeça precisa ser guardada, e por quê? *Rubrica:* 3 = num lugar que o insider não possa alterar, por exemplo o sistema de um auditor separado ou assinada por outra equipe;; 2 = separada;; 1 = no mesmo servidor;; 0 = nenhuma.
 
+### Síntese
+
+Logs à prova de adulteração e medidas relatadas com honestidade transformam afirmações de segurança em evidências que outros podem conferir.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
@@ -758,6 +818,10 @@ Camadas que compartilham uma fraqueza, como uma única conta de administrador qu
 - **EX047 — Bug no portal.** O que um atacante ainda enfrentaria depois de explorar um bug no portal? *Rubrica:* 3 = as permissões do banco de dados e a cifração dos campos;; 2 = uma camada;; 1 = nada;; 0 = nenhuma.
 
 - **EX048 — Chaves ausentes.** O que os documentos de arquitetura anteriores omitiam, e por que isso importava? *Rubrica:* 3 = a localização das chaves; não era possível avaliar a rotação nem o acesso à decifração;; 2 = chaves;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+As arquiteturas devem mostrar as fronteiras de confiança, os controles em camadas e cada chave, para que a criptografia seja posicionada onde mais protege.
 
 <a id="ch-17"></a>
 
@@ -829,6 +893,10 @@ A indistinguibilidade não esconde o tamanho da mensagem. As cifras clássicas s
 
 - **EX051 — Falha determinística.** Por que a cifração determinística falha na indistinguibilidade? *Rubrica:* 3 = mensagens repetidas são cifradas de forma idêntica, revelando a repetição;; 2 = padrões;; 1 = passa;; 0 = nenhuma.
 
+### Síntese
+
+Algoritmos públicos, definições precisas e cifração aleatorizada substituíram as cifras clássicas, cujos padrões as denunciavam.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
@@ -866,6 +934,10 @@ As simulações podem não refletir o comportamento real sob pressão. Estudos c
 - **EX053 — Tabela de fontes.** O que Priya registra para cada estudo? *Rubrica:* 3 = população, método, achados (e laboratório versus navegação real);; 2 = dois;; 1 = só a citação;; 0 = nenhuma.
 
 - **EX054 — Pedido do comitê.** O que o comitê de ética pediu que Priya acrescentasse? *Rubrica:* 3 = garantir que os gerentes nunca vejam resultados individuais;; 2 = anonimato;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Perguntas pesquisáveis, fontes sistemáticas e um desenho ético transformam a curiosidade sobre a prática criptográfica num estudo crível.
 
 <a id="ch-19"></a>
 
@@ -905,6 +977,10 @@ Confiar em muitas raízes amplia o risco. As assinaturas provam a aprovação de
 
 - **EX057 — Mal-entendido do contrato.** O que a equipe entendeu mal sobre o PDF assinado? *Rubrica:* 3 = supôs que a assinatura cobria os termos de um anexo não assinado;; 2 = cobertura;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os serviços de confiança fazem asserções específicas; entender exatamente o que cada um assere evita uma confiança mal depositada.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Criptografia e serviços de confiança: casos fundamentais
@@ -942,6 +1018,10 @@ Culpar indivíduos esconde as causas de processo. Falhas criptográficas raras a
 - **EX059 — Lição do monitoramento de CT.** O que o monitoramento dos logs do Certificate Transparency revela? *Rubrica:* 3 = certificados emitidos para nomes da Tidewell, expondo emissões indevidas;; 2 = emissão indevida;; 1 = expiração;; 0 = nenhuma.
 
 - **EX060 — Causas da indisponibilidade.** Cite as três causas da indisponibilidade do catálogo. *Rubrica:* 3 = renovação manual por pessoa que saiu, nenhum alerta, local da chave desconhecido;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+### Síntese
+
+A maioria das falhas de confiança é procedimental; analisá-las sem culpa produz lições práticas para qualquer organização.
 
 <a id="ch-21"></a>
 
@@ -981,6 +1061,10 @@ Os modelos simplificam; confira-os contra as configurações reais. Os pontos ú
 
 - **EX063 — Separação da administração.** Que separação Priya recomendou para a administração? *Rubrica:* 3 = separar a administração do serviço de chaves da administração dos logs de auditoria;; 2 = separação;; 1 = unificar;; 0 = nenhuma.
 
+### Síntese
+
+Modelar quem assere o quê, e quem se apoia nisso, expõe pontos únicos de confiança antes que os atacantes os encontrem.
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Criptografia e serviços de confiança: dados e dependências
@@ -1018,6 +1102,10 @@ Os inventários se degradam sem varreduras regulares de descoberta. As respostas
 - **EX065 — Ferramenta com SHA-1.** O que Priya decidiu sobre a ferramenta de relatórios com SHA-1, e que orientação sustenta isso? *Rubrica:* 3 = agendar a substituição; orientação de transição do SP 800-131A;; 2 = substituir;; 1 = manter;; 0 = nenhuma.
 
 - **EX066 — Risco do fornecedor.** Como ela tratou um fornecedor incapaz de responder sobre os planos pós-quânticos? *Rubrica:* 3 = registrou como risco, e não como falha, dado o estágio inicial da migração;; 2 = risco;; 1 = descartou o fornecedor;; 0 = nenhuma.
+
+### Síntese
+
+Um inventário criptográfico de chaves, certificados, bibliotecas e fornecedores é a base de toda mudança segura.
 
 <a id="ch-23"></a>
 
@@ -1057,6 +1145,10 @@ A reutilização de nonces quebra o GCM gravemente. Os dados associados precisam
 
 - **EX069 — Origem dos parâmetros.** Por que Priya diz que verificar os parâmetros é o ponto? *Rubrica:* 3 = os engenheiros devem verificar, não inventar, os parâmetros; as receitas escolhem a maioria;; 2 = verificar;; 1 = inventar;; 0 = nenhuma.
 
+### Síntese
+
+A cifração autenticada com nonces únicos e dados associados vinculados protege os registros quando os parâmetros seguem as normas.
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Criptografia e serviços de confiança: controles
@@ -1094,6 +1186,10 @@ Controles sem evidências falham nas auditorias. O controle duplo se desgasta se
 - **EX071 — Exemplo de controle duplo.** Dê um controle duplo que Priya aplicou. *Rubrica:* 3 = restaurar as chaves de backup exige dois administradores;; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
 
 - **EX072 — Lacuna da auditoria.** Que lacuna a auditoria encontrou, e como foi corrigida? *Rubrica:* 3 = evidências no e-mail pessoal; transferidas para armazenamento compartilhado com controle de acesso;; 2 = lacuna;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Controles de gerenciamento de chaves priorizados, com segregação, controle duplo e evidências documentadas, tornam os serviços de confiança auditáveis.
 
 <a id="ch-25"></a>
 
@@ -1133,6 +1229,10 @@ Códigos de exemplo muitas vezes contêm chaves ou nonces fixos para demonstraç
 
 - **EX075 — Limitações do relatório.** Cite uma limitação do relatório. *Rubrica:* 3 = transferência manual da chave ou falta de revisão de canais laterais;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O trabalho de laboratório comprova as escolhas de projeto com testes, e relatórios honestos registram tanto os bugs quanto os limites.
+
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Criptografia e serviços de confiança: métodos II
@@ -1170,6 +1270,10 @@ As assinaturas são inúteis se as chaves privadas vazarem ou se as chaves públ
 - **EX077 — Assinatura de scripts.** O que os servidores das unidades fazem com os scripts, e onde fica a chave de assinatura? *Rubrica:* 3 = recusam scripts não assinados; a chave fica no serviço de chaves, com solicitações aprovadas;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
 - **EX078 — Vantagem do Ed25519.** Que modo de falha o Ed25519 evita? *Rubrica:* 3 = o segredo por assinatura é derivado de forma determinística, evitando nonces reutilizados/vazados que expõem chaves;; 2 = nonce;; 1 = nenhum;; 0 = nenhuma.
+
+### Síntese
+
+As assinaturas digitais provam publicamente a origem e a integridade; o projeto determinístico do Ed25519 evita uma falha clássica do ECDSA.
 
 <a id="ch-27"></a>
 
@@ -1209,6 +1313,10 @@ Os scanners deixam passar falhas de validação no nível da aplicação; teste-
 
 - **EX081 — Conteúdo do relatório.** O que cada achado do relatório inclui? *Rubrica:* 3 = severidade, evidências, sistema afetado, correção recomendada;; 2 = três;; 1 = um;; 0 = nenhuma.
 
+### Síntese
+
+A verificação após as mudanças, os testes diretos de validação e os relatórios baseados em evidências mantêm honestas as configurações criptográficas.
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Criptografia e serviços de confiança: análise de falhas
@@ -1246,6 +1354,10 @@ A verificação de revogação é desigual entre os clientes, então as validade
 - **EX083 — Fatores contribuintes.** Cite dois fatores contribuintes. *Rubrica:* 3 = dois entre regras pouco claras para prestadores, nenhum alerta do inventário, validades longas, nenhuma varredura de segredos;; 2 = um;; 1 = culpar o prestador;; 0 = nenhuma.
 
 - **EX084 — Ação preventiva.** Dê duas ações preventivas. *Rubrica:* 3 = duas entre varredura de segredos, orientações para prestadores, validades curtas com automação, chaves geradas no servidor;; 2 = uma;; 1 = revogar;; 0 = nenhuma.
+
+### Síntese
+
+A análise de falhas do comprometimento de chaves se concentra nas causas de processo e combina ações corretivas com ações preventivas.
 
 <a id="ch-29"></a>
 
@@ -1314,6 +1426,10 @@ A automação falha silenciosamente sem alertas. A rotação precisa manter leg�
 
 - **EX087 — Teste da rotação.** Por que testar a restauração de um backup antigo depois da rotação? *Rubrica:* 3 = a rotação não pode deixar os backups antigos ilegíveis;; 2 = legibilidade;; 1 = desnecessário;; 0 = nenhuma.
 
+### Síntese
+
+A renovação automatizada com alertas e a rotação testada tornam as operações criptográficas rotineiras, em vez de emergências.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório II
@@ -1351,6 +1467,10 @@ As chaves públicas precisam ser autenticadas, por exemplo comparando as impress
 - **EX089 — Divergência da assinatura.** O que causou as falhas falsas de verificação? *Rubrica:* 3 = emissor e receptor discordavam sobre a definição do conteúdo assinado;; 2 = divergência;; 1 = chave errada;; 0 = nenhuma.
 
 - **EX090 — Troca de impressões digitais.** Como a equipe passou a confiar na chave pública da parceira? *Rubrica:* 3 = trocando as impressões digitais das chaves numa reunião;; 2 = impressões digitais;; 1 = confiou no e-mail;; 0 = nenhuma.
+
+### Síntese
+
+A cifração e as assinaturas de chave pública eliminam a transferência de segredos compartilhados, desde que as chaves sejam autenticadas e os dois lados concordem sobre o que é assinado.
 
 <a id="ch-31"></a>
 
@@ -1390,6 +1510,10 @@ Os prazos da migração pós-quântica são incertos; evite tanto o pânico quan
 
 - **EX093 — Conselho de prioridade.** O que Priya aconselhou antes de adotar as opções avançadas? *Rubrica:* 3 = terminar primeiro os controles básicos (inventário, renovação, cifração dos backups);; 2 = o básico;; 1 = apressar;; 0 = nenhuma.
 
+### Síntese
+
+A criptografia avançada deve vir depois de fundamentos sólidos e chegar por meio de fornecedores avaliados, adequados à capacidade da organização.
+
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Criptografia e serviços de confiança: interfaces interdisciplinares
@@ -1427,6 +1551,10 @@ Os requisitos jurídicos diferem conforme a jurisdição; consulte assessores qu
 - **EX095 — Propósito do carimbo de tempo.** Por que acrescentar carimbos de tempo confiáveis aos contratos assinados? *Rubrica:* 3 = para que as assinaturas possam ser validadas depois que o certificado de assinatura expirar;; 2 = longo prazo;; 1 = nenhum;; 0 = nenhuma.
 
 - **EX096 — Ligação com a usabilidade.** Por que a usabilidade faz parte da segurança? *Rubrica:* 3 = uma segurança confusa leva a soluções de contorno inseguras;; 2 = soluções de contorno;; 1 = não tem relação;; 0 = nenhuma.
+
+### Síntese
+
+A criptografia encontra o direito, as políticas e as pessoas; uma linguagem precisa e projetos usáveis a tornam eficaz entre as disciplinas.
 
 <a id="ch-33"></a>
 
@@ -1466,6 +1594,10 @@ Amostras pequenas dão estimativas instáveis. Contextos simulados podem não re
 
 - **EX099 — Ameaça à validade.** Cite duas ameaças à validade. *Rubrica:* 3 = duas entre adivinhar o propósito, simulação versus pressão real, amostra pequena, único consórcio;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Estudos pequenos podem orientar a prática quando os resultados vêm com sua incerteza e com as ameaças discutidas abertamente.
+
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Projeto comparativo
@@ -1503,6 +1635,10 @@ Testes curtos deixam passar problemas de longo prazo. Abordagens mistas acrescen
 - **EX101 — Critérios.** Liste quatro dos critérios de Priya. *Rubrica:* 3 = quatro entre resistência ao phishing, esforço da equipe, esforço administrativo, custo, computadores compartilhados, recuperação;; 2 = três;; 1 = um;; 0 = nenhuma.
 
 - **EX102 — Mudar de opinião.** O que mudaria a recomendação de Priya? *Rubrica:* 3 = preços menores das chaves de segurança (ou mudança semelhante nas evidências);; 2 = condição;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Comparar as opções com critérios compartilhados e evidências de teste produz recomendações rastreáveis.
 
 <a id="ch-35"></a>
 
@@ -1542,6 +1678,10 @@ Varrer além dos hosts autorizados não é permitido, nem mesmo com bons propós
 
 - **EX105 — Medida acrescentada.** Que mudança o Dr. Echeverría exigiu? *Rubrica:* 3 = acrescentar uma medida de alertas falsos;; 2 = alertas falsos;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Uma proposta de trabalho de conclusão com objetivo, escopo, entregas, avaliação e autorização claros prepara um projeto útil e viável.
+
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Prática de campo ou comunitária
@@ -1579,6 +1719,10 @@ Uma ajuda pessoal bem-intencionada pode expor os dados dos participantes. As dem
 - **EX107 — Revisão da oficina.** Como Priya revisou a oficina? *Rubrica:* 3 = mais tempo para os gerenciadores de senhas, com base no retorno;; 2 = retorno;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX108 — Limite.** Como ela respondeu aos pedidos para consertar contas pessoais? *Rubrica:* 3 = explicou os limites, indicou a recuperação oficial e os encaminhamentos, nunca pediu senhas;; 2 = limite;; 1 = consertou;; 0 = nenhuma.
+
+### Síntese
+
+A prática comunitária transforma o conhecimento criptográfico em segurança prática para o público, dentro de limites claros.
 
 <a id="ch-37"></a>
 
@@ -1618,6 +1762,10 @@ Evidências amplamente repetidas não são necessariamente fortes. Dados locais 
 
 - **EX111 — Ressalva da síntese.** Que ressalva a síntese inclui sobre a automação? *Rubrica:* 3 = a automação introduz modos de falha silenciosos que exigem monitoramento;; 2 = falhas silenciosas;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A revisão crítica pesa as evidências pela qualidade e pelo caráter direto, produzindo conclusões equilibradas com ressalvas declaradas.
+
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Implementação do trabalho de conclusão
@@ -1655,6 +1803,10 @@ O tratamento do tempo causa erros sutis; armazene em UTC. As varreduras precisam
 - **EX113 — Causa do alerta falso.** O que causou o alerta falso? *Rubrica:* 3 = um erro de fuso horário, corrigido armazenando as datas em UTC;; 2 = fuso horário;; 1 = bug;; 0 = nenhuma.
 
 - **EX114 — Pedido de escopo.** Como Priya tratou o pedido sobre a assinatura de código? *Rubrica:* 3 = registrou como melhoria futura, manteve o escopo, projetou para facilitar o acréscimo;; 2 = adiou;; 1 = acrescentou;; 0 = nenhuma.
+
+### Síntese
+
+Uma implementação testada contra dados semeados e um gerenciamento disciplinado do escopo entregam um trabalho de conclusão confiável.
 
 <a id="ch-39"></a>
 
@@ -1694,6 +1846,10 @@ Dois meses é pouco para avaliar a confiabilidade. Ferramentas sem mantenedores 
 
 - **EX117 — Valor do segundo alerta.** O que mostrou o valor do lembrete de sete dias? *Rubrica:* 3 = um alerta só foi atendido depois do lembrete de sete dias;; 2 = lembrete;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma avaliação honesta mede os resultados, a adoção e os limites e leva a próximos passos modestos e sustentáveis.
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tese e apresentação
@@ -1731,6 +1887,10 @@ Teses que vão além das evidências perdem credibilidade. As apresentações pr
 - **EX119 — Pergunta sobre dados dos leitores.** Como ela respondeu se a ferramenta lê dados dos leitores? *Rubrica:* 3 = não lê; lida apenas com certificados e metadados de chaves;; 2 = não;; 1 = sim;; 0 = nenhuma.
 
 - **EX120 — Problemas mais difíceis.** O que Priya achou mais difícil ao longo dos quatro anos? *Rubrica:* 3 = inventários, propriedade, comunicação e falhas silenciosas, mais do que a matemática;; 2 = operacionais;; 1 = matemática;; 0 = nenhuma.
+
+### Síntese
+
+Uma tese de bacharelado fundamentada em evidências, apresentada com honestidade a cada público, encerra quatro anos de aprendizagem com impacto prático.
 
 <a id="worked-results"></a>
 
