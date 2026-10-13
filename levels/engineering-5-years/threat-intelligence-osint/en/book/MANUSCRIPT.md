@@ -2158,21 +2158,31 @@ You will (1) implement enrichment with caching and provider-terms compliance; (2
 
 Enrichment adds context: internal asset ownership for an address, passive DNS history for a domain, ATT&CK technique links for a malware family. External enrichment providers have terms on query volume, retention and redistribution. Lantern's enricher records which provider supplied each field so that redistribution rules can be enforced at export.
 
+Internal enrichment is often the most useful kind. Knowing that a contacted address belongs to a substation engineer's laptop changes the priority of a sighting at once. Kofi's enricher queries internal sources first.
+
 ### 31.2 Sightings
 
 When BEN's DNS resolver or proxy sees an indicator, Lantern records a STIX 2.1 sighting object referencing the indicator, with first and last seen times and a count. Sightings raise confidence and give partners valuable feedback when shared under agreement.
+
+Kofi's sighting writer groups repeated hits within an hour into one object with a count, so a busy indicator does not produce thousands of records. The object records which BEN sensor saw it, using an internal identifier rather than a hostname. That keeps the internal network layout out of anything that might later be shared.
 
 ### 31.3 Confidence on read
 
 Rather than rewriting every record nightly, Lantern stores c₀ and the last-sighting time and computes decayed confidence when queried. This avoids mass updates and keeps the model change in one function.
 
+Computing on read also means that changing a half-life takes effect immediately for every indicator, with no migration. The cost is a little processing at query time, which Kofi measured as negligible next to the lookup itself. Exports and the firewall push call the same function, so every consumer sees the same score for the same indicator at the same moment. A test compares the function's results with the decay lab's printed values.
+
 ### 31.4 Publishing
 
 Analysts approve objects for sharing with a TLP marking. The publisher strips enrichment fields whose provider forbids redistribution, signs the bundle and adds it to the community TAXII collection.
 
+The approval step is where an analyst checks that the object says what it should and that its label is right. The publisher then applies the mechanical rules without exceptions. Kofi's tests include an object with a licensed passive DNS field, and they fail if that field appears in the signed bundle. Analysts can see in the interface which fields will be removed before they approve.
+
 ### 31.5 Personal data in telemetry
 
 Sightings come from systems that know which employee's machine made a request. Lantern stores the asset identifier, not the person, and shares only aggregate counts outward.
+
+An analyst investigating a sighting can still find the person through BEN's asset register, but that lookup happens in the SOC's own tools under their access rules, not in Lantern. Kofi made the design choice after the privacy officer pointed out that Lantern's data is shared more widely than SOC case files. Outbound reports give counts per asset type, such as workstations or servers, and never a list of machines.
 
 ### Practice note — rollout
 
@@ -2214,6 +2224,8 @@ You will (1) compute availability of serial pipelines; (2) quantify the effect o
 
 A request that must pass through every stage succeeds only if all stages are up, so availabilities multiply. Four stages that each look good can combine into something mediocre.
 
+A stage that is up most of the time still fails occasionally, and the pipeline fails whenever any stage does. The lab puts numbers on that effect with four plausible figures. Kofi uses the calculation early in design to see which stage limits the whole, before spending money on stages that are already reliable.
+
 ### Lab 7 — availability
 
 ```python
@@ -2239,17 +2251,25 @@ with redundant enrich: 0.9926 (~65 h/yr down)
 
 The serial pipeline reaches 0.9732, roughly 235 hours of downtime a year — dominated by enrichment at 0.98. Duplicating enrichment (two independent instances, either can serve) lifts the pipeline to 0.9926, about 65 hours a year. Investing in the weakest stage gives the largest gain.
 
+Kofi presented the result as hours rather than ratios, because managers found a figure of two hundred hours a year easier to judge than four decimal places. The same reasoning guides later spending: before buying more reliable storage, which is already close to perfect, the team asks which stage still contributes most of the lost hours.
+
 ### 32.3 Independence assumption
 
 The redundancy formula assumes failures are independent. Two enrichment workers on the same host, or calling the same external provider, fail together. Real redundancy needs diverse hosts and, where possible, alternate providers.
+
+Kofi checked the first redundancy design and found both enrichment instances calling the same external provider. If that provider went down, both would fail together, and the lab's improvement would vanish. His revised design adds a fallback that marks indicators as unenriched rather than waiting, which removes the shared dependency from the critical path. He states the independence assumption beside every availability figure he reports.
 
 ### 32.4 SLOs and error budgets
 
 An SLO such as "99.5% of polls succeed each month" defines an error budget of 0.5%. When the budget is spent, feature work pauses and reliability work takes priority.
 
+Kofi's team tracks the budget weekly on the same dashboard as the other metrics. When a partner outage used most of one month's budget, the team spent the next sprint adding retries and alerts instead of the planned reporting feature. The rule was agreed in advance with the CTI lead, so the pause did not need a fresh argument each time.
+
 ### 32.5 Graceful degradation
 
 If enrichment fails, Lantern should still store and match indicators, marking them "unenriched", rather than stopping ingestion. Degraded service beats no service in a SOC.
+
+Kofi's fallback was tested by stopping the enrichment service during a replay of synthetic traffic. Ingestion continued, matching continued and the indicators carried the unenriched flag. When enrichment returned, a background job filled in the missing context. Analysts reported that the flag was useful, because it told them to look up context by hand for urgent cases during the outage.
 
 ### Measuring what users feel
 
@@ -2291,21 +2311,31 @@ You will (1) analyse how CTI outputs could harm operational technology; (2) desi
 
 An over-broad block on an OT firewall could cut a SCADA master from remote terminal units, removing visibility of the grid. A mistaken "malicious" tag on a vendor update server could block a safety-relevant patch. In critical infrastructure, false positives have physical consequences.
 
+Kofi's design reviews ask of every automated action what physical effect a wrong decision could have. For corporate IT the answer is usually a blocked website and a ticket. For OT it may be a control room losing sight of part of the network during a storm, when operators most need it. That difference justifies different rules for the two environments.
+
 ### 33.2 Interlocks
 
 Lantern applies interlocks: no automatic action on OT segments; an allow-list of protected operational addresses that no block may include; a maximum change size per push; and two-person approval for any OT rule. These mirror safety engineering's idea that one failure should not cause harm.
+
+Kofi tests each interlock with a synthetic push designed to trip it: a list containing a protected address, a list far larger than the limit, an approval by one person only. Each test must be refused and logged.
 
 ### 33.3 Resilience to source loss
 
 If a key partner stops sharing, detection should degrade gracefully. Diverse sources, internal telemetry analytics and behaviour-based detections mapped to ATT&CK reduce dependence on any single feed.
 
+Kofi tested this by replaying a month of synthetic traffic with the largest partner removed. Detections fell, but the behavioural rules still caught most of the simulated intrusions that the indicators had caught, though often later. The result told BEN how exposed it would be if that partner stopped sharing and supported investing in internal analytics.
+
 ### 33.4 Rollback
 
 Every push records the previous rule set. A tested one-command rollback restores it within minutes. Rollback drills run quarterly in the test environment.
 
+Kofi's drill measures how long the rollback takes and checks that the restored rules match the stored copy exactly. The first drill took twenty minutes because the command needed a credential that nobody had to hand; the runbook now names where it is kept. A rollback that is never practised tends to fail the first time it is really needed.
+
 ### 33.5 Coordinating with operations
 
 OT engineers own operational decisions. Lantern provides advice and evidence; it does not override operations.
+
+In practice this means Lantern's outputs to OT are recommendations with evidence attached. An OT engineer may decline a block because it would interrupt a planned maintenance window, and that decision stands. Kofi records the reason, so analysts can see why the block did not happen. If the threat grows, the analysts raise it again with new evidence rather than going around the operations team. Both teams review declined recommendations together each month.
 
 ### Practice note — safety cases
 
@@ -2351,21 +2381,31 @@ You will (1) integrate Lantern with SIEM, DNS, proxy and ticketing systems; (2) 
 
 SIEM: indicators become correlation lookups; sightings flow back. DNS resolver: domain blocks and response-policy zones. Web proxy: URL categories. Ticketing: high-confidence matches open tickets with Diamond and ATT&CK context.
 
+Each target has its own format, limits and owner, which is why each has its own interface document. Kofi started with the DNS resolver because domain blocks there are precise and easy to reverse. The SIEM came next, then the proxy, then ticketing. Adding targets one at a time meant that problems with one did not mix with problems from another.
+
 ### 34.2 Idempotence
 
 Re-sending the same block list must not duplicate rules. Integrations compare desired state with current state and apply differences only. That also makes rollback a matter of re-applying the previous desired state.
+
+The worked example shows what happens without this: a retry created thousands of duplicate rules. Comparing desired and current state turns a retry into a harmless check. Kofi's integration logs the number of rules added and removed on each run, and a run that reports no changes is the normal, healthy result.
 
 ### 34.3 Mapping formats
 
 STIX patterns such as `[domain-name:value = 'c2.example']` translate into each product's rule syntax. Unsupported pattern features are rejected with a reason rather than approximated.
 
+Kofi keeps the translation table for each product in configuration with tests. A pattern that combines two conditions with a time window, for example, cannot be expressed in the resolver's format, so it goes to the SIEM instead. Approximating it with only one condition would block far more than intended or far less. Each rejection is logged with the pattern.
+
 ### 34.4 Context in tickets
 
 A ticket that says "match on drop.example" is weak. A ticket that adds source, confidence, TLP, related ATT&CK techniques and recommended actions lets analysts act quickly.
 
+Kofi measured the effect on a sample of tickets. Analysts closed context-rich tickets faster and escalated fewer of them by mistake, because the recommended action and the confidence were in front of them. A link back to the object in Lantern lets an analyst see the full history without searching. Tickets are generated from the same object.
+
 ### 34.5 End-to-end tests
 
 A synthetic indicator is injected at the collector; the test checks that it appears in the DNS policy, triggers a SIEM lookup on a synthetic query, and opens a ticket — then removes it and checks cleanup.
+
+Kofi runs this test after every release and every downstream change. When the DNS team updated their resolver, the test caught a change in how the policy file was loaded, and the fix was made in staging before production. The synthetic indicator uses a reserved example domain, so even a failed cleanup cannot affect real traffic.
 
 ### Practice note — owners
 
@@ -2411,21 +2451,31 @@ You will (1) design Lantern's analysis and dissemination layer; (2) produce prod
 
 Design how analysts turn stored objects into products: a daily tactical digest, a weekly operational summary and a quarterly strategic brief for executives, each with TLP controls, ICD 203-style judgment language and feedback capture.
 
+The three products serve different readers on different schedules. Analysts need the digest each morning; managers want the weekly summary before their planning meeting; executives read the brief once a quarter. Kofi's team designed each from the reader's decision backwards, starting with what the reader should be able to do after reading.
+
 ### 35.2 Templates
 
 Tactical digest: top indicators by confidence, actions taken, sightings. Operational summary: active campaigns with Diamond structure and ATT&CK techniques. Strategic brief: adversary trends relevant to electricity distribution, key judgments with estimative words and a published probability scale.
+
+Each template has a fixed order so readers know where to look. Kofi kept the digest to a single screen and the strategic brief to two pages. Templates also force the analyst to fill in a source and confidence for each item, which makes gaps obvious before publication.
 
 ### 35.3 Adversarial review
 
 A reviewer plays a sceptical executive: "Why should I trust this?" The design answers with source descriptions, confidence, and a track record of past judgments.
 
+The answers come from records Lantern already keeps. Source descriptions explain who reported something and how they knew it. Past judgments are scored when outcomes become known, so a reader can see how often the team's likely meant what it said. The sceptical reviewer in Kofi's studio was satisfied by that record, not by the confidence of the writing.
+
 ### 35.4 Effort and risk
 
 The team estimates effort per component and lists risks: analyst time to write strategic briefs, partner consent to quote, executive attention.
 
+Strategic briefs took far more analyst time than the team first guessed; Kofi's estimate doubled after he timed a trial brief. Partner consent to quote material can take weeks, which affects the schedule. Executive attention is the scarcest resource of all, so the brief is limited to what they can act on. Each risk has an owner and a plan.
+
 ### 35.5 Accessibility
 
 Products are readable on mobile, avoid colour-only coding (TLP labels are written in text, as TLP 2.0 recommends) and include alt text for figures.
+
+Kofi tested the templates on a phone and with a screen reader. A chart that used colour alone to show severity was unreadable to one reviewer, so severity is now also written as a word. Writing the label in text also means it survives printing in black and white. Accessible products reach more readers, which matters when the reader is an engineer in a substation reading on a tablet.
 
 ### Practice note — fewer, better products
 
