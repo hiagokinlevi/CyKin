@@ -735,7 +735,7 @@ Data owners confirm retention periods yearly with the records office.
 
 ### Worked example
 
-The forgotten snapshot was made manually during a migration and was outside the lifecycle rules. The team deletes it after confirming nobody needs it, and adds a rule that manual snapshots carry an expiry tag enforced by automation.
+The snapshot dates from a migration. The team deletes it after confirming nobody needs it, and adds a rule that manual snapshots carry an expiry tag enforced by automation.
 
 > **Synthetic case.** Data stores are synthetic.
 
@@ -1621,7 +1621,7 @@ The cloud key in that image had broad rights, so the attacker could start machin
 
 A build system with administrator rights was misused after its token leaked. Lesson: narrow pipeline permissions.
 
-Westmere's pipeline role review, scheduled after the role-path lab, addresses this pattern. The lab showed dev-alice's path to cluster-admin through the pipeline, which is expected but must be protected. Narrowing the pipeline's permissions limits what a leaked token could do. Administrator rights were given to the build system for convenience, so any deployment could create whatever it needed without asking. Once the token leaked, the attacker had the same convenience. Westmere's deployer role is limited to the cluster namespaces it deploys to, and its tokens are short-lived, which limits a leak to a narrow scope.
+Westmere's pipeline role review, scheduled after the role-path lab, addresses this pattern. The lab showed dev-alice's path to cluster-admin through the pipeline, which is expected but must be protected. Administrator rights were given to the build system for convenience, so any deployment could create whatever it needed without asking. Once the token leaked, the attacker had the same convenience. Westmere's deployer role is limited to the cluster namespaces it deploys to, and its tokens are short-lived, which limits a leak to a narrow scope.
 
 ### 20.5 Comparing
 
@@ -2329,7 +2329,7 @@ Each rehearsal picks one scenario from the failure table, such as the admission 
 
 ### Failure table
 
-The analysis is kept as a table: control, failure mode, how it would be noticed, recovery steps and owner. Silent failure modes are highlighted. The table is reviewed each term and after incidents, and rehearsals pick scenarios from it. Samuel finds that writing the 'how would we notice' column was the most revealing part, because for four failure modes the honest answer was 'we would not', and each of those became an improvement item with a date.
+The analysis is kept as a table: control, failure mode, how it would be noticed, recovery steps and owner. Silent failure modes are highlighted. The table itself is reviewed each term and after incidents. Samuel finds that writing the 'how would we notice' column was the most revealing part, because for four failure modes the honest answer was 'we would not', and each of those became an improvement item with a date.
 
 ### Owners
 
@@ -2818,7 +2818,7 @@ Event alerts and scanning both use features Westmere already pays for, so the ma
 
 ### Writing the comparison
 
-The report presents a table of criteria with results for each approach and a short paragraph on each criterion. Samuel avoids declaring an overall winner, since the approaches complement each other; instead he shows what each contributes. Tom finds this more useful than a single recommendation, because it explains why both are kept and which one to rely on for each kind of risk. The test scripts and synthetic events are kept so the comparison can be repeated after platform changes.
+The report presents a table of criteria with results for each approach and a short paragraph on each criterion. Samuel avoids declaring an overall winner, since the approaches complement each other; instead he shows what each contributes. Tom finds this more useful than a single recommendation, because it explains why both are kept and which one to rely on for each kind of risk.
 
 ### Repeat plan
 
