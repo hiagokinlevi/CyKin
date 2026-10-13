@@ -2601,7 +2601,7 @@ weight on consequence needed for segmentation to win:
   w_consequence=0.8 -> network segmentation project
 ```
 
-Os backups com exercícios de restauração vencem sob os pesos acordados e continuam à frente até que a redução da consequência tenha entre 0,6 e 0,7 do peso total. O relatório, portanto, diz: "Recomendado: backups offline com exercícios de restauração. A recomendação só se inverte se a parceria der à redução da consequência mais de cerca de dois terços da decisão, caso em que a segmentação é preferida. As opções não são excludentes; a segmentação é a candidata mais forte para o segundo ano." Note o que as notas não capturam: os backups recuperam de um ransomware, mas não impedem o roubo de dados que muitas vezes o acompanha — uma consideração a declarar explicitamente, e não a esconder num número.
+Os backups com exercícios de restauração vencem sob os pesos acordados e continuam à frente até que a redução da consequência tenha entre 0,6 e 0,7 do peso total. O relatório, portanto, diz: "Recomendado: backups offline com exercícios de restauração. A recomendação só se inverte se a parceria der à redução da consequência mais de cerca de 0,63 da decisão (o EX067 deduz o ponto de cruzamento exato), caso em que a segmentação é preferida. As opções não são excludentes; a segmentação é a candidata mais forte para o segundo ano." Note o que as notas não capturam: os backups recuperam de um ransomware, mas não impedem o roubo de dados que muitas vezes o acompanha — uma consideração a declarar explicitamente, e não a esconder num número.
 
 ### 34.5 Produto do projeto
 
