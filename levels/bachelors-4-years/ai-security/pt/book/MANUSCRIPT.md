@@ -3168,6 +3168,7 @@ Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas 
 - Athalye, A., Carlini, N., Wagner, D. (2018). Obfuscated Gradients Give a False Sense of Security. arXiv:1802.00420.
 - Brasil. (2018). *Lei nº 13.709, de 14 de agosto de 2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)*. Diário Oficial da União. <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm>
 - Carlini, N. et al. (2019). On Evaluating Adversarial Robustness. arXiv:1902.06705.
+- Carlini, N. et al. (2020). Extracting Training Data from Large Language Models. arXiv:2012.07805.
 - Carlini, N. et al. (2023). Poisoning Web-Scale Training Datasets is Practical. arXiv:2302.10149.
 - Chen, S. et al. (2024). StruQ: Defending Against Prompt Injection with Structured Queries. arXiv:2402.06363.
 - Cohen, J., Rosenfeld, E., Kolter, J. Z. (2019). Certified Adversarial Robustness via Randomized Smoothing. arXiv:1902.02918.
@@ -3176,7 +3177,10 @@ Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas 
 - Goodfellow, I., Shlens, J., Szegedy, C. (2014). Explaining and Harnessing Adversarial Examples. arXiv:1412.6572.
 - Greshake, K. et al. (2023). Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection. arXiv:2302.12173.
 - Gu, T., Dolan-Gavitt, B., Garg, S. (2017). BadNets. arXiv:1708.06733.
+- Hubinger, E. et al. (2024). Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training. arXiv:2401.05566.
 - ISO/IEC 42001:2023 Artificial intelligence — Management system. <https://www.iso.org/standard/81230.html>
+- Kapoor, S., Narayanan, A. (2022). Leakage and the Reproducibility Crisis in ML-based Science. arXiv:2207.07048.
+- Lipton, Z. C., Steinhardt, J. (2018). Troubling Trends in Machine Learning Scholarship. arXiv:1807.03341.
 - Liu, Y. et al. (2023). Prompt Injection attack against LLM-integrated Applications. arXiv:2306.05499.
 - Madry, A. et al. (2017). Towards Deep Learning Models Resistant to Adversarial Attacks. arXiv:1706.06083.
 - Mitchell, M. et al. (2018). Model Cards for Model Reporting. arXiv:1810.03993.
@@ -3186,4 +3190,7 @@ Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas 
 - NIST AI 600-1 (2024), Generative AI Profile. <https://doi.org/10.6028/NIST.AI.600-1>
 - OWASP Top 10 for LLM Applications 2025. <https://genai.owasp.org/llm-top-10/>
 - Shokri, R. et al. (2016). Membership Inference Attacks against Machine Learning Models. arXiv:1610.05820.
+- Szegedy, C. et al. (2013). Intriguing properties of neural networks. arXiv:1312.6199.
 - Tramèr, F. et al. (2016). Stealing Machine Learning Models via Prediction APIs. arXiv:1609.02943.
+- Wei, A., Haghtalab, N., Steinhardt, J. (2023). Jailbroken: How Does LLM Safety Training Fail? arXiv:2307.02483.
+- Zou, A. et al. (2023). Universal and Transferable Adversarial Attacks on Aligned Language Models. arXiv:2307.15043.
