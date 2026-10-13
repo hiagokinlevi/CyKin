@@ -1777,17 +1777,25 @@ You will (1) work in a team to design an AI-enabled subsystem with security requ
 
 Teams of three to five receive a brief, produce a design in two weeks, present it to a panel and revise it. The panel plays roles: operator, attacker, safety assessor and budget owner. The point is to practise making and defending trade-offs, not to find a perfect design.
 
+The roles pull in different directions on purpose. An operator wants speed and few clicks, an attacker wants any path to impact, a safety assessor wants failures to be safe, and a budget owner wants cost justified. A design that satisfies one role completely usually fails another, and the panel's questions expose that before any code is written.
+
 ### 25.2 The brief (synthetic)
 
 Design an LLM-based assistant that helps NRS depot planners schedule inspections using maintenance history, weather forecasts and supplier bulletins. It may propose schedule changes; a planner must approve them.
+
+The brief is small but contains the course's central tension. Maintenance history is internal, weather forecasts come from an outside feed, and supplier bulletins are written by third parties, so three trust levels meet in one assistant. The assistant may only propose, yet proposals to postpone inspections affect rail safety. Teams must decide how far each source may influence a proposal and what a planner needs to see before approving it.
 
 ### 25.3 The design package
 
 1. Context and stakeholders. 2. Requirements (functional, security, statistical, operational) with verification methods. 3. Architecture with trust boundaries and an external policy point. 4. Threat model ranked and mapped to OWASP/ATLAS. 5. Verification plan: evaluation suites, sample sizes, gates. 6. Residual risks and open questions.
 
+The order mirrors how a reviewer reads: who the system is for, what it must do, how it is built, what could go wrong, how that will be checked and what remains. Each item references the earlier ones, so a threat points to the requirement it endangers and the test that will verify the control. A package missing its verification plan is returned unread, because without it nothing else can be checked.
+
 ### 25.4 Critique
 
 Each panel role asks questions from its perspective. The attacker role is especially valuable: "I control a weather-feed mirror. What can I do?" Teams must answer with their architecture, not with promises about the model.
+
+An answer such as 'the model will ignore malicious instructions' fails, because it relies on behaviour nobody can guarantee. An acceptable answer points to the architecture: the weather feed's values pass through a validator that accepts only numbers within physical limits, and any schedule change still needs a planner's approval with the source shown. Teams learn to welcome hard questions, since each one found in the studio is one less found in service.
 
 ### 25.4b Trade-off tables
 
@@ -1797,11 +1805,15 @@ Present alternatives in a table with columns for security effect, safety effect,
 
 Sam's team proposed reading supplier bulletins directly into the planner prompt. The attacker panelist showed (in design terms) that a bulletin could ask the model to postpone inspections on a route. The team revised: bulletins are summarised by a separate low-privilege model whose output is labelled untrusted; schedule changes affecting safety-critical inspections require two approvals; and every proposed change shows the source documents that influenced it.
 
+The revision shows the pattern the studio aims to teach: the attack was answered by changing structure, not by improving the prompt.
+
 ### 25.6 Errors and limits
 
 - Designs that rely on the model "ignoring" malicious text.
 - Packages without verification plans.
 - Defensive responses to critique.
+
+Relying on the model to ignore malicious text is a promise, not a control. A package without a verification plan cannot show that any requirement is met. Defensive responses, such as arguing that an attacker would never try something, waste the panel's most useful feedback. Sam's team adopted a rule for the studio: every critique gets a written response saying accepted, rejected with reason, or deferred with an owner and date.
 
 ### Exercises
 
@@ -1839,23 +1851,33 @@ These patterns reduce injection impact by limiting what untrusted text can influ
 
 Return labels rather than full probability vectors when clients do not need confidences (reduces extraction and membership-inference signal); add input validation and out-of-distribution detection; ensemble or randomise where it increases attack cost; isolate training from serving.
 
+Each measure raises the cost of a specific attack. Returning only labels removes the fine-grained scores that extraction and membership inference rely on, as the membership lab showed with confidence outputs. Out-of-distribution detection flags inputs unlike the training data, which includes many adversarial ones. Isolating training from serving means a compromised serving host cannot alter the data the next model learns from.
+
 ### 26.3 Hosted versus self-hosted
 
 Hosted models offer strong operations and fast updates but change without notice, process data outside your boundary and may restrict testing. Self-hosted models give control and reproducibility but make you responsible for patching, capacity and safety tuning. The choice is a risk decision involving data protection, testing authority and supply-chain trust.
+
+For NRS, sending rail-maintenance documents to an outside provider may be acceptable, while sending HR reports may not; the data's classification decides as much as the model's quality. A hosted model that updates silently can also invalidate a security evaluation overnight, so contracts should state how changes are announced and whether customers may test.
 
 ### 26.4 Trade-off analysis
 
 Score each alternative on residual injection impact, data exposure, utility, latency, cost and operational burden. Make the weighting explicit and get stakeholders to agree on it before scoring.
 
+Agreeing weights first prevents the analysis from being tuned to justify a favourite. Scores need short reasons, such as 'dual model: untrusted text yields only a fixed record, so injected actions cannot reach the planner model'. Where a criterion such as latency can be measured, a measurement replaces the estimate. The result is a recommendation with its basis visible, which stakeholders can challenge on the facts rather than on preference, and which can be rescored if weights change later.
+
 ### 26.5 Worked example (synthetic NRS case)
 
 For the depot-planner assistant, Sam compared single-model, dual-model and plan-then-execute. Dual-model scored best on injection impact (untrusted bulletins only produce a constrained "affected asset IDs and severity" record) but cost 30% more latency. Plan-then-execute could not handle planners' iterative questions well. The team chose dual-model for bulletin processing and single-model for free conversation without tools.
+
+The split decision combines the strengths of both patterns. Free conversation has no tools, so injection there can at worst produce a misleading answer, and bulletins reach planning only as constrained records. The 30% latency cost falls only on bulletin processing, which runs in the background rather than while a planner waits for an answer.
 
 ### 26.6 Errors and limits
 
 - Choosing patterns by fashion rather than threat model.
 - Quarantined models whose "structured" output is free text.
 - Ignoring hosted-model terms that restrict security testing.
+
+A pattern chosen because others use it may defend against threats the system does not face while missing those it does. A quarantined model that returns free text gives injected instructions a direct route to the privileged model, defeating the pattern's purpose. Hosted-model terms that forbid testing leave a team unable to verify its own security claims, so those terms are checked before the choice is made.
 
 ### Exercises
 
@@ -1883,13 +1905,19 @@ You will (1) design preventive, detective and corrective controls for AI risks; 
 
 Preventive controls stop an event (least-privilege tools, signed models). Detective controls reveal it (anomaly monitoring, injection classifiers, canary documents). Corrective controls limit and recover (rollback, credential revocation, human review queues). A sound design uses all three.
 
+Each type covers a weakness of the others. Prevention fails when attackers find an unexpected path; detection shows that this happened; correction limits how long it lasts. A design with only preventive controls has no way to notice a bypass, and one with only detection can watch an attack succeed. Sam lists controls for each top threat under all three headings and treats an empty heading as a design gap.
+
 ### 27.2 Guardrails and validation
 
 Input guardrails classify or transform inputs (detecting instruction-like content in retrieved text; normalising encodings). Output guardrails check outputs before use (schema validation, secret scanning, policy checks on proposed actions). Validation must be strict and outside the model. Classifiers have error rates: plan for misses and false positives.
 
+An input classifier that misses 30% of injections is still useful if the response to a miss is bounded by other controls. Output validation is more dependable because it checks a known structure: a proposed work order either matches the schema and policy or it does not. The lab's allowlist result illustrates this: validating outputs against permitted actions removed every exfiltration call, while a keyword filter on inputs still let 10 of 20 through.
+
 ### 27.3 Controls for predictive models
 
 Adversarial training (Madry et al., arXiv:1706.06083) improves robustness within a threat model at a cost in clean accuracy and training compute. Certified methods (Cohen et al., arXiv:1902.02918) give guarantees for small perturbations. Data hygiene — provenance, deduplication, outlier review, restricted labelling — reduces poisoning. Differential privacy (Abadi et al., arXiv:1607.00133) reduces membership leakage.
+
+None of these is free. Adversarial training may lower accuracy on ordinary inputs, certified methods guarantee only small radii, data hygiene needs people and time, and differential privacy reduces utility. Choosing among them follows from the threat model: TrackEye's main integrity threats are physical markings and poisoned labels, so data hygiene and robustness testing come first.
 
 ### 27.4 Measuring control effectiveness
 
@@ -1938,15 +1966,21 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
+The table makes the ranking concrete. No defence lets 17 of 20 documents trigger exfiltration. The keyword filter cuts that to 10, but attackers simply avoid the word. The allowlist removes every email call while three injected 'tag' calls remain, since tagging is allowed. Separating data from instructions removes all injected calls, and none of the defences blocked benign documents, so here the stronger controls cost nothing in false positives.
+
 ### 27.5 Worked example (synthetic NRS case)
 
-Sam's control set for Wrench: preventive — tool allowlist per role, confirmation for work orders, parts e-mail only to supplier allowlist; detective — classifier flags instruction-like text in bulletins and logs it, alert on unusual tool-call rates; corrective — one-click revocation of Wrench's tool credentials, rollback of prompt versions. Testing showed the classifier caught 70% of injected bulletins with 2% false positives; because prevention did not depend on it, its misses were tolerable.
+Sam's control set for Wrench: preventive — tool allowlist per role, confirmation for work orders, parts e-mail only to supplier allowlist; detective — classifier flags instruction-like text in bulletins and logs it, alert on unusual tool-call rates; corrective — one-click revocation of Wrench's tool credentials, rollback of prompt versions. On injected bulletins written by the red team to slip past it, the classifier that had scored 95% detection and 1% false positives on its original test set caught only 70%, with 2% false positives; because prevention did not depend on it, its misses were tolerable.
+
+The design works even if the classifier does worse in future: prevention carries the load, and detection supplies evidence for investigation.
 
 ### 27.6 Errors and limits
 
 - Keyword or regex filters as the main defence.
 - Controls with unmeasured side effects.
 - Adversarial training claimed to cover attacks outside its threat model.
+
+Keyword filters fail against the simplest variation, as the lab's mixed-case payloads show. Controls deployed without measuring false positives can block legitimate work until users find ways around them. Adversarial training protects within the norm and budget it was trained for, so claims about other attacks need their own tests. Sam's control register records, for each control, the attacks it was tested against and the side effects measured.
 
 ### Exercises
 
