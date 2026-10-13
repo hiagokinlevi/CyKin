@@ -15,12 +15,12 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [03](book/PLAN.md#ch-03) | Papéis e responsabilidades | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Um inventário de dados | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
 | 3 | [05](book/PLAN.md#ch-05) | O essencial da política | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Qualidade de dados na prática | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Plano](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Consentimento e base legal | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | O essencial da segurança | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Trabalhando com fornecedores e voluntários | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Retenção e direitos dos titulares | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Incidentes e relatórios ao conselho | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Plano de ação e próximos passos | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 027 →](../../privacy-data-protection/pt/SUBJECTS.md) |
+| 3 | [06](book/PLAN.md#ch-06) | Qualidade de dados na prática | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Consentimento e base legal | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | O essencial da segurança | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 5 | [09](book/PLAN.md#ch-09) | Trabalhando com fornecedores e voluntários | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 5 | [10](book/PLAN.md#ch-10) | Retenção e direitos dos titulares | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Incidentes e relatórios ao conselho | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Plano de ação e próximos passos | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [Curso 027 →](../../privacy-data-protection/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
