@@ -291,8 +291,8 @@ comp = [(b, round(b - 0.3 + random.gauss(0, 0.9), 2)) for b, _ in comp]
 def did(a, c):
     return statistics.mean(y - x for x, y in a) - statistics.mean(y - x for x, y in c)
 est = did(adopt, comp)
-print(f"adopting: {statistics.mean(x for x,_ in adopt):.1f} -> {statistics.mean(y for _,y in adopt):.1f}")
-print(f"comparison: {statistics.mean(x for x,_ in comp):.1f} -> {statistics.mean(y for _,y in comp):.1f}")
+print(f"adopting: {statistics.mean(x for x,_ in adopt):.2f} -> {statistics.mean(y for _,y in adopt):.2f}")
+print(f"comparison: {statistics.mean(x for x,_ in comp):.2f} -> {statistics.mean(y for _,y in comp):.2f}")
 print(f"DiD estimate: {est:.2f} per 100 changes")
 allt = adopt + comp; hits = 0; R = 5000
 for _ in range(R):
@@ -304,15 +304,15 @@ print(f"permutation share as extreme: {hits / R:.3f}")
 Execute com `python3 lab_did.py`. Saída verificada:
 
 ```text
-adopting: 3.7 -> 2.8
-comparison: 3.8 -> 3.6
+adopting: 3.75 -> 2.80
+comparison: 3.83 -> 3.65
 DiD estimate: -0.77 per 100 changes
 permutation share as extreme: 0.022
 ```
 
 ### 5.3 Leitura da estimativa
 
-Nos dados sintéticos, as equipes que adotam caíram de 3,7 para 2,8 defeitos por cem mudanças, enquanto as equipes de comparação caíram de 3,8 para 3,6. A diferença em diferenças é de cerca de menos 0,8, aproximadamente um quinto a menos de defeitos em relação à linha de base. A verificação por permutação mostra uma diferença desse tamanho em cerca de dois por cento dos embaralhamentos. Amara relata a estimativa com essa incerteza e observa que ela é um pouco menor que o quarto que a Tessaro esperava. Ela evita a palavra prova e escreve que os dados são compatíveis com uma redução modesta sob as premissas declaradas.
+Nos dados sintéticos, as equipes que adotam caíram de 3,75 para 2,80 defeitos por cem mudanças (variação de -0,95), enquanto as equipes de comparação caíram de 3,83 para 3,65 (-0,18). A diferença em diferenças é de -0,77, cerca de menos 0,8, aproximadamente um quinto a menos de defeitos em relação à linha de base. A verificação por permutação mostra uma diferença desse tamanho em cerca de dois por cento dos embaralhamentos. Amara relata a estimativa com essa incerteza e observa que ela é um pouco menor que o quarto que a Tessaro esperava. Ela evita a palavra prova e escreve que os dados são compatíveis com uma redução modesta sob as premissas declaradas.
 
 ### 5.4 Validação independente
 
