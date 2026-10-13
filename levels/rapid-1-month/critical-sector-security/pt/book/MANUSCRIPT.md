@@ -437,10 +437,9 @@ Compare o seu esboço com a tabela de dependências da clínica feita por Sam: v
 - Listar as dependências a montante, mas esquecer as pessoas a jusante que são prejudicadas.
 - Pressupor que um backup funciona sem perguntar do que *ele* depende.
 - Afirmar palpites como fatos; neste capítulo, uma lista de dependências é um conjunto de perguntas para o dono.
-- Limites: as arquiteturas reais de TO são muito mais variadas do que a imagem simples da seção 3.2.
-
 - Esquecer que uma pessoa pode ser um ponto único de falha, como a única enfermeira que conhece o alarme da geladeira da clínica.
 - Contatar você mesmo um fornecedor ou uma empresa de serviços para verificar uma dependência, em vez de passar a pergunta ao dono.
+- Limites: as arquiteturas reais de TO são muito mais variadas do que a imagem simples da seção 3.2.
 
 ### Exercícios — capítulo 3
 
