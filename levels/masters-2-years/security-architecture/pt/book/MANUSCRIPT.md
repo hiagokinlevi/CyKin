@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 168, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 8 já estão escritos em português, com os exercícios EX001–EX026 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 5–8 (EX027–EX050) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: pesquisadores iniciantes em arquitetura e engenharia de segurança.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam registros de triagem, calculam a alcançabilidade em grafos sob três políticas sintéticas de segmentação e fazem bootstrap de resultados pareados; nunca varrem nem tocam uma rede real. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ NIST [SP 800-207](https://doi.org/10.6028/NIST.SP.800-207), [SP 800-160 Vol. 1 R
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
-
-Capítulos 5–8: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -306,11 +304,247 @@ Nenhuma lista de rivais é completa. Os parâmetros acrescentados para modelar a
 
 - **EX026 — Sinal de maturidade.** O que a Dra. Aydın chama de sinal claro de maturidade de pesquisa? *Rubrica:* 3 = declarar de antemão o que mudaria a conclusão;; 2 = condições prévias;; 1 = tese longa;; 0 = nenhuma.
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Proposta e piloto
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma proposta de dissertação concisa; (2) conduzir um piloto para testar o código e os parâmetros; (3) estimar quantas redes simuladas são necessárias; (4) ajustar o plano a partir das evidências do piloto.
+
+### 5.1 A proposta
+
+A proposta de Kenji cabe em seis páginas. Ela declara a pergunta, as três políticas e o controle de arestas aleatórias, os desfechos de alcance médio e número de regras, as verificações das rivais e os limiares de reversão, o acordo ético com a Vantor e o cronograma. Lista as entregas: uma dissertação, um repositório de código com sementes fixas e um resumo curto para praticantes. A Dra. Aydın pede que ele corte pela metade a seção de contexto e amplie os métodos, porque os avaliadores julgam a viabilidade pelos métodos. A banca a aprova com uma condição: um piloto deve confirmar que a simulação roda dentro do tempo de computação disponível.
+
+### 5.2 Objetivos do piloto
+
+O piloto roda o pipeline completo em vinte redes pequenas. Seus objetivos são práticos: confirmar que o código produz valores de alcance sensatos, verificar o tempo de execução por rede, encontrar bugs e medir quanto os resultados variam entre as redes. Ele não serve para responder à pergunta. Kenji escreve um teste que compara a busca em largura com uma contagem por força bruta em redes minúsculas, nas quais a resposta certa pode ser conferida à mão, um teste de resposta conhecida parecido, em espírito, com os vetores de teste. O teste encontra um bug em que as arestas dos jump hosts eram adicionadas duas vezes, inflando o alcance numa das políticas.
+
+### 5.3 Quantas redes
+
+Usando a variação do piloto, Kenji estima quantas redes são necessárias para a comparação principal. O desvio padrão da diferença entre o alcance por identidade e por zonas nas redes do piloto é de cerca de dois servidores. Para estimar a diferença média com margem de cerca de meio servidor e noventa e cinco por cento de confiança, ele precisa de aproximadamente sessenta redes por tamanho. Escolhe duzentas por tamanho para acomodar os parâmetros extras das verificações das rivais. O tempo de execução do piloto mostra que isso cabe com folga num notebook durante uma noite, de modo que a condição de computação da banca é cumprida.
+
+### 5.4 Ajuste do plano
+
+O piloto também mostra que, no menor tamanho de rede, as políticas por zonas e por identidade muitas vezes dão o mesmo alcance, porque cada departamento tem um único servidor. Kenji descarta esse tamanho e acrescenta um maior, documentando a mudança e o motivo no log de mudanças do plano. Ele também descobre que o parâmetro de configuração incorreta em dez por cento torna todas as políticas quase planas, então limita a faixa a de zero a cinco por cento, uma faixa que os engenheiros da Vantor consideram realista. Cada ajuste é registrado antes do início das execuções principais.
+
+### 5.5 Relato do piloto
+
+O relatório do piloto de Kenji tem duas páginas: o que foi rodado, o que foi encontrado, o que mudou e por quê. Ele inclui o bug encontrado pelo teste de resposta conhecida e o tamanho de rede descartado. A Dra. Aydın insiste que o relatório seja honesto sobre os problemas, porque os examinadores confiam mais num estudo quando conseguem ver como ele foi depurado. O relatório vira um apêndice da dissertação. Kenji também marca com uma tag, no repositório, a versão do código usada no piloto, para que os experimentos principais partam de um estado conhecido e testado, e não de um código ainda em mudança.
+
+### Exemplo resolvido
+
+Kenji escreve uma proposta de seis páginas, pilota vinte redes, corrige com um teste de resposta conhecida um bug de contagem dupla nos jump hosts, dimensiona o estudo principal em duzentas redes por tamanho e registra dois ajustes no plano.
+
+> **Caso sintético.** Os números do piloto e as decisões da banca são sintéticos.
+
+### Erros e limites
+
+As estimativas de tamanho de amostra feitas com um piloto pequeno também são incertas. Descartar um tamanho de rede muda a população que os resultados descrevem.
+
+### Exercícios
+
+- **EX027 — Condição da banca.** Que condição a banca impôs à aprovação? *Rubrica:* 3 = um piloto que confirme que a simulação cabe no tempo de computação disponível;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+
+- **EX028 — Bug da resposta conhecida.** Que bug o teste de resposta conhecida encontrou? *Rubrica:* 3 = arestas de jump host adicionadas duas vezes, inflando o alcance;; 2 = jump host;; 1 = nada;; 0 = nenhuma.
+
+- **EX029 — Redes necessárias.** Quantas redes por tamanho a estimativa exigia, e quantas foram escolhidas? *Rubrica:* 3 = cerca de sessenta necessárias; duzentas escolhidas;; 2 = um número;; 1 = errado;; 0 = nenhuma.
+
+- **EX030 — Tamanho descartado.** Por que o menor tamanho de rede foi descartado? *Rubrica:* 3 = um servidor por departamento deixava iguais os alcances por zonas e por identidade;; 2 = motivo;; 1 = nada;; 0 = nenhuma.
+
+- **EX031 — Faixa de configuração incorreta.** Que faixa foi definida para a configuração incorreta, e por quê? *Rubrica:* 3 = de zero a cinco por cento, considerada realista pelos engenheiros;; 2 = faixa;; 1 = dez por cento;; 0 = nenhuma.
+
+- **EX032 — Tag do código do piloto.** Por que marcar com tag a versão do código do piloto? *Rubrica:* 3 = para que os experimentos principais partam de um estado conhecido e testado;; 2 = estado conhecido;; 1 = sem motivo;; 0 = nenhuma.
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Coleta e análise de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) rodar a simulação principal e coletar os resultados de forma reprodutível; (2) comparar as políticas com intervalos de confiança por bootstrap; (3) avaliar as verificações das rivais; (4) apresentar os resultados sem exagerá-los.
+
+### 6.1 Execução do estudo principal
+
+Kenji roda duzentas redes em cada um de três tamanhos, aplicando as políticas plana, por zonas, por identidade e de arestas aleatórias, com os parâmetros das rivais variados como planejado. Cada execução grava sua configuração, sua semente e seus resultados num arquivo, e o script de nova execução confirma que uma amostra aleatória das execuções se reproduz exatamente. Ele resiste à vontade de olhar os resultados enquanto as execuções ainda estão incompletas, porque espiar cedo tende a moldar as decisões posteriores. Quando todas as execuções terminam, ele calcula primeiro a comparação principal pré-especificada, antes de qualquer análise exploratória, e registra a hora em que fez isso.
+
+### 6.2 Comparação por bootstrap
+
+A comparação principal é a diferença média de servidores alcançáveis entre as políticas por zonas e por identidade nas mesmas redes. Kenji usa bootstrap: reamostra as redes com reposição muitas vezes, recalcula a diferença média a cada vez e toma os noventa e cinco por cento centrais desses valores como intervalo de confiança. O bootstrap exige poucas premissas sobre a forma dos dados. O laboratório abaixo aplica esse procedimento a resultados pareados sintéticos de um tamanho de rede e também compara a identidade com o controle de arestas aleatórias, relatando os dois intervalos e o número médio de regras.
+
+### Laboratório — Comparação das políticas por bootstrap
+
+```python
+# Bootstrap CIs for paired synthetic results (servers reachable) across 200 generated networks.
+import random, statistics
+random.seed(42)
+nets = []
+for _ in range(200):
+    zone = random.randint(4, 9); ident = max(0, zone - random.choice([1, 2, 2, 3, 3, 4]))
+    ctrl = max(ident, ident + random.choice([0, 1, 2, 2, 3]))
+    nets.append((zone, ident, ctrl, random.randint(18, 26), random.randint(60, 75)))
+def boot(diffs, B=4000):
+    m = [statistics.mean(random.choices(diffs, k=len(diffs))) for _ in range(B)]; m.sort()
+    return statistics.mean(diffs), m[int(.025 * B)], m[int(.975 * B)]
+for name, i in [("zone - identity", 0), ("control - identity", 2)]:
+    est, lo, hi = boot([n[i] - n[1] for n in nets])
+    print(f"{name:20} mean {est:.2f}  95% CI [{lo:.2f}, {hi:.2f}]")
+print(f"mean rules: zone {statistics.mean(n[3] for n in nets):.1f}, identity {statistics.mean(n[4] for n in nets):.1f}")
+```
+
+Execute com `python3 lab_compare.py`. Saída verificada:
+
+```text
+zone - identity      mean 2.43  95% CI [2.29, 2.56]
+control - identity   mean 1.56  95% CI [1.42, 1.71]
+mean rules: zone 22.2, identity 67.7
+```
+
+### 6.3 Verificações das rivais
+
+O controle de arestas aleatórias alcança visivelmente mais servidores do que a identidade, então a estrutura, e não só o número de arestas, explica boa parte do benefício. A vantagem se mantém entre os tamanhos de rede, embora diminua no menor tamanho que restou. Permitir que as identidades alcancem até quatro servidores reduz a vantagem, mas não a elimina. A cópia de modelos é a rival mais forte: quando um terço das estações herda um conjunto amplo de regras, a maior parte da vantagem desaparece. A configuração incorreta em cinco por cento estreita a diferença, mas a deixa acima do limiar de reversão de Kenji. Ele relata cada verificação de rival numa tabela com seu resultado.
+
+### 6.4 O tradeoff da complexidade
+
+As políticas por identidade exigem muito mais regras de permissão do que as políticas por zonas: no laboratório, cerca de três vezes mais, em média. Kenji apresenta o alcance e o número de regras lado a lado, para que os leitores vejam o tradeoff, e não só o ganho de segurança. Ele não afirma saber quantas regras uma organização consegue gerenciar, mas observa que o resultado da cópia de modelos sugere que as organizações muitas vezes lidam com a complexidade das regras copiando-as, o que mina o benefício. Isso liga os resultados quantitativos de volta ao princípio da economia de mecanismo discutido no seminário.
+
+### 6.5 Apresentar os resultados com honestidade
+
+O capítulo de resultados de Kenji declara os efeitos com intervalos, explica o que cada verificação mostrou e rotula qualquer análise exploratória. Ele evita dizer que a segmentação por identidade é segura ou que a segmentação por zonas é insegura. Escreve que, sob as premissas do modelo, a segmentação baseada em identidade reduziu o alcance no pior caso a partir de uma única estação comprometida, em comparação com a segmentação por zonas, que boa parte desse ganho dependeu de evitar regras amplas copiadas de modelos e que ela exigiu cerca de três vezes mais regras. Essa frase é mais longa do que uma manchete, mas cada palavra está apoiada num resultado relatado.
+
+### Exemplo resolvido
+
+Kenji roda seiscentas redes, calcula intervalos por bootstrap para zonas menos identidade e controle aleatório menos identidade, relata as verificações das rivais numa tabela e apresenta o alcance com o número de regras.
+
+> **Caso sintético.** Todos os resultados vêm de simulações sintéticas.
+
+### Erros e limites
+
+Os intervalos por bootstrap descrevem a variação entre as redes geradas, e não a incerteza sobre empresas reais. Os achados exploratórios precisam de confirmação.
+
+### Exercícios
+
+- **EX033 — Espiar cedo.** Por que evitar olhar os resultados antes do fim das execuções? *Rubrica:* 3 = espiar cedo tende a moldar as decisões posteriores;; 2 = viés;; 1 = sem motivo;; 0 = nenhuma.
+
+- **EX034 — Etapas do bootstrap.** Descreva o bootstrap que Kenji usa. *Rubrica:* 3 = reamostrar as redes com reposição, recalcular a diferença média, tomar os 95% centrais;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+
+- **EX035 — Intervalos do laboratório.** Que diferenças médias o laboratório relatou para zonas menos identidade e controle menos identidade? *Rubrica:* 3 = cerca de 2,4 e 1,6 servidor, ambos os intervalos acima de zero;; 2 = um;; 1 = errado;; 0 = nenhuma.
+
+- **EX036 — Rival mais forte.** Que verificação de rival removeu a maior parte da vantagem? *Rubrica:* 3 = a cópia de regras amplas de modelos para um terço das estações;; 2 = modelo;; 1 = tamanho;; 0 = nenhuma.
+
+- **EX037 — Razão de regras.** Quantas vezes mais regras, aproximadamente, as políticas por identidade exigiram em relação às por zonas no laboratório? *Rubrica:* 3 = cerca de três vezes mais;; 2 = razão;; 1 = menos;; 0 = nenhuma.
+
+- **EX038 — Frase apoiada.** Por que Kenji evita chamar de segura a segmentação por identidade? *Rubrica:* 3 = os resultados só sustentam um alcance modelado menor sob premissas, com condições;; 2 = condicional;; 1 = é segura;; 0 = nenhuma.
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redação da dissertação e limitações
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar uma dissertação em torno do seu argumento; (2) escrever limitações específicas e úteis; (3) ligar os achados à prática de arquitetura com responsabilidade; (4) preparar um resumo para praticantes.
+
+### 7.1 Estrutura em torno do argumento
+
+Kenji estrutura a dissertação para que cada capítulo sustente uma etapa do argumento: a pergunta e sua lacuna, o capítulo conceitual vindo do seminário, o método e o piloto, os resultados e as verificações das rivais, e a discussão. Ele escreve primeiro a discussão em esboço e depois confere se cada afirmação nela aponta de volta para um resultado. As afirmações sem apoio são cortadas ou levadas para os trabalhos futuros. A Dra. Aydın lembra que os examinadores leem com atenção o resumo, a introdução e a conclusão e procuram qualquer descompasso com o capítulo de resultados, então essas três seções devem ser escritas por último e conferidas linha a linha.
+
+### 7.2 Limitações específicas
+
+As limitações de Kenji são concretas. O modelo supõe que todo salto é explorável, então o alcance é um limite superior. As redes foram geradas a partir de parâmetros abstraídos de um único empregador e podem não representar organizações com estruturas muito diferentes, como hospitais com muitos dispositivos legados. Supôs-se que as políticas eram aplicadas com exatidão, exceto pelo parâmetro de configuração incorreta. O tempo, a detecção e a resposta não foram modelados. O número de regras é uma medida grosseira da complexidade. Para cada limitação, ele declara a provável direção do seu efeito sobre os achados, o que ajuda os leitores a julgar se ela enfraquece ou fortalece as conclusões.
+
+### 7.3 Ligação com a prática
+
+Na discussão, Kenji relaciona os achados aos padrões sem exagerar. O NIST SP 800-207 recomenda decisões de acesso a cada requisição; seus resultados sugerem que o benefício depende muito de evitar regras amplas copiadas de modelos. O SP 800-53 Rev. 5 inclui controles de proteção de fronteira e de menor privilégio, e seu resultado sobre a complexidade sugere que as organizações devem planejar a gestão das regras, e não só a criação delas. Ele apresenta esses pontos como considerações para arquitetos, e não como requisitos. Também declara que seu estudo não pode dizer se atacantes reais explorariam os caminhos que o modelo encontrou, algo que só evidências de campo poderiam estabelecer.
+
+### 7.4 O resumo para praticantes
+
+Kenji escreve um resumo de duas páginas para a Vantor e organizações semelhantes. Ele explica em linguagem simples que, em simulações com a forma da rede deles, a segmentação baseada em identidade reduziu até onde um atacante conseguiria se mover a partir de um notebook comprometido, mas que copiar modelos amplos de regras removeu a maior parte do benefício, e que as regras por identidade eram cerca de três vezes mais numerosas para gerenciar. Recomenda pilotar num departamento com revisões de regras. Aponta para a dissertação completa e lista as limitações. Ele confere o resumo com a Dra. Aydın para garantir que não diz nada que a dissertação não sustente.
+
+### 7.5 Processo de escrita
+
+Kenji escreve em sessões diárias curtas, mantendo uma lista de perguntas em aberto no topo do arquivo de cada capítulo. Envia os capítulos à Dra. Aydın um de cada vez e registra os comentários dela e suas respostas numa tabela, como depois lhe será pedido que faça para os examinadores. Uma colega lê o capítulo de resultados sem contexto e marca cada frase que não consegue verificar a partir de uma tabela ou figura; Kenji reescreve essas frases. Essa verificação por um leitor frio capta premissas que o autor já não percebe, porque convive com o trabalho há meses.
+
+### Exemplo resolvido
+
+Kenji esboça primeiro a discussão, corta as afirmações sem apoio, escreve cinco limitações específicas com a direção do efeito, relaciona os achados ao SP 800-207 e ao SP 800-53 Rev. 5 e redige um resumo de duas páginas conferido.
+
+> **Caso sintético.** Os rascunhos da dissertação e os comentários da leitora são sintéticos; o SP 800-207 e o SP 800-53 Rev. 5 são reais.
+
+### Erros e limites
+
+As afirmações sobre a direção do efeito também são julgamentos. Os resumos para praticantes correm o risco de serem lidos sem suas limitações.
+
+### Exercícios
+
+- **EX039 — Últimas seções.** Que seções são escritas por último, e por quê? *Rubrica:* 3 = resumo, introdução e conclusão, para que batam com os resultados;; 2 = nomeadas;; 1 = primeiro;; 0 = nenhuma.
+
+- **EX040 — Direção da limitação.** Por que declarar a provável direção do efeito de cada limitação? *Rubrica:* 3 = ajuda os leitores a julgar se ela enfraquece ou fortalece as conclusões;; 2 = direção;; 1 = não é necessário;; 0 = nenhuma.
+
+- **EX041 — Ligação com o SP 800-53.** O que o resultado de complexidade de Kenji sugere sobre os controles de fronteira do SP 800-53 Rev. 5? *Rubrica:* 3 = planejar a gestão das regras, não só a criação;; 2 = gestão;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Lacuna de evidência de campo.** O que só a evidência de campo pode estabelecer? *Rubrica:* 3 = se atacantes reais explorariam os caminhos modelados;; 2 = atacantes reais;; 1 = a simulação mostra;; 0 = nenhuma.
+
+- **EX043 — Recomendação do resumo.** O que o resumo recomenda que a Vantor faça? *Rubrica:* 3 = pilotar num departamento com revisões de regras;; 2 = piloto;; 1 = implantação total;; 0 = nenhuma.
+
+- **EX044 — Leitor frio.** O que a verificação por um leitor frio captou? *Rubrica:* 3 = frases que não podiam ser verificadas por uma tabela ou figura;; 2 = sem apoio;; 1 = erros de digitação;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Revisão independente e defesa
+
+### Objetivos de aprendizagem
+
+Você vai (1) obter uma revisão independente do código e dos resultados; (2) se preparar para uma defesa oral; (3) responder às críticas dos examinadores; (4) planejar os trabalhos seguintes.
+
+### 8.1 Revisão independente do código
+
+Antes da entrega, uma doutoranda de outro grupo revisa o código de Kenji usando apenas o repositório e sua documentação. Ela roda de novo todos os experimentos do zero na própria máquina e chega aos resumos guardados, o que confirma a reprodutibilidade. Ela também descobre que o controle de arestas aleatórias removia arestas da rede plana de forma uniforme, quando um controle mais justo poderia preservar o grau de cada estação. Kenji acrescenta esse controle alternativo como análise de sensibilidade; ele estreita um pouco a vantagem da identidade, mas a mantém clara. Kenji agradece à revisora e registra a mudança na tabela de revisões.
+
+### 8.2 Preparação da defesa
+
+Kenji lista as perguntas prováveis: por que simulação em vez de dados de campo, por que alcance por busca em largura em vez de probabilidade de ataque, como os parâmetros foram escolhidos, o que mudaria sua conclusão e como os praticantes devem usar os resultados. Para cada uma, prepara uma resposta curta que aponta para uma seção e um resultado. Ele ensaia com dois colegas, que interrompem e contestam. A Dra. Aydın o aconselha a responder à pergunta feita, e não à que ele preparou, a admitir a incerteza com franqueza e a usar os limiares de reversão escritos no capítulo 4 como evidência da sua disciplina.
+
+### 8.3 Resposta às críticas
+
+Na defesa, o examinador externo argumenta que a alcançabilidade sem a probabilidade de exploração exagera as diferenças entre as políticas. Kenji concorda que o alcance é um limite superior, explica por que o escolheu pela tratabilidade e pela transparência e sugere ponderar as arestas pela probabilidade de exploração como trabalho futuro. Um segundo examinador pergunta se a rival da cópia de modelos mina toda a recomendação. Kenji responde que ela a qualifica: a segmentação por identidade só ajuda se a gestão das regras impedir modelos amplos, o que já é em si um achado prático. Os examinadores aceitam a dissertação com correções menores.
+
+### 8.4 Correções e arquivamento
+
+Kenji conclui as correções dentro do prazo permitido: esclarece a descrição do bootstrap, leva o controle que preserva o grau para o texto principal e amplia a discussão sobre a probabilidade de exploração. Ele arquiva o código final, as configurações e os resultados com um identificador persistente no repositório da universidade e inclui um manifesto SHA-256 dos arquivos arquivados. A Vantor revisa a versão final e confirma que nenhuma estrutura sensível é revelada. O arquivo permite que outros rodem de novo ou ampliem o estudo com outras formas de rede. Também permite que os examinadores e os leitores futuros confiram se os números publicados vieram do código arquivado.
+
+### 8.5 Trabalhos seguintes
+
+Kenji lista os estudos seguintes: ponderar as arestas pela probabilidade de exploração, modelar o tempo de detecção e de resposta, testar formas de rede de outros setores e conduzir um piloto de campo na Vantor que meça o número real de regras e as tentativas de acesso. Ele oferece o código a outro estudante. Sua reflexão observa que os momentos mais úteis foram aqueles em que suas expectativas foram contestadas, pelo controle aleatório, pela rival da cópia de modelos e pela crítica do examinador, porque cada um tornou sua afirmação final menor, mas muito mais defensável. Agora ele trata uma expectativa contestada como progresso, e não como revés.
+
+### Exemplo resolvido
+
+O código de Kenji é rodado de novo por uma revisora independente, um controle que preserva o grau é acrescentado, ele defende a escolha do limite superior e o achado sobre os modelos e arquiva o estudo corrigido com um manifesto.
+
+> **Caso sintético.** Os revisores, os examinadores e os desfechos são sintéticos.
+
+### Erros e limites
+
+A nova execução independente confirma a reprodutibilidade, não a validade das premissas. Correções menores ainda podem mudar a ênfase.
+
+### Exercícios
+
+- **EX045 — Confirmação da nova execução.** O que a nova execução da revisora independente confirmou? *Rubrica:* 3 = a reprodutibilidade: os resultados bateram com os resumos guardados;; 2 = bateram;; 1 = validade;; 0 = nenhuma.
+
+- **EX046 — Controle mais justo.** Que controle mais justo a revisora sugeriu, e com que efeito? *Rubrica:* 3 = controle aleatório que preserva o grau; estreitou um pouco a vantagem, que continuou clara;; 2 = controle;; 1 = removeu a vantagem;; 0 = nenhuma.
+
+- **EX047 — Defesa do limite superior.** Como Kenji respondeu à crítica de exagero? *Rubrica:* 3 = concordou que o alcance é um limite superior, escolhido pela tratabilidade, e sugeriu ponderar pela probabilidade;; 2 = concordância mais motivo;; 1 = negou;; 0 = nenhuma.
+
+- **EX048 — Os modelos qualificam.** Como Kenji enquadrou o achado da cópia de modelos? *Rubrica:* 3 = ele qualifica a recomendação: o benefício exige gestão de regras contra modelos amplos;; 2 = qualifica;; 1 = mina;; 0 = nenhuma.
+
+- **EX049 — Conteúdo do arquivo.** O que o arquivo de Kenji contém? *Rubrica:* 3 = código final, configurações, resultados e um manifesto SHA-256;; 2 = três itens;; 1 = dados da Vantor;; 0 = nenhuma.
+
+- **EX050 — Momentos valorizados.** Que momentos Kenji considera os mais úteis na reflexão? *Rubrica:* 3 = quando as expectativas foram contestadas pelo controle, pela rival e pelo examinador;; 2 = contestadas;; 1 = elogios;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX026 (as de EX027–EX050 estão na edição em inglês até a tradução dos capítulos correspondentes). Kenji Albrecht, a Dra. Selin Aydın, a Northmoor University, a Vantor Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX050. Kenji Albrecht, a Dra. Selin Aydın, a Northmoor University, a Vantor Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** População: redes simuladas como a da Vantor; intervenção: microssegmentação baseada em identidade; comparação: segmentação por zonas; desfecho: servidores alcançáveis a partir de uma estação comprometida.
 
@@ -363,6 +597,54 @@ Respostas-modelo para EX001–EX026 (as de EX027–EX050 estão na edição em i
 **EX025.** Que as regras de identidade costumam ser copiadas de modelos, dando a muitas estações o mesmo acesso amplo.
 
 **EX026.** Escrever, antes de ver os resultados, as observações que mudariam a conclusão.
+
+**EX027.** Que um piloto mostre que a simulação roda dentro do tempo de computação disponível.
+
+**EX028.** As arestas dos jump hosts eram adicionadas duas vezes, inflando o alcance numa das políticas.
+
+**EX029.** Eram necessárias cerca de sessenta por tamanho; Kenji escolheu duzentas para acomodar as verificações das rivais.
+
+**EX030.** Porque cada departamento tinha um único servidor, de modo que as políticas por zonas e por identidade davam o mesmo alcance.
+
+**EX031.** De zero a cinco por cento, porque dez por cento deixava todas as políticas quase planas e os engenheiros julgaram realista a faixa menor.
+
+**EX032.** Para que os experimentos principais partam de uma versão do código testada e identificável.
+
+**EX033.** Porque ver resultados parciais tende a influenciar as escolhas de análise posteriores.
+
+**EX034.** Ele reamostra as redes com reposição muitas vezes, recalcula a diferença média e usa os 95% centrais dos valores como intervalo.
+
+**EX035.** Zonas menos identidade deu cerca de 2,4 servidores e controle aleatório menos identidade cerca de 1,6 (2,43 e 1,56), ambos com intervalos acima de zero.
+
+**EX036.** A cópia de modelos, quando um terço das estações herdou um conjunto amplo de regras.
+
+**EX037.** Cerca de três vezes mais regras de permissão.
+
+**EX038.** Porque as evidências só sustentam um alcance modelado menor sob premissas e condições declaradas, e não uma afirmação geral de segurança.
+
+**EX039.** O resumo, a introdução e a conclusão, para que possam ser conferidos com os resultados finais.
+
+**EX040.** Para que os leitores vejam se cada limitação provavelmente reduziria ou aumentaria o efeito relatado.
+
+**EX041.** Que as organizações devem planejar a gestão das regras ao longo do tempo, e não só criá-las.
+
+**EX042.** Se atacantes reais de fato usariam os caminhos que o modelo encontrou.
+
+**EX043.** Pilotar a segmentação por identidade num departamento, com revisões regulares das regras.
+
+**EX044.** Frases que não podiam ser verificadas a partir de nenhuma tabela ou figura.
+
+**EX045.** A reprodutibilidade: os experimentos se reproduzem exatamente a partir do repositório e da documentação.
+
+**EX046.** Um controle que preserva o grau de cada estação; ele estreitou um pouco a vantagem da identidade, mas a manteve clara.
+
+**EX047.** Concordou que o alcance é um limite superior, explicou que foi escolhido pela tratabilidade e pela transparência e propôs arestas ponderadas pela probabilidade como trabalho futuro.
+
+**EX048.** Como uma qualificação: a segmentação por identidade só ajuda quando a gestão das regras impede regras amplas de modelos.
+
+**EX049.** O código final, as configurações das execuções, os resultados e um manifesto SHA-256 dos arquivos.
+
+**EX050.** Os momentos em que suas expectativas foram contestadas, que tornaram sua afirmação menor, porém mais defensável.
 
 <a id="references"></a>
 ## Referências
