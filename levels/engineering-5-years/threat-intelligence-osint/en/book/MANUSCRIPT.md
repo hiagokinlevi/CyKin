@@ -2277,7 +2277,7 @@ Uptime of each process is not what analysts experience. Kofi adds a synthetic pr
 
 ### Worked example
 
-Kofi proposes a second enrichment instance on a different host and a fallback mode that skips external enrichment when the provider is down. The measured monthly availability rises from 97.4% to 99.2% over the next quarter.
+Kofi proposes a second enrichment instance on a different host and a fallback mode that skips external enrichment when the provider is down. The measured monthly availability rises from 97.4% to 99.2% over the next quarter; these are measured figures, so they differ slightly from the 0.9732 and 0.9926 that Lab 7 predicts.
 
 > **Synthetic case.** Figures are illustrative.
 
