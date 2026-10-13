@@ -25,8 +25,8 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 | Parte | Capítulos |
 |---|---|
-| Decisiones y práctica actual | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](../../en/book/MANUSCRIPT.md#ch-04) |
-| Diseño, evaluación e integración | [5](../../en/book/MANUSCRIPT.md#ch-05) · [6](../../en/book/MANUSCRIPT.md#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) |
+| Decisiones y práctica actual | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| Diseño, evaluación e integración | [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) |
 | Investigación, proyecto y transferencia | [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -272,7 +272,229 @@ La evidencia especializada se gradúa por su solidez, se comunica con intervalos
 
 ### Siga estudiando — capítulo 03 de 12
 
-[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Riesgo y ética avanzados
+
+### Resultados de aprendizaje
+
+Usted podrá (1) analizar el riesgo de seguridad de la IA para las personas afectadas, no solo para la organización; (2) aplicar los conceptos del Reglamento de IA de la UE sobre niveles de riesgo, supervisión humana (artículo 14) y precisión, solidez y ciberseguridad (artículo 15); (3) gestionar los conflictos éticos en las pruebas y la divulgación; (4) usar la norma ISO/IEC 42001 para integrar el trabajo de riesgos en la gestión; y (5) defender una decisión de aceptación del riesgo.
+
+### 4.1 ¿El riesgo de quién?
+
+Los registros de riesgos de la organización recogen las pérdidas para la organización. Los fallos de la IA suelen recaer en otros: un cliente rechazado por error, un trabajador cuyos datos se filtran, un conductor enviado a una dirección equivocada. NIST AI 100-1 pide a las organizaciones que consideren los impactos sobre las personas, los grupos, las organizaciones y la sociedad. Un especialista sénior debe enumerar las partes afectadas por cada riesgo y preguntarse si pueden advertir el daño, impugnarlo y recuperarse de él.
+
+En Corvane, los retrasos de FraudScore recaen en los pequeños proveedores, no en Corvane. La entrada de riesgo de Amira para FraudScore los nombra y les ofrece una vía de recurso.
+
+### 4.2 El Reglamento de IA en la práctica
+
+El Reglamento (UE) 2024/1689 clasifica los sistemas de IA según su riesgo. Los sistemas de alto riesgo conllevan obligaciones que incluyen la gestión de riesgos, la gobernanza de los datos, el registro de actividad y la supervisión humana —el artículo 14 exige que las personas que supervisan el sistema puedan comprender sus límites, interpretar sus salidas e intervenir o detenerlo— y el artículo 15, que exige un nivel adecuado de precisión, solidez y ciberseguridad y nombra amenazas como el envenenamiento de datos, el envenenamiento de modelos, los ejemplos adversarios y los ataques a la confidencialidad. Que un sistema concreto sea de alto riesgo depende de su uso; determínelo con asesoría jurídica en lugar de suponerlo.
+
+Para Corvane, si Dispatch Copilot o FraudScore son de alto riesgo es una cuestión para la asesoría jurídica.
+
+### 4.3 Ética de las pruebas y de la divulgación
+
+Las pruebas deben estar autorizadas y delimitadas; deben usarse datos sintéticos o con consentimiento; las pruebas en producción no deben perjudicar a los usuarios. Cuando encuentre una debilidad en el modelo de un proveedor, coordine la divulgación: informe al proveedor, acuerde un calendario y evite publicar exploits funcionales que pongan en peligro a otros. Cuando la presión interna empuje a ocultar un hallazgo, documéntelo y escálelo: suprimir la evidencia de un riesgo para otros es un fallo ético aunque ninguna norma lo mencione.
+
+En Corvane, el informe de Amira sobre el filtro de inyección del proveedor se compartió con el proveedor antes de cualquier debate más amplio. Si una prueba pudiera afectar a clientes o transportistas reales, deténgase y use en su lugar una copia aislada, como hacen todas las pruebas de Corvane.
+
+### 4.4 Sistemas de gestión
+
+La norma ISO/IEC 42001 pide a las organizaciones que definan la política de IA, los roles, la evaluación y el tratamiento de riesgos, la evaluación de impacto y la mejora continua. Su valor para la seguridad es que el trabajo de riesgos pasa a ser recurrente y auditado en lugar de una revisión puntual. En Corvane, Amira usa el sistema de gestión para programar evaluaciones recurrentes de los sistemas de nivel alto y para registrar las aceptaciones de riesgo, como la aceptación del director financiero para FraudScore. La auditoría comprueba después que esos registros existen y están al día, lo que impide que el trabajo se diluya tras la primera revisión.
+
+### 4.5 Ejemplo resuelto (caso sintético de Corvane)
+
+FraudScore señala facturas de proveedores; los proveedores señalados esperan 30 días para cobrar. Amira descubre que los pequeños proveedores con una facturación irregular son señalados cuatro veces más a menudo que los grandes. Aunque bajen las pérdidas por fraude, el daño recae en pequeñas empresas que no pueden ver por qué se les retrasa el pago. Su entrada de riesgo los incluye como parte afectada; el tratamiento añade un código de motivo, una revisión humana en 5 días y un canal de recurso. Registra el riesgo residual y pide al director financiero que lo acepte por escrito.
+
+### 4.6 Errores y límites
+
+- Registros que omiten a las personas afectadas.
+- Suponer la clasificación según el Reglamento de IA sin asesoramiento jurídico.
+- Probar con usuarios de producción sin su consentimiento.
+
+Cada error deja daños sin gestionar. Un registro sin personas afectadas pasaría por alto a los pequeños proveedores de FraudScore, que soportan el retraso. Suponer la clasificación según el Reglamento de IA puede crear obligaciones que no se aplican u omitir otras que sí; consulte a la asesoría jurídica. Probar con usuarios de producción sin su consentimiento puede perjudicarlos e incumple la autorización que toda prueba necesita. Revise su registro y sus planes de prueba en busca de los tres.
+
+### Ejercicios
+
+- **EX016 — Partes afectadas.** Enumere las partes afectadas y los daños de los reembolsos de Dispatch Copilot. Rúbrica: 3 = al menos cuatro partes con daños y vías de recurso; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX017 — Artículo 14.** Describa funciones de supervisión para FraudScore que cumplan la intención del artículo 14. Rúbrica: 3 = comprender los límites, interpretar, anular, detener; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX018 — Divulgación.** Encuentra un *jailbreak* en el modelo de un proveedor. Esboce un plan de divulgación. Rúbrica: 3 = contacto con el proveedor, calendario, detalle limitado, mitigación interna; 2 = tres; 1 = uno; 0 = publicar de inmediato.
+- **EX019 — Presión.** Un responsable le pide que elimine un hallazgo de un informe. Responda. Rúbrica: 3 = documentado, escalado, explica el daño; 2 = parcial; 1 = accede con una nota; 0 = accede en silencio.
+- **EX020 — Aceptación.** Redacte una aceptación del riesgo residual de FraudScore. Rúbrica: 3 = riesgo, partes afectadas, tratamiento, responsable, fecha de revisión; 2 = cuatro; 1 = dos; 0 = nada.
+
+### Síntesis
+
+El trabajo de riesgos avanzado cuenta los daños para todos los afectados, usa la ley y las normas como estructura y no como adorno, y trata las pruebas y la divulgación honestas como parte del trabajo.
+
+### Siga estudiando — capítulo 04 de 12
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Seguridad de la IA y del aprendizaje automático: alternativas de diseño
+
+### Resultados de aprendizaje
+
+Usted podrá (1) generar varias arquitecturas para una funcionalidad de IA; (2) compararlas en seguridad, utilidad, coste y reversibilidad; (3) aplicar patrones como la separación de privilegios, planificar y luego ejecutar y las salidas estructuradas; (4) evaluar las defensas del lado del modelo frente a las del lado del sistema; y (5) presentar una disyuntiva de diseño.
+
+### 5.1 Generar antes de elegir
+
+Un fallo habitual es proteger el primer diseño propuesto. Genere al menos tres: el diseño mínimo (el modelo redacta, una persona actúa); el agente acotado (el modelo llama a herramientas específicas con comprobaciones externas); y el agente amplio (el modelo dispone de herramientas generales). Después compárelos. A menudo el diseño mínimo aporta la mayor parte del valor con poco riesgo. La comparación de Amira para la reprogramación en el ejemplo resuelto que sigue parte de tres diseños. Para la reprogramación en Corvane, el diseño mínimo mantiene un clic humano en cada cambio. Escriba cada diseño con su límite de daño antes de puntuar ninguno, para que la primera idea no condicione la comparación.
+
+### 5.2 Patrones
+
+*Separación de privilegios*: un componente lee el contenido no fiable sin acceso a herramientas y devuelve datos estructurados; otro, que nunca ve el texto no fiable en bruto, decide las acciones. *Planificar y luego ejecutar*: el modelo propone un plan con un esquema fijo; un comprobador determinista lo valida frente a la política antes de ejecutarlo. *Salidas estructuradas*: las acciones son campos tipados, no texto libre, de modo que la validación es exacta. *Credenciales con alcance limitado*: las llamadas a herramientas se ejecutan con los derechos del usuario final, nunca con una cuenta de servicio que pueda llegar a todos los registros.
+
+El diseño de reprogramación de Amira usa la separación de privilegios y las salidas estructuradas.
+
+### 5.3 Lado del modelo frente a lado del sistema
+
+Las defensas del lado del modelo —el entrenamiento de seguridad, los clasificadores de inyección, las consultas estructuradas— reducen la tasa de salidas dañinas. Las defensas del lado del sistema —las comprobaciones de políticas, los límites, el aislamiento (*sandboxing*), la confirmación— acotan el daño cuando se producen salidas dañinas. Wei et al. (arXiv:2307.02483) analizan por qué el entrenamiento de seguridad falla frente a los *jailbreaks*, lo que respalda la idea de que las defensas del lado del modelo no deben ser la única capa. Use ambas, pero ponga las garantías en el sistema.
+
+En Corvane, el clasificador de inyección está del lado del modelo y el servicio de políticas del lado del sistema; la evaluación mostró que solo el segundo alcanzaba un daño cercano a cero.
+
+### 5.4 Comparar diseños
+
+Puntúe cada diseño según: límite de daño (pérdida en el peor caso por incidente), tasa de fallo esperada, valor para el usuario, coste de operación, esfuerzo de implantación y reversibilidad. Presente una tabla y una recomendación, e indique qué puntuaciones son estimaciones. Para la reprogramación, la tabla de Amira mostraría el diseño C con un daño ilimitado, el diseño A con poco valor y el diseño B con un tope y mucho valor. Marque qué puntuaciones están medidas y cuáles son estimaciones. Presente la tabla al responsable del producto con la recomendación, y registre la decisión con su responsable y sus desencadenantes de revisión.
+
+### 5.5 Ejemplo resuelto (caso sintético de Corvane)
+
+Para la reprogramación, Amira compara: (A) Copilot redacta una reprogramación y un agente hace clic para confirmar —límite de daño: una reserva errónea por clic; valor moderado—; (B) Copilot propone una reprogramación estructurada que se comprueba frente al titular del envío y las reglas de fechas y se ejecuta automáticamente para envíos de menos de 2000 € —límite de daño acotado por el tope de valor; valor alto—; (C) Copilot dispone de una clave general de la API logística —límite de daño: toda la base de datos de envíos—. Recomienda B con separación de privilegios: un modelo lector analiza los correos de los transportistas y los convierte en campos; el planificador nunca ve el texto en bruto del correo.
+
+### 5.6 Errores y límites
+
+- Comparar un solo diseño con «no hacer nada».
+- Confiar en las instrucciones del *prompt* como frontera.
+- Credenciales de herramientas de una cuenta de servicio.
+
+Cada error estrecha la elección de forma injusta. Comparar un diseño con no hacer nada oculta opciones seguras más baratas, como el diseño mínimo. Las instrucciones del *prompt* pueden quedar anuladas por texto inyectado, así que no pueden ser la frontera. Una credencial de cuenta de servicio permite que una sola instrucción inyectada llegue a todos los registros, como lo haría la clave general de la API del diseño C. Una revisión del diseño que caiga en una de estas trampas debe devolverse al equipo antes de su aprobación.
+
+### Ejercicios
+
+- **EX021 — Tres diseños.** Proponga tres diseños para una funcionalidad con un LLM que responda preguntas sobre nóminas. Rúbrica: 3 = mínimo, acotado y amplio, con sus diferencias; 2 = dos; 1 = uno; 0 = ninguno.
+- **EX022 — Separación de privilegios.** Explique cómo la separación de privilegios limita la inyección indirecta en el diseño B. Rúbrica: 3 = el texto no fiable no llega al planificador; solo pasan campos tipados; riesgo residual a través de los valores de los campos; 2 = sin el residual; 1 = vago; 0 = incorrecto.
+- **EX023 — Modelo o sistema.** Clasifique seis defensas como del lado del modelo o del lado del sistema. Rúbrica: 3 = las seis; 2 = cinco; 1 = tres o cuatro; 0 = menos.
+- **EX024 — Tabla comparativa.** Construya la tabla comparativa de los diseños A–C. Rúbrica: 3 = seis criterios, estimaciones marcadas, recomendación; 2 = cuatro criterios; 1 = vago; 0 = nada.
+- **EX025 — Credenciales.** ¿Por qué deben las llamadas a herramientas usar los derechos del usuario final? Rúbrica: 3 = agente confundido, radio de impacto, auditoría; 2 = dos; 1 = uno; 0 = ninguno.
+
+### Síntesis
+
+Un buen diseño de seguridad de la IA genera alternativas y las compara abiertamente, pone las garantías en los controles del lado del sistema y usa las defensas del lado del modelo para reducir las tasas de fallo.
+
+### Siga estudiando — capítulo 05 de 12
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Seguridad de la IA y del aprendizaje automático: evaluación controlada
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diseñar una evaluación controlada que compare defensas; (2) controlar factores de confusión como el solapamiento de los conjuntos de pruebas y las versiones del modelo; (3) elegir métricas de efecto y tamaños de muestra; (4) evaluar amenazas clásicas del aprendizaje automático como el envenenamiento; y (5) comunicar resultados que respalden una decisión.
+
+### 6.1 Comparación controlada
+
+Cambie una sola cosa cada vez. Mantenga fijos la versión del modelo, el *prompt*, el índice de recuperación y el conjunto de pruebas mientras compara defensas; registre las versiones. Divida los conjuntos en casos de desarrollo (usados para ajustar las defensas) y casos reservados (usados una sola vez para comunicar resultados), e incluya casos adaptativos escritos por personas que no construyeron la defensa. En Corvane, la comparación de tres defensas usó la misma versión del modelo, los mismos *prompts* y 400 casos reservados. Registre la versión del conjunto y quién escribió los casos adaptativos, para que una repetición posterior pueda usar las mismas condiciones. Mantenga sellados los casos reservados hasta la comparación final.
+
+### 6.2 Métricas y tamaño de la muestra
+
+Mida los efectos: llamadas dañinas a herramientas, registros divulgados, dinero movido. Mida también los costes: rechazos indebidos y finalización de tareas en el tráfico normal. Para distinguir un 15 % de un 10 % de éxito de los ataques con una confianza razonable se necesitan unos cientos de casos por grupo; para afirmar una tasa inferior al 1 % se necesitan varios cientos de casos con cero fallos o casi cero. La evaluación de Amira usó 400 casos adaptativos y 2000 conversaciones normales, suficientes para separar tasas del 22 %, el 9 % y el 0,5 % y para medir la finalización de tareas. Planifique los tamaños de muestra antes de ejecutar las pruebas, no después de ver los resultados.
+
+### 6.3 Amenazas clásicas
+
+En los modelos predictivos, la evaluación controlada incluye el envenenamiento y la evasión. El laboratorio muestra que el envenenamiento por inversión de etiquetas apenas mueve la exactitud limpia, mientras que una puerta trasera con 80 puntos con disparador alcanza un 98 % de éxito del ataque sin cambiar la exactitud limpia. La monitorización de la exactitud limpia por sí sola no la detectaría.
+
+```python
+"""Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
+classifier (synthetic data, stdlib only). Teaching model only."""
+import random
+rng = random.Random(11)
+def point(label, trigger=False):
+    cx = 1.0 if label else -1.0
+    x = [rng.gauss(cx, 0.8), rng.gauss(cx, 0.8), 0.0]
+    if trigger: x[2] = 5.0          # third feature is the 'trigger'
+    return x, label
+clean = [point(i % 2) for i in range(400)]
+test = [point(i % 2) for i in range(400)]
+def fit(data):
+    c = {}
+    for lab in (0, 1):
+        pts = [x for x, y in data if y == lab]
+        c[lab] = [sum(p[i] for p in pts)/len(pts) for i in range(3)]
+    return c
+def pred(c, x):
+    d = {k: sum((x[i]-v[i])**2 for i in range(3)) for k, v in c.items()}
+    return min(d, key=d.get)
+def accuracy(c, data): return sum(pred(c, x) == y for x, y in data)/len(data)
+print("label-flip poisoning (flip a fraction of class-1 labels to 0):")
+for frac in (0.0, 0.1, 0.2, 0.3, 0.4):
+    data = [(x, y) for x, y in clean]; ones = [i for i, (x, y) in enumerate(data) if y == 1]
+    for i in ones[:int(frac*len(ones))]: data[i] = (data[i][0], 0)
+    print(f"  flipped={frac:.1f} clean_test_accuracy={accuracy(fit(data), test):.3f}")
+print("backdoor: add n triggered class-1 points labelled 0")
+trig_test = [point(1, trigger=True) for _ in range(200)]
+for n in (0, 10, 40, 80):
+    data = clean + [(point(1, trigger=True)[0], 0) for _ in range(n)]
+    c = fit(data)
+    asr = sum(pred(c, x) == 0 for x, _ in trig_test)/len(trig_test)
+    print(f"  poison_points={n:3d} clean_accuracy={accuracy(c, test):.3f} attack_success={asr:.3f}")
+```
+
+Salida esperada:
+
+```text
+label-flip poisoning (flip a fraction of class-1 labels to 0):
+  flipped=0.0 clean_test_accuracy=0.965
+  flipped=0.1 clean_test_accuracy=0.965
+  flipped=0.2 clean_test_accuracy=0.953
+  flipped=0.3 clean_test_accuracy=0.950
+  flipped=0.4 clean_test_accuracy=0.945
+backdoor: add n triggered class-1 points labelled 0
+  poison_points=  0 clean_accuracy=0.965 attack_success=0.075
+  poison_points= 10 clean_accuracy=0.963 attack_success=0.145
+  poison_points= 40 clean_accuracy=0.963 attack_success=0.685
+  poison_points= 80 clean_accuracy=0.968 attack_success=0.980
+```
+
+Para FraudScore, el equipo de Amira añade una prueba de puerta trasera con facturas sintéticas con disparador, porque un conjunto de entrenamiento envenenado podría superar las comprobaciones de exactitud limpia. Comunique tanto la exactitud limpia como el éxito del disparador en cada prueba. Ejecute la prueba del disparador después de cada reentrenamiento, ya que una nueva fuente de datos puede introducir una puerta trasera en cualquier momento.
+
+### 6.4 Comunicar para decidir
+
+Comunique por cada defensa: el éxito de los ataques con su intervalo, la diferencia respecto a la línea base con su intervalo, los efectos secundarios, el coste y las condiciones (versiones, conjuntos, fechas). Termine con lo que el resultado implica para la decisión y con lo que no demuestra. En Corvane, el informe sobre las tres defensas terminó con una recomendación a favor de la separación de privilegios e indicó que el clasificador se mantendría solo como señal de monitorización. También indicó lo que el resultado no demostraba: el comportamiento con versiones futuras del modelo o con nuevos estilos de ataque.
+
+### 6.5 Ejemplo resuelto (caso sintético de Corvane)
+
+El equipo de Amira compara el Copilot de base, Copilot con un clasificador de inyección y Copilot con separación de privilegios, con 400 casos adaptativos reservados más 2000 conversaciones normales. Llamadas dañinas a herramientas: 22 %, 9 % y 0,5 %. Finalización de tareas normales: 91 %, 86 % y 90 %. El clasificador redujo los ataques, pero también bloqueó correos legítimos de transportistas que contenían expresiones como «ignore the previous slot» («ignora la franja anterior»). Recomienda la separación de privilegios y mantiene el clasificador solo como señal de monitorización. Para FraudScore añade una prueba de puerta trasera con facturas sintéticas con disparador.
+
+El resultado se comunica con las tasas de finalización además de las tasas de ataque, de modo que el coste de cada defensa queda claro.
+
+### 6.6 Errores y límites
+
+- Cambiar a la vez el modelo y la defensa.
+- Ajustar con el conjunto de comunicación de resultados.
+- Ignorar los rechazos indebidos.
+
+Cada error hace que una comparación no sea fiable. Cambiar a la vez el modelo y la defensa significa que nadie sabe cuál causó el cambio. Ajustar con el conjunto de comunicación de resultados hace que la defensa parezca mejor de lo que es frente a ataques nuevos. Ignorar los rechazos indebidos oculta costes, como el clasificador que bloqueaba correos legítimos de transportistas en Corvane. Un plan de evaluación con uno de estos defectos debe corregirse antes de que los resultados lleguen a quien toma la decisión.
+
+### Ejercicios
+
+- **EX026 — Diseño.** Diseñe una evaluación controlada de dos enfoques de control de acceso en RAG. Rúbrica: 3 = variables fijas, conjuntos, métricas, tamaño de la muestra; 2 = tres; 1 = uno o dos; 0 = nada.
+- **EX027 — Factores de confusión.** Enumere cuatro factores de confusión y cómo controlarlos. Rúbrica: 3 = cuatro con sus controles; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX028 — Laboratorio de envenenamiento.** Interprete las filas de puerta trasera del laboratorio. Rúbrica: 3 = el éxito del ataque crece con los puntos, la exactitud limpia se mantiene plana, implicación para la monitorización; 2 = dos; 1 = uno; 0 = incorrecto.
+- **EX029 — Disyuntiva.** ¿Debe Corvane mantener el clasificador en la ruta de bloqueo? Justifíquelo. Rúbrica: 3 = usa tanto los resultados de ataque como los de finalización; 2 = uno; 1 = afirmación; 0 = nada.
+- **EX030 — Informe.** Redacte el párrafo de resultados del §6.5. Rúbrica: 3 = tasas, intervalos o tamaños, efectos secundarios, condiciones, implicación; 2 = cuatro; 1 = dos; 0 = nada.
+
+### Síntesis
+
+La evaluación controlada cambia una sola cosa cada vez, usa conjuntos adaptativos reservados, mide los efectos y los efectos secundarios, y comunica los resultados de una forma que orienta la decisión.
+
+### Siga estudiando — capítulo 06 de 12
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
 
 <a id="worked-results"></a>
 
@@ -314,6 +536,51 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX014.** Una puerta trasera puede dejar sin cambios la exactitud limpia mientras el éxito del ataque es alto. El laboratorio muestra una exactitud limpia de 0,968 junto a un éxito del ataque de 0,980, así que cualquiera de las dos cifras por sí sola induce a error.
 
 **EX015.** «En 300 conversaciones adaptativas reservadas sobre una copia aislada (modelo v3, *prompt* p12, octubre de 2026), ningún reembolso contrario a las políticas llegó al pago; el límite superior al 95 % es de aproximadamente el 1 %. Esto depende del servicio de políticas, no del modelo ni del filtro.»
+
+**EX016.** Los clientes pueden ser rechazados por error (recurso: escalar a una persona). Corvane pierde dinero con reembolsos indebidos (recurso: límites y auditoría). Al personal se le puede culpar de las acciones del agente (recurso: registros). Las víctimas de fraude cuyas cuentas se usan para reembolsos fraudulentos (recurso: comprobaciones de identidad y reversión). Los transportistas afectados por una reprogramación errónea (recurso: notificación).
+
+**EX017.** Los revisores ven un código de motivo y una nota de límites conocidos, como «los pequeños proveedores irregulares se señalan más». Pueden anular una señal, y cada anulación queda registrada. Un interruptor de parada vuelve a la revisión manual. La formación cubre el sesgo de automatización.
+
+**EX018.** Informe en privado al contacto de seguridad del proveedor con una reproducción mínima. Acuerde un calendario de 90 días. Aplique de inmediato mitigaciones internas (límites, monitorización). Publique solo después de una corrección, sin un exploit funcional que ponga en peligro a otros.
+
+**EX019.** Niéguese a eliminar el hallazgo. Documente la petición y los motivos. Explique quién podría resultar perjudicado. Escale al comité de riesgos o al canal de ética, y ofrezca añadir contexto o una respuesta de la dirección en lugar de borrarlo.
+
+**EX020.** «Riesgo: los pequeños proveedores son señalados de forma desproporcionada y sufren retrasos. Afectados: pequeños proveedores. Tratamiento: códigos de motivo, revisión en 5 días, recurso. Residual: persiste cierto retraso durante unos días. Aceptado por el director financiero, 12 de octubre de 2026; revisión en seis meses o al llegar a 20 recursos.»
+
+**EX021.** Mínimo: el modelo redacta respuestas solo a partir de los documentos de políticas, y el personal las verifica. Acotado: el modelo responde con los registros de nómina del propio empleado, obtenidos con las credenciales de ese empleado. Amplio: el modelo consulta libremente la base de datos de nóminas. Tanto el riesgo como el valor aumentan del mínimo al amplio.
+
+**EX022.** El modelo lector convierte el correo en campos tipados (ID del envío, fecha, código del almacén). El planificador solo ve esos campos y no puede leer instrucciones incrustadas. El riesgo residual es que los valores maliciosos de los campos, como un código de almacén falso, siguen pasando, por lo que los valores deben validarse frente al sistema de registro.
+
+**EX023.** Lado del modelo: ajuste fino de seguridad, clasificador de inyección, consultas estructuradas. Lado del sistema: servicio de políticas, limitación de tasa, confirmación humana.
+
+**EX024.**
+
+| Criterio | A: redactar y confirmar | B: acotado y automático | C: API amplia |
+|---|---|---|---|
+| Límite de daño | bajo | acotado por el valor | muy alto |
+| Tasa de fallo | baja (estimación) | baja (estimación) | desconocida |
+| Valor para el usuario | medio | alto | alto |
+| Coste de operación | alto en tiempo del personal | bajo | bajo |
+| Esfuerzo | bajo | medio | bajo |
+| Reversibilidad | alta | alta | baja |
+
+Recomendación: B.
+
+**EX025.** Evita el problema del agente confundido (*confused deputy*), en el que un agente con derechos amplios actúa en nombre de alguien que carece de ellos. Limita el radio de impacto a los datos de ese usuario. Además, hace que la auditoría atribuya cada acción a una persona.
+
+**EX026.** Fije el modelo, el *prompt*, el índice y los documentos. Compare el enfoque 1 (filtrado después de la recuperación) con el enfoque 2 (un índice particionado por permisos). Use 300 consultas reservadas entre usuarios, incluidas algunas adaptativas, más 1000 consultas normales. Métricas: pasajes no autorizados devueltos, con un intervalo, y calidad de las respuestas. Repita con tres semillas.
+
+**EX027.**
+- Deriva de la versión del modelo: fije la versión.
+- Solapamiento del conjunto con los datos de ajuste: use conjuntos reservados.
+- Conocimiento de quien prueba: use un equipo adaptativo independiente.
+- Carga según la hora del día que afecta a los tiempos de espera: ejecute los grupos intercalados.
+
+**EX028.** A medida que los puntos envenenados pasan de 0 a 80, el éxito del ataque sube de 0.075 a 0.980, mientras que la exactitud limpia se mantiene entre 0.963 y 0.968. Monitorizar la exactitud limpia no detectaría la puerta trasera, así que se necesitan pruebas con el disparador o comprobaciones de la procedencia de los datos.
+
+**EX029.** No, no en la ruta de bloqueo. Redujo los ataques (del 22 % al 9 %) pero bajó la finalización (del 91 % al 86 %). La separación de privilegios logra un 0,5 % con un 90 % de finalización, así que ahí el clasificador añade coste sin beneficio. Manténgalo como señal de monitorización.
+
+**EX030.** «Con 400 casos adaptativos reservados y 2000 conversaciones normales (modelo v3, octubre de 2026), las llamadas dañinas a herramientas fueron del 22 % en la línea base, del 9 % con el clasificador y del 0,5 % con la separación de privilegios. La finalización normal fue del 91 %, el 86 % y el 90 %. La separación de privilegios reduce los ataques sin perjudicar el servicio; el clasificador bloquea texto legítimo de los transportistas. Estos resultados no abarcan otros idiomas.»
 
 <a id="references"></a>
 
