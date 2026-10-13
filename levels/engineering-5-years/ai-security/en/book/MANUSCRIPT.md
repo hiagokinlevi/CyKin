@@ -466,6 +466,8 @@ You will (1) apply Bayes' rule to detection problems; (2) explain base rates and
 
 P(A | B) = P(B | A) P(A) / P(B). For a detector of malicious prompts, the true-positive rate is P(alert | malicious) and the false-positive rate is P(alert | benign). What operators care about is *precision*, P(malicious | alert), which depends strongly on the base rate P(malicious).
 
+The two rates describe the detector and stay roughly fixed; precision describes the detector in a particular stream of traffic and changes whenever the mix changes. Sam writes all three numbers in every detector report, because operators who read only the true-positive rate tend to treat every alert as an attack.
+
 ### 7.2 The base-rate effect
 
 The lab computes precision for three detectors and three prevalences. A detector with 95% TPR and 5% FPR looks good, but if only 1 in 1,000 prompts is malicious, fewer than 2% of its alerts are real. Arp et al. (arXiv:2010.09470) list the base-rate fallacy among the common pitfalls of machine learning in security.
@@ -496,27 +498,39 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
+Reading the table row by row shows that cutting false positives does more than raising detection. At a prevalence of 0.001, the third detector catches fewer attacks than the first, yet nearly half its alerts are real against under 2%, and it raises 18 alerts per 10,000 prompts instead of 509.
+
 ### 7.3 Estimating rates
 
 An observed rate k/n has uncertainty. The Wilson score interval is reliable even for small n or rates near 0 or 1. Report intervals, and size studies so intervals are narrow enough for the decision: n ≈ z² p(1 − p)/h² for half-width h.
+
+Wilson's interval stays inside 0 and 1 and is close to correct even when few failures are seen, which matters because good systems produce few. For a rate around 5% and a half-width of 1 percentage point at 95% confidence, the formula gives about 1.96² × 0.05 × 0.95 / 0.01², roughly 1,800 test items. Sam runs this sum before collecting data, since a study too small to settle the question wastes everyone's time.
 
 ### 7.4 Distributions and independence
 
 Binomial models count successes in independent trials. Many security evaluations violate independence: prompts generated from one template are correlated, so the effective sample size is smaller. Group by template and resample groups (a *cluster bootstrap*) when estimating intervals.
 
+Suppose 1,000 test prompts come from 20 templates with 50 wordings each. If a filter fails on one template, it probably fails on most of its wordings, so the evaluation has nearer 20 independent units than 1,000. Treating them as 1,000 makes the interval far too narrow. Resampling whole templates gives an honest width and also shows which templates drive the failures.
+
 ### 7.5 Comparing two systems
 
 To decide whether a new filter is better than the old one, run both on the *same* items and analyse the paired differences; item difficulty then cancels. A paired bootstrap — resample items, recompute the difference, take percentiles — gives an interval for the improvement. If the interval includes zero, the data do not show an improvement, however attractive the point estimate.
 
+Pairing removes the noise of item difficulty: an unusually hard prompt counts against both filters, so it no longer obscures the difference between them.
+
 ### 7.6 Worked example (synthetic NRS case)
 
 Wrench's injection detector had 95% TPR and 1% FPR in testing. Sam estimated that perhaps 1 in 1,000 supplier bulletins would ever contain an injection attempt. From the lab, precision would be about 8.7% with 109 alerts per 10,000 bulletins — mostly false alarms. Sam recommended routing alerts to a lightweight review queue rather than blocking, and pairing detection with privilege limits so that missed attacks have bounded impact.
+
+The 1-in-1,000 figure is itself an estimate, so Sam also reads the lab's 1-in-100 row, where precision rises to 0.490. Either way, blocking every flagged bulletin would mostly block legitimate ones. A review queue keeps technicians informed, and the privilege limits mean the decision does not depend on the detector being right.
 
 ### 7.7 Errors and limits
 
 - Quoting accuracy instead of precision at realistic base rates.
 - Treating correlated samples as independent.
 - Point estimates without intervals.
+
+Accuracy is misleading at low base rates: a detector that never alerts is 99.9% accurate when one prompt in a thousand is malicious. Correlated samples inflate confidence, as when many prompts share a template. Point estimates without intervals hide how little a small test can show. Sam's review checklist asks three questions of any metric: at what base rate, counted over which units, and with what interval.
 
 ### Exercises
 
@@ -544,27 +558,39 @@ You will (1) describe CPUs, memory hierarchies, GPUs and accelerators used for m
 
 CPUs execute general instructions with deep caches. GPUs and AI accelerators execute thousands of simple operations in parallel, ideal for matrix multiplication. Models move between host memory and device memory; data in device memory may be shared across processes or tenants in cloud settings, so isolation matters.
 
+Copies are the security concern: weights loaded onto a GPU, inputs held in a shared buffer and results waiting to be returned all exist briefly in places another tenant or a careless driver might read. Cloud providers isolate customers, but engineers still ask whether device memory is cleared between jobs and who can see it, and they record the answers in the deployment's threat model.
+
 ### 8.2 Numeric formats
 
 Training often uses 32-bit or 16-bit floating point; inference may use 8-bit integers (quantisation). Lower precision changes outputs slightly and can change decisions near boundaries. Security evaluations must use the *deployed* precision: an attack or defence measured in 32-bit may behave differently in 8-bit, and vice versa.
+
+Quantisation maps each value to the nearest of a small set of levels, so inputs close to the decision threshold can move to the other side. Gradients computed on a 32-bit copy may not match the 8-bit model's behaviour, which can make attacks look stronger or weaker than they are in service.
 
 ### 8.3 Architectural attack surfaces
 
 Memory-safety bugs in model-serving code can expose weights or inputs. Shared caches and timing can leak information across processes (side channels). Hardware faults — including deliberately induced ones such as rowhammer-style bit flips — can corrupt weights; research has shown that a small number of flipped bits in a network's parameters can sharply degrade or redirect it. Firmware and drivers are part of the trusted computing base.
 
+For an engineer, each item suggests a control: memory-safe languages or careful review for serving code, isolation between tenants, error-correcting memory and integrity checks on loaded weights. Hashing the weight file before loading catches changes on disk, but not bits flipped in memory afterwards, so critical deployments also compare outputs on a fixed check set at intervals.
+
 ### 8.4 Trusted execution and attestation
 
 Trusted execution environments (TEEs) and confidential-computing GPUs aim to protect code and data in use from the host operator, and *remote attestation* lets a client verify what code is running. They reduce some risks (curious cloud operator) but not others (a vulnerable model server inside the enclave, prompt injection).
 
+Attestation answers a narrow question: is this the expected code on genuine hardware? It says nothing about whether that code is safe. Engineers therefore treat a TEE as one layer that protects against a curious operator, and keep input validation, privilege limits and monitoring in place for attacks that arrive through the model's normal interface.
+
 ### 8.5 Worked example (synthetic NRS case)
 
 TrackEye runs on an edge computer in the inspection train with an 8-bit quantised model. Sam found the robustness tests had been run on the 32-bit model in the lab; rerunning on the deployed 8-bit build changed false negatives at dawn from 9.0% to 9.6%. Sam added "evaluate on the deployed artefact and hardware" as a requirement and noted that the edge computer's maintenance port gives physical access to firmware — a threat-model item.
+
+A rise of 0.6 percentage points is small, but it shows that the lab result did not describe the system actually running on the train. The new requirement means every future robustness figure names the artefact hash and hardware it was measured on.
 
 ### 8.6 Errors and limits
 
 - Evaluating a different numeric precision from the one deployed.
 - Assuming TEEs solve application-level attacks.
 - Ignoring firmware and physical maintenance ports.
+
+These mistakes share a cause: evaluating an idealised system rather than the deployed one. The precision used in tests is easy to check against the build. TEE claims should be read for what they exclude. Maintenance ports are often left enabled for convenience; Sam's checklist asks for each port whether it is needed in service, who can reach it and whether its use is logged.
 
 ### Exercises
 
@@ -592,27 +618,39 @@ You will (1) structure larger programs into modules with clear interfaces; (2) m
 
 Large programs are divided into modules with narrow interfaces. For AI systems, separate *data loading*, *model inference*, *policy enforcement* and *tool execution*. The policy module should be small, reviewable and independent of the model: it decides what is allowed regardless of what the model says. This is the software form of least privilege.
 
+If the policy depends on the model's own judgement, a successful prompt injection also defeats the policy. Keeping it in separate code means it applies the same rules however the model was persuaded. Narrow interfaces also make reviews possible: a reviewer can read an 80-line module carefully, but not a system where checks are spread across prompts and scripts.
+
 ### 9.2 Dependencies and supply chain
 
 AI projects pull many libraries and model files. Pin versions, verify hashes, and prefer safe serialisation: loading untrusted *pickle* files in Python can execute arbitrary code, which is why formats designed to hold only tensors are preferred for model weights. OWASP LLM 2025 lists *supply chain* (LLM03) and *data and model poisoning* (LLM04). Gu et al. (arXiv:1708.06733) showed that a backdoored model obtained from a third party can behave normally on clean inputs.
+
+Pinning stops an upgrade from changing behaviour silently, and hash checks stop a swapped file from being loaded. A backdoored model is harder: it may pass every ordinary test, because its harmful behaviour appears only with a specific trigger. Engineers reduce this risk by preferring sources with published provenance, recording where each model came from, and testing for unexpected behaviour on inputs outside the usual distribution.
 
 ### 9.3 Testing beyond examples
 
 Regression tests freeze known-good behaviour so changes cannot silently break it. Property-based tests generate many inputs and check invariants ("the policy never allows `create_work_order` without a confirmation flag"). For AI components, a *golden set* of inputs with expected outputs detects behavioural drift when a model or prompt changes.
 
+Each kind catches something different. Regression tests stop old bugs returning, property tests find inputs nobody thought of, and golden sets show when a prompt edit or a model update changes answers that used to be right. Golden sets need care, because model outputs vary; Sam checks properties of the answers, such as which tool was proposed, rather than exact wording.
+
 ### 9.4 An evaluation harness
 
 A harness loads a test set, runs the component, records outputs and computes metrics with intervals. It must be deterministic given a seed, log versions (model hash, prompt version, code commit) and keep test data separate from development data.
 
+Without logged versions, a result cannot be tied to the system it describes, and a later regression cannot be traced. Determinism makes reruns comparable, so a change in metrics reflects a change in the system rather than in random sampling. Keeping test and development data apart stops the system from being tuned on the very examples used to judge it, which would make results look better than they are.
+
 ### 9.5 Worked example (synthetic NRS case)
 
 Sam restructured Wrench into four modules. The `policy` module (80 lines) checks every proposed tool call against the user's role and requires a confirmation token for work orders. A property-based test generated 10,000 random tool-call requests and confirmed none passed without a token. The dependency review found a model-conversion script that loaded pickle files from a shared folder; Sam replaced it with a tensor-only format loader and added hash verification.
+
+The property test samples the space of tool calls far more widely than hand-written cases could, though it does not prove that no unsafe call exists.
 
 ### 9.6 Errors and limits
 
 - Policy logic embedded in prompts rather than code.
 - Unpinned dependencies and unverified model files.
 - Golden sets reused for tuning (they stop detecting drift).
+
+Policy written into a prompt can be talked around by the model's input, while policy in code cannot. Unpinned dependencies make yesterday's test results meaningless today. A golden set used during tuning gradually stops being an independent check, because the system has been adjusted to fit it. Sam keeps a second, untouched set for release decisions and refreshes it when the system's use changes.
 
 ### Exercises
 
