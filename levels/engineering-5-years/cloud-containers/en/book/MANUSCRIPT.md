@@ -430,25 +430,37 @@ You will (1) model growth and decay in cloud systems with exponential functions;
 
 If meterhub's number of meters grows 3% a month, the count after n months is N0 × 1.03^n. In two years it roughly doubles. Planning capacity on linear assumptions would leave the platform short.
 
+Starting from 80,000 meters, 3% monthly growth gives about 114,000 after a year and roughly 163,000 after two. A linear plan adding 2,400 meters a month, the first month's increase, would predict only about 137,600 at two years, leaving a gap of some 25,000 meters' worth of ingest capacity. Elena puts both curves on one chart so Solent's managers can see where the plans diverge and when.
+
 ### 6.2 Decay
 
 Old log data loses value over time and storage costs accumulate; retention policies model value decaying while cost grows linearly. The crossing point suggests how long to keep detailed logs.
+
+Detailed request logs are most useful in the days after an event, when incidents are investigated; months later they are rarely read, yet each month kept adds to the storage bill. Plotting falling value against rising cumulative cost shows where keeping more stops paying off. Summaries can be kept longer than raw detail, so value is not lost entirely when the detailed copy expires.
 
 ### 6.3 Queues
 
 If readings arrive faster than they are processed, the backlog grows at the difference of the rates. Integrating the difference over an evening peak gives the backlog size, which sets queue capacity.
 
+In the evening, meters report while households cook and heat, so arrivals exceed processing for a while and the queue grows. After the peak, processing catches up and the queue drains. Integrating the excess gives the largest backlog, and the queue must hold at least that many readings, plus a margin, or readings will be dropped at the busiest time.
+
 ### 6.4 Series approximations
 
 For small rates, (1 + r)^n ≈ 1 + nr, a quick estimate. Engineers use such approximations to check whether a detailed model's answer is plausible.
+
+For a 2% rise over five months, the shortcut gives 10% and the exact figure is about 10.4%, close enough to confirm a spreadsheet is sane. Over thirty months the shortcut says 60% while the true growth is about 81%, so the approximation is only for quick checks, never for the final plan. Elena uses it to catch typing mistakes in her capacity model.
 
 ### 6.5 Sensitivity
 
 Derivatives of a model with respect to its inputs show which assumptions matter most. For backlog, the processing rate matters more than the arrival rate near saturation.
 
+Near saturation, a small drop in processing speed sends the backlog climbing steeply, while a similar change in arrivals has a gentler effect. This tells Elena where to spend effort: making ingest pods faster or adding one more replica has a bigger payoff than trying to smooth meter reporting times. Sensitivity also shows which estimates need the most careful measurement.
+
 ### 6.6 Security link
 
 Security events also accumulate: unreviewed alerts, unrotated keys. Modelling backlogs shows when manual processes will fall behind.
+
+If twenty keys need rotating each month but the team only manages fifteen, the overdue count grows by five every month and never recovers on its own. The same arithmetic applies to unreviewed alerts or pending access requests. Seeing the growth early justifies automating rotation or adding time, before the backlog becomes an audit finding or a breach. Elena charts the overdue count monthly.
 
 ### Checking with data
 
@@ -490,6 +502,8 @@ You will (1) summarise operational measurements with appropriate statistics; (2)
 
 Many cloud measurements, such as response times and alert delays, are skewed: most are small, a few are very large. The mean is pulled by large values; the median describes the typical case; high percentiles describe the worst common cases.
 
+An average response time of 300 ms could hide that most requests take 100 ms while a few take several seconds. Users who hit those slow requests have a poor experience, and for alerts, a slow delivery could mean a late response to an incident. Reporting median and high percentiles together gives a truer picture than any single number.
+
 ### Lab — Lab — alert latency
 
 ```python
@@ -510,17 +524,25 @@ n 20, mean 13.2, median 6.5, p95 40.9, max 95
 
 Twenty synthetic alert latencies have mean 13.2 minutes, median 6.5, 95th percentile 40.9 and maximum 95. The mean is twice the median because of a few long delays; the p95 shows that about one alert in twenty takes over 40 minutes, which matters for incidents such as a leaked key.
 
+The maximum of 95 minutes is one alert that took over an hour and a half to reach anyone, which in a key-leak scenario could mean the key was used in that time. The mean alone would suggest a moderate delay; the p95 shows the real risk lies in the tail. Elena follows up the slowest cases to find out why they took so long.
+
 ### 7.3 Objectives
 
 Solent sets an objective that 95% of critical alerts reach the on-call engineer within 15 minutes. The current p95 of 40.9 minutes misses it, and the long tail becomes an engineering problem to solve.
+
+An objective turns a vague wish into a measurable target. Fifteen minutes is chosen because a leaked key or exposed service can be abused quickly once found. Missing the target by a wide margin shows the alert path needs redesign, such as paging directly rather than through a shared mailbox, and the same measure later shows whether the fix worked.
 
 ### 7.4 Sampling
 
 Twenty values are a small sample; percentiles from small samples are uncertain. Elena collects a month of data before drawing conclusions.
 
+With twenty values, the 95th percentile rests on just one or two observations, so a single unusual alert can move it dramatically. A month gives hundreds of values and a much steadier estimate. Elena reports the sample size alongside each percentile, so readers know how much weight to place on it. She also checks whether the month was typical, since a holiday period could make alert traffic unusually light.
+
 ### 7.5 Probability of events
 
 If a control fails independently with probability 0.01 per day, the chance of at least one failure in a year is 1 − 0.99^365, about 97%. Rare daily events become near certain over time.
+
+The calculation uses the complement: the chance of no failures in a year is 0.99 multiplied by itself 365 times, about 2.6%, so at least one failure is about 97% likely. This explains why systems that 'almost never' fail still fail regularly at scale. It argues for monitoring every control and designing for recovery, not assuming success.
 
 ### Choosing the objective
 
@@ -562,25 +584,37 @@ You will (1) describe CPUs, memory and storage as they appear in virtual machine
 
 Virtual machines run on physical CPUs with hardware virtualisation support, which lets a hypervisor isolate guests. Containers share the host kernel and are isolated by kernel features instead.
 
+Hardware virtualisation gives each guest its own virtual processors and memory, with the hypervisor enforcing boundaries. Containers are lighter because they share one kernel, but that also means a kernel flaw can affect every container on the host. For meterhub, the choice affects how strongly workloads from different teams are separated on the same node.
+
 ### 8.2 Memory and isolation
 
 Each process has its own virtual address space. Hardware memory management enforces separation; flaws in this area, such as speculative execution issues, are why providers patch hosts and why sensitive workloads may use dedicated hosts.
+
+Speculative execution flaws showed that even hardware-enforced separation can leak information through subtle timing effects. Providers responded with microcode updates, kernel patches and options for dedicated hosts. Customers handling highly sensitive data can choose such hosts to avoid sharing hardware with unknown tenants, at higher cost.
 
 ### 8.3 Storage hierarchy
 
 Caches, memory, local disks and network storage differ in speed by orders of magnitude. meterhub keeps recent readings in memory and older ones on network storage.
 
+Memory is thousands of times faster than network storage, so keeping the most recent readings there lets dashboards respond quickly. Older readings are needed less often and can tolerate slower access. Choosing what lives where balances speed against cost, and the boundary moves as usage patterns change. Elena checks how often older readings are actually requested before moving the boundary.
+
 ### 8.4 Resource limits
 
 Kubernetes requests and limits map to kernel controls (cgroups) on CPU time and memory. Without limits, one pod can starve others on the node, an availability risk.
+
+A request tells the scheduler how much a pod needs; a limit caps what it may use. A pod with a memory leak and no limit could consume the node's memory, causing other pods to be killed. Setting limits keeps one faulty workload from taking down its neighbours, which is a security concern as well as a reliability one.
 
 ### 8.5 Architecture and responsibility
 
 The provider secures physical hardware and hypervisors; the customer chooses instance types, node images and pod settings.
 
+The split is called the shared responsibility model. Solent cannot patch the provider's hypervisors, but it chooses node images and must keep them updated. Pod settings, such as running as non-root, are entirely Solent's responsibility. Knowing where the line falls prevents gaps where each side assumes the other is handling something. Elena lists each layer of meterhub with its owner in a single table, which Rosa's team reviews and keeps with the platform documentation.
+
 ### 8.6 Measuring
 
 Node metrics show CPU, memory and I/O pressure, which help size limits correctly.
+
+Without measurements, limits are guesses: too low and pods are throttled or killed, too high and nodes are underused. Watching metrics over a week of normal use, including evening peaks, shows how much each pod actually needs. Elena sets limits at the observed peak plus a margin, and reviews them as load grows. Throttling events are watched too, since they show a limit set too low even when averages look fine.
 
 ### Node images
 
@@ -626,25 +660,37 @@ You will (1) structure larger programs into modules; (2) parse YAML-like and JSO
 
 Elena organises her configuration checker into modules: loading, checks, reporting. Each check is a function with one responsibility, so new checks can be added without changing others.
 
+Separating loading from checks means a new export format needs only a new loader. Separating reporting means output can change from text to CSV without touching the checks. One function per check keeps each easy to test and read, and lets the team turn individual checks on or off for different clusters. Rosa adds one check herself.
+
 ### 9.2 Parsing
 
 Kubernetes manifests are YAML; Python's standard library has no YAML parser, so labs use JSON exports, which Kubernetes tools can produce. Parsing errors are reported with the file and line.
+
+Using JSON keeps the labs within the standard library while still working with real Kubernetes data. Reporting the file and line of a parse error lets the user find and fix the problem quickly. Elena's loader also checks that each document has the expected top-level fields before passing it to the checks.
 
 ### 9.3 Error handling
 
 Missing fields default to the least safe interpretation for reporting: a missing runAsNonRoot is reported as "not set", because Kubernetes would not enforce it.
 
+Treating a missing setting as safe would hide real exposure, since Kubernetes applies its own default, which may be less strict. Reporting it as not set makes the gap visible. The report distinguishes 'explicitly false' from 'not set', because the fixes and the reasons differ slightly. Elena documents each default the checker assumes, citing the Kubernetes behaviour behind it, so reviewers can confirm the assumptions are correct.
+
 ### 9.4 Testing
 
 Each check has tests with compliant and non-compliant synthetic manifests. Tests run on every change in the course repository.
+
+Each test pairs a synthetic manifest with the expected result, such as one issue for a pod that runs as root. Testing both compliant and non-compliant cases checks that the function flags problems and does not raise false alarms. Running tests on every change catches mistakes before they reach users. A new check cannot be merged without both kinds of test, and the test data live beside the check in the repository.
 
 ### 9.5 Code review
 
 A reviewer checks correctness, clarity and that the program only reads data.
 
+Correctness asks whether the checks match the policy; clarity asks whether others can maintain them. Confirming the program only reads data protects production systems from accidental changes. The reviewer also checks that test cases cover the edge cases Elena described in her design note. Rosa reviews Elena's first three checks herself. Her comments become a short checklist that Elena applies to every later check before asking for review, so reviews get quicker as the project goes on.
+
 ### 9.6 Performance
 
 The checker processes 3,000 manifests in under two seconds, fast enough to run in a build pipeline.
+
+Fast checks can run on every change without slowing developers. If the checker took minutes, teams would be tempted to skip it. Elena measures run time on the full set of exported manifests and records it, so later changes that slow the checker are noticed. The time is printed at the end of each run. If the manifest count doubles as meterhub grows, the checker should still finish quickly, since each manifest is checked independently and the work grows only in proportion to the count.
 
 ### Packaging the checker
 
@@ -690,25 +736,37 @@ You will (1) apply engineering ethics to cloud work; (2) consider safety and pri
 
 Engineers owe duties to the public, clients and the profession. For meterhub, the public includes 80,000 households whose readings reveal when they are home.
 
+The public's interest is not abstract here: a careless design could expose patterns of daily life for tens of thousands of families. Clients expect competent work within agreed scope. The profession expects honesty and continued learning. When these duties conflict, the public interest comes first. Elena writes these duties into her project plan so they guide daily choices, not only difficult moments.
+
 ### 10.2 Privacy
 
 Meter readings at fine intervals can reveal occupancy and habits. Elena's project uses synthetic readings; real data stays in production under Solent's controls.
+
+Synthetic readings let Elena build and test without touching personal data, which removes a whole class of risk from the project. Real data stays where Solent's access controls, logging and retention rules apply. If a test truly needs real data, it goes through Solent's approval process first. Elena's synthetic generator mimics evening peaks and holiday dips without copying any real household's pattern.
 
 ### 10.3 Authorisation
 
 Elena's access is limited to read-only exports and a test cluster. She does not test production systems without written approval from Rosa.
 
+Read-only exports and a test cluster give Elena enough to do her work without risking production. Written approval for any production test makes the decision explicit and traceable. If something goes wrong during an approved test, the record shows it was sanctioned and by whom. She keeps copies of each approval with the test records. Approvals state the date, scope and stop conditions, and expire after the test window ends.
+
 ### 10.4 Safety
 
 Changes to network policies could stop ingestion, which affects billing and grid planning. Safety means staged rollout, monitoring and rollback plans.
+
+Ingestion stopping means readings are lost or delayed, which affects bills and the grid operator's planning. Staged rollout limits the impact to a few services first; monitoring shows problems quickly; rollback restores service if needed. Elena writes these steps into every change plan. She also checks each change against the evening peak and avoids rolling out during it, when readings are most valuable.
 
 ### 10.5 Raising concerns
 
 If Elena found that readings were exposed, she would report to Rosa and Solent's data protection lead immediately rather than investigate alone.
 
+Investigating alone could destroy evidence, alert an attacker or breach rules on handling personal data. Reporting immediately lets people with authority and expertise take over. The data protection lead also judges whether a regulator must be notified, which has its own deadlines. Solent's incident procedure lists who to call and how quickly, and Elena keeps a copy handy.
+
 ### 10.6 Honesty
 
 Reports state uncertainty and do not overstate the effect of controls.
+
+Saying a control 'prevents' an attack when it only makes one harder misleads decision-makers. Elena uses measured results where possible and states what was not tested. Honest reports build trust and help Solent decide where further work is needed. When results are mixed, the report gives both sides and the evidence for each. Elena also lists known limitations at the start of each results chapter, not just at the end, so readers meet them before forming conclusions. Rosa checks reports for overclaiming before they reach managers.
 
 ### Professional codes
 
