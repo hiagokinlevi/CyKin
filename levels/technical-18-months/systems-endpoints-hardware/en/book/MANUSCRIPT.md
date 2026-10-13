@@ -147,7 +147,7 @@ You will (1) explain standard and administrator accounts; (2) use separate admin
 
 ### 3.1 Two kinds of account
 
-Windows accounts are either standard users or administrators. Standard users run programs and save their own work. Administrators can install software, change settings and read any file. At Harlow & Pike, staff were given admin rights years ago so they could install printer drivers, and nobody took them away. Admin rights mean any program a staff member runs, including a malicious attachment, can do the same. Nadia's checks later show how widespread the problem is, which shapes her project. Nadia lists them by PC.
+Windows accounts are either standard users or administrators. Standard users run programs and save their own work. Administrators can install software, change settings and read any file. At Harlow & Pike, staff were given admin rights years ago so they could install printer drivers, and nobody took them away. Admin rights mean any program a staff member runs, including a malicious attachment, can do the same. Nadia's checks later show how widespread the problem is, which shapes her project. She lists each extra administrator account by PC and user, which becomes the starting list for her project.
 
 ### 3.2 Separate admin accounts
 
@@ -357,7 +357,7 @@ Tamper protection stops users and programs from turning off Defender. The suppli
 
 ### 6.4 Responding to alerts
 
-When Defender blocks something, the alert appears in the console. Most are routine. If an alert says a threat was found but not removed, Nadia disconnects the PC from the network and tells the supplier immediately. Disconnecting first stops a threat spreading to the file server while the supplier investigates. Nadia records each serious alert with what she did and when. Routine alerts, such as a blocked download, are reviewed weekly with the supplier to check for patterns. Lena is told about serious alerts.
+When Defender blocks something, the alert appears in the console. Most are routine. If an alert says a threat was found but not removed, Nadia disconnects the PC from the network and tells the supplier immediately. Disconnecting first stops a threat spreading to the file server while the supplier investigates. Nadia records each serious alert with what she did and when. Routine alerts, such as a blocked download, are reviewed weekly with the supplier to check for patterns. Lena is phoned about any threat that was found but not removed, because she decides whether client work on that PC must stop.
 
 ### Scans, performance and quarantine
 
@@ -398,7 +398,7 @@ You will (1) choose trusted sources; (2) verify downloads; (3) record installed 
 
 ### 7.1 Trusted sources
 
-Software should come from the vendor's official site, the Microsoft Store or the supplier's managed catalogue. Free tools from download sites often bundle unwanted programs, which is how the adware arrived. At Harlow & Pike, a staff member downloaded a free PDF tool from a download site, and adware came with it. Using official sources reduces that risk. Nadia explains the change in a short note to staff, with the catalogue as the easy alternative. The adware was removed by the supplier.
+Software should come from the vendor's official site, the Microsoft Store or the supplier's managed catalogue. Free tools from download sites often bundle unwanted programs, which is how the adware arrived. At Harlow & Pike, a staff member downloaded a free PDF tool from a download site, and adware came with it. Using official sources reduces that risk. Nadia explains the change in a short note to staff, with the catalogue as the easy alternative. The supplier removed the adware and the PDF tool it came with, and replaced the tool with the vendor's official reader from the catalogue.
 
 ### 7.2 Verifying downloads
 
@@ -459,11 +459,11 @@ The supplier applies them through its management tool to a pilot group of three 
 
 ### 8.3 Checking
 
-The management tool reports compliance. Nadia spot-checks two PCs by opening the settings directly. Spot checks confirm that the management tool's report matches the PCs. If a setting appears compliant in the tool but not on the PC, the report cannot be trusted. Nadia records which settings she checked and what she found. Both PCs matched, so the report is used for the monthly compliance figure. She repeats the spot check each quarter on different PCs. Results are filed monthly.
+The management tool reports compliance. Nadia spot-checks two PCs by opening the settings directly. Spot checks confirm that the management tool's report matches the PCs. If a setting appears compliant in the tool but not on the PC, the report cannot be trusted. Nadia records which settings she checked and what she found. Both PCs matched, so the report is used for the monthly compliance figure. She repeats the spot check each quarter on different PCs. The monthly compliance figure and the spot-check notes are filed together, so a later reader can see that the report was checked by hand.
 
 ### 8.4 Exceptions
 
-Any PC that cannot take a setting gets a recorded exception with a reason and review date. After rollout, one PC has an exception for remote desktop, used by a partner working from home through the VPN. The exception records the reason, the compensating control that remote desktop works only through the VPN, and a review date. Nadia keeps the exceptions in a short list with the baseline, and Lena approves each one. Each review renews or closes the exception.
+Any PC that cannot take a setting gets a recorded exception with a reason and review date. After rollout, one PC has an exception for remote desktop, used by a partner working from home through the VPN. The exception records the reason, the compensating control that remote desktop works only through the VPN, and a review date. Nadia keeps the exceptions in a short list with the baseline, and Lena approves each one. At each review date Lena either renews the exception with a fresh reason or closes it once the PC can take the setting.
 
 ### Explaining settings to staff
 
@@ -512,19 +512,19 @@ You will (1) enable BitLocker; (2) store recovery keys; (3) verify encryption.
 
 ### 9.1 Purpose
 
-Accountants carry laptops to clients. If one is stolen, BitLocker makes the drive unreadable without the key. Client financial data are confidential, so encryption is essential. A stolen laptop without encryption would expose client records, and the firm may have to tell clients and the regulator. With BitLocker and a protected key, the data cannot be read, which greatly reduces the harm. Nadia checks that every laptop leaving the office is encrypted. Desktop PCs are encrypted too. Lena tells partners before rollout.
+Accountants carry laptops to clients. If one is stolen, BitLocker makes the drive unreadable without the key. Client financial data are confidential, so encryption is essential. A stolen laptop without encryption would expose client records, and the firm may have to tell clients and the regulator. With BitLocker and a protected key, the data cannot be read, which greatly reduces the harm. Nadia checks that every laptop leaving the office is encrypted. Lena tells the partners before rollout that their laptops will restart once during encryption, so nobody is caught out before a client visit.
 
 ### 9.2 Enabling
 
-The supplier enables BitLocker with TPM protection through the management tool, storing recovery keys in the directory. The PC with a disabled TPM from chapter 2 has it enabled first. Using the management tool means every PC is encrypted in the same way, with keys stored centrally rather than on paper. Enabling the TPM first was necessary because BitLocker uses it to protect the key. Nadia checks the oldest PC after the change to confirm it encrypted successfully. Lena is told when it finishes.
+The supplier enables BitLocker with TPM protection through the management tool, storing recovery keys in the directory. The PC with a disabled TPM from chapter 2 has it enabled first. Using the management tool means every PC is encrypted in the same way, with keys stored centrally rather than on paper. Enabling the TPM first was necessary because BitLocker uses it to protect the key. Nadia checks the oldest PC after the change to confirm it encrypted successfully. Lena is told when encryption finishes on each laptop, so she knows which ones are safe to take to clients.
 
 ### 9.3 Verifying
 
-Nadia checks encryption status in the console and with the manage-bde status command on two PCs. All laptops show fully encrypted with protection on. Checking two PCs directly confirms the console report. A drive can show as encrypted while protection is suspended, for example after a firmware update, so Nadia looks for protection on as well as encryption. She records the results with the date in her notes, and repeats the check after the next round of firmware updates. All matched.
+Nadia checks encryption status in the console and with the manage-bde status command on two PCs. All laptops show fully encrypted with protection on. Checking two PCs directly confirms the console report. A drive can show as encrypted while protection is suspended, for example after a firmware update, so Nadia looks for protection on as well as encryption. She records the results with the date in her notes, and repeats the check after the next round of firmware updates. Both direct checks matched the console, so Nadia records the console report as reliable for the monthly figure.
 
 ### 9.4 Recovery keys
 
-If BitLocker asks for a recovery key, the user calls IT, who verifies identity before reading out the key. Retrieval is logged. Verifying identity before reading out the key stops someone posing as a staff member from unlocking a stolen laptop. Nadia uses the same callback method as for password resets. Each retrieval is logged with the user, date and reason, and the supplier reviews the log monthly. Recovery keys are only readable by the supplier and Nadia. Staff know the procedure.
+If BitLocker asks for a recovery key, the user calls IT, who verifies identity before reading out the key. Retrieval is logged. Verifying identity before reading out the key stops someone posing as a staff member from unlocking a stolen laptop. Nadia uses the same callback method as for password resets. Each retrieval is logged with the user, date and reason, and the supplier reviews the log monthly. Recovery keys are only readable by the supplier and Nadia. Staff are told about the callback step in advance, so a request to confirm identity is expected rather than taken as distrust.
 
 ### Desktops too
 
@@ -646,7 +646,7 @@ Windows Defender Firewall stays on for all profiles, so PCs are protected on hot
 
 ### 11.4 Printers
 
-Network printers also have admin pages and firmware; their default passwords are changed. A printer with a default password could be changed by anyone on the network, for example to send copies of scanned documents elsewhere. Nadia checks both printers' admin pages, changes the passwords and stores them in the manager. She also checks for firmware updates and asks the supplier to apply them, and records the printers in the inventory with their firmware versions. Printer pages are now documented.
+Network printers also have admin pages and firmware; their default passwords are changed. A printer with a default password could be changed by anyone on the network, for example to send copies of scanned documents elsewhere. Nadia checks both printers' admin pages, changes the passwords and stores them in the manager. She also checks for firmware updates and asks the supplier to apply them, and records the printers in the inventory with their firmware versions. Each printer now has a system page listing its model, firmware version and where its admin password is stored.
 
 ### Router firmware routine
 
@@ -703,11 +703,11 @@ Partners reach the file server through the supplier's VPN with MFA. Each user ha
 
 ### 12.2 Remote desktop
 
-Remote desktop to office PCs is only available through the VPN, never directly from the internet. Remote desktop exposed directly to the internet is a common target for attackers guessing passwords. Requiring the VPN means only users who have passed MFA can reach it. Nadia confirms with the supplier that no direct access is open on the router. The one exception for a partner working from home uses this route and is recorded with a review date. The rule is in the baseline.
+Remote desktop to office PCs is only available through the VPN, never directly from the internet. Remote desktop exposed directly to the internet is a common target for attackers guessing passwords. Requiring the VPN means only users who have passed MFA can reach it. Nadia confirms with the supplier that no direct access is open on the router. The one exception for a partner working from home uses this route and is recorded with a review date. Because remote desktop off is one of the ten baseline settings, the management tool reports any PC where it has been turned on outside the recorded exception.
 
 ### 12.3 Home networks
 
-Staff are asked to keep their home router updated and not to share work laptops with family. Home networks are outside the firm's control, but a work laptop used by family members could pick up unwanted software. The firm cannot check staff routers, so it relies on advice and on the laptop's own protection, including the firewall, Defender and encryption. Nadia gives staff a short guide on updating their home router and keeping work devices for work. Lena endorses the guide.
+Staff are asked to keep their home router updated and not to share work laptops with family. Home networks are outside the firm's control, but a work laptop used by family members could pick up unwanted software. The firm cannot check staff routers, so it relies on advice and on the laptop's own protection, including the firewall, Defender and encryption. Nadia gives staff a short guide on updating their home router and keeping work devices for work. Lena sends the home-network guide to staff with a note that the firm will help anyone who is unsure how to update their router.
 
 ### 12.4 Remote support
 
@@ -760,7 +760,7 @@ You will (1) recognise phishing reports; (2) respond to clicks; (3) support staf
 
 ### 13.1 Reports
 
-Staff forward suspicious emails to a report address. Nadia checks headers and links without opening attachments, and the supplier blocks the sender if malicious. Checking headers and links without opening attachments lets Nadia judge a message safely. If it is malicious, the supplier blocks the sender and searches for similar messages in other mailboxes. Nadia thanks the reporter and records the message and outcome, so patterns, such as a wave of fake revenue authority emails, become visible. Lena sees a monthly count.
+Staff forward suspicious emails to a report address. Nadia checks headers and links without opening attachments, and the supplier blocks the sender if malicious. Checking headers and links without opening attachments lets Nadia judge a message safely. If it is malicious, the supplier blocks the sender and searches for similar messages in other mailboxes. Nadia thanks the reporter and records the message and outcome, so patterns, such as a wave of fake revenue authority emails, become visible. Lena receives a monthly count of reported messages and how many were malicious, which shows whether the tax-season tips are working.
 
 ### 13.2 When someone clicks
 
@@ -768,11 +768,11 @@ If a staff member entered their password on a fake page, Nadia resets the passwo
 
 ### 13.3 Awareness
 
-Short monthly tips cover tax-season phishing, which targets accountants with fake revenue authority messages. Tax season is when accountants expect messages from the revenue authority, so fake ones are more convincing. Monthly tips keep staff alert without overwhelming them. Each tip includes a real-looking example and what to check, such as the sender's address. Nadia writes the tips and Lena sends them. Staff can reply with questions, which help Nadia choose the next tip. Tips are short, so staff read them.
+Short monthly tips cover tax-season phishing, which targets accountants with fake revenue authority messages. Tax season is when accountants expect messages from the revenue authority, so fake ones are more convincing. Monthly tips keep staff alert without overwhelming them. Each tip includes a real-looking example and what to check, such as the sender's address. Nadia writes the tips and Lena sends them. Staff can reply with questions, which help Nadia choose the next tip. Each tip fits in a few lines, because busy accountants in tax season are unlikely to read a long security email.
 
 ### 13.4 Blame-free reporting
 
-Staff who report a click quickly get thanks, not blame, so they keep reporting. If staff fear blame, they may hide a click, giving an attacker more time. Thanking people who report quickly encourages others to do the same. Lena states this clearly at a staff meeting. The staff member who reported entering their password on a fake page was thanked, and their quick report meant the attacker's forwarding rule was found and removed within twenty minutes. Nobody is named in reports.
+Staff who report a click quickly get thanks, not blame, so they keep reporting. If staff fear blame, they may hide a click, giving an attacker more time. Thanking people who report quickly encourages others to do the same. Lena states this clearly at a staff meeting. The staff member who reported entering their password on a fake page was thanked, and their quick report meant the attacker's forwarding rule was found and removed within twenty minutes. Nadia's records of reported clicks describe what happened and what was done, without naming the staff member, so reports cannot be used against anyone.
 
 ### Checking a reported email
 
@@ -829,19 +829,19 @@ You will (1) set up new PCs consistently; (2) reassign PCs; (3) dispose securely
 
 ### 14.1 New PCs
 
-New PCs are enrolled in the management tool on first start, receiving settings, apps and encryption automatically. Enrolling on first start means a new PC receives the baseline settings, Defender, BitLocker and approved software before anyone uses it. This avoids the old pattern of PCs set up by hand with whatever settings the person chose. Nadia checks each new PC in the console after enrolment and adds it to the inventory with its serial number and user. Lena receives a monthly list.
+New PCs are enrolled in the management tool on first start, receiving settings, apps and encryption automatically. Enrolling on first start means a new PC receives the baseline settings, Defender, BitLocker and approved software before anyone uses it. This avoids the old pattern of PCs set up by hand with whatever settings the person chose. Nadia checks each new PC in the console after enrolment and adds it to the inventory with its serial number and user. Lena receives a monthly list of newly enrolled PCs, so she can confirm that each one belongs to a current member of staff.
 
 ### 14.2 Reassigning
 
-When a PC moves to a new user, it is reset and re-enrolled rather than just handed over. Handing over a PC without resetting it can leave the previous user's files, saved passwords and permissions on it. Resetting and re-enrolling gives the new user a clean PC with the current baseline. Nadia updates the inventory with the new user's name. The previous user's files are kept on the file server, so nothing is lost. The reset takes under an hour.
+When a PC moves to a new user, it is reset and re-enrolled rather than just handed over. Handing over a PC without resetting it can leave the previous user's files, saved passwords and permissions on it. Resetting and re-enrolling gives the new user a clean PC with the current baseline. Nadia updates the inventory with the new user's name. The previous user's files are kept on the file server, so nothing is lost. Because settings and software arrive automatically, a reset PC is ready for its new user the same day, with no setup done by hand.
 
 ### 14.3 Leavers
 
-A leaver's account is disabled on their last day and their PC is collected. Disabling the account on the last day stops a former employee from reaching email or files afterwards. Collecting the PC ensures client data does not leave with them. Nadia also checks shared vaults in the password manager and changes any passwords the leaver knew, such as for a client portal. Lena tells Nadia about leavers in advance. The supplier confirms each step. Lena signs the checklist.
+A leaver's account is disabled on their last day and their PC is collected. Disabling the account on the last day stops a former employee from reaching email or files afterwards. Collecting the PC ensures client data does not leave with them. Nadia also checks shared vaults in the password manager and changes any passwords the leaver knew, such as for a client portal. Lena tells Nadia about leavers in advance. The supplier confirms each leaver step on a short checklist, and Lena signs it, so a missed account or portal password is noticed straight away.
 
 ### 14.4 Disposal
 
-Old drives are wiped using the manufacturer's secure erase or destroyed, with a certificate, following NIST SP 800-88. Old drives can hold client records for years after a PC stops working. Secure erase or destruction makes the data unrecoverable, and the certificate shows auditors what happened to each drive. When two old PCs were disposed of, the recycler's certificate listed their serial numbers, which Nadia matched against the inventory before closing their records. Certificates are filed with the inventory. Nadia keeps them with the inventory.
+Old drives are wiped using the manufacturer's secure erase or destroyed, with a certificate, following NIST SP 800-88. Old drives can hold client records for years after a PC stops working. Secure erase or destruction makes the data unrecoverable, and the certificate shows auditors what happened to each drive. When two old PCs were disposed of, the recycler's certificate listed their serial numbers, which Nadia matched against the inventory before closing their records. The certificates are filed with the inventory records of the disposed PCs, so an auditor can trace each drive from purchase to destruction.
 
 ### Joiner setup
 
@@ -902,11 +902,11 @@ Every change is noted with date, who, what and why. A change record lets someone
 
 ### 15.3 Tickets
 
-Good tickets describe the problem, steps taken and outcome, so others can learn. A ticket that only says "fixed" teaches nothing. Nadia's ticket on the broken update service listed the error, the repair steps and the result, so the next technician facing the same problem can follow it. Good tickets also show patterns, such as repeated problems with one PC. The supplier reviews tickets monthly with Nadia, and recurring problems become tasks. Nadia uses a short ticket template. Sam reviews a sample of tickets.
+Good tickets describe the problem, steps taken and outcome, so others can learn. A ticket that only says "fixed" teaches nothing. Nadia's ticket on the broken update service listed the error, the repair steps and the result, so the next technician facing the same problem can follow it. Good tickets also show patterns, such as repeated problems with one PC. The supplier reviews tickets monthly with Nadia, and recurring problems become tasks. Nadia uses a short template with fields for problem, steps and outcome, and Sam reviews a sample of her tickets to check they would let another technician repeat the fix.
 
 ### 15.4 Standards
 
-NIST SP 800-128 links configuration management with documentation and change control. The guidance explains why configuration, documentation and change records belong together: a setting that is not documented cannot be checked, and a change that is not recorded cannot be traced. Nadia uses it to explain to Lena why the firm keeps system pages and change records. The supplier's own processes follow the same ideas, so they fit easily with the firm's records. Nadia cites it in her report. Lena reads the summary of it.
+NIST SP 800-128 links configuration management with documentation and change control. The guidance explains why configuration, documentation and change records belong together: a setting that is not documented cannot be checked, and a change that is not recorded cannot be traced. Nadia uses it to explain to Lena why the firm keeps system pages and change records. The supplier's own processes follow the same ideas, so they fit easily with the firm's records. Nadia cites SP 800-128 in her project report and gives Lena a one-paragraph summary explaining why the firm keeps system pages and change records.
 
 ### Where passwords live
 
@@ -959,11 +959,11 @@ Nadia's project measures local admin rights and update status across all thirty 
 
 ### 16.2 Measuring
 
-Using exports and the labs, she finds 12 of 30 PCs with extra admins and 25 of 30 within 14 days of updates. The admin figure is higher than in the earlier sample of ten PCs, which shows why measuring every PC matters. The update figure matches the earlier check. Nadia records both as the starting point for her project. She notes the date of each export and checks a few results by hand to confirm the exports are accurate. Lena sees both figures. Lena keeps a copy.
+Using exports and the labs, she finds 12 of 30 PCs with extra admins and 25 of 30 within 14 days of updates. The admin figure is higher than in the earlier sample of ten PCs, which shows why measuring every PC matters. The update figure matches the earlier check. Nadia records both as the starting point for her project. She notes the date of each export and checks a few results by hand to confirm the exports are accurate. Lena receives both starting figures with the export dates, so she can compare them with the results after the changes.
 
 ### 16.3 Method
 
-She records the export date and steps so she can repeat them. Recording the steps means she can measure again after the changes using exactly the same method, so the comparison is fair. It also means the supplier can repeat the measurement after she leaves. Her notes include which export was used, which filter and which lab script. Sam checks the notes to see whether someone else could follow them without help. The notes go into the handover. Sam tests the notes.
+She records the export date and steps so she can repeat them. Recording the steps means she can measure again after the changes using exactly the same method, so the comparison is fair. It also means the supplier can repeat the measurement after she leaves. Her notes include which export was used, which filter and which lab script. Sam checks the notes to see whether someone else could follow them without help. Sam follows the notes himself on one PC to confirm someone else could repeat the measurement, and they later go into the handover.
 
 ### 16.4 Agreement
 
@@ -1024,7 +1024,7 @@ Extra admin rights are removed after talking to each user, and the self-service 
 
 ### 17.2 Results
 
-Extra admins fall from 12 to 0 PCs; updates within 14 days rise from 25 to 29 of 30. Nadia measures again with the same exports and method as before, so the figures can be compared directly. The admin result is complete, since every extra administrator was removed after checking with the user. The update result is close to complete; the one remaining PC is explained. She presents both with the before figures in a simple table, with the export dates. Lena signs the results table.
+Extra admins fall from 12 to 0 PCs; updates within 14 days rise from 25 to 29 of 30. Nadia measures again with the same exports and method as before, so the figures can be compared directly. The admin result is complete, since every extra administrator was removed after checking with the user. The update result is close to complete; the one remaining PC is explained. She presents both with the before figures in a simple table, with the export dates. Lena signs the results table, which confirms that the firm accepts the figures as its own record of the change.
 
 ### 17.3 Remaining
 
@@ -1032,7 +1032,7 @@ One PC stays late because it is a partner's laptop often off; a reminder is set.
 
 ### 17.4 Staff reaction
 
-Most staff did not notice the change; two asked for software via the catalogue. The quiet reaction suggests the change caused little disruption, which matters for keeping it in place. The two catalogue requests show staff found the new way to get software. Nadia asked a few staff directly whether anything had become harder, and nobody reported a problem. She records the reaction in her report, without names, and notes that it covers only the first weeks. Lena agrees with this reading.
+Most staff did not notice the change; two asked for software via the catalogue. The quiet reaction suggests the change caused little disruption, which matters for keeping it in place. The two catalogue requests show staff found the new way to get software. Nadia asked a few staff directly whether anything had become harder, and nobody reported a problem. She records the reaction in her report, without names, and notes that it covers only the first weeks. Lena agrees, adding that she had expected complaints about losing admin rights and received none in the first weeks.
 
 ### Talking to each user
 
@@ -1093,7 +1093,7 @@ Nadia learned that security work is mostly careful support. Checking identity be
 
 ### 18.2 Recommendations
 
-Quarterly admin and update checks, MFA for all systems, and router firmware checks. Each recommendation keeps an improvement from slipping back. Quarterly checks catch new admin rights or late updates before they become normal again. Extending MFA to the accounting software and portals closes remaining gaps. Router firmware checks stop the router being forgotten again. Nadia writes each recommendation with an owner and frequency, and Lena agrees them. The supplier adds the quarterly checks to its contract. Each recommendation is costed.
+Quarterly admin and update checks, MFA for all systems, and router firmware checks. Each recommendation keeps an improvement from slipping back. Quarterly checks catch new admin rights or late updates before they become normal again. Extending MFA to the accounting software and portals closes remaining gaps. Router firmware checks stop the router being forgotten again. Nadia writes each recommendation with an owner and frequency, and Lena agrees them. The supplier adds the quarterly checks to its contract. Each recommendation includes an estimate of the supplier's time, so Lena can see what keeping the improvements in place will cost.
 
 ### 18.3 Handover
 
