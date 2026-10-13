@@ -44,17 +44,33 @@ You will (1) list the building systems a hospital depends on; (2) explain how ea
 
 Behind the wards sit air-handling units that keep operating theatres at controlled temperature, humidity and pressure; chillers and boilers; medical gas alarm panels that warn when oxygen pressure drops; elevators that move patients between floors; and access control on doors to pharmacies and maternity units. A building management system (BMS) ties many of these together on a network with a central workstation.
 
+Section one point one develops building systems as cyber-physical systems with a the organisation note Aisha Bello can demo offline.
+
 ### 1.2 Why they are cyber-physical
 
 Each system reads sensors and drives equipment in the physical world through controllers. Once those controllers are networked, a change made on a screen anywhere on the network can move a damper, stop a pump or unlock a door. NIST SP 800-82r3 covers building automation explicitly within operational technology for exactly this reason.
+
+Section one point two develops building systems as cyber-physical systems with a the organisation note Aisha Bello can demo offline.
+
+Under section one point two, the mentor expects building claims to carry owners and dates.
 
 ### 1.3 Consequence for patients
 
 Office IT failures delay work. Building-system failures can harm patients: a theatre that loses positive pressure risks surgical infection; a silenced gas alarm hides a real drop; a stuck elevator delays an emergency transfer. Security planning in a hospital begins by asking which failure would hurt someone, and how quickly.
 
+Section one point three develops building systems as cyber-physical systems with a the organisation note Aisha Bello can demo offline.
+
+Under section one point three, the mentor expects building claims to carry owners and dates.
+
 ### 1.4 Who owns them
 
 Building systems are often owned by estates or facilities teams, maintained by contractors, and invisible to the hospital's IT security staff. Closing that gap — agreeing who is responsible for the security of each system — is often the first practical win.
+
+Section one point four develops building systems as cyber-physical systems with a the organisation note Aisha Bello can demo offline.
+
+Under section one point four, the mentor expects building claims to carry owners and dates.
+
+Section one point four treats what runs hospital building as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
@@ -94,21 +110,49 @@ You will (1) explain why clinical safety outranks security convenience; (2) desc
 
 A security fix that switches off a theatre's ventilation during surgery is worse than the risk it fixes. Every security task in clinical areas is planned with the people responsible for patients, and timed around them.
 
+Section two point one develops patient safety contingency and authority with a the organisation note Aisha Bello can demo offline.
+
+Under section two point one, the mentor expects patient claims to carry owners and dates.
+
+Section two point one treats clinical safety first contingency as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Contingency already exists
 
 Hospitals prepare for building failures independent of cyber attacks: cylinder oxygen when piped supply fails, portable cooling, manual door keys, elevator rescue procedures. These are also the fall-back when a networked system is untrusted. Knowing them lets security staff suggest isolating a system without leaving patients unsupported.
+
+Section two point two develops patient safety contingency and authority with a the organisation note Aisha Bello can demo offline.
+
+Under section two point two, the mentor expects patient claims to carry owners and dates.
 
 ### 2.3 Authority
 
 Estates managers authorise work on building plant; theatre managers decide when a theatre is available; the medical gas authorised person controls gas systems; IT security advises. Contractors work under an estates permit. Analysts never instruct a contractor to change a clinical system directly.
 
+Section two point three develops patient safety contingency and authority with a the organisation note Aisha Bello can demo offline.
+
+Under section two point three, the mentor expects patient claims to carry owners and dates.
+
+Section two point three treats clinical safety first contingency as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Permits in hospitals
 
 Work in clinical areas often needs infection-control approval as well as an estates permit: a technician opening a ceiling panel in a theatre can release dust. Even a non-invasive check may need a booking slot.
 
+Section two point four develops patient safety contingency and authority with a the organisation note Aisha Bello can demo offline.
+
+Under section two point four, the mentor expects patient claims to carry owners and dates.
+
+Section two point four treats clinical safety first contingency as testable only when evidence and ticket IDs are recorded.
+
 ### 2.5 Talking to clinicians
 
 Explain security work in the language of patient risk and theatre time. "We need one hour on Saturday so nobody can change theatre air from outside" gets agreement faster than a list of protocols.
+
+Section two point five develops patient safety contingency and authority with a the organisation note Aisha Bello can demo offline.
+
+Under section two point five, the mentor expects patient claims to carry owners and dates.
+
+Section two point five treats clinical safety first contingency as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
@@ -148,21 +192,49 @@ You will (1) describe how BMS controllers communicate; (2) explain why building 
 
 Sensors and actuators connect to field controllers by wire. Controllers talk to each other and to the BMS server over a building network. Common protocols include BACnet, usually carried over UDP on port 47808 as BACnet/IP, and Modbus/TCP for some plant such as chillers. Many devices also offer a web interface for configuration.
 
+Section three point one develops networks and protocols in building with a the organisation note Aisha Bello can demo offline.
+
+Under section three point one, the mentor expects networks claims to carry owners and dates.
+
 ### 3.2 Trust by default
 
 Like many industrial protocols, classic BACnet and Modbus deployments accept commands from anything that can reach them. A laptop on the same network can usually read every point and often write setpoints. Secure variants exist but are not yet common in installed buildings.
+
+Section three point two develops networks and protocols in building with a the organisation note Aisha Bello can demo offline.
+
+Under section three point two, the mentor expects networks claims to carry owners and dates.
+
+Section three point two treats field and supervisory layers as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Where the networks meet
 
 The BMS workstation may sit on the hospital's corporate network so estates staff can reach it from offices. Contractors add remote access for support. Lifts may have their own cellular link to the manufacturer. Each meeting point is a place an attacker on the hospital network could step into building control.
 
+Section three point three develops networks and protocols in building with a the organisation note Aisha Bello can demo offline.
+
+Under section three point three, the mentor expects networks claims to carry owners and dates.
+
 ### 3.4 What an analyst does
 
 Ask the estates team and contractor for a network drawing; compare it with switch and firewall configuration held by the network team; never scan building controllers to find out. Some old controllers crash under scans.
 
+Section three point four develops networks and protocols in building with a the organisation note Aisha Bello can demo offline.
+
+Under section three point four, the mentor expects networks claims to carry owners and dates.
+
+Section three point four treats field and supervisory layers as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Wireless
 
 Some sensors report over wireless links to gateways. Ask where each gateway connects and who manages its keys.
+
+Section three point five develops networks and protocols in building with a the organisation note Aisha Bello can demo offline.
+
+Under section three point five, the mentor expects networks claims to carry owners and dates.
+
+Section three point five treats field and supervisory layers as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, the organisation will not accept networks work without a written trail.
 
 ### Worked example (synthetic Millbrook)
 
@@ -202,9 +274,21 @@ You will (1) build a building-device inventory grouped by system; (2) flag devic
 
 System, device name, location, owner, controller model, firmware, installation year, network address, vendor support status and clinical consequence. Building plant lasts twenty years or more, so support status matters more here than in office IT.
 
+Section four point one develops an inventory of building devices with a the organisation note Aisha Bello can demo offline.
+
+Under section four point one, the mentor expects an claims to carry owners and dates.
+
+Section four point one treats what to record grouping as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Grouping
 
 Grouping by system shows who to talk to: HVAC devices go to the estates mechanical lead, the gas panel to the medical gas authorised person, the lift to its maintenance contractor.
+
+Section four point two develops an inventory of building devices with a the organisation note Aisha Bello can demo offline.
+
+Under section four point two, the mentor expects an claims to carry owners and dates.
+
+Section four point two treats what to record grouping as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 4: group a synthetic Millbrook building-device list by system and flag unsupported firmware."""
@@ -235,17 +319,41 @@ medical gas alarm  1 device(s): MGAS-PANEL
 
 Two devices are unsupported: CHILLER-1, installed in 2015, and LIFT-CTRL from 2012. "Unsupported" means the vendor will publish no fixes for new weaknesses. They cannot simply be replaced — a chiller costs a large sum and replacement takes planning — so they need compensating controls: tighter network isolation, no remote access, closer monitoring.
 
+Section four point three develops an inventory of building devices with a the organisation note Aisha Bello can demo offline.
+
+Under section four point three, the mentor expects an claims to carry owners and dates.
+
 ### 4.4 Using the inventory
 
 The inventory feeds advisory matching (Chapter 10), segmentation (Chapter 8) and the capstone risk report (Chapter 12). Keep it under access control.
+
+Section four point four develops an inventory of building devices with a the organisation note Aisha Bello can demo offline.
+
+Under section four point four, the mentor expects an claims to carry owners and dates.
+
+Section four point four treats what to record grouping as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, the organisation will not accept an work without a written trail.
 
 ### 4.5 Where the data comes from
 
 The BMS contractor's handover file, estates maintenance records, purchase orders, the network team's switch tables and walk-downs in plant rooms all contribute. Each source misses something: handover files predate later additions, purchase records miss items bought by contractors, and plant rooms hold devices nobody listed. Comparing them, and recording which source supplied each field, makes the inventory trustworthy.
 
+Section four point five develops an inventory of building devices with a the organisation note Aisha Bello can demo offline.
+
+Under section four point five, the mentor expects an claims to carry owners and dates.
+
 ### 4.6 Consequence column
 
 Write the clinical consequence in plain words for each device, agreed with estates and clinical leads, so priorities are clear to non-specialists.
+
+Section four point six develops an inventory of building devices with a the organisation note Aisha Bello can demo offline.
+
+Under section four point six, the mentor expects an claims to carry owners and dates.
+
+Section four point six treats what to record grouping as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, the organisation will not accept an work without a written trail.
 
 ### Worked example (synthetic Millbrook)
 
@@ -285,21 +393,51 @@ You will (1) find default and shared accounts on building systems; (2) apply ETS
 
 Controllers and web interfaces often leave the factory with documented usernames and passwords. Integrators sometimes keep one password across every site they maintain. Both mean that anyone who has read a manual or worked for that integrator can log in.
 
+Section five point one develops accounts defaults and device baselines with a the organisation note Aisha Bello can demo offline.
+
+Under section five point one, the mentor expects accounts claims to carry owners and dates.
+
+Section five point one treats defaults in buildings shared as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Shared estates accounts
 
 The BMS workstation may have one login used by every shift engineer. That makes changes untraceable. Individual accounts, even if only on the BMS server, let the trend log name the person who changed a setpoint.
+
+Section five point two develops accounts defaults and device baselines with a the organisation note Aisha Bello can demo offline.
+
+Under section five point two, the mentor expects accounts claims to carry owners and dates.
+
+Section five point two treats defaults in buildings shared as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 A procurement baseline
 
 ETSI EN 303 645 requires no universal default passwords, a vulnerability disclosure policy, software updates and secure communication, among other provisions; NIST IR 8259 lists foundational activities manufacturers should perform. Hospital purchasing can turn these into contract questions for new building devices, so the problem shrinks over time.
 
+Section five point three develops accounts defaults and device baselines with a the organisation note Aisha Bello can demo offline.
+
+Under section five point three, the mentor expects accounts claims to carry owners and dates.
+
+Section five point three treats defaults in buildings shared as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Rules that estates staff can follow
 
 Unique passwords per device stored in a managed password vault; named accounts on the BMS; admin rights only for planned work; passwords changed when a contractor's staff leave.
 
+Section five point four develops accounts defaults and device baselines with a the organisation note Aisha Bello can demo offline.
+
+Under section five point four, the mentor expects accounts claims to carry owners and dates.
+
+Section five point four treats defaults in buildings shared as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Checking the change worked
 
 After a password is changed, try the old one from the BMS workstation in the same booked slot to confirm it fails, and confirm operators can still log in with the new arrangement.
+
+Section five point five develops accounts defaults and device baselines with a the organisation note Aisha Bello can demo offline.
+
+Under section five point five, the mentor expects accounts claims to carry owners and dates.
+
+Section five point five treats defaults in buildings shared as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
@@ -339,9 +477,19 @@ You will (1) explain why building interfaces end up on the internet; (2) compare
 
 A contractor opens a port so they can reach the BMS web page from home; a lift company adds a router; a firewall rule from a project is never removed. MITRE ATT&CK for ICS lists T0883 Internet Accessible Device for exactly this situation, and CISA advisories repeatedly urge removing control system interfaces from direct internet access.
 
+Section six point one develops internet exposure of building systems with a the organisation note Aisha Bello can demo offline.
+
+Under section six point one, the mentor expects internet claims to carry owners and dates.
+
 ### 6.2 Checking exposure
 
 The hospital's network team, or an authorised service, produces a list of the hospital's public addresses and open services. The analyst compares it with the approved list — normally only the remote access gateway.
+
+Section six point two develops internet exposure of building systems with a the organisation note Aisha Bello can demo offline.
+
+Under section six point two, the mentor expects internet claims to carry owners and dates.
+
+Section six point two treats how it happens checking as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 6: compare a synthetic external-exposure export with approved internet-facing services."""
@@ -366,13 +514,31 @@ unapproved: 2
 
 The VPN gateway on 203.0.113.10 port 443 is approved. Address 203.0.113.24 exposes BACnet/IP on 47808 and a BMS web login on 80. Both are unapproved: anyone on the internet could attempt to read or command controllers, or guess the web password.
 
+Section six point three develops internet exposure of building systems with a the organisation note Aisha Bello can demo offline.
+
+Under section six point three, the mentor expects internet claims to carry owners and dates.
+
+Section six point three treats how it happens checking as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Responding
 
 Report at once to the network team and estates; ask the network owner to close the exposure through emergency change; check logs for connections from outside; find who opened it and why, and give them a supported route instead.
 
+Section six point four develops internet exposure of building systems with a the organisation note Aisha Bello can demo offline.
+
+Under section six point four, the mentor expects internet claims to carry owners and dates.
+
+Section six point four treats how it happens checking as testable only when evidence and ticket IDs are recorded.
+
 ### 6.5 Preventing recurrence
 
 Add a monthly exposure check to the network team's calendar, require an end date on every firewall rule opened for a project, and make contractors request remote access through the gateway process rather than asking for ports.
+
+Section six point five develops internet exposure of building systems with a the organisation note Aisha Bello can demo offline.
+
+Under section six point five, the mentor expects internet claims to carry owners and dates.
+
+Section six point five treats how it happens checking as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
@@ -412,17 +578,39 @@ You will (1) inventory every remote route into building systems; (2) apply CISA 
 
 A hospital may have separate contractors for BMS, chillers, lifts, fire alarms and access control, each wanting remote support. Without a policy, each installs its own route: a remote desktop tool on the workstation, a router, a cellular modem.
 
+Section seven point one develops contractor and vendor remote access with a the organisation note Aisha Bello can demo offline.
+
+Under section seven point one, the mentor expects contractor claims to carry owners and dates.
+
+Section seven point one treats many hands lessons from as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Lessons from AA21-042A
 
 The CISA advisory on the 2021 compromise of a U.S. water treatment facility describes remote access software being used to reach a control system. Its recommendations include multi-factor authentication, strong remote desktop passwords, closing unused remote desktop ports and auditing remote connections. MITRE ATT&CK for ICS describes misuse of such routes as T0886 Remote Services.
+
+Section seven point two develops contractor and vendor remote access with a the organisation note Aisha Bello can demo offline.
+
+Under section seven point two, the mentor expects contractor claims to carry owners and dates.
 
 ### 7.3 A controlled process
 
 One hospital-owned remote access gateway; a named, multi-factor account for each contractor engineer; accounts disabled by default and enabled per ticket; access limited to the specific system the contractor maintains; sessions recorded where possible; the account disabled when the session ends.
 
+Section seven point three develops contractor and vendor remote access with a the organisation note Aisha Bello can demo offline.
+
+Under section seven point three, the mentor expects contractor claims to carry owners and dates.
+
+Section seven point three treats many hands lessons from as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Removing the old routes
 
 Once the gateway is in place, remove remote desktop tools installed directly on building workstations and disconnect unmanaged modems — in agreement with the contractor and estates, at a planned time, so support is not lost during an emergency.
+
+Section seven point four develops contractor and vendor remote access with a the organisation note Aisha Bello can demo offline.
+
+Under section seven point four, the mentor expects contractor claims to carry owners and dates.
+
+Section seven point four treats many hands lessons from as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
@@ -462,21 +650,51 @@ You will (1) define zones and conduits for Millbrook's building systems using IE
 
 IEC 62443-3-2 describes grouping assets into zones with similar security requirements and connecting them through conduits. At Millbrook a sensible start is: a BMS zone (controllers and BMS server), a safety-relevant zone (medical gas alarm and lift, each separately), an access control zone, a DMZ for the gateway and data exports, and the corporate zone.
 
+Section eight point one develops segmentation for building networks with a the organisation note Aisha Bello can demo offline.
+
+Under section eight point one, the mentor expects segmentation claims to carry owners and dates.
+
 ### 8.2 Conduits and rules
 
 Write each conduit as a small set of rules: BMS-WS (moved into the BMS zone) to controllers on BACnet/IP; gateway to BMS-WS for contractor sessions; BMS server to a DMZ data server for energy reports. Everything else is denied. Corporate PCs never connect straight to controllers.
+
+Section eight point two develops segmentation for building networks with a the organisation note Aisha Bello can demo offline.
+
+Under section eight point two, the mentor expects segmentation claims to carry owners and dates.
+
+Section eight point two treats zones conduits and rules as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Fixing the dual-homed workstation
 
 Removing BMS-WS's corporate network card closes the bridge from Chapter 3. Estates staff who need to view the BMS from offices use a read-only dashboard on the DMZ server, or a jump host reached through the gateway.
 
+Section eight point three develops segmentation for building networks with a the organisation note Aisha Bello can demo offline.
+
+Under section eight point three, the mentor expects segmentation claims to carry owners and dates.
+
+Section eight point three treats zones conduits and rules as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Migrating safely
 
 Change one conduit at a time, at times agreed with estates and theatre managers; watch for lost points on the BMS after each step; keep the previous configuration ready to restore.
 
+Section eight point four develops segmentation for building networks with a the organisation note Aisha Bello can demo offline.
+
+Under section eight point four, the mentor expects segmentation claims to carry owners and dates.
+
+Section eight point four treats zones conduits and rules as testable only when evidence and ticket IDs are recorded.
+
 ### 8.5 Documentation
 
 Publish the zone diagram and rule table with revision numbers and owners so contractors can request changes against them.
+
+Section eight point five develops segmentation for building networks with a the organisation note Aisha Bello can demo offline.
+
+Under section eight point five, the mentor expects segmentation claims to carry owners and dates.
+
+Section eight point five treats zones conduits and rules as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, the organisation will not accept segmentation work without a written trail.
 
 ### Worked example (synthetic Millbrook)
 
@@ -516,9 +734,21 @@ You will (1) use BMS trend logs as security evidence; (2) flag changes outside a
 
 A BMS records values over time — temperatures, setpoints, valve positions — mainly for engineers. The same records show when a setpoint changed and, with named accounts, who changed it. They are often the best evidence of tampering in a building system.
 
+Section nine point one develops monitoring trends and logs with a the organisation note Aisha Bello can demo offline.
+
+Under section nine point one, the mentor expects monitoring claims to carry owners and dates.
+
+Section nine point one treats trends as evidence change as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Change windows
 
 Estates agrees windows for planned setpoint changes, for example weekday mornings. A change outside a window is not necessarily malicious, but it needs an explanation.
+
+Section nine point two develops monitoring trends and logs with a the organisation note Aisha Bello can demo offline.
+
+Under section nine point two, the mentor expects monitoring claims to carry owners and dates.
+
+Section nine point two treats trends as evidence change as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 9: flag operating-theatre temperature setpoint changes outside a synthetic change window."""
@@ -543,17 +773,43 @@ Run with `python3 lab_trend.py`. Verified output:
 
 At 03:00 the theatre setpoint rose from 20 °C to 26 °C, outside the 08:00–10:00 window; it was set back to 21 °C at 09:00 inside the window. The 03:00 change is the one to review.
 
+Section nine point three develops monitoring trends and logs with a the organisation note Aisha Bello can demo offline.
+
+Under section nine point three, the mentor expects monitoring claims to carry owners and dates.
+
+Section nine point three treats trends as evidence change as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Combining sources
 
 Check the BMS audit log for who was logged in at 03:00; the gateway log for remote sessions; the firewall log for connections to the BMS zone. Agreement between sources strengthens the conclusion either way.
+
+Section nine point four develops monitoring trends and logs with a the organisation note Aisha Bello can demo offline.
+
+Under section nine point four, the mentor expects monitoring claims to carry owners and dates.
+
+Section nine point four treats trends as evidence change as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Alerting
 
 Where the BMS supports it, raise an alarm for setpoint changes outside windows on critical units, sent to the estates on-call engineer.
 
+Section nine point five develops monitoring trends and logs with a the organisation note Aisha Bello can demo offline.
+
+Under section nine point five, the mentor expects monitoring claims to carry owners and dates.
+
+Section nine point five treats trends as evidence change as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, the organisation will not accept monitoring work without a written trail.
+
 ### 9.6 Keeping evidence
 
 When a change needs review, export the relevant trend and audit records the same day, note the export time, and store them with the review notes; BMS retention is often short.
+
+Section nine point six develops monitoring trends and logs with a the organisation note Aisha Bello can demo offline.
+
+Under section nine point six, the mentor expects monitoring claims to carry owners and dates.
+
+Section nine point six treats trends as evidence change as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
@@ -593,25 +849,63 @@ You will (1) match advisories to the building inventory; (2) decide between patc
 
 CISA's advisories index includes many building automation, access control and lift products, alongside vendor notices. Subscribe to those relevant to Millbrook's vendors.
 
+Section ten point one develops advisories and patching for building with a the organisation note Aisha Bello can demo offline.
+
+Under section ten point one, the mentor expects advisories claims to carry owners and dates.
+
+Section ten point one treats sources matching choosing tracking as testable only when evidence and ticket IDs are recorded.
+
+For section ten point one, the organisation will not accept advisories work without a written trail.
+
 ### 10.2 Matching
 
 For each advisory: is the product in our inventory, at an affected version, reachable in the way the advisory describes? Unsupported devices (Chapter 4) often match old advisories that will never be fixed.
+
+Section ten point two develops advisories and patching for building with a the organisation note Aisha Bello can demo offline.
+
+Under section ten point two, the mentor expects advisories claims to carry owners and dates.
+
+Section ten point two treats sources matching choosing tracking as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Choosing
 
 Patching a BMS controller usually needs a contractor visit, a booked slot and checks of every point afterwards. Mitigations — firewall rules, disabling a web interface, restricting the gateway account — can often be applied sooner. Record which you chose and why.
 
+Section ten point three develops advisories and patching for building with a the organisation note Aisha Bello can demo offline.
+
+Under section ten point three, the mentor expects advisories claims to carry owners and dates.
+
+Section ten point three treats sources matching choosing tracking as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Tracking
 
 A simple register: advisory, products affected here, decision, mitigation, patch date, owner, review date. Report open high-consequence items to the estates manager monthly.
+
+Section ten point four develops advisories and patching for building with a the organisation note Aisha Bello can demo offline.
+
+Under section ten point four, the mentor expects advisories claims to carry owners and dates.
+
+Section ten point four treats sources matching choosing tracking as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, the organisation will not accept advisories work without a written trail.
 
 ### 10.5 Testing after patching
 
 Afterwards, the contractor confirms every point reports, alarms work and schedules are correct; estates signs off.
 
+Section ten point five develops advisories and patching for building with a the organisation note Aisha Bello can demo offline.
+
+Under section ten point five, the mentor expects advisories claims to carry owners and dates.
+
+Section ten point five treats sources matching choosing tracking as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, the organisation will not accept advisories work without a written trail.
+
 ### 10.6 Vendor contact
 
 When an advisory is unclear about building configurations, ask the vendor or integrator directly: which models and options are affected, whether the vulnerable feature is enabled by default, and whether a mitigation has been tested on systems like Millbrook's. Record the answer and who gave it. Vendors' product security teams usually respond faster when the question names the exact model and version from the inventory.
+
+Section ten point six develops advisories and patching for building with a the organisation note Aisha Bello can demo offline.
 
 ### Worked example (synthetic Millbrook)
 
@@ -651,21 +945,55 @@ You will (1) adapt the incident response steps to building systems; (2) decide w
 
 NIST SP 800-82r3 stresses preparing OT incident response with operations staff. In a hospital that means estates, clinical site managers, the IT security team and contractors agree beforehand: who leads, what each system's manual fall-back is, and how to reach contractors at night.
 
+Section eleven point one develops incident response for hospital building with a the organisation note Aisha Bello can demo offline.
+
+Under section eleven point one, the mentor expects incident claims to carry owners and dates.
+
+Section eleven point one treats planning ahead detect and as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Detect and assess
 
 An alarm, an out-of-window setpoint or a ransom note on BMS-WS starts the process. The first question is clinical: is any area unsafe now? The site manager and estates decide immediate protective steps — moving a theatre list, switching to cylinder oxygen alarms monitored by staff.
+
+Section eleven point two develops incident response for hospital building with a the organisation note Aisha Bello can demo offline.
+
+Under section eleven point two, the mentor expects incident claims to carry owners and dates.
+
+Section eleven point two treats planning ahead detect and as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Contain
 
 If the BMS cannot be trusted, controllers can usually run their last programmed schedules without the server. Isolating the BMS zone at its firewall stops further remote commands while plant keeps running locally. Estates staff patrol plant rooms and check critical values by hand.
 
+Section eleven point three develops incident response for hospital building with a the organisation note Aisha Bello can demo offline.
+
+Under section eleven point three, the mentor expects incident claims to carry owners and dates.
+
+Section eleven point three treats planning ahead detect and as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Evidence and recovery
 
 Preserve logs and images before rebuilding; restore BMS-WS and the server from verified backups; check every critical point against local readings; reconnect conduits one at a time.
 
+Section eleven point four develops incident response for hospital building with a the organisation note Aisha Bello can demo offline.
+
+Under section eleven point four, the mentor expects incident claims to carry owners and dates.
+
+Section eleven point four treats planning ahead detect and as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, the organisation will not accept incident work without a written trail.
+
 ### 11.5 Communication
 
 The incident lead informs hospital management, who decide about external notification. Analysts do not contact the press or regulators themselves.
+
+Section eleven point five develops incident response for hospital building with a the organisation note Aisha Bello can demo offline.
+
+Under section eleven point five, the mentor expects incident claims to carry owners and dates.
+
+Section eleven point five treats planning ahead detect and as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, the organisation will not accept incident work without a written trail.
 
 ### Worked example (synthetic Millbrook)
 
@@ -705,25 +1033,63 @@ You will (1) assemble inventory, exposure, access, segmentation and monitoring f
 
 Scope and method; systems in scope with owners; findings, each with evidence; risk rating; recommended actions with owners and dates; residual risk the hospital accepts. Keep it to a few pages with an appendix for evidence.
 
+Section twelve point one develops capstone building-systems risk report with a the organisation note Aisha Bello can demo offline.
+
+Under section twelve point one, the mentor expects capstone claims to carry owners and dates.
+
+Section twelve point one treats structure rating recommendations presenting as testable only when evidence and ticket IDs are recorded.
+
 ### 12.2 Rating
 
 Rate consequence (patient harm, service loss) and likelihood (exposure, ease, known activity) on simple three-level scales, agreed with estates and clinical leads. A medium likelihood with severe patient consequence usually outranks a high likelihood with minor consequence.
+
+Section twelve point two develops capstone building-systems risk report with a the organisation note Aisha Bello can demo offline.
+
+Under section twelve point two, the mentor expects capstone claims to carry owners and dates.
+
+Section twelve point two treats structure rating recommendations presenting as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Recommendations
 
 Each one names a specific change, an owner, a date and how completion will be shown. Include quick wins (closing exposure, removing old remote tools) and longer projects (replacing unsupported plant).
 
+Section twelve point three develops capstone building-systems risk report with a the organisation note Aisha Bello can demo offline.
+
+Under section twelve point three, the mentor expects capstone claims to carry owners and dates.
+
+Section twelve point three treats structure rating recommendations presenting as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Presenting
 
 Lead with the top three risks in patient terms; show what has already improved; ask for decisions, not admiration.
+
+Section twelve point four develops capstone building-systems risk report with a the organisation note Aisha Bello can demo offline.
+
+Under section twelve point four, the mentor expects capstone claims to carry owners and dates.
+
+Section twelve point four treats structure rating recommendations presenting as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, the organisation will not accept capstone work without a written trail.
 
 ### 12.5 Evidence appendix
 
 For each finding, keep the photograph, log extract or configuration excerpt that supports it, with the date and who collected it. Managers rarely read the appendix, but auditors and the next analyst will, and it lets anyone check that the finding was real.
 
+Section twelve point five develops capstone building-systems risk report with a the organisation note Aisha Bello can demo offline.
+
+Under section twelve point five, the mentor expects capstone claims to carry owners and dates.
+
+Section twelve point five treats structure rating recommendations presenting as testable only when evidence and ticket IDs are recorded.
+
 ### 12.6 After the meeting
 
 Record the decisions taken, owners and dates in the tracking register, send a one-page summary to attendees, and book the six-month review. Progress against the actions becomes the opening slide next time, which keeps attention on change rather than on new findings.
+
+Section twelve point six develops capstone building-systems risk report with a the organisation note Aisha Bello can demo offline.
+
+Under section twelve point six, the mentor expects capstone claims to carry owners and dates.
+
+Section twelve point six treats structure rating recommendations presenting as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Millbrook)
 
