@@ -48,9 +48,13 @@ Security claims about a heating plant are quantitative whether we admit it or no
 
 District heating mixes kilowatts, cubic metres per hour, degrees Celsius and seconds. Delivered heat power is approximately P = ρ · c · Q · ΔT, with water density ρ ≈ 1000 kg/m³ and specific heat c ≈ 4.19 kJ/(kg·K). If you write Q in m³/h you must divide by 3600 to obtain kg/s. A dimensional check catches that slip before it becomes a wrong boiler sizing argument in a risk register.
 
+Section one point two develops mathematical reasoning with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 1.3 Implication, contrapositive and counter-example
 
 "If the SIS is independent, then a SCADA compromise cannot disable the trip." The contrapositive — "if a SCADA compromise can disable the trip, the SIS is not independent" — is logically equivalent and often easier to test. The converse is not equivalent: a trip that survives one test does not prove independence. One documented counter-example, such as a shared engineering workstation that can download to both controllers, refutes a universal claim.
+
+Section one point three develops mathematical reasoning with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### Worked example (synthetic LDHP)
 
@@ -88,13 +92,21 @@ You will (1) describe the layers of a programmable logic controller from I/O car
 
 A PLC repeatedly reads inputs, executes logic, writes outputs and services communications. At LDHP the boiler PLC-H completes this loop every 20 ms. If communication handling grows — for example because a misconfigured historian polls 400 registers every 50 ms — the scan time stretches and the watchdog may trip the controller into a safe stop. A denial of service in OT can therefore arrive as ordinary traffic that is simply too much.
 
+Section two point one develops computing systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 2.2 PLC versus server
 
 A server is designed to run many programs, accept updates and recover by reboot. A PLC is designed to run one program for years, often with no user accounts, limited logging and firmware that the vendor signs (or, in older models, does not sign). Rebooting a server is routine; restarting a controller in a running boiler house requires a work permit, operator presence and a plan to hold the process safe.
 
+Section two point two develops computing systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 2.3 What lives in firmware
 
 Firmware bundles a real-time operating system, protocol stacks, the runtime that executes ladder or structured text, and a bootloader. Security consequences follow: a protocol stack bug can affect every program on the device, and an unsigned update path lets anyone who reaches the engineering port replace the runtime. NIST SP 800-82r3 treats firmware integrity and controlled program download as core OT practices.
+
+Section two point three develops computing systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section two point three, LDHP engineering expects computing claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -132,13 +144,27 @@ You will (1) read structured data with Python's standard library; (2) validate v
 
 An OT tag list is a table: tag name, engineering unit, low and high limits, current value. Python's `csv` module reads such tables without third-party packages, which matters on locked-down engineering laptops where installing software needs approval. Treat each row as a dictionary and keep raw text separate from parsed numbers so a parsing failure is visible rather than silently becoming zero.
 
+Section three point one develops programming with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section three point one, LDHP engineering expects programming claims to carry owners and dates.
+
 ### 3.2 Range validation
 
 A temperature of 141 °C on a probe calibrated for 20–130 °C is either a real excursion, a failed sensor or a manipulated value. Code cannot tell which; it can flag the row and stop it reaching a report labelled "normal". The same applies to a negative flow, which is physically impossible for a one-way meter and therefore always a data-quality or integrity question.
 
+Section three point two develops programming with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section three point two, LDHP engineering expects programming claims to carry owners and dates.
+
 ### 3.3 Readable output
 
 Print one decision per line with the input that caused it. Reviewers in plant change boards are rarely programmers; they will trust output they can trace to a row.
+
+Section three point three develops programming with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section three point three, LDHP engineering expects programming claims to carry owners and dates.
+
+Section three point three treats tags as records range as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 03: validate a synthetic LDHP tag list (no plant access)."""
@@ -206,13 +232,25 @@ You will (1) structure a technical memo as claim, evidence and limitation; (2) c
 
 Every paragraph in an OT security memo should let the reader find three things: what you assert, what you observed that supports it, and where the assertion stops. "Port 502 on PLC-H is reachable from the office VLAN (observed in the approved firewall rule export of 3 March); we did not test whether writes succeed" is a better sentence than "PLC-H is wide open", because it is checkable and honest about scope.
 
+Section four point one develops academic writing with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 4.2 Citing standards precisely
 
 Write "NIST SP 800-82 Rev. 3 (September 2023)", not "NIST guidance". For the 62443 family name the part: IEC 62443-3-3 covers system security requirements and security levels; IEC 62443-2-1 covers the asset owner's security programme; IEC 62443-4-2 covers component requirements. A reader must be able to open the exact document. Do not cite a clause number you have not read.
 
+Section four point two develops academic writing with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section four point two, LDHP engineering expects academic claims to carry owners and dates.
+
 ### 4.3 One fact, three audiences
 
 The operator needs to know what to watch for; the engineer needs the technical path; the manager needs cost, downtime and residual risk. Keep the facts identical across versions — only emphasis and vocabulary change. If the versions disagree on facts, one of them is wrong.
+
+Section four point three develops academic writing with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section four point three, LDHP engineering expects academic claims to carry owners and dates.
+
+Section four point three treats claim evidence limitation citing as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -250,13 +288,23 @@ You will (1) define confidentiality, integrity and availability for a heating pl
 
 In office IT, confidentiality often leads. In a district heating plant the order usually inverts: the safety of people and equipment first, then availability and integrity of control, and only then confidentiality of data. Recipe tables or customer meter readings still matter — the meter data are personal data — but a leaked spreadsheet does not scald anyone, while a manipulated setpoint can.
 
+Section five point one develops security literacy with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section five point one, LDHP engineering expects security claims to carry owners and dates.
+
 ### 5.2 Threat, vulnerability, consequence
 
 A threat is an actor or event with intent or potential to cause harm. A vulnerability is a weakness that makes harm possible. A consequence is what actually happens to the process. Students often confuse them: "Modbus has no authentication" is a vulnerability, "a disgruntled contractor" is a threat source, and "loss of heat to 4,000 homes in January" is a consequence. Risk statements need all three.
 
+Section five point two develops security literacy with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 5.3 ATT&CK for ICS as a vocabulary
 
 MITRE ATT&CK for ICS catalogues adversary behaviour observed against industrial systems. Technique T0836 *Modify Parameter* describes changing controller parameters such as setpoints or limits to cause an effect; T0883 *Internet Accessible Device* describes reaching controllers exposed directly to the internet. Use these identifiers to describe behaviour precisely — not as a checklist claiming completeness.
+
+Section five point three develops security literacy with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section five point three, LDHP engineering expects security claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -294,9 +342,13 @@ You will (1) model zones and conduits as a directed graph; (2) compute reachabil
 
 IEC 62443-3-2 asks asset owners to partition a system into zones (groups of assets sharing security requirements) connected by conduits (the communication channels between zones). A directed graph captures this: nodes are zones, edges are conduits in the direction a session can be opened. A path from the enterprise zone to the safety zone is a question about graph reachability, which is mechanical once the graph is drawn honestly.
 
+Section six point one develops discrete structures with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 6.2 Breadth-first search
 
 BFS visits a start node, then all its neighbours, then theirs, marking each visited node once. It runs in time proportional to nodes plus edges, so even a large refinery's conduit list is checked instantly. The danger is not the algorithm but the input: a forgotten vendor modem or a dual-homed laptop is an edge the diagram omits.
+
+Section six point two develops discrete structures with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ```python
 """Lab 06: reachability over a synthetic LDHP zone/conduit graph (BFS)."""
@@ -327,6 +379,8 @@ after removing Control->SIS: False
 ### 6.3 Cut edges
 
 An edge whose removal disconnects the attacker-facing zones from the critical zone is a cut edge for that pair. In the lab, Control→SIS is such an edge: removing it makes SIS unreachable from Enterprise and from MeterCloud. Engineering often prefers removing a data conduit to a safety system entirely and relying on hardwired trips, which is exactly what the lab's design change represents.
+
+Section six point three develops discrete structures with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### Worked example (synthetic LDHP)
 
@@ -364,9 +418,15 @@ You will (1) decode the Modbus/TCP MBAP header and function code from raw bytes;
 
 Modbus/TCP carries a seven-byte MBAP header — transaction identifier (2 bytes), protocol identifier (2, always zero), length (2) and unit identifier (1) — followed by the protocol data unit beginning with a one-byte function code. The Modbus Application Protocol Specification V1.1b3 defines the codes: 3 reads holding registers, 6 writes a single register, 16 writes multiple registers.
 
+Section seven point one develops networks and protocols with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section seven point one, LDHP engineering expects networks claims to carry owners and dates.
+
 ### 7.2 No identity in the protocol
 
 Nothing in the frame says who sent it. Any host that can open TCP port 502 to a controller can issue a write if the device accepts it. Security must therefore come from the network (segmentation, allow-listing) or from a secured variant such as Modbus/TCP Security, which wraps the protocol in TLS with certificate-based roles.
+
+Section seven point two develops networks and protocols with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ```python
 """Lab 07: decode synthetic Modbus/TCP request headers (offline bytes only)."""
@@ -393,6 +453,12 @@ tid=3 unit=1 fc=16 (write multiple registers) addr=200 arg=1 -> WRITE
 ### 7.3 Reading the output
 
 Frame 2 writes value 300 to register 100; frame 3 is a multiple-register write starting at 200. Notice the decoder prints the starting address and the first argument but does not know what register 100 *means* — that comes from the PLC's register map, which is plant documentation, not protocol.
+
+Section seven point three develops networks and protocols with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section seven point three, LDHP engineering expects networks claims to carry owners and dates.
+
+Section seven point three treats modbus tcp in one as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -430,13 +496,25 @@ You will (1) structure an analysis tool as pure functions with tests; (2) use `u
 
 A function that takes inputs and returns a decision, without reading the network or the clock, can be tested exhaustively. For OT tooling this matters because the reviewer is often a control engineer who will accept a tool only if its behaviour on edge cases is demonstrated. Keep input and output (files, printing) at the edges and the decision logic in the middle.
 
+Section eight point one develops programming ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 8.2 Fail closed
 
 When an allow-list function receives an unknown source, an unknown function code or a malformed address, it should return "block" rather than raise an exception that a caller might catch and ignore. Failing closed in a monitoring tool means "flag for review"; in an enforcement device it means "deny". Neither means "assume fine".
 
+Section eight point two develops programming ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eight point two, LDHP engineering expects programming claims to carry owners and dates.
+
 ### 8.3 Tests as documentation
 
 A small `unittest` case list reads like a specification:
+
+Section eight point three develops programming ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eight point three, LDHP engineering expects programming claims to carry owners and dates.
+
+Section eight point three treats pure functions are reviewable as testable only when evidence and ticket IDs are recorded.
 
 ```python
 import unittest
@@ -491,9 +569,19 @@ You will (1) model historian data as time, tag and value; (2) aggregate and filt
 
 A process historian stores time-series data from controllers for trending, reporting and investigation. Because it sits between control and business networks, it is often the bridge an intruder uses — and also the best record an investigator has. NIST SP 800-82r3 recommends placing data that business users need into a DMZ copy so that enterprise users never query the control-zone historian directly.
 
+Section nine point one develops data and databases with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section nine point one, LDHP engineering expects data claims to carry owners and dates.
+
 ### 9.2 A minimal schema
 
 Three columns — timestamp, tag, value — carry most historian content; production systems add quality codes and compression. SQLite, built into Python, is sufficient to learn the queries.
+
+Section nine point two develops data and databases with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section nine point two, LDHP engineering expects data claims to carry owners and dates.
+
+Section nine point two treats the historian's role minimal as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 09: query a synthetic historian in an in-memory SQLite database."""
@@ -521,6 +609,10 @@ gap check PT-201 samples: [0, 10, 20, 30, 40, 50]
 ### 9.3 Aggregates hide events
 
 TT-101's mean of 92.92 °C looks normal; the maximum of 128.0 °C at t = 35 does not. Always pair an average with an extreme and a count. The gap check confirms PT-201 was sampled every 10 time units without loss; a missing timestamp in that list would be the first sign of a collection fault or deliberate suppression.
+
+Section nine point three develops data and databases with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section nine point three, LDHP engineering expects data claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -558,13 +650,21 @@ You will (1) distinguish authorization from permission to access; (2) list the e
 
 Only the asset owner — or someone the owner has delegated in writing — can authorise testing of an OT system. A plant employee who is curious, a vendor who "has access anyway" or a lecturer who wants a demo cannot grant it. In the industrial setting authorization must also come from operations: a test that is legal but unsafe is still unacceptable.
 
+Section ten point one develops ethics and authorized practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 10.2 The work permit
 
 A sound OT test authorization names the systems in scope, the time window, the techniques allowed (passive capture only, read-only queries, or bench testing), the people on the call, the stop conditions ("if any process alarm occurs, stop and notify the shift lead"), and the rollback plan. It is signed by the owner and by the operations manager for the affected area.
 
+Section ten point two develops ethics and authorized practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 10.3 Coordinated disclosure
 
 If you find a vendor product flaw, report it to the vendor and, where appropriate, to CISA, whose ICS advisories publish coordinated fixes. ETSI EN 303 645 provision 5.2 requires consumer IoT manufacturers to publish a vulnerability disclosure policy; many industrial vendors operate similar programmes. Publishing exploit detail before a fix exists can put every plant using that product at risk.
+
+Section ten point three develops ethics and authorized practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section ten point three, LDHP engineering expects ethics claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -602,17 +702,33 @@ You will (1) identify where general-purpose operating systems appear in an OT ar
 
 PLCs run real-time firmware, but HMIs, engineering workstations, historians and OPC servers run Windows or Linux. These hosts are where phishing payloads, infected USB sticks and remote-access tools land. NIST SP 800-82r3 treats them as OT assets with OT constraints: they may not be patched monthly, may run software certified only for an old OS build, and may be needed around the clock.
 
+Section eleven point one develops operating systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 11.2 Support matrices
 
 The HMI vendor certifies a specific OS version, service pack and antivirus product. Applying an unsupported hardening setting — disabling a service the HMI runtime uses, for example — can leave operators with a blank screen during a cold snap. Hardening therefore follows a test-on-bench, change-board, deploy-in-window sequence, and exceptions are documented with compensating controls.
+
+Section eleven point two develops operating systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eleven point two, LDHP engineering expects operating claims to carry owners and dates.
 
 ### 11.3 Allow-listing and media control
 
 Application allow-listing permits only known executables, which suits HMIs because their software set rarely changes. Removable-media control — scanning kiosks, blocked USB storage, signed transfer media — addresses the most common way malware crosses an air gap. Both are host controls listed among IEC 62443-3-3 system requirements for malicious-code protection (SR 3.2).
 
+Section eleven point three develops operating systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eleven point three, LDHP engineering expects operating claims to carry owners and dates.
+
 ### 11.4 Evidence with least privilege
 
 For an investigation, prefer exporting the event log, the installed-software list and the running-process list with a read-only account over imaging the disk of a running HMI. Imaging may require downtime and copies proprietary recipes.
+
+Section eleven point four develops operating systems with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eleven point four, LDHP engineering expects operating claims to carry owners and dates.
+
+Section eleven point four treats windows and linux inside as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -650,9 +766,21 @@ You will (1) estimate a false-alarm rate with a confidence bound; (2) use the ru
 
 A detector that raised no false alarms in 40 quiet days has a point estimate of 0, but the honest statement is a bound. The rule of three gives an approximate 95 % upper limit of 3/n when zero events are seen in n independent trials; with n = 40 that is 7.5 %.
 
+Section twelve point one develops probability and statistics with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twelve point one, LDHP engineering expects probability claims to carry owners and dates.
+
+Section twelve point one treats zero is not zero as testable only when evidence and ticket IDs are recorded.
+
 ### 12.2 Wilson intervals
 
 The Wilson score interval behaves well for small counts and proportions near 0 or 1, unlike the textbook normal approximation, which can produce negative lower bounds.
+
+Section twelve point two develops probability and statistics with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twelve point two, LDHP engineering expects probability claims to carry owners and dates.
+
+Section twelve point two treats zero is not zero as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 12: false-alarm estimates and rule-of-three bounds (synthetic counts)."""
@@ -677,9 +805,19 @@ k= 3 n=300 point=0.0100 wilson95_upper=0.0290 rule_of_three=nan
 
 For 0/40 the Wilson upper bound (8.76 %) is a little above the rule of three (7.5 %); for 0/300 both shrink to about 1 %. Three false alarms in 300 gives a point estimate of 1 % but an upper bound near 2.9 %. Collecting more quiet days is the only way to narrow the interval.
 
+Section twelve point three develops probability and statistics with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twelve point three, LDHP engineering expects probability claims to carry owners and dates.
+
+Section twelve point three treats zero is not zero as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Base rates
 
 Suppose real attacks occur on 1 day in 1,000 and a detector catches 90 % of them while raising a false alarm on 2 % of quiet days. Of 1,000 days, it flags about 0.9 true and 19.98 false — so roughly 4 % of alerts are real. Operators who learn that most alerts are noise begin to ignore them, which is why alarm-management practice treats nuisance rates as a safety issue.
+
+Section twelve point four develops probability and statistics with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twelve point four, LDHP engineering expects probability claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -690,6 +828,12 @@ The control engineer says a new supply-temperature detector "never false-alarms"
 ### 12.5 Per-shift framing for operators
 
 Operators think in shifts, not proportions. A 2 % per-day false-alarm rate on one detector sounds small, but forty such detectors produce almost one nuisance alarm per day. Convert rates into "expected alarms per shift" before asking a control room to accept a new detector.
+
+Section twelve point five develops probability and statistics with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twelve point five, LDHP engineering expects probability claims to carry owners and dates.
+
+Section twelve point five treats zero is not zero as testable only when evidence and ticket IDs are recorded.
 
 ### Errors and limits
 
@@ -721,17 +865,35 @@ You will (1) design named, role-based accounts for operators, engineers and vend
 
 Control rooms historically used one shift login. When a setpoint changes, the log shows "operator" — not which operator. IEC 62443-3-3 groups requirements into seven foundational requirements; FR 1, identification and authentication control, asks that human users be uniquely identified. Named accounts let an investigation separate an honest mistake from misuse.
 
+Section thirteen point one develops identity and access with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirteen point one, LDHP engineering expects identity claims to carry owners and dates.
+
 ### 13.2 Roles that match work
 
 At LDHP three roles suffice for HMI-1: *view* (trends and alarms), *operate* (acknowledge alarms, change setpoints within limits) and *engineer* (change limits, download logic from the engineering workstation). FR 2, use control, covers enforcing those privileges. Least privilege means a contractor reviewing trends gets *view* only.
+
+Section thirteen point two develops identity and access with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirteen point two, LDHP engineering expects identity claims to carry owners and dates.
+
+Section thirteen point two treats shared accounts break attribution as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Emergency access
 
 A plant cannot lock operators out during an emergency because a directory server is down. Design break-glass accounts: sealed credentials, local authentication, immediate alerting on use, and post-event review. This is availability and safety shaping identity design.
 
+Section thirteen point three develops identity and access with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirteen point three, LDHP engineering expects identity claims to carry owners and dates.
+
+Section thirteen point three treats shared accounts break attribution as testable only when evidence and ticket IDs are recorded.
+
 ### 13.4 Vendor remote access
 
 Vendors need remote access for diagnostics. CISA advisory AA21-042A, on the 2021 compromise of a US water treatment facility's control system through remote-access software, recommended multiple-factor authentication, strong passwords for remote desktop credentials, auditing remote connections and closing unused RDP ports. A safer design: a jump host in the DMZ, multi-factor authentication, sessions enabled by the shift lead for a fixed window, and recording.
+
+Section thirteen point four develops identity and access with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### Worked example (synthetic LDHP)
 
@@ -769,17 +931,39 @@ You will (1) recognise personal data in smart-meter and building-automation stre
 
 LDHP's IoT meters report each household's heat consumption. Hourly readings show when residents wake, cook, travel or are away — the same inference problem that made electricity smart meters controversial. In many jurisdictions such readings are personal data because they relate to an identifiable household.
 
+Section fourteen point one develops privacy foundations with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fourteen point one, LDHP engineering expects privacy claims to carry owners and dates.
+
+Section fourteen point one treats heat meters reveal lives as testable only when evidence and ticket IDs are recorded.
+
 ### 14.2 Minimisation and purpose
 
 Billing needs a monthly total. Network balancing needs neighbourhood flow, not house-level detail. Fault detection may need individual readings, but perhaps daily and retained for weeks, not years. Writing the purpose next to each data flow forces the question "do we need this granularity?"
+
+Section fourteen point two develops privacy foundations with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fourteen point two, LDHP engineering expects privacy claims to carry owners and dates.
+
+Section fourteen point two treats heat meters reveal lives as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Aggregation as a control
 
 Aggregating 40 households in a street segment before data leave the gateway removes individual patterns while keeping the operational signal. Aggregation is not perfect: if one dwelling dominates the segment, its pattern remains visible, so engineers check the minimum group size.
 
+Section fourteen point three develops privacy foundations with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fourteen point three, LDHP engineering expects privacy claims to carry owners and dates.
+
+Section fourteen point three treats heat meters reveal lives as testable only when evidence and ticket IDs are recorded.
+
 ### 14.4 The consumer IoT baseline
 
 ETSI EN 303 645 provision 5.8 asks that personal data in transit between a device and associated services be protected (for example encrypted), and provision 6 addresses data protection more generally — informing consumers what data is processed and why. A district-heating meter is not always "consumer IoT", but the provisions are a useful checklist.
+
+Section fourteen point four develops privacy foundations with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fourteen point four, LDHP engineering expects privacy claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -817,6 +1001,10 @@ You will (1) correct for clock offset when combining logs; (2) preserve the chai
 
 Controllers, HMIs and historians often keep independent clocks, and a PLC without network time can drift by minutes per month. Before sequencing events, measure the offset — for instance, by comparing a known event (an operator's setpoint change) in both logs — and record how it was measured.
 
+Section fifteen point one develops evidence and measurement with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fifteen point one, LDHP engineering expects evidence claims to carry owners and dates.
+
 ```python
 """Lab 15: align two synthetic logs with a measured clock offset."""
 from datetime import datetime, timedelta
@@ -841,13 +1029,29 @@ Run with `python3 lab_clock.py`. Verified output:
 
 After adding the measured 75-second offset, the PLC's "SP write accepted" lines up with the HMI entry at 10:00:07, which supports the hypothesis that the write came from HMI-1. Without correction the PLC event appears 75 seconds before the operator acted — a sequence that might be misread as an external write followed by an operator reaction.
 
+Section fifteen point two develops evidence and measurement with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fifteen point two, LDHP engineering expects evidence claims to carry owners and dates.
+
 ### 15.3 Chain of custody
 
 For each exported file record who exported it, from which system, when, by what method, and its SHA-256 hash. Store the original read-only and work on copies. This is how a timeline becomes evidence a manager, insurer or court can rely on.
 
+Section fifteen point three develops evidence and measurement with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fifteen point three, LDHP engineering expects evidence claims to carry owners and dates.
+
+Section fifteen point three treats clocks disagree what the as testable only when evidence and ticket IDs are recorded.
+
 ### 15.4 Observation, inference, assumption
 
 Label each timeline entry. "PLC log line at 09:58:52 local PLC time" is an observation. "The write originated from HMI-1" is an inference. "The PLC clock offset was constant all morning" is an assumption. Mixing them is the most common flaw in incident reports.
+
+Section fifteen point four develops evidence and measurement with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section fifteen point four, LDHP engineering expects evidence claims to carry owners and dates.
+
+Section fifteen point four treats clocks disagree what the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -885,13 +1089,25 @@ You will (1) place LDHP assets in the Purdue reference levels; (2) design a DMZ 
 
 The Purdue model numbers levels from the physical process (0) through sensors and actuators (1), supervisory control (2), site operations (3) up to enterprise (4–5). It is old and imperfect — cloud services and IIoT gateways blur the levels — but it gives a shared vocabulary. At LDHP, transmitters and the boiler are level 0–1, PLC-H and SIS-H level 1, SCADA and HMI level 2, HIST-1 level 3, and billing and e-mail level 4.
 
+Section sixteen point one develops security architecture with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section sixteen point one, LDHP engineering expects security claims to carry owners and dates.
+
 ### 16.2 The industrial DMZ
 
 Between levels 3 and 4 sits a demilitarised zone holding systems both sides need: a historian replica, a patch server, a jump host for remote access. The rule is that no session crosses the DMZ end to end; enterprise users connect to DMZ services, and control-zone systems push or are pulled by DMZ services. NIST SP 800-82r3 describes this pattern in its discussion of defence-in-depth architecture.
 
+Section sixteen point two develops security architecture with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 16.3 Security levels
 
 IEC 62443 defines security levels SL 1–4 by the attacker a zone must resist, from casual or coincidental violation (SL 1) up to sophisticated means with extended resources (SL 4). Risk assessment sets a target level (SL-T) per zone; components then need capabilities (SL-C) that, with compensating measures, achieve it (SL-A).
+
+Section sixteen point three develops security architecture with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section sixteen point three, LDHP engineering expects security claims to carry owners and dates.
+
+Section sixteen point three treats purdue levels as starting as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -929,9 +1145,19 @@ You will (1) explain message authentication codes and why integrity often matter
 
 A heat meter's reading is not secret to its owner, but a forged reading changes a bill and a forged control command changes a process. A message authentication code (MAC) lets a receiver who shares a secret key verify that a message came from a key holder and was not altered. HMAC with SHA-256 is a widely used construction, standardised in FIPS 198-1.
 
+Section seventeen point one develops cryptography concepts with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section seventeen point one, LDHP engineering expects cryptography claims to carry owners and dates.
+
 ### 17.2 Replay
 
 A valid message captured yesterday is still valid cryptographically today. Including a strictly increasing counter (or a timestamp checked against a window) inside the authenticated data lets the receiver reject repeats.
+
+Section seventeen point two develops cryptography concepts with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section seventeen point two, LDHP engineering expects cryptography claims to carry owners and dates.
+
+Section seventeen point two treats integrity first replay reading as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 17: HMAC-protected meter readings with a replay counter (synthetic key)."""
@@ -959,9 +1185,15 @@ Run with `python3 lab_hmac.py`. Verified output:
 
 Message 2 is accepted once and rejected the second time as a replay, even though its tag is correct. Message 3 carries a tag computed for 121.4 kWh but claims 99.0 kWh, so verification fails. Note `hmac.compare_digest`, which compares in constant time and avoids leaking how many leading characters matched.
 
+Section seventeen point three develops cryptography concepts with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section seventeen point three, LDHP engineering expects cryptography claims to carry owners and dates.
+
 ### 17.4 Operational costs
 
 Keys must be provisioned per device, rotated and revoked; a meter replaced after a fault needs a new key, and a shared fleet-wide key means one extracted key forges every meter. Constrained devices may lack hardware for secure key storage. ETSI EN 303 645 provision 5.4 asks that sensitive security parameters be stored securely and that hard-coded critical security parameters in device software are not used.
+
+Section seventeen point four develops cryptography concepts with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### Worked example (synthetic LDHP)
 
@@ -999,17 +1231,37 @@ You will (1) turn a vague worry into a researchable question; (2) choose between
 
 "Are our detectors good?" is not a question you can answer. "On LDHP's synthetic supply-temperature data, does a CUSUM detector reach a lower false-alarm rate than a fixed band at equal detection rate for slow ramps?" is. It names the population (synthetic data), the comparison, the outcome measures and the attack class.
 
+Section eighteen point one develops research methods with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eighteen point one, LDHP engineering expects research claims to carry owners and dates.
+
 ### 18.2 Design choices
 
 Descriptive studies characterise what exists (inventory of protocols on a network). Comparative studies contrast groups or methods without controlling assignment. Experiments manipulate one variable — detector type — while holding others fixed, typically through simulation in OT because experimenting on live plants is unsafe.
+
+Section eighteen point two develops research methods with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eighteen point two, LDHP engineering expects research claims to carry owners and dates.
+
+Section eighteen point two treats from worry to question as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Validity
 
 Internal validity asks whether the measured difference is caused by the manipulated variable; external validity asks whether results generalise beyond the synthetic plant. Construct validity asks whether "false-alarm rate per run" really measures operator burden. Name each threat and what you did about it.
 
+Section eighteen point three develops research methods with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eighteen point three, LDHP engineering expects research claims to carry owners and dates.
+
+Section eighteen point three treats from worry to question as testable only when evidence and ticket IDs are recorded.
+
 ### 18.4 Reading the literature
 
 Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245) survey physics-based attack detection in CPS and highlight that many papers evaluate detectors without a consistent adversary model. Urbina et al. (CCS 2016, doi:10.1145/2976749.2978388) propose evaluating detectors by the impact a stealthy attacker can still cause while remaining undetected, rather than by detection rate alone. These two papers frame the detector lab in Chapter 25.
+
+Section eighteen point four develops research methods with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section eighteen point four, LDHP engineering expects research claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -1047,17 +1299,27 @@ You will (1) define OT, IIoT, consumer IoT and cyber-physical systems and where 
 
 Operational technology is hardware and software that monitors or controls physical devices and processes. NIST SP 800-82r3 broadened its scope from "industrial control systems" to OT generally, including building automation and transport. IoT devices are network-connected things with sensing or actuation; NIST IR 8259 frames the baseline activities manufacturers should perform for them. A cyber-physical system is the combination of computation, networking and physical process in a closed loop.
 
+Section nineteen point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 19.2 The loop as the asset
 
 The thing an OT defender protects is not a computer but a feedback loop: sensor → controller → actuator → process → sensor. An attacker can falsify the sensor reading, change the controller's logic or parameters, override the actuator, or disrupt the communication that ties them together. Each corresponds to ATT&CK for ICS tactics such as *Impair Process Control* and *Inhibit Response Function*.
+
+Section nineteen point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### 19.3 Standards map
 
 IEC 62443 covers industrial automation and control systems for asset owners, integrators and product suppliers. NIST SP 800-82r3 is a guide for OT security programmes. NIST IR 8259 (and 8259A) sets IoT device cybersecurity capability baselines for manufacturers. ETSI EN 303 645 is the European baseline for consumer IoT. They overlap but answer different questions: who must do what, for which kind of system.
 
+Section nineteen point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 19.4 Safety and security
 
 Functional safety (IEC 61508, IEC 61511 for process industries) assumes random and systematic failures; security assumes an adversary. A safety instrumented system must stay independent so that a cyber-induced process upset still ends in a safe state. IEC 62443 and IEC 61511 both point practitioners to co-ordinate the two analyses.
+
+Section nineteen point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section nineteen point four, LDHP engineering expects ot claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -1099,13 +1361,25 @@ The US ICS-CERT alert IR-ALERT-H-16-056-01 reports that three Ukrainian regional
 
 Antonakakis et al. ("Understanding the Mirai Botnet", USENIX Security 2017) measured a botnet that infected hundreds of thousands of IoT devices, largely by logging in with factory-default credentials over Telnet, and then launched large denial-of-service attacks. Lesson: universal default passwords at scale are an infrastructure risk — which is exactly what ETSI EN 303 645 provision 5.1 prohibits.
 
+Section twenty point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty point two, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 20.3 Water treatment facility, February 2021
 
 CISA advisory AA21-042A describes unauthorised access to a US drinking-water treatment plant's SCADA system through remote-access software, with an attempt to raise sodium hydroxide levels. An operator noticed and reversed the change. Plant personnel noticed and corrected the change before the SCADA software alarmed. The advisory names desktop-sharing software and an end-of-life operating system as likely weaknesses. Lesson: operator vigilance matters, and remote-access tools are part of the attack surface.
 
+Section twenty point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 20.4 Reading cases carefully
 
 Each source documents some facts and not others. Write what the source says, cite it, and mark everything else as inference. Popular retellings often add certainty the primary report does not have.
+
+Section twenty point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty point four treats ukraine power grid december as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1143,9 +1417,21 @@ You will (1) build a discrete-time model of a tank or loop; (2) explain proporti
 
 A model turns "the attacker changes the setpoint" into "the level reaches the overflow alarm in 12 minutes". Defenders use that time to size detection and response: if the process gives 12 minutes, a detector that takes 20 is useless for that scenario.
 
+Section twenty-one point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-one point one, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-one point one treats why model buffer tank as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 A buffer tank with proportional control
 
 LDHP's expansion vessel buffers water volume as temperature changes. The lab models its level with a proportional controller that sets inflow to kp·(setpoint − level), clipped to the pump's 0–5 range, against a constant outflow.
+
+Section twenty-one point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-one point two, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-one point two treats why model buffer tank as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 21: discrete-time model of a synthetic buffer tank with a proportional level loop."""
@@ -1175,9 +1461,17 @@ steady-state error ~ 2.5 pct (P-only offset)
 
 The level rises quickly while inflow is saturated at 5, then settles at 57.5 % rather than 60 %. That 2.5-point gap is the classic proportional-only offset: at equilibrium inflow must equal outflow (2.0), which requires a non-zero error (2.0 / 0.8 = 2.5). Integral action removes the offset; engineers usually use PI or PID control.
 
+Section twenty-one point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-one point three, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 21.4 Using the model for security
 
 If an attacker moves the setpoint from 60 % to 95 %, the model predicts how long the level takes to cross a high alarm at 85 %. The same model tells you how a sensor bias of +10 points would make the controller under-fill the vessel. Models connect cyber actions to process time.
+
+Section twenty-one point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-one point four, LDHP engineering expects ot claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -1215,17 +1509,35 @@ You will (1) build an asset and dependency inventory; (2) trace data flows from 
 
 You cannot protect what you have not listed. NIST SP 800-82r3 places asset inventory at the start of an OT security programme. A useful inventory records not only make, model and firmware but also function, zone, owner, criticality and what depends on the asset.
 
+Section twenty-two point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-two point one, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-two point one treats inventory first dependency chains as testable only when evidence and ticket IDs are recorded.
+
 ### 22.2 Dependency chains
 
 PLC-H depends on 24 V power, its I/O modules, the control network switch, the engineering workstation for logic changes and the vendor for firmware. HMI-1 depends on Windows, the HMI runtime licence server and the domain controller for named accounts. A licence server outage that blanks HMIs is an availability incident with a cyber root cause, even with no attacker.
+
+Section twenty-two point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### 22.3 Supplier dependencies
 
 The meter gateway firmware embeds an open-source TCP/IP stack and a TLS library. If a vulnerability is published in the stack, every gateway inherits it. A software bill of materials (SBOM) lists such components so that, when an advisory appears, the plant can answer "are we affected?" in hours rather than weeks. CISA ICS advisories identify affected products and versions, which only helps if your inventory records versions.
 
+Section twenty-two point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 22.4 People as dependencies
 
 If only one engineer can restore PLC-H's logic from backup, that person is a single point of failure. Document procedures and cross-train.
+
+Section twenty-two point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-two point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-two point four treats inventory first dependency chains as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Lakeside District Heating Plant will not accept ot work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -1263,17 +1575,39 @@ You will (1) perform a consequence-driven risk assessment for one zone; (2) use 
 
 In OT, assessment begins by asking what the process can do that would be unacceptable — loss of heat in winter, over-pressure, scalding — and only then which cyber paths could cause it. Starting from vulnerabilities produces long lists of low-impact findings; starting from consequence focuses effort on the loops that matter.
 
+Section twenty-three point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-three point one, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 23.2 The 62443-3-2 workflow in outline
 
 IEC 62443-3-2 describes identifying the system under consideration, performing an initial high-level risk assessment, partitioning into zones and conduits, performing a detailed risk assessment per zone, and documenting security requirements and target security levels. You do not need the full standard to practise the reasoning, but cite it correctly.
+
+Section twenty-three point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-three point two, LDHP engineering expects ot claims to carry owners and dates.
 
 ### 23.3 Matrices and their traps
 
 A 5 × 5 matrix multiplies a likelihood score by a consequence score. It is a communication tool, not arithmetic: "3 × 4 = 12" does not mean twice as bad as 6. Rank-reversal errors happen when categories are wide. Always keep the narrative scenario next to the score.
 
+Section twenty-three point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-three point three, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-three point three treats start from consequence the as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Residual risk
 
 After controls, some risk remains. It must have an owner who accepts it in writing, a review date and the assumptions it rests on.
+
+Section twenty-three point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-three point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-three point four treats start from consequence the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Lakeside District Heating Plant will not accept ot work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -1311,17 +1645,39 @@ You will (1) choose preventive, detective and corrective controls for a scenario
 
 IEC 62443-3-3 groups system requirements under seven foundational requirements: identification and authentication control (FR 1), use control (FR 2), system integrity (FR 3), data confidentiality (FR 4), restricted data flow (FR 5), timely response to events (FR 6) and resource availability (FR 7). Using them as headings keeps a control plan balanced.
 
+Section twenty-four point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-four point one, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-four point one treats control families matching controls as testable only when evidence and ticket IDs are recorded.
+
 ### 24.2 Matching controls to S-3
 
 For the setpoint-manipulation scenario: restrict data flow with a firewall allow-list (FR 5); require named accounts on HMI-1 (FR 1); add operator-confirmed setpoint limits in PLC-H logic (FR 3 in effect, and a process control); alert on setpoint writes from any host other than HMI-1 (FR 6); keep tested backups of PLC logic (FR 7).
+
+Section twenty-four point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-four point two, LDHP engineering expects ot claims to carry owners and dates.
 
 ### 24.3 Controls that hurt
 
 Active intrusion prevention that drops "suspicious" Modbus writes can block a legitimate emergency command. Account lockout after failed logins can lock an operator out during an incident. Each control needs a failure-mode question: if it misfires, what happens to the process?
 
+Section twenty-four point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-four point three, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-four point three treats control families matching controls as testable only when evidence and ticket IDs are recorded.
+
 ### 24.4 Legacy and compensating controls
 
 PLC-H's firmware cannot authenticate Modbus clients. The compensating approach is to surround it: allow-list conduits so only HMI-1 and HIST-1 can reach it, monitor traffic passively, and protect the engineering workstation that can change its logic.
+
+Section twenty-four point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-four point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-four point four treats control families matching controls as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1359,6 +1715,8 @@ You will (1) run a reproducible detector experiment with fixed seeds; (2) compar
 
 The lab simulates LDHP's supply temperature at 90 °C with Gaussian noise (σ = 1 °C). In attack runs, starting at sample 100 a slow ramp adds 0.08 °C per sample — a stealthy setpoint drift in the spirit of ATT&CK for ICS T0836. The band detector alarms when the reading leaves 90 ± 3.5 °C. CUSUM accumulates positive deviations minus a slack of 0.5 °C and alarms above 12.
 
+Section twenty-five point one develops laboratory with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ```python
 """Lab 25: compare a fixed band and a CUSUM detector on synthetic supply temperature."""
 import random
@@ -1388,9 +1746,17 @@ cusum: false alarms 0/40, detections 40/40, mean delay 23.1
 
 On 40 quiet runs the band raised false alarms in 9 runs — with σ = 1 °C, a single sample beyond 3.5 σ is rare but over 200 samples per run it happens — while CUSUM raised none. Against the ramp, CUSUM detected all 40 runs with a mean delay of 23.1 samples; the band detected 37 of 40 (counting only alarms at or after sample 100) with a mean delay of 28.8. Because the band also fires on noise, some of its "detections" are lucky noise excursions.
 
+Section twenty-five point two develops laboratory with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 25.3 Honest reporting
 
 Write: "CUSUM 0/40 false-alarm runs (Wilson 95 % upper ≈ 8.8 %), 40/40 detections, mean delay 23.1 samples, seeds 0–39 quiet and 1000–1039 attack." Do not write "CUSUM is perfect". Urbina et al. would also ask how large a ramp an attacker could sustain below CUSUM's threshold — a smaller slope might evade it for far longer.
+
+Section twenty-five point three develops laboratory with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-five point three, LDHP engineering expects laboratory claims to carry owners and dates.
+
+Section twenty-five point three treats the experiment interpreting the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1428,17 +1794,33 @@ You will (1) apply STRIDE-style threat modelling to a data-flow diagram of the m
 
 Draw processes (circles), data stores (parallel lines), external entities (boxes) and data flows (arrows), then mark trust boundaries where data crosses from one zone to another. LDHP's meter system: meters → gateway (radio) → gateway → billing cloud (TLS) → cloud → billing database → historian replica (one-way export for network balancing).
 
+Section twenty-six point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-six point one, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 26.2 STRIDE per element
 
 Spoofing, Tampering, Repudiation, Information disclosure, Denial of service and Elevation of privilege give a prompt list. At the meter–gateway radio link: spoofing (a fake meter), tampering (altered readings), information disclosure (household consumption). At the gateway: elevation of privilege via its web interface. STRIDE was designed for software, so add an OT prompt: *physical consequence* — can this threat change heat delivery?
+
+Section twenty-six point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
 
 ### 26.3 Abuse cases
 
 An abuse case states actor, precondition, action and outcome. "A tenant with radio equipment and knowledge of the meter protocol (precondition: no message authentication on the radio link) replays last month's lower readings (action) so that the bill is reduced (outcome)." Writing preconditions makes the mitigation obvious: authenticate readings and use counters, as in Chapter 17.
 
+Section twenty-six point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-six point three, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 26.4 Mapping to ATT&CK
 
 Not every IoT threat has an ATT&CK for ICS technique, and that is fine. Where it does — gateway reached from the internet (T0883), remote services abused (T0886) — record the ID to link with threat intelligence.
+
+Section twenty-six point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-six point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-six point four treats data-flow diagrams stride per as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1476,9 +1858,17 @@ You will (1) write test vectors for an allow-list policy; (2) include boundary, 
 
 A firewall or protocol-aware allow-list is code, even when written as rules. Verification means showing, with recorded evidence, that the policy permits what operations need and blocks what it should. IEC 62443-4-1 (secure product development lifecycle) and the system integrator's commissioning activities both expect documented testing.
 
+Section twenty-seven point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-seven point one, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 27.2 Designing vectors
 
 Good vectors include: each permitted (source, function) pair; each boundary of a register range (first, last, one past last); a permitted source using a forbidden function; an unknown source; and a write function the plant never uses (16, write multiple). Expected results are written before running the test.
+
+Section twenty-seven point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-seven point two, LDHP engineering expects ot claims to carry owners and dates.
 
 ```python
 """Lab 27: conformance test of a Modbus allow-list against a test vector table."""
@@ -1513,9 +1903,19 @@ failures: 0 of 6
 
 All six vectors match. Notice vector 3: register 120 is one past the end of `range(100, 120)`, so it must block — the classic off-by-one boundary. Vector 4 confirms the historian cannot write even within the writable range. A clean run is evidence for these six cases only; it says nothing about function code 23 (read/write multiple) unless you add it.
 
+Section twenty-seven point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-seven point three, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 27.4 From lab to plant
 
 Before deploying a policy to LDHP's control-zone firewall, the same vectors are replayed in a bench environment with the actual device, in monitor mode first, and the result attached to the change ticket.
+
+Section twenty-seven point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-seven point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-seven point four treats policies need tests designing as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1553,13 +1953,23 @@ You will (1) build a fault tree for loss of district heat; (2) combine AND and O
 
 A fault tree starts with an undesired top event and decomposes it into causes joined by gates. An OR gate means any child causes the parent; an AND gate needs all children. For independent events, P(OR) ≈ sum of probabilities when they are small, and P(AND) = product.
 
+Section twenty-eight point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-eight point one, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 28.2 Adding cyber events
 
 Top event: loss of heat to the district for more than four hours. OR children: (a) both boilers trip and cannot restart; (b) circulation pumps stop; (c) supply setpoint manipulated and not detected for four hours. Event (c) is itself an AND: unauthorised setpoint write *and* operators fail to notice *and* the detector fails. Cyber events break the independence assumption: one intruder can cause several "independent" failures at once, so treat common-cause carefully.
 
+Section twenty-eight point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 28.3 FMEA for the gateway
 
 FMEA lists each component, its failure modes, effects, detection and severity. Gateway failure modes include power loss (readings missing — detected by heartbeat), corrupted firmware (malformed data — detected by validation), configuration tampering (plausible false readings — hard to detect), and certificate expiry (uplink refused — detected by monitoring).
+
+Section twenty-eight point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-eight point three, LDHP engineering expects ot claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -1570,6 +1980,10 @@ Annual probabilities (illustrative): unauthorised write 0.05; operators miss it 
 ### 28.4 Bow-tie view
 
 A bow-tie diagram places the top event in the centre, threats and preventive barriers on the left, and consequences with mitigating barriers on the right. It helps operators see that SIS-H is a mitigating barrier for over-temperature but offers nothing for under-temperature caused by a lowered setpoint.
+
+Section twenty-eight point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-eight point four, LDHP engineering expects ot claims to carry owners and dates.
 
 ### Errors and limits
 
@@ -1601,17 +2015,35 @@ You will (1) design an OT security monitoring workflow with operators in the loo
 
 Passive network monitoring at LDHP's control switch builds a baseline of who talks to whom. Alerts — a new host talking Modbus, a write from an unexpected source, a firmware download — go to a security analyst who calls the shift lead before anyone touches the plant. NIST SP 800-82r3 stresses that OT incident response must be coordinated with operations because containment actions can themselves cause a process upset.
 
+Section twenty-nine point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 29.2 Playbook steps
 
 Good OT playbook steps name the decision-maker and the safe state. "Isolate PLC-H from the network" is dangerous if operators lose the HMI. Better: "Shift lead decides whether to move the boiler to local manual control; only then does the analyst block the suspicious source at the firewall."
+
+Section twenty-nine point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-nine point two, LDHP engineering expects ot claims to carry owners and dates.
 
 ### 29.3 Patching in windows
 
 LDHP has a monthly four-hour maintenance window. Patches are tested on a bench HMI, ranked by risk (exposure × consequence), and applied in order until the window is full; the rest are deferred with a dated ticket and compensating controls. IEC TR 62443-2-3 discusses patch management in IACS environments.
 
+Section twenty-nine point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-nine point three, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 29.4 Tabletop exercises
 
 A tabletop rehearses a scenario on paper: who is called, what is decided, what information is missing. It reveals gaps without risking the process.
+
+Section twenty-nine point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section twenty-nine point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section twenty-nine point four treats monitoring that operators trust as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Lakeside District Heating Plant will not accept ot work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -1649,6 +2081,10 @@ You will (1) assess a synthetic IoT fleet against selected ETSI EN 303 645 provi
 
 ETSI EN 303 645 V2.1.1 sets 13 cyber security provisions for consumer IoT, plus data-protection provisions. This lab checks four: 5.1 (no universal default passwords), 5.2 (implement a means to manage reports of vulnerabilities), 5.3 (keep software updated) and 5.5 (communicate securely). NIST IR 8259 covers similar ground from the manufacturer's process side — for example planning for updates and communicating with customers.
 
+Section thirty point one develops laboratory ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty point one, LDHP engineering expects laboratory claims to carry owners and dates.
+
 ```python
 """Lab 30: score a synthetic IoT meter fleet against selected ETSI EN 303 645 provisions."""
 fleet = {"MTR-A": {"unique_pw": True, "vuln_policy": True, "update": True, "tls": True},
@@ -1675,13 +2111,31 @@ fleet-wide gaps: ['tls', 'unique_pw', 'update', 'vuln_policy']
 
 MTR-A meets all four. MTR-B fails 5.1 only — fixable by forcing unique credentials at installation. MTR-C fails three provisions: no disclosure policy, no update mechanism and no secure communication. The fleet-wide gap list contains all four provisions, which looks alarming but is driven by just two models; report both views.
 
+Section thirty point two develops laboratory ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty point two, LDHP engineering expects laboratory claims to carry owners and dates.
+
 ### 30.3 Prioritising
 
 Severity depends on consequence and fixability. MTR-C's lack of update capability is structural — it cannot be patched — so replacement planning starts now. MTR-B's default password is the classic Mirai vector (Chapter 20) and is urgent but cheap.
 
+Section thirty point three develops laboratory ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty point three, LDHP engineering expects laboratory claims to carry owners and dates.
+
+Section thirty point three treats the baseline reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 30.4 Limits of checklist assessment
 
 "Meets 5.3" in this lab is a boolean from a questionnaire. A real assessment checks evidence: does the update mechanism verify signatures, and are updates actually published?
+
+Section thirty point four develops laboratory ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty point four, LDHP engineering expects laboratory claims to carry owners and dates.
+
+Section thirty point four treats the baseline reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Lakeside District Heating Plant will not accept laboratory work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -1692,6 +2146,12 @@ Maya's remediation table: MTR-B — reset unique passwords during next meter rea
 ### 30.5 Reproducing and extending the lab
 
 Change one device's dictionary at a time and rerun, recording the output beside the edit. If two students get different results from the same dictionaries, compare Python versions and the exact file; the script is deterministic and should never differ.
+
+Section thirty point five develops laboratory ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty point five, LDHP engineering expects laboratory claims to carry owners and dates.
+
+Section thirty point five treats the baseline reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Errors and limits
 
@@ -1723,17 +2183,35 @@ You will (1) analyse a modular ICS attack framework from a CISA advisory; (2) di
 
 CISA, with partner agencies, published advisory AA22-103A in April 2022, warning that advanced persistent threat actors had developed custom tools able to scan for, compromise and control certain Schneider Electric PLCs, OMRON Sysmac NEX PLCs and OPC UA servers once they had access to the OT network. The same advisory describes a tool that exploited a vulnerable ASRock motherboard driver to compromise Windows-based engineering workstations.
 
+Section thirty-one point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 31.2 Capability is not incident
 
 Unlike the 2015 Ukraine alert, AA22-103A does not describe a disruption at a named victim. It describes capability. The right response is preparation: inventory affected product families, restrict engineering protocols to engineering workstations, monitor for unexpected connections, and protect workstation drivers. The advisory's mitigations include isolating ICS networks, enforcing multifactor authentication for remote access and monitoring for unusual drivers.
+
+Section thirty-one point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-one point two, LDHP engineering expects ot claims to carry owners and dates.
 
 ### 31.3 From behaviour to detection
 
 Documented behaviour suggests specific detections: a new host speaking a PLC vendor's engineering protocol; program upload or download outside a change window (ATT&CK for ICS T0843 *Program Download*); OPC UA sessions from hosts other than known clients; loading of a known-vulnerable signed driver on a workstation.
 
+Section thirty-one point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-one point three, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 31.4 Comparing case types
 
 Incident reports teach what happened under real constraints; capability advisories teach what could happen next. Both are needed, and neither replaces your own inventory.
+
+Section thirty-one point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-one point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section thirty-one point four treats tools targeting ics scada as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point four, Lakeside District Heating Plant will not accept ot work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -1771,17 +2249,35 @@ You will (1) explain how security work interfaces with process safety, operation
 
 Process safety teams run hazard and operability studies (HAZOP) and determine safety integrity levels for safety instrumented functions under IEC 61511. A security engineer joins to ask, for each hazard, whether a cyber cause could initiate it or disable the protection layer. The output is shared: a hazard log that lists cyber causes next to equipment failures.
 
+Section thirty-two point one develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-two point one, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 32.2 Procurement
 
 The cheapest time to fix security is before purchase. A specification can require IEC 62443-4-2 capabilities at a stated security level, ETSI EN 303 645 conformance for consumer-type devices, an SBOM, a vulnerability disclosure process, a defined support period and signed firmware. Without these clauses the plant inherits whatever the vendor ships.
+
+Section thirty-two point two develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-two point two, LDHP engineering expects ot claims to carry owners and dates.
 
 ### 32.3 Operations and maintenance
 
 Operators judge any change by its effect on their shift. Present security changes in their terms: "this firewall change means the historian trend screen updates every 10 s instead of 2 s." Maintenance technicians need procedures that fit their tools; requiring a laptop they do not carry fails silently.
 
+Section thirty-two point three develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-two point three, LDHP engineering expects ot claims to carry owners and dates.
+
 ### 32.4 Law and regulation
 
 Depending on jurisdiction, district heating may be regulated as critical infrastructure with incident-reporting duties. Security staff must know reporting deadlines and who reports. This book gives orientation, not legal advice.
+
+Section thirty-two point four develops ot iot and cyber-physical security with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-two point four, LDHP engineering expects ot claims to carry owners and dates.
+
+Section thirty-two point four treats safety engineers procurement operations as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1819,17 +2315,43 @@ You will (1) design a replicable simulation study with pre-registered hypotheses
 
 Writing hypotheses, measures, analysis and stopping rules before running the experiment prevents tuning the analysis to the result. For a detector study: "H1: CUSUM's false-alarm proportion over 300 quiet runs will be lower than the band's; primary measure: runs with any false alarm; analysis: difference in proportions with 95 % interval."
 
+Section thirty-three point one develops research methods ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-three point one, LDHP engineering expects research claims to carry owners and dates.
+
 ### 33.2 Sample size for a proportion
 
 To estimate a proportion near p with 95 % margin of error E, n ≈ 1.96² p(1−p)/E². For p = 0.2 and E = 0.05, n ≈ 246. To claim a rate below 1 % when none are observed, the rule of three needs n ≈ 300.
+
+Section thirty-three point two develops research methods ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-three point two, LDHP engineering expects research claims to carry owners and dates.
+
+Section thirty-three point two treats pre-registration sample size for as testable only when evidence and ticket IDs are recorded.
 
 ### 33.3 Effect sizes
 
 "p < 0.05" says little about size. Report the difference: band 22.5 % vs CUSUM 0 % false-alarm runs, difference 22.5 points (interval computed). Readers can then decide whether it matters operationally.
 
+Section thirty-three point three develops research methods ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-three point three, LDHP engineering expects research claims to carry owners and dates.
+
+Section thirty-three point three treats pre-registration sample size for as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point three, Lakeside District Heating Plant will not accept research work without a written trail.
+
 ### 33.4 Replication package
 
 Publish code, seeds, parameters, Python version and the exact command. In this book, labs embed their verified output so a reader can check a rerun matches.
+
+Section thirty-three point four develops research methods ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-three point four, LDHP engineering expects research claims to carry owners and dates.
+
+Section thirty-three point four treats pre-registration sample size for as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Lakeside District Heating Plant will not accept research work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -1841,9 +2363,17 @@ Maya's capstone pre-registration fixes: 300 quiet and 300 attack seeds, three at
 
 If CUSUM does not beat the band at the frozen threshold, that is a publishable finding in a bachelor's thesis provided the method was sound. Report it with the same intervals you would have used for a positive result, and discuss which assumption — noise model, attack slope or threshold choice — most likely explains it. Hiding a negative result and re-running with new settings until something "works" is the practice pre-registration exists to prevent.
 
+Section thirty-three point five develops research methods ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 33.6 Version control as a lab notebook
 
 Commit the pre-registration file before the first experimental run, and commit results with the exact command that produced them. The commit history then shows the order of decisions, which is what an examiner checks when a result looks surprisingly clean.
+
+Section thirty-three point six develops research methods ii with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-three point six, LDHP engineering expects research claims to carry owners and dates.
+
+Section thirty-three point six treats pre-registration sample size for as testable only when evidence and ticket IDs are recorded.
 
 ### Errors and limits
 
@@ -1875,17 +2405,41 @@ You will (1) compare two architectures for remote vendor access against explicit
 
 Option A — persistent VPN from the vendor to a jump host in LDHP's DMZ, with MFA. Option B — on-demand brokered sessions: the shift lead enables a session for a ticket, the vendor connects through a cloud broker to the jump host, the session is recorded and ends after four hours. Both avoid direct connections to PLC-H.
 
+Section thirty-four point one develops comparative project with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-four point one, LDHP engineering expects comparative claims to carry owners and dates.
+
 ### 34.2 Criteria
 
 Exposure (how long a path exists), attribution (named users, recording), operational fit (can a vendor help at 3 a.m.?), cost and dependency on third parties. Weights reflect LDHP priorities: exposure 0.3, attribution 0.25, operational fit 0.25, cost 0.1, third-party dependency 0.1.
+
+Section thirty-four point two develops comparative project with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-four point two, LDHP engineering expects comparative claims to carry owners and dates.
+
+Section thirty-four point two treats the two options criteria as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Scoring
 
 Scores 1–5. A: exposure 2, attribution 3, fit 5, cost 4, dependency 4 → 0.6 + 0.75 + 1.25 + 0.4 + 0.4 = 3.40. B: exposure 5, attribution 5, fit 3, cost 3, dependency 2 → 1.5 + 1.25 + 0.75 + 0.3 + 0.2 = 4.00. B leads.
 
+Section thirty-four point three develops comparative project with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-four point three, LDHP engineering expects comparative claims to carry owners and dates.
+
+Section thirty-four point three treats the two options criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point three, Lakeside District Heating Plant will not accept comparative work without a written trail.
+
 ### 34.4 Sensitivity
 
 Raise operational fit to 0.45 and lower exposure to 0.1: A = 0.2 + 0.75 + 2.25 + 0.4 + 0.4 = 4.00; B = 0.5 + 1.25 + 1.35 + 0.3 + 0.2 = 3.60. The ranking flips, so the recommendation depends on how much the plant values night-time vendor availability. Say so explicitly.
+
+Section thirty-four point four develops comparative project with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-four point four, LDHP engineering expects comparative claims to carry owners and dates.
+
+Section thirty-four point four treats the two options criteria as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1897,9 +2451,17 @@ Maya recommends B with one change to address its weakest criterion: a documented
 
 Attach a reason to every number. B's attribution score of 5 rests on session recording and named vendor accounts in the broker; A's exposure score of 2 rests on the VPN being permanently reachable even when no work is scheduled. If a reviewer disputes a score, the evidence column shows exactly what to check, and the sensitivity test shows whether the dispute could change the recommendation at all.
 
+Section thirty-four point five develops comparative project with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
 ### 34.6 Presenting the comparison
 
 Show the plant manager the matrix, the sensitivity result and one paragraph per option describing a night-time support call under each design. Concrete scenarios are easier to judge than weighted totals.
+
+Section thirty-four point six develops comparative project with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-four point six, LDHP engineering expects comparative claims to carry owners and dates.
+
+Section thirty-four point six treats the two options criteria as testable only when evidence and ticket IDs are recorded.
 
 ### Errors and limits
 
@@ -1931,17 +2493,39 @@ You will (1) write a capstone proposal with problem, question, scope, method, et
 
 A capstone proposal for this course has seven parts: problem statement (one paragraph with a cited source), research or design question, scope and exclusions, method, ethics and safety boundaries, deliverables with acceptance criteria, and a timeline with milestones. Keep it under four pages; a supervisor must be able to approve or reject it in one meeting.
 
+Section thirty-five point one develops capstone proposal with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-five point one, LDHP engineering expects capstone claims to carry owners and dates.
+
 ### 35.2 Scope that fits
 
 Bachelor's capstones fail more often from scope than from difficulty. "Secure LDHP" is not a capstone. "Design, implement and evaluate a passive Modbus write monitor for LDHP's synthetic control-zone capture, measuring precision and recall on six attack classes" is.
+
+Section thirty-five point two develops capstone proposal with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-five point two, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-five point two treats proposal structure scope that as testable only when evidence and ticket IDs are recorded.
 
 ### 35.3 Ethics and safety boundary
 
 The proposal must state: all data are synthetic or provided by an owner under written agreement; no real controller or network will be probed; any tool is passive and offline; results that reveal a real product weakness go through coordinated disclosure. A supervisor signs this section.
 
+Section thirty-five point three develops capstone proposal with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-five point three, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-five point three treats proposal structure scope that as testable only when evidence and ticket IDs are recorded.
+
 ### 35.4 Acceptance criteria
 
 Each deliverable needs a check: "the monitor processes the 8-case evaluation set and reports TP/FP/FN/TN with precision and recall" is checkable; "a good tool" is not.
+
+Section thirty-five point four develops capstone proposal with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-five point four, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-five point four treats proposal structure scope that as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
@@ -1979,17 +2563,35 @@ You will (1) plan a supervised placement or community project with a utility, sc
 
 Small water utilities, schools with building-management systems and community heating co-operatives often lack security staff. A student under supervision can help with documentation-heavy, low-risk work: an asset list from existing records, a review of remote-access arrangements, a password-hygiene checklist, an awareness session for operators. None of these needs touching a live controller.
 
+Section thirty-six point one develops field or community practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-six point one, LDHP engineering expects field claims to carry owners and dates.
+
 ### 36.2 The agreement
 
 The placement agreement names the host organisation's responsible person, the supervisor, the deliverables, data-handling rules (what leaves the site, how it is stored and when it is deleted) and an explicit prohibition on scanning, probing or configuration changes. If the host asks for "a quick scan", the student refers the request to the supervisor.
+
+Section thirty-six point two develops field or community practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-six point two, LDHP engineering expects field claims to carry owners and dates.
 
 ### 36.3 Working with small operators
 
 Advice must fit their budget and staff. "Deploy a SOC" is useless to a three-person co-operative; "remove the always-on remote-desktop tool and use the vendor's on-demand session feature, enabled by the manager's phone" is actionable. CISA's free resources for small water and wastewater systems are an example of guidance written for this audience.
 
+Section thirty-six point three develops field or community practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-six point three, LDHP engineering expects field claims to carry owners and dates.
+
 ### 36.4 Reflective journal
 
 After each visit record: what I did, what I observed, what surprised me, what I would do differently, and any ethical question that arose. Reflection turns activity into learning.
+
+Section thirty-six point four develops field or community practice with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-six point four, LDHP engineering expects field claims to carry owners and dates.
+
+Section thirty-six point four treats what bachelor's student can as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic)
 
@@ -2027,17 +2629,41 @@ You will (1) critically review a published OT security claim; (2) grade evidence
 
 From weakest to strongest: vendor marketing claim; single anecdote; case report from a primary source; systematic measurement on one system; measurement replicated across systems or by independent teams. A seminar asks of every claim: which rung is this, and does the conclusion overreach it?
 
+Section thirty-seven point one develops evidence review seminar with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-seven point one, LDHP engineering expects evidence claims to carry owners and dates.
+
+Section thirty-seven point one treats ladder of evidence reading as testable only when evidence and ticket IDs are recorded.
+
 ### 37.2 Reading a measurement paper
 
 The Mirai study by Antonakakis et al. (USENIX Security 2017) is a good seminar text: it combines several data sources — network telescope scans, honeypots, DNS data and attack victim data — to estimate infection size and behaviour. Ask: what does each source see and miss? How were infected devices counted when IP addresses change? Which conclusions depend on one source only?
+
+Section thirty-seven point two develops evidence review seminar with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-seven point two, LDHP engineering expects evidence claims to carry owners and dates.
 
 ### 37.3 Reading a survey
 
 Giraldo et al. (ACM Computing Surveys, 2018) classify physics-based detection work. A survey's strength is breadth; its risk is that it reports what papers claim rather than re-testing them. Use it to find primary papers and recurring weaknesses, such as inconsistent attacker models.
 
+Section thirty-seven point three develops evidence review seminar with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-seven point three, LDHP engineering expects evidence claims to carry owners and dates.
+
+Section thirty-seven point three treats ladder of evidence reading as testable only when evidence and ticket IDs are recorded.
+
 ### 37.4 Structured peer review
 
 Review format: summary in your own words; main strengths; major concerns (validity, missing comparisons, overreach); minor issues; a recommendation. Comment on the work, not the person.
+
+Section thirty-seven point four develops evidence review seminar with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-seven point four, LDHP engineering expects evidence claims to carry owners and dates.
+
+Section thirty-seven point four treats ladder of evidence reading as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Lakeside District Heating Plant will not accept evidence work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -2075,13 +2701,33 @@ You will (1) implement a capstone artefact in small, tested increments; (2) main
 
 Build the smallest end-to-end version first: read a capture file, classify each write, print decisions. Then add rules one at a time, each with tests (Chapter 8) and conformance vectors (Chapter 27). A working small tool in week 4 beats an ambitious one that never runs.
 
+Section thirty-eight point one develops capstone implementation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-eight point one, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-eight point one treats increments decision records evaluation as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Decision records
 
 When you choose, record why: "Decision 7: treat writes during a scheduled maintenance window as benign-maint only if the ticket ID appears in the window list; alternatives considered: time-only rule (rejected: insiders could time attacks)." Decision records let examiners follow the reasoning.
 
+Section thirty-eight point two develops capstone implementation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-eight point two, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-eight point two treats increments decision records evaluation as testable only when evidence and ticket IDs are recorded.
+
 ### 38.3 Evaluation
 
 The lab evaluates a monitor's output on eight labelled cases from Maya's synthetic set.
+
+Section thirty-eight point three develops capstone implementation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-eight point three, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-eight point three treats increments decision records evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point three, Lakeside District Heating Plant will not accept capstone work without a written trail.
 
 ```python
 """Lab 38: capstone evaluation - precision/recall with denominators (synthetic results)."""
@@ -2105,6 +2751,10 @@ missed classes: ['drift', 'setpoint']
 ### 38.4 Reading the confusion matrix
 
 Three true positives, one false positive (a maintenance write flagged), two false negatives (one setpoint attack and the drift attack missed), two true negatives. Precision 3/4 = 0.75; recall 3/5 = 0.60. Eight cases are far too few for precise rates — a Wilson interval for 3/5 spans roughly 0.23 to 0.88 — so the honest use of this table is to find failure classes, not to rank tools.
+
+Section thirty-eight point four develops capstone implementation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-eight point four, LDHP engineering expects capstone claims to carry owners and dates.
 
 ### Worked example (synthetic LDHP)
 
@@ -2142,17 +2792,43 @@ You will (1) evaluate a capstone against its own proposal; (2) separate results,
 
 Return to the acceptance criteria written in Chapter 35. For each, record met, partly met or not met, with evidence. A capstone that misses a criterion but explains why — for example, the drift class could not be detected by rules alone — can still earn a strong grade.
 
+Section thirty-nine point one develops capstone evaluation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-nine point one, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-nine point one treats against the proposal results as testable only when evidence and ticket IDs are recorded.
+
 ### 39.2 Results versus interpretation
 
 Results are what the evaluation produced: "recall 4/5 on the extended set". Interpretation is what you think it means: "the cumulative rule addresses slow manipulation". Limitations bound the interpretation: "tested only on synthetic data with one drift profile". Keeping three headings prevents results from silently absorbing opinion.
+
+Section thirty-nine point two develops capstone evaluation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-nine point two, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-nine point two treats against the proposal results as testable only when evidence and ticket IDs are recorded.
 
 ### 39.3 Self-assessment rubric
 
 Score yourself 0–3 on: problem framing, method fit, evidence quality, safety and ethics, communication. Write one sentence of evidence per score. Supervisors use the same rubric; differences start a useful conversation.
 
+Section thirty-nine point three develops capstone evaluation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-nine point three, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-nine point three treats against the proposal results as testable only when evidence and ticket IDs are recorded.
+
 ### 39.4 Successor plan
 
 List what you would do with three more months: a second process model, real (owner-provided) anonymised captures, an operator usability study. Rank by value to the question.
+
+Section thirty-nine point four develops capstone evaluation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-nine point four, LDHP engineering expects capstone claims to carry owners and dates.
+
+Section thirty-nine point four treats against the proposal results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Lakeside District Heating Plant will not accept capstone work without a written trail.
 
 ### Worked example (synthetic LDHP)
 
@@ -2163,6 +2839,10 @@ Maya's evaluation table: criterion 1 (processes 8-case set, reports confusion ma
 ### 39.5 The supervisor's view
 
 Supervisors look for alignment between the question, the evidence and the claims. A frequent comment at this stage is that the conclusion section repeats the results instead of answering the research question. Rewrite the conclusion so its first sentence answers the question from Chapter 35 directly, its second states the strongest limitation, and its third names the next study.
+
+Section thirty-nine point five develops capstone evaluation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section thirty-nine point five, LDHP engineering expects capstone claims to carry owners and dates.
 
 ### Errors and limits
 
@@ -2194,17 +2874,37 @@ You will (1) structure a bachelor's thesis in OT security; (2) design slides tha
 
 Introduction (problem, question, contribution); background (standards and prior work, cited precisely — NIST SP 800-82r3, the relevant IEC 62443 parts, ATT&CK for ICS techniques, peer-reviewed papers you have read); method; results; discussion including limitations; conclusion and future work; appendices with code and data descriptions. Keep the synthetic label visible in every figure caption that uses LDHP data.
 
+Section forty point one develops thesis and presentation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section forty point one, LDHP engineering expects thesis claims to carry owners and dates.
+
 ### 40.2 Slides
 
 One message per slide, stated in its title: "Rule-based monitoring missed slow drift; a cumulative rule recovered it". Show the confusion matrix, the denominators and the interval. Avoid hacker imagery and padlock icons; examiners read them as a sign of weak content.
+
+Section forty point two develops thesis and presentation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section forty point two, LDHP engineering expects thesis claims to carry owners and dates.
+
+Section forty point two treats thesis structure slides anticipating as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Anticipating questions
 
 Prepare answers for: Why synthetic data? How would this fail on a real plant? What is the false-alarm burden on operators per shift? Why these attack classes? What would an attacker who knows your rules do? Answering "I don't know, but here is how I would find out" is acceptable; inventing numbers is not.
 
+Section forty point three develops thesis and presentation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section forty point three, LDHP engineering expects thesis claims to carry owners and dates.
+
 ### 40.4 Responsible publication
 
 Publish code, seeds and synthetic data under an open licence. Do not publish anything that is a working attack against real products. If the work found a real vulnerability, publication waits for coordinated disclosure (Chapter 10).
+
+Section forty point four develops thesis and presentation with a Lakeside District Heating Plant note Maya Chen can demo offline.
+
+Under section forty point four, LDHP engineering expects thesis claims to carry owners and dates.
+
+Section forty point four treats thesis structure slides anticipating as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic LDHP)
 
