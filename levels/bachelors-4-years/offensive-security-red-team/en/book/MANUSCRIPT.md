@@ -3627,7 +3627,7 @@ Convenience builds on laptops without network used to skip the check. That skip 
 
 Research office hours ban the word "prove" unless a pre-registered threshold is cited. Sam rings a small bell. The room self-corrects by week three.
 
-Casual prove-talk inflates what a classroom study can carry. The bell is slightly silly and extremely effective at interrupting the habit. Speakers must cite the pre-registered threshold or rephrase as supports or consistent with. By week three the room mostly self-corrects before the bell. Language discipline is part of research methods, not pedantry. Small rituals can police big epistemic bad habits without lengthy lectures.
+Casual prove-talk inflates what a classroom study can carry. The bell is slightly silly and extremely effective at interrupting the habit. Speakers must cite the pre-registered threshold or rephrase as supports or consistent with. In the first week the bell rings several times an hour, mostly at students describing the awareness-mail trial as proof that the content pack failed. Language discipline is part of research methods, not pedantry. Small rituals can police big epistemic bad habits without lengthy lectures.
 
 ### Worked example (synthetic TRB)
 
@@ -4207,7 +4207,7 @@ The operator README shows copy-pasteable examples for the common conflict cases.
 
 Feature freeze before evaluation week.
 
-Feature freeze before evaluation week protects metric integrity. Sam parks ideas on a v2 list rather than merging chrome during measurement. Freeze breaks are allowed only for fail-closed defects. The advisor enforces freeze with the same seriousness as a production change window. Students who keep coding features into evaluation week void their pre-registration. Calm measurement needs a still codebase. Freeze is how evaluation stays about the tool that was promised. Freeze discipline earns trust when measured builds match promised builds.
+Freezing the build also keeps the planted drifts and fail-closed cases measuring the same code the advisor signed off in the pre-registration note. Sam parks ideas on a v2 list rather than merging chrome during measurement. Freeze breaks are allowed only for fail-closed defects. The advisor enforces freeze with the same seriousness as a production change window. Students who keep coding features into evaluation week void their pre-registration. Calm measurement needs a still codebase. Freeze is how evaluation stays about the tool that was promised. Freeze discipline earns trust when measured builds match promised builds.
 
 ### 38.6 Handover
 
@@ -4467,7 +4467,7 @@ You will (1) structure the thesis; (2) defend limits; (3) state next steps.
 
 Claim, background, method, results, limits, ethics, next steps.
 
-The thesis structure is claim, background, method, results, limits, ethics and next steps. Sam leads with limits early enough that panels trust the results that follow. Ethics is not an appendix afterthought; it has its own heading before next steps. Next steps stay outside graded claims to avoid scope inflation. Readers should know what was asked before they judge what was found.
+Each heading answers one reader question, and Sam checks the order by asking whether a panel member could stop after any chapter and still know what was claimed. Sam leads with limits early enough that panels trust the results that follow. Ethics is not an appendix afterthought; it has its own heading before next steps. Next steps stay outside graded claims to avoid scope inflation. Readers should know what was asked before they judge what was found.
 
 Sam drafts the limits paragraph before the results chapter, so the results are written knowing what they cannot claim.
 
@@ -4475,7 +4475,7 @@ Sam drafts the limits paragraph before the results chapter, so the results are w
 
 Inventory hygiene tooling for authorized testing programmes — not a red-team exploit framework.
 
-Positioning states inventory hygiene tooling for authorised testing programmes, not a red-team exploit framework. Sam corrects misunderstandings in the first minute of the talk. Exploit-framework readings of the work are treated as communication failures to fix, not as flattering hype. Slides repeat the positioning sentence near the claim. Clear positioning protects the programme's legal and ethical boundaries.
+Sam tests the sentence on a classmate from outside the module, who must restate it without using the words exploit, attack or hack. Sam corrects misunderstandings in the first minute of the talk. Exploit-framework readings of the work are treated as communication failures to fix, not as flattering hype. Slides repeat the positioning sentence near the claim. Clear positioning protects the programme's legal and ethical boundaries.
 
 The positioning sentence also governs vocabulary: the thesis says inventory drift, conflict and deny, and avoids attack words that would invite the wrong reading.
 
@@ -4491,7 +4491,7 @@ Sam's twelve minutes break down as two on the claim and positioning, four on met
 
 Fail-closed demos; ethics; why no live scan; threats to validity.
 
-Likely questions cover fail-closed demos, ethics, why there is no live scan and threats to validity. Sam publishes his question bank after the defence so the next cohort rehearses better. The public-website demo refusal is in the bank on purpose. Rehearsal answers are short, cited and calm. Surprise questions still happen; banks reduce avoidable panic.
+He keeps each rehearsed answer under three sentences and ties it to a page of the thesis, so panel members can check it rather than take it on trust. Sam publishes his question bank after the defence so the next cohort rehearses better. The public-website demo refusal is in the bank on purpose. Rehearsal answers are short, cited and calm. Surprise questions still happen; banks reduce avoidable panic.
 
 For "why no live scan", Sam's answer is that the claim concerns inventory comparison, synthetic data was enough to test it, and a live scan would have needed authorisation the course cannot grant.
 
