@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–35 de 40 já estão escritos em português, com os exercícios EX001–EX105 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 36–40 (EX106–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) |
-
-Capítulos 36–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-36), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1579,11 +1577,211 @@ Os portais podem deslocar o risco em vez de eliminá-lo; uma violação poderia 
 - **EX104 — Critério de justiça.** Por que incluir alternativas para os pais sem internet? *Rubrica:* 3 = para que as famílias com acesso digital limitado não sejam excluídas;; 2 = menciona justiça;; 1 = ignorar;; 0 = nenhuma.
 - **EX105 — Necessidade da DPIA.** Por que planejar uma DPIA para o portal? *Rubrica:* 3 = trata dados de crianças em grande escala, atendendo aos critérios do WP248;; 2 = menciona crianças;; 1 = desnecessária;; 0 = nenhuma.
 
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) apoiar a proteção de dados de uma organização comunitária; (2) adaptar as orientações a recursos limitados; (3) refletir sobre o serviço prestado.
+
+### 36.1 Estágio comunitário
+
+Elena passa um período como voluntária numa fictícia associação de pais que organiza colônias de férias. A associação guarda nomes, idades, alergias e contatos de emergência das crianças numa planilha compartilhada. Os voluntários mudam com frequência, e parte dos registros acabava guardada nos celulares dos monitores, que às vezes se perdem. Elena ajuda a associação a entender seus deveres como controladora, mesmo sendo um pequeno grupo de voluntários, e adapta as orientações ao pouco tempo e dinheiro de que ela dispõe. A comissão de pais acompanha o trabalho de perto.
+
+### 36.2 Passos práticos
+
+Elena recomenda alguns passos: um formulário curto, só com os campos necessários; uma pasta compartilhada protegida por senha, em vez de anexos de e-mail ou de celulares pessoais; uma lista de quem pode acessar a planilha; a exclusão dos dados das crianças ao fim de cada temporada de férias, salvo pedido dos pais; o consentimento para fotografias; e um aviso de privacidade de uma página. Ela evita recomendar ferramentas caras. A associação adota os passos numa única reunião, e o custo é quase zero. As listas antigas são apagadas na mesma semana, com a ajuda da comissão.
+
+### 36.3 Alergias e segurança
+
+As informações sobre alergias são dados de saúde, mas são essenciais para a segurança das crianças. Elena explica que a associação precisa delas e que mantê-las exatas e disponíveis aos voluntários de plantão faz parte da proteção de dados, e não se opõe a ela. Ela ajuda a desenhar um cartão impresso de alergias, guardado com segurança durante as atividades e triturado depois. O exemplo mostra que proteger os dados inclui garantir que as pessoas certas consigam usá-los quando necessário. Os monitores levam o cartão e enxergam as alergias depressa, porque a segurança precisa de acesso.
+
+### 36.4 Reflexão
+
+Elena reflete que as organizações pequenas precisam de orientações simples e proporcionais. Estruturas complexas sobrecarregariam os voluntários. Ela aprende a priorizar os poucos passos que reduzem a maior parte do risco. O Dr. Asante observa que servir a grupos comunitários ajuda a entender como a proteção de dados funciona para pessoas sem especialistas, e que a proporcionalidade é um princípio da lei tanto quanto do bom aconselhamento. Grupos pequenos precisam de orientações que os voluntários consigam seguir sem formação jurídica. A comissão agradece calorosamente, e as orientações proporcionais são adotadas.
+
+### Exemplo resolvido
+
+Elena ajuda uma associação de pais a minimizar os campos, proteger a planilha, excluir os dados depois das férias, publicar um aviso e tratar os dados de alergia com cartões impressos triturados depois das atividades.
+
+> **Caso sintético.** A associação é sintética.
+
+### Erros e limites
+
+A rotatividade dos voluntários desfaz as práticas; mantenha as instruções curtas e repetidas.
+
+### Exercícios
+
+- **EX106 — Pequeno controlador.** Uma associação de pais voluntária tem deveres de proteção de dados? *Rubrica:* 3 = sim; é controladora de dados de crianças;; 2 = sim;; 1 = não;; 0 = nenhuma.
+- **EX107 — Equilíbrio das alergias.** Como os dados de alergia são tratados nas atividades? *Rubrica:* 3 = cartão impresso guardado com segurança e triturado depois;; 2 = uma parte;; 1 = e-mail;; 0 = nenhuma.
+- **EX108 — Orientação proporcional.** Por que evitar estruturas complexas para a associação? *Rubrica:* 3 = os voluntários não têm tempo; poucos passos reduzem a maior parte do risco;; 2 = menciona simplicidade;; 1 = estrutura completa;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar as evidências sobre intervenções de privacidade; (2) julgar a força das evidências; (3) apresentar uma revisão equilibrada.
+
+### 37.1 A questão
+
+No seminário de revisão de evidências, Elena pergunta: que evidências mostram que o treinamento de privacidade da equipe reduz os incidentes? Ela busca estudos e descobre que muitos avaliam o conhecimento depois do treinamento, menos medem o comportamento e pouquíssimos medem os incidentes. Ela classifica os estudos pelo desfecho medido. Aprende que o desfecho que mais importa, menos incidentes, é o mais difícil de medir e o menos estudado. Os poucos estudos que mediram incidentes diretamente muitas vezes não tinham grupos de comparação, porque medir é difícil.
+
+### 37.2 Força das evidências
+
+Elena julga os estudos pelo desenho, pelo tamanho da amostra e pelo desfecho. Um estudo randomizado com incidentes como desfecho seria forte; uma pesquisa de satisfação com o treinamento é fraca. A maior parte do que ela encontra fica no meio. Ela aplica esse julgamento aos dados da rede: a participação no treinamento subiu, enquanto os e-mails enviados ao destinatário errado caíram depois de mudanças técnicas, então o treinamento sozinho não pode receber o crédito. Ela escreve que as evidências apoiam o treinamento como parte de um conjunto de medidas, e não isoladamente. Há muitos fatores de confusão.
+
+### 37.3 Apresentação equilibrada
+
+Elena apresenta sua revisão no seminário, começando pelas evidências mais fortes e declarando com clareza as incertezas. Um colega argumenta que o treinamento é esperado pela responsabilização, independentemente das evidências. Elena concorda que ele pode ser esperado, mas diz que as evidências devem moldar a forma como o treinamento é desenhado. A discussão mostra a diferença entre justificar uma atividade e desenhá-la bem. Ela apresenta o que os estudos mostram, o que não conseguem mostrar e o que, por isso, a rede deveria medir por conta própria. O treinamento continua valendo a pena.
+
+### 37.4 Uso da revisão
+
+Elena recomenda que a rede meça os incidentes antes e depois das futuras mudanças no treinamento e combine o treinamento com medidas técnicas. Também sugere compartilhar resultados anonimizados com outras redes para construir evidências. O Dr. Asante observa que os profissionais podem contribuir com evidências medindo com cuidado, e que a área precisa de mais contribuições desse tipo para ir além das suposições. Ela recomenda que a rede registre os incidentes antes e depois de cada mudança, para que em dois anos tenha evidências próprias, e não suposições emprestadas.
+
+### Exemplo resolvido
+
+Elena encontra poucas evidências que liguem o treinamento a menos incidentes, julga os estudos pelo desenho e pelo desfecho, observa que a queda dos e-mails da rede veio depois de mudanças técnicas e recomenda medir as mudanças futuras.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+Uma revisão curta pode deixar estudos de fora; registre os métodos de busca.
+
+### Exercícios
+
+- **EX109 — Desfecho menos estudado.** Que desfecho é o menos estudado nas pesquisas sobre treinamento? *Rubrica:* 3 = a redução dos incidentes;; 2 = menciona incidentes;; 1 = conhecimento;; 0 = nenhuma.
+- **EX110 — Crédito pela melhoria.** Por que o treinamento não pode receber o crédito pela queda dos e-mails enviados ao destinatário errado? *Rubrica:* 3 = mudanças técnicas aconteceram ao mesmo tempo;; 2 = menciona confusão;; 1 = crédito total;; 0 = nenhuma.
+- **EX111 — Justificar versus desenhar.** Qual é a diferença entre justificar e desenhar o treinamento? *Rubrica:* 3 = ele pode ser esperado de qualquer modo, mas as evidências devem moldar seu desenho;; 2 = menciona evidências;; 1 = são iguais;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o portal das famílias com controles de privacidade; (2) implantá-lo em etapas; (3) lidar com os problemas durante a implantação.
+
+### 38.1 Construção
+
+Elena trabalha com o gerente de TI da rede e com um fornecedor para configurar o portal das famílias. Os pais se autenticam com uma conta vinculada ao filho; os relatórios são enviados pela equipe e ficam visíveis apenas para os pais vinculados. Os acessos são registrados. Os documentos expiram depois do ano letivo. Ela configura o sistema primeiro com famílias sintéticas e testa cada função. A DPIA é aprovada antes que qualquer dado real seja usado. As contas da equipe usam o login único, e as funções espelham a estrutura das escolas.
+
+### 38.2 Vinculação dos pais
+
+Vincular os pais aos filhos é a parte mais difícil. Erros poderiam mostrar o relatório de uma família a outra. Elena desenha um processo: a secretaria da escola verifica a identidade e envia um código de uso único pelo correio para o endereço registrado. Os pais separados são vinculados de acordo com as informações jurídicas que a escola possui. Ela testa o processo com casos sintéticos, incluindo situações familiares complexas, que revelam dois casos extremos que ela corrige. Cada vínculo é conferido com os registros da escola, e os erros se tornam raros.
+
+### 38.3 Implantação em etapas
+
+Elena implanta primeiro em duas escolas. No primeiro mês, 78% dos pais ativam as contas. A equipe relata que enviar pelo portal é mais rápido que mandar e-mails. Três famílias sem internet recebem cópias impressas. Um erro de vinculação é detectado antes que qualquer relatório seja compartilhado, porque o pai percebe o nome de uma criança desconhecida e avisa a escola. Elena rastreia o erro até um engano de digitação e acrescenta uma etapa de confirmação para a secretaria. O retorno das primeiras escolas molda a implantação nas seguintes.
+
+### 38.4 Expansão
+
+Depois das correções, o portal chega às doze escolas. Elena monitora as ativações, os pedidos de suporte e os relatórios que ainda são enviados por e-mail. Descobre alguns funcionários que ainda mandam relatórios por e-mail e os procura para entender o motivo: não sabiam enviar arquivos grandes. Ela organiza ajuda. Aprende que a implementação é sobretudo uma questão de pessoas e processos, e que a tecnologia é a parte mais fácil. Os guias para a equipe são o que mais ajuda, e plantões de atendimento funcionam nos horários de entrada e saída dos alunos.
+
+### Exemplo resolvido
+
+Elena configura o portal, desenha a vinculação dos pais com códigos enviados pelo correio, implanta em duas escolas (78% de ativação, um erro de vinculação detectado e corrigido) e expande para as doze escolas.
+
+> **Caso sintético.** O portal e a implantação são sintéticos.
+
+### Erros e limites
+
+Os códigos pelo correio atrasam a ativação; equilibre a segurança com a conveniência.
+
+### Exercícios
+
+- **EX112 — Processo de vinculação.** Como os pais são vinculados aos filhos? *Rubrica:* 3 = verificação de identidade pela secretaria e código de uso único enviado ao endereço registrado;; 2 = uma parte;; 1 = autocadastro;; 0 = nenhuma.
+- **EX113 — Erro de vinculação.** Como o erro de vinculação foi detectado e corrigido? *Rubrica:* 3 = um pai viu um nome desconhecido; foi acrescentada uma etapa de confirmação;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+- **EX114 — E-mails remanescentes.** Por que alguns funcionários ainda mandavam relatórios por e-mail? *Rubrica:* 3 = não sabiam enviar arquivos grandes;; 2 = menciona treinamento;; 1 = recusaram;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o projeto final diante dos critérios; (2) relatar com honestidade os critérios não atendidos; (3) recomendar os próximos passos.
+
+### 39.1 Resultados
+
+Elena avalia o portal depois de um período letivo. Os relatórios sensíveis enviados por e-mail caem de cerca de quarenta por mês para três. A ativação pelos pais chega a 83%, abaixo da meta de 85%. As famílias sem internet recebem relatórios impressos. O tempo que a equipe gasta enviando relatórios diminui um pouco. Três dos quatro critérios são atendidos. Elena relata com clareza a ativação abaixo da meta, em vez de arredondá-la para cima. Nenhum relatório enviado ao destinatário errado é registrado no período, mas a ativação continua baixa em algumas famílias.
+
+### 39.2 Entender a diferença
+
+Elena investiga a baixa ativação. A maioria das contas não ativadas pertence a famílias que não receberam o código pelo correio ou que falam outras línguas além do inglês. Ela recomenda instruções traduzidas e a opção de retirar os códigos na escola. Observa que a diferença é uma questão de equidade, e não só técnica, porque as famílias que não conseguem acessar o portal perdem informações oportunas sobre os filhos. As famílias sem internet em casa ou com barreiras de idioma foram as que menos ativaram, e a rede passa a oferecer ajuda nas secretarias das escolas.
+
+### 39.3 E-mails remanescentes
+
+Três relatórios por mês ainda são enviados por e-mail. Elena descobre que eles envolvem profissionais externos, como terapeutas, que não estão no portal. Ela recomenda um método de compartilhamento seguro para esses profissionais. Observa que o escopo original não os incluía e que a avaliação identificou uma nova necessidade. Uma boa avaliação, ela aprende, encontra o que o projeto não previu. Outras mensagens, como as de clubes e passeios, também continuam saindo por e-mail, porque o portal foi delimitado apenas para os relatórios sobre alunos individuais.
+
+### 39.4 Próximos passos
+
+Elena recomenda materiais traduzidos, a retirada dos códigos na escola, um caminho de compartilhamento para os profissionais e a continuidade do monitoramento. Ela apresenta a avaliação à direção da rede, que aprova os passos. O Dr. Asante elogia o relato honesto do critério não atendido e de sua dimensão de equidade, observando que as avaliações que escondem as falhas tiram das organizações a chance de melhorar. A rede financia sessões de ativação assistida em cada escola e vai medir a ativação de novo depois de um período letivo, com os mesmos critérios. Os resultados vão para o conselho.
+
+### Exemplo resolvido
+
+Elena constata que os relatórios enviados por e-mail caíram de cerca de quarenta para três por mês e que a ativação chegou a 83%, contra a meta de 85%, liga a diferença aos códigos pelo correio e ao idioma e recomenda traduções e a retirada dos códigos na escola.
+
+> **Caso sintético.** Os números da avaliação são sintéticos.
+
+### Erros e limites
+
+Um período letivo é pouco; os efeitos podem mudar quando a novidade passar.
+
+### Exercícios
+
+- **EX115 — Critério não atendido.** Que critério não foi atendido? *Rubrica:* 3 = a ativação pelos pais: 83% contra 85%;; 2 = menciona ativação;; 1 = todos atendidos;; 0 = nenhuma.
+- **EX116 — Questão de equidade.** Por que a baixa ativação é uma questão de equidade? *Rubrica:* 3 = as famílias que não acessam o portal perdem informações oportunas;; 2 = menciona justiça;; 1 = só técnica;; 0 = nenhuma.
+- **EX117 — Nova necessidade.** Que nova necessidade a avaliação revelou? *Rubrica:* 3 = o compartilhamento seguro com profissionais externos;; 2 = menciona profissionais;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Trabalho de conclusão e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um trabalho de conclusão de bacharelado sobre proteção de dados aplicada; (2) apresentar os achados a uma plateia; (3) refletir sobre o aprendizado.
+
+### 40.1 O trabalho de conclusão
+
+Elena escreve seu trabalho de conclusão sobre a melhoria da proteção de dados numa rede de escolas de ensino fundamental. Ele cobre o registro de aplicativos, a triagem, a verificação do consentimento, o controle de divulgação, a análise de falhas, o portal das famílias e sua avaliação. Cada capítulo apresenta evidências e limites. Ela argumenta que a maior parte dos riscos da rede vinha de processos comuns, como o e-mail e os aplicativos, e que controles práticos combinados com uma medição honesta os reduziram. O trabalho acompanha uma única rede, e a medição ancora cada afirmação feita.
+
+### 40.2 Apresentação
+
+Elena apresenta o trabalho a uma banca de tutores e ao responsável pela proteção de dados da rede. Usa números de seus laboratórios: aplicativos sem contrato, pontuações da triagem, células suprimidas, fotografias retidas e resultados do portal. As perguntas se concentram na sustentabilidade: quem vai manter o registro e o portal? Ela responde com os responsáveis e o calendário definidos nas operações. A banca pergunta sobre a voz das crianças, e ela descreve como perguntou aos alunos mais velhos sobre as fotografias. Cada afirmação dos slides cita um resultado de laboratório.
+
+### 40.3 Avaliação
+
+A banca elogia o trabalho por ligar as evidências à ação e pela honestidade quanto às falhas. Sugere que trabalhos futuros envolvam os alunos mais diretamente no desenho das informações de privacidade, por exemplo perguntando-lhes como o portal deveria apresentar seus próprios relatórios e fotografias. Elena concorda e registra a sugestão como recomendação. O Dr. Asante observa que o trabalho mostra um ciclo completo, do problema à melhoria avaliada. A banca aprova o trabalho, e Elena aceita a sugestão de envolver os alunos mais cedo nas decisões de desenho.
+
+### 40.4 Reflexão
+
+Elena reflete sobre os quatro anos. Aprendeu que a privacidade protege pessoas reais, aqui crianças que não conseguem se proteger com facilidade. Aprendeu que a lei, a tecnologia e as pessoas precisam trabalhar juntas. Aprendeu a medir e a relatar com honestidade. Ela planeja trabalhar com proteção de dados em escolas e continuar estudando os direitos das crianças. A rede lhe oferece um cargo de meio período como encarregada de privacidade, que ela aceita. Ela agradece ao Dr. Asante e aos professores, e começa no novo cargo em setembro.
+
+### Exemplo resolvido
+
+Elena escreve um trabalho de conclusão que liga as evidências à ação, apresenta os números dos laboratórios e os planos de sustentabilidade, recebe elogios e a sugestão de envolver os alunos e reflete sobre a proteção das crianças.
+
+> **Caso sintético.** O trabalho e a oferta de emprego são sintéticos.
+
+### Erros e limites
+
+A experiência de uma única rede pode não se generalizar; declare o contexto com clareza.
+
+### Exercícios
+
+- **EX118 — Argumento do trabalho.** Qual é o principal argumento do trabalho de Elena? *Rubrica:* 3 = a maior parte dos riscos vinha de processos comuns, reduzidos por controles práticos e medição;; 2 = menciona processos;; 1 = só tecnologia;; 0 = nenhuma.
+- **EX119 — Resposta sobre a sustentabilidade.** Como Elena responde à pergunta sobre a sustentabilidade? *Rubrica:* 3 = responsáveis e um calendário de operações mantêm o registro e o portal;; 2 = menciona responsáveis;; 1 = nada;; 0 = nenhuma.
+- **EX120 — Trabalhos futuros.** Que trabalho futuro a banca sugeriu? *Rubrica:* 3 = envolver os alunos no desenho das informações de privacidade;; 2 = menciona alunos;; 1 = nenhum;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX105 (as de EX106–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -1794,6 +1992,36 @@ Respostas-modelo para EX001–EX105 (as de EX106–EX120 estão na edição em i
 **EX104.** Para garantir que as famílias com acesso digital limitado continuem recebendo as informações.
 
 **EX105.** O tratamento em grande escala de dados de crianças atende a vários critérios de alto risco.
+
+**EX106.** Sim, é controladora de dados pessoais de crianças e precisa seguir a lei de forma proporcional.
+
+**EX107.** Num cartão impresso e seguro, disponível durante as atividades e triturado depois.
+
+**EX108.** Porque pequenos grupos de voluntários precisam de passos simples que tratem dos principais riscos.
+
+**EX109.** A redução efetiva dos incidentes.
+
+**EX110.** Porque correções técnicas foram introduzidas no mesmo período.
+
+**EX111.** O treinamento pode ser esperado pela responsabilização, enquanto as evidências devem determinar como fazê-lo.
+
+**EX112.** A secretaria verifica a identidade e envia pelo correio um código de uso único ao endereço registrado.
+
+**EX113.** Um pai avisou sobre uma criança desconhecida; Elena acrescentou uma etapa de confirmação para a secretaria.
+
+**EX114.** Não sabiam como enviar arquivos grandes.
+
+**EX115.** A ativação pelos pais, com 83% contra a meta de 85%.
+
+**EX116.** As famílias afetadas, muitas vezes com barreiras de idioma, perdem informações oportunas sobre os filhos.
+
+**EX117.** Um caminho seguro para compartilhar relatórios com profissionais externos.
+
+**EX118.** Que os processos comuns criavam a maior parte dos riscos, e que controles práticos e medidos os reduziram.
+
+**EX119.** Responsáveis nomeados e o calendário de operações mantêm o registro e o portal.
+
+**EX120.** Envolver os alunos diretamente no desenho das informações de privacidade.
 
 <a id="references"></a>
 ## Referências
