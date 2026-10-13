@@ -2337,11 +2337,11 @@ Isolation stops test events from reaching production analysts and wasting their 
 ```python
 """Unit tests for a detection function, run with the standard library (synthetic cases)."""
 import io, unittest
-def burst(users_failed, any_success, threshold=6):
+def burst(users_failed, any_success, threshold=5):
     return users_failed >= threshold and any_success
 class T(unittest.TestCase):
-    def test_fires_at_threshold(self): self.assertTrue(burst(6, True))
-    def test_quiet_below(self): self.assertFalse(burst(5, True))
+    def test_fires_at_threshold(self): self.assertTrue(burst(5, True))
+    def test_quiet_below(self): self.assertFalse(burst(4, True))
     def test_needs_success(self): self.assertFalse(burst(9, False))
     def test_zero(self): self.assertFalse(burst(0, False))
 if __name__ == "__main__":
@@ -2357,9 +2357,9 @@ tests run 4 failures 0
 
 ### 30.3 Reading the result
 
-Four tests run and none fail: the rule fires at exactly 6 distinct failing users with a success, stays quiet at 5, stays quiet without a success even at 9 users, and stays quiet with no activity. These encode the boundary and the success clause decided in chapters 9 and 24.
+Four tests run and none fail: the rule fires at exactly 5 distinct failing users with a success, stays quiet at 4, stays quiet without a success even at 9 users, and stays quiet with no activity. These encode the boundary and the success clause decided in chapters 9 and 24.
 
-Each test checks one aspect of behaviour. Firing at six and staying quiet at five pins down the threshold exactly; staying quiet at nine without a success shows that the success clause really is required; staying quiet with no activity shows the rule does not misfire on empty windows. Four passing tests together describe the rule's intended behaviour.
+Each test checks one aspect of behaviour. Firing at five and staying quiet at four pins down the threshold exactly; staying quiet at nine without a success shows that the success clause really is required; staying quiet with no activity shows the rule does not misfire on empty windows. Four passing tests together describe the rule's intended behaviour.
 
 ### 30.4 Pipeline tests
 
@@ -2396,7 +2396,7 @@ Passing verification does not show the rule catches real attackers; that is vali
 ### Exercises
 
 - **EX088 — V and V.** Distinguish verification from validation. *Rubric:* 3 = built right vs right thing; spec vs real effectiveness; 2 = partial; 1 = same; 0 = none.
-- **EX089 — Four tests.** What do the four unit tests check? *Rubric:* 3 = threshold boundary 6/5, success clause, empty input; 2 = three; 1 = one; 0 = none.
+- **EX089 — Four tests.** What do the four unit tests check? *Rubric:* 3 = threshold boundary 5/4, success clause, empty input; 2 = three; 1 = one; 0 = none.
 - **EX090 — Pipeline finding.** What did the pipeline test catch that unit tests could not? *Rubric:* 3 = missing customer ID from template field name; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -4212,7 +4212,7 @@ Model answers for EX001–EX150. Amara Osei, Paolo Ricci, Kingsbridge Engineerin
 
 **EX088.** Verification checks the rule matches its specification; validation checks it actually helps detect real threats in operation.
 
-**EX089.** That the rule fires at 6 users with success, stays quiet at 5, needs a success even at 9 users, and stays quiet with no activity.
+**EX089.** That the rule fires at 5 users with success, stays quiet at 4, needs a success even at 9 users, and stays quiet with no activity.
 
 **EX090.** The alert lacked the customer ID because the routing template used an old field name.
 
