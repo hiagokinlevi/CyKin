@@ -42,19 +42,11 @@ You will (1) place authorized offensive security among other security practices;
 
 ### 1.1 Where offensive testing sits
 
-Security work includes architecture, monitoring, incident response and authorized testing. Testing finds what the others missed, under written permission. It does not replace patching, logging or training.
-
-At HCU, Leo's authorized reviews of online banking and the staff VPN sit beside patching, logging and training. Leo's ENG-440 scope covers online banking staging and the staff VPN, so gaps those other controls should catch stay with their owners. It does not replace them, and a clean report still leaves everyday hardening to the product and network teams.
-
-When a finding appears, Leo still asks whether patching or monitoring should have caught it, so testing feeds everyday hardening rather than competing with it. A clean ENG-440 report still leaves Secure and HttpOnly cookie work to app-sec and MFA gaps to the VPN owners.
+Security work includes architecture, monitoring, incident response and authorized testing. Testing finds what the others missed, under written permission. It does not replace patching, logging or training. At HCU, Leo's ENG-440 scope covers online banking staging and the staff VPN, and his reviews sit beside patching, logging and training rather than replacing them. When a finding appears, Leo still asks whether patching or monitoring should have caught it, so testing feeds everyday hardening rather than competing with it. A clean ENG-440 report still leaves Secure and HttpOnly cookie work to app-sec and MFA gaps to the VPN owners.
 
 ### 1.2 CIA at a credit union
 
-Confidentiality protects member account data; integrity protects balances and transfer instructions; availability keeps online banking usable. A finding is judged by which of these it threatens.
-
-When Leo rates a finding, he names which of the three is at stake. A session cookie without Secure and HttpOnly threatens confidentiality of member sessions; a shared admin password threatens integrity of changes; a test that locks accounts threatens availability. The same technical issue can hit more than one, and the report should say so.
-
-Confidentiality, integrity and availability can all sit in one finding. Account lockout is why the ROE forbids password spraying: one careless run on payday could lock members out of their wages. The cookie-flag finding in ENG-440 is rated mainly on confidentiality, because a stolen session exposes a member's account view.
+Confidentiality protects member account data; integrity protects balances and transfer instructions; availability keeps online banking usable. A finding is judged by which of these it threatens, and when Leo rates one he names which of the three is at stake. A session cookie without Secure and HttpOnly threatens confidentiality of member sessions; a shared admin password threatens integrity of changes; a test that locks accounts threatens availability. The same technical issue can hit more than one, and the report should say so. Account lockout is why the ROE forbids password spraying: one careless run on payday could lock members out of their wages. The cookie-flag finding in ENG-440 is rated mainly on confidentiality, because a stolen session exposes a member's account view.
 
 ### 1.3 Least privilege and depth
 
@@ -64,25 +56,15 @@ On the staff VPN, least privilege means each admin has a named account rather th
 
 ### 1.4 Frameworks you will cite
 
-NIST SP 800-115 for planning assessments; PTES for engagement stages; OWASP WSTG for web checks; MITRE ATT&CK for technique names; TIBER-EU and CBEST for threat-led tests in finance.
-
-Leo opens OWASP WSTG first for web application tests of online banking staging, PTES for the engagement stages, and NIST SP 800-115 when planning what kind of assessment HCU needs. ATT&CK supplies technique names such as T1078 Valid Accounts for the SOC. TIBER-EU and CBEST matter only if HCU later sponsors a threat-led test.
-
-Each reference answers a different question, so Leo cites the one that matches the decision being recorded. ATT&CK supplies T1078 Valid Accounts for the SOC; TIBER-EU and CBEST wait until HCU sponsors a threat-led test.
+NIST SP 800-115 for planning assessments; PTES for engagement stages; OWASP WSTG for web checks; MITRE ATT&CK for technique names; TIBER-EU and CBEST for threat-led tests in finance. Each reference answers a different question, so Leo cites the one that matches the decision being recorded. He opens OWASP WSTG first for web application tests of online banking staging, PTES for the engagement stages, and NIST SP 800-115 when planning what kind of assessment HCU needs. ATT&CK supplies technique names such as T1078 Valid Accounts for the SOC. TIBER-EU and CBEST matter only if HCU later sponsors a threat-led test.
 
 ### 1.5 What practitioners produce
 
-Practitioners produce scoped plans, validated findings, clear reports and verified remediations — not piles of unconfirmed scanner noise.
-
-Leo's first week delivers a scoped plan for online banking and the VPN, not a scanner dump. Later he will produce validated findings, a clear report for the CISO and engineers, and verified remediations with retest evidence. Unconfirmed tool noise stays out of the report so owners can act on what is real.
-
-Those four outputs — scoped plan, validated findings, clear report, verified remediations — are what the CISO and examiners can audit. Scanner noise without validation wastes fixer time and hides the issues that matter to members who never chose to be part of a test.
+Practitioners produce scoped plans, validated findings, clear reports and verified remediations — not piles of unconfirmed scanner noise. Leo's first week delivers a scoped plan for online banking and the VPN, not a scanner dump. Later he will produce validated findings, a clear report for the CISO and engineers, and verified remediations with retest evidence. Those four outputs are what the CISO and examiners can audit. Unconfirmed tool noise stays out of the report so owners can act on what is real; scanner noise without validation wastes fixer time and hides the issues that matter to members.
 
 ### 1.6 Member trust
 
-Members trust HCU with wages and savings. A careless test that locks accounts or leaks a statement destroys that trust faster than most technical findings. Every method Leo proposes must answer: what member harm could this cause if it goes wrong, and how do we prevent it?
-
-That question shapes the ROE: staging first, no password spraying, stop if member data appears unexpectedly. A locked payday transfer or a leaked statement would harm members who never chose to be part of a test, so prevention is written into methods and stop conditions before any packet leaves.
+Members trust HCU with wages and savings. A careless test that locks accounts or leaks a statement destroys that trust faster than most technical findings. Every method Leo proposes must answer: what member harm could this cause if it goes wrong, and how do we prevent it? That question shapes the ROE: staging first, no password spraying, stop if member data appears unexpectedly. A locked payday transfer or a leaked statement would harm members who never chose to be part of a test, so prevention is written into methods and stop conditions before any packet leaves.
 
 ### Worked example (synthetic HCU)
 
@@ -120,51 +102,27 @@ You will (1) identify HCU services and who owns them; (2) explain why core banki
 
 ### 2.1 Services that matter
 
-HCU runs online banking, a staff VPN, email, a member-facing website and a core banking system on an AS/400. Online banking and the VPN are internet-reachable and change often; they are common first targets for authorized review.
-
-Leo's next authorized review therefore starts with online banking and the staff VPN. Email and the public website matter too, but they change less often and are lower on the current plan. The AS/400 is listed so everyone knows it exists and is deliberately left alone.
-
-The staff VPN ranks high because a shared admin password there would reach internal systems, as the later ENG-440 finding showed. Each service on the list carries its owner's name, so Leo knows whom to ask before any check touches it.
+HCU runs online banking, a staff VPN, email, a member-facing website and a core banking system on an AS/400. Online banking and the VPN are internet-reachable and change often; they are common first targets for authorized review, so Leo's next authorized review starts with them. The staff VPN ranks high because a shared admin password there would reach internal systems, as the later ENG-440 finding showed. Email and the public website matter too, but they change less often and are lower on the current plan. The AS/400 is listed so everyone knows it exists and is deliberately left alone. Each service on the list carries its owner's name, so Leo knows whom to ask before any check touches it.
 
 ### 2.2 Why core banking is excluded
 
-The AS/400 holds the system of record for balances. An accidental outage would stop branches. Unless a specialised, heavily controlled engagement is funded, it stays out of scope and is protected by compensating controls.
-
-Compensating controls around the AS/400 — network isolation, tightly limited admin paths and monitoring — are what make exclusion defensible to examiners. Leo's plan names those controls rather than pretending the system is invisible. A specialised engagement would need its own funding, ROE and operators trained on that platform.
-
-Leo's plan names the owner of each AS/400 control, so examiners can put questions to the network team directly. Until such an engagement is funded, the AS/400 appears in the report only as an exclusion with its controls listed.
+The AS/400 holds the system of record for balances. An accidental outage would stop branches. Unless a specialised, heavily controlled engagement is funded, it stays out of scope and is protected by compensating controls. Those controls — network isolation, tightly limited admin paths and monitoring — are what make exclusion defensible to examiners. Leo's plan names them, and the owner of each, rather than pretending the system is invisible, so examiners can put questions to the network team directly. A specialised engagement would need its own funding, ROE and operators trained on that platform; until one is funded, the AS/400 appears in the report only as an exclusion with its controls listed.
 
 ### 2.3 Stakeholders
 
-The CISO authorises; the online-banking product owner accepts risk; the network team opens temporary rules; the SOC watches for test traffic; legal reviews the contract. Leo's job is to know who decides what.
-
-Before kickoff, Leo can name each person and what they must approve. If the product owner has not accepted residual risk, or the SOC has not been told the window, he does not start. Knowing who decides what prevents a test that is authorized on paper but blocked in practice.
-
-Leo keeps a dated one-line approval record for each stakeholder in the ENG-440 ticket before kickoff. The network team's temporary firewall rule, for instance, must be live by 08:00 Saturday or the window slips.
+The CISO authorises; the online-banking product owner accepts risk; the network team opens temporary rules; the SOC watches for test traffic; legal reviews the contract. Leo's job is to know who decides what, so before kickoff he can name each person and what they must approve. If the product owner has not accepted residual risk, or the SOC has not been told the window, he does not start. He keeps a dated one-line approval record for each stakeholder in the ENG-440 ticket; the network team's temporary firewall rule, for instance, must be live by 08:00 Saturday or the window slips. Knowing who decides what prevents a test that is authorized on paper but blocked in practice.
 
 ### 2.4 Context in the plan
 
-A good plan states business purpose (protect members, meet examiner expectations), services in and out of scope, and peak times to avoid (for example Friday payday).
-
-Leo's draft for HCU states the purpose (member data and the annual exam), lists online banking and the VPN in scope, excludes the AS/400, ATM network and card processor, and avoids the Saturday morning batch window. Peak times such as Friday payday are named so testing does not collide with member traffic.
-
-The Saturday window and payday avoidance sit next to the host list so a reviewer sees timing judgment, not only addresses. Reviewers can check timing against the SOC rota, since the analysts on duty that Saturday morning must expect the test traffic.
+A good plan states business purpose (protect members, meet examiner expectations), services in and out of scope, and peak times to avoid (for example Friday payday). Leo's draft for HCU states the purpose (member data and the annual exam), lists online banking and the VPN in scope, excludes the AS/400, ATM network and card processor, and avoids the Saturday morning batch window. The Saturday window and payday avoidance sit next to the host list so a reviewer sees timing judgment, not only addresses. Reviewers can also check timing against the SOC rota, since the analysts on duty that Saturday morning must expect the test traffic.
 
 ### 2.5 Third parties
 
-Card processors and cloud email are separate organisations. Testing them needs their authorization, not only HCU's.
-
-Leo's plan lists the card processor and cloud email as out of scope for that reason. If HCU wants them tested, the CISO must obtain written authorization from each provider and attach it to the ROE. HCU's signature alone never covers another organisation's systems.
-
-Leo records the card processor and cloud email in the out-of-scope list so a keen tester does not invent permission that was never granted. HCU's signature alone never covers another organisation's systems; the CISO must obtain written authorization from each provider first.
+Card processors and cloud email are separate organisations. Testing them needs their authorization, not only HCU's. Leo's plan lists the card processor and cloud email as out of scope for that reason, so a keen tester does not invent permission that was never granted. If HCU wants them tested, the CISO must obtain written authorization from each provider and attach it to the ROE. HCU's signature alone never covers another organisation's systems, however convenient it would be to probe the card processor from the same Saturday window.
 
 ### 2.6 Examiner expectations
 
-Credit unions face safety-and-soundness exams that ask how systems are tested. Leo's context paragraph is also evidence for examiners: it shows HCU chooses scope deliberately, excludes fragile systems and schedules around operations rather than testing "everything that answers a ping."
-
-Examiners reading Leo's paragraph should see that HCU tested what it meant to test. Naming the AS/400 exclusion and the batch-window avoidance is as useful as listing what was in scope, because it shows judgment rather than a checklist of every reachable host.
-
-The context paragraph is filed with the ROE, so examiners read the same scope reasoning that the CISO signed. Examiners reading Leo's paragraph should see that HCU tested what it meant to test.
+Credit unions face safety-and-soundness exams that ask how systems are tested. Leo's context paragraph is also evidence for examiners: it shows HCU chooses scope deliberately, excludes fragile systems and schedules around operations rather than testing "everything that answers a ping." The paragraph is filed with the ROE, so examiners read the same scope reasoning that the CISO signed and should see that HCU tested what it meant to test. Naming the AS/400 exclusion and the batch-window avoidance is as useful as listing what was in scope, because it shows judgment rather than a checklist of every reachable host.
 
 ### Worked example (synthetic HCU)
 
@@ -230,57 +188,31 @@ MISSING: emergency_contact
   report_audience: CISO
 ```
 
-The lab prints MISSING when emergency_contact is empty, and lists the other fields so Leo can see what is already filled. He will not schedule the Saturday window until the CISO names an on-call contact. An empty field is a stop, not a prompt to improvise.
-
-In the worked draft every field except emergency_contact is filled, which is why the lab prints a single MISSING line. The window itself runs Saturday 08:00–12:00, and an empty contact field is a stop, not a prompt to improvise.
+The lab prints MISSING when emergency_contact is empty, and lists the other fields so Leo can see what is already filled. In the worked draft every field except emergency_contact is filled, which is why the lab prints a single MISSING line. He will not schedule the Saturday 08:00–12:00 window until the CISO names an on-call contact. An empty field is a stop, not a prompt to improvise.
 
 ### 3.2 Evidence rules
 
-Capture only what proves the finding. Redact member identifiers. Store evidence in the approved repository with access limited to the engagement team. Delete or return it when the agreement says so.
-
-For HCU, that means screenshots without member names or account numbers, stored under the engagement ticket in the vault, not in personal chat. When the agreement says delete within 30 days, Leo diaries the deletion and confirms it. Evidence that proves a cookie flag is missing does not need a real member's session token.
-
-The vault entry for ENG-440 shows the deletion date beside the evidence folder, so a reviewer can check the 30-day rule was met. Access to that folder is limited to the ENG-440 team named in the agreement.
+Capture only what proves the finding. Redact member identifiers. Store evidence in the approved repository with access limited to the engagement team. Delete or return it when the agreement says so. For HCU, that means screenshots without member names or account numbers, stored under the engagement ticket in the vault, not in personal chat; evidence that proves a cookie flag is missing does not need a real member's session token. Access to the ENG-440 folder is limited to the team named in the agreement. When the agreement says delete within 30 days, Leo diaries the deletion and confirms it, and the vault entry shows the deletion date beside the folder so a reviewer can check the rule was met.
 
 ### 3.3 Chain of custody
 
-Note who collected each item, when, and every hand-off. For classroom labs the log is short; for real exams it can be scrutinised.
-
-Leo's custody line for ENG-440 notes who exported each file, from which jump host, and when it entered the vault. Classroom logs are short; examiner-facing logs use the same habit so the practice transfers.
-
-A two-line custody log is enough for ENG-CLASS-11, but it records exactly the fields Leo will use for ENG-440. If evidence moves at shift change, the hand-off line names both people and the ticket id; missing custody is how files go astray before an exam.
+Note who collected each item, when, and every hand-off. For classroom labs the log is short; for real exams it can be scrutinised. Leo's custody line for ENG-440 notes who exported each file, from which jump host, and when it entered the vault. A two-line custody log is enough for the classroom engagement ENG-CLASS-11, but it records exactly the fields Leo will use for ENG-440, so the practice transfers. If evidence moves at shift change, the hand-off line names both people and the ticket id; missing custody is how files go astray before an exam.
 
 ### 3.4 Personal devices
 
-Do not keep HCU evidence on personal laptops or chat apps. Use the issued environment.
-
-HCU issues a locked-down jump environment for testing. Evidence that leaves it — copied to a phone, pasted into WhatsApp, or saved to a personal drive — breaks the agreement and can expose member data. Leo treats the issued environment as the only place evidence may live.
-
-If he must work remotely, he uses the VPN into HCU's locked-down jump environment, never a sync folder that copies files to a home machine. If a copy does leave, Leo reports it to the CISO the same day rather than deleting it quietly.
+Do not keep HCU evidence on personal laptops or chat apps. Use the issued environment. HCU issues a locked-down jump environment for testing. Evidence that leaves it — copied to a phone, pasted into WhatsApp, or saved to a personal drive — breaks the agreement and can expose member data. Leo treats the issued environment as the only place evidence may live. If he must work remotely, he uses the VPN into that environment, never a sync folder that copies files to a home machine. If a copy does leave, Leo reports it to the CISO the same day rather than deleting it quietly.
 
 ### 3.5 Classroom versus production
 
-These labs validate checklists on synthetic drafts; they do not replace a legal review of a real ROE.
-
-Passing lab_roe on a synthetic draft proves Leo can spot a missing emergency contact; it does not mean a real ROE is ready without legal and CISO review. Keep the classroom and production boundaries clear in every report.
-
-A real ROE also needs the CISO's signature, legal's contract check and the network team's firewall approval, none of which the lab simulates. He states that classroom-versus-production boundary in the lab report so nobody treats a classroom pass as production authorization.
+These labs validate checklists on synthetic drafts; they do not replace a legal review of a real ROE. Passing lab_roe on a synthetic draft proves Leo can spot a missing emergency contact; it does not mean a real ROE is ready. A real ROE also needs the CISO's signature, legal's contract check and the network team's firewall approval, none of which the lab simulates. Leo states that classroom-versus-production boundary in every lab report, so nobody treats a classroom pass as production authorization.
 
 ### 3.6 When the checklist fails
 
-If any required ROE field is empty on the morning of the test, Leo cancels the window in writing and informs the CISO and SOC. Restarting after a scramble to fill fields produces mistakes; a clean postponement is cheaper than an unauthorized hour.
-
-He posts the cancellation to the engagement channel with the missing field named, so the SOC does not expect traffic. A new window is booked only after the checklist prints OK on a complete ROE.
-
-The CISO and the SOC lead receive the same written cancellation, so nobody keeps a stale Saturday plan in their calendar. A new window is booked only after the checklist prints OK on a complete ROE; the written cancel protects him if someone later claims testing ran without one.
+If any required ROE field is empty on the morning of the test, Leo cancels the window in writing and informs the CISO and SOC. Restarting after a scramble to fill fields produces mistakes; a clean postponement is cheaper than an unauthorized hour. He posts the cancellation to the engagement channel with the missing field named, and the CISO and the SOC lead receive the same written cancellation, so nobody keeps a stale Saturday plan in their calendar or expects traffic. A new window is booked only after the checklist prints complete on a full ROE; the written cancel protects him if someone later claims testing ran without one.
 
 ### 3.7 Agreement beats habit
 
-Even if Leo tested the same staging site last quarter, he does not reuse last quarter's ROE. Systems, owners and exclusions change. Each engagement starts from a current signed agreement, and the checklist is run against that agreement, not against memory.
-
-Last quarter's exclusions might have omitted a new staging host that is now production-adjacent. Running the checklist against the current signed agreement catches that. Habit is not authorization.
-
-The new staging host would also need a named owner in the stakeholder list before Leo could include it in scope. He dates each checklist run and keeps the output with the new ROE in the vault, so the check can be shown later.
+Even if Leo tested the same staging site last quarter, he does not reuse last quarter's ROE. Systems, owners and exclusions change. Each engagement starts from a current signed agreement, and the checklist is run against that agreement, not against memory. Last quarter's exclusions might have omitted a new staging host that is now production-adjacent; running the checklist against the current signed agreement catches that, and the new host would also need a named owner in the stakeholder list before Leo could include it in scope. He dates each checklist run and keeps the output with the new ROE in the vault, so the check can be shown later. Habit is not authorization.
 
 ### Worked example (synthetic HCU)
 
@@ -318,59 +250,31 @@ You will (1) describe PTES stages in order; (2) separate discovery from validati
 
 ### 4.1 PTES backbone
 
-PTES stages give a shared order: pre-engagement (scoping), intelligence gathering, threat modelling, vulnerability analysis, exploitation, post-exploitation and reporting. HCU's ROE currently allows analysis and authenticated web tests, not broad exploitation.
-
-Leo's method table therefore stops at intelligence gathering, vulnerability analysis and authenticated web tests on staging. Exploitation and post-exploitation stay off the plan until the ROE is rewritten and re-signed. Using PTES names helps the CISO and outside firms share one vocabulary.
-
-The table marks each PTES stage as allowed, not allowed or out of scope, so the CISO sees where ENG-440 stops. Exploitation and post-exploitation stay off the plan until the ROE is rewritten and re-signed; skipping ahead because a tool made it easy would break trust with the SOC.
+PTES stages give a shared order: pre-engagement (scoping), intelligence gathering, threat modelling, vulnerability analysis, exploitation, post-exploitation and reporting. HCU's ROE currently allows analysis and authenticated web tests, not broad exploitation. Leo's method table therefore stops at intelligence gathering, vulnerability analysis and authenticated web tests on staging, and marks each PTES stage as allowed, not allowed or out of scope, so the CISO sees where ENG-440 stops. Exploitation and post-exploitation stay off the plan until the ROE is rewritten and re-signed; skipping ahead because a tool made it easy would break trust with the SOC. Using PTES names helps the CISO and outside firms share one vocabulary.
 
 ### 4.2 Discovery versus validation
 
-Discovery lists possible issues; validation confirms them with evidence inside the rules. Tool output alone is discovery. A confirmed misconfiguration with a screenshot and business impact is a finding.
-
-An outdated-banner at confidence 0.7 is discovery until Leo confirms the version, the exposure and the impact with evidence. Only then does it become a finding with a severity and a recommendation. Tool output alone never ships in the report.
-
-Leo checks the banner against the vendor's advisory for that version before deciding whether it is a finding at all. With FLOOR at 0.6 the lab kept open-redirect at 0.9, outdated-banner at 0.7 and cookie-flag at 0.85; no evidence and no impact statement means an item stays off the findings list.
+Discovery lists possible issues; validation confirms them with evidence inside the rules. Tool output alone is discovery. A confirmed misconfiguration with a screenshot and business impact is a finding. An outdated-banner at confidence 0.7 is discovery until Leo confirms the version, the exposure and the impact with evidence; he checks the banner against the vendor's advisory for that version before deciding whether it is a finding at all. Only then does it become a finding with a severity and a recommendation. In Chapter 5's lab, a FLOOR of 0.6 keeps open-redirect at 0.9, outdated-banner at 0.7 and cookie-flag at 0.85, but no evidence and no impact statement still means an item stays off the findings list.
 
 ### 4.3 Constrained exploitation
 
-If the ROE later allows proving a flaw, use the minimum step that shows impact, on agreed accounts, with a stop if anything unexpected happens. This course still does not teach exploit development.
-
-If HCU later allows a proof of impact, Leo uses an agreed test account, the minimum step that shows the issue, and stops if anything unexpected happens. Leo does not invent steps beyond the ROE either.
-
-The agreed test account holds synthetic data only, so a proof of impact never shows a real member's balance. A lockout, a data leak or a host that is not staging triggers an immediate stop and a call to the emergency contact.
+If the ROE later allows proving a flaw, use the minimum step that shows impact, on agreed accounts, with a stop if anything unexpected happens. This course still does not teach exploit development. If HCU later allows a proof of impact, Leo uses an agreed test account that holds synthetic data only, so a proof never shows a real member's balance. He takes the minimum step that shows the issue and does not invent steps beyond the ROE. A lockout, a data leak or a host that is not staging triggers an immediate stop and a call to the emergency contact.
 
 ### 4.4 Matching methods to ROE
 
-Leo's plan maps each method to an ROE line. Anything not mapped is out.
-
-Authenticated WSTG checks on staging map to allowed methods and in-scope systems. Password spraying has no line, so it is out. AS/400 probes have an exclusion line, so they are out. Unmapped methods do not get a trial run.
-
-Each line in Leo's method table carries the ROE clause it relies on, so a reviewer can check the mapping line by line. Spraying would also risk locking real member accounts during payday week, which is one reason the ROE omits it. Unmapped techniques wait for a written ROE update; ENG-440 does not earn bonus points for creativity outside the table.
+Leo's plan maps each method to an ROE line. Anything not mapped is out. Authenticated WSTG checks on staging map to allowed methods and in-scope systems. Password spraying has no line, so it is out; it would also risk locking real member accounts during payday week, which is one reason the ROE omits it. AS/400 probes have an exclusion line, so they are out. Each line in Leo's method table carries the ROE clause it relies on, so a reviewer can check the mapping line by line. Unmapped methods do not get a trial run; they wait for a written ROE update, and ENG-440 does not earn bonus points for creativity outside the table.
 
 ### 4.5 Threat modelling light
 
-Even without a full red-team scenario, name the likely actors (stolen member password, phishing of staff) so checks focus on what matters to HCU.
-
-For online banking, a stolen member password and phishing of staff are the actors Leo names. That focus pushes checks toward session handling, password policy and VPN MFA, rather than obscure protocol quirks that no likely actor would use against HCU.
-
-Insider misuse and attacks on the AS/400 are left out of this light model because ENG-440 cannot test them. Naming those exclusions in the model lets the report explain why a check was or was not in scope when examiners ask.
+Even without a full red-team scenario, name the likely actors (stolen member password, phishing of staff) so checks focus on what matters to HCU. For online banking, those are the actors Leo names. That focus pushes checks toward session handling, password policy and VPN MFA, rather than obscure protocol quirks that no likely actor would use against HCU. Insider misuse and attacks on the AS/400 are left out of this light model because ENG-440 cannot test them. Naming those exclusions in the model lets the report explain why a check was or was not in scope when examiners ask.
 
 ### 4.6 Intelligence gathering limits
 
-OSINT on HCU stays with public pages and published documents. Scraping member forums, buying breach data or impersonating staff are out unless the ROE explicitly allows a social-engineering scenario — which HCU's current ROE does not.
-
-Leo's OSINT is limited to HCU's public website and published documents. Buying breach data or scraping member forums would gather intelligence outside the ROE and could expose real people. If a social-engineering scenario is ever needed, it gets its own written approval.
-
-Collection is restricted to pages any member of the public can open without logging in to online banking. Buying breach data or scraping member forums would gather intelligence outside the ROE; he does not scrape at rates that look like abuse, and he records what he collected.
+OSINT on HCU stays with public pages and published documents. Scraping member forums, buying breach data or impersonating staff are out unless the ROE explicitly allows a social-engineering scenario — which HCU's current ROE does not. Leo's collection is restricted to HCU's public website and published documents that any member of the public can open without logging in to online banking. Buying breach data or scraping member forums would gather intelligence outside the ROE and could expose real people. He does not scrape at rates that look like abuse, and he records what he collected. If a social-engineering scenario is ever needed, it gets its own written approval.
 
 ### 4.7 Reporting as a method stage
 
-PTES ends with reporting because findings that never reach owners change nothing. Leo budgets time for writing and review inside the engagement window rather than treating the report as unpaid overtime after testing.
-
-For ENG-440, Leo blocks the last part of the Saturday window for writing and peer review. Findings that sit only in his notes until Monday help nobody before the exam. Reporting is a method stage with a clock, not an afterthought.
-
-Testing that runs into the reserved writing time is cut short rather than squeezing out the peer review. If writing overruns, unfinished validation becomes an explicit gap in the report, not a silent claim of full coverage; findings that sit only in notes until Monday help nobody before the exam.
+PTES ends with reporting because findings that never reach owners change nothing. Leo budgets time for writing and review inside the engagement window rather than treating the report as unpaid overtime after testing. For ENG-440, he blocks the last part of the Saturday window for writing and peer review, and testing that runs into that reserved time is cut short rather than squeezing out the review. If writing overruns, unfinished validation becomes an explicit gap in the report, not a silent claim of full coverage. Findings that sit only in his notes until Monday help nobody before the exam; reporting is a method stage with a clock, not an afterthought.
 
 ### Worked example (synthetic HCU)
 
