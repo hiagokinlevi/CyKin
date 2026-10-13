@@ -15,8 +15,8 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [03](book/PLAN.md#ch-03) | Diseño del estudio, ética y reproducibilidad | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Infraestructura crítica y seguridad sectorial: explicaciones rivales | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
 | 3 | [05](book/PLAN.md#ch-05) | Propuesta y piloto | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Recogida y análisis de datos | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Redacción de la tesis y limitaciones | 150 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Revisión independiente y defensa | 150 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [Curso 185 →](../../../doctorate-2-years/cybersecurity/es/SUBJECTS.md) |
+| 3 | [06](book/PLAN.md#ch-06) | Recogida y análisis de datos | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Redacción de la tesis y limitaciones | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Revisión independiente y defensa | 150 | 75 | 6 | [Borrador](book/MANUSCRIPT.md#ch-08) | [Curso 185 →](../../../doctorate-2-years/cybersecurity/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.
