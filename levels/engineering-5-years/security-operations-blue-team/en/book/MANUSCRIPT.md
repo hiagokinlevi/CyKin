@@ -3541,29 +3541,43 @@ You will (1) prepare a design for independent review; (2) respond to review find
 
 Designers miss their own assumptions. An engineer from another team, unconnected to the project, reviews Amara's capstone design.
 
+Amara has lived with the design for weeks, so certain choices feel obvious to her even when they rest on untested beliefs, such as assuming depots use only one logon protocol. A reviewer from another team brings different habits and no stake in the design looking good. Choosing someone unconnected also means the review cannot be dismissed later as a friendly sign-off, which matters when the capstone is assessed.
+
 ### 45.2 Review package
 
 Diagram, data flows, requirements, rule logic, test plan, risk register and rollout plan, sent a week ahead.
+
+Sending everything a week ahead gives the reviewer time to read carefully rather than reacting during a meeting. Each document answers a different question: the diagram shows structure, data flows show volumes and formats, the rule logic shows what will fire, and the risk register shows what Amara already worries about. A missing document would itself be a finding, since the reviewer cannot check what is absent.
 
 ### 45.3 Findings
 
 The reviewer raises: (1) the approved-device list is maintained by hand and will drift; (2) the rule ignores logons over a protocol the depots also use; (3) the playbook lacks a step to check for the same account on other depots; (4) the volume estimate came from a quiet day.
 
+Each finding targets a different weakness. A hand-maintained list will slowly diverge from reality as devices change. Ignoring a second protocol leaves a path attackers could use. Without checking other depots, an analyst might contain one site while the same account is active elsewhere. A quiet-day estimate understates the load the design must handle. None of these was in Amara's own risk register, which shows why the review was worth doing.
+
 ### 45.4 Severity
 
 Findings are classed as blocking, major or minor. Finding 2 is blocking: a coverage gap. Findings 1 and 4 are major; finding 3 is minor.
+
+Blocking means the design cannot proceed until the finding is fixed, because building it would knowingly leave the gap the project exists to close. Major findings must be fixed before go-live but need not stop the build. Minor findings can be scheduled. Classing severity openly lets Amara put effort where it matters and lets assessors see that the most serious issue was handled first.
 
 ### 45.5 Responses
 
 Amara extends the rule to the second protocol; links the approved list to the asset inventory with a weekly reconciliation; re-estimates volume from a busy-day capture; adds the playbook step.
 
+Each response addresses the finding's cause rather than its symptom. Linking the list to the inventory makes drift visible every week, instead of relying on someone remembering to update it. A busy-day capture tests the design against realistic load. Extending the rule closes the gap without changing its basic structure, so earlier tests remain relevant with additions for the new protocol.
+
 ### 45.6 Record
 
 A review log lists each finding, severity, response and status. The reviewer confirms closure of the blocking finding before build.
 
+The log makes the review traceable: anyone can see what was found, how seriously it was taken and what was done. Requiring the reviewer to confirm closure of the blocking finding prevents the designer from simply declaring it fixed. The log goes into the evidence dossier, where assessors can check that every finding was answered. Major findings are rechecked before go-live.
+
 ### 45.7 Culture
 
 Reviews are about the design, not the designer; Amara thanks the reviewer and asks to review someone else's design next term.
+
+If reviews felt like personal criticism, designers would hide weaknesses and argue with findings rather than fixing them. Treating the design as the subject lets both sides be candid. Offering to review someone else's work next term completes the exchange and shows Amara values the practice rather than merely enduring it. The reviewer, in turn, notes two design ideas worth borrowing for their own team's work, which shows that reviews teach in both directions.
 
 ### Preparing as a designer
 
@@ -3609,29 +3623,43 @@ You will (1) build and roll out the capstone system; (2) verify it against requi
 
 The build follows the reviewed design: firewall logging changes, parser, enrichment link to the asset inventory, rule covering two protocols, and the playbook.
 
+Following the reviewed design closely matters because the review's findings were resolved against that version. Any deviation during build goes back to the reviewer for a quick check. Each component is built and tested in the test environment first, in dependency order: logging before parsing, parsing before enrichment, enrichment before the rule, and the playbook last once alerts can be produced.
+
 ### 46.2 Pilot
 
 Three depots pilot for two weeks. One false alert per week arises from a depot IT technician using a non-approved laptop; the technician's device is registered properly.
+
+The false alert is a useful one: a technician using an unregistered laptop on the depot network is exactly the kind of device the approved list should know about. Registering it properly fixes the alert and improves the inventory. One false alert per week is well inside the target of five, which supports moving on to full rollout.
 
 ### 46.3 Rollout
 
 Remaining depots follow in groups, with CPU monitored on each firewall; all stay below 2%.
 
+Watching firewall CPU guards against the risk that extra logging slows depot networks and disrupts dispatch. Below 2% shows the change adds little load. Rolling out in groups means any problem affects only a few depots before it is caught, and the pilot's lessons are applied to each new group. Each group's figures are posted on the rollout dashboard, and depot managers receive a short note confirming their site has changed and whom to call if something looks wrong.
+
 ### 46.4 Verification
 
 Unit and pipeline tests pass. Timed synthetic logons measure 9.8 to 13.1 minutes end to end. Completeness reconciliation shows 99.94%.
+
+The timed results fall well inside the fifteen-minute requirement, even at the slowest. Completeness above 99.9% meets the target for priority sources. Passing unit and pipeline tests shows the logic and data flow behave as specified. Together these verify that the system was built as designed. Amara records the date, rule version and tester beside each result, so the evidence can be matched to the exact configuration that produced it, even after later changes.
 
 ### 46.5 Validation
 
 The purple team re-runs the two techniques that previously left no trace; both now alert, and analysts follow the playbook correctly.
 
+Verification showed the system matched its specification; validation shows it now catches the realistic behaviour that was missed before. Analysts following the playbook correctly shows the human side works too. Closing the two gaps found earlier is the central evidence that the capstone achieved its purpose. The purple team's report is filed in the dossier with the earlier report, so the before-and-after comparison is easy to make.
+
 ### 46.6 Remaining gaps
 
 Logons using the domain controllers' web management interface are not covered; they are logged as a follow-up item.
 
+Reporting what is still uncovered is part of honest engineering. The web management interface is a different path that the new rule does not watch. Logging it as a follow-up means it is tracked with an owner rather than forgotten, and readers of the report know the limits of what was delivered. Amara estimates the effort needed to cover that path and hands the item to Paolo's backlog with her notes.
+
 ### 46.7 Report
 
 The capstone report presents requirements with pass or fail, evidence, and gaps, with all data synthetic or anonymised.
+
+Presenting requirements with a clear pass or fail lets readers see results at a glance. Evidence references let them check each one. Gaps show what still needs work. Keeping all data synthetic or anonymised means the report can be shared with assessors without exposing Lindqvist's systems or customers. Paolo reads the draft before submission and checks that each pass claim matches its evidence, sending back two claims whose wording went further than the data.
 
 ### Handover to operations
 
@@ -3677,9 +3705,13 @@ You will (1) plan a controlled failure trial of the monitoring pipeline; (2) det
 
 The trial checks whether the SOC notices when its own data stops, and how well it recovers. Silent failures were ranked high in chapter 23.
 
+Monitoring that fails silently is dangerous because the SOC continues to believe it can see activity it no longer receives. Testing this deliberately is the only way to know whether the safeguards work. The trial also tests recovery: once data flows again, how much of the gap can be filled, and how quickly? Results go into the reliability records.
+
 ### 47.2 Plan
 
 With change approval, the team stops log forwarding from one portal web server for an hour during a quiet period, without telling analysts the exact time. A rollback is ready.
+
+Change approval keeps the trial within Lindqvist's normal process and makes sure IT knows it is deliberate. A quiet period limits the risk of missing a real attack during the gap. Not telling analysts the exact time tests whether the silence check works, rather than whether people remember a scheduled event.
 
 ### Lab — detecting silent sources
 
@@ -3708,17 +3740,25 @@ portal-web-3  gap= 59 min expected<=  5 SILENT
 
 At 10:00, portal-web-3 has been silent for 59 minutes against an expected gap of at most 5, so it is flagged SILENT. The edge firewall's 80-minute gap is normal for its 120-minute cadence. Expected cadence per source avoids false alarms from naturally quiet sources.
 
+Each source is judged against its own normal rhythm. A web server sending events every few seconds is clearly broken after 59 minutes of silence; a firewall that reports every two hours is not broken after 80 minutes. Without per-source cadence, the check would either miss quiet failures or alarm constantly on naturally slow sources.
+
 ### 47.4 Detection in the trial
 
 The silence check runs every 10 minutes and pages on-call. In the trial, it paged 17 minutes after forwarding stopped, because the threshold was three times the expected gap plus the check interval.
+
+The threshold of three times a five-minute gap gives fifteen minutes; with the check running every ten minutes, detection could take up to twenty-five. Seventeen minutes falls in that range, but it means a portal server could be silent for a quarter of an hour before anyone knew. The trial measures this delay precisely so it can be shortened.
 
 ### 47.5 Recovery
 
 After forwarding restarts, buffered events arrive; reconciliation shows 99.2% of the hour's events recovered, with the rest lost when the local buffer filled.
 
+Local buffers hold events while forwarding is stopped and send them when it resumes. Recovering 99.2% shows the buffer worked for most of the hour. The 0.8% lost when it filled shows the buffer was too small for an hour's gap. Reconciliation counts make the loss measurable instead of a guess. Amara notes which events were lost by time range, so investigators know exactly which minutes are incomplete.
+
 ### 47.6 Improvements
 
 Lower the silence threshold for portal servers to two times the gap; enlarge the local buffer to cover two hours.
+
+A lower multiplier shortens detection for portal servers, whose steady flow makes false alarms unlikely. A two-hour buffer covers longer outages without loss. Both changes are tested again in the next trial to confirm they work as intended and do not create new noise. Both changes go through the normal change process with tests, and the threshold change is announced to analysts, who may notice more frequent pages from portal servers at first.
 
 ### Who knows about the trial
 
@@ -3760,29 +3800,43 @@ You will (1) assemble an evidence dossier proving the capstone meets its require
 
 The dossier lets someone who was not there check every claim. Assessors use it to grade; Lindqvist keeps it for auditors and future engineers.
 
+Claims in a report are only as strong as the evidence behind them. The dossier gathers that evidence in one place so an assessor, auditor or future engineer can check any statement without asking Amara. It also protects Lindqvist: when someone later asks how the depot detection was proved, the answer is on file. Amara builds it as the project runs.
+
 ### 48.2 Structure
 
 Requirements table with status; design documents and review log; implementation records (commits, change tickets); verification results (unit, pipeline, timed tests); validation results (purple-team re-test); reliability results (completeness, failure trial); operational data (false alerts per week); remaining gaps.
+
+The order follows the project from need to operation, so a reader can trace how each stage built on the last. Including remaining gaps alongside successes shows a complete picture. Operational data, such as false alerts per week, show how the system behaves in normal use, not just in tests.
 
 ### 48.3 Claim–evidence links
 
 Each claim in the report points to a dossier item by ID: "Latency met (E-14: timed test results, 5 runs)". Unsupported claims are removed.
 
+An ID lets a reader jump straight to the supporting item. Stating what the item contains, such as five runs, tells them how strong the evidence is. Removing unsupported claims keeps the report honest: if Amara cannot point to evidence, the claim does not belong in the report. Amara builds the link table before writing the conclusions, so the conclusions cannot claim more than the table supports.
+
 ### 48.4 Sensitive content
 
 Host names, depot addresses and rule details that would help evasion are replaced with placeholders in the assessor copy; the full version stays inside Lindqvist with access control.
+
+Details that would help someone evade detection, such as exact rule conditions, should not circulate beyond those who need them. Placeholders keep the assessor copy readable while removing risk. The full version stays under access control inside Lindqvist, where engineers and auditors with a need can consult it. The privacy officer checks the assessor copy.
 
 ### 48.5 Integrity
 
 Exported files are listed with hashes so later readers can confirm they are unchanged.
 
+A hash list lets anyone recompute each file's hash and compare it with the recorded value. A match shows the file has not changed since export, whether by accident or deliberately. The hash list itself is signed off by Paolo, tying it to a known point in time. Assessors receive the hash list separately from the files. Recomputing a few hashes takes minutes and gives them confidence that what they are grading is exactly what was submitted, with no later edits.
+
 ### 48.6 Completeness check
 
 Paolo checks that each requirement has at least one verification and, where relevant, one validation item.
 
+A requirement with no verification item has not been shown to work; one with no validation item, where validation applies, has not been shown to matter in practice. Paolo's check catches gaps before submission. Any missing items are either added or the requirement's status is marked as unproven. He also samples five claims at random and follows each to its evidence. Two links point to outdated file names, which Amara corrects before the dossier is sealed.
+
 ### 48.7 Format
 
 Plain formats — PDF for documents, CSV for data, text for scripts — keep the dossier readable for years.
+
+Proprietary formats may need software that is unavailable years later. PDF, CSV and plain text open in many tools on any system. Choosing them means the dossier can still be read when Lindqvist's current tools have been replaced, which matters for audits that may come much later. Amara converts a spreadsheet with formulas into CSV plus a short note explaining how each derived column was calculated, so nothing depends on the spreadsheet program.
 
 ### Reading order
 
@@ -3824,29 +3878,43 @@ You will (1) write an engineering thesis that presents problem, design, implemen
 
 Introduction and problem; background and literature; requirements; design and alternatives; implementation; verification and validation; operation and reliability; discussion; limitations; conclusions; references; appendices.
 
+The structure mirrors the engineering process, so readers can follow the work in the order it happened. Separating discussion from results keeps interpretation apart from measured facts. Limitations get their own chapter, which gives them proper weight rather than hiding them in the conclusion. References and appendices hold detail that would slow the main text, such as full test tables and the review log, so the chapters stay readable for both examiners.
+
 ### 49.2 The argument
 
 Amara's thesis argues that a small SOC can close a network-monitoring gap in agentless depots using existing firewalls, measured requirements and staged validation, at low cost and without disrupting operations.
+
+A thesis needs a claim that the evidence can support or refute. Amara's names the context, the method and the outcomes, so each part can be checked against the dossier. 'Low cost' and 'without disrupting operations' are supported by CPU measurements, the absence of dispatch outages and the reuse of existing firewalls.
 
 ### 49.3 Literature
 
 Knerler, Parker and Zimmerman (2022) for SOC strategy; NIST SP 800-92 for log management; ATT&CK for technique coverage; Alahmadi et al. (2022) for alarm quality; Sundaramurthy et al. (2014) for analyst practice.
 
+Each source supports a specific part of the argument: SOC strategy for the overall approach, log management guidance for the pipeline, ATT&CK for coverage, alarm-quality research for alert design and analyst studies for the playbook. Citing them where they are used, rather than in a general list, shows how each shaped the work.
+
 ### 49.4 Trade-offs
 
 Logging only connection starts at two depots saved CPU but lost duration data; device continuity was shown as context rather than filter; volume was controlled by tiering.
+
+Naming trade-offs shows the design was chosen, not just built. Losing duration data at two depots saved firewall load but limits some investigations there. Showing device continuity as context keeps analysts' judgement in the loop. Tiering controlled volume while keeping data available for longer investigations. Amara explains each with the figures that justified it, so examiners can weigh the choice themselves.
 
 ### 49.5 Limitations
 
 One organisation; synthetic and anonymised data; short operation period; simulations chosen by people who knew the design.
 
+Each limitation narrows how far the results can be generalised. One organisation may have unusual traffic; synthetic data may lack real oddities; a short period may hide slow problems; simulations by people who knew the design may be easier to catch than real attacks. Stating them lets readers judge the evidence fairly. She also notes which limitation would matter most to another SOC trying to reuse the approach, and what evidence would reduce it.
+
 ### 49.6 Style
 
 Plain language, defined terms, figures with units, numbered requirements matched to evidence IDs.
 
+Plain language makes the thesis accessible to both examiners. Defined terms prevent confusion between similar words, such as verification and validation. Units on every figure avoid misreadings. Matching requirement numbers to evidence IDs lets a reader check any result in a few seconds. Amara asks a classmate outside security to read two chapters and mark any sentence they had to read twice. Those sentences are rewritten. Acronyms are spelled out on first use in each chapter.
+
 ### 49.7 Practitioner value
 
 A short appendix gives a reusable checklist for other SOCs with agentless sites.
+
+Other SOCs with agentless sites face the same problem. A checklist distils the project into steps they can follow: confirm boundary logging, link an approved list to inventory, test with timed injections, validate with purple-team simulations. It turns a thesis into something useful beyond the university. Each item names the evidence that showed it mattered at Lindqvist, so readers can judge whether it applies to their own sites. The checklist fits on one page and avoids product names, which keeps it useful regardless of tools.
 
 ### Writing schedule
 
@@ -3892,29 +3960,43 @@ You will (1) present and defend the engineering work; (2) answer technical and p
 
 A 30-minute presentation and 45 minutes of questions from an academic examiner and an industry examiner.
 
+The two examiners bring different perspectives: the academic checks method and reasoning, the industry examiner checks practical value and professional judgement. Thirty minutes forces Amara to focus on the most important points. Forty-five minutes of questions tests whether she understands the work deeply enough to defend it. The examiners have read the thesis and dossier beforehand, so questions can go straight to detail. The outcome is decided privately after the session and given to Amara the same day.
+
 ### 50.2 Presentation
 
 Problem and evidence of need; requirements; design and review; results against requirements; failures and fixes; remaining gaps; lessons.
+
+The order follows the thesis argument. Including failures and fixes shows learning, not only success. Remaining gaps and lessons show maturity. Amara rehearses with Paolo and a classmate, timing each part so she does not run out of time before the results. Slides carry few words and clear figures, such as the stacked stage-time bars, which the examiners can read quickly. Every result slide names its evidence ID so examiners can check the dossier during questions.
 
 ### 50.3 Expected questions
 
 "Why not deploy agents?" "How do you know five false alerts per week is acceptable?" "What happens when the person maintaining the approved-device list leaves?" "What would you do differently?"
 
+Preparing for likely questions lets Amara answer clearly rather than improvising. Each question probes a different weakness: design choices, how a threshold was set, sustainability after she leaves, and self-reflection. She writes short answers backed by evidence for each and practises delivering them. She also prepares for the question she fears most, about the uncovered web interface path.
+
 ### 50.4 Answering
 
 Answer directly, show evidence, admit limits. On false alerts: the night shift agreed the threshold based on measured triage time; it is reviewed quarterly.
+
+Direct answers show confidence; evidence shows the answer is grounded; admitting limits shows honesty. The false-alert threshold came from measured triage time and agreement with the night shift, not from a guess, and quarterly review ensures it stays appropriate. When she does not know an answer, Amara says so and explains how she would find out, which examiners generally respect more than a confident guess that later turns out to be wrong.
 
 ### 50.5 Professional questions
 
 The industry examiner asks how Amara handled a disagreement with depot managers; she describes rescheduling around dispatch and what she learned.
 
+The industry examiner is interested in how Amara works with others, a skill that matters as much as technical ability in a SOC. Describing a real disagreement and how she resolved it, by rescheduling around dispatch, shows she can balance security goals with business needs. She admits that her first proposal ignored dispatch peaks and explains how the managers' feedback changed the rollout schedule.
+
 ### 50.6 Reflection
 
 From calculus of queues in chapter 1 to the capstone, the course built a path: model, measure, design, verify, validate, operate.
 
+The path from modelling queues to building and validating a detection shows how the early chapters' tools became practical skills. Each step built on earlier ones: measurement relied on statistics, design on architecture, verification on programming. Amara sees the course as a single connected method rather than separate subjects. The examiners ask which early subject she used most; she names statistics, because almost every decision rested on measured rates and percentiles.
+
 ### 50.7 Next steps
 
 Amara plans to join Lindqvist as a junior detection engineer and to study for further qualifications.
+
+Joining Lindqvist lets Amara continue the depot work, including the follow-up on the web management interface. Further qualifications deepen her knowledge in areas she found challenging during the capstone. She leaves the placement with a clear plan and a record of evidence of what she can do. Paolo agrees to stay her mentor during her first year, and they set goals for her first six months on the team.
 
 ### Preparing
 
