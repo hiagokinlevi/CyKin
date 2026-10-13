@@ -1336,9 +1336,13 @@ You will (1) write verifiable PQC requirements; (2) derive requirements from dat
 
 A requirement is necessary, unambiguous, verifiable and traceable. "The system shall be quantum-safe" fails all four. Better: "REQ-KE-01: All TLS connections at the external edge shall negotiate X25519MLKEM768 or a stronger PQ/T hybrid group when the client offers one. Verification: passive telemetry shows ≥ 99% of offering clients negotiate it."
 
+The rewritten requirement names a property, a place and a threshold, and the verification line says what evidence counts. The condition "when the client offers one" matters: BPA cannot force old handheld scanners to support the hybrid group, so a requirement that ignored them could never be met.
+
 ### 21.2 Sources
 
 Derive requirements from: data confidentiality lifetimes (Chapter 13), signature validity periods (bills of lading: 12 years), policy (NIST transition plans, sector regulators, CNSA 2.0 for national-security partners), partner capabilities and operational constraints (handshake size budgets, device memory).
+
+Each source produces numbers that end up in requirement text. The 25-year customs lifetime makes REQ-EXP-03 urgent; the 12-year validity of bills of lading sets the deadline for ML-DSA signing; the 1,300-byte handshake budget limits the parameter set; the 32 KB flash in crane controllers constrains the firmware signature choice. Recording which source each requirement came from lets reviewers check it when that source changes.
 
 ### 21.3 Requirement categories
 
@@ -1348,19 +1352,27 @@ Derive requirements from: data confidentiality lifetimes (Chapter 13), signature
 - **Inventory**: "REQ-INV-01: The CBOM shall cover ≥ 95% of assets, with unknown share reported monthly."
 - **Availability**: "REQ-AV-01: Enabling hybrid groups shall not raise handshake failures above baseline + 0.04 percentage points (95% upper bound)."
 
+Every requirement here carries a number so testing can say pass or fail.
+
 ### 21.4 Traceability
 
 Each requirement links to a source and to a verification method (test, analysis, inspection, demonstration). A traceability matrix shows coverage and helps reviewers find orphaned requirements.
 
+In BPA's matrix, REQ-KE-01 traces back to the customs data lifetime and forward to the passive telemetry query; REQ-AG-02 traces to the agility policy and forward to a timed drill in which the team swaps the KEM in a test environment. A requirement with no forward link has no evidence it was met, and one with no backward link may have no reason to exist. Both kinds are flagged in the monthly review.
+
 ### 21.5 Worked example
 
 BPA's customs export requirement: "REQ-EXP-03: Files exported to the customs agency shall be encrypted to the agency's ML-KEM-1024 key using CMS KEMRecipientInfo ([RFC 9629](https://www.rfc-editor.org/rfc/rfc9629.html)), with an RSA-OAEP recipient retained in parallel until the agency confirms support (target date recorded). Verification: inspection of exported file structure; interoperability test with agency test system."
+
+Keeping the RSA-OAEP recipient in parallel means the agency can read files during transition, but it also means the files remain exposed to harvest until that recipient is removed, so the target date matters.
 
 ### 21.6 Common errors and limits
 
 - Requirements that name products instead of properties.
 - No availability or agility requirements.
 - Requirements without verification methods.
+
+Naming a product locks BPA to a vendor and says nothing about the property needed, so a replacement product cannot be checked against it. Without availability and agility requirements, a rollout that breaks partners or cannot be changed later still passes review. A requirement with no verification method cannot be closed, as REQ-KE-01's telemetry line shows by contrast. Each requirement is reviewed for all three faults before it is baselined.
 
 ### Exercises
 
@@ -1387,27 +1399,39 @@ You will (1) model systems as assets, flows and cryptographic functions; (2) bui
 
 Model each asset (service, device, data store) and each flow between assets. Annotate flows with protocol, key-establishment algorithm, authentication algorithm and data classes carried. Annotate stores with encryption, key-wrapping method and retention. The model becomes the backbone of inventory, threat analysis and planning.
 
+The flow annotation is where most value lies, because harvest risk attaches to flows, not to assets. A server may host both a short-lived telemetry feed and a customs replication stream, and only the second is urgent. Recording the data classes per flow lets the model separate them, which an asset list alone cannot.
+
 ### 22.2 CBOM data model
 
 A minimal CBOM entity set: *Asset* (id, owner, type, location); *CryptoUse* (asset, function: key-exchange/signature/encryption/hash, algorithm, parameter set, protocol, library, source of evidence, last observed); *Key/Certificate* (algorithm, size, issuer, expiry, storage); *DataClass* (lifetime). The *source of evidence* field — code, configuration, passive observation, vendor declaration — matters because sources differ in reliability.
+
+Code and configuration show intent, passive observation shows what was negotiated, and a vendor declaration is a claim until tested. BPA's planning reports show the share of each source, so a picture built mostly on declarations is visibly weaker.
 
 ### 22.3 Exposure computation
 
 Exposure of a flow = (data lifetime > time until assumed CRQC) × (vulnerable key exchange) × (recordable by adversary). A query over the model lists exposed flows; joining with traffic volume ranks them. Uncertain fields are *unknown*, never assumed safe.
 
+The first factor uses the assumed CRQC date as a range, so a flow can be exposed under the pessimistic case only; the query reports both cases. The third factor captures whether an adversary can record the flow, which is high for internet links and lower for traffic inside a locked equipment room. Treating unknown fields as unknown keeps gaps visible, and the count of unknowns becomes a leading indicator for the inventory team.
+
 ### 22.4 Worked example
 
 BPA's model has 412 assets and 1,930 flows. Querying for flows carrying lifetime ≥ 10-year data over ECDHE-only key exchange returns 37 flows, 29 of which pass through four gateways — making the gateways the highest-leverage migration targets.
 
+Four gateways handling 29 of 37 exposed flows means a configuration change on four devices removes most of the exposure, far more efficiently than visiting each application. The remaining eight flows are handled one by one. This is the leverage a model gives: without it, the team would likely start with whichever application owner volunteered first.
+
 ### 22.5 Practical activity
 
 Sketch the CBOM entities in a table or as Python dataclasses, then populate ten records from the BPA description and write a query for exposed flows. Chapter 29's Lab I extends this.
+
+Choose records that include at least one unknown field and one flow with long-lived data over ECDHE, so the query returns something to discuss. Check that your query lists unknowns separately instead of silently dropping them. Then add a traffic-volume column and sort the exposed flows by volume to see which would be the first work items. Keep the dataclasses for the later lab.
 
 ### 22.6 Common errors and limits
 
 - Models that record algorithms but not evidence source.
 - Treating unknown as safe.
 - Models built once and never updated.
+
+Without the evidence source, a vendor's claim of PQC support looks the same as a measured handshake, and planning relies on unverified data. Treating unknown as safe makes the exposure query look better as inventory gets worse. A model built once becomes wrong at the next release; BPA refreshes it from the CBOM in each build and from passive observation every week.
 
 ### Engineering note
 
@@ -1446,19 +1470,27 @@ You will (1) model quantum-era threats with STRIDE-style analysis; (2) analyse f
 
 Failure-mode and effects analysis (FMEA) applies: oversized handshakes dropped by middleboxes; clients that cannot parse new certificates; HSMs that cannot hold new keys; stateful signature keys reused after backup restore; interoperability failures between draft and final implementations; expired transition certificates. Each has a cause, effect, detection method and mitigation.
 
+Several of these were seen earlier in BPA's case: the proxy that reset split ClientHellos, the key-import failure between HSMs, and the risk of LMS state reuse after a restore. Listing them in one table forces a detection method for each, which is often the missing part.
+
 ### 23.3 Risk scoring
 
 Score likelihood and impact; for harvest threats, impact scales with data lifetime and volume. Avoid false precision: three or five levels with clear definitions are enough.
 
+BPA uses three levels with written definitions: high impact means data with a lifetime over ten years or a safety function; medium means commercial data under ten years; low means short-lived operational data. Two assessors scoring the same item should reach the same level, and when they do not, the definitions are tightened rather than averaged. A score like three point seven on a five-point scale suggests a precision that the inputs cannot support.
+
 ### 23.4 Worked example
 
 FMEA for BPA's crane firmware signing with LMS: failure "state counter reset after HSM restore" → effect "one-time key reuse enabling forgery" → detection "monotonic counter audit against log" → mitigation "HSM with state reservation, restore procedures that forbid rollback, separate key per signing site". Severity high, likelihood medium → priority action.
+
+The detection step works because each signature carries its index: comparing the highest index seen in published firmware with the HSM's counter shows a rollback at once. Separate keys per site limit the damage of a mistake to one site's signatures.
 
 ### 23.5 Common errors and limits
 
 - Analysing only cryptanalytic threats, not migration failures.
 - Assuming hybrids remove the need to analyse downgrade.
 - Numeric risk scores presented as measurements.
+
+Most incidents in early migrations come from failure modes like the proxy reset, not from cryptanalysis, so an analysis limited to attacks misses the likely problems. Hybrids protect against breaking one component, but misconfigured fallback can still remove the post-quantum part entirely, so downgrade paths are analysed per application. Risk scores rank items; they are not measurements and should not be added up.
 
 ### Engineering note
 
@@ -1489,9 +1521,13 @@ You will (1) explain learning with errors (LWE) and why noise makes linear algeb
 
 Given a random matrix *A* and *b* = *A*·*s* + *e* mod *q*, where *s* is secret and *e* is a vector of small random errors, find *s*. Without *e* this is Gaussian elimination. With *e*, no efficient classical or quantum algorithm is known for suitable parameters; [Regev (2009)](https://doi.org/10.1145/1568318.1568324) related LWE to worst-case lattice problems. Best attacks use lattice reduction, whose cost grows exponentially in dimension.
 
+The role of the noise can be seen in the dimension: in Lab W, sixteen unknowns with small errors are easy to solve by brute force on the errors, while ML-KEM-768 works with dimension 768, where the best lattice reduction attacks need far more work than any computer can perform.
+
 ### 24.2 Encrypting one bit
 
 To encrypt a bit, sum a random subset of rows of (*A*, *b*): *u* = Σ*r*ᵢ*A*ᵢ, *v* = Σ*r*ᵢ*b*ᵢ + bit·⌊*q*/2⌋. The key holder computes *v* − ⟨*u*, *s*⟩ = bit·⌊*q*/2⌋ + small noise and rounds. Decryption works while the accumulated noise stays below *q*/4.
+
+In Lab W the errors are at most 2 in absolute value and the subset has at most 64 rows, so the accumulated noise is at most 128. That is far below q/4, which is about 832, so every bit decrypts correctly. Larger errors or more rows would push the noise toward q/4 and cause failures, which is the trade-off ML-KEM's parameters balance against security.
 
 ### 24.3 Practical activity — Lab W (toy, insecure)
 
@@ -1524,19 +1560,27 @@ toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
 
 These parameters are far too small for security and leak through many routes; the lab exists only to make the algebra concrete.
 
+The result of 2000 out of 2000 follows from the bound: noise at most 128 can never cross the 832 threshold. Change `small()` to draw from −20 to 20 and rerun; the worst-case noise rises to 1,280 and failures appear. Then change it to always return 0 and solve for s from sixteen rows of A and b by Gaussian elimination, which shows that the errors carry the security.
+
 ### 24.4 From toy to ML-KEM
 
 ML-KEM replaces integers with polynomials in Z₃₃₂₉[*x*]/(*x*²⁵⁶+1) and uses module structure (*k* = 2, 3 or 4 polynomial vectors) for compact keys, compresses ciphertexts, samples noise from a centred binomial distribution and derives randomness with SHAKE. The underlying public-key encryption is only secure against passive attackers; ML-KEM applies a Fujisaki–Okamoto-style transform — re-encrypting during decapsulation and returning a pseudo-random "implicit rejection" key on mismatch — to resist chosen-ciphertext attacks ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)).
 
+Each change has a purpose: polynomials and modules shrink keys, compression saves bytes, and the transform resists active attacks.
+
 ### 24.5 Worked example
 
 A BPA engineer asks why ML-KEM decapsulation re-encrypts. Answer: to detect manipulated ciphertexts. Without that check, an attacker could submit crafted ciphertexts and learn about the secret key from whether decryption succeeds. Implementations must perform the comparison in constant time, or the timing of the check leaks the same information.
+
+The implicit rejection key also matters: returning an error on mismatch would itself tell the attacker the ciphertext was invalid. By returning a pseudo-random key derived from a secret value, ML-KEM makes the invalid case look like a normal success to the attacker, and the protocol fails later in a way that reveals nothing about the key.
 
 ### 24.6 Common errors and limits
 
 - Thinking LWE security comes from the matrix rather than the noise.
 - Using the passive-secure encryption without the FO transform.
 - Treating the toy as a usable scheme.
+
+Lab W shows the first point directly: remove the errors and the secret falls to Gaussian elimination. The passive-secure scheme without the transform is open to the chosen-ciphertext attacks the worked example described. The toy uses dimension sixteen and no compression, so it offers no security at all, and its only use is teaching.
 
 ### Exercises
 
@@ -1563,9 +1607,13 @@ You will (1) run a structured design studio on a real-shaped problem; (2) produc
 
 Design quantum-resistant key establishment for BPA's public portal and partner API edge: 2 million connections per day, mixed client population (browsers, partner software, old handheld scanners), an inspection proxy on one path and a CDN in front of the portal. Constraints: no availability regression beyond the requirement in Chapter 21, budget for one appliance upgrade, six-month timeline.
 
+The constraints pull in different directions. Two million daily connections mean even small failure rates produce many incidents; the old scanners may never support hybrid groups; one appliance budget cannot replace every device. Good designs say explicitly which constraint they relax and why.
+
 ### 25.2 Studio method
 
 Teams produce: context diagram; requirements subset; two alternatives; trade study; chosen design with configuration sketch; test plan; risks. Each team presents for ten minutes and receives critique from a panel playing operations, security, partners and finance.
+
+Presenting two alternatives forces teams to justify their choice instead of defending the first idea. The panel roles reflect real reviewers BPA would face: operations asks about monitoring, finance about cost, partners about compatibility. Teams that prepare evidence for each role, such as a test plan showing the proxy firmware has been checked, usually handle critique better than those relying on general arguments. The critique is recorded so teams can revise their design afterwards.
 
 ### 25.3 Reference solution outline
 
@@ -1575,11 +1623,15 @@ Terminate TLS at the CDN and edge proxy with X25519MLKEM768 offered first and X2
 
 Operations asks how fallback is monitored; security asks whether fallback could be forced (in TLS 1.3, only by breaking authentication or exploiting application-level retry logic, which must be checked); partners ask about their clients' library versions; finance asks about appliance costs. Good teams answer with evidence or add work items.
 
+The security question is the subtlest: if an application retries every failed handshake without the hybrid group, an attacker can force failures and obtain classical connections. A good answer checks the portal's retry logic and logs any fallback.
+
 ### 25.5 Common errors and limits
 
 - Designs that ignore the old client population.
 - No measurement plan for negotiated groups.
 - Claiming the portal is "quantum-safe" while certificates are classical.
+
+The handheld scanners cannot be ignored: they need an exception with a replacement date, as the reference outline shows. Without measuring negotiated groups, nobody knows whether the rollout worked. Calling the portal "quantum-safe" while certificates remain classical misleads stakeholders, since active attacks with a future CRQC would still be possible; the outline documents this gap instead, with a later work package.
 
 ### Engineering note
 
@@ -1610,13 +1662,19 @@ You will (1) compare pure PQC, PQ/T hybrid and interim mitigations; (2) evaluate
 
 **Pure PQC** uses only post-quantum algorithms: simpler, smaller than hybrid, but stakes everything on newer assumptions. **PQ/T hybrid** combines both ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)): secure if either holds, at extra cost in bytes and complexity. During transition, many protocols and guidance documents favour hybrids for key exchange; some government guidance, such as CNSA 2.0, accepts pure PQC with the category-5 parameter sets. The choice depends on the risk appetite for cryptanalytic surprise versus complexity.
 
+BPA chooses hybrids for external key exchange.
+
 ### 26.2 Certificates
 
 Options for post-quantum authentication: (a) **pure PQC certificates** (ML-DSA keys and signatures); (b) **composite certificates** in which one certificate carries a traditional and a post-quantum key and both signatures must verify; (c) **parallel chains** — two certificates, one per algorithm, with negotiation choosing; (d) **delayed migration** with short-lived classical certificates, acceptable where active quantum attacks are not yet feasible. Each trades compatibility, size and complexity.
 
+For BPA, option (d) is acceptable for public web certificates for now, because they last about a year and an active quantum attack needs a CRQC at the moment of connection.
+
 ### 26.3 Interim mitigations
 
 Where PQC is not yet available — old VPN appliances, for example — mixing a pre-shared symmetric key into key derivation can protect recorded traffic, since PSKs are not vulnerable to Shor. [RFC 8784](https://www.rfc-editor.org/rfc/rfc8784.html) defines such a mechanism for IKEv2. PSKs bring key-distribution and rotation burdens, so they are a bridge, not a destination.
+
+For BPA's two highest-value partners, the PSK is exchanged by an out-of-band channel and rotated every three months, with an owner and expiry recorded per partner. The tunnel's recorded traffic is then protected even while the appliance offers only classical key exchange.
 
 ### 26.4 Decision table
 
@@ -1628,15 +1686,21 @@ Where PQC is not yet available — old VPN appliances, for example — mixing a 
 | Crane firmware | — | LMS/XMSS or ML-DSA |
 | National-security partner | ML-KEM-1024 per CNSA 2.0 | ML-DSA-87 |
 
+The table makes the variation explicit: the same organization uses five different combinations depending on context. Each row traces to an earlier decision, for example the crane firmware row to the 32 KB constraint and the old-appliance row to the trade study that chose PSK mixing as an interim. When a partner upgrades, its row changes and the table shows the new target. Rows have review dates so interim choices do not become permanent.
+
 ### 26.5 Worked example
 
 BPA debates composite certificates for its internal PKI. Pros: one chain, both algorithms verified. Cons: limited library support, larger certificates, complex policy. Decision: parallel chains internally where clients can be updated, delay public certificate migration until browser ecosystem support exists; review annually.
+
+Parallel chains internally let BPA test ML-DSA certificates with clients it controls without waiting for wider support. The annual review checks browser and library releases; when the ecosystem supports ML-DSA certificates, the public portal moves, using the experience from internal deployment.
 
 ### 26.6 Common errors and limits
 
 - One architecture for all contexts.
 - PSKs without rotation plans.
 - Assuming composite certificates are universally supported.
+
+A single architecture fails because contexts differ: a crane controller with 32 KB of flash and a public portal with millions of browsers cannot use the same design. PSKs without rotation eventually leak or expire unnoticed, leaving tunnels unprotected; each one needs an owner and a three-month rotation date. Composite certificates are still limited in library support, so parallel chains are often the practical choice for now, as BPA's internal PKI decision showed.
 
 ### Exercises
 
@@ -1690,27 +1754,39 @@ context changed        af06eca8abcd45a9
 
 Changing either secret or the context changes the output: the derived key depends on both components and on what was negotiated.
 
+Note that only the first characters of the hex output are shown for readability; a real derivation would use the full output and a proper HKDF expand step. Try passing an empty context and compare: the result still depends on both secrets but no longer on the transcript, which is exactly the weakness the context binding prevents.
+
 ### 27.3 Negotiation controls
 
 Algorithm negotiation must be authenticated. TLS 1.3 signs the transcript, so an attacker who strips hybrid groups is detected unless they can forge the server's signature. Application logic that retries without hybrid groups after any failure re-opens downgrade; controls: log and alert on fallback, and disable fallback where all peers support hybrids.
+
+BPA's portal logs every handshake that ends without a hybrid group when the client offered one. A rise in such events triggers an alert, since it could mean an attack or a misbehaving middlebox, and both need investigation.
 
 ### 27.4 Key-management controls
 
 New key types need lifecycle controls: generation in approved modules, storage, rotation, backup and destruction. ML-KEM decapsulation keys can be stored as a 64-byte seed per FIPS 203; stateful hash-based signature keys require state protection against rollback; ML-DSA keys need HSM support.
 
+The 64-byte seed form is compact and avoids format mismatches, as the HSM import problem in the next chapter's example shows. Destruction also needs care: a key must be removed from every backup and HSM partition, and the CBOM entry closed with the date.
+
 ### 27.5 Policy controls
 
 An allow-list of algorithms and parameter sets per context — e.g. "edge TLS: X25519MLKEM768, SecP256r1MLKEM768; fallback X25519 until 2027-12-31" — implemented in configuration and verified by telemetry.
 
+The fallback entry has an end date so it cannot stay forever; after that date, X25519 alone is removed for edge TLS. Telemetry confirms what the configuration claims by counting negotiated groups per day. When the count of classical-only connections approaches zero, the team has evidence that the removal will not break partners, and the change can go through without a long debate.
+
 ### 27.6 Worked example
 
 A BPA team proposes XOR-ing the two shared secrets to save a KDF call. Review rejects it: XOR offers no context binding and is fragile in some security proofs; use the protocol's standard combiner or SP 800-56C derivation with both secrets and context.
+
+Saving one KDF call gains nothing measurable: hashing a few dozen bytes costs microseconds, while a weak combiner could undermine the reason for using a hybrid. The review records the decision in the team's design notes so the idea is not proposed again.
 
 ### 27.7 Common errors and limits
 
 - Ad-hoc combiners (XOR, truncation).
 - Silent fallback without logging.
 - Treating stateful keys like ordinary keys in backup.
+
+XOR and truncation look harmless but drop the context binding and can weaken security proofs, as the worked example explained. Silent fallback hides downgrade, which is why BPA logs any handshake without the hybrid group. Backing up a stateful signing key like an ordinary key invites state rollback and one-time key reuse after a restore; BPA excludes such keys from routine backups and keeps their state in the HSM.
 
 ### Exercises
 
@@ -1737,27 +1813,39 @@ You will (1) select vetted libraries and validated modules; (2) integrate ML-KEM
 
 Use maintained, reviewed implementations with constant-time code, test vectors and, where required, validation under NIST's Cryptographic Module Validation Program (CMVP). Prefer libraries that implement the final FIPS versions, not draft Kyber/Dilithium. Record the library, version and algorithm identifiers in the CBOM.
 
+CMVP validation takes time, so a library may support ML-KEM well before its validated version is available. BPA's policy accepts unvalidated libraries for pilots and requires validated modules for production on regulated systems, with the dates tracked in the plan.
+
 ### 28.2 Integration through providers
 
 Most platforms expose cryptography through providers (OpenSSL providers, Java security providers, PKCS#11 for HSMs). Integrate PQC by adding or upgrading providers and configuring algorithm names through policy. Applications calling generic interfaces (Chapter 9) need no code changes; those calling algorithm-specific functions do.
+
+This is where the `Signer` refactoring pays off: BPA's e-document service needs only a new provider and a policy entry, while services that still call algorithm-specific functions each need code changes. The CBOM records which pattern each application uses, which turns a vague estimate of effort into a count of work items.
 
 ### 28.3 Identifiers and encodings
 
 Interoperability depends on exact identifiers: TLS codepoints (0x11EC for X25519MLKEM768 in the [IANA registry](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml)), X.509 object identifiers for ML-DSA and ML-KEM keys, and key encodings (seed versus expanded key). Mismatches cause failures that look like network faults.
 
+A wrong codepoint makes the server ignore the client's share, so the connection falls back or fails, which an engineer may wrongly diagnose as a firewall problem. Interoperability tests therefore compare identifiers and encodings with the registry and the standards before checking anything else.
+
 ### 28.4 Stateful signatures
 
 LMS/XMSS signing must never reuse a one-time key index. Controls: perform signing in an HSM that enforces monotonic state; reserve index ranges per signer; forbid restoring state from backups; monitor remaining signature capacity ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) requires hardware-module key generation and signing for these schemes). If these controls are infeasible, prefer stateless SLH-DSA or ML-DSA.
 
+For BPA's crane firmware, a key with 2^15 signatures and a few releases per year never runs out, so capacity monitoring is a formality; the real control is the HSM's refusal to roll state back.
+
 ### 28.5 Worked example
 
 BPA integrates ML-DSA-65 for bills of lading. The signing service uses an HSM via PKCS#11; verifiers in partner systems use a different library. Interoperability testing reveals that one library expected an expanded private-key format — irrelevant to verifiers but blocking key import in a backup HSM. Resolution: standardize on seed-based key storage and test import/export in both HSMs before production.
+
+The issue would have appeared only during a disaster recovery, when the backup HSM was needed, which is the worst time to find it. Testing import and export before production turned a future outage into a configuration decision.
 
 ### 28.6 Common errors and limits
 
 - Mixing draft and final algorithm implementations.
 - Software signing for stateful schemes.
 - Assuming identifiers match across vendors.
+
+Draft Kyber or Dilithium code will not interoperate with final ML-KEM or ML-DSA, so mixing them causes failures that look random. Software-only signing for LMS or XMSS cannot guarantee that state is never reused, and SP 800-208 requires a hardware module. Vendors' identifiers and encodings must be checked in tests, as the expanded-key problem showed; a test that imports each key into both HSMs catches this early.
 
 ### Engineering note
 
