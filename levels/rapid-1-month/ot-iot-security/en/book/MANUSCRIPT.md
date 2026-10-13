@@ -44,21 +44,31 @@ You will (1) define operational technology, IoT and cyber-physical systems; (2) 
 
 Operational technology (OT) is hardware and software that monitors or controls physical equipment and processes; NIST SP 800-82r3 is the main U.S. guide to securing it. The Internet of Things (IoT) is networked devices that sense or act on the world, often small and cloud-connected. A cyber-physical system (CPS) is any system where computing and physical processes are tightly linked. A modern energy site is all three at once.
 
+The terms are useful because they point to different worries. Calling a device OT draws attention to the process it controls; calling it IoT draws attention to its small size, default settings and cloud link; calling the whole site a CPS reminds you that a software fault can become heat, motion or lost power.
+
 ### 1.2 A solar and battery site
 
 Rows of solar panels feed inverters that turn direct current into grid alternating current. A battery energy storage system (BESS) stores energy, managed by a battery management system that watches cell temperatures and voltages. A site controller decides when to charge and discharge, following a schedule and instructions from the grid operator. Weather stations, cameras and the fire detection panel complete the picture. Many devices also report to vendor clouds.
+
+Each of these parts can fail or be misused in a different way. A wrong inverter setting changes how much power reaches the grid; a silent battery management system hides an overheating cell; a confused site controller charges at the wrong hour. Knowing what each part does is what lets Jonah notice when something behaves oddly.
 
 ### 1.3 Priorities
 
 In office IT, protecting confidential data often comes first. On an energy site the first priorities are safety — batteries can overheat and catch fire — and keeping the process stable and available. Integrity of commands matters enormously: a false "discharge now" can damage equipment or disturb the grid. Confidentiality still matters, but rarely first.
 
+This order changes what a good response looks like. Switching a device off to protect its data might be sensible on an office laptop, but at Elmstead it could leave a battery unmanaged or drop power that the grid operator was counting on. Security work on the site therefore starts by asking what the equipment is doing and whether stopping it is safe.
+
 ### 1.4 Why it is a real concern
 
 Industrial and IoT devices were often designed for closed networks and trusted users. Today they are reachable through remote access, clouds and shared networks. CISA publishes advisories for industrial products every week, and IoT botnets such as Mirai, studied by Antonakakis and colleagues, showed how many devices can be taken over through default passwords.
 
+An energy site often combines both kinds of risk: industrial controllers that expect trusted traffic, and small connected devices such as cameras that ship with weak settings. A trainee does not need to follow every advisory, but should know that weaknesses in this equipment are found and published regularly, and that fixing them depends on knowing which devices the site actually has.
+
 ### 1.5 The guidance map
 
 IEC 62443 is the international series for industrial automation security; NIST IR 8259 and ETSI EN 303 645 set baselines for IoT products; MITRE ATT&CK for ICS catalogues adversary techniques; CISA advisories report real weaknesses and incidents.
+
+You do not need to read all of these before starting. Treat them as places to look when a question comes up: IEC 62443 when deciding how to divide a site network, the IoT baselines when buying a camera or sensor, ATT&CK for ICS when describing what you observed, and CISA advisories when asking whether a product you own has a known weakness. Later chapters use each of them in that way.
 
 ### Worked example (synthetic Elmstead)
 
@@ -129,21 +139,31 @@ INV-04 cloud=no  ok
 needs action: 2
 ```
 
+A useful inventory also records who to call about each device and when it was last checked. Records go stale as vendors swap parts and engineers add equipment, so Elmstead reviews the list after each maintenance visit. Lab 2 works from a short version of this list for the four inverters, and shows how quickly a few columns reveal what needs attention.
+
 ### 2.2 Reading the lab
 
 INV-02 still uses its default password: anyone who has read the manual could log in. INV-03 runs firmware 4.7 while 5.1 is current, so it may miss security fixes. INV-04 has no cloud link and no issues. Two of four inverters need action. Fixing them is done by the owner and vendor at planned times, not by trainees experimenting.
+
+The lab only checks what the list says. If the list is wrong, for example because a vendor changed a password during a visit and nobody updated the record, the result will be wrong too. Treat the output as a list of questions for the site engineer, and confirm each item with records or with the vendor before anyone acts.
 
 ### 2.3 Separating the network
 
 IEC 62443 describes zones — groups of devices with similar needs — joined by conduits, controlled connections. At Elmstead the control zone holds SC-1, inverters and the battery management system; cameras sit in their own zone; the office network is separate again; a DMZ holds the server that shares data outward. Firewalls between zones allow only the connections that are needed.
 
+The point of the zones is that trouble in one should not spread freely to another. If a camera were compromised, the firewall between the camera zone and the control zone should stop it from reaching SC-1 or the inverters. Each allowed connection between zones should have a reason, an owner and a record, so that old rules can be found and removed.
+
 ### 2.4 Exposure and remote access
 
 Devices reachable directly from the internet are a common weakness; MITRE ATT&CK for ICS calls this T0883 Internet Accessible Device. Remote access for vendors should go through one gateway with multi-factor authentication, enabled only when needed — recommendations echoed in CISA advisory AA21-042A after a 2021 water treatment facility compromise.
 
+For Elmstead this means checking that no inverter, controller or camera answers directly from the internet, and that the vendor's support path ends at a gateway the site owns. Accounts on that gateway should belong to named people, be switched on for a specific job and be switched off afterwards. Session logs let the engineer see who connected and what they did.
+
 ### 2.5 Cloud portals
 
 Vendor clouds are convenient for monitoring, but a portal that can also send commands is effectively remote access. Ask whether it can control equipment, who has accounts, and whether multi-factor authentication is on.
+
+At Elmstead the engineer found that the vendor monitoring portal could send charge commands, not only show data. That makes it part of the remote-access picture, with the same questions about named accounts and second factors. The answers belong in the inventory beside each device the portal can reach, so they are not forgotten when staff or contracts change.
 
 ### Worked example (synthetic Elmstead)
 
@@ -210,25 +230,37 @@ Run with `python3 lab_soc.py`. Verified output:
 18:00 discharge from site-controller expected
 ```
 
+A written normal does not need to be detailed to be useful. Lab 3 works from three scheduled hours and one expected source, and that is already enough to make an odd command stand out. As the site changes, for example when the grid operator asks for a different evening pattern, the written schedule must be updated, or the lab will flag legitimate commands.
+
 ### 3.2 Reading the lab
 
 Three commands match the schedule and come from SC-1. At 14:00 a discharge command arrived from the vendor's remote portal: wrong time and wrong source. It may be a vendor test, a mistake or misuse of stolen credentials; you cannot tell from this line alone, and you do not need to. You report it.
+
+The lab also has a blind spot: any command at an hour missing from the schedule is flagged, even when it comes from SC-1. That is acceptable for a short list, because a false alarm is cheap, but a real site would need a fuller schedule. What matters here is that Jonah reports facts without guessing which explanation is true.
 
 ### 3.3 Naming what you saw
 
 MITRE ATT&CK for ICS gives shared names: T0836 Modify Parameter for changed settings, T0886 Remote Services for misuse of remote access routes, T0831 Manipulation of Control for unauthorised commands to the process. Use them to describe observations, not to accuse.
 
+For the 14:00 event at Elmstead, the command itself fits Manipulation of Control, and its route through the vendor portal fits Remote Services. Neither label says who did it or why. They simply let the engineer, the vendor and anyone reading the report later understand what kind of behaviour was seen, in words that mean the same thing to all of them.
+
 ### 3.4 Other warning signs
 
 Battery temperatures rising without load; inverter settings changed with no ticket; new devices on the network; screens disagreeing with local meters; accounts logging in at odd hours; alarms silenced.
+
+None of these signs proves an attack; many come from faulty sensors, rushed maintenance or a forgotten change. Their value is that each one differs from the written normal and can be checked. A trainee who notices one should write down when and where it was seen, keep any screenshot or log line, and pass it to the person on call rather than investigating alone.
 
 ### 3.5 Reporting
 
 Tell the site engineer or the person on call immediately. State what, where, when, the current state and what you have done. Keep evidence: screenshots, log lines, times. Do not change settings, reboot devices or contact the vendor yourself unless asked.
 
+A short message sent quickly is better than a complete one sent late. Jonah's report on the 14:00 command fits in five sentences and still gives the engineer what she needs to decide. Times should include the time zone or say that they are site local time, because portal logs and site logs may not use the same clock.
+
 ### 3.6 Safety comes first
 
 If a battery is overheating, follow the site's fire and safety procedure first; security questions wait.
+
+At Elmstead that means raising the alarm, keeping clear of the battery enclosure and following the evacuation and fire steps on the site card. The person on call can decide later whether the overheating had a security cause. Evidence that is lost while people are kept safe is an acceptable price; a person hurt while saving a log file is not.  Safety staff should never wait for a security answer.
 
 ### Worked example (synthetic Elmstead)
 
@@ -275,21 +307,31 @@ You will (1) practise the everyday habits that protect an OT site; (2) outline t
 
 Use only site-issued USB drives, scanned before use. Never plug unknown devices into site equipment. Lock screens. Keep passwords out of sight and out of chat. Report lost badges and laptops quickly. Do not install software on site computers. These habits block the commonest ways malware and intruders get in.
 
+Each habit closes a simple route. A found USB stick can carry malware straight past every firewall; an unlocked screen in the control room lets anyone send commands under your name; a password shared in chat can be read long after the conversation ends. These small rules matter most at sites like Elmstead, where many visitors and contractors pass through.
+
 ### 4.2 Responding to an incident
 
 NIST SP 800-82r3 stresses planning response with operations. At Elmstead the steps are: make people and equipment safe using site procedures; call the on-call engineer; record what you see; preserve evidence; let the engineer and incident lead decide containment, such as disconnecting the vendor portal or putting the battery into a safe idle state; restore from verified backups; learn and improve.
+
+A trainee's part in this list is mostly the first four steps. Containment and restoration are decisions for people who understand how SC-1, the inverters and the battery will react, and who can agree them with the grid operator if needed. Elmstead keeps the steps on a card in the control room so that nobody has to remember them under pressure.
 
 ### 4.3 Updates and devices
 
 Vendors release firmware fixes; the owner applies them at planned times after checking compatibility. For new devices, ask suppliers questions drawn from ETSI EN 303 645 and NIST IR 8259: unique passwords, a vulnerability disclosure policy, an update period, encrypted communication.
 
+The answers belong in the inventory beside the device. A camera that has no update period, or a controller whose vendor will not say how to report a weakness, is a risk the owner should know about before buying rather than after installing. Firmware updates are tested on one unit first where possible, with a way to return to the previous version.
+
 ### 4.4 Limits
 
 Never test, scan or log into systems you are not authorised to use. Never bypass safety systems such as fire detection or battery protection. Never share exploit code or attack instructions. Learning happens on simulators and lab equipment.
 
+Being on site does not change these limits. A trainee who sees an exposed login page, or who is handed a password by a friendly vendor technician, still has no authority to use it. The right move is to report what you found to the engineer. Authority comes from the owner, in writing, for a defined task.
+
 ### 4.5 Where next
 
 The next course in this curriculum covers critical infrastructure and sector security. Longer courses in this area go deeper into networks, protocols, monitoring and design. Keep a record of exercises completed.
+
+Before moving on, revisit the Elmstead running case and check that you can explain each of its events in your own words: the inverter list, the zones, the 14:00 command and the camera drill. Note which exercises you scored below three on and return to those chapters. The longer courses in this area build on exactly these foundations.
 
 ### Worked example (synthetic Elmstead)
 
