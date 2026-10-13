@@ -3333,6 +3333,10 @@ Success criteria: completeness ≥ 90% with the form vs baseline; routing accura
 - Success criteria set after results.
 - Treating classmates' simulation behaviour as representative of stressed clinical staff; say so in limitations.
 
+- Planning more scenarios or volunteers than the semester allows, then quietly running fewer; any change between proposal and run must be reported with its reason.
+- Designing the synthetic scenarios and scoring them without a second person checking that the reference routing is correct.
+- Writing success criteria so loose that any result meets them, which makes the evaluation uninformative.
+
 ### Exercises — chapter 35
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -3367,21 +3371,31 @@ You will be able to (1) prepare a supervised exercise with a community or small 
 
 Small organizations — charities, community clinics, schools — face the same incident types as large ones with far fewer resources. A supervised tabletop gives them a low-cost rehearsal and gives you experience with real stakeholders, real constraints and real communication challenges.
 
+The Riverside Community Pantry example shows the value for both sides. The host learned that nobody knew who administered its donor database, a gap no tool would have found, and the student learned that the most useful discussion concerned who to call rather than technical injects. Neither result required touching a live system.
+
 ### 36.2 Consent and scope
 
 Agree in writing with the host: objectives, participants, duration, what will and will not be discussed, that no live systems will be accessed, that no personal or sensitive security details will be recorded, who receives the after-action note, and that your supervisor is responsible. Participants consent individually and may leave at any time.
+
+For Riverside, the agreement would state that the donor database's settings and support contact are described, not accessed, that the shared office laptop is not used, and that the after-action note goes to the director. Keep a signed copy with your supervisor before the session starts, and give each participant a short consent sheet in plain language that explains they may leave at any time.
 
 ### 36.3 Avoiding private live data
 
 The exercise uses a fictional scenario adapted to the host's type of work. If participants reveal real weaknesses ("our admin password is on a sticky note"), do not record specifics; record the general improvement ("credential storage practice to review") and tell the host contact privately if appropriate.
 
+The Riverside reflection shows how easily this slips: the student recorded a volunteer's comment about password reuse together with her name, noticed, removed the name and kept only a general note. Review your notes before the session ends and again before writing the after-action note. Anything that could identify a person or point to a specific weakness should be generalized or told privately to the host contact, not written down.
+
 ### 36.4 Observation and feedback
 
 Use simple observable objectives (who would you call; how would you tell clients; where are backups). Collect feedback with a short anonymous form: usefulness, clarity, what to change.
 
+At Riverside the objectives were simple: who decides and who is told, where the database settings and support contact are described, a draft message to donors and one improvement. Observation showed that the draft promised that no data was taken, which the facilitator could then discuss using the confirmed and unknown structure. Feedback came from a short anonymous form; nine of ten participants found the session useful and several asked for a one-page contact list, which became a practical follow-up for the host.
+
 ### 36.5 Reflection
 
 Write a reflective note: what you planned, what happened, what you learned about facilitation, communication and your own assumptions, and what you would change. Reflection is part of professional development and is assessed in this course.
+
+The Riverside excerpt is a good model: it names a planning mistake, too many technical injects, and an ethical slip that was caught and corrected. Write the note soon after the session, while details are fresh, and be specific about what you would change next time. A reflection that only lists successes is not useful to you or to an assessor.
 
 ### 36.6 Worked example (synthetic): a community food bank
 
@@ -3401,6 +3415,11 @@ Reflection excerpt (student): "I prepared too many technical injects; the most v
 - Recording sensitive real details.
 - Recommending controls the host cannot afford or operate.
 - Overstating what one exercise can achieve.
+
+- Promising the host outcomes that a single tabletop cannot deliver, such as being secure afterwards.
+- Leaving the host with a long list of recommendations and no indication of which matters most.
+- Treating feedback scores as evidence that the host's practice improved; they measure how the session felt.
+- Running the session without the supervisor named in the agreement, which removes the accountability the host was promised.
 
 ### Exercises — chapter 36
 
@@ -3436,17 +3455,25 @@ You will be able to (1) assess the sources in a case dossier; (2) generate alter
 
 Critique tests whether a conclusion survives scrutiny. It is directed at claims and evidence, not at people. A dossier that survives critique is stronger; one that changes is better. Professional peer review in incident response (for example, a second analyst checking a timeline before a report goes to management) serves the same purpose.
 
+In the dossier example, Dossier 1 changed substantially under critique and became better for it; its revised conclusion keeps the account-takeover finding but drops the claims about a criminal group, exfiltration and fraud that the bundle could not support. That is what success looks like in a seminar.
+
 ### 37.2 A critique protocol
 
 For each conclusion: (1) Which evidence supports it, and what grade is that evidence? (2) Which transformations sit between source and claim, and are they reproducible? (3) What alternative explanations exist, and were they tested? (4) Is the wording calibrated to the evidence? (5) What single piece of additional evidence would most change the conclusion?
+
+Applied to Dossier 1, the second question exposes the word "exfiltrated": the bundle contains an application export of 1,820 rows but no network evidence of transfer. The fifth question points to the evidence most worth seeking, such as whether the export file was downloaded or emailed. Writing answers to all five questions for each conclusion keeps critics from fixing on style.
 
 ### 37.3 Leading the seminar
 
 The leader assigns roles: presenter, two critics, a scribe. Presenter states conclusions (5 minutes); critics apply the protocol (10 minutes); presenter responds (5 minutes); scribe records agreed revisions. Rules: cite page or line; no ad hominem; disagreements are recorded rather than forced to consensus.
 
+Keep time strictly; critics who run over squeeze the presenter's response, which is where revision begins. The scribe should record the agreed revisions in the presenter's own words and note any disagreement that remained, with the evidence each side cited. Rotate roles across sessions so each student presents, critiques and records at least once. The leader should intervene only to enforce the rules, not to settle the substance.
+
 ### 37.4 Revision
 
 The presenter revises: changes wording, adds tests, or withdraws conclusions. A revision log shows what changed and why.
+
+For Dossier 1, the revision log would show "criminal group" removed for lack of attribution evidence, "exfiltrated" replaced by the recorded export with a note that no transfer was observed, and the fraud motive withdrawn. Each entry cites the critique point and the evidence behind the change. Keep the original text in the log; a reader should be able to see what was claimed before and why it no longer is. A dossier that changed nothing after critique should explain why each challenge did not require a change.
 
 ### 37.5 Worked example (synthetic): two dossiers, same events
 
@@ -3466,6 +3493,11 @@ Revised Dossier 1 conclusion: "Likely account takeover of `fin-04` (MFA method a
 - Accepting the presenter's framing of alternatives.
 - Forcing consensus where evidence is genuinely ambiguous.
 - Peer critique among students lacks the independence and expertise of professional review; note this.
+
+- Critics proposing alternative explanations without saying what evidence would test them.
+- Presenters defending every sentence instead of revising where the critique is sound.
+- Treating the revised dossier as final when the most discriminating evidence, such as whether the export left the organization, has still not been sought.
+- Letting the most confident speaker settle the seminar.
 
 ### Exercises — chapter 37
 
@@ -3501,17 +3533,25 @@ You will be able to (1) implement a small case workflow as explicit states and t
 
 A case moves through states — *new*, *triaged*, *contained*, *recovered*, *closed* — by transitions with rules: who may perform them and what must exist first. Modelling the workflow as a state machine (Chapter 6) makes rules testable and violations visible.
 
+In Lab 38 the states and allowed transitions are written as a dictionary, so the rules are data that a reviewer can read in one place. A transition not in that table, such as moving straight from new to closed, is denied with an explicit reason rather than silently accepted.
+
 ### 38.2 Access gates
 
 Some transitions need specific authority: containment of production systems requires the incident lead; closure requires the service owner's acceptance. A gate checks the actor's role and records the decision either way.
+
+In Lab 38 the gate denies an analyst's attempt to contain HC-0301 and an engineer's attempt to close it, and both denials appear in the log. Recording refusals matters as much as recording approvals: they show the gates were tested in use, and a pattern of denials may reveal a role definition that does not match how people actually work. Note the lab's limit: the caller supplies its own role, so a real system must look up the role from an authenticated identity.
 
 ### 38.3 Evidence store
 
 Attach evidence by reference with a hash (Chapter 17) and record who attached it and when. The store is append-only: corrections add new entries rather than editing old ones.
 
+In Lab 38 the sign-in export is stored with the first twelve characters of its SHA-256 digest and the name of the analyst who attached it. Containment was denied until that item existed. A full system would keep the whole digest, record the time and store the log somewhere the workflow's own users cannot edit, so that the evidence record survives a dispute.
+
 ### 38.4 Tests and rollback
 
 Test normal paths, forbidden transitions, unauthorized actors and missing evidence. Rollback means reverting a state change by a new, recorded transition (for example *contained → triaged* when containment is lifted), never by deleting history.
+
+Lab 38 exercises a rollback from contained to triaged and then contains again; all three steps stay in the log. Its tests include a wrong role, missing evidence and a forbidden closure, and the final line, ten log entries with three denials, gives a quick check that every attempt was recorded. Run the tests after each change to the transition table, because a rule added for one case can silently block another.
 
 ### 38.5 Worked example and lab (synthetic): minimal workflow
 
@@ -3592,6 +3632,11 @@ Interpretation: the gates work for the tested paths: an analyst cannot contain, 
 - Trusting the caller's claimed role.
 - Treating a lab prototype as production-ready.
 
+- Accepting "any evidence" as enough for containment, as the lab does, when a real gate should require specific evidence types.
+- Keeping the log in memory or in a file that ordinary users can edit.
+- Adding transitions to make a failing test pass without asking whether the test or the rule was wrong.
+- Letting a closed case be reopened by editing its state directly rather than through a recorded transition with a named role.
+
 ### Exercises — chapter 38
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -3626,17 +3671,25 @@ You will be able to (1) evaluate a capstone against pre-specified acceptance cri
 
 Evaluate against the criteria written in the proposal, not new ones chosen after seeing results. If a criterion proved poorly defined, report it as defined, then add a clearly labelled post-hoc analysis.
 
+The run recorded in Lab 39 differs from the proposal in one respect that the thesis must report. The proposal planned twelve synthetic scenarios, with each volunteer reporting six by email and six by form; the evaluated run uses eight cases, T01 to T08, each reported once by email and once by form. A deviation like this is acceptable only if it is stated and explained, and it never licenses changing the criteria. Here the criteria stay at 90 per cent for completeness and routing.
+
 ### 39.2 Baseline
 
 Compare with the baseline (the old process, or the workflow without the change). Without a baseline, "90% complete" has no meaning.
+
+In Lab 39 the baseline is the email process run on the same eight cases, which shows four of eight reports complete and six of eight routed correctly. Against that, the form's seven of eight on both measures is a clear improvement even though it falls short of the threshold. Reporting the baseline and the criterion side by side lets a reader see both facts at once.
 
 ### 39.3 Error analysis
 
 Classify failures: wrong routing, missing field, unauthorized action allowed, legitimate action denied, handoff lost. For each class, find the cause: design, configuration, test case, participant misunderstanding. Error analysis is often more valuable than the headline number.
 
+Lab 39 shows the value: the form failed on two cases for different reasons. T03 exposed a missing routing rule, a design gap; T06 exposed a reporter writing system details into a free-text field that overflowed, a design and usability issue. Each cause suggests a specific fix that can be tested. The email failures, by contrast, cluster around missing system and contact details, which is exactly what the form's required fields were meant to address.
+
 ### 39.4 Repeatability
 
 Rerun the test suite with a fresh environment and, if possible, a different operator. Report whether results match exactly and explain differences.
+
+For Lab 39, a repeat run after fixing the T03 routing rule and the T06 field should use new held-out cases as well as the original eight, reported separately, so improvement on the fixed cases is not mistaken for general improvement. With only eight cases per method, a single case moves a rate by twelve and a half percentage points, so small differences between runs are expected. Record the operator and environment for each run.
 
 ### 39.5 Worked example and lab (synthetic): handoff tests
 
@@ -3691,6 +3744,11 @@ Interpretation: the form greatly improves completeness (0.50 → 0.875) and halv
 - Ignoring the size of the test set.
 - Re-testing on the same cases after tuning and calling it validation.
 
+- Hiding a change between the planned and the actual test set, such as running eight cases where twelve were proposed, instead of reporting and explaining it.
+- Counting a fixed error as a pass in the original run.
+- Describing the form's seven of eight as meeting the 90 per cent threshold by rounding or by excluding a difficult case.
+- Reporting medians without the number of cases behind them.
+
 ### Exercises — chapter 39
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -3725,21 +3783,31 @@ You will be able to (1) structure a bachelor's thesis around an evidence chain; 
 
 A compact structure: (1) introduction — problem, question, why it matters; (2) background — concepts and prior work with citations; (3) method — design, materials, data plan, ethics, criteria; (4) implementation — what was built, with configuration in an appendix; (5) results — against each criterion, with error analysis; (6) discussion — interpretation, comparison with expectations and literature, limitations with direction; (7) conclusion — what was shown, under which conditions; (8) future work. Appendices hold code, test cases and raw outputs.
 
+For the intake thesis, the method chapter must state the actual design run, eight cases per method, alongside the twelve proposed, and explain the difference.
+
 ### 40.2 The evidence chain
 
 Every claim in the conclusion should trace to results, which trace to data, which trace to method. A simple results-to-claims table — claim, supporting result, evidence location, strength, limitation — keeps the chain visible and is an excellent defense aid.
+
+For the intake thesis, the claim that the form reduced time to triage in the simulation traces to the medians of 13 and 6 minutes in Lab 39, which trace to the raw outputs in Appendix C, which trace to the within-subjects method. The row grades the strength as moderate and names the limitation, classmates without time pressure. A claim without such a row is a claim the defense will probe first.
 
 ### 40.3 Visual explanation
 
 Figures should make the comparison the reader needs easy: side-by-side bars for completeness by method with counts labelled; timelines with uncertainty marked; workflow diagrams with gates. Avoid truncated axes that exaggerate differences, 3D effects and colour as the only encoding (accessibility). Every figure has a caption that states what it shows and its source.
 
+The revision table in the worked example shows the point: a y-axis starting at 40 per cent made the improvement from four to seven complete reports look larger than it was, so the axis was redrawn from zero with counts labelled. With only eight cases per method, labelling counts on every bar is essential.
+
 ### 40.4 The defense
 
 Examiners ask about the question's relevance, the method's choices, the validity of the results and the honesty of limitations. Prepare a question bank: "Why synthetic data?", "Why these criteria?", "What if your reference answers were wrong?", "What would you do with another semester?" Answer directly, concede valid points, and distinguish what the evidence shows from what you believe.
 
+The worked defense shows the right tone: the student concedes that the criteria were not met, separates the aim of testing the form from the result of the test, and points to the error analysis and the proposed held-out re-evaluation. Prepare the same for the question an examiner is likely to ask about the difference between the twelve planned scenarios and the eight run.
+
 ### 40.5 Revisions and future work
 
 Record examiners' comments and your changes in a revision table. Future work should be specific and follow from limitations: "repeat with 16 held-out cases written by a second author", not "do more research".
+
+For the intake thesis, future work follows directly from the limitations: fix the T03 routing rule and the T06 field, then re-evaluate on held-out cases written by a second author, with volunteers who work under time pressure if that can be arranged ethically. Each item names what would be learned and which limitation it addresses.
 
 ### 40.6 Worked example (synthetic): thesis summary and defense
 
@@ -3760,6 +3828,11 @@ Revision table entry: comment "the figure's y-axis starts at 40%" → change: ax
 - Defensive answers that deny valid criticism.
 - Vague future work.
 - A bachelor's thesis is evidence of competence in a bounded problem; it is not a validated product or a general finding about real organizations.
+
+- Reporting the planned design in the method chapter when a different design was actually run.
+- Presenting post-hoc analyses as if they had been planned.
+- Listing limitations without saying which way each is likely to bias the result.
+- Answering examiners with new claims the thesis never tested.
 
 ### Exercises — chapter 40
 
