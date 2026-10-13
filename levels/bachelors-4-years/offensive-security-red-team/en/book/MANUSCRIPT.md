@@ -2267,7 +2267,7 @@ Backup owners must acknowledge in the ticket UI; silence is not acceptance.
 
 Listing someone as backup without their acknowledgement creates a false sense of coverage. The UI requires a click that records the person, the time and the flow. Until that click happens, the temporary flow cannot be approved. The rule has slowed a few registrations and prevented several quiet gaps where the named backup had never heard of the flow.
 
-The rule exists because informal agreements evaporate under delivery pressure. A recorded acknowledgement or countersignature is the difference between a control and a hope.
+Backup names written on a ticket without a click disappear when that person changes teams. The acknowledgement click is what turns a name into a duty.
 
 ### 22.13 Blocking closeout without a backup
 
@@ -2275,7 +2275,7 @@ Mandatory backup-owner fields block ticket closeout. Sam loves blocking closeout
 
 Change tickets that open temporary flows cannot close until the backup acknowledgement exists. Blocking closeout is more reliable than sending reminders, because delivery pressure already focuses on closing tickets. The block is visible in the same place project managers already look. Sam's preference for blocks over reminders comes from watching reminder-based processes fail whenever the team is busy.
 
-The rule exists because informal agreements evaporate under delivery pressure. A recorded acknowledgement or countersignature is the difference between a control and a hope.
+Delivery pressure dissolves hallway agreements. The countersignature forces a second person to say the environment can take more load, which is the control.
 
 ### 22.14 Postmortems for expired flows
 
@@ -2393,7 +2393,7 @@ Pause flags clear only with SOC countersign. Sam cannot clear his own noise over
 
 Self-clearing would make the automatic pause theatre. The SOC countersign is a second person asserting that the environment can take more load. Sometimes they refuse and ask for a quieter continuation tomorrow. That refusal is a successful control. Recording who cleared a pause, and when, also helps later reviews understand why a noisy card continued after an overrun.
 
-The rule exists because informal agreements evaporate under delivery pressure. A recorded acknowledgement or countersignature is the difference between a control and a hope.
+Informal promises do not survive the next release train. A recorded acknowledgement survives because it can be audited when someone asks who accepted the risk.
 
 ### 23.14 Rotating card audits
 
