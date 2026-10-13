@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 31–50 (EX061–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–34 de 50 já estão escritos em português, com os exercícios EX001–EX068 e suas resoluções; os capítulos 35–50 (EX069–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -65,10 +65,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 28. [Infraestrutura crítica e segurança setorial: implementação I](#ch-28)
 29. [Infraestrutura crítica e segurança setorial: medição](#ch-29)
 30. [Laboratório de verificação I](#ch-30)
+31. [Infraestrutura crítica e segurança setorial: implementação II](#ch-31)
+32. [Infraestrutura crítica e segurança setorial: confiabilidade](#ch-32)
+33. [Infraestrutura crítica e segurança setorial: segurança operacional e resiliência](#ch-33)
+34. [Infraestrutura crítica e segurança setorial: integração](#ch-34)
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 35–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-35), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX060. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX068. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -2357,7 +2361,262 @@ A verificação é uma campanha planejada, com critérios fixados com antecedên
 <!-- cyberabc:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 50
 
-[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Infraestrutura crítica e segurança setorial: implementação II
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) implantar controles em ambientes operacionais por meio de uma implantação em etapas com reversão; (2) gerenciar chaves, configuração e segredos em produção; (3) integrar equipamentos legados por meio de gateways e controles compensatórios; e (4) comissionar um controle com testes de aceitação e passagem aos operadores. Ele leva a implementação de bancada do Capítulo 28 para o campo e prepara os capítulos 32 a 34.
+
+### 31.1 Implantação em etapas
+
+A implantação em campo segue etapas, cada uma com critérios de entrada e saída: bancada (todos os testes aprovados); local piloto de baixa consequência; um local de alta consequência, com monitoramento extra e um plano de reversão; frota. Cada etapa tem uma **reversão** — a capacidade de voltar rapidamente ao estado anterior conhecido como bom — testada antes de ser necessária. Programe as mudanças fora dos picos de demanda e com os operadores informados; no setor de água, evite mudanças durante períodos de alta demanda ou quando o armazenamento estiver baixo. As etapas do TMRP são a bancada, a PS2 como piloto de baixa consequência, a PS4 como primeiro local de alta consequência e depois a frota.
+
+### 31.2 Gestão de chaves e segredos em produção
+
+Na bancada, as chaves são arquivos; em produção, são ciclos de vida. Gere as chaves em módulos de segurança de hardware ou nos elementos seguros dos dispositivos; cadastre os dispositivos numa cerimônia auditável (duas pessoas, registrada em log); armazene o inventário de qual chave pertence a qual dispositivo e sua data de rotação; faça a rotação; e revogue prontamente quando um dispositivo for perdido ou desativado. Os segredos das contas de serviço vão para um cofre com registro de acessos, e não para scripts. Um inventário de chaves é, ele próprio, sensível. No TMRP, as chaves são geradas no elemento seguro do gateway no cadastro.
+
+### 31.3 Integração de legados
+
+Dispositivos legados que não conseguem se autenticar são encapsulados: um gateway colocado fisicamente ao lado (no mesmo gabinete) acrescenta autenticação do lado da rede e fala o protocolo legado num enlace curto e fisicamente protegido. O gateway passa a fazer parte da fronteira de segurança do dispositivo, então precisa de seu próprio endurecimento, monitoramento e caminho de atualização. Controles compensatórios cobrem o que o gateway não consegue: alarmes de violação do gabinete, registro local em log e restrições sobre quais códigos de função passam. Na PS2, o gateway fica no gabinete da RTU, num enlace serial de 30 cm, e deixa passar apenas dois códigos de função.
+
+### 31.4 Comissionamento e passagem aos operadores
+
+O comissionamento verifica o sistema instalado em seu ambiente real: os testes de aceitação em campo repetem no local os principais testes de bancada (a autenticação rejeita quadros forjados; a repetição é rejeitada; o failover para o modo automático local funciona; os alarmes chegam à sala de controle em até 60 s). A passagem dá aos operadores procedimentos, treinamento, contatos e as limitações conhecidas. Até que os operadores consigam operar e recuperar o sistema, o controle não está em serviço. Na PS2, a aceitação em campo também encontrou a deriva do relógio do gateway, que foi corrigida e testada de novo antes da passagem. Os operadores foram treinados primeiro.
+
+### 31.5 Exemplo resolvido: piloto da PS2 (sintético)
+
+O local piloto do TMRP é a PS2 — RTU-A legada, baixa consequência. Critérios de entrada: T1, T2, T3 (v2) e T5 aprovados na bancada; imagem de reversão pronta; operadores informados. O gateway é instalado no gabinete da RTU; o enlace serial tem 30 cm dentro do gabinete trancado; o gateway deixa passar apenas os códigos de função 3 (leitura) e 6 (escrita de um único registrador) para a faixa de registradores configurada. Aceitação em campo: quadros forjados e repetidos rejeitados e alarmados; retirar a antena LTE resulta em operação automática local e num alarme de perda de comunicação em até 60 s; recolocar a antena retoma a telemetria com os contadores continuando. Uma constatação: o relógio do gateway derivou 40 s em 48 h porque o NTP não era alcançável pelo novo conduto; corrigido acrescentando uma fonte de tempo interna à lista de permissões do conduto. Critérios de saída atendidos após o novo teste; a PS4 é a próxima.
+
+### 31.6 Atividade prática
+
+Escreva o plano de etapas para a implantação do TMRP na frota, com critérios de entrada e saída e reversão para cada etapa, e uma nota de passagem de duas páginas para os operadores do gateway. Use o piloto da PS2 como modelo para os critérios de entrada e saída e depois estenda o plano à PS4 e às demais estações. Para cada etapa, diga como a reversão é feita e quem decide usá-la. Na nota de passagem, informe aos operadores os alarmes que o gateway gera, o que cada um significa, como passar para a operação manual local e a quem chamar. Liste com franqueza as limitações conhecidas, como a dependência de uma fonte de tempo interna aprendida na PS2.
+
+### 31.7 Erros comuns e limites
+
+- Implantação "big bang", sem piloto nem reversão.
+- Planos de reversão nunca testados.
+- Cadastro de chaves por uma única pessoa, sem registros.
+- Gateways tratados como transparentes, e não como dispositivos críticos para a segurança.
+- Comissionamento sem os operadores; passagem sem as limitações conhecidas.
+
+O piloto da PS2 do TMRP evitou esses erros: tinha uma imagem de reversão, os operadores foram informados antes da instalação, e a constatação da deriva do relógio foi tratada como uma correção de interface e testada de novo antes do início da PS4. O cadastro de chaves segue a cerimônia de duas pessoas, registrada em log, descrita acima, e o gateway foi tratado como um dispositivo crítico para a segurança, com seu próprio endurecimento e caminho de atualização.
+
+### Exercícios — capítulo 31
+
+**EX061 — Critérios de reversão.** *Objetivo:* definir quando reverter. *Entradas:* implantação na PS4. *Passos:* defina três gatilhos de reversão mensuráveis, quem decide e o tempo máximo para concluir a reversão. *Evidência esperada:* lista. *Rubrica:* 3 = gatilhos mensuráveis (p. ex., perda de telemetria > 5 min não explicada pela perda do enlace, qualquer mensagem aceita que falhe na auditoria, latência de alarme > 60 s para alarmes prioritários), dono da decisão nomeado pelo papel, tempo de reversão coerente com a reserva do hospital; 2 = gatilhos vagos; 1 = sem dono; 0 = nada.
+
+**EX062 — O gateway como fronteira.** *Objetivo:* proteger um encapsulador de legado. *Entradas:* o gateway da PS2. *Passos:* liste seis controles de que o próprio gateway precisa e o risco residual se um atacante obtiver acesso físico ao gabinete. *Evidência esperada:* lista e declaração do residual. *Rubrica:* 3 = endurecimento, atualizações assinadas, proteção das chaves, filtragem de códigos de função, detecção de violação, registro em log; residual honesto (um atacante físico pode contornar pelo enlace serial); 2 = residual ausente; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+Implante em etapas, com critérios de entrada e saída e reversão testada. Gerencie chaves e segredos como ciclos de vida, com cerimônias auditáveis. Encapsule dispositivos legados com gateways que sejam, eles próprios, tratados como críticos para a segurança, mais controles físicos compensatórios. Um controle só está em serviço depois da aceitação em campo e da passagem aos operadores.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — capítulo 31 de 50
+
+[← Capítulo 30](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Infraestrutura crítica e segurança setorial: confiabilidade
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) usar medidas de confiabilidade — taxa de falhas, MTBF, MTTR, disponibilidade; (2) calcular a disponibilidade de sistemas em série, em paralelo e redundantes reparáveis com modelos de Markov; (3) mostrar como a capacidade de reparo e as causas comuns mudam os benefícios da redundância; e (4) ligar a engenharia de confiabilidade à segurança, em que as falhas podem ser induzidas. Ele se apoia no Capítulo 7 e prepara os capítulos 33 e 41.
+
+### 32.1 Medidas
+
+Para um componente com taxa de falhas constante $\lambda$ (falhas por hora), o tempo médio entre falhas é $1/\lambda$. Com tempo médio de reparo $1/\mu$, a disponibilidade em regime permanente é $A = \mu/(\lambda+\mu) = \text{MTBF}/(\text{MTBF}+\text{MTTR})$. Taxas de falhas constantes servem para o período de vida útil dos eletrônicos; as falhas do início da vida e as de desgaste precisam de outras distribuições (Weibull). Componentes em **série** (todos necessários) têm taxas que se somam: $\lambda_s = \sum\lambda_i$. Componentes em **paralelo** (basta qualquer um) só falham juntos. Na PS4, a taxa de falhas de cada bomba, de uma a cada duas mil horas, e seu tempo de reparo de 24 horas dão a disponibilidade de uma bomba usada no Laboratório 12.
+
+### 32.2 Redundância reparável
+
+As fórmulas simples para sistemas em paralelo pressupõem unidades independentes, cada uma reparada de forma independente. Locais reais muitas vezes têm uma única equipe de reparo, então, quando as duas unidades estão paradas, uma espera. Uma cadeia de Markov de tempo contínuo modela isso: estados 0, 1 e 2 unidades com falha; transições à taxa $2\lambda$ de 0 para 1, $\lambda$ de 1 para 2, e $\mu$ de volta a partir de 1 e de 2, com uma equipe. Resolver as equações de equilíbrio dá as probabilidades em regime permanente; a indisponibilidade é a probabilidade do estado 2. A PS4 tem exatamente essa restrição: duas bombas, uma equipe de reparo. O modelo de Markov do Laboratório 12 captura a espera.
+
+### 32.3 Falhas induzidas
+
+Os modelos de confiabilidade pressupõem que as falhas chegam aleatoriamente. Um adversário escolhe quando. Se um atacante consegue desativar uma bomba remotamente e esperar que a outra falhe — ou desativar as duas —, os números de Markov deixam de descrever o risco. A engenharia de confiabilidade continua importando para a segurança: ela informa a **linha de base** que o atacante precisa superar, a **capacidade de reparo** que determina a velocidade de recuperação e os estoques de reserva que tornam real a reserva fria. Os requisitos de segurança visam então fazer com que falhas induzidas exijam comprometimentos independentes (o condicionamento do Capítulo 23).
+
+### 32.4 Exemplo resolvido: bombas principal/reserva da PS4 (sintético)
+
+Cada bomba da PS4 tem taxa de falhas de 1 a cada 2.000 h e tempo médio de reparo de 24 h, com uma equipe. O Laboratório 12 dá uma disponibilidade de uma bomba de 0.98814 (cerca de 104 h paradas por ano). O par 1-de-2 com uma equipe tem disponibilidade de 0.999719 — as duas bombas paradas cerca de 148 minutos por ano. A fórmula ingênua $1-(1-A)^2$ dá 0.999859, metade da indisponibilidade real, porque ignora que a segunda falha pode ocorrer enquanto a única equipe está ocupada. Para a cadeia de controle do conjunto de bombas — bomba, partida e RTU em série, com MTBFs de 2.000, 5.000 e 10.000 h —, o MTBF da série é de 1.250 h: a cadeia é menos confiável do que seu elemento mais fraco.
+
+### 32.5 Atividade prática: Laboratório 12
+
+```python
+# Lab 12 - availability of a duplicated pump set with repair (two-state units, one repair crew; offline)
+lam, mu = 1 / 2000, 1 / 24     # failures per hour per pump, repairs per hour
+A1 = mu / (lam + mu)
+# states: 0 = both up, 1 = one down, 2 = both down; one crew repairs one pump at a time
+# balance: p1 = (2 lam / mu) p0 ; p2 = (lam / mu) p1
+p0 = 1 / (1 + 2 * lam / mu + 2 * (lam / mu) ** 2)
+p1 = 2 * lam / mu * p0; p2 = lam / mu * p1
+print(f"single pump availability {A1:.6f}  downtime h/yr {8760*(1-A1):.1f}")
+print(f"1oo2 availability {1-p2:.8f}  P(both down) {p2:.2e}  downtime min/yr {8760*60*p2:.2f}")
+print(f"naive independent 1-(1-A1)^2 = {1-(1-A1)**2:.8f}")
+mtbf_series = 1 / (1/2000 + 1/5000 + 1/10000)
+print(f"series MTBF pump+starter+RTU: {mtbf_series:.0f} h")
+```
+
+Saída esperada:
+
+```text
+single pump availability 0.988142  downtime h/yr 103.9
+1oo2 availability 0.99971883  P(both down) 2.81e-04  downtime min/yr 147.78
+naive independent 1-(1-A1)^2 = 0.99985939
+series MTBF pump+starter+RTU: 1250 h
+```
+
+Uma bomba fica parada cerca de 104 horas por ano. O par com uma equipe fica parado ao mesmo tempo por cerca de 148 minutos por ano, aproximadamente o dobro do que sugere a fórmula ingênua, porque a segunda falha pode chegar enquanto a equipe ainda está reparando a primeira. O valor da série mostra a fraqueza da cadeia de controle: bomba, partida e RTU juntas têm um tempo médio entre falhas de 1.250 horas, menor do que o de qualquer uma delas sozinha. É a capacidade de reparo, e não a qualidade das bombas, que produz a diferença.
+
+### 32.6 Erros comuns e limites
+
+- Fórmulas de reparo independente com uma única equipe.
+- Taxas de falhas constantes para equipamentos envelhecidos.
+- Ignorar causas comuns (painel de partida compartilhado, energia compartilhada).
+- Números de confiabilidade apresentados como proteção contra ataques deliberados.
+- Valores de MTBF de fornecedores usados sem conhecer suas condições de teste.
+
+Para a PS4, o primeiro erro reduz à metade o tempo de parada previsto, e o terceiro ignora que as duas bombas compartilham um painel de partida e um alimentador. Os valores de MTBF do fornecedor para a RTU devem ser conferidos com os próprios registros de manutenção da LRWA antes de entrarem no dossiê, e nenhum desses números diz nada sobre um atacante que pare as duas bombas deliberadamente.
+
+### Exercícios — capítulo 32
+
+**EX063 — Duas equipes.** *Objetivo:* modelar a capacidade de reparo. *Entradas:* Laboratório 12. *Passos:* modifique o modelo de Markov para duas equipes independentes (taxa de reparo $2\mu$ a partir do estado 2) e calcule a indisponibilidade; compare com uma equipe e com a fórmula ingênua. *Evidência esperada:* números e conclusão. *Rubrica:* 3 = o resultado com duas equipes coincide com a fórmula ingênua independente (explique por quê), uma equipe aproximadamente o dobro; 2 = números certos, sem explicação; 1 = não executado; 0 = nada.
+
+**EX064 — Decisão sobre reservas.** *Objetivo:* ligar a confiabilidade à logística. *Entradas:* o tempo de reparo de 24 h pressupõe uma bomba reserva em estoque; sem reserva, o reparo leva 21 dias (504 h). *Passos:* calcule a indisponibilidade 1oo2 com uma equipe e MTTR de 504 h, e recomende se convém manter uma reserva. *Evidência esperada:* número e recomendação. *Rubrica:* 3 = cálculo correto (use a fórmula do laboratório com μ = 1/504), recomendação ligada à consequência para o hospital; 2 = número certo; 1 = taxa errada; 0 = nada.
+
+### Síntese do capítulo
+
+A confiabilidade é medida com taxas de falhas, tempos de reparo e disponibilidade; cadeias em série são mais fracas do que seu elo mais fraco; a redundância reparável depende da capacidade de reparo, que as fórmulas simples ignoram. Os adversários induzem falhas no cronograma deles, então a confiabilidade fornece a linha de base e a capacidade de recuperação, enquanto a segurança precisa fazer com que falhas induzidas exijam comprometimentos independentes.
+
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — capítulo 32 de 50
+
+[← Capítulo 31](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Infraestrutura crítica e segurança setorial: segurança operacional e resiliência
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) aplicar a Análise de Processos Teórica de Sistemas (STPA) a uma estrutura de controle, incluindo causas relacionadas à segurança da informação; (2) descrever os sistemas instrumentados de segurança e por que eles precisam de independência; (3) definir e projetar a resiliência — antecipar, resistir, recuperar-se, adaptar-se; e (4) integrar segurança operacional, segurança da informação e resiliência numa única análise. Ele se apoia nos capítulos 10, 17, 23 e 32 e prepara os capítulos 34 e 47.
+
+### 33.1 STPA
+
+[Leveson (2004)](https://doi.org/10.1016/S0925-7535(03)00047-X) propôs o STAMP, um modelo de acidentes que trata a segurança operacional como um problema de controle: os acidentes surgem quando as restrições sobre o comportamento do sistema não são impostas. A STPA, o método de análise construído sobre ele, procede assim: (1) definir perdas e perigos; (2) modelar a estrutura de controle — controladores, ações de controle, realimentação; (3) identificar **ações de controle inseguras** (UCAs) de quatro tipos: não fornecida quando necessária, fornecida quando insegura, fornecida cedo/tarde demais ou na ordem errada, interrompida cedo demais ou aplicada por tempo demais; (4) identificar cenários de perda — por que cada UCA poderia ocorrer, incluindo realimentação falha, modelos de processo falhos e, para a segurança da informação (STPA-Sec), a ação de um adversário. A força da STPA é encontrar perigos que surgem de interações em que nenhum componente falhou — exatamente a situação de um ataque de dados falsos.
+
+### 33.2 Sistemas instrumentados de segurança e independência
+
+Um sistema instrumentado de segurança (SIS) leva um processo a um estado seguro quando uma condição perigosa é detectada, de forma independente do sistema básico de controle do processo. As normas de segurança funcional (IEC 61508 e suas derivadas setoriais) atribuem níveis de integridade de segurança. Independência significa sensores, lógica e elementos finais separados e, em termos modernos, redes e acesso de engenharia separados, porque uma estação de engenharia comprometida que consiga reprogramar tanto a lógica de controle quanto a de segurança elimina a independência. O TRITON visou diretamente controladores de SIS ([relatório HatMan da CISA](https://www.cisa.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%20-%20Safety%20System%20Targeted%20Malware%20%28Update%20B%29.pdf)).
+
+### 33.3 Resiliência
+
+A [NIST SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1) estrutura a ciber-resiliência em torno dos objetivos de antecipar, resistir, recuperar-se e adaptar-se, com técnicas como diversidade, segmentação, redundância, não persistência e resposta adaptativa. [Haimes (2009)](https://doi.org/10.1111/j.1539-6924.2009.01216.x) argumenta que a resiliência precisa ser definida em relação a ameaças e estados do sistema específicos. Projetar a resiliência significa: projetar modos degradados (Capítulo 22), manter capacidade e reservas (armazenamento, baterias, peças de reposição), tornar a recuperação rápida e praticada (Capítulo 47) e aprender depois dos eventos. Para a LRWA, o tanque do hospital, as baterias dos gabinetes e as 72 horas de operação automática local são reservas; o ensaio de recuperação é a prática.
+
+### 33.4 Exemplo resolvido: STPA no controle de nível de Hollin Hill (sintético)
+
+Perda L1: hospital sem água; L2: transbordamento do reservatório e inundação. Perigos: H1 nível abaixo do mínimo enquanto a demanda continua; H2 nível acima do transbordamento. Estrutura de controle: operador do SCADA → controlador PI (velocidade da bomba da PS3) → bomba → reservatório; realimentação pelo transmissor de nível. UCAs: UCA1 "o controlador reduz a vazão de entrada quando o nível está baixo" (fornecida quando insegura → H1); UCA2 "o operador não intervém quando o nível cai" (não fornecida → H1); UCA3 "o controlador aumenta a vazão de entrada quando o nível está alto" (→ H2). Cenário para a UCA1: o modelo de processo do controlador acredita que o nível está alto porque a realimentação de nível foi falsificada (Laboratório 7). Cenário para a UCA2: a tela do operador mostra o mesmo nível falsificado. Restrições: medição de nível independente com alarme (EX034); desligamento da bomba por nível alto, com fiação dedicada, para H2; alarme de nível baixo ao operador a partir da medição independente. A STPA chegou ao mesmo controle que o detector de resíduos, mas partindo do perigo, e não do ataque.
+
+### 33.5 Atividade prática
+
+Estenda a §33.4 com a malha de dosagem: perdas, perigos, estrutura de controle, pelo menos quatro UCAs (uma de cada tipo) e um cenário de perda para cada, um deles adversarial. Comece com perdas como danos aos consumidores por superdosagem ou subdosagem, e perigos como o cloro residual fora de seus limites. Desenhe a estrutura de controle: o operador, o controlador de dosagem, a bomba dosadora e o analisador que realimenta o residual. Use os limites no lado do controlador e o alarme do analisador independente dos controles de dosagem do TMRP ao derivar as restrições, e faça do seu cenário adversarial um em que a realimentação do controlador é falsificada.
+
+### 33.6 Erros comuns e limites
+
+- Análise de perigos que ignora adversários, ou análise de segurança da informação que ignora perigos.
+- "Independência" do SIS com estação de engenharia ou rede compartilhada.
+- Resiliência definida como "uptime".
+- STPA reduzida a uma checklist sem estrutura de controle.
+
+O EX066 mostra o segundo erro em Fenwick, onde o sistema de desligamento por vazamento de gás cloro compartilha a estação de engenharia e o switch de rede com os controladores de processo. A análise de Hollin Hill do TMRP evita o primeiro erro incluindo a realimentação de nível falsificada como cenário de perda ao lado das falhas aleatórias, e trata a resiliência como serviço entregue ao longo do tempo, e não como uptime dos servidores.
+
+### Exercícios — capítulo 33
+
+**EX065 — Tabela de UCAs.** *Objetivo:* identificar ações de controle inseguras. *Entradas:* §33.5. *Passos:* produza a tabela de UCAs com os quatro tipos e os cenários. *Evidência esperada:* tabela. *Rubrica:* 3 = quatro tipos corretamente aplicados, cenários incluem realimentação falha e ação de adversário, restrições derivadas; 2 = tipos confundidos; 1 = lista de falhas, e não de ações de controle; 0 = nada.
+
+**EX066 — Auditoria de independência.** *Objetivo:* testar a independência do SIS. *Entradas:* o sistema de desligamento por vazamento de gás cloro de Fenwick compartilha a estação de engenharia e o switch de rede com os controladores de processo. *Passos:* identifique as violações de independência e proponha uma arquitetura que restaure a independência, com os riscos residuais. *Evidência esperada:* meia página. *Rubrica:* 3 = estação e switch compartilhados identificados, acesso de engenharia separado com chave física ou estação separada, rede separada ou fiação dedicada, residual declarado; 2 = uma violação não percebida; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+A STPA trata as perdas como falhas de controle e encontra ações de controle inseguras que surgem de interações, incluindo as adversariais. Os sistemas instrumentados de segurança precisam ser independentes em sensores, lógica, redes e acesso de engenharia. A resiliência — antecipar, resistir, recuperar-se, adaptar-se — precisa ser definida diante de ameaças específicas e projetada por meio de modos degradados, reservas e recuperação praticada.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — capítulo 33 de 50
+
+[← Capítulo 32](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Infraestrutura crítica e segurança setorial: integração
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) planejar a integração de sistemas de forma incremental, com testes de interface; (2) integrar os controles de segurança às operações — alarmes, procedimentos, monitoramento e resposta a incidentes; (3) gerenciar interfaces organizacionais com fornecedores, operadoras e outras concessionárias; e (4) reconhecer comportamentos emergentes que só aparecem quando os componentes se combinam. Ele vem depois dos capítulos 31 a 33 e prepara o Ateliê de projeto II (Capítulo 35).
+
+### 34.1 Integração incremental
+
+Integre em pequenos incrementos, com testes de interface a cada passo: gateway com RTU; gateway com SCADA; SCADA com a réplica do historiador; sensores de monitoramento com o coletor de logs. Cada passo usa o documento de controle de interface (Capítulo 16) como sua especificação de teste. Quando um teste de integração falha, a especificação da interface diz qual lado está errado — ou revela que a especificação era ambígua. A ordem do TMRP segue os documentos de controle de interface: primeiro o gateway com a RTU na PS2, depois o gateway com o SCADA, depois a réplica na DMZ.
+
+### 34.2 Comportamento emergente
+
+Combinar componentes corretos pode produzir sistemas incorretos. Exemplos: um gateway de autenticação que armazena mensagens durante a perda do enlace e depois libera uma rajada na reconexão, inundando o poller do SCADA; o failover do par SCADA que zera os contadores contra repetição; um detector de anomalias que sinaliza cada retransmissão do gateway como um ataque. Os testes de integração precisam incluir cenários do sistema inteiro — perda e recuperação do enlace, failover, modo de manutenção —, e não apenas a conformidade das interfaces. O TMRP encontrou o primeiro exemplo nos testes de integração, como descreve o exemplo resolvido abaixo. Cada um precisa de um teste de cenário.
+
+### 34.3 Integração com as operações
+
+Um controle não está integrado até que as operações consigam usá-lo: alarmes com significado, prioridade e procedimentos de resposta claros; painéis que mostram o estado de segurança ao lado do estado do processo; playbooks que ligam os alarmes de segurança às decisões operacionais (passar para o manual local? chamar o gerente de plantão?); e treinamento. A prática de gestão de alarmes — racionalizar os alarmes para que cada um exija uma ação do operador — importa porque inundações de alarmes sem sentido escondem os reais. Na LRWA, o playbook para uma mudança inesperada de setpoint é o modo como os alarmes do gateway chegam às decisões operacionais. Cada novo alarme é racionalizado antes da liberação.
+
+### 34.4 Interfaces organizacionais
+
+A segurança da infraestrutura depende de organizações que você não controla: a operadora LTE, o fornecedor das RTUs, o integrador, a distribuidora de eletricidade, as concessionárias vizinhas para ajuda mútua. Torne as interfaces explícitas em contratos e acordos: deveres de notificação de incidentes e vulnerabilidades, condições de acesso, tempos de resposta do suporte e exercícios conjuntos. Um incidente na operadora também é um incidente seu. Para a LRWA, a operadora LTE é o exemplo mais claro, já que todo o conduto de campo do TMRP passa pela rede dela. O contrato deve fixar tempos de notificação e exercícios conjuntos com termos mensuráveis.
+
+### 34.5 Exemplo resolvido: a rajada de reconexão (sintético)
+
+Durante os testes de integração, a equipe desconecta a central LTE por 30 minutos. Na reconexão, cada um dos 42 gateways libera de uma vez 180 leituras armazenadas. O front-end do SCADA, dimensionado para o regime permanente, enfileira a rajada; os alarmes prioritários atrasam mais de dois minutos, violando R7. O modelo de filas do Laboratório 13 explica por quê: uma utilização acima de 0,9 faz o atraso explodir. Correção: os gateways encaminham imediatamente apenas o valor mais recente e quaisquer alarmes, e depois preenchem o histórico a uma taxa limitada no historiador, e não no poller do SCADA. A correção é registrada como uma mudança de interface (revisão do ICD) e um teste de regressão.
+
+### 34.6 Atividade prática
+
+Projete um teste de integração que combine o failover do SCADA com a proteção contra repetição, declarando o comportamento esperado, as observações e o critério de aprovação. Descreva a sequência: um servidor SCADA faz failover para seu parceiro enquanto os gateways continuam enviando mensagens autenticadas. O comportamento esperado é que o lado receptor continue rejeitando repetições depois do failover, o que significa que o último contador aceito de cada estação precisa ser compartilhado ou persistido. Observe se alguma mensagem antiga é aceita e se os alarmes ainda chegam em até 60 segundos. O critério de aprovação é zero repetições aceitas e nenhuma lacuna na entrega de alarmes.
+
+### 34.7 Erros comuns e limites
+
+- Integração "big bang" no final.
+- Apenas testes de interface, sem cenários do sistema inteiro.
+- Alarmes de segurança sem procedimentos operacionais.
+- Contratos omissos sobre notificação de incidentes e divulgação de vulnerabilidades.
+- Tratar problemas emergentes como bug de um único componente, e não como questão de interface.
+
+A rajada de reconexão mostra o segundo e o último erros: cada componente passou em seus testes de interface, mas juntos atrasaram os alarmes, e a correção foi uma mudança de interface, e não um bug isolado. A integração na LRWA avança uma interface por vez. Cada passo tem seu próprio teste de interface.
+
+### Exercícios — capítulo 34
+
+**EX067 — Aritmética da rajada.** *Objetivo:* quantificar a rajada de reconexão. *Entradas:* 42 gateways × 180 leituras liberadas em 10 s; o front-end do SCADA processa 50 mensagens/s. *Passos:* calcule o tempo para escoar a rajada supondo que ela chegue toda de uma vez; calcule quanto espera um alarme prioritário no fim da fila; compare com R7. *Evidência esperada:* números. *Rubrica:* 3 = 7.560 mensagens / 50 por s = 151,2 s, viola os 60 s, explica a fila com prioridade ou a correção do valor mais recente; 2 = aritmética certa, sem correção; 1 = aritmética errada; 0 = nada.
+
+**EX068 — Acordo com a operadora.** *Objetivo:* especificar uma interface organizacional. *Entradas:* o contrato da operadora LTE. *Passos:* liste seis cláusulas relevantes para a segurança, com termos mensuráveis. *Evidência esperada:* lista. *Rubrica:* 3 = tempo de notificação de incidentes, divulgação de vulnerabilidades, notificação de manutenção, prioridades de restauração, registro de acessos, exercício conjunto, com números; 2 = sem números; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+Integre de forma incremental, com testes de interface e cenários do sistema inteiro, porque o comportamento emergente só aparece na combinação. Integre os controles às operações por meio de alarmes com significado, playbooks e treinamento. Torne as interfaces organizacionais explícitas e mensuráveis; sua segurança depende de organizações que você não controla.
+
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — capítulo 34 de 50
+
+[← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 (inglês) →](../../en/book/MANUSCRIPT.md#ch-35)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2366,7 +2625,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX068; as de EX069–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -2547,6 +2806,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX059.** O NaN dá falso em qualquer comparação, então as verificações negativas da v1 nunca o rejeitam, enquanto ±∞ falham em `> hi` ou `< lo`. Cerca de 2.000/10 = 200 casos de valores especiais, um quinto deles NaN → cerca de 40 esperados; 31 observados (o gerador sorteou 31 casos NaN com a semente 30), bem dentro da variação aleatória (desvio-padrão binomial ≈ 5,7). Todo caso NaN é uma aceitação insegura pela v1, então as 31 reprovações são exatamente os casos NaN.
 
 **EX060.** Casos: (1) contadores 1, 2, 3 → todos aceitos; (2) repetir o 2 → rejeitado; (3) contador menor → rejeitado; (4) reinício do receptor e depois repetição de uma mensagem antiga → rejeitada (exige estado persistido ou rotação de chaves); (5) reinício do emissor → retoma em persistido + 1.000, aceito; contadores antigos rejeitados; (6) entrega fora de ordem (3 antes de 2) → 3 aceito, 2 rejeitado e registrado em log (comportamento documentado); (7) contador no máximo 2⁶⁴ − 1 → rotação de chaves exigida antes do estouro; testar que o emissor se recusa a dar a volta. Critérios de aprovação: resultados exatos de aceitação/rejeição e entradas de log.
+
+### Capítulo 31
+
+**EX061.** Gatilhos: telemetria da PS4 ausente por > 5 min enquanto o enlace está ativo; qualquer quadro aceito que falhe na auditoria posterior; latência de alarme prioritário > 60 s em dois eventos numa hora; mudança inesperada do estado de uma bomba. Dono da decisão: gerente de operações de plantão. Reversão concluída em até 1 h (bem dentro da reserva de 4 h do hospital), com a PS4 em modo automático local o tempo todo.
+
+**EX062.** Controles: endurecimento do sistema operacional e dos serviços; atualizações de firmware assinadas; chave num elemento seguro; filtragem de códigos de função e de faixa de registradores; chave de violação do gabinete alarmada no SCADA; registro em log local e encaminhado; portas não usadas desativadas; trancas físicas. Residual: um atacante com acesso físico ao gabinete aberto pode se conectar ao enlace serial legado e comandar a RTU diretamente; a detecção de violação reduz o tempo de permanência, mas não o impede.
+
+### Capítulo 32
+
+**EX063.** Com duas equipes, a transição do estado 2 de volta ao estado 1 tem taxa 2μ, então $p_2 = p_0 \cdot 2r \cdot r/2 = p_0 r^2$ com $r = \lambda/\mu$. Indisponibilidade ≈ 1,41 × 10⁻⁴, igual à fórmula ingênua independente — porque o reparo independente é exatamente o que essa fórmula pressupõe. Uma equipe: 2,81 × 10⁻⁴, cerca do dobro.
+
+**EX064.** Com MTTR de 504 h e uma equipe: indisponibilidade ≈ 0,078 (cerca de 28 dias por ano com as duas bombas paradas), contra 2,8 × 10⁻⁴ com uma reserva. Mantenha uma bomba reserva: o custo é irrisório diante de semanas de abastecimento do hospital por um único caminho.
+
+### Capítulo 33
+
+**EX065.** Linhas-modelo para a malha de dosagem (perdas: água insegura; danos por superdosagem): não fornecida — o controlador não aumenta a dose quando a demanda sobe (realimentação de vazão falha); fornecida quando insegura — o controlador aumenta a dose quando o residual já está alto (leitura do analisador falsificada por um atacante); momento errado — aumento de dose aplicado depois que a vazão caiu (atraso na realimentação); por tempo demais — a dosagem continua depois que a vazão para (sinal de vazão travado). Restrições: monitoramento independente do residual, dose intertravada com a vazão, limite físico de curso.
+
+**EX066.** Violações: estação de engenharia compartilhada (um único comprometimento pode reprogramar tanto a lógica de controle quanto a de segurança) e switch compartilhado (caminho de rede e falha comum). Arquitetura: estação de engenharia dedicada ao SIS mantida off-line, alterações no programa do SIS habilitadas apenas com uma chave física, SIS numa rede separada ou com fiação dedicada a seus sensores e elementos finais, exportação de dados somente leitura para o sistema de controle. Residual: um insider com a chave física, comprometimento do firmware do SIS na cadeia de suprimentos.
+
+### Capítulo 34
+
+**EX067.** 42 × 180 = 7.560 mensagens; a 50 por segundo, 151,2 s para escoar; um alarme prioritário no fim espera cerca de 151 s, violando R7 (60 s). Correção: fila com prioridade para os alarmes e encaminhamento do valor mais recente, com preenchimento do histórico no historiador a taxa limitada.
+
+**EX068.** Cláusulas: notificação de incidentes à LRWA em até 1 h após a detecção; divulgação de vulnerabilidades que afetem a rede privada em até 72 h; manutenção planejada notificada com 10 dias úteis de antecedência; prioridade de restauração para os locais da LRWA, com meta de 4 h; logs de acesso ao APN da LRWA fornecidos mensalmente; exercício conjunto anual.
 
 <a id="glossary"></a>
 
