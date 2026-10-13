@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 052, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–9 de 18 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 10–18 (EX037–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os nove laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que configuram, verificam, corrigem e documentam os controles de reporte e de verificação numa organização pequena.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam minutos com a tela desbloqueada, resumem um CSV, modelam perdas no reporte, contam barreiras de um questionário, apuram resultados de verificação, comparam tempos de reporte e efeitos do retorno e resumem reportes de motoristas, sempre sobre dados sintéticos; nenhum funcionário, cliente, e-mail ou conta real está envolvido. Os laboratórios isolados usam contas de teste e voluntários que conhecem o propósito. Nenhum phishing simulado é enviado; as regras documentadas exigem aprovação dos gestores e dos representantes dos funcionários, proíbem iscas sobre salário, saúde ou estabilidade no emprego e mantêm os resultados agregados e fora dos processos de RH. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Whitten e Tygar (1999), USENIX Security; Reason (1990), [doi:10.1017/CBO97811390
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-
-Capítulos 10–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-10), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -468,11 +466,445 @@ Viés de autodeclaração. Testes pequenos.
 
 - **EX036 — Mudança de rótulo.** Que rótulo substituiu incidente? *Rubrica:* 3 = Reportar algo estranho;; 2 = palavras simples;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-10"></a>
+
+## Capítulo 10 — Fatores humanos e política cibernética: configuração de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar caminhos de reporte para e-mail, terminais e celulares; (2) montar controles de verificação para alterações de pagamento e de endereço; (3) documentar as configurações com clareza.
+
+### 10.1 Caminhos de reporte
+
+Priya configura três caminhos de reporte. No e-mail, um botão de reporte envia a mensagem para a caixa postal compartilhada da TI e mostra na hora uma nota de agradecimento. Nos terminais do armazém, o atalho na área de trabalho abre o formulário com o rótulo Reportar algo estranho, que pede uma descrição curta e o número do terminal, sem exigir nome. Para os motoristas, um número curto da empresa recebe as mensagens de texto encaminhadas. Ela testa cada caminho de ponta a ponta com mensagens sintéticas e confirma que os três chegam à mesma fila de triagem da equipe de TI.
+
+### 10.2 Controles de verificação
+
+Pedidos falsos para alterar os endereços de entrega ou os dados bancários dos clientes são um risco importante na Kestrel. Priya trabalha com a equipe de contas para configurar o sistema contábil de modo que qualquer alteração de dados bancários fique retida até que uma segunda pessoa a confirme ligando para o cliente no número que já consta do cadastro. No sistema de despacho, as alterações de endereço pedidas por e-mail são sinalizadas para uma ligação rápida antes da próxima entrega. Esses controles tiram a decisão do julgamento da aparência de um e-mail e a levam para uma verificação simples.
+
+### 10.3 Documentação
+
+Priya documenta cada configuração numa página: o que faz, por que existe, como testá-la e quem é o responsável. Ela inclui capturas de tela e a data do último teste. O líder de TI guarda as páginas na pasta compartilhada de suporte. Uma documentação clara permite que qualquer pessoa da equipe confira ou repare um controle, e registra os motivos de cada configuração, o que impede alguém de remover um controle mais tarde por não entender para que ele servia. Tom revisa as páginas.
+
+### Exemplo resolvido
+
+Priya configura caminhos de reporte por e-mail, terminal e celular, monta retenções de verificação para pagamentos e endereços e documenta cada um numa página.
+
+> **Caso sintético.** As configurações são sintéticas.
+
+### Erros e limites
+
+As retenções podem atrasar alterações genuínas. Os telefones do cadastro podem estar desatualizados.
+
+### Exercícios
+
+- **EX037 — Formulário do terminal.** O que o formulário do terminal pede? *Rubrica:* 3 = uma descrição curta e o número do terminal, sem nome;; 2 = mínimo;; 1 = nome;; 0 = nenhuma.
+
+- **EX038 — Caminho dos motoristas.** Como os motoristas reportam mensagens de texto suspeitas? *Rubrica:* 3 = encaminham-nas para um número curto da empresa;; 2 = encaminhar;; 1 = nada;; 0 = nenhuma.
+
+- **EX039 — Controle de alteração bancária.** Como uma alteração de dados bancários é confirmada? *Rubrica:* 3 = uma segunda pessoa liga para o número do cadastro;; 2 = retorno de ligação;; 1 = resposta por e-mail;; 0 = nenhuma.
+
+- **EX040 — Valor da documentação.** Por que registrar o motivo de cada configuração? *Rubrica:* 3 = para que ninguém a remova sem entender;; 2 = justificativa;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Fatores humanos e política cibernética: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar se os controles funcionam como configurados; (2) conferir os controles do ponto de vista do usuário; (3) registrar os resultados da verificação.
+
+### 11.1 Verificações técnicas
+
+Priya verifica cada controle. Ela reporta mensagens sintéticas por cada caminho e confirma que chegam à fila de triagem em menos de um minuto. Envia uma alteração sintética de dados bancários e confirma que ela fica retida. Confere se as etiquetas de externo aparecem e se os avisos de nome coincidente disparam. Confere, com uma conta de teste, se as contas temporárias expiram na data de término. Cada verificação tem um resultado esperado escrito antes do teste, para que ela possa dizer com clareza se o controle passou ou falhou. Cada verificação é cronometrada.
+
+### 11.2 Verificações do lado do usuário
+
+As verificações técnicas não mostram o que os funcionários vivenciam. Priya pede a três voluntários de funções diferentes que usem cada controle enquanto ela observa. Um motorista descobre que o aplicativo de mensagens do celular dele torna incômodo encaminhar uma mensagem de texto, exigindo cinco toques. Uma auxiliar de contas não sabe o que fazer quando aparece uma alteração retida. Priya escreve uma instrução de uma linha para a auxiliar e um guia curto com figuras para os motoristas. As verificações do lado do usuário encontram problemas que importam na prática, mas que não apareceriam em nenhum log.
+
+### Laboratório — Resultados da verificação de sete controles
+
+```python
+# Verification results for seven controls (synthetic).
+r = [("email button", True), ("terminal form", True), ("driver number", False), ("bank change hold", True),
+     ("address flag", False), ("external tag", True), ("seasonal expiry", True)]
+print("first pass:", sum(ok for _, ok in r), "of", len(r)); print("needed fixes:", [n for n, ok in r if not ok])
+```
+
+Execute com `python3 lab_verify.py`. Saída verificada:
+
+```text
+first pass: 5 of 7
+needed fixes: ['driver number', 'address flag']
+```
+
+### 11.3 Registro dos resultados
+
+Priya registra cada verificação numa tabela com data, método, resultado esperado, resultado real e eventual correção. Dos sete controles, cinco passam de primeira e dois precisam de correções antes de passar. Ela compartilha a tabela com o líder de TI e com Tom. A tabela vira a linha de base para nova verificação depois de atualizações futuras. Registrar as falhas, além das aprovações, mostra que a verificação foi genuína e ajuda a equipe a perceber se o mesmo controle falha repetidamente ao longo do tempo. Os dois controles corrigidos são o número dos motoristas e a sinalização de endereço.
+
+### Exemplo resolvido
+
+Priya faz verificações técnicas e do lado do usuário em sete controles, corrige dois e registra os resultados.
+
+> **Caso sintético.** As verificações são sintéticas.
+
+### Erros e limites
+
+As verificações refletem um momento. Os voluntários podem não representar todos.
+
+### Exercícios
+
+- **EX041 — Resultado esperado.** Por que escrever os resultados esperados antes do teste? *Rubrica:* 3 = para que fique claro se passou ou falhou;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Problema do motorista.** Que problema o motorista encontrou? *Rubrica:* 3 = encaminhar uma mensagem de texto exigia cinco toques;; 2 = incômodo;; 1 = nada;; 0 = nenhuma.
+
+- **EX043 — Taxa de aprovação no laboratório.** Quantos controles passaram de primeira no laboratório? *Rubrica:* 3 = 5 de 7;; 2 = cinco;; 1 = 7 de 7;; 0 = nenhuma.
+
+- **EX044 — Uso da tabela.** Em que a tabela se transforma? *Rubrica:* 3 = na linha de base para nova verificação;; 2 = linha de base;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório isolado I
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar métodos de reporte num ambiente isolado; (2) medir o tempo e o sucesso das tarefas; (3) relatar os limites com honestidade.
+
+### 12.1 Montagem isolada
+
+No primeiro laboratório isolado, Priya monta um terminal de teste, uma conta de e-mail de teste e um celular reserva, todos desconectados dos sistemas reais da Kestrel. Ela prepara mensagens suspeitas sintéticas para cada um. Nove voluntários, três de cada grupo de funcionários, participam. Eles sabem que estão testando os métodos de reporte, não sendo avaliados pelo seu julgamento. Cada voluntário reporta uma mensagem pelo método antigo, avisando um supervisor que depois manda um e-mail à TI, e outra pelo novo caminho do seu grupo. Cada sessão leva quinze minutos.
+
+### 12.2 Medições
+
+Priya mede o tempo entre ver a mensagem e o reporte chegar à fila de triagem. Com o método antigo, os reportes levam vários minutos porque os supervisores estão ocupados; com os novos caminhos, levam menos de meio minuto. Dois reportes do método antigo nunca chegam, porque quem fazia o papel de supervisor esqueceu, reproduzindo o lapso identificado no capítulo 8. O laboratório calcula os tempos médios por método. Os voluntários dizem que os novos caminhos parecem mais fáceis, embora os motoristas ainda achem o encaminhamento trabalhoso. Ela anota cada hesitação num log curto e o compartilha com o fornecedor do aplicativo.
+
+### Laboratório — Tempos de reporte antigo e novo no laboratório isolado
+
+```python
+# Old vs new reporting times in seconds (synthetic, 9 volunteers; None = never arrived).
+old = [210, 300, None, 250, 280, None, 240, 270, 270]; new = [18, 25, 20, 22, 30, 19, 21, 24, 19]
+o = [x for x in old if x is not None]
+print(f"old: mean {sum(o) / len(o):.0f} s, {old.count(None)} never arrived; new: mean {sum(new) / len(new):.0f} s")
+```
+
+Execute com `python3 lab_contained.py`. Saída verificada:
+
+```text
+old: mean 260 s, 2 never arrived; new: mean 22 s
+```
+
+### 12.3 Limites honestos
+
+Priya relata os resultados com limites: nove voluntários são um grupo pequeno; o laboratório era mais calmo do que um turno real; e os tempos do método antigo dependem de quão ocupado estava quem fazia o papel de supervisor. Ela recomenda adotar os novos caminhos e medir os tempos reais de reporte depois do lançamento. Também observa que o caminho dos motoristas precisa de uma opção de encaminhamento mais simples. Limites honestos ajudam os gestores a confiar nos achados e a planejar um acompanhamento sensato, em vez de tratar um teste pequeno como prova final. Os gestores aceitam a recomendação. Tom concorda.
+
+### Exemplo resolvido
+
+Priya testa o reporte antigo e o novo num laboratório isolado com nove voluntários e relata grande economia de tempo, com limites honestos.
+
+> **Caso sintético.** O laboratório é sintético.
+
+### Erros e limites
+
+Amostra pequena. Condições calmas.
+
+### Exercícios
+
+- **EX045 — Isolamento.** Por que o laboratório fica desconectado dos sistemas reais? *Rubrica:* 3 = para manter os testes isolados e seguros;; 2 = isolamento;; 1 = nada;; 0 = nenhuma.
+
+- **EX046 — Reportes perdidos.** O que aconteceu com dois reportes do método antigo? *Rubrica:* 3 = nunca chegaram porque o supervisor esqueceu;; 2 = lapso;; 1 = nada;; 0 = nenhuma.
+
+- **EX047 — Tempos do laboratório.** Que tempos médios o laboratório mostrou? *Rubrica:* 3 = antigo 260 segundos, novo 22 segundos;; 2 = mais rápido;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Acompanhamento dos motoristas.** Que acompanhamento é necessário para os motoristas? *Rubrica:* 3 = uma opção de encaminhamento mais simples;; 2 = mais simples;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Fatores humanos e política cibernética: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar problemas no serviço de reporte; (2) separar causas técnicas de causas humanas; (3) corrigir as causas e evitar a recorrência.
+
+### 13.1 O problema
+
+Dois meses depois do lançamento, os reportes dos terminais do centro South param. Priya investiga. O formulário do terminal ainda existe, mas os envios falham em silêncio porque uma mudança de rede bloqueou o servidor do formulário. Os trabalhadores que tentaram reportar não viram nenhum erro e supuseram que tinha funcionado, de modo que ninguém levantou o problema. Enquanto isso, o líder de TI tinha notado a queda, mas supôs que o South simplesmente recebia menos mensagens suspeitas. Priya confere os logs do filtro de e-mail e confirma que o South recebeu um número normal de mensagens maliciosas no período.
+
+### 13.2 Separação das causas
+
+Priya separa as causas. A causa técnica foi a mudança de rede, feita sem testar os serviços dependentes. A causa de design foi o formulário não mostrar confirmação, o que deixou as falhas invisíveis para os usuários. A causa humana foi interpretar a queda nos reportes como boa notícia sem conferir. Cada causa precisa de sua própria correção. Tratar só a causa técnica deixaria o serviço vulnerável à próxima falha silenciosa, qualquer que fosse a origem, e perderia a lição sobre a interpretação dos dados.
+
+### 13.3 Correções e prevenção
+
+Priya e o líder de TI corrigem as três causas. A mudança de rede é corrigida e acrescentada a um checklist de serviços a testar depois de mudanças. O formulário agora mostra um número de confirmação quando o reporte é recebido e uma mensagem de erro se ele falha. Uma verificação semanal compara os reportes com as mensagens maliciosas entregues em cada centro e sinaliza qualquer centro em que os reportes caiam muito. Ela registra o incidente no log de solução de problemas. A verificação semanal teria detectado o problema do South em poucos dias.
+
+### Exemplo resolvido
+
+Priya atribui uma queda nos reportes do centro South a uma mudança de rede, à falta de confirmação e a uma métrica mal interpretada, e corrige as três.
+
+> **Caso sintético.** O incidente é sintético.
+
+### Erros e limites
+
+As verificações semanais exigem atenção. Os checklists podem ser pulados.
+
+### Exercícios
+
+- **EX049 — Falha silenciosa.** Por que os trabalhadores não perceberam a falha? *Rubrica:* 3 = o formulário não mostrava erro nem confirmação;; 2 = silenciosa;; 1 = nada;; 0 = nenhuma.
+
+- **EX050 — Queda mal interpretada.** Como o líder de TI interpretou mal a queda? *Rubrica:* 3 = como menos mensagens suspeitas;; 2 = boa notícia;; 1 = nada;; 0 = nenhuma.
+
+- **EX051 — Correção do formulário.** O que o formulário mostra agora? *Rubrica:* 3 = um número de confirmação ou um erro;; 2 = retorno;; 1 = nada;; 0 = nenhuma.
+
+- **EX052 — Verificação semanal.** O que a verificação semanal compara? *Rubrica:* 3 = os reportes com as mensagens maliciosas entregues por centro;; 2 = razão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fatores humanos e política cibernética: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar etapas da triagem dos reportes; (2) manter a revisão humana onde ela é necessária; (3) monitorar as etapas automatizadas.
+
+### 14.1 Automação da triagem
+
+Priya automatiza a triagem rotineira. Os reportes sobre a mesma mensagem são agrupados. Uma nota de agradecimento é enviada na hora. Se uma mensagem reportada coincide com uma já confirmada como maliciosa, quem reportou recebe o veredito padrão e a mensagem é removida automaticamente das outras caixas postais. O líder de TI revisa só as mensagens novas. O laboratório conta quantos reportes de uma semana movimentada sintética precisaram de revisão humana depois da automação, mostrando quanto tempo se economiza para respostas e investigação. As regras são simples de ler e de alterar.
+
+### Laboratório — Reportes que precisam de revisão humana após a automação
+
+```python
+# Reports needing human review after automation in a synthetic busy week.
+total, dup, known = 80, 51, 17
+print(f"total {total}; duplicates {dup}; known verdicts {known}; human review {total - dup - known} ({(total - dup - known) / total:.0%})")
+```
+
+Execute com `python3 lab_triage.py`. Saída verificada:
+
+```text
+total 80; duplicates 51; known verdicts 17; human review 12 (15%)
+```
+
+### 14.2 Revisão humana
+
+Priya cogita deixar um serviço de pontuação decidir os vereditos de todas as mensagens. Decide contra, porque rotular por engano como maliciosa uma mensagem real de cliente poderia causar uma entrega perdida ou a perda de um cliente, e rotular por engano uma falsificação como segura poderia causar fraude. A revisão humana continua para as mensagens novas. Ela observa que a automação deve cuidar do que é certo e repetitivo, enquanto as pessoas cuidam do que é incerto ou tem consequências sérias. O líder de TI concorda com essa divisão do trabalho e a registra no runbook de triagem.
+
+### 14.3 Monitoramento da automação
+
+As etapas automatizadas podem falhar sem que ninguém perceba, como mostrou o incidente do centro South. Priya acrescenta uma linha diária de log para cada etapa automatizada e um resumo semanal que lista as falhas. Também sorteia dez vereditos automáticos por mês para o líder de TI conferir à mão. No primeiro mês, os dez estão corretos. O monitoramento dá à equipe confiança na automação e detecta os erros antes que prejudiquem a confiança no serviço de reporte. O resumo chega por e-mail toda segunda-feira de manhã. Os resultados são registrados.
+
+### Exemplo resolvido
+
+Priya automatiza o agrupamento, o agradecimento e os vereditos conhecidos, mantém a revisão humana para as mensagens novas e monitora a automação com logs e amostras.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+As listas de conhecidos precisam de atualização. As amostras podem deixar passar erros raros.
+
+### Exercícios
+
+- **EX053 — Proporção de revisão no laboratório.** Quantos dos 80 reportes precisaram de revisão humana no laboratório? *Rubrica:* 3 = 12;; 2 = 15%;; 1 = 80;; 0 = nenhuma.
+
+- **EX054 — Serviço de pontuação.** Por que não deixar um serviço de pontuação decidir todos os vereditos? *Rubrica:* 3 = rótulos errados causam perda de clientes ou fraude;; 2 = consequências;; 1 = custo;; 0 = nenhuma.
+
+- **EX055 — Regra da automação.** Do que a automação deve cuidar? *Rubrica:* 3 = do que é certo e repetitivo;; 2 = rotina;; 1 = julgamento;; 0 = nenhuma.
+
+- **EX056 — Amostra mensal.** Que verificação mensal Priya acrescentou? *Rubrica:* 3 = conferir à mão dez vereditos automáticos;; 2 = amostra;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fatores humanos e política cibernética: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) conectar o reporte à resposta a incidentes e ao atendimento ao cliente; (2) identificar as dependências de pessoas e de fornecedores; (3) reduzir os pontos únicos de falha.
+
+### 15.1 Integração
+
+Priya liga o reporte à resposta a incidentes: quando uma mensagem maliciosa chegou a muitos funcionários, o líder de TI a remove, bloqueia o remetente e verifica se alguém digitou dados. Ela também o liga ao atendimento ao cliente. Quando os clientes reportam mensagens de texto falsas de entrega que usam o nome da Kestrel, o atendimento as encaminha para a mesma fila de triagem, e um aviso é publicado no site. Integração significa que uma única fila vê todos os reportes, de modo que padrões que afetam tanto os funcionários quanto os clientes são percebidos rapidamente. A equipe de atendimento recebe uma orientação curta.
+
+### 15.2 Dependências
+
+Priya lista as dependências: o líder de TI faz a maior parte da triagem; o provedor de e-mail opera o botão de reporte; um prestador mantém o formulário do terminal; e o recurso de retenção do sistema contábil depende do calendário de atualizações de um fornecedor. Ela marca o líder de TI como ponto único de falha, já que a triagem para quando ele está ausente. Também observa que o número dos motoristas depende de um único contrato de telefonia móvel. Mapear as dependências mostra do que o serviço de reporte depende e onde ele pode quebrar. Ela compartilha a lista com Tom.
+
+### 15.3 Redução dos pontos únicos
+
+Para reduzir a dependência do líder de TI, Priya treina um segundo integrante da equipe na triagem com um runbook curto e organiza um rodízio. Pede ao prestador um contato de suporte para o formulário do terminal. Registra no calendário da equipe a data de renovação do contrato de telefonia móvel. Reduzir os pontos únicos de falha custa pouco, mas torna o serviço confiável durante férias, doenças e trocas de pessoal, que são inevitáveis em qualquer equipe pequena. O rodízio começa no mês seguinte. As duas mudanças são registradas no runbook.
+
+### Exemplo resolvido
+
+Priya integra o reporte à resposta e ao atendimento ao cliente, mapeia as dependências e acrescenta uma reserva para a triagem e contatos dos fornecedores.
+
+> **Caso sintético.** A integração é sintética.
+
+### Erros e limites
+
+Reservas perdem a prática se não forem usadas. Os contratos mudam.
+
+### Exercícios
+
+- **EX057 — Reportes dos clientes.** O que acontece com os reportes de clientes sobre mensagens de texto falsas? *Rubrica:* 3 = são encaminhados à triagem e um aviso é publicado no site;; 2 = integração;; 1 = nada;; 0 = nenhuma.
+
+- **EX058 — Ponto único.** Quem é o principal ponto único de falha? *Rubrica:* 3 = o líder de TI;; 2 = uma pessoa;; 1 = o prestador;; 0 = nenhuma.
+
+- **EX059 — Reserva da triagem.** Como se reduz a dependência do líder de TI? *Rubrica:* 3 = treinando uma segunda pessoa com um runbook e um rodízio;; 2 = reserva;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Risco contratual.** Que risco de fornecedor é acompanhado no calendário? *Rubrica:* 3 = a renovação do contrato de telefonia móvel;; 2 = renovação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever runbooks para o serviço de reporte; (2) incluir regras de segurança e de ética; (3) manter a documentação atualizada.
+
+### 16.1 Runbooks
+
+Priya escreve runbooks para a triagem, as retenções de verificação, a verificação semanal por centro e a criação das contas temporárias. Cada runbook declara o propósito, as etapas, as ferramentas, os resultados esperados e o que fazer se algo der errado. Ela usa etapas numeradas e capturas de tela. Testa cada runbook observando o segundo integrante da equipe segui-lo sem ajuda e depois corrige as etapas que causaram hesitação. Os runbooks permitem que o serviço continue quando quem o construiu está ausente ou já saiu. Cada runbook tem um número de versão.
+
+### 16.2 Regras de segurança e de ética
+
+Priya inclui regras na documentação: nunca enviar phishing simulado sem aprovação do gerente de operações e dos representantes dos funcionários; nunca usar iscas sobre salário, saúde ou estabilidade no emprego; relatar os resultados apenas de forma agregada; nunca usar dados de reporte ou de cliques em processos disciplinares ou de desempenho; e usar contas de teste e mensagens sintéticas em qualquer teste. Ela cita o NIST SP 800-50r1 e as diretrizes de cultura da ENISA como base. Pôr essas regras por escrito protege os funcionários de experimentos bem-intencionados, mas prejudiciais. O gerente de operações as assina.
+
+### 16.3 Manter atualizado
+
+A documentação se deteriora à medida que os sistemas mudam. Priya acrescenta uma data de revisão a cada página e, no topo, uma linha dizendo quem é o responsável. Ela cria um lembrete no calendário para a revisão trimestral. Quando aconteceu o incidente da mudança de rede, ela atualizou três páginas em um dia. Ela explica a Tom que uma documentação desatualizada pode ser pior do que nenhuma, porque as pessoas confiam nela, e que os responsáveis e as datas de revisão são o que mantém os documentos úteis com o tempo. O líder de TI adota essa prática. Os responsáveis confirmam as revisões.
+
+### Exemplo resolvido
+
+Priya escreve runbooks testados, registra regras de ética para qualquer simulação ou teste e define responsáveis e datas de revisão.
+
+> **Caso sintético.** A documentação é sintética; o SP 800-50r1 e as diretrizes da ENISA são reais.
+
+### Erros e limites
+
+As revisões são puladas. As regras precisam ser aplicadas.
+
+### Exercícios
+
+- **EX061 — Teste dos runbooks.** Como os runbooks foram testados? *Rubrica:* 3 = um colega os seguiu sem ajuda;; 2 = simulação guiada;; 1 = nada;; 0 = nenhuma.
+
+- **EX062 — Iscas proibidas.** Que iscas são proibidas? *Rubrica:* 3 = salário, saúde ou estabilidade no emprego;; 2 = angústia;; 1 = nada;; 0 = nenhuma.
+
+- **EX063 — Regra dos dados.** Onde os dados de reporte e de cliques nunca podem ser usados? *Rubrica:* 3 = em processos disciplinares ou de desempenho;; 2 = RH;; 1 = nada;; 0 = nenhuma.
+
+- **EX064 — Perigo da desatualização.** Por que uma documentação desatualizada pode ser pior do que nenhuma? *Rubrica:* 3 = as pessoas confiam nela;; 2 = confiança equivocada;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório isolado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar num exercício isolado o efeito do retorno rápido sobre o reporte posterior; (2) analisar os resultados de forma simples; (3) recomendar uma prática.
+
+### 17.1 Desenho do exercício
+
+No segundo laboratório isolado, Priya testa se o retorno rápido incentiva as pessoas a reportar de novo. Doze voluntários, que conhecem o propósito, usam contas de teste em duas sessões com uma semana de intervalo. Na primeira sessão, cada um reporta mensagens sintéticas; metade recebe um veredito curto em minutos e metade não recebe nada. Na segunda sessão, todos recebem um novo lote e Priya conta quantas mensagens reportam. O desenho é aprovado por Tom e pelo gerente de operações, e os voluntários podem desistir a qualquer momento. Os horários das sessões se ajustam aos turnos.
+
+### 17.2 Resultados
+
+O laboratório compara o reporte da segunda sessão entre os dois grupos. Os voluntários que receberam retorno rápido reportam mais das novas mensagens do que os que não receberam. Priya observa que doze pessoas são um grupo pequeno e que os voluntários conheciam o propósito, o que pode afetar o comportamento. Ainda assim, o resultado é compatível com as entrevistas e com achados anteriores de que o retorno importa. Ela apresenta as contagens e a diferença sem afirmar mais do que o pequeno teste mostra. O grupo com retorno chegou a 87%, contra 57%. Ela compartilha as contagens com os voluntários.
+
+### Laboratório — Reporte na segunda sessão com e sem retorno
+
+```python
+# Session two: messages reported out of 30 per group (6 volunteers x 5 messages), synthetic.
+fb, nofb = 26, 17
+print(f"feedback group {fb}/30 = {fb / 30:.0%}; no-feedback group {nofb}/30 = {nofb / 30:.0%}")
+```
+
+Execute com `python3 lab_feedback.py`. Saída verificada:
+
+```text
+feedback group 26/30 = 87%; no-feedback group 17/30 = 57%
+```
+
+### 17.3 Recomendação
+
+Priya recomenda que todo reporte real receba resposta em até um dia útil e que os vereditos automáticos sejam usados sempre que possível para acelerar isso. Ela sugere que o líder de TI acompanhe os tempos de resposta toda semana. Também recomenda que cada veredito traga uma breve explicação do que tornava a mensagem suspeita, para que os funcionários aprendam com cada caso. Sua recomendação é barata e se apoia em várias fontes de evidência, o que deixa os gestores dispostos a adotá-la. O líder de TI a adota imediatamente.
+
+### Exemplo resolvido
+
+Priya conduz um exercício isolado de retorno com doze voluntários, encontra mais reporte posterior depois do retorno rápido e recomenda respostas em até um dia.
+
+> **Caso sintético.** O exercício é sintético.
+
+### Erros e limites
+
+Os voluntários conheciam o propósito. Grupo pequeno.
+
+### Exercícios
+
+- **EX065 — Grupos do exercício.** Como os dois grupos foram tratados na primeira sessão? *Rubrica:* 3 = metade recebeu vereditos rápidos, metade nada;; 2 = retorno;; 1 = nada;; 0 = nenhuma.
+
+- **EX066 — Resultado do laboratório.** O que o laboratório mostrou para o reporte da segunda sessão? *Rubrica:* 3 = 26 de 30 com retorno contra 17 de 30 sem;; 2 = maior;; 1 = nada;; 0 = nenhuma.
+
+- **EX067 — Conteúdo do veredito.** O que cada veredito deve incluir brevemente? *Rubrica:* 3 = o que tornava a mensagem suspeita;; 2 = explicação;; 1 = nada;; 0 = nenhuma.
+
+- **EX068 — Meta de resposta.** Que meta de resposta Priya recomendou? *Rubrica:* 3 = em até um dia útil;; 2 = um dia;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar uma melhoria completa sob supervisão; (2) avaliá-la depois do lançamento; (3) passá-la adiante com documentação.
+
+### 18.1 O projeto
+
+No projeto supervisionado, Priya entrega um caminho de reporte mais simples para os motoristas. Em vez de encaminhar mensagens de texto, os motoristas tocam num botão Reportar no aplicativo de rotas, que captura o remetente e o conteúdo da mensagem suspeita depois que o motorista a cola, e a envia à triagem. Ela trabalha com o fornecedor do aplicativo, testa o recurso com cinco motoristas num ambiente de teste e o lança depois da aprovação de Tom e do gerente de operações. Os motoristas recebem um vídeo de um minuto mostrando como usá-lo. Os motoristas gostam do vídeo.
+
+### 18.2 Avaliação
+
+Depois de seis semanas, Priya compara os reportes dos motoristas antes e depois da mudança. Os reportes de mensagens de texto falsas subiram, e a mediana do tempo entre o recebimento e o reporte caiu. Num questionário curto, os motoristas dizem que o botão é mais fácil do que encaminhar. O laboratório resume os números. Ela também confere que o tempo de triagem não cresceu demais e descobre que o agrupamento automático o manteve administrável. Ela observa que seis semanas é pouco e que uma campanha de ataque na quarta semana pode ter aumentado os reportes.
+
+### Laboratório — Reportes dos motoristas antes e depois do botão no aplicativo
+
+```python
+# Driver reports of fake texts, six weeks before vs after the app button (synthetic).
+before = [120, 95, 60, 150, 80, 40]; after = [5, 8, 12, 15, 20, 9, 10, 14, 12, 18, 11, 25, 7, 13, 16, 30, 6, 12, 22]
+m = lambda x: sorted(x)[len(x) // 2]
+print(f"before: {len(before)} reports, median {m(before)} min; after: {len(after)} reports, median {m(after)} min")
+```
+
+Execute com `python3 lab_drivers.py`. Saída verificada:
+
+```text
+before: 6 reports, median 95 min; after: 19 reports, median 12 min
+```
+
+### 18.3 Passagem
+
+Priya escreve um runbook para o caminho do aplicativo, acrescenta-o à tabela de verificação e treina a segunda pessoa da triagem. Ela apresenta o projeto a Tom, ao líder de TI e ao gerente de operações, cobrindo o problema, o design, o teste, os resultados e os limites. O gerente de operações pede que o botão seja estendido aos coletores portáteis do armazém. Tom observa que o projeto de Priya mostra a função técnica no seu melhor: prático, testado, respeitoso com os usuários e documentado para que outros possam mantê-lo. Tom aprova o projeto.
+
+### Exemplo resolvido
+
+Priya entrega um botão de reporte no aplicativo para os motoristas, avalia seis semanas de resultados e faz a passagem com runbook e treinamento.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+Seis semanas é pouco. Campanhas podem inflar os reportes.
+
+### Exercícios
+
+- **EX069 — Caminho dos motoristas.** O que substituiu o encaminhamento para os motoristas? *Rubrica:* 3 = um botão Reportar no aplicativo de rotas;; 2 = botão no aplicativo;; 1 = nada;; 0 = nenhuma.
+
+- **EX070 — Mudança no laboratório.** O que o laboratório mostrou para os reportes dos motoristas? *Rubrica:* 3 = de 6 para 19 reportes e mediana de 95 para 12 minutos;; 2 = alta;; 1 = nada;; 0 = nenhuma.
+
+- **EX071 — Fator de confusão.** O que, além do botão, pode ter aumentado os reportes? *Rubrica:* 3 = uma campanha de ataque na quarta semana;; 2 = campanha;; 1 = nada;; 0 = nenhuma.
+
+- **EX072 — Próximo pedido.** O que o gerente de operações pediu em seguida? *Rubrica:* 3 = estender o botão aos coletores portáteis;; 2 = coletores;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Raman, Tom Hallett, o Eastvale Technical College, a Kestrel Logistics e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Priya Raman, Tom Hallett, o Eastvale Technical College, a Kestrel Logistics e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Porque cada login toma tempo e os turnos são corridos.
 
@@ -545,6 +977,78 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em i
 **EX035.** Porque os terminais do armazém não têm cliente de e-mail.
 
 **EX036.** Reportar algo estranho.
+
+**EX037.** Uma descrição curta e o número do terminal, sem nome.
+
+**EX038.** Encaminhando-as para um número curto da empresa.
+
+**EX039.** Uma segunda pessoa liga para o cliente no número que já consta do cadastro.
+
+**EX040.** Para que ninguém remova o controle mais tarde sem entender seu propósito.
+
+**EX041.** Para poder dizer com clareza se cada controle passou ou falhou.
+
+**EX042.** Encaminhar uma mensagem de texto exigia cinco toques no aplicativo de mensagens dele.
+
+**EX043.** Cinco de sete passaram de primeira; dois passaram depois de correções.
+
+**EX044.** A linha de base para nova verificação depois de atualizações futuras.
+
+**EX045.** Para que os testes não possam afetar sistemas reais nem funcionários reais.
+
+**EX046.** Nunca chegaram, porque quem fazia o papel de supervisor se esqueceu de repassá-los.
+
+**EX047.** Cerca de 260 segundos com o método antigo e 22 segundos com os novos caminhos.
+
+**EX048.** Uma forma mais simples de encaminhar as mensagens de texto suspeitas.
+
+**EX049.** Porque o formulário não mostrava confirmação nem erro.
+
+**EX050.** Como sinal de que o South recebia menos mensagens suspeitas.
+
+**EX051.** Um número de confirmação em caso de sucesso ou um erro em caso de falha.
+
+**EX052.** Os reportes com as mensagens maliciosas entregues, em cada centro.
+
+**EX053.** 12 de 80, ou 15%.
+
+**EX054.** Porque rótulos errados poderiam causar perda de clientes ou fraude.
+
+**EX055.** Do que é certo e repetitivo.
+
+**EX056.** O líder de TI confere à mão dez vereditos automáticos por mês.
+
+**EX057.** O atendimento ao cliente os encaminha à triagem e um aviso é publicado no site.
+
+**EX058.** O líder de TI, que faz a maior parte da triagem.
+
+**EX059.** Treinando um segundo integrante da equipe com um runbook e organizando um rodízio.
+
+**EX060.** A data de renovação do contrato de telefonia móvel do número dos motoristas.
+
+**EX061.** Observando um colega segui-los sem ajuda.
+
+**EX062.** Iscas sobre salário, saúde ou estabilidade no emprego.
+
+**EX063.** Em processos disciplinares ou de desempenho.
+
+**EX064.** Porque as pessoas confiam nela e seguem etapas erradas.
+
+**EX065.** Metade recebeu vereditos rápidos e metade não recebeu retorno.
+
+**EX066.** 26 de 30 mensagens reportadas com retorno contra 17 de 30 sem retorno.
+
+**EX067.** Uma breve explicação do que tornava a mensagem suspeita.
+
+**EX068.** Uma resposta a cada reporte em até um dia útil.
+
+**EX069.** Um botão Reportar no aplicativo de rotas.
+
+**EX070.** Os reportes subiram de 6 para 19 e a mediana do tempo até o reporte caiu de 95 para 12 minutos.
+
+**EX071.** Uma campanha de ataque na quarta semana.
+
+**EX072.** Estender o botão aos coletores portáteis do armazém.
 
 <a id="references"></a>
 ## Referências
