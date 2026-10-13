@@ -618,7 +618,7 @@ Audit, prepare, disclose carefully, translate with confidence labels. The master
 **EX001.** "In a synthetic Modbus/TCP level loop, does enabling write-protection on setpoint registers reduce successful unauthorized setpoint changes by ≥90% versus an unprotected baseline under a scripted write storm, and does the protection break availability when the engineering workstation needs legitimate writes?"
 **EX002.** Control: residual generation, analytical redundancy, observer-based FDI, sensor validation. Security: false data injection, sensor spoofing, replay, manipulation of view, physics-based ADS.
 **EX003.** Include peer-reviewed measurement or survey of ICS detection/protocols 2010–2026; exclude vendor marketing without method. Vendor white paper → exclude; DNP3 field measurement → include.
-**EX004.** Ampersand: normalize by stripping non-alphanumerics so "Ransomware & emergency" matches a hyphenated duplicate; kappa moves when one decision flips because chance agreement depends on marginal rates.
+**EX004.** Ampersand: key() strips non-alphanumerics, so a grey record titled "Sensor replay attacks on water-treatment testbeds" (2021) collapses onto the arXiv record, but "Modbus security: a survey of attacks & defenses" does not match the IEEE record, because the word "and" survives normalization while "&" vanishes — map "&" to "and" before stripping. Kappa moves when one decision flips because chance agreement depends on marginal rates.
 **EX005.** Protocol: IEEE/ACM/Scopus/arXiv 2010–2026; synonyms from EX002; two screeners; target κ≥0.6 after criteria repair; grey stream separate.
 **EX006.** DOI identifies the same work across title variants; title key alone keeps both "Survey" and "survey" duplicates when punctuation differs unless normalized — DOI first is stricter.
 **EX007.** Giraldo: peer-reviewed survey (high for framing). CISA advisory: practitioner evidence (medium for existence of issues). Vendor blog: marketing (low; hypothesis only).
@@ -682,6 +682,8 @@ Audit, prepare, disclose carefully, translate with confidence labels. The master
 
 **End of worked results.** Return to the [course chapter index](../SUBJECTS.md).
 
+<a id="glossary"></a>
+
 ## Glossary
 
 **ATT&CK for ICS.** MITRE technique knowledge base for industrial control adversaries; not a frequency distribution.
@@ -703,3 +705,23 @@ Audit, prepare, disclose carefully, translate with confidence labels. The master
 **Point-adjusted F1.** Score that credits an entire attack segment after one alarm; hides detection delay.
 
 **Residual / physics-based detection.** Detectors that compare process measurements to a physical relationship (for example mass balance).
+
+<a id="references"></a>
+
+## References
+
+Links checked 13 October 2026; re-verify editions before citing.
+
+- ACM. Artifact Review and Badging, Version 1.1. <https://www.acm.org/publications/policies/artifact-review-and-badging-current>
+- Arp, D. et al. Dos and Don'ts of Machine Learning in Computer Security. USENIX Security 2022. <https://www.usenix.org/conference/usenixsecurity22/presentation/arp>
+- CISA. Coordinated Vulnerability Disclosure Program. <https://www.cisa.gov/coordinated-vulnerability-disclosure-process>
+- Giraldo, J. et al. A Survey of Physics-Based Attack Detection in Cyber-Physical Systems. *ACM Computing Surveys* 51(4), 2018. <https://doi.org/10.1145/3203245>
+- ISA. ISA/IEC 62443 series of standards (overview). <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
+- iTrust, SUTD. Secure Water Treatment (SWaT) and related datasets (public page). <https://itrust.sutd.edu.sg/itrust-labs_datasets/>
+- MITRE. ATT&CK for Industrial Control Systems. <https://attack.mitre.org/matrices/ics/>
+- Modbus Organization. Modbus Application Protocol Specification V1.1b3. <https://modbus.org/docs/Modbus_Application_Protocol_V1_1b3.pdf>
+- NIST SP 800-82 Rev. 3. Guide to Operational Technology (OT) Security. <https://csrc.nist.gov/pubs/sp/800/82/r3/final>
+- Page, E. S. Continuous Inspection Schemes. *Biometrika* 41, 1954. <https://doi.org/10.1093/biomet/41.1-2.100>
+- Sommer, R. and Paxson, V. Outside the Closed World: On Using Machine Learning for Network Intrusion Detection. IEEE S&P 2010. <https://doi.org/10.1109/SP.2010.25>
+- Urbina, D. et al. Limiting the Impact of Stealthy Attacks on Industrial Control Systems. ACM CCS 2016. <https://doi.org/10.1145/2976749.2978388>
+- U.S. DHS. The Menlo Report: Ethical Principles Guiding ICT Research (2012). <https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf>
