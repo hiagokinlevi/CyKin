@@ -567,21 +567,31 @@ You will (1) explain how processors execute code and isolate processes; (2) rela
 
 Processors fetch instructions, decode them and execute them, reading and writing memory. Operating systems use hardware features such as privilege levels and virtual memory to separate programs.
 
+Privilege levels mean ordinary programs cannot touch hardware or other programs' memory directly; they must ask the operating system, which checks permissions first. Virtual memory gives each process its own view of addresses, so a pointer in the image worker cannot name a location inside the web server. When a flaw is exploited, these boundaries decide how far an attacker can move. That is why Coastline treats the process boundary, not the function boundary, as the line that contains damage.
+
 ### 8.2 Memory and weaknesses
 
 In languages without automatic bounds checks, writing past the end of a buffer can corrupt nearby data. The CWE Top 25 includes out-of-bounds write (CWE-787) and use after free (CWE-416), both memory-safety weaknesses. ticket-web's image library imgkit is written in such a language and wrapped for the web app.
+
+An out-of-bounds write lets a malformed input overwrite values the program relies on, such as a length or a return address. Use after free means code keeps using memory that has been handed back and possibly reused for something else. Both can turn a crafted image into code execution. Image decoders are a classic target because they parse complex, attacker-supplied formats at speed.
 
 ### 8.3 Hardware help
 
 Features such as non-executable memory and address randomisation make memory flaws harder to misuse, but do not remove the flaw. Defence in depth combines them with safer code.
 
+Non-executable memory stops injected bytes from being run directly from a data area, and address randomisation makes it hard to guess where useful code sits. Attackers have found ways around each, for example by reusing code already present in the program. The protections raise cost and reduce reliability of attacks; they buy time for patching rather than replacing it. Kwame checks that both are enabled on the image worker's build.
+
 ### 8.4 Language choice
 
 Memory-safe languages prevent many of these weaknesses by design. Coastline writes new services in memory-safe languages and isolates imgkit in a separate process with limited permissions.
 
+Rewriting imgkit would be costly and would introduce new bugs, so Coastline accepts it for now and contains it instead. The choice is made per component: new code gets the safer language, while trusted old code is wrapped. Each wrapped component is listed with its reason and a review date, so the exception is revisited rather than forgotten. Rust and modern managed languages are examples the team considers for replacements.
+
 ### 8.5 Isolation by design
 
 Running risky parsing code in its own process, with no network access and a time limit, limits damage if a flaw is triggered by a malformed image.
+
+The worker receives image bytes, returns a resized image or an error, and has nothing else to reach: no database credentials, no network and a small writable folder. A compromised worker could at worst return a wrong picture. Kwame's measurement test later confirmed the time limit stops runaway processing. Designing the boundary before an advisory arrives is far cheaper than adding it in a hurry afterwards.
 
 ### Measuring isolation
 
@@ -623,6 +633,8 @@ You will (1) validate input with allowlists; (2) separate parsing from business 
 
 An allowlist says exactly what is acceptable: zones A to D, one to nine passengers, four digits for card endings. Anything else is rejected. This is safer than trying to list everything bad. ASVS 4.0.3's validation chapter (V5) and the OWASP Top 10:2021 category A03 Injection both stress validating and handling input safely.
 
+A denylist for zones might reject quotes and angle brackets, but it would still accept 'E' or 'AA', and attackers keep finding characters the list forgot. The allowlist states the four valid letters and nothing else gets through. The rules in the lab are anchored at both ends, so extra characters before or after a valid value also fail.
+
 ### Lab — Lab — validating fields
 
 ```python
@@ -648,17 +660,25 @@ form 3: rejected passengers, card_last4
 
 Form 1 is accepted. Form 2 is rejected because zone Z is not allowed. Form 3 is rejected for two fields: 12 passengers exceeds the single-digit rule and "42a2" is not four digits.
 
+Notice that form 3 reports both failing fields rather than stopping at the first. Users fix all problems in one attempt, and the log shows every rule that fired. Form 2 shows that a value can be well formed, a single capital letter, and still be wrong for the business: Z is a letter but not a zone. The output also confirms fullmatch is used, so partial matches are not accepted.
+
 ### 9.3 Where to validate
 
 Validation happens on the server; browser checks improve user experience but can be bypassed. Validation is also not the only defence: output must still be escaped and queries parameterised (chapter 13).
+
+Anyone can send requests straight to the server with a script, skipping the browser entirely, so the server-side rules are the ones that count. Keeping the rule list in one shared module stops the browser and server drifting apart. Validation narrows what reaches the rest of the code; escaping and parameterised queries still handle values that are valid but contain characters such as apostrophes in surnames.
 
 ### 9.4 Error handling
 
 Rejected forms return a clear message naming the field, without echoing the raw input. Logs record the rejection without storing card data.
 
+Echoing raw input back can turn an error page into a place where injected markup runs, so the message says 'zone must be A to D' instead of repeating what was sent. Messages also avoid revealing internal details such as stack traces or table names. The log line records the field and the rule that failed, which is enough to spot a pattern of probing without collecting card endings.
+
 ### 9.5 Testing rules
 
 Each rule has tests for boundaries: zone A and D accepted, E rejected; 1 and 9 passengers accepted, 0 and 10 rejected.
+
+Boundary tests catch the commonest mistakes, such as writing a range that excludes its last value or a pattern without anchors. Kwame adds empty strings, missing fields and very long values, since forms sent by scripts may contain any of them. When a business rule changes, the test changes in the same commit, so reviewers see the old and new limits side by side.
 
 ### Canonical forms
 
@@ -700,25 +720,37 @@ You will (1) apply professional ethics to software security work; (2) handle dis
 
 Engineers owe duties to the public, employers and the profession. For a transit app, public duties include protecting riders' payment data and keeping ticket sales available during disruptions.
 
+Duties can pull in different directions. An employer may want a feature shipped on time, while the public needs it to protect card data. The engineer's role is to make the risk visible to the people who decide, not to hide it or to decide alone. Ticket sales during disruptions matter because riders without tickets may be stranded, so availability is also a public duty.
+
 ### 10.2 Responsible handling
 
 When Kwame notices that an old staff test account still works on the staging site, he reports it to Ingrid rather than exploring what it can do. Testing beyond what you are authorised to do is wrong even with good intentions.
+
+Exploring the account could have exposed rider data, changed records or triggered alarms, and it would have been unauthorised access regardless of motive. Reporting promptly lets the owner disable the account and check its history. Kwame's report gives the account name, where it worked and when he noticed, and nothing he did beyond confirming the login page accepted it.
 
 ### 10.3 Disclosure
 
 When the team finds a flaw in an open-source component, it reports privately to the maintainers and waits for a fix before discussing it publicly, a practice known as coordinated disclosure.
 
+Publishing details before a fix exists gives attackers a head start while users cannot protect themselves. Waiting indefinitely is also wrong, so coordinated disclosure usually agrees a deadline with the maintainers, after which details are released. Coastline's reports go through the project's security contact, not its public issue tracker, and include enough detail to reproduce the problem.
+
 ### 10.4 Safety and availability
 
 Security changes can break services. Forcing all riders to update the app during a storm, when ferries are cancelled and people need tickets for alternative buses, could cause real harm. Timing matters.
+
+A forced update has value, closing a flaw quickly, and a cost, locking out riders who cannot update during a crisis. The team checks the weather and service status before scheduling disruptive changes and keeps a fallback, such as allowing older versions to show existing tickets. Timing decisions are recorded with their reasons so they can be reviewed later.
 
 ### 10.5 Conflicts of interest
 
 Kwame's friend runs a company selling scanning tools. When Coastline evaluates scanners, Kwame declares the relationship and steps back from the decision.
 
+Even if Kwame would judge the tools fairly, others cannot know that, and a hidden link would damage trust in the result if discovered. Declaring the relationship lets someone without the link make the choice. He can still answer factual questions about the tools if asked. The declaration is recorded in the evaluation notes, so later readers see it too.
+
 ### 10.6 Codes of conduct
 
 Professional bodies' codes emphasise honesty, competence and public welfare. They help when pressure to ship conflicts with safety.
+
+Citing a code turns a personal objection into a shared professional standard, which is easier for a manager to accept. Codes do not settle every case; they name the values to weigh. Kwame keeps notes of difficult choices and the reasons for them, which also helps him when similar situations arise and when colleagues ask why a decision was made. Recording the reasoning at the time is more honest than reconstructing it afterwards.
 
 ### Whistleblowing
 
@@ -760,25 +792,37 @@ You will (1) explain how web requests travel and are protected; (2) describe TLS
 
 A rider's phone sends an HTTPS request to ticket-web. DNS finds the server address, TCP carries data, TLS encrypts and authenticates the connection, and HTTP carries the request and response. A weakness at any layer can expose data.
 
+If DNS answers are forged, the phone may connect to the wrong server; TLS certificate checks catch that. If TLS is misconfigured, data may be readable in transit. If the application layer has a flaw, encryption does not help, because the attack arrives inside a valid connection. Each layer protects against different failures, so none can be skipped on the assumption that another covers it.
+
 ### 11.2 TLS
 
 TLS lets the phone check that it is talking to Coastline's real server, using a certificate signed by a trusted authority, and then encrypts traffic. OWASP Top 10:2021 A02 Cryptographic Failures includes sending sensitive data without proper encryption.
+
+The certificate binds the name of Coastline's server to a public key, and the trusted authority's signature vouches for that binding. If an attacker presents a certificate for another name, or one signed by an unknown party, the phone refuses. Encryption without authentication would be pointless, since the phone might be encrypting traffic to the attacker. Kwame checks that ticket-web redirects plain HTTP requests to HTTPS.
 
 ### 11.3 Package downloads
 
 Build servers download dependencies over the network. If downloads used plain HTTP, or if certificate checks were disabled, an attacker on the network could substitute a different package. Coastline's builds use HTTPS only, with checks enabled, and verify each package against a lockfile hash.
 
+The lockfile hash is a second, independent check. Even if a mirror or registry were compromised and served a different file over a valid HTTPS connection, the hash would not match and the build would stop. TLS protects the transfer; the hash protects the content. Together they mean a substituted package needs both a broken connection and a matching hash, which is far harder.
+
 ### 11.4 Restricting egress
 
 Build machines are allowed to reach only the package registry mirror and source host. Unexpected outbound connections during a build are blocked and logged, which limits what a malicious install script could reach.
+
+Malicious packages often send stolen environment variables to an attacker's server or fetch a second stage during installation. An egress allowlist blocks both unless the attacker's host happens to be on the list. The log of blocked attempts is itself useful: a new package that tries to reach an unknown host is investigated before anyone decides whether to allow it.
 
 ### 11.5 Internal mirror
 
 Coastline uses an internal mirror of approved packages. It reduces dependence on the public registry's availability and gives one place to apply checks.
 
+When a package is approved, its exact version is copied into the mirror; builds fetch only from there. If the public registry removes or replaces a version, Coastline's builds are unaffected. Checks such as malware scanning and licence review run once at the point of entry. The mirror must itself be protected and patched, since it becomes a single trusted source for every build.
+
 ### 11.6 Monitoring
 
 Network logs from the build environment are kept, so the team can check what a build contacted.
+
+Logs record the destination, time and build identifier for each connection, so an analyst can match unusual traffic to a specific job and commit. They are kept for long enough to cover the time it usually takes for a malicious package to be discovered and reported publicly. A weekly report highlights any new destination, which a reviewer either explains or investigates. Unexplained destinations are treated as possible incidents until shown otherwise.
 
 ### Certificate checks in code
 
@@ -820,25 +864,37 @@ You will (1) explain processes, users and permissions; (2) apply least privilege
 
 Each program runs as a process owned by a user account. Permissions decide which files and devices it can use. ticket-web runs as a dedicated service user, not as an administrator.
 
+Running as administrator would mean any flaw in ticket-web gave control of the whole server: installing software, reading other services' data and covering tracks. A dedicated user limits this to what the service needs. Separate services get separate users, so a problem in the image worker cannot read ticket-web's files. Each user's permissions are listed in configuration and reviewed when the service changes.
+
 ### 12.2 Least privilege
 
 The service user can read its code and write only to its log and temporary folders. If a flaw lets an attacker run code inside ticket-web, they gain only these limited rights.
+
+The code folder is read-only to the service, so an attacker who gains control cannot quietly modify the application to keep access after a restart. Write access is limited to places where nothing is executed. Kwame checks this by listing files the service user can write and comparing them with the intended list; the later monthly script automates the same comparison.
 
 ### 12.3 Build isolation
 
 Each build runs in a fresh, short-lived container or virtual machine, destroyed afterwards. This prevents one build from leaving files that affect the next, an issue SLSA v1.0 addresses in its build requirements for isolated builds.
 
+If a malicious dependency writes a modified compiler or cached file during one build, a reused machine would carry it into every later build, including ones for other projects. A fresh environment starts from a known image each time. Recording the image digest lets the team prove later which environment produced a release, which is the evidence auditors and incident responders ask for.
+
 ### 12.4 Secrets on the system
 
 Build credentials are injected only for the steps that need them and never written to disk. A build that prints environment variables must not reveal tokens; the CI system masks them in logs.
+
+A token written to disk could remain in a cache, a crash dump or a reused image. Injecting it only into the step that publishes a release means that test steps, which run third-party test code, never see it. Masking in logs is a backup measure, not the main defence, since masking can miss tokens that are encoded or split across lines.
 
 ### 12.5 OS logs
 
 Operating systems record process starts, logins and permission changes. These logs help answer what happened during a build or on a server.
 
+During an investigation the question is often when a process started, under which user and what it launched. OS logs answer that independently of the application's own logs, which an attacker with control of the application might alter. Coastline sends them to a central store that build and server accounts cannot modify, and keeps them long enough to cover a typical detection delay.
+
 ### 12.6 Patching the OS
 
 Base images for servers and builds are rebuilt weekly with security updates, and a record shows which image each build used.
+
+Weekly rebuilds keep the window for known OS flaws short without constant manual patching. Because each build records the image it used, the team can find every release built on an image that later turns out to contain a vulnerable library. Old images are kept for a limited time so past builds can still be reproduced, then removed. A failed weekly rebuild is fixed before the next week, so images do not quietly fall behind.
 
 ### File permissions review
 
@@ -880,9 +936,13 @@ You will (1) design data stores with security in mind; (2) use parameterised que
 
 ticket-web stores riders, tickets and payments. Card numbers are not stored; the payment provider holds them, and ticket-web keeps only a token and the last four digits.
 
+Data that is not stored cannot be stolen from Coastline's database. The payment token is useful only to Coastline's payment provider account, and the last four digits let riders recognise which card they used without exposing the full number. Each field is checked against a purpose: if no feature needs it, it is not collected. This keeps the impact of any breach smaller.
+
 ### 13.2 Queries and injection
 
 When code builds database queries by joining strings with user input, characters in the input can change the query's meaning. This weakness, SQL injection (CWE-89), is part of OWASP Top 10:2021 A03 Injection. The defence is parameterised queries, which send the query and the data separately.
+
+Parameterised queries work because the database receives the query structure first and the values afterwards, so a value can never become part of the structure. Escaping by hand is fragile, since each database has its own rules and one missed case is enough. Kwame's team uses the database library's placeholders everywhere, including in internal reports and scripts.
 
 ### Lab — Lab — parameterised queries
 
@@ -911,13 +971,19 @@ string-built query failed: near "Neil": syntax error
 
 With a parameterised query, looking up "Ann O'Neil" returns her zone A. The string-built version fails with a syntax error because the apostrophe in her name ends the text early. The same mechanism that breaks for an honest name is what makes string-built queries dangerous; parameterisation removes it.
 
+Ann's name contains nothing malicious, yet it broke the string-built query, which shows the flaw is in the code, not in her input. An attacker would use the same gap deliberately, adding text that changes the query instead of merely ending it. The fetchall result is a list of tuples, so the single tuple containing A confirms one matching rider.
+
 ### 13.4 Access to data
 
 Staff access goes through roles: support sees tickets but not payment tokens; finance sees refunds. Database accounts used by the app have only the permissions it needs.
 
+Roles reduce the harm a single compromised staff account can do, and they make access easy to review: listing a role's members shows who can see what. The app's database account cannot drop tables or read the audit log, so an injection flaw in ticket-web could not erase its tracks there. Role membership is reviewed each quarter and when staff change jobs.
+
 ### 13.5 Backups and retention
 
 Backups are encrypted and tested; rider data is deleted after the legal retention period.
+
+An untested backup may fail exactly when needed, so restores are practised on a schedule. Encryption protects copies stored away from the main system. Keeping rider data longer than the law requires adds risk without benefit, and deletion must reach backups too, which is why older backups expire on the same timetable as the live data they contain. Restore tests use a separate environment, so a practice restore never overwrites real rider records or exposes them to staff who would not normally see them.
 
 ### Encryption at rest
 
