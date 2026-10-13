@@ -1358,7 +1358,7 @@ Os exercícios de mesa não testam a recuperação técnica. Os participantes po
 
 - **EX088 — Segurança do exercício.** Por que o exercício de mesa não usa sistemas reais? *Rubrica:* 3 = para ser seguro e não causar disrupção;; 2 = segurança;; 1 = vago;; 0 = nenhuma.
 - **EX089 — Plano perdido.** Que lacuna envolvia o plano de restauração? *Rubrica:* 3 = ninguém sabia onde estava guardado;; 2 = localização;; 1 = vago;; 0 = nenhuma.
-- **EX090 — Decisão de comunicação.** Quem vai decidir as comunicações externas? *Rubrica:* 3 = a diretora;; 2 = diretora;; 1 = líder de TI;; 0 = nenhuma.
+- **EX090 — Decisão de comunicação.** Quem vai decidir as comunicações externas? *Rubrica:* 3 = a diretora;; 2 = diretora, hesitando com outra opção;; 1 = líder de TI;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1677,7 +1677,7 @@ Correções no meio do caminho complicam a avaliação. Um trimestre é um teste
 ### Exercícios
 
 - **EX112 — Registro de perguntas.** Por que Sofia registra as perguntas dos gestores? *Rubrica:* 3 = revelam partes pouco claras do desenho;; 2 = clareza;; 1 = vago;; 0 = nenhuma.
-- **EX113 — Permissão esclarecida.** Que descrição de permissão foi esclarecida? *Rubrica:* 3 = escalonamento de caso;; 2 = escalonamento de caso, sem justificativa;; 1 = vago;; 0 = nenhuma.
+- **EX113 — Permissão esclarecida.** Que descrição de permissão foi esclarecida? *Rubrica:* 3 = escalonamento de caso;; 2 = escalonamento em geral, sem citar a permissão de escalonamento de caso;; 1 = vago;; 0 = nenhuma.
 - **EX114 — Definições duplas.** Por que registrar a conclusão pelas duas definições? *Rubrica:* 3 = para comparar com justiça com os trimestres anteriores;; 2 = comparabilidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese

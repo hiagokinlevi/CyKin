@@ -430,7 +430,7 @@ Lawful basis choices depend on facts; review with counsel.
 ### Exercises
 
 - **EX028 — CCTV purpose.** Why can CCTV footage not be used for staff productivity? *Rubric:* 3 = purpose limitation;; 2 = mentions purpose;; 1 = allowed;; 0 = none.
-- **EX029 — Marketing basis.** What lawful basis does marketing email use? *Rubric:* 3 = consent;; 2 = correct;; 1 = contract;; 0 = none.
+- **EX029 — Marketing basis.** What lawful basis does marketing email use? *Rubric:* 3 = consent;; 2 = partly correct;; 1 = contract;; 0 = none.
 - **EX030 — Heart-rate condition.** What condition may heart-rate health data need? *Rubric:* 3 = explicit consent under Article 9;; 2 = mentions consent;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
@@ -535,7 +535,7 @@ Network inspection may miss data sent later or in batches.
 ### Exercises
 
 - **EX034 — Worst SDK.** Which SDK is the most serious finding? *Rubric:* 3 = ad network, receiving heart-rate zone and location without notice or contract;; 2 = names it;; 1 = other;; 0 = none.
-- **EX035 — Social login gap.** What gap does social login have? *Rubric:* 3 = no contract;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX035 — Social login gap.** What gap does social login have? *Rubric:* 3 = no contract;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX036 — SDK rule.** What rule did Aisha recommend? *Rubric:* 3 = no SDK added without privacy review;; 2 = mentions review;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
@@ -739,7 +739,7 @@ Assessments must be updated if the feature changes.
 
 - **EX046 — DPIA trigger.** Why does the feature need an assessment? *Rubric:* 3 = systematic processing of health data at scale;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX047 — Key mitigation.** Name one mitigation. *Rubric:* 3 = on-device processing, no sharing, clear explanations;; 2 = one;; 1 = vague;; 0 = none.
-- **EX048 — Consultation result.** What did members ask for? *Rubric:* 3 = an easy off switch;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX048 — Consultation result.** What did members ask for? *Rubric:* 3 = an easy off switch;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -806,7 +806,7 @@ Regex scanners miss context and unusual formats.
 
 ### Exercises
 
-- **EX049 — Files flagged.** How many files contained patterns? *Rubric:* 3 = 3 of 5;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX049 — Files flagged.** How many files contained patterns? *Rubric:* 3 = 3 of 5;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX050 — Missed data.** What did the scanner miss? *Rubric:* 3 = the knee-injury health note;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX051 — Card file action.** What happened to the refunds file? *Rubric:* 3 = moved to the payment system;; 2 = mentions moved;; 1 = kept;; 0 = none.
 
@@ -846,7 +846,7 @@ A mapped control is not necessarily effective.
 
 ### Exercises
 
-- **EX052 — CCTV principle.** Which principle does CCTV deletion support? *Rubric:* 3 = storage limitation;; 2 = correct;; 1 = other;; 0 = none.
+- **EX052 — CCTV principle.** Which principle does CCTV deletion support? *Rubric:* 3 = storage limitation;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX053 — Reference standard.** Name one standard used as reference. *Rubric:* 3 = ISO/IEC 27701 or NIST Privacy Framework;; 2 = one;; 1 = vague;; 0 = none.
 - **EX054 — Mapping benefit.** Why map controls to principles? *Rubric:* 3 = shows coverage gaps;; 2 = mentions gaps;; 1 = vague;; 0 = none.
 
@@ -886,8 +886,8 @@ Too many alerts cause people to ignore them.
 
 ### Exercises
 
-- **EX055 — CCTV alert.** What triggers the CCTV alert? *Rubric:* 3 = footage older than thirty-five days;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX056 — Account trend.** How did former-staff accounts change? *Rubric:* 3 = from forty to two;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX055 — CCTV alert.** What triggers the CCTV alert? *Rubric:* 3 = footage older than thirty-five days;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX056 — Account trend.** How did former-staff accounts change? *Rubric:* 3 = from forty to two;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX057 — Monitoring purpose.** Why monitor fixed controls? *Rubric:* 3 = fixes can silently fail;; 2 = mentions failure;; 1 = vague;; 0 = none.
 
 <a id="ch-20"></a>
@@ -928,7 +928,7 @@ Fixing the symptom alone invites recurrence.
 
 - **EX058 — Cause.** Why did the member get an email? *Rubric:* 3 = sync job failed after a password change;; 2 = mentions job;; 1 = vague;; 0 = none.
 - **EX059 — Fix.** What fixes did Aisha add? *Rubric:* 3 = an alert and weekly reconciliation;; 2 = one;; 1 = vague;; 0 = none.
-- **EX060 — Principle.** What does Article 7(3) require? *Rubric:* 3 = withdrawal as easy as giving consent;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX060 — Principle.** What does Article 7(3) require? *Rubric:* 3 = withdrawal as easy as giving consent;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-21"></a>
 
@@ -966,9 +966,9 @@ Vendors change subprocessors; monitor notices.
 
 ### Exercises
 
-- **EX061 — Contract article.** Which article governs processor contracts? *Rubric:* 3 = Article 28;; 2 = correct;; 1 = other;; 0 = none.
+- **EX061 — Contract article.** Which article governs processor contracts? *Rubric:* 3 = Article 28;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX062 — Shared fields.** What data are shared? *Rubric:* 3 = name, membership number, bookings;; 2 = most;; 1 = health;; 0 = none.
-- **EX063 — Testing data.** What data were used in testing? *Rubric:* 3 = synthetic members;; 2 = correct;; 1 = real;; 0 = none.
+- **EX063 — Testing data.** What data were used in testing? *Rubric:* 3 = synthetic members;; 2 = partly correct;; 1 = real;; 0 = none.
 
 <a id="ch-22"></a>
 
@@ -1023,8 +1023,8 @@ Deletion must reach backups and vendors over time.
 
 ### Exercises
 
-- **EX064 — Deletions.** How many accounts are deleted? *Rubric:* 3 = 1,116;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX065 — Held.** Why are 37 held? *Rubric:* 3 = outstanding debt;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX064 — Deletions.** How many accounts are deleted? *Rubric:* 3 = 1,116;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX065 — Held.** Why are 37 held? *Rubric:* 3 = outstanding debt;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX066 — Verify.** How is deletion verified? *Rubric:* 3 = sampling across systems;; 2 = mentions sampling;; 1 = vague;; 0 = none.
 
 <a id="ch-23"></a>
@@ -1103,7 +1103,7 @@ Small samples do not generalise.
 
 ### Exercises
 
-- **EX070 — Question.** What did the study ask? *Rubric:* 3 = whether members understand heart-rate settings;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX070 — Question.** What did the study ask? *Rubric:* 3 = whether members understand heart-rate settings;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX071 — Ethics.** How was data collected ethically? *Rubric:* 3 = consent and no identifiers;; 2 = one;; 1 = vague;; 0 = none.
 - **EX072 — Limit.** Name one limit. *Rubric:* 3 = small, self-selected sample;; 2 = one;; 1 = vague;; 0 = none.
 
@@ -1143,9 +1143,9 @@ Teams can miss member views; test with members.
 
 ### Exercises
 
-- **EX073 — Project.** What did the team redesign? *Rubric:* 3 = privacy settings page;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX073 — Project.** What did the team redesign? *Rubric:* 3 = privacy settings page;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX074 — Roles.** Name two roles. *Rubric:* 3 = research, design, development, testing;; 2 = two;; 1 = one;; 0 = none.
-- **EX075 — Outcome.** What improved? *Rubric:* 3 = explanation of class screen sharing;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX075 — Outcome.** What improved? *Rubric:* 3 = explanation of class screen sharing;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-26"></a>
 
@@ -1184,8 +1184,8 @@ Runbooks age; review yearly.
 ### Exercises
 
 - **EX076 — Runbooks.** Name two runbooks. *Rubric:* 3 = CCTV checks, SDK reviews, access requests, deletions;; 2 = two;; 1 = one;; 0 = none.
-- **EX077 — Training.** How did Aisha confirm owners could do the tasks? *Rubric:* 3 = watched them run each task;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX078 — Purpose.** Why hand over? *Rubric:* 3 = keeps controls alive after the project;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX077 — Training.** How did Aisha confirm owners could do the tasks? *Rubric:* 3 = watched them run each task;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX078 — Purpose.** Why hand over? *Rubric:* 3 = keeps controls alive after the project;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-27"></a>
 
@@ -1224,8 +1224,8 @@ Staged rollouts can mix versions.
 ### Exercises
 
 - **EX079 — Validation.** How is validation done? *Rubric:* 3 = synthetic accounts and network inspection;; 2 = one;; 1 = vague;; 0 = none.
-- **EX080 — Rollback.** Why a rollback plan? *Rubric:* 3 = to recover from errors;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX081 — Result.** What did validation confirm? *Rubric:* 3 = no heart-rate data to advertisers;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX080 — Rollback.** Why a rollback plan? *Rubric:* 3 = to recover from errors;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX081 — Result.** What did validation confirm? *Rubric:* 3 = no heart-rate data to advertisers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1263,9 +1263,9 @@ Visits are snapshots.
 
 ### Exercises
 
-- **EX082 — Clubs visited.** How many clubs did Aisha visit? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX083 — Signs.** What was missing in two clubs? *Rubric:* 3 = CCTV signs;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX084 — Value.** Why do field visits matter? *Rubric:* 3 = they find what remote checks miss;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX082 — Clubs visited.** How many clubs did Aisha visit? *Rubric:* 3 = five;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX083 — Signs.** What was missing in two clubs? *Rubric:* 3 = CCTV signs;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX084 — Value.** Why do field visits matter? *Rubric:* 3 = they find what remote checks miss;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-29"></a>
 
@@ -1303,9 +1303,9 @@ Tools need owners.
 
 ### Exercises
 
-- **EX085 — Scripts.** How many scripts are combined? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX085 — Scripts.** How many scripts are combined? *Rubric:* 3 = five;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX086 — Docs.** What does each script's documentation include? *Rubric:* 3 = purpose, inputs, outputs, limits;; 2 = most;; 1 = one;; 0 = none.
-- **EX087 — Data.** What data are used for testing? *Rubric:* 3 = synthetic;; 2 = correct;; 1 = real;; 0 = none.
+- **EX087 — Data.** What data are used for testing? *Rubric:* 3 = synthetic;; 2 = partly correct;; 1 = real;; 0 = none.
 
 <a id="ch-30"></a>
 
@@ -1344,8 +1344,8 @@ Reflection should be honest about failures.
 ### Exercises
 
 - **EX088 — Audience.** Who assessed? *Rubric:* 3 = Mr. Reilly and the data protection officer;; 2 = both;; 1 = one;; 0 = none.
-- **EX089 — Limit asked.** What limit was asked about? *Rubric:* 3 = free-text health notes;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX090 — Next.** What does Aisha plan next? *Rubric:* 3 = governance study;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX089 — Limit asked.** What limit was asked about? *Rubric:* 3 = free-text health notes;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX090 — Next.** What does Aisha plan next? *Rubric:* 3 = governance study;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

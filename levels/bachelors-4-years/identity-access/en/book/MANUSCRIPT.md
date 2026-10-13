@@ -755,7 +755,7 @@ Adding complex rules and exceptions a small team cannot maintain lets the design
 
 ### Exercises
 
-- **EX046 — Provider choice.** What serves as Greenhill's identity provider? *Rubric:* 3 = the office suite;; 2 = office suite;; 1 = finance;; 0 = none.
+- **EX046 — Provider choice.** What serves as Greenhill's identity provider? *Rubric:* 3 = the office suite;; 2 = office suite, hedged with another option;; 1 = finance;; 0 = none.
 - **EX047 — Permission placement.** Where do detailed tenant-record permissions stay? *Rubric:* 3 = in the housing system;; 2 = application;; 1 = provider;; 0 = none.
 - **EX048 — Four policies.** List Elena's four simple policies. *Rubric:* 3 = MFA for all, admin keys, leaver same-day disable, team groups;; 2 = three;; 1 = one;; 0 = none.
 

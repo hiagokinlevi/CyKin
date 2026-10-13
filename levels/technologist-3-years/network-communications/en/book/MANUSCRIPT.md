@@ -407,7 +407,7 @@ Designs too complex for the available staff are quietly simplified in unsafe way
 
 ### Exercises
 
-- **EX022 — Student to admin flows.** How many flows are allowed from students to administration? *Rubric:* 3 = none; all denied by default;; 2 = none;; 1 = some;; 0 = no answer.
+- **EX022 — Student to admin flows.** How many flows are allowed from students to administration? *Rubric:* 3 = none; that zone pair has no allowed flows;; 2 = none, without the zone-pair reason;; 1 = some;; 0 = no answer.
 - **EX023 — Telnet risk.** Why replace Telnet on switches? *Rubric:* 3 = sends passwords in clear text;; 2 = unencrypted;; 1 = old;; 0 = none.
 - **EX024 — Simplicity reason.** Which design principle supports keeping the school design simple? *Rubric:* 3 = economy of mechanism (Saltzer and Schroeder);; 2 = simplicity;; 1 = vague;; 0 = none.
 

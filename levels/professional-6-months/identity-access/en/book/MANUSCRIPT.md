@@ -253,7 +253,7 @@ Presenting drift as individual wrongdoing makes staff defensive and hides proces
 ### Exercises
 
 - **EX021 — Admin baseline.** What is the administrator baseline? *Rubric:* 3 = staff and client contacts;; 2 = two groups;; 1 = everything;; 0 = none.
-- **EX022 — Partner extra.** What extra group do partners have? *Rubric:* 3 = billing;; 2 = billing, without explanation;; 1 = payroll;; 0 = none.
+- **EX022 — Partner extra.** What extra group do partners have? *Rubric:* 3 = billing;; 2 = billing plus a group partners do not have;; 1 = payroll;; 0 = none.
 - **EX023 — Drift meaning.** What is a group beyond baseline? *Rubric:* 3 = exception with reason or drift;; 2 = drift;; 1 = normal;; 0 = none.
 - **EX024 — Drift cause.** Name one cause of drift. *Rubric:* 3 = covering for absent colleagues;; 2 = role change;; 1 = attack;; 0 = none.
 - **EX025 — Naming approach.** How are individuals handled in the partner summary? *Rubric:* 3 = not named; names to managers only;; 2 = anonymous;; 1 = named;; 0 = none.

@@ -736,8 +736,8 @@ Objective rankings can be contested. Classifications blur in practice.
 
 ### Exercises
 
-- **EX043 — Meter priority.** Which objective matters most for meter readings? *Rubric:* 3 = integrity;; 2 = integrity, without explanation;; 1 = confidentiality;; 0 = none.
-- **EX044 — Risk parts.** What vulnerability did Nadia identify for vendor access? *Rubric:* 3 = a shared password;; 2 = shared password;; 1 = vague;; 0 = none.
+- **EX043 — Meter priority.** Which objective matters most for meter readings? *Rubric:* 3 = integrity, because readings drive bills;; 2 = integrity, without explanation;; 1 = confidentiality;; 0 = none.
+- **EX044 — Risk parts.** What vulnerability did Nadia identify for vendor access? *Rubric:* 3 = a shared password;; 2 = shared password, hedged with another option;; 1 = vague;; 0 = none.
 - **EX045 — Corrective example.** Give the corrective control for vendor access. *Rubric:* 3 = tested procedure to revoke access during incidents;; 2 = revoke;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -782,7 +782,7 @@ System views can become bureaucratic. Traceability needs upkeep.
 
 - **EX046 — Programme purpose.** What is the purpose of Ardwell's governance programme as a system? *Rubric:* 3 = keep risk within appetite and demonstrate compliance;; 2 = purpose;; 1 = vague;; 0 = none.
 - **EX047 — Trace gaps.** What gaps does a traceability matrix reveal? *Rubric:* 3 = requirements without controls and controls without tests;; 2 = gaps;; 1 = vague;; 0 = none.
-- **EX048 — Neglected stage.** Which life-cycle stage is often neglected for controls and policies? *Rubric:* 3 = retirement;; 2 = retirement, without explanation;; 1 = design;; 0 = none.
+- **EX048 — Neglected stage.** Which life-cycle stage is often neglected for controls and policies? *Rubric:* 3 = retirement;; 2 = retirement, hedged with another stage;; 1 = design;; 0 = none.
 
 ### Synthesis
 
@@ -912,7 +912,7 @@ Automation fails when HR data are wrong. Key inventories go stale.
 
 ### Exercises
 
-- **EX055 — Weak transition.** Which identity transition is Ardwell's weak point? *Rubric:* 3 = movers;; 2 = movers, without explanation;; 1 = leavers;; 0 = none.
+- **EX055 — Weak transition.** Which identity transition is Ardwell's weak point? *Rubric:* 3 = movers, because old access is rarely removed;; 2 = movers, without explanation;; 1 = leavers;; 0 = none.
 - **EX056 — Encryption rule.** Which data does Ardwell's classification require to be encrypted? *Rubric:* 3 = payment data and personal data on laptops;; 2 = classification;; 1 = vague;; 0 = none.
 - **EX057 — Certificate risk.** Why was the single-engineer certificate a risk? *Rubric:* 3 = no backup or expiry tracking, so it could expire unnoticed;; 2 = ownership;; 1 = vague;; 0 = none.
 
@@ -2263,7 +2263,7 @@ Announced trials differ from real failures. Daily checks add load.
 
 - **EX139 — Injected failures.** Which three failures were injected? *Rubric:* 3 = collector crash, source unavailable, altered evidence file;; 2 = three;; 1 = vague;; 0 = none.
 - **EX140 — Slow detection.** Which failure was detected slowly? *Rubric:* 3 = the altered evidence file, at the weekly check;; 2 = tampering;; 1 = vague;; 0 = none.
-- **EX141 — Check change.** How often do integrity checks run after the trial? *Rubric:* 3 = daily;; 2 = daily, without explanation;; 1 = weekly;; 0 = none.
+- **EX141 — Check change.** How often do integrity checks run after the trial? *Rubric:* 3 = daily;; 2 = daily, hedged with weekly;; 1 = weekly;; 0 = none.
 
 ### Synthesis
 

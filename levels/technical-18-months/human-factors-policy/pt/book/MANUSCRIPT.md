@@ -277,7 +277,7 @@ Expansão do escopo. A coleta de evidências toma tempo.
 
 - **EX017 — Fora do escopo.** Cite um item fora do escopo. *Rubrica:* 3 = o monitoramento de funcionários individuais;; 2 = monitoramento;; 1 = caixa postal de reporte;; 0 = nenhuma.
 
-- **EX018 — Limite das simulações.** Que limite vale para o phishing simulado? *Rubrica:* 3 = nenhum é enviado durante o estágio;; 2 = nenhum;; 1 = mensal;; 0 = sem resposta.
+- **EX018 — Limite das simulações.** Que limite vale para o phishing simulado? *Rubrica:* 3 = nenhum phishing simulado durante o estágio;; 2 = nenhum phishing simulado, sem o limite do estágio;; 1 = mensal;; 0 = sem resposta.
 
 - **EX019 — Registro das evidências.** O que Priya registra com cada item de evidência? *Rubrica:* 3 = a fonte e a data;; 2 = procedência;; 1 = vago;; 0 = nenhuma.
 
@@ -343,7 +343,7 @@ As taxas das etapas são estimativas. As etapas interagem.
 
 - **EX021 — Número de etapas.** Quantas etapas tem o modelo de Priya? *Rubrica:* 3 = sete;; 2 = 7;; 1 = três;; 0 = nenhuma.
 
-- **EX022 — Sobreviventes no laboratório.** Quantas de 100 mensagens suspeitas viram reportes com resposta no laboratório? *Rubrica:* 3 = 21;; 2 = 21, sem justificativa;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Sobreviventes no laboratório.** Quantas de 100 mensagens suspeitas viram reportes com resposta no laboratório? *Rubrica:* 3 = cerca de 21;; 2 = um número próximo de 21 (15 a 25);; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Maior perda.** Que etapa perde mais? *Rubrica:* 3 = a decisão de reportar;; 2 = decisão;; 1 = perceber;; 0 = nenhuma.
 

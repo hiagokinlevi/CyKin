@@ -300,7 +300,7 @@ As tabelas simplificam ligações complexas. Os papéis mudam.
 ### Exercícios
 
 - **EX021 — Finalidade da linha de base.** Por que uma verificação da linha de base não é trabalho inútil? *Rubrica:* 3 = apoia uma política, reduz um risco e produz evidências;; 2 = finalidade;; 1 = vago;; 0 = nenhuma.
-- **EX022 — Responsável.** Quem responde pela segurança na Fenwick? *Rubrica:* 3 = o diretor financeiro;; 2 = diretor financeiro;; 1 = líder de TI;; 0 = nenhuma.
+- **EX022 — Responsável.** Quem responde pela segurança na Fenwick? *Rubrica:* 3 = o diretor financeiro;; 2 = diretor financeiro, hesitando com outra opção;; 1 = líder de TI;; 0 = nenhuma.
 - **EX023 — Ligações do firewall.** Que política e que obrigação as revisões de firewall apoiam? *Rubrica:* 3 = a política de rede e as obrigações de pagamento com cartão;; 2 = ligações;; 1 = vago;; 0 = nenhuma.
 - **EX024 — Uso da tabela.** Como a tabela de tarefas ajuda os técnicos? *Rubrica:* 3 = a priorizar quando o tempo é curto;; 2 = prioridades;; 1 = vago;; 0 = nenhuma.
 
@@ -414,7 +414,7 @@ As listas deixam escapar falhas novas. As verificações também podem falhar.
 
 - **EX029 — Falha de backup.** Como os arquivos que ficaram fora do backup seriam detectados? *Rubrica:* 3 = por testes de restauração;; 2 = restauração;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Falhas silenciosas.** Por que as verificações precisam ser agendadas? *Rubrica:* 3 = algumas falhas ficam silenciosas até algo quebrar;; 2 = silenciosas;; 1 = vago;; 0 = nenhuma.
-- **EX031 — Dono dos certificados.** Quem é dono do modo de falha da expiração de certificados? *Rubrica:* 3 = o líder de TI;; 2 = líder de TI;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Dono dos certificados.** Quem é dono do modo de falha da expiração de certificados? *Rubrica:* 3 = o líder de TI;; 2 = líder de TI, hesitando com outra opção;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Partes do modo de falha.** Que três coisas cada modo de falha descreve? *Rubrica:* 3 = o que dá errado, como aparece, impacto;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese

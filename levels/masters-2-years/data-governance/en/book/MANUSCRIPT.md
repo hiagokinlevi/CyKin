@@ -70,12 +70,12 @@ Search terms shape what is found; test alternative terms before finalising.
 ### Exercises
 
 - **EX001 — Partner problem.** What problem does Arden County Council face? *Rubric:* 3 = duplicated addresses across five departments causing errors;; 2 = mentions duplicates;; 1 = vague;; 0 = none.
-- **EX002 — Outcome measure.** What is Tomás's outcome measure? *Rubric:* 3 = days from error report to correction;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX003 — Comparison group.** What is the comparison in his question? *Rubric:* 3 = departments without stewards;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX002 — Outcome measure.** What is Tomás's outcome measure? *Rubric:* 3 = days from error report to correction;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX003 — Comparison group.** What is the comparison in his question? *Rubric:* 3 = departments without stewards;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX004 — Stewardship definition.** How does DAMA-DMBOK2 describe stewardship? *Rubric:* 3 = accountability for data on behalf of others;; 2 = mentions accountability;; 1 = vague;; 0 = none.
-- **EX005 — Inclusion criterion.** What must included studies report? *Rubric:* 3 = an outcome measured before and after a governance change;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX006 — Supervisor check.** What share of decisions did Dr. Solberg check? *Rubric:* 3 = a random tenth;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX007 — Literature gap.** What did the search find lacking? *Rubric:* 3 = studies that measure outcomes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX005 — Inclusion criterion.** What must included studies report? *Rubric:* 3 = an outcome measured before and after a governance change;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX006 — Supervisor check.** What share of decisions did Dr. Solberg check? *Rubric:* 3 = a random tenth;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX007 — Literature gap.** What did the search find lacking? *Rubric:* 3 = studies that measure outcomes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -116,9 +116,9 @@ Models describe ideals; real councils mix them.
 - **EX008 — Three levels.** Which levels do the three views emphasise? *Rubric:* 3 = function, decisions and board accountability;; 2 = all;; 1 = one;; 0 = none.
 - **EX009 — ISO verbs.** What does the governing body do under ISO/IEC 38505-1? *Rubric:* 3 = directs, evaluates and monitors;; 2 = all;; 1 = one;; 0 = none.
 - **EX010 — Title not enough.** Why might a steward title have no effect? *Rubric:* 3 = stewards may lack decision rights;; 2 = mentions rights;; 1 = vague;; 0 = none.
-- **EX011 — Timeliness.** Which quality dimension is days to correct? *Rubric:* 3 = timeliness;; 2 = correct;; 1 = accuracy;; 0 = none.
-- **EX012 — ISO 8000 principle.** Against what is quality judged in ISO 8000? *Rubric:* 3 = stated requirements;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX013 — Peer challenge.** What competing explanation did peers raise? *Rubric:* 3 = council culture;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX011 — Timeliness.** Which quality dimension is days to correct? *Rubric:* 3 = timeliness;; 2 = partly correct;; 1 = accuracy;; 0 = none.
+- **EX012 — ISO 8000 principle.** Against what is quality judged in ISO 8000? *Rubric:* 3 = stated requirements;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX013 — Peer challenge.** What competing explanation did peers raise? *Rubric:* 3 = council culture;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX014 — Testable condition.** What condition did Tomás derive? *Rubric:* 3 = stewards need decision rights and a propagation channel;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-03"></a>
@@ -157,12 +157,12 @@ Parallel trends can hold before and fail after; watch for new events.
 
 ### Exercises
 
-- **EX015 — Why not randomise.** Why can Tomás not randomise? *Rubric:* 3 = the council chose the pilot departments;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX016 — Design name.** Which design does Tomás use? *Rubric:* 3 = difference-in-differences;; 2 = correct;; 1 = other;; 0 = none.
-- **EX017 — Key assumption.** What assumption does the design need? *Rubric:* 3 = parallel trends;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX015 — Why not randomise.** Why can Tomás not randomise? *Rubric:* 3 = the council chose the pilot departments;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX016 — Design name.** Which design does Tomás use? *Rubric:* 3 = difference-in-differences;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX017 — Key assumption.** What assumption does the design need? *Rubric:* 3 = parallel trends;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX018 — Threat example.** Name one threat to the design. *Rubric:* 3 = extra attention, turnover differences, reporting changes;; 2 = one;; 1 = vague;; 0 = none.
-- **EX019 — Ethics level.** At what level is performance analysed? *Rubric:* 3 = department level only;; 2 = correct;; 1 = individual;; 0 = none.
-- **EX020 — Importance threshold.** What threshold of practical importance was set? *Rubric:* 3 = five days;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX019 — Ethics level.** At what level is performance analysed? *Rubric:* 3 = department level only;; 2 = partly correct;; 1 = individual;; 0 = none.
+- **EX020 — Importance threshold.** What threshold of practical importance was set? *Rubric:* 3 = five days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -201,9 +201,9 @@ Some rivals cannot be fully ruled out; report them as limits.
 ### Exercises
 
 - **EX021 — Four rivals.** Name two rival explanations. *Rubric:* 3 = new tool, lower error volume, experienced staff, Hawthorne effect;; 2 = two;; 1 = one;; 0 = none.
-- **EX022 — Tool rival.** Why does the design remove the lookup tool rival? *Rubric:* 3 = deployed in all departments;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX022 — Tool rival.** Why does the design remove the lookup tool rival? *Rubric:* 3 = deployed in all departments;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX023 — Hawthorne check.** How will Tomás check the Hawthorne effect? *Rubric:* 3 = interviews and comparing early with later months;; 2 = mentions months;; 1 = vague;; 0 = none.
-- **EX024 — Culture measure.** How is culture operationalised? *Rubric:* 3 = prior informal sharing of corrections;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX024 — Culture measure.** How is culture operationalised? *Rubric:* 3 = prior informal sharing of corrections;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Contrary evidence.** Name one result that would weaken the hypothesis. *Rubric:* 3 = improvement only in low-volume months, equal in both groups, or only where sharing existed;; 2 = one;; 1 = vague;; 0 = none.
 - **EX026 — Falsifiability.** Why write contrary conditions in advance? *Rubric:* 3 = to avoid explaining away awkward results;; 2 = mentions bias;; 1 = vague;; 0 = none.
 
@@ -274,12 +274,12 @@ Aggressive normalisation can merge different addresses; check a sample by hand.
 
 ### Exercises
 
-- **EX027 — Pilot aim.** What is a pilot meant to test? *Rubric:* 3 = whether the methods work;; 2 = correct;; 1 = answer question;; 0 = none.
-- **EX028 — Exact matches.** How many exact duplicates were found? *Rubric:* 3 = none;; 2 = correct;; 1 = wrong;; 0 = no answer.
-- **EX029 — Normalised duplicates.** How many duplicates after normalisation? *Rubric:* 3 = 384, 11.6%;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX027 — Pilot aim.** What is a pilot meant to test? *Rubric:* 3 = whether the methods work;; 2 = partly correct;; 1 = answer question;; 0 = none.
+- **EX028 — Exact matches.** How many exact duplicates were found? *Rubric:* 3 = none;; 2 = hedged (few or none);; 1 = wrong;; 0 = no answer.
+- **EX029 — Normalised duplicates.** How many duplicates after normalisation? *Rubric:* 3 = 384, 11.6%;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX030 — Normalisation steps.** Name two normalisation steps. *Rubric:* 3 = lowercase, expand abbreviations, collapse spaces;; 2 = two;; 1 = one;; 0 = none.
-- **EX031 — New outcome.** How was correction time redefined? *Rubric:* 3 = days until correct in all five systems;; 2 = correct;; 1 = ticket closure;; 0 = none.
-- **EX032 — Logged changes.** When were proposal changes logged? *Rubric:* 3 = before collecting real outcome data;; 2 = correct;; 1 = after;; 0 = none.
+- **EX031 — New outcome.** How was correction time redefined? *Rubric:* 3 = days until correct in all five systems;; 2 = partly correct;; 1 = ticket closure;; 0 = none.
+- **EX032 — Logged changes.** When were proposal changes logged? *Rubric:* 3 = before collecting real outcome data;; 2 = partly correct;; 1 = after;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -340,11 +340,11 @@ A bootstrap interval reflects sampling variation, not design bias.
 
 ### Exercises
 
-- **EX033 — Stewarded change.** How did stewarded correction times change? *Rubric:* 3 = 24.1 to 14.8 days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX034 — DiD estimate.** What was the difference-in-differences estimate? *Rubric:* 3 = -7.0 days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX035 — Interval.** What was the 95% interval? *Rubric:* 3 = -9.1 to -4.8 days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX036 — Threshold met.** Does the interval exceed the five-day threshold? *Rubric:* 3 = yes, entirely;; 2 = correct;; 1 = no;; 0 = none.
-- **EX037 — Culture rival.** Why is the culture rival weakened? *Rubric:* 3 = council tax improved without prior sharing;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX033 — Stewarded change.** How did stewarded correction times change? *Rubric:* 3 = 24.1 to 14.8 days;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX034 — DiD estimate.** What was the difference-in-differences estimate? *Rubric:* 3 = -7.0 days;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX035 — Interval.** What was the 95% interval? *Rubric:* 3 = -9.1 to -4.8 days;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX036 — Threshold met.** Does the interval exceed the five-day threshold? *Rubric:* 3 = yes, entirely;; 2 = partly correct;; 1 = no;; 0 = none.
+- **EX037 — Culture rival.** Why is the culture rival weakened? *Rubric:* 3 = council tax improved without prior sharing;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX038 — Mechanism.** What mechanism did interviews suggest? *Rubric:* 3 = single address standard and weekly propagation;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-07"></a>
@@ -384,9 +384,9 @@ Summaries tend to drop caveats; keep the main limit in the summary.
 ### Exercises
 
 - **EX039 — Separate contribution.** What separate contribution gets its own section? *Rubric:* 3 = duplicate rates depend on normalisation rules;; 2 = mentions rules;; 1 = vague;; 0 = none.
-- **EX040 — Limitations count.** How many limitations does Tomás name? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX041 — Follow-up limit.** Why is six months a limit? *Rubric:* 3 = cannot show whether gains persist;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX042 — Generic phrase.** Which generic phrase does Tomás avoid? *Rubric:* 3 = more research is needed;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX040 — Limitations count.** How many limitations does Tomás name? *Rubric:* 3 = five;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX041 — Follow-up limit.** Why is six months a limit? *Rubric:* 3 = cannot show whether gains persist;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX042 — Generic phrase.** Which generic phrase does Tomás avoid? *Rubric:* 3 = more research is needed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX043 — Recommendation example.** Name one recommendation. *Rubric:* 3 = extend stewardship, measure to last system, publish rules;; 2 = one;; 1 = vague;; 0 = none.
 - **EX044 — Consistency.** Why must summary and dissertation agree? *Rubric:* 3 = inconsistency damages credibility;; 2 = mentions credibility;; 1 = vague;; 0 = none.
 
@@ -426,12 +426,12 @@ Extensions to new departments may not reproduce pilot effects; evaluate them.
 
 ### Exercises
 
-- **EX045 — Reviewer check.** What did the reviewer change in the bootstrap? *Rubric:* 3 = resamples from 2,000 to 10,000;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX046 — Placebo.** What did the placebo test show? *Rubric:* 3 = no effect in a pre-pilot period;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX047 — Examiner concern.** What did examiners question? *Rubric:* 3 = trusting a two-department result;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX045 — Reviewer check.** What did the reviewer change in the bootstrap? *Rubric:* 3 = resamples from 2,000 to 10,000;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX046 — Placebo.** What did the placebo test show? *Rubric:* 3 = no effect in a pre-pilot period;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX047 — Examiner concern.** What did examiners question? *Rubric:* 3 = trusting a two-department result;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX048 — Board decision.** Which departments does stewardship extend to next? *Rubric:* 3 = libraries and parking;; 2 = both;; 1 = one;; 0 = none.
-- **EX049 — Social care.** Why does social care wait? *Rubric:* 3 = review of its legal duties;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX050 — Lasting value.** What may be the most useful part of Tomás's work? *Rubric:* 3 = the measurement definitions;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX049 — Social care.** Why does social care wait? *Rubric:* 3 = review of its legal duties;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX050 — Lasting value.** What may be the most useful part of Tomás's work? *Rubric:* 3 = the measurement definitions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

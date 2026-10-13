@@ -121,7 +121,7 @@ Assuming a firewall filters traffic inside one subnet leads to false confidence.
 
 - **EX005 — Usable addresses.** How many usable addresses does a /24 provide? *Rubric:* 3 = 254, explaining network and broadcast;; 2 = 254;; 1 = 256;; 0 = none.
 - **EX006 — Same-subnet traffic.** Why can't the firewall block guest-to-housing traffic today? *Rubric:* 3 = same subnet, never reaches gateway;; 2 = same subnet;; 1 = misconfigured;; 0 = none.
-- **EX007 — Encrypted admin protocol.** Which protocol provides encrypted remote administration? *Rubric:* 3 = SSH;; 2 = SSH, without explanation;; 1 = Telnet;; 0 = none.
+- **EX007 — Encrypted admin protocol.** Which protocol provides encrypted remote administration? *Rubric:* 3 = SSH;; 2 = SSH, hedged with Telnet;; 1 = Telnet;; 0 = none.
 - **EX008 — Diagram check.** What did checking the diagram against configurations reveal? *Rubric:* 3 = missing switch;; 2 = missing device;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -619,7 +619,7 @@ Recording configured rather than negotiated VPN settings can hide fallback to we
 
 - **EX041 — Orphan rule.** What rule without a flow did Amina find? *Rubric:* 3 = staff to decommissioned server;; 2 = orphan;; 1 = vague;; 0 = none.
 - **EX042 — Negotiated settings.** Why record negotiated VPN settings? *Rubric:* 3 = gateway may fall back to weaker options;; 2 = fallback;; 1 = duplicate;; 0 = none.
-- **EX043 — TLS finding.** Which service accepted TLS 1.0? *Rubric:* 3 = intranet;; 2 = intranet, without explanation;; 1 = VPN;; 0 = none.
+- **EX043 — TLS finding.** Which service accepted TLS 1.0? *Rubric:* 3 = intranet;; 2 = intranet, hedged with VPN;; 1 = VPN;; 0 = none.
 - **EX044 — Classmate finding.** What did the independent check find? *Rubric:* 3 = wrong zone name for printers;; 2 = zone error;; 1 = vague;; 0 = none.
 
 ### Synthesis

@@ -69,11 +69,11 @@ Praticar em sistemas reais sem permissão é inseguro e pode ser ilegal.
 
 ### Exercícios
 
-- **EX001 — Trabalho do tecnólogo.** O que os tecnólogos fazem diariamente? *Rubrica:* 3 = configurar, verificar e manter controles;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX001 — Trabalho do tecnólogo.** O que os tecnólogos fazem diariamente? *Rubrica:* 3 = configurar, verificar e manter controles;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX002 — Porte do Riverbend.** Quantos funcionários o Riverbend emprega? *Rubrica:* 3 = cerca de 350;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX002 — Porte do Riverbend.** Quantos funcionários o Riverbend emprega? *Rubrica:* 3 = cerca de 350;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX003 — Propósito do caderno.** Por que manter um caderno de laboratório? *Rubrica:* 3 = para repetir e explicar o trabalho;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Propósito do caderno.** Por que manter um caderno de laboratório? *Rubrica:* 3 = para repetir e explicar o trabalho;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -111,11 +111,11 @@ Formulários sensíveis digitalizados muitas vezes acabam em pastas que todos po
 
 ### Exercícios
 
-- **EX004 — Usuários dos questionários.** Quem usa os questionários de saúde? *Rubrica:* 3 = os instrutores;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX004 — Usuários dos questionários.** Quem usa os questionários de saúde? *Rubrica:* 3 = os instrutores;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX005 — Risco dos dados bancários.** Qual objetivo importa mais para os dados bancários? *Rubrica:* 3 = integridade;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX005 — Risco dos dados bancários.** Qual objetivo importa mais para os dados bancários? *Rubrica:* 3 = integridade;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX006 — Correção da pasta.** O que acontece com a pasta dos questionários? *Rubrica:* 3 = é restrita a instrutores e gerentes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX006 — Correção da pasta.** O que acontece com a pasta dos questionários? *Rubrica:* 3 = é restrita a instrutores e gerentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -153,11 +153,11 @@ Logins automáticos de administrador dão a qualquer malware controle total.
 
 ### Exercícios
 
-- **EX007 — Permissões por grupo.** Por que atribuir permissões a grupos? *Rubrica:* 3 = as pessoas mudam de função;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Permissões por grupo.** Por que atribuir permissões a grupos? *Rubrica:* 3 = as pessoas mudam de função;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Risco da recepção.** Que risco os computadores da recepção apresentam? *Rubrica:* 3 = login automático de administrador;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Risco da recepção.** Que risco os computadores da recepção apresentam? *Rubrica:* 3 = login automático de administrador;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX009 — Redução de serviços.** O que faz desativar os serviços desnecessários? *Rubrica:* 3 = diminui a superfície de ataque;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Redução de serviços.** O que faz desativar os serviços desnecessários? *Rubrica:* 3 = diminui a superfície de ataque;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -195,9 +195,9 @@ Fazer varreduras sem permissão por escrito é inaceitável, mesmo numa rede ami
 
 ### Exercícios
 
-- **EX010 — Identificação de pagamento.** Quais dispositivos precisam ser identificados de modo especial? *Rubrica:* 3 = os que lidam com dados de pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Identificação de pagamento.** Quais dispositivos precisam ser identificados de modo especial? *Rubrica:* 3 = os que lidam com dados de pagamento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX011 — Achado na câmera.** O que a varredura encontrou no gravador de câmeras? *Rubrica:* 3 = uma senha padrão;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Achado na câmera.** O que a varredura encontrou no gravador de câmeras? *Rubrica:* 3 = uma senha padrão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Segmentos propostos.** Cite os quatro segmentos propostos. *Rubrica:* 3 = caixas, equipe, câmeras, visitantes;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
@@ -237,11 +237,11 @@ Scripts que pulam em silêncio as entradas ruins dão uma falsa tranquilidade.
 
 ### Exercícios
 
-- **EX013 — Script de inatividade.** Quais contas o segundo script lista? *Rubrica:* 3 = sem login há sessenta dias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Script de inatividade.** Quais contas o segundo script lista? *Rubrica:* 3 = sem login há sessenta dias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Linhas ruins.** Como o script trata as linhas ruins? *Rubrica:* 3 = pula e as relata;; 2 = correto;; 1 = ignorá-las;; 0 = nenhuma.
+- **EX014 — Linhas ruins.** Como o script trata as linhas ruins? *Rubrica:* 3 = pula e as relata;; 2 = parcialmente correto;; 1 = ignorá-las;; 0 = nenhuma.
 
-- **EX015 — Rastreabilidade.** O que cada relatório inclui para permitir o rastreamento? *Rubrica:* 3 = a versão do script e o nome do arquivo de entrada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX015 — Rastreabilidade.** O que cada relatório inclui para permitir o rastreamento? *Rubrica:* 3 = a versão do script e o nome do arquivo de entrada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -279,11 +279,11 @@ Relógios não sincronizados tornam impossível ordenar os eventos de sistemas d
 
 ### Exercícios
 
-- **EX016 — Módulo de padrões.** Qual módulo extrai os campos? *Rubrica:* 3 = re;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX016 — Módulo de padrões.** Qual módulo extrai os campos? *Rubrica:* 3 = re;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX017 — Erro do relógio.** Quanto o relógio do gravador de câmeras está atrasado? *Rubrica:* 3 = onze minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX017 — Erro do relógio.** Quanto o relógio do gravador de câmeras está atrasado? *Rubrica:* 3 = onze minutos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX018 — Retenção dos logs.** Por quanto tempo os logs centrais devem ser guardados? *Rubrica:* 3 = noventa dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX018 — Retenção dos logs.** Por quanto tempo os logs centrais devem ser guardados? *Rubrica:* 3 = noventa dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -321,11 +321,11 @@ Controles que ignoram as necessidades reais do trabalho acabam contornados.
 
 ### Exercícios
 
-- **EX019 — Norma de visão geral.** Qual norma dá a visão geral da família? *Rubrica:* 3 = ISO/IEC 27000:2026;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX019 — Norma de visão geral.** Qual norma dá a visão geral da família? *Rubrica:* 3 = ISO/IEC 27000:2026;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX020 — Limite do comprometimento.** Como o menor privilégio limita um comprometimento? *Rubrica:* 3 = o atacante herda direitos limitados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Limite do comprometimento.** Como o menor privilégio limita um comprometimento? *Rubrica:* 3 = o atacante herda direitos limitados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX021 — Alternativa ao USB.** Que alternativa ao USB Jamal sugere? *Rubrica:* 3 = apenas dispositivos criptografados fornecidos pelo Riverbend;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Alternativa ao USB.** Que alternativa ao USB Jamal sugere? *Rubrica:* 3 = apenas dispositivos criptografados fornecidos pelo Riverbend;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -389,11 +389,11 @@ Relatar cada item separadamente pode esconder quantas máquinas falham em pelo m
 
 ### Exercícios
 
-- **EX022 — Taxa de criptografia.** Que parcela tem criptografia de disco? *Rubrica:* 3 = 164 de 210, 78,1 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX022 — Taxa de criptografia.** Que parcela tem criptografia de disco? *Rubrica:* 3 = 164 de 210, 78,1 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX023 — Taxa combinada.** Quantas cumprem os quatro itens? *Rubrica:* 3 = 129, 61,4 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX023 — Taxa combinada.** Quantas cumprem os quatro itens? *Rubrica:* 3 = 129, 61,4 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX024 — Primeira prioridade.** Quais falhas vêm primeiro? *Rubrica:* 3 = notebooks sem criptografia;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX024 — Primeira prioridade.** Quais falhas vêm primeiro? *Rubrica:* 3 = notebooks sem criptografia;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -431,11 +431,11 @@ Implantar atualizações não testadas em todos os lugares ao mesmo tempo pode q
 
 ### Exercícios
 
-- **EX025 — Atualizações prioritárias.** Quais atualizações têm prioridade? *Rubrica:* 3 = as de falhas exploradas ativamente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Atualizações prioritárias.** Quais atualizações têm prioridade? *Rubrica:* 3 = as de falhas exploradas ativamente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Grupo de teste.** Quantas estações de trabalho há no grupo de teste? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX026 — Grupo de teste.** Quantas estações de trabalho há no grupo de teste? *Rubrica:* 3 = cinco;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX027 — Controlador da piscina.** Como o controlador da piscina é protegido? *Rubrica:* 3 = segmento isolado sem internet;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Controlador da piscina.** Como o controlador da piscina é protegido? *Rubrica:* 3 = segmento isolado sem internet;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -473,11 +473,11 @@ Presumir que uma correção funcionou sem uma nova varredura deixa as fraquezas 
 
 ### Exercícios
 
-- **EX028 — Aprovação da varredura.** Quem aprova a varredura? *Rubrica:* 3 = o gerente de TI, por escrito;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Aprovação da varredura.** Quem aprova a varredura? *Rubrica:* 3 = o gerente de TI, por escrito;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX029 — Falso positivo.** O que é um falso positivo? *Rubrica:* 3 = uma fraqueza relatada que não está presente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Falso positivo.** O que é um falso positivo? *Rubrica:* 3 = uma fraqueza relatada que não está presente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX030 — Achado remanescente.** Por que um achado permaneceu depois da correção? *Rubrica:* 3 = uma segunda instalação da ferramenta;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Achado remanescente.** Por que um achado permaneceu depois da correção? *Rubrica:* 3 = uma segunda instalação da ferramenta;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -515,11 +515,11 @@ Copiar a conta de um colega para criar uma nova espalha acessos desnecessários.
 
 ### Exercícios
 
-- **EX031 — Acesso dos temporários.** De que acesso os temporários precisam? *Rubrica:* 3 = apenas o sistema de reservas e a escala;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Acesso dos temporários.** De que acesso os temporários precisam? *Rubrica:* 3 = apenas o sistema de reservas e a escala;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Relatório de desligamentos.** Que fonte lista os desligamentos semanalmente? *Rubrica:* 3 = o sistema de folha de pagamento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX032 — Relatório de desligamentos.** Que fonte lista os desligamentos semanalmente? *Rubrica:* 3 = o sistema de folha de pagamento;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX033 — Conta de serviço antiga.** Qual conta de serviço é desativada? *Rubrica:* 3 = uma usada por uma antiga ferramenta de backup;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Conta de serviço antiga.** Qual conta de serviço é desativada? *Rubrica:* 3 = uma usada por uma antiga ferramenta de backup;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -557,11 +557,11 @@ Um procedimento de recuperação fraco permite que os atacantes contornem a aute
 
 ### Exercícios
 
-- **EX034 — Fator da TI.** Qual fator serve para a equipe de TI? *Rubrica:* 3 = chaves físicas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX034 — Fator da TI.** Qual fator serve para a equipe de TI? *Rubrica:* 3 = chaves físicas;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX035 — Primeiro sistema.** Qual sistema recebe primeiro a autenticação multifator? *Rubrica:* 3 = o e-mail;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX035 — Primeiro sistema.** Qual sistema recebe primeiro a autenticação multifator? *Rubrica:* 3 = o e-mail;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX036 — Celulares antigos.** Que alternativa serve para quem tem celulares antigos? *Rubrica:* 3 = códigos por mensagem de texto;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX036 — Celulares antigos.** Que alternativa serve para quem tem celulares antigos? *Rubrica:* 3 = códigos por mensagem de texto;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -599,11 +599,11 @@ Uma senha escrita num script fica exposta a qualquer pessoa que consiga lê-lo.
 
 ### Exercícios
 
-- **EX037 — Efeito da regra antiga.** O que as trocas mensais obrigatórias provocaram? *Rubrica:* 3 = acrescentar um número à mesma palavra;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX037 — Efeito da regra antiga.** O que as trocas mensais obrigatórias provocaram? *Rubrica:* 3 = acrescentar um número à mesma palavra;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Substituto da planilha.** O que substitui a planilha de senhas? *Rubrica:* 3 = um gerenciador de senhas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX038 — Substituto da planilha.** O que substitui a planilha de senhas? *Rubrica:* 3 = um gerenciador de senhas;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX039 — Achados nos documentos.** O que a busca nos documentos encontrou? *Rubrica:* 3 = senhas das câmeras e credenciais dos roteadores;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX039 — Achados nos documentos.** O que a busca nos documentos encontrou? *Rubrica:* 3 = senhas das câmeras e credenciais dos roteadores;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-14"></a>
 
@@ -677,11 +677,11 @@ Uma regra que permite tudo acima do bloqueio final torna o bloqueio inútil.
 
 ### Exercícios
 
-- **EX040 — Regra ampla.** Qual regra permite qualquer tráfego? *Rubrica:* 3 = a regra 11;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX040 — Regra ampla.** Qual regra permite qualquer tráfego? *Rubrica:* 3 = a regra 11;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX041 — Bloqueio inalcançável.** Por que a regra 12 tem zero acertos? *Rubrica:* 3 = a regra 11 corresponde antes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Bloqueio inalcançável.** Por que a regra 12 tem zero acertos? *Rubrica:* 3 = a regra 11 corresponde antes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Regra do fornecedor.** O que a regra 6, sem uso, permite? *Rubrica:* 3 = área de trabalho remota do fornecedor para os caixas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Regra do fornecedor.** O que a regra 6, sem uso, permite? *Rubrica:* 3 = área de trabalho remota do fornecedor para os caixas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -719,11 +719,11 @@ As senhas compartilhadas de rede sem fio continuam conhecidas por ex-funcionári
 
 ### Exercícios
 
-- **EX043 — Problema da senha compartilhada.** Por que a senha compartilhada da rede sem fio da equipe é um problema? *Rubrica:* 3 = é conhecida por ex-funcionários;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Problema da senha compartilhada.** Por que a senha compartilhada da rede sem fio da equipe é um problema? *Rubrica:* 3 = é conhecida por ex-funcionários;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX044 — Ponto de acesso clandestino.** Quem instalou o ponto de acesso não autorizado? *Rubrica:* 3 = o fornecedor do café;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX044 — Ponto de acesso clandestino.** Quem instalou o ponto de acesso não autorizado? *Rubrica:* 3 = o fornecedor do café;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX045 — Modo fraco.** Por que um modo de criptografia fraco estava ativado? *Rubrica:* 3 = por causa de uma impressora velha;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Modo fraco.** Por que um modo de criptografia fraco estava ativado? *Rubrica:* 3 = por causa de uma impressora velha;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-16"></a>
 
@@ -761,11 +761,11 @@ A proteção de endpoints protege apenas as máquinas em que está instalada.
 
 ### Exercícios
 
-- **EX046 — Lacuna de cobertura.** Onde faltava a proteção de endpoints? *Rubrica:* 3 = computadores da recepção após a reinstalação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX046 — Lacuna de cobertura.** Onde faltava a proteção de endpoints? *Rubrica:* 3 = computadores da recepção após a reinstalação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Alerta do financeiro.** O que o alerta do financeiro mostrou? *Rubrica:* 3 = um script vindo de um anexo de fatura;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Alerta do financeiro.** O que o alerta do financeiro mostrou? *Rubrica:* 3 = um script vindo de um anexo de fatura;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Lista de permissão.** Onde a lista de permissão é mais eficaz? *Rubrica:* 3 = máquinas de finalidade única, como os caixas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Lista de permissão.** Onde a lista de permissão é mais eficaz? *Rubrica:* 3 = máquinas de finalidade única, como os caixas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-17"></a>
 
@@ -803,11 +803,11 @@ Os filtros técnicos sozinhos não conseguem barrar uma fraude de pagamentos bem
 
 ### Exercícios
 
-- **EX049 — Registros incompletos.** Que risco os registros de autenticação incompletos criavam? *Rubrica:* 3 = entrega de mensagens falsas usando o domínio do Riverbend;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Registros incompletos.** Que risco os registros de autenticação incompletos criavam? *Rubrica:* 3 = entrega de mensagens falsas usando o domínio do Riverbend;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Golpe dos cartões-presente.** Quantos centros receberam a mensagem dos cartões-presente? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX050 — Golpe dos cartões-presente.** Quantos centros receberam a mensagem dos cartões-presente? *Rubrica:* 3 = cinco;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX051 — Regra de mudança bancária.** Como as mudanças de dados bancários devem ser confirmadas? *Rubrica:* 3 = por telefone, com um número cadastrado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX051 — Regra de mudança bancária.** Como as mudanças de dados bancários devem ser confirmadas? *Rubrica:* 3 = por telefone, com um número cadastrado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-18"></a>
 
@@ -845,11 +845,11 @@ Uma tarefa de backup que relata sucesso ainda pode estar deixando dados de fora.
 
 ### Exercícios
 
-- **EX052 — Arquivos transferidos.** O que deve acontecer com os arquivos locais do financeiro? *Rubrica:* 3 = passar para o servidor de arquivos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Arquivos transferidos.** O que deve acontecer com os arquivos locais do financeiro? *Rubrica:* 3 = passar para o servidor de arquivos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX053 — Falha na restauração.** Por que uma pasta não foi restaurada? *Rubrica:* 3 = foi excluída depois de renomeada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Falha na restauração.** Por que uma pasta não foi restaurada? *Rubrica:* 3 = foi excluída depois de renomeada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX054 — Retenção do fornecedor.** Por quanto tempo o fornecedor das reservas guarda os backups? *Rubrica:* 3 = catorze dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX054 — Retenção do fornecedor.** Por quanto tempo o fornecedor das reservas guarda os backups? *Rubrica:* 3 = catorze dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-19"></a>
 
@@ -887,11 +887,11 @@ Perder as chaves de criptografia pode tornar os dados irrecuperáveis.
 
 ### Exercícios
 
-- **EX055 — Notebook furtado.** Por que nenhum dado foi exposto com o notebook furtado? *Rubrica:* 3 = ele estava criptografado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Notebook furtado.** Por que nenhum dado foi exposto com o notebook furtado? *Rubrica:* 3 = ele estava criptografado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX056 — Página interna.** O que a página interna sem criptografia mostrava? *Rubrica:* 3 = nomes de associados;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+- **EX056 — Página interna.** O que a página interna sem criptografia mostrava? *Rubrica:* 3 = nomes de associados;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
 
-- **EX057 — Lembrete de renovação.** Quando são criados os lembretes de renovação manual? *Rubrica:* 3 = trinta dias antes da expiração;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX057 — Lembrete de renovação.** Quando são criados os lembretes de renovação manual? *Rubrica:* 3 = trinta dias antes da expiração;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-20"></a>
 
@@ -929,11 +929,11 @@ Os dispositivos descartados muitas vezes ainda guardam dados legíveis.
 
 ### Exercícios
 
-- **EX058 — Uso indevido do armário.** Como um armário de rede era usado indevidamente? *Rubrica:* 3 = para guardar material de limpeza;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX058 — Uso indevido do armário.** Como um armário de rede era usado indevidamente? *Rubrica:* 3 = para guardar material de limpeza;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX059 — Verificação dos terminais.** Como a equipe verifica os terminais diariamente? *Rubrica:* 3 = compara com uma foto e confere os lacres;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Verificação dos terminais.** Como a equipe verifica os terminais diariamente? *Rubrica:* 3 = compara com uma foto e confere os lacres;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Tela do gravador.** Que problema tinha a tela de um gravador? *Rubrica:* 3 = era visível da recepção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Tela do gravador.** Que problema tinha a tela de um gravador? *Rubrica:* 3 = era visível da recepção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-21"></a>
 
@@ -1007,11 +1007,11 @@ Classificar as falhas sem separar as origens internas das externas mistura erros
 
 ### Exercícios
 
-- **EX061 — Número de falhas.** Quantos logins com falha o log contém? *Rubrica:* 3 = 838;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX061 — Número de falhas.** Quantos logins com falha o log contém? *Rubrica:* 3 = 838;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX062 — Principal origem.** Qual endereço tem mais falhas? *Rubrica:* 3 = 203.0.113.45, com 412;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX062 — Principal origem.** Qual endereço tem mais falhas? *Rubrica:* 3 = 203.0.113.45, com 412;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX063 — Parcela externa.** Que parcela das falhas veio de origens externas? *Rubrica:* 3 = 80,1 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX063 — Parcela externa.** Que parcela das falhas veio de origens externas? *Rubrica:* 3 = 80,1 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-22"></a>
 
@@ -1049,11 +1049,11 @@ Alterar configurações antes de registrá-las pode destruir evidências.
 
 ### Exercícios
 
-- **EX064 — Base do procedimento.** Quais funções do CSF 2.0 moldam o procedimento? *Rubrica:* 3 = Responder e Recuperar;; 2 = correto;; 1 = outras;; 0 = nenhuma.
+- **EX064 — Base do procedimento.** Quais funções do CSF 2.0 moldam o procedimento? *Rubrica:* 3 = Responder e Recuperar;; 2 = parcialmente correto;; 1 = outras;; 0 = nenhuma.
 
-- **EX065 — Regra de encaminhamento.** O que Jamal encontrou na caixa postal? *Rubrica:* 3 = uma regra que encaminha e-mails para fora;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX065 — Regra de encaminhamento.** O que Jamal encontrou na caixa postal? *Rubrica:* 3 = uma regra que encaminha e-mails para fora;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX066 — Causa raiz.** O que causou o incidente? *Rubrica:* 3 = a inscrição atrasada na MFA;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX066 — Causa raiz.** O que causou o incidente? *Rubrica:* 3 = a inscrição atrasada na MFA;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-23"></a>
 
@@ -1091,11 +1091,11 @@ O certificado de um fornecedor só é uma evidência útil se seu escopo cobrir 
 
 ### Exercícios
 
-- **EX067 — Cláusulas ausentes.** Qual contrato não tem cláusulas de segurança? *Rubrica:* 3 = o da empresa de manutenção das câmeras;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX067 — Cláusulas ausentes.** Qual contrato não tem cláusulas de segurança? *Rubrica:* 3 = o da empresa de manutenção das câmeras;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX068 — Correção do acesso do fornecedor.** Como muda o acesso da empresa das câmeras? *Rubrica:* 3 = ativado apenas para trabalhos agendados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX068 — Correção do acesso do fornecedor.** Como muda o acesso da empresa das câmeras? *Rubrica:* 3 = ativado apenas para trabalhos agendados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX069 — Configuração da nuvem.** Que configuração padrão da nuvem é restringida? *Rubrica:* 3 = o compartilhamento externo de arquivos;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX069 — Configuração da nuvem.** Que configuração padrão da nuvem é restringida? *Rubrica:* 3 = o compartilhamento externo de arquivos;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-24"></a>
 
@@ -1133,11 +1133,11 @@ Políticas que contradizem a prática geram achados de auditoria evitáveis.
 
 ### Exercícios
 
-- **EX070 — Teste dos procedimentos.** Como Jamal testa seus procedimentos? *Rubrica:* 3 = o técnico os segue sem ajuda;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX070 — Teste dos procedimentos.** Como Jamal testa seus procedimentos? *Rubrica:* 3 = o técnico os segue sem ajuda;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX071 — Regra de arquivamento.** O que acontece com as versões antigas dos procedimentos? *Rubrica:* 3 = são arquivadas, não apagadas;; 2 = correto;; 1 = apagadas;; 0 = nenhuma.
+- **EX071 — Regra de arquivamento.** O que acontece com as versões antigas dos procedimentos? *Rubrica:* 3 = são arquivadas, não apagadas;; 2 = parcialmente correto;; 1 = apagadas;; 0 = nenhuma.
 
-- **EX072 — Política desatualizada.** Qual política está desatualizada? *Rubrica:* 3 = a política de senhas;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX072 — Política desatualizada.** Qual política está desatualizada? *Rubrica:* 3 = a política de senhas;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-25"></a>
 
@@ -1175,11 +1175,11 @@ Medir as taxas de clique individuais pode desestimular as comunicações.
 
 ### Exercícios
 
-- **EX073 — Duração das sessões.** Quanto duram as sessões? *Rubrica:* 3 = dez minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX073 — Duração das sessões.** Quanto duram as sessões? *Rubrica:* 3 = dez minutos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX074 — Pista de phishing.** Cite uma pista de phishing que Jamal mostra. *Rubrica:* 3 = endereço de remetente ligeiramente diferente;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX075 — Comunicação do salva-vidas.** O que o salva-vidas comunicou? *Rubrica:* 3 = uma mensagem de texto de golpe que alegava vir da folha de pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX075 — Comunicação do salva-vidas.** O que o salva-vidas comunicou? *Rubrica:* 3 = uma mensagem de texto de golpe que alegava vir da folha de pagamento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-26"></a>
 
@@ -1217,11 +1217,11 @@ A automação que falha em silêncio dá uma falsa confiança.
 
 ### Exercícios
 
-- **EX076 — Escolha da automação.** Quais tarefas são automatizadas primeiro? *Rubrica:* 3 = as tarefas estáveis com entradas previsíveis;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX076 — Escolha da automação.** Quais tarefas são automatizadas primeiro? *Rubrica:* 3 = as tarefas estáveis com entradas previsíveis;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX077 — O que o sinal de vida pegou.** O que o sinal de vida detectou? *Rubrica:* 3 = a verificação da linha de base falhando após uma troca de senha;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX077 — O que o sinal de vida pegou.** O que o sinal de vida detectou? *Rubrica:* 3 = a verificação da linha de base falhando após uma troca de senha;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX078 — Licença médica.** Por que uma conta inativa deve continuar ativada? *Rubrica:* 3 = funcionário em licença médica prolongada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX078 — Licença médica.** Por que uma conta inativa deve continuar ativada? *Rubrica:* 3 = funcionário em licença médica prolongada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-27"></a>
 
@@ -1259,11 +1259,11 @@ A documentação testada apenas por seu autor muitas vezes falha com outros usu�
 
 ### Exercícios
 
-- **EX079 — Quem recebe o serviço.** Quem assume a maioria das tarefas? *Rubrica:* 3 = o técnico;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX079 — Quem recebe o serviço.** Quem assume a maioria das tarefas? *Rubrica:* 3 = o técnico;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX080 — Correção do documento de restauração.** O que estava errado no procedimento de restauração? *Rubrica:* 3 = o nome de um servidor que mudou;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX080 — Correção do documento de restauração.** O que estava errado no procedimento de restauração? *Rubrica:* 3 = o nome de um servidor que mudou;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX081 — O próprio acesso.** O que acontece com o acesso de Jamal? *Rubrica:* 3 = é removido no último dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX081 — O próprio acesso.** O que acontece com o acesso de Jamal? *Rubrica:* 3 = é removido no último dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-28"></a>
 
@@ -1301,9 +1301,9 @@ Investigar fora da própria alçada sem perguntar ultrapassa os limites profissi
 
 ### Exercícios
 
-- **EX082 — Interrupções no estágio.** O que torna o planejamento importante no estágio? *Rubrica:* 3 = interrupções urgentes frequentes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX082 — Interrupções no estágio.** O que torna o planejamento importante no estágio? *Rubrica:* 3 = interrupções urgentes frequentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX083 — Quadro de avisos.** O que Jamal faz a respeito do quadro de avisos? *Rubrica:* 3 = comunica ao gerente do centro;; 2 = correto;; 1 = remover;; 0 = nenhuma.
+- **EX083 — Quadro de avisos.** O que Jamal faz a respeito do quadro de avisos? *Rubrica:* 3 = comunica ao gerente do centro;; 2 = parcialmente correto;; 1 = remover;; 0 = nenhuma.
 
 - **EX084 — Ponto a desenvolver.** Cite um ponto a desenvolver. *Rubrica:* 3 = estimar o tempo das tarefas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
@@ -1343,11 +1343,11 @@ Uma única varredura externa mostra apenas o que estava alcançável naquele mom
 
 ### Exercícios
 
-- **EX085 — Meta do projeto.** Qual é a meta do projeto? *Rubrica:* 3 = todo caminho remoto conhecido, restrito e protegido por MFA;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX085 — Meta do projeto.** Qual é a meta do projeto? *Rubrica:* 3 = todo caminho remoto conhecido, restrito e protegido por MFA;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX086 — Caminho extra.** Que caminho extra a varredura encontrou? *Rubrica:* 3 = uma antiga página de administração de roteador;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX086 — Caminho extra.** Que caminho extra a varredura encontrou? *Rubrica:* 3 = uma antiga página de administração de roteador;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX087 — Total de caminhos.** Quantos caminhos foram restringidos ou fechados? *Rubrica:* 3 = seis;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX087 — Total de caminhos.** Quantos caminhos foram restringidos ou fechados? *Rubrica:* 3 = seis;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-30"></a>
 
@@ -1385,11 +1385,11 @@ Respostas sem registros que as sustentem enfraquecem a revisão de um projeto.
 
 ### Exercícios
 
-- **EX088 — Detecção de novos caminhos.** Como os novos caminhos serão detectados? *Rubrica:* 3 = varreduras agendadas e revisão semestral do firewall;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX088 — Detecção de novos caminhos.** Como os novos caminhos serão detectados? *Rubrica:* 3 = varreduras agendadas e revisão semestral do firewall;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX089 — Área de trabalho remota mantida.** Por que manter a área de trabalho remota? *Rubrica:* 3 = funcionários trabalham de casa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX089 — Área de trabalho remota mantida.** Por que manter a área de trabalho remota? *Rubrica:* 3 = funcionários trabalham de casa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX090 — Tarefa permanente.** O que se torna uma tarefa permanente? *Rubrica:* 3 = a revisão semestral do acesso remoto;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX090 — Tarefa permanente.** O que se torna uma tarefa permanente? *Rubrica:* 3 = a revisão semestral do acesso remoto;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

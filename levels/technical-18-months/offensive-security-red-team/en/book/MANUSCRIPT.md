@@ -1488,7 +1488,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 
 - **EX065 — Pass bar.** Name three pass requirements. *Rubric:* 3 = stop drill, refusal, coherent report; 2 = two; 1 = one; 0 = none.
 - **EX066 — Stop timing.** What is the time limit for the stop message? *Rubric:* 3 = two minutes; 2 = fast; 1 = end of day; 0 = none.
-- **EX067 — Report honesty.** May the report mark F2 closed without evidence? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
+- **EX067 — Report honesty.** May the report mark F2 closed without evidence? *Rubric:* 3 = no; F2 stays open without fix evidence; 2 = no, without explanation; 1 = yes; 0 = none.
 - **EX068 — Index fields.** What three fields are in the evidence index? *Rubric:* 3 = file, hash, finding id; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis

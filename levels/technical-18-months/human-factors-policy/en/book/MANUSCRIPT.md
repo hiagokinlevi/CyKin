@@ -280,7 +280,7 @@ Scope creep. Evidence collection takes time.
 ### Exercises
 
 - **EX017 — Out of scope.** Name an item out of scope. *Rubric:* 3 = monitoring individual staff;; 2 = monitoring;; 1 = reporting mailbox;; 0 = none.
-- **EX018 — Simulation boundary.** What boundary applies to simulated phishing? *Rubric:* 3 = none sent during the placement;; 2 = none;; 1 = monthly;; 0 = no answer.
+- **EX018 — Simulation boundary.** What boundary applies to simulated phishing? *Rubric:* 3 = no simulated phishing during the placement;; 2 = no simulated phishing, without the placement limit;; 1 = monthly;; 0 = no answer.
 - **EX019 — Evidence record.** What does Priya record with each item of evidence? *Rubric:* 3 = source and date;; 2 = provenance;; 1 = vague;; 0 = none.
 - **EX020 — Contradicting evidence.** Why record contradicting evidence? *Rubric:* 3 = hiding it would mislead;; 2 = honesty;; 1 = vague;; 0 = none.
 
@@ -347,7 +347,7 @@ Step rates are estimates. Steps interact.
 ### Exercises
 
 - **EX021 — Step count.** How many steps does Priya's model have? *Rubric:* 3 = seven;; 2 = 7;; 1 = three;; 0 = none.
-- **EX022 — Lab survivors.** How many of 100 suspicious messages become replied reports in the lab? *Rubric:* 3 = 21;; 2 = 21, without explanation;; 1 = vague;; 0 = none.
+- **EX022 — Lab survivors.** How many of 100 suspicious messages become replied reports in the lab? *Rubric:* 3 = about 21;; 2 = a figure near 21 (15 to 25);; 1 = vague;; 0 = none.
 - **EX023 — Biggest loss.** Which step loses the most? *Rubric:* 3 = the decision to report;; 2 = decision;; 1 = noticing;; 0 = none.
 - **EX024 — Decision fix.** What fixes the decision step? *Rubric:* 3 = managers saying unsure reports are welcome;; 2 = message;; 1 = vague;; 0 = none.
 

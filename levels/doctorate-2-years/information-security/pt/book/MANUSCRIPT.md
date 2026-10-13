@@ -69,19 +69,19 @@ Publicar fraquezas específicas do parceiro transforma a pesquisa num guia de at
 
 ### Exercícios
 
-- **EX001 — Pergunta de pesquisa.** O que a pergunta de Yusuf compara? *Rubrica:* 3 = aplicação de controles ordenada pelo risco versus uniforme;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX001 — Pergunta de pesquisa.** O que a pergunta de Yusuf compara? *Rubrica:* 3 = aplicação de controles ordenada pelo risco versus uniforme;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 
-- **EX002 — Porte do parceiro.** Quantos departamentos tem a Fernvale? *Rubrica:* 3 = trinta;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX002 — Porte do parceiro.** Quantos departamentos tem a Fernvale? *Rubrica:* 3 = trinta;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX003 — Regra de testes em produção.** Quando Yusuf pode testar sistemas em produção? *Rubrica:* 3 = só com autorização escrita;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Regra de testes em produção.** Quando Yusuf pode testar sistemas em produção? *Rubrica:* 3 = só com autorização escrita;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX004 — Vulnerabilidade encontrada.** O que acontece se Yusuf encontrar uma vulnerabilidade? *Rubrica:* 3 = relatá-la à equipe de segurança da Fernvale;; 2 = correto;; 1 = publicar;; 0 = nenhuma.
+- **EX004 — Vulnerabilidade encontrada.** O que acontece se Yusuf encontrar uma vulnerabilidade? *Rubrica:* 3 = relatá-la à equipe de segurança da Fernvale;; 2 = parcialmente correto;; 1 = publicar;; 0 = nenhuma.
 
-- **EX005 — Desenho escolhido.** Que desenho Yusuf escolhe? *Rubrica:* 3 = diferença em diferenças;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX005 — Desenho escolhido.** Que desenho Yusuf escolhe? *Rubrica:* 3 = diferença em diferenças;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX006 — Comparação natural.** Por que existe um grupo de comparação? *Rubrica:* 3 = a correção ordenada pelo risco é implantada primeiro em alguns departamentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX006 — Comparação natural.** Por que existe um grupo de comparação? *Rubrica:* 3 = a correção ordenada pelo risco é implantada primeiro em alguns departamentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Condição ética.** Que condição o comitê de ética acrescentou? *Rubrica:* 3 = o líder de segurança revisa as publicações quanto à sensibilidade;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Condição ética.** Que condição o comitê de ética acrescentou? *Rubrica:* 3 = o líder de segurança revisa as publicações quanto à sensibilidade;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -155,13 +155,13 @@ Afirmar que uma tese testa um framework inteiro exagera o que um único estudo p
 
 - **EX010 — Funções do CSF.** Cite as seis funções do CSF 2.0. *Rubrica:* 3 = governar, identificar, proteger, detectar, responder, recuperar;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 
-- **EX011 — Regra da marca d'água mais alta.** Como a FIPS 199 define a categoria de um sistema? *Rubrica:* 3 = a mais alta das três classificações de impacto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Regra da marca d'água mais alta.** Como a FIPS 199 define a categoria de um sistema? *Rubrica:* 3 = a mais alta das três classificações de impacto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Sistemas high.** Que sistemas sintéticos são high? *Rubrica:* 3 = folha de pagamento, controle da água e registros de casos;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
-- **EX013 — Motivo do controle da água.** Por que o controle da água é high apesar do impacto low sobre a confidencialidade? *Rubrica:* 3 = falhas de integridade e disponibilidade poderiam prejudicar a população;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Motivo do controle da água.** Por que o controle da água é high apesar do impacto low sobre a confidencialidade? *Rubrica:* 3 = falhas de integridade e disponibilidade poderiam prejudicar a população;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Lacuna declarada.** Com que estreiteza Yusuf declara sua lacuna? *Rubrica:* 3 = duas medidas de desfecho num único órgão público;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX014 — Lacuna declarada.** Com que estreiteza Yusuf declara sua lacuna? *Rubrica:* 3 = duas medidas de desfecho num único órgão público;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -199,17 +199,17 @@ Mudar as hipóteses depois de ver os dados de desfecho invalida as afirmações 
 
 ### Exercícios
 
-- **EX015 — Primeira hipótese.** O que prevê a primeira hipótese? *Rubrica:* 3 = uma queda maior na mediana da latência de correção crítica nos departamentos adotantes;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX015 — Primeira hipótese.** O que prevê a primeira hipótese? *Rubrica:* 3 = uma queda maior na mediana da latência de correção crítica nos departamentos adotantes;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 
-- **EX016 — Escolha da mediana.** Por que usar medianas para a latência de correção? *Rubrica:* 3 = a latência é distorcida por alguns poucos casos muito lentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Escolha da mediana.** Por que usar medianas para a latência de correção? *Rubrica:* 3 = a latência é distorcida por alguns poucos casos muito lentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Definição de privilégio excessivo.** Como se mede o privilégio excessivo? *Rubrica:* 3 = proporção de contas com permissões fora da linha de base da função;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Definição de privilégio excessivo.** Como se mede o privilégio excessivo? *Rubrica:* 3 = proporção de contas com permissões fora da linha de base da função;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX018 — Resposta à seleção.** Como Yusuf vai tratar a ameaça de seleção? *Rubrica:* 3 = comparar as tendências anteriores à adoção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Resposta à seleção.** Como Yusuf vai tratar a ameaça de seleção? *Rubrica:* 3 = comparar as tendências anteriores à adoção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX019 — Pergunta do estatístico.** Sobre o que o estatístico perguntou? *Rubrica:* 3 = tamanho da amostra;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+- **EX019 — Pergunta do estatístico.** Sobre o que o estatístico perguntou? *Rubrica:* 3 = tamanho da amostra;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
 
-- **EX020 — Momento do congelamento.** Quando o pré-registro é congelado? *Rubrica:* 3 = antes da extração dos dados de desfecho;; 2 = correto;; 1 = depois;; 0 = nenhuma.
+- **EX020 — Momento do congelamento.** Quando o pré-registro é congelado? *Rubrica:* 3 = antes da extração dos dados de desfecho;; 2 = parcialmente correto;; 1 = depois;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -277,17 +277,17 @@ Deixar as linhas de base mudarem durante um estudo confunde a medida com a inter
 
 ### Exercícios
 
-- **EX021 — Causa da diferença na linha de base.** O que explicou a pequena diferença na linha de base? *Rubrica:* 3 = a prefeitura excluiu os sistemas com desativação programada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Causa da diferença na linha de base.** O que explicou a pequena diferença na linha de base? *Rubrica:* 3 = a prefeitura excluiu os sistemas com desativação programada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Proporção excessiva.** Que proporção das contas do piloto tinha privilégio excessivo? *Rubrica:* 3 = 25,3% (152 de 600);; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX022 — Proporção excessiva.** Que proporção das contas do piloto tinha privilégio excessivo? *Rubrica:* 3 = 25,3% (152 de 600);; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX023 — Achado administrativo.** Quantas contas tinham acesso ao console administrativo sem necessidade? *Rubrica:* 3 = 34;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX023 — Achado administrativo.** Quantas contas tinham acesso ao console administrativo sem necessidade? *Rubrica:* 3 = 34;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX024 — Gravidade administrativa.** Por que o acesso desnecessário ao console administrativo é o mais grave? *Rubrica:* 3 = permite mudanças de configuração em todo o sistema;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Gravidade administrativa.** Por que o acesso desnecessário ao console administrativo é o mais grave? *Rubrica:* 3 = permite mudanças de configuração em todo o sistema;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Refinamento da medida.** Que refinamento foi feito depois da auditoria? *Rubrica:* 3 = excluir permissões com exceções aprovadas e ainda válidas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Refinamento da medida.** Que refinamento foi feito depois da auditoria? *Rubrica:* 3 = excluir permissões com exceções aprovadas e ainda válidas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Congelamento da linha de base.** Por que as linhas de base das funções são congeladas? *Rubrica:* 3 = para que as mudanças nelas não confundam a medida;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Congelamento da linha de base.** Por que as linhas de base das funções são congeladas? *Rubrica:* 3 = para que as mudanças nelas não confundam a medida;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -351,17 +351,17 @@ Descrever um intervalo que inclui o zero como prova de um efeito engana os profi
 
 ### Exercícios
 
-- **EX027 — Medianas dos adotantes.** Como mudou a mediana da latência dos adotantes? *Rubrica:* 3 = de 14,6 para 10,1 dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX027 — Medianas dos adotantes.** Como mudou a mediana da latência dos adotantes? *Rubrica:* 3 = de 14,6 para 10,1 dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX028 — Estimativa DiD.** Qual é a estimativa da diferença em diferenças? *Rubrica:* 3 = menos 3,4 dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX028 — Estimativa DiD.** Qual é a estimativa da diferença em diferenças? *Rubrica:* 3 = menos 3,4 dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX029 — Limites do intervalo.** Qual é o intervalo bootstrap de 95%? *Rubrica:* 3 = de menos 7,4 a mais 1,2 dia;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX029 — Limites do intervalo.** Qual é o intervalo bootstrap de 95%? *Rubrica:* 3 = de menos 7,4 a mais 1,2 dia;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX030 — Significado do zero.** O que significa o intervalo incluir o zero? *Rubrica:* 3 = os dados são compatíveis com nenhum efeito;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Significado do zero.** O que significa o intervalo incluir o zero? *Rubrica:* 3 = os dados são compatíveis com nenhum efeito;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX031 — Preocupação com a recuperação.** Por que parte da queda pode ser recuperação do atraso? *Rubrica:* 3 = os adotantes começaram mais lentos que as comparações;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Preocupação com a recuperação.** Por que parte da queda pode ser recuperação do atraso? *Rubrica:* 3 = os adotantes começaram mais lentos que as comparações;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Alternativa da validadora.** Que análise alternativa a validadora tentou? *Rubrica:* 3 = médias do logaritmo da latência;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Alternativa da validadora.** Que análise alternativa a validadora tentou? *Rubrica:* 3 = médias do logaritmo da latência;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -401,15 +401,15 @@ Apresentar uma reanálise exploratória como evidência confirmatória esconde a
 
 - **EX033 — Três críticas.** Cite os três pontos dos revisores. *Rubrica:* 3 = poder, escolha do comparador, mecanismo ausente;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
-- **EX034 — Achado sobre o poder.** O que a simulação de poder mostrou? *Rubrica:* 3 = detecção em cerca de trinta por cento, muito abaixo de oitenta;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Achado sobre o poder.** O que a simulação de poder mostrou? *Rubrica:* 3 = detecção em cerca de trinta por cento, muito abaixo de oitenta;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Comparador excluído.** Que comparador foi excluído na análise de sensibilidade? *Rubrica:* 3 = a companhia de água;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX035 — Comparador excluído.** Que comparador foi excluído na análise de sensibilidade? *Rubrica:* 3 = a companhia de água;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX036 — Rótulo da sensibilidade.** Como a análise de sensibilidade é rotulada? *Rubrica:* 3 = exploratória;; 2 = correto;; 1 = confirmatória;; 0 = nenhuma.
+- **EX036 — Rótulo da sensibilidade.** Como a análise de sensibilidade é rotulada? *Rubrica:* 3 = exploratória;; 2 = parcialmente correto;; 1 = confirmatória;; 0 = nenhuma.
 
 - **EX037 — Conteúdo do mecanismo.** O que a correção ordenada pelo risco mudou? *Rubrica:* 3 = pontuação por categoria, sistemas high primeiro, relatórios semanais;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 
-- **EX038 — Conclusão estreitada.** Qual é a conclusão estreitada? *Rubrica:* 3 = uma redução modesta e incerta numa prefeitura;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Conclusão estreitada.** Qual é a conclusão estreitada? *Rubrica:* 3 = uma redução modesta e incerta numa prefeitura;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -447,17 +447,17 @@ Arquivar nomes e versões reais de sistemas pode expor o parceiro a ataques.
 
 ### Exercícios
 
-- **EX039 — Terceiro estudo.** O que o estudo de revisões de acesso encontrou? *Rubrica:* 3 = uma redução mais clara do privilégio excessivo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX039 — Terceiro estudo.** O que o estudo de revisões de acesso encontrou? *Rubrica:* 3 = uma redução mais clara do privilégio excessivo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX040 — Ferramenta de soma de verificação.** Que módulo calcula as somas de verificação? *Rubrica:* 3 = hashlib;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX040 — Ferramenta de soma de verificação.** Que módulo calcula as somas de verificação? *Rubrica:* 3 = hashlib;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX041 — Figura removida.** Que figura o líder de segurança pediu para remover? *Rubrica:* 3 = a categoria de sistemas corrigida mais lentamente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Figura removida.** Que figura o líder de segurança pediu para remover? *Rubrica:* 3 = a categoria de sistemas corrigida mais lentamente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Rótulos genéricos.** Que detalhes se tornam rótulos genéricos? *Rubrica:* 3 = nomes de sistemas, versões, detalhes de rede e códigos de departamento;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 
-- **EX043 — Dados do arquivo.** Que dados o arquivo público contém? *Rubrica:* 3 = dados sintéticos que reproduzem os números relatados;; 2 = correto;; 1 = reais;; 0 = nenhuma.
+- **EX043 — Dados do arquivo.** Que dados o arquivo público contém? *Rubrica:* 3 = dados sintéticos que reproduzem os números relatados;; 2 = parcialmente correto;; 1 = reais;; 0 = nenhuma.
 
-- **EX044 — Apoio à transferibilidade.** Como Yusuf ajuda os leitores a julgar a transferibilidade? *Rubrica:* 3 = descreve o porte, o setor e a regulação da Fernvale;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Apoio à transferibilidade.** Como Yusuf ajuda os leitores a julgar a transferibilidade? *Rubrica:* 3 = descreve o porte, o setor e a regulação da Fernvale;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -495,17 +495,17 @@ Derivar para uma linguagem mais forte durante a arguição exagera a tese.
 
 ### Exercícios
 
-- **EX045 — Slide lado a lado.** O que o slide principal mostra junto? *Rubrica:* 3 = o resultado inconclusivo das correções e o resultado mais claro do privilégio;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Slide lado a lado.** O que o slide principal mostra junto? *Rubrica:* 3 = o resultado inconclusivo das correções e o resultado mais claro do privilégio;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX046 — Resposta sobre generalização.** O que o estudo de uma única prefeitura pode oferecer? *Rubrica:* 3 = uma abordagem de medição testada e uma estimativa para combinação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX046 — Resposta sobre generalização.** O que o estudo de uma única prefeitura pode oferecer? *Rubrica:* 3 = uma abordagem de medição testada e uma estimativa para combinação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Contagens de incidentes.** Por que as contagens de incidentes não foram usadas? *Rubrica:* 3 = raras e registradas de forma inconsistente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Contagens de incidentes.** Por que as contagens de incidentes não foram usadas? *Rubrica:* 3 = raras e registradas de forma inconsistente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX048 — Correções exigidas.** Cite uma correção exigida. *Rubrica:* 3 = esclarecer a mudança de definição do piloto ou acrescentar uma tabela de medidas anteriores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Número de artigos.** Quantos artigos Yusuf planeja? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX049 — Número de artigos.** Quantos artigos Yusuf planeja? *Rubrica:* 3 = três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX050 — Contribuição principal.** Qual pode ser a contribuição mais valiosa de Yusuf? *Rubrica:* 3 = a abordagem metodológica com logs operacionais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Contribuição principal.** Qual pode ser a contribuição mais valiosa de Yusuf? *Rubrica:* 3 = a abordagem metodológica com logs operacionais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

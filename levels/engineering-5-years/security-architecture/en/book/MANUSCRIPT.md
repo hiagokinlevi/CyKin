@@ -2233,7 +2233,7 @@ Proportionate reviews can miss issues; their limits must be recorded. Placement 
 
 - **EX127 — Facilitation finding.** What did Sofia find much of her review work consisted of? *Rubric:* 3 = asking context and requirement questions of busy project managers;; 2 = questions;; 1 = coding;; 0 = none.
 - **EX128 — Proportionate review.** What did the bike-share review include? *Rubric:* 3 = gateway and scoped tokens check, data classification check, one-hour threat model, two accepted residual risks;; 2 = three;; 1 = vague;; 0 = none.
-- **EX129 — Development area.** What development area did her supervisor note? *Rubric:* 3 = negotiation;; 2 = negotiation, without explanation;; 1 = writing;; 0 = none.
+- **EX129 — Development area.** What development area did her supervisor note? *Rubric:* 3 = negotiation, alongside her strength in clear writing;; 2 = negotiation only;; 1 = writing;; 0 = none.
 
 ### Synthesis
 

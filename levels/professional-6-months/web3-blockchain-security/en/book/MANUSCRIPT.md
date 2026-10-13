@@ -604,7 +604,7 @@ Counting approvals from departed signers lets an outdated list override policy.
 - **EX051 — Departed signer warning.** Which signer triggers a warning? *Rubric:* 3 = former-cfo;; 2 = the departed CFO;; 1 = director;; 0 = none.
 - **EX052 — P-32 status.** Why is P-32 not ready? *Rubric:* 3 = large amount needs 3 approvals, has 2;; 2 = needs three;; 1 = wrong destination;; 0 = none.
 - **EX053 — P-33 problems.** What is wrong with P-33? *Rubric:* 3 = destination not allow-listed and only one active approval;; 2 = two failures;; 1 = vague;; 0 = none.
-- **EX054 — Ready count.** How many proposals are ready? *Rubric:* 3 = none;; 2 = zero;; 1 = all;; 0 = no answer.
+- **EX054 — Ready count.** How many proposals are ready? *Rubric:* 3 = none of the three;; 2 = none, without saying of how many;; 1 = all;; 0 = no answer.
 - **EX055 — Allow-list addition.** Why not just add P-33's destination to the allow-list? *Rubric:* 3 = adding destinations is a controlled change needing verification;; 2 = controlled change;; 1 = no reason;; 0 = none.
 
 ### Synthesis

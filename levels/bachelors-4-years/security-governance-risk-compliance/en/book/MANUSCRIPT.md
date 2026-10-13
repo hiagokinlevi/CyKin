@@ -1474,7 +1474,7 @@ Tabletops do not test technical recovery. Participants may perform for observers
 
 - **EX088 — Exercise safety.** Why does the tabletop use no real systems? *Rubric:* 3 = to stay safe and avoid disruption;; 2 = safety;; 1 = vague;; 0 = none.
 - **EX089 — Missing plan.** What gap concerned the restore plan? *Rubric:* 3 = nobody knew where it was stored;; 2 = location;; 1 = vague;; 0 = none.
-- **EX090 — Notification decision.** Who will decide on external notifications? *Rubric:* 3 = the director;; 2 = director;; 1 = IT lead;; 0 = none.
+- **EX090 — Notification decision.** Who will decide on external notifications? *Rubric:* 3 = the director;; 2 = director, hedged with another option;; 1 = IT lead;; 0 = none.
 
 ### Synthesis
 
@@ -1825,7 +1825,7 @@ Mid-course fixes complicate evaluation. One quarter is a short trial.
 ### Exercises
 
 - **EX112 — Question log.** Why does Sofia log managers' questions? *Rubric:* 3 = they reveal unclear parts of the design;; 2 = clarity;; 1 = vague;; 0 = none.
-- **EX113 — Clarified permission.** Which permission description was clarified? *Rubric:* 3 = case escalation;; 2 = case escalation, without explanation;; 1 = vague;; 0 = none.
+- **EX113 — Clarified permission.** Which permission description was clarified? *Rubric:* 3 = case escalation;; 2 = escalation in general, not the case-escalation permission;; 1 = vague;; 0 = none.
 - **EX114 — Dual definitions.** Why record completion under both definitions? *Rubric:* 3 = to compare fairly with previous quarters;; 2 = comparability;; 1 = vague;; 0 = none.
 
 ### Synthesis

@@ -784,7 +784,7 @@ Quatro clínicas são um piloto pequeno. Aprovado ou reprovado perde detalhes.
 
 ### Exercícios
 
-- **EX049 — Clínica mais forte.** Que clínica passou nos três controles? *Rubrica:* 3 = South;; 2 = South, sem justificativa;; 1 = East;; 0 = nenhuma.
+- **EX049 — Clínica mais forte.** Que clínica passou nos três controles? *Rubrica:* 3 = South;; 2 = South, hesitando com East;; 1 = East;; 0 = nenhuma.
 - **EX050 — Lista de falhas.** Liste as quatro falhas. *Rubrica:* 3 = North acesso, East bloqueio de tela, East acesso, West backup;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Causa do padrão.** Por que a revisão de acesso falhou em duas clínicas? *Rubrica:* 3 = os gerentes receberam as listas de contas atrasadas;; 2 = processo;; 1 = vago;; 0 = nenhuma.
 
@@ -1067,7 +1067,7 @@ Um ano é pouco tempo. As respostas da pesquisa podem ser educadas demais.
 
 - **EX067 — Fontes da avaliação.** Que fontes a avaliação usou? *Rubrica:* 3 = registro, resultados de testes, indicadores, registro de evidências e pesquisa;; 2 = cinco;; 1 = vago;; 0 = nenhuma.
 - **EX068 — Progresso da segmentação.** Quantas clínicas concluíram a segmentação? *Rubrica:* 3 = doze de catorze;; 2 = 12/14;; 1 = vago;; 0 = nenhuma.
-- **EX069 — Carga restante.** Que tarefa continuou demorada? *Rubrica:* 3 = a revisão de acesso;; 2 = revisão de acesso;; 1 = vago;; 0 = nenhuma.
+- **EX069 — Carga restante.** Que tarefa continuou demorada? *Rubrica:* 3 = a revisão de acesso;; 2 = revisão de acesso, hesitando com outra opção;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

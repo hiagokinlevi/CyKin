@@ -74,7 +74,7 @@ Decisions need follow-through. Small teams change often.
 ### Exercises
 
 - **EX001 — Charity size.** How many staff and volunteers does Riverbend have? *Rubric:* 3 = twelve staff and sixty volunteers;; 2 = 72;; 1 = vague;; 0 = none.
-- **EX002 — Where attacks land.** According to Callum, what do most attacks on small charities reach first? *Rubric:* 3 = people;; 2 = people, without explanation;; 1 = systems;; 0 = none.
+- **EX002 — Where attacks land.** According to Callum, what do most attacks on small charities reach first? *Rubric:* 3 = people, before they reach systems;; 2 = people, without the contrast with systems;; 1 = systems;; 0 = none.
 - **EX003 — Rule breaking cause.** Why do people break security rules according to Adams and Sasse (1999)? *Rubric:* 3 = the rules do not fit their work;; 2 = fit;; 1 = carelessness;; 0 = none.
 - **EX004 — Shared login cause.** Why do volunteers share one donations login? *Rubric:* 3 = individual accounts were never arranged;; 2 = setup;; 1 = laziness;; 0 = none.
 - **EX005 — Authority example.** Give an example of an authority tactic. *Rubric:* 3 = posing as the bank or a major donor;; 2 = authority;; 1 = vague;; 0 = none.
@@ -142,7 +142,7 @@ Scope may need updating. Volunteers may not read guides.
 - **EX018 — Record fields.** What does Ruth record about reports? *Rubric:* 3 = date, type and outcome only;; 2 = minimal;; 1 = names;; 0 = none.
 - **EX019 — Serious report.** What does Ruth do with a serious report? *Rubric:* 3 = follow incident steps with the IT volunteer;; 2 = escalate;; 1 = investigate alone;; 0 = none.
 - **EX020 — Simulation risk.** Why are simulations risky for a volunteer charity? *Rubric:* 3 = deception can damage trust;; 2 = trust;; 1 = cost;; 0 = none.
-- **EX021 — Simulation recommendation.** What does Ruth recommend about simulations now? *Rubric:* 3 = none for now;; 2 = none;; 1 = monthly;; 0 = no answer.
+- **EX021 — Simulation recommendation.** What does Ruth recommend about simulations now? *Rubric:* 3 = no simulations for now;; 2 = no simulations, without 'for now';; 1 = monthly;; 0 = no answer.
 - **EX022 — Banned lure themes.** Which lure themes are banned if simulations are ever used? *Rubric:* 3 = money, food or personal hardship;; 2 = hardship;; 1 = vague;; 0 = none.
 - **EX023 — Results use.** How may simulation results ever be used? *Rubric:* 3 = only as totals, never against anyone;; 2 = aggregate;; 1 = vague;; 0 = none.
 - **EX024 — Procedure practice.** How should procedures be practised? *Rubric:* 3 = announced role-play;; 2 = role-play;; 1 = secret tests;; 0 = none.

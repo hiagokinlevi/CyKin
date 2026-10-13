@@ -510,7 +510,7 @@ Combined curves depend on correlation assumptions. Appetite thresholds are judge
 - **EX041 — Appetite example.** Give the example exceedance limit. *Rubric:* 3 = no more than 5% chance of exceeding 1 million;; 2 = 5% at 1m;; 1 = vague;; 0 = none.
 - **EX042 — Within appetite.** At which points is the estimate within appetite? *Rubric:* 3 = 250k and 500k;; 2 = two;; 1 = vague;; 0 = none.
 - **EX043 — One-million breach.** What is the estimate at one million versus appetite? *Rubric:* 3 = 8% versus 5%;; 2 = exceeds;; 1 = vague;; 0 = none.
-- **EX044 — Breach location.** Which part of the curve breaches appetite? *Rubric:* 3 = the tail;; 2 = tail;; 1 = typical year;; 0 = none.
+- **EX044 — Breach location.** Which part of the curve breaches appetite? *Rubric:* 3 = the tail;; 2 = tail, hedged with another option;; 1 = typical year;; 0 = none.
 - **EX045 — Trust answer.** How did Daniel answer whether estimates could be trusted? *Rubric:* 3 = explained inputs, audit review and ranges;; 2 = transparency;; 1 = vague;; 0 = none.
 
 ### Synthesis

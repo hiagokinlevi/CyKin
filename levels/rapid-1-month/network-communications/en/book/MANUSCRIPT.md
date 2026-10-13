@@ -83,7 +83,7 @@ Spending the first week researching expensive products delays cheap steps that w
 
 - **EX001 — Bakery assets.** Name three things network security protects at the bakery. *Rubric:* 3 = card payments, orders, accounts or Wi-Fi;; 2 = two;; 1 = one;; 0 = none.
 - **EX002 — Main weakness.** What weakness does the one-page drawing reveal? *Rubric:* 3 = customer phones share network with tills and office PC;; 2 = shared network;; 1 = vague;; 0 = none.
-- **EX003 — Goal for tills.** Which security goal matters most for tills during opening hours? *Rubric:* 3 = availability;; 2 = availability, without explanation;; 1 = confidentiality;; 0 = none.
+- **EX003 — Goal for tills.** Which security goal matters most for tills during opening hours? *Rubric:* 3 = availability, so sales and payments keep working;; 2 = availability, without explanation;; 1 = confidentiality;; 0 = none.
 - **EX004 — Opportunistic threats.** Why are basic controls effective for small businesses? *Rubric:* 3 = most harm from automated, opportunistic attacks;; 2 = automated;; 1 = not targeted;; 0 = none.
 - **EX005 — Decision questions.** List Leo's three questions for each step. *Rubric:* 3 = harm prevented, cost, disruption;; 2 = two;; 1 = one;; 0 = none.
 - **EX006 — First step choice.** Why separate customer Wi-Fi first? *Rubric:* 3 = high value, low cost, low disruption;; 2 = cheap and effective;; 1 = required;; 0 = none.

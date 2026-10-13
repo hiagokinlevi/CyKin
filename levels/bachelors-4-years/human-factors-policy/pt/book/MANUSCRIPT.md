@@ -1570,7 +1570,7 @@ A tradução pode simplificar demais. As reuniões podem ser dominadas pelas voz
 ### Exercícios
 
 - **EX094 — Enquadramento para os funcionários.** Como a regra foi apresentada aos funcionários? *Rubrica:* 3 = proteção contra a pressão de julgar quem liga;; 2 = alívio;; 1 = vago;; 0 = nenhuma.
-- **EX095 — Preocupação do representante.** Com o que o representante dos funcionários se preocupava? *Rubrica:* 3 = a culpa;; 2 = culpa;; 1 = custo;; 0 = nenhuma.
+- **EX095 — Preocupação do representante.** Com o que o representante dos funcionários se preocupava? *Rubrica:* 3 = ser culpado por erros;; 2 = culpa, sem dizer pelo quê;; 1 = custo;; 0 = nenhuma.
 - **EX096 — Resultado da reunião.** Com o que a reunião concordou? *Rubrica:* 3 = log minimizado, orçamento modesto, modelos e declaração de não atribuição de culpa;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese

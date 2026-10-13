@@ -524,7 +524,7 @@ Trust relations change when suppliers change; review them. Providers of trust ne
 ### Exercises
 
 - **EX028 — Five services.** Name the five trust services the council uses. *Rubric:* 3 = public CA, internal CA, document signing, timestamping, payment webhook signatures;; 2 = four;; 1 = two;; 0 = none.
-- **EX029 — Webhook trust.** Who trusts whom for payment notices? *Rubric:* 3 = the council trusts the payment provider's webhook key;; 2 = correct;; 1 = reversed;; 0 = none.
+- **EX029 — Webhook trust.** Who trusts whom for payment notices? *Rubric:* 3 = the council trusts the payment provider's webhook key;; 2 = partly correct;; 1 = reversed;; 0 = none.
 - **EX030 — Provider duties.** List three provider responsibilities for signed decisions. *Rubric:* 3 = three of protect key, document process, keep evidence for long-term validation, revoke promptly;; 2 = two;; 1 = one;; 0 = none.
 
 ### Synthesis

@@ -382,7 +382,7 @@ Short evaluations miss long-term effects. Offices differ in exposure.
 - **EX026 — Rollout order.** How was the rollout order chosen? *Rubric:* 3 = randomly;; 2 = random;; 1 = by size;; 0 = none.
 - **EX027 — Outcome measure.** What outcome was used? *Rubric:* 3 = share of malicious emails reported per office per month;; 2 = reported share;; 1 = clicks;; 0 = none.
 - **EX028 — Lab estimate.** What within-month difference did the lab find? *Rubric:* 3 = about 14.4 points, permutation share 0.001;; 2 = positive;; 1 = vague;; 0 = none.
-- **EX029 — No simulations.** Were simulations part of the evaluation? *Rubric:* 3 = no;; 2 = none;; 1 = yes;; 0 = no answer.
+- **EX029 — No simulations.** Were simulations part of the evaluation? *Rubric:* 3 = no; it used real reported emails only;; 2 = no, without saying what was used;; 1 = yes;; 0 = no answer.
 - **EX030 — Maximum delay.** What was the maximum delay for any office? *Rubric:* 3 = two months;; 2 = 2;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -650,7 +650,7 @@ Short periods mislead. Key loss needs good recovery.
 - **EX052 — Two keys.** Why does each person register two keys? *Rubric:* 3 = as a backup if one is lost;; 2 = backup;; 1 = vague;; 0 = none.
 - **EX053 — Help desk pattern.** What did the lab show for help desk calls? *Rubric:* 3 = rose to 62 in month one, then fell to 31 by month four from a base of 45;; 2 = dip;; 1 = vague;; 0 = none.
 - **EX054 — Attacker shift.** What might attackers shift to? *Rubric:* 3 = phone-based fraud;; 2 = phone;; 1 = vague;; 0 = none.
-- **EX055 — Audience order.** Who heard the results first? *Rubric:* 3 = staff;; 2 = staff, without explanation;; 1 = the board;; 0 = none.
+- **EX055 — Audience order.** Who heard the results first? *Rubric:* 3 = staff, reinforcing that the programme is done with them;; 2 = staff, without explanation;; 1 = the board;; 0 = none.
 
 ### Synthesis
 

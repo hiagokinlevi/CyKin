@@ -2234,7 +2234,7 @@ Sistemas de modelos podem ser estendidos de forma insegura; revise cada novo mod
 ### Exercícios
 
 - **EX136 — Bug de expiração.** Que teste falhou na verificação? *Rubrica:* 3 = um estudo expirado podia rodar por causa de um formato de data com fuso horário;; 2 = menciona expiração;; 1 = vago;; 0 = nenhuma.
-- **EX137 — Resultado do ataque.** O que o ataque de reconstrução recuperou? *Rubrica:* 3 = nenhum dado de nenhuma pessoa;; 2 = nada;; 1 = parcial;; 0 = sem resposta.
+- **EX137 — Resultado do ataque.** O que o ataque de reconstrução recuperou? *Rubrica:* 3 = nada sobre nenhuma pessoa, porque o ruído e o orçamento o impediram;; 2 = nada, sem o motivo;; 1 = parcial;; 0 = sem resposta.
 - **EX138 — Visão dos pesquisadores.** Como os pesquisadores avaliaram a abordagem por modelos? *Rubrica:* 3 = restritiva, mas viável; pediram mais um modelo;; 2 = menciona restrição;; 1 = ideal;; 0 = nenhuma.
 
 ### Síntese

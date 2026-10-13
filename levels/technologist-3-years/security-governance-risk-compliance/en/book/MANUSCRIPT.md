@@ -848,7 +848,7 @@ Four clinics are a small pilot. Pass or fail loses detail.
 
 ### Exercises
 
-- **EX049 — Strongest clinic.** Which clinic passed all three controls? *Rubric:* 3 = South;; 2 = South, without explanation;; 1 = East;; 0 = none.
+- **EX049 — Strongest clinic.** Which clinic passed all three controls? *Rubric:* 3 = South;; 2 = South, hedged with East;; 1 = East;; 0 = none.
 - **EX050 — Failure list.** List the four failures. *Rubric:* 3 = North access, East screenlock, East access, West backup;; 2 = four;; 1 = vague;; 0 = none.
 - **EX051 — Pattern cause.** Why did access review fail in two clinics? *Rubric:* 3 = managers received account lists late;; 2 = process;; 1 = vague;; 0 = none.
 
@@ -1155,7 +1155,7 @@ One year is short. Survey responses may be polite.
 
 - **EX067 — Evaluation sources.** Which sources did the evaluation use? *Rubric:* 3 = register, test results, indicators, evidence log and survey;; 2 = five;; 1 = vague;; 0 = none.
 - **EX068 — Segmentation progress.** How many clinics completed segmentation? *Rubric:* 3 = twelve of fourteen;; 2 = 12/14;; 1 = vague;; 0 = none.
-- **EX069 — Remaining burden.** Which task remained time-consuming? *Rubric:* 3 = the access review;; 2 = access review;; 1 = vague;; 0 = none.
+- **EX069 — Remaining burden.** Which task remained time-consuming? *Rubric:* 3 = the access review;; 2 = access review, hedged with another option;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
