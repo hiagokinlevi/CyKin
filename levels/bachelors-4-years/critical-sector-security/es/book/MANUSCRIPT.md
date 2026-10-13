@@ -54,8 +54,8 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 16. [Arquitectura de seguridad](#ch-16)
 17. [Conceptos de criptografía](#ch-17)
 18. [Métodos de investigación I](#ch-18)
-19. [Infraestructura crítica y seguridad sectorial: alcance y teoría](../../en/book/MANUSCRIPT.md#ch-19)
-20. [Infraestructura crítica y seguridad sectorial: casos fundacionales](../../en/book/MANUSCRIPT.md#ch-20)
+19. [Infraestructura crítica y seguridad sectorial: alcance y teoría](#ch-19)
+20. [Infraestructura crítica y seguridad sectorial: casos fundacionales](#ch-20)
 21. [Infraestructura crítica y seguridad sectorial: modelos de sistemas](../../en/book/MANUSCRIPT.md#ch-21)
 22. [Infraestructura crítica y seguridad sectorial: datos y dependencias](../../en/book/MANUSCRIPT.md#ch-22)
 23. [Infraestructura crítica y seguridad sectorial: métodos I](../../en/book/MANUSCRIPT.md#ch-23)
@@ -1434,7 +1434,136 @@ La investigación empieza con una pregunta lo bastante específica como para ser
 <!-- cyberabc:chapter-navigation:start ch-18 -->
 ### Siga estudiando — capítulo 18 de 40
 
-[← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Infraestructura crítica y seguridad sectorial: alcance y teoría
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar qué hace que una infraestructura sea «crítica» y comparar cómo la definen y organizan los Estados Unidos, la Unión Europea y el Reino Unido; (2) usar las ideas de funciones críticas, interdependencia y resiliencia para analizar un servicio; (3) comparar tres lentes teóricas (riesgo, resiliencia y seguridad funcional/sistemas) y decir qué ve y qué pasa por alto cada una; y (4) situar a una organización en su contexto regulatorio y sectorial. Abre el núcleo disciplinar del libro y se apoya en todos los capítulos 1–18.
+
+### 19.1 Qué significa «crítica»
+
+Una infraestructura es **crítica** cuando su interrupción dañaría gravemente la salud, la seguridad, la seguridad económica o el funcionamiento de la sociedad. Los gobiernos lo concretan de formas distintas. Los Estados Unidos designan dieciséis sectores de infraestructura crítica, desde la energía y el agua hasta la sanidad y los servicios financieros ([CISA, Critical Infrastructure Sectors](https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience/critical-infrastructure-sectors)), y complementan los sectores con un conjunto de **Funciones Críticas Nacionales**: funciones como «suministrar agua» o «prestar atención médica» cuya interrupción sería debilitante ([CISA, NCF set](https://www.cisa.gov/national-critical-functions-set)). La Unión Europea regula la ciberseguridad de las entidades «esenciales» e «importantes» de muchos sectores mediante la Directiva NIS2 ([Directive (EU) 2022/2555](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/)), la resiliencia física y operativa más amplia de las «entidades críticas» mediante la Directiva CER ([Directive (EU) 2022/2557](https://eur-lex.europa.eu/eli/dir/2022/2557/oj)) y la resiliencia operativa digital de las entidades financieras mediante DORA ([Regulation (EU) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj)). El National Cyber Security Centre del Reino Unido publica el Cyber Assessment Framework, que se usa para evaluar a los operadores de servicios esenciales ([NCSC CAF](https://www.ncsc.gov.uk/collection/caf)).
+
+La **visión por funciones** suele ser más útil que la visión por sectores. El Calder Valley Hospital pertenece a la «sanidad», pero la función que necesitan las personas es «prestar atención de urgencias», que depende de la electricidad, el agua, las comunicaciones, el despacho y las cadenas de suministro gestionadas por otros sectores.
+
+### 19.2 Tres lentes
+
+El **riesgo** (capítulo 23) pregunta: ¿qué podría ocurrir, con qué probabilidad, con qué gravedad y qué controles lo reducen más por el dinero invertido? Su fortaleza es la priorización; su debilidad, que las estimaciones de probabilidad captan mal los eventos raros, nuevos o en cascada. La **resiliencia** pregunta: cuando se produce una interrupción, sea cual sea su causa, ¿cómo absorbe el servicio el golpe, se adapta y se recupera? Haimes define la resiliencia como la capacidad de soportar una interrupción importante con una degradación aceptable y de recuperarse en un tiempo y con un coste aceptables ([Haimes, 2009](https://doi.org/10.1111/j.1539-6924.2009.01216.x)); Bruneau y sus colegas la midieron como la pérdida de calidad del servicio a lo largo del tiempo ([Bruneau et al., 2003](https://doi.org/10.1193/1.1623497)). La guía de ingeniería de ciberresiliencia del NIST aplica estas ideas a los sistemas ([SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1)). Las visiones de **seguridad funcional y sistemas** tratan los accidentes como el resultado de un control inadecuado sobre componentes que interactúan, más que de fallas aisladas ([Leveson, 2004](https://doi.org/10.1016/S0925-7535(03)00047-X)), y nos recuerdan que el error humano suele ser un síntoma del diseño del sistema ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)). Un analista competente usa las tres: el riesgo para priorizar, la resiliencia para prepararse para lo que el análisis de riesgos pasó por alto y el pensamiento sistémico para entender cómo fallan juntas las organizaciones y la tecnología.
+
+### 19.3 Qué tiene de distintivo el campo
+
+Cinco rasgos se repiten en todos los sectores: las **consecuencias físicas** (daño a las personas y al medio ambiente, no solo a los datos); la **tecnología de larga vida** (capítulo 2); la **interdependencia** (capítulo 22); la **regulación y la rendición de cuentas pública**; y la **propiedad mixta**: la mayor parte de la infraestructura la operan empresas privadas, pero la sociedad depende de ella, así que los incentivos para invertir en protección frente a eventos raros son débiles. Estos rasgos explican por qué fracasa «aplicar el manual de la TI corporativa» y por qué importa el conocimiento específico de cada sector.
+
+En Calder estos rasgos son concretos: el daño del CVH es físico (pacientes), las RTU de CPN duran décadas, la subestación alimenta a otros cuatro servicios (Lab 3), cada operador responde ante su propio regulador y la mayoría son empresas privadas cuya falla perjudica a residentes del condado que no son sus clientes.
+
+### 19.4 Ejemplo resuelto: perfil del CEDC (sintético)
+
+**Este caso es sintético.** Un perfil sectorial del County Emergency Dispatch Centre: *función*: recibir llamadas de emergencia y despachar ambulancias, bomberos y policía; *daño por pérdida*: retraso de la respuesta en cuestión de minutos; *dependencias*: telecomunicaciones (llamadas y datos del CAD), electricidad (SAI y generador), servicios en la nube del fabricante del CAD, personal; *contexto regulatorio*: obligaciones de servicio público y, según la jurisdicción, obligaciones de ciberseguridad para entidades esenciales (a verificar con asesoría jurídica); *lentes*: riesgo, el ransomware en el CAD es el escenario principal; resiliencia, el respaldo con papel y radio debe sostener el despacho durante horas; sistemas, un paso al papel a las 2 de la madrugada es tanto un problema de factores humanos como técnico. El perfil aún no dice qué hacer; dice qué preguntas importan.
+
+### 19.5 Actividad práctica
+
+Elija un sector real de su país. A partir de fuentes oficiales, averigüe quién lo designa como crítico, qué ley o marco fija sus obligaciones de ciberseguridad, qué organismo lo supervisa y qué orientación pública se aplica. Registre cada fuente con su fecha. No dé por hecho que el modelo de la UE, de los EE. UU. o del Reino Unido se aplica en otros lugares. Registre la jurisdicción y la fecha de cada fuente, porque las definiciones cambian: la UE sustituyó su anterior directiva de seguridad de las redes por la NIS2, y las fechas de transposición nacional difieren. Cuando un marco solo se aplica por encima de un umbral de tamaño, anote el umbral y si el operador elegido lo supera.
+
+### 19.6 Errores comunes y límites
+
+- Equiparar «infraestructura crítica» con «TO».
+- Leer una lista de sectores como una lista de sectores independientes.
+- Usar una sola lente e ignorar lo que revelan las demás.
+- Afirmar obligaciones legales sin comprobar el texto vigente y la jurisdicción.
+
+El CEDC muestra el primer error: un centro de despacho casi no tiene TO y aun así es crítico. El Lab 3 muestra el segundo: las entradas de la subestación, las telecomunicaciones y el agua dependen unas de otras. Usar solo la lente del riesgo con el CEDC pasaría por alto el problema del paso al papel a las 2 de la madrugada. Y el perfil del CEDC deja a propósito sus obligaciones legales «a verificar con asesoría jurídica».
+
+### Ejercicios — capítulo 19
+
+**EX037 — Funciones, no sectores.** *Objetivo:* aplicar la visión por funciones. *Entradas:* Calder Mutual. *Pasos:* nombre dos funciones críticas que respalda, sus dependencias de otros sectores y la cronología del daño si cada una se detiene. *Evidencia esperada:* perfil breve. *Rúbrica:* 3 = funciones como «prestar servicios de pago» y «dar acceso al efectivo», dependencias de la electricidad, las telecomunicaciones y otras infraestructuras financieras, cronología del daño (horas para los pagos, días para salarios y prestaciones); 2 = solo a nivel de sector; 1 = vago; 0 = nada.
+
+**EX038 — Tres lentes.** *Objetivo:* comparar teorías sobre un caso. *Entradas:* la planta de tratamiento de CW. *Pasos:* escriba una pregunta que haría cada lente y una cosa que cada una podría pasar por alto. *Evidencia esperada:* tres pares. *Rúbrica:* 3 = riesgo (escenarios probables; pasa por alto cascadas nuevas), resiliencia (recuperación y modos degradados; puede infravalorar la economía de la prevención), sistemas (estructura de control, factores humanos y organizativos; más difícil de cuantificar); 2 = dos lentes; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+Una infraestructura es crítica porque la sociedad depende de sus funciones. Las jurisdicciones la organizan de forma distinta mediante sectores, funciones y leyes como NIS2, CER y DORA. El riesgo, la resiliencia y el pensamiento sistémico son lentes complementarias, y los rasgos distintivos del campo (consecuencias físicas, longevidad, interdependencia, regulación y propiedad mixta) explican por qué necesita su propia disciplina.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Siga estudiando — capítulo 19 de 40
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Infraestructura crítica y seguridad sectorial: casos fundacionales
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) resumir seis casos públicos que dieron forma al campo a partir de sus fuentes primarias o autorizadas; (2) separar lo que establecen las fuentes de lo que se repite habitualmente; (3) extraer lecciones trasladables y compararlas entre sectores; y (4) tratar con honestidad los relatos revisados. Se apoya en el capítulo 19 y prepara el capítulo 31 (casos avanzados) y el proyecto final. Todas las descripciones se mantienen al nivel de las fuentes citadas; ningún caso se enseña como técnica.
+
+### 20.1 Leer un caso
+
+Para cada caso, registre: **fecha y sector**; **qué le ocurrió al servicio** (alcance, duración, personas afectadas); **acceso inicial y propagación**, solo tal como los describe la fuente; **respuesta**; **tipo de fuente** (aviso gubernamental, informe de auditoría, análisis revisado por pares, comunicado de la empresa, periodismo); y **qué sigue siendo incierto**. Los primeros informes a menudo se equivocan; los posteriores a menudo los corrigen. Un buen analista cita ambos. Para Oldsmar este registro tiene dos fechas: el aviso de 2021 y la declaración de 2023 que lo revisó. Ambos forman parte del registro, con el relato del aviso etiquetado como superado en lugar de eliminado.
+
+### 20.2 Seis casos
+
+**Distribución eléctrica en Ucrania, diciembre de 2015.** La alerta de CISA describe ataques coordinados contra tres empresas regionales de distribución que causaron cortes que afectaron a unos 225 000 clientes, con operación remota de interruptores, destrucción de algunos sistemas e interrupción de los centros de atención telefónica; el suministro se restableció pasando a la operación manual ([CISA IR-ALERT-H-16-056-01](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01); véase también el [análisis de E-ISAC/SANS](https://nsarchive.gwu.edu/document/15331-sans-and-electricity-information-sharing-and)). *Lección:* el respaldo manual y un personal capaz de operar sin automatización fueron decisivos.
+
+**WannaCry y el NHS, mayo de 2017.** La National Audit Office del Reino Unido concluyó que el ransomware afectó al menos a un tercio de los *trusts* del NHS en Inglaterra, provocó la cancelación de citas y el desvío de ambulancias, y que las organizaciones afectadas tenían sistemas Windows sin parchear o sin soporte; el NHS no había ensayado una respuesta nacional ([NAO, 2017](https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/)). *Lección:* el malware no dirigido puede causar daño clínico; la higiene básica y la coordinación ensayada importan.
+
+**TRITON/HatMan, 2017.** El informe de análisis de malware de CISA describe un malware diseñado para interactuar con un controlador concreto de un sistema instrumentado de seguridad, la capa destinada a evitar daños físicos ([CISA MAR-17-352-01](https://www.cisa.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%20-%20Safety%20System%20Targeted%20Malware%20%28Update%20B%29.pdf)). *Lección:* los sistemas de seguridad funcional son objetivos, y su independencia de las redes de control debe ser real.
+
+**Tratamiento de agua de Oldsmar, febrero de 2021.** El aviso de CISA informó de que actores no identificados accedieron al sistema de control de una planta de tratamiento de agua a través de un software de acceso remoto y aumentaron el punto de consigna del hidróxido de sodio, algo que un operador advirtió y revirtió ([CISA AA21-042A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-042a)). En 2023, un antiguo administrador municipal dijo que el evento fue probablemente un error de un empleado y no una intrusión ([WUSF, 2023](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021)). *Lección:* fuera cual fuera la causa, el acceso remoto sin gestionar y la dependencia de un único operador atento eran debilidades; y los relatos públicos pueden revisarse.
+
+**Colonial Pipeline, mayo de 2021.** El aviso conjunto de CISA y el FBI sobre el ransomware DarkSide informa de que los actores desplegaron ransomware contra la red de TI de una empresa de oleoductos, de que no había indicios de que sus redes de TO se hubieran visto afectadas directamente y de que la empresa desconectó de forma proactiva ciertos sistemas de TO para garantizar su seguridad ([CISA AA21-131A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a)). La retrospectiva de CISA a los dos años nombra a la empresa y recuerda las colas de combustible a lo largo de la costa este que siguieron ([CISA, 2023](https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years)). *Lección:* un compromiso de la TI puede detener las operaciones de TO a través de dependencias de negocio y decisiones de precaución, sin tocar el sistema de control.
+
+**Actualización de CrowdStrike, julio de 2024.** Una actualización defectuosa de un software de seguridad bloqueó equipos Windows en todo el mundo; Microsoft estimó que se vieron afectados unos 8,5 millones de dispositivos, con interrupciones en aerolíneas, hospitales y bancos ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)). *Lección:* no hace falta un adversario; una dependencia de software compartida es un punto único de falla para varios sectores.
+
+### 20.3 Comparar los casos
+
+| Caso | Causa | Efecto en el sector | Lección trasladable |
+|---|---|---|---|
+| Ucrania 2015 | Ataque deliberado | Corte eléctrico | Capacidad de operación manual |
+| WannaCry 2017 | Malware no dirigido | Interrupción clínica | Higiene, coordinación ensayada |
+| TRITON 2017 | Malware dirigido | Capa de seguridad funcional amenazada | Independencia de los sistemas de seguridad funcional |
+| Oldsmar 2021 | Discutida | Casi accidente en la dosificación química | Gobierno del acceso remoto; relatos revisados |
+| Colonial 2021 | Ransomware en la TI | Parada de precaución de la TO | Dependencia de negocio entre TI y TO |
+| CrowdStrike 2024 | Actualización defectuosa | Interrupción intersectorial | Concentración en dependencias compartidas |
+
+La tabla comprime cada caso en una lección para poder compararlos; no es un resumen de lo que ocurrió. Lea la columna «Causa»: dos de los seis no implican ningún ataque dirigido contra el sistema de control.
+
+### 20.4 Ejemplo resuelto: lecciones para el CVH (aplicación sintética)
+
+**La aplicación es sintética; los casos están citados arriba.** Para el Calder Valley Hospital, las lecciones trasladables son: (1) ensayar la operación sin TI (procesos en papel, como hicieron los operadores ucranianos sin automatización); (2) inventariar y aislar los dispositivos sin soporte (WannaCry); (3) confirmar que un compromiso del BMS no puede detener los controles de seguridad locales de la ventilación de los quirófanos (la lección de TRITON sobre las capas independientes); (4) gobernar el acceso remoto al BMS (Oldsmar); (5) cartografiar qué procesos clínicos dependen de la TI de negocio, como la admisión de pacientes (Colonial); y (6) planificar la falla masiva de un producto de endpoint compartido (CrowdStrike).
+
+### 20.5 Errores comunes y límites
+
+- Repetir detalles llamativos que ninguna fuente primaria respalda.
+- Citar el primer relato e ignorar la corrección.
+- Tratar cada caso como un ataque.
+- Convertir un estudio de caso en una receta de ataque.
+
+Ejemplos habituales: afirmar que Oldsmar fue «un hackeo» sin la revisión de 2023; repetir duraciones de cortes que no figuran en la fuente citada; llamar ataque a lo de CrowdStrike; o describir las técnicas de Stuxnet cuando la lección es la suposición que falló. Cada uno de los seis resúmenes de aquí se mantiene al nivel que su fuente respalda, y el EX039 le pide que compruebe uno.
+
+### Ejercicios — capítulo 20
+
+**EX039 — Comprobación de la fuente primaria.** *Objetivo:* separar la fuente de la repetición. *Entradas:* uno de los seis casos de este capítulo. *Pasos:* lea la fuente citada y enumere tres hechos que afirma, una afirmación repetida habitualmente que no hace (búsquela en un artículo de prensa o un blog) y cómo redactaría el caso para un informe. *Evidencia esperada:* lista y redacción. *Rúbrica:* 3 = hechos exactos con su ubicación en la fuente, una afirmación sin respaldo identificada, redacción cuidadosa; 2 = solo hechos; 1 = hechos de fuentes secundarias; 0 = nada.
+
+**EX040 — Lección intersectorial.** *Objetivo:* trasladar una lección. *Entradas:* Colonial Pipeline. *Pasos:* aplique su lección a Calder Transit: ¿qué sistemas de TI de negocio podrían forzar una parada de precaución de las operaciones ferroviarias y qué podría evitarlo? *Evidencia esperada:* dos dependencias y dos medidas. *Rúbrica:* 3 = p. ej., venta de billetes/ingresos, programación de tripulaciones, información a los pasajeros; medidas como reglas de operación degradada acordadas de antemano y la separación de las dependencias operativas respecto de las de negocio; 2 = una de cada; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+Los casos fundacionales del campo enseñan mediante la comparación: respaldo manual, higiene, independencia de los sistemas de seguridad funcional, gobierno del acceso remoto, dependencia de negocio entre TI y TO, y concentración en dependencias compartidas. Lea las fuentes primarias, tenga presentes las revisiones y traslade lecciones, no técnicas.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Siga estudiando — capítulo 20 de 40
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](../../en/book/MANUSCRIPT.md#ch-21)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1516,6 +1645,14 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX035.** Ejemplo: «Entre los operadores de distribución eléctrica de [un país] que publicaron informes de incidentes o informes anuales entre 2020 y 2025, ¿con qué frecuencia se mencionan incidentes iniciados por phishing y qué mitigaciones describen los informes?»: descriptiva con un elemento comparativo (las mitigaciones), con evidencia procedente de informes públicos. Otra opción es una pregunta comparativa sobre dos enfoques de autenticación resistente al phishing en un laboratorio.
 
 **EX036.** De constructo: los «incidentes notificados» miden la notificación y la detección, no los ataques. Interna: los hospitales que compran X también pueden tener presupuestos mayores, más personal o una exposición distinta (confusión); selección: los compradores difieren de forma sistemática. Externa: los hallazgos de los hospitales estudiados pueden no ser trasladables. Fiabilidad: definiciones distintas de «incidente de ransomware» entre hospitales.
+
+**EX037.** Funciones: «prestar servicios de pago» (autorización de tarjetas, transferencias) y «dar acceso al efectivo». Dependencias: electricidad, telecomunicaciones (centrales, operadores), sistemas nacionales de pago y compensación, redes de tarjetas, proveedores de nube, personal. Cronología del daño: las fallas en los pagos con tarjeta hacen daño en horas (compras de combustible y alimentos); los pagos de salarios y prestaciones, en días; la pérdida de acceso al efectivo agrava el daño si los pagos con tarjeta también están caídos.
+
+**EX038.** Riesgo: «¿qué escenarios de la planta son más probables y dañinos?»; puede pasar por alto cascadas nuevas o la adaptación del adversario. Resiliencia: «¿cuánto tiempo puede la planta suministrar agua segura en modos degradados y con qué rapidez se recupera?»; puede infravalorar la prevención rentable. Sistemas: «¿qué acciones de control de operadores, software y procedimientos podrían ser inseguras?»; más difícil de cuantificar y priorizar.
+
+**EX039.** Ejemplo (Oldsmar): CISA afirma que actores no identificados accedieron al sistema SCADA mediante un software de acceso remoto, aumentaron el punto de consigna del hidróxido de sodio y un operador revirtió el cambio. Repetido habitualmente, pero sin respaldo en ese aviso: afirmaciones sobre la identidad del atacante. Redacción para el informe: «En febrero de 2021, CISA informó de un aparente cambio no autorizado en la dosificación química de una planta de agua de Florida; en 2023, un antiguo cargo municipal dijo que probablemente fue un error de un empleado. En cualquier caso, el caso ilustra el riesgo del acceso remoto sin gestionar».
+
+**EX040.** Dependencias: sistemas de venta de billetes e ingresos (puede rechazarse operar sin recaudación), planificación de turnos y programación de tripulaciones, sistemas de información a los pasajeros, gestión del mantenimiento (registros de defectos críticos para la seguridad funcional). Medidas: reglas de operación degradada acordadas de antemano (p. ej., viaje gratuito, turnos en papel) aprobadas por la dirección con antelación; separación y copia de seguridad de los datos operativamente necesarios, como los registros de defectos; ejercicios periódicos de circulación de trenes sin TI de negocio.
 
 <a id="glossary"></a>
 
