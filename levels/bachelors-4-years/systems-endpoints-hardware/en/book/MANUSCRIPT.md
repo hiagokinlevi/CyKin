@@ -505,10 +505,6 @@ Updates and settings reach home laptops only when the VPN connects, unless the m
 
 Aisha records this as an early, small change with a measured effect.
 
-### Public Wi-Fi
-
-Staff sometimes work in cafés. The laptop firewall set to the public profile blocks incoming connections.
-
 ### Applying it
 
 Gareth tries the idea on a test laptop first, recording each setting changed and its effect on staff tasks. Only after a week without problems does it go into the shared baseline, with a note explaining why.
@@ -991,10 +987,6 @@ She documents who holds admin rights on each system and why, creating the first 
 
 The contractor cannot approve their own access changes; Gareth approves them, and vice versa.
 
-### Request process
-
-A simple form lets staff request software; Gareth aims to respond within two working days.
-
 ### Reading the evidence
 
 Aisha compares two sources for this chapter: the relevant NIST guidance and a research paper. The guidance tells her what organisations should do; the paper tells her what tends to happen in practice. Where they differ, she notes the gap and asks which applies to an organisation of Bramley's size. This habit of reading both kinds of source carefully is one the tutor stresses throughout the course.
@@ -1156,14 +1148,6 @@ When she presents the baseline to Gareth, she shows counts first, then percentag
 ### Measures and decisions
 
 Each measure is linked to a decision it supports: encryption share decides rollout priority; patch tails decide where to investigate; unmanaged devices decide inventory work; unneeded services decide server hardening. Measures without a decision are dropped to keep the work focused.
-
-### Review
-
-Dr Grant reviews the baseline method before Aisha starts making changes.
-
-### Note
-
-The baseline date is fixed in the dissertation.
 
 ### Worked example
 
@@ -1386,10 +1370,6 @@ She also lists possible confounders: holidays, new laptops and any other policy 
 ### Ethics check
 
 The study uses existing device data, aggregated, with no names. Dr Grant confirms it needs only light-touch ethics approval, which she obtains.
-
-### Communication
-
-Staff are told that reminders are being tried and why.
 
 ### Sample size
 
@@ -1895,10 +1875,6 @@ Each group's completion is recorded with the date and any issues.
 
 Every change is recorded in a log with date, devices, reason and result.
 
-### Expiry dates
-
-The two TPM-less laptops are scheduled for replacement within six months.
-
 ### Rollback
 
 Each change has a rollback step written before rollout, so a problem can be reversed within an hour. During rollout, one group's screen lock setting conflicts with a presentation tool; the rollback is used for that group, the setting is adjusted and the group is redone the next week.
@@ -2084,10 +2060,6 @@ Writing the role documents takes Aisha and Gareth an afternoon but immediately r
 
 Role documents are stored with the server inventory and reviewed yearly.
 
-### Backups before patching
-
-Before each server patch, Gareth confirms the latest backup completed and a restore test was done in the last quarter.
-
 ### Contractor access
 
 The contractor's access is limited to the servers they support.
@@ -2188,10 +2160,6 @@ She repeats the verification monthly as part of the weekly routine's monthly ext
 
 Bramley's manager receives a one-line monthly status: laptops verified encrypted out of total.
 
-### Evidence
-
-Each verification run is saved with its date.
-
 ### The five remaining
 
 Of the 45 laptops, 40 are encrypted at first verification. The five remaining are two still encrypting, one whose TPM had failed and two that were not reporting. The two encrypting finish overnight, the failed TPM is fixed, and the two silent laptops are verified when they come back online, one after its user returns from leave. The two old laptops without a TPM are already among the encrypted 40, protected by a password until they are replaced.
@@ -2289,10 +2257,6 @@ The next month, failures drop from 34 to 15, with pending reboots falling most. 
 ### Unknown failures
 
 The two unknown failures are investigated individually; one is a corrupted update cache, fixed by resetting it.
-
-### Driver conflicts
-
-Driver conflicts are reported to the laptop vendor.
 
 ### Reading the breakdown
 
@@ -2498,14 +2462,6 @@ The role documents and the service list now agree, and the lab runs monthly to c
 ### Checking with owners
 
 Before turning anything off, Gareth asks the server owner and the contractor whether the service is used. Asking first avoids surprises and builds trust.
-
-### Re-enabling
-
-Each disabled service has a note on how to turn it back on if needed.
-
-### Firewall rules
-
-Matching firewall rules for the disabled services are removed too.
 
 ### Worked example
 
@@ -3288,10 +3244,6 @@ The evaluation lab compares the baseline with the final measures. Encrypted lapt
 Aisha presents the numbers with their sources and dates, and repeats the measurement method from chapter 15 so the comparison is fair. Where a number depends on reporting devices, she notes how many reported.
 
 She links each change to the action that caused it, while acknowledging that several actions overlapped, as discussed in chapter 33.
-
-### Unchanged measures
-
-Some measures barely moved, such as screen lock compliance, which was already high; she reports these too, rather than only successes.
 
 ### Cost of the work
 
