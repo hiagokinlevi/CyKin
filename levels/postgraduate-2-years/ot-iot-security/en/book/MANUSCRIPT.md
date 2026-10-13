@@ -179,13 +179,19 @@ You will (1) appraise the quality of OT security evidence sources; (2) reconcile
 
 Passive network captures show who talked to whom but miss serial links and encrypted payload meaning. Controller event logs, where they exist, show program changes but often roll over after a few hundred entries. Process data in the historian shows physical effect but not cause. HMI audit trails show operator actions but not engineering-tool sessions. Specialist evidence work combines them because each misses something.
 
+Before relying on any source, write down what it can and cannot see at BWRP. The capture covers the plant network but not a technician at the dosing panel. PLC-D's event log may have rolled over since the event. The historian records the setpoint but not who changed it. That list tells Daniel which second source to consult for each question.
+
 ### 3.2 Conflicts are information
 
 If the historian shows a dosing setpoint change at 14:02 but neither the HMI audit trail nor the network capture shows a write, the possibilities are a missing capture, a clock offset, a local change at the panel, or logic that changes the setpoint internally. Each hypothesis predicts something checkable: panel key-switch logs, a PLC program comparison, the capture's packet-loss counters.
 
+Write each hypothesis with the check that would rule it out, and run the cheapest checks first. A clock offset can be tested in minutes by comparing timestamps of a known event across systems. Record the result of every check, including the ones that only eliminate a possibility, because they are what make the final conclusion credible.
+
 ### 3.3 Appraising external claims
 
 CISA ICS advisories describe affected products, versions, CVSS scores and mitigations coordinated with vendors; they are strong evidence about a vulnerability's existence, weaker about whether it is exploitable in your configuration. Vendor statements about "not affected" deserve a request for the reasoning. Peer-reviewed measurement studies, such as the Mirai analysis by Antonakakis et al. (USENIX Security 2017), carry method sections you can evaluate.
+
+For BWRP, an advisory affecting a product used on PLC-D should lead to two questions: is the affected version installed, and is the vulnerable function reachable from where an attacker could be. Record the answers next to the advisory in the inventory. When a vendor says not affected, file its reasoning with the date, so the claim can be checked later.
 
 ### 3.4 Confidence statements
 
