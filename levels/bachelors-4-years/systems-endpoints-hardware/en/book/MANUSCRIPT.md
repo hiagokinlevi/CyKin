@@ -1213,7 +1213,7 @@ Aisha's design uses tools Bramley already licenses: the management server, the b
 
 ### Proportionate architecture
 
-Bramley's architecture must be simple enough for one IT officer. Aisha avoids adding separate tools for each layer. Instead, the management server applies laptop settings, encryption and updates; the server role documents define services; the VPN and laptop firewall cover network protection; and a weekly routine reviews reports. Each layer is described in one paragraph with its owner and evidence source.
+Bramley's architecture must be simple enough for one IT officer. The management server applies laptop settings, encryption and updates; the server role documents define services; the VPN and laptop firewall cover network protection; and a weekly routine reviews reports. Each layer is described in one paragraph with its owner and evidence source.
 
 She checks the design against CIS Controls v8 implementation group 1 and finds it covers inventory, secure configuration, account management, data protection, vulnerability management and recovery at a basic level. This gives Bramley's managers confidence that the design is recognised, not improvised.
 
@@ -1545,7 +1545,7 @@ Each card is reviewed yearly.
 
 ### Project log entry
 
-Aisha also writes a card about Bramley's own stolen laptop, describing what was lost, which controls were missing and what has changed. Staff say this local card is the most persuasive, because they recognise the office, the people and the consequences, including the letters sent to affected tenants.
+Staff say the card about Bramley's own stolen laptop, which also records what has changed since, is the most persuasive, because they recognise the office, the people and the consequences, including the letters sent to affected tenants.
 
 ### Worked example
 
@@ -1706,7 +1706,7 @@ After fixes, Aisha automates the comparison to run weekly, sending Gareth a shor
 
 ### Resolving the differences
 
-Missing devices L07, L19, L33 and S04 are traced: L07 was in a drawer awaiting repair, L19 and L33 had broken agents, and S04 is the unenrolled application server. The extra entries L46 and DESKTOP-7F2K are a new laptop not yet registered and a volunteer's personal PC that joined with an old enrolment code. Each is resolved: L07 is recorded as a spare, the two agents are repaired, S04 is enrolled, the new laptop is registered and the personal PC is removed with its access revoked.
+Missing devices L07, L19, L33 and S04 are traced: L07 was in a drawer awaiting repair, L19 and L33 had broken agents, and S04 is the unenrolled application server. The extra entries L46 and DESKTOP-7F2K are a new laptop not yet registered and a volunteer's personal PC that joined with an old enrolment code.
 
 ### Worked example
 
@@ -2252,8 +2252,6 @@ Updates often need a restart to complete. Staff postpone restarts because they a
 
 For full disks, a scheduled clean-up removes temporary files; two laptops need larger disks. For offline laptops, internet-based management removes the dependence on the VPN.
 
-The next month, failures drop from 34 to 15, with pending reboots falling most. Aisha reports this with the caveat that one month may vary.
-
 ### Unknown failures
 
 The two unknown failures are investigated individually; one is a corrupted update cache, fixed by resetting it.
@@ -2541,10 +2539,6 @@ A colleague is trained to follow the routine when Gareth is on leave.
 
 Each week's completed checklist is saved, building evidence for audits.
 
-### Worked example
-
-The legacy software vendor offers a supported version next year. The isolation decision records an expiry date aligned to the upgrade.
-
 > **Synthetic case.** Synthetic.
 
 ### Errors and limits
@@ -2624,10 +2618,6 @@ A short list of contacts, including the contractor and the finance software vend
 ### Laptop loss
 
 For a lost laptop, the steps are: report, confirm encryption, revoke access, issue a replacement.
-
-### Worked example
-
-HR forgot to tell IT about a leaver; the monthly meeting now includes a leavers list check.
 
 > **Synthetic case.** Synthetic.
 
