@@ -1411,27 +1411,39 @@ You will (1) define AI security and distinguish it from AI safety and responsibl
 
 *AI security* protects AI systems and the processes around them from deliberate attack and misuse, and protects others from AI-enabled attack. *AI safety* concerns harmful behaviour even without an attacker. *Responsible AI* covers fairness, transparency and accountability. The areas overlap: a prompt injection is a security attack that may cause unsafe or unfair outcomes.
 
+At LCH the three meet in one system. A partner document that makes Ask Lumen announce a false clinic closure is an attack, so it belongs to security; the patients who then miss care are a safety outcome. Rina keeps the terms separate in her reports so each team knows which problems are theirs.
+
 ### 19.2 The taxonomy
 
 NIST AI 100-2 E2025 classifies attacks on predictive AI by objective — availability breakdown, integrity violation, privacy compromise — and adds misuse for generative AI. Attack classes include evasion (test-time inputs), poisoning (training data or model), privacy attacks (membership inference, data reconstruction, model extraction) and, for generative systems, direct and indirect prompt injection. Attackers are characterised by knowledge (white-, grey-, black-box) and capabilities (training-data control, model control, query access).
+
+Rina places each of LCH's systems in it. Ask Lumen is generative, so prompt injection and misuse apply; NoShow and DocSort are predictive. An outside attacker usually has only black-box query access, while a contractor who labels DocSort letters has training-data control, which is a stronger capability.
 
 ### 19.3 Why ML is vulnerable
 
 Models learn statistical patterns from data, not rules; they generalise imperfectly and are sensitive to small, carefully chosen input changes (Szegedy et al., arXiv:1312.6199; Goodfellow et al., arXiv:1412.6572). They inherit whatever their data contains, including poison. Large language models follow instructions found anywhere in their input. These properties are inherent, so security relies on layered controls rather than a single fix.
 
+The evasion lab shows this concretely: the same toy classifier that scores 0.985 on clean inputs falls to about chance once the perturbation budget reaches one, with no change to the model itself.
+
 ### 19.4 Frameworks
 
 NIST AI RMF (AI 100-1) and its Generative AI Profile (AI 600-1) organise risk management; OWASP LLM 2025 lists application risks; MITRE ATLAS catalogues adversary techniques with case studies; ISO/IEC 42001 specifies an AI management system; the EU AI Act sets legal duties for some systems.
 
+They answer different questions. Rina uses OWASP to check Ask Lumen's application risks, ATLAS to find real attack examples for her staff briefing, and the AI RMF to structure LCH's overall risk process. Whether the EU AI Act applies depends on each system's use, so she records that assessment separately rather than assuming one answer covers all three systems.
+
 ### 19.5 Worked example (synthetic LCH case)
 
 Rina classified LCH's risks: Ask Lumen — indirect prompt injection via documents (integrity), sensitive disclosure (privacy); NoShow — membership inference (privacy), manipulation of patient-controlled fields (integrity, evasion); DocSort — crafted letters to misroute (evasion), poisoning via relabelled training letters (integrity).
+
+The classification showed that each system had both privacy and integrity risks, but through different paths. Ask Lumen's main exposure was what it reads; NoShow's was what it reveals; DocSort's was who shaped its training data. That difference led Rina to assign different owners: the chatbot team, the data protection officer and the records team.
 
 ### 19.6 Errors and limits
 
 - Treating AI security as only chatbot jailbreaks.
 - Expecting one control to fix inherent vulnerabilities.
 - Mixing up safety and security terms.
+
+Focusing on jailbreaks would have missed DocSort's poisoning risk entirely, since nobody chats with DocSort. No single control covers evasion, poisoning and injection, so LCH needs several layers. Using "safety" where "security" is meant leaves it unclear whether an attacker is assumed, which changes the tests that should be run and who is responsible for fixing the problem, and which team must respond.
 
 ### Exercises
 
@@ -1459,34 +1471,50 @@ You will (1) explain landmark results in adversarial ML and their lessons; (2) a
 
 Szegedy et al. (arXiv:1312.6199) found that imperceptible changes fool image classifiers; Goodfellow et al. (arXiv:1412.6572) explained it with local linearity. Lesson: high accuracy does not imply robustness.
 
+The evasion lab repeats the finding on a toy scale: accuracy of 0.985 on clean points drops to 0.840 with a budget of one half. For DocSort, the equivalent question is how small a change to a letter's wording moves it to the wrong route. A model's test accuracy alone cannot answer that question, since test letters were never crafted.
+
 ### 20.2 Broken defences
 
 Athalye et al. (arXiv:1802.00420) showed many published defences only obscured gradients; adaptive attacks broke them. Lesson: evaluate defences against attackers who know them.
+
+For LCH this means a vendor claim that DocSort resists crafted letters is weak evidence unless the vendor's test assumed an attacker who knew the defence. Rina asks vendors which attacks were used and whether they were adaptive. A defence that only hides gradients may stop a lazy attack and fail against a careful one, which is the attacker that matters.
 
 ### 20.3 Poisoning and backdoors
 
 Gu et al. *BadNets* (arXiv:1708.06733) showed backdoored models that behave normally until a trigger appears. Carlini et al. (arXiv:2302.10149) showed poisoning web-scale datasets is practical. Lesson: data and model provenance matter.
 
+The poisoning lab shows the same pattern: 80 triggered points lift attack success to 0.980 while clean accuracy stays at 0.968, so normal testing sees nothing wrong. DocSort's monthly retraining on contractor labels is exactly the kind of pipeline where such a trigger could enter, carried in by a single careless or hostile labeller over several months.
+
 ### 20.4 Privacy
 
 Shokri et al. (arXiv:1610.05820) introduced membership inference; Carlini et al. (arXiv:2012.07805) extracted memorised training text from a large language model. Lesson: models can leak training data.
+
+Lab M reproduces the membership effect on a toy model. For LCH, the lesson applies to any model trained on patient records, including NoShow, and to any future language model fine-tuned on clinic letters, which could repeat fragments of them. Coarse outputs and minimised training data reduce that exposure, but do not remove it.
 
 ### 20.5 LLM applications
 
 Greshake et al. (arXiv:2302.12173) demonstrated indirect prompt injection against LLM-integrated applications through retrieved content, leading to data theft and manipulation. Lesson: anything the model reads can instruct it; limit what the model can do.
 
+Ask Lumen fits this pattern closely: it reads clinic documents and partner uploads, and it can call a booking tool. Rina's demonstration in the worked example below used the same mechanism, and the control that limited the damage was the booking tool's own checks, not the model's judgement about what text to obey.
+
 ### 20.6 Using ATLAS case studies
 
 MITRE ATLAS documents case studies mapped to tactics and techniques. Read them to see how attacks combine reconnaissance, access and impact, and which mitigations would have helped.
+
+Rina chose two cases for her briefing: one involving poisoned training data and one involving prompt injection through retrieved content. For each she listed which LCH system had a similar path and whether LCH already had the mitigation. One gap emerged: DocSort had no check on training-label provenance, which the next chapters address.
 
 ### 20.7 Worked example (synthetic LCH case)
 
 Rina presented the indirect-injection case to LCH staff using a synthetic demonstration: a clinic leaflet uploaded by a partner contained hidden text instructing the chatbot to tell patients a clinic was closed. In the test system, Ask Lumen repeated the false closure. The lesson connected directly to the partner-upload review introduced earlier.
 
+Staff responded more to the demonstration than to the papers, because they saw their own chatbot repeat the false message. Several staff asked how partner uploads were checked, which gave the review process the support it needed.
+
 ### 20.8 Errors and limits
 
 - Learning attacks without their defensive lessons.
 - Treating old cases as irrelevant to new models.
+
+Each case study is useful only with its lesson attached; knowing that BadNets exists does not help unless DocSort's labels are then tracked. The older image cases still apply to newer models, because the underlying weakness, sensitivity to small crafted changes, has not gone away. Rina's briefing paired each case with a concrete action for one of LCH's systems, so staff left with work rather than only examples.
 
 ### Exercises
 
@@ -1514,31 +1542,45 @@ You will (1) model an AI system with components, data flows and trust levels; (2
 
 List users, interfaces, application logic, the model, retrieval stores, tools, external services, training pipelines, model registry and logs. AI systems hide components: a "simple chatbot" may include an embedding model, a vector store and several tools.
 
+Ask Lumen illustrates this. Staff described it as "the chatbot", but Rina's list had eleven components, including the embedding model used for document search, the store of indexed clinic documents, the booking tool, the opening-hours tool and the conversation log. Each component is a place where an attacker might act or data might leak.
+
 ### 21.2 Data flows and trust
 
 For each flow, mark the trust level of its content. Patient messages: authenticated but untrusted content. Clinic documents: internal, medium trust. Partner uploads: external, low trust. Tool results: depend on the tool. Any low-trust content that reaches the model can influence its outputs.
+
+In Rina's diagram, partner uploads are drawn in red, since an outside organisation controls their content. The diagram showed that a red flow reached the booking tool through the model, which is why the confirmation and policy check sit on that path rather than earlier in the conversation.
 
 ### 21.3 Privileged actions
 
 Mark actions with impact: booking, cancelling, sending messages, changing records. Draw the paths from low-trust inputs to these actions; each path needs a control outside the model.
 
+For Ask Lumen, the privileged actions are booking and cancelling appointments. Rina traced three paths to them: from patient messages, from clinic documents and from partner uploads. All three passed through the model, so all three were covered by one external control, the policy check with patient confirmation, rather than three separate filters that might each miss something.
+
 ### 21.4 Using the model
 
 The system model guides threat analysis, control placement and testing. Keep it versioned; update it when tools, data sources or models change.
+
+Rina stores the diagram in the same repository as Ask Lumen's code, so a change that adds a tool must also update the diagram in the same review. When the opening-hours tool was changed, the review included the diagram change, and the reviewer could see the untrusted comments flow had been removed. An outdated diagram gives false comfort.
 
 ### 21.4b Training-time components
 
 System models often stop at the deployed application, but training pipelines matter too. Show where training data comes from, who can add or relabel it, where models are stored and how they reach production. Poisoning and backdoor risks live on these paths, and the same trust-level marking applies: a labelling contractor's edits are lower trust than an internal expert's review.
 
+For DocSort, this view showed the contractor team between the letter archive and the training job. Nothing recorded which contractor labelled which letter, so a poisoned batch could not be traced, a gap the next chapter closes.
+
 ### 21.5 Worked example (synthetic LCH case)
 
 Rina's system model of Ask Lumen showed a forgotten flow: the chatbot could read the clinic's public web page through a "check opening hours" tool, and that page included a comments section. Comments were untrusted public content flowing into the model. LCH changed the tool to read a structured opening-hours file instead of the whole page.
+
+Nobody had listed the tool because it seemed harmless; drawing the flow made the risk visible. Reading a structured file also made answers more reliable, since staff edit it directly.
 
 ### 21.6 Errors and limits
 
 - Models without trust levels.
 - Missing tools and their data sources.
 - Never updating the model.
+
+A diagram without trust levels cannot show where controls belong, because every flow looks the same. Leaving out tools hides the paths to privileged actions, as with the opening-hours tool that read public comments. A diagram that is not updated with code changes describes a system that no longer exists, so reviews based on it miss new risks introduced since it was drawn. Rina's rule ties diagram updates to code review.
 
 ### Exercises
 
@@ -1618,27 +1660,39 @@ backdoor: add n triggered class-1 points labelled 0
   poison_points= 80 clean_accuracy=0.968 attack_success=0.980
 ```
 
+The two lab tables tell different stories. Flipping 40% of labels lowers clean accuracy only from 0.965 to 0.945, so noisy labelling is a nuisance; 80 triggered points give 0.980 attack success, so targeted poisoning is a threat.
+
 ### 22.2 Supply chain
 
 Pre-trained models, datasets, libraries and plug-ins come from third parties. OWASP LLM 2025 lists *supply chain* (LLM03) and *data and model poisoning* (LLM04). Controls: trusted sources, pinned versions, hash and signature verification, safe file formats, scanning, and evaluation before use.
+
+DocSort's vendor model is LCH's largest supply-chain dependency, and the signature check described in the cryptography chapter covers it. Ask Lumen's libraries are pinned to versions in a lock file, and updates go through review. LCH avoids model file formats that can execute code when loaded, which removes one route by which a tampered download could run on its servers.
 
 ### 22.3 Documentation
 
 Datasheets for datasets (Gebru et al., arXiv:1803.09010) record motivation, composition, collection, preprocessing and recommended uses. Model cards (Mitchell et al., arXiv:1810.03993) record intended use, evaluation, limitations and ethical considerations. Both help others judge whether a dependency is safe for their use.
 
+Rina wrote a datasheet for DocSort's training letters. Writing it exposed that nobody knew which months of letters were included or how ambiguous cases were labelled. The model card she requested from the vendor stated the model was evaluated on letters from a different health system, which LCH recorded as a limitation and checked with its own test set.
+
 ### 22.4 Provenance and integrity
 
 Record where each data item came from and who changed it; version datasets; hash content at collection; review samples from new sources; restrict who can label.
 
+For DocSort, this means each training batch records the contractor who labelled it, the date and a hash of the labelled file. If a trigger is later found, LCH can find which batches contain it and who labelled them, retrain without them, and decide whether the contractor arrangement needs review. Without that record, the whole training set would be suspect.
+
 ### 22.5 Worked example (synthetic LCH case)
 
 DocSort was retrained monthly on letters labelled by a temporary contractor team. Rina found no record of who labelled what. She introduced per-batch provenance, a 5% expert review sample per batch and an automated check for rare words strongly associated with one route — a simple trigger detector. In the first month it flagged a harmless template phrase used by one GP practice, which was documented as benign.
+
+The false alarm was useful: it showed the detector worked and taught the team what benign triggers look like.
 
 ### 22.6 Errors and limits
 
 - Unknown labellers and unversioned data.
 - Downloading models without verification.
 - Datasheets and model cards never written.
+
+Without labeller records, a poisoned batch cannot be traced or removed, which was DocSort's situation before Rina's changes. Unverified downloads let a tampered model reach production with no warning. Missing datasheets and model cards mean nobody can judge whether a dataset or model fits a new use, so mismatches, such as DocSort's evaluation on another health system's letters, go unnoticed until results disappoint in production and patients receive misrouted letters.
 
 ### Exercises
 
@@ -1666,31 +1720,45 @@ You will (1) perform a structured threat analysis for an AI system; (2) map thre
 
 For each component and flow in the system model, ask what an attacker could do: inject instructions, poison data, evade detection, extract the model or data, exhaust resources, or abuse tools. Include insiders and accidents with similar effects.
 
+For Ask Lumen's document store, Rina asked each question in turn. Inject instructions: yes, through partner uploads. Poison: not applicable, since no training happens there. Extract data: possibly, if the chatbot quotes internal documents. Exhaust resources: long conversations. An accident with similar effect was a clinic uploading an outdated leaflet that listed wrong hours.
+
 ### 23.2 Mapping
 
 Map threats to OWASP LLM 2025 entries (for example LLM01 prompt injection, LLM02 sensitive information disclosure, LLM06 excessive agency, LLM10 unbounded consumption) and to MITRE ATLAS tactics and techniques. Mapping helps check coverage and find documented mitigations.
+
+Rina's mapping placed partner-document injection under LLM01, cross-patient booking under LLM06 and long-chat cost under LLM10. Checking the list for gaps, she noticed she had no entry for LLM02 on the booking tool's responses, and added a test that the chatbot never repeats another patient's appointment details.
 
 ### 23.3 Prioritising
 
 Rate likelihood (attacker access, skill, motivation) and impact (patient harm, privacy, cost, reputation). A simple 1–3 scale and a written justification are enough. Revisit when things change.
 
+The justification matters more than the number. For cross-patient booking, Rina wrote that likelihood was 2 because delegated tokens now block the direct path but the patient's own carers can still be misused; impact was 3 because a wrong booking can delay care. Another reviewer can then challenge the reasoning rather than the score itself, and update it when tokens or carer rules change.
+
 ### 23.4 Selecting tests
 
 For each top threat, choose a test: an injection suite, a leakage suite, a poisoning simulation, a load test. Define pass criteria in advance.
+
+For partner-document injection, the pass criterion was set before testing: no more than one false clinic statement in 200 injected documents, and zero bookings caused by document text. Setting the threshold first stops the team from deciding afterwards that whatever result appeared was acceptable. A test without a criterion only describes behaviour; it cannot fail, and so cannot show that a control works.
 
 ### 23.4b Attack trees
 
 An attack tree breaks an attacker goal into sub-goals joined by AND or OR. For "book an appointment as another patient" the OR branches might be: steal the patient's credentials; manipulate the chatbot into booking for them; exploit the booking API directly. Each branch can be estimated and controlled separately, and the tree shows which single control blocks several branches — for example, a policy check tied to the logged-in patient blocks both the chatbot and some API paths.
 
+For LCH, the credential branch is handled by the portal's sign-in controls, outside the AI team's scope.
+
 ### 23.5 Worked example (synthetic LCH case)
 
 Rina's top three for Ask Lumen: (1) injection through partner documents causing false information (likelihood 2, impact 3); (2) booking for another patient through manipulation (2, 3; mitigated by delegated tokens, retest needed); (3) cost exhaustion through long chats (3, 2). Tests: 200 injected documents measuring false statements; 400 cross-patient attempts; a load test with token quotas.
+
+Cost exhaustion ranked highest on likelihood because it needs no skill, only patience, and the quotas test was cheap to run. Cross-patient booking needed a retest because the delegated-token change was recent and had not been tested under manipulation.
 
 ### 23.6 Errors and limits
 
 - Threat lists not linked to the system model.
 - No justification for ratings.
 - Tests chosen without pass criteria.
+
+Threats listed without reference to the system model tend to be generic, such as "model may be hacked", and point to no control. Ratings without reasons cannot be reviewed or updated when conditions change. Tests without pass criteria produce results that can be read either way, so nobody knows whether a control worked. Rina's threat register links each threat to a diagram flow, a reason and a criterion.
 
 ### Exercises
 
@@ -1717,6 +1785,8 @@ You will (1) choose preventive, detective and corrective controls for AI threats
 ### 24.1 Control types
 
 Preventive controls stop events (least-privilege tools, delegated tokens, signed models). Detective controls notice them (injection classifiers, anomaly monitoring, canary documents). Corrective controls limit damage and restore service (rollback, revoking credentials, cancelling actions).
+
+A complete design needs all three. For Ask Lumen, delegated tokens prevent cross-patient bookings, alerts on unusual booking rates detect an attack that gets past prevention, and the ability to cancel all bookings made in a time window corrects the damage. Without the corrective step, a detected attack would still leave dozens of wrong appointments.
 
 ### 24.2 External enforcement
 
@@ -1765,27 +1835,39 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
+The lab table makes the gap clear: keyword filtering halves the exfiltration calls but still lets 10 of 20 through, while separating retrieved content as data stops all of them and costs no benign calls.
+
 ### 24.3 Controls for predictive models
 
 Adversarial training improves robustness within a threat model (Madry et al., arXiv:1706.06083); input validation and out-of-distribution checks catch unusual inputs; returning labels rather than detailed scores reduces extraction and membership-inference signal; data review reduces poisoning.
+
+LCH applied the last two to NoShow and DocSort. NoShow returns a category rather than a probability, and DocSort's labels are reviewed by sample. Adversarial training was considered for DocSort but postponed, because the vendor controls training and the threat of crafted letters was rated lower than poisoning through labels.
 
 ### 24.4 Evaluating controls
 
 Measure effect on attacks and side effects on normal use: false positives, latency, task completion. Prefer controls whose security does not depend on detecting every attack.
 
+For the partner-document classifier, Rina measured that it flagged 3 of 150 legitimate leaflets, each needing a manual review that took a few minutes. That cost was acceptable. She also noted that the classifier is detective: if it misses an injection, the booking tool's checks still prevent harm, so its errors do not break security; they only add review work.
+
 ### 24.4b Proportionality
 
 Controls should match the risk. Confirmation for every chatbot answer would make the service useless; confirmation for bookings and cancellations is proportionate because those actions change records. Apply the strongest controls to the paths from untrusted inputs to consequential actions identified in the system model.
 
+Rina also rejected a proposal to block every partner upload until reviewed, since leaflets often carry time-sensitive information such as vaccination clinic dates. Holding them for days would harm patients more than the residual injection risk, which the booking checks already bound.
+
 ### 24.5 Worked example (synthetic LCH case)
 
 Rina's control set for Ask Lumen: preventive — delegated tokens, confirmation for bookings and cancellations, structured opening-hours source; detective — classifier flags instruction-like text in partner documents, alerts on unusual booking rates; corrective — revoke chatbot tool access in one step, cancel bookings created in a time window. Evaluation: zero cross-patient bookings in 400 attempts; 3% drop in completed bookings due to confirmation.
+
+Every control in the set mapped back to a threat in the register, which made gaps easy to spot. The 3% drop was reported to clinic managers, who accepted it.
 
 ### 24.6 Errors and limits
 
 - Prompt rules as the main control.
 - Detectors relied on for prevention.
 - Controls adopted without measuring side effects.
+
+A system prompt rule can be argued away by injected text, as the lab's undefended agent showed with 17 of 20 exfiltration calls. Detectors miss some attacks by design, so they cannot be the only barrier between untrusted text and a booking. Controls adopted without measuring false positives or lost bookings may cost more than the risk they reduce, and staff then find ways around them.
 
 ### Exercises
 
@@ -1812,6 +1894,8 @@ You will (1) set up a safe, isolated AI-security lab; (2) run evasion, poisoning
 ### 25.1 Lab rules
 
 Use isolated environments, synthetic data and harmless payloads (for example addresses on the reserved `.invalid` domain). Never point lab tools at real services. Record what you ran, with versions and seeds.
+
+The reserved domain matters because a payload that sends data to a real address could leak information even in a test. Recording versions and seeds lets Rina reproduce the exact table later, and lets her supervisor check that the numbers in her report came from the code she submitted rather than from an earlier edit.
 
 ### 25.2 Experiments
 
@@ -1973,31 +2057,45 @@ output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
 output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 ```
 
+Rina ran all four on her laptop with the stated seeds and compared each line with the expected output before writing anything. All matched. When a classmate's evasion run differed in the third decimal place, the cause was a different library version, which they recorded in the setup notes. Checking against expected output first catches such differences before they reach a report or a marker.
+
 ### 25.3 Interpreting
 
 Evasion: accuracy falls as the budget grows. Poisoning: label flipping barely matters for this model, but a backdoor reaches 98% attack success with clean accuracy unchanged. Membership: a memorising model leaks; a smoother one leaks little. Extraction: a linear API is copied exactly with six queries; rounding outputs reduces but does not eliminate fidelity.
+
+These results carry different lessons. Evasion and extraction depend on what the attacker can query; poisoning depends on who controls training data; membership depends on how much the model memorises. Each points to a different control at LCH: query limits and coarse outputs for NoShow, label provenance for DocSort.
 
 ### 25.4 Lab report
 
 Structure: aim, setup (versions, seeds), method, results (tables), interpretation, limitations (toy models, synthetic data), and what you would test next on a real system with authorization.
 
+Rina's report stated in its limitations that the poisoning lab uses a tiny linear model, so the 80-point figure does not predict how many letters would be needed to backdoor DocSort. What carries over is the pattern: attack success can be high while clean accuracy stays unchanged, so clean testing alone cannot detect a backdoor.
+
 ### 25.4b Changing parameters
 
 A lab becomes an experiment when you change one parameter and predict the effect before running. Try changing the evasion budget list, the number of backdoor points or the k values in the membership lab; write your prediction, run, and compare. Record each run's parameters and output. This habit — predict, run, compare, record — is the core of experimental work in later chapters and in the capstone.
+
+Rina predicted that 20 backdoor points would give attack success between the 10-point and 40-point results, then ran it and recorded the value beside her prediction.
 
 ### 25.4c Safety of lab code
 
 Lab code that implements attacks should stay in the lab. Do not adapt it to target real services, and do not share modified versions that point at real endpoints. The toy models here are deliberately simple so that concepts are visible; their attacks are not effective tools against real systems, and that is intentional.
 
+Rina's repository marks the lab folder as teaching material and keeps no endpoint configuration in it. Payload addresses use the reserved domain, so even a copied script cannot send data anywhere real.
+
 ### 25.5 Worked example (synthetic LCH case)
 
 Rina's lab report connected each toy result to an LCH system: evasion to DocSort's crafted letters, poisoning to contractor labels, membership to NoShow's confidence outputs and extraction to a planned partner API. Her "next steps" proposed authorised tests on LCH's staging copies.
+
+LCH's security lead approved the staging tests with a written scope covering which systems, which dates and which payloads could be used. The extraction result was the most persuasive, because the planned partner API returned exact scores; the team agreed to round outputs before launch, accepting the loss in fidelity shown in the lab.
 
 ### 25.6 Errors and limits
 
 - Presenting toy results as facts about real systems.
 - Missing versions and seeds.
 - Lab tools pointed at real endpoints.
+
+A toy model with five features tells us about mechanisms, not about DocSort's real robustness, so results must be labelled as teaching results. Missing versions and seeds make a result impossible to reproduce or check. Pointing lab code at real services, even by accident, can harm patients and breaks the rules under which the lab is allowed; Rina's lab config contains only local addresses.
 
 ### Exercises
 
