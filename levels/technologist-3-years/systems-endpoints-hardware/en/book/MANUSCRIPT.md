@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Technologist Course
 
 - Language: English (`en`); course 081, Technologist course (3 years).
-- Editorial state: **draft**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technologist students learning to administer, harden, patch, back up and monitor the Windows and Linux endpoints of a small organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -52,13 +52,19 @@ Tomás Herrera studies on the three-year technologist programme at the fictional
 
 Most problems on endpoints come from a few ordinary causes rather than clever attacks. Software is left without updates. Settings are weaker than they should be, often because a default was never changed. Accounts stay active after people leave. Too many people have administrator rights. Backups are assumed rather than checked. CIS Controls v8 is built around exactly these basics: know your assets, configure them securely, manage accounts and access, patch, and be able to recover.
 
+At Linden the supply teacher's account was the second cause made visible, and Tomás expects the other four causes to be present somewhere among ninety laptops and six servers.
+
 ### 1.3 What started the placement
 
 Shortly before Tomás arrived, Dev noticed that a supply teacher who had left months earlier could still sign in to the trust's systems. Nothing bad had happened, but it raised a question nobody could answer quickly: how many other accounts, settings and backups were not as everyone assumed? The trust asked the college for a student who could help find out, carefully and without disrupting teaching.
 
+Dev could not say how many laptops were encrypted or when mis01 last had a good backup, because nobody had ever looked across all the devices at once. The placement agreement therefore asked Tomás to measure first and change only what Dev and the business manager approved.
+
 ### 1.4 The shape of the course
 
 The first part of this book builds foundations: hardware, operating systems, Linux and Windows administration, networks, accounts and scripting. The middle part applies them to hardening, patching, account hygiene, backups, logging and monitoring at the trust. The final part is Tomás's placement project, in which he measures the starting point, makes agreed improvements and reports the result.
+
+Each chapter follows the same pattern: a few short teaching parts, one worked example from the trust, the errors and limits, and three exercises with rubrics. Three chapters contain small Python labs on synthetic exports, and their numbers return later when Tomás measures the trust at the start and end of his placement.
 
 ### Worked example
 
@@ -96,17 +102,25 @@ You will (1) name the main parts of a computer; (2) explain firmware and secure 
 
 A laptop or server has a processor, memory, storage, network interfaces and firmware. Firmware is the low-level software stored on the motherboard that starts the machine before the operating system. On modern machines this is UEFI. Storage may be a solid-state drive, which matters for encryption speed and for secure wiping when devices are disposed of.
 
+Tomás records the storage type for each laptop, because solid-state drives need the vendor's secure erase at disposal rather than simple overwriting. He also notes that network interfaces count as hardware facts, since a laptop with both a wired and a wireless interface can sit on two networks at the same time.
+
 ### 2.2 Secure boot and the TPM
 
 Secure Boot is a UEFI feature that checks the digital signature of each startup component, so that only trusted boot loaders and operating system kernels run. A Trusted Platform Module, or TPM, is a small security chip that can store keys and record measurements of the startup process. Windows BitLocker uses the TPM to unlock the disk only when the startup looks unchanged. NIST SP 800-147 describes how BIOS and firmware updates should be authenticated, and SP 800-193 describes firmware resiliency.
+
+On the trust's laptops both features matter in practice, because BitLocker with a TPM only protects as intended when Secure Boot is on and the TPM is enabled.
 
 ### 2.3 Firmware needs updates too
 
 Firmware has flaws like any software. Laptop vendors release firmware updates through their own tools or through Windows Update. Tomás checks five of the trust's laptops and finds three are several versions behind. He notes this for the patching work later, because firmware is often forgotten when people think of patching.
 
+Before guessing at a cause, he checks whether the three outdated laptops share a model, since a model the vendor's tool no longer reaches would explain the gap across the fleet. He records models and versions rather than updating anything, because a firmware update interrupted by a flat battery can leave a laptop unable to start, and Dev decides when updates run.
+
 ### 2.4 Recording hardware facts
 
 For the inventory, Tomás records for each laptop the model, serial number, whether a TPM is present and enabled, Secure Boot state and firmware version. These few fields answer later questions: can this laptop use BitLocker with a TPM, is its firmware current, and is it old enough to replace?
+
+He collects the fields from the management service's hardware report where possible and checks the system information tool by hand only on laptops the report does not cover. Each entry carries the date it was checked, because a firmware version recorded last year says little about the laptop today, and a TPM can be switched off later in firmware settings.
 
 ### Worked example
 
@@ -142,19 +156,27 @@ You will (1) explain what an operating system does; (2) distinguish user and adm
 
 ### 3.1 The operating system's job
 
-The operating system manages hardware, runs programs, stores files and controls who can do what. It separates a privileged core, the kernel, from ordinary programs, so that one misbehaving program cannot easily take over the whole machine. The trust's laptops run Windows; the servers run a mix of Windows Server for the directory and Linux for the web, file and management system servers.
+The operating system manages hardware, runs programs, stores files and controls who can do what. It separates a privileged core, the kernel, from ordinary programs, so that one misbehaving program cannot easily take over the whole machine. The trust's laptops run Windows; the servers run a mix of Windows Server for the directory and Linux for the web, file, print and management system servers.
+
+The kernel also decides which account owns each running program, which is why the privilege of the signed-in account matters so much. For Tomás this means the same review questions apply on both kinds of server, even though the commands differ: who can sign in, who can become an administrator and which services run with high privilege.
 
 ### 3.2 Users and administrators
 
 Every action on a computer runs as some account. Standard users can run programs and change their own files. Administrators on Windows, or root on Linux, can change anything: install software, alter security settings and read other users' files. Because of this, malware that runs as an administrator can do far more damage than malware running as a standard user.
 
+At the trust, a teacher who opens a malicious attachment while signed in as a standard user exposes their own files, but cannot switch off endpoint protection or install a service that survives a restart. The same attachment opened by one of the four teachers with local administrator rights could do both, which is why their rights became a finding.
+
 ### 3.3 Least privilege
 
 Saltzer and Schroeder described least privilege in 1975: every program and user should operate using the least set of privileges needed. In practice, this means teachers use standard accounts, Dev uses a separate administrator account only when needed, and services on servers run as dedicated accounts rather than root. On Linux, the sudo tool lets named users run specific commands with higher privilege, with each use logged.
 
+Least privilege applies to Tomás as well: his placement account can read logs and configuration through sudo but cannot install packages or change settings. Dev's separate administrator account means that a phishing email read in his everyday account does not reach the servers directly.
+
 ### 3.4 Finding who has admin rights
 
 Tomás checks the local administrators group on ten laptops and finds that four teachers have been added over the years, usually to install a classroom app. He records the names and reasons. Removing these rights later must come with an alternative, such as Dev installing approved apps centrally.
+
+The reasons are ordinary: in most cases a teacher needed a classroom app installed before a lesson and Dev was at the other school. None of the four rights had been removed afterwards, because nobody kept a list of who had been given them or why. Tomás records the reasons without naming anyone in his college notes, using synthetic names there instead.
 
 ### Worked example
 
@@ -192,17 +214,25 @@ You will (1) navigate and manage a Linux server; (2) manage packages and service
 
 Linux organises everything under one directory tree. Each file has an owner, a group and permissions for reading, writing and executing. Configuration lives mostly under /etc. Tomás learns to read permissions with the ls command and to check who owns sensitive files, such as SSH configuration, which should be writable only by root.
 
+On the trust's servers he checks that the SSH configuration file under /etc/ssh is owned by root and not writable by any group, and records the permissions alongside the date. A configuration file that an ordinary account can edit undoes every other setting in it, because that account could quietly re-enable root sign-in or password authentication.
+
 ### 4.2 Packages and updates
 
 Linux distributions install software through package managers such as apt or dnf. The package manager also applies security updates. On the trust's Debian-based servers, Dev uses unattended-upgrades to install security updates automatically each night, and reviews the log weekly. Tomás learns to list pending updates without installing them, which is safe to do during his placement.
+
+On a Debian-based server the command apt list --upgradable shows pending updates without changing anything, so Tomás can run it under his read-only sudo rights. He compares its output with the unattended-upgrades log to see whether the nightly job is really installing security updates, or whether something such as a held package has stopped it quietly.
 
 ### 4.3 Services
 
 Programs that run in the background are services, managed by systemd. The systemctl command lists running and enabled services. Every running service is something to keep updated and configured, so unneeded ones should be disabled. NIST SP 800-123 recommends removing or disabling unnecessary services on servers.
 
+On the trust's servers Tomás runs systemctl list-unit-files with the enabled state, a read-only command, and compares each enabled service with what the server is for. A service that nobody can explain is not stopped by him; it goes on a list for Dev, who checks whether anything depends on it before disabling it in a planned change.
+
 ### 4.4 Working safely
 
 Tomás works on a test virtual machine first. On live servers he only reads, using his own account with limited sudo rights granted for viewing logs and configuration. Any change is agreed with Dev and made by Dev, with a note in the change log.
+
+The test virtual machine runs the same Debian release as the trust's servers, so commands behave the same way there. Any command Tomás wants to run on a live server is first written in his notes with what it reads and why, and Dev agrees it beforehand. If a read-only command unexpectedly asks for confirmation or a password, he stops and asks Dev, because that usually means it would change something.
 
 ### Logs on Linux
 
@@ -244,17 +274,25 @@ You will (1) manage Windows devices centrally; (2) use group policy or managemen
 
 Configuring ninety laptops one by one is impossible to keep consistent. The trust's laptops are joined to the directory and managed through group policy, with newer settings delivered by a cloud management service. Policies apply settings such as password rules, screen lock and firewall state to all laptops in a group.
 
+Group policy applies when a laptop is on the school network or connected to the directory, while the cloud management service reaches laptops wherever they are online. Tomás learns which settings come from each, because a setting defined in both places with different values produces confusing results. Dev's rule is that new settings go only into the cloud management service.
+
 ### 5.2 Security baselines
 
 Microsoft publishes security baselines: recommended settings for each Windows version. The CIS Benchmarks offer a similar, independently reviewed list. Both can be imported as starting points. Dev already applies some settings, but nobody has compared them with a baseline.
+
+A baseline is useful only when someone compares it with what laptops actually have, and that comparison has never been done at the trust. Tomás treats the Microsoft and CIS lists as menus rather than orders: the trust will pick the settings that matter most, record which source each came from, and leave the rest for later rounds. Importing every recommended setting at once on ninety laptops would also break classroom software nobody had tested.
 
 ### 5.3 Reading the result
 
 Tomás uses the built-in report of resulting settings on a laptop to see which policies applied. This shows, for example, that the screen lock is set to thirty minutes, while the CIS Benchmark suggests fifteen or less. He records each difference rather than changing anything.
 
+The report also shows which policy set each value, so Tomás can tell a central setting from one changed locally on the laptop. For the screen lock, the thirty-minute value comes from an old group policy object that nobody had reviewed since it was created. He writes the policy name next to the difference, because that is where Dev will make the change.
+
 ### 5.4 Local accounts
 
 Windows laptops each have a built-in local administrator account. If every laptop has the same password for it, one leaked password opens them all. Microsoft's Local Administrator Password Solution, LAPS, sets a unique random password on each machine and stores it in the directory, readable only by authorised staff.
+
+Tomás checks whether LAPS is deployed and finds it is not yet, so every laptop built from the trust's image still shares one local administrator password. He records this as a single finding with ninety laptops affected rather than as ninety findings, because one central change fixes all of them. LAPS later becomes one of the fifteen settings in the laptop baseline.
 
 ### Checking firewall state
 
@@ -296,17 +334,25 @@ You will (1) explain addressing and ports; (2) describe segmentation; (3) use ho
 
 Each device has an IP address, and each network service listens on a port: SSH on 22, web on 443, file sharing on 445. Knowing which ports a server exposes tells you which services can be reached. Tomás learns to list listening ports on a server with the ss command, a read-only check.
 
+On a server, ss -tlnp lists listening TCP ports with the local address, which shows whether a service accepts connections from anywhere or only from the machine itself. That address is the difference between 0.0.0.0, meaning every network, and 127.0.0.1, meaning local only, and it is exactly what Tomás reads when he finds the database port on mis01.
+
 ### 6.2 Segmentation
 
 The trust's network has a staff segment, a classroom segment and a server segment. Classroom devices should not reach the management information system server directly. Segmentation limits how far a problem on one device can spread, a principle NIST SP 800-53 Rev. 5 covers under boundary protection.
+
+Tomás does not test the segmentation by trying to connect from a classroom device, which would be outside his agreement. Instead he reads the firewall rules between segments with Dev and checks whether any rule allows the classroom segment to reach mis01 or the other servers, recording each rule's purpose as Dev explains it.
 
 ### 6.3 Host firewalls
 
 Each laptop and server also runs its own firewall. On Windows, Defender Firewall should be on for all profiles; on Linux, a tool such as nftables or ufw allows only needed ports. A host firewall still helps when a device joins an untrusted network, such as a teacher's home wireless.
 
+The host firewall and the network segments protect different things: segments decide which networks can reach a server, while the host firewall decides which ports on that server answer. On mis01, the old database port open to all addresses is exactly the case a host firewall rule would have limited, even before the database configuration was changed to listen locally.
+
 ### 6.4 Remote access
 
 The outside company connects to servers over a VPN. Tomás notes that the VPN account is shared by several engineers, which makes it impossible to tell who did what. He records this for the account work later.
+
+With one shared account, the VPN log shows that someone from the company connected, but never which engineer, and the trust cannot check that person against the company's staff list. If one engineer leaves the company, the only way to remove their access is to change the password for everyone, which is disruptive enough that it tends to be postponed.
 
 ### Name resolution
 
@@ -348,9 +394,13 @@ You will (1) describe the account lifecycle; (2) explain multi-factor authentica
 
 Accounts should follow people: created when someone joins, changed when their role changes and disabled when they leave. In schools, supply teachers and temporary staff come and go often, which is exactly where the trust's earlier problem arose. CIS Controls v8 Control 5 covers account management and Control 6 covers access control.
 
+The trust's earlier problem was a supply teacher whose account outlived the contract by months, because nothing told Dev the person had gone. For each stage Tomás writes who triggers the change: the school office for joiners and leavers, and the head teacher for role changes such as becoming a class teacher or leaving the leadership team.
+
 ### 7.2 Multi-factor authentication
 
 A password alone can be guessed or phished. Multi-factor authentication adds a second factor, such as an app approval or a security key. The trust uses it for email and remote access but not yet for administrator accounts on servers, which Tomás notes as a gap.
+
+Administrator accounts on servers are the most valuable to an attacker, since they reach pupil records on mis01 and every staff document on files01. Without a second factor, a phished administrator password could open them directly. Tomás records the gap with the servers affected rather than proposing a product, so Dev can choose a method that works with the existing directory.
 
 ### Lab — Finding stale accounts
 
@@ -375,9 +425,13 @@ enabled accounts 7; stale over 90 days 4: ['k.osei', 'temp.supply', 'old.head', 
 
 The synthetic export shows seven enabled accounts, four not used for over ninety days: a former teacher, a supply account, a former head teacher's account and a shared lab administrator account. Each needs a decision. Some may be needed occasionally; most should be disabled. The disabled account a.nolan is correctly excluded.
 
+The lab's ninety-day threshold flags lab.admin at 101 days, only just over the line, while old.head has not been used for 655 days. Sorting by age would therefore put the oldest risks first. The count of four is what Tomás records as the starting value for stale accounts, using the same export and threshold he will use again at the end.
+
 ### 7.4 Leavers process
 
 The fix is not only cleaning up once but making leavers trigger account disabling. Tomás drafts a simple form that the school office sends to Dev on a person's last day, with a weekly check of the stale list as a safety net.
+
+The form asks for the person's name, last working day, which accounts they used and whether colleagues need any of their files. Dev disables the account on that day and records the date, so the weekly stale check should then find nothing new from leavers. Any account it does flag shows where the form was missed, which tells the office which step to fix.
 
 ### Service accounts
 
@@ -419,17 +473,25 @@ You will (1) write small read-only scripts; (2) parse simple data; (3) produce c
 
 Many checks repeat: listing accounts, comparing settings, checking backup times. A short script makes them consistent and fast. Python's standard library is enough for most: csv to read exports, datetime for dates, json for configuration.
 
+For Tomás the alternative is clicking through consoles and copying numbers by hand, which is slow and gives slightly different answers each time. A script reading the same export the same way gives the same answer for the same data, which is what makes a before-and-after comparison fair at the end of the placement.
+
 ### 8.2 Read-only first
 
 Tomás's scripts only read exported data and print results. They never change systems. This makes them safe to run during the placement and easy to review: Dev can read every line.
+
+The scripts read files that Dev exports from the directory, the management service and the backup software, so Tomás never needs credentials for those systems. Because nothing is written back, a mistake in a script can only produce a wrong number, which a test file can catch, rather than a changed account or a broken server. That read-only limit is also exactly what the placement agreement allows him to do.
 
 ### 8.3 Clear output
 
 A good check prints a short summary and the specific items that need attention. A wall of text is ignored. Each script ends with one line such as "late 2 of 6" so the result is clear at a glance.
 
+The summary line puts the count before its denominator, so 'stale 4 of 7' reads correctly even to someone who has never seen the script. The items needing attention are listed under it by name, sorted so the most urgent come first. Dev can paste that line straight into the weekly review notes without rewriting it.
+
 ### 8.4 Testing scripts
 
 Tomás tests each script with small synthetic inputs where he knows the right answer, including edge cases such as an empty file or a missing date. A script that silently skips bad rows can hide problems.
+
+For the stale-account script he builds a file with one account used yesterday, one used exactly ninety days ago and one used ninety-one days ago, so he can confirm the boundary is handled as intended. A row with no date should be reported as an error, not treated as recent or skipped, because an account that has never signed in still needs a decision.
 
 ### Scheduling checks
 
@@ -471,17 +533,25 @@ You will (1) apply defence in depth; (2) use secure defaults; (3) balance usabil
 
 No single control is perfect, so several layers are combined. For a teacher's laptop: updates reduce flaws, standard accounts limit damage, the firewall limits exposure, encryption protects lost devices, and backups allow recovery. If one layer fails, others still help.
 
+Each layer covers a different failure: an update missed for a week still leaves the teacher on a standard account, and a stolen laptop with an unpatched flaw is still encrypted. The layers only help if they are independent, which is why the shared local administrator password matters at the trust: one leak would defeat the same layer on every laptop at once.
+
 ### 9.2 Secure defaults
 
 Systems should start safe and be loosened only when needed. A new laptop arrives from the build with all baseline settings; exceptions are requested and recorded. This is easier to maintain than starting open and hoping to remember to close things.
+
+At the trust, the laptop image used to be built open and then tightened by hand, which is why the screen lock and the firewall's public profile differed between laptops. Building the image from the agreed baseline reverses that: every new laptop starts with fifteen settings applied, and the exceptions list shows exactly which laptops differ and why.
 
 ### 9.3 Usability matters
 
 Controls that get in the way of teaching will be bypassed. A screen lock of one minute in a classroom where a teacher walks around while displaying slides will cause frustration. Tomás learns to discuss settings with staff and choose values that protect without blocking work.
 
+Tomás asks three teachers how they use their laptops during lessons before suggesting any value, and they explain that they often leave slides on the projector for several minutes. A setting chosen without that conversation would either be ignored or lead to complaints that end with the whole baseline being relaxed.
+
 ### 9.4 Economy of mechanism
 
 Simple designs are easier to check. Saltzer and Schroeder (1975) argued for keeping security mechanisms as small and simple as possible. For the trust, this means fewer tools, each well understood, rather than many overlapping products.
+
+For Dev, every extra tool is another console to check weekly, another agent to update and another place where a setting can drift. Tomás's scripts follow the same idea: each one reads one export, checks one thing and prints one summary line, so Dev can understand any of them in a few minutes and fix it if an export format changes.
 
 ### Fail-safe thinking
 
@@ -523,17 +593,25 @@ You will (1) explain why pupil data need protection; (2) work within authorisati
 
 The management information system holds names, addresses, attendance, medical notes and safeguarding records. Children's data deserve particular care. A breach could harm families and require notifying the regulator.
 
+Medical notes and safeguarding records are the most sensitive, because they can describe a child's health, family circumstances or contact with social services. Even attendance data can reveal patterns, such as regular absences for hospital appointments. Because mis01 holds all of this, Tomás treats every finding about that server, such as its late backup or its password sign-in, as higher priority than the same finding elsewhere.
+
 ### 10.2 Authorisation
 
 Tomás works under a written placement agreement listing what he may access: configuration and logs on servers, exports of account and device data, but not pupil records. He never tests systems in ways that could disrupt them and never uses tools that look for weaknesses by attacking.
+
+The agreement also names Dev as the person who approves every command on a live server and says that any finding involving personal data goes to the data protection officer through Dev. When Tomás is unsure whether something is in scope, the agreement tells him to stop and ask rather than interpret it himself.
 
 ### 10.3 Handling findings
 
 When he finds something sensitive, such as a shared password in a document, he tells Dev privately and does not copy it into notes. Findings are written factually, without blame, and kept inside the trust.
 
+His notes describe the spreadsheet by location and type, not content, so the notes themselves never become a second copy of the passwords. Findings about people, such as the four teachers with administrator rights, are written about the setting rather than the person. Reports leave the trust only in anonymised form for his college work, with synthetic names and figures in place of real ones.
+
 ### 10.4 Using synthetic data
 
 For college work, Tomás replaces all real names and details with synthetic ones. His labs use invented data shaped like the real exports.
+
+The synthetic data keep the shape of the real exports, such as the same column names, date formats and roughly the same number of rows, so the scripts work on both. The account names in his labs, such as k.osei and temp.supply, are invented, and the figures are chosen so the lessons still hold. Renée checks that nothing in his college submission could identify a real pupil, member of staff or school.
 
 ### Retention and minimisation
 
@@ -575,17 +653,25 @@ You will (1) build an asset list from several sources; (2) reconcile differences
 
 Tomás gathers the directory's computer list, the management service's device list and the purchasing records. Each is incomplete: the directory includes old computers never removed, the management service misses some classroom laptops, and purchasing lacks donated devices.
 
+Tomás exports all three in the same week so that differences come from the sources rather than from time passing between exports. He also notes what each source is for: the directory controls sign-in, the management service applies settings, and purchasing records what the trust paid for. None of the three sources was ever designed to be a complete inventory.
+
 ### 11.2 Reconciling
 
 He matches by serial number and lists differences. Twelve directory entries are for machines long gone; four laptops are in use but not managed; two donated laptops appear nowhere. Each difference is resolved with Dev: stale entries removed, unmanaged laptops enrolled, donated laptops recorded.
+
+Serial numbers are used because hostnames change when a laptop is rebuilt or passed to a new teacher, while the serial stays with the hardware. Where a source has no serial for a device, Tomás matches it by hostname and last sign-in date instead, and marks it as a weaker match for Dev to confirm.
 
 ### 11.3 Fields that matter
 
 For each device: owner or location, operating system and version, last check-in, encryption state and support end date. These fields support the later chapters on patching, encryption and replacement.
 
+Owner or location says who to ask when something is wrong, which is exactly the field missing for the classroom tablets. Last check-in shows whether a device is still in use and reporting, and support end date drives the replacement plan. Encryption state is kept here as well as in the console, so the inventory alone can answer a data protection question about a lost laptop.
+
 ### 11.4 Keeping it current
 
 A monthly comparison, run by a script, flags new differences. Leavers' laptops are returned and recorded through the same form as account disabling.
+
+The script compares the three exports by serial and prints only the differences, so a month with no changes produces a one-line result. Each difference is resolved the same way as during reconciliation: removed, enrolled or recorded. Dev keeps the monthly outputs in a dated folder, which later shows whether the inventory stayed accurate after the placement ended.
 
 ### Disposal
 
@@ -633,9 +719,13 @@ You will (1) define an SSH baseline; (2) compare servers; (3) plan fixes.
 
 Linux servers are administered remotely over SSH. Its settings decide who can sign in and how. The CIS Benchmarks for Linux distributions recommend, among other things, disallowing direct root sign-in, using keys instead of passwords, disabling X11 forwarding where unneeded and limiting authentication attempts.
 
+At the trust, SSH is how Dev and the outside company's engineers administer the four Linux servers, including mis01 with the pupil records. A server that allows root to sign in directly with a password can be attacked by simply guessing that one password, while keys and named accounts leave a trace of which person did what.
+
 ### 12.2 The baseline
 
 Tomás and Dev agree a four-item baseline for the trust's Linux servers, drawn from the CIS Benchmark: PermitRootLogin no, PasswordAuthentication no, X11Forwarding no, MaxAuthTries 4. They keep it short so it can be checked often.
+
+Each item is a single line in the SSH server configuration, which makes it easy to read on each server and easy to compare in a script. Root sign-in is closed because Dev uses named accounts and sudo; passwords are closed because everyone has keys; X11 forwarding is unused; and four attempts give room for one or two typing mistakes.
 
 ### Lab — Comparing servers to the baseline
 
@@ -668,9 +758,13 @@ servers compliant: 2 of 4 | deviations 4
 
 Two of four servers comply. files01 allows root sign-in and more attempts; mis01 allows passwords and X11 forwarding. These match what Dev suspected: both servers were set up by different people at different times.
 
+Neither server is wrong on purpose: files01's settings look like the distribution's old defaults, and mis01's password sign-in was probably left open for the outside company during installation. Because mis01 holds pupil records, its password sign-in is the more serious of the four deviations and the first one Dev plans to fix.
+
 ### 12.4 Fixing safely
 
 Before disabling password sign-in on mis01, Dev confirms that everyone who needs access has a working key, keeps an existing session open while testing a new one, and records the change. This avoids locking himself out.
+
+Dev changes one server at a time and reruns the lab script afterwards to confirm that only the intended setting moved. The open session is the rollback: if the new setting blocks sign-in, he can revert it from the session he kept. He also tells the outside company the date in advance, so nobody tries to sign in with a password that afternoon.
 
 ### Beyond SSH
 
@@ -714,17 +808,25 @@ You will (1) compare laptops with a baseline; (2) pilot changes; (3) measure com
 
 For laptops, Tomás and Dev pick fifteen settings from the CIS Benchmark and Microsoft security baseline that matter most for the trust: screen lock, firewall on, guest disabled, SMBv1 off, PowerShell logging, removable media scanning, LAPS, and others.
 
+Each setting was chosen because it addresses something already seen at the trust, such as the thirty-minute screen lock, the public firewall profile switched off on two laptops and the shared local administrator password. Tomás records the source and value of each setting so the next technician knows why it is there.
+
 ### 13.2 Measuring
 
 The management service reports each setting's state per device. Tomás exports this and computes how many laptops meet all fifteen. At the start, 31 of 94 do.
+
+A laptop counts as compliant only if all fifteen settings match, so one missing setting is enough to fail it. Tomás chose this strict measure because a laptop with fourteen good settings and the firewall off is still exposed. The export also lists which setting failed on each laptop, so the 63 non-compliant laptops can be grouped by the setting they miss.
 
 ### 13.3 Piloting
 
 Changes go to ten laptops in one school for two weeks. One problem appears: an old interactive whiteboard app needs SMBv1 to reach a shared folder. The app vendor's newer version works without it, so the app is updated rather than the setting relaxed.
 
+The pilot laptops belong to staff who volunteered and who agreed to report anything that stopped working. Dev keeps the old settings documented so he can revert the pilot group within minutes if a classroom problem appears. The whiteboard app problem is exactly the kind of conflict the pilot exists to find before ninety-four laptops are affected rather than ten.
+
 ### 13.4 Rolling out
 
 The baseline then goes to all laptops in two groups a week apart. Compliance rises to 86 of 94, with the rest offline over a holiday.
+
+Rolling out in two groups a week apart means that a problem missed in the pilot affects only half the laptops before it is noticed. Dev watches the support requests during the first week and only releases the second group once there are no new complaints linked to the baseline. The eight laptops not yet compliant are listed by name for checking after the holiday.
 
 ### Explaining changes and reaching every laptop
 
@@ -766,17 +868,25 @@ You will (1) plan update rings; (2) measure update latency; (3) handle failures.
 
 Updates install first on Dev's and two volunteer teachers' laptops, then on everyone a few days later. NIST SP 800-40 Rev. 4 describes this kind of staged rollout as a way to balance speed with stability.
 
+The first ring is small on purpose: Dev's own laptop shows management problems, while the two teachers' laptops show whether classroom software still works after an update. If a problem appears, Dev pauses the rollout before it reaches the other ninety laptops. The few days' delay is a small cost compared with a failed update across both schools.
+
 ### 14.2 Timing in schools
 
 Laptops are often closed at the end of the day and taken home. Updates install during the day and restart at lunchtime or at the end of the day with a deadline of three days. During exam weeks, restarts are delayed to avoid disruption.
+
+The three-day deadline means a teacher can postpone a restart before an important lesson, but not indefinitely. Exam weeks are entered in the management service in advance with an end date, so restarts resume automatically once exams finish. Before the deadline was enforced, some laptops had gone weeks without restarting, which is why so many missed the fourteen-day measure.
 
 ### 14.3 Linux servers
 
 Security updates install automatically each night on Linux servers. Kernel updates need a reboot; Dev schedules these on Saturday mornings.
 
+The nightly security updates come from unattended-upgrades, which Dev already reviews weekly through its log. A kernel update is installed overnight but only takes effect after a reboot, so a server can look updated while still running the old kernel. Saturday mornings are chosen because no staff or pupils depend on the servers then, and Dev checks each server comes back before leaving.
+
 ### 14.4 Measuring
 
 Tomás measures days from release to installation for each laptop. In the first month, 70 of 94 install within 14 days; the rest are laptops rarely used. He lists them for follow-up.
+
+The fourteen-day measure counts from the vendor's release date to the date the management service reports the update installed. Laptops that were offline all month are listed separately rather than counted as late, since the cause is different. Tomás groups the 24 late laptops by owner so the school offices can ask staff to switch them on and connect.
 
 ### Failed updates and emergency updates
 
@@ -820,17 +930,25 @@ You will (1) inventory installed applications; (2) keep them updated; (3) update
 
 Browsers, PDF readers, office apps and classroom tools all receive security updates. Tomás exports installed applications from the management service and finds four versions of the same PDF reader, two out of support.
 
+Applications matter as much as the operating system because staff open documents and web pages in them every day, which is where most malicious content arrives. Four versions of one PDF reader mean four different sets of missing fixes, and two out-of-support versions will never be fixed at all. Tomás records the count of laptops running each of the four versions.
+
 ### 15.2 Central updating
 
 Dev packages the current PDF reader in the management service with automatic updating and removes old versions. Browsers update themselves, but Tomás checks that the update service is not disabled.
+
+Packaging one version centrally means new laptops get the same reader as old ones, and the vendor's automatic updates keep it current without Dev repackaging it each month. Removing the old versions is part of the change, because otherwise a second, unpatched reader stays installed and can still open attachments if a file association points to it.
 
 ### 15.3 Firmware
 
 Laptop firmware updates are delivered through the vendor's tool. Dev enables firmware updates through Windows Update for supported models and records firmware versions in the inventory.
 
+Delivering firmware through Windows Update means it follows the same rings as other updates, so a faulty firmware release reaches the first ring before anyone else. For models not supported that way, Dev uses the vendor's tool on laptops brought into the office on mains power. The three outdated laptops from the hardware check are updated first, and their new versions recorded.
+
 ### 15.4 Unsupported applications
 
 One classroom app is no longer maintained. Tomás records it as an exception with an alternative to be chosen by the next school year.
+
+The app is used for phonics lessons in one school, so removing it before a replacement is chosen would disrupt teaching. The exception records the app's name, why it is still needed, what limits apply, and the date by which the computing lead will propose an alternative. Dev reviews the exception each term, so it cannot quietly become permanent.
 
 ### Browser extensions
 
@@ -876,21 +994,31 @@ You will (1) explain full-disk encryption; (2) verify status across laptops; (3)
 
 Full-disk encryption protects data when a device is lost or stolen while switched off. Teachers take laptops home with marking, reports and sometimes pupil details, so a stolen laptop without encryption could expose children's data. With BitLocker and a TPM, the disk is unreadable without the startup check passing or a recovery key being entered.
 
+It does not protect a laptop stolen while switched on and signed in, nor data already synced to the cloud, which is why the screen lock and encryption work together. For the trust, the practical value is that a laptop left on a train becomes a lost device rather than a reportable breach of pupil data.
+
 ### 16.2 Turning it on centrally
 
 Dev enables BitLocker through the management service with keys automatically saved to the directory. Laptops encrypt in the background while staff keep working. Older laptops without an enabled TPM need either a firmware setting change or a start-up password, so Tomás uses the hardware fields from chapter 2 to find them before rollout.
+
+Saving keys to the directory before encryption starts is the important order: a laptop encrypted without its key stored anywhere becomes unrecoverable after the first motherboard repair. Background encryption means teachers do not lose lesson time, though a laptop closed all evening simply pauses and continues the next day.
 
 ### 16.3 Verifying
 
 Turning encryption on is not proof that it is on. Tomás exports the encryption state of every laptop and finds 87 of 94 fully encrypted, four still encrypting, two with protection suspended after firmware updates and one never started because its TPM is disabled. Each case gets an action, and the export is repeated weekly until every laptop shows fully encrypted and protection on.
 
+The four still encrypting are laptops that were rarely switched on, while the two suspended ones show a known effect of firmware updates that should resume after a restart. The one with a disabled TPM needs the firmware change from the hardware check, made with its teacher's agreement.
+
 ### 16.4 Recovery keys
 
 If a laptop's startup changes, for example after a motherboard repair, it asks for the recovery key. Keys stored in the directory let Dev help the teacher quickly. Access to keys is limited to Dev and the outside company's lead engineer, and each retrieval is logged. Tomás tests one retrieval on a spare laptop to confirm the process works.
 
+The test on the spare laptop matters because a key that exists in the directory but cannot be found quickly is little help to a teacher before a lesson. Tomás times the retrieval and writes the steps into the routine documents.
+
 ### 16.5 Servers
 
 Linux servers in the locked server room use encrypted volumes for backups taken off site. Servers themselves are physically protected, so the trust decides encryption at rest on them is lower priority than on laptops.
+
+The decision is recorded with its reason, the locked room and the limited number of people with keys to it, so it can be revisited if a server ever moves somewhere less protected. Backup volumes taken off site are different because they leave the locked room, and so they are encrypted before they go.
 
 ### Worked example
 
@@ -928,9 +1056,13 @@ You will (1) design backups for servers; (2) check backup success; (3) test rest
 
 The file server holds staff documents, and the management information system holds pupil records. Both need daily backups. The directory servers replicate between each other, but still need a backup in case a mistake replicates too. CIS Controls v8 Control 11 covers data recovery, including automated backups, protection of backup data and testing.
 
+The print server is backed up too, though its configuration matters more than any data it holds. Tomás lists, for each of the six servers, what must be restorable and how quickly, because restoring the management system before teaching resumes matters far more than restoring the print queue.
+
 ### 17.2 The 3-2-1 idea
 
 A common rule is three copies, on two kinds of media, with one off site. The trust keeps nightly backups on a backup server, a weekly copy in a cloud storage service, and one copy offline that cannot be changed from the network. The offline copy matters because ransomware can encrypt anything it can reach.
+
+The cloud copy protects against fire or flood at the school, while the offline copy protects against something that reaches the network and the cloud account together. Tomás checks that the offline copy is really disconnected between uses rather than mapped as a drive on the backup server.
 
 ### Lab — Checking backup age
 
@@ -958,9 +1090,13 @@ late 2 of 6: ['mis01', 'print01']
 
 Two of six servers have backups older than the one-day target: mis01 at 70 hours and print01 at 26 hours. The print server is a minor concern because it holds little data; the management system is serious. Dev finds that mis01's backup job failed when the database was locked during a software update and nobody saw the failure email.
 
+The lab only reports age, so it cannot tell a failed job from one that never ran, which is why Dev reads the backup software's own log for mis01. The failure email existed, but it reached an address nobody watched.
+
 ### 17.4 Testing restores
 
 A backup that has never been restored is a hope, not a plan. Each term, Dev restores a sample folder from the file server and a copy of the management system database to a test machine, records how long it took and checks the data open correctly.
+
+Restoring to a test machine rather than the live server means a mistake in the test cannot overwrite current data. The time taken matters as much as success, because a restore of the management system that takes a whole school day is a planning fact the trust needs to know in advance.
 
 ### Worked example
 
@@ -998,21 +1134,31 @@ You will (1) choose events to collect; (2) centralise logs; (3) review them regu
 
 NIST SP 800-92 recommends deciding which events matter before collecting. For the trust, the useful events are sign-in failures and successes on servers, new accounts and group changes, security software disabled, and backup failures. These answer simple questions: who signed in, what changed, and did protection stop.
 
+Choosing first keeps the volume small enough for a part-time technician to read. Each chosen event answers a question someone at the trust has already asked, such as whether the supply teacher's account had been used after they left, which nobody could answer when Dev noticed it.
+
 ### 18.2 Centralising
 
 Logs on each machine can be deleted by someone who gains control of that machine. Dev forwards server logs to the outside company's log service and uses the endpoint protection console for laptop events. Times are synchronised so events across machines line up.
+
+Sending server logs to the outside company's service also gives a second pair of eyes when Dev is away. Tomás checks that each of the six servers actually appears in the log service, because a server that stopped forwarding would look exactly like a quiet one.
 
 ### 18.3 Weekly review
 
 A thirty-minute weekly review covers a short checklist. Tomás writes it so anyone can follow it: check the sign-in failures list, the new admin group members, the disabled protection alerts and the backup report. Each finding is either explained or turned into a task.
 
+The checklist is written so the business manager or an engineer from the outside company could follow it when Dev is absent. Thirty minutes is enough because the review only looks at the four chosen lists, and anything needing longer becomes a task with a named owner rather than extending the review.
+
 ### 18.4 Privacy
 
 Logs contain staff names and times. They are viewed only for security, kept for ninety days and accessible to Dev and the outside company. Staff are told in the acceptable use policy that security logs are kept.
 
+Viewing logs only for security means they are not used to check when a teacher arrives or how long they spend online, which would be a different purpose needing its own agreement. Ninety days is long enough to look back over a school holiday when investigating something noticed late.
+
 ### 18.5 Alert fatigue
 
 If every alert demands attention, people stop reading them. Tomás suggests tuning alerts so only important events notify Dev immediately, and the rest wait for the weekly review.
+
+In practice, an immediate notification is kept for protection disabled, a new member of an administrator group and a backup missing for two days. Routine blocked downloads stay in the console for the weekly review, and Tomás records each tuning decision so it can be reversed if something important is missed.
 
 ### Clock synchronisation
 
@@ -1054,17 +1200,25 @@ You will (1) describe endpoint protection features; (2) check coverage; (3) resp
 
 Endpoint protection software scans files, watches behaviour and blocks known malicious programs. Microsoft Defender Antivirus is built into Windows; the trust also uses its cloud console to see alerts across laptops. On Linux servers, the main protections are minimal services, updates and file integrity checks rather than antivirus.
 
+For the trust, the console's value is seeing ninety laptops in one place rather than learning about a problem when a teacher phones. The Linux servers rely on fewer, more predictable programs, so a change to one of their files is a clearer signal than any antivirus alert would be.
+
 ### 19.2 Coverage
 
 Protection only helps where it is running. Tomás compares the endpoint console's device list with the inventory and finds three laptops not reporting: two were rebuilt and never onboarded, and one has protection turned off by a teacher who thought it slowed their laptop. All three are fixed, and tamper protection is enabled so staff cannot turn it off.
+
+The comparison only works because the inventory had been reconciled first; against the old directory list, the twelve stale entries would have hidden the missing laptops. Tamper protection also stops malware that gains administrator rights from simply switching protection off.
 
 ### 19.3 Responding to alerts
 
 Most alerts are routine: a blocked download or an unwanted toolbar. Dev handles them through the console. For alerts suggesting more, such as protection being disabled or a suspicious script, he isolates the laptop from the network through the console and contacts the outside company.
 
+Isolation through the console cuts the laptop off from everything except the console itself, so the outside company can still examine it remotely without anyone travelling to the school. Dev records each isolation with the time and reason, and releases the laptop only after the cause is understood.
+
 ### 19.4 Attack surface rules
 
 Defender includes attack surface reduction rules that block risky behaviours, such as office documents launching other programs. Dev turns them on in audit mode first, reviews what would be blocked for two weeks, then enforces the rules that cause no problems.
+
+Two weeks covers a full timetable cycle, so lessons that happen only once a fortnight still appear in the audit results. Rules with no hits are enforced first, and rules with hits are examined one at a time, which leads to the signed macro decision in the worked example.
 
 ### Linux integrity checks
 
@@ -1106,17 +1260,25 @@ You will (1) explain allowlisting; (2) choose where it fits; (3) introduce it sa
 
 Application control allows only approved programs to run. Instead of trying to recognise every bad program, it recognises the good ones. Microsoft App Control for Business and AppLocker provide this on Windows; on Linux, package-managed software and restricted permissions achieve a similar effect.
 
+The difference matters for new threats: a blocklist must already know a program is bad, while an allowlist blocks anything nobody approved, including programs never seen before. The cost is that every legitimate new program needs approval, so the request process has to be quick enough that staff use it.
+
 ### 20.2 Where it fits
 
 Allowlisting is easiest on devices with a stable set of software. The trust's office and reception PCs run a few known programs and are good candidates. Teachers' laptops change more often, so they start with a looser policy allowing anything installed by the management service.
+
+The six office and reception PCs run the finance software, the management system's client, a browser and office apps, and those change only with planned updates. Starting there gives Dev experience with the policy on devices where a mistake affects a handful of staff rather than every classroom.
 
 ### 20.3 Introducing safely
 
 Like attack surface rules, application control starts in audit mode. For three weeks, Dev collects what runs on the office PCs. The list shows the expected programs plus a printer utility and an old payroll helper. Both are added after checking they are needed.
 
+Three weeks of audit covers month-end on the office PCs, when the payroll helper is used, so a shorter audit would have missed it. Each program found in audit is checked with the office manager before it is added, and anything nobody recognises is removed rather than allowed.
+
 ### 20.4 Maintaining
 
 Each new approved program is added to the policy through a simple request. The policy is reviewed each term.
+
+A request names the program, the reason and the PCs that need it, and Dev adds a publisher rule where the program is signed. The termly review removes programs no longer used, so the allowlist does not grow into a list of everything ever installed. Each change is written in the change log like any other configuration change, with the date and who asked for it.
 
 ### Explaining it to staff
 
@@ -1158,17 +1320,25 @@ You will (1) protect laptops used off site; (2) secure remote access; (3) handle
 
 Teachers work at home and on trips. Laptops off site still get updates and policies through the cloud management service. The host firewall's public profile is on, and encryption protects them if lost.
 
+The firewall's public profile is the one that matters off site, which is why the two laptops found with it switched off were among the first baseline fixes. Encryption and the screen lock protect the laptop if it is left on a train, and management keeps it updated over a home connection.
+
 ### 21.2 Remote access
 
 Staff reach the file server through a VPN with multi-factor authentication. Tomás recommends replacing the outside company's shared VPN account with individual accounts, each with multi-factor authentication, so actions are traceable and access can be removed per person.
+
+Multi-factor authentication on the VPN means a stolen staff password alone is not enough to reach the file server. The shared supplier account is the exception the recommendation targets, since four engineers use one password and no individual can be held to account or removed.
 
 ### 21.3 Personal devices
 
 Some staff read email on personal phones. The trust uses the email service's app protection policies, which keep school data in managed apps and allow it to be wiped without touching personal data.
 
+Staff were not asked to enrol personal phones in full device management, which many would refuse and which would give the trust more control than it needs. App protection limits the trust's control to the email and document apps, which is proportionate and easier to explain to staff.
+
 ### 21.4 Public networks
 
 Teachers on hotel or café wireless should use the VPN for school systems. Tomás writes a short guide with three steps.
+
+The guide fits on one card: connect to the network, start the VPN before opening any school system, and lock the laptop whenever stepping away. Tomás tests it with two teachers before a residential trip and rewrites the second step after one asks how to tell whether the VPN is connected. Café and hotel networks are where the two laptops with the public firewall profile switched off would have been most exposed before the baseline fixed them.
 
 ### Device loss and long trips
 
@@ -1210,17 +1380,25 @@ You will (1) control changes; (2) record configuration; (3) detect drift.
 
 NIST SP 800-128 describes security-focused configuration management: establishing baselines, controlling changes and monitoring. At the trust, each server change is recorded in a simple change log with date, who, what and why, and agreed with Dev beforehand.
 
+The log is a shared spreadsheet rather than a ticketing system, because one technician with a few changes a week does not need more. Agreement beforehand means a second person knows a change is planned, which is how the 02:00 sign-in by the outside company could be explained quickly.
+
 ### 22.2 Recording configuration
 
 The baselines from chapters 12 and 13, plus server role notes, form the documented configuration. They are stored in a shared folder with version history.
+
+The documented configuration includes the four SSH settings, the fifteen laptop settings with their sources, and a role note for each of the six servers. Version history means an older baseline can be compared with the current one when a question arises about when a setting changed and why. The folder is readable by Dev, the business manager and the outside company, so whoever is covering can check what a server is supposed to look like.
 
 ### 22.3 Detecting drift
 
 The weekly check scripts compare servers and laptops with their baselines. When drift appears, Dev finds out why before reverting, because drift sometimes reveals a real need.
 
+The SSH lab script and the laptop compliance export are the drift checks; they are the same tools used for measurement, rerun weekly. A deviation is first compared with the change log, since a recorded change explains itself, and only unexplained drift needs investigation before anything is reverted. The X11 forwarding found re-enabled on mis01 is the trust's first example, explained by the change log entry for the graphical installer.
+
 ### 22.4 Emergency changes
 
 Urgent changes during outages are allowed but recorded afterwards within one working day.
+
+An emergency change might be reopening password sign-in on a server when a key is lost and teaching depends on that server. The person making the change records it within one working day with the reason, and the next weekly review checks whether it should be reversed or made permanent through the normal process. Without the one-day rule, an emergency setting can stay in place for months and then appear in a weekly check as unexplained drift nobody remembers making.
 
 ### Server role notes
 
@@ -1268,17 +1446,25 @@ You will (1) recognise endpoint incidents; (2) take first steps; (3) escalate.
 
 An incident is something that harms or may harm systems or data: malware detected and not blocked, a lost laptop, a suspicious sign-in, or an account used after its owner left. NIST SP 800-61 describes preparation, detection, containment, eradication, recovery and lessons learned.
 
+The list deliberately includes events that are not attacks, such as a lost laptop, because they still need the same quick steps and records. The supply teacher's account that outlived the contract would have counted too, had anyone known whether it had been used after the teacher left.
+
 ### 23.2 First steps
 
 For a suspected infected laptop: disconnect it from the network or isolate it through the console, do not switch it off if the outside company may need to examine it, record what was seen and when, and contact Dev.
+
+Isolating rather than switching off keeps the laptop's memory and running state available if the outside company needs them, and stops it reaching other devices. The record of what was seen, when and by whom is written on paper or a phone if the laptop itself is the problem.
 
 ### 23.3 Escalation
 
 Dev escalates to the outside company and the head teacher if pupil data may be affected. The data protection officer decides whether the regulator must be told.
 
+The escalation order is written down so the school office does not have to decide who to call during an incident. The data protection officer's decision is recorded with its reason, whether or not the regulator is told, so the trust can show later that the question was considered. The contact card in each school office lists the same order, including the outside company's out-of-hours number added after the exercise.
+
 ### 23.4 Practising
 
 Tomás runs a tabletop exercise with Dev and the school business manager using a made-up lost-laptop scenario, finding that nobody knew the out-of-hours contact for the outside company.
+
+The exercise took an hour around a table, with Dev, the business manager and Tomás talking through who would do what at each step. Finding the missing out-of-hours contact cost nothing during the exercise, whereas finding it during a real loss on a Friday evening would have meant hours of delay.
 
 ### Lessons learned and preserving information
 
@@ -1320,17 +1506,25 @@ You will (1) plan device replacement; (2) buy secure hardware; (3) dispose safel
 
 Devices go out of support when the vendor stops updates. Tomás uses support dates from the inventory to plan replacements over three years, prioritising laptops that cannot run the current Windows version.
 
+Laptops that cannot run the current Windows version will stop receiving security updates, so they come first regardless of their condition. Tomás groups the remaining laptops by support end date from the inventory, which gives the order and timing of the three yearly batches without guessing.
+
 ### 24.2 Buying
 
 Purchase criteria include a TPM 2.0, Secure Boot, vendor firmware update support for at least five years and compatibility with the management service. CIS Controls and NIST SP 800-193 support choosing hardware that can protect and recover its firmware.
+
+These criteria come directly from earlier findings: a laptop without an enabled TPM delayed encryption, and the outdated firmware showed why vendor support length matters. Compatibility with the management service means a new laptop is enrolled and receives the baseline on first start, rather than being configured by hand.
 
 ### 24.3 Disposal
 
 Disposed devices are wiped following NIST SP 800-88 guidance, with certificates from the recycler recorded against serial numbers.
 
+Solid-state drives are erased with the vendor's secure erase, since overwriting does not reliably reach every part of the drive. The certificate from the recycler is matched to the serial number in the inventory, and a device is marked disposed only once its certificate is on file. The four laptops recycled earlier without records show why that step cannot be skipped. The serial and certificate together let the trust answer a regulator's question about any disposed laptop.
+
 ### 24.4 Donated devices
 
 Donated laptops must meet the same criteria and be enrolled before use.
+
+Two donated laptops had appeared in no list during the inventory work, which is exactly the risk this rule addresses. A donated laptop is wiped, checked for a TPM 2.0 and Secure Boot, enrolled in the management service and recorded in the inventory before anyone uses it. One that cannot meet the criteria is politely declined or passed on for recycling with a certificate. Recording the donor and date alongside the serial also helps the business manager acknowledge donations correctly.
 
 ### Firmware support and warranty
 
@@ -1376,17 +1570,25 @@ You will (1) define a placement project; (2) set measures; (3) agree scope.
 
 Tomás's project is to measure and improve the trust's endpoint basics over one term: stale accounts, server SSH settings, laptop baseline compliance, encryption and backups.
 
+One term gives enough time to measure, change and measure again, while staying within Tomás's placement. The five areas were chosen with Dev because each had already shown a problem: the supply teacher's account, the SSH settings on two servers, the laptop settings, the encryption gaps and mis01's late backup. Each area already had a script from the earlier chapters, so no new tool was needed.
+
 ### 25.2 Measures
 
 For each area he defines one measure: stale accounts count, servers compliant with the SSH baseline, laptops meeting all baseline settings, laptops fully encrypted and servers with backups within target.
+
+Each measure is a count out of a known total, such as laptops fully encrypted out of 94, so it can be compared directly at the end. Each comes from an existing export and one of the scripts, which means the end measurement can repeat the same method without new access.
 
 ### 25.3 Scope
 
 Out of scope: pupil records, classroom tablets' apps, and any testing that could disrupt teaching.
 
+Pupil records are excluded because the placement agreement does not give access to them. The classroom tablets' apps are left out because the schools' computing leads choose them, though the tablets themselves are counted in the inventory. Excluding disruptive testing means no change is made during lessons and nothing is scanned or attacked. Anything outside scope that Tomás notices is written down for Dev rather than investigated.
+
 ### 25.4 Agreement
 
 The plan is signed by Dev, the trust's business manager and Renée Okafor.
+
+Each signature means something different: Dev agrees to make the changes, the business manager accepts the time and any disruption on behalf of the trust, and Renée confirms the project meets the course requirements. Changes to scope later need the same three people, so the project cannot quietly grow beyond what was agreed. Tomás keeps the signed copy in his placement file for Renée's assessment. Signing before any change is made is what fixes the measures in advance, so they cannot be chosen after results to look good.
 
 ### Why these measures
 
@@ -1434,17 +1636,25 @@ You will (1) collect baseline data; (2) record method; (3) present results.
 
 Using the scripts, Tomás records the starting values in one week: four stale accounts, two of four servers SSH-compliant, 31 of 94 laptops baseline-compliant, 87 of 94 fully encrypted and four of six servers with backups on time.
 
+Collecting everything in one week keeps the five numbers comparable, since they describe the trust at the same point in time. The values match the earlier labs and checks: four stale accounts from the export, two compliant servers from the SSH script, 87 laptops fully encrypted and mis01 and print01 late on backups.
+
 ### 26.2 Method notes
 
 For each measure, he writes the source, date and script used, so the measurement can be repeated exactly at the end.
+
+The notes also record any manual step, such as the date range chosen for an export or which console page was used, because small differences in method can change a count. With these notes, Dev or another student could repeat the measurement at the end of term and get comparable numbers. Tomás keeps the notes beside the scripts so they are not separated.
 
 ### 26.3 Presenting
 
 He shows Dev a one-page table and a short explanation of each gap.
 
+The table has one row per measure with the count, the total, the date and a one-sentence explanation of the gap. Tomás keeps it to one page so Dev can share it with the business manager without editing. He presents it as facts about systems, not about anyone's work, and asks Dev to correct anything he has misread before it goes further. Encryption at 87 of 94 and laptop settings at 31 of 94 appear side by side, which makes the uneven picture obvious at a glance.
+
 ### 26.4 Unknowns
 
 Laptops offline during the week are counted separately rather than assumed compliant.
+
+Five laptops were offline during the measuring week, and each is listed by name as unknown. Counting them as compliant would have raised the result, while counting them as failing would have lowered it; neither would have been true. They are checked when they reconnect, and the method notes record when each one was finally measured and what it showed. The same rule applies at the end of term, so unknowns cannot quietly improve the final numbers either.
 
 ### Checking the scripts against reality
 
@@ -1490,17 +1700,25 @@ You will (1) carry out agreed changes; (2) record each; (3) avoid disruption.
 
 Changes go in order of risk and effort: stale accounts first, then backup alerting, SSH fixes, encryption fixes and finally the laptop baseline.
 
+Stale accounts come first because they are a clear risk that takes an afternoon to fix. Backup alerting follows because mis01's failed job had gone unnoticed, and the SSH changes need only a Saturday morning. The laptop baseline comes last because it needs a pilot and two rollout groups, which take most of the six weeks.
+
 ### 27.2 Recording
 
 Each change is logged with date, owner and result.
+
+The log records the date, who made the change, what changed and the result, using the same four fields as the trust's change log. Tomás adds which measure each change is meant to affect, so that at the end each improvement in the numbers can be traced to a specific logged change. A change without a log entry is treated as unfinished. Dev and Tomás share one log for the project rather than keeping separate notes, so nothing is recorded twice or missed.
 
 ### 27.3 Communication
 
 Staff get short notices before visible changes.
 
+Notices go out before visible changes such as the new screen lock or blocked USB autorun, telling staff what will change, when, and who to ask. Changes staff will not notice, such as the SSH settings on servers, are not announced to everyone. Fewer surprises mean fewer calls to Dev during the busy weeks of the rollout. Each notice is short enough to read on a phone and is sent by the school office, whose emails staff already expect. Teachers who reply with a question get an answer from Dev before the change reaches their laptop.
+
 ### 27.4 Problems
 
-The SMBv1 issue and one locked-out admin session were handled with prepared rollback steps.
+Problems during the six weeks were few, and each change had prepared rollback steps.
+
+Each change had a rollback written before it was made, such as the documented old settings for the laptop pilot and the open session kept during the SSH changes. The SMBv1 conflict was solved by updating the whiteboard app instead of rolling back. The SSH rollback was never needed, because the open session and confirmed keys meant nobody was locked out. Writing rollback steps first also made each change quicker to approve, because Dev and the business manager could see how it would be undone.
 
 ### Stale accounts in practice
 
@@ -1558,17 +1776,25 @@ You will (1) repeat measurements; (2) compare fairly; (3) discuss causes.
 
 Stale accounts 4 to 0, SSH compliance 2 to 4 of 4, baseline 31 to 93 of 94, encryption 87 to 94 of 94, backups on time 4 to 6 of 6.
 
+These are the same five measures that were recorded at the start, now taken again at the end of term. Each result is written as a count out of the same total used in the baseline, so the before and after numbers can be compared directly. The comparison table lists all five rows with both dates. Every target set in the plan was met, with laptops on the baseline at 93 against a target of at least 90.
+
 ### 28.2 Fairness
 
 The same scripts and sources are used.
+
+The same scripts read the same kinds of export, with the same thresholds, such as ninety days for stale accounts and one day for backup age. The five laptops offline at the start were treated as unknown and checked on return, so neither measurement counts an unmeasured laptop as compliant. Any change to a script after the baseline would have broken this comparison, so none was made. The method notes written at the start are what made it possible to repeat each step exactly.
 
 ### 28.3 Causes
 
 Each improvement links to a specific change, which is easier here than in larger studies because changes were separate.
 
+Stale accounts fell after the disabling and the leavers form; SSH compliance rose after the Saturday changes; encryption reached all laptops after the seven individual fixes. Because each change touched one measure, a reader can follow each number to an entry in the change log rather than relying on Tomás's judgement. The laptop baseline is the one measure where two things changed together, the settings and the whiteboard app update, but both belonged to the same planned rollout.
+
 ### 28.4 Remaining gap
 
 One laptop missed the baseline due to a failed agent, since fixed.
+
+The one laptop below the baseline had a failed management agent, which is why it could not receive settings; reinstalling the agent brought it into line. Tomás reports the gap at the time of measurement and the later fix separately, so the result is not quietly rounded up to 94 of 94. The gap is small, but naming it shows readers that the table reports what was measured rather than what was hoped. The agent failure also suggests adding last check-in dates to the weekly routine, which the routine handed over in the next chapter already does.
 
 ### Reading the numbers against targets
 
@@ -1614,17 +1840,25 @@ You will (1) write routines; (2) train others; (3) schedule reviews.
 
 Dev's weekly routine: run the check scripts, review logs and fix findings.
 
+The weekly routine takes about thirty minutes and covers the stale account, SSH and backup age scripts, the four-item log review and the encryption export. Findings are either fixed that week or recorded as tasks with an owner. The signed checklist is the evidence that the routine happened, which matters when an auditor or the business manager asks. Laptops that have not checked in for two weeks are also listed, since a silent laptop misses updates and baseline changes.
+
 ### 29.2 Termly routine
 
 Restore tests, baseline review and inventory reconciliation.
+
+Each term, Dev restores a sample folder and the management system database to a test machine, reviews the baselines against recent changes and reruns the inventory reconciliation. These tasks take about half a day together and are booked into the school calendar so they are not lost during inspections or exam weeks. The results of all three tasks are filed together with the term's date. Restore times are compared with the previous term's, so a restore that is getting slower is noticed before it matters. The inventory reconciliation also catches donated or replaced laptops that skipped enrolment.
 
 ### 29.3 Training
 
 Tomás trains the business manager to read the summary outputs.
 
+The business manager learns to read each script's summary line, such as late 0 of 6, and to know which results mean asking Dev or the outside company. The business manager does not run the scripts or change systems; the role is to notice when a number moves or a weekly output is missing. This gives the trust a second person who can tell when something is wrong. Training took one short session with the real weekly outputs, followed by the business manager reading the checklist aloud while Dev performed it.
+
 ### 29.4 Documents
 
 Scripts, baselines, change log and routines are stored together.
+
+Keeping the scripts, baselines, change log and routines in one shared folder with version history means a new technician finds everything in one place. Each script has its readme and synthetic test file beside it. Tomás checks that Dev, the business manager and the outside company can all open the folder before he leaves. The change log lives in the same folder, so the documents and the record of changes to them are never separated. Access to the folder is limited to Dev, the business manager and the outside company, because the scripts and notes describe where the servers were weak.
 
 ### Writing routines people can follow
 
@@ -1678,17 +1912,25 @@ You will (1) write a placement report; (2) present to the trust; (3) reflect on 
 
 Introduction, method, results, recommendations and appendices with scripts and synthetic data.
 
+The introduction explains the account left active after the supply teacher left, and the method describes the five measures and the scripts that produced them. Results present the before and after table, and recommendations list next steps in priority order with costs. The appendices hold the scripts and synthetic data, so the main text stays short enough for leaders. Renée's request to move technical detail into appendices means leaders can read the main report in about ten minutes.
+
 ### 30.2 Presentation
 
 A fifteen-minute talk to the trust's leaders.
+
+The fifteen minutes are split between four slides and questions, with most of the time left for questions. Tomás uses the before and after table rather than charts, because five counts out of known totals are easy to read aloud. The rehearsal with Dev means the cost question already has a prepared answer on the last slide. Leaders ask about cost and about what happens after the placement, and the routines and the outside company's cover answer the second question. The talk is assessed with the report, so the slides are filed as evidence alongside it.
 
 ### 30.3 Reflection
 
 Tomás reflects that most improvements needed process, not tools.
 
+The biggest gains came from routines such as the leavers form, the backup alerts and the weekly checks, none of which needed a new product. Tomás also reflects that measuring first changed his plans, since encryption needed far less work than he expected and the laptop baseline far more. He also records his own mistake of trusting the management console as a complete list, which the inventory reconciliation corrected. His lesson is to check one data source against an independent one before relying on it.
+
 ### 30.4 Next steps
 
-Individual accounts, application control expansion and lifecycle plan.
+Measuring the individual VPN accounts, application control expansion and the lifecycle plan.
+
+The individual VPN accounts were introduced only in the final week, so their effect should be measured in the next term. Application control could extend from the office PCs to teachers' laptops after an audit period, and the three-year replacement plan needs its first year's purchases. Each next step is listed with an owner and an approximate cost in the report. Expanding application control depends on the request process staying quick, which the office PCs have already shown is workable.
 
 ### Structure of the report
 
