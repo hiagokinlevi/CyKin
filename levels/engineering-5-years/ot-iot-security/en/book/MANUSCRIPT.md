@@ -758,7 +758,7 @@ Keep a one-page protocol inventory: trunk, baud rate, stations, function codes i
 
 ### 11.1b Protocol families in the work permit
 
-Work permits should name protocol families explicitly: Modbus TCP with function codes 3/4/6 on registers 40001-40010 is clearer than port 502. If write codes are forbidden from assessment stations, say so. If only listen-only taps are authorized, say so. Ambiguity here becomes an argument during the window when someone wants to try a diagnostic function just to see. Keep a one-page inventory of trunks, baud rates, stations and allow-list owners updated when vendors add devices.
+Work permits should name protocol families explicitly: Modbus TCP with function codes 3/4/6 on registers 40001-40010 is clearer than port 502. If write codes are forbidden from assessment stations, say so. If only listen-only taps are authorized, say so. Ambiguity here becomes an argument during the window when someone wants to try a diagnostic function just to see. When the permit names function codes, the monitor's allow-list for that window should name the same codes, so the permission and the evidence can be compared line by line.
 
 At ABP, Lena's permit for serial verification says listen-only on the RS-485 trunk to PLC-A, names HMI-1's allowed writes, and forbids diagnostic function codes from the assessment laptop. During window W-17 a vendor's request to try a diagnostic was declined for exactly this reason, and evaluated later under its own permit.
 
@@ -899,7 +899,7 @@ Draw the data-flow: sensor to PLC to historian to replica to L4 reports. Every a
 
 ### 13.1b Row-level and column-level controls
 
-Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; we ran SELECT * against an admin role proves little about analyst exposure. Draw the data-flow from sensor to PLC to historian to replica to L4 reports; every arrow needs an owner and a protocol.
+Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; we ran SELECT * against an admin role proves little about analyst exposure. Record each role-and-column result with the account used and the date, so the next review repeats exactly the same checks.
 
 Lena tests ABP's replica with an analyst account before each review. Results go in the review notes.
 
@@ -1023,7 +1023,7 @@ When someone asks for a traffic-light dashboard, offer three lights that mean so
 
 ### 15.1b From property to test
 
-If a finding claims integrity impact, the validation plan must include an integrity check (who can still write). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket. When someone asks for a traffic-light dashboard, offer lights that mean something: SIS independence, critical opens, patch deferrals past date — refuse overall cyber.
+If a finding claims integrity impact, the validation plan must include an integrity check (who can still write). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket. The re-test result goes into the same ticket as the original finding, with the date and the check used, so closure can be audited later.
 
 At ABP, the FW-12 finding claimed an integrity exposure, so its re-test checked that the office zone could no longer reach SCADA, using the same reachability method.
 
@@ -1143,7 +1143,7 @@ Lena uses the lab to explain to colleagues why a detector should watch the error
 
 Inline inspection adds latency. If the process time constant is minutes (tank level), tens of milliseconds are fine. If it is tens of milliseconds (fast pressure), prefer passive taps. Measure before deploying (Chapter 3).
 
-At ABP, Lena approved a listen-only tap on the slow tank trunk and rejected inline inspection on the fast compressor skid, after measuring each on the bench. Measured latency on the bench decided both choices, not the vendor's stated figures. Lena records the measured values with the time constants of each loop, so the decision can be revisited if a process changes.
+On the bench, Lena compares each candidate device's added latency with the time constant of the loop it would sit in: on T-1's trunk the margin is minutes, on the compressor skid only tens of milliseconds, so one device can be acceptable on the first and unacceptable on the second. Measured latency on the bench decided both choices, not the vendor's stated figures. Lena records the measured values with the time constants of each loop, so the decision can be revisited if a process changes.
 
 ### 17.3 Alert storms
 
@@ -1309,11 +1309,11 @@ Break-glass accounts for plant emergencies need dual control to retrieve and aut
 
 ### 19.1b Certificates and break-glass
 
-For TLS-facing historians and jump hosts, record presented certificates under authorization. Expired or mismatched certs are operations findings. Break-glass accounts for plant emergencies need dual control to retrieve and automatic rotation after use. An unbroken break-glass password taped under a keyboard is not a control. Prefer SHA-256 for evidence manifests; document the algorithm in the manifest.
+For TLS-facing historians and jump hosts, record presented certificates under authorization. Expired or mismatched certs are operations findings. Lena's certificate record lists, for each host, the subject, issuer, expiry date and date observed, so an expiring certificate on the historian replica becomes a dated ticket rather than a surprise outage. Prefer SHA-256 for evidence manifests; document the algorithm in the manifest.
 
 
 
-Algorithm choices for manifests are a version field, not a silent swap mid-window. Pair hashes with access logs so a matching digest is not mistaken for proof of lawful collection or correct interpretation.
+Algorithm choices for manifests are a version field, not a silent swap mid-window. When the algorithm changes, existing manifests keep their original algorithm field and are re-hashed into a new manifest rather than edited.
 
 ### Exercises
 
@@ -1369,7 +1369,7 @@ Keep a one-page "sources we actually use" list in the CNHP binder with access da
 
 ### 20.1b Neighbouring courses and deliverables
 
-This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters. The bachelor's OT book is broader; the technologist book emphasizes implementation drills. Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. Keep a one-page sources we actually use list with access dates.
+This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters. The bachelor's OT book is broader; the technologist book emphasizes implementation drills. Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. Each deliverable names its intended reader on its first page.
 
 Lena's own deliverables at ABP include both kinds. Her runbooks and tickets serve the operators who run the plant each day, while the schemas, tests and decision records serve the engineers who will maintain the tools after her. Assessors look for both.
 
