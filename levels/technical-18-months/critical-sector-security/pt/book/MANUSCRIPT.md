@@ -2204,13 +2204,13 @@ Elas são deliberadamente simples e explicáveis (Capítulo 8). O MITRE ATT&CK f
 
 Um único host não autorizado pode gerar dezenas de alertas num minuto. Agrupar alertas com a mesma regra e a mesma origem num **episódio** — estendido enquanto novos alertas chegam dentro de uma janela a partir do anterior — dá a um analista um único item, com contagem e intervalo de tempo. A janela é uma troca: curta demais, e uma atividade vira muitos episódios; longa demais, e duas atividades separadas se fundem. Registre a janela escolhida e o porquê.
 
-Registre a janela escolhida e o porquê. No Laboratório 17, uma janela de cinco minutos separa a escrita das 07:12 num episódio próprio, o que é desejável se um analista puder, de outro modo, achar que a atividade tinha parado. Uma janela longa demais fundiria essa escrita posterior com a rajada anterior e esconderia o intervalo.
+No Laboratório 17, a janela é medida a partir do último alerta do episódio, e não do primeiro; assim, um gotejar constante de alertas a cada quatro minutos estenderia um único episódio indefinidamente. Limite a duração do episódio (por exemplo, uma hora) ou relate episódios longos como em andamento, com o seu horário mais recente. Uma janela de cinco minutos separa a escrita das 07:12 num episódio próprio, o que é desejável se um analista puder, de outro modo, achar que a atividade tinha parado; uma janela muito mais longa a fundiria com a rajada anterior e esconderia o intervalo.
 
 ### 17.3 O pipeline monitora a si mesmo
 
 Um detector que descarta em silêncio os registros que não consegue analisar fica cego exatamente onde um atacante envia tráfego malformado. O pipeline precisa prestar contas de toda entrada: *registros = analisados + descartados*, verificado por um assert, com os registros descartados listados e contados. As orientações de monitoramento contínuo do NIST fazem o mesmo argumento no nível do programa: o próprio monitoramento precisa ser monitorado ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
 
-Afirme com um assert que os registros são iguais aos analisados mais os descartados e liste cada registro descartado, com horário e origem. O tráfego impossível de analisar vindo de um host desconhecido ainda deve gerar uma constatação de novo interlocutor sobre o endereço de origem, o que a atividade prática do Laboratório 17 acrescenta. Um detector que falha fechado na sua própria contabilidade está apto para o uso no plantão.
+No Laboratório 17, a verificação é a linha `assert parsed + len(dropped) == len(recs)`, e a linha de resumo imprime a própria lista de descartados: um registro, 07:03:03 vindo de 10.20.0.31, cujo campo de comprimento anuncia seis bytes seguintes quando só chegam dois. O descarte é contado, mas não gera alerta, porque as regras só rodam sobre quadros analisados — a lacuna que a atividade prática fecha. No plantão, trate a contagem de descartes como um sinal por si só: um sensor que de repente descarta muitos registros tem uma falha de captura, um bug de análise ou um interlocutor enviando tráfego deliberadamente malformado, e cada um desses casos merece um chamado.
 
 ### 17.4 Exemplo resolvido: a atividade das 07:03 (sintético)
 
@@ -2294,7 +2294,7 @@ Pontue o Laboratório 17 em cada linha e escreva uma melhoria para toda pontuaç
 
 Altere o pipeline para que um registro descartado (malformado) vindo de uma origem desconhecida gere NEW-TALKER, e acrescente uma regra que alerte sobre qualquer escrita cujo valor esteja fora da faixa de política do registrador, usando a tabela de política do Laboratório 12. Registre a nova saída e como os episódios mudam.
 
-Gere NEW-TALKER para um registro malformado vindo de uma origem desconhecida e alerte sobre escritas fora da faixa de política do Laboratório 12. Execute de novo e registre como a lista de episódios muda, em especial se a linha malformada agora aparece dentro do episódio de novo interlocutor das 07:03. Guarde as duas saídas, para que a melhoria fique visível.
+Antes de mudar o código, guarde a saída atual como linha de base e anote a sua previsão: qual episódio deve crescer e quantos alertas a regra de faixa de valores deve acrescentar. Depois da mudança, a linha de registros ainda precisa fechar em dez (nove analisados, um descartado): consertar o descarte cego muda o que o registro descartado produz, não se ele é contado. Teste a regra de faixa de valores nos dois sentidos — ela precisa disparar nas escritas de 0xFFFF e ficar em silêncio na escrita de 300 (0x012c) da eng-ws-15 às 07:02:10 — e depois pontue de novo as linhas de automonitoramento e de proveniência das regras da seção 17.5.
 
 ### 17.7 Erros comuns e limites
 
@@ -2304,10 +2304,12 @@ Gere NEW-TALKER para um registro malformado vindo de uma origem desconhecida e a
 - Acreditar que o sensor vê tudo: o Capítulo 13 encontrou um caminho até a KW-04 que não passava por este sensor.
 - Os timestamps do pipeline são os do sensor; corrija o relógio dele como o de qualquer outro (Capítulo 7).
 
-- Copiar regras de um catálogo sem uma afirmação do modelo por trás delas.
-- Escolher uma janela de episódio tão longa que atividades separadas desaparecem.
-- Descartar registros malformados em silêncio.
-- Acreditar que o sensor vê todo caminho até uma estação.
+Verificações que pegam esses erros:
+
+- Para cada regra, cite a linha do modelo de sistema que ela aplica; uma regra sem essa linha é removida, ou o modelo é atualizado primeiro.
+- Execute os episódios com duas janelas (como no EX067) e confirme que a escrita das 07:12 continua visível, seja como item próprio, seja como um intervalo estendido.
+- Faça a execução falhar quando os registros não forem iguais aos analisados mais os descartados, e revise a lista de descartados a cada turno.
+- Mantenha uma lista escrita dos caminhos que contornam o sensor (roteadores celulares das estações, tráfego local da IHM da estação) ao lado da declaração de cobertura da detecção.
 
 ### Exercícios — capítulo 17
 
@@ -2438,7 +2440,7 @@ Quatro artefatos são verificados; `04-tests.csv`, não. Alguém acrescentou uma
 
 Depois do curso, mantenha três hábitos: verificar antes de relatar, preservar antes de mudar e corrigir os relógios antes de ordenar os eventos. Mantenha os laboratórios contidos e nunca teste infraestrutura real sem autorização escrita do seu dono. Revisite normas e orientações quando mudarem; todas as fontes deste livro têm data de outubro de 2026.
 
-Depois do curso, mantenha três hábitos: verificar antes de relatar, preservar antes de mudar e corrigir os relógios antes de ordenar os eventos. Mantenha os laboratórios contidos e nunca teste infraestrutura real sem autorização escrita do seu dono. Revisite normas e orientações quando mudarem; todas as fontes deste livro têm data de outubro de 2026.
+Transforme o trabalho do curso num portfólio: planos com escopo, saídas dos laboratórios com as versões do Python, registros de solução de problemas e o pacote selado deste capítulo, cada selo registrado fora do seu pacote. Ao passar para uma nova versão do Python, execute de novo os laboratórios e compare as saídas; uma diferença é uma constatação a explicar, não a esconder. Busque trabalho supervisionado em que possa repetir o ciclo inteiro — escopo, linha de base, mudança, verificação, passagem de responsabilidade — num sistema real, com a assinatura do seu dono, e peça ao seu supervisor que o pontue segundo a rubrica da seção 18.5.
 
 ### 18.7 Erros comuns e limites
 
@@ -2448,10 +2450,12 @@ Depois do curso, mantenha três hábitos: verificar antes de relatar, preservar 
 - Relatar apenas os sucessos.
 - O Laboratório 18 usa texto em memória e um diretório temporário; pacotes reais incluem exportações binárias e capturas grandes, cujo resumo se calcula da mesma forma, mas que precisam de armazenamento com controle de acesso.
 
-- Escolher um projeto tão amplo que a verificação nunca termina.
-- Guardar o selo dentro do pacote, onde quem edita pode alterar os dois.
-- Editar um artefato selado em vez de acrescentar um adendo datado.
-- Relatar apenas os sucessos e esconder os requisitos não testados.
+Verificações que pegam esses erros:
+
+- Antes do primeiro dia, escreva cada requisito como um teste com resultado esperado; se um requisito não puder ser testado dentro da janela, estreite o escopo.
+- Registre o selo em pelo menos um lugar que os editores do pacote não possam alterar, como o registro de mudança (CHG-2215) ou um e-mail ao supervisor.
+- Antes da passagem de responsabilidade, execute de novo a verificação do manifesto; resolva qualquer MISMATCH restaurando o arquivo selado e acrescentando um adendo datado (EX071), nunca selando de novo por cima da versão 1.
+- Liste os requisitos reprovados e não testados na passagem de responsabilidade, com responsáveis, como faz o EX072.
 
 ### Exercícios — capítulo 18
 
