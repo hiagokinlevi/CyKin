@@ -48,10 +48,10 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 10. [Ética y seguridad en ingeniería](#ch-10)
 11. [Redes y protocolos](#ch-11)
 12. [Sistemas operativos](#ch-12)
-13. [Sistemas de datos](../../en/book/MANUSCRIPT.md#ch-13)
-14. [Ingeniería de software](../../en/book/MANUSCRIPT.md#ch-14)
-15. [Fundamentos de seguridad](../../en/book/MANUSCRIPT.md#ch-15)
-16. [Ingeniería de sistemas](../../en/book/MANUSCRIPT.md#ch-16)
+13. [Sistemas de datos](#ch-13)
+14. [Ingeniería de software](#ch-14)
+15. [Fundamentos de seguridad](#ch-15)
+16. [Ingeniería de sistemas](#ch-16)
 17. [Fundamentos de control y realimentación](../../en/book/MANUSCRIPT.md#ch-17)
 18. [Arquitectura de seguridad](../../en/book/MANUSCRIPT.md#ch-18)
 19. [Identidad y criptografía](../../en/book/MANUSCRIPT.md#ch-19)
@@ -1011,7 +1011,300 @@ El sistema operativo determina tanto la temporización como la línea base de se
 <!-- cyberabc:chapter-navigation:start ch-12 -->
 ### Siga estudiando — capítulo 12 de 50
 
-[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de datos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) diseñar modelos de datos relacionales y de series temporales para los datos operativos; (2) explicar las transacciones, la consistencia y la replicación; (3) proteger la integridad de los datos con restricciones, procedencia y cadenas de hashes, e indicar exactamente qué detecta cada una; y (4) planificar los flujos de datos entre los sistemas de control y la analítica corporativa sin abrir un camino hacia el control. Se apoya en los capítulos 9 y 11 y prepara los capítulos 22 (modelos de datos) y 29 (medición).
+
+### 13.1 Modelos para los datos operativos
+
+[Codd (1970)](https://doi.org/10.1145/362384.362685) introdujo el modelo relacional: los datos como relaciones (tablas) con claves, manipuladas mediante operaciones de conjuntos. Los registros de activos, las órdenes de trabajo y las cuentas de usuario encajan bien en él. Los datos de proceso (miles de etiquetas muestreadas cada segundo) suelen ir a un **historiador**, un almacén de series temporales optimizado para añadir datos y para consultas por rangos, a menudo con una compresión que descarta los cambios menores que una banda muerta. Sepa qué descarta su historiador: el análisis forense puede necesitar valores que nunca almacenó.
+
+El historiador de LRWA almacena el nivel de Hollin Hill con compresión por banda muerta, así que los cambios menores que la banda muerta nunca se conservan.
+
+### 13.2 Transacciones, consistencia y replicación
+
+Una **transacción** agrupa operaciones de modo que todas ocurran o ninguna (atomicidad), dejando los datos válidos (consistencia), sin verse afectada por transacciones concurrentes (aislamiento) y sobreviviendo a las caídas (durabilidad). La replicación copia los datos para la disponibilidad; cuando las réplicas pueden discrepar, los sistemas eligen entre consistencia y disponibilidad durante una partición de la red. Para la operación: una alarma reconocida por un operador no debe reaparecer como no reconocida tras una conmutación por falla; un cambio de consigna no debe aplicarse dos veces.
+
+En el par SCADA de LRWA, la conmutación por falla es el momento en que se ponen a prueba estas propiedades: las pruebas de integración deben confirmar que las alarmas reconocidas y las consignas aplicadas sobreviven al cambio exactamente una vez.
+
+### 13.3 Integridad: qué detecta cada mecanismo
+
+- Las **restricciones** (tipos, rangos, claves foráneas) rechazan los valores imposibles en la entrada.
+- Los campos de **procedencia** (fuente, hora de recogida, transformación) permiten rastrear un número hasta su origen.
+- Las **sumas de verificación** detectan la corrupción accidental.
+- Las **cadenas de hashes** enlazan cada registro con el anterior, de modo que editar cualquier registro cambia todos los hashes posteriores. Detectan la modificación *si* se dispone de una copia de confianza de un hash posterior (un **ancla**) guardada en un lugar que el atacante no pueda alterar. No detectan el truncamiento del final salvo que el ancla incluya el número de registros, y no prueban que los datos originales fueran verdaderos.
+- Las **firmas digitales** o los MAC sobre los registros o las anclas los vinculan a quien posee una clave.
+
+### 13.4 Sacar los datos sin dejar entrar los ataques
+
+Los equipos corporativos quieren datos de control para informes y analítica. El patrón seguro es empujar los datos hacia fuera, desde la zona de control hasta una réplica del historiador en la DMZ, y dejar que los usuarios corporativos consulten la réplica, nunca el historiador de control. Donde la consecuencia de comprometer la zona de control es grave, las pasarelas unidireccionales (diodos de datos) imponen físicamente un flujo solo de salida. La infracción del Lab 5 (un script corporativo que sondea directamente una RTU) es el antipatrón.
+
+En LRWA, la réplica del historiador en la DMZ atiende a los equipos de finanzas y de activos, y el script corporativo olvidado que encontró la revisión de flujos se está retirando en su favor.
+
+### 13.5 Ejemplo resuelto: proteger la cronología del incidente (sintético)
+
+Tras una caída inexplicada del nivel del depósito el 4 de marzo en el registro sintético, LRWA debe preservar el extracto del historiador para la investigación. El Lab 6 encadena con hashes seis lecturas diarias y guarda el hash de cabeza en el ticket del incidente (el ancla). La edición del valor del 4 de marzo se detecta en el índice 3 y en todos los registros posteriores. La eliminación del último registro no se detecta comparando solo las cabezas si el atacante también sustituye la cabeza guardada; por eso el ancla va a un sistema fuera del alcance del atacante, junto con el número de registros.
+
+### 13.6 Actividad práctica: Lab 6
+
+```python
+# Lab 6 - a hash-chained historian extract detects edits, not deletions at the tail (offline)
+import hashlib, json
+recs = [{"t": f"2026-03-0{d} 06:00", "tag": "HOLLIN_LVL", "v": v} for d, v in zip(range(1, 7), [78.1, 77.4, 79.0, 41.2, 76.5, 77.9])]
+def chain(rs):
+    prev, out = "0" * 64, []
+    for r in rs:
+        h = hashlib.sha256((prev + json.dumps(r, sort_keys=True)).encode()).hexdigest()
+        out.append(h); prev = h
+    return out
+anchor = chain(recs)
+print("head:", anchor[-1][:16])
+tampered = [dict(r) for r in recs]; tampered[3]["v"] = 74.0
+bad = [i for i, (a, b) in enumerate(zip(anchor, chain(tampered))) if a != b]
+print("first mismatch at index:", bad[0], "mismatches:", len(bad))
+print("truncated head matches stored index 4:", chain(recs[:5])[-1] == anchor[4])
+```
+
+Salida esperada:
+
+```text
+head: a8407870e41914c1
+first mismatch at index: 3 mismatches: 3
+truncated head matches stored index 4: True
+```
+
+El hash de cabeza es lo que LRWA guarda en el ticket del incidente. Editar la lectura del 4 de marzo para ocultar la caída cambia el hash en el índice tres y en todos los registros posteriores, de modo que la edición se detecta dondequiera que ocurra. La última línea muestra la debilidad: una cadena construida con los cinco primeros registros coincide con el hash guardado en el índice cuatro, así que un atacante que elimine el registro final y sustituya la cabeza guardada pasaría desapercibido. El EX025 cierra esa brecha añadiendo el número de registros al ancla.
+
+### 13.7 Errores comunes y límites
+
+- Tratar los datos del historiador como completos cuando la compresión o las bandas muertas descartan detalle.
+- Cadenas de hashes sin un ancla guardada de forma independiente.
+- Creer que los mecanismos de integridad prueban la verdad; prueban la ausencia de modificación desde el anclaje.
+- Conexiones de «informes» bidireccionales hacia la zona de control.
+- Perder la información de zona horaria y de la fuente del reloj.
+
+La investigación del 4 de marzo depende de evitar cada uno de estos errores, desde los huecos de compresión hasta la falta de zona horaria. Un historiador que descarta los cambios pequeños puede haber eliminado justo los valores que mostrarían con qué rapidez bajó el nivel; un ancla guardada en el servidor del historiador podría reescribirla el mismo administrador; y unas marcas de tiempo sin zona hacen imposible alinear la caída con el registro del operador.
+
+### Ejercicios — capítulo 13
+
+**EX025 — Truncamiento del final.** *Objetivo:* cerrar la brecha del truncamiento. *Entradas:* Lab 6. *Pasos:* (1) muestre que `chain(recs[:5])` coincide con el hash guardado en el índice 4; (2) modifique el ancla para incluir el número de registros y muestre que el truncamiento se detecta; (3) indique dónde debe guardarse el ancla en LRWA y por qué. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = demostración y corrección correctas, ancla guardada fuera del alcance de los administradores del control y del historiador; 2 = corrección incompleta; 1 = no ejecutado; 0 = nada.
+
+**EX026 — Diseño del flujo de datos.** *Objetivo:* diseñar con seguridad el acceso para la analítica. *Entradas:* el equipo de finanzas quiere datos horarios de energía de las bombas; el equipo de activos quiere datos de presión en vivo para un tablero. *Pasos:* describa (en texto) los flujos, las zonas y la dirección; indique qué componente impone la dirección y qué ocurre si se compromete la réplica de la DMZ. *Evidencia esperada:* descripción de los flujos y análisis de consecuencias. *Rúbrica:* 3 = envío hacia la DMZ, nada entrante hacia el control, consecuencia limitada a la confidencialidad e integridad de los datos de la réplica; 2 = la dirección no se impone; 1 = consulta directa al historiador de control; 0 = nada.
+
+### Síntesis del capítulo
+
+Modele los datos operativos de forma deliberada, sepa qué descarta su historiador y use las transacciones y la replicación pensando en la conmutación por falla. Cada mecanismo de integridad detecta algo específico: las restricciones rechazan lo imposible, las cadenas de hashes detectan ediciones respecto de un ancla guardada de forma independiente, las firmas vinculan a quien posee una clave; ninguno prueba la verdad. Mueva los datos hacia fuera, a una DMZ, y nunca deje que los informes se conviertan en un camino hacia el control.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Siga estudiando — capítulo 13 de 50
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Ingeniería de software
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) aplicar un ciclo de vida de desarrollo seguro al software de infraestructura; (2) gestionar requisitos, revisiones de diseño, revisiones de código e inspecciones; (3) gestionar las dependencias y la cadena de suministro de software con SBOM y procedencia; y (4) planificar versiones y actualizaciones para software embebido y de TO de larga vida. Se apoya en los capítulos 5 y 9 y prepara los capítulos 28, 31 y 39.
+
+### 14.1 Por qué importa el proceso
+
+[Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) sostuvo que las dificultades esenciales del software (complejidad, conformidad, mutabilidad, invisibilidad) no admiten un único avance decisivo. El proceso no las elimina; hace visibles los errores pronto, cuando corregirlos es barato, y deja evidencia de que el trabajo se hizo. En la infraestructura crítica, la evidencia forma parte del producto: los reguladores, las aseguradoras y los propietarios de los activos la pedirán. Para la pasarela del TMRP, esa evidencia incluye la revisión del modelo de amenazas, los resultados de las pruebas y la compilación firmada, que van todos al expediente.
+
+### 14.2 Un ciclo de vida de desarrollo seguro
+
+El [NIST Secure Software Development Framework (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final) agrupa las prácticas en preparar a la organización, proteger el software, producir software bien protegido y responder a las vulnerabilidades. En concreto: requisitos de seguridad y modelos de amenazas con cada funcionalidad; normas de codificación segura; revisión por pares; análisis estático automatizado y pruebas en la integración continua; sistemas de compilación protegidos; recepción y divulgación de vulnerabilidades; y parches con avisos claros. Los principios [Secure by Design de CISA](https://www.cisa.gov/securebydesign) añaden que los fabricantes deben asumir la responsabilidad de los resultados de seguridad de sus clientes: valores predeterminados seguros, sin contraseñas predeterminadas, lenguajes con seguridad de memoria cuando sea factible.
+
+### 14.3 Revisiones e inspecciones
+
+[Fagan (1976)](https://doi.org/10.1147/sj.153.0182) describió inspecciones formales de diseño y de código con roles y listas de comprobación definidos, e informó de que encontraban defectos antes y con menor costo que las pruebas. La revisión de código moderna es más ligera, pero conserva los principios: una segunda persona competente lee cada cambio, con una lista de comprobación que incluye la validación de entradas, la autenticación, el manejo de errores y el registro. Las métricas de complejidad, como la complejidad ciclomática de McCabe ([McCabe, 1976](https://doi.org/10.1109/TSE.1976.233837)), señalan las funciones difíciles de probar.
+
+En LRWA, cada cambio en el código de la pasarela lo lee un segundo ingeniero con una lista de comprobación.
+
+### 14.4 Dependencias y cadena de suministro
+
+La mayor parte del software se ensambla a partir de componentes de terceros. Una **lista de materiales de software (SBOM)** los enumera para que, cuando se anuncie una vulnerabilidad, pueda saber si le afecta ([recursos sobre SBOM de CISA](https://www.cisa.gov/sbom)). La **procedencia**, evidencia verificable de cómo y a partir de qué se construyó un artefacto, protege contra compilaciones manipuladas; el [marco SLSA](https://slsa.dev/) define niveles de integridad de la compilación, y las [compilaciones reproducibles](https://reproducible-builds.org/) permiten a terceros independientes confirmar que un binario corresponde a su código fuente.
+
+### 14.5 Versiones para sistemas de larga vida
+
+El software de TO puede mantenerse durante veinte años. Planifique: actualizaciones firmadas; reversión; despliegue por etapas (banco de pruebas, un sitio, flota); ventanas de compatibilidad; fechas de fin de soporte publicadas con antelación; y un proceso de actualización que funcione cuando un sitio solo es alcanzable de forma intermitente. Un mecanismo de actualización es en sí mismo una superficie de ataque y debe estar autenticado. Para el TMRP, el plan es concreto: la pasarela pasa del banco a PS2 y luego a PS1, se conserva una imagen de reversión en cada etapa, y las actualizaciones deben llegar a estaciones que solo son alcanzables de forma intermitente por LTE. Como las pasarelas están registradas como deuda técnica con un horizonte de tres años, la fecha de fin de soporte se publica desde el principio.
+
+### 14.6 Ejemplo resuelto: el proyecto de la pasarela de telemetría (sintético)
+
+El TMRP debe construir una pequeña pasarela que añada autenticación HMAC para las RTU heredadas de PS1 y PS2. El plan: los requisitos R1, R2 y R7, trazados hasta las pruebas; un modelo de amenazas revisado por un segundo ingeniero; solo la biblioteca estándar de Python, evitando dependencias de terceros; análisis estático y pruebas unitarias en la integración continua; compilaciones en un ejecutor dedicado, con artefactos firmados y una SBOM (trivialmente corta en este caso); despliegue en un banco, luego en PS2 y luego en PS1; y una imagen de reversión conservada. Cada paso deja un registro en el expediente de evidencia (capítulo 48).
+
+### 14.7 Actividad práctica
+
+Escriba un plan de una página, mapeado al SSDF, para una pequeña herramienta que haya escrito: para cada uno de los cuatro grupos de prácticas, enumere dos prácticas concretas y la evidencia que produce cada una. Elija algo real que haya escrito, como su analizador del Lab 3, para que las prácticas sean concretas. Para cada práctica, nombre la evidencia que deja: un registro de revisión, un informe de pruebas, una compilación firmada o una plantilla de aviso. Si una práctica no dejara ninguna evidencia, cámbiela o admita que es solo una intención. Compare su plan con el plan de la pasarela del TMRP y anote una práctica que añadiría.
+
+### 14.8 Errores comunes y límites
+
+- Documentos de proceso sin las prácticas que describen.
+- Revisión de código sin lista de comprobación o sin autoridad para bloquear.
+- Dependencias descargadas en tiempo de compilación sin fijar versiones ni procedencia.
+- Mecanismos de actualización sin autenticación ni reversión.
+- Ninguna fecha de fin de soporte publicada.
+
+El plan de la pasarela del TMRP se redactó para evitar cada uno de estos errores. Usa solo la biblioteca estándar, así que no hay dependencias sin fijar; las revisiones siguen una lista de comprobación; las compilaciones se firman con una SBOM; el despliegue conserva una imagen de reversión; y las pasarelas tienen un horizonte publicado de tres años.
+
+### Ejercicios — capítulo 14
+
+**EX027 — Lista de comprobación de revisión.** *Objetivo:* crear una lista de comprobación de revisión para el código de infraestructura. *Entradas:* el código del Lab 3 y del Lab 8. *Pasos:* escriba una lista de diez puntos y aplíquela a ambos laboratorios, registrando un hallazgo para cada uno. *Evidencia esperada:* lista y dos hallazgos. *Rúbrica:* 3 = lista específica (validación de entradas, comparación en tiempo constante, manejo de claves, caminos de error, registro, límites) y hallazgos reales; 2 = lista genérica; 1 = sin hallazgos; 0 = nada.
+
+**EX028 — Simulacro de respuesta con SBOM.** *Objetivo:* usar una SBOM en la respuesta a una vulnerabilidad. *Entradas:* una SBOM sintética que enumera `libmodbus 3.1.6`, `openssl 3.0.8` y `zlib 1.2.13` para el firmware de RTU-B, y un aviso sobre uno de ellos. *Pasos:* describa los pasos de triaje desde el aviso hasta la decisión, incluido cómo determina la explotabilidad en su despliegue. *Evidencia esperada:* procedimiento. *Rúbrica:* 3 = coincidencia, análisis de alcanzabilidad, contacto con el proveedor, control compensatorio, comunicación; 2 = sin alcanzabilidad; 1 = «actualizar todo»; 0 = nada.
+
+### Síntesis del capítulo
+
+El proceso hace visibles los errores pronto y deja evidencia. Use un marco de desarrollo seguro reconocido, revise con listas de comprobación, mida la complejidad y trate las dependencias y las compilaciones como parte de su superficie de ataque, con SBOM y procedencia. Diseñe las versiones y las actualizaciones para décadas, con autenticación, despliegue por etapas y reversión.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Siga estudiando — capítulo 14 de 50
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de seguridad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) definir la confidencialidad, la integridad y la disponibilidad y explicar por qué su prioridad difiere en la infraestructura; (2) describir las amenazas, las vulnerabilidades, el riesgo y los controles, y relacionarlos en una evaluación de riesgos; (3) aplicar los principios de diseño de la literatura de seguridad; y (4) mapear los controles de un sistema a un marco reconocido. Integra los capítulos 1–14 y prepara los capítulos de arquitectura de seguridad e identidad (18–19) y los capítulos sectoriales (del 20 en adelante).
+
+### 15.1 Las propiedades
+
+La **confidencialidad** limita quién puede leer la información; la **integridad** garantiza que la información y los sistemas no se alteren sin autorización; la **disponibilidad** garantiza un acceso oportuno y fiable. En la TI corporativa, la confidencialidad suele ir primero. En la infraestructura, el proceso físico ocupa el primer lugar: la integridad y la disponibilidad del control, después la seguridad funcional y después la confidencialidad, aunque la confidencialidad de los diseños de red y de las credenciales protege a las demás. [Avizienis et al. (2004)](https://doi.org/10.1109/TDSC.2004.2) sitúan la seguridad junto a la confiabilidad, la seguridad funcional y la mantenibilidad como atributos de la confiabilidad en sentido amplio (*dependability*); su taxonomía de fallas, errores y averías se usa en todo este libro.
+
+### 15.2 Amenaza, vulnerabilidad, riesgo
+
+Una **amenaza** es una causa potencial de daño (un actor con capacidad e intención, o un peligro natural); una **vulnerabilidad** es una debilidad que una amenaza puede explotar; el **riesgo** combina la probabilidad y la consecuencia. [NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final) describe la evaluación de riesgos como la identificación de las fuentes y los eventos de amenaza, las vulnerabilidades, la probabilidad y el impacto. En la infraestructura, empiece por la consecuencia: ¿qué es lo peor que podría ocurrirles al servicio y a las personas? El método [Consequence-driven Cyber-informed Engineering (CCE)](https://inl.gov/national-security/cce/) del Idaho National Laboratory empieza así: pregunta qué funciones serían inaceptables si se perdieran o se usaran indebidamente y trabaja hacia atrás hasta lo que necesitaría un adversario.
+
+### 15.3 Controles y principios
+
+Los controles son preventivos, detectivos, correctivos o compensatorios, y técnicos, procedimentales o físicos. Principios de diseño de [Saltzer y Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939): economía de mecanismo, valores predeterminados a prueba de fallos, mediación completa, diseño abierto, separación de privilegios, mínimo privilegio, mínimo mecanismo común y aceptabilidad psicológica. Añada la **defensa en profundidad** (capas cuyas fallas son independientes) y la **suposición de brecha** (diseñar de modo que el compromiso de una capa se detecte y se contenga). En el diseño del TMRP, el modo manual local con un interruptor de llave físico es un ejemplo de separación de privilegios, y el analizador de cloro independiente es una capa de detección fuera de los sistemas que vigila.
+
+### 15.4 Marcos
+
+Los marcos dan estructura y un vocabulario común. El [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) organiza los resultados en Gobernar, Identificar, Proteger, Detectar, Responder y Recuperar. El catálogo [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) enumera controles; [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) especifica requisitos para los sistemas y componentes de automatización industrial, con niveles de seguridad; el [NCSC Cyber Assessment Framework](https://www.ncsc.gov.uk/collection/caf) del Reino Unido está basado en resultados para los servicios esenciales. Un marco es una lista de comprobación de resultados, no la evidencia de que un diseño los alcanza.
+
+### 15.5 Ejemplo resuelto: la primera tabla de riesgos del TMRP (sintético)
+
+| Consecuencia | Evento de amenaza | Vulnerabilidad | Control existente | Control propuesto |
+|---|---|---|---|---|
+| El hospital pierde el suministro > 4 h | Órdenes de parada falsificadas a PS3/PS4 | Modbus sin autenticar sobre LTE | Cifrado del operador | Telemetría autenticada (R1/R2), modo manual local |
+| Niveles de cloro inseguros | Consigna de dosificación manipulada | Sin límites de consigna en el controlador | Observación del operador | Límites en el controlador (R3), alarma de un analizador independiente (R9) |
+| Pérdida de visibilidad | Caída de la telemetría durante la pérdida de la red eléctrica | Batería del gabinete de 6 h al fin de vida | Ninguno | Batería de 24 h (R5) |
+| Recuperación lenta | *Ransomware* en los servidores SCADA | Copias de seguridad en línea, en el mismo dominio | Copias de seguridad nocturnas | Copias fuera de línea, restauración probada (R6) |
+
+Cada fila nombra primero una consecuencia en términos del servicio. La tabla es una hipótesis que se refinará en los capítulos 23 y 27.
+
+### 15.6 Actividad práctica
+
+Mapee cada control propuesto de §15.5 a una función del CSF 2.0 y a una familia de controles de SP 800-53, citando los documentos. Para cada fila de la tabla de riesgos del TMRP, elija la función del CSF que mejor describa el propósito principal del control propuesto, y anote dónde un control sirve a dos. La telemetría autenticada es principalmente protectora, la alarma del analizador independiente es principalmente detectiva y las copias fuera de línea probadas apoyan la recuperación. Cite los documentos del marco con sus versiones. Después escriba una frase por fila explicando lo que el mapeo no le dice, porque un mapeo correcto sigue sin ser evidencia de que el control funciona en LRWA.
+
+### 15.7 Errores comunes y límites
+
+- Copiar las prioridades corporativas en la TO.
+- Registros de riesgos que enumeran vulnerabilidades sin consecuencias.
+- Capas de «defensa en profundidad» que comparten un único punto de falla.
+- Tratar el mapeo a un marco como prueba de seguridad.
+- Puntuaciones de probabilidad sin fundamento enunciado.
+
+La primera tabla de riesgos del TMRP evita estos errores nombrando primero cada consecuencia en términos del servicio, de modo que cada vulnerabilidad queda ligada a un daño, y tratando sus probabilidades como hipótesis que se refinarán en capítulos posteriores. Antes de llamar independientes a sus capas, se comprueba si comparten dependencias.
+
+### Ejercicios — capítulo 15
+
+**EX029 — Auditoría de principios.** *Objetivo:* aplicar los principios de diseño. *Entradas:* el Lab 8 y la máquina de estados de la bomba de §9.5. *Pasos:* para cada uno, identifique dos principios de Saltzer–Schroeder aplicados y uno infringido o no abordado, y proponga una corrección. *Evidencia esperada:* tabla. *Rúbrica:* 3 = principios aplicados correctamente, con una carencia creíble (p. ej., la clave escrita en el código del Lab 8 infringe la separación y el mínimo privilegio; HMAC respeta el diseño abierto); 2 = una atribución errónea; 1 = solo nombres; 0 = nada.
+
+**EX030 — Escenario a partir de la consecuencia.** *Objetivo:* empezar por la consecuencia. *Entradas:* el servicio de LRWA. *Pasos:* identifique dos consecuencias inaceptables y, para cada una, las funciones que un adversario necesitaría usar indebidamente y el control de ingeniería más barato que haría la consecuencia físicamente imposible o acotada. *Evidencia esperada:* media página. *Rúbrica:* 3 = consecuencias en términos del servicio, funciones específicas, al menos un límite físico diseñado (p. ej., alivio mecánico de sobrepresión, límite cableado de la bomba de cloro); 2 = todos los controles son digitales; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad de la infraestructura protege un servicio físico: la integridad y la disponibilidad del control y la seguridad funcional van primero. Empiece por la consecuencia; después, las amenazas y las vulnerabilidades; después, los controles. Aplique principios de diseño duraderos, superponga defensas cuyas fallas sean independientes, suponga la brecha y use los marcos como listas de comprobación estructuradas, no como evidencia.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Siga estudiando — capítulo 15 de 50
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Ingeniería de sistemas
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) aplicar a un programa de seguridad el ciclo de vida de la ingeniería de sistemas: concepto, requisitos, arquitectura, diseño, integración, verificación, validación, operación y retirada; (2) descomponer las necesidades de las partes interesadas en requisitos de sistema y de subsistema con trazabilidad; (3) gestionar las interfaces y la configuración; y (4) integrar la ingeniería de seguridad en la ingeniería de sistemas en lugar de añadirla a posteriori. Se apoya en los capítulos 5 y 14 y enmarca toda la segunda mitad del libro.
+
+### 16.1 El ciclo de vida y la V
+
+La ingeniería de sistemas gestiona la complejidad pasando de las necesidades a los requisitos, a la arquitectura y a los componentes, y luego subiendo de nuevo a través de la integración y la verificación. El **modelo en V** empareja cada nivel de descomposición de la izquierda con un nivel de verificación de la derecha: las necesidades de las partes interesadas con la validación, los requisitos del sistema con la verificación del sistema, el diseño de subsistemas con las pruebas de integración, los componentes con las pruebas unitarias. El [NASA Systems Engineering Handbook](https://www.nasa.gov/reference/systems-engineering-handbook/) describe este ciclo de vida y sus revisiones técnicas. El desarrollo iterativo no abole la V; recorre V más pequeñas con más frecuencia.
+
+### 16.2 Necesidades, requisitos, trazabilidad
+
+Las necesidades de las partes interesadas son lo que las personas necesitan que el sistema logre, en su propio lenguaje: «el hospital no debe quedarse sin agua más de cuatro horas». Los requisitos del sistema traducen las necesidades en enunciados verificables sobre el sistema (capítulo 5). La **trazabilidad** vincula cada requisito hacia arriba con una necesidad y hacia abajo con los elementos de diseño y la verificación. Un requisito sin padre es un exceso innecesario o una necesidad oculta; una necesidad sin requisito es una brecha; un requisito sin verificación es una afirmación sin respaldo (capítulo 38 y Lab 14).
+
+### 16.3 Interfaces y configuración
+
+La mayoría de las fallas de los sistemas ocurren en las interfaces: entre subsistemas, organizaciones o personas. Un **documento de control de interfaces** especifica los datos, la temporización, los protocolos, la energía, las conexiones físicas y las responsabilidades de cada lado. La **gestión de la configuración** identifica cada elemento (hardware, versiones de firmware, ajustes, documentos), controla los cambios mediante revisión y conserva registros, de modo que se conozca el sistema tal como se construyó. En seguridad, una configuración desconocida es una superficie de ataque desconocida.
+
+Los tres documentos de control de interfaces del TMRP cubren RTU–pasarela, pasarela–SCADA y SCADA–DMZ. Cada uno nombra un responsable a ambos lados.
+
+### 16.4 La seguridad como disciplina de la ingeniería de sistemas
+
+[NIST SP 800-160 Vol. 1 Rev. 1](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) plantea la ingeniería de seguridad de sistemas como un conjunto de actividades de seguridad integradas en los procesos técnicos de la ingeniería de sistemas: necesidades de protección de las partes interesadas, requisitos de seguridad, diseño arquitectónico para la seguridad, verificación de las afirmaciones de seguridad, y operación y eliminación seguras. Su volumen complementario, [SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1), trata la ciberresiliencia: anticipar condiciones adversas, incluido el ataque, resistirlas, recuperarse de ellas y adaptarse.
+
+El TMRP sigue este enfoque: N2 es una necesidad de protección descompuesta en R1 y R2, y cada uno tiene una verificación planificada.
+
+### 16.5 Ejemplo resuelto: el TMRP como sistema (sintético)
+
+Las necesidades de nivel superior del TMRP: N1, mantener abastecido el hospital (interrupción ≤ 4 h en los escenarios creíbles); N2, detectar y contener el uso indebido del control remoto; N3, recuperar la operación remota en un día hábil; N4, conservar la visibilidad del operador durante los cortes de la red eléctrica. Estas se descomponen en los requisitos R1–R9 presentados hasta ahora (telemetría autenticada, rechazo de repeticiones, límites de consigna, modo manual local, 24 h de autonomía del gabinete, restauración en 8 h, alarmas en menos de 60 s, integridad de los registros, alarma de dosificación independiente). El equipo redacta documentos de control de interfaces para RTU–pasarela, pasarela–SCADA y SCADA–DMZ, y pone bajo control de cambios todas las versiones de firmware y los archivos de configuración de las RTU. Cada requisito tiene ahora una necesidad padre y un método de verificación planificado.
+
+### 16.6 Actividad práctica
+
+Dibuje una matriz de trazabilidad N1–N4 × R1–R9 y marque el padre o los padres de cada requisito. Identifique cualquier necesidad con una cobertura débil. Use una cuadrícula simple con las necesidades como columnas y los requisitos como filas, y marque el padre o los padres de cada requisito. Algunos requisitos sirven a más de una necesidad: R5 apoya la visibilidad durante los cortes de la red eléctrica, y R1 apoya tanto la contención como el suministro al hospital. Cuando termine, cuente los requisitos de cada necesidad. Una necesidad respaldada por un solo requisito merece una segunda mirada, porque una sola prueba fallida la dejaría sin respaldo en el expediente.
+
+### 16.7 Errores comunes y límites
+
+- Requisitos redactados después del diseño para justificarlo.
+- Interfaces sin responsable.
+- Configuración conocida solo por el ingeniero de puesta en marcha.
+- Requisitos de seguridad en un documento aparte, nunca trazados ni verificados.
+- Tratar el modelo en V como una excusa de cascada para aplazar las pruebas.
+
+En el TMRP cada uno de estos errores tiene una contramedida: los requisitos se trazan hasta N1–N4, cada interfaz tiene un responsable y el firmware y la configuración de las RTU están bajo control de cambios. La verificación se planifica para cada requisito antes de que empiece el diseño, de modo que la V no se usa como razón para aplazar las pruebas.
+
+### Ejercicios — capítulo 16
+
+**EX031 — Trace y encuentre brechas.** *Objetivo:* construir y analizar una matriz de trazabilidad. *Entradas:* §16.5. *Pasos:* asigne cada uno de R1–R9 a su necesidad o necesidades padre; identifique qué necesidad depende de menos requisitos y proponga un requisito adicional. *Evidencia esperada:* matriz y propuesta. *Rúbrica:* 3 = mapeo defendible, necesidad más débil identificada con un nuevo requisito verificable; 2 = errores de mapeo; 1 = sin propuesta; 0 = nada.
+
+**EX032 — Control de interfaces.** *Objetivo:* especificar una interfaz por completo. *Entradas:* la interfaz pasarela–SCADA. *Pasos:* enumere al menos ocho atributos de la interfaz con valores de ejemplo (elementos de datos, codificación, frecuencia, latencia, autenticación, manejo de errores, fuente de tiempo, responsabilidad, proceso de cambio). *Evidencia esperada:* tabla. *Rúbrica:* 3 = completa y coherente con los Labs 8 y 13; 2 = faltan atributos de seguridad o de responsabilidad; 1 = solo datos; 0 = nada.
+
+### Síntesis del capítulo
+
+La ingeniería de sistemas pasa de las necesidades a sistemas verificados y validados mediante requisitos trazables, interfaces gestionadas y configuración controlada. La seguridad pertenece a esos procesos: las necesidades de protección se convierten en requisitos, los requisitos en arquitectura y diseño, y cada afirmación de seguridad necesita evidencia de verificación.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Siga estudiando — capítulo 16 de 50
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](../../en/book/MANUSCRIPT.md#ch-17)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1093,6 +1386,30 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX023.** U = 2/10 + 4/40 + 10/100 = 0,40. Cota para n = 3: 3(2^{1/3} − 1) ≈ 0,780. U ≤ cota, así que el conjunto es planificable con prioridades monótonas en la tasa. La prueba es suficiente, no necesaria: un conjunto que supere la cota podría seguir siendo planificable (lo decidiría un análisis exacto del tiempo de respuesta).
 
 **EX024.** Mitigar ahora: deshabilitar el servicio para compartir archivos en el historiador si no se necesita, o restringirlo a un único equipo de ingeniería identificado; monitorear los intentos de conexión; aplicar el parche tras la certificación del proveedor en la siguiente ventana de mantenimiento; fecha de revisión: certificación + 14 días. Aceptar sin hacer nada ignora el camino alcanzable desde la zona de ingeniería.
+
+### Capítulo 13
+
+**EX025.** `chain(recs[:5])[-1] == anchor[4]` → True: un atacante que elimine el último registro y sustituya la cabeza guardada por `anchor[4]` pasa desapercibido. Incluir el recuento, ancla = H(cabeza ‖ n), hace detectable el truncamiento (verificado: el ancla truncada difiere). Guarde el ancla en el sistema de tickets de incidentes y en un archivo de una sola escritura, fuera de la zona de control y fuera de los privilegios de los administradores del historiador.
+
+**EX026.** El historiador de control envía los datos horarios de energía y los valores de presión en vivo a una réplica en la DMZ (solo de salida, impuesto por un cortafuegos o por una pasarela unidireccional); finanzas y el tablero consultan la réplica. Ninguna conexión entrante hacia la zona de control. Si se compromete la réplica, los atacantes pueden leer o falsificar los datos de informes y los tableros (un problema de integridad y confidencialidad de los datos), pero no obtienen ningún camino hacia el control.
+
+### Capítulo 14
+
+**EX027.** Lista de comprobación: longitud de la entrada comprobada antes de indexar; integridad comprobada antes del uso; comparación de secretos en tiempo constante; ningún secreto en el código fuente; los caminos de error rechazan; las excepciones no se silencian; límites en bucles y tamaños; registro de los rechazos sin secretos; orden de bytes explícito; pruebas para cada camino de rechazo. Hallazgos: Lab 3: las tramas truncadas informan «crc» en lugar de la forma (claridad del diagnóstico); Lab 8: clave escrita en el código fuente (aceptable solo como demostración etiquetada).
+
+**EX028.** Haga coincidir el aviso con las entradas y versiones de la SBOM; confirme que la función o característica vulnerable está presente y es alcanzable en la configuración de RTU-B (p. ej., ¿está habilitado el servidor TLS?, ¿se usa el analizador vulnerable de la biblioteca?); pida al proveedor una evaluación y un firmware corregido; aplique controles compensatorios (restringir el conducto, deshabilitar la característica); comunique a operaciones; programe la actualización mediante despliegue por etapas; registre la decisión.
+
+### Capítulo 15
+
+**EX029.** Lab 8: aplica el diseño abierto (la seguridad descansa en la clave, no en el secreto del algoritmo) y la mediación completa (se comprueba cada mensaje); infringe el mínimo privilegio y la separación en cuanto a que la clave de demostración está en el código fuente y se comparte entre estaciones; corrección: claves por estación desde un almacenamiento protegido. Máquina de estados (§9.5): aplica valores predeterminados a prueba de fallos (se rechazan los eventos no enumerados) y separación de privilegios (el reinicio necesita un operador local); no abordado: la economía de mecanismo si se implementa con indicadores dispersos; corrección: implementación dirigida por tabla.
+
+**EX030.** Consecuencia 1: hospital sin agua > 4 h; funciones usadas indebidamente: arranque y parada de bombas en PS3/PS4, posiciones de válvulas; límite diseñado: almacenamiento propio del hospital más una lógica local de rearranque automático que una orden remota no puede deshabilitar. Consecuencia 2: sobredosis de cloro; funciones: consigna de dosificación y velocidad de la bomba; límite diseñado: bomba dosificadora dimensionada físicamente de modo que la carrera máxima con el caudal máximo no pueda superar una concentración dañina, más un disparo cableado por residual alto.
+
+### Capítulo 16
+
+**EX031.** Un mapeo posible: N1 ← R3, R4, R5 (en parte), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 y N4 empatan con el menor número (dos cada una); la propuesta refuerza N3: «R10 — Se deberán hacer semanalmente copias de seguridad fuera de línea de las configuraciones del SCADA y de los controladores, guardadas fuera de los dominios de control y corporativo, con pruebas de restauración trimestrales».
+
+**EX032.** Elementos de datos (ID de estación, contador, nivel, presión, alarmas); codificación (binaria, *big-endian*, trama de 28 bytes más ID de la suite); frecuencia (1 cada 10 s por estación, más alarmas por excepción); latencia (≤ 1 s en la pasarela); autenticación (HMAC-SHA256-128, clave por estación); manejo de errores (rechazar y registrar; alarma tras 3 rechazos en 10 min; alarma de estación sin datos a los 60 s); fuente de tiempo (NTP interno a través de un conducto permitido; marcas de tiempo en UTC); responsabilidad (pasarela: ingeniería del TMRP; lado SCADA: operaciones); proceso de cambio (revisión del ICD bajo control de configuración con la aprobación de ambos responsables).
 
 <a id="glossary"></a>
 

@@ -4134,7 +4134,7 @@ Each result shows one defensible answer. Numerical results were produced by runn
 
 ### Chapter 16
 
-**EX031.** One mapping: N1 ← R3, R4, R5 (partly), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 relies on the fewest. Proposal: "R10 — Offline backups of SCADA and controller configurations shall be taken weekly, stored outside the control and enterprise domains, and restore-tested quarterly."
+**EX031.** One mapping: N1 ← R3, R4, R5 (partly), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 and N4 tie for the fewest (two each); the proposal strengthens N3: "R10 — Offline backups of SCADA and controller configurations shall be taken weekly, stored outside the control and enterprise domains, and restore-tested quarterly."
 
 **EX032.** Data items (station ID, counter, level, pressure, alarms); encoding (binary, big-endian, 28-byte frame plus suite ID); rate (1 per 10 s per station plus alarms by exception); latency (≤ 1 s at gateway); authentication (HMAC-SHA256-128, per-station key); error handling (reject and log; alarm after 3 rejections in 10 min; stale-station alarm at 60 s); time source (internal NTP via allowlisted conduit; timestamps in UTC); ownership (gateway: TMRP engineering; SCADA side: operations); change process (ICD revision under configuration control with both owners' approval).
 
