@@ -2795,7 +2795,7 @@ User research for PulseMap includes one task: explain this number to a CFO witho
 
 ### 35.4b Testing copy with real readers
 
-Sam asks two Riverstone Transit system owners who were not involved in the design to read the report summary aloud and explain what it means. Where they hesitate or misread a severity, the wording changes; reading tests catch ambiguity that reviewers who wrote the text cannot see.
+Sam asks two Riverstone Transit managers and one operator, none of whom were involved in the design, to read the report summary aloud and explain what it means. Where they hesitate or misread a severity, the wording changes; reading tests catch ambiguity that reviewers who wrote the text cannot see.
 
 Real readers find jargon and missing denominators faster than authors. Sam books two managers and one operator for each studio's copy test and files their notes with the ADR. Notes may omit names at a manager's request, but each issue still carries an id such as COPY-12 so the fix that clarified "not a residual-risk score" can be traced without a blame trail.
 
@@ -3555,7 +3555,7 @@ Counsel hears authorization and retention; ops hears change windows and canaries
 
 > **Synthetic case — Riverstone Transit.** Sam's placement memo used only Riverstone synthetic figures; real partner names were omitted.
 
-One fact stated three ways prevents counsel, ops and engineering from talking past each other. Authorization and retention for counsel, change windows and canaries for ops, schemas and tests for engineering. Sam's placement memo opened with a three-column table of the same close-out facts in each dialect.
+One fact stated three ways prevents counsel, ops and engineering from talking past each other. In Sam's close-out, counsel's column stated who authorized the scan and how long its logs are kept, ops' column named the change window and the deny-all canary, and engineering's column cited the ScopeVersion schema and its test id. Sam's placement memo opened with a three-column table of the same close-out facts in each dialect.
 
 ### 43.4 Errors and limits
 
