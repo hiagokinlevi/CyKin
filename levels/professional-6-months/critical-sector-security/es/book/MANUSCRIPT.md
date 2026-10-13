@@ -51,9 +51,9 @@ Toda afirmación factual sobre un marco, una ley, una norma, un incidente públi
 1. [Fundamentos de seguridad para profesionales](#ch-01): servicios esenciales, consecuencia, el trabajo del coordinador y el lenguaje del riesgo.
 2. [Contexto del servicio y de las partes interesadas](#ch-02): funciones críticas, dependencias y las personas que deben estar en la sala.
 3. [Práctica autorizada y tratamiento de la evidencia](#ch-03): quién puede autorizar qué, registros de decisión e intercambio de información.
-4. [Métodos fundamentales](../../en/book/MANUSCRIPT.md#ch-04): un registro de riesgos guiado por la consecuencia, titularidad y aceptación. Lab 4.
-5. [Herramientas e interpretación](../../en/book/MANUSCRIPT.md#ch-05): marcos, evaluaciones, puntuaciones de madurez y métricas leídos con espíritu crítico.
-6. [Flujo de trabajo operativo](../../en/book/MANUSCRIPT.md#ch-06): funciones, una matriz RACI, gobernanza de cambios de TI/TO y escalado. Lab 6.
+4. [Métodos fundamentales](#ch-04): un registro de riesgos guiado por la consecuencia, titularidad y aceptación. Lab 4.
+5. [Herramientas e interpretación](#ch-05): marcos, evaluaciones, puntuaciones de madurez y métricas leídos con espíritu crítico.
+6. [Flujo de trabajo operativo](#ch-06): funciones, una matriz RACI, gobernanza de cambios de TI/TO y escalado. Lab 6.
 7. [Controles y verificación](../../en/book/MANUSCRIPT.md#ch-07): titularidad de los controles, niveles de aseguramiento y excepciones limitadas en el tiempo.
 8. [Análisis supervisado de un caso](../../en/book/MANUSCRIPT.md#ch-08): un caso de acceso remoto de proveedores y la gobernanza de terceros. Lab 8.
 9. [Comunicación, ética e informes](../../en/book/MANUSCRIPT.md#ch-09): relojes de notificación, clientes críticos, declaraciones provisionales y honestidad. Lab 9.
@@ -412,7 +412,421 @@ La autorización hace que el dueño de la consecuencia acepte de antemano exacta
 <!-- cyberabc:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 12
 
-[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Infraestructura crítica y seguridad sectorial: métodos fundamentales
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- conducir un ciclo de evaluación de riesgos sencillo y repetible para un servicio esencial y mantener un registro de riesgos útil;
+- explicar por qué multiplicar la probabilidad por la consecuencia puede inducir a error en las infraestructuras críticas y cómo clasificar primero por consecuencia;
+- asegurarse de que cada riesgo tenga un dueño, un tratamiento, una fecha límite y una fecha de revisión, y detectar cuándo no los tiene;
+- registrar correctamente la aceptación de un riesgo, con autoridad, condiciones y caducidad.
+
+Los capítulos 1–3 le dieron el lenguaje, el contexto y los registros. Este capítulo los convierte en el método central del coordinador.
+
+### 4.1 El ciclo de evaluación de riesgos
+
+El NIST describe la evaluación de riesgos como un proceso de preparar, realizar, comunicar y mantener la evaluación ([NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final)). Para un coordinador, un ciclo practicable tiene cinco pasos:
+
+1. **Enmarcar**: qué servicio, qué horizonte temporal, qué consecuencias cuentan y cuál es el apetito de la dirección.
+2. **Identificar**: reunir riesgos candidatos a partir de incidentes, auditorías, conversaciones con el personal, revisiones de proveedores, avisos y ejercicios.
+3. **Analizar**: escribir cada uno como causa, evento y consecuencia; estimar la probabilidad y la consecuencia con las personas que conocen el tema.
+4. **Decidir**: el dueño del riesgo elige un tratamiento y una fecha; la aceptación se eleva al nivel de autoridad adecuado.
+5. **Supervisar**: revisar según un calendario y cuando algo cambia; informar hacia arriba de los principales riesgos.
+
+El registro es la memoria de este ciclo. Si el registro está desactualizado, el ciclo se ha detenido, diga lo que diga la política.
+
+### 4.2 Las escalas y sus límites
+
+La mayoría de las organizaciones puntúan la probabilidad y la consecuencia en escalas de 1 a 5. Deles sentido anclando cada nivel en los términos de su servicio. Una escala de consecuencia para Kestrel Water podría ser:
+
+| Nivel | Consecuencia (anclada) |
+|---|---|
+| 5 | Riesgo para la salud o la vida; llega agua no segura a los clientes; o pérdida del suministro a un cliente crítico más allá de su tiempo de autonomía |
+| 4 | Pérdida de suministro o de presión para más de 10.000 personas durante más de 12 horas; probable actuación sancionadora del regulador |
+| 3 | Pérdida localizada del suministro; coste significativo; exposición de datos de clientes con obligación de notificar |
+| 2 | Perturbación absorbida mediante operación manual; coste interno |
+| 1 | Efecto insignificante sobre el servicio |
+
+El producto habitual, probabilidad × consecuencia, es cómodo, pero tiene dos problemas conocidos. Primero, permite que un problema menor y frecuente supere a uno catastrófico y raro (4 × 3 = 12 gana a 2 × 5 = 10). Segundo, los números son etiquetas ordinales, no mediciones, así que la aritmética con ellos es más débil de lo que parece. En los servicios esenciales, una convención sensata es clasificar **primero por consecuencia** (todo lo que pueda dañar a las personas o superar el tiempo de autonomía de un cliente crítico va arriba) y usar el producto solo para ordenar riesgos de consecuencia similar. Sea cual sea la regla que elija, póngala por escrito para que la clasificación sea reproducible y discutible.
+
+### 4.3 Titularidad e higiene
+
+Un riesgo sin dueño es una preocupación, no un riesgo gestionado. La higiene del registro significa que cada entrada tiene: un dueño con autoridad sobre el servicio afectado; una decisión de tratamiento; una fecha límite para el tratamiento; una fecha de última revisión; y un enlace a la evidencia del avance. Un coordinador comprueba la higiene con regularidad, porque el deterioro del registro es silencioso: nadie se da cuenta de que un riesgo «alto» se revisó por última vez hace ocho meses hasta que ocurre algo.
+
+En el Lab 4, R02 muestra los tres fallos a la vez: sin dueño, una revisión de hace siete meses y un tratamiento vencido, en un riesgo de nivel 5.
+
+### 4.4 Aceptar el riesgo
+
+La aceptación es un tratamiento legítimo: ninguna organización puede arreglarlo todo a la vez. Una aceptación correcta registra quién aceptó el riesgo (con un nivel de autoridad acorde con su consecuencia), qué medidas compensatorias se aplican, en qué condiciones decae la aceptación y cuándo caduca. La NIS2 exige que los órganos de dirección de las entidades esenciales e importantes aprueben las medidas de gestión de riesgos de ciberseguridad y supervisen su aplicación ([Directive (EU) 2022/2555, Article 20](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)). Sea cual sea su jurisdicción, los riesgos con consecuencias de nivel 5 deben ser aceptados por la dirección o por el consejo, nunca discretamente por el coordinador.
+
+### 4.5 Ejemplo resuelto: revisar el registro (sintético)
+
+En marzo, la coordinadora revisa el registro de Kestrel Water antes de la comisión de auditoría y riesgos del consejo. Usa el **Lab 4**, que codifica la convención de clasificación y las comprobaciones de higiene para que cualquiera pueda volver a ejecutarlas. **Lab 4** (guárdelo como `lab04.py` y ejecútelo con `python3 lab04.py`):
+
+```python
+# Lab 4 - consequence-led risk register review (offline, standard library only; all data synthetic)
+import datetime as dt
+TODAY = dt.date(2026, 3, 2)
+# id, title, owner, likelihood 1-5, consequence 1-5, service affected, last review, treatment due
+REGISTER = [
+    ("R01", "Remote vendor access to station RTUs without MFA", "A. Mensah", 4, 5, "drinking water", "2026-01-10", "2026-04-30"),
+    ("R02", "Single engineer knows chlorine dosing logic",       "",          3, 5, "drinking water", "2025-08-01", "2026-02-01"),
+    ("R03", "Billing portal phishing of customer accounts",      "C. Okafor", 5, 3, "billing",        "2026-02-20", "2026-06-30"),
+    ("R04", "Historian backups never test-restored",             "J. Tan",    3, 4, "drinking water", "2025-12-15", "2026-01-31"),
+    ("R05", "Grid supply loss at pumping station KW-07",         "A. Mensah", 2, 5, "drinking water", "2026-02-01", "2026-09-30"),
+    ("R06", "Office printer firmware outdated",                  "IT desk",   4, 1, "office IT",      "2026-02-25", "2026-05-31"),
+    ("R07", "Hospital not told of planned pressure work",        "L. Ferreira",3, 4, "hospital supply","2025-06-30", "2026-03-31"),
+]
+SERVICE_WEIGHT = {"drinking water": 3, "hospital supply": 3, "billing": 1, "office IT": 0}
+rows = []
+for rid, title, owner, l, c, svc, rev, due in REGISTER:
+    score = l * c
+    flags = []
+    if not owner: flags.append("NO OWNER")
+    if (TODAY - dt.date.fromisoformat(rev)).days > 180: flags.append("REVIEW STALE")
+    if dt.date.fromisoformat(due) < TODAY: flags.append("TREATMENT OVERDUE")
+    if c == 5: flags.append("SEVERE CONSEQUENCE")
+    rows.append((score, c, SERVICE_WEIGHT[svc], rid, title, flags))
+print("Ranked by score only:")
+for score, c, w, rid, title, flags in sorted(rows, key=lambda r: (-r[0], r[3])):
+    print(f"  {rid} score={score:2d}")
+print("Ranked by consequence, then service weight, then score:")
+for i, (score, c, w, rid, title, flags) in enumerate(sorted(rows, key=lambda r: (-r[1], -r[2], -r[0], r[3])), 1):
+    print(f"  {i}. {rid} c={c} w={w} score={score:2d} {'; '.join(flags) or 'ok'}")
+print("Needs governance action:", ", ".join(r[3] for r in sorted(rows, key=lambda r: r[3]) if any(f != 'SEVERE CONSEQUENCE' for f in r[5])))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+Ranked by score only:
+  R01 score=20
+  R02 score=15
+  R03 score=15
+  R04 score=12
+  R07 score=12
+  R05 score=10
+  R06 score= 4
+Ranked by consequence, then service weight, then score:
+  1. R01 c=5 w=3 score=20 SEVERE CONSEQUENCE
+  2. R02 c=5 w=3 score=15 NO OWNER; REVIEW STALE; TREATMENT OVERDUE; SEVERE CONSEQUENCE
+  3. R05 c=5 w=3 score=10 SEVERE CONSEQUENCE
+  4. R04 c=4 w=3 score=12 TREATMENT OVERDUE
+  5. R07 c=4 w=3 score=12 REVIEW STALE
+  6. R03 c=3 w=1 score=15 ok
+  7. R06 c=1 w=0 score= 4 ok
+Needs governance action: R02, R04, R07
+```
+
+Lea las dos clasificaciones. Solo por puntuación, el riesgo de phishing de facturación R03 (15) empata con R02 y queda por encima de R05, una pérdida del suministro eléctrico en una estación de bombeo que podría dejar sin agua a miles de personas. Clasificados por consecuencia y después por la importancia del servicio afectado, los tres riesgos de nivel 5 sobre el agua potable van primero. Los indicadores de higiene muestran dónde falla la gobernanza, no la tecnología: R02 (un único ingeniero que entiende la lógica de dosificación de cloro) **no tiene dueño**, lleva siete meses sin revisarse y su tratamiento está vencido; la prueba de restauración de R04 está vencida; la revisión de R07 está obsoleta. Estos tres van a la comisión como **acciones de gobernanza**, con una propuesta de dueño para R02 (A. Mensah, dueño de la dosificación).
+
+Fíjese en lo que el laboratorio no hace. No le dice si la «probabilidad 4» de R01 es correcta; eso sale de la conversación con las personas que conocen al proveedor y la amenaza. Hace explícita la regla de clasificación y repetibles las comprobaciones de higiene; no emite el juicio por usted.
+
+### 4.6 Actividad práctica
+
+Cambie la clave de clasificación del Lab 4 para ordenar solo por puntuación y muestre el resultado a un colega. Pregúntele qué orden defendería en una reunión del consejo tras un fallo de presión en el hospital. Después escriba en dos frases la regla de clasificación de su organización. Fíjese en dónde quedan R03 y R05 en cada orden, porque esa es la discusión a la que se enfrentaría tras una interrupción: un riesgo de phishing de facturación clasificado por encima de una pérdida de suministro en una estación de bombeo es difícil de defender. Después añada un riesgo inventado con consecuencia 5 y probabilidad 1 y compruebe dónde cae con cada regla. Por último, ejecute las comprobaciones de higiene con otra fecha TODAY, por ejemplo seis meses después, y vea qué revisiones y tratamientos se vuelven obsoletos o vencen sin que nadie lo note.
+
+### 4.7 Errores comunes y límites
+
+- Escalas sin anclas, de modo que un «4» significa cosas distintas para personas distintas.
+- Aritmética con puntuaciones ordinales presentada como precisión («riesgo 13,6»).
+- Dueños que son coordinadores o comités en lugar de responsables con autoridad.
+- Aceptaciones sin caducidad, que se vuelven permanentes por defecto.
+- Registros que enumeran tecnologías («SCADA») en lugar de declaraciones de riesgo.
+- Tratar el registro como el objetivo; es solo la memoria de las decisiones.
+
+- Dejar un riesgo de nivel 5 sin dueño porque nadie lo quiere, como le ocurrió a R02 durante meses.
+- Puntuar la probabilidad sin hablar con las personas que conocen al proveedor o la amenaza, de modo que el número refleja la conjetura del coordinador.
+
+### Ejercicios — capítulo 4
+
+**EX016 — Ancle una escala.** *Objetivo:* dar sentido a la probabilidad. *Insumos:* la escala de consecuencia de 4.2. *Pasos:* escribir una escala de probabilidad de cinco niveles anclada en el tiempo y en la evidencia. *Evidencia esperada:* la escala. *Rúbrica:* 3 = niveles ligados a periodos o a evidencia (por ejemplo, 5 = ha ocurrido aquí en el último año o se está intentando activamente en el sector; 1 = sin casos conocidos en el sector, necesitaría varias condiciones improbables); señala que se tienen en cuenta los controles existentes; 2 = solo periodos; 1 = palabras como «alto»; 0 = nada.
+
+**EX017 — Lea el Lab 4.** *Objetivo:* interpretar la clasificación y la higiene. *Insumos:* la salida del Lab 4. *Pasos:* explicar por qué R03 pasa de segundo empatado a sexto y por qué R05 sube; enumerar las acciones de gobernanza y quién debería ser dueño de cada una. *Evidencia esperada:* explicación y lista. *Rúbrica:* 3 = R03 tiene consecuencia 3 sobre la facturación; R05 tiene consecuencia 5 sobre el agua potable; acciones: dueño de R02 (A. Mensah) y tratamiento vencido, prueba de restauración vencida de R04 (J. Tan, con A. Mensah como dueño del servicio), revisión obsoleta de R07 (L. Ferreira, o traspasarla a la coordinadora por la relación con el hospital); 2 = explicación sin dueños; 1 = repite la salida; 0 = nada.
+
+**EX018 — Acepte un riesgo correctamente.** *Objetivo:* registrar la aceptación. *Insumos:* el consejo decide que este año no puede financiar la sustitución de los controladores de la estación KW-10. *Pasos:* redactar el registro de aceptación. *Evidencia esperada:* el registro. *Rúbrica:* 3 = nombra la declaración de riesgo, la autoridad que acepta (consejero delegado o consejo, dada la consecuencia), las medidas compensatorias (por ejemplo, sin acceso remoto, supervisión por el KVROC, piezas de repuesto), las condiciones que ponen fin a la aceptación (nuevo aviso, incidente), la fecha de caducidad y el responsable de la revisión; 2 = sin caducidad; 1 = «aceptado»; 0 = nada.
+
+**EX019 — Amplíe el laboratorio.** *Objetivo:* codificar otra regla de higiene. *Insumos:* el Lab 4. *Pasos:* añadir un indicador «ACCEPTANCE EXPIRED» usando un campo nuevo, probarlo con una aceptación caducada y otra válida y mostrar la salida. *Evidencia esperada:* cambio de código y salida. *Rúbrica:* 3 = campo añadido en todas las filas, regla correcta, dos casos de prueba que demuestran ambos resultados, y «Needs governance action» incluye la caducada; 2 = funciona sin pruebas; 1 = solo la regla; 0 = nada.
+
+**EX020 — Presente ante la comisión.** *Objetivo:* comunicar el registro. *Insumos:* la salida del Lab 4. *Pasos:* escribir el resumen de una página para la comisión de auditoría y riesgos. *Evidencia esperada:* el resumen. *Rúbrica:* 3 = principales riesgos clasificados por consecuencia en lenguaje llano, con dueños y fechas; acciones de gobernanza con las decisiones solicitadas; declaración explícita de la regla de clasificación y sus límites; ninguna «puntuación» única; 2 = enumera riesgos sin peticiones; 1 = pega la tabla; 0 = nada.
+
+### Síntesis del capítulo
+
+La evaluación de riesgos es un ciclo (enmarcar, identificar, analizar, decidir, supervisar) y el registro es su memoria. Ancle las escalas en los términos de su servicio, clasifique primero por consecuencia en los servicios esenciales y trate las puntuaciones como ordinales. Todo riesgo necesita un dueño con autoridad, un tratamiento, fechas y evidencia; la aceptación solo es legítima con la autoridad, las condiciones y la caducidad que le corresponden.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Siga estudiando — capítulo 04 de 12
+
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Infraestructura crítica y seguridad sectorial: herramientas e interpretación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- elegir entre los principales marcos y líneas base públicos para un servicio esencial y explicar para qué sirve cada uno;
+- leer con espíritu crítico una autoevaluación o una puntuación de madurez: qué mide, quién la produjo y qué no puede mostrar;
+- diseñar un pequeño conjunto de métricas del programa que impulsen decisiones en lugar de decorar informes;
+- interpretar los hallazgos técnicos que le entreguen ingenieros y proveedores lo bastante bien como para hacer las preguntas de seguimiento adecuadas.
+
+Las «herramientas» del coordinador son sobre todo documentos y medidas. El capítulo 4 construyó el registro; este capítulo aporta las varas de medir externas y las cifras que informan sobre él.
+
+### 5.1 El panorama de los marcos
+
+Se encontrará con varias referencias que se solapan. Cada una tiene una finalidad distinta:
+
+| Referencia | Para qué sirve | Uso típico por un coordinador |
+|---|---|---|
+| [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) | Taxonomía de resultados (Gobernar, Identificar, Proteger, Detectar, Responder, Recuperar) | Estructurar el programa y los perfiles; hablar con la dirección |
+| [CISA Cross-Sector Cybersecurity Performance Goals (CPGs)](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals) | Un subconjunto priorizado de prácticas de alto impacto para las infraestructuras críticas | Línea base rápida; encontrar primero las lagunas evidentes |
+| [NCSC Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/caf) | Evaluación basada en resultados para operadores de servicios esenciales, con indicadores de buenas prácticas | Autoevaluación estructurada, diálogo con el regulador (contexto británico) |
+| [ISA/IEC 62443 series](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) | Normas para la seguridad de los sistemas de automatización y control industrial, que abarcan a propietarios de activos, integradores y proveedores de productos | Requisitos de compras y de proveedores; expectativas del programa para la TO |
+| [NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final) | Orientaciones para proteger la TO | Vocabulario compartido con los ingenieros |
+| [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) | Catálogo de controles de seguridad y privacidad | Lenguaje detallado de controles cuando hace falta |
+
+La regla del coordinador: **una estructura principal** (por ejemplo, el CSF 2.0) para el programa, con las demás referencias asociadas a ella, en lugar de cuatro hojas de cálculo paralelas. Los requisitos regulatorios de su jurisdicción van primero; los marcos le ayudan a cumplirlos, no los sustituyen.
+
+### 5.2 Leer una evaluación
+
+Un resultado de evaluación como «Proteger: 2,4 / 4» o «cobertura de los CPG del 71%» invita a una falsa confianza. Antes de repetirlo, haga cinco preguntas:
+
+1. **¿Qué se evaluó?** ¿Qué instalaciones, sistemas y procesos, y cuáles no?
+2. **¿Quién evaluó y cómo?** ¿Autoevaluación del dueño del sistema, de un par, de un evaluador independiente? ¿Mediante entrevista, revisión documental o prueba?
+3. **¿Qué cuenta como «cumplido»?** ¿Una política escrita, una política en uso o una política que se ha demostrado que funciona?
+4. **¿Cuándo?** Las evaluaciones envejecen rápido tras reorganizaciones, cambios de proveedor e incidentes.
+5. **¿Qué decisión respalda?** Si ninguna decisión cambia en función del número, es decoración.
+
+Una autoevaluación es valiosa (es barata y genera comprensión), pero mide lo que creen los dueños. El capítulo 7 añade formas de obtener evidencia más sólida.
+
+### 5.3 Métricas que impulsan decisiones
+
+Las buenas métricas del programa comparten tres propiedades: se relacionan con una consecuencia o con un control que protege frente a ella; su responsable puede modificarlas; y un umbral desencadena una acción conocida. Compare:
+
+| Métrica débil | Métrica mejor | Acción al superar el umbral |
+|---|---|---|
+| Número de políticas de seguridad | % de riesgos de nivel 5 con dueño y tratamiento en plazo | Por debajo del 100% → escalado a la dirección |
+| Correos de phishing bloqueados | Mediana del tiempo entre el fin del contrato de un proveedor y la eliminación de su cuenta | Más de 5 días laborables → revisión del proceso de acceso |
+| Vulnerabilidades encontradas | % de interfaces operativas expuestas a internet (debería ser cero) | Cualquiera → notificación inmediata al dueño |
+| Formación completada | % de responsables de guardia que participaron en un ejercicio en los últimos 12 meses | Por debajo del 80% → programar un ejercicio |
+
+Los recuentos de actividad («bloqueamos 40.000 ataques») son fáciles de producir y rara vez útiles para decidir. Prefiera medidas de exposición, puntualidad y cobertura de lo que más importa.
+
+### 5.4 Interpretar hallazgos técnicos
+
+Los ingenieros, el KVROC y los proveedores envían hallazgos. No necesita verificarlos técnicamente, pero debe hacer preguntas que los dejen listos para decidir:
+
+- **¿Qué está afectado?** ¿Qué instalación, qué función, qué nivel de consecuencia?
+- **¿Cómo lo sabe?** ¿Observado directamente, inferido o comunicado por una herramienta que puede equivocarse?
+- **¿Cuál es la exposición?** ¿Accesible desde internet, desde la red de oficina, solo in situ?
+- **¿Cuál es la acción recomendada, quién la ejecuta, para cuándo y qué perturba?**
+- **¿Hay un aviso público?** Si lo hay, enlácelo; avisos como la alerta de la CISA para el sector del agua sobre controladores expuestos a internet con contraseñas predeterminadas ([CISA AA23-335A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a)) ayudan a la dirección a entender que un hallazgo no es hipotético.
+
+### 5.5 Ejemplo resuelto: una autoevaluación con los CPG (sintético)
+
+L. Ferreira completó una lista de comprobación de los CPG para Kestrel Water e informa de «71% de objetivos cumplidos». La coordinadora hace las cinco preguntas y descubre que la evaluación abarcó la red corporativa y la planta de tratamiento, pero **no** las doce estaciones; que las respuestas eran «sí» si existía una política; y que se hizo antes de que cambiara el acuerdo de acceso remoto de HydroLogic. Dos elementos «cumplidos» (la autenticación multifactor para el acceso remoto y la revocación de credenciales del personal que se marcha) no tienen evidencia para las cuentas de proveedores.
+
+Informa a la dirección: «*Una autoevaluación de la TI corporativa y de la planta de tratamiento encontró la mayoría de las prácticas de base implantadas sobre el papel. No abarcó las estaciones, y dos elementos que son los que más importan para ellas (la autenticación multifactor para el acceso remoto y la eliminación a tiempo de las cuentas) no están verificados para los proveedores. Propongo una revisión del acceso de proveedores en mayo (capítulo 8) y repetir la evaluación, incluidas las estaciones, antes de septiembre.*». El 71% se queda en un anexo.
+
+### 5.6 Actividad práctica
+
+Tome cualquier panel público o afirmación de un informe anual sobre ciberseguridad (por ejemplo, «100% del personal formado»). Aplique las cinco preguntas y reescríbala como una afirmación lista para decidir, anotando lo que necesitaría saber. Escriba su reescritura con la misma forma que el informe de la coordinadora sobre la autoevaluación con los CPG: qué se abarcó, cómo se juzgó, qué quedó fuera y qué decisión se deriva. Si la afirmación no respalda ninguna decisión, dígalo; eso ya es un hallazgo. Conserve la cifra original, pero colóquela después del contexto y no al principio. Anote la fecha de la afirmación y si algo ha cambiado desde entonces, como una reorganización o un proveedor nuevo.
+
+### 5.7 Errores comunes y límites
+
+- Aplicar varios marcos en paralelo sin asociarlos entre sí.
+- Elegir métricas porque los datos son fáciles de obtener.
+- Tratar el marketing de un proveedor («conforme a la 62443») como una evaluación de su instalación.
+- Olvidar que los marcos y las líneas base se revisan; cite la versión y la fecha.
+
+- Dar un objetivo por cumplido porque existe una política, como hizo la autoevaluación con los CPG, sin preguntar si está en uso o si se ha demostrado que funciona.
+- Dejar fuera parte del servicio, como las doce estaciones, y aun así comunicar una sola cifra para toda la empresa, o comunicar porcentajes sin alcance ni método.
+- Repetir un resultado de evaluación ante la dirección antes de preguntar cuándo se hizo y qué ha cambiado desde entonces.
+
+### Ejercicios — capítulo 5
+
+**EX021 — Elija una estructura principal.** *Objetivo:* seleccionar y asociar marcos. *Insumos:* Kestrel Water debe informar a su regulador, compra sistemas de TO a proveedores y tiene un consejo poco familiarizado con la seguridad. *Pasos:* proponer una estructura principal y cómo se relacionan con ella los CPG y la 62443. *Evidencia esperada:* una justificación breve. *Rúbrica:* 3 = primero los requisitos regulatorios, el CSF 2.0 como estructura del programa para el consejo, los CPG como línea base priorizada asociada a él, la 62443 usada para los requisitos de proveedores y de compras; 2 = elección sin asociación; 1 = «hacerlo todo»; 0 = nada.
+
+**EX022 — Interrogue una puntuación.** *Objetivo:* aplicar las cinco preguntas. *Insumos:* «Madurez de Detectar 3,1/5, frente a 2,6». *Pasos:* escribir las cinco preguntas aplicadas a esta puntuación e indicar qué respuesta haría creíble la mejora. *Evidencia esperada:* preguntas y criterios. *Rúbrica:* 3 = pregunta por el alcance, el evaluador y el método, la definición de los niveles, la fecha y la decisión que respalda; creíble si el alcance y el método son los mismos, si es independiente o se basa en evidencia, y si se vincula a un resultado observado (por ejemplo, la detección de una inyección de un ejercicio); 2 = solo preguntas; 1 = la acepta; 0 = nada.
+
+**EX023 — Arregle las métricas.** *Objetivo:* diseñar métricas que impulsen decisiones. *Insumos:* el informe mensual actual: correos bloqueados, detecciones del antivirus, políticas aprobadas, personal formado. *Pasos:* sustituirlas por cuatro métricas con responsable y acción al superar el umbral. *Evidencia esperada:* tabla. *Rúbrica:* 3 = métricas ligadas a la consecuencia y al control (por ejemplo, higiene de los riesgos de nivel 5, tiempo de eliminación de cuentas de proveedores, exposición de interfaces operativas, participación en ejercicios), cada una con responsable y acción; 2 = métricas sin acciones; 1 = cambios cosméticos; 0 = nada.
+
+**EX024 — Deje un hallazgo listo para decidir.** *Objetivo:* interrogar un hallazgo técnico. *Insumos:* correo del KVROC: «Vimos RDP desde internet hacia hmi-02 anoche, recomendamos bloquearlo». *Pasos:* redactar la respuesta. *Evidencia esperada:* la respuesta. *Rúbrica:* 3 = pregunta a qué instalación y función sirve hmi-02, si la conexión tuvo éxito, el origen y la evidencia, y si sigue expuesto; pregunta quién puede bloquearlo y qué perturba el bloqueo (¿el acceso de un proveedor?); implica al dueño de operaciones; lo trata como potencialmente urgente; 2 = pregunta algunas cosas; 1 = «bloquéenlo, por favor»; 0 = nada.
+
+**EX025 — Informe con honestidad.** *Objetivo:* comunicar los límites de una evaluación. *Insumos:* el ejemplo resuelto 5.5. *Pasos:* reescribir el mensaje a la dirección para el consejo en menos de 100 palabras. *Evidencia esperada:* el mensaje. *Rúbrica:* 3 = expone con claridad la laguna de cobertura y los elementos no verificados, da el plan y la fecha, y evita el porcentaje como titular; 2 = menciona primero el porcentaje pero incluye los límites; 1 = «71% de cumplimiento»; 0 = nada.
+
+### Síntesis del capítulo
+
+Los marcos y las líneas base son varas de medir: elija una estructura principal, cumpla primero la ley y asocie el resto. Lea toda evaluación por su alcance, su método, su definición, su fecha y la decisión que respalda. Mida la exposición, la puntualidad y la cobertura de lo que importa, con responsables y acciones de umbral. Deje los hallazgos técnicos listos para decidir preguntando qué está afectado, cómo se sabe, cuál es la exposición, quién actúa y qué perturba.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Siga estudiando — capítulo 05 de 12
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Infraestructura crítica y seguridad sectorial: flujo de trabajo operativo
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- definir las funciones que necesita un programa de seguridad de infraestructuras críticas y cómo se relacionan con las operaciones;
+- construir y comprobar una matriz RACI para que cada actividad clave tenga exactamente una persona que rinde cuentas y un responsable principal claro;
+- gobernar los cambios en TI y TO sin bloquear las operaciones ni saltarse la seguridad de las personas;
+- diseñar una vía de escalado, desde un operador de turno hasta la dirección, que funcione a las 03:00 de un domingo.
+
+El capítulo 5 le dio las varas de medir. Este capítulo hace que el programa funcione en el día a día.
+
+### 6.1 Funciones
+
+Con el tamaño de Kestrel Water, las funciones siguientes pueden repartirse entre un puñado de personas. Lo que importa es que cada una esté asignada:
+
+- **Patrocinador ejecutivo** (director de operaciones): es dueño del programa, acepta los riesgos altos y resuelve los conflictos entre departamentos.
+- **Dueños de servicio** (el jefe de operaciones para el tratamiento y las estaciones; el responsable de atención al cliente para la facturación): son dueños de los riesgos y las decisiones de sus servicios.
+- **Coordinador**: conduce el ciclo: registro, registros de decisión, ejercicios, informes, revisiones de proveedores.
+- **Responsable de seguridad**: asesoramiento técnico de seguridad y enlace de supervisión con el KVROC.
+- **Ingeniero de sistemas de control**: configuración y cambios en los sistemas operativos de la planta.
+- **Responsable de comunicación**: mensajes públicos y a los medios.
+- **Responsable del incidente** (rotatorio, de guardia): dirige la respuesta cuando se declara un incidente.
+- **Proveedores**: trabajan con autorización; nunca son dueños de decisiones sobre su servicio.
+
+La orientación del NIST sobre respuesta a incidentes insiste en definir las funciones y responsabilidades, incluidas las de fuera del equipo de seguridad, antes de que ocurran los incidentes ([NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final)).
+
+### 6.2 RACI
+
+Una matriz **RACI** enumera actividades frente a personas, con una letra para cada una: **R** (*Responsible*, ejecuta el trabajo), **A** (*Accountable*, responde del resultado y lo da por bueno; exactamente una por actividad), **C** (*Consulted*, aportación en ambos sentidos antes de la decisión), **I** (*Informed*, se le informa después). Dos reglas detectan la mayoría de los defectos:
+
+1. Exactamente una **A** por actividad. Cero significa que nadie responde; dos significa que cada uno da por hecho que lo hará el otro.
+2. Al menos una **R** y, cuando hay varias, un responsable principal con nombre.
+
+Añada dos comprobaciones de coordinador: nadie debe rendir cuentas de la aprobación de su propio acceso o trabajo; y nadie debe acumular tantas entradas R y A en un incidente que se convierta en un cuello de botella.
+
+### 6.3 Gobernanza de cambios en TI y TO
+
+Los cambios en los sistemas operativos de la planta pueden afectar al proceso físico. Un proceso de cambios practicable para una empresa de servicios pequeña tiene tres clases:
+
+- **Estándar**: preaprobado, de bajo riesgo y repetible (sustituir un teclado de operador averiado): se registra.
+- **Normal**: evaluado y aprobado por el dueño del servicio, con un plan de prueba o de reversión y una ventana acordada con operaciones.
+- **De emergencia**: necesario ahora para proteger a las personas o el servicio; aprobado verbalmente por el responsable del incidente o el dueño del servicio, registrado en las 24 horas siguientes y revisado después.
+
+Al coordinador le interesa que los cambios relevantes para la seguridad (nuevos accesos remotos, cambios de reglas del cortafuegos, nuevos proveedores, software en los ordenadores de la sala de control) no puedan colarse como «estándar», y que los cambios de emergencia hechos durante los incidentes se revisen en lugar de volverse permanentes.
+
+### 6.4 Escalado
+
+Una vía de escalado responde, para cada nivel de gravedad: a quién se llama, quién llama, cómo, en cuánto tiempo y qué ocurre si no contesta. Escríbala como una tabla con suplentes, pruébela (capítulo 11) y colóquela donde los operadores del turno de noche puedan encontrarla sin un ordenador (una tarjeta impresa en la sala de control), porque el incidente podría haberse llevado los ordenadores. La tarjeta de Kestrel Water enumera al responsable del incidente, al jefe de operaciones y a la responsable de seguridad, con un suplente con nombre para cada uno, además de números de móvil que no dependen de la red corporativa.
+
+### 6.5 Ejemplo resuelto: comprobar la RACI de incidentes (sintético)
+
+La coordinadora redacta la RACI de incidentes de Kestrel Water y ejecuta el **Lab 6**, que aplica las reglas de 6.2. **Lab 6** (guárdelo como `lab06.py` y ejecútelo con `python3 lab06.py`):
+
+```python
+# Lab 6 - RACI matrix check for incident coordination (offline, standard library only; synthetic)
+PEOPLE = ["Coordinator", "Ops manager", "Security lead", "Comms", "Vendor", "CEO"]
+# activity -> one letter per person (R responsible, A accountable, C consulted, I informed, - none)
+RACI = {
+    "Declare cyber incident":            "R A C I - I",
+    "Decide to isolate stations":        "C A R I C I",
+    "Switch stations to manual operation":"I A - - - I",
+    "Notify regulator":                  "R - C C - A",
+    "Brief hospital (critical customer)":"R C I R - A",
+    "Approve vendor remote session":     "C A A - R -",
+    "Public statement":                  "C C C R - -",
+}
+issues = []
+load = {p: 0 for p in PEOPLE}
+for act, codes in RACI.items():
+    c = codes.split()
+    assert len(c) == len(PEOPLE), act
+    a = [p for p, x in zip(PEOPLE, c) if x == "A"]
+    r = [p for p, x in zip(PEOPLE, c) if x == "R"]
+    for p, x in zip(PEOPLE, c):
+        if x in "RA": load[p] += 1
+    if len(a) != 1: issues.append(f"{act}: {len(a)} accountable ({', '.join(a) or 'none'})")
+    if not r: issues.append(f"{act}: nobody responsible")
+    if len(r) > 1: issues.append(f"{act}: {len(r)} responsible ({', '.join(r)}) - name a lead")
+    if act.startswith("Approve") and c[PEOPLE.index("Vendor")] in "RA":
+        issues.append(f"{act}: vendor is responsible for approving its own access")
+for i in issues: print("ISSUE", i)
+print("R/A load:", ", ".join(f"{p}={n}" for p, n in load.items()))
+print(f"{len(issues)} issues in {len(RACI)} activities")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+ISSUE Switch stations to manual operation: nobody responsible
+ISSUE Brief hospital (critical customer): 2 responsible (Coordinator, Comms) - name a lead
+ISSUE Approve vendor remote session: 2 accountable (Ops manager, Security lead)
+ISSUE Approve vendor remote session: vendor is responsible for approving its own access
+ISSUE Public statement: 0 accountable (none)
+R/A load: Coordinator=3, Ops manager=4, Security lead=2, Comms=2, Vendor=1, CEO=2
+5 issues in 7 activities
+```
+
+Cinco defectos en siete actividades:
+
+- **Pasar las estaciones a operación manual** tiene una persona que rinde cuentas (el jefe de operaciones), pero nadie que lo ejecute: en la práctica lo hacen los operadores de turno y los técnicos de guardia, que faltan en la matriz. La corrección es añadir al supervisor de turno como R.
+- **Informar al hospital** tiene dos R. La coordinadora y comunicación podrían pensar cada una que llamó la otra. Nombre a la coordinadora como responsable principal (es un enlace operativo), con comunicación consultada sobre la redacción.
+- **Aprobar la sesión remota del proveedor** tiene dos A y señala al proveedor como R. El jefe de operaciones debería ser la única A (es dueño de las estaciones); la responsable de seguridad es C; el proveedor *solicita* el acceso y es I respecto de la decisión: una parte nunca debe aprobar su propio acceso.
+- **Declaración pública** no tiene a nadie que rinda cuentas. El consejero delegado debería ser A, y comunicación, R.
+
+La línea de carga muestra que el jefe de operaciones acumula cuatro entradas R/A: durante un incidente, esa misma persona está dirigiendo la planta. La coordinadora propone un suplente para las entradas relacionadas con el incidente. El laboratorio solo comprueba la estructura; si se eligió a las personas adecuadas es un juicio que corresponde al patrocinador ejecutivo.
+
+### 6.6 Actividad práctica
+
+Escriba una RACI para «incorporar un nuevo proveedor con acceso remoto» usando al menos cinco funciones y después compruébela frente a las cuatro reglas a mano o editando el Lab 6. Incluya al proveedor como función y asegúrese de que nunca apruebe su propio acceso, algo que el Lab 6 comprueba explícitamente. Indique quién rinde cuentas de la creación de la cuenta, quién comprueba que el contrato tenga las cláusulas de seguridad y a quién se informa cuando se activa la cuenta. Después cuente las entradas R y A de cada persona: si un nombre aparece en casi todas las líneas, la incorporación se atascará siempre que esa persona esté de vacaciones. Muestre el resultado al jefe de operaciones y pregúntele si falta alguien.
+
+### 6.7 Errores comunes y límites
+
+- Comités como responsables que rinden cuentas («el comité de seguridad»).
+- RACI escritas solo para los días normales, no para los incidentes.
+- Cambios de emergencia que nunca se revisan.
+- Listas de escalado sin suplentes, o guardadas solo en la red.
+- Una RACI es un contrato social: publíquela, repásela con cada persona y actualícela tras las reorganizaciones.
+
+- Dejar fuera de la matriz a las personas que realmente hacen el trabajo, como descubrió el Lab 6 con los operadores de turno para la operación manual.
+- Permitir que una parte apruebe su propio acceso, como un proveedor marcado como responsable de aprobar su sesión remota.
+- Dar a una persona tantas entradas R y A que el incidente dependa solo de ella.
+
+### Ejercicios — capítulo 6
+
+**EX026 — Corrija la RACI.** *Objetivo:* corregir los defectos. *Insumos:* la matriz del Lab 6. *Pasos:* proponer filas corregidas para los cinco problemas y volver a ejecutar la comprobación (a mano o con código). *Evidencia esperada:* matriz corregida y resultado limpio. *Rúbrica:* 3 = cero problemas, el proveedor nunca es A ni R de la aprobación, se añade una función de turno para la operación manual, un único responsable principal para informar al hospital, el consejero delegado rinde cuentas de la declaración pública; 2 = queda un problema; 1 = parcial; 0 = nada.
+
+**EX027 — Clasifique los cambios.** *Objetivo:* aplicar las clases de cambio. *Insumos:* (a) una nueva regla del cortafuegos que permite la VPN de un proveedor; (b) sustituir una batería averiada del SAI en un armario de estación; (c) desactivar una cuenta comprometida durante un incidente; (d) instalar un agente de supervisión en el historiador. *Pasos:* clasificarlos y justificarlo. *Evidencia esperada:* cuatro clases. *Rúbrica:* 3 = (a) normal (relevante para la seguridad), (b) estándar si existe un procedimiento preaprobado, (c) de emergencia con revisión posterior, (d) normal con comprobación de compatibilidad del proveedor; 2 = tres correctas; 1 = todas estándar; 0 = nada.
+
+**EX028 — Tarjeta de escalado.** *Objetivo:* diseñar una vía de escalado utilizable. *Insumos:* las funciones de 6.1. *Pasos:* escribir la tarjeta impresa para los operadores del turno de noche ante una sospecha de evento cibernético. *Evidencia esperada:* contenido de la tarjeta. *Rúbrica:* 3 = desencadenantes observables, primera llamada y suplente con números de teléfono como marcadores de posición, límites de tiempo, qué hacer mientras tanto (primero la seguridad, no apagar ordenadores sin instrucciones, anotar las horas), cuándo llamar directamente al responsable del incidente; 2 = sin suplentes; 1 = «llamar a TI»; 0 = nada.
+
+**EX029 — Análisis de cuellos de botella.** *Objetivo:* usar la línea de carga. *Insumos:* la salida de carga del Lab 6. *Pasos:* proponer cómo reducir la carga del jefe de operaciones durante un incidente sin debilitar la autoridad sobre la seguridad de las personas. *Evidencia esperada:* propuesta. *Rúbrica:* 3 = mantiene las decisiones de seguridad de las personas en operaciones, pero delega el enlace y la aprobación del proveedor en un suplente con nombre o en el responsable del incidente, con el jefe de operaciones consultado; 2 = delegación sin salvedad de seguridad; 1 = traspasa las decisiones de seguridad de las personas a TI; 0 = nada.
+
+**EX030 — Revisión de un cambio de emergencia.** *Objetivo:* cerrar los cambios de emergencia. *Insumos:* durante un incidente, un ingeniero añadió una regla del cortafuegos que bloquea todo acceso de proveedores y creó una cuenta temporal de administrador local. *Pasos:* describir la revisión posterior al incidente. *Evidencia esperada:* pasos de la revisión. *Rúbrica:* 3 = enumerar los cambios de emergencia a partir del registro, decidir para cada uno mantener/modificar/revertir con un responsable, eliminar la cuenta temporal, restablecer el acceso de proveedores solo mediante el proceso normal, actualizar la documentación; 2 = algunos pasos; 1 = «dejarlo así»; 0 = nada.
+
+### Síntesis del capítulo
+
+Un programa funciona con funciones asignadas, una RACI con una sola persona que rinde cuentas por actividad y un responsable principal con nombre, una gobernanza de cambios que mantiene visibles los cambios relevantes para la seguridad y una vía de escalado que funciona sin conexión de noche. Compruebe en la RACI la estructura, la titularidad de las aprobaciones y la carga durante los incidentes; revise todo cambio de emergencia después del evento.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Siga estudiando — capítulo 06 de 12
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -458,6 +872,42 @@ Estas son respuestas modelo. Una respuesta distinta que cumpla el nivel de exige
 **EX014.** Una biblioteca de registros con control de acceso y carpetas por tipo de registro: autorizaciones y registros de decisión (responsable: la coordinadora); aceptaciones de riesgo y excepciones (responsable: la coordinadora; decisiones de autoridades con nombre, enlazadas desde las actas del consejo); informes de ejercicios (responsable: la coordinadora); listas de acceso de proveedores (responsable: el jefe de operaciones; exportadas desde la pasarela, nunca enviadas por correo). Historial de versiones activado, conservación según la política, acceso revisado dos veces al año.
 
 **EX015.** Parar si: cualquier alarma inesperada en KW-09 o en sus vecinas; cualquier pérdida de visión en las pantallas del operador; la actualización se prolonga más allá de las 15:00; el controlador no vuelve a su estado esperado en el tiempo previsto; el operador de turno lo pide. El operador de turno y el jefe de operaciones pueden detener el trabajo en cualquier momento sin justificarlo; el proveedor debe parar y dejar el sistema en el estado seguro acordado.
+
+### Capítulo 4
+
+**EX016.** 5: ha ocurrido aquí en los últimos 12 meses o se está intentando activamente ahora contra operadores similares (aviso público). 4: ha ocurrido en el sector en los últimos 2 años y las condiciones están presentes aquí. 3: ha ocurrido en el sector; aquí necesitaría una condición más. 2: conocido en otros sectores; necesitaría varias condiciones. 1: sin casos conocidos; necesitaría varias condiciones improbables. Las valoraciones tienen en cuenta los controles que existen y están verificados (capítulo 7).
+
+**EX017.** R03 tiene la segunda puntuación empatada (15), pero consecuencia 3 sobre la facturación (peso del servicio 1), así que cae al sexto puesto con la regla de primero la consecuencia. La puntuación de R05 es 10, pero la consecuencia 5 sobre el agua potable lo eleva al tercer puesto. Acciones de gobernanza: R02, asignar dueño (A. Mensah, dueño de la dosificación), fijar una nueva fecha de tratamiento y revisarlo ya; R04, prueba de restauración vencida (la ejecuta J. Tan, con A. Mensah como dueño del servicio); R07, revisión obsoleta (la coordinadora, como enlace con el hospital, o L. Ferreira como dueña registrada, la revisa con el hospital).
+
+**EX018.** «Riesgo R10: como los controladores de la estación KW-10 no tienen soporte y no pueden corregirse, una debilidad conocida podría usarse para detener el bombeo, causando la pérdida del suministro a unas 8.000 personas. Aceptado por: el consejero delegado, M. Holt, en nombre del consejo, el 14 de octubre de 2026. Medidas compensatorias: ningún acceso remoto a KW-10; supervisión de la red de la estación por el KVROC; control de acceso físico; controladores de repuesto en almacén; procedimiento de operación manual ensayado. Decae si: un aviso público muestra explotación activa, se produce un incidente en KW-10 o falla una medida compensatoria. Caducidad: 31 de marzo de 2027. Responsable de la revisión: A. Mensah; seguimiento por la coordinadora».
+
+**EX019.** Añadir un octavo campo `acceptance_expiry` (None donde no hay aceptación), por ejemplo R05 "2026-02-28" (caducada) y R06 "2026-12-31" (válida). Regla: `if exp and dt.date.fromisoformat(exp) < TODAY: flags.append("ACCEPTANCE EXPIRED")`. La salida muestra ahora R05 con «ACCEPTANCE EXPIRED» y R06 sin él, y «Needs governance action» pasa a ser R02, R04, R05, R07. La máxima puntuación muestra ambos casos.
+
+**EX020.** Resumen: «Nuestra regla de clasificación pone primero todo lo que pueda afectar a la salud o al hospital y después usa la probabilidad. Principales riesgos: (1) acceso remoto de proveedores sin MFA; dueño A. Mensah, corrección antes del 30 de abril; (2) solo un ingeniero entiende la lógica de dosificación; ahora mismo sin dueño; pedimos a la comisión que confirme a A. Mensah como dueño y financie la documentación y un segundo ingeniero antes de septiembre; (3) pérdida del suministro eléctrico en KW-07; estudio del generador de reserva previsto para septiembre. Acciones de gobernanza: la prueba de restauración del historiador está vencida (ahora programada para abril) y la revisión del riesgo de suministro al hospital está obsoleta (reunión fijada en marzo). Límites: las valoraciones de probabilidad son juicios de expertos; la clasificación es reproducible a partir de la regla adjunta». Ninguna puntuación única.
+
+### Capítulo 5
+
+**EX021.** Primero los requisitos regulatorios (son obligatorios). Usar el CSF 2.0 como estructura del programa y para informar al consejo, porque se basa en resultados e incluye Gobernar. Usar los CPG como línea base priorizada asociada a las funciones del CSF, para encontrar rápido las lagunas de alto impacto. Usar la ISA/IEC 62443 para las compras de TO y los requisitos de proveedores (requisitos para proveedores de servicios y de productos), referenciada desde los resultados de cadena de suministro de Gobernar.
+
+**EX022.** Alcance: ¿los mismos sistemas e instalaciones que la evaluación de 2,6? Evaluador y método: ¿autoevaluación, par o independiente; entrevista o evidencia? Definición: ¿qué significa el nivel 3 y ha cambiado? Fecha: ¿antes o después del cambio de contrato con el KVROC? Decisión: ¿qué haremos de otra manera por el 3,1? Creíble si el alcance y el método son los mismos, si se basa en evidencia o es independiente, y si se vincula a un resultado observado, como que el KVROC detecte las inyecciones del ejercicio dentro del tiempo objetivo.
+
+**EX023.** (1) % de riesgos de nivel 5 con dueño y tratamiento en plazo; responsable: la coordinadora; < 100% → escalado a la dirección. (2) Mediana de días laborables entre el fin del contrato de un proveedor o la salida de un empleado y la eliminación de la cuenta; responsable: el jefe de operaciones; > 5 → revisión del proceso de acceso. (3) Número de interfaces operativas accesibles desde internet; responsable: la responsable de seguridad; > 0 → notificación inmediata al dueño y corrección. (4) % de responsables de guardia que han participado en un ejercicio en 12 meses; responsable: la coordinadora; < 80% → programar un ejercicio.
+
+**EX024.** «Gracias; esto podría ser urgente. ¿A qué instalación y función sirve hmi-02? ¿La conexión tuvo éxito o solo se intentó, y cuál es el origen y la evidencia (extracto del registro con horas UTC)? ¿Sigue siendo accesible ahora? El bloqueo puede cortar el acceso legítimo de un proveedor: ¿quién usa esa ruta? Llamo ahora a A. Mensah como dueño; por favor, quédense preparados para bloquear con su aprobación y trátenlo por la vía de escalado de incidentes hasta que sepamos más».
+
+**EX025.** «Evaluamos la TI de oficina y la planta de tratamiento frente a una línea base nacional; la mayoría de las prácticas existen sobre el papel. Las doce estaciones de bombeo no se incluyeron, y dos prácticas que son las que más importan para ellas (la autenticación robusta para el acceso de proveedores y la eliminación rápida de cuentas) no están verificadas. Revisaremos el acceso de proveedores en mayo y repetiremos la evaluación, incluidas las estaciones, antes de septiembre».
+
+### Capítulo 6
+
+**EX026.** Añadir una séptima función, «Shift supervisor» (supervisor de turno), y corregir las filas (Coordinator, Ops manager, Security lead, Comms, Vendor, CEO, Shift supervisor): pasar las estaciones a operación manual, `I A - - - I R`; informar al hospital, `R C I C - A -` (la coordinadora es la única responsable principal y comunicación se consulta sobre la redacción); aprobar la sesión remota del proveedor, `C A R - I - I` (el jefe de operaciones es la única A, la responsable de seguridad comprueba la solicitud y al proveedor solo se le informa); declaración pública, `C C C R - A -`; las demás filas reciben `I`, `C` o `-` para el supervisor de turno. Al volver a ejecutar el Lab 6 con estas filas se imprime «0 issues in 7 activities» y la línea de carga `Coordinator=3, Ops manager=4, Security lead=2, Comms=1, Vendor=0, CEO=3, Shift supervisor=1`. El jefe de operaciones sigue acumulando cuatro entradas R/A, de lo que se ocupa EX029.
+
+**EX027.** (a) Normal: nueva ruta de acceso relevante para la seguridad; aprobación del dueño, revisión de la regla y caducidad. (b) Estándar, si existe un procedimiento preaprobado para sustituir baterías; si no, normal. (c) De emergencia: aprobado por el responsable del incidente, registrado en las 24 horas siguientes y revisado después. (d) Normal: comprobación de compatibilidad del proveedor, prueba, plan de reversión.
+
+**EX028.** Tarjeta: «Sospecha de evento cibernético; llame si: las pantallas muestran cambios que nadie hizo; hay inicios de sesión o mensajes inesperados; los controles no responden; llama el KVROC. 1) Mantenga seguro el proceso: siga los procedimientos normales de operación; pase a manual solo cuando los procedimientos lo permitan. 2) No apague ni reinicie los ordenadores salvo que se le indique. 3) Anote las horas y lo que vio. 4) Llame al responsable del incidente de guardia [número]; sin respuesta en 10 minutos → suplente [número]; después, jefe de operaciones [número]. 5) Peligro inmediato para las personas o para la calidad del agua → directamente al jefe de operaciones y procedimientos de emergencia».
+
+**EX029.** Mantener en el jefe de operaciones las decisiones de seguridad de las personas (operación manual, aislamientos que afecten al proceso). Durante los incidentes, delegar la aprobación de las sesiones de proveedores en un suplente de operaciones con nombre o en el responsable del incidente, con operaciones consultado; traspasar el enlace con el hospital a la coordinadora; asegurar que haya un jefe de operaciones suplente de guardia para que la planta tenga siempre a alguien centrado en ella.
+
+**EX030.** Enumerar los cambios de emergencia a partir del registro del incidente; para cada uno, decidir mantener, modificar o revertir, con un responsable: la regla de «bloquear todo acceso de proveedores» pasa a ser un cambio normal, y el acceso se restablece proveedor a proveedor mediante el proceso normal de aprobación una vez terminada la revisión; eliminar la cuenta temporal de administrador local y verificar su eliminación; actualizar los diagramas y los registros; registrar la revisión como un registro de decisión.
 
 <a id="glossary"></a>
 
