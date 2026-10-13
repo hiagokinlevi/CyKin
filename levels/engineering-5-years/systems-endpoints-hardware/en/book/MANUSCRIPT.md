@@ -388,21 +388,31 @@ You will (1) use accumulation and integrals to estimate total exposure; (2) comp
 
 If f(t) is the number of PCs holding leftover personal data at time t, the area under f over a month estimates total exposure in PC-days. Integrals measure accumulation.
 
+A PC-day is one computer holding someone's data for one day. The measure combines how many PCs are affected and for how long, which is what matters for the patrons whose files are exposed. Two designs that leave the same number of PCs affected at a single moment can still differ greatly in total exposure if one clears them faster. Mateo chose this measure because it is easy to explain to managers and it captures both effects together.
+
 ### 6.2 Manual clean-up
 
 With three new cases a day and fortnightly clean-ups, f rises from 0 to about 42 and drops: each fortnight's area is a triangle of about (14 × 42) / 2 = 294 PC-days.
+
+The triangle comes from the straight-line rise between clean-ups and the drop to zero when staff clear the PCs. Mateo draws it on the whiteboard for Marta, because the shape makes the arithmetic obvious. A fortnight is Fernhill's actual cleaning interval at the time, taken from staff rotas rather than chosen for the calculation. The rota is attached to the calculation.
 
 ### 6.3 Nightly restore
 
 With nightly resets, each day's triangle is (1 × 3) / 2 = 1.5 PC-days, or 21 per fortnight, far smaller.
 
+The comparison uses the same arrival rate as the fortnightly case, so the only difference is how often the PCs are cleared. Each day starts clean, cases build up during opening hours and the overnight restore removes them. The small triangle is repeated fourteen times in a fortnight, which gives the total. Mateo checks the arithmetic in both cases with a short script that sums the daily counts, and the script agrees with the triangles. That agreement is the first check on the model.
+
 ### 6.4 Comparing designs
 
 The ratio, about 14 to 1, quantifies the benefit. Engineers often compare designs by such areas: total exposure, total downtime or total cost.
 
+Mateo is careful about what the ratio means. It compares two models under the same assumptions, so its accuracy depends on those assumptions holding for both. It does not say how many patrons were actually harmed. For a board decision it is enough: the nightly design reduces exposure by an order of magnitude, and the remaining exposure is limited to the hours of a single day.
+
 ### 6.5 Assumptions
 
 The estimate assumes steady arrival of cases and full removal at each reset. Chapter 28 tests the second assumption.
+
+If arrivals are not steady, for example during exam season, both designs see more exposure, but the ratio between them stays similar because the reset interval drives it. Full removal is the more fragile assumption. A restore that leaves some files behind would make the nightly design look better on paper than it is in practice, which is why it is tested directly rather than assumed. Mateo lists both assumptions in his report beside the result.
 
 ### Checking with data
 
@@ -454,6 +464,8 @@ You will (1) model independent failures with the binomial distribution; (2) inte
 
 Even a reliable restore job can fail. If each PC's nightly restore fails independently with probability p, the number of failures among n PCs follows a binomial distribution.
 
+The model needs two numbers: how many PCs restore each night and how likely each one is to fail. Mateo takes the first from Fernhill's inventory and assumes the second for planning, to be replaced by measured data from the pilot. The lab then computes the chance of seeing a given number of failures on any night, which is what an alert threshold needs.
+
 ### Lab — Lab — restore failures
 
 ```python
@@ -479,13 +491,19 @@ expected failures per night 1.2
 
 With 300 PCs and p = 0.004, the expected number of failures per night is 1.2. The chance of at least one failure is 0.700, of at least three 0.120, and of at least five 0.008.
 
+Mateo turns those figures into plain statements for Marta. On roughly seven nights in ten, at least one PC will need attention. About one night in eight will have three or more. Five or more should happen less than once in a hundred nights if nothing is wrong. Those statements are easier to act on than the formula, and they come straight from the lab output.
+
 ### 7.3 Operational meaning
 
 Most nights at least one PC will fail to restore, so the design needs an alert and a simple fix. Five or more failures would be very unusual and suggest a shared cause, such as a bad image.
 
+Marta's team agreed that a single failure would be fixed during the morning check by rerunning the restore. A cluster would trigger an investigation before the branches open. Both thresholds are reviewed once real failure rates are known from the pilot. Marta agreed.
+
 ### 7.4 Independence
 
 The binomial model assumes failures are independent. A network outage would break that assumption, causing many failures together.
+
+Mateo lists the shared causes he can think of: a network outage at one branch, a corrupted image file, a power cut during the night or a bad update to the restore software. Any of these would produce many failures at once, far more than the binomial model predicts. That is exactly why the incident alert at five failures is useful: when the count is that high, independence has probably failed, and someone should look for a common cause rather than fixing PCs one by one.
 
 ### Measuring p
 
@@ -537,21 +555,31 @@ You will (1) describe processors, memory, firmware and boot; (2) explain privile
 
 A PC has a processor, memory, storage, firmware (UEFI) and peripherals. Firmware starts first, initialises hardware and loads the bootloader, which loads the operating system.
 
+Mateo follows the sequence on a lab PC with Marta, pausing at the firmware screen to show where boot order and Secure Boot are set. Each stage hands control to the next, so a weakness early in the chain affects everything after it. That idea of a chain becomes central to the boot-chain models later in the course.
+
 ### 8.2 Privilege levels
 
 Processors separate privileged kernel code from user code. User programs cannot directly change kernel memory; this separation underpins operating system security.
+
+For Fernhill this explains why patrons use standard accounts without administrator rights. A program a patron runs works at user level and cannot alter the system's own files or settings directly. Most unwanted software in the library's records had been installed by users with more rights than they needed. Removing those rights stops much of the problem before the nightly restore has to deal with it.
 
 ### 8.3 Speculative execution
 
 Kocher et al. (2019) showed that processors executing instructions speculatively can leak data across these boundaries. Vendors responded with microcode and operating system updates, which public PCs must receive.
 
+The flaws are difficult to fix in software alone and depend on the processor model. Mateo's inventory records each PC's processor and the update level of its operating system and microcode, so he can confirm that every machine has received the published fixes. Older models that no longer receive updates are flagged for replacement.
+
 ### 8.4 Trusted Platform Module
 
 Many PCs include a TPM, a small chip that stores keys and records measurements of boot components. It supports disk encryption and boot integrity checks.
 
+For Fernhill the TPM does two jobs. It holds the key that unlocks the encrypted disk, releasing it only when the boot measurements match the expected values. It also supports checks that the PC started from approved components. Both depend on the TPM being enabled and the measurements being configured, which the worked example shows was not yet the case.
+
 ### 8.5 Firmware settings
 
 UEFI settings control boot order, Secure Boot and passwords. If patrons can change boot order, they can start other operating systems.
+
+A firmware password stops patrons from changing these settings at the start-up screen. Disabling boot from USB and network, unless an administrator allows it, removes the most common route to starting another system. Mateo records the intended settings for each model, since menus differ between vendors, and checks them during his inventory rather than assuming they match. Settings are rechecked after each firmware update.
 
 ### Firmware as a target
 
@@ -601,21 +629,31 @@ You will (1) structure larger programs; (2) use dictionaries, files and hashing;
 
 Dictionaries map names to values, such as file paths to digests. Lists hold ordered records. Most of Mateo's checks use both.
 
+Mateo's checker loads the golden image manifest into a dictionary keyed by path, then walks a PC's files and looks each one up. Records of PCs are kept in a list, processed in order, and the results go into another dictionary keyed by PC name. Choosing the right structure keeps the code short and the lookups fast. Both are easy to test.
+
 ### 9.2 Hashing
 
 A cryptographic hash such as SHA-256 produces a fixed-length digest; any change to a file changes its digest. Comparing digests is a fast way to detect changes.
+
+The digest is much shorter than the file, so storing digests for every policy file in the image takes little space. Comparing them avoids copying whole files across the network. Mateo uses SHA-256 because it is widely supported and no practical way is known to produce two different files with the same digest.
 
 ### 9.3 Files and paths
 
 Programs read configuration and manifest files. Paths must be handled carefully so that a check reads the intended file.
 
+Mateo builds paths from a fixed base folder and rejects any that would point outside it, such as those containing parent-folder steps. On Windows PCs, letter case in paths may not matter, while on the analysis machine it does, so he normalises case before comparison. Small inconsistencies like these can make a checker report a file as missing when it is present.
+
 ### 9.4 Errors
 
 If a file is missing, the program should report it, not crash or skip silently. A missing file can itself be a finding.
 
+Mateo's checker distinguishes three outcomes: a file matches, a file differs and a file is missing. Each is reported separately. A missing policy file on a public PC may mean the restore failed or that someone removed it, and both deserve attention. Treating it as a match, or crashing so no report is produced, would hide the very problem the checker exists to find.
+
 ### 9.5 Modules
 
 Splitting code into modules, such as one for reading data and one for checks, makes testing easier.
+
+Mateo keeps reading, checking and reporting in separate modules. The checking module can be tested with invented data, without files or network access. If Fernhill later stores PC records in a database, only the reading module changes. Each module has its own tests, and a short main script joins them. The structure also makes it easier for Marta's staff to understand which part to change when a requirement moves.
 
 ### Building the manifest
 
@@ -667,21 +705,31 @@ You will (1) apply professional ethics to endpoint work; (2) protect patron priv
 
 Engineers owe care to the public. At Fernhill, the public are patrons, many of whom rely on library PCs for job applications and benefits.
 
+For Mateo the duty is concrete. A patron applying for a job may have typed personal details on a library PC; protecting those details is part of the engineering, not an extra. Designs that stop working too often would also fail those patrons, since many have no other computer. Both the security and the reliability of the service are owed to them.
+
 ### 10.2 Privacy
 
 The project aims to stop personal data being left behind. It must not create new privacy risks, such as logging what patrons browse. Logs record system events, not content.
+
+Mateo writes down what each log records and checks that none of it identifies a patron or the content of their session. Restore results, durations and blocked installation attempts are enough. The data protection officer reviews the list. If a future feature needs more data, the question goes back to her before any code is written.
 
 ### 10.3 Accessibility
 
 Some patrons use screen readers and magnifiers. A strict design that blocks these tools would harm them. Requirements must include accessibility.
 
+Mateo met patrons who rely on these tools at the Central branch and tested the application control rules on a lab PC with the same software installed. Two tools were blocked by the first draft and were added to the approved set. Accessibility is checked in every release test, not just once, because a change to another rule can break it unexpectedly.
+
 ### 10.4 Authorisation
 
 Mateo works only on Fernhill systems with Marta's written agreement and tests on lab PCs, not in-use machines.
 
+Testing on lab PCs means a mistake affects nobody using the library. When a test needs a branch PC, Mateo asks Marta, schedules it outside opening hours and records what he did. The written agreement protects him as well as Fernhill: if something goes wrong, it shows that he acted within what was allowed. Work outside the agreement, however well meant, is not part of the project.
+
 ### 10.5 Honesty
 
 Reports state limitations and do not overclaim security.
+
+Mateo's reports describe what was tested, what was found and what remains uncertain. A claim such as the PCs are secure is avoided; instead he writes which risks the design reduces, by how much on the evidence, and which it does not address. Dr Novak checks reports for overclaiming and asks him to remove words that promise more than the evidence shows. Honest limits help Fernhill decide where to spend effort next, and they protect his credibility when something goes wrong later.
 
 ### Data minimisation
 
