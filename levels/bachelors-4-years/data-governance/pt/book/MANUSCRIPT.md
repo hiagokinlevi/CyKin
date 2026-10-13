@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 095, bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060, suas resoluções com rubricas de 0 a 3 e o laboratório do capítulo 18; os capítulos 21–40 (EX061–EX120) e os outros dois laboratórios estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090, suas resoluções com rubricas de 0 a 3 e os três laboratórios (capítulos 18, 21 e 26); os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem governança de dados desde os princípios, passando por políticas, qualidade, privacidade e retenção, até um trabalho de conclusão de curso.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios medem a completude de cinco campos em registros sintéticos de fidelidade, conferem códigos de loja com uma lista de referência e contam os registros guardados além de uma regra de retenção de três anos de inatividade. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -859,11 +859,453 @@ Encerrar problemas sem verificar as correções deixa os problemas voltarem.
 - **EX059 — Evidência de encerramento.** Que evidência encerrou o problema dos pontos? *Rubrica:* 3 = as compras sem conexão de duas semanas receberam pontos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX060 — Padrões do registro.** A que a maioria dos problemas do registro se referia? *Rubrica:* 3 = códigos de loja e membros duplicados;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Códigos de referência na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar códigos contra uma lista de referência; (2) classificar os códigos inválidos pela causa; (3) projetar correções na origem.
+
+### 21.1 A verificação
+
+Depois que a área de operações assume a titularidade da lista de lojas, Amara confere os dados de vendas com ela. Cada linha de venda traz um código de loja, e os códigos válidos vão de S01 a S40. Ela escreve um script que compara cada código com a lista oficial e conta os códigos inválidos por valor. Ela explica que agrupar os códigos inválidos por valor é mais útil do que uma contagem única de erros, porque valores inválidos diferentes costumam ter causas diferentes e pessoas diferentes que podem corrigi-los. O script roda depois de cada carga noturna.
+
+### Laboratório — Códigos de loja em 2.000 linhas sintéticas de vendas conferidos com uma lista de referência
+
+```python
+"""Check store codes in 2,000 synthetic sales rows against a reference list (stdlib only)."""
+import random, collections
+random.seed(3)
+ref = {f"S{i:02d}" for i in range(1, 41)}
+pool = sorted(ref) + ["S41", "s07", "S7", "S00"]
+w = [1]*40 + [0.6, 0.5, 0.4, 0.3]
+rows = random.choices(pool, weights=w, k=2000)
+bad = collections.Counter(c for c in rows if c not in ref)
+print(f"rows {len(rows)}; invalid codes {sum(bad.values())} ({100*sum(bad.values())/len(rows):.1f}%)")
+print("by code:", dict(sorted(bad.items())))
+```
+
+Execute com `python3 lab_codes.py`. Saída verificada:
+
+```text
+rows 2000; invalid codes 89 (4.5%)
+by code: {'S00': 11, 'S41': 32, 'S7': 16, 's07': 30}
+```
+
+### 21.2 Resultados
+
+O laboratório confere duas mil linhas de vendas. Oitenta e nove linhas trazem códigos inválidos, 4,5 por cento. Os valores inválidos são S41 em 32 linhas, s07 em 30 linhas, S7 em 16 linhas e S00 em 11 linhas. Amara observa que o resultado não é um problema, mas quatro, e que o maior grupo isolado, S41, é um código que ainda não existe na lista de referência, o que sugere uma falha de processo, e não digitação descuidada nas lojas. Amara compartilha a decomposição no mesmo dia com a área de operações, a TI e os gerentes das lojas envolvidas.
+
+### 21.3 Causas
+
+Amara investiga cada valor. S41 pertence a uma loja nova que abriu antes de a área de operações incluí-la na lista. O s07 em minúscula e o S7 abreviado vêm ambos de um sistema de loja que aceita texto livre nos lançamentos manuais. S00 é um valor padrão usado por um caixa de teste que nunca foi retirado da rede de produção. Cada causa tem um dono diferente: a área de operações para os códigos novos, a TI para a validação da entrada e o gerente da loja para o caixa de teste. Cada dono confirma a causa.
+
+### 21.4 Correções na origem
+
+Amara recomenda que os códigos de lojas novas entrem na lista antes da inauguração, como uma etapa da lista de verificação de abertura de loja; que o sistema da loja aceite apenas códigos de uma lista suspensa; e que o caixa de teste seja retirado. Mapear S7 e s07 para S07 no *data warehouse* corrige os dados passados, mas não impediria novos erros. O Dr. Lindqvist observa que corrigir as causas na origem evita um trabalho permanente de limpeza mais adiante. As três correções na origem ficam prontas em um mês, e os códigos inválidos novos deixam de aparecer.
+
+### Exemplo resolvido
+
+Amara encontra 89 códigos inválidos em 2.000 linhas (4,5 por cento), divididos entre S41, s07, S7 e S00, rastreia cada um até uma causa e um dono diferentes e recomenda correções na origem.
+
+> **Caso sintético.** Os códigos são sintéticos; as saídas vêm de lab_codes.py.
+
+### Erros e limites
+
+Mapear códigos errados mais adiante sem corrigir as origens cria uma limpeza sem fim.
+
+### Exercícios
+
+- **EX061 — Parcela inválida.** Que parcela das linhas tinha códigos inválidos? *Rubrica:* 3 = 4,5% (89 de 2.000);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX062 — Causa do S41.** Por que o S41 apareceu? *Rubrica:* 3 = uma loja nova abriu antes de entrar na lista;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Causa do S00.** O que produziu o S00? *Rubrica:* 3 = um caixa de teste deixado na rede de produção;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança de dados para a governança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar confidencialidade, integridade e disponibilidade aos dados; (2) projetar o acesso por papel; (3) ligar a segurança à titularidade.
+
+### 22.1 Três propriedades
+
+Amara estuda as propriedades clássicas da segurança. A confidencialidade mantém os dados longe de quem não deve vê-los, como os endereços dos membros. A integridade mantém os dados exatos e protegidos contra alterações não autorizadas, como os preços. A disponibilidade mantém os dados utilizáveis quando são necessários, como os sistemas dos caixas nos horários de pico. Dados diferentes exigem ênfases diferentes. Ela observa que a governança ajuda a decidir qual propriedade importa mais para cada conjunto de dados, para que as equipes de segurança apliquem as proteções adequadas. Amara registra no catálogo a propriedade principal de cada conjunto de dados, para que a equipe de segurança possa vê-la.
+
+### 22.2 Acesso por papel
+
+Amara revisa o acesso ao banco de dados de fidelidade e descobre que todos os funcionários da sede podem ver os dados completos dos membros. Ela propõe o acesso baseado em papéis: os analistas de marketing veem os padrões de compra sem os nomes, o atendimento ao cliente vê os dados completos dos membros que está atendendo e a equipe de dados vê tudo para a manutenção, com o acesso registrado. O dono dos dados de fidelidade aprova cada papel. Ela explica que o acesso deve seguir a necessidade, princípio muitas vezes chamado de privilégio mínimo, e que são os donos que o decidem. Os novos papéis entram em vigor em um mês.
+
+### 22.3 Incidentes de segurança
+
+Um funcionário envia por e-mail para uma conta pessoal uma planilha com endereços de membros, para trabalhar de casa. Amara ajuda o encarregado de proteção de dados a avaliar o incidente. Os dados incluíam nomes e endereços dos membros de uma loja. O encarregado decide se a notificação é exigida pelo GDPR; no Brasil, a LGPD, em seu art. 48, exige comunicar à ANPD e aos titulares os incidentes que possam acarretar risco ou dano relevante. Amara observa que o incidente aconteceu porque os funcionários não tinham um meio aprovado de trabalhar a distância e porque era fácil criar extrações com dados pessoais sem aprovação. Amara recomenda um meio aprovado de trabalho remoto e um processo de solicitação de extrações.
+
+### 22.4 Titularidade e segurança
+
+Amara explica que as equipes de segurança fornecem os controles, mas são os donos que decidem quem deve ter acesso e qual classificação os dados recebem. Na Harbourline, a equipe de segurança vinha tomando decisões de acesso sem conhecer os dados. Ela propõe que os donos aprovem os pedidos de acesso e revisem as listas de acesso a cada trimestre, enquanto as equipes de segurança implementam e monitoram os controles. O Dr. Lindqvist observa que essa divisão permite que cada grupo faça o que conhece melhor, o que melhora tanto a governança quanto a segurança. A primeira revisão trimestral retira o acesso de onze funcionários que haviam mudado de função.
+
+### Exemplo resolvido
+
+Amara aplica as propriedades de segurança aos dados da Harbourline, restringe o acesso à fidelidade por papel, ajuda a avaliar o envio de uma planilha de endereços por e-mail e atribui as decisões de acesso aos donos, com revisões trimestrais.
+
+> **Caso sintético.** O incidente é sintético; o GDPR e a LGPD são reais.
+
+### Erros e limites
+
+Equipes de segurança que decidem o acesso sem conhecer os dados fazem escolhas ruins.
+
+### Exercícios
+
+- **EX064 — Constatação sobre o acesso.** O que Amara descobriu sobre o acesso à fidelidade? *Rubrica:* 3 = todos os funcionários da sede viam os dados completos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX065 — Causa do incidente.** Por que aconteceu o incidente da planilha enviada por e-mail? *Rubrica:* 3 = falta de um meio aprovado de trabalho remoto e extrações fáceis;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX066 — Revisão de acesso.** Com que frequência os donos revisam as listas de acesso? *Rubrica:* 3 = a cada trimestre;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Privacidade na governança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar os princípios de privacidade à governança de dados; (2) usar o NIST Privacy Framework; (3) avaliar um novo uso de dados.
+
+### 23.1 Princípios de privacidade
+
+Privacidade e governança se sobrepõem. A limitação da finalidade significa que dados coletados para os pontos de fidelidade não devem ser usados para finalidades sem relação com isso sem uma base legal. A minimização significa coletar apenas o necessário. Amara descobre que o formulário de adesão ao programa pede gênero e estado civil, que nenhum processo usa. Ela recomenda retirar os dois campos. Ela explica que dados não coletados não podem ser perdidos nem mal usados, nem precisam de proteção, de modo que a minimização reduz tanto o risco quanto o esforço. O dono dos dados de fidelidade concorda, e os campos são retirados no relançamento.
+
+### 23.2 O NIST Privacy Framework
+
+Amara estuda o NIST Privacy Framework, que organiza as atividades de privacidade em funções: identificar, governar, controlar, comunicar e proteger. Ela mapeia as práticas da Harbourline para cada função e encontra pontos fortes em proteger, onde há controles de segurança, e fragilidades em identificar, porque não existe um inventário completo dos dados pessoais. Ela observa que o modelo é voluntário e adaptável, o que convém a uma cooperativa que precisa de estrutura sem uma pesada engrenagem de conformidade. Amara recomenda começar pela função identificar, porque as demais dependem de saber que dados pessoais a Harbourline guarda e onde.
+
+### 23.3 Avaliando um novo uso
+
+O marketing propõe compartilhar os dados de compras dos membros com uma padaria parceira para ofertas conjuntas. Amara ajuda a avaliar a proposta: finalidade, base legal, dados necessários, riscos para os membros, salvaguardas e alternativas. Ela sugere que a própria Harbourline envie as ofertas aos membros que consentirem, de modo que a padaria nunca receba dados de membros. A proposta é revista nesse sentido. Ela observa que as avaliações de privacidade muitas vezes encontram desenhos que alcançam o objetivo de negócio com menos dados. A parceria com a padaria começa com ofertas baseadas em consentimento enviadas pela Harbourline, e a resposta dos membros no primeiro mês é positiva.
+
+### 23.4 Inventário
+
+Seguindo a função identificar do modelo, Amara começa um inventário dos dados pessoais: o que é guardado, onde, por quê, com que base, quem pode acessar e por quanto tempo é mantido. Ela começa pelos dados de fidelidade, de funcionários e de atendimento ao cliente. O inventário revela um banco de dados de pesquisa esquecido, com respostas de membros de cinco anos antes. Ela observa que os inventários sustentam tanto a conformidade com a privacidade quanto a governança, porque as organizações não conseguem governar dados que nem sabem que guardam. O banco de dados da pesquisa é revisado e depois eliminado, com aprovação.
+
+### Exemplo resolvido
+
+Amara retira os campos de gênero e estado civil sem uso, mapeia a Harbourline para o NIST Privacy Framework, redesenha uma parceria com uma padaria para que os dados não sejam compartilhados e começa um inventário que encontra um antigo banco de dados de pesquisa.
+
+> **Caso sintético.** As práticas são sintéticas; o NIST Privacy Framework 1.0 é real.
+
+### Erros e limites
+
+Coletar dados por precaução aumenta o risco sem trazer benefício.
+
+### Exercícios
+
+- **EX067 — Campos retirados.** Que campos Amara recomendou retirar? *Rubrica:* 3 = gênero e estado civil;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX068 — Redesenho da parceria.** Como a proposta da padaria foi alterada? *Rubrica:* 3 = a própria Harbourline envia as ofertas aos membros que consentem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Banco esquecido.** O que o inventário encontrou? *Rubrica:* 3 = um antigo banco de dados de pesquisa;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Acordos de compartilhamento de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar quando o compartilhamento de dados exige um acordo; (2) redigir as cláusulas principais; (3) monitorar o compartilhamento ao longo do tempo.
+
+### 24.1 Quando há compartilhamento
+
+A Harbourline compartilha dados com fornecedores, um processador de pagamentos, uma empresa de entregas e a federação de cooperativas que compila estatísticas do setor. Amara lista cada fluxo com os dados compartilhados, a finalidade e as cláusulas contratuais existentes. Alguns fluxos têm contratos detalhados; outros dependem de arranjos informais feitos anos antes. Ela observa que todo fluxo traz riscos, como a parte que recebe usar os dados para outras finalidades, e que os acordos tornam as expectativas explícitas e exigíveis. Amara registra quais fluxos não têm nenhum acordo escrito e encontra três entre os onze que listou.
+
+### 24.2 Cláusulas principais
+
+Amara redige um modelo de acordo com cláusulas sobre finalidade, campos de dados, segurança, compartilhamento posterior, retenção e eliminação, notificação de incidentes, direito de auditoria e encerramento do acordo. Para dados pessoais, ela inclui as cláusulas de operador exigidas pelo GDPR quando quem recebe age em nome da Harbourline; a LGPD trata do operador em seu art. 39. Ela pede ao assessor jurídico que revise o modelo. Ela explica que um modelo economiza tempo e garante que cláusulas importantes não sejam esquecidas quando um novo compartilhamento começa. O assessor jurídico sugere duas mudanças, que Amara faz antes de o modelo ser adotado.
+
+### 24.3 Compartilhamento agregado
+
+A federação pede as vendas por loja e por categoria de produto. Amara verifica se alguma categoria nas lojas pequenas poderia revelar compras individuais, como um produto especial comprado por pouquíssimos clientes. Ela sugere suprimir as células com menos de dez transações. A federação concorda. Ela observa que compartilhar agregados costuma ser mais seguro do que compartilhar registros, mas que números pequenos ainda podem revelar indivíduos, como discute a NIST SP 800-188 ao descrever os riscos de divulgação. Amara inclui a regra de supressão no acordo com a federação, para que ela se aplique também a todos os envios futuros.
+
+### 24.4 Monitoramento
+
+Os acordos precisam ser monitorados. Amara propõe um registro de acordos de compartilhamento com donos, datas de revisão e verificações, como confirmar todo ano que a empresa de entregas eliminou os dados dos contratos encerrados. Ela encontra um fornecedor que ainda recebe um arquivo semanal cinco meses depois do fim do contrato, porque ninguém desligou a exportação. O Dr. Lindqvist observa que encerrar um compartilhamento é tão importante quanto iniciá-lo, e muitas vezes é esquecido. A exportação é desligada no mesmo dia, e o fornecedor confirma por escrito que os arquivos recebidos foram eliminados.
+
+### Exemplo resolvido
+
+Amara lista os fluxos de compartilhamento, redige um modelo de acordo, suprime células pequenas nas estatísticas da federação e encontra uma exportação ainda ativa depois do fim de um contrato.
+
+> **Caso sintético.** Os fluxos são sintéticos; o GDPR, a LGPD e a NIST SP 800-188 são reais.
+
+### Erros e limites
+
+Arranjos informais de compartilhamento se desviam de sua finalidade original.
+
+### Exercícios
+
+- **EX070 — Regra de supressão.** Que regra de supressão Amara sugeriu? *Rubrica:* 3 = suprimir as células com menos de dez transações;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX071 — Exportação esquecida.** O que o monitoramento encontrou? *Rubrica:* 3 = um fornecedor recebendo um arquivo cinco meses depois do fim do contrato;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Cláusulas do modelo.** Cite três cláusulas do modelo. *Rubrica:* 3 = finalidade, campos, segurança, retenção, notificação de incidentes, auditoria;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ciclo de vida e documentos
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o ciclo de vida dos dados; (2) relacionar a gestão de documentos à governança; (3) definir as necessidades de retenção.
+
+### 25.1 O ciclo de vida
+
+Amara descreve o ciclo de vida dos dados de fidelidade: coleta na adesão, armazenamento, uso para pontos e ofertas, compartilhamento com prestadores de serviço, arquivamento e eliminação. Em cada etapa, a governança pergunta quem é responsável, que regras se aplicam e o que pode dar errado. Ela descobre que a Harbourline gerencia com cuidado a coleta e o uso, mas dá pouca atenção ao arquivamento e à eliminação, de modo que os dados se acumulam indefinidamente mesmo quando ninguém mais os usa. Amara marca cada etapa do diagrama com o dono responsável e as regras aplicáveis.
+
+### 25.2 Gestão de documentos
+
+A gestão de documentos trata das informações mantidas como prova das atividades do negócio, como notas fiscais, contratos e fichas de funcionários. Amara aprende que os documentos têm prazos legais de guarda e precisam continuar confiáveis durante todo esse tempo. Ela observa que a governança e a gestão de documentos compartilham objetivos, como saber o que se guarda e guardá-lo apenas pelo tempo necessário, e sugere que o responsável pela gestão de documentos da Harbourline entre no grupo de governança, para que as duas disciplinas trabalhem juntas. Ele entra no grupo na reunião seguinte e acolhe a ligação.
+
+### 25.3 Necessidades de retenção
+
+Amara monta uma tabela de temporalidade preliminar. Os registros de transações financeiras são guardados pelo prazo exigido pela legislação tributária. Os dados de membros do programa de fidelidade são guardados enquanto a adesão está ativa e por três anos depois da última atividade, para tratar dúvidas e membros que retornam, e então eliminados. Depois desse prazo, a análise de marketing usa dados agregados. Cada entrada tem uma justificativa, um dono e um evento que dá início à contagem do prazo. Ela pede aos donos que confirmem as entradas antes de o grupo aprovar a tabela. Todos os donos confirmam suas entradas em um mês.
+
+### 25.4 A eliminação na prática
+
+Eliminar é mais difícil do que parece. Os dados existem em cópias de segurança, extrações e relatórios. Amara recomenda que as rotinas de eliminação rodem todo mês nos sistemas em produção, que as cópias de segurança expirem em um ciclo definido e que as extrações sigam as mesmas regras. Ela sugere também registrar as eliminações como evidência. O Dr. Lindqvist observa que o princípio de limitação da conservação do GDPR exige esse tipo de abordagem prática, porque uma política que diz que os dados serão eliminados significa pouco sem processos de eliminação que funcionem; a LGPD trata do término do tratamento e da eliminação nos arts. 15 e 16. Amara escreve esses passos no procedimento de eliminação da curadora dos dados de fidelidade.
+
+### Exemplo resolvido
+
+Amara mapeia o ciclo de vida da fidelidade e encontra fragilidades no arquivamento e na eliminação, liga a gestão de documentos à governança, esboça uma tabela de temporalidade com três anos após a última atividade para os dados de fidelidade e projeta uma eliminação que funcione na prática.
+
+> **Caso sintético.** A tabela é sintética; o GDPR e a LGPD são reais.
+
+### Erros e limites
+
+Tabelas de temporalidade sem rotinas de eliminação são apenas promessas.
+
+### Exercícios
+
+- **EX073 — Etapas negligenciadas.** Que etapas do ciclo de vida eram negligenciadas? *Rubrica:* 3 = o arquivamento e a eliminação;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+- **EX074 — Retenção da fidelidade.** Por quanto tempo os dados de fidelidade são guardados depois da última atividade? *Rubrica:* 3 = três anos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX075 — Onde eliminar.** Além dos sistemas em produção, aonde a eliminação precisa chegar? *Rubrica:* 3 = às cópias de segurança e às extrações;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Retenção na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir os registros guardados além da retenção; (2) interpretar a escala da retenção excessiva; (3) planejar uma eliminação segura.
+
+### 26.1 Medindo a retenção excessiva
+
+Com a tabela de temporalidade aprovada, Amara mede quantos registros de fidelidade já a ultrapassam. Ela escreve um script que compara a data da última atividade de cada membro com uma data de referência e conta os membros inativos há mais de três anos. Ela explica que medir antes de eliminar é importante: mostra a escala do problema, apoia o planejamento e fornece uma linha de base com a qual auditores ou o grupo de governança poderão verificar depois o programa de eliminação. O script é curto, e a curadora pode executá-lo de novo a cada trimestre sem ajuda da equipe de dados.
+
+### Laboratório — Registros sintéticos de fidelidade guardados além de uma regra de três anos de inatividade
+
+```python
+"""Count synthetic loyalty records held past a 3-year inactivity retention rule (stdlib only)."""
+import random, datetime as dt
+random.seed(11)
+today = dt.date(2026, 6, 30)
+last = [today - dt.timedelta(days=random.randint(0, 6*365)) for _ in range(5000)]
+over = [d for d in last if (today - d).days > 3*365]
+print(f"records 5000; inactive over 3 years {len(over)} ({100*len(over)/5000:.1f}%)")
+print(f"oldest last activity {min(last)}")
+```
+
+Execute com `python3 lab_retention.py`. Saída verificada:
+
+```text
+records 5000; inactive over 3 years 2521 (50.4%)
+oldest last activity 2020-07-01
+```
+
+### 26.2 Resultados
+
+O laboratório examina cinco mil registros sintéticos com a data de referência de 30 de junho de 2026. Desses, 2.521 registros, 50,4 por cento, estão sem nenhuma atividade há mais de três anos. A última atividade mais antiga é de 1º de julho de 2020. Amara observa que cerca de metade do arquivo de membros está sendo guardada além do prazo acordado, o que significa que metade dos dados pessoais expostos em qualquer incidente não serve a nenhuma finalidade atual segundo a própria tabela da Harbourline. Amara apresenta a constatação ao dono dos dados de fidelidade, que concorda em começar a eliminação depois que os membros forem lembrados e tiverem a chance de manter suas contas.
+
+### 26.3 Planejando a eliminação
+
+Amara planeja a eliminação com cuidado. Primeiro, ela confirma com o financeiro que nenhum registro de transação exigido para fins fiscais está guardado apenas no sistema de fidelidade. Ela propõe enviar aos membros inativos um lembrete de que suas contas serão encerradas, a menos que usem o cartão, dando-lhes a chance de continuar. Depois do prazo do aviso, a curadora executa a eliminação em lotes, conferindo as contagens antes e depois. As cópias de segurança expiram em seu ciclo normal, o que fica documentado no plano. O grupo de governança aprova o plano na reunião seguinte.
+
+### 26.4 Evidências e acompanhamento
+
+Cada lote de eliminação é registrado com data, contagem e quem o aprovou. Depois do primeiro trimestre, Amara executa o script de novo e confirma que os registros guardados em excesso caíram conforme o planejado. Ela registra um efeito inesperado: o marketing perde um segmento que usava para ofertas de reconquista, o que provoca uma discussão sobre se as campanhas de reconquista deveriam acontecer antes da marca de três anos. O Dr. Lindqvist explica que uma boa prática de retenção muitas vezes revela processos de negócio construídos sobre dados que não deveriam existir. O marketing concorda em antecipar as ofertas de reconquista dentro do período de inatividade.
+
+### Exemplo resolvido
+
+Amara conta 2.521 de 5.000 registros (50,4 por cento) inativos há mais de três anos, planeja lembretes e a eliminação em lotes depois de confirmar as necessidades fiscais, registra os lotes e verifica a queda.
+
+> **Caso sintético.** Os registros são sintéticos; as saídas vêm de lab_retention.py.
+
+### Erros e limites
+
+Eliminar sem verificar as dependências pode apagar registros ainda exigidos por lei.
+
+### Exercícios
+
+- **EX076 — Contagem em excesso.** Quantos registros ultrapassavam a retenção? *Rubrica:* 3 = 2.521 (50,4%);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX077 — Verificação prévia.** O que Amara confirmou primeiro com o financeiro? *Rubrica:* 3 = que nenhum registro fiscal existe apenas na fidelidade;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Efeito no marketing.** O que o marketing perdeu? *Rubrica:* 3 = um segmento de reconquista;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Análise de dados e governança
+
+### Objetivos de aprendizagem
+
+Você vai (1) governar os produtos analíticos; (2) documentar modelos e relatórios; (3) gerenciar os riscos da análise de dados.
+
+### 27.1 Governando os produtos
+
+Os analistas da Harbourline produzem painéis, previsões e segmentos de clientes. Amara observa que esses produtos carregam a qualidade e as limitações de seus insumos, além de novos riscos vindos das escolhas analíticas. Ela propõe que os produtos importantes tenham donos, entradas de catálogo e definições documentadas, exatamente como os dados de origem. Uma previsão de vendas usada para encomendar estoque, por exemplo, precisa de um dono nomeado que responda por sua precisão e explique as mudanças em seu método. Amara começa pelos cinco produtos mais usados nas decisões, entre eles a previsão de estoque e o painel semanal de vendas.
+
+### 27.2 Documentando modelos
+
+Amara documenta um modelo que prevê quais membros podem deixar de comprar. A documentação cobre a finalidade, os dados usados, o método, a precisão nos dados de teste, as fragilidades conhecidas e os usos aprovados. Ela observa que o modelo tem desempenho pior para os membros das lojas rurais, porque há menos dados sobre eles. A documentação adverte os usuários a não confiar no modelo nesse caso. Ela explica que a documentação ajuda os usuários a aplicar os modelos de forma adequada e ajuda os revisores a encontrar problemas antes que causem danos. A documentação fica guardada junto à entrada de catálogo do modelo, para todos os usuários.
+
+### 27.3 Riscos da análise
+
+Os riscos incluem usar dados pessoais além das finalidades acordadas, modelos que tratam grupos de forma injusta e painéis que enganam por causa de definições ruins. Amara propõe uma revisão curta para os novos produtos analíticos, cobrindo as fontes de dados, a base legal, as verificações de equidade e as definições. Ela testa a revisão em um novo segmento e descobre que ele usa o ano de nascimento, que falta para muitos membros, de modo que o segmento sub-representa os clientes mais velhos. O analista ajusta o método. A revisão leva menos de uma hora para a maioria dos produtos, e os analistas passam a pedi-la por conta própria antes de lançar novos segmentos.
+
+### 27.4 Autosserviço
+
+A Harbourline quer que mais funcionários construam os próprios relatórios. Amara apoia a ideia, mas adverte que o autosserviço sem governança multiplica números conflitantes. Ela propõe conjuntos de dados certificados no *data warehouse*, com definições aprovadas, como base para os relatórios de autosserviço. Os relatórios que usam dados certificados recebem uma marca. O Dr. Lindqvist observa que autosserviço e governança funcionam juntos quando o caminho governado é também o mais fácil de seguir. Amara sugere que os conjuntos certificados sejam a visão padrão da ferramenta de relatórios, para que os funcionários os usem sem precisar procurar alternativas.
+
+### Exemplo resolvido
+
+Amara dá donos e entradas de catálogo aos produtos analíticos, documenta a fragilidade rural de um modelo de evasão, revisa um segmento que sub-representa os membros mais velhos e propõe conjuntos de dados certificados para o autosserviço.
+
+> **Caso sintético.** Os modelos são sintéticos.
+
+### Erros e limites
+
+Relatórios de autosserviço sem certificação multiplicam números conflitantes.
+
+### Exercícios
+
+- **EX079 — Fragilidade do modelo.** Onde o modelo de evasão tem desempenho pior? *Rubrica:* 3 = nas lojas rurais;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX080 — Problema do segmento.** Por que o segmento sub-representava os clientes mais velhos? *Rubrica:* 3 = usava o ano de nascimento, que muitas vezes falta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX081 — Base do autosserviço.** O que os relatórios de autosserviço devem usar? *Rubrica:* 3 = conjuntos de dados certificados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Letramento em dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar as necessidades de letramento em dados; (2) desenhar treinamentos curtos; (3) medir o efeito do treinamento.
+
+### 28.1 Por que o letramento importa
+
+Muitos problemas de governança vêm de funcionários que não entendem os dados: digitam códigos genéricos, leem gráficos errado ou enviam extrações por e-mail. Amara explica que letramento em dados significa ser capaz de ler, trabalhar, analisar e comunicar com dados de forma adequada à própria função. Os funcionários das lojas precisam de habilidades diferentes das dos analistas. Ela observa que a governança depende do letramento, porque as regras só funcionam se as pessoas entendem por que elas existem e como suas ações afetam os dados usados por outros. Amara propõe que o grupo de governança patrocine um programa de letramento voltado aos erros mais comuns.
+
+### 28.2 Avaliando as necessidades
+
+Amara faz um levantamento com funcionários de três lojas e da sede, com perguntas simples: que dados usam, o que os confunde e quão confiantes se sentem. Os funcionários das lojas dizem que não sabem por que os códigos importam. Os da sede dizem que têm dificuldade para interpretar porcentagens e tendências. Ela agrupa as necessidades por função e identifica três prioridades: a qualidade do lançamento para os funcionários das lojas, a interpretação de relatórios para os gestores e o manuseio seguro de dados pessoais para todos. Ela compartilha os resultados do levantamento com os gerentes das lojas e os líderes de equipe da sede.
+
+### 28.3 Desenhando o treinamento
+
+Amara desenha sessões curtas, de cerca de trinta minutos, para cada prioridade. Para os funcionários das lojas, ela mostra como um código errado no caixa leva a pedidos de estoque errados, usando um exemplo real com números sintéticos. Para os gestores, ela explica porcentagens, intervalos e gráficos enganosos. Para todos, ela trata do que conta como dado pessoal e de como compartilhá-lo com segurança. Ela mantém as sessões práticas, com exercícios baseados no trabalho diário dos funcionários, e não em exemplos abstratos. Os gerentes das lojas ajudam a agendar as sessões nos horários mais tranquilos.
+
+### 28.4 Medindo o efeito
+
+Amara mede o efeito de duas formas: questionários curtos antes e depois das sessões e indicadores de dados, como a taxa de códigos genéricos nas lojas treinadas comparada com a das lojas não treinadas. Os códigos genéricos caem nas lojas treinadas, embora ela observe que outras mudanças, como novos leitores de código de barras, podem ter contribuído. O Dr. Lindqvist elogia sua cautela e sugere escalonar o treinamento entre as lojas, para que as comparações sejam mais justas nas próximas rodadas. Amara registra sua cautela no relatório, e o grupo de governança aprova uma segunda rodada escalonada de sessões para as lojas restantes.
+
+### Exemplo resolvido
+
+Amara define letramento em dados, levanta as necessidades e define três prioridades, desenha sessões práticas de trinta minutos e mede as notas dos questionários e as taxas de códigos genéricos com a devida cautela.
+
+> **Caso sintético.** Os levantamentos e os resultados são sintéticos.
+
+### Erros e limites
+
+Notas de questionário, sozinhas, não mostram mudança de comportamento; confira os indicadores de dados.
+
+### Exercícios
+
+- **EX082 — Prioridade das lojas.** Qual era a prioridade dos funcionários das lojas? *Rubrica:* 3 = a qualidade do lançamento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX083 — Duração das sessões.** Quanto duram as sessões? *Rubrica:* 3 = cerca de trinta minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX084 — Comparação mais justa.** O que o tutor sugeriu para uma comparação mais justa? *Rubrica:* 3 = escalonar o treinamento entre as lojas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Medindo a governança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher medidas de desempenho da governança; (2) montar um painel de indicadores simples; (3) evitar medidas que distorcem o comportamento.
+
+### 29.1 O que medir
+
+Amara pergunta como a Harbourline vai saber se a governança funciona. Ela propõe medidas em três grupos. As medidas de atividade mostram o trabalho feito, como os problemas encerrados. As medidas de qualidade mostram a condição dos dados, como as taxas de aprovação nas regras. As medidas de resultado mostram os efeitos no negócio, como menos reclamações de clientes sobre pontos. Ela observa que as medidas de atividade são as mais fáceis de coletar, mas as menos significativas, e que as medidas de resultado são as que mais importam, mas as mais difíceis de atribuir só à governança. Amara escolhe duas medidas de cada grupo para começar.
+
+### 29.2 Um painel de indicadores
+
+Ela monta um painel de indicadores de uma página para o grupo de governança: taxas de aprovação nas regras para os principais conjuntos de dados, problemas abertos por idade, parcela de conjuntos de dados com dono, cumprimento da retenção e reclamações relacionadas a dados. Cada medida tem uma meta, uma seta de tendência e um comentário curto. O grupo revisa o painel todo mês. Ela o mantém curto para que a discussão se concentre nas exceções e nas ações, e não na leitura de longas listas de números. O primeiro painel mostra três medidas abaixo da meta, que levam a ações acordadas.
+
+### 29.3 Medidas que distorcem
+
+As medidas podem distorcer o comportamento. Quando os curadores eram medidos pelos problemas encerrados, alguns encerravam problemas sem corrigi-los. Amara muda a medida para problemas encerrados com evidência verificada e acrescenta a taxa de reabertura. Ela explica a observação de Goodhart, muitas vezes resumida como quando uma medida vira meta, ela deixa de ser uma boa medida, e recomenda usar várias medidas juntas e discuti-las, em vez de premiar números isolados. Depois da mudança, a taxa de reabertura cai, o que sugere que os curadores agora corrigem os problemas de verdade antes de encerrá-los no registro.
+
+### 29.4 Relatando para cima
+
+Amara prepara um resumo trimestral para o conselho da Harbourline, concentrado nos resultados e nos riscos, e não nos detalhes. Ela inclui a redução dos registros guardados em excesso, a melhora na completude dos e-mails e a queda nas reclamações sobre pontos, com ressalvas sobre outras causas. O conselho pede uma estimativa dos custos evitados. Ela apresenta uma estimativa aproximada, com as premissas declaradas. O Dr. Lindqvist observa que os conselhos respondem à governança quando ela é apresentada em termos de riscos e benefícios que eles reconhecem. O conselho aprova a continuidade do financiamento do programa de governança.
+
+### Exemplo resolvido
+
+Amara propõe medidas de atividade, de qualidade e de resultado, monta um painel mensal de uma página, corrige uma medida distorcida de problemas encerrados e relata os resultados ao conselho com ressalvas.
+
+> **Caso sintético.** As medidas são sintéticas.
+
+### Erros e limites
+
+Premiar números isolados convida à manipulação; use várias medidas.
+
+### Exercícios
+
+- **EX085 — Mais significativas.** Que grupo de medidas importa mais? *Rubrica:* 3 = as medidas de resultado;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX086 — Correção da distorção.** Como a medida de problemas encerrados foi alterada? *Rubrica:* 3 = encerrados com evidência verificada, mais a taxa de reabertura;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX087 — Foco do conselho.** Em que se concentra o resumo para o conselho? *Rubrica:* 3 = nos resultados e nos riscos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação de maturidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar um modelo de maturidade para avaliar a governança; (2) reunir evidências para as notas; (3) definir metas de melhoria realistas.
+
+### 30.1 Modelos de maturidade
+
+Os modelos de maturidade descrevem estágios de capacidade, do improvisado ao gerenciado e ao otimizado. Amara usa um modelo simples de cinco níveis aplicado aos domínios de Khatri e Brown. O nível um significa que as práticas dependem de indivíduos; o nível três, que estão documentadas e são aplicadas de forma consistente; o nível cinco, que são medidas e melhoradas continuamente. Ela observa que os modelos de maturidade são úteis para estruturar a conversa e o planejamento, mas os níveis são julgamentos, e não medições precisas, e devem ser apresentados como tal. Amara escreve uma descrição curta de cada nível para cada domínio, com exemplos da Harbourline.
+
+### 30.2 Reunindo evidências
+
+Amara atribui uma nota a cada domínio com base em evidências: documentos, entrevistas, resultados do painel e registros de problemas. Na qualidade, ela encontra regras documentadas, verificações automatizadas e escalonamento, e atribui o nível três. No ciclo de vida, encontra uma tabela de temporalidade e a eliminação iniciada, mas ainda não rotineira, e atribui o nível dois. Ela registra as evidências de cada nota para que outros possam contestá-la. Notas sem evidência tendem a refletir otimismo ou a opinião de quem foi consultado. Ela compartilha as notas e as evidências com os donos, que contestam duas notas; uma delas é ajustada depois de novas evidências.
+
+### 30.3 Metas
+
+O grupo de governança pede para chegar ao nível cinco em tudo. Amara explica que os níveis mais altos exigem investimento e podem não compensar para uma cooperativa do porte da Harbourline. Ela sugere metas de nível três em todos os domínios em dois anos, com nível quatro para a qualidade, onde os benefícios são mais claros. O grupo concorda. Ela observa que as metas devem refletir o valor, e que perseguir níveis de maturidade por si mesmos desperdiça recursos. Amara escreve as metas no plano de governança, com ações e donos para cada domínio.
+
+### 30.4 Repetindo a avaliação
+
+Amara recomenda repetir a avaliação todo ano com a mesma abordagem baseada em evidências, para que o progresso seja comparável. Ela sugere também que alguém de fora da equipe de dados participe, reduzindo o viés. O Dr. Lindqvist acrescenta que as avaliações de maturidade são mais úteis quando levam a ações específicas, e que o plano de ação importa mais do que as notas, que de outro modo podem virar motivo de orgulho ou de constrangimento, e não uma ferramenta de melhoria. O grupo de governança pede ao responsável pela gestão de documentos que participe da próxima avaliação como o participante externo.
+
+### Exemplo resolvido
+
+Amara avalia os domínios da Harbourline com um modelo de cinco níveis e evidências registradas, define metas de nível três, com nível quatro para a qualidade, e planeja avaliações anuais com participação externa.
+
+> **Caso sintético.** As notas são sintéticas.
+
+### Erros e limites
+
+Mirar a maturidade máxima em tudo desperdiça recursos em organizações pequenas.
+
+### Exercícios
+
+- **EX088 — Nota da qualidade.** Que nível a qualidade recebeu? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX089 — Metas acordadas.** Que metas foram acordadas? *Rubrica:* 3 = nível três em tudo e quatro para a qualidade, em dois anos;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX090 — Redução do viés.** Como o viés da avaliação pode ser reduzido? *Rubrica:* 3 = incluindo alguém de fora da equipe de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Okafor, o Dr. Paul Lindqvist, a Universidade Ridgeway, a Harbourline Co-operative e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Okafor, o Dr. Paul Lindqvist, a Universidade Ridgeway, a Harbourline Co-operative e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Harbourline Co-operative, uma cooperativa de supermercados fictícia.
 
@@ -984,6 +1426,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em i
 **EX059.** As compras sem conexão das duas semanas seguintes receberam pontos.
 
 **EX060.** Códigos de loja e membros duplicados.
+
+**EX061.** 4,5 por cento, 89 de 2.000 linhas.
+
+**EX062.** Uma loja nova abriu antes de seu código entrar na lista.
+
+**EX063.** Um caixa de teste que nunca foi retirado.
+
+**EX064.** Todos os funcionários da sede podiam ver os dados completos dos membros.
+
+**EX065.** Não havia meio aprovado de trabalho remoto, e extrações não aprovadas eram fáceis de criar.
+
+**EX066.** A cada trimestre.
+
+**EX067.** Gênero e estado civil.
+
+**EX068.** A própria Harbourline envia as ofertas, de modo que a padaria não recebe dados de membros.
+
+**EX069.** Um banco de dados de pesquisa esquecido, de cinco anos antes.
+
+**EX070.** Suprimir as células com menos de dez transações.
+
+**EX071.** Um fornecedor que ainda recebia dados cinco meses depois do fim do contrato.
+
+**EX072.** Finalidade, retenção e notificação de incidentes.
+
+**EX073.** O arquivamento e a eliminação.
+
+**EX074.** Três anos.
+
+**EX075.** As cópias de segurança e as extrações.
+
+**EX076.** 2.521 registros, 50,4 por cento.
+
+**EX077.** Que nenhum registro de transação exigido para fins fiscais existe apenas no sistema de fidelidade.
+
+**EX078.** Um segmento usado para ofertas de reconquista.
+
+**EX079.** Para os membros das lojas rurais.
+
+**EX080.** Ele dependia do ano de nascimento, que muitas vezes falta.
+
+**EX081.** Conjuntos de dados certificados, com definições aprovadas.
+
+**EX082.** A qualidade do lançamento.
+
+**EX083.** Cerca de trinta minutos.
+
+**EX084.** Escalonar o treinamento entre as lojas.
+
+**EX085.** As medidas de resultado.
+
+**EX086.** Problemas encerrados com evidência verificada, mais a taxa de reabertura.
+
+**EX087.** Os resultados e os riscos.
+
+**EX088.** Nível três.
+
+**EX089.** Nível três em todos os domínios e quatro para a qualidade, em dois anos.
+
+**EX090.** Incluir alguém de fora da equipe de dados.
 
 <a id="references"></a>
 ## Referências
