@@ -13,6 +13,62 @@ const copy: Record<string, [string, string]> = {
   'Main navigation': ['Navegação principal', 'Navegación principal'],
   'Start here': ['Comece por aqui', 'Empieza aquí'],
   'Courses': ['Cursos', 'Cursos'],
+  'Browse courses': ['Explorar cursos', 'Explorar cursos'],
+  'By level': ['Por nível', 'Por nivel'],
+  'By subject': ['Por tema', 'Por tema'],
+  'All levels →': ['Todos os níveis →', 'Todos los niveles →'],
+  'All subjects →': ['Todos os temas →', 'Todos los temas →'],
+  'Choose a level, then a course': ['Escolha um nível e depois um curso', 'Elige un nivel y luego un curso'],
+  'Choose a subject, then a level': ['Escolha um tema e depois um nível', 'Elige un tema y luego un nivel'],
+  'Loading courses…': ['Carregando cursos…', 'Cargando cursos…'],
+  'View this group →': ['Ver este grupo →', 'Ver este grupo →'],
+  'Rapid course': ['Curso rápido', 'Curso rápido'],
+  'Professional': ['Profissionalizante', 'Profesional'],
+  'Technical': ['Técnico', 'Técnico'],
+  'Technologist': ['Tecnólogo', 'Tecnólogo'],
+  "Bachelor's": ['Graduação', 'Grado'],
+  'Engineering': ['Engenharia', 'Ingeniería'],
+  'Postgraduate': ['Pós-graduação', 'Posgrado'],
+  "Master's": ['Mestrado', 'Máster'],
+  'Doctoral research': ['Pesquisa doutoral', 'Investigación doctoral'],
+  'COURSE DIRECTORY': ['DIRETÓRIO DE CURSOS', 'DIRECTORIO DE CURSOS'],
+  'Browse by level.': ['Explore por nível.', 'Explora por nivel.'],
+  'Browse by subject.': ['Explore por tema.', 'Explora por tema.'],
+  'Choose a level, then open one of its 23 separate courses. Every course has its own lesson guide and book.': ['Escolha um nível e abra um dos 23 cursos separados. Cada curso tem seu guia de aulas e livro.', 'Elige un nivel y abre uno de sus 23 cursos independientes. Cada curso tiene su guía de lecciones y libro.'],
+  'Choose a subject, then a level. Each combination opens its own course and lessons.': ['Escolha um tema e depois um nível. Cada combinação abre seu próprio curso e aulas.', 'Elige un tema y luego un nivel. Cada combinación abre su propio curso y lecciones.'],
+  '23 separate courses · Choose a subject and open its lessons.': ['23 cursos separados · Escolha um tema e abra as aulas.', '23 cursos separados · Elige un tema y abre las lecciones.'],
+  '9 separate study levels · Choose the course that fits you.': ['9 níveis separados · Escolha o curso para você.', '9 niveles separados · Elige el curso adecuado.'],
+  'Explore courses →': ['Explorar cursos →', 'Explorar cursos →'],
+  'Choose a level →': ['Escolher nível →', 'Elegir nivel →'],
+  'Levels': ['Níveis', 'Niveles'],
+  'Subjects': ['Temas', 'Temas'],
+  'All levels': ['Todos os níveis', 'Todos los niveles'],
+  'All subjects': ['Todos os temas', 'Todos los temas'],
+  'Browse by level': ['Explorar por nível', 'Explorar por nivel'],
+  'Browse by subject': ['Explorar por tema', 'Explorar por tema'],
+  'Each subject below is a separate course with its own book and lesson navigation. Follow the curriculum order or choose the subject you need.': ['Cada tema abaixo é um curso separado, com livro e navegação de aulas próprios. Siga a ordem curricular ou escolha o tema desejado.', 'Cada tema es un curso independiente, con libro y navegación de lecciones propios. Sigue el orden curricular o elige el tema que necesites.'],
+  'Choose your level. Each course has its own chapter list, book and lesson navigation.': ['Escolha seu nível. Cada curso tem sua lista de capítulos, livro e navegação de aulas.', 'Elige tu nivel. Cada curso tiene su lista de capítulos, libro y navegación de lecciones.'],
+  'Open course →': ['Abrir curso →', 'Abrir curso →'],
+  'Previous level': ['Nível anterior', 'Nivel anterior'],
+  'Next level →': ['Próximo nível →', 'Siguiente nivel →'],
+  '← Previous course': ['← Curso anterior', '← Curso anterior'],
+  'All courses at this level': ['Todos os cursos deste nível', 'Todos los cursos de este nivel'],
+  'All courses at this level →': ['Todos os cursos deste nível →', 'Todos los cursos de este nivel →'],
+  'Other levels in this subject →': ['Outros níveis deste tema →', 'Otros niveles de este tema →'],
+  'Course language': ['Idioma do curso', 'Idioma del curso'],
+  'One course, one book. Read its lessons in order, or open the full book. Each lesson keeps its exercises and worked answers together.': ['Um curso, um livro. Leia as aulas em ordem ou abra o livro completo. Cada aula reúne exercícios e respostas comentadas.', 'Un curso, un libro. Lee las lecciones en orden o abre el libro completo. Cada lección reúne ejercicios y respuestas desarrolladas.'],
+  'Choose a chapter to read on this page.': ['Escolha um capítulo para ler nesta página.', 'Elige un capítulo para leer en esta página.'],
+  'Loading this course…': ['Carregando este curso…', 'Cargando este curso…'],
+  'Loading the current book and lesson guide…': ['Carregando livro e guia de aulas atuais…', 'Cargando libro y guía de lecciones actuales…'],
+  'Course guide loaded.': ['Guia do curso carregado.', 'Guía del curso cargada.'],
+  'Start first published lesson →': ['Começar pela primeira aula publicada →', 'Comenzar por la primera lección publicada →'],
+  'Choose a course.': ['Escolha um curso.', 'Elige un curso.'],
+  'Use the level menu to see all subjects at one study level, or the subject menu to compare that subject across levels. Each course opens on its own page.': ['Use o menu por nível para ver todos os temas de um nível, ou o menu por tema para comparar os níveis desse tema. Cada curso abre em sua própria página.', 'Usa el menú por nivel para ver todos los temas de un nivel, o el menú por tema para comparar sus niveles. Cada curso se abre en su propia página.'],
+  '← Previous level': ['← Nível anterior', '← Nivel anterior'],
+  '23 separate courses': ['23 cursos separados', '23 cursos separados'],
+  '9 separate courses': ['9 cursos separados', '9 cursos separados'],
+  'Browse all courses': ['Explore todos os cursos', 'Explora todos los cursos'],
+  'Choose a course using the menus above.': ['Escolha um curso nos menus acima.', 'Elige un curso en los menús de arriba.'],
   'Cybersecurity': ['Cibersegurança', 'Ciberseguridad'],
   'Information security': ['Segurança da informação', 'Seguridad de la información'],
   'Data governance': ['Governança de dados', 'Gobernanza de datos'],
@@ -221,6 +277,18 @@ const copy: Record<string, [string, string]> = {
 };
 
 function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null {
+  const levelDirectory = english.match(/^LEVEL (\d{2}) · 23 COURSES$/);
+  if (levelDirectory) return lang === 'pt' ? `NÍVEL ${levelDirectory[1]} · 23 CURSOS` : `NIVEL ${levelDirectory[1]} · 23 CURSOS`;
+  const subjectDirectory = english.match(/^SUBJECT · 9 SEPARATE COURSES$/);
+  if (subjectDirectory) return lang === 'pt' ? 'TEMA · 9 CURSOS SEPARADOS' : 'TEMA · 9 CURSOS SEPARADOS';
+  const levelCourse = english.match(/^LEVEL (\d{2}) · COURSE (\d{3})$/);
+  if (levelCourse) return lang === 'pt' ? `NÍVEL ${levelCourse[1]} · CURSO ${levelCourse[2]}` : `NIVEL ${levelCourse[1]} · CURSO ${levelCourse[2]}`;
+  const numbering = english.match(/^(LEVEL|COURSE|SUBJECT) (\d{2,3})( ·)?$/);
+  if (numbering) return `${({ LEVEL: lang === 'pt' ? 'NÍVEL' : 'NIVEL', COURSE: 'CURSO', SUBJECT: 'TEMA' } as Record<string, string>)[numbering[1]]} ${numbering[2]}${numbering[3] || ''}`;
+  const plannedLessons = english.match(/^(\d+) lessons in (?:the course guide|this course)$/);
+  if (plannedLessons) return lang === 'pt' ? `${plannedLessons[1]} aulas neste curso` : `${plannedLessons[1]} lecciones en este curso`;
+  const answer = english.match(/^Your answer for (EX\d+)$/);
+  if (answer) return lang === 'pt' ? `Sua resposta para ${answer[1]}` : `Tu respuesta para ${answer[1]}`;
   const book = english.match(/^(\d+) written chapters · Read here or choose one lesson from the guide\.$/);
   if (book) return lang === 'pt' ? `${book[1]} capítulos escritos · Leia aqui ou escolha uma aula no guia.` : `${book[1]} capítulos escritos · Lee aquí o elige una lección de la guía.`;
   const published = english.match(/^(\d+) of (\d+) chapters have published lesson text in this edition\. A planned chapter may not yet have a lesson\.$/);

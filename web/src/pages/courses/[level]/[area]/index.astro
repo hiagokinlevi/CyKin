@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { catalog, coursePath, levelPath, subjectPath } from '../../../../lib/catalog';
+
+export function getStaticPaths() {
+  return catalog.courses.map(course => ({ params: { level: course.level, area: course.area }, props: { course } }));
+}
+const { course } = Astro.props;
+const position = catalog.courses.findIndex(item => item.number === course.number);
+const previous = catalog.courses[position - 1];
+const next = catalog.courses[position + 1];
+const levelName = catalog.level_names[course.level].en;
+---
+<BaseLayout title={`${levelName} · ${course.title} · CyKin`} description={`Read the ${levelName.toLowerCase()} course in ${course.title}, with its own book, lessons, exercises and navigation.`}>
+  <div id="course-root" data-level={course.level} data-area={course.area} data-number={course.number} data-next={next ? coursePath(next.level, next.area) : ''}>
+    <section class="course-heading"><div class="shell">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>
+      <div class="eyebrow">COURSE {String(course.number).padStart(3, '0')} · <span>{levelName}</span></div>
+      <h1>{course.title}</h1>
+      <p>One course, one book. Read its lessons in order, or open the full book. Each lesson keeps its exercises and worked answers together.</p>
+      <div class="course-heading-actions">
+        <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option></select></div>
+        <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
+        <a class="button secondary" href={levelPath(course.level)} data-language-link>All courses at this level →</a>
+      </div>
+      <p id="course-status" class="status" role="status">Loading this course…</p>
+    </div></section>
+    <section class="course-workspace shell">
+      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE GUIDE</div><h2>Lessons in this course</h2><p>Choose a chapter to read on this page.</p></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
+      <div class="card course-reader">
+        <div id="course-kicker" class="reader-kicker">COURSE {String(course.number).padStart(3, '0')}</div>
+        <h2 id="course-reader-title">{course.title}</h2>
+        <p id="course-intro" class="muted">Loading the current book and lesson guide…</p>
+        <div id="course-source" class="source-bar"></div>
+        <article id="course-markdown" class="prose" hidden></article>
+        <section id="course-answers" class="answer-section" hidden><details><summary>View worked answers</summary><div id="course-answer-markdown" class="prose"></div></details></section>
+        <section id="course-progress" class="progress-tools" hidden><div class="eyebrow">YOUR PROGRESS · OPTIONAL</div><h3>Save this lesson</h3><p>You can study without an account. With sign-in, mark lessons and save your answers.</p><div id="course-progress-action"></div><div id="course-exercise-forms"></div><p id="course-progress-status" role="status"></p></section>
+        <nav id="course-lesson-nav" class="lesson-nav" aria-label="Lesson navigation"></nav>
+      </div>
+    </section>
+    <nav class="shell directory-foot" aria-label="Adjacent courses">
+      {previous && <a href={coursePath(previous.level, previous.area)} data-language-link>← Previous course</a>}
+      <a href={levelPath(course.level)} data-language-link>All courses at this level</a>
+      {next && <a href={coursePath(next.level, next.area)} data-language-link>Next course →</a>}
+    </nav>
+  </div>
+  <script>
+    import { renderMarkdown } from '../../../../lib/reader';
+    import { siteLanguage } from '../../../../lib/i18n';
+
+    type Lesson = { chapter: number; title: string; published: boolean; source_url: string };
+    type Details = { lessons: Lesson[]; published_chapters: number; planned_chapters: number; book_url: string | null };
+    type LessonData = { chapter: number; title: string; markdown: string; worked_answers: string; exercise_ids: string[]; source_url: string };
+    const $ = (id: string) => document.getElementById(id)!;
+    const root = $('course-root');
+    const level = root.dataset.level!, area = root.dataset.area!;
+    const number = Number(root.dataset.number);
+    const query = new URLSearchParams(location.search);
+    const selector = $('course-language') as HTMLSelectElement;
+    let language = query.get('lang') || siteLanguage();
+    if (!['en', 'pt', 'es'].includes(language)) language = 'en';
+    selector.value = language;
+    let details: Details | null = null;
+    let currentChapter: number | null = null;
+    let requestId = 0;
+
+    function chapterUrl(chapter: number | null) {
+      const params = new URLSearchParams({ lang: language });
+      if (chapter !== null) params.set('chapter', String(chapter));
+      return location.pathname + '?' + params;
+    }
+    function updateLocation(chapter: number | null, push: boolean) {
+      const target = chapterUrl(chapter);
+      if (location.pathname + location.search !== target) history[push ? 'pushState' : 'replaceState'](null, '', target);
+    }
+    function link(label: string, href: string, className = 'button secondary') {
+      const a = document.createElement('a'); a.href = href; a.className = className; a.textContent = label; return a;
+    }
+    function renderIndex() {
+      if (!details) return;
+      const nav = $('course-lessons'); nav.replaceChildren();
+      for (const lesson of details.lessons) {
+        const item = link(`${String(lesson.chapter).padStart(2, '0')} · ${lesson.title}`, chapterUrl(lesson.chapter), 'course-lesson' + (currentChapter === lesson.chapter ? ' active' : ''));
+        item.setAttribute('aria-current', currentChapter === lesson.chapter ? 'page' : 'false');
+        const state = document.createElement('span'); state.className = 'course-lesson-state'; state.textContent = lesson.published ? '●' : '○';
+        item.prepend(state);
+        item.title = lesson.published ? 'Open published lesson' : 'Planned chapter';
+        item.addEventListener('click', event => { event.preventDefault(); void openLesson(lesson.chapter, true); });
+        nav.append(item);
+      }
+    }
+    function renderNavigation(chapter: number | null) {
+      const nav = $('course-lesson-nav'); nav.replaceChildren();
+      if (!details) return;
+      if (chapter === null) {
+        const first = details.lessons.find(item => item.published);
+        if (first) nav.append(link('Start first published lesson →', chapterUrl(first.chapter)));
+        return;
+      }
+      const index = details.lessons.findIndex(item => item.chapter === chapter);
+      const previous = details.lessons[index - 1], next = details.lessons[index + 1];
+      if (previous) nav.append(link('← Previous lesson', chapterUrl(previous.chapter)));
+      nav.append(link('Course guide', chapterUrl(null)));
+      if (next) nav.append(link('Next lesson →', chapterUrl(next.chapter)));
+      else if (root.dataset.next) nav.append(link('Next course →', root.dataset.next + `?lang=${language}`));
+      for (const anchor of nav.querySelectorAll<HTMLAnchorElement>('a[href^="' + location.pathname + '"]')) {
+        anchor.addEventListener('click', event => { event.preventDefault(); const value = new URL(anchor.href).searchParams.get('chapter'); void openLesson(value ? Number(value) : null, true); });
+      }
+    }
+    async function showProgress(lesson: LessonData) {
+      const tools = $('course-progress'), action = $('course-progress-action'), forms = $('course-exercise-forms');
+      tools.hidden = false; action.replaceChildren(); forms.replaceChildren(); $('course-progress-status').textContent = '';
+      try {
+        const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+        if (!me.ok) throw new Error('Sign-in unavailable');
+      } catch { action.append(link('Sign in to save progress →', '/account/')); return; }
+      const base = { level, area, language, chapter: lesson.chapter };
+      const mark = document.createElement('button'); mark.className = 'button gold'; mark.type = 'button'; mark.textContent = 'Mark lesson complete ✓';
+      mark.addEventListener('click', async () => {
+        const response = await fetch('/private/progress/lesson', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, status: 'completed' }) });
+        $('course-progress-status').textContent = response.ok ? 'Lesson completed and saved to your account.' : 'Could not save right now.';
+      }); action.append(mark);
+      for (const digits of lesson.exercise_ids) {
+        const id = `EX${digits}`, form = document.createElement('form'); form.className = 'exercise-form';
+        const label = document.createElement('label'); label.textContent = `Your answer for ${id}`; label.htmlFor = `answer-${id}`;
+        const input = document.createElement('textarea'); input.id = `answer-${id}`; input.maxLength = 20_000; input.rows = 4; input.placeholder = 'Save your attempt, then compare the worked answer.';
+        const save = document.createElement('button'); save.type = 'submit'; save.className = 'button secondary'; save.textContent = 'Save attempt';
+        form.append(label, input, save);
+        form.addEventListener('submit', async event => {
+          event.preventDefault(); save.disabled = true;
+          try {
+            const response = await fetch('/private/progress/exercise', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...base, exercise_id: id, answer: input.value, status: 'attempted' }) });
+            $('course-progress-status').textContent = response.ok ? `${id} saved to your account.` : `Could not save ${id}.`;
+          } catch { $('course-progress-status').textContent = `Could not save ${id}.`; }
+          finally { save.disabled = false; }
+        }); forms.append(form);
+      }
+    }
+    async function openLesson(chapter: number | null, push = false) {
+      if (!details) return;
+      const id = ++requestId;
+      const item = chapter === null ? null : details.lessons.find(lesson => lesson.chapter === chapter);
+      if (chapter !== null && !item) return;
+      currentChapter = chapter; updateLocation(chapter, push); renderIndex(); renderNavigation(chapter);
+      $('course-markdown').hidden = true; $('course-answers').hidden = true; $('course-progress').hidden = true;
+      const source = $('course-source'); source.replaceChildren();
+      if (!item) {
+        $('course-kicker').textContent = `COURSE ${String(number).padStart(3, '0')}`;
+        $('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
+        $('course-intro').textContent = `${details.published_chapters} of ${details.planned_chapters} chapters have published lesson text in this edition. A planned chapter may not yet have a lesson.`;
+        const href = details.book_url ? `/book/?${new URLSearchParams({ level, area, lang: language })}` : `/read/?${new URLSearchParams({ path: `levels/${level}/${area}/${language}/book/PLAN.md` })}`;
+        source.append(link(details.book_url ? 'Read the full book here →' : 'Read the course plan here →', href));
+        return;
+      }
+      $('course-kicker').textContent = `LESSON ${String(chapter).padStart(2, '0')} · COURSE ${String(number).padStart(3, '0')}`;
+      $('course-reader-title').textContent = item.title;
+      const href = item.published ? `/book/?${new URLSearchParams({ level, area, lang: language })}#ch-${String(chapter).padStart(2, '0')}` : `/read/?${new URLSearchParams({ path: `levels/${level}/${area}/${language}/book/PLAN.md` })}#ch-${String(chapter).padStart(2, '0')}`;
+      source.append(link(item.published ? 'Read this chapter in the book →' : 'Read the chapter plan →', href));
+      if (!item.published) { $('course-intro').textContent = 'This subject is in the course plan. Its lesson text has not been published in this edition.'; return; }
+      $('course-intro').textContent = 'Loading the published lesson…';
+      try {
+        const response = await fetch(`/api/lessons/${level}/${area}/${language}/${chapter}`);
+        if (!response.ok) throw new Error('The lesson is temporarily unavailable.');
+        const lesson = await response.json() as LessonData;
+        if (id !== requestId) return;
+        $('course-reader-title').textContent = lesson.title;
+        $('course-intro').textContent = `${lesson.exercise_ids.length} exercise(s) found in this lesson · Public book edition`;
+        await renderMarkdown($('course-markdown'), lesson.markdown, lesson.source_url, language);
+        if (id !== requestId) return;
+        $('course-markdown').hidden = false;
+        if (lesson.worked_answers) { await renderMarkdown($('course-answer-markdown'), lesson.worked_answers, lesson.source_url, language); $('course-answers').hidden = false; }
+        if (id === requestId) void showProgress(lesson);
+        $('course-status').textContent = `Lesson ${chapter} loaded from the public book.`;
+      } catch (error) { if (id === requestId) $('course-intro').textContent = String(error); }
+    }
+    selector.addEventListener('change', () => {
+      try { localStorage.setItem('cykin-language', selector.value); } catch { /* private mode */ }
+      location.href = location.pathname + '?' + new URLSearchParams({ lang: selector.value, ...(currentChapter ? { chapter: String(currentChapter) } : {}) });
+    });
+    window.addEventListener('popstate', () => { const chapter = Number(new URLSearchParams(location.search).get('chapter')) || null; void openLesson(chapter); });
+    try {
+      const response = await fetch(`/api/courses/${level}/${area}/${language}`);
+      if (!response.ok) throw new Error('This course could not be loaded.');
+      details = await response.json() as Details;
+      $('course-status').textContent = 'Course guide loaded.';
+      await openLesson(Number(query.get('chapter')) || null);
+    } catch (error) { $('course-status').textContent = String(error); $('course-intro').textContent = 'This course is temporarily unavailable. Please try again shortly.'; }
+  </script>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { catalog, coursePath, levelPath } from '../../../lib/catalog';
+
+export function getStaticPaths() {
+  return catalog.level_order.map(level => ({ params: { level }, props: { level } }));
+}
+const { level } = Astro.props;
+const courses = catalog.courses.filter(course => course.level === level);
+const levelName = catalog.level_names[level].en;
+const levelIndex = catalog.level_order.indexOf(level);
+---
+<BaseLayout title={`${levelName} courses · CyKin`} description={`Browse every ${levelName.toLowerCase()} course in the CyKin curriculum.`}>
+  <section class="directory-heading"><div class="shell"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><span>{levelName}</span></nav><div class="eyebrow">LEVEL {String(levelIndex + 1).padStart(2, '0')} · 23 COURSES</div><h1>{levelName}</h1><p>Each subject below is a separate course with its own book and lesson navigation. Follow the curriculum order or choose the subject you need.</p><div class="directory-switch"><a class="button secondary" href="/levels/" data-language-link>All levels</a><a class="button secondary" href="/subjects/" data-language-link>Browse by subject</a></div></div></section>
+  <section class="section"><div class="shell directory-grid">
+    {courses.map(course => <a class="card directory-card" href={coursePath(course.level, course.area)} data-language-link><span class="eyebrow">COURSE {String(course.number).padStart(3, '0')}</span><h2>{course.title}</h2><p>{course.planned_chapters} lessons in the course guide</p><span class="directory-arrow">Open course →</span></a>)}
+  </div></section>
+  <nav class="shell directory-foot" aria-label="Adjacent levels">
+    {levelIndex > 0 && <a href={levelPath(catalog.level_order[levelIndex - 1])} data-language-link>← Previous level</a>}
+    {levelIndex < catalog.level_order.length - 1 && <a href={levelPath(catalog.level_order[levelIndex + 1])} data-language-link>Next level →</a>}
+  </nav>
+</BaseLayout>

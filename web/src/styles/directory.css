@@ -1,0 +1,16 @@
+.directory-heading { padding: 64px 0 45px; background: radial-gradient(circle at 80% 12%, rgba(65,121,246,.17), transparent 44%), var(--bg-2); border-bottom: 1px solid var(--line); }
+.directory-heading h1 { font-size: clamp(2.4rem, 5vw, 4.5rem); margin-bottom: 14px; }
+.directory-heading p { max-width: 760px; color: var(--muted); font-size: 1.05rem; }
+.directory-switch { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; color: var(--muted); font-size: .84rem; margin-bottom: 28px; }
+.breadcrumbs a { color: var(--gold); }
+.directory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.directory-card { display: flex; flex-direction: column; min-height: 210px; padding: 26px; box-shadow: none; transition: border-color .18s, transform .18s; }
+.directory-card:hover { border-color: var(--gold); transform: translateY(-3px); color: var(--text); }
+.directory-card h2 { font-size: 1.45rem; margin: 13px 0 8px; }
+.directory-card p { color: var(--muted); font-size: .9rem; margin-bottom: 20px; }
+.directory-arrow { color: var(--gold); font-size: .86rem; font-weight: 600; margin-top: auto; }
+.directory-foot { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; border-top: 1px solid var(--line); padding: 24px 0 50px; }
+.directory-foot a { color: var(--gold); font-weight: 600; font-size: .9rem; }
+@media(max-width: 950px) { .directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media(max-width: 600px) { .directory-heading { padding: 44px 0 35px; }.directory-grid { grid-template-columns: 1fr; }.directory-card { min-height: 175px; } }

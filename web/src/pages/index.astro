@@ -77,13 +77,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       status.textContent = 'Catalog loaded. Each lesson is read from the current public manuscript.';
       (document.getElementById('route-theme') as HTMLFormElement).addEventListener('submit', event => {
         event.preventDefault();
-        const q = new URLSearchParams({mode:'theme',lang:(document.getElementById('language-theme') as HTMLSelectElement).value,area:(document.getElementById('area-theme') as HTMLSelectElement).value,level:(document.getElementById('level-theme') as HTMLSelectElement).value});
-        location.href='/learn/?'+q;
+        const lang = (document.getElementById('language-theme') as HTMLSelectElement).value;
+        const area = (document.getElementById('area-theme') as HTMLSelectElement).value;
+        const level = (document.getElementById('level-theme') as HTMLSelectElement).value;
+        location.href=`/courses/${level}/${area}/?lang=${lang}`;
       });
       (document.getElementById('route-level') as HTMLFormElement).addEventListener('submit', event => {
         event.preventDefault();
-        const q = new URLSearchParams({mode:'level',lang:(document.getElementById('language-level') as HTMLSelectElement).value,level:(document.getElementById('level-level') as HTMLSelectElement).value});
-        location.href='/learn/?'+q;
+        const lang = (document.getElementById('language-level') as HTMLSelectElement).value;
+        const level = (document.getElementById('level-level') as HTMLSelectElement).value;
+        location.href=`/levels/${level}/?lang=${lang}`;
       });
     } catch {
       status.innerHTML = 'The site catalog is temporarily unavailable. <a href="/read/?path=README.md">Read the public library guide ↗</a>';
@@ -100,7 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 29px; }
   .hero-metrics { display: flex; gap: 34px; margin-top: 61px; }
   .hero-metrics > div { border-left: 1px solid var(--line); padding-left: 18px; display: grid; line-height: 1.25; }
-  .hero-metrics strong { font: 700 1.45rem 'Titillium Web', sans-serif; }
+  .hero-metrics strong { font: 600 1.45rem 'Titillium Web', sans-serif; }
   .hero-metrics span { font-size: .78rem; color: var(--muted); margin-top: 5px; }
   .hero-visual { position: relative; height: 530px; display: grid; place-items: center; isolation: isolate; }
   .hero-visual::before { content: ''; position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(65,121,246,.18), transparent 66%); filter: blur(6px); }
@@ -110,8 +113,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .orbit-three { width: 515px; height: 515px; border-color: rgba(138,174,240,.1); }
   .central-disc { position: relative; display: grid; place-content: center; text-align: center; width: 235px; height: 235px; border-radius: 50%; background: linear-gradient(145deg, #1b4fa4, #0d2758 67%, #071938); border: 1px solid rgba(227,189,115,.45); box-shadow: 0 0 0 13px rgba(43,91,170,.15), 0 30px 80px rgba(0,8,26,.5), inset 0 0 45px rgba(95,157,249,.18); overflow: hidden; }
   .disc-grid { position: absolute; inset: 0; opacity: .27; background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,.12) 1px, transparent 1px); background-size: 26px 26px; transform: rotate(-24deg) scale(1.4); }
-  .central-disc span { position: relative; font: 700 3.15rem 'Titillium Web', sans-serif; letter-spacing: -.05em; color: white; }
-  .central-disc small { position: relative; color: var(--gold); letter-spacing: .19em; text-transform: uppercase; font-size: .52rem; font-weight: 800; }
+  .central-disc span { position: relative; font: 600 3.15rem 'Titillium Web', sans-serif; letter-spacing: -.05em; color: white; }
+  .central-disc small { position: relative; color: var(--gold); letter-spacing: .19em; text-transform: uppercase; font-size: .52rem; font-weight: 600; }
   .floating-tag { position: absolute; display: flex; align-items: center; gap: 11px; min-width: 174px; padding: 11px 15px; background: rgba(13,38,80,.95); color: #fff; border: 1px solid rgba(227,189,115,.26); border-radius: 14px; box-shadow: 0 12px 30px rgba(0,7,25,.25); backdrop-filter: blur(10px); }
   .floating-tag strong { display: block; font-size: .79rem; line-height: 1.2; }
   .floating-tag small { color: #a9bbd8; font-size: .67rem; }
@@ -123,17 +126,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .route-card { display: flex; flex-direction: column; padding: 31px; box-shadow: none; transition: border-color .2s, transform .2s; }
   .route-card:hover { border-color: rgba(227,189,115,.55); transform: translateY(-3px); }
   .route-top { display: flex; justify-content: space-between; align-items: center; }
-  .route-number { color: var(--gold); font-weight: 800; letter-spacing: .15em; font-size: .9rem; }.route-shape { font-size: 1.65rem; color: var(--gold); }
+  .route-number { color: var(--gold); font-weight: 600; letter-spacing: .15em; font-size: .9rem; }.route-shape { font-size: 1.65rem; color: var(--gold); }
   .route-card h3 { font-size: 1.4rem; margin: 16px 0 8px; }.route-card > p { color: var(--muted); min-height: 53px; margin-bottom: 17px; }
-  .route-steps { display: flex; align-items: center; gap: 9px; color: var(--gold); font-size: .77rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 27px; }
+  .route-steps { display: flex; align-items: center; gap: 9px; color: var(--gold); font-size: .77rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 27px; }
   .route-steps span:nth-child(even) { color: var(--muted); }
   .route-fields { display: grid; gap: 15px; flex: 1; }.route-note { align-self: start; background: var(--gold-soft); color: var(--muted); border: 1px solid var(--line); border-radius: 11px; padding: 13px 15px; font-size: .84rem; }
   .route-button { margin-top: 25px; width: 100%; justify-content: space-between; }
   .catalog-status { color: var(--muted); font-size: .78rem; margin: 17px 0 0; }
   .philosophy { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; align-items: center; }
-  .philosophy-grid > div:first-child > p { max-width: 540px; }.text-link { font-weight: 800; color: var(--gold); }
-  .principles { border-top: 1px solid var(--line); }.principles > div { display: flex; gap: 22px; padding: 21px 0; border-bottom: 1px solid var(--line); }.principles span { font: 700 .86rem 'Titillium Web', sans-serif; color: var(--gold); }.principles strong { font: 700 1rem 'Titillium Web', sans-serif; }.principles p { color: var(--muted); margin: 3px 0 0; font-size: .87rem; }
+  .philosophy-grid > div:first-child > p { max-width: 540px; }.text-link { font-weight: 600; color: var(--gold); }
+  .principles { border-top: 1px solid var(--line); }.principles > div { display: flex; gap: 22px; padding: 21px 0; border-bottom: 1px solid var(--line); }.principles span { font: 600 .86rem 'Titillium Web', sans-serif; color: var(--gold); }.principles strong { font: 600 1rem 'Titillium Web', sans-serif; }.principles p { color: var(--muted); margin: 3px 0 0; font-size: .87rem; }
   .ai-strip { background: radial-gradient(circle at 88% 50%, rgba(47,99,206,.3), transparent 42%), var(--bg); }.ai-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }.ai-inner > div { max-width: 700px; }.ai-inner p { color: var(--muted); max-width: 580px; }
   @media(max-width: 980px){.hero-grid{grid-template-columns:1fr}.hero-visual{height:450px;max-width:600px;margin:auto}.hero{padding-top:80px}.philosophy-grid{gap:5%}}
   @media(max-width: 700px){.hero{padding-top:66px}.hero-visual{height:380px;transform:scale(.72);margin:-35px auto -65px}.hero-metrics{gap:10px;margin-top:40px;justify-content:space-between}.hero-metrics>div{padding-left:10px}.routes,.philosophy-grid{grid-template-columns:1fr}.route-card{padding:24px}.ai-inner{align-items:start;flex-direction:column}.section-head{margin-bottom:20px}}

@@ -42,11 +42,14 @@ if ! curl --fail --silent --output /dev/null https://cykin.org/api/health; then
   curl_options=(--resolve "cykin.org:443:$public_ip")
 fi
 curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/api/health
-curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/ | grep -q 'CyKin'
+curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/ | grep -F 'CyKin' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/levels/ | grep -F 'Browse by level' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/subjects/ | grep -F 'Browse by subject' > /dev/null
+curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/courses/rapid-1-month/incident-response-resilience/ | grep -F 'incident-response-resilience' > /dev/null
 curl --fail --show-error --silent "${curl_options[@]}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
-  https://cykin.org/mcp | grep -q 'protocolVersion'
+  https://cykin.org/mcp | grep -F 'protocolVersion' > /dev/null
 
 echo "CyKin deployed and verified from GitHub main $local_sha"

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { catalog, coursePath, subjects } from '../../../lib/catalog';
+
+export function getStaticPaths() {
+  return subjects.map(course => ({ params: { area: course.area }, props: { area: course.area } }));
+}
+const { area } = Astro.props;
+const courses = catalog.courses.filter(course => course.area === area);
+const title = courses[0].title;
+---
+<BaseLayout title={`${title} courses · CyKin`} description={`Choose a study level for the ${title} courses and lessons.`}>
+  <section class="directory-heading"><div class="shell"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/subjects/" data-language-link>Subjects</a><span>›</span><span>{title}</span></nav><div class="eyebrow">SUBJECT · 9 SEPARATE COURSES</div><h1>{title}</h1><p>Choose your level. Each course has its own chapter list, book and lesson navigation.</p><div class="directory-switch"><a class="button secondary" href="/subjects/" data-language-link>All subjects</a><a class="button secondary" href="/levels/" data-language-link>Browse by level</a></div></div></section>
+  <section class="section"><div class="shell directory-grid">
+    {courses.map((course, index) => <a class="card directory-card" href={coursePath(course.level, course.area)} data-language-link><span class="eyebrow">LEVEL {String(index + 1).padStart(2, '0')} · COURSE {String(course.number).padStart(3, '0')}</span><h2>{catalog.level_names[course.level].en}</h2><p>{course.planned_chapters} lessons in this course</p><span class="directory-arrow">Open course →</span></a>)}
+  </div></section>
+</BaseLayout>

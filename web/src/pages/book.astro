@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Read a book · CyKin" description="Read a complete public CyKin course book on the site.">
-  <section class="book-heading"><div class="shell"><div class="eyebrow">OPEN BOOK · NO ACCOUNT REQUIRED</div><h1 id="book-title">Public course book</h1><p id="book-status" role="status">Loading the current book…</p><a id="book-guide" class="button secondary" href="/learn/">Course lesson guide →</a></div></section>
+  <section class="book-heading"><div class="shell"><div class="eyebrow">OPEN BOOK · NO ACCOUNT REQUIRED</div><h1 id="book-title">Public course book</h1><p id="book-status" role="status">Loading the current book…</p><a id="book-guide" class="button secondary" href="/levels/">Course lesson guide →</a></div></section>
   <section class="section"><div class="shell book-grid"><aside class="card book-index"><div class="eyebrow">CHAPTERS</div><nav id="book-chapters" aria-label="Book chapters"></nav></aside><article id="book-content" class="card prose book-content"></article></div></section>
   <script>
     import { renderMarkdown, sourceUrlFor } from '../lib/reader';
@@ -17,8 +17,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     if (!/^[a-z0-9-]+$/.test(level) || !/^[a-z0-9-]+$/.test(area) || !/^[a-z]{2}$/.test(lang)) {
       status.textContent = 'Choose a course from the study guide.';
     } else {
-      const route = new URLSearchParams({ mode: 'theme', lang, level, area });
-      guide.href = '/learn/?' + route;
+      const route = new URLSearchParams({ lang });
+      guide.href = `/courses/${level}/${area}/?${route}`;
       try {
         const response = await fetch(`/api/courses/${level}/${area}/${lang}`);
         if (!response.ok) throw new Error('The course guide could not be loaded.');
@@ -28,7 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         for (const lesson of details.lessons) {
           const a = document.createElement('a');
           const target = new URLSearchParams(route); target.set('chapter', String(lesson.chapter));
-          a.href = '/learn/?' + target;
+          a.href = `/courses/${level}/${area}/?${target}`;
           a.textContent = `${String(lesson.chapter).padStart(2,'0')} · ${lesson.title}${lesson.published ? '' : ' · planned'}`;
           index.append(a);
         }

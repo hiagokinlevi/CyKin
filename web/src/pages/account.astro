@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="My area · CyKin" description="Track lessons and exercises on CyKin. An account is optional; books remain open.">
   <section class="account-hero"><div class="shell"><div class="eyebrow">OPTIONAL STUDENT AREA</div><h1>Your learning,<br /><span class="gold-text">at your pace.</span></h1><p>Sign in only if you want to save completed lessons and exercise answers. Books, lessons and the API remain open without an account.</p></div></section>
   <section class="section"><div class="shell account-grid"><div class="card profile"><div class="eyebrow">IDENTITY</div><h2 id="profile-title">Checking access…</h2><p id="profile-description" class="muted">Sign-in is managed by Cloudflare Access. CyKin does not store your password.</p><div id="profile-action"></div></div><div class="card benefits"><div class="eyebrow">YOUR STUDY AREA</div><h2>What you can track</h2><div class="benefit"><span>✓</span><div><strong>Completed lessons</strong><p>Mark a chapter when you finish reading.</p></div></div><div class="benefit"><span>✎</span><div><strong>Exercise attempts</strong><p>Save your answers and continue later.</p></div></div><div class="benefit"><span>◌</span><div><strong>Audio and video</strong><p>Planned for a later stage; reading is already open.</p></div></div></div></div></section>
-  <section class="section records"><div class="shell"><div class="eyebrow">MY HISTORY</div><h2>Saved progress</h2><p id="records-status" class="muted">Sign in to view your lessons and attempts.</p><div id="records-list" class="record-list"></div><a class="button gold" href="/learn/">Continue learning →</a></div></section>
+  <section class="section records"><div class="shell"><div class="eyebrow">MY HISTORY</div><h2>Saved progress</h2><p id="records-status" class="muted">Sign in to view your lessons and attempts.</p><div id="records-list" class="record-list"></div><a class="button gold" href="/levels/">Continue learning →</a></div></section>
   <script>
     type Lesson = { level: string; area: string; language: string; chapter: number; status: string; updated_at: string };
     type Exercise = Lesson & { exercise_id: string; answer: string };
@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const status = document.getElementById('records-status')!;
     const list = document.getElementById('records-list')!;
     const link = (href: string, label: string) => { const a = document.createElement('a'); a.href=href; a.className='button gold'; a.textContent=label; return a; };
-    const lessonLink = (item: Lesson) => `/learn/?mode=theme&lang=${encodeURIComponent(item.language)}&area=${encodeURIComponent(item.area)}&level=${encodeURIComponent(item.level)}&chapter=${item.chapter}`;
+    const lessonLink = (item: Lesson) => `/courses/${encodeURIComponent(item.level)}/${encodeURIComponent(item.area)}/?lang=${encodeURIComponent(item.language)}&chapter=${item.chapter}`;
     try {
       const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
       if (!me.ok) throw new Error(me.status === 503 ? 'Optional sign-in is not enabled on this domain yet.' : 'Sign in to save progress.');
@@ -32,14 +32,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (!data.lessons.length) status.textContent = 'No lessons marked yet. Begin with a published lesson.';
     } catch(error) {
       title.textContent='Reading always open'; description.textContent=String(error);
-      action.append(link('/private/login','Sign in with email →'), link('/learn/','Study without an account →'));
+      action.append(link('/private/login','Sign in with email →'), link('/levels/','Study without an account →'));
       status.textContent='Your history will appear when optional sign-in is available and you sign in.';
     }
   </script>
 </BaseLayout>
 <style is:global>
   .account-hero { padding: 94px 0 72px; background: radial-gradient(circle at 80% 20%,rgba(65,121,246,.22),transparent 43%),var(--bg-2); border-bottom: 1px solid var(--line); }.account-hero h1 { font-size: clamp(2.7rem,5vw,5rem); }.account-hero p { color: var(--muted); max-width: 690px; font-size: 1.1rem; }
-  .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }.account-grid .card { padding: 32px; }.profile { min-height: 340px; }.profile h2,.benefits h2 { font-size: 1.6rem; margin: 12px 0; overflow-wrap: anywhere; }.profile p { max-width: 480px; }.profile .button { margin-top: 15px; }.benefit { display: flex; gap: 14px; border-top: 1px solid var(--line); padding-top: 15px; margin-top: 15px; }.benefit>span { color: var(--gold); font-weight: 800; }.benefit strong { font-size: .95rem; }.benefit p { color: var(--muted); font-size: .84rem; margin: 3px 0 0; }
+  .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }.account-grid .card { padding: 32px; }.profile { min-height: 340px; }.profile h2,.benefits h2 { font-size: 1.6rem; margin: 12px 0; overflow-wrap: anywhere; }.profile p { max-width: 480px; }.profile .button { margin-top: 15px; }.benefit { display: flex; gap: 14px; border-top: 1px solid var(--line); padding-top: 15px; margin-top: 15px; }.benefit>span { color: var(--gold); font-weight: 600; }.benefit strong { font-size: .95rem; }.benefit p { color: var(--muted); font-size: .84rem; margin: 3px 0 0; }
   .records { background: var(--bg-2); border-top: 1px solid var(--line); }.records h2 { margin-top: 12px; }.record-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin: 22px 0 34px; }.record { display: grid; gap: 4px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }.record strong { text-transform: capitalize; }.record span { color: var(--muted); font-size: .8rem; }
   @media(max-width:760px){.account-grid,.record-list{grid-template-columns:1fr}.account-hero{padding:65px 0}.account-grid .card{padding:24px}}
 </style>

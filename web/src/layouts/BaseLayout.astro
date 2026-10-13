@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import '../styles/reader.css';
+import '../styles/directory.css';
+import '../styles/course.css';
 const { title = 'CyKin — open cybersecurity learning', description = 'Open cybersecurity courses, lessons and books for students and AI systems.' } = Astro.props;
 const path = Astro.url.pathname;
 ---
@@ -30,9 +32,12 @@ const path = Astro.url.pathname;
     <header class="site-header">
       <div class="shell nav">
         <a class="brand" href="/" aria-label="CyKin, home"><span class="brand-mark"><span>C</span></span> CyKin</a>
+        <div class="catalog-menus" aria-label="Browse courses">
+          <details class="catalog-menu" data-mode="level"><summary>By level</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/levels/" data-language-link>All levels →</a><span>Choose a level, then a course</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
+          <details class="catalog-menu" data-mode="subject"><summary>By subject</summary><div class="catalog-menu-panel"><div class="catalog-menu-top"><a href="/subjects/" data-language-link>All subjects →</a><span>Choose a subject, then a level</span></div><div class="catalog-menu-columns"><div class="catalog-menu-choices"></div><div class="catalog-menu-courses" aria-live="polite">Loading courses…</div></div></div></details>
+        </div>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Start here</a>
-          <a href="/learn/" aria-current={path === '/learn/' ? 'page' : undefined}>Courses</a>
           <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
           <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
         </nav>
@@ -47,11 +52,12 @@ const path = Astro.url.pathname;
     <footer class="footer">
       <div class="shell footer-inner">
         <span>© CyKin · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
-        <div class="footer-links"><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/learn/">Books and courses</a></div>
+        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a></div>
       </div>
     </footer>
     <script>
       import { translatePage, siteLanguage } from '../lib/i18n';
+      import { initializeCourseMenus } from '../lib/course-menu';
       const selector = document.getElementById('site-language') as HTMLSelectElement;
       selector.value = siteLanguage();
       selector.addEventListener('change', () => {
@@ -61,6 +67,10 @@ const path = Astro.url.pathname;
         location.href = next.href;
       });
       translatePage();
+      for (const anchor of document.querySelectorAll<HTMLAnchorElement>('a[data-language-link]')) {
+        const target = new URL(anchor.href); target.searchParams.set('lang', siteLanguage()); anchor.href = target.href;
+      }
+      initializeCourseMenus();
       const toggle = document.getElementById('theme-toggle');
       toggle?.addEventListener('click', () => {
         const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';

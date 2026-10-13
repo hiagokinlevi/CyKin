@@ -10,10 +10,12 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
+SITEMAP = OUTPUT.with_name("sitemap.xml")
 LANGUAGES = ("en", "pt", "es", "he", "fr", "ru", "de", "zh", "ja")
 LEVELS = {
     "rapid-1-month": {"en": "Rapid course", "pt": "Curso rápido", "es": "Curso rápido"},
@@ -76,5 +78,14 @@ def build() -> dict:
 
 if __name__ == "__main__":
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(build(), ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-    print(f"Wrote {OUTPUT} with 207 courses")
+    data = build()
+    OUTPUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    routes = ["/", "/levels/", "/subjects/", "/for-ai/"]
+    routes.extend(f"/levels/{level}/" for level in data["level_order"])
+    routes.extend(f"/subjects/{course['area']}/" for course in data["courses"] if course["level"] == data["level_order"][0])
+    routes.extend(f"/courses/{course['level']}/{course['area']}/" for course in data["courses"])
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    xml += "".join(f"  <url><loc>{escape('https://cykin.org' + route)}</loc></url>\n" for route in routes)
+    xml += "</urlset>\n"
+    SITEMAP.write_text(xml, encoding="utf-8")
+    print(f"Wrote {OUTPUT} with 207 courses and {SITEMAP} with {len(routes)} routes")

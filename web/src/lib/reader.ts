@@ -27,14 +27,19 @@ export function internalSourceLink(href: string, sourceUrl: string, language: st
   if (course) {
     const [, level, area, edition, file] = course;
     const lang = edition || language;
-    const query = new URLSearchParams({ lang, mode: 'theme', area, level });
+    const query = new URLSearchParams({ lang });
+    const coursePage = `/courses/${level}/${area}/`;
     if (file === 'book/MANUSCRIPT.md') {
       if (mode === 'book' && sourcePath(new URL(sourceUrl)) === path && url.hash) return url.hash;
       const chapter = url.hash.match(/^#ch-(\d{2})$/i);
-      if (chapter) { query.set('chapter', String(Number(chapter[1]))); return '/learn/?' + query; }
-      return '/book/?' + query + url.hash;
+      if (chapter) { query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
+      return '/book/?' + new URLSearchParams({ level, area, lang }) + url.hash;
     }
-    if (file === 'SUBJECTS.md' || file === 'README.md') return '/learn/?' + query;
+    if (file === 'SUBJECTS.md' || file === 'README.md') {
+      const chapter = url.hash.match(/^#ch-(\d{2})$/i);
+      if (chapter) query.set('chapter', String(Number(chapter[1])));
+      return coursePage + '?' + query;
+    }
   }
   if (path.toLowerCase().endsWith('.md')) return '/read/?' + new URLSearchParams({ path }).toString() + url.hash;
   return null;

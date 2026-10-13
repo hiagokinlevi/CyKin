@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { catalog, levelPath } from '../../lib/catalog';
+---
+<BaseLayout title="Study levels · CyKin" description="Browse the nine CyKin study levels, each with its own courses and lessons.">
+  <section class="directory-heading"><div class="shell"><div class="eyebrow">COURSE DIRECTORY</div><h1>Browse by level.</h1><p>Choose a level, then open one of its 23 separate courses. Every course has its own lesson guide and book.</p><div class="directory-switch"><a class="button gold" href="/levels/" aria-current="page">By level</a><a class="button secondary" href="/subjects/">By subject</a></div></div></section>
+  <section class="section"><div class="shell directory-grid">
+    {catalog.level_order.map((level, index) => <a class="card directory-card" href={levelPath(level)} data-language-link><span class="eyebrow">LEVEL {String(index + 1).padStart(2, '0')}</span><h2>{catalog.level_names[level].en}</h2><p>23 separate courses · Choose a subject and open its lessons.</p><span class="directory-arrow">Explore courses →</span></a>)}
+  </div></section>
+</BaseLayout>

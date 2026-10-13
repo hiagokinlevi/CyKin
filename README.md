@@ -37,7 +37,7 @@
 
 ## Start here
 
-[Open the CyKin study site](https://cykin.org/) to choose a route and language. Each subject is one book chapter and lesson. The course guide shows the full sequence, links to written lessons, and identifies chapters that still have only a plan. Public reading requires no account.
+[Open the CyKin study site](https://cykin.org/) and browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/). Each level and subject leads to separate course pages, and each course has its own lesson guide and book. Within a course, each subject chapter is a lesson. Unwritten chapters are identified as plans. Public reading requires no account.
 
 **Route 1 — one course:** 1. language → 2. subject area → 3. level → the complete lesson guide for that course.
 
