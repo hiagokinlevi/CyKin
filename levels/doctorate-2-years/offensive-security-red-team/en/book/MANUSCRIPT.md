@@ -151,7 +151,7 @@ The stats lab shows why counts matter: 3 successes in 20 and 300 in 2,000 both g
 
 Your thesis will discuss techniques that could be misused. Publish methods and measurement, not weaponised procedures. Prefer synthetic targets and open lab topologies. Route any real weakness found during research through coordinated disclosure. Herzog's OSSTMM has been influential, yet Albrecht and Jensen (arXiv:2010.06377) show why a single "security quantity" is a poor research measure — prefer concrete, contextual metrics.
 
-Elena's protocol states that she will publish predicates, rates and scoring code, not exploit chains, and that any real issue found on institutional systems goes through coordinated disclosure. Prefer concrete metrics such as probe rates and time-to-stop over a single security score.
+Elena's protocol states that she will publish predicates, rates and scoring code, not exploit chains, and that any real issue found on institutional systems goes through coordinated disclosure. Her measures are concrete — probe rates and time-to-stop — not a single security score.
 
 ### 1.5 Evidence trail
 
@@ -171,7 +171,7 @@ Those two measures become her primary and secondary outcomes. The deny decisions
 - Measures that count activity instead of effects.
 - Publishing working exploit recipes.
 
-Each error damages integrity from the start. Verbal authorization cannot be checked later and does not protect anyone if a probe causes harm. Counting tools run or packets sent says nothing about whether scope held. Publishing working exploit recipes turns research into an attack resource. Check your integrity plan for all three before any engagement starts. Elena's plan names written authorization, effect measures and dual-use limits. Elena's plan names written authorization, effect measures and dual-use limits before any engagement starts.
+Each error damages integrity from the start. Verbal authorization cannot be checked later and does not protect anyone if a probe causes harm. Counting tools run or packets sent says nothing about whether scope held. Publishing working exploit recipes turns research into an attack resource. Check your integrity plan for all three before any engagement starts. Elena's plan names written authorization, effect measures and dual-use limits before any engagement starts.
 
 ### Exercises
 
@@ -399,7 +399,7 @@ Elena's pilot suggests a prose rate near 0.18 per hour. Detecting a drop towards
 
 Supervisor sign-off on science; ethics board on people; lab owner on systems. Keep versions of the proposal with dates.
 
-Elena files all three before the pilot. A change to the proposal after approval needs a dated amendment, not an email. Without all three, the pilot does not start. Keep the signed copies with the pre-registration, and check that the dates still cover the work before each engagement. An expired lab authorization pauses research as well as assessment. An expired ethics approval pauses research as well.
+Elena files all three before the pilot. A change to the proposal after approval needs a dated amendment, not an email. Without all three, the pilot does not start. Keep the signed copies with the pre-registration, and check that the dates still cover the work before each engagement. An expired lab authorization or ethics approval pauses the research as well as the assessment.
 
 ### 3.5b Failure modes of the proposal
 
@@ -419,7 +419,7 @@ H1 can fail: if the checker rate matches the prose rate within the planned inter
 - Pilots that use real client systems.
 - Proposals without a stop-condition plan.
 
-Each error damages the proposal. Hypotheses written after looking at data cannot be falsified honestly. Pilots on real client systems break authorization and expose real data. Proposals without stop conditions leave operators without a rehearsed pause. Check the proposal for all three before seeking approval. Elena's proposal addresses each one in writing before she seeks signatures, so examiners can see the controls were planned. Elena's proposal addresses each one before she seeks signatures.
+Each error damages the proposal. Hypotheses written after looking at data cannot be falsified honestly. Pilots on real client systems break authorization and expose real data. Proposals without stop conditions leave operators without a rehearsed pause. Check the proposal for all three before seeking approval. Elena's proposal addresses each one in writing before she seeks signatures, so examiners can see the controls were planned.
 
 ### Exercises
 
@@ -507,7 +507,7 @@ Elena reports pilot rates with intervals and does not test H1 yet. Operator effe
 
 Clarify ROE wording, fix checker bugs, improve logging. Lock instruments before the main study. Document every change.
 
-Elena's typo UX fix and the locked checker version are both recorded in the instrument log with dates. After lock, further changes need a supervisor-approved amendment. Locking stops silent drift between early and late engagements. Elena records every change with its date and reason. After lock, a checker bug fix needs a supervisor-approved amendment, and the main study does not start until the new version is pinned. Operators receive the locked version number in the briefing, so they can report if a different build appears.
+Elena's typo UX fix and the locked checker version are both recorded in the instrument log with dates. After lock, further changes need a supervisor-approved amendment. Locking stops silent drift between early and late engagements, and the main study does not start until the new version is pinned. Operators receive the locked version number in the briefing, so they can report if a different build appears.
 
 ### 4.5 Go / no-go
 
@@ -752,7 +752,7 @@ Elena's brief states the checker defaults, the two measures to watch on the next
 
 A practitioner argues that NHUSTL's topology is too clean versus enterprise networks. Elena adds a limitations subsection and a planned external replication, without changing the primary claim. A statistician asks for operator-level plots; she adds them as exploratory. The entropy lab is used in a teaching appendix on why "complexity scores" without context mislead — analogous to empty security scores.
 
-The limitation and planned external replication answer the practitioner without moving the goalposts. Operator-level plots answer the statistician as exploratory displays. The entropy lab's lesson — that bit counts without context can still grade weak passwords as strong — parallels empty security scores, and sits in a teaching appendix rather than in the primary claim.
+The limitation and planned external replication answer the practitioner without moving the goalposts. Operator-level plots answer the statistician as exploratory displays. The entropy lab's lesson — that bit counts without context grade the common pattern `P@ssw0rd` as ok at 52.6 bits — parallels empty security scores, and sits in a teaching appendix rather than in the primary claim.
 
 ### 6.6 Errors and limits
 
@@ -909,7 +909,7 @@ Elena's four-part answer is: refuse the exploit; demo the scope denial; restate 
 
 Target: a measurement/ethics venue for the main result; a short practitioner brief for authorised teams; no "how to bypass" companion. Cite frameworks accurately (NIST SP 800-115, PTES, ATT&CK, WSTG, TIBER-EU, CBEST) with versions and dates.
 
-Elena's plan lists one journal submission on measurement and ethics, with no exploit details, and one open archive release with hashes. Framework citations carry versions and access dates, because ATT&CK and WSTG change. No companion paper on how to bypass the checker. No companion paper on how to bypass the checker.
+Elena's plan lists one journal submission on measurement and ethics, with no exploit details, and one open archive release with hashes. Framework citations carry versions and access dates, because ATT&CK and WSTG change. There is no companion paper on how to bypass the checker.
 
 ### 8.4 Next research
 
