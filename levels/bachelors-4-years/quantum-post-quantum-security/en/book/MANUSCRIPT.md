@@ -1153,13 +1153,19 @@ You will (1) define the scope of quantum and post-quantum security; (2) state Mo
 
 The field covers four questions. What can quantum computers do to cryptography? (Shor breaks RSA, Diffie–Hellman and elliptic curves; Grover weakens symmetric search quadratically.) What replaces vulnerable algorithms? (Post-quantum cryptography: classical algorithms believed to resist quantum attack.) How do organizations migrate? (Inventory, prioritisation, hybrid deployment, agility.) And what role, if any, for quantum communication technologies such as quantum key distribution (QKD)? This book concentrates on the first three, because PQC runs on today's computers and networks.
 
+QKD is discussed briefly below.
+
 ### 19.2 PQC versus QKD
 
 PQC algorithms such as ML-KEM are software and hardware implementations of mathematical schemes; they work over any network. QKD uses quantum states of light to establish keys and needs dedicated links and trusted nodes, and it still needs classical authentication. The [NSA](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/) has stated that it does not support QKD for national security systems and recommends quantum-resistant algorithms instead. For an organization like HCU, PQC is the practical path.
 
+HCU's links run over leased lines and the internet, where QKD would need new infrastructure.
+
 ### 19.3 Mosca's inequality
 
 Mosca (2018) gave the field its planning rule. Let *x* be how long data must stay secure, *y* how long migration takes and *z* how long until a cryptographically relevant quantum computer (CRQC) exists. If *x* + *y* > *z*, you are already late for that data. Because *z* is unknown, sweep it: decisions that are correct across a plausible range of *z* are robust.
+
+For HCU, the archive's thirty years make the left side large whatever value of the migration time is chosen. Even if a CRQC were forty years away, a migration taking more than ten years would leave some archive data exposed. The inequality turns an unanswerable question, when will the machine arrive, into a usable one: for which data does the answer not matter?
 
 ### 19.4 Practical activity — Lab M
 
@@ -1182,19 +1188,27 @@ z=20: at risk now -> mortgage archive
 
 Card authorisation messages are short-lived, so they drop out; the mortgage archive is at risk under every assumption in the sweep. That is the robust conclusion.
 
+The lab sweeps the unknown arrival time across three values and, for each, prints the HCU data classes whose confidentiality lifetime plus migration time exceeds it. Member records appear only under the shortest assumption, so their status depends on the uncertain date; the mortgage archive appears under all three. Classes that change status within the sweep are where the date really matters, and those need closer judgment and regular review as estimates change. Classes that never appear, such as card messages, can wait for routine upgrades.
+
 ### 19.5 Standards and transition status
 
 FIPS 203, 204 and 205 are final (August 2024). [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) gives recommendations for using KEMs. NIST's draft [IR 8547](https://doi.org/10.6028/NIST.IR.8547.ipd) proposes deprecating 112-bit-security quantum-vulnerable algorithms after 2030 and disallowing quantum-vulnerable public-key algorithms after 2035; as a draft, it signals direction rather than binding dates. FN-DSA (FIPS 206) and a standard based on HQC were in development on 12 October 2026. [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html) defines terminology for post-quantum/traditional (PQ/T) hybrid schemes.
 
+HCU tracks these documents with their status and the date checked.
+
 ### 19.6 Worked example
 
 HCU's board asks for a one-slide answer. "Quantum computers capable of breaking our public-key cryptography do not exist today and their date is uncertain. Our mortgage archive must stay confidential for 30 years, so recorded transfers are at risk under any plausible timeline; we will protect those flows first with hybrid post-quantum key exchange, following NIST's 2024 standards. Signatures and devices follow a planned schedule aligned with NIST's draft transition guidance."
+
+The slide avoids a predicted date, states the requirement that drives urgency and names the first action. Board members can challenge any part, and each part points to evidence in the plan. A follow-up slide lists what the board will hear about each quarter.
 
 ### 19.7 Common errors and limits
 
 - Quoting a single CRQC date as fact.
 - Presenting QKD as a drop-in replacement for PQC.
 - Treating IR 8547's draft dates as final.
+
+Published estimates of when a CRQC might exist vary widely and change as research advances, so a single date gives false confidence. QKD needs special hardware and dedicated links, solves only key distribution and still needs classical authentication. Draft guidance invites comment and may change before publication. Each mistake makes a plan look firmer than the evidence allows, and the plan breaks when the assumption does.
 
 ### Exercises
 
@@ -1229,9 +1243,13 @@ The NIST process eliminated candidates publicly. Rainbow, a multivariate signatu
 
 KyberSlash (Bernstein et al., 2024) showed that several implementations of Kyber leaked secret information through timing of division operations, even though the mathematics was sound. The lesson: a correct standard is not a correct implementation; use vetted libraries and keep them updated.
 
+For HCU the lesson became a procurement question: which library and version does each appliance use, and how quickly does the vendor ship fixes? A vendor that cannot answer is a risk regardless of which algorithm it claims to support.
+
 ### 20.4 Early deployment
 
 Google's Chrome team announced hybrid post-quantum key exchange in 2023 ([Chromium Blog](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html)), and some servers and middleboxes failed on the larger ClientHello. The lesson: deployment exposes ecosystem bugs that no specification review finds; staged rollout and monitoring are essential.
+
+Most failures came from software that had assumed handshake messages would stay small. Browsers rolled out gradually, measured failures and worked with server operators to fix them. HCU follows the same pattern on a smaller scale with its pilot branches.
 
 ### 20.5 Worked example
 
@@ -1241,11 +1259,15 @@ HCU's vendor proposes enabling pure ML-KEM on branch VPNs immediately. Applying 
 
 Write a half-page lesson card for one of the four cases: what happened, primary source, what it changed in practice, and one question it raises for HCU.
 
+A good card is short enough to read in a minute and links to the primary source, not a summary of it. The practical change should be specific, such as the move to hybrid designs or stricter timing tests. Your question for HCU should be one the team could actually answer, for example which of its vendors' products still use a vulnerable library version.
+
 ### 20.7 Common errors and limits
 
 - Concluding from SIKE that all PQC is fragile; ML-KEM rests on a different, well-studied problem family.
 - Treating resource estimates as predictions of dates.
 - Assuming a final standard implies safe implementations.
+
+SIKE and Rainbow were broken through their own structures; ML-KEM's lattice problems have a long research history and have resisted analysis. That is evidence, not proof, which is why hybrids are used during transition. Resource estimates show what an algorithm would need, not when someone will build it. Implementations need separate review and testing, as KyberSlash showed for a sound design.
 
 ### Exercises
 
@@ -1272,9 +1294,13 @@ You will (1) build a system model listing components, interfaces and cryptograph
 
 A system model for quantum security lists, for each component, its cryptographic functions (key establishment, authentication, data protection, code integrity), the algorithms used, the parameters, the library or hardware implementing them, the owner and the *change mechanism* — configuration, software update, vendor release or hardware replacement. The model extends the data-flow diagram of Chapter 16 with the facts needed to estimate effort.
 
+The change mechanism is often the deciding fact, since it sets how long a change takes. HCU fills it in owner by owner.
+
 ### 21.2 Exposure classes
 
 Classify each function: *HNDL-exposed* (classical key establishment protecting data whose confidentiality outlasts plausible *z*); *forge-later-exposed* (classical signatures whose trust must last beyond *z*, or that cannot be quickly replaced); *Grover-adequate* (symmetric and hash functions with sufficient sizes); and *unknown*. The unknown class is not a rounding error; it often contains the hardest items, such as embedded devices.
+
+HCU records the reason for each classification so it can be reviewed. A function moves out of unknown only when evidence arrives, such as a configuration export or a tested vendor statement.
 
 ### 21.3 Comparing alternatives
 
@@ -1284,15 +1310,21 @@ With the model, alternatives become comparable. For HCU's branch VPN: (a) upgrad
 
 HCU models its card terminal estate: 3,000 terminals, ECDH key exchange to the payment switch, RSA-signed firmware, vendor-controlled updates, hardware boot ROM verifying RSA only. Exposure: key exchange is HNDL-exposed only for the short-lived card data (low priority); firmware signing is forge-later-exposed and the boot ROM cannot change, so the realistic path is replacement at end of life with a procurement requirement for post-quantum firmware signing.
 
+The model turns a hard technical problem into a planning decision with a known date: replacement cycles are already in HCU's budget, so adding a requirement to the next purchase costs little now and avoids an unplanned replacement later.
+
 ### 21.5 Practical activity
 
 Model three HCU components (web gateway, internal CA, ATM) in a table with function, algorithm, implementation, owner, change mechanism and exposure class.
+
+For each component, the change mechanism should name who acts: HCU staff changing configuration, a vendor shipping an update or a hardware replacement. Mark the exposure class with a short reason. If you cannot determine an entry, write unknown rather than guessing, and note what evidence would settle it. Compare your table with a classmate's; disagreements usually reveal an assumption one of you made silently.
 
 ### 21.6 Common errors and limits
 
 - Omitting change mechanisms, which hides the true effort.
 - Treating unknown items as low risk.
 - Modelling only servers and forgetting devices and partners.
+
+The change mechanism sets the effort: a configuration change might take a day, while a hardware replacement takes years. Unknown items are often unknown because they are old or closed, which makes them more likely to be hard, not less. Devices and partners carry much of the risk in a financial estate, from card terminals to partner bank links, and leaving them out makes the model look simpler than reality.
 
 ### Exercises
 
@@ -1347,6 +1379,8 @@ hybrid key exchange present on: ['web-gateway']
 
 Six synthetic assets yield five quantum-vulnerable uses and one asset (17 %) whose cryptography is unknown. The unknown card terminal needs a vendor inquiry before it can be planned.
 
+The lab combines evidence from more than one source for each asset and prints a summary with the share of unknowns. Each row keeps its source, so a reader can see which findings rest on observation and which on vendor statements. Running the same script on next quarter's data will show whether the unknown share is falling, which is itself a useful progress indicator for the migration.
+
 ### 22.3 Dependencies
 
 Cryptography is inherited. An application uses a framework that uses a TLS library that uses the OS provider; a SaaS vendor terminates TLS on a CDN that HCU does not control; a partner's API dictates which algorithms HCU's client must support. Draw dependency chains for high-priority flows and identify the *controlling party* for each link — the one that must act for the algorithm to change. A migration is complete for a flow only when every link has moved.
@@ -1360,6 +1394,8 @@ HCU's mobile banking flow depends on: the phone OS TLS stack (platform vendor), 
 - Relying on one evidence source.
 - Recording algorithms without evidence source and date.
 - Declaring a flow migrated when only HCU's segment has changed.
+
+Each source misses something: network sensors miss certificates in TLS 1.3, configuration may differ from behaviour, vendor statements may be out of date. Combining them, with each row labelled, gives a fuller and more honest picture. A flow is migrated only when every party in its chain has changed, so record the state of each link separately rather than marking the flow complete when HCU's part is done.
 
 ### Exercises
 
@@ -1417,6 +1453,8 @@ toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
 
 To encrypt a bit, add a random subset of the rows; the accumulated noise stays small, while the bit is placed at *q*/2. The decryptor removes the *s*-dependent part and checks whether the remainder is nearer 0 or *q*/2. The parameters here are toys — a 16-dimensional secret is easy to recover — and serve only to show the mechanism.
 
+Running the lab several times with different random choices shows that decryption still succeeds, because the noise stays below the threshold.
+
 ### 23.3 From LWE to ML-KEM
 
 ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) uses Module-LWE with 256-coefficient polynomials, compresses ciphertexts, and wraps the encryption in a transform (a variant of Fujisaki–Okamoto) so that decapsulation re-encrypts and checks the ciphertext, which protects against chosen-ciphertext attacks. The interface is a KEM: KeyGen produces an encapsulation key and decapsulation key; Encaps produces a ciphertext and a 32-byte shared secret; Decaps recovers the secret. Parameter sets ML-KEM-512, -768 and -1024 target NIST categories 1, 3 and 5. Encapsulation keys are 800, 1,184 and 1,568 bytes; ciphertexts 768, 1,088 and 1,568 bytes.
@@ -1425,11 +1463,15 @@ ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) uses Module-LWE with 
 
 HCU chooses ML-KEM-768 for hybrid key exchange because category 3 offers a margin above AES-128-equivalent security, it is the parameter set used by the widely deployed X25519MLKEM768 TLS group, and its 1,184-byte key fits typical handshakes. ML-KEM-1024 is reserved for any partner whose rules demand category 5.
 
+The choice is recorded with its reasons so it can be revisited if guidance changes. Larger keys and ciphertexts were measured in the lab before the choice was confirmed, and the branch links handled them without changes to the network.
+
 ### 23.5 Common errors and limits
 
 - Thinking the toy lab's parameters are secure.
 - Forgetting that ML-KEM is a KEM, not a general encryption function.
 - Choosing parameters by size alone without considering policy requirements.
+
+The toy parameters are chosen so that a reader can follow the arithmetic, which means an attacker could too. A KEM produces a shared secret that a symmetric cipher then uses; it does not encrypt arbitrary messages directly. Parameter choice depends on security category, policy and protocol support, as well as size. A smaller set may suit most uses, but a partner's rules can require a larger one regardless of performance.
 
 ### Exercises
 
@@ -1456,6 +1498,8 @@ You will (1) list the main control families for quantum risk; (2) explain hybrid
 
 Controls for quantum risk fall into five families. *Algorithm controls* deploy post-quantum or hybrid algorithms. *Data controls* minimise, shorten or re-encrypt data so that less is exposed. *Key-management controls* add symmetric pre-shared keys or shorten key lifetimes. *Architecture controls* centralise cryptographic policy for agility. *Governance controls* include inventory ownership, procurement clauses and transition timelines.
 
+Most HCU exposures need controls from more than one family. Governance controls are the slowest to show effect but keep the other families moving over the years a migration takes.
+
 ### 24.2 Hybrid key establishment
 
 A PQ/T hybrid scheme, in the terminology of [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html), combines a post-quantum and a traditional component so that the result is secure if either component is. In TLS, X25519MLKEM768 ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)) concatenates an ML-KEM-768 shared secret with an X25519 shared secret and feeds both into the key schedule. Hybrids hedge two risks at once: a future quantum computer (breaking X25519) and an unexpected classical break or implementation flaw in the new scheme. [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) discusses combining KEMs and approved key-combination methods.
@@ -1464,23 +1508,33 @@ A PQ/T hybrid scheme, in the terminology of [RFC 9794](https://www.rfc-editor.or
 
 For HNDL exposure, deploy hybrid key establishment on flows carrying long-lived data and minimise what those flows carry. For forge-later exposure, plan post-quantum signatures, starting with long-lived trust anchors and code signing, and procure devices that support them; where signatures must remain verifiable for decades, also plan archive timestamp renewal. For unknown items, the control is investigation: a vendor inquiry or lab test.
 
+HCU's plan lists each exposure with the control chosen and the evidence that will show it worked.
+
 ### 24.4 Residual risk
 
 No control removes all risk. After hybrid key exchange on the branch VPN, residual risks include classical authentication (forge-later, lower urgency), unknown devices behind branches and the chance that a configuration silently falls back to classical-only. State residual risk explicitly with an owner and review date; a migration report that claims "quantum-safe" without residual risk is not credible.
+
+HCU monitors handshakes to detect silent fallback to classical-only groups. Each fallback is logged and reviewed by the network team within a week.
 
 ### 24.5 Worked example
 
 HCU's control plan for the mortgage archive: (1) hybrid IKEv2 for branch transfers; (2) stop sending scanned documents nightly, sending them once on completion; (3) re-wrap archive keys with ML-KEM-based key transport inside the HSM when the HSM supports it; (4) residual risk: RSA-signed archive timestamps, owner Records Management, review annually.
 
+Item two is a data control that reduces exposure immediately and costs almost nothing. Item three depends on a vendor and is therefore dated by the HSM roadmap rather than by HCU. Item four names an owner for a risk that cannot yet be closed. Together they show that a credible plan mixes control families and admits what remains.
+
 ### 24.6 Practical activity
 
 Produce a control table for three HCU exposures with control family, specific control, expected effect, owner and residual risk.
+
+Choose exposures of different kinds, such as one HNDL-exposed flow, one forge-later trust anchor and one unknown device. Expected effect should be measurable, for example the share of a flow's traffic using hybrid key exchange. Name a real role as owner, not a team. Residual risk should state what stays exposed after the control and when it will be reviewed, so the table records what remains open as well as what was done.
 
 ### 24.7 Common errors and limits
 
 - Claiming hybrid key exchange makes authentication post-quantum.
 - Ignoring data controls, which are often the cheapest.
 - Omitting residual risk.
+
+Hybrid key exchange protects session secrets; signatures and certificates remain classical until changed separately. Data controls such as sending less, sending it less often or deleting it sooner often cut exposure faster and more cheaply than any algorithm change. Omitting residual risk makes a plan look finished when it is not, and readers who notice the gap stop trusting the rest of the report.
 
 ### Exercises
 
