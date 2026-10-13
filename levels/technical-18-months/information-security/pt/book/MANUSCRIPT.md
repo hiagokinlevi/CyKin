@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 048, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–9 de 18 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 10–18 (EX037–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que aprendem a apoiar a segurança da informação do dia a dia num pequeno varejista com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam, por tipo, os dispositivos sintéticos sem atualização há mais de trinta dias e pontuam e-mails sintéticos com quatro sinais de phishing, comparando com rótulos conhecidos. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO/IEC 27000:2026; Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](htt
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-
-Capítulos 10–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-10), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -489,11 +487,407 @@ Esconder um erro com dados impede a organização de limitar o dano.
 
 - **EX036 — Resposta ao erro.** O que a equipe deve fazer depois de um e-mail enviado ao destinatário errado? *Rubrica:* 3 = comunicá-lo imediatamente;; 2 = correto;; 1 = escondê-lo;; 0 = nenhuma.
 
+<a id="ch-10"></a>
+
+## Capítulo 10 — Mantendo os dados seguros
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger os dados nos dispositivos e nas pastas; (2) usar a criptografia onde for necessária; (3) compartilhar arquivos com segurança.
+
+### 10.1 Pastas e permissões
+
+Chloe ajuda o Sr. Doyle a organizar as pastas compartilhadas da Westfield. Ela lista cada pasta com quem precisa de acesso. As faturas dos fornecedores vão apenas para a equipe do escritório; as escalas, para os gerentes; as imagens de marketing, para todos. O Sr. Doyle ajusta as permissões de acordo. Chloe confere depois, entrando com uma conta de teste de caixa e confirmando que ela não consegue abrir a pasta das faturas. Ela aprende a conferir que uma mudança funcionou em vez de presumir que funcionou. Ela registra cada pasta, suas novas permissões e a data do teste, para que o Sr. Doyle tenha um registro claro caso alguém pergunte.
+
+### 10.2 Criptografia
+
+A criptografia embaralha os dados para que apenas quem tem a chave consiga lê-los. Chloe verifica que os notebooks da Westfield usam criptografia de disco completo, para que um notebook furtado não exponha dados. Dois notebooks mais antigos não estão criptografados. O Sr. Doyle ativa a criptografia e guarda as chaves de recuperação com segurança. Chloe também verifica que a loja on-line usa uma conexão criptografada, indicada pelo cadeado no navegador. Ela aprende que a criptografia protege os dados se um dispositivo for perdido. Ela registra na lista de dispositivos quais notebooks estão criptografados.
+
+### 10.3 Compartilhamento de arquivos
+
+Os funcionários às vezes precisam enviar arquivos a fornecedores ou contadores. Chloe descobre que alguns usam e-mail pessoal ou sites gratuitos de compartilhamento de arquivos. Ela recomenda usar o serviço de compartilhamento aprovado da Westfield, com links que expiram e exigem que o destinatário entre com login. Ela escreve um guia curto. O Sr. Appiah explica que as ferramentas aprovadas mantêm as cópias sob o controle da organização e permitem remover o acesso depois. O Sr. Doyle envia o guia a toda a equipe do escritório com uma breve explicação e pede que parem de usar o e-mail pessoal para arquivos de trabalho. Chloe se oferece para ajudar quem achar o serviço difícil.
+
+### 10.4 Mesas e telas limpas
+
+Chloe percebe papéis com dados de clientes deixados nas mesas do escritório e telas deixadas desbloqueadas. Ela sugere uma rotina simples: bloquear a tela ao sair da mesa e guardar os papéis numa gaveta trancada no fim do dia. Ela ajuda a configurar as telas para bloquearem automaticamente depois de alguns minutos. Pequenas rotinas como essas reduzem a chance de as informações serem vistas por visitantes ou clientes. Ela confere o escritório de novo duas semanas depois e encontra as mesas limpas e as telas bloqueadas. A gerente do escritório diz que a rotina leva só um minuto no fim de cada dia.
+
+### Exemplo resolvido
+
+Chloe ajusta o acesso às pastas conforme a necessidade e o testa, encontra dois notebooks sem criptografia, recomenda um serviço de compartilhamento aprovado e promove mesas e telas limpas.
+
+> **Caso sintético.** Os exemplos são sintéticos.
+
+### Erros e limites
+
+Presumir que uma mudança de permissão funcionou sem testá-la pode deixar dados expostos.
+
+### Exercícios
+
+- **EX037 — Conta de teste.** Como Chloe confirma a mudança na pasta? *Rubrica:* 3 = entrando com uma conta de teste de caixa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX038 — Notebooks sem criptografia.** Quantos notebooks não estavam criptografados? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX039 — Serviço de compartilhamento.** O que Chloe recomenda para enviar arquivos? *Rubrica:* 3 = o serviço aprovado com links que expiram;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX040 — Configuração da tela.** Que configuração ajuda com as telas desbloqueadas? *Rubrica:* 3 = bloqueio automático depois de alguns minutos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Noções básicas de redes sem fio e de rede
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever a rede de uma pequena empresa; (2) separar as redes sem fio de visitantes e da equipe; (3) identificar dispositivos desconhecidos.
+
+### 11.1 A rede
+
+Chloe desenha a rede de um centro da Westfield: um roteador de internet, um switch, os caixas, o notebook do escritório, os tablets da equipe, uma rede sem fio de visitantes para os clientes do café e as câmeras. O Sr. Appiah pede que ela identifique quais dispositivos lidam com pagamentos com cartão, porque esses precisam de mais proteção. Ela marca os caixas e os terminais de pagamento. Ela também marca a rede sem fio de visitantes e as câmeras e lista cada dispositivo com sua localização. O Sr. Doyle confere o diagrama com a lista de dispositivos conectados do roteador e o considera completo, exceto por uma impressora, que ela acrescenta. Ele guarda uma cópia do diagrama para a empresa de suporte.
+
+### 11.2 Redes sem fio de visitantes e da equipe
+
+Os clientes usam a rede sem fio gratuita de visitantes no café. Chloe verifica que a rede de visitantes está separada da rede da equipe, para que o dispositivo de um cliente não alcance os caixas nem os tablets. Num centro, a rede de visitantes usa a mesma senha da rede sem fio da equipe, e as duas se conectam à mesma rede. O Sr. Doyle as separa e troca as senhas. Chloe testa a separação a partir de um notebook da escola conectado à rede de visitantes. O teste confirma que a rede de visitantes não alcança mais nenhum dispositivo da equipe.
+
+### 11.3 Dispositivos desconhecidos
+
+Chloe examina a lista de dispositivos conectados ao roteador de um centro, com a permissão do Sr. Doyle. Ela encontra um dispositivo que não consegue identificar. O Sr. Doyle descobre que é uma caixa de som inteligente que um funcionário trouxe para ouvir música. Ela estava conectada à rede da equipe. Ele a passa para a rede de visitantes. Chloe aprende que dispositivos desconhecidos nas redes da equipe devem sempre ser verificados. Ela sugere uma verificação mensal dos dispositivos conectados em cada centro, e o Sr. Doyle concorda em fazê-la durante as visitas regulares. Ele também lembra a equipe de perguntar antes de conectar dispositivos pessoais.
+
+### 11.4 Configurações do roteador
+
+Chloe confere as configurações do roteador com o Sr. Doyle: a senha de administrador foi trocada em relação à padrão, a administração remota pela internet está desligada e o software do roteador está atualizado. O roteador de um centro ainda tem a senha padrão. O Sr. Doyle a troca. O Sr. Appiah explica que as senhas padrão são publicadas na internet e estão entre as primeiras coisas que os atacantes testam. Chloe registra as configurações de cada roteador nas notas de rede, e o Sr. Doyle confere os outros centros e confirma que seus roteadores estão seguros. Ele planeja conferir as configurações de novo depois de qualquer atualização de software.
+
+### Exemplo resolvido
+
+Chloe desenha a rede de um centro, encontra as redes sem fio de visitantes e da equipe compartilhando rede e senha, identifica a caixa de som inteligente de um funcionário e encontra um roteador com senha padrão.
+
+> **Caso sintético.** As redes são sintéticas.
+
+### Erros e limites
+
+Dispositivos de visitantes na rede da equipe podem alcançar os caixas e os tablets.
+
+### Exercícios
+
+- **EX041 — Dispositivos de pagamento.** Quais dispositivos lidam com pagamentos com cartão? *Rubrica:* 3 = caixas e terminais de pagamento;; 2 = correto;; 1 = outros;; 0 = nenhuma.
+
+- **EX042 — Problema da rede sem fio.** O que estava errado num centro? *Rubrica:* 3 = visitantes e equipe compartilhavam rede e senha;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX043 — Dispositivo desconhecido.** Qual era o dispositivo desconhecido? *Rubrica:* 3 = a caixa de som inteligente de um funcionário;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX044 — Senha padrão do roteador.** Por que trocar as senhas padrão dos roteadores? *Rubrica:* 3 = são publicadas na internet;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Backups e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar por que os backups importam; (2) verificar que os backups funcionam; (3) saber o que fazer quando dados são perdidos.
+
+### 12.1 Por que os backups importam
+
+Os backups são cópias dos dados guardadas para que possam ser restauradas depois de um erro, de uma falha de dispositivo ou de um ataque como o ransomware, que bloqueia os arquivos e exige pagamento. Chloe aprende que um bom backup é guardado separado do original, para que um único problema não destrua os dois. Os dados da loja on-line e do programa de fidelidade da Westfield têm backup feito pelo provedor de nuvem. Os arquivos do escritório têm backup toda noite num serviço em nuvem. O Sr. Doyle confirma que os backups rodam todas as noites e guardam cópias por trinta dias.
+
+### 12.2 Teste dos backups
+
+Um backup só é útil se puder ser restaurado. Chloe pergunta ao Sr. Doyle quando uma restauração foi testada pela última vez. Ele não tem certeza. Juntos, eles restauram uma pasta de amostra do backup em nuvem num notebook de teste e comparam os arquivos com os originais. Todos os arquivos abrem corretamente. Chloe registra o teste com a data, a pasta e o resultado e sugere repeti-lo a cada três meses. O Sr. Doyle acrescenta o teste trimestral ao calendário. Chloe observa que foi a primeira vez que alguém conferiu que o backup realmente funcionava.
+
+### 12.3 Lacunas
+
+Chloe confere o que não tem backup. A gerente do escritório guarda algumas planilhas na área de trabalho do notebook, fora das pastas com backup. Os tablets guardam fotos da conferência de estoque que não têm backup, mas não são necessárias depois que o estoque é atualizado. Chloe ajuda a gerente do escritório a mover as planilhas para a pasta com backup. Ela aprende que as pessoas muitas vezes salvam arquivos em lugares convenientes fora dos backups. A gerente do escritório concorda em salvar os novos arquivos na pasta com backup daqui em diante. Chloe confere os outros notebooks do escritório e não encontra outros arquivos fora dos backups.
+
+### 12.4 Quando dados são perdidos
+
+Chloe escreve passos simples para os funcionários que perdem um arquivo ou suspeitam de ransomware: parar de usar o dispositivo, não tentar consertá-lo por conta própria, ligar para o Sr. Doyle e anotar o que aconteceu. Ela aprende que comunicar rápido e não fazer alterações ajuda na recuperação. O Sr. Appiah explica que tentativas bem-intencionadas de consertar as coisas às vezes espalham o problema ou destroem as evidências do que aconteceu. Ela imprime os passos num cartão para cada escritório e cada caixa. O Sr. Doyle acrescenta seu telefone e o da empresa de suporte, para que a equipe consiga falar com alguém mesmo quando ele estiver fora.
+
+### Exemplo resolvido
+
+Chloe aprende por que os backups separados importam, testa uma restauração com o Sr. Doyle, move planilhas para pastas com backup e escreve passos para a perda de dados ou o ransomware.
+
+> **Caso sintético.** Os backups são sintéticos.
+
+### Erros e limites
+
+Os arquivos salvos fora das pastas com backup se perdem se o dispositivo falhar.
+
+### Exercícios
+
+- **EX045 — Significado de ransomware.** O que o ransomware faz? *Rubrica:* 3 = bloqueia os arquivos e exige pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX046 — Frequência dos testes.** Com que frequência as restaurações devem ser testadas? *Rubrica:* 3 = a cada três meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX047 — Lacuna no backup.** Quais arquivos estavam fora dos backups? *Rubrica:* 3 = planilhas na área de trabalho da gerente do escritório;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Primeiro passo.** Qual é o primeiro passo se houver suspeita de ransomware? *Rubrica:* 3 = parar de usar o dispositivo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Comunicando problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) reconhecer os problemas de segurança que precisam ser comunicados; (2) escrever uma comunicação de problema clara; (3) acompanhar até o problema ser encerrado.
+
+### 13.1 O que comunicar
+
+Chloe aprende que a equipe de suporte muitas vezes percebe os problemas primeiro: um e-mail suspeito, um dispositivo com comportamento estranho, uma porta deixada destrancada ou uma lista de clientes no lugar errado. O Sr. Appiah explica que comunicar cedo permite que a pessoa certa aja antes que o dano cresça. Na Westfield, os problemas vão para o Sr. Doyle por e-mail ou telefone, ou para a empresa de suporte se ele estiver fora. Chloe anota os contatos na contracapa do caderno para tê-los sempre à mão. Ela também salva os dois números no celular.
+
+### 13.2 Uma comunicação clara
+
+Uma boa comunicação diz o que foi visto, onde, quando, quem é afetado e o que já foi feito. Chloe pratica escrever comunicações a partir de cenários. Seu primeiro rascunho diz que um notebook está estranho. O Sr. Appiah pergunta o que exatamente aconteceu. Ela o reescreve: às 10h15 de terça-feira, o notebook do escritório do centro norte mostrou uma mensagem exigindo pagamento, e a usuária o desligou e ligou para ela. O detalhe ajuda quem recebe a comunicação a agir depressa. O Sr. Appiah avalia a comunicação reescrita como clara e útil.
+
+### 13.3 Uma comunicação real
+
+Durante o estágio, uma funcionária do caixa conta a Chloe que um cliente pediu para ligar o celular num caixa para carregá-lo. A funcionária recusou, mas o cliente insistiu. Chloe comunica o fato ao Sr. Doyle com o horário, o centro e uma descrição. O Sr. Doyle confere as portas do caixa e coloca tampas nas que não são usadas. Ele agradece à funcionária do caixa e a Chloe. Ela aprende que as comunicações sobre tentativas que falharam continuam valiosas. Chloe acrescenta o evento à sua lista de comunicações, com a data e o desfecho.
+
+### 13.4 Acompanhamento
+
+As comunicações não devem ser esquecidas depois de enviadas. Chloe mantém uma lista simples das comunicações que fez, com a data e a situação atual. Ela confere com o Sr. Doyle toda semana até que cada uma seja encerrada. Uma comunicação sobre uma câmera quebrada fica parada por duas semanas, até que ela o lembre. O Sr. Appiah observa que acompanhar com educação faz parte do trabalho, porque pessoas ocupadas às vezes perdem de vista os problemas menores. A câmera é consertada na semana seguinte, e Chloe marca a comunicação como encerrada, com a data. Sua lista agora mostra cada comunicação e seu desfecho.
+
+### Exemplo resolvido
+
+Chloe aprende o que comunicar, reescreve uma comunicação vaga com horário, local e detalhes, comunica um pedido suspeito de carregar um celular num caixa e acompanha as comunicações até o encerramento.
+
+> **Caso sintético.** As comunicações são sintéticas.
+
+### Erros e limites
+
+Comunicações vagas atrasam as pessoas que precisam agir com base nelas.
+
+### Exercícios
+
+- **EX049 — Conteúdo da comunicação.** O que uma boa comunicação deve incluir? *Rubrica:* 3 = o quê, onde, quando, quem é afetado, ações tomadas;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
+
+- **EX050 — Comunicação reescrita.** Que detalhes Chloe acrescentou? *Rubrica:* 3 = horário, centro e mensagem de pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX051 — Pedido no caixa.** O que um cliente pediu para fazer? *Rubrica:* 3 = ligar um celular num caixa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX052 — Acompanhamento.** Com que frequência Chloe confere as comunicações abertas? *Rubrica:* 3 = toda semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Documentação simples
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever instruções simples que outras pessoas consigam seguir; (2) manter registros das mudanças; (3) guardar os documentos onde possam ser encontrados.
+
+### 14.1 Por que documentar
+
+O Sr. Doyle é a única pessoa de TI da Westfield. Quando ele está de férias, a empresa de suporte e os gerentes dos centros precisam saber como as coisas estão configuradas. Chloe aprende que uma documentação simples, escrita com clareza, permite que outras pessoas ajudem quando o responsável habitual está fora. O Sr. Appiah explica que a documentação é um controle de segurança, porque os erros acontecem quando as pessoas adivinham como os sistemas funcionam e mudam a configuração errada. Chloe pergunta ao Sr. Doyle sobre quais tarefas a empresa de suporte mais liga para ele quando está fora. Ele cita três, e ela decide documentá-las primeiro, porque ajudariam mais gente.
+
+### 14.2 Redação das instruções
+
+Chloe escreve instruções passo a passo para três tarefas: configurar um tablet novo, redefinir o código de um funcionário do caixa e verificar que o backup noturno rodou. Cada uma tem um título, a finalidade, passos numerados com capturas de tela e o que fazer se algo der errado. Ela pede a uma gerente de centro que siga as instruções do tablet. A gerente trava num passo, por isso Chloe acrescenta uma captura de tela que faltava. Ela aprende que o melhor teste das instruções é outra pessoa usá-las. Depois disso, a gerente conclui a tarefa sem ajuda.
+
+### 14.3 Registros de mudanças
+
+Chloe inicia um log de mudanças simples para a Westfield: data, o que mudou, por quê, quem fez a mudança e como desfazê-la. Ela registra a troca da senha do roteador, as mudanças de permissão das pastas e a separação da rede sem fio de visitantes. O Sr. Doyle acha o log útil quando uma gerente de centro pergunta por que não consegue mais ver a pasta das faturas. O log responde à pergunta em segundos. Ela acrescenta uma coluna que mostra se cada mudança foi testada depois e a preenche para as mudanças feitas até então. O Sr. Doyle decide continuar usando o log depois do estágio e pede à empresa de suporte que registre nele também as mudanças dela.
+
+### 14.4 Guarda dos documentos
+
+Chloe guarda as instruções e o log de mudanças numa pasta compartilhada que os gerentes e a empresa de suporte podem abrir, mas não os clientes nem as contas dos caixas. Ela evita escrever senhas nos documentos e remete ao gerenciador de senhas. Ela acrescenta uma data e um responsável a cada documento. O Sr. Appiah observa que os documentos sem data deixam os leitores sem saber se ainda estão corretos. Ela cria um documento de índice que lista cada instrução, sua finalidade, seu responsável e sua data, para que o leitor encontre depressa a instrução certa. O Sr. Doyle confere as permissões da pasta e confirma que apenas os gerentes e a empresa de suporte conseguem abri-la.
+
+### Exemplo resolvido
+
+Chloe escreve e testa três conjuntos de instruções, inicia um log de mudanças que responde à pergunta de uma gerente e guarda documentos datados e sem senhas.
+
+> **Caso sintético.** Os documentos são sintéticos.
+
+### Erros e limites
+
+Escrever senhas nos documentos as expõe a todos os leitores.
+
+### Exercícios
+
+- **EX053 — Tarefas documentadas.** Cite uma tarefa que Chloe documenta. *Rubrica:* 3 = redefinir o código de um funcionário do caixa;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX054 — Teste das instruções.** Quem testa as instruções do tablet? *Rubrica:* 3 = uma gerente de centro;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+
+- **EX055 — Uso do log de mudanças.** Que pergunta o log de mudanças responde? *Rubrica:* 3 = por que uma gerente perdeu o acesso às faturas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX056 — Datas nos documentos.** Por que acrescentar datas aos documentos? *Rubrica:* 3 = os leitores sabem se estão atualizados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Trabalhando com o responsável de TI
+
+### Objetivos de aprendizagem
+
+Você vai (1) receber orientações de um colega mais experiente; (2) pedir ajuda de forma adequada; (3) trabalhar dentro de sua autoridade.
+
+### 15.1 Receber orientações
+
+Durante o estágio, Chloe trabalha sob a orientação do Sr. Doyle. Toda segunda-feira, ele lhe dá uma lista de tarefas para a semana: verificações de contas, atualizações de dispositivos, documentação e visitas aos centros. Ela confirma que entende cada tarefa e pergunta sobre as prioridades. O Sr. Appiah explica que um acordo claro no início evita esforço desperdiçado e mal-entendidos, sobretudo quando o colega mais experiente está ocupado. Ela escreve a lista no caderno, com a prioridade ao lado de cada tarefa, e marca cada uma quando termina. No fim da semana, ela envia ao Sr. Doyle um breve resumo do que foi concluído e do que fica para a semana seguinte, o que, segundo ele, lhe poupa tempo.
+
+### 15.2 Pedir ajuda
+
+Chloe às vezes encontra problemas que não consegue resolver, como um caixa que se recusa a conectar depois de uma atualização. Ela tenta primeiro os passos documentados e depois liga para o Sr. Doyle com um resumo claro do que tentou. Ele a orienta na correção. O Sr. Appiah observa que pedir ajuda cedo, com um resumo claro, é uma habilidade profissional, enquanto lutar em silêncio por horas desperdiça tempo e pode piorar as coisas. Ela acrescenta a correção à pasta de instruções, para que a próxima pessoa consiga resolver o mesmo problema sem ligar.
+
+### 15.3 Trabalhar dentro da autoridade
+
+Chloe aprende que algumas ações precisam da aprovação do Sr. Doyle: mudar configurações do firewall, dar acesso de administrador a alguém ou apagar contas. Quando uma gerente de centro pede que ela dê a uma nova supervisora acesso à pasta das faturas, ela explica que precisa conferir primeiro com o Sr. Doyle. Ele confirma que a supervisora não precisa desse acesso. Chloe aprende que dizer ainda não, com educação, protege tanto a ela quanto a empresa. A gerente do centro aceita a resposta, e o Sr. Doyle explica que a supervisora pode pedir à gerente do escritório qualquer fatura específica de que precise. Chloe registra o pedido e a decisão no log de mudanças.
+
+### 15.4 Retorno
+
+O Sr. Doyle dá retorno a Chloe a cada duas semanas. Ele elogia suas comunicações claras e a documentação e sugere que ela se manifeste mais cedo quando uma tarefa for demorar mais do que o previsto. Chloe registra o retorno no caderno e define a meta de avisá-lo em até um dia se uma tarefa estiver atrasando. O Sr. Appiah observa que o retorno regular ajuda os estudantes a melhorar mais depressa do que esperar até o fim. Na reunião de retorno seguinte, o Sr. Doyle observa que ela o avisou cedo sobre uma tarefa atrasada e que o atraso não causou problemas.
+
+### Exemplo resolvido
+
+Chloe confirma as tarefas semanais, pede ajuda com um resumo claro, recusa com educação um pedido de acesso não aprovado e age com base no retorno.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Conceder acesso sem aprovação pode dar às pessoas dados que elas não deveriam ver.
+
+### Exercícios
+
+- **EX057 — Lista semanal.** Quando o Sr. Doyle passa as tarefas? *Rubrica:* 3 = toda segunda-feira;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX058 — Como pedir ajuda.** O que Chloe faz antes de ligar pedindo ajuda? *Rubrica:* 3 = tenta os passos documentados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX059 — Aprovação necessária.** Cite uma ação que precisa de aprovação. *Rubrica:* 3 = dar acesso de administrador;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Meta do retorno.** Que meta Chloe define? *Rubrica:* 3 = avisá-lo em até um dia se uma tarefa atrasar;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Prática no local de trabalho
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as habilidades ao longo de um estágio completo; (2) lidar com situações de contato com os clientes; (3) refletir sobre o que aprendeu.
+
+### 16.1 O estágio
+
+Chloe passa dez semanas na Westfield, dois dias por semana, circulando entre os centros. Ela confere dispositivos, ajuda a equipe com problemas de entrada nos sistemas, atualiza a documentação e apoia o Sr. Doyle em projetos. Ela vê que a movimentada temporada de primavera deixa a equipe impaciente com qualquer coisa que atrase os caixas. Ela aprende a agendar o trabalho para horários mais tranquilos, como o início da manhã, e a explicar brevemente o que está fazendo e por quê. Ela mantém um breve log diário das tarefas, dos centros visitados e dos problemas encontrados, o que a ajuda a escrever o relatório de estágio e a lembra de lições que de outro modo poderia esquecer.
+
+### 16.2 Momentos com os clientes
+
+Às vezes Chloe trabalha perto dos clientes. Um cliente pergunta por que a rede sem fio do café pede um endereço de e-mail. Chloe explica que é opcional e oferece a opção de acesso direto. Outro cliente pede que ela consulte seus pontos de fidelidade. Ela o encaminha com educação à equipe do caixa, porque não está autorizada a acessar as contas dos clientes. O Sr. Appiah observa que a equipe de suporte representa a empresa e precisa ficar dentro de sua função. Os dois clientes saem satisfeitos, e Chloe registra as perguntas no caderno como exemplos de como permanecer dentro da própria função.
+
+### 16.3 Um momento de segurança
+
+Durante uma visita, Chloe percebe um desconhecido numa área da equipe que diz ser do fornecedor dos caixas. Ele não tem crachá e não era esperado. Ela pede com educação que ele espere na recepção e liga para o Sr. Doyle, que confirma que nenhuma visita estava planejada. O homem vai embora. O Sr. Doyle lembra a todos os centros que as visitas de fornecedores são sempre combinadas com antecedência. Chloe aprende que a segurança física depende de funcionários dispostos a fazer perguntas. Chloe escreve uma breve comunicação do ocorrido, com o horário e uma descrição do homem.
+
+### 16.4 Reflexão
+
+Chloe escreve uma reflexão no fim do estágio. Ela observa que as tarefas técnicas muitas vezes eram simples, mas trabalhar com pessoas ocupadas exigia paciência e explicações claras. Ela se orgulha da verificação das atualizações dos dispositivos e da documentação. Ela quer melhorar seu entendimento de redes. O Sr. Appiah lê a reflexão e observa o quanto a confiança dela cresceu. Ela também anota uma coisa que faria diferente: fazer mais perguntas no início de cada tarefa, em vez de descobrir no meio do caminho que tinha entendido mal o que era necessário. O Sr. Appiah diz que esse tipo de reflexão honesta mostra maturidade.
+
+### Exemplo resolvido
+
+Chloe trabalha dez semanas entre os centros, agenda o trabalho em torno dos períodos de movimento, fica dentro de sua função com os clientes, detém um visitante inesperado e reflete sobre seu crescimento.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Deixar visitantes inesperados entrarem nas áreas da equipe sem verificação traz risco de furto ou adulteração.
+
+### Exercícios
+
+- **EX061 — Formato do estágio.** Quanto dura o estágio? *Rubrica:* 3 = dez semanas, dois dias por semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX062 — Pedido de fidelidade.** Como Chloe trata um pedido de pontos de fidelidade? *Rubrica:* 3 = encaminha o cliente à equipe do caixa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX063 — Resposta ao visitante.** O que Chloe faz com o visitante inesperado? *Rubrica:* 3 = pede que espere e liga para o Sr. Doyle;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX064 — Ponto a melhorar.** O que Chloe quer melhorar? *Rubrica:* 3 = o entendimento de redes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Avaliação prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) concluir tarefas práticas de segurança sob avaliação; (2) explicar suas ações; (3) demonstrar um trabalho seguro.
+
+### 17.1 A avaliação
+
+No fim do curso, Chloe faz uma avaliação prática no laboratório da escola. Ela tem três horas para cumprir tarefas num conjunto de máquinas virtuais que representam uma pequena empresa: criar contas com o acesso certo, encontrar dispositivos sem atualizações, identificar e-mails de phishing numa caixa postal de amostra, verificar que um backup pode ser restaurado e escrever uma comunicação de problema. Um avaliador observa e faz perguntas. O Sr. Appiah explica que a avaliação verifica tanto a habilidade técnica quanto os hábitos de trabalho seguro, por isso os estudantes devem explicar suas escolhas enquanto trabalham.
+
+### 17.2 Cumprindo as tarefas
+
+Chloe começa lendo todas as tarefas e planejando o tempo. Ela cria as contas com o acesso correto e as confere entrando com elas. Ela executa seu script de atualizações nos dados do laboratório e lista os dispositivos atrasados. Ela classifica os e-mails de amostra usando os quatro sinais de phishing e anota uma mensagem sobre a qual não tem certeza, explicando por quê. Ela restaura uma pasta de teste e compara os arquivos. Ela termina com dez minutos de sobra. Ela usa o tempo restante para conferir se falta algum detalhe na comunicação de problema.
+
+### 17.3 Explicando as ações
+
+O avaliador pergunta por que ela conferiu as contas entrando com elas. Chloe explica que conferir se uma mudança funcionou é um hábito que aprendeu no estágio. Ele pergunta o que ela faria se uma restauração falhasse. Ela explica que registraria o que aconteceu, comunicaria o fato e não apagaria o backup original. O avaliador observa que ela explica seu raciocínio com clareza e calma. Ele também pergunta como ela decidiu quais e-mails eram phishing. Ela descreve os quatro sinais e explica que marcou uma mensagem como incerta em vez de adivinhar, porque uma decisão errada, em qualquer direção, poderia causar problemas.
+
+### 17.4 Trabalho seguro
+
+A avaliação inclui um teste oculto: uma tarefa pede que ela desative uma configuração de segurança para fazer um programa rodar. Chloe para e pergunta ao avaliador se isso está aprovado, explicando o risco. Ele confirma que era um teste de julgamento. O Sr. Appiah explica depois que saber quando parar e perguntar é tão importante quanto a habilidade técnica, porque muitos incidentes começam com atalhos bem-intencionados. Chloe é aprovada nas cinco tarefas e no teste de julgamento. O retorno escrito do avaliador destaca seu hábito de conferir o próprio trabalho e de perguntar antes de tomar ações arriscadas.
+
+### Exemplo resolvido
+
+Chloe planeja e conclui cinco tarefas práticas, explica seu raciocínio e passa num teste de julgamento ao parar antes de desativar uma configuração de segurança.
+
+> **Caso sintético.** A avaliação é sintética.
+
+### Erros e limites
+
+Desativar uma configuração de segurança sem aprovação para fazer algo funcionar pode abrir riscos graves.
+
+### Exercícios
+
+- **EX065 — Tempo da avaliação.** Quanto dura a avaliação? *Rubrica:* 3 = três horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX066 — Mensagem incerta.** O que Chloe faz com um e-mail incerto? *Rubrica:* 3 = anota-o e explica por quê;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX067 — Restauração com falha.** O que ela faria se uma restauração falhasse? *Rubrica:* 3 = registrar, comunicar, manter o backup original;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX068 — Teste oculto.** Qual era o teste oculto? *Rubrica:* 3 = desativar uma configuração de segurança;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Revisão e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar o que aprendeu; (2) planejar a continuação do aprendizado; (3) entender como este curso se liga a outros.
+
+### 18.1 Olhando para trás
+
+Chloe revisa seu caderno desde o início do curso. As primeiras anotações descrevem o cumprimento de instruções; as últimas mostram que ela encontra causas, escreve documentação e faz julgamentos. Ela lista as habilidades que adquiriu: gerenciar contas, verificar atualizações com scripts, identificar phishing, proteger dados pessoais, verificar redes e backups, comunicar problemas e trabalhar com um colega mais experiente. O Sr. Appiah observa que o caderno é uma boa evidência de seu progresso. Ela compara lado a lado a primeira e a última comunicação e vê o quanto sua escrita ficou mais clara e mais específica.
+
+### 18.2 Resultados
+
+Chloe é aprovada no curso com mérito. O Sr. Doyle escreve uma carta de referência elogiando seu trabalho cuidadoso e suas comunicações claras, e a Westfield lhe oferece uma função de suporte em meio período enquanto ela continua estudando. Chloe fica contente porque seu trabalho, como a verificação das atualizações e a documentação, continua sendo usado na Westfield depois do fim do estágio. Ela também recebe um certificado que lista as habilidades práticas avaliadas. O Sr. Appiah a parabeniza e pergunta se ela visitaria os estudantes do ano seguinte para falar do estágio. Ela concorda e planeja levar exemplos de sua documentação e de seu script de atualizações, sem nenhum dado real.
+
+### 18.3 Continuação do aprendizado
+
+Chloe planeja estudar para uma certificação profissional de nível inicial e aprender mais sobre redes, que ela anotou como um ponto fraco. O Sr. Appiah sugere que ela mantenha o hábito do caderno e confira se as fontes estão atualizadas, já que as normas mudam; a ISO/IEC 27000, por exemplo, foi revisada em 2026. Ele também recomenda participar de um grupo local em que profissionais de segurança compartilham experiências. Chloe escreve um plano de aprendizado com três metas para o próximo ano: ser aprovada na certificação, concluir um curso curto de redes e conduzir um pequeno projeto de melhoria na Westfield com o apoio do Sr. Doyle.
+
+### 18.4 O próximo curso
+
+O Sr. Appiah explica que o próximo curso nesta área, governança de dados, examina quem decide como as informações são coletadas, conferidas, usadas e guardadas. Chloe observa que muitas de suas tarefas de segurança, como restringir pastas e tratar os pedidos dos clientes, dependiam de decisões sobre os dados que alguém precisou tomar antes. Ela planeja fazer o curso para entender melhor essas decisões. O Sr. Appiah acrescenta que a segurança e a governança de dados trabalham muito juntas nas pequenas empresas, em que as mesmas poucas pessoas muitas vezes tomam decisões sobre as duas. Chloe concorda que entender as duas a tornará mais útil na Westfield.
+
+### Exemplo resolvido
+
+Chloe revisa seu crescimento, é aprovada com mérito, assume uma função em meio período na Westfield e planeja a certificação, o estudo de redes e o curso de governança de dados.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Depender de fontes antigas sem conferir as edições pode espalhar orientações desatualizadas.
+
+### Exercícios
+
+- **EX069 — Resultado do curso.** Que resultado Chloe obtém? *Rubrica:* 3 = aprovação com mérito;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX070 — Oferta da Westfield.** O que a Westfield oferece a Chloe? *Rubrica:* 3 = uma função de suporte em meio período;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX071 — Ponto fraco.** Que área Chloe planeja fortalecer? *Rubrica:* 3 = redes;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX072 — Tema do próximo curso.** O que cobre o curso de governança de dados? *Rubrica:* 3 = quem decide como as informações são coletadas e usadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Chloe Martin, o Sr. Kwesi Appiah, o Harborview Technical College, a Westfield Garden Centres e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Chloe Martin, o Sr. Kwesi Appiah, o Harborview Technical College, a Westfield Garden Centres e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Dezoito meses.
 
@@ -566,6 +960,78 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em i
 **EX035.** A gerente do escritório.
 
 **EX036.** Comunicá-lo imediatamente.
+
+**EX037.** Entrando com uma conta de teste de caixa.
+
+**EX038.** Dois notebooks mais antigos.
+
+**EX039.** O serviço de compartilhamento aprovado, com links que expiram.
+
+**EX040.** O bloqueio automático da tela depois de alguns minutos.
+
+**EX041.** Os caixas e os terminais de pagamento.
+
+**EX042.** As redes sem fio de visitantes e da equipe compartilhavam a mesma rede e a mesma senha.
+
+**EX043.** A caixa de som inteligente de um funcionário.
+
+**EX044.** As senhas padrão são publicadas na internet.
+
+**EX045.** Bloqueia os arquivos e exige pagamento.
+
+**EX046.** A cada três meses.
+
+**EX047.** Planilhas na área de trabalho do notebook da gerente do escritório.
+
+**EX048.** Parar de usar o dispositivo.
+
+**EX049.** O que foi visto, onde, quando, quem é afetado e o que já foi feito.
+
+**EX050.** O horário, o centro e a mensagem que exigia pagamento.
+
+**EX051.** Ligar um celular num caixa para carregá-lo.
+
+**EX052.** Toda semana, até que cada uma seja encerrada.
+
+**EX053.** Redefinir o código de um funcionário do caixa.
+
+**EX054.** Uma gerente de centro.
+
+**EX055.** Por que uma gerente de centro não conseguia mais ver as faturas.
+
+**EX056.** Para que os leitores saibam se eles ainda estão corretos.
+
+**EX057.** Toda segunda-feira.
+
+**EX058.** Ela tenta primeiro os passos documentados.
+
+**EX059.** Dar acesso de administrador a alguém.
+
+**EX060.** Avisar o Sr. Doyle em até um dia se uma tarefa estiver atrasando.
+
+**EX061.** Dez semanas, dois dias por semana.
+
+**EX062.** Ela encaminha o cliente à equipe do caixa.
+
+**EX063.** Pede que ele espere na recepção e liga para o Sr. Doyle.
+
+**EX064.** Seu entendimento de redes.
+
+**EX065.** Três horas.
+
+**EX066.** Ela o anota e explica por que não tem certeza.
+
+**EX067.** Registrar o ocorrido, comunicá-lo e não apagar o backup original.
+
+**EX068.** Uma tarefa que pedia que ela desativasse uma configuração de segurança.
+
+**EX069.** Aprovação com mérito.
+
+**EX070.** Uma função de suporte em meio período.
+
+**EX071.** Redes.
+
+**EX072.** Quem decide como as informações são coletadas, conferidas, usadas e guardadas.
 
 <a id="references"></a>
 ## Referências
