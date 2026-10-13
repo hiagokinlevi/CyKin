@@ -46,17 +46,31 @@ You will (1) describe the endpoint estate of a multi-site clinic group; (2) expl
 
 Priya Natarajan, a postgraduate student at the fictional Westmere Polytechnic supervised by Dr Owen Hale, joins the fictional Kestrel Dental Group for her applied project. Kestrel runs six clinics with sixty workstations, a small central office and an external IT supplier. A routine audit found that several imaging workstations ran an operating system no longer receiving security updates, and that nobody could say exactly how many.
 
+Section one point one develops endpoint risk in regulated practice with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
 ### 1.2 Why unsupported systems matter
 
 When a vendor ends support, newly found flaws stay unfixed. NIST SP 800-40 Rev. 4 treats end-of-life software as a standing risk that must be replaced, isolated or formally accepted, because patching is no longer available as a control. In a clinic, the problem is sharper: imaging devices are tied to vendor software certified for a particular operating system, so upgrading is not simply a matter of pressing a button.
+
+Section one point two develops endpoint risk in regulated practice with a Westmere Polytechnic note Priya Natarajan can demo offline.
 
 ### 1.3 Patient data on endpoints
 
 Workstations at reception and in surgeries display and cache patient records and radiographs. A compromise affects confidentiality, but also availability: a clinic that cannot open its schedule or images cancels appointments. Priya therefore frames risk in terms staff recognise, such as cancelled sessions and notification duties, alongside technical terms.
 
+Section one point three develops endpoint risk in regulated practice with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section one point three, Dr Owen Hale expects endpoint claims to carry owners and dates.
+
 ### 1.4 The project question
 
 Her question is practical: within twelve months, how can Kestrel know every workstation's support status, reduce unsupported systems, and control the ones that must remain? Each part maps to a later chapter: inventory, a replacement plan, and an exception process with compensating controls.
+
+Section one point four develops endpoint risk in regulated practice with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section one point four, Dr Owen Hale expects endpoint claims to carry owners and dates.
+
+Section one point four treats the case why unsupported as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -96,13 +110,27 @@ You will (1) combine sources into one inventory; (2) record support status; (3) 
 
 Kestrel has three partial lists: the supplier's management console, a purchasing spreadsheet and the imaging vendor's install records. CIS Controls v8 Safeguard 1.1 asks for a detailed enterprise asset inventory, and 2.2 asks that software be supported or documented as an exception. Priya merges the lists by serial number, since names change when machines are reimaged.
 
+Section two point one develops building trustworthy inventory with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section two point one, Dr Owen Hale expects building claims to carry owners and dates.
+
 ### 2.2 Recording support status
 
 For each workstation she records operating system, version, the vendor's support end date and the business role. The support date comes from the vendor's published lifecycle page, recorded with the date she checked it. Workstations whose role is imaging are tagged, because their upgrade path depends on another vendor.
 
+Section two point two develops building trustworthy inventory with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section two point two, Dr Owen Hale expects building claims to carry owners and dates.
+
 ### 2.3 Coverage before conclusions
 
 Before counting unsupported systems, Priya checks that every clinic is represented. One clinic's machines were missing from the console because they had never been enrolled; she visits and records them by hand. Only then does she trust totals.
+
+Section two point three develops building trustworthy inventory with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section two point three, Dr Owen Hale expects building claims to carry owners and dates.
+
+Section two point three treats sources of truth recording as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Support status by clinic
 
@@ -131,6 +159,12 @@ clinics with none: ['Vale']
 ### 2.4 Reading the result
 
 The lab shows 12 of 60 workstations, 20 percent, on an unsupported operating system, concentrated in Harbour and North, with Vale having none. Most of the twelve are imaging or cephalometric machines. This tells Priya that the problem is mostly a vendor-dependency problem, not neglect of ordinary desktops.
+
+Section two point four develops building trustworthy inventory with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section two point four, Dr Owen Hale expects building claims to carry owners and dates.
+
+Section two point four treats sources of truth recording as testable only when evidence and ticket IDs are recorded.
 
 ### Keeping the inventory current
 
@@ -174,17 +208,39 @@ You will (1) find a vendor's certified configurations; (2) plan upgrades jointly
 
 Imaging software is certified on specific operating system versions. Running it on an uncertified version may void support. Priya asks the vendor for its current compatibility list and finds that a supported version is certified for newer software releases, but the clinic's licence covers only the old release.
 
+Section three point one develops working with clinical device vendors with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section three point one, Dr Owen Hale expects working claims to carry owners and dates.
+
 ### 3.2 Costs and timing
 
 Upgrading means a software licence upgrade, possibly new hardware for capture cards, and a visit by the vendor's engineer. Priya builds a simple cost and schedule table per machine, which shows that most can move within the year if work is batched by clinic.
+
+Section three point two develops working with clinical device vendors with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section three point two, Dr Owen Hale expects working claims to carry owners and dates.
+
+Section three point two treats certified configurations costs and as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Written commitments
 
 Promises made on the phone are easily forgotten. Priya asks the vendor to confirm in writing the target versions, prerequisites and engineer availability. These letters become evidence for the exception register and for auditors.
 
+Section three point three develops working with clinical device vendors with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section three point three, Dr Owen Hale expects working claims to carry owners and dates.
+
+Section three point three treats certified configurations costs and as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Shared responsibility
 
 NIST SP 800-53 Rev. 5 control SA-22 addresses unsupported system components, expecting replacement or documented justification. Kestrel cannot shift this duty to the vendor, but it can make the vendor's role explicit in the contract renewal, including notice periods before support ends.
+
+Section three point four develops working with clinical device vendors with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section three point four, Dr Owen Hale expects working claims to carry owners and dates.
+
+Section three point four treats certified configurations costs and as testable only when evidence and ticket IDs are recorded.
 
 ### When the vendor cannot help yet
 
@@ -228,9 +284,19 @@ You will (1) design an exception register; (2) choose compensating controls; (3)
 
 Some machines cannot be upgraded this year. An exception records that the risk is knowingly accepted for a period, by whom, and with which compensating controls. It is not permission forever; each entry has an expiry date.
 
+Section four point one develops exceptions with compensating controls with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section four point one, Dr Owen Hale expects exceptions claims to carry owners and dates.
+
+Section four point one treats what an exception is as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Compensating controls
 
 For an imaging PC that cannot be patched, Kestrel reduces exposure: place it on an isolated network segment that reaches only the image server, block internet access, remove email and web browsing, apply application allowlisting and restrict who can sign in. The CIS Benchmarks and Microsoft's App Control guidance give the configuration detail.
+
+Section four point two develops exceptions with compensating controls with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section four point two, Dr Owen Hale expects exceptions claims to carry owners and dates.
 
 ### Lab — Exception register review
 
@@ -256,9 +322,21 @@ entries 6; expired 2 ['IMG-N2', 'IMG-H2']; no compensating control 1 ['IMG-H1']
 
 Of six entries, two have expired without renewal and one has no compensating control recorded. Priya raises all three with the operations manager the same week. The expired ones are either renewed with a fresh decision or scheduled for replacement; the missing control is fixed by moving the machine onto the isolated segment.
 
+Section four point three develops exceptions with compensating controls with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section four point three, Dr Owen Hale expects exceptions claims to carry owners and dates.
+
 ### 4.4 Accountability
 
 Each exception is approved by a named manager, not the IT supplier, because accepting risk is a business decision. Approvals are reviewed quarterly.
+
+Section four point four develops exceptions with compensating controls with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section four point four, Dr Owen Hale expects exceptions claims to carry owners and dates.
+
+Section four point four treats what an exception is as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Westmere Polytechnic will not accept exceptions work without a written trail.
 
 ### Why allowlisting fits these machines
 
@@ -302,17 +380,43 @@ You will (1) apply a recognised baseline; (2) pilot changes; (3) measure complia
 
 The 48 supported desktops follow the CIS Benchmark for their Windows version at level one, adjusted with Microsoft's security baseline. Priya and the supplier review each recommendation against clinic needs, such as card readers and the practice management client.
 
+Section five point one develops hardening the ordinary desktops with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section five point one, Dr Owen Hale expects hardening claims to carry owners and dates.
+
+Section five point one treats choosing baseline piloting measuring as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Piloting
 
 Changes go first to one desktop per clinic for two weeks. The pilot finds that a screen-lock timeout of five minutes frustrates surgery staff wearing gloves; it is set to ten minutes with a lock shortcut, and the reason recorded.
+
+Section five point two develops hardening the ordinary desktops with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section five point two, Dr Owen Hale expects hardening claims to carry owners and dates.
+
+Section five point two treats choosing baseline piloting measuring as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Measuring compliance
 
 The supplier's console reports compliance per setting. Priya tracks the share of desktops fully compliant each week. Drift is investigated rather than overwritten blindly, since a drift often signals a real working need.
 
+Section five point three develops hardening the ordinary desktops with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section five point three, Dr Owen Hale expects hardening claims to carry owners and dates.
+
+Section five point three treats choosing baseline piloting measuring as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Least privilege
 
 Staff lose local administrator rights; the supplier uses separate admin accounts. This single change prevents much drift and accidental software installation.
+
+Section five point four develops hardening the ordinary desktops with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section five point four, Dr Owen Hale expects hardening claims to carry owners and dates.
+
+Section five point four treats choosing baseline piloting measuring as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Westmere Polytechnic will not accept hardening work without a written trail.
 
 ### Common recommendations
 
@@ -358,17 +462,43 @@ You will (1) schedule updates around surgeries; (2) track latency; (3) handle fa
 
 Clinics run long days and some Saturdays. Updates install overnight with restarts at 21:00, and a deadline forces a restart after five days. SP 800-40 Rev. 4 recommends planning maintenance so that patching is routine rather than an emergency.
 
+Section six point one develops patching with clinical hours in with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section six point one, Dr Owen Hale expects patching claims to carry owners and dates.
+
+Section six point one treats timing rings measuring latency as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Rings
 
 A small first ring of office machines takes updates on release day, clinics follow after three days. If the first ring shows problems, the supplier pauses the second ring.
+
+Section six point two develops patching with clinical hours in with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section six point two, Dr Owen Hale expects patching claims to carry owners and dates.
+
+Section six point two treats timing rings measuring latency as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Measuring latency
 
 Priya measures days from release to install for each desktop, and reports the share within 14 days and the slowest tail. Machines often switched off at night show up in the tail.
 
+Section six point three develops patching with clinical hours in with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section six point three, Dr Owen Hale expects patching claims to carry owners and dates.
+
+Section six point three treats timing rings measuring latency as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Failures
 
 Failed updates are grouped by cause: pending restart, low disk space, offline. Each cause gets a fix, such as Wake-on-LAN for overnight installs.
+
+Section six point four develops patching with clinical hours in with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section six point four, Dr Owen Hale expects patching claims to carry owners and dates.
+
+Section six point four treats timing rings measuring latency as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Westmere Polytechnic will not accept patching work without a written trail.
 
 ### Third-party software
 
@@ -418,17 +548,45 @@ You will (1) verify disk encryption; (2) manage recovery keys; (3) plan for thef
 
 Laptops used by the dental nurse manager and clinicians at home carry patient data. Full-disk encryption with BitLocker protects data if a device is stolen, provided recovery keys are protected and encryption is verified.
 
+Section seven point one develops encryption and device loss with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section seven point one, Dr Owen Hale expects encryption claims to carry owners and dates.
+
+Section seven point one treats why it matters verification as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Verification
 
 Priya compares console reports with a sample of devices checked by hand. Three laptops show encryption suspended after a firmware update; the supplier resumes protection and adds a weekly check.
+
+Section seven point two develops encryption and device loss with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section seven point two, Dr Owen Hale expects encryption claims to carry owners and dates.
+
+Section seven point two treats why it matters verification as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Recovery keys
 
 Keys are escrowed to the directory, and access to them is limited and logged. A key retrieval test is run for one laptop.
 
+Section seven point three develops encryption and device loss with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section seven point three, Dr Owen Hale expects encryption claims to carry owners and dates.
+
+Section seven point three treats why it matters verification as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Westmere Polytechnic will not accept encryption work without a written trail.
+
 ### 7.4 Responding to theft
 
 The loss procedure confirms encryption status, disables the account's sessions and records the event for data protection review.
+
+Section seven point four develops encryption and device loss with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section seven point four, Dr Owen Hale expects encryption claims to carry owners and dates.
+
+Section seven point four treats why it matters verification as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Westmere Polytechnic will not accept encryption work without a written trail.
 
 ### Removable media
 
@@ -478,17 +636,49 @@ You will (1) choose endpoint events; (2) centralise them; (3) review weekly.
 
 NIST SP 800-92 advises deciding what to log before collecting. Priya chooses sign-in failures, new local accounts, security software disabled and changes to the exception devices.
 
+Section eight point one develops logs that small team can with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eight point one, Dr Owen Hale expects logs claims to carry owners and dates.
+
+Section eight point one treats choosing events central collection as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Westmere Polytechnic will not accept logs work without a written trail.
+
 ### 8.2 Central collection
 
 Events forward to the supplier's log service, retained for 90 days. Clock synchronisation is checked, since times must line up across clinics.
+
+Section eight point two develops logs that small team can with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eight point two, Dr Owen Hale expects logs claims to carry owners and dates.
+
+Section eight point two treats choosing events central collection as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Westmere Polytechnic will not accept logs work without a written trail.
 
 ### 8.3 Weekly review
 
 A short weekly review covers a few defined questions. Each finding is resolved or explained.
 
+Section eight point three develops logs that small team can with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eight point three, Dr Owen Hale expects logs claims to carry owners and dates.
+
+Section eight point three treats choosing events central collection as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Westmere Polytechnic will not accept logs work without a written trail.
+
 ### 8.4 Privacy
 
 Logs contain staff names; access is restricted and use limited to security.
+
+Section eight point four develops logs that small team can with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eight point four, Dr Owen Hale expects logs claims to carry owners and dates.
+
+Section eight point four treats choosing events central collection as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Westmere Polytechnic will not accept logs work without a written trail.
 
 ### Endpoint protection alerts
 
@@ -538,17 +728,51 @@ You will (1) define recovery targets; (2) test restores; (3) plan for a failed w
 
 The operations manager sets targets: a failed reception PC replaced within two hours from a pre-built spare; imaging server restored within one day.
 
+Section nine point one develops recovery and continuity with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section nine point one, Dr Owen Hale expects recovery claims to carry owners and dates.
+
+Section nine point one treats targets rebuilds testing ransomware as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Westmere Polytechnic will not accept recovery work without a written trail.
+
 ### 9.2 Rebuilds
 
 Supported desktops are rebuilt from a standard image and management enrolment. Imaging PCs need vendor steps, so Priya documents them with the vendor.
+
+Section nine point two develops recovery and continuity with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section nine point two, Dr Owen Hale expects recovery claims to carry owners and dates.
+
+Section nine point two treats targets rebuilds testing ransomware as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Westmere Polytechnic will not accept recovery work without a written trail.
 
 ### 9.3 Testing
 
 A restore test of the image server on spare hardware takes seven hours, within the target, and reveals a missing licence file, now added to backups.
 
+Section nine point three develops recovery and continuity with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section nine point three, Dr Owen Hale expects recovery claims to carry owners and dates.
+
+Section nine point three treats targets rebuilds testing ransomware as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Westmere Polytechnic will not accept recovery work without a written trail.
+
 ### 9.4 Ransomware readiness
 
 One backup copy is offline. Isolated imaging segments limit spread.
+
+Section nine point four develops recovery and continuity with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section nine point four, Dr Owen Hale expects recovery claims to carry owners and dates.
+
+Section nine point four treats targets rebuilds testing ransomware as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Westmere Polytechnic will not accept recovery work without a written trail.
+
+Section nine point four fails closed if recovery evidence is missing rather than guessing.
 
 ### Mapping dependencies
 
@@ -602,17 +826,51 @@ You will (1) report to leadership; (2) align with standards; (3) plan reviews.
 
 A quarterly one-page report shows unsupported count, exceptions in date, compliance and patch latency.
 
+Section ten point one develops governance and reporting with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section ten point one, Dr Owen Hale expects governance claims to carry owners and dates.
+
+Section ten point one treats reporting standards reviews roles as testable only when evidence and ticket IDs are recorded.
+
+For section ten point one, Westmere Polytechnic will not accept governance work without a written trail.
+
 ### 10.2 Standards
 
 Priya maps the work to CIS Controls v8 implementation group 1 and NIST SP 800-53 families CM, SI and SA, so auditors see recognised structure.
+
+Section ten point two develops governance and reporting with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section ten point two, Dr Owen Hale expects governance claims to carry owners and dates.
+
+Section ten point two treats reporting standards reviews roles as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Westmere Polytechnic will not accept governance work without a written trail.
 
 ### 10.3 Reviews
 
 The exception register and baseline are reviewed quarterly, the plan yearly.
 
+Section ten point three develops governance and reporting with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section ten point three, Dr Owen Hale expects governance claims to carry owners and dates.
+
+Section ten point three treats reporting standards reviews roles as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Westmere Polytechnic will not accept governance work without a written trail.
+
+Section ten point three fails closed if governance evidence is missing rather than guessing.
+
 ### 10.4 Roles
 
 The supplier operates, the operations manager owns risk, and Priya's handover names successors.
+
+Section ten point four develops governance and reporting with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section ten point four, Dr Owen Hale expects governance claims to carry owners and dates.
+
+Section ten point four treats reporting standards reviews roles as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Westmere Polytechnic will not accept governance work without a written trail.
 
 ### Budgeting
 
@@ -666,17 +924,55 @@ You will (1) compare baseline and outcome; (2) discuss limits; (3) recommend nex
 
 Unsupported systems fell from 12 to 3, all with in-date exceptions; desktop compliance rose to 92 percent; patching within 14 days rose to 46 of 48.
 
+Section eleven point one develops evaluating the year with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eleven point one, Dr Owen Hale expects evaluating claims to carry owners and dates.
+
+Section eleven point one treats results attribution limits next as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Westmere Polytechnic will not accept evaluating work without a written trail.
+
 ### 11.2 Attribution
 
 Several changes overlapped, so Priya links outcomes to actions cautiously.
+
+Section eleven point two develops evaluating the year with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eleven point two, Dr Owen Hale expects evaluating claims to carry owners and dates.
+
+Section eleven point two treats results attribution limits next as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Westmere Polytechnic will not accept evaluating work without a written trail.
+
+Section eleven point two fails closed if evaluating evidence is missing rather than guessing.
 
 ### 11.3 Limits
 
 One organisation, one year, supplier-reported data.
 
+Section eleven point three develops evaluating the year with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eleven point three, Dr Owen Hale expects evaluating claims to carry owners and dates.
+
+Section eleven point three treats results attribution limits next as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Westmere Polytechnic will not accept evaluating work without a written trail.
+
+Section eleven point three fails closed if evaluating evidence is missing rather than guessing.
+
 ### 11.4 Next steps
 
 Replace the last three imaging PCs, extend checks to clinic tablets.
+
+Section eleven point four develops evaluating the year with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section eleven point four, Dr Owen Hale expects evaluating claims to carry owners and dates.
+
+Section eleven point four treats results attribution limits next as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Westmere Polytechnic will not accept evaluating work without a written trail.
+
+Section eleven point four fails closed if evaluating evidence is missing rather than guessing.
 
 ### Measuring the same way
 
@@ -728,17 +1024,53 @@ You will (1) structure the report; (2) defend choices; (3) hand over.
 
 The report follows question, method, results, discussion, recommendations.
 
+Section twelve point one develops presenting the applied project with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section twelve point one, Dr Owen Hale expects presenting claims to carry owners and dates.
+
+Section twelve point one treats structure defending choices handover as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Westmere Polytechnic will not accept presenting work without a written trail.
+
+Section twelve point one fails closed if presenting evidence is missing rather than guessing.
+
 ### 12.2 Defending choices
 
 Priya explains why isolation, not immediate upgrade, was chosen for some machines, citing vendor evidence.
+
+Section twelve point two develops presenting the applied project with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section twelve point two, Dr Owen Hale expects presenting claims to carry owners and dates.
+
+Section twelve point two treats structure defending choices handover as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Westmere Polytechnic will not accept presenting work without a written trail.
 
 ### 12.3 Handover
 
 The supplier and operations manager receive the register, baseline notes and reporting template.
 
+Section twelve point three develops presenting the applied project with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section twelve point three, Dr Owen Hale expects presenting claims to carry owners and dates.
+
+Section twelve point three treats structure defending choices handover as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Westmere Polytechnic will not accept presenting work without a written trail.
+
 ### 12.4 Reflection
 
 Working with vendors took longer than technical changes.
+
+Section twelve point four develops presenting the applied project with a Westmere Polytechnic note Priya Natarajan can demo offline.
+
+Under section twelve point four, Dr Owen Hale expects presenting claims to carry owners and dates.
+
+Section twelve point four treats structure defending choices handover as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Westmere Polytechnic will not accept presenting work without a written trail.
+
+Section twelve point four fails closed if presenting evidence is missing rather than guessing.
 
 ### Writing for two audiences
 
