@@ -57,8 +57,8 @@ El vocabulario metodológico genérico (verificación frente a validación, núm
 2. [Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación](#ch-02)
 3. [Propuesta de contribución original](#ch-03)
 4. [Replicación de la línea de base y piloto](#ch-04)
-5. [Estudio principal y validación independiente](../../en/book/MANUSCRIPT.md#ch-05)
-6. [Crítica de pares y revisión](../../en/book/MANUSCRIPT.md#ch-06)
+5. [Estudio principal y validación independiente](#ch-05)
+6. [Crítica de pares y revisión](#ch-06)
 7. [Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07)
 8. [Defensa y plan de publicación](../../en/book/MANUSCRIPT.md#ch-08)
 9. [Resultados resueltos](#worked-results)
@@ -479,7 +479,146 @@ Reproduzca las líneas de base con una tolerancia declarada de antemano y diagno
 
 ### Siga estudiando — capítulo 04 de 08
 
-[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](../../en/book/MANUSCRIPT.md#ch-05)
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Estudio principal y validación independiente
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) diseñar un experimento pareado con números aleatorios comunes, (2) informar una incertidumbre que separe el ruido de la simulación de la incertidumbre del modelo, (3) validar en un segundo contexto independiente, (4) incorporar una revisión ciega por parte de operadores y (5) escribir un párrafo de resultados honesto, incluidos los resultados mixtos. Ejecuta el plan pilotado en el capítulo 4 y produce las afirmaciones que el capítulo 6 atacará.
+
+### 5.1 Diseño pareado
+
+Al comparar dos configuraciones de detector, ejecute ambas con las **mismas** semillas aleatorias (números aleatorios comunes, que es una técnica de simulación estándar). La diferencia por semilla elimina el ruido compartido y estrecha los intervalos de confianza. El laboratorio 5 compara k = 0,8 con k = 0,6 en dos variantes de planta: la planta A, con una ganancia de caudal de entrada del ataque de 0,05, y la planta B, un tanque mayor en el que la misma manipulación de la bomba produce solo 0,02 unidades por paso.
+
+```python
+# Lab 5 (synthetic): paired comparison of detection delay on two plant models with common random numbers + bootstrap CI.
+import random
+def delay(seed, k, gain):
+    rng = random.Random(seed); true, est, s = 50.0, 50.0, 0.0
+    for t in range(700):
+        inflow = 1.0 + rng.gauss(0, 0.05) + (gain if t >= 300 else 0.0)
+        true += inflow - 0.02*true
+        lvl = 50.0 + rng.gauss(0, 0.3) if t >= 300 else true + rng.gauss(0, 0.3)
+        est += inflow + rng.gauss(0, 0.02) - 0.02*est
+        s = max(0.0, s + abs(lvl - est) - k)
+        if s > 6.0 and t >= 300: return t - 300
+    return 400
+for plant, gain in (("A", 0.05), ("B", 0.02)):
+    diffs = [delay(i, 0.8, gain) - delay(i, 0.6, gain) for i in range(200)]
+    rng = random.Random(7); boots = sorted(sum(rng.choice(diffs) for _ in diffs)/len(diffs) for _ in range(2000))
+    print(f"plant {plant}: mean delay(k=0.8)-delay(k=0.6)={sum(diffs)/len(diffs):.1f} steps, 95% CI [{boots[50]:.1f}, {boots[1949]:.1f}]")
+```
+
+Salida esperada:
+
+```text
+plant A: mean delay(k=0.8)-delay(k=0.6)=6.9 steps, 95% CI [6.5, 7.4]
+plant B: mean delay(k=0.8)-delay(k=0.6)=45.4 steps, 95% CI [38.4, 53.0]
+```
+
+La robustez elegida en el capítulo 4 cuesta unos 7 pasos en la planta A, pero unos 45 pasos en la planta B, donde la señal del ataque es más débil. Las ejecuciones no detectadas se limitan a 400 pasos (censura por la derecha); por tanto, la media de la planta B es una cota inferior del coste real. El intervalo bootstrap describe solo el ruido de la simulación: no dice nada sobre si el modelo del tanque representa alguna planta real.
+
+### 5.2 Tres tipos de incertidumbre
+
+Separe la incertidumbre **estocástica** (variación de una semilla a otra, recogida por el intervalo), la incertidumbre **paramétrica** (coeficiente del orificio, niveles de ruido, sesgo de calibración, explorada mediante análisis de sensibilidad como en el laboratorio 6) y la incertidumbre **estructural** (¿es un balance de masa de un solo tanque el modelo correcto?). Solo el segundo banco de pruebas aborda la tercera. En el Setpoint Study, el intervalo del laboratorio 5 cubre solo el primer tipo. El laboratorio 6 cubre parte del segundo, mediante el sesgo de calibración y la holgura. El banco de pruebas T2 es la primera evidencia sobre el tercero, y su menor exhaustividad muestra que el caudalímetro honesto y sin retardo del modelo era demasiado simple. Informe cada tipo en su propio lugar para que los lectores no confundan uno con otro.
+
+### 5.3 Validación independiente en el banco de pruebas T2
+
+T2 difiere del modelo de la planta A en aspectos que importan: dos tanques acoplados, un caudalímetro distinto con su propio retardo y un ciclo de barrido del PLC de 100 ms. Los umbrales se congelan a partir del ajuste en la planta A antes de examinar cualquier dato de T2; de lo contrario, la validación sería otro ejercicio de ajuste. Resultados sintéticos de T2: la repetición de clase A se detectó en 18 de 20 episodios (dos no detectados porque el retardo del caudalímetro ocultó manipulaciones pequeñas), una mediana de retardo mayor que en la simulación, cero falsas alarmas en 40 horas nominales y la evasión de clase B confirmada en los 10 ensayos. El estudio respalda así H1 con una salvedad (menor exhaustividad con un instrumento con retardo) y confirma H4.
+
+### 5.4 La revisión ciega por parte de operadores
+
+Diez operadores sintéticos (O01–O10) revisaron cronologías de alarmas sin saber qué detector las había producido. Ocho prefirieron la alarma del CUSUM porque llegaba con una tendencia del residuo que podían interpretar; dos encontraron abstracto un «residuo» y querían que se mostrara en la HMI el nivel predicho. El hallazgo trata de la interpretabilidad, no de la exactitud de la detección, y cambia el diseño: la tesis recomienda mostrar el nivel predicho frente al informado. Diez participantes no pueden respaldar una afirmación estadística sobre poblaciones de operadores, y el estudio no la hace. La revisión muestra que la interpretabilidad es una cuestión de diseño que vale la pena medir más adelante con personal real de salas de control que dé su consentimiento. Registre el protocolo, el método de cegamiento y la razón declarada por cada operador, de modo que la recomendación pueda rastrearse hasta lo que se dijo y no hasta un recuento.
+
+### 5.5 Redacción honesta de resultados mixtos
+
+«En el modelo sintético de la planta A y en el banco de pruebas sintético T2, un CUSUM de residuos de balance de masa detectó ataques de repetición de sensores de clase A que una alarma de banda de ±1,5 no detectó, sin ejecuciones con falsa alarma en operación nominal. La exhaustividad cayó del 100 % en la simulación al 90 % en T2 debido al retardo del caudalímetro. La robustez frente a un sesgo de calibración de 0,4 unidades exigió una holgura mayor, que alargó el retardo de detección unos 7 pasos en la planta A y al menos 45 en la planta B, de señal más débil. Cuando el atacante controlaba también el caudalímetro (clase B), la detección falló en todos los ensayos, como se había predicho».
+
+### 5.6 Errores comunes y límites
+
+Semillas independientes en comparaciones pareadas; ajuste en el banco de pruebas de validación; ocultar ejecuciones censuradas; presentar los intervalos como incertidumbre del mundo real; omitir la condición de fallo en el resumen. Cada punto tiene una comprobación concreta en este estudio: el laboratorio 5 usa números aleatorios comunes, los umbrales de T2 se congelan a partir del ajuste en la planta A, las ejecuciones limitadas se informan como censuradas en 400 pasos, el intervalo bootstrap se etiqueta como ruido de la simulación y el resumen indica que la clase B evadió la detección en todos los ensayos. Un revisor debería poder confirmar cada comprobación a partir del archivo.
+
+### Ejercicios — capítulo 5
+
+- **EX027 — Semillas independientes frente a pareadas.** Vuelva a ejecutar el laboratorio 5 con semillas independientes para las dos configuraciones y compare la anchura de los intervalos con la versión pareada. *Rúbrica:* 3 = anchura no pareada en la planta A≈3,2 frente a pareada≈0,9 y comparación de la planta B; 2 = solo la dirección; 1 = dirección errónea; 0 = nada.
+- **EX028 — Seis fuentes de incertidumbre clasificadas.** Clasifique seis fuentes de incertidumbre del Setpoint Study como estocásticas, paramétricas o estructurales. *Rúbrica:* 3 = estocástica/paramétrica/estructural con dos ejemplos de cada clase; 2 = clases sin ejemplos; 1 = una clase; 0 = nada.
+- **EX029 — Regla de congelación antes de la validación en T2.** Escriba la regla de congelación de los umbrales antes de la validación en T2 y explique qué invalidaría la validación. *Rúbrica:* 3 = congelar k=0,8 h=6 con hash antes de cargar T2 + qué invalida; 2 = congelación sin invalidación; 1 = vago; 0 = nada.
+- **EX030 — Censura por la derecha en la planta B.** Explique cómo sesga la censura por la derecha la media de la planta B y proponga un resumen mejor. *Rúbrica:* 3 = media como cota inferior + informar la proporción de detección/mediana entre los detectados o estilo KM; 2 = sesgo sin resumen mejor; 1 = vago; 0 = nada.
+- **EX031 — De la revisión de operadores a diseño y límite.** Convierta el hallazgo de la revisión de operadores en una recomendación de diseño y una limitación. *Rúbrica:* 3 = mostrar predicho frente a informado en la HMI + límite de operadores sintéticos; 2 = una de las dos; 1 = vago; 0 = nada.
+- **EX032 — Párrafo de resultados cuando H1 falla en T2.** Escriba un párrafo de resultados de 120 palabras para un estudio en el que H1 falló en T2. *Rúbrica:* 3 = ~120 palabras con T2 9/20 frente a simulación 100/100 y explicación de retardo/holgura; 2 = cifras sin el retardo; 1 = breve nota de fallo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los diseños pareados afinan las comparaciones; la incertidumbre tiene tres tipos y los intervalos recogen solo uno; validar significa umbrales congelados en un contexto independiente; y un párrafo de resultados honesto lleva consigo sus salvedades y su condición de fallo.
+
+### Siga estudiando — capítulo 05 de 08
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Crítica de pares y revisión
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) organizar una revisión interna de equipo rojo de sus propias afirmaciones, (2) convertir objeciones en hipótesis comprobables, (3) caracterizar las condiciones límite en lugar de ocultarlas, (4) realizar una revisión de doble uso de un artículo antes de enviarlo y (5) escribir una carta de respuesta a los revisores que responda de verdad. Ataca los resultados del capítulo 5 y alimenta el argumento de la tesis del capítulo 7.
+
+### 6.1 Las objeciones como hipótesis
+
+Invite a dos colegas —idealmente un ingeniero de control y un investigador de seguridad ofensiva— a atacar las afirmaciones. Registre cada objeción como una hipótesis con una prueba:
+
+| Objeción (equipo rojo) | Hipótesis | Prueba | Resultado (sintético) |
+|---|---|---|---|
+| «Su atacante es ingenuo: un atacante inteligente sube lentamente». | Una rampa lenta por debajo de la holgura del CUSUM evade la detección y aun así provoca sobrellenado. | Barrer la ganancia del ataque de 0,005 a 0,05. | La ganancia 0,005 se detecta solo en 14/100 ejecuciones y la de 0,01 en 55/100, pero el peor sobrellenado en la ventana de 300 pasos se queda en 1,12 y 1,37 unidades, frente a 3,36 con ganancia 0,05: el argumento de acotación del impacto de Urbina et al. |
+| «El caudalímetro es solo otra entrada del PLC». | Si el medidor está cableado al mismo PLC que el sensor de nivel, la clase B es tan fácil como la clase A. | Inspeccionar el cableado de T2 y el diseño de la planta A. | En T2 ambos pasan por un mismo PLC; la suposición del sensor honesto solo se cumple con un medidor cableado por separado. |
+| «Los operadores notarían que la bomba está en marcha». | La visualización del estado de la bomba revela el ataque. | Revisar el diseño de la HMI. | Solo si el estado de la bomba procede de un contacto independiente, no del valor comandado. |
+| «Los resultados dependen del nivel de ruido». | Un mayor ruido del sensor aumenta las falsas alarmas con k fija. | Laboratorio 6 con el ruido duplicado. | Requiere reajuste; se informa como sensibilidad paramétrica. |
+
+La segunda objeción es la más importante: revela que la fortaleza de la defensa es una propiedad **arquitectónica** (rutas de medición independientes), no algorítmica. La afirmación de la tesis se revisa en consecuencia.
+
+### 6.2 Condiciones límite
+
+Una buena tesis traza dónde funciona el método. En el Setpoint Study los límites son: (1) debe existir una segunda medición independiente de la misma física y estar fuera del control del atacante; (2) el error del modelo debe ser menor que la señal del ataque; (3) los ataques más lentos que la holgura pueden evadir, pero su impacto dentro de un horizonte declarado está acotado (en el modelo, ≤1,37 unidades de sobrellenado en 300 pasos para ganancias ≤0,01). Se enuncian en el resumen, no se entierran en una sección de limitaciones.
+
+Cada límite debe enunciarse con la evidencia que lo mide: la inspección del cableado de T2 para el primero, el barrido del sesgo de calibración del laboratorio 6 para el segundo y el barrido de la ganancia del ataque de la revisión de equipo rojo para el tercero.
+
+### 6.3 La afirmación acotada
+
+Antes: «El CUSUM basado en la física detecta la manipulación de sensores en plantas de agua». Después: «Donde un sensor cableado de forma independiente mide una magnitud vinculada por un balance de masa conocido, un CUSUM de residuos con una holgura ajustada al error de calibración esperado detecta ataques de repetición sobre un solo sensor que las alarmas de banda no detectan, y acota el sobrellenado alcanzable por ataques más lentos; no ofrece protección cuando el atacante controla ambas rutas de medición». La afirmación acotada es más débil en alcance y mucho más sólida en evidencia.
+
+Conserve en la tesis las versiones de antes y de después, para que los lectores vean cómo la crítica cambió el argumento. Contraste cada frase posterior con la afirmación acotada: un resumen o una conclusión que vuelva a derivar hacia las plantas de agua en general deshace el trabajo. La afirmación acotada también da a los operadores una prueba directa sobre su propio sitio: ¿está la segunda medición cableada de forma independiente?
+
+### 6.4 Revisión de doble uso
+
+Antes de enviar el artículo, pregunte: ¿ofrece el artículo una receta para la evasión de clase B contra un producto concreto? (No: describe la clase de capacidad, que ya está documentada como manipulación de la vista). ¿Revela la configuración de T2? (Solo la estructura genérica). ¿Ganaría más un defensor que un atacante? (Sí: la recomendación arquitectónica —rutas de medición independientes— es aplicable para los defensores y bien conocida por los atacantes capaces). Registre las respuestas en el apéndice de la tesis. Pida a un revisor ajeno al proyecto que responda las mismas preguntas sin ver sus respuestas y registre cualquier desacuerdo y cómo se resolvió. Si un trabajo posterior encuentra un fallo específico de un producto, como un PLC que acepta escrituras que debería rechazar, la revisión se repite y la divulgación se gestiona mediante el proceso coordinado antes de publicar.
+
+### 6.5 Respuesta a los revisores
+
+Responda a cada punto, cítelo, indique qué cambió y dónde, y discrepe con evidencia cuando deba hacerlo. Ejemplo: «El revisor 2 afirma que el CUSUM no es novedoso. Estamos de acuerdo y hemos revisado el §1 para posicionar la contribución como una medición de cuándo los invariantes entre sensores ayudan frente a la manipulación de la vista, citando a Page (1954) y Giraldo et al. (2018). La nueva declaración de contribución está en la p. 3». Mantenga una tabla con una fila por cada punto del revisor: la cita, su respuesta, el cambio realizado y su ubicación. Cuando discrepe, cite el resultado medido, como que la clase B evadió la detección en todos los ensayos, en lugar de reafirmar su opinión. Envíe la tabla con el manuscrito revisado para que el editor pueda comprobar cada cambio.
+
+### 6.6 Errores comunes y límites
+
+Defender en lugar de probar; ocultar el fallo frente a la clase B; afirmar generalidad entre plantas después de dos contextos; responder a los revisores sin indicar los cambios. Cada error convierte la crítica en defensa. Responda a la objeción de la rampa lenta con el barrido de ganancias, no con palabras tranquilizadoras. Ponga la clase B en el resumen. Limite la generalidad a los dos contextos medidos, el modelo de la planta A y el banco de pruebas T2. En las cartas a los revisores, indique qué cambió y dónde, para que un lector pueda verificar la revisión en lugar de confiar en la afirmación. Conserve la tabla de objeciones en la tesis.
+
+### Ejercicios — capítulo 6
+
+- **EX033 — La objeción del sobreajuste como prueba.** Convierta la objeción «su umbral está sobreajustado» en una hipótesis y una prueba. *Rúbrica:* 3 = hipótesis de caída con semillas no vistas/T2 + ajustar con 0–99 / evaluar con 1000–1099 y T2; 2 = hipótesis sin protocolo; 1 = reformula la objeción; 0 = nada.
+- **EX034 — Barrido de la ganancia del ataque para el CUSUM.** Modifique el laboratorio 3 para barrer la ganancia del ataque (0,005, 0,01, 0,02, 0,05) para el CUSUM e informe la detección y el peor sobrellenado. *Rúbrica:* 3 = cuatro ganancias con recuentos de detección, retardos y peor sobrellenado coincidentes con el barrido del laboratorio; 2 = dos ganancias; 1 = cualitativo; 0 = nada.
+- **EX035 — Párrafo de límites para el resumen.** Escriba el párrafo de condiciones límite para el resumen en ≤ 80 palabras. *Rúbrica:* 3 = ≤80 palabras: segunda medición independiente, error del modelo < ataque, ataques lentos ≤1,37 de sobrellenado; 2 = límites sin cifras; 1 = afirmación excesiva; 0 = nada.
+- **EX036 — Acote la afirmación sobre los servicios de agua.** Reescriba la afirmación «el método protege los servicios de agua» como una afirmación acotada. *Rúbrica:* 3 = dos contextos sintéticos + caudal independiente + fallo frente a la clase B; 2 = acotada, pero todavía «servicios»; 1 = edición menor; 0 = afirmación original.
+- **EX037 — Doble uso de la secuencia exacta de falsificación en T2.** Realice una revisión de doble uso sobre la publicación de la secuencia exacta de falsificación del caudalímetro usada en T2. *Rúbrica:* 3 = publicar clase+defensa; secuencia exacta de T2 solo mediante divulgación coordinada/fabricante; 2 = retener sin vía; 1 = publicar todo; 0 = nada.
+- **EX038 — Respuesta sobre la representatividad del banco de pruebas.** Escriba una respuesta a un revisor ante «Los resultados del banco de pruebas no son representativos de plantas reales». *Rúbrica:* 3 = acepta la diferencia, remite a las afirmaciones acotadas + umbrales congelados en T2 + riesgo residual; 2 = acepta sin remitir a la evidencia; 1 = desestima; 0 = nada.
+
+### Síntesis del capítulo
+
+La crítica es un dato: convierta las objeciones en pruebas, deje que acoten la afirmación, publique las condiciones límite en un lugar destacado y revise el doble uso antes de enviar. La objeción más valiosa aquí convirtió una afirmación algorítmica en una arquitectónica.
+
+### Siga estudiando — capítulo 06 de 08
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
 
 <a id="worked-results"></a>
 
@@ -524,6 +663,24 @@ Cada respuesta muestra una respuesta defendible; las rúbricas de cada ejercicio
 **EX024.** k = 0,8: con un sesgo de 0,4 tiene 0/100 ejecuciones con falsa alarma y 100/100 detecciones (retardo 55,6), mientras que k = 0,6 tiene 4/100 ejecuciones con falsa alarma. Se acepta el coste de 7–10 pasos de retardo a cambio de cero falsas alarmas.
 **EX025.** Continuar si: tres ejecuciones consecutivas se completan sin que se alcance la válvula de flotador (seguridad); pérdida de registros del historiador <1 % a 1 Hz (datos); ningún reinicio no planificado del PLC (estabilidad); parada de emergencia probada antes de cada sesión. En caso contrario, no continuar y revisar.
 **EX026.** Porque 0,94 reproduce una puntuación con ajuste por puntos que acredita segmentos enteros por una sola alarma; no dice nada sobre el retardo ni sobre las falsas alarmas por turno, y los umbrales pueden haberse ajustado con datos de prueba.
+
+### Capítulo 5
+
+**EX027.** Sustituir la semilla pareada de k = 0,6 por la semilla i+1000 da en la planta A 6,9 pasos, IC [5,3, 8,5] (anchura 3,2), frente a [6,5, 7,4] pareado (anchura 0,9); en la planta B 47,3, IC [36,5, 58,6], frente a [38,4, 53,0]. El emparejamiento estrecha los intervalos porque el ruido compartido se cancela.
+**EX028.** Estocásticas: extracciones del ruido del sensor, ruido del caudal de entrada. Paramétricas: coeficiente del orificio, sesgo de calibración. Estructurales: modelo de un solo tanque, ignorar el retardo del caudalímetro.
+**EX029.** «La holgura k = 0,8 y el umbral h = 6,0 se fijan, se les calcula un hash y se registran antes de cargar cualquier dato de ataque de T2». Inspeccionar datos de ataque de T2 antes de congelar, o cambiar k después de ver los resultados de T2, invalida la validación.
+**EX030.** Las ejecuciones no detectadas fijadas en 400 convierten la media en una cota inferior. Informe por separado la proporción de detección y la mediana del retardo entre los detectados, o una curva de tiempo hasta la detección de estilo Kaplan–Meier.
+**EX031.** Recomendación: mostrar en la HMI el nivel predicho frente al informado. Limitación: operadores sintéticos; sus preferencias pueden no predecir tiempos de respuesta reales.
+**EX032.** Ejemplo: «H1 no quedó respaldada en T2: el CUSUM de residuos detectó 9 de 20 episodios de clase A, frente a 100 de 100 en la simulación. Un retardo del caudalímetro de varios segundos produjo transitorios del residuo que exigieron una holgura mayor, la cual ocultó después manipulaciones pequeñas. Las falsas alarmas siguieron en cero. Concluimos que el simulador sobrestimó la relación señal/ruido y que la dinámica de los instrumentos debe modelarse antes de hacer afirmaciones de despliegue».
+
+### Capítulo 6
+
+**EX033.** Hipótesis: el rendimiento cae cuando los umbrales se evalúan con semillas o bancos de pruebas no vistos durante el ajuste. Prueba: ajustar con las semillas 0–99 y evaluar con 1000–1099 y en T2 con valores congelados; comparar la detección y las falsas alarmas.
+**EX034.** Resultado del barrido: ganancia 0,005 → 14/100 detectados, retardo medio 186,0, peor sobrellenado 1,12; 0,01 → 55/100, 168,3, 1,37; 0,02 → 100/100, 90,4, 1,87; 0,05 → 100/100, 31,8, 3,36. Los ataques lentos evaden, pero logran un sobrellenado limitado en la ventana.
+**EX035.** «El método requiere una segunda medición cableada de forma independiente y vinculada a la atacada por un balance de masa conocido; el error del modelo debe ser menor que la señal del ataque. Los ataques más lentos que la holgura pueden evadir, pero lograron ≤1,37 unidades de sobrellenado modelado en 300 pasos. No ofrece protección cuando un atacante controla ambas mediciones».
+**EX036.** «En dos contextos sintéticos, un CUSUM de residuos que usa un caudalímetro cableado de forma independiente detectó la repetición del nivel sobre un solo sensor que una alarma de banda no detectó; no protege frente a un atacante que controla ambas mediciones».
+**EX037.** Publicar la secuencia exacta de T2 da a los atacantes una receta lista para una configuración de producto concreta, mientras que los defensores solo necesitan la clase de capacidad y la corrección arquitectónica. Decisión: publicar la clase y la defensa; compartir las secuencias exactas solo con el fabricante mediante divulgación coordinada, si hay un fallo de producto implicado.
+**EX038.** «Estamos de acuerdo en que los bancos de pruebas difieren de las plantas y hemos acotado nuestras afirmaciones a los dos contextos estudiados (§6.3). Probamos la incertidumbre estructural validando en un banco de pruebas independiente, con instrumentos distintos, umbrales congelados a partir de la simulación (§5.3), informamos la pérdida de exhaustividad resultante y enumeramos la validación a escala de planta como trabajo futuro (§8.6)».
 
 <a id="glossary"></a>
 
