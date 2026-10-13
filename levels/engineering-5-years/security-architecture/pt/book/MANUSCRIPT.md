@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 50 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–50 (EX049–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–22 de 50 já estão escritos em português, com os exercícios EX001–EX066 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 23–50 (EX067–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) |
 
-Capítulos 17–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
+Capítulos 23–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-23), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -763,11 +763,267 @@ Tabelas de rastreabilidade ficam onerosas se forem detalhadas demais. Os modelos
 
 - **EX048 — Valor da rastreabilidade.** O que a rastreabilidade mostra quando um requisito muda? *Rubrica:* 3 = quais elementos de projeto e testes são afetados;; 2 = itens afetados;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever ciclos de realimentação nas operações de segurança; (2) simular um rate limiter adaptativo; (3) reconhecer oscilação e atraso em sistemas de controle.
+
+### 17.1 Realimentação na segurança
+
+Um ciclo de realimentação mede uma saída, compara-a com uma meta e ajusta uma entrada. Sofia encontra realimentação por toda parte nas operações de segurança: um rate limiter que aperta quando os logins com falha aumentam, um autoscaler que acrescenta capacidade durante uma inundação de tráfego e uma organização que ajusta seus controles depois de incidentes. A teoria de controle, que ela estuda na engenharia, oferece ferramentas para raciocinar se esses ciclos se estabilizam suavemente, reagem devagar demais ou reagem em excesso. Daniel observa que uma automação de segurança mal ajustada pode causar indisponibilidades, que atacantes podem explorar de propósito ao dispará-la.
+
+### 17.2 Simular um rate limiter
+
+O serviço de login do aplicativo de passageiros usa um rate limiter adaptativo: se os logins com falha num minuto excedem uma meta, a taxa de requisições permitida é reduzida; se ficam abaixo, ela é relaxada. Sofia simula isso com tráfego de ataque sintético que chega no minuto cinco e para no minuto quinze. Com um ganho proporcional alto demais, a taxa permitida oscila para cima e para baixo, ora bloqueando usuários legítimos, ora deixando os ataques passarem. Com um ganho moderado, ela se estabiliza. O laboratório abaixo imprime as duas execuções para que ela veja a diferença, em vez de só ler sobre ela.
+
+### Laboratório — Ganhos do rate limiter adaptativo
+
+```python
+# Adaptive rate limiter (proportional control) on synthetic failed-login traffic.
+def run(gain, minutes=24, target=50):
+    allowed, out = 200.0, []
+    for t in range(minutes):
+        attack = 400 if 5 <= t < 15 else 0
+        failures = min(allowed, 40 + attack) * (0.9 if attack else 0.3)
+        allowed = max(20.0, min(400.0, allowed - gain * (failures - target)))
+        out.append(round(allowed))
+    return out
+for g in (2.5, 0.6):
+    r = run(g)
+    swings = sum(1 for a, b, c in zip(r, r[1:], r[2:]) if (b - a) * (c - b) < 0)
+    print(f"gain {g}: allowed/min = {r}")
+    print(f"  direction changes: {swings}")
+```
+
+Execute com `python3 lab_feedback.py`. Saída verificada:
+
+```text
+gain 2.5: allowed/min = [295, 390, 400, 400, 400, 20, 100, 20, 100, 20, 100, 20, 100, 20, 100, 195, 290, 385, 400, 400, 400, 400, 400, 400]
+  direction changes: 9
+gain 0.6: allowed/min = [223, 246, 268, 291, 314, 174, 110, 81, 67, 61, 58, 57, 56, 56, 56, 78, 101, 124, 147, 170, 192, 215, 238, 261]
+  direction changes: 1
+```
+
+### 17.3 Atraso e oscilação
+
+Dois problemas se repetem em sistemas com realimentação: o atraso, em que a resposta chega tarde demais, e a oscilação, em que a resposta passa do ponto repetidamente. Um rate limiter que mede em janelas longas fica atrás de ataques súbitos; um que reage a cada segundo pode oscilar. Sofia relaciona isso à resposta a incidentes: uma organização que só muda a política uma vez por ano se atrasa, enquanto uma que reverte decisões toda semana oscila e confunde a equipe. Ela propõe que os controles automatizados tenham tamanhos de ajuste limitados, limites mínimo e máximo e revisão humana quando os limites forem atingidos, para manter a realimentação estável.
+
+### Exemplo resolvido
+
+Sofia simula um rate limiter adaptativo com dois ganhos, mostra a oscilação com o ganho alto e propõe ajustes automáticos limitados e revisados.
+
+> **Caso sintético.** O tráfego e os parâmetros do limiter são sintéticos.
+
+### Erros e limites
+
+Modelos proporcionais simples ignoram a adaptação do atacante. Os resultados da simulação dependem das formas de tráfego supostas.
+
+### Exercícios
+
+- **EX049 — Exploração da automação.** Como atacantes poderiam explorar uma automação de segurança mal ajustada? *Rubrica:* 3 = dispará-la de propósito para causar indisponibilidade aos usuários legítimos;; 2 = disparar;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX050 — Resultado do ganho alto.** O que aconteceu no laboratório com o ganho alto? *Rubrica:* 3 = a taxa permitida oscilou, alternando entre bloquear usuários e deixar ataques entrarem;; 2 = oscilou;; 1 = estabilizou;; 0 = nenhuma.
+
+- **EX051 — Proposta de estabilização.** Cite duas salvaguardas que Sofia propõe para controles automatizados. *Rubrica:* 3 = ajustes limitados, limites mínimo e máximo, revisão humana nos limites (duas);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever frameworks de arquitetura de segurança corporativa; (2) construir uma visão de arquitetura em camadas para a Corvia; (3) ligar atributos de negócio a controles técnicos.
+
+### 18.1 Frameworks de arquitetura
+
+A arquitetura de segurança organiza os controles num projeto coerente, e não numa coleção de produtos. O SABSA, descrito por Sherwood, Clark e Lynas (2005), parte de requisitos de negócio expressos como atributos, como disponível, privado ou auditável, e os rastreia por camadas até os componentes físicos e as operações. O guia do The Open Group sobre a integração de risco e segurança no TOGAF mostra como levar a segurança a cada fase do desenvolvimento da arquitetura corporativa. Sofia aprende que os frameworks fornecem vocabulário e estrutura; seu valor está em tornar visíveis, entre as equipes, as premissas e as dependências.
+
+### 18.2 Visão em camadas da Corvia
+
+Sofia constrói uma visão simples em camadas do sistema de bilhetagem. Na camada de negócio: cobrar as tarifas com exatidão, proteger a privacidade dos passageiros, manter os serviços funcionando. Na camada lógica: serviços de identidade, tokenização de pagamentos, logging e gestão de chaves. Na camada física: secure elements nos validadores, módulos de segurança de hardware (HSMs) para as chaves, redes segmentadas. Na camada operacional: monitoramento, resposta a incidentes e gestão de patches. Cada controle aparece numa camada e se liga ao atributo que sustenta. A visão expõe lacunas, como a falta de um responsável operacional pelo serviço de gestão de chaves.
+
+### 18.3 Dos atributos aos controles
+
+Daniel pede que Sofia rastreie para baixo o atributo privacidade dos passageiros. Na camada lógica, ele exige dados minimizados e controle de acesso; na camada física, armazenamento criptografado e redes segmentadas; na camada operacional, revisões de acesso e resposta a vazamentos. Cada ligação é uma afirmação de projeto que pode ser verificada. Quando uma mudança proposta remove um controle, o rastreamento mostra qual atributo de negócio é enfraquecido. Essa ligação de cima para baixo é a contribuição central do SABSA: ela mantém os gastos com segurança atrelados ao que a organização valoriza, e não a tecnologias da moda.
+
+### Exemplo resolvido
+
+Sofia constrói uma visão de arquitetura em quatro camadas do sistema de bilhetagem da Corvia, rastreia a privacidade dos passageiros do atributo à operação e encontra a falta de um responsável pela gestão de chaves.
+
+> **Caso sintético.** A visão de arquitetura e a lacuna são sintéticas; o SABSA e o TOGAF G152 são reais.
+
+### Erros e limites
+
+As visões em camadas simplificam preocupações transversais. Os rastreamentos de atributos podem virar burocracia se não forem mantidos atualizados.
+
+### Exercícios
+
+- **EX052 — Ponto de partida do SABSA.** Por onde o SABSA começa uma arquitetura? *Rubrica:* 3 = por requisitos de negócio expressos como atributos;; 2 = atributos;; 1 = tecnologia;; 0 = nenhuma.
+
+- **EX053 — Lacuna encontrada.** Que lacuna a visão em camadas de Sofia expôs? *Rubrica:* 3 = nenhum responsável operacional pela gestão de chaves;; 2 = responsável;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX054 — Remoção de um controle.** O que o rastreamento de atributos mostra quando uma mudança remove um controle? *Rubrica:* 3 = qual atributo de negócio é enfraquecido;; 2 = atributo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar fluxos de identidade para funcionários, passageiros e dispositivos; (2) posicionar mecanismos criptográficos na arquitetura; (3) planejar a gestão de chaves como um serviço de arquitetura.
+
+### 19.1 Três tipos de identidade
+
+A Corvia tem identidades de funcionários num diretório corporativo, identidades de passageiros no sistema de contas do aplicativo e identidades de dispositivos para validadores e veículos. Cada uma precisa de um projeto diferente. Os funcionários usam single sign-on com autenticação multifator. Os passageiros usam contas no aplicativo com passkeys opcionais, e muitos viajam anonimamente com cartões. Os dispositivos se autenticam com certificados emitidos pela autoridade interna da Corvia e armazenados em secure elements. Sofia desenha os três fluxos num único diagrama e descobre que uma conta de suporte compartilhada de um fornecedor contorna o single sign-on dos funcionários, uma lacuna de identidade que mina o projeto forte nas demais partes.
+
+### 19.2 Posicionar a criptografia
+
+Sofia lista onde a criptografia protege o sistema. O TLS da RFC 8446 protege o tráfego do aplicativo e da web. Uma VPN protege os enlaces dos veículos. Os validadores assinam os registros de validação para que o back-office consiga detectar adulterações. Os dados de pagamento são tokenizados pelo provedor de pagamentos, de modo que a Corvia nunca armazena números de cartão. Os bancos de dados são criptografados em repouso. Cada mecanismo atende a um objetivo específico da classificação do capítulo 13. Ela aprende que o trabalho de um arquiteto é escolher e posicionar mecanismos padronizados, não projetar novos, e que todo mecanismo traz obrigações de gestão de chaves que a arquitetura precisa cumprir.
+
+### 19.3 Gestão de chaves como serviço
+
+As chaves precisam de geração, armazenamento, distribuição, rotação, revogação e destruição. O NIST SP 800-57 Part 1 Rev. 5 dá orientações sobre essas fases e sobre os criptoperíodos. Sofia propõe tratar a gestão de chaves como um serviço de arquitetura com responsável próprio, HSMs para as chaves raiz e de assinatura e procedimentos documentados para cada fase. Isso se liga de volta à lacuna encontrada no capítulo 18. Daniel concorda e acrescenta que o serviço precisa ser testado em exercícios de rotação e de recuperação, porque uma gestão de chaves que nunca foi exercitada costuma falhar na primeira vez em que é necessária.
+
+### Exemplo resolvido
+
+Sofia diagrama as identidades de funcionários, passageiros e dispositivos, encontra uma conta compartilhada de fornecedor que contorna o single sign-on, lista cinco mecanismos criptográficos posicionados e propõe a gestão de chaves como um serviço com responsável.
+
+> **Caso sintético.** As identidades e os mecanismos são sintéticos; a RFC 8446 e o SP 800-57 Part 1 Rev. 5 são reais.
+
+### Erros e limites
+
+Passkeys e certificados ainda dependem de processos de recuperação que podem ser abusados. Os HSMs acrescentam custo e complexidade operacional.
+
+### Exercícios
+
+- **EX055 — Lacuna de identidade.** Que lacuna de identidade Sofia encontrou? *Rubrica:* 3 = uma conta de suporte compartilhada de fornecedor contornando o single sign-on dos funcionários;; 2 = conta compartilhada;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX056 — Benefício da tokenização.** Por que a tokenização ajuda a Corvia? *Rubrica:* 3 = ela nunca armazena números de cartão, o que reduz a exposição;; 2 = sem números de cartão;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX057 — Ciclo de vida das chaves.** Liste quatro fases da gestão de chaves. *Rubrica:* 3 = quatro entre geração, armazenamento, distribuição, rotação, revogação, destruição;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Arquitetura e engenharia de segurança: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o contexto regulatório, contratual e organizacional da arquitetura da Corvia; (2) identificar partes interessadas e restrições; (3) escrever uma declaração de contexto para um projeto.
+
+### 20.1 Contexto regulatório e contratual
+
+A partir do terceiro ano, Sofia trabalha num projeto em escala real: redesenhar o back-office de bilhetagem da Corvia. Daniel primeiro lhe pede que entenda o contexto. Os pagamentos com cartão trazem obrigações do setor de pagamentos; os dados pessoais trazem a legislação de privacidade; o financiamento público traz exigências de auditoria; e os contratos com fornecedores limitam o que a Corvia pode mudar nos validadores. Ela lista cada obrigação, sua origem e o que ela exige da arquitetura, como a segmentação dos sistemas de pagamento ou a exclusão de dados pessoais a pedido. O contexto restringe o projeto antes de qualquer escolha técnica, então ignorá-lo leva a projetos que não podem ser aprovados.
+
+### 20.2 Partes interessadas e restrições
+
+Sofia identifica as partes interessadas: passageiros, equipe de arrecadação, financeiro, o encarregado de proteção de dados, o centro de operações, os fornecedores de validadores e de pagamentos, os auditores e o conselho da autoridade de transporte. Cada uma tem necessidades e restrições. O financeiro precisa de uma conciliação exata; as operações precisam de sistemas que funcionem durante indisponibilidades; o encarregado de proteção de dados precisa de minimização e de logs de acesso; os fornecedores precisam de interfaces estáveis. As restrições incluem um orçamento fixo, um cronograma de três anos e validadores legados que só podem ser substituídos no quinto ano. Ela registra cada restrição, porque arquitetura é a arte de atender às necessidades dentro das restrições, e não de projetar um sistema ideal.
+
+### 20.3 A declaração de contexto
+
+Sofia escreve uma declaração de contexto de duas páginas para o projeto: propósito, escopo, partes interessadas, obrigações, restrições, premissas e itens fora do escopo. Daniel a revisa com o comitê do projeto, que corrige duas premissas: a tokenização de pagamentos já está contratada, e o aplicativo de passageiros está fora do escopo. Corrigir premissas nesta etapa custa uma reunião; corrigi-las depois do projeto custa meses. A declaração de contexto se torna o primeiro documento do registro de arquitetura e é referenciada por toda decisão posterior, para que os revisores possam verificar se um projeto ainda se ajusta ao seu contexto.
+
+### Exemplo resolvido
+
+Sofia lista quatro fontes de obrigações, mapeia oito partes interessadas e restrições e escreve uma declaração de contexto corrigida pelo comitê do projeto.
+
+> **Caso sintético.** As obrigações, as partes interessadas e as decisões do comitê são sintéticas.
+
+### Erros e limites
+
+A interpretação jurídica exige aconselhamento qualificado. O contexto muda ao longo de projetos longos e precisa ser revisitado.
+
+### Exercícios
+
+- **EX058 — Exemplo de obrigação.** Dê uma obrigação e seu efeito na arquitetura. *Rubrica:* 3 = obrigações de pagamento exigem segmentar os sistemas de pagamento; a privacidade exige suporte à exclusão;; 2 = um par;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX059 — Restrição legada.** Que restrição limita as mudanças nos validadores? *Rubrica:* 3 = os validadores legados só podem ser substituídos no quinto ano;; 2 = legado;; 1 = orçamento;; 0 = nenhuma.
+
+- **EX060 — Premissas corrigidas.** Que duas premissas o comitê corrigiu? *Rubrica:* 3 = a tokenização já está contratada; o aplicativo de passageiros está fora do escopo;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Arquitetura e engenharia de segurança: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever requisitos de segurança verificáveis; (2) derivar requisitos de necessidades de proteção e de casos de abuso; (3) selecionar controles de catálogos com justificativa.
+
+### 21.1 Requisitos verificáveis
+
+Um requisito como o sistema deve ser seguro não pode ser verificado. Sofia aprende a escrever requisitos que podem ser testados: aprovações de reembolso acima de cinquenta euros devem exigir um segundo aprovador distinto do solicitante; os registros de validação devem ser assinados pelo validador e rejeitados pelo back-office se a assinatura falhar; o acesso administrativo deve exigir autenticação multifator. Cada requisito nomeia quem ou o quê, a condição e o comportamento esperado. Ela acrescenta a cada um um método de verificação, como teste, inspeção ou análise, para que a equipe saiba desde o início como a conformidade será demonstrada.
+
+### 21.2 Casos de abuso
+
+Os casos de uso descrevem o que os usuários legítimos fazem; os casos de abuso descrevem o que atacantes ou insiders descuidados poderiam fazer. Sofia escreve casos de abuso para o back-office: um fraudador repete registros de validação assinados para criar viagens falsas e pedir reembolsos; um insider exporta históricos de viagem para vendê-los; uma conta de fornecedor comprometida envia uma tabela de tarifas maliciosa. Cada caso de abuso leva a requisitos, como detecção de replay com identificadores únicos de registro, registro e aprovação das exportações e tabelas de tarifas assinadas e verificadas antes do uso. Os casos de abuso tornam os requisitos concretos e ajudam as partes interessadas a entender por que cada um existe.
+
+### 21.3 Selecionar controles
+
+O NIST SP 800-53 Rev. 5 oferece um catálogo de controles; a ISO/IEC 27002:2022 oferece outro. Sofia os usa para procurar lacunas nos seus requisitos, e não para copiá-los por inteiro. Por exemplo, a família de auditoria e responsabilização do catálogo a lembra de exigir a proteção e a revisão dos logs, que ela havia esquecido. Para cada controle selecionado, ela registra o requisito que ele sustenta e o motivo. Selecionar controles com justificativa evita tanto lacunas quanto projetos inchados, que implementam controles de que ninguém precisa e consomem um orçamento que poderia tratar riscos reais.
+
+### Exemplo resolvido
+
+Sofia escreve doze requisitos verificáveis com métodos de verificação e três casos de abuso com requisitos derivados, e usa o SP 800-53 Rev. 5 para encontrar um requisito de revisão de logs que faltava.
+
+> **Caso sintético.** Os requisitos e os casos de abuso são sintéticos; o SP 800-53 Rev. 5 e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+Os requisitos podem entrar em conflito, como logging versus privacidade. Os catálogos são amplos; adaptá-los exige julgamento.
+
+### Exercícios
+
+- **EX061 — Reescrita verificável.** Reescreva o sistema deve ser seguro como um requisito verificável para reembolsos. *Rubrica:* 3 = reembolsos acima de 50 euros exigem um segundo aprovador distinto do solicitante, verificado por teste;; 2 = verificável;; 1 = vago;; 0 = nenhuma.
+
+- **EX062 — Derivação do caso de abuso.** Que requisito decorre do caso de abuso dos registros de validação repetidos? *Rubrica:* 3 = identificadores únicos de registro com detecção de replay;; 2 = detecção de replay;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX063 — Uso do catálogo.** Como Sofia usou o SP 800-53 Rev. 5? *Rubrica:* 3 = para procurar lacunas, encontrando um requisito de proteção e revisão de logs que faltava;; 2 = verificação de lacunas;; 1 = copiou tudo;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Arquitetura e engenharia de segurança: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o back-office com componentes, interfaces e fluxos de dados; (2) marcar no modelo as fronteiras de confiança e as classificações dos dados; (3) manter os modelos coerentes com o sistema.
+
+### 22.1 Modelo de componentes e interfaces
+
+Sofia modela o back-office de bilhetagem como componentes: ingestão das validações, construção das viagens, cálculo das tarifas, reembolsos, relatórios e uma camada de integração com o provedor de pagamentos. Cada componente tem interfaces definidas, com formatos de mensagem e requisitos de autenticação. Modelar as interfaces explicitamente ajuda a encontrar lugares onde os dados entram sem validação ou onde um componente confia em outro mais do que deveria. Ela percebe que os relatórios leem diretamente do banco de viagens, em vez de passar por uma interface, contornando os controles de acesso, e registra isso como um problema de projeto para revisão.
+
+### 22.2 Fronteiras e classificações
+
+Na versão de fluxo de dados do modelo, Sofia marca as fronteiras de confiança: entre os validadores e a ingestão, entre o back-office e o provedor de pagamentos e entre o back-office e as estações de trabalho da equipe. Ela rotula cada fluxo de dados com sua classificação do capítulo 13. Os fluxos que levam dados pessoais através de fronteiras precisam de criptografia e autenticação; os que levam dados públicos precisam de integridade. O modelo rotulado se torna a base da modelagem de ameaças do próximo capítulo. Ele também facilita responder à pergunta de um auditor sobre por onde os dados pessoais trafegam.
+
+### 22.3 Manter os modelos fiéis
+
+Os modelos se afastam da realidade à medida que os sistemas mudam. Sofia propõe três práticas: guardar o modelo no controle de versão ao lado do código, revisá-lo em toda revisão de projeto e compará-lo a cada trimestre com os fluxos de rede observados e os logs de acesso. Quando a comparação encontra um fluxo que não está no modelo, ou o modelo ou o sistema está errado, e vale a pena saber qualquer das duas coisas. Daniel observa que diagramas desatualizados são piores do que nenhum, porque dão uma falsa confiança, então o modelo precisa ter um responsável por mantê-lo exato.
+
+### Exemplo resolvido
+
+Sofia modela seis componentes do back-office, encontra os relatórios contornando os controles de acesso, rotula os fluxos pela classificação e estabelece verificações trimestrais entre o modelo e a realidade.
+
+> **Caso sintético.** Os componentes e os fluxos são sintéticos.
+
+### Erros e limites
+
+Os modelos abstraem detalhes onde falhas podem se esconder. Os fluxos observados podem não incluir caminhos raros usados só durante incidentes.
+
+### Exercícios
+
+- **EX064 — Problema de contorno.** Que problema de projeto o modelo de componentes revelou? *Rubrica:* 3 = relatórios lendo diretamente o banco de viagens, contornando os controles de acesso;; 2 = contorno;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX065 — Fluxos de dados pessoais.** De que precisam os fluxos que levam dados pessoais através de fronteiras? *Rubrica:* 3 = criptografia e autenticação;; 2 = as duas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX066 — Resposta à deriva.** O que significa quando os fluxos observados incluem um que não está no modelo? *Rubrica:* 3 = ou o modelo ou o sistema está errado; investigar os dois;; 2 = investigar;; 1 = ignorar;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX066 (as de EX067–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -864,6 +1120,42 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX150 estão na edição em i
 **EX047.** Das necessidades de proteção das partes interessadas aos requisitos de segurança, à arquitetura e ao projeto, e à garantia de que são atendidos.
 
 **EX048.** Mostra quais elementos de projeto e evidências de verificação dependem daquele requisito.
+
+**EX049.** Disparando-a de propósito para que bloqueie usuários legítimos, transformando o controle numa negação de serviço.
+
+**EX050.** Durante o ataque, ela alternou entre 20 e 100 requisições por minuto a cada minuto (9 mudanças de direção), enquanto o ganho 0.6 se estabilizou perto de 56 com 1 mudança.
+
+**EX051.** Tamanhos de ajuste limitados e limites mínimo e máximo, com revisão humana quando os limites forem atingidos.
+
+**EX052.** Por requisitos de negócio expressos como atributos, como privado ou disponível.
+
+**EX053.** O serviço de gestão de chaves não tinha responsável operacional.
+
+**EX054.** Mostra qual atributo de negócio aquele controle sustentava e que agora fica enfraquecido.
+
+**EX055.** Uma conta de suporte compartilhada de fornecedor que contorna o single sign-on e a autenticação multifator.
+
+**EX056.** A Corvia nunca armazena os números reais dos cartões, então um vazamento dos seus sistemas não pode expô-los.
+
+**EX057.** Geração, armazenamento, rotação e revogação, além de distribuição e destruição.
+
+**EX058.** As obrigações do setor de pagamentos exigem segmentar os sistemas de pagamento das demais redes.
+
+**EX059.** Os validadores legados só podem ser substituídos no quinto ano.
+
+**EX060.** Que a tokenização de pagamentos já estava contratada e que o aplicativo de passageiros estava fora do escopo.
+
+**EX061.** Reembolsos acima de cinquenta euros devem exigir a aprovação de uma segunda pessoa distinta do solicitante, verificada por teste.
+
+**EX062.** Cada registro de validação deve ter um identificador único, e os duplicados devem ser detectados e rejeitados.
+
+**EX063.** Para procurar lacunas nos seus requisitos; ele revelou que faltava um requisito de proteção e revisão de logs.
+
+**EX064.** Os relatórios liam diretamente do banco de viagens, em vez de passar por uma interface, contornando os controles de acesso.
+
+**EX065.** Criptografia e autenticação do fluxo.
+
+**EX066.** Ou o modelo está desatualizado ou o sistema tem um fluxo inesperado; as duas possibilidades precisam ser investigadas.
 
 <a id="references"></a>
 ## Referências
