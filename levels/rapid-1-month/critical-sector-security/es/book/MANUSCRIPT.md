@@ -51,7 +51,7 @@ Toda afirmación factual sobre un marco público, una ley, una orientación o un
 1. [Fundamentos y decisiones](#ch-01): servicios esenciales, sectores y funciones, primero la consecuencia, una primera frase de riesgo y las tres decisiones del recién llegado.
 2. [Alcance, permiso y práctica segura](#ch-02): qué significa la autorización, los límites del recién llegado, la comunicación y el intercambio cuidadoso de información.
 3. [Sistemas, datos y dependencias](#ch-03): personas, TI, tecnología operativa, datos, proveedores; dependencias aguas arriba y aguas abajo; puntos únicos de fallo.
-4. [Laboratorio guiado y síntesis aplicada](../../en/book/MANUSCRIPT.md#ch-04): el Lab 4 (¿qué más falla?), una ficha del servicio de una página y una autocomprobación del curso.
+4. [Laboratorio guiado y síntesis aplicada](#ch-04): el Lab 4 (¿qué más falla?), una ficha del servicio de una página y una autocomprobación del curso.
 - [Resultados resueltos](#worked-results) · [Glosario](#glossary) · [Referencias](#references)
 
 <a id="ch-01"></a>
@@ -464,9 +464,192 @@ Un servicio esencial son personas, TI, tecnología operativa, datos y proveedore
 <!-- cyberabc:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 04
 
-[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Infraestructura crítica y seguridad sectorial: laboratorio guiado y síntesis aplicada
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo será capaz de:
+
+- leer un mapa sencillo de dependencias escrito como texto, incluidos los respaldos;
+- predecir y luego comprobar qué servicios fallan cuando falla uno (una **cascada**);
+- explicar por qué un respaldo puede no proteger un servicio y qué deja fuera un modelo;
+- elaborar una **ficha del servicio** anotada de una página que reúna los capítulos 1 a 3;
+- comprobar su propia preparación con una breve autoevaluación del curso.
+
+Este capítulo aplica todo lo visto: primero la consecuencia (capítulo 1), práctica segura solo con datos sintéticos (capítulo 2) y dependencias (capítulo 3). Completa la tarea guiada del curso.
+
+### 4.1 Cascadas
+
+Cuando falla un servicio y, a su vez, fallan otros que dependen de él, el fallo se propaga **en cascada**. Las cascadas son la razón por la que las infraestructuras críticas se tratan como un sistema conectado y no como una lista de organizaciones separadas, y por la que las listas nacionales agrupan los servicios en funciones que dependen unas de otras ([CISA, National Critical Functions Set](https://www.cisa.gov/national-critical-functions-set)). Los apagones de Ucrania y el incidente de *ransomware* del oleoducto de los capítulos anteriores tuvieron efectos mucho más allá de la primera organización afectada.
+
+Puede razonar sobre las cascadas con un lápiz: dibuje cada servicio, trace una flecha hacia cada cosa que necesita y, después, «apague» una caja y siga las flechas hacia atrás. Unas pocas líneas de código pueden llevar esa misma contabilidad sin errores, que es lo que hace el Lab 4.
+
+### 4.2 Lab 4: ¿qué más falla? (sintético)
+
+**Objetivo:** seguir la cascada cuando fallan uno o dos servicios de Larkfield. **Insumos:** el mapa sintético del código. **Alcance autorizado:** solo su propio ordenador; sin red ni datos reales. **Pasos:** lea el mapa; *antes* de mirar la salida, anote lo que espera que falle en cada escenario; después compárelo con la salida impresa (o ejecute `python3 lab4.py`). **Evidencia esperada:** sus predicciones, la salida y una frase por cada diferencia. Cómo leer el mapa: cada línea es `service ; what it needs` (servicio; lo que necesita). Las necesidades se separan con comas: el servicio las necesita **todas**. Una barra vertical `a|b` significa que **basta con a o con b** (b es un respaldo de a). Un servicio sin nada después del punto y coma no depende de nada en este modelo.
+
+```python
+# Lab 4 - who is affected if one thing fails? (offline, standard library only; all data synthetic)
+# Each line: service ; what it needs to keep working (comma-separated)
+MAP = """
+grid power      ;
+backup diesel   ; fuel delivery
+fuel delivery   ; roads
+roads           ;
+phone network   ; grid power
+water pumps     ; grid power, phone network
+clinic          ; grid power|backup diesel, water pumps, phone network
+card payments   ; phone network, grid power
+pharmacy        ; card payments, clinic
+"""
+needs = {}
+for line in MAP.strip().splitlines():
+    name, deps = (part.strip() for part in line.split(";"))
+    # "a|b" means: either a or b is enough (a backup)
+    needs[name] = [set(d.strip().split("|")) for d in deps.split(",") if d.strip()]
+
+def still_working(failed):
+    up = {s for s in needs if s not in failed}
+    changed = True
+    while changed:
+        changed = False
+        for s in sorted(up):
+            for options in needs[s]:
+                if not (options & up):
+                    up.discard(s)
+                    changed = True
+                    break
+    return up
+
+for failed in (["grid power"], ["phone network"], ["roads"], ["grid power", "roads"]):
+    up = still_working(set(failed))
+    down = sorted(set(needs) - up - set(failed))
+    print(f"FAIL {' + '.join(failed):<20} -> also down: {', '.join(down) if down else '(nothing else)'}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+FAIL grid power           -> also down: card payments, clinic, pharmacy, phone network, water pumps
+FAIL phone network        -> also down: card payments, clinic, pharmacy, water pumps
+FAIL roads                -> also down: backup diesel, fuel delivery
+FAIL grid power + roads   -> also down: backup diesel, card payments, clinic, fuel delivery, pharmacy, phone network, water pumps
+```
+
+**Lectura del resultado.**
+
+1. *Falla la red eléctrica.* El centro de salud tiene un respaldo diésel y, aun así, el centro cae. ¿Por qué? El centro también necesita las **bombas de agua** y la **red telefónica**, y en este mapa ambas necesitan la red eléctrica sin respaldo. El generador mantiene encendidas las luces del centro, pero sin agua ni teléfono no puede funcionar. *Un respaldo protege una dependencia, no todo el servicio.*
+2. *Falla la red telefónica.* Las bombas de agua caen, porque en este mapa las bombas necesitan la red telefónica (piense en el control remoto y la telemetría). Después caen el centro y la farmacia. Si las bombas reales se detienen cuando fallan las comunicaciones es justo el tipo de pregunta que hay que hacer al dueño; muchas estaciones pueden funcionar en local. El modelo solo es tan cierto como sus líneas.
+3. *Fallan las carreteras.* Solo caen la entrega de combustible y el respaldo diésel. No se ve afectado nada más **mientras la red eléctrica funcione**. El respaldo ha fallado en silencio, y nadie lo notaría hasta que hiciera falta.
+4. *Fallan a la vez la red eléctrica y las carreteras.* Cae todo. Las crisis reales (tormentas, inundaciones) a menudo rompen varias cosas a la vez.
+
+**Lo que deja fuera el modelo.** El tiempo (el generador tiene combustible para dos horas; la red telefónica puede tener baterías), los fallos parciales (una señal débil, un sistema lento), las personas (personal que no puede llegar al trabajo) y las alternativas manuales (pagos en efectivo, listas en papel). Un modelo le ayuda a hacer mejores preguntas; no le dice lo que realmente ocurrirá.
+
+**Probar un cambio.** Dos modificaciones «¿y si…?» muestran cómo cambian el panorama los respaldos. Estas salidas se obtuvieron modificando el mapa exactamente como se describe:
+
+- *Modificación A:* dar una batería a la red telefónica; cambie su línea por `phone network ; grid power|phone battery` y añada la línea `phone battery ;`. Ahora, un fallo de la red eléctrica hace caer: los pagos con tarjeta, el centro, la farmacia y las bombas de agua. El teléfono sobrevive, pero el centro sigue fallando porque las bombas de agua siguen necesitando la red eléctrica.
+- *Modificación B:* la modificación A **más** dar a las bombas de agua el respaldo diésel: `water pumps ; grid power|backup diesel, phone network`. Ahora, un fallo de la red eléctrica solo hace caer: los pagos con tarjeta y la farmacia. El centro sobrevive. La farmacia falla porque los pagos con tarjeta necesitan directamente la red eléctrica, lo que sugiere la pregunta «¿puede la farmacia cobrar en efectivo o registrar las ventas en papel?».
+
+### 4.3 Ejemplo resuelto: la ficha del servicio de Sam (sintético)
+
+El artefacto anotado del curso es una **ficha del servicio** de una página: un resumen en lenguaje llano de un servicio esencial que un recién llegado puede escribir a partir de información pública o sintética. La ficha de Sam para el centro de salud:
+
+> **Ficha del servicio — Larkfield Community Clinic (sintético)** · Autoría: Sam Reyes · Fecha: semana 4 · Difusión: TLP:AMBER+STRICT (solo dentro del centro)
+>
+> **Función:** prestar atención médica sin cita previa y dispensar medicamentos a unos 20 000 vecinos. **Primeros perjudicados si se detiene:** pacientes que necesitan atención en el día y recetas de uso continuado; la farmacia, aguas abajo.
+>
+> **Orden de preocupación:** (1) seguridad de las personas: medicamentos erróneos o que faltan, vacunas conservadas a una temperatura incorrecta; (2) continuidad: sin lista de citas ni teléfono; (3) confianza: registros erróneos; (4) privacidad: filtración de datos de pacientes.
+>
+> **Dependencias clave:** red eléctrica (respaldo: generador, combustible para 2 h, *que depende de la entrega de combustible*); teléfono e internet de LinkNet (*no se conoce respaldo*); MedBook (nube); Larkfield Water; una sola persona de enfermería que conoce la alarma del frigorífico.
+>
+> **Dos frases de riesgo:** (a) Como LinkNet es nuestra única conexión, un corte de LinkNet podría detener a la vez las citas, las reservas telefónicas y los pagos con tarjeta, lo que llevaría a rechazar pacientes durante horas. (b) Como el personal recibe correos falsos de MedBook, alguien podría introducir su contraseña en una página falsa, lo que llevaría a que una persona ajena bloqueara la lista de citas.
+>
+> **Hallazgo del laboratorio (mapa sintético):** en el Lab 4, un fallo de la red eléctrica detiene el centro incluso con el generador, porque también fallan las bombas de agua y el teléfono.
+>
+> **Supuesto / desconocido:** que no existe una lista de citas en papel; si LinkNet tiene batería de respaldo; si MedBook usa un segundo factor.
+>
+> **Preguntas para la persona dueña (H. Novak):** ¿Hay una lista impresa a diario? ¿Es posible una segunda línea de internet o un respaldo móvil? ¿Se puede formar a otra persona en la alarma del frigorífico?
+>
+> **Lo que no hice:** contactar con LinkNet ni con MedBook, probar ningún sistema ni cambiar ninguna configuración.
+
+Cada línea puede rastrearse hasta algo aprendido en el curso, y cada suposición está marcada.
+
+### 4.4 Actividad práctica y rúbrica de evaluación
+
+Escriba su propia ficha de un servicio que elija (a partir de información pública) o de Larkfield Water, con los detalles sintéticos de este libro. Use los encabezados de 4.3. Después complete sin apuntes la autoevaluación siguiente.
+
+| Criterio | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| Función y personas perjudicadas | Falta | Solo nombra la organización | Función o personas | Función y quién resulta perjudicado primero |
+| Orden de preocupación | Falta | Solo los datos | Algún orden | Seguridad de las personas → continuidad → confianza → privacidad, con ejemplos |
+| Dependencias | Falta | Una o dos | Aguas arriba y aguas abajo | Aguas arriba, aguas abajo, compartidas, respaldos y sus dependencias |
+| Frases de riesgo | Falta | Palabras sueltas | Una frase completa | Dos frases completas de causa, evento y consecuencia |
+| Honestidad y seguridad | Suposiciones como hechos; se sugiere sondear | Algunas suposiciones sin marcar | Supuestos marcados | Supuestos marcados, etiqueta de difusión fijada y «lo que no hice» indicado |
+
+Una ficha con 12 puntos o más sobre 15, sin ningún cero, alcanza el nivel del curso.
+
+**Autoevaluación del curso (cuestionario breve).** Responda en una línea cada pregunta y después compruebe los resultados resueltos en EX050.
+
+1. Nombre dos sectores de infraestructura crítica.
+2. Ordene: confidencialidad, seguridad de las personas, disponibilidad.
+3. ¿Tener un usuario es lo mismo que tener permiso?
+4. ¿Cuáles son las cinco partes de un buen aviso?
+5. ¿Quién puede recibir información TLP:RED?
+6. ¿Qué hace un PLC?
+7. ¿Qué es una dependencia compartida?
+8. ¿Por qué un respaldo puede no proteger un servicio?
+
+### 4.5 Errores comunes y límites
+
+- Leer la salida del laboratorio como una predicción de la realidad y no como una consecuencia de las líneas del mapa.
+- Olvidar que `a|b` significa *una u otra* y que las comas significan *todas*.
+- Añadir un respaldo y dar por hecho que todo el servicio ya está seguro.
+- Escribir una ficha del servicio llena de suposiciones sin marcar, o reunir datos sondeando un servicio real.
+- Límites: el laboratorio ignora el tiempo, los fallos parciales, las personas y las alternativas manuales; el análisis real de dependencias lo hacen los dueños con datos reales y se enseña en cursos posteriores.
+
+### Ejercicios — capítulo 4
+
+**EX039 — Leer el mapa.** *Objetivo:* interpretar la notación. *Insumos:* la línea `clinic ; grid power|backup diesel, water pumps, phone network`. *Pasos:* explicar con palabras lo que necesita el centro. *Evidencia esperada:* una o dos frases. *Rúbrica:* 3 = necesita (red eléctrica o respaldo diésel) y bombas de agua y red telefónica: los tres grupos; 2 = un desliz menor sobre «una u otra» o «todas»; 1 = trata todo como alternativas; 0 = nada.
+
+**EX040 — Predecir antes de mirar.** *Objetivo:* practicar la predicción. *Insumos:* el mapa, escenario «falla la red eléctrica». *Pasos:* sin la salida, enumerar lo que espera que falle y después comparar. *Evidencia esperada:* predicción, salida y una frase por diferencia. *Rúbrica:* 3 = predicción honesta registrada y diferencias explicadas (sobre todo por qué el centro falla a pesar del generador); 2 = comparación sin explicación; 1 = solo copia la salida; 0 = nada.
+
+**EX041 — Por qué no bastó el generador.** *Objetivo:* explicar el resultado clave. *Insumos:* la línea 1 de la salida. *Pasos:* explicarlo en dos frases. *Evidencia esperada:* la explicación. *Rúbrica:* 3 = el generador solo cubre la electricidad; el centro también necesita las bombas de agua y el teléfono, que fallan sin la red eléctrica; 2 = menciona una de las dos cosas; 1 = vago; 0 = nada.
+
+**EX042 — Fallo silencioso.** *Objetivo:* reconocer la pérdida oculta de un respaldo. *Insumos:* la línea 3 de la salida. *Pasos:* explicar por qué «fallan las carreteras» es más preocupante de lo que parece y sugerir una forma en que el dueño podría notarlo. *Evidencia esperada:* dos frases. *Rúbrica:* 3 = no falla nada visible, pero el centro ha perdido su respaldo mientras la red eléctrica funciona; el dueño podría revisar los niveles de combustible o el estado de las entregas, o probar el generador con regularidad; 2 = solo la primera parte; 1 = «no pasa nada, así que bien»; 0 = nada.
+
+**EX043 — Cuestionar el modelo.** *Objetivo:* poner en duda los supuestos. *Insumos:* la línea 2 de la salida (las bombas fallan cuando falla el teléfono). *Pasos:* escribir una pregunta para el dueño del agua y decir por qué importa la respuesta. *Evidencia esperada:* pregunta y motivo. *Rúbrica:* 3 = pregunta si las bombas pueden funcionar en local o a mano sin comunicaciones, y explica que, si es así, no se produciría la cascada hasta el centro; 2 = pregunta sin motivo; 1 = acepta la salida como un hecho; 0 = nada.
+
+**EX044 — Modificación A.** *Objetivo:* razonar sobre un cambio. *Insumos:* el resultado de la modificación A. *Pasos:* explicar por qué el centro sigue fallando con una batería para el teléfono. *Evidencia esperada:* una o dos frases. *Rúbrica:* 3 = ahora el teléfono sobrevive, pero las bombas de agua siguen necesitando la red eléctrica sin respaldo, y el centro necesita agua; 2 = parcial; 1 = incorrecto; 0 = nada.
+
+**EX045 — Modificación B.** *Objetivo:* seguir un segundo cambio. *Insumos:* el resultado de la modificación B. *Pasos:* explicar por qué el centro sobrevive y la farmacia no, y proponer una alternativa manual para la farmacia. *Evidencia esperada:* explicación y alternativa. *Rúbrica:* 3 = la electricidad, el agua y el teléfono del centro tienen ahora una vía que funciona; la farmacia necesita los pagos con tarjeta, que necesitan directamente la red eléctrica; una alternativa como el efectivo o registros en papel que se introducen después; 2 = solo la explicación; 1 = vago; 0 = nada.
+
+**EX046 — Lo que deja fuera el modelo.** *Objetivo:* indicar los límites. *Insumos:* la sección 4.2. *Pasos:* nombrar tres cosas que el laboratorio no modela y cómo podría cambiar cada una el resultado. *Evidencia esperada:* tres pares. *Rúbrica:* 3 = tres entre el tiempo, los fallos parciales, las personas y las alternativas manuales, cada una con un efecto (por ejemplo, el generador se queda sin combustible a las dos horas); 2 = tres sin efectos; 1 = una o dos; 0 = nada.
+
+**EX047 — Dibujarlo.** *Objetivo:* convertir un texto en un diagrama. *Insumos:* el mapa original. *Pasos:* dibujar cajas y flechas (en papel o como esquema de texto) y sombrear lo que falla cuando falla la red telefónica. *Evidencia esperada:* diagrama con un sombreado que coincida con la línea 2 de la salida. *Rúbrica:* 3 = los nueve servicios, flechas del dependiente a la dependencia, la alternativa «una u otra» marcada y sombreado correcto; 2 = un error; 1 = varios; 0 = nada.
+
+**EX048 — Escribir una ficha del servicio.** *Objetivo:* elaborar el artefacto del curso. *Insumos:* los detalles sintéticos de Larkfield Water de los capítulos 1 a 4 (bombas, tratamiento, D. Brandt, electricidad, LinkNet, el proveedor de las bombas). *Pasos:* escribir una ficha del servicio con los encabezados de 4.3. *Evidencia esperada:* una ficha de una página. *Rúbrica:* usar la rúbrica de 4.4; 3 = 13–15 sin ningún cero; 2 = 10–12; 1 = 6–9; 0 = menos de 6.
+
+**EX049 — Revisión entre pares.** *Objetivo:* evaluar con una rúbrica. *Insumos:* la ficha de Sam en 4.3. *Pasos:* puntuarla con la rúbrica de 4.4 y nombrar una mejora. *Evidencia esperada:* cinco puntuaciones, el total y la mejora. *Rúbrica:* 3 = puntuaciones defendibles (altas en la mayoría de los criterios) con una mejora concreta (por ejemplo, añadir un dependiente aguas abajo además de la farmacia, o un contacto para comunicar incidentes); 2 = puntuaciones sin mejora; 1 = puntuaciones sin justificar; 0 = nada.
+
+**EX050 — Autoevaluación del curso.** *Objetivo:* confirmar los conocimientos básicos. *Insumos:* las ocho preguntas de 4.4. *Pasos:* responder cada una en una línea sin apuntes. *Evidencia esperada:* ocho respuestas. *Rúbrica:* 3 = siete u ocho correctas; 2 = cinco o seis; 1 = tres o cuatro; 0 = menos.
+
+### Síntesis del capítulo
+
+Los fallos de las infraestructuras críticas se propagan en cascada a lo largo de las dependencias, y los respaldos solo protegen la dependencia que sustituyen, y solo mientras se mantienen sus propias dependencias. Un modelo pequeño y sintético hace visibles las cascadas y, sobre todo, genera buenas preguntas; nunca sustituye el conocimiento del dueño. La ficha del servicio reúne el curso en una página honesta: función, orden de consecuencias, dependencias, frases de riesgo, supuestos y lo que usted no hizo.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Siga estudiando — capítulo 04 de 04
+
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -556,6 +739,32 @@ Estas son respuestas modelo. Una respuesta distinta que cumpla el nivel de exige
 **EX037.** El oleoducto suministraba un combustible del que dependían muchas empresas y comunidades, así que era una dependencia compartida aguas arriba. Cuando la empresa sufrió la perturbación, el efecto se extendió a usuarios aguas abajo que no habían sido atacados.
 
 **EX038.** «Hola, H.: al enumerar de qué depende el centro, solo he encontrado un proveedor de internet y teléfono, LinkNet. No sé si hay una línea de respaldo o una alternativa móvil; supongo que no, pero puedo equivocarme. Si no la hay, un corte detendría a la vez MedBook, el teléfono y los pagos con tarjeta. ¿Valdría la pena consultarlo con K. Ito? — Sam»
+
+### Capítulo 4
+
+**EX039.** El centro necesita tres cosas a la vez: electricidad de la red eléctrica **o** del respaldo diésel, **y** bombas de agua que funcionen, **y** la red telefónica.
+
+**EX040.** Predicción típica: «el centro sigue funcionando gracias al generador; fallan el teléfono y las bombas». Salida: también fallan el centro, la farmacia y los pagos con tarjeta. Diferencia explicada: el generador solo cubre la electricidad; el agua y el teléfono no tienen respaldo en el mapa.
+
+**EX041.** El generador solo sustituye a la red eléctrica. El centro también necesita las bombas de agua y la red telefónica, que necesitan ambas la red eléctrica sin respaldo, así que fallan y arrastran al centro con ellas.
+
+**EX042.** No se detiene nada visible y, sin embargo, el centro ha perdido su respaldo: si la red eléctrica falla más tarde, no habrá combustible. El dueño podría notarlo revisando las existencias de combustible y el estado de las entregas, o probando el generador de forma programada.
+
+**EX043.** «¿Pueden las bombas seguir funcionando en local, o manejarse a mano, si se pierden las comunicaciones?» Si es así, la línea `water pumps ; grid power, phone network` es errónea para el funcionamiento en local, y la cascada hasta el centro no se produciría cuando falla el teléfono.
+
+**EX044.** Con una batería, la red telefónica sobrevive. Pero las bombas de agua siguen necesitando la red eléctrica sin respaldo, así que fallan; el centro necesita agua, así que también falla.
+
+**EX045.** Ahora el centro tiene una vía que funciona para cada necesidad: electricidad del diésel, agua de las bombas alimentadas con diésel y teléfono con batería. La farmacia sigue necesitando los pagos con tarjeta, que necesitan directamente la red eléctrica. Alternativa: aceptar efectivo o registrar las ventas en papel para introducirlas después.
+
+**EX046.** El tiempo: el generador solo tiene combustible para dos horas, así que el centro fallaría más tarde. Los fallos parciales: una red lenta podría permitir el teléfono, pero no los pagos. Las personas: si el personal no puede desplazarse durante una tormenta, el centro cerraría aunque tuviera electricidad. (También son aceptables las alternativas manuales: las listas en papel podrían mantener el centro parcialmente abierto.)
+
+**EX047.** Nueve cajas; flechas de cada servicio a lo que necesita; la flecha de electricidad del centro dividida en «grid power | backup diesel». Con la red telefónica caída, se sombrean la red telefónica, las bombas de agua, los pagos con tarjeta, el centro y la farmacia; la red eléctrica, las carreteras, la entrega de combustible y el respaldo diésel quedan sin sombrear.
+
+**EX048.** Una buena ficha incluye: la función (suministrar agua potable segura a unos 20 000 vecinos); los primeros perjudicados (los hogares, el centro de salud); el orden de preocupación (dosificación errónea → pérdida de suministro → lecturas falsas → filtración de datos); las dependencias (red eléctrica, proveedor de productos químicos, LinkNet para la telemetría, el acceso remoto del proveedor de las bombas, operadores de turno como D. Brandt; aguas abajo, los hogares, el centro y la farmacia); dos frases de riesgo (por ejemplo, la contraseña compartida del proveedor; la pérdida de telemetría); los supuestos (si las bombas funcionan en local sin LinkNet); preguntas para el dueño; una etiqueta de difusión; y «lo que no hice: contactar con la planta ni probar nada». Puntúela con la rúbrica de 4.4.
+
+**EX049.** Una puntuación defendible: función 3, orden de preocupación 3, dependencias 3 (se señalan las dependencias compartidas y las de los respaldos), frases de riesgo 3, honestidad y seguridad 3: 15/15, o 14 si considera que los dependientes aguas abajo son escasos. Mejora: añadir dependientes aguas abajo además de la farmacia (por ejemplo, residencias cuyos residentes acuden al centro) o el contacto para comunicar incidentes.
+
+**EX050.** (1) Dos cualesquiera, por ejemplo la energía y la sanidad. (2) Seguridad de las personas, disponibilidad, confidencialidad. (3) No. (4) Qué, cuándo, dónde, qué hizo, posible efecto. (5) Solo quienes estaban presentes cuando se compartió. (6) Lee los sensores y controla los actuadores mediante reglas programadas. (7) Una dependencia que usan muchos servicios a la vez, como una única red telefónica. (8) Solo sustituye una dependencia, y tiene sus propias dependencias (combustible, carreteras, personas) que pueden fallar.
 
 <a id="glossary"></a>
 
