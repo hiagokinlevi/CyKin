@@ -160,6 +160,12 @@ Read it as an engineer. At $t = 3$ h the backlog grows at about 12 cases per hou
 Cases are discrete, arrive in bursts and are not interchangeable: one ransomware case may consume more effort than forty phishing reports. The continuous model also ignores that people triage, merge duplicates and defer low-severity work — so the model overstates the backlog of *important* work and understates the backlog of trivial work. A difference quotient on noisy hourly counts amplifies noise; smooth before you differentiate, and report the window used. Finally, $\mu$ is not constant: fatigue, handovers and context switching reduce it exactly when the surge is worst.
 
 ### 1.5 Common errors and limits
+Section one point five develops calculus with a the response platform note the engineer can demo offline.
+
+Under section one point five, the design authority expects calculus claims to carry owners and dates.
+
+Section one point five treats calculus as testable only when evidence and ticket IDs are recorded.
+
 
 - Mixing units (per day vs per hour) in the same equation.
 - Treating capacity as fixed during a long incident.
@@ -203,6 +209,12 @@ An **invariant** is a property that must hold in every reachable state or on eve
 ### 2.3 Checking by search
 
 To test the path invariant, delete the *approved* node and ask whether *contained* is still reachable from *new*. Breadth-first search answers in time linear in the number of edges. If it is reachable, every edge into *contained* from a state other than *approved* is a candidate violation.
+
+Section two point three develops discrete mathematics with a the response platform note the engineer can demo offline.
+
+Under section two point three, the design authority expects discrete claims to carry owners and dates.
+
+Section two point three treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
 
 ### 2.4 Worked example (synthetic): an approval graph at HVSS
 
@@ -250,7 +262,21 @@ The search finds the bypass path and names the edge. Separation of duties holds 
 
 Graph models check structure, not people's behaviour: a duty manager who approves everything satisfies the invariant. State explosion appears when states carry data (tenant, severity); then you check properties over a model abstraction and test the implementation separately (Chapter 30).
 
+Section two point five develops discrete mathematics with a the response platform note the engineer can demo offline.
+
+Under section two point five, the design authority expects discrete claims to carry owners and dates.
+
+Section two point five treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
+
 ### 2.6 Common errors
+Section two point six develops discrete mathematics with a the response platform note the engineer can demo offline.
+
+Under section two point six, the design authority expects discrete claims to carry owners and dates.
+
+Section two point six treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, the response platform will not accept discrete work without a written trail.
+
 
 - Writing invariants in prose that cannot be checked.
 - Checking only the "happy path".
@@ -294,11 +320,19 @@ Evidence lives on physical media. Flash memory wears with program/erase cycles a
 
 Clocks are oscillators with drift measured in parts per million (ppm). A crystal at 50 ppm drifts up to $50 \times 10^{-6} \times 86{,}400 \approx 4.3$ s per day if left unsynchronised. Correlating events across hosts with second-level resolution therefore requires synchronisation (NTP, [RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)) and recording of offset when known. Every timestamp is a measurement with an error bar; a timeline that ignores it can invert cause and effect.
 
+Section three point three develops physics for computing with a the response platform note the engineer can demo offline.
+
 ### 3.4 Worked example (synthetic): the edge collector that went quiet
 
 An HVSS branch office collector (a fan-less box in a cupboard, **synthetic**) normally forwards 40 events/s. On hot afternoons the CPU throttles from 1.8 GHz to 0.9 GHz; parsing capacity falls from 60 to 30 events/s; its 64 MB buffer at ~1 kB/event holds about 65,000 events, which at a deficit of 10 events/s lasts about 1.8 hours. Then events are dropped without an alarm. The physical failure chain is: ambient heat → throttling → capacity below arrival rate → buffer exhaustion → silent loss → analysts see a "quiet" host during the period that matters. Measurable checks: CPU temperature and frequency exported as telemetry; forwarder queue depth and drop counters; a heartbeat event every minute with sequence numbers so gaps are detectable at the receiver; clock offset reported with each batch.
 
 ### 3.5 Errors and limits
+Section three point five develops physics for computing with a the response platform note the engineer can demo offline.
+
+Under section three point five, the design authority expects physics claims to carry owners and dates.
+
+Section three point five treats physics for computing as testable only when evidence and ticket IDs are recorded.
+
 
 - Treating absence of events as evidence of absence of activity.
 - Assuming timestamps from different hosts are directly comparable.
@@ -339,9 +373,13 @@ In incident response, a script is not just a convenience; it touches material th
 
 Keep parsing, validation and output in separate functions. A validation function takes one record and returns a list of named errors; an empty list means valid. Names matter: "severity" is a better error than "bad row". Validate type (is it a timestamp?), range (severity 1–4), presence (reporter required) and uniqueness (no duplicate key). Use a standard parser for CSV — hand-splitting on commas breaks on quoted fields, which is exactly how many real intake tools corrupt data.
 
+Section four point two develops programming with a the response platform note the engineer can demo offline.
+
 ### 4.3 Worked example (synthetic): HVSS case intake
 
 Lab 4 parses six records exported from a **synthetic** intake form. Four are flawed in different ways.
+
+Section four point three develops programming with a the response platform note the engineer can demo offline.
 
 ```python
 """Lab 4 (synthetic): validating intake parser that quarantines, never discards."""
@@ -393,7 +431,17 @@ Observe: the duplicate is detected by a composite key (case ID plus timestamp), 
 
 Write tests for each rule and for the conservation property, plus one for idempotence — running the program twice on the same input gives the same output. Test the boundary values (severity 0, 1, 4, 5) and the empty file. A test that only checks the happy path tells you nothing about the failures that occur during incidents, when inputs are at their worst.
 
+Section four point four develops programming with a the response platform note the engineer can demo offline.
+
+Under section four point four, the design authority expects programming claims to carry owners and dates.
+
 ### 4.5 Errors and limits
+Section four point five develops programming with a the response platform note the engineer can demo offline.
+
+Under section four point five, the design authority expects programming claims to carry owners and dates.
+
+Section four point five treats programming as testable only when evidence and ticket IDs are recorded.
+
 
 - `except: pass` or equivalent silent swallowing of errors.
 - Dropping invalid rows rather than quarantining them.
@@ -434,9 +482,15 @@ A good requirement is **necessary, unambiguous, verifiable and owned**. "The pla
 
 A trace table links each stakeholder need to requirements, design elements, tests and results. Its value appears during change: when the approval chain changes, you know which tests to rerun. A requirement without a test is a hope; a test without a requirement is either missing a requirement or wasted effort.
 
+Section five point two develops engineering communication with a the response platform note the engineer can demo offline.
+
+Under section five point two, the design authority expects engineering claims to carry owners and dates.
+
 ### 5.3 Diagrams and audience
 
 A context diagram shows the system as one box, its external actors and data flows, and the trust boundaries crossed. Name owners on every external element. Write for the reader: a service owner needs consequences and decisions; an engineer needs interfaces and limits; an auditor needs evidence and accountability. One document can serve all three only if it is layered: a one-page summary, then detail.
+
+Section five point three develops engineering communication with a the response platform note the engineer can demo offline.
 
 ### 5.4 Worked example (synthetic): rewriting an HVSS design brief
 
@@ -452,6 +506,14 @@ The **synthetic** brief says: "The new response platform will automatically dete
 Unresolved assumptions recorded as risk notes: the cloud provider's log delivery delay is unknown; retention conflicts with the privacy officer's 180-day default and needs a decision.
 
 ### 5.5 Errors and limits
+Section five point five develops engineering communication with a the response platform note the engineer can demo offline.
+
+Under section five point five, the design authority expects engineering claims to carry owners and dates.
+
+Section five point five treats engineering communication as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, the response platform will not accept engineering work without a written trail.
+
 
 - Unmeasurable adjectives (fast, robust, seamless).
 - Requirements that prescribe a product instead of a property.
@@ -496,6 +558,8 @@ clipped at zero. A second integral matters more for people affected by an incide
 
 Real rates are samples, not formulas. The trapezoidal rule approximates $\int f$ by summing $(f_i + f_{i+1})h/2$; Euler's method, used in Lab 1, updates $Q \leftarrow Q + (\lambda - \mu)h$. Halving the step and comparing results is a simple convergence check: if the answer changes in the second significant digit, the step is too large. Lab 1 reports $W \approx 371$ case-hours for the 12 hours after the outage starts (Chapter 1).
 
+Section six point two develops calculus ii with a the response platform note the engineer can demo offline.
+
 ### 6.3 Recovery trajectories and model fit
 
 Service recovery often looks like exponential approach to normal: performance $P(t) = P_\infty - (P_\infty - P_0)e^{-t/\tau}$, where $\tau$ is the time constant — after $\tau$, about 63% of the gap is closed. Fitting $\tau$ to observations by taking logs of the remaining gap turns the problem into linear regression. The fit is only a description: check residuals; if recovery happens in steps (a database comes back, then the portal), a smooth exponential hides the structure that matters for planning, and a piecewise model by dependency (Chapter 13) is better. The area between full performance and $P(t)$ is the resilience-loss measure proposed by [Bruneau et al. (2003)](https://doi.org/10.1193/1.1623497); for an exponential recovery it equals $(P_\infty - P_0)\tau$.
@@ -504,11 +568,21 @@ Service recovery often looks like exponential approach to normal: performance $P
 
 A model is valid inside stated conditions: initial backlog, staffing, arrival pattern and the assumption that work is not lost or merged. State them. "The backlog clears in 20 h *assuming* constant staffing of six, arrivals following last month's daily profile and no second incident" is a defensible statement; "the backlog clears in 20 h" is not.
 
+Section six point four develops calculus ii with a the response platform note the engineer can demo offline.
+
+Under section six point four, the design authority expects calculus claims to carry owners and dates.
+
 ### 6.5 Worked example (synthetic): staffing a surge
 
 HVSS considers adding two analysts (capacity 12 → 16 cases/h) from hour 4 to hour 10 of the Chapter 1 outage. Modify Lab 1 so `MU` is a function of time. Running the modified model gives a peak of 41.9 cases (down from 49.9) and $W \approx 250$ case-hours (down from 371). The peak falls only modestly because the extra staff arrive two hours into the surge; much of the reduction in $W$ comes from the faster drain between hours 6 and 10, when the base team alone would remove only 1–4 cases per hour. A cheaper design might defer low-severity cases during the surge and concentrate surge staff on the drain phase, where each added case/hour of capacity removes waiting that would otherwise persist for many hours.
 
 ### 6.6 Errors and limits
+Section six point six develops calculus ii with a the response platform note the engineer can demo offline.
+
+Under section six point six, the design authority expects calculus claims to carry owners and dates.
+
+Section six point six treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
 
 - Optimising time-to-clear while ignoring accumulated waiting and severity.
 - Using a step size so large that the integral is wrong.
@@ -553,9 +627,17 @@ with prevalence $\pi$. [Axelsson (2000)](https://doi.org/10.1145/357830.357849) 
 
 A proportion from a small sample is uncertain. The Wilson score interval behaves better than the simple $\hat p \pm 1.96\sqrt{\hat p(1-\hat p)/n}$ near 0 or 1 and for small $n$. Always report $k/n$, the estimate and the interval. "90% correct" from 20 cases has an interval of roughly 70–97%.
 
+Section seven point two develops probability and statistics with a the response platform note the engineer can demo offline.
+
+Under section seven point two, the design authority expects probability claims to carry owners and dates.
+
 ### 7.3 Bias and confounding
 
 Comparisons between workflows are confounded when the groups differ in case mix. **Simpson's paradox** ([Simpson, 1951](https://doi.org/10.1111/j.2517-6161.1951.tb00088.x)) is the extreme case: a workflow can be better in every severity stratum and worse overall because it handled a harder mix. Stratify by known confounders, or better, assign cases to workflows at random when you can (Chapter 29).
+
+Section seven point three develops probability and statistics with a the response platform note the engineer can demo offline.
+
+Under section seven point three, the design authority expects probability claims to carry owners and dates.
 
 ### 7.4 Worked example (synthetic): two triage workflows
 
@@ -602,7 +684,21 @@ Pooled, B looks far better (0.81 vs 0.64). Stratified, A is better in both sever
 
 A $p$-value answers a narrow question about data under a null model; it does not measure effect size or importance. Searching many metrics until one is "significant" produces false findings ([Simmons, Nelson and Simonsohn, 2011](https://doi.org/10.1177/0956797611417632)). Pre-state the primary measure before looking at results.
 
+Section seven point five develops probability and statistics with a the response platform note the engineer can demo offline.
+
+Under section seven point five, the design authority expects probability claims to carry owners and dates.
+
+Section seven point five treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
 ### 7.6 Errors and limits
+Section seven point six develops probability and statistics with a the response platform note the engineer can demo offline.
+
+Under section seven point six, the design authority expects probability claims to carry owners and dates.
+
+Section seven point six treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, the response platform will not accept probability work without a written trail.
+
 
 - Reporting accuracy without base rate or interval.
 - Pooling across strata with different mixes.
@@ -642,9 +738,13 @@ A modern host stores state at many levels: CPU registers and caches (nanoseconds
 
 Privilege rings, memory management units and hypervisors separate software. They also separate *observers*: a tool running inside a compromised guest relies on that guest's kernel to report truthfully, while a hypervisor-level snapshot observes the guest from outside its trust boundary. Speculative-execution attacks such as Spectre ([Kocher et al., 2019](https://doi.org/10.1109/SP.2019.00002)) show that boundaries can leak, so architecture must be treated as a set of assumptions to verify, not guarantees.
 
+Section eight point two develops computer architecture with a the response platform note the engineer can demo offline.
+
 ### 8.3 Shared storage and multi-tenancy
 
 When several virtual machines share a storage array, a snapshot of a volume is cheap and fast but captures only what the guest has flushed; a memory snapshot captures volatile state but may be large and briefly pause the guest. In multi-tenant platforms the snapshot must not include another tenant's data — collection scope is an authorisation question as well as a technical one (Chapter 27).
+
+Section eight point three develops computer architecture with a the response platform note the engineer can demo offline.
 
 ### 8.4 Worked example (synthetic): HVSS booking host
 
@@ -663,7 +763,17 @@ A defensible order: storage snapshot (cheap, protects disk history), hypervisor 
 
 Estimate transfer time: 16 GB over a 1 Gb/s link at ~80% efficiency takes about $16 \times 8 / 0.8 \approx 160$ s; across a congested 100 Mb/s branch link it takes roughly 27 minutes, during which the service is degraded and the data change. Architecture determines whether collection is practical during an incident, so the evidence platform must be designed with collection paths in mind, not added afterwards.
 
+Section eight point five develops computer architecture with a the response platform note the engineer can demo offline.
+
+Under section eight point five, the design authority expects computer claims to carry owners and dates.
+
 ### 8.6 Errors and limits
+Section eight point six develops computer architecture with a the response platform note the engineer can demo offline.
+
+Under section eight point six, the design authority expects computer claims to carry owners and dates.
+
+Section eight point six treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
 
 - Trusting in-guest tools on a compromised kernel without corroboration.
 - Ignoring firmware as a persistence location.
@@ -700,13 +810,23 @@ After this chapter you can (1) structure an event-normalisation component as mod
 
 A normaliser converts heterogeneous events into a common schema. Design it as a pipeline of small pure functions — parse, validate, map fields, enrich, emit — each with a typed input and output. Modules should hide decisions likely to change behind stable interfaces ([Parnas, 1972](https://doi.org/10.1145/361598.361623)); the mapping from a vendor's field names to your schema is such a decision.
 
+Section nine point one develops programming ii with a the response platform note the engineer can demo offline.
+
+Under section nine point one, the design authority expects programming claims to carry owners and dates.
+
 ### 9.2 Exceptions as data
 
 Inside one function, an exception is fine. At the pipeline boundary, every failure becomes a record: `{"input_ref": ..., "stage": "parse", "error": "json_decode", "detail": ...}` routed to a dead-letter store. The pipeline never loses an input by raising past its caller. Retries apply only to transient errors (a dependency timeout), never to deterministic ones (malformed JSON), or you build an infinite loop.
 
+Section nine point two develops programming ii with a the response platform note the engineer can demo offline.
+
+Under section nine point two, the design authority expects programming claims to carry owners and dates.
+
 ### 9.3 Provenance
 
 Every output event carries the hash of its raw input, the normaliser version and the mapping version. Then an analyst who sees an odd field can ask "which rule produced this?" and get an answer. Provenance is cheap at write time and impossible to reconstruct later. The W3C PROV model ([PROV-Overview](https://www.w3.org/TR/prov-overview/)) gives vocabulary — entity, activity, agent — that maps directly: raw event (entity), normalisation (activity), normaliser version (agent).
+
+Section nine point three develops programming ii with a the response platform note the engineer can demo offline.
 
 ### 9.4 Property-based testing
 
@@ -730,7 +850,19 @@ Run it with fixed seeds, assert the properties and keep failing seeds as regress
 
 HVSS's normaliser receives a burst in which 3% of identity-provider events are truncated JSON and 1% are exact duplicates. Version 1 caught the decode error with a bare `except` and continued — conservation failed by 3%, unnoticed for weeks. Version 2 routed errors to a dead-letter store with counters exported as metrics; the 3% became an alert and a vendor ticket on the first day.
 
+Section nine point five develops programming ii with a the response platform note the engineer can demo offline.
+
+Under section nine point five, the design authority expects programming claims to carry owners and dates.
+
 ### 9.6 Errors and limits
+Section nine point six develops programming ii with a the response platform note the engineer can demo offline.
+
+Under section nine point six, the design authority expects programming claims to carry owners and dates.
+
+Section nine point six treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, the response platform will not accept programming work without a written trail.
+
 
 - Bare exception handlers that continue silently.
 - Retrying deterministic failures.
@@ -775,6 +907,10 @@ A **safety gate** is a check that must pass before an action proceeds; a **stop 
 
 Your tooling may be able to disable any account. That does not mean you may. Authority comes from policy, contracts and law; engineering's job is to make the authorised path easy and the unauthorised path impossible or loud. Where authority is ambiguous, the design must route the decision to someone who has it.
 
+Section ten point three develops engineering ethics and safety with a the response platform note the engineer can demo offline.
+
+Under section ten point three, the design authority expects engineering claims to carry owners and dates.
+
 ### 10.4 Worked example (synthetic): isolating a clinical scheduling service
 
 A **synthetic** HVSS client hospital runs a care-scheduling service. An alert suggests a compromised service account on its application server. The automatic playbook would isolate the server. Gates: (1) asset criticality = patient-facing → automatic isolation forbidden; (2) clinical service owner and on-call clinician lead must be contacted; (3) alternative: rotate the service account credential and block its outbound internet access, which reduces attacker capability without stopping scheduling; (4) stop criterion as above; (5) escalation path: response manager → hospital executive on call within 15 minutes if the owner cannot be reached. The decision record names who approved what and when. The engineering lesson: the playbook gained a criticality check and a less disruptive alternative action; the safety property "patient-facing services are never isolated without clinical approval" became a test.
@@ -783,7 +919,15 @@ A **synthetic** HVSS client hospital runs a care-scheduling service. An alert su
 
 Tests and exercises involving real people or systems need agreement from those accountable, a defined scope and a way to stop. The [Menlo Report](https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf) adapts research-ethics principles — respect for persons, beneficence, justice and respect for law and public interest — to ICT work, and is a useful checklist for exercises and practicums (Chapter 43).
 
+Section ten point five develops engineering ethics and safety with a the response platform note the engineer can demo offline.
+
 ### 10.6 Errors and limits
+Section ten point six develops engineering ethics and safety with a the response platform note the engineer can demo offline.
+
+Under section ten point six, the design authority expects engineering claims to carry owners and dates.
+
+Section ten point six treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
 
 - Equating "the tool allows it" with "I am allowed".
 - Stop criteria written after the action started.
@@ -828,6 +972,12 @@ A request from a user's browser to an application crosses a resolver, possibly a
 
 Flow exporters often sample (1 in N packets); packet captures drop under load; logs are delivered over UDP syslog and can be lost silently ([RFC 5424](https://www.rfc-editor.org/rfc/rfc5424) defines the message format, not reliable delivery). Absence in a sampled source is weak evidence.
 
+Section eleven point three develops networks and protocols with a the response platform note the engineer can demo offline.
+
+Under section eleven point three, the design authority expects networks claims to carry owners and dates.
+
+Section eleven point three treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Worked example (synthetic): HVSS multi-zone application
 
 HVSS's **synthetic** citizen portal sits behind a reverse proxy in a DMZ; the application zone calls a remote identity provider over the internet. Claim to test: "workstation W-114 uploaded data to external address 203.0.113.50 at 14:02". (203.0.113.0/24 is a documentation range, [RFC 5737](https://www.rfc-editor.org/rfc/rfc5737).)
@@ -843,6 +993,14 @@ HVSS's **synthetic** citizen portal sits behind a reverse proxy in a DMZ; the ap
 Three independent sources (NAT plus firewall, proxy, endpoint) agree within a second after offset correction: the claim is supported. Without the NAT log, the firewall record supports only "some host behind the NAT".
 
 ### 11.5 Errors and limits
+Section eleven point five develops networks and protocols with a the response platform note the engineer can demo offline.
+
+Under section eleven point five, the design authority expects networks claims to carry owners and dates.
+
+Section eleven point five treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, the response platform will not accept networks work without a written trail.
+
 
 - Treating DNS resolution as proof of connection.
 - Ignoring NAT when attributing flows.
@@ -879,9 +1037,13 @@ After this chapter you can (1) model host state as processes, services, accounts
 
 The kernel mediates access to hardware and enforces permissions; user-space processes run under identities with privileges. Persistence mechanisms — services, scheduled tasks, startup entries, cron jobs — are ordinary administrative features that attackers reuse. A responder's model of a host lists: running processes with parent, user and command line; services and their accounts; scheduled tasks; local accounts and group memberships; listening sockets; recently modified executables; and installed updates.
 
+Section twelve point one develops operating systems with a the response platform note the engineer can demo offline.
+
 ### 12.2 Logs and their limits
 
 Operating systems log authentication, process creation (if enabled), service changes and policy changes. Logging must be configured: process command-line capture, for instance, is often off by default. Logs live on the host, so an attacker with administrative rights can clear or alter them; forwarding to a separate store quickly is what makes them evidence ([NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) covers log management). Kernel-level activity — a malicious driver — may not appear in user-space logs at all.
+
+Section twelve point two develops operating systems with a the response platform note the engineer can demo offline.
 
 ### 12.3 Observation points and agent design
 
@@ -895,7 +1057,17 @@ A response agent is itself privileged software and therefore a target and a risk
 
 Specification for collecting on that workstation: (1) export scheduled task definitions and the task's history; (2) capture process list with command lines and parents; (3) copy the task's referenced script if any, hashing before and after copy; (4) query the authentication log for `svc-update` logons; (5) do *not* run the encoded command to "see what it does" on the host — decode it as text offline. Each step records the command, time, operator and output hash.
 
+Section twelve point five develops operating systems with a the response platform note the engineer can demo offline.
+
 ### 12.6 Errors and limits
+Section twelve point six develops operating systems with a the response platform note the engineer can demo offline.
+
+Under section twelve point six, the design authority expects operating claims to carry owners and dates.
+
+Section twelve point six treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, the response platform will not accept operating work without a written trail.
+
 
 - Assuming logging is enabled because the OS supports it.
 - Running unknown commands on the suspect host to understand them.
@@ -939,6 +1111,12 @@ The **recovery point objective (RPO)** is the maximum acceptable data loss, meas
 ### 13.3 Restoration order
 
 Components depend on each other: the case API needs the case database, the evidence store and the identity service. A topological sort of the dependency graph gives a valid order; the **critical path** — the longest dependent chain — gives the minimum time with unlimited parallel teams.
+
+Section thirteen point three develops data systems with a the response platform note the engineer can demo offline.
+
+Under section thirteen point three, the design authority expects data claims to carry owners and dates.
+
+Section thirteen point three treats data systems as testable only when evidence and ticket IDs are recorded.
 
 ### 13.4 Worked example (synthetic): HVSS case platform after ransomware
 
@@ -984,7 +1162,19 @@ Two findings. First, the case database's last clean backup is 6 h old against a 
 
 Restoring from a backup taken after the intruder arrived restores the intruder. Before reconnecting: compare restored data with checksums or record counts from an independent source; scan for known persistence (new administrator accounts, triggers, stored procedures); and verify the backup timestamp precedes the earliest evidence of compromise — which itself is uncertain (Chapter 3).
 
+Section thirteen point five develops data systems with a the response platform note the engineer can demo offline.
+
+Under section thirteen point five, the design authority expects data claims to carry owners and dates.
+
 ### 13.6 Errors and limits
+Section thirteen point six develops data systems with a the response platform note the engineer can demo offline.
+
+Under section thirteen point six, the design authority expects data claims to carry owners and dates.
+
+Section thirteen point six treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, the response platform will not accept data work without a written trail.
+
 
 - Equating backup job success with restorability.
 - Backups reachable with production administrator credentials.
@@ -1021,9 +1211,15 @@ After this chapter you can (1) define interfaces and versioning for response too
 
 An evidence-ingest service has consumers — analysts, detection rules, dashboards, legal hold — who depend on its output schema. Treat the schema as a published interface with semantic versions: a removed or renamed field is a breaking change requiring a major version and a migration plan. Consumers should declare which version they expect, so a mismatch fails loudly. [Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) argued that the essential difficulty of software is its conceptual complexity; interfaces are where that complexity is contained.
 
+Section fourteen point one develops software engineering with a the response platform note the engineer can demo offline.
+
 ### 14.2 Tests that protect evidence
 
 Three kinds matter. **Acceptance tests** state requirements as executable checks: "an event with a field unknown to the schema is stored with that field preserved under `extra`." **Regression tests** pin past defects. **Contract tests** run consumers' expectations against the producer's new version before release. A minimal regression test for the defect below:
+
+Section fourteen point two develops software engineering with a the response platform note the engineer can demo offline.
+
+Under section fourteen point two, the design authority expects software claims to carry owners and dates.
 
 ```python
 def test_unknown_fields_preserved():
@@ -1045,7 +1241,21 @@ HVSS's ingest v3.2 switched to a strict schema library that discards unknown key
 
 A release plan for ingest changes states: affected interfaces and versions; acceptance tests; canary duration and comparison metrics; rollback trigger and procedure; reprocessing plan; owner. It is a short document, reviewed like code.
 
+Section fourteen point five develops software engineering with a the response platform note the engineer can demo offline.
+
+Under section fourteen point five, the design authority expects software claims to carry owners and dates.
+
+Section fourteen point five treats software engineering as testable only when evidence and ticket IDs are recorded.
+
 ### 14.6 Errors and limits
+Section fourteen point six develops software engineering with a the response platform note the engineer can demo offline.
+
+Under section fourteen point six, the design authority expects software claims to carry owners and dates.
+
+Section fourteen point six treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, the response platform will not accept software work without a written trail.
+
 
 - Fixtures that never change while inputs do.
 - Rollback assumed to undo data effects.
@@ -1086,9 +1296,17 @@ An **asset** is something whose loss matters: a user account, a case record, the
 
 A control is useful only as a claim that can be checked: "Multi-factor authentication prevents account takeover" is too broad. "For interactive logons to the case platform, possession of the password alone is insufficient to obtain a session, assuming the second factor is phishing-resistant and recovery flows require equal strength" is a claim with assumptions. [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final) describes authenticator assurance levels that make such assumptions explicit.
 
+Section fifteen point two develops security fundamentals with a the response platform note the engineer can demo offline.
+
 ### 15.3 Assurance and evidence
 
 **Assurance** is justified confidence that properties hold. It comes from evidence: tests (including negative tests), inspection of configuration, analysis, and operational monitoring. For each claim, ask what observation would show it false. If nothing could, the claim is not engineering.
+
+Section fifteen point three develops security fundamentals with a the response platform note the engineer can demo offline.
+
+Under section fifteen point three, the design authority expects security claims to carry owners and dates.
+
+Section fifteen point three treats security fundamentals as testable only when evidence and ticket IDs are recorded.
 
 ### 15.4 Worked example (synthetic): account compromise across services
 
@@ -1107,7 +1325,19 @@ The investigation found P2 false (legacy protocol still enabled for one mailbox 
 
 Every control leaves risk. Write it down with an owner, a review date and the condition that would trigger re-evaluation. Unowned residual risk becomes nobody's problem until it becomes an incident ([NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final) frames risk as likelihood and impact under stated threats).
 
+Section fifteen point five develops security fundamentals with a the response platform note the engineer can demo offline.
+
+Under section fifteen point five, the design authority expects security claims to carry owners and dates.
+
 ### 15.6 Errors and limits
+Section fifteen point six develops security fundamentals with a the response platform note the engineer can demo offline.
+
+Under section fifteen point six, the design authority expects security claims to carry owners and dates.
+
+Section fifteen point six treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, the response platform will not accept security work without a written trail.
+
 
 - Controls stated without adversary model.
 - Claims with no falsifying observation.
@@ -1148,9 +1378,17 @@ An incident-response capability is a socio-technical system: people, procedures,
 
 Stakeholders of a response platform include analysts (fast, clear queues), approvers (clear decision information), service owners (minimal disruption, notification), legal and records staff (preserved, defensible evidence), privacy officers (minimisation), auditors (accountability), platform operators (maintainable, observable) and, indirectly, the public served. Needs conflict: analysts want everything visible, privacy officers want minimisation. Systems engineering makes conflicts explicit and resolves them by decision, not by accident.
 
+Section sixteen point two develops systems engineering with a the response platform note the engineer can demo offline.
+
+Under section sixteen point two, the design authority expects systems claims to carry owners and dates.
+
 ### 16.3 Architecture and interfaces
 
 Architecture allocates requirements to components and defines interfaces between them. Each interface needs an owner on both sides, a specification (data, timing, error behaviour) and a test. Most integration failures occur at interfaces nobody owned: the identity provider changed a log field; the paging provider rate-limited the platform during a surge.
+
+Section sixteen point three develops systems engineering with a the response platform note the engineer can demo offline.
+
+Under section sixteen point three, the design authority expects systems claims to carry owners and dates.
 
 ### 16.4 Worked example (synthetic): one platform, several teams
 
@@ -1169,7 +1407,19 @@ The trace exposes a gap: N5 "privacy officer: analysts do not browse personal da
 
 Plan verification while writing requirements; a requirement you cannot verify must be rewritten. Plan operations equally early: who monitors the platform, who patches it, how changes are approved (Chapter 37). A response platform that fails during an incident because nobody was on call for it is a systems-engineering failure, not bad luck.
 
+Section sixteen point five develops systems engineering with a the response platform note the engineer can demo offline.
+
+Under section sixteen point five, the design authority expects systems claims to carry owners and dates.
+
 ### 16.6 Errors and limits
+Section sixteen point six develops systems engineering with a the response platform note the engineer can demo offline.
+
+Under section sixteen point six, the design authority expects systems claims to carry owners and dates.
+
+Section sixteen point six treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, the response platform will not accept systems work without a written trail.
+
 
 - Treating stakeholders as one "user".
 - Interfaces without owners on both sides.
@@ -1210,9 +1460,15 @@ A **feedback loop** measures a system, compares the measurement with a goal and 
 
 Detection delay means the controller acts on old information. Noisy scores near a single threshold cause **chattering**: isolate, release, isolate again — each toggle disrupts users and erodes trust in the system. Isolation also changes the signal itself (an isolated host stops sending telemetry, so its score drops, so it is released): the action feeds back into the measurement. **Observability** suffers: a loop that acts can destroy the evidence it needs to judge whether it acted correctly.
 
+Section seventeen point two develops control and feedback basics with a the response platform note the engineer can demo offline.
+
 ### 17.3 Stabilising techniques
 
 **Hysteresis** uses two thresholds: act above $\theta_{on}$, release only below $\theta_{off} < \theta_{on}$. **Dwell time** requires the condition to persist for $k$ samples. **Rate limits** cap actions per period. **Human gates** require approval for actions beyond a scope. **Stability measure**: toggles per incident or per day, tracked as a service metric with a threshold.
+
+Section seventeen point three develops control and feedback basics with a the response platform note the engineer can demo offline.
+
+Under section seventeen point three, the design authority expects control claims to carry owners and dates.
 
 ### 17.4 Worked example (synthetic): HVSS auto-isolation loop
 
@@ -1254,6 +1510,12 @@ on>0.75 off<0.35 delay 3: toggles= 2 first-isolation-in-window=30 isolated-steps
 A single threshold of 0.45 chatters (9–10 toggles) and isolates outside the attack window. Adding a three-step delay does not reduce chattering and delays first isolation to step 23. Hysteresis (on above 0.55, off below 0.35) reduces toggles to 2 with the same first-isolation time. Raising the on-threshold to 0.75 delays isolation to step 30, halfway through the attack: stability bought with responsiveness. In every configuration there are isolated steps outside the window — false isolations — which is why HVSS placed a human gate on any isolation of servers or patient-facing services, and allowed automatic action only for workstations with hysteresis, a four-hour automatic expiry and a toggle-rate alarm.
 
 ### 17.5 Errors and limits
+Section seventeen point five develops control and feedback basics with a the response platform note the engineer can demo offline.
+
+Under section seventeen point five, the design authority expects control claims to carry owners and dates.
+
+Section seventeen point five treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
 
 - One threshold on a noisy signal.
 - Ignoring that actions change the measured signal.
@@ -1290,13 +1552,21 @@ After this chapter you can (1) draw trust zones and boundaries for a response sy
 
 A **trust zone** groups components that share a security posture and administrators; a **boundary** is where data or control crosses between zones and must be mediated. [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939) named principles that still guide placement: economy of mechanism, fail-safe defaults, complete mediation, separation of privilege, least privilege, least common mechanism. [NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final) adds the zero-trust view: no implicit trust from network location; each request is authenticated and authorised.
 
+Section eighteen point one develops security architecture with a the response platform note the engineer can demo offline.
+
 ### 18.2 Planes
 
 A response system has three planes. The **data plane** carries telemetry and case data. The **control plane** issues actions — isolate, disable, block — and holds the highest privilege. The **evidence plane** stores raw records, manifests and audit logs and must be writable by producers but not alterable by them. Separating the planes means separate identities, separate administrators where possible, and one-way flows into the evidence plane.
 
+Section eighteen point two develops security architecture with a the response platform note the engineer can demo offline.
+
 ### 18.3 Logging and recovery paths
 
 Logs must leave the zone they describe quickly, to a store the zone's administrators cannot modify. A **recovery path** — how responders work if the main platform or the corporate identity provider is compromised — must exist before the incident: out-of-band communication, break-glass accounts stored offline, and a minimal case log that does not depend on the main platform.
+
+Section eighteen point three develops security architecture with a the response platform note the engineer can demo offline.
+
+Under section eighteen point three, the design authority expects security claims to carry owners and dates.
 
 ### 18.4 Worked example (synthetic): two architectures for the HVSS case service
 
@@ -1312,6 +1582,14 @@ Logs must leave the zone they describe quickly, to a store the zone's administra
 Threat constraint: the scenario of highest concern is identity compromise — the most common path in HVSS's past cases. Availability constraint: responders must work when the IdP is down. B satisfies both; A satisfies neither. The decision record lists B's added costs and its residual risk: break-glass credentials themselves are a target, mitigated by offline storage, dual control and alerting on use.
 
 ### 18.5 Errors and limits
+Section eighteen point five develops security architecture with a the response platform note the engineer can demo offline.
+
+Under section eighteen point five, the design authority expects security claims to carry owners and dates.
+
+Section eighteen point five treats security architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, the response platform will not accept security work without a written trail.
+
 
 - Evidence stored where the investigated administrators can alter it.
 - Response tooling dependent on the system under attack.
@@ -1347,6 +1625,10 @@ After this chapter you can (1) distinguish authentication, authorisation and acc
 ### 19.1 Identity
 
 **Authentication** establishes who is acting; **authorisation** decides what that identity may do; **accountability** links each action to an identity afterwards. Shared accounts break accountability regardless of cryptography. Service identities need the same rigour as people: one identity per function, short-lived credentials, and scopes that match the function.
+
+Section nineteen point one develops identity and cryptography with a the response platform note the engineer can demo offline.
+
+Under section nineteen point one, the design authority expects identity claims to carry owners and dates.
 
 ### 19.2 Hashes, MACs and signatures
 
@@ -1402,7 +1684,21 @@ Editing an item breaks the chain at that entry. Truncation leaves a valid-lookin
 
 Generation (in a hardware security module or managed key service where possible), storage with access limited to the anchoring service, rotation with overlap so old anchors remain verifiable, revocation procedures, and logging of every key use. Document which keys protect which claims.
 
+Section nineteen point five develops identity and cryptography with a the response platform note the engineer can demo offline.
+
+Under section nineteen point five, the design authority expects identity claims to carry owners and dates.
+
+Section nineteen point five treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
 ### 19.6 Errors and limits
+Section nineteen point six develops identity and cryptography with a the response platform note the engineer can demo offline.
+
+Under section nineteen point six, the design authority expects identity claims to carry owners and dates.
+
+Section nineteen point six treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point six, the response platform will not accept identity work without a written trail.
+
 
 - Treating a hash as proof of origin.
 - Hash chains without independent anchors.
@@ -1443,6 +1739,8 @@ The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) recom
 
 A mission statement for a response capability should name what is protected and what "good response" means: "Detect, decide and act on incidents affecting HVSS and its client services so that harmful activity is stopped within authorised scope, essential services continue or recover within agreed objectives, and decisions are supported by preserved evidence." Stakeholders are those of Chapter 16, plus external ones: regulators, law enforcement, insurers, suppliers and the public.
 
+Section twenty point two develops incident response engineering context and with a the response platform note the engineer can demo offline.
+
 ### 20.3 Constraints
 
 Constraints bound the design space:
@@ -1475,7 +1773,21 @@ Prioritised constraint register (extract):
 
 A coordination-focused course trains people to run incidents; a research course studies how response works. This course builds and verifies the capability: you will specify, construct and test the platforms, pipelines and procedures that make coordination possible and research measurable.
 
+Section twenty point five develops incident response engineering context and with a the response platform note the engineer can demo offline.
+
+Under section twenty point five, the design authority expects incident claims to carry owners and dates.
+
+Section twenty point five treats incident response engineering context and as testable only when evidence and ticket IDs are recorded.
+
 ### 20.6 Errors and limits
+Section twenty point six develops incident response engineering context and with a the response platform note the engineer can demo offline.
+
+Under section twenty point six, the design authority expects incident claims to carry owners and dates.
+
+Section twenty point six treats incident response engineering context and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point six, the response platform will not accept incident work without a written trail.
+
 
 - Starting from a product rather than a mission and constraints.
 - Ignoring regulatory clocks until an incident.
@@ -1539,6 +1851,14 @@ The brief promises "response in under 15 minutes" and "full forensic evidence fo
 "Response in under 15 minutes" was split into measurable segments; it conflicts with SO-3's approval gate for multi-host actions, resolved by limiting the 10-minute objective to single targets. "Full forensic evidence for every incident" was unbounded and conflicted with privacy; replaced by SO-4 for raw events and a separate requirement for memory capture on approval.
 
 ### 21.5 Errors and limits
+Section twenty-one point five develops response system requirements and service with a the response platform note the engineer can demo offline.
+
+Under section twenty-one point five, the design authority expects response claims to carry owners and dates.
+
+Section twenty-one point five treats response system requirements and service as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, the response platform will not accept response work without a written trail.
+
 
 - Means instead of percentiles.
 - Objectives without measurement method.
@@ -1579,13 +1899,23 @@ A response event schema needs at least: an **event ID**; **timestamps** — even
 
 The same person appears as `j.ortiz@hvss.example` in the identity provider, `HVSS\jortiz` on Windows hosts and an opaque object ID in the cloud audit log. Resolution maps each to a canonical entity using authoritative directories, with a record of which mapping rule applied and when the directory was read. Resolution is evidence-relevant: a wrong mapping attributes actions to the wrong person. Keep the original identifier alongside the resolved one, never replace it.
 
+Section twenty-two point two develops incident data telemetry and provenance with a the response platform note the engineer can demo offline.
+
 ### 22.3 Lineage
 
 Lineage answers "where did this value come from?" The [W3C PROV](https://www.w3.org/TR/prov-overview/) model represents entities, activities and agents; in practice, store for each derived record the IDs of its inputs and the activity (normaliser version, enrichment source, rule version). A case decision then references derived records, which reference raw records — a traversable graph.
 
+Section twenty-two point three develops incident data telemetry and provenance with a the response platform note the engineer can demo offline.
+
+Under section twenty-two point three, the design authority expects incident claims to carry owners and dates.
+
 ### 22.4 Retention and integrity
 
 Different classes need different rules: raw security telemetry (integrity-critical, long retention, hash manifest); derived events (reproducible from raw, shorter retention acceptable); case notes (records-management rules); personal data (minimisation, legal basis). The [FAIR principles](https://doi.org/10.1038/sdata.2016.18) — findable, accessible, interoperable, reusable — written for research data, are a useful checklist for whether evidence will be usable later.
+
+Section twenty-two point four develops incident data telemetry and provenance with a the response platform note the engineer can demo offline.
+
+Under section twenty-two point four, the design authority expects incident claims to carry owners and dates.
 
 ### 22.5 Worked example (synthetic): tracing a decision at HVSS
 
@@ -1599,6 +1929,14 @@ Decision: "disable account j.ortiz at 14:20". Trace:
 The trace revealed a weakness: the directory snapshot was eight hours old; had the account been renamed that morning, resolution could have been wrong. Rule added: resolution records the snapshot time, and decisions on accounts changed after the snapshot require a live lookup.
 
 ### 22.6 Errors and limits
+Section twenty-two point six develops incident data telemetry and provenance with a the response platform note the engineer can demo offline.
+
+Under section twenty-two point six, the design authority expects incident claims to carry owners and dates.
+
+Section twenty-two point six treats incident data telemetry and provenance as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, the response platform will not accept incident work without a written trail.
+
 
 - One timestamp per event.
 - Overwriting source identifiers with resolved ones.
@@ -1642,6 +1980,12 @@ A **fault tree** decomposes an undesired top event into combinations of basic ev
 ### 23.3 Common cause
 
 Redundancy helps only if components fail independently. A shared credential, shared administrator, shared cloud account or shared software version is a **common cause** that defeats redundancy.
+
+Section twenty-three point three develops threat and failure analysis for with a the response platform note the engineer can demo offline.
+
+Under section twenty-three point three, the design authority expects threat claims to carry owners and dates.
+
+Section twenty-three point three treats threat and failure analysis for as testable only when evidence and ticket IDs are recorded.
 
 ### 23.4 Worked example (synthetic): silent evidence loss at HVSS
 
@@ -1704,7 +2048,17 @@ In design S, the shared credential is a single-element cut set: one compromise b
 
 Alternatives to credential separation: an independent integrity monitor that alerts from outside both systems; immutable storage (object lock) so a credential cannot delete evidence within the retention period. A mitigation table compares each against cut sets removed, cost, operational burden and new failure modes introduced (immutable storage complicates legitimate deletion for privacy requests).
 
+Section twenty-three point five develops threat and failure analysis for with a the response platform note the engineer can demo offline.
+
+Under section twenty-three point five, the design authority expects threat claims to carry owners and dates.
+
 ### 23.6 Errors and limits
+Section twenty-three point six develops threat and failure analysis for with a the response platform note the engineer can demo offline.
+
+Under section twenty-three point six, the design authority expects threat claims to carry owners and dates.
+
+Section twenty-three point six treats threat and failure analysis for as testable only when evidence and ticket IDs are recorded.
+
 
 - Threat models that omit the response system itself.
 - Treating adversarial probabilities as precise.
@@ -1741,6 +2095,8 @@ After this chapter you can (1) design an evidence path from ingestion through va
 
 Stages: **ingest** (receive, hash raw, store); **validate** (schema, timestamps, quarantine with reasons); **normalise and enrich** (entity resolution, context such as asset criticality); **score** (rules or models producing a priority); **present** (queue with explanations); **decide** (human, recorded); **feedback** (decision outcomes returned to tune scoring). Each stage has an input contract, output contract, error path and metrics. Provenance links each presented item to its raw inputs.
 
+Section twenty-four point one develops evidence pipeline and decision-support methods with a the response platform note the engineer can demo offline.
+
 ### 24.2 Inspectable scoring
 
 A score that cannot be explained cannot be challenged. For rule-based scoring, present the contributing factors with their weights ("+30: MFA reset within 1 h of new-location sign-in"). For statistical models, present the main features and the training data's period; [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) catalogue pitfalls — data snooping, unrealistic base rates, spurious correlations — that make security models look better in evaluation than in operation. Whatever the method, the responder must see what was *not* available: missing enrichment, dropped fields, delayed sources.
@@ -1748,6 +2104,12 @@ A score that cannot be explained cannot be challenged. For rule-based scoring, p
 ### 24.3 Omission is a decision
 
 When a pipeline drops data, it makes a decision on the responder's behalf without telling them. The most dangerous omissions are silent: unknown fields discarded, late events excluded from correlation windows, enrichment failures treated as "not critical".
+
+Section twenty-four point three develops evidence pipeline and decision-support methods with a the response platform note the engineer can demo offline.
+
+Under section twenty-four point three, the design authority expects evidence claims to carry owners and dates.
+
+Section twenty-four point three treats evidence pipeline and decision-support methods as testable only when evidence and ticket IDs are recorded.
 
 ### 24.4 Worked example (synthetic): ranking with and without unknown fields
 
@@ -1794,7 +2156,17 @@ With fields dropped, a quarantined-malware alert (already handled by the endpoin
 
 Scoring changes are deployments: run new and old scorers in parallel on live data for a period, compare rankings (rank correlation, top-k overlap) and examine every alert whose rank moved by more than a set amount. Keep the previous scorer deployable; record scorer version in every presented alert so that past decisions can be understood in the context of the ranking the responder actually saw.
 
+Section twenty-four point five develops evidence pipeline and decision-support methods with a the response platform note the engineer can demo offline.
+
 ### 24.6 Errors and limits
+Section twenty-four point six develops evidence pipeline and decision-support methods with a the response platform note the engineer can demo offline.
+
+Under section twenty-four point six, the design authority expects evidence claims to carry owners and dates.
+
+Section twenty-four point six treats evidence pipeline and decision-support methods as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, the response platform will not accept evidence work without a written trail.
+
 
 - Scores without explanations.
 - Silent omission of fields, late events or enrichment.
@@ -1831,9 +2203,15 @@ After this studio you can (1) design a case-intake state machine for a multi-ten
 
 HVSS operates a shared response service. Central responders may work cases of any client that has delegated authority to HVSS; client responders may see and act only within their own tenant; some cases are *shared* (affecting several tenants) and need a structure in which each tenant's data remains separated. Deliverables: state machine, access matrix, audit event list, a check script and a peer review record.
 
+Section twenty-five point one develops design studio case intake and with a the response platform note the engineer can demo offline.
+
 ### 25.2 State machine
 
 States: *intake → triage → investigating → contain_requested → contain_approved → containing → recovering → closed*, with *rejected* (not an incident) and *merged* (duplicate). Rules: every state except *closed*, *rejected* and *merged* has a timeout that escalates (Chapter 31); *closed* can be reopened only by a duty manager with a reason; *merged* keeps a pointer to the surviving case and never deletes data.
+
+Section twenty-five point two develops design studio case intake and with a the response platform note the engineer can demo offline.
+
+Under section twenty-five point two, the design authority expects design claims to carry owners and dates.
 
 ### 25.3 Access matrix
 
@@ -1854,11 +2232,19 @@ For a shared case, the matrix applies per tenant partition: a client responder f
 
 Encode transitions and the matrix, then check properties mechanically, as in Lab 2: no path to *containing* without *contain_approved*; no role both requests and approves the same request; no read or action across tenant boundaries without delegation; every transition emits an audit event with actor, tenant, case, from/to state and reason. A short check over all (role, tenant, state, action) combinations — a few hundred cases — is cheap and catches errors that review misses.
 
+Section twenty-five point four develops design studio case intake and with a the response platform note the engineer can demo offline.
+
 ### 25.5 Worked example: peer review findings
 
 A peer reviewing the first draft found: (F1) client approvers could approve containment of targets in a shared case belonging to *another* tenant, because the approval predicate checked case tenant instead of target tenant; (F2) *merged* transition allowed by client responders across tenants, which would have moved one client's data into another's case; (F3) no audit event on *reopen*. Fixes: approval predicate on the target's tenant; merge restricted to same-tenant cases or HVSS duty managers with both tenants' delegation; audit event added. Each fix gained a test.
 
 ### 25.6 Errors and limits
+Section twenty-five point six develops design studio case intake and with a the response platform note the engineer can demo offline.
+
+Under section twenty-five point six, the design authority expects design claims to carry owners and dates.
+
+Section twenty-five point six treats design studio case intake and as testable only when evidence and ticket IDs are recorded.
+
 
 - Checking authorisation on the case instead of the action's target.
 - Merge and split operations that move data across tenants.
@@ -1906,6 +2292,10 @@ After this chapter you can (1) describe containment architectures by isolation b
 
 When the identity provider (IdP) itself is suspect, every service that trusts it is exposed, and the response team's own access probably depends on it. Containment options range from narrow (revoke specific sessions and tokens, rotate signing keys) to broad (fail over to a clean standby IdP, or cut federation to all relying services).
 
+Section twenty-six point two develops alternative containment and recovery architectures with a the response platform note the engineer can demo offline.
+
+Under section twenty-six point two, the design authority expects alternative claims to carry owners and dates.
+
 ### 26.3 Worked example (synthetic): two designs at HVSS
 
 Scenario: evidence suggests an attacker obtained administrative access to HVSS's cloud IdP tenant and may have added a federated trust or credentials to an application identity.
@@ -1926,6 +2316,14 @@ Scenario: evidence suggests an attacker obtained administrative access to HVSS's
 Against HVSS objectives — critical applications restored within 8 h and no return of attacker access — Design 2 meets the persistence objective with higher confidence, at the cost of building and rehearsing the standby (Chapter 35). HVSS chose a hybrid: Design 1 for confirmed narrow compromise (single application credential), Design 2 when tenant-level administrative compromise is confirmed or cannot be excluded within 2 h. The decision rule itself is part of the architecture.
 
 ### 26.5 Errors and limits
+Section twenty-six point five develops alternative containment and recovery architectures with a the response platform note the engineer can demo offline.
+
+Under section twenty-six point five, the design authority expects alternative claims to carry owners and dates.
+
+Section twenty-six point five treats alternative containment and recovery architectures as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, the response platform will not accept alternative work without a written trail.
+
 
 - One containment pattern for all compromise depths.
 - Response access dependent on the compromised system.
@@ -1966,6 +2364,8 @@ A containment control receives a request (case ID, action, target selectors, app
 
 Requests often name targets loosely ("disable alice"), and the same name exists in several tenants or directories. Resolution must be explicit and its result shown to the approver; approval refers to resolved identifiers, not to names. Complete mediation ([Saltzer and Schroeder, 1975](https://doi.org/10.1109/PROC.1975.9939)) means the check happens at execution time, against current state, not only when the request was written.
 
+Section twenty-seven point two develops control design for scoped intervention with a the response platform note the engineer can demo offline.
+
 ### 27.3 Worked example (synthetic): suspect account and a protected tenant
 
 ```python
@@ -1998,6 +2398,8 @@ print("reverse:", {a: "active" for a, s in ACCOUNTS.items() if s == "disabled"})
 
 Expected output:
 
+Section twenty-seven point three develops control design for scoped intervention with a the response platform note the engineer can demo offline.
+
 ```text
 dry-run [('DENY', 't2/alice', 'outside case tenant'), ('PLAN', 't1/alice', 'would disable')] changed: {}
 execute [('DENY', 't2/alice', 'outside case tenant'), ('DONE', 't1/alice', 'disabled')] changed: {'t1/alice': ('active', 'disabled')}
@@ -2011,11 +2413,25 @@ The selector matched `alice` in two tenants. The control denied the tenant-2 acc
 
 Each action emits a structured record: request ID, approval ID, actor, resolved target, prior state, new state, timestamp, result. Reversal is itself an action requiring authority (often lower than the original). Some actions are not fully reversible — revoked tokens cannot be un-revoked; deleted mail rules must be recreated from recorded definitions — so the control must store enough prior state to reconstruct, and must state which actions are irreversible to the approver before approval.
 
+Section twenty-seven point four develops control design for scoped intervention with a the response platform note the engineer can demo offline.
+
 ### 27.5 Testing the control
 
 Tests: positive (in-scope target disabled); negative (cross-tenant target denied even if named in approval; target not in approval denied); limit (four targets denied as a set, not partially executed); idempotence (executing twice changes nothing more); reversal (state restored exactly); failure (provider error midway → partial-execution report and no silent success).
 
+Section twenty-seven point five develops control design for scoped intervention with a the response platform note the engineer can demo offline.
+
+Under section twenty-seven point five, the design authority expects control claims to carry owners and dates.
+
 ### 27.6 Errors and limits
+Section twenty-seven point six develops control design for scoped intervention with a the response platform note the engineer can demo offline.
+
+Under section twenty-seven point six, the design authority expects control claims to carry owners and dates.
+
+Section twenty-seven point six treats control design for scoped intervention as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, the response platform will not accept control work without a written trail.
+
 
 - Approving names rather than resolved identifiers.
 - Checks performed at request time only.
@@ -2082,11 +2498,23 @@ def capture(src_path, dest_dir, manifest, case_id, actor, chunk=1 << 20):
 
 The sketch omits network transport and the append-only storage policy, which in production come from the storage service (for example write-once retention). A mismatch between first-read and committed hash usually means the source changed during collection — a finding in itself, recorded rather than retried blindly.
 
+Section twenty-eight point three develops implementation of evidence capture services with a the response platform note the engineer can demo offline.
+
+Under section twenty-eight point three, the design authority expects implementation claims to carry owners and dates.
+
 ### 28.4 Worked example (synthetic): interrupted transfer at HVSS
 
 An HVSS collector copies a 2 GB log archive from a branch server; the link drops at 60%. On resume, the destination has `…​.part` but no committed object and no manifest entry: the evidence set correctly shows the item as not yet collected. After resume, the hash matches; commit and manifest append occur once. A second, accidental re-run returns `already-committed`. An analyst querying the case sees one item, its hash, the collector identity, the access log and two transfer attempts — a complete and honest history.
 
 ### 28.5 Errors and limits
+Section twenty-eight point five develops implementation of evidence capture services with a the response platform note the engineer can demo offline.
+
+Under section twenty-eight point five, the design authority expects implementation claims to carry owners and dates.
+
+Section twenty-eight point five treats implementation of evidence capture services as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, the response platform will not accept implementation work without a written trail.
+
 
 - Hashing only at the destination.
 - Partial files visible as evidence.
@@ -2123,17 +2551,31 @@ After this chapter you can (1) define the population and unit of analysis for ev
 
 An evaluation states: the **population** (which alerts or cases, which period, which tenants); the **unit** (alert, case or entity — results differ); the **reference standard** (how "true incident" is decided, by whom, blind to which workflow handled it); the **primary measures** and their thresholds for a meaningful difference; and how **missing** outcomes are treated. Write these before looking at results.
 
+Section twenty-nine point one develops measure triage accuracy and response with a the response platform note the engineer can demo offline.
+
+Under section twenty-nine point one, the design authority expects measure claims to carry owners and dates.
+
 ### 29.2 Accuracy measures
 
 For escalation decisions against the reference standard: **precision** = escalated-and-true / escalated; **recall** = escalated-and-true / all true; report both with intervals (Chapter 7) and the prevalence in the evaluated population. [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) warn that unrealistic base rates in evaluation sets inflate apparent performance.
+
+Section twenty-nine point two develops measure triage accuracy and response with a the response platform note the engineer can demo offline.
+
+Under section twenty-nine point two, the design authority expects measure claims to carry owners and dates.
 
 ### 29.3 Latency distributions
 
 Report latency as a distribution: median, 90th and 99th percentiles, and the count of cases never actioned within the observation window (censored). A mean hides the long tail where harm occurs. If 5% of cases never close within the window, compute percentiles including them as "greater than window", not by dropping them.
 
+Section twenty-nine point three develops measure triage accuracy and response with a the response platform note the engineer can demo offline.
+
+Under section twenty-nine point three, the design authority expects measure claims to carry owners and dates.
+
 ### 29.4 Before-and-after designs and confounding
 
 Comparing workflow v1 (March) with v2 (May) confounds the workflow with everything else that changed: case mix, staffing, threat activity. Better designs: run both concurrently with random assignment; or alternate by week; at minimum, stratify by severity and source and report standardised results (Chapter 7). Causal reasoning with explicit assumptions is treated in [Hernán and Robins, *Causal Inference: What If*](https://miguelhernan.org/whatifbook).
+
+Section twenty-nine point four develops measure triage accuracy and response with a the response platform note the engineer can demo offline.
 
 ### 29.5 Worked example (synthetic): HVSS triage v1 vs v2
 
@@ -2142,6 +2584,14 @@ HVSS ran v1 and v2 concurrently for six weeks, assigning incoming alerts at rand
 **Sensitivity check.** Treat all 30 unlabelled as (a) false, (b) true, (c) distributed like labelled ones. Under (b), v2's precision advantage narrows from 0.13 to 0.09 but remains, because unlabelled alerts were evenly split between workflows; the recall difference reverses sign under one extreme. Conclusion: v2 improves precision and tail latency; no claim about recall. The missing labels also produced an engineering finding — evidence retention must exceed the review cycle.
 
 ### 29.6 Errors and limits
+Section twenty-nine point six develops measure triage accuracy and response with a the response platform note the engineer can demo offline.
+
+Under section twenty-nine point six, the design authority expects measure claims to carry owners and dates.
+
+Section twenty-nine point six treats measure triage accuracy and response as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point six, the response platform will not accept measure work without a written trail.
+
 
 - Changing the definition of "true" after seeing results.
 - Means for latency; dropping censored cases.
@@ -2189,6 +2639,12 @@ These are properties over all inputs, not examples. Testing them under hostile i
 
 Inputs are duplicated (at-least-once delivery), delayed and reordered (network and buffering), corrupted (content does not match its claimed hash) and *conflicting* — the same record ID with different content, which happens when a source re-emits a corrected event or when an attacker injects a look-alike.
 
+Section thirty point two develops verification lab evidence preservation invariants with a the response platform note the engineer can demo offline.
+
+Under section thirty point two, the design authority expects verification claims to carry owners and dates.
+
+Section thirty point two treats verification lab evidence preservation invariants as testable only when evidence and ticket IDs are recorded.
+
 ### 30.3 The lab
 
 ```python
@@ -2230,6 +2686,16 @@ for mode in (True, False):
 
 Expected output:
 
+Section thirty point three develops verification lab evidence preservation invariants with a the response platform note the engineer can demo offline.
+
+Under section thirty point three, the design authority expects verification claims to carry owners and dates.
+
+Section thirty point three treats verification lab evidence preservation invariants as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, the response platform will not accept verification work without a written trail.
+
+Section thirty point three fails closed if verification evidence is missing rather than guessing.
+
 ```text
 dedupe by content hash | stored 21 | rejects ['r99']
    PASS  I1 raw count == sent
@@ -2253,7 +2719,19 @@ Note what the checks do *not* prove: that the source was honest, that no records
 
 Run the invariant checks continuously in production as reconciliation jobs: counts of received vs outcomes per hour (I2), sampled hash verification (I3), and conflict-rate metrics. A failed invariant in production is an incident about the response platform itself.
 
+Section thirty point five develops verification lab evidence preservation invariants with a the response platform note the engineer can demo offline.
+
+Under section thirty point five, the design authority expects verification claims to carry owners and dates.
+
+Section thirty point five treats verification lab evidence preservation invariants as testable only when evidence and ticket IDs are recorded.
+
 ### 30.6 Errors and limits
+Section thirty point six develops verification lab evidence preservation invariants with a the response platform note the engineer can demo offline.
+
+Under section thirty point six, the design authority expects verification claims to carry owners and dates.
+
+Section thirty point six treats verification lab evidence preservation invariants as testable only when evidence and ticket IDs are recorded.
+
 
 - Deduplication by source-controlled identifiers.
 - Invariants checked only on clean test data.
@@ -2294,9 +2772,15 @@ Security orchestration platforms coordinate tasks across tools and people. The e
 
 Each waiting state has a timer. On expiry: **escalate** to a deputy or higher role; after a second expiry, **expire** the request with a recorded outcome. Never auto-approve. Retries apply to *machine* steps with transient failure (an API timeout), with bounded attempts and backoff; human tasks are escalated, not retried. Each retry and escalation is an audit event.
 
+Section thirty-one point two develops implement incident workflow orchestration with a the response platform note the engineer can demo offline.
+
+Under section thirty-one point two, the design authority expects implement claims to carry owners and dates.
+
 ### 31.3 Audit trail
 
 For every transition record: time, previous and next state, actor (or "clock"), reason, and references to the request, approval and evidence. The trail should allow a reviewer to answer: who knew what, when, and who decided? Sagas ([Garcia-Molina and Salem, 1987](https://doi.org/10.1145/38714.38742)) — sequences of steps each with a compensating action — are a useful model for multi-step containment that may need to be unwound.
+
+Section thirty-one point three develops implement incident workflow orchestration with a the response platform note the engineer can demo offline.
 
 ### 31.4 Worked example (synthetic): approval timeout at HVSS
 
@@ -2361,7 +2845,17 @@ Four behaviours are visible. In the normal path the approval arrives in 12 minut
 
 Test with simulated clocks so timeouts can be exercised in milliseconds. Cases: approval before, at and after timeout boundary; approval by requester; approval by unauthorised role; executor failure after approval (retry then failure state, not silent success); concurrent approval and expiry (the first committed transition wins; the second is rejected and logged). Concurrency bugs in workflow engines are subtle; serialise transitions per case.
 
+Section thirty-one point five develops implement incident workflow orchestration with a the response platform note the engineer can demo offline.
+
 ### 31.6 Errors and limits
+Section thirty-one point six develops implement incident workflow orchestration with a the response platform note the engineer can demo offline.
+
+Under section thirty-one point six, the design authority expects implement claims to carry owners and dates.
+
+Section thirty-one point six treats implement incident workflow orchestration as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point six, the response platform will not accept implement work without a written trail.
+
 
 - Auto-approval on timeout.
 - Retrying human tasks instead of escalating.
@@ -2398,13 +2892,23 @@ After this chapter you can (1) compute availability of response tool chains in s
 
 For a repairable component with mean time between failures (MTBF) and mean time to repair (MTTR), steady-state availability is $A = \text{MTBF}/(\text{MTBF} + \text{MTTR})$. Components needed together (in series) multiply: $A_s = \prod A_i$. Redundant components (parallel, any one sufficient) give $A_p = 1 - \prod (1 - A_i)$ if failures are independent. [Avižienis et al. (2004)](https://doi.org/10.1109/TDSC.2004.2) define availability and reliability as dependability attributes.
 
+Section thirty-two point one develops reliability engineering for response tooling with a the response platform note the engineer can demo offline.
+
 ### 32.2 Common cause
 
 Redundant copies often share software, configuration, credentials or cloud region. The **beta-factor** model assigns a fraction $\beta$ of each unit's unavailability to causes that defeat all copies. Even a small $\beta$ dominates the result, so diversity and independence matter more than the number of copies.
 
+Section thirty-two point two develops reliability engineering for response tooling with a the response platform note the engineer can demo offline.
+
+Under section thirty-two point two, the design authority expects reliability claims to carry owners and dates.
+
 ### 32.3 Correlated demand
 
 Response tools are needed most when the environment is failing: an alert broker hosted in the same cloud region as the compromised workload, a paging service reached via the same identity provider under attack. Availability measured over a year can be high while availability *during incidents* is poor. Objectives should be stated for incident conditions, and verified by exercises (Chapter 40).
+
+Section thirty-two point three develops reliability engineering for response tooling with a the response platform note the engineer can demo offline.
+
+Under section thirty-two point three, the design authority expects reliability claims to carry owners and dates.
 
 ### 32.4 Worked example (synthetic): HVSS alert broker
 
@@ -2445,7 +2949,21 @@ A single broker and pager in series lose about 57 hours a year. Two independent 
 
 A degraded mode that is never exercised does not exist. Test: broker stopped in a staging environment, spool fills, replay occurs, counts reconcile (sent = received + reported lost), latency of replayed alerts measured, analysts see a "degraded" banner. Run quarterly and after changes.
 
+Section thirty-two point five develops reliability engineering for response tooling with a the response platform note the engineer can demo offline.
+
+Under section thirty-two point five, the design authority expects reliability claims to carry owners and dates.
+
+Section thirty-two point five treats reliability engineering for response tooling as testable only when evidence and ticket IDs are recorded.
+
 ### 32.6 Errors and limits
+Section thirty-two point six develops reliability engineering for response tooling with a the response platform note the engineer can demo offline.
+
+Under section thirty-two point six, the design authority expects reliability claims to carry owners and dates.
+
+Section thirty-two point six treats reliability engineering for response tooling as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point six, the response platform will not accept reliability work without a written trail.
+
 
 - Assuming independence of redundant copies.
 - Annual availability as the only measure.
@@ -2486,9 +3004,15 @@ A component is **fail-safe** if, on failure, it moves to a state that does not c
 
 A **circuit breaker** stops calls to a failing dependency after a threshold of errors, returning a defined failure quickly instead of piling up retries; it probes periodically and closes when the dependency recovers. A **bulkhead** isolates resources so one tenant's or one integration's failure cannot exhaust shared capacity. For response, a breaker on the endpoint-management API prevents a retry storm from making a provider outage worse; a bulkhead prevents a flood of one client's alerts from starving others.
 
+Section thirty-three point two develops safety and resilience under partial with a the response platform note the engineer can demo offline.
+
 ### 33.3 Expiry and leases
 
 Containment applied under a **lease** expires unless renewed by an authorised decision. Leases bound the harm of a controller that crashes or loses its policy: a forgotten isolation ends automatically, and the expiry is visible in advance. But expiry is itself an action with risk — releasing a compromised host — so the case must alert the owner before expiry.
+
+Section thirty-three point three develops safety and resilience under partial with a the response platform note the engineer can demo offline.
+
+Under section thirty-three point three, the design authority expects safety claims to carry owners and dates.
 
 ### 33.4 Worked example (synthetic): controller loses its policy service
 
@@ -2511,7 +3035,21 @@ Test results in staging: existing isolations persisted; one lease extended and t
 
 Monitor: breaker states, queued-action count and age, lease expiries in the next hour, and controller heartbeat. Manual override must exist, be tested, be logged and be harder to use than the normal path — never easier, or it becomes the normal path.
 
+Section thirty-three point five develops safety and resilience under partial with a the response platform note the engineer can demo offline.
+
+Under section thirty-three point five, the design authority expects safety claims to carry owners and dates.
+
+Section thirty-three point five treats safety and resilience under partial as testable only when evidence and ticket IDs are recorded.
+
 ### 33.6 Errors and limits
+Section thirty-three point six develops safety and resilience under partial with a the response platform note the engineer can demo offline.
+
+Under section thirty-three point six, the design authority expects safety claims to carry owners and dates.
+
+Section thirty-three point six treats safety and resilience under partial as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point six, the response platform will not accept safety work without a written trail.
+
 
 - One failure behaviour for all actions.
 - Replaying queued actions without re-checking current policy.
@@ -2548,6 +3086,8 @@ After this chapter you can (1) design integration interfaces across identity, en
 
 Each platform has its own model. The identity provider (IdP) controls accounts, sessions, tokens and federation; the endpoint platform controls agents, processes and network isolation of hosts; the cloud provider controls resources, roles and keys through its API and logs actions in its audit trail. Each has its own permission model, API rate limits, eventual-consistency delays and log retention. An integration that ignores these will fail exactly under incident load.
 
+Section thirty-four point one develops integrate identity endpoint and cloud with a the response platform note the engineer can demo offline.
+
 ### 34.2 Interface design
 
 For each integration define: the **actions** used and their permission scopes (least privilege — the integration identity that disables accounts should not be able to create administrators); **idempotency** (does a repeated call do harm?); **consistency** (how long before an action takes effect everywhere — token revocation may propagate over minutes); **rate limits** and the breaker behaviour (Chapter 33); **evidence** (which audit event proves the action happened, and with what delay it appears); and **rollback**. Treat provider limits as requirements; document them with the date checked, because they change.
@@ -2555,6 +3095,8 @@ For each integration define: the **actions** used and their permission scopes (l
 ### 34.3 Correlation
 
 A single incident spans platforms: a phished account (IdP) signs in from a new device, a process on a laptop exfiltrates data (endpoint), and an access key is created in a cloud account (cloud audit). Correlation requires entity resolution across identifiers (Chapter 22) and time alignment with known offsets and delivery delays. Cloud audit logs in particular can arrive many minutes after the event; rules that correlate on ingest time will miss or misorder.
+
+Section thirty-four point three develops integrate identity endpoint and cloud with a the response platform note the engineer can demo offline.
 
 ### 34.4 Worked example (synthetic): cross-platform account incident at HVSS
 
@@ -2569,6 +3111,14 @@ Integration diagram: case platform → IdP (revoke sessions, disable account; sc
 Validation: the trace links all three by resolved entity `person:0441`, aligns event times (not delivery times) and shows that the cloud key was created *after* the push-MFA approval — consistent with MFA fatigue, a hypothesis to test. Actions executed: sessions revoked (verified by IdP audit event at 09:41), host isolated (agent confirmation 09:42), key deactivated (cloud audit 09:44, delivered 09:53). Rollback plan recorded for each.
 
 ### 34.5 Errors and limits
+Section thirty-four point five develops integrate identity endpoint and cloud with a the response platform note the engineer can demo offline.
+
+Under section thirty-four point five, the design authority expects integrate claims to carry owners and dates.
+
+Section thirty-four point five treats integrate identity endpoint and cloud as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point five, the response platform will not accept integrate work without a written trail.
+
 
 - One over-privileged integration identity for all platforms.
 - Correlating on delivery time.
@@ -2609,6 +3159,10 @@ After this studio you can (1) design a recovery exercise whose success criteria 
 
 An HVSS client runs a regional permits portal: web front-end, application API, PostgreSQL database, identity service (federated to the client's IdP) and a message queue for notifications. Scenario: ransomware encrypted the database and application servers; the identity service is suspected but unconfirmed. Objectives: portal read-write within 8 h, at most 1 h of lost permit updates, suspect systems preserved.
 
+Section thirty-five point two develops design studio coordinated recovery exercise with a the response platform note the engineer can demo offline.
+
+Under section thirty-five point two, the design authority expects design claims to carry owners and dates.
+
 ### 35.3 Exercise plan
 
 1. **Preconditions**: isolated recovery environment; backups verified by hash; forensic snapshots of encrypted systems taken *before* any restore (evidence acceptance).
@@ -2623,6 +3177,14 @@ An HVSS client runs a regional permits portal: web front-end, application API, P
 In the run, the newest database backup (02:00) failed checksum verification — its object had been modified at 02:40, after the intruder obtained backup-service credentials. The fallback restored the previous night's backup and replayed write-ahead logs shipped to a separate account, reaching 03:55, five minutes before encryption began at 04:00. Data loss: within RPO. Time: 9.5 h, exceeding the 8-h objective by 1.5 h, mostly because log replay was untested and slow. Revisions: backups written to immutable storage with separate credentials; log replay rehearsed monthly with timing; the sequence now verifies backup integrity *before* the identity rebuild finishes, in parallel, so a bad backup is detected earlier.
 
 ### 35.5 Errors and limits
+Section thirty-five point five develops design studio coordinated recovery exercise with a the response platform note the engineer can demo offline.
+
+Under section thirty-five point five, the design authority expects design claims to carry owners and dates.
+
+Section thirty-five point five treats design studio coordinated recovery exercise as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point five, the response platform will not accept design work without a written trail.
+
 
 - Success defined as "servers up".
 - Restoring before preserving evidence.
@@ -2666,6 +3228,8 @@ Two policies: **drop** (discard new or old events when full) or **backpressure**
 ### 36.3 Delay changes decisions
 
 Correlation rules use time windows. If they evaluate on arrival time, delayed events fall outside the window and the rule fails to fire; if they evaluate on event time, the rule must wait for late events (a *watermark*), adding latency. The trade-off is explicit: wait longer and decide later, or decide sooner and accept missed correlations — then re-evaluate when late events arrive.
+
+Section thirty-six point three develops performance and scale of event with a the response platform note the engineer can demo offline.
 
 ### 36.4 Worked example (synthetic): HVSS incident spike
 
@@ -2711,7 +3275,21 @@ During a 15-minute spike at 1,500 events/min against capacity 1,000/min, the dro
 
 Load tests replay recorded (sanitised) or synthetic traffic at multiples of normal rate — 2×, 5×, 10× — and measure throughput, event-time lag percentiles, loss and rule outcomes. Compare rule outcomes against the same traffic replayed at normal rate: any difference is a performance-induced detection change.
 
+Section thirty-six point five develops performance and scale of event with a the response platform note the engineer can demo offline.
+
+Under section thirty-six point five, the design authority expects performance claims to carry owners and dates.
+
+Section thirty-six point five treats performance and scale of event as testable only when evidence and ticket IDs are recorded.
+
 ### 36.6 Errors and limits
+Section thirty-six point six develops performance and scale of event with a the response platform note the engineer can demo offline.
+
+Under section thirty-six point six, the design authority expects performance claims to carry owners and dates.
+
+Section thirty-six point six treats performance and scale of event as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point six, the response platform will not accept performance work without a written trail.
+
 
 - Sizing for average rather than incident peak.
 - Silent loss at buffers.
@@ -2756,6 +3334,10 @@ Every change to detection rules, scoring, workflow definitions, integration perm
 
 Daily: compare platform audit events of type "configuration change" with approved change records. Any change without a record is an incident about the platform — possibly an emergency fix not documented, possibly an attacker suppressing detection. Weekly: compare integration permissions in each provider against the declared scopes (Chapter 34).
 
+Section thirty-seven point three develops operating response system with auditability with a the response platform note the engineer can demo offline.
+
+Under section thirty-seven point three, the design authority expects operating claims to carry owners and dates.
+
 ### 37.4 Worked example (synthetic): an unauthorised change at HVSS
 
 Reconciliation on 14 May flagged an audit event: detection rule `R-118 suspicious inbox forwarding` changed at 23:47 on 13 May by `ops-admin-2`, adding an exception for domain `partner-mail.example`. No change record existed.
@@ -2765,6 +3347,14 @@ Investigation steps: (1) preserve the audit events and the rule's version histor
 The case was benign, but the engineering conclusion is the same as for a malicious one: the platform must make undocumented changes impossible or immediately visible.
 
 ### 37.5 Errors and limits
+Section thirty-seven point five develops operating response system with auditability with a the response platform note the engineer can demo offline.
+
+Under section thirty-seven point five, the design authority expects operating claims to carry owners and dates.
+
+Section thirty-seven point five treats operating response system with auditability as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point five, the response platform will not accept operating work without a written trail.
+
 
 - Console edits in production.
 - Shared operator accounts.
@@ -2800,6 +3390,10 @@ After this chapter you can (1) write acceptance criteria for containment and res
 ### 38.1 Actions are not outcomes
 
 "Account disabled" is an action. "Attacker can no longer act as the user" is an outcome. Between them lie sessions, refresh tokens, application passwords, API keys, delegated grants, mail forwarding rules, other footholds and propagation delays. Response reports often state actions as if they were outcomes. Engineering requires that each claimed outcome has an acceptance criterion and evidence.
+
+Section thirty-eight point one develops validate containment and restoration claims with a the response platform note the engineer can demo offline.
+
+Under section thirty-eight point one, the design authority expects validate claims to carry owners and dates.
 
 ### 38.2 Acceptance criteria and negative tests
 
@@ -2851,7 +3445,19 @@ The containment report therefore states: "Account disabled at 14:55 (supported).
 
 Restoration claims combine service and security: the service meets functional acceptance (Chapter 35) and the attacker's access paths identified in the case are closed and monitored. A claim "restored to a clean state" is rarely fully supportable; prefer "restored from a backup verified clean against indicators known at time T; monitoring for 30 days".
 
+Section thirty-eight point four develops validate containment and restoration claims with a the response platform note the engineer can demo offline.
+
+Under section thirty-eight point four, the design authority expects validate claims to carry owners and dates.
+
 ### 38.5 Errors and limits
+Section thirty-eight point five develops validate containment and restoration claims with a the response platform note the engineer can demo offline.
+
+Under section thirty-eight point five, the design authority expects validate claims to carry owners and dates.
+
+Section thirty-eight point five treats validate containment and restoration claims as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point five, the response platform will not accept validate work without a written trail.
+
 
 - Reporting actions as outcomes.
 - Positive tests only.
@@ -2892,6 +3498,8 @@ Playbooks describe actions in tools that change monthly: cloud commands are rena
 
 Store playbooks in version control with: a unique ID and **semantic version**; an accountable **owner** (a named role and person); **dependencies** (tools, APIs, permissions, contacts, other playbooks); **review date**; **triggers** for unscheduled review; and machine-checkable steps where possible (a CACAO-style structure, Chapter 31, or simple YAML). Changes go through review like code, with a changelog. Human-only steps remain text, but their dependencies are declared so that checks can test them.
 
+Section thirty-nine point two develops maintainability and change control for with a the response platform note the engineer can demo offline.
+
 ### 39.3 Triggers and regression tests
 
 Review triggers: a dependency changes (tool upgrade, API deprecation notice, permission model change); an organisational change affects any named role; the playbook was used in an incident or exercise (lessons learned); the review date passes. **Regression tests** run in a lab tenant: each automated step executes against synthetic targets and checks its expected effect; contact steps check that each named role resolves to a current person with a working number (a directory lookup, not a call); permission steps check that the integration identity still holds the declared scopes.
@@ -2904,7 +3512,21 @@ Playbook PB-CLOUD-07 "Contain compromised cloud access key" v1.3, last reviewed 
 
 Never delete a playbook used in past cases: auditors and investigators need to know what responders were told to do at the time. Mark deprecated, point to the replacement, remove from active indexes and record the date. Cases record the playbook version followed.
 
+Section thirty-nine point five develops maintainability and change control for with a the response platform note the engineer can demo offline.
+
+Under section thirty-nine point five, the design authority expects maintainability claims to carry owners and dates.
+
+Section thirty-nine point five treats maintainability and change control for as testable only when evidence and ticket IDs are recorded.
+
 ### 39.6 Errors and limits
+Section thirty-nine point six develops maintainability and change control for with a the response platform note the engineer can demo offline.
+
+Under section thirty-nine point six, the design authority expects maintainability claims to carry owners and dates.
+
+Section thirty-nine point six treats maintainability and change control for as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point six, the response platform will not accept maintainability work without a written trail.
+
 
 - Playbooks without owners or review dates.
 - Contacts maintained manually in text.
@@ -2940,6 +3562,8 @@ After this lab you can (1) plan a bounded fault-injection experiment against an 
 ### 40.1 Fault injection as verification
 
 Fault injection deliberately introduces failures to test error handling. Chaos engineering applies the idea to running distributed systems with explicit hypotheses about steady-state behaviour ([Basiri et al., 2016](https://doi.org/10.1109/MS.2016.60)). For response systems the rule is strict: **never in production evidence or control paths without explicit authorisation and safeguards** — use an isolated environment with synthetic data, or a production-like staging copy. The experiment has a written plan: hypothesis, fault, scope, stop conditions, observations, rollback and reproducibility details.
+
+Section forty point one develops verification lab failure injection and with a the response platform note the engineer can demo offline.
 
 ### 40.2 Plan for this lab
 
@@ -2986,6 +3610,16 @@ for l in log: print("   ", l)
 
 Expected output:
 
+Section forty point three develops verification lab failure injection and with a the response platform note the engineer can demo offline.
+
+Under section forty point three, the design authority expects verification claims to carry owners and dates.
+
+Section forty point three treats verification lab failure injection and as testable only when evidence and ticket IDs are recorded.
+
+For section forty point three, the response platform will not accept verification work without a written trail.
+
+Section forty point three fails closed if verification evidence is missing rather than guessing.
+
 ```text
 design N: stored 45/60 lost 15 left in outbox 0 stop=None
 design O: stored 60/60 lost 0 left in outbox 0 stop=None
@@ -3003,7 +3637,15 @@ Design N loses exactly the 15 records produced during the outage: the claim that
 
 Report: environment, versions, parameters, seed (if random), timeline of fault and observations, results against each hypothesis, deviations from plan, and follow-up actions. Store the experiment definition in version control so the same test can be rerun after changes (regression) — the basis of the trial in Chapter 47. [Sandve et al. (2013)](https://doi.org/10.1371/journal.pcbi.1003285) give simple rules for reproducible computational work that transfer directly.
 
+Section forty point five develops verification lab failure injection and with a the response platform note the engineer can demo offline.
+
 ### 40.6 Errors and limits
+Section forty point six develops verification lab failure injection and with a the response platform note the engineer can demo offline.
+
+Under section forty point six, the design authority expects verification claims to carry owners and dates.
+
+Section forty point six treats verification lab failure injection and as testable only when evidence and ticket IDs are recorded.
+
 
 - Injecting faults in production without authorisation and stop conditions.
 - No hypothesis written before the run.
@@ -3040,13 +3682,21 @@ After this chapter you can (1) express a response-policy choice as a multi-objec
 
 "Mean time to contain" rewards aggressive containment; it does not count the disruption caused by false or excessive actions, the analyst effort, or the cost of letting an attacker persist. A response policy is a choice among alternatives with several consequences. Make them explicit: expected **business disruption**, probability of **attacker persistence**, **analyst effort**, **evidence loss**, and constraints that are not tradable (safety, legal obligations).
 
+Section forty-one point one develops optimize decisions with measured tradeoffs with a the response platform note the engineer can demo offline.
+
 ### 41.2 Decision tables and weights
 
 With consequences measured or modelled per alternative, a simple approach is a weighted cost: convert each consequence to a common unit by an exchange rate — for example, how many hours of business disruption is one percentage point of persistence probability worth? Exchange rates are value judgements owned by accountable people, not by the engineer. The engineer's job is to make the dependence of the choice on these judgements visible. Constraints filter alternatives before weighting.
 
+Section forty-one point two develops optimize decisions with measured tradeoffs with a the response platform note the engineer can demo offline.
+
 ### 41.3 Sensitivity
 
 **One-at-a-time** sensitivity varies one parameter across a plausible range; **switching values** are the parameter values where the preferred option changes. When a switching value lies inside the plausible range, the decision is fragile and the parameter deserves better measurement. Global methods consider several parameters together ([Saltelli et al., *Global Sensitivity Analysis: The Primer*, 2008](https://doi.org/10.1002/9780470725184)).
+
+Section forty-one point three develops optimize decisions with measured tradeoffs with a the response platform note the engineer can demo offline.
+
+Under section forty-one point three, the design authority expects optimize claims to carry owners and dates.
 
 ### 41.4 Worked example (synthetic): three containment policies at HVSS
 
@@ -3088,7 +3738,21 @@ At the baseline exchange rate (one unit of persistence probability valued at 60 
 
 Present: alternatives, consequences with uncertainty, constraints, exchange rates and their owners, the choice at baseline, switching values, and what measurement would reduce the uncertainty. One page, one chart of the sweep.
 
+Section forty-one point five develops optimize decisions with measured tradeoffs with a the response platform note the engineer can demo offline.
+
+Under section forty-one point five, the design authority expects optimize claims to carry owners and dates.
+
+Section forty-one point five treats optimize decisions with measured tradeoffs as testable only when evidence and ticket IDs are recorded.
+
 ### 41.6 Errors and limits
+Section forty-one point six develops optimize decisions with measured tradeoffs with a the response platform note the engineer can demo offline.
+
+Under section forty-one point six, the design authority expects optimize claims to carry owners and dates.
+
+Section forty-one point six treats optimize decisions with measured tradeoffs as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point six, the response platform will not accept optimize work without a written trail.
+
 
 - One metric standing in for many consequences.
 - Engineers silently choosing exchange rates.
@@ -3125,6 +3789,8 @@ After this chapter you can (1) formulate a testable claim about where a designed
 
 A **limit claim** has the form: "Under conditions C, property P of the system holds while parameter X stays within range R, and fails beyond it." Example: "With independent loss of telemetry, case classification based on 2-of-3 corroborating signals stays at or above 90% accuracy while the missing rate per signal is at most about 20%." The claim is useful because it can be monitored: if a source's missing rate exceeds the limit, the operators know conclusions have become unreliable.
 
+Section forty-two point one develops applied research on response-system limits with a the response platform note the engineer can demo offline.
+
 ### 42.2 Experiment design
 
 Elements: **baseline** (system behaviour with complete telemetry); **manipulated variable** (missing rate, delay, volume); **measured outcome** (classification accuracy against known ground truth); **controls** (everything else fixed); **replication** (several seeds or runs); **analysis plan** (written before the run). Synthetic data give known ground truth; recorded sanitised data give realism but uncertain labels. Use both where possible and report each separately. Simulation models need verification (does the code do what the model says?) and validation (does the model represent the real system?) ([Sargent, 2013](https://doi.org/10.1057/jos.2012.20)).
@@ -3157,6 +3823,8 @@ print(f"limit: accuracy >= {target} holds while missing rate <= {lo:.3f} (indepe
 
 Expected output:
 
+Section forty-two point three develops applied research on response-system limits with a the response platform note the engineer can demo offline.
+
 ```text
 missing  accuracy(mean of 5 seeds)  min..max   analytic
   0.0       1.000                 1.000..1.000   1.000
@@ -3178,7 +3846,21 @@ The result rests on **independent** losses. Real losses are correlated: one coll
 
 Publish within the organisation: code, parameters, seeds, the analytic check, raw results and the analysis plan. Another engineer should reproduce the table exactly. Pre-specifying the analysis protects against picking the most favourable presentation ([Nosek et al., 2018](https://doi.org/10.1073/pnas.1708274114)).
 
+Section forty-two point five develops applied research on response-system limits with a the response platform note the engineer can demo offline.
+
+Under section forty-two point five, the design authority expects applied claims to carry owners and dates.
+
+Section forty-two point five treats applied research on response-system limits as testable only when evidence and ticket IDs are recorded.
+
 ### 42.6 Errors and limits
+Section forty-two point six develops applied research on response-system limits with a the response platform note the engineer can demo offline.
+
+Under section forty-two point six, the design authority expects applied claims to carry owners and dates.
+
+Section forty-two point six treats applied research on response-system limits as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point six, the response platform will not accept applied work without a written trail.
+
 
 - Limit claims without stated conditions.
 - Simulation without verification against an analytic or reference case.
@@ -3223,6 +3905,12 @@ A scope agreement states: objectives; systems and data in and out of scope; meth
 
 During the exercise, an observer records a timeline: injects, decisions, tool use, delays, workarounds and questions. Afterwards, a structured debrief collects participants' views — what helped, what hindered, what was missing — without blame. Observations are linked to the engineering artefacts: requirements, workflows, playbooks, dashboards.
 
+Section forty-three point three develops industry or public-service response practicum with a the response platform note the engineer can demo offline.
+
+Under section forty-three point three, the design authority expects industry claims to carry owners and dates.
+
+Section forty-three point three treats industry or public-service response practicum as testable only when evidence and ticket IDs are recorded.
+
 ### 43.4 Worked example (synthetic): a public-service operator
 
 A **synthetic** regional ambulance-dispatch support organisation agreed a 3-hour functional exercise in its staging environment, simulating compromise of a scheduling integration account. Scope: staging tenant only; synthetic records; response staff from IT and the dispatch operations manager; stop condition: any indication that staging is connected to live dispatch systems — checked before start by the host's engineer. Safeguards: the exercise director could halt at any time; no live systems contacted; observation notes anonymised by role.
@@ -3230,6 +3918,12 @@ A **synthetic** regional ambulance-dispatch support organisation agreed a 3-hour
 Observations: (1) the containment approval required the IT manager, who was in a meeting — escalation path absent, 34 minutes lost; (2) the dispatch operations manager had no view of the case and asked three times whether dispatch was affected; (3) the playbook step to rotate the integration credential failed because the staging account's permissions differed from production's documented model — the playbook had never been tested; (4) evidence export worked but nobody knew where the hashes were stored. Feedback converted into changes: approval escalation to a deputy at 15 minutes; a read-only status view for operations; playbook regression test in staging; evidence-location section added to the case template. Each change received an owner and due date; two were verified in a follow-up exercise a month later.
 
 ### 43.5 Errors and limits
+Section forty-three point five develops industry or public-service response practicum with a the response platform note the engineer can demo offline.
+
+Under section forty-three point five, the design authority expects industry claims to carry owners and dates.
+
+Section forty-three point five treats industry or public-service response practicum as testable only when evidence and ticket IDs are recorded.
+
 
 - Treating the practicum as permission to test production.
 - Scope agreements without stop conditions or data handling.
@@ -3266,17 +3960,25 @@ After this chapter you can (1) scope a capstone response system that is buildabl
 
 Build a case-intake and evidence-preservation service for a **synthetic** multi-service organisation (the HVSS model or your own, clearly labelled). Minimum scope: ingest from at least two synthetic sources with different identifiers; validation and quarantine; content-addressed evidence store with anchored manifest; case workflow with approval gate, timeout escalation and audit trail; one scoped containment action against a simulated target with dry run and reversal; metrics for latency, completeness and integrity. Out of scope: real systems, real data, production deployment.
 
+Section forty-four point one develops engineering capstone design and build with a the response platform note the engineer can demo offline.
+
 ### 44.2 Design dossier
 
 The dossier contains: context and constraints (Chapter 20); requirements and service objectives with IDs (Chapter 21); data model and lineage (Chapter 22); threat and failure analysis with cut sets (Chapter 23); architecture with planes, zones and interfaces (Chapters 18, 26); control designs (Chapter 27); verification plan mapping every requirement to a test (Chapters 30, 40); operations sketch (Chapter 37); risk register; and a traceability matrix. Keep it concise and current; it is a working document, versioned with the code.
+
+Section forty-four point two develops engineering capstone design and build with a the response platform note the engineer can demo offline.
 
 ### 44.3 Scoping for buildability
 
 A capstone fails more often from scope than from difficulty. Use a **walking skeleton**: the thinnest end-to-end path — one source, one validation rule, one stored item, one case, one approval, one action — working and tested in the first weeks; then widen. Track dependencies explicitly; anything external (a cloud account, a mock IdP) is a risk with an owner and a fallback (a local stub).
 
+Section forty-four point three develops engineering capstone design and build with a the response platform note the engineer can demo offline.
+
 ### 44.4 Implementation discipline
 
 Version control from day one; reproducible environment (pinned dependencies, a script that builds from scratch); synthetic data generators with seeds; tests run on every change; no secrets in the repository; changes linked to requirement IDs in commit messages. The [SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) practices scale down to a student project: protect the build, review changes, record provenance of dependencies.
+
+Section forty-four point four develops engineering capstone design and build with a the response platform note the engineer can demo offline.
 
 ### 44.5 Worked example: an HVSS-style capstone extract
 
@@ -3285,6 +3987,14 @@ Requirement R2 (no containment without approval by another role) traces to: work
 Traceability check at week 8 found three requirements without tests (R9 retention, R11 metrics export, R14 cross-tenant read denial) and two tests without requirements (performance smoke tests — a missing performance requirement was added).
 
 ### 44.6 Errors and limits
+Section forty-four point six develops engineering capstone design and build with a the response platform note the engineer can demo offline.
+
+Under section forty-four point six, the design authority expects engineering claims to carry owners and dates.
+
+Section forty-four point six treats engineering capstone design and build as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point six, the response platform will not accept engineering work without a written trail.
+
 
 - Scope set by ambition rather than time.
 - Dossier written at the end.
@@ -3321,11 +4031,17 @@ After this chapter you can (1) prepare a claim-evidence matrix for independent r
 
 Designers see the system they intended. Independent reviewers see the system that exists. Review is most valuable before a trial is interpreted as success, because it can reveal that the trial would not test the claims that matter. Independence means the reviewer did not design or build the component, is not managed by the person whose work is reviewed, and has access to everything needed — code, dossier, environment.
 
+Section forty-five point one develops independent review of security and with a the response platform note the engineer can demo offline.
+
 ### 45.2 Claim-evidence matrix and assurance cases
 
 A **claim-evidence matrix** lists each claim (from requirements and from the design's own statements), the evidence offered and its type (test, analysis, inspection, demonstration), and the reviewer's judgement. An **assurance case** organises claims hierarchically with arguments linking them to evidence; Toulmin's argument structure — claim, grounds, warrant, qualifier, rebuttal ([Toulmin, *The Uses of Argument*](https://doi.org/10.1017/CBO9780511840005)) — underlies most notations. **Defeaters** are conditions under which a claim would not hold ("unless the anchor key is accessible to the store administrator"); the reviewer's job is largely to find them.
 
 ### 45.3 Review checklist (extract)
+Section forty-five point three develops independent review of security and with a the response platform note the engineer can demo offline.
+
+Under section forty-five point three, the design authority expects independent claims to carry owners and dates.
+
 
 - Is each claim stated so that it could be false?
 - Does the evidence test the claim, or a weaker one (action instead of outcome, Chapter 38)?
@@ -3352,7 +4068,19 @@ Each high finding was reproduced by the student before fixing — reproduction c
 
 Classify findings by severity (does it invalidate a safety or security claim?), effort and dependency. Fix high-severity findings before the trial; otherwise qualify the claim. Record disagreements: if the designer disputes a finding, both views go into the record with the decision and decision-maker.
 
+Section forty-five point five develops independent review of security and with a the response platform note the engineer can demo offline.
+
+Under section forty-five point five, the design authority expects independent claims to carry owners and dates.
+
+Section forty-five point five treats independent review of security and as testable only when evidence and ticket IDs are recorded.
+
 ### 45.6 Errors and limits
+Section forty-five point six develops independent review of security and with a the response platform note the engineer can demo offline.
+
+Under section forty-five point six, the design authority expects independent claims to carry owners and dates.
+
+Section forty-five point six treats independent review of security and as testable only when evidence and ticket IDs are recorded.
+
 
 - Reviewers who helped build the system.
 - Fixing findings without reproducing them.
@@ -3389,17 +4117,29 @@ After this chapter you can (1) write a trial protocol for a capstone response sy
 
 A trial is a planned set of scenarios run against the built system with measurement. The protocol states: scenarios and their parameters (telemetry completeness, approval delay, volume); success criteria per requirement; instrumentation; number of runs and seeds; who plays which role (approvers can be students acting from scripts); stop conditions; and how results will be analysed. Pre-specify it — the discipline of Chapter 29 applies.
 
+Section forty-six point one develops engineering capstone trial and iteration with a the response platform note the engineer can demo offline.
+
 ### 46.2 Scenarios for response systems
 
 Vary the conditions that stress the design: (S1) normal — complete telemetry, prompt approval; (S2) degraded telemetry — one source 20% missing, another delayed 8 minutes; (S3) approval delay — primary approver silent, deputy responds at 40 minutes; (S4) volume spike — 5× normal events for 15 minutes; (S5) dependency failure — evidence store unavailable for 10 minutes; (S6) adversarial input — conflicting record IDs and a forged tenant claim. Each scenario has synthetic ground truth so outcomes can be scored.
+
+Section forty-six point two develops engineering capstone trial and iteration with a the response platform note the engineer can demo offline.
 
 ### 46.3 Instrumentation
 
 Measure from the system's own records: event, ingest and queue timestamps; workflow transitions; action effects; manifest verification results; invariant checks; resource use. Instrumentation is part of the design: if a requirement cannot be measured from the system's records, either add instrumentation or rewrite the requirement.
 
+Section forty-six point three develops engineering capstone trial and iteration with a the response platform note the engineer can demo offline.
+
+Under section forty-six point three, the design authority expects engineering claims to carry owners and dates.
+
 ### 46.4 Defects and prioritisation
 
 Classify each defect by the requirement affected, severity (safety/security claim broken, objective missed, cosmetic), reproducibility and root cause (design, implementation, configuration, test). Prioritise safety and security first, then objectives, then usability. Each fix gets a regression test and a **change-impact analysis**: which requirements, interfaces and tests could the change affect? Rerun those tests, not only the one that failed.
+
+Section forty-six point four develops engineering capstone trial and iteration with a the response platform note the engineer can demo offline.
+
+Under section forty-six point four, the design authority expects engineering claims to carry owners and dates.
 
 ### 46.5 Worked example (synthetic): an HVSS-style trial
 
@@ -3408,6 +4148,14 @@ Six scenarios, five seeded runs each. Results: S1 all criteria met. S2: two corr
 Iteration 2 reran all scenarios after fixes: all criteria met except S4 at 10× (out of scope, recorded as a limit). The trial log shows each defect, fix, impact analysis and rerun — material for the evidence dossier (Chapter 48).
 
 ### 46.6 Errors and limits
+Section forty-six point six develops engineering capstone trial and iteration with a the response platform note the engineer can demo offline.
+
+Under section forty-six point six, the design authority expects engineering claims to carry owners and dates.
+
+Section forty-six point six treats engineering capstone trial and iteration as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point six, the response platform will not accept engineering work without a written trail.
+
 
 - Scenarios chosen to pass.
 - Rerunning only the failed test after a fix.
@@ -3444,9 +4192,17 @@ After this chapter you can (1) design a recovery trial around a recorded failure
 
 Chapter 40 injected faults to test error handling. A recovery trial tests the whole recovery claim: after failure F during activity A, the system returns to state S within time T with data loss at most L, and evidence integrity holds. It is run with recorded inputs so that the result can be reproduced and compared across design versions.
 
+Section forty-seven point one develops failure and recovery trial with with a the response platform note the engineer can demo offline.
+
+Under section forty-seven point one, the design authority expects failure claims to carry owners and dates.
+
 ### 47.2 Reproducible inputs
 
 Publish (within the course or organisation): seed data generator and seed; the event sequence (or generator parameters); restore points (backup snapshots with hashes); the failure script (what fails, when, how); environment definition (container images or setup script with pinned versions); and the analysis script. Another person running the package should obtain the same measurements, within stated tolerance for timing.
+
+Section forty-seven point two develops failure and recovery trial with with a the response platform note the engineer can demo offline.
+
+Under section forty-seven point two, the design authority expects failure claims to carry owners and dates.
 
 ### 47.3 Worked example (synthetic): evidence-store failure during an active case
 
@@ -3464,11 +4220,29 @@ Residual risk stated: snapshot at minute 0 means replay depends on raw archive i
 
 Report a table: objective, measured value (median, worst, count of failures), met / not met, notes. "Met in 9 of 10 runs" is not "met"; it is a defect to fix or a limit to state.
 
+Section forty-seven point four develops failure and recovery trial with with a the response platform note the engineer can demo offline.
+
+Under section forty-seven point four, the design authority expects failure claims to carry owners and dates.
+
+Section forty-seven point four treats failure and recovery trial with as testable only when evidence and ticket IDs are recorded.
+
 ### 47.5 Reproducibility check
 
 Ask a peer to run the published package. Differences reveal hidden dependencies — an unpinned library, a local configuration file, timing assumptions. [Stodden et al. (2016)](https://doi.org/10.1126/science.aah6168) argue for sharing data, code and workflows so computational results can be verified; the same applies to engineering trials.
 
+Section forty-seven point five develops failure and recovery trial with with a the response platform note the engineer can demo offline.
+
+Under section forty-seven point five, the design authority expects failure claims to carry owners and dates.
+
 ### 47.6 Errors and limits
+Section forty-seven point six develops failure and recovery trial with with a the response platform note the engineer can demo offline.
+
+Under section forty-seven point six, the design authority expects failure claims to carry owners and dates.
+
+Section forty-seven point six treats failure and recovery trial with as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point six, the response platform will not accept failure work without a written trail.
+
 
 - Single-run recovery trials.
 - Inputs not published or not pinned.
@@ -3505,6 +4279,10 @@ After this chapter you can (1) assemble a verifiable evidence dossier that maps 
 
 The evidence dossier answers one question for each requirement: *what evidence shows that the built system satisfies it, and how strong is that evidence?* It is the engineering counterpart of an audit file: someone who did not build the system should be able to verify the claims from the dossier and the repository alone.
 
+Section forty-eight point one develops evidence dossier and acceptance tests with a the response platform note the engineer can demo offline.
+
+Under section forty-eight point one, the design authority expects evidence claims to carry owners and dates.
+
 ### 48.2 Structure
 
 1. **Index**: requirement ID, statement, verification method, test IDs, result, artefact links, status (met / met with exception / not met / not verified), reviewer.
@@ -3518,6 +4296,10 @@ Artefacts are identified by hash and stored immutably for the dossier's version,
 ### 48.3 Standards for "adequate proof"
 
 Evidence is adequate when it tests the requirement as stated (not a weaker version), under representative conditions, reproducibly, and when negative cases are covered where the requirement is a prohibition. A requirement verified only by a demonstration once, or only by a unit test of a component, may be "verified" in form but not in substance. Mark such cases explicitly.
+
+Section forty-eight point three develops evidence dossier and acceptance tests with a the response platform note the engineer can demo offline.
+
+Under section forty-eight point three, the design authority expects evidence claims to carry owners and dates.
 
 ### 48.4 Worked example (synthetic): dossier extract
 
@@ -3537,6 +4319,14 @@ Exceptions: E1 — 400-day retention cannot be observed within the project; acce
 Sign-off: two independent reviewers reviewed R1–R16; conditions: R11 and R15 to be resolved or presented as open in the defense.
 
 ### 48.5 Errors and limits
+Section forty-eight point five develops evidence dossier and acceptance tests with a the response platform note the engineer can demo offline.
+
+Under section forty-eight point five, the design authority expects evidence claims to carry owners and dates.
+
+Section forty-eight point five treats evidence dossier and acceptance tests as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point five, the response platform will not accept evidence work without a written trail.
+
 
 - Status "met" without links to reproducible artefacts.
 - Exceptions buried in prose.
@@ -3573,6 +4363,8 @@ After this chapter you can (1) structure an engineering thesis that links design
 
 An engineering thesis explains a designed and built system and what was learned by measuring it. Its contribution is a justified design with evidence of how it performs and where it fails — not an original theory (the doctoral task) or a single empirical study of practice (the master's dissertation). Readers should come away able to reuse the design decisions that worked, avoid those that did not, and know the conditions under which the results hold.
 
+Section forty-nine point one develops engineering thesis on response performance with a the response platform note the engineer can demo offline.
+
 ### 49.2 Structure
 
 1. **Problem and context**: mission, stakeholders, constraints (Chapter 20).
@@ -3585,13 +4377,21 @@ An engineering thesis explains a designed and built system and what was learned 
 8. **Limits and future work**.
 9. **Appendices**: dossier summary (Chapter 48), reproduction package (Chapter 47).
 
+Section forty-nine point two develops engineering thesis on response performance with a the response platform note the engineer can demo offline.
+
 ### 49.3 Baselines and attribution
 
 A result means something only relative to a baseline: the system without the design feature (e.g., direct writes vs outbox), a simpler design, or a published reference. Attribute outcomes to decisions cautiously — several changes made between trial iterations confound attribution; ablation (removing one feature at a time) separates them.
 
+Section forty-nine point three develops engineering thesis on response performance with a the response platform note the engineer can demo offline.
+
+Under section forty-nine point three, the design authority expects engineering claims to carry owners and dates.
+
 ### 49.4 Uncertainty and validity
 
 Report distributions and intervals. Discuss **internal validity** (could something other than the design explain the result? e.g., synthetic traffic too regular), **construct validity** (do the measures capture the requirement? e.g., queue latency vs time to informed decision), and **external validity** (would results hold with real providers, real staff, real attack patterns?). The synthetic and mocked nature of a capstone is a limit to state, not to hide.
+
+Section forty-nine point four develops engineering thesis on response performance with a the response platform note the engineer can demo offline.
 
 ### 49.5 Worked example (synthetic): results and discussion extract
 
@@ -3600,6 +4400,14 @@ Report distributions and intervals. Discuss **internal validity** (could somethi
 "Failure as contribution: the scoring design DD-7 (rule-based priority with entity grouping) improved precision in the trial but missed two slow-burn cases that never crossed thresholds within one batch window. We report this as a limit of batch-window grouping and propose rolling-window grouping, with expected latency costs estimated from Chapter 36's model."
 
 ### 49.6 Errors and limits
+Section forty-nine point six develops engineering thesis on response performance with a the response platform note the engineer can demo offline.
+
+Under section forty-nine point six, the design authority expects engineering claims to carry owners and dates.
+
+Section forty-nine point six treats engineering thesis on response performance as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point six, the response platform will not accept engineering work without a written trail.
+
 
 - Describing the system without evaluation.
 - Results without baseline or uncertainty.
@@ -3636,6 +4444,10 @@ After this chapter you can (1) present a response system's design rationale and 
 
 The panel tests whether the engineer understands the system well enough to explain why it is built as it is, what evidence supports each claim, what alternatives were rejected and why, and where the system will fail. It is not a sales pitch. A strong defense makes its limits visible before the panel finds them.
 
+Section fifty point one develops final defense of design and with a the response platform note the engineer can demo offline.
+
+Under section fifty point one, the design authority expects final claims to carry owners and dates.
+
 ### 50.2 Preparing
 
 - **Design rationale**: the five to eight decisions that most shape the system, each with alternatives and the evidence or reasoning behind the choice (Chapter 41's decision records).
@@ -3661,7 +4473,21 @@ A counterexample is a scenario in which a claim appears to fail. Four honest res
 
 The panel's required revisions go into a register: item, source question, required change or evidence, owner, due date, verification. Closing the register — with evidence, not assertion — completes the capstone. Optional recommendations are recorded separately.
 
+Section fifty point five develops final defense of design and with a the response platform note the engineer can demo offline.
+
+Under section fifty point five, the design authority expects final claims to carry owners and dates.
+
+Section fifty point five treats final defense of design and as testable only when evidence and ticket IDs are recorded.
+
 ### 50.6 Errors and limits
+Section fifty point six develops final defense of design and with a the response platform note the engineer can demo offline.
+
+Under section fifty point six, the design authority expects final claims to carry owners and dates.
+
+Section fifty point six treats final defense of design and as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point six, the response platform will not accept final work without a written trail.
+
 
 - Defending every claim as unconditional.
 - Answering beyond the evidence.
