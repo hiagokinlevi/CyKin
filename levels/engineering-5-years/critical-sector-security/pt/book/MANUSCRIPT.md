@@ -3833,7 +3833,7 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 
 ### Capítulo 16
 
-**EX031.** Um mapeamento: N1 ← R3, R4, R5 (em parte), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 depende do menor número. Proposta: "R10 — Backups off-line das configurações do SCADA e dos controladores deverão ser feitos semanalmente, guardados fora dos domínios de controle e corporativo, e ter a restauração testada trimestralmente."
+**EX031.** Um mapeamento: N1 ← R3, R4, R5 (em parte), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 e N4 empatam com o menor número (dois cada); a proposta reforça N3: "R10 — Backups off-line das configurações do SCADA e dos controladores deverão ser feitos semanalmente, guardados fora dos domínios de controle e corporativo, e ter a restauração testada trimestralmente."
 
 **EX032.** Itens de dados (ID da estação, contador, nível, pressão, alarmes); codificação (binária, big-endian, quadro de 28 bytes mais o ID da suíte); taxa (1 a cada 10 s por estação, mais alarmes por exceção); latência (≤ 1 s no gateway); autenticação (HMAC-SHA256-128, chave por estação); tratamento de erros (rejeitar e registrar em log; alarme após 3 rejeições em 10 min; alarme de estação inativa em 60 s); fonte de tempo (NTP interno por um conduto da lista de permissões; carimbos de tempo em UTC); propriedade (gateway: engenharia do TMRP; lado do SCADA: operações); processo de mudança (revisão do ICD sob controle de configuração, com aprovação dos dois donos).
 
