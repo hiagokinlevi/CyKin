@@ -240,10 +240,6 @@ Password resets are a common route for impersonation. Nadia follows a procedure:
 
 The firm's shared mailbox for client enquiries used to be opened by signing in with a shared password. Now each user opens it through their own account with delegated access, which keeps MFA in place and shows who sent each reply. The shared mailbox's own sign-in is disabled. To slow password guessing, repeated wrong passwords lock an account for fifteen minutes. This is long enough to make guessing slow, but short enough that a staff member who mistypes a few times is not stuck until IT is free. Lockout events appear in the sign-in log, so a pattern of lockouts on one account can be noticed and investigated.
 
-### Worked example
-
-A staff member emails asking for a reset; Nadia calls their desk phone, confirms, and sets a temporary password, logging the request.
-
 > **Synthetic case.** The request is synthetic.
 
 ### Errors and limits
@@ -463,7 +459,7 @@ The management tool reports compliance. Nadia spot-checks two PCs by opening the
 
 ### 8.4 Exceptions
 
-Any PC that cannot take a setting gets a recorded exception with a reason and review date. After rollout, one PC has an exception for remote desktop, used by a partner working from home through the VPN. The exception records the reason, the compensating control that remote desktop works only through the VPN, and a review date. Nadia keeps the exceptions in a short list with the baseline, and Lena approves each one. At each review date Lena either renews the exception with a fresh reason or closes it once the PC can take the setting.
+Any PC that cannot take a setting gets a recorded exception with a reason and review date. After rollout, 29 of 30 PCs comply; the remaining one has an exception for remote desktop, used by a partner working from home through the VPN. The exception records the reason, the compensating control that remote desktop works only through the VPN, and a review date. Nadia keeps the exceptions in a short list with the baseline, and Lena approves each one. At each review date Lena either renews the exception with a fresh reason or closes it once the PC can take the setting.
 
 ### Explaining settings to staff
 
@@ -476,10 +472,6 @@ The note is kept on the shared drive and linked from the knowledge base, so new 
 ### Local admin passwords and reviewing settings
 
 Every Windows PC has a built-in local administrator account. If all thirty share one password, a single leaked password opens every PC. Microsoft's Local Administrator Password Solution, LAPS, gives each PC a unique random password stored in the directory, readable only by the supplier for repairs, and changes it regularly. The ten-setting list itself is also reviewed each year against the latest CIS Benchmark and Microsoft security baseline, because recommendations change as Windows changes. The review is short: compare the list, note any new recommendations that matter for the firm, pilot them and update the one-page staff note.
-
-### Worked example
-
-After rollout, 29 of 30 PCs comply; one has an exception for remote desktop used by a partner working from home through the VPN.
 
 > **Synthetic case.** Figures are synthetic.
 
@@ -859,10 +851,6 @@ Broken PCs under warranty are sent for repair only after the drive is removed or
 
 Every joiner, move and leaver changes the inventory: who has a PC, its serial number and its status. If these updates are missed, the inventory slowly stops matching reality, and checks based on it give wrong answers. Nadia adds the inventory update to the joiner and leaver checklists so it happens at the same time as the account change. A monthly comparison with the management tool catches anything missed. At the end of the placement, the inventory matches the management tool exactly for all thirty PCs, which Nadia records with the date as evidence.
 
-### Worked example
-
-Two old PCs are disposed of; the recycler's certificate lists their serial numbers.
-
 > **Synthetic case.** Events are synthetic.
 
 ### Errors and limits
@@ -906,7 +894,7 @@ Good tickets describe the problem, steps taken and outcome, so others can learn.
 
 ### 15.4 Standards
 
-NIST SP 800-128 links configuration management with documentation and change control. The guidance explains why configuration, documentation and change records belong together: a setting that is not documented cannot be checked, and a change that is not recorded cannot be traced. Nadia uses it to explain to Lena why the firm keeps system pages and change records. The supplier's own processes follow the same ideas, so they fit easily with the firm's records. Nadia cites SP 800-128 in her project report and gives Lena a one-paragraph summary explaining why the firm keeps system pages and change records.
+NIST SP 800-128 links configuration management with documentation and change control. The guidance explains why configuration, documentation and change records belong together: a setting that is not documented cannot be checked, and a change that is not recorded cannot be traced. Nadia uses it to explain to Lena why the firm keeps system pages and change records. The supplier's own processes follow the same ideas, so they fit easily with the firm's records. Nadia also cites SP 800-128 in her project report and condenses that explanation into a one-paragraph summary Lena can keep.
 
 ### Where passwords live
 
@@ -918,7 +906,7 @@ Common fixes become short knowledge base articles: how to reset MFA, reconnect t
 
 ### Reviewing documents and changes
 
-Documentation drifts like settings, and out-of-date documentation can mislead someone during an outage, when accuracy matters most. Nadia adds a yearly review date to every system page, and the supplier checks pages after any major change. Changes themselves get a lighter weekly review: each Friday, Nadia and the supplier spend five minutes going through the week's change records together. The aim is to spot anything unexpected, such as a change with no reason recorded, or a change that should have triggered a documentation update. NIST SP 800-128 links configuration management with exactly this kind of change review.
+Documentation drifts like settings, and out-of-date documentation can mislead someone during an outage, when accuracy matters most. Nadia adds a yearly review date to every system page, and the supplier checks pages after any major change. Changes themselves get a lighter weekly review: each Friday, Nadia and the supplier spend five minutes going through the week's change records together. The aim is to spot anything unexpected, such as a change with no reason recorded, or a change that should have triggered a documentation update.
 
 ### Worked example
 
