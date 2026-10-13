@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 50 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–50 (EX046–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 16–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -692,11 +692,211 @@ Uma autenticação forte pode excluir pacientes com acesso limitado a aparelhos;
 - **EX044 — Ações com reforço.** Que ações do paciente recebem um segundo fator, e por quê? *Rubrica:* 3 = ver prontuários e mudar contatos, as mais atraentes para atacantes;; 2 = cita uma;; 1 = só todos os logins;; 0 = nenhuma.
 - **EX045 — Violação acidental.** Um resultado anexado ao paciente errado é uma violação de dados pessoais? *Rubrica:* 3 = sim; o artigo 4(12) inclui a divulgação acidental;; 2 = sim, sem motivo;; 1 = não;; 0 = nenhuma.
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever a plataforma da Pellmore como um sistema de sistemas; (2) rastrear os requisitos de privacidade através das interfaces; (3) gerenciar a privacidade ao longo do ciclo de vida.
+
+### 16.1 Sistema de sistemas
+
+A engenharia de sistemas trata um produto como partes que interagem. Zara desenha a plataforma da Pellmore: aplicativo móvel, serviço de agendamento, serviço de vídeo operado por um fornecedor, sistema de prontuários, interface com o laboratório, área de análise e central de suporte. Cada parte tem seu próprio responsável, seus dados e seus modos de falha. Propriedades de privacidade como a retenção ou o controle de acesso precisam valer em todas elas. Uma propriedade aplicada em uma parte e ignorada em outra, na prática, não existe. Ela chama isso de problema da interface mais fraca e o usa para justificar requisitos de ponta a ponta, em vez de promessas componente por componente.
+
+### 16.2 Rastreabilidade dos requisitos
+
+Zara cria uma matriz de rastreabilidade que liga cada requisito de privacidade aos componentes que o implementam e aos testes que o verificam. Por exemplo, o requisito de retenção de vídeo por trinta dias se liga ao contrato com o fornecedor, ao calendário de chaves do arquivo e a um teste mensal de eliminação. As lacunas aparecem de imediato: o sistema de análise não tem nenhum requisito de retenção. A ISO/IEC 27701:2025, norma de sistema de gestão da informação de privacidade, enfatiza controles documentados e evidências, e a matriz de Zara fornece exatamente esse tipo de documentação no nível da engenharia. Cada linha cita sua fonte.
+
+### 16.3 Ciclo de vida
+
+Os sistemas passam por concepção, desenvolvimento, operação e desativação. As preocupações de privacidade mudam em cada fase: na concepção, se os dados devem ser coletados; no desenvolvimento, como protegê-los; na operação, como monitorar; na desativação, como eliminar ou migrar. Zara percebe que a Pellmore não tem plano para desativar seu antigo sistema de agendamento, que ainda guarda dados. Ela acrescenta uma lista de verificação de desativação com inventário dos dados, migração ou eliminação e certificado de destruição. A desativação, escreve, é o momento em que os dados esquecidos mais escapam.
+
+### 16.4 Interfaces com fornecedores
+
+Muitos componentes da Pellmore são operados por fornecedores. Zara aprende que a engenharia de sistemas precisa incluir os contratos como interfaces. O contrato do fornecedor de vídeo especifica a retenção, os suboperadores e os prazos de notificação de incidentes. Ela confere se esses termos correspondem aos requisitos da própria Pellmore e descobre que o fornecedor pode guardar as gravações por noventa dias, mais do que a regra de trinta dias da Pellmore. Ela sinaliza a divergência para renegociação do contrato. O exemplo mostra que os documentos jurídicos fazem parte do sistema técnico e precisam ser projetados com o mesmo cuidado. Contratos carregam promessas técnicas.
+
+### Exemplo resolvido
+
+Zara modela a Pellmore como um sistema de sistemas, constrói uma matriz de rastreabilidade de requisitos, acrescenta uma lista de desativação e encontra uma cláusula de retenção de noventa dias do fornecedor que conflita com a regra de trinta dias.
+
+> **Caso sintético.** A plataforma e o fornecedor são sintéticos; a ISO/IEC 27701:2025 é real.
+
+### Erros e limites
+
+Matrizes de rastreabilidade ficam desatualizadas se não forem revistas a cada mudança.
+
+### Exercícios
+
+- **EX046 — Interface mais fraca.** O que é o problema da interface mais fraca? *Rubrica:* 3 = uma propriedade de privacidade ignorada em um componente, na prática, não existe;; 2 = menciona componentes;; 1 = nenhuma ideia;; 0 = nenhuma.
+- **EX047 — Lacuna da análise.** Que lacuna a matriz de rastreabilidade revelou? *Rubrica:* 3 = a área de análise não tinha requisito de retenção;; 2 = menciona a análise;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Divergência contratual.** Que divergência Zara encontrou no fornecedor? *Rubrica:* 3 = o fornecedor pode guardar gravações por 90 dias contra os 30 da Pellmore;; 2 = menciona retenção;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar controles de privacidade como laços de realimentação; (2) escolher sinais mensuráveis; (3) evitar controles instáveis ou manipuláveis.
+
+### 17.1 Laços de realimentação
+
+A engenharia de controle usa a realimentação: medir uma saída, comparar com uma meta e ajustar. Zara modela assim o processo de retenção da Pellmore. A saída é o número de registros vencidos; a meta é zero; o controlador é a tarefa de eliminação. Se a contagem subir, a tarefa roda com mais frequência ou uma pessoa investiga. Sem medição não há realimentação, o que explica por que a política no papel da Pellmore falhou. Ela desenha o laço e rotula cada elemento, o que ajuda os gestores a ver que o monitoramento faz parte do controle, e não é um acréscimo.
+
+### 17.2 Escolhendo os sinais
+
+Um laço de realimentação precisa de um sinal que reflita o objetivo. Para o controle de acesso, Zara considera o número de visualizações de prontuários sem consulta agendada. Uma contagem em alta pode indicar bisbilhotice por parte da equipe. Para o consentimento, a parcela de pacientes cujo registro de consentimento está ausente. Ela escolhe sinais baratos de calcular, difíceis de falsificar e diretamente ligados ao dano. Ela aprende com o Capítulo 29 de seu plano, que lê adiantado, que o desenho de medições virá a ser um tema completo mais tarde, mas mesmo sinais simples mudam comportamentos.
+
+### 17.3 Estabilidade
+
+Laços mal ajustados oscilam. Se a tarefa de eliminação apagar agressivamente sempre que a contagem subir, poderá remover registros sob preservação legal ou sobrecarregar o banco de dados. Zara acrescenta limites: um teto de eliminações por execução, uma lista de exclusões e um alerta se a contagem subir de repente, o que costuma indicar uma falha, e não um crescimento normal. Ela explica que, na privacidade como no controle físico, a estabilidade importa mais do que a velocidade: um processo lento e previsível é melhor do que um rápido que, de vez em quando, destrói registros que deveria guardar.
+
+### 17.4 Manipulação
+
+Qualquer meta medida pode ser manipulada. Se os gestores forem avaliados pelo número de registros vencidos, alguém poderia mudar a categoria dos registros para uma com prazo mais longo. Zara acrescenta um segundo sinal, que acompanha as mudanças de categoria e exige aprovação para elas. O Prof. Holm lembra à turma o aviso geral de que, quando uma medida vira meta, pode deixar de ser uma boa medida. Combinar sinais e manter uma revisão humana das anomalias reduz, embora nunca elimine, o risco de manipulação.
+
+### Exemplo resolvido
+
+Zara modela a retenção como um laço de realimentação, escolhe sinais para bisbilhotice e consentimento ausente, acrescenta limites para a estabilidade e um segundo sinal para detectar manipulação.
+
+> **Caso sintético.** Os sinais e os limiares são sintéticos.
+
+### Erros e limites
+
+Os sinais podem gerar alarmes falsos; revise os limiares depois dos primeiros meses de dados.
+
+### Exercícios
+
+- **EX049 — Realimentação ausente.** Por que, em termos de controle, a política de retenção no papel falhou? *Rubrica:* 3 = não havia medição, então nenhuma realimentação ajustava o processo;; 2 = menciona monitoramento;; 1 = outra causa;; 0 = nenhuma.
+- **EX050 — Sinal de bisbilhotice.** Que sinal pode revelar bisbilhotice por parte da equipe? *Rubrica:* 3 = visualizações de prontuários sem consulta agendada;; 2 = menciona visualizações;; 1 = nenhum;; 0 = nenhuma.
+- **EX051 — Defesa contra manipulação.** Como Zara se protege da manipulação das categorias? *Rubrica:* 3 = acompanha as mudanças de categoria e exige aprovação;; 2 = menciona monitoramento;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar zonas e segmentação aos dados de saúde; (2) projetar o privilégio mínimo em escala; (3) avaliar a arquitetura à luz da proteção de dados desde a concepção.
+
+### 18.1 Zonas
+
+Zara divide a arquitetura da Pellmore em zonas: uma zona pública para a interface do aplicativo, uma zona de aplicação para agendamento e vídeo, uma zona restrita para os prontuários clínicos e uma zona de gestão para os administradores. O tráfego entre as zonas passa por interfaces controladas. Os prontuários só podem ser alcançados pelos serviços que precisam deles. A segmentação limita até onde um atacante pode avançar depois de comprometer um serviço, e também limita o acesso acidental, já que uma tarefa de análise mal configurada na zona de aplicação não consegue ler diretamente a zona de prontuários.
+
+### 18.2 Privilégio mínimo em escala
+
+Com dezenas de serviços, permissões manuais ficam impossíveis de gerenciar. Zara projeta modelos de papéis para serviços e pessoas, com permissões ligadas a finalidades. Uma conta de serviço de lembretes de consulta pode ler nomes e horários, mas não anotações clínicas. As permissões são declaradas em configuração e revisadas automaticamente a cada mudança. Ela explica que o privilégio mínimo não diz respeito só aos atacantes: também implementa o princípio da limitação da finalidade do artigo 5(1)(b), e o princípio da finalidade da LGPD (art. 6º, I), já que cada componente só pode usar os dados para as finalidades que seu papel permite. Os papéis codificam finalidades.
+
+### 18.3 Padrões de privacidade
+
+Zara estuda padrões de arquitetura que favorecem a privacidade: agregação antes que os dados saiam de uma zona, pseudonimização nas fronteiras entre zonas e armazenamentos separados para identidade e dados clínicos. Ela os aplica à área de análise: os eventos que saem da zona de aplicação levam um identificador pseudônimo e marcas de tempo grosseiras, e a agregação ocorre antes que os dados cheguem ao fornecedor de análise. As diretrizes do EDPB sobre proteção de dados desde a concepção descrevem essas medidas como formas de implementar os princípios com eficácia, e Zara as cita ao apresentar seu projeto ao comitê de arquitetura da Pellmore. O comitê aprova a lista de padrões.
+
+### 18.4 Avaliando o projeto
+
+Zara avalia a arquitetura com três perguntas: que dados pessoais chegam a cada zona, quem pode acessá-los e como uma falha em uma zona afetaria as outras. Ela descobre que a equipe de suporte, na zona de aplicação, consegue ver anotações clínicas completas por meio de uma ferramenta de suporte. Ela reprojeta a ferramenta para mostrar as anotações apenas quando o paciente concede acesso temporário durante o atendimento. A avaliação mostra que as revisões de arquitetura precisam olhar para ferramentas e pessoas, e não só para servidores, porque muitas divulgações acontecem por interfaces legítimas usadas de forma ampla demais.
+
+### Exemplo resolvido
+
+Zara segmenta a Pellmore em quatro zonas, cria modelos de permissões por finalidade, pseudonimiza e agrega nas fronteiras entre zonas e reprojeta uma ferramenta de suporte para exigir acesso concedido pelo paciente.
+
+> **Caso sintético.** A arquitetura é sintética; o artigo 5(1)(b) do GDPR, o art. 6º da LGPD e as Diretrizes 4/2019 do EDPB são reais.
+
+### Erros e limites
+
+As zonas dos diagramas podem diferir da realidade implantada; verifique com testes de rede.
+
+### Exercícios
+
+- **EX052 — Benefício da segmentação.** Cite dois benefícios da segmentação em zonas. *Rubrica:* 3 = limita o movimento do atacante e o acesso acidental;; 2 = cita um;; 1 = nenhum;; 0 = nenhuma.
+- **EX053 — Finalidade pelos papéis.** Como o privilégio mínimo implementa a limitação da finalidade? *Rubrica:* 3 = cada componente só pode usar os dados que a finalidade de seu papel permite;; 2 = menciona finalidade;; 1 = sem relação;; 0 = nenhuma.
+- **EX054 — Ferramenta de suporte.** Como a ferramenta de suporte foi reprojetada? *Rubrica:* 3 = anotações visíveis só com acesso temporário concedido pelo paciente;; 2 = menciona consentimento;; 1 = remove a ferramenta;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher identificadores que limitem a vinculação; (2) aplicar corretamente a criptografia e o hash com chave; (3) entender os limites da pseudonimização.
+
+### 19.1 Identificadores e vinculação
+
+Zara percebe que a Pellmore usa o mesmo número de paciente em todos os sistemas, incluindo a área de análise e o laboratório parceiro. Um identificador único permite a qualquer pessoa com acesso a dois conjuntos de dados juntá-los. Ela propõe pseudônimos por domínio: cada destinatário externo recebe um identificador diferente, derivado do interno com uma chave separada. Vincular os conjuntos passa então a exigir as chaves, que ficam com a Pellmore. Essa abordagem reduz a vinculação entre destinatários e se ajusta ao conceito de pseudonimização do GDPR e da LGPD (art. 13, § 4º), em que a informação adicional é mantida separadamente. Cada destinatário recebe um pseudônimo diferente.
+
+### 19.2 Hash com chave
+
+Um hash simples do número do paciente não é um pseudônimo, porque qualquer pessoa pode calcular o hash de todos os números possíveis e comparar. Zara usa um hash com chave, com uma chave secreta guardada no módulo de hardware da Pellmore. Ela explica que, sem a chave, reverter o pseudônimo é inviável, mas, com ela, refazer a vinculação é trivial. Por isso a chave precisa ser protegida como os próprios dados. Ela documenta a rotação de chaves: quando uma chave muda, todos os pseudônimos daquele destinatário mudam, o que pode ser usado de propósito para romper a vinculação de longo prazo depois que um projeto termina.
+
+### 19.3 Escolhas de criptografia
+
+Zara revisa a criptografia em repouso. A cifragem do banco de dados protege contra discos roubados, mas não contra um atacante que usa a aplicação. A cifragem por campo dos campos especialmente sensíveis, como as anotações de saúde mental, acrescenta proteção, porque só os serviços que têm a chave do campo conseguem decifrá-lo. Ela pondera a complexidade adicional e decide aplicar a cifragem por campo apenas a um pequeno conjunto de campos definidos pelos médicos. A decisão ilustra a proporcionalidade do artigo 32, em que as medidas seguem o risco, em vez de serem aplicadas em toda parte. Os campos de baixo risco ficam sem cifragem para permitir buscas.
+
+### 19.4 Limites da pseudonimização
+
+Zara se lembra de que os dados pseudonimizados continuam sendo dados pessoais pelo GDPR. Um registro pseudônimo com data de nascimento e código postal pode ser reidentificado pelos atributos, como mostrou Sweeney (2002), por melhor que o identificador esteja protegido. Garfinkel (NISTIR 8053, 2015) faz a mesma observação: remover os identificadores diretos é só um primeiro passo. A pseudonimização reduz o risco e é incentivada pelo GDPR, mas não torna os dados anônimos, e os contratos da Pellmore precisam refletir isso. Quem tiver a tabela de chaves pode reverter os pseudônimos, então a tabela fica guardada longe dos dados.
+
+### Exemplo resolvido
+
+Zara troca um número de paciente universal por pseudônimos com chave específicos de cada destinatário, protege as chaves em hardware, aplica cifragem por campo aos campos definidos pelos médicos e documenta por que os dados pseudonimizados continuam sendo dados pessoais.
+
+> **Caso sintético.** Os identificadores e as chaves são sintéticos; Sweeney (2002), o NISTIR 8053 e o art. 13 da LGPD são reais.
+
+### Erros e limites
+
+A rotação de chaves rompe análises longitudinais legítimas; planeje-a com os usuários.
+
+### Exercícios
+
+- **EX055 — Fraqueza do hash simples.** Por que um hash simples do número do paciente não é um pseudônimo? *Rubrica:* 3 = qualquer pessoa pode calcular o hash de todos os números possíveis e comparar;; 2 = menciona reversão;; 1 = diz que é seguro;; 0 = nenhuma.
+- **EX056 — Pseudônimos por destinatário.** O que os pseudônimos específicos por destinatário impedem? *Rubrica:* 3 = juntar conjuntos de dados de destinatários diferentes sem as chaves da Pellmore;; 2 = menciona vinculação;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Ainda pessoais.** Por que os registros pseudonimizados continuam sendo dados pessoais? *Rubrica:* 3 = atributos e chaves permitem a reidentificação;; 2 = menciona chaves;; 1 = diz que são anônimos;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Privacidade e proteção de dados: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear o arcabouço jurídico que molda a engenharia da Pellmore; (2) identificar os papéis de controlador e operador; (3) relacionar normas e frameworks ao trabalho de engenharia.
+
+### 20.1 As leis aplicáveis
+
+A Pellmore atende pacientes na UE e no Brasil, então tanto o GDPR quanto a LGPD, Lei nº 13.709/2018, se aplicam. As duas definem princípios como a limitação da finalidade e a necessidade, direitos para as pessoas e deveres para as organizações. As duas tratam os dados de saúde como especialmente sensíveis: o artigo 9 do GDPR e o art. 11 da LGPD restringem o tratamento a hipóteses específicas. Zara monta uma tabela comparando as duas leis quanto às bases legais, aos direitos, à comunicação de incidentes, em que a LGPD remete ao art. 48 e à Resolução CD/ANPD nº 15/2024, e ao papel do encarregado, para que os requisitos de engenharia possam ser enunciados uma vez e atender às duas.
+
+### 20.2 Controladores e operadores
+
+Zara aprende a diferença entre o controlador, que decide por que e como os dados são tratados, e o operador, que age em nome do controlador; a LGPD usa os mesmos papéis (art. 5º, VI e VII). A Pellmore é a controladora dos prontuários; o fornecedor de vídeo é um operador. Os laboratórios parceiros podem ser controladores independentes para seus próprios exames. Os papéis determinam quem responde por quê, incluindo os pedidos de direitos e a comunicação de incidentes. As Diretrizes 07/2020 do EDPB explicam os conceitos em detalhe, e Zara as usa para rotular cada nó de seu grafo de fluxos de dados do Capítulo 2.
+
+### 20.3 Frameworks e normas
+
+Além da lei, Zara estuda frameworks. O NIST Privacy Framework 1.0 organiza a gestão de risco de privacidade em funções como Identify-P, Govern-P, Control-P, Communicate-P e Protect-P. A ISO/IEC 29100 define princípios e termos de privacidade, e a ISO/IEC 27701:2025 especifica um sistema de gestão da informação de privacidade. Ela usa as funções do NIST para agrupar seu trabalho de engenharia: inventários em Identify-P, controles de acesso em Protect-P e avisos em Communicate-P. Os frameworks, observa, ajudam a organizar o trabalho, mas não substituem a análise jurídica. Perguntas jurídicas, como qual base legal se aplica a um novo uso em pesquisa, ainda exigem assessoria.
+
+### 20.4 O papel da engenheira
+
+O Prof. Holm encerra os dois primeiros anos perguntando o que uma engenheira contribui para a proteção de dados. Zara responde que os advogados interpretam as obrigações, mas os engenheiros decidem como os sistemas de fato se comportam. Uma regra de retenção só existe se o código eliminar os dados; um direito de acesso só existe se os sistemas conseguirem encontrar os dados de uma pessoa. A proteção de dados desde a concepção, exigida pelo artigo 25 do GDPR e refletida no art. 46, § 2º, da LGPD, atribui ao controlador a responsabilidade de incorporar essas capacidades aos sistemas. Os engenheiros são, portanto, centrais para que a proteção de dados seja real, e não só escrita.
+
+### Exemplo resolvido
+
+Zara compara o GDPR e a LGPD, rotula controladores e operadores em seu grafo de fluxos, organiza o trabalho com as funções do NIST Privacy Framework e define o papel da engenheira por meio do artigo 25.
+
+> **Caso sintético.** Os papéis da Pellmore são sintéticos; o GDPR, a LGPD, a Resolução CD/ANPD nº 15/2024, as Diretrizes 07/2020 do EDPB, o NIST Privacy Framework 1.0, a ISO/IEC 29100 e a ISO/IEC 27701:2025 são reais.
+
+### Erros e limites
+
+A tabela comparativa simplifica; as leis nacionais e os reguladores acrescentam detalhes.
+
+### Exercícios
+
+- **EX058 — Hipóteses para dados de saúde.** Que artigos restringem o tratamento de dados de saúde no GDPR e na LGPD? *Rubrica:* 3 = artigo 9 do GDPR e art. 11 da LGPD;; 2 = cita um;; 1 = errado;; 0 = nenhuma.
+- **EX059 — Controlador ou operador.** O fornecedor de vídeo é controlador ou operador, e por quê? *Rubrica:* 3 = operador; age em nome da Pellmore;; 2 = diz operador;; 1 = diz controlador;; 0 = nenhuma.
+- **EX060 — Centralidade da engenharia.** Por que os engenheiros são centrais para a proteção de dados? *Rubrica:* 3 = o comportamento dos sistemas decide se os direitos e a retenção são reais;; 2 = menciona implementação;; 1 = diz que os advogados decidem;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -788,14 +988,45 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em i
 
 **EX045.** Sim; a definição abrange a divulgação acidental, e não só a ilícita.
 
+**EX046.** Se algum componente ignorar uma propriedade como a retenção, o sistema como um todo não a tem.
+
+**EX047.** O sistema de análise não tinha requisito de retenção.
+
+**EX048.** O contrato do fornecedor de vídeo permitia retenção de noventa dias, contra a regra de trinta dias da Pellmore.
+
+**EX049.** Sem medir os registros vencidos, nada disparava a correção.
+
+**EX050.** Visualizações de prontuários por membros da equipe sem consulta agendada com aquele paciente.
+
+**EX051.** Um segundo sinal acompanha as mudanças de categoria, que exigem aprovação.
+
+**EX052.** Restringe o movimento lateral dos atacantes e impede que tarefas mal configuradas alcancem os dados clínicos.
+
+**EX053.** Permissões ligadas a finalidades garantem que os dados sejam usados só para essas finalidades.
+
+**EX054.** As anotações clínicas só aparecem quando o paciente concede acesso temporário durante o atendimento.
+
+**EX055.** O espaço de números é pequeno, então calcular o hash de cada valor o reverte; é preciso uma chave secreta.
+
+**EX056.** Impedem que destinatários diferentes vinculem seus conjuntos de dados.
+
+**EX057.** Informações adicionais ou os atributos restantes podem reidentificar pessoas, então o GDPR os trata como dados pessoais.
+
+**EX058.** O artigo 9 do GDPR e o art. 11 da LGPD.
+
+**EX059.** Um operador, porque trata as gravações seguindo as instruções da Pellmore.
+
+**EX060.** As obrigações só se tornam reais quando os sistemas as implementam, e são os engenheiros que constroem esses sistemas.
+
 <a id="references"></a>
 ## Referências
 
-Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro, acrescida apenas da Resolução CD/ANPD nº 18, de 16 de julho de 2024, citada nesta edição como referência brasileira e conferida em sua fonte oficial; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
+Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro, acrescida apenas da Resolução CD/ANPD nº 18, de 16 de julho de 2024 e da Resolução CD/ANPD nº 15, de 24 de abril de 2024, citadas nesta edição como referências brasileiras e conferidas em suas fontes oficiais; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
 
 - Acquisti, A., Brandimarte, L., & Loewenstein, G. (2015). Privacy and human behavior in the age of information. *Science, 347*(6221), 509–514. <https://doi.org/10.1126/science.aaa1465>
 - Article 29 Data Protection Working Party. (2017). *Guidelines on Data Protection Impact Assessment (DPIA) and determining whether processing is "likely to result in a high risk" for the purposes of Regulation 2016/679* (WP248 rev.01, as last revised 4 October 2017; endorsed by the EDPB). <https://ec.europa.eu/newsroom/article29/items/611236>
 - Brasil. (2018). *Lei nº 13.709, de 14 de agosto de 2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)*. <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm>
+- Brasil. Agência Nacional de Proteção de Dados. (2024). *Resolução CD/ANPD nº 15, de 24 de abril de 2024 — Aprova o Regulamento de Comunicação de Incidente de Segurança*. Diário Oficial da União. <https://www.gov.br/anpd/pt-br/acesso-a-informacao/institucional/atos-normativos/regulamentacoes_anpd>
 - Brasil. Agência Nacional de Proteção de Dados. (2024). *Resolução CD/ANPD nº 18, de 16 de julho de 2024 — Aprova o Regulamento sobre a atuação do encarregado pelo tratamento de dados pessoais*. Diário Oficial da União. <https://www.gov.br/anpd/pt-br/acesso-a-informacao/institucional/atos-normativos/regulamentacoes_anpd>
 - Dwork, C., & Roth, A. (2014). The algorithmic foundations of differential privacy. *Foundations and Trends in Theoretical Computer Science, 9*(3–4), 211–407. <https://doi.org/10.1561/0400000042>
 - Dwork, C., McSherry, F., Nissim, K., & Smith, A. (2006). Calibrating noise to sensitivity in private data analysis. *Theory of Cryptography (TCC 2006)*, 265–284. <https://doi.org/10.1007/11681878_14>
