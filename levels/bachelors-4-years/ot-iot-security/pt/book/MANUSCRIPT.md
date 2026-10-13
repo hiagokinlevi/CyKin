@@ -1852,6 +1852,8 @@ Os três modelos de medidor do laboratório respondem a um pequeno questionário
 
 O MTR-A atende às quatro. O MTR-B falha apenas na 5.1 — corrigível forçando credenciais únicas na instalação. O MTR-C falha em três provisões: nenhuma política de divulgação, nenhum mecanismo de atualização e nenhuma comunicação segura. A lista de lacunas da frota inteira contém as quatro provisões, o que parece alarmante, mas é causado por apenas dois modelos; relate as duas visões.
 
+A visão por dispositivo diz a Maya o que corrigir em cada modelo de medidor, enquanto a visão da frota diz ao gestor da LDHP quais provisões faltam em algum ponto do parque. Ler apenas a lista da frota sugeriria quatro problemas distintos em todos os medidores, quando o MTR-A está limpo e três das quatro lacunas estão só no MTR-C.
+
 ### 30.3 Priorizando
 
 A severidade depende da consequência e da facilidade de correção. A falta de capacidade de atualização do MTR-C é estrutural — ele não pode receber patches —, então o planejamento da substituição começa agora. A senha padrão do MTR-B é o vetor clássico do Mirai (Capítulo 20) e é urgente, mas barata. A tabela de remediação de Maya segue essa ordem. O MTR-B é corrigido em duas semanas, na próxima visita de leitura dos medidores. O MTR-C recebe controles compensatórios imediatamente, isolamento atrás do gateway com o TLS terminado ali, e uma substituição programada para dentro de 12 meses, porque a 5.3 não pode ser atendida por nenhuma mudança de configuração. O MTR-A não precisa de nada agora, mas é verificado de novo sempre que o seu firmware muda, já que um resultado aprovado descreve uma única versão.
@@ -2007,6 +2009,8 @@ Você vai (1) projetar um estudo de simulação replicável com hipóteses pré-
 ### 33.1 Pré-registro
 
 Escrever as hipóteses, as medidas, a análise e as regras de parada antes de rodar o experimento impede que a análise seja ajustada ao resultado. Para um estudo de detectores: "H1: a proporção de alarmes falsos do CUSUM em 300 execuções tranquilas será menor que a da faixa; medida primária: execuções com qualquer alarme falso; análise: diferença de proporções com intervalo de 95 %."
+
+No projeto final de Maya, a regra de parada é o número fixo de sementes: 300 execuções calmas e 300 de ataque, sem execuções extras se o primeiro resultado parecer fraco. Fixar a medida, execuções com qualquer alarme falso, também impede que ela troque depois para outra medida que por acaso favoreça o CUSUM.
 
 ### 33.2 Tamanho de amostra para uma proporção
 
@@ -2180,6 +2184,8 @@ Você vai (1) planejar um estágio supervisionado ou um projeto comunitário com
 
 Pequenas concessionárias de água, escolas com sistemas de gestão predial e cooperativas comunitárias de aquecimento muitas vezes não têm equipe de segurança. Um estudante sob supervisão pode ajudar com trabalhos de baixo risco e centrados em documentação: uma lista de ativos a partir dos registros existentes, uma revisão dos arranjos de acesso remoto, uma lista de verificação de higiene de senhas, uma sessão de conscientização para os operadores. Nada disso exige tocar num controlador em operação.
 
+Cada uma dessas tarefas usa registros ou conversas em vez de acesso a controladores, de modo que um erro custa tempo, mas não pode parar uma bomba ou uma caldeira. A lista de ativos de Maya para a cooperativa de aquecimento é um exemplo: feita a partir de faturas e desenhos, ainda assim encontrou um roteador celular não documentado na casa da caldeira.
+
 ### 36.2 O acordo
 
 O acordo de estágio nomeia a pessoa responsável na organização anfitriã, o orientador, os entregáveis, as regras de tratamento de dados (o que sai do local, como é armazenado e quando é excluído) e uma proibição explícita de varreduras, sondagens ou mudanças de configuração. Se o anfitrião pedir "uma varredura rápida", o estudante encaminha o pedido ao orientador. Quando o gerente da cooperativa pediu a Maya que "rodasse uma varredura para ver se fomos invadidos", o acordo lhe deu a resposta: recusar educadamente, explicar que a varredura está fora do escopo combinado, oferecer no lugar a revisão da documentação e repassar o pedido ao seu orientador.
@@ -2187,6 +2193,8 @@ O acordo de estágio nomeia a pessoa responsável na organização anfitriã, o 
 ### 36.3 Trabalhando com pequenos operadores
 
 Os conselhos precisam caber no orçamento e na equipe deles. "Implante um SOC" é inútil para uma cooperativa de três pessoas; "remova a ferramenta de área de trabalho remota sempre ligada e use o recurso de sessão sob demanda do fornecedor, habilitado pelo telefone do gerente" é acionável. Os recursos gratuitos da CISA para pequenos sistemas de água e esgoto são um exemplo de orientação escrita para esse público.
+
+O exemplo de acesso remoto também serve a uma cooperativa de três pessoas porque não exige equipamento novo nem equipe de monitoramento, apenas uma mudança na forma como o fornecedor se conecta. A recomendação de Maya para o roteador da casa da caldeira segue o mesmo padrão: confirmar a finalidade, desativá-lo se for desnecessário e, caso contrário, permitir que o fornecedor o use só mediante pedido.
 
 ### 36.4 Diário reflexivo
 
@@ -2243,6 +2251,8 @@ Giraldo et al. (ACM Computing Surveys, 2018) classificam os trabalhos de detecç
 ### 37.4 Revisão por pares estruturada
 
 Formato da revisão: resumo com as suas próprias palavras; principais pontos fortes; preocupações maiores (validade, comparações ausentes, conclusões que vão além dos dados); questões menores; uma recomendação. Comente o trabalho, não a pessoa.
+
+A revisão de Maya sobre o relatório de CUSUM do colega segue exatamente essa ordem. O resumo reformula a afirmação, o ponto forte é o script reproduzível com sementes, a preocupação maior é que 0 de 40 execuções sintéticas não sustentam "elimina", e a questão menor é o atraso dado em amostras em vez de minutos. A recomendação, revisar a afirmação e acrescentar o limite de cerca de 8,8 %, diz ao autor o que mudar. Separar preocupações maiores de menores mostra qual mudança é essencial antes que o relatório se sustente.
 
 ### Exemplo resolvido (LDHP sintética)
 
@@ -2317,6 +2327,8 @@ Os oito casos incluem cinco ataques e três escritas benignas, entre elas uma es
 
 Três verdadeiros positivos, um falso positivo (uma escrita de manutenção sinalizada), dois falsos negativos (um ataque de setpoint e o ataque de deriva não detectados), dois verdadeiros negativos. Precisão 3/4 = 0,75; revocação 3/5 = 0,60. Oito casos são poucos demais para taxas precisas — um intervalo de Wilson para 3/5 vai de aproximadamente 0,23 a 0,88 —, então o uso honesto desta tabela é encontrar classes de falha, e não classificar ferramentas.
 
+O único falso positivo é a escrita de manutenção, que a Decisão 7 trata como benigna apenas quando o ID do chamado aparece na lista da janela. As duas falhas apontam para correções diferentes, uma regra de mudança cumulativa para o ataque de deriva e a correlação com logins para a escrita da HMI-1, e por isso Maya examina cada classe separadamente em vez de ajustar um único limiar.
+
 ### Exemplo resolvido (LDHP sintética)
 
 Maya examina as duas falhas de detecção. O ataque de deriva usou muitas escritas pequenas, cada uma dentro da faixa da lista de permissão — um monitor baseado em regras sem uma regra de taxa ou de tendência não consegue vê-lo. O ataque de setpoint não detectado veio da própria HMI-1, que está na lista de permissão. Os dois levam a novos registros de decisão: acrescentar uma regra de mudança cumulativa e correlacionar as escritas da HMI com os eventos de login dos operadores.
@@ -2356,6 +2368,8 @@ Você vai (1) avaliar um trabalho de conclusão contra a sua própria proposta; 
 ### 39.1 Contra a proposta
 
 Volte aos critérios de aceitação escritos no Capítulo 35. Para cada um, registre atendido, parcialmente atendido ou não atendido, com evidências. Um trabalho de conclusão que não atende a um critério, mas explica por quê — por exemplo, a classe de deriva não pôde ser detectada só com regras —, ainda pode receber uma nota alta.
+
+A tabela de avaliação de Maya mostra os três resultados possíveis em uso. Os critérios 1 e 2 são atendidos, com a matriz de confusão e os denominadores como evidência, enquanto o critério 3 é parcialmente atendido: cinco de seis classes de ataque após a regra cumulativa, com a escrita interna originada na HMI ainda não detectada e o motivo declarado.
 
 ### 39.2 Resultados versus interpretação
 

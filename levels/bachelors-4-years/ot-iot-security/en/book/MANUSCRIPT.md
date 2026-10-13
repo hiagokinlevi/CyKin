@@ -1883,6 +1883,8 @@ The lab's three meter models answer a short questionnaire for those four provisi
 
 MTR-A meets all four. MTR-B fails 5.1 only — fixable by forcing unique credentials at installation. MTR-C fails three provisions: no disclosure policy, no update mechanism and no secure communication. The fleet-wide gap list contains all four provisions, which looks alarming but is driven by just two models; report both views.
 
+The per-device view tells Maya what to fix on each meter model, while the fleet view tells LDHP's manager which provisions are missing somewhere in the estate. Reading only the fleet list would suggest four separate problems across every meter, when MTR-A is clean and three of the four gaps sit on MTR-C alone.
+
 ### 30.3 Prioritising
 
 Severity depends on consequence and fixability. MTR-C's lack of update capability is structural — it cannot be patched — so replacement planning starts now. MTR-B's default password is the classic Mirai vector (Chapter 20) and is urgent but cheap.
@@ -2048,6 +2050,8 @@ You will (1) design a replicable simulation study with pre-registered hypotheses
 ### 33.1 Pre-registration
 
 Writing hypotheses, measures, analysis and stopping rules before running the experiment prevents tuning the analysis to the result. For a detector study: "H1: CUSUM's false-alarm proportion over 300 quiet runs will be lower than the band's; primary measure: runs with any false alarm; analysis: difference in proportions with 95 % interval."
+
+In Maya's capstone the stopping rule is the fixed seed count: 300 quiet and 300 attack runs, with no extra runs added if the first result looks weak. Fixing the measure, runs with any false alarm, also stops her switching later to a different measure that happens to favour CUSUM.
 
 ### 33.2 Sample size for a proportion
 
@@ -2239,6 +2243,8 @@ You will (1) plan a supervised placement or community project with a utility, sc
 
 Small water utilities, schools with building-management systems and community heating co-operatives often lack security staff. A student under supervision can help with documentation-heavy, low-risk work: an asset list from existing records, a review of remote-access arrangements, a password-hygiene checklist, an awareness session for operators. None of these needs touching a live controller.
 
+Each of these tasks uses records or conversations rather than access to controllers, so a mistake costs time but cannot stop a pump or a boiler. Maya's asset list for the heating co-operative is an example: built from invoices and drawings, it still found an undocumented cellular router in the boiler house.
+
 ### 36.2 The agreement
 
 The placement agreement names the host organisation's responsible person, the supervisor, the deliverables, data-handling rules (what leaves the site, how it is stored and when it is deleted) and an explicit prohibition on scanning, probing or configuration changes. If the host asks for "a quick scan", the student refers the request to the supervisor.
@@ -2248,6 +2254,8 @@ When the co-operative's manager asked Maya to "run a scan to see if we're hacked
 ### 36.3 Working with small operators
 
 Advice must fit their budget and staff. "Deploy a SOC" is useless to a three-person co-operative; "remove the always-on remote-desktop tool and use the vendor's on-demand session feature, enabled by the manager's phone" is actionable. CISA's free resources for small water and wastewater systems are an example of guidance written for this audience.
+
+The remote-access example also fits a three-person co-operative because it needs no new equipment and no monitoring staff, only a change in how the vendor connects. Maya's recommendation for the boiler-house router follows the same pattern: confirm its purpose, disable it if unneeded, and otherwise allow the vendor to use it only on request.
 
 ### 36.4 Reflective journal
 
@@ -2308,6 +2316,8 @@ For Maya's detector study, Giraldo et al. pointed to Urbina et al.'s impact-base
 ### 37.4 Structured peer review
 
 Review format: summary in your own words; main strengths; major concerns (validity, missing comparisons, overreach); minor issues; a recommendation. Comment on the work, not the person.
+
+Maya's review of her classmate's CUSUM report follows this order exactly. Her summary restates the claim, her strength names the reproducible script with seeds, her major concern is that 0 of 40 synthetic runs cannot support "eliminates", and her minor issue is the delay given in samples rather than minutes. The recommendation, to revise the claim and add the bound of about 8.8 %, tells the author what to change. Separating major from minor concerns shows which change is essential before the report can stand.
 
 ### Worked example (synthetic LDHP)
 
@@ -2382,6 +2392,8 @@ The eight cases include five attacks and three benign writes, among them a maint
 
 Three true positives, one false positive (a maintenance write flagged), two false negatives (one setpoint attack and the drift attack missed), two true negatives. Precision 3/4 = 0.75; recall 3/5 = 0.60. Eight cases are far too few for precise rates — a Wilson interval for 3/5 spans roughly 0.23 to 0.88 — so the honest use of this table is to find failure classes, not to rank tools.
 
+The single false positive is the maintenance write, which Decision 7 treats as benign only when its ticket ID appears in the window list. The two misses point to different fixes, a cumulative-change rule for the drift attack and login correlation for the HMI-1 write, which is why Maya examines each class separately rather than tuning one threshold.
+
 ### Worked example (synthetic LDHP)
 
 Maya examines the two misses. The drift attack used many small writes, each within the allow-listed range — a rule-based monitor without a rate or trend rule cannot see it. The missed setpoint attack came from HMI-1 itself, which is allow-listed. Both lead to new decision records: add a cumulative-change rule, and correlate HMI writes with operator login events.
@@ -2417,6 +2429,8 @@ You will (1) evaluate a capstone against its own proposal; (2) separate results,
 ### 39.1 Against the proposal
 
 Return to the acceptance criteria written in Chapter 35. For each, record met, partly met or not met, with evidence. A capstone that misses a criterion but explains why — for example, the drift class could not be detected by rules alone — can still earn a strong grade.
+
+Maya's evaluation table shows the three possible outcomes in use. Criteria 1 and 2 are met, with the confusion matrix and the denominators as evidence, while criterion 3 is partly met: five of six attack classes after the cumulative rule, with the HMI-originated insider write still missed and the reason stated.
 
 ### 39.2 Results versus interpretation
 
