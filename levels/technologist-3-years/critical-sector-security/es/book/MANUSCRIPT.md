@@ -72,10 +72,10 @@ Toda afirmación factual sobre una ley, un estándar, un protocolo, un incidente
 19. [Infraestructura crítica y seguridad sectorial: monitorización](#ch-19): reglas de detección, la ausencia como señal y la calidad de las alertas.
 20. [Infraestructura crítica y seguridad sectorial: resolución de problemas](#ch-20): un método para fallos que pueden ser ataques o no.
 21. [Infraestructura crítica y seguridad sectorial: integración del servicio](#ch-21): integrarse con operadores, proveedores, el SOC y los planes de emergencia.
-22. [Infraestructura crítica y seguridad sectorial: automatización](../../en/book/MANUSCRIPT.md#ch-22): configuración como código, detección de desviaciones y automatización segura.
-23. [Infraestructura crítica y seguridad sectorial: evaluación](../../en/book/MANUSCRIPT.md#ch-23): comprobar si los controles funcionan y decir con cuánta seguridad se sabe.
-24. [Métodos de investigación aplicada](../../en/book/MANUSCRIPT.md#ch-24): responder a una pregunta operativa con un estudio pequeño y honesto.
-25. [Taller de proyecto en equipo](../../en/book/MANUSCRIPT.md#ch-25): trabajar como equipo de entrega en un servicio compartido.
+22. [Infraestructura crítica y seguridad sectorial: automatización](#ch-22): configuración como código, detección de desviaciones y automatización segura.
+23. [Infraestructura crítica y seguridad sectorial: evaluación](#ch-23): comprobar si los controles funcionan y decir con cuánta seguridad se sabe.
+24. [Métodos de investigación aplicada](#ch-24): responder a una pregunta operativa con un estudio pequeño y honesto.
+25. [Taller de proyecto en equipo](#ch-25): trabajar como equipo de entrega en un servicio compartido.
 26. [Infraestructura crítica y seguridad sectorial: traspaso operativo](../../en/book/MANUSCRIPT.md#ch-26): manuales de operación, titularidad y un traspaso que sobreviva al turno de noche.
 27. [Despliegue y validación](../../en/book/MANUSCRIPT.md#ch-27): comprobaciones previas, despliegues canario, vuelta atrás y validación posterior al despliegue.
 28. [Práctica sobre el terreno](../../en/book/MANUSCRIPT.md#ch-28): trabajar con seguridad en emplazamientos remotos y con el personal de operaciones.
@@ -2394,7 +2394,410 @@ Un servicio está integrado cuando cada vecino (operadores, el SOC, proveedores,
 <!-- cyberabc:chapter-navigation:start ch-21 -->
 ### Siga estudiando — capítulo 21 de 30
 
-[← Capítulo 20](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 →](../../en/book/MANUSCRIPT.md#ch-22)
+[← Capítulo 20](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Infraestructura crítica y seguridad sectorial: automatización
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- expresar la configuración deseada como código y compararla automáticamente con el estado real;
+- diseñar una automatización que **planifique antes de actuar**, separe las autocorrecciones seguras de los cambios que necesitan aprobación y limite su propio radio de impacto;
+- reconocer cuándo la propia fuente de verdad puede estar equivocada, y detenerse;
+- mantener la automatización dentro del control de cambios y obtener evidencia de ella.
+
+Los capítulos 6 y 14 describieron las líneas base y las comprobaciones de integridad hechas a mano. Con tres retransmisores y un parque creciente, la comprobación manual deja de hacerse. La automatización hace fiables las comprobaciones rutinarias, y también hace que los errores sean rápidos y amplios. Este capítulo trata de conseguir lo primero sin lo segundo.
+
+### 22.1 La configuración como código
+
+Escriba el estado deseado de cada clase de equipo como datos bajo control de versiones: ajustes de SSH, direcciones de escucha, servidores de hora, reenvío de registros, versiones de paquetes. Un recopilador lee el estado real de cada equipo (en modo de solo lectura), y una comparación produce la **deriva**: las claves cuyo valor real difiere del deseado. La guía del NIST sobre gestión de la configuración describe la vigilancia de las configuraciones frente a las líneas base como una actividad central ([NIST SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)); el marco de desarrollo seguro de software del NIST aplica disciplinas similares (control de versiones, revisión, cadenas de compilación protegidas) al código que la implementa ([NIST SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)).
+
+### 22.2 Planificar y después actuar
+
+Una buena automatización separa el **plan** de la **aplicación**. El plan enumera cada cambio previsto: equipo, ajuste, valor actual, valor deseado y modo. El paso de aplicación ejecuta un plan aprobado, no un cálculo nuevo. Esto da a una persona la oportunidad de ver lo que va a ocurrir, da al registro de cambio algo concreto que aprobar y produce evidencia después. El plan del Lab 22 para RLY-02 enumera dos cambios, SSH con contraseña y servidores de hora públicos, con sus valores actuales y deseados.
+
+El servicio de depuración a la escucha de RLY-03 aparece en el plan como una incidencia y no como una acción, porque eliminarlo podría destruir la evidencia de quién lo habilitó.
+
+### 22.3 Autocorrección segura frente a incidencia
+
+Parte de la deriva puede corregirse automáticamente con seguridad: ajustes de bajo riesgo, reversibles y bien comprendidos (volver a deshabilitar la autenticación por contraseña de SSH; restaurar los servidores de hora aprobados; restaurar el reenvío de registros). Otra deriva debe pasar por el control de cambios: todo lo que pueda cambiar el comportamiento del servicio (una versión de paquete), todo lo que pueda ser evidencia (un servicio de depuración a la escucha inesperado, que puede ser de un atacante o de un ingeniero y debe conservarse antes de eliminarlo, capítulo 20) y todo lo que afecte al proceso físico. Escriba la lista de autocorrecciones de forma explícita y manténgala corta.
+
+### 22.4 Límites al radio de impacto
+
+La automatización debe protegerse de sus propios errores. Límites habituales: aplicar a **un equipo cada vez**, verificando cada uno antes del siguiente; detenerse en el primer fallo; y **detenerse y escalar si se encuentra demasiada deriva**: si la mayor parte del parque parece haber derivado, la explicación más probable es que el estado deseado sea erróneo (una confirmación defectuosa, una rama equivocada), y autocorregir extendería el error a todas partes. Una gran interrupción causada por una actualización defectuosa distribuida a la vez a muchos sistemas (como el incidente de julio de 2024 que afectó a equipos Windows con un producto de seguridad y que, según Microsoft, afectó a unos 8,5 millones de dispositivos ([Microsoft, 20 de julio de 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/))) ilustra por qué el despliegue escalonado y las condiciones de detención importan en cualquier distribución automatizada.
+
+### 22.5 La automatización es código: trátela como tal
+
+El propio código de la automatización y los archivos de estado deseado son de alto valor: quien pueda cambiarlos puede cambiar todos los equipos. Protéjalos con revisión antes de la fusión, acceso de escritura restringido, confirmaciones firmadas o ramas protegidas, y registros de cada ejecución. Las credenciales de la automatización para leer y cambiar los equipos son cuentas privilegiadas (capítulo 7). La fusión de NTP del capítulo 25 es la advertencia: una sola confirmación revisada cambió la hora en todos los retransmisores. Trate la cuenta que usa la automatización para llegar a RLY-01, RLY-02 y RLY-03 como `vendor-kell`: limitada en el tiempo cuando sea posible, registrada y revisada en la revisión trimestral de accesos del capítulo 7.
+
+### 22.6 Ejemplo resuelto: una ejecución en seco sobre tres retransmisores (sintético)
+
+El Lab 22 compara el estado deseado con tres retransmisores. RLY-01 cumple. RLY-02 tiene la autenticación por contraseña de SSH de nuevo habilitada y servidores de hora públicos, ambos en la lista de autocorrecciones. RLY-03 tiene un servicio de depuración a la escucha en todas las interfaces, un paquete del retransmisor más antiguo y ningún reenvío de registros. Dos de los tres equipos han derivado, más de la mitad del parque, así que la salvaguarda detiene la ejecución. Aquí la detención es, en cierto sentido, una falsa alarma (la fuente de verdad está bien), pero la regla acierta al detenerse: una persona confirma el estado deseado y después aprueba aplicar las tres autocorrecciones equipo a equipo, mientras el servicio de depuración y la versión del paquete pasan a incidencias. El servicio de depuración a la escucha de RLY-03 es el mismo síntoma que encontró la comprobación de integridad en RLY-01 en el capítulo 6: dos veces es un patrón, y se aplica el método de resolución de problemas del capítulo 20.
+
+Observe también que la falta de reenvío de registros en RLY-03 significa que sus propios registros sobre el servicio de depuración pueden no haber llegado nunca al SIEM: otro motivo para conservar la evidencia local antes de corregir.
+
+### 22.7 Actividad práctica: plan de deriva
+
+**Lab 22** (guárdelo como `lab22.py` y ejecútelo con `python3 lab22.py`):
+
+```python
+# Lab 22 - automated configuration-drift check with a dry-run plan (offline, standard library only)
+# Synthetic desired state (from version control) and actual state (as collected from three relay hosts).
+import json
+desired = {"ssh.password_auth": False, "ssh.permit_root": False, "relay.listen": "10.30.0.5:8443",
+           "relay.debug_listen": None, "ntp.servers": ["10.30.0.1", "10.30.0.2"], "log.forward": "siem-01:6514",
+           "pkg.relayd": "2.4.1"}
+actual = {
+ "rly-01": {**desired},
+ "rly-02": {**desired, "ssh.password_auth": True, "ntp.servers": ["pool.example.net"]},
+ "rly-03": {**desired, "relay.debug_listen": "0.0.0.0:9000", "pkg.relayd": "2.3.9", "log.forward": None},
+}
+SAFE_AUTOFIX = {"ssh.password_auth", "ssh.permit_root", "ntp.servers", "log.forward"}  # low-risk, reversible
+def plan(host, state):
+    steps = []
+    for k, want in desired.items():
+        have = state.get(k)
+        if have != want:
+            mode = "auto" if k in SAFE_AUTOFIX else "ticket"
+            steps.append({"host": host, "key": k, "have": have, "want": want, "mode": mode})
+    return steps
+all_steps = [s for h, st in actual.items() for s in plan(h, st)]
+for s in all_steps:
+    print(f"{s['host']} {s['key']:<20} have={json.dumps(s['have']):<22} want={json.dumps(s['want']):<26} -> {s['mode']}")
+print("hosts compliant:", [h for h, st in actual.items() if not plan(h, st)])
+print("dry run only: %d auto-fix steps, %d need a change ticket" % (sum(s['mode'] == 'auto' for s in all_steps), sum(s['mode'] == 'ticket' for s in all_steps)))
+# Guard: never auto-apply to more than one host at a time, and stop if the host count with drift exceeds half the fleet
+drifted = {s['host'] for s in all_steps}
+print("guard: drifted hosts %d of %d -> %s" % (len(drifted), len(actual), "HALT and escalate (possible bad source of truth)" if len(drifted) > len(actual) / 2 else "proceed one host at a time"))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+rly-02 ssh.password_auth    have=true                   want=false                      -> auto
+rly-02 ntp.servers          have=["pool.example.net"]   want=["10.30.0.1", "10.30.0.2"] -> auto
+rly-03 relay.debug_listen   have="0.0.0.0:9000"         want=null                       -> ticket
+rly-03 log.forward          have=null                   want="siem-01:6514"             -> auto
+rly-03 pkg.relayd           have="2.3.9"                want="2.4.1"                    -> ticket
+hosts compliant: ['rly-01']
+dry run only: 3 auto-fix steps, 2 need a change ticket
+guard: drifted hosts 2 of 3 -> HALT and escalate (possible bad source of truth)
+```
+
+Lea primero la detención. Dos de los tres retransmisores derivaron, más de la mitad del parque, así que la ejecución se detuvo antes de aplicar nada. Después lea el plan por equipo: la autenticación por contraseña y los servidores de hora públicos de RLY-02, y la falta de reenvío de registros de RLY-03, están en la lista de autocorrecciones; el servicio de depuración a la escucha y el paquete del retransmisor más antiguo de RLY-03 no lo están, y se convierten en incidencias. Antes de aprobar cualquier corrección en RLY-03, copie sus registros locales, porque sin reenvío pueden ser el único registro de cuándo apareció el servicio de depuración.
+
+### 22.8 Errores frecuentes y límites
+
+- Automatización que aplica cambios sin un plan que pueda revisarse.
+- Listas de autocorrecciones largas, que incluyen ajustes que pueden ser evidencia o cambiar el comportamiento.
+- Aplicar a todos los equipos a la vez.
+- Ninguna condición de detención por «demasiada deriva».
+- Código y credenciales de la automatización menos protegidos que los equipos que gestionan.
+- Tratar el cumplimiento automatizado como prueba de seguridad; solo demuestra los ajustes que comprueba.
+
+La detención del Lab 22 con dos de tres retransmisores derivados es el cuarto punto bien resuelto.
+
+Una lista de autocorrecciones que incluyera el servicio de depuración habría eliminado la evidencia de quién lo configuró en RLY-03.
+
+### Ejercicios — capítulo 22
+
+**EX064 — Apruebe el plan.** *Objetivo:* revisar un plan de automatización como aprobador de cambios. *Entradas:* la salida del Lab 22. *Restricciones:* apruebe, modifique o rechace cada paso. *Pasos:* (1) decida sobre cada uno de los cinco pasos; (2) indique el orden de aplicación; (3) indique la verificación tras cada equipo. *Evidencia esperada:* tabla. *Rúbrica:* 3 = autocorrecciones aprobadas equipo a equipo (RLY-02 y después RLY-03), servicio de depuración conservado y después eliminado mediante una incidencia tras la investigación, actualización del paquete como cambio normal con canario (capítulo 27), reenvío de registros restaurado pronto en RLY-03 para recuperar la visibilidad; comprobaciones de verificación nombradas; 2 = falta el orden o la conservación; 1 = aprobarlo todo; 0 = nada.
+
+**EX065 — Ajuste la salvaguarda.** *Objetivo:* razonar sobre los umbrales de detención. *Entradas:* la salvaguarda se detiene cuando más de la mitad del parque tiene deriva. *Restricciones:* el parque crecerá hasta 12 retransmisores. *Pasos:* (1) indique si «más de la mitad» sigue siendo razonable con 12; (2) proponga una salvaguarda mejor que use el tipo de deriva, no solo el número de equipos. *Evidencia esperada:* párrafo. *Rúbrica:* 3 = reconoce que la misma clave derivando en muchos equipos sugiere una fuente de verdad defectuosa, mientras que claves distintas en equipos distintos sugieren cambios locales; propone detenerse cuando una clave difiere en más de una proporción fijada de equipos, o cuando hay una confirmación reciente y sin revisar en el estado deseado; 2 = parcial; 1 = mantiene «la mitad»; 0 = nada.
+
+**EX066 — Proteja la cadena.** *Objetivo:* proteger la propia automatización. *Entradas:* el repositorio del estado deseado y la cuenta de la automatización. *Restricciones:* cinco controles. *Pasos:* enumérelos con su evidencia. *Evidencia esperada:* tabla. *Rúbrica:* 3 = rama protegida con revisión obligatoria, mantenedores restringidos con MFA, confirmaciones o etiquetas firmadas, cuenta de la automatización limitada a los equipos gestionados con las credenciales en una bóveda, registros de ejecución reenviados al SIEM con una alerta ante ejecuciones fuera de calendario; evidencia para cada uno; 2 = cuatro; 1 = genéricos; 0 = nada.
+
+### Síntesis del capítulo
+
+Exprese el estado deseado como código, recopile el estado real en modo de solo lectura y calcule la deriva. Planifique antes de actuar; autocorrija solo una lista corta de ajustes de bajo riesgo y reversibles, y envíe todo lo demás (en especial, todo lo que pueda ser evidencia) al control de cambios. Limite el radio de impacto: un equipo cada vez, detenerse ante un fallo, detenerse cuando la deriva parezca una fuente de verdad defectuosa. Proteja la automatización con tanto cuidado como los equipos que gestiona.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Siga estudiando — capítulo 22 de 30
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Infraestructura crítica y seguridad sectorial: evaluación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- planificar pruebas seguras y autorizadas que muestren si los controles funcionan como se pretende;
+- redactar **reglas de enfrentamiento** para las pruebas en un entorno operativo;
+- informar de la eficacia de cada control con recuentos, intervalos y medidas de tiempo, usando una regla de afirmación declarada;
+- convertir los resultados de la evaluación en trabajo de mejora y en nuevas pruebas.
+
+Los capítulos 18 y 19 implementaron controles y reglas. Este capítulo pregunta si funcionan. La guía técnica del NIST sobre pruebas de seguridad describe la planificación, la ejecución y el informe de las pruebas, incluida la necesidad de autorización y de reglas de enfrentamiento ([NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)). En los servicios críticos, el énfasis está en pruebas **seguras** para el proceso físico.
+
+### 23.1 Qué probar
+
+Pruebe cada control frente a la evidencia que promete su ficha (capítulo 18). Para los controles detectivos, inyecte un **evento de prueba seguro** que debería producir la alerta: una ráfaga deliberada de inicios de sesión fallidos desde una dirección de prueba; un flujo de prueba marcado desde una estación de trabajo de prueba hacia un puerto de prueba de un PLC de repuesto; un latido de prueba en pausa. Para los controles preventivos, intente la acción prevenida de forma controlada: un mensaje con un MAC erróneo; una conexión desde una zona no permitida. Para los controles de recuperación, ejecute una restauración cronometrada (capítulo 16).
+
+### 23.2 Reglas de enfrentamiento
+
+Antes de cualquier prueba, redacte y consiga la firma de unas **reglas de enfrentamiento**: propósito; sistemas dentro del alcance (por identificador) y explícitamente fuera de él; acciones permitidas; ventana temporal; quién está en la instalación o de guardia; plan de comunicación (a quién se informa antes, durante y después); condiciones de detención (cualquier comportamiento inesperado del proceso detiene la prueba de inmediato); cómo se marcan los eventos de prueba para que quienes responden y los operadores los reconozcan; y cómo se guardan los resultados. En la zona de estaciones, prefiera las pruebas en equipos de repuesto o de laboratorio, o en el lado del retransmisor del conducto, y no envíe nunca tráfico de prueba a un controlador en servicio sin el acuerdo explícito de operaciones para ese controlador y ese momento.
+
+### 23.3 Reglas de afirmación
+
+Decida antes de probar qué resultado contará como «eficaz». Una **regla de afirmación** podría ser: el límite inferior de Wilson al 95 % de la tasa de detección es al menos 0,70 y la mediana del tiempo hasta la alerta cumple el objetivo. Fijar la regla de antemano evita la tentación de elegir después una interpretación favorecedora. Se aplica la lección del capítulo 9: pocas pruebas dan intervalos amplios, así que «8 de 8 detectadas» puede seguir sin cumplir la regla. El 8 de 8 de la regla C es el caso: un historial perfecto cuyo límite inferior, 0,68, no llega a 0,70.
+
+### 23.4 De los resultados al trabajo
+
+Cada control «aún no demostrado» necesita o una mejora (corregir la regla, la fuente, la configuración) o más pruebas (si el problema es solo el tamaño de la muestra). Registre la fecha de la siguiente prueba. Cada control «demostrado eficaz» se vuelve a probar de forma programada, porque los controles se degradan. El Lab 23 clasifica así sus cuatro controles. La regla C solo necesita más pruebas: un éxito más llegaría justo a 0,70 (0,701), y un segundo daría margen (0,722). La regla B necesita primero una mejora, exportar al SIEM los flujos del conmutador de estación que faltaba, y después una nueva prueba. La FIM necesita ambas cosas: comprobaciones más frecuentes de los archivos críticos y, después, más pruebas. La restauración de copias necesita añadir la clave de descifrado al manual de operación y, después, nuevos simulacros.
+
+### 23.5 Ejemplo resuelto: las pruebas de control de un trimestre (sintético)
+
+El Lab 23 aplica la regla de afirmación a seis controles. Dos quedan demostrados eficaces: la regla A detectó 12 de 12 pruebas de fuerza bruta con una mediana de 2 minutos (límite inferior 0,76), y el retransmisor rechazó las 40 pruebas de fallo de MAC (límite inferior 0,91). Cuatro aún no están demostrados, por motivos distintos:
+
+- **Regla B** (Modbus de la red corporativa a una estación): detectó solo 7 de 10. La investigación muestra que los tres fallos fueron flujos de prueba hacia un PLC en un conmutador de estación cuyos flujos no se exportan al SIEM: una carencia de la fuente, no un fallo de la regla.
+- **Regla C** (estación en silencio): detectó 8 de 8 con una mediana de 16 minutos frente a un objetivo de 20 minutos, pero el límite inferior es 0,68. Aquí el único problema es el tamaño de la muestra: una prueba correcta más cumpliría la regla por poco, y dos la cumplirían con margen.
+- **FIM**: detectó 4 de 6 cambios no aprobados, con una mediana de 1.440 minutos porque la comprobación de integridad se ejecuta una vez al día. Necesita a la vez una mejora (comprobaciones más frecuentes de los archivos críticos) y más pruebas.
+- **Restauración de copias**: cumplió su objetivo 9 de 10 veces; el límite inferior, 0,60, está por debajo de 0,70. El único fallo fue la falta de una clave de descifrado en el manual de operación de restauración: un problema de proceso que puede corregirse.
+
+### 23.6 Actividad práctica: evalúe los controles
+
+**Lab 23** (guárdelo como `lab23.py` y ejecútelo con `python3 lab23.py`):
+
+```python
+# Lab 23 - evaluating whether the service's controls work, not only whether they exist (offline, standard library only)
+# Claim rule used here: 'shown effective' needs the 95% Wilson lower bound >= 0.70 and the time target met.
+# Synthetic results of a quarter of control tests at Fallowmere. Each test injects a safe, authorized test event.
+import math
+tests = {  # control: (test events injected, detected/blocked as specified, median minutes to alert)
+ "brute-force alert (rule A)": (12, 12, 2),
+ "corp->station Modbus alert (rule B)": (10, 7, 4),
+ "station-silent alert (rule C)": (8, 8, 16),
+ "MAC rejection at relay": (40, 40, None),
+ "FIM unapproved-change alert": (6, 4, 1440),
+ "backup restore within 4 h": (10, 9, None),
+}
+def wilson_low(k, n, z=1.96):
+    p = k / n; d = 1 + z*z/n; c = (p + z*z/(2*n)) / d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n)) / d
+    return c - h
+target = {"FIM unapproved-change alert": 60, "station-silent alert (rule C)": 20}
+for name, (n, k, mins) in tests.items():
+    lo = wilson_low(k, n)
+    late = name in target and mins is not None and mins > target[name]
+    verdict = "shown effective" if lo >= 0.70 and not late else "not yet shown"
+    print(f"{name:<36} {k:>2}/{n:<2} low95={lo:.2f} median {'-' if mins is None else mins:>4} min  {verdict}{' (too slow)' if late else ''}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+brute-force alert (rule A)           12/12 low95=0.76 median    2 min  shown effective
+corp->station Modbus alert (rule B)   7/10 low95=0.40 median    4 min  not yet shown
+station-silent alert (rule C)         8/8  low95=0.68 median   16 min  not yet shown
+MAC rejection at relay               40/40 low95=0.91 median    - min  shown effective
+FIM unapproved-change alert           4/6  low95=0.30 median 1440 min  not yet shown (too slow)
+backup restore within 4 h             9/10 low95=0.60 median    - min  not yet shown
+```
+
+Los dos controles eficaces son la regla A, 12 de 12 con límite inferior 0,76, y la comprobación del MAC del retransmisor, 40 de 40 con límite inferior 0,91. Para cada uno de los cuatro que aún no están demostrados, escriba una línea: el motivo (regla B, una carencia de la fuente; regla C, el tamaño de la muestra; FIM, comprobaciones diarias y muy pocas pruebas; restauración, una carencia del manual de operación), la siguiente acción y la fecha de la siguiente prueba. No redondee el 0,68 de la regla C a 0,70.
+
+### 23.7 Errores frecuentes y límites
+
+- Probar sin reglas de enfrentamiento escritas, o con un alcance poco claro.
+- Eventos de prueba sin marcar, que desencadenan una respuesta real, o eventos reales descartados como pruebas.
+- Reglas de afirmación elegidas tras ver los resultados.
+- Informar de «8/8 = 100 %» sin intervalo.
+- Tratar «aún no demostrado» como «fallido», o como «bien».
+- Pruebas en controladores en servicio sin el acuerdo de operaciones.
+
+Las pruebas muestran cómo responden los controles a los eventos de prueba que usted diseñó. Los adversarios reales y las averías reales pueden ser distintos; varíe las pruebas a lo largo del tiempo e incluya escenarios de incidentes ocurridos en otros lugares.
+
+### Ejercicios — capítulo 23
+
+**EX067 — Reglas de enfrentamiento.** *Objetivo:* autorizar una prueba segura. *Entradas:* una prueba de la regla B con una estación de trabajo de prueba y el PLC Arlen 300 de repuesto del laboratorio de FSTS, más un flujo de prueba hacia el PLC de PS-04 durante una visita a la instalación. *Restricciones:* todos los elementos del capítulo 23 («Reglas de enfrentamiento»). *Pasos:* redacte las reglas de enfrentamiento. *Evidencia esperada:* una página. *Rúbrica:* 3 = alcance por identificador, con el flujo hacia el PLC en servicio permitido solo con la aprobación nominal de Agua, prueba de solo lectura o solo de conexión (sin escrituras), ingeniero en la instalación, dirección de prueba marcada, comunicación a la sala de control y al SOC, condiciones de detención explícitas y almacenamiento de los resultados; 2 = falta un elemento; 1 = informal; 0 = nada.
+
+**EX068 — ¿Cuántas pruebas más?** *Objetivo:* planificar el tamaño de la muestra. *Entradas:* la regla C con 8/8. *Restricciones:* use el límite inferior de Wilson del Lab 23. *Pasos:* halle el número de éxitos consecutivos adicionales necesarios para que el límite inferior llegue a 0,70. *Evidencia esperada:* el número y la ejecución. *Rúbrica:* 3 = un éxito más (9/9 da un límite inferior de unos 0,701; 10/10 da unos 0,722), mostrado correctamente, con el comentario de que cumplir un umbral por un margen de 0,001 es frágil y que merece la pena planificar una segunda prueba adicional; 2 = correcto con un método poco claro; 1 = adivinado; 0 = nada.
+
+**EX069 — Diagnostique un fallo de detección.** *Objetivo:* convertir los resultados en trabajo. *Entradas:* la regla B no detectó 3 de 10 pruebas porque no se exportaban los flujos de un conmutador de estación. *Restricciones:* plan de corrección y de nueva prueba. *Pasos:* (1) indique la corrección; (2) indique la monitorización que habría detectado antes la carencia (capítulo 19); (3) planifique la nueva prueba. *Evidencia esperada:* media página. *Rúbrica:* 3 = habilitar la exportación de flujos en ese conmutador mediante un cambio; añadir una regla de ausencia de fuente por cada exportador de flujos; nueva prueba con al menos 10 eventos en todos los conmutadores; actualizar la ficha de control; 2 = corrección sin monitorización; 1 = «ajustar la regla B»; 0 = nada.
+
+### Síntesis del capítulo
+
+Pruebe los controles frente a la evidencia que prometen, con eventos de prueba seguros y marcados, bajo unas reglas de enfrentamiento firmadas que protejan el proceso físico. Fije la regla de afirmación antes de probar, informe de recuentos con intervalos y medidas de tiempo, y distinga «demostrado eficaz» de «aún no demostrado», y por qué. Convierta cada resultado en una mejora o en más pruebas, y vuelva a probar de forma programada.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Siga estudiando — capítulo 23 de 30
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de investigación aplicada
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- convertir una pregunta operativa en un estudio pequeño y respondible, con un método declarado;
+- elegir una comparación (antes/después, con/sin, emparejada) y reconocer lo que cada una puede y no puede mostrar;
+- recoger datos de forma ética y segura en un entorno operativo;
+- informar de los resultados con sus límites para que un directivo pueda actuar sobre ellos sin sobreinterpretarlos.
+
+A los tecnólogos se les hacen a menudo preguntas que parecen sencillas («¿redujo la nueva regla de alerta el tiempo de respuesta?», «¿es RLY-02 más lento desde la actualización?», «¿encuentran nuestras visitas a las estaciones deriva de configuración?») y que se responden con impresiones. Este capítulo enseña el estudio pequeño y honesto que se sitúa entre una impresión y un proyecto de investigación. Lee métodos publicados para usarlos, no para producir otros nuevos.
+
+### 24.1 De la pregunta al estudio
+
+Formule la pregunta de modo que los datos puedan responderla: población (qué estaciones, alertas o equipos), medida (con su definición, capítulo 9), comparación (frente a qué), periodo y decisión (qué se hará de forma distinta según la respuesta). «¿Redujo el nuevo texto de primera acción de la regla C el tiempo entre la alerta y la llamada a la sala de control?» es respondible; «¿es mejor la monitorización?» no lo es. La pregunta de la regla C nombra su población (alertas de ausencia), su medida (minutos hasta la llamada) y su decisión (adoptar el texto o no).
+
+«¿Es mejor la monitorización?» no nombra ninguna de ellas.
+
+### 24.2 Las comparaciones y sus trampas
+
+- **Antes/después** en el mismo sistema es fácil y débil: cualquier otra cosa que cambiara en el periodo (personal, estación del año, carga de trabajo) puede explicar la diferencia.
+- **Con/sin** (algunas estaciones o turnos reciben el cambio y otros no) es más sólida si los grupos son similares, y lo es aún más si quién recibe el cambio se decide con un método justo (alternancia, elección aleatoria) y no según quién se ofreció voluntario.
+- Las comparaciones **emparejadas** (las mismas personas o equipos medidos en ambas condiciones) eliminan las diferencias entre unidades.
+
+Vigile la **regresión a la media**: los cambios introducidos tras un mes inusualmente malo suelen parecer eficaces porque el mes siguiente habría sido mejor de todos modos. Vigile la **agregación** de grupos con líneas base distintas (capítulo 9). Y deje por escrito el análisis antes de ver los resultados: la idea que hay detrás del prerregistro en investigación ([Nosek et al., 2018](https://doi.org/10.1073/pnas.1708274114)) se aplica también a pequeña escala, porque le impide elegir la medida que favorece al cambio.
+
+### 24.3 Recoger datos en un entorno operativo
+
+Use, siempre que pueda, datos que el servicio ya registra: horas de las alertas y de sus confirmaciones, marcas de tiempo de las incidencias, recuentos del retransmisor. Si necesita datos nuevos (cronometrar un procedimiento manual, preguntar a los operadores), obtenga el acuerdo del responsable operativo, haga que la participación de las personas sea voluntaria, no perturbe las operaciones y no registre más información personal de la que necesita la pregunta. Los principios del Informe Menlo (respeto a las personas, beneficencia, justicia y respeto a la ley y al interés público) son una comprobación útil para cualquier estudio en TIC que implique a personas o sistemas ([Menlo Report, 2012](https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf)).
+
+### 24.4 Un análisis ajustado a los datos
+
+Para los estudios operativos pequeños, los métodos sencillos son los mejores y los más honestos: medianas y percentiles (capítulo 9), diferencias entre grupos indicando el número de observaciones, intervalos para proporciones (Wilson) y una comprobación de si el resultado resiste las explicaciones alternativas evidentes (eliminar una semana inusual; comparar los turnos por separado). Si la conclusión cambia al eliminar un solo dato, dígalo. El estudio de la regla C hizo esta comprobación: eliminar la semana de la caída del operador movió la mediana del texto antiguo de 14 a 11 minutos, todavía más lenta que 6.
+
+Comparar los turnos por separado habría sido la siguiente comprobación.
+
+### 24.5 Informe
+
+Una nota de estudio de una página contiene: la pregunta; el método (población, medida, comparación, periodo y lo que se decidió de antemano); los resultados con recuentos; los límites y las explicaciones alternativas; y una recomendación con la confianza que merece. Separe los resultados observados de las inferencias, como en todo este libro. En el estudio de la regla C, los resultados observados son 11 alertas con el texto antiguo y una mediana de 14 minutos, y 12 alertas con el texto nuevo y una mediana de 6; la inferencia es que la primera acción ayuda. La línea de límites nombra los números pequeños, el efecto de saberse observado y la semana de la caída del operador.
+
+### 24.6 Ejemplo resuelto: ¿ayudó el nuevo texto de primera acción? (sintético)
+
+FSTS reescribió la alerta de la regla C para incluir una primera acción («llamar a la sala de control de Agua y, después, comprobar el estado del operador»). La pregunta: ¿acorta el tiempo entre la alerta y la llamada a la sala de control? El equipo alternó el texto antiguo y el nuevo por semanas durante ocho semanas en todo el turno de guardia, de modo que cada tecnólogo recibió ambos. Resultados: 11 alertas con el texto antiguo, mediana de 14 minutos hasta la llamada; 12 con el texto nuevo, mediana de 6 minutos. Todos los tecnólogos que recibieron ambos tuvieron una mediana más corta con el texto nuevo. Límites: números pequeños; los tecnólogos sabían que había un estudio (puede que se esforzaran más); una semana del texto antiguo incluyó una caída del operador con muchas alertas a la vez. Al eliminar esa semana, la mediana del texto antiguo es de 11 minutos, todavía más lenta que 6. Recomendación: adoptar el texto nuevo en todas las reglas de ausencia; volver a medir dentro de tres meses con datos rutinarios.
+
+### 24.7 Actividad práctica: diseñe un estudio
+
+Elija una pregunta entre: (a) ¿ha aumentado la latencia p95 de RLY-02 desde relayd 2.4.1? (b) ¿encuentran las visitas trimestrales a las estaciones deriva que no detectan las comprobaciones automatizadas? (c) ¿encuentra la revisión de accesos menos problemas cada trimestre? Redacte el diseño del estudio: pregunta, población, medida, comparación, periodo, decisión, fuente de datos, notas éticas y de seguridad, y análisis planificado de antemano. Para la pregunta (a), la comparación ya está hecha: el canario del capítulo 27 midió una latencia p95 de RLY-03 de 41 ms con relayd 2.4.1 frente a 37 ms con la 2.4.0, durante una hora nocturna. Un estudio la ampliaría a varias semanas de datos rutinarios, incluiría el pico de la mañana y las ejecuciones semanales del informe, y decidiría de antemano qué aumento desencadenaría una reversión.
+
+### 24.8 Errores frecuentes y límites
+
+- Preguntas que los datos no pueden responder.
+- Comparaciones antes/después presentadas como prueba.
+- Elegir la medida después de ver los datos.
+- Estudios que perturban las operaciones o recogen datos personales innecesarios.
+- Resultados presentados sin recuentos ni límites.
+- Tratar un estudio pequeño como cosa zanjada; es evidencia para una decisión, que debe volver a comprobarse.
+
+El estudio de la regla C evitó el segundo error alternando el texto por semanas en lugar de comparar el antes con el después.
+
+Preguntar a los tecnólogos su opinión tras la prueba no habría añadido nada que los tiempos no mostraran, y habría recogido opiniones personales que el estudio no necesitaba.
+
+### Ejercicios — capítulo 24
+
+**EX070 — Hágala respondible.** *Objetivo:* reformular preguntas vagas. *Entradas:* (a) «¿Es buena nuestra aplicación de parches?»; (b) «¿Son un riesgo los proveedores?»; (c) «¿Ayuda el SOC?». *Restricciones:* cada pregunta reformulada debe nombrar población, medida, comparación y periodo. *Pasos:* reformule las tres. *Evidencia esperada:* tres preguntas. *Rúbrica:* 3 = concretas, medibles, con comparación y periodo y con una decisión asociada; 2 = una débil; 1 = siguen siendo vagas; 0 = nada.
+
+**EX071 — Detecte los puntos débiles.** *Objetivo:* criticar un estudio. *Entradas:* «Después de la interrupción de marzo añadimos la regla C. En abril hubo un 30 % menos de quejas sobre la telemetría que en marzo, lo que demuestra que la regla C funciona». *Restricciones:* cuatro puntos débiles. *Pasos:* nombre cada uno y proponga un diseño mejor. *Evidencia esperada:* lista y diseño. *Rúbrica:* 3 = solo antes/después, regresión a la media tras un mes inusual, las quejas como mala medida de la detección, sin recuentos ni intervalo, otros cambios en el periodo; el diseño mejor mide el tiempo de detección de las alertas con una comparación; 2 = tres; 1 = uno; 0 = nada.
+
+**EX072 — Redacte la nota de estudio.** *Objetivo:* informar de un estudio pequeño. *Entradas:* el capítulo 24 («Ejemplo resuelto: ¿ayudó el nuevo texto de primera acción?»). *Restricciones:* una página; los apartados del capítulo 24 («Informe»). *Pasos:* redacte la nota. *Evidencia esperada:* la nota. *Rúbrica:* 3 = todos los apartados; recuentos y medianas; límites que incluyen el efecto de saberse observado, la n pequeña y la semana de la caída, con la comprobación de sensibilidad; recomendación proporcionada con un plan para volver a medir; 2 = límites escasos; 1 = alegato; 0 = nada.
+
+### Síntesis del capítulo
+
+Convierta las preguntas operativas en estudios pequeños con una población, una medida, una comparación, un periodo y una decisión declarados. Prefiera las comparaciones que descartan las alternativas evidentes (alternancia o emparejamiento antes que antes/después) y decida el análisis de antemano. Recoja los datos de forma segura y ética con el acuerdo del responsable operativo, analice con sencillez, compruebe la sensibilidad e informe de recuentos y límites para que el resultado se use con la confianza que merece.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Siga estudiando — capítulo 24 de 30
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Taller de proyecto en equipo
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- trabajar como parte de un pequeño equipo de entrega que construye y opera un servicio compartido;
+- dividir el proyecto de integración de LANTERN en elementos de trabajo con criterios de aceptación y evidencia;
+- usar la revisión (de código, configuración y documentos) como control de seguridad;
+- llevar a cabo revisiones breves y sin culpables de lo que fue bien y mal, y convertirlas en cambios.
+
+A partir del capítulo 26, el libro pasa al traspaso, el despliegue y el proyecto final. Los servicios reales los construyen equipos, y muchos fallos de seguridad son fallos de equipo: una suposición que nadie comprobó porque cada persona creía que otra lo había hecho, un cambio fusionado sin revisión porque el revisor estaba ocupado. Este capítulo es un taller: le da una estructura para el trabajo en equipo que necesita el proyecto final.
+
+### 25.1 El equipo y sus roles
+
+Un equipo de entrega de LANTERN en FSTS tiene cuatro o cinco personas: un **responsable del servicio** (prioriza y habla en nombre de los clientes), dos o tres **tecnólogos** (construyen y operan), un **revisor de seguridad** (puede ser uno de los tecnólogos, por rotación) y un **representante del cliente** de operaciones de Agua que asiste a las revisiones y acepta el trabajo que afecta al proceso. Los roles rotan cuando es posible para que el conocimiento se comparta; ninguna persona debería ser la única que entiende el retransmisor o que tiene sus claves (la independencia del capítulo 8).
+
+### 25.2 Elementos de trabajo con criterios de aceptación
+
+Cada elemento de trabajo indica qué significa «terminado» mediante **criterios de aceptación** que producen evidencia. «Añadir alertas de silencio de estación» es un deseo. «La regla C alerta en los 20 minutos siguientes a que se detenga el latido de una estación, verificado con tres silencios de prueba inyectados en dos estaciones; primera acción redactada y acordada con la sala de control de Agua; ficha de control actualizada» es un elemento de trabajo. La evidencia pasa a formar parte del registro del proyecto final.
+
+La fusión de NTP de este capítulo muestra el coste de un criterio débil: «actualizar los servidores NTP» se cumplió mientras todos los retransmisores perdían su segunda fuente de hora. El criterio reescrito, «desfase < 1 s en todos los retransmisores durante 24 h», habría fallado el primer día.
+
+### 25.3 La revisión como control
+
+La revisión por pares del código, los archivos de estado deseado, los cambios del cortafuegos y los manuales de operación detecta errores, difunde el conocimiento y dificulta que una sola cuenta comprometida o descuidada cambie el servicio por su cuenta. Haga que la revisión sea **obligatoria** para todo lo que cambie el servicio (ramas protegidas, capítulo 22), **específica** (el revisor comprueba los criterios de aceptación y las propiedades de diseño del capítulo 8, no solo el estilo) y **registrada**. Rote a los revisores para que la revisión no se convierta en el sello automático de un aprobador habitual.
+
+La fusión de NTP se revisó, pero en cuanto a la sintaxis; el revisor nunca comprobó que el nuevo servidor existiera.
+
+### 25.4 Ritmo
+
+A los equipos operativos les conviene un ritmo breve y regular: una conversación semanal de planificación (qué se hará, quién lo hará y con qué evidencia), una breve comprobación diaria (qué está bloqueado) y una revisión al final de cada ciclo (qué se entregó, mostrado con su evidencia al representante del cliente). El trabajo operativo (incidentes, averías) interrumpe el trabajo del proyecto; planifique contando con ello en lugar de fingir que no ocurrirá. El silencio de PS-09 y la avería del disco del servidor de salto son las interrupciones que hay que prever.
+
+En Fallowmere, la comprobación diaria es donde se planteó el silencio de PS-09 la mañana siguiente a que saltara la regla C.
+
+### 25.5 Revisiones sin culpables
+
+Cuando algo sale mal (un cambio fallido, una alerta no detectada, un cuasiincidente), celebre una breve **revisión sin culpables**: qué ocurrió, qué sabían las personas en cada momento, por qué sus acciones tenían sentido para ellas entonces, qué condiciones permitieron el problema y qué cambiará. El material de SRE de Google describe el valor de los análisis posteriores sin culpables para aprender de los incidentes sin desalentar la notificación honesta ([Google SRE book, postmortem culture](https://sre.google/sre-book/postmortem-culture/)); el trabajo de Reason sobre el error humano distingue entre culpar a las personas y corregir las condiciones del sistema que hacen probables los errores ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)). El resultado son cambios, cada uno con un responsable, no una persona a la que culpar.
+
+### 25.6 Ejemplo resuelto: una fusión que no debería haber ocurrido (sintético)
+
+Durante el proyecto, un tecnólogo fusionó un cambio de estado deseado que eliminaba `10.30.0.2` de los servidores NTP de los retransmisores, con la intención de sustituirlo por un servidor nuevo que aún no se había construido. La automatización lo aplicó; los retransmisores se quedaron con una sola fuente de hora; cuando esa fuente se reinició por mantenimiento dos días después, los retransmisores derivaron y los mensajes de las estaciones empezaron a no superar la ventana de 120 segundos. La revisión sin culpables encontró que: el cambio se revisó, pero el revisor comprobó la sintaxis, no si el nuevo servidor existía; los criterios de aceptación decían solo «actualizar los servidores NTP»; la monitorización de deriva comprobaba que los ajustes coincidían con el estado deseado, y coincidían; y no había ninguna alerta por desfase del reloj. Cambios: la lista de comprobación de la revisión incluye «¿existe y responde cada sistema referenciado?»; los criterios de aceptación de los cambios de hora incluyen «desfase < 1 s en todos los retransmisores durante 24 h»; nueva alerta por desfase del reloj del retransmisor > 2 s. No se culpó a nadie; se corrigieron tres condiciones.
+
+### 25.7 Actividad práctica: cartera de trabajo del proyecto
+
+Redacte la cartera de trabajo del proyecto final (capítulo 29): al menos diez elementos de trabajo que cubran el retransmisor, la validación, la autenticación, el historiador, el registro, las reglas de monitorización, el acceso, las copias de seguridad y la restauración, la automatización, los manuales de operación y la evidencia. Cada uno necesita criterios de aceptación que produzcan evidencia y un rol responsable. Un elemento completo como modelo: «Alerta de desfase del reloj del retransmisor: alertar cuando el desfase de cualquier retransmisor supere 2 s; aceptación: un desfase inyectado en un retransmisor de prueba genera la alerta en un ciclo de evaluación y la primera acción está redactada; responsable: monitorización de FSTS». Sale directamente de la revisión de NTP. Incluya al menos un elemento que exista solo para cerrar una carencia detectada antes, como la mediana de 1.440 minutos del tiempo de detección de la FIM.
+
+### 25.8 Errores frecuentes y límites
+
+- Elementos de trabajo sin criterios de aceptación.
+- Revisión que comprueba el estilo, no el fondo; o un único revisor habitual.
+- Un solo miembro del equipo como única persona que entiende un componente.
+- Planes que ignoran las interrupciones operativas.
+- Revisiones de fallos que terminan con «tener más cuidado».
+
+La revisión de NTP de este capítulo terminó con tres condiciones cambiadas, no con «tener más cuidado».
+
+La fusión de NTP muestra los dos primeros errores: un criterio de aceptación vago y una revisión solo de la sintaxis. Una sola persona que entiende el almacén de claves es el tercero, que el traspaso del capítulo 26 puso de manifiesto cuando el equipo receptor no pudo encontrarlo.
+
+### Ejercicios — capítulo 25
+
+**EX073 — Criterios de aceptación.** *Objetivo:* redactar criterios que produzcan evidencia. *Entradas:* elementos de trabajo: (a) «asegurar SSH en los retransmisores»; (b) «copias de seguridad del historiador»; (c) «proceso de acceso de proveedores». *Restricciones:* cada criterio debe poder comprobarlo otra persona. *Pasos:* reformule cada uno con al menos tres criterios. *Evidencia esperada:* lista. *Rúbrica:* 3 = por ejemplo, (a) autenticación por contraseña desactivada y servicio a la escucha en la interfaz de gestión en todos los retransmisores (salida de la comprobación de deriva), conexión desde la zona corporativa rechazada (registro de prueba), MFA en el servidor de salto; (b) copia nocturna con una copia inmutable, prueba de restauración dentro del RTO registrada; (c) habilitación limitada en el tiempo probada de extremo a extremo, caducidad verificada, conformidad de Kell; 2 = criterios comprobables en parte; 1 = deseos reformulados; 0 = nada.
+
+**EX074 — Lista de comprobación de la revisión.** *Objetivo:* hacer que la revisión sea sustantiva. *Entradas:* el caso del capítulo 25 («Ejemplo resuelto: una fusión que no debería haber ocurrido») y las propiedades de diseño del capítulo 8. *Restricciones:* ocho puntos. *Pasos:* redacte una lista de comprobación para revisar un cambio de estado deseado. *Evidencia esperada:* lista de comprobación. *Rúbrica:* 3 = incluye la existencia y la accesibilidad de los sistemas referenciados, el sentido de la confianza preservado, ningún servicio nuevo a la escucha en todas las interfaces, ningún secreto en el cambio, reversión definida, criterios de aceptación y verificación, clientes afectados informados, despliegue escalonado; 2 = seis; 1 = puntos solo de estilo; 0 = nada.
+
+**EX075 — Revisión sin culpables.** *Objetivo:* llevar a cabo una revisión que produzca cambios. *Entradas:* incidente: un tecnólogo de guardia silenció la regla B durante 24 horas en una noche ruidosa y olvidó reactivarla; un flujo real no declarado pasó sin alerta durante tres días. *Restricciones:* sin culpables; condiciones, no personas. *Pasos:* redacte la revisión: cronología, qué tenía sentido en el momento, condiciones, cambios con responsables. *Evidencia esperada:* una página. *Rúbrica:* 3 = reconoce como causa el ruido por evento de la regla B (capítulo 19), la falta de caducidad automática de los silenciamientos y la falta de visibilidad de las reglas silenciadas; cambios como alertas por episodio, silenciamientos que caducan y se muestran en el panel y un punto en la lista de comprobación del traspaso; 2 = cambios parciales; 1 = culpa al tecnólogo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los servicios los construyen equipos. Asigne a los roles responsabilidades claras y rótelos para que el conocimiento y el control no se concentren en una persona. Redacte elementos de trabajo con criterios de aceptación que produzcan evidencia. Haga que la revisión sea obligatoria, específica y registrada, para que actúe como control de seguridad. Planifique contando con las interrupciones operativas y aprenda de los fallos con revisiones sin culpables que cambien las condiciones en lugar de culpar a las personas.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Siga estudiando — capítulo 25 de 30
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 →](../../en/book/MANUSCRIPT.md#ch-26)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2583,6 +2986,38 @@ Cada fila tiene exactamente una A. La decisión operativa corresponde a Agua, y 
 **EX062 — Defina un desencadenante.** Se declara «telemetría no fiable» cuando se cumple cualquiera de estas condiciones: (1) un cambio no autorizado confirmado en cualquier retransmisor (un hallazgo de integridad o de deriva que ningún registro de cambio explica en 30 minutos); (2) fallos de MAC de tres o más estaciones en 15 minutos; (3) un fallo de la comprobación de integridad del retransmisor o evidencia de su compromiso. Los fallos de MAC o el silencio de una sola estación *no* lo activan (se tratan con el manual de operación de la regla C). Lo declaran conjuntamente el responsable de seguridad de FSTS y el jefe de turno de Agua; Agua pasa las estaciones afectadas a lecturas manuales y aumenta el muestreo de la calidad del agua. Se da por terminado conjuntamente cuando se verifica que los retransmisores están limpios (reconstrucción o integridad confirmada con una línea base fuera del equipo) y las lecturas coinciden con las muestras manuales.
 
 **EX063 — Preguntas al proveedor.** (1) ¿Cómo notifican a los clientes las vulnerabilidades del firmware de Kell R2 y con qué rapidez? → rutina de vulnerabilidades (capítulo 16). (2) ¿Cómo se protegen las credenciales de su personal y cómo se revocan cuando alguien se marcha? → acceso (capítulo 7). (3) ¿Cuál es su compromiso de notificarnos los incidentes que afecten a sus sistemas de asistencia remota? → integración e incidentes (este capítulo). (4) ¿Están firmadas las imágenes de firmware y cómo las verificamos? → despliegue (capítulo 27). (5) ¿Cuáles son las fechas de fin de soporte de cada modelo que usamos? → inventario (capítulo 11). (6) ¿Pueden facilitar una SBOM del firmware de la RTU ([CISA SBOM](https://www.cisa.gov/sbom))? → aplicabilidad de las vulnerabilidades (capítulo 16).
+
+### Capítulo 22: EX064–EX066
+
+**EX064 — Apruebe el plan.** Orden: (1) `log.forward` de RLY-03: aprobarlo primero (automático) para restaurar la visibilidad antes de que cambie nada más allí; (2) `ssh.password_auth` y `ntp.servers` de RLY-02: aprobar (automático) y verificar que la deriva desaparece y que el desfase del reloj es < 1 s; (3) `relay.debug_listen` de RLY-03: modificar: conservar el archivo de configuración, los detalles del proceso a la escucha y los registros locales, investigar quién lo habilitó (capítulo 20) y después eliminarlo mediante una incidencia; (4) `pkg.relayd` de RLY-03, de 2.3.9 a 2.4.1: cambio normal con canario (capítulo 27), fuera de la ejecución de deriva. Verificación tras cada equipo: comprobación de deriva limpia para las claves aprobadas; el retransmisor acepta los mensajes de las estaciones; el normalizador recibe sus registros.
+
+**EX065 — Ajuste la salvaguarda.** «Más de la mitad de los equipos con deriva» era razonable con tres equipos, pero es una señal burda con doce: seis equipos con cambios locales *distintos* son un problema de disciplina local, mientras que cuatro equipos con la *misma* clave derivada de forma idéntica sugieren que el estado deseado (o el recopilador) es erróneo. Una salvaguarda mejor: detenerse si cualquier clave difiere del estado deseado en más de, por ejemplo, el 25 % de los equipos; o si el repositorio del estado deseado tiene una confirmación sin revisar o muy reciente que afecta a esas claves; y detenerse siempre si el recopilador falla en algún equipo.
+
+**EX066 — Proteja la cadena.** (1) Rama principal protegida con revisión obligatoria por alguien distinto del autor; evidencia: exportación de la configuración del repositorio. (2) Mantenedores limitados al equipo de plataforma, con MFA; evidencia: lista de miembros en la revisión de accesos. (3) Confirmaciones firmadas o etiquetas de versión firmadas que la automatización verifica antes de aplicar; evidencia: registro de verificación. (4) Cuenta de la automatización limitada a los retransmisores gestionados, con las credenciales en una bóveda y rotadas; evidencia: registro de auditoría de la bóveda. (5) Cada ejecución registrada en el SIEM con una alerta ante ejecuciones fuera del calendario o desde un equipo inesperado; evidencia: alerta probada.
+
+### Capítulo 23: EX067–EX069
+
+**EX067 — Reglas de enfrentamiento.** Propósito: probar la detección de la regla B. Alcance: la estación de trabajo de prueba TW-01 (dirección marcada 10.40.99.99), el Arlen 300 de repuesto del laboratorio de FSTS y, solo durante la visita en una fecha designada, una prueba de conexión TCP desde el portátil de ingeniería hacia el PLC de PS-04 por tcp/502, abriendo y cerrando una conexión sin escrituras ni lecturas Modbus, con la aprobación nominal de Agua. Fuera del alcance: todas las demás estaciones y controladores. Ventana temporal: horas indicadas. En la instalación: un ingeniero de Agua en PS-04. Comunicación: se informa a la sala de control de Agua y al SOC antes, al inicio y al final; eventos de prueba etiquetados "TEST-RULEB" en el calendario de cambios. Condiciones de detención: cualquier comportamiento inesperado del PLC, alarma o petición de la sala de control. Resultados: guardados en el almacén de evidencias con la salida bruta de las alertas y sus horas.
+
+**EX068 — ¿Cuántas pruebas más?** Un éxito consecutivo más: 9/9 da un límite inferior de Wilson de unos 0,7008, justo por encima de 0,70; 10/10 da unos 0,7225. Superar un umbral por 0,001 es frágil (un solo fallo en las siguientes pruebas lo haría caer de nuevo), así que planifique al menos dos pruebas más e informe del intervalo, no solo de «demostrado eficaz».
+
+**EX069 — Diagnostique un fallo de detección.** Corrección: habilitar la exportación de flujos en el conmutador de estación que no exportaba (cambio normal con Agua) y verificar que sus flujos aparecen en el SIEM. Monitorización que lo habría detectado antes: una regla de ausencia por exportador (capítulo 19) y una comprobación del inventario de que cada conmutador de la zona de estaciones es un exportador de flujos activo. Nueva prueba: al menos 10 flujos de prueba marcados repartidos entre todos los conmutadores de estación, con reglas de enfrentamiento actualizadas; actualizar la ficha de control de la regla B con el nuevo resultado y la causa de los fallos anteriores.
+
+### Capítulo 24: EX070–EX072
+
+**EX070 — Hágala respondible.** (a) «Para las correcciones de fabricantes publicadas entre abril y septiembre para activos de criticidad 1, ¿cuáles fueron la mediana y el p90 de días hasta la instalación verificada, por grupo de activos e incluidas las correcciones abiertas, en comparación con los seis meses anteriores? Decisión: si se financia una visita adicional a las estaciones al mes». (b) «En los últimos 12 meses, ¿cuántos incidentes o cuasiincidentes de FSTS implicaron el acceso o el software de un proveedor, en comparación con el total de incidentes? Decisión: si se priorizan los controles de acceso de proveedores el próximo trimestre». (c) «Para las alertas del tercer trimestre, ¿cuál fue la mediana del tiempo entre la detección por el SOC y la confirmación por la guardia de FSTS, en comparación con las alertas que no pasaron por el SOC? Decisión: si se encaminan todas las alertas de LANTERN a través del SOC».
+
+**EX071 — Detecte los puntos débiles.** (1) Solo antes/después: cualquier otra cosa que cambiara en abril podría explicarlo; (2) regresión a la media: marzo fue inusual (una interrupción), así que abril probablemente habría sido mejor de todos modos; (3) las quejas miden la molestia de los usuarios, no la detección; (4) sin recuentos ni intervalo («un 30 % menos» ¿de cuántas?); (5) la regla C detecta el silencio, así que podría *aumentar* la percepción del problema sin reducir las quejas. Diseño mejor: medir el tiempo de detección desde el inicio del silencio hasta la alerta en silencios de prueba y en eventos reales, antes y después, más una comparación con las estaciones aún no cubiertas por la regla C si el despliegue es escalonado.
+
+**EX072 — Redacte la nota de estudio.** *Pregunta:* ¿añadir una primera acción a la regla C reduce el tiempo entre la alerta y la llamada a la sala de control? *Método:* turno de guardia, ocho semanas, texto antiguo y nuevo de la alerta alternados por semanas; medida: minutos desde la alerta hasta la llamada registrada; decidido de antemano: comparar las medianas en conjunto y por tecnólogo. *Resultados:* texto antiguo, 11 alertas, mediana de 14 min; texto nuevo, 12 alertas, mediana de 6 min; todos los tecnólogos más rápidos con el texto nuevo. *Límites:* números pequeños; el personal sabía que había un estudio; una semana del texto antiguo tuvo una caída del operador con muchas alertas simultáneas; si se excluye, la mediana antigua es de 11 min, todavía más lenta. *Recomendación:* adoptar primeras acciones en todas las reglas de ausencia; volver a medir con datos rutinarios dentro de tres meses.
+
+### Capítulo 25: EX073–EX075
+
+**EX073 — Criterios de aceptación.** (a) SSH seguro: autenticación por contraseña deshabilitada y SSH vinculado a la interfaz de gestión en todos los retransmisores (salida de la comprobación de deriva); se rechaza un intento de conexión desde una dirección corporativa ajena al servidor de salto (registro de prueba); el servidor de salto exige MFA (evidencia de la revisión de accesos). (b) Copias del historiador: copia nocturna con una copia inmutable (informe de copias y política de almacenamiento); prueba de restauración dentro del RTO de 4 h y del RPO de 24 h registrada (capítulo 16); el manual de operación de restauración lo sigue alguien distinto de su autor. (c) Acceso de proveedores: habilitación mediante el proceso probada de extremo a extremo de noche (registro de prueba); caducidad automática verificada; Kell ha dado su conformidad al proceso por escrito.
+
+**EX074 — Lista de comprobación de la revisión.** (1) Cada sistema referenciado (servidor, dirección, certificado) existe y responde; (2) se preserva el sentido de la confianza: ningún camino nuevo hacia la zona de estaciones; (3) ningún servicio nuevo a la escucha en todas las interfaces; (4) ningún secreto en el cambio; (5) reversión definida y probada, o trivialmente reversible; (6) criterios de aceptación y pasos de verificación indicados; (7) clientes afectados y operaciones informados cuando sea necesario; (8) despliegue escalonado, un equipo cada vez, con condiciones de detención.
+
+**EX075 — Revisión sin culpables.** *Cronología:* 01:10, la regla B salta repetidamente por una sesión de ingeniería ruidosa pero conocida; 01:25, la guardia silencia la regla B durante 24 h para detener los avisos; el traspaso de la mañana siguiente no menciona el silenciamiento; días 1 a 3, se produce sin alerta un flujo no declarado de la red corporativa a una estación. *Qué tenía sentido:* los avisos eran duplicados de una actividad conocida; silenciarlos mantenía la atención en otras alertas. *Condiciones:* la regla B alertaba por evento, no por episodio (capítulo 19); los silenciamientos no tenían caducidad automática ni visibilidad; la lista de comprobación del traspaso no incluía los silenciamientos. *Cambios:* alertas por episodio para la regla B (monitorización de FSTS); silenciamientos limitados a 4 h, con caducidad automática y visibles en el informe de salud (equipo de plataforma); punto «silenciamientos activos» en la lista de comprobación del traspaso (responsable del servicio).
 
 <a id="glossary"></a>
 
