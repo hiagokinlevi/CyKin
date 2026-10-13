@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 123, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir e operar serviços criptográficos de confiança para infraestruturas críticas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios existem para entender e verificar comportamentos em relação a normas e vetores de teste. Sistemas de produção usam bibliotecas avaliadas e módulos de segurança de hardware (HSMs); nunca crie sua própria criptografia. Pessoas, organizações, chaves e dispositivos são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Katz e Lindell (3ª ed.); Boneh e Shoup, [*A Graduate Course in Applied Cryptogr
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -500,11 +500,419 @@ Tratar todo controle de segurança como falha fechada pode criar riscos à segur
 
 - **EX030 — Modo de falha do firmware.** A verificação do firmware deve falhar aberta ou fechada, e por quê? *Rubrica:* 3 = fechada: manter o firmware atual em vez de instalar código não verificado;; 2 = fechada;; 1 = aberta;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) rastrear como os dados dos medidores atravessam as redes; (2) explicar o que o TLS 1.3 protege e o que não protege; (3) escolher onde autenticar e onde cifrar.
+
+### 11.1 O caminho de uma leitura
+
+Uma leitura sai de um medidor por um enlace de rádio de baixa potência até um concentrador do bairro, segue por uma rede celular até o gateway da Ridgeway e depois atravessa a rede interna da companhia até o banco de dados de faturamento. Aiyana desenha cada salto e pergunta quem poderia ler ou modificar os dados ali: alguém escutando o rádio por perto, a operadora celular, um insider na rede interna. Cada salto tem atacantes diferentes. Desenhar o caminho primeiro evita um erro comum, proteger fortemente um enlace e deixar outro aberto, e mostra onde uma proteção fim a fim, do medidor ao banco de dados, eliminaria a dependência dos saltos intermediários.
+
+### 11.2 O que o TLS 1.3 oferece
+
+Entre o concentrador e o gateway, a Ridgeway usa o TLS 1.3, especificado na RFC 8446. O TLS oferece confidencialidade, integridade e autenticação do servidor para a conexão, usando uma troca de chaves efêmera, como o X25519 da RFC 7748, de modo que o tráfego gravado não possa ser decifrado depois, mesmo que as chaves de longo prazo vazem, uma propriedade chamada sigilo futuro (forward secrecy). Aiyana anota o que o TLS não faz: ele protege os dados apenas enquanto estão em trânsito naquela conexão. Depois que o gateway os decifra, as leituras são texto claro dentro da companhia, e o TLS não diz nada sobre se o próprio medidor foi honesto.
+
+### 11.3 Autenticação fim a fim
+
+Como o TLS termina no gateway, Aiyana propõe que cada medidor também anexe uma tag HMAC a cada leitura, usando sua chave por medidor do Capítulo 5. O banco de dados de faturamento verifica a tag diretamente, de modo que um gateway ou concentrador comprometido não consegue alterar as leituras sem ser detectado. Essa estratificação, segurança de transporte somada à autenticação de mensagens, é comum em infraestruturas críticas. Ela documenta qual camada defende contra qual atacante: o TLS contra operadoras e quem escuta naquele enlace, o HMAC contra qualquer sistema intermediário que modifique leituras. A sobreposição é deliberada, para que uma falha não elimine toda a proteção.
+
+### Exemplo resolvido
+
+O diagrama de Aiyana mostra quatro saltos; o TLS 1.3 protege o trecho do concentrador ao gateway, e as tags HMAC por medidor protegem as leituras do medidor até o banco de dados.
+
+> **Caso sintético.** A rede da Ridgeway é inventada; a RFC 8446 e a RFC 7748 são reais.
+
+### Erros e limites
+
+O TLS não autentica a origem dos dados além da ponta da conexão; controles no nível da mensagem são necessários quando os intermediários não são confiáveis. Os enlaces de rádio até os medidores podem precisar de proteção separada.
+
+### Exercícios
+
+- **EX031 — Atacantes por salto.** Cite o atacante que Aiyana associa ao salto celular. *Rubrica:* 3 = a operadora celular ou qualquer pessoa na rede dela;; 2 = rede;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX032 — Sigilo futuro.** O que significa sigilo futuro no TLS 1.3? *Rubrica:* 3 = o tráfego gravado não pode ser decifrado depois, mesmo que chaves de longo prazo vazem, graças à troca de chaves efêmera;; 2 = chaves efêmeras;; 1 = cifração;; 0 = nenhuma.
+
+- **EX033 — Por que também HMAC.** Por que acrescentar tags HMAC quando o TLS já é usado? *Rubrica:* 3 = o TLS termina no gateway; o HMAC permite ao banco de dados detectar leituras alteradas por intermediários comprometidos;; 2 = estratificação;; 1 = redundante;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como os sistemas operacionais protegem chaves na memória e no disco; (2) usar corretamente o gerador aleatório do sistema operacional; (3) aplicar o privilégio mínimo a serviços criptográficos.
+
+### 12.1 Processos e memória
+
+Um sistema operacional separa os processos para que um não possa ler a memória do outro. O serviço de chaves da Ridgeway roda como processo próprio, sob uma conta dedicada; a aplicação de faturamento pede a ele que calcule as tags, em vez de guardar as chaves. Aiyana aprende que uma chave na memória de um processo também pode acabar em arquivos de swap ou em despejos de memória após falhas (crash dumps), então o serviço desativa os core dumps e trava as páginas das chaves na memória, onde a plataforma permite. Esses detalhes do sistema operacional importam tanto quanto o algoritmo, porque a maioria dos roubos reais de chaves as lê da memória ou do disco, e não quebrando a criptografia.
+
+### 12.2 O gerador aleatório do sistema operacional
+
+O sistema operacional reúne entropia de eventos de hardware e expõe aos programas um gerador criptograficamente seguro, no Linux pela chamada de sistema getrandom. O módulo secrets do Python o usa. Aiyana compara secrets.token_bytes com o módulo random, que é um gerador rápido e previsível feito para simulações; suas saídas podem ser reconstruídas depois de observados valores suficientes. Ela reescreve o script de geração de chaves de um colega que usava random.getrandbits. A regra que adota é simples: tudo o que é secreto, incluindo chaves, nonces e tokens, vem do secrets ou de uma biblioteca avaliada, nunca do random.
+
+### 12.3 Privilégio mínimo
+
+Aiyana configura o serviço de chaves para rodar com os direitos mínimos de que precisa: acesso de leitura ao seu próprio arquivo de chaves cifrado, um único socket de escuta e nenhum shell. As permissões de arquivo restringem o arquivo de chaves à conta do serviço. Os administradores acessam o serviço por uma interface auditada, em vez de entrar no host. O SP 800-57 Part 1 enfatiza a proteção das chaves ao longo de todo o seu ciclo de vida, e o privilégio mínimo no nível do sistema operacional é uma grande parte dessa proteção. Se a aplicação de faturamento for comprometida, o atacante ainda assim não consegue ler as chaves brutas.
+
+### Exemplo resolvido
+
+Aiyana transfere as chaves para um processo de serviço dedicado, com memória travada, sem core dumps, com permissões de arquivo mínimas e geração baseada no secrets.
+
+> **Caso sintético.** O serviço de chaves é inventado; o SP 800-57 Part 1 é real.
+
+### Erros e limites
+
+O travamento de memória e a supressão de dumps dependem da plataforma e são imperfeitos. Um atacante privilegiado no host ainda pode ler a memória, então o isolamento reduz o risco, mas não o elimina.
+
+### Exercícios
+
+- **EX034 — Swap e dumps.** Por que desativar os core dumps do serviço de chaves? *Rubrica:* 3 = chaves na memória poderiam ser gravadas em dumps ou no swap e roubadas do disco;; 2 = vazamento em disco;; 1 = desempenho;; 0 = nenhuma.
+
+- **EX035 — random versus secrets.** Por que as chaves nunca podem vir do módulo random do Python? *Rubrica:* 3 = ele é previsível e reconstruível; o secrets usa o CSPRNG do sistema operacional;; 2 = previsível;; 1 = mais lento;; 0 = nenhuma.
+
+- **EX036 — Aplicação de faturamento comprometida.** O que um atacante que compromete a aplicação de faturamento não consegue fazer? *Rubrica:* 3 = ler as chaves brutas, já que o serviço de chaves separado as guarda sob privilégio mínimo;; 2 = limitado;; 1 = tudo;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher entre hash, cifração e tokenização para dados armazenados; (2) armazenar senhas com funções que exigem muita memória (memory-hard); (3) planejar a cifração em repouso com chaves separadas.
+
+### 13.1 Três ferramentas para dados armazenados
+
+O banco de dados da Ridgeway guarda nomes, endereços e dados bancários dos clientes, além das leituras dos medidores. Aiyana aprende a escolher a ferramenta certa para cada campo. A cifração esconde dados que precisarão ser lidos depois, como os dados bancários para débito automático. A tokenização substitui os dados por uma referência sem significado guardada em outro lugar, útil quando a maioria dos sistemas precisa apenas de um marcador. O hash, que é de mão única, serve para valores que só precisam ser conferidos, nunca recuperados. Escolher a ferramenta errada, como calcular o hash de dados bancários que precisam ser usados ou cifrar senhas que nunca precisam ser decifradas, cria sistemas quebrados ou riscos desnecessários.
+
+### 13.2 Armazenar senhas
+
+As senhas do portal dos clientes nunca devem ser armazenadas em texto claro nem apenas com um hash rápido como o SHA-256, porque atacantes que roubem a tabela podem testar bilhões de palpites por segundo. Aiyana recomenda uma função de hash de senhas memory-hard, o Argon2id da RFC 9106, que obriga cada palpite a usar memória e tempo significativos, com um salt aleatório único por usuário. Se o Argon2 não estiver disponível, o scrypt da RFC 7914 ou o PBKDF2 com um número alto de iterações são alternativas. O hashlib do Python oferece scrypt e pbkdf2_hmac; o código de produção ainda assim usa uma biblioteca avaliada de hash de senhas, com padrões sensatos.
+
+### 13.3 Cifração em repouso
+
+Para os dados bancários, a Ridgeway usa cifração do banco de dados com uma chave de cifração de dados, ela própria cifrada por uma chave de cifração de chaves guardada no serviço de chaves, um padrão chamado cifração envelopada (envelope encryption). Aiyana explica seu benefício: rotacionar a chave de cifração de chaves exige recifrar apenas as pequenas chaves de dados, e não o banco de dados inteiro. Ela também anota um limite: a cifração em repouso protege contra discos e backups roubados, mas não contra um atacante que consulta a aplicação em execução, que decifra os dados para os usuários legítimos. O controle de acesso e o monitoramento continuam essenciais ao lado da cifração.
+
+### Exemplo resolvido
+
+Aiyana atribui a cifração aos dados bancários, tokens aos sistemas de relatórios e o Argon2id com salts por usuário às senhas do portal, e projeta a cifração envelopada com as chaves no serviço de chaves.
+
+> **Caso sintético.** O banco de dados é inventado; a RFC 9106 e a RFC 7914 são reais.
+
+### Erros e limites
+
+A cifração em repouso não impede o roubo pelo nível da aplicação. Um hash de senha lento ainda falha se os usuários escolherem senhas muito comuns, então limitação de tentativas e verificação de vazamentos ajudam.
+
+### Exercícios
+
+- **EX037 — Escolher uma ferramenta.** Que ferramenta serve para as senhas do portal, e por quê? *Rubrica:* 3 = hash com uma função memory-hard, já que elas precisam ser conferidas, não recuperadas;; 2 = hash;; 1 = cifração;; 0 = nenhuma.
+
+- **EX038 — Escolha do Argon2.** O que Aiyana recomenda para senhas, e que RFC o define? *Rubrica:* 3 = Argon2id com salts por usuário, RFC 9106;; 2 = Argon2;; 1 = SHA-256;; 0 = nenhuma.
+
+- **EX039 — Benefício do envelope.** Que benefício a cifração envelopada oferece? *Rubrica:* 3 = rotacionar a chave de cifração de chaves recifra apenas as pequenas chaves de dados;; 2 = rotação mais fácil;; 1 = consultas mais rápidas;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar requisitos criptográficos ao ciclo de vida de desenvolvimento; (2) gerenciar dependências de bibliotecas criptográficas; (3) revisar código em busca de usos indevidos comuns.
+
+### 14.1 Requisitos no ciclo de vida
+
+Aiyana entra na equipe de software da Ridgeway e descobre que, em projetos anteriores, a criptografia foi acrescentada tarde, o que causou retrabalho. Ela propõe que os requisitos de segurança, como "toda leitura é autenticada com uma chave por medidor" e "o firmware só é aceito com uma assinatura válida", apareçam no backlog desde o início, cada um com um teste de aceitação. Tratar as propriedades criptográficas como requisitos testáveis, e não como uma revisão final, torna-as visíveis no planejamento e nas estimativas e deixa claro qual equipe é dona de cada propriedade.
+
+### 14.2 Gerenciar dependências
+
+A Ridgeway depende de algumas bibliotecas criptográficas. Aiyana registra a versão, a origem e os mantenedores de cada biblioteca e se inscreve nos seus avisos de segurança. Ela fixa as versões para que os builds sejam reproduzíveis, mas agenda atualizações regulares, porque as bibliotecas criptográficas corrigem vulnerabilidades com frequência. Ela também confere se os pacotes baixados coincidem com os hashes ou as assinaturas publicados, para evitar dependências adulteradas. A equipe concorda em nunca copiar código criptográfico de fóruns para a base de código; se faltar uma função, eles procuram uma biblioteca mantida ou levam o assunto à revisão de projeto.
+
+### 14.3 Revisar em busca de uso indevido
+
+Aiyana escreve um checklist curto de revisão: nenhuma chave embutida no código; segredos vindos do módulo secrets; nenhum modo ECB nem cifração não autenticada; nonces nunca reutilizados sob uma mesma chave; tags comparadas com hmac.compare_digest; senhas com hash Argon2id; verificação do TLS nunca desativada. Os revisores marcam cada item nas mudanças que tocam a criptografia. No primeiro mês, o checklist pega um auxiliar de testes que desativava a verificação de certificados e estava prestes a ser reutilizado em código de produção. Checklists não substituem a especialização, mas pegam erros comuns de forma confiável.
+
+### Exemplo resolvido
+
+Aiyana acrescenta requisitos criptográficos testáveis ao backlog, fixa e monitora as bibliotecas e introduz um checklist de revisão com sete itens que pega uma verificação de TLS desativada.
+
+> **Caso sintético.** A equipe e o incidente são inventados.
+
+### Erros e limites
+
+Checklists podem virar mera formalidade; os revisores precisam entender cada item. Fixar versões sem atualizá-las mantém vulnerabilidades conhecidas.
+
+### Exercícios
+
+- **EX040 — Requisito testável.** Dê um exemplo de requisito criptográfico escrito como item de backlog. *Rubrica:* 3 = toda leitura autenticada com uma chave por medidor (ou firmware aceito apenas com assinatura válida), com teste de aceitação;; 2 = exemplo sem teste;; 1 = vago;; 0 = nenhuma.
+
+- **EX041 — Regra de dependências.** O que a equipe combinou sobre código de fóruns? *Rubrica:* 3 = nunca copiar código criptográfico de fóruns; usar uma biblioteca mantida ou levar à revisão de projeto;; 2 = evitar;; 1 = permitido;; 0 = nenhuma.
+
+- **EX042 — O que o checklist pegou.** O que o checklist pegou no primeiro mês? *Rubrica:* 3 = um auxiliar de testes que desativava a verificação de certificados e estava prestes a entrar em produção;; 2 = problema de TLS;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) associar confidencialidade, integridade e disponibilidade a controles criptográficos; (2) definir modelos de ameaça; (3) distinguir autenticação de autorização.
+
+### 15.1 As três propriedades
+
+A segurança costuma ser descrita pela confidencialidade, pela integridade e pela disponibilidade. Aiyana associa cada uma aos medidores da Ridgeway. A confidencialidade das leituras importa porque os padrões de consumo revelam quando as casas estão vazias. A integridade importa porque leituras alteradas mudam as contas. A disponibilidade importa porque a companhia precisa das leituras para detectar vazamentos. A criptografia serve principalmente à confidencialidade e à integridade: a cifração à primeira, os códigos de autenticação e as assinaturas à segunda. Ela pode prejudicar a disponibilidade se chaves forem perdidas ou certificados expirarem, e é por isso que o gerenciamento de chaves e as operações são tão importantes quanto os algoritmos.
+
+### 15.2 Modelos de ameaça
+
+Um modelo de ameaça informa quem são os atacantes, o que querem, o que podem fazer e o que está fora do escopo. Aiyana escreve um para os medidores: um vizinho curioso com um receptor de rádio, um cliente tentando reduzir a conta, um grupo criminoso que busca interromper o abastecimento e um insider malicioso. Ela deixa fora do escopo do piloto os ataques de hardware de Estados-nação e diz isso explicitamente. Katz e Lindell insistem em que toda definição de segurança depende de um modelo explícito de atacante; sem ele, afirmações como "seguro" não têm significado.
+
+### 15.3 Autenticação e autorização
+
+A autenticação estabelece quem ou o que está se comunicando; a autorização decide o que essa parte pode fazer. Um medidor se autentica com sua chave por medidor, mas só está autorizado a enviar as próprias leituras, e não as de outros medidores nem mudanças de configuração. Aiyana encontra um rascunho de projeto em que qualquer medidor autenticado poderia enviar leituras para qualquer identificador, uma confusão clássica entre as duas coisas. Ela acrescenta uma verificação que vincula cada chave a um único identificador de medidor. A criptografia fornece a autenticação; a autorização é uma decisão de política implementada na lógica da aplicação.
+
+### Exemplo resolvido
+
+Aiyana associa as propriedades da tríade CIA aos controles dos medidores, escreve um modelo de ameaça com quatro atacantes e uma exclusão explícita e corrige um projeto em que a autenticação não implicava a autorização correta.
+
+> **Caso sintético.** O modelo de ameaça é inventado.
+
+### Erros e limites
+
+Modelos de ameaça envelhecem; revise-os quando os sistemas mudarem. Uma autenticação forte com uma autorização fraca ainda permite abusos.
+
+### Exercícios
+
+- **EX043 — Por que a confidencialidade.** Por que a confidencialidade das leituras dos medidores importa? *Rubrica:* 3 = os padrões de consumo revelam quando as casas estão vazias;; 2 = privacidade;; 1 = nenhum motivo;; 0 = nenhuma.
+
+- **EX044 — Fora do escopo.** O que Aiyana deixou fora do escopo, e por que declarar isso? *Rubrica:* 3 = ataques de hardware de Estados-nação; um escopo explícito dá significado às afirmações;; 2 = escopo declarado;; 1 = nada;; 0 = nenhuma.
+
+- **EX045 — Correção da autorização.** Que verificação corrigiu a falha de autorização? *Rubrica:* 3 = vincular cada chave a um identificador de medidor, para que os medidores só enviem as próprias leituras;; 2 = vinculação;; 1 = cifração;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) tratar o gerenciamento de chaves como um sistema com etapas de ciclo de vida; (2) definir interfaces e responsabilidades; (3) rastrear os requisitos através dos componentes.
+
+### 16.1 Chaves como sistema
+
+Aiyana aprende com o SP 800-57 Part 1 que as chaves têm ciclos de vida: geração, distribuição, uso, armazenamento, rotação, revogação e destruição. Cada etapa envolve pessoas, processos e tecnologia. Ela desenha o sistema de chaves da Ridgeway: um serviço de chaves que gera as chaves dos medidores, um processo na fábrica que as carrega nos elementos seguros, concentradores que encaminham as leituras e um sistema de faturamento que verifica as tags. A engenharia de sistemas a ajuda a ver que uma fraqueza em qualquer ponto, como chaves enviadas por e-mail à fábrica, mina algoritmos fortes em todos os outros. Seu diagrama também mostra as pessoas envolvidas, porque um procedimento descuidado quebra um sistema tão certamente quanto um algoritmo fraco.
+
+### 16.2 Interfaces e responsabilidades
+
+Para cada interface, Aiyana define o que é trocado, como é protegido e quem é o dono. A fábrica recebe as chaves dos medidores cifradas sob uma chave de transporte, e não em claro; o serviço de chaves é dono da geração; as operações são donas da rotação; a segurança é dona das decisões de revogação. Ela usa uma tabela de responsabilidades para que nenhuma etapa do ciclo de vida fique sem dono. Em projetos anteriores, a revogação ficou entre equipes, e chaves comprometidas continuaram ativas por meses. Uma propriedade clara é, por si só, um controle de segurança. A tabela é revisada a cada trimestre, para que reorganizações nunca deixem uma etapa sem dono.
+
+### 16.3 Rastreabilidade de requisitos
+
+Aiyana rastreia cada requisito de alto nível, como "uma chave de medidor roubada afeta apenas aquele medidor", até os requisitos dos componentes: derivação por medidor no serviço de chaves, vinculação das chaves aos identificadores no faturamento, listas de revogação nos concentradores. Cada requisito de componente tem um método de verificação: teste, inspeção ou análise. Quando um fornecedor propõe uma mudança no processo da fábrica, o rastreamento mostra quais requisitos ela toca e quais testes precisam ser executados de novo. A rastreabilidade transforma uma meta de segurança em trabalho de engenharia verificável. Ela também ajuda os auditores, que podem seguir qualquer requisito até a sua evidência.
+
+### Exemplo resolvido
+
+O diagrama do sistema de chaves, a tabela de responsabilidades e a matriz de rastreabilidade de Aiyana mostram cada etapa do ciclo de vida com dono e cada requisito de segurança ligado a um teste.
+
+> **Caso sintético.** Os processos da Ridgeway são inventados; o SP 800-57 Part 1 é real.
+
+### Erros e limites
+
+Diagramas se afastam da realidade; revise-os em relação ao que está implantado. A rastreabilidade só ajuda se os testes realmente rodarem.
+
+### Exercícios
+
+- **EX046 — Etapas do ciclo de vida.** Liste quatro etapas do ciclo de vida das chaves segundo o SP 800-57. *Rubrica:* 3 = quatro entre geração, distribuição, uso, armazenamento, rotação, revogação, destruição;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+- **EX047 — Interface com a fábrica.** Como as chaves são protegidas a caminho da fábrica? *Rubrica:* 3 = cifradas sob uma chave de transporte, nunca em claro;; 2 = cifradas;; 1 = por e-mail;; 0 = nenhuma.
+
+- **EX048 — Lição sobre a propriedade.** Que falha passada motivou a tabela de responsabilidades? *Rubrica:* 3 = a revogação ficou entre equipes, e chaves comprometidas continuaram ativas por meses;; 2 = etapa sem dono;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar laços de realimentação às operações de segurança; (2) projetar alertas sobre sinais de saúde criptográfica; (3) evitar oscilações e a fadiga de alertas.
+
+### 17.1 Realimentação nas operações
+
+A engenharia de controle estuda sistemas que medem a saída e ajustam a entrada. Aiyana aplica a ideia às operações criptográficas: medir sinais como falhas de verificação de tags, dias até a expiração dos certificados e idade das chaves, compará-los com metas e agir. Sem realimentação, os problemas só são percebidos quando os clientes reclamam. Um laço de realimentação para a Ridgeway poderia medir a taxa horária de falhas de verificação por concentrador e alertar se ela subir bruscamente, o que poderia indicar um lote defeituoso de medidores ou uma tentativa de falsificação. Aiyana trata cada sinal como um sensor e cada runbook como o controlador que fecha o laço.
+
+### 17.2 Projetar alertas
+
+Aiyana escolhe os limiares a partir de dados de linha de base. As falhas normais de verificação, por ruído de rádio e deriva de relógio, ficam em torno de 0,1 por cento; ela alerta acima de 1 por cento sustentado por quinze minutos. Os certificados geram alerta trinta dias antes da expiração e escalonam aos sete. A idade das chaves gera alerta no fim do seu criptoperíodo. Cada alerta tem um dono e um runbook com as primeiras verificações. Ela também acrescenta alertas para a ausência de sinais esperados, como nenhuma tentativa de renovação na última semana, porque falhas silenciosas causam muitas indisponibilidades.
+
+### 17.3 Evitar fadiga e oscilação
+
+Alertas demais ensinam as pessoas a ignorá-los, e reações automáticas agressivas demais podem oscilar, por exemplo revogando e reprovisionando repetidamente as chaves de um medidor com um rádio instável. Aiyana acrescenta histerese: um alerta só se encerra quando a taxa cai bem abaixo do gatilho. As ações automáticas se limitam a passos seguros, como sinalizar um medidor para inspeção, enquanto a revogação exige uma decisão humana. Ela revisa mensalmente o volume de alertas e remove os que nunca levaram a uma ação, mantendo o sinal significativo.
+
+### Exemplo resolvido
+
+Aiyana projeta alertas sobre a taxa de falhas de verificação, a expiração de certificados e a idade das chaves, com linhas de base, histerese e aprovação humana para a revogação.
+
+> **Caso sintético.** As linhas de base são inventadas.
+
+### Erros e limites
+
+Limiares definidos sem linha de base criam ruído. A revogação automática sem histerese pode interromper o serviço.
+
+### Exercícios
+
+- **EX049 — Sinais de saúde.** Cite três sinais de saúde criptográfica que Aiyana mede. *Rubrica:* 3 = falhas de verificação, dias até a expiração dos certificados, idade das chaves;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX050 — Alerta de sinal ausente.** Por que alertar sobre a ausência de tentativas de renovação? *Rubrica:* 3 = falhas silenciosas, como clientes de renovação quebrados, causam indisponibilidades;; 2 = silêncio;; 1 = desnecessário;; 0 = nenhuma.
+
+- **EX051 — Uso da histerese.** O que a histerese impede aqui? *Rubrica:* 3 = alertas oscilando ou revogação/reprovisionamento repetidos de medidores instáveis;; 2 = intermitência;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) posicionar âncoras de confiança criptográficas numa arquitetura; (2) projetar defesa em profundidade para as chaves; (3) comparar serviços de chaves centralizados e distribuídos.
+
+### 18.1 Âncoras de confiança
+
+Toda arquitetura criptográfica se apoia em âncoras de confiança, chaves cuja autenticidade é pressuposta, e não provada, como um certificado raiz ou uma chave pública de assinatura de firmware embutida nos medidores. Aiyana identifica as âncoras da Ridgeway: a chave raiz do firmware, a raiz TLS dos concentradores e a chave mestra no serviço de chaves. O comprometimento de uma âncora é catastrófico, então as âncoras são poucas, mantidas offline sempre que possível e protegidas por procedimentos que exigem várias pessoas. Seu diagrama de arquitetura marca as âncoras em vermelho, para que os revisores vejam imediatamente onde é necessária a maior proteção.
+
+### 18.2 Defesa em profundidade para as chaves
+
+Aiyana organiza a proteção em camadas: a chave raiz do firmware fica num módulo de segurança de hardware offline, usado apenas em cerimônias de assinatura; chaves de assinatura intermediárias assinam as versões do dia a dia e podem ser revogadas; os medidores só aceitam firmware quando a cadeia é verificada e o número de versão aumenta, o que impede a volta (rollback) a versões antigas e vulneráveis. Cada camada limita o dano causado pela falha de outra. Se uma chave intermediária vazar, a raiz pode revogá-la; se uma versão antiga assinada for reenviada, a verificação de versão a rejeita.
+
+### 18.3 Centralizado ou distribuído
+
+Um único serviço central de chaves simplifica a auditoria e a rotação, mas se torna um alvo de alto valor e um ponto único de falha. Distribuir as chaves entre serviços regionais melhora a disponibilidade, mas multiplica os lugares a proteger. Aiyana propõe um serviço central com um standby ativo (hot standby) num segundo data center e caches regionais que guardam apenas chaves derivadas de vida curta. Ela avalia o projeto em relação ao modelo de ameaça do Capítulo 15 e registra que um insider num site regional só consegue afetar as chaves de vida curta daquela região. Ela anota que o site de standby duplica os controles físicos a auditar.
+
+### Exemplo resolvido
+
+A arquitetura de Aiyana marca três âncoras de confiança, coloca a raiz do firmware offline, com intermediárias para as versões e proteção contra rollback, e escolhe um serviço central de chaves com standby e caches regionais de vida curta.
+
+> **Caso sintético.** A arquitetura é inventada.
+
+### Erros e limites
+
+Raízes offline são tão seguras quanto os procedimentos das cerimônias. A proteção contra rollback falha se os contadores de versão puderem ser reiniciados.
+
+### Exercícios
+
+- **EX052 — Âncora de confiança definida.** O que é uma âncora de confiança? *Rubrica:* 3 = uma chave cuja autenticidade é pressuposta, como um certificado raiz ou uma chave de assinatura de firmware embutida;; 2 = chave raiz;; 1 = qualquer chave;; 0 = nenhuma.
+
+- **EX053 — Proteção contra rollback.** Como o projeto impede o rollback do firmware? *Rubrica:* 3 = os medidores exigem que o número de versão aumente, além de uma cadeia válida;; 2 = verificação de versão;; 1 = só a assinatura;; 0 = nenhuma.
+
+- **EX054 — Insider regional.** O que um insider num site regional consegue afetar no projeto escolhido? *Rubrica:* 3 = apenas as chaves derivadas de vida curta daquela região;; 2 = limitado;; 1 = tudo;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) autenticar dispositivos e pessoas com chaves e certificados; (2) usar o HMAC para a autenticação de mensagens; (3) relacionar identidades a certificados e à revogação.
+
+### 19.1 Identidade dos dispositivos
+
+Cada medidor da Ridgeway precisa de uma identidade que outros possam verificar. Aiyana compara duas abordagens. A identidade simétrica usa uma chave secreta por medidor compartilhada com o serviço de chaves; é barata, mas o serviço precisa proteger todas as chaves. A identidade assimétrica dá a cada medidor um par de chaves e um certificado assinado pela autoridade de dispositivos da Ridgeway, seguindo o perfil X.509 da RFC 5280; os verificadores precisam apenas das chaves públicas. Ela recomenda chaves HMAC simétricas para as leituras, cujo volume é alto, e certificados para os concentradores, que se autenticam no gateway por TLS.
+
+### Laboratório — Autenticação de mensagens
+
+```python
+"""Authenticate synthetic meter readings with HMAC-SHA256 (RFC 2104) and constant-time compare."""
+import hmac, hashlib
+KEY = bytes(range(32))   # demo key; real keys come from the utility's key service
+def tag(msg): return hmac.new(KEY, msg, hashlib.sha256).hexdigest()
+
+def main():
+    msg = b"meter=M-0417;litres=18342;ts=2026-04-01T06:00Z"
+    t = tag(msg)
+    print("tag", t[:24], "...")
+    print("genuine verifies:", hmac.compare_digest(t, tag(msg)))
+    forged = msg.replace(b"18342", b"08342")
+    print("edited reading verifies:", hmac.compare_digest(t, tag(forged)))
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_hmac.py`. Saída verificada:
+
+```text
+tag bc7de0101afc1c79bfc23747 ...
+genuine verifies: True
+edited reading verifies: False
+```
+
+### 19.2 Ler a execução do HMAC
+
+O laboratório gera a tag de uma leitura canônica com HMAC-SHA256 e a verifica. A leitura genuína é verificada, e a leitura editada, com um dígito alterado, falha, porque sem a chave ninguém consegue calcular uma tag válida para uma mensagem modificada. A verificação usa hmac.compare_digest para evitar vazamentos de tempo. A chave de demonstração é uma sequência fixa de bytes apenas para que a saída seja reproduzível; as chaves reais vêm do serviço de chaves. Aiyana enfatiza que o HMAC dá integridade e autenticação da origem entre as partes que compartilham a chave, mas não irretratabilidade (não repúdio), porque qualquer das partes poderia ter produzido a tag.
+
+### 19.3 Pessoas e revogação
+
+As pessoas da Ridgeway se autenticam com chaves de segurança de hardware e certificados de vida curta para o acesso administrativo. Quando alguém sai, seu acesso precisa terminar rapidamente. Aiyana documenta a revogação para cada tipo de identidade: as chaves dos medidores são desativadas no serviço de chaves; os certificados dos concentradores são acrescentados a uma lista de revogação ou simplesmente deixados expirar, já que têm vida curta; os certificados da equipe são revogados e seus tokens desativados. Ela anota que vidas curtas reduzem a dependência da verificação de revogação, que os clientes fazem de forma desigual. Os passos de revogação são ensaiados duas vezes por ano, para que a equipe os conheça sob pressão.
+
+### Exemplo resolvido
+
+Aiyana escolhe chaves HMAC por medidor para as leituras e certificados para os concentradores e a equipe, demonstra a verificação de tags e documenta a revogação por tipo de identidade.
+
+> **Caso sintético.** As identidades e a chave de demonstração são inventadas; a RFC 5280 e a RFC 2104 são reais.
+
+### Erros e limites
+
+O HMAC não consegue provar a um terceiro qual lado criou uma mensagem. Certificados de vida longa tornam a revogação essencial e difícil.
+
+### Exercícios
+
+- **EX055 — Simétrico ou assimétrico.** Por que usar chaves HMAC para as leituras, mas certificados para os concentradores? *Rubrica:* 3 = leituras em grande volume combinam com tags simétricas baratas; os concentradores usam TLS com verificação pública;; 2 = motivos parciais;; 1 = aleatório;; 0 = nenhuma.
+
+- **EX056 — Leitura editada.** O que o laboratório imprimiu para a leitura editada, e por quê? *Rubrica:* 3 = False, já que uma tag válida não pode ser calculada sem a chave;; 2 = False;; 1 = True;; 0 = nenhuma.
+
+- **EX057 — Irretratabilidade.** Por que o HMAC não oferece irretratabilidade? *Rubrica:* 3 = as duas partes compartilham a chave, então qualquer uma poderia ter feito a tag;; 2 = chave compartilhada;; 1 = ele oferece;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Criptografia e serviços de confiança: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) enquadrar as necessidades criptográficas da Ridgeway como um problema de engenharia; (2) listar as partes interessadas e as restrições; (3) definir medidas de sucesso para o serviço de confiança.
+
+### 20.1 O problema de engenharia
+
+Ao entrar nos anos de especialização, Aiyana escreve uma declaração do problema: a Ridgeway precisa de um serviço de confiança que emita e gerencie chaves e certificados para 50.000 medidores, 400 concentradores e 120 funcionários, autentique cada leitura de ponta a ponta, assine o firmware com proteção contra rollback e continue disponível durante indisponibilidades. As restrições incluem a vida da bateria dos medidores, a largura de banda do rádio e um orçamento fixo. Enquadrar o problema dessa forma desloca a discussão de qual algoritmo é o mais forte para qual sistema atende juntos às necessidades de segurança, custo e confiabilidade. Ela mantém a declaração em uma página, para que todas as partes interessadas possam lê-la e contestá-la.
+
+### 20.2 Partes interessadas
+
+Aiyana lista as partes interessadas e o que elas precisam: os clientes precisam de contas corretas e de privacidade; os técnicos de campo precisam substituir medidores sem passos complexos; as operações precisam de alertas sobre os quais consigam agir; o regulador precisa de evidências dos controles; os fornecedores precisam de interfaces claras. Ela entrevista cada grupo. Os técnicos revelam que os medidores às vezes são trocados entre endereços durante consertos, o que afeta como as chaves são vinculadas às identidades. Fatos operacionais como esse, invisíveis num livro de segurança, moldam o projeto tanto quanto as normas. Aiyana registra cada entrevista numa nota curta, para que as escolhas de projeto posteriores possam citar necessidades reais.
+
+### 20.3 Medidas de sucesso
+
+Aiyana define metas mensuráveis: nenhuma leitura forjada aceita em testes independentes; menos de um incidente de expiração de certificado por ano; atualizações de firmware chegando a 99 por cento dos medidores em até trinta dias; rotação de chaves concluída no prazo para todas as classes de chave; e provisionamento de um medidor substituto em menos de dez minutos. Cada medida tem uma fonte de dados e um dono. As medidas mantêm o projeto honesto, evitam o excesso de sofisticação e dão ao regulador evidências que vão além de garantias verbais. Ela também planeja revisar as medidas anualmente, já que uma meta definida no piloto pode ser frouxa ou rígida demais em escala completa.
+
+### Exemplo resolvido
+
+A declaração do problema de Aiyana nomeia a escala, as restrições, as partes interessadas e cinco medidas de sucesso, incluindo a meta de provisionamento em dez minutos dos técnicos.
+
+> **Caso sintético.** Os números da Ridgeway são inventados.
+
+### Erros e limites
+
+Medidas de sucesso podem ser manipuladas se ignorarem a qualidade; associe cada uma a uma revisão. As entrevistas com as partes interessadas podem deixar de fora grupos silenciosos, como clientes com necessidades de acessibilidade.
+
+### Exercícios
+
+- **EX058 — Restrições do problema.** Cite três restrições da declaração do problema. *Rubrica:* 3 = três entre vida da bateria, largura de banda do rádio, orçamento, disponibilidade durante indisponibilidades;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX059 — Percepção dos técnicos.** O que os técnicos revelaram, e por que isso importa? *Rubrica:* 3 = medidores trocados entre endereços durante consertos, afetando o vínculo entre chave e identidade;; 2 = troca;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Medida do firmware.** Enuncie a medida de sucesso do firmware. *Rubrica:* 3 = 99 por cento dos medidores atualizados em até trinta dias;; 2 = 99 por cento;; 1 = sempre;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cada bit acrescentado dobra o espaço de chaves, então o trabalho se multiplica, em vez de aumentar num passo fixo.
 
@@ -565,6 +973,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 **EX029.** Foi para Marcus e depois para o fornecedor por divulgação coordenada, ficou confidencial até a correção e nunca foi testada em medidores instalados.
 
 **EX030.** Fechada, porque manter um firmware conhecido é mais seguro do que executar código não verificado.
+
+**EX031.** A operadora celular, ou qualquer pessoa com acesso a essa rede.
+
+**EX032.** A troca de chaves efêmera faz com que chaves de longo prazo roubadas não consigam decifrar sessões passadas que foram gravadas.
+
+**EX033.** O TLS termina no gateway, então o HMAC fim a fim permite ao banco de dados detectar alterações feitas por qualquer sistema intermediário.
+
+**EX034.** Os crash dumps poderiam gravar no disco chaves que estavam na memória, onde outras pessoas poderiam lê-las.
+
+**EX035.** O random é um gerador previsível para simulações, cujo estado pode ser recuperado; o secrets obtém valores do gerador criptográfico do sistema operacional.
+
+**EX036.** Não consegue ler as chaves brutas, porque somente a conta isolada do serviço de chaves tem acesso a elas.
+
+**EX037.** Um hash de mão única e memory-hard, porque as senhas só precisam ser verificadas, nunca decifradas.
+
+**EX038.** Argon2id com um salt aleatório único por usuário, como definido na RFC 9106.
+
+**EX039.** Rotacionar a chave mestra exige apenas reembrulhar as pequenas chaves de dados, em vez de recifrar o banco de dados.
+
+**EX040.** "Toda leitura é autenticada com uma chave por medidor", com um teste de aceitação que rejeita leituras alteradas.
+
+**EX041.** Nunca colar código criptográfico de fóruns; usar uma biblioteca mantida ou levar a lacuna à revisão de projeto.
+
+**EX042.** Um auxiliar de testes que desativava a verificação de certificados TLS e estava prestes a ser reutilizado em produção.
+
+**EX043.** Os padrões de uso mostram quando os moradores estão fora, o que poderia ajudar ladrões.
+
+**EX044.** Ataques de hardware de Estados-nação ao piloto; declarar isso explicitamente mantém as afirmações honestas.
+
+**EX045.** Cada chave é vinculada a um único identificador de medidor, então um medidor autenticado só pode enviar as próprias leituras.
+
+**EX046.** Por exemplo, geração, distribuição, rotação e destruição.
+
+**EX047.** Elas são enviadas cifradas sob uma chave de transporte, nunca em forma clara.
+
+**EX048.** A revogação não pertencia a ninguém, então chaves comprometidas continuaram ativas por meses.
+
+**EX049.** Taxa de falhas de verificação de tags, dias até a expiração dos certificados e idade das chaves.
+
+**EX050.** Porque as ferramentas de renovação podem falhar silenciosamente, e perceber que não houve tentativa evita uma expiração mais tarde.
+
+**EX051.** Alertas que oscilam rapidamente e revogações automáticas repetidas de medidores com falhas intermitentes.
+
+**EX052.** Uma chave em que se confia por pressuposição, e não por prova, como um certificado raiz ou uma chave pública de firmware embutida.
+
+**EX053.** Os medidores só aceitam firmware com uma cadeia válida e um número de versão maior que o instalado.
+
+**EX054.** Apenas as chaves derivadas de vida curta guardadas em cache para aquela região.
+
+**EX055.** As leituras são numerosas e combinam com tags simétricas baratas, enquanto os concentradores se autenticam por TLS, em que os certificados permitem aos verificadores usar chaves públicas.
+
+**EX056.** False, porque mudar a leitura muda a tag exigida, que não pode ser produzida sem a chave.
+
+**EX057.** Tanto o medidor quanto o serviço de chaves têm a chave, então uma tag não pode provar qual dos dois a criou.
+
+**EX058.** Vida da bateria dos medidores, largura de banda de rádio limitada e um orçamento fixo.
+
+**EX059.** Os medidores são movidos entre endereços durante consertos, então os vínculos das chaves com as identidades precisam lidar com as trocas.
+
+**EX060.** As atualizações de firmware devem chegar a 99 por cento dos medidores em até trinta dias após o lançamento.
 
 <a id="references"></a>
 ## Referências
