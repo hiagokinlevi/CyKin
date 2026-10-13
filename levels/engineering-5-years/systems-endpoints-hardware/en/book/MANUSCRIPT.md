@@ -110,6 +110,8 @@ You will (1) use sets, logic and graphs to describe endpoint configurations; (2)
 
 The software allowed on a public PC forms a set A. The software actually executed during a week forms a set E. Anything in E but not in A, written E minus A, is unauthorised. This simple set difference is the core of application control, which Mateo will design later.
 
+Mateo tried the idea on a week of synthetic records from one branch. The difference held a game installer and a toolbar, which matched what staff had reported. Writing the rule as a set operation also shows what it cannot do: a harmful program inside the approved set would not appear in the difference at all.
+
 ### 2.2 Logic for requirements
 
 Requirements can be written as logical statements: "if a PC is public, then USB storage is disabled". Writing them precisely avoids ambiguity, such as whether staff PCs are included.
@@ -3524,21 +3526,31 @@ You will (1) optimise restore and update processes; (2) reduce cost and effort; 
 
 Reduce restore time at Eastgate, reduce weekly reimage traffic and reduce allowlist maintenance.
 
+Each target comes from evidence gathered earlier. Eastgate's restore times were the slowest and most variable in the pilot. Weekly reimages created the heaviest network load. Allowlist upkeep took about an hour a week, which the studio guests had questioned. Mateo chose these three because each has a clear measure and a plausible fix, and because improving them would not loosen any security requirement. Ideas without a measure, such as making the PCs feel faster, were left off the list.
+
 ### 41.2 Restore
 
 Replacing Eastgate's disks cuts its median from 9.2 to about 6 minutes.
+
+The pilot had shown that older disks added a steady delay to every restore at Eastgate. New disks of the type used at Millbrook bring its median close to the other branches. The improvement also widens the margin against the fifteen-minute window, which had been the main concern when the slowest night reached 12.8 minutes. Mateo measures the new times for a fortnight after replacement, using the same method as the pilot so the before and after figures are comparable.
 
 ### 41.3 Traffic
 
 Differential reimaging sends only changed blocks, reducing weekly traffic by about two thirds.
 
+Instead of copying the whole image each week, the PC compares its system area with the release block by block and downloads only the parts that differ. Most weeks very little has changed, so most of the transfer disappears. The risk is that the comparison misses something, which the worked example shows happening with a boot file. Mateo tests the method on lab PCs with deliberate changes in different places before trusting it on branch PCs.
+
 ### 41.4 Allowlist
 
 Publisher-based rules reduce manual updates.
 
+Rules based on file hashes needed a new entry every time a program updated, which is where most of the weekly hour went. Converting those rules to publisher signatures, where the publisher signs its software, means updates run without any change to the list. A few unsigned programs still need hash rules. Mateo measured the number of manual updates per month before and after the change, and the drop matches the figures reported below. Marta confirmed the drop.
+
 ### 41.5 Guardrail
 
 Every optimisation is re-verified against requirements before release.
+
+Optimisation changes how the system works, so every requirement test runs again on the optimised image, along with the integration test. A faster restore that leaves files behind, or lighter traffic that skips a component, would make the system worse however good the numbers looked. The worked example shows why the rule matters: re-verification caught a boot file that differential reimaging had missed. No optimisation is released until all ten requirement tests pass.
 
 ### Measuring optimisation
 
@@ -3630,21 +3642,31 @@ You will (1) ask a research question from the project; (2) collect data; (3) rel
 
 Does nightly restore reduce help-desk calls about public PCs?
 
+The question came from Marta, who wanted to know whether the project had reduced the calls her team handled, not only the problems in the logs. It can be answered from records Fernhill already keeps, without collecting new data about patrons. Mateo writes it as a single question with a clear measure: the number of calls per month, grouped by topic, before and after the change. Broader questions, such as patron satisfaction, are left for comment cards.
+
 ### 42.2 Data
 
 Call logs for three months before and after deployment, categorised by topic.
+
+The help desk logs each call with a date and a short description written by staff. Mateo strips any names or card numbers before analysis, keeping only the date and the description. Three months on each side of deployment covers a full term in each period. Categorising the descriptions is the step where judgment enters, which is why two people code a sample independently, as the method details below explain.
 
 ### 42.3 Findings
 
 Calls about slow or broken PCs fall by about half; calls about saving work rise slightly.
 
+The drop in calls about slow or broken PCs fits what the availability estimate predicted: fewer failures last long enough for a patron to report them. The rise in calls about saving work was not predicted, though the first studio had raised the question. Mateo reports both, with the counts behind each change, rather than presenting only the favourable result. The rise led directly to a design change.
+
 ### 42.4 Literature
 
 Forrest et al. (1996) proposed defining normal behaviour of Unix processes to detect anomalies; Mateo notes that a fixed image makes "normal" easier to define, supporting future monitoring work.
 
+The connection is indirect but useful. On a PC that changes every day, normal behaviour is hard to describe, so unusual behaviour is hard to spot. A PC that returns to the same image each night behaves much the same from one day to the next, which could make a simple model of normal practical. Mateo does not test the idea; he records it as a direction for future work.
+
 ### 42.5 Limits
 
 Other changes, such as new staff, may also affect calls.
+
+Mateo lists the other changes he knows about in the two periods: a new technician joined, one branch changed its opening hours and a new browser version was released. Any of these could affect call numbers. He cannot remove their influence, but he can say which direction each might push the result. That is enough for Fernhill to treat the finding as useful evidence rather than proof of cause. He says so plainly.
 
 ### Method details
 
@@ -3724,21 +3746,31 @@ You will (1) work within a public-service organisation; (2) follow its governanc
 
 Mateo spends a term at Fernhill supporting deployment to all branches.
 
+During the placement Mateo works at Fernhill four days a week and spends the fifth at the institute. His tasks are agreed with Marta at the start and written into the placement plan: branch rollouts, the morning checks with the technician, documentation and answering librarians' questions. The placement is also where the capstone's design meets daily operation, so much of what he learns feeds back into the thesis. Marta signs the plan.
+
 ### 43.2 Governance
 
 Changes go through Fernhill's change board; data handling follows its privacy policy.
+
+The change board meets weekly and approves each rollout, image release and firewall change. Mateo presents his changes there with the test evidence and the rollback plan. The privacy policy decides what data he may see and keep, which is why his notes contain no patron details. Working within these processes takes longer than acting directly, but every change is visible and can be traced later. Mateo attends every meeting.
 
 ### 43.3 Supervision
 
 Marta supervises daily; Dr Novak reviews weekly.
 
+Daily supervision means Marta sees each change before it reaches a branch and can stop anything she doubts. Dr Novak's weekly review looks at the work from the course's side: whether Mateo's evidence supports his claims and whether the work connects to the thesis. The two supervisors meet once in the middle of the term to compare views, and both sign the placement report at the end. Their feedback is written down, so Mateo can check his progress against it.
+
 ### 43.4 Professional conduct
 
 Mateo does not access patron accounts and works only on approved tasks.
 
+Mateo's account has no access to the booking system or to patron data, and he does not ask for it. When a librarian asked him to look up which patron had used a PC, he declined and referred her to the branch manager. Approved tasks are listed in the placement plan; anything else needs Marta's agreement first. He logs every administrative session on production systems. Marta reviews the log weekly.
+
 ### 43.5 Delivery
 
 All three branches move to the new design during the term.
+
+The rollout followed the order agreed with the change board, with Millbrook first and the branch that asked to delay during exams last. Each branch went through the same checklist and a week of monitoring. By the end of the term all three hundred public PCs ran the new design. Mateo recorded the date and the result of each branch's end-to-end tests in the rollout log. No branch opened late.
 
 ### Daily work
 
@@ -3822,21 +3854,31 @@ You will (1) define the capstone scope; (2) plan work and risks; (3) set accepta
 
 The capstone delivers the full self-restoring hardened public PC service, documented and handed to Fernhill.
 
+Delivering a full service means more than working PCs. It includes the documentation, the runbooks, the dashboard, the trained staff and the evidence that the system meets its requirements. Mateo defines the scope as the set of things Fernhill must have to run the system without him. Features that would be nice but are not needed for that, such as full attestation, are listed as future work.
+
 ### 44.2 Work plan
 
 Remaining tasks: dashboard, firmware update process, final documentation.
+
+The dashboard comes from the second studio's critique, the firmware update process from the safety chapter and the independent review, and the documentation from the maintainability work. Each task has an estimate, an owner and a milestone. Mateo breaks the firmware process into small steps because it is the riskiest, as the worked example explains. Tasks are tracked on a simple board that Marta and Dr Novak can see, and finished tasks link to their evidence.
 
 ### 44.3 Risks
 
 Hardware delays, staff availability and vendor changes.
 
+Hardware delays would hold up the Eastgate disk replacement, which several later tasks depend on. Staff availability matters because the technician is the only other person trained on the restore system. Vendor changes, such as a new booking system version, could break integration without warning. Each risk has a response, described below, and a trigger that tells Mateo when to act. The risk table is reviewed every week, and any risk whose trigger fires gets an action that same day.
+
 ### 44.4 Acceptance criteria
 
 All ten requirements passing; restore within window for 30 consecutive nights; documentation tested by a new technician.
 
+Thirty consecutive nights within the window shows the restore works reliably in service, not just in a pilot week. The documentation test repeats the approach used for maintainability, with a technician who has not worked on the project. All three criteria are measurable and were agreed with Marta and Dr Novak before work began, so there is no room for argument when the time comes to check them.
+
 ### 44.5 Approval
 
 Marta and Dr Novak approve the plan.
+
+Approval is recorded with the plan's version and date, and the plan is stored in the repository with the other project documents. Both approvers can ask for changes at any monthly update. Approval does not freeze the plan: when the hardware delay happens, the plan is updated and the change is approved again. What approval fixes is the acceptance criteria, which change only with both approvers' agreement. Copies are kept by both approvers.
 
 ### Risk responses
 
@@ -3932,21 +3974,31 @@ You will (1) undergo independent review; (2) address findings; (3) improve the d
 
 An engineer from another council reviews the design and evidence.
 
+The reviewer runs public computers for a neighbouring council's libraries and has faced similar problems. She has no connection to the project or to Fernhill's staff. Mateo gives her the full package in advance, as described below, and asks her to judge the design and the evidence, not just the documents. She is free to ask for any record or to see a lab PC running. Her travel costs are covered by Fernhill.
+
 ### 45.2 Findings
 
 Strong restore and layering; weaker monitoring of firmware versions; signing key storage needs improvement.
+
+Her praise for the restore and the layering confirms the core of the design. The two weaknesses are specific and fixable. Firmware versions were recorded in the inventory but not monitored, so a downgrade or an unapproved update could go unnoticed. The signing key, held on Marta's workstation as noted in the identity chapter, was the most serious single point of failure in the design. She ranked the key issue first.
 
 ### 45.3 Response
 
 Firmware versions join the dashboard; signing keys move to a hardware security module service.
 
+Both responses were planned within a week of the review. The dashboard change was quick, since firmware versions were already collected. Moving the signing key needed a documented procedure and two people present, as described below. Mateo also added the nightly check for firmware downgrades that the worked example describes. Each response is linked to the finding it answers. Both changes were tested on lab PCs before release.
+
 ### 45.4 Recording
 
 Findings and responses are recorded.
 
+Each finding is recorded with the reviewer's words, Mateo's response, the action taken, its owner and the date it was closed. Findings he decided not to act on are recorded with reasons, such as the deferred attestation work. The record goes into the evidence dossier and is shared with the reviewer, who confirms that the actions match her intent. The reviewer receives the completed record a month later, with links to evidence for every closed action, and is invited to comment on anything that still concerns her.
+
 ### 45.5 Value
 
 External eyes see what the team overlooked.
+
+The team had lived with the design for a long time and stopped noticing some of its assumptions, such as the key on a workstation that everyone knew about. A reviewer who sees the system fresh notices those things at once. Her experience with another network also brought knowledge the team did not have. Mateo recommends that Fernhill repeat the review when the design changes significantly. Marta agreed and added the review to the annual checklist.
 
 ### Preparing for review
 
