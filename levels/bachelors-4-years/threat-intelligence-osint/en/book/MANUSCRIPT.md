@@ -1411,7 +1411,7 @@ Kill-chain linearity breaks for insider or cloud attacks. ATT&CK reflects report
 
 - **EX055 — Model choice.** Which model would you use to ask "where could we have stopped this intrusion"? *Rubric:* 3 = kill chain, with reason; 2 = name; 1 = TLP; 0 = none.
 - **EX056 — STIX vs TAXII.** Distinguish STIX 2.1 from TAXII 2.1. *Rubric:* 3 = STIX is data format; TAXII is transport protocol over HTTPS; 2 = partial; 1 = same; 0 = none.
-- **EX057 — Without risk.** What happens when CTI is not linked to risk decisions? *Rubric:* 3 = becomes news without action/priority; 2 = vague; 1 = vague; 0 = none.
+- **EX057 — Without risk.** What happens when CTI is not linked to risk decisions? *Rubric:* 3 = becomes news without action/priority; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
