@@ -3245,21 +3245,31 @@ You will (1) complete the capstone build to the charter; (2) close review condit
 
 The vendor-watch service ingests synthetic vendor advisories and partner reports, tags vendors and products, scores relevance against BEN's synthetic OT asset list, and opens OT tickets with recommendations, TLP marking and the two-person rule.
 
+Each step was built from the thin slice the team finished in the first semester. Relevance scoring compares the vendor and product names in an advisory with the synthetic asset list, and the score decides whether a ticket opens. Nothing in the service can change an OT system; its output is always a recommendation that an engineer reads and decides on.
+
 ### 46.2 Closing conditions
 
 Each must-fix finding is closed with evidence: a test, a screenshot of the ticket template, a code reference. The review chair confirms closure.
+
+For the two-person rule, the evidence was a test that tries to close a ticket with one approval and checks that the system refuses. For the reminder in each recommendation, the evidence was the ticket template itself and a sample of generated tickets. The chair read each item and recorded her confirmation in the review file. No condition was closed by a statement alone, however confident the team felt about the fix.
 
 ### 46.3 Stakeholder validation
 
 OT engineers run five scenarios. In four, recommendations are relevant and timely; in one, a vendor name variant was missed. The team adds the variant to the vendor dictionary and a rule to flag unknown names for analyst review.
 
+The missed variant was a shortened form of a product name used in one advisory. A dictionary alone would always miss some new form, which is why the rule for unknown names matters more than the single addition. Analysts now review those flagged items, and each confirmed variant goes into the dictionary. The team reran all five scenarios after the change, and all passed.
+
 ### 46.4 Handover
 
 Runbooks, on-call notes, configuration guide, known issues and a training session for the OT team. Operations signs acceptance.
 
+The training session used the same synthetic advisories as the scenarios, so OT engineers saw the tickets they would receive in real use. Kofi's team walked through each known issue, including the dependence on the vendor dictionary, and explained the workaround for each. Operations signed acceptance only after a member of their own team followed the runbook to restart the service without help. The signed form is part of the evidence dossier.
+
 ### 46.5 Measured results
 
 On the 200-item synthetic test set: 96% of relevant items alerted within 15 minutes; 7% of alerts irrelevant. Both meet the charter's objectives.
+
+Both figures come from the same defined test set the charter named, so the comparison is fair. Kofi's report gives the counts behind the percentages and notes that a set of two hundred items cannot show how the service behaves on rare kinds of advisory. The service met its objectives on this set; whether it does so on real advisories is what the first months of monitoring will show.
 
 ### Practice note — known issues
 
@@ -3305,6 +3315,8 @@ You will (1) plan recovery-time and recovery-point objectives for Lantern; (2) r
 
 Recovery time objective (RTO): how long Lantern may be down. Recovery point objective (RPO): how much data may be lost. For BEN, RTO 60 minutes and RPO 15 minutes for the store and ingestion.
 
+The two objectives answer different questions, so they are set separately. An hour of downtime is acceptable because the SOC can fall back on manual checks for a short time. Losing more than fifteen minutes of data would mean indicators that arrived in that window are missing from enforcement until the partner sends them again, which may not happen. The figures were agreed with the SOC lead and written into the requirements.
+
 ### Lab 9 — drill scoring
 
 ```python
@@ -3328,17 +3340,25 @@ D3 corrupt enrich cache    RTO met (30m)  RPO MISSED (25m)
 
 D1, store failover, met both objectives. D2, a TAXII outage simulation, missed RTO at 75 minutes because the runbook assumed a credential that had rotated. D3, corrupt enrichment cache, recovered quickly but lost 25 minutes of enrichment state, missing RPO.
 
+Kofi presents the misses first in his report, because they are what the drills were for. A drill that passes everything may simply have been too easy. Each miss also had a clear cause that could be fixed, which made the drills worth their cost; the store failover, the case BEN worried about most, worked as designed.
+
 ### 47.3 Improving
 
 D2: update the runbook and add a credential-validity check to the daily health report. D3: snapshot the cache every ten minutes or treat the cache as rebuildable and exclude it from RPO, documenting that choice.
+
+Kofi recorded the choice for the cache as a decision with reasons: rebuilding takes about half an hour from the providers, within their query limits, and no partner data is lost. The SOC lead agreed that enrichment state does not need the same protection as the store. The worked example then confirms that the rerun drill passes under the revised scope.
 
 ### 47.4 Drill safety
 
 Drills run in staging with synthetic data. Partners are not involved unless a joint exercise is agreed, and production enforcement is never altered by a drill.
 
+Kofi's drill plan states the boundaries in writing and the facilitator checks them before starting. The staging environment has its own credentials, which cannot reach production firewalls. A joint exercise with a partner would need a separate agreement covering timing, scope and how to stop if something unexpected happens. Without such care, a drill could cause the outage it was meant to rehearse.
+
 ### 47.5 Incident linkage
 
 NIST SP 800-61 Rev. 3 frames incident response within cybersecurity risk management. Lantern's recovery plans connect to BEN's incident response plan so that an outage during a real incident is handled consistently.
+
+In practice this means Lantern's runbooks name the incident commander as the person who decides priorities if an outage happens during an incident. Kofi's team checked that the two plans use the same contact lists and severity levels. If the store fails while analysts are investigating a campaign, restoring it becomes part of the incident response rather than a separate effort competing for the same people.
 
 ### Practice note — surprise element
 
@@ -3384,21 +3404,31 @@ You will (1) assemble an evidence dossier supporting the claim that Lantern and 
 
 Top claim: "Lantern delivers timely, trustworthy, lawfully collected intelligence to BEN's IT and OT defenders with acceptable risk." Sub-claims: timeliness, accuracy, TLP and privacy compliance, safety of OT recommendations, reliability, maintainability. Each sub-claim cites evidence.
 
+Kofi drew the argument as a tree so readers could see how each sub-claim supports the top. The timeliness branch points to verification results and a quarter of production metrics; the safety branch points to the interlock tests and the design review. A reader who doubts one branch can follow it to the evidence without reading the rest.
+
 ### 48.2 Evidence types
 
 Verification reports, validation results, drill records, review outcomes, metrics over a quarter, privacy assessment and partner feedback. Each item has a date, author, version and SHA-256 hash recorded in an index.
+
+The index lets a reviewer confirm that an item has not changed since it was cited, as the worked example shows. Kofi keeps the evidence itself in a read-only store and the index in the dossier. An item without a date or author is not accepted, because nobody could judge whether it is still relevant.
 
 ### 48.3 Assumptions
 
 The argument depends on assumptions: partners label TLP correctly; NTP is reliable; OT engineers follow the two-person rule. Assumptions are stated, and where possible monitored.
 
+Kofi lists how each assumption is checked. Mislabelled TLP from partners shows up as gate rejections and partner corrections, which are counted monthly. Time synchronisation is monitored after the clock skew failure in the verification lab. Adherence to the two-person rule is checked from approval logs. An assumption that cannot be monitored is flagged as a weakness in the argument.
+
 ### 48.4 Residual risks
 
 Unseen partner formats, adversary poisoning that mimics legitimate patterns, staff turnover. Each risk has an owner and acceptance by an accountable manager.
 
+Kofi writes each risk with what would happen if it occurred and what reduces it. Poisoning that looks legitimate is the hardest, since the allow-list catches only known suppliers, as the final defence later acknowledged. Staff turnover is reduced by documentation and pairing. The accountable manager signs the acceptance, which makes clear that the risk is a business decision rather than an engineering oversight.
+
 ### 48.5 Audience
 
 The dossier serves BEN's risk committee, auditors and future engineers. A two-page summary leads; the full evidence sits behind it.
+
+Each audience reads differently. The risk committee reads the summary and the residual risks. Auditors sample evidence and check hashes. Future engineers need the assumptions and the design reasons, so they know what must stay true if they change something. Kofi asked a member of each group to read a draft and say what they could not find. Two gaps were fixed that way.
 
 ### Practice note — counter-evidence
 
@@ -3444,21 +3474,31 @@ You will (1) write an engineering thesis that reports design, implementation and
 
 Introduction (problem, objectives, contributions); background (CTI concepts, STIX/TAXII 2.1, ATT&CK, Diamond Model, kill chain, TLP 2.0, SP 800-150); requirements; design; implementation; verification and validation; operations evidence; discussion; conclusion.
 
+Kofi followed the structure because examiners expect it and can find what they need. The background chapter covers only what the later chapters use. The operations evidence chapter is unusual for a thesis but central here, since the claims depend on how the service behaved in practice, not only in tests. Appendices hold the full test procedures.
+
 ### 49.2 Contributions
 
 Kofi's contributions: an interlocked OT vendor-watch design; a decay-model refit procedure from re-observation data; an evaluation of feed quality with labelled sets. Background material — how STIX works — is not a contribution, however long the chapter.
+
+Kofi tested each candidate contribution by asking whether another engineer could use it without reading the rest of the thesis. The refit procedure passed: it is a short method with a worked example. A description of Lantern's database tables did not, so it moved to an appendix.
 
 ### 49.3 Using sources
 
 Cite specifications for definitions, papers for models, and BEN-approved synthetic or aggregate data for results. Every claim of fact has a citation or evidence reference.
 
+Kofi's reference list includes the specifications for STIX, TAXII and TLP, the Diamond Model paper and the kill chain paper. Results cite evidence items from the dossier by their index number. His supervisor checked a sample of citations against the sources and found one that pointed to the wrong version of a specification, which he corrected.
+
 ### 49.4 Limitations
 
 Synthetic test sets, one organisation's environment, short operational period, self-reported user feedback. For each, the likely effect on conclusions.
 
+For the synthetic test sets, the likely effect is that the measured relevance rate is higher than real advisories would produce, since the test items were written to be clear. For the short operational period, seasonal effects could not be seen. Stating these effects lets examiners judge how far the conclusions reach, and it protects Kofi from being asked to defend more than the evidence supports.
+
 ### 49.5 Future work
 
 Prospective measurement of incidents prevented; cross-utility comparison with consent; automated detection of feed poisoning.
+
+Each item is written as a question with a possible method. Measuring incidents prevented would need a comparison with similar utilities that lack the service, which requires consent from those utilities. Detecting poisoning automatically follows directly from the residual risk in the dossier and the gap the final defence admitted. Kofi lists what data each item would need, so a successor can judge whether it is feasible.
 
 ### Practice note — figures
 
@@ -3504,21 +3544,31 @@ You will (1) present the thesis and dossier to an examination panel; (2) answer 
 
 Twenty minutes: problem and mission; key design decisions; safety interlocks; evaluation results with uncertainty; limitations; future work. Slides show evidence, not decoration.
 
+Kofi rehearsed with a timer and cut anything that ran over. Each slide carries one point and the evidence for it, such as the measured relevance rate with its count. The safety interlocks get their own slide because the panel is most likely to probe them. He leaves the last minutes for limitations, so the panel hears them from him first.
+
 ### 50.2 Expected questions
 
 Why is there no automatic OT blocking? How do you prevent feed poisoning? What happens if a partner mislabels TLP? Why should we trust your feed-quality labels? What would you do differently? Answers cite pages and evidence items.
+
+Kofi prepared each answer with a page number in the thesis and an evidence item in the dossier. For the question on mislabelled TLP, he points to the gate's fail-closed rule and the monthly count of partner corrections. The same discipline applies to every other question on the list.
 
 ### 50.3 Ethical questions
 
 Panels ask what Kofi refused to build. He answers: personal social-media collection, scraping against terms, home-address enrichment and OT automation without approval — each with the reason and the alternative chosen.
 
+For each refusal Kofi gives the request, why he declined and what was done instead. The home-address field was removed with the privacy officer's agreement; OT automation was replaced by recommendations with approval. Panels value this because it shows judgment applied under real pressure, not only knowledge of rules. Each refusal is documented.
+
 ### 50.4 Acknowledging limits
 
 "I don't know" followed by how one would find out is a strong answer. Defending an unsupported claim is weak.
 
+In the worked example Kofi concedes a gap and points to future work rather than stretching the allow-list's coverage. Examiners usually respect an honest limit more than a confident answer that falls apart under the next question. If he needs a moment to think, he takes it; a pause costs less than a wrong claim recorded in the panel's notes.
+
 ### 50.5 Next steps
 
 The book does not claim accreditation or a completed 300-page edition. The next stop in the study path is the engineering course in authorized offensive security and red team.
+
+Kofi's next steps after the defence are practical: complete any corrections, update the dossier and hand over remaining notes to BEN's team. The draft status of the book is stated plainly at its start, and readers should treat it accordingly. Moving into offensive security builds on the same habits of evidence, authorisation and restraint.
 
 ### Practice note — after the defence
 
