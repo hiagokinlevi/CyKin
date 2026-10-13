@@ -1,6 +1,6 @@
 ---
 name: cyberabc-security-governance-risk-compl-technical-a9932cde
-description: "Guide a learner through the technical course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
+description: "Guide a learner through the GRC Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,35 @@ Use this **one skill for the whole 18 months course**. The course has one princi
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/security-governance-risk-compliance/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Eighteen-chapter technical route
 
-## Tutor workflow
+This is the eighteen-month **technical course** in security governance, risk and compliance. The book follows synthetic student **Amina Yusuf**, taught by **Ms. Clara Bell** at the fictional **Dunmore Technical College**, supporting the controls of the fictional **Fenwick Building Supplies**.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–6 | Services, networks, identities, scripting, scope and the GRC model | lab_config (4); EX001–EX024 |
+| 7–12 | Logs, failure modes, methods, configuration, verification and first lab | lab_logs (7), lab_rules (11); EX025–EX048 |
+| 13–18 | Troubleshooting, automation, dependencies, documentation, second lab and project | lab_certs (14); EX049–EX072 |
+
+Verified lab facts (synthetic unless cited): 3 of 4 laptops deviate from baseline; admin account 7 failed sign-ins flagged; 2 of 5 firewall rules unapproved; VPN certificate expired 3 days, shop certificate 19 days left.
+
+## Teaching guardrails
+
+- Labs run standard-library code on synthetic data only; they score, simulate and check, and never probe real systems. Risk figures are illustrations, not benchmarks.
+- Cite standards by exact edition and clause topic; paraphrase rather than reproduce copyrighted standard text. A synthetic audit, assessment or SOC 2 report is never presented as a real attestation, and compliance mappings are teaching aids, not legal advice.
 
 ## Continue the curriculum
 
-After chapter 18, check the chapter index and the learner's exercise record. The next stop is [course 052: Human factors and cyber policy / Technical course](../../human-factors-policy/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 18, the next stop is [course 052: Human factors and cyber policy / Technical course](../../human-factors-policy/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
