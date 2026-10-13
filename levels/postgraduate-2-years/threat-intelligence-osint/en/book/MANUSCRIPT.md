@@ -45,25 +45,61 @@ You will (1) frame CTI around decisions rather than topics; (2) write decision-c
 
 A CTI function earns its budget when it changes decisions: what to patch first, which supplier connection to restrict, whether to pay for a new detection capability. Rafael starts NLG's programme by interviewing decision-makers — the chief operating officer, the head of infrastructure, the customs-platform owner — and listing the decisions they face in the next year.
 
+Section one point one develops advanced security decision-making with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section one point one, FPSC expects advanced claims to carry owners and dates.
+
 ### 1.2 Requirements tied to decisions
 
 Each decision becomes a requirement: "Before the Q3 renewal of remote-access tooling, which access techniques are adversaries using against logistics firms?" A good requirement names the decision, the deadline and the consumer. Topic lists ("ransomware", "APT groups") cannot be closed and never end.
+
+Section one point two develops advanced security decision-making with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section one point two, FPSC expects advanced claims to carry owners and dates.
+
+Section one point two treats decisions first requirements tied as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Expected loss, roughly
 
 Decision-makers compare options. Rough expected-loss reasoning — likelihood band multiplied by impact range — helps them, as long as bands stay bands. "Likely (55–80%) attempt within a year; impact two to five days of warehouse disruption" supports a choice better than a single invented number.
 
+Section one point three develops advanced security decision-making with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section one point three, FPSC expects advanced claims to carry owners and dates.
+
+Section one point three treats decisions first requirements tied as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Value of information
 
 Before collecting, ask whether any plausible answer would change the decision. If the board will fund multi-factor authentication for all remote access regardless, further intelligence on the threat adds little decision value; effort should move elsewhere.
+
+Section one point four develops advanced security decision-making with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section one point four, FPSC expects advanced claims to carry owners and dates.
+
+Section one point four treats decisions first requirements tied as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 Decision records
 
 Record the decision, the date, the intelligence used, its confidence and who decided. Later reviews can then separate bad luck from bad judgment.
 
+Section one point five develops advanced security decision-making with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section one point five, FPSC expects advanced claims to carry owners and dates.
+
+Section one point five treats decisions first requirements tied as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Northmere Logistics Group will not accept advanced work without a written trail.
+
 ### 1.6 Time horizons
 
 Strategic decisions run over years, operational over weeks, tactical over hours. Each horizon needs different collection and a different cadence of reporting; mixing them in one weekly bulletin satisfies no one.
+
+Section one point six develops advanced security decision-making with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section one point six, FPSC expects advanced claims to carry owners and dates.
+
+Section one point six treats decisions first requirements tied as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -103,25 +139,61 @@ You will (1) survey how mature CTI teams operate today; (2) compare internal, co
 
 Mature teams run a requirements process, maintain a threat profile of relevant adversaries and techniques, feed detection engineering, support incident response and brief leadership. NIST SP 800-150 emphasises sharing relationships and clear rules for what can be shared. Many teams use a threat intelligence platform storing STIX 2.1 objects and exchanging them over TAXII 2.1.
 
+Section two point one develops threat intelligence and osint current with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section two point one, FPSC expects threat claims to carry owners and dates.
+
 ### 2.2 Sourcing mix
 
 Internal telemetry and incidents give the most relevant evidence. Communities like FPSC give sector context and early warning. Commercial providers add breadth and finished reporting. Open sources — advisories, vendor research, certificate logs — fill gaps when collected lawfully and within terms of service.
+
+Section two point two develops threat intelligence and osint current with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section two point two, FPSC expects threat claims to carry owners and dates.
+
+Section two point two treats what mature teams do as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Automation
 
 Automation ingests, deduplicates, enriches and distributes indicators. It does not judge relevance well, nor write assessments. Teams that automate everything flood defenders with low-value indicators; those that automate nothing drown in copy-paste.
 
+Section two point three develops threat intelligence and osint current with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section two point three, FPSC expects threat claims to carry owners and dates.
+
+Section two point three treats what mature teams do as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Technique-centred practice
 
 Following Bianco's Pyramid of Pain, mature teams invest in technique-level intelligence mapped to ATT&CK, because detections built on behaviour last longer than those built on hashes and addresses.
+
+Section two point four develops threat intelligence and osint current with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section two point four, FPSC expects threat claims to carry owners and dates.
+
+Section two point four treats what mature teams do as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Starting small
 
 A two-person team should pick a few requirements, one community, internal incident data and a modest platform — and prove value before expanding.
 
+Section two point five develops threat intelligence and osint current with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section two point five, FPSC expects threat claims to carry owners and dates.
+
+Section two point five treats what mature teams do as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 2.6 Common anti-patterns
 
 Buying several feeds before defining requirements; publishing a daily newsletter nobody reads; measuring success by indicator volume; keeping intelligence inside the CTI team rather than embedding it in detection and response workflows.
+
+Section two point six develops threat intelligence and osint current with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section two point six, FPSC expects threat claims to carry owners and dates.
+
+Section two point six treats what mature teams do as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -161,6 +233,12 @@ You will (1) apply analysis of competing hypotheses (ACH); (2) weigh diagnostic 
 
 Heuer's analysis of competing hypotheses asks analysts to list all reasonable hypotheses, score each piece of evidence against each, and favour the hypothesis with the least inconsistent evidence. It counters the habit of accepting the first plausible story.
 
+Section three point one develops threat intelligence and osint specialist with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section three point one, FPSC expects threat claims to carry owners and dates.
+
+Section three point one treats why ach reading the as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — competing hypotheses
 
 ```python
@@ -194,21 +272,53 @@ least inconsistent: H3 supplier compromise
 
 Three hypotheses about a data theft at NLG are tested against five evidence items. Supplier compromise (H3) has no inconsistent evidence; criminal extortion (H1) has one; insider misuse (H2) has two. H3 is the leading hypothesis, but H1 is close.
 
+Section three point two develops threat intelligence and osint specialist with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section three point two, FPSC expects threat claims to carry owners and dates.
+
+Section three point two treats why ach reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 Diagnosticity
 
 Evidence consistent with every hypothesis — data staged at 02:00 (E2) — does not help choose. Diagnostic evidence discriminates: the login from the supplier VPN range (E1) is inconsistent with an external crew and neutral for an insider. Analysts should collect more diagnostic evidence rather than more evidence.
+
+Section three point three develops threat intelligence and osint specialist with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section three point three, FPSC expects threat claims to carry owners and dates.
+
+Section three point three treats why ach reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 3.4 Deception and gaps
 
 Adversaries plant false clues; tools are sold widely. Ask which evidence would be easy to fake and give it less weight. List what evidence is missing and what it would show.
 
+Section three point four develops threat intelligence and osint specialist with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section three point four, FPSC expects threat claims to carry owners and dates.
+
+Section three point four treats why ach reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Confidence
 
 A one-point margin between H3 and H1 supports low-to-moderate confidence. ICD 203 asks analysts to explain the basis of confidence, including gaps.
 
+Section three point five develops threat intelligence and osint specialist with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section three point five, FPSC expects threat claims to carry owners and dates.
+
+Section three point five treats why ach reading the as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 3.6 Sensitivity
 
 Ask which single evidence item, if wrong, would change the ranking. If E1's VPN attribution is mistaken, H1 and H3 tie. That tells Rafael where to verify first.
+
+Section three point six develops threat intelligence and osint specialist with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section three point six, FPSC expects threat claims to carry owners and dates.
+
+Section three point six treats why ach reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -248,25 +358,65 @@ You will (1) integrate threat intelligence into enterprise risk assessment; (2) 
 
 Risk registers often score likelihood by gut feeling. CTI can anchor the likelihood column: observed sector techniques, actors' known interest in logistics, and NLG's exposure. Each likelihood should cite the intelligence and its confidence, and be revisited when intelligence changes.
 
+Section four point one develops advanced risk and ethics with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section four point one, FPSC expects advanced claims to carry owners and dates.
+
+Section four point one treats threat in the risk as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 OSINT at scale
 
 Monitoring public sources for brand abuse, leaked credentials or exposed NLG data touches personal data. Under the GDPR, NLG needs a lawful basis (often legitimate interests, with a documented balancing test), purpose limitation, minimisation and retention limits. A data-protection impact assessment is wise for systematic monitoring.
+
+Section four point two develops advanced risk and ethics with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section four point two, FPSC expects advanced claims to carry owners and dates.
+
+Section four point two treats threat in the risk as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Collection governance
 
 A collection policy lists approved sources and methods, prohibited ones (fake personas, purchasing stolen data, accessing closed criminal markets without legal approval), approval routes and audit. Analysts should know before a crisis what they may not do.
 
+Section four point three develops advanced risk and ethics with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section four point three, FPSC expects advanced claims to carry owners and dates.
+
+Section four point three treats threat in the risk as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Purchasing stolen data
 
 A vendor offers NLG's leaked customer database "for verification". Paying may fund criminals, may be unlawful and creates a new copy of personal data. The ethical path runs through legal counsel, law enforcement and incident response, not procurement.
+
+Section four point four develops advanced risk and ethics with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section four point four, FPSC expects advanced claims to carry owners and dates.
+
+Section four point four treats threat in the risk as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Pressure
 
 Executives under stress may ask for intrusive actions — "find out who the hacker is". Analysts need the policy and the confidence to say no, offering lawful alternatives.
 
+Section four point five develops advanced risk and ethics with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section four point five, FPSC expects advanced claims to carry owners and dates.
+
+Section four point five treats threat in the risk as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Northmere Logistics Group will not accept advanced work without a written trail.
+
 ### 4.6 Ethics review
 
 A small ethics panel — legal, privacy, security leadership — reviews new collection methods once, then approves them for routine use. This avoids both ad hoc risk-taking and paralysis.
+
+Section four point six develops advanced risk and ethics with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section four point six, FPSC expects advanced claims to carry owners and dates.
+
+Section four point six treats threat in the risk as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Northmere Logistics Group will not accept advanced work without a written trail.
 
 ### Worked example
 
@@ -306,25 +456,63 @@ You will (1) compare centralised, embedded and outsourced CTI models; (2) evalua
 
 A centralised team serves everyone from one place and keeps standards consistent but can drift from operational needs. Embedded analysts sit in the security operations centre or risk team and stay close to consumers but may lose common method. Outsourced intelligence brings scale but limited business context. Hybrids are common.
 
+Section five point one develops threat intelligence and osint design with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section five point one, FPSC expects threat claims to carry owners and dates.
+
 ### 5.2 Platform options
 
 Options range from spreadsheets and a shared mailbox, through open-source threat intelligence platforms, to commercial platforms. Criteria: STIX 2.1 support, TAXII 2.1 client and server, TLP enforcement, integration with detection tools, cost and maintainability.
+
+Section five point two develops threat intelligence and osint design with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section five point two, FPSC expects threat claims to carry owners and dates.
+
+Section five point two treats organisational models platform options as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Data model
 
 Using STIX 2.1 internally keeps sharing simple: indicators, attack patterns, relationships and reports map directly to community exchange. Custom fields should use STIX extensions rather than ad hoc columns.
 
+Section five point three develops threat intelligence and osint design with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section five point three, FPSC expects threat claims to carry owners and dates.
+
+Section five point three treats organisational models platform options as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Protocols
 
 TAXII 2.1 collections let NLG pull from FPSC and publish to it. Email remains necessary for human-readable products, and must carry TLP labels in the subject and body as TLP 2.0 recommends.
+
+Section five point four develops threat intelligence and osint design with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section five point four, FPSC expects threat claims to carry owners and dates.
+
+Section five point four treats organisational models platform options as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Design rationale
 
 Record options, criteria, scores and the reason for the choice. Future leaders can revisit decisions when conditions change.
 
+Section five point five develops threat intelligence and osint design with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section five point five, FPSC expects threat claims to carry owners and dates.
+
+Section five point five treats organisational models platform options as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 5.6 Reversibility
 
 Prefer designs that can be changed cheaply. A standards-based data model allows platform replacement later; proprietary formats lock data in.
+
+Section five point six develops threat intelligence and osint design with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section five point six, FPSC expects threat claims to carry owners and dates.
+
+Section five point six treats organisational models platform options as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Northmere Logistics Group will not accept threat work without a written trail.
 
 ### Staffing the design
 
@@ -368,6 +556,14 @@ You will (1) evaluate CTI processes with labelled data; (2) compute and interpre
 
 Claims such as "our triage rule catches what matters" need evidence. A controlled evaluation applies alternatives to the same labelled set and compares outcomes.
 
+Section six point one develops threat intelligence and osint controlled with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section six point one, FPSC expects threat claims to carry owners and dates.
+
+Section six point one treats why evaluate reading the as testable only when evidence and ticket IDs are recorded.
+
+For section six point one, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### Lab — two triage rules
 
 ```python
@@ -395,21 +591,55 @@ rule B: tp=4 fp=0 fn=2 precision=1.0 recall=0.67
 
 On twenty labelled synthetic items, rule A (broad keywords) finds all six relevant items but raises four false alarms: precision 0.6, recall 1.0. Rule B (match against NLG's asset inventory) raises no false alarms but misses two relevant items: precision 1.0, recall 0.67.
 
+Section six point two develops threat intelligence and osint controlled with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section six point two, FPSC expects threat claims to carry owners and dates.
+
+Section six point two treats why evaluate reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 6.3 Which is better?
 
 Neither in general. If analyst time is scarce and misses can be caught elsewhere, rule B fits. If missing a relevant item is costly — for example, a vulnerability in a customs platform — rule A, or B with a secondary check, fits. The choice depends on costs, not on one metric.
+
+Section six point three develops threat intelligence and osint controlled with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section six point three, FPSC expects threat claims to carry owners and dates.
 
 ### 6.4 Fair comparison
 
 Use the same items, labels made before seeing rule outputs, and labellers blind to which rule flagged what. Report sample size; twenty items gives wide uncertainty.
 
+Section six point four develops threat intelligence and osint controlled with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section six point four, FPSC expects threat claims to carry owners and dates.
+
+Section six point four treats why evaluate reading the as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 6.5 Error analysis
 
 Read the misses. Rule B missed two items about a supplier product absent from the inventory — an inventory gap, not a rule flaw. Fixing the inventory may help more than changing the rule.
 
+Section six point five develops threat intelligence and osint controlled with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section six point five, FPSC expects threat claims to carry owners and dates.
+
+Section six point five treats why evaluate reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 6.6 Repeating over time
 
 Threats change; rerun the evaluation quarterly with fresh labelled items.
+
+Section six point six develops threat intelligence and osint controlled with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section six point six, FPSC expects threat claims to carry owners and dates.
+
+Section six point six treats why evaluate reading the as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Northmere Logistics Group will not accept threat work without a written trail.
+
+Section six point six fails closed if threat evidence is missing rather than guessing.
 
 ### Beyond triage
 
@@ -453,6 +683,12 @@ You will (1) embed CTI into security operations, incident response and risk; (2)
 
 CTI feeds detection engineering (technique priorities), the security operations centre (indicators and context), incident response (adversary profiles during incidents, aligned with NIST SP 800-61r3), vulnerability management (exploitation intelligence) and risk (likelihood). Each needs a defined input format and owner.
 
+Section seven point one develops threat intelligence and osint organizational with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section seven point one, FPSC expects threat claims to carry owners and dates.
+
+Section seven point one treats integration points reading the as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — dissemination gate
 
 ```python
@@ -481,21 +717,51 @@ R5 AMBER internal BLOCK unknown label
 
 A GREEN report to the community is allowed; AMBER to the public is blocked; AMBER+STRICT to a client is blocked, because it is limited to the recipient organisation; CLEAR to the public is allowed. A label written "AMBER" without the TLP prefix is unrecognised, so the gate fails closed and blocks it.
 
+Section seven point two develops threat intelligence and osint organizational with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section seven point two, FPSC expects threat claims to carry owners and dates.
+
 ### 7.3 Fail closed
 
 When a label is missing or unknown, block and ask. A gate that guesses will sooner or later leak restricted partner material and damage trust in the community.
+
+Section seven point three develops threat intelligence and osint organizational with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section seven point three, FPSC expects threat claims to carry owners and dates.
+
+Section seven point three treats integration points reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 7.4 Service agreements
 
 Agree with each consumer what they receive, in what format, how fast and how they give feedback. For example, the operations centre gets validated indicators within four hours of FPSC receipt; leadership gets a monthly two-page brief.
 
+Section seven point four develops threat intelligence and osint organizational with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section seven point four, FPSC expects threat claims to carry owners and dates.
+
+Section seven point four treats integration points reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 7.5 Measuring integration
 
 Measure consumer actions: detections created from intelligence, vulnerabilities reprioritised, risk entries updated. Survey consumers twice a year.
 
+Section seven point five develops threat intelligence and osint organizational with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section seven point five, FPSC expects threat claims to carry owners and dates.
+
+Section seven point five treats integration points reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 7.6 Clients and partners
 
 NLG serves customers who sometimes ask for threat information. TLP:AMBER allows sharing with clients on a need-to-know basis; AMBER+STRICT does not. Customer-facing teams must know the difference before passing anything on.
+
+Section seven point six develops threat intelligence and osint organizational with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section seven point six, FPSC expects threat claims to carry owners and dates.
+
+Section seven point six treats integration points reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -535,25 +801,63 @@ You will (1) handle attribution pressure; (2) manage intelligence about insiders
 
 Executives and media want a name. For most defensive decisions, the techniques and infrastructure matter more than the identity. When attribution is offered, state the evidence, alternatives and confidence; distinguish "activity cluster resembling public reporting on a group" from "the group did it". The Diamond Model separates adversary from capability and infrastructure precisely because those can be shared or sold.
 
+Section eight point one develops threat intelligence and osint difficult with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eight point one, FPSC expects threat claims to carry owners and dates.
+
 ### 8.2 Insider cases
 
 Intelligence suggesting an insider must go to human resources and legal under a defined procedure. CTI analysts should not monitor colleagues informally; it may be unlawful and undermines trust. Keep such material on a strict need-to-know basis.
+
+Section eight point two develops threat intelligence and osint difficult with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eight point two, FPSC expects threat claims to carry owners and dates.
+
+Section eight point two treats attribution pressure insider cases as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Public claims of breach
 
 A leak-site post claims NLG data. Steps: preserve the claim passively (screenshot from a safe, approved environment or through a contracted provider), assess plausibility from any sample against internal records, inform incident response and legal, and avoid public comment. Do not download large "samples" onto corporate systems without legal advice.
 
+Section eight point three develops threat intelligence and osint difficult with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eight point three, FPSC expects threat claims to carry owners and dates.
+
 ### 8.4 Crisis tempo
 
 During incidents, analysts publish short updates with explicit confidence and time stamps, superseding earlier ones clearly. Wrong early statements are normal; unmarked corrections are not.
+
+Section eight point four develops threat intelligence and osint difficult with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eight point four, FPSC expects threat claims to carry owners and dates.
+
+Section eight point four treats attribution pressure insider cases as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Northmere Logistics Group will not accept threat work without a written trail.
 
 ### 8.5 Partner sensitivity
 
 If the compromise came through a supplier, coordinate disclosure through FPSC and contracts rather than naming them publicly.
 
+Section eight point five develops threat intelligence and osint difficult with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eight point five, FPSC expects threat claims to carry owners and dates.
+
+Section eight point five treats attribution pressure insider cases as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 8.6 Wellbeing
 
 Difficult cases are stressful. Rotate on-call duties and debrief afterwards; tired analysts make worse judgments.
+
+Section eight point six develops threat intelligence and osint difficult with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eight point six, FPSC expects threat claims to carry owners and dates.
+
+Section eight point six treats attribution pressure insider cases as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Northmere Logistics Group will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -593,25 +897,67 @@ You will (1) lead a CTI team; (2) assure analytic quality with review processes;
 
 Analysts need clear requirements, time for depth, and protection from constant interruption. A leader shields the team from ad hoc requests by routing them through the requirements process.
 
+Section nine point one develops threat intelligence and osint leadership with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section nine point one, FPSC expects threat claims to carry owners and dates.
+
+Section nine point one treats leading analysts quality assurance as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Quality assurance
 
 Use ICD 203 standards as a review checklist: sourcing described, uncertainty expressed, assumptions separated from judgments, alternatives considered, relevant and logical. Every assessment above routine level gets a second reader. Track how often reviews change conclusions.
+
+Section nine point two develops threat intelligence and osint leadership with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section nine point two, FPSC expects threat claims to carry owners and dates.
+
+Section nine point two treats leading analysts quality assurance as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Calibration over time
 
 Record probability judgments and later outcomes; compute how often "likely" events happened. Calibration feedback improves judgment more than training slides.
 
+Section nine point three develops threat intelligence and osint leadership with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section nine point three, FPSC expects threat claims to carry owners and dates.
+
+Section nine point three treats leading analysts quality assurance as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 9.4 Board reporting
 
 Boards need a short view: what threats matter, how NLG's exposure is changing, what decisions intelligence informed, and what is uncertain. Avoid dramatic imagery and lists of actors.
+
+Section nine point four develops threat intelligence and osint leadership with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section nine point four, FPSC expects threat claims to carry owners and dates.
+
+Section nine point four treats leading analysts quality assurance as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Sustainability
 
 Document processes, cross-train, keep a budget line, and show value with outcome measures. Programmes built around one person collapse when that person leaves.
 
+Section nine point five develops threat intelligence and osint leadership with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section nine point five, FPSC expects threat claims to carry owners and dates.
+
+Section nine point five treats leading analysts quality assurance as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Northmere Logistics Group will not accept threat work without a written trail.
+
 ### 9.6 External assurance
 
 Occasional peer review by another FPSC member's CTI lead — under a mutual non-disclosure agreement — gives an outside view of method quality.
+
+Section nine point six develops threat intelligence and osint leadership with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section nine point six, FPSC expects threat claims to carry owners and dates.
+
+Section nine point six treats leading analysts quality assurance as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Northmere Logistics Group will not accept threat work without a written trail.
 
 ### Hiring and development
 
@@ -655,25 +1001,69 @@ You will (1) read academic and practitioner CTI research critically; (2) evaluat
 
 Peer-reviewed papers, standards (STIX, TAXII, SP 800-150), government guidance (ICD 203), foundational practitioner papers (Hutchins et al.; Caltagirone et al.) and vendor reports differ in review, incentives and evidence. Know which you are reading.
 
+Section ten point one develops research reading and critique with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section ten point one, FPSC expects research claims to carry owners and dates.
+
+Section ten point one treats types of source method as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Method questions
 
 What data was used, from where, over what period? How were labels created? What comparison was made? Are results reproducible? Could the authors' interests shape the conclusion?
+
+Section ten point two develops research reading and critique with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section ten point two, FPSC expects research claims to carry owners and dates.
+
+Section ten point two treats types of source method as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Northmere Logistics Group will not accept research work without a written trail.
 
 ### 10.3 Transferability
 
 A study on a large technology company's feeds may not transfer to a mid-sized logistics firm. Ask whether populations, threat exposure and resources are similar.
 
+Section ten point three develops research reading and critique with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section ten point three, FPSC expects research claims to carry owners and dates.
+
+Section ten point three treats types of source method as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Northmere Logistics Group will not accept research work without a written trail.
+
 ### 10.4 Reading foundational models critically
 
 The kill chain was written for intrusion campaigns against defence contractors; it fits insider or cloud-identity attacks less well. The Diamond Model is a framework for organising events, not a method that produces conclusions by itself. ATT&CK reflects publicly reported behaviour, biased toward what vendors observe.
+
+Section ten point four develops research reading and critique with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section ten point four, FPSC expects research claims to carry owners and dates.
+
+Section ten point four treats types of source method as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Structured critique
 
 Summary, contribution, method strengths, method weaknesses, transferability, and what you would do with it. Keep tone professional.
 
+Section ten point five develops research reading and critique with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section ten point five, FPSC expects research claims to carry owners and dates.
+
+Section ten point five treats types of source method as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Northmere Logistics Group will not accept research work without a written trail.
+
 ### 10.6 Building a reading habit
 
 A monthly reading group of two papers keeps the team current. Each session ends with one change to try or a reason not to.
+
+Section ten point six develops research reading and critique with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section ten point six, FPSC expects research claims to carry owners and dates.
+
+Section ten point six treats types of source method as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Northmere Logistics Group will not accept research work without a written trail.
 
 ### Finding good sources
 
@@ -717,25 +1107,69 @@ You will (1) deliver a scoped CTI improvement project at work; (2) apply evaluat
 
 Rafael's project: build an intelligence-driven detection backlog. Using ATT&CK-coded FPSC reports and NLG incidents, rank techniques by sector frequency, NLG exposure and current detection coverage, then deliver the top ten as detection requirements to the operations centre.
 
+Section eleven point one develops applied project with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eleven point one, FPSC expects applied claims to carry owners and dates.
+
+Section eleven point one treats choosing the project scope as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Scope and ethics
 
 In scope: public and FPSC reports (respecting TLP), internal incident summaries, current detection inventory. Out of scope: offensive testing, adversary infrastructure interaction, personal data beyond what incidents already hold.
+
+Section eleven point two develops applied project with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eleven point two, FPSC expects applied claims to carry owners and dates.
+
+Section eleven point two treats choosing the project scope as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Northmere Logistics Group will not accept applied work without a written trail.
 
 ### 11.3 Method
 
 Code reports to techniques with a second coder on a sample; compute frequencies; score exposure with asset owners; mark coverage as none, partial or full with the detection team. Combine scores transparently.
 
+Section eleven point three develops applied project with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eleven point three, FPSC expects applied claims to carry owners and dates.
+
+Section eleven point three treats choosing the project scope as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Evaluation
 
 Success measures: number of backlog items implemented within the term; detection coverage change; time from intelligence to detection requirement. Compare with the previous quarter.
+
+Section eleven point four develops applied project with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eleven point four, FPSC expects applied claims to carry owners and dates.
+
+Section eleven point four treats choosing the project scope as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Northmere Logistics Group will not accept applied work without a written trail.
 
 ### 11.5 Stakeholders
 
 Agree with the operations lead how many requirements the team can absorb. Ten realistic items beat thirty ignored ones.
 
+Section eleven point five develops applied project with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eleven point five, FPSC expects applied claims to carry owners and dates.
+
+Section eleven point five treats choosing the project scope as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Northmere Logistics Group will not accept applied work without a written trail.
+
 ### 11.6 Reporting
 
 The final report states what was delivered, measured effects, limits and next steps. Restricted FPSC content stays out of the academic version.
+
+Section eleven point six develops applied project with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section eleven point six, FPSC expects applied claims to carry owners and dates.
+
+Section eleven point six treats choosing the project scope as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Northmere Logistics Group will not accept applied work without a written trail.
 
 ### Safe detection testing
 
@@ -779,25 +1213,69 @@ You will (1) consolidate the course's methods into a personal practice framework
 
 Summarise your practice on one page: decision-first requirements (chapter 1), sourcing mix (2), ACH and calibration (3, 9), risk and ethics governance (4), standards-based design (5), controlled evaluation (6), TLP-enforced integration (7), crisis discipline (8), research critique (10).
 
+Section twelve point one develops final review and transfer with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section twelve point one, FPSC expects final claims to carry owners and dates.
+
+Section twelve point one treats personal framework transfer continuing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Northmere Logistics Group will not accept final work without a written trail.
+
 ### 12.2 Transfer
 
 Moving to another sector changes threats, regulators and communities but not the method. A healthcare or energy organisation will need sector-specific sharing communities and safety considerations, but requirements, evaluation and TLP discipline transfer intact.
+
+Section twelve point two develops final review and transfer with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section twelve point two, FPSC expects final claims to carry owners and dates.
+
+Section twelve point two treats personal framework transfer continuing as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Continuing development
 
 Follow ATT&CK and STIX updates, take part in community working groups, read research, and track your own calibration. Mentoring others consolidates learning.
 
+Section twelve point three develops final review and transfer with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section twelve point three, FPSC expects final claims to carry owners and dates.
+
+Section twelve point three treats personal framework transfer continuing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Northmere Logistics Group will not accept final work without a written trail.
+
 ### 12.4 Handover
 
 If you leave, hand over requirements, source catalogue, platform documentation, decision records, review logs and community contacts with introductions. Transfer TLP-restricted relationships properly; memberships are often organisational, not personal.
+
+Section twelve point four develops final review and transfer with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section twelve point four, FPSC expects final claims to carry owners and dates.
+
+Section twelve point four treats personal framework transfer continuing as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Reflecting on limits
 
 CTI informs decisions under uncertainty; it rarely delivers certainty. Mature practitioners are comfortable saying "we do not know" and explaining what would reduce uncertainty.
 
+Section twelve point five develops final review and transfer with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section twelve point five, FPSC expects final claims to carry owners and dates.
+
+Section twelve point five treats personal framework transfer continuing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Northmere Logistics Group will not accept final work without a written trail.
+
 ### 12.6 Final assessment
 
 The course closes with a portfolio: the decision record set, an ACH product, an evaluation report and the project report, each reviewed against ICD 203 standards.
+
+Section twelve point six develops final review and transfer with a Northmere Logistics Group note Rafael Moreau can demo offline.
+
+Under section twelve point six, FPSC expects final claims to carry owners and dates.
+
+Section twelve point six treats personal framework transfer continuing as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Northmere Logistics Group will not accept final work without a written trail.
 
 ### Mentoring the next lead
 
