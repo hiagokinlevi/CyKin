@@ -170,7 +170,7 @@ She exports role definitions, 90 days of permission usage from the provider's ac
 
 ### 3.4 Integrity
 
-Exports are stored in a restricted folder with read-only copies; a short register lists each item. Keeping read-only copies means the original exports cannot be altered, even accidentally, while Hannah works on her own copies. The register records each export's name, date, source, size and where it is stored, so auditors can check that the evidence behind a finding is the evidence collected. Access to the folder is limited to Hannah and Dev. The register itself is part of her portfolio for Kingsbridge.
+Exports are stored in a restricted folder with read-only copies; a short register lists each item. Keeping read-only copies means the original exports cannot be altered, even accidentally, while Hannah works on her own copies. The register records each export's name, date, source, size and where it is stored, so auditors can check that the evidence behind a finding is the evidence collected. Access to the folder is limited to Hannah and Dev. The register itself is part of her portfolio for Kingsbridge. Evidence is kept for the audit period and then deleted according to the council's retention schedule.
 
 ### 3.5 Privacy
 
@@ -178,15 +178,9 @@ Access logs contain staff names and resident-facing service activity but not res
 
 ### 3.6 Professional duty
 
-If she sees something outside scope that worries her, she reports it to Dev rather than investigating alone. Investigating alone could take her outside her authority and might disturb evidence that someone else needs. Reporting to Dev means the issue is handled by people with the right access and responsibility. When she found the former contractor's role, she reported it the same day and Dev had it removed through the normal process. She records what she found and when she reported it, without investigating further herself.
-
-### Why written authority matters
+If she sees something outside scope that worries her, she reports it to Dev rather than investigating alone. Investigating alone could take her outside her authority and might disturb evidence that someone else needs. Reporting to Dev means the issue is handled by people with the right access and responsibility. She records what she found and when she reported it, without investigating further herself.
 
 Written authority protects Hannah, the council and residents. If something breaks or an auditor asks why she viewed certain logs, the brief shows she acted within agreed limits. It also forces a conversation about scope at the start, so nobody is surprised later. The Kingsbridge course treats this as a core professional practice: competence includes knowing what one is allowed to do and keeping records that show it.
-
-### Retention
-
-Evidence is kept for the audit period and then deleted according to the council's retention schedule.
 
 ### Worked example
 
@@ -232,7 +226,7 @@ Role-based access control, described by Sandhu et al. (1996), groups permissions
 
 ### 4.3 Vulnerability prioritisation
 
-Severity scores describe potential impact; the EPSS model of Jacobs et al. (2021) estimates the likelihood of exploitation activity; exposure describes whether the workload faces the internet. Combining them gives a fair order. Severity alone would put CVE-C in the internal worker ahead of a finding in the internet-facing front end, even though exploitation is much less likely. Combining all three factors gives an order that matches the council's real risk. Hannah writes the method down so that others can apply it the same way, and she records the scores used for each finding with their sources and the date each score was checked.
+Severity scores describe potential impact; the EPSS model of Jacobs et al. (2021) estimates the likelihood of exploitation activity; exposure describes whether the workload faces the internet. Combining them gives a fair order. Severity alone would put CVE-C in the internal worker ahead of a finding in the internet-facing front end, even though exploitation is much less likely. Combining all three factors gives an order that matches the council's real risk. Hannah writes the method down so that others can apply it the same way, and she records the scores used for each finding with their sources and the date each score was checked. The method avoids complex scoring; tiers are easy to explain to developers and auditors, and can be refined later if needed.
 
 ### 4.4 Workload controls
 
@@ -247,14 +241,6 @@ NIST SP 800-190 recommends trusted images, regular rebuilding and limiting conta
 Hannah chooses 90 days because it covers monthly reporting cycles and two releases. She checks the calendar for less frequent tasks, such as the yearly permit renewal campaign and archive job, and asks owners directly about them.
 
 She also notes that the method depends on the provider's access logs being complete. She confirms that logging was enabled for the whole period before relying on it.
-
-### Simple first
-
-The method avoids complex scoring; tiers are easy to explain to developers and auditors, and can be refined later if needed.
-
-### Owners
-
-Each role has a named owner who confirms removals.
 
 ### Worked example
 
@@ -320,7 +306,7 @@ overall unused 6/13 (46%)
 
 ### 5.2 Reading the result
 
-Six of thirteen permissions (46%) were unused. Permits-app never used storage.admin or storage.write; reporting never used iam.admin or storage.read; deploy-bot never used iam.admin or registry.delete. The lab counts permissions granted but not used; it does not show whether they are needed for rare tasks. Hannah treats each unused permission as a candidate for removal and lists them by role, ready to check with the owners. The two iam.admin grants stand out, because they belong to roles that have no reason to manage permissions.
+Six of thirteen permissions (46%) were unused. Permits-app never used storage.admin or storage.write; reporting never used iam.admin or storage.read; deploy-bot never used iam.admin or registry.delete. The lab counts permissions granted but not used; it does not show whether they are needed for rare tasks. Hannah treats each unused permission as a candidate for removal and lists them by role, ready to check with the owners. The two iam.admin grants stand out, because they belong to roles that have no reason to manage permissions. 46% unused is high but common for roles that grew during early development. The aim is not zero for its own sake, but no unused high-risk permissions.
 
 ### 5.3 Interpreting
 
@@ -328,21 +314,13 @@ The two iam.admin grants are the most dangerous: they allow changing permissions
 
 ### 5.4 Checking with owners
 
-The digital team confirms storage.write is needed only for a yearly archive job; it is moved to a separate, rarely used role. Registry.delete is used manually by Dev for clean-ups and can be removed from the bot. The reporting team confirms that neither iam.admin nor storage.read is needed, since the job reads only from the database. Checking with owners turns the unused list into decisions each owner has agreed. Hannah records each owner's answer with the date, so audit can see that every removal was confirmed before it happened.
+The digital team confirms storage.write is needed only for a yearly archive job; it is moved to a separate, rarely used role. Registry.delete is used manually by Dev for clean-ups and can be removed from the bot. The reporting team confirms that neither iam.admin nor storage.read is needed, since the job reads only from the database. Checking with owners turns the unused list into decisions each owner has agreed. Hannah records each owner's answer with the date, so audit can see that every removal was confirmed before it happened. The role summary is shared with each owning team before any change.
 
 ### Removal plan
 
 Removals are scheduled one role at a time, each on a weekday morning with the owning team available. Each change is tested in staging first with the team running their normal tasks. If anything fails, the permission is restored immediately and the failure is analysed before trying again.
 
 Hannah records each removal with the evidence used, the owner's confirmation and the test result.
-
-### Reading the numbers
-
-46% unused is high but common for roles that grew during early development. The aim is not zero for its own sake, but no unused high-risk permissions.
-
-### Sharing
-
-The role summary is shared with each owning team before any change.
 
 ### Worked example
 
@@ -415,11 +393,11 @@ Tier 1: CVE-A in permits-web, severity 9.8, likelihood 0.62, internet-facing. Ti
 
 ### 6.3 Workflow
 
-Tier 1 is fixed within a week, tier 2 within a month, tier 3 in the next routine rebuild. Each fix is a rebuild from an updated base image through the pipeline, then deployment through the change process. Fixing by rebuilding rather than patching running containers keeps images consistent and means the fix is part of the code that builds them. The change process gives Dev and the digital team a chance to review each deployment. Hannah tracks each finding from scan to deployment, so audit can see that tier deadlines were met. A new scan after deployment confirms the finding has gone.
+Tier 1 is fixed within a week, tier 2 within a month, tier 3 in the next routine rebuild. Each fix is a rebuild from an updated base image through the pipeline, then deployment through the change process. Fixing by rebuilding rather than patching running containers keeps images consistent and means the fix is part of the code that builds them. The change process gives Dev and the digital team a chance to review each deployment. Hannah tracks each finding from scan to deployment, so audit can see that tier deadlines were met. A new scan after deployment confirms the finding has gone. Each finding enters the work queue with tier, deadline, owner and a link to the scan record. Tiers are reviewed monthly.
 
 ### 6.4 Repetition
 
-The scanner runs weekly; new findings are tiered automatically and appear in the team's queue. Weekly scans catch new vulnerabilities in images already running, not only in new builds. Automatic tiering means each finding arrives in the digital team's queue with its tier and deadline, so nobody has to sort results by hand. This answers one of the process causes Hannah later identifies: scan results had gone to an inbox nobody watched. The digital team reviews the queue in its weekly planning meeting.
+The scanner runs weekly; new findings are tiered automatically and appear in the team's queue. Weekly scans catch new vulnerabilities in images already running, not only in new builds. Automatic tiering means each finding arrives in the digital team's queue with its tier and deadline, so nobody has to sort results by hand. This answers one of the process causes Hannah later identifies: scan results had gone to an inbox nobody watched. The digital team reviews the queue in its weekly planning meeting. Images are rebuilt monthly even without findings, so base updates arrive routinely and urgent rebuilds are rarer and less risky.
 
 ### 6.5 Exceptions
 
@@ -430,18 +408,6 @@ If a fix is impossible in time, an exception records the reason and compensating
 An internet-facing service can be reached by anyone, so a likely-exploited flaw there is urgent. The same flaw in an internal job is reachable only by those already inside the network. Exposure does not make internal findings unimportant, but it orders them sensibly when time is limited.
 
 Hannah documents the tier rule so that developers can predict deadlines themselves.
-
-### Rebuild habits
-
-Images are rebuilt monthly even without findings, so base updates arrive routinely and urgent rebuilds are rarer and less risky.
-
-### Queue
-
-Each finding enters the work queue with tier, deadline, owner and a link to the scan record.
-
-### Review
-
-Tiers are reviewed monthly.
 
 ### Worked example
 
@@ -515,23 +481,11 @@ The digital team needs two weeks to update the library. Hannah records an except
 
 ### 7.5 Reporting
 
-Audit receives the status with evidence for each closed item and the exception for the open one. For each closed item, audit sees the original finding, the change made, the date and the fresh evidence confirming it. The exception shows the reason the reporting rebuild is open, the compensating controls, the owner and the expected date. Hannah presents the status in a short table, so audit can check each finding quickly. She also includes the two process recommendations, since audit asked how the findings arose.
+Audit receives the status with evidence for each closed item and the exception for the open one. For each closed item, audit sees the original finding, the change made, the date and the fresh evidence confirming it. The exception shows the reason the reporting rebuild is open, the compensating controls, the owner and the expected date. Hannah presents the status in a short table, so audit can check each finding quickly. She also includes the two process recommendations, since audit asked how the findings arose. Dev signs off each verified item, and its evidence is archived.
 
 ### Test pod
 
 The synthetic non-compliant pod requests to run as root. It is used only in staging and is rejected as expected, proving the admission rule works without harming anything. The test is part of the verification record and repeated after any cluster upgrade, because upgrades have removed security features before, as when PodSecurityPolicy was removed in Kubernetes 1.25.
-
-### Status table
-
-The audit status table lists each item, evidence, date and owner.
-
-### Sign-off
-
-Dev signs off each verified item.
-
-### Archive
-
-Evidence is archived.
 
 ### Worked example
 
@@ -577,37 +531,21 @@ The scanner existed, but results went to an inbox nobody watched, and there was 
 
 ### 8.3 Process causes
 
-Missing ownership, missing review cadence and missing prioritisation method. Each cause is a gap in process rather than a technical failure. Nobody owned role hygiene or scan results, so nobody reviewed them. There was no review cadence, so permissions granted for short-term needs stayed indefinitely. There was no prioritisation method, so a long list of findings had no clear starting point. Hannah's recommendations answer each cause directly, so the same problems should not build up again after the project ends. She shows the link in her report to Dev as a short table pairing each cause with the routine and owner that answers it.
+Missing ownership, missing review cadence and missing prioritisation method. Each cause is a gap in process rather than a technical failure. Nobody owned role hygiene or scan results, so nobody reviewed them. There was no review cadence, so permissions granted for short-term needs stayed indefinitely. There was no prioritisation method, so a long list of findings had no clear starting point. Hannah's recommendations answer each cause directly, so the same problems should not build up again after the project ends. She shows the link in her report to Dev as a short table pairing each cause with the routine and owner that answers it. Problems grew slowly because nothing prompted anyone to look. Scheduled reviews with owners provide that prompt and make neglect visible.
 
 ### 8.4 Recommendations
 
-Quarterly role reviews owned by the platform team; weekly scan triage owned by the digital team; temporary permissions that expire; findings tracked in the normal work queue. Each recommendation names an owner and a frequency, so it can be checked later. Quarterly role reviews give unused permissions a regular chance to be removed. Weekly triage keeps findings from piling up. Expiring permissions stop short-term grants from becoming permanent. Tracking findings in the normal work queue puts them where developers already plan work, as the digital team later suggested.
+Quarterly role reviews owned by the platform team; weekly scan triage owned by the digital team; temporary permissions that expire; findings tracked in the normal work queue. Each recommendation names an owner and a frequency, so it can be checked later. Quarterly role reviews give unused permissions a regular chance to be removed. Weekly triage keeps findings from piling up. Expiring permissions stop short-term grants from becoming permanent. Tracking findings in the normal work queue puts them where developers already plan work, as the digital team later suggested. Each recommendation becomes a tracked action with an owner and due date, and Dev reviews progress monthly until all are complete.
 
 ### 8.5 Supervision
 
-Dev reviews the analysis and challenges one point: whether expiry for temporary permissions is practical. They agree to pilot it. Dev's concern is that developers might need a permission longer than expected, and that expiry could interrupt their work. Hannah suggests a pilot with a clear process for requesting more time. In the pilot, a developer's temporary storage.write for a migration expired after 48 hours as planned, and nothing lingered. They record the pilot's result and decide to continue using expiry for temporary grants.
+Dev reviews the analysis and challenges one point: whether expiry for temporary permissions is practical. They agree to pilot it. Dev's concern is that developers might need a permission longer than expected, and that expiry could interrupt their work. Hannah suggests a pilot with a clear process for requesting more time. After a month, the pilot review found that no grant had lingered and no work had been delayed, so they record the result and decide to continue using expiry for temporary grants.
 
 ### Comparing with guidance
 
 Hannah compares the process causes with CSA CCM v4, which includes controls for regular access reviews and vulnerability management. The council's policies referred to these in general terms, but nobody had turned them into scheduled tasks with owners. Mapping recommendations to CCM v4 controls helps audit see that the changes meet a recognised framework.
 
 She also checks the CIS Benchmark for the council's cloud provider, which recommends reviewing unused credentials and permissions; the quarterly review satisfies this.
-
-### Tracking actions
-
-Each recommendation becomes a tracked action with an owner and due date.
-
-### Follow-up
-
-Dev reviews progress on the actions monthly until all are complete.
-
-### Lesson
-
-Problems grew slowly because nothing prompted anyone to look. Scheduled reviews with owners provide that prompt and make neglect visible.
-
-### Pilot review
-
-After a month, the expiry pilot is reviewed: no grants lingered and no work was delayed.
 
 ### Worked example
 
@@ -649,7 +587,7 @@ Councillors want risk and cost in plain words; audit wants evidence; developers 
 
 ### 9.2 One message, three forms
 
-Hannah writes a one-paragraph summary for councillors, an evidence table for audit and a technical note for developers. The three documents carry the same facts at different depths, so they never contradict each other. The summary for councillors states the risk and what was done in plain words. The evidence table for audit lists each finding, change, date and evidence. The technical note gives developers the details of removed permissions and rebuilt images. Hannah checks all three against the same source data before sending them, and Dev reviews them first.
+Hannah writes a one-paragraph summary for councillors, an evidence table for audit and a technical note for developers. The three documents carry the same facts at different depths, so they never contradict each other. The summary for councillors states the risk and what was done in plain words. The evidence table for audit lists each finding, change, date and evidence. The technical note gives developers the details of removed permissions and rebuilt images. Hannah checks all three against the same source data before sending them, and Dev reviews them first. Hannah asks each audience whether the report met their needs and adjusts the format for the next one. Each report ends with a named contact for questions, so readers know whom to ask and do not guess at meanings.
 
 ### 9.3 Ethics
 
@@ -657,33 +595,17 @@ Findings describe systems and processes, not individuals. The contractor's lefto
 
 ### 9.4 Honesty
 
-Hannah reports the open reporting rebuild and the limits of 90 days of data rather than presenting a perfect picture. Ninety days of usage may miss rare tasks, so she states that unused permissions were confirmed with owners rather than inferred from logs alone. The open rebuild is reported with its exception and expected date. Hannah notes that presenting a perfect picture would undermine trust if the gap were discovered later. Being clear about limits also helps the council decide whether a longer review period is needed for future role reviews.
+Hannah reports the open reporting rebuild and the limits of 90 days of data rather than presenting a perfect picture. Ninety days of usage may miss rare tasks, so she states that unused permissions were confirmed with owners rather than inferred from logs alone. The open rebuild is reported with its exception and expected date. Hannah notes that presenting a perfect picture would undermine trust if the gap were discovered later. Being clear about limits also helps the council decide whether a longer review period is needed for future role reviews. Hannah avoids words like "critical" unless the evidence supports them, so readers trust her ratings.
 
 ### 9.5 Sensitive details
 
-Detailed vulnerability information is shared only with those who need it until fixed. Until a vulnerability is fixed, details such as the affected image, version and exposure could help someone exploit it. Hannah shares this information with the digital team and Dev, who need it to fix the finding. The summary for councillors describes the risk in general terms without technical details. Once a fix is confirmed, the details can be shared more widely, for example with audit as part of the evidence for closing the finding.
+Detailed vulnerability information is shared only with those who need it until fixed. Until a vulnerability is fixed, details such as the affected image, version and exposure could help someone exploit it. Hannah shares this information with the digital team and Dev, who need it to fix the finding. The summary for councillors describes the risk in general terms without technical details. Once a fix is confirmed, the details can be shared more widely, for example with audit as part of the evidence for closing the finding. Reports go out after fixes for the most serious issues, so sensitive details are not circulated while still exploitable.
 
 ### Writing the summary
 
 The councillors' summary has four sentences: what audit found, what has been fixed, what remains and when, and the cost in staff time. It avoids technical terms. Hannah tests it on a colleague from another department, who suggests replacing "permissions" with "access rights", which councillors understand better.
 
 The evidence table for audit lists each finding, action, evidence reference and date. The developer note includes role names, permissions and image versions.
-
-### Timing
-
-Reports go out after fixes for the most serious issues, so sensitive details are not circulated while still exploitable.
-
-### Feedback
-
-Hannah asks each audience whether the report met their needs and adjusts the format for the next one.
-
-### Language
-
-Hannah avoids words like "critical" unless the evidence supports them, so readers trust her ratings.
-
-### Questions
-
-Each report ends with a named contact for questions, so readers know whom to ask and do not guess at meanings.
 
 ### Worked example
 
@@ -721,11 +643,11 @@ You will (1) check the quality of security work; (2) troubleshoot problems after
 
 ### 10.1 Quality checks
 
-Hannah asks a colleague to repeat her role analysis on one role from raw exports. Their results match. Repeating the analysis from raw exports tests both Hannah's method and her work. If a colleague following the method note reaches the same result, the method can be applied by others. The colleague chose the reporting role and checked which permissions appeared in the usage logs. Hannah records the check, the role chosen and the result in her portfolio. Dev signs the record as reviewer, which gives Kingsbridge assessors independent evidence that the method note is usable by someone else.
+Hannah asks a colleague to repeat her role analysis on one role from raw exports. Their results match. Repeating the analysis from raw exports tests both Hannah's method and her work. If a colleague following the method note reaches the same result, the method can be applied by others. The colleague chose the reporting role and checked which permissions appeared in the usage logs. Hannah records the check, the role chosen and the result in her portfolio. Dev signs the record as reviewer, which gives Kingsbridge assessors independent evidence that the method note is usable by someone else. A colleague repeats one analysis every quarter to keep the method honest.
 
 ### 10.2 Breakage
 
-After removing storage.admin, the worker fails to set an object's metadata. The error shows it needs a narrower metadata permission, which is added. The failure happened in staging, as planned, so the service was not affected. Rather than restoring storage.admin, Hannah and the digital team find the specific permission needed and add only that, keeping the role narrow. The change is recorded and the staging test repeated before production. Hannah adds the failure and its fix to the evidence register, so audit sees the full history of the change.
+After removing storage.admin, the worker fails to set an object's metadata. The error shows it needs a narrower metadata permission, which is added. The failure happened in staging, as planned, so the service was not affected. Rather than restoring storage.admin, Hannah and the digital team find the specific permission needed and add only that, keeping the role narrow. The change is recorded and the staging test repeated before production. Hannah adds the failure and its fix to the evidence register, so audit sees the full history of the change. For a week after each change, error rates and failed requests are checked daily to catch slower problems, such as a job that runs weekly.
 
 ### 10.3 Root cause
 
@@ -733,33 +655,17 @@ The usage log had recorded the action under a different name; Hannah updates her
 
 ### 10.4 Workflow improvements
 
-Scan triage now takes 15 minutes weekly; role reviews take an hour quarterly. Fifteen minutes a week is enough because the scanner tiers findings automatically and the digital team only needs to check new tier 1 and 2 findings. An hour a quarter for role reviews works because the core roles are now narrow and the analysis method is written down. Hannah records these times so Dev can plan the work. Keeping both routines short makes it more likely they continue after the project.
+Scan triage now takes 15 minutes weekly; role reviews take an hour quarterly. Fifteen minutes a week is enough because the scanner tiers findings automatically and the digital team only needs to check new tier 1 and 2 findings. An hour a quarter for role reviews works because the core roles are now narrow and the analysis method is written down. Hannah records these times so Dev can plan the work. Keeping both routines short makes it more likely they continue after the project. Each problem and fix goes into a lessons log shared with the platform team.
 
 ### 10.5 Measures
 
-Unused permissions fell from 6 of 13 to 0 in the core roles; tier 1 findings were fixed in three days. Hannah reports these figures with their sources: the new role exports for permissions and the deployment records for the tier 1 fix. She states that the figures cover the three core roles and the three images in scope, not the council's other cloud services. The open reporting rebuild is reported with its exception rather than left out of the figures. Dev checks the figures against the new role exports and scan results before they go to audit.
+Unused permissions fell from 6 of 13 to 0 in the core roles; tier 1 findings were fixed in three days. Hannah reports these figures with their sources: the new role exports for permissions and the deployment records for the tier 1 fix. She states that the figures cover the three core roles and the three images in scope, not the council's other cloud services. The open reporting rebuild is reported with its exception rather than left out of the figures. Dev checks the figures against the new role exports and scan results before they go to audit. Triage time fell from an unplanned afternoon to fifteen minutes, freeing developer time.
 
 ### Independent review value
 
 The colleague's repetition found no errors in results, but found that one step in Hannah's notes was unclear: how she excluded the yearly archive job. She rewrites the step. Independent repetition tests both results and method description.
 
 After the breakage, Hannah adds a rule to her method: before removing a broad permission, list the specific actions recorded under it and check for narrower equivalents.
-
-### Monitoring after changes
-
-For a week after each change, error rates and failed requests are checked daily to catch slower problems, such as a job that runs weekly.
-
-### Lessons log
-
-Each problem and fix goes into a lessons log shared with the platform team.
-
-### Time saved
-
-Triage time fell from an unplanned afternoon to fifteen minutes, freeing developer time.
-
-### Peer check cadence
-
-A colleague repeats one analysis every quarter to keep the method honest.
 
 ### Worked example
 
@@ -797,7 +703,7 @@ You will (1) rehearse the full workflow on synthetic data; (2) time each step; (
 
 ### 11.1 Rehearsal
 
-Dev gives Hannah a synthetic new service with two roles and four image findings. She runs the full workflow: usage analysis, triage, plan, staging changes, verification, report. The rehearsal tests whether Hannah can apply the whole method on a service she has not seen, without the help of familiar evidence. The synthetic service runs in a separate staging account, so nothing affects the council's real systems. Dev watches but does not help, noting where she pauses or checks her method note. Each step produces the same kind of evidence as the real project, so the result can go into her portfolio.
+Dev gives Hannah a synthetic new service with two roles and four image findings. She runs the full workflow: usage analysis, triage, plan, staging changes, verification, report. The rehearsal tests whether Hannah can apply the whole method on a service she has not seen, without the help of familiar evidence. The synthetic service runs in a separate staging account, so nothing affects the council's real systems. Dev watches but does not help, noting where she pauses or checks her method note. Each step produces the same kind of evidence as the real project, so the result can go into her portfolio. Each rehearsal produces the same records as real work, so the portfolio can show them. Dev schedules rehearsals twice a year so skills stay fresh in the team.
 
 ### 11.2 Timing
 
@@ -809,7 +715,7 @@ Verification of workload controls took longest because staging lacked a test pod
 
 ### 11.4 Re-run
 
-A second rehearsal on another synthetic service takes two hours. The shorter time shows that the test pod template and familiarity with the method helped. The second service also had different roles and findings, so the speed did not come from repeating the same answers. Hannah records the timings for both rehearsals in her portfolio. Dev notes that a colleague could run the method too, which was later shown when a colleague completed it from her notes. Dev signs off both rehearsal records, which go into her portfolio as evidence that the workflow can be repeated on unfamiliar services.
+A second rehearsal on another synthetic service takes two hours. The shorter time shows that the test pod template and familiarity with the method helped. The second service also had different roles and findings, so the speed did not come from repeating the same answers. Hannah records the timings for both rehearsals in her portfolio. Dev notes that a colleague could run the method too, which was later shown when a colleague completed it from her notes. Dev signs off both rehearsal records, which go into her portfolio as evidence that the workflow can be repeated on unfamiliar services. After the rehearsals, the method note gains a checklist at the top summarising each step and its evidence. Each rehearsal ends with a short debrief on what to improve. Dev approves the method for use on other services.
 
 ### 11.5 Safety
 
@@ -820,26 +726,6 @@ The rehearsal used synthetic services in a separate staging account. Using a sep
 The rehearsal tests whether the method works end to end, whether notes are clear enough for others and how long each step takes. Timing helps Dev plan staff time for future services: about two hours for a small service once the method is practised.
 
 The synthetic services include deliberate traps, such as a permission used only once in 90 days, to check that Hannah confirms with owners rather than removing it automatically. She catches it and asks the synthetic owner, as the method requires.
-
-### Recording
-
-Each rehearsal produces the same records as real work, so the portfolio can show them.
-
-### Improvements
-
-After the rehearsals, the method note gains a checklist at the top summarising each step and its evidence.
-
-### Repetition
-
-Dev schedules rehearsals twice a year so skills stay fresh in the team.
-
-### Debrief
-
-Each rehearsal ends with a short debrief on what to improve.
-
-### Outcome
-
-Dev approves the method for use on other services.
 
 ### Worked example
 
@@ -877,7 +763,7 @@ You will (1) assemble a portfolio of evidence; (2) reflect on growth; (3) plan c
 
 ### 12.1 Portfolio
 
-Hannah's portfolio includes her authority brief, method note, role analysis, triage, verification evidence, the exception, reports and rehearsal records. Each item shows a different competence: the brief shows working within authority, the method note shows planning, the analyses show technical skill, the verification evidence shows care, and the reports show communication. Hannah arranges the portfolio in the order of the work, so assessors can follow the project from start to finish. Each item is dated and linked to the evidence register.
+Hannah's portfolio includes her authority brief, method note, role analysis, triage, verification evidence, the exception, reports and rehearsal records. Each item shows a different competence: the brief shows working within authority, the method note shows planning, the analyses show technical skill, the verification evidence shows care, and the reports show communication. Hannah arranges the portfolio in the order of the work, so assessors can follow the project from start to finish. Each item is dated and linked to the evidence register. The course moved from foundations and context, through authority and methods, to tools, workflow, verification, case analysis, communication, quality, rehearsal and portfolio. Each step used evidence from the previous one.
 
 ### 12.2 Assessment
 
@@ -889,41 +775,17 @@ Hannah notes her strength in careful verification and her growth in stakeholder 
 
 ### 12.4 Next steps
 
-She plans to extend role reviews to the council's other cloud services. Elmstead runs other services on the same cloud platform, and their roles have probably grown in the same way as the permit service's. Hannah proposes starting with the service that holds the most sensitive data, using the method note and the quarterly review routine. Dev agrees to include the proposal in the platform team's plan for the next year. She also plans to share the method with the digital team so they can run reviews themselves.
+She plans to extend role reviews to the council's other cloud services. Elmstead runs other services on the same cloud platform, and their roles have probably grown in the same way as the permit service's. Hannah proposes starting with the service that holds the most sensitive data, using the method note and the quarterly review routine. Dev agrees to include the proposal in the platform team's plan for the next year. She also plans to share the method with the digital team so they can run reviews themselves. Hannah will keep the quarterly role reviews and weekly triage, track Kubernetes release notes for changes to security features, and revisit the CIS Benchmark when new versions appear.
 
 ### 12.5 Closing the audit
 
-The reporting rebuild closes after two weeks; audit closes both findings. Once the library was updated, the reporting image was rebuilt and scanned again, and the exception was closed. Audit received the final evidence and closed both findings within the three-month target agreed at the start. Hannah records the closure in her portfolio and in the final fortnightly update, so every stakeholder knows the project is complete. Dev thanks the digital team and the parking team for their patience during changes, and the quarterly role review and weekly triage continue as normal work.
+The reporting rebuild closes after two weeks; audit closes both findings. Once the library was updated, the reporting image was rebuilt and scanned again, and the exception was closed. Audit received the final evidence and closed both findings within the three-month target agreed at the start. Hannah records the closure in her portfolio and in the final fortnightly update, so every stakeholder knows the project is complete. Dev thanks the digital team and the parking team for their patience during changes, and the quarterly role review and weekly triage continue as normal work. All work stayed within written authority, using synthetic data for the course labs and read-only access for evidence. She thanks Dev, the digital team and audit. Hannah begins her new cloud security role, starting with housing, with the method, the evidence habits and a team that trusts the process.
 
 ### Assessor feedback
 
 The assessors note that Hannah's portfolio links every claim to evidence and that her exception for the reporting rebuild shows honest judgement rather than forcing a closure. They suggest she write a short guide for other councils, anonymised, as a contribution to the profession.
 
 Dev's feedback highlights that the stakeholder meetings prevented resistance and that the digital team now asks Hannah for advice before adding permissions.
-
-### Course review
-
-The course moved from foundations and context, through authority and methods, to tools, workflow, verification, case analysis, communication, quality, rehearsal and portfolio. Each step used evidence from the previous one.
-
-### Continuing practice
-
-Hannah will keep the quarterly role reviews and weekly triage, track Kubernetes release notes for changes to security features, and revisit the CIS Benchmark when new versions appear.
-
-### Boundaries
-
-All work stayed within written authority, using synthetic data for the course labs and read-only access for evidence.
-
-### Thanks
-
-She thanks Dev, the digital team and audit.
-
-### Final note
-
-Hannah begins her new cloud security role with the method, the evidence habits and a team that trusts the process.
-
-### Next
-
-She starts with housing.
 
 ### Worked example
 
