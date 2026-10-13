@@ -56,14 +56,14 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 18. [Métodos de investigación I](#ch-18)
 19. [Infraestructura crítica y seguridad sectorial: alcance y teoría](#ch-19)
 20. [Infraestructura crítica y seguridad sectorial: casos fundacionales](#ch-20)
-21. [Infraestructura crítica y seguridad sectorial: modelos de sistemas](../../en/book/MANUSCRIPT.md#ch-21)
-22. [Infraestructura crítica y seguridad sectorial: datos y dependencias](../../en/book/MANUSCRIPT.md#ch-22)
-23. [Infraestructura crítica y seguridad sectorial: métodos I](../../en/book/MANUSCRIPT.md#ch-23)
-24. [Infraestructura crítica y seguridad sectorial: controles](../../en/book/MANUSCRIPT.md#ch-24)
-25. [Laboratorio I](../../en/book/MANUSCRIPT.md#ch-25)
-26. [Infraestructura crítica y seguridad sectorial: métodos II](../../en/book/MANUSCRIPT.md#ch-26)
-27. [Infraestructura crítica y seguridad sectorial: verificación](../../en/book/MANUSCRIPT.md#ch-27)
-28. [Infraestructura crítica y seguridad sectorial: análisis de fallas](../../en/book/MANUSCRIPT.md#ch-28)
+21. [Infraestructura crítica y seguridad sectorial: modelos de sistemas](#ch-21)
+22. [Infraestructura crítica y seguridad sectorial: datos y dependencias](#ch-22)
+23. [Infraestructura crítica y seguridad sectorial: métodos I](#ch-23)
+24. [Infraestructura crítica y seguridad sectorial: controles](#ch-24)
+25. [Laboratorio I](#ch-25)
+26. [Infraestructura crítica y seguridad sectorial: métodos II](#ch-26)
+27. [Infraestructura crítica y seguridad sectorial: verificación](#ch-27)
+28. [Infraestructura crítica y seguridad sectorial: análisis de fallas](#ch-28)
 29. [Infraestructura crítica y seguridad sectorial: operaciones](../../en/book/MANUSCRIPT.md#ch-29)
 30. [Laboratorio II](../../en/book/MANUSCRIPT.md#ch-30)
 31. [Infraestructura crítica y seguridad sectorial: casos avanzados](../../en/book/MANUSCRIPT.md#ch-31)
@@ -1563,7 +1563,566 @@ Los casos fundacionales del campo enseñan mediante la comparación: respaldo ma
 <!-- cyberabc:chapter-navigation:start ch-20 -->
 ### Siga estudiando — capítulo 20 de 40
 
-[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](../../en/book/MANUSCRIPT.md#ch-21)
+[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Infraestructura crítica y seguridad sectorial: modelos de sistemas
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) describir un lazo de control y los componentes de un sistema SCADA o de control industrial; (2) situar los activos en un modelo de referencia por capas, desde los dispositivos de campo hasta la empresa; (3) modelar un servicio como una cadena de funciones con modos degradados; y (4) indicar a qué tipos de ataque o falla está expuesta cada parte del modelo. Se apoya en los capítulos 7, 16 y 19 y prepara el capítulo 22 (datos y dependencias) y el capítulo 28 (análisis de fallas).
+
+### 21.1 El lazo de control
+
+Todo proceso físico controlado por computadoras sigue un lazo: un **sensor** mide (nivel de un depósito, corriente de una línea, posición de un tren); un **controlador** compara la medición con un **punto de consigna** y calcula una acción; un **actuador** actúa (velocidad de una bomba, disparo de un interruptor, aspecto de una señal); el proceso responde; el sensor vuelve a medir. Los **controladores lógicos programables** (PLC) y las **unidades terminales remotas** (RTU) ejecutan el lazo localmente. Un sistema **SCADA** (supervisión, control y adquisición de datos) supervisa muchos lazos en un área extensa: recoge mediciones, las muestra a los operadores en **interfaces hombre-máquina** (HMI), almacena el histórico en un **historiador** y envía puntos de consigna y órdenes. Los **sistemas instrumentados de seguridad** (SIS) vigilan las condiciones peligrosas y actúan de forma independiente para llevar el proceso a un estado seguro ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)).
+
+El lazo ofrece un vocabulario preciso para lo que puede fallar: **mediciones** falsas (el controlador actúa sobre una mentira), **órdenes** falsas (el actuador hace algo no previsto), pérdida de **vista** (los operadores no pueden ver), pérdida de **control** (los operadores no pueden actuar) y compromiso de la **protección** (el SIS no puede actuar). MITRE ATT&CK for ICS organiza los impactos en términos similares, como pérdida de vista, pérdida de control y manipulación del control ([ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)).
+
+### 21.2 Un modelo de referencia por capas
+
+Un modelo por capas, ampliamente conocido como modelo Purdue, sitúa los activos según su función: nivel 0, el proceso físico con sensores y actuadores; nivel 1, el control básico (PLC, RTU, SIS); nivel 2, el control de supervisión (HMI, SCADA local); nivel 3, las operaciones del emplazamiento (historiadores, estaciones de ingeniería); una DMZ; y los niveles 4–5, la TI corporativa. El modelo es una ayuda para la enseñanza y la segmentación, no una ley de la naturaleza: los sensores conectados a la nube, los servicios remotos de los proveedores y los dispositivos de campo inalámbricos cruzan niveles. Úselo para preguntar: «¿qué rutas cruzan niveles y están controladas?».
+
+### 21.3 Cadenas de servicio y modos degradados
+
+A los operadores les importan los servicios, no los niveles. Modele un servicio como una cadena de funciones con **modos degradados**: el servicio «suministrar agua segura» de Calder Water = captar agua bruta → tratar → vigilar la calidad → almacenar → bombear → distribuir. Cada función tiene estados normal, degradado y fallido. «Vigilar la calidad» degradado podría significar muestreo manual cada hora en lugar de analizadores continuos; «bombear» degradado podría significar control local por parte del personal en la estación sin SCADA. Un modelo de servicio que incluye los modos degradados muestra cuánto tiempo puede continuar el servicio cuando se pierde la automatización, la pregunta que respondieron los operadores ucranianos en 2015 (capítulo 20).
+
+### 21.4 Ejemplo resuelto: restablecimiento de un alimentador de CPN (sintético)
+
+**Este caso es sintético.** El servicio «restablecer el suministro tras una falla en un alimentador» de Calder Power Networks: un relé de protección dispara la sección en falla (nivel 1, independiente del SCADA); la RTU informa del disparo (nivel 1→2); el operador lo ve en la HMI (nivel 2) y realiza un reenganche remoto o reconfigura (nivel 2→1); se informa a los clientes mediante el sistema de gestión de cortes (nivel 4). Análisis de fallas por elemento: si falla el relé, la falla persiste, un problema de seguridad; si falla el enlace de la RTU, los operadores pierden la vista de ese alimentador, modo degradado: enviar una cuadrilla; si la HMI está comprometida, un estado falso podría llevar a los operadores a energizar una línea en la que trabajan cuadrillas, un problema de seguridad que los procedimientos (bloqueos, permisos, confirmación verbal) deben detectar; si falla el sistema de gestión de cortes, no se informa a los clientes, un problema de calidad del servicio. El modelo muestra que las consecuencias más graves se sitúan donde la manipulación cibernética se encuentra con los procedimientos de seguridad de las personas.
+
+### 21.5 Actividad práctica
+
+Dibuje el lazo de control y el modelo por capas de un servicio de Calder distinto del agua o la electricidad (señalización ferroviaria o ventilación de quirófanos). Etiquete cada componente con su nivel, cuál de vista/control/protección respalda y un modo degradado.
+
+Para la ventilación de quirófanos, el sensor podría ser un sensor de presión en conducto o de renovaciones de aire en el nivel 0, el controlador del BMS en el nivel 1, la estación de trabajo de mantenimiento de instalaciones en el nivel 2 y el servidor del BMS en el nivel 3. Un modo degradado es el control manual local de las unidades de tratamiento de aire. Marque qué componente respalda la vista, el control o la protección; un enclavamiento cableado de caudal mínimo de aire, si existe, es protección.
+
+### 21.6 Errores comunes y límites
+
+- Tratar el modelo por capas como una descripción del tráfico real.
+- Ignorar los sistemas de seguridad o suponer que siempre son independientes.
+- Modelar los activos sin el servicio que respaldan.
+- Suponer que la pérdida del SCADA significa la pérdida del servicio.
+
+El modelo del alimentador de CPN muestra los dos primeros: el relé se sitúa en el nivel 1 y actúa sin SCADA, pero si estuviera conectado en red con la HMI su independencia necesitaría evidencia. El tercer error enumeraría las RTU sin decir que sirven al restablecimiento de alimentadores. El cuarto ignora el modo degradado de enviar una cuadrilla cuando falla el enlace de una RTU.
+
+### Ejercicios — capítulo 21
+
+**EX041 — Nombre la pérdida.** *Objetivo:* usar el vocabulario del lazo. *Entradas:* (a) una caída del historiador; (b) una HMI que muestra valores congelados; (c) un punto de consigna falsificado aceptado por un PLC; (d) un disparo del SIS deshabilitado. *Pasos:* clasifique cada uno como pérdida de vista, pérdida de control, manipulación o pérdida de protección, e indique el riesgo inmediato. *Evidencia esperada:* cuatro clasificaciones. *Rúbrica:* 3 = (a) pérdida de la vista histórica, riesgo inmediato bajo; (b) pérdida de vista, peligrosa porque los operadores pueden actuar con datos obsoletos; (c) manipulación del control; (d) pérdida de protección, máxima gravedad; 2 = una errónea; 1 = dos erróneas; 0 = nada.
+
+**EX042 — Modos degradados.** *Objetivo:* modelar la continuidad sin automatización. *Entradas:* el servicio «operar un servicio ferroviario seguro» de Calder Transit. *Pasos:* escriba la cadena de funciones y un modo degradado para tres funciones, con la restricción que impone cada uno (p. ej., menor frecuencia). *Evidencia esperada:* cadena y modos. *Rúbrica:* 3 = cadena razonable (señalización, control de trenes, comunicación con la tripulación, información a los pasajeros, venta de billetes) con modos degradados y restricciones realistas; 2 = cadena sin restricciones; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Los sistemas de control son lazos de medición, decisión y actuación, supervisados por el SCADA y protegidos por sistemas de seguridad independientes. Los modelos por capas ayudan a la segmentación; las cadenas de servicio con modos degradados muestran cuánto tiempo puede sobrevivir un servicio sin automatización. Las peores consecuencias surgen donde la manipulación se encuentra con la seguridad y el procedimiento humano.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Siga estudiando — capítulo 21 de 40
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Infraestructura crítica y seguridad sectorial: datos y dependencias
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) construir y mantener un inventario de activos y dependencias a partir de varias fuentes imperfectas; (2) añadir el tiempo a un modelo de dependencias mediante la autonomía de los respaldos; (3) calcular qué servicios se pierden en cortes de distinta duración e identificar los eslabones débiles; y (4) indicar los límites de calidad de los datos de estos modelos. Se apoya en los capítulos 6, 9 y 21 y prepara el capítulo 23 (métodos de riesgo) y el capítulo 28 (análisis de fallas).
+
+### 22.1 El inventario es evidencia, no una lista
+
+Ninguna organización sabe exactamente lo que tiene. Los datos de activos proceden de los registros de compras, las observaciones de la red, las bases de datos de configuración, la documentación de los proveedores y los recorridos por el emplazamiento; a cada fuente se le escapa algo. Trate el inventario como evidencia con fuentes y fechas (capítulo 15): para cada activo, registre quién lo confirmó y cuándo. La observación **pasiva** de la red encuentra los dispositivos que se comunican; se le escapan los inactivos y los de comunicación serie. El escaneo **activo** encuentra más, pero puede perturbar dispositivos de TO frágiles y solo debe realizarse con autorización y con el acuerdo de operaciones (capítulo 10). Las dependencias son aún más difíciles: viven en la cabeza de las personas, en los contratos y en hábitos no escritos.
+
+### 22.2 Tipos de dependencia
+
+Rinaldi y sus colegas distinguen interdependencias **físicas** (electricidad para las bombas), **cibernéticas** (telemetría sobre telecomunicaciones), **geográficas** (cables en la misma zanja) y **lógicas** (vínculos financieros o regulatorios) ([Rinaldi et al., 2001](https://doi.org/10.1109/37.969131)). Añada las **personas** (un único ingeniero que conoce el sistema heredado) y los **proveedores** (un único proveedor de CAD, una región de la nube). El grafo del capítulo 6 mostraba *qué puede verse afectado*; el tiempo lo convierte en *qué se perderá y cuándo*. Cada servicio tiene **autonomía**: cuánto tiempo continúa con su propio respaldo (baterías, generadores y combustible, agua almacenada, procesos en papel).
+
+### 22.3 Ejemplo resuelto y Lab 9 (sintético)
+
+**Este caso es sintético.** La CRP recopiló la autonomía de los respaldos de los servicios clave durante un corte de la red eléctrica regional. Los pagos con tarjeta dependen de la central telefónica A, que solo tiene baterías; la central B también tiene un generador.
+
+```python
+# Lab 9 - which services survive a grid outage of a given length? (synthetic backup autonomy, offline)
+AUTONOMY_H = {  # hours each service keeps running on its own backup
+    "hospital (generator, fuel on site)": 72, "telecom exchange A (batteries)": 4,
+    "telecom exchange B (batteries + generator)": 48, "water pumps (no generator)": 0,
+    "water treated storage": 10, "dispatch centre (UPS + generator)": 24,
+    "card payments (relies on telecom)": None, "rail signalling (UPS)": 2,
+}
+for outage in (1, 6, 30):
+    down = []
+    for s, h in AUTONOMY_H.items():
+        if h is None:   # dependent service: fails when 4-h exchange A fails
+            h = AUTONOMY_H["telecom exchange A (batteries)"]
+        if h < outage: down.append(s.split(" (")[0])
+    print(f"outage {outage:>2} h -> {len(down)} services lost: {', '.join(down) or 'none'}")
+```
+
+Salida esperada:
+
+```text
+outage  1 h -> 1 services lost: water pumps
+outage  6 h -> 4 services lost: telecom exchange A, water pumps, card payments, rail signalling
+outage 30 h -> 6 services lost: telecom exchange A, water pumps, water treated storage, dispatch centre, card payments, rail signalling
+```
+
+Interpretación: las autonomías más cortas marcan el inicio de la historia: las bombas se detienen de inmediato (los clientes siguen recibiendo agua almacenada durante unas 10 horas), la señalización ferroviaria se detiene a las 2 horas y los pagos con tarjeta fallan a las 4 horas porque la central A no tiene generador. A las 30 horas se pierden el suministro de agua y el despacho. Las 72 horas del hospital parecen tranquilizadoras, pero su agua llega de un almacenamiento que dura 10 horas: un edificio puede tener electricidad y aun así ser inutilizable. El modelo es tosco, ya que ignora las dependencias de los propios respaldos (¿quién reabastece el generador del centro de despacho después de 24 horas, y por qué carreteras?), pero ya identifica tres preguntas baratas: ¿puede la central A tener un generador?; ¿pueden las bombas de agua tener un punto de conexión para un generador móvil?; y ¿qué acuerdos de suministro de combustible existen entre los operadores?
+
+### 22.4 Calidad de los datos
+
+Cada número anterior es una afirmación de un operador. La autonomía de un generador depende del combustible que realmente hay en el depósito, de la fiabilidad del arranque (capítulo 12, EX024) y de la carga. La autonomía de las baterías se degrada con la edad. Registre la evidencia que respalda cada autonomía (una prueba, una cifra de diseño, una estimación) y ejecute el modelo con valores pesimistas. Un modelo de dependencias solo es tan bueno como su número menos comprobado. En el Lab 9, reducir a la mitad todas las autonomías (EX043) hace que el almacenamiento de agua tratada pase a la lista de pérdidas a las 6 horas. Para el generador del CEDC, la evidencia sería la fecha de la última prueba de carga y el nivel de combustible el día de la inspección.
+
+### 22.5 Errores comunes y límites
+
+- Tratar una fuente de inventario como completa.
+- Registrar dependencias sin tiempo.
+- Tomar cifras de autonomía de los documentos de diseño sin pruebas.
+- Olvidar las dependencias de segundo orden de los respaldos (combustible, personal, carreteras).
+- Escanear activamente la TO sin autorización ni acuerdo operativo.
+
+El Lab 9 ilustra los tres primeros: una autonomía de diseño de 72 horas para el hospital supone un depósito lleno, y las 4 horas de la central A suponen baterías en buen estado. El cuarto es la pregunta de reabastecimiento que hay detrás de las 24 horas del centro de despacho. El quinto explica por qué el inventario de la CRP se basó en la observación pasiva y en las declaraciones de los operadores en lugar de en el escaneo.
+
+### Ejercicios — capítulo 22
+
+**EX043 — Corrija el eslabón débil.** *Objetivo:* probar una intervención. *Entradas:* el Lab 9. *Pasos:* dé a los pagos con tarjeta la autonomía de la central B (48 h) y vuelva a ejecutar. Después reduzca a la mitad todas las autonomías (caso pesimista) y vuelva a ejecutar para 6 h. Informe de ambos resultados y formule una recomendación. *Evidencia esperada:* dos salidas y una recomendación. *Rúbrica:* 3 = los pagos con tarjeta sobreviven hasta las 48 h en la primera ejecución; la ejecución pesimista de 6 h pierde la central telefónica A, las bombas de agua, el almacenamiento de agua tratada, los pagos con tarjeta y la señalización ferroviaria (5 servicios); la recomendación aborda la evidencia de las cifras de autonomía; 2 = ejecuciones sin recomendación; 1 = una ejecución; 0 = nada.
+
+**EX044 — Dependencias de segundo orden.** *Objetivo:* mirar detrás de los respaldos. *Entradas:* el generador de 24 horas del centro de despacho. *Pasos:* enumere cuatro dependencias de ese propio respaldo y una forma de evidenciar cada una. *Evidencia esperada:* lista. *Rúbrica:* 3 = contrato de suministro de combustible y ruta de entrega, personal para operarlo y reabastecerlo, fiabilidad del arranque del generador (registros de pruebas), refrigeración/ventilación o aparamenta; cada una con evidencia; 2 = tres; 1 = una o dos; 0 = nada.
+
+### Síntesis del capítulo
+
+Los inventarios y los mapas de dependencias son evidencia con fuentes, fechas y lagunas. Añadir el tiempo (la autonomía de los respaldos) convierte la exposición en una cronología de pérdidas, pone de manifiesto eslabones débiles como una central solo con baterías y revela que un edificio con electricidad puede seguir siendo inutilizable. Ponga a prueba las afirmaciones de autonomía y mire detrás de cada respaldo hacia sus propias dependencias.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Siga estudiando — capítulo 22 de 40
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Infraestructura crítica y seguridad sectorial: métodos I
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) realizar una evaluación de riesgos estructurada siguiendo las etapas de NIST SP 800-30; (2) explicar las debilidades de las matrices de riesgo; (3) aplicar un enfoque centrado primero en las consecuencias que parte de los peores efectos sobre el servicio; y (4) comparar ambos enfoques en un caso e indicar cuándo es adecuado cada uno. Se apoya en los capítulos 1, 12, 15 y 19–22 y prepara el capítulo 24 (controles) y el capítulo 26 (métodos II).
+
+### 23.1 Una evaluación de riesgos estructurada
+
+NIST SP 800-30 describe la evaluación de riesgos por etapas: **preparar** (propósito, alcance, supuestos, fuentes); **realizar** (identificar las fuentes y los eventos de amenaza, las vulnerabilidades y las condiciones predisponentes, determinar la probabilidad y el impacto, determinar el riesgo); **comunicar** los resultados; y **mantener** la evaluación a medida que cambian las cosas ([SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final)). La fortaleza del método es la disciplina: le obliga a dejar por escrito el alcance y los supuestos, y a indicar de dónde procede cada juicio. Sus resultados suelen ser calificaciones cualitativas (de muy bajo a muy alto) en escalas que define la organización.
+
+### 23.2 El problema de las matrices
+
+Muchas organizaciones combinan las calificaciones de probabilidad e impacto en una **matriz de riesgo** de 5×5. Las matrices son fáciles de comunicar, pero tienen problemas conocidos. Las etiquetas ordinales («3 = posible») se multiplican como si fueran números. Riesgos muy distintos reciben la misma celda. Los eventos raros y catastróficos acaban en el mismo color que los frecuentes y menores. Las calificaciones dependen mucho de quién esté en la sala. El hábito del capítulo 1 ayuda: siempre que sea posible, ponga cantidades aproximadas detrás de las etiquetas (un intervalo de probabilidad anual, una duración de la interrupción, un daño) y muestre la peor consecuencia creíble por separado de la calificación.
+
+### 23.3 Primero las consecuencias
+
+En los servicios críticos, la probabilidad suele ser el dato menos conocible: los adversarios se adaptan y los eventos que más importan son raros. Un enfoque **centrado primero en las consecuencias** parte del otro extremo: identifique los resultados que no deben ocurrir (pérdida del suministro de agua al hospital durante más de 8 horas; dosificación de cloro sin control), rastree qué funciones y sistemas podrían causarlos y pregúntese qué necesitaría lograr un adversario o una falla para provocar cada uno. La **Consequence-driven Cyber-informed Engineering** (CCE) del Idaho National Laboratory formaliza esto: identificar los eventos de alta consecuencia, cartografiar los sistemas implicados, iluminar las rutas que seguiría un adversario y mitigar, preferiblemente con cambios de ingeniería que eliminen la posibilidad en lugar de detectarla ([INL CCE](https://inl.gov/national-security/cce/)). ISA/IEC 62443-3-2 también basa su evaluación de riesgos para el diseño de sistemas en zonas, conductos y consecuencias ([página del catálogo de IEC 62443-3-2](https://webstore.iec.ch/en/publication/30727)).
+
+### 23.4 Ejemplo resuelto: dosificación de cloro en CW (sintético)
+
+**Este caso es sintético.** *Visión de la matriz de riesgo:* la amenaza «cambio no autorizado del punto de consigna de dosificación de cloro» se califica con probabilidad 2 (improbable) e impacto 5 (grave) = 10, ámbar. El registro dice «vigilar». *Visión centrada primero en las consecuencias:* el resultado inaceptable es «agua que sale de la planta con cloro fuera de los límites seguros durante el tiempo suficiente para dañar a los clientes». Rutas: un cambio del punto de consigna desde la HMI (error del operador o compromiso); una orden falsificada al PLC de dosificación a través de la red de control; un sensor que informa de un cloro residual falso de modo que el controlador sobredosifica; un portátil de un proveedor conectado al PLC. Mitigaciones de ingeniería que no dependen de detectar al atacante: un caudal máximo cableado de la bomba dosificadora; un analizador independiente de cloro residual en la salida que dispara la válvula de salida mediante un circuito separado; un interruptor de llave físico para el modo de programación del PLC. La matriz decía «vigilar»; el análisis de consecuencias produjo tres cambios concretos, uno de los cuales (el límite físico) elimina el resultado más peligroso independientemente de cómo haya entrado el atacante.
+
+### 23.5 Actividad práctica
+
+Tome la señalización del tren ligero de Calder Transit. Escriba una consecuencia inaceptable, tres rutas hacia ella (al menos una no maliciosa) y una mitigación de ingeniería que elimine o acote la consecuencia. Después califique el mismo escenario en una matriz de 5×5 y compare lo que le dijo cada enfoque.
+
+Para la señalización, una consecuencia inaceptable podría ser «dos trenes autorizados a entrar en el mismo cantón». Las rutas incluyen una configuración corrupta del enclavamiento tras un mantenimiento (no maliciosa), una orden falsificada desde una estación de control comprometida y un circuito de vía averiado que se interpreta erróneamente como libre. Una mitigación de ingeniería es la propia lógica de seguridad del enclavamiento, independiente de la estación de control. En una matriz de 5×5, el mismo escenario puede puntuar 5 en impacto y 1 en probabilidad, lo que da una celda que lo infravalora.
+
+### 23.6 Errores comunes y límites
+
+- Multiplicar etiquetas ordinales como si fueran mediciones.
+- Calificar la probabilidad de acciones adversarias novedosas con falsa confianza.
+- Tratar «vigilar» como una mitigación.
+- Un análisis centrado primero en las consecuencias que solo enumera consecuencias y nunca cartografía rutas ni mitigaciones.
+- Ignorar las rutas no maliciosas hacia la misma consecuencia.
+
+El ejemplo del cloro muestra directamente el tercer error: el resultado «vigilar» de la matriz dejaba posible el resultado peligroso. El primer error produjo su puntuación de 10. El análisis de consecuencias evitó el cuarto al nombrar rutas y mitigaciones, y el quinto al incluir el error del operador y las lecturas falsas de los sensores como rutas junto al compromiso.
+
+### Ejercicios — capítulo 23
+
+**EX045 — Misma celda, riesgo distinto.** *Objetivo:* poner de manifiesto los límites de la matriz. *Entradas:* riesgo A: probabilidad 5, impacto 2 (cortes molestos diarios de la wifi del personal); riesgo B: probabilidad 2, impacto 5 (pérdida de la ventilación de los quirófanos del CVH). *Pasos:* calcule ambas puntuaciones de la matriz, explique por qué la igualdad de puntuación induce a error y proponga cómo presentarlos en su lugar. *Evidencia esperada:* puntuaciones y explicación. *Rúbrica:* 3 = ambas 10; explica el mal uso de las escalas ordinales y la distinta naturaleza del daño; propone una columna separada de peor consecuencia creíble o intervalos cuantitativos; 2 = parcial; 1 = solo las puntuaciones; 0 = nada.
+
+**EX046 — Primero las consecuencias.** *Objetivo:* aplicar el método. *Entradas:* el conmutador de pagos de Calder Mutual. *Pasos:* defina una consecuencia inaceptable, cartografíe tres rutas y dé una mitigación de ingeniería y una procedimental. *Evidencia esperada:* el análisis. *Rúbrica:* 3 = consecuencia específica (p. ej., transferencias fraudulentas de alto valor liberadas, o pagos no disponibles > 4 h el día de pago de las nóminas), rutas plausibles que incluyen a personas internas o errores, mitigación de ingeniería (límites estrictos por transacción, confirmación fuera de banda) y una procedimental; 2 = genérico; 1 = solo la consecuencia; 0 = nada.
+
+### Síntesis del capítulo
+
+La evaluación de riesgos estructurada aporta disciplina al alcance, los supuestos y el juicio; las matrices de riesgo simplifican la comunicación pero distorsionan las comparaciones. Los métodos centrados primero en las consecuencias, como la CCE, parten de lo que no debe ocurrir y favorecen mitigaciones de ingeniería que acotan el daño independientemente del atacante. Use ambos e indique cuál impulsa cada recomendación.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Siga estudiando — capítulo 23 de 40
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Infraestructura crítica y seguridad sectorial: controles
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) usar un marco (NIST CSF 2.0, el CAF del Reino Unido u objetivos sectoriales) para organizar los controles; (2) clasificar los controles por tipo (preventivo, detectivo, correctivo) y por naturaleza (técnica, procedimental, física, de ingeniería); (3) relacionar los controles con los escenarios y las técnicas que abordan y encontrar lagunas; y (4) elegir controles adecuados a las restricciones de la TO. Se apoya en los capítulos 16 y 23 y prepara el Laboratorio I (capítulo 25) y el capítulo 27 (verificación).
+
+### 24.1 Los marcos como organizadores
+
+Un **marco** organiza los resultados para que no se olvide nada importante. El Cybersecurity Framework 2.0 del NIST agrupa los resultados en seis funciones: Gobernar, Identificar, Proteger, Detectar, Responder y Recuperar ([NIST CSF 2.0](https://www.nist.gov/cyberframework)). El CAF del Reino Unido expresa resultados e indicadores de buenas prácticas para los operadores de servicios esenciales ([NCSC CAF](https://www.ncsc.gov.uk/collection/caf)). También existen objetivos sectoriales; por ejemplo, los objetivos de desempeño en ciberseguridad sanitaria del Departamento de Salud y Servicios Humanos de EE. UU. ([HHS HPH CPGs](https://hphcyber.hhs.gov/performance-goals.html)). Los catálogos detallados de controles, como NIST SP 800-53, enumeran controles específicos ([SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)). Los marcos le dicen *qué resultados* alcanzar; no le dicen qué riesgo importa más para su servicio, eso procede del capítulo 23.
+
+### 24.2 Tipos de control
+
+Los controles **preventivos** detienen un evento (lista de permitidos, autenticación, un límite cableado). Los controles **detectivos** lo advierten (supervisión, comprobaciones de integridad, alarmas). Los controles **correctivos** o **de recuperación** restablecen el servicio (copias de seguridad, procedimientos manuales, equipos de repuesto). Por su naturaleza, los controles son **técnicos**, **procedimentales** (aprobación por dos personas, gestión de cambios), **físicos** (armarios cerrados con llave, interruptores de llave) o **de ingeniería** (diseños que hacen imposible un estado dañino, como una bomba dimensionada de modo que no pueda sobredosificar). En la TO, los controles de ingeniería y físicos suelen ser los más fiables, porque siguen funcionando cuando las computadoras están comprometidas.
+
+### 24.3 Correspondencias y lagunas
+
+Un control solo tiene valor frente a algo. Construya una **correspondencia** entre los escenarios (o técnicas catalogadas, por ejemplo de [ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)) y los controles, marcando cada control como preventivo, detectivo o correctivo. Las lagunas aparecen como escenarios con solo controles detectivos (lo sabrá, pero no lo detendrá), sin ningún control correctivo (no podrá recuperarse) o cubiertos solo por controles que comparten un punto único de falla (el modo común del capítulo 16). La correspondencia también pone de manifiesto los **controles huérfanos**, que no abordan nada de su lista: candidatos a revisión.
+
+### 24.4 Restricciones de la TO
+
+Algunos controles habituales en TI son arriesgados o imposibles en TO: los agentes de *endpoint* que consumen recursos del controlador, la aplicación automática de parches, el escaneo activo, el bloqueo de cuentas en una HMI de operador durante una emergencia (bloquear al operador puede ser más peligroso que el atacante). Las alternativas incluyen la supervisión pasiva de la red, la lista de permitidos de aplicaciones en estaciones de trabajo estables, los diodos de datos de solo lectura para flujos unidireccionales, los interruptores de llave físicos para los modos de programación y los controles procedimentales vinculados al registro de turno del operador. El mapa del BMS del CVH los aplica: supervisión pasiva de la VLAN del BMS en lugar de agentes en el controlador, y un enclavamiento cableado de caudal mínimo de aire para la ventilación de los quirófanos en lugar de depender del bloqueo o de los parches.
+
+### 24.5 Ejemplo resuelto: mapa de controles del BMS del CVH (sintético)
+
+**Este caso es sintético.**
+
+| Escenario | Preventivo | Detectivo | Correctivo | Laguna |
+|---|---|---|---|---|
+| Compromiso remoto del BMS a través de la red corporativa | Lista de permitidos del cortafuegos hacia el servidor del BMS; MFA para la administración del BMS | Supervisión pasiva de la VLAN del BMS | Control manual local de las unidades de tratamiento de aire | Ninguna evidente; verificar el simulacro de control manual |
+| Cambio malicioso o erróneo de los puntos de consigna de la ventilación de quirófanos | Derechos de cambio basados en roles | Alarma por renovaciones de aire fuera de rango | La guardia de mantenimiento de instalaciones restablece los puntos de consigna | Ningún límite independiente: añadir un enclavamiento cableado de caudal mínimo de aire |
+| Portátil de un proveedor en el controlador del BMS | Armarios cerrados con llave; acompañamiento del proveedor | — | Restaurar la configuración del controlador desde la copia de seguridad | Sin detección; copia de seguridad de la configuración no probada |
+
+El mapa convierte un vago «el BMS es un riesgo» en dos acciones concretas: un enclavamiento de ingeniería y una restauración de la configuración probada.
+
+### 24.6 Errores comunes y límites
+
+- Tratar el cumplimiento de un marco como reducción del riesgo.
+- Contar controles en lugar de relacionarlos con escenarios.
+- Depender únicamente de la detección para consecuencias que requieren prevención.
+- Importar controles de TI a la TO sin considerar la seguridad operativa.
+
+El mapa del BMS del CVH evita cada uno: no cuenta controles, los relaciona con tres escenarios, añade un enclavamiento de ingeniería donde solo existía detección y rechaza controles de TI como la aplicación automática de parches al controlador del BMS. Una puntuación del marco de «Proteger: implementado» no le habría dicho nada al hospital sobre el caudal de aire de los quirófanos.
+
+### Ejercicios — capítulo 24
+
+**EX047 — Clasifique los controles.** *Objetivo:* usar el tipo y la naturaleza. *Entradas:* copias de seguridad fuera de línea; aprobación de pagos por dos personas; analizador de cloro en la salida que dispara una válvula; alerta del SIEM ante nuevas cuentas de administrador; interruptor de llave para la programación del PLC. *Pasos:* clasifique cada uno por tipo y naturaleza. *Evidencia esperada:* tabla. *Rúbrica:* 3 = copias de seguridad correctivo/técnico; aprobación por dos personas preventivo/procedimental; disparo del analizador preventivo (limita la consecuencia)/de ingeniería; alerta del SIEM detectivo/técnico; interruptor de llave preventivo/físico; 2 = un error; 1 = dos errores; 0 = nada.
+
+**EX048 — Encuentre la laguna.** *Objetivo:* relacionar y juzgar. *Entradas:* la tabla del CVH. *Pasos:* añada un escenario (ransomware en el servidor del BMS) con controles en cada columna, después nombre la mejora más valiosa y justifíquela. *Evidencia esperada:* fila y justificación. *Rúbrica:* 3 = controles plausibles que incluyen una restauración probada y el control manual local; mejora justificada por la consecuencia; 2 = fila sin justificación; 1 = fila incompleta; 0 = nada.
+
+### Síntesis del capítulo
+
+Los marcos organizan los resultados; el análisis de riesgos decide las prioridades; las correspondencias conectan los controles con los escenarios que abordan y revelan lagunas. Prefiera combinaciones de prevención, detección y recuperación y, en la TO, favorezca los controles de ingeniería y físicos que siguen funcionando cuando las computadoras no lo hacen.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Siga estudiando — capítulo 24 de 40
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratorio I
+
+### Resultados de aprendizaje y conexión
+
+Después de este laboratorio usted podrá (1) combinar evidencias de inventario, flujos de red, vulnerabilidades y accesos en una única evaluación de un operador sintético; (2) registrar métodos, versiones y salidas para que otra persona pueda reproducir sus resultados; (3) separar hallazgos, interpretaciones y recomendaciones; y (4) evaluar su propio trabajo con una rúbrica. Integra los laboratorios 2, 4, 5 y 7 (capítulos 3, 7, 9 y 13) y los métodos de los capítulos 15, 23 y 24. Es el primer punto de control del proyecto del curso.
+
+### 25.1 Propósito y reglas
+
+Este laboratorio es una evaluación acotada de los operadores **sintéticos** de Calder que usa únicamente los laboratorios sin conexión del libro. Se aplican sus reglas de enfrentamiento (capítulo 10, actividad práctica): su propia computadora, sin acceso de red a sistemas reales, sin datos reales. La habilidad que se evalúa no es ejecutar código (esa es la parte fácil), sino **reunir la evidencia en un juicio defendible** y documentarlo para que otro estudiante pueda reproducirlo. Sus condiciones de parada también se aplican aquí: si algún script de laboratorio de Calder intenta acceder a la red, deténgase, registre el *hash* del script e infórmele a su tutor.
+
+### 25.2 La tarea
+
+Usted es becario de la County Resilience Partnership. Elabore una **nota de evaluación** de 1500 palabras que responda: «Considerando la evidencia disponible, ¿cuáles son las tres mejoras de seguridad de mayor prioridad para los operadores de Calder y qué confianza tenemos?». Use:
+
+1. **Lab 2** (inventario del CVH): dispositivos sin soporte y mal ubicados.
+2. **Lab 4** (flujos de CW): infracciones de la política de conductos.
+3. **Lab 5** (avisos de CPN): activos vulnerables, ordenados por explotación y exposición.
+4. **Lab 7** (revisión de accesos): cuentas huérfanas, inactivas, compartidas y tóxicas.
+
+La pregunta pide tres prioridades para cuatro operadores, lo que obliga a comparar: una infracción de conducto en CW y una vulnerabilidad de la pasarela de CPN deben clasificarse una frente a otra por su consecuencia, no presentarse en listas separadas.
+
+### 25.3 Método y reproducibilidad
+
+Registre para cada laboratorio: el nombre del archivo y un *hash* SHA-256 del script que ejecutó (`python3 -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())" lab05.py`), la versión de Python, la salida exacta y cualquier cambio que haya hecho. La reproducibilidad es evidencia: un lector que vuelve a ejecutar su script y obtiene la misma salida puede confiar en su sección de hallazgos sin tener que confiar en usted ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)). Si cambió la lista de versiones del Lab 5 para probar VPN-01 frente a otra versión con la corrección, el *hash* de su apéndice debe ser el de ese archivo editado, con el cambio indicado a su lado.
+
+### 25.4 Estructura de la nota
+
+1. **Resumen**: tres prioridades, una frase cada una, con el nivel de confianza (alto/medio/bajo) y su motivo.
+2. **Alcance y método**: qué se examinó, cómo y qué no.
+3. **Hallazgos**: solo hechos procedentes de las salidas (p. ej., «VPN-01 ejecuta la 9.1; la corrección es la 9.3; el aviso indica explotación»).
+4. **Análisis**: razonamiento centrado primero en las consecuencias (capítulo 23): qué hallazgos podrían conducir a los peores resultados y para qué servicio.
+5. **Recomendaciones**: cada una relacionada con hallazgos, con el tipo de control (capítulo 24) y un responsable.
+6. **Límites**: tamaño de la muestra, datos sintéticos, afirmaciones no verificadas.
+7. **Apéndice**: *hashes*, versiones, salidas.
+
+«VPN-01 ejecuta la 9.1; la corrección es la 9.3» pertenece a los hallazgos; «por tanto, el acceso remoto de CPN es la prioridad 1» pertenece al análisis, donde el razonamiento sobre las consecuencias puede cuestionarse por separado.
+
+### 25.5 Ejemplo resuelto: una prioridad, argumentada por completo (sintético)
+
+**Prioridad 1: actualizar y rediseñar el acceso remoto de CPN (confianza: alta).** *Hallazgo:* VPN-01 (expuesto a internet) ejecuta una versión anterior a la corrección de una vulnerabilidad crítica explotada (Lab 5). *Hallazgo:* el diseño original sitúa a los usuarios remotos directamente en la red de control (capítulo 16). *Análisis:* esta es la ruta más corta desde internet hasta el control de los alimentadores; la consecuencia es la pérdida de control de la distribución, el resultado más grave del modelo de servicio de CPN (capítulo 21). *Recomendación:* actualización de emergencia a la 9.3 (correctivo/técnico; responsable: jefe de infraestructura de CPN, esta semana) y, después, terminar el acceso remoto en un servidor de salto de la DMZ con aprobación del proveedor por sesión (preventivo/técnico y procedimental; responsable: seguridad de TO de CPN, el próximo trimestre). *Confianza:* alta, porque el hallazgo procede directamente de los datos de versión y del aviso, y la consecuencia se deriva de la arquitectura. *Límite:* el laboratorio no puede mostrar si la vulnerabilidad ya ha sido explotada; se recomienda una evaluación de compromiso de VPN-01.
+
+### 25.6 Rúbrica de evaluación
+
+| Criterio | 3 (sólido) | 2 | 1 | 0 |
+|---|---|---|---|---|
+| Uso de la evidencia | Todo hallazgo es trazable hasta una salida de laboratorio | Mayoritariamente trazable | Algunas afirmaciones sin respaldo | Sin evidencia |
+| Priorización | Primero las consecuencias, comparadas entre operadores | Razonada dentro de cada operador | Ordenada solo por etiquetas de gravedad | Ninguna |
+| Recomendaciones | Relacionadas con hallazgos, tipificadas, con responsable y fecha | Relacionadas, sin responsables | Genéricas | Ninguna |
+| Límites y confianza | Específicos y honestos | Genéricos | Simbólicos | Ausentes |
+| Reproducibilidad | *Hashes*, versiones, salidas | Solo salidas | Parcial | Ninguna |
+
+La rúbrica premia los mismos hábitos que la prioridad resuelta: cada hallazgo trazado hasta una salida, consecuencias comparadas entre operadores, responsables y fechas en las recomendaciones, límites honestos y un apéndice reproducible. Una nota que obtiene un 3 en evidencia pero un 1 en priorización ha enumerado hallazgos sin juzgarlos.
+
+### 25.7 Errores comunes y límites
+
+- Enumerar todos los hallazgos en lugar de priorizar.
+- Recomendaciones que no se derivan de ningún hallazgo.
+- Mezclar hechos e interpretaciones en la sección de hallazgos.
+- Afirmar una certeza que los datos sintéticos no pueden proporcionar.
+
+Una nota que enumera los seis flujos del Lab 4, los cinco dispositivos sin soporte y todas las cuentas del Lab 7 ha cometido el primer error. Recomendar MFA para CW sin un hallazgo sobre las cuentas de CW es el segundo. Escribir «la conexión RDP es un intruso» en los hallazgos es el tercero. Afirmar una confianza alta sobre la explotación en el mundo real a partir de datos sintéticos es el cuarto.
+
+### Ejercicios — capítulo 25
+
+**EX049 — Prioridades 2 y 3.** *Objetivo:* completar la evaluación. *Entradas:* laboratorios 2, 4 y 7. *Pasos:* escriba las prioridades 2 y 3 con el formato de la prioridad resuelta anterior. *Evidencia esperada:* dos prioridades argumentadas. *Rúbrica:* use la rúbrica de evaluación del laboratorio; 3 = p. ej., los flujos RDP corporativo→control y control→internet de CW investigados y cerrados (Lab 4), y las cuentas de bajas, tóxicas y de proveedores (Lab 7) o el aislamiento de los dispositivos clínicos sin soporte (Lab 2), cada una con razonamiento sobre las consecuencias, responsable y confianza; puntuaciones inferiores según la rúbrica.
+
+**EX050 — Comprobación de reproducibilidad.** *Objetivo:* verificar el trabajo de un compañero. *Entradas:* el apéndice de un compañero (o el suyo, intercambiado). *Pasos:* vuelva a ejecutar cada script, compare *hashes* y salidas, y escriba una declaración de verificación de 100 palabras. *Evidencia esperada:* la declaración. *Rúbrica:* 3 = *hashes* y salidas comparados, cualquier discrepancia explicada (p. ej., script editado, versión de Python); 2 = solo salidas; 1 = declaración sin volver a ejecutar; 0 = nada.
+
+### Síntesis del capítulo
+
+El Laboratorio I convierte ejercicios separados en un único juicio. Trace cada hallazgo hasta una salida reproducible, razone a partir de las consecuencias entre operadores, relacione las recomendaciones con los hallazgos y los responsables, y declare explícitamente la confianza y los límites.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Siga estudiando — capítulo 25 de 40
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Infraestructura crítica y seguridad sectorial: métodos II
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) construir modelos de amenazas estructurados de un sistema mediante diagramas de flujo de datos y una lista de comprobación de amenazas; (2) aplicar el análisis de peligros basado en la teoría de sistemas (STPA) para encontrar acciones de control inseguras; (3) diseñar y conducir un ejercicio de mesa como método para poner a prueba los planes; y (4) comparar estos métodos con los métodos de riesgo del capítulo 23 y elegir entre ellos. Se apoya en los capítulos 21–24 y prepara el capítulo 27 (verificación) y el capítulo 28 (análisis de fallas).
+
+### 26.1 Modelado de amenazas con flujos de datos
+
+Un **diagrama de flujo de datos** muestra procesos, almacenes de datos, entidades externas, flujos y **límites de confianza** (donde los datos pasan de un nivel de confianza a otro). El modelado de amenazas recorre cada elemento y plantea una lista de preguntas. Una lista muy utilizada, STRIDE (acrónimo de las iniciales de los términos en inglés), pregunta por la suplantación de identidad (**S**), la manipulación de datos (**T**), el repudio (**R**, negar una acción), la divulgación de información (**I**), la denegación de servicio (**D**) y la elevación de privilegios (**E**). Cada flujo que cruza un límite de confianza merece la lista completa. El resultado es una lista de amenazas con el elemento, el tipo de amenaza y una mitigación propuesta.
+
+### 26.2 STPA: peligros a partir de la estructura de control
+
+El modelo **STAMP** de Leveson trata los accidentes como el resultado de un control inadecuado y no como cadenas de fallas de componentes ([Leveson, 2004](https://doi.org/10.1016/S0925-7535(03)00047-X)). Su método de análisis, **STPA**, procede así: definir las pérdidas y los peligros; modelar la **estructura de control** (quién controla qué y con qué realimentación); para cada acción de control, identificar las **acciones de control inseguras** (UCA) en cuatro formas: no proporcionada cuando se necesita, proporcionada cuando es insegura, proporcionada demasiado pronto, demasiado tarde o fuera de orden, detenida demasiado pronto o aplicada demasiado tiempo; y después encontrar escenarios causales, incluidas la realimentación o las órdenes manipuladas. STPA se adapta bien a los servicios críticos porque trata a los operadores, los procedimientos, el software y los atacantes dentro de una misma estructura.
+
+### 26.3 Ejercicios de mesa
+
+Un **ejercicio de mesa** conduce a un equipo por un escenario mediante la discusión, paso a paso, con inyecciones («son las 03:40; las pantallas del CAD muestran una nota de rescate»). Pone a prueba los planes, los roles y la comunicación sin tocar los sistemas en producción. Los buenos ejercicios de mesa tienen objetivos (p. ej., «poner a prueba la decisión de pasar al despacho en papel»), un escenario sintético realista, un facilitador, observadores que registran las decisiones y los tiempos, y una **revisión en caliente** seguida de un plan de mejora. Son evidencia de preparación solo en la medida en que se actúa sobre sus hallazgos.
+
+### 26.4 Elegir los métodos
+
+| Método | Más adecuado para | Debilidad |
+|---|---|---|
+| Evaluación de riesgos (cap. 23) | Priorizar entre muchos escenarios | Estimaciones de probabilidad débiles para amenazas novedosas |
+| Primero las consecuencias / CCE | Peores resultados, mitigaciones de ingeniería | Puede descuidar los daños moderados frecuentes |
+| Modelo de amenazas STRIDE | Software y flujos de datos | Débil en el proceso físico y las personas |
+| STPA | Estructuras de control, interacciones entre personas y software | Laborioso; requiere conocer el proceso |
+| Ejercicio de mesa | Planes, roles, comunicación | Discutir no es ejecutar |
+
+Para el CEDC, la tabla sugiere STPA para el control del despacho y un ejercicio de mesa para el respaldo en papel, como hace el capítulo; después, una evaluación de riesgos clasifica el trabajo resultante.
+
+### 26.5 Ejemplo resuelto: STPA para el despacho del CEDC (sintético)
+
+**Este caso es sintético.** Pérdida: respuesta de emergencia retrasada. Peligro: no se despacha una ambulancia a una llamada con riesgo vital dentro del tiempo objetivo. Estructura de control: operador de llamadas → CAD → despachador → tripulación de la ambulancia (por radio y terminales móviles de datos); realimentación del sistema de localización de vehículos al CAD. Acción de control: «asignar la ambulancia disponible más cercana». UCA: *no proporcionada*: la cola del CAD queda congelada tras una actualización fallida; *proporcionada cuando es insegura*: el CAD asigna una unidad que figura como «disponible» porque la realimentación de localización está obsoleta o suplantada; *demasiado tarde*: el respaldo manual se adopta solo al cabo de 20 minutos porque nadie es responsable de la decisión; *detenida demasiado pronto*: un despachador cancela una asignación tras un error al fusionar llamadas duplicadas. Cada UCA da lugar a requisitos: una alarma de congelación del CAD, indicadores de obsolescencia en las localizaciones de los vehículos, un responsable designado de la decisión de respaldo con un disparador a los 5 minutos y una confirmación antes de cancelar una asignación de alta prioridad. Observe que dos UCA no implican a ningún atacante.
+
+### 26.6 Errores comunes y límites
+
+- Modelos de amenazas sin límites de confianza.
+- STPA reducido a una lista de fallas de componentes.
+- Ejercicios de mesa sin objetivos ni seguimiento.
+- Elegir el método más impresionante en lugar del que necesita la pregunta.
+
+El STPA del CEDC evitó el segundo error al nombrar acciones de control inseguras, dos de ellas sin atacante alguno. Una revisión STRIDE del flujo del historiador de CW que no marcara el límite de confianza entre la DMZ y el control cometería el primero. Un ejercicio de mesa sin el objetivo «decidir sobre el despacho en papel» comete el tercero. Y elegir STPA para impresionar cuando la pregunta es «qué estrategia de respaldo» comete el cuarto.
+
+### Ejercicios — capítulo 26
+
+**EX051 — Aplique STRIDE a un flujo.** *Objetivo:* aplicar la lista de comprobación. *Entradas:* el flujo de CW «el colector del historiador en la DMZ lee OPC UA del servidor SCADA». *Pasos:* escriba una amenaza para cada letra de STRIDE con una mitigación. *Evidencia esperada:* seis filas. *Rúbrica:* 3 = seis amenazas plausibles con las mitigaciones correspondientes (p. ej., colector suplantado → certificados mutuos; manipulación → sesión firmada/autenticada; DoS → límites de tasa en el lado del SCADA); 2 = cuatro o cinco; 1 = menos; 0 = nada.
+
+**EX052 — Diseñe un ejercicio de mesa.** *Objetivo:* planificar un ejercicio. *Entradas:* CVH, escenario «un ransomware cifra el sistema de administración de pacientes un sábado por la noche». *Pasos:* escriba los objetivos (dos), los participantes, cuatro inyecciones con sus horas y la evidencia que registrará. *Evidencia esperada:* plan. *Rúbrica:* 3 = objetivos medibles, participantes clínicos y técnicos, inyecciones realistas y crecientes (incluidas decisiones de protección de datos y de comunicación), tiempos y decisiones registrados; 2 = parcial; 1 = solo el escenario; 0 = nada.
+
+### Síntesis del capítulo
+
+El modelado de amenazas encuentra amenazas donde los datos cruzan límites de confianza; STPA encuentra acciones de control inseguras en estructuras sociotécnicas; los ejercicios de mesa ponen a prueba los planes y las personas. Cada uno ve lo que los demás pasan por alto, así que elija según la pregunta y recuerde que muchos peligros no implican a ningún adversario.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Siga estudiando — capítulo 26 de 40
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Infraestructura crítica y seguridad sectorial: verificación
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) distinguir la verificación («construido correctamente») de la validación («se construyó lo correcto») en los controles de seguridad; (2) diseñar una prueba que pueda mostrar que un control *no* funciona; (3) evaluar un detector mediante la precisión y la exhaustividad y elegir un umbral con compromisos explícitos; y (4) informar de los resultados de la verificación con sus condiciones y límites. Se apoya en los capítulos 8, 12, 15 y 24 y prepara el capítulo 29 (operaciones) y el Laboratorio II (capítulo 30).
+
+### 27.1 Verificación y validación
+
+La **verificación** comprueba que un control hace lo que dice su especificación: el cortafuegos bloquea el puerto 3389 desde la red corporativa hacia la de control; el validador de puntos de consigna rechaza NaN. La **validación** comprueba que el control logra su propósito en el entorno real: los usuarios corporativos no pueden alcanzar los sistemas de control por *ninguna* ruta; los operadores no pueden enviar puntos de consigna inseguros. Un control puede superar la verificación y fallar la validación (la regla del cortafuegos funciona, pero un portátil de ingeniería con doble conexión la elude). Una buena verificación es **falsable**: está diseñada para que un control defectuoso no supere la prueba. Una prueba que se superaría tanto si el control funciona como si no, no demuestra nada.
+
+### 27.2 Tipos de prueba
+
+La **revisión de la configuración** compara los ajustes con una línea base. Las **pruebas funcionales** ejercitan el control con entradas esperadas y prohibidas (las pruebas de límites del capítulo 8). Las **pruebas de flujo** confirman que las rutas no permitidas están bloqueadas (capítulo 7, con autorización). Los **simulacros de restauración** verifican de extremo a extremo los controles de recuperación (capítulo 15). Las **pruebas de detección** reproducen actividad sintética etiquetada o benigna pero sospechosa para ver si la supervisión genera alertas. En la TO, las pruebas sobre el proceso en producción están restringidas; use bancos de pruebas, réplicas fuera de línea o ventanas planificadas acordadas con operaciones. Para la regla de CW entre la red corporativa y la de control, una prueba de flujo desde un equipo corporativo autorizado hacia direcciones de control en una ventana planificada es funcional; una revisión de la configuración por sí sola no lo es.
+
+### 27.3 Evaluar detectores
+
+Un detector produce puntuaciones; un umbral las convierte en alertas. Compare las alertas con las etiquetas de la verdad de referencia: **verdaderos positivos** (TP), **falsos positivos** (FP), **falsos negativos** (FN). **Precisión** = TP/(TP+FP): de las alertas, ¿cuántas eran reales? **Exhaustividad** = TP/(TP+FN): de los eventos reales, ¿cuántos se detectaron? Subir el umbral suele aumentar la precisión y reducir la exhaustividad. Con eventos maliciosos raros (la tasa base del capítulo 12), la precisión puede ser mala incluso con tasas de error por evento excelentes. Elija un umbral preguntándose cuánto le cuesta al servicio cada omisión y cada falsa alarma, y recuerde que los datos de evaluación etiquetados rara vez coinciden con las condiciones reales ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp)).
+
+### 27.4 Ejemplo resuelto y Lab 10 (sintético)
+
+**Este caso es sintético.** Calder Mutual evalúa un detector de anomalías sobre 5025 eventos etiquetados, 25 de ellos maliciosos (semilla 10).
+
+```python
+# Lab 10 - detection evaluation on a labelled synthetic event set (offline)
+import random
+random.seed(10)
+events = []  # (score from a detector, truly malicious?)
+for _ in range(5000):
+    events.append((random.gauss(0.30, 0.12), False))
+for _ in range(25):
+    events.append((random.gauss(0.70, 0.15), True))
+for thr in (0.5, 0.6, 0.7):
+    tp = sum(1 for s, m in events if s >= thr and m)
+    fp = sum(1 for s, m in events if s >= thr and not m)
+    fn = sum(1 for s, m in events if s < thr and m)
+    prec = tp / (tp + fp) if tp + fp else 0
+    print(f"threshold {thr}: TP={tp:2} FP={fp:3} FN={fn:2} precision={prec:.2f} recall={tp/(tp+fn):.2f}")
+```
+
+Salida esperada:
+
+```text
+threshold 0.5: TP=23 FP=215 FN= 2 precision=0.10 recall=0.92
+threshold 0.6: TP=20 FP= 36 FN= 5 precision=0.36 recall=0.80
+threshold 0.7: TP=18 FP=  2 FN= 7 precision=0.90 recall=0.72
+```
+
+Con 0,5, el equipo detecta 23 de 25, pero tiene que abrirse paso entre 215 falsas alertas; con 0,7, casi todas las alertas son reales, pero se pasan por alto 7 ataques. Ninguno es «correcto». Una elección defendible podría usar 0,7 para avisar al analista de guardia y 0,5 para una cola de revisión diaria: dos umbrales para dos costes. El informe declara las condiciones: puntuaciones sintéticas, una sola semilla, 25 positivos (por lo que las estimaciones de exhaustividad son gruesas; capítulo 37) y una similitud desconocida con el tráfico real.
+
+### 27.5 Errores comunes y límites
+
+- Pruebas que no pueden fallar.
+- Informar de la exactitud con datos desequilibrados (aquí, un 99,5 % de «exactitud» sin alertar nunca).
+- Elegir umbrales sin declarar los costes.
+- Evaluar con datos que se parecen más a los de entrenamiento que a la realidad.
+- Verificar en un laboratorio y afirmar la validación en producción.
+
+El Lab 10 muestra numéricamente el segundo error: no alertar nunca obtiene un 99,5 % de exactitud. Elegir 0,5 o 0,7 sin decir cuánto cuesta un ataque no detectado o 215 falsas alertas adicionales es el tercero. Una regla de cortafuegos probada solo desde la réplica del laboratorio es el quinto. Una prueba que informaría de «bloqueado» porque el equipo de prueba estaba apagado es el primero.
+
+### Ejercicios — capítulo 27
+
+**EX053 — Hágala falsable.** *Objetivo:* diseñar una prueba significativa. *Entradas:* la afirmación «el cortafuegos de CW impide que los usuarios corporativos alcancen la zona de control». *Pasos:* diseñe una prueba de verificación y una de validación, cada una con un resultado que demostraría que la afirmación es falsa, y la autorización necesaria. *Evidencia esperada:* dos diseños de prueba. *Rúbrica:* 3 = prueba a nivel de regla desde un equipo corporativo hacia las direcciones de control en todos los puertos en una ventana planificada, más una validación que busca rutas alternativas (equipos con doble conexión, acceso remoto, inalámbrico) mediante la revisión de la configuración y de los flujos; autorización declarada; 2 = una prueba; 1 = no falsable; 0 = nada.
+
+**EX054 — La trampa de la exactitud.** *Objetivo:* ver por qué la exactitud induce a error. *Entradas:* el Lab 10. *Pasos:* calcule la exactitud para el umbral 0,7 y para un detector que nunca alerta; explique por qué ambos parecen «excelentes». *Evidencia esperada:* dos números y una explicación. *Rúbrica:* 3 = (5025−2−7)/5025 ≈ 0,9982 y 5000/5025 ≈ 0,9950; explica el desequilibrio de clases y recomienda la precisión y la exhaustividad; 2 = solo los números; 1 = un número; 0 = nada.
+
+### Síntesis del capítulo
+
+La verificación pregunta si un control funciona según lo especificado; la validación pregunta si logra su propósito. Diseñe pruebas que puedan fallar, evalúe los detectores con la precisión y la exhaustividad en umbrales elegidos según costes declarados, e informe de las condiciones y los límites junto con los números.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Siga estudiando — capítulo 27 de 40
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Infraestructura crítica y seguridad sectorial: análisis de fallas
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) construir un árbol de fallas sencillo con puertas AND y OR y calcular la probabilidad del evento superior bajo independencia; (2) realizar un análisis de modos de falla y sus efectos (FMEA) de un sistema pequeño; (3) añadir una ruta cibernética a un análisis de seguridad y ver cómo cambia el resultado; y (4) conducir una revisión posincidente sin culpables que busque las causas en el sistema. Se apoya en los capítulos 12, 21, 22 y 26 y prepara el capítulo 29 (operaciones) y el capítulo 31 (casos avanzados).
+
+### 28.1 Árboles de fallas
+
+Un **árbol de fallas** parte de un **evento superior** no deseado y lo descompone en causas conectadas por **puertas**. Una puerta **AND** significa que deben producirse todas las entradas; una puerta **OR** significa que basta con una cualquiera. Con eventos básicos independientes, AND multiplica las probabilidades y OR las combina como $1 - \prod (1 - p_i)$. Los árboles de fallas hacen explícitos los supuestos y muestran qué eventos básicos dominan. Tradicionalmente se construyen para fallas aleatorias; el análisis de seguridad añade rutas en las que un adversario puede hacer que un evento ocurra a propósito, y la «probabilidad» de un adversario no es una propiedad del hardware.
+
+### 28.2 FMEA
+
+El **análisis de modos de falla y sus efectos** trabaja de abajo arriba: para cada componente, enumere las formas en que puede fallar (no arranca, falla en posición abierta, da una lectura falsa), el efecto sobre el sistema, cómo se detectaría y los controles existentes; después, clasifique. El FMEA encuentra bien los problemas de un solo componente y mal las interacciones, por lo que se combina con STPA (capítulo 26) y con los árboles de fallas. El EX056 aplica el FMEA a la bomba dosificadora y al analizador de CW. Una fila para la bomba dosificadora de CW dice: componente, bomba dosificadora; modo, funciona al caudal máximo; efecto, sobrecloración en la salida; detección, alarma del analizador de residual en la salida; control existente, caudal máximo de la bomba cableado.
+
+### 28.3 Ejemplo resuelto y Lab 11 (sintético)
+
+**Este caso es sintético.** Evento superior en el CVH: «el hospital pierde la alimentación de calidad de red en las cargas críticas». Físicamente, esto requiere un corte de la red eléctrica AND una falla del respaldo (el generador no arranca OR el combustible está contaminado OR falla el conmutador de transferencia automática). Por otra parte, el BMS del hospital puede dar órdenes al cuadro de suministro esencial; un compromiso del BMS podría desconectar cargas críticas con independencia de la red.
+
+```python
+# Lab 11 - a small fault tree for "hospital loses mains-quality power" (synthetic annual probabilities)
+P = {"grid": 0.05, "gen_fails_start": 0.02, "fuel_contaminated": 0.005, "ats_fails": 0.01, "cyber_bms": 0.002}
+# top = grid AND (backup fails); backup fails = gen_fails_start OR fuel_contaminated OR ats_fails
+# separately: a compromised building-management system can shed critical loads whatever the grid state
+backup_fails = 1 - (1 - P["gen_fails_start"]) * (1 - P["fuel_contaminated"]) * (1 - P["ats_fails"])
+top_physical = P["grid"] * backup_fails
+top = 1 - (1 - top_physical) * (1 - P["cyber_bms"])
+print(f"P(backup fails on demand) = {backup_fails:.5f}")
+print(f"P(top) physical only = {top_physical:.6f}")
+print(f"P(top) with BMS path  = {top:.6f}")
+print(f"share from cyber path ~ {P['cyber_bms'] / top:.0%}")
+```
+
+Salida esperada:
+
+```text
+P(backup fails on demand) = 0.03465
+P(top) physical only = 0.001733
+P(top) with BMS path  = 0.003729
+share from cyber path ~ 54%
+```
+
+Con estos números sintéticos, el diseño físico es bueno: se necesitan dos fallas independientes. La ruta cibernética es un único evento que elude la puerta AND y aproximadamente duplica la probabilidad del evento superior. La cuestión de fondo no depende de la estimación de 0,002: un atacante no falla al azar, de modo que una ruta que solo necesita un «evento» bajo el control del adversario puede dominar sea cual sea el número que usted escriba. La respuesta de ingeniería es restablecer la estructura AND (hacer imposible desconectar las cargas críticas desde el BMS mediante un bloqueo cableado, o limitar el control del BMS a los cuadros no críticos) en lugar de limitarse a reducir la probabilidad estimada.
+
+### 28.4 Revisión posincidente sin culpables
+
+Cuando se producen fallas, una **revisión sin culpables** pregunta cómo permitió el sistema que la acción de una persona razonable causara daño, no a quién castigar. El modelo de accidentes organizacionales de Reason describe las defensas como capas con agujeros que de vez en cuando se alinean ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)). Pregunte: ¿qué sabían las personas en ese momento?; ¿qué hizo que su acción pareciera correcta?; ¿qué defensas faltaban o se eludieron?; ¿qué cambiaremos en el sistema? La culpa reprime la notificación, y los casi accidentes no notificados son evidencia perdida. En el caso del Lab 11, una revisión sin culpables de un evento de pérdida de alimentación preguntaría por qué el BMS podía siquiera desconectar cargas críticas.
+
+### 28.5 Errores comunes y límites
+
+- Multiplicar probabilidades de eventos con causas comunes (capítulo 12).
+- Tratar las acciones del adversario como fallas aleatorias.
+- FMEA sin interacciones; árboles de fallas sin el factor humano.
+- Revisiones que terminan en «error humano» y una nueva formación.
+
+El Lab 11 supone la independencia entre la falla del generador y la contaminación del combustible; el EX024 muestra cómo un depósito de combustible compartido rompe esa independencia. La ruta del BMS es el segundo error hecho explícito: 0,002 no es una propiedad del BMS. El tercero aparece si un FMEA del generador ignora al operador que debe arrancarlo manualmente. Una revisión que termina en «error del ingeniero de mantenimiento; volver a formarlo» es el cuarto.
+
+### Ejercicios — capítulo 28
+
+**EX055 — Restablezca la puerta AND.** *Objetivo:* ver el efecto de una corrección de ingeniería. *Entradas:* el Lab 11. *Pasos:* modele una corrección en la que el BMS solo pueda desconectar cargas críticas si también hay un corte de la red (es decir, la ruta cibernética se incorpora a la puerta AND de la red como una causa más de falla del respaldo). Calcule la nueva probabilidad del evento superior. *Evidencia esperada:* código modificado y valor. *Rúbrica:* 3 = falla del respaldo = 1−(0,98)(0,995)(0,99)(0,998) ≈ 0,03658, evento superior ≈ 0,001829, con el comentario de que la ruta cibernética necesita ahora un corte de la red coincidente; 2 = enfoque correcto, error aritmético; 1 = estructura sin cambios; 0 = nada.
+
+**EX056 — Filas de FMEA.** *Objetivo:* aplicar el análisis de abajo arriba. *Entradas:* la bomba dosificadora de cloro de CW y su analizador de residual. *Pasos:* escriba cuatro filas de FMEA (componente, modo de falla, efecto, detección, control existente). *Evidencia esperada:* tabla. *Rúbrica:* 3 = modos realistas (la bomba funciona al máximo, la bomba se detiene, el analizador lee bajo, el analizador está congelado) con efectos sobre la seguridad del agua y detecciones creíbles; 2 = tres; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Los árboles de fallas y el FMEA hacen explícitos los supuestos sobre las fallas, de arriba abajo y de abajo arriba. Añadir rutas cibernéticas revela eventos únicos que eluden la redundancia diseñada; la respuesta más sólida restablece la independencia estructural en lugar de ajustar una estimación. Cuando se producen fallas, revise el sistema, no a la persona.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Siga estudiando — capítulo 28 de 40
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](../../en/book/MANUSCRIPT.md#ch-29)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1653,6 +2212,38 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX039.** Ejemplo (Oldsmar): CISA afirma que actores no identificados accedieron al sistema SCADA mediante un software de acceso remoto, aumentaron el punto de consigna del hidróxido de sodio y un operador revirtió el cambio. Repetido habitualmente, pero sin respaldo en ese aviso: afirmaciones sobre la identidad del atacante. Redacción para el informe: «En febrero de 2021, CISA informó de un aparente cambio no autorizado en la dosificación química de una planta de agua de Florida; en 2023, un antiguo cargo municipal dijo que probablemente fue un error de un empleado. En cualquier caso, el caso ilustra el riesgo del acceso remoto sin gestionar».
 
 **EX040.** Dependencias: sistemas de venta de billetes e ingresos (puede rechazarse operar sin recaudación), planificación de turnos y programación de tripulaciones, sistemas de información a los pasajeros, gestión del mantenimiento (registros de defectos críticos para la seguridad funcional). Medidas: reglas de operación degradada acordadas de antemano (p. ej., viaje gratuito, turnos en papel) aprobadas por la dirección con antelación; separación y copia de seguridad de los datos operativamente necesarios, como los registros de defectos; ejercicios periódicos de circulación de trenes sin TI de negocio.
+
+**EX041.** (a) Pérdida de la vista histórica: riesgo inmediato bajo, menor análisis de tendencias. (b) Pérdida de vista: peligrosa, los operadores pueden actuar con datos obsoletos. (c) Manipulación del control: efecto directo en el proceso. (d) Pérdida de protección: máxima gravedad, ha desaparecido la última barrera automática.
+
+**EX042.** Cadena: señalización (establecimiento de itinerarios y detección de trenes) → control y conducción de los trenes → comunicación entre la tripulación y el puesto de control → información a los pasajeros → venta de billetes. Modos degradados: falla de la señalización, autorización manual para circular con velocidad y frecuencia reducidas; falla de la radio, teléfonos fijos en las estaciones y trenes retenidos en los andenes; falla de la información a los pasajeros, avisos del personal y comunicados de servicio reducido; falla de la venta de billetes, viaje gratuito o billetes en papel. Restricciones: menor capacidad, más personal, tiempos de viaje más largos.
+
+**EX043.** Con 48 h de autonomía para los pagos con tarjeta: a las 6 h se pierden 3 servicios (central A, bombas de agua, señalización ferroviaria); a las 30 h se pierden 5 (los pagos con tarjeta sobreviven). Con las autonomías reducidas a la mitad, a las 6 h se pierden 5 servicios: central telefónica A (2 h), bombas de agua, almacenamiento de agua tratada (5 h), pagos con tarjeta (2 h) y señalización ferroviaria (1 h). Recomendación: trasladar los pagos con tarjeta a la central B o añadir un generador en la central A, y sustituir las autonomías basadas en cifras de diseño por valores probados, ya que el caso pesimista pierde el almacenamiento de agua antes de 6 h.
+
+**EX044.** Contrato de suministro de combustible y ruta de entrega (evidencia: contrato, prueba de entrega durante un ejercicio); personal para operarlo y reabastecerlo (evidencia: cuadrante de turnos y registros de formación); fiabilidad del arranque y de la carga del generador (evidencia: registros de pruebas mensuales bajo carga); aparamenta/conmutador de transferencia y refrigeración (evidencia: registros de mantenimiento, prueba de la transferencia automática).
+
+**EX045.** Ambos puntúan 10. La igualdad de puntuación oculta que A es frecuente y menor, mientras que B es raro y grave (cancelación de intervenciones quirúrgicas, daño a pacientes), y que las etiquetas ordinales no pueden multiplicarse de forma significativa. Presente una columna de peor consecuencia creíble e intervalos cuantitativos aproximados (frecuencia anual, duración de la interrupción, daño), o trate B mediante un análisis centrado primero en las consecuencias.
+
+**EX046.** Consecuencia: «transferencias fraudulentas de alto valor liberadas» (o «pagos no disponibles > 4 h el día de pago de las nóminas»). Rutas: credenciales de operador comprometidas; una persona interna que crea y aprueba mediante una combinación tóxica de roles (Lab 7); un cambio malicioso en las reglas del conmutador de pagos; la carga por error de un archivo masivo. Ingeniería: límites estrictos por transacción y diarios aplicados en el conmutador, confirmación fuera de banda para las transferencias por encima de un umbral. Procedimental: aprobación por dos personas con roles separados.
+
+**EX047.** Copias de seguridad fuera de línea: correctivo, técnico. Aprobación por dos personas: preventivo, procedimental. Analizador de cloro en la salida que dispara una válvula: preventivo (acota la consecuencia), de ingeniería. Alerta del SIEM ante nuevas cuentas de administrador: detectivo, técnico. Interruptor de llave para la programación del PLC: preventivo, físico.
+
+**EX048.** Fila: «Ransomware en el servidor del BMS»; preventivo: lista de permitidos de aplicaciones, acceso de administración restringido, segmentación respecto de la red corporativa; detectivo: supervisión del servidor del BMS y de las copias de seguridad; correctivo: restauración probada del servidor del BMS y de las configuraciones, control manual local del tratamiento de aire. Mejora más valiosa: una restauración probada junto con un procedimiento de control local ensayado, porque el control local mantiene seguros los quirófanos sea cual sea la causa de la pérdida del BMS.
+
+**EX049.** Prioridad 2 (confianza: media): investigar y cerrar el flujo RDP corporativo→control y el flujo control→internet de CW (Lab 4); eluden la DMZ y la ruta de consecuencias conduce al control del tratamiento del agua; responsables: seguridad de TO de CW (investigar esta semana), equipo de red de CW (reglas). Prioridad 3 (confianza: alta): deshabilitar la cuenta de la persona dada de baja, eliminar las combinaciones tóxicas y pasar el acceso de los proveedores a aprobación por sesión (Lab 7); son rutas directas hacia acciones de control no autorizadas y fraude en los pagos; responsables: propietarios de los sistemas, en el plazo de una semana. El aislamiento de los dispositivos clínicos sin soporte (Lab 2) es una tercera prioridad alternativa aceptable si se acompaña de razonamiento sobre las consecuencias.
+
+**EX050.** Declaración modelo: «Volví a ejecutar los laboratorios 2, 4, 5 y 7 del apéndice con Python 3.13. Los *hashes* de lab02, lab04 y lab07 coincidieron; el de lab05 no, porque el autor había añadido una consulta LEFT JOIN, documentada en sus notas de cambios. Todas las salidas impresas coincidieron con el apéndice, incluida la salida de la consulta adicional. La sección de hallazgos es reproducible».
+
+**EX051.** S: un equipo no autorizado suplanta al colector; autenticación mutua con certificados, reglas a nivel de equipo. T: valores alterados en tránsito; sesión OPC UA autenticada y con protección de integridad. R: el colector niega haber realizado consultas; registro en el lado del SCADA con sincronización horaria. I: el colector expone más etiquetas de las necesarias; cuenta de solo lectura limitada a las etiquetas requeridas. D: un sondeo excesivo sobrecarga el servidor SCADA; límites de tasa y supervisión de recursos. E: la cuenta del colector puede escribir; rol de solo lectura, aplicado en el lado del servidor.
+
+**EX052.** Objetivos: (1) decidir en 30 minutos si se pasa a la administración de pacientes en papel; (2) realizar la evaluación de protección de datos y decidir sobre la notificación dentro del plazo del plan. Participantes: directivo de guardia, responsable del servicio de urgencias, guardia de TI, delegado de protección de datos, comunicación, mantenimiento de instalaciones. Inyecciones: 23:10 nota de rescate en las pantallas de administración; 23:40 urgencias no puede ver el estado de las camas; 00:30 evidencia de que se copiaron datos de pacientes al exterior; 01:30 consulta de un periodista. Registrar: horas de las decisiones, responsables de las decisiones, información utilizada, desviaciones respecto del plan.
+
+**EX053.** Verificación: en una ventana autorizada, desde un equipo de prueba en la red corporativa, intente conexiones a cada dirección de la zona de control en una lista definida de puertos; la afirmación es falsa si alguna conexión tiene éxito. Validación: revise las configuraciones y los registros de flujos en busca de rutas alternativas (equipos con doble conexión, pasarelas de acceso remoto, puentes inalámbricos, módems de proveedores); la afirmación es falsa si existe alguna ruta de la red corporativa a la de control. Autorización: reglas de enfrentamiento (RoE) por escrito de operaciones y seguridad de CW, con condiciones de parada.
+
+**EX054.** Umbral 0,7: errores = FP 2 + FN 7 = 9; exactitud = 5016/5025 ≈ 0,9982. Sin alertar nunca: exactitud = 5000/5025 ≈ 0,9950. Ambos parecen excelentes porque el 99,5 % de los eventos son benignos; la exactitud premia ignorar la clase rara. Informe de la precisión y la exhaustividad (0,90/0,72 frente a indefinida/0).
+
+**EX055.** Con la ruta del BMS que ahora requiere un corte de la red: falla del respaldo = $1 - 0.98 \times 0.995 \times 0.99 \times 0.998 \approx 0.03658$; evento superior = $0.05 \times 0.03658 \approx 0.001829$, aproximadamente la mitad del 0,003729 anterior y solo ligeramente por encima del 0,001733 del caso solo físico. La ruta cibernética necesita ahora un corte de la red coincidente, lo que restablece la estructura de dos eventos; un adversario capaz de provocar también un corte de la red sigue siendo un riesgo residual.
+
+**EX056.** La bomba dosificadora funciona al máximo: sobredosificación, agua insegura; detectado por la alarma de valor alto del analizador de salida; límite de caudal cableado, disparo por el analizador. La bomba se detiene: desinfección insuficiente; alarma de valor bajo del analizador, señal de bomba en marcha; bomba de servicio/reserva. El analizador lee bajo (deriva): el controlador aumenta la dosificación; comparación con una muestra manual o un segundo analizador; programa de calibración. El analizador está congelado: no responde a los cambios reales; alarma de «valor obsoleto» ante una lectura invariable; comprobaciones de mantenimiento.
 
 <a id="glossary"></a>
 
