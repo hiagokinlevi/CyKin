@@ -130,65 +130,35 @@ You will (1) map current practice frameworks; (2) position TIBER-EU and CBEST am
 
 ### 2.1 Practice landscape
 
-Organisations mix vulnerability management, periodic web application tests following OWASP WSTG themes, purple-team drills and occasional threat-led exercises under TIBER-EU or CBEST-like rules. Names are not interchangeable.
-
-Amira's catalogue names vulnerability management, WSTG-style web tests, purple-team drills and threat-led exercises as separate rows with separate claims. Calling all of them a red team is how boards hear SWIFT assurance that was never bought, so she corrects vocabulary in every planning meeting until the names stick.
-
-Wrong names produce wrong expectations about detection learning and SWIFT-adjacent coverage. She corrects the vocabulary until vulnerability management, web tests, purple-team drills and threat-led exercises stay separate in every planning note.
+Organisations mix vulnerability management, periodic web application tests following OWASP WSTG themes, purple-team drills and occasional threat-led exercises under TIBER-EU or CBEST-like rules. Names are not interchangeable, and wrong names produce wrong expectations about detection learning and SWIFT-adjacent coverage. Amira's catalogue lists those four activities as separate rows with separate claims. Calling all of them a red team is how boards hear SWIFT assurance that was never bought, so she corrects vocabulary in every planning meeting until the names stay separate in every planning note.
 
 ### 2.2 Threat-led specifics
 
-TIBER-EU and CBEST emphasise intelligence-led scenarios, white-team control and learning for detection and response — not finding count maximisation. Amira cites their public guides when executives say "just pentest everything".
-
-When executives ask to just pentest everything, she opens the public TIBER-EU and CBEST guides and shows intelligence, white-team and detection-learning expectations. Her RFP language asks for those three, not for a finding-count target, so Meridian Clearing House does not buy a scan dressed as threat-led work.
-
-A week of scanning is not a threat-led programme under those guides. Finding-count targets are scored as theatre in her RFP, and vendors who cannot describe white-team design leave the shortlist.
+TIBER-EU and CBEST emphasise intelligence-led scenarios, white-team control and learning for detection and response — not finding count maximisation. When executives say "just pentest everything", Amira opens the public guides and shows those three expectations; a week of scanning is not a threat-led programme under them. Her RFP language asks for intelligence, white-team design and detection learning, not for a finding-count target, which is scored as theatre. Vendors who cannot describe white-team design leave the shortlist, so Meridian Clearing House does not buy a scan dressed as threat-led work.
 
 ### 2.3 SP 800-115 and PTES
 
-Still the backbone for planning assessment types and engagement stages. Threat-led programmes sit on top of, not instead of, scoping discipline.
-
-Threat-led exercises still need NIST SP 800-115 and PTES scoping: written authorization, inclusions, exclusions and stop conditions. Sitting on that backbone is how Amira keeps SWIFT-adjacent systems out of ordinary tests while still running a biennial scenario under white-team control.
-
-Skipping scoping because the exercise is special is how out-of-scope probes happen. Written authorization, clear inclusions and exclusions, and stop conditions remain mandatory even when the scenario is intelligence-led and biennial.
+NIST SP 800-115 and PTES are still the backbone for planning assessment types and engagement stages. Threat-led programmes sit on top of, not instead of, that scoping discipline: written authorization, inclusions, exclusions and stop conditions remain mandatory even when the scenario is intelligence-led and biennial. Skipping scoping because the exercise is special is how out-of-scope probes happen. Sitting on that backbone is how Amira keeps SWIFT-adjacent systems out of ordinary tests while still running a biennial scenario under white-team control. The biennial scenario's own ROE therefore names the SWIFT-adjacent exclusion explicitly.
 
 ### 2.4 Vendor critique
 
-Vendors who promise "full red team in a week" without intel, white team or detection goals are selling a scan with theatre. Amira's RFP questions ask for white-team design and learning objectives.
-
-RFP scoring asks who acts as white team, what detection goals will be measured, and how intelligence shapes scenarios. Vendors who cannot answer are scored as scan-with-theatre; she has rejected a one-week full red team bid with no intel phase and recorded the reason in the catalogue.
-
-The catalogue records each rejection reason so the next buyer sees the pattern of scan-with-theatre bids. White-team design, detection goals and intelligence shaping are the three answers that separate a real offer from a slogan.
+Vendors who promise "full red team in a week" without intelligence, a white team or detection goals are selling a scan with theatre. Amira's RFP scoring asks who acts as white team, what detection goals will be measured, and how intelligence shapes scenarios; those three answers separate a real offer from a slogan. She has rejected a one-week full red team bid with no intelligence phase and recorded the reason in the catalogue. Each rejection reason stays there, so the next buyer at Meridian Clearing House can see the pattern of scan-with-theatre bids.
 
 ### 2.5 MCH catalogue
 
-A living catalogue maps each activity to what it can and cannot claim. Honesty here prevents insurance and board misstatements.
-
-Ordinary quarterly web tests cannot claim SWIFT safety; a biennial threat-led exercise cannot claim continuous coverage of every web change. A catalogue row without a cannot-claim line is incomplete, and Amira blocks board-pack language that invents claims the row forbids.
-
-Honesty here stops insurance questionnaires and board slides from overstating Meridian Clearing House's assurance. Amira treats a missing cannot-claim line as an incomplete row and will not let that row enter a pack.
+A living catalogue maps each activity to what it can and cannot claim. Ordinary quarterly web tests cannot claim SWIFT safety; a biennial threat-led exercise cannot claim continuous coverage of every web change. Honesty here stops insurance questionnaires and board slides from overstating Meridian Clearing House's assurance. A catalogue row without a cannot-claim line is incomplete, and Amira will not let such a row enter a pack. She also blocks board-pack language that invents claims a complete row forbids, even when the wording comes from a senior sponsor.
 
 ### 2.6 Currency
 
-Amira reviews the catalogue twice a year against new framework editions.
-
-Twice-yearly reviews catch new ATT&CK, WSTG, TIBER-EU and CBEST editions and redline retired vendor slogans still sitting in old board packs. A catalogue that is never refreshed becomes a museum of last year's swagger, so she dates each review and files the redline index.
-
-She dates each review and files the redline index so retired slogans cannot be pasted forward from old packs. Currency is a scheduled control, not a hope that someone will notice a stale claim.
+Amira reviews the catalogue twice a year against new framework editions. The reviews catch new ATT&CK, WSTG, TIBER-EU and CBEST editions and redline retired vendor slogans still sitting in old board packs. A catalogue that is never refreshed becomes a museum of last year's swagger. She dates each review and files the redline index, so retired slogans cannot be pasted forward from old packs into new ones. Currency is a scheduled control with a date in the calendar, not a hope that someone will notice a stale claim before a committee does.
 
 ### 2.7 Narrative
 
-Catalogue reviews include a red-team vendor as guest critic once a year. Amira asks them to attack the cannot-claim lines. If they can honestly say a quarterly web test proves SWIFT safety, the line is too weak. Last year's guest failed to break the lines; she still tightened one adjective. Currency reviews also hunt retired vendor slogans lingering in old board packs and redline them in the archive index.
+Catalogue reviews include a red-team vendor as guest critic once a year. Amira asks them to attack the cannot-claim lines: if they can honestly say a quarterly web test proves SWIFT safety, the line is too weak. Last year's guest failed to break the lines; she still tightened one adjective. She invites a different vendor each year so the critique does not become captured. Currency reviews also hunt retired vendor slogans lingering in old board packs and redline them in the archive index.
 
-Once a year a red-team vendor attends as guest critic and attacks the cannot-claim lines. Last year's guest could not honestly say a quarterly web test proves SWIFT safety; Amira still tightened one adjective and invites a different vendor next year so the critique does not become captured.
+### 2.8 Archive redlines
 
-### 2.8 Bit2
-
-Archive redlines of old packs are linked from the catalogue changelog; forgetting history is how swagger returns. Linking each redline to the changelog entry also shows reviewers which claim was softened and why.
-
-Archive redlines link to the catalogue changelog so reviewers see which claim was softened and why. The rewrite from we are CBEST compliant to a time-bounded CBEST-inspired exercise with SWIFT-adjacent exclusions is the worked example; both versions stay in the archive.
-
-When a director asked why compliant vanished from the 2025 slide, the changelog link answered the question without a meeting. Forgetting archive history is how swagger returns to board language.
+Archive redlines of old packs are linked from the catalogue changelog, so reviewers see which claim was softened and why; forgetting history is how swagger returns to board language. The rewrite from "we are CBEST compliant" to a time-bounded CBEST-inspired exercise with SWIFT-adjacent exclusions is the worked example, and both versions stay in the archive. When a director asked why "compliant" vanished from the 2025 slide, the changelog link answered the question without a meeting. Each changelog entry records the date, the old wording and the reviewer who approved the new wording.
 
 ### Worked example (synthetic MCH)
 
@@ -206,7 +176,7 @@ Threat-led and clearing-system tests require specialised legal authorization. Th
 - **EX007 — Threat-led emphasis.** Name two emphases of TIBER-EU/CBEST-style tests. *Rubric:* 3 = intel-led scenarios and detection/response learning (white team); 2 = one; 1 = finding volume; 0 = none.
 - **EX008 — RFP question.** Give one RFP question that weeds out theatre. *Rubric:* 3 = asks white-team/learning objectives/intel; 2 = partial; 1 = cheapest price only; 0 = none.
 - **EX009 — Cannot-claim.** What must a catalogue state besides what tests do? *Rubric:* 3 = what they cannot claim; 2 = partial; 1 = logos; 0 = none.
-- **EX010 — Slide rewrite.** What was wrong with "we are CBEST compliant"? *Rubric:* 3 = overclaim / imprecise; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Slide rewrite.** What was wrong with "we are CBEST compliant"? *Rubric:* 3 = overclaim / imprecise; 2 = partial; 1 = says nothing was wrong; 0 = no answer.
 
 ### Synthesis
 
@@ -226,75 +196,39 @@ You will (1) define specialist-grade evidence; (2) handle privileged clearing da
 
 ### 3.1 Specialist grade
 
-Evidence must be reproducible under the ROE, minimised, hashed, time-zoned and tied to a decision. "Looks bad in a tool" is not specialist grade.
-
-Specialist-grade evidence can be reproduced under the ROE by another tester using hashes, timestamps and scope context from the vault. FindingsDesk blocks board-pack entry until hash and owner are present, so drama without those fields never reaches a committee slide.
-
-Reproducibility is the grade; drama is not. Looks bad in a tool is rejected until another specialist can reproduce the observation under the ROE with hashes and timestamps from the vault.
+Evidence must be reproducible under the ROE, minimised, hashed, time-zoned and tied to a decision. "Looks bad in a tool" is not specialist grade: reproducibility is the grade, drama is not. Specialist-grade evidence can be reproduced under the ROE by another tester using hashes, timestamps and scope context from the vault. FindingsDesk blocks board-pack entry until hash and owner are present, so drama without those fields never reaches a committee slide. An observation that fails the test is rewritten until another specialist could repeat it.
 
 ### 3.2 Privileged data
 
-Clearing messages and participant identifiers are highly sensitive. Amira prefers synthetic message templates even in staging when possible.
-
-Clearing messages and participant identifiers stay out of ordinary evidence when synthetic templates can show the same class of issue. Amira prefers those templates even in staging and redacts anything that still looks too real before it enters the vault.
-
-Sensitivity is not a reason to skip evidence; it is a reason to design safer evidence. Synthetic message templates that show the same class of issue keep real participant identifiers out of ordinary vault entries.
+Clearing messages and participant identifiers are highly sensitive. Sensitivity is not a reason to skip evidence; it is a reason to design safer evidence. Amira keeps real messages and identifiers out of ordinary evidence whenever synthetic message templates can show the same class of issue, and she prefers those templates even in staging. Anything that still looks too real is redacted before it enters the vault. The result is a vault in which ordinary entries prove the issue without carrying participant data that a leak or a careless export could expose.
 
 ### 3.3 Challenge survival
 
-Legal or white-team challenge asks: could another specialist reproduce this observation without your laptop folklore? If not, rewrite.
-
-In challenge drills a second specialist has ten minutes to find a missing hash, timezone or ROE clause. If the observation cannot survive without laptop folklore, she rewrites it before vault entry; calm repair after a catch scores well, defensiveness does not.
-
-The drill exists so legal or white-team challenge never meets an unreproducible claim for the first time. Ten minutes is enough to find a missing hash, timezone or ROE clause when the challenger is scored for catching real gaps.
+Legal or white-team challenge asks: could another specialist reproduce this observation without your laptop folklore? If not, rewrite. In challenge drills a second specialist has ten minutes to find a missing hash, timezone or ROE clause, and is scored for catching real gaps. If the observation cannot survive, Amira rewrites it before vault entry; calm repair after a catch scores well, defensiveness does not. The drill exists so that legal or white-team challenge never meets an unreproducible claim for the first time in a real dispute.
 
 ### 3.4 Theatre screenshots
 
-Dark-themed dashboards without hashes, timestamps or scope context are rejected from the evidence vault.
-
-Dark dashboards without hashes, timestamps or scope context look impressive and prove nothing. The vault rejects them on sight; Amira asks first for command output, config excerpts and hashes so juniors learn polish is not evidence.
-
-Theatre screenshots waste examiner time and train juniors to confuse polish with evidence. Boring artefacts — command output, config excerpts and hashes — enter the vault first; dark dashboards without context stay out.
-
-Amira asks for the boring artefacts first and will not argue about colour themes until hashes and timestamps exist. A rejected theatre screenshot becomes a teaching example in the next challenge drill so the same polish mistake does not return.
+Dark-themed dashboards without hashes, timestamps or scope context look impressive and prove nothing, and the evidence vault rejects them on sight. They waste examiner time and train juniors to confuse polish with evidence. Amira asks first for the boring artefacts — command output, config excerpts and hashes — and will not argue about colour themes until hashes and timestamps exist. A rejected theatre screenshot becomes a teaching example in the next challenge drill, so the same polish mistake does not return in the following quarter's evidence.
 
 ### 3.5 Chain of custody
 
-For threat-led exercises, custody logs are as important as technical artefacts.
-
-For threat-led exercises, custody logs show who held which artefact, when it moved and who authorised the move. A missing custody line is treated as seriously as a missing hash, and the log is built during the exercise rather than reconstructed afterwards.
-
-White-team and legal challenges often start with chain-of-custody questions, so the log is built during the exercise. Who held which artefact, when it moved and who authorised the move are written while memory is fresh.
+For threat-led exercises, custody logs are as important as technical artefacts. They show who held which artefact, when it moved and who authorised the move, and a missing custody line is treated as seriously as a missing hash. White-team and legal challenges often start with chain-of-custody questions, so the log is built during the exercise, while memory is fresh, rather than reconstructed afterwards. A log written from memory a week later invites exactly the doubt that custody records exist to remove.
 
 ### 3.6 Platform
 
-FindingsDesk fields enforce hash and owner before a finding may enter board packs.
-
-FindingsDesk will not let a finding into a board pack without hash and owner. Amira refuses manual overrides for late slides; colour and severity fields come after those two, never instead of them, even when a committee meeting is tomorrow.
-
-The platform gate is how Meridian Clearing House keeps specialist standards when calendar pressure rises before a committee meeting. Manual overrides for late slides are refused even when colour and severity look ready.
+FindingsDesk fields enforce hash and owner before a finding may enter board packs. The platform gate is how Meridian Clearing House keeps specialist standards when calendar pressure rises before a committee meeting. Amira refuses manual overrides for late slides, even when the meeting is tomorrow and colour and severity look ready. Colour and severity fields come after hash and owner, never instead of them. A finding that misses the pack because its hash is absent goes to the next pack complete, which costs one cycle rather than credibility.
 
 ### 3.7 Narrative
 
-Challenge drills pair two specialists: one presents evidence, the other has ten minutes to find a missing hash, timezone or ROE clause. Amira scores the challenger for catching real gaps and the presenter for calm repair. Vault rejection rates dropped afterward. Custody drills include a simulated laptop seizure asking whether hashes still prove out; a past fail funded HSM work for vault keys.
+Challenge drills pair two specialists: one presents evidence, the other has ten minutes to find a missing hash, timezone or ROE clause. Amira scores the challenger for catching real gaps and the presenter for calm repair. Vault rejection rates dropped afterward, because presenters arrived with hashes filled. Custody drills include a simulated laptop seizure asking whether hashes still prove out; partial hash recovery counts as a fail, and a past fail funded HSM work for vault keys. The seizure scenario is rerun after every change to how vault keys are stored.
 
-After challenge drills began, vault rejection rates fell because presenters arrived with hashes filled. Custody drills include a seizure scenario where partial hash recovery still counts as fail; that fail later funded HSM work for vault keys.
+### 3.8 Drill-funded controls
 
-### 3.8 Bit2
+The HSM budget memo used the seizure-drill fail as exhibit A: boring drills buy real controls. The memo set the recovered fragment beside the vault-key inventory, showing which key the seized laptop would have exposed. Finance accepted the HSM line because the drill record had a dated plan, a written rule and a failed result nobody had softened. Treating the partial result as a fail is what made the drill credible evidence in that memo; a softened score would have read as a near-pass and funded nothing.
 
-HSM funding used the seizure-drill fail as exhibit A in the budget memo; boring drills buy real controls. Treating a partial result as a fail is what made the drill credible evidence in that memo.
+### 3.9 Drill scoring rule
 
-The memo set the recovered fragment beside the vault-key inventory, showing which key the seized laptop would have exposed. A recovered fragment still proved material left the device, so there was no middle grade; Amira keeps the pass-fail rule written beside the drill plan for later cohorts.
-
-Finance accepted the HSM line because the drill record had a dated plan, a written rule and a failed result nobody had softened. Boring drills buy real controls when the scoring rule stays written beside the plan for later cohorts.
-
-### 3.9 3.q10
-
-Seizure-drill scores are pass/fail; partial hash recovery is a fail. A recovered fragment of a hash still proves the key material left the device, so the pass/fail rule has no middle grade.
-
-The brief also names the scorer before the drill, so nobody who ran the seizure scenario grades it afterwards. Softening the fail after the fact would have weakened the HSM case and trained operators to negotiate scores, so she writes the rule into the drill brief before the exercise starts.
-
-Amira writes the pass-fail sentence into the drill brief before the exercise starts. Operators who want a middle grade after a fragment recovers learn that the rule does not bend for comfort.
+Seizure-drill scores are pass/fail, and partial hash recovery is a fail: a recovered fragment still proves key material left the device, so the rule has no middle grade. Amira writes that pass-fail sentence into the drill brief before the exercise starts and keeps it beside the drill plan for later cohorts. The brief also names the scorer in advance, so nobody who ran the seizure scenario grades it afterwards. Operators who want a middle grade after a fragment recovers learn that the rule does not bend for comfort; softening it would train them to negotiate scores.
 
 ### Worked example (synthetic MCH)
 
@@ -332,73 +266,39 @@ You will (1) weigh systemic risk to clearing; (2) handle conflicts of interest; 
 
 ### 4.1 Systemic risk
 
-A test window is therefore agreed with operations before any scenario touches the settlement path. Amira's risk lens is systemic, not only MCH-local.
-
-A careless test that delays settlement can harm many participants beyond Meridian Clearing House. Before design sign-off she asks who else clears through the path and what a fifteen-minute pause would do; scenarios that need live participant impact are rejected at design time.
-
-Systemic harm is why stop authority and calendar locks exist. Scenarios that need live participant impact never leave design review, because a fifteen-minute settlement pause can harm many participants beyond Meridian Clearing House.
+Amira's risk lens is systemic, not only MCH-local. A careless test that delays settlement can harm many participants beyond Meridian Clearing House, so a test window is agreed with operations before any scenario touches the settlement path. Before design sign-off she asks who else clears through the path and what a fifteen-minute pause would do. Scenarios that need live participant impact are rejected at design time and never leave design review. Systemic harm is also why stop authority and calendar locks exist in the programme at all.
 
 ### 4.2 Conflicts
 
-Personal investments, prior employers and vendor friendships are logged. Recusal is normal, not career-limiting.
-
-Personal investments, prior employers and vendor friendships go in the conflict register; Amira recuses when a decision touches them. Juniors see her leave a vendor scoring meeting when a former employer bids, which teaches the habit better than a policy page alone.
-
-Recusal is normal at Meridian Clearing House and is not treated as a career limit. The conflict register holds personal investments, prior employers and vendor friendships before scoring meetings begin.
+Personal investments, prior employers and vendor friendships go in the conflict register before scoring meetings begin. Recusal is normal at Meridian Clearing House, not career-limiting, and Amira recuses whenever a decision touches one of her own entries. Juniors have seen her leave a vendor scoring meeting when a former employer bid, which teaches the habit better than a policy page alone. The register is read aloud at the start of each scoring meeting, so a conflict is declared before scores exist rather than discovered after a contract is awarded.
 
 ### 4.3 Optical pressure
 
-Earnings dates and conference demos never justify burying findings. Management responses may sit beside findings; deletion may not.
-
-When a product lead asked to hold a finding until after a conference demo, Amira added the lead's response beside it instead. Each refusal entry names the requester's role, the finding identifier and the date, so the board risk committee can see pressure patterns. Amira has refused drop requests before a demo week and records each refusal under the ethics charter.
-
-Optical pressure is predictable; the ethics charter answers it before the email arrives. Management responses may sit beside findings; deletion of findings before a demo week is recorded as a refused request.
+Earnings dates and conference demos never justify burying findings. Management responses may sit beside findings; deletion may not. When a product lead asked to hold a finding until after a conference demo, Amira added the lead's response beside it instead and recorded the refusal under the ethics charter. Each refusal entry names the requester's role, the finding identifier and the date, so the board risk committee can see pressure patterns. Optical pressure is predictable, so the ethics charter answers it before the email arrives.
 
 ### 4.4 Threat-led stops
 
-No scenario begins until those named contacts have confirmed they are reachable. Amira refuses exercises where nobody can stop the red team in minutes.
-
-White-team stop authority is written before scenarios start, with names and phone numbers that work in minutes. A simulated settlement delay of fifteen minutes is enough reason to stop mid-play; students who continue for one more objective fail the ethics tabletop.
-
-Before each threat-led year the white-team lead rings the stop line during rehearsal and logs how long the answer took. Names and phone numbers that work under stress are written before scenarios start, and the ethics tabletop fails anyone who continues after the simulated delay.
+Amira refuses exercises where nobody can stop the red team in minutes. White-team stop authority is written before scenarios start, with names and phone numbers that work under stress, and no scenario begins until those named contacts have confirmed they are reachable. Before each threat-led year the white-team lead rings the stop line during rehearsal and logs how long the answer took. A simulated settlement delay of fifteen minutes is enough reason to stop mid-play; students who continue for one more objective fail the ethics tabletop.
 
 ### 4.5 Dual-use
 
-Publishing clearing-specific exploit paths is out of scope for this curriculum and for MCH public talks.
-
-Her talks describe the decision method, the catalogue and the cannot-claim lines, never a path through a participant connection. Amira's final slide lists that refusal beside no live demos against participants; dual-use discipline is part of specialist identity, not an optional appendix for a conference slot.
-
-When a conference organiser asked for a clearing walkthrough, Amira offered a talk on the DEC-14 decision object instead. She treats that refusal as part of the work itself, and she explains it to the organisers in the same plain terms.
+Publishing clearing-specific exploit paths is out of scope for this curriculum and for MCH public talks. Amira's talks describe the decision method, the catalogue and the cannot-claim lines, never a path through a participant connection, and her final slide lists that refusal beside "no live demos against participants". When a conference organiser asked for a clearing walkthrough, she offered a talk on the DEC-14 decision object instead and explained why in plain terms. Dual-use discipline is part of specialist identity, not an optional appendix for a conference slot.
 
 ### 4.6 Care
 
-Ethics includes sleep, hours caps and no heroics near settlement windows.
-
-Hours caps cover white-team staff as well as operators, because a tired stop owner is a stop that fails. Calendar locks block scenario bookings over settlement peaks and show the ethics charter as the rejection reason, so tired operators do not become the risk the programme was meant to reduce.
-
-Amira enforces hours caps so tired operators do not become the risk the programme was meant to reduce. Calendar locks that show the ethics charter as the rejection reason make the policy visible at booking time.
+Ethics includes sleep, hours caps and no heroics near settlement windows. Hours caps cover white-team staff as well as operators, because a tired stop owner is a stop that fails. Amira enforces them so tired people do not become the risk the programme was meant to reduce. Calendar locks block scenario bookings over settlement peaks and show the ethics charter as the rejection reason, which makes the policy visible at booking time rather than in a later reprimand. Even Amira cannot schedule a scenario slot through a lock.
 
 ### 4.7 Narrative
 
-Systemic-risk tabletop uses a simulated settlement delay of fifteen minutes. White-team students must stop a scenario mid-play when the delay appears. Amira fails any student who continues for just one more objective. Hours caps near settlement are enforced by calendar locks on scenario slots so heroics cannot be scheduled even by her.
+The systemic-risk tabletop uses a simulated settlement delay of fifteen minutes. White-team students must stop a scenario mid-play when the delay appears, and Amira fails any student who continues for just one more objective. She runs the tabletop before each threat-led year so stop muscles are rehearsed, not invented under stress. Hours caps near settlement are enforced by calendar locks on scenario slots, so heroics cannot be scheduled, even by her. The debrief records how long each student took to call the stop, and the slowest times are discussed without names.
 
-In the systemic-risk tabletop, white-team students must stop when the simulated settlement delay appears. Continuing for one more objective is a fail. Amira runs the tabletop before each threat-led year so stop muscles are rehearsed, not invented under stress.
+### 4.8 Calendar locks
 
-### 4.8 Bit2
+When someone tries to book a scenario over settlement peak, the calendar lock rejects it and quotes the relevant ethics-charter clause as the reason. Showing the charter tells the requester that the block is a policy decision, not a scheduling accident, and lets them read the exact rule before arguing with anyone. Over time it also trains requesters to read the charter before asking. A rejection that only said "slot unavailable" would invite a rebooking one hour later; a rejection that names the clause ends the attempt at the source.
 
-Calendar locks display "ethics charter" as the rejection reason when someone tries to book over settlement peak. Showing the charter as the reason tells the requester that the block is a policy decision, not a scheduling accident.
+### 4.9 Rejection copies
 
-The rejection text quotes the relevant charter clause, so the requester can read the exact rule before arguing with anyone. Repeated attempts become visible when rejection emails copy the charter maintainers; Amira reviews those copies quarterly as a signal of cultural pressure, not as a hunt for individuals.
-
-Showing the charter as the reason also trains requesters to read the charter before asking. Quarterly review of copied rejection emails is a signal of cultural pressure on settlement-peak bookings, not a hunt for individuals to blame.
-
-### 4.9 4.q10
-
-Calendar lock rejection emails CC ethics charter maintainers automatically. Copying the maintainers means repeated attempts to book over settlement peak become visible to the people who own the charter.
-
-The copy goes to the maintainers' shared mailbox rather than to Amira alone, so no single reviewer can quietly absorb it. If the same team hits the lock every quarter, Amira opens a decision clinic on capacity and timing rather than granting exceptions; the charter stays intact and the schedule conversation moves to the right room.
-
-A team that keeps hitting the lock is usually short of capacity, which is a programme design problem rather than a discipline problem. Exceptions are not granted quietly; capacity and timing move to a decision clinic instead.
+Calendar-lock rejection emails copy the charter maintainers' shared mailbox automatically, so repeated attempts to book over settlement peak become visible to the people who own the charter and no single reviewer can quietly absorb them. Amira reviews those copies quarterly as a signal of cultural pressure, not as a hunt for individuals. A team that keeps hitting the lock is usually short of capacity, which is a programme design problem rather than a discipline problem, so she opens a decision clinic on capacity and timing instead of granting exceptions.
 
 ### Worked example (synthetic MCH)
 
@@ -415,7 +315,7 @@ Threat-led and clearing-system tests require specialised legal authorization. Th
 - **EX016 — Systemic lens.** Why is clearing risk different from a single bank website? *Rubric:* 3 = many participants / settlement impact; 2 = partial; 1 = same; 0 = none.
 - **EX017 — Recusal.** Give one valid recusal trigger. *Rubric:* 3 = investment/prior employer/vendor friendship; 2 = partial; 1 = dislike; 0 = none.
 - **EX018 — Bury vs response.** What may sit beside a finding under pressure? *Rubric:* 3 = management response; not deletion; 2 = partial; 1 = deletion; 0 = none.
-- **EX019 — Kill switch.** What must exist before threat-led scenarios start? *Rubric:* 3 = white-team stop authority; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Kill switch.** What must exist before threat-led scenarios start? *Rubric:* 3 = white-team stop authority; 2 = partial; 1 = says nothing is needed; 0 = no answer.
 - **EX020 — Settlement peak.** Why cancel near settlement peak without kill switch? *Rubric:* 3 = systemic risk + ethics; 2 = partial; 1 = fear; 0 = none.
 
 ### Synthesis
