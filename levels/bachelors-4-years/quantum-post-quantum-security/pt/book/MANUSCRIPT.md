@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Fundamentos para Decisões Defensáveis
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 21–40 (EX041–EX080) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 31–40 (EX061–EX080) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de segurança e computação em sentido amplo que precisam de fundamentos duradouros — matemática, sistemas, redes, conceitos criptográficos, evidências e ética — e, depois, de um primeiro estudo cuidadoso da ameaça quântica e da criptografia pós-quântica (PQC). Conhecimento de entrada: matemática do ensino médio, computação básica e comunicação escrita.
 - Relação com os livros vizinhos: o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta e constrói migrações; os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) as estudam empiricamente. **Este livro constrói os fundamentos e o hábito de comparar alternativas com hipóteses e evidências explícitas.**
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -43,8 +43,18 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 18. [Métodos de pesquisa I](#ch-18)
 19. [Segurança quântica e pós-quântica: escopo e teoria](#ch-19)
 20. [Segurança quântica e pós-quântica: casos fundamentais](#ch-20)
+21. [Segurança quântica e pós-quântica: modelos de sistema](#ch-21)
+22. [Segurança quântica e pós-quântica: dados e dependências](#ch-22)
+23. [Segurança quântica e pós-quântica: métodos I](#ch-23)
+24. [Segurança quântica e pós-quântica: controles](#ch-24)
+25. [Laboratório I](#ch-25)
+26. [Segurança quântica e pós-quântica: métodos II](#ch-26)
+27. [Segurança quântica e pós-quântica: verificação](#ch-27)
+28. [Segurança quântica e pós-quântica: análise de falhas](#ch-28)
+29. [Segurança quântica e pós-quântica: operações](#ch-29)
+30. [Laboratório II](#ch-30)
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1382,7 +1392,836 @@ A queda das estimativas de recursos, os candidatos quebrados, as falhas de imple
 <!-- cyberabc:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 40
 
-[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança quântica e pós-quântica: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um modelo de sistema que liste componentes, interfaces e funções criptográficas; (2) classificar cada função pela exposição quântica; (3) registrar a responsabilidade e os mecanismos de mudança; e (4) usar o modelo para comparar alternativas de migração.
+
+### 21.1 O que o modelo contém
+
+Um modelo de sistema para a segurança quântica lista, para cada componente, as suas funções criptográficas (estabelecimento de chaves, autenticação, proteção de dados, integridade de código), os algoritmos usados, os parâmetros, a biblioteca ou o hardware que os implementa, o responsável e o *mecanismo de mudança* — configuração, atualização de software, versão do fornecedor ou substituição do hardware. O modelo estende o diagrama de fluxo de dados do Capítulo 16 com os fatos necessários para estimar o esforço.
+
+O mecanismo de mudança costuma ser o fato decisivo, porque define quanto tempo uma mudança leva. A HCU o preenche responsável por responsável.
+
+### 21.2 Classes de exposição
+
+Classifique cada função: *exposta ao HNDL* (estabelecimento de chaves clássico que protege dados cuja confidencialidade dura além de um *z* plausível); *exposta à falsificação posterior* (assinaturas clássicas cuja confiança precisa durar além de *z*, ou que não podem ser substituídas rapidamente); *adequada diante do Grover* (funções simétricas e de hash com tamanhos suficientes); e *desconhecida*. A classe desconhecida não é um erro de arredondamento; ela costuma conter os itens mais difíceis, como os dispositivos embarcados.
+
+A HCU registra o motivo de cada classificação para que ela possa ser revisada. Uma função só sai da classe desconhecida quando chegam evidências, como uma exportação de configuração ou uma declaração do fornecedor testada.
+
+### 21.3 Comparando alternativas
+
+Com o modelo, as alternativas se tornam comparáveis. Para a VPN das agências da HCU: (a) atualizar o firmware dos equipamentos para suportar a troca de chaves híbrida no IKEv2 conforme a [RFC 9370](https://www.rfc-editor.org/rfc/rfc9370.html); (b) acrescentar uma chave pré-compartilhada misturada ao IKEv2 conforme a [RFC 8784](https://www.rfc-editor.org/rfc/rfc8784.html), como camada pós-quântica provisória; (c) substituir os equipamentos. O modelo registra, para cada uma, o mecanismo de mudança, a proteção obtida, o custo operacional e o risco residual. A opção (b) protege contra o HNDL rapidamente se as chaves forem bem gerenciadas; (a) é o alvo; (c) só é necessária onde o suporte no firmware nunca chegar.
+
+### 21.4 Exemplo resolvido
+
+A HCU modela o seu parque de terminais de cartão: 3.000 terminais, troca de chaves ECDH com o switch de pagamentos, firmware assinado com RSA, atualizações controladas pelo fornecedor e uma ROM de boot no hardware que verifica apenas RSA. Exposição: a troca de chaves está exposta ao HNDL apenas para os dados de cartão de vida curta (prioridade baixa); a assinatura do firmware está exposta à falsificação posterior e a ROM de boot não pode mudar, então o caminho realista é a substituição no fim da vida útil, com um requisito de compras de assinatura pós-quântica do firmware.
+
+O modelo transforma um problema técnico difícil numa decisão de planejamento com data conhecida: os ciclos de substituição já estão no orçamento da HCU, então acrescentar um requisito à próxima compra custa pouco agora e evita uma substituição não planejada depois.
+
+### 21.5 Atividade prática
+
+Modele três componentes da HCU (gateway web, AC interna, caixa eletrônico) numa tabela com função, algoritmo, implementação, responsável, mecanismo de mudança e classe de exposição.
+
+Para cada componente, o mecanismo de mudança deve dizer quem age: a equipe da HCU mudando a configuração, um fornecedor entregando uma atualização ou uma substituição de hardware. Marque a classe de exposição com um motivo curto. Se você não conseguir determinar um item, escreva desconhecido em vez de adivinhar, e anote que evidência resolveria a questão. Compare a sua tabela com a de um colega; as divergências costumam revelar uma hipótese que um de vocês fez em silêncio.
+
+### 21.6 Erros comuns e limites
+
+- Omitir os mecanismos de mudança, o que esconde o esforço real.
+- Tratar os itens desconhecidos como de baixo risco.
+- Modelar apenas servidores e esquecer dispositivos e parceiros.
+
+O mecanismo de mudança define o esforço: uma mudança de configuração pode levar um dia, enquanto uma substituição de hardware leva anos. Os itens desconhecidos costumam ser desconhecidos por serem antigos ou fechados, o que os torna mais propensos a ser difíceis, e não menos. Os dispositivos e os parceiros carregam boa parte do risco num ambiente financeiro, dos terminais de cartão aos enlaces com bancos parceiros, e deixá-los de fora faz o modelo parecer mais simples que a realidade.
+
+### Exercícios
+
+- **EX041 — Classe de exposição.** Classifique: TLS para o aplicativo móvel (dados de sessão guardados por 7 anos), cifração AES-256 do arquivo, assinatura de código RSA para ferramentas internas, criptografia desconhecida nos dispensadores de cédulas dos caixas eletrônicos. Rubrica: 3 = quatro classes corretas com motivos.
+- **EX042 — Alternativas.** Compare as opções (a) e (b) de 21.3 quanto à proteção, ao esforço e ao risco residual. Rubrica: 3 = três dimensões para cada uma.
+
+### Síntese
+
+Um modelo de sistema registra funções criptográficas, implementações, responsáveis e mecanismos de mudança, classifica a exposição e torna as alternativas comparáveis segundo critérios explícitos.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — capítulo 21 de 40
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança quântica e pós-quântica: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o que é uma lista de materiais criptográficos (CBOM); (2) combinar fontes de evidência num inventário; (3) calcular a cobertura e a parcela de desconhecidos; e (4) rastrear as dependências por bibliotecas, fornecedores e parceiros.
+
+### 22.1 Fontes do inventário
+
+Nenhum método isolado encontra toda a criptografia. A *observação passiva da rede* vê os algoritmos negociados na transmissão; a *revisão de configuração* lê o que os serviços estão configurados para oferecer; a *varredura de código e de binários* encontra chamadas de bibliotecas e constantes embutidas; as *declarações dos fornecedores* descrevem os produtos fechados; os *repositórios de certificados* revelam os algoritmos de assinatura e a validade. Uma CBOM registra, para cada ativo e função, o algoritmo, os parâmetros, a implementação e a fonte da evidência, de forma análoga a uma lista de materiais de software para componentes.
+
+Cada método tem pontos cegos, então a HCU os combina e registra a fonte de cada entrada.
+
+### 22.2 Atividade prática — Laboratório I
+
+```python
+# Lab I (ch 22): aggregate a synthetic cryptographic bill of materials (CBOM) and measure coverage.
+records = [  # (asset, function, algorithm, source)
+    ("web-gateway", "key-exchange", "X25519MLKEM768", "passive"), ("web-gateway", "signature", "RSA-2048", "config"),
+    ("atm-controller", "key-exchange", "ECDHE-P256", "passive"), ("atm-controller", "signature", "ECDSA-P256", "code"),
+    ("core-banking", "key-exchange", "RSA-kex", "config"), ("billing", "data-at-rest", "AES-256-GCM", "code"),
+    ("card-terminal", "unknown", "unknown", "none"), ("branch-vpn", "key-exchange", "ECDHE-P384", "config")]
+VULN = {"RSA-2048", "ECDHE-P256", "ECDSA-P256", "RSA-kex", "ECDHE-P384"}
+assets = {r[0] for r in records}
+unknown = {r[0] for r in records if r[2] == "unknown"}
+vuln = [r for r in records if r[2] in VULN]
+print(f"assets {len(assets)}, unknown {len(unknown)} ({100*len(unknown)/len(assets):.0f}%)")
+print(f"quantum-vulnerable uses {len(vuln)}:", ", ".join(f"{a}/{f}" for a, f, _, _ in vuln))
+print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[2]])
+```
+
+Saída esperada:
+
+```text
+assets 6, unknown 1 (17%)
+quantum-vulnerable uses 5: web-gateway/signature, atm-controller/key-exchange, atm-controller/signature, core-banking/key-exchange, branch-vpn/key-exchange
+hybrid key exchange present on: ['web-gateway']
+```
+
+Seis ativos sintéticos produzem cinco usos vulneráveis à computação quântica e um ativo (17 %) cuja criptografia é desconhecida. O terminal de cartão desconhecido precisa de uma consulta ao fornecedor antes que possa ser planejado.
+
+O laboratório combina evidências de mais de uma fonte para cada ativo e imprime um resumo com a parcela de desconhecidos. Cada linha mantém a sua fonte, então quem lê consegue ver quais achados se apoiam em observação e quais em declarações de fornecedores. Rodar o mesmo script nos dados do próximo trimestre vai mostrar se a parcela de desconhecidos está caindo, o que é, por si só, um indicador útil do progresso da migração.
+
+### 22.3 Dependências
+
+A criptografia é herdada. Uma aplicação usa um framework que usa uma biblioteca TLS que usa o provedor do sistema operacional; um fornecedor de SaaS termina o TLS numa CDN que a HCU não controla; a API de um parceiro dita quais algoritmos o cliente da HCU precisa suportar. Desenhe as cadeias de dependência dos fluxos de alta prioridade e identifique a *parte controladora* de cada elo — aquela que precisa agir para que o algoritmo mude. Uma migração só está completa para um fluxo quando todos os elos tiverem mudado.
+
+Os elos que a HCU não controla precisam de roteiros dos seus responsáveis.
+
+### 22.4 Exemplo resolvido
+
+O fluxo do mobile banking da HCU depende de: a pilha TLS do sistema operacional do celular (fornecedor da plataforma), a biblioteca de rede do aplicativo (desenvolvedores da HCU), uma CDN que termina o TLS (provedor da CDN), o gateway web (equipe de rede da HCU) e a API do sistema bancário central (fornecedor do sistema central). A troca de chaves híbrida do celular à CDN depende do suporte da plataforma e da CDN; da CDN ao gateway, da CDN e da HCU; do gateway ao sistema central, da HCU e do fornecedor do sistema central. Três segmentos, quatro partes controladoras e quatro cronogramas diferentes.
+
+O fluxo só é registrado como migrado quando os três segmentos tiverem mudado, e a HCU acompanha cada parte separadamente.
+
+### 22.5 Erros comuns e limites
+
+- Depender de uma única fonte de evidência.
+- Registrar algoritmos sem a fonte da evidência e a data.
+- Declarar um fluxo migrado quando apenas o segmento da HCU mudou.
+
+Cada fonte deixa algo escapar: os sensores de rede não veem os certificados no TLS 1.3, a configuração pode diferir do comportamento, as declarações dos fornecedores podem estar desatualizadas. Combiná-las, com cada linha rotulada, dá um retrato mais completo e mais honesto. Um fluxo só está migrado quando todas as partes da sua cadeia tiverem mudado, então registre o estado de cada elo separadamente, em vez de marcar o fluxo como concluído quando a parte da HCU estiver pronta.
+
+### Exercícios
+
+- **EX043 — Aritmética da cobertura.** Se mais dois ativos do Laboratório I se tornarem desconhecidos, qual é a parcela de desconhecidos? Rubrica: 3 = 3/8 ≈ 38 % com o método (oito ativos, três desconhecidos).
+- **EX044 — Partes controladoras.** No fluxo móvel de 22.4, quais segmentos a HCU pode migrar unilateralmente? Rubrica: 3 = a configuração do gateway e a biblioteca do aplicativo, com raciocínio sobre os demais.
+
+### Síntese
+
+Uma CBOM funde várias fontes de evidência com a sua procedência; a cobertura e a parcela de desconhecidos mostram o que o inventário ainda não enxerga, e as cadeias de dependência revelam quem precisa agir.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — capítulo 22 de 40
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança quântica e pós-quântica: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) enunciar o problema Learning With Errors (LWE); (2) executar uma cifração LWE de brinquedo e explicar por que a decifração funciona; (3) descrever como o ML-KEM transforma essa ideia num KEM; e (4) explicar os conjuntos de parâmetros e as categorias de segurança.
+
+### 23.1 Learning With Errors
+
+Dada uma matriz aleatória *A* módulo *q* e um vetor *b* = *As* + *e*, em que *s* é secreto e *e* é um vetor de pequenos erros aleatórios, recupere *s*. Sem *e*, a eliminação gaussiana resolve o sistema rapidamente. Com *e*, os melhores algoritmos clássicos e quânticos conhecidos levam tempo exponencial na dimensão, porque o problema passa a ser encontrar vetores curtos em reticulados de alta dimensão. Regev (2009) introduziu o LWE e mostrou que a sua dificuldade se relaciona com problemas de reticulados no pior caso. O ML-KEM usa uma variante estruturada, o Module-LWE, sobre os anéis de polinômios do Capítulo 6.
+
+### 23.2 Atividade prática — Laboratório W
+
+```python
+# Lab W (ch 23): a TOY Regev-style LWE encryption of one bit. Deliberately insecure parameters.
+import random
+rng = random.Random(5)
+n, q, m = 16, 3329, 64
+def small(): return rng.choice([-2, -1, 0, 1, 2])
+s = [rng.randrange(q) for _ in range(n)]
+A = [[rng.randrange(q) for _ in range(n)] for _ in range(m)]
+b = [(sum(A[i][j] * s[j] for j in range(n)) + small()) % q for i in range(m)]   # b = A s + e
+def enc(bit):
+    r = [rng.randrange(2) for _ in range(m)]                                        # random subset
+    u = [sum(r[i] * A[i][j] for i in range(m)) % q for j in range(n)]
+    v = (sum(r[i] * b[i] for i in range(m)) + bit * (q // 2)) % q
+    return u, v
+def dec(u, v):
+    d = (v - sum(u[j] * s[j] for j in range(n))) % q                                 # = bit*q/2 + small noise
+    return 1 if q // 4 < d < 3 * q // 4 else 0
+ok = sum(dec(*enc(bit)) == bit for bit in [rng.randrange(2) for _ in range(2000)])
+print(f"toy LWE: {ok}/2000 bits decrypted correctly (noise stays below q/4)")
+```
+
+Saída esperada:
+
+```text
+toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
+```
+
+Para cifrar um bit, somam-se um subconjunto aleatório das linhas; o ruído acumulado continua pequeno, enquanto o bit é posto em *q*/2. Quem decifra remove a parte que depende de *s* e verifica se o resto está mais perto de 0 ou de *q*/2. Os parâmetros aqui são de brinquedo — um segredo de 16 dimensões é fácil de recuperar — e servem apenas para mostrar o mecanismo.
+
+Rodar o laboratório várias vezes com escolhas aleatórias diferentes mostra que a decifração continua dando certo, porque o ruído fica abaixo do limiar.
+
+### 23.3 Do LWE ao ML-KEM
+
+O ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) usa o Module-LWE com polinômios de 256 coeficientes, comprime os textos cifrados e envolve a cifração numa transformação (uma variante da Fujisaki–Okamoto), de modo que o desencapsulamento recifra e confere o texto cifrado, o que protege contra ataques de texto cifrado escolhido. A interface é um KEM: o KeyGen produz uma chave de encapsulamento e uma chave de desencapsulamento; o Encaps produz um texto cifrado e um segredo compartilhado de 32 bytes; o Decaps recupera o segredo. Os conjuntos de parâmetros ML-KEM-512, -768 e -1024 visam as categorias 1, 3 e 5 do NIST. As chaves de encapsulamento têm 800, 1.184 e 1.568 bytes; os textos cifrados, 768, 1.088 e 1.568 bytes.
+
+### 23.4 Exemplo resolvido
+
+A HCU escolhe o ML-KEM-768 para a troca de chaves híbrida porque a categoria 3 oferece uma margem acima da segurança equivalente ao AES-128, é o conjunto de parâmetros usado pelo grupo TLS X25519MLKEM768, amplamente implantado, e a sua chave de 1.184 bytes cabe nos handshakes típicos. O ML-KEM-1024 fica reservado para qualquer parceiro cujas regras exijam a categoria 5.
+
+A escolha é registrada com os seus motivos para que possa ser revista se as orientações mudarem. As chaves e os textos cifrados maiores foram medidos no laboratório antes de a escolha ser confirmada, e os enlaces das agências os comportaram sem mudanças na rede.
+
+### 23.5 Erros comuns e limites
+
+- Achar que os parâmetros do laboratório de brinquedo são seguros.
+- Esquecer que o ML-KEM é um KEM, e não uma função de cifração genérica.
+- Escolher os parâmetros apenas pelo tamanho, sem considerar os requisitos de política.
+
+Os parâmetros de brinquedo são escolhidos para que quem lê consiga acompanhar a aritmética, o que significa que um atacante também conseguiria. Um KEM produz um segredo compartilhado que uma cifra simétrica depois usa; ele não cifra mensagens arbitrárias diretamente. A escolha dos parâmetros depende da categoria de segurança, da política e do suporte nos protocolos, além do tamanho. Um conjunto menor pode servir para a maioria dos usos, mas as regras de um parceiro podem exigir um maior, qualquer que seja o desempenho.
+
+### Exercícios
+
+- **EX045 — Por que o ruído importa.** Explique em três frases por que o LWE sem erro é fácil e com erro é considerado difícil. Rubrica: 3 = argumento da álgebra linear versus o dos vetores curtos em reticulados.
+- **EX046 — Escolha de parâmetros.** O parceiro da HCU exige a categoria 5 para o estabelecimento de chaves. Qual conjunto ML-KEM, e quantos bytes têm a chave de encapsulamento e o texto cifrado? Rubrica: 3 = ML-KEM-1024, 1.568 e 1.568 bytes.
+
+### Síntese
+
+O LWE esconde um segredo sob um pequeno ruído; o ML-KEM constrói sobre a sua variante modular um KEM eficiente e seguro contra texto cifrado escolhido, com três conjuntos de parâmetros associados às categorias do NIST.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — capítulo 23 de 40
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Segurança quântica e pós-quântica: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar as principais famílias de controles para o risco quântico; (2) explicar o estabelecimento de chaves híbrido PQ/T e a sua terminologia; (3) escolher controles para as exposições ao HNDL e à falsificação posterior; e (4) documentar o risco residual depois dos controles.
+
+### 24.1 Famílias de controles
+
+Os controles para o risco quântico se dividem em cinco famílias. Os *controles de algoritmo* implantam algoritmos pós-quânticos ou híbridos. Os *controles de dados* minimizam, encurtam ou recifram os dados para que menos coisa fique exposta. Os *controles de gestão de chaves* acrescentam chaves simétricas pré-compartilhadas ou encurtam a vida das chaves. Os *controles de arquitetura* centralizam a política criptográfica para ganhar agilidade. Os *controles de governança* incluem a responsabilidade pelo inventário, as cláusulas de compras e os cronogramas de transição.
+
+A maioria das exposições da HCU precisa de controles de mais de uma família. Os controles de governança são os mais lentos para mostrar efeito, mas mantêm as outras famílias avançando ao longo dos anos que uma migração leva.
+
+### 24.2 Estabelecimento de chaves híbrido
+
+Um esquema híbrido PQ/T, na terminologia da [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html), combina um componente pós-quântico e um tradicional de modo que o resultado seja seguro se qualquer um dos componentes for. No TLS, o X25519MLKEM768 ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)) concatena um segredo compartilhado do ML-KEM-768 com um segredo compartilhado do X25519 e alimenta os dois no key schedule. Os híbridos protegem contra dois riscos ao mesmo tempo: um futuro computador quântico (que quebraria o X25519) e uma quebra clássica inesperada ou uma falha de implementação no esquema novo. A [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) discute a combinação de KEMs e os métodos aprovados de combinação de chaves.
+
+### 24.3 Associando controles à exposição
+
+Para a exposição ao HNDL, implante o estabelecimento de chaves híbrido nos fluxos que levam dados de vida longa e minimize o que esses fluxos carregam. Para a exposição à falsificação posterior, planeje assinaturas pós-quânticas, começando pelas âncoras de confiança de vida longa e pela assinatura de código, e compre dispositivos que as suportem; onde as assinaturas precisarem continuar verificáveis por décadas, planeje também a renovação dos carimbos de tempo do arquivo. Para os itens desconhecidos, o controle é a investigação: uma consulta ao fornecedor ou um teste de laboratório.
+
+O plano da HCU lista cada exposição com o controle escolhido e a evidência que vai mostrar que ele funcionou.
+
+### 24.4 Risco residual
+
+Nenhum controle remove todo o risco. Depois da troca de chaves híbrida na VPN das agências, os riscos residuais incluem a autenticação clássica (falsificação posterior, urgência menor), dispositivos desconhecidos atrás das agências e a chance de uma configuração voltar silenciosamente ao modo apenas clássico. Declare o risco residual explicitamente, com um responsável e uma data de revisão; um relatório de migração que alega "seguro contra a computação quântica" sem risco residual não é crível.
+
+A HCU monitora os handshakes para detectar o retorno silencioso a grupos apenas clássicos. Cada retorno é registrado e revisado pela equipe de rede em até uma semana.
+
+### 24.5 Exemplo resolvido
+
+O plano de controles da HCU para o arquivo de hipotecas: (1) IKEv2 híbrido para as transferências das agências; (2) parar de enviar os documentos digitalizados toda noite, enviando-os uma única vez na conclusão; (3) reenvelopar as chaves do arquivo com transporte de chaves baseado em ML-KEM dentro do HSM quando o HSM o suportar; (4) risco residual: carimbos de tempo do arquivo assinados com RSA, responsável o chefe de Gestão de Documentos, revisão anual.
+
+O item dois é um controle de dados que reduz a exposição imediatamente e quase não custa nada. O item três depende de um fornecedor e por isso é datado pelo roteiro do HSM, e não pela HCU. O item quatro nomeia um responsável para um risco que ainda não pode ser fechado. Juntos, eles mostram que um plano crível mistura famílias de controles e admite o que resta.
+
+### 24.6 Atividade prática
+
+Produza uma tabela de controles para três exposições da HCU, com família do controle, controle específico, efeito esperado, responsável e risco residual.
+
+Escolha exposições de tipos diferentes, como um fluxo exposto ao HNDL, uma âncora de confiança exposta à falsificação posterior e um dispositivo desconhecido. O efeito esperado deve ser mensurável, por exemplo a parcela do tráfego de um fluxo que usa troca de chaves híbrida. Nomeie um papel real como responsável, e não uma equipe. O risco residual deve dizer o que continua exposto depois do controle e quando será revisado, para que a tabela registre o que continua em aberto, além do que foi feito.
+
+### 24.7 Erros comuns e limites
+
+- Alegar que a troca de chaves híbrida torna a autenticação pós-quântica.
+- Ignorar os controles de dados, que costumam ser os mais baratos.
+- Omitir o risco residual.
+
+A troca de chaves híbrida protege os segredos de sessão; as assinaturas e os certificados continuam clássicos até serem mudados separadamente. Os controles de dados, como enviar menos, enviar com menos frequência ou apagar mais cedo, costumam cortar a exposição mais rápido e mais barato que qualquer mudança de algoritmo. Omitir o risco residual faz um plano parecer concluído quando não está, e os leitores que notam a lacuna deixam de confiar no resto do relatório.
+
+### Exercícios
+
+- **EX047 — Justificativa do híbrido.** Dê dois riscos distintos contra os quais um híbrido PQ/T protege. Rubrica: 3 = quebra quântica do tradicional e quebra clássica/de implementação do pós-quântico.
+- **EX048 — Linha da tabela de controles.** Escreva uma linha de controle completa para a AC raiz interna da HCU. Rubrica: 3 = família, controle, efeito, responsável, risco residual.
+
+### Síntese
+
+Os controles de algoritmo, de dados, de gestão de chaves, de arquitetura e de governança juntos reduzem o risco quântico; os híbridos protegem contra surpresas quânticas e clássicas, e o risco residual precisa ser declarado.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — capítulo 24 de 40
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar testes de resposta conhecida (KATs) e testes negativos; (2) explicar por que os programas de validação testam implementações; (3) construir um registro de laboratório reprodutível; e (4) interpretar corretamente os resultados de aprovação e reprovação.
+
+### 25.1 Por que testar as implementações
+
+As normas definem algoritmos; as implementações ainda podem estar erradas. Os testes de resposta conhecida rodam uma implementação sobre entradas fixas e comparam com as saídas publicadas; os testes negativos fornecem entradas malformadas e esperam a rejeição. O Cryptographic Algorithm Validation Program do NIST aplica esses testes às implementações das FIPS 203, 204 e 205. Os estudantes não conseguem validar uma biblioteca de produção, mas podem aprender o hábito com as primitivas da biblioteca padrão.
+
+O objetivo do exercício é separar duas afirmações fáceis de confundir: que um algoritmo é sólido, e que um determinado código o calcula corretamente. Os desenvolvedores da HCU confiam na primeira a partir do processo de normalização e precisam estabelecer a segunda por conta própria para cada biblioteca que implantam.
+
+### 25.2 Atividade prática — Laboratório V
+
+```python
+# Lab V (ch 25): known-answer and negative tests - the habit behind validating PQC libraries.
+import hashlib
+KATS = [  # (function, input, expected hex prefix) - published test values for SHA-3 / SHAKE on empty input
+    ("sha3_256", b"", "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"),
+    ("shake_128/32", b"", "7f9c2ba4e88f827d616045507605853ed73b8093f6efbc88eb1a6eacfa66ef26"),
+]
+def run(name, data):
+    if name == "sha3_256": return hashlib.sha3_256(data).hexdigest()
+    return hashlib.shake_128(data).hexdigest(32)
+for name, data, want in KATS:
+    print(f"KAT {name:13s}", "PASS" if run(name, data) == want else "FAIL")
+SIZES = {"ML-KEM-512": 800, "ML-KEM-768": 1184, "ML-KEM-1024": 1568}   # encapsulation-key bytes, FIPS 203
+def validate_ek(param, ek):
+    if len(ek) != SIZES[param]: raise ValueError(f"{param}: expected {SIZES[param]} bytes, got {len(ek)}")
+    return True
+for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184)]:
+    try: validate_ek(param, bytes(n)); print(f"negative/positive test {param} len {n}: accepted")
+    except ValueError as e: print(f"negative/positive test {param} len {n}: rejected ({e})")
+```
+
+Saída esperada:
+
+```text
+KAT sha3_256      PASS
+KAT shake_128/32  PASS
+negative/positive test ML-KEM-768 len 1184: accepted
+negative/positive test ML-KEM-768 len 1183: rejected (ML-KEM-768: expected 1184 bytes, got 1183)
+negative/positive test ML-KEM-512 len 1184: rejected (ML-KEM-512: expected 800 bytes, got 1184)
+```
+
+Os KATs de hash passam porque o SHA-3 do Python coincide com os valores publicados; as verificações de comprimento mostram uma aceitação e duas rejeições. Um decodificador ML-KEM real também verifica os intervalos dos coeficientes, como a FIPS 203 exige.
+
+Os dois tipos de teste são necessários. Os KATs confirmam que as entradas corretas dão as saídas publicadas; os testes negativos confirmam que as entradas de tamanho errado são recusadas, e não processadas. Observe o terceiro caso: uma chave com o comprimento certo para o ML-KEM-768 ainda é rejeitada quando quem chama alega ML-KEM-512, porque o conjunto de parâmetros precisa coincidir. Muitos bugs reais de interoperabilidade vêm exatamente desse tipo de descompasso entre um rótulo e os bytes que o acompanham.
+
+### 25.3 Registros de laboratório
+
+Um registro de laboratório declara a pergunta, o ambiente (versões do sistema operacional, do Python e das bibliotecas), as entradas, os comandos exatos, as saídas e a interpretação. Guarde-o junto com o código para que qualquer pessoa possa rodá-lo de novo. Se uma atualização de biblioteca mudar um resultado, o registro mostra o que mudou.
+
+Os bons registros também anotam o que não foi testado, para que um leitor posterior não suponha uma cobertura que nunca existiu. Na HCU, o registro de laboratório de cada biblioteca criptográfica fica ao lado da sua configuração no controle de versão, e o chamado de mudança de qualquer atualização de biblioteca aponta para o registro da nova execução. Um auditor consegue então rastrear uma versão de produção até a evidência de que ela foi aprovada.
+
+### 25.4 Interpretando os resultados
+
+Um KAT aprovado mostra que a implementação coincide com a referência naquelas entradas; ele não mostra comportamento de tempo constante, tratamento correto das chaves nem integração segura. Um teste reprovado pode revelar um bug na implementação, no vetor de teste ou no harness. Inclua um *controle negativo* — uma implementação deliberadamente errada que o teste precisa pegar — para confirmar que o harness consegue reprovar.
+
+No Laboratório V, os comprimentos de chave rejeitados funcionam como uma versão simples desse controle. Se o controle passar, o próprio harness está quebrado e todos os resultados anteriores ficam em dúvida.
+
+### 25.5 Exemplo resolvido
+
+Uma desenvolvedora da HCU integra uma nova biblioteca de PQC. O seu registro de laboratório: a versão da biblioteca, os vetores de teste dos arquivos de KAT publicados pelo fornecedor, um harness que compara as saídas e um controle negativo que inverte um byte de uma saída esperada para verificar que o harness relata a reprovação. Todos os KATs passam; o controle negativo reprova, como esperado. O registro anota que o comportamento quanto a canais laterais não foi testado e está coberto pela avaliação da própria biblioteca.
+
+A desenvolvedora também registra de onde vieram os vetores e quando foram baixados, para que uma atualização posterior dos arquivos do fornecedor possa ser conferida com a versão usada.
+
+### 25.6 Erros comuns e limites
+
+- Tratar o sucesso nos KATs como prova de segurança.
+- Harnesses que não conseguem reprovar.
+- Versões não registradas, o que torna os resultados irreprodutíveis.
+- Rodar apenas testes positivos, de modo que as entradas malformadas nunca são exercitadas.
+- Baixar vetores de teste de um espelho não oficial sem verificar a sua origem.
+- Não rodar nada de novo depois de uma atualização de biblioteca porque a execução anterior passou.
+- Testar uma biblioteca isoladamente e supor que a integração se comporta igual, quando o código que a chama pode passar o conjunto de parâmetros errado ou tratar mal os erros.
+
+Cada um desses deixa uma lacuna que o registro de laboratório deveria tornar visível, e não esconder.
+
+### Exercícios
+
+- **EX049 — Controle negativo.** Descreva um controle negativo para o KAT de SHA3-256 do Laboratório V. Rubrica: 3 = entrada ou valor esperado deliberadamente errado que precisa produzir FAIL.
+- **EX050 — Limites.** Liste três propriedades que um KAT aprovado não estabelece. Rubrica: 3 = canais laterais, gestão de chaves, integração/uso no protocolo (ou equivalentes).
+
+### Síntese
+
+Os testes de resposta conhecida e os negativos, registrados de forma reprodutível e conferidos com controles negativos, são a evidência básica de que uma implementação coincide com a sua norma — e nada mais.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — capítulo 25 de 40
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança quântica e pós-quântica: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como os segredos híbridos são combinados com uma função de derivação de chaves; (2) executar um combinador de brinquedo e interpretar as suas saídas; (3) descrever o ML-DSA e o SLH-DSA no nível conceitual; e (4) comparar as opções de assinatura por tamanho, velocidade e hipóteses.
+
+### 26.1 Combinando segredos
+
+Um KEM híbrido produz dois segredos compartilhados. Um *combinador* alimenta os dois, mais um contexto como a transcrição do handshake, numa função de derivação de chaves (KDF), de modo que a saída seja imprevisível se qualquer um dos segredos for. A concatenação seguida do HKDF-Extract, como no projeto híbrido do TLS, é uma abordagem padrão; a [SP 800-56C Rev. 2](https://doi.org/10.6028/NIST.SP.800-56Cr2) e a SP 800-227 descrevem os métodos aprovados de derivação e de combinação de chaves.
+
+O combinador é pequeno, mas é nele que a segurança do híbrido de fato se decide.
+
+### 26.2 Atividade prática — Laboratório C
+
+```python
+# Lab C (ch 26): a hybrid key combiner. The session key depends on BOTH shared secrets.
+import hashlib, hmac
+def hkdf_extract(salt, ikm): return hmac.new(salt, ikm, hashlib.sha256).digest()
+def combine(ss_pq, ss_trad, context):
+    # Concatenate secrets (PQ first, as in X25519MLKEM768), bind the transcript/context, then extract.
+    return hkdf_extract(b"\x00" * 32, ss_pq + ss_trad + context).hex()[:16]
+pq, trad, ctx = b"P" * 32, b"T" * 32, b"handshake-transcript-hash"
+print("baseline              ", combine(pq, trad, ctx))
+print("PQ secret changed     ", combine(b"Q" * 32, trad, ctx))
+print("traditional changed   ", combine(pq, b"U" * 32, ctx))
+print("context changed       ", combine(pq, trad, b"other-transcript"))
+```
+
+Saída esperada:
+
+```text
+baseline               d48e982e8c06ca60
+PQ secret changed      d4c36ea2d90b2e9c
+traditional changed    8dcefa12ded3d99c
+context changed        af06eca8abcd45a9
+```
+
+Mudar qualquer um dos segredos, ou o contexto, muda completamente a chave derivada. Vincular o contexto impede que um atacante reutilize segredos entre handshakes diferentes.
+
+As quatro chaves não compartilham nenhum padrão visível, que é a propriedade que uma KDF deve dar. A ordem das entradas também importa: o laboratório põe o segredo pós-quântico primeiro, como no X25519MLKEM768, e as duas pontas precisam usar a mesma ordem, senão derivam chaves diferentes. Num protocolo real, o contexto é o hash da transcrição do handshake, e a saída é expandida em chaves separadas para cada direção, em vez de truncada como aqui para exibição.
+
+### 26.3 Assinaturas pós-quânticas
+
+O ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) é uma assinatura baseada em reticulados que usa a técnica "Fiat–Shamir with aborts": quem assina amostra repetidamente até que a assinatura candidata não revele nada sobre a chave. Os conjuntos de parâmetros ML-DSA-44, -65 e -87 têm assinaturas de 2.420, 3.309 e 4.627 bytes. O SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) depende apenas de funções de hash; ele tem chaves públicas minúsculas (32–64 bytes), mas assinaturas grandes (de 7.856 a 49.856 bytes) e assinatura mais lenta. O LMS e o XMSS são menores e mais rápidos, mas têm estado. O FN-DSA, baseado no Falcon, promete assinaturas compactas e ainda está em desenvolvimento.
+
+### 26.4 Comparando as opções
+
+Compare as assinaturas quanto a: hipótese (reticulados versus hash), tamanhos, velocidade de assinatura e de verificação, existência de estado e suporte no ecossistema. Para os certificados TLS, a velocidade e o tamanho moderado do ML-DSA são o melhor encaixe. Para o firmware assinado raramente e verificado no boot, o conservadorismo do SLH-DSA ou as assinaturas pequenas do LMS podem ser preferidos. Para documentos que precisam de décadas de confiança, o conservadorismo pesa muito.
+
+As escolhas da própria HCU seguem esse padrão: ML-DSA para os certificados do gateway, com a assinatura do firmware dos terminais de cartão ainda em análise. Cada escolha é registrada com o motivo, para que possa ser revista quando o suporte no ecossistema ou a criptoanálise mudarem.
+
+### 26.5 Exemplo resolvido
+
+A HCU compara opções para assinar os extratos dos associados, produzidos 500.000 vezes por mês: ML-DSA-65 (assinaturas de 3.309 bytes, assinatura rápida) versus SLH-DSA-SHA2-128s (assinaturas de 7.856 bytes, assinatura lenta). O volume e o tamanho dos PDFs favorecem o ML-DSA-65; a HCU registra o risco residual da hipótese e planeja manter os identificadores de algoritmo em cada documento, para que uma mudança futura seja possível.
+
+A comparação é registrada no log de decisões junto com a taxa de assinatura medida nos servidores de extratos da HCU, para que possa ser revista se os volumes mudarem. As medições mostraram que o SLH-DSA teria precisado de hardware adicional para acompanhar.
+
+### 26.6 Erros comuns e limites
+
+- Combinar segredos por XOR sem vínculo com o contexto.
+- Escolher o SLH-DSA para TLS de alto volume sem medir o custo.
+- Usar assinaturas com estado onde o estado não pode ser protegido.
+- Truncar a saída combinada abaixo da força necessária para a chave de sessão.
+- Comparar esquemas de assinatura apenas pelo tamanho da assinatura, ignorando a chave pública levada em cada certificado.
+- Deixar o identificador de algoritmo fora dos documentos assinados, o que dificulta uma migração posterior.
+- Supor que um projeto híbrido é seguro porque cada componente é, sem verificar que o combinador vincula os dois segredos e o contexto.
+
+### Exercícios
+
+- **EX051 — Propriedade do combinador.** Usando o Laboratório C, explique por que a chave de sessão continua imprevisível se o X25519 for quebrado, mas o ML-KEM não. Rubrica: 3 = falta ao atacante uma entrada da KDF.
+- **EX052 — Escolha da assinatura.** Escolha uma assinatura para o firmware dos caixas eletrônicos, assinado quatro vezes por ano, e justifique. Rubrica: 3 = LMS/XMSS ou SLH-DSA com raciocínio sobre volume, estado e conservadorismo.
+
+### Síntese
+
+Os segredos híbridos são combinados por uma KDF vinculada ao contexto. O ML-DSA serve para a assinatura de alto volume; o SLH-DSA e as assinaturas baseadas em hash com estado trocam tamanho ou estado por hipóteses conservadoras.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — capítulo 26 de 40
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Segurança quântica e pós-quântica: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir objetivos de verificação para uma migração; (2) testar se a troca de chaves híbrida é de fato negociada; (3) detectar downgrade e fallback num laboratório; e (4) coletar evidências de verificação que outras pessoas consigam reproduzir.
+
+### 27.1 Objetivos de verificação
+
+A verificação pergunta se o sistema faz o que o projeto diz. Numa migração, os objetivos incluem: o grupo híbrido é oferecido e selecionado para os clientes no escopo; o fallback clássico ocorre apenas onde é permitido; os certificados são validados em todos os clientes suportados; o desempenho fica dentro do orçamento; e os logs registram os algoritmos negociados.
+
+Cada objetivo precisa de um método e de um resultado esperado registrados antes de os testes começarem, para que os resultados não possam ser reinterpretados depois. Na HCU, os objetivos são aplicados separadamente ao gateway web e à VPN das agências, porque eles usam produtos diferentes e falham de maneiras diferentes.
+
+### 27.2 Verificando a negociação
+
+A configuração diz o que um servidor *oferece*; o handshake mostra o que é *selecionado*. Verifique a seleção pelo lado do cliente (saída de um cliente de teste mostrando o grupo) e pelo lado do servidor (logs dos grupos negociados). No TLS 1.3, o grupo selecionado aparece no ServerHello em claro, então um sensor passivo autorizado consegue confirmá-lo. No IKEv2, os logs dos equipamentos ou as capturas de laboratório mostram os métodos de troca de chaves negociados conforme a RFC 9370.
+
+As duas visões devem concordar. Se o cliente relata o grupo híbrido, mas os logs do servidor discordam, suspeite de um middlebox ou de um log que registra as ofertas, e não as seleções. A HCU verifica as duas visões em cada local.
+
+### 27.3 Downgrade e fallback
+
+O TLS 1.3 protege a integridade da negociação por meio do handshake vinculado à transcrição, então um atacante ativo não consegue simplesmente remover o grupo híbrido sem ser detectado. Mas o fallback ainda pode ocorrer legitimamente: um cliente que não suporta o grupo, ou um servidor configurado com preferência pelos grupos clássicos. Os testes de laboratório devem incluir clientes com e sem suporte híbrido e confirmar que cada um obtém o resultado esperado. Os experimentos de downgrade ativo pertencem apenas a um ambiente de teste isolado.
+
+Cada resultado esperado deve ser registrado ao lado da versão do cliente no plano de testes.
+
+### 27.4 Evidências
+
+Registre os casos de teste, as versões dos clientes, os hashes da configuração do servidor, as saídas e as datas. Um relatório de verificação lista cada objetivo com aprovado, reprovado ou não testado, mais o local da evidência.
+
+Os objetivos não testados são listados tão abertamente quanto as reprovações, porque um relatório que os omite exagera a cobertura. A HCU guarda o hash da configuração com cada resultado, para que um revisor posterior consiga dizer se uma aprovação ainda vale depois que a configuração do gateway mudar. Um relatório mais antigo que a configuração atual é tratado como desatualizado até que os testes sejam rodados de novo contra ela.
+
+### 27.5 Exemplo resolvido
+
+O laboratório da HCU verifica o gateway web piloto: um cliente com capacidade híbrida seleciona o X25519MLKEM768 (aprovado); um cliente legado seleciona o X25519 (fallback esperado, aprovado); a ordem de preferência do gateway foi configurada por engano com o X25519 primeiro, então até os clientes com capacidade híbrida escolheram o X25519 numa build de teste (reprovado, corrigido reordenando). Sem a verificação pelo lado do cliente, a configuração teria parecido correta.
+
+A correção foi verificada rodando de novo os dois clientes depois da mudança. A lição para a HCU foi tornar a verificação pelo lado do cliente uma parte permanente de toda mudança no gateway, e não apenas do piloto, para que uma lista de preferências reordenada seja pega antes de chegar aos associados.
+
+### 27.6 Atividade prática
+
+Escreva uma lista de verificação com seis objetivos para um gateway da HCU com suporte híbrido, com o método e a evidência esperada para cada um.
+
+Inclua pelo menos um objetivo sobre o fallback para clientes legados e um sobre o registro em log dos grupos negociados. Para cada objetivo, nomeie o cliente ou a ferramenta usada, o resultado esperado e onde a evidência será guardada. Depois marque quais objetivos podem ser verificados no laboratório e quais precisam de logs de produção, já que os do segundo tipo só podem ser confirmados depois que o piloto começar.
+
+### 27.7 Erros comuns e limites
+
+- Verificar a configuração em vez da negociação.
+- Testar apenas clientes modernos.
+- Rodar testes de downgrade na produção.
+- Tratar um único handshake aprovado como prova para todos os locais e tipos de cliente.
+- Esquecer de verificar de novo depois de uma mudança de configuração, de modo que a evidência anterior já não corresponde ao que roda.
+- Ler a lista de ofertas do servidor como se fosse o grupo selecionado.
+- Deixar os objetivos não testados fora do relatório, em vez de marcá-los como não testados.
+
+Cada um desses faz um relatório parecer mais completo que a evidência por trás dele.
+
+### Exercícios
+
+- **EX053 — Oferecer versus selecionar.** Explique como um servidor pode oferecer um grupo híbrido e, ainda assim, nunca selecioná-lo. Rubrica: 3 = ordem de preferência ou suporte do cliente explicados.
+- **EX054 — Registro de evidências.** Liste cinco campos que todo registro de verificação deve conter. Rubrica: 3 = cinco campos pertinentes.
+
+### Síntese
+
+A verificação confere o comportamento negociado, os caminhos de fallback e as evidências, e não apenas a configuração; os registros reprodutíveis transformam os testes em garantia.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — capítulo 27 de 40
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Segurança quântica e pós-quântica: análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar a análise de modos de falha e efeitos (FMEA) a uma migração; (2) planejar para a quebra de um algoritmo; (3) usar um registro orientado por política para ganhar agilidade; e (4) definir procedimentos de recuperação e critérios de saída.
+
+### 28.1 FMEA para a mudança criptográfica
+
+A FMEA lista, para cada componente, as maneiras como ele pode falhar, o efeito, a causa, como a falha seria detectada e uma prioridade de risco. Os modos de falha da migração incluem: falha do handshake por causa do tamanho das mensagens; retorno silencioso ao clássico; falha na validação de certificados em clientes antigos; degradação do desempenho em dispositivos restritos; descompasso na gestão de chaves entre HSMs; e um algoritmo deixar de ser confiável depois de uma criptoanálise.
+
+Pontuar cada modo de falha quanto à gravidade, à probabilidade e à detectabilidade torna a classificação explícita e aberta a questionamento. As falhas silenciosas merecem atenção especial, porque nada alerta sobre elas por padrão.
+
+### 28.2 Resposta à quebra de um algoritmo
+
+O Rainbow e o SIKE mostram que um esquema pode cair de repente. Um plano de resposta diz quem decide, com que rapidez a configuração consegue remover o algoritmo, quais sistemas precisam de uma nova versão e quais precisam de hardware, e qual fallback é aceitável. Os híbridos tornam isso sobrevivível: se o ML-KEM fosse inesperadamente enfraquecido, os fluxos híbridos ainda se apoiariam no X25519 enquanto um substituto é implantado.
+
+O plano deve ser ensaiado no laboratório antes de ser necessário. Sem um plano, a HCU estaria decidindo sob pressão quais agências e terminais mudar primeiro, e a resposta dependeria de quem estivesse de plantão.
+
+### 28.3 Atividade prática — Laboratório A
+
+```python
+# Lab A (ch 28): crypto-agility through a policy-driven registry instead of hard-coded algorithms.
+import hashlib, hmac
+REGISTRY = {"hmac-sha256": lambda k, m: hmac.new(k, m, hashlib.sha256).digest(),
+            "hmac-sha3-256": lambda k, m: hmac.new(k, m, hashlib.sha3_256).digest()}
+POLICY = {"tag-algorithm": "hmac-sha256", "accept": ["hmac-sha256", "hmac-sha3-256"]}
+def protect(key, msg):
+    alg = POLICY["tag-algorithm"]; return alg, REGISTRY[alg](key, msg)
+def check(key, msg, alg, tag):
+    if alg not in POLICY["accept"]: return False            # algorithm identifier is authenticated by policy
+    return hmac.compare_digest(REGISTRY[alg](key, msg), tag)
+k, m = b"k" * 32, b"member statement 42"
+a1, t1 = protect(k, m)
+POLICY["tag-algorithm"] = "hmac-sha3-256"                   # migration = one policy change
+a2, t2 = protect(k, m)
+print("old tag still verifies during transition:", check(k, m, a1, t1))
+print("new tag verifies:", check(k, m, a2, t2), "| algorithms:", a1, "->", a2)
+POLICY["accept"] = ["hmac-sha3-256"]                        # retire the old algorithm
+print("old tag after retirement:", check(k, m, a1, t1))
+```
+
+Saída esperada:
+
+```text
+old tag still verifies during transition: True
+new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
+old tag after retirement: False
+```
+
+A migração é uma mudança de política, e não de código. O identificador do algoritmo viaja com os dados; durante a transição, os dois algoritmos são aceitos, e depois da aposentadoria o antigo é recusado. Usar um MAC aqui mantém o laboratório simples; o mesmo padrão se aplica às assinaturas e aos KEMs.
+
+Num sistema real, o registro guardaria identificadores de KEMs e de assinaturas, e a política seria carregada da configuração, em vez de definida no código. O laboratório também mostra por que a aposentadoria é uma etapa separada: as tags criadas sob o algoritmo antigo deixam de ser verificadas, então os dados que precisam continuar válidos precisam ser protegidos de novo antes.
+
+### 28.4 Recuperação e critérios de saída
+
+Cada estágio precisa de um procedimento de rollback e de um critério de saída. O rollback restaura rapidamente a configuração anterior se as falhas excederem o orçamento. Os critérios de saída dizem quando um estado de transição termina, como "negociação apenas clássica abaixo de 0,5 % por 90 dias", para que o fallback não se torne permanente.
+
+Os dois devem ser acordados antes de o estágio começar, e não depois que um problema aparecer. A HCU escreve os passos de rollback no chamado de mudança e os testa no laboratório, porque um rollback que nunca foi executado tende a falhar no momento em que é necessário. O critério de saída é revisado em cada decisão de estágio, e qualquer prorrogação é registrada com um motivo e uma nova data.
+
+### 28.5 Exemplo resolvido
+
+A FMEA da HCU classifica em primeiro lugar o "retorno silencioso ao clássico na VPN das agências": grave para o HNDL, provável por erro de configuração, difícil de detectar sem monitoramento. Controle: alertar quando qualquer agência negociar sem o método pós-quântico, relatório semanal da parcela de fallback. O "ClientHello grande descartado por proxy legado" fica em segundo: aparece rapidamente, então o controle é a implantação em estágios e um runbook de rollback.
+
+A FMEA é revisada depois de cada estágio da implantação, já que os resultados medidos podem mudar a classificação. Os dois controles são testados no laboratório antes de o piloto começar.
+
+### 28.6 Erros comuns e limites
+
+- Considerar apenas as falhas de disponibilidade, e não as falhas silenciosas de segurança.
+- Nenhum plano para a quebra de um algoritmo.
+- Fallbacks de transição sem critérios de saída.
+- Pontuar a detectabilidade de forma generosa demais para falhas que não produzem erro.
+- Escrever procedimentos de rollback que nunca foram ensaiados.
+- Classificar os modos de falha uma vez e nunca revisitá-los depois que a implantação produz dados reais.
+- Deixar os descompassos na gestão de chaves fora do escopo porque ficam com outra equipe.
+
+Cada um desses deixa na mesa um risco que a análise deveria expor.
+
+### Exercícios
+
+- **EX055 — Linha da FMEA.** Escreva uma linha da FMEA para "falha na validação de certificados em clientes legados depois dos certificados pós-quânticos". Rubrica: 3 = modo, efeito, causa, detecção, prioridade.
+- **EX056 — Resposta à quebra.** Esboce cinco passos que a HCU dá se for anunciada uma fraqueza séria num algoritmo pós-quântico implantado. Rubrica: 3 = responsável pela decisão, avaliação, mudança de configuração, novas versões/hardware, comunicação.
+
+### Síntese
+
+A FMEA expõe tanto as falhas barulhentas quanto as silenciosas; a agilidade, os híbridos, os runbooks de rollback e os critérios de saída tornam sobrevivíveis a mudança e a quebra de algoritmos.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — capítulo 28 de 40
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Segurança quântica e pós-quântica: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar uma implantação em estágios com canários; (2) usar limites de confiança nas decisões de promoção; (3) monitorar os algoritmos negociados na produção; e (4) coordenar a mudança com o help desk e os parceiros.
+
+### 29.1 Implantação em estágios
+
+As operações introduzem a mudança gradualmente: ativar um grupo híbrido para 1 % do tráfego, depois 10 %, depois todos, verificando em cada estágio que as taxas de falha ficam dentro de um orçamento acordado. Cada estágio tem uma duração longa o bastante para mostrar os padrões semanais e um responsável nomeado pela decisão.
+
+O orçamento e as durações dos estágios são acordados antes de o primeiro estágio começar, para que a pressão para terminar não os mude no meio do caminho. A HCU define o seu orçamento em relação à taxa de falhas de referência medida no gateway antes de qualquer mudança, e trata um local com equipamentos incomuns como um estágio próprio, em vez de diluí-lo na média do resto.
+
+### 29.2 Atividade prática — Laboratório K
+
+```python
+# Lab K (ch 29): canary gate for enabling a hybrid group - promote only if failures stay within budget.
+import math
+def upper95(k, n):                      # Wilson upper bound
+    z = 1.96; p = k / n; d = 1 + z*z/n
+    return ((p + z*z/(2*n)) + z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))) / d
+baseline, budget = 5e-4, 4e-4            # baseline failure rate, allowed increase
+for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% canary (proxy site)", 96, 50000)]:
+    ub = upper95(k, n); ok = ub <= baseline + budget
+    print(f"{stage:24s} {k}/{n}  upper95={ub:.5f}  {'PROMOTE' if ok else 'HOLD'}")
+```
+
+Saída esperada:
+
+```text
+1% canary                3/5000  upper95=0.00176  HOLD
+10% canary               28/50000  upper95=0.00081  PROMOTE
+10% canary (proxy site)  96/50000  upper95=0.00234  HOLD
+```
+
+A decisão usa o limite superior de confiança, e não a estimativa pontual. A estimativa pontual do primeiro canário é baixa, mas a amostra é pequena; o limite excede o orçamento, então a equipe espera mais dados. O canário do local com proxy mostra um problema real.
+
+O segundo canário tem uma amostra maior, então o seu limite é estreito o bastante para promover. O terceiro tem o mesmo tamanho de amostra, mas mais falhas, e o seu limite fica bem acima do orçamento, então a equipe segura e investiga o local, em vez de esperar mais dados.
+
+### 29.3 Monitoramento
+
+O monitoramento da produção deve relatar os grupos de troca de chaves negociados por serviço e local, as parcelas de fallback, as falhas de handshake por tipo de erro e os erros de validação de certificados. Os alertas disparam quando o fallback excede os limiares. O atraso da medição importa: se os dados dos parceiros chegam mensalmente, as decisões de promoção dos fluxos de parceiros não podem ser semanais.
+
+Os painéis devem separar os locais, para que um local com problema não desapareça numa média. O monitoramento da HCU relata a parcela de fallback de cada agência, e foi assim que o problema do proxy na sua implantação foi encontrado rapidamente. O fallback que cresce devagar também é um sinal de alerta.
+
+### 29.4 Comunicação
+
+Publique uma nota curta em cada estágio: o que mudou, o limite de falhas medido, as exceções conhecidas e a próxima data de decisão. A equipe do help desk que sabe que uma implantação híbrida chegou a um local encaminha rapidamente os chamados relacionados.
+
+As notas são curtas e vão sempre para a mesma lista, para que a equipe saiba onde procurar. A HCU as envia aos gerentes das agências e ao help desk, e as guarda com o registro da implantação como parte da evidência do que mudou e quando. Quando um estágio é segurado, a nota diz isso claramente e dá o motivo, para que ninguém suponha que a implantação avançou em silêncio.
+
+### 29.5 Exemplo resolvido
+
+A HCU implanta a troca de chaves híbrida no seu gateway web. O estágio 1 (1 %, uma semana) é segurado porque o limite de confiança é largo; o estágio 1 prorrogado para duas semanas é promovido. O estágio 2, em 10 %, revela falhas elevadas vindas de uma agência com um proxy de inspeção legado; essa agência é excluída, o fornecedor do proxy é acionado e o resto prossegue. O monitoramento mostra 0,3 % de fallback depois da implantação completa, todo vindo de clientes antigos.
+
+A agência excluída tem a sua própria data de saída, depois da qual é revista. A nota de cada estágio foi para o help desk no mesmo dia.
+
+### 29.6 Erros comuns e limites
+
+- Promover com base em estimativas pontuais de amostras pequenas.
+- Monitorar apenas as falhas, e não o fallback.
+- Mudar a configuração sem que o help desk saiba.
+- Tirar a média de todos os locais juntos, de modo que um local com falhas fica escondido.
+- Segurar um estágio sem registrar um motivo ou uma nova data de decisão.
+- Deixar um local excluído sem responsável nem prazo, de modo que ele nunca volta à implantação.
+- Definir o orçamento de falhas depois de ver os dados, e não antes.
+
+Cada um desses transforma uma mudança medida e em estágios numa implantação que ninguém consegue explicar por completo depois.
+
+### 29.7 Rollback na prática
+
+Todo estágio precisa de um rollback ensaiado: a configuração exata a restaurar, quem pode acioná-lo e quanto tempo leva. Ensaie-o no laboratório antes do primeiro canário. Um rollback que nunca foi testado é uma esperança, e não um controle. Depois de um rollback, registre o que foi observado, guarde a evidência e decida se a causa foi o algoritmo, a implementação ou o ambiente antes de tentar de novo; a maioria dos rollbacks da primeira tentativa em implantações híbridas se deve a problemas do ambiente, como proxies antigos.
+
+### Exercícios
+
+- **EX057 — Regra de promoção.** Explique por que o primeiro canário do Laboratório K é segurado, embora 3/5.000 = 0,06 % esteja abaixo do limiar de 0,09 %. Rubrica: 3 = o limite superior excede o orçamento por causa da amostra pequena.
+- **EX058 — Conjunto de monitoramento.** Liste quatro métricas para monitorar uma implantação híbrida e a condição de alerta de uma delas. Rubrica: 3 = quatro métricas pertinentes, um alerta sensato.
+
+### Síntese
+
+As implantações em estágios com portões baseados em limites de confiança, o monitoramento dos algoritmos negociados e uma comunicação clara transformam uma mudança arriscada numa mudança controlada.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — capítulo 29 de 40
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar os bytes do handshake para cadeias de certificados pós-quânticos; (2) comparar quantitativamente as opções de assinatura; (3) relacionar a contagem de bytes com o comportamento da rede; e (4) relatar os resultados com as hipóteses.
+
+### 30.1 Por que os bytes importam para a autenticação
+
+A troca de chaves híbrida acrescenta cerca de 2,3 kB por handshake TLS. A autenticação pós-quântica acrescenta mais: cada certificado contém uma chave pública e uma assinatura, e o handshake inclui uma assinatura CertificateVerify e, muitas vezes, carimbos de tempo de certificado assinados (SCTs). Com o ML-DSA, cada um desses elementos cresce.
+
+Como uma cadeia leva vários desses elementos, o crescimento se multiplica, em vez de se somar. Um servidor pode enviar dois certificados, cada um com uma chave e uma assinatura ML-DSA, mais o CertificateVerify e duas assinaturas de SCT, então os bytes de autenticação podem superar várias vezes os bytes da troca de chaves. É por isso que a HCU trata os certificados como uma decisão de migração separada da troca de chaves.
+
+### 30.2 Atividade prática — Laboratório B
+
+```python
+# Lab B (ch 30): bytes of authentication in a TLS handshake for different signature choices.
+# Sizes in bytes: (public key, signature). ML-DSA from FIPS 204; SLH-DSA-128s from FIPS 205.
+algs = {"ECDSA P-256": (65, 72), "RSA-2048": (270, 256), "ML-DSA-44": (1312, 2420),
+        "ML-DSA-65": (1952, 3309), "SLH-DSA-SHA2-128s": (32, 7856)}
+def chain_bytes(alg, depth=2, scts=2):
+    pk, sig = algs[alg]
+    certs = depth * (pk + sig + 400)          # leaf + intermediate: key + CA signature + ~400 B fields
+    return certs + sig + scts * sig           # + CertificateVerify + embedded SCT signatures
+for a in algs:
+    print(f"{a:20s} ~{chain_bytes(a):6d} bytes of certificates and signatures")
+```
+
+Saída esperada:
+
+```text
+ECDSA P-256          ~  1290 bytes of certificates and signatures
+RSA-2048             ~  2620 bytes of certificates and signatures
+ML-DSA-44            ~ 15524 bytes of certificates and signatures
+ML-DSA-65            ~ 21249 bytes of certificates and signatures
+SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
+```
+
+O modelo supõe uma cadeia de dois certificados, ~400 bytes de outros campos por certificado e dois SCTs; as cadeias reais variam. O ML-DSA-44 aumenta os bytes de autenticação cerca de doze vezes em relação ao ECDSA; o SLH-DSA-128s, mais de trinta vezes.
+
+A contagem é deliberadamente simples: cada certificado leva a sua própria chave pública e uma assinatura do emissor, e o handshake acrescenta uma assinatura CertificateVerify mais uma assinatura por SCT. O SLH-DSA tem uma chave pública minúscula, mas assinaturas muito grandes, então é o mais atingido pelo número de assinaturas na cadeia. Mudar a profundidade ou a quantidade de SCTs no laboratório mostra qual alavanca importa mais para cada esquema.
+
+### 30.3 Efeitos na rede
+
+A janela de congestionamento inicial do TCP costuma permitir cerca de dez segmentos (~14 kB) antes de esperar uma confirmação. Um voo do servidor que a exceda custa uma ida e volta extra — pequena num enlace de data center, perceptível num caminho móvel ou de satélite de 150 ms. A compressão de certificados ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) ajuda pouco com chaves e assinaturas de alta entropia. As respostas de engenharia incluem cadeias mais curtas, menos SCTs e uma escolha cuidadosa dos conjuntos de parâmetros.
+
+Para os usuários móveis da HCU, essa ida e volta extra nos enlaces celulares é a principal preocupação.
+
+### 30.4 Relato
+
+Relate os resultados com as hipóteses: profundidade da cadeia, tamanhos dos campos, número de SCTs, janela inicial. Declare que o modelo estima bytes, e não latência, e que a latência precisa ser medida.
+
+As comparações só são válidas quando todos os esquemas rodam com as mesmas hipóteses. A HCU anexa os parâmetros do Laboratório B ao seu relatório sobre as opções de certificados, para que um revisor possa mudar uma hipótese, como o número de SCTs, e ver o efeito. A latência medida nos enlaces emulados é relatada separadamente da estimativa de bytes.
+
+### 30.5 Exemplo resolvido
+
+O aplicativo móvel da HCU fala com o gateway por enlaces celulares com idas e voltas de 80 ms. O Laboratório B sugere ~15,5 kB de autenticação com o ML-DSA-44, um pouco acima de uma janela inicial típica. O plano da HCU: manter os certificados ECDSA enquanto monitora o suporte no ecossistema, testar cadeias ML-DSA-44 no laboratório com um SCT e medir a latência em enlaces celulares emulados antes de qualquer mudança.
+
+A decisão será revista quando os navegadores e as bibliotecas cliente suportarem amplamente os certificados ML-DSA. Os associados em enlaces lentos notariam o atraso primeiro, então os testes emulados usam as piores condições de agência e móveis que a HCU registrou, e não a média.
+
+### 30.6 Erros comuns e limites
+
+- Igualar bytes a latência.
+- Ignorar os SCTs e os certificados intermediários.
+- Comparar esquemas de assinatura apenas pelo tamanho da assinatura, e não pela chave pública mais a assinatura.
+- Supor que a compressão de certificados vai compensar a diferença.
+- Testar apenas em redes rápidas de laboratório, onde uma ida e volta extra é invisível.
+- Escolher um conjunto de parâmetros maior do que a política exige, acrescentando bytes sem benefício.
+- Relatar um único número de bytes sem a profundidade da cadeia e a quantidade de SCTs por trás dele.
+
+Cada um desses faz o custo da autenticação pós-quântica parecer diferente do que os usuários de fato vivenciam.
+
+### 30.7 Enxugando a cadeia
+
+Quando os bytes importam, os engenheiros têm várias alavancas antes de escolher outro algoritmo: remover intermediários desnecessários, reduzir o número de SCTs embutidos onde a política permitir, evitar enviar um certificado raiz em que o cliente já confia e preferir o ML-DSA-44 aos conjuntos de parâmetros maiores onde a categoria 2 atender à política. Cada alavanca tem um custo de política ou de compatibilidade, então registre quais foram usadas e por quê. Rode de novo o Laboratório B com a configuração enxugada e guarde os dois resultados no registro de laboratório.
+
+Anote qualquer cliente que falhe com a cadeia enxugada.
+
+### Exercícios
+
+- **EX059 — Recalcular.** Usando a fórmula do Laboratório B, calcule os bytes do ML-DSA-65 com um SCT em vez de dois. Rubrica: 3 = 21.249 − 3.309 = 17.940 bytes.
+- **EX060 — Lista de hipóteses.** Liste quatro hipóteses por trás do Laboratório B e como cada uma poderia mudar o resultado. Rubrica: 3 = quatro hipóteses com a direção do efeito.
+
+### Síntese
+
+A autenticação pós-quântica multiplica os bytes do handshake; modelos simples com hipóteses declaradas orientam onde medir a latência e como enxugar as cadeias.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — capítulo 30 de 40
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1391,7 +2230,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a HCU são sintéticos. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX080 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a HCU são sintéticos. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX080 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** log₂(10^24) = 24 × 3,32 ≈ 79,7 → cerca de 80 bits; acrescentar 2^20 dá cerca de 100 bits.
 
@@ -1472,6 +2311,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX039.** Queda das estimativas → planejar com cronogramas variados e começar cedo. Rainbow/SIKE → implantação híbrida. KyberSlash → bibliotecas verificadas e atualizadas e acompanhamento das versões. Implantação do Chrome → implantação em estágios com monitoramento.
 
 **EX040.** Se *z* puder ser menor que o esperado, a única variável que a HCU controla é *y*. Começar mais cedo e construir agilidade reduz *y* nesta migração e nas futuras, mantendo *x* + *y* abaixo de uma faixa mais ampla de *z*.
+
+**EX041.** TLS móvel: exposto ao HNDL (dados de 7 anos plausivelmente além de um *z* menor), mais falsificação posterior na autenticação. AES-256: adequado diante do Grover. Assinatura de código RSA para ferramentas internas: exposta à falsificação posterior (moderada). Criptografia dos dispensadores de cédulas: desconhecida — investigar.
+
+**EX042.** (a) Proteção: troca de chaves híbrida PQ/T completa; esforço: atualização de firmware e testes em 40 equipamentos; residual: autenticação clássica. (b) Proteção: resistente à computação quântica se as PSKs forem fortes e secretas; esforço: distribuição e rotação das chaves; residual: risco de gestão de chaves, carga de escala e de rotação.
+
+**EX043.** Oito ativos, três desconhecidos: 3/8 = 37,5 % ≈ 38 %.
+
+**EX044.** A HCU controla a configuração do gateway e as escolhas da biblioteca de rede do seu aplicativo; o suporte do sistema operacional do celular, o da CDN e o do fornecedor do sistema central dependem de outros, então todo segmento também precisa de outra parte: celular→CDN (plataforma e provedor da CDN), CDN→gateway (provedor da CDN) e gateway→sistema central (fornecedor do sistema central).
+
+**EX045.** Sem erro, *b* = *As* é um sistema linear resolvível por eliminação gaussiana. Com um erro pequeno, a eliminação amplifica o ruído e falha; recuperar *s* passa a ser encontrar um ponto próximo do reticulado em alta dimensão, para o que os melhores algoritmos clássicos e quânticos conhecidos levam tempo exponencial.
+
+**EX046.** ML-KEM-1024: chave de encapsulamento de 1.568 bytes; texto cifrado de 1.568 bytes (FIPS 203).
+
+**EX047.** Um futuro computador quântico que quebre o componente tradicional (X25519); uma quebra criptoanalítica clássica ou de implementação inesperada do novo componente pós-quântico.
+
+**EX048.** Família: algoritmo + governança. Controle: criar uma raiz ML-DSA, distribuí-la às partes confiantes, emitir intermediárias pós-quânticas, encurtar a validade da raiz clássica. Efeito: remove a exposição à falsificação posterior quando os dependentes migrarem. Responsável: líder de PKI. Residual: clientes legados incapazes de verificar ML-DSA; revisão anual.
+
+**EX049.** Rodar o harness contra uma implementação errada (por exemplo, SHA-256 em vez de SHA3-256) ou alterar um dígito hexadecimal do valor esperado; o harness precisa imprimir FAIL.
+
+**EX050.** Comportamento de tempo constante e resistência a canais laterais; geração e armazenamento corretos das chaves; integração correta nos protocolos (negociação, tratamento de erros); qualidade da aleatoriedade.
+
+**EX051.** A entrada da KDF concatena os dois segredos; um atacante que quebre o X25519 descobre um segredo, mas não o segredo do ML-KEM, então a saída da KDF continua imprevisível para ele.
+
+**EX052.** LMS (SP 800-208) num HSM: poucas assinaturas, estado facilmente controlado, assinaturas pequenas e verificação rápida no caixa eletrônico; alternativamente, SLH-DSA pela ausência de estado, ao custo de assinaturas maiores. Os dois são conservadores (baseados em hash).
+
+**EX053.** A ordem de preferência do servidor põe um grupo clássico primeiro e o servidor respeita a própria preferência, ou os clientes não suportam o grupo híbrido; a configuração o mostra como "oferecido", enquanto as negociações selecionam o clássico.
+
+**EX054.** Caso de teste/objetivo; versões do cliente e do servidor; hash da configuração; saída observada (grupo selecionado); data, testador e local da evidência.
+
+**EX055.** Modo: cadeia assinada com pós-quântico rejeitada. Efeito: interrupção do serviço para os clientes legados. Causa: bibliotecas cliente sem ML-DSA. Detecção: erros de validação na telemetria dos clientes e chamados no help desk. Prioridade: gravidade alta, probabilidade média, boa detecção → alta; controle por certificados duplos ou emissão em estágios.
+
+**EX056.** O líder de segurança convoca o grupo de decisão criptográfica; avaliar a fraqueza diante dos conjuntos de parâmetros e dos híbridos implantados; mudar a política para remover ou rebaixar o algoritmo onde a configuração permitir; agendar as novas versões e o trabalho de hardware; comunicar à equipe, aos fornecedores, aos parceiros e aos reguladores, e registrar a decisão.
+
+**EX057.** O limite superior de Wilson para 3/5.000 é de cerca de 0,18 %, acima do limiar de 0,09 % (referência de 0,05 % + 0,04 %); a amostra é pequena demais para mostrar que a taxa está dentro do orçamento.
+
+**EX058.** Grupos negociados por serviço/local; parcela de fallback; taxa de falhas de handshake por tipo de erro; erros de validação de certificados. Alerta: parcela de fallback em qualquer agência acima de 1 % por 24 horas.
+
+**EX059.** Remover uma assinatura ML-DSA-65: 21.249 − 3.309 = 17.940 bytes.
+
+**EX060.** Profundidade da cadeia 2 (cadeias mais profundas aumentam os bytes); ~400 bytes de outros campos (mais extensões aumentam); dois SCTs (menos reduzem); sem compressão (a compressão quase não reduz as chaves pós-quânticas). Também exclui os bytes da troca de chaves.
 
 <a id="references"></a>
 
