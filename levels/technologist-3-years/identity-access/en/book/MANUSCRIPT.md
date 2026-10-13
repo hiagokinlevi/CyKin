@@ -1016,7 +1016,7 @@ You will (1) run a role mapping check on synthetic joiners; (2) interpret manual
 
 ### 22.1 The check
 
-Kai writes a standard-library script that reads a synthetic list of new starters with their HR job titles and maps each title to a role group using a mapping table. Titles that do not match any mapping are sent to manual review rather than guessed. The script reads only synthetic HR data and prints the proposed role for each person, so a person approves each result before any account is created. He tests it with known titles before using new data. Results are saved with the run date.
+Using only Python's standard library, Kai builds a small mapper over a synthetic list of new starters with their HR job titles and maps each title to a role group using a mapping table. Titles that do not match any mapping are sent to manual review rather than guessed. The script reads only synthetic HR data and prints the proposed role for each person, so a person approves each result before any account is created. He tests it with known titles before using new data. Results are saved with the run date.
 
 ### Lab — Role mapping
 
@@ -1081,7 +1081,7 @@ You will (1) run an access review summary on synthetic data; (2) interpret compl
 
 ### 23.1 The summary
 
-Fernhill now reviews access each quarter: group owners confirm or remove each member. Kai writes a standard-library script that reads a synthetic review export and reports how many items were reviewed, how many removals were made and completion by clinic. It reads only synthetic review data and reports figures that he checks before sharing with managers, so the numbers support a conversation rather than replace it. Reviewers receive a short guide explaining what to check. The guide asks them to remove anything they cannot explain. Kai tests the script on known data first.
+Fernhill now reviews access each quarter: group owners confirm or remove each member. For the review campaign, Kai's standard-library tool takes a synthetic review export and reports how many items were reviewed, how many removals were made and completion by clinic. It reads only synthetic review data and reports figures that he checks before sharing with managers, so the numbers support a conversation rather than replace it. Reviewers receive a short guide explaining what to check. The guide asks them to remove anything they cannot explain. Kai tests the script on known data first.
 
 ### Lab — Review summary
 
