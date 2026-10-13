@@ -2969,7 +2969,7 @@ If the platform invited the mistake, engineering gets a ticket with the same ser
 
 ### 28.7 Platform on-call in reviews
 
-Failure reviews invite the platform on-call even when the mistake looks human. Often the UI invited the error. Sam's TrackScope copy change after one review cut a class of scope mis-clicks.
+Failure reviews invite the platform on-call even when the mistake looks human. Often the UI invited the error.
 
 Inviting on-call changes the conversation from "who misfired" to "what did the screen suggest". After one review, Sam's one-line copy change on a scope control removed a whole class of mis-clicks the following month. The on-call engineer would not have heard the pattern from a training ticket alone. Reviews that exclude platform staff tend to produce slide decks nobody ships. The invite is automatic on the review calendar template.
 
@@ -3681,9 +3681,7 @@ Evidence for the comparison comes from synthetic past results with Wilson interv
 
 ### 34.4 Recommendation
 
-Mix: keep quarterly web tests; fund threat-led every other year.
-
-The recommended mix keeps quarterly web tests for steady coverage and funds a threat-led scenario every other year. Annual threat-led scored well on learning and poorly on capacity; the biennial cadence won on the capacity row. Sam states what the mix intentionally leaves on the table so sponsors cannot invent full annual depth later. Recommendations name the cut, not only the prize. A mix that admits limits survives contact with the budget committee.
+The recommended mix keeps quarterly web tests for steady coverage and funds a threat-led scenario every other year. Annual threat-led scored well on learning and poorly on capacity; the biennial cadence won on the capacity row. Sam states what the mix intentionally leaves on the table so sponsors cannot invent full annual depth later. Recommendations name the cut, not only the prize. A mix that admits limits survives contact with the budget committee. Sam attaches the scored option table as an appendix, so the committee can check every row behind the recommendation before it votes.
 
 ### 34.5 Non-goals
 
@@ -3801,13 +3799,9 @@ The capstone builds a scope-diff tool that compares TrackScope inventories acros
 
 ### 35.2 Non-goals
 
-No integration with every ticket system; no exploit modules.
-
 Non-goals keep the build from becoming a career in connectors. No integration with every ticket system, no exploit modules and no LLM summariser in version one. Sam prints the list on the proposal cover in bold so mid-project enthusiasm has something to hit. Advisors grade violations of printed non-goals as scope failures. Friends will suggest extras; the cover is the answer. Printed refusals are easier to enforce than remembered intentions. Bold cover text only works if someone is willing to point at it mid-argument.
 
 ### 35.3 Metrics
-
-Precision/recall on planted inventory drifts; fail-closed on corrupt files.
 
 Evaluation metrics are precision and recall on planted inventory drifts, plus a hard fail-closed result on corrupt files. Dashboards that look pretty while swallowing garbage do not pass. Sam plants known adds, removes and field changes so scores are grounded. Fail-closed means the tool refuses to emit a diff when the file cannot be parsed safely. Metric definitions are frozen before the evaluation run. Planted truth is how a student tool earns a serious score. Checkpoint demos that chase polish usually hide a broken fail-closed path.
 
@@ -4058,8 +4052,6 @@ You will (1) critique a peer dossier; (2) give actionable feedback; (3) receive 
 The seminar clock is strict: twenty minutes to present evidence, twenty to critique and ten to capture dated actions. Applause that eats the action slot is a facilitation failure. Sam's facilitator card shows the three colours of time remaining. Presenters who run long lose critique depth and then complain about shallow feedback. The format itself teaches closure manners. Time-boxed critique is how evidence review becomes a habit rather than a performance. Facilitators protect the action window as fiercely as the presentation slot. Rooms that honour the clock produce sharper comments in less wall time.
 
 ### 37.2 Checklist
-
-Scope clarity, evidence hashes, severity rationale, privacy, overclaim.
 
 Reviewers work from a checklist covering scope clarity, evidence hashes, severity rationale, privacy and overclaim. Freeform vibe reviews miss the same holes every term. Sam requires at least one note per checklist line even if the note is a clean pass. Overclaim catches are especially prized because they prevent board-level fiction. The checklist travels with the seminar note into the capstone file. Shared checklist language makes feedback comparable across presenters. Empty checklist lines are treated as incomplete reviews, not optional silence. Pass notes still prove the reviewer looked; silence does not.
 
@@ -4333,15 +4325,11 @@ Sam's first measurement showed operators spending most of their time on type con
 
 ### 39.4 Residual risk
 
-Tool helps inventory hygiene; does not replace ROE discipline.
-
 Residual risk statements say clearly that the tool helps inventory hygiene and does not replace ROE discipline. Sam refuses marketing language that implies authorised testing can be automated away. Readers who skip this paragraph are the ones most likely to misuse the tool. The statement is required in both the report abstract and the final slide. Hygiene aids remain subordinate to human authorisation boundaries.
 
 A concrete example helps: the tool can say a host is missing from the documented scope, but it cannot say whether testing that host is authorised. That judgement stays with the ROE owner.
 
 ### 39.5 Report
-
-Results vs pre-registration; no post hoc metric swaps.
 
 The report compares results to the pre-registration and forbids post hoc metric swaps. Exploratory analyses are allowed only in a clearly labeled appendix. Sam's template highlights any metric that was not pre-registered. Victory-lap swaps are a fail even if the new metric looks kinder. Honesty about misses is part of the graded science.
 

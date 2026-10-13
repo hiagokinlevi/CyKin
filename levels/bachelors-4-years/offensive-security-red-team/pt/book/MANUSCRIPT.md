@@ -2440,7 +2440,7 @@ Bugs do TrackScope também geram tickets de engenharia. Se a plataforma convidou
 
 ### 28.7 O plantão da plataforma nas revisões
 
-As revisões de falha convidam o plantão da plataforma mesmo quando o erro parece humano. Muitas vezes, a interface convidou ao erro. A mudança de texto que Sam fez no TrackScope depois de uma revisão eliminou uma classe de cliques errados no escopo. Convidar o plantão muda a conversa de "quem errou o disparo" para "o que a tela sugeriu". No mês seguinte, o plantão mediu a queda dos cliques errados no mesmo controle e trouxe o gráfico para a retrospectiva da plataforma. O engenheiro de plantão não teria ouvido falar do padrão só por um ticket de treinamento. Revisões que excluem a equipe da plataforma tendem a produzir apresentações que ninguém coloca em produção. O convite é automático no modelo de agenda da revisão.
+As revisões de falha convidam o plantão da plataforma mesmo quando o erro parece humano. Muitas vezes, a interface convidou ao erro. Convidar o plantão muda a conversa de "quem errou o disparo" para "o que a tela sugeriu". No mês seguinte, o plantão mediu a queda dos cliques errados no mesmo controle e trouxe o gráfico para a retrospectiva da plataforma. O engenheiro de plantão não teria ouvido falar do padrão só por um ticket de treinamento. Revisões que excluem a equipe da plataforma tendem a produzir apresentações que ninguém coloca em produção. O convite é automático no modelo de agenda da revisão.
 
 ### 28.8 Affordances da interface
 
@@ -2980,7 +2980,7 @@ Usar resultados sintéticos do passado e intervalos de Wilson. A evidência da c
 
 ### 34.4 Recomendação
 
-Combinação: manter os testes web trimestrais; financiar o exercício guiado por ameaças a cada dois anos. A combinação recomendada mantém os testes web trimestrais para uma cobertura estável e financia um cenário guiado por ameaças a cada dois anos. O exercício anual guiado por ameaças pontuou bem em aprendizado e mal em capacidade de execução. Sam mostra a linha de capacidade antes da linha de aprendizado, para que o charme não vença a aritmética. A recomendação nomeia o que é cortado quando o orçamento aperta. Combinações sem um plano de corte são desejos. Uma recomendação que sobrevive a um corte de orçamento é uma recomendação que a finança consegue financiar.
+A combinação recomendada mantém os testes web trimestrais para uma cobertura estável e financia um cenário guiado por ameaças a cada dois anos. O exercício anual guiado por ameaças pontuou bem em aprendizado e mal em capacidade de execução. Sam mostra a linha de capacidade antes da linha de aprendizado, para que o charme não vença a aritmética. A recomendação nomeia o que é cortado quando o orçamento aperta. Combinações sem um plano de corte são desejos. Uma recomendação que sobrevive a um corte de orçamento é uma recomendação que a finança consegue financiar. Sam anexa a tabela de opções pontuadas como apêndice, para que o comitê confira cada linha por trás da recomendação antes de votar.
 
 ### 34.5 Não objetivos
 
@@ -3067,11 +3067,11 @@ Construir uma ferramenta de diff de escopo para o TrackScope, com testes e uma a
 
 ### 35.2 Não objetivos
 
-Sem integração com todo sistema de tickets; sem módulos de exploit. Os não objetivos impedem que a construção vire uma carreira em conectores. Sem integração com todo sistema de tickets, sem módulos de exploit e sem sumarizador de LLM na versão um. Sam imprime os não objetivos em negrito na capa. Amigos vão sugerir recursos na semana de construção; a capa responde sem um novo debate. Não objetivos são parte do desenho, e não uma desculpa. Uma proposta que não consegue dizer não ainda não está pronta para construção.
+Os não objetivos impedem que a construção vire uma carreira em conectores. Sem integração com todo sistema de tickets, sem módulos de exploit e sem sumarizador de LLM na versão um. Sam imprime os não objetivos em negrito na capa. Amigos vão sugerir recursos na semana de construção; a capa responde sem um novo debate. Não objetivos são parte do desenho, e não uma desculpa. Uma proposta que não consegue dizer não ainda não está pronta para construção.
 
 ### 35.3 Métricas
 
-Precision/recall em derivas de inventário plantadas; falhar fechado em arquivos corrompidos. As métricas de avaliação são precision e recall nas derivas de inventário plantadas, mais um resultado duro de falhar fechado em arquivos corrompidos. Painéis bonitos que engolem arquivos ruins não passam. Sam pré-registra as métricas na proposta, para que resultados decepcionantes não possam trocar o critério. Precision sem recall esconde perdas; recall sem precision esconde ruído. Falhar fechado é uma propriedade binária, e não uma média. Métricas que medem controle e precisão mantêm o projeto final honesto.
+As métricas de avaliação são precision e recall nas derivas de inventário plantadas, mais um resultado duro de falhar fechado em arquivos corrompidos. Painéis bonitos que engolem arquivos ruins não passam. Sam pré-registra as métricas na proposta, para que resultados decepcionantes não possam trocar o critério. Precision sem recall esconde perdas; recall sem precision esconde ruído. Falhar fechado é uma propriedade binária, e não uma média. Métricas que medem controle e precisão mantêm o projeto final honesto.
 
 ### 35.4 Riscos
 
@@ -3241,7 +3241,7 @@ Você vai (1) apresentar evidência sob cronômetro; (2) criticar com checklist;
 
 ### 37.2 Checklist
 
-Clareza de escopo, hashes de evidência, racional da severidade, privacidade, overclaim. Os revisores trabalham a partir de um checklist que cobre clareza de escopo, hashes de evidência, racional da severidade, privacidade e overclaim. Revisões de vibe em texto livre perdem os mesmos buracos todas as vezes. Sam imprime o checklist nas mesas. Itens sem marca viram a primeira onda de feedback. Checklists tornam a crítica comparável entre apresentadores. Um checklist compartilhado também ensina os apresentadores o que preparar antes de subir ao palco.
+Os revisores trabalham a partir de um checklist que cobre clareza de escopo, hashes de evidência, racional da severidade, privacidade e overclaim. Revisões de vibe em texto livre perdem os mesmos buracos todas as vezes. Sam imprime o checklist nas mesas. Itens sem marca viram a primeira onda de feedback. Checklists tornam a crítica comparável entre apresentadores. Um checklist compartilhado também ensina os apresentadores o que preparar antes de subir ao palco.
 
 ### 37.3 Feedback
 
@@ -3439,11 +3439,11 @@ Tempo de usabilidade; carga de falsos alarmes. As medidas de efeitos colaterais 
 
 ### 39.4 Risco residual
 
-A ferramenta ajuda a higiene do inventário; não substitui a disciplina das ROE. As declarações de risco residual dizem com clareza que a ferramenta ajuda a higiene do inventário e não substitui a disciplina das ROE. Sam recusa linguagem de marketing que implica que o teste autorizado pode ser automatizado. Leitores que pulam este parágrafo são os mais propensos a usar mal a ferramenta. A declaração é obrigatória tanto no resumo do relatório quanto no slide final. Auxílios de higiene continuam subordinados aos limites humanos de autorização. Um exemplo concreto ajuda: a ferramenta pode dizer que um host falta no escopo documentado, mas não pode dizer se testar esse host está autorizado. Esse julgamento permanece com o responsável pelas ROE.
+As declarações de risco residual dizem com clareza que a ferramenta ajuda a higiene do inventário e não substitui a disciplina das ROE. Sam recusa linguagem de marketing que implica que o teste autorizado pode ser automatizado. Leitores que pulam este parágrafo são os mais propensos a usar mal a ferramenta. A declaração é obrigatória tanto no resumo do relatório quanto no slide final. Auxílios de higiene continuam subordinados aos limites humanos de autorização. Um exemplo concreto ajuda: a ferramenta pode dizer que um host falta no escopo documentado, mas não pode dizer se testar esse host está autorizado. Esse julgamento permanece com o responsável pelas ROE.
 
 ### 39.5 Relatório
 
-Resultados versus pré-registro; sem trocas de métrica a posteriori. O relatório compara os resultados ao pré-registro e proíbe trocas de métrica a posteriori. Análises exploratórias só são permitidas num apêndice claramente rotulado. O modelo de Sam destaca qualquer métrica que não foi pré-registrada. Trocas de volta olímpica são reprovação mesmo que a métrica nova pareça mais gentil. A honestidade sobre falhas faz parte da ciência avaliada. Onde uma classe de deriva plantada pontuou mal, o relatório mostra as falhas pelo nome da fixture, para que os leitores possam inspecioná-las. O resultado mais baixo de Sam, nos conflitos de tipo, aparece no resumo, e não na última página.
+O relatório compara os resultados ao pré-registro e proíbe trocas de métrica a posteriori. Análises exploratórias só são permitidas num apêndice claramente rotulado. O modelo de Sam destaca qualquer métrica que não foi pré-registrada. Trocas de volta olímpica são reprovação mesmo que a métrica nova pareça mais gentil. A honestidade sobre falhas faz parte da ciência avaliada. Onde uma classe de deriva plantada pontuou mal, o relatório mostra as falhas pelo nome da fixture, para que os leitores possam inspecioná-las. O resultado mais baixo de Sam, nos conflitos de tipo, aparece no resumo, e não na última página.
 
 ### 39.6 Recomendação
 
