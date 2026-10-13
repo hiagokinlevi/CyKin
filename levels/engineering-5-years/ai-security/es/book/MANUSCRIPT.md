@@ -25,8 +25,8 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 | Parte | Capítulos |
 |---|---|
-| Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) |
-| Sistemas y seguridad | [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) |
+| Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| Sistemas y seguridad | [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) |
 | Ingeniería de seguridad de la IA | [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) |
 | Práctica y proyecto final | [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
@@ -408,7 +408,382 @@ Los gradientes y las normas convierten «un cambio pequeño» en un número. Exp
 
 ### Siga estudiando — capítulo 06 de 50
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Probabilidad y estadística
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar la regla de Bayes a problemas de detección; (2) explicar las tasas base y por qué los sucesos raros dominan la precisión de las alertas; (3) estimar tasas con intervalos de confianza; y (4) diseñar evaluaciones con suficientes muestras.
+
+### 7.1 Probabilidad condicionada y Bayes
+
+P(A | B) = P(B | A) P(A) / P(B). Para un detector de prompts maliciosos, la tasa de verdaderos positivos es P(alerta | malicioso) y la tasa de falsos positivos es P(alerta | benigno). Lo que interesa a los operadores es la *precisión*, P(malicioso | alerta), que depende mucho de la tasa base P(malicioso). Las dos tasas describen el detector y se mantienen más o menos fijas; la precisión describe el detector en un flujo de tráfico concreto y cambia siempre que cambia la mezcla. Sam escribe los tres números en cada informe sobre un detector, porque los operadores que solo leen la tasa de verdaderos positivos tienden a tratar cada alerta como un ataque.
+
+### 7.2 El efecto de la tasa base
+
+El laboratorio calcula la precisión de tres detectores para tres prevalencias. Un detector con un 95 % de TPR y un 5 % de FPR parece bueno, pero si solo 1 de cada 1.000 prompts es malicioso, menos del 2 % de sus alertas son reales. Arp et al. (arXiv:2010.09470) incluyen la falacia de la tasa base entre los errores habituales del aprendizaje automático en seguridad.
+
+```python
+"""Lab B: base rates and alarm precision (Bayes' rule).
+A detector for malicious prompts with given true- and false-positive rates
+is applied to traffic with different shares of malicious prompts."""
+for tpr, fpr in ((0.95, 0.05), (0.95, 0.01), (0.80, 0.001)):
+    for prev in (0.10, 0.01, 0.001):
+        tp = tpr * prev; fp = fpr * (1 - prev)
+        prec = tp / (tp + fp)
+        per_10k = round(10000 * (tp + fp))
+        print(f"tpr={tpr:.2f} fpr={fpr:.3f} prevalence={prev:.3f} precision={prec:.3f} alerts_per_10k={per_10k}")
+```
+
+Salida esperada:
+
+```text
+tpr=0.95 fpr=0.050 prevalence=0.100 precision=0.679 alerts_per_10k=1400
+tpr=0.95 fpr=0.050 prevalence=0.010 precision=0.161 alerts_per_10k=590
+tpr=0.95 fpr=0.050 prevalence=0.001 precision=0.019 alerts_per_10k=509
+tpr=0.95 fpr=0.010 prevalence=0.100 precision=0.913 alerts_per_10k=1040
+tpr=0.95 fpr=0.010 prevalence=0.010 precision=0.490 alerts_per_10k=194
+tpr=0.95 fpr=0.010 prevalence=0.001 precision=0.087 alerts_per_10k=109
+tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
+tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
+tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
+```
+
+Leer la tabla fila por fila muestra que reducir los falsos positivos rinde más que aumentar la detección. Con una prevalencia de 0,001, el tercer detector detecta menos ataques que el primero, pero casi la mitad de sus alertas son reales, frente a menos del 2 %, y genera 18 alertas por cada 10.000 prompts en lugar de 509.
+
+### 7.3 Estimación de tasas
+
+Una tasa observada k/n tiene incertidumbre. El intervalo de puntuación de Wilson es fiable incluso con n pequeño o con tasas cercanas a 0 o a 1. Comunique intervalos y dimensione los estudios para que los intervalos sean lo bastante estrechos para la decisión: n ≈ z² p(1 − p)/h² para una semiamplitud h. El intervalo de Wilson se mantiene entre 0 y 1 y se aproxima al correcto incluso cuando se observan pocos fallos, lo que importa porque los buenos sistemas producen pocos. Para una tasa en torno al 5 % y una semiamplitud de 1 punto porcentual con un 95 % de confianza, la fórmula da aproximadamente 1,96² × 0,05 × 0,95 / 0,01², unos 1.800 elementos de prueba. Sam hace esta cuenta antes de recoger datos, ya que un estudio demasiado pequeño para zanjar la cuestión hace perder el tiempo a todos.
+
+### 7.4 Distribuciones e independencia
+
+Los modelos binomiales cuentan éxitos en ensayos independientes. Muchas evaluaciones de seguridad violan la independencia: los prompts generados a partir de una plantilla están correlacionados, de modo que el tamaño muestral efectivo es menor. Agrupe por plantilla y remuestree los grupos (un *bootstrap por conglomerados*) al estimar intervalos. Suponga que 1.000 prompts de prueba proceden de 20 plantillas con 50 redacciones cada una. Si un filtro falla con una plantilla, probablemente falle con la mayoría de sus redacciones, de modo que la evaluación tiene más bien 20 unidades independientes que 1.000. Tratarlas como 1.000 hace el intervalo demasiado estrecho. Remuestrear plantillas enteras da una amplitud honesta y muestra además qué plantillas provocan los fallos.
+
+### 7.5 Comparación de dos sistemas
+
+Para decidir si un filtro nuevo es mejor que el antiguo, ejecute ambos sobre los *mismos* elementos y analice las diferencias emparejadas; así se cancela la dificultad de cada elemento. Un bootstrap emparejado (remuestrear elementos, recalcular la diferencia, tomar percentiles) da un intervalo para la mejora. Si el intervalo incluye el cero, los datos no muestran una mejora, por atractiva que sea la estimación puntual. Emparejar elimina el ruido de la dificultad de los elementos: un prompt inusualmente difícil cuenta en contra de ambos filtros, de modo que deja de ocultar la diferencia entre ellos.
+
+### 7.6 Ejemplo resuelto (caso sintético de NRS)
+
+El detector de inyecciones de Wrench tuvo un 95 % de TPR y un 1 % de FPR en las pruebas. Sam estimó que quizá 1 de cada 1.000 boletines de proveedores llegaría a contener un intento de inyección. Según el laboratorio, la precisión sería de aproximadamente el 8,7 %, con 109 alertas por cada 10.000 boletines, en su mayoría falsas alarmas. Sam recomendó enviar las alertas a una cola de revisión ligera en lugar de bloquear, y combinar la detección con límites de privilegios para que los ataques no detectados tengan un impacto acotado.
+
+La cifra de 1 de cada 1.000 es en sí misma una estimación, así que Sam lee también la fila de 1 de cada 100 del laboratorio, donde la precisión sube a 0,490. En cualquier caso, bloquear cada boletín señalado bloquearía sobre todo boletines legítimos. Una cola de revisión mantiene informados a los técnicos, y los límites de privilegios hacen que la decisión no dependa de que el detector acierte.
+
+### 7.7 Errores y límites
+
+- Citar la exactitud en lugar de la precisión con tasas base realistas.
+- Tratar muestras correlacionadas como independientes.
+- Estimaciones puntuales sin intervalos.
+
+La exactitud engaña con tasas base bajas: un detector que nunca alerta tiene un 99,9 % de exactitud cuando uno de cada mil prompts es malicioso. Las muestras correlacionadas inflan la confianza, como cuando muchos prompts comparten plantilla. Las estimaciones puntuales sin intervalos ocultan lo poco que puede mostrar una prueba pequeña. La lista de revisión de Sam hace tres preguntas a cualquier métrica: con qué tasa base, contada sobre qué unidades y con qué intervalo.
+
+### Ejercicios — capítulo 7
+
+- **EX019 — Precisión.** Con TPR 0,90, FPR 0,02 y prevalencia 0,005, calcule la precisión. Rúbrica: 3 = 0,0045/(0,0045 + 0,0199) ≈ 0,184; 2 = desliz; 1 = método; 0 = nada.
+- **EX020 — Lectura del laboratorio.** ¿Qué detector del laboratorio da una precisión superior a 0,4 con prevalencia 0,001, y a qué coste? Rúbrica: 3 = TPR 0,80/FPR 0,001: 0,445, menor TPR; 2 = solo la fila; 1 = vago; 0 = incorrecto.
+- **EX021 — Conglomerados.** ¿Por qué generar 500 prompts a partir de 5 plantillas exagera el tamaño muestral? Rúbrica: 3 = correlación dentro de cada plantilla; n efectivo más cercano a 5 grupos; usar bootstrap por conglomerados; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+La probabilidad dice a los ingenieros lo que significa realmente una alerta. Las tasas base, los intervalos honestos y las unidades de muestreo correctas deciden si un detector es útil en operación.
+
+### Siga estudiando — capítulo 07 de 50
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitectura de computadores
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) describir las CPU, las jerarquías de memoria, las GPU y los aceleradores que se usan para el aprendizaje automático; (2) explicar los formatos numéricos y su efecto sobre el comportamiento del modelo; (3) identificar superficies de ataque arquitectónicas (aislamiento de memoria, canales laterales, firmware); y (4) razonar sobre la ejecución confiable para cargas de trabajo de IA.
+
+### 8.1 Procesadores y aceleradores
+
+Las CPU ejecutan instrucciones generales con cachés profundas. Las GPU y los aceleradores de IA ejecutan miles de operaciones sencillas en paralelo, lo ideal para la multiplicación de matrices. Los modelos se trasladan entre la memoria del anfitrión y la del dispositivo; en entornos de nube, los datos en la memoria del dispositivo pueden compartirse entre procesos o clientes, así que el aislamiento importa. Las copias son el problema de seguridad: los pesos cargados en una GPU, las entradas guardadas en un búfer compartido y los resultados a la espera de devolverse existen brevemente en lugares que otro cliente o un controlador descuidado podrían leer. Los proveedores de nube aíslan a sus clientes, pero los ingenieros siguen preguntando si la memoria del dispositivo se borra entre trabajos y quién puede verla, y registran las respuestas en el modelo de amenazas del despliegue.
+
+### 8.2 Formatos numéricos
+
+El entrenamiento suele usar coma flotante de 32 o 16 bits; la inferencia puede usar enteros de 8 bits (cuantización). Una precisión menor cambia ligeramente las salidas y puede cambiar decisiones cerca de las fronteras. Las evaluaciones de seguridad deben usar la precisión *desplegada*: un ataque o una defensa medidos en 32 bits pueden comportarse de otro modo en 8 bits, y viceversa. La cuantización asigna cada valor al más cercano de un pequeño conjunto de niveles, de modo que las entradas próximas al umbral de decisión pueden pasar al otro lado. Los gradientes calculados sobre una copia de 32 bits pueden no coincidir con el comportamiento del modelo de 8 bits, lo que puede hacer que los ataques parezcan más fuertes o más débiles de lo que son en servicio.
+
+### 8.3 Superficies de ataque arquitectónicas
+
+Los fallos de seguridad de memoria en el código que sirve el modelo pueden exponer pesos o entradas. Las cachés compartidas y los tiempos pueden filtrar información entre procesos (canales laterales). Los fallos de hardware, incluidos los inducidos deliberadamente, como las inversiones de bits al estilo rowhammer, pueden corromper los pesos; la investigación ha mostrado que unos pocos bits invertidos en los parámetros de una red pueden degradarla o desviarla de forma drástica. El firmware y los controladores forman parte de la base de cómputo confiable.
+
+Para un ingeniero, cada elemento sugiere un control: lenguajes con seguridad de memoria o una revisión cuidadosa del código de servicio, aislamiento entre clientes, memoria con corrección de errores y comprobaciones de integridad de los pesos cargados. Calcular el hash del archivo de pesos antes de cargarlo detecta cambios en disco, pero no bits invertidos después en memoria, así que los despliegues críticos también comparan periódicamente las salidas sobre un conjunto de comprobación fijo.
+
+### 8.4 Ejecución confiable y atestación
+
+Los entornos de ejecución confiable (TEE) y las GPU de computación confidencial pretenden proteger el código y los datos en uso frente al operador del anfitrión, y la *atestación remota* permite a un cliente verificar qué código se está ejecutando. Reducen algunos riesgos (un operador de nube curioso), pero no otros (un servidor de modelos vulnerable dentro del enclave, la inyección de prompts). La atestación responde a una pregunta limitada: ¿es este el código esperado sobre hardware genuino? No dice nada sobre si ese código es seguro. Por eso los ingenieros tratan un TEE como una capa que protege frente a un operador curioso, y mantienen la validación de entradas, los límites de privilegios y la monitorización para los ataques que llegan por la interfaz normal del modelo.
+
+### 8.5 Ejemplo resuelto (caso sintético de NRS)
+
+TrackEye se ejecuta en un ordenador en el borde del tren de inspección con un modelo cuantizado a 8 bits. Sam descubrió que las pruebas de robustez se habían hecho con el modelo de 32 bits en el laboratorio; repetirlas con la compilación desplegada de 8 bits cambió los falsos negativos al amanecer del 9,0 % al 9,6 %. Sam añadió como requisito «evaluar sobre el artefacto y el hardware desplegados» y anotó que el puerto de mantenimiento del ordenador en el borde da acceso físico al firmware, un elemento del modelo de amenazas.
+
+Una subida de 0,6 puntos porcentuales es pequeña, pero muestra que el resultado del laboratorio no describía el sistema que realmente funciona en el tren. El nuevo requisito hace que cada cifra de robustez futura indique el hash del artefacto y el hardware sobre los que se midió.
+
+### 8.6 Errores y límites
+
+- Evaluar con una precisión numérica distinta de la desplegada.
+- Suponer que los TEE resuelven los ataques a nivel de aplicación.
+- Ignorar el firmware y los puertos físicos de mantenimiento.
+
+Estos errores tienen una causa común: evaluar un sistema idealizado en lugar del desplegado. La precisión usada en las pruebas es fácil de contrastar con la compilación. Las afirmaciones sobre los TEE deben leerse fijándose en lo que excluyen. Los puertos de mantenimiento suelen quedar habilitados por comodidad; la lista de comprobación de Sam pregunta, para cada puerto, si es necesario en servicio, quién puede llegar a él y si su uso queda registrado.
+
+### Ejercicios — capítulo 8
+
+- **EX022 — Precisión numérica.** ¿Por qué debe probarse la robustez sobre el modelo cuantizado desplegado? Rúbrica: 3 = la cuantización cambia las salidas cerca de las fronteras; los resultados pueden diferir; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX023 — Límites de los TEE.** Nombre una amenaza que un TEE mitiga y otra que no mitiga en un servicio de LLM. Rúbrica: 3 = el operador del anfitrión leyendo datos frente a la inyección de prompts/fallos del servidor; 2 = una; 1 = vago; 0 = incorrecto.
+- **EX024 — Inversiones de bits.** Explique por qué las comprobaciones de integridad de los pesos en el momento de la carga no resuelven del todo los ataques por fallos. Rúbrica: 3 = los fallos pueden producirse en memoria después de la carga; hacen falta comprobaciones en tiempo de ejecución/ECC/redundancia; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+La IA se ejecuta sobre hardware real con precisión finita, recursos compartidos y firmware. Los ingenieros prueban el artefacto desplegado en la plataforma desplegada e incluyen las amenazas a nivel de arquitectura en el modelo.
+
+### Siga estudiando — capítulo 08 de 50
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programación II
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) estructurar programas más grandes en módulos con interfaces claras; (2) gestionar las dependencias y sus riesgos de cadena de suministro; (3) escribir pruebas, incluidas las basadas en propiedades y las de regresión; y (4) construir un pequeño entorno de evaluación para un componente de IA.
+
+### 9.1 Módulos e interfaces
+
+Los programas grandes se dividen en módulos con interfaces estrechas. En los sistemas de IA, separe la *carga de datos*, la *inferencia del modelo*, la *aplicación de la política* y la *ejecución de herramientas*. El módulo de política debe ser pequeño, revisable e independiente del modelo: decide lo que está permitido con independencia de lo que diga el modelo. Es la forma en software del mínimo privilegio. Si la política depende del propio juicio del modelo, una inyección de prompts que tenga éxito también burla la política. Mantenerla en código separado hace que aplique las mismas reglas sea cual sea la forma en que se persuadió al modelo. Las interfaces estrechas también hacen posibles las revisiones: un revisor puede leer con atención un módulo de 80 líneas, pero no un sistema cuyas comprobaciones están repartidas entre prompts y scripts.
+
+### 9.2 Dependencias y cadena de suministro
+
+Los proyectos de IA incorporan muchas bibliotecas y archivos de modelos. Fije las versiones, verifique los hashes y prefiera la serialización segura: cargar archivos *pickle* no confiables en Python puede ejecutar código arbitrario, y por eso se prefieren, para los pesos de los modelos, formatos diseñados para contener solo tensores. OWASP LLM 2025 incluye la *cadena de suministro* (LLM03) y el *envenenamiento de datos y modelos* (LLM04). Gu et al. (arXiv:1708.06733) mostraron que un modelo con puerta trasera obtenido de un tercero puede comportarse con normalidad ante entradas limpias.
+
+Fijar las versiones impide que una actualización cambie el comportamiento en silencio, y la comprobación de hashes impide cargar un archivo sustituido. Un modelo con puerta trasera es más difícil: puede superar todas las pruebas ordinarias, porque su comportamiento dañino solo aparece con un disparador concreto. Los ingenieros reducen este riesgo prefiriendo fuentes con procedencia publicada, registrando de dónde procede cada modelo y probando si hay comportamientos inesperados con entradas ajenas a la distribución habitual.
+
+### 9.3 Pruebas más allá de los ejemplos
+
+Las pruebas de regresión congelan el comportamiento conocido como correcto para que los cambios no puedan romperlo en silencio. Las pruebas basadas en propiedades generan muchas entradas y comprueban invariantes («la política nunca permite `create_work_order` sin un indicador de confirmación»). Para los componentes de IA, un *conjunto dorado* de entradas con salidas esperadas detecta la deriva de comportamiento cuando cambia un modelo o un prompt. Cada tipo detecta algo distinto. Las pruebas de regresión impiden que vuelvan fallos antiguos, las pruebas de propiedades encuentran entradas en las que nadie había pensado, y los conjuntos dorados muestran cuándo la edición de un prompt o la actualización de un modelo cambia respuestas que antes eran correctas. Los conjuntos dorados requieren cuidado, porque las salidas de los modelos varían; Sam comprueba propiedades de las respuestas, como qué herramienta se propuso, en lugar de la redacción exacta.
+
+### 9.4 Un entorno de evaluación
+
+Un entorno de evaluación carga un conjunto de prueba, ejecuta el componente, registra las salidas y calcula métricas con intervalos. Debe ser determinista dada una semilla, registrar las versiones (hash del modelo, versión del prompt, commit del código) y mantener los datos de prueba separados de los de desarrollo. Sin versiones registradas, un resultado no puede vincularse al sistema que describe, y una regresión posterior no puede rastrearse. El determinismo hace comparables las nuevas ejecuciones, de modo que un cambio en las métricas refleja un cambio en el sistema y no en el muestreo aleatorio. Mantener separados los datos de prueba y de desarrollo impide ajustar el sistema con los mismos ejemplos que se usan para juzgarlo, lo que haría que los resultados parecieran mejores de lo que son.
+
+### 9.5 Ejemplo resuelto (caso sintético de NRS)
+
+Sam reestructuró Wrench en cuatro módulos. El módulo `policy` (80 líneas) comprueba cada llamada a herramienta propuesta frente al rol del usuario y exige un token de confirmación para las órdenes de trabajo. Una prueba basada en propiedades generó 10.000 solicitudes aleatorias de llamadas a herramientas y confirmó que ninguna pasaba sin token. La revisión de dependencias encontró un script de conversión de modelos que cargaba archivos pickle desde una carpeta compartida; Sam lo sustituyó por un cargador de un formato solo de tensores y añadió la verificación de hashes. La prueba de propiedades muestrea el espacio de llamadas a herramientas de forma mucho más amplia de lo que permitirían los casos escritos a mano, aunque no demuestra que no exista ninguna llamada insegura.
+
+### 9.6 Errores y límites
+
+- Lógica de política incrustada en los prompts en lugar de en el código.
+- Dependencias sin fijar y archivos de modelos sin verificar.
+- Conjuntos dorados reutilizados para el ajuste (dejan de detectar la deriva).
+
+Una política escrita en un prompt puede sortearse mediante la entrada del modelo; una política en código, no. Las dependencias sin fijar hacen que los resultados de las pruebas de ayer no signifiquen nada hoy. Un conjunto dorado usado durante el ajuste deja poco a poco de ser una comprobación independiente, porque el sistema se ha adaptado a él. Sam conserva un segundo conjunto, intacto, para las decisiones de publicación y lo renueva cuando cambia el uso del sistema.
+
+### Ejercicios — capítulo 9
+
+- **EX025 — División en módulos.** Proponga una estructura de módulos para un asistente basado en LLM con herramientas y diga qué módulo aplica la seguridad. Rúbrica: 3 = datos, inferencia, política, herramientas; política fuera del modelo; 2 = parcial; 1 = vago; 0 = nada.
+- **EX026 — Pickle.** ¿Por qué es peligroso cargar un modelo no confiable en formato pickle, y cuál es la alternativa? Rúbrica: 3 = ejecución de código arbitrario al cargar; formato solo de tensores más verificación de hash; 2 = una parte; 1 = vago; 0 = incorrecto.
+- **EX027 — Prueba de propiedades.** Escriba en una frase el invariante que probó Sam y otro invariante más. Rúbrica: 3 = ambos precisos; 2 = uno; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Una buena estructura sitúa las decisiones de seguridad en código pequeño y comprobable fuera del modelo; la disciplina con las dependencias y las pruebas mantiene esa estructura digna de confianza a medida que el sistema crece.
+
+### Siga estudiando — capítulo 09 de 50
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética y seguridad en la ingeniería
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar la ética profesional de la ingeniería a los sistemas de IA; (2) distinguir la seguridad funcional (daño accidental) de la ciberseguridad (daño intencionado) y mostrar cómo interactúan; (3) aplicar las reglas de las pruebas autorizadas y la divulgación responsable; y (4) reconocer obligaciones legales como las del Reglamento de IA de la UE para los sistemas de alto riesgo.
+
+### 10.1 Deberes profesionales
+
+Los códigos de ética de la ingeniería anteponen la seguridad, la salud y el bienestar públicos, exigen honestidad sobre las capacidades y los límites, y exigen competencia. En la IA, esto significa no exagerar lo que puede hacer un modelo, documentar los modos de fallo conocidos y negarse a desplegar cuando el riesgo es inaceptable. Estos deberes se aplican en los momentos corrientes, no solo en los dramáticos: una diapositiva que redondea a la baja una tasa de fallos al amanecer del 9 % hasta «alrededor del 2 %», una demostración que oculta las condiciones en que el modelo falla o un plazo que tienta a un equipo a saltarse la revisión de seguridad. La competencia incluye conocer los límites de la propia pericia y pedir ayuda, por ejemplo a un ingeniero de seguridad ferroviaria, cuando una decisión queda fuera de ellos.
+
+### 10.2 Seguridad funcional y ciberseguridad
+
+La ingeniería de seguridad funcional se ocupa de los fallos accidentales; la ciberseguridad, de los ataques deliberados. En la IA interactúan: una entrada adversarial puede causar un fallo de seguridad funcional (un defecto del carril no detectado), y un mecanismo de seguridad funcional (el paso a la inspección manual) puede usarse de forma abusiva para causar una denegación de servicio. El AI RMF del NIST (AI 100-1) incluye *seguro* (*safe*) y *protegido y resiliente* (*secure and resilient*) entre las características de una IA confiable y subraya que deben gestionarse conjuntamente.
+
+Gestionarlas conjuntamente significa un único análisis de peligros que pregunte tanto qué podría fallar como qué podría hacer fallar alguien. El paso a la inspección manual es seguro frente a los accidentes, pero un atacante capaz de provocarlo repetidamente podría agotar a los inspectores y retrasar el trabajo real.
+
+### 10.3 Pruebas autorizadas y divulgación
+
+Pruebe solo sistemas que sean suyos o para los que tenga permiso escrito, dentro de un alcance y un plazo definidos. Nunca lance ataques contra servicios públicos de IA sin autorización; las condiciones de servicio suelen prohibirlo. Cuando encuentre una vulnerabilidad en el producto de otra persona, comuníquela en privado al fabricante y acuerden un calendario antes de publicarla (divulgación coordinada). Mantenga los datos de prueba sintéticos o debidamente gobernados; nunca extraiga ni publique datos personales. El permiso escrito indica quién puede probar, qué, cuándo y con qué métodos.
+
+### 10.4 Legislación y regulación
+
+El Reglamento (UE) 2024/1689 (el Reglamento de IA) clasifica algunos sistemas de IA como de alto riesgo, entre ellos los componentes de seguridad de infraestructuras críticas, y exige gestión de riesgos, gobernanza de datos, documentación técnica, registro de eventos, supervisión humana, y precisión, solidez y ciberseguridad (artículo 15). Las obligaciones se aplican por etapas de 2025 a 2027. Los ingenieros deben saber si su sistema puede entrar en una categoría regulada y recurrir a expertos jurídicos; este libro ofrece orientación, no asesoramiento jurídico. Incluso antes del asesoramiento jurídico, un ingeniero puede preparar la evidencia que necesitaría un sistema regulado: un registro de riesgos, la documentación de los conjuntos de datos, registros de las decisiones y constancia de la revisión humana. Esos registros son una buena práctica de todos modos, y reunirlos pronto evita tener que reconstruir más tarde la historia de un sistema con prisas.
+
+### 10.5 Ejemplo resuelto (caso sintético de NRS)
+
+Un directivo pidió a Sam que subiera el umbral de alerta de TrackEye para reducir las falsas alarmas antes de una demostración. Sam calculó que los falsos negativos subirían del 2 % al 5 % con datos diurnos. Sam documentó el compromiso, se negó a cambiar el umbral de producción sin una revisión de seguridad y propuso una configuración solo para la demostración, claramente etiquetada como tal. Sam señaló además que TrackEye, como componente de seguridad de una infraestructura ferroviaria, puede ser de alto riesgo según el Reglamento de IA, y lo remitió a revisión jurídica. La configuración de demostración cumplió el objetivo del directivo sin tocar el sistema que inspecciona la vía real.
+
+### 10.6 Errores y límites
+
+- Tratar la ética como algo separado de las decisiones técnicas.
+- Probar servicios de IA de terceros sin permiso.
+- Ocultar compromisos de seguridad en cambios de configuración.
+
+La ética separada del trabajo técnico tiende a aparecer solo en documentos de políticas, mientras que las decisiones reales se toman en los umbrales y en los planes de prueba. Probar un servicio público de IA sin permiso puede infringir la ley incluso con buenas intenciones. Un cambio de umbral que cambia en silencio defectos no detectados por menos alarmas es una decisión de seguridad tomada sin las personas responsables de la seguridad; la regla de Sam es que cualquier cambio que afecte a las tasas de fallos de detección pase por revisión con sus números a la vista.
+
+### Ejercicios — capítulo 10
+
+- **EX028 — Seguridad funcional y ciberseguridad.** Dé un ejemplo en NRS en que un ataque cause un fallo de seguridad funcional y otro en que se abuse de un mecanismo de seguridad funcional. Rúbrica: 3 = ambos verosímiles; 2 = uno; 1 = confuso; 0 = nada.
+- **EX029 — Divulgación.** Descubre que el modelo alojado de un proveedor filtra los prompts de otros clientes. Enumere los pasos que da. Rúbrica: 3 = detenerse, conservar la evidencia mínima, informe privado, calendario acordado, no publicar datos; 2 = parcial; 1 = vago; 0 = publicar o explotar.
+- **EX030 — Reglamento de IA.** Nombre cuatro obligaciones de los sistemas de IA de alto riesgo. Rúbrica: 3 = cuatro entre gestión de riesgos, gobernanza de datos, documentación, registro de eventos, transparencia, supervisión humana, precisión/solidez/ciberseguridad; 2 = tres; 1 = una o dos; 0 = nada.
+
+### Síntesis del capítulo
+
+La ética en la ingeniería de IA es concreta: límites honestos, seguridad funcional y ciberseguridad gestionadas conjuntamente, pruebas autorizadas, divulgación coordinada y conciencia de las obligaciones legales de los sistemas de alto riesgo.
+
+### Siga estudiando — capítulo 10 de 50
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes y protocolos
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) explicar el recorrido de red de una solicitud a un servicio de modelos (DNS, TCP, TLS, HTTP); (2) identificar amenazas de nivel de red para los servicios de IA (interceptación, denegación de servicio, abuso de las API); (3) diseñar la segmentación de red para el entrenamiento, el servicio y los sistemas de las herramientas; y (4) interpretar los límites de tasa y las cuotas de las API como controles de seguridad.
+
+### 11.1 El recorrido de la solicitud
+
+Un cliente resuelve el nombre del servicio con DNS, abre una conexión TCP, negocia TLS (que autentica al servidor y cifra el tráfico) y envía una solicitud HTTP, normalmente un JSON que contiene un prompt o unas características. El servidor devuelve una respuesta, quizá transmitida token a token. Cada capa tiene sus propios modos de fallo: suplantación de DNS, configuración errónea de TLS, contrabando de solicitudes HTTP, cuerpos de tamaño excesivo. Los ingenieros revisan cada capa por separado. Los registros DNS se protegen y se monitorizan, la configuración de TLS se contrasta con las recomendaciones vigentes y la capa HTTP impone un tamaño máximo del cuerpo y un tiempo máximo de solicitud antes de que el modelo vea nada. Una solicitud rechazada en el perímetro casi no cuesta nada; la misma solicitud, si llega al modelo, puede costar segundos de tiempo de acelerador.
+
+### 11.2 Amenazas propias de las API de IA
+
+Además de los ataques de red clásicos, las API de IA se enfrentan a la *extracción de modelos* mediante consultas sistemáticas (Tramèr et al., arXiv:1609.02943), a la *inferencia de pertenencia* a través de las salidas de confianza y al *consumo ilimitado* (OWASP LLM10): prompts y salidas largos que agotan la capacidad de cómputo o el presupuesto. Como cada solicitud es cara, los límites ordinarios de solicitudes por segundo no bastan; las cuotas deben tener en cuenta los tokens y el cómputo.
+
+```python
+"""Lab R: token-bucket limits against unbounded consumption (synthetic).
+Simulates 60 seconds of requests from a normal client and a flooding client
+against a model endpoint with a per-client token bucket."""
+import random
+rng = random.Random(4)
+def simulate(rate_per_s, burst, reqs):
+    tokens, last, ok = burst, 0.0, 0
+    for t in reqs:
+        tokens = min(burst, tokens + (t - last) * rate_per_s); last = t
+        if tokens >= 1: tokens -= 1; ok += 1
+    return ok
+normal = sorted(rng.uniform(0, 60) for _ in range(90))
+flood = sorted(rng.uniform(0, 60) for _ in range(3000))
+for rate, burst in ((5, 20), (2, 10), (1, 5)):
+    print(f"limit={rate}/s burst={burst:2d} normal_served={simulate(rate, burst, normal):3d}/90 "
+          f"flood_served={simulate(rate, burst, flood):4d}/3000")
+```
+
+Salida esperada:
+
+```text
+limit=5/s burst=20 normal_served= 90/90 flood_served= 319/3000
+limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
+limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
+```
+
+El laboratorio muestra un cubo de testigos que atiende por completo a un cliente normal mientras limita a un cliente que inunda el servicio. Un límite demasiado estricto (1/s, ráfaga de 5) empieza a rechazar tráfico legítimo: los límites son un compromiso que hay que ajustar con datos de uso reales.
+
+### 11.3 Segmentación
+
+Sitúe los clústeres de entrenamiento, los registros de modelos, los puntos de servicio y los sistemas de las herramientas en zonas de red separadas. El servicio no debe llegar a los almacenes de datos de entrenamiento; el sistema de las herramientas de un agente basado en LLM (por ejemplo, un sistema de órdenes de trabajo) debe aceptar llamadas solo del servicio de política, no directamente del anfitrión del modelo. El filtrado de salida impide que un componente comprometido o manipulado envíe datos a destinos arbitrarios, una mitigación directa de la exfiltración mediante llamadas a herramientas inyectadas.
+
+Las zonas se imponen con reglas de cortafuegos y se comprueban con pruebas: desde el anfitrión del modelo, una conexión al sistema de órdenes de trabajo o a una dirección externa debe fallar. Registrar estas pruebas hace que la segmentación siga verificada tras los cambios de red, en lugar de darse por supuesta.
+
+### 11.4 Ejemplo resuelto (caso sintético de NRS)
+
+El anfitrión del modelo de Wrench podía conectarse a internet para obtener los boletines de proveedores y también podía llamar directamente a la API de órdenes de trabajo. Sam trasladó la obtención de boletines a un servicio de ingesta separado que guarda copias depuradas, eliminó la salida a internet del anfitrión del modelo e hizo que la API de órdenes de trabajo aceptara solicitudes solo del servicio de política, con TLS mutuo. Los cambios cortaron a nivel de red ambos caminos de lo no confiable a lo privilegiado. Aunque un boletín manipule el modelo, el anfitrión del modelo no puede enviar datos al exterior ni llegar al sistema de órdenes de trabajo sin pasar por el servicio de política. Sam verifica cada cambio intentando las conexiones bloqueadas desde el anfitrión del modelo y registrando los rechazos como evidencia.
+
+### 11.5 Errores y límites
+
+- Límites de tasa sobre las solicitudes, pero no sobre los tokens ni el cómputo.
+- Redes planas en las que el anfitrión del modelo llega a todo.
+- Salida sin restricciones desde componentes que procesan texto no confiable.
+
+Contar solo las solicitudes permite que un cliente envíe unos pocos prompts enormes que cuestan tanto como miles de prompts pequeños. Las redes planas hacen que un único componente manipulado pueda llegar a todos los sistemas. La salida sin restricciones da a las instrucciones inyectadas una vía para enviar datos al exterior. La tercera configuración del laboratorio añade otra lección: los límites ajustados sin datos de uso pueden rechazar un tercio de las solicitudes legítimas, así que las cuotas necesitan medición además de razonamiento de seguridad.
+
+### Ejercicios — capítulo 11
+
+- **EX031 — Lectura del laboratorio.** Con 2/s y ráfaga de 10, ¿cuántas solicitudes normales y de inundación se atienden, y por qué 1/s perjudica a los usuarios normales? Rúbrica: 3 = 90/90 y 129/3000; las ráfagas normales superan el cubo más pequeño; 2 = solo los números; 1 = vago; 0 = incorrecto.
+- **EX032 — Segmentación.** Describa (con palabras) cuatro zonas para Wrench y los flujos permitidos. Rúbrica: 3 = ingesta, modelo, política, herramientas, con flujos direccionales y sin camino directo modelo→herramientas; 2 = laguna menor; 1 = vago; 0 = nada.
+- **EX033 — Filtrado de salida.** Explique cómo el filtrado de salida limita el impacto de la inyección de prompts. Rúbrica: 3 = el componente manipulado no puede enviar datos a destinos del atacante; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+Los servicios de IA son servicios de red con solicitudes caras. TLS, la segmentación, el control de salida y las cuotas que tienen en cuenta el cómputo reducen la interceptación, el abuso y el impacto de los componentes manipulados.
+
+### Siga estudiando — capítulo 11 de 50
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operativos
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) explicar los procesos, los usuarios, los permisos y el aislamiento; (2) aislar en entornos restringidos (*sandbox*) los componentes que ejecutan acciones generadas por modelos; (3) configurar el mínimo privilegio para los procesos que sirven modelos; y (4) recoger registros del sistema operativo útiles para investigar incidentes de IA.
+
+### 12.1 Procesos y privilegios
+
+El sistema operativo ejecuta los programas como procesos con una identidad (usuario, grupos) e impone permisos sobre archivos, dispositivos y sockets de red. Un servidor de modelos debe ejecutarse como un usuario dedicado sin privilegios, con acceso de solo lectura a sus pesos y sin acceso de escritura a los directorios de código. Con esa configuración, un fallo o una instrucción inyectada que tome el control del proceso del servidor puede leer los pesos que ya sirve, pero no puede sustituirlos, cambiar el código del servidor ni leer archivos de otros usuarios. Ejecutarlo como root elimina todas esas barreras de golpe, y por eso los revisores comprueban primero la identidad del proceso.
+
+### 12.2 Mecanismos de aislamiento
+
+Los contenedores (espacios de nombres y grupos de control en Linux), las máquinas virtuales y los filtros de llamadas al sistema (seccomp) aíslan procesos. Cuando un agente de IA puede ejecutar código (una herramienta de tipo «intérprete de código»), ese código debe ejecutarse en un entorno aislado sin red, con un sistema de archivos temporal, límites de CPU y memoria y un límite de tiempo. Trate como no confiable cada cadena de código producida por un modelo, porque la inyección de prompts puede controlarla.
+
+Los contenedores comparten el núcleo del anfitrión, de modo que un fallo del núcleo puede permitir que el código escape; las máquinas virtuales añaden una frontera más fuerte a un coste mayor. Para el código generado por un modelo, que puede ser cualquier cosa, Sam prefiere una máquina virtual dedicada o un entorno aislado reforzado con filtrado de llamadas al sistema, y desecha el entorno después de cada ejecución.
+
+### 12.3 Límites de recursos
+
+Los grupos de control limitan la CPU, la memoria y la cuota de GPU; sin ellos, una solicitud desmesurada puede dejar sin recursos a las demás. Es la parte, a nivel del sistema operativo, de la defensa frente al consumo ilimitado. Los límites deben fijarse a partir de mediciones. Sam perfila las solicitudes normales para conocer sus necesidades de memoria y tiempo y después fija los límites con cierto margen. Una solicitud que alcanza un límite se detiene y se registra, de modo que un patrón de solicitudes desmesuradas se hace visible. Los límites también protegen al anfitrión: un trabajador de inferencia que se queda sin memoria sin un límite puede arrastrar consigo a otros servicios de la misma máquina y convertir una solicitud mala en una caída más amplia.
+
+### 12.4 Secretos y permisos de archivos
+
+Los servidores de modelos necesitan a menudo credenciales: para una base de datos vectorial, la API de una herramienta o un registro. Guárdelas en el gestor de secretos de la plataforma o en archivos que solo pueda leer el usuario del servicio, nunca en prompts, volcados del entorno ni imágenes compartidas entre equipos. Se puede inducir a un modelo a revelar cualquier cosa que esté en su ventana de contexto; OWASP LLM 2025 incluye la *filtración del prompt del sistema* (LLM07) en parte porque los desarrolladores colocan secretos ahí. Mantenga las credenciales fuera del alcance del modelo y dé a cada herramienta su propia credencial de alcance estrecho.
+
+### 12.5 Registros
+
+Los registros del sistema (autenticación, inicios de procesos, auditorías de acceso a archivos) complementan los registros de la aplicación. En los incidentes de IA, correlacione el identificador de solicitud del modelo con los eventos del sistema operativo: ¿provocó una llamada a herramienta el inicio de un proceso o el cambio de un archivo? Un identificador de solicitud compartido es el vínculo. El servicio del modelo lo escribe con cada prompt y cada llamada a herramienta, los servicios de las herramientas lo incluyen en sus propios registros y el entorno aislado lo registra con cada proceso que inicia. Durante una investigación, una sola búsqueda muestra entonces la cadena completa, desde el boletín que llevaba una instrucción hasta el proceso que intentó ejecutarla. Los relojes deben estar sincronizados; si no, los eventos de distintos anfitriones no pueden ordenarse.
+
+### 12.6 Ejemplo resuelto (caso sintético de NRS)
+
+Wrench incorporó una herramienta «calculate» que ejecuta fragmentos breves de Python para cálculos de par y desgaste. Sam la ejecutó en un contenedor sin red, con raíz de solo lectura, un límite de memoria de 64 MB, un límite de CPU de 2 segundos y un perfil seccomp. Un boletín de prueba sintético con la instrucción de «calcular» algo que abría un socket de red falló de forma segura y quedó registrado. Había varias capas en el camino: no había red a la que conectarse, el perfil seccomp puede rechazar de plano las llamadas de socket y el registro anotó el identificador de solicitud, de modo que pudo rastrearse el boletín de origen. Sam conserva el boletín como prueba de regresión, para que los cambios posteriores del entorno aislado se comprueben frente a él.
+
+### 12.7 Errores y límites
+
+- Servidores de modelos que se ejecutan como root.
+- Herramientas de código con acceso a la red.
+- Trabajadores de inferencia sin límites de recursos.
+
+Los servidores de modelos como root convierten cualquier fallo del servidor en el control total del anfitrión. Las herramientas de código con acceso a la red permiten que las instrucciones inyectadas envíen datos a cualquier parte. Los trabajadores de inferencia sin límites permiten que una solicitud deje sin recursos al resto. Cada error es fácil de detectar con una comprobación sencilla: el usuario del proceso, un intento de conexión desde dentro del entorno aislado y una solicitud deliberadamente desmesurada en preproducción, así que Sam ejecuta las tres antes de cada publicación.
+
+### Ejercicios — capítulo 12
+
+- **EX034 — Especificación del entorno aislado.** Escriba seis restricciones para una herramienta de ejecución de código. Rúbrica: 3 = seis entre sin red, sistema de archivos de solo lectura, directorio temporal, límites de CPU/memoria/tiempo, filtro de llamadas al sistema, usuario sin privilegios; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX035 — Mínimo privilegio.** Enumere tres permisos que no debería tener el proceso del servidor de modelos. Rúbrica: 3 = escritura en código/pesos, root, acceso a datos de entrenamiento/secretos, red sin restricciones; 2 = dos; 1 = uno; 0 = nada.
+- **EX036 — Correlación.** ¿Por qué correlacionar los identificadores de solicitud del modelo con los registros del sistema operativo? Rúbrica: 3 = vincular las decisiones del modelo con sus efectos para la investigación; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+El aislamiento del sistema operativo convierte «el modelo podría ser manipulado» en «un modelo manipulado puede hacer poco». El mínimo privilegio, los entornos aislados, los límites de recursos y los registros correlacionados son las herramientas.
+
+### Siga estudiando — capítulo 12 de 50
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
 
 <a id="worked-results"></a>
 
@@ -451,6 +826,42 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX017.** Aumento = ε·‖w‖₁ = 0,2 × (2 + 1 + 0,5) = 0,7, con δ = ε·sign(w) = (0,2, −0,2, 0,2).
 
 **EX018.** Ninguna perturbación L2 menor que margen/L = 0,6/3 = 0,2 puede cambiar el signo de la puntuación.
+
+**EX019.** VP = 0,90 × 0,005 = 0,0045; FP = 0,02 × 0,995 = 0,0199; precisión = 0,0045/0,0244 ≈ 0,184.
+
+**EX020.** TPR 0,80 y FPR 0,001 dan una precisión de 0,445 con prevalencia 0,001 (18 alertas por cada 10.000), a costa de no detectar el 20 % de los ataques.
+
+**EX021.** Los prompts de una misma plantilla comparten estructura, de modo que sus resultados están correlacionados; la información se parece más a 5 grupos independientes que a 500 ensayos. Remuestree plantillas (bootstrap por conglomerados) y comunique los resultados por plantilla.
+
+**EX022.** La cuantización desplaza ligeramente las puntuaciones, de modo que las entradas cercanas a la frontera de decisión pueden invertirse; las tasas de éxito de los ataques y de error medidas en el modelo de 32 bits pueden no mantenerse en el despliegue de 8 bits.
+
+**EX023.** Mitiga: que un operador del anfitrión en la nube lea prompts o pesos en memoria. No mitiga: la inyección de prompts ni los fallos del servidor de modelos que se ejecuta dentro del enclave.
+
+**EX024.** Un fallo puede invertir bits después de la comprobación del hash en la carga, durante la inferencia. Entre las mitigaciones están la memoria ECC, el recálculo periódico del hash, la computación redundante y las comprobaciones de verosimilitud de las salidas.
+
+**EX025.** `ingest` (carga los datos y los etiqueta con su procedencia), `inference` (llamadas al modelo), `policy` (comprueba cada acción propuesta frente al rol, el alcance y la confirmación), `tools` (ejecuta las acciones aprobadas). El módulo de política aplica la seguridad, fuera del modelo.
+
+**EX026.** Deserializar con pickle ejecuta el código incrustado en el archivo, de modo que un archivo de modelo malicioso compromete la máquina al cargarse. Use un formato solo de tensores (sin código) y verifique un hash fijado procedente de una fuente confiable.
+
+**EX027.** «No se ejecuta ninguna llamada a `create_work_order` a menos que lleve un token de confirmación válido del técnico solicitante». Otro: «Ninguna llamada a herramienta se dirige a un activo fuera del depósito del usuario solicitante».
+
+**EX028.** Ataque → seguridad funcional: unas marcas colocadas cerca de los carriles hacen que TrackEye no detecte un defecto real. Abuso de un mecanismo de seguridad funcional: provocar deliberadamente muchas alertas de baja confianza para que el sistema pase a la lenta inspección manual y retrase el servicio (denegación de servicio).
+
+**EX029.** Dejar de probar; registrar la evidencia mínima sin conservar datos de otros; informar en privado al contacto de seguridad del proveedor; acordar un calendario de corrección y divulgación; publicar solo después de la corrección y sin datos personales.
+
+**EX030.** Sistema de gestión de riesgos; gobernanza de datos; documentación técnica; conservación de registros/registro de eventos; transparencia hacia los responsables del despliegue; supervisión humana; precisión, solidez y ciberseguridad.
+
+**EX031.** 90/90 normales y 129/3000 de inundación. Con 1/s y ráfaga de 5, las ráfagas naturales del cliente normal superan el cubo, de modo que solo se atienden 62 de 90: el límite es demasiado estricto.
+
+**EX032.** Zona de ingesta (obtiene y depura los boletines; puede conectarse a internet) → zona del modelo (sin internet; lee el almacén depurado) → zona de política (recibe las acciones propuestas por el modelo; comprueba el rol y la confirmación) → zona de herramientas (la API de órdenes de trabajo solo acepta al servicio de política mediante TLS mutuo). Sin camino directo modelo→herramientas.
+
+**EX033.** Aunque un texto inyectado haga que un componente intente enviar datos al exterior, las reglas de salida bloquean las conexiones a destinos que no están en una lista de permitidos, así que la exfiltración fracasa.
+
+**EX034.** Sin red; sistema de archivos raíz de solo lectura; directorio temporal con escritura; límites de CPU, memoria y tiempo real; filtro de llamadas al sistema; usuario sin privilegios (sin capacidades).
+
+**EX035.** Derechos de root o de administración; acceso de escritura al código o a los pesos; acceso a datos de entrenamiento, secretos o credenciales que no necesita; salida de red sin restricciones.
+
+**EX036.** Vincula una decisión del modelo (y el prompt que la causó) con efectos concretos, como inicios de procesos o cambios de archivos, que es como los investigadores establecen lo que realmente hizo una instrucción inyectada.
 
 <a id="references"></a>
 
