@@ -1,0 +1,22 @@
+{
+  "name": "cykin-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "catalog": "python3 scripts/build_catalog.py",
+    "dev": "npm run catalog && astro dev",
+    "build": "npm run catalog && astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build && uv run pywrangler deploy"
+  },
+  "dependencies": {
+    "astro": "^7.3.8",
+    "dompurify": "^3.2.7",
+    "marked": "^16.3.0",
+    "mermaid": "^12.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

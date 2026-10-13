@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Minha área · CyKin" description="Acompanhe aulas e exercícios no CyKin. O cadastro é opcional; os livros continuam abertos.">
+  <section class="account-hero"><div class="shell"><div class="eyebrow">ÁREA OPCIONAL DO ESTUDANTE</div><h1>Seu estudo,<br /><span class="gold-text">no seu ritmo.</span></h1><p>Crie uma sessão apenas se quiser guardar aulas concluídas e respostas de exercícios. Livros, aulas e API continuam abertos a todos, sem conta.</p></div></section>
+  <section class="section"><div class="shell account-grid"><div class="card profile"><div class="eyebrow">IDENTIDADE</div><h2 id="profile-title">Verificando acesso…</h2><p id="profile-description" class="muted">Seu login é gerenciado pela Cloudflare Access. Nenhuma senha é guardada pelo CyKin.</p><div id="profile-action"></div></div><div class="card benefits"><div class="eyebrow">SUA ÁREA DE ESTUDO</div><h2>O que você pode acompanhar</h2><div class="benefit"><span>✓</span><div><strong>Aulas concluídas</strong><p>Marque o capítulo ao finalizar sua leitura.</p></div></div><div class="benefit"><span>✎</span><div><strong>Exercícios tentados</strong><p>Registre suas respostas para continuar mais tarde.</p></div></div><div class="benefit"><span>◌</span><div><strong>Áudio e vídeo</strong><p>Recurso planejado para uma próxima etapa; a leitura já está aberta.</p></div></div></div></div></section>
+  <section class="section records"><div class="shell"><div class="eyebrow">MEU HISTÓRICO</div><h2>Progresso salvo</h2><p id="records-status" class="muted">Faça login para ver suas aulas e tentativas.</p><div id="records-list" class="record-list"></div><a class="button gold" href="/learn/">Continuar estudando →</a></div></section>
+  <script>
+    type Lesson = { level: string; area: string; language: string; chapter: number; status: string; updated_at: string };
+    type Exercise = Lesson & { exercise_id: string; answer: string };
+    const title = document.getElementById('profile-title')!;
+    const description = document.getElementById('profile-description')!;
+    const action = document.getElementById('profile-action')!;
+    const status = document.getElementById('records-status')!;
+    const list = document.getElementById('records-list')!;
+    const link = (href: string, label: string) => { const a = document.createElement('a'); a.href=href; a.className='button gold'; a.textContent=label; return a; };
+    const lessonLink = (item: Lesson) => `/learn/?mode=theme&lang=${encodeURIComponent(item.language)}&area=${encodeURIComponent(item.area)}&level=${encodeURIComponent(item.level)}&chapter=${item.chapter}`;
+    try {
+      const me = await fetch('/private/me', { credentials: 'same-origin', cache: 'no-store', redirect: 'manual' });
+      if (!me.ok) throw new Error(me.status === 503 ? 'O login opcional ainda não está ativado neste domínio.' : 'Entre na sua conta para salvar o progresso.');
+      const user = await me.json(); title.textContent = user.email || 'Sessão ativa'; description.textContent = 'Seu progresso pertence somente à sua conta.';
+      const response = await fetch('/private/progress', { credentials: 'same-origin', cache: 'no-store' });
+      if (!response.ok) throw new Error('O progresso não pôde ser carregado agora.');
+      const data = await response.json() as { lessons: Lesson[]; exercises: Exercise[] };
+      status.textContent = `${data.lessons.length} aula(s) marcadas · ${data.exercises.length} exercício(s) registrados.`;
+      for (const item of data.lessons) {
+        const a = document.createElement('a'); a.className='record'; a.href=lessonLink(item);
+        const heading = document.createElement('strong'); heading.textContent=`${item.area.replaceAll('-', ' ')} · aula ${String(item.chapter).padStart(2,'0')}`;
+        const sub = document.createElement('span'); sub.textContent=`${item.language.toUpperCase()} · ${item.status === 'completed' ? 'Concluída' : 'Em andamento'} · ${item.updated_at}`;
+        a.append(heading,sub); list.append(a);
+      }
+      if (!data.lessons.length) status.textContent = 'Nenhuma aula marcada ainda. Comece por uma aula publicada.';
+    } catch(error) {
+      title.textContent='Leitura sempre aberta'; description.textContent=String(error);
+      action.append(link('/private/login','Entrar com e-mail →'), link('/learn/','Estudar sem cadastro →'));
+      status.textContent='Seu histórico aparecerá quando o login opcional estiver disponível e você entrar.';
+    }
+  </script>
+</BaseLayout>
+<style>
+  .account-hero { padding: 94px 0 72px; background: radial-gradient(circle at 80% 20%,rgba(65,121,246,.22),transparent 43%),var(--bg-2); border-bottom: 1px solid var(--line); }.account-hero h1 { font-size: clamp(2.7rem,5vw,5rem); }.account-hero p { color: var(--muted); max-width: 690px; font-size: 1.1rem; }
+  .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }.account-grid .card { padding: 32px; }.profile { min-height: 340px; }.profile h2,.benefits h2 { font-size: 1.6rem; margin: 12px 0; overflow-wrap: anywhere; }.profile p { max-width: 480px; }.profile .button { margin-top: 15px; }.benefit { display: flex; gap: 14px; border-top: 1px solid var(--line); padding-top: 15px; margin-top: 15px; }.benefit>span { color: var(--gold); font-weight: 800; }.benefit strong { font-size: .95rem; }.benefit p { color: var(--muted); font-size: .84rem; margin: 3px 0 0; }
+  .records { background: var(--bg-2); border-top: 1px solid var(--line); }.records h2 { margin-top: 12px; }.record-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin: 22px 0 34px; }.record { display: grid; gap: 4px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }.record strong { text-transform: capitalize; }.record span { color: var(--muted); font-size: .8rem; }
+  @media(max-width:760px){.account-grid,.record-list{grid-template-columns:1fr}.account-hero{padding:65px 0}.account-grid .card{padding:24px}}
+</style>

@@ -35,27 +35,29 @@
 
 <!-- cykin:onboarding:start -->
 
-## Comece por aqui
+## Start here
 
-Escolha uma rota e o idioma. Em cada curso, **uma matéria corresponde a um capítulo/aula**. O guia mostra a sequência completa e os links para avançar; abra o livro para estudar os exemplos e fazer os exercícios disponíveis. Capítulos que só têm plano são identificados como tal.
+[Open the CyKin study site](https://cykin.org/) to choose a route and language. Each subject is one book chapter and lesson. The course guide shows the full sequence, links to written lessons, and identifies chapters that still have only a plan. Public reading requires no account.
 
-**Trilha 1 — um curso:** 1. idioma → 2. tema → 3. nível → guia de todas as aulas daquele curso.
+**Route 1 — one course:** 1. language → 2. subject area → 3. level → the complete lesson guide for that course.
 
-**Trilha 2 — um nível inteiro:** 1. idioma → 2. nível → 3. todos os 23 temas daquele nível, com seus cursos e aulas em ordem. Comece no primeiro tema e siga o link para o próximo curso no fim de cada guia.
+**Route 2 — one level:** 1. language → 2. level → 3. all 23 subject areas at that level, with courses and lessons in study order.
 
-| Idioma | Trilha 1: escolha o tema | Trilha 2: escolha o nível |
+The site reads book text from this repository's `main` branch; the links below provide a GitHub-only route through the same curriculum.
+
+| Language | Route 1: choose an area | Route 2: choose a level |
 |---|---|---|
-| English | [Tema → nível](onboarding/en/themes.md) | [Nível → todos os temas](onboarding/en/levels.md) |
-| Português | [Tema → nível](onboarding/pt/themes.md) | [Nível → todos os temas](onboarding/pt/levels.md) |
-| Español | [Tema → nível](onboarding/es/themes.md) | [Nível → todos os temas](onboarding/es/levels.md) |
-| עברית | [Tema → nível](onboarding/he/themes.md) | [Nível → todos os temas](onboarding/he/levels.md) |
-| Français | [Tema → nível](onboarding/fr/themes.md) | [Nível → todos os temas](onboarding/fr/levels.md) |
-| Русский | [Tema → nível](onboarding/ru/themes.md) | [Nível → todos os temas](onboarding/ru/levels.md) |
-| Deutsch | [Tema → nível](onboarding/de/themes.md) | [Nível → todos os temas](onboarding/de/levels.md) |
-| 中文 | [Tema → nível](onboarding/zh/themes.md) | [Nível → todos os temas](onboarding/zh/levels.md) |
-| 日本語 | [Tema → nível](onboarding/ja/themes.md) | [Nível → todos os temas](onboarding/ja/levels.md) |
+| English | [Area → level](onboarding/en/themes.md) | [Level → all areas](onboarding/en/levels.md) |
+| Portuguese | [Area → level](onboarding/pt/themes.md) | [Level → all areas](onboarding/pt/levels.md) |
+| Spanish | [Area → level](onboarding/es/themes.md) | [Level → all areas](onboarding/es/levels.md) |
+| Hebrew | [Area → level](onboarding/he/themes.md) | [Level → all areas](onboarding/he/levels.md) |
+| French | [Area → level](onboarding/fr/themes.md) | [Level → all areas](onboarding/fr/levels.md) |
+| Russian | [Area → level](onboarding/ru/themes.md) | [Level → all areas](onboarding/ru/levels.md) |
+| German | [Area → level](onboarding/de/themes.md) | [Level → all areas](onboarding/de/levels.md) |
+| Chinese | [Area → level](onboarding/zh/themes.md) | [Level → all areas](onboarding/zh/levels.md) |
+| Japanese | [Area → level](onboarding/ja/themes.md) | [Level → all areas](onboarding/ja/levels.md) |
 
-**Como estudar:** abra o **guia de aulas** (`SUBJECTS.md`), leia cada capítulo disponível no `MANUSCRIPT.md`, faça os exercícios e confira as respostas no livro; siga a navegação ao fim do capítulo. Quando houver apenas `PLAN.md`, a aula ainda não foi escrita. As edições em hebraico, francês, russo, alemão, chinês e japonês têm apenas índices e planos neste momento. O placar acima mede cobertura inicial em inglês, e não certifica livros concluídos nem traduções. [Veja a cobertura por idioma](LANGUAGE_LESSON_PROGRESS.md).
+**How to study:** open a course's lesson index (`SUBJECTS.md`), read each available chapter in `MANUSCRIPT.md`, attempt the exercises, compare the worked answers, and follow the links at the end of each chapter. A `PLAN.md` chapter is an outline rather than a written lesson. Hebrew, French, Russian, German, Chinese and Japanese currently have indexes and plans only. The bookshelf above measures initial English chapter coverage; it does not certify finished books or translations. [See coverage by language](LANGUAGE_LESSON_PROGRESS.md).
 <!-- cykin:onboarding:end -->
 
 **English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).

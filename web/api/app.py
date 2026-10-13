@@ -1,0 +1,439 @@
+"""Read-only CyKin REST and stateless MCP API for Cloudflare Python Workers."""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import re
+from pathlib import Path
+from typing import Any
+from urllib.error import HTTPError
+from urllib.request import urlopen
+
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
+from pydantic import BaseModel, Field
+
+from access import identity
+
+
+app = FastAPI(title="CyKin public learning API", version="0.1.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
+GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/CyKin/main/"
+GITHUB_VIEW = "https://github.com/hiagokinlevi/CyKin/blob/main/"
+CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
+ANCHOR = re.compile(r'^<a id="ch-(\d{2})"></a>\s*$', re.M)
+EXERCISE = re.compile(r'\bEX(\d{3})\b')
+ANSWER = re.compile(r'^###\s+EX(\d{3})\b.*$', re.M)
+MCP_VERSION = "2025-06-18"
+ALLOWED_ORIGINS = {"https://cykin.org", "https://www.cykin.org", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
+MAX_SOURCE_CHARS = 3_000_000
+PUBLIC_ORIGINS = {"https://cykin.org", "https://www.cykin.org"}
+
+
+class LessonProgress(BaseModel):
+    level: str = Field(pattern=r"^[a-z0-9-]+$", max_length=50)
+    area: str = Field(pattern=r"^[a-z0-9-]+$", max_length=80)
+    language: str = Field(pattern=r"^[a-z]{2}$")
+    chapter: int = Field(ge=1, le=99)
+    status: str = Field(pattern=r"^(in_progress|completed)$")
+
+
+class ExerciseAttempt(LessonProgress):
+    exercise_id: str = Field(pattern=r"^EX[0-9]{3}$")
+    answer: str = Field(default="", max_length=20_000)
+    status: str = Field(pattern=r"^(attempted|completed)$")
+
+
+@app.middleware("http")
+async def canonical_domain(request: Request, call_next):
+    if request.headers.get("host") == "www.cykin.org":
+        return RedirectResponse("https://cykin.org" + request.url.path + ("?" + request.url.query if request.url.query else ""), status_code=308)
+    return await call_next(request)
+
+
+def same_origin(request: Request) -> None:
+    origin = request.headers.get("origin", "")
+    if origin not in PUBLIC_ORIGINS:
+        raise HTTPException(403, "A progress update must come from the CyKin site")
+
+
+def database(request: Request):
+    env = request.scope.get("env")
+    db = getattr(env, "DB", None)
+    if db is None:
+        raise HTTPException(503, "Student progress storage is not configured")
+    return db
+
+
+def d1_rows(result: Any) -> list[dict]:
+    if isinstance(result, dict):
+        return result.get("results", [])
+    from js import JSON  # type: ignore[import-not-found]
+    return json.loads(str(JSON.stringify(result))).get("results", [])
+
+
+async def catalog(request: Request) -> dict[str, Any]:
+    """The static catalog lists all courses; selected books are fetched live."""
+    if override := getattr(app.state, "catalog_override", None):
+        return override
+    env = request.scope.get("env")
+    if env is not None:
+        response = await env.ASSETS.fetch("https://assets.local/catalog.json")
+        if int(response.status) != 200:
+            raise HTTPException(503, "Catalog asset is unavailable")
+        return json.loads(str(await response.text()))
+    return json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
+
+
+def get_course(data: dict[str, Any], level: str, area: str, language: str) -> dict[str, Any]:
+    if language not in data["languages"]:
+        raise HTTPException(404, "Unknown language")
+    for course in data["courses"]:
+        if course["level"] == level and course["area"] == area:
+            return course
+    raise HTTPException(404, "Unknown course")
+
+
+async def source_text(request: Request, path: str) -> str | None:
+    """Read a fixed public GitHub path; 404 means this edition has only a plan."""
+    if override := getattr(app.state, "source_override", None):
+        return await override(path)
+    url = GITHUB_RAW + path
+    try:
+        from js import fetch  # type: ignore[import-not-found]
+    except ImportError:
+        def local_fetch() -> str | None:
+            try:
+                with urlopen(url, timeout=12) as response:
+                    data = response.read(MAX_SOURCE_CHARS + 1)
+            except HTTPError as exc:
+                if exc.code == 404:
+                    return None
+                raise
+            if len(data) > MAX_SOURCE_CHARS:
+                raise HTTPException(502, "Upstream book exceeds reading limit")
+            return data.decode("utf-8")
+        try:
+            return await asyncio.to_thread(local_fetch)
+        except HTTPException:
+            raise
+        except Exception as exc:
+            raise HTTPException(502, "GitHub source temporarily unavailable") from exc
+    try:
+        response = await fetch(url)
+        if int(response.status) == 404:
+            return None
+        if int(response.status) != 200:
+            raise HTTPException(502, "GitHub source temporarily unavailable")
+        text = str(await response.text())
+        if len(text) > MAX_SOURCE_CHARS:
+            raise HTTPException(502, "Upstream book exceeds reading limit")
+        return text
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(502, "GitHub source temporarily unavailable") from exc
+
+
+def book_path(level: str, area: str, language: str, filename: str) -> str:
+    return f"levels/{level}/{area}/{language}/book/{filename}"
+
+
+def chapter_sections(markdown: str) -> dict[int, dict[str, str]]:
+    anchors = list(ANCHOR.finditer(markdown))
+    chapters: dict[int, dict[str, str]] = {}
+    for index, match in enumerate(anchors):
+        end = anchors[index + 1].start() if index + 1 < len(anchors) else len(markdown)
+        body = markdown[match.start():end].strip()
+        heading = re.search(r'^#{2,3}\s+(.+)$', body, re.M)
+        if heading is None:
+            continue
+        if index == len(anchors) - 1:
+            appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones|Referencias|References)\b', body[heading.end():], re.M | re.I)
+            if appendix:
+                body = body[:heading.end() + appendix.start()].rstrip()
+        chapters[int(match.group(1))] = {"title": heading.group(1).strip(), "markdown": body}
+    return chapters
+
+
+def worked_answers(book: str, chapter: str) -> str:
+    numbers = set(EXERCISE.findall(chapter))
+    if not numbers:
+        return ""
+    matches = list(ANSWER.finditer(book))
+    pieces = []
+    for index, match in enumerate(matches):
+        if match.group(1) not in numbers:
+            continue
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(book)
+        piece = book[match.start():end]
+        next_section = re.search(r'^##\s+', piece[match.end() - match.start():], re.M)
+        if next_section:
+            piece = piece[:match.end() - match.start() + next_section.start()]
+        pieces.append(piece.strip())
+    return "\n\n".join(pieces)
+
+
+async def course_details(request: Request, level: str, area: str, language: str) -> dict[str, Any]:
+    item = get_course(await catalog(request), level, area, language)
+    plan_path = book_path(level, area, language, "PLAN.md")
+    manuscript_path = book_path(level, area, language, "MANUSCRIPT.md")
+    book = await source_text(request, manuscript_path)
+    plan = await source_text(request, plan_path)
+    if plan is None:
+        raise HTTPException(502, "Course plan is unavailable")
+    planned = chapter_sections(plan)
+    authored = chapter_sections(book) if book is not None else {}
+    lessons = []
+    for number in sorted(planned):
+        title = authored.get(number, planned[number])["title"]
+        lessons.append({
+            "chapter": number,
+            "title": title,
+            "published": number in authored,
+            "source_url": GITHUB_VIEW + (manuscript_path if number in authored else plan_path) + f"#ch-{number:02d}",
+        })
+    return {
+        "course": item,
+        "language": language,
+        "lessons": lessons,
+        "published_chapters": sum(number in authored for number in planned),
+        "planned_chapters": len(planned),
+        "book_url": GITHUB_VIEW + manuscript_path if authored else None,
+        "source_branch": "main",
+        "notice": "A published lesson may still need editorial review. A plan is not a lesson.",
+    }
+
+
+async def lesson_details(request: Request, level: str, area: str, language: str, chapter: int) -> dict[str, Any]:
+    get_course(await catalog(request), level, area, language)
+    if chapter < 1 or chapter > 99:
+        raise HTTPException(404, "Unknown chapter")
+    path = book_path(level, area, language, "MANUSCRIPT.md")
+    book = await source_text(request, path)
+    if book is None:
+        raise HTTPException(404, "This edition has no authored manuscript yet")
+    section = chapter_sections(book).get(chapter)
+    if section is None:
+        raise HTTPException(404, "This chapter is still a plan")
+    chapters = sorted(chapter_sections(book))
+    return {
+        "course": {"level": level, "area": area, "language": language},
+        "chapter": chapter,
+        "title": section["title"],
+        "markdown": section["markdown"],
+        "worked_answers": worked_answers(book, section["markdown"]),
+        "exercise_ids": sorted(set(EXERCISE.findall(section["markdown"]))),
+        "previous": max((n for n in chapters if n < chapter), default=None),
+        "next": min((n for n in chapters if n > chapter), default=None),
+        "source_url": GITHUB_VIEW + path + f"#ch-{chapter:02d}",
+        "source_branch": "main",
+        "editorial_note": "Public teaching text; publication does not certify that the complete book passed editorial review.",
+    }
+
+
+@app.get("/api/health")
+async def health() -> dict[str, str]:
+    return {"service": "CyKin", "status": "ok", "source": "https://github.com/hiagokinlevi/CyKin"}
+
+
+@app.get("/private/login")
+async def private_login(request: Request) -> Response:
+    await identity(request)
+    return RedirectResponse("/account/", status_code=302)
+
+
+@app.get("/private/me")
+async def api_me(request: Request) -> Response:
+    user = await identity(request)
+    return JSONResponse({"email": user.get("email"), "student_id": user["sub"]}, headers={"Cache-Control": "no-store"})
+
+
+@app.get("/private/progress")
+async def api_progress(request: Request) -> Response:
+    user = await identity(request)
+    db = database(request)
+    lessons = await db.prepare("SELECT level, area, language, chapter, status, updated_at FROM lesson_progress WHERE user_id = ? ORDER BY updated_at DESC LIMIT 500").bind(user["sub"]).all()
+    exercises = await db.prepare("SELECT level, area, language, chapter, exercise_id, answer, status, updated_at FROM exercise_attempts WHERE user_id = ? ORDER BY updated_at DESC LIMIT 500").bind(user["sub"]).all()
+    return JSONResponse({"lessons": d1_rows(lessons), "exercises": d1_rows(exercises)}, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/private/progress/lesson")
+async def api_progress_lesson(request: Request, payload: LessonProgress) -> Response:
+    same_origin(request)
+    user = await identity(request)
+    await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter)
+    db = database(request)
+    await db.prepare("INSERT INTO lesson_progress (user_id, level, area, language, chapter, status) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (user_id, level, area, language, chapter) DO UPDATE SET status = excluded.status, updated_at = datetime('now')").bind(user["sub"], payload.level, payload.area, payload.language, payload.chapter, payload.status).run()
+    return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
+
+
+@app.post("/private/progress/exercise")
+async def api_progress_exercise(request: Request, payload: ExerciseAttempt) -> Response:
+    same_origin(request)
+    user = await identity(request)
+    lesson = await lesson_details(request, payload.level, payload.area, payload.language, payload.chapter)
+    if payload.exercise_id.removeprefix("EX") not in lesson["exercise_ids"]:
+        raise HTTPException(404, "Exercise is not in this lesson")
+    db = database(request)
+    await db.prepare("INSERT INTO exercise_attempts (user_id, level, area, language, chapter, exercise_id, answer, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (user_id, level, area, language, chapter, exercise_id) DO UPDATE SET answer = excluded.answer, status = excluded.status, updated_at = datetime('now')").bind(user["sub"], payload.level, payload.area, payload.language, payload.chapter, payload.exercise_id, payload.answer, payload.status).run()
+    return JSONResponse({"saved": True}, headers={"Cache-Control": "no-store"})
+
+
+@app.get("/api/catalog")
+async def api_catalog(request: Request) -> dict[str, Any]:
+    return await catalog(request)
+
+
+@app.get("/api/courses/{level}/{area}/{language}")
+async def api_course(request: Request, level: str, area: str, language: str) -> dict[str, Any]:
+    return await course_details(request, level, area, language)
+
+
+@app.get("/api/lessons/{level}/{area}/{language}/{chapter}")
+async def api_lesson(request: Request, level: str, area: str, language: str, chapter: int) -> dict[str, Any]:
+    return await lesson_details(request, level, area, language, chapter)
+
+
+@app.get("/api/books/{level}/{area}/{language}")
+async def api_book(request: Request, level: str, area: str, language: str) -> Response:
+    get_course(await catalog(request), level, area, language)
+    book = await source_text(request, book_path(level, area, language, "MANUSCRIPT.md"))
+    if book is None:
+        raise HTTPException(404, "This edition has no authored manuscript yet")
+    return PlainTextResponse(book, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "public, max-age=60"})
+
+
+@app.get("/api/search/{level}/{area}/{language}")
+async def api_search(request: Request, level: str, area: str, language: str, q: str = Query(min_length=3, max_length=80)) -> dict[str, Any]:
+    get_course(await catalog(request), level, area, language)
+    book = await source_text(request, book_path(level, area, language, "MANUSCRIPT.md"))
+    if book is None:
+        raise HTTPException(404, "This edition has no authored manuscript yet")
+    matches = []
+    for chapter, section in chapter_sections(book).items():
+        for match in re.finditer(re.escape(q), section["markdown"], re.I):
+            start, end = max(0, match.start() - 100), min(len(section["markdown"]), match.end() + 100)
+            matches.append({"chapter": chapter, "title": section["title"], "snippet": re.sub(r'\s+', ' ', section["markdown"][start:end])})
+            if len(matches) == 20:
+                return {"query": q, "results": matches, "truncated": True}
+    return {"query": q, "results": matches, "truncated": False}
+
+
+def rpc_result(identifier: Any, result: Any) -> dict[str, Any]:
+    return {"jsonrpc": "2.0", "id": identifier, "result": result}
+
+
+def rpc_error(identifier: Any, code: int, message: str) -> dict[str, Any]:
+    return {"jsonrpc": "2.0", "id": identifier, "error": {"code": code, "message": message}}
+
+
+TOOLS = [
+    {"name": "list_courses", "description": "Discover the 207 public CyKin courses. Optional language, level, area or title query filters.", "inputSchema": {"type": "object", "properties": {"language": {"type": "string"}, "level": {"type": "string"}, "area": {"type": "string"}, "query": {"type": "string"}}}},
+    {"name": "list_lessons", "description": "List planned and authored lessons for one course. Only published=true represents written teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}}, "required": ["level", "area", "language"]}},
+    {"name": "read_lesson", "description": "Read the public Markdown for an authored lesson and its worked answers, with its GitHub source URL.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
+    {"name": "search_course", "description": "Search within one authored manuscript; returns bounded snippets and chapter numbers.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "query": {"type": "string"}}, "required": ["level", "area", "language", "query"]}},
+]
+
+
+@app.post("/mcp")
+async def mcp(request: Request) -> Response:
+    origin = request.headers.get("origin")
+    if origin and origin not in ALLOWED_ORIGINS:
+        raise HTTPException(403, "Origin is not allowed")
+    if "application/json" not in request.headers.get("content-type", ""):
+        raise HTTPException(415, "MCP expects application/json")
+    if "application/json" not in request.headers.get("accept", "") or "text/event-stream" not in request.headers.get("accept", ""):
+        raise HTTPException(406, "MCP client must accept JSON and event stream")
+    body = await request.body()
+    if len(body) > 65_536:
+        raise HTTPException(413, "MCP request too large")
+    try:
+        payload = json.loads(body)
+    except ValueError:
+        return JSONResponse(rpc_error(None, -32700, "Parse error"), status_code=400)
+    if not isinstance(payload, dict) or payload.get("jsonrpc") != "2.0" or not isinstance(payload.get("method"), str):
+        return JSONResponse(rpc_error(payload.get("id") if isinstance(payload, dict) else None, -32600, "Invalid Request"), status_code=400)
+    if "id" not in payload:
+        return Response(status_code=202)
+    identifier, method = payload["id"], payload["method"]
+    params = payload.get("params") or {}
+    if not isinstance(params, dict):
+        return JSONResponse(rpc_error(identifier, -32602, "Invalid params"))
+    try:
+        if method == "initialize":
+            return JSONResponse(rpc_result(identifier, {"protocolVersion": MCP_VERSION, "capabilities": {"resources": {}, "tools": {}}, "serverInfo": {"name": "CyKin", "version": "0.1.0"}}))
+        if method == "ping":
+            return JSONResponse(rpc_result(identifier, {}))
+        if method == "tools/list":
+            return JSONResponse(rpc_result(identifier, {"tools": TOOLS}))
+        if method == "resources/list":
+            return JSONResponse(rpc_result(identifier, {"resources": [{"uri": "cykin://catalog", "name": "CyKin course catalog", "mimeType": "application/json", "description": "207 courses in study order"}]}))
+        if method == "resources/templates/list":
+            return JSONResponse(rpc_result(identifier, {"resourceTemplates": [{"uriTemplate": "cykin://lesson/{level}/{area}/{language}/{chapter}", "name": "CyKin lesson", "mimeType": "text/markdown", "description": "A public chapter from the current GitHub manuscript"}]}))
+        if method == "resources/read":
+            uri = params.get("uri", "")
+            if uri == "cykin://catalog":
+                contents = [{"uri": uri, "mimeType": "application/json", "text": json.dumps(await catalog(request), ensure_ascii=False)}]
+            else:
+                match = re.fullmatch(r'cykin://lesson/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{1,2})', str(uri))
+                if not match:
+                    return JSONResponse(rpc_error(identifier, -32602, "Unknown resource URI"))
+                result = await lesson_details(request, match[1], match[2], match[3], int(match[4]))
+                contents = [{"uri": uri, "mimeType": "text/markdown", "text": result["markdown"] + "\n\n## Worked answers for this lesson\n\n" + result["worked_answers"] + "\n\nSource: " + result["source_url"]}]
+            return JSONResponse(rpc_result(identifier, {"contents": contents}))
+        if method == "tools/call":
+            name, args = params.get("name"), params.get("arguments") or {}
+            if not isinstance(args, dict):
+                return JSONResponse(rpc_error(identifier, -32602, "Invalid tool arguments"))
+            if name == "list_courses":
+                data = await catalog(request)
+                courses = data["courses"]
+                for key in ("level", "area"):
+                    if args.get(key):
+                        courses = [item for item in courses if item[key] == args[key]]
+                if args.get("query"):
+                    courses = [item for item in courses if str(args["query"]).casefold() in item["title"].casefold()]
+                result = {"courses": courses, "total": len(courses), "source": data["source"]}
+            elif name == "list_lessons":
+                result = await course_details(request, args["level"], args["area"], args["language"])
+            elif name == "read_lesson":
+                result = await lesson_details(request, args["level"], args["area"], args["language"], int(args["chapter"]))
+                start = max(0, int(args.get("start", 0)))
+                length = min(50_000, max(1000, int(args.get("max_chars", 30000))))
+                text = result.pop("markdown")
+                result["markdown"] = text[start:start + length]
+                result["next_start"] = start + length if start + length < len(text) else None
+                result["total_chars"] = len(text)
+            elif name == "search_course":
+                result = await api_search(request, args["level"], args["area"], args["language"], str(args["query"]))
+            else:
+                return JSONResponse(rpc_error(identifier, -32602, "Unknown tool"))
+            return JSONResponse(rpc_result(identifier, {"content": [{"type": "text", "text": json.dumps(result, ensure_ascii=False)}]}))
+        return JSONResponse(rpc_error(identifier, -32601, "Method not found"))
+    except (KeyError, ValueError, TypeError):
+        return JSONResponse(rpc_error(identifier, -32602, "Invalid params"))
+    except HTTPException as exc:
+        return JSONResponse(rpc_result(identifier, {"content": [{"type": "text", "text": str(exc.detail)}], "isError": True}))
+
+
+@app.get("/mcp")
+async def mcp_get() -> Response:
+    return Response(status_code=405, headers={"Allow": "POST"})
+
+
+@app.get("/{path:path}", include_in_schema=False)
+async def static_assets(path: str, request: Request) -> Response:
+    asset = path.strip("/")
+    if not asset or "." not in asset.rsplit("/", 1)[-1]:
+        asset = (asset + "/" if asset else "") + "index.html"
+    env = request.scope.get("env")
+    if env is not None:
+        response = await env.ASSETS.fetch("https://assets.local/" + asset)
+        content = await response.bytes()
+        return Response(content=content, status_code=int(response.status), headers=dict(response.headers))
+    root = Path(__file__).resolve().parents[1] / "dist"
+    target = (root / asset).resolve()
+    if not target.is_relative_to(root.resolve()) or not target.is_file():
+        raise HTTPException(404, "Page not found")
+    return FileResponse(target)

@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cykin",
+  "account_id": "1e04c78c6d0084600ddb4589c4e3327c",
+  "main": "api/worker.py",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["python_workers"],
+  "workers_dev": true,
+  "vars": {
+    "ACCESS_TEAM_DOMAIN": "https://decripte.cloudflareaccess.com",
+    "ACCESS_AUD": "959ec9e9eae8d55b20d28b1b36fa1ae0909cc7d4dbf29a8f096495eb4ba1bf54"
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "cykin-progress", "database_id": "a9819887-0b5f-4d26-9fc5-f816cdd41579" }
+  ],
+  "routes": [
+    { "pattern": "cykin.org", "custom_domain": true },
+    { "pattern": "www.cykin.org", "custom_domain": true }
+  ]
+}

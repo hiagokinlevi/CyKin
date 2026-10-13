@@ -1,0 +1,13 @@
+# CyKin
+
+CyKin is a public collection of cybersecurity courses and books. Public lessons are available without an account. GitHub main is the editorial source of truth; a plan is not a lesson and a published draft is not necessarily an approved complete book.
+
+- Website: https://cykin.org/
+- Course catalog JSON: https://cykin.org/api/catalog
+- FastAPI/OpenAPI documentation: https://cykin.org/api/docs
+- Remote read-only MCP endpoint (Streamable HTTP): https://cykin.org/mcp
+- AI connection guide: https://cykin.org/for-ai/
+- Source repository: https://github.com/hiagokinlevi/CyKin
+- Book standard: https://github.com/hiagokinlevi/CyKin/blob/main/BOOK_STANDARD.md
+
+Use the catalog to choose a level and area, then GET /api/courses/{level}/{area}/{language} to list authored chapters. GET /api/lessons/{level}/{area}/{language}/{chapter} to read a chapter and its worked answers. Supported catalog languages are en, pt, es, he, fr, ru, de, zh and ja, but availability differs by edition. Cite the returned GitHub source URL. Do not treat plan-only chapters as published lessons.

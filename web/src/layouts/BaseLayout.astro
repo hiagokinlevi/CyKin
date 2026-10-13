@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+const { title = 'CyKin — conhecimento cibernético aberto', description = 'Cursos e livros públicos de segurança cibernética, para estudantes e inteligências artificiais.' } = Astro.props;
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#061633" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={new URL(path, 'https://cykin.org').toString()} />
+    <title>{title}</title>
+    <script is:inline>
+      try { document.documentElement.dataset.theme = localStorage.getItem('cykin-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="shell nav">
+        <a class="brand" href="/" aria-label="CyKin, página inicial"><span class="brand-mark"><span>C</span></span> CyKin</a>
+        <nav class="nav-links" aria-label="Navegação principal">
+          <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Comece por aqui</a>
+          <a href="/learn/" aria-current={path === '/learn/' ? 'page' : undefined}>Cursos</a>
+          <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>Para IAs</a>
+          <a href="https://github.com/hiagokinlevi/CyKin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro e escuro" title="Alternar tema">◐</button>
+          <a class="button secondary" href="/account/">Minha área</a>
+        </div>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <span>© CyKin · Conteúdo livre no GitHub · Responsabilidade editorial: hiagokinlevi</span>
+        <div class="footer-links"><a href="/for-ai/">API & MCP</a><a href="https://github.com/hiagokinlevi/CyKin/blob/main/RIGHTS.md">Direitos</a><a href="https://github.com/hiagokinlevi/CyKin">Código e livros ↗</a></div>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('cykin-theme', next); } catch (_) { /* private mode */ }
+      });
+    </script>
+  </body>
+</html>
