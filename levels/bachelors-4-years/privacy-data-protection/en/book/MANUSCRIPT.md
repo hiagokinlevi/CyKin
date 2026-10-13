@@ -1322,7 +1322,7 @@ In Laboratory I Elena builds a test environment with synthetic pupils, a copy of
 
 ### 25.2 Access tests
 
-Elena logs in as each role and attempts to view records. Teachers cannot see pupils from other classes; office staff cannot see support plans after her earlier fix. But a head of year can see safeguarding notes, which the role design did not intend. She traces the problem to an old permission group and removes it. She records the test, the failure and the fix with dates. One test showed a teaching assistant seeing support plans. It came from an old group.
+Elena logs in as each role and attempts to view records. Teachers cannot see pupils from other classes; office staff cannot see support plans after her earlier fix. But a head of year can see safeguarding notes, which the role design did not intend. She traces the problem to an old permission group and removes it. She records the test, the failure and the fix with dates. The head of year's access to safeguarding notes came from that old group alone.
 
 ### 25.3 Incident simulation
 
@@ -1583,7 +1583,7 @@ In Laboratory II Elena tests the full life of a synthetic pupil: admission, clas
 
 ### 30.2 Vendor deletion
 
-The untested area from Laboratory I was vendor deletion. Elena asks three approved app vendors to delete the synthetic pupil's data and confirm. Two confirm within a week with deletion records. One replies that data are retained for a year for analytics. That contradicts the trust's agreement, which requires deletion on request. Elena escalates to the data protection lead, who contacts the vendor to enforce the contract. The vendor kept the record. The app's support page claimed records are kept for three years after leaving.
+The untested area from Laboratory I was vendor deletion. Elena asks three approved app vendors to delete the synthetic pupil's data and confirm. Two confirm within a week with deletion records. One replies that data are retained for a year for analytics. That contradicts the trust's agreement, which requires deletion on request. Elena escalates to the data protection lead, who contacts the vendor to enforce the contract. The vendor kept the record. The app's support page confirmed the one-year analytics retention.
 
 ### 30.3 Process improvements
 
@@ -1771,7 +1771,7 @@ You will (1) compare privacy practice across two organisations; (2) use consiste
 
 ### 34.1 The comparison
 
-Elena compares Brindle Valley with the fictional Harrow Lane Academy, a single large secondary school. She uses consistent criteria: record of processing, app vetting, rights handling, retention and training. She gathers evidence through documents and interviews with each organisation's data protection lead. The comparison aims to learn what works, not to rank schools publicly, which both organisations agree to before participating. Both organisations share policies and evidence openly with each other. The partner is a similar-sized trust in another region, chosen because its data protection lead volunteered.
+Elena compares Brindle Valley with the fictional Harrow Lane Academy, a single large secondary school. She uses consistent criteria: record of processing, app vetting, rights handling, retention and training. She gathers evidence through documents and interviews with each organisation's data protection lead. The comparison aims to learn what works, not to rank schools publicly, which both organisations agree to before participating. Both organisations share policies and evidence openly with each other. The partner school is in another region, chosen because its data protection lead volunteered.
 
 ### 34.2 Findings
 
@@ -1867,7 +1867,7 @@ You will (1) support a community organisation's data protection; (2) adapt advic
 
 ### 36.1 Community placement
 
-Elena spends a term volunteering with a fictional parents' association that runs holiday clubs. It keeps children's names, ages, allergies and emergency contacts in a shared spreadsheet. Volunteers change often. Elena helps the association understand its duties as a controller, even as a small volunteer group, and adapts advice to its limited time and money. The association runs a weekend football club for local children, with volunteer coaches and a parent committee. Its records were kept on coaches' phones. Phones get lost.
+Elena spends a term volunteering with a fictional parents' association that runs holiday clubs. It keeps children's names, ages, allergies and emergency contacts in a shared spreadsheet. Volunteers change often. Elena helps the association understand its duties as a controller, even as a small volunteer group, and adapts advice to its limited time and money. Its holiday clubs rely on volunteer leaders and a parent committee. Some records were kept on volunteers' phones. Phones get lost.
 
 ### 36.2 Practical steps
 
@@ -2011,7 +2011,7 @@ You will (1) evaluate the capstone against criteria; (2) report unmet criteria h
 
 ### 39.1 Results
 
-Elena evaluates the portal after one term. Sensitive reports by email fall from about forty a month to three. Parent activation reaches 83%, below the 85% target. Families without internet receive printed reports. Staff time spent on sending reports decreases slightly. Three of four criteria are met. Elena reports the activation shortfall clearly rather than rounding it up. Parent activation reached only part of its target, while misdirected report emails dropped to zero in the participating schools during the evaluation term. Activation stays low.
+Elena evaluates the portal after one term. Sensitive reports by email fall from about forty a month to three. Parent activation reaches 83%, below the 85% target. Families without internet receive printed reports. Staff time spent on sending reports decreases slightly. Three of four criteria are met. Elena reports the activation shortfall clearly rather than rounding it up. Parent activation reached only part of its target, while no report reached the wrong family in the participating schools during the evaluation term. Activation stays low.
 
 ### 39.2 Understanding the shortfall
 
@@ -2019,7 +2019,7 @@ Elena investigates low activation. Most non-activated accounts belong to familie
 
 ### 39.3 Remaining emails
 
-Three reports a month are still emailed. Elena finds they relate to external professionals, such as therapists, who are not on the portal. She recommends a secure sharing method for professionals. She notes that the original scope did not include them and that the evaluation identified a new need. Good evaluation, she learns, finds what the project did not anticipate. Some messages still go by email. Messages from clubs and trips still use email because the portal was scoped for reports only.
+Three reports a month are still emailed. Elena finds they relate to external professionals, such as therapists, who are not on the portal. She recommends a secure sharing method for professionals. She notes that the original scope did not include them and that the evaluation identified a new need. Good evaluation, she learns, finds what the project did not anticipate. Other messages, such as those about clubs and trips, also still use email because the portal was scoped for pupil reports only.
 
 ### 39.4 Next steps
 
