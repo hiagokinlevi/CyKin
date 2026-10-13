@@ -50,43 +50,43 @@ Sam Park's ordinary authorized work at Northline Municipal Transit covers the pu
 
 Internet-facing web and API tiers sit behind a load balancer; application servers talk to databases; staff identity sits in AD. Trust boundaries are the places where packets or credentials cross from less trusted to more trusted zones.
 
-Internet-facing web and API tiers sit behind a load balancer; application servers talk to databases; staff identity sits in AD. Trust boundaries are where packets or credentials cross from less trusted to more trusted zones. Sam's ENG-512 checks start outside the WAF and stop before the fare network, because crossing that line without specialised auth is out of scope.
+At NMT the load balancer fronts both the public website and the journey planner API, so one WAF rule set covers both. The AD boundary matters because a phished staff password crosses from the VPN into the staff zone. Sam's ENG-512 checks start outside the WAF and stop before the fare network, because crossing that line without specialised auth is out of scope.
 
 ### 1.3 Where testing starts
 
 Authorized technical tests usually start at internet-facing web and API tiers and at staff remote access, because that is what strangers and phished staff reach first.
 
-Authorized technical tests at NMT usually start at internet-facing web and API tiers and at staff remote access, because that is what strangers and phished staff reach first. Fare validators and radio gear are not starting points for ordinary windows; Sam's kickoff checklist names web, API and VPN before any tool runs. Sam's ENG-512 kickoff sheet therefore lists website, journey planner API and staff VPN in that order, with fare validators listed under do-not-touch. Starting elsewhere is a scope error even if a tool makes it easy.
+Strangers reach the website and journey planner API, while phished staff credentials reach the VPN, which is why those three come first. Fare validators and radio gear are not starting points for ordinary windows; Sam's kickoff checklist names web, API and VPN before any tool runs. Sam's ENG-512 kickoff sheet therefore lists website, journey planner API and staff VPN in that order, with fare validators listed under do-not-touch. Starting elsewhere is a scope error even if a tool makes it easy.
 
 ### 1.4 Fragile dependencies
 
 Fare gates and radio systems can harm operations if disturbed. They stay excluded unless a specialised engagement says otherwise.
 
-Fare gates and radio systems can harm operations if disturbed — delayed trains, stuck validators, angry riders. They stay excluded unless a specialised engagement says otherwise. Sam's ROE for ENG-512 repeats the exclusion in the same sentence as the Saturday window so nobody treats fare as an interesting side path. Specialised fare work would need separate funding, a different ROE and operators trained on validators; ordinary Saturday windows never inherit those rights. Sam repeats that boundary when managers ask for just a quick look.
+A stuck validator at a busy station during the morning peak would turn a test into a rider-facing incident. Sam's kickoff sheet lists fare validators and radio under do-not-touch, beside the name of the operations contact. Sam's ROE for ENG-512 repeats the exclusion in the same sentence as the Saturday window so nobody treats fare as an interesting side path. Specialised fare work would need separate funding, a different ROE and operators trained on validators; ordinary Saturday windows never inherit those rights. Sam repeats that boundary when managers ask for just a quick look.
 
 ### 1.5 Architecture diagram discipline
 
 Sam keeps a dated diagram with owners on each box. Testing against an outdated diagram causes scope errors.
 
-Sam keeps a dated diagram with owners on each box. Testing against an outdated diagram causes scope errors such as probing a retired staging host that now shares a name with production. Before ENG-512 he asks the network owner to confirm the diagram date in writing. He files the network owner's confirmation under the ENG-512 ticket before lab_ports runs. A diagram without that confirmation is treated as untrusted even if it looks familiar.
+The diagram's date sits in its title block, next to the network owner's initials from the last confirmation. Testing against an outdated diagram causes scope errors such as probing a retired staging host that now shares a name with production. Before ENG-512 he asks the network owner to confirm the diagram date in writing. He files the network owner's confirmation under the ENG-512 ticket before lab_ports runs. A diagram without that confirmation is treated as untrusted even if it looks familiar.
 
 ### 1.6 Change windows
 
 Architecture changes (new API gateway, AD upgrade) trigger a review of the ROE before the next test.
 
-Architecture changes — a new API gateway or an AD upgrade — trigger a review of the ROE before the next test. Sam will not reuse last quarter's ENG window if the journey planner moved behind a new WAF rule set without a signed update. After an AD upgrade Sam re-checks tst-sam-web group membership and MFA before the next window. Reusing last quarter's ROE without that check is how stale rights survive.
+The trigger list sits at the top of the ROE, so the network owner knows which changes require a fresh signature. Sam will not reuse last quarter's ENG window if the journey planner moved behind a new WAF rule set without a signed update. After an AD upgrade Sam re-checks tst-sam-web group membership and MFA before the next window. Reusing last quarter's ROE without that check is how stale rights survive.
 
 ### 1.7 Owner contacts on the diagram
 
 Every box on Sam's diagram names a person, not only a team. When a finding appears on the journey planner API, he knows whom to call without hunting through a directory.
 
-Every box on Sam's diagram names a person, not only a team. When a finding appears on the journey planner API, he knows whom to call without hunting through a directory. Owner contacts are copied into the ENG-512 kickoff note so the SOC can reach the same people. Diagram contacts are copied into the SOC start message so overnight responders reach the API owner without calling Sam's personal phone. A team-only label is not enough.
+The journey planner API box, for example, carries the API owner's name and an out-of-hours number. That saves minutes during a stop, when the SOC needs a decision from the owner rather than a directory search. Owner contacts are copied into the ENG-512 kickoff note so the SOC can reach the same people. Diagram contacts are copied into the SOC start message so overnight responders reach the API owner without calling Sam's personal phone. A team-only label is not enough.
 
 ### 1.8 Why diagrams go stale
 
 A contractor adds a staging CDN and nobody redraws the picture. Sam's first task each engagement is to confirm the diagram with the network owner in writing.
 
-A contractor adds a staging CDN and nobody redraws the picture. Sam's first task each engagement is to confirm the diagram with the network owner in writing; a stale box is how an approved listener list becomes wrong before lab_ports even runs. When a staging CDN appears without a redraw, Sam opens a model-update ticket before any new listener is trusted. Stale pictures are the root cause of many NOT APPROVED surprises.
+Contractor changes reach the diagram only when someone files the redraw, so Sam asks the contractor lead what changed since the last engagement. Sam's first task each engagement is to confirm the diagram with the network owner in writing; a stale box is how an approved listener list becomes wrong before lab_ports even runs. When a staging CDN appears without a redraw, Sam opens a model-update ticket before any new listener is trusted. Stale pictures are the root cause of many NOT APPROVED surprises.
 
 ### Worked example (synthetic NMT)
 
@@ -520,7 +520,7 @@ Row-cap trips print a clear error and exit code 2 rather than truncate the inven
 
 Evidence disputes are expensive. Sam therefore hashes immediately after capture, writes the hash into the activity log line, and only then redacts a copy for the report appendix. If legal later asks whether a screenshot was altered, he can show the original digest and the redacted derivative. The MISMATCH result in the lab is the classroom version of that discipline — edited bytes must never silently replace originals.
 
-Field discipline for evidence is hash, minimise, index, retain, and two-person on mismatches. Sam's ENG-512 pack fails peer check if any of those five is missing. Evidence field discipline is scored on hash, minimise, index, retain and two-person mismatch handling. Missing any one fails the ENG-512 pack.
+Field discipline for evidence is hash, minimise, index, retain, and two-person on mismatches. Sam's ENG-512 pack fails peer check if any of those five is missing. In the lab, MISMATCH on an edited file is the cue to call a second person, not to re-hash until it matches. Missing any one fails the ENG-512 pack.
 
 ### Worked example (synthetic NMT)
 
@@ -567,7 +567,7 @@ Scripts that exit zero while printing NOT APPROVED are fixed before the next Sat
 
 Each entry point gets a short list of WSTG themes: auth, session, access control, input handling.
 
-Entry points are the public website, journey planner API and staff VPN. Fare validators are not entry points for ENG-512; listing them as interesting is a model error. Entry-point lists that include fare validators are corrected before kickoff. ENG-512 entry points are website, journey planner API and staff VPN alone.
+Entry points are the public website, journey planner API and staff VPN. Fare validators are not entry points for ENG-512; listing them as interesting is a model error. Entry-point lists that include fare validators are corrected before kickoff. Each of the three gets its own WSTG theme list, so VPN checks never borrow web input-handling tests.
 
 Scripting field discipline links each job hash to a method card in the notebook index so examiners can trace automation. Handover schedules jump-host walkthroughs plus vault paths because email alone fails the transfer gate.
 
@@ -607,7 +607,7 @@ Rider names never appear in ENG-512 screenshots because synthetic sessions prove
 
 Sam colours Internet red, staging amber, staff green and fare black (do not enter). Colour makes scope visible in reviews.
 
-Trust zone colours: Internet red, staging amber, staff green, fare black (do not enter). Colour makes scope visible in reviews when managers skim too fast to read exclusions. Colour maps are printed for the kickoff huddle: red Internet, amber staging, green staff, black fare. Managers who only skim text still see the exclusion.
+Black is reserved for fare so it cannot be confused with any zone where testing is allowed. Colour makes scope visible in reviews when managers skim too fast to read exclusions. Colour maps are printed for the kickoff huddle: red Internet, amber staging, green staff, black fare. Managers who only skim text still see the exclusion.
 
 Evidence index rows carry filename, hash prefix, ticket id and owner or the unlisted file is deleted as unverified copy.
 
@@ -623,7 +623,7 @@ MATCH integrity still needs method-card truth checks before findings are allowed
 
 Building the system model with the product owner takes an hour and prevents days of confusion. Sam projects a blank diagram, asks the owner to place boxes, and only then adds his own arrows. Owners correct mistaken assumptions about which database holds saved journeys and whether the admin UI shares authentication with the rider API. Those corrections change which WSTG themes matter most.
 
-Field discipline for modelling is dated diagram, coloured zones, assumption log, and fare black. Sam will not open ENG-512 tools until those four are current. Modelling field discipline is current diagram, colours, assumption log and fare black. Any gap delays tool start.
+Field discipline for modelling is dated diagram, coloured zones, assumption log, and fare black. Sam will not open ENG-512 tools until those four are current. The assumption log records each owner correction, such as which database holds saved journeys, with the date it was confirmed. Any gap delays tool start.
 
 ### Worked example (synthetic NMT)
 
@@ -773,7 +773,7 @@ Black boxes read specialised ROE only and stay out of ordinary coverage claims i
 
 Owner asks stop; unexplained outage; fare system alerts anywhere; personal data exposed in a ticket; tool loops.
 
-Stop conditions: owner asks stop; unexplained outage; fare system alerts anywhere; personal data exposed in a ticket; tool loops. Any one is enough; Sam does not finish one more objective first. Fare system alerts anywhere — even unrelated — stop ENG-512 until operations clears the line. Sam does not argue correlation in the moment.
+Each condition has a one-line stop message prepared on the ROE card, so Sam posts it without composing under stress. Any one is enough; Sam does not finish one more objective first. Fare system alerts anywhere — even unrelated — stop ENG-512 until operations clears the line. Sam does not argue correlation in the moment.
 
 Model dates older than the last architecture change invalidate the window until the picture is redrawn and reconfirmed. Sam repeats specialised-fare boundaries when managers ask for a quick look at validators during planning.
 
@@ -819,7 +819,7 @@ During the halt he forbids blame talk; the after-action later owns learning whil
 
 If the primary emergency contact does not answer in five minutes, Sam calls the secondary named in the ROE. Waiting silently is not a plan.
 
-Secondary contact is named when the primary emergency contact does not answer in five minutes. Sam's ROE lists both; calling only the primary is not a complete stop path. Secondary contact answers when primary misses the five-minute mark. Sam dials both numbers from the ROE card, not from memory.
+The five-minute mark is timed from the first unanswered call, and both call times go into the activity log. Sam's ROE lists both; calling only the primary is not a complete stop path. Secondary contact answers when primary misses the five-minute mark. Sam dials both numbers from the ROE card, not from memory.
 
 tst-sam-web never becomes a production log-admin shortcut even when the SOC is slow to reply to the ticket.
 
@@ -1069,7 +1069,7 @@ Production-ready wording waits until amber is green and owners control the chang
 
 Sam keeps a personal library of good config proposals (HSTS, cookie flags, VPN ciphers) written in NMT's change-ticket style. Reusing structure speeds work but he still fills system-specific risk and rollback each time. Copy-pasting a proposal meant for staging into a production ticket without changes is how wrong ciphers get proposed; he treats each proposal as new writing.
 
-Field discipline for config is baseline, owner, staging first, rollback tested. Sam's tickets fail peer review without those four. Config field discipline is baseline, owner, staging first and tested rollback. Peer review rejects tickets missing those.
+Field discipline for config is baseline, owner, staging first, rollback tested. Sam's tickets fail peer review without those four. A rollback that has never been run on staging counts as untested, however simple it looks on paper. Peer review rejects tickets missing those.
 
 ### 10.10 10.y Closing note
 
@@ -1184,7 +1184,7 @@ Vaulted hashes plus owner ink are the only closure pair weekly review accepts.
 
 No new hunt during retest unless authorized.
 
-Scope freeze during retest means no new hosts. Sam will not expand ENG-512 mid-retest because a tool suggested another listener. Scope freeze bans new hosts during retest. Tool-suggested listeners become next-ROE candidates only.
+Scope freeze during retest means no new hosts. Sam will not expand ENG-512 mid-retest because a tool suggested another listener. Lab_retest statuses therefore cover only listeners from the original ENG-512 list, and nothing discovered on the way. Tool-suggested listeners become next-ROE candidates only.
 
 Forbidden lists on card-library covers include password spraying and any fare touch for kickoff reading aloud.
 
@@ -1297,7 +1297,7 @@ Paused minutes stay inked so Lab I stop-discipline grading has something to read
 
 Exchange port lists; score agreement with the approved map.
 
-Peer check scores notebook completeness before sign-off. Missing emergency contact or fare exclusion fails the peer gate. Peer check fails on missing fare exclusion or empty emergency contact. Completeness beats neat handwriting.
+Peer check scores notebook completeness before sign-off. Missing emergency contact or fare exclusion fails the peer gate. Those two fields are checked first because either gap would have stopped a real ENG-512 window at kickoff. Completeness beats neat handwriting.
 
 Safe proposals include staging paths and rollback notes before anyone discusses production tweaks with managers.
 
@@ -1311,11 +1311,11 @@ Those two boxes fail closed; everything else in peer check is secondary.
 
 Supervisor plants a MISMATCH file; learner must refuse to attach it.
 
-Planted fault in the lab inventory teaches finding NOT APPROVED listeners. Sam's planted 3389/rdp must appear in the report or the lab fails. Planted 3389/rdp must appear in the Lab I report. Missing the plant fails the lab regardless of prose quality.
+Planted fault in the lab inventory teaches finding NOT APPROVED listeners. Sam's planted 3389/rdp must appear in the report or the lab fails. The supervisor adds 3389/rdp to the inventory without telling the learner, so only lab_ports output reveals it as NOT APPROVED. Missing the plant fails the lab regardless of prose quality.
 
 Unowned fixes cannot reach FIXED language in retest status tables that supervisors read on Monday.
 
-The planted 3389/rdp line must appear in the Lab I report or the lab fails regardless of prose quality.
+A report that lists the plant must also say what Sam would do next: stop, notify the owner and log the listener.
 
 ### 12.4 Time box
 
@@ -1460,7 +1460,7 @@ Escalation packet holds ticket id, last good hash, stop message text and owner c
 
 Chat-only done is reopened in weekly review until evidence returns to the ticket with hashes.
 
-Five minutes assemble ticket id, last good hash, stop text and owner contact into the escalation packet.
+The last good hash tells on-call which evidence file was intact before the problem, so nobody re-collects it blindly.
 
 On-call receives the four-field packet; novels in chat are not escalations.
 
@@ -1744,7 +1744,7 @@ Dependencies include map-tile CDNs and identity providers. Sam lists them so ENG
 
 Escalation packets assemble ticket, last good hash, stop text and contact inside five minutes for the on-call.
 
-Map-tile CDN blips are time-correlated with ENG before Sam calls them journey-planner API findings.
+SMS notifier and payment deep links get the same treatment, because their failures surface inside NMT's rider screens.
 
 Correlation worksheets sit beside CDN tickets so false API blame is visible.
 
@@ -1947,7 +1947,7 @@ Cards for decommissioned hosts move to archive the same week so stale checks can
 
 Write for a technician who was out sick during the last engagement.
 
-Audience is technicians and SOC, not marketing. Runbooks avoid swagger language and keep stop conditions in plain words. Runbook audience is technicians and SOC. Swagger marketing language is edited out.
+Audience is technicians and SOC, not marketing. Runbooks avoid swagger language and keep stop conditions in plain words. Each runbook step is written so a technician who missed ENG-512 can follow it at night without calling Sam. Swagger marketing language is edited out.
 
 Idempotent reporters upsert by listener key so re-runs do not double tickets in the tracker.
 
@@ -2072,7 +2072,7 @@ Lab II builds a mini ENG-512: inventory, lab_ports, hash evidence, stop drill, r
 
 NMT-side fixes are WAF rules, stored keys and redirects that NMT owners control without vendor tickets.
 
-Lab II builds a mini ENG-512: inventory, lab_ports, hashes, stop drill and retest statuses with a planted fault.
+Learners reuse the Lab I inventory with a fresh planted fault, so a remembered answer does not pass.
 
 Planted fault, hashes, stop drill and retest table are the Lab II deliverable set.
 
@@ -2176,7 +2176,7 @@ Sign-off ink waits on three ticketed improvements linked from the Lab II report.
 
 Laboratory II's peer challenge is play-acting pressure: "just attach it, the hash is close enough". The correct answer is always refuse. Sam has heard similar pressure in real engagements about unverified scanner output. Practising the refusal with a peer makes the real refusal easier.
 
-Field discipline for Lab II is drill, evidence, peer challenge, pass bar. The lab exists to make ENG-512 boringly safe. Lab II field discipline is drill, evidence, peer, pass bar — boring safety on purpose.
+Field discipline for Lab II is drill, evidence, peer challenge, pass bar. The lab exists to make ENG-512 boringly safe. The pass bar is the planted NOT APPROVED listener found and a stop message rehearsed, with nothing negotiable below that.
 
 Printed runbooks older than the ROE git tag are refused at kickoff and replaced from the tagged tree.
 
@@ -2251,7 +2251,7 @@ The project delivers diagram, ROE checklist, lab_ports, hashes, FIXED/STILL OPEN
 
 Fifteen minutes to the supervisor and a SOC observer.
 
-Presentation to the supervisor leads with exclusions and STILL OPEN honesty, then evidence. Swagger slides without hashes fail. Supervisor presentation leads with exclusions and open items, then evidence. Hashless swagger fails.
+Presentation to the supervisor leads with exclusions and STILL OPEN honesty, then evidence. Swagger slides without hashes fail. The SOC observer checks that the stop path in the slides matches the one the SOC actually received. Hashless swagger fails.
 
 Real rider screens never illustrate procedures in teaching screenshots stored in the course materials.
 
@@ -2285,7 +2285,7 @@ Limits page states fare out of scope, synthetic only, and no authority to test r
 
 Documentation field discipline is versioned, warned, retired clean and synthetic in every illustration.
 
-The limits page states fare out of scope, synthetic only and no authority over real systems.
+Each limit points to the ROE line that sets it, so examiners can check that the page does not overstate authority.
 
 Plain examiner-facing limits language is reviewed by a peer before project submit.
 
