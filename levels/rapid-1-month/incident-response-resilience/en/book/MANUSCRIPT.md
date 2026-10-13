@@ -1509,6 +1509,63 @@ A learner who obtains the expected output has reproduced the stated classroom lo
 
 **Required artifact:** Submit (a) the exact transcript, (b) a six-row claim ledger with evidence ID, supported wording and limitation, and (c) a two-sentence difference report for the negative test. Pass only when all original Round A facts remain unchanged, unsupported findings stay blocked and the hypothetical source removal is not represented as real evidence loss.
 
+### 1.10a Readiness depends on authorized evidence, not a green inventory
+
+**Learning objective:** For the early R1–R8 Harbor Library checkpoint, distinguish an operational capability, a decision owner, an authorized evidence route and a demonstrated rehearsal. Each item has a different source and a different possible failure. A junior responder should be able to identify the next safe request without inventing a completed collection.
+
+A statement that the identity provider retains detailed session logs describes a possible **source capability**. The incident lead's request to examine a bounded interval describes **intent**. Permission from the proper identity/data owner is **authorization**. A source-linked export receipt and a repeatable check would be **evidence of executed retrieval**. None automatically creates the next. An available console is not permission to inspect unrelated patrons, and a ticket requesting an export is not the exported object.
+
+Draw a four-edge dependency path: **business question → authority → producer/selection → verified result**. For each edge identify the decision that would fail if the edge were absent. At Round A, the relevant question is whether R3/R4 booking edits belong to a permitted training task; R6 makes training plausible but does not prove approval or identify the human. An analyst who has not established a source's clock and retention semantics cannot assert a particular safe collection deadline. A responder who has not verified the emergency delegation cannot assign authority to whichever colleague has access credentials.
+
+**Contrastive worked example A:** A permitted training environment exposes a queryable booking-audit stream, but the alternate custodian has not been named. The technically available source is **not operationally ready** for out-of-hours authorized collection. Correct follow-up: ask the incident lead to locate and verify a valid delegated route; record unanswered approval and source-access questions. Wrong follow-up: run the query with somebody else's credentials because the incident seems urgent.
+
+**Contrastive worked example B:** The owner and source-access route are approved, yet a harmless scheduled booking test produces no stable request identifier. Here permission is present but **correlation coverage fails**. The next action is a narrow producer/field test and an application-owner remediation question. It would be incorrect to describe all events as collected, or to identify a booking's operator using nearby timestamps alone. Neither example is a new R-series case fact.
+
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses preparation and incident response as linked risk-management activities. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) distinguishes discussion exercises from measured component tests. The following original learning classifier is only an **in-memory classroom fixture**, not a source/approval verifier.
+
+#### R1X offline rehearsal — first unsupported readiness link
+
+Run in isolated Python 3. Inputs are invented, reset between rows. No files, network calls, credentials or actual system changes are involved.
+
+~~~python
+def ready(owner, alternate, source_route, receipt):
+    if owner is None:
+        return "HOLD_OWNER_UNNAMED"
+    if alternate is None:
+        return "ESCALATION_ROUTE_UNVERIFIED"
+    if source_route is None:
+        return "COLLECTION_ROUTE_UNVERIFIED"
+    if receipt is None:
+        return "REHEARSAL_NOT_EXECUTED"
+    return "FIXTURE_DECLARED_REHEARSAL_ONLY"
+
+cases = [
+    ("C01_SCOPE", "service_owner", None, "source", None),
+    ("OWNER_UNKNOWN", None, "approved_alternate", "source", None),
+    ("NO_SOURCE", "service_owner", "approved_alternate", None, None),
+    ("NO_TEST", "service_owner", "approved_alternate", "source", None),
+    ("TOY_PASS", "service_owner", "approved_alternate", "source", "synthetic"),
+]
+for name, *fields in cases:
+    print(name, ready(*fields))
+~~~
+
+**Exact independently reproduced Python output:**
+
+~~~text
+C01_SCOPE ESCALATION_ROUTE_UNVERIFIED
+OWNER_UNKNOWN HOLD_OWNER_UNNAMED
+NO_SOURCE COLLECTION_ROUTE_UNVERIFIED
+NO_TEST REHEARSAL_NOT_EXECUTED
+TOY_PASS FIXTURE_DECLARED_REHEARSAL_ONLY
+~~~
+
+**Adversarial test:** Replace `TOY_PASS`'s final string with `None`; the output becomes `REHEARSAL_NOT_EXECUTED`. Conversely, the arbitrary literal `"synthetic"` reaches a favorable fixture label without an actual custody receipt. Thus the code teaches status distinctions but cannot authenticate a real producer or approval.
+
+**Practice and criterion:** Submit the five output lines, a dependency/owner map and a two-sentence handoff that explains a missing authorized alternate. Full credit requires the R1–R8 release boundary, an observable training test and the difference between proposed, approved and actually collected evidence. R9 cannot be used at Round A merely because its source event time is earlier than the 09:05 review.
+
+**Synthesis:** Readiness requires an owner-governed answer to a bounded question, not a green dashboard label. Chapter 2 will test the source, clock and collection decisions. This addendum creates no new Harbor Library incident record.
+
 ### 1.11 Common errors and chapter synthesis
 
 - **Confusing suspicion with confirmation.** Use a hypothesis and state what would confirm or weaken it.
