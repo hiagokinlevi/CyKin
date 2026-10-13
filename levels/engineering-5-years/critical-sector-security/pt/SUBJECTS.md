@@ -35,11 +35,11 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 5 | [23](book/PLAN.md#ch-23) | Infraestrutura crítica e segurança setorial: análise de ameaças e de falhas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-23) | [24 · Rascunho](book/MANUSCRIPT.md#ch-24) |
 | 5 | [24](book/PLAN.md#ch-24) | Infraestrutura crítica e segurança setorial: métodos I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-24) | [25 · Rascunho](book/MANUSCRIPT.md#ch-25) |
 | 5 | [25](book/PLAN.md#ch-25) | Ateliê de projeto I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-25) | [26 · Rascunho](book/MANUSCRIPT.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Infraestrutura crítica e segurança setorial: alternativas de arquitetura | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-26) | [27 · Plano](book/PLAN.md#ch-27) |
-| 6 | [27](book/PLAN.md#ch-27) | Infraestrutura crítica e segurança setorial: projeto de controles | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plano](book/PLAN.md#ch-28) |
-| 6 | [28](book/PLAN.md#ch-28) | Infraestrutura crítica e segurança setorial: implementação I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plano](book/PLAN.md#ch-29) |
-| 6 | [29](book/PLAN.md#ch-29) | Infraestrutura crítica e segurança setorial: medição | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plano](book/PLAN.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Laboratório de verificação I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-30)) | [31 · Plano](book/PLAN.md#ch-31) |
+| 6 | [26](book/PLAN.md#ch-26) | Infraestrutura crítica e segurança setorial: alternativas de arquitetura | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-26) | [27 · Rascunho](book/MANUSCRIPT.md#ch-27) |
+| 6 | [27](book/PLAN.md#ch-27) | Infraestrutura crítica e segurança setorial: projeto de controles | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-27) | [28 · Rascunho](book/MANUSCRIPT.md#ch-28) |
+| 6 | [28](book/PLAN.md#ch-28) | Infraestrutura crítica e segurança setorial: implementação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-28) | [29 · Rascunho](book/MANUSCRIPT.md#ch-29) |
+| 6 | [29](book/PLAN.md#ch-29) | Infraestrutura crítica e segurança setorial: medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-29) | [30 · Rascunho](book/MANUSCRIPT.md#ch-30) |
+| 6 | [30](book/PLAN.md#ch-30) | Laboratório de verificação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Plano](book/PLAN.md#ch-31) |
 | 7 | [31](book/PLAN.md#ch-31) | Infraestrutura crítica e segurança setorial: implementação II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-31)) | [32 · Plano](book/PLAN.md#ch-32) |
 | 7 | [32](book/PLAN.md#ch-32) | Infraestrutura crítica e segurança setorial: confiabilidade | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-32)) | [33 · Plano](book/PLAN.md#ch-33) |
 | 7 | [33](book/PLAN.md#ch-33) | Infraestrutura crítica e segurança setorial: segurança operacional e resiliência | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-33)) | [34 · Plano](book/PLAN.md#ch-34) |
