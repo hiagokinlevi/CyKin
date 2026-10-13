@@ -231,7 +231,7 @@ Condition v1 (encoded PowerShell command line) catches 3 of 4 attacks but also f
 
 ### 3.4 Novelty
 
-Her review shows prior work measured analysts' perceptions (Alahmadi et al., 2022) and automated ranking (Hassan et al., 2019), but few controlled experiments on context in alert cards with known ground truth. The gap is narrow but real: practitioners report that context helps, and ranking systems reduce volume, yet few studies measure whether showing context changes analysts' decisions on alerts with known truth. Nadia's literature map supports this claim, and she keeps the search record so examiners can check it. The search covered security venues and human-factors venues.
+Her review shows prior work measured analysts' perceptions (Alahmadi et al., 2022) and automated ranking (Hassan et al., 2019), but few controlled experiments on context in alert cards with known ground truth. The gap is narrow but real: practitioners report that context helps, and ranking systems reduce volume, yet few studies measure whether showing context changes analysts' decisions on alerts with known truth. Nadia's literature map supports this claim, and she keeps the search record so examiners can check it. The search covered security and human-factors venues, because studies of analyst decisions are often published outside security conferences.
 
 ### 3.5 Feasibility
 
@@ -311,7 +311,7 @@ The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how of
 
 ### 4.4 The pilot
 
-Two volunteer analysts not in the main study triage 40 alerts, 20 in each condition. The pilot checks timing, instructions, the alert-card layout and logging. The pilot analysts use the same cards and instructions as the main study, so any problem they meet would also affect the main sessions. They are asked afterwards what confused them, and Nadia watches one session to see where they hesitate. Their logs are kept separately and are not part of any reported effect. Pilot analysts also time each session.
+Two volunteer analysts not in the main study triage 40 alerts, 20 in each condition. The pilot checks timing, instructions, the alert-card layout and logging. The pilot analysts use the same cards and instructions as the main study, so any problem they meet would also affect the main sessions. They are asked afterwards what confused them, and Nadia watches one session to see where they hesitate. Their logs are kept separately and are not part of any reported effect. Pilot analysts also time each session, which is how the 70-minute run for 40 alerts was found.
 
 ### 4.5 What the pilot found
 
@@ -319,7 +319,7 @@ Analysts did not notice the asset criticality field because it sat at the bottom
 
 ### 4.6 Pilot data
 
-Pilot results are not used to estimate effects; they test procedure. This is stated in the registration. Using pilot data for estimates would mix procedure testing with outcome measurement, and the pilot cards differed from the final ones after the layout change. Keeping them apart means the main results come only from the registered design. Nadia still reports what the pilot found about procedure, because it explains why the final cards look as they do. The registered plan states this separation explicitly.
+Pilot results are not used to estimate effects; they test procedure. This is stated in the registration. Using pilot data for estimates would mix procedure testing with outcome measurement, and the pilot cards differed from the final ones after the layout change. Keeping them apart means the main results come only from the registered design. Nadia still reports what the pilot found about procedure, because it explains why the final cards look as they do. The registered plan states that pilot logs are excluded from every reported estimate, so examiners can check this against the archive.
 
 ### Worked example
 
@@ -397,11 +397,11 @@ Of the 21 additional correct decisions, most were benign triggers correctly clos
 
 ### 5.5 Independent validation
 
-A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals. The statistician received the registered plan and the anonymised logs, not Nadia's tables, so agreement shows that the analysis follows from the plan and the data. Matching to three decimals also checks that the scripts are complete. The validation report is in the archive with her name and university. Prof. Grant arranged the statistician through the university.
+A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals. The statistician received the registered plan and the anonymised logs, not Nadia's tables, so agreement shows that the analysis follows from the plan and the data. Matching to three decimals also checks that the scripts are complete. The validation report is in the archive with her name and university. Prof. Grant arranged the statistician through Calder University, someone with no part in the study or in Nadia's supervision.
 
 ### 5.6 Time
 
-Median time-to-disposition fell from 96 to 81 seconds; the time difference is secondary and labelled as such. Because time was registered as secondary, Nadia does not test it as a main hypothesis or build claims on it. She notes that faster decisions on enriched cards are consistent with analysts using context to settle benign triggers quickly, but the same speed could contribute to the two missed attacks. The time data are released with the logs for others to analyse. The time comparison is also reported per analyst.
+Median time-to-disposition fell from 96 to 81 seconds; the time difference is secondary and labelled as such. Because time was registered as secondary, Nadia does not test it as a main hypothesis or build claims on it. She notes that faster decisions on enriched cards are consistent with analysts using context to settle benign triggers quickly, but the same speed could contribute to the two missed attacks. The time data are released with the logs for others to analyse. The time comparison is also reported per analyst, so readers can see whether the drop from 96 to 81 seconds came from a few people.
 
 ### Deviations from the plan
 
@@ -460,7 +460,7 @@ To Reviewer 2 she runs an exploratory follow-up with four analysts and single-fi
 
 ### 6.5 The response letter
 
-Each critique is quoted, followed by the change made (with page numbers) or a reasoned disagreement. Nadia's letter answers Reviewer 2 by describing the follow-up and labelling its result exploratory, so the reviewer can see that the confound was addressed without overstating it. Where she disagrees, as with a request to drop the synthetic corpus altogether, she explains why with evidence from the realism review and the ethical limits on real SOC data. Every change carries a page number. Prof. Grant reads the letter before it is sent.
+Each critique is quoted, followed by the change made (with page numbers) or a reasoned disagreement. Nadia's letter answers Reviewer 2 by describing the follow-up and labelling its result exploratory, so the reviewer can see that the confound was addressed without overstating it. Where she disagrees, as with a request to drop the synthetic corpus altogether, she explains why with evidence from the realism review and the ethical limits on real SOC data. Every change carries a page number. Prof. Grant reads the letter before it is sent, checking that each claimed change can be found on the page it cites.
 
 ### 6.6 Avoiding defensive revision
 
@@ -507,7 +507,7 @@ The thesis argues: (1) benign triggers dominate analyst workload, consistent wit
 
 ### 7.2 Confirmatory versus exploratory
 
-Chapter results are tagged: the accuracy effect is confirmatory (registered); the field attribution and time effect are exploratory. Tables mark each. Tagging tells readers how much weight each result can bear. The confirmatory accuracy effect was tested as registered; the attribution to the benign-history field comes from a small follow-up with four analysts and is a lead, not a conclusion. Nadia's summary table repeats each tag next to the archive file that reproduces the result. The time result carries a secondary tag.
+Chapter results are tagged: the accuracy effect is confirmatory (registered); the field attribution and time effect are exploratory. Tables mark each. Tagging tells readers how much weight each result can bear. The confirmatory accuracy effect was tested as registered; the attribution to the benign-history field comes from a small follow-up with four analysts and is a lead, not a conclusion. Nadia's summary table repeats each tag next to the archive file that reproduces the result. The time result carries a secondary tag, matching how it was registered before the main study.
 
 ### 7.3 The archive
 
@@ -519,7 +519,7 @@ A fellow student downloads the archive on a clean machine and regenerates all ta
 
 ### 7.5 Licensing and privacy
 
-Corpus and code are released under an open licence. Analyst logs are anonymised: analyst IDs are random, timestamps shifted, free-text notes removed after review for identifying content. Removing free-text notes after review prevents analysts from being identified by their writing or by details of their workplace. Shifted timestamps keep durations accurate while hiding when sessions occurred. The open licence lets other researchers reuse the corpus for different alert-card experiments, which is the point of the first contribution. The archive README explains these steps.
+Corpus and code are released under an open licence. Analyst logs are anonymised: analyst IDs are random, timestamps shifted, free-text notes removed after review for identifying content. Removing free-text notes after review prevents analysts from being identified by their writing or by details of their workplace. Shifted timestamps keep durations accurate while hiding when sessions occurred. The open licence lets other researchers reuse the corpus for different alert-card experiments, which is the point of the first contribution. The archive README explains each anonymisation step, so reusers know which fields were removed and why.
 
 ### 7.6 Implications
 
@@ -527,7 +527,7 @@ For SOCs: test enrichment fields one at a time and monitor missed-attack rates; 
 
 ### 7.7 Mapping to frameworks
 
-Findings are mapped to NIST CSF 2.0's Detect function (adverse event analysis) so practitioners can locate them. Mapping the work to adverse event analysis lets a SOC manager see that the findings concern how alerts are assessed after detection, not how rules are written. Nadia also notes the related Respond activities, since dismissing a true attack at triage delays every later step of incident handling. The mapping appears in the practitioner article as well as the thesis. The thesis cites NIST CSF 2.0 for this mapping.
+Findings are mapped to NIST CSF 2.0's Detect function (adverse event analysis) so practitioners can locate them. Mapping the work to adverse event analysis lets a SOC manager see that the findings concern how alerts are assessed after detection, not how rules are written. Nadia also notes the related Respond activities, since dismissing a true attack at triage delays every later step of incident handling. The mapping appears in the practitioner article as well as the thesis. The thesis cites NIST CSF 2.0 for the mapping, using its Detect and Respond functions by name.
 
 ### Worked example
 
@@ -590,7 +590,7 @@ Corrections required by examiners are tracked and completed before final submiss
 
 ### 8.7 Strategy alignment
 
-Her design note references Strategy 8 of Knerler, Parker and Zimmerman (2022), "Leverage tools to support analyst workflow", to connect the research with SOC planning language. The connection lets SOC managers place her recommendation within a plan they may already use, instead of treating it as an isolated research idea. Nadia is careful not to claim that the strategy is validated by her study; she cites it as planning language, while her evidence concerns one design choice within it. The same reference appears in her practitioner article.
+Her design note references Strategy 8 of Knerler, Parker and Zimmerman (2022), "Leverage tools to support analyst workflow", to connect the research with SOC planning language. The connection lets SOC managers place her recommendation within a plan they may already use, instead of treating it as an isolated research idea. Nadia is careful not to claim that the strategy is validated by her study; she cites it as planning language, while her evidence concerns one design choice within it. The practitioner article cites the same strategy, so SOC managers reading only the article see the same boundary on her claim.
 
 ### Worked example
 

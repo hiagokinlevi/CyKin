@@ -495,7 +495,7 @@ Fourteen days for laptops and servers, seven for actively exploited flaws, follo
 
 ### 8.2 Tail
 
-Laptops in the tail are mostly field staff rarely online; cloud-based update management fixes this. Field staff laptops spend weeks away from the office network, so updates that depend on it reach them late. Cloud-based update management lets laptops receive updates over any internet connection. Seun checks the tail each month to confirm that the change works and to find machines that remain behind for other reasons, such as low disk space or a failed restart. Persistent cases are followed up with the user's manager.
+Laptops in the tail are mostly field staff rarely online; cloud-based update management fixes this. Field staff laptops spend weeks away from the office network, so updates that depend on it reach them late. Cloud-based update management lets laptops receive updates over any internet connection. Seun checks the tail each month to confirm that the change works and to find machines that remain behind for other reasons, such as low disk space or a failed restart. Laptops still in the tail after two months are raised with the user's manager, since field staff may need to connect deliberately to receive updates.
 
 ### 8.3 Servers
 
@@ -503,7 +503,7 @@ Server patching moves to a monthly window agreed with operations. A fixed monthl
 
 ### 8.4 Reporting
 
-Monthly percentages per group and the oldest outstanding patch. Percentages per group show typical performance, while the oldest outstanding patch shows the worst case, which an average can hide. Seun reports both to the operations director each month with a one-line explanation of any change. The figures use the reconciled device list as the denominator, so a device that stops reporting counts as a gap rather than disappearing. A short note lists which machines hold the oldest patches and what is being done about them. The same report goes into the evidence pack.
+Monthly percentages per group and the oldest outstanding patch. Percentages per group show typical performance, while the oldest outstanding patch shows the worst case, which an average can hide. Seun reports both to the operations director each month with a one-line explanation of any change. The figures use the reconciled device list as the denominator, so a device that stops reporting counts as a gap rather than disappearing. A short note lists which machines hold the oldest patches and what is being done about them. The same monthly report goes into the evidence pack, so the insurer can see patching performance over the whole programme.
 
 ### Measuring the tail
 
@@ -637,7 +637,7 @@ Standard, approvals, monthly coverage reports, exceptions register and change re
 
 ### 10.2 Questionnaires
 
-Insurance answers cite the pack. When the insurer's questionnaire asks whether disk encryption or MFA is in place, Seun answers with the current figure and points to the document in the pack that supports it, rather than a simple yes. Where the answer is partial, such as warehouse encryption, he states the figure and the replacement plan. The finance director reviews the answers before they are sent, and a copy of the submitted questionnaire is kept in the pack. Answers are reused only after the figures are refreshed.
+Insurance answers cite the pack. When the insurer's questionnaire asks whether disk encryption or MFA is in place, Seun answers with the current figure and points to the document in the pack that supports it, rather than a simple yes. Where the answer is partial, such as warehouse encryption, he states the figure and the replacement plan. The finance director reviews the answers before they are sent, and a copy of the submitted questionnaire is kept in the pack. Answers from one questionnaire are reused for the next only after the coverage figures are refreshed, so the insurer never sees an out-of-date percentage.
 
 ### 10.3 Maintenance
 
@@ -707,11 +707,11 @@ Laptop compliance 70 to 91 percent, Linux 50 to 89, warehouse agents 78 to 95, a
 
 ### 11.2 Routines
 
-Monthly coverage, quarterly exceptions, yearly standard review. These routines are what keep the programme going after the six months end. Each month, the coverage figures are produced from the consoles and reviewed with the operations director. Each quarter, the exceptions register is reviewed with business owners. Each year, the standard itself is reviewed against new benchmark releases and Marlowe's changing needs. Seun writes each routine down with its owner, inputs and outputs, so it does not depend on his memory. The routines are recorded in the evidence pack.
+Monthly coverage, quarterly exceptions, yearly standard review. These routines are what keep the programme going after the six months end. Each month, the coverage figures are produced from the consoles and reviewed with the operations director. Each quarter, the exceptions register is reviewed with business owners. Each year, the standard itself is reviewed against new benchmark releases and Marlowe's changing needs. Seun writes each routine down with its owner, inputs and outputs, so it does not depend on his memory. The written routines go into the evidence pack, so an auditor can see how Marlowe keeps the standard current after the programme ends.
 
 ### 11.3 Ownership
 
-Each group has a named owner. The infrastructure team owns servers, warehouse managers own the shared PCs, and the endpoint team owns laptops. Each owner receives their group's monthly figures and is responsible for explaining changes and acting on gaps. The operations director remains the owner of the overall risk and approves the standard. Naming owners means the programme does not stop if Seun is away or changes role, and the owners attend the quarterly exceptions review. Their names are recorded in the standard.
+Each group has a named owner. The infrastructure team owns servers, warehouse managers own the shared PCs, and the endpoint team owns laptops. Each owner receives their group's monthly figures and is responsible for explaining changes and acting on gaps. The operations director remains the owner of the overall risk and approves the standard. Naming owners means the programme does not stop if Seun is away or changes role, and the owners attend the quarterly exceptions review. The owners' names are recorded in the standard itself, so a change of owner needs the same approval as a change of setting.
 
 ### 11.4 Limits
 

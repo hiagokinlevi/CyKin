@@ -59,7 +59,7 @@ He searches two digital libraries and the NIST and CSA publication lists with re
 
 ### 1.5 Recording
 
-The search log, screening decisions and reasons for exclusion are kept so another student could repeat the search and reach the same set. The log also caught Lucas's own bias: when he reviewed his exclusion reasons, two papers arguing that IaC spreads errors widely had been dropped without a valid reason. Dr Tanaka asked him to reinstate them. Without a written record, that pattern would have been invisible to anyone checking the review, including Lucas himself. Examiners can rerun the search from the appendix.
+The search log, screening decisions and reasons for exclusion are kept so another student could repeat the search and reach the same set. The log also caught Lucas's own bias: when he reviewed his exclusion reasons, two papers arguing that IaC spreads errors widely had been dropped without a valid reason. Dr Tanaka asked him to reinstate them. Without a written record, that pattern would have been invisible to anyone checking the review, including Lucas himself. The search strings and dates are in an appendix, so examiners can rerun the search and check whether other papers were missed.
 
 ### 1.6 Early sources
 
@@ -145,7 +145,7 @@ NIST SP 800-207 argues that access should be decided per request using identity 
 
 ### 2.5 Seminar argument
 
-Lucas argues that exposure is partly an identity problem: if few identities can change bucket access settings, fewer paths to exposure exist, regardless of console or IaC. His seminar peers accepted the argument but challenged the 90-day usage window as a measure of need. Lucas therefore kept identity breadth as a separate explanation to test, counting identities with storage administration rights per account, instead of folding it into either of the platform team's or data team's explanations. Breadth stays testable whatever the usage window.
+Lucas argues that exposure is partly an identity problem: if few identities can change bucket access settings, fewer paths to exposure exist, regardless of console or IaC. His seminar peers accepted the argument but challenged the 90-day usage window as a measure of need. Lucas therefore kept identity breadth as a separate explanation to test, counting identities with storage administration rights per account, instead of folding it into either of the platform team's or data team's explanations. Counting breadth does not depend on usage logs, so it stays testable even if the 90-day window is a poor measure of need.
 
 ### Access history quality
 
@@ -197,7 +197,7 @@ Console changes may happen more often under time pressure, in data-science teams
 
 ### 3.3 Ethics
 
-Change records name engineers. The ethics application commits to pseudonymising engineer identities before analysis, reporting only by team and origin, and never using the study to assess individuals. Larkspur's data protection officer signs the data agreement. The ethics board added a condition: teams with fewer than five engineers are merged into an "other" group, so nobody can be identified by elimination. The pseudonymisation key stays at Larkspur, and Lucas never sees real names. The merging rule applies to every table and figure.
+Change records name engineers. The ethics application commits to pseudonymising engineer identities before analysis, reporting only by team and origin, and never using the study to assess individuals. Larkspur's data protection officer signs the data agreement. The ethics board added a condition: teams with fewer than five engineers are merged into an "other" group, so nobody can be identified by elimination. The pseudonymisation key stays at Larkspur, and Lucas never sees real names. The merging rule applies to every table and figure in the thesis, including the appendix breakdowns by account.
 
 ### 3.4 Reproducibility
 
@@ -437,11 +437,11 @@ The difference holds within daytime and night-time changes and within the three 
 
 ### 6.4 Clustering for B
 
-Nine of the twelve IaC exposures come from two templates, supporting explanation B: weak defaults spread. Fixing those templates would address most IaC exposures. The two templates were copied into several projects, carrying the same permissive storage setting each time. The remaining three IaC exposures came from other templates, which is consistent with B explaining most but not all IaC exposures. Template identifiers make the fix concrete: Larkspur knows exactly which files to change. Template identifiers let Larkspur trace each copy.
+Nine of the twelve IaC exposures come from two templates, supporting explanation B: weak defaults spread. Fixing those templates would address most IaC exposures. The two templates were copied into several projects, carrying the same permissive storage setting each time. The remaining three IaC exposures came from other templates, which is consistent with B explaining most but not all IaC exposures. Template identifiers make the fix concrete: Larkspur knows exactly which files to change. Larkspur's platform team uses the template identifiers to find every copy of the permissive setting before changing the source template.
 
 ### 6.5 Identity for C
 
-Accounts where more than ten identities hold storage administration rights have higher exposure rates for both origins, supporting C as a contributing factor. The pattern holds for both origins, which means identity breadth is not simply a disguise for console use. Lucas reports C as a contributing factor rather than the main cause, because the study observes accounts at one organisation and cannot separate breadth from other account differences. The threshold of ten identities was chosen before analysis. Breadth counts per account are in the appendix.
+Accounts where more than ten identities hold storage administration rights have higher exposure rates for both origins, supporting C as a contributing factor. The pattern holds for both origins, which means identity breadth is not simply a disguise for console use. Lucas reports C as a contributing factor rather than the main cause, because the study observes accounts at one organisation and cannot separate breadth from other account differences. The threshold of ten identities was chosen before analysis. Breadth counts per account are in the appendix, so readers can see how many accounts sit above the ten-identity threshold.
 
 ### Checking the data
 
@@ -492,7 +492,7 @@ One organisation and one year; origin labels depend on logging accuracy; intende
 
 ### 7.3 Findings versus recommendations
 
-Findings say what the data show; recommendations say what Larkspur might do, labelled as Lucas's judgement. Mixing them would overstate the evidence. The dissertation marks the boundary in its wording: results use "in this dataset", and recommendations begin with phrases such as "Lucas recommends". Dr Tanaka's comment on the draft sentence claiming the recommendations "will prevent exposures" is an example of this boundary being enforced. The revised sentence names a test Larkspur could run. Each recommendation names the finding behind it.
+Findings say what the data show; recommendations say what Larkspur might do, labelled as Lucas's judgement. Mixing them would overstate the evidence. The dissertation marks the boundary in its wording: results use "in this dataset", and recommendations begin with phrases such as "Lucas recommends". Dr Tanaka's comment on the draft sentence claiming the recommendations "will prevent exposures" is an example of this boundary being enforced. The revised sentence names a test Larkspur could run. Each recommendation names the explanation and table it rests on, so Larkspur can judge how strong the evidence is for that change.
 
 ### 7.4 Recommendations
 

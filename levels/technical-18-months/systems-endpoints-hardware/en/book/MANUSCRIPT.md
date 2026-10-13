@@ -300,7 +300,7 @@ oldest 60 days
 
 ### 5.3 Reading the result
 
-Twenty-five of thirty PCs updated within fourteen days. Five are late, the oldest by sixty days. Nadia checks each: two are rarely used spare PCs, one is a partner's laptop that is often off, one has a full disk and one has a broken update service. Each late PC has a different cause, and each cause needs a different fix. Without checking, Nadia might have assumed the five were careless users. The full disk and broken service are technical problems the supplier can fix, while the spare PCs and the partner's laptop need a change in routine. Nadia records each cause in her notes.
+Twenty-five of thirty PCs updated within fourteen days. Five are late, the oldest by sixty days. Nadia checks each: two are rarely used spare PCs, one is a partner's laptop that is often off, one has a full disk and one has a broken update service. Each late PC has a different cause, and each cause needs a different fix. Without checking, Nadia might have assumed the five were careless users. The full disk and broken service are technical problems the supplier can fix, while the spare PCs and the partner's laptop need a change in routine. Nadia records each cause beside the PC's inventory row, so the supplier can see which fixes are technical and which depend on staff routines.
 
 ### 5.4 Fixing failures
 
@@ -349,11 +349,11 @@ Microsoft Defender Antivirus is built into Windows and is enough for many small 
 
 ### 6.2 Checking status
 
-Nadia compares the console's list with the PC inventory and finds two PCs missing. One was rebuilt and never enrolled; the other had Defender turned off when a staff member installed a different free antivirus. Both are fixed and the free product removed. Comparing the console with the inventory finds PCs the console cannot show: one that never enrolled, and one whose protection was off. Running two antivirus products together can cause problems, which is another reason to remove the free product. Nadia records both fixes.
+Nadia compares the console's list with the PC inventory and finds two PCs missing. One was rebuilt and never enrolled; the other had Defender turned off when a staff member installed a different free antivirus. Both are fixed and the free product removed. Comparing the console with the inventory finds PCs the console cannot show: one that never enrolled, and one whose protection was off. Running two antivirus products together can cause problems, which is another reason to remove the free product. Nadia records both fixes in the inventory, including the date the rebuilt PC was enrolled and the free antivirus was removed.
 
 ### 6.3 Tamper protection
 
-Tamper protection stops users and programs from turning off Defender. The supplier enables it across all PCs. At Harlow & Pike, tamper protection would have stopped Defender being turned off when the free antivirus was installed. It also stops malware disabling protection after it arrives. Nadia confirms in the console that the setting is on for every PC, including the one that was rebuilt and never enrolled, which the supplier has now added. She adds tamper protection to the monthly check list.
+Tamper protection stops users and programs from turning off Defender. The supplier enables it across all PCs. At Harlow & Pike, tamper protection would have stopped Defender being turned off when the free antivirus was installed. It also stops malware disabling protection after it arrives. Nadia confirms in the console that the setting is on for every PC, including the one that was rebuilt and never enrolled, which the supplier has now added. She adds tamper protection to the monthly console check, so a PC where it has been switched off is noticed within weeks.
 
 ### 6.4 Responding to alerts
 
@@ -1020,7 +1020,7 @@ You will (1) make changes safely; (2) re-measure; (3) report.
 
 ### 17.1 Changes
 
-Extra admin rights are removed after talking to each user, and the self-service catalogue is introduced. Update failures are fixed as in chapter 5. Talking to each user first means nobody loses software they need without warning. The self-service catalogue gives them a way to install approved tools without admin rights. Fixing update failures follows the causes found earlier: spares started weekly, disks cleaned, the broken service repaired and the partner's laptop set to update when it connects. Nadia records each change in the change log.
+Extra admin rights are removed after talking to each user, and the self-service catalogue is introduced. Update failures are fixed as in chapter 5. Talking to each user first means nobody loses software they need without warning. The self-service catalogue gives them a way to install approved tools without admin rights. Fixing update failures follows the causes found earlier: spares started weekly, disks cleaned, the broken service repaired and the partner's laptop set to update when it connects. Nadia records each change in the change log with the user consulted, so a later complaint about lost rights can be traced to its decision.
 
 ### 17.2 Results
 

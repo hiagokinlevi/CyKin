@@ -244,7 +244,7 @@ You will (1) replicate a published measurement before extending it; (2) run a sm
 
 ### 4.1 Why replicate
 
-Before claiming anything new, Yusuf re-runs the style of measurement used by Decan et al. (2018) on a synthetic replica of their setting, checking that his scripts reproduce the expected pattern: most vulnerable packages are fixed upstream quickly, but dependents lag. Reproducing the known pattern on a replica shows that his scripts measure exposure the way the field does, before they are applied to quillog. If the replica had not shown dependents lagging, the fault would be in his pipeline, not in the field's finding. The replication scripts are archived with their output.
+Before claiming anything new, Yusuf re-runs the style of measurement used by Decan et al. (2018) on a synthetic replica of their setting, checking that his scripts reproduce the expected pattern: most vulnerable packages are fixed upstream quickly, but dependents lag. Reproducing the known pattern on a replica shows that his scripts measure exposure the way the field does, before they are applied to quillog. If the replica had not shown dependents lagging, the fault would be in his pipeline, not in the field's finding. The replication scripts are archived with their output, so examiners can confirm the pipeline found the known lag before it measured quillog.
 
 ### 4.2 Pilot sample
 
@@ -424,7 +424,7 @@ None is fatal. Reviewer 1's point limits the causal claim; Yusuf adds a within-p
 
 ### 6.4 Revising claims
 
-The headline changes from "bots cut exposure by 21 days" to "projects using bots had 21 days shorter median exposure; within projects, adopting a bot was followed by a 12-day reduction". The new headline names both comparisons and avoids saying that bots cause the reduction. Yusuf applies the same check to the abstract and the practitioner report, so the shorter claim appears everywhere. A reviewer who reads only the headline now gets the same scope as one who reads the method. The abstract now carries both figures.
+The headline changes from "bots cut exposure by 21 days" to "projects using bots had 21 days shorter median exposure; within projects, adopting a bot was followed by a 12-day reduction". The new headline names both comparisons and avoids saying that bots cause the reduction. Yusuf applies the same check to the abstract and the practitioner report, so the shorter claim appears everywhere. A reviewer who reads only the headline now gets the same scope as one who reads the method. The abstract now carries both comparisons' figures, matching the revised headline.
 
 ### 6.5 Change log
 
@@ -479,7 +479,7 @@ Chapter by chapter: exposure is measurable (pilot), lower with bots (main study)
 
 ### 7.2 Archive contents
 
-Scripts, synthetic replicas, the codebook, the pre-registration, a README describing how to run everything, and a manifest of SHA-256 hashes for every file. The archive also contains the pilot memo and the change log, so readers can see how the protocol evolved. Interview material is limited to the codebook and coded counts, as the ethics approval required. The README lists commands in order and the expected tables, so a colleague can tell at once whether a rerun matched. Script, data and codebook files are all hashed.
+Scripts, synthetic replicas, the codebook, the pre-registration, a README describing how to run everything, and a manifest of SHA-256 hashes for every file. The archive also contains the pilot memo and the change log, so readers can see how the protocol evolved. Interview material is limited to the codebook and coded counts, as the ethics approval required. The README lists commands in order and the expected tables, so a colleague can tell at once whether a rerun matched. Script, data and codebook files are all hashed, and the hashes appear in the thesis so a reader can confirm they have the archived versions.
 
 ### Lab — manifest check
 
@@ -562,7 +562,7 @@ You will (1) prepare a doctoral defense on supply-chain evidence; (2) answer har
 
 ### 8.1 The defense
 
-Forty minutes: question, gap, methods, results, limits, contributions. Yusuf rehearses with three colleagues playing sceptical examiners. The rehearsal colleagues prepare questions from the critiques the paper received, so the hardest objections are practised first. Yusuf gives the limits their own slide early, rather than at the end where time may run short. He also prepares the conversion of the 12-day effect into a share of the foundation's median exposure, since practical importance is a likely question. Rehearsal keeps the talk within forty minutes.
+Forty minutes: question, gap, methods, results, limits, contributions. Yusuf rehearses with three colleagues playing sceptical examiners. The rehearsal colleagues prepare questions from the critiques the paper received, so the hardest objections are practised first. Yusuf gives the limits their own slide early, rather than at the end where time may run short. He also prepares the conversion of the 12-day effect into a share of the foundation's median exposure, since practical importance is a likely question. Rehearsals with his supervisor keep the talk within forty minutes, leaving the rest of the defence for questions.
 
 ### 8.2 Hard questions
 

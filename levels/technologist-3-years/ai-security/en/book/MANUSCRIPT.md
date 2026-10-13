@@ -336,7 +336,7 @@ NIST AI RMF (AI 100-1) organises risk work into Govern, Map, Measure, Manage. Th
 
 ### 5.4 Authorised practice
 
-Only test systems you are authorised to test, in writing, within scope. Use isolated copies and synthetic data. Report findings through agreed channels. Curiosity is not authorisation. Jonas's authorisation covers the Ask Brightwell staging copy, not production. When he wanted to check whether the cross-customer lookup also worked live, he asked his manager instead of trying, and the test was run on staging with test accounts. Every later test in this book stays inside the same written scope. Written scope also protects the tester if something breaks.
+Only test systems you are authorised to test, in writing, within scope. Use isolated copies and synthetic data. Report findings through agreed channels. Curiosity is not authorisation. Jonas's authorisation covers the Ask Brightwell staging copy, not production. When he wanted to check whether the cross-customer lookup also worked live, he asked his manager instead of trying, and the test was run on staging with test accounts. Every later test in this book stays inside the same written scope. Written scope also protects Jonas if a staging test breaks something, because the test was agreed in advance.
 
 ### 5.4b Reporting a finding
 
@@ -378,7 +378,7 @@ You will (1) explain processes, users, file permissions and isolation; (2) use c
 
 ### 6.1 Processes and permissions
 
-Every service runs as a process under a user account. If the orchestrator runs as root, a bug becomes a full system compromise. Run each component as its own low-privilege user, with read access only to the files it needs. For Ask Brightwell, the orchestrator, retrieval service and tool services each run under their own account, so a bug in the orchestrator cannot read the order database directly. The order tool's account can read orders but not change them, and the returns tool's account can create returns but cannot read other tables. That separation limits what any single compromise reaches.
+Every service runs as a process under a user account. If the orchestrator runs as root, a bug becomes a full system compromise. Run each component as its own low-privilege user, with read access only to the files it needs. For Ask Brightwell, the orchestrator, retrieval service and tool services each run under their own account, so a bug in the orchestrator cannot read the order database directly. The order tool's account can read orders but not change them, and the returns tool's account can create returns but cannot read other tables. That separation means a compromised orchestrator in Ask Brightwell still cannot read or change the order database directly.
 
 ### 6.2 Containers and virtual machines
 
@@ -580,7 +580,7 @@ A useful diagram shows components as boxes, data flows as arrows and trust bound
 
 ### 8.5 Worked example (synthetic Brightwell case)
 
-Jonas draws Ask Brightwell with four boundaries and places a policy service between the model and the returns tool. The lab shows why: with no defence, 17 of 20 injected documents cause exfiltration calls; keyword filtering still allows 10; tool allow-listing and separating untrusted content from instructions both reach 0. The lab is a toy, but it shows the pattern Jonas expects in Ask Brightwell: filters that look for bad words reduce attacks but miss many, while controls that limit what the model can do stop them in this setup. The policy service follows the second approach.
+Jonas draws Ask Brightwell with four boundaries and places a policy service between the model and the returns tool. The lab shows why: with no defence, 17 of 20 injected documents cause exfiltration calls; keyword filtering still allows 10; tool allow-listing and separating untrusted content from instructions both reach 0. The lab is a toy, but it shows the pattern Jonas expects in Ask Brightwell: filters that look for bad words reduce attacks but miss many, while controls that limit what the model can do stop them in this setup. Ask Brightwell's policy service follows the second approach, limiting which tools and parameters the model may use instead of filtering words.
 
 ### 8.6 Errors and limits
 
@@ -940,7 +940,7 @@ A scenario names: actor, entry point, technique, asset affected, effect, and exi
 
 ### 13.2 Likelihood and impact
 
-Likelihood: how easy, how motivated attackers are, whether it has happened elsewhere (MITRE ATLAS case studies help). Impact: money, people affected, legal exposure, reputation. Use simple scales (1–5) and write reasons. For Ask Brightwell, refund fraud through an injected review scored likelihood 4 because writing a review needs only an account and the technique is published, and impact 4 because refunds cost money directly. Cross-customer lookup scored impact 4 for personal data. Writing these reasons lets others challenge the score. Scores without written reasons cannot be challenged or revisited.
+Likelihood: how easy, how motivated attackers are, whether it has happened elsewhere (MITRE ATLAS case studies help). Impact: money, people affected, legal exposure, reputation. Use simple scales (1–5) and write reasons. For Ask Brightwell, refund fraud through an injected review scored likelihood 4 because writing a review needs only an account and the technique is published, and impact 4 because refunds cost money directly. Cross-customer lookup scored impact 4 for personal data. Writing these reasons lets others challenge the score. When the returns tool was added, the written reasons showed exactly which part of the refund-fraud score needed re-rating.
 
 ### 13.3 Prioritising
 
@@ -968,7 +968,7 @@ Jonas's six scenarios avoid these: each names an actor, an entry point and an ef
 
 ### 13.7 Reviewing scenarios over time
 
-Brightwell reviews its AI risk scenarios each quarter and after any incident. A scenario whose likelihood has changed — for example, because Ask Brightwell gained a new tool for issuing refunds — is re-rated, and its linked tests are updated in the same review. Adding the returns tool raised the likelihood of the refund-fraud scenario, so it was re-rated in that review. The same review checks that the held-out suite still contains cases for the refund path, and adds new ones if the tool's parameters changed. Results go to the scenario owner.
+Brightwell reviews its AI risk scenarios each quarter and after any incident. A scenario whose likelihood has changed — for example, because Ask Brightwell gained a new tool for issuing refunds — is re-rated, and its linked tests are updated in the same review. Adding the returns tool raised the likelihood of the refund-fraud scenario, so it was re-rated in that review. The same review checks that the held-out suite still contains cases for the refund path, and adds new ones if the tool's parameters changed. Results go to the refund-fraud scenario's owner, who decides whether the re-rating changes the release plan.
 
 ### Exercises
 
@@ -1006,7 +1006,7 @@ Each test case: ID, category (OWASP entry), input, setup (documents planted), ex
 
 ### 14.4 Recording findings
 
-For each failure, save the full conversation, retrieved documents, tool calls and versions. Write the finding with reproduction steps, impact and severity. When 31 indirect cases started returns, Jonas saved each full conversation, the retrieved review, the tool call and the versions in use. That record let the policy service's developer reproduce every failure on staging without asking him. The same record later showed that all 31 failures crossed the same documents-to-prompt boundary. Each finding names its owner and a retest date.
+For each failure, save the full conversation, retrieved documents, tool calls and versions. Write the finding with reproduction steps, impact and severity. When 31 indirect cases started returns, Jonas saved each full conversation, the retrieved review, the tool call and the versions in use. That record let the policy service's developer reproduce every failure on staging without asking him. The same record later showed that all 31 failures crossed the same documents-to-prompt boundary. Each finding names its owner and a retest date, so the 31 boundary failures were retested together after the fix.
 
 ### 14.5 Worked example (synthetic Brightwell case)
 
@@ -1092,7 +1092,7 @@ eps=0.75 accuracy=0.660
 eps=1.00 accuracy=0.505
 ```
 
-Accuracy falls from 0.985 to 0.505 as the perturbation budget grows. Control: do not let a single model score make irreversible decisions; add rules and human review. For ReturnGuard, this supports Jonas's recommendation that a high fraud score leads to human review rather than an automatic refusal. For ReturnGuard, the features a fraudster can actually change, such as return reason and timing, are fewer and coarser than the lab's free perturbation, so the lab shows the direction of the risk rather than its size. Jonas states that limit in his write-up.
+Accuracy falls from 0.985 to 0.505 as the perturbation budget grows. Control: do not let a single model score make irreversible decisions; add rules and human review. For ReturnGuard, this supports Jonas's recommendation that a high fraud score leads to human review rather than an automatic refusal. For ReturnGuard, the features a fraudster can actually change, such as return reason and timing, are fewer and coarser than the lab's free perturbation, so the lab shows the direction of the risk rather than its size. Jonas states in his ReturnGuard write-up that the lab shows direction, not size, so nobody reads the lab's evasion rate as the live rate.
 
 ### 15.3 Poisoning and backdoors
 
@@ -1518,7 +1518,7 @@ Check versions first: did the model, prompt, index or code change near the start
 
 ### 20.3 Safe reproduction
 
-Reproduce on staging with synthetic data. Keep production evidence read-only. If reproduction requires dangerous inputs, keep them in an access-controlled test store. For the 60-day case, Jonas reproduced the wrong answer on staging by indexing the expired page and asking about the return window, which needed no customer data. The production traces stayed read-only as evidence. Dangerous test documents, such as planted injection reviews, are kept in an access-controlled store separate from ordinary test data. Staging copies hold only synthetic customers and orders.
+Reproduce on staging with synthetic data. Keep production evidence read-only. If reproduction requires dangerous inputs, keep them in an access-controlled test store. For the 60-day case, Jonas reproduced the wrong answer on staging by indexing the expired page and asking about the return window, which needed no customer data. The production traces stayed read-only as evidence. Dangerous test documents, such as planted injection reviews, are kept in an access-controlled store separate from ordinary test data. Ask Brightwell's staging copies hold only synthetic customers and orders, so tests there cannot expose real personal data.
 
 ### 20.4 Fix and prevent
 
@@ -1676,7 +1676,7 @@ Fixed suites measure known attacks. Adaptive testing gives testers knowledge of 
 
 ### 23.3 Reporting
 
-For each scenario: successes/trials, rate, 95% interval, comparison with the previous version, side effects on normal use (false refusals, completion), conditions (versions, dates). Include failed cases in an appendix so developers can reproduce them. Jonas's quarterly report on Ask Brightwell gives harmful returns as counts out of 80 held-out and 60 adaptive cases, canary leaks out of 50, and normal completion out of 500, each with versions. The failed adaptive case is in the appendix with steps. Each failed case in the appendix lists the versions it ran against. Interval and counts appear together in every table.
+For each scenario: successes/trials, rate, 95% interval, comparison with the previous version, side effects on normal use (false refusals, completion), conditions (versions, dates). Include failed cases in an appendix so developers can reproduce them. Jonas's quarterly report on Ask Brightwell gives harmful returns as counts out of 80 held-out and 60 adaptive cases, canary leaks out of 50, and normal completion out of 500, each with versions. The failed adaptive case is in the appendix with steps. Each failed case in the appendix lists the versions it ran against. Every table shows each count with its interval, so a reader can see how few adaptive cases lie behind a rate.
 
 ### 23.4 Residual risk
 
@@ -1871,7 +1871,7 @@ You will (1) prepare an AI system for handoff to operations; (2) write runbooks 
 
 ### 26.1 What operations needs
 
-Operations teams need to know: what the system does; its components and dependencies (including vendor model versions); normal behaviour (volumes, costs, denial rates); alerts and their runbooks; how to roll back a model, prompt or index; who owns what; and the known residual risks. Without this, the first incident becomes a research project. Jonas's handoff pack for Ask Brightwell covers each item, including the pinned vendor model version and the switch for disabling a retrieval source. The pack names an owner for each item.
+Operations teams need to know: what the system does; its components and dependencies (including vendor model versions); normal behaviour (volumes, costs, denial rates); alerts and their runbooks; how to roll back a model, prompt or index; who owns what; and the known residual risks. Without this, the first incident becomes a research project. Jonas's handoff pack for Ask Brightwell covers each item, including the pinned vendor model version and the switch for disabling a retrieval source. The pack names an owner for each item, so the Ask Brightwell support team knows who to call before switching off a retrieval source.
 
 ### 26.2 AI incident runbooks
 
@@ -2115,7 +2115,7 @@ Gift Card Help's evidence follows this chain: the same-owner requirement leads t
 
 ### 29.4b Supervisor check-ins
 
-Meet your supervisor every two weeks with the latest harness report, the backlog and the change log. Raise blockers early; a capstone that slips quietly is harder to rescue than one whose problems were visible. Jonas brought the harness report, backlog and change log to each check-in. The repeated-transfer finding was raised at the next meeting, and his supervisor agreed that the cap should be fixed before transfers grew further. Each check-in ended with a short written note of decisions and blockers. Problems raised early were cheaper to fix.
+Meet your supervisor every two weeks with the latest harness report, the backlog and the change log. Raise blockers early; a capstone that slips quietly is harder to rescue than one whose problems were visible. Jonas brought the harness report, backlog and change log to each check-in. The repeated-transfer finding was raised at the next meeting, and his supervisor agreed that the cap should be fixed before transfers grew further. Each check-in ended with a short written note of decisions and blockers. Raising the repeated-transfer finding early meant the cap was fixed while Gift Card Help's transfer volumes were still small.
 
 ### 29.5 Worked example (synthetic Brightwell case)
 
@@ -2153,7 +2153,7 @@ You will (1) evaluate your capstone against its requirements; (2) present and de
 
 ### 30.1 Final evaluation
 
-Run all suites on the final version: held-out, adaptive (from independent testers) and normal use. Report each requirement with result, interval and pass or fail. Include side effects and costs. Report failures honestly with cause and plan; an honest failed criterion scores better than a hidden one. Jonas's final evaluation of Gift Card Help reports cross-user disclosures, out-of-policy transfers and normal completion, each with counts. It states the transfer-volume alert's precision honestly and explains the dashboard routing. Each result shows its interval and pass or fail.
+Run all suites on the final version: held-out, adaptive (from independent testers) and normal use. Report each requirement with result, interval and pass or fail. Include side effects and costs. Report failures honestly with cause and plan; an honest failed criterion scores better than a hidden one. Jonas's final evaluation of Gift Card Help reports cross-user disclosures, out-of-policy transfers and normal completion, each with counts. It states the transfer-volume alert's precision honestly and explains the dashboard routing. Each result shows its interval and whether it met the agreed criterion, so a failed criterion is as visible as a passed one.
 
 ### 30.2 Demonstration and defence
 
@@ -2197,7 +2197,7 @@ Jonas's plan names specific steps: one capture-the-flag event with an AI track p
 
 ### 30.4b Assessment criteria
 
-Assessors look for: requirements traced to evidence; controls that do not depend on model behaviour; independent adaptive testing; honest reporting of failures; operational readiness (alerts, runbooks, rollback); and clear communication. Check your submission against each before handing it in. Jonas checked Gift Card Help against each item: requirements traced to tests, the policy service independent of the model, an independent adaptive tester, the alert precision stated honestly, rehearsed rollback and a one-page summary for owners. The checklist is part of his submission.
+Assessors look for: requirements traced to evidence; controls that do not depend on model behaviour; independent adaptive testing; honest reporting of failures; operational readiness (alerts, runbooks, rollback); and clear communication. Check your submission against each before handing it in. Jonas checked Gift Card Help against each item: requirements traced to tests, the policy service independent of the model, an independent adaptive tester, the alert precision stated honestly, rehearsed rollback and a one-page summary for owners. The completed checklist is part of his submission, with each item pointing to the Gift Card Help evidence behind it.
 
 ### 30.5 Worked example (synthetic Brightwell case)
 
