@@ -1,26 +1,26 @@
-# Subjects and book chapters — OT, IoT and cyber-physical security / Postgraduate course / Português
+# Disciplinas e capítulos do livro — Segurança de TO, IoT e Sistemas Ciberfísicos / Pós-graduação / Português
 
-**One course, one principal book, 12 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Um curso, um livro principal, 12 disciplinas e capítulos, uma skill do curso.** Apenas os links marcados como Rascunho levam a conteúdo didático escrito; um capítulo planejado é um resumo, não uma lição concluída.
 
-This is an English working index awaiting translation and review for this language.
+Edição em português do Brasil, escrita a partir da edição de referência em inglês; revisão técnica e linguística pendente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Início](../../../../README.md) · [Trilha de estudo completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md)
 
-**Course 160 of 207.** Read chapters 01–12 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 160 de 207.** Leia os capítulos 01–12 de cima para baixo. Para cada capítulo, use o link Rascunho; o link numerado do plano é apenas um resumo. Tente os exercícios antes de consultar as resoluções no fim do livro. A última linha leva ao próximo curso neste mesmo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plano | Disciplina | Horas | Páginas A4 previstas | Meta de exercícios | Estado didático | Próximo passo |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Advanced security decision-making | 50 | 35 | 5 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | OT, IoT and cyber-physical security: current practice | 50 | 35 | 5 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | OT, IoT and cyber-physical security: specialist evidence | 50 | 35 | 5 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Advanced risk and ethics | 50 | 35 | 5 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 2 | [05](book/PLAN.md#ch-05) | OT, IoT and cyber-physical security: design alternatives | 50 | 35 | 5 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | OT, IoT and cyber-physical security: controlled evaluation | 50 | 35 | 5 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 3 | [07](book/PLAN.md#ch-07) | OT, IoT and cyber-physical security: organizational integration | 50 | 35 | 5 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 3 | [08](book/PLAN.md#ch-08) | OT, IoT and cyber-physical security: difficult cases | 50 | 35 | 5 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 3 | [09](book/PLAN.md#ch-09) | OT, IoT and cyber-physical security: leadership and assurance | 50 | 35 | 5 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 4 | [10](book/PLAN.md#ch-10) | Research reading and critique | 50 | 35 | 5 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 4 | [11](book/PLAN.md#ch-11) | Applied project | 50 | 35 | 5 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 4 | [12](book/PLAN.md#ch-12) | Final review and transfer | 50 | 35 | 5 | Planned | [Course 161 →](../../critical-sector-security/pt/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Tomada de decisão avançada em segurança | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Segurança de TO, IoT e sistemas ciberfísicos: prática atual | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Segurança de TO, IoT e sistemas ciberfísicos: evidências especializadas | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Risco e ética avançados | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 2 | [05](book/PLAN.md#ch-05) | Segurança de TO, IoT e sistemas ciberfísicos: alternativas de projeto | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Segurança de TO, IoT e sistemas ciberfísicos: avaliação controlada | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 3 | [07](book/PLAN.md#ch-07) | Segurança de TO, IoT e sistemas ciberfísicos: integração organizacional | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 3 | [08](book/PLAN.md#ch-08) | Segurança de TO, IoT e sistemas ciberfísicos: casos difíceis | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 3 | [09](book/PLAN.md#ch-09) | Segurança de TO, IoT e sistemas ciberfísicos: liderança e garantia | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 4 | [10](book/PLAN.md#ch-10) | Leitura e crítica de pesquisa | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 4 | [11](book/PLAN.md#ch-11) | Projeto aplicado | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 4 | [12](book/PLAN.md#ch-12) | Revisão final e transferência | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [Curso 161 →](../../critical-sector-security/pt/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
