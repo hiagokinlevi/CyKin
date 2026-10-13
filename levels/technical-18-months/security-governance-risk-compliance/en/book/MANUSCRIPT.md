@@ -88,7 +88,7 @@ You will (1) describe a branch network design; (2) identify card payment network
 
 ### 2.1 Branch networks
 
-Each Fenwick branch has a network for tills and card terminals, office computers and a guest Wi-Fi for trade customers. Amina learns that these should be separated so a problem in one cannot easily spread to another. She checks two branches: one has separate segments; the other connects everything to one switch. She records the difference and learns that branches built at different times often vary, which governance must find and fix. The branch with one switch lets a compromised guest device reach the tills, so she records it as the higher priority of the two. Separate admin accounts also make it easy to see in the logs when administrator rights were actually used.
+Each Fenwick branch has a network for tills and card terminals, office computers and a guest Wi-Fi for trade customers. Amina learns that these should be separated so a problem in one cannot easily spread to another. She checks two branches: one has separate segments; the other connects everything to one switch. She records the difference and learns that branches built at different times often vary, which governance must find and fix. The branch with one switch lets a compromised guest device reach the tills, so she records it as the higher priority of the two.
 
 ### 2.2 Card payment requirements
 

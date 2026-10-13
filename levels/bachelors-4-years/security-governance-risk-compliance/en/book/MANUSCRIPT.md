@@ -1494,7 +1494,7 @@ You will (1) analyse governance in payment and certification contexts; (2) under
 
 ### 31.1 Payments
 
-Elmfield takes rent payments by card through a hosted payment page run by a provider. Sofia learns that PCI DSS v4.0 applies to organisations that store, process or transmit cardholder data or could affect its security. By using a hosted page, Elmfield keeps card data off its own systems, greatly reducing its obligations, though it must still protect the website that links to the payment page and confirm the provider's compliance. She learns that architecture choices can shrink compliance scope substantially. Her chosen architecture also shapes the board's later certification decision, since card data never touch Elmfield's own laptops.
+Elmfield takes rent payments by card through a hosted payment page run by a provider. Sofia learns that PCI DSS v4.0 applies to organisations that store, process or transmit cardholder data or could affect its security. By using a hosted page, Elmfield keeps card data off its own systems, greatly reducing its obligations, though it must still protect the website that links to the payment page and confirm the provider's compliance. She learns that architecture choices can shrink compliance scope substantially. Elmfield's chosen architecture also shapes the board's later certification decision, since card data never touch Elmfield's own laptops.
 
 ### 31.2 Certification
 
