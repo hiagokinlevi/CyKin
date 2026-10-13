@@ -1062,13 +1062,13 @@ k= 5 attack_auc=0.521 best_advantage=0.073
 k=25 attack_auc=0.520 best_advantage=0.060
 ```
 
-Lab M makes the effect measurable: with k of 1 the attack reaches an AUC of 0.600, while with k of 25 it falls to 0.520, close to chance. Training on fewer passes reduces memorisation of individual patients.
+Lab M makes the effect measurable: with k of 1 the attack reaches an AUC of 0.600, while with k of 25 it falls to 0.520, close to chance. Averaging over more neighbours, as a model that generalises does, reduces what the output reveals about individual patients.
 
 ### 14.3 Privacy-enhancing techniques
 
 Minimise and pseudonymise data; deduplicate training records; limit output detail (labels rather than confidences); apply differential privacy during training (Abadi et al., arXiv:1607.00133); control who can query models; and never put personal data into prompts unnecessarily.
 
-Each technique targets a part of the risk. Deduplication removes repeated records that models tend to memorise. Returning labels rather than confidences removes the signal Lab M's attack uses. Differential privacy bounds how much any one record can affect the trained model, at some cost in accuracy. Query controls limit who can probe the model at all. LCH's NoShow change used three of these together.
+Each technique targets a part of the risk. Deduplication removes repeated records that models tend to memorise. Returning labels rather than confidences removes the signal Lab M's attack uses. Differential privacy bounds how much any one record can affect the trained model, at some cost in accuracy. Query controls limit who can probe the model at all. LCH's NoShow change used four of these together.
 
 ### 14.4 Privacy risk assessment
 
@@ -1150,9 +1150,9 @@ For Ask Lumen, a strong simple baseline is removing the cancel tool entirely, wh
 
 ### 15.5 Worked example (synthetic LCH case)
 
-Rina measured Ask Lumen's leakage with 400 synthetic attempts to obtain another patient's appointment. Version 1 leaked in 14 cases (3.5%, Wilson 95% interval 2.1–5.8%). After the delegated-token fix, version 2 leaked in 0 of 400 (upper bound about 0.9%). She stored transcripts with hashes and noted that attempts were in English only.
+Rina measured Ask Lumen's leakage with 400 synthetic attempts to obtain another patient's appointment. Version 1 leaked in 14 cases (3.5%, Wilson 95% interval 2.1–5.8%). After the delegated-token fix, version 2 leaked in 0 of 400 (upper bound about 0.95%). She stored transcripts with hashes and noted that attempts were in English only.
 
-The interval matters: 14 of 400 is consistent with a true rate between about 2.1% and 5.8%, so the fix's effect is clear even allowing for chance. Zero leaks in 400 does not mean zero risk; the upper bound of about 0.9% is what the test can support. Noting the English-only limit tells readers that other languages remain untested.
+The interval matters: 14 of 400 is consistent with a true rate between about 2.1% and 5.8%, so the fix's effect is clear even allowing for chance. Zero leaks in 400 does not mean zero risk; the upper bound of about 0.95% is what the test can support. Noting the English-only limit tells readers that other languages remain untested.
 
 ### 15.6 Errors and limits
 
@@ -1165,7 +1165,7 @@ Tuning on the test set inflates results without improving the system. Reporting 
 ### Exercises
 
 - **EX043 — Metric choice.** Choose metrics for evaluating DocSort against misrouting attacks. Rubric: 3 = attack success rate on crafted letters, normal routing accuracy, intervals; 2 = two; 1 = one; 0 = none.
-- **EX044 — Zero failures.** What upper bound applies to 0/400, and why not claim 0%? Rubric: 3 = ≈ 3/400 ≈ 0.75% (rule of three; Wilson ≈ 0.9%); finite sample; 2 = partial; 1 = claims 0%; 0 = none.
+- **EX044 — Zero failures.** What upper bound applies to 0/400, and why not claim 0%? Rubric: 3 = ≈ 3/400 ≈ 0.75% (rule of three; Wilson ≈ 0.95%); finite sample; 2 = partial; 1 = claims 0%; 0 = none.
 - **EX045 — Evidence record.** List five items to record per test case. Rubric: 3 = input, output, model/prompt/code versions, timestamp, hash; 2 = four; 1 = two; 0 = none.
 
 ### Synthesis
@@ -1315,7 +1315,7 @@ Fetching digests and keys from the same place as the files means one compromise 
 
 ### 17.6b Verifying signatures in practice
 
-Signing NoShow's model file helps only if the loader checks the signature every time and refuses to start on failure. LCH tested this by loading a copy with one byte changed: the service refused, logged the event and kept running the previous verified version.
+Signing DocSort's model file helps only if the loader checks the signature every time and refuses to start on failure. LCH tested this by loading a copy with one byte changed: the service refused, logged the event and kept running the previous verified version.
 
 Keeping the previous verified version running avoided an outage while the problem was investigated, which made refusing safe. The vendor then reissued a correctly signed release. Staff noticed no change in DocSort while the old version kept sorting documents.
 
@@ -1443,7 +1443,7 @@ The classification showed that each system had both privacy and integrity risks,
 - Expecting one control to fix inherent vulnerabilities.
 - Mixing up safety and security terms.
 
-Focusing on jailbreaks would have missed DocSort's poisoning risk entirely, since nobody chats with DocSort. No single control covers evasion, poisoning and injection, so LCH needs several layers. Using "safety" where "security" is meant leaves it unclear whether an attacker is assumed, which changes the tests that should be run and who is responsible for fixing the problem, and which team must respond.
+Focusing on jailbreaks would have missed DocSort's poisoning risk entirely, since nobody chats with DocSort. No single control covers evasion, poisoning and injection, so LCH needs several layers. Using "safety" where "security" is meant leaves it unclear whether an attacker is assumed, which changes the tests that should be run and who is responsible for fixing the problem.
 
 ### Exercises
 
@@ -3604,7 +3604,7 @@ Model answers; any answer meeting the rubric scores equally. Lumen Community Hea
 
 **EX043.** Attack success rate on crafted letters intended to misroute, normal routing accuracy on genuine letters, both with confidence intervals.
 
-**EX044.** With zero failures in 400 trials the 95% upper bound is about 3/400 ≈ 0.75% (Wilson ≈ 0.9%); the true rate may be above zero, and other attack types were not tested.
+**EX044.** With zero failures in 400 trials the 95% upper bound is about 3/400 ≈ 0.75% (Wilson ≈ 0.95%); the true rate may be above zero, and other attack types were not tested.
 
 **EX045.** Input; output; model, prompt and code versions; timestamp; integrity hash.
 

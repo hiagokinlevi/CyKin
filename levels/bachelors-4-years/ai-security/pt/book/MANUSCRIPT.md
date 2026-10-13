@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3; os capítulos 11–40 (EX031–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–19 de 40 já estão escritos em português, com os exercícios EX001–EX057 e suas resoluções com rubricas de 0 a 3; os capítulos 20–40 (EX058–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de segurança e computação em sentido amplo que precisam de uma base rigorosa e prática sobre como sistemas de IA são atacados, defendidos, governados e avaliados.
 - Relação com os livros vizinhos: o [livro de tecnólogo](../../../../technologist-3-years/ai-security/en/book/MANUSCRIPT.md) é mais voltado à implementação; o [livro de engenharia](../../../../engineering-5-years/ai-security/en/book/MANUSCRIPT.md) dá mais peso ao projeto. **Este livro equilibra teoria, casos, métodos e competências de pesquisa** e termina com um projeto final e uma monografia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 
 | Parte | Capítulos |
 |---|---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) |
 
-Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 20–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-20), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -613,11 +613,589 @@ A prática ética em segurança de IA significa testes autorizados, divulgação
 
 [← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar processos, usuários, permissões de arquivos e isolamento; (2) executar serviços de IA com menor privilégio; (3) isolar em sandbox o código produzido ou acionado por IA; e (4) usar logs do sistema em investigações.
+
+### 11.1 Processos e permissões
+
+Todo programa roda como um processo pertencente a uma conta de usuário. O sistema operacional verifica as permissões dessa conta antes de permitir acesso a arquivos, conexões de rede ou uso de dispositivos. Um servidor de modelo deve rodar sob sua própria conta sem privilégios, que pode ler os arquivos do modelo, mas não pode alterar código, ler dados não relacionados nem administrar a máquina. Se um atacante encontrasse uma falha no servidor de modelo, obteria apenas os direitos dessa conta. É por isso que o worker de OCR do DocSort rodando como administrador, no exemplo resolvido, era um achado grave antes mesmo de algo dar errado.
+
+### 11.2 Isolamento
+
+Contêineres e máquinas virtuais isolam cargas de trabalho. O isolamento é essencial quando um sistema de IA pode executar código (por exemplo, uma ferramenta de análise de dados num chatbot): o código pode ser influenciado por injeção de prompt, então precisa rodar sem acesso à rede, com CPU e memória limitadas, um tempo limite curto e um sistema de arquivos temporário. O Ask Lumen não executa código, mas o DocSort processa digitalizações enviadas, que são arquivos não confiáveis. Rodar seu worker de OCR num contêiner com acesso somente leitura à pasta de entrada significa que um arquivo malicioso só consegue afetar esse contêiner. Cada restrição responde a um risco específico: sem rede, os dados não saem; o tempo limite detém laços sem fim; e o sistema de arquivos temporário desaparece após cada tarefa.
+
+### 11.3 Controle de recursos
+
+Sem limites, uma requisição pesada pode deixar as outras sem recursos. Os control groups (no Linux) e os limites de contêineres restringem o uso de CPU, memória e GPU por carga de trabalho, favorecendo a disponibilidade. No DocSort, uma única digitalização malformada que consumisse toda a memória poderia bloquear todas as cartas de encaminhamento da fila. Um teto de memória no contêiner do worker faz esse arquivo falhar sozinho, enquanto a tarefa seguinte prossegue. Os limites são definidos a partir do uso normal medido mais uma margem, e uma tarefa que atinge um limite é registrada em log para que a causa possa ser investigada, em vez de ser repetida silenciosamente.
+
+### 11.4 Logs
+
+Logs de autenticação, de processos e de acesso a arquivos ajudam a reconstruir o que aconteceu. Correlacioná-los com os identificadores de requisição da aplicação liga uma conversa do chatbot aos seus efeitos no sistema. No Ask Lumen, cada conversa recebe um identificador de requisição que aparece no log da aplicação, no log das chamadas ao modelo e no log da ferramenta de agendamento. Com esse identificador, Rina consegue seguir uma mensagem de paciente desde o chat até qualquer consulta que ela tenha alterado. Sem ele, casar entradas apenas pelo horário é lento e propenso a erros quando muitas conversas acontecem ao mesmo tempo.
+
+### 11.4b Correções e configuração
+
+Sistemas operacionais e software de serviço de IA recebem atualizações de segurança; aplique-as segundo um calendário e acompanhe as versões. Configurações padrão muitas vezes ativam recursos de depuração, páginas de erro detalhadas e contas de exemplo que devem ser desativados em produção. Os despejos de memória do DocSort, no exemplo resolvido, são um caso desse tipo de padrão: úteis no desenvolvimento, nocivos em produção. A LCH agora mantém, para cada serviço de IA, uma lista de verificação de configuração revisada antes de cada versão, com as opções de depuração, páginas de erro e contas de exemplo que precisam estar desligadas. As correções seguem um calendário mensal, e as urgentes são aplicadas antes quando uma vulnerabilidade grave é anunciada.
+
+### 11.5 Exemplo resolvido (caso sintético da LCH)
+
+O worker de OCR do DocSort rodava com uma conta de administrador "por conveniência". Um arquivo digitalizado malformado o derrubou, e o despejo de memória foi gravado numa pasta compartilhada legível por todos os funcionários, expondo o texto das cartas. A correção de Rina: uma conta dedicada sem privilégios, despejos de memória desativados em produção, o worker num contêiner com acesso somente leitura à pasta de entrada e alertas para quedas. Cada correção responde a uma causa: a conta sem privilégios limita o que um worker comprometido pode fazer, os despejos desativados impedem que texto chegue a uma pasta compartilhada, a entrada somente leitura impede o worker de alterar cartas, e os alertas tornam as quedas visíveis.
+
+### 11.6 Erros e limites
+
+Três erros são comuns: serviços rodando como administrador; ferramentas de IA que executam código com acesso à rede; e logs que não podem ser ligados às requisições. Rodar como administrador transforma qualquer bug em controle total da máquina, como quase aconteceu no caso do DocSort. Ferramentas de IA que executam código com acesso à rede podem ser conduzidas por injeção de prompt a enviar dados para fora. Logs que não podem ser ligados às requisições tornam impossível dizer qual conversa causou qual efeito, e as investigações empacam. Cada um desses pontos é uma escolha de configuração, barata de acertar desde o início.
+
+### Exercícios
+
+- **EX031 — Menor privilégio.** Liste três permissões de que o worker do DocSort precisa e três que ele não deveria ter. Rubrica: 3 = os dois lados sensatos; 2 = um lado fraco; 1 = vago; 0 = nenhuma.
+- **EX032 — Sandbox.** Especifique uma sandbox para a ferramenta "analisar planilha" de um chatbot. Rubrica: 3 = sem rede, limites de CPU/memória/tempo, sistema de arquivos temporário, usuário sem privilégios; 2 = três; 1 = um ou dois; 0 = nenhum.
+- **EX033 — Despejo de memória.** Por que o despejo de memória era um problema de confidencialidade? Rubrica: 3 = continha texto sensível gravado num local amplamente legível; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+O sistema operacional impõe quem pode fazer o quê. Menor privilégio, isolamento, limites de recursos e logs rastreáveis tornam os serviços de IA mais seguros quando algo dá errado.
+
+### Continue estudando — capítulo 11 de 40
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar probabilidade condicional e a regra de Bayes; (2) explicar taxas de base e a precisão de alertas; (3) calcular e interpretar intervalos de confiança para taxas; e (4) comparar dois sistemas de forma justa.
+
+### 12.1 Probabilidade condicional
+
+P(A | B) é a probabilidade de A dado B. A taxa de verdadeiros positivos de um detector é P(alerta | ataque); o que os operadores precisam é P(ataque | alerta), que a regra de Bayes fornece a partir das taxas de verdadeiros e falsos positivos e da taxa de base dos ataques. As duas são facilmente confundidas, e os fornecedores costumam citar a primeira. Um detector que pega 95% dos ataques ainda produz sobretudo alarmes falsos se os ataques forem raros, porque a maioria limpa gera muitos falsos positivos. A regra de Bayes torna o cálculo explícito, e o Lab B mostra quão fortemente a resposta depende da taxa de base.
+
+### 12.2 Taxas de base
+
+Quando os ataques são raros, mesmo bons detectores produzem sobretudo alarmes falsos. O laboratório mostra um detector com TPR de 95% e FPR de 5% que alcança precisão abaixo de 2% com uma taxa de base de 1 em 1.000.
+
+```python
+"""Lab B: base rates and alarm precision (Bayes' rule).
+A detector for malicious prompts with given true- and false-positive rates
+is applied to traffic with different shares of malicious prompts."""
+for tpr, fpr in ((0.95, 0.05), (0.95, 0.01), (0.80, 0.001)):
+    for prev in (0.10, 0.01, 0.001):
+        tp = tpr * prev; fp = fpr * (1 - prev)
+        prec = tp / (tp + fp)
+        per_10k = round(10000 * (tp + fp))
+        print(f"tpr={tpr:.2f} fpr={fpr:.3f} prevalence={prev:.3f} precision={prec:.3f} alerts_per_10k={per_10k}")
+```
+
+Saída esperada:
+
+```text
+tpr=0.95 fpr=0.050 prevalence=0.100 precision=0.679 alerts_per_10k=1400
+tpr=0.95 fpr=0.050 prevalence=0.010 precision=0.161 alerts_per_10k=590
+tpr=0.95 fpr=0.050 prevalence=0.001 precision=0.019 alerts_per_10k=509
+tpr=0.95 fpr=0.010 prevalence=0.100 precision=0.913 alerts_per_10k=1040
+tpr=0.95 fpr=0.010 prevalence=0.010 precision=0.490 alerts_per_10k=194
+tpr=0.95 fpr=0.010 prevalence=0.001 precision=0.087 alerts_per_10k=109
+tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
+tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
+tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
+```
+
+Lendo o Lab B ao longo das linhas: com uma taxa de base de um em mil, baixar a taxa de falsos positivos de 5% para 1% eleva a precisão de 0.019 para 0.087, e o detector de 0.001 chega a 0.445. Os alertas por 10.000 conversas mostram a carga de trabalho: 509 para o primeiro detector contra 18 para o último. Revisores conseguem lidar com dezoito alertas; quinhentos seriam ignorados.
+
+### 12.3 Intervalos de confiança
+
+Uma taxa observada numa amostra é incerta. O intervalo de Wilson funciona bem com amostras pequenas e taxas extremas. Três sucessos em vinte são compatíveis com taxas reais de cerca de 5% a 36%.
+
+```python
+"""Lab S: reporting attack-success rates honestly: Wilson intervals,
+seed variation and a paired bootstrap. Synthetic trial outcomes only."""
+import math, random
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n
+    c = (p + z*z/(2*n))/d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c - h, c + h
+for k, n in ((3, 20), (30, 200), (300, 2000)):
+    lo, hi = wilson(k, n); print(f"successes={k}/{n} rate={k/n:.3f} wilson95=[{lo:.3f}, {hi:.3f}]")
+# five seeds of a synthetic defence evaluation: per-seed attack success rate
+rates = []
+for seed in range(5):
+    r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
+m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
+print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
+# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+r = random.Random(42)
+base = [r.random() < 0.30 for _ in range(300)]
+defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
+diffs = []
+for _ in range(2000):
+    idx = [r.randrange(300) for _ in range(300)]
+    diffs.append(sum(base[i] for i in idx)/300 - sum(defn[i] for i in idx)/300)
+diffs.sort()
+print(f"baseline_asr={sum(base)/300:.3f} defended_asr={sum(defn)/300:.3f} "
+      f"reduction_ci95=[{diffs[50]:.3f}, {diffs[1949]:.3f}]")
+```
+
+Saída esperada:
+
+```text
+successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
+successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
+successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
+per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
+baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
+```
+
+O laboratório mostra como o intervalo se estreita com o tamanho da amostra: a mesma taxa de 15% dá um intervalo de cerca de 11% a 21% com 200 tentativas e de 0.135 a 0.166 com 2.000. Uma demonstração com 20 prompts não consegue distinguir uma defesa fraca de uma forte. A linha por semente acrescenta outra fonte de dispersão: cinco execuções da mesma avaliação variam de 0.105 a 0.145.
+
+### 12.4 Comparação de sistemas
+
+Para comparar duas defesas, teste ambas nos mesmos itens e examine a diferença pareada com um intervalo bootstrap. Se o intervalo incluir zero, você não pode afirmar que uma é melhor. Testar nos mesmos itens remove a variação causada por alguns prompts serem mais difíceis que outros. No Lab S, a defesa reduz o sucesso dos ataques de 0.350 para 0.190, e o intervalo bootstrap da redução vai de 0.120 a 0.203. Como ele exclui o zero, a melhora é real para este conjunto de teste; se ela se mantém em outros prompts é outra questão.
+
+### 12.4b Variação e tamanho da amostra
+
+Os resultados também variam com as sementes aleatórias, as divisões dos dados e a redação dos prompts. Execute várias sementes e relate sua dispersão, como mostra a linha por semente do laboratório. Para planejar quantos casos de teste são necessários para uma taxa perto de p com semiamplitude h do intervalo a 95% de confiança, use n ≈ 1.96² × p(1 − p) / h². Para p = 0.1 e h = 0.02, isso dá cerca de 864 casos — muito mais do que a maioria das demonstrações rápidas usa, e é por isso que muitas "taxas de sucesso" publicadas são menos certas do que parecem. A fórmula também mostra o custo da precisão: reduzir h à metade, para 0.01, exige quatro vezes mais casos, cerca de 3.457.
+
+### 12.5 Exemplo resolvido (caso sintético da LCH)
+
+Um fornecedor ofereceu um "detector de ataques por prompt" com 98% de acurácia. Rina pediu a TPR e a FPR: 90% e 2%. Com uma estimativa de 1 conversa maliciosa a cada 2.000, a precisão seria de cerca de 2% — a maioria dos alertas, falsos. A LCH usou o detector apenas para sinalizar conversas para revisão semanal, e não para bloquear pacientes. O número de 98% de acurácia quase não significava nada aqui, já que um detector que nunca disparasse marcaria cerca de 99.95% no mesmo tráfego. Usá-lo para revisão semanal, em vez de bloqueio, significa que os alertas falsos custam tempo de revisores, e não o acesso dos pacientes.
+
+### 12.6 Erros e limites
+
+Três erros são comuns: acurácia sem taxas de base; números isolados sem intervalos; e comparar sistemas em conjuntos de teste diferentes. A acurácia esconde o compromisso entre ataques perdidos e alarmes falsos e pode parecer alta para um detector inútil quando os ataques são raros. Um número isolado sem intervalo convida ao excesso de confiança, sobretudo em testes pequenos, como três sucessos em vinte. Comparar sistemas em conjuntos de teste diferentes confunde diferenças entre os sistemas com diferenças entre os prompts. O Lab S mostra a correção de cada um, usando os mesmos prompts sintéticos.
+
+### Exercícios
+
+- **EX034 — Precisão.** Calcule a precisão para TPR 0.90, FPR 0.02 e taxa de base 0.0005. Rubrica: 3 = 0.00045/(0.00045 + 0.01999) ≈ 0.022; 2 = deslize; 1 = método; 0 = nenhum.
+- **EX035 — Leitura do laboratório.** Qual é o intervalo de Wilson para 300/2000 no Lab S? Rubrica: 3 = [0.135, 0.166]; 2 = aproximado; 1 = só o ponto; 0 = errado.
+- **EX036 — Comparação pareada.** Por que testar duas defesas nos mesmos itens? Rubrica: 3 = remove a variação de dificuldade dos itens; inferência pareada válida; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+A probabilidade diz o que um alerta significa e quão seguro você pode estar. Taxas de base, intervalos e comparações pareadas são o mínimo para afirmações honestas em segurança de IA.
+
+### Continue estudando — capítulo 12 de 40
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar autenticação, autorização e registro de responsabilidade (accounting); (2) projetar acesso baseado em papéis e em atributos para aplicações de IA; (3) aplicar a delegação para que agentes de IA ajam com os direitos limitados do usuário; e (4) evitar problemas de confused deputy.
+
+### 13.1 Autenticação, autorização, accounting
+
+A autenticação prova quem alguém é; a autorização decide o que a pessoa pode fazer; o accounting registra o que ela fez. Uma autenticação forte (multifator) protege as contas; uma autorização precisa limita o dano; o accounting possibilita a investigação. No Ask Lumen, a autenticação é o login do paciente no portal da clínica; a autorização é a regra de que uma marcação só pode ser para esse paciente ou para alguém de quem ele é cuidador cadastrado; o accounting é o log que liga cada marcação à conversa e à sessão que a produziram. Uma fraqueza em qualquer um deles enfraquece os outros: logs perfeitos não ajudam se a ferramenta de agendamento nunca verificou quem estava pedindo.
+
+### 13.2 Acesso baseado em papéis e em atributos
+
+Papéis (paciente, recepcionista, clínico) agrupam permissões. Atributos (clínica, relação com o paciente, horário) as refinam. A ferramenta de agendamento do Ask Lumen deve verificar "quem pede é o paciente ou seu cuidador cadastrado, para esta clínica?", e não "o serviço do chatbot tem permissão para marcar?". A segunda pergunta é a errada porque o serviço do chatbot sempre tem permissão; fazê-la transforma os direitos amplos do serviço em direitos de todo mundo. Atributos como a clínica e a relação de cuidador permitem que a regra acompanhe situações reais sem criar um papel novo para cada uma.
+
+### 13.3 Delegação para agentes de IA
+
+Quando um agente de IA age, ele deve usar um token delegado pelo usuário, com escopo e validade limitados, para que nunca possa fazer mais do que esse usuário. Uma conta de serviço poderosa transforma qualquer manipulação do modelo numa escalada de privilégios — o problema do *confused deputy*, em que um componente confiável é enganado e usa mal sua autoridade. Um token delegado carrega a identidade do paciente, então o sistema de agendamento pode aplicar diretamente os direitos do paciente. Sua validade curta limita o dano se ele vazar por um log ou por uma chamada de ferramenta manipulada.
+
+### 13.4 Accounting das ações de IA
+
+Registre qual usuário, qual conversa, qual proposta do modelo e qual aprovação levaram a cada ação. Sem essa cadeia, os incidentes não podem ser explicados. A cadeia de uma marcação poderia ser: sessão do paciente 7f2, conversa c-118, proposta do modelo às 10:14:03 para marcar na clínica C3 numa certa data, verificação de política aprovada, paciente confirmou às 10:14:20, identificador da marcação gravado. Se um paciente contestar uma marcação mais tarde, cada passo pode ser mostrado. Se o modelo propôs algo que a política bloqueou, isso também fica registrado, o que ajuda a detectar tentativas de manipulação.
+
+### 13.5 Exemplo resolvido (caso sintético da LCH)
+
+O Ask Lumen marcava consultas por meio de uma conta de serviço autorizada a marcar para qualquer paciente. Rina mostrou, no ambiente de teste, que uma mensagem elaborada com o identificador de outro paciente sintético levava o modelo a propor uma marcação para esse paciente, que a conta de serviço executava. A correção usou um token delegado por sessão, vinculado ao paciente conectado (e aos cuidadores cadastrados), e uma verificação de política que compara o paciente da marcação com o titular do token. O teste mostra o confused deputy diretamente: o modelo não fez nada de errado segundo sua própria lógica, e a conta de serviço fez o que tinha permissão para fazer.
+
+### 13.6 Erros e limites
+
+Três erros são comuns: ferramentas de IA rodando sob contas de serviço amplas; autorização decidida pelo modelo; e falta, nos logs, de ligação entre conversas e ações. Contas de serviço amplas fazem de toda injeção de prompt uma possível escalada de privilégios, como mostrou o exemplo resolvido. Deixar o modelo decidir a autorização coloca a regra onde um texto pode discutir com ela. A falta de ligação entre conversas e ações deixa os investigadores sem conseguir dizer qual mensagem causou qual marcação. Tokens delegados, uma verificação de política externa e identificadores de requisição tratam os três, um a um.
+
+### 13.6b Revisão das permissões de agentes
+
+A cada trimestre, a LCH lista o que a ferramenta de agendamento do Ask Lumen realmente pode fazer e compara com aquilo de que o chatbot precisa. Uma revisão descobriu que a conta da ferramenta também podia editar as agendas dos clínicos; esse direito foi removido, e o registro da revisão anota quem aprovou as permissões restantes. As permissões tendem a crescer à medida que funcionalidades são acrescentadas, e ninguém as remove a menos que uma revisão o peça. O direito de editar agendas havia sido acrescentado para um piloto já encerrado, e ninguém tinha notado que continuava concedido.
+
+### Exercícios
+
+- **EX037 — AAA.** Defina autenticação, autorização e accounting com um exemplo do Ask Lumen para cada. Rubrica: 3 = três corretas com exemplos; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX038 — Confused deputy.** Explique o problema do confused deputy usando o achado de Rina. Rubrica: 3 = conta de serviço confiável usada indevidamente por meio de um modelo manipulado; 2 = parcial; 1 = vago; 0 = errado.
+- **EX039 — Política.** Escreva a verificação de política para marcações. Rubrica: 3 = booking.patient ∈ {token.subject} ∪ carers(token.subject) e clínica permitida; 2 = parcial; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Os controles de identidade decidem o que um agente de IA pode fazer e em nome de quem. Tokens delegados com escopo e verificações de política externas impedem que o modelo se torne um confused deputy.
+
+### Continue estudando — capítulo 13 de 40
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar os princípios de proteção de dados e o conceito de dado pessoal; (2) descrever ataques de privacidade contra o aprendizado de máquina (inferência de pertencimento, extração de dados, inferência de atributos); (3) aplicar técnicas de reforço da privacidade; e (4) avaliar os riscos de privacidade de um sistema de IA.
+
+### 14.1 Princípios
+
+Leis de proteção de dados como o RGPD da UE (no Brasil, a LGPD, Lei nº 13.709/2018) exigem base legal, limitação da finalidade, minimização dos dados, exatidão, limitação da conservação, segurança e responsabilização. Dados de saúde são uma categoria especial, com regras mais rígidas. No Ask Lumen, limitação da finalidade significa que os logs de conversas guardados para revisão de qualidade não são reaproveitados para treinar modelos de marketing; minimização significa que o prompt inclui apenas o necessário para responder; limitação da conservação significa que os logs são apagados ao fim do prazo de retenção. Como dados de saúde são uma categoria especial, a base legal e as salvaguardas da LCH ficam documentadas em sua avaliação de impacto antes de qualquer novo uso.
+
+### 14.2 Ataques de privacidade contra o aprendizado de máquina
+
+A *inferência de pertencimento* decide se um registro estava nos dados de treinamento (Shokri et al., arXiv:1610.05820). A *extração de dados de treinamento* recupera texto memorizado por modelos generativos (Carlini et al., arXiv:2012.07805). A *inferência de atributos* adivinha atributos sensíveis a partir das saídas do modelo. O sobreajuste aumenta esses riscos; o laboratório mostra o pertencimento vazando de um modelo que memoriza e diminuindo à medida que ele generaliza.
+
+```python
+"""Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
+that returns a confidence score. Synthetic records only; teaching model."""
+import random, math
+rng = random.Random(5)
+def rec(): 
+    y = rng.random() < 0.5
+    return [rng.gauss(0.6 if y else -0.6, 1.0) for _ in range(4)], int(y)
+members = [rec() for _ in range(150)]; nonmembers = [rec() for _ in range(150)]
+def confidence(x, y, k):
+    # k-NN vote share for the true label, computed over the training set
+    d = sorted((sum((a-b)**2 for a, b in zip(x, m)), my) for m, my in members)
+    return sum(1 for _, my in d[:k] if my == y)/k
+def auc(pos, neg):
+    s = sum((p > n) + 0.5*(p == n) for p in pos for n in neg)
+    return s/(len(pos)*len(neg))
+for k in (1, 5, 25):
+    pos = [confidence(x, y, k) for x, y in members]
+    neg = [confidence(x, y, k) for x, y in nonmembers]
+    best = max(sum(p >= t for p in pos)/len(pos) - sum(n >= t for n in neg)/len(neg)
+               for t in sorted(set(pos + neg)))
+    print(f"k={k:2d} attack_auc={auc(pos, neg):.3f} best_advantage={best:.3f}")
+```
+
+Saída esperada:
+
+```text
+k= 1 attack_auc=0.600 best_advantage=0.200
+k= 5 attack_auc=0.521 best_advantage=0.073
+k=25 attack_auc=0.520 best_advantage=0.060
+```
+
+O Lab M torna o efeito mensurável: com k igual a 1, o ataque atinge uma AUC de 0.600, enquanto com k igual a 25 ela cai para 0.520, perto do acaso. Calcular a média sobre mais vizinhos, como faz um modelo que generaliza, reduz o que a saída revela sobre pacientes individuais.
+
+### 14.3 Técnicas de reforço da privacidade
+
+Minimize e pseudonimize os dados; elimine registros de treinamento duplicados; limite o detalhe das saídas (rótulos em vez de confianças); aplique privacidade diferencial durante o treinamento (Abadi et al., arXiv:1607.00133); controle quem pode consultar os modelos; e nunca coloque dados pessoais em prompts sem necessidade. Cada técnica ataca uma parte do risco. A eliminação de duplicatas remove registros repetidos, que os modelos tendem a memorizar. Devolver rótulos em vez de confianças remove o sinal que o ataque do Lab M usa. A privacidade diferencial limita quanto um único registro pode afetar o modelo treinado, com algum custo em acurácia. Os controles de consulta limitam quem pode sondar o modelo. A mudança da LCH no NoShow usou quatro dessas técnicas juntas.
+
+### 14.4 Avaliação de riscos de privacidade
+
+Pergunte: quais dados pessoais entram no treinamento, na recuperação, nos prompts e nos logs? Quem pode consultar o modelo, e o que as saídas revelam? O que acontece se os logs vazarem? Uma avaliação de impacto sobre a proteção de dados documenta as respostas e os controles. No NoShow, as respostas mostraram que dados pessoais entravam no treinamento, que qualquer funcionário podia consultar qualquer identificador de paciente e que as saídas davam probabilidades precisas. Cada achado levou a um controle: consultas restritas, saídas por categoria e atributos minimizados. A avaliação é atualizada quando o sistema muda, e não arquivada uma vez e esquecida.
+
+### 14.4b Prompts e logs
+
+Dados pessoais também passam por prompts e logs. Se funcionários colam dados de pacientes num assistente de IA, esses dados podem ser armazenados pelo provedor ou aparecer em logs. Configure a retenção e a recusa ao uso para treinamento quando o provedor oferecer essas opções, oculte identificadores antes do envio sempre que possível e treine os funcionários sobre o que pode ser compartilhado. A ocultação pode ser automatizada para identificadores estruturados, como números de pacientes, mas o texto livre exige cuidado: um paciente pode digitar um diagnóstico ou o nome de um parente em qualquer ponto de uma mensagem.
+
+### 14.5 Exemplo resolvido (caso sintético da LCH)
+
+A API do NoShow devolvia uma probabilidade precisa para qualquer identificador de paciente. Rina mostrou, com dados sintéticos, que a confiança diferia entre pacientes do conjunto de treinamento e pacientes novos, o que permitia a inferência de pertencimento ("esta pessoa foi atendida na LCH no ano passado?"). A LCH mudou a API para devolver apenas uma categoria de lembrete a funcionários autorizados e retreinou o modelo com atributos minimizados e sem duplicatas. Devolver uma categoria em vez de uma probabilidade removeu a maior parte do sinal, e limitar o acesso a funcionários autorizados reduziu quem podia sequer fazer a pergunta.
+
+### 14.6 Erros e limites
+
+Três erros são comuns: tratar modelos como se não contivessem dados pessoais; saídas de confiança detalhadas para públicos amplos; e logs cheios de dados pessoais sem limite de retenção. Modelos treinados com registros de pacientes carregam informações sobre esses registros, como mostra a inferência de pertencimento. Escores de confiança detalhados para públicos amplos dão aos atacantes o sinal de que precisam. Logs cheios de dados pessoais sem limite de retenção tornam-se um depósito de informações sensíveis que cresce a cada dia. As mudanças da LCH no NoShow e suas regras de retenção de logs tratam os três, e a avaliação de impacto registra por quê.
+
+### Exercícios
+
+- **EX040 — Leitura do laboratório.** Que AUC e que vantagem o laboratório informa com k = 1, e o que isso significa? Rubrica: 3 = 0.600 e 0.200; a memorização vaza o pertencimento; 2 = os números; 1 = vago; 0 = errado.
+- **EX041 — Pertencimento sensível.** Por que o pertencimento aos dados de treinamento do NoShow é sensível? Rubrica: 3 = revela que a pessoa foi paciente (informação de saúde); 2 = parcial; 1 = vago; 0 = errado.
+- **EX042 — Técnicas.** Liste quatro técnicas de reforço da privacidade para o NoShow. Rubrica: 3 = quatro pertinentes; 2 = três; 1 = uma ou duas; 0 = nenhuma.
+
+### Síntese
+
+Modelos podem revelar seus dados de treinamento. Princípios de proteção de dados, saídas atentas à privacidade e técnicas como a minimização e a privacidade diferencial reduzem o risco.
+
+### Continue estudando — capítulo 14 de 40
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher métricas que correspondam às perguntas de segurança; (2) projetar conjuntos de teste que evitem vazamento; (3) coletar e preservar evidências corretamente; e (4) redigir resultados de medição com condições e incerteza.
+
+### 15.1 Métricas que correspondem às perguntas
+
+"O chatbot vaza dados de outros pacientes?" exige uma taxa de vazamento numa suíte de testes de tentativas. "O filtro pega injeções?" exige a TPR com uma FPR fixa. "A defesa prejudica a utilidade?" exige o sucesso das tarefas em pedidos normais. Use várias métricas; um único número raramente responde a uma pergunta de segurança. Fixar a taxa de falsos positivos antes de comparar filtros garante que um filtro não pareça melhor simplesmente por sinalizar mais conversas. O tempo dos funcionários gasto revisando alarmes falsos é um custo real para as clínicas.
+
+### 15.2 Conjuntos de teste e vazamento
+
+Mantenha os dados de teste separados de tudo o que foi usado para construir ou ajustar o sistema. Quase-duplicatas entre conjuntos inflam os resultados (Kapoor e Narayanan, arXiv:2207.07048). Para ataques por prompt, construa os casos de teste a partir de modelos que você não usou ao desenvolver as defesas. Se Rina ajustasse uma defesa com os mesmos modelos de injeção com que depois a testasse, sua taxa de sucesso mediria a memorização desses modelos, e não a força geral da defesa. Ela mantém um conjunto separado de modelos de ataque escritos por um colega e só o abre na avaliação final. Procurar quase-duplicatas entre os conjuntos, como o mesmo ataque com um nome trocado, faz parte de construí-los.
+
+### 15.3 Tratamento de evidências
+
+Registre entradas, saídas, versões (modelo, prompt, código) e carimbos de tempo. Armazene as evidências com hashes de integridade e controle de acesso. No trabalho com incidentes, preserve os logs originais antes da análise. As versões importam porque o mesmo prompt pode dar resultados diferentes depois de uma atualização do modelo pelo provedor. Rina registra o identificador de modelo devolvido pela API, o hash do prompt de sistema e o commit do código de cada execução de teste. Calcular o hash das transcrições permite que ela mostre depois que elas não foram editadas. Os logs originais são copiados e têm seu hash calculado antes de qualquer análise, e a análise é feita na cópia.
+
+### 15.4 Relato
+
+Declare a pergunta, o método, a amostra, os resultados com intervalos, as condições e as limitações. Arp et al. (arXiv:2010.09470) listam armadilhas como viés de amostragem e linhas de base inadequadas; confira as suas contra essa lista. O relatório de vazamento de Rina segue esta ordem: pergunta, 400 tentativas sintéticas, resultados de duas versões com intervalos de Wilson, condições como prompts apenas em inglês, e limitações. Ao conferir com a lista de Arp et al., ela encontrou uma armadilha no rascunho: havia comparado a versão 2 com a versão 1 testada meses antes, com outra versão do modelo, e por isso repetiu o teste na mesma versão.
+
+### 15.4b Linhas de base e comparações
+
+Um número significa pouco sem uma linha de base. Relate o resultado do sistema sem defesa ao lado do sistema defendido, e uma alternativa simples e forte (por exemplo, uma lista de ferramentas permitidas) ao lado da sua defesa elaborada. Se a alternativa simples obtiver a maior parte do benefício, diga isso: é um conhecimento útil para os profissionais e protege você contra afirmar demais. No Ask Lumen, uma linha de base simples e forte é remover por completo a ferramenta de cancelamento, que então nenhuma injeção consegue usar indevidamente. Qualquer defesa proposta deve ser comparada com essa opção.
+
+### 15.5 Exemplo resolvido (caso sintético da LCH)
+
+Rina mediu o vazamento do Ask Lumen com 400 tentativas sintéticas de obter a consulta de outro paciente. A versão 1 vazou em 14 casos (3.5%, intervalo de Wilson de 95% de 2.1–5.8%). Depois da correção com token delegado, a versão 2 vazou em 0 de 400 (limite superior de cerca de 0.95%). Ela armazenou as transcrições com hashes e anotou que as tentativas foram apenas em inglês. O intervalo importa: 14 de 400 é compatível com uma taxa real entre cerca de 2.1% e 5.8%, então o efeito da correção é claro mesmo levando o acaso em conta. Zero vazamentos em 400 não significa risco zero; o limite superior de cerca de 0.95% é o que o teste consegue sustentar. Anotar a limitação ao inglês diz aos leitores que outros idiomas continuam sem teste.
+
+### 15.6 Erros e limites
+
+Três erros são comuns: ajustar no conjunto de teste; relatar sem versões; e ignorar os limites de idioma ou formato de uma suíte de testes. Ajustar no conjunto de teste infla os resultados sem melhorar o sistema. Relatar sem versões torna os resultados impossíveis de reproduzir depois que o modelo ou o prompt mudam. Ignorar limites de idioma ou de formato leva os leitores a supor uma cobertura que nunca foi testada, por exemplo ataques escritos em outro idioma ou escondidos num formato de documento que a suíte de testes não incluía, como um PDF digitalizado.
+
+### Exercícios
+
+- **EX043 — Escolha de métricas.** Escolha métricas para avaliar o DocSort contra ataques de encaminhamento errado. Rubrica: 3 = taxa de sucesso de ataques com cartas elaboradas, acurácia do encaminhamento normal, intervalos; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX044 — Zero falhas.** Que limite superior se aplica a 0/400, e por que não afirmar 0%? Rubrica: 3 = ≈ 3/400 ≈ 0.75% (regra de três; Wilson ≈ 0.95%); amostra finita; 2 = parcial; 1 = afirma 0%; 0 = nenhum.
+- **EX045 — Registro de evidências.** Liste cinco itens a registrar por caso de teste. Rubrica: 3 = entrada, saída, versões de modelo/prompt/código, carimbo de tempo, hash; 2 = quatro; 1 = dois; 0 = nenhum.
+
+### Síntese
+
+Uma boa medição faz a pergunta certa, usa dados de teste limpos, preserva as evidências e relata os resultados com condições e incerteza.
+
+### Continue estudando — capítulo 15 de 40
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar menor privilégio, defesa em profundidade, mediação completa e padrões à prova de falhas a sistemas de IA; (2) traçar fronteiras de confiança em aplicações com LLM; (3) posicionar um ponto de aplicação de políticas fora do modelo; e (4) comparar opções de arquitetura pelo risco residual.
+
+### 16.1 Princípios aplicados à IA
+
+*Menor privilégio*: dê ao modelo e às suas ferramentas apenas as permissões necessárias. *Defesa em profundidade*: combine rotulagem das entradas, validação das saídas, verificações de política, monitoramento e revisão humana. *Mediação completa*: verifique toda ação, todas as vezes. *Padrões à prova de falhas*: negue na dúvida. No Ask Lumen, menor privilégio é o token delegado; defesa em profundidade combina a rotulagem do texto recuperado, a análise das saídas, a verificação de política e o registro em log; mediação completa significa que toda marcação passa pela verificação de política, inclusive as propostas no fim de uma conversa longa; padrões à prova de falhas significam que uma proposta impossível de analisar ou duvidosa é recusada, e o paciente é informado de como marcar por telefone.
+
+### 16.2 Fronteiras de confiança em aplicações com LLM
+
+Um modelo de linguagem recebe instruções confiáveis (dos desenvolvedores), entradas parcialmente confiáveis (dos usuários) e conteúdo não confiável (documentos recuperados, páginas web, resultados de ferramentas) numa única sequência de tokens. Ele não consegue distingui-los de forma confiável, e é por isso que a injeção indireta de prompt funciona (Greshake et al., arXiv:2302.12173). A arquitetura precisa, portanto, impor as consequências fora do modelo. No Ask Lumen, o prompt de sistema é confiável, a mensagem do paciente é parcialmente confiável, e os documentos recuperados das clínicas, especialmente os enviados por parceiros, não são confiáveis. Rotulá-los ajuda o modelo, mas não garante que ele ignore instruções dentro de um documento, então são as próprias verificações da ferramenta de agendamento que limitam o resultado.
+
+### 16.3 O ponto de aplicação de políticas
+
+O modelo *propõe* ações; um componente separado, pequeno e testado *decide* se elas serão executadas, com base na identidade do usuário, na ação, em seus parâmetros e em se conteúdo não confiável a influenciou. Ações de alto impacto exigem confirmação humana. É aqui que se trata o OWASP LLM06 (*agência excessiva*). Manter esse componente pequeno é deliberado: algumas centenas de linhas de código podem ser revisadas e testadas a fundo, ao contrário do modelo. No Ask Lumen, o ponto de política compara o paciente da marcação com o titular do token, verifica as regras de clínica e data e exige confirmação para cancelamentos. Toda decisão, permitida ou recusada, é registrada com o identificador da requisição.
+
+### 16.4 Comparação de opções
+
+As opções para um chatbot de agendamento vão de nenhuma ferramenta (apenas respostas) até o uso livre de ferramentas. Entre elas: ferramentas com verificações de política e confirmações. Compare por risco residual, utilidade e custo, e registre a decisão com seu raciocínio. Risco residual é o que resta depois dos controles; utilidade é quantos pacientes conseguem concluir sua tarefa; custo inclui construir e operar cada opção. Uma tabela com essas três colunas torna o compromisso visível. Registrar o raciocínio permite que uma equipe posterior entenda por que a escolha foi feita e a reveja se as condições mudarem, como no acréscimo de uma nova ferramenta.
+
+### 16.5 Exemplo resolvido (caso sintético da LCH)
+
+A nota de arquitetura de Rina para o Ask Lumen v2 listou três opções: (a) o modelo marca diretamente; (b) o modelo propõe, a política verifica a identidade do paciente e a clínica, e o paciente confirma na interface; (c) o chatbot dá instruções e os pacientes marcam sozinhos. A LCH escolheu (b): a confirmação acrescenta um clique, mas um texto injetado já não consegue marcar nem cancelar sem uma ação do paciente. A opção (a) foi rejeitada porque um único documento injetado poderia agir; a opção (c), porque eliminava a maior parte do valor do chatbot. O estudo do capítulo de métodos de pesquisa mediu depois o custo do clique extra de (b).
+
+### 16.6 Erros e limites
+
+Três erros são comuns: regras de segurança escritas apenas no prompt de sistema; ferramentas com permissões mais amplas que as dos usuários; e nenhum registro de por que uma arquitetura foi escolhida. Regras escritas apenas no prompt de sistema podem ser anuladas por um texto persuasivo, já que o modelo trata ambos como linguagem. Ferramentas com permissões mais amplas que as dos usuários deixam um modelo manipulado ir além do que qualquer usuário poderia fazer. Sem um registro de por que uma arquitetura foi escolhida, mudanças posteriores podem remover um controle sem perceber contra o que ele protegia, como a etapa de confirmação que impede marcações injetadas.
+
+### Exercícios
+
+- **EX046 — Princípios.** Aplique três princípios ao DocSort. Rubrica: 3 = três aplicações concretas; 2 = duas; 1 = só os nomes; 0 = nenhuma.
+- **EX047 — Fronteira.** Por que o modelo não consegue impor sozinho a fronteira de confiança? Rubrica: 3 = fluxo único de tokens, seguimento estatístico de instruções; 2 = parcial; 1 = vago; 0 = errado.
+- **EX048 — Escolha de opção.** Defenda a opção (b) em vez da (a) em duas frases. Rubrica: 3 = impacto limitado da injeção com atrito modesto; 2 = parcial; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+A arquitetura de segurança tira a imposição de regras de dentro do modelo: fronteiras de confiança, um ponto de política externo e a confirmação humana limitam o que um modelo manipulado consegue fazer.
+
+### Continue estudando — capítulo 16 de 40
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar hashing, criptografia simétrica e de chave pública e assinaturas digitais; (2) aplicá-los para proteger artefatos e dados de IA; (3) explicar o que a criptografia não pode fazer pela segurança de IA; e (4) verificar a integridade de modelos com manifestos assinados.
+
+### 17.1 Primitivas básicas
+
+*Funções de hash* (como a SHA-256) mapeiam dados para um resumo curto; mudar um bit muda o resumo. A *criptografia simétrica* (como o AES) protege dados com uma chave compartilhada. A *criptografia de chave pública* permite que qualquer pessoa cifre para o detentor de uma chave, ou verifique assinaturas dele. *Assinaturas digitais* provam quem criou os dados e que eles não foram alterados. Nos sistemas da LCH, hashes verificam os arquivos de modelo, a criptografia simétrica protege os logs de conversas armazenados, a criptografia de chave pública protege o TLS até o provedor do modelo, e assinaturas provam que as versões do DocSort vêm do fornecedor. Cada primitiva responde a uma pergunta diferente, e usar a errada deixa uma lacuna: um hash sozinho mostra que um arquivo não mudou, mas não quem o produziu.
+
+### 17.2 Proteção de artefatos de IA
+
+Cifre dados de treinamento e pesos de modelos em repouso; use TLS em trânsito. Publique os resumos SHA-256 dos arquivos de modelo num manifesto e assine o manifesto, para que os destinatários possam verificar a integridade e a origem antes de carregar. Isso trata riscos da cadeia de suprimentos (OWASP LLM03), como modelos adulterados ou com backdoor (Gu et al., arXiv:1708.06733).
+
+```python
+"""Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
+Creates synthetic 'artefact' bytes, records a manifest, then detects a
+one-byte tampering and a swapped file. No real models are involved."""
+import hashlib, json
+files = {"model.bin": bytes(range(256)) * 40, "tokenizer.json": b'{"vocab": ["a", "b"]}',
+         "config.yaml": b"layers: 4\nheads: 8\n"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+print(json.dumps({k: v[:16] for k, v in manifest.items()}, indent=1))
+received = dict(files)
+tampered = bytearray(received["model.bin"]); tampered[5000] ^= 1
+received["model.bin"] = bytes(tampered)
+received["config.yaml"] = b"layers: 4\nheads: 8\ntrust_remote_code: true\n"
+for n, b in sorted(received.items()):
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:15s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Saída esperada:
+
+```text
+{
+ "model.bin": "e96760a87768717b",
+ "tokenizer.json": "f63d2ddabc61f2d9",
+ "config.yaml": "e5bbb570ca0fcb87"
+}
+config.yaml     MISMATCH
+model.bin       MISMATCH
+tokenizer.json  OK
+```
+
+O Lab H verifica a integridade, mas não a origem, porque um atacante capaz de alterar os arquivos também poderia alterar um manifesto não assinado. A assinatura fecha essa lacuna, já que a chave não está no servidor.
+
+### 17.3 O que a criptografia não pode fazer
+
+A cifragem não impede que uma consulta autorizada extraia informação de um modelo, não previne a injeção de prompt e não torna limpo um conjunto de dados envenenado — apenas prova que os dados envenenados são os dados que você assinou. A criptografia protege dados e artefatos; o comportamento precisa de outros controles. No Ask Lumen, toda mensagem trafega cifrada e todo arquivo de modelo é verificado, e ainda assim um paciente pode digitar uma injeção e um documento de parceiro pode carregar texto hostil. Esses riscos exigem o ponto de política, a rotulagem e o monitoramento. A nota de arquitetura de Rina lista quais ameaças cada camada trata, para que ninguém suponha que a cifragem cobre mais do que cobre.
+
+### 17.4 Chaves
+
+A segurança depende das chaves: guarde-as em serviços de gerenciamento de chaves, restrinja o acesso, faça sua rotação e nunca as coloque em prompts ou em repositórios de código. A chave de API do provedor de modelo da LCH é um exemplo claro: quem a possui pode executar consultas cobradas da LCH e possivelmente ler logs. A LCH a guarda no serviço de gerenciamento de chaves da nuvem, dá acesso apenas ao servidor de aplicação, faz sua rotação a cada trimestre e varre os repositórios em busca de commits acidentais. Uma chave vazada é primeiro revogada, depois investigada, e os logs são revisados.
+
+### 17.5 Exemplo resolvido (caso sintético da LCH)
+
+O fornecedor do DocSort passou a assinar suas versões. Rina configurou o script de implantação para buscar a chave pública do fornecedor no repositório confiável da própria LCH (e não no servidor de versões), verificar a assinatura do manifesto e depois verificar o resumo de cada arquivo. Uma versão de teste com um arquivo modificado foi rejeitada. Buscar a chave no repositório da própria LCH importa porque, do contrário, um atacante que controlasse o servidor de versões poderia fornecer tanto um arquivo malicioso quanto uma chave correspondente. A versão de teste rejeitada confirma que a verificação funciona de ponta a ponta.
+
+### 17.6 Erros e limites
+
+Três erros são comuns: buscar resumos e chaves no mesmo lugar que os arquivos; supor que a cifragem impede o vazamento pelo modelo; e chaves no código-fonte. Buscar resumos e chaves no mesmo lugar que os arquivos significa que um único comprometimento derrota a verificação, e é por isso que a LCH guarda a chave do DocSort em seu próprio repositório. A cifragem não impede que um modelo revele dados de treinamento por meio de suas respostas. Chaves no código-fonte acabam em repositórios e backups que muitas pessoas podem ler, por isso são procuradas e trocadas quando encontradas.
+
+### 17.6b Verificação de assinaturas na prática
+
+Assinar o arquivo de modelo do DocSort só ajuda se o carregador verificar a assinatura toda vez e se recusar a iniciar em caso de falha. A LCH testou isso carregando uma cópia com um byte alterado: o serviço recusou, registrou o evento e continuou executando a versão verificada anterior. Manter a versão verificada anterior em execução evitou uma indisponibilidade enquanto o problema era investigado, o que tornou a recusa segura. O fornecedor então reemitiu uma versão corretamente assinada. Os funcionários não notaram nenhuma mudança no DocSort enquanto a versão antiga continuava classificando os documentos.
+
+### Exercícios
+
+- **EX049 — Primitivas.** Associe: integridade de um arquivo; origem de um manifesto; confidencialidade de dados armazenados. Rubrica: 3 = hash, assinatura, cifragem; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX050 — Origem da chave.** Por que buscar a chave pública do fornecedor no repositório da própria LCH? Rubrica: 3 = um atacante que controlasse o servidor de versões poderia substituir arquivos e chave; 2 = parcial; 1 = vago; 0 = errado.
+- **EX051 — Limites.** Nomeie dois riscos de IA que a criptografia não trata. Rubrica: 3 = injeção de prompt, extração por consultas, envenenamento de dados assinados, evasão; 2 = um; 1 = vago; 0 = errado.
+
+### Síntese
+
+A criptografia torna os artefatos e dados de IA verificáveis e confidenciais, mas não consegue fazer um modelo se comportar; é uma camada entre muitas.
+
+### Continue estudando — capítulo 17 de 40
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular perguntas de pesquisa em segurança de IA; (2) encontrar e avaliar literatura; (3) projetar experimentos simples com controles; e (4) relatar resultados com honestidade e com suas limitações.
+
+### 18.1 Perguntas
+
+Uma boa pergunta é específica, respondível e útil: "Exigir a confirmação do paciente reduz as marcações não autorizadas pelo Ask Lumen sob documentos injetados, e quanto isso custa em marcações concluídas?" Ela nomeia o sistema, a intervenção, o resultado e a comparação. A comparação é a parte que mais costuma faltar: sem ela, um resultado como "nenhuma marcação não autorizada" não pode ser atribuído à confirmação, e não ao fato de os casos de teste serem fáceis. Nomear o custo, as marcações concluídas, torna o estudo útil para a LCH, que precisa pesar segurança contra atendimento.
+
+### 18.2 Literatura
+
+Comece por visões gerais — NIST AI 100-2 E2025 para a terminologia de ML adversarial, OWASP LLM 2025 para riscos de aplicações com LLM, MITRE ATLAS para técnicas do mundo real — e depois leia artigos-chave anotando modelo de ameaça, método, métricas e limitações. Verifique cada referência. Para seu estudo sobre confirmação, Rina lê trabalhos sobre injeção indireta de prompt e sobre confirmação humana em sistemas automatizados, anotando para cada artigo qual ataque ele supõe e como o sucesso foi medido. Ela registra onde os artigos discordam e por quê, muitas vezes por causa de modelos de ameaça diferentes. Verificar referências é o hábito do capítulo de escrita, agora aplicado a uma revisão de literatura completa.
+
+### 18.3 Experimentos
+
+Mude uma coisa de cada vez; mantenha uma condição de controle; use dados de teste reservados; repita com várias sementes; registre as versões. Decida métricas e limiares antes de executar, para que os resultados não conduzam a análise. No estudo de Rina, a única mudança é a confirmação ligada ou desligada; o controle é o mesmo chatbot sem ela; os documentos de teste são escritos separadamente do desenvolvimento; e as métricas, marcações causadas por documentos injetados e marcações normais concluídas, são fixadas de antemão, com um plano de intervalos escrito antes de qualquer execução.
+
+### 18.4 Relato honesto
+
+Relate todas as condições, não só a melhor; dê intervalos; descreva o que não foi testado. Lipton e Steinhardt (arXiv:1807.03341) descrevem "tendências preocupantes", como fontes de ganho pouco claras; evite-as explicando qual mudança causou qual efeito. O relatório de Rina inclui a queda nas marcações concluídas, que alguns leitores poderiam ver como enfraquecendo a defesa da confirmação. Omiti-la enganaria a LCH quanto ao custo. Ela também explica que foi a confirmação, e não outra mudança, que causou o efeito, porque só essa configuração diferia entre as condições. O que ela não testou, como outros idiomas, fica listado.
+
+### 18.4b Ética no desenho da pesquisa
+
+Experimentos de segurança de IA podem causar danos: payloads que funcionam em produtos reais, conjuntos de dados com dados pessoais ou testes em sistemas que não são seus. Use dados sintéticos e sistemas isolados, mantenha os payloads inofensivos (por exemplo, apontados para domínios reservados `.invalid`), obtenha aprovação ética quando houver participação de pessoas e planeje a divulgação caso descubra uma vulnerabilidade real. Os documentos injetados de Rina tentam marcar consultas para um identificador de paciente sintético na cópia isolada, de modo que nada afeta pacientes reais ou sistemas reais. Nenhum funcionário das clínicas é enganado.
+
+### 18.5 Exemplo resolvido (caso sintético da LCH)
+
+O primeiro estudo de Rina comparou o Ask Lumen com e sem confirmação em 300 documentos injetados sintéticos e 300 conversas normais de marcação. Sem confirmação, 21 documentos injetados causaram marcações (7.0%); com confirmação, 0 (limite superior ≈ 1%). As marcações normais concluídas caíram de 97% para 94%, porque alguns usuários de teste desistiram na etapa de confirmação. Ela relatou os dois efeitos e anotou que os usuários de teste eram colegas, não pacientes. A taxa de 7.0% tem um intervalo de Wilson de cerca de 4.6% a 10.5%, claramente acima da condição com confirmação, então a diferença não é resultado do acaso. A queda de três pontos nas marcações normais é o custo.
+
+### 18.6 Erros e limites
+
+Três erros são comuns: perguntas amplas demais; nenhuma condição de controle; e relatar apenas resultados favoráveis. Uma pergunta ampla demais, como "o Ask Lumen é seguro?", não pode ser respondida por nenhum estudo isolado. Sem uma condição de controle, um resultado observado não pode ser atribuído à intervenção. Relatar apenas resultados favoráveis, por exemplo o ganho de segurança sem a queda de 97% para 94% nas marcações concluídas, engana quem decide sobre os compromissos. O desenho do estudo de Rina evita cada um deles ao nomear de antemão a comparação, o custo e os limites.
+
+### Exercícios
+
+- **EX052 — Pergunta.** Escreva uma pergunta de pesquisa sobre o DocSort usando os quatro elementos. Rubrica: 3 = sistema, intervenção, resultado, comparação; 2 = três; 1 = vaga; 0 = nenhuma.
+- **EX053 — Controles.** Por que uma condição de controle é necessária no estudo de Rina? Rubrica: 3 = mostra o efeito da confirmação em relação à linha de base; 2 = parcial; 1 = vago; 0 = errado.
+- **EX054 — Limitação.** Indique uma limitação do estudo de Rina e seu efeito sobre as conclusões. Rubrica: 3 = colegas, não pacientes → o custo na conclusão pode ser diferente; ou documentos sintéticos; 2 = só a limitação; 1 = genérica; 0 = nenhuma.
+
+### Síntese
+
+Os métodos de pesquisa transformam perguntas em respostas confiáveis: perguntas claras, literatura sólida, experimentos controlados e relatos honestos, com limitações.
+
+### Continue estudando — capítulo 18 de 40
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Segurança de IA e aprendizado de máquina: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir segurança de IA e distingui-la de safety de IA e de IA responsável; (2) descrever as classes de ataque da taxonomia NIST AI 100-2 E2025; (3) explicar por que o aprendizado de máquina é vulnerável em princípio; e (4) situar os principais frameworks.
+
+### 19.1 Definições
+
+A *segurança de IA* protege os sistemas de IA e os processos ao seu redor contra ataques deliberados e mau uso, e protege terceiros de ataques viabilizados por IA. A *safety de IA* trata de comportamentos nocivos mesmo sem atacante. A *IA responsável* abrange equidade, transparência e responsabilização. As áreas se sobrepõem: uma injeção de prompt é um ataque de segurança que pode causar resultados inseguros ou injustos. Na LCH, as três se encontram num único sistema. Um documento de parceiro que faz o Ask Lumen anunciar o falso fechamento de uma clínica é um ataque, então pertence à segurança; os pacientes que em seguida deixam de ser atendidos são um resultado de safety. Rina mantém os termos separados em seus relatórios para que cada equipe saiba quais problemas são seus.
+
+### 19.2 A taxonomia
+
+O NIST AI 100-2 E2025 classifica os ataques a IA preditiva pelo objetivo — quebra de disponibilidade, violação de integridade, comprometimento da privacidade — e acrescenta o mau uso para a IA generativa. As classes de ataque incluem evasão (entradas em tempo de teste), envenenamento (dados de treinamento ou modelo), ataques de privacidade (inferência de pertencimento, reconstrução de dados, extração de modelo) e, para sistemas generativos, injeção de prompt direta e indireta. Os atacantes são caracterizados pelo conhecimento (caixa-branca, caixa-cinza, caixa-preta) e pelas capacidades (controle dos dados de treinamento, controle do modelo, acesso por consulta). Rina situa cada sistema da LCH nela. O Ask Lumen é generativo, então se aplicam injeção de prompt e mau uso; o NoShow e o DocSort são preditivos. Um atacante externo costuma ter apenas acesso por consulta em caixa-preta, enquanto um terceirizado que rotula as cartas do DocSort tem controle dos dados de treinamento, uma capacidade mais forte.
+
+### 19.3 Por que o aprendizado de máquina é vulnerável
+
+Os modelos aprendem padrões estatísticos a partir de dados, não regras; generalizam de forma imperfeita e são sensíveis a mudanças pequenas e cuidadosamente escolhidas na entrada (Szegedy et al., arXiv:1312.6199; Goodfellow et al., arXiv:1412.6572). Herdam tudo o que seus dados contêm, inclusive veneno. Grandes modelos de linguagem seguem instruções encontradas em qualquer parte de sua entrada. Essas propriedades são inerentes, então a segurança se apoia em controles em camadas, e não numa correção única. O laboratório de evasão mostra isso concretamente: o mesmo classificador de brinquedo que marca 0.985 com entradas limpas cai para cerca do acaso quando o orçamento de perturbação chega a um, sem nenhuma mudança no modelo em si.
+
+### 19.4 Frameworks
+
+O NIST AI RMF (AI 100-1) e seu Generative AI Profile (AI 600-1) organizam a gestão de riscos; o OWASP LLM 2025 lista riscos de aplicações; o MITRE ATLAS cataloga técnicas de adversários com estudos de caso; a ISO/IEC 42001 especifica um sistema de gestão de IA; o AI Act da UE estabelece deveres legais para alguns sistemas. Eles respondem a perguntas diferentes. Rina usa o OWASP para verificar os riscos de aplicação do Ask Lumen, o ATLAS para encontrar exemplos reais de ataques para sua apresentação aos funcionários e o AI RMF para estruturar o processo geral de riscos da LCH. Se o AI Act da UE se aplica depende do uso de cada sistema, então ela registra essa avaliação separadamente, em vez de supor que uma resposta cobre os três sistemas.
+
+### 19.5 Exemplo resolvido (caso sintético da LCH)
+
+Rina classificou os riscos da LCH: Ask Lumen — injeção indireta de prompt por documentos (integridade), divulgação de informações sensíveis (privacidade); NoShow — inferência de pertencimento (privacidade), manipulação de campos controlados pelo paciente (integridade, evasão); DocSort — cartas elaboradas para encaminhar errado (evasão), envenenamento por cartas de treinamento rerrotuladas (integridade). A classificação mostrou que cada sistema tinha riscos de privacidade e de integridade, mas por caminhos diferentes. A principal exposição do Ask Lumen era o que ele lê; a do NoShow, o que ele revela; a do DocSort, quem moldou seus dados de treinamento. Essa diferença levou Rina a designar responsáveis diferentes: a equipe do chatbot, o encarregado de proteção de dados e a equipe de prontuários.
+
+### 19.6 Erros e limites
+
+Três erros são comuns: tratar a segurança de IA apenas como jailbreaks de chatbots; esperar que um único controle corrija vulnerabilidades inerentes; e misturar os termos safety e segurança. Concentrar-se em jailbreaks teria deixado de lado por completo o risco de envenenamento do DocSort, já que ninguém conversa com o DocSort. Nenhum controle isolado cobre evasão, envenenamento e injeção, então a LCH precisa de várias camadas. Usar "safety" quando se quer dizer "segurança" deixa incerto se um atacante é suposto, o que muda os testes que devem ser feitos e quem é responsável por corrigir o problema.
+
+### Exercícios
+
+- **EX055 — Definições.** Classifique: um chatbot dá um conselho errado sobre medicação sem nenhum atacante; um atacante o faz revelar dados de outro paciente. Rubrica: 3 = safety vs segurança, com razões; 2 = só os rótulos; 1 = um; 0 = errado.
+- **EX056 — Taxonomia.** Classifique a elaboração de cartas contra o DocSort por objetivo, etapa e conhecimento. Rubrica: 3 = integridade, implantação/evasão, caixa-preta ou caixa-cinza; 2 = dois; 1 = um; 0 = nenhum.
+- **EX057 — Inerente.** Dê duas razões pelas quais o aprendizado de máquina é vulnerável em princípio. Rubrica: 3 = generalização estatística/sensibilidade, dependência dos dados, seguimento de instruções na entrada; 2 = uma; 1 = vago; 0 = errado.
+
+### Síntese
+
+A segurança de IA tem um escopo preciso e um vocabulário compartilhado. Suas vulnerabilidades são estruturais, e é por isso que o resto do livro constrói defesas em camadas e medidas.
+
+### Continue estudando — capítulo 19 de 40
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). A Lumen Community Health, Rina e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX057 (as de EX058–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). A Lumen Community Health, Rina e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** "Para toda entrada x no conjunto de tentativas de injeção, Filtro(x) = bloqueada." Uma única tentativa de injeção que não seja bloqueada a refuta.
 
@@ -679,14 +1257,69 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em i
 
 **EX030.** Atributos como código postal ou tipo de telefone podem funcionar como proxies de renda ou etnia; se baixam a prioridade prevista, alguns grupos recebem menos lembretes ou horários piores.
 
+**EX031.** Precisa: ler sua pasta de entrada; gravar os resultados de encaminhamento na fila; ler seus arquivos de modelo. Não deveria ter: direitos de administrador; acesso de escrita ao código ou aos arquivos de modelo; acesso de leitura a compartilhamentos não relacionados ou acesso a toda a rede.
+
+**EX032.** Executar o código da ferramenta num contêiner sem rede, com limites de CPU, memória e tempo, um sistema de arquivos temporário contendo apenas o arquivo enviado e um usuário sem privilégios.
+
+**EX033.** O despejo continha o texto das cartas (dados de saúde) e foi gravado numa pasta que todos os funcionários podiam ler, expondo-o além das pessoas autorizadas.
+
+**EX034.** TP = 0.90 × 0.0005 = 0.00045; FP = 0.02 × 0.9995 ≈ 0.01999; precisão ≈ 0.00045 / 0.02044 ≈ 0.022.
+
+**EX035.** [0.135, 0.166].
+
+**EX036.** Os itens diferem em dificuldade; usar os mesmos itens faz essa variação se cancelar na diferença pareada, o que dá uma comparação justa e mais precisa.
+
+**EX037.** Autenticação: o paciente entra com senha e código de uso único. Autorização: a ferramenta de agendamento só permite marcar para esse paciente. Accounting: os logs registram quem marcou o quê, por qual conversa.
+
+**EX038.** A conta de serviço de agendamento era confiável para marcar para qualquer pessoa; o modelo, manipulado por uma mensagem, pediu-lhe que marcasse para outro paciente, e ela obedeceu — um intermediário confiável enganado e levado a usar mal sua autoridade.
+
+**EX039.** Permitir somente se booking.patient_id ∈ {token.subject} ∪ registered_carers_of(token.subject) e booking.clinic for uma clínica em que esse paciente esteja cadastrado; caso contrário, negar.
+
+**EX040.** AUC 0.600 e vantagem 0.200: o modelo que memoriza dá maior confiança aos membros, então o pertencimento vaza.
+
+**EX041.** Estar nos dados de treinamento do NoShow revela que a pessoa foi paciente da LCH — uma informação relacionada à saúde.
+
+**EX042.** Minimizar e pseudonimizar os atributos; eliminar registros duplicados; devolver categorias em vez de probabilidades a um grupo limitado de funcionários; treinar com privacidade diferencial (também: restringir consultas, limitar a retenção).
+
+**EX043.** Taxa de sucesso de ataques com cartas elaboradas para encaminhar errado e acurácia do encaminhamento normal com cartas genuínas, ambas com intervalos de confiança.
+
+**EX044.** Com zero falhas em 400 tentativas, o limite superior de 95% é de cerca de 3/400 ≈ 0.75% (Wilson ≈ 0.95%); a taxa real pode ser maior que zero, e outros tipos de ataque não foram testados.
+
+**EX045.** Entrada; saída; versões de modelo, prompt e código; carimbo de tempo; hash de integridade.
+
+**EX046.** Menor privilégio: o DocSort pode encaminhar cartas, mas não ler prontuários de pacientes. Defesa em profundidade: saída do OCR validada, encaminhamentos de baixa confiança enviados aos funcionários, monitoramento das taxas de encaminhamento. Padrão à prova de falhas: cartas ilegíveis ou ambíguas vão para revisão manual.
+
+**EX047.** As instruções e o conteúdo não confiável chegam num único fluxo de tokens, e o seguimento de instruções pelo modelo é estatístico, então ele pode seguir um texto injetado apesar das instruções em contrário.
+
+**EX048.** Em (a), qualquer texto injetado que convença o modelo pode marcar ou cancelar consultas; em (b), são exigidas uma verificação de política e a confirmação do paciente, o que limita o impacto ao custo de um clique.
+
+**EX049.** Integridade de um arquivo: hash. Origem de um manifesto: assinatura digital. Confidencialidade de dados armazenados: cifragem.
+
+**EX050.** Se a chave viesse do servidor de versões, um atacante que controlasse esse servidor poderia substituir juntos arquivos, manifesto e chave; uma chave vinda do repositório confiável da própria LCH não pode ser trocada dessa forma.
+
+**EX051.** Injeção de prompt; extração de modelo ou inferência de pertencimento por meio de consultas legítimas (também: envenenamento de dados que depois foram assinados; evasão).
+
+**EX052.** "No DocSort (sistema), acrescentar uma etapa de revisão humana para encaminhamentos de baixa confiança (intervenção), em comparação com o encaminhamento totalmente automático (comparação), reduz as cartas encaminhadas errado em 500 encaminhamentos sintéticos, incluindo 100 elaborados (resultado)?"
+
+**EX053.** Sem a condição sem confirmação, não há linha de base, então as 0 marcações poderiam se dever ao conjunto de teste, e não à etapa de confirmação.
+
+**EX054.** Os usuários de teste eram colegas; pacientes reais podem desistir mais ou menos vezes na confirmação, então o custo de 3 pontos na conclusão pode não se transferir.
+
+**EX055.** Um conselho errado sem atacante é uma falha de safety (ou de confiabilidade); revelar a um atacante dados de outro paciente é uma falha de segurança (confidencialidade).
+
+**EX056.** Objetivo: violação de integridade; etapa: implantação (evasão no momento da inferência); conhecimento: caixa-preta (ou caixa-cinza, se o atacante conhece o tipo de modelo).
+
+**EX057.** Os modelos aprendem padrões estatísticos sensíveis a pequenas mudanças elaboradas na entrada; dependem inteiramente de seus dados (então o veneno se propaga); LLMs seguem instruções em qualquer parte de sua entrada.
+
 <a id="references"></a>
 ## Referências
 
-Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
+Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro, acrescida apenas da LGPD, citada nesta edição como referência brasileira e conferida em sua fonte oficial; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
 
 - Abadi, M. et al. (2016). Deep Learning with Differential Privacy. arXiv:1607.00133.
 - Arp, D. et al. (2020). Dos and Don'ts of Machine Learning in Computer Security. arXiv:2010.09470.
 - Athalye, A., Carlini, N., Wagner, D. (2018). Obfuscated Gradients Give a False Sense of Security. arXiv:1802.00420.
+- Brasil. (2018). *Lei nº 13.709, de 14 de agosto de 2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)*. Diário Oficial da União. <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm>
 - Carlini, N. et al. (2019). On Evaluating Adversarial Robustness. arXiv:1902.06705.
 - Carlini, N. et al. (2023). Poisoning Web-Scale Training Datasets is Practical. arXiv:2302.10149.
 - Chen, S. et al. (2024). StruQ: Defending Against Prompt Injection with Structured Queries. arXiv:2402.06363.
