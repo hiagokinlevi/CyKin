@@ -899,7 +899,7 @@ Draw the data-flow: sensor to PLC to historian to replica to L4 reports. Every a
 
 ### 13.1b Row-level and column-level controls
 
-Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; we ran SELECT * against an admin role proves little about analyst exposure. Record each role-and-column result with the account used and the date, so the next review repeats exactly the same checks.
+Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; "we ran SELECT * against an admin role" proves little about analyst exposure. Record each role-and-column result with the account used and the date, so the next review repeats exactly the same checks.
 
 Lena tests ABP's replica with an analyst account before each review. Results go in the review notes.
 
@@ -1137,7 +1137,7 @@ kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
 kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
 ```
 
-Lena uses the lab to explain to colleagues why a detector should watch the error, not the raw level. The lab output shows the offset disappearing once integral action is added, which helps colleagues see how a controller responds to a disturbance. A detector that alarms on the level itself would fire whenever a setpoint changes.
+Lena uses the lab to explain to colleagues why a detector should watch the error, not the raw level. The lab output shows the offset shrinking sharply once integral action is added (final level about 57–58 against 44.61 without it, still closing on 60 at the end of the run), which helps colleagues see how a controller responds to a disturbance. A detector that alarms on the level itself would fire whenever a setpoint changes.
 
 ### 17.2 Sensors in the loop
 
@@ -3954,7 +3954,7 @@ Model answers for EX001–EX150. Ashford Batch Plant, Lena Okafor, CNHP and all 
 
 **EX036.** Vendor USB allowed on eng-WS-2 only, 14 Mar 09:00-12:00, media scanned on a stand-alone kiosk, session video-logged; port disabled afterward.
 
-**EX037.** Use the L3 replica only. SELECT limited to tag, value, timestamp. LIMIT 10000. No dumps. Files destroyed within 24 h and confirmed in the ticket.
+**EX037.** Use the DMZ (L3.5) historian replica only. SELECT limited to tag, value, timestamp. LIMIT 10000. No dumps. Files destroyed within 24 h and confirmed in the ticket.
 
 **EX038.** Obtain analyst credentials issued for the test; connect; attempt an UPDATE/INSERT on a setpoint annotation table; record success or permission-denied. No crafted payloads.
 

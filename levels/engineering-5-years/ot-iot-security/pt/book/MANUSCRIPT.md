@@ -1245,7 +1245,7 @@ kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
 kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
 ```
 
-Lena usa o laboratório para explicar aos colegas por que um detector deve observar o erro, e não o nível bruto. A saída do laboratório mostra o desvio desaparecendo quando a ação integral é acrescentada, o que ajuda os colegas a ver como um controlador responde a uma perturbação. Um detector que alarmasse sobre o próprio nível dispararia sempre que um setpoint mudasse.
+Lena usa o laboratório para explicar aos colegas por que um detector deve observar o erro, e não o nível bruto. A saída do laboratório mostra o desvio diminuindo bastante quando a ação integral é acrescentada (nível final de cerca de 57–58, contra 44,61 sem ela, ainda se aproximando de 60 ao fim da execução), o que ajuda os colegas a ver como um controlador responde a uma perturbação. Um detector que alarmasse sobre o próprio nível dispararia sempre que um setpoint mudasse.
 
 ### 17.2 Sensores na malha
 
@@ -4060,7 +4060,7 @@ Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP 
 
 **EX036.** USB de fornecedor permitido apenas na eng-WS-2, 14 de março, 09:00-12:00, mídia verificada num quiosque isolado, sessão gravada em vídeo; porta desabilitada depois.
 
-**EX037.** Usar apenas a réplica do L3. SELECT limitado a tag, valor e timestamp. LIMIT 10000. Sem dumps. Arquivos destruídos em até 24 h, com confirmação no ticket.
+**EX037.** Usar apenas a réplica do historiador na DMZ (L3.5). SELECT limitado a tag, valor e timestamp. LIMIT 10000. Sem dumps. Arquivos destruídos em até 24 h, com confirmação no ticket.
 
 **EX038.** Obter as credenciais de analista emitidas para o teste; conectar; tentar um UPDATE/INSERT numa tabela de anotações de setpoints; registrar sucesso ou permissão negada. Nenhum payload elaborado.
 

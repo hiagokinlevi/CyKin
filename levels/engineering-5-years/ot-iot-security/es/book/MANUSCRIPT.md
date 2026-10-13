@@ -29,7 +29,7 @@ Los capítulos 1–19 construyen fundamentos aplicados a la TO desde la primera 
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -799,7 +799,377 @@ Bastione y parchee las estaciones de trabajo como si fueran controladores, porqu
 
 ### Siga estudiando — capítulo 12 de 50
 
-[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de datos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) proteger los datos del historiador y de las recetas sin bloquear las operaciones; (2) acotar la evaluación de bases de datos sin extraer lotes propietarios; (3) diseñar conjuntos de datos sintéticos para los laboratorios.
+
+### 13.1 Los historiadores son las joyas de la corona
+
+Los historiadores guardan valores de proceso que revelan ritmos de producción, recetas y a veces datos de calidad. Las escrituras no autorizadas pueden corromper los registros de lote; las lecturas no autorizadas pueden filtrar datos comerciales. Colóquelos en su zona (L3), permita las vías de lectura a través de réplicas controladas y nunca exponga SQL a L4. En ABP, HIST-1 está en L3 y los usuarios de oficina leen de la réplica de la DMZ, nunca del historiador de la zona de control. El acceso de escritura a HIST-1 se limita al servicio de recogida, y cada cambio en los registros de lote queda registrado. Lena comprueba ambas vías en cada revisión de conductos.
+
+### 13.2 Minimizar las extracciones
+
+El trabajo autorizado con bases de datos usa copias sintéticas o enmascaradas. Exportar la genealogía real de los lotes al portátil de un estudiante es un incidente de confidencialidad. El permiso de trabajo debe indicar: ningún volcado completo, listas de columnas permitidas, límites de filas, fecha límite de destrucción. El permiso de trabajo de Lena para el acceso al historiador enumera en lenguaje llano las columnas permitidas y el límite de filas. Las extracciones van a un equipo de análisis aprobado, no a un portátil personal, y su borrado queda registrado. Una solicitud de más datos de los que la pregunta necesita se acota antes de ejecutar cualquier consulta.
+
+### 13.3 Datos de proceso sintéticos
+
+Genere niveles de tanque y puntos de consigna deterministas con semillas fijas para que los laboratorios sean reproducibles. Los laboratorios de CUSUM y de PI lo hacen; nunca copie un historiador de producción en el repositorio del curso.
+
+> **Caso sintético — Ashford Batch Plant.** Operaciones proporcionó a Lena una semana de valores sintéticos de T-1/T-2/R-101 a 1 Hz para los ensayos de detectores: sin números de pedido de clientes ni nombres de operadores.
+
+La semana de valores sintéticos de T-1, T-2 y R-101 de ABP con resolución de un hercio se generó de este modo, y su semilla está registrada junto con el conjunto de datos. Lena vuelve a ejecutar el generador para confirmar que el archivo coincide antes de cada ensayo.
+
+### 13.4 Errores y límites
+
+Un enmascaramiento que deja recetas raras y únicas todavía puede identificar series de producción. Para la enseñanza, prefiera la generación sintética. Una receta que ABP solo produce dos veces al año puede identificar el lote aunque se hayan quitado los nombres. Por eso Lena usa datos sintéticos para la enseñanza y conserva datos reales enmascarados solo para las investigaciones que realmente los necesitan, con el acceso limitado a los investigadores. Las decisiones de enmascaramiento se registran y se revisan con el equipo de calidad. Los casos de lotes raros se enumeran en la solicitud de extracción. El equipo de calidad revisa esos casos antes de la entrega.
+
+### Nota práctica
+
+Dibuje el flujo de datos: del sensor al PLC, al historiador, a la réplica y a los informes de L4. Cada flecha necesita un responsable y un protocolo. Las flechas misteriosas son donde viven la exfiltración y la exposición accidental.
+
+### 13.1b Controles por fila y por columna
+
+Los historiadores y almacenes de datos modernos ofrecen políticas por fila y por columna. Las preguntas de evaluación pasan a ser: ¿ve el rol R la columna C? ¿Se aplica el filtro de filas F? Pruebe con el propio rol. Documente la versión del motor de políticas; «ejecutamos SELECT * con un rol de administrador» demuestra poco sobre la exposición de un analista. Registre cada resultado de rol y columna con la cuenta utilizada y la fecha, para que la siguiente revisión repita exactamente las mismas comprobaciones.
+
+Lena prueba la réplica de ABP con una cuenta de analista antes de cada revisión. Los resultados van a las notas de la revisión.
+
+### 13.5 Ejemplo resuelto: una extracción minimizada del historiador (ABP sintética)
+
+Los ingenieros de calidad piden «todos los datos de R-101 del año pasado». La extracción de Lena contiene solo las cuatro etiquetas que necesita la investigación de la desviación (temperatura del reactor, temperatura de la camisa, velocidad del agitador, posición de la válvula de alimentación) con resolución de un minuto, para los 11 lotes en revisión, con los identificadores de lote sustituidos por códigos de estudio y la columna del nombre del operador eliminada. La extracción es una lectura de la réplica de la DMZ, nunca del historiador de la zona de control, y el texto de la consulta y un hash SHA-256 del archivo de salida van al ticket de la solicitud, para que las mismas filas puedan reproducirse o borrarse más adelante. El resultado son 11 × 4 etiquetas × unos 480 minutos ≈ 21.000 filas, en lugar de decenas de millones.
+
+### Ejercicios — capítulo 13
+
+- **EX037 — Cláusula del permiso.** Redacte una cláusula de tratamiento de datos para una evaluación del historiador. Rúbrica: 3 = solo réplica, lista de columnas permitidas, límite de filas, fecha de destrucción, sin volcados; 2 = tres; 1 = una; 0 = nada.
+- **EX038 — Autorización.** ¿Cómo comprobaría si el rol analyst puede escribir anotaciones en el historiador sin técnicas de inyección? Rúbrica: 3 = conectarse como analyst, intentar la escritura, registrar si se concede o se deniega; 2 = idea; 1 = inyección; 0 = nada.
+- **EX039 — Sintético.** Tres campos seguros para una tabla sintética de tanques y dos que no deben aparecer. Rúbrica: 3 = p. ej., tag, value, timestamp frente a operator_name, customer_order; 2 = parcial; 1 = débil; 0 = nada.
+
+### Síntesis del capítulo
+
+Minimice los datos, pruebe los roles, sintetice para enseñar. El historiador no es una vitrina de trofeos.
+
+### Siga estudiando — capítulo 13 de 50
+
+[← Capítulo 12 (borrador)](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 (borrador) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Ingeniería de software
+
+### Resultados de aprendizaje
+
+Usted podrá (1) poner las herramientas de seguridad de TO bajo control de versiones con revisión; (2) controlar los cambios que amplían conductos; (3) mantener la integración continua solo con datos de prueba sintéticos.
+
+### 14.1 Las herramientas son productos
+
+Los compiladores de listas de permitidos, los comprobadores de alcanzabilidad y las configuraciones de detectores son software. Necesitan repositorios, revisiones, etiquetas y registros de cambios. Un permiso de trabajo que cita la exportación del cortafuegos sin un hash está incompleto. Lena mantiene las herramientas del CNHP en un único repositorio con versiones etiquetadas y un registro de cambios, y cada permiso de trabajo cita la etiqueta y el hash de las exportaciones en que se basa. Cuando un revisor pregunta qué versión del comprobador de alcanzabilidad produjo un resultado, la respuesta es una etiqueta, no un recuerdo.
+
+### 14.2 Controlar las ampliaciones
+
+Las fusiones que añaden un conducto, abren un código de función o eliminan una denegación requieren un segundo revisor y un ticket de autorización vinculado. Los cambios que restringen pueden ser más ligeros. Codifíquelo en CODEOWNERS sobre las rutas de las políticas. Lena asigna como responsables de código a personas de ingeniería de control para los archivos de la lista de permitidos y de conductos, de modo que los cambios que amplían no pueden fusionarse sin ellas. Los cambios que restringen siguen necesitando un revisor. La regla se aplica mediante la configuración de responsables de código en las rutas de las políticas, así que un revisor ocupado no puede saltársela. Un cambio que amplía también necesita un ticket de autorización vinculado que nombre quién aprobó el nuevo camino y por qué.
+
+### 14.3 Datos de prueba de la integración continua
+
+La integración continua ejecuta los laboratorios y las pruebas unitarias con datos sintéticos. Nunca apunte la integración continua a una VPN de planta. Los datos semilla viven en el repositorio; las credenciales de planta viven en una bóveda y nunca en los registros de la integración continua.
+
+> **Caso sintético — Ashford Batch Plant.** Una solicitud de incorporación de cambios añadió una regla temporal de L4 a L2 para la visita de un proveedor. La comprobación de alcanzabilidad de la integración continua falló porque L1-SIS pasaba a ser alcanzable; la solicitud quedó bloqueada hasta que la regla se reescribió a través de la DMZ.
+
+La canalización de Lena carga datos de prueba sintéticos para las zonas y la lista de permitidos de ABP.
+
+### 14.4 Errores y límites
+
+Las etiquetas pueden desviarse de lo que ejecutan los operadores; registre el hash en ejecución en el registro del encargo al inicio de la ventana. El registro del encargo de Lena anota el hash del binario del monitor y de la lista de permitidos que realmente se ejecutan al comienzo de cada ventana. Si difiere de la versión etiquetada, la ventana espera hasta que se explique la diferencia. Esa comprobación encontró un monitor de banco que seguía ejecutando una versión candidata después de una corrección urgente. Los hashes en ejecución van al registro de la ventana. Una discrepancia se trata como una parada, no como un aviso.
+
+### Nota práctica
+
+Los repositorios de políticas usan la misma cultura de doble aprobación que las descargas de lógica al PLC. Si descargar el ladder al PLC-A necesita dos personas, publicar un conducto que alcance el PLC-A también debería necesitarlas.
+
+### 14.1b Trenes de versiones frente a correcciones urgentes
+
+Las mejoras normales viajan en un tren de versiones con los laboratorios I/II. Las correcciones urgentes de seguridad pueden saltarse funcionalidades, pero no la verificación: un paquete mínimo de regresión de fallo cerrado es obligatorio. Etiquete claramente las correcciones urgentes para que una ventana pueda fijar, con conocimiento de causa, la compilación del tren o el SHA de la corrección. Las versiones fijadas figuran en la lista de comprobación de arranque junto al hash del permiso de trabajo; si la versión fijada y el binario en ejecución no coinciden, la ventana no comienza.
+
+Las correcciones urgentes de ABP llevan su propia etiqueta y el resultado del paquete de regresión en la nota de versión, para que el responsable de una ventana pueda ver exactamente qué se verificó.
+
+### 14.5 Ejemplo resuelto: revisar un cambio en permit() (ABP sintética)
+
+Una solicitud de incorporación de cambios amplía el rango escribible del HMI en el PLC-A de 40001–40010 a 40001–40012 para un nuevo punto de consigna del agitador. La lista de revisión de Lena: el identificador del requisito que justifica 40011–40012; nuevos vectores de conformidad para 40012 (pasa) y 40013 (se bloquea); la denegación predeterminada para orígenes desconocidos sin cambios; un incremento de versión y una línea en el registro de cambios; y un segundo revisor de ingeniería de control que confirme el significado de los registros en el proyecto del PLC. La fusión espera a la ejecución en banco de los vectores contra la compilación real del cortafuegos. La disciplina de ingeniería de software aquí no es ceremonia: un error de un carácter en un rango dejaría al HMI escribir un registro que el diseño del proceso nunca previó.
+
+### Ejercicios — capítulo 14
+
+- **EX040 — Fijar.** Escriba la frase de método que fija la lista de permitidos para una ventana. Rúbrica: 3 = nombre, hash/etiqueta, fecha de carga; 2 = nombre + etiqueta; 1 = nombre; 0 = nada.
+- **EX041 — Control.** Política de fusión en una frase para los archivos de conductos. Rúbrica: 3 = segundo revisor + AUTH para ampliar; 2 = solo el revisor; 1 = vago; 0 = nada.
+- **EX042 — Integración continua.** ¿Por qué la integración continua nunca debe usar credenciales de la VPN de planta? Rúbrica: 3 = automatización no autorizada, filtración de secretos, falta de determinismo; 2 = una razón sólida; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+Trate el software de seguridad de TO como software de producción: versiones, controles de revisión, integración continua sintética.
+
+### Siga estudiando — capítulo 14 de 50
+
+[← Capítulo 13 (borrador)](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 (borrador) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de seguridad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) relacionar la tríada CIA y la seguridad funcional con las preguntas de evaluación de TO; (2) distinguir vulnerabilidad, exposición y riesgo de proceso; (3) rechazar las puntuaciones de seguridad vacías.
+
+### 15.1 CIA más seguridad funcional
+
+Confidencialidad: ¿quién puede leer recetas o tendencias? Integridad: ¿quién puede cambiar puntos de consigna o lógica? Disponibilidad: ¿qué detiene el lote? Seguridad funcional: ¿qué capas de protección siguen siendo independientes? Cada hallazgo debe decir qué propiedades se ven afectadas y si una función de seguridad entra en el alcance. Lena añade a cada hallazgo del CNHP una línea que nombra las propiedades afectadas e indica si el SIS-B entra en el alcance. En ABP, un hallazgo sobre una escritura sin autenticación en el PLC-A afecta a la integridad y, a través del nivel del tanque, posiblemente a la seguridad funcional; un hallazgo sobre la réplica del historiador afecta a la confidencialidad. Nombrar la propiedad indica a los lectores qué equipo debe responder.
+
+### 15.2 Vulnerabilidad, exposición, riesgo
+
+Una escritura Modbus sin autenticación es una vulnerabilidad. En un PLC alcanzable desde L2 es una exposición. El riesgo de proceso añade la probabilidad y la consecuencia para la planta, lo que necesita el modelo del ingeniero de seguridad funcional, no un relato universal basado solo en CVSS. Los tickets guardan por separado los límites de la consecuencia y las capas de protección; la aceptación del riesgo sigue correspondiendo al propietario de la planta. La plantilla de ticket de Lena tiene campos separados para cada uno, de modo que ninguno se pierde. Lena registra la exposición, como la alcanzabilidad desde L2, por separado de la vulnerabilidad, para poder seguir la corrección de cualquiera de las dos. El jefe de planta firma cualquier aceptación de riesgo residual.
+
+### 15.3 Puntuaciones vacías
+
+Un único «riesgo de TO = 42» oculta si se mantiene la independencia del SIS. Prefiera medidas concretas: hallazgos abiertos de alta consecuencia, conductos hacia el SIS, tasa de falsas alarmas del detector con la tasa base de la planta, antigüedad de los parches aplazados. Si muestra una puntuación, muestre el modelo y las entradas.
+
+> **Caso sintético — Ashford Batch Plant.** Lena dejó de poner una puntuación compuesta en las diapositivas del CNHP. La presentación muestra ahora: ¿SIS alcanzable desde L4? No. Críticos abiertos: 1. Alarmas por operador y hora: 1,05. Parches de alto riesgo aplazados: 0.
+
+Cada medida del CNHP tiene una definición y una fuente, para que pueda volver a calcularse.
+
+### 15.4 Errores y límites
+
+Los fundamentos son vocabulario; no son un análisis de peligros completo. Continúe con el análisis de amenazas y fallos para un estudio estructurado. El vocabulario ayuda a describir los hallazgos de forma coherente, pero no sustituye el análisis de peligros del proceso de la planta. Lena vincula los hallazgos del CNHP al análisis de peligros cuando tocan un peligro, y deja los juicios sobre consecuencias al ingeniero de seguridad de procesos. El análisis de amenazas y fallos, más adelante en el programa, aporta el método estructurado. Cada hallazgo se vincula al peligro pertinente. El ingeniero de seguridad funcional revisa esos vínculos.
+
+### Nota práctica
+
+Cuando alguien pida un tablero tipo semáforo, ofrezca tres luces que signifiquen algo: independencia del SIS intacta (sí/no), hallazgos críticos abiertos (conteo), parches aplazados fuera de plazo (conteo). Rechace una cuarta luz llamada «ciber global».
+
+### 15.1b De la propiedad a la prueba
+
+Si un hallazgo afirma un impacto en la integridad, el plan de validación debe incluir una comprobación de integridad (quién puede seguir escribiendo). Si afirma un impacto en la disponibilidad, la validación incluye un canario o una sonda sintética, no un nuevo ataque. Alinee la propiedad, el hallazgo y el método de nueva prueba en un párrafo del ticket. El resultado de la nueva prueba va al mismo ticket que el hallazgo original, con la fecha y la comprobación utilizada, para que el cierre pueda auditarse más tarde.
+
+En ABP, el hallazgo FW-12 afirmaba una exposición de integridad, así que su nueva prueba comprobó, con el mismo método de alcanzabilidad, que la zona de oficina ya no podía alcanzar SCADA.
+
+### Ejercicios — capítulo 15
+
+- **EX043 — Mapa.** Relacione una escritura de punto de consigna sin autenticación en el PLC-A con C/I/A/seguridad funcional, con una frase para cada una. Rúbrica: 3 = las cuatro acotadas; 2 = tres; 1 = una; 0 = nada.
+- **EX044 — Términos.** Distinga vulnerabilidad, exposición y riesgo de proceso para esa escritura. Rúbrica: 3 = división clara; 2 = dos claras; 1 = confuso; 0 = nada.
+- **EX045 — Rechazo de la puntuación.** Una parte interesada quiere una puntuación de 0 a 100 de «hackeabilidad». Recházela con alternativas. Rúbrica: 3 = se niega + medidas concretas; 2 = solo se niega; 1 = vago; 0 = inventa la puntuación.
+
+### Síntesis del capítulo
+
+Nombre la propiedad, separe la exposición del riesgo de proceso y prefiera medidas que pueda volver a calcular.
+
+### Siga estudiando — capítulo 15 de 50
+
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Ingeniería de sistemas
+
+### Resultados de aprendizaje
+
+Usted podrá (1) redactar requisitos de seguridad de TO comprobables; (2) trazar un requisito hasta una regla de conducto y un laboratorio; (3) gestionar las interfaces entre el PLC, el SIS, el historiador y los monitores de seguridad.
+
+### 16.1 Requisitos comprobables
+
+«La planta debe ser segura» no es un requisito. «Ningún equipo fuera de L1/L2 deberá iniciar escrituras en los registros de retención del PLC-A; se verifica mediante análisis de alcanzabilidad y pruebas de la lista de permitidos con datos de prueba sintéticos» sí lo es. Cada requisito necesita un identificador, un enunciado con «deberá», un método de verificación y un responsable. Lena asigna a cada requisito del CNHP un identificador como R-12 y un responsable antes de que empiece cualquier trabajo de diseño. Un requisito sin método de verificación se devuelve a su autor. Lena también comprueba que cada uno pueda probarse con datos de prueba sintéticos, porque un requisito que solo puede verificarse escribiendo en un controlador en servicio no puede aceptarse.
+
+### 16.2 Trazabilidad
+
+Matriz: del requisito al elemento de diseño, al caso de prueba y a la evidencia de planta. Cuando un hallazgo muestra un conducto hacia el SIS, se sabe qué requisito y qué prueba fallaron. Sin la matriz, los análisis posteriores se convierten en búsqueda de culpables. Lena mantiene la matriz como un archivo en el repositorio del CNHP, actualizado en la misma solicitud de incorporación de cambios que la política que describe. Cada fila vincula un requisito como R-12 con la lista de aristas por zonas, la prueba de alcanzabilidad y el hash de la última exportación del cortafuegos. Cuando una prueba falla, la matriz muestra qué requisito está en riesgo y quién es su responsable.
+
+### 16.3 Interfaces
+
+El PLC-A publica valores de proceso; el SIS-B consume sensores dedicados; el historiador consume etiquetas del PLC; el monitor serie consume una derivación de solo escucha. Acuerde las listas de etiquetas y las frecuencias de actualización. Un cambio de interfaz es una solicitud de cambio, no una edición silenciosa durante un lote.
+
+> **Caso sintético — Ashford Batch Plant.** El requisito R-12, «SIS no alcanzable desde L4», se traza hasta la lista de aristas por zonas, lab_reach.py y el hash trimestral de la exportación del cortafuegos en el expediente.
+
+Lena mantiene en el repositorio la lista de etiquetas de cada interfaz, con su responsable y su frecuencia de actualización.
+
+### 16.4 Errores y límites
+
+Las matrices de trazabilidad se pudren si no se actualizan en la misma solicitud de incorporación de cambios que la política. Manténgalas junto al código. La integración continua de Lena hace fallar una solicitud de incorporación de cambios que modifica un archivo de política sin tocar la matriz, lo que mantiene ambos sincronizados. Cada fila lleva además la fecha de su última verificación. Las filas que no se han comprobado en un trimestre se señalan en la reunión de revisión, porque un vínculo antiguo suele estar roto. Los responsables confirman cada fila una vez al año.
+
+### Nota práctica
+
+Ponga los identificadores de los requisitos en los nombres de los objetos del cortafuegos y en los comentarios de configuración de los detectores (req=R-12). Poder buscarlos durante un incidente vale más que una diapositiva que alguna vez relacionó requisitos con módulos.
+
+### 16.1b Glosario y retirada
+
+Mantenga un glosario de una página: permiso de trabajo, ConduitSet, lista de permitidos, técnica planificada, evidencia sellada. Las partes interesadas usan mal «cobertura» y «riesgo» constantemente; el glosario es un artefacto de requisitos. La trazabilidad también cubre la retirada: cuando se retira un requisito, márquelo como sustituido con una referencia en lugar de borrar la fila. Los hallazgos históricos siguen citando identificadores antiguos. Los acuerdos de nivel de servicio internos entre servicios importan: el monitor puede necesitar que el almacén de hallazgos acepte un evento en N segundos durante una condición de parada. Escríbalo como requisito con una prueba de carga sintética. Sin él, los avisos de condición de parada llegan después de que la persona ya haya llamado a seguridad de procesos.
+
+### Ejercicios — capítulo 16
+
+- **EX046 — Deberá.** Reescriba «impedir que la oficina toque SCADA» como dos requisitos con «deberá». Rúbrica: 3 = dos enunciados comprobables con método de verificación; 2 = uno bueno; 1 = sigue siendo vago; 0 = nada.
+- **EX047 — Traza.** Para R-12, nombre el artefacto y la señal de la prueba que falla. Rúbrica: 3 = aristas por zonas + L1-SIS en reach(L4); 2 = uno; 1 = vago; 0 = nada.
+- **EX048 — Interfaz.** Enumere tres campos de un contrato de interfaz de lista de etiquetas. Rúbrica: 3 = nombre de la etiqueta, tipo/unidades de ingeniería, frecuencia de actualización (o equivalente); 2 = dos; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+Requisitos que se pueden probar, vínculos que se pueden seguir, interfaces con versión.
+
+### Siga estudiando — capítulo 16 de 50
+
+[← Capítulo 15 (borrador)](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 (borrador) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de control y realimentación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) ajustar un lazo PI sencillo y ver cómo la acción integral elimina el error estacionario; (2) situar sensores de seguridad en el lazo de control sin desestabilizarlo; (3) evitar las tormentas de alertas que ocultan las alarmas de proceso.
+
+### 17.1 El PI en una página
+
+Un controlador proporcional deja un error estacionario; la acción integral acumula el error y lo elimina. El laboratorio cambia en escalón el punto de consigna de nivel de 50 a 60 y compara solo kp con kp+ki. Los ingenieros de seguridad necesitan esta soltura para no proponer detectores que luchen contra el controlador.
+
+```python
+# Lab 17 - discrete PI level control vs. setpoint step (synthetic)
+def sim(kp, ki, steps=200, sp=60.0):
+    level, integ, err_hist = 50.0, 0.0, []
+    for t in range(steps):
+        err = sp - level
+        integ += err * 0.1
+        u = max(0.0, min(3.0, kp*err + ki*integ))   # inflow m3/h capped
+        level += (u - 0.02*level)*0.1
+        err_hist.append(abs(err))
+    return level, sum(err_hist)/len(err_hist), max(err_hist[50:])
+for kp,ki in ((0.05,0.0),(0.05,0.01),(0.2,0.01)):
+    final, mae, peak = sim(kp,ki)
+    print(f"kp={kp} ki={ki} final={final:.2f} mae={mae:.2f} peak_abs_err_after_5s={peak:.2f}")
+```
+
+Salida esperada:
+
+```text
+kp=0.05 ki=0.0 final=44.61 mae=13.29 peak_abs_err_after_5s=15.38
+kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
+kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
+```
+
+Lena usa el laboratorio para explicar a sus colegas por qué un detector debe vigilar el error y no el nivel bruto. La salida del laboratorio muestra que el error estacionario se reduce mucho cuando se añade la acción integral (nivel final de unos 57–58 frente a 44,61 sin ella, todavía acercándose a 60 al final de la ejecución), lo que ayuda a los colegas a ver cómo responde un controlador a una perturbación. Un detector que generara alarmas sobre el propio nivel saltaría cada vez que cambiara un punto de consigna.
+
+### 17.2 Sensores en el lazo
+
+La inspección en línea añade latencia. Si la constante de tiempo del proceso es de minutos (nivel de un tanque), unas decenas de milisegundos no importan. Si es de decenas de milisegundos (presión rápida), prefiera derivaciones pasivas. Mida antes de desplegar (capítulo 3). En el banco, Lena compara la latencia añadida por cada dispositivo candidato con la constante de tiempo del lazo en que se colocaría: en la línea troncal de T-1 el margen es de minutos, en el patín del compresor solo de decenas de milisegundos, de modo que un mismo dispositivo puede ser aceptable en el primero e inaceptable en el segundo. La latencia medida en el banco decidió ambas elecciones, no las cifras declaradas por el proveedor. Lena registra los valores medidos con las constantes de tiempo de cada lazo, para poder revisar la decisión si cambia un proceso.
+
+### 17.3 Tormentas de alertas
+
+Si cada alerta cibernética de severidad media envía un aviso a todo el sitio, la gente silencia el buscapersonas y luego se pierde la alarma de proceso que importa. El enrutamiento por severidad y los límites de tasa de las notificaciones son amortiguación, exactamente como en el laboratorio de racionalización de alarmas.
+
+> **Caso sintético — Ashford Batch Plant.** Tras revisar el laboratorio de PI, Lena rechazó un equipo de DPI en línea en el patín del compresor (lazo rápido) y aprobó una derivación serie de solo escucha en la línea troncal lenta del tanque.
+
+El enrutamiento de Lena en ABP solo avisa al jefe de turno ante eventos de severidad alta.
+
+### 17.4 Errores y límites
+
+El PI de manual ignora la fricción estática de las válvulas y el retardo de los sensores. Use los historiadores de planta para el ajuste real; el laboratorio sirve para la intuición. Lena advierte a los revisores que las curvas ordenadas del laboratorio no son lo que muestra el historiador de planta. Los lazos reales de ABP tienen fricción estática en las válvulas y retardo en los transmisores, lo que hace la respuesta más lenta y ruidosa. Cualquier umbral de detector propuesto a partir de resultados de laboratorio se contrasta con una semana de datos del historiador antes de usarse, y el ajuste de los controladores reales sigue en manos de los ingenieros de control. Lena registra las diferencias encontradas.
+
+### Nota práctica
+
+Dibuje el lazo: punto de consigna, error, controlador, actuador, proceso, sensor, y marque dónde se ubica su dispositivo de seguridad. Si no puede marcarlo, no sabe si está midiendo o actuando.
+
+### 17.1b Puntos de ajuste y ubicación de las personas
+
+Escriba el punto de ajuste junto al sensor (tiempo de ciclo ≤ 50 ms). Revise los puntos de ajuste cuando la planta cambie de receta o cuando los avisos falsos superen una tasa acordada. Ponga a las personas donde se requiera juicio sobre la autorización; ponga automatización donde el retraso sea peligroso. Aprobar la ampliación de un conducto es tarea humana. Denegar una escritura fuera de rango es automatización. En ABP, el punto de ajuste del tiempo de ciclo del monitor serie es de 50 ms, y se revisa cuando cambian las recetas. La regla práctica es sencilla: automatización para las decisiones rápidas y bien definidas; personas para los juicios sobre autorización y riesgo.
+
+### Ejercicios — capítulo 17
+
+- **EX049 — Laboratorio.** ¿Qué par (kp, ki) se acerca más a 60 con el menor mae? Rúbrica: 3 = (0.2, 0.01) con cifras; 2 = solo el par; 1 = par incorrecto; 0 = nada.
+- **EX050 — Ubicación.** En línea o derivación para un lazo de presión de 20 ms: elija y justifique. Rúbrica: 3 = derivación/pasivo, riesgo de latencia; 2 = elección sin justificación; 1 = en línea a la ligera; 0 = nada.
+- **EX051 — Amortiguación.** Una regla de amortiguación para las alertas cibernéticas en la sala de control. Rúbrica: 3 = específica (agrupación, severidad, tasa); 2 = vaga; 1 = nada útil; 0 = nada.
+
+### Síntesis del capítulo
+
+Entienda el lazo antes de insertar seguridad; amortigüe las alertas para que las alarmas de proceso sigan oyéndose.
+
+### Siga estudiando — capítulo 17 de 50
+
+[← Capítulo 16 (borrador)](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 (borrador) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitectura de seguridad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) aplicar la zonificación Purdue/62443 en ABP; (2) definir los límites de confianza para el acceso de ingeniería; (3) elegir cuándo un entorno sintético es el lugar adecuado para probar.
+
+### 18.1 Zonas que coinciden con la seguridad funcional
+
+L0/L1 contienen el proceso y el control básico; L2, la supervisión; L3, las operaciones del sitio; L3.5, la DMZ; L4/L5, la empresa. El SIS se ubica con conductos cuidadosamente controlados. Los diagramas de arquitectura deben coincidir con el grafo de alcanzabilidad, no con un póster comercial de Purdue. Lena contrasta el diagrama de ABP con los resultados de alcanzabilidad de la exportación del cortafuegos en cada revisión. En ABP, los puertos de ingeniería del SIS-B solo son alcanzables a través del camino del conmutador con llave durante las pruebas programadas, y la oficina solo alcanza los datos de SCADA a través de la réplica del historiador en la DMZ. Cuando el diagrama y los resultados de alcanzabilidad no coinciden, ganan los resultados y se corrige el diagrama. Lena marca el diagrama con el hash de la exportación con la que se contrastó.
+
+### 18.2 Acceso de ingeniería
+
+Las estaciones de ingeniería y los portátiles de los proveedores cruzan límites de confianza. Prefiera: servidor de salto en la DMZ, cuentas de duración limitada, sesiones monitorizadas, ninguna VPN permanente desde internet hasta L2. Los USB y los módems celulares también son arquitectura: inventaríelos. En ABP, las sesiones de los proveedores pasan por un servidor de salto en la DMZ con cuentas de duración limitada y sesiones grabadas. El inventario de Lena enumera cada portátil de ingeniería autorizado a conectarse, y cualquier VPN permanente encontrada en una revisión se notifica como hallazgo. El uso de USB en las estaciones de ingeniería se registra y se revisa cada mes.
+
+### 18.3 Entornos sintéticos
+
+Cuando los métodos son ruidosos o la planta es frágil, use un entorno sintético o un gemelo digital que refleje la configuración. Los resultados respaldan entonces afirmaciones sobre la configuración reflejada, no sobre el comportamiento del proceso en servicio. Dígalo en el informe.
+
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
+
+Salida esperada:
+
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
+
+> **Caso sintético — Ashford Batch Plant.** La arquitectura objetivo del CNHP es el grafo por zonas: L4 visualiza a través de L3.5; la ingeniería del SIS solo mediante el conmutador con llave; ningún conducto de L2 a L1-SIS.
+
+La copia de banco de Lena del cortafuegos y del monitor de ABP es un entorno de este tipo; sus informes indican que los resultados se aplican solo a la configuración reflejada.
+
+### 18.4 Errores y límites
+
+Los diagramas envejecen. Vuelva a validar las zonas frente a la exportación del cortafuegos en servicio en cada ventana. Lena compara el diagrama con la exportación del cortafuegos en servicio al comienzo de cada ventana y registra cualquier diferencia como hallazgo. Un diagrama que no se ha contrastado con la exportación se marca como no verificado, para que nadie se apoye en él por error durante un incidente. La nueva prueba a los seis meses encontró más adelante exactamente este tipo de deriva. La comprobación lleva minutos con el script de alcanzabilidad. Su resultado se archiva con el registro de la ventana.
+
+### Nota práctica
+
+Cuelgue el diagrama de zonas junto al mapa de privilegios del capítulo 8. Cuando un proveedor pida una regla temporal, señale la pared y pregúntele qué arista quiere añadir y qué requisito rompe.
+
+### 18.1b Servidores de salto y tráfico de salida
+
+Los servidores de salto de ingeniería tienen un gran valor: bastiónelos, registre el inicio y el final de las sesiones, prohíba los agentes personales de sincronización de archivos y reconstrúyalos a partir de imágenes de referencia entre ventanas cuando sea posible. Las zonas de evaluación y de ingeniería necesitan listas de salida permitida: solo los CIDR de planta dentro del alcance y el almacén de evidencia. Una salida abierta convierte un portátil comprometido en un punto de pivote que el permiso de trabajo nunca autorizó.
+
+
+
+Los diagramas de red de la zona de evaluación van al expediente con la misma disciplina de hash que los archivos de evidencia. Cuando un auditor pregunta cómo llegó el tráfico a L2, se muestra la versión del diagrama que estaba vigente, no un boceto más reciente y limpio.
+
+### Ejercicios — capítulo 18
+
+- **EX052 — Esquema de zonas.** Sitúe el HMI, el PLC-A, el SIS-B, el historiador y un PC de oficina en zonas y nombre dos controles en las flechas. Rúbrica: 3 = zonas claras + dos controles; 2 = solo zonas; 1 = confuso; 0 = nada.
+- **EX053 — Límite.** ¿Por qué «enviar por correo un CSV de recetas a mi Gmail» es una violación de límites? Rúbrica: 3 = los datos salen de las zonas controladas/la autorización; 2 = vaguedad sobre privacidad; 1 = vago; 0 = lo da por bueno.
+- **EX054 — Afirmación sobre el gemelo.** Frase de limitación para pruebas realizadas solo en un entorno sintético. Rúbrica: 3 = afirma sobre la configuración, no sobre el proceso en servicio; 2 = vaga; 1 = afirma de más; 0 = nada.
+
+### Síntesis del capítulo
+
+Zonas, límites del acceso de ingeniería y límites honestos de lo que un gemelo puede demostrar.
+
+### Siga estudiando — capítulo 18 de 50
+
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
 
 <a id="worked-results"></a>
 
@@ -878,6 +1248,42 @@ Respuestas modelo para EX001–EX150. Ashford Batch Plant, Lena Okafor, el CNHP 
 **EX035.** Parche de la base de datos del historiador (2,5 h, riesgo 5) aplazado: W1 se ocupó con el firmware del PLC-A y el del conmutador; W2, con el sistema operativo del HMI y el antivirus de eng-WS; no quedaban horas libres.
 
 **EX036.** USB del proveedor permitido solo en eng-WS-2, 14 de marzo de 09:00 a 12:00, soportes analizados en un quiosco independiente, sesión grabada en video; el puerto se desactiva después.
+
+**EX037.** Use solo la réplica del historiador en la DMZ (L3.5). SELECT limitado a tag, value, timestamp. LIMIT 10000. Sin volcados. Archivos destruidos en un plazo de 24 h, con confirmación en el ticket.
+
+**EX038.** Obtenga credenciales de analista emitidas para la prueba; conéctese; intente un UPDATE/INSERT en una tabla de anotaciones de puntos de consigna; registre el éxito o el permiso denegado. Sin cargas útiles elaboradas.
+
+**EX039.** Seguros: tag_id, value, quality_code, timestamp. Prohibidos: operator_name, customer_order_id, recipe_secret_key.
+
+**EX040.** Lista de permitidos Modbus abp-modbus-v1.4.2 (SHA de git c0ffee1), cargada el 14 de marzo a las 02:05 desde el repositorio de versiones firmadas.
+
+**EX041.** Toda solicitud de incorporación de cambios que amplíe conductos (arista o código añadidos, o denegación eliminada) necesita un ticket AUTH vinculado y un segundo responsable de código; las que restringen necesitan un responsable.
+
+**EX042.** Una integración continua con credenciales de la VPN de planta tocaría sistemas fuera de una ventana autorizada por una persona, podría filtrar secretos en los registros y haría que las compilaciones dependieran de las redes de planta. Los datos de prueba sintéticos mantienen la integración continua segura y repetible.
+
+**EX043.** Confidencialidad: poco impacto directo (escribir puntos de consigna no es leer). Integridad: cambio no autorizado del punto de consigna de nivel de T-1. Disponibilidad: el lote puede abortarse o entrar en enclavamiento. Seguridad funcional: el disparo por nivel muy alto del SIS-B sigue siendo independiente si los conductos se mantienen; dígalo de forma explícita.
+
+**EX044.** Vulnerabilidad: escritura Modbus sin autenticación. Exposición: escribible desde la red de HMI de L2. Riesgo de proceso: el juicio del propietario de la planta sobre la probabilidad y la consecuencia de un desbordamiento dado el SIS-B, aceptado o corregido por él.
+
+**EX045.** No publicamos una única puntuación de «hackeabilidad». Estas son las medidas: alcanzabilidad del SIS (no), críticos abiertos (1), alarmas por operador y hora (1,05), parches de alto riesgo aplazados (0).
+
+**EX046.** «Ningún equipo de L4 deberá tener un conducto permitido hacia los servidores SCADA de L2; se verifica mediante alcanzabilidad en cada exportación del cortafuegos». «Toda visualización de datos de proceso desde L4 deberá usar la réplica del historiador en L3.5; se verifica por la ausencia de reglas directas de L4 a L2 y mediante pruebas de la ACL de la réplica».
+
+**EX047.** Artefacto: lista de aristas por zonas sin L2 a L1-SIS y sin L4 a L2. Señal: lab_reach informa writes_to_SIS=True o L1-SIS en el conjunto alcanzable desde L4.
+
+**EX048.** Nombre/identificador de la etiqueta, tipo de dato y unidades de ingeniería, frecuencia de actualización o de excepción, significado del código de calidad, responsable: tres cualesquiera con un significado claro.
+
+**EX049.** kp=0.2 ki=0.01: final≈58.15, mae≈4.62, el mejor de los tres. El P puro (ki=0) deja un error estacionario mayor (final≈44.61).
+
+**EX050.** Prefiera una derivación pasiva o una réplica de tráfico; la DPI en línea corre el riesgo de añadir una latencia comparable a la escala de tiempo del lazo. Mida primero en una copia de banco.
+
+**EX051.** Aviso inmediato para los eventos cibernéticos relevantes para la seguridad funcional; agrupar los eventos medios en un resumen por turno; suprimir los duplicados con la misma huella durante 24 h.
+
+**EX052.** PC de oficina en L4; historiador en L3; HMI en L2; PLC-A en L1; SIS-B en L1-seguridad. Controles: salto por la DMZ para la visualización desde L4; ninguna arista de L2 al SIS; lista de permitidos en Modbus. Se acepta cualquier esquema coherente con dos controles.
+
+**EX053.** Los datos de recetas salen de la vía controlada de TO/TI hacia una cuenta personal no autorizada, lo que rompe la confidencialidad y la conservación.
+
+**EX054.** Las pruebas usaron un entorno sintético que refleja la configuración de ABP; los resultados respaldan afirmaciones sobre esa configuración bajo el permiso de trabajo, no sobre el comportamiento del proceso en servicio ni sobre los datos de producción.
 
 <a id="references"></a>
 
