@@ -2179,7 +2179,7 @@ Three sources produce LANTERN's rules. **Scenarios** (Chapter 13): each step on 
 
 In critical services, many of the most important alerts are about things that *stop* happening: a station that stops reporting, a relay that stops forwarding, a log source that falls silent, a backup that does not run. Absence rules need an **expected rhythm** (a heartbeat every five minutes) and a **tolerance** (alert after 15 minutes of silence). They catch outages, failed devices, cut cables, misconfigurations — and attackers who disable logging.
 
-Rule C caught PS-09 after 40 minutes of silence; its 15-minute tolerance is the design choice.
+Rule C flagged PS-09's 40-minute silence at 23:00, 15 minutes after its last heartbeat; that 15-minute tolerance is the design choice.
 
 ### 19.3 Events, episodes and alert quality
 
@@ -2253,7 +2253,7 @@ Expected output (Python 3.13.5):
 alerts: 4 | rule B fired per event, not per episode: 2
 ```
 
-Count the alerts by episode, not by line. Rule A fires once for 192.0.2.44, Rule B twice for one workstation, at 22:16 and 22:31, and Rule C once for PS-09 at 23:00. That is four alerts for three episodes; tuning Rule B to alert once and update a count brings it to three. Then confirm the non-event: `e.strand`'s single failed login from an internal address stays below Rule A's threshold, as intended.
+Count the alerts by episode, not by line: the output's four alerts are three episodes, and tuning Rule B to alert once and update a count brings it to three.
 
 ### 19.8 Common errors and limits
 
