@@ -299,9 +299,9 @@ Write the priorities as a short numbered list with an owner for each item, usual
 
 ### 3.8 Worked example
 
-BBO's list (synthetic): online shop (provider; customer accounts 10 years; provider documentation says hybrid key exchange enabled); payroll service (provider; 12 years; unknown — ask); email (provider; payroll attachments; "rolling out" — ask for date); supplier file transfer (provider; contracts 7 years; classical — ask); oven controller (manufacturer; no personal data; unknown — ask about updates). Priorities: payroll and email questions first.
+BBO's list (synthetic): online shop (provider; customer accounts 10 years; hybrid key exchange seen in your browser's connection details, 8 October); payroll service (provider; 12 years; unknown — ask); email (provider; payroll attachments; "rolling out" — ask for date); supplier file transfer (provider; contracts 7 years; classical — ask); oven controller (manufacturer; no personal data; unknown — ask about updates). Priorities: payroll and email questions first.
 
-The list mixes facts and unknowns, and each unknown ends with ask, which turns it into a task. It also records where each fact came from, such as provider documentation for the online shop. Priya can read it in two minutes and see what to do first.
+The list mixes facts and unknowns, and each unknown ends with ask, which turns it into a task. It also records where each fact came from, such as your browser's connection details for the online shop. Priya can read it in two minutes and see what to do first.
 
 ### 3.9 Practice activities
 
@@ -577,6 +577,8 @@ Model answers; any answer meeting the rubric scores equally. Bluebird Bakery Onl
 ## Four-subject teaching route
 
 This is the **rapid** introductory course for new learners, following the synthetic **Bluebird Bakery Online (BBO)**: foundations and decisions, safe practice, mapping services and dependencies, and one guided lab with an owner's readiness note.
+
+<a id="references"></a>
 
 ## References
 
