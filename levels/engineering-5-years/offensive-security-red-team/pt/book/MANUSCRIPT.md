@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para a Graduação em Engenharia
 
 - Idioma: português do Brasil (`pt`); cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3; os capítulos 13–50 (EX037–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros engenheiros de sistemas de segurança que vão projetar ferramentas de avaliação autorizada e plataformas de medição e relato.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais amplo; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais voltado à implementação. **Este livro é centrado no projeto**: requisitos, arquitetura, controles, verificação e evidências de projeto final para plataformas autorizadas de red team.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 13–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -843,11 +843,460 @@ Leia a configuração com uma conta temporária; nomeie o repositório de identi
 
 [← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) delimitar a avaliação de bancos de dados sem extrair dados pessoais; (2) testar a autorização na camada de consulta; (3) desenhar conjuntos de dados sintéticos para os laboratórios.
+
+### 13.1 Minimização de dados
+
+O trabalho autorizado com bancos de dados usa linhas sintéticas ou cópias mascaradas. Exportar dados pessoais de produção para o notebook de um estudante é um incidente de privacidade, não um achado. A ROE precisa declarar: nenhum SELECT de colunas marcadas como pessoais, nenhum dump de tabela inteira, limites de linhas e uma data de destruição para qualquer extração temporária. Limites de linhas e datas de destruição transformam extrações temporárias em objetos controlados, e não em suvenires. Marcar as colunas pessoais dá à ferramenta de consulta algo para recusar automaticamente. Um notebook de estudante com um dump de produção é um vazamento esperando por uma mochila perdida. A lista de verificação de ROE de Sam reprova o kickoff se qualquer uma dessas cláusulas estiver faltando.
+
+### 13.2 Autorização, não receitas de injeção
+
+A pergunta de engenharia costuma ser "o papel R consegue ler a tabela T?". Teste isso com o papel concedido. Ensinar payloads de injeção de SQL está fora do limite de segurança deste livro; se a injeção estiver no escopo de um engajamento profissional, ela fica numa linha de método separada e num plano de divulgação próprio, não num exercício de casa. Testes de papel respondem à pergunta real do cliente: quem, na equipe dele, consegue ver quais tabelas. Os payloads ficam fora deste curso porque ensinam a causar dano sem ensinar a engenharia do controle de acesso. Quando uma ROE profissional inclui injeção, ela é um método nomeado com seu próprio caminho de divulgação, nunca um exercício de laboratório. Sam registra as lacunas de autorização como achados sobre papéis e concessões.
+
+### 13.3 Dados sintéticos
+
+Gere clientes sintéticos determinísticos com regras no estilo do faker ou com sementes fixas, para que os laboratórios sejam reproduzíveis. Nunca copie um backup de produção para o repositório do curso.
+
+> **Caso sintético — Riverstone Transit.** Sam precisava de linhas de produtos tarifários para um teste de relatório. A equipe de operações forneceu um snapshot sintético apenas com ids de produtos e preços — sem nomes de passageiros — e uma etiqueta de destruição de 48 horas.
+
+Sementes fixas fazem com que dois estudantes e um job de CI vejam os mesmos clientes e as mesmas verificações falhando. Backups de produção trazem o dever de privacidade e uma exposição irreversível se o repositório vazar. Sam gera os dados no script de preparação do laboratório e versiona só o gerador, nunca um dump.
+
+### 13.4 Erros e limites
+
+Um mascaramento que deixa valores raros e únicos ainda pode identificar pessoas. Ao ensinar, prefira a geração sintética a um mascaramento imperfeito. Um código de doença rara ou um cargo incomum pode reidentificar alguém mesmo depois de os nomes serem removidos. Linhas sintéticas evitam completamente essa discussão no ensino. Quando um cliente ainda exige extrações mascaradas, Sam espera a aprovação de privacidade, mantém os arquivos em hosts controlados pelo cliente e registra a data de destruição no log do engajamento. Os laboratórios de ensino nunca recebem linhas de produção de cliente algum, nem mesmo mascaradas.
+
+### 13.3b Controles por linha e por coluna
+
+Data warehouses modernos oferecem políticas por linha e por coluna. As perguntas da avaliação passam a ser: o papel R vê a coluna C? O filtro de linhas F se aplica? Teste com o próprio papel. Documente a versão do motor de políticas; "rodamos SELECT *" com um papel de administrador prova pouco sobre a exposição de um analista. Um SELECT * de administrador mostra o que um administrador vê, o que é a pergunta errada para a exposição de um analista. Rodar como o papel R, com a versão do motor de políticas registrada, faz o resultado corresponder ao comportamento de produção. Negações de coluna e filtros de linha falham de maneiras diferentes, então cada um precisa de suas próprias verificações. Sam guarda o nome do papel em cada achado desse tipo.
+
+### 13.1b Armadilhas do mascaramento
+
+Substituir nomes por iniciais ou embaralhar CEPs raros ainda deixa quase-identificadores. Para o ensino e para a maioria das avaliações, a geração sintética com semente fixa é mais simples e mais segura do que discutir máscaras imperfeitas. Se o anfitrião insistir em extrações mascaradas de produção, exija uma revisão de privacidade e mantenha a extração fora dos notebooks dos estudantes. Quase-identificadores se combinam: um ano de nascimento, uma garagem e um cargo raro podem apontar para um único funcionário. A síntese com semente fixa contorna o debate e ainda exercita a lógica de autorização. Extrações mascaradas que precisem ser usadas ficam fora de dispositivos pessoais e sob as regras de retenção da revisão de privacidade. Sam prefere demonstrar o mesmo achado em linhas sintéticas sempre que o cliente permite.
+
+### Exercícios
+
+- **EX037 — Cláusula de dados da ROE.** Escreva uma cláusula de tratamento de dados para uma avaliação de Postgres. Rubrica: 3 = sem colunas de dados pessoais, limite de linhas, sem dumps, data de destruição, preferência por sintéticos; 2 = três; 1 = um; 0 = nada.
+- **EX038 — Teste de autorização.** Como você testa se o papel `analyst` consegue ler `passengers` sem usar uma técnica de injeção? Rubrica: 3 = conectar como analyst, tentar o SELECT, registrar concessão/negação; 2 = ideia sem o papel; 1 = vago; 0 = injeção.
+- **EX039 — Sintéticos.** Dê três campos seguros para uma tabela sintética de tarifas e dois que nunca podem aparecer no conjunto de dados do curso. Rubrica: 3 = por exemplo, product_id, price, zone vs. nome, card_number; 2 = parcial; 1 = fraco; 0 = nada.
+
+### Síntese
+
+Minimize os dados, teste os papéis, sintetize para ensinar. O banco de dados não é uma sala de troféus.
+
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) colocar as ferramentas de avaliação sob controle de versão, com revisão; (2) bloquear mudanças que ampliem o escopo; (3) manter a CI só com fixtures sintéticos.
+
+### 14.1 Ferramentas são produtos
+
+O TrackScope e o FindingsDesk são software. Precisam de repositórios, revisão de código, releases com tags e changelogs. Uma ROE que cita "TrackScope" sem versão está incompleta; cite `TrackScope v0.9.2` ou o SHA do git usado. Sem uma versão, dois engenheiros podem rodar builds diferentes e discordar sobre o que a ferramenta negou. Tags e changelogs tornam essa discordância verificável. A revisão de código pega uma verificação de escopo que falha aberta antes que ela chegue a um engajamento. Sam cola o SHA nas anotações do kickoff e se recusa a começar se o binário em execução for diferente.
+
+### 14.2 Bloqueie a ampliação
+
+Merges que acrescentam um CIDR, abrem uma porta ou removem uma entrada da lista de exclusão exigem um segundo revisor e um ticket de autorização vinculado. Merges que só restringem o escopo podem ser mais leves. Codifique isso no CODEOWNERS ou numa verificação obrigatória que compare os arquivos de escopo. Ampliar o escopo é um evento de autorização, então precisa da mesma atenção dupla que uma mudança de ROE. A restrição pode andar mais rápido porque não consegue criar novos alvos. Uma verificação obrigatória sobre as diferenças de escopo impede uma adição silenciosa de CIDR num pull request grande. Sam vincula cada merge de ampliação ao ticket de aprovação por escrito do cliente.
+
+### 14.3 Fixtures de CI
+
+A integração contínua roda os laboratórios e os testes unitários sobre dados sintéticos. Nunca aponte a CI para uma rede de cliente. Os dados de semente ficam no repositório; os segredos de engajamentos reais ficam num cofre e nunca nos logs da CI.
+
+> **Caso sintético — Riverstone Transit.** Um PR acrescentou 10.30.0.0/16 ao escopo "para o mês que vem". A verificação de diferenças de escopo da CI bloqueou o merge até que o ticket AUTH-442 fosse vinculado e um segundo dono aprovasse.
+
+Uma CI capaz de alcançar uma rede de cliente transformaria cada teste quebrado numa possível sondagem. Fixtures sintéticos mantêm as falhas locais e reproduzíveis. Segredos em logs viram incidentes; cofres os mantêm fora da saída do build. Os pipelines de Sam não têm rotas para as redes dos engajamentos e falham se alguém acrescentar uma.
+
+### 14.4 Erros e limites
+
+As tags de versão podem se afastar do que os operadores de fato rodam; registre a versão em execução no log do engajamento logo no início. Os operadores instalam hotfixes à mão e esquecem de atualizar a tag na lista de verificação. Registrar a versão em execução no início torna a divergência visível antes de o tráfego começar. Sam compara essa linha de log com a versão fixada na ROE e interrompe a janela em caso de discordância, até que os operadores instalem o build fixado ou a ROE seja revisada. Um post-it num notebook não é uma fixação de versão.
+
+### 14.3b Trens de release vs. hotfixes
+
+As melhorias normais seguem num trem de release com os Laboratórios I/II. Hotfixes de segurança podem pular funcionalidades, mas não a verificação: um pacote mínimo de regressão de falha fechada é obrigatório. Marque os hotfixes com clareza, para que um engajamento possa fixar o build do trem ou o SHA do hotfix de olhos abertos. Correções de segurança ainda precisam provar o comportamento de falha fechada, mesmo quando as funcionalidades esperam. Tags claras impedem que um engajamento misture silenciosamente um build do trem com um hotfix feito num notebook. Fixar de olhos abertos significa que o cliente sabe qual binário produziu a evidência. Sam mantém o pacote de regressão pequeno, para que os hotfixes continuem rápidos sem pulá-lo.
+
+### 14.1b Modelo de branches
+
+Use branches de vida curta com CI obrigatória sobre fixtures sintéticos. Branches de funcionalidade de vida longa se afastam das correções de segurança na main e recriam merges que falham abertos. Proteja a main com revisores obrigatórios e verificações de status nomeadas segundo as linhas de segurança do Laboratório I. Branches curtas recebem as correções de segurança da main em vez de reinventá-las semanas depois. Branches longas são o caminho pelo qual merges que falham abertos voltam depois de terem sido corrigidos. Verificações obrigatórias nomeadas segundo as linhas do Laboratório I tornam impossível pular a suíte de segurança com uma aprovação casual. Sam apaga branches abandonadas toda semana, para que a divergência não possa se esconder.
+
+### Nota de prática
+
+As fixações de versão aparecem na lista de verificação do kickoff do engajamento, ao lado do hash da ROE. Os operadores leem a fixação em voz alta antes de a janela abrir, para que ninguém rode silenciosamente um build de notebook. Se a fixação e o binário em execução discordarem, a janela não começa até que alguém registre uma nota AUTH ou faça o rollback. Esse ritual evitou mais incidentes do que qualquer banner na interface, porque obriga uma pessoa a olhar para o SHA enquanto o cliente ainda está na chamada.
+
+### Exercícios
+
+- **EX040 — Linha de versão.** Escreva a frase de método que fixa o TrackScope para um engajamento. Rubrica: 3 = nome, versão/SHA, data de carga; 2 = nome+versão; 1 = só o nome; 0 = nada.
+- **EX041 — Regra de bloqueio.** Escreva uma política de merge de uma frase para os arquivos de escopo. Rubrica: 3 = segundo revisor + ticket de autorização para ampliar; 2 = só o revisor; 1 = vago; 0 = nada.
+- **EX042 — Fronteira da CI.** Por que a CI nunca pode usar credenciais de VPN do cliente? Rubrica: 3 = risco de automação não autorizada, vazamento de segredos nos logs, não determinismo; 2 = um motivo sólido; 1 = vago; 0 = errado.
+
+### Síntese
+
+Trate o software de avaliação como software de produção: versões, bloqueios de revisão e CI sintética.
+
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear a tríade CIA e a autenticação/autorização para perguntas de avaliação; (2) distinguir vulnerabilidade, exposição e risco; (3) recusar pontuações de risco sem um modelo.
+
+### 15.1 CIA como perguntas
+
+Confidencialidade: quem pode ler isto? Integridade: quem pode mudar isto? Disponibilidade: o que impede isto de funcionar? Cada achado deve dizer qual propriedade é afetada e para qual ativo. "Problema de segurança" sem esse mapa não leva a ação. Mapear cada achado para confidencialidade, integridade ou disponibilidade diz a quem corrige que tipo de dano evitar. Um ativo sem propriedade deixa o cliente adivinhando se deve criptografar, validar ou acrescentar capacidade. Sam rejeita rascunhos de tickets que ainda dizem apenas "problema de segurança" e os devolve com as três perguntas listadas.
+
+### 15.2 Vulnerabilidade, exposição, risco
+
+Uma senha padrão é uma vulnerabilidade. Num host de staging alcançável a partir da rede corporativa, ela é uma exposição. O risco acrescenta probabilidade e impacto para a organização — o que exige o contexto dela, não uma história universal baseada só no CVSS. O FindingsDesk guarda os campos de impacto e de exposição separadamente; a aceitação do risco fica com o cliente. Separar os três impede que uma senha padrão num host de laboratório isolado receba a mesma pontuação que uma no portal público. Os campos de exposição capturam a alcançabilidade; os de impacto capturam o dano; a aceitação do risco residual continua sendo uma decisão do cliente. O CVSS sozinho não conhece o número de passageiros da Riverstone Transit nem o arranjo de suas garagens. Sam preenche exposição e impacto e deixa o campo de aceitação para o dono do lado do cliente.
+
+### 15.3 Pontuações vazias
+
+Albrecht e Jensen (arXiv:2010.06377) criticam pontuações de metodologia que não preveem resultados. Prefira medidas concretas: contagem de sondagens fora do escopo, tempo até a correção, precisão na taxa de base do cliente. Se você mostrar uma pontuação, mostre o modelo e as entradas.
+
+> **Caso sintético — Riverstone Transit.** Sam parou de colocar um único "risco = 42" nos slides. A apresentação agora mostra dois achados críticos, três violações de SLA e 71% de cobertura de técnicas do conjunto planejado.
+
+Uma pontuação de metodologia que não prevê resultados lisonjeia quem avalia e engana quem compra. Contagens de sondagens fora do escopo e o tempo até a parada são feios e úteis. Quando uma pontuação precisa aparecer, o modelo e as entradas ficam ao lado dela, para que outro engenheiro possa recalculá-la. Os painéis de Sam começam por essas medidas concretas.
+
+### 15.4 Erros e limites
+
+Os fundamentos são vocabulário compartilhado; não são um modelo de ameaças completo. Siga para o Capítulo 23 para a análise estruturada de falhas. O vocabulário compartilhado faz as equipes conversarem; não lista todos os modos de falha. A análise estruturada mais adiante no curso se apoia nesses termos em vez de substituí-los. Sam trata um rótulo CIA como o começo de um achado, não como o fim do modelo de ameaças. Ele espera que os capítulos de análise estruturada acrescentem modos de falha que esses termos sozinhos não conseguem nomear. Até lá, o vocabulário ainda evita tickets vagos.
+
+### 15.3b Mapeando para tickets
+
+Todo achado deve citar qual propriedade (C, I ou A) é afetada principalmente e se a questão é uma vulnerabilidade, uma exposição ou um julgamento de risco deixado ao cliente. O FindingsDesk pode tornar os campos obrigatórios, para que os relatórios fiquem consistentes entre autores e semestres. Campos obrigatórios impedem que os autores inventem abreviações particulares para as mesmas ideias. A consistência entre semestres significa que um engenheiro de reteste consegue ler o ticket do ano passado sem um guia de tradução. Clientes que comparam duas empresas veem alegações com o mesmo formato. O modelo de Sam bloqueia o envio até que a propriedade e o tipo de questão estejam preenchidos.
+
+### 15.1b Da propriedade ao teste
+
+Se um achado alega impacto na confidencialidade, o plano de validação precisa incluir uma verificação de confidencialidade (quem ainda consegue ler). Se alega impacto na disponibilidade, a validação inclui um canário ou uma sondagem sintética — não um novo ataque. Alinhe a propriedade, o achado e o método de reteste num único parágrafo do ticket. Uma alegação de confidencialidade sem uma verificação de quem consegue ler não pode ser encerrada com honestidade. Alegações de disponibilidade precisam de um canário suave, não de uma nova inundação. Um parágrafo que amarra propriedade, achado e reteste mantém o ticket coerente depois da passagem de bastão. Sam cola esse parágrafo no campo do plano de validação antes de o achado sair do rascunho.
+
+### Exercícios
+
+- **EX043 — Mapa CIA.** Mapeie o SYN-001 (administrador padrão em staging) para C/I/A, com uma frase para cada. Rubrica: 3 = os três com escopo; 2 = dois; 1 = um; 0 = nada.
+- **EX044 — Termos.** Em uma frase cada, distinga vulnerabilidade, exposição e risco para o SYN-005. Rubrica: 3 = divisão clara; 2 = dois claros; 1 = confuso; 0 = nada.
+- **EX045 — Recusa de pontuação.** Uma parte interessada quer uma única pontuação de "hackeabilidade" de 0 a 100. Escreva uma recusa com uma alternativa. Rubrica: 3 = recusa a pontuação vazia, oferece medidas concretas; 2 = só recusa; 1 = vago; 0 = inventa uma pontuação.
+
+### Síntese
+
+Nomeie a propriedade, separe exposição de risco e prefira medidas que você consegue recalcular.
+
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever requisitos testáveis; (2) rastrear um requisito até um artefato; (3) gerenciar as interfaces entre TrackScope, FindingsDesk e PulseMap.
+
+### 16.1 Requisitos testáveis
+
+"O sistema deve ser seguro" não é um requisito. "O TrackScope rejeita qualquer alvo fora do conjunto assinado de CIDRs/portas e registra o código do motivo" é. Cada requisito precisa de um id, uma declaração com "deve", um método de verificação (teste, inspeção, análise) e um dono. Declarações com "deve" e ids transformam discussões em verificações. O método de verificação e o dono impedem requisitos que ninguém consegue provar e ninguém mantém. Sam escreve o comportamento de rejeitar e registrar do TrackScope como o requisito TS-SCOPE-1, com um teste unitário como método. Qualquer coisa mais fraca é reescrita antes de o design começar.
+
+### 16.2 Rastreabilidade
+
+Uma matriz simples: requisito → elemento de design → caso de teste → evidência do engajamento. Quando um achado mostra um contorno de escopo, você sabe qual requisito e qual teste falharam. Sem a matriz, os post-mortems viram caça a culpados. Quando aparece um contorno de escopo, a matriz nomeia o teste quebrado e o requisito que ele deveria impor. Culturas de culpa crescem na lacuna em que esse vínculo falta. Sam atualiza a matriz na mesma mudança que o código, para que o vínculo não apodreça por uma semana. Os post-mortems começam por essa linha.
+
+### 16.3 Interfaces
+
+O TrackScope emite eventos de permissão/negação; o FindingsDesk consome rascunhos de achados; o PulseMap consome etiquetas de técnicas. Combine esquemas JSON e versione-os. Uma mudança de interface é um release, não uma edição silenciosa.
+
+> **Caso sintético — Riverstone Transit.** O requisito R-17, "os motivos de negação são imutáveis após a inserção", foi rastreado até a tabela de eventos somente-acréscimo do FindingsDesk e até o teste T-17, que tenta um UPDATE e espera uma falha.
+
+Edições silenciosas de esquema quebram as páginas de condição de parada no pior momento. Contratos JSON versionados fazem da quebra um release deliberado, com uma nota de migração. Cada consumidor declara as versões que aceita. Os testes de integração de Sam publicam um evento de exemplo em cada versão suportada.
+
+### 16.4 Erros e limites
+
+Matrizes de rastreabilidade apodrecem se não forem atualizadas no mesmo PR que o código. Mantenha-as ao lado do código. Uma matriz numa apresentação de slides é a primeira a morrer. Mantê-la ao lado do código significa que a mesma revisão que faz o merge de uma funcionalidade vê a atualização da rastreabilidade. Sam faz a CI falhar se um novo id de requisito não tiver uma linha de teste. Matrizes só em slides são rejeitadas na revisão. Os donos recebem um e-mail semanal se suas linhas estiverem atrasadas em relação ao código do merge, e o engajamento não pode citar um requisito que não tenha um teste atual.
+
+### 16.3b SLAs de interface
+
+SLAs internos entre serviços importam: o TrackScope pode precisar que o FindingsDesk aceite um evento em até N segundos durante uma condição de parada. Escreva isso como um requisito com um teste de carga sintético. Sem ele, as páginas de condição de parada chegam depois que a pessoa já ligou para o cliente. Um evento de condição de parada que chega atrasado é um evento que falhou em seu propósito. Testes de carga sintéticos provam que o FindingsDesk aceita rajadas quando o TrackScope nega muitos alvos de uma vez. Escrever o orçamento de latência como requisito o torna visível no planejamento, não só numa indisponibilidade. Sam aciona alertas para violações de SLA durante os exercícios, para que o caminho seja ensaiado.
+
+### 16.1b Glossário para as partes interessadas
+
+Mantenha um glossário de uma página: ROE, ScopeVersion, lista de exclusão, técnica planejada, evidência lacrada. As partes interessadas usam "cobertura" e "risco" de forma errada o tempo todo; o glossário é um artefato de requisitos, não decoração, e aparece na apresentação do kickoff do engajamento. Cobertura e risco são palavras do dia a dia com significados especiais aqui, e o uso errado leva a más decisões. Um glossário de uma página na apresentação do kickoff dá a todos as mesmas definições antes de a janela abrir. ROE, ScopeVersion e evidência lacrada ganham, cada uma, uma frase simples. Sam lê em voz alta os três termos mais mal usados no kickoff e deixa a página na pasta compartilhada.
+
+### Nota de prática
+
+A rastreabilidade também cobre a aposentadoria: quando um requisito é retirado, marque-o como substituído, com um ponteiro para o substituto, em vez de apagar a linha. Achados históricos ainda citam os ids antigos. Uma matriz viva que esquece a história torna o dossiê do ano passado inverificável e ensina os engenheiros a tratar requisitos como slides descartáveis, em vez de artefatos de engenharia que sobrevivem a um único trem de release.
+
+### Exercícios
+
+- **EX046 — Deve.** Reescreva "tornar a varredura segura" como dois requisitos com "deve". Rubrica: 3 = dois "deve" testáveis, com método de verificação; 2 = um bom; 1 = ainda vago; 0 = nada.
+- **EX047 — Rastreio.** Para o R-17 acima, nomeie o artefato e o sinal de teste que falha. Rubrica: 3 = tabela de eventos + o UPDATE falha; 2 = um; 1 = vago; 0 = nada.
+- **EX048 — Interface.** Liste três campos de um evento de negação do TrackScope. Rubrica: 3 = carimbo de tempo, alvo, motivo (ou equivalentes); 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Requisitos que você consegue testar, vínculos que você consegue seguir, esquemas que você versiona.
+
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar uma malha de controle em torno das ferramentas de avaliação; (2) escolher sensores e atuadores; (3) evitar a realimentação instável (tempestades de alertas).
+
+### 17.1 Malha
+
+Sensor: contagem de sondagens fora do escopo por hora. Controlador: comparar com o limiar 0. Atuador: negação rígida do TrackScope e acionamento do líder. Planta: o engajamento. Sem o sensor, você só descobre as quebras de escopo no relatório final. O limiar zero significa que qualquer sondagem fora do escopo já é uma quebra da promessa, não um aviso leve. Acionar o líder fecha a malha enquanto a janela ainda está aberta, quando parar e notificar ainda ajudam. Sem uma contagem por hora, o relatório final vira o primeiro sensor, o que é tarde demais para o cliente. Sam plota a contagem ao vivo ao lado do log de negações, para que um pico fique óbvio.
+
+### 17.2 Estabilidade
+
+Se cada achado médio aciona a empresa inteira, as pessoas silenciam o pager (fadiga de alertas). O roteamento por severidade e os limites de taxa das notificações são o amortecimento. O laboratório de taxa de base (Capítulo 7) é a mesma ideia aplicada a detectores. O amortecimento mantém o sinal útil. Achados médios vão para a fila da equipe dona; só condições de parada e eventos críticos de segurança acionam todo mundo. Limites de taxa impedem que um sensor oscilante acorde a empresa a cada minuto. Vale a mesma lição do trabalho com taxas de base: um detector que grita o tempo todo acaba desligado.
+
+### 17.3 Manual vs. automático
+
+Negações rígidas de hosts da lista de exclusão podem ser automáticas. Mudar a ROE no meio do engajamento precisa continuar manual e assinado. Coloque a automação na malha interna; mantenha as pessoas na malha externa. A negação automática é rápida o bastante para parar uma sondagem ruim no mesmo segundo. Uma mudança de ROE no meio da janela altera o que é legal, então precisa de uma assinatura e de duas pessoas. Traçar essa linha na revisão de design evita discussões durante o engajamento. O runbook de Sam diz qual classe de mudança é qual.
+
+> **Caso sintético — Riverstone Transit.** Depois do toque na lista de exclusão às 11:10, Sam acrescentou um sensor: qualquer acerto na lista de exclusão aciona o líder em até um minuto. Acionamentos falsos em uma semana: zero.
+
+### 17.4 Erros e limites
+
+A realimentação pressupõe que o sensor é honesto. Um logger quebrado parece um sistema tranquilo. Monitore os sensores com heartbeats. Um logger silencioso pode esconder uma enxurrada de negações ou fingir que nenhuma ocorreu. Os heartbeats provam que o sensor ainda reporta, mesmo quando a contagem fica em zero. Sam aciona alertas para heartbeats ausentes com a mesma urgência que para um pico real, porque ambos significam que a malha está cega. Ele verifica o caminho do heartbeat em staging antes de cada janela de engajamento abrir e guarda no dossiê uma captura de tela da verificação verde.
+
+### 17.2b Escolhendo o intervalo de amostragem
+
+Um sensor que amostra uma vez por hora pode perder uma rajada de cinco minutos fora do escopo. Amostre pelo menos duas vezes mais rápido que a menor janela de condição de parada que você prometeu ao cliente. Se o kill switch precisa agir em 30 segundos, consulte a cada 10–15 segundos. O custo é baixo comparado com explicar uma parada perdida no relatório. O raciocínio ao estilo de Nyquist se aplica: amostre mais rápido que o evento que você precisa pegar. Um kill switch de trinta segundos com consultas de hora em hora é teatro. Dez a quinze segundos deixam margem para discos lentos e líderes ocupados. Sam registra o intervalo escolhido ao lado do texto da condição de parada, para que os auditores vejam que eles batem.
+
+### 17.3b Onde colocar a pessoa na malha
+
+Coloque pessoas onde é preciso julgamento sobre autorização; coloque automação onde o atraso é perigoso. Aprovar uma ampliação de escopo é humano. Negar um host da lista de exclusão é automação. Misturá-los — esperar que uma pessoa aprove uma negação — recria o incidente que o controle deveria evitar. O julgamento sobre permissão não pode ser apressado num script; o atraso numa negação, sim, pode ser eliminado. Esperar que uma pessoa aprove um acerto na lista de exclusão é o caminho pelo qual o tráfego fora do escopo continua. A lista de verificação de revisão de design de Sam pergunta, para cada controle, se o atraso ajuda ou atrapalha, e coloca a pessoa só onde ele ajuda.
+
+### 17.1b Pontos de ajuste e deriva
+
+Escreva o ponto de ajuste ao lado do sensor ("sondagens fora do escopo por hora = 0"). Revise os pontos de ajuste quando o cliente mudar as janelas ou quando os acionamentos falsos passarem de uma taxa combinada. Pontos de ajuste sem revisão derivam para alarmes ignorados. Um ponto de ajuste que ninguém revisita vira folclore. Mudanças de janela do cliente e orçamentos de acionamentos falsos obrigam a um novo olhar. Escrever o número ao lado do sensor impede que os operadores inventem um limiar particular. Sam revisa os pontos de ajuste no kickoff e depois de qualquer semana que tenha estourado o orçamento de acionamentos falsos, e escreve o novo número na configuração do sensor na mesma mudança.
+
+### Exercícios
+
+- **EX049 — Desenho da malha.** Nomeie sensor, limiar e atuador para violações de SLA. Rubrica: 3 = os três coerentes; 2 = dois; 1 = um; 0 = nada.
+- **EX050 — Fadiga.** Dê uma regra de amortecimento para as notificações de achados. Rubrica: 3 = regra específica (lote, severidade, taxa); 2 = vago, "não faça spam"; 1 = nada útil; 0 = nada.
+- **EX051 — Fronteira manual.** Qual mudança não pode ser automatizada no meio do engajamento? Rubrica: 3 = ampliação de ROE/escopo, com o motivo; 2 = parcial; 1 = errado; 0 = nada.
+
+### Síntese
+
+Medir, comparar, agir — com pessoas na autorização e máquinas na imposição.
+
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) posicionar as ferramentas de avaliação num modelo de zonas; (2) definir fronteiras de confiança para as evidências; (3) escolher quando isolar um ambiente de teste.
+
+### 18.1 Zonas
+
+Os notebooks de avaliação, o TrackScope, o FindingsDesk e os ativos do cliente ficam em zonas de confiança diferentes. O tráfego da zona de avaliação para os ativos do cliente é apenas o que a ROE permite; o tráfego de volta leva as evidências para um repositório que o cliente pode auditar. Não coloque o repositório de evidências na mesma VLAN dos alvos "por conveniência". Separar o repositório de evidências dos alvos significa que um host de teste comprometido não consegue reescrever a história em silêncio. O tráfego no formato da ROE é o único caminho até os ativos do cliente; todo o resto é descartado e registrado. VLANs de conveniência são o modo como evidências e alvos passam a compartilhar o mesmo destino. O kickoff de Sam inclui um traceroute do TrackScope até o repositório e até um alvo de exemplo, para provar as zonas.
+
+### 18.2 Fronteiras de confiança
+
+Cruzar uma fronteira exige autenticação, autorização e registro. Um estudante que exporta achados para um drive pessoal cruza uma fronteira sem controle — proíba isso na ROE e na política da ferramenta. Drives pessoais ficam fora de todos os controles do cliente. Uma política de ferramenta que bloqueia a exportação é mais forte que um parágrafo que ninguém lê sob prazo. Autenticação, autorização e registro são o trio mínimo em cada travessia. Sam trata uma exportação bloqueada como um controle bem-sucedido, não como um atrito a remover. Ele demonstra o bloqueio no kickoff para que ninguém peça uma exceção depois.
+
+### 18.3 Ambientes isolados
+
+Quando os métodos são ruidosos ou o cliente é frágil, use um ambiente sintético que espelhe a configuração. Os resultados então sustentam alegações sobre a configuração espelhada, não sobre o comportamento de produção em execução. Diga isso no relatório. Espelhos provam alegações de configuração quando a produção é frágil demais para ruído. Eles não provam o comportamento em execução sob carga real, e o relatório não pode fingir o contrário. Sam rotula cada achado vindo de um espelho com o id do ambiente e a revisão de configuração usada.
+
+> **Caso sintético — Riverstone Transit.** O PulseMap e o FindingsDesk rodam na VPC de ferramentas de segurança; os scanners saem por um proxy controlado que impõe a lista de CIDRs permitidos.
+
+### 18.4 Erros e limites
+
+Diagramas envelhecem. Revalide as zonas no início do engajamento. Um diagrama do trimestre passado pode mostrar uma VLAN que não existe mais. A revalidação é um item da lista de verificação no início do engajamento, com uma captura de tela ou exportação datada no dossiê. Se o caminho real discordar do diagrama, Sam para até que a arquitetura e a ROE sejam atualizadas juntas, para que a equipe não teste contra o mapa de outra rede. A exportação datada recebe hash como qualquer outro arquivo de evidência e é vinculada a partir da lista de verificação do kickoff.
+
+### 18.3b Controle de saída
+
+As zonas de avaliação precisam de listas de saída permitida: apenas os CIDRs em escopo do cliente e o repositório de evidências. Uma saída aberta transforma um notebook comprometido num pivô que a ROE nunca autorizou. Imponha a saída no mesmo pipeline de políticas que a permissão/negação de alvos, quando possível. Listas de saída permitida reduzem o estrago de um notebook roubado ao que o engajamento já permitia. Saídas abertas de DNS e web bastam para muitos caminhos silenciosos de exfiltração. Pôr a saída no mesmo pipeline das verificações de alvo significa uma única linguagem de política e um único log de auditoria. Sam testa um destino de saída negado no primeiro dia e guarda a linha de log.
+
+### 18.1b Jump hosts
+
+Os jump hosts de avaliação são de alto valor: endureça-os, registre o início e o fim das sessões, proíba agentes de sincronização de arquivos pessoais e reconstrua-os a partir de imagens douradas entre engajamentos, quando viável. Um jump host bagunçado mina qualquer diagrama de zonas cuidadoso. Reconstruções a partir de imagens douradas apagam ferramentas esquecidas, agentes de sincronização e credenciais antigas entre um cliente e outro. Os logs de sessão respondem quem estava no host quando uma mudança ocorreu. Agentes de sincronização pessoais são proibidos porque copiam evidências para nuvens não gerenciadas. A verificação pré-voo de Sam falha se um pacote de agente de sincronização estiver presente.
+
+### Nota de prática
+
+Os diagramas de rede da zona de avaliação entram no dossiê com a mesma disciplina de hash dos arquivos de evidência. Quando um auditor pergunta como o tráfego chegou a staging, você mostra a versão do diagrama que estava em vigor, não um esboço mais novo e arrumado. Tratar diagramas como artefatos versionados fecha uma lacuna comum entre a intenção da arquitetura e o que de fato rodou durante a janela.
+
+### Exercícios
+
+- **EX052 — Esboço de zonas.** Posicione o notebook, o TrackScope, o repositório de evidências e a UI de staging em zonas e nomeie dois controles nas setas. Rubrica: 3 = zonas claras + dois controles; 2 = só as zonas; 1 = confuso; 0 = nada.
+- **EX053 — Fronteira.** Por que "mande o achado por e-mail para o meu Gmail" é uma violação de fronteira? Rubrica: 3 = os dados saem do repositório controlado/da autorização; 2 = menção vaga à privacidade; 1 = vago; 0 = aprova.
+- **EX054 — Alegação sobre o espelho.** Escreva a frase de limitação para um teste feito só num ambiente sintético. Rubrica: 3 = alega configuração, não execução em produção; 2 = limite vago; 1 = exagero; 0 = nada.
+
+### Síntese
+
+Zonas, fronteiras e limites honestos sobre o que um ambiente de teste consegue provar.
+
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar a configuração de autenticação sem atacar a criptografia; (2) usar hashing para a integridade das evidências; (3) tratar segredos com segurança nas ferramentas.
+
+### 19.1 Configuração de autenticação
+
+Pergunte: qual IdP, quais fatores, quais papéis, quais tempos de vida de token? Leia a configuração e os logs mediante autorização. Quebrar TLS ou quebrar hashes de senha está fora dos laboratórios deste livro e, em geral, fora do escopo dos estudantes. A configuração e os logs lidos com um papel concedido respondem sobre tempo de vida, fatores e mapas de papéis sem transformar o laboratório em quebra de criptografia. Achados sobre tempo de vida de tokens são operacionais e corrigíveis. Sam registra o produto e a versão do IdP ao lado de cada achado de autenticação, para que a remediação mire o console certo. Pedidos de quebra de hashes de senha são recusados com uma referência a esse limite.
+
+### 19.2 Hashing de evidências
+
+Calcule o hash dos arquivos de evidência (SHA-256) e guarde os resumos no ticket. Calcule de novo mais tarde para detectar adulteração. O laboratório mostra uma divergência quando um arquivo mudou.
+
+```python
+"""Verify integrity of a synthetic evidence package."""
+import hashlib, json
+files = {
+    "roe.pdf": b"SYNTHETIC-ROE-v1",
+    "scope.csv": b"host,port\n10.20.1.10,443\n",
+    "findings.json": b'[{"id":"SYN-001"}]',
+}
+expected = {n: hashlib.sha256(b).hexdigest()[:16] for n,b in files.items()}
+# Simulate tampering of findings.json
+current = dict(expected)
+current["findings.json"] = hashlib.sha256(b'[{"id":"SYN-001"},{"id":"TAMPERED"}]').hexdigest()[:16]
+print(json.dumps(expected, indent=1))
+for n in sorted(expected):
+    status = "OK" if expected[n] == current[n] else "MISMATCH"
+    print(f"{n:16} {status}")
+```
+
+Saída esperada:
+
+```text
+{
+ "roe.pdf": "18d74983d403e7db",
+ "scope.csv": "01cc4815eddf3de6",
+ "findings.json": "7f5f178ab43ef00f"
+}
+findings.json    MISMATCH
+roe.pdf          OK
+scope.csv        OK
+```
+
+Resumos no ticket tornam visível uma adulteração posterior, mesmo que o repositório de arquivos seja alterado. Recalcular o hash na hora da revisão é uma verificação de uma linha. O caso de divergência do laboratório treina o reflexo de investigar quando os hashes discordam. Sam se recusa a encerrar um achado cujo resumo atual seja diferente do que está no ticket sem uma nota AUTH explicando a mudança.
+
+### 19.3 Segredos nas ferramentas
+
+As credenciais de avaliação ficam num cofre; as ferramentas buscam tokens de vida curta. Nada de segredos no git, em capturas de tela ou no chat. Troque-os ao fim do engajamento. Tokens de vida curta limitam por quanto tempo uma string vazada funciona. O git e o chat são permanentes o bastante para que qualquer segredo colado ali seja tratado como queimado. A troca no encerramento está na mesma lista de verificação que a desativação da conta. A CI de Sam procura strings com formato de token e faz o build falhar quando elas aparecem.
+
+> **Caso sintético — Riverstone Transit.** O laboratório de hash mostrou o findings.json divergente — alguém tinha editado um campo de severidade depois da lacração. Sam restaurou o arquivo a partir do repositório lacrado e abriu um achado de processo sobre edições sem controle.
+
+### 19.4 Erros e limites
+
+Hashes detectam mudança, não distinguem má-fé de acidente. Combine-os com logs de acesso. Um arquivo alterado pode ser uma captura de tela editada ou uma troca maliciosa; o hash sozinho não diz qual. Os logs de acesso mostram quem tocou o objeto e quando. Sam sempre registra o hash e a referência do log juntos antes de declarar uma evidência lacrada, e trata um log ausente como uma lacração incompleta, mesmo quando o resumo ainda bate. Acidente ou má-fé passa então a ser uma pergunta para o log de acesso e para as pessoas que o mantêm.
+
+### 19.2b O que um hash não prova
+
+Um resumo que bate diz que os bytes são os mesmos do momento da lacração; não diz que os bytes foram obtidos legalmente, que a conta estava autorizada nem que a interpretação no texto do achado está correta. Combine os hashes com a versão da ROE, o id de quem agiu e uma breve nota de método, para que um revisor possa reconstruir a alegação, não só o arquivo. Revisores que param numa marca verde deixam passar coletas ilegais e interpretações erradas. A versão da ROE e o id de quem agiu amarram os bytes à permissão e à pessoa. Uma breve nota de método explica o que o arquivo deveria mostrar. A lista de verificação de lacração de Sam tem quatro caixas: resumo, ROE, quem agiu, método.
+
+### 19.3b Escolha de algoritmos
+
+Prefira SHA-256 ou mais forte para os manifestos de evidências; evite MD5/SHA-1 em trabalhos novos. Documente o algoritmo no manifesto para que um leitor futuro não precise adivinhar. A agilidade criptográfica aqui é um campo de versão, não uma troca silenciosa no meio do engajamento. Colisões de MD5 e SHA-1 são história para ensino, não base para novos manifestos. Nomear o algoritmo no manifesto impede que um leitor futuro presuma MD5 só porque uma ferramenta legada o imprimiu. Trocas silenciosas no meio do engajamento dividem o conjunto de evidências em resumos incompatíveis. Sam fixa o algoritmo na configuração do TrackScope e rejeita envios que o omitam.
+
+### 19.1b Inventário de certificados
+
+Para ativos com TLS exposto, registre os certificados apresentados (titular, emissor, notAfter) mediante autorização. Certificados expirados ou divergentes são achados sobre a integridade das operações; não transforme o exercício num ataque a TLS de nível de pesquisa. Titular, emissor e notAfter, lidos mediante autorização, bastam para sinalizar expiração e divergência de nome. Esses são achados de integridade e de operações, não um convite a ataques de protocolo de nível de pesquisa. Sam guarda a impressão digital do PEM no ticket para que um reteste veja se o certificado mudou. As execuções de inventário são agendadas, não improvisadas durante uma varredura ruidosa.
+
+### Exercícios
+
+- **EX055 — Perguntas de autenticação.** Liste cinco perguntas de configuração para o SSO dos funcionários da Riverstone. Rubrica: 3 = cinco concretas (IdP, MFA, papéis, tempo de vida, caminho de administração); 2 = três; 1 = uma; 0 = nada.
+- **EX056 — Laboratório de hash.** Qual arquivo divergiu e o que você faz? Rubrica: 3 = findings.json; restaurar/relacrar; investigar quem escreveu; 2 = só o arquivo; 1 = vago; 0 = errado.
+- **EX057 — Regra de segredos.** Escreva uma política de uma linha para senhas de avaliação em tickets. Rubrica: 3 = nunca no corpo do ticket; referenciar o id no cofre; 2 = "não compartilhe"; 1 = fraco; 0 = permite colar.
+
+### Síntese
+
+Leia a configuração de identidade; calcule o hash das evidências; mantenha os segredos num cofre.
+
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança ofensiva autorizada e red team: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) situar a engenharia de red team entre o PTES, o NIST SP 800-115 e o ATT&CK; (2) definir o que este curso de graduação constrói; (3) declarar o limite de segurança para todos os capítulos seguintes.
+
+### 20.1 Mapa da disciplina
+
+O NIST SP 800-115 enquadra testes e avaliações. O PTES encadeia as etapas, do pré-engajamento ao relatório. O ATT&CK nomeia técnicas para planejamento e cobertura — não como uma pontuação de risco residual. O TIBER-EU e o CBEST acrescentam supervisão guiada por ameaças em certos contextos financeiros. Os engenheiros constroem as plataformas que tornam esses frameworks operáveis: verificadores de escopo, sistemas de achados, relatórios de cobertura, repositórios de evidências. Os frameworks descrevem o ciclo de vida do engajamento; o ATT&CK rotula técnicas para o planejamento. Nenhum deles é, sozinho, uma pontuação de risco residual. O trabalho de engenharia é transformar verificações de escopo, achados e relatórios de cobertura em sistemas reais que os operadores consigam rodar. Sam cita a versão do framework em cada ADR que implementa um controle exigido por ele.
+
+### 20.2 O que construímos
+
+O TrackScope, o FindingsDesk e o PulseMap da Riverstone são o exemplo corrente dessa camada de plataforma. Os formados devem sair capazes de projetar, verificar e operar esses sistemas mediante autorização — não de inventar exploits. Projeto, verificação e operação mediante autorização são o resultado esperado da formação. Inventar exploits está fora do escopo do curso e da equipe de plataforma da Riverstone. O TrackScope, o FindingsDesk e o PulseMap mostram até onde essa camada de plataforma chega no trabalho diário. Os briefings de ateliê de Sam sempre perguntam qual artefato de plataforma o estudante vai deixar.
+
+### 20.3 Limite de segurança
+
+Nada de payloads de exploração, nada de alvos não autorizados, nada de dados pessoais reais, laboratórios só com dados sintéticos locais. Pedidos de uso dual são recusados (Capítulo 10). Esse limite é um requisito em toda revisão de design dos Capítulos 21–50. O limite é imposto na revisão de design, não só num prefácio. As recusas de uso dual do capítulo de ética valem para todo pedido de funcionalidade posterior. Laboratórios sintéticos locais mantêm o trabalho do curso longe de redes reais e de pessoas reais. Sam rejeita propostas de ateliê que precisem de dados pessoais reais ou de alvos não autorizados, mesmo como demonstração.
+
+> **Caso sintético — Riverstone Transit.** A liderança pediu "um red team que hackeie tudo". Sam reformulou o mandato: "uma plataforma de avaliação autorizada que impõe a ROE e mede a remediação".
+
+### 20.4 Erros e limites
+
+Os frameworks evoluem; confira de novo URLs e versões antes de citá-los numa tese. Este capítulo orienta; não substitui a leitura das fontes primárias. As fontes primárias mudam; uma tese que cita uma URL morta falha numa verificação básica. Este capítulo aponta caminhos; não resume cada cláusula do PTES ou do NIST SP 800-115. Sam guarda as versões que usou e as reabre antes da semana de entrega, e cita os ids das cláusulas em vez de paráfrases quando um requisito depende do texto. A paráfrase sozinha já causou mais de uma defesa reprovada.
+
+### 20.3b Cursos vizinhos
+
+Este livro de engenharia pressupõe familiaridade com cálculo, probabilidade e engenharia de software dos capítulos anteriores. O livro RED do bacharelado é mais amplo e menos focado em design; o livro do tecnólogo enfatiza exercícios de implementação. Escolha artefatos que correspondam ao nível — uma pontuação vazia do tamanho de uma tese continua vazia. Escolher artefatos que correspondam ao nível evita pontuações vazias de tese num livro que exige evidências de design. Exercícios de implementação pertencem à trilha do tecnólogo; este livro quer esquemas, testes e ADRs. Sam orienta os estudantes que chegam da trilha do bacharelado para uma verificação mais profunda das mesmas ferramentas.
+
+### 20.1b Entregáveis de engenharia vs. entregáveis de operação
+
+Os operadores precisam de runbooks e tickets; os engenheiros precisam de esquemas, testes e ADRs. A avaliação do projeto final procura os dois. Uma ferramenta bonita sem runbook falha na operação; um runbook sem testes de falha fechada falha na engenharia. Os avaliadores procuram os dois porque qualquer uma das lacunas falha em campo. Testes de falha fechada sem runbook deixam a equipe da madrugada adivinhando; runbooks sem testes deixam caminhos de falha aberta latentes. A rubrica do projeto final de Sam pontua o par junto em cada funcionalidade. Estudantes que entregam só um dos dois revisam o trabalho antes da defesa.
+
+### 20.4b A quem a equipe de engenharia serve
+
+Os usuários da equipe de plataforma são os testadores e os líderes de engajamento; suas partes interessadas incluem também os donos de sistemas do cliente, que nunca veem o código, mas carregam o risco se o TrackScope falhar aberto. As notas de requisitos de Sam listam os dois grupos, para que uma funcionalidade que ajude os testadores a andar mais rápido, mas enfraqueça uma salvaguarda do cliente, fique visível como um trade-off antes de ser construída. Quando uma proposta dispensou a aprovação dupla nas ampliações de escopo "para economizar cliques", foi a linha dos donos de sistemas naquela nota que a derrubou — os hosts de sinalização da Riverstone ficam atrás desse controle, e não da conveniência dos testadores.
+
+### Exercícios
+
+- **EX058 — Encaixe de frameworks.** Associe cada necessidade ao PTES / SP 800-115 / ATT&CK / TIBER-EU. Rubrica: 3 = quatro pares sensatos; 2 = três; 1 = dois; 0 = nada.
+- **EX059 — Reescrita do mandato.** Reescreva "hackear tudo" como uma frase de mandato de engenharia. Rubrica: 3 = autorização + plataforma + medição; 2 = parcial; 1 = ainda centrado no ataque; 0 = nada.
+- **EX060 — Limite.** Dê três itens concretos "fora do escopo deste programa". Rubrica: 3 = três claros (payloads, alvos reais, dumps de dados pessoais…); 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Os engenheiros viabilizam a avaliação autorizada; não substituem a autorização por esperteza.
+
+### Continue estudando — capítulo 20 de 50
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** r′(t) = 8 − 2t = 0 em t = 4, então o pico é r(4) = 32 − 16 = 16 req/s. Resolver 8t − t² = 7 dá t² − 8t + 7 = 0, t = 1 ou t = 7. O teto é violado do minuto 1 ao minuto 7, seis minutos. A nota 3 exige o pico e a janela.
 
@@ -920,6 +1369,54 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em i
 **EX035.** "Nos hosts de laboratório HV-01 e HV-02, a conta de avaliação recebeu participação no grupo local Administrators pela GPO Lab-Admins; confirmado por leitura do grupo em 14 de março; nenhum exploit usado; remova o vínculo da GPO e verifique de novo."
 
 **EX036.** (1) O IdP/diretório mostra a conta desativada ou excluída; (2) não há administradores locais remanescentes com esse nome nos hosts amostrados; (3) o último logon e a trilha de tickets foram revisados, sem atividade depois do horário de término.
+
+**EX037.** "Use somente a réplica sintética. Nenhum SELECT em colunas marcadas como pessoais/dados pessoais. LIMIT 100 por consulta. Nenhum pg_dump nem exportação de tabela inteira. Arquivos temporários destruídos em até 24 horas, com confirmação no ticket."
+
+**EX038.** Obtenha as credenciais de `analyst` emitidas para o teste; conecte-se com esse papel; rode `SELECT 1 FROM passengers LIMIT 1` (ou equivalente); registre o sucesso ou o permission-denied. Nenhum payload elaborado.
+
+**EX039.** Seguros: product_id, price_cents, zone_code. Proibidos no conjunto do curso: passenger_name, payment_card_number (e identificadores semelhantes).
+
+**EX040.** "A descoberta e as verificações de escopo usaram o TrackScope v0.9.2 (SHA do git a1b2c3d), carregado em 14 de março às 09:00 a partir do bucket interno de releases."
+
+**EX041.** "Qualquer PR que amplie o escopo (CIDR/porta acrescentados ou exclusão removida) exige um ticket de autorização vinculado e a aprovação de um segundo code owner; mudanças que restringem precisam de um dono."
+
+**EX042.** Uma CI com credenciais de VPN do cliente testaria sistemas sem uma janela autorizada por uma pessoa, poderia vazar segredos em logs/artefatos e faria os builds dependerem de redes externas. Fixtures sintéticos mantêm a CI segura e reproduzível.
+
+**EX043.** Confidencialidade: uma parte não autorizada que conheça a senha padrão pode ler as tabelas de tarifas de staging. Integridade: pode alterar essas tabelas. Disponibilidade: poderia bloquear os administradores ou quebrar os deploys de staging. Tudo limitado ao ativo UI de staging.
+
+**EX044.** Vulnerabilidade: conta de serviço elegível a administrador de domínio. Exposição: a conta existe no diretório do laboratório, alcançável pelo papel de avaliação. Risco: o julgamento da Riverstone sobre probabilidade e impacto caso essa participação fosse abusada — aceito ou remediado por ela.
+
+**EX045.** "Não publicamos uma pontuação única de hackeabilidade — ela não é reproduzível e esconde trade-offs (Albrecht & Jensen). Aqui estão as sondagens fora do escopo (1), os críticos em aberto (2) e a cobertura das técnicas planejadas (71%); podemos acompanhar isso ao longo do tempo."
+
+**EX046.** "O TrackScope deve negar alvos fora do escopo assinado e persistir os códigos de motivo." Verificação: testes unitários sobre escopo sintético. "O FindingsDesk deve rejeitar corpos de achado que contenham nomes de campo proibidos." Verificação: testes de esquema.
+
+**EX047.** Artefato: repositório de eventos de negação/permissão somente-acréscimo. Sinal: o teste T-17 tenta um UPDATE num motivo de negação e espera rejeição/erro.
+
+**EX048.** event_id/timestamp, target (host:porta), reason_code, policy_version, actor_account — quaisquer três desses, com significado claro.
+
+**EX049.** Sensor: contagem de achados abertos além do SLA, por prioridade. Limiar: crítico > 0 ou qualquer BREACH. Atuador: escalonamento do ticket + resumo diário para o dono.
+
+**EX050.** "Acione imediatamente para críticos; agrupe médios/baixos num resumo diário; suprima duplicatas com a mesma impressão digital por 24 h."
+
+**EX051.** Ampliar o escopo ou afrouxar uma condição de parada — exige uma atualização assinada da ROE, não um envio automático de configuração.
+
+**EX052.** Notebook+TrackScope na zona de avaliação; repositório de evidências na zona de ferramentas; UI de staging no staging do cliente. Controles: proxy com lista de permissões, mTLS até o repositório (ou VPN+SSO). Qualquer esboço coerente.
+
+**EX053.** O texto do achado e as referências de evidência saem do repositório autorizado para uma conta pessoal não habilitada, quebrando os controles de confidencialidade e de retenção.
+
+**EX054.** "Os testes usaram um ambiente sintético que espelha a configuração de staging; os resultados sustentam alegações sobre essa configuração sob a ROE, não sobre o comportamento ou os dados de produção em execução."
+
+**EX055.** Qual IdP? MFA exigido para administradores? Quais grupos mapeiam para fare-admin? Tempo de vida do token de acesso? Caminho de administrador de emergência (break-glass) e seu registro?
+
+**EX056.** findings.json MISMATCH. Restaure a cópia lacrada, verifique de novo os hashes, confira nos logs de auditoria as escritas posteriores ao horário da lacração e trate as edições sem controle como um achado de processo.
+
+**EX057.** "Segredos de avaliação nunca são colados em tickets, chat ou git; os tickets guardam só um id de referência do cofre e um carimbo de tempo da última troca."
+
+**EX058.** Exemplo: sequenciamento do engajamento → PTES; orientação de testes técnicos → SP 800-115; vocabulário/cobertura de técnicas → ATT&CK; cenário de inteligência de ameaças conduzido pelo regulador → TIBER-EU/CBEST.
+
+**EX059.** "Projetar e operar uma plataforma de avaliação autorizada que imponha a ROE escrita, registre evidências e meça a remediação — sem jamais testar fora do escopo assinado."
+
+**EX060.** Código de exploit funcional; varredura de sistemas sem ROE escrita; exportação de dados pessoais de produção para os laboratórios; testes de rádio sem autorização de espectro.
 
 <a id="references"></a>
 ## Referências
