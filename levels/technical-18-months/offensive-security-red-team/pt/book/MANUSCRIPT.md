@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Caderno de Trabalho para o Operador Técnico
 
 - Idioma: português do Brasil (`pt`); curso técnico, dezoito meses; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 18 já estão escritos em português, com os exercícios EX001–EX032 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–18 (EX033–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 18 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–18 (EX049–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: operadores técnicos que configuram verificações, confirmam correções e mantêm seguros os testes autorizados.
 - Relação com os livros vizinhos: o [livro do curso profissional](../../../../professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais curto; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta projeto e integração. **Este livro é procedimental e voltado a laboratórios.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
-Capítulos 9–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 13–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -626,11 +626,323 @@ Paradas são ensaiadas, rápidas e factuais; as ferramentas devem falhar de form
 
 [← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Ferramentas e métodos
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher métodos a partir dos temas do WSTG; (2) configurar ferramentas com limites de taxa; (3) interpretar resultados com o modelo de sistema; (4) manter um cartão de método por verificação.
+
+### 9.1 Cartões de método
+
+Cada cartão traz: propósito, referência às ROE, ferramenta/configurações, condições de parada e evidência esperada. Além desses campos, todo cartão precisa nomear a verificação, o limite de taxa, o modo de dano e a evidência esperada. Essas quatro entradas são o mínimo para o ENG-512: um cartão a que falte qualquer uma delas é rejeitado na revisão por pares e fica fora da pilha de sábado de Sam. A regra mantém verificações improvisadas fora do engajamento, porque um técnico não pode executar um método cuja taxa e cujo dano nunca foram escritos e combinados.
+
+### 9.2 Limites de taxa
+
+As ferramentas de varredura recebem limites de taxa explícitos, abaixo do que a homologação aguenta. Mais rápido não é melhor. Nas verificações de login da homologação, isso significa um teto rígido de tentativas por minuto, definido para que o padrão do laço de 401 não se repita e o orçamento de ruído fique intacto. Quando o teto é atingido, a tarefa falha de forma fechada e termina; ela não desacelera em silêncio para continuar tentando. Os cartões de autenticação do planejador de viagens seguem a mesma regra, de modo que um colega que leia qualquer cartão de autenticação vê a taxa combinada e sabe exatamente o que acontece quando ela é atingida.
+
+### 9.3 Seleção do WSTG
+
+Sam escolhe autenticação, sessão, controle de acesso e tratamento de entradas para a API do planejador de viagens, e não todos os itens do WSTG numa mesma janela. A seleção do WSTG para a homologação da NMT se concentra nas verificações de sessão, autenticação e entradas que correspondem ao risco voltado aos passageiros, com sessão e autenticação no planejador de viagens em primeiro lugar. Cartões que precisam de backends de tarifa não são selecionados para o ENG-512 comum e ficam fora da lista de seleção. Uma seleção estreita bem feita também dá ao relatório uma declaração de cobertura honesta: os temas deixados de fora são nomeados como não testados nesta janela, em vez de sugeridos como limpos.
+
+### 9.4 Interpretação
+
+Associe cada alerta de ferramenta a um elemento do modelo antes de promovê-lo a achado. Um acerto de ferramenta só vira achado depois que uma pessoa traçou um caminho até o impacto. Um banner desatualizado relatado com baixa confiança fica na fase de descoberta até que Sam mostre exposição e impacto com evidências que um colega possa reproduzir na homologação. Isso mantém o ruído de banners fora do relatório e significa que todo achado que chega ao responsável já explica qual parte do modelo de sistema é afetada e por que isso importa.
+
+### 9.5 Fixação de versões
+
+Registre as versões das ferramentas no cartão de método. As versões das ferramentas de varredura e dos scripts são fixadas no caderno, ao lado do ENG-512, antes de a janela abrir. Sem a fixação, um reteste pode virar uma discussão sobre a configuração: o responsável diz FIXED, o testador vê STILL OPEN, e ninguém consegue dizer se a ferramenta mudou no meio do caminho. Com as versões anotadas, a segunda execução usa as mesmas ferramentas da primeira, então qualquer diferença no resultado aponta para a correção, e não para o ferramental.
+
+### 9.6 Métodos proibidos
+
+Password spraying e negação de serviço continuam proibidos na NMT. A lista de proibições também cobre sondagens na rede de tarifas e qualquer coisa que não esteja num cartão de método aprovado. A biblioteca de cartões de Sam imprime essa lista na capa, e a capa é lida em voz alta na abertura, para que todos os colegas ouçam os mesmos limites antes de a primeira verificação rodar. Um método que não está na biblioteca não é uma zona cinzenta a ser discutida durante a janela; ele está fora do escopo até que um novo cartão seja revisado e combinado.
+
+### 9.7 Biblioteca de cartões
+
+Os cartões de método ficam numa biblioteca da equipe, com responsáveis. Copiar um cartão sem ler as condições de parada é um erro comum de iniciante que Sam vigia. A biblioteca fica no repositório de runbooks, com um responsável e uma data de revisão em cada cartão. Um cartão sem revisão há doze meses é aposentado no arquivo antes de poder entrar no ENG-512, e Sam não executa cartões vencidos nos hosts do ENG-512. Um cartão aposentado só volta depois que seu responsável confere de novo a versão da ferramenta, a taxa e as condições de parada contra as ROE vigentes.
+
+### 9.8 Orçamento de ruído
+
+Se um método geraria mais alertas do que o SOC combinou atender, Sam reduz a taxa ou remarca; os parceiros de detecção não são saco de pancadas. O orçamento de ruído combinado com o SOC limita quantas falhas de autenticação o ENG-512 pode gerar, e é escrito como um número na folha de abertura. Ultrapassá-lo é uma condição de parada, tratada como disciplina e não como fraqueza, e não uma medalha de minúcia. Quando o orçamento é apertado, Sam distribui os cartões de autenticação por duas janelas, em vez de comprimi-los numa só.
+
+### 9.9 Disciplina de campo
+
+Cartões de método são inúteis se discordam das ROE. O passo de revisão de Sam é destacar a cláusula das ROE em que cada cartão se apoia; se não consegue destacar uma cláusula, o cartão é reescrito ou descartado. Esse hábito também educa os iniciantes: eles veem que "sempre rodamos a ferramenta X" não é um motivo, ao passo que "a cláusula 4.2 das ROE permite GET/POST autenticado na API de homologação a ≤1 rps" é um motivo. A disciplina de campo para métodos é cartões, taxas, versões fixadas, a lista de proibições e o orçamento de ruído, e Sam não acrescenta uma verificação engenhosa no meio da janela sem um cartão escrito e um aviso ao SOC.
+
+### Exemplo resolvido (NMT sintética)
+
+O cartão de Sam para IDOR nas viagens salvas: WSTG-AUTHZ, curl com dois usuários de teste, taxa de 1 req/s, parar se a taxa de HTTP 5xx passar de 1%, evidência = IDs de requisição + respostas mascaradas.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX033 — Campos do cartão.** Liste cinco campos de um cartão de método. *Rubrica:* 3 = cinco do capítulo; 2 = três; 1 = um; 0 = nada.
+- **EX034 — Motivo do limite de taxa.** Por que definir limites de taxa na homologação? *Rubrica:* 3 = evitar queda/bloqueio/tempestade de logs; 2 = parcial; 1 = ir mais rápido; 0 = nada.
+- **EX035 — Seletividade.** Por que não executar todas as verificações do WSTG numa só janela? *Rubrica:* 3 = tempo/qualidade; foco nos temas de alto risco; 2 = parcial; 1 = sempre todas; 0 = nada.
+- **EX036 — Proibidos.** Nomeie dois métodos proibidos na NMT. *Rubrica:* 3 = password spraying e negação de serviço; 2 = um; 1 = vago; 0 = nada.
+
+### Síntese
+
+Cartões de método amarram propósito, ROE, limites de taxa e evidências — e mantêm os métodos proibidos de fora.
+
+### Continue estudando — capítulo 09 de 18
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Configuração de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler baselines comuns de configuração segura; (2) distinguir um achado de configuração de um achado de código; (3) propor mudanças de configuração seguras; (4) verificar com o responsável.
+
+### 10.1 Achados de configuração
+
+Configurações de TLS, flags de cookie, cabeçalhos de segurança, conjuntos de cifras da VPN e a política de senhas do AD são configuração e muitas vezes se corrigem sem lançamento de código. Achados de configuração, como uma flag de cookie ausente ou um serviço aberto na 8080, nomeiam o arquivo ou o serviço, a baseline esperada e o responsável. Os chamados de configuração citam a linha da baseline e o desvio observado, por exemplo a falta da flag Secure num cookie de sessão, com o responsável pelo planejador de viagens nomeado. Linhas vagas como "endurecer os servidores" são reescritas antes de os chamados serem abertos, porque ninguém consegue verificar a correção de uma frase que não nomeia nenhuma configuração.
+
+### 10.2 Achados de código
+
+Falhas de lógica na autorização exigem mudanças dos desenvolvedores e testes de regressão. Quando as ROE permitem acesso de leitura ao código ou à configuração dos aplicativos da NMT, Sam cita no achado o arquivo e a linha ou a chave, para que o desenvolvedor vá direto ao ponto que precisa mudar. Os binários do fornecedor de tarifas são outra história: descompilá-los continua proibido no ENG-512, seja o que for que uma ferramenta sugira. Os achados nessa área são descritos a partir do comportamento observado na homologação e encaminhados ao responsável pelas tarifas, em vez de serem sustentados por engenharia reversa.
+
+### 10.3 Propostas seguras
+
+Uma proposta segura nomeia a configuração, o sistema, o risco caso esteja errada e uma reversão. Nunca aplique você mesmo uma configuração na produção, a menos que as ROE e o processo de mudanças digam isso. As propostas de Sam preferem mudanças de configuração na homologação, com reversão, e cada uma inclui um caminho de correção na homologação e uma nota de reversão. Ele nunca propõe um ajuste só para a produção que não possa ser testado antes na zona âmbar; ideias só para a produção esperam por janelas de mudança que não pertencem a Sam. Escrever a linha de risco caso esteja errada o obriga a pensar em quais passageiros ou funcionários perceberiam primeiro uma mudança ruim.
+
+### 10.4 Verificação pelo responsável
+
+Os responsáveis aplicam as mudanças pelo próprio pipeline; Sam verifica. A verificação começa pelo responsável. O responsável pelo planejador de viagens precisa confirmar a correção na conversa do chamado e marcar a caixa do responsável antes que Sam reteste qualquer coisa. Sam deixa essa caixa em branco até que o líder tenha escrito a confirmação, e uma correção sem nome de responsável continua aberta. Correções sem dono, portanto, não podem chegar a FIXED na linguagem do lab_retest, o que impede que uma mudança pela qual ninguém responde seja relatada como encerrada. O histórico do chamado mostra então quem confirmou a mudança e quando.
+
+### 10.5 Baselines
+
+A baseline de endurecimento da NMT é a lista de verificação; desvios exigem chamados. As baselines de versões de TLS e de flags de cookie ficam na tag do runbook que as ROE nomeiam. Sam escreve os achados como desvio dessa baseline, citando o valor esperado e o valor observado, e qualquer redação do tipo "parece ruim" é reescrita antes de o relatório sair. A linguagem de desvio dá ao responsável um alvo concreto a restaurar e dá ao reteste uma condição clara de aprovação, coisa que uma opinião sobre a aparência não oferece. A mesma tag é usada de novo no reteste, para que as duas execuções meçam contra uma única baseline.
+
+### 10.6 Desvio
+
+O desvio de configuração depois de mudanças emergenciais é uma fonte recorrente de achados. Depois de uma mudança na CDN, Sam compara a homologação com o modelo datado. Se as flags de cookie regrediram, um chamado é aberto no meio da semana, mesmo sem nova janela de ENG agendada, porque esperar o próximo horário de sábado deixaria uma regressão conhecida sem nome por dias. O chamado cita a baseline e os valores observados, para que o responsável veja exatamente qual mudança introduziu o desvio e onde ele precisa ser revertido.
+
+### 10.7 Reversão testada
+
+Uma proposta de configuração sem uma reversão testada está incompleta. Sam pergunta ao responsável como ele desfaria a mudança em quinze minutos. Sam não aceita que uma mudança de configuração arriscada seja a correção até que sua reversão tenha sido treinada na homologação e o treino esteja anexado ao chamado como evidência. Uma reversão não testada é registrada como nota de risco e mantém o chamado aberto. Ninguém declara prontidão para a produção antes de esse treino existir, porque uma correção que não pode ser desfeita depressa pode transformar um achado menor numa indisponibilidade durante a janela de mudança.
+
+### 10.8 Homologação primeiro
+
+No trabalho de configuração do ENG-512, a homologação primeiro é absoluta. Achados de configuração da produção são reproduzidos na homologação, quando possível, antes de se insistir numa mudança na produção. Sam conclui a verificação na zona âmbar antes de qualquer mudança na produção ser discutida, e as mudanças na produção esperam então pelas janelas de mudança dos responsáveis, que Sam não controla. Até essas janelas acontecerem, os retestes continuam âmbar, e Sam não escreve "pronto para produção" no relatório nem no chamado. O status só muda quando os retestes âmbar passam e o responsável aplicou a mudança na produção.
+
+### 10.9 Disciplina de campo
+
+Sam mantém uma biblioteca pessoal de boas propostas de configuração (HSTS, flags de cookie, cifras da VPN) escritas no estilo dos chamados de mudança da NMT. Reaproveitar a estrutura acelera o trabalho, mas ele ainda preenche o risco e a reversão específicos do sistema a cada vez. Copiar e colar sem mudanças uma proposta feita para a homologação num chamado de produção é o caminho pelo qual se propõem cifras erradas, então ele trata cada proposta como um texto novo. A disciplina de campo para configuração é baseline, responsável, homologação primeiro e reversão testada; uma reversão que nunca rodou na homologação conta como não testada, por mais simples que pareça no papel, e a revisão por pares rejeita chamados a que falte qualquer um dos quatro.
+
+### 10.10 Nota de encerramento
+
+Sam também pergunta se uma mudança de configuração precisa de uma janela de manutenção. Mudanças de cabeçalho no proxy reverso podem ser instantâneas; mudanças de cifras da VPN podem derrubar sessões dos funcionários e exigir um comunicado. O momento faz parte de uma proposta completa. O trabalho de configuração na NMT protege os passageiros ficando longe do equipamento de tarifa e nomeando responsáveis. O sucesso do ENG-512 são baselines verificadas na web e na API, e não uma longa lista de ruído de ferramentas não verificado, e encerrar o trabalho de configuração nunca inclui uma promessa sobre o equipamento de tarifa em que Sam não tocou.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam descobre que a API de homologação não envia o Strict-Transport-Security. Ele registra um achado de configuração com o cabeçalho recomendado e pede à equipe de segurança de aplicações que o aplique pela configuração do proxy reverso.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX037 — Configuração versus código.** Classifique: cabeçalho HSTS ausente; o passageiro A consegue ler as viagens do passageiro B. *Rubrica:* 3 = configuração; código/lógica; 2 = invertidos; 1 = ambos configuração; 0 = nada.
+- **EX038 — Conteúdo da proposta.** Quais quatro coisas entram numa proposta de configuração segura? *Rubrica:* 3 = configuração, sistema, risco caso esteja errada, reversão; 2 = três; 1 = uma; 0 = nada.
+- **EX039 — Quem aplica.** Quem aplica as mudanças de configuração na produção? *Rubrica:* 3 = o responsável, pelo processo de mudanças; não o testador sozinho; 2 = parcial; 1 = o testador, livremente; 0 = nada.
+- **EX040 — Desvio.** Por que mudanças emergenciais geram achados depois? *Rubrica:* 3 = baselines contornadas; não revertidas; 2 = parcial; 1 = sem motivo; 0 = nada.
+
+### Síntese
+
+Achados de configuração precisam de propostas claras e de mudanças aplicadas pelo responsável; os testadores verificam.
+
+### Continue estudando — capítulo 10 de 18
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar uma janela de reteste; (2) comparar status de antes e depois; (3) lidar com correções parciais; (4) encerrar somente com evidências.
+
+### 11.1 Plano de reteste
+
+Liste os achados, os métodos, as notas de entrada em produção dos responsáveis e a janela. O plano de reteste do ENG-512 usa os mesmos cartões de método e as mesmas versões fixadas das ferramentas. O status no estilo do lab_retest mostra `F1 open->closed FIXED`, `F2 open->open STILL OPEN`, `F3 open->closed FIXED` — `fixed: 2 open: 1`. Usar os mesmos cartões e as mesmas versões é o que dá sentido a essa divisão: se o F2 continua aberto, a causa é a correção, e não uma mudança no modo como Sam olhou. O caderno coloca o resumo de dois corrigidos e um aberto ao lado dos resumos criptográficos das ferramentas fixadas, para que um examinador veja que o reteste e o teste original usaram entradas idênticas.
+
+### 11.2 Antes e depois
+
+Registre as transições de status de forma explícita.
+
+```python
+"""Lab 11: compare synthetic before/after findings for a retest window."""
+before = {"F1": "open", "F2": "open", "F3": "open"}
+after = {"F1": "closed", "F2": "open", "F3": "closed"}
+for fid in sorted(before):
+    b, a = before[fid], after[fid]
+    print(f"{fid} {b}->{a} {'FIXED' if b == 'open' and a == 'closed' else 'STILL OPEN' if a == 'open' else 'CHECK'}")
+print("fixed:", sum(1 for f in before if before[f] == "open" and after[f] == "closed"),
+      "open:", sum(1 for f in after if after[f] == "open"))
+```
+
+Execute com `python3 lab_retest.py`. Saída verificada:
+
+```text
+F1 open->closed FIXED
+F2 open->open STILL OPEN
+F3 open->closed FIXED
+fixed: 2 open: 1
+```
+
+Os hashes das evidências de antes e de depois ficam no chamado e provam que o artefato mudou com a correção. FIXED sem um hash com MATCH no artefato de depois não é encerramento na NMT.
+
+Cada transição é escrita com sua data e com a evidência que a justificou, por exemplo o F1 passando de open para closed FIXED com um artefato de depois cujo resumo confere com a cópia guardada no cofre. Um status que muda sem motivo registrado não pode ser auditado depois, e os examinadores da NMT amostram exatamente essas linhas quando revisam chamados encerrados.
+
+### 11.3 Correções parciais
+
+O F2 ainda aberto significa que o chamado continua aberto, com novas evidências. Correções parciais que deixam o F2 em STILL OPEN continuam no controle, com responsável e prazo, e Sam não encerra o engajamento como limpo enquanto houver itens abertos. A revisão do supervisor confere se o slide de resumo mostra o F2 como STILL OPEN, com seu responsável e seu prazo, em vez de escondê-lo sob uma manchete de tudo limpo. Expressões como "parcialmente corrigido" não são usadas; o chamado atende à verificação do seu cartão de método ou não atende, e as novas evidências explicam que parte da correção está faltando.
+
+### 11.4 Encerramento
+
+Encerrado significa FIXED com evidências, ou risco aceito com a assinatura do CISO — e não silêncio. O encerramento exige o aceite do responsável e o status verificado FIXED com evidências. Um "pronto" verbal no chat é rejeitado na revisão semanal. A aceitação de risco é a única outra via, e ela exige a assinatura do CISO no chamado, e não um acordo numa reunião. A revisão semanal reabre qualquer item que tenha sido encerrado por entusiasmo, sem evidência guardada no cofre. O par que a revisão aceita é um hash armazenado do artefato de depois mais o aceite do responsável.
+
+### 11.5 Congelamento do escopo
+
+Nada de nova caçada durante o reteste, a menos que autorizada. Durante o reteste, o escopo fica congelado: nenhum host novo é acrescentado ao ENG-512, mesmo quando uma ferramenta sugere outro serviço em escuta. Os status do reteste cobrem, portanto, apenas os serviços da lista original. O texto do congelamento é lido em voz alta na abertura do reteste, e qualquer host novo sugerido é escrito numa lista de estacionamento como candidato para as próximas ROE, onde os responsáveis podem decidir se o autorizam. Retestar um host novo sem essa decisão produziria um resultado que ninguém combinou receber.
+
+### 11.6 Comunicação
+
+Envie um relatório de reteste curto aos responsáveis no mesmo dia. Os resultados do reteste são comunicados ao SOC e aos responsáveis no mesmo dia, e o STILL OPEN do F2 não fica enterrado até o pacote mensal. Sam envia uma única mensagem ao líder do SOC e ao responsável pelo achado juntos, para que os dois saibam do F2 no mesmo momento e nenhum deles fique sabendo de segunda mão. Os horários das mensagens são guardados ao lado do chamado para os pacotes de exame. Esperar pelo pacote mensal deixaria o responsável um mês atrasado sobre uma fraqueza que continua aberta.
+
+### 11.7 Mesmo método
+
+O reteste usa o mesmo cartão de método, e não um mais forte. Trocar de método no meio do reteste confunde a questão de saber se a correção funcionou. Mesmo método no reteste significa que, se o F1 foi uma verificação de flag de cookie, o reteste usa aquele cartão, e não um perfil diferente de varredura que invente uma aprovação nova. Se a verificação original usou o cartão de cookie, um perfil diferente de varredura poderia simplesmente não testar a mesma flag e relatar uma aprovação que não significa nada. Um colega rubrica o chamado para confirmar que o cartão de método do reteste é o mesmo usado no achado. Mudar o método é um teste novo, e ele precisa de cartão e linha de ROE próprios.
+
+### 11.8 Demonstração ao responsável
+
+Quando ajuda, Sam convida o responsável a assistir uma vez ao reteste bem-sucedido — ver o FIXED gera mais confiança do que um comentário no chamado. A demonstração ao responsável na homologação mostra o estado FIXED antes que Sam marque o encerramento. Capturas de tela sozinhas, sem a presença do responsável, são fracas para os pacotes de exame. O responsável vê o estado FIXED na homologação com os próprios olhos, o que torna muito menos prováveis disputas posteriores sobre a correção ter sido real. O convite de calendário da demonstração é arquivado como evidência de quem a testemunhou. As capturas de tela continuam indo para o cofre, mas apoiam a demonstração em vez de substituí-la.
+
+### 11.9 Disciplina de campo
+
+O dia do reteste é emocionalmente mais difícil que o dia da descoberta, porque os responsáveis torcem pelo verde. Sam abre a chamada lembrando que STILL OPEN é um resultado de reteste bem-sucedido quando é verdadeiro. Ele mostra lado a lado as evidências de antes e de depois. Quando o F2 continua aberto, ele ajuda o responsável a agendar a próxima correção em vez de discutir de novo a severidade — a severidade já foi aceita quando o achado foi registrado. A disciplina de campo para a verificação é mesmo método, antes e depois com hash, demonstração ao responsável e contagens honestas de STILL OPEN. Dois corrigidos e um aberto é o resultado didático do ENG-512.
+
+### 11.10 Nota de encerramento
+
+Se todos os achados ficam FIXED no primeiro reteste, Sam ainda registra os métodos e os hashes. Vitórias fáceis merecem a mesma trilha de evidências que as teimosas, especialmente quando os examinadores amostram chamados encerrados. A nota de encerramento do ENG-512 diz o mesmo: a verificação é o modo pelo qual a NMT passa a confiar no programa. A reputação de Sam se apoia em relatar contagens honestas de itens abertos, incluindo o F2, em vez de produzir um slide com zero abertos. Um programa que empurra os testadores para histórias forçadas de zero abertos tem um defeito próprio, e espera-se que os supervisores o nomeiem.
+
+### Exemplo resolvido (NMT sintética)
+
+O reteste de Sam: F1 e F3 FIXED, F2 STILL OPEN. Ele encerra o T-F1 e o T-F3 com evidências, deixa o T-F2 aberto e avisa o responsável.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX041 — Contagens do laboratório.** Quantos foram corrigidos e quantos continuam abertos? *Rubrica:* 3 = fixed 2 open 1; 2 = parcial; 1 = errado; 0 = nada.
+- **EX042 — Ação sobre o F2.** O que acontece com o chamado do F2? *Rubrica:* 3 = continua aberto, com novas evidências; 2 = aberto; 1 = encerrar mesmo assim; 0 = nada.
+- **EX043 — Risco aceito.** Quem precisa assinar se a NMT aceitar o F2 sem correção? *Rubrica:* 3 = o CISO (dono do risco); 2 = parcial; 1 = Sam; 0 = nada.
+- **EX044 — Nada de nova caçada.** Por que congelar o escopo durante o reteste? *Rubrica:* 3 = o reteste mede as correções; nova caçada exige nova autorização; 2 = parcial; 1 = caçar sempre; 0 = nada.
+
+### Síntese
+
+Verificação é evidência de antes e depois, chamados abertos honestos e comunicação no mesmo dia.
+
+### Continue estudando — capítulo 11 de 18
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório controlado I
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar os laboratórios 2, 5 e 11 sob supervisão; (2) montar um caderno de laboratório; (3) conferir as classificações de portas de um colega; (4) parar diante de uma falha plantada.
+
+### 12.1 Caderno
+
+Cole as saídas do lab_ports, do lab_hash e do lab_retest com horários e suas iniciais. O caderno do Laboratório I guarda o inventário, os cartões de método usados, os hashes e todas as mensagens de parada. Ele é mantido à caneta ou num arquivo digital só de acréscimo, para que um minuto de pausa continue visível quando a disciplina de parada for avaliada mais tarde. Apagar uma entrada constrangedora reprova na revisão de integridade, porque um pacote de evidências real perderia justamente o registro que um examinador mais quer ver. As correções entram como novas linhas datadas que apontam para a entrada que corrigem.
+
+### 12.2 Conferência por pares
+
+Troquem as listas de portas; pontuem a concordância com o mapa aprovado. A conferência por pares pontua a completude do caderno antes do aceite. A falta do contato de emergência ou da exclusão da tarifa reprova na etapa dos pares. Esses dois campos são conferidos primeiro porque qualquer uma das lacunas teria interrompido uma janela real do ENG-512 na abertura. Completude vale mais que letra bonita. Em seguida, os colegas comparam linha a linha a lista de portas de cada caderno com o mapa aprovado, e todo serviço ausente ou não aprovado é marcado na folha de pontuação. Um caderno que lista uma porta que o mapa nunca aprovou reprova naquela linha, mesmo que a porta tenha de fato respondido na homologação.
+
+### 12.3 Falha plantada
+
+O supervisor planta um arquivo com MISMATCH; o aluno precisa se recusar a anexá-lo. O supervisor também acrescenta um serviço 3389/rdp ao inventário do laboratório sem avisar Sam, de modo que só a saída do lab_ports o revela como NOT APPROVED. O relatório de Sam precisa listar o serviço plantado, senão o laboratório reprova, e também precisa dizer o que Sam faria em seguida: parar, avisar o responsável e registrar o serviço. O arquivo plantado com MISMATCH testa o hábito de evidência do mesmo modo: anexá-lo significaria que um achado se apoia num artefato cujo resumo não confere mais.
+
+### 12.4 Tempo limitado
+
+Noventa minutos, com parada rígida. Os noventa minutos correspondem à duração de uma janela curta do ENG-512 num sábado. Quando o relógio para, Sam guarda os artefatos no cofre e tira as mãos do teclado, e o supervisor pontua esse momento. Digitar depois do sinal conta como hora extra silenciosa, uma falha de disciplina de janela, porque num engajamento real o trabalho depois do fim combinado ficaria fora da autorização. Aprender a parar no meio de uma tarefa, com uma nota do que ficou por fazer, é mais difícil do que aprender a trabalhar depressa, e por isso o sinal é pontuado separadamente dos achados.
+
+### 12.5 Nada de produção
+
+Qualquer tentativa de varrer a produção da NMT reprova no laboratório. O Laboratório I usa apenas inventários sintéticos, e exportações de passageiros valem zero absoluto, mesmo como ilustração ou captura de tela. Manter os dados de produção fora do pacote de aula significa que nenhum dado pessoal de passageiro pode vazar do notebook de um aluno ou de um fórum compartilhado. A regra também mantém o exercício honesto sobre o que ele pode ensinar: hábitos de decisão, e não fatos sobre o ambiente real da NMT. O aluno que precisa de um registro com aparência realista o constrói a partir do inventário sintético.
+
+### 12.6 Aceite
+
+O supervisor assina o caderno se a conferência por pares e a falha plantada foram tratadas corretamente. Sem essa assinatura, o laboratório continua sendo prática e não entra na pasta de portfólio avaliado de Sam. A conferência por pares vem primeiro, para que o supervisor assine um trabalho que outro aluno já conferiu quanto ao contato de emergência e à exclusão da tarifa. Exigir as duas etapas espelha um engajamento real, em que as evidências são revisadas por um colega antes que alguém as aprove. O supervisor também confirma, antes de assinar, que a falha plantada foi encontrada.
+
+### 12.7 Integridade do caderno
+
+Alterar as saídas dos laboratórios para que pareçam melhores reprova no curso. Os supervisores podem executar os laboratórios de novo e comparar os hashes. A integridade também cobre o próprio caderno: as páginas são datadas, e a exportação final recebe um hash. Os colegas verificam esse hash e a data depois do aceite, e qualquer edição feita mais tarde reinicia o ciclo de revisão. Um supervisor que executa de novo um laboratório e encontra um resumo diferente sabe que a saída foi alterada, seja qual for o motivo alegado. O aluno então explica a mudança num novo ciclo de revisão, e não numa correção silenciosa.
+
+### 12.8 Canal silencioso
+
+Durante o laboratório, só mensagens de ROE e de parada vão para o canal compartilhado — nada de spoilers para os colegas que ainda estão trabalhando. As dúvidas do laboratório vão para o fórum do curso, e não para SMS pessoais. Sam nunca cola as credenciais da tst-sam-web em chat algum, porque elas pertencem apenas ao caminho do cofre. Manter as perguntas num só canal também dá ao supervisor um registro do que foi perguntado, o que ajuda a avaliar se os alunos ficaram dentro das ROE. As respostas publicadas ali também ajudam os colegas que chegarem à mesma dúvida mais tarde na sessão.
+
+### 12.9 Disciplina de campo
+
+O Laboratório I é avaliado pela disciplina, e não pela descoberta de problemas exóticos. Alunos que correm na frente para inventar ataques aos dados sintéticos, mas pulam os hashes, reprovam. Alunos lentos que recusam o MISMATCH plantado e classificam as portas corretamente são aprovados. Sam lembra os colegas desse critério no início, para que a competição não empurre ninguém para hábitos inseguros. As cinco etapas de disciplina de campo para entrar no portfólio são o caderno, a conferência por pares, encontrar a falha plantada, respeitar o tempo limitado e usar apenas dados sintéticos. Cada etapa é marcada como aprovada ou reprovada, sem nota parcial. Um aluno que cumpre as cinco, mas não encontra nada incomum, fez exatamente o que o laboratório pede.
+
+### 12.10 Nota de encerramento
+
+Os alunos entregam o caderno como um único pacote em PDF ou markdown, com sumário. A falta de iniciais ou de horários custa pontos, porque pacotes de evidências reais precisam de atribuição. O Laboratório I existe para que os hábitos do ENG-512 se formem antes que qualquer passageiro real seja afetado por um erro. Sam trata a linha plantada da 3389 com a mesma seriedade de um achado real, registrando-a com os mesmos campos e evidências. A parte de reteste do laboratório ensina a mesma honestidade, com ferramentas fixadas e cartões de método idênticos: dois corrigidos, um aberto.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam recusa a captura de tela plantada com divergência, corrige a classificação errada da 8080 feita pelo colega e termina com três minutos de folga.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX045 — Conteúdo do caderno.** Quais três saídas de laboratório entram no caderno? *Rubrica:* 3 = portas, hash, reteste; 2 = duas; 1 = uma; 0 = nada.
+- **EX046 — Resposta à falha plantada.** Qual é a resposta correta a um arquivo de evidência divergente? *Rubrica:* 3 = recusar anexá-lo; capturar de novo/recalcular o hash; 2 = recusar; 1 = anexar; 0 = nada.
+- **EX047 — Condição de reprovação.** O que reprova o laboratório imediatamente? *Rubrica:* 3 = varrer a produção / a NMT real; 2 = parcial; 1 = terminar cedo; 0 = nada.
+- **EX048 — Pontuação dos pares.** O que a conferência por pares pontua? *Rubrica:* 3 = concordância com o mapa de portas aprovado; 2 = parcial; 1 = velocidade; 0 = nada.
+
+### Síntese
+
+O Laboratório I comprova disciplina com portas, integridade das evidências e honestidade no reteste sob uma parada rígida.
+
+### Continue estudando — capítulo 12 de 18
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX032 (as de EX033–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Northline Municipal Transit, Sam Park e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Northline Municipal Transit, Sam Park e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Site público, API do planejador de viagens, intranet dos funcionários, Active Directory, VPN (a cobrança de tarifas é o sexto, fora do escopo).
 
@@ -695,6 +1007,38 @@ Respostas-modelo para EX001–EX032 (as de EX033–EX072 estão na edição em i
 **EX031.** O que ele estava fazendo, o que viu, que interrompeu e um pedido de orientação.
 
 **EX032.** No erro, ela para, em vez de tentar de novo de formas que poderiam bloquear contas ou inundar os logs.
+
+**EX033.** Propósito, referência às ROE, ferramenta/configurações, condições de parada, evidência esperada (também a versão).
+
+**EX034.** Para evitar derrubar a homologação, bloquear contas ou inundar os logs.
+
+**EX035.** O tempo é limitado e verificações apressadas deixam de validar; concentre-se primeiro nos temas de alto risco.
+
+**EX036.** Password spraying e testes de negação de serviço.
+
+**EX037.** A falta do HSTS é um achado de configuração; o acesso às viagens de outro usuário é um achado de lógica/autorização da aplicação.
+
+**EX038.** A configuração, o sistema, o risco caso seja aplicada de forma errada e um passo de reversão.
+
+**EX039.** O responsável pelo sistema, pelo processo de mudanças da NMT; o testador verifica depois.
+
+**EX040.** Elas muitas vezes contornam as baselines e não são revertidas, deixando um desvio inseguro.
+
+**EX041.** `fixed: 2 open: 1` (dois corrigidos, um ainda aberto).
+
+**EX042.** Ele continua aberto, com evidências do reteste anexadas mostrando que o problema permanece.
+
+**EX043.** O CISO ou o dono do risco nomeado, por escrito.
+
+**EX044.** O reteste mede se as correções combinadas funcionaram; uma nova caçada precisa de autorização própria.
+
+**EX045.** As saídas do lab_ports, do lab_hash e do lab_retest.
+
+**EX046.** Recusar anexá-lo e capturar de novo ou restaurar um arquivo que confira.
+
+**EX047.** Qualquer tentativa de varrer ou tocar os sistemas de produção da NMT.
+
+**EX048.** Se as classificações correspondem à lista de serviços aprovados.
 
 <a id="references"></a>
 ## Referências

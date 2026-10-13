@@ -652,11 +652,7 @@ On the staging login checks this means a hard cap on attempts per minute, set so
 
 ### 9.3 WSTG selection
 
-Sam picks auth, session, access control and input handling for the journey planner API — not every WSTG item in one window.
-
-WSTG selection for NMT staging focuses on session, auth and input checks that match rider-facing risk. Cards that need fare backends are not selected for ordinary ENG-512. WSTG picks for NMT staging emphasise session and auth on the journey planner. Fare-backed checks stay off the ordinary selection list.
-
-Detection feedback lists method cards and stop times because silence must never be the SOC's only end-of-window signal.
+Sam picks auth, session, access control and input handling for the journey planner API, not every WSTG item in one window. WSTG selection for NMT staging focuses on the session, auth and input checks that match rider-facing risk, with session and auth on the journey planner first. Cards that need fare backends are not selected for ordinary ENG-512 and stay off the selection list. A narrow selection done well also gives the report an honest coverage statement: the themes left out are named as not tested in this window rather than implied to be clean.
 
 ### 9.4 Interpretation
 
@@ -678,25 +674,15 @@ The forbidden list also covers fare-network probes and anything that is not on a
 
 ### 9.7 Card library
 
-Method cards live in a team library with owners. Copying a card without reading stop conditions is a common newcomer mistake Sam watches for.
-
-Card library lives in the runbook repo with owners and review dates. A card without a review in twelve months is retired before it enters ENG-512. Cards without a review in twelve months are retired to archive. Sam will not run stale cards on ENG-512 hosts.
-
-Method cards without harm modes are incomplete for ENG-512 and stay out of the Saturday stack until rewritten.
+Method cards live in a team library with owners. Copying a card without reading its stop conditions is a common newcomer mistake Sam watches for. The library lives in the runbook repository with an owner and a review date on every card. A card without a review in twelve months is retired to the archive before it can enter ENG-512, and Sam will not run stale cards on ENG-512 hosts. A retired card returns only after its owner re-checks the tool version, rate and stop conditions against the current ROE.
 
 ### 9.8 Noise budget
 
-If a method would generate more alerts than the SOC agreed to handle, Sam reduces rate or reschedules — detection partners are not punching bags.
+If a method would generate more alerts than the SOC agreed to handle, Sam reduces the rate or reschedules; detection partners are not punching bags. The noise budget agreed with the SOC caps how many auth failures ENG-512 may generate, and it is written as a number on the kickoff sheet. Crossing it is a stop condition, treated as discipline rather than weakness, not a badge of thoroughness. When the budget is tight, Sam spreads the auth cards across two windows instead of compressing them into one.
 
-Noise budget agreed with the SOC caps how many auth failures ENG-512 may generate. Exceeding the budget is a stop condition, not a badge of thoroughness. SOC-agreed noise budget is a number on the kickoff sheet. Crossing it is a stop, celebrated as discipline rather than weakness.
+### 9.9 Field discipline
 
-Fare alerts anywhere stop work until operations clears the line regardless of correlation arguments shouted in the moment.
-
-### 9.9 9.x Field discipline
-
-Method cards are useless if they disagree with the ROE. Sam's review step is to highlight the ROE clause each card relies on. If he cannot highlight a clause, the card is rewritten or dropped. This habit also educates newcomers: they see that "we always run tool X" is not a reason — "ROE clause 4.2 allows authenticated GET/POST to staging API at ≤1 rps" is a reason.
-
-Field discipline for methods is cards, rates, pins, forbidden list and noise budget. Sam will not add a clever check mid-window without a written card and SOC notice.
+Method cards are useless if they disagree with the ROE. Sam's review step is to highlight the ROE clause each card relies on; if he cannot highlight a clause, the card is rewritten or dropped. This habit also educates newcomers: they see that "we always run tool X" is not a reason, while "ROE clause 4.2 allows authenticated GET/POST to staging API at ≤1 rps" is a reason. Field discipline for methods is cards, rates, pins, the forbidden list and the noise budget, and Sam will not add a clever check mid-window without a written card and notice to the SOC.
 
 ### Worked example (synthetic NMT)
 
@@ -733,11 +719,7 @@ You will (1) read common secure config baselines; (2) distinguish config finding
 
 ### 10.1 Config findings
 
-TLS settings, cookie flags, security headers, VPN cipher suites, AD password policy — often fixed without code releases.
-
-Config findings such as missing cookie flags or open 8080 listeners name the file or listener, the expected baseline and the owner. Vague harden servers lines are rewritten before tickets open. Config tickets quote the baseline line and the observed drift — for example missing Secure on a session cookie — with the journey planner owner named. Vague harden lines are rewritten first.
-
-Safe failure releases sockets and prints halt reasons instead of building retry storms against staging authentication.
+TLS settings, cookie flags, security headers, VPN cipher suites and the AD password policy are configuration, and are often fixed without code releases. Config findings, such as a missing cookie flag or an open 8080 listener, name the file or listener, the expected baseline and the owner. Config tickets quote the baseline line and the observed drift, for example a missing Secure flag on a session cookie, with the journey planner owner named. Vague "harden servers" lines are rewritten before tickets open, because nobody can verify a fix for a sentence that names no setting.
 
 ### 10.2 Code findings
 
@@ -747,11 +729,7 @@ When the ROE allows read access to NMT app code or config, Sam cites the file an
 
 ### 10.3 Safe proposals
 
-Propose the setting, the system, the risk if wrong, and a rollback. Never apply production config yourself unless the ROE and change process say so.
-
-Safe proposals prefer staging config changes with rollback. Sam never proposes a production-only tweak that cannot be tested first on the amber zone. Safe proposals always include a staging patch path and a rollback note. Production-only ideas wait for change windows Sam does not own.
-
-Lab II grades rehearsal stop posts before any live window is scheduled for that technician cohort.
+A safe proposal names the setting, the system, the risk if wrong and a rollback. Never apply production config yourself unless the ROE and change process say so. Sam's proposals prefer staging config changes with a rollback, and each includes a staging patch path and a rollback note. He never proposes a production-only tweak that cannot be tested first in the amber zone; production-only ideas wait for change windows Sam does not own. Writing the risk-if-wrong line forces him to think about which riders or staff would notice a bad change first.
 
 ### 10.4 Owner verification
 
@@ -783,17 +761,13 @@ Production config findings are reproduced on staging when possible before urging
 
 For ENG-512 config work, staging first is absolute. Sam finishes the amber-zone verification before any production change is discussed, and production changes then wait for the owners' change windows, which Sam does not control. Until those windows run, the retests stay amber, and Sam does not write production-ready wording in the report or the ticket. The status changes only when the amber retests pass and the owner has applied the change in production.
 
-### 10.9 10.x Field discipline
+### 10.9 Field discipline
 
-Sam keeps a personal library of good config proposals (HSTS, cookie flags, VPN ciphers) written in NMT's change-ticket style. Reusing structure speeds work but he still fills system-specific risk and rollback each time. Copy-pasting a proposal meant for staging into a production ticket without changes is how wrong ciphers get proposed; he treats each proposal as new writing.
+Sam keeps a personal library of good config proposals (HSTS, cookie flags, VPN ciphers) written in NMT's change-ticket style. Reusing the structure speeds work, but he still fills in system-specific risk and rollback each time. Copy-pasting a proposal meant for staging into a production ticket without changes is how wrong ciphers get proposed, so he treats each proposal as new writing. Field discipline for config is baseline, owner, staging first and a tested rollback; a rollback never run on staging counts as untested however simple it looks on paper, and peer review rejects tickets missing any of the four.
 
-Field discipline for config is baseline, owner, staging first, rollback tested. Sam's tickets fail peer review without those four. A rollback that has never been run on staging counts as untested, however simple it looks on paper. Peer review rejects tickets missing those.
+### 10.10 Closing note
 
-### 10.10 10.y Closing note
-
-Sam also asks whether a config change needs a maintenance window. Header changes on the reverse proxy may be instant; VPN cipher changes may drop staff sessions and need a bulletin. Timing is part of a complete proposal.
-
-Closing note: config work at NMT protects riders by staying off fare gear and by naming owners. ENG-512 success is verified baselines, not a long list of unverified tool noise. Closing config work means verified baselines on web and API — never a promise about fare gear Sam did not touch.
+Sam also asks whether a config change needs a maintenance window. Header changes on the reverse proxy may be instant; VPN cipher changes may drop staff sessions and need a bulletin. Timing is part of a complete proposal. Config work at NMT protects riders by staying off fare gear and by naming owners. ENG-512 success is verified baselines on web and API, not a long list of unverified tool noise, and closing config work never includes a promise about fare gear Sam did not touch.
 
 ### Worked example (synthetic NMT)
 
@@ -860,7 +834,7 @@ F3 open->closed FIXED
 fixed: 2 open: 1
 ```
 
-Before/after evidence hashes sit on the ticket. FIXED without a MATCH hash on the after artefact is not closure at NMT. Before/after hashes on the ticket prove the artefact changed with the fix. FIXED without after-hash is incomplete.
+Before/after evidence hashes sit on the ticket and prove the artefact changed with the fix. FIXED without a MATCH hash on the after-artefact is not closure at NMT.
 
 Each transition is written with its date and the evidence that justified it, for example F1 moving from open to closed FIXED with an after-artefact whose digest matches the vaulted copy. A status that changes without a recorded reason cannot be audited later, and NMT's examiners sample exactly these rows when they review closed tickets.
 
@@ -910,13 +884,13 @@ Owner demo on staging shows the FIXED state before Sam marks closure. Screenshot
 
 The owner sees the FIXED state on staging with their own eyes, which makes later disputes about whether the fix was real much less likely. The calendar invitation for the demo is filed as evidence of who witnessed it. Screenshots still go into the vault, but they support the demo rather than replace it.
 
-### 11.9 11.x Field discipline
+### 11.9 Field discipline
 
 Retest day is emotionally harder than find day because owners hope for green. Sam opens the call by restating that STILL OPEN is a successful retest outcome when true. He shows the before and after evidence side by side. When F2 remains open, he helps the owner schedule the next fix rather than arguing about severity again — severity was already accepted when the finding was filed.
 
 Field discipline for verification is same method, hashed before/after, owner demo, and honest STILL OPEN counts. Two fixed and one open is the ENG-512 teaching result.
 
-### 11.10 11.y Closing note
+### 11.10 Closing note
 
 If all findings FIX on first retest, Sam still records the methods and hashes. Easy wins deserve the same evidence trail as stubborn ones, especially when examiners sample closed tickets.
 
@@ -973,9 +947,7 @@ The peers then compare the port list in each notebook against the approved map l
 
 Supervisor plants a MISMATCH file; learner must refuse to attach it.
 
-A report that lists the plant must also say what Sam would do next: stop, notify the owner and log the listener.
-
-The supervisor adds a 3389/rdp listener to the lab inventory without telling Sam, so only the lab_ports output reveals it as NOT APPROVED. Sam's report must list the planted listener, or the lab fails. The planted MISMATCH file tests the evidence habit in the same way: attaching it would mean a finding rests on an artefact whose digest no longer matches.
+The supervisor also adds a 3389/rdp listener to the lab inventory without telling Sam, so only the lab_ports output reveals it as NOT APPROVED. Sam's report must list the planted listener, or the lab fails, and it must also say what Sam would do next: stop, notify the owner and log the listener. The planted MISMATCH file tests the evidence habit in the same way: attaching it would mean a finding rests on an artefact whose digest no longer matches.
 
 ### 12.4 Time box
 
@@ -1007,13 +979,13 @@ During the lab, only ROE and stop messages go to the shared channel — no spoil
 
 Lab questions go to the course forum rather than personal SMS. Sam never pastes the tst-sam-web credentials into any chat, because they belong only on the vault path. Keeping questions in one channel also gives the supervisor a record of what was asked, which helps when grading whether learners stayed within the ROE. Answers posted there also help peers who hit the same question later in the session.
 
-### 12.9 12.x Field discipline
+### 12.9 Field discipline
 
 Laboratory I is graded on discipline, not on finding exotic issues. Learners who race ahead to invent attacks on the synthetic data but skip hashing fail. Learners who are slow but refuse the planted mismatch and classify ports correctly pass. Sam reminds peers of that grading bar at the start so competition does not push people toward unsafe habits.
 
 The five field-discipline gates for portfolio entry are the notebook, the peer check, finding the planted fault, keeping to the time box and using synthetic data only. Each gate is marked pass or fail with no partial credit. A learner who meets all five but finds nothing unusual has done exactly what the lab asks.
 
-### 12.10 12.y Closing note
+### 12.10 Closing note
 
 Learners submit the notebook as a single PDF or markdown bundle with a table of contents. Missing initials or timestamps cost points because real evidence packs need attribution.
 
