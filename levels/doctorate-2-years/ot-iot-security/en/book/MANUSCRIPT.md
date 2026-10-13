@@ -101,6 +101,8 @@ The Menlo Report adapts the Belmont principles to ICT research: respect for pers
 
 Network captures, PLC programs, piping and instrumentation diagrams, and alarm logs together form a map of how to hurt a facility. Treat them as sensitive even when the facility is a university rig, because rigs reuse commercial controllers and their configurations reveal product behaviour. Define tiers early: T0 public, T1 shareable under licence, T2 shareable with vetted researchers, T3 never leaves the owner. Chapter 7 turns these tiers into a release manifest.
 
+Assign each artefact a tier when it is created, not when the thesis is written, and record the owner who can change it. A capture taken on Testbed T2 starts at T2 even if it looks harmless. Lowering a tier needs a written reason, such as removing addresses and controller identifiers, and a second person who checks the result.
+
 ### 1.6 Metrics that resist gaming
 
 Detection research in OT has a measurement problem. Attacks in time-series datasets are long contiguous segments; a widely used scoring convention, *point adjustment*, marks a whole attack segment as detected if any single point inside it is flagged. As Lab 1 shows, it can turn a detector that finds 10% of attack points into one reporting near-perfect F1. Arp et al. list this family of pitfalls — inappropriate performance measures, base-rate neglect, lab-only evaluation — for machine learning in security generally. For OT the defensible metric set is: **event-level recall** (fraction of attack episodes detected), **time to detection** measured from attack onset, **false alarms per operator shift** (because alarm floods are themselves a safety hazard), and **physical impact at detection** (how far the process had moved when the alarm fired). The last metric is OT-specific and is the one most often omitted.
@@ -158,6 +160,8 @@ events detected  : (2, 2)
 
 Interpretation: both episodes were detected (event recall 1.0), which is genuinely useful, but the point-adjusted F1 of 0.988 hides that the first alarm in segment one came 20 samples after onset. Report event recall *with* delay, never point-adjusted F1 alone.
 
+The same five alarms produce three very different stories. Pointwise, the detector found three of forty attack samples and raised two false alarms. Point-adjusted, it looks almost perfect. By events, it found both episodes, one of them late. Only the third view, paired with delay, tells an operator what would have happened at the tank, so it is the one the Setpoint Study reports.
+
 ### 1.9 Common errors and limits
 
 - Treating a protocol anomaly as a process anomaly (rung 1 presented as rung 3).
@@ -165,6 +169,8 @@ Interpretation: both episodes were detected (event recall 1.0), which is genuine
 - Using the PLC under test as the only safety bound in a laboratory.
 - Reporting one aggregate score without false alarms per shift.
 - Assuming university rigs are not sensitive because they are small.
+
+Each error has a guard. Write the rung next to every claim in your notes. Call any tool that sends requests to a controller active, whatever it reads. Name the independent layer that bounds every laboratory run, such as the float valve on T2. Report false alarms per eight-hour shift beside recall. Tier university rig data as you would plant data.
 
 ### Exercises — chapter 1
 
@@ -198,6 +204,8 @@ After this chapter you can (1) organize the OT security literature into research
 
 OT security research is scattered across control engineering (fault detection, resilient control), computer security (intrusion detection, protocol analysis), safety engineering (hazard analysis, functional safety), and industrial practice (vendor white papers, government advisories). The same idea appears under different names: a control engineer's *residual-based fault detection* is a security researcher's *physics-based anomaly detection*. A scoping search must therefore use synonyms from each community and search engineering databases as well as security venues.
 
+Keep a synonym table with a column per community and a row per idea, and update it as screening reveals new terms. Search engineering databases with the control vocabulary and security venues with the security vocabulary, then merge and deduplicate. Record which community each included study came from, so a reader can see whether the map is balanced or leans to one tradition.
+
 ### 2.2 Research families
 
 **Architecture and segmentation.** The Purdue reference model, described in NIST SP 800-82 Rev. 3, layers enterprise (levels 4–5), operations management (3), supervisory control (2), basic control (1) and the physical process (0), with an industrial DMZ between IT and OT. ISA/IEC 62443-3-2 reframes segmentation as *zones and conduits* with target security levels. Research questions include whether segmentation designs actually reduce reachable attack paths and how cloud-connected IIoT erodes the layered model.
@@ -213,6 +221,8 @@ OT security research is scattered across control engineering (fault detection, r
 ### 2.3 Standards as hypotheses
 
 A standard encodes expert belief: "zones with security level 2 resist casual attackers". Treat such statements as hypotheses. A thesis can measure whether a zone design reduces reachability, whether a recommended alarm practice reduces operator overload, or whether a security level is achievable within a controller's scan-time budget. Do not cite a standard as evidence that its recommendations work; cite it as the claim you test.
+
+Write each tested statement in the thesis as the standard puts it, then as the measurable hypothesis you derived from it, so readers can judge the translation. A null result is useful: if a recommended zone design does not reduce reachability in your topology, that says something about the design or the topology, and both are worth reporting.
 
 ### 2.4 Appraisal: what makes an OT detection paper credible
 
@@ -237,13 +247,19 @@ The pattern is the gap: no study combines (a) a detector-aware adversary, (b) th
 
 Copy the table into a CSV and count, with Python's `csv` module, how many studies satisfy each criterion. Expected counts from the table: adversary aware fully = 2 (S2, S7), validation thresholds = 4 (S2, S5, S6, S7), impact reported fully = 2 (S2, S7), two contexts = 1 (S5). Change one coding decision and note how the gap statement changes; record that sensitivity in your notes.
 
+A small change can move a study across the line. If S5's adversary awareness is coded as full rather than partial, three studies satisfy that criterion instead of two, but none yet combines all four properties, so the gap survives. Record each coding rule with an example, and ask a second coder to code the table independently before you rely on it.
+
 ### 2.7 A falsifiable gap
 
 Weak gap: "Physics-based detection is understudied." Strong gap: "No evaluation reports both detection delay and maximum process deviation at detection for sensor-replay attacks on a level loop, with thresholds fixed in advance, on two independent plants; we predict that a mass-balance residual reduces delay relative to a band alarm, and that the advantage disappears when the attacker also controls the independent flow sensor." The strong version names the condition under which the contribution fails.
 
+The strong gap predicts its own failure, which the Setpoint Study later confirms as class B. That prediction is what lets a committee judge the thesis fairly: if the residual detector had also caught class B, the gap would need revisiting, because a detector should not be able to see through a consistent lie on both sensors without some other independent signal.
+
 ### 2.8 Common errors and limits
 
 Citing vendor marketing as evidence; treating ATT&CK techniques as frequencies (they are documented possibilities, not base rates); claiming novelty because of a new dataset name; describing incidents beyond what public analyses state.
+
+A vendor paper can point to a question but cannot answer it. ATT&CK tells you that manipulation of view has been seen, not how often. A new dataset is novel only if it lets you test something you could not test before. When describing Stuxnet, Ukraine or TRITON, say what the cited analysts reported and stop there.
 
 ### Exercises — chapter 2
 
@@ -367,6 +383,8 @@ Reading the output against the hypotheses: H1 is supported in the model (100/100
 
 Claiming a mechanism is novel when only its application is; omitting the honest-sensor assumption; choosing attack magnitudes after seeing detector behaviour; having no condition under which the hypothesis fails.
 
+Each of these errors has a visible symptom in a proposal: a contribution sentence that claims to invent CUSUM, an attacker model without a class B, an attack gain changed after Lab 3 was run, or a hypothesis list without H4. Read the proposal for those symptoms before sending it to the committee, and fix them while the study is still cheap to change.
+
 ### Exercises — chapter 3
 
 - **EX015** — Classify the Setpoint Study's contribution type and write a two-sentence positioning statement citing prior work.
@@ -396,6 +414,8 @@ After this chapter you can (1) distinguish reproduction, replication and re-impl
 
 The ACM artifact-badging policy distinguishes **repeatability** (same team, same setup), **reproducibility** (different team, same artifacts) and **replicability** (different team, own artifacts). In OT these differ sharply because plants, controllers and datasets are rarely shareable. Fix your vocabulary before claiming any of them.
 
+For the Setpoint Study, rerunning Lab 3 on the same code and seeds is repeatability. A colleague running the archived code is reproducibility. The TankBench-21 work is a re-implementation from the paper's description, closer to replication. Saying so precisely keeps a reviewer from reading a re-scoring as independent confirmation of the original result.
+
 ### 4.2 Diagnosing a failed reproduction: TankBench-21
 
 The synthetic benchmark TankBench-21 reports an F1 of 0.96 for a band-plus-rate alarm. The candidate's re-implementation gets 0.31. A disciplined diagnosis lists hypotheses and tests each: (a) **scoring convention** — the paper used point adjustment (Lab 1 shows this alone can explain a gap of this size); (b) **threshold leakage** — thresholds were chosen on the test split; (c) **label alignment** — attack labels start when the attack script launched, not when the process first deviated; (d) **sampling** — the paper downsampled to 10 s, smoothing noise. Re-scoring with point adjustment yields 0.94, inside a predeclared tolerance of ±0.05, so the reproduction "succeeds" — but it succeeds in reproducing an inflated metric. The thesis records both numbers and adopts event-level recall plus delay.
@@ -403,6 +423,8 @@ The synthetic benchmark TankBench-21 reports an F1 of 0.96 for a band-plus-rate 
 ### 4.3 Verifying the simulator
 
 Verification asks whether the model is built right; validation asks whether it is the right model (standard modelling vocabulary). Verification tests for the Lab 3 tank include: equilibrium at 50.0 with nominal inflow (analytical check); mass conservation over 1,000 steps without noise; residual mean near zero under no attack; and seeds producing identical traces on two machines. A detector evaluated on an unverified simulator is evaluated on an unknown system.
+
+Write each verification test as code that fails loudly, and run the suite before every batch of experiments. If the equilibrium check fails after a change to the outflow term, no detector result from that version is usable until it passes. Keep the test output with the run records so an examiner can see that verification preceded the results it supports.
 
 ### 4.4 Tuning without leakage: Lab 6
 
@@ -451,6 +473,8 @@ The pilot answers feasibility questions only: can the rig run the replay scenari
 ### 4.6 Common errors and limits
 
 Calling a re-scoring a replication; trusting a simulator because it "looks right"; tuning on evaluation seeds; using pilot data to test hypotheses; lacking an independent emergency stop.
+
+Each error lets a result look better than it is. A re-scoring with point adjustment only confirms that the original convention was used. A plausible-looking trace is not a passed verification test. Seeds shared between tuning and evaluation leak information. Pilot runs answer feasibility, not hypotheses. And without a physical stop that cuts pump power independently of the PLC, the pilot is not bounded.
 
 ### Exercises — chapter 4
 
@@ -513,6 +537,8 @@ The robustness chosen in Chapter 4 costs about 7 steps on Plant A but about 45 s
 
 Separate **stochastic** uncertainty (seed-to-seed variation, captured by the interval), **parametric** uncertainty (orifice coefficient, noise levels, calibration bias — explored by sensitivity analysis as in Lab 6) and **structural** uncertainty (is a single-tank mass balance the right model at all?). Only the second testbed addresses the third.
 
+In the Setpoint Study the interval in Lab 5 covers only the first kind. Lab 6 covers part of the second, through calibration bias and allowance. Testbed T2 is the first evidence on the third, and its lower recall shows that the model's honest, lag-free flow meter was too simple. Report each kind in its own place so readers do not mistake one for another.
+
 ### 5.3 Independent validation on Testbed T2
 
 T2 differs from the Plant A model in ways that matter: two coupled tanks, a different flow meter with its own lag, and a PLC scan cycle of 100 ms. Thresholds are frozen from Plant A tuning before any T2 data are examined — the validation would otherwise be another tuning exercise. Synthetic T2 results: class A replay detected in 18 of 20 episodes (two missed because the flow-meter lag hid small manipulations), median delay longer than in simulation, zero false alarms over 40 nominal hours, and class B evasion confirmed in all 10 trials. The study thus supports H1 with a qualification (lower recall on a laggy instrument) and confirms H4.
@@ -521,6 +547,8 @@ T2 differs from the Plant A model in ways that matter: two coupled tanks, a diff
 
 Ten synthetic operators (O01–O10) reviewed alarm timelines without knowing which detector produced them. Eight preferred the CUSUM alarm because it arrived with a residual trend they could interpret; two found a "residual" abstract and wanted the predicted level shown on the HMI. The finding is about interpretability, not detection accuracy, and it changes the design: the thesis recommends displaying predicted versus reported level.
 
+Ten participants cannot support a statistical claim about operator populations, and the study does not make one. The review shows that interpretability is a design concern worth measuring with real consenting control-room staff later. Record the protocol, the blinding method and each operator's stated reason, so the recommendation can be traced to what was said rather than to a count.
+
 ### 5.5 Writing mixed results honestly
 
 "In the synthetic Plant A model and on the synthetic Testbed T2, a mass-balance residual CUSUM detected class A sensor-replay attacks that a ±1.5 band alarm missed, with no false-alarm runs in nominal operation. Recall fell from 100% in simulation to 90% on T2 owing to flow-meter lag. Robustness to a 0.4-unit calibration bias required a larger allowance, which lengthened detection delay by about 7 steps on Plant A and at least 45 on the weaker-signal Plant B. When the attacker also controlled the flow meter (class B), detection failed in every trial, as predicted."
@@ -528,6 +556,8 @@ Ten synthetic operators (O01–O10) reviewed alarm timelines without knowing whi
 ### 5.6 Common errors and limits
 
 Independent seeds for paired comparisons; tuning on the validation testbed; hiding censored runs; presenting intervals as real-world uncertainty; omitting the failure condition from the abstract.
+
+Each item has a concrete check in this study: Lab 5 uses common random numbers, T2 thresholds are frozen from Plant A tuning, capped runs are reported as censored at 400 steps, the bootstrap interval is labelled simulation noise, and the abstract states that class B evaded detection in every trial. A reviewer should be able to confirm each check from the archive.
 
 ### Exercises — chapter 5
 
@@ -571,21 +601,31 @@ The second objection is the most important: it reveals that the defense's streng
 
 A good thesis maps where the method works. For the Setpoint Study the boundaries are: (1) an independent second measurement of the same physics must exist and be outside the attacker's control; (2) the model error must be smaller than the attack signal; (3) attacks slower than the allowance can evade, but their impact within a stated horizon is bounded (in the model, ≤1.37 units of overfill in 300 steps for gains ≤0.01). These are stated in the abstract, not buried in a limitations section.
 
+Each boundary should be stated with the evidence that measures it: the T2 wiring inspection for the first, the calibration-bias sweep in Lab 6 for the second, and the attack-gain sweep from the red-team review for the third.
+
 ### 6.3 The narrowed claim
 
 Before: "Physics-based CUSUM detects sensor manipulation in water plants." After: "Where an independently wired sensor measures a quantity linked by a known mass balance, a residual CUSUM with allowance tuned for expected calibration error detects single-sensor replay attacks that band alarms miss, and bounds the overfill achievable by slower attacks; it provides no protection when the attacker controls both sensing paths." The narrowed claim is weaker in reach and much stronger in evidence.
+
+Keep the before and after versions in the thesis, so readers see how critique changed the argument. Check every later sentence against the narrowed claim: an abstract or conclusion that drifts back toward water plants in general undoes the work. The narrowed claim also gives operators a direct test of their own site: is the second measurement independently wired?
 
 ### 6.4 Dual-use review
 
 Before submission ask: Does the paper give a recipe for the class B evasion against a named product? (No: it describes the capability class, which is already documented as manipulation of view.) Does it reveal T2's configuration? (Only generic structure.) Would a defender gain more than an attacker? (Yes: the architectural recommendation — independent sensing paths — is actionable for defenders and well known to capable attackers.) Record the answers in the thesis appendix.
 
+Ask one reviewer outside the project to answer the same questions without seeing your answers, and record any disagreement and how it was resolved. If later work finds a flaw specific to a product, such as a PLC accepting writes it should refuse, the review is repeated and disclosure is handled under the coordinated process before publication.
+
 ### 6.5 Responding to reviewers
 
 Answer every point, quote it, state what changed and where, and disagree with evidence where you must. Example: "Reviewer 2 states that CUSUM is not novel. We agree and have revised §1 to position the contribution as a measurement of when cross-sensor invariants help against manipulation of view, citing Page (1954) and Giraldo et al. (2018). The new contribution statement is on p. 3."
 
+Keep a table with one row per reviewer point: the quotation, your response, the change made and its location. Where you disagree, cite the measured result, such as class B evading in every trial, rather than restating your opinion. Send the table with the revised manuscript so the editor can check every change.
+
 ### 6.6 Common errors and limits
 
 Defending instead of testing; hiding the class B failure; claiming generality across plants after two contexts; responding to reviewers without stating changes.
+
+Each error turns critique into defence. Treat each objection as a hypothesis with a test. Put class B in the abstract. Limit generality to the two contexts measured, the Plant A model and Testbed T2. In reviewer letters, state what changed and where, so a reader can verify the revision instead of trusting the claim.  Keep the objections table in the thesis.
 
 ### Exercises — chapter 6
 
@@ -616,9 +656,13 @@ After this chapter you can (1) map the thesis argument from evidence to claim, (
 
 Use a Toulmin structure: **claim** (narrowed claim of §6.3), **data** (Lab 3, Lab 5, T2 results), **warrant** (the mass balance links flow and level; an attacker controlling only one cannot keep both consistent), **backing** (verification tests, Page's CUSUM properties), **qualifier** ("in two synthetic contexts"), **rebuttal** (class B, slow ramps, laggy instruments). Each element points to a chapter and an artifact.
 
+Draw the map as one page and check each arrow: does the cited data actually support the warrant, and does the rebuttal list every boundary from the critique chapter? An element with no artefact behind it is a gap to close before the defense. Keep the map current as wording changes, because examiners often ask how a single sentence connects to the evidence.
+
 ### 7.2 Format
 
 A monograph suits a single integrated argument; a publication-based thesis suits independent papers with a linking chapter. Either way, the reproducibility archive belongs to the thesis, not to one paper.
+
+For the Setpoint Study a publication-based thesis maps naturally onto the three planned papers, with the linking chapter carrying the narrowed claim and the boundary conditions. A monograph would place the same material in one continuous argument. Choose with your committee early, because the choice changes how much repetition is acceptable and how co-authored work is credited.
 
 ### 7.3 Tiered archive
 
@@ -663,13 +707,19 @@ The stale hash blocks the release, and the T3 file is never considered. The comp
 
 State for each synthetic dataset whether it is **invented** (parameters chosen for teaching) or **calibrated** (fitted to a real system's statistics). The Setpoint Study's tank is invented. Record parameters, seeds, generator code version and the intended use; warn against using it to make claims about real plants.
 
+Write this documentation as a short data sheet stored with the generator code, and include the equilibrium, the orifice coefficient of 0.02, the noise levels and the attack gains. Name the labs that used each configuration. Anyone reusing the traces should see at once that they describe a teaching model, not measurements from Kestrel or any other plant.
+
 ### 7.5 Directional limitations
 
 A useful limitations table states the direction of each bias: noise-free flow meter in simulation (*overstates* recall — confirmed by T2), single-loop model (*unknown* direction for multi-loop plants), synthetic operators (*unknown*), testbed scale (*likely overstates* signal-to-noise), censoring at 400 steps (*understates* Plant B delay cost).
 
+The direction matters because it tells a reader how to adjust confidence. If a bias overstates recall, the real-world figure is likely lower; if it is unknown, the reader should not assume either way. Keep the table beside the results rather than at the end, and update it when new evidence, such as T2's lower recall, settles a direction.
+
 ### 7.6 Common errors and limits
 
 Archives that release everything or nothing; manifests not checked; calling invented data "realistic"; limitations without direction.
+
+An archive that releases everything leaks plant-level detail; one that releases nothing cannot be checked. A manifest that is never verified gives false comfort, which is why Lab 7 fails closed. Synthetic data should be called invented or calibrated, never realistic. And every limitation should say whether it pushes results up, down or in an unknown direction.  Run the manifest check on the release copy, never only on the working directory.
 
 ### Exercises — chapter 7
 
@@ -730,21 +780,31 @@ C2 must be deleted or narrowed; C3 needs a falsifier (for example "a band narrow
 
 Prepare answers for: **positioning** ("what is new beyond Page and Giraldo?"), **validity** ("why should a testbed generalize?"), **adversary** ("what does a stronger attacker do?"), **safety** ("how did you bound T2 experiments?"), **ethics** ("what did you withhold and why?"), and **impact** ("what should an operator change on Monday?"). The answer to the last is architectural: provide an independently wired second measurement of key process quantities and display predicted versus reported values.
 
+Rehearse each family aloud with a colleague who interrupts, and keep a sheet with a short answer and a pointer to the figure or table that supports it. When you do not know, say what evidence would answer the question and what you actually have. Answer the question asked, then stop.
+
 ### 8.3 Publication sequencing
 
 Paper 1: the evaluation-methodology contribution (impact-at-detection and event metrics, with the TankBench-21-style reproduction lesson told generically). Paper 2: the Setpoint Study comparison with boundary conditions. Paper 3: the operator interpretability finding with human-factors collaborators. Release the T0/T1 archive with Paper 2.
+
+Plan each paper so that it does not contradict the thesis or the other papers, and record which claims and figures each one reuses. If the operator paper is delayed by human-factors review, the other two can still appear; the archive is released with Paper 2 because that is the paper whose numbers it reproduces. Agree authorship with collaborators before writing begins.
 
 ### 8.4 Coordinated disclosure
 
 If the research reveals a vulnerability in a commercial product — for example a PLC accepting unauthenticated writes to a register that should be read-only — report it to the vendor and, where appropriate, to a coordinator such as CISA's coordinated vulnerability disclosure program, agree a timeline, and publish technical detail only after mitigations are available. A design property documented in a public specification (Modbus lacking authentication) is not a vulnerability disclosure; an implementation flaw is.
 
+Record the disclosure timeline in the thesis appendix with dates for first contact, vendor acknowledgment and publication. If the vendor does not respond, follow the coordinator's process rather than publishing early. The thesis can still describe the class of weakness while withholding product names and steps until mitigations exist.
+
 ### 8.5 Translation for practice
 
 Write a two-page brief for operators with confidence levels: "High confidence (model + testbed): band alarms alone do not detect replayed level readings. Medium confidence (two contexts): an independent flow measurement plus a residual check detects single-sensor replay. No protection: if one device or PLC controls both measurements." Suggest to standards working groups that independent measurement paths be considered when assessing zone security levels — as a proposal, not as a finding of compliance.
 
+Test the brief with one or two operators before release: can they say what to check on Monday? If they cannot, the confidence levels or the recommendation need rewording. Keep the brief consistent with the narrowed claim, and do not let a shorter format drop the case where one device controls both measurements.
+
 ### 8.6 Post-doctoral program
 
 Extend to multi-loop plants, test calibrated rather than invented models, measure operator response time with real (consenting) control-room staff, and study class C attackers who modify PLC logic.
+
+Each extension tests one boundary the thesis measured but could not cross. Multi-loop plants test whether residuals stay interpretable when loops interact. Calibrated models test whether invented parameters overstated separation. Real operators test interpretability at scale. Class C attackers, who can rewrite controller logic, test whether any invariant survives when the controller itself lies; the same safety bounds and ethics review apply to all four.
 
 ### Exercises — chapter 8
 
