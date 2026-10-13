@@ -3120,7 +3120,7 @@ Lena registered her measures, baseline lengths and threshold before analysing AB
 
 If research accidentally finds a live issue, follow responsible disclosure — not a class blog.
 
-> **Synthetic case — Ashford Batch Plant.** Lena's applied study compared ticket reopen rates before/after requiring re-test evidence; pre-registered, synthetic+anonymized.
+> **Synthetic case — Ashford Batch Plant.** Lena's applied study measured how many days of baseline a new-conduit detector needs before its false alerts fall below one per week (§42.5); pre-registered, synthetic+anonymized.
 
 Lena's research plan named the vendor's product security team as the first contact for any flaw found in a product, and it set publication only after the vendor responded. The thesis would describe a fault only in general terms. Her supervisor reviewed the plan before any traffic was analysed.
 

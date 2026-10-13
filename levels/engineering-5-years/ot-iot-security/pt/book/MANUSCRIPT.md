@@ -3250,7 +3250,7 @@ Lena registrou as suas medidas, os comprimentos das linhas de base e o limiar an
 
 Se a pesquisa encontrar por acidente um problema real, siga a divulgação responsável — não um blog da turma.
 
-> **Caso sintético — Ashford Batch Plant.** O estudo aplicado de Lena comparou as taxas de reabertura de tickets antes/depois de exigir evidência de novo teste; pré-registrado, sintético+anonimizado.
+> **Caso sintético — Ashford Batch Plant.** O estudo aplicado de Lena mediu quantos dias de linha de base um detector de novos condutos precisa antes que seus alertas falsos fiquem abaixo de um por semana (§42.5); pré-registrado, sintético+anonimizado.
 
 O plano de pesquisa de Lena nomeava a equipe de segurança de produto do fornecedor como o primeiro contato para qualquer falha encontrada num produto, e só permitia a publicação depois da resposta do fornecedor. A tese descreveria uma falha apenas em termos gerais. O seu orientador revisou o plano antes que qualquer tráfego fosse analisado.
 
