@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 50 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–50 (EX076–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 26–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1154,11 +1154,237 @@ O processamento no aparelho ainda precisa de um canal de atualização seguro e 
 - **EX074 — Projeto à luz do artigo 22.** Como a equipe evita uma decisão exclusivamente automatizada? *Rubrica:* 3 = a triagem é orientação, com opção clara de falar com um profissional;; 2 = menciona pessoa;; 1 = ignora;; 0 = nenhuma.
 - **EX075 — Aprender sem guardar.** Como a equipe pode descobrir uma triagem insegura sem guardar as respostas? *Rubrica:* 3 = retorno opcional e revisão clínica com casos sintéticos;; 2 = uma parte;; 1 = guardar tudo;; 0 = nenhuma.
 
+<a id="ch-26"></a>
+
+## Capítulo 26 — Privacidade e proteção de dados: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar arquiteturas centralizadas, federadas e no próprio dispositivo; (2) avaliar tecnologias de aprimoramento da privacidade; (3) escolher com critérios documentados.
+
+### 26.1 Três arquiteturas
+
+A Pellmore quer analisar os desfechos das consultas entre as clínicas para melhorar o atendimento. Zara compara três arquiteturas. Centralizada: copiar todos os registros para um único armazenamento de análise. Federada: executar as análises dentro do sistema de cada clínica e compartilhar só os resultados. No dispositivo ou na borda: calcular as estatísticas no ponto de atendimento. A centralização é a mais simples, mas concentra o risco. A federação mantém os dados brutos no local, mas complica a análise. Antes de comparar, ela escreve os critérios: exposição dos dados, capacidade de análise, custo, complexidade operacional e capacidade de atender aos pedidos de eliminação em todo o sistema. Cada critério recebe nota de um a três antes de qualquer discussão de projeto.
+
+### 26.2 Tecnologias de aprimoramento da privacidade
+
+Zara levanta as tecnologias de aprimoramento da privacidade (PETs). A privacidade diferencial acrescenta ruído calibrado às saídas, seguindo Dwork e colegas (2006). A computação segura multipartes permite que as partes calculem resultados conjuntos sem revelar suas entradas. Os dados sintéticos podem substituir registros reais no desenvolvimento. Cada uma tem limites: a privacidade diferencial reduz a acurácia, sobretudo para grupos pequenos; a computação multipartes é complexa e lenta; os dados sintéticos podem vazar informação se forem gerados sem cuidado a partir de registros reais. A NIST SP 800-188 discute várias dessas abordagens para publicações de dados governamentais, e Zara as considera transferíveis para estatísticas de saúde. Os dados sintéticos servem bem para testes.
+
+### 26.3 Pontuação
+
+Zara pontua cada arquitetura segundo seus critérios, junto com a equipe. A federação com saídas agregadas protegidas por privacidade diferencial tem a melhor nota em exposição e em eliminação, nota adequada em análise e nota pior em complexidade. A centralização tem a melhor nota em análise e a pior em exposição. Ela apresenta as notas com o raciocínio, ressaltando que os pesos refletem as prioridades da Pellmore, que a direção precisa confirmar. As diretrizes do EDPB sobre proteção de dados desde a concepção listam o estado da técnica e o custo de implementação como fatores, o que respalda tornar esses trade-offs explícitos para quem decide.
+
+### 26.4 Decisão
+
+O comitê de arquitetura da Pellmore escolhe a federação com saídas agregadas para as comparações entre clínicas e um pequeno conjunto de dados centralizado e pseudonimizado para as auditorias de segurança clínica que precisam de dados no nível do registro, com acesso estrito. Zara registra a decisão, as alternativas rejeitadas e as condições para revisitá-la. Ela observa que a resposta híbrida é comum na prática: nenhuma arquitetura serve a todas as finalidades, e documentar qual finalidade usa qual arquitetura ajuda auditores e futuros engenheiros a entender o sistema e a resistir à pressão de centralizar tudo por conveniência. O registro da decisão nomeia os responsáveis.
+
+### Exemplo resolvido
+
+Zara compara as arquiteturas centralizada, federada e de borda com critérios definidos antes, levanta as tecnologias de aprimoramento da privacidade e registra uma decisão híbrida: federação para as comparações e um conjunto restrito e pseudonimizado para as auditorias de segurança.
+
+> **Caso sintético.** As arquiteturas e as notas são sintéticas; Dwork et al. (2006), a NIST SP 800-188 e as Diretrizes 4/2019 do EDPB são reais.
+
+### Erros e limites
+
+As notas dependem dos pesos; mostre a sensibilidade a pesos diferentes.
+
+### Exercícios
+
+- **EX076 — Trade-off da centralização.** Qual é o principal trade-off da centralização? *Rubrica:* 3 = análise mais fácil, mas exposição concentrada;; 2 = menciona risco;; 1 = diz que é a melhor em tudo;; 0 = nenhuma.
+- **EX077 — Limites das PETs.** Cite um limite de cada uma de duas tecnologias de aprimoramento da privacidade. *Rubrica:* 3 = por exemplo, a privacidade diferencial perde acurácia em grupos pequenos; a computação multipartes é complexa e lenta;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Decisão híbrida.** O que o comitê de arquitetura decidiu? *Rubrica:* 3 = federação para as comparações, mais um conjunto restrito e pseudonimizado para as auditorias de segurança;; 2 = uma parte;; 1 = centralizar;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Privacidade e proteção de dados: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles de privacidade preventivos, detectivos e corretivos; (2) projetar a gestão do consentimento; (3) ligar os controles aos requisitos e aos riscos.
+
+### 27.1 Tipos de controle
+
+Zara classifica os controles em preventivos, detectivos e corretivos. Os preventivos impedem problemas: verificações de acesso baseadas na finalidade, minimização de campos nos formulários. Os detectivos percebem problemas: sinais de anomalia no acesso a prontuários, monitoramento da retenção. Os corretivos corrigem problemas: tarefas de exclusão, resposta a incidentes. Ela garante que cada risco de alta prioridade tenha pelo menos um controle de cada tipo. Para a bisbilhotice de funcionários, as verificações de acesso previnem, os sinais de anomalia detectam e os procedimentos disciplinares e de comunicação corrigem. Um risco com apenas controles preventivos é frágil, porque as falhas passam despercebidas até o dano aparecer. Bons projetos combinam os três tipos.
+
+### 27.2 Gestão do consentimento
+
+Parte do tratamento da Pellmore se apoia no consentimento, como o boletim informativo e a participação opcional em pesquisas. As Diretrizes 05/2020 do EDPB exigem que o consentimento seja livre, específico, informado e inequívoco, e tão fácil de revogar quanto de dar; a LGPD traz exigências semelhantes no art. 5º, XII, e no art. 8º, § 5º. Zara projeta um serviço de consentimento que guarda com o que cada paciente concordou, quando e por meio de qual versão do texto. A revogação exige um toque e se propaga a todos os sistemas em até um dia. Ela garante que o atendimento nunca dependa do consentimento para marketing, o que tornaria o consentimento não livre.
+
+### 27.3 Controles ligados aos requisitos
+
+Zara amplia sua matriz de rastreabilidade: cada controle passa a apontar para os requisitos que atende e para os riscos que reduz. As lacunas aparecem como riscos sem controles ou como controles sem finalidade. Ela encontra um controle legado, uma cópia noturna do banco de prontuários para um antigo servidor de relatórios, que nenhum requisito justifica. Removê-lo reduz a exposição sem custo algum. O exercício mostra que o projeto de controles inclui a poda, porque controles e processos antigos podem eles próprios virar riscos à privacidade quando ninguém mais lembra por que existem. A matriz passa a ser revista a cada semestre.
+
+### 27.4 Responsáveis pelos controles
+
+Todo controle precisa de um responsável que o mantenha e preste contas sobre ele. Zara define os responsáveis: o líder de engenharia para as verificações de acesso, o encarregado para os textos de consentimento, o gerente de operações para as tarefas de retenção. Ela escreve uma descrição de uma página para cada controle, cobrindo finalidade, funcionamento, evidências e resposta a falhas. O Prof. Holm lembra que a ISO/IEC 27701:2025 espera controles documentados com evidências de funcionamento, e que são os responsáveis que mantêm os controles vivos depois que os engenheiros que os projetaram passam para outros projetos.
+
+### Exemplo resolvido
+
+Zara dá a cada risco alto controles preventivos, detectivos e corretivos, projeta um serviço de consentimento que atende aos critérios do EDPB, remove uma cópia noturna injustificada e define os responsáveis pelos controles.
+
+> **Caso sintético.** Os controles são sintéticos; as Diretrizes 05/2020 do EDPB, os arts. 5º e 8º da LGPD e a ISO/IEC 27701:2025 são reais.
+
+### Erros e limites
+
+Controles demais geram sobrecarga e confusão; faça podas regularmente.
+
+### Exercícios
+
+- **EX079 — Tipos de controle contra bisbilhotice.** Dê um controle preventivo, um detectivo e um corretivo contra a bisbilhotice de funcionários. *Rubrica:* 3 = verificações de acesso; sinais de anomalia; procedimentos disciplinares e de comunicação;; 2 = dois;; 1 = um;; 0 = nenhuma.
+- **EX080 — Consentimento válido.** O que torna o consentimento válido segundo as Diretrizes 05/2020 do EDPB? *Rubrica:* 3 = livre, específico, informado, inequívoco e fácil de revogar;; 2 = lista alguns;; 1 = errado;; 0 = nenhuma.
+- **EX081 — Controle podado.** Que controle Zara removeu, e por quê? *Rubrica:* 3 = uma cópia noturna do banco para um antigo servidor de relatórios, sem nenhum requisito que a justificasse;; 2 = menciona a cópia;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Privacidade e proteção de dados: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar marcações de finalidade e verificações de acesso; (2) implementar a propagação do consentimento; (3) implantar mudanças com segurança.
+
+### 28.1 Marcações de finalidade no esquema
+
+Zara implementa marcações de finalidade no esquema do banco de dados da Pellmore. Cada coluna carrega metadados que listam as finalidades autorizadas a lê-la. A biblioteca de acesso do Capítulo 9 confere a finalidade declarada por quem chama com as marcações antes de devolver os dados. Ela migra as marcações aos poucos, começando pelas tabelas clínicas. Durante a migração, qualquer leitura de uma coluna sem marcação é registrada como aviso, em vez de bloqueada, para que a equipe encontre as marcações que faltam sem derrubar o serviço. Depois de duas semanas os avisos param, e a verificação passa para o modo de bloqueio.
+
+### 28.2 Propagação do consentimento
+
+O serviço de consentimento publica eventos quando um paciente dá ou revoga o consentimento. Os sistemas a jusante, como a plataforma de e-mail e a extração para pesquisa, assinam esses eventos e atualizam seus registros. Zara implementa tratadores idempotentes, para que eventos repetidos não causem dano, e uma conciliação diária que compara o estado de consentimento de cada sistema com o registro central. A conciliação descobre que a plataforma de e-mail perdeu revogações durante uma queda de rede. Ela corrige o tratador para tentar de novo e acrescenta um alerta, mostrando por que sistemas de eventos precisam de uma verificação que não dependa dos próprios eventos.
+
+### 28.3 Implantação segura
+
+Mudanças de privacidade podem quebrar serviços. Zara implanta atrás de feature flags, ativando as novas verificações primeiro para um pequeno grupo de contas internas de teste, depois para uma clínica e, por fim, para todas. Ela monitora os erros e as negativas de acesso em cada etapa. A ferramenta de relatórios de uma clínica falha porque lia uma coluna sem finalidade. A equipe acrescenta a finalidade e segue adiante. Ela registra o incidente e a correção. A implantação gradual, observa, permite que os controles de privacidade sejam rigorosos sem se tornarem o motivo de uma clínica não conseguir trabalhar numa manhã movimentada.
+
+### 28.4 Documentação como código
+
+Zara mantém as marcações de finalidade, os prazos de retenção e as finalidades de consentimento em arquivos de configuração sob controle de versão. As mudanças passam por revisão de código com as perguntas de privacidade do Capítulo 14. O registro das operações de tratamento é gerado em parte a partir desses arquivos, de modo que continua alinhado ao sistema. Ela explica que a documentação gerada a partir da configuração é mais confiável que documentos escritos à parte, porque muda quando o sistema muda. O encarregado da Pellmore aprova a abordagem, porque ela dá uma visão atualizada do tratamento sem pedir que os engenheiros escrevam relatórios à mão.
+
+### Exemplo resolvido
+
+Zara implementa as marcações de finalidade com uma migração que primeiro avisa e depois bloqueia, eventos de consentimento com uma conciliação que pega revogações perdidas, implantação gradual com flags e registros de tratamento gerados a partir da configuração.
+
+> **Caso sintético.** Os detalhes de implementação são sintéticos.
+
+### Erros e limites
+
+A documentação gerada cobre só o que está configurado; os processos manuais ainda precisam ser descritos.
+
+### Exercícios
+
+- **EX082 — Avisar e depois bloquear.** Por que registrar avisos antes de bloquear leituras sem marcação? *Rubrica:* 3 = para encontrar as marcações que faltam sem derrubar o serviço;; 2 = menciona segurança;; 1 = bloquear de imediato;; 0 = nenhuma.
+- **EX083 — O que a conciliação pegou.** O que a conciliação de consentimento descobriu? *Rubrica:* 3 = a plataforma de e-mail perdeu revogações durante uma queda;; 2 = menciona e-mail;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Registros gerados.** Por que gerar o registro das operações a partir da configuração? *Rubrica:* 3 = ele continua alinhado ao sistema à medida que este muda;; 2 = menciona exatidão;; 1 = o manual é melhor;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Privacidade e proteção de dados: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir a minimização de dados; (2) definir métricas de privacidade; (3) relatar as métricas sem criar novos riscos.
+
+### 29.1 Medir a minimização
+
+Zara quer medir se a Pellmore coleta só o que precisa. Ela lista, para cada finalidade, os campos coletados e os campos de fato necessários, combinados com os responsáveis por cada processo. O formulário de agendamento coleta oito campos, mas precisa de cinco; endereço, gênero e ocupação não são necessários. As teleconsultas coletam seis campos, mas precisam de quatro; contatos e localização não são necessários. O boletim informativo coleta quatro campos, mas só precisa do e-mail. No total, 8 dos 18 campos coletados, 44%, não são necessários para sua finalidade, contrariando o princípio da necessidade do art. 6º, III, da LGPD. Removê-los reduz a exposição diretamente.
+
+### 29.2 Agir a partir da medida
+
+O número da minimização leva a mudanças. Zara remove os campos desnecessários do agendamento, deixa de coletar contatos telefônicos e localização no aplicativo de vídeo e reduz a inscrição no boletim a um endereço de e-mail. Ela planeja medir de novo depois de um ciclo de versões. Também observa que a medida depende do julgamento honesto dos responsáveis sobre a necessidade: um responsável que alegasse que tudo é necessário faria o número parecer bom. Um segundo revisor, o encarregado, confere cada alegação de necessidade com a descrição da finalidade antes que o número seja relatado.
+
+### 29.3 Um conjunto de métricas
+
+Além da minimização, Zara define um pequeno conjunto de métricas de privacidade: registros que passaram do prazo de retenção, fluxos sem os campos do inventário completos, pedidos de direitos respondidos no prazo, divergências na conciliação do consentimento e anomalias de acesso revisadas em até uma semana. Cada métrica tem definição, fonte de dados, responsável e meta. O NIST Privacy Framework incentiva as organizações a monitorar e revisar o risco de privacidade, e o conjunto de métricas dá à Pellmore um jeito de fazer isso com regularidade. Ela mantém o conjunto pequeno para que as pessoas de fato leiam o relatório mensal.
+
+### 29.4 Métricas sem novo risco
+
+A medição pode criar novos riscos à privacidade. Um relatório que lista os funcionários com anomalias de acesso poderia estigmatizar pessoas inocentes se fosse amplamente compartilhado. Zara agrega o relatório para a direção e entrega os detalhes nominais só ao investigador. Da mesma forma, as métricas de pedidos de direitos mostram contagens e tempos, não quem fez os pedidos. Ela escreve uma regra curta: as próprias métricas de privacidade devem seguir a minimização de dados. O Prof. Holm chama isso de princípio recursivo da engenharia de privacidade, que aplica aos dados de monitoramento o mesmo cuidado dado aos dados monitorados. Os logs de monitoramento expiram rápido.
+
+### Laboratório — Campos coletados versus necessários por finalidade
+
+```python
+# Data minimisation: fields collected per purpose versus fields the purpose actually needs.
+collected = {"booking": {"name", "dob", "phone", "email", "address", "insurer", "gender", "occupation"},
+             "video consultation": {"name", "dob", "symptoms", "camera", "location", "contacts"},
+             "newsletter": {"email", "name", "dob", "postcode"}}
+needed = {"booking": {"name", "dob", "phone", "email", "insurer"},
+          "video consultation": {"name", "dob", "symptoms", "camera"},
+          "newsletter": {"email"}}
+tc = tn = 0
+for p in collected:
+    extra = sorted(collected[p] - needed[p]); tc += len(collected[p]); tn += len(needed[p])
+    print(f"{p:19s} collected {len(collected[p])} needed {len(needed[p])} excess {extra}")
+print(f"overall: {tc - tn} of {tc} collected fields ({(tc - tn)/tc:.0%}) are not needed")
+```
+
+Execute com `python3 lab_minimise.py`. Saída verificada:
+
+```text
+booking             collected 8 needed 5 excess ['address', 'gender', 'occupation']
+video consultation  collected 6 needed 4 excess ['contacts', 'location']
+newsletter          collected 4 needed 1 excess ['dob', 'name', 'postcode']
+overall: 8 of 18 collected fields (44%) are not needed
+```
+
+### Exemplo resolvido
+
+Zara descobre que 8 dos 18 campos coletados (44%) não são necessários, remove-os, define cinco métricas de privacidade com responsáveis e metas e agrega os relatórios das métricas para não criar novos riscos.
+
+> **Caso sintético.** Os campos e as finalidades são sintéticos; o NIST Privacy Framework 1.0 e o art. 6º da LGPD são reais.
+
+### Erros e limites
+
+A contagem de campos ignora a sensibilidade; um único campo de saúde desnecessário pode pesar mais que três campos de contato.
+
+### Exercícios
+
+- **EX085 — Resultado da minimização.** Que parcela dos campos coletados é desnecessária? *Rubrica:* 3 = 8 de 18, 44%;; 2 = cerca de quatro em dez;; 1 = errado;; 0 = nenhuma.
+- **EX086 — Alegações de necessidade.** Por que um segundo revisor confere as alegações de necessidade? *Rubrica:* 3 = os responsáveis podem exagerar a necessidade, fazendo a medida parecer boa;; 2 = menciona viés;; 1 = confia nos responsáveis;; 0 = nenhuma.
+- **EX087 — Princípio recursivo.** O que é o princípio recursivo da engenharia de privacidade? *Rubrica:* 3 = os dados de monitoramento também devem seguir princípios de privacidade, como a minimização;; 2 = menciona métricas;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar controles de privacidade com testes; (2) projetar testes a partir das ameaças; (3) registrar evidências para a responsabilização.
+
+### 30.1 Testes a partir das ameaças
+
+No primeiro laboratório de verificação, Zara transforma os cenários de ameaça do Capítulo 23 em testes. Para a vinculabilidade, ela verifica se os eventos de análise carregam pseudônimos específicos de cada destinatário e se dois destinatários nunca recebem o mesmo identificador. Para os resultados enviados ao destinatário errado, ela envia resultados sintéticos com nomes divergentes e verifica se o sistema os bloqueia. Para a bisbilhotice de funcionários, ela simula visualizações de prontuários sem consulta agendada e verifica se o sinal de anomalia dispara em até um dia. Cada teste tem um resultado esperado definido antes da execução, o que impede interpretar os resultados com generosidade depois.
+
+### 30.2 Testes de direitos
+
+Zara testa os direitos dos titulares de ponta a ponta. Ela cria um paciente sintético, usa o aplicativo durante uma semana de consultas e mensagens fictícias e depois pede acesso, retificação e eliminação. A exportação de acesso inclui todos os dados, exceto os logs de chat, guardados por um fornecedor e ainda não integrados. O pedido de eliminação remove os dados de quatro dos cinco armazenamentos, mas o armazenamento de análise mantém os eventos sob o pseudônimo. As duas falhas viram defeitos com responsáveis. Ela registra que testes de ponta a ponta com pacientes sintéticos realistas encontram lacunas que os testes unitários não enxergam.
+
+### 30.3 Evidências
+
+Cada teste produz evidências: entradas, saídas, data e responsável pelo teste. Zara guarda as evidências em uma pasta versionada e resume os resultados em uma tabela. O princípio da responsabilização exige que a Pellmore consiga demonstrar a conformidade, como também prevê o art. 6º, X, da LGPD, e as evidências de teste estão entre as formas mais fortes de demonstração. Ela explica que dizer que a eliminação funciona é uma alegação, enquanto um log de teste datado mostrando a eliminação em todos os armazenamentos é uma evidência. O Prof. Holm pede que ela inclua os testes reprovados nas evidências, porque esconder as falhas tornaria a pasta enganosa.
+
+### 30.4 Novos testes
+
+Depois que os defeitos são corrigidos, Zara repete os testes. A exportação de acesso agora inclui os logs de chat, e a eliminação alcança o armazenamento de análise. Ela registra as duas execuções, mostrando a falha e a correção. Também acrescenta os testes ao pipeline de integração contínua, para que rodem a cada versão. A verificação, conclui ela, não é um certificado pontual, mas um hábito: as propriedades de privacidade podem quebrar sempre que o sistema muda, e só testes executados com regularidade pegam as regressões antes que cheguem aos pacientes. Os testes rodam a cada versão.
+
+### Exemplo resolvido
+
+Zara transforma ameaças em testes, encontra lacunas no acesso (faltavam os logs de chat) e na eliminação (a análise mantinha os dados), registra as evidências, inclusive as falhas, e acrescenta os novos testes à integração contínua.
+
+> **Caso sintético.** Os testes e o paciente são sintéticos.
+
+### Erros e limites
+
+Os testes verificam o que conferem; caminhos não testados ainda podem falhar.
+
+### Exercícios
+
+- **EX088 — Resultados esperados.** Por que definir os resultados esperados antes de executar os testes? *Rubrica:* 3 = para impedir uma interpretação generosa depois de ver os resultados;; 2 = menciona viés;; 1 = não é necessário;; 0 = nenhuma.
+- **EX089 — Lacuna na eliminação.** Que armazenamento manteve dados depois da eliminação na primeira execução? *Rubrica:* 3 = o armazenamento de análise, sob o pseudônimo;; 2 = cita a análise;; 1 = nenhum;; 0 = nenhuma.
+- **EX090 — Alegação versus evidência.** Diferencie alegação de evidência sobre a eliminação. *Rubrica:* 3 = a alegação diz que funciona; a evidência é um log de teste datado cobrindo todos os armazenamentos;; 2 = menciona logs;; 1 = equipara as duas;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX075 (as de EX076–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -1309,6 +1535,36 @@ Respostas-modelo para EX001–EX075 (as de EX076–EX150 estão na edição em i
 **EX074.** O resultado é uma orientação, e os pacientes sempre podem falar com um profissional de saúde.
 
 **EX075.** Por meio de retorno opcional e de testes clínicos periódicos com casos sintéticos.
+
+**EX076.** Simplifica a análise, mas concentra o risco em um único armazenamento.
+
+**EX077.** A privacidade diferencial reduz a acurácia para grupos pequenos; a computação multipartes é complexa e lenta.
+
+**EX078.** Análise federada com saídas agregadas, mais um pequeno conjunto pseudonimizado e restrito para as auditorias de segurança.
+
+**EX079.** As verificações de acesso previnem, os sinais de anomalia detectam, e os procedimentos disciplinares e de comunicação corrigem.
+
+**EX080.** Livre, específico, informado e inequívoco, com revogação tão fácil quanto a concessão.
+
+**EX081.** Uma cópia noturna para um servidor de relatórios legado que nenhum requisito justificava.
+
+**EX082.** Os avisos revelam lacunas sem causar quedas; o bloqueio vem depois que as lacunas são corrigidas.
+
+**EX083.** Revogações perdidas pela plataforma de e-mail durante uma queda de rede.
+
+**EX084.** Os registros gerados mudam quando a configuração muda, mantendo a documentação exata.
+
+**EX085.** 8 de 18 campos, 44%.
+
+**EX086.** Os responsáveis poderiam alegar que todo campo é necessário, então uma verificação independente mantém a medida honesta.
+
+**EX087.** Os dados coletados para monitorar a privacidade devem ser minimizados e protegidos como quaisquer outros dados pessoais.
+
+**EX088.** Fixar as expectativas antes impede que os resultados sejam interpretados conforme o que se espera.
+
+**EX089.** O armazenamento de análise manteve os eventos sob o pseudônimo.
+
+**EX090.** "A eliminação funciona" é uma alegação; um log datado de um teste que exclui de todos os armazenamentos é uma evidência.
 
 <a id="references"></a>
 ## Referências
