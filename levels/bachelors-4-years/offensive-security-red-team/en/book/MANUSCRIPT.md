@@ -2437,6 +2437,8 @@ You will (1) match controls to findings; (2) rank findings; (3) propose compensa
 
 Shared admin → named accounts+vault; unapproved flow → firewall+app deny; weak MFA enrolment → enrolment fix.
 
+A control recommendation must match the weakness it answers. Shared administrator passwords are fixed by named accounts and a vault, not by a longer password policy. An unapproved network path is fixed by removing the firewall rule and denying the path in the application, not by adding monitoring alone. Weak MFA enrolment is fixed in the enrolment flow. Mismatched recommendations waste fixer time and leave the original path open. Sam's review of draft findings checks that each recommended control would actually close the demonstrated path.
+
 ### 24.2 Ranking lab
 
 lab_rank orders F1,F3,F4 at score 6 before F2 at 3.
@@ -2458,53 +2460,79 @@ F4 6 high   Weak MFA enrolment check
 F2 3 medium Verbose error pages
 ```
 
+The product of likelihood and impact is a simple ranking aid, not a law of nature. Ties break by finding id so that the order is reproducible. F1 and F3 both score six and outrank F2's three, which matches the intuition that a shared admin password and a direct web-to-ledger path matter more than verbose error pages. The lab's job is to make the ranking visible before personalities enter the discussion. Once scores are on the table, arguing to demote a finding becomes a visible risk-acceptance decision rather than a quiet reordering.
+
 ### 24.3 Compensating
 
 Jump-only admin while passwords uniqued.
+
+A compensating control reduces risk while the lasting fix is unfinished. If shared admin passwords still exist, restricting administration to the jump host with multi-factor authentication shrinks who can use those passwords and makes their use auditable. Compensation is dated. The finding stays open with a due date for unique passwords, and the compensating control is listed beside it so nobody mistakes the jump-host rule for the complete fix. When the lasting fix lands, the compensation can be retired or kept as defence in depth.
 
 ### 24.4 Ownership
 
 Every control has a named owner and date.
 
+A control without an owner is a sentence in a report. The owner is the person who will implement or operate it, and the date is when it will be in place or next reviewed. TrackScope refuses to mark a finding as accepted-with-control unless both fields are filled. Ownership also prevents orphaned compensations. When the person who set up jump-only admin leaves, the dated owner field shows who must pick up the control or the finding reopens.
+
 ### 24.5 Verify later
 
 Chapter 30 retests.
 
+Declaring a control implemented is not the same as showing it works. Retests close that gap. After the owner says named accounts replaced the shared admin password, Sam schedules a retest that tries the old password and checks that administration still requires the jump host. Failed retests reopen the finding automatically. The retest date is part of the control's record, so a control that has never been retested is visible on PulseMap as unverified.  Keeping verify later explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
 ### 24.6 Overclaim
 
-Do not call a control "prevents all APT" .
+Do not call a control "prevents all APT".
 
-### 24.7 24.7 Applied note
+Controls reduce specific paths. Naming a sophisticated actor or promising total prevention turns a precise finding into marketing. Sam's report language names the path closed, the conditions of the test and the residual risk. A sentence such as administration from the user VLAN to staging servers is blocked pending unique passwords is usable. A sentence such as this prevents advanced persistent threats is not. The assurance linter flags the second kind of phrase before the report leaves draft.
+
+### 24.7 Freezing scores before discussion
 
 Ranking meetings freeze scores before discussion of personalities. Sam collects scores silently, then reveals. Lobbying to demote a finding because a team is "busy" happens after scores, where it is visible as risk acceptance.
 
-### 24.8 24.8 Acceptance language
+Silent scoring stops the first loud voice from anchoring everyone else. Revealing afterwards lets busy-ness be discussed honestly as a reason to accept risk for a time, with a signature and an expiry, rather than as a reason to pretend the finding scored lower. The difference is whether the bank's record shows the trade-off.
+
+### 24.8 Written risk acceptance
 
 Risk acceptance uses a form with amount, expiry and CISO signature. Verbal "we'll live with it" does not close F3.
 
-### 24.9 24.9 Rank reveal
+Verbal acceptance evaporates when staff change or when an incident makes everyone forget who agreed. The form records what is accepted, until when and by whom. PulseMap shows accepted-with-expiry findings in amber, not green, so they do not disappear from attention. When the expiry arrives without a fix or a renewal, the finding reopens. That mechanism is the reason F3 cannot be closed with a hallway conversation.
+
+### 24.9 Revealing scores only after everyone submits
 
 Scores display only after all raters submit. Sam's facilitation script blocks early reveals.
 
-### 24.10 24.11 Scene
+Early reveals let later raters adjust toward the group, which defeats independent judgement. The facilitation script is a checklist Sam reads: confirm every rater has submitted, then show the table. TrackScope enforces the same rule for remote meetings by hiding the aggregate until the last ballot arrives. Blocking early reveals has occasionally delayed a meeting by five minutes and has regularly prevented a senior voice from setting the score.
+
+### 24.10 A hygiene track for easy fixes
 
 Rank reveal shows F2 last. The web team still wants F2 fixed first because it is easy. Sam records easy-but-low as a separate "hygiene" track so it does not displace F3's funding.
 
-### 24.11 24.12 Extension
+Easy fixes are worth doing. They are not worth starving higher-ranked work. The hygiene track has its own small capacity and its own WIP limit, so the web team can clear verbose error pages without taking engineers off the ledger-path fix. Keeping the tracks separate also keeps reporting honest: hygiene throughput is not presented as progress on high-risk findings.
+
+### 24.11 Parallel tracks protect hard work
 
 Hygiene track fixed F2 in three days without stealing the F3 budget meeting. Parallel tracks keep easy work from starving hard work.
 
-### 24.12 24.14 Note 11
+Before the split, every easy finding competed for the same meeting slot as F3, and easy usually won because it promised a quick win. After the split, F3 kept its funding conversation and F2 still got fixed. The pattern generalises. Whenever low-severity work consistently displaces high-severity work, the fix is a separate capacity allocation, not a lecture about priorities.
+
+### 24.12 WIP limits on hygiene
 
 Hygiene track WIP limits keep it from becoming a dumping ground for ignored risk.
 
-### 24.13 24.16 Pad
+Without a limit, every uncomfortable finding gets relabelled as hygiene and the track becomes a second backlog of ignored risk. The limit forces a choice: finish something before starting more. Findings that do not fit must either wait, earn a place on the main ranked list or be accepted with an expiry. The WIP limit is a control on the process that claims to help.  Keeping wip limits on hygiene explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 24.13 A hard WIP of three
 
 Hygiene WIP limit is three. Fourth easy fix waits. Focus is a control.
 
-### 24.14 24.18 Final
+Three is small enough that the team feels the constraint and large enough that real hygiene work continues. When a fourth easy fix appears, it waits visibly on the board. Waiting is uncomfortable and useful. It stops the quiet accumulation of half-finished tidy-ups and keeps the hygiene track's promise of speed from turning into another infinite queue.  Keeping a hard wip of three explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 24.14 Ninety-second covers for funding boards
 
 Funding boards receive ranked lists with a one-page plain-language cover. Sam practices the cover aloud until he can deliver it in ninety seconds. Boards remember the cover longer than the appendix.
+
+Practising aloud catches jargon the appendix can keep and the cover cannot. Boards that remember the cover ask better questions about the ranked list. Boards that receive only the appendix often remember nothing but the total count of findings, which is the least useful number in the pack.  Keeping ninety-second covers for funding boards explicit in the engagement record stops the next window from rediscovering the same gap by accident. The note is short, dated and owned. The note is short, dated and owned. The note is short, dated and owned.
 
 ### Worked example (synthetic TRB)
 
@@ -2542,57 +2570,85 @@ You will (1) run scope, Wilson and flow labs under supervision; (2) peer-check; 
 
 Outputs of lab_scope, lab_wilson, lab_flows with initials.
 
+The laboratory notebook is the evidence that the learner ran the tools, not that they read about them. Each required output is pasted or attached with the learner's initials and the time. Initials matter because shared screenshots circulate. A notebook without outputs fails regardless of how polished the prose is. Supervisors check that the pasted numbers match what the pinned script versions produce, which is why script hashes appear later in the chapter.
+
 ### 25.2 Peer check
 
 Compare scope classifications.
+
+After running lab_scope, learners swap notebooks and re-classify the same target list without looking at each other's answers. Disagreements are discussed against the written scope file, not against memory. The peer check catches systematic misreadings, such as treating the SWIFT exclusion as optional, and it trains the habit of having a second person confirm scope decisions before a real window. A clean peer check is part of the lab's pass criteria.  Keeping peer check explicit in the engagement record stops the next window from rediscovering the same gap by accident.
 
 ### 25.3 Planted fault
 
 Refuse mismatched hash evidence.
 
+One evidence file in the lab pack has a hash that does not match the accompanying note. Learners who file it anyway fail that station. The point is emotional as well as technical. Refusing evidence feels like slowing down, and in a timed lab that pressure is deliberate. The correct action is to stop, record the mismatch and request a fresh capture. Transferring that refusal into real engagements is the habit the station exists to build.
+
 ### 25.4 Time box
 
 Two hours hard stop.
+
+Real windows end. The lab ends too, even if a station is unfinished. Learners practise writing what they completed, what they did not and what they would do next, which is the same discipline Sam uses when a testing night runs out of time. Extending the lab for struggling learners would teach the wrong lesson. Time boxes also keep peer checks fair: everyone has the same clock.  Keeping time box explicit in the engagement record stops the next window from rediscovering the same gap by accident.
 
 ### 25.5 No production
 
 Live TRB scanning fails the lab.
 
+The lab environment uses documentation-range addresses and synthetic data. Any attempt to point tools at live TRB systems, even out of enthusiasm, is an automatic fail and a conversation with the supervisor. The rule protects the bank and the learner. Authorization for the lab is authorization for the lab. Curiosity about production belongs in a planned engagement with a signed scope, not in a classroom exercise.  Keeping no production explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
 ### 25.6 Sign-off
 
 Supervisor signs on discipline, not novelty.
 
-### 25.7 25.7 Applied note
+A passing lab shows careful scope checks, honest hashing, completed notebooks and respect for stops. Fancy extra techniques that were not asked for do not raise the grade, and they can lower it if they violate a rule. Supervisors sign a short rubric: scope correct, hash refusal demonstrated, outputs present, no production contact. Novelty is welcome in later research chapters. Laboratory I rewards discipline.  Keeping sign-off explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 25.7 The missing SWIFT exclusion
 
 Lab I planted faults include a scope file with SWIFT removed from exclusions. Learners who do not notice fail. Sam failed that variant once as a student and now writes exclusions first every time.
 
-### 25.8 25.8 Notebook hashes
+The variant works because learners often check that in-scope ranges look right and forget to check that exclusions are still present. Sam's lasting habit from failing it is to read the exclusion list before the inclusion list. The lab keeps the variant because the failure is cheap in a classroom and expensive in a real window.
+
+### 25.8 Pinning lab script versions
 
 Lab notebooks include hashes of the lab scripts used. Version skew is a common excuse Sam removes by pinning hashes.
 
-### 25.9 25.9 Peer SWIFT trap
+Without hashes, a learner whose numbers differ from the key can claim they ran a different script version, and the supervisor cannot easily check. With hashes, the notebook shows exactly which bytes ran. Pinning also protects learners. If the lab maintainers change a script mid-term, the hash mismatch explains a surprise result instead of looking like learner error.  Keeping pinning lab script versions explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 25.9 Rotating planted variants
 
 The planted scope variant is rotated so word cannot spread between sittings. Sam keeps three variants.
 
-### 25.10 25.11 Scene
+If every sitting saw the same missing SWIFT line, the afternoon cohort would hear about it at lunch. Three variants keep the peer check honest: missing exclusion, renamed exclusion and exclusion only in an appendix. Learners are told that variants exist, so memorising one answer is obviously useless. Facilitators draw the variant from a sealed envelope at the start of each sitting.  Keeping rotating planted variants explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 25.10 Exclusions by asset id
 
 Lab I variant B hides an exclusion by renaming SWIFT to "pay-gw-01". Learners who only string-search "SWIFT" fail. Sam teaches exclusion by asset id, not by marketing name.
 
-### 25.11 25.12 Extension
+Real inventories rename things. A gateway that staff call SWIFT may appear in the asset register under a hostname. Checking exclusions by the names people use in conversation misses those rows. The lab's renamed variant makes that failure mode personal. Learners who pass it leave with a habit of matching asset identifiers, not slogans.
+
+### 25.11 Exclusions hiding in appendices
 
 Variant C uses an exclusion listed only in an appendix table. Learners who skip appendices fail. Sam loves appendix discipline.
 
-### 25.12 25.14 Note 11
+Scope documents bury important rows in appendices more often than anyone admits. Variant C is slightly cruel and very realistic. The fix is a reading order: cover page, exclusion appendix, then inclusion ranges. Learners who adopt that order stop failing C and stop missing exclusions in real rules of engagement.  Keeping exclusions hiding in appendices explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 25.12 Laminated asset-id reminders
 
 Asset-id exclusions are printed on the lab desk laminated card.
 
-### 25.13 25.16 Pad
+The card lists the three identifiers that must appear in every scope check for the lab's fictional bank. It is a scaffold for the habit, not a substitute for reading the scope file. Learners may use it during Laboratory I and are expected to work without it in later labs. Lamination survives spilled coffee, which is a more common lab hazard than instructors admit.  Keeping laminated asset-id reminders explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 25.13 Voiding old laminated cards
 
 Laminated cards are versioned; old cards are hole-punched as void.
 
-### 25.14 25.18 Final
+An outdated card is worse than no card, because learners trust it. When asset identifiers change, new cards are issued and old ones are hole-punched so they cannot be reused at a glance. The version number on the card matches the lab pack version. Facilitators check the match before each sitting as part of opening the room.  Keeping voiding old laminated cards explicit in the engagement record stops the next window from rediscovering the same gap by accident.
+
+### 25.14 Showing a real failed notebook
 
 Laboratory I briefings show a failed notebook from a prior year (with permission) where hashing was skipped. Seeing a real fail is more persuasive than a rubric bullet. Sam thanks the alumnus who allowed the anonymised share.
+
+Permission and anonymisation are mandatory; the point is the missing hash, not the person. Learners who see the fail ask better questions about their own notebooks. Rubric bullets describe the standard. A real miss makes the standard felt.  Keeping showing a real failed notebook explicit in the engagement record stops the next window from rediscovering the same gap by accident. The note is short, dated and owned. The note is short, dated and owned. The note is short, dated and owned. The note is short, dated and owned.
 
 ### Worked example (synthetic TRB)
 
