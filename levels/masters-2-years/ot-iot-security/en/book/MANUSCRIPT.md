@@ -64,9 +64,13 @@ After this chapter you can (1) turn a vague interest into a researchable questio
 
 Physics-based detection appears as "analytical redundancy" and "residual generation" in control journals and as "false data injection" and "sensor spoofing" in security venues. Build a synonym table before searching IEEE Xplore, ACM DL, Scopus and arXiv. Include grey literature (IEC white papers, CISA advisories) as a separate stream with its own eligibility rules, because it is not peer-reviewed in the same way.
 
+Run each search string in every database and save the exports with the date, the exact query and the hit count, so the search can be repeated by an examiner. Expect the two communities to describe the same detector with different words, and expect duplicates across venues; Lab 1 shows how quickly they appear when one survey is indexed by both IEEE and ACM.
+
 ### 1.3 Screening and agreement
 
 Two reviewers screen titles and abstracts independently; report Cohen's kappa. Lab 1 shows a synthetic export with DOI and title-year deduplication and a kappa of 0.462 — moderate agreement driven by disagreement on a vendor white paper and a DNP3 measurement paper. Low agreement is a signal to repair eligibility criteria, not to force consensus.
+
+Write the eligibility rules as testable statements before screening: does the study evaluate a detector on a control loop, does it name its attacker model, does it report a metric beyond accuracy. Screen a small calibration batch together, discuss each disagreement, and only then screen the rest independently. Record each changed rule and the date it changed.
 
 ### 1.4 Worked example and Lab 1
 
@@ -117,9 +121,13 @@ kept titles: ['Physics-based anomaly detection for ICS:', 'Modbus security: a su
 
 Three duplicates dropped via DOI or normalized title. Kappa 0.462 with 71.4% raw agreement shows chance correction at work.
 
+The lab keeps the first record of each duplicate pair, so the IEEE version of the physics-based survey stays and the ACM copy goes. Two records with no DOI are merged only because their normalized titles and years match exactly; a small change in wording would let a duplicate through. Check the kept list by eye before screening, and report raw count, kept count and dropped count in the protocol, as the lab prints them.
+
 ### 1.5 Common errors and limits
 
 Searching only security venues; treating vendor papers as peer-reviewed evidence; reporting raw agreement without kappa; writing a question with no failure condition.
+
+A question with no failure condition invites a dissertation that can only succeed. The Harbor Loop question avoids that by asking when the CUSUM advantage disappears. The search has a similar limit: databases change their indexing, so a search run in March may not return the same set in September. Record the date of every run and treat the corpus as a snapshot.
 
 ### Exercises — chapter 1
 
@@ -151,25 +159,37 @@ After this chapter you can (1) explain Purdue levels and ISA/IEC 62443 zones, (2
 
 NIST SP 800-82 Rev. 3 presents the Purdue model: levels 0–1 (process and basic control), 2 (supervisory), 3 (operations), 4–5 (enterprise), with an industrial DMZ. ISA/IEC 62443-3-2 asks you to partition into **zones** with a target security level and to control **conduits** between them. A dissertation can treat a zone design as a hypothesis: does a conduit that permits only Modbus reads from level 2 to level 1 reduce write reachability by a measured fraction in a synthetic topology?
 
+For Harbor Loop the relevant boundary sits between the supervisory level and the PLC, where Modbus/TCP carries both reads and writes. Draw that boundary in the dissertation even though the study measures detection rather than segmentation, because a reader needs to know which attacker positions the replay assumes. A conduit that blocks writes does not stop replayed reads, which is why detection still matters.
+
 ### 2.2 Protocols
 
 The Modbus Application Protocol defines function codes (including write single/multiple registers) and a data model but no authentication or integrity fields. DNP3 Secure Authentication and OPC UA security models show that the industry has added options; adoption and implementation quality remain empirical questions. Never present "Modbus is insecure" as a finding — it is a design property of the specification.
+
+For the Harbor Loop study the relevant property is that a reply carrying a level value has no field that proves it came from the transmitter. That is why replay is possible at all, and why the dissertation measures detection rather than prevention. Name the function codes your attacker model uses, so a reader can see which parts of the specification the results depend on.
 
 ### 2.3 Detection families
 
 Network detectors watch packets; physics-based detectors watch whether sensor and actuator values obey process laws. Giraldo et al. surveyed the latter; Urbina et al. argued for measuring impact under a stealthy adversary. Sommer and Paxson warned that anomaly detection fails when "normal" is open; Arp et al. listed evaluation pitfalls including point-adjusted scoring.
 
+Harbor Loop sits in the second family: its residual CUSUM compares the level reading with an estimate driven by the flow meter. The warnings from both papers apply directly. Normal operation in a water loop is fairly closed, which helps, but scoring must use attack episodes rather than points, and the evaluation must ask what a stealthy adversary could still do. Class B is that question.
+
 ### 2.4 Threat evidence
 
 MITRE ATT&CK for ICS lists techniques such as *Modify Parameter* and *Spoof Reporting Message*. Public reporting of Stuxnet, the 2015 Ukrainian outages and TRITON/TRISIS shows that manipulation of view and targeting of safety systems are documented adversary goals. Use these at the level of the cited public analyses; do not invent operational detail.
+
+For the dissertation this evidence supports one sentence: manipulating what operators see is a documented adversary goal, so testing detection of a replayed level reading is relevant. It does not support claims about how often water utilities face replay. Keep the citation to the technique and the public analysis, and keep frequency claims out of the background chapter.
 
 ### 2.5 Worked example: coding a gap
 
 From twelve synthetic studies L1–L12, only two report impact at detection, only one freezes thresholds before a second context, and none combine detector-aware adversary + frozen thresholds + impact + second plant. Gap: *No evaluation of residual detection against sensor replay reports event recall, delay and overfill-at-alarm with frozen thresholds on two contexts and an explicit two-sensor attacker class.*
 
+Write the gap as a single sentence that names what is missing, then check each word against the coded table. If one study did combine frozen thresholds and a second plant, the gap shrinks and the sentence must change. A gap built from a coding table can be audited; a gap built from impressions of the field cannot.
+
 ### 2.6 Common errors and limits
 
 Citing standards as evidence they work; treating ATT&CK as base rates; claiming novelty from a new dataset name.
+
+These errors share a pattern: they mistake the existence of a document for evidence of an effect. A standard says what should be done; it does not show that doing it reduces harm. ATT&CK lists what adversaries have been seen doing, not how often. A new dataset is useful, but novelty must come from the question it lets you answer.
 
 ### Exercises — chapter 2
 
@@ -220,6 +240,8 @@ Beyond Menlo, OT research inherits safety culture: job briefings before lab sess
 
 Register metrics (event recall, delay, false-alarm runs per 80 nominal seeds, overfill at alarm), seeds, thresholds and analysis code before the validation runs. Assign data tiers T0–T3 (Chapter 7 of the doctoral companion expands this; here, at least separate public code from rig configurations).
 
+Store the registered plan with a timestamp the supervisor can verify, such as a dated commit in the project repository. Include the frozen k and h values, the seed ranges for tuning and for evaluation, and the rule for what counts as a detection. Any later change goes into a deviations table with a date and a reason, and is reported in the dissertation.
+
 ### 3.5 Worked example and Lab 3
 
 ```python
@@ -259,9 +281,13 @@ cusum classA FA_runs=0/80 detected=80/80 mean_delay=37.7 mean_overfill@alarm=1.3
 cusum classB FA_runs=0/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
 ```
 
+The lab runs eighty seeds for each detector and attack class and counts false-alarm runs on the same eighty seeds without an attack. The band alarm never fires on either attack, because replay holds the reported level near 50, yet it still raises false alarms on 11 of 80 nominal runs. CUSUM detects all class A episodes and none of class B, when the flow meter is also spoofed. That single table already contains the main result and its boundary.  Read it before any rig work begins.
+
 ### 3.6 Common errors and limits
 
 Choosing design after seeing data; active polling called "passive"; using the PLC as the only safety bound.
+
+Each error has a concrete guard. Register the design and its decision rules before collecting data. Describe any measurement that sends requests to a device as active, even when it only reads. On Rig R2 the float valve and the physical e-stop are the safety bound; the PLC under test is never relied on to stop an overflow it may be the cause of.
 
 ### Exercises — chapter 3
 
@@ -304,9 +330,13 @@ The same logic applies elsewhere. A segmentation design that fails when engineer
 
 After Lab 3, rivals (1) and (5) are addressed by design; rival (2) needs Lab 6-style bias/orifice sweeps; rival (3) needs a gain sweep; rival (4) is addressed by reporting the band's 11/80 false-alarm runs. The architectural rival is confirmed by class B = 0/80.
 
+Write this mapping as a table in the dissertation: rival, test, status, evidence. Rivals that are only partly tested, such as the gain sweep if time runs short, stay in the table marked open rather than disappearing. The architectural rival moves from the limitations chapter into the results, because class B is a measured outcome, not an untested worry.
+
 ### 4.4 Common errors and limits
 
 Listing rivals without tests; treating a confirmed boundary as a failure to hide.
+
+A rival without a test is a worry, not part of the analysis. Each one needs an observation that would come out differently if it were true. When a rival survives, as the architectural rival does in class B, report it as a finding with its numbers. Hiding it would leave readers believing the residual method protects loops where one device controls both measurements.  The class B result is the clearest example in this study.
 
 ### Exercises — chapter 4
 
@@ -350,6 +380,8 @@ A pilot that "looks promising" tempts peeking. Resist by writing the go/no-go sh
 ### 5.3 Common errors and limits
 
 Using pilot runs to tune thresholds that later "validate" the same runs; no abandonment condition.
+
+Keep pilot traces in a separate directory that the analysis code refuses to read, and record in the proposal that thresholds are frozen from simulator tuning seeds only. Write abandonment conditions in measurable terms: for example, the rig is abandoned if the float valve cannot be shown to trip before the drip tray fills. Without such conditions a failing study simply drifts.  Review those conditions with the supervisor before the first pilot run.
 
 ### 5.4 Proposal checklist before supervisor review
 
@@ -425,17 +457,25 @@ orifice=0.025 detected_k0.8=150/150 detected_k0.6=150/150 mean_diff=8.6 95%CI=[7
 
 The delay cost of choosing k = 0.8 over 0.6 grows as the orifice coefficient rises (faster natural dynamics / different signal). Intervals describe simulation noise only.
 
+The lab pairs seeds: each seed is run with both allowances, and the difference is taken within the seed, which removes noise that both runs share. The bootstrap then resamples those paired differences. All three orifice settings detect every episode at both allowances, so the trade-off is purely in delay. The intervals describe only simulation noise; they say nothing about how a real tank differs from the model.
+
 ### 6.3 Honest results paragraph
 
 "In the synthetic Harbor Loop model, residual CUSUM detected 80/80 class A replay episodes (mean delay 37.7 steps, mean overfill at alarm 1.38) with 0/80 false-alarm runs; the ±1.5 band detected 0/80 with 11/80 false-alarm runs. Class B (flow meter also spoofed) evaded CUSUM in 80/80 trials. Delay cost of the more robust allowance k = 0.8 versus 0.6 was 6.0–8.6 steps across orifice coefficients 0.015–0.025. Rig R2 validation is reported separately with frozen thresholds."
+
+The paragraph reports the failure in the same sentence pattern as the success, so class B cannot be skimmed past. It gives every figure with its denominator and names the model as synthetic. It also points forward to the rig results without claiming them. Check that each number matches the lab output exactly before it goes into the dissertation.
 
 ### 6.4 Common errors and limits
 
 Independent seeds for paired comparisons; intervals presented as real-world uncertainty; hiding class B.
 
+Paired comparisons need the same seed for both settings; independent seeds add noise that hides small differences. Bootstrap intervals describe simulation variability under the model, not uncertainty about real plants. Class B belongs in the main results table, not in an appendix, because it is the measured boundary of the method and an operator needs to know it.  Report the seeds used for each comparison so others can repeat the pairing exactly.
+
 ### 6.5 From numbers to claims
 
 After Labs 3 and 6 you have detection counts, delays, false-alarm runs and a sensitivity curve. Turning them into claims requires the ladder from the doctoral companion: a protocol observation is not a process inference. Say "CUSUM alarmed at mean delay 37.7 steps while true overfill was 1.38" (observation + process inference) rather than "CUSUM prevents overflows" (consequence claim without protection-layer evidence). When Rig R2 results arrive, report them in the same units so a reader can see transportability or its failure without hunting.
+
+Keep a short table that pairs each number with the claim it supports and the level of that claim. A delay in steps supports a detection claim; overfill at alarm supports a process inference within the model; neither supports a statement about protection, because the study did not measure a protection layer. That table later feeds the claim register.
 
 ### Exercises — chapter 6
 
@@ -478,13 +518,19 @@ Directional language matters. "Limited sample size" says nothing about bias dire
 
 Public: code and invented simulator (T0). Synthetic traces (T1). R2 configuration (T2). Never publish real plant maps. Hash-check before release; fail closed on mismatch.
 
+Write a manifest listing every file, its tier and its hash, and run the check on the release candidate rather than on the working directory. Keep T3 material, such as campus contact details, out of the archive entirely. A reader should be able to rerun Labs 3 and 6 from the public tier alone and get the published numbers.
+
 ### 7.4 Common errors and limits
 
 Limitations without direction; abstract claims broader than results; archives that dump everything.
 
+Each error weakens the link between evidence and claim. A limitation without a direction does not tell the reader how to adjust confidence. An abstract that says industrial control systems when the study measured one model and one rig invites rejection. An archive containing everything makes review slow and risks releasing configuration that should stay restricted.  Read the abstract against the results tables once more before submission and remove any wording the tables cannot support.
+
 ### 7.5 Abstract surgery
 
 Write the abstract last. Paste every sentence into the claim register. If a sentence has no evidence row, cut it. Include one sentence on class B failure and one on synthetic scope. Prefer "in two synthetic contexts" to "in industrial control systems" when that is what you measured. Readers who need a broader claim will not be fooled by broader wording; examiners who enforce scope will reward precision.
+
+Test the result with a reader who has not seen the dissertation: ask them what the study showed and when the method fails. If they cannot mention class B or the synthetic scope, the abstract still overstates or hides something. Repeat the surgery after every major revision, because results text changes faster than abstracts do.
 
 ### Exercises — chapter 7
 
@@ -515,6 +561,8 @@ After this chapter you can (1) audit claims before submission, (2) prepare for e
 
 Every claim needs evidence, scope and a falsifier. Delete "secures water utilities"; keep "detected single-sensor replay in two synthetic contexts". Run the audit on the abstract, the contributions bullet list and the conclusion — those are where overclaims hide. Ask a peer to mark every verb that implies field effectiveness ("protects", "prevents", "secures", "hardens") and justify or remove each one. A keyword script helps as a first pass; the human audit still reads every claim in context.
 
+Record each claim's outcome in the claim register with the date of the audit. A claim that survives needs a pointer to a table or figure; a claim that is narrowed needs its new wording; a claim that is cut needs a note of why. The audit is finished when every sentence in the abstract has a row.
+
 ### 8.2 Examiner families
 
 Positioning (what is new?), validity (why generalize?), adversary (stronger attacker?), safety (how bounded?), ethics (what withheld?), impact (Monday morning change?). Answer to impact: require an independently wired second measurement of key variables and display predicted versus reported values.
@@ -525,17 +573,25 @@ Prepare a one-page cheat sheet with a two-sentence answer to each family and a p
 
 Design properties of public specs (Modbus has no authentication) are not vulnerabilities. Implementation flaws in a product go through vendor and, where appropriate, CISA CVD before detail is published.
 
+For Harbor Loop that means describing replay as a consequence of Modbus lacking authentication, without treating it as a new flaw. If work on Rig R2 revealed a defect in a specific PLC's firmware, the product and the details would be withheld from the dissertation until the vendor had been told, with the timeline agreed and recorded.
+
 ### 8.4 Operator brief
 
 High confidence: band alarms alone miss replayed level readings (model + design). Medium: independent flow measurement plus residual detects single-sensor replay (two synthetic contexts). None: protection if one device controls both measurements — measured failure.
+
+Keep the brief to one page, with each statement tagged by its confidence and its evidence. Operators will act on the none line: if one device reads both the level and the flow meter, residual detection cannot be relied on. The brief should say what to check on Monday, such as whether the two measurements are wired independently.
 
 ### 8.5 Common errors and limits
 
 Overreach in the defense talk; publishing exploit detail before disclosure; confidence labels without evidence.
 
+In the defense, keep to the scope the dissertation measured, and answer stronger-attacker questions with class B rather than speculation. Hold implementation details until disclosure is complete. Every confidence label in the operator brief needs the evidence behind it named; a label without evidence is an opinion presented as a finding.  Before the defense, rehearse each examiner family once with the cheat sheet, and mark any answer that reaches beyond the measured contexts, so it can be narrowed before the real questions arrive.
+
 ### 8.6 After the defense
 
 Archive the final PDF, the claim register, the code tag and the ethics paperwork. If a paper will be submitted, freeze the dissertation text that the paper may not contradict. Schedule disclosure timelines before conference deadlines, not after. Thank the operators and lab managers who made Rig R2 possible — and do not surprise them with a press release that names the campus lab as a vulnerable plant.
+
+Keep the archive manifest and hashes alongside the final text so a later reader can show which code produced the published numbers. If corrections arrive after the defense, add them as dated errata rather than editing the archived copy.
 
 ### Exercises — chapter 8
 
