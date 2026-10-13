@@ -79,13 +79,13 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 41. [Infraestructura crítica y seguridad sectorial: optimización del sistema](#ch-41)
 42. [Infraestructura crítica y seguridad sectorial: investigación aplicada](#ch-42)
 43. [Práctica en la industria o en el servicio público](#ch-43)
-44. [Proyecto final de ingeniería I](../../en/book/MANUSCRIPT.md#ch-44)
-45. [Revisión independiente del diseño](../../en/book/MANUSCRIPT.md#ch-45)
-46. [Proyecto final de ingeniería II](../../en/book/MANUSCRIPT.md#ch-46)
-47. [Ensayo de falla y recuperación](../../en/book/MANUSCRIPT.md#ch-47)
-48. [Expediente de evidencia](../../en/book/MANUSCRIPT.md#ch-48)
-49. [Tesis de ingeniería](../../en/book/MANUSCRIPT.md#ch-49)
-50. [Defensa final](../../en/book/MANUSCRIPT.md#ch-50)
+44. [Proyecto final de ingeniería I](#ch-44)
+45. [Revisión independiente del diseño](#ch-45)
+46. [Proyecto final de ingeniería II](#ch-46)
+47. [Ensayo de falla y recuperación](#ch-47)
+48. [Expediente de evidencia](#ch-48)
+49. [Tesis de ingeniería](#ch-49)
+50. [Defensa final](#ch-50)
 
 Los [resultados resueltos](#worked-results) contienen EX001–EX100. Un [glosario](#glossary) y las [referencias](#references) cierran el libro.
 
@@ -3339,9 +3339,492 @@ Las prácticas enseñan las restricciones que dan forma a los diseños reales. T
 <!-- cyberabc:chapter-navigation:start ch-43 -->
 ### Siga estudiando — capítulo 43 de 50
 
-[← Capítulo 42](#ch-42) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 44 →](../../en/book/MANUSCRIPT.md#ch-44)
+[← Capítulo 42](#ch-42) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Proyecto final de ingeniería I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) definir un proyecto final con un patrocinador, un alcance, unos requisitos y unos criterios de aceptación; (2) planificarlo con un calendario, un registro de riesgos y un plan de verificación; (3) preparar un entorno de ingeniería reproducible; y (4) superar una revisión preliminar de diseño. El proyecto final integra el curso en un único sistema construido y verificado y continúa en los capítulos 45–50.
+
+### 44.1 Qué es un proyecto final
+
+Un proyecto final es un proyecto de ingeniería sustancial en el que el estudiante diseña, construye y verifica un sistema que cumple requisitos reales o realistas bajo restricciones. En este curso, el proyecto final debe: responder a una necesidad de seguridad o de resiliencia de una infraestructura crítica; incluir un artefacto que funcione (software, configuración, banco de pruebas o prototipo); incluir análisis (amenazas/fallos, rendimiento, fiabilidad); y verificarse frente a requisitos declarados. El proyecto final continúa el caso del TMRP, salvo que su supervisor apruebe otro caso sintético o autorizado.
+
+El ejemplo resuelto que sigue continúa el TMRP: telemetría autenticada segura ante reinicios para las RTU heredadas de PS1 y PS2.
+
+### 44.2 Delimitación del alcance
+
+Un buen alcance de proyecto final es lo bastante estrecho para terminarlo y lo bastante profundo para exigir ingeniería real. Ejemplos: una pasarela de telemetría autenticada con verificación por inyección de fallos; un detector basado en residuos con un estudio de simulación validado; una herramienta de orquestación de la recuperación con un ensayo de restablecimiento medido; una herramienta de verificación de la segmentación con un modelo de políticas. Redacte un alcance de una página: necesidad, partes interesadas, entregables, elementos fuera del alcance, restricciones y criterios de aceptación.
+
+El alcance del proyecto final del TMRP en el ejemplo resuelto que sigue cabe en una página y deja fuera el hardware real de las RTU y la red del operador de telecomunicaciones.
+
+### 44.3 Planificación
+
+Planifique con una estructura de desglose del trabajo, un calendario con hitos (revisión preliminar de diseño, revisión crítica de diseño, verificación completada, borrador de la tesis, defensa), un registro de riesgos (técnicos, de calendario, de acceso, de competencias) y un plan de verificación que trace los requisitos hasta las pruebas. Lleve un diario semanal y actualice el registro de riesgos cada mes. Para el proyecto final del TMRP, el calendario de doce semanas sitúa la revisión preliminar de diseño en las primeras semanas y la revisión independiente antes de la verificación. Su registro de riesgos incluye la posibilidad de que la seguridad ante reinicios resulte más difícil de lo esperado, que es, como muestra después el resumen de la verificación, lo que ocurrió cuando el receptor aceptó reproducciones tras un reinicio.
+
+### 44.4 Entorno
+
+Prepare el control de versiones, un gestor de incidencias, una compilación reproducible (dependencias fijadas o solo la biblioteca estándar), pruebas automatizadas y un directorio de resultados en el que cada resultado se guarde con el commit, las semillas y el entorno que lo produjeron. Para el proyecto final del TMRP, la pasarela usa solo la biblioteca estándar de Python, de modo que no hay dependencias que fijar, y cada resultado de campaña se guarda con su semilla y su commit. Esa disciplina es la que permite que el expediente posterior indique un hash y una versión para cada resultado.
+
+### 44.5 Ejemplo resuelto: alcance del proyecto final (sintético)
+
+*Título:* Telemetría autenticada segura ante reinicios para RTU heredadas. *Necesidad:* N2/N3 del TMRP. *Entregables:* software de la pasarela (biblioteca estándar de Python), arnés de banco de pruebas, campaña de inyección de fallos, procedimiento de rotación de claves, tesis. *Fuera del alcance:* hardware real de las RTU; red del operador de telecomunicaciones. *Restricciones:* 12 semanas; datos sintéticos. *Aceptación:* R1, R2 (incluidos los reinicios) y R7 verificados en el banco de pruebas; cero fallos silenciosos en una campaña con semilla de 10.000 mensajes en siete clases de fallo; demostración de la rotación de claves sin pérdida de telemetría.
+
+Cada criterio de aceptación corresponde a un requisito o a una demostración, de modo que la revisión crítica de diseño puede comprobarlos uno por uno.
+
+### 44.6 Actividad práctica
+
+Redacte el alcance y el plan de su proyecto final y celebre una revisión preliminar de diseño con su supervisor y un compañero. Base su alcance en la plantilla de una página: necesidad, partes interesadas, entregables, elementos fuera del alcance, restricciones y criterios de aceptación. Después, prepare un plan breve con hitos y un registro de riesgos. En la revisión, pida a su supervisor y a su compañero que cuestionen sobre todo los criterios de aceptación, porque un criterio que no puede probarse causará problemas en la revisión crítica de diseño. Registre sus hallazgos y sus respuestas.
+
+### 44.7 Errores comunes y límites
+
+- Alcances demasiado amplios («proteger la empresa de servicios»).
+- Sin criterios de aceptación.
+- Verificación planificada al final.
+- Entornos no reproducibles.
+
+El borrador de alcance del EX087 muestra los dos primeros errores: proteger las empresas de agua con un sistema de IA no tiene límites ni criterios de aceptación. El alcance del proyecto final del TMRP los evita nombrando una pasarela, tres requisitos y una campaña medida. Su plan de verificación se redactó junto con el alcance, y su entorno usa solo la biblioteca estándar con ejecuciones con semilla, de modo que todo resultado puede reproducirse. Sus hitos tienen fecha.
+
+### Ejercicios — capítulo 44
+
+**EX087 — Crítica de un alcance.** *Objetivo:* acotar un alcance. *Entradas:* borrador de alcance «Construir un sistema de IA para proteger a las empresas de agua frente a los ciberataques». *Pasos:* enumere cuatro problemas y reescriba el alcance en una página. *Evidencia esperada:* crítica y reescritura. *Rúbrica:* 3 = problemas (sin límites, sin requisitos, sin datos, sin aceptación) y una reescritura viable y verificable; 2 = reescritura vaga; 1 = solo la crítica; 0 = nada.
+
+**EX088 — Registro de riesgos.** *Objetivo:* planificar los riesgos del proyecto. *Entradas:* §44.5. *Pasos:* redacte cinco riesgos del proyecto con probabilidad, impacto, mitigación y desencadenante. *Evidencia esperada:* tabla. *Rúbrica:* 3 = riesgos realistas (ampliación descontrolada del alcance, diseño de la seguridad ante reinicios más difícil de lo esperado, fidelidad del banco de pruebas, tiempo, disponibilidad del supervisor) con desencadenantes concretos; 2 = sin desencadenantes; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+Un proyecto final es un sistema acotado, construido y verificado. Defina la necesidad, los entregables, las restricciones y los criterios de aceptación; planifique desde el principio los hitos, los riesgos y la verificación; y haga reproducible el entorno para que todo resultado pueda trazarse y volver a ejecutarse.
+
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Siga estudiando — capítulo 44 de 50
+
+[← Capítulo 43](#ch-43) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisión independiente del diseño
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) realizar una revisión técnica independiente del diseño de otro equipo con criterios estructurados; (2) redactar hallazgos específicos, respaldados por evidencia y accionables; (3) clasificar los hallazgos por gravedad y recomendar su tratamiento; y (4) recibir una revisión de su propio diseño y responder a ella. Aplica a diseños completos el rigor de tipo Fagan (capítulo 14) y prepara el Proyecto final II.
+
+### 45.1 Independencia y finalidad
+
+Un revisor independiente no ha trabajado en el diseño ni depende jerárquicamente de sus autores. La independencia detecta errores que los autores no pueden ver: supuestos compartidos, puntos ciegos, verificación ilusoria. La finalidad es mejorar el diseño y la decisión sobre él, no anotarse tantos. Para el TMRP, el revisor del expediente del proyecto final es alguien que no trabajó en la pasarela ni depende de sus autores. Esa independencia es la razón por la que el revisor advirtió que el caso de aseguramiento citaba T3 como superada mientras la matriz aún la registraba como fallida, una incoherencia que los autores habían pasado por alto muchas veces al leer.
+
+### 45.2 Criterios de revisión
+
+Revise frente a: los requisitos (completos, verificables, trazados); la arquitectura (guiada por las consecuencias, con el comportamiento ante fallos y ataques analizado); los controles (especificados con su rendimiento, capas independientes); los análisis (supuestos declarados, cifras coherentes); la verificación (el plan cubre los requisitos, los fallos se tratan con honestidad); las operaciones (procedimientos, formación, recuperación); la mantenibilidad; y el caso de aseguramiento (afirmaciones respaldadas, derrotadores declarados). Cada criterio corresponde a un capítulo de este libro: los requisitos al capítulo 21, la arquitectura al capítulo 26, los controles al capítulo 27, la verificación a los capítulos 30 y 40, las operaciones al capítulo 37 y el caso de aseguramiento al capítulo 35. Los revisores del expediente del TMRP usaron esta lista como lista de comprobación.
+
+### 45.3 Redactar hallazgos
+
+Un hallazgo indica: lo que se observó (con una referencia al documento o a la evidencia), por qué importa (consecuencia), el criterio que incumple y una recomendación. Gravedad: **crítico** (la afirmación no puede sostenerse, o hay un riesgo para la seguridad funcional), **mayor** (laguna significativa que exige un cambio antes de la aprobación), **menor** (mejora), **observación** (no se requiere ningún cambio). Evite los hallazgos vagos («la seguridad parece débil») y el diseño por parte del revisor (prescribir su solución favorita cuando varias servirían).
+
+Los hallazgos del TMRP en el ejemplo resuelto que sigue tienen esta forma. F4, sobre la fracción de la batería, es menor porque la afirmación se sostiene si se añade una fuente.
+
+### 45.4 Responder a la revisión
+
+Los autores responden a cada hallazgo: lo aceptan (con un cambio), lo rechazan (con razonamiento y evidencia) o lo aplazan (con responsable y fecha). El revisor comprueba las respuestas y cierra o escala los hallazgos. Los desacuerdos que no pueden resolverse pasan al responsable de la decisión con ambas posturas registradas. Para el TMRP, los autores aceptaron F2 y añadieron la alarma de estación sin datos, y aceptaron F3 declarando R6 como no cumplido y valorando opciones en el ADR-015. Cada respuesta nombraba a un responsable, y el revisor comprobó la nueva ejecución de la campaña antes de cerrar F2.
+
+### 45.5 Ejemplo resuelto: hallazgos sobre el expediente del TMRP (sintético)
+
+- **F1 (crítico):** La subafirmación C2 del caso de aseguramiento cita T3 como superada, pero la matriz de trazabilidad (laboratorio 14) registra T3 como fallida y la repetición de la prueba en v2 no está registrada. *Recomendación:* registrar la evidencia de la repetición de la prueba o rebajar la afirmación.
+- **F2 (mayor):** El receptor no alarma ante la falta de datos (los descartes del laboratorio 15 son silenciosos); R7 no puede declararse para los eventos de pérdida de datos. *Recomendación:* añadir la alarma de estación sin datos y volver a ejecutar la campaña.
+- **F3 (mayor):** El ensayo de restablecimiento (capítulo 47) muestra 12 h frente a las 8 h de R6; el expediente declara R6 como cumplido. *Recomendación:* declarar R6 como no cumplido y presentar opciones.
+- **F4 (menor):** El dimensionamiento de la batería usa una fracción utilizable de 0,6 sin fuente; cite los datos del fabricante de la batería.
+- **F5 (observación):** La evaluación ponderada de conceptos (§25.4) es sensible al peso de la operabilidad; la decisión sigue siendo defendible.
+
+### 45.6 Actividad práctica
+
+Intercambie los expedientes del proyecto final con otro estudiante, revíselos frente a los criterios del §45.2 y redacte al menos seis hallazgos con su gravedad. Elija un revisor que no haya ayudado con su diseño. Para cada hallazgo, incluya la observación con su referencia, la consecuencia, el criterio que incumple y una recomendación. Use con honestidad los cuatro niveles de gravedad. Después, intercambien los papeles y responda a los hallazgos sobre su propio expediente con aceptar, rechazar o aplazar, aportando evidencia para cada rechazo. Conserve ambos registros para su expediente. Cíñase a la evidencia.
+
+### 45.7 Errores comunes y límites
+
+- Revisiones realizadas por personas que ayudaron a diseñar.
+- Hallazgos vagos o sin evidencia.
+- Inflación o deflación de la gravedad.
+- Autores que rechazan hallazgos sin evidencia.
+
+La revisión del TMRP evitó estos errores: el revisor era independiente, cada hallazgo citaba un documento, las gravedades se correspondían con las consecuencias, y las respuestas de los autores se respaldaron con evidencia y se comprobaron antes del cierre. F5 se mantuvo como observación, sin inflarla. F1 se calificó como crítico porque la afirmación no podía sostenerse tal como estaba redactada, no porque el error fuera embarazoso, y los autores no rechazaron ningún hallazgo sin evidencia que respaldara el rechazo.
+
+### Ejercicios — capítulo 45
+
+**EX089 — Reescribir hallazgos débiles.** *Objetivo:* redactar hallazgos accionables. *Entradas:* «la gestión de claves no es muy buena»; «las pruebas parecen incompletas»; «yo usaría OPC UA en su lugar». *Pasos:* reescriba cada uno como un hallazgo propiamente dicho o explique por qué debe retirarse. *Evidencia esperada:* tres reescrituras. *Rúbrica:* 3 = observación específica, consecuencia, criterio, recomendación; el tercero retirado o replanteado como una preocupación basada en requisitos; 2 = uno vago; 1 = solo reformulación; 0 = nada.
+
+**EX090 — Responder a F2 y F3.** *Objetivo:* responder a la revisión. *Entradas:* §45.5. *Pasos:* redacte las respuestas de los autores a F2 y F3 con su tratamiento, los cambios, los responsables y las fechas. *Evidencia esperada:* dos respuestas. *Rúbrica:* 3 = F2 aceptado con cambio de diseño y nueva prueba, F3 aceptado con información honesta y opciones (paralelizar la recuperación, imágenes preconstruidas, revisar el requisito con el acuerdo de las partes interesadas); 2 = a la defensiva; 1 = los rechaza; 0 = nada.
+
+### Síntesis del capítulo
+
+La revisión independiente encuentra lo que los autores no pueden ver. Revise frente a criterios explícitos, redacte hallazgos específicos, respaldados por evidencia y accionables con gravedades honestas, y responda a cada hallazgo con aceptar, rechazar o aplazar, de forma registrada y comprobada.
+
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Siga estudiando — capítulo 45 de 50
+
+[← Capítulo 44](#ch-44) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Proyecto final de ingeniería II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) completar la implementación del artefacto del proyecto final; (2) ejecutar el plan de verificación completo y registrar los resultados; (3) cerrar los hallazgos de la revisión; y (4) superar una revisión crítica de diseño con evidencia. Continúa el capítulo 44 tras la revisión independiente y prepara el ensayo de fallo y recuperación (capítulo 47).
+
+### 46.1 Terminar la construcción
+
+Congele el alcance: a estas alturas, las funciones nuevas amenazan la verificación. Cierre primero los hallazgos de la revisión que exigen cambios de diseño. Mantenga la rama principal superando siempre sus pruebas; etiquete la versión que entra en la verificación final. Para el proyecto final del TMRP, el alcance se congeló tras la revisión independiente. La alarma de estación sin datos de F2 fue el cambio de diseño realizado antes de que la versión etiquetada entrara en la verificación final; cualquier idea posterior pasó a una lista de trabajo futuro. La corrección del reinicio llegó más tarde, como una corrección hallada por la propia verificación, que es el único tipo de cambio permitido tras una congelación. La rama principal se mantuvo en verde.
+
+### 46.2 Ejecutar la verificación
+
+Ejecute el plan de verificación completo contra la versión etiquetada: pruebas unitarias, de integración, basadas en propiedades y de inyección de fallos (capítulos 30 y 40). Registre cada resultado con la versión, la semilla y el entorno. Ante cualquier fallo: registre, analice, corrija, vuelva a ejecutar y registre de nuevo. No sobrescriba los resultados anteriores; el historial es evidencia. Para el proyecto final del TMRP, el fallo del receptor al no rechazar las reproducciones tras un reinicio se registró, se corrigió conservando el último contador de cada estación y se volvió a probar, y se guardaron ambos resultados. La versión etiquetada fue la que se probó. Su semilla quedó registrada.
+
+### 46.3 Revisión crítica de diseño
+
+En la revisión crítica de diseño, el tribunal comprueba: los requisitos cumplidos con evidencia; los hallazgos de la revisión cerrados o con un tratamiento decidido; los riesgos residuales declarados y con responsable; las operaciones y el mantenimiento preparados; y la preparación para el ensayo. Lleve la matriz de trazabilidad, los resultados de la verificación, el registro de hallazgos y el caso de aseguramiento. Para el TMRP, el tribunal vio el resumen de la verificación que sigue. Incluye el fallo tras el reinicio y su corrección, la alarma de estación sin datos añadida tras F2 y la demostración de la rotación de claves. Con F1 a F3 cerrados o con un tratamiento decidido y R6 declarado con honestidad, el tribunal pudo tomar una decisión explícita sobre la preparación para el ensayo en lugar de darla por supuesta.
+
+### 46.4 Ejemplo resuelto: resumen de la verificación del proyecto final (sintético)
+
+| Requisito | Pruebas | Resultado | Notas |
+|---|---|---|---|
+| R1 | T1, T2, campaña (clase de corrupción) | Superado | 0 fallos silenciosos en 10.000 mensajes |
+| R2 | T2, pruebas de reinicio (ambos extremos), campaña (reproducción, reordenación, reinicio) | Superado tras la corrección | El receptor aceptaba inicialmente reproducciones tras un reinicio; se corrigió conservando el último contador de cada estación; se volvió a probar |
+| R7 | T5, prueba de la alarma de estación sin datos | Superado tras la corrección | Detección de descartes añadida tras F2 |
+| Rotación de claves | Demostración | Superado | Ventana de solapamiento de 10 min con ambas claves aceptadas; después, se revocó la clave antigua |
+
+El fallo tras el reinicio lo encontró el modelo de fallos ampliado del EX080: un rendimiento directo de la inversión en el laboratorio de verificación.
+
+### 46.5 Actividad práctica
+
+Ejecute su plan de verificación completo y elabore la tabla resumen con enlaces a los resultados en bruto. Para cada requisito, indique las pruebas, el resultado y cualquier corrección, como en el resumen del TMRP. Conserve los resultados fallidos con sus fechas y las correcciones que los siguieron, y enlace cada línea con los archivos de resultados en bruto, con sus semillas y versiones. Si una prueba no se ejecutó, dígalo en la tabla en lugar de dejar la casilla en blanco. La tabla debe permitir a un revisor trazar cualquier afirmación hasta un archivo en un solo paso.
+
+### 46.6 Errores comunes y límites
+
+- Añadir funciones durante la verificación.
+- Sobrescribir los resultados fallidos con superaciones posteriores.
+- Llegar a la revisión crítica de diseño con hallazgos críticos abiertos.
+
+El proyecto final del TMRP evitó estos errores congelando el alcance tras la revisión, manteniendo en el registro el fallo tras el reinicio junto a su superación posterior y cerrando F1 a F3 antes de la revisión crítica de diseño. Los resultados fallidos permanecieron en el registro con las correcciones que los siguieron, de modo que los revisores pudieron ver cómo se había ganado cada superación. No se añadió ninguna función durante la verificación. Los hallazgos abiertos se cerraron primero.
+
+### Ejercicios — capítulo 46
+
+**EX091 — Diseño de la rotación.** *Objetivo:* diseñar una rotación de claves sin pérdidas. *Entradas:* §46.4. *Pasos:* describa paso a paso el protocolo de rotación, incluido cómo sabe el receptor qué clave probar, la ventana de solapamiento, el tratamiento de fallos y la revocación. *Evidencia esperada:* procedimiento. *Rúbrica:* 3 = ID de clave en la cabecera autenticada, el receptor acepta ambas claves durante la ventana, los contadores continúan, reversión si la nueva clave falla, clave antigua revocada y destruida; 2 = sin ID de clave; 1 = «cambiar la clave»; 0 = nada.
+
+**EX092 — Decisión de preparación.** *Objetivo:* juzgar la preparación. *Entradas:* todos los requisitos se superan, salvo un hallazgo menor sobre la documentación y un hallazgo mayor abierto según el cual el umbral de la alarma de estación sin datos (60 s) produce dos falsas alarmas al día durante la congestión de LTE. *Pasos:* recomiende continuar / continuar con condiciones / no continuar para el ensayo, de forma razonada. *Evidencia esperada:* recomendación. *Rúbrica:* 3 = continuar con condiciones (estudio de ajuste del umbral durante el ensayo, operadores informados), razonamiento sobre la consecuencia de las falsas alarmas frente a una pérdida de datos no detectada; 2 = sin condiciones; 1 = sin razonar; 0 = nada.
+
+### Síntesis del capítulo
+
+Congele el alcance, cierre los hallazgos, verifique por completo la versión etiquetada y conserve el historial de fallos como evidencia. Llegue a la revisión crítica de diseño con la trazabilidad, los resultados, los hallazgos y el caso de aseguramiento, y salga de ella con una decisión explícita sobre la preparación.
+
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Siga estudiando — capítulo 46 de 50
+
+[← Capítulo 45](#ch-45) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensayo de fallo y recuperación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) diseñar un ensayo controlado de fallo y recuperación con límites de seguridad; (2) calcular caminos críticos y comparar los tiempos de recuperación planificados y medidos; (3) observar y registrar el desempeño humano y técnico durante el ensayo; y (4) convertir los resultados del ensayo en el estado de los requisitos y en cambios de diseño. Valida los requisitos de recuperación (R6) y prepara el expediente de evidencia (capítulo 48).
+
+### 47.1 Por qué ensayar la recuperación
+
+Una capacidad de recuperación que no se ha ejercitado es una esperanza. Las copias de seguridad que no se han restaurado pueden estar incompletas; los procedimientos que no se han seguido pueden ser erróneos; los tiempos que no se han medido son conjeturas. La [NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) trata la planificación de contingencias, incluidas las pruebas, la formación y los ejercicios. El propio ensayo del TMRP mostró por qué: el objetivo de restablecimiento de ocho horas de R6 parecía razonable hasta que se midió el camino crítico. Medirlo era precisamente el objetivo.
+
+### 47.2 Diseñar el ensayo
+
+Defina el escenario (p. ej., servidores SCADA declarados comprometidos a las 02:00), los objetivos (restablecer la operación remota a partir de copias de seguridad desconectadas; mantener el suministro en modo local durante todo el ensayo), los límites de seguridad (ensayo en el entorno de pruebas o en una ventana planificada con la operación local atendida por personal; criterios de interrupción), los observadores y las mediciones (tiempo de cada tarea, desviaciones respecto al procedimiento, decisiones). El ensayo del TMRP usó el escenario de servidores SCADA declarados comprometidos, con el suministro mantenido en modo local durante todo el ensayo. Los observadores registraron el tiempo de cada tarea y cada desviación respecto al procedimiento.
+
+### 47.3 Camino crítico
+
+Las tareas de recuperación tienen duraciones y dependencias. El **camino crítico** es la cadena más larga de tareas dependientes; fija el tiempo mínimo de recuperación. Las tareas que quedan fuera del camino crítico tienen **holgura**. Acortar la recuperación significa acortar las tareas del camino crítico o romper dependencias, no acelerar las tareas con holgura. En el ensayo del TMRP, el recambio de claves de las RTU tenía seis horas de holgura. Acelerarlo no habría cambiado nada. Solo la generación de imágenes, la reconstrucción y la restauración de la configuración determinaron el resultado de doce horas, y por eso todas las opciones para cumplir R6 actúan sobre una de esas tres tareas, como las imágenes en espera preconstruidas o la generación de imágenes en hardware de repuesto.
+
+### 47.4 Ejemplo resuelto: ensayo de recuperación del TMRP (sintético)
+
+El plan del ensayo (laboratorio 17): aislar (1 h); establecer las operaciones manuales (1 h); generar imágenes forenses de los servidores SCADA (3 h); reconstruir el SCADA a partir de soportes desconectados (4 h); restaurar la configuración (2 h); recambiar las claves de las RTU (3 h, en paralelo); verificar las consignas (1 h); reanudar el control remoto (1 h). El camino crítico pasa por la generación de imágenes forenses, la reconstrucción y la restauración de la configuración: el control remoto vuelve a las 12 h, frente a las 8 h de R6. El recambio de claves tiene 6 h de holgura; acelerarlo no consigue nada. Opciones para cumplir las 8 h: imágenes del SCADA en espera preconstruidas (reconstrucción de 4 h → 1 h); generación de imágenes en paralelo con la reconstrucción en hardware de repuesto (quita 3 h del camino); o un acuerdo con las partes interesadas para que R6 sea de 12 h, puesto que el suministro se mantiene en modo local durante todo el proceso. El ensayo midió además que las operaciones manuales se establecieron en 50 minutos, con lo que se cumplió el requisito de 1 h.
+
+### 47.5 Actividad práctica: laboratorio 17
+
+```python
+# Lab 17 - recovery critical path versus the restoration target (synthetic TMRP trial plan, offline)
+T = {  # task: (hours, prerequisites)
+    "isolate": (1, []), "manual_ops": (1, ["isolate"]), "forensic_image": (3, ["isolate"]),
+    "rebuild_scada": (4, ["forensic_image"]), "restore_config": (2, ["rebuild_scada"]),
+    "rekey_rtus": (3, ["isolate"]), "verify_setpoints": (1, ["restore_config", "rekey_rtus"]),
+    "resume_remote": (1, ["verify_setpoints"])}
+ef, prev = {}, {}
+def finish(t):
+    if t not in ef:
+        d, ps = T[t]; start = max((finish(p) for p in ps), default=0)
+        prev[t] = max(ps, key=finish) if ps else None; ef[t] = start + d
+    return ef[t]
+end = finish("resume_remote"); path, n = [], "resume_remote"
+while n: path.append(n); n = prev[n]
+print("restore remote control at", end, "h; critical path:", " -> ".join(reversed(path)))
+print("slack of rekey_rtus:", finish("restore_config") - finish("rekey_rtus"), "h; target 8 h met:", end <= 8)
+```
+
+Salida esperada:
+
+```text
+restore remote control at 12 h; critical path: isolate -> forensic_image -> rebuild_scada -> restore_config -> verify_setpoints -> resume_remote
+slack of rekey_rtus: 6 h; target 8 h met: False
+```
+
+La salida confirma el ejemplo resuelto: el control remoto vuelve al cabo de doce horas porque la generación de imágenes, la reconstrucción y la restauración de la configuración se ejecutan en serie, y el recambio de claves termina seis horas antes de que se necesite. Cambie el plan como pide el EX093 y observe cómo el camino crítico pasa a otra cadena. El laboratorio no incluye las operaciones manuales en el camino hacia el control remoto, porque se ejecutan en paralelo; el ensayo las midió por separado en cincuenta minutos frente al requisito de una hora. Conserve ambas salidas.
+
+### 47.6 Errores comunes y límites
+
+- Recuperación probada solo sobre el papel.
+- Ensayos sin criterios de interrupción ni personal para la seguridad.
+- Mejorar tareas que tienen holgura.
+- Resultados del ensayo declarados como superados cuando no se cumplió el requisito.
+- Conservación forense omitida para ganar tiempo sin una decisión.
+
+El ensayo del TMRP evitó el cuarto error al declarar R6 como no cumplido con doce horas, y mantuvo la generación de imágenes forenses en lugar de omitirla sin una decisión. Los criterios de interrupción y el personal local se fijaron antes de que comenzara el ensayo, y las opciones para cumplir R6 actúan solo sobre las tareas del camino crítico.
+
+### Ejercicios — capítulo 47
+
+**EX093 — Acortar el camino.** *Objetivo:* usar el camino crítico. *Entradas:* laboratorio 17. *Pasos:* (1) haga que `rebuild_scada` dependa solo de `isolate` (hardware de repuesto, imágenes en paralelo) y vuelva a calcular; (2) reduzca además `rebuild_scada` a 1 h (imagen en espera) y vuelva a calcular; informe cada vez del nuevo camino crítico. *Evidencia esperada:* salidas. *Rúbrica:* 3 = resultados correctos (ejecute el código) y la observación de que el camino crítico pasa a otra cadena; 2 = cifras correctas, camino no comentado; 1 = no ejecutado; 0 = nada.
+
+**EX094 — Análisis forense frente a rapidez.** *Objetivo:* tomar una decisión de compromiso documentada. *Entradas:* omitir la generación de imágenes forenses acorta la recuperación. *Pasos:* redacte una nota de decisión para el director de operaciones: opciones, consecuencias para la investigación, aspectos legales/regulatorios y prevención futura, recomendación. *Evidencia esperada:* una página. *Rúbrica:* 3 = generación de imágenes en paralelo en hardware de repuesto como opción preferida, riesgos de perder evidencia explicados, responsable de la decisión; 2 = recomienda omitirla sin consecuencias; 1 = vaga; 0 = nada.
+
+### Síntesis del capítulo
+
+La recuperación debe ensayarse para que se pueda confiar en ella. Diseñe ensayos con límites de seguridad y mediciones, encuentre el camino crítico, mejore solo lo que está en él e informe del estado del requisito que el ensayo muestra realmente; después, cambie el diseño o el requisito con las partes interesadas.
+
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Siga estudiando — capítulo 47 de 50
+
+[← Capítulo 46](#ch-46) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Expediente de evidencia
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) reunir un expediente de evidencia de ingeniería que respalde las afirmaciones del proyecto final; (2) organizar la evidencia por afirmación con su procedencia; (3) proteger la evidencia sensible manteniéndola revisable; y (4) comprobar la coherencia del expediente antes de su entrega. Reúne los capítulos 44–47 y prepara la tesis de ingeniería.
+
+### 48.1 Qué es el expediente
+
+El expediente de evidencia es el conjunto de artefactos que respalda el caso de aseguramiento: los requisitos y la trazabilidad; los documentos de diseño y los registros de decisiones; los análisis (modelos de amenazas, árboles de fallos, rendimiento, fiabilidad); los registros de implementación (revisión del código fuente, SBOM, procedencia de la compilación); los resultados de la verificación y la validación; los hallazgos de la revisión y las respuestas; los informes de los ensayos; los documentos operativos; y el registro de riesgos residuales con sus responsables. Organícelo por afirmación, no por fecha: un revisor debería poder partir de una afirmación y encontrar su evidencia en dos clics.
+
+Para el TMRP, las afirmaciones del expediente son C1 a C4.
+
+### 48.2 Procedencia
+
+Cada elemento de evidencia indica qué es, quién lo produjo, cuándo, a partir de qué versión del sistema y con qué herramientas. Las cifras de la tesis deben poder trazarse hasta un archivo de resultados (compárese con la comprobación de procedencia del libro de maestría, en su capítulo 7). Use hashes de contenido para los archivos de resultados y regístrelos en un índice, como hace con los registros la cadena de hashes del capítulo 13. Para el TMRP, cada entrada del índice del expediente lleva una versión, como la versión publicada de la pasarela o la fecha del ensayo, y los primeros caracteres de su hash.
+
+### 48.3 Sensibilidad
+
+Los expedientes sobre infraestructuras contienen detalles sensibles. Mantenga una versión completa restringida para los revisores autorizados y una versión censurada para públicos más amplios, y registre qué se censuró y por qué. En los trabajos del curso con casos sintéticos la sensibilidad es menor, pero practique la disciplina. Para el TMRP, la versión restringida incluiría las configuraciones de las pasarelas y los procedimientos de gestión de claves, mientras que la versión censurada describe la arquitectura al nivel de zonas y conductos. El registro de censura enumera cada elemento eliminado y el motivo, de modo que un revisor de la versión censurada sabe qué se ha retenido y puede solicitar acceso por la vía adecuada.
+
+### 48.4 Comprobación de coherencia
+
+Antes de la entrega: cada afirmación tiene evidencia; cada cifra de la tesis coincide con su fuente; los estados concuerdan entre documentos (nada de «superada» en uno y «fallida» en otro, como en el hallazgo F1 del capítulo 45); los riesgos residuales tienen responsable; y todos los hallazgos de la revisión están cerrados o tienen un tratamiento decidido. El expediente del TMRP no superó esta comprobación una vez, cuando C2 citaba T3 como superada mientras la matriz aún la mostraba como fallida. La corrección consistió en registrar la repetición de la prueba en v2 como T3b y actualizar todos los documentos que se referían a ella, de modo que el índice muestra ahora el mismo estado en todas partes.
+
+### 48.5 Ejemplo resuelto: extracto del índice del expediente (sintético)
+
+| Afirmación | Evidencia | Versión | Hash (primeros 12) | Estado |
+|---|---|---|---|---|
+| C1 R1 cumplido | Resultados de T1/T2; campaña de 10k mensajes | gw v1.3.0 | 3f9a1c0b7e22 | Superado |
+| C2 las órdenes falsificadas no pueden causar una pérdida de suministro | Condicionamiento del laboratorio 9; T3b; revisión de la gestión de claves | registro de riesgos v1.2 | 8b01d4e6aa90 | Respaldada con los derrotadores D1, D2 |
+| C3 R6 restablecimiento ≤ 8 h | Informe del ensayo de recuperación | ensayo 2026-09-14 | c47e2b19f5d3 | **No cumplido (12 h)**; opciones en el ADR-015 |
+| C4 R5 batería de 24 h | Análisis de dimensionamiento; prueba de descarga T4 | armario v2 | 51d7a0e8c4f6 | Superado |
+
+(Los hashes son marcadores ilustrativos para el caso sintético).
+
+### 48.6 Actividad práctica
+
+Construya el índice de su expediente con hashes de contenido reales de sus archivos de resultados (`hashlib.sha256`) y ejecute la comprobación de coherencia del §48.4. Use el script del EX095 para calcular los hashes y guarde el índice bajo control de versiones para que su historial forme parte de la evidencia. Después, ejecute la comprobación de coherencia frente al borrador de su tesis. Cada cifra del borrador debe aparecer en un archivo de resultados incluido en el índice, y cada estado debe coincidir. Corrija primero cualquier discrepancia en el documento fuente y, después, vuelva a generar el índice.
+
+### 48.7 Errores comunes y límites
+
+- Expedientes organizados por fecha o por autor en lugar de por afirmación.
+- Cifras de la tesis sin archivo fuente.
+- Incoherencias de estado entre documentos.
+- Censura sin registro.
+
+El índice del TMRP evita el primer error organizando la evidencia por afirmación, y su registro de C3 como no cumplido impide que aparezca el tercero. Un registro de censura acompaña a la versión compartida. Cada cifra de la tesis se traza hasta un archivo de resultados incluido en el índice, y la versión compartida lleva un registro de lo que se censuró y por qué.
+
+### Ejercicios — capítulo 48
+
+**EX095 — Script de índice.** *Objetivo:* automatizar la procedencia. *Entradas:* una carpeta de resultados. *Pasos:* escriba un script con la biblioteca estándar que recorra la carpeta, calcule el SHA-256 de cada archivo y escriba un índice CSV con la ruta, el tamaño, el hash y la hora de modificación; explique por qué la hora de modificación es una evidencia débil. *Evidencia esperada:* script y explicación. *Rúbrica:* 3 = script que funciona, explicación (la mtime se cambia fácilmente; el hash junto con un commit del control de versiones es más sólido); 2 = sin explicación; 1 = no funciona; 0 = nada.
+
+**EX096 — Auditoría de coherencia.** *Objetivo:* detectar incoherencias. *Entradas:* el extracto del §48.5 y una frase del resumen: «Todos los requisitos se verificaron y el sistema restablece la operación remota en menos de 8 horas». *Pasos:* identifique la incoherencia y reescriba la frase. *Evidencia esperada:* reescritura. *Rúbrica:* 3 = identifica la contradicción con C3, reescritura precisa y aún positiva donde está justificado; 2 = reescritura vaga; 1 = no la detecta; 0 = nada.
+
+### Síntesis del capítulo
+
+El expediente es el conjunto de evidencia, organizado por afirmación y con su procedencia trazada, que sustenta el caso de aseguramiento. Mantenga versiones restringida y censurada con un registro de censura, y compruebe la coherencia de cada afirmación, cifra y estado antes de que lo haga cualquier otra persona.
+
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Siga estudiando — capítulo 48 de 50
+
+[← Capítulo 47](#ch-47) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tesis de ingeniería
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) estructurar una tesis de ingeniería en torno a un problema de diseño, una solución y la evidencia; (2) redactar resultados y limitaciones que no vayan más allá de la evidencia; (3) presentar resultados cuantitativos con su incertidumbre y su procedencia; y (4) preparar una tesis que un examinador pueda verificar. Convierte el expediente en un documento y prepara la defensa.
+
+### 49.1 La tesis de ingeniería
+
+Una tesis de ingeniería sostiene que un sistema diseñado satisface una necesidad bajo restricciones, con el respaldo de la evidencia de verificación y validación. No es una tesis de investigación (de eso se ocupa el [libro de maestría](../../../../masters-2-years/critical-sector-security/es/book/MANUSCRIPT.md)) ni necesita afirmar una contribución original al conocimiento (el [libro de doctorado](../../../../doctorate-2-years/critical-sector-security/es/book/MANUSCRIPT.md)). Su originalidad, si la tiene, reside en el diseño y en la calidad de su evidencia.
+
+Para el TMRP, la tesis sostiene que la pasarela segura ante reinicios cumple R1, R2 y R7 en el banco de pruebas y declara R6 como no cumplido.
+
+### 49.2 Estructura
+
+1. **Introducción:** necesidad, partes interesadas, consecuencia, alcance.
+2. **Antecedentes:** contexto del sector, normas pertinentes y diseños previos, con fuentes.
+3. **Requisitos:** requisitos derivados, con sus fuentes y métodos de verificación.
+4. **Diseño:** alternativas, selección, arquitectura, controles, con registros de decisiones.
+5. **Análisis:** análisis de amenazas y fallos, rendimiento, fiabilidad.
+6. **Implementación:** qué se construyó, cómo y con qué herramientas.
+7. **Verificación y validación:** métodos, resultados, fallos y correcciones.
+8. **Discusión:** estado de los requisitos, riesgos residuales, limitaciones, qué haría de otra manera.
+9. **Conclusión:** qué se logró y qué queda pendiente.
+Apéndices: matriz de trazabilidad, índice del expediente, código de los laboratorios.
+
+La tesis del TMRP sigue esta estructura.
+
+### 49.3 Resultados y limitaciones
+
+Informe con honestidad del estado de los requisitos: cumplido, cumplido tras corrección, no cumplido, no verificado. Para cada limitación, indique a qué afirmaciones afecta y en qué dirección: «el banco de pruebas usa relojes perfectos; la deriva real del reloj aumentaría los rechazos de mensajes obsoletos, por lo que la tasa de falsos obsoletos indicada es una cota inferior». Una limitación sin dirección es decoración. El párrafo de discusión del TMRP en el ejemplo resuelto que sigue ofrece una limitación de este tipo: el banco de pruebas usó una red sintética, de modo que el umbral de sesenta segundos de la alarma de estación sin datos debe reajustarse in situ, donde la congestión de LTE puede aumentar las falsas alarmas. Esa frase nombra la afirmación afectada y la dirección probable.
+
+### 49.4 Escribir bien
+
+Abra cada capítulo con su idea principal. Use figuras con ejes rotulados y unidades, y tablas para los valores exactos. Mantenga las cifras trazables hasta el expediente. Escriba en un lenguaje técnico claro, defina los términos en su primer uso y use un glosario. Para el TMRP, la tabla del estado de los requisitos aparece al principio de la discusión, y cada cifra que contiene se traza hasta una entrada del índice del expediente con su hash. Cada capítulo se abre con su idea principal, y términos como alarma de estación sin datos se definen en su primer uso y en el glosario, de modo que un examinador puede leer cualquier capítulo sin tener que ir a buscar definiciones.
+
+### 49.5 Ejemplo resuelto: párrafo de discusión (sintético)
+
+> La pasarela cumplió R1 y R2 en el banco de pruebas, incluidos los reinicios de cualquiera de los dos extremos, después de modificar el receptor para que conservara su último contador aceptado (sección 7.3). R7 se cumplió para las alarmas prioritarias y, tras el hallazgo de revisión F2, para la pérdida de datos. R6 no se cumplió: el ensayo de recuperación restableció la operación remota en 12 h frente a un requisito de 8 h, porque la generación de imágenes forenses y la reconstrucción están en serie en el camino crítico. El suministro al hospital se mantuvo en modo local durante todo el ensayo, de modo que la consecuencia del incumplimiento es una menor visibilidad y capacidad de intervención, no una pérdida de suministro. En el ADR-015 se valoran dos opciones de diseño que cumplirían las 8 h. Todos los resultados proceden de un banco de pruebas sintético; el rendimiento en campo, en particular la latencia de LTE con congestión, puede diferir, y el umbral de 60 s de la alarma de estación sin datos debe reajustarse in situ.
+
+### 49.6 Actividad práctica
+
+Redacte el capítulo de discusión de su tesis, con una tabla del estado de los requisitos y limitaciones con dirección. Use como modelo el párrafo de discusión del TMRP. Empiece con una tabla que dé el estado de cada requisito como cumplido, cumplido tras corrección, no cumplido o no verificado. Después, redacte un párrafo por cada resultado significativo, incluido cualquier requisito que no haya cumplido, y termine con sus limitaciones, cada una con la afirmación a la que afecta y la dirección del sesgo probable. Compruebe cada cifra frente al índice de su expediente antes de entregar.
+
+### 49.7 Errores comunes y límites
+
+- Tesis organizadas como diarios.
+- Estado de los requisitos redondeado al alza.
+- Limitaciones sin dirección ni afirmaciones afectadas.
+- Cifras que no coinciden con el expediente.
+
+La tesis del TMRP evita cada uno de ellos: está organizada por argumentos, declara R6 como no cumplido, da limitaciones con dirección y toma sus cifras del índice del expediente. Su tabla del estado de los requisitos se comprueba frente al expediente antes de la entrega, de modo que nada se redondea al alza. Sus limitaciones nombran el banco de pruebas sintético y el ensayo de recuperación único, y dicen en qué dirección podría sesgar cada una los resultados.
+
+### Ejercicios — capítulo 49
+
+**EX097 — Limitaciones con dirección.** *Objetivo:* redactar limitaciones útiles. *Entradas:* tres limitaciones: modelo de ruido sintético; banco de pruebas sin LTE real; un solo ensayo de recuperación. *Pasos:* para cada una, indique la afirmación afectada y la dirección del sesgo probable. *Evidencia esperada:* tres frases. *Rúbrica:* 3 = cada una tiene afirmación y dirección (p. ej., un solo ensayo no da ninguna estimación de la variabilidad, por lo que las 12 h podrían ser optimistas o pesimistas; la latencia real de LTE aumentaría los rechazos por obsolescencia y la latencia de las alarmas); 2 = falta una dirección; 1 = solo una lista; 0 = nada.
+
+**EX098 — Resumen.** *Objetivo:* resumir con exactitud. *Entradas:* §49.5. *Pasos:* redacte un resumen estructurado de 150 palabras (necesidad, diseño, métodos, resultados, limitaciones). *Evidencia esperada:* resumen. *Rúbrica:* 3 = exacto, incluido R6 no cumplido, con el límite del banco de pruebas sintético declarado; 2 = una exageración; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Una tesis de ingeniería argumenta desde la necesidad hasta el diseño y la evidencia. Estructúrela para un examinador, informe del estado de los requisitos tal como es, dé a cada limitación una afirmación afectada y una dirección, y mantenga cada cifra trazable hasta el expediente.
+
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Siga estudiando — capítulo 49 de 50
+
+[← Capítulo 48](#ch-48) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defensa final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) preparar una presentación técnica para la defensa de un proyecto final y una tesis; (2) anticipar las preguntas de los examinadores por familias y preparar respuestas basadas en la evidencia; (3) tratar con honestidad las preguntas que no puede responder; y (4) planificar las correcciones y el traspaso tras la defensa. Cierra el curso.
+
+### 50.1 Qué evalúan los examinadores
+
+Los examinadores comprueban que el candidato entiende la necesidad y las restricciones; tomó decisiones de diseño defendibles; verificó las afirmaciones con competencia; conoce los límites de la evidencia; y sabe razonar sobre cambios («¿y si el requisito fuera de 2 h?»). Leen la tesis con atención e indagan en las incoherencias. En la defensa del TMRP, es probable que los examinadores indaguen en el incumplimiento de R6 y en el riesgo residual aceptado D1. Pueden preguntar qué cambiaría si la reserva del hospital fuera de dos horas en lugar de cuatro, y el candidato debería razonar a partir del árbol de fallos y del modo automático local en lugar de hacer conjeturas.
+
+### 50.2 La presentación
+
+Veinte minutos: necesidad y consecuencia (2 min); requisitos (2); alternativas y selección (3); arquitectura y controles clave (4); resultados de la verificación y la validación con fallos y correcciones (5); estado de los requisitos y riesgos residuales (2); limitaciones y próximos pasos (2). Un mensaje por diapositiva. Muestre la tabla del estado de los requisitos; los examinadores respetan un «no cumplido» dicho con claridad. Para el TMRP, la tabla del estado de los requisitos mostraría R1, R2 y R7 como cumplidos tras correcciones y R6 como no cumplido con doce horas, con las opciones del ADR-015. Esa diapositiva prepara al tribunal para las preguntas del ejemplo resuelto, y declarar el incumplimiento antes de que lo encuentre un examinador genera más confianza que cualquier resultado pulido.
+
+### 50.3 Familias de preguntas
+
+- **Necesidad:** ¿por qué importa esto, a quién y cómo lo sabe?
+- **Diseño:** ¿por qué esta alternativa y no aquella; qué le haría cambiar de elección?
+- **Análisis:** ¿de dónde sale esta cifra; y si este supuesto es erróneo?
+- **Verificación:** ¿cómo sabe que la prueba prueba el requisito; qué se les escapó a sus pruebas?
+- **Límites:** ¿qué no puede afirmar; qué revelaría un despliegue en campo?
+- **Ética y seguridad funcional:** ¿qué podría salir mal para las personas; quién es responsable del riesgo residual?
+
+Prepare dos respuestas por familia con referencias al expediente.
+
+### 50.4 Respuestas honestas
+
+Cuando no sepa algo: dígalo, diga cómo lo averiguaría y, si puede, razone en voz alta hacia una respuesta, presentándolo como razonamiento. No invente cifras. Cuando un examinador encuentre un error: reconózcalo, evalúe su impacto en las afirmaciones y proponga una corrección. En el ejemplo resuelto, el candidato hace esto cuando se le pregunta por el riesgo residual D1: indica quién lo aceptó, la evidencia que lo acota y la alternativa que lo eliminaría, sin fingir que el riesgo es despreciable. No se inventa ninguna cifra.
+
+### 50.5 Después de la defensa
+
+Las correcciones se enumeran en una tabla: petición del examinador, cambio realizado, ubicación. Entregue el artefacto y el expediente al patrocinador con las limitaciones conocidas y las necesidades de mantenimiento. En los proyectos reales, encauce cualquier hallazgo de seguridad a través de los procesos del propietario. Para el TMRP, el traspaso se hace al director de operaciones de la LRWA con el expediente, el punto abierto sobre R6 y la nota de que el umbral de la alarma de estación sin datos necesita reajustarse in situ. Cualquier hallazgo de seguridad sobre equipos reales seguiría los procesos propios de la LRWA, no la tesis.
+
+### 50.6 Ejemplo resuelto: responder a una pregunta difícil (sintético)
+
+*Examinador:* «Su caso de aseguramiento acepta el riesgo residual D1: un centro SCADA comprometido que emite órdenes auténticas. ¿Por qué es aceptable para el suministro a un hospital?». *Candidato:* «Lo acepta el director de operaciones, no yo, y el caso explica por qué: los límites locales (R3) mantienen cualquier consigna aceptada dentro de límites seguros, de modo que lo peor que puede hacer un centro comprometido en PS4 es detener las bombas, y el árbol de fallos muestra que, para perder el suministro, tendrían que fallar además la vía del depósito y el tanque del hospital. Si los examinadores lo consideran insuficiente, la alternativa del ADR-012 (escrituras de consignas solo locales en PS4) elimina el control remoto en ese emplazamiento con un coste de personal estimado de una salida de guardia al mes. No afirmaría que D1 es despreciable; afirmo que está acotado y tiene responsable».
+
+### 50.7 Actividad práctica
+
+Celebre una defensa simulada con dos compañeros que actúen como examinadores usando las familias de preguntas; registre las preguntas que no pudo responder y prepare las respuestas. Pida a sus examinadores que usen todas las familias de preguntas y que indaguen en al menos una cifra de su tesis. Registre cada pregunta que no pudo responder y, después, trace la respuesta hasta su expediente. Para el TMRP, las preguntas más difíciles se refieren al incumplimiento de R6 y al riesgo residual D1; prepare esas respuestas hasta que pueda darlas de forma breve, nombrando la evidencia y sin afirmar más de lo que respalda el expediente.
+
+### 50.8 Errores comunes y límites
+
+- Presentaciones que ocultan los fallos.
+- Respuestas a la defensiva ante los errores encontrados.
+- Cifras inventadas bajo presión.
+- Ningún plan de correcciones.
+
+El candidato del TMRP evita estos errores mostrando el incumplimiento de R6 en una diapositiva, reconociendo los errores con claridad, negándose a inventar cifras y teniendo preparada una tabla de correcciones para las peticiones de los examinadores. Los fallos, como la reproducción tras el reinicio, se presentan como hallazgos que detectó la verificación, con la corrección y la nueva prueba, que es exactamente lo que los examinadores quieren ver. Una tabla de correcciones está preparada. Toda afirmación se mantiene dentro del expediente.
+
+### Ejercicios — capítulo 50
+
+**EX099 — Banco de preguntas.** *Objetivo:* anticipar el examen. *Entradas:* su tesis o el caso del TMRP. *Pasos:* redacte doce preguntas (dos por familia) y respuestas breves basadas en la evidencia con referencias al expediente. *Evidencia esperada:* banco. *Rúbrica:* 3 = preguntas difíciles y específicas con respuestas honestas que incluyen los límites; 2 = preguntas blandas; 1 = respuestas sin evidencia; 0 = nada.
+
+**EX100 — Tabla de correcciones.** *Objetivo:* planificar las correcciones. *Entradas:* peticiones de los examinadores: (1) informar de la variabilidad del tiempo de recuperación; (2) justificar la fracción utilizable de la batería de 0,6; (3) eliminar la afirmación de que el detector «impide» los ataques. *Pasos:* redacte una tabla de correcciones con el cambio, la ubicación y cómo se respalda cada uno. *Evidencia esperada:* tabla. *Rúbrica:* 3 = (1) reconoce el ensayo único y añade un plan o ejecuciones simuladas repetidas, (2) añade la fuente del fabricante o un análisis de sensibilidad, (3) reformulación a «detecta»; 2 = una débil; 1 = sin ubicaciones; 0 = nada.
+
+### Síntesis del capítulo
+
+La defensa pone a prueba la comprensión, el criterio y la honestidad sobre los límites. Presente con claridad la necesidad, el diseño, la evidencia y el estado; prepárese por familias de preguntas con referencias al expediente; responda lo que sabe, razone de forma transparente sobre lo que no sabe y convierta los hallazgos de los examinadores en una tabla de correcciones precisa y en un traspaso responsable.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Siga estudiando — capítulo 50 de 50
+
+[← Capítulo 49](#ch-49) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -3607,6 +4090,48 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX085.** Se evalúa con la rúbrica; el acuerdo debe nombrar a los supervisores, el alcance, el método de acceso, la confidencialidad, la formación inicial en seguridad, la aprobación de la publicación, la vía para los hallazgos incidentales y una declaración explícita de que el estudiante no probará ni explorará sistemas fuera de las tareas acordadas.
 
 **EX086.** Observación: los operadores registran los cambios de consigna en un cuaderno en papel además de en el SCADA. Conexión: capítulo 13 (procedencia) y capítulo 37 (operaciones). Diferencia: la práctica duplica el registro electrónico; es localmente racional porque el cuaderno sobrevive a las interrupciones del SCADA, facilita el traspaso de turno y goza de confianza. Pregunta: ¿discrepan alguna vez los dos registros y podría el cuaderno servir como comprobación de integridad independiente?
+
+### Capítulo 44
+
+**EX087.** Problemas: alcance sin límites («empresas de agua»), sin requisitos ni criterios de aceptación, sin fuente de datos, tecnología elegida antes que el problema. Reescritura: p. ej., «Un detector basado en residuos para datos de nivel falsos en un único depósito sintético: requisitos, estudio de simulación con ruido con semilla, criterios de aceptación < 1 falsa alarma/mes y detección de rampas de 0,05 m/h en menos de 2 h, 12 semanas, solo datos sintéticos».
+
+**EX088.** Ampliación descontrolada del alcance (probabilidad media, impacto alto; mitigación: congelar el alcance en la CDR; desencadenante: nuevas peticiones de funciones después de la semana 6); seguridad ante reinicios más difícil de lo previsto (M/A; prototipo exploratorio en la semana 2; desencadenante: diseño no estable en la semana 4); fidelidad insuficiente del banco de pruebas (M/M; revisión con el supervisor; desencadenante: hallazgo de un revisor); tiempo (A/A; semana de margen; desencadenante: retraso de un hito > 1 semana); disponibilidad del supervisor (B/M; revisiones programadas; desencadenante: revisión no celebrada).
+
+### Capítulo 45
+
+**EX089.** (1) «Las claves de las 42 estaciones se generan en el portátil de un ingeniero (procedimiento de gestión de claves §3.2); un compromiso de ese portátil expone a toda la flota; incumple la intención de R1; se recomienda la generación en el HSM o en el elemento seguro de la pasarela». (2) «El comportamiento del receptor tras un reinicio no está cubierto por ninguna prueba (plan de verificación, tabla 4); R2 exige rechazar las reproducciones tras un reinicio; se recomiendan pruebas según el EX060». (3) Retirarlo por ser una preferencia de diseño, o replantearlo: «el diseño no indica por qué el protocolo elegido cumple R1 y R7; añadir la justificación».
+
+**EX090.** F2: aceptado; se añaden la alarma de estación sin datos a los 60 s y el registro de huecos de contador; la campaña se vuelve a ejecutar con la semilla 40; responsable: jefe de la pasarela; fecha: dos semanas. F3: aceptado; el expediente se corrige a «R6 no cumplido (12 h)»; opciones valoradas: generación de imágenes en paralelo en hardware de repuesto (9 h), más una imagen del SCADA en espera (6 h); revisión con las partes interesadas para decidir entre un cambio de diseño y un requisito revisado; responsable: director del TMRP; fecha: próxima reunión del comité de dirección.
+
+### Capítulo 46
+
+**EX091.** Generar la nueva clave en el HSM; distribuirla a la pasarela con el ID de clave k+1; durante 10 minutos, el receptor acepta las tramas etiquetadas con cualquiera de los dos ID de clave (el ID de clave va dentro de la cabecera autenticada); el emisor cambia a k+1 y los contadores continúan; si las tramas con k+1 fallan, se revierte a k; tras la ventana, el receptor rechaza k, y k se destruye en ambos extremos; se registra cada paso.
+
+**EX092.** Continuar con condiciones: iniciar el ensayo con el umbral de 60 s, supervisado por un ingeniero; recopilar datos sobre las falsas alarmas de estación sin datos durante la congestión; ajustar el umbral (p. ej., 90 s para las estaciones no críticas) antes de una fecha declarada; informar a los operadores de que se esperan alarmas de estación sin datos durante la congestión. La consecuencia de no detectar una pérdida real de datos pesa más que dos falsas alarmas al día durante un periodo limitado.
+
+### Capítulo 47
+
+**EX093.** (1) Con la reconstrucción dependiendo solo del aislamiento: control remoto a las 9 h; camino crítico aislar → reconstruir → restaurar la configuración → verificar → reanudar; la generación de imágenes sale del camino. (2) Con una reconstrucción de 1 h a partir de una imagen en espera: 6 h; la cadena de la reconstrucción y la del recambio de claves (aislar → recambiar claves → verificar → reanudar) empatan ahora a 6 h, de modo que el recambio de claves se ha vuelto crítico y nuevas mejoras exigen acortarlo también.
+
+**EX094.** Opciones: (a) omitir la generación de imágenes (la más rápida; se pierde la evidencia; pueden pasar inadvertidas la causa raíz y la persistencia del atacante; posibles consecuencias regulatorias o legales); (b) generar las imágenes primero (la más lenta); (c) generar las imágenes en paralelo usando hardware de repuesto y reconstruir en hardware limpio (casi la más rápida; se conserva la evidencia). Recomendación: (c), con una decisión aprobada de antemano según la cual el director de operaciones solo puede autorizar (a) si el suministro está en riesgo. Responsable: director de operaciones.
+
+### Capítulo 48
+
+**EX095.** Script: recorrer la carpeta con `os.walk`; para cada archivo, leerlo por bloques en `hashlib.sha256`; escribir `path, size, sha256, mtime` con `csv.writer`. La hora de modificación es una evidencia débil porque se cambia fácilmente y no está ligada al contenido; un hash de contenido registrado en el control de versiones (ID de commit y etiqueta firmada) es mucho más sólido.
+
+**EX096.** Incoherencia: C3 muestra R6 como no cumplido (12 h). Reescritura: «Se verificaron todos los requisitos salvo el objetivo de restablecimiento de 8 horas; un ensayo de recuperación restableció la operación remota en 12 horas mientras el suministro continuaba en modo local, y se presentan dos opciones de diseño para cumplir el objetivo».
+
+### Capítulo 49
+
+**EX097.** Modelo de ruido sintético → afecta a las afirmaciones sobre las falsas alarmas y el tiempo de detección del detector; es probable que el ruido real no sea gaussiano y tenga deriva, por lo que probablemente se subestiman las falsas alarmas. Banco de pruebas sin LTE real → afecta a las afirmaciones sobre la latencia y los rechazos por obsolescencia; la latencia y la fluctuación reales aumentarían los rechazos por obsolescencia y la latencia de las alarmas. Un solo ensayo de recuperación → afecta al estado de R6; no hay estimación de la variabilidad, por lo que las 12 h podrían ser optimistas o pesimistas.
+
+**EX098.** Ejemplo: «Necesidad: las RTU heredadas de una empresa de servicios de agua aceptan órdenes no autenticadas a través de LTE, lo que pone en riesgo el suministro a un hospital. Diseño: una pasarela que añade autenticación HMAC por estación con contadores seguros ante reinicios, retorno automático a la operación local y alarmas de estación sin datos. Métodos: verificación en banco de pruebas, campañas de inyección de fallos con semilla y un ensayo de recuperación en sistemas sintéticos. Resultados: se cumplieron los requisitos de autenticación y de reproducción, incluidos los reinicios tras una corrección; las alarmas cumplieron los 60 s; el restablecimiento remoto llevó 12 h frente a un objetivo de 8 h mientras el suministro continuaba en local. Limitaciones: banco de pruebas sintético sin LTE real; un único ensayo de recuperación».
+
+### Capítulo 50
+
+**EX099.** Se evalúa con la rúbrica. Entre las preguntas sólidas: «¿Qué ocurre si falla el HSM?»; «¿Por qué 60 s?»; «¿Qué no incluía su modelo de fallos?»; «¿Quién es responsable de D1?»; «¿Qué cambiaría si la reserva del hospital fuera de 1 h?»; las respuestas citan elementos del expediente y declaran los límites.
+
+**EX100.** (1) Añadir la declaración de que un solo ensayo no da ninguna estimación de la variabilidad; añadir 100 ejecuciones simuladas de recuperación con semilla y rangos de duración de las tareas, e informar de la mediana y del percentil 90; sección 7.4 y apéndice C. (2) Citar la recomendación de profundidad de descarga del fabricante de la batería o añadir una tabla de sensibilidad para 0,5–0,8; sección 5.2. (3) Sustituir «impide» por «detecta» y añadir el contexto del tiempo de detección; resumen y sección 8.1.
 
 <a id="glossary"></a>
 
