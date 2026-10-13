@@ -113,13 +113,13 @@ Ana's first draft claim was "our separation defence stops prompt injection". Her
 
 ### 1.7 Errors and limits
 
-Each of the errors listed below makes a result look stronger than it is. The best of many runs hides the spread that Lab S shows across seeds. Tuning on the test set turns it into training data. A defence tested only against older attacks has not met the adaptive adversary in Ana's threat model. No attack found may only mean the search was weak. Exploit strings published early harm users before a fix exists.
+Each of these errors makes a result look stronger than it is:
 
-- Reporting the best of many runs as "the" result.
-- Tuning prompts or thresholds on the test set.
-- Evaluating a defence only against attacks designed before it existed.
-- Treating "no attack found" as proof of security.
-- Publishing working exploit strings against a live product before the vendor can respond.
+- Reporting the best of many runs as "the" result, which hides the spread that Lab S shows across seeds.
+- Tuning prompts or thresholds on the test set, which turns it into training data.
+- Evaluating a defence only against attacks designed before it existed; such a defence has not met the adaptive adversary in Ana's threat model.
+- Treating "no attack found" as proof of security, when it may only mean the search was weak.
+- Publishing working exploit strings against a live product before the vendor can respond, which harms users before a fix exists.
 
 ### Exercises
 
@@ -897,6 +897,8 @@ Model answers; any answer meeting the rubric scores equally. The Meridian Applie
 **EX051.** Can tool-chaining echoes be blocked by information-flow tracking without unacceptable utility loss? Can we bound the *impact* of a successful injection rather than its rate? Do separation defences transfer to multimodal inputs (images, PDFs)?
 
 **EX052.** Answers vary; a full answer separates the measured reduction from absolute safety and pairs the method with privilege limits, confirmation and monitoring.
+
+<a id="references"></a>
 
 ## References
 

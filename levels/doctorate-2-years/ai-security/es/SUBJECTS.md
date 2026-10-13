@@ -1,22 +1,22 @@
-# Subjects and book chapters — AI and machine-learning security / Doctoral research track / Español
+# Asignaturas y capítulos del libro — Seguridad de la IA y del aprendizaje automático / Programa de investigación doctoral / Español
 
-**One course, one principal book, 8 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Un curso, un libro principal, 8 asignaturas y capítulos, una skill del curso.** Solo los enlaces marcados como Borrador llevan a contenido didáctico escrito; un capítulo planificado es un resumen, no una lección terminada.
 
-This is an English working index awaiting translation and review for this language.
+Edición en español neutro, escrita a partir de la edición de referencia en inglés; revisión técnica y lingüística pendiente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Inicio](../../../../README.md) · [Ruta de estudio completa](../../../../STUDY_PATH.md) · [Página del curso](../README.md) · [Plan del libro](book/PLAN.md) · [Skill del curso](../skill/SKILL.md)
 
-**Course 204 of 207.** Read chapters 01–08 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 204 de 207.** Lea los capítulos 01–08 de arriba abajo. Para cada capítulo, use el enlace Borrador; el enlace numerado del plan es solo un resumen. Intente resolver los ejercicios antes de consultar los resultados resueltos al final del libro. La última fila lleva al siguiente curso en este mismo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Advanced research integrity and methods | 200 | 75 | 7 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | AI and machine-learning security: research frontier | 200 | 75 | 7 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 2 | [03](book/PLAN.md#ch-03) | Original contribution proposal | 200 | 75 | 6 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Baseline replication and pilot | 200 | 75 | 6 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Main study and independent validation | 200 | 75 | 6 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Peer critique and revision | 200 | 75 | 6 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Thesis synthesis and reproducibility archive | 200 | 75 | 6 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Defense and publication plan | 200 | 75 | 6 | Planned | [Course 205 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Integridad y métodos avanzados de investigación | 200 | 75 | 7 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Plan](book/PLAN.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Seguridad de la IA y del aprendizaje automático: frontera de la investigación | 200 | 75 | 7 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-02)) | [03 · Plan](book/PLAN.md#ch-03) |
+| 2 | [03](book/PLAN.md#ch-03) | Propuesta de contribución original | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-03)) | [04 · Plan](book/PLAN.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Replicación de la línea de base y piloto | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Estudio principal y validación independiente | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | Crítica de pares y revisión | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Síntesis de la tesis y archivo de reproducibilidad | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Defensa y plan de publicación | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [Curso 205 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.
