@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–22 de 50 já estão escritos em português, com os exercícios EX001–EX066 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 23–50 (EX067–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–27 de 50 já estão escritos em português, com os exercícios EX001–EX081 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 28–50 (EX082–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) |
 
-Capítulos 23–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-23), até a chegada dos próximos lotes.
+Capítulos 28–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-28), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1356,11 +1356,318 @@ Use um subconjunto deliberado do STIX, valide as propriedades obrigatórias, car
 
 [← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
 
+<a id="ch-23"></a>
+
+## Capítulo 23 — Inteligência de ameaças e OSINT: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar as ameaças à própria plataforma de CTI; (2) realizar uma análise de modos de falha e efeitos (FMEA); (3) classificar riscos por severidade, ocorrência e detecção; (4) mapear técnicas de adversários contra o Lantern usando IDs do ATT&CK.
+
+### 23.1 Ameaças ao Lantern
+
+Envenenamento de feeds, roubo de credenciais (T1078 Valid Accounts), comprometimento da cadeia de suprimentos de uma dependência (T1195), exfiltração de relatórios restritos e negação de serviço por feeds superdimensionados. Cada ameaça corresponde a um controle. Kofi escreveu cada ameaça como um cenário curto, com o objetivo do atacante e o caminho que ele seguiria. O envenenamento, por exemplo, poderia vir de um parceiro comprometido ou de uma entrega forjada. Escrever o caminho mostra qual controle o interrompe: verificações de assinatura barram a falsificação, mas não um parceiro comprometido, que exige verificações de anomalia. Os cenários ficam junto ao registro de riscos e são revistos quando um componente muda.
+
+### 23.2 FMEA
+
+Para cada componente, liste modos de falha, efeitos e causas. Pontue severidade (S), ocorrência (O) e dificuldade de detecção (D) de 1 a 10; o número de prioridade de risco RPN = S × O × D ordena a atenção. As três pontuações vêm do julgamento da equipe, informado pelo histórico de incidentes onde ele existe. Kofi conduz a pontuação com um operador, um engenheiro e um analista na sala, porque cada um enxerga falhas diferentes. O número resultante é útil para ordenar; a discussão que o produz muitas vezes importa mais, pois revela modos de falha que nenhuma pessoa sozinha havia considerado.
+
+### 23.3 Linhas de exemplo
+
+Coletor para em silêncio: S6, O4, D7 → RPN 168. Bloqueio errado enviado à TI: S8, O3, D4 → 96. Relatório TLP:RED compartilhado indevidamente: S9, O2, D6 → 108. A parada silenciosa do coletor fica em primeiro porque ninguém perceberia por dias. A classificação surpreendeu a equipe, que esperava ver em primeiro o relatório RED compartilhado indevidamente, porque seu dano é o maior. Sua probabilidade é baixa, e o registro de acesso o revelaria com relativa rapidez. A falha do coletor é menos grave, mas nada alerta ninguém, então o dano se acumula em silêncio enquanto os indicadores envelhecem. É esse o caso que o exemplo resolvido trata.
+
+### 23.4 Agindo a partir da classificação
+
+Pontuações altas de detecção pedem monitoramento: um alerta de pulsação se nenhum objeto chegar de um parceiro por seis horas. Severidade alta pede prevenção e etapas de aprovação. O alerta de pulsação de Kofi compara o histórico de chegadas de cada parceiro com o intervalo atual. Um parceiro que normalmente envia a cada hora dispara o alerta após seis horas de silêncio; um que publica uma vez por dia tem uma janela mais longa. Depois da mudança, a equipe pontuou de novo a linha e registrou o número menor com o motivo, para que o efeito do controle fique visível no registro.
+
+### 23.5 Acidentes
+
+Nem toda falha é maliciosa. O envio maciço por engano de um parceiro ou um erro de relógio podem causar dano. A análise de falhas cobre os dois. O registro de Kofi dá aos acidentes suas próprias linhas. Certa vez um parceiro enviou por engano um conjunto inteiro de dados de teste, cheio de domínios inofensivos. A verificação de volume reteve a entrega, e o parceiro a retirou no mesmo dia. Um relógio ajustado para o ano errado em um servidor de teste produziu indicadores que pareciam já expirados. Nenhum dos eventos envolveu um adversário, mas ambos poderiam ter perturbado a BEN.
+
+### Nota de prática — Casos de abuso
+
+Ao lado dos casos de uso, Kofi escreve casos de abuso: "Uma conta de parceiro envia dez milhões de objetos", "Um analista exporta um relatório RED para o e-mail pessoal". Cada caso de abuso corresponde a um controle e a um teste, o que transforma o modelo de ameaças em trabalho verificável. Os casos de abuso são revistos sempre que um novo parceiro ou uma nova interface entra na plataforma.
+
+### Exemplo resolvido
+
+A FMEA de Kofi mostra a parada silenciosa do coletor com RPN 168. Ele acrescenta monitoramento de pulsação por parceiro, reduzindo D para 2 e o RPN para 48, e registra a mudança no registro de riscos.
+
+> **Caso sintético.** As pontuações são inventadas.
+
+### Erros e limites
+
+O RPN multiplica escalas ordinais; trate-o como auxílio de ordenação, não como medida precisa. Modelos de ameaças envelhecem; revise-os após mudanças grandes.
+
+### Exercícios
+
+- **EX067 — Cálculo do RPN.** Calcule o RPN para S7, O3, D5. *Rubrica:* 3 = 105; 2 = método certo; 1 = soma; 0 = nenhuma.
+- **EX068 — Depois da pulsação.** Com D reduzido de 7 para 2, qual é o RPN do coletor? *Rubrica:* 3 = 48; 2 = método; 1 = errado; 0 = nenhuma.
+- **EX069 — Ligação com técnica.** Qual ID de técnica do ATT&CK cobre um atacante que usa o login roubado de um analista? *Rubrica:* 3 = T1078 Valid Accounts; 2 = só o nome; 1 = errado; 0 = nenhuma.
+
+### Síntese
+
+Modele as ameaças à plataforma, ordene as falhas com FMEA, acrescente detecção onde as falhas são silenciosas e cubra acidentes além de adversários.
+
+### Continue estudando — capítulo 23 de 50
+
+[← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Inteligência de ameaças e OSINT: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o Diamond Model para estruturar a inteligência de um incidente; (2) mapear o comportamento observado para técnicas do ATT&CK; (3) posicionar controles ao longo da kill chain; (4) registrar a confiança analítica e as fontes.
+
+### 24.1 Estruturação em diamante
+
+Para cada evento, registre o adversário (se conhecido), a capacidade (malware, técnica), a infraestrutura (domínios, endereços) e a vítima (ativo, organização). Vértices desconhecidos ficam como "desconhecido"; preenchê-los por palpite é o erro clássico. Os analistas de Kofi registram cada vértice com sua evidência. O nome da estação de trabalho da vítima vem dos registros do endpoint, a infraestrutura vem do proxy e a capacidade, do relatório da sandbox. O vértice do adversário costuma ficar vazio, e dizer isso é exato. Um nome de grupo dado por palpite se espalha depressa depois de escrito, e leitores posteriores podem tratá-lo como fato estabelecido.
+
+### 24.2 Mapeamento no ATT&CK
+
+Os comportamentos correspondem a IDs de técnica: e-mail de phishing → T1566; scripts no host → T1059 Command and Scripting Interpreter; C2 por protocolo web → T1071. O mapeamento apoia a engenharia de detecção e a comparação com perfis de grupos. Kofi pede aos analistas que citem a evidência de cada marcação de técnica, como a linha de registro que mostra um interpretador de scripts iniciado a partir de um anexo de e-mail. Marcações sem evidência são removidas na revisão. Uma marcação consistente permite à equipe de detecção ver quais técnicas se repetem entre incidentes e quais não têm detecção alguma, o que orienta seu trabalho no trimestre seguinte.
+
+### 24.3 Controles na kill chain
+
+Hutchins et al. propuseram uma matriz de cursos de ação: detectar, negar, interromper, degradar, enganar e destruir, ao longo das fases. O Lantern produz insumos para várias células — negar na entrega por filtragem de e-mail, detectar no C2 por analíticas de DNS. Kofi desenhou a matriz para os incidentes de phishing da BEN e encontrou a maioria das células vazia além de negar e detectar. Interromper o tráfego de comando, por exemplo com um sinkhole do domínio no resolvedor, era possível, mas nunca havia sido planejado. Preencher uma célula significa nomear a ação, quem é seu dono e como seu efeito seria medido. Células vazias são uma lacuna de planejamento, não necessariamente uma falha.
+
+### 24.4 Fontes e confiança
+
+Cada afirmação analítica cita suas fontes e sua confiança. Uma graduação de fontes no estilo Admiralty ou uma escala simples (confirmado, provável, possível) ajuda os leitores. Os relatórios de Kofi trazem uma linha curta de fonte sob cada julgamento, nomeando a evidência e sua confiabilidade, e uma palavra de confiança da tabela da equipe. O leitor consegue então distinguir uma afirmação apoiada nos próprios registros da BEN de outra apoiada em um único boletim de parceiro. Quando as fontes discordam, o relatório diz isso em vez de escolher uma em silêncio. Os revisores devolvem todo julgamento sem linha de fonte.
+
+### 24.5 OSINT dentro dos limites
+
+Os métodos incluem consultas de transparência de certificados em busca de domínios relacionados e a leitura de avisos públicos. Neste curso, os pesquisadores não interagem com a infraestrutura de adversários nem criam contas em fóruns criminosos. Os registros de transparência de certificados são públicos e feitos para esse tipo de busca, então procurar certificados emitidos para nomes parecidos com um domínio de phishing conhecido está dentro dos limites. Visitar os sites suspeitos não faz parte desses métodos. Kofi registra cada consulta de OSINT com seu propósito, o que mostra que a pesquisa ficou dentro dos limites acordados, caso alguém pergunte depois.
+
+### Nota de prática — Notas analíticas
+
+O registro em diamante de cada incidente traz uma nota analítica: o que foi observado, o que foi inferido e o que continua desconhecido. Separar essas três linhas impede que leitores posteriores confundam uma inferência com uma observação quando o registro for reutilizado meses depois. Os revisores verificam se cada linha de inferência nomeia a evidência em que se apoia.
+
+### Exemplo resolvido
+
+Um incidente sintético de phishing na BEN: capacidade T1566 mais um instalador por script (T1059), infraestrutura drop.example, vítima a estação de trabalho de uma atendente de faturamento, adversário desconhecido. Cursos de ação: negar a entrega com uma regra de e-mail; detectar o C2 por DNS para drop.example; caçar T1059 nas outras estações de trabalho.
+
+> **Caso sintético.** O incidente é inventado.
+
+### Erros e limites
+
+O mapeamento no ATT&CK é interpretativo; dois analistas podem divergir. Mantenha a evidência ligada.
+
+### Exercícios
+
+- **EX070 — Vértice desconhecido.** Como o vértice do adversário deve ser registrado no incidente de Kofi, e por quê? *Rubrica:* 3 = desconhecido; evita atribuição por palpite; 2 = desconhecido; 1 = nomeia um grupo; 0 = nenhuma.
+- **EX071 — IDs de técnica.** Dê os IDs de técnica do e-mail de phishing e da execução do script. *Rubrica:* 3 = T1566 e T1059; 2 = um; 1 = errado; 0 = nenhuma.
+- **EX072 — Curso de ação.** Dê uma ação de negar e uma de detectar, com a fase da kill chain. *Rubrica:* 3 = negar na entrega (regra de e-mail) + detectar no C2 (DNS); 2 = uma; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Estruture com o diamante, mapeie com o ATT&CK, aja ao longo da kill chain e mantenha fontes e confiança ligadas.
+
+### Continue estudando — capítulo 24 de 50
+
+[← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) produzir um primeiro projeto de ponta a ponta para o caminho de ingestão do Lantern; (2) apresentá-lo a uma banca de revisão; (3) registrar as decisões em registros de decisão de arquitetura (ADRs); (4) responder às críticas com mudanças no projeto.
+
+### 25.1 Enunciado do ateliê
+
+Projete o caminho das coleções TAXII 2.1 dos parceiros até um armazenamento pronto para os analistas: consulta periódica, validação, normalização, eliminação de duplicatas, procedência, aplicação do TLP e monitoramento. Restrições: protótipos só com a biblioteca padrão, dados sintéticos, modelo de zonas da BEN. A equipe de Kofi começou desenhando as zonas e colocando cada componente em uma delas antes de escrever qualquer código. A restrição de usar só a biblioteca padrão forçou projetos simples, que a banca conseguia ler por inteiro. Os dados sintéticos permitiram que cada teste fosse compartilhado com a banca e repetido exatamente, o que dados reais de parceiros, sob limites de compartilhamento, não permitiriam.
+
+### 25.2 ADRs
+
+Um registro de decisão de arquitetura expõe contexto, decisão, alternativas e consequências em uma página. "Consultar a cada 15 minutos em vez de assinar envio ativo" — contexto: o TAXII 2.1 é baseado em consulta para coleções; consequências: até 15 minutos de latência. A equipe de Kofi escreveu um registro para cada escolha que alguém poderia questionar depois. O intervalo de consulta foi uma delas; a escolha de rejeitar, e não consertar, carimbos de tempo malformados foi outra. Cada registro lista as opções consideradas e por que perderam. Quando a banca contestava uma escolha, a equipe podia apontar o registro em vez de reconstruir o raciocínio de memória.
+
+### 25.3 Revisão da banca
+
+A banca inclui um analista, um engenheiro de OT e um encarregado de privacidade. Cada um pergunta a partir de seu papel: É oportuno? A OT está protegida? Os dados pessoais estão minimizados? Cada revisor lê o projeto a partir de suas próprias preocupações, e suas perguntas raramente se sobrepõem. O analista perguntou quanto tempo um indicador de alta confiança levaria para chegar ao DNS. O engenheiro de OT perguntou se algo no projeto poderia enviar regras aos firewalls das subestações sem aprovação. A pergunta do encarregado de privacidade levou à mudança descrita no exemplo resolvido. Kofi registrou cada pergunta com a resposta dada.
+
+### 25.4 Iterando
+
+A crítica vira itens de backlog. Os projetos melhoram quando os estudantes os mudam em resposta, não quando defendem cada escolha. A equipe de Kofi registrou cada comentário da banca como item de backlog com responsável e decisão. A maioria dos comentários levou a mudanças pequenas; dois levaram a novos registros de decisão; um foi recusado com um motivo escrito que a banca aceitou. A equipe descobriu que aceitar depressa uma crítica justa rendia mais confiança do que uma defesa engenhosa. A segunda revisão da banca foi mais curta porque os comentários anteriores tinham sido visivelmente atendidos.
+
+### 25.5 Entregáveis
+
+Um diagrama, cinco ADRs, uma lista de interfaces, um plano de monitoramento e uma demonstração do pipeline com dados sintéticos. Cada item tem um propósito. O diagrama mostra a estrutura, os registros mostram o raciocínio, a lista de interfaces mostra o que precisa ser acordado com outros e o plano de monitoramento mostra como as falhas serão percebidas. A demonstração prova que o pipeline roda de ponta a ponta com o feed sintético. A equipe de Kofi entregou os cinco juntos, para que a banca pudesse verificar se a demonstração correspondia ao diagrama e aos registros.
+
+### Nota de prática — Disciplina na demonstração
+
+A demonstração do ateliê roda com dados sintéticos a partir de um ambiente limpo, com os comandos roteirizados de antemão. Improvisar ao vivo diante de uma banca esconde defeitos e desperdiça tempo; uma execução roteirizada mostra o que o projeto realmente faz. Os estudantes ensaiam a execução roteirizada duas vezes antes da banca, uma delas em uma máquina nova, para que as surpresas de ambiente apareçam no ensaio e não diante dos revisores. Depois, os comentários da banca e as respostas da equipe são arquivados com os ADRs como registro do ateliê.
+
+### Exemplo resolvido
+
+O encarregado de privacidade pergunta por que o projeto armazena os cabeçalhos completos dos e-mails dos relatos de phishing. O ADR de Kofi não tinha motivo. Ele muda o projeto para armazenar apenas o domínio do remetente, um hash do assunto e os campos de indicador, e escreve um novo ADR registrando a mudança.
+
+> **Caso sintético.** A banca do ateliê é inventada.
+
+### Erros e limites
+
+Ateliês recompensam a clareza, não o volume. Um projeto sem monitoramento está incompleto.
+
+### Exercícios
+
+- **EX073 — Partes do ADR.** Liste as quatro seções de um ADR. *Rubrica:* 3 = contexto, decisão, alternativas, consequências; 2 = três; 1 = uma; 0 = nenhuma.
+- **EX074 — Consequência da consulta.** Indique uma consequência da consulta a cada 15 minutos. *Rubrica:* 3 = até 15 min de latência (mais a troca com a carga); 2 = latência, de forma vaga; 1 = vago; 0 = nenhuma.
+- **EX075 — Minimização dos cabeçalhos.** Quais campos substituem os cabeçalhos completos de e-mail no projeto revisado? *Rubrica:* 3 = domínio do remetente, hash do assunto, campos de indicador; 2 = dois; 1 = manter os cabeçalhos completos; 0 = nenhuma.
+
+### Síntese
+
+Projete de ponta a ponta, registre as decisões, convide críticas baseadas em papéis e mude o projeto quando a crítica estiver certa.
+
+### Continue estudando — capítulo 25 de 50
+
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Inteligência de ameaças e OSINT: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar as opções de construir, comprar ou adotar uma plataforma comunitária de CTI; (2) conduzir um estudo de compromisso ponderado; (3) avaliar o aprisionamento e a portabilidade dos dados por meio do suporte a STIX/TAXII; (4) registrar a decisão e sua data de revisão.
+
+### 26.1 Três opções
+
+Opção A: estender o Lantern internamente. Opção B: comprar uma plataforma comercial de inteligência de ameaças. Opção C: adotar uma plataforma comunitária de código aberto, como o MISP, e integrá-la aos controles da BEN. Todas podem ingerir feeds e compartilhar com os parceiros; diferem em custo, controle, equipe e suporte. Kofi descreve cada opção pelo que a BEN teria de fazer por conta própria. Internamente, a BEN escreve e mantém tudo. Um produto comercial transfere a manutenção para um fornecedor, mas limita o quanto a BEN pode alterá-lo. Uma plataforma comunitária traz uma grande base de usuários e software livre, enquanto a BEN continua operando e protegendo os servidores.
+
+### 26.2 Critérios e pesos
+
+Kofi acorda os critérios com as partes interessadas antes de pontuar: interoperabilidade (STIX/TAXII 2.1), aplicação do TLP, fluxo de aprovação de OT, custo total em cinco anos, carga sobre a equipe, residência dos dados e custo de saída. Os pesos somam 100. Acordar os pesos primeiro impede que a opção favorita molde os critérios. Kofi conduziu a sessão de ponderação com o líder de CTI, o gerente de operações de rede e o encarregado de privacidade, e cada um defendeu os critérios mais próximos de seu trabalho. Os pesos finais foram registrados com uma frase explicando cada um, para que leitores posteriores vejam por que o fluxo de OT contou mais do que o acabamento da interface.
+
+### 26.3 Portabilidade
+
+Se uma plataforma não consegue exportar tudo como pacotes STIX 2.1 padrão, deixá-la depois significa perder o histórico. O custo de saída é um critério real, não uma nota de rodapé. Kofi testou a portabilidade de cada opção com o conjunto de dados sintético: carregar alguns milhares de objetos, exportá-los e comparar a exportação com o original. Uma opção perdeu os objetos de relacionamento na exportação, o que teria quebrado os vínculos de que os analistas dependem. Esse resultado baixou sua pontuação mais do que qualquer lista de funcionalidades poderia tê-la elevado. O teste leva uma tarde e deve ser repetido antes da assinatura de qualquer contrato.
+
+### 26.4 Respostas híbridas
+
+Estudos de compromisso costumam terminar em híbridos: uma plataforma comunitária para o compartilhamento com parceiros mais um serviço interno enxuto para aprovações de OT e envios aos firewalls. Híbridos acrescentam trabalho de integração, que também precisa ser pontuado. No exemplo resolvido o híbrido vence, mas a integração de que ele precisa é trabalho real: a plataforma comunitária precisa entregar os bloqueios aprovados ao serviço interno, e os dois precisam concordar nos identificadores. Kofi estimou esse esforço em semanas de engenheiro e o somou ao critério de custo. Sem essa etapa, um híbrido parece o melhor das duas opções sem preço extra, o que raramente é verdade.
+
+### 26.5 Datas de revisão
+
+Mercados e equipes mudam. O registro de decisão fixa uma data de revisão — por exemplo, em dois anos — e os gatilhos que forçariam uma revisão antecipada, como a saída do único engenheiro que conhece o código interno. Kofi também lista as evidências de que a revisão precisaria: custos efetivamente incorridos, retorno dos parceiros sobre o compartilhamento e tempo gasto em manutenção. Reunir esses números desde o início faz da revisão uma comparação, e não um debate. Uma decisão que nunca é revista tende a ser defendida muito depois de deixar de servir.
+
+### Exemplo resolvido
+
+Pontuações (de 100): A 68, B 71, C 74. A opção C vence por pouco em interoperabilidade e custo, mas pontua menos no fluxo de OT. Kofi recomenda C mais um pequeno serviço interno de aprovação de OT, observa que a margem está dentro da incerteza da pontuação e pede à banca que julgue explicitamente o risco de OT.
+
+> **Caso sintético.** As pontuações e as opções são ilustrativas; nenhum fornecedor é avaliado.
+
+### Erros e limites
+
+Pontuações próximas são empates na prática; diga isso. Demonstrações de fornecedores com dados do próprio fornecedor provam pouco; teste com dados sintéticos parecidos com os da BEN.
+
+### Exercícios
+
+- **EX076 — Pesos primeiro.** Por que os pesos dos critérios precisam ser acordados antes de pontuar as opções? *Rubrica:* 3 = impede enviesar os critérios a favor de uma favorita; 2 = justiça, de forma vaga; 1 = a ordem é irrelevante; 0 = nenhuma.
+- **EX077 — Custo de saída.** Como a capacidade de exportar STIX 2.1 afeta o custo de saída? *Rubrica:* 3 = exportação padrão completa reduz o custo/preserva o histórico; sua ausência o aumenta; 2 = parcial; 1 = sem relação; 0 = nenhuma.
+- **EX078 — Margem estreita.** Pontuações de 71 e 74 diferem em três pontos. Como Kofi deve apresentar isso? *Rubrica:* 3 = dentro da incerteza; tratar como quase empate; expor o risco qualitativo decisivo; 2 = menciona a proximidade; 1 = vencedor claro; 0 = nenhuma.
+
+### Síntese
+
+Acorde os pesos primeiro, pontue a portabilidade, aceite híbridos com seu custo de integração e fixe uma data de revisão.
+
+### Continue estudando — capítulo 26 de 50
+
+[← Capítulo 25 (rascunho)](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (rascunho) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Inteligência de ameaças e OSINT: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o TLP 2.0 como controle de disseminação aplicável; (2) falhar fechado diante de rótulos desconhecidos; (3) projetar etapas de aprovação para ações de alto impacto; (4) registrar as decisões dos controles para auditoria.
+
+### 27.1 O TLP como controle
+
+O TLP 2.0 do FIRST define quem pode receber a informação: CLEAR sem restrição; GREEN dentro da comunidade; AMBER dentro da organização destinatária e de seus clientes, conforme a necessidade de saber; AMBER+STRICT apenas dentro da organização; RED apenas para destinatários nomeados. O Lantern transforma essas definições em uma barreira em cada exportação e em cada tela do analista. A barreira de Kofi lê o rótulo do objeto e o público da requisição e confere o par contra uma tabela derivada das definições. Manter a tabela separada do código permite a um revisor compará-la linha a linha com o padrão publicado.
+
+### Laboratório 5 — barreira de disseminação
+
+```python
+"""Lab 5 (ch 27): TLP 2.0 dissemination gate for synthetic reports and audiences."""
+ALLOWED = {
+    "TLP:CLEAR": {"public", "community", "org", "team"},
+    "TLP:GREEN": {"community", "org", "team"},
+    "TLP:AMBER": {"org", "team"},
+    "TLP:AMBER+STRICT": {"team", "org-only"},
+    "TLP:RED": {"named-recipients"},
+}
+requests = [("R-1", "TLP:GREEN", "public"), ("R-2", "TLP:AMBER", "org"),
+            ("R-3", "TLP:RED", "team"), ("R-4", "TLP:CLEAR", "public"), ("R-5", "TLP:PURPLE", "team")]
+for rid, label, aud in requests:
+    if label not in ALLOWED:
+        verdict = "BLOCK unknown label"
+    else:
+        verdict = "ALLOW" if aud in ALLOWED[label] else "BLOCK"
+    print(rid, label, "->", aud, verdict)
+```
+
+Execute com `python3 lab_tlp.py`. Saída verificada:
+
+```text
+R-1 TLP:GREEN -> public BLOCK
+R-2 TLP:AMBER -> org ALLOW
+R-3 TLP:RED -> team BLOCK
+R-4 TLP:CLEAR -> public ALLOW
+R-5 TLP:PURPLE -> team BLOCK unknown label
+```
+
+### 27.2 Lendo a barreira
+
+GREEN para o público é bloqueado; AMBER para a organização é permitido; RED para uma equipe é bloqueado, porque só destinatários nomeados se qualificam; CLEAR para o público é permitido; um rótulo desconhecido, TLP:PURPLE, é bloqueado. O laboratório simplifica os públicos em categorias; as regras de produção também verificam a identidade do destinatário. Essas verificações importam sobretudo para o RED. Uma categoria como equipe deixaria passar qualquer pessoa da equipe, enquanto o rótulo permite apenas as pessoas nomeadas. A barreira de produção de Kofi consulta a lista de destinatários armazenada com cada relatório RED e a compara com a pessoa que pede acesso.
+
+### 27.3 Falhar fechado
+
+Rótulos desconhecidos ou ausentes precisam bloquear, não permitir. Um erro de digitação em um rótulo nunca deveria publicar conteúdo restrito. O laboratório mostra isso com o rótulo inventado, que a barreira bloqueia em vez de tratá-lo como permissivo. A barreira de Kofi também bloqueia objetos sem rótulo algum, objetos cujo rótulo tem espaços extras e objetos com dois rótulos conflitantes. Cada bloqueio registra um motivo, para que o analista que o encontrou possa pedir à fonte que corrija o rótulo. Permitir diante de um erro transformaria todo problema de qualidade de dados em um possível vazamento, que é a pior forma de a barreira falhar.
+
+### 27.4 Etapas de aprovação
+
+Envios aos firewalls de OT, compartilhamento além da comunidade e exclusão de indicadores são ações de alto impacto. Cada uma exige um aprovador nomeado, e a aprovação é registrada com a versão do objeto. O serviço de aprovação de Kofi mostra ao aprovador exatamente o que vai mudar: as regras a acrescentar ou remover, a fonte de cada uma e os segmentos afetados. Os aprovadores não podem aprovar os próprios pedidos. Se o objeto mudar depois da aprovação, a aprovação deixa de valer e precisa ser dada de novo, o que fecha a brecha entre o que foi revisado e o que foi enviado.
+
+### 27.5 Auditoria
+
+Cada decisão de permitir ou bloquear é registrada com solicitante, rótulo, público e horário. Auditores e parceiros podem então verificar se os acordos foram cumpridos. Kofi testou o registro pedindo a um colega que escolhesse dez decisões passadas ao acaso e rastreasse cada uma até a requisição e o rótulo. Todas as dez puderam ser rastreadas. O registro fica em um armazenamento que os analistas não podem editar, e sua retenção segue o acordo de compartilhamento mais longo, de modo que a pergunta de um parceiro sobre como seu material foi tratado pode ser respondida enquanto o material for mantido.
+
+### Treinando as pessoas
+
+Kofi conduz uma sessão curta para os analistas mostrando as decisões da barreira em exemplos sintéticos com aparência real. Quando as pessoas entendem por que o GREEN não pode chegar ao blog público, pedem aos parceiros resumos publicáveis em vez de procurar atalhos.
+
+### Exemplo resolvido
+
+Um analista tenta publicar no blog público da BEN um boletim GREEN de um parceiro. A barreira o bloqueia; o analista pede ao parceiro permissão para publicar em seu lugar um resumo CLEAR, que o parceiro fornece por escrito.
+
+> **Caso sintético.** O boletim e o pedido são inventados.
+
+### Erros e limites
+
+Os rótulos descrevem limites de compartilhamento, não níveis de classificação no sentido governamental. Barreiras não impedem alguém de redigitar o conteúdo; treinamento e cultura continuam importando.
+
+### Exercícios
+
+- **EX079 — Veredictos da barreira.** Cite os veredictos do laboratório para R-1 e R-3. *Rubrica:* 3 = R-1 BLOCK (GREEN para o público), R-3 BLOCK (RED para a equipe); 2 = um; 1 = permitir; 0 = nenhuma.
+- **EX080 — Rótulo desconhecido.** Por que R-5 bloqueia em vez de permitir? *Rubrica:* 3 = rótulo desconhecido → falhar fechado; 2 = desconhecido; 1 = deveria permitir; 0 = nenhuma.
+- **EX081 — Registro da aprovação.** O que precisa ser armazenado com um envio aprovado a um firewall de OT? *Rubrica:* 3 = aprovador, horário, versão da regra/do objeto, motivo; 2 = dois; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Codifique o TLP como barreira, falhe fechado, exija aprovação para ações de alto impacto e registre cada decisão.
+
+### Continue estudando — capítulo 27 de 50
+
+[← Capítulo 26 (rascunho)](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 (rascunho) →](#ch-28)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX066 (as de EX067–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX081 (as de EX082–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -1493,6 +1800,36 @@ Respostas-modelo para EX001–EX066 (as de EX067–EX150 estão na edição em i
 **EX065.** Armazená-lo de forma opaca, com a procedência, e sinalizá-lo para revisão, para que nada se perca silenciosamente.
 
 **EX066.** novo → ativo → decaído → aposentado. Exemplos de gatilho: ativo → decaído com o passar do tempo sem avistamentos; decaído → aposentado quando a confiança cai abaixo do piso; decaído → ativo com um novo avistamento.
+
+**EX067.** 7 × 3 × 5 = 105.
+
+**EX068.** 6 × 4 × 2 = 48.
+
+**EX069.** T1078 Valid Accounts.
+
+**EX070.** Como "desconhecido": nada na evidência identifica o adversário, e um palpite contaminaria a análise posterior.
+
+**EX071.** E-mail de phishing: T1566. Execução do script: T1059.
+
+**EX072.** Negar na entrega: uma regra no gateway de e-mail que bloqueia o padrão do phishing. Detectar no comando e controle: analíticas de DNS que alertam sobre consultas a drop.example.
+
+**EX073.** Contexto, decisão, alternativas consideradas, consequências.
+
+**EX074.** Os indicadores podem esperar até 15 minutos antes da ingestão; intervalos menores aumentariam a carga nos servidores dos parceiros.
+
+**EX075.** O domínio do remetente, um hash da linha de assunto e os campos de indicador extraídos.
+
+**EX076.** Se os pesos forem definidos depois da pontuação, podem ser ajustados para que a opção preferida vença; acordá-los primeiro mantém o estudo honesto.
+
+**EX077.** Uma plataforma que exporta tudo como STIX 2.1 padrão permite à BEN migrar o histórico a baixo custo; uma que não exporta aprisiona os dados e eleva o custo de saída.
+
+**EX078.** Como um quase empate dentro da incerteza da pontuação, com a questão qualitativa decisiva — o risco do fluxo de OT — posta explicitamente à banca.
+
+**EX079.** R-1: `TLP:GREEN -> public BLOCK`. R-3: `TLP:RED -> team BLOCK`.
+
+**EX080.** TLP:PURPLE não é um rótulo do TLP 2.0, então a barreira falha fechada e o bloqueia.
+
+**EX081.** O aprovador nomeado, o horário da aprovação, a versão exata da regra ou do objeto enviado e o motivo.
 
 <a id="references"></a>
 ## Referências
