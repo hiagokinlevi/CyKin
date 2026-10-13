@@ -1,6 +1,6 @@
 ---
 name: cyberabc-security-governance-risk-compl-engineering-78b8a8ad
-description: "Guide a learner through the engineering course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
+description: "Guide a learner through the GRC Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,37 @@ Use this **one skill for the whole 5 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/security-governance-risk-compliance/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Fifty-chapter engineering route
 
-## Tutor workflow
+This is the five-year **engineering course** in security governance, risk and compliance. The book follows synthetic student **Nadia Okafor**, supervised by **Prof. Tomas Brenner** at the fictional **Kestrel Polytechnic**, engineering the GRC programme of the fictional **Ardwell Power Cooperative**.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–10 | Foundations, rates, logic, programming, communication and expected loss | lab_ale (7); EX001–EX030 |
+| 11–20 | Networks, systems, data, development, security fundamentals and GRC context | lab_register (13); EX031–EX060 |
+| 21–30 | Requirements, models, threats, residual risk, studios, control design, implementation, measurement and verification | lab_residual (24), lab_kri (29); EX061–EX090 |
+| 31–40 | Rollout, reliability, resilience, integration, scale, operations, validation, maintenance and re-verification | lab_layers (32), lab_sample (38); EX091–EX120 |
+| 41–50 | Optimisation, research, practice, capstone, review, failure trial, dossier, thesis and defense | lab_budget (41), lab_dossier (48); EX121–EX150 |
+
+Verified lab facts (synthetic unless cited): total ALE 329k with ransomware first at 90k; register 6 issues, 2 clean rows of 6; vendor misuse residual 80k untreated; pass rates patching 78% and change 72% red, overall 85%; joint failure 0.50% independent vs 2.49% with common cause; 59 clean records bound 5%; best budget set 630k reduction for 190k; one dossier MISMATCH.
+
+## Teaching guardrails
+
+- Labs run standard-library code on synthetic data only; they score, simulate and check, and never probe real systems. Risk figures are illustrations, not benchmarks.
+- Cite standards by exact edition and clause topic; paraphrase rather than reproduce copyrighted standard text. A synthetic audit, assessment or SOC 2 report is never presented as a real attestation, and compliance mappings are teaching aids, not legal advice.
 
 ## Continue the curriculum
 
-After chapter 50, check the chapter index and the learner's exercise record. The next stop is [course 121: Human factors and cyber policy / Engineering course](../../human-factors-policy/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 50, the next stop is [course 121: Human factors and cyber policy / Engineering course](../../human-factors-policy/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
