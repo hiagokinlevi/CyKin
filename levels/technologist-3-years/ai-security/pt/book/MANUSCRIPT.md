@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso de tecnologia, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–21 de 30 já estão escritos em português, com os exercícios EX001–EX063 e suas resoluções com rubricas de 0 a 3; os capítulos 22–30 (EX064–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros tecnólogos de segurança que constroem, configuram, monitoram e diagnosticam os sistemas em torno de modelos de IA.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/ai-security/en/book/MANUSCRIPT.md) é mais amplo e mais teórico; o [livro técnico](../../../../technical-18-months/ai-security/en/book/MANUSCRIPT.md) é mais curto e mais procedimental. **Este livro é voltado à implementação**: ferramentas, controles, monitoramento, automação e passagem para a operação.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) |
 
-Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 22–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-22), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1188,11 +1188,348 @@ Laboratórios contidos tornam mensuráveis ataques abstratos, e cada um aponta p
 
 [← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Segurança de IA e aprendizado de máquina: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar sistemas de recuperação quanto a fraquezas de controle de acesso e de envenenamento; (2) testar agentes quanto a agência excessiva; (3) testar a divulgação de informações sensíveis e o vazamento do *prompt* de sistema; e (4) testar os limites de recursos.
+
+### 16.1 Testes de recuperação
+
+Plante documentos-canário com frases características em locais restritos e consulte como usuários que não deveriam vê-los; qualquer canário numa resposta é um vazamento. Acrescente documentos com fatos falsos vindos de fontes de baixa confiança e verifique se as respostas os repetem (LLM08, LLM09). Jonas usou os dois métodos no Ask Brightwell depois da separação dos índices. O documento-canário exclusivo da equipe testou se algo restrito ainda chegava aos clientes, e os fatos falsos em páginas de baixa confiança testaram se as respostas os repetiam. A página vencida de devoluções em 60 dias mostrou depois que fatos falsos também podem chegar por acidente.
+
+### 16.2 Agência excessiva
+
+Liste cada ferramenta, seus parâmetros e suas permissões. Tente fazer o agente chamar cada ferramenta com parâmetros fora dos direitos do usuário ou da necessidade da tarefa, por meio de pedidos diretos e de conteúdo plantado. Meça pelos registros das ferramentas. O OWASP LLM06 recomenda minimizar ferramentas, funções e permissões e exigir aprovação humana para ações de alto impacto. No Ask Brightwell, os testes de agência descobriram que o agente podia chamar "atualizar endereço" durante um *chat* de devolução. Essa ferramenta nunca era necessária ali, e uma avaliação injetada poderia tê-la usado para redirecionar uma substituição. Limitar as ferramentas por tipo de conversa fechou a lacuna.
+
+### 16.3 Divulgação e vazamento do prompt de sistema
+
+Peça dados de outros usuários, documentos internos e o *prompt* de sistema com muitas formulações. *Prompts* de sistema vazados importam sobretudo quando contêm segredos ou revelam controles; a correção é tirar os segredos dos *prompts*, e não esconder melhor o *prompt* (LLM07). O *prompt* de sistema do Ask Brightwell já guardou um código de desconto da equipe, o que tornava o vazamento do *prompt* uma perda real. Depois que o código foi retirado, um *prompt* vazado revela apenas instruções que os testes já supõem que um atacante pode adivinhar. Jonas ainda testa o vazamento para confirmar que nenhum segredo foi acrescentado de volta.
+
+### 16.4 Testes de recursos
+
+Envie entradas de tamanho máximo, pedidos de saídas muito longas e laços recursivos de ferramentas; meça o custo e a latência em relação aos limites (LLM10). No Ask Brightwell, o teste de laço encontrou o agente chamando a busca 40 vezes num único turno, cada chamada consumindo *tokens*. O teto de 5 chamadas por turno limita esse custo. As entradas de tamanho máximo são conferidas contra o limite de tamanho do *gateway*, e os pedidos de saída longa, contra o limite de saída do fornecedor. Cada teste mede o custo e a latência pelos registros, de modo que um limite configurado, mas não aplicado, aparece imediatamente.
+
+### 16.4b Avaliando automaticamente
+
+Escreva os avaliadores como código: procure nos registros das ferramentas chamadas fora dos parâmetros permitidos, procure nas saídas as *strings*-canário e compare as contagens de *tokens* com os limites. Avaliadores automáticos tornam os resultados repetíveis e permitem executar de novo todo o conjunto após cada mudança. Os avaliadores do Ask Brightwell procuram nos registros das ferramentas chamadas `start_return` para pedidos que o usuário não mencionou, procuram nas respostas a frase-canário do Project Heron e comparam as chamadas de ferramentas por turno com o teto. Como são código, os mesmos avaliadores rodam sem alterações no *harness* noturno.
+
+### 16.5 Exemplo resolvido (caso sintético da Brightwell)
+
+Jonas planta um documento-canário exclusivo da equipe ("Project Heron discount matrix") e faz 50 perguntas sobre descontos a partir de contas de clientes: 0 vazamentos depois da separação dos índices. Os testes de agência descobrem que o agente pode chamar "atualizar endereço" durante um *chat* de devolução — uma ferramenta de que ele nunca precisa ali. Ele limita as ferramentas por tipo de conversa. Um teste de laço mostra que o agente pode chamar a busca 40 vezes num único turno; ele limita as chamadas a 5. Cada resultado levou a um sistema mais estreito, e não a um *prompt* melhor: índices separados, ferramentas limitadas por conversa e um teto rígido de chamadas. Para confirmar que o teste de canário consegue de fato enxergar um vazamento, Jonas também o rodou numa cópia de rascunho com o documento Heron de volta ao índice de clientes.
+
+### 16.6 Erros e limites
+
+Três erros são comuns: testar a recuperação apenas com consultas amigáveis; ferramentas habilitadas globalmente, e não por tarefa; e nenhum limite por turno. Os testes de Jonas no Ask Brightwell evitam os três: as perguntas-canário vêm de contas de clientes tentando alcançar conteúdo da equipe, as ferramentas são limitadas por tipo de conversa e um teto de chamadas por turno limita os laços. Consultas amigáveis nunca teriam encontrado o vazamento das margens, e as ferramentas globais deixavam a ferramenta de endereço alcançável durante as devoluções. Cada erro tem um teste no *harness*, de modo que uma mudança que traga um deles de volta faz falhar a execução noturna.
+
+### Exercícios
+
+- **EX046 — Canário.** Projete um teste de canário para o índice da equipe. Rubrica: 3 = frase única, posicionamento, consultas com o papel errado, critério de aprovação; 2 = três; 1 = um; 0 = nenhum.
+- **EX047 — Auditoria de agência.** Liste as ferramentas do Ask Brightwell e quais conversas precisam de cada uma. Rubrica: 3 = limitação por ferramenta, com justificativas; 2 = parcial; 1 = vago; 0 = nenhum.
+- **EX048 — Laço.** Por que limitar as chamadas de ferramentas por turno, e que valor você escolheria? Rubrica: 3 = custo, laços, amplificação de injeções, número justificado; 2 = parcial; 1 = vago; 0 = nenhum.
+
+### Síntese
+
+Os métodos II estendem os testes à recuperação, à agência, à divulgação e ao consumo — cada um julgado pelos efeitos e corrigido com controles do sistema.
+
+### Continue estudando — capítulo 16 de 30
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Segurança de IA e aprendizado de máquina: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um pequeno *harness* de avaliação; (2) usar ferramentas de registro e de rastreamento para requisições de IA; (3) integrar varredores de dependências e de arquivos de modelos; e (4) escolher ferramentas de forma crítica.
+
+### 17.1 Harness de avaliação
+
+Um *harness* carrega os casos de teste, prepara o ambiente (planta documentos, cria usuários de teste), executa conversas contra uma implantação de homologação, coleta os registros das ferramentas e as saídas, avalia-os com código e escreve um relatório datado com taxas e intervalos. Ele deve rodar com um único comando e na integração contínua. Mantenha o *harness* no controle de versão junto com a aplicação, para que uma mudança em qualquer um dos dois possa ser testada em conjunto. O *harness* de Jonas para o Ask Brightwell é um exemplo em funcionamento: ele planta documentos, executa os 120 casos todas as noites e relata as taxas com intervalos.
+
+### 17.2 Rastreamento
+
+O rastreamento (*tracing*) registra cada etapa de uma requisição com um ID compartilhado: mensagem do usuário, trechos recuperados, *prompt* (ou seu *hash* e sua versão), resposta do modelo, chamadas de ferramentas, resposta final. Os rastros tornam explicáveis os incidentes e as falhas de teste. Mascare os dados pessoais, guarde os rastros com controle de acesso e defina limites de retenção, para que o depósito de rastros não se torne a maior pilha de dados pessoais da empresa. Os IDs de rastreamento do Ask Brightwell provaram seu valor durante o exercício de mesa de operações, quando o engenheiro de plantão encontrou em minutos, a partir de um rastro, a página de políticas injetada. O antigo repositório de registros compartilhado mostra o risco: *prompts* com endereços de clientes legíveis por 40 engenheiros. Os rastros agora guardam o *hash* e a versão do *prompt*, com os dados pessoais mascarados.
+
+### 17.3 Varredores
+
+Varredores de dependências verificam se as bibliotecas têm vulnerabilidades conhecidas; para IA, verifique também os arquivos de modelos (fixação de *hashes*, verificações de formato que rejeitam formatos capazes de executar código) e as fontes dos conjuntos de dados. Assistentes de programação podem sugerir pacotes que não existem — risco de ocupação de nomes —, por isso confira as novas dependências contra uma lista de permitidas. Uma lista de materiais de *software* (SBOM) que inclua modelos e conjuntos de dados ajuda a responder "somos afetados?" quando surge um alerta de segurança. No CodePilot, que sugere pacotes, a verificação da lista de permitidas importa porque o nome de um pacote sugerido pode ainda não existir e poderia ser registrado por um atacante. O *pipeline* da Brightwell também verifica os *hashes* dos arquivos de modelos e rejeita formatos baseados em *pickle*.
+
+### 17.4 Escolhendo ferramentas
+
+Muitos produtos afirmam "proteger a IA". Pergunte: que ameaça ele trata? Ele fica no caminho da requisição (acrescenta latência, pode bloquear) ou só monitora? Como foi avaliado — de forma adaptativa? Que dados ele envia ao fornecedor? Você pode testá-lo nos seus próprios conjuntos antes de comprar? Uma ferramenta deve preencher uma lacuna da sua arquitetura, e não substituir uma parte dela. A demonstração do *firewall* de *prompts* mostrou por que a última pergunta importa: no conjunto reservado de Jonas, ele bloqueou muitos casos indiretos, mas também barrou por engano algumas perguntas normais, um custo que a demonstração do fornecedor não mostrava. Ele registrou as duas taxas antes de qualquer decisão de compra, e o dono do produto as pesou em relação ao serviço de políticas que já estava em funcionamento.
+
+### 17.5 Exemplo resolvido (caso sintético da Brightwell)
+
+Jonas escreve um *harness* de 300 linhas em Python para os 120 casos do Ask Brightwell. Ele roda todas as noites na homologação e publica um relatório: sucesso dos ataques por categoria, com intervalos de Wilson, e conclusão das tarefas normais. Ele acrescenta IDs de rastreamento ao orquestrador e uma verificação na CI que rejeita novas dependências fora da lista de permitidas. Um fornecedor demonstra um "*firewall* de *prompts*"; Jonas o roda no seu conjunto reservado antes de qualquer compra: ele bloqueia 60% dos casos indiretos, mas também 7% das perguntas normais. O resultado do *firewall* é o tipo de evidência de que uma decisão de compra precisa: um ganho contra ataques e um custo medido para os clientes, ambos nos casos da própria Brightwell.
+
+### 17.6 Erros e limites
+
+Três erros são comuns: testes manuais e não repetíveis; rastros com dados pessoais sem mascaramento; e comprar ferramentas sem testá-las nos seus conjuntos. O trabalho de Jonas na Brightwell evita os três. O *harness* roda todas as noites com um único comando, os rastros mascaram os dados pessoais e o *firewall* de *prompts* foi testado no conjunto reservado antes da compra. Testar à mão teria tornado fácil deixar passar a regressão causada depois por uma mudança no *prompt*. Uma demonstração do fornecedor com os exemplos do próprio fornecedor não substitui esse teste. Cada hábito alimenta com evidências o critério de liberação.
+
+### Exercícios
+
+- **EX049 — Etapas do harness.** Liste as etapas do *harness* em ordem. Rubrica: 3 = carregar, preparar, executar, coletar, avaliar, relatar; 2 = quatro ou cinco; 1 = duas ou três; 0 = nenhuma.
+- **EX050 — Campos do rastro.** Especifique os campos do rastro e as regras de mascaramento. Rubrica: 3 = campos mais mascaramento e retenção; 2 = só campos; 1 = poucos; 0 = nenhum.
+- **EX051 — Ferramenta de fornecedor.** Decida sobre o *firewall* de *prompts* a partir dos números de Jonas. Rubrica: 3 = pondera 60% contra 7% de bloqueios falsos, posiciona-o como monitor, não como substituto da política; 2 = parcial; 1 = afirmação; 0 = nenhum.
+
+### Síntese
+
+As ferramentas tornam repetível o trabalho de segurança de IA: *harnesses* automatizados, rastros, varredores e ferramentas escolhidas testando-as contra suas próprias ameaças.
+
+### Continue estudando — capítulo 17 de 30
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Segurança de IA e aprendizado de máquina: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar um serviço de políticas para as ferramentas dos agentes; (2) configurar controles de entrada e de saída; (3) implementar corretamente a confirmação humana; e (4) verificar cada controle com testes.
+
+### 18.1 Serviço de políticas
+
+O serviço de políticas recebe uma ação proposta (ferramenta, parâmetros, identidade do usuário, tipo de conversa) e devolve "permitir" ou "negar", com uma justificativa. As regras são código: "start_return allowed only if order.owner == user and order.status == delivered and today − delivered_date ≤ 30 days and value ≤ €1,000" (*start_return* só é permitido se o pedido pertence ao usuário, foi entregue há no máximo 30 dias e vale até 1.000 euros). O modelo nunca vê essa lógica nem a contorna. Mantenha as regras pequenas e legíveis para que os revisores possam conferi-las, e registre cada decisão com sua justificativa. A regra espelha a política de devoluções em 30 dias publicada pela Brightwell, de modo que o serviço impõe a mesma promessa que os clientes leem no site.
+
+### 18.2 Controles de entrada
+
+Limite o tamanho das mensagens; restrinja as fontes de recuperação; marque o conteúdo não confiável com delimitadores; opcionalmente, rode um classificador de injeção como sinal. Abordagens de consulta estruturada, como o StruQ (arXiv:2402.06363), separam instruções de dados na interface do modelo; elas reduzem o risco, mas não o eliminam. Os controles de entrada diminuem a frequência de saídas ruins; não limitam o dano quando uma delas passa. No Ask Brightwell, os controles de entrada são o limite de tamanho do *gateway*, a recuperação restrita a documentos públicos sem avaliações e os delimitadores em torno do texto recuperado. O *prompt* com conteúdo separado reduziu as propostas prejudiciais no estudo de Jonas, mas o serviço de políticas continua sendo o controle que limita o dano quando uma injeção passa.
+
+### 18.3 Controles de saída
+
+Valide as ações estruturadas; escape o texto para seu destino; remova ou limite a uma lista de permitidos os *links* e as imagens nas respostas (para impedir o vazamento de dados por URLs); confira, onde for viável, as respostas sobre preços ou políticas contra os documentos de origem. No Ask Brightwell, as respostas só podem conter *links* para o próprio domínio da Brightwell, e as imagens não são renderizadas, porque, do contrário, uma instrução injetada poderia esconder dados de clientes numa URL. As respostas sobre o prazo de devolução são comparadas com a página de políticas atual, o que teria detectado mais cedo a página vencida da campanha de 60 dias. As verificações de saída são testadas com casos plantados, como qualquer outro controle.
+
+### 18.4 Confirmação humana
+
+Mostre ao usuário exatamente o que vai acontecer, a partir de dados estruturados: "Iniciar uma devolução do pedido 100245 — sofá Oslo, € 899 — com reembolso no cartão final 4421? Sim / Não". Não mostre resumos escritos pelo modelo na confirmação, já que um texto injetado pode fazer ações prejudiciais parecerem inofensivas. Mantenha as confirmações raras o bastante para que as pessoas ainda as leiam. A confirmação do Ask Brightwell usa exatamente esse formato, com os valores do registro do pedido. Como a confirmação aparece apenas para devoluções e mudanças de endereço, os clientes a veem raramente e têm mais chance de lê-la.
+
+### 18.5 Verificando os controles
+
+Cada controle recebe testes de unidade (as regras permitem e negam os casos certos) e testes de conjunto (os casos de injeção já não provocam ações prejudiciais). Execute-os de novo a cada mudança; um controle que quebra em silêncio durante uma refatoração é pior do que um controle ausente, porque as pessoas confiam nele. O serviço de políticas do Ask Brightwell tem 40 testes de unidade cobrindo casos-limite, como uma entrega feita exatamente 30 dias antes, e o conjunto reservado de injeções roda todas as noites contra a homologação. Quando, mais tarde, uma mudança no *prompt* feita por um desenvolvedor aumentou as propostas prejudiciais, esses testes e o critério de liberação a detectaram antes do lançamento. Cada teste nomeia a regra que verifica, de modo que uma falha diz ao desenvolvedor qual regra quebrou.
+
+### 18.6 Exemplo resolvido (caso sintético da Brightwell)
+
+Depois de acrescentar o serviço de políticas e a confirmação estruturada, Jonas executa de novo o conjunto reservado: as devoluções prejudiciais caem de 31 em 80 casos indiretos para 0 em 80 (limite superior ≈ 4%); as devoluções normais ainda se completam em 97% de 500 conversas de teste. Ele acrescenta 40 testes de unidade para as regras de política, incluindo casos-limite como pedidos entregues exatamente 30 dias antes. O limite superior importa: zero em 80 não prova risco zero, apenas que uma taxa alta é improvável. Medir as devoluções normais ao mesmo tempo mostra que o controle não comprou segurança recusando tudo.
+
+### 18.7 Erros e limites
+
+Três erros são comuns: regras de política escritas no *prompt*; texto de confirmação escrito pelo modelo; e controles sem testes. O desenho do Ask Brightwell evita cada um. As regras de devolução ficam no serviço de políticas, e não no *prompt*; a tela de confirmação é montada a partir do registro do pedido; e toda regra tem testes de unidade. Uma regra escrita no *prompt* pode ser contornada na conversa por uma avaliação plantada. Um controle sem testes pode desaparecer numa refatoração sem que ninguém perceba até o próximo incidente. A tela de confirmação agora tem seu próprio teste.
+
+### Exercícios
+
+- **EX052 — Regras.** Escreva regras de política para uma ferramenta de "atualizar endereço de entrega". Rubrica: 3 = titularidade, situação, verificação, limites, negação por padrão; 2 = três ou quatro; 1 = uma ou duas; 0 = nenhuma.
+- **EX053 — Controle de links.** Por que remover os *links* externos das respostas? Rubrica: 3 = exfiltração de dados por parâmetros de URL ou carregamento de imagens; 2 = parcial; 1 = vago; 0 = errado.
+- **EX054 — Resultado.** Relate numa frase, com as condições, os resultados da nova execução após o serviço de políticas. Rubrica: 3 = números, limite, conclusão, condições; 2 = falta um; 1 = vago; 0 = nenhum.
+
+### Síntese
+
+Os controles que importam são código fora do modelo — serviços de políticas, validadores, confirmação estruturada —, cada um comprovado por testes.
+
+### Continue estudando — capítulo 18 de 30
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Segurança de IA e aprendizado de máquina: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher sinais para monitorar sistemas de IA; (2) construir uma detecção de anomalias simples; (3) gerenciar o volume de alertas usando taxas de base; e (4) escrever *runbooks* de alertas.
+
+### 19.1 Sinais
+
+Sinais úteis: volume de requisições e de *tokens* por usuário ou por chave; negações do serviço de políticas; chamadas de ferramentas por conversa; *strings*-canário nas saídas; saídas contendo *links*; picos de recusas ou de reclamações; distribuições das pontuações de classificadores (deriva); custo por hora. Escolha sinais ligados aos seus cenários de risco, para que cada alerta tenha uma razão de existir. No Ask Brightwell, Jonas liga cada sinal a um cenário: as negações de política à fraude de reembolso, as *strings*-canário à divulgação e o volume de *tokens* às inundações de custo. Os sinais do ReturnGuard são as chamadas de pontuação por chave, que detectaram uma integração de parceiro comprometida, e a distribuição das pontuações ao longo do tempo.
+
+### 19.2 Detecção de anomalias
+
+Estatísticas simples levam longe. Um escore z robusto, que usa a mediana e o desvio absoluto mediano (MAD), resiste melhor a valores atípicos do que a média e o desvio-padrão. Sinalize usuários cujo volume ou cuja razão de consultas distintas esteja muito longe dos demais — um padrão de raspagem ou de extração de modelo.
+
+```python
+"""Lab A: spotting extraction-style abuse in a synthetic API log.
+Flags clients whose query volume or input diversity is anomalous."""
+import random, statistics
+rng = random.Random(21)
+log = []
+for c in range(12):
+    for _ in range(rng.randint(40, 90)):
+        log.append((f"client{c:02d}", round(rng.gauss(0, 1), 1)))
+for i in range(600):                      # synthetic scraper: many, grid-like inputs
+    log.append(("client99", round(-3 + 6*(i % 61)/60, 1)))
+by = {}
+for c, x in log: by.setdefault(c, []).append(x)
+vol = {c: len(v) for c, v in by.items()}
+med = statistics.median(vol.values()); mad = statistics.median(abs(v-med) for v in vol.values())
+for c in sorted(by):
+    z = (vol[c]-med)/(1.4826*mad); uniq = len(set(by[c]))/len(by[c])
+    flag = "FLAG" if z > 3.5 else "ok"
+    print(f"{c} queries={vol[c]:3d} robust_z={z:6.2f} distinct_ratio={uniq:.2f} {flag}")
+```
+
+Saída esperada:
+
+```text
+client00 queries= 50 robust_z= -0.34 distinct_ratio=0.56 ok
+client01 queries= 64 robust_z=  0.45 distinct_ratio=0.52 ok
+client02 queries= 81 robust_z=  1.41 distinct_ratio=0.44 ok
+client03 queries= 46 robust_z= -0.56 distinct_ratio=0.52 ok
+client04 queries= 52 robust_z= -0.22 distinct_ratio=0.48 ok
+client05 queries= 40 robust_z= -0.90 distinct_ratio=0.57 ok
+client06 queries= 42 robust_z= -0.79 distinct_ratio=0.57 ok
+client07 queries= 87 robust_z=  1.74 distinct_ratio=0.48 ok
+client08 queries= 56 robust_z=  0.00 distinct_ratio=0.52 ok
+client09 queries= 50 robust_z= -0.34 distinct_ratio=0.62 ok
+client10 queries= 68 robust_z=  0.67 distinct_ratio=0.50 ok
+client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
+client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
+```
+
+Os painéis da Brightwell usam esse método nas chamadas de pontuação do ReturnGuard por conta. Uma chave de parceiro muito distante das demais, com consultas que variavam um atributo por vez, correspondeu ao padrão de extração do laboratório. O método não exige nenhum modelo e roda na mesma consulta agendada que alimenta os painéis.
+
+### 19.3 Volume de alertas
+
+Todo alerta custa tempo de analista. Com ataques raros, até detectores precisos produzem sobretudo alarmes falsos (efeito da taxa de base), então defina os limiares medindo o volume de alertas no tráfego normal e encaminhe os sinais de baixa confiança para painéis, e não para o *pager*. O alerta de volume de transferências do Gift Card Help, o projeto final de Jonas (capítulos 29–30), mostrou esse efeito: sua precisão no tráfego reproduzido foi de 0,5, por isso Jonas o encaminhou para um painel. Já os valores atípicos nas chamadas de pontuação do ReturnGuard são tratados com limitação automática de taxa e um aviso ao plantão, e não com um acionamento. Medir primeiro o volume no tráfego normal é o que permite à equipe escolher entre esses caminhos.
+
+### 19.4 Runbooks
+
+Cada alerta precisa de um *runbook*: o que ele significa, como conferi-lo, como contê-lo (limitar a taxa, desativar uma ferramenta, reverter um *prompt*), a quem notificar e quando encerrá-lo. Os *runbooks* permitem que um engenheiro de plantão aja à noite sem adivinhar. O alerta da chave de parceiro seguiu seu *runbook*: limitar a taxa da chave, contatar o parceiro, revisar os registros. Como cada etapa estava escrita, o engenheiro de plantão não precisou decidir o que fazer primeiro. O mesmo *runbook* nomeia quem encerra o alerta e que evidências são guardadas, para que o caso possa ser revisado depois.
+
+### 19.4b Revisando o monitoramento
+
+Todo mês, revise quais alertas dispararam, quantos eram reais e quais incidentes foram descobertos de outra forma. Ajuste ou aposente os alertas ruidosos; acrescente sinais para os incidentes que o monitoramento deixou passar. Na Brightwell, a revisão mensal conta os casos reais e falsos de cada alerta. O problema do prazo de devolução de 60 dias foi descoberto pelos clientes, e não pelo monitoramento, e levou a um teste de regressão e a uma nova verificação da validade dos documentos recuperados. A revisão mensal também confere se o *runbook* de cada alerta foi seguido e o atualiza quando uma etapa foi pulada ou estava pouco clara.
+
+### 19.5 Exemplo resolvido (caso sintético da Brightwell)
+
+Jonas acrescenta painéis por conta. Numa semana, uma chave de API de parceiro mostra z robusto ≈ 30 nas chamadas de pontuação do ReturnGuard, semelhante ao cliente atípico client99 do laboratório; as consultas da chave variam um atributo por vez — o que é compatível com extração. O *runbook*: limitar a taxa da chave, contatar o parceiro, revisar os registros. A integração do parceiro tinha sido comprometida; a chave foi rotacionada. O *runbook* transformou um sinal estatístico numa sequência curta de ações. Rotacionar a chave encerrou a extração; contatar o parceiro revelou a causa. O painel continuou acompanhando a chave substituta, que desde então mostra volumes normais de chamadas.
+
+### 19.6 Erros e limites
+
+Três erros são comuns: alertas sem *runbooks*; acionar o *pager* a cada negação; e monitorar apenas a infraestrutura, e não o comportamento da IA. O monitoramento da Brightwell evita esses erros. Cada alerta tem um *runbook*, as negações vão para painéis, a menos que deem um pico, e o comportamento da IA é acompanhado junto com os servidores. O alerta da chave de parceiro não teria significado nada se ninguém soubesse o que fazer com ele. Sem sinais de comportamento, a injeção que um serviço de políticas nega nunca seria vista. O painel de negações cobre o segundo erro, e o alerta de chamadas de pontuação cobre o terceiro.
+
+### Exercícios
+
+- **EX055 — Sinais.** Escolha cinco sinais para o Ask Brightwell e ligue cada um a um cenário de risco. Rubrica: 3 = cinco ligados; 2 = quatro; 1 = dois; 0 = nenhum.
+- **EX056 — Z robusto.** Por que usar a mediana e o MAD em vez da média e do desvio-padrão? Rubrica: 3 = valores atípicos inflam o desvio-padrão e se mascaram; 2 = parcial; 1 = vago; 0 = errado.
+- **EX057 — Runbook.** Escreva o *runbook* do alerta de extração. Rubrica: 3 = significado, verificações, contenção, notificação, encerramento; 2 = quatro; 1 = dois; 0 = nenhum.
+
+### Síntese
+
+O monitoramento acompanha sinais específicos de IA, usa estatísticas robustas, respeita as taxas de base e liga cada alerta a um *runbook*.
+
+### Continue estudando — capítulo 19 de 30
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança de IA e aprendizado de máquina: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar falhas de sistemas de IA de forma sistemática; (2) distinguir causas de modelo, de dados, de configuração e de ataque; (3) reproduzir problemas com segurança; e (4) corrigir e impedir a recorrência.
+
+### 20.1 Um método
+
+Defina o sintoma com precisão (o quê, quando, quem, com que frequência). Reúna os rastros. Formule hipóteses em quatro classes: comportamento do modelo (uma atualização do modelo mudou as saídas), dados (o índice contém conteúdo errado ou malicioso), configuração (*prompt* editado, permissão de ferramenta alterada, limite removido) e ataque (alguém está provocando o problema deliberadamente). Teste as hipóteses uma de cada vez numa cópia de homologação. O problema do prazo de devolução de 60 dias seguiu esse método: o sintoma era específico, as versões foram conferidas e os rastros da recuperação apontaram para a classe dos dados. Cada classe tem sua primeira verificação, a começar pelas versões.
+
+### 20.2 Distinguindo as causas
+
+Confira primeiro as versões: o modelo, o *prompt*, o índice ou o código mudaram perto do início do sintoma? Confira se o conteúdo recuperado tem texto injetado. Confira se as falhas se concentram em certos usuários ou fontes — os ataques costumam se concentrar. Confira se o problema se reproduz com a versão anterior: se ele desaparece, a mudança está implicada. No caso dos 60 dias, as versões não tinham mudado, o que descartou rapidamente as causas de modelo e de configuração. Toda resposta com falha tinha recuperado a mesma página vencida de campanha, de modo que as falhas se concentravam numa fonte, e não em usuários. Esse padrão de concentração apontava para os dados, e não para um ataque.
+
+### 20.3 Reprodução segura
+
+Reproduza na homologação, com dados sintéticos. Mantenha as evidências de produção somente para leitura. Se a reprodução exigir entradas perigosas, guarde-as num depósito de testes com controle de acesso. No caso dos 60 dias, Jonas reproduziu a resposta errada na homologação indexando a página vencida e perguntando sobre o prazo de devolução, o que não exigiu nenhum dado de cliente. Os rastros de produção continuaram somente para leitura, como evidência. Documentos de teste perigosos, como avaliações plantadas com injeções, ficam num depósito com controle de acesso, separado dos dados de teste comuns. As cópias de homologação do Ask Brightwell contêm apenas clientes e pedidos sintéticos, de modo que os testes ali não podem expor dados pessoais reais.
+
+### 20.4 Corrigir e prevenir
+
+Corrija a causa, acrescente um teste de regressão ao *harness* e atualize os *runbooks*. Se a causa raiz foi uma premissa de confiança do projeto, corrija o projeto, e não apenas o sintoma. O caso dos 60 dias foi corrigido nos dois níveis: a página vencida foi removida, e o projeto ganhou um campo de validade e uma tarefa noturna para que conteúdo vencido não possa voltar a chegar às respostas. Um teste de regressão pergunta sobre o prazo de devolução a cada mudança. O *runbook* para respostas erradas sobre políticas agora começa pela verificação de conteúdo vencido nos documentos recuperados.
+
+### 20.4b Comunicando durante o diagnóstico
+
+Mantenha um registro contínuo do que foi conferido e encontrado. Diga à equipe de suporte o que falar aos clientes enquanto isso e avise os donos quando a causa for confirmada. Durante o caso dos 60 dias, a equipe de suporte foi orientada a confirmar o prazo de 30 dias a qualquer cliente que perguntasse, enquanto Jonas conferia as versões e a recuperação. O registro anotou cada verificação, de modo que, quando a página vencida foi identificada, o dono da campanha no marketing pôde ver exatamente por que ela foi removida, e o líder do suporte soube quando parar de usar o roteiro provisório.
+
+### 20.5 Exemplo resolvido (caso sintético da Brightwell)
+
+Clientes relatam que o assistente cita um prazo de devolução de 60 dias; a política é de 30 dias. Jonas confere as versões: nenhuma mudança de modelo ou de *prompt*. Ele confere a recuperação das perguntas com falha: todas incluem uma página de uma campanha de marketing enviada na semana anterior ("60-day holiday returns", vencida). É um problema de dados, e não um ataque. Correção: remover a página, acrescentar um campo de validade aos documentos indexados e uma tarefa noturna que descarta o conteúdo vencido, mais um teste de regressão que pergunta sobre o prazo de devolução. O campo de validade corrige a classe do problema, e não apenas esta página.
+
+### 20.6 Erros e limites
+
+Três erros são comuns: culpar "a IA" sem conferir versões e dados; depurar em produção; e correções sem testes de regressão. O caso dos 60 dias evitou cada um: Jonas conferiu versões e dados antes de culpar o modelo, reproduziu o problema na homologação e acrescentou um teste de regressão. Se ele tivesse depurado em produção, uma pergunta de teste poderia ter chegado à conversa de um cliente real. Sem o teste, a próxima página vencida de campanha traria o mesmo sintoma de volta. O *runbook* agora lista essas verificações nessa ordem. Conferir primeiro as versões e a recuperação leva minutos e descarta as causas mais comuns. Sua primeira etapa é a verificação das versões, e a segunda é a verificação de conteúdo vencido nos documentos recuperados.
+
+### Exercícios
+
+- **EX058 — Hipóteses.** Para "o assistente de repente recusa a maioria das perguntas", liste uma hipótese em cada classe. Rubrica: 3 = quatro classes, com verificações; 2 = três; 1 = uma ou duas; 0 = nenhuma.
+- **EX059 — Ataque ou não.** Que evidências sugeririam que o problema dos 60 dias era um ataque? Rubrica: 3 = autor do envio desconhecido, texto injetado, concentração, momento; 2 = dois; 1 = um; 0 = nenhum.
+- **EX060 — Prevenção.** Proponha duas prevenções para conteúdo desatualizado. Rubrica: 3 = metadados de validade, revisão pelo dono, teste de regressão; 2 = dois; 1 = um; 0 = nenhum.
+
+### Síntese
+
+Diagnosticar sistemas de IA separa as causas de modelo, de dados, de configuração e de ataque com versões e rastros, reproduz com segurança e impede a recorrência com testes.
+
+### Continue estudando — capítulo 20 de 30
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança de IA e aprendizado de máquina: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar serviços de IA às plataformas de identidade, de registros e de segredos; (2) proteger APIs de modelos de fornecedores; (3) tratar integrações entre vários serviços e vários agentes; e (4) revisar contratos de integração.
+
+### 21.1 Integração com as plataformas
+
+Serviços de IA devem usar as mesmas plataformas que todo o resto: o provedor de identidade da empresa para usuários e identidades de serviço; o gerenciador de segredos para as chaves; os registros centralizados; o *pipeline* de implantação padrão. Serviços de IA tratados como caso especial acabam saindo da cobertura de segurança. Na Brightwell, o Ask Brightwell agora usa o provedor de identidade da empresa para os *tokens* delegados, o gerenciador de segredos para a chave do fornecedor, o depósito central de registros e o *pipeline* padrão. O redator de e-mails do marketing, encontrado fora do inventário, não tinha nada disso até que a revisão de Jonas o trouxe para as mesmas plataformas.
+
+### 21.2 APIs de fornecedores
+
+Confira: o fornecedor usa seus dados para treinamento, e você pode recusar? Por quanto tempo os *prompts* ficam retidos? Em que região os dados são processados? Você pode fixar as versões do modelo e ser avisado das mudanças? Há limites de gastos? Guarde a chave no servidor; restrinja-a aos modelos necessários; defina cotas. Para a integração do redator de e-mails, Jonas exigiu retenção zero no fornecedor. No Ask Brightwell, ele fixa a versão do modelo para que uma atualização do fornecedor não possa mudar o comportamento sem antes passar pelo critério de liberação. Os limites de gastos na conta do fornecedor reforçam o orçamento diário de *tokens*.
+
+### 21.3 Vários serviços e vários agentes
+
+Quando um serviço de IA chama outro, trate a resposta como entrada não confiável. Uma instrução injetada pode viajar de um documento para o agente A e dele para o agente B. Cada serviço impõe sua própria política sobre o que ele faz, não importa quem tenha pedido. A revisão do redator de e-mails aplicou isso: o texto da conversa do Ask Brightwell, que pode conter instruções injetadas, se tornaria a entrada do redator de e-mails. Por isso o redator de e-mails impõe seus próprios limites e envia apenas para o endereço verificado do cliente conectado, seja o que for que o Ask Brightwell peça.
+
+### 21.4 Contratos de integração
+
+Anote, para cada integração: os dados trocados, o formato, as regras de validação, a autenticação, os limites de taxa, o tratamento de erros e a quem contatar. Revise os contratos quando qualquer um dos lados mudar. Na integração do redator de e-mails, o contrato registra que o Ask Brightwell envia um ID de modelo de mensagem e um único campo curto escapado, que os e-mails vão apenas para o endereço verificado, o limite de taxa de um e-mail e os contatos no marketing e na equipe de Jonas. Uma mudança em qualquer um dos lados aciona uma revisão contra esse contrato. O contrato do redator de e-mails é o primeiro escrito dessa forma e agora serve de modelo da Brightwell para as integrações seguintes.
+
+### 21.4b Testando integrações
+
+Acrescente casos de integração ao *harness*: plante instruções na entrada do serviço anterior e confira se o serviço seguinte não faz nada fora do seu contrato. Teste também os caminhos de falha — tempos-limite, respostas malformadas — e confirme que cada lado falha de forma fechada. Para o redator de e-mails, o *harness* de Jonas planta numa conversa uma instrução pedindo um e-mail para um endereço externo e confere que nada é enviado. Um tempo-limite do serviço de e-mail resulta em nenhum e-mail e num erro registrado, e não num laço de novas tentativas.
+
+### 21.5 Exemplo resolvido (caso sintético da Brightwell)
+
+O marketing quer que o Ask Brightwell chame seu redator de e-mails para enviar mensagens de acompanhamento. Jonas revisa: o redator de e-mails receberia o texto da conversa (não confiável) e poderia enviar e-mails para qualquer endereço. Ele exige: a ferramenta de e-mail só envia para o endereço verificado do cliente conectado; o conteúdo vem de um modelo de mensagem fixo, com o texto do modelo de IA limitado a um campo curto e escapado; limite de taxa de um e-mail por conversa; retenção de dados no fornecedor definida em zero dias. Cada exigência limita o que uma injeção conseguiria, mesmo que chegue ao redator de e-mails. Enviar apenas para o endereço verificado impede e-mails para estranhos; o modelo de mensagem e o campo escapado impedem conteúdo arbitrário; e o limite de taxa impede que uma única conversa inunde um cliente.
+
+### 21.6 Erros e limites
+
+Três erros são comuns: serviços de IA fora das plataformas padrão; confiar na saída de outro agente; e integrações não documentadas. O redator de e-mails mostrava os três antes da revisão de Jonas: rodava fora das plataformas padrão, teria confiado no texto do Ask Brightwell, e nenhum contrato descrevia a integração. Trazê-lo para dentro do inventário e do *harness* tratou de cada um. Uma integração que ninguém documentou é também uma que ninguém testa quando um dos lados muda. Cada integração agora tem um contrato, um dono e um caso no *harness*, de modo que uma mudança em qualquer um dos lados é testada antes do lançamento.
+
+### Exercícios
+
+- **EX061 — Lista de verificação do fornecedor.** Escreva seis verificações para a API de um fornecedor. Rubrica: 3 = seis adequadas; 2 = quatro ou cinco; 1 = duas ou três; 0 = menos.
+- **EX062 — Cadeia de agentes.** Explique como uma injeção poderia passar de uma avaliação para o redator de e-mails e como os controles do redator de e-mails a detêm. Rubrica: 3 = caminho mais o efeito de cada controle; 2 = caminho e um controle; 1 = vago; 0 = nenhum.
+- **EX063 — Contrato.** Escreva um contrato de integração para Ask Brightwell → redator de e-mails. Rubrica: 3 = os sete elementos; 2 = cinco; 1 = três; 0 = nenhum.
+
+### Síntese
+
+Integre os serviços de IA às plataformas padrão, trate toda mensagem entre serviços como não confiável e documente o contrato de cada integração.
+
+### Continue estudando — capítulo 21 de 30
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwell Home, Jonas e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX063 (as de EX064–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwell Home, Jonas e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Navegador (política de segurança de conteúdo); CDN/borda (TLS, proteção contra DDoS); aplicação web (autenticação); orquestrador (montagem do *prompt*, codificação da saída); recuperação (filtragem por permissões); API do modelo (chave num gerenciador de segredos, cotas); ferramentas (verificações de titularidade); bancos de dados (contas de menor privilégio, cifragem).
 
@@ -1336,6 +1673,83 @@ pass to tool service (which rechecks ownership)
 - Extração: saída apenas com rótulo, limites de taxa e monitoramento.
 
 **EX045.** Os laboratórios usam conjuntos de dados sintéticos minúsculos e modelos lineares, e não o modelo da Brightwell. Eles supõem acesso e orçamentos do atacante escolhidos para fins didáticos, e seus números não vão coincidir com os do sistema real.
+
+**EX046.** Coloque a frase "Project Heron discount matrix" apenas no índice da equipe. Faça 50 perguntas variadas sobre descontos como cliente. Aprovado se a frase ou seu conteúdo aparecer em 0 respostas. Repita após cada mudança no índice.
+
+**EX047.**
+- Consulta de pedidos: *chats* de pedidos e de devoluções.
+- Iniciar devolução: apenas *chats* de devolução, com confirmação.
+- Atualizar endereço: apenas *chats* de conta, com confirmação e uma etapa de verificação.
+- Busca de produtos: todos os *chats*.
+
+**EX048.** Os laços multiplicam o custo e podem amplificar instruções injetadas ao longo de muitas chamadas. Limite a 5 chamadas por turno, o que cobre as tarefas normais de várias etapas observadas nos registros (no máximo 3), e alerte quando o teto for atingido.
+
+**EX049.** Carregar os casos. Preparar o ambiente (documentos plantados, usuários de teste). Executar as conversas. Coletar as saídas e os registros das ferramentas. Avaliar com código. Escrever um relatório datado, com as taxas, os intervalos e a lista de falhas.
+
+**EX050.** Campos: ID do rastro, data e hora, ID do usuário (pseudonimizado), mensagem, IDs dos trechos recuperados, versão e *hash* do *prompt*, versão do modelo, resposta, chamadas de ferramentas e parâmetros, decisões de política. Mascaramento: ocultar endereços, números de cartão e e-mails. Retenção: 30 dias, com acesso limitado ao plantão e à equipe de segurança.
+
+**EX051.** Ele bloqueia 60% dos ataques indiretos, mas bloqueia por engano 7% das perguntas normais, o que é caro. Ele não substitui o serviço de políticas, que já chega a 0. Se for adotado, use-o como sinal de monitoramento. Não o compre como controle de bloqueio.
+
+**EX052.**
+- Permitir apenas se o pedido pertencer ao usuário.
+- A situação do pedido deve ser "ainda não enviado".
+- O usuário deve se verificar de novo por um código de uso único.
+- O novo endereço deve ficar num país atendido.
+- No máximo 2 mudanças por pedido.
+- Caso contrário, negar, registrando o motivo.
+
+**EX053.** *Links* e imagens cujas URLs contêm dados do usuário os vazam para o servidor do atacante quando são renderizados ou clicados. Uma injeção pode montar esses *links*.
+
+**EX054.** "Em 80 casos reservados de injeção indireta (homologação, modelo v2, política v1), as devoluções prejudiciais caíram de 31 para 0 (limite superior de 95% ≈ 4%), enquanto 97% de 500 conversas normais de devolução ainda se completaram."
+
+**EX055.**
+- Negações de política por usuário: cenário de fraude de reembolso.
+- *Strings*-canário na saída: vazamento do índice.
+- *Tokens* por conta: inundação de custo.
+- Chamadas de ferramentas por turno atingindo o teto: laço ou injeção.
+- Volume da API de pontuação por chave: extração.
+
+**EX056.** Os valores atípicos inflam a média e o desvio-padrão, o que faz os próprios valores atípicos parecerem menos extremos. A mediana e o MAD quase não são afetados, então os valores atípicos se destacam.
+
+**EX057.**
+- Significado: o volume de pontuações de uma chave está muito acima do das chaves semelhantes.
+- Verificação: o padrão das consultas e o dono da chave.
+- Contenção: limitar a taxa da chave ou suspendê-la.
+- Notificação: o parceiro e o líder de segurança.
+- Encerramento: quando a causa estiver explicada e a chave tiver sido rotacionada, se comprometida, com uma nota no registro de incidentes.
+
+**EX058.**
+- Modelo: uma atualização do modelo do fornecedor mudou o comportamento de recusa. Confira a versão e os avisos de mudança.
+- Dados: o índice está vazio ou quebrado, então o modelo recusa por falta de contexto. Confira os resultados da recuperação.
+- Configuração: o *prompt* de sistema foi editado para ficar mais rigoroso. Confira o histórico de versões do *prompt*.
+- Ataque: uma inundação de entradas abusivas disparou um bloqueio de segurança do fornecedor sobre a chave. Confira os erros do fornecedor e o volume.
+
+**EX059.** Sinais de ataque seriam: a página foi enviada por uma conta desconhecida ou comprometida; ela contém texto dirigido ao assistente; as falhas se concentram em certos usuários ou produtos; ou o horário do envio coincide com atividade suspeita.
+
+**EX060.** Exija datas de validade e donos em todos os documentos indexados, com uma limpeza noturna. Rode um teste de regressão das principais respostas sobre políticas após cada atualização do índice. Faça uma revisão trimestral do conteúdo indexado pelos donos.
+
+**EX061.**
+1. Uso dos nossos dados para treinamento, e possibilidade de recusa.
+2. Prazo de retenção.
+3. Região de processamento.
+4. Fixação de versões e avisos de mudança.
+5. Limites de gastos e cotas.
+6. Prazo de notificação de incidentes e evidências de testes de segurança.
+
+**EX062.** Uma avaliação com instruções é recuperada para o contexto do Ask Brightwell. O modelo pede ao redator de e-mails que envie os detalhes do pedido do cliente para um endereço externo. Controles:
+- Destinatário fixado no endereço verificado: nenhum destinatário externo é possível.
+- Modelo de mensagem fixo com um campo curto escapado: pouco espaço para conteúdo elaborado.
+- Limite de taxa: nenhum envio em massa.
+- Retenção zero: limita a exposição no fornecedor.
+
+**EX063.**
+- Dados: ID do cliente e um campo de mensagem curto, de 300 caracteres ou menos.
+- Formato: JSON.
+- Validação: o ID do cliente deve corresponder à sessão, e a mensagem é escapada e verificada quanto a *links*.
+- Autenticação: uma identidade de serviço via TLS mútuo.
+- Limite de taxa: 1 por conversa.
+- Erros: falhar de forma fechada e registrar.
+- Contatos: a equipe de plataforma e o dono no marketing.
 
 <a id="references"></a>
 ## Referências

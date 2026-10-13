@@ -1277,7 +1277,7 @@ Write graders as code: search tool logs for calls outside allowed parameters, se
 
 ### 16.5 Worked example (synthetic Brightwell case)
 
-Jonas plants a staff-only canary document ("Project Heron discount matrix") and asks 50 customer-account questions about discounts: 0 leaks after the index split. Agency tests find the agent can call "update address" during a returns chat — a tool it never needs there. He scopes tools per conversation type. A loop test shows the agent can call search 40 times in one turn; he caps calls at 5. Each result led to a narrower system rather than a better prompt: separate indexes, tools scoped per conversation, and a hard cap on calls. The zero canary leaks were measured after the change.
+Jonas plants a staff-only canary document ("Project Heron discount matrix") and asks 50 customer-account questions about discounts: 0 leaks after the index split. Agency tests find the agent can call "update address" during a returns chat — a tool it never needs there. He scopes tools per conversation type. A loop test shows the agent can call search 40 times in one turn; he caps calls at 5. Each result led to a narrower system rather than a better prompt: separate indexes, tools scoped per conversation, and a hard cap on calls. To confirm the canary test can see a leak at all, Jonas also ran it on a scratch copy with the Heron document back in the customer index.
 
 ### 16.6 Errors and limits
 
@@ -1464,7 +1464,7 @@ Brightwell's dashboards use this method on ReturnGuard scoring calls per account
 
 ### 19.3 Alert volume
 
-Every alert costs analyst time. With rare attacks, even accurate detectors produce mostly false alarms (base-rate effect), so set thresholds by measuring alert volume on normal traffic and route low-confidence signals to dashboards rather than pagers. Gift Card Help's transfer-volume alert showed this effect: its precision on replayed traffic was 0.5, so Jonas routed it to a dashboard. ReturnGuard's scoring-call outliers, by contrast, are handled by automatic rate-limiting with a notice to on-call rather than a page. Measuring volume on normal traffic first is what lets the team choose between these routes.
+Every alert costs analyst time. With rare attacks, even accurate detectors produce mostly false alarms (base-rate effect), so set thresholds by measuring alert volume on normal traffic and route low-confidence signals to dashboards rather than pagers. The transfer-volume alert in Gift Card Help, Jonas's capstone project (Chapters 29–30), showed this effect: its precision on replayed traffic was 0.5, so Jonas routed it to a dashboard. ReturnGuard's scoring-call outliers, by contrast, are handled by automatic rate-limiting with a notice to on-call rather than a page. Measuring volume on normal traffic first is what lets the team choose between these routes.
 
 ### 19.4 Runbooks
 
@@ -1476,7 +1476,7 @@ Each month, review which alerts fired, how many were real, and which incidents w
 
 ### 19.5 Worked example (synthetic Brightwell case)
 
-Jonas adds per-account dashboards. One week, a partner API key shows robust z ≈ 30 on ReturnGuard scoring calls, similar to the lab's outlier client99; the key's queries vary one feature at a time — consistent with extraction. The runbook: rate-limit the key, contact the partner, review logs. The partner's integration had been compromised; the key was rotated. The runbook turned a statistical signal into a short sequence of actions. Rotating the key ended the extraction; contacting the partner found the cause. The extraction was stopped by the rate limit and the key rotation.
+Jonas adds per-account dashboards. One week, a partner API key shows robust z ≈ 30 on ReturnGuard scoring calls, similar to the lab's outlier client99; the key's queries vary one feature at a time — consistent with extraction. The runbook: rate-limit the key, contact the partner, review logs. The partner's integration had been compromised; the key was rotated. The runbook turned a statistical signal into a short sequence of actions. Rotating the key ended the extraction; contacting the partner found the cause. The dashboard kept watching the replacement key, which has shown normal call volumes since.
 
 ### 19.6 Errors and limits
 
@@ -1538,7 +1538,7 @@ Customers report the assistant quoting a 60-day return window; the policy is 30 
 - Debugging in production.
 - Fixes without regression tests.
 
-The 60-day case avoided each: Jonas checked versions and data before blaming the model, reproduced on staging, and added a regression test. Had he debugged in production, a test question could have reached a real customer's conversation. Without the test, the next expired campaign page would bring the same symptom back. The runbook now lists these checks in that order. Checking versions and retrieval first takes minutes and rules out the commonest causes. The runbook lists the checks in order.
+The 60-day case avoided each: Jonas checked versions and data before blaming the model, reproduced on staging, and added a regression test. Had he debugged in production, a test question could have reached a real customer's conversation. Without the test, the next expired campaign page would bring the same symptom back. The runbook now lists these checks in that order. Checking versions and retrieval first takes minutes and rules out the commonest causes. Its first step is the version check, and its second is a check of retrieved documents for expired content.
 
 ### Exercises
 
