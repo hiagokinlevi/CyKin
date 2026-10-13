@@ -732,7 +732,7 @@ Leia em três passagens: resumo, figuras e conclusão, para decidir a relevânci
 
 ### 10.2 Perguntas de crítica
 
-O que o atacante pode fazer e saber? O modelo de ameaça é realista para a sua implantação? Há linhas de base e ataques adaptativos? Os resultados são medidos por efeitos e relatados com incerteza? Uma pequena mudança de contexto quebraria o resultado? Os autores publicaram código e dados? Artigos como o de Carlini et al. (arXiv:1902.06705) oferecem uma lista de verificação para avaliações de robustez; Arp et al. (arXiv:2010.09470) listam armadilhas do aprendizado de máquina em segurança, incluindo viés de amostragem, *data snooping* e linhas de base inadequadas. Pergunte também se o sucesso foi medido por efeitos.
+O que o atacante pode fazer e saber? O modelo de ameaça é realista para a sua implantação? Há linhas de base e ataques adaptativos? Os resultados são medidos por efeitos e relatados com incerteza? Uma pequena mudança de contexto quebraria o resultado? Os autores publicaram código e dados? Artigos como o de Carlini et al. (arXiv:1902.06705) oferecem uma lista de verificação para avaliações de robustez; Arp et al. (arXiv:2010.09470) listam armadilhas do aprendizado de máquina em segurança, incluindo viés de amostragem, *data snooping* e linhas de base inadequadas.
 
 ### 10.3 Transferência para a prática
 
@@ -780,7 +780,7 @@ Um bom projeto responde a uma decisão que a organização precisa tomar: "Devem
 
 ### 11.2 Planejamento
 
-Planeje em fases: linha de base (estado atual e risco), intervenção (projeto ou controles), avaliação (testes controlados), apoio à decisão (relatório e recomendação), entrega. Cada fase tem um entregável e uma revisão. Mantenha um registro de riscos do próprio projeto: danos causados pelos testes, exposição de dados, atrasos no cronograma. No projeto de Tomás, as fases foram uma medição de vazamento de linha de base, a deduplicação como intervenção, testes controlados na cópia isolada, uma recomendação e a entrega. Escreva cada entregável e cada data de revisão no plano. Atualize o registro de riscos semanalmente.
+Planeje em fases: linha de base (estado atual e risco), intervenção (projeto ou controles), avaliação (testes controlados), apoio à decisão (relatório e recomendação), entrega. Cada fase tem um entregável e uma revisão. Mantenha um registro de riscos do próprio projeto: danos causados pelos testes, exposição de dados, atrasos no cronograma. No projeto de Tomás, as fases foram uma medição de vazamento de linha de base, a deduplicação como intervenção, testes controlados na cópia isolada, uma recomendação e a entrega. Atualize o registro de riscos semanalmente.
 
 ### 11.3 Execução
 
@@ -914,7 +914,7 @@ Um ano depois, a Corvane planeja um agente de operação de computador para usar
 
 ### 12.7 Erros e limites
 
-Três erros são comuns: tratar cada nova tecnologia como se precisasse de novos princípios; planos sem compromissos mensuráveis; e orientação que transfere respostas em vez de raciocínio. Cada erro enfraquece a transferência. Novas tecnologias exigem as mesmas perguntas sobre entrada não confiável e imposição de limites; inventar princípios novos a cada vez perde o que foi aprendido. Um plano sem compromissos mensuráveis é facilmente abandonado. Uma orientação que entrega respostas deixa os mais novos incapazes de raciocinar sobre o próximo sistema. Verifique os três pontos no seu plano de prática. Revise o plano onde encontrar algum deles.
+Três erros são comuns: tratar cada nova tecnologia como se precisasse de novos princípios; planos sem compromissos mensuráveis; e orientação que transfere respostas em vez de raciocínio. Cada erro enfraquece a transferência. Novas tecnologias exigem as mesmas perguntas sobre entrada não confiável e imposição de limites; inventar princípios novos a cada vez perde o que foi aprendido. Um plano sem compromissos mensuráveis é facilmente abandonado. Uma orientação que entrega respostas deixa os mais novos incapazes de raciocinar sobre o próximo sistema. Verifique os três pontos no seu plano de prática.
 
 ### Exercícios
 

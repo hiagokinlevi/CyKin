@@ -837,8 +837,6 @@ Amira's critique of the preprint in the worked example below used the second and
 
 What can the attacker do and know? Is the threat model realistic for your deployment? Are baselines and adaptive attacks included? Are results measured by effects and reported with uncertainty? Would a small change in setting break the result? Did the authors release code and data? Papers such as Carlini et al. (arXiv:1902.06705) give a checklist for robustness evaluations; Arp et al. (arXiv:2010.09470) list pitfalls in machine learning for security, including sampling bias, data snooping and inappropriate baselines.
 
-Ask also whether success was measured by effects.
-
 ### 10.3 Transfer to practice
 
 An attack demonstrated on an open model with white-box access may not apply to an API-only deployment — but transfer results such as Zou et al. (arXiv:2307.15043) show that some attacks found on open models work on closed ones. A defence evaluated on a public benchmark may fail on your traffic. State transfer assumptions explicitly.
@@ -899,7 +897,7 @@ Tomás's project in the worked example below was scoped this way, with agreed cr
 
 Plan in phases: baseline (current state and risk), intervention (design or controls), evaluation (controlled tests), decision support (report and recommendation), handover. Each phase has a deliverable and a review. Keep a risk register for the project itself: test damage, data exposure, schedule slips.
 
-For Tomás's project, the phases were a baseline leakage measurement, deduplication as the intervention, controlled tests on the isolated copy, a recommendation and handover. Write each deliverable and review date into the plan. Update the risk register weekly.
+For Tomás's project, the phases were a baseline leakage measurement, deduplication as the intervention, controlled tests on the isolated copy, a recommendation and handover. Update the risk register weekly.
 
 ### 11.3 Execution
 
@@ -1057,7 +1055,7 @@ The proposal follows the same reasoning as the refund and rebooking decisions. E
 - Plans without measurable commitments.
 - Mentoring that transfers answers instead of reasoning.
 
-Each error weakens transfer. New technologies need the same questions about untrusted input and enforcement; inventing new principles each time loses what was learned. A plan without measurable commitments is easily dropped. Mentoring that hands over answers leaves juniors unable to reason about the next system. Check your practice plan for all three. Revise your plan where you find any of them.
+Each error weakens transfer. New technologies need the same questions about untrusted input and enforcement; inventing new principles each time loses what was learned. A plan without measurable commitments is easily dropped. Mentoring that hands over answers leaves juniors unable to reason about the next system. Check your practice plan for all three.
 
 ### Exercises
 
