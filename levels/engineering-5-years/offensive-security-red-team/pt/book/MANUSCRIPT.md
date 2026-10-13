@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para a Graduação em Engenharia
 
 - Idioma: português do Brasil (`pt`); cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–36 de 50 já estão escritos em português, com os exercícios EX001–EX108 e suas resoluções com rubricas de 0 a 3; os capítulos 37–50 (EX109–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–44 de 50 já estão escritos em português, com os exercícios EX001–EX132 e suas resoluções com rubricas de 0 a 3; os capítulos 45–50 (EX133–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros engenheiros de sistemas de segurança que vão projetar ferramentas de avaliação autorizada e plataformas de medição e relato.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais amplo; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais voltado à implementação. **Este livro é centrado no projeto**: requisitos, arquitetura, controles, verificação e evidências de projeto final para plataformas autorizadas de red team.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) |
 
-Capítulos 37–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-37), até a chegada dos próximos lotes.
+Capítulos 45–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-45), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2415,7 +2415,7 @@ A pesquisa com usuários do PulseMap inclui uma tarefa: explicar este número a 
 
 ### 35.4b Testar o texto com leitores reais
 
-Sam pede a dois donos de sistemas da Riverstone Transit, que não participaram do desenho, que leiam em voz alta o resumo do relatório e expliquem o que ele significa. Onde eles hesitam ou interpretam mal uma severidade, a redação muda; testes de leitura pegam ambiguidades que os revisores que escreveram o texto não conseguem ver. Leitores reais encontram jargão e denominadores ausentes mais rápido que os autores. Sam reserva dois gestores e um operador para o teste de texto de cada ateliê e arquiva as notas deles com o ADR. As notas podem omitir nomes a pedido de um gestor, mas cada problema ainda leva um id como COPY-12, para que a correção que esclareceu "não é uma pontuação de risco residual" possa ser rastreada sem uma trilha de culpa.
+Sam pede a dois gestores e um operador da Riverstone Transit, nenhum dos quais participou do desenho, que leiam em voz alta o resumo do relatório e expliquem o que ele significa. Onde eles hesitam ou interpretam mal uma severidade, a redação muda; testes de leitura pegam ambiguidades que os revisores que escreveram o texto não conseguem ver. Leitores reais encontram jargão e denominadores ausentes mais rápido que os autores. Sam reserva dois gestores e um operador para o teste de texto de cada ateliê e arquiva as notas deles com o ADR. As notas podem omitir nomes a pedido de um gestor, mas cada problema ainda leva um id como COPY-12, para que a correção que esclareceu "não é uma pontuação de risco residual" possa ser rastreada sem uma trilha de culpa.
 
 ### Exercícios
 
@@ -2525,11 +2525,671 @@ Bucket primeiro, escala depois, canário sempre.
 
 [← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
 
+<a id="ch-37"></a>
+
+## Capítulo 37 — Segurança ofensiva autorizada e red team: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um runbook de engajamento; (2) fazer a passagem de turno; (3) gerenciar a rotação de segredos no encerramento.
+
+### 37.1 Conteúdo do runbook
+
+Contatos, ponteiro para a ROE, versões das ferramentas, condições de parada, árvore de escalonamento, caminhos das evidências. Mantenha-o curto o bastante para usar sob estresse. Sob estresse, as pessoas abrem uma página curta ou nenhuma. Contatos, ponteiro para a ROE, versões das ferramentas, paradas, escalonamento e caminhos das evidências são o mínimo que ainda funciona quando o SSO está lento. Sam imprime essa página para o fichário do jump host e a compara com o wiki sempre que um dos dois muda. A página do fichário traz o hash da revisão do wiki, para que uma impressão desatualizada fique óbvia no kickoff.
+
+### 37.2 Passagem de turno
+
+Registro do turno: achados abertos, últimos ids de eventos, aprovações pendentes, estado do interruptor de emergência. Passagem verbal mais o registro. A passagem verbal sem o registro perde ids de eventos e o estado do interruptor de emergência na troca de turno. A linha de aprovações pendentes do registro é o que impede um engenheiro cansado de ampliar um escopo que já foi recusado. Sam exige o resumo falado e o registro colado antes que o líder que sai deixe o canal. Um turno que uma vez pulou o registro colado deixou uma aprovação de ampliação pendente invisível até que o cliente perguntasse por que os testes tinham parado.
+
+### 37.3 Encerramento
+
+Desative contas, faça a rotação de segredos, sele as evidências, exporte as métricas, agende a retrospectiva. Uma lista de verificação vence a memória.
+
+```python
+"""Age synthetic findings against remediation SLAs by priority."""
+SLA = {"critical": 7, "high": 30, "medium": 90, "low": 180}
+findings = [
+    ("SYN-001", "critical", 3, False),
+    ("SYN-005", "critical", 12, False),
+    ("SYN-003", "high", 25, False),
+    ("SYN-004", "medium", 95, False),
+    ("SYN-002", "medium", 40, True),
+    ("SYN-006", "low", 200, False),
+]
+breaches = 0
+for fid, pr, age, closed in findings:
+    status = "closed" if closed else ("BREACH" if age > SLA[pr] else "open")
+    breaches += status == "BREACH"
+    print(f"{fid} priority={pr:8} age_days={age:3} sla={SLA[pr]:3} status={status}")
+open_n = sum(1 for f in findings if not f[3])
+print(f"open={open_n} sla_breaches={breaches}")
+```
+
+Saída esperada:
+
+```text
+SYN-001 priority=critical age_days=  3 sla=  7 status=open
+SYN-005 priority=critical age_days= 12 sla=  7 status=BREACH
+SYN-003 priority=high     age_days= 25 sla= 30 status=open
+SYN-004 priority=medium   age_days= 95 sla= 90 status=BREACH
+SYN-002 priority=medium   age_days= 40 sla= 90 status=closed
+SYN-006 priority=low      age_days=200 sla=180 status=BREACH
+open=5 sla_breaches=3
+```
+
+> **Caso sintético — Riverstone Transit.** O encerramento pegou o SYN-005 ainda em BREACH depois do SLA — escalonado antes da retrospectiva.
+
+A memória deixa passar contas abertas e segredos sem rotação. A lista de verificação que pegou o SYN-005 ainda em BREACH depois do SLA é o argumento para nunca pular o encerramento para "chegar à retrospectiva". Sam não marca o engajamento como selado até que cada caixa tenha um horário UTC e um responsável. O escalonamento do SYN-005 antes da retrospectiva fica arquivado sob o id da lista de verificação de encerramento, não sob uma conversa de corredor.
+
+### 37.4 Erros e limites
+
+Runbooks em wikis que ninguém consegue acessar a partir do jump host falham; mantenha uma cópia offline. Um wiki que o jump host não alcança é um runbook que não existe durante uma parada. A cópia offline no kit de operações é exercitada no exercício de mesa quando o SSO é simulado como fora do ar. O encerramento de Sam inclui verificar se a página do fichário bate com a revisão do wiki com hash. Uma divergência reprova o kickoff da mesma forma que um SHA errado do TrackScope. Sam uma vez encontrou uma página do fichário duas revisões atrás, depois de uma edição do wiki num fim de semana; o kickoff parou até que a impressão fosse substituída.
+
+### 37.2b Higiene do plantão
+
+O plantão das ferramentas de avaliação não é licença para ampliar o escopo. Os alertas tratam da segurança das ferramentas e da imposição da ROE; incidentes nos ativos do cliente seguem o caminho de resposta a incidentes do cliente. Mantenha os escalonamentos separados no runbook, para que engenheiros cansados não os misturem. Misturar alertas das ferramentas com alertas de resposta a incidentes do cliente é como uma dúvida de escopo vira uma ponte de incidente não planejada. O plantão de avaliação corrige o TrackScope e a imposição da ROE; incidentes em ativos vão para o caminho próprio da Riverstone. O runbook de Sam põe as duas árvores em páginas separadas, com números de telefone diferentes.
+
+### 37.3b Integração com o calendário
+
+As janelas de engajamento ficam num calendário compartilhado, com a versão da ROE na descrição. A sobreposição acidental de dois métodos barulhentos no mesmo CIDR é uma falha de operações, não uma paralelização esperta. Dois métodos barulhentos num mesmo CIDR sem uma entrada no calendário parecem espertos até que o enlace da garagem sature. O calendário compartilhado traz a versão da ROE na descrição, para que a revisão de sobreposição seja mecânica. O agendador de Sam se recusa a iniciar um método barulhento que não tenha um bloco no calendário para a sua janela. A revisão de sobreposição roda automaticamente quando dois blocos compartilham um CIDR e um deles está marcado como barulhento.
+
+### 37.1b Itens de reserva
+
+Os kits de operações incluem imagens reserva do jump host, cartões de contato impressos e cópias offline da ROE. Quando o SSO cai, o engajamento ainda precisa de um caminho de parada documentado. Quando o SSO morre, o engajamento ainda precisa de um caminho de parada que não dependa do provedor de identidade. Imagens reserva do jump host, contatos impressos e uma ROE offline são o que torna isso real. Sam confere o kit na manhã da janela, não depois do primeiro login que falhou. A lista de verificação do kit também é um item de encerramento, para que as imagens emprestadas sejam restauradas antes do próximo cliente.
+
+### Nota de prática
+
+As métricas de operações incluem alertas por janela, tempo médio para confirmar paradas e conclusão da lista de verificação de encerramento. Métricas de vaidade, como hosts tocados, ficam fora do painel de operações. O que você mede toda semana é o que engenheiros cansados vão otimizar quando o cliente estiver olhando.
+
+
+
+Guarde o hash do resultado da lista de verificação de encerramento no FindingsDesk, para que encerramentos incompletos não possam ser marcados como concluídos em silêncio.
+
+
+
+A passagem de turno inclui ler em voz alta para o líder que entra as últimas dez negações do TrackScope.
+
+
+### 37.4b Medir o runbook
+
+Depois de cada engajamento, o líder anota quais passos do runbook foram pulados, ficaram confusos ou estavam desatualizados. Sam soma essas anotações ao longo de um trimestre; os passos pulados com mais frequência são reescritos ou removidos, e o histórico de revisões do runbook mostra cada mudança com o seu motivo. Os passos pulados com mais frequência estão errados ou são difíceis demais sob estresse. As contagens trimestrais transformam reclamações em edições com motivos no histórico de revisões. A última reescrita de Sam removeu um passo que pedia uma captura de tela de uma página que o jump host não conseguia abrir, e que tinha sido pulado em quatro engajamentos seguidos.
+
+### Exercícios
+
+- **EX109 — Lista de verificação.** Liste seis passos de encerramento. Rubrica: 3 = seis sensatos; 2 = quatro; 1 = dois; 0 = nada.
+- **EX110 — Passagem de turno.** Que três campos o registro do turno precisa incluir? Rubrica: 3 = achados/eventos/aprovações (ou equivalentes); 2 = dois; 1 = um; 0 = nada.
+- **EX111 — Laboratório de SLA.** Quantas violações de SLA há no laboratório? Rubrica: 3 = 3; 2 = lista sem contagem; 1 = errado; 0 = nada.
+
+### Síntese
+
+Opere com runbooks, passagens de turno e um encerramento implacável.
+
+### Continue estudando — capítulo 37 de 50
+
+[← Capítulo 36 (rascunho)](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 (rascunho) →](#ch-38)
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Segurança ofensiva autorizada e red team: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar correções com novos testes; (2) evitar uma validação que reintroduza risco; (3) registrar resultados negativos.
+
+### 38.1 Desenho do novo teste
+
+Mesmo ponto de observação, privilégio mínimo, mesmo padrão de evidência. Para senha padrão: confirme que o login falha; não faça spray de variantes. Fazer spray de variantes de senha transforma a validação num novo ataque. Confirmar que o login padrão falha, do mesmo ponto de observação e com o mesmo privilégio, basta para fechar o SYN-001. O cartão de novo teste de Sam cita a requisição exata e o 401 esperado, nada mais. Um pedido para tentar senhas alternativas no mesmo formulário é registrado como método recusado, não como minúcia. A recusa fica visível no ticket, para que um auditor depois veja que a fronteira foi mantida.
+
+### 38.2 Resultados negativos
+
+"Ainda aberto" é um resultado de validação válido. O PulseMap e o FindingsDesk precisam aceitá-lo sem forçar o fechamento. Forçar o fechamento de todo ticket ensina as pessoas a mentir quando uma correção falhou. "Ainda aberto" com evidência nova foi como o SYN-005 continuou honesto até que a participação no grupo de fato mudasse. O FindingsDesk aceita esse status sem motivo de fechamento, e o PulseMap o conta como validação incompleta, não como sucesso. Fechar o SYN-005 exigiu um segundo novo teste depois que a participação no grupo finalmente desapareceu, com um novo hash de evidência. O relógio do SLA não foi zerado no primeiro novo teste reprovado; continuou correndo até o segundo verde.
+
+### 38.3 Nada de métodos novos
+
+A validação usa o método que encontrou o problema, ou uma verificação mais fraca e só de leitura — não é uma chance de tentar novos ataques. A validação não é um segundo engajamento. Usar uma verificação mais fraca e só de leitura, ou o mesmo método que encontrou o problema, mantém a ROE estável. Sam rejeitou uma proposta de "só verificar mais uma porta" durante o novo teste do SYN-001; essa porta pertencia ao plano do próximo engajamento, se o cliente a quisesse.
+
+> **Caso sintético — Riverstone Transit.** Novo teste do SYN-001: o login padrão retornou 401; ticket fechado com hash de evidência. O SYN-005 ainda tinha a participação no grupo — ficou aberto.
+
+### 38.4 Erros e limites
+
+Ambiente diferente (homologação vs. produção) significa que você validou a homologação. Fechar um achado de produção porque a homologação parece corrigida é como as violações voltam depois da entrada em produção. O registro do novo teste precisa citar o ambiente. O modelo de ticket de Sam recusa um fechamento quando o campo de ambiente ainda diz homologação e o ativo do achado é de produção. Verdes da homologação podem ser anexados como notas de apoio, mas nunca como a única evidência de fechamento. Uma janela de novo teste em produção é reservada no mesmo calendário da descoberta, para que não possa ser esquecida.
+
+### 38.2b Novos testes por amostragem
+
+Quando muitos achados parecidos compartilham uma causa raiz (cabeçalho ausente em toda a frota), faça o novo teste numa amostra mais os hosts originalmente relatados, e diga isso. Alegar "todos os 200 fechados" depois de verificar cinco é uma mentira de medição. Refazer o teste de cada achado baixo pode consumir a janela; dizer que você amostrou, e como, mantém a afirmação honesta. Estratifique pela severidade, para que os críticos nunca fiquem no restante não amostrado. O relatório de validação de Sam para um engajamento de cinquenta achados listou os dez baixos amostrados e a regra que os escolheu. Os achados críticos e altos passaram por novo teste em 100% naquele engajamento; a amostra se aplicou só aos baixos.
+
+### 38.3b Automatizar o novo teste com segurança
+
+Novos testes automatizados são verificações de uma lista de permissão (status HTTP, leitura de participação em grupo) com tempos limite rígidos. Nunca incluem credential stuffing nem novas tentativas de exploração. Se a automação não consegue validar com segurança, agende uma verificação humana só de leitura. Uma automação que repete o caminho de exploração original está fora dos limites deste programa. Automação segura significa leituras autorizadas e códigos de status esperados, como a verificação do 401 no SYN-001. A biblioteca de automação de Sam não carrega para validação um cartão de método marcado como barulhento. Cartões marcados como silenciosos podem ser automatizados; qualquer coisa que precise de uma exceção ao limite de taxa continua manual.
+
+### 38.1b Evidência da validação
+
+Os tickets de validação apontam para o achado original, o método usado, o carimbo de tempo e o hash da nova evidência. "Para mim está bom" sem esses campos não fecha um crítico. Um comentário dizendo "parece corrigido" não é evidência. Os hashes da nova resposta, o horário, o ponto de observação e a conta pertencem ao ticket, da mesma forma que a evidência da descoberta. Sam só fecha quando esses campos estão presentes e o hash bate com o repositório selado. Um comentário de fechamento sem hash é rejeitado pelo FindingsDesk da mesma forma que uma severidade vazia.
+
+### Nota de prática
+
+Disputas sobre a validação sobem para um papel de árbitro nomeado, com acesso aos dois hashes de evidência. O árbitro não ataca de novo; compara a evidência com a nota de aceitação. Documente a decisão no ticket, para que a discussão não recomece a cada reunião de status.
+
+
+
+Exija o id do método de novo teste em toda transição para fechado nas severidades crítica e alta.
+
+
+### 38.4b Comunicar um novo teste reprovado
+
+Quando um novo teste mostra que uma correção não funcionou, o relatório diz isso com clareza, inclui a evidência e a data e evita sugerir culpa. O dono na Riverstone Transit recebe primeiro em particular, para que a equipe possa planejar uma nova correção antes que o resultado chegue a reuniões de governança mais amplas. Os donos merecem um "ainda aberto" claro com a nova evidência, não silêncio até a retrospectiva. A mensagem reutiliza o id do achado e evita novos detalhes de ataque. O modelo de Sam para o SYN-005 citou a participação no grupo ainda presente e o relógio do SLA ainda correndo, e depois ofereceu um horário de novo teste após a próxima mudança.
+
+### Exercícios
+
+- **EX112 — Novo teste.** Passos para validar com segurança a correção da senha padrão. Rubrica: 3 = tentativa única, esperar falha, evidência, sem spray; 2 = parcial; 1 = spray; 0 = exploração.
+- **EX113 — Negativo.** Por que "ainda aberto" precisa poder ser armazenado? Rubrica: 3 = honestidade/SLA; 2 = vago; 1 = sempre fechar; 0 = nada.
+- **EX114 — Ambiente.** Uma frase de limitação quando o novo teste foi só na homologação. Rubrica: 3 = clara; 2 = vaga; 1 = alega produção; 0 = nada.
+
+### Síntese
+
+Valide de forma estreita; guarde os negativos; não amplie os métodos.
+
+### Continue estudando — capítulo 38 de 50
+
+[← Capítulo 37 (rascunho)](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 (rascunho) →](#ch-39)
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Segurança ofensiva autorizada e red team: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) reservar orçamento para atualizações de políticas e dependências; (2) manter os adaptadores finos; (3) documentar a propriedade.
+
+### 39.1 Rotatividade
+
+Técnicas do ATT&CK, APIs de provedores de identidade e modelos de ROE mudam. Reserve tempo no calendário para as atualizações; fixe versões e acompanhe os avisos de segurança. Dependências que mudam toda semana jogam o TrackScope num combate permanente a incêndios. Fixar versões e revisar atualizações como mudanças, não como ruído de fundo, mantém testável o comportamento de falha fechada. As regras do dependabot de Sam exigem um verde do Laboratório I nas linhas de segurança antes que uma fixação mude. Fixações que ficam atrás das linhas de segurança não podem usar o trem comum de dependências sem esse verde. Atualizações comuns de bibliotecas que não tocam as linhas de segurança ainda podem usar o trem semanal.
+
+### 39.2 Adaptadores finos
+
+Isole os SDKs de terceiros atrás de interfaces, para que as atualizações não reescrevam o núcleo do FindingsDesk. Um invólucro grosso em volta de um scanner convida a comportamentos não revisados quando o scanner se atualiza. Adaptadores finos, que só traduzem resultados para o esquema do FindingsDesk, mantêm a lógica perigosa fora da fronteira de confiança que você mantém. O adaptador de Sam para a verificação de similaridade de nomes tem menos de duzentas linhas e nenhuma chamada ao shell. Quando o scanner de origem acrescentou uma flag de "exploração automática", o adaptador fino a ignorou e nunca expôs uma chave no TrackScope. Os testes do adaptador incluem um fixture em que a flag de origem é verdadeira e afirmam que o FindingsDesk nunca a vê.
+
+### 39.3 Propriedade
+
+Todo serviço tem um esquadrão dono nomeado e um reserva. O CODEOWNERS impõe a revisão. CODEOWNERS nos caminhos de segurança significa que um merge não entra sem alguém que entenda a semântica das negações. Módulos órfãos são como a falha aberta volta depois de uma refatoração. A revisão de Sam de um PR de "limpeza" que mexia em allowed() exigiu dois donos de segurança, não uma aprovação casual. O autor da limpeza teve de trabalhar em par com um dono de segurança antes que o botão de merge fosse liberado.
+
+> **Caso sintético — Riverstone Transit.** O mapeador ATT&CK do PulseMap é um adaptador; atualizar a lista de técnicas é um PR de dados, não uma reescrita.
+
+### 39.4 Erros e limites
+
+Ferramentas órfãs apodrecem e viram museus de falha aberta. Ferramentas abandonadas ainda aparecem no texto da ROE e enganam o próximo líder. Uma poda anual do catálogo, com os modelos de ROE atualizados na mesma mudança, é manutenção, não faxina. Sam removeu no ano passado três cartões de método cujos binários já não estavam na imagem do jump host. Os modelos de ROE que ainda os citavam reprovaram num lint até que as strings fossem removidas na mesma mudança. A poda do catálogo e o lint da ROE compartilham um único pull request, para que não possam se afastar uma semana um do outro.
+
+### 39.2b Risco das dependências
+
+Acompanhe as bibliotecas que interpretam CIDRs, políticas em YAML ou criptografia. Uma execução remota de código num interpretador de políticas é um incidente de falha aberta esperando para acontecer — fixe as versões, monitore os CVEs e prefira interpretadores pequenos, sob os seus testes. Uma biblioteca que interpreta strings de host fica no caminho da falha fechada; seus CVEs são bloqueadores de engajamento, não trivialidades do backlog. Sam acompanha essas bibliotecas numa lista curta ao lado do predicado e aciona alertas no mesmo dia para novos avisos. Um aviso sobre a biblioteca de interpretação de hosts no último trimestre bloqueou dois engajamentos até que a fixação mudasse e o Laboratório I fosse executado de novo.
+
+### 39.3b Plano de exclusão
+
+A manutenibilidade inclui saber aposentar uma ferramenta: exportar os dossiês, revogar credenciais, arquivar o código, marcar as fontes do PulseMap como obsoletas. Serviços órfãos atraem risco sem dono. Apagar um serviço sem data deixa tipos de evento fantasmas no barramento. O plano de exclusão cita os consumidores, o último engajamento que pode usá-lo e o expurgo dos seus segredos. A data de aposentadoria do PulseMap-v1 ficou no calendário ao lado da ROE que ainda o citava, até que os dois mudassem juntos. Os segredos do serviço aposentado passaram por rotação na data do expurgo, não ficaram guardados "caso a gente faça rollback".
+
+### 39.1b Janelas de descontinuação de API
+
+Anuncie as descontinuações com datas; mantenha períodos de execução dupla para os consumidores do PulseMap. Remoções súbitas de códigos de motivo quebram as linhas do tempo no meio do engajamento. Os clientes precisam de tempo de calendário antes que a /v1/ apague. Uma janela de descontinuação com execução dupla e uma data final nomeada vence um 404 surpresa durante um engajamento de cliente. Sam anunciou a aposentadoria de campos do FindingsDesk com noventa dias de antecedência e fez a CI reprovar novos chamadores dos nomes antigos a partir do trigésimo dia. Clientes móveis que ainda chamavam o campo antigo receberam um código de erro dedicado apontando para o guia de migração.
+
+### Nota de prática
+
+Escreva uma nota de fator ônibus para cada serviço: quem pode lançar, quem entende o predicado, quem consegue restaurar o repositório selado. Se a resposta for uma só pessoa, agende treinamento cruzado antes da próxima temporada de engajamentos. A manutenibilidade é, sobretudo, sobre pessoas que podem tirar férias.
+
+
+
+Reserve no calendário um mês de atualização de dependências por ano, para que as fixações por CVE não esperem uma emergência.
+
+
+
+As páginas de propriedade listam a cobertura de férias por nome, não pelo alias do esquadrão.
+
+
+
+Trate a falta de cobertura de férias como um bloqueador de release igual a um teste reprovado.
+
+
+
+As sessões de treinamento cruzado usam os mesmos fixtures sintéticos do Laboratório I, para que o tempo de ensino também renove a prática de verificação.
+
+
+### 39.4b Documentação como manutenção
+
+Cada módulo da plataforma tem um README curto declarando propósito, dono, entradas, saídas e os testes que o protegem. Sam os atualiza no mesmo pull request das mudanças de código; os revisores rejeitam mudanças que deixam o README descrevendo um comportamento que já não existe. Um runbook que descreve botões que a interface já não tem é pior que nenhum. Mudanças na documentação vão no mesmo pull request da mudança de interface, revisadas por um operador que não foi o autor. A última renomeação na interface feita por Sam ficou bloqueada até que a página do fichário offline fosse atualizada e recebesse um novo hash.
+
+### Exercícios
+
+- **EX115 — Fixação.** Como fixar o TrackScope para um engajamento e ainda permitir correções de segurança? Rubrica: 3 = faixa de versões/política + reverificação; 2 = parcial; 1 = sempre a mais recente; 0 = nada.
+- **EX116 — Adaptador.** Dê um método de uma interface StoragePort. Rubrica: 3 = por exemplo, put_evidence(hash,bytes); 2 = vago; 1 = chamada concreta de SDK; 0 = nada.
+- **EX117 — Dono.** Escreva a linha de propriedade do FindingsDesk. Rubrica: 3 = esquadrão + reserva + contato; 2 = esquadrão; 1 = "equipe"; 0 = nada.
+
+### Síntese
+
+Fixações, adaptadores e donos nomeados mantêm as ferramentas vivas com segurança.
+
+### Continue estudando — capítulo 39 de 50
+
+[← Capítulo 38 (rascunho)](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 (rascunho) →](#ch-40)
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar o fluxo de ponta a ponta, da ação ao ticket e à cobertura; (2) injetar falhas; (3) assinar uma candidata a release.
+
+### 40.1 Ponta a ponta
+
+Ação sintética → decisão do TrackScope → evento → ticket no FindingsDesk → atualização da cobertura no PulseMap. Registre hashes em cada salto. Verdes em testes unitários ainda podem esconder um caminho de eventos quebrado até o FindingsDesk. O ponta a ponta sobre fixtures sintéticos exercita permitir, negar, falha fechada e um upsert completo de achado antes que uma candidata a release seja criada. O script do Laboratório II de Sam é a etapa citada no Capstone II. O Capstone II não pode citar um verde só de testes unitários como evidência do Laboratório II; o script precisa imprimir o id do achado no FindingsDesk, para que a lista de verificação possa apontar para ele.
+
+### 40.2 Falhas
+
+Derrube o FindingsDesk no meio do fluxo; confirme que o TrackScope continua negando e que os rascunhos entram na fila. Corrompa um arquivo de evidência; confirme o alerta de hash divergente.
+
+```python
+"""Verify integrity of a synthetic evidence package."""
+import hashlib, json
+files = {
+    "roe.pdf": b"SYNTHETIC-ROE-v1",
+    "scope.csv": b"host,port\n10.20.1.10,443\n",
+    "findings.json": b'[{"id":"SYN-001"}]',
+}
+expected = {n: hashlib.sha256(b).hexdigest()[:16] for n,b in files.items()}
+# Simulate tampering of findings.json
+current = dict(expected)
+current["findings.json"] = hashlib.sha256(b'[{"id":"SYN-001"},{"id":"TAMPERED"}]').hexdigest()[:16]
+print(json.dumps(expected, indent=1))
+for n in sorted(expected):
+    status = "OK" if expected[n] == current[n] else "MISMATCH"
+    print(f"{n:16} {status}")
+```
+
+Saída esperada:
+
+```text
+{
+ "roe.pdf": "18d74983d403e7db",
+ "scope.csv": "01cc4815eddf3de6",
+ "findings.json": "7f5f178ab43ef00f"
+}
+findings.json    MISMATCH
+roe.pdf          OK
+scope.csv        OK
+```
+
+Injetar um arquivo de política ausente e um FindingsDesk morto no laboratório é como a degradação segura continua provada. O resultado esperado é negar tudo e enfileirar rascunhos, nunca um allow. Sam reprova o Laboratório II se qualquer uma das injeções produzir um allow ou uma contagem de rascunhos perdida. A história da queda com catorze rascunhos é o tamanho de fixture usado na injeção do FindingsDesk morto. Os operadores observam a profundidade da fila subir até catorze e cair a zero durante a reprodução, como parte da execução pontuada.
+
+### 40.3 Aprovação
+
+Lista de verificação da candidata a release assinada por quem implementou e por um revisor; as linhas de segurança precisam estar verdes. A aprovação independente segue a mesma regra de incentivos do Laboratório I: quem implementa não dá verde na própria release. A lista de verificação cita os SHAs das ferramentas, os hashes dos fixtures e os resultados das injeções de falha. As notas de release de Sam apontam para a lista de verificação assinada, não para uma captura de tela de uma demonstração local. Quem implementou e assina a própria lista de verificação é rejeitado pelo script de release antes que a tag seja criada.
+
+> **Caso sintético — Riverstone Transit.** O Laboratório II descobriu que a cobertura era atualizada antes da criação do ticket numa nova tentativa — a ordem foi corrigida com um outbox.
+
+### 40.4 Erros e limites
+
+Ponta a ponta sem injeção de falhas só prova o caminho feliz. Execuções de ponta a ponta instáveis ensinam as pessoas a clicar de novo até ficar verde. Ponha as instabilidades em quarentena, corrija-as ou apague o teste — não pule o Laboratório II. A última instabilidade de Sam foi uma diferença de relógio na etapa de horário; bloqueou duas releases até que o fixture passasse a usar horários UTC fixos. Uma instabilidade numa linha de falha fechada agora abre um P1 com a mesma severidade de um bug de negação em produção. Clicar de novo até ficar verde é registrado como incidente de processo quando envolve essas linhas.
+
+### 40.2b Observabilidade no laboratório
+
+O Laboratório II ativa logs de depuração temporariamente, mas sela uma cópia com dados ocultados. Deixar a depuração ligada em construções de engajamento pode vazar tokens para os agregados de logs. A chave faz parte da lista de verificação de aprovação. Se o laboratório não consegue mostrar os códigos de motivo das negações e a profundidade da fila, os operadores ficarão cegos numa queda real. O Laboratório II afirma que esses painéis se atualizam durante as injeções de falha. Sam observa no ambiente sintético os mesmos painéis que o plantão vai observar numa sexta-feira à noite. Se o painel de códigos de motivo ficar vazio durante uma injeção de negação, o Laboratório II reprova mesmo que o status HTTP pareça certo.
+
+### 40.3b Testes instáveis
+
+Um Laboratório II instável é um bloqueador, não um ritual de tentar de novo até ficar verde. Ponha o teste em quarentena, corrija a condição de corrida (relógios, ordenação) e execute de novo. Lançar com "às vezes falha fechada" é lançar com falha aberta. Uma instabilidade que toca linhas de falha fechada é um P1, não uma curiosidade estatística. A quarentena só a tira da etapa de merge com um dono e uma data de entrega. O quadro de Sam mostra os testes de segurança em quarentena em vermelho até que voltem estáveis por uma semana de execuções. Uma quarentena sem data de entrega é rejeitada pela automação do quadro.
+
+### 40.1b Paridade de ambiente
+
+O ambiente do Laboratório II espelha as versões das ferramentas de produção e as chaves de assinatura de políticas (chaves de teste). Lacunas de paridade explicam as surpresas de "verde no laboratório, vermelho no engajamento". Um Laboratório II num laptop com layout diferente do jump host prova o laptop, não o caminho do engajamento. Paridade significa o mesmo carregador de políticas, a mesma configuração de bucket e o mesmo tipo de destino de eventos. A imagem de laboratório de Sam é reconstruída toda segunda-feira a partir do mesmo branch de referência do jump host. Uma aprovação só no laptop recebe o rótulo de demonstração e não satisfaz o Capstone II.
+
+### Nota de prática
+
+O Laboratório II inclui um pacote de fixtures maliciosos: hashes errados, eventos reordenados, carimbos de tempo no futuro. Passar só nos fixtures felizes é um laboratório incompleto. O pacote malicioso é versionado ao lado dos fixtures de referência e coberto pelo CODEOWNERS, para que não possa ser enfraquecido discretamente para deixar uma release verde.
+
+
+
+Sele os logs do Laboratório II com a mesma ferramenta de manifesto que o dossiê usa, para que os estudantes pratiquem um único fluxo de hashing.
+
+
+
+Os scripts de injeção de falhas ficam versionados na pasta do laboratório e fixados por SHA no relatório.
+
+
+
+Caminho feliz verde com o pacote malicioso vermelho ainda reprova a aprovação do Laboratório II.
+
+
+### 40.4b Evidência da aprovação
+
+O pacote de aprovação do Laboratório II guarda o plano de testes, os logs das execuções, a lista de falhas injetadas com o comportamento observado e as pendências com seus donos. Um engenheiro independente só assina depois de reproduzir dois resultados escolhidos ao acaso no pacote. A lista de verificação assinada, os hashes dos fixtures e os logs das injeções de falha são selados ao lado da tag do binário. Sem eles, "Laboratório II verde" é um boato. O repositório de artefatos de Sam rejeita uma tag de release sem o hash da lista de verificação nos metadados. Metadados ausentes foram como um verde de corredor quase foi lançado; a verificação do repositório o barrou.
+
+### Exercícios
+
+- **EX118 — Ordem.** Por que criar o ticket antes que a contagem de cobertura aumente? Rubrica: 3 = a cobertura precisa refletir achados registrados; 2 = vago; 1 = qualquer ordem; 0 = nada.
+- **EX119 — Falha.** Comportamento esperado do TrackScope quando o FindingsDesk está fora do ar. Rubrica: 3 = continuar avaliando/negando; enfileirar rascunhos; 2 = parcial; 1 = falhar aberto; 0 = nada.
+- **EX120 — Aprovação.** Duas assinaturas exigidas — de quem? Rubrica: 3 = quem implementou + revisor independente; 2 = uma; 1 = só o gestor; 0 = nada.
+
+### Síntese
+
+Ponta a ponta com falhas; segurança verde; duas assinaturas.
+
+### Continue estudando — capítulo 40 de 50
+
+[← Capítulo 39 (rascunho)](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 (rascunho) →](#ch-41)
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Segurança ofensiva autorizada e red team: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) fazer o perfilamento de pipelines de avaliação de forma ética; (2) otimizar sob as restrições das ROE; (3) rejeitar otimizações que enfraquecem a segurança.
+
+### 41.1 Perfilar primeiro
+
+Meça para onde vai o tempo: DNS, handshake TLS, avaliação de predicados, escrita de tickets. Otimize o termo dominante. Apenas carga sintética. Otimizar a escrita de tickets quando o handshake TLS domina desperdiça a semana e pode tentar a equipe a atalhos inseguros. Um perfil sobre carga sintética que nomeia o termo dominante mantém a equipe honesta. Sam publica o flame graph ao lado da proposta de mudança, para que os revisores vejam por que um cache foi escolhido em vez de uma biblioteca JSON mais rápida. Sem esse gráfico, debates sobre caches viram concursos de gosto. Sam rejeita PRs de otimização que não citam o termo dominante de um perfil recente.
+
+### 41.2 Preservar as restrições
+
+Fazer cache da ScopeVersion é aceitável se a invalidação na publicação estiver correta. Fazer cache de decisões de allow entre hosts não é — os hosts diferem. Uma ScopeVersion em cache que sobrevive a uma publicação é um bug de falha aberta com uma desculpa de desempenho. A invalidação precisa fazer parte do caminho de publicação e ser testada. Fazer cache de decisões de allow entre hosts é pior, porque listas de negação e horários diferem. Os testes de cache de Sam incluem uma publicação no meio da carga que precisa virar um alvo antes permitido para negado dentro do limite de parada. Um cache que não passa nesse teste de publicação no meio da carga nunca é lançado.
+
+### 41.3 Veto de segurança
+
+Qualquer otimização que pule verificações da lista de negação, encurte campos de auditoria ou falhe aberta é rejeitada, seja qual for o ganho de velocidade.
+
+```python
+"""Rank synthetic assets for authorized engagement scoping."""
+assets = [
+    ("public-web-portal", 3, 3, 3),      # exposure, data_sensitivity, blast_radius 1-3
+    ("staging-admin-ui", 2, 3, 2),
+    ("corp-vpn-edge", 3, 2, 3),
+    ("internal-wiki", 1, 2, 1),
+    ("printer-fleet", 2, 1, 1),
+    ("lab-jump-host", 1, 1, 2),
+]
+print(f"{'asset':20} score exposure data blast")
+for name, e, d, b in sorted(assets, key=lambda x: -(x[1]+x[2]+x[3])):
+    print(f"{name:20} {e+d+b:5} {e:8} {d:4} {b:5}")
+```
+
+Saída esperada:
+
+```text
+asset                score exposure data blast
+public-web-portal        9        3    3     3
+corp-vpn-edge            8        3    2     3
+staging-admin-ui         7        2    3     2
+internal-wiki            4        1    2     1
+printer-fleet            4        2    1     1
+lab-jump-host            4        1    1     2
+```
+
+> **Caso sintético — Riverstone Transit.** Fazer cache da política assinada em memória cortou a latência em 40%; a invalidação na publicação manteve a segurança. Uma proposta de pular a lista de negação para hosts "sabidamente bons" foi vetada.
+
+O corte de quarenta por cento na latência com o cache da política assinada só foi aceito porque a invalidação na publicação foi provada. Uma proposta de pular verificações da lista de negação para scanners "sabidamente bons" foi rejeitada com esse veto, independentemente do slide de ganho de velocidade. O ADR de Sam para o cache cita tanto o ganho quanto o id do teste de invalidação.
+
+### 41.4 Erros e limites
+
+Benchmarks em laptops não preveem os links dos pátios (Capítulo 3). Um link gigabit de laptop esconde custos de serialização que um uplink de 10 Mb/s de pátio torna óbvios. Benchmarks usados para a folga das ROE precisam usar as premissas de link do capítulo de física ou taxas medidas no cliente. Sam recusa um aumento do tamanho do pool justificado só por números de laptop. A mesma regra barrou um aumento de rajada que teria saturado o uplink de um pátio no exemplo resolvido de física. Contas de folga que ignoram o exemplo de serialização de 1,2 ms do uplink do pátio são devolvidas.
+
+### 41.2b Descarte de carga
+
+Sob sobrecarga, descarte trabalho de descoberta antes de descartar a avaliação de negação. Usuários podem esperar por uma varredura; não podem esperar por uma negação que nunca chega. Implemente as filas de prioridade de acordo. Filas de prioridade que descartam a avaliação de negação sob carga invertem o modelo de segurança. A descoberta pode esperar; uma negação que nunca chega é um allow. Os testes de descarte de Sam empurram carga sintética até as filas de descoberta crescerem e então verificam que todo predicado ainda roda e retorna dentro do orçamento de latência. Descartar descoberta aparece como um aumento de planejado-mas-não-visto no PulseMap, o que é preferível a um allow silencioso.
+
+### 41.3b Folga de capacidade
+
+Mantenha folga abaixo do limite das ROE para que uma tempestade de novas tentativas (Capítulo 32) não o ultrapasse. Se as ROE permitem 5 req/s, projete para 3–4 sustentados. Documente a premissa de folga. Projetar para 3–4 req/s sob ROE de 5 req/s deixa espaço para as tempestades de novas tentativas medidas no trabalho de confiabilidade. Documentar essa premissa impede que um engenheiro depois "use os 20 por cento não usados" num projeto de velocidade. A planilha de capacidade de Sam mostra o limite das ROE, a taxa sustentada projetada e o orçamento de novas tentativas numa só linha. Usar os vinte por cento não usados exige uma edição das ROE, não um ticket de desempenho.
+
+### 41.1b Consultas N+1
+
+Atualizações de tickets tagarelas durante uma importação em massa esmagam o FindingsDesk. Agrupe as escritas e meça. O trabalho de desempenho muitas vezes começa como um bug de integração, não como a necessidade de caches exóticos. Uma importação em massa que atualiza tickets com uma chamada HTTP por vez vai parecer uma necessidade de caches exóticos quando a correção real é agrupar. Meça os padrões de escrita no FindingsDesk antes de adicionar Redis. O caminho de importação de Sam envia lotes de cinquenta e reprovou numa revisão que reintroduzia upserts linha a linha em nome de "código mais simples". O argumento do código mais simples perdeu para um perfil que mostrou noventa por cento do tempo em HTTP linha a linha.
+
+### Nota de prática
+
+Propostas de otimização exigem um parágrafo de segurança: quais verificações continuam rodando, quais são puladas, como a falha fechada é preservada. Propostas sem esse parágrafo são devolvidas sem leitura. Revisões de velocidade que ignoram parágrafos de segurança causaram mais violações das ROE do que scanners lentos jamais causaram.
+
+
+
+Rejeite PRs de otimização que removam códigos de motivo dos logs, mesmo que a latência melhore.
+
+
+
+Benchmarks citam o limite das ROE ao lado da taxa alcançada, para que benchmarks sem restrição fiquem óbvios.
+
+
+### 41.4b Registrar decisões de otimização
+
+Cada otimização é registrada com o perfil que a justificou, o ganho medido e qualquer verificação de segurança que ela tocou. Quando uma mudança posterior deixa um caminho mais lento, o registro mostra se o ganho anterior dependia de uma premissa que já não vale. Sem o perfil e as verificações de segurança ao lado do ganho, uma regressão parece azar em vez de uma premissa quebrada. O log de otimizações de Sam para o cache de política anota o corte de 40%, o teste de invalidação e o pulo da lista de negação vetado, para que uma lentidão futura seja diagnosticada com base em fatos.
+
+### Exercícios
+
+- **EX121 — Veto.** Dê uma otimização que precisa ser rejeitada. Rubrica: 3 = exemplo que enfraquece a segurança; 2 = vago; 1 = aprova; 0 = nada.
+- **EX122 — Cache.** Quando fazer cache de decisões é seguro? Rubrica: 3 = mesma ScopeVersion+alvo+contexto, TTL curto, invalidar na publicação; 2 = parcial; 1 = sempre; 0 = nada.
+- **EX123 — Inventário.** Por que otimizar o agendamento com pontuações? Rubrica: 3 = janela limitada → maior exposição primeiro; 2 = vago; 1 = aleatório; 0 = nada.
+
+### Síntese
+
+Velocidade sob restrições; a segurança tem poder de veto.
+
+### Continue estudando — capítulo 41 de 50
+
+[← Capítulo 40 (rascunho)](#ch-40) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 42 (rascunho) →](#ch-42)
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Segurança ofensiva autorizada e red team: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa sobre plataformas de avaliação; (2) escolher medidas e linhas de base; (3) manter o uso dual fora da pesquisa dos estudantes.
+
+### 42.1 Perguntas que cabem
+
+"A aprovação dupla reduz incidentes de ampliação de escopo?" "Mostrar os denominadores muda a interpretação da cobertura pelas partes interessadas?" Não "novo bypass contra o produto X". Perguntas sobre aprovação dupla e apresentação de denominadores melhoram a plataforma; perguntas sobre bypasses contra o produto de um fornecedor não pertencem a esta graduação. Sam devolve propostas que precisam de exploração ao vivo e pede uma pergunta de medição no lugar. As duas perguntas de exemplo do enunciado são o modelo do que avança. Perguntas de medição ainda podem ser ambiciosas; só ficam dentro da autorização.
+
+### 42.2 Desenho
+
+Pré-registre as medidas; use dados sintéticos ou operacionais consentidos; reporte intervalos. Replicação vale mais que teatro de novidade. Pré-registro e intervalos são o que mantém o trabalho aplicado distinguível de narrativa de dashboard. Dados sintéticos ou consentidos mantêm a ética intacta. Sam registra as medidas no repositório antes de abrir qualquer CSV de resultados, e o carimbo de tempo do commit faz parte do apêndice da tese. Abrir o CSV primeiro é tratado como defeito de processo na avaliação do ateliê. O commit de pré-registro é referenciado no capítulo de métodos da tese, para que os examinadores vejam a data.
+
+### 42.3 Divulgação
+
+Se a pesquisa encontrar por acidente um problema real, siga a divulgação responsável — não um blog da turma. Um blog da turma não é um canal de divulgação. Problemas reais encontrados ao estudar taxas de reabertura seguem o caminho responsável do anfitrião e ficam fora do trabalho do curso até serem liberados. O estudo de taxa de reabertura de Sam usou apenas tickets sintéticos e anonimizados; qualquer coisa que parecesse um caminho real de credencial foi escalada para Ingrid, não descrita para a turma.
+
+> **Caso sintético — Riverstone Transit.** O estudo aplicado de Sam comparou as taxas de reabertura de tickets antes/depois de exigir evidência de novo teste; pré-registrado, sintético+anonimizado.
+
+### 42.4 Erros e limites
+
+Projetos de curso não são trabalho com seres humanos blindado por comitê de ética; evite coletar dados pessoais. Coletar identificadores de passageiros ou funcionários para uma tese "mais rica" está fora dos limites, mesmo com boas intenções. Fique com agregados sintéticos e acordados. O parágrafo de ética de Sam declara esse limite explicitamente, para que os examinadores não precisem adivinhar. Agregados capazes de reidentificar um único funcionário são recusados da mesma forma que dumps brutos. Trabalho de curso que precisaria de consentimento no estilo de comitê de ética é redesenhado até não precisar mais. O parágrafo de ética de Sam nomeia esse dever de redesenho explicitamente.
+
+### 42.2b Pré-registro
+
+Escreva a hipótese, a medida primária e as regras de exclusão antes de olhar os dados de resultado. Registre-os no repositório. Mudar a medida depois de ver os resultados é como pontuações vazias voltam pela porta da pesquisa. Mudar a medida primária depois de ver os resultados é como pontuações vazias entram escondidas pela pesquisa. Registrar hipótese, medida e exclusões primeiro torna essa jogada visível como um desvio. O estudo de aprovação dupla de Sam manteve a taxa de reabertura como primária mesmo quando uma métrica secundária parecia mais lisonjeira. Desvios exigem uma nota datada no apêndice, não uma edição discreta no notebook.
+
+### 42.3b Publicabilidade de resultados negativos
+
+Pesquisa aplicada publicável inclui resultados negativos ("a aprovação dupla não mudou as taxas de reabertura nesta amostra"). Esconder os negativos enviesa os desenhos da próxima turma rumo a uma confiança vazia. Um resultado negativo sobre aprovação dupla ainda ensina à próxima turma a não supor que o controle funciona sem evidência. Escondê-lo empurraria confiança vazia para o ateliê de desenho. O relato de Sam abre com o negativo e discute o tamanho da amostra antes de sugerir uma continuação. Turmas que só veem relatos positivos continuam lançando controles não medidos. Os enunciados do ateliê agora incluem um exemplo de resultado negativo tirado do relato de Sam.
+
+### 42.1b Acordos de compartilhamento de dados
+
+Mesmo métricas operacionais sintéticas mais anonimizadas precisam de um acordo escrito com o anfitrião para teses de estudantes. "Meu mentor disse que tudo bem" não é um acordo de compartilhamento. A bênção verbal de um mentor não satisfaz regras de residência nem de tese. Um acordo escrito nomeia o que pode sair do anfitrião e em que forma. O anfitrião do estágio de Sam assinou um acordo de métricas de uma página antes que qualquer contagem anonimizada entrasse num rascunho de tese. Sem essa página, o capítulo de resultados da tese fica vazio em vez de informal.
+
+### Nota de prática
+
+O código de análise pré-registrado fica no repositório com um commit de congelamento antes da coleta de dados. Emendar o analisador depois de espiar os resultados exige uma emenda registrada com motivo. Isso é leve comparado com ensaios clínicos e ainda bloqueia a forma mais comum de p-hacking acidental em estudos de graduação.
+
+
+
+Declare a fronteira do uso dual na seção de ética da tese com um exemplo concreto de recusa.
+
+
+
+Resultados negativos recebem a mesma qualidade de figura que os positivos no modelo de tese.
+
+
+### 42.4b Revisão ética para pesquisa sobre a plataforma
+
+Um estudo que compara a cobertura de detecção entre engajamentos usa dados de clientes, mesmo que resumidos. A proposta de Sam passa pela revisão ética e jurídica da organização, usa apenas contagens agregadas e anonimizadas e tem o consentimento escrito de cada cliente antes que qualquer resultado seja compartilhado fora da equipe. Contagens agregadas de cobertura continuam sendo dados de clientes até que o consentimento e a revisão digam o contrário. A proposta de Sam listou cada cliente, a regra de agregação e a proibição de linhas por host fora da equipe. O compartilhamento fora da equipe esperou o consentimento escrito de todos os clientes da amostra.
+
+### Exercícios
+
+- **EX124 — Pergunta.** Escreva uma pergunta de pesquisa aceitável. Rubrica: 3 = focada em plataforma/processo; 2 = limítrofe; 1 = focada em exploit; 0 = nada.
+- **EX125 — Medida.** Nomeie a medida primária do estudo de aprovação dupla. Rubrica: 3 = p. ex., tentativas de ampliação não autorizadas/mês; 2 = vago; 1 = "segurança"; 0 = nada.
+- **EX126 — Uso dual.** Recuse um projeto que pede um novo exploit. Rubrica: 3 = recusa + alternativa permitida; 2 = recusa; 1 = aceita; 0 = nada.
+
+### Síntese
+
+Pesquise a plataforma e o processo; deixe a transformação em arma de lado.
+
+### Continue estudando — capítulo 42 de 50
+
+[← Capítulo 41 (rascunho)](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 (rascunho) →](#ch-43)
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) adaptar a engenharia de plataforma às restrições de uma organização anfitriã; (2) escrever um relatório de prática sem detalhes confidenciais do cliente; (3) traduzir entre o jurídico, as operações e a engenharia.
+
+### 43.1 Estágio
+
+Na indústria ou no serviço público, os modelos de ROE, a residência de dados e as compras diferem. Seu trabalho continua sendo ferramentas que falham fechadas e medição honesta — não testes não autorizados engenhosos. Compras e residência mudam as opções de arquitetura, não o dever de falhar fechado e medir com honestidade. A esperteza não autorizada continua fora. As metas de estágio de Sam nomearam uma entrega com falha fechada e um relatório com denominadores, não um teste surpresa na rede de um parceiro. Redes de parceiros ficam fora do laptop do estudante mesmo quando um mentor oferece "uma olhada rápida". O acordo de estágio reafirma essa fronteira nas palavras do próprio anfitrião.
+
+### 43.2 Relato sanitizado
+
+Os entregáveis do curso usam nomes sintéticos e agregados. Identificadores reais de clientes ficam dentro dos sistemas do anfitrião. Os avaliadores do curso não podem receber nomes reais de parceiros nem ids de tickets. A reconstrução sintética acordada com o anfitrião é o formato do relatório de prática. O memorando de Sam substituiu todo hostname real pelo padrão do laboratório da Riverstone antes de sair do laptop do anfitrião. A revisão do rascunho sanitizado pelo anfitrião é um ponto de controle antes do envio ao portal do curso. Diffs contra a nota interna não sanitizada são revisados apenas nos sistemas do anfitrião.
+
+### 43.3 Tradução
+
+O jurídico ouve autorização e retenção; as operações ouvem janelas de mudança e canários; a engenharia ouve esquemas e testes. Os mesmos fatos, três dialetos. Um fato dito de três maneiras impede que o jurídico, as operações e a engenharia falem sem se entender. No encerramento de Sam, a coluna do jurídico informava quem autorizou a varredura e por quanto tempo seus logs são guardados, a coluna das operações nomeava a janela de mudança e o canário de negar tudo, e a coluna da engenharia citava o esquema da ScopeVersion e o id do seu teste. O memorando de estágio de Sam abria com uma tabela de três colunas com os mesmos fatos do encerramento em cada dialeto.
+
+> **Caso sintético — Riverstone Transit.** O memorando de estágio de Sam usou apenas números sintéticos da Riverstone; nomes reais de parceiros foram omitidos.
+
+### 43.4 Erros e limites
+
+"Não posso contar o que fiz" não é um relatório de prática — use uma reconstrução sintética acordada com o anfitrião. Um relatório que só diz que o trabalho era confidencial não ensina nada e reprova no curso. Acorde com o anfitrião uma reconstrução sintética que preserve os mecanismos sem identificadores. O supervisor de Sam assinou o roteiro da reconstrução antes de a escrita começar. Mecanismos como tempos de negar tudo e hashes de listas de verificação sobrevivem à sanitização; nomes não. Uma reconstrução sem assinatura do supervisor reprova no portão do curso de prática. Roteiros não assinados são apagados automaticamente do portal do curso.
+
+### 43.2b Atrito de compras
+
+Anfitriões do serviço público podem levar meses para aprovar um novo SaaS. Desenhe o projeto final para rodar em infraestrutura que o anfitrião já autoriza. Uma arquitetura perfeita que não pode ser comprada reprova no curso de prática. Um projeto final que precisa de um novo SaaS que o anfitrião não consegue comprar a tempo é uma falha de planejamento. Prefira a infraestrutura já autorizada. Sam delimitou a distribuição de política assinada nos jump hosts existentes depois que o setor de compras disse que um scanner em nuvem levaria nove meses. Nove meses é mais que um projeto final; desenhe para o kit que já está no fichário.
+
+### 43.3b Conflito de interesses
+
+Se o seu anfitrião de estágio vende scanners, o seu relatório de prática precisa declarar isso e ainda assim recusar pontuações vazias. Apresentações de marketing não são medição. Se o anfitrião vende scanners, declare isso e ainda assim recuse pontuações vazias no relatório de prática. Apresentações de marketing são citações de alegações, não medições. O parágrafo de declaração de Sam ficava acima das métricas, para que os leitores vissem a relação antes dos números. Pontuações vazias numa apresentação do anfitrião são citadas como alegações a testar, não como resultados a copiar. Os avaliadores leem a declaração antes de pontuar a parte de medição.
+
+### 43.1b Credenciamento e necessidade de saber
+
+Estágios no serviço público podem envolver credenciamentos de segurança. Os artefatos do curso ficam na menor sensibilidade: reconstruções sintéticas. Nunca cole texto classificado ou restrito no GitHub. Texto restrito no GitHub de um estudante é um incidente. Reconstruções sintéticas na menor sensibilidade são os únicos artefatos do curso. O hook de pre-commit do repositório de Sam procura os codinomes internos de projetos do anfitrião e bloqueia o commit. Hooks que só avisam não bastam; o commit precisa falhar fechado. Commits barrados são registrados para o supervisor do estágio no mesmo dia.
+
+### Nota de prática
+
+Relatórios de prática incluem um apêndice de restrições: residência, compras, credenciamento, comitês de mudança. Os avaliadores pontuam o apêndice com o mesmo peso do trabalho técnico, porque o resultado do curso é julgamento sob restrição, não elegância sem restrições num laptop pessoal.
+
+
+
+Acorde por escrito a reconstrução sanitizada com o mentor do anfitrião antes de escrever o relatório de prática.
+
+
+
+Se o anfitrião proibir até métricas sanitizadas, o relatório de prática usa um cenário gêmeo totalmente sintético, rotulado como tal.
+
+
+### 43.4b Aprender com o estágio
+
+Sam mantém um diário semanal do estágio: uma coisa aprendida sobre como um operador de transporte público realmente conduz a segurança, uma premissa do curso que não se sustentou e uma pergunta para o supervisor. O diário vira a seção reflexiva do seu relatório de estágio. O diário semanal força uma premissa quebrada a vir à tona enquanto a memória está fresca. Essas entradas viram a parte reflexiva do relatório de estágio sem despejar detalhes confidenciais. A nota de Sam de que "sobreposição no calendário vale mais que promessas no chat" veio de uma semana em que dois métodos ruidosos colidiram apesar de um acordo verbal.
+
+### Exercícios
+
+- **EX127 — Dialeto.** Traduza "falhar fechado quando falta a política" para o jurídico. Rubrica: 3 = redação jurídica/de risco; 2 = parcial; 1 = despejo de jargão; 0 = nada.
+- **EX128 — Sanitizar.** Reescreva uma frase que vaza um hostname real. Rubrica: 3 = substituto sintético; 2 = redação parcial; 1 = ainda vaza; 0 = nada.
+- **EX129 — Restrição.** Nomeie duas restrições do serviço público que mudam a arquitetura. Rubrica: 3 = p. ex., residência, compras, logs de pedidos de acesso à informação (FOIA); 2 = uma; 1 = vago; 0 = nada.
+
+### Síntese
+
+Prática é restrições reais mais artefatos de aprendizagem sanitizados.
+
+### Continue estudando — capítulo 43 de 50
+
+[← Capítulo 42 (rascunho)](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 (rascunho) →](#ch-44)
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) propor um projeto final que entregue uma melhoria mensurável na plataforma; (2) definir escopo e não objetivos; (3) estabelecer um plano de verificação.
+
+### 44.1 Proposta
+
+Problema, usuários, requisitos (segurança primeiro), esboço de arquitetura, marcos, plano do laboratório de verificação, parágrafo de ética. Projetos finais que precisam de trabalho de exploit são rejeitados. Requisitos de segurança em primeiro lugar e um parágrafo de ética são portões, não enfeites. Propostas centradas em exploits voltam sem leitura. O modelo de Sam abre com os usuários e os requisitos de falha fechada antes de qualquer esboço de arquitetura, e é por isso que rascunhos de "auto-pwn" nunca passaram do primeiro ponto de controle. Esboços de arquitetura sem usuários e requisitos de falha fechada são devolvidos no mesmo ponto de controle. Os requisitos de segurança são numerados e rastreados até linhas do Laboratório II no mesmo documento.
+
+### 44.2 Não objetivos
+
+Liste explicitamente o que você não vai construir (módulos de exploit, varredura de clientes ao vivo, oráculos de risco por ML). Escrever os não objetivos cedo é o que torna o congelamento possível depois. Módulos de exploit, varredura de clientes ao vivo e oráculos de risco por ML são nomeados para que uma demo de meio de período não possa contrabandeá-los. A proposta de Sam listou esses três explicitamente, e os orientadores avaliaram o escopo contra essa lista. As demos de meio de período são avaliadas contra essa lista antes que alguém assista ao vídeo. Acrescentar um não objetivo no meio do período exige aprovação do orientador registrada no registro de riscos.
+
+### 44.3 Marco 1
+
+Algo demonstrável com dados sintéticos na semana 3: p. ex., kill switch respeitado em ≤30 s, com um teste. Um kill switch respeitado em ≤30 s com dados sintéticos é demonstrável e relevante para a segurança. "Spikes de pesquisa" vagos não são. O vídeo do marco 1 de Sam mostra o controle de parada, o tempo de parada medido e a cláusula das ROE que ele satisfaz, que é o padrão que avançou enquanto o "auto-pwn" era devolvido. Vídeos sem um tempo de parada medido reprovam no ponto de controle, mesmo que a interface pareça polida.
+
+> **Caso sintético — Riverstone Transit.** Propostas do Projeto Final I que mencionavam "auto-pwn" foram devolvidas; "distribuição de política assinada com falha fechada" avançou.
+
+### 44.4 Erros e limites
+
+O aumento de escopo é o principal assassino de projetos finais — congele os não objetivos. O aumento de escopo mata mais projetos finais do que bugs difíceis. Congelar os não objetivos e estacionar ideias de continuação é o controle. A revisão de meio de período de Sam rejeitou uma integração com sistema de tickets que não estava na proposta, mesmo que um mentor tenha gostado da demo. Ideias de continuação ganham um documento de estacionamento de uma página, datado no dia do congelamento. O dia do congelamento está no calendário compartilhado com a mesma seriedade de uma janela de engajamento. Os convites de calendário do congelamento incluem o orientador e o responsável de operações.
+
+### 44.2b Registro de riscos do projeto final
+
+Liste os riscos do projeto: aumento de escopo, atraso de dependências, indisponibilidade de revisores, confusão sobre a fronteira ética. Cada risco tem um alerta antecipado e uma mitigação. Revise o registro toda semana no ateliê. Alertas antecipados valem mais que heroísmo na semana onze. Indisponibilidade de revisores e confusão ética precisam de mitigações antes de acontecerem. O registro de Sam sinalizou uma viagem do orientador na semana seis e antecipou o ponto de controle; a mitigação foi uma demo gravada, não um atraso silencioso. O ateliê semanal abre com o registro antes das demos de funcionalidades. Riscos sem alertas antecipados são reescritos antes do fim da reunião.
+
+### 44.3b Pontos de controle com o orientador
+
+O Projeto Final I tem pontos de controle obrigatórios: proposta aceita, demo do marco 1, verificação ética intermediária. Perder um ponto de controle congela a codificação até a recuperação — a deriva silenciosa produz pilhas impossíveis de revisar. A deriva silenciosa produz pilhas que ninguém consegue revisar. Perder um ponto de controle congela a codificação até que o portão seja aprovado. A verificação ética no meio do projeto final de Sam pegou um plano de usar hostnames anonimizados, mas ainda internos do anfitrião; a codificação ficou congelada até que o conjunto sintético fosse substituído. A codificação congelada fica visível no quadro, para que colegas não façam merge de trabalho dependente. PRs dependentes de colegas ficam em rascunho enquanto o congelamento vale.
+
+### 44.1b Métricas de sucesso do projeto final
+
+Defina duas métricas que você vai mostrar na defesa (p. ex., tempo até negar tudo, percentual de merges com tickets AUTH). Se você não consegue nomeá-las no Projeto Final I, a proposta não está pronta. Tempo até negar tudo e percentual de merges com tickets AUTH são exemplos de métricas que uma defesa pode mostrar como artefatos. Se o Projeto Final I não consegue nomear duas, a proposta não está pronta. Sam escreveu "negar tudo ≤30 s após perda da política" e "100% das ampliações de escopo têm tickets AUTH" na primeira página da sua proposta.
+
+### Nota de prática
+
+Propostas do Projeto Final I que não conseguem nomear uma linha do laboratório de verificação para cada requisito Must voltam para rascunho. Mapear requisitos para linhas do laboratório cedo evita desenhos bonitos que não conseguem mostrar falha fechada no Laboratório I.
+
+
+
+Anexe o parágrafo de ética à proposta, para que os orientadores possam rejeitar escopo de uso dual antes de a codificação começar.
+
+
+
+Demos de marco que pulam a falha fechada recebem zero naquele ponto de controle, seja qual for o polimento da interface.
+
+
+
+Propostas sem o mapeamento para linhas do laboratório são devolvidas antes que o horário do ateliê seja reservado.
+
+
+### 44.4b Delimitar o projeto final com honestidade
+
+A proposta do projeto final declara o que será construído no tempo disponível — uma ferramenta de diff de escopo para o TrackScope, com testes e uma avaliação curta — e o que não será, como a integração com o sistema de tickets de cada cliente. Os orientadores julgam o projeto contra o escopo declarado, não contra um escopo maior imaginado. Os orientadores avaliam o escopo declarado, não um sistema maior imaginado. Uma ferramenta de diff de escopo com testes e uma avaliação curta basta, se for real. Os não objetivos de Sam incluíam "o sistema de tickets de cada cliente", o que impediu uma correria tardia para adicionar o Jira durante o congelamento.
+
+### Exercícios
+
+- **EX130 — Não objetivo.** Escreva três não objetivos para um projeto final sobre o PulseMap. Rubrica: 3 = três claros; 2 = dois; 1 = um; 0 = nada.
+- **EX131 — Marco.** Um marco da semana 3 com teste de aceitação. Rubrica: 3 = demo + teste; 2 = só demo; 1 = vago; 0 = nada.
+- **EX132 — Ética.** Parágrafo de ética de quatro frases. Rubrica: 3 = autorização, sintético, uso dual, divulgação; 2 = parcial; 1 = fraco; 0 = nada.
+
+### Síntese
+
+Entregue valor de plataforma relevante para a segurança; congele os não objetivos cedo.
+
+### Continue estudando — capítulo 44 de 50
+
+[← Capítulo 43 (rascunho)](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 (rascunho) →](#ch-45)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX132 (as de EX133–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** r′(t) = 8 − 2t = 0 em t = 4, então o pico é r(4) = 32 − 16 = 16 req/s. Resolver 8t − t² = 7 dá t² − 8t + 7 = 0, t = 1 ou t = 7. O teto é violado do minuto 1 ao minuto 7, seis minutos. A nota 3 exige o pico e a janela.
 
@@ -2746,6 +3406,54 @@ Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em i
 **EX107.** flood_served=64/3000 com limit=1/s burst=5.
 
 **EX108.** Cada um pode enviar 5/s → ~15/s no agregado, o triplo da ROE — é preciso um limitador compartilhado.
+
+**EX109.** Desativar as contas de avaliação; fazer a rotação dos segredos do cofre; selar os hashes das evidências; exportar as métricas de cobertura/SLA; confirmar que o interruptor de emergência está livre; agendar a retrospectiva; avisar o cliente do carimbo de tempo de encerramento.
+
+**EX110.** Ids dos achados abertos + status; último event_id processado; pedidos de aprovação pendentes; estado do interruptor de emergência — quaisquer três ou mais.
+
+**EX111.** Três violações (SYN-005, SYN-004, SYN-006); open=5.
+
+**EX112.** Uma única tentativa de login autorizada com a senha padrão antiga; esperar falha; capturar o status; guardar o hash; parar; nenhuma lista de senhas.
+
+**EX113.** Caso contrário, as métricas mentem e os SLAs parecem verdes enquanto o risco continua.
+
+**EX114.** "O novo teste confirmou apenas a homologação; a produção estava fora do escopo da validação."
+
+**EX115.** Fixar a versão exata para a janela; correções de emergência precisam de um mini laboratório de verificação (Capítulo 30) antes da troca.
+
+**EX116.** `put_evidence(key: Hash, body: bytes) -> None` / `get_evidence(key) -> bytes`.
+
+**EX117.** "Dono: esquadrão Platform Assessment (principal Sam Ito); reserva: engenheiro de segurança de plantão; contato: #findingsdesk."
+
+**EX118.** Caso contrário, o PulseMap alega técnicas observadas sem um registro durável de achado — a métrica mente sob falha parcial.
+
+**EX119.** Continua permitindo/negando pela política local; enfileira rascunhos; alerta quando a fila cresce; nunca ALLOW em erros de política.
+
+**EX120.** Quem implementou a mudança e um segundo engenheiro que não escreveu o código (revisor).
+
+**EX121.** Pular a lista de negação para hosts permitidos antes, ou falhar aberto quando o serviço de política está lento.
+
+**EX122.** A chave do cache inclui versão da política, host, porta e flags de contexto; TTL curto; invalidação forçada na publicação da política.
+
+**EX123.** As horas de engajamento são escassas; agende primeiro os ativos de alta exposição×raio de impacto (ranking do laboratório).
+
+**EX124.** "Exigir um denominador nos relatórios de cobertura reduz as alegações exageradas de 'percentual seguro' feitas por executivos em pesquisas pós-engajamento?"
+
+**EX125.** Contagem de merges de ampliação de escopo sem ticket AUTH por trimestre (ou de tentativas bloqueadas).
+
+**EX126.** "Esse projeto cruza a linha de uso dual do curso; considere estudar taxas de falha fechada ou políticas de novo teste no lugar."
+
+**EX127.** "Se o arquivo de regras de autorização não puder ser carregado, o sistema recusa todas as ações de teste e alerta a equipe — ele não continua sob incerteza."
+
+**EX128.** "Host depot-sql-prod-03" → "host sintético db-01 na faixa do laboratório da Riverstone".
+
+**EX129.** Residência de dados; proibições de compra de SaaS estrangeiro; requisitos de retenção/registro para pedidos de acesso à informação (FOIA); comitês consultivos de mudança — quaisquer dois concretos.
+
+**EX130.** Sem selo de risco residual; sem descoberta automática de ATT&CK ao vivo em redes de clientes; sem armazenamento de payloads.
+
+**EX131.** "O arquivo de kill switch interrompe todos os allows em até 30 s — aceitação: unitário+laboratório V-KS verdes com dados sintéticos."
+
+**EX132.** O trabalho usa dados sintéticos sob as ROE do curso. Nenhum alvo não autorizado. Nenhum desenvolvimento de exploit. Problemas reais encontrados por acidente vão para a divulgação responsável, não para o apêndice do relatório.
 
 <a id="references"></a>
 ## Referências
