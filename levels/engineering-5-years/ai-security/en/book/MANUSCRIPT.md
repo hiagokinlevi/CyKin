@@ -1461,27 +1461,39 @@ You will (1) build data-flow diagrams for AI systems with trust levels; (2) mode
 
 Draw external entities (users, suppliers), processes (ingestion, model, policy, tools), data stores (training set, vector store, logs) and flows. Annotate each flow with trust level and data classification. AI adds new elements: training pipelines, model registries, prompt templates and evaluation stores.
 
+Annotations do the analytical work. A flow labelled 'supplier bulletin, external, unclassified' into a process labelled 'model, can propose work orders' is visibly a path from low trust to high impact. Prompt templates belong on the diagram as stores because whoever edits them changes system behaviour, and model registries do too, since a swapped model changes every downstream decision.
+
 ### 22.2 Provenance and taint
 
 Taint tracking marks data from untrusted sources and follows it through processing. In LLM systems, any text derived from untrusted input — including a model's summary of an untrusted document — remains tainted. Tool calls whose arguments are tainted deserve extra checks. Greshake et al. (arXiv:2302.12173) demonstrated how injected content travels from a retrieved source into actions.
+
+Summaries feel cleaner than their source, but an instruction can survive summarising, or the summary itself can be steered by the source text. Wrench therefore carries a taint flag from each retrieved chunk through to any proposal built from it, and the policy service requires confirmation, with the source shown, whenever a tool argument depends on tainted text.
 
 ### 22.3 Assets, entry points, sinks
 
 Assets: data, weights, decisions, credentials, reputation. Entry points: anywhere data enters (uploads, retrieval, sensors, feedback). Privileged sinks: actions with impact (sending e-mail, writing records, actuating equipment). The most important paths run from low-trust entry points to high-impact sinks.
 
+Listing the three separately prevents a common blind spot: entry points that do not look like inputs. Feedback buttons, sensor readings and documents uploaded by colleagues all enter the system. Sinks are listed by impact, so the analysis spends most time on paths that end in physical or financial consequences. For each such path, the team names the control that stands between the entry point and the sink, or records that none exists yet.
+
 ### 22.4 Data models
 
 Describe training data composition (sources, classes, conditions), its update process and who can modify it. A datasheet (Gebru et al., arXiv:1803.09010) is the documentation form; the data model is the engineering form.
 
+The data model states facts engineers can check and act on: what share of TrackEye's images are dawn runs, which supplier contributed each batch, how relabels are approved and who holds write access to the store. When the dawn gap appeared, the data model showed immediately that dawn images were scarce, pointing to the fix. It also defines the update process, so a new source cannot be added without passing provenance and sampling checks.
+
 ### 22.5 Worked example (synthetic NRS case)
 
 Sam's DFD for Wrench marked supplier bulletins and contractor notes as low trust, manuals as medium (they come from manufacturers but are rarely altered), and technician chat as authenticated. Taint propagated through the model's summaries into the `create_work_order` arguments. Three privileged sinks were found: work-order creation, parts e-mail and a forgotten "update asset status" tool that a pilot had enabled. Sam removed the third tool until it had its own review.
+
+The forgotten tool shows why diagrams are built from configuration, not memory.
 
 ### 22.6 Errors and limits
 
 - Diagrams without trust levels.
 - Treating model output as clean because the model "processed" it.
 - Missing forgotten tools and data stores.
+
+A diagram without trust levels shows plumbing but not risk. Treating model output as clean ignores that the model can repeat or follow what it read. Forgotten tools and stores are the most dangerous omissions, because nobody reviews controls for components they do not know exist. Sam builds diagrams from the deployed configuration and tool registry, then compares them with the team's own sketch; the differences are usually where the findings are.
 
 ### Exercises
 
@@ -1509,17 +1521,25 @@ You will (1) run a structured threat analysis on an AI system using STRIDE-style
 
 Walk each element of the data-flow diagram and ask: can it be *spoofed* (fake sensor, fake supplier), *tampered* (poisoned data, modified weights), *repudiated* (untraceable agent action), *disclosed* (membership inference, prompt leakage), *denied* (resource exhaustion), or used to *elevate privilege* (prompt injection reaching a tool)? Add AI-specific prompts: can the model be *evaded*, *extracted*, *backdoored*, or made to *confabulate* convincingly?
 
+Walking element by element keeps the analysis complete in a way that brainstorming does not. Each question is asked even when the answer seems obvious, and 'not applicable' is written down with a reason.
+
 ### 23.2 Mapping to shared catalogues
 
 MITRE ATLAS organises adversary behaviour against AI into tactics (such as reconnaissance, resource development, initial access, ML model access, persistence, defense evasion, discovery, collection, ML attack staging, exfiltration and impact) and techniques, with real-world case studies. Mapping your threats to ATLAS techniques and OWASP LLM entries helps reviewers check coverage and links to known mitigations.
+
+Mapping is a cross-check rather than a substitute for analysis. If a catalogue technique has no matching threat in the model, the team asks whether it was missed or genuinely does not apply. Case studies are especially useful for convincing stakeholders that a threat is real, since they describe attacks that actually happened.
 
 ### 23.3 Combining with failure analysis
 
 Threats and failures often share effects: a missed defect can come from glare (failure) or a marking (attack). Analyse them together, so that controls such as stratified monitoring and manual fallback cover both.
 
+Joint analysis also avoids duplicated work and conflicting controls. A manual fallback designed for glare can be triggered by an attacker who wants to slow inspections, so the fallback itself needs a rate limit or an alert. Sam's hazard and threat tables share identifiers for effects, so a reviewer can see every cause, accidental or deliberate, that leads to a missed defect, and check that some control covers each of them.
+
 ### 23.4 Ranking
 
 Estimate likelihood (attacker capability and motivation, exposure) and impact (safety, financial, legal, reputational). Use a simple ordinal scale and document reasoning. Re-rank when the system or threat landscape changes.
+
+Ordinal scales such as low, medium and high are honest about precision: likelihood estimates for attacks are judgements, not measurements. Writing the reasoning beside each rating, for example 'medium: supplier bulletins are public and editable by any supplier staff', lets reviewers challenge the judgement rather than the number. Re-ranking is triggered by events, such as a new tool or a published attack, not only by the calendar.
 
 ### 23.4b Keeping the analysis alive
 
@@ -1529,11 +1549,15 @@ Threat models age. New tools, data sources, model versions and published attacks
 
 Sam's top five for Wrench: (1) indirect injection via supplier bulletin → work-order tool (likelihood medium, impact high); (2) contractor-note injection (medium/high); (3) sensitive disclosure from HR documents in retrieval (medium/medium, mitigated in Chapter 13); (4) system-prompt extraction revealing tool names (high/low); (5) resource exhaustion via very long documents (medium/medium). Each was mapped to OWASP (LLM01, LLM01, LLM02, LLM07, LLM10) and to ATLAS techniques for prompt injection and denial of ML service.
 
+The two injection threats share an entry in each catalogue but stay separate in the list because their sources, and thus their controls, differ.
+
 ### 23.6 Errors and limits
 
 - Threat lists without the system model behind them.
 - Ignoring non-adversarial failures with the same effect.
 - Rankings never revisited.
+
+A threat list without a system model is generic and misses the paths specific to the design. Ignoring failures that have the same effect as attacks leads to duplicate controls or gaps. Rankings frozen at design time drift out of date as tools and data sources change. Sam ties the threat list to the diagram's version, so any change to the diagram flags the analysis for review.
 
 ### Exercises
 
@@ -1605,6 +1629,8 @@ eps=0.75 accuracy=0.660
 eps=1.00 accuracy=0.505
 ```
 
+The curve tells a fuller story than any single point. At ε = 0.25 the model still holds 95%, but by 0.75 it is down to 66%, and at 1.0 it is guessing. Whether that matters depends on how large a change an attacker can realistically make, which is why the budget is set from the threat model.
+
 ### 24.2 Poisoning evaluation
 
 Poisoning tests add or relabel training data and measure both clean accuracy and targeted effects. Backdoor success can be high while clean accuracy is unchanged, so both metrics are essential.
@@ -1661,6 +1687,8 @@ backdoor: add n triggered class-1 points labelled 0
   poison_points= 80 clean_accuracy=0.968 attack_success=0.980
 ```
 
+The output shows both effects. Flipping up to 40% of class-1 labels costs only two points of clean accuracy, because the centroid moves slowly. The backdoor is subtler: with 80 triggered points, clean accuracy stays at 0.968 while 98% of triggered inputs are misclassified. A test that checked only clean accuracy would pass this poisoned model.
+
 ### 24.3 Membership-inference evaluation
 
 Privacy tests measure how well an attacker can distinguish training members from non-members, as AUC and as true-positive rate at low false-positive rate.
@@ -1697,9 +1725,13 @@ k= 5 attack_auc=0.521 best_advantage=0.073
 k=25 attack_auc=0.520 best_advantage=0.060
 ```
 
+The lab shows overfitting as the cause: the 1-nearest-neighbour model memorises each training point, giving an attack AUC of 0.600 and an advantage of 0.200. Averaging over five neighbours already brings AUC down to 0.521, and 25 neighbours change little more, so the attacker ends barely better than guessing. AUC alone can still hide risk: an attack that identifies a few members with near certainty matters even when the average looks harmless, which is why the true-positive rate at a low false-positive rate is reported too.
+
 ### 24.4 From toys to real components
 
 Toy models make concepts measurable in seconds; real models need stronger attacks (multi-step PGD per Madry et al., arXiv:1706.06083; adaptive attacks per Carlini et al., arXiv:1902.06705), larger test sets and authorised environments. Always evaluate the deployed artefact. Never run these methods against systems you are not authorised to test.
+
+The labs teach what the metrics mean; they do not show how a real model will behave. Real evaluations also need budgets justified by the threat model and enough items for narrow intervals.
 
 ### 24.4b Reading results responsibly
 
@@ -1709,11 +1741,15 @@ Each evaluation answers a narrow question: "how does *this* model behave under *
 
 Sam ran the three labs to brief NRS managers in fifteen minutes: evasion shows sensitivity to small changes, poisoning shows why the labelling contractor matters, and membership inference shows why Pulse's sensor data should not be exposed with full confidences. Sam then scoped a real evaluation of TrackEye in the test yard with printed markings, with the operations director's written authorization.
 
+Using toy models for the briefing kept attention on concepts rather than on TrackEye's actual numbers, which did not yet exist.
+
 ### 24.6 Errors and limits
 
 - Reporting one ε point.
 - Measuring only clean accuracy after poisoning.
 - Presenting toy results as evidence about real systems.
+
+A single ε value hides how quickly performance falls and invites cherry-picking the budget that looks best. Measuring only clean accuracy after poisoning misses backdoors entirely, as the lab's 80-point row shows. Toy results describe toy models; presenting them as evidence about TrackEye or Wrench would mislead decision-makers. Sam labels every toy result as illustrative on the slide where it appears. The label stays when slides are reused.
 
 ### Exercises
 
