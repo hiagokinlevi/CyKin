@@ -2186,9 +2186,15 @@ T1021 Remote Services                    PLANNED-NOT-SEEN
 coverage=5/7 (71%)
 ```
 
+Planned sets make the denominator a promise, not a scavenger hunt through all of ATT&CK. Vanity percentages that divide by the whole matrix hide skipped techniques. PulseMap refuses to render coverage until the planned set is saved with the engagement id. Sam reviews the planned set with the client contact so both sides agree what incomplete means.
+
 ### 29.2 Activity vs outcome
 
 Activity: tools launched, packets sent. Outcome: verified remediations, SLA breaches closed, out-of-scope probes. Steer on outcomes; use activity only for capacity planning.
+
+Packets and tool launches fill capacity charts; they do not prove riders are safer. Outcomes such as closed SLA breaches and verified remediations are what leadership should fund. Sam keeps activity metrics on a separate dashboard labelled capacity only, so nobody confuses busyness with progress. Capacity planning still needs activity, just not in the outcome slide.
+
+Outcome slides stay free of packet counts for that reason.
 
 ### 29.3 One-sided error
 
@@ -2196,21 +2202,37 @@ Prefer metrics that, if wrong, under-claim success (e.g. count a fix only after 
 
 > **Synthetic case — Riverstone Transit.** Coverage 5/7 (71%) with two planned-not-seen — the report said "incomplete planned coverage", not "71% safe".
 
+Counting a fix only after re-test biases toward under-claiming, which is the safer lie if a lie must exist. Over-claiming security is the failure Albrecht and Jensen attack. The synthetic report's wording, incomplete planned coverage, models the habit Sam wants in every PulseMap export.
+
 ### 29.4 Errors and limits
 
 Denominators stolen from another engagement invalidate the metric.
+
+Borrowing last quarter's denominator silently invents coverage. Each engagement carries its own planned set file, hashed into the dossier. Sam's CI fails a dashboard build that references a planned set from a different engagement id, and reviewers treat a missing engagement id on a widget as a defect equal to a wrong formula. Cross-engagement joins are allowed only in research notebooks, never in live dashboards.
+
+Research notebooks that join many windows are labelled non-operational in their headers.
 
 ### 29.2b Sampling without lying
 
 If you sample 50 of 500 hosts, say so and do not scale the finding count as if you visited all 500. Stratify by exposure when possible (Chapter 11 inventory). A honest sample with a confidence note beats a fake census.
 
+Scaling sampled findings to the full estate is how small labs become fake censuses. Stratifying by exposure keeps rare high-impact hosts from vanishing in averages. A confidence note next to the sample size is mandatory in Sam's report template before the finding count is shown.
+
 ### 29.3b Dashboards as arguments
 
 Every dashboard widget is a claim. Caption widgets with the formula and the engagement id. A widget without a formula is decoration and should be removed in review.
 
+Formulas and engagement ids turn widgets into checkable claims. Decoration without formulas waste review time and imply precision they lack. Sam deletes uncaptioned widgets in the same pull request that would have added them, and he links each remaining caption to the notebook cell that computes it.
+
+Refused widgets appear in the changelog so temptation stays visible to auditors.
+
 ### 29.1b Cohort comparisons
 
 Comparing coverage across engagements requires the same planning rules. Publish the planning guide beside PulseMap so "71%" in March means the same kind of denominator as "71%" in September.
+
+Same planning rules make March and September percentages comparable. A published planning guide beside PulseMap is the contract for that sameness. Sam versions the guide and records which version each engagement used, so a rule change cannot rewrite history by accident when someone reloads an old dashboard.
+
+Kickoff checklists fail when the guide pin is blank or points at a draft.
 
 ### Practice note
 
@@ -2241,6 +2263,10 @@ You will (1) run a verification plan against TrackScope; (2) record pass/fail wi
 ### 30.1 Plan
 
 Tests: allow in-scope; deny deny-list; deny bad port; fail-closed missing policy; hours gate; concurrency gate. Each row: id, setup, action, expected, evidence path.
+
+Rows with ids and expected evidence paths make the lab executable by someone who did not write the feature. Fail-closed missing policy sits beside happier allow cases so it cannot be skipped. Sam prints the plan as a checklist the independent runner initials. Initials without timestamps are rejected; the runner records time in UTC.
+
+UTC timestamps on initials stop arguments about whether the run finished before a hotfix landed.
 
 ### 30.2 Execution
 
@@ -2286,27 +2312,51 @@ action=service-enum         when=18:00 conc= 2 approved=False -> DENY outside-ho
 action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrency
 ```
 
+Synthetic hosts keep the lab inside the course's safety boundary. A fail-open result is a blocker, not a data point to finish later. Capturing config hashes ties the run to a known build. Sam's lab script aborts the remaining rows when any safety row fails.
+
+Blocked rows keep their evidence paths empty until a re-run clears them.
+
 ### 30.3 Report
 
 A one-page lab report: environment version, table of results, open blockers, sign-off. Attach hashes.
 
 > **Synthetic case — Riverstone Transit.** Lab I failed the missing-policy row once; release halted until S-3 was fixed (Chapter 21).
 
+One page with versions, results, blockers and sign-off is enough for a release gate. Hashes beat screenshots that cannot be re-checked. The missing-policy failure that halted a release shows why the report's blocker list matters. Sam attaches the report under the same tag as the binary.
+
+Returned reports re-enter the same review queue as brand-new lab packs.
+
 ### 30.4 Errors and limits
 
 Labs on shared clients collide; book the synthetic range.
+
+Shared synthetic ranges need booking the same way production windows do. Collisions produce flaky fails that train people to ignore lab red. Sam's calendar blocks the range and posts the booking link in the lab ticket, and a run without a booking is discarded even if every row looked green. Discarded runs still keep their logs under a failed tag for learning.
+
+Failed tags remain searchable so recurring booking mistakes show up in term reviews.
 
 ### 30.2b Golden fixtures
 
 Keep a sealed directory of synthetic fixtures with known expected decisions. Lab runs must hash-match the fixture set before they count as release evidence. Fixtures drift when someone "fixes" them to match a buggy build — protect them with CODEOWNERS.
 
+CODEOWNERS on fixtures stops quiet edits that hide bugs. Hash-matching before counting a run as release evidence keeps the sealed set honest. Sam's fixture change process requires a paired update to expected decisions and a second reviewer.
+
+Authors of the buggy build under test cannot approve their own fixture edits.
+
 ### 30.3b Independent runner
 
 Lab I is run by someone who did not implement the change under test. Pairing is fine for debugging afterward; the recorded pass needs an independent green checklist.
 
+Authors debugging afterward is fine; the recorded green must come from someone else. Independence is about incentives, not distrust of skill. Sam assigns runners from a rotating roster published each term. Roster conflicts are resolved by the lab lead, not by volunteering the author.
+
+Lab leads publish the roster Fridays so weekends do not scramble independence.
+
 ### 30.1b Lab data retention
 
 Lab result logs are evidence; retain them with the release tag. Deleting green lab logs to save space destroys the ability to investigate a later regression.
+
+Green logs explain later regressions when a hotfix claims nothing changed. Retention tied to the release tag makes the link mechanical. Sam's delete scripts refuse lab paths still referenced by a living tag, and they print the referencing tag so operators know what would break.
+
+Near-miss pages include the delete command that was refused and the user who tried it.
 
 ### Practice note
 
@@ -2316,6 +2366,8 @@ Photograph or export the lab environment inventory (package versions, kernel, po
 ### 30.4b What the first lab run proved
 
 The first verification run proved that TrackScope denies every out-of-scope address in the golden fixture set and logs each denial with the rule that fired. It did not prove behaviour under concurrent requests or with malformed scope files; Sam lists those as open items for Laboratory II.
+
+Naming open items, concurrency and malformed files, keeps Laboratory I from overclaiming. Deny-all on golden fixtures is necessary and not sufficient. Sam copies those open items into Laboratory II's plan on day one of the next sprint.
 
 ### Exercises
 
@@ -2373,9 +2425,15 @@ c4bfba3b72 web-01  missing-header      /login    occurrences=2
 296a3331f0 web-02  default-credential  admin-ui  occurrences=2
 ```
 
+Full-body PUT with stable ids makes retries safe and duplicates rare. Fingerprints propose; humans confirm when collisions might hide different root causes. Sam's API docs show the double-PUT example from the lab as the normative client pattern. Normative examples in docs are covered by contract tests that fail on drift.
+
+Contract tests fail the docs build when the normative double-PUT example drifts.
+
 ### 31.2 Validate on write
 
 Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes for the UI.
+
+Enums and forbidden names keep empty scores and payloads out at the edge. Machine-readable codes let the UI explain without parsing English. Sam adds a UI fixture for each new validation code in the same change. UI fixtures render the code string and the human explanation side by side. Each new code also appears in the public error catalogue used by mobile clients.
 
 ### 31.3 API versioning
 
@@ -2383,21 +2441,35 @@ Prefix /v1/; additive changes only within v1. Breaking changes require /v2/ and 
 
 > **Synthetic case — Riverstone Transit.** A mobile client sent `risk_score`; validator rejected it — empty scores stay out (Chapter 15).
 
+Additive v1 rules protect mobile clients from surprise breaks. Rejecting risk_score enforces the empty-score ban from fundamentals. Migration notes for v2 are reviewed by PulseMap owners before merge. Sam's compatibility tests run old clients against new servers nightly.
+
+Tickets from nightly breaks name the oldest client still in the support matrix.
+
 ### 31.4 Errors and limits
 
 Idempotency keys must not be derived from wall-clock alone.
+
+Wall-clock idempotency keys collide under retries in the same second. Keys must include the finding id or a client-generated nonce. Sam rejects client libraries that hash only timestamps, and the rejection message names a required key shape so authors do not invent another weak scheme. Required key shapes are illustrated with valid and invalid examples in the error body. Invalid examples in the error body are generated from the same fixture the tests use.
 
 ### 31.2b Partial updates
 
 PATCH that allows severity changes without evidence references invites silent downgrades. Prefer full PUT of the validated body, or a restricted PATCH that cannot clear evidence hashes or change status to closed without a re-test pointer.
 
+Silent severity downgrades without evidence are how risk acceptance hides. Restricted PATCH surfaces make closed-without-retest impossible. Sam prefers PUT in the official SDK and leaves PATCH for admin tooling with extra audit fields. Admin PATCH audit fields include prior severity and the actor who changed it.
+
 ### 31.3b Bulk import
 
 Bulk finding import from scanners must pass the same schema validation as interactive create, including forbidden-field checks and fingerprint idempotency. A separate "trusted import" path is how payloads sneak into the store.
 
+Trusted import paths are how scanners bypass the schema. Same validation as interactive create keeps fingerprints and forbidden fields consistent. Sam's import job logs the scanner id as evidence, never as a reason to skip checks. Skipping checks for a scanner brand is filed as a wontfix with a link to this rule.
+
 ### 31.1b Optimistic concurrency
 
 Use ETags or version numbers on findings so two remediators do not clobber each other. A lost update that clears a re-test pointer looks like a mysterious reopen later.
+
+ETags make lost updates visible as conflicts instead of mystery reopens. Clearing a re-test pointer in a clobber is a safety bug. Sam's UI forces a reload-and-merge when a 412 arrives. Merge tools never auto-clear re-test pointers when resolving conflicts. Automated merge bots are disabled on findings paths for that reason.
+
+Conflict merges that touch re-test fields require a second human click to confirm.
 
 ### Practice note
 
@@ -2411,6 +2483,10 @@ Document the upsert semantics in the OpenAPI description so mobile clients do no
 ### 31.4b Migration of stored findings
 
 When the findings schema gains a field, existing FindingsDesk records need a default or a backfill. Sam writes the migration to run on a copy first, compares record counts and checksums before and after, and keeps the old schema readable for one release.
+
+Copy-first migrations with checksum compares catch dropped rows before production. Keeping the old schema readable for one release cushions slow clients. Sam stores before and after checksums in the migration ticket.
+
+Checklist software refuses done status until both checksum fields are non-empty.
 
 ### Exercises
 
@@ -2437,6 +2513,10 @@ You will (1) set availability targets for assessment tools; (2) use retries with
 ### 32.1 Targets
 
 TrackScope deny path: high availability during engagement windows. PulseMap dashboards: best-effort. State the target; do not imply five-nines without a budget.
+
+Stating best-effort for dashboards stops five-nines folklore. Deny path availability during windows is the promise that protects the client. Sam publishes the target next to the measured value each month. Monthly values older than five weeks are marked stale on the status page. Stale markers link to the last measurement job so operators can re-run it.
+
+Re-run links pre-fill the measurement job id so operators do not hunt through CI.
 
 ### 32.2 Retries
 
@@ -2467,27 +2547,51 @@ max_tries=3 success=988/1000 theory=0.9920
 max_tries=5 success=1000/1000 theory=0.9997
 ```
 
+Deadlines and jitter keep retries from becoming stampedes. Caps protect the ROE rate budget derived earlier. Sam configures upload retries from the same config file as the ROE volume limit so they cannot drift apart, and a unit test fails if the product of caps and batch size exceeds the budget.
+
+Comments citing ROE clauses are linted for a matching clause id in the ROE file.
+
 ### 32.3 Safe degradation
 
 If FindingsDesk is down, continue deny/allow locally and queue finding drafts on disk — never fail open on scope checks.
 
 > **Synthetic case — Riverstone Transit.** During a FindingsDesk outage, Sam's laptop queue held 14 drafts; TrackScope keeps denying out-of-scope.
 
+Local deny/allow with on-disk draft queues preserves safety when FindingsDesk dies. Fail-open on scope is never a degradation mode. The fourteen queued drafts in the outage story show the pattern working. Sam drills the queue replay path after every FindingsDesk release.
+
+After deletion, a count of remaining synthetic drafts must be zero or the drill fails.
+
 ### 32.4 Errors and limits
 
 Retries against a rate-limited API can look like abuse; coordinate budgets with the ROE.
+
+Retry storms against a limited API look like abuse to defenders watching the same network. Budgets agreed in the ROE need to include tool retries, not only logical actions. Sam shows the expected attempt count in kickoff, and he lowers scanner concurrency when the client's monitoring channel reports rate-limit alarms. Kickoff slides that omit attempt counts are corrected before signatures.
+
+Signature packets without attempt counts bounce from the counsel review mailbox.
 
 ### 32.2b Back-pressure
 
 When the draft queue grows past a threshold, stop starting new discovery methods and page the lead. Continuing to scan while findings cannot be recorded creates untracked risk. Back-pressure is a safety feature, not only a performance feature.
 
+Untracked findings while scanning continues is silent scope risk. Stopping new discovery methods pages the lead into a conscious choice. Sam's threshold is set low enough that a laptop disk queue cannot grow overnight unnoticed.
+
+Depth alarms fire before age alarms when laptop disks fill during outages.
+
 ### 32.3b Chaos in synthetic only
 
 Reliability experiments (kill pods, partition networks) run in the synthetic range. Never chaos-test during a client's signed window. Record experiment ids separately from engagement ids so metrics do not mix.
 
+Signed windows are for authorized assessment, not experiments. Separate experiment ids keep chaos metrics out of engagement reports. Sam's chaos scripts refuse to run if an engagement id is set in the environment. Environment guards are tested by intentionally setting a fake engagement id in CI.
+
+CI asserts the guard by expecting a non-zero exit when the fake id is present.
+
 ### 32.1b Dependency health checks
 
 TrackScope should health-check policy storage and event sink at start of window. Starting an engagement blind and discovering a broken sink mid-scan is an operations failure the reliability chapter is meant to prevent.
+
+Blind starts that discover a broken sink mid-scan waste the client's patience and create partial evidence. Health checks at window start are cheaper than apologies. Sam blocks the start button until policy storage and the event sink both answer.
+
+Plain-text failure lines are copied into the engagement start chat by the lead.
 
 ### Practice note
 
@@ -2497,6 +2601,8 @@ Define error budgets for the deny path separately from best-effort UI budgets. B
 ### 32.4b Measuring whether targets were met
 
 An availability target is only meaningful if it is measured. TrackScope records every deny or allow decision with a timestamp, so the team can compute the share of engagement-window minutes in which the service answered within its latency budget. Last month's synthetic report showed 99.6% against a 99.5% target.
+
+Timestamps on every decision make availability computable instead of anecdotal. Last month's 99.6% against 99.5% is the kind of ugly number Sam prefers. He charts minutes inside budget beside minutes in the window so a short outage cannot hide in averages, and the chart is captioned with the same formula the reliability target uses.
 
 ### Exercises
 
@@ -2524,9 +2630,17 @@ You will (1) write stop conditions as executable checks; (2) plan rollback of to
 
 Stop conditions are code: deny-list, latency canary, client kill-switch file. Humans also call stop; software must not disagree with a human stop.
 
+Code that can disagree with a human stop is a hazard. Kill-switch files, deny-lists and canaries must honour the same halt. Sam's stop API flips a single flag that every method polls within the ROE time bound. Poll intervals are asserted in a unit test tied to the ROE time bound.
+
+Unit tests fail if anyone lengthens the poll interval past the bound without updating the ROE.
+
 ### 33.2 Rollback
 
 Pin releases; keep previous TrackScope binary signed. If a new build mis-evaluates scope, roll back within minutes, not "after the sprint".
+
+Signed previous binaries make minutes-scale rollback real. Waiting for a sprint after a bad scope evaluation is unacceptable. Sam keeps the last known-good on the jumphost with its signature verified at start. Signature verification failure at start pages before any method launches. Methods refuse to start while the signature check is red.
+
+Red signature checks also freeze FindingsDesk writes from that jumphost until cleared.
 
 ### 33.3 Tabletop
 
@@ -2534,21 +2648,39 @@ Walk the 11:10 timeline: who is called, what is said, what is logged, when resum
 
 > **Synthetic case — Riverstone Transit.** Tabletop found the kill-switch file path undocumented; runbook v1.4 fixed it before the next window.
 
+Walking who-calls-whom finds missing paths cheaply. Undocumented kill-switch locations are typical sticky notes. Updating the runbook before the next window is the acceptance test for the tabletop. Sam schedules one tabletop per term and records attendance.
+
+Schedulers read attendance before naming a lead for the next client window.
+
 ### 33.4 Errors and limits
 
 Resilience theatre is a binder nobody opens. Drill once per term.
+
+Binders nobody opens are worse than no binder because they create false assurance. A drilled stop once per term is the minimum. Sam marks the term incomplete in the training record until the drill measure is filed, and he refuses to staff a lead who has not joined a drill in the current term. Training records are visible to schedulers assigning windows.
+
+Visible records let substitutes prove readiness without asking around the room.
 
 ### 33.2b Communication templates
 
 Pre-write the SMS/email for stop, for resume, and for rollback. Under stress people improvise and omit the ROE version or the next checkpoint time. Templates live in the runbook and are tested in the tabletop.
 
+Templates carry ROE version and next checkpoint so stress cannot omit them. Testing them in the tabletop finds missing fields. Sam stores templates beside the runbook with the same review path as code. Template review uses the same CODEOWNERS path as TrackScope safety code.
+
 ### 33.3b Resume authority
 
 Who may resume after a stop? Name the role in the ROE. TrackScope should require a resume token tied to that role and ScopeVersion, not a Boolean flip anyone on the jumphost can toggle.
 
+A Boolean on the jumphost is not authorization. Resume tokens tied to role and ScopeVersion match how stop was granted. Sam's token expires quickly so a leftover resume cannot outlive the decision. Expired resume tokens log a deny with reason resume-expired for later audit.
+
+Resume-expired denies are charted weekly beside ordinary deny-list hits.
+
 ### 33.1b Secondary contacts
 
 Stop conditions that page only one person fail when that person is offline. Maintain primary and secondary contacts with acknowledged handoff, tested in the tabletop.
+
+Single points of human failure break stop conditions as surely as single points of code failure. Acknowledged handoff is tested, not assumed. Sam's tabletop always pages the secondary once on purpose. Secondary pages that go unanswered fail the tabletop even if the primary acted.
+
+Unanswered secondary pages open a staffing ticket before the tabletop can close.
 
 ### Practice note
 
@@ -2558,6 +2690,8 @@ After every real stop, run a five-minute hotwash: what fired, what lagged, what 
 ### 33.4b Proving the stop button works
 
 Before each engagement, the lead presses the stop control in the synthetic range and checks that every running method halts within the time written in the ROE. The result, with the measured time, is attached to the engagement record; an untested stop is treated as no stop.
+
+Measured halt times attached to the engagement record make the ROE promise checkable. Untested stops equal no stop in Sam's readiness review. He fails kickoff if the last synthetic stop measure is older than seven days or slower than the written bound.
 
 ### Exercises
 
@@ -2585,9 +2719,17 @@ You will (1) integrate TrackScope events into FindingsDesk; (2) define idempoten
 
 Deny/allow events: schema version, ids, timestamps (UTC), targets, reasons. Consumers ignore unknown fields; producers stay additive.
 
+UTC timestamps and additive schemas keep consumers compatible. Ignoring unknown fields is required so producers can evolve. Sam publishes the contract in a repo both teams own, with examples for each reason code. Examples are golden fixtures; changing them needs the contract owner's review. Contract owners meet when an example and a producer disagree.
+
+Disagreements pause producer deploys until the example pack is updated.
+
 ### 34.2 Idempotent consumers
 
 FindingsDesk keys processed events by event_id. Replaying the log must not create duplicate findings.
+
+event_id keys turn replay from a duplication bug into a recovery tool. The three duplicated tickets in the storm story are the cautionary tale. Sam's consumer suite includes a double-delivery fixture for every event type. Double-delivery fixtures assert ticket counts stay at one after replay. Ticket count assertions use the findings API, not only log greps.
+
+API-based counts survive log rotation that would fool a grep-only check.
 
 ### 34.3 Contract tests
 
@@ -2595,21 +2737,41 @@ Fixture JSON for each reason code; consumer tests assert resulting ticket fields
 
 > **Synthetic case — Riverstone Transit.** A replay storm duplicated three tickets until event_id idempotency landed.
 
+Fixtures per reason code lock ticket fields to the contract. CI on synthetic JSON catches breaks before engagements. Sam requires PulseMap and FindingsDesk both consume the same fixture pack. Shared fixture packs live in the contract repo, not copied into each service.
+
+Copying fixtures into service trees is a CI offence detected by a hash mismatch job.
+
 ### 34.4 Errors and limits
 
 Clock skew between hosts muddies timelines; prefer event time + receive time.
+
+Event time plus receive time explains skew without blaming one host's clock. Sam's timeline UI always shows both, and analysts are trained to sort by event time while watching receive time for transport delay when reconstructing a stop. Sorting guidance is printed in the analyst handbook beside a skew screenshot. Handbook screenshots are refreshed when the UI changes, under the same review as code.
+
+Skew screenshots are synthetic and labelled so they are never mistaken for incident proof.
 
 ### 34.2b Poison events
 
 Consumers must validate schema and reject events with future timestamps, unknown policy versions, or targets that fail format checks. A poisoned event stream should quarantine, not create findings against random hosts.
 
+Quarantine beats creating findings against garbage hosts. Future timestamps and unknown policy versions are reject reasons. Sam pages on quarantine growth the same way he pages on deny spikes. Quarantine pages include the producing service name for fast rollback.
+
+Fast rollback runbooks open on the producing service name from the page payload.
+
 ### 34.3b Schema evolution drill
 
 Practice adding an optional field end-to-end in a dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
 
+Dry runs invent shortcuts if the only practice is emergencies. End-to-end optional fields keep muscles memory honest. Sam schedules a drill each term with a throwaway field name. Throwaway fields are deleted at term end with a migration note. Migration notes for throwaway fields still name the owning team.
+
+Owning teams acknowledge migration notes in the contract repo before the field vanishes.
+
 ### 34.1b Dead-letter queues
 
 Events that fail validation go to a dead-letter queue with an alert — not to `/dev/null` and not into findings. Operators replay after fixing the producer. Invisible drops recreate repudiation.
+
+Invisible drops recreate repudiation. Alerts on dead letters force operators to replay after fixes. Sam's runbook forbids filtering alerts on that queue without an AUTH note. AUTH notes for alert filters expire after seven days unless renewed. Renewals require the same dual approval as the original AUTH note.
+
+Expired filters re-arm automatically so silence cannot become permanent by neglect.
 
 ### Practice note
 
@@ -2627,6 +2789,10 @@ Dead-letter age is an SLO chart beside deny-path latency.
 ### 34.4b Ownership of the event contract
 
 Each event type on the bus has one owning team that approves changes. PulseMap consumes FindingsDesk events but cannot alter their schema; it files a request instead, which keeps the contract stable for every other consumer.
+
+One owning team per event type stops drive-by incompatible changes. Approvals are recorded in the contract repo. Sam blocks merges that touch a type without the owner team's review. Owner team aliases are group addresses, not individuals who might leave.
+
+Group addresses keep ownership when individuals rotate off the platform squad.
 
 ### Exercises
 
@@ -2654,9 +2820,15 @@ You will (1) redesign PulseMap's coverage UI against under-claim principles; (2)
 
 Stakeholders want a big green percentage. Design a UI that shows planned/observed/not-seen and refuses a single "security score".
 
+Studio II asks for honest coverage copy people can actually read under time pressure. Empty scores and vanity badges are the enemy. Sam supplies a bad first draft on purpose so teams practise deleting claims. Deleting claims is graded as progress when the claim lacked evidence. Progress on deletion is shown in the gallery beside teams that only rewrote adjectives.
+
 ### 35.2 Copy
 
 "71% of planned techniques observed — not a residual-risk score." Link to Albrecht & Jensen in the help text. Button: export denominator.
+
+Words like secure and fully covered are banned unless a formula sits beside them. Plain language beats jargon when managers skim. Sam's rubric scores honesty above clever metaphors. Banned words trigger a CI lint on UI copy strings. CI lint failures print the banned token and the file path for quick fixes.
+
+Pathnames in lint output are clickable in the studio IDE for speed.
 
 ### 35.3 Review
 
@@ -2664,21 +2836,39 @@ Reviewers try to force a red/yellow/green risk badge; studio must hold the line 
 
 > **Synthetic case — Riverstone Transit.** Studio II killed the badge; the dashboard now lists the two planned-not-seen techniques by id.
 
+Readers from outside the squad mark every sentence they cannot verify. Unverifiable sentences are cut or given formulas. Sam treats reader marks as merge blockers equal to failed tests, and he keeps the marked copy in the dossier so the honesty pass leaves a trail.
+
 ### 35.4 Errors and limits
 
 Dark patterns ("just for executives") reintroduce empty scores — reject in CODEOWNERS for UI.
+
+Beautiful prose that hides a missing denominator fails the studio. Honesty is a safety property of the UI. Sam's facilitators may freeze a team that argues for a badge without a planned set, and the freeze lasts until the badge is removed or the formula is written beside it. Frozen teams may continue drafting formulas but cannot present until unfrozen.
+
+Unfreeze requires a facilitator sign-off that the formula is reader-visible.
 
 ### 35.2b Accessibility of honesty
 
 Under-claiming metrics must still be readable: large type for the fraction, plain language for the caveat, keyboard access to the denominator export. Hiding the caveat in a tooltip reintroduces the empty-score problem for anyone who does not hover.
 
+Screen readers must hear the formula, not only see a colour. Colour-only danger cues fail accessibility and honesty together. Sam tests exports with a text-only browser in the studio checklist. Text-only browser results are pasted into the studio notes as evidence.
+
+Pasted text-only results are stored beside the UI screenshot they contradict or confirm.
+
 ### 35.3b Export as the source of truth
 
 If the UI and the CSV export disagree, the export wins for the report. Build exports first; treat UI as a view. That removes arguments about what "71%" meant in a screenshot.
 
+If the UI disagrees with the export, the export wins and the UI is buggy. Reviewers verify numbers from the file. Sam's release checklist diffs UI captions against export headers. Caption and header diffs failing CI block the release candidate.
+
+Release candidates cannot be tagged while caption diffs stay red.
+
 ### 35.1b Narrative exports
 
 Alongside CSV, export a short Markdown narrative generated from the same query as the UI ("planned 7, observed 5, not seen: T1059, T1021"). Narratives paste into reports without screenshot ambiguity.
+
+Short narratives that restate the formula help non-engineers without replacing the numbers. Sam limits narratives to five lines so they cannot smuggle new claims. Line limits are enforced by a linter on the narrative export template. Linter failures block the export job the same way schema failures do.
+
+Export jobs write a stub file explaining the lint failure when narratives run long.
 
 ### Practice note
 
@@ -2688,6 +2878,10 @@ User research for PulseMap includes one task: explain this number to a CFO witho
 ### 35.4b Testing copy with real readers
 
 Sam asks two Riverstone Transit system owners who were not involved in the design to read the report summary aloud and explain what it means. Where they hesitate or misread a severity, the wording changes; reading tests catch ambiguity that reviewers who wrote the text cannot see.
+
+Real readers find jargon and missing denominators faster than authors. Sam books two managers and one operator for each studio's copy test and files their notes with the ADR.
+
+Anonymised notes still carry issue ids so fixes can be traced without naming the manager.
 
 ### Exercises
 
