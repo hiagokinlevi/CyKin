@@ -443,7 +443,7 @@ canonical uses found:   2  -> recall 0.67
 
 A "recall" above 1 is the clearest possible signal of a unit error, but subtler inflation — say from 0.61 to 0.97 — looks plausible and survives review unless the counting unit is stated. The missing SSH use on `srv-040` also illustrates the observer model: the TLS sensor cannot find it.
 
-The lab separates two checks that are easy to confuse. The unit tests show the classifier maps known codepoints correctly, including an unknown one. The counting step shows how the same server under four names and addresses can inflate recall. Keep both in the instrument's test suite and run them before every collection, recording the IANA registry retrieval date beside the results.
+The lab separates two checks that are easy to confuse. The unit tests show the classifier maps known codepoints correctly, including an unknown one. The counting step shows how the same server, logged repeatedly and under two names, can inflate recall. Keep both in the instrument's test suite and run them before every collection, recording the IANA registry retrieval date beside the results.
 
 ### 4.5 Tuning without leakage
 
