@@ -285,7 +285,7 @@ At Millbrook the handover file from the BMS contractor is the starting point, bu
 
 Write the clinical consequence in plain words for each device, agreed with estates and clinical leads, so priorities are clear to non-specialists.
 
-For example: AHU-OT1, theatre 1 loses pressure control; MGAS-PANEL, staff not warned of an oxygen supply fault; LIFT-CTRL, delayed patient transfers between floors. Write these with estates and clinical leads, not alone. The column later drives the order of work in the risk report, so its wording should be clear to managers who have never seen the plant. Review the wording yearly.
+For example: AHU-OT1, theatre 1 loses pressure control; MGAS-PANEL, staff not warned of an oxygen supply fault; LIFT-CTRL, delayed patient transfers between floors. The column later drives the order of work in the risk report, so its wording should be clear to managers who have never seen the plant. Review the wording yearly.
 
 ### Worked example (synthetic Millbrook)
 
@@ -300,7 +300,7 @@ Support status must be confirmed with the vendor; installation year alone is a h
 ### Exercises
 
 - **EX016 — Inventory fields.** List six fields for a building-device inventory. *Rubric:* 3 = six correct fields including support status and consequence; 2 = four; 1 = two; 0 = none.
-- **EX017 — Extending the lab.** Add `("BOILER-2", "HVAC", "2010", False)`. What new lines does the lab print? *Rubric:* 3 = "UNSUPPORTED BOILER-2 system=HVAC installed=2010" and HVAC 4 devices; 2 = one line; 1 = wrong; 0 = none.
+- **EX017 — Extending the lab.** Add `("BOILER-2", "HVAC", "2010", False)`. What new lines does the lab print? *Rubric:* 3 = "UNSUPPORTED BOILER-2   system=HVAC installed=2010" and HVAC 4 devices; 2 = one line; 1 = wrong; 0 = none.
 - **EX018 — Meaning of unsupported.** Explain to the estates manager what "unsupported" means for CHILLER-1. *Rubric:* 3 = no vendor fixes for new flaws; risk grows; compensate and plan replacement; 2 = partial; 1 = "broken"; 0 = none.
 - **EX019 — Compensating controls.** Propose three compensating controls for LIFT-CTRL. *Rubric:* 3 = isolation, remove/restrict cellular link, monitoring, replacement plan; 2 = two; 1 = one; 0 = none.
 - **EX020 — Who to call.** Using the grouping, who receives the MGAS-PANEL entry? *Rubric:* 3 = medical gas authorised person; 2 = estates; 1 = IT; 0 = none.
@@ -913,7 +913,7 @@ Model answers for EX001–EX060. Millbrook Hospital Building Systems, Aisha Bell
 
 **EX016.** System, device name, location, owner, firmware version, vendor support status, network address, and clinical consequence of failure.
 
-**EX017.** It prints `UNSUPPORTED BOILER-2 system=HVAC installed=2010` and the HVAC line becomes `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
+**EX017.** It prints `UNSUPPORTED BOILER-2   system=HVAC installed=2010` and the HVAC line becomes `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
 
 **EX018.** The chiller's vendor will not publish fixes for weaknesses found from now on, so its risk grows over time; we must protect it in other ways and plan its replacement.
 

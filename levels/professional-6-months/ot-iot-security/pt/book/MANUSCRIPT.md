@@ -297,7 +297,7 @@ No Millbrook, o dossiê de entrega do empreiteiro do BMS é o ponto de partida, 
 
 Escreva em palavras simples a consequência clínica de cada dispositivo, combinada com os líderes da manutenção e clínicos, para que as prioridades fiquem claras para quem não é especialista.
 
-Por exemplo: AHU-OT1, o centro cirúrgico 1 perde o controle de pressão; MGAS-PANEL, a equipe não é avisada de uma falha no suprimento de oxigênio; LIFT-CTRL, transferências de pacientes entre andares atrasadas. Escreva-as com os líderes da manutenção e clínicos, não sozinho. A coluna orienta depois a ordem do trabalho no relatório de risco, então a sua redação deve ser clara para gestores que nunca viram os equipamentos. Revise a redação anualmente.
+Por exemplo: AHU-OT1, o centro cirúrgico 1 perde o controle de pressão; MGAS-PANEL, a equipe não é avisada de uma falha no suprimento de oxigênio; LIFT-CTRL, transferências de pacientes entre andares atrasadas. A coluna orienta depois a ordem do trabalho no relatório de risco, então a sua redação deve ser clara para gestores que nunca viram os equipamentos. Revise a redação anualmente.
 
 ### Exemplo resolvido (Millbrook sintético)
 
@@ -312,7 +312,7 @@ A situação de suporte precisa ser confirmada com o fornecedor; o ano de instal
 ### Exercícios
 
 - **EX016 — Campos do inventário.** Liste seis campos de um inventário de dispositivos prediais. *Rubrica:* 3 = seis campos corretos, incluindo situação de suporte e consequência; 2 = quatro; 1 = dois; 0 = nenhum.
-- **EX017 — Estender o laboratório.** Acrescente `("BOILER-2", "HVAC", "2010", False)`. Que linhas novas o laboratório imprime? *Rubrica:* 3 = "UNSUPPORTED BOILER-2 system=HVAC installed=2010" e HVAC com 4 dispositivos; 2 = uma linha; 1 = errado; 0 = nenhum.
+- **EX017 — Estender o laboratório.** Acrescente `("BOILER-2", "HVAC", "2010", False)`. Que linhas novas o laboratório imprime? *Rubrica:* 3 = "UNSUPPORTED BOILER-2   system=HVAC installed=2010" e HVAC com 4 dispositivos; 2 = uma linha; 1 = errado; 0 = nenhum.
 - **EX018 — O que significa sem suporte.** Explique ao gerente de manutenção o que "sem suporte" significa para o CHILLER-1. *Rubrica:* 3 = nenhuma correção do fornecedor para novas falhas; o risco cresce; compensar e planejar a substituição; 2 = parcial; 1 = "quebrado"; 0 = nenhum.
 - **EX019 — Controles compensatórios.** Proponha três controles compensatórios para o LIFT-CTRL. *Rubrica:* 3 = isolamento, remover/restringir a conexão celular, monitoramento, plano de substituição; 2 = dois; 1 = um; 0 = nenhum.
 - **EX020 — A quem ligar.** Usando o agrupamento, quem recebe o registro do MGAS-PANEL? *Rubrica:* 3 = a pessoa autorizada para gases medicinais; 2 = manutenção; 1 = TI; 0 = nenhum.
@@ -961,7 +961,7 @@ Respostas-modelo para EX001–EX060. O Millbrook Hospital Building Systems, Aish
 
 **EX016.** Sistema, nome do dispositivo, localização, responsável, versão do firmware, situação de suporte do fornecedor, endereço de rede e consequência clínica da falha.
 
-**EX017.** Ele imprime `UNSUPPORTED BOILER-2 system=HVAC installed=2010`, e a linha de HVAC passa a ser `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
+**EX017.** Ele imprime `UNSUPPORTED BOILER-2   system=HVAC installed=2010`, e a linha de HVAC passa a ser `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
 
 **EX018.** O fornecedor do chiller não vai publicar correções para as fraquezas descobertas daqui em diante, então o risco dele cresce com o tempo; precisamos protegê-lo de outras formas e planejar a sua substituição.
 
