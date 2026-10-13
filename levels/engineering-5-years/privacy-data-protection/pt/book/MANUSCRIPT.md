@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 50 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–50 (EX046–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 16–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -459,11 +459,244 @@ O julgamento ético varia; registrar o raciocínio permite que outros o conteste
 - **EX029 — Inferência de gravidez.** Por que Zara desaconselha o recurso de inferência de gravidez? *Rubrica:* 3 = a informação de cuidado flui para o marketing, rompendo as normas do contexto e arriscando dano;; 2 = menciona invasão;; 1 = apoia o recurso;; 0 = nenhuma.
 - **EX030 — Papel do encarregado.** Por que escalar ao encarregado de proteção de dados? *Rubrica:* 3 = o encarregado aconselha e monitora a conformidade com independência, pelos artigos 38–39;; 2 = menciona o encarregado;; 1 = vai primeiro à imprensa;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar dados pessoais no tráfego de rede; (2) aplicar criptografia em trânsito; (3) limitar a coleta de metadados.
+
+### 11.1 Dados pessoais na rede
+
+Na disciplina de redes, Zara captura o tráfego de uma cópia de teste do aplicativo da Pellmore, em uma rede de laboratório com contas sintéticas. Ela vê que o aplicativo envia o endereço de e-mail do paciente a um servidor de análise como parâmetro de URL. As URLs acabam em logs de servidores, em proxies e no histórico do navegador. Mesmo com criptografia de transporte, o servidor de destino registra o endereço completo. Zara abre um defeito: identificadores nunca devem trafegar em URLs. Ela explica à equipe do aplicativo que a criptografia protege os dados no caminho, mas não o que o destinatário faz com eles depois que chegam.
+
+### 11.2 Criptografia de transporte
+
+Zara confere que todos os pontos de acesso da Pellmore usam uma versão atual do TLS e recusam versões antigas do protocolo. Ela explica à turma que o artigo 32 do GDPR exige segurança adequada ao risco, incluindo a cifragem quando adequado, e que a LGPD exige medidas técnicas e administrativas aptas a proteger os dados de acessos não autorizados (art. 46); dados de saúde em trânsito são um caso claro. Ela também verifica que o tráfego interno entre os serviços é cifrado, porque atacantes que chegam à rede interna costumam encontrar ali tráfego sem criptografia. O achado leva a Pellmore a ativar a autenticação mútua entre seus serviços de agendamento e de prontuários.
+
+### 11.3 Minimização de metadados
+
+Os dispositivos de rede registram endereços IP, que o Tribunal de Justiça da União Europeia tratou como dados pessoais em algumas circunstâncias e que, de qualquer forma, podem localizar um paciente. Zara revisa os logs do firewall e do balanceador de carga da Pellmore e encontra endereços IP completos guardados por dois anos. Ela recomenda truncar a última parte dos endereços depois de sete dias, mantendo os endereços completos apenas em um log de segurança de curta duração. A mudança preserva o suficiente para investigar ataques e reduz um registro duradouro de onde os pacientes se conectaram.
+
+### 11.4 Chamadas a terceiros
+
+A captura também mostra chamadas a seis domínios de terceiros: fontes, análise, relatórios de falhas e medição de publicidade. Zara lista cada um, o que recebe e se a Pellmore tem contrato com ele. Dois não têm acordo de tratamento de dados. O artigo 28 do GDPR exige um contrato vinculante com os operadores; na LGPD, o operador deve tratar os dados segundo as instruções do controlador (art. 39). Ela recomenda remover totalmente o script de publicidade, hospedar as fontes localmente e assinar acordos com os operadores restantes. O exercício lhe mostra que uma captura de rede também é uma ferramenta de auditoria de conformidade, que revela fluxos que a documentação deixou passar.
+
+### Exemplo resolvido
+
+Zara encontra um e-mail em uma URL de análise, confirma a criptografia de transporte e interna, trunca os endereços IP guardados depois de sete dias e remove ou formaliza por contrato seis chamadas a terceiros.
+
+> **Caso sintético.** O aplicativo e as capturas são sintéticos; os artigos 28 e 32 do GDPR e os arts. 39 e 46 da LGPD são reais.
+
+### Erros e limites
+
+Capturas em versões de teste podem não mostrar o comportamento em produção; repita-as nas versões de lançamento.
+
+### Exercícios
+
+- **EX031 — Identificadores em URLs.** Por que identificadores não devem trafegar em URLs? *Rubrica:* 3 = as URLs são registradas por servidores, proxies e navegadores apesar da criptografia;; 2 = menciona logs;; 1 = tudo bem se cifrado;; 0 = nenhuma.
+- **EX032 — Truncamento de IP.** O que o truncamento dos endereços IP guardados alcança? *Rubrica:* 3 = mantém a capacidade de investigar ataques e reduz dados de localização duradouros;; 2 = menciona privacidade;; 1 = apaga todos os logs;; 0 = nenhuma.
+- **EX033 — Contratos com operadores.** O que o artigo 28 exige para operadores terceiros? *Rubrica:* 3 = um contrato vinculante que rege o tratamento;; 2 = menciona contrato;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar permissões de arquivo para proteger prontuários; (2) controlar os logs no nível do sistema operacional; (3) gerenciar arquivos temporários.
+
+### 12.1 Permissões
+
+Zara estuda como os sistemas operacionais aplicam as permissões. No servidor de prontuários da Pellmore, ela descobre que os arquivos de exportação são gravados em um diretório compartilhado que todos os usuários podem ler. Qualquer conta do servidor, incluindo as ferramentas de monitoramento, poderia lê-los. Ela muda o processo de exportação para gravar em um diretório pertencente a uma conta de serviço dedicada, sem acesso para as demais. O privilégio mínimo no nível do sistema operacional é um controle básico, observa, mas costuma ser esquecido porque as aplicações são testadas em máquinas de desenvolvedores em que todos são administradores.
+
+### 12.2 Logs do sistema
+
+Os sistemas operacionais registram eventos, e as aplicações às vezes gravam dados sensíveis nos logs do sistema. Zara procura nos logs dos servidores da Pellmore padrões parecidos com datas de nascimento e endereços de e-mail e encontra vários. Ela configura a rotação dos logs com retenção definida e acrescenta um filtro que mascara os identificadores antes que sejam gravados. Também restringe quem pode ler os logs. Os logs são necessários para a segurança, escreve, mas precisam ser projetados com o mesmo cuidado que os bancos de dados, porque muitas vezes contêm o registro mais completo do que aconteceu com quem.
+
+### 12.3 Arquivos temporários
+
+A geração de relatórios cria arquivos temporários no disco, que nem sempre são removidos depois de falhas. Zara encontra centenas de relatórios temporários esquecidos com nomes de pacientes. Ela muda o processo para usar as funções seguras de arquivos temporários do sistema operacional, com permissões restritivas e limpeza na inicialização, e acrescenta uma tarefa agendada que apaga qualquer relatório temporário com mais de um dia. O achado lhe mostra que a proteção de dados exige atenção às partes pouco glamorosas dos sistemas, e não apenas aos seus bancos de dados principais.
+
+### 12.4 Atualizações e correções
+
+Por fim, Zara confere o nível de correções. Sistemas operacionais desatualizados são uma causa frequente de vazamentos. Ela descobre que a Pellmore aplica correções mensalmente, mas não registra quando as correções críticas foram aplicadas. Ela propõe acompanhar o atraso na aplicação de correções como métrica e combinar um atraso máximo para as atualizações críticas de segurança. O Prof. Holm lembra que o artigo 32 pede um processo para testar e avaliar regularmente a eficácia das medidas de segurança, e que as métricas de correção são uma forma de mostrar que esse processo de fato existe. Sua métrica: dias até a correção.
+
+### Exemplo resolvido
+
+Zara transfere as exportações para um diretório da conta de serviço, mascara identificadores nos logs do sistema, limpa relatórios temporários esquecidos e propõe acompanhar o atraso das correções.
+
+> **Caso sintético.** Os achados no servidor são sintéticos; o artigo 32 do GDPR é real.
+
+### Erros e limites
+
+Filtros de mascaramento deixam passar formatos incomuns; buscas periódicas continuam necessárias.
+
+### Exercícios
+
+- **EX034 — Diretório de exportação compartilhado.** O que havia de errado com o diretório de exportação? *Rubrica:* 3 = podia ser lido por qualquer conta do servidor;; 2 = menciona permissões;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Relatórios temporários.** Como Zara trata os relatórios temporários esquecidos? *Rubrica:* 3 = funções temporárias seguras, limpeza na inicialização e uma tarefa diária de exclusão;; 2 = uma medida;; 1 = ignora;; 0 = nenhuma.
+- **EX036 — Métrica de correções.** Por que acompanhar o atraso das correções? *Rubrica:* 3 = para mostrar um processo regular de teste e manutenção da segurança, como espera o artigo 32;; 2 = menciona correções;; 1 = nenhum motivo;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) expressar regras de retenção em um banco de dados; (2) consultar registros que passaram do prazo de retenção; (3) projetar uma eliminação segura e verificável.
+
+### 13.1 A retenção como dado
+
+O artigo 5(1)(e) do GDPR exige a limitação da conservação: os dados pessoais devem ser mantidos de forma identificável apenas pelo tempo necessário. Na LGPD, o tratamento termina quando a finalidade é alcançada ou o período de tratamento acaba (art. 15), e os dados são então eliminados, salvo as conservações autorizadas (art. 16). A Pellmore tem uma política de retenção no papel, mas nada em seus bancos de dados a aplica. Zara propõe guardar a política como uma tabela, com uma linha por categoria de dado e seu prazo de retenção. Cada registro carrega sua categoria e data de criação. Com a política como dado, uma consulta simples encontra os registros que já deveriam ter sido eliminados, e as mudanças na política ficam versionadas como qualquer outro dado.
+
+### 13.2 A consulta
+
+O laboratório cria 400 registros sintéticos no SQLite, em quatro categorias com prazos de retenção de trinta dias para gravações de vídeo, 180 dias para contatos de marketing, 365 dias para registros de chat e 730 dias para consultas agendadas. Em 1º de outubro de 2026, 96 de 101 gravações de vídeo, 82 de 100 contatos de marketing, 72 de 101 registros de chat e 12 de 98 consultas passaram do prazo: 262 de 400 registros no total. Zara apresenta o resultado como evidência de que a política no papel nunca foi aplicada, com a categoria de vídeo como a lacuna mais evidente. A consulta usa apenas o sqlite3 da biblioteca padrão, então qualquer colega pode executá-la de novo.
+
+### 13.3 Eliminação segura
+
+Eliminar 262 registros de uma vez é arriscado. Alguns podem ser necessários para ações judiciais ou para a segurança clínica. Zara projeta um processo em duas etapas: os registros vencidos são primeiro marcados e ocultados do uso normal, um relatório semanal os lista para revisão por um responsável designado e, depois de catorze dias, os registros não sinalizados são eliminados. Os registros sujeitos a preservação legal são excluídos automaticamente do processo. O projeto equilibra a limitação da conservação com a necessidade de não destruir provas, e cada etapa é registrada, para que as eliminações possam ser demonstradas depois.
+
+### 13.4 Backups e réplicas
+
+Eliminar do banco de dados principal não elimina dos backups e das réplicas. Zara documenta como os backups expiram em seu próprio calendário e garante que backups restaurados sejam conferidos de novo contra a tabela de retenção antes do uso. Também verifica que as réplicas de leitura aplicam as eliminações prontamente. O Prof. Holm observa que os reguladores costumam aceitar que os backups não possam ser editados registro a registro, desde que estejam protegidos, expirem em um prazo definido e não sejam restaurados sem reaplicar as eliminações. Zara registra esse raciocínio no documento de projeto da retenção.
+
+### Laboratório — Registros que passaram do prazo de retenção
+
+```python
+# SQLite: which synthetic records are past their retention period on 2026-10-01?
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.executescript("""
+CREATE TABLE policy(category TEXT PRIMARY KEY, keep_days INTEGER);
+INSERT INTO policy VALUES ('video_recording',30),('chat_log',365),('appointment',730),('marketing_lead',180);
+CREATE TABLE rec(id INTEGER, category TEXT, created TEXT);
+""")
+import random; r = random.Random(2)
+cats = ['video_recording', 'chat_log', 'appointment', 'marketing_lead']
+for i in range(400):
+    db.execute("INSERT INTO rec VALUES (?,?,date('2026-10-01', ?))", (i, r.choice(cats), f"-{r.randint(0, 900)} days"))
+q = """SELECT r.category, COUNT(*), SUM(julianday('2026-10-01') - julianday(r.created) > p.keep_days)
+       FROM rec r JOIN policy p USING(category) GROUP BY r.category ORDER BY 3 DESC"""
+tot = 0
+for c, n, over in db.execute(q):
+    tot += over; print(f"{c:16s} records {n:3d}  past retention {over:3d}")
+print(f"total past retention: {tot} of 400")
+```
+
+Execute com `python3 lab_retention.py`. Saída verificada:
+
+```text
+video_recording  records 101  past retention  96
+marketing_lead   records 100  past retention  82
+chat_log         records 101  past retention  72
+appointment      records  98  past retention  12
+total past retention: 262 of 400
+```
+
+### Exemplo resolvido
+
+Zara guarda a política de retenção como tabela, encontra 262 de 400 registros sintéticos vencidos (96 de 101 gravações de vídeo) e projeta um processo de marcação, revisão e eliminação com preservação legal e tratamento dos backups.
+
+> **Caso sintético.** Os registros são sintéticos e gerados com semente fixa; o artigo 5(1)(e) do GDPR e os arts. 15 e 16 da LGPD são reais.
+
+### Erros e limites
+
+A data de criação pode não ser o início certo da retenção; alguns prazos começam no fim de um relacionamento.
+
+### Exercícios
+
+- **EX037 — Limitação da conservação.** O que o artigo 5(1)(e) exige? *Rubrica:* 3 = dados mantidos identificáveis apenas pelo tempo necessário;; 2 = menciona retenção;; 1 = errado;; 0 = nenhuma.
+- **EX038 — Pior categoria.** Que categoria tem a maior parcela vencida no laboratório? *Rubrica:* 3 = gravações de vídeo: 96 de 101;; 2 = cita o vídeo;; 1 = cita as consultas;; 0 = nenhuma.
+- **EX039 — Regra dos backups.** Como os backups são tratados no projeto de retenção? *Rubrica:* 3 = protegidos, expiram no prazo, eliminações reaplicadas na restauração;; 2 = dois pontos;; 1 = ignora os backups;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever requisitos de privacidade como histórias de usuário; (2) incluir a privacidade na revisão de código; (3) gerenciar dados pessoais nos ambientes de teste.
+
+### 14.1 Histórias de privacidade
+
+Em engenharia de software, Zara aprende a escrever requisitos como histórias de usuário. Ela acrescenta histórias de privacidade ao backlog da Pellmore: como paciente, quero baixar meus prontuários para conferir o que está guardado; como paciente, quero que minhas gravações de vídeo sejam eliminadas depois de trinta dias, a menos que eu peça o contrário. Cada história tem critérios de aceitação que podem ser testados. Escrever a privacidade como histórias a coloca no mesmo processo de planejamento das funcionalidades, em vez de deixá-la em um documento separado que os desenvolvedores raramente leem.
+
+### 14.2 Revisão de código
+
+A lista de verificação de revisão de código da Pellmore cobre estilo e testes, mas não a privacidade. Zara acrescenta cinco perguntas: esta mudança coleta novos dados pessoais; algum dado novo vai para os logs; ela envia dados a um novo destinatário; ela muda a retenção; e ela afeta as verificações de acesso. Os revisores precisam responder a cada pergunta. No primeiro mês, a lista detecta uma mudança que teria enviado nomes completos de pacientes a um serviço de relatórios de falhas. O exemplo convence a equipe de que algumas perguntas bem dirigidas valem o minuto a mais por revisão.
+
+### 14.3 Dados de teste
+
+Os desenvolvedores da Pellmore às vezes copiavam dados de produção para os ambientes de teste a fim de reproduzir defeitos. Zara explica que os ambientes de teste costumam ser menos protegidos e que copiar dados de saúde para lá é um risco sério. Ela constrói um gerador que produz pacientes sintéticos realistas, com a mesma estrutura e os mesmos casos-limite, como nomes longos e caracteres incomuns. Quando dados de produção forem de fato necessários para um defeito, um pedido documentado, com aprovação e expiração automática, substitui a cópia informal. A NIST SP 800-188 discute os dados sintéticos como uma das abordagens de desidentificação.
+
+### 14.4 Definição de pronto
+
+Por fim, Zara propõe mudanças na definição de pronto da equipe. Uma funcionalidade só está pronta quando suas histórias de privacidade passam, a lista de revisão foi preenchida, o registro das operações de tratamento foi atualizado caso os fluxos de dados mudem e o aviso de privacidade foi atualizado caso os pacientes fossem se surpreender. A equipe discute se isso atrasa as entregas. Zara argumenta que corrigir a privacidade depois do lançamento é mais lento e mais caro, e o líder de engenharia da Pellmore aceita testar a definição por um trimestre e avaliar o efeito sobre os prazos de entrega.
+
+### Exemplo resolvido
+
+Zara escreve histórias de usuário de privacidade, acrescenta cinco perguntas de privacidade à revisão de código, troca as cópias de produção por um gerador de dados sintéticos e amplia a definição de pronto.
+
+> **Caso sintético.** O backlog e a revisão são sintéticos; a NIST SP 800-188 é real.
+
+### Erros e limites
+
+Listas de verificação viram rotina; alterne os exemplos e audite amostras das revisões.
+
+### Exercícios
+
+- **EX040 — História de privacidade.** Escreva uma história de usuário de privacidade do capítulo. *Rubrica:* 3 = p. ex., como paciente, quero minhas gravações eliminadas depois de trinta dias, salvo pedido em contrário;; 2 = história semelhante;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Achado da revisão.** O que a lista de revisão detectou no primeiro mês? *Rubrica:* 3 = uma mudança que enviaria nomes completos a um relatório de falhas;; 2 = menciona relatório de falhas;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Dados de teste sintéticos.** Por que trocar as cópias de produção por pacientes gerados? *Rubrica:* 3 = os ambientes de teste são menos protegidos; dados sintéticos evitam expor dados de saúde;; 2 = menciona segurança;; 1 = só usa mascaramento;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar confidencialidade, integridade e disponibilidade à proteção de dados; (2) aplicar uma autenticação adequada a dados de saúde; (3) entender o papel da segurança no artigo 32 do GDPR.
+
+### 15.1 A segurança serve à privacidade
+
+Zara aprende os objetivos clássicos da segurança: confidencialidade, integridade e disponibilidade. Ela os relaciona à proteção de dados. A confidencialidade impede a divulgação não autorizada de prontuários; a integridade impede que resultados errados cheguem a um paciente; a disponibilidade garante que os médicos vejam os prontuários durante a consulta. O GDPR inclui a integridade e a confidencialidade entre os princípios do artigo 5(1)(f), e a LGPD tem o princípio da segurança (art. 6º, VII). Mas Zara observa que a privacidade é mais ampla que a segurança: um sistema perfeitamente seguro ainda pode coletar demais ou usar dados para finalidades inesperadas, então a segurança é necessária, mas não suficiente.
+
+### 15.2 Autenticação
+
+Os pacientes da Pellmore entram com senha. Zara analisa as opções e recomenda acrescentar um segundo fator para ver os prontuários e para mudar os dados de contato, as ações mais atraentes para os atacantes. Ela evita os códigos por SMS como única opção, oferecendo também um aplicativo autenticador, e garante que a recuperação de conta não dependa de perguntas de conhecimento cujas respostas costumam ser públicas. Os médicos recebem uma autenticação mais forte, porque podem ver os prontuários de muitos pacientes. Ela explica que a força da autenticação deve acompanhar o dano que uma conta poderia causar.
+
+### 15.3 As medidas do artigo 32
+
+O artigo 32 lista exemplos de medidas de segurança: pseudonimização e cifragem, a capacidade de assegurar continuamente a confidencialidade, a integridade, a disponibilidade e a resiliência, a capacidade de restabelecer o acesso depois de um incidente e testes regulares. Zara mapeia os controles da Pellmore para cada exemplo e encontra lacunas no restabelecimento do acesso e nos testes. Ela explica que o artigo exige medidas adequadas ao risco, considerando o estado da técnica e os custos, o que faz da avaliação de risco o ponto de partida, e não uma lista fixa de controles. A cifragem é citada explicitamente.
+
+### 15.4 Integridade para os pacientes
+
+Zara estuda uma falha de integridade: um resultado de exame anexado ao paciente errado. É ao mesmo tempo um problema de segurança do paciente e de proteção de dados, porque divulga os dados de um paciente a outro e pode prejudicar os dois. Ela propõe verificações: conferir dois identificadores antes de anexar resultados e alertar quando os nomes diferirem. Observa que erros como esse são violações de dados pessoais pela definição do artigo 4(12) do GDPR, que inclui a divulgação acidental, e não só ataques, e que precisam passar pelo processo de incidentes; na LGPD, as situações acidentais também estão no dever de segurança do art. 46.
+
+### Exemplo resolvido
+
+Zara liga os objetivos de segurança à proteção de dados, acrescenta autenticação reforçada nas ações sensíveis, mapeia os controles para o artigo 32 e trata resultados anexados ao paciente errado como problema de segurança do paciente e como violação de dados pessoais.
+
+> **Caso sintético.** Os controles da Pellmore são sintéticos; os artigos 4(12), 5(1)(f) e 32 do GDPR e os arts. 6º e 46 da LGPD são reais.
+
+### Erros e limites
+
+Uma autenticação forte pode excluir pacientes com acesso limitado a aparelhos; ofereça alternativas.
+
+### Exercícios
+
+- **EX043 — Não suficiente.** Por que a segurança é necessária, mas não suficiente, para a privacidade? *Rubrica:* 3 = um sistema seguro ainda pode coletar demais ou usar mal os dados;; 2 = menciona finalidades;; 1 = iguala as duas;; 0 = nenhuma.
+- **EX044 — Ações com reforço.** Que ações do paciente recebem um segundo fator, e por quê? *Rubrica:* 3 = ver prontuários e mudar contatos, as mais atraentes para atacantes;; 2 = cita uma;; 1 = só todos os logins;; 0 = nenhuma.
+- **EX045 — Violação acidental.** Um resultado anexado ao paciente errado é uma violação de dados pessoais? *Rubrica:* 3 = sim; o artigo 4(12) inclui a divulgação acidental;; 2 = sim, sem motivo;; 1 = não;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -524,6 +757,36 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 **EX029.** Leva a informação de cuidado para um contexto de marketing, violando as expectativas das pacientes e arriscando dano.
 
 **EX030.** O papel independente do encarregado inclui aconselhar e monitorar a conformidade, o que o torna o canal adequado; no Brasil, sua atuação é regulamentada pela Resolução CD/ANPD nº 18/2024.
+
+**EX031.** As URLs são registradas em muitos logs, então identificadores nelas vazam mesmo em conexões cifradas.
+
+**EX032.** Preserva o uso de segurança de curto prazo e limita o rastreamento duradouro de onde os pacientes se conectaram.
+
+**EX033.** Um acordo vinculante de tratamento de dados com cada operador; na LGPD, o operador segue as instruções do controlador (art. 39).
+
+**EX034.** As exportações iam para um diretório que qualquer conta podia ler.
+
+**EX035.** Usar arquivos temporários seguros com permissões restritivas, limpar na inicialização e apagar tudo o que tiver mais de um dia.
+
+**EX036.** Fornece evidência de que as medidas de segurança são mantidas e avaliadas.
+
+**EX037.** Os dados pessoais não devem ser mantidos de forma identificável por mais tempo do que o necessário para as finalidades.
+
+**EX038.** As gravações de vídeo, com 96 de 101 além do limite de trinta dias.
+
+**EX039.** Os backups são protegidos, expiram em prazo definido, e toda restauração reaplica a tabela de retenção antes do uso.
+
+**EX040.** Como paciente, quero que minhas gravações de vídeo sejam eliminadas depois de trinta dias, a menos que eu peça o contrário.
+
+**EX041.** Uma mudança que teria enviado nomes de pacientes a um serviço de relatórios de falhas.
+
+**EX042.** Os sistemas de teste são mais frágeis, então dados sintéticos realistas evitam colocar ali dados de saúde reais.
+
+**EX043.** A segurança protege os dados, mas a privacidade também trata de quanto se coleta e para quais finalidades.
+
+**EX044.** Ver prontuários e mudar dados de contato, porque são alvos de alto valor.
+
+**EX045.** Sim; a definição abrange a divulgação acidental, e não só a ilícita.
 
 <a id="references"></a>
 ## Referências
