@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Professional Course
 
 - Language: English (`en`); course 038, Professional course (6 months).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working IT and security professionals who must set up or run a security operations function in a mid-sized organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -48,19 +48,19 @@ Priya Nair is IT manager at the fictional Fenwick Engineering, a 200-person make
 
 ### 1.2 What the function does
 
-A security operations function watches for signs of attack, decides which matter, and coordinates the response. Zimmerman's "Ten Strategies of a World-Class Cybersecurity Operations Center" (MITRE, 2014) and its successor, Knerler, Parker and Zimmerman's "11 Strategies" (MITRE, 2022), both stress that a SOC first needs a clear mission, authority and a defined constituency, before tools.
+A security operations function watches for signs of attack, decides which matter, and coordinates the response. Zimmerman's "Ten Strategies of a World-Class Cybersecurity Operations Center" (MITRE, 2014) and its successor, Knerler, Parker and Zimmerman's "11 Strategies" (MITRE, 2022), both stress that a SOC first needs a clear mission, authority and a defined constituency, before tools. For Fenwick, the March event showed all three parts missing: an alert fired, but nobody watched for it, decided it mattered or coordinated a response. Priya starts with mission and authority for that reason, before choosing tools or a provider.
 
 ### 1.3 Models
 
-In-house gives control and knowledge of the business but costs staff and 24-hour cover. Outsourcing to a managed security service gives night cover and tools but less context. A hybrid keeps an in-house lead who owns decisions while a provider watches out of hours. Fenwick, with no security staff, chooses hybrid.
+In-house gives control and knowledge of the business but costs staff and 24-hour cover. Outsourcing to a managed security service gives night cover and tools but less context. A hybrid keeps an in-house lead who owns decisions while a provider watches out of hours. Fenwick, with no security staff, chooses hybrid. Fenwick cannot afford round-the-clock in-house staff, but March showed that night cover matters. The hybrid lets a provider answer alerts at night while Priya keeps decisions about Fenwick's business, such as when to isolate a factory PC. Her board paper explains this choice with the costs of each model.
 
 ### 1.4 Mission and scope
 
-Priya's draft mission: "Detect and respond to threats against Fenwick's design data, production systems and staff accounts, around the clock, with in-house ownership of decisions." Scope includes offices, the VPN, cloud email and the factory's supervisory PCs, but not the machine controllers themselves, which the vendor manages.
+Priya's draft mission: "Detect and respond to threats against Fenwick's design data, production systems and staff accounts, around the clock, with in-house ownership of decisions." Scope includes offices, the VPN, cloud email and the factory's supervisory PCs, but not the machine controllers themselves, which the vendor manages. The mission names the assets March threatened: design data and staff accounts, plus production systems that keep the factory running. Excluding the machine controllers is honest about what Fenwick can monitor, since the vendor manages them. Priya records the exclusion and the vendor's responsibility, so the board knows the gap exists. The scope is reviewed each year with the charter.
 
 ### 1.5 Frameworks
 
-NIST CSF 2.0 (CSWP 29, 2024) gives a shared language for outcomes; NIST SP 800-61r3 (Nelson et al., 2025) frames incident response within it. Priya uses both to explain the plan to the board.
+NIST CSF 2.0 (CSWP 29, 2024) gives a shared language for outcomes; NIST SP 800-61r3 (Nelson et al., 2025) frames incident response within it. Priya uses both to explain the plan to the board. The board does not need technical detail, but it needs to see that the plan follows recognised practice. Using CSF 2.0 outcomes, Priya can show which parts of the plan detect, which respond and which govern. SP 800-61r3 shapes the response plan written later in the year. Both documents are public, so the board and the provider can read the same references, and the provider already uses CSF terms in its own reports, which makes monthly reviews easier.
 
 ### Worked example
 
@@ -98,27 +98,27 @@ You will (1) define who owns security operations decisions; (2) write a SOC char
 
 ### 2.1 Why authority matters
 
-In March, even if someone had seen the alert, nobody had authority to disable an IT technician's account at night. Authority must be written down before it is needed.
+In March, even if someone had seen the alert, nobody had authority to disable an IT technician's account at night. Authority must be written down before it is needed. Without authority, an analyst who sees an attack at night can only send an email and wait. In March, the attacker had Domain Admins rights for fifteen minutes and sent out 1.4 GB of design files before anyone acted. Priya's charter answers this by deciding in advance who may act, on what, and when, so a night-time decision does not depend on finding a manager. The managing director's signature makes that authority clear to the provider and to staff.
 
 ### 2.2 The charter
 
-Priya writes a two-page charter: mission, scope, services, the authority to take pre-approved actions, escalation paths, and how the SOC reports. The managing director signs it.
+Priya writes a two-page charter: mission, scope, services, the authority to take pre-approved actions, escalation paths, and how the SOC reports. The managing director signs it. Two pages is short enough for the managing director and the provider to read in full. Each part answers a question that was unclear in March: what the SOC protects, what it does, who may act, who is called and who is told afterwards. The provider's service agreement refers to the charter for authority, so both documents say the same thing. Priya reviews the charter each year, and any change needs the managing director's signature again.
 
 ### 2.3 Pre-approved actions
 
-The provider may disable any user account, block an address at the firewall and isolate an office PC without calling Fenwick first. Isolating servers or factory PCs needs Priya or her deputy, because production could stop.
+The provider may disable any user account, block an address at the firewall and isolate an office PC without calling Fenwick first. Isolating servers or factory PCs needs Priya or her deputy, because production could stop. These actions were chosen because they are quick, reversible and would have limited March: disabling j.harper's account would have stopped the attacker. The charter workshop added a condition for factory supervisory PCs: the provider phones the shift supervisor before isolating one, unless ransomware activity is seen, in which case it isolates first and calls immediately after. Each action taken is recorded and reported the next morning.
 
 ### 2.4 Escalation
 
-Severity levels decide who is called: medium goes to the morning queue, high wakes the on-call IT person, critical wakes Priya and the operations director.
+Severity levels decide who is called: medium goes to the morning queue, high wakes the on-call IT person, critical wakes Priya and the operations director. Linking severity to the people called keeps night calls for alerts that need them. Medium alerts can wait for Tom in the morning; a high alert needs someone from IT who can act on systems; a critical alert needs the people who can make business decisions, such as stopping production. The provider holds a call list with deputies for each role, and Priya updates it when staff change or holidays begin.
 
 ### 2.5 Reporting
 
-A monthly one-page report goes to the board's risk committee: incidents, coverage, open risks, decisions needed. This places the SOC within CSF 2.0's Govern function.
+A monthly one-page report goes to the board's risk committee: incidents, coverage, open risks, decisions needed. This places the SOC within CSF 2.0's Govern function. The report gives the risk committee what it needs to make decisions without technical detail: what happened, how well the SOC sees Fenwick's systems, which risks remain and what the committee is asked to decide. Placing the SOC in the Govern function shows that it reports to the board and is directed by it, rather than running as a technical project. The committee's decisions are recorded in its minutes and reported back to the provider and Tom.
 
 ### 2.6 Privacy
 
-Monitoring staff accounts raises privacy questions. The charter states monitoring is for security only, and HR and the staff council review it.
+Monitoring staff accounts raises privacy questions. The charter states monitoring is for security only, and HR and the staff council review it. Staff accounts are monitored because March began with one, but monitoring could be misused to watch performance or private activity. The charter limits use of monitoring data to security, names who may see it, and requires HR approval before any data is used in a disciplinary matter. The staff council reviews the arrangement each year and reports its findings to the managing director. Priya publishes a short notice to staff explaining what is monitored and why.
 
 ### Reviewing the charter
 
@@ -160,9 +160,9 @@ You will (1) choose log sources based on risk; (2) measure coverage of critical 
 
 ### 3.1 Choosing sources
 
-NIST SP 800-92 (Kent and Souppaya, 2006) advises planning log management around what the organisation needs to know. Priya starts from the March case: she needed VPN logs, domain controller logs and file-server audit logs to understand it.
+NIST SP 800-92 (Kent and Souppaya, 2006) advises planning log management around what the organisation needs to know. Priya starts from the March case: she needed VPN logs, domain controller logs and file-server audit logs to understand it. Starting from March gives Priya a concrete test: could the SOC have seen and understood that event with the sources it collects? Each source she adds answers a question from the case: who logged in, what changed and which files were read. She then adds sources for the other critical assets on her list, such as the ERP server, and records the reason for each choice.
 
-### Lab — Lab — measuring coverage
+### Lab — measuring coverage
 
 ```python
 """Log coverage: which critical assets send logs to the SIEM (synthetic)."""
@@ -187,19 +187,19 @@ overall 6/10 = 60%
 
 ### 3.2 Lab result
 
-Overall, 6 of 10 listed assets send logs (60%). Four of five critical assets send logs; the ERP server does not. Of the high assets, CAD-WS02 and the factory HMI PC are missing. The print server is low priority.
+Overall, 6 of 10 listed assets send logs (60%). Four of five critical assets send logs; the ERP server does not. Of the high assets, CAD-WS02 and the factory HMI PC are missing. The print server is low priority. The lab counts assets that send logs, not how useful their logs are, so Priya checks each source's content as well. Missing the ERP server matters most, because it is critical and holds orders and prices. The two missing high assets match the kinds of systems involved in March or in production. Priya records the gaps and their reasons in the coverage table.
 
 ### 3.3 Prioritising
 
-The ERP server holds orders and prices; it goes first. CAD-WS02 is a design workstation like the one used in March. The factory HMI needs care: the vendor must approve any agent, so Priya asks for network logs at the factory firewall instead.
+The ERP server holds orders and prices; it goes first. CAD-WS02 is a design workstation like the one used in March. The factory HMI needs care: the vendor must approve any agent, so Priya asks for network logs at the factory firewall instead. Prioritising by asset value and by the March case puts the most important gaps first. Network logs from the factory firewall are a compensating control for the HMI: they show its connections, even though nothing on the PC itself is logged. Priya records this in the risk register, with the vendor's position on agents and a date to review it. The board later approves the cost of collecting ERP logs.
 
 ### 3.4 Retention and time
 
-Logs are kept 90 days searchable, one year archived; all systems sync to the same time source.
+Logs are kept 90 days searchable, one year archived; all systems sync to the same time source. Ninety days of searchable logs covers the time it usually takes to notice and investigate an incident. In March, the phishing email arrived two days before the login, so investigators needed several days of history. Keeping a year in archive allows a slower investigation, such as a customer asking months later whether its drawings were accessed. A shared time source means events from the VPN, domain controller and file server can be placed in one timeline, as the March investigation required.
 
 ### 3.5 Cost
 
-The provider charges by data volume. Verbose debug logs are filtered out; security-relevant events are kept.
+The provider charges by data volume. Verbose debug logs are filtered out; security-relevant events are kept. Filtering debug logs reduces cost without losing events the SOC needs. Priya and the provider agree a list of events to keep for each source, starting with those used in the March investigation: VPN logins, admin group changes and file reads. Each month the provider reports data volumes, so Priya can see whether a source suddenly grows. Any filter that removes security-relevant events needs her approval, so cost savings do not quietly reduce what the SOC can see.
 
 ### Audit settings
 
@@ -245,27 +245,27 @@ You will (1) map threats to ATT&CK techniques; (2) select detections from shared
 
 ### 4.1 Starting from threats
 
-The March event combined valid accounts used remotely, account manipulation (adding to an admin group) and data collection from a file share. MITRE ATT&CK (Strom et al., 2018) names these behaviours so detections can be planned and compared.
+The March event combined valid accounts used remotely, account manipulation (adding to an admin group) and data collection from a file share. MITRE ATT&CK (Strom et al., 2018) names these behaviours so detections can be planned and compared. Naming behaviours lets Priya plan detections for each part of March: a rule for unusual remote logins, one for admin group changes and one for large file reads. The ATT&CK names also let her compare her rules with published rules and with the provider's catalogue. The coverage table lists each technique with its rule, data source and test status, so the board can see what Fenwick would detect.
 
 ### 4.2 Shared rules
 
-SigmaHQ publishes open detection rules in a vendor-neutral format. The provider converts selected rules into its SIEM. Priya chooses rules for admin group changes, new-country VPN logins and mass file reads.
+SigmaHQ publishes open detection rules in a vendor-neutral format. The provider converts selected rules into its SIEM. Priya chooses rules for admin group changes, new-country VPN logins and mass file reads. Starting from shared rules saves time and benefits from others' testing, but converting them can change how they behave. Priya asks the provider to show each converted rule and test it on Fenwick's data before it is counted. The three rules correspond to the three behaviours in March, so replaying that event tests them directly. Rules are documented with their source, conversion and owner.
 
 ### 4.3 Adapting
 
-Shared rules assume generic environments. Fenwick's IT team legitimately changes admin groups during maintenance, so the rule adds context: changes outside an approved change window are high; inside, low.
+Shared rules assume generic environments. Fenwick's IT team legitimately changes admin groups during maintenance, so the rule adds context: changes outside an approved change window are high; inside, low. Without context, the rule would fire on every maintenance change, and the provider would soon learn to ignore it. With change windows, a change outside maintenance raises a high alert, which is what happened in March at 22:43. Priya gives the provider the change calendar and asks IT to record each maintenance window in advance, so the context stays accurate. Tom reviews the rule each month with the calendar to check it is working as intended.
 
 ### 4.4 Testing
 
-Each rule is tested by replaying the synthetic March events and a normal week.
+Each rule is tested by replaying the synthetic March events and a normal week. Replaying March shows whether each rule catches the attack, and replaying a normal week shows how often it fires on legitimate activity. A rule that catches March but fires constantly in a normal week would overwhelm the provider. The replay showed that the three rules would have raised a critical alert within ten minutes of the March login. Each test is recorded with the date, data used and result, and failed tests lead to rule changes before the rule goes live.
 
 ### 4.5 Honest coverage
 
-The coverage table lists each technique, rule, data source and tested status. Untested rules are not counted as coverage.
+The coverage table lists each technique, rule, data source and tested status. Untested rules are not counted as coverage. Counting only tested rules keeps the coverage table honest: a rule that exists but has never been tested might not fire at all. When a rule changes or a data source is replaced, its tested status is reset until it is tested again. The provider later found two rules that would not fire on the new VPN product, which showed why this matters. Priya presents the table to the board with tested and untested rules shown separately.
 
 ### 4.6 D3FEND
 
-MITRE D3FEND (Kaloroumakis and Smith, 2021) helps describe defensive measures, such as account monitoring, in a consistent vocabulary for the board.
+MITRE D3FEND (Kaloroumakis and Smith, 2021) helps describe defensive measures, such as account monitoring, in a consistent vocabulary for the board. Using D3FEND terms lets Priya describe what Fenwick does to defend itself, such as monitoring accounts and analysing network traffic, in the same consistent way as ATT&CK describes attacks. This helps the board compare defensive measures with the threats they address. Priya uses it only for description and does not claim that naming a measure proves it works; testing does that.
 
 ### Rule ownership
 
@@ -311,27 +311,27 @@ You will (1) design an alert pipeline from SIEM to decision; (2) set triage prio
 
 ### 5.1 The pipeline
 
-Alerts flow from the SIEM to the provider's queue at night and to Fenwick's analyst by day. Each alert is acknowledged, triaged, then closed, escalated or turned into an incident. Every stage has an owner; March showed what happens when nobody owns the queue.
+Alerts flow from the SIEM to the provider's queue at night and to Fenwick's analyst by day. Each alert is acknowledged, triaged, then closed, escalated or turned into an incident. Every stage has an owner; March showed what happens when nobody owns the queue. Splitting the queue by time of day gives Fenwick cover around the clock without a night shift of its own. The handover at 08:00 keeps the two halves connected, so an alert raised at night is not lost when the provider's shift ends. Tom checks each morning that every night alert has a note and an outcome.
 
 ### 5.2 Priorities
 
-Priority combines rule severity with asset value from the asset list built in chapter 3. An admin change on a domain controller is critical; a macro document opened on a reception PC is low.
+Priority combines rule severity with asset value from the asset list built in chapter 3. An admin change on a domain controller is critical; a macro document opened on a reception PC is low. Priority tells the provider and Tom which alerts need attention first. Using asset value means the same rule can produce different priorities: an admin change on a domain controller could give an attacker control of every account, while a macro document on a reception PC affects one machine. Priya reviews priorities each month with Tom and the provider, and adjusts them when the asset list changes.
 
 ### 5.3 Service levels
 
-Critical: acknowledge in 15 minutes and call Priya. High: 30 minutes. Medium: same working day. Low: weekly review. These come from the board's first-year goal.
+Critical: acknowledge in 15 minutes and call Priya. High: 30 minutes. Medium: same working day. Low: weekly review. These come from the board's first-year goal. Each level has a target that can be measured and reported. Critical alerts get the shortest target because March showed how quickly damage can be done: fifteen minutes passed between the admin change and its removal. The provider and Tom record acknowledgement times, and Priya reports them monthly to the risk committee. Missed targets are discussed at the monthly review with the provider, with the reason and any fix recorded.
 
 ### 5.4 Triage notes
 
-Every decision has a note: what was seen, checked, decided and why. The provider's notes must be readable by Fenwick's analyst the next morning.
+Every decision has a note: what was seen, checked, decided and why. The provider's notes must be readable by Fenwick's analyst the next morning. Good notes let a second analyst understand a decision without repeating the work, and show later whether a closed alert was handled correctly. Tom reviews the provider's night notes each morning and asks about any that are unclear. He keeps a short guide with examples of good notes, which the provider uses to train its analysts on Fenwick's service. Notes are also used in the monthly review, to check precision and to find rules that need tuning.
 
 ### 5.5 Unowned queues
 
-Priya removes the old shared mailbox; alerts now go only to queues with named owners and service levels.
+Priya removes the old shared mailbox; alerts now go only to queues with named owners and service levels. In March, the alert went to a shared mailbox that nobody checked at night, which is why it sat unseen for nine hours. Removing the mailbox means every alert has a named owner who is accountable for acknowledging it within its service level. Priya checks that no rule still sends to the old address. Any new queue must have an owner and a service level before rules can send to it.
 
 ### 5.6 New hire
 
-Fenwick hires Tom Reyes as its first analyst. He owns daytime triage and reviews night notes each morning.
+Fenwick hires Tom Reyes as its first analyst. He owns daytime triage and reviews night notes each morning. Hiring an analyst gives Fenwick in-house knowledge that the provider cannot supply, such as which finance staff use macros or when IT runs maintenance. Tom's morning review keeps the night and day halves of the queue connected. He also maintains rule documentation and runbooks. Priya remains SOC owner and decides on escalation and business matters, while Tom handles daily operations. Their roles are written into the charter.
 
 ### Closing well
 
@@ -377,27 +377,27 @@ You will (1) write a clear service agreement with a provider; (2) share business
 
 ### 6.1 Agreement
 
-The service agreement lists monitored sources, service levels, pre-approved actions, contacts, reporting and exit terms. It refers to Fenwick's charter for authority.
+The service agreement lists monitored sources, service levels, pre-approved actions, contacts, reporting and exit terms. It refers to Fenwick's charter for authority. The agreement turns the charter into service terms the provider must meet. Listing monitored sources makes it clear which logs the provider watches, so a missing source is noticed. Exit terms protect Fenwick if the provider fails. Referring to the charter means authority is defined in one place, so the two documents cannot disagree. Priya reviews the agreement with the provider each year, and changes are signed by both parties and the managing director.
 
 ### 6.2 Context
 
-Providers lack local knowledge. Fenwick shares the asset list, travel calendar, change windows, VIP list and normal factory shift patterns.
+Providers lack local knowledge. Fenwick shares the asset list, travel calendar, change windows, VIP list and normal factory shift patterns. Each item answers a question the provider cannot answer alone. The travel calendar explains a new-country login, as with the sales manager at a trade fair; change windows explain admin changes; shift patterns explain factory logins at unusual hours. Priya updates the information monthly and asks the provider to confirm it has the current version. Without context, the provider would escalate many benign alerts and miss the signs of real ones.
 
 ### 6.3 Daily handover
 
-At 08:00 the provider sends a summary of overnight alerts and open cases; Tom reviews it and replies with questions.
+At 08:00 the provider sends a summary of overnight alerts and open cases; Tom reviews it and replies with questions. The handover means nothing from the night is forgotten. Tom checks that every alert has a note and an outcome, and that open cases have a next step and an owner. His questions often lead to context updates, such as a missing change window. The handover also gives Priya a daily record of how the provider handled Fenwick's alerts, which she uses at the monthly review to discuss response times and missed alerts.
 
 ### 6.4 Monthly review
 
-Priya and the provider review response times, false positives, missed alerts and context updates.
+Priya and the provider review response times, false positives, missed alerts and context updates. The review uses figures from both sides: the provider's response times and Tom's records of false positives and missed alerts. Each problem is traced to a cause, such as missing context or a rule that fires too often, and given an action with an owner. Priya records the actions and checks them at the next review. Context updates are confirmed so the provider has the current travel calendar, change windows and VIP list.
 
 ### 6.5 Testing the provider
 
-Twice a year, with agreement, Fenwick runs an announced test: a test account is added to an admin group at night to see how quickly the provider responds.
+Twice a year, with agreement, Fenwick runs an announced test: a test account is added to an admin group at night to see how quickly the provider responds. An announced test checks the whole path from detection to call, using a harmless action that matches the March behaviour. The provider knows a test will happen but not exactly when, so it measures normal performance. The first test met the fifteen-minute target, while the second took 26 minutes because the on-call analyst was busy with another client. Priya reports both results to the board, and the provider added a backup analyst.
 
 ### 6.6 Exit plan
 
-If the provider fails, logs and rules must transfer to a new one; the agreement makes Fenwick the owner of both.
+If the provider fails, logs and rules must transfer to a new one; the agreement makes Fenwick the owner of both. Owning logs and rules means Fenwick can move to another provider without starting again. The agreement says how logs and rule definitions are exported, in what format and within what time. Priya checks once a year that the export works by asking for a sample. When the managing director asked what would happen if the provider failed, Priya pointed to these terms and the data ownership clause.
 
 ### Communication channels
 
@@ -439,9 +439,9 @@ You will (1) measure rule precision from triage outcomes; (2) tune noisy rules s
 
 ### 7.1 Precision
 
-Precision is the share of alerts that were real. Tom marks each closed alert real or benign so precision can be calculated.
+Precision is the share of alerts that were real. Tom marks each closed alert real or benign so precision can be calculated. Tom records the outcome of each alert in the triage note, so precision can be calculated for each rule without extra work. A benign alert is not a failure in itself; rules need some false alarms to catch real attacks. Precision shows which rules waste the most analyst time, so tuning can focus there. Tom's records also show real cases a rule caught, which tuning must keep catching.
 
-### Lab — Lab — rule precision
+### Lab — rule precision
 
 ```python
 """Precision of each rule over one month of synthetic triage outcomes."""
@@ -462,19 +462,19 @@ Macro document opened        alerts= 95 real=1 precision=0.01
 
 ### 7.2 Lab result
 
-Admin group change and AV detection on server each have precision 0.33; new-country VPN login 0.07 (3 real of 40); macro document opened 0.01 (1 of 95).
+Admin group change and AV detection on server each have precision 0.33; new-country VPN login 0.07 (3 real of 40); macro document opened 0.01 (1 of 95). Precision is very low for the macro and VPN rules, so most of their alerts are benign. The macro rule fired 95 times for one real case, which wastes analyst time and teaches staff to ignore it. Tom and Priya choose these two rules for tuning, since they cause most of the triage work. The other rules are kept as they are and reviewed again the following quarter.
 
 ### 7.3 Base rate
 
-Axelsson (2000) showed that rare attacks make even good detectors produce mostly false alarms. The macro rule fires on any document with macros, and Fenwick's finance team uses many.
+Axelsson (2000) showed that rare attacks make even good detectors produce mostly false alarms. The macro rule fires on any document with macros, and Fenwick's finance team uses many. Applied to Fenwick, the base rate explains why the macro rule's precision is so low: real malicious macros are rare, while finance staff open legitimate macro documents every day. Even a rule that catches every malicious macro will mostly flag legitimate ones. Tuning must reduce the benign triggers without losing the rare real case.
 
 ### 7.4 Tuning
 
-The macro rule is narrowed to documents from outside email that start a new process. The VPN rule now checks the travel calendar first.
+The macro rule is narrowed to documents from outside email that start a new process. The VPN rule now checks the travel calendar first. Each change targets a known cause of benign alerts. Finance documents usually come from inside Fenwick and do not start new processes, so narrowing the macro rule removes most of them. Checking the travel calendar removes alerts for staff known to be abroad, like the sales manager at the trade fair. After tuning, the macro rule fired nine times in a month with one real case, and the VPN rule eight times with three real.
 
 ### 7.5 Recording
 
-Each change has a reason, expected effect and review date; real cases are checked to ensure they would still be caught.
+Each change has a reason, expected effect and review date; real cases are checked to ensure they would still be caught. Recording each change prevents tuning from quietly removing detection. Before a tuned rule goes live, Tom replays the real cases it caught earlier and checks that it still fires on them. The review date ensures that the tuning is checked again after a month of use. If precision does not improve as expected, the change is reconsidered. The record is part of the rule documentation, which the provider later peer-reviewed.
 
 ### Validation alongside precision
 
@@ -520,27 +520,27 @@ You will (1) write an incident response plan aligned with SP 800-61r3; (2) defin
 
 ### 8.1 The plan
 
-Priya's plan follows NIST SP 800-61r3 (Nelson et al., 2025), which places response within CSF 2.0 functions, from preparation to recovery and improvement.
+Priya's plan follows NIST SP 800-61r3 (Nelson et al., 2025), which places response within CSF 2.0 functions, from preparation to recovery and improvement. Following SP 800-61r3 helps Priya build the plan around the whole lifecycle, from preparing contacts and playbooks to learning from each incident. March showed gaps at every stage: no preparation, no authority, no plan for containment and no review afterwards. The plan addresses each one, and it is tested in tabletop exercises with managers. The managing director approves the plan, and Priya reviews it after every incident and exercise.
 
 ### 8.2 Roles
 
-Incident lead (Priya), analyst (Tom or provider), IT operations, communications (marketing head), legal and data protection (external adviser), executive approver (managing director).
+Incident lead (Priya), analyst (Tom or provider), IT operations, communications (marketing head), legal and data protection (external adviser), executive approver (managing director). Naming roles in advance avoids the confusion of deciding who does what during an incident. Priya leads and makes decisions, the analyst investigates, IT operations takes technical actions, communications handles messages to staff and customers, the external adviser advises on legal duties, and the managing director approves major decisions such as notifying customers. Each role has a deputy, and contact details are kept in the plan.
 
 ### 8.3 Severity
 
-Low: single device or account, no data. Medium: data access or several systems. High: production stopped or sensitive data taken.
+Low: single device or account, no data. Medium: data access or several systems. High: production stopped or sensitive data taken. Severity decides who is involved and how quickly. Under this scale, March would be high, because design files under customer confidentiality agreements were taken. A single phished account with no data accessed, like the month-nine incident, would be low. Priya's plan links each level to the people who must be informed and the actions expected, so the response matches the harm.
 
 ### 8.4 Playbooks
 
-Three playbooks: compromised account, ransomware on office PCs, and suspected data theft. Each lists triggers, first steps, pre-approved actions and contacts.
+Three playbooks: compromised account, ransomware on office PCs, and suspected data theft. Each lists triggers, first steps, pre-approved actions and contacts. The three playbooks cover the incidents Fenwick considers most likely: March was a compromised account followed by data theft, and ransomware is a common threat to manufacturers. Each playbook gives the first steps so the responder does not have to decide everything under pressure. Pre-approved actions match the charter. The playbooks are tested in tabletop exercises and updated after each one.
 
 ### 8.5 Communications
 
-Templates for staff, customers and regulators. Personal data breaches may need reporting to the data protection regulator within set deadlines, so the adviser is called early.
+Templates for staff, customers and regulators. Personal data breaches may need reporting to the data protection regulator within set deadlines, so the adviser is called early. Prepared templates save time when deadlines apply. Customer templates matter at Fenwick because design files may include customer drawings under confidentiality agreements, which the first tabletop showed nobody had checked. Legal added a step to check contracts for notification duties to customers when design data is accessed. The adviser decides whether a regulator must be notified, using the facts in the incident record.
 
 ### 8.6 Exercises
 
-A tabletop exercise each half year tests the plan with managers.
+A tabletop exercise each half year tests the plan with managers. Each tabletop uses a realistic scenario, starting with a replay of March, and the managers who would respond work through the plan step by step. Gaps found become actions with owners and dates, such as the contract check legal added after the first exercise. Priya reports the findings and their status to the board. By the end of the year two tabletops had been held, and two of three findings from the first were closed.
 
 ### Contact lists and access
 
@@ -586,9 +586,9 @@ You will (1) build a cross-source timeline; (2) separate facts from inferences; 
 
 ### 9.1 Why timelines
 
-A timeline puts events from different sources in one order, so gaps and causes become visible. It is the core of most investigations.
+A timeline puts events from different sources in one order, so gaps and causes become visible. It is the core of most investigations. For March, the timeline joined VPN logs, domain controller logs, file-server audit logs and firewall logs, which no single system held. Placed in order, they showed the login, the admin change, the file reads, the data leaving and the attempt to hide the change. Without a shared time source, events from different systems could not have been ordered reliably.
 
-### Lab — Lab — merging sources
+### Lab — merging sources
 
 ```python
 """Merge synthetic events from three sources into one timeline."""
@@ -613,23 +613,23 @@ Run with `python3 lab_timeline.py`. Verified output:
 
 ### 9.2 Lab result
 
-The merged March timeline: 22:41 VPN login from 198.51.100.23 (new country); 22:43 j.harper added to Domain Admins; 22:47 2,310 files read in the Designs share; 22:55 session closed; 22:58 j.harper removed from Domain Admins. The removal suggests an attempt to hide the change.
+The merged March timeline: 22:41 VPN login from 198.51.100.23 (new country); 22:43 j.harper added to Domain Admins; 22:47 2,310 files read in the Designs share; 22:55 session closed; 22:58 j.harper removed from Domain Admins. The removal suggests an attempt to hide the change. The timeline shows how quickly the attack moved: from login to data reading took six minutes, and the whole event lasted seventeen. Priya notes which events are facts from logs and which are her interpretation, such as the reason for the removal.
 
 ### 9.3 Facts and inferences
 
-Facts: the events above. Inference: someone other than j.harper used his account, since he was at home in the UK and his laptop showed no VPN session. Priya labels each line as fact or inference in the report.
+Facts: the events above. Inference: someone other than j.harper used his account, since he was at home in the UK and his laptop showed no VPN session. Priya labels each line as fact or inference in the report. Labelling each line helps readers see where the report's conclusions come from, and which could change if new evidence appears. The inference about j.harper rests on two facts that could be checked: his location and his laptop's VPN status. Priya does not claim to know who the attacker was, only that someone other than j.harper used the account.
 
 ### 9.4 Scope
 
-Questions: how did the attacker get the password? Was MFA bypassed? Were files copied out? Email logs show j.harper entered his password on a fake VPN page two days earlier; the VPN lacked MFA; firewall logs show 1.4 GB sent to 198.51.100.23 between 22:47 and 22:55.
+Questions: how did the attacker get the password? Was MFA bypassed? Were files copied out? Email logs show j.harper entered his password on a fake VPN page two days earlier; the VPN lacked MFA; firewall logs show 1.4 GB sent to 198.51.100.23 between 22:47 and 22:55. Each question changes the response: a phished password calls for MFA and staff awareness, missing MFA calls for adding it to the VPN, and data sent out calls for checking customer contracts. The answers set the scope of the incident, and the final scope statement found no evidence of other accounts or malware. Priya records which sources answered each question, so the conclusions can be checked.
 
 ### 9.5 Evidence
 
-Copies of logs are saved with time stamps and hashes, and originals stay in the SIEM. A record lists who handled each item.
+Copies of logs are saved with time stamps and hashes, and originals stay in the SIEM. A record lists who handled each item. Hashes show that saved copies have not changed since they were made, which matters if the evidence is later needed for an insurer or legal action. Keeping originals in the SIEM means the copies can be checked against them. The handling record lists each item, who copied it, when and where it was stored. Priya follows the same steps for every incident, so evidence is handled consistently.
 
 ### 9.6 Research
 
-Hassan et al. (2019) showed that provenance (how events connect) helps reduce false alarms and speeds investigation; the same idea underlies good timelines.
+Hassan et al. (2019) showed that provenance (how events connect) helps reduce false alarms and speeds investigation; the same idea underlies good timelines. The research applies to Fenwick's investigation in a simple form: linking the VPN login to the admin change and the file reads through the same account and address showed one connected event, not three separate alerts. Priya uses this idea to explain to Tom why connecting events matters more than looking at each alert alone. Tom keeps this in mind when he writes runbooks.
 
 ### Gaps stated
 
@@ -671,27 +671,27 @@ You will (1) choose metrics that show SOC value; (2) present trends and risks to
 
 ### 10.1 Choosing metrics
 
-Priya picks: log coverage of critical assets, time to acknowledge critical alerts, rule precision, open high risks and exercise findings closed.
+Priya picks: log coverage of critical assets, time to acknowledge critical alerts, rule precision, open high risks and exercise findings closed. Each metric relates to a first-year goal: coverage measures what the SOC can see, acknowledgement time measures response at any hour, precision measures how much time rules waste, and open risks and exercise findings show whether problems are being closed. Priya defines each one in writing, including how it is counted, so the figures are comparable each month. She agrees the definitions with Tom and the provider.
 
 ### 10.2 Medians and trends
 
-Medians and month-to-month trends avoid being misled by one unusual case.
+Medians and month-to-month trends avoid being misled by one unusual case. A single slow response could distort an average, while the median shows typical performance. Priya still reports the worst case, such as the 26-minute provider test, so that unusual cases are not hidden. Trends over several months show whether the SOC is improving, which matters more to the board than a single month's figure. Each chart on the board page shows at least six months. Tom checks each chart against the raw records.
 
 ### 10.3 Misleading metrics
 
-"Alerts handled" looks impressive but grows with noise; Priya leaves it out.
+"Alerts handled" looks impressive but grows with noise; Priya leaves it out. A rising count of handled alerts could mean more attacks, or simply noisier rules, so it does not show whether Fenwick is safer. After tuning, the macro rule fired far less, which would make the count fall even though detection improved. Priya chooses metrics that change in the right direction when the SOC gets better, such as precision and acknowledgement time. She explains this choice on the board page, so nobody asks why the count is missing.
 
 ### 10.4 The board page
 
-One page: three charts, two decisions needed, one sentence per risk.
+One page: three charts, two decisions needed, one sentence per risk. Keeping it to one page makes the board page readable in a meeting. The three charts show coverage, acknowledgement time and precision over time. The decisions needed tell the board what it is being asked to approve, such as funding for ERP log collection. One sentence per risk gives the board enough to understand each open risk without technical detail. Priya prepares the page from the same data as the monthly report, and Tom checks the figures before it goes to the board.
 
 ### 10.5 Decisions
 
-Board decisions in month five: fund MFA for the factory's remote vendor access, and approve the cost of ERP log collection.
+Board decisions in month five: fund MFA for the factory's remote vendor access, and approve the cost of ERP log collection. Each decision closes a gap Priya had reported. The factory vendor connected remotely without MFA, which was the same weakness that let the March attacker in through the VPN. ERP log collection closes the most important coverage gap. Priya presents each decision with its cost and the risk it reduces, so the board can weigh them, and records the board's decisions in the next monthly report.
 
 ### 10.6 Honesty
 
-Reporting what went badly builds trust; the 26-minute provider test is reported with its fix.
+Reporting what went badly builds trust; the 26-minute provider test is reported with its fix. The 26-minute test missed the fifteen-minute target, and Priya reports it alongside the fix: the provider added a backup analyst. Hiding it would make the SOC look better but would leave the board unaware of a real weakness in night cover. Reporting problems with their fixes also shows the board that the SOC finds and corrects its own weaknesses, which supports the second-year budget request.
 
 ### Audience
 
@@ -737,23 +737,23 @@ You will (1) assess SOC capability with SOC-CMM; (2) apply continuous monitoring
 
 ### 11.1 SOC-CMM
 
-The SOC Capability Maturity Model (van Os, 2016) assesses business, people, process, technology and services. Priya's self-assessment: process improving, people thin (one analyst), technology reliant on the provider.
+The SOC Capability Maturity Model (van Os, 2016) assesses business, people, process, technology and services. Priya's self-assessment: process improving, people thin (one analyst), technology reliant on the provider. The assessment shows where Fenwick's SOC is strong and where it depends on too few people. With one analyst, holidays and illness leave daytime triage uncovered, which is why the year-two plan adds a second analyst. Reliance on the provider is reasonable for a small company but needs the exit terms and ownership of logs and rules that the agreement provides. Priya repeats the self-assessment each year to track progress.
 
 ### 11.2 Continuous monitoring
 
-NIST SP 800-137 (Dempsey et al., 2011) frames monitoring as ongoing awareness feeding risk decisions, not a one-time project.
+NIST SP 800-137 (Dempsey et al., 2011) frames monitoring as ongoing awareness feeding risk decisions, not a one-time project. For Fenwick, this means the SOC's figures feed decisions about risk, such as funding ERP log collection or MFA for vendor access, rather than being collected and filed. The monthly report and board page are the routine that keeps monitoring connected to decisions. Priya uses the publication to explain to the board why the SOC needs ongoing funding rather than a one-time project budget.
 
 ### 11.3 Research
 
-Kokulu et al. (2019) interviewed SOC staff and found common issues between analysts and managers, such as disagreement on how to measure success; Priya uses this to agree metrics with Tom rather than imposing them.
+Kokulu et al. (2019) interviewed SOC staff and found common issues between analysts and managers, such as disagreement on how to measure success; Priya uses this to agree metrics with Tom rather than imposing them. Agreeing metrics with Tom means they reflect what he sees in daily triage, such as the time wasted on benign macro alerts. He suggested measuring precision per rule rather than for all alerts together, which made tuning easier to target. Priya and Tom review the metrics each quarter and change them if they stop being useful.
 
 ### 11.4 Year-two plan
 
-A second analyst, ERP and factory network monitoring, a quarterly rule review and a purple-team style validation with the provider using authorised test actions only.
+A second analyst, ERP and factory network monitoring, a quarterly rule review and a purple-team style validation with the provider using authorised test actions only. Each item addresses a gap found during the first year: a second analyst for the thin people score, ERP and factory network monitoring for remaining coverage gaps, quarterly rule reviews to keep rules working as systems change, and validation with the provider to test detections against realistic actions. Priya costs each item for the board.
 
 ### 11.5 Lessons loop
 
-Each incident and test produces actions with owners and dates, tracked to closure.
+Each incident and test produces actions with owners and dates, tracked to closure. The loop makes sure that lessons become changes. After the March replay, legal's contract check became a playbook step; after the 26-minute test, the provider added a backup analyst. Each action is tracked in a register with its owner and date, and Priya reviews open actions at each monthly meeting. Actions not closed by their date are reported to the board with a reason, so lessons cannot be quietly dropped. The register is part of the board pack.
 
 ### Improvement backlog
 
@@ -799,27 +799,27 @@ You will (1) evaluate a year of security operations against goals; (2) present r
 
 ### 12.1 Goals revisited
 
-Log coverage: critical 5/5, high 4/4 by month ten. Tested response plan: two tabletops, one real incident handled. Thirty-minute handling: median critical acknowledge 9 minutes, worst 26.
+Log coverage: critical 5/5, high 4/4 by month ten. Tested response plan: two tabletops, one real incident handled. Thirty-minute handling: median critical acknowledge 9 minutes, worst 26. Each goal from the board paper is checked against evidence. Coverage comes from the coverage table, response testing from the tabletop records and the month-nine incident, and handling time from the provider's acknowledgement records. The worst case of 26 minutes was the second provider test, before the backup analyst was added. Priya presents both the median and the worst case.
 
 ### 12.2 Real incident
 
-In month nine, a buyer's account was phished. The provider saw a new-country login at 02:14, disabled the account at 02:19 under pre-approved authority, and called Priya. MFA on the VPN had blocked the attacker; the account had only been used for webmail. No data was taken.
+In month nine, a buyer's account was phished. The provider saw a new-country login at 02:14, disabled the account at 02:19 under pre-approved authority, and called Priya. MFA on the VPN had blocked the attacker; the account had only been used for webmail. No data was taken. The incident tested every part of the SOC built during the year: the new-country rule fired, the provider acted under authority, and the service level was met. Priya records the timeline and reviews it with the provider.
 
 ### 12.3 Comparison with March
 
-In March, the alert sat unseen for nine hours and 1.4 GB left. In month nine, response took five minutes and nothing left.
+In March, the alert sat unseen for nine hours and 1.4 GB left. In month nine, response took five minutes and nothing left. The difference shows what the year changed: an owned queue, written authority, a provider watching at night and MFA on the VPN. Priya is careful not to claim that every future attack will be stopped. The month-nine attacker was blocked by MFA, and the account was disabled quickly. She presents the comparison to the board as evidence that the investment worked in one real case, alongside the remaining risks.
 
 ### 12.4 Reflection
 
-Priya notes what she would change: hire the analyst earlier, share business context with the provider from day one, and involve the factory earlier.
+Priya notes what she would change: hire the analyst earlier, share business context with the provider from day one, and involve the factory earlier. Each change comes from a problem in the first year. Tom joined after the provider had started, so the provider worked without daytime follow-up at first. The travel calendar was shared only after a night call about the sales manager. The factory's concerns about isolation surfaced late in the charter workshop. Priya writes these lessons into her final report, so other small manufacturers can plan better from the start.
 
 ### 12.5 Ethics
 
-Monitoring staff is sensitive; the staff council's annual review found no misuse.
+Monitoring staff is sensitive; the staff council's annual review found no misuse. The review checked who accessed monitoring data and why, and found that it had been used only for security. The staff council's report goes to the managing director and is summarised for staff, so they can see that the limits in the charter were followed. The review will continue each year, and Priya will report any concerns raised by staff. She considers this review as important as any technical metric, because the SOC depends on staff trust.
 
 ### 12.6 Next steps
 
-Priya plans further study in incident response and resilience; Tom starts a technical course.
+Priya plans further study in incident response and resilience; Tom starts a technical course. Priya's study will deepen her knowledge of response planning, which she now leads at Fenwick. Tom's course will help him improve rules and investigations, and support the year-two quarterly rule reviews. Both plans are part of the year-two budget approved by the board. Priya also plans to share Fenwick's experience with other manufacturers in her region, describing the hybrid model and its first-year results. Tom's course is scheduled around his triage duties.
 
 ### Costs
 
