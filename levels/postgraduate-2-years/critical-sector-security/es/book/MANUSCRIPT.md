@@ -42,9 +42,9 @@ Toda afirmación factual sobre una ley, una norma, un incidente público o un es
 4. [Riesgo y ética avanzados](#ch-04): riesgo cuantificado con incertidumbre, excedencia de pérdidas, apetito de riesgo en unidades de servicio y quién soporta el riesgo residual.
 5. [Infraestructura crítica y seguridad sectorial: alternativas de diseño](#ch-05): comparar arquitecturas como grafos de ataque y como sistemas operables, modos de fallo de los controles y registros de decisiones de arquitectura.
 6. [Infraestructura crítica y seguridad sectorial: evaluación controlada](#ch-06): probar las detecciones y los simulacros antes de confiar en ellos, intervalos, carga de falsas alarmas y diseño seguro de las pruebas.
-7. [Infraestructura crítica y seguridad sectorial: integración organizativa](../../en/book/MANUSCRIPT.md#ch-07): modelos operativos, propiedad, concentración de proveedores e integración con la gestión de emergencias.
-8. [Infraestructura crítica y seguridad sectorial: casos difíciles](../../en/book/MANUSCRIPT.md#ch-08): cascadas, prioridades de restablecimiento, actualizaciones de confianza defectuosas, internos ambiguos y obligaciones en conflicto.
-9. [Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento](../../en/book/MANUSCRIPT.md#ch-09): liderar una función, informes al consejo, casos de aseguramiento, frescura de la evidencia y distinguir la señal del ruido.
+7. [Infraestructura crítica y seguridad sectorial: integración organizativa](#ch-07): modelos operativos, propiedad, concentración de proveedores e integración con la gestión de emergencias.
+8. [Infraestructura crítica y seguridad sectorial: casos difíciles](#ch-08): cascadas, prioridades de restablecimiento, actualizaciones de confianza defectuosas, internos ambiguos y obligaciones en conflicto.
+9. [Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento](#ch-09): liderar una función, informes al consejo, casos de aseguramiento, frescura de la evidencia y distinguir la señal del ruido.
 10. [Lectura y crítica de la investigación](../../en/book/MANUSCRIPT.md#ch-10): leer estudios, avisos y afirmaciones de proveedores para decidir; denominadores, confusión y transferencia.
 11. [Proyecto aplicado](../../en/book/MANUSCRIPT.md#ch-11): delimitar, ejecutar y evaluar con honestidad una mejora a escala de la organización.
 12. [Revisión final y transferencia](../../en/book/MANUSCRIPT.md#ch-12): integrar el curso, transferir decisiones entre sectores y planificar la práctica continuada.
@@ -1057,7 +1057,458 @@ La evaluación controlada convierte los controles supuestos en controles medidos
 <!-- cyberabc:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 12
 
-[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Infraestructura crítica y seguridad sectorial: integración organizativa
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Comparar modelos operativos para la seguridad de la TO y de la TI en una organización de servicios esenciales y elegir uno de forma razonada.
+2. Asignar la titularidad de modo que cada actividad de seguridad crítica tenga exactamente un rol que rinda cuentas y que los conflictos de funciones sean visibles.
+3. Medir la concentración de proveedores dentro de una organización y en una región, y planificar para un fallo de modo común de un proveedor.
+4. Integrar la respuesta a ciberincidentes con la gestión de emergencias, la continuidad del negocio y los mecanismos regionales de resiliencia.
+5. Diseñar un intercambio de información entre operadores que sea útil, lícito y de confianza.
+
+Los capítulos 1 a 6 dotaron al especialista de herramientas para decidir, aportar evidencia y evaluar. Este capítulo sitúa ese trabajo dentro de una organización y de una región, porque la mayoría de los fallos en los servicios esenciales son fallos de integración: entre la TI y las operaciones, entre un operador y sus proveedores, entre un equipo de ciberincidentes y las personas que dirigen la respuesta a emergencias. El capítulo 8 pone a prueba la integración en los casos más difíciles; el capítulo 9 la dirige y la asegura.
+
+### 7.1 Modelos operativos
+
+Tres modelos habituales para la seguridad en una organización que gestiona tanto TI como TO:
+
+| Modelo | Descripción | Fortalezas | Debilidades |
+|---|---|---|---|
+| Central | El equipo del CISO es titular de la seguridad de la TI y de la TO | Un solo estándar, una sola visión del riesgo, herramientas eficientes | Distancia respecto de la planta; controles diseñados para la TI; las operaciones pueden sortearlos |
+| Federado | Operaciones es titular de la seguridad de la TO con sus propios especialistas; el CISO fija la política y la asegura | Cerca del proceso; cultura de seguridad funcional; creíble para los operadores | Estándares incoherentes; herramientas duplicadas; lagunas en la frontera entre TI y TO |
+| Integrado | Una función conjunta de seguridad de la TO que depende de operaciones con una línea formal hacia el CISO, estándares compartidos y un proceso de incidentes compartido | Combina el conocimiento del proceso con la profundidad en seguridad | Necesita una titularidad explícita y una resolución de conflictos; depende de las personas |
+
+No existe un modelo correcto universal. La NIST SP 800-82 recomienda formar un equipo multifuncional que incluya a ingenieros de control, operadores, personal de seguridad de la TI y de seguridad funcional ([NIST, 2023](https://doi.org/10.6028/NIST.SP.800-82r3)); el NIST CSF 2.0 sitúa los roles, las responsabilidades y las autoridades dentro de la gobernanza ([NIST, 2024](https://doi.org/10.6028/NIST.CSWP.29)). La elección del modelo integrado por parte de Merrow Water (un especialista principal de seguridad que depende del director de operaciones con una línea de puntos hacia el CISO) se deriva de su tamaño y del peso que da a la confianza de los operadores. Después, el modelo debe hacerse realidad mediante la titularidad, el presupuesto y el proceso de incidentes; un organigrama por sí solo no integra nada.
+
+### 7.2 Titularidad: RACI y segregación de funciones
+
+Para cada actividad crítica, un rol **rinde cuentas** (*Accountable*: es titular del resultado y lo aprueba), uno o más son **responsables** (*Responsible*: hacen el trabajo) y otros son **consultados** (*Consulted*) o **informados** (*Informed*). Dos reglas detectan la mayoría de los fallos de titularidad: cada actividad crítica tiene **exactamente un** rol que rinde cuentas; y, cuando un mismo rol ejecuta y aprueba una actividad con consecuencias de seguridad (un cambio de emergencia en un cortafuegos, un pago, la concesión de un acceso a un proveedor), el conflicto se elimina o se cubre con un control compensatorio, como una revisión a posteriori de cada caso. La segregación de funciones es un principio de control de larga tradición en el catálogo del NIST ([NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)). Dos roles que rinden cuentas de «declarar un ciberincidente» suena a seguridad adicional; en la práctica, crea una laguna a las 3 de la madrugada, cuando cada uno supone que el otro ya ha decidido.
+
+### 7.3 Proveedores y concentración
+
+Los servicios esenciales dependen de proveedores para el soporte de los sistemas de control, la detección gestionada, las telecomunicaciones y el alojamiento en la nube. La concentración tiene dos niveles:
+
+- **Dentro de un operador.** Si un proveedor presta toda una función crítica, su fallo (técnico, comercial o por compromiso) es el fallo del operador. Una medida estándar de la concentración es el índice de Herfindahl-Hirschman (HHI): la suma de los cuadrados de las cuotas porcentuales, desde casi 0 (muchos proveedores pequeños) hasta 10.000 (un solo proveedor) ([U.S. Department of Justice, HHI](https://www.justice.gov/atr/herfindahl-hirschman-index)). Es una señal tosca pero útil.
+- **En una región.** Si un proveedor es una dependencia mayoritaria de varios operadores, un único evento se convierte en un evento regional. La caída mundial de julio de 2024 causada por una actualización defectuosa de un software de seguridad, que afectó a unos 8,5 millones de dispositivos Windows según Microsoft ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)), mostró cómo un proveedor de confianza puede convertirse en un fallo de modo común entre sectores. La regulación financiera es la que más ha avanzado en esto: DORA exige registros de los acuerdos con terceros proveedores de TIC y establece la supervisión de los terceros proveedores críticos de servicios TIC ([Regulation (EU) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj)).
+
+La concentración no es automáticamente mala: un proveedor bien gestionado puede ser más seguro que tres mal gestionados. La tarea del especialista es hacerla visible, decidir qué concentraciones son aceptables y preparar **planes de salida y de continuidad**: ¿qué haríamos si este proveedor no estuviera disponible durante una semana, o estuviera comprometido? Los contratos deben otorgar derechos de acceso a los registros, la notificación de incidentes, requisitos de seguridad y soporte durante los incidentes del propio proveedor. Las prácticas de la cadena de suministro de software (listas de materiales de software, SBOM ([CISA, SBOM](https://www.cisa.gov/sbom)); desarrollo seguro ([NIST SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)); y compromisos de seguridad desde el diseño ([CISA, Secure by Design](https://www.cisa.gov/securebydesign))) ayudan en la vertiente del producto.
+
+### 7.4 Integración con la gestión de emergencias
+
+Un ciberincidente grave en un servicio esencial es también una emergencia: avisos de hervir el agua, desvíos hospitalarios, cierres portuarios. Por eso, el equipo de ciberincidentes debe encajar en el **mando de emergencias y de continuidad del negocio** de la organización en lugar de funcionar en paralelo. Puntos prácticos de integración:
+
+- Una **clasificación de incidentes** compartida que relacione la gravedad cibernética con el impacto en el servicio, para que el responsable de guardia pueda escalar sin que haya un especialista en seguridad presente.
+- Representación cibernética en la estructura de mando de emergencias y representación de la gestión de emergencias en los ciberejercicios.
+- **Planes de operación manual y de continuidad** cuya titularidad sea de operaciones y que se prueben con escenarios de seguridad (capítulo 6).
+- **Mecanismos regionales** acordados previamente: quién informa a los operadores vecinos, a los servicios de salud y a las autoridades locales; cómo funciona la ayuda mutua; cómo se coordinan los mensajes públicos. La Directiva CER de la UE enmarca la resiliencia de las entidades críticas como multirriesgo e intersectorial ([Directive (EU) 2022/2557](https://eur-lex.europa.eu/eli/dir/2022/2557/oj)); de forma similar, la política estadounidense sobre seguridad y resiliencia de las infraestructuras críticas hace hincapié en la coordinación sectorial ([NSM-22 overview, CISA](https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience/national-security-memorandum-critical-infrastructure-security-and-resilience)).
+
+### 7.5 Intercambio de información
+
+Los operadores aprenden más rápido juntos, pero compartir conlleva riesgos jurídicos, comerciales y de seguridad. El intercambio útil es **específico** (indicadores, técnicas, versiones de productos afectadas, mitigaciones que funcionaron), **oportuno**, **protegido** (reglas de tratamiento acordadas, como las etiquetas del semáforo) y **recíproco**. Un acuerdo de intercambio para un foro regional debe cubrir: qué se comparte y en qué formato; las reglas de tratamiento y de difusión posterior; los datos personales (minimizarlos; comprobar la base jurídica, [GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj)); la cautela en materia de defensa de la competencia con la información comercialmente sensible; la responsabilidad; y cómo puede llegar la información compartida a los reguladores. *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia. La confianza se construye sobre todo con el comportamiento: compartir primero, proteger lo que comparten los demás y reconocer el mérito ajeno.
+
+### 7.6 Ejemplo resuelto: las dependencias de Merrow Bay y un borrador de RACI (sintético)
+
+El foro de resiliencia preguntó a cada operador qué proveedores prestan servicio a sus funciones esenciales y qué cuota aportan. Al mismo tiempo, el especialista de Merrow Water redactó un RACI para cinco actividades de seguridad críticas, que debía acordarse con operaciones y con el CISO. El Lab 7 analiza ambas cosas. Las preguntas eran deliberadamente sencillas: qué proveedor presta servicio a cada función esencial y, aproximadamente, con qué cuota. Los operadores respondieron a partir de los contratos y de los registros de activos, no de memoria, y el foro acordó de antemano que las respuestas solo se usarían para el análisis regional. El borrador de RACI cubre la aprobación y la ejecución de cambios de emergencia en los cortafuegos de la TO, la concesión de sesiones remotas a proveedores, la declaración de un ciberincidente y la restauración desde copias de seguridad fuera de línea, cada una elegida porque un error de titularidad en ella retrasaría la respuesta o debilitaría el control.
+
+### 7.7 Actividad práctica: comprobaciones de concentración y de titularidad
+
+```python
+# Lab 7 - concentration and ownership checks for an integrated security function (offline, stdlib only)
+# Synthetic: which suppliers Merrow Bay operators depend on for essential functions, and a draft RACI.
+from collections import defaultdict
+DEPENDS = [  # (operator, function, supplier, share of that operator's function served by the supplier)
+    ("Merrow Water", "SCADA support", "Corvane Systems", 1.0),
+    ("Merrow Water", "managed detection", "Lumen Watch", 1.0),
+    ("Merrow Water", "telemetry links", "BayTel", 0.7), ("Merrow Water", "telemetry links", "radio (own)", 0.3),
+    ("Merrow Health", "EPR hosting", "Halden Cloud", 1.0),
+    ("Merrow Health", "managed detection", "Lumen Watch", 1.0),
+    ("Merrow Health", "pathology LIMS", "Corvane Systems", 1.0),
+    ("Merrow Energy", "SCADA support", "Corvane Systems", 0.6), ("Merrow Energy", "SCADA support", "in-house", 0.4),
+    ("Merrow Energy", "telemetry links", "BayTel", 0.5), ("Merrow Energy", "telemetry links", "private fibre", 0.5),
+    ("Port of Merrow", "terminal OS hosting", "Halden Cloud", 1.0),
+    ("Port of Merrow", "managed detection", "Lumen Watch", 1.0),
+]
+by_op_fn = defaultdict(list)
+for op, fn, sup, share in DEPENDS: by_op_fn[(op, fn)].append((sup, share))
+print("Herfindahl-Hirschman index per operator function (10000 = single supplier):")
+for (op, fn), lst in by_op_fn.items():
+    hhi = sum((100 * s) ** 2 for _, s in lst)
+    print(f"  {op:15s} {fn:20s} HHI {hhi:6.0f}")
+reach = defaultdict(set)
+for op, fn, sup, share in DEPENDS:
+    if sup not in ("in-house", "radio (own)", "private fibre") and share >= 0.5: reach[sup].add(op)
+print("Suppliers that are a majority dependency for 2+ operators (regional common mode):")
+for sup, ops in sorted(reach.items(), key=lambda x: -len(x[1])):
+    if len(ops) >= 2: print(f"  {sup:16s} {len(ops)} operators: {', '.join(sorted(ops))}")
+RACI = {  # activity -> {role: letters}
+    "approve OT firewall change":   {"OT engineer": "R", "OT manager": "A", "CISO": "C"},
+    "emergency OT firewall change": {"OT engineer": "RA", "OT manager": "I"},
+    "grant vendor remote session":  {"OT engineer": "R", "Service desk": "R"},
+    "declare cyber incident":       {"CISO": "A", "Duty manager": "A", "OT manager": "C"},
+    "restore from offline backup":  {"OT engineer": "R", "OT manager": "A", "IT ops": "R"},
+}
+print("RACI findings:")
+for act, roles in RACI.items():
+    a = [r for r, l in roles.items() if "A" in l]
+    if len(a) != 1: print(f"  {act}: {len(a)} accountable roles {a}")
+    for r, l in roles.items():
+        if "R" in l and "A" in l: print(f"  {act}: {r} both does and approves (needs compensating control or record)")
+```
+
+Salida esperada:
+
+```text
+Herfindahl-Hirschman index per operator function (10000 = single supplier):
+  Merrow Water    SCADA support        HHI  10000
+  Merrow Water    managed detection    HHI  10000
+  Merrow Water    telemetry links      HHI   5800
+  Merrow Health   EPR hosting          HHI  10000
+  Merrow Health   managed detection    HHI  10000
+  Merrow Health   pathology LIMS       HHI  10000
+  Merrow Energy   SCADA support        HHI   5200
+  Merrow Energy   telemetry links      HHI   5000
+  Port of Merrow  terminal OS hosting  HHI  10000
+  Port of Merrow  managed detection    HHI  10000
+Suppliers that are a majority dependency for 2+ operators (regional common mode):
+  Corvane Systems  3 operators: Merrow Energy, Merrow Health, Merrow Water
+  Lumen Watch      3 operators: Merrow Health, Merrow Water, Port of Merrow
+  BayTel           2 operators: Merrow Energy, Merrow Water
+  Halden Cloud     2 operators: Merrow Health, Port of Merrow
+RACI findings:
+  emergency OT firewall change: OT engineer both does and approves (needs compensating control or record)
+  grant vendor remote session: 0 accountable roles []
+  declare cyber incident: 2 accountable roles ['CISO', 'Duty manager']
+```
+
+**Interpretación.** Dentro de los operadores, siete de los diez pares función-operador tienen un HHI de 10.000 (un único proveedor), algo habitual y no alarmante en sí mismo. La visión regional es más importante: Corvane Systems es una dependencia mayoritaria de tres operadores (soporte del SCADA en el agua y la energía, sistemas de anatomía patológica en la salud), Lumen Watch presta detección gestionada a tres, y BayTel y Halden Cloud, a dos cada uno. Un compromiso de Lumen Watch dejaría ciega a la vez la detección de tres operadores; un compromiso del soporte remoto de Corvane podría alcanzar los sistemas operativos de tres sectores. Son riesgos del nivel del foro que no mostrará el registro de ningún operador aislado. La comprobación del RACI encuentra tres problemas: en el cambio de emergencia del cortafuegos, el ingeniero de TO ejecuta y aprueba a la vez, lo que puede ser aceptable de noche si cada caso se revisa el siguiente día laborable; la concesión de sesiones remotas a proveedores **no** tiene ningún rol que rinda cuentas, el hallazgo más peligroso dado el suceso de Hollin del capítulo 3; y la declaración de un ciberincidente tiene dos roles que rinden cuentas, que deberían quedar en uno (el responsable de guardia, que siempre está disponible), con el CISO como consultado.
+
+### 7.8 Errores comunes y límites
+
+- Elegir un modelo operativo copiando a otra organización en lugar de atender al tamaño, el riesgo y la cultura.
+- Dibujar un organigrama y llamarlo integración.
+- Dejar actividades críticas sin ningún titular que rinda cuentas, o con dos.
+- Evaluar el riesgo de los proveedores contrato a contrato y pasar por alto la concentración regional.
+- Tratar la certificación de un proveedor como evidencia de resiliencia durante el propio incidente del proveedor.
+- Llevar la respuesta a ciberincidentes en paralelo al mando de emergencias.
+- Compartir información sin reglas de tratamiento, o no compartirla nunca porque las reglas no están claras.
+
+El límite del análisis estructural es que la integración depende, en última instancia, de las relaciones y de la práctica. Las tablas RACI y los valores del HHI indican dónde mirar; los ejercicios y los incidentes reales muestran si la integración funciona.
+
+### Ejercicios — capítulo 7
+
+**EX031 — Repare el RACI.** *Objetivo:* corregir los defectos de titularidad y verificarlo. *Entradas:* el Lab 7. *Restricciones:* cada actividad, exactamente una A; cualquier conflicto R+A se elimina o se documenta con un control compensatorio. *Pasos:* (1) edite el RACI; (2) vuelva a ejecutarlo y muestre que no quedan hallazgos sin tratar; (3) redacte el control compensatorio de cualquier conflicto que mantenga. *Evidencia esperada:* tabla editada, salida, texto del control. *Rúbrica:* 3 = la concesión de sesiones a proveedores tiene un rol que rinde cuentas (el responsable de TO) con el centro de servicios y el ingeniero de TO como responsables, la declaración de incidentes tiene un único rol que rinde cuentas, el conflicto del cambio de emergencia se elimina o se mantiene con una revisión al día siguiente de cada caso; 2 = salida limpia pero falta el control; 1 = no se vuelve a ejecutar; 0 = nada.
+
+**EX032 — Modo común regional.** *Objetivo:* planificar para un proveedor concentrado. *Entradas:* Lumen Watch presta servicio a tres operadores. *Restricciones:* el foro no tiene autoridad sobre los contratos; los operadores mantienen sus propias elecciones. *Pasos:* (1) describa dos escenarios de fallo (caída; compromiso del proveedor); (2) proponga acciones para cada operador y para el foro; (3) defina las cláusulas contractuales que se pedirán en la renovación. *Evidencia esperada:* plan. *Rúbrica:* 3 = escenarios distintos (ceguera frente al proveedor como vía de ataque), las acciones incluyen una detección o un registro mínimos locales conservados por cada operador, un ejercicio conjunto, cláusulas de notificación, acceso a los registros y un plan de salida; 2 = un escenario; 1 = «cambiar de proveedor»; 0 = nada.
+
+**EX033 — Elija un modelo operativo.** *Objetivo:* justificar un modelo para otra organización. *Entradas:* Port of Merrow: 600 empleados, un equipo de seguridad de la TI de dos personas, la TO de la terminal gestionada por un contratista y un centro de operaciones del capitán de puerto. *Restricciones:* use el §7.1. *Pasos:* compare los modelos; elija uno; indique las tres condiciones que harían fracasar su elección. *Evidencia esperada:* recomendación de una página. *Rúbrica:* 3 = elección argumentada a partir del tamaño, la dependencia del contratista y la cultura de operaciones, condiciones de fracaso concretas; 2 = ventajas e inconvenientes genéricos; 1 = sin elección; 0 = nada.
+
+**EX034 — Lo cibernético dentro del mando de emergencias.** *Objetivo:* integrar las estructuras de respuesta. *Entradas:* el plan de emergencias vigente de Merrow Water (hervir el agua, pérdida de suministro) y su procedimiento de ciberincidentes, que actualmente no se mencionan entre sí. *Restricciones:* una sola clasificación compartida; ningún mando duplicado. *Pasos:* (1) redacte una tabla de clasificación combinada a partir del impacto en el servicio; (2) defina el lugar del responsable cibernético en el mando de emergencias; (3) enumere las notificaciones regionales y quién las hace. *Evidencia esperada:* tabla y descripción de un diagrama. *Rúbrica:* 3 = clasificación por impacto en el servicio utilizable por un responsable de guardia, el responsable cibernético asesora al director del incidente en lugar de dirigir una estructura paralela, notificaciones regionales asignadas; 2 = se mantienen estructuras paralelas; 1 = gravedad solo cibernética; 0 = nada.
+
+**EX035 — Aritmética y juicio sobre la concentración.** *Objetivo:* calcular e interpretar el HHI. *Entradas:* los servicios de telemetría y de red de Merrow Health se reparten un 40 % / 40 % / 20 % entre tres operadores de telecomunicaciones, dos de los cuales comparten la misma canalización a lo largo de la carretera del puerto. *Restricciones:* muestre el cálculo. *Pasos:* (1) calcule el HHI; (2) explique por qué la cifra subestima la concentración real; (3) proponga cómo representar las rutas físicas compartidas. *Evidencia esperada:* cálculo y un párrafo. *Rúbrica:* 3 = HHI de 3.600, se reconoce que el 80 % del servicio comparte una ruta física, de modo que la concentración efectiva es muy superior, se propone calcular la concentración por rutas físicas o dominios de fallo; 2 = solo la cifra; 1 = aritmética errónea; 0 = nada.
+
+### Síntesis del capítulo
+
+La integración es donde suele fallar la seguridad de los servicios esenciales. Elija un modelo operativo adecuado a su tamaño, su riesgo y su cultura, y hágalo realidad con la titularidad: exactamente un rol que rinda cuentas por cada actividad crítica y un tratamiento visible de los conflictos de funciones. Mida la concentración de proveedores dentro de la organización y en la región, y prepare planes de salida y de continuidad para un fallo de modo común de un proveedor. Sitúe la respuesta cibernética dentro del mando de emergencias y de continuidad, con una clasificación compartida basada en el servicio. Comparta información de forma específica, con reglas de tratamiento acordadas, y construya la confianza con el comportamiento.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 12
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Infraestructura crítica y seguridad sectorial: casos difíciles
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Reconocer los rasgos que hacen difícil un caso: la interdependencia, la presión del tiempo, los deberes en conflicto, la evidencia incompleta y el daño en todas las opciones.
+2. Analizar los fallos en cascada entre sectores y fijar prioridades de restablecimiento con pesos explícitos.
+3. Estructurar las decisiones sobre fallos de proveedores de confianza, extorsiones y sucesos internos ambiguos.
+4. Gestionar obligaciones en conflicto con reguladores, clientes, socios y fuerzas del orden sin engañar a ninguno de ellos.
+5. Comunicar en condiciones de incertidumbre de forma que la evidencia posterior no lo desacredite.
+
+Este capítulo reúne las reglas de decisión del capítulo 1, la disciplina probatoria del capítulo 3, la ética del capítulo 4 y la integración del capítulo 7, y las aplica allí donde se tensan. Después, el capítulo 9 pregunta cómo prepara un líder a una organización para estos casos.
+
+### 8.1 Qué hace difícil un caso
+
+Los casos fáciles tienen una respuesta correcta que es difícil de ejecutar. Los casos difíciles **no tienen ninguna opción sin daño**, y el especialista debe ayudar a elegir qué daño, con rapidez, con evidencia incompleta y bajo escrutinio. Se repiten cinco rasgos: la **interdependencia**, de modo que una decisión sobre un servicio cambia los resultados en otros; la **presión del tiempo**, porque los suministros de respaldo, el almacenamiento y la paciencia se agotan; los **deberes en conflicto** con distintas partes interesadas; la **evidencia ambigua**, sobre todo en cuanto a la causa y la intención; y la **irreversibilidad**, porque algunas acciones (pagar, desconectar, anunciar) no pueden deshacerse. Las disciplinas de los capítulos anteriores siguen siendo válidas; lo que cambia es que deben prepararse de antemano, porque no habrá tiempo para inventarlas.
+
+### 8.2 Cascadas y relojes de respaldo
+
+Las infraestructuras dependen unas de otras de forma física (electricidad para las bombas), digital (telemetría a través de las telecomunicaciones), geográfica (canalizaciones y emplazamientos compartidos) y lógica (mercados, dotación de personal) ([Rinaldi, Peerenboom and Kelly, 2001](https://doi.org/10.1109/37.969131)). Los estudios de redes muestran que los sistemas interdependientes pueden fallar de forma más abrupta que cualquiera de ellos por separado ([Buldyrev et al., 2010](https://doi.org/10.1038/nature08932)). Para un especialista, la herramienta práctica es el **reloj de respaldo**: para cada emplazamiento esencial, cuánto dura su propio respaldo (combustible del generador, almacenamiento, batería, solución manual) tras el fallo de una dependencia. El daño empieza cuando un reloj se agota. Las decisiones de restablecimiento (qué alimentador volver a energizar, qué emplazamiento visitar primero) son elecciones sobre qué relojes detener.
+
+Las intrusiones de diciembre de 2015 en tres empresas ucranianas de distribución eléctrica, descritas en una alerta sobre sistemas de control industrial, causaron cortes que afectaron a unos 225.000 clientes; después de restablecerse el suministro, las empresas siguieron funcionando con operaciones restringidas ([CISA, IR-ALERT-H-16-056-01](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01)). El caso recuerda que el final de un corte no es el final de un incidente inducido por un ciberataque: puede que durante un tiempo no se pueda confiar en los sistemas de control, y el restablecimiento y la operación continuada pueden depender del trabajo manual.
+
+### 8.3 Las prioridades de restablecimiento necesitan pesos explícitos
+
+El orden de restablecimiento suele fijarse por costumbre: primero la carga mayor, o primero el trabajo más rápido. Ninguna de las dos reglas está diseñada para minimizar el daño. Ordenar los trabajos para minimizar el tiempo total ponderado de finalización es un resultado clásico de la teoría de la planificación ([Smith, 1956](https://doi.org/10.1002/nav.3800030106)); en cuanto los relojes de respaldo actúan como fechas límite, el problema pasa a ser de retraso ponderado, mucho más difícil en general, pero con un puñado de alimentadores pueden enumerarse simplemente todos los órdenes. La parte más difícil son los **pesos**. ¿Vale lo mismo una hora sin electricidad en un hospital que una hora sin electricidad en una vivienda? Tratar todas las horas-persona por igual es en sí un juicio de valor, y normalmente uno malo cuando algunos emplazamientos albergan funciones vitales. Los pesos deben acordarse de antemano con la gestión de emergencias y registrarse; el análisis muestra entonces el orden que implican esos pesos y lo sensible que es al fallo de un respaldo.
+
+### 8.4 Cuando la causa es un proveedor de confianza
+
+Los fallos de los proveedores son difíciles porque los propios procesos de la organización confían en el proveedor. La caída de julio de 2024 causada por una actualización defectuosa obligó a las organizaciones afectadas a recuperar a mano muchos equipos finales ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)). Las decisiones en un caso así incluyen: si desconectar el canal del proveedor antes de saber si la causa es un error o un compromiso; qué sistemas recuperar primero (la lógica de restablecimiento del §8.3 se aplica tanto a los equipos finales como a los alimentadores); si retrasar las actualizaciones en el futuro y aceptar el coste de seguridad de una protección más lenta; y cómo mantener la detección cuando el problema es la propia herramienta de detección. Prepararse para este caso significa anillos de actualización escalonados para los sistemas críticos, soportes de recuperación independientes y una capacidad mínima que no dependa del proveedor.
+
+### 8.5 Extorsión
+
+Los casos de *ransomware* y de extorsión con datos obligan a decidir sobre el pago mientras los servicios están degradados. Un especialista no decide si se paga (eso corresponde a la dirección, asesorada por los abogados), pero estructura la decisión: el tiempo de recuperación realista con y sin descifrado (los descifradores suelen ser lentos e imperfectos); las consecuencias para el servicio y la seguridad de cada calendario; la posición jurídica, incluidos los riesgos de sanciones, que debe comprobarse con los abogados; las condiciones de la aseguradora; las consecuencias éticas y estratégicas de financiar actividades delictivas; y la evidencia que cambiaría la evaluación. En mayo de 2021, Colonial Pipeline Company detuvo de forma proactiva su sistema de oleoductos en respuesta a un ataque de *ransomware* y lo reinició seis días después ([U.S. Department of Energy](https://www.energy.gov/ceser/colonial-pipeline-cyber-incident); véase también [CISA, 2023](https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years)), lo que ilustra que la decisión de detener un servicio esencial puede ser en sí misma una precaución tomada en condiciones de incertidumbre, con grandes consecuencias para otros. La preparación para la recuperación (copias de seguridad probadas, operación manual, capacidad de reconstrucción limpia) es lo que da a una organización libertad en esta decisión; debe existir antes de que surja el caso.
+
+### 8.6 Sucesos internos ambiguos
+
+El suceso de Hollin (capítulo 3) podría ser un uso indebido de una cuenta compartida de un proveedor, un cambio legítimo no registrado de un ingeniero del proveedor u otra cosa. Los casos internos son difíciles porque las personas implicadas son compañeros o socios, la evidencia es ambigua y una acusación prematura es dañina y a veces ilícita. El caso del sector del agua tratado en los capítulos 2 y 3, cuyo primer relato se discutió después ([WUSF, 2023](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021)), muestra cómo los relatos públicos pueden adelantarse a la evidencia. En la práctica: **actúe sobre el acceso, no sobre la persona** (suspenda la cuenta compartida, exija cuentas nominativas), preserve la evidencia, implique pronto a recursos humanos y a los servicios jurídicos, mantenga las acusaciones fuera de las comunicaciones y recuerde que el error humano suele ser un síntoma del diseño del sistema ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)).
+
+### 8.7 Obligaciones en conflicto
+
+En un incidente significativo, un especialista puede enfrentarse a la vez a: el plazo de notificación de un regulador; las fuerzas del orden, que piden que algunos detalles sigan siendo confidenciales; un operador socio que pregunta si está expuesto; clientes que necesitan información de seguridad; un proveedor que pide un aplazamiento antes de que se diga nada sobre su producto; y las condiciones de las aseguradoras. Los principios para resolverlo son: **no engañar nunca** a nadie; **separar lo que se dice de lo que se omite**, y omitir solo con una razón defendible; dar **primero la información de seguridad**; cumplir los **deberes legales**, consultando a los abogados cuando los deberes entren en conflicto; y **registrar** cada decisión y su motivo. La divulgación coordinada de vulnerabilidades (capítulo 4) es una forma estructurada de gestionar el conflicto con el proveedor.
+
+### 8.8 Ejemplo resuelto: restablecimiento tras un corte regional (sintético)
+
+Un ciberincidente en el centro de control de Merrow Energy ha dejado sin tensión cuatro alimentadores. Los operadores pueden restablecer con seguridad un alimentador cada vez, de forma manual. Cada alimentador abastece a emplazamientos esenciales con relojes de respaldo: la planta de agua de Hollin tiene seis horas de almacenamiento; el bombeo de Fenley, cuatro horas; el hospital de Harbour, 48 horas de combustible para el generador; la terminal de contenedores, dos horas de batería; un depósito de combustible, ocho horas. Las viviendas no tienen respaldo. La célula de emergencias del foro regional debe recomendar un orden. El Lab 8 enumera todos los órdenes, primero ponderando por igual cada hora-persona.
+
+### 8.9 Actividad práctica: orden de restablecimiento
+
+```python
+# Lab 8 - restoration order after a regional outage, with backup clocks running (offline, stdlib only)
+# Synthetic: after a cyber-induced distribution outage, Merrow Energy can re-energize one feeder at a time.
+# Each feeder carries essential sites whose backup lasts a fixed number of hours; after that, people lose service.
+from itertools import permutations
+FEEDERS = {  # feeder: (hours to restore safely, [(site, people served, backup hours)])
+    "F1 Harbour":  (4, [("homes", 40000, 0), ("Harbour hospital", 3000, 48)]),
+    "F2 Hollin":   (3, [("Hollin water works", 70000, 6)]),
+    "F3 Fenley":   (2, [("homes", 18000, 0), ("Fenley pumping", 25000, 4)]),
+    "F4 Port":     (5, [("container terminal", 2000, 2), ("fuel depot", 15000, 8)]),
+}
+def harm(order):
+    t, total = 0, 0
+    for f in order:
+        t += FEEDERS[f][0]
+        for site, people, backup in FEEDERS[f][1]:
+            total += people * max(0, t - backup)
+    return total
+res = sorted((harm(o), o) for o in permutations(FEEDERS))
+print("best five orders (person-hours without service):")
+for h, o in res[:5]: print(f"  {h:9,d}  {' > '.join(o)}")
+print(f"worst: {res[-1][0]:,d}  {' > '.join(res[-1][1])}")
+largest = sorted(FEEDERS, key=lambda f: -sum(p for _, p, _ in FEEDERS[f][1]))
+print(f"'largest load first' {' > '.join(largest)}: {harm(largest):,d}")
+shortest = sorted(FEEDERS, key=lambda f: FEEDERS[f][0])
+print(f"'quickest job first' {' > '.join(shortest)}: {harm(shortest):,d}")
+# What if the hospital generator fails at hour 2 (backup 48 -> 2)? Re-solve.
+FEEDERS["F1 Harbour"][1][1] = ("Harbour hospital", 3000, 2)
+res2 = sorted((harm(o), o) for o in permutations(FEEDERS))
+print(f"after hospital generator failure, best: {res2[0][0]:,d}  {' > '.join(res2[0][1])}")
+```
+
+Salida esperada:
+
+```text
+best five orders (person-hours without service):
+    510,000  F3 Fenley > F2 Hollin > F1 Harbour > F4 Port
+    589,000  F2 Hollin > F3 Fenley > F1 Harbour > F4 Port
+    600,000  F3 Fenley > F1 Harbour > F2 Hollin > F4 Port
+    631,000  F1 Harbour > F2 Hollin > F3 Fenley > F4 Port
+    642,000  F1 Harbour > F3 Fenley > F2 Hollin > F4 Port
+worst: 1,299,000  F4 Port > F1 Harbour > F3 Fenley > F2 Hollin
+'largest load first' F2 Hollin > F1 Harbour > F3 Fenley > F4 Port: 681,000
+'quickest job first' F3 Fenley > F2 Hollin > F1 Harbour > F4 Port: 510,000
+after hospital generator failure, best: 531,000  F3 Fenley > F2 Hollin > F1 Harbour > F4 Port
+```
+
+**Interpretación.** Con pesos iguales, el mejor orden (Fenley, Hollin, Harbour, Port) pierde 510.000 horas-persona de servicio; el peor pierde 1.299.000. La costumbre de «primero la carga mayor» cuesta 681.000, un tercio más que el mejor; «primero el trabajo más rápido» coincide aquí con el mejor, pero solo porque los trabajos cortos coinciden con los relojes de respaldo cortos (el reloj del bombeo de Fenley es de cuatro horas). Llama la atención que, cuando falla el generador del hospital, el mejor orden con pesos iguales no cambia: 3.000 usuarios del hospital son pocos en comparación con 70.000 clientes del agua, así que los pesos iguales mantienen al hospital en tercer lugar. Ese resultado es el análisis diciéndole que sus pesos son erróneos para este propósito. El EX036 le pide ponderar más las horas-persona del hospital; con una ponderación plausible, el hospital pasa al primer lugar en cuanto falla su generador. La decisión corresponde a la célula de emergencias; la contribución del especialista es mostrar el orden que implica cada conjunto defendible de pesos y cómo lo cambia el fallo de un respaldo.
+
+### 8.10 Errores comunes y límites
+
+- Tratar un caso difícil como si tuviera una opción inocua y buscarla mientras se agotan los relojes.
+- Restablecer por costumbre en lugar de con pesos explícitos acordados de antemano.
+- Ponderar por igual todas las horas-persona y llamarlo neutral.
+- Confiar en el canal del proveedor durante un incidente causado por el proveedor.
+- Dejar que decida sobre el pago de una extorsión un especialista en lugar de la persona de la dirección que rinde cuentas.
+- Acusar a personas antes de que la evidencia lo respalde.
+- Hacer declaraciones a una parte interesada que contradicen las hechas a otra.
+
+El límite del análisis en los casos difíciles es el tiempo. La enumeración del Lab 8 tarda milisegundos; acordar los pesos lleva semanas de planificación. Haga ese trabajo antes del suceso, ensáyelo y acepte que durante el suceso estará eligiendo entre opciones imperfectas con información incompleta.
+
+### Ejercicios — capítulo 8
+
+**EX036 — Los pesos cambian el orden.** *Objetivo:* ver cómo los pesos de valor determinan el restablecimiento. *Entradas:* el Lab 8. *Restricciones:* pondere cada hora-persona del hospital 20 veces más que una hora-persona de una vivienda; deje los demás en 1. *Pasos:* (1) modifique la función de daño; (2) informe del mejor orden con el generador de 48 horas y después de que el generador falle a las 2 horas; (3) explique el cambio y quién debería fijar el peso. *Evidencia esperada:* cambio en el código, salidas y un párrafo. *Rúbrica:* 3 = con el generador funcionando, el mejor orden no cambia (510.000); tras el fallo, Harbour pasa al primer lugar (mejor: 751.000 horas-persona ponderadas, Harbour > Hollin > Fenley > Port); la explicación identifica el peso como un juicio de la gestión de emergencias acordado de antemano; 2 = cifras correctas, explicación pobre; 1 = no ejecutado; 0 = nada.
+
+**EX037 — Estructure una decisión de extorsión.** *Objetivo:* apoyar una decisión de la dirección sin tomarla. *Entradas:* el sistema de administración de pacientes de Merrow Health está cifrado; las copias de seguridad están intactas, pero una reconstrucción limpia se estima en 9 días; los atacantes afirman tener datos de pacientes y ofrecen un descifrador. *Restricciones:* ninguna conclusión jurídica; la seguridad de los pacientes, primero. *Pasos:* (1) enumere las opciones; (2) para cada una, el calendario de recuperación, las consecuencias para la seguridad y el servicio, las cuestiones jurídicas para los abogados, las consideraciones éticas y las incertidumbres; (3) indique qué evidencia cambiaría el análisis. *Evidencia esperada:* informe para la decisión. *Rúbrica:* 3 = las opciones incluyen la reconstrucción sin pago y medidas parciales, la fiabilidad del descifrador se trata como incierta, la extorsión con datos se separa de la recuperación, cuestiones de sanciones y de notificación para los abogados, medidas de seguridad independientes de la elección; 2 = falta una consideración; 1 = recomienda pagar o negarse como un hecho técnico; 0 = nada.
+
+**EX038 — Caída causada por un proveedor.** *Objetivo:* decidir ante el fallo de un proveedor de confianza. *Entradas:* una actualización del proveedor de seguridad de equipos finales de Merrow Water bloquea durante la noche las HMI de cuatro plantas; el proveedor dice que es un defecto. *Restricciones:* las plantas deben seguir produciendo agua segura. *Pasos:* (1) acciones inmediatas; (2) orden de recuperación entre los emplazamientos; (3) si bloquear las actualizaciones siguientes y cómo; (4) cambios posteriores en la política de actualizaciones, con su coste de seguridad. *Evidencia esperada:* plan. *Rúbrica:* 3 = primero la operación manual, canal del proveedor en pausa hasta su verificación, recuperación ordenada por los relojes de respaldo, después anillos de actualización escalonados con una aceptación explícita de una protección más lenta; 2 = sin cambio de política; 1 = espera al proveedor; 0 = nada.
+
+**EX039 — Comunicaciones sobre un suceso interno.** *Objetivo:* comunicar un caso interno ambiguo. *Entradas:* el suceso de Hollin con la cronología corregida. *Restricciones:* no se nombra a ninguna persona; se respetan los procesos laborales y contractuales. *Pasos:* redacte (1) un mensaje interno al personal; (2) un mensaje a Corvane; (3) una declaración para el foro de resiliencia. *Evidencia esperada:* tres textos breves. *Rúbrica:* 3 = factuales, sin acusaciones, se indican las acciones sobre el acceso (cuentas nominativas, cuenta compartida suspendida), se piden a Corvane los registros de sesiones conforme al contrato, el foro recibe información de protección útil; 2 = un texto exagera; 1 = acusatorio; 0 = nada.
+
+**EX040 — Obligaciones en conflicto.** *Objetivo:* conciliar demandas sin engaño. *Entradas:* durante la investigación de Hollin, la policía pide a Merrow Water que no divulgue el detalle de la cuenta del proveedor; llega el plazo de notificación al regulador; Merrow Energy pregunta si debería suspender el acceso de Corvane; un periodista pregunta si el agua no era segura. *Restricciones:* siga los principios del §8.7; consulte a los abogados cuando sea necesario. *Pasos:* para cada parte, qué dice, qué omite y por qué, y quién lo aprueba. *Evidencia esperada:* tabla. *Rúbrica:* 3 = respuesta de seguridad dada con veracidad (la dosis volvió a la normalidad en menos de un minuto y se verificó), regulador informado por completo bajo confidencialidad, Merrow Energy recibe consejos de protección sin incumplir la petición de la policía (por ejemplo, el consejo de revisar todas las cuentas compartidas de proveedores), el periodista no es inducido a error, aprobaciones registradas; 2 = una parte mal gestionada; 1 = declaración engañosa; 0 = nada.
+
+### Síntesis del capítulo
+
+Los casos difíciles tienen daño en todas las opciones, con presión del tiempo, evidencia ambigua y deberes en conflicto. Prepárese para ellos: mapee las dependencias y los relojes de respaldo; acuerde de antemano con la gestión de emergencias los pesos del restablecimiento; planifique para los fallos causados por proveedores con anillos de actualización y una recuperación independiente; estructure las decisiones de extorsión para la persona de la dirección que rinde cuentas; actúe sobre el acceso y no sobre las personas en los casos internos; y resuelva las obligaciones en conflicto sin engañar nunca, poniendo la seguridad primero, omitiendo solo con razones defendibles y registrando cada decisión. El análisis es rápido; el acuerdo es lento: haga la parte lenta antes del suceso.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 12
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Dirigir una función de seguridad en un servicio esencial: fijar la dirección, desarrollar la capacidad y conservar la confianza de operaciones y del consejo.
+2. Informar al consejo en unidades de servicio con un pequeño conjunto de indicadores que sirvan para decidir.
+3. Distinguir un cambio real del ruido en un indicador de seguridad mediante un gráfico de comportamiento del proceso (XmR).
+4. Construir un caso de aseguramiento para una afirmación sobre resiliencia y mantener la vigencia de su evidencia.
+5. Usar el modelo de las tres líneas y la revisión independiente sin convertir el aseguramiento en papeleo.
+
+Los capítulos 7 y 8 integraron la seguridad en la organización y la pusieron a prueba en casos difíciles. Este capítulo trata de la persona responsable de ella a lo largo de los años: de qué informa, cómo sabe si las cosas mejoran y cómo demuestra a otros que las afirmaciones son ciertas. Después, el capítulo 10 se ocupa de la evidencia externa que un líder debe leer.
+
+### 9.1 Dirigir una función especializada
+
+Un líder de seguridad en un servicio esencial dirige a personas escasas, a menudo sobrecargadas, que trabajan entre culturas distintas: ingenieros de control, personal de TI, operadores, proveedores. Predominan cuatro responsabilidades. **Dirección:** un número reducido de prioridades vinculadas al servicio y a su consecuencia, revisadas cuando cambia la evidencia (los desencadenantes de revisión del capítulo 1). **Capacidad:** las competencias, las herramientas y el tiempo para hacer el trabajo, incluida la sucesión, para que el conocimiento de un sistema crítico no resida en una sola cabeza. **Confianza:** operaciones debe creer que seguridad entiende la planta y no la pondrá en peligro; el consejo debe creer que los informes son francos. **Rendición de cuentas:** una titularidad clara (capítulo 7) y un registro de las decisiones (capítulo 1). Los códigos profesionales exigen honestidad sobre los límites ([ACM Code of Ethics](https://www.acm.org/code-of-ethics)); para un líder, eso incluye decir al consejo lo que no se sabe.
+
+Desarrollar la capacidad en seguridad de la TO es, en parte, una cuestión de mezclar trayectorias: ingenieros de control que aprenden seguridad y especialistas en seguridad que aprenden el proceso. Las rotaciones, los ejercicios conjuntos (capítulo 6) y las revisiones compartidas de incidentes (capítulo 3) aportan más que los cursos por sí solos.
+
+### 9.2 Informes al consejo
+
+Los consejos deben tomar decisiones sobre el apetito, la inversión y la rendición de cuentas. Un buen informe es breve y responde a cuatro preguntas: **¿Estamos dentro del apetito?** (los límites de cola y de distribución del capítulo 4, en unidades de servicio); **¿Qué ha cambiado?** (amenazas nuevas, incidentes, supuestos); **¿Funcionan nuestros controles?** (evidencia verificada, capítulo 2; rendimiento evaluado, capítulo 6); **¿Qué tienen que decidir ustedes?** Los indicadores deben ser pocos, estar definidos y estar vinculados a la consecuencia: la cobertura verificada de las prácticas de mayor peso; el tiempo de corrección de las vulnerabilidades explotadas conocidas en los sistemas expuestos, usando una lista de referencia como el catálogo de CISA ([CISA, KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)); el último simulacro de operación manual superado en cada emplazamiento principal; el tiempo de recuperación demostrado para los sistemas críticos; y las decisiones pendientes con sus responsables. Evite los recuentos que miden la actividad en lugar del resultado: número de alertas, formaciones impartidas, hallazgos cerrados.
+
+### 9.3 ¿Señal o ruido?
+
+Todo indicador varía de un mes a otro. Reaccionar a cada subida malgasta la atención; ignorar un cambio real malgasta el tiempo. Un **gráfico de comportamiento del proceso** (también llamado gráfico de valores individuales y rango móvil, o XmR) separa ambas cosas usando la propia historia del indicador. A partir de un periodo de referencia, calcule la media y la diferencia absoluta media entre valores consecutivos (el rango móvil medio); los límites naturales del proceso son la media más o menos 2,66 veces el rango móvil medio. Los puntos fuera de los límites, o las rachas largas a un lado de la media, señalan un cambio que merece investigarse; los puntos dentro son variación rutinaria ([NIST/SEMATECH e-Handbook, control charts](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm)). Dos reglas prácticas: elija la referencia de un periodo que se considere estable y **no incluya el periodo que está poniendo a prueba**; y trate una señal como un aviso para investigar, no como la prueba de una causa.
+
+### 9.4 Casos de aseguramiento
+
+Un **caso de aseguramiento** es un argumento estructurado de que una afirmación es cierta, respaldado por evidencia. Sigue la estructura general de la argumentación (afirmación, fundamentos, garantía, refutación) ([Toulmin, 2003](https://doi.org/10.1017/CBO9780511840005)) aplicada a los sistemas. Por ejemplo: *Afirmación:* «Hollin puede suministrar agua segura durante 72 horas sin su sistema de control». *Subafirmaciones:* la dosificación manual puede mantenerse con el personal de cualquier turno; las existencias de productos químicos duran 72 horas; los analizadores funcionan sin SCADA; el personal puede ser relevado. *Evidencia:* informes de simulacros con tiempos y participantes; registros de existencias; pruebas de los analizadores; cuadrante de turnos. *Refutaciones consideradas:* turno de noche con personal mínimo; pérdida de alimentación de los analizadores; incidente simultáneo en Fenley. Un caso de aseguramiento hace visible de qué evidencia depende cada afirmación, de modo que, cuando la evidencia envejece o falla, se sabe qué afirmaciones quedan afectadas.
+
+### 9.5 Vigencia de la evidencia
+
+La evidencia caduca. Una restauración probada hace dieciocho meses dice poco de las copias de seguridad de hoy; una revisión del cortafuegos anterior a un cambio de red dice poco después de él. Para cada afirmación de aseguramiento, fije una **antigüedad máxima de la evidencia** relacionada con la rapidez con que cambia el sistema subyacente, e informe de la evidencia caducada como una laguna, aunque no se sepa que algo esté mal. Un tipo de evidencia de grado bajo (una declaración) con una antigüedad permitida larga merece un escrutinio especial: puede estar «vigente» según la regla, pero es débil por naturaleza (los grados del capítulo 2).
+
+### 9.6 Las tres líneas y la revisión independiente
+
+El modelo de las tres líneas del Institute of Internal Auditors describe los roles de la dirección (primera línea: ser titular del riesgo y gestionarlo), de las funciones especializadas de riesgos y cumplimiento (segunda línea: conocimiento experto, apoyo y cuestionamiento) y de la auditoría interna (tercera línea: aseguramiento independiente), todos ellos responsables ante un órgano de gobierno ([IIA, 2020](https://www.theiia.org/en/content/position-papers/2020/the-iias-three-lines-model-an-update-of-the-three-lines-of-defense/)). En la seguridad de los servicios esenciales, el valor del modelo es la claridad: operaciones es titular del riesgo de su planta; la función de seguridad fija estándares, cuestiona y ayuda; la auditoría interna o un revisor externo comprueba que el sistema funciona. El modelo falla cuando la segunda línea hace el trabajo de la primera (de modo que nadie en operaciones es titular del riesgo) o cuando la auditoría pone a prueba documentos en lugar de la realidad.
+
+### 9.7 Ejemplo resuelto: el dosier del consejo de Merrow Water (sintético)
+
+El consejo de Merrow Water recibe cada mes la mediana de días para corregir las vulnerabilidades explotadas conocidas en los sistemas expuestos a internet. Tras una lectura de 24 días en diciembre, una consejera no ejecutiva preguntó si las cosas iban a peor o si diciembre había sido un mal mes. En la misma reunión, el especialista presentó la evidencia en que se apoyan seis afirmaciones de aseguramiento. El Lab 9 examina ambas cosas. La pregunta de la consejera es la correcta, y no puede responderse comparando solo diciembre con noviembre. El especialista necesita una referencia de meses en los que no se sepa que ocurriera nada inusual, así que el gráfico usa los once primeros meses y deja fuera las lecturas posteriores. Las seis afirmaciones se eligieron porque cada una respalda la declaración del consejo de que Merrow Water puede recuperarse con seguridad de un ciberincidente; cada una tiene un tipo de evidencia designado, una fecha y una antigüedad máxima aceptable acordada con la auditoría interna.
+
+### 9.8 Actividad práctica: gráfico XmR y vigencia de la evidencia
+
+```python
+# Lab 9 - is the assurance signal a change or noise? An XmR chart and evidence freshness (offline, stdlib only)
+# Synthetic: Merrow Water's monthly median days to remediate known-exploited vulnerabilities on internet-facing
+# systems, reported to the board, and the age of the evidence behind six assurance claims.
+from datetime import date
+MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Jan2","Feb2","Mar2"]
+DAYS =   [  12,   9,  14,  11,  13,  10,   12,  15,   11,   9,   13,   24,   21,    23,    25]
+BASE = 11  # first 11 months form the baseline
+x = DAYS[:BASE]; mean = sum(x) / BASE
+mr = [abs(b - a) for a, b in zip(x, x[1:])]; mrbar = sum(mr) / len(mr)
+ucl, lcl = mean + 2.66 * mrbar, max(0, mean - 2.66 * mrbar)
+print(f"baseline mean {mean:.2f} days, mean moving range {mrbar:.2f}, limits [{lcl:.2f}, {ucl:.2f}]")
+run = 0
+for m, d in zip(MONTHS, DAYS):
+    flag = []
+    if d > ucl or d < lcl: flag.append("outside limits")
+    run = run + 1 if d > mean else 0
+    if run >= 4: flag.append(f"{run} in a row above mean")
+    print(f"  {m:5s} {d:3d} {'; '.join(flag)}")
+TODAY = date(2026, 10, 12)
+CLAIMS = [  # (claim, evidence type, date of evidence, maximum acceptable age in days)
+    ("offline backups restorable", "restore test record", date(2026, 3, 2), 180),
+    ("vendor sessions all brokered", "broker log reconciliation", date(2026, 9, 20), 31),
+    ("no default credentials on PLCs", "engineer attestation", date(2025, 11, 5), 365),
+    ("manual dosing drill passed", "drill report", date(2026, 6, 18), 365),
+    ("IT/OT firewall rules reviewed", "rule review sign-off", date(2026, 1, 9), 180),
+    ("MFA on all remote access", "IdP configuration export", date(2026, 10, 1), 90),
+]
+print("evidence freshness:")
+for c, ev, d, mx in CLAIMS:
+    age = (TODAY - d).days
+    print(f"  {'STALE' if age > mx else 'ok   '} {age:4d}d / {mx:3d}d  {c} ({ev})")
+```
+
+Salida esperada:
+
+```text
+baseline mean 11.73 days, mean moving range 3.10, limits [3.48, 19.97]
+  Jan    12 
+  Feb     9 
+  Mar    14 
+  Apr    11 
+  May    13 
+  Jun    10 
+  Jul    12 
+  Aug    15 
+  Sep    11 
+  Oct     9 
+  Nov    13 
+  Dec    24 outside limits
+  Jan2   21 outside limits
+  Feb2   23 outside limits; 4 in a row above mean
+  Mar2   25 outside limits; 5 in a row above mean
+evidence freshness:
+  STALE  224d / 180d  offline backups restorable (restore test record)
+  ok      22d /  31d  vendor sessions all brokered (broker log reconciliation)
+  ok     341d / 365d  no default credentials on PLCs (engineer attestation)
+  ok     116d / 365d  manual dosing drill passed (drill report)
+  STALE  276d / 180d  IT/OT firewall rules reviewed (rule review sign-off)
+  ok      11d /  90d  MFA on all remote access (IdP configuration export)
+```
+
+**Interpretación.** Durante los once meses de referencia, el indicador promedió 11,7 días con unos límites naturales de aproximadamente 3,5 a 20,0 días. Los 24 días de diciembre están fuera de los límites (una señal, no solo un mal mes), y los tres meses siguientes también, con una racha por encima de la media. Algo cambió en diciembre; entre las causas candidatas están la marcha de un miembro del personal, un cambio en el contenido del catálogo de vulnerabilidades, una nueva clase de sistemas expuestos a internet o un cambio en la forma de calcular el indicador. El gráfico dice al consejo *que* debe preguntar, no *cuál* es la respuesta correcta. En cuanto a la evidencia, dos de las seis afirmaciones están caducadas: la prueba de restauración de las copias de seguridad fuera de línea (224 días frente a un límite de 180) y la revisión del cortafuegos entre TI y TO (276 días frente a 180). La afirmación sobre las credenciales por defecto de los PLC está dentro de su límite de antigüedad, pero se apoya en la declaración de un ingeniero, el grado de evidencia más débil, y caduca en menos de un mes. El consejo debe oír tres cosas: un deterioro real del tiempo de corrección desde diciembre, con una investigación en curso; dos afirmaciones de aseguramiento caducadas, con fechas de renovación; y una afirmación que necesita evidencia más fuerte, no solo más reciente.
+
+### 9.9 Errores comunes y límites
+
+- Informar de recuentos de actividad en lugar de indicadores relacionados con la consecuencia.
+- Reaccionar a cada subida mensual, o atribuir al ruido un cambio real.
+- Incluir el periodo sospechoso en la referencia, lo que ensancha los límites y oculta la señal.
+- Redactar afirmaciones de aseguramiento sin evidencia designada, o evidencia sin fecha.
+- Tratar una evidencia reciente pero débil como fuerte.
+- Dejar que la función de seguridad sea titular del riesgo operativo en nombre de operaciones.
+- Presentar al consejo solo las buenas noticias.
+
+El límite de los indicadores y los gráficos es que resumen. Indican a un líder dónde mirar; mirar (conversar con los operadores, visitar los emplazamientos, leer las revisiones de incidentes) sigue siendo trabajo del líder.
+
+### Ejercicios — capítulo 9
+
+**EX041 — Una referencia contaminada.** *Objetivo:* ver cómo afecta la elección de la referencia a las señales. *Entradas:* el Lab 9. *Restricciones:* cambie la referencia a los doce primeros meses (incluido diciembre). *Pasos:* (1) vuelva a ejecutarlo; (2) informe de la nueva media, del rango móvil y de los límites; (3) informe de qué meses posteriores quedan ahora fuera de los límites; (4) explique la lección. *Evidencia esperada:* salida y un párrafo. *Rúbrica:* 3 = media de 12,75, rango móvil medio de unos 3,82, límites de aproximadamente [2,6, 22,9]; diciembre sigue fuera, pero enero (21) queda ahora dentro; lección: incluir el periodo puesto a prueba ensancha los límites y puede ocultar un cambio; 2 = cifras correctas, falta la lección; 1 = no ejecutado; 0 = nada.
+
+**EX042 — Informe al consejo de una página.** *Objetivo:* informar en unidades de servicio para decidir. *Entradas:* las salidas del Lab 9, la cobertura verificada de Merrow Water del capítulo 2 (39 %), la evaluación del capítulo 6 y los hallazgos del RACI del capítulo 7. *Restricciones:* una página; seis indicadores como máximo; termine con las decisiones solicitadas. *Pasos:* redacte el informe. *Evidencia esperada:* informe. *Rúbrica:* 3 = estado del apetito en unidades de servicio, señal comunicada con la incertidumbre sobre su causa, evidencia caducada y débil identificada, decisiones concretas con responsables; 2 = incluye métricas de actividad; 1 = tranquilización sin evidencia; 0 = nada.
+
+**EX043 — Caso de aseguramiento.** *Objetivo:* construir un argumento estructurado. *Entradas:* la afirmación «Hollin puede suministrar agua segura durante 72 horas sin su sistema de control». *Restricciones:* al menos cuatro subafirmaciones, cada una con el tipo de evidencia, la antigüedad máxima y el estado actual; al menos tres refutaciones. *Pasos:* construya el caso como una tabla o un árbol. *Evidencia esperada:* caso de aseguramiento. *Rúbrica:* 3 = las subafirmaciones cubren las personas, los materiales, los instrumentos y la duración; evidencia de grado verificado cuando es posible, con su antigüedad; refutaciones realistas (turno de noche, alimentación de los analizadores, incidente concurrente) con respuestas; 2 = evidencia sin fecha; 1 = repite la afirmación; 0 = nada.
+
+**EX044 — Las tres líneas en la práctica.** *Objetivo:* asignar los roles de aseguramiento. *Entradas:* las seis afirmaciones de aseguramiento del Lab 9. *Restricciones:* use el modelo de las tres líneas. *Pasos:* para cada afirmación, asigne el titular de la primera línea, la actividad de cuestionamiento de la segunda línea y el método de prueba de la tercera línea; identifique una afirmación en la que la segunda línea esté haciendo actualmente trabajo de la primera. *Evidencia esperada:* tabla y un párrafo. *Rúbrica:* 3 = los titulares son roles operativos, los métodos de cuestionamiento y de prueba son distintos, ejemplo creíble de confusión de roles (por ejemplo, el equipo de seguridad ejecutando pruebas de restauración que debería ejecutar operaciones); 2 = líneas confundidas en una fila; 1 = genérico; 0 = nada.
+
+**EX045 — Capacidad y sucesión.** *Objetivo:* reducir la dependencia de una sola persona. *Entradas:* el único ingeniero de Merrow Water que entiende la lógica del controlador de dosificación de Hollin prevé jubilarse dentro de 18 meses. *Restricciones:* presupuesto para un puesto adicional; las operaciones no deben verse alteradas. *Pasos:* (1) identifique qué conocimiento está en riesgo y cómo capturarlo; (2) diseñe un plan de desarrollo para dos sucesores; (3) defina la evidencia de que la sucesión ha funcionado. *Evidencia esperada:* plan. *Rúbrica:* 3 = conocimiento capturado como artefactos verificados (lógica anotada, procedimientos de prueba, recorridos grabados), trabajo en pareja y cambios supervisados, evidencia como un cambio dirigido por un sucesor y un simulacro sin el ingeniero que se jubila; 2 = solo cursos de formación; 1 = solo documentación; 0 = nada.
+
+### Síntesis del capítulo
+
+Dirigir la seguridad de un servicio esencial significa fijar una dirección vinculada a la consecuencia, desarrollar una capacidad que sobreviva a las marchas y conservar la confianza de operaciones y del consejo. Informe al consejo en unidades de servicio con pocos indicadores y decisiones explícitas. Use gráficos de comportamiento del proceso para distinguir el cambio del ruido, con una referencia limpia. Construya casos de aseguramiento que vinculen cada afirmación con evidencia fechada de grado conocido, e informe de la evidencia caducada o débil como lagunas. Use las tres líneas para mantener la titularidad en operaciones, el cuestionamiento en los especialistas y las pruebas independientes en la auditoría.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Siga estudiando — capítulo 09 de 12
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1139,6 +1590,42 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX029 — Validez del simulacro.** Efecto de la práctica (infla la mejora); efecto de la observación (infla); selección del personal dispuesto (infla); mismo escenario (infla); muestra pequeña (incertidumbre amplia); simulacros solo de día (no captan el desempeño del turno de noche). Cambios de diseño: variar los escenarios, incluir turnos de noche y personal con menos experiencia, muestras más grandes, simulacros sin previo aviso cuando sea seguro.
 
 **EX030 — Reglas de enfrentamiento.** Alcance: dosificación de Fenley, una escritura de 1,80→1,81 mg/L; momento: baja demanda; roles: el responsable de operaciones puede detenerla; condiciones de parada: cualquier cambio inesperado del proceso o alarma inexplicada; verificación independiente de la dosis; analistas de detección a ciegas si el objetivo es la detección a ciegas; gestores de alertas avisados; plan de vuelta atrás; evidencia registrada. Firmadas por operaciones.
+
+### Capítulo 7: EX031–EX035
+
+**EX031 — Repare el RACI.** Concesión de sesiones a proveedores: el responsable de TO rinde cuentas; el ingeniero de TO y el centro de servicios son responsables. Declaración de incidentes: el responsable de guardia rinde cuentas; el CISO es consultado. Cambio de emergencia: mantener al ingeniero de TO como responsable y como quien rinde cuentas solo con una revisión documentada al día siguiente de cada caso (o hacer que el responsable de TO rinda cuentas, con el ingeniero como responsable). La nueva ejecución no muestra hallazgos sin tratar.
+
+**EX032 — Modo común regional.** Caída: ceguera temporal; conservar el registro local y una detección mínima, y ejercitar conjuntamente el estado degradado. Compromiso: el proveedor como vía de ataque; aislar el acceso del proveedor, búsqueda conjunta de amenazas, cláusulas de notificación, plan de salida. Cláusulas contractuales: notificación de incidentes en cuestión de horas, acceso a los registros, derecho de auditoría, asistencia en la salida.
+
+**EX033 — Elija un modelo operativo.** Para el puerto: federado o integrado, con un responsable de seguridad de la TO designado en la organización del capitán de puerto y una línea formal hacia el pequeño equipo del CISO; el modelo central por sí solo corre el riesgo de quedar lejos de una TO gestionada por un contratista. Condiciones de fracaso: el contratista rechaza el modelo; no hay presupuesto para el responsable de TO; el equipo del CISO absorbe la TO sin titularidad de operaciones.
+
+**EX034 — Lo cibernético dentro del mando de emergencias.** Clasificación por impacto en el servicio (pérdida de suministro por zonas, aviso de hervir el agua, etc.) utilizable por el responsable de guardia. El responsable cibernético asesora al director del incidente; ninguna estructura paralela de niveles estratégico y táctico. Notificaciones regionales asignadas (salud, autoridad local, foro, regulador) a roles designados.
+
+**EX035 — Aritmética de la concentración.** HHI = 40² + 40² + 20² = 3.600. Subestima la concentración porque dos operadores de telecomunicaciones comparten una canalización: un 80 % del tráfico comparte un mismo dominio de fallo físico. Represente la concentración por rutas físicas o dominios de fallo, no solo por operadores contractuales.
+
+### Capítulo 8: EX036–EX040
+
+**EX036 — Los pesos cambian el orden.** Con un peso de 20 para el hospital y el generador funcionando, el mejor orden sigue siendo Fenley → Hollin → Harbour → Port con 510.000 (la contribución del hospital sigue siendo cero). Tras el fallo del generador (respaldo de 2 h), el mejor pasa a ser Harbour → Hollin → Fenley → Port con 751.000 horas-persona ponderadas. El peso es un juicio de la gestión de emergencias acordado de antemano, no un juicio técnico.
+
+**EX037 — Estructure una decisión de extorsión.** Opciones: reconstruir desde las copias de seguridad sin pagar; negociar; restablecimiento parcial. Para cada una: calendario (descifrador incierto), seguridad (soluciones manuales para los procesos clínicos), cuestiones jurídicas para los abogados (sanciones, notificación, aseguradora), ética (financiar la delincuencia; datos de pacientes) y evidencia que cambiaría el análisis (pruebas de fiabilidad del descifrador; confirmación de la posesión de los datos). El pago es una decisión de la dirección.
+
+**EX038 — Caída causada por un proveedor.** Inmediato: confirmar que las plantas pueden funcionar en modo manual; poner en pausa el canal de actualizaciones del proveedor; recuperar las HMI en el orden de los emplazamientos con los relojes de respaldo más cortos. Después: anillos de actualización escalonados para los equipos finales de la TO, aceptando una protección más lenta como coste de seguridad de la resiliencia.
+
+**EX039 — Comunicaciones sobre un suceso interno.** Personal: el suceso factual, sin nombres, los cambios de acceso. Corvane: pedir los registros de sesiones conforme al contrato, suspender la cuenta compartida, exigir cuentas nominativas. Foro: consejo de protección para revisar las cuentas compartidas de proveedores, sin acusar a Corvane de mala fe.
+
+**EX040 — Obligaciones en conflicto.** Periodista: el agua volvió a la dosis correcta en menos de un minuto y se verificó; veraz, sin especulaciones. Regulador: notificación completa bajo confidencialidad. Merrow Energy: consejo de protección para revisar las cuentas compartidas de proveedores y la política de cuentas nominativas, sin divulgar el detalle sensible para la policía si los abogados así lo aconsejan. Registre cada decisión; no engañe nunca.
+
+### Capítulo 9: EX041–EX045
+
+**EX041 — Una referencia contaminada.** Referencia de 12 meses: media de 12,75, rango móvil medio ≈ 3,82, límites ≈ [2,59, 22,91]. Diciembre (24) sigue fuera; enero (21) queda ahora dentro. Lección: incluir el periodo sospechoso en la referencia ensancha los límites y puede ocultar un cambio.
+
+**EX042 — Informe al consejo de una página.** Estado del apetito; señal en el tiempo de corrección desde diciembre, con una investigación en curso; cobertura verificada del 39 % con las dos lagunas de mayor peso; evaluación de la regla de detección (adoptarla para algunas familias, no para la deriva lenta); evidencia caducada de las copias de seguridad y del cortafuegos; laguna del RACI en las sesiones de proveedores; decisiones solicitadas con responsables. Ningún recuento de actividad como indicador principal.
+
+**EX043 — Caso de aseguramiento.** Subafirmaciones: personas (dotación de cualquier turno), materiales (existencias de productos químicos), instrumentos (analizadores sin SCADA), duración (72 h). Evidencia: informes de simulacros, registros de existencias, pruebas de los analizadores, cuadrantes de turnos, con su antigüedad y su grado. Refutaciones: turno de noche, pérdida de alimentación de los analizadores, incidente concurrente en Fenley, cada una con una respuesta o un riesgo residual.
+
+**EX044 — Las tres líneas.** Ejemplo: copias de seguridad fuera de línea. Primera línea: operaciones de TO es titular de las restauraciones; segunda línea: seguridad cuestiona la vigencia de la evidencia; tercera línea: la auditoría interna observa una restauración. Confusión de roles: el equipo de seguridad ejecuta actualmente restauraciones que debería ejecutar operaciones.
+
+**EX045 — Capacidad y sucesión.** Capturar la lógica anotada, los procedimientos de prueba y los recorridos grabados. Formar a dos sucesores mediante trabajo en pareja y cambios supervisados durante 18 meses. Evidencia: un cambio dirigido por un sucesor y un simulacro sin el ingeniero que se jubila.
 
 <a id="glossary"></a>
 
