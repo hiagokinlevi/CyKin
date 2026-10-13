@@ -126,7 +126,7 @@ Afirmación: eliminar una arista nunca agranda un conjunto alcanzable. Demostrac
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -477,7 +477,7 @@ Si los ataques ciberfísicos genuinos son raros, un detector con una tasa de fal
 
 ### 7.4 Errores y límites
 
-Los ataques sintéticos no son el adversario. Los intervalos suponen ensayos independientes; las semillas correlacionadas los invalidan. Nunca invente un valor p para una tabla que no ha sometido a prueba. Los informes piloto de Lena indican que los ataques eran sintéticos, enumeran las semillas y explican cómo se generaron. Si dos semillas producen trazas casi idénticas, las cuenta como un solo ensayo, porque tratarlas como independientes haría que el intervalo pareciera más estrecho de lo que la evidencia sostiene. Toda prueba estadística que informa es una que ejecutó de verdad, y conserva sus entradas para que un revisor pueda repetirla.
+Los ataques sintéticos no son el adversario. Los intervalos suponen ensayos independientes; las semillas correlacionadas los invalidan. Los informes piloto de Lena indican que los ataques eran sintéticos, enumeran las semillas y explican cómo se generaron. Si dos semillas producen trazas casi idénticas, las cuenta como un solo ensayo, porque tratarlas como independientes haría que el intervalo pareciera más estrecho de lo que la evidencia sostiene. Toda prueba estadística que informa es una que ejecutó de verdad, y conserva sus entradas para que un revisor pueda repetirla.
 
 ### Nota práctica
 
@@ -577,7 +577,7 @@ Cuando alguien pida un equipo de excepción «solo por esta vez», exija en el e
 
 ### 9.1b Evolución del esquema sin tiempo de parada
 
-Cuando el esquema de hallazgos incorpora un campo obligatorio, despliegue un cambio en dos fases: primero acepte y persista el campo como opcional mientras rellena los registros existentes; después cambie el validador a obligatorio. Las operaciones a medio camino no deben romperse porque un cliente móvil vaya una versión por detrás. Publique la versión del esquema en las respuestas de la API para que los clientes puedan negarse a escribir cuando sean incompatibles. Las importaciones masivas desde escáneres deben pasar por la misma ruta de validación que las creaciones interactivas, incluidas las comprobaciones de campos prohibidos, o las cargas útiles se colarán por la puerta lateral de confianza de la importación.
+Cuando el esquema de hallazgos del CNHP incorpora un campo obligatorio, como el número del permiso de trabajo, despliegue un cambio en dos fases: primero acepte y persista el campo como opcional mientras rellena los registros existentes; después cambie el validador a obligatorio. Las operaciones a medio camino no deben romperse porque un cliente móvil vaya una versión por detrás. Publique la versión del esquema en las respuestas de la API para que las tabletas de campo y el exportador del monitor puedan negarse a escribir cuando sean incompatibles. Las importaciones masivas desde escáneres deben pasar por la misma ruta de validación que las creaciones interactivas, incluidas las comprobaciones de campos prohibidos, o las cargas útiles se colarán por la puerta lateral de confianza de la importación.
 
 ### Ejercicios — capítulo 9
 
@@ -835,7 +835,7 @@ Dibuje el flujo de datos: del sensor al PLC, al historiador, a la réplica y a l
 
 ### 13.1b Controles por fila y por columna
 
-Los historiadores y almacenes de datos modernos ofrecen políticas por fila y por columna. Las preguntas de evaluación pasan a ser: ¿ve el rol R la columna C? ¿Se aplica el filtro de filas F? Pruebe con el propio rol. Documente la versión del motor de políticas; «ejecutamos SELECT * con un rol de administrador» demuestra poco sobre la exposición de un analista. Registre cada resultado de rol y columna con la cuenta utilizada y la fecha, para que la siguiente revisión repita exactamente las mismas comprobaciones.
+Los historiadores y almacenes de datos modernos ofrecen políticas por fila y por columna. Las preguntas de evaluación pasan a ser: ¿ve el rol R la columna C? ¿Se aplica el filtro de filas F? Pruebe con el propio rol. Documente la versión del motor de políticas del historiador; «consultamos el historiador como administrador» demuestra poco sobre lo que puede ver una cuenta de analista del CNHP. Registre cada resultado de rol y columna con la cuenta utilizada y la fecha, para que la siguiente revisión repita exactamente las mismas comprobaciones.
 
 Lena prueba la réplica de ABP con una cuenta de analista antes de cada revisión. Los resultados van a las notas de la revisión.
 
@@ -891,7 +891,7 @@ Los repositorios de políticas usan la misma cultura de doble aprobación que la
 
 ### 14.1b Trenes de versiones frente a correcciones urgentes
 
-Las mejoras normales viajan en un tren de versiones con los laboratorios I/II. Las correcciones urgentes de seguridad pueden saltarse funcionalidades, pero no la verificación: un paquete mínimo de regresión de fallo cerrado es obligatorio. Etiquete claramente las correcciones urgentes para que una ventana pueda fijar, con conocimiento de causa, la compilación del tren o el SHA de la corrección. Las versiones fijadas figuran en la lista de comprobación de arranque junto al hash del permiso de trabajo; si la versión fijada y el binario en ejecución no coinciden, la ventana no comienza.
+Las mejoras normales viajan en un tren de versiones con los laboratorios I/II. Una corrección urgente del monitor o de una lista de permitidos puede saltarse funcionalidades, pero no la verificación: el paquete mínimo de regresión de fallo cerrado se ejecuta antes de que ninguna ventana la use. Etiquete claramente las correcciones urgentes para que una ventana pueda fijar, con conocimiento de causa, la compilación del tren o el SHA de la corrección. Las versiones fijadas figuran en la lista de comprobación de arranque junto al hash del permiso de trabajo; si la versión fijada y el binario en ejecución no coinciden, la ventana no comienza.
 
 Las correcciones urgentes de ABP llevan su propia etiqueta y el resultado del paquete de regresión en la nota de versión, para que el responsable de una ventana pueda ver exactamente qué se verificó.
 
@@ -947,7 +947,7 @@ Cuando alguien pida un tablero tipo semáforo, ofrezca tres luces que signifique
 
 ### 15.1b De la propiedad a la prueba
 
-Si un hallazgo afirma un impacto en la integridad, el plan de validación debe incluir una comprobación de integridad (quién puede seguir escribiendo). Si afirma un impacto en la disponibilidad, la validación incluye un canario o una sonda sintética, no un nuevo ataque. Alinee la propiedad, el hallazgo y el método de nueva prueba en un párrafo del ticket. El resultado de la nueva prueba va al mismo ticket que el hallazgo original, con la fecha y la comprobación utilizada, para que el cierre pueda auditarse más tarde.
+Si un hallazgo afirma un impacto en la integridad, el plan de validación debe incluir una comprobación de integridad (quién puede seguir escribiendo). Si afirma un impacto en la disponibilidad, como un PLC que deja de responder a los sondeos, la validación usa un canario o una sonda sintética en el banco, no un nuevo ataque a la línea. Lena escribe la propiedad, el hallazgo y el método de nueva prueba en un párrafo del ticket del CNHP, junto al número del permiso de trabajo. El resultado de la nueva prueba va al mismo ticket que el hallazgo original, con la fecha y la comprobación utilizada, para que el cierre pueda auditarse más tarde.
 
 En ABP, el hallazgo FW-12 afirmaba una exposición de integridad, así que su nueva prueba comprobó, con el mismo método de alcanzabilidad, que la zona de oficina ya no podía alcanzar SCADA.
 
@@ -1075,7 +1075,7 @@ Dibuje el lazo: punto de consigna, error, controlador, actuador, proceso, sensor
 
 ### 17.1b Puntos de ajuste y ubicación de las personas
 
-Escriba el punto de ajuste junto al sensor (tiempo de ciclo ≤ 50 ms). Revise los puntos de ajuste cuando la planta cambie de receta o cuando los avisos falsos superen una tasa acordada. Ponga a las personas donde se requiera juicio sobre la autorización; ponga automatización donde el retraso sea peligroso. Aprobar la ampliación de un conducto es tarea humana. Denegar una escritura fuera de rango es automatización. En ABP, el punto de ajuste del tiempo de ciclo del monitor serie es de 50 ms, y se revisa cuando cambian las recetas. La regla práctica es sencilla: automatización para las decisiones rápidas y bien definidas; personas para los juicios sobre autorización y riesgo.
+Escriba el punto de ajuste junto al sensor (tiempo de ciclo ≤ 50 ms). Revise los puntos de ajuste cuando la planta cambie de receta o cuando los avisos falsos superen una tasa acordada. En el CNHP, las personas deciden qué autoriza un permiso de trabajo, y el monitor actúa solo donde esperar dejaría que una escritura insegura llegara al proceso. Aprobar la ampliación de un conducto es tarea humana. Denegar una escritura fuera de rango es automatización. En ABP, el punto de ajuste del tiempo de ciclo del monitor serie es de 50 ms, y se revisa cuando cambian las recetas. Un incumplimiento del punto de ajuste del tiempo de ciclo se registra con la trama que lo causó, para que la siguiente revisión parta de datos.
 
 ### Ejercicios — capítulo 17
 
@@ -1117,7 +1117,7 @@ Cuando los métodos son ruidosos o la planta es frágil, use un entorno sintéti
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -1155,7 +1155,7 @@ Los servidores de salto de ingeniería tienen un gran valor: bastiónelos, regis
 
 
 
-Los diagramas de red de la zona de evaluación van al expediente con la misma disciplina de hash que los archivos de evidencia. Cuando un auditor pregunta cómo llegó el tráfico a L2, se muestra la versión del diagrama que estaba vigente, no un boceto más reciente y limpio.
+Lena exporta los diagramas de L2 y de la DMZ de cada ventana al expediente del CNHP y calcula su hash como el de cualquier archivo de evidencia. Cuando un auditor pregunta cómo llegó el tráfico a L2, se muestra la versión del diagrama que estaba vigente, no un boceto más reciente y limpio.
 
 ### Ejercicios — capítulo 18
 
@@ -1245,7 +1245,7 @@ El CNHP de Ashford Batch Plant es el ejemplo conductor: zonificación, listas de
 
 ### 20.3 Límite de seguridad
 
-Nada de cargas útiles de exploits, nada de acceso no autorizado a plantas, nada de datos personales o de lotes propietarios reales en los laboratorios, que solo usan datos locales sintéticos. Las solicitudes de doble uso se rechazan (capítulo 10). Las condiciones de parada de seguridad de procesos siempre prevalecen. Este límite es un requisito en cada revisión de diseño de los capítulos 21-50.
+Nada de cargas útiles de exploits, nada de acceso no autorizado a plantas, nada de datos personales o de lotes propietarios reales en los laboratorios, que solo usan datos locales sintéticos. Las solicitudes de doble uso se rechazan (capítulo 10). Las condiciones de parada de seguridad de procesos siempre prevalecen. Cada revisión de diseño del CNHP en los capítulos 21-50 contrasta el diseño con este límite antes de comprobar cualquier otra cosa.
 
 > **Caso sintético — Ashford Batch Plant.** La dirección pidió un equipo rojo que hackeara la planta. Lena reformuló el mandato: un programa autorizado de bastionado que aplica zonas y mide la detección sin poner en peligro los lotes.
 
@@ -1253,7 +1253,7 @@ Lena contrasta cada diseño con este límite.
 
 ### 20.4 Errores y límites
 
-Los marcos evolucionan; vuelva a comprobar las URL y las versiones antes de citarlos en una tesis. Este capítulo orienta; no sustituye la lectura de las fuentes primarias. La lista de fuentes de Lena registra la revisión y la fecha de acceso de cada norma y artículo usados en los documentos del CNHP. Antes de citar un marco en su tesis, comprueba si existe una revisión más reciente y anota cualquier cambio que afecte a su argumento. El capítulo solo da la orientación suficiente para empezar; leer las fuentes primarias forma parte del trabajo.
+Las normas de TO se revisan parte por parte, de modo que un enlace que sirvió para un documento del CNHP puede apuntar a una parte sustituida un semestre después. Este capítulo orienta; no sustituye la lectura de las fuentes primarias. La lista de fuentes de Lena registra la revisión y la fecha de acceso de cada norma y artículo usados en los documentos del CNHP. Antes de citar un marco en su tesis, comprueba si existe una revisión más reciente y anota cualquier cambio que afecte a su argumento. Guarda en el expediente una copia de cada revisión sustituida que citó, para que un lector pueda ver el texto en el que se apoyó su argumento.
 
 ### Nota práctica
 
@@ -1261,7 +1261,7 @@ Mantenga en la carpeta del CNHP una lista de una página de «fuentes que realme
 
 ### 20.1b Cursos vecinos y entregables
 
-Este libro de ingeniería presupone soltura con el cálculo, la probabilidad y la ingeniería de software de los capítulos anteriores. El libro de TO de licenciatura es más amplio; el de tecnólogo pone el énfasis en los ejercicios de implementación. Los operadores necesitan procedimientos operativos y tickets; los ingenieros necesitan esquemas, pruebas y registros de decisiones de arquitectura (ADR). La evaluación del proyecto final busca ambos. Cada entregable nombra a su lector previsto en la primera página. Los entregables de Lena en ABP incluyen ambos tipos. Sus procedimientos operativos y tickets sirven a los operadores que hacen funcionar la planta cada día, mientras que los esquemas, las pruebas y los registros de decisiones sirven a los ingenieros que mantendrán las herramientas después de ella. Los evaluadores buscan ambos.
+Este libro de ingeniería presupone soltura con el cálculo, la probabilidad y la ingeniería de software de los capítulos anteriores y los aplica al caso del CNHP en Ashford Batch Plant. El libro de TO de licenciatura es más amplio; el de tecnólogo pone el énfasis en los ejercicios de implementación. Los operadores necesitan procedimientos operativos y tickets; los ingenieros necesitan esquemas, pruebas y registros de decisiones de arquitectura (ADR). La evaluación del proyecto final busca ambos. Cada entregable nombra a su lector previsto en la primera página. Los entregables de Lena en ABP incluyen ambos tipos. Sus procedimientos operativos y tickets sirven a los operadores que hacen funcionar la planta cada día, mientras que los esquemas, las pruebas y los registros de decisiones sirven a los ingenieros que mantendrán las herramientas después de ella.
 
 ### Ejercicios — capítulo 20
 
@@ -1309,7 +1309,7 @@ Las partes interesadas inventan requisitos a mitad de ventana; apárquelos en un
 
 ### Nota práctica
 
-Las pruebas de aceptación llevan el nombre de los identificadores de los requisitos y hacen fallar la integración continua cuando se omiten. Los requisitos Must huérfanos se prueban o se aplazan formalmente con un responsable de la dirección.
+Las pruebas de aceptación del CNHP llevan el identificador del requisito en su nombre y hacen fallar la integración continua cuando se omiten, de modo que un requisito del monitor sin prueba aparece en la compilación. Los requisitos Must huérfanos se prueban o se aplazan formalmente con un responsable de la dirección.
 
 ### 21.1b MoSCoW bajo seguridad funcional
 
@@ -1323,7 +1323,7 @@ La priorización Must/Should/Could sigue colocando todos los requisitos de segur
 
 ### Síntesis del capítulo
 
-Los requisitos vienen de las personas, se dividen en familias y se entregan con pruebas de aceptación sobre datos de prueba sintéticos.
+Los requisitos del CNHP vienen de los operadores e ingenieros de la planta, se dividen en familias y se entregan con pruebas de aceptación sobre datos de prueba sintéticos de la planta.
 
 ### Siga estudiando — capítulo 21 de 50
 
@@ -1347,7 +1347,7 @@ Los identificadores de los hallazgos son UUID. La evidencia se direcciona por co
 
 ### 22.3 Atributos prohibidos
 
-Ningún atributo para cargas útiles, shellcode ni ataques paso a paso. EvidenceObject guarda los bytes en un repositorio sellado; el modelo solo guarda el hash, el tipo de medio y la clase de conservación.
+Ningún atributo para cargas útiles, shellcode ni ataques paso a paso. Para una captura del monitor de L2, EvidenceObject conserva los bytes en un repositorio sellado; el modelo solo guarda el hash, el tipo de medio y la clase de conservación.
 
 > **Caso sintético — Ashford Batch Plant.** Un esquema inicial tenía notas como texto libre; la gente pegaba contraseñas de ingeniería. Lena lo sustituyó por campos estructurados más un hash de evidencia, y un linter rechaza las cadenas con aspecto de contraseña en los títulos.
 
@@ -1363,7 +1363,7 @@ Haga borrados lógicos de los hallazgos con actor y motivo; purgue físicamente 
 
 ### 22.1b Límites de los adjuntos y tiempo
 
-Los objetos de evidencia necesitan límites de tamaño y listas de tipos de medio permitidos. Las subidas sin límite se convierten en ataques a la disponibilidad e invitan a volcar datos propietarios en masa. Toda entidad mutable necesita created_at, created_by y, para los cambios de estado, updated_at/updated_by o un evento de solo anexado. En las exportaciones, prefiera UTC con desplazamientos explícitos. Las exportaciones indican su zona horaria una vez en la cabecera del archivo, además de en cada marca de tiempo. A los clientes de la API que emiten DELETE en bucle durante un reintento defectuoso se les revocan las credenciales tras superar un umbral.
+Los objetos de evidencia necesitan límites de tamaño y listas de tipos de medio permitidos. Las subidas sin límite se convierten en ataques a la disponibilidad e invitan a volcar datos propietarios en masa. Toda entidad mutable del CNHP, desde un hallazgo hasta un registro de conducto, necesita created_at, created_by y, para los cambios de estado, updated_at/updated_by o un evento de solo anexado. En las exportaciones, prefiera UTC con desplazamientos explícitos. Las exportaciones indican su zona horaria una vez en la cabecera del archivo, además de en cada marca de tiempo. A los clientes de la API que emiten DELETE en bucle durante un reintento defectuoso se les revocan las credenciales tras superar un umbral.
 
 ### 22.5 Ejemplo resuelto: modelar un hallazgo sin filtrar la planta (ABP sintética)
 
@@ -1450,7 +1450,7 @@ Incluya en el modelo la amenaza «servidor de salto comprometido»: credenciales
 
 ### 23.1b Abuso frente a mal uso y lista de pendientes
 
-Los casos de abuso son acciones intencionadas de un adversario contra las herramientas del CNHP. Los casos de mal uso son operadores honestos que cometen errores peligrosos (pegar un CIDR que incluye a un socio). Diseñe controles para ambos. Las filas de STRIDE se convierten en incidencias vinculadas a requisitos. Las filas de mal uso suelen convertirse en reglas de validación; las de abuso, en controles de acceso. Alimentar la lista de pendientes significa que cada fila de STRIDE tiene un responsable y una fecha límite. En ABP, el caso de mal uso de un ingeniero que pega el CIDR de un socio en el archivo de conductos se convirtió en una regla de validación que rechaza los rangos fuera del plan de direcciones de la planta.
+Los casos de abuso son acciones intencionadas de un adversario contra las herramientas del CNHP. Los casos de mal uso son ingenieros honestos que cometen errores peligrosos, como teclear un rango de punto de ajuste más amplio de lo que permite la receta. Diseñe controles para ambos. Las filas de STRIDE se convierten en incidencias vinculadas a requisitos. Las filas de mal uso suelen convertirse en reglas de validación; las de abuso, en controles de acceso. Alimentar la lista de pendientes significa que cada fila de STRIDE tiene un responsable y una fecha límite. En ABP, el caso de mal uso de un ingeniero que pega el CIDR de un socio en el archivo de conductos se convirtió en una regla de validación que rechaza los rangos fuera del plan de direcciones de la planta.
 
 Ambos tipos alimentan la lista de pendientes.
 
@@ -1648,7 +1648,7 @@ Preventivo: lista de permitidos antes de reenviar. Detectivo: alerta ante códig
 
 ### 27.2 Competencia del operador
 
-Los controles deben poder operarlos ingenieros que siguen procedimientos operativos, no solo especialistas en explotación. Un control que necesita shellcode a medida para verificarse es el control equivocado para este programa. Lena redacta una entrada de procedimiento para cada control del CNHP que describe cómo comprobarlo con herramientas ordinarias, como reproducir una trama sintética en el banco y leer el registro de decisiones. Si un control solo puede verificarlo alguien que escriba código de explotación, lo sustituye por otro que los propios ingenieros del sitio puedan comprobar con seguridad durante el trabajo rutinario.
+Los controles del CNHP los comprueban los ingenieros del sitio durante ventanas autorizadas, no especialistas en explotación. Un control que necesita shellcode a medida para verificarse es el control equivocado para este programa. Lena redacta una entrada de procedimiento para cada control del CNHP que describe cómo comprobarlo con herramientas ordinarias, como reproducir una trama sintética en el banco y leer el registro de decisiones. Si un control solo puede verificarlo alguien que escriba código de explotación, lo sustituye por otro que los propios ingenieros del sitio puedan comprobar con seguridad durante el trabajo rutinario.
 
 ### 27.3 Compensación
 
@@ -1692,11 +1692,11 @@ Las pilas de controles compensatorios sin responsable se convierten en alertas i
 
 ### Nota práctica
 
-Programe una jornada trimestral de salud de los controles: rompa cada control preventivo en un laboratorio sintético y confirme que saltan los controles detectivos. Los controles no probados son deseos.
+Una vez por trimestre, Lena reserva una jornada de salud de los controles en el banco: cada control preventivo del CNHP se rompe con tráfico sintético, y la alerta correspondiente del monitor debe saltar. Los controles no probados son deseos.
 
 ### 27.1b Responsables y detección del acceso de emergencia
 
-Cada control tiene un responsable que recibe sus alertas y una fecha de revisión. Registre cuándo un operador usa el acceso de emergencia para saltarse la doble aprobación. Un acceso de emergencia sin detección no es más que un control único oculto. La revisión semanal de los eventos de acceso de emergencia forma parte del diseño de controles, y cada revisión nombra quién lo usó y el motivo alegado. La entrada de cada control en el registro indica también cómo falla: que una lista de permitidos rota bloquee el tráfico o lo deje pasar decide qué alerta detectiva debe saltar primero; en la línea troncal del PLC-A es la alerta de política ausente, que avisa al responsable de la ventana.
+Cada control del CNHP, como la lista de permitidos de la línea troncal del PLC-A, tiene un responsable que recibe sus alertas y una fecha de revisión. Registre cuándo un operador usa el acceso de emergencia para saltarse la doble aprobación. Un acceso de emergencia sin detección no es más que un control único oculto. La revisión semanal de los eventos de acceso de emergencia forma parte del diseño de controles, y cada revisión nombra quién lo usó y el motivo alegado. La entrada de cada control en el registro indica también cómo falla: que una lista de permitidos rota bloquee el tráfico o lo deje pasar decide qué alerta detectiva debe saltar primero; en la línea troncal del PLC-A es la alerta de política ausente, que avisa al responsable de la ventana.
 
 ### Nota de campo: jornada de salud de los controles
 
@@ -1780,7 +1780,7 @@ Someta el predicado a fuzzing con estaciones y códigos aleatorios y UTF-8 roto.
 
 ### 28.1b Catálogo de motivos y fuzzing
 
-El catálogo enumera, para cada código de motivo, la cláusula que lo emite y la prueba que lo fija: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Las entradas de fuzzing que alguna vez encontraron un error se suman a una lista de regresión que se reproduce en cada versión, incluido el nombre de estación UTF-8 que una vez hizo caer el decodificador. Las listas de comprobación de revisión de código para los cambios del predicado incluyen: cláusula nueva, pruebas nuevas, documentación de los códigos de motivo, caso de fuzzing, fallo cerrado ante errores de análisis. Los revisores que se saltan la lista hacen una revisión social, no una revisión de seguridad.
+El catálogo enumera, para cada código de motivo, la cláusula que lo emite y la prueba que lo fija: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Las entradas de fuzzing que alguna vez encontraron un error se suman a una lista de regresión que se reproduce en cada versión, incluido el nombre de estación UTF-8 que una vez hizo caer el decodificador. La lista de comprobación de Lena para un cambio del predicado del monitor cubre la cláusula nueva, las pruebas nuevas, la documentación de los códigos de motivo, un caso de fuzzing y el fallo cerrado ante errores de análisis. Un revisor que aprueba un cambio del predicado sin la lista ha comprobado al autor, no el cambio.
 
 La lista de comprobación de Lena se adjunta a cada revisión del predicado.
 
@@ -1870,7 +1870,7 @@ Los denominadores tomados de otra planta invalidan la métrica. Los ataques sint
 
 ### Nota práctica
 
-Ponga a cada widget del tablero un pie con la fórmula y el identificador de la planta. Un widget sin fórmula es decoración y debe eliminarse en la revisión.
+Ponga a cada widget del tablero un pie con la fórmula y el identificador de la planta. Un widget del tablero del CNHP sin fórmula es decoración y se elimina en la revisión.
 
 ### 29.1b Muestreo y comparaciones entre cohortes
 
@@ -1918,7 +1918,7 @@ Use solo equipos y bancos sintéticos. Capture la salida estándar y los hashes 
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -1954,11 +1954,11 @@ Los laboratorios en bancos compartidos chocan entre sí; reserve el entorno sint
 
 ### Nota práctica
 
-El laboratorio I lo ejecuta alguien que no implementó el cambio en prueba. El aprobado registrado necesita una lista de comprobación en verde independiente.
+El laboratorio I de un cambio en el monitor o en la lista de permitidos lo ejecuta alguien que no lo implementó. El aprobado registrado necesita una lista de comprobación en verde independiente.
 
 ### 30.1b Datos de prueba de referencia e inventario
 
-Mantenga un directorio sellado de datos de prueba sintéticos con decisiones esperadas conocidas. Las ejecuciones del laboratorio deben coincidir por hash con el conjunto de datos de prueba antes de contar como evidencia de versión. Fotografíe o exporte el inventario del entorno del laboratorio al informe. «Pasó en mi máquina» sin inventario no es una evidencia transferible. Los cambios en los datos de prueba se revisan como el código: una nueva decisión esperada debe nombrar el requisito del que procede. Los registros de resultados del laboratorio son evidencia; consérvelos con la etiqueta de la versión.
+Mantenga un directorio sellado de datos de prueba sintéticos con decisiones esperadas conocidas. Una ejecución en el banco solo cuenta como evidencia de versión del monitor cuando sus datos de prueba coinciden por hash con el conjunto sellado. Fotografíe o exporte el inventario del entorno del laboratorio al informe. «Pasó en mi máquina» sin inventario no es una evidencia transferible. Los cambios en los datos de prueba se revisan como el código: una nueva decisión esperada debe nombrar el requisito del que procede. Los registros de resultados del laboratorio son evidencia; consérvelos con la etiqueta de la versión.
 
 El conjunto de datos de prueba de Lena está sellado y tiene hash.
 
@@ -1995,7 +1995,7 @@ Usted podrá (1) añadir inserciones o actualizaciones idempotentes de hallazgos
 
 ### 31.1 Inserción o actualización
 
-PUT /findings/{id} con el cuerpo completo; el mismo id dos veces produce una sola fila. Las huellas de deduplicación proponen identificadores; las personas confirman las fusiones entre causas raíz distintas. En ABP, los identificadores de los hallazgos los genera el cliente al crearlos y se reutilizan en cada reintento, de modo que un fallo de red a mitad de la solicitud no puede crear un duplicado. Las huellas sugieren cuándo dos hallazgos pueden ser el mismo problema, pero una persona confirma cualquier fusión, porque dos hallazgos sobre el PLC-A pueden compartir un registro y tener aun así causas distintas. Las fusiones se registran con sus motivos.
+La API de hallazgos del CNHP recibe PUT /findings/{id} con el cuerpo completo, de modo que el mismo id enviado dos veces produce una sola fila. En ABP, los identificadores de los hallazgos los genera el cliente al crearlos y se reutilizan en cada reintento, de modo que un fallo de red a mitad de la solicitud no puede crear un duplicado. Las huellas sugieren cuándo dos hallazgos pueden ser el mismo problema, pero una persona confirma cualquier fusión, porque dos hallazgos sobre el PLC-A pueden compartir un registro y tener aun así causas distintas. Las fusiones se registran con sus motivos.
 
 ### 31.2 Validar en la escritura
 
@@ -2019,7 +2019,7 @@ La importación masiva desde escáneres debe pasar la misma validación de esque
 
 ### 31.1b Actualizaciones parciales y concurrencia
 
-Un PATCH que permite cambiar la severidad sin referencias a la evidencia invita a rebajas silenciosas. Prefiera un PUT completo del cuerpo validado, o un PATCH restringido que no pueda borrar los hashes de la evidencia ni cambiar el estado a cerrado sin un puntero a una nueva prueba. Use ETags para que dos personas que corrigen no se pisen. Un cambio de estado a cerrado solo se acepta cuando la misma solicitud lleva un puntero a una nueva prueba. Los borrados masivos están prohibidos sin doble control. Documente la semántica de inserción o actualización en OpenAPI para que los clientes móviles no inventen identificadores de reintento.
+Un PATCH que permite cambiar la severidad sin referencias a la evidencia invita a rebajas silenciosas. Para los hallazgos del CNHP, prefiera un PUT completo del cuerpo validado, o un PATCH restringido que no pueda borrar los hashes de las capturas del monitor. Use ETags para que dos personas que corrigen no se pisen. Un cambio de estado a cerrado solo se acepta cuando la misma solicitud lleva un puntero a una nueva prueba. Los borrados masivos están prohibidos sin doble control. Documente la semántica de inserción o actualización en OpenAPI para que los clientes móviles no inventen identificadores de reintento.
 
 Las ETags son obligatorias en cada actualización de un hallazgo.
 
@@ -2080,11 +2080,11 @@ Los reintentos contra una línea troncal con límite de tasa pueden parecer inun
 
 ### Nota práctica
 
-Cuando la cola de borradores supere un umbral, deje de iniciar nuevos métodos de descubrimiento y avise al responsable. Los escaneos sin seguimiento mientras no se pueden registrar hallazgos crean riesgo.
+Cuando la cola de borradores de hallazgos del monitor supere un umbral, el responsable de la ventana deja de iniciar nuevos métodos de descubrimiento y recibe un aviso. Los escaneos sin seguimiento mientras no se pueden registrar hallazgos crean riesgo.
 
 ### 32.1b Presupuestos de error y comprobaciones de salud
 
-Defina presupuestos de error para el camino de denegación separados de los presupuestos de mejor esfuerzo de la interfaz. Compruebe la salud del almacenamiento de políticas y del receptor de eventos al inicio de la ventana. Empezar una ventana a ciegas y descubrir un receptor roto a mitad de un escaneo es un fallo de operaciones que este capítulo pretende evitar. Una comprobación de salud fallida retrasa el inicio de la ventana; las comprobaciones nunca se acortan para ganar tiempo. Los experimentos de caos se ejecutan solo en entornos sintéticos, nunca durante la ventana firmada de un cliente. Registre los identificadores de los experimentos por separado de los de las ventanas para que las métricas no se mezclen. Publique ambos presupuestos de error, el del camino de denegación y el de la interfaz.
+El camino de denegación del monitor tiene su propio presupuesto de error, separado del presupuesto de mejor esfuerzo del tablero del CNHP. Compruebe la salud del almacenamiento de políticas y del receptor de eventos al inicio de la ventana. Empezar una ventana a ciegas y descubrir un receptor roto a mitad de un escaneo es un fallo de operaciones que este capítulo pretende evitar. Una comprobación de salud fallida retrasa el inicio de la ventana; las comprobaciones nunca se acortan para ganar tiempo. Los experimentos de caos se ejecutan solo en entornos sintéticos, nunca durante la ventana firmada de un cliente. Registre los identificadores de los experimentos por separado de los de las ventanas para que las métricas no se mezclen. Ambos presupuestos se publican.
 
 ### Nota de campo: contrapresión de la cola
 
@@ -2119,7 +2119,7 @@ Usted podrá (1) escribir las condiciones de parada como comprobaciones ejecutab
 
 ### 33.1 Paradas ejecutables
 
-Las condiciones de parada son código: canario del tiempo de ciclo, flujo de alarmas de proceso, archivo de interruptor de corte del cliente, entrada de falla del SIS. Las personas también ordenan parar; el software no debe contradecir una parada humana. En ABP, la lógica de parada del monitor serie lee el canario del tiempo de ciclo, el flujo de alarmas de proceso, un archivo de interruptor de corte y la entrada de falla del SIS-B. Cualquiera de ellos detiene de inmediato la actividad de evaluación. Una orden humana de parar siempre gana, y el software no tiene ninguna opción que pueda anularla o retrasarla hasta que termine un trabajo en curso.
+Las condiciones de parada son código: canario del tiempo de ciclo, flujo de alarmas de proceso, archivo de interruptor de corte del cliente, entrada de falla del SIS. En ABP, la lógica de parada del monitor serie lee el canario del tiempo de ciclo, el flujo de alarmas de proceso, un archivo de interruptor de corte y la entrada de falla del SIS-B. Cualquiera de ellos detiene de inmediato la actividad de evaluación. Una orden humana de parar siempre gana, y el software no tiene ninguna opción que pueda anularla o retrasarla hasta que termine un trabajo en curso. Cada parada que registra el monitor indica qué entrada se activó, para que la revisión en caliente distinga un disparo del canario de una orden humana.
 
 ### 33.2 Reversión
 
@@ -2143,7 +2143,7 @@ Redacte de antemano plantillas de SMS/correo electrónico para la parada, la rea
 
 ### 33.1b Contactos secundarios y autoridad de reanudación
 
-Las condiciones de parada que avisan a una sola persona fallan cuando esa persona está desconectada. Mantenga contactos primarios y secundarios con un traspaso confirmado. ¿Quién puede reanudar tras una parada? Nombre el rol en el permiso de trabajo. El monitor debería exigir un testigo de reanudación vinculado a ese rol y a AllowListVersion. Tras cada parada real, haga una revisión en caliente de cinco minutos y registre al menos una modificación del procedimiento. Las notas de la revisión en caliente registran el desencadenante, el tiempo hasta la parada y el tiempo hasta la reanudación, para poder comparar los simulacros con las paradas reales.
+Un aviso de parada que solo llega al responsable de la ventana falla cuando este está en la planta sin cobertura. Mantenga contactos primarios y secundarios con un traspaso confirmado. ¿Quién puede reanudar tras una parada? Nombre el rol en el permiso de trabajo. El monitor debería exigir un testigo de reanudación vinculado a ese rol y a AllowListVersion. Tras cada parada real, haga una revisión en caliente de cinco minutos y registre al menos una modificación del procedimiento. Las notas de la revisión en caliente registran el desencadenante, el tiempo hasta la parada y el tiempo hasta la reanudación, para poder comparar los simulacros con las paradas reales.
 
 ### Nota de campo: testigo de reanudación
 
@@ -2162,7 +2162,7 @@ Durante la migración del cortafuegos en el conducto L3–L2, la condición de p
 
 ### Síntesis del capítulo
 
-Paradas que se pueden ejecutar, reversiones que se pueden hacer, ejercicios de mesa que actualizan los procedimientos.
+Paradas que el monitor puede ejecutar, reversiones que el sitio puede hacer, ejercicios de mesa que actualizan los procedimientos del CNHP.
 
 ### Siga estudiando — capítulo 33 de 50
 
@@ -2186,7 +2186,7 @@ El almacén de hallazgos indexa los eventos procesados por event_id. Reproducir 
 
 ### 34.3 Pruebas de contrato
 
-JSON de datos de prueba para cada código de motivo; las pruebas del consumidor comprueban los campos del ticket resultante. Se ejecutan en la integración continua con datos de prueba sintéticos.
+JSON de datos de prueba para cada código de motivo del monitor, como register-out-of-range; las pruebas del consumidor comprueban los campos del ticket resultante. Se ejecutan en la integración continua con datos de prueba sintéticos.
 
 > **Caso sintético — Ashford Batch Plant.** Una tormenta de reproducción duplicó tres tickets hasta que llegó la idempotencia por event_id.
 
@@ -2202,7 +2202,7 @@ Los eventos envenenados (marcas de tiempo futuras, versiones de política descon
 
 ### 34.1b Mensajes fallidos y simulacros de esquema
 
-Cada evento enviado a la cola de mensajes fallidos conserva el error de validación que lo rechazó. Los operadores lo reproducen tras corregir el productor. Practique de extremo a extremo, en un ensayo, la adición de un campo opcional: productor, consumidor, datos de prueba, documentación. Los equipos que solo hacen evolucionar los esquemas en emergencias inventan atajos incompatibles. Una ejecución programada fallida abre un ticket para el equipo productor, no para el consumidor. La antigüedad de los mensajes fallidos es un gráfico de SLO junto a la latencia del camino de denegación.
+Cada evento enviado a la cola de mensajes fallidos conserva el error de validación que lo rechazó. Los operadores lo reproducen tras corregir el productor. Una vez por periodo, el equipo del CNHP añade de extremo a extremo un campo opcional en un ensayo en el banco: productor, consumidor, datos de prueba, documentación. Los equipos que solo hacen evolucionar los esquemas en emergencias inventan atajos incompatibles. Una ejecución programada fallida abre un ticket para el equipo productor, no para el consumidor. La antigüedad de los mensajes fallidos es un gráfico de SLO junto a la latencia del camino de denegación.
 
 ABP realiza un simulacro de esquema cada periodo lectivo. Los resultados de los simulacros se registran con las versiones del productor y del consumidor implicadas, como el simulacro que añadió la hora de recepción junto a la hora del evento en los eventos de denegación del PLC-A.
 
@@ -2212,7 +2212,7 @@ Un error de un productor emitió eventos con marcas de tiempo de 2099. La cuaren
 
 
 
-Incluya un canario del consumidor que haga fallar el despliegue si los eventos envenenados no se ponen en cuarentena en menos de un minuto en preproducción.
+El canario del consumidor del CNHP hace fallar el despliegue si los eventos envenenados del monitor no se ponen en cuarentena en menos de un minuto en preproducción.
 
 
 
@@ -2247,7 +2247,7 @@ Usted podrá (1) rediseñar la interfaz de cobertura del CNHP según los princip
 
 ### 35.1 Problema
 
-Las partes interesadas quieren un gran porcentaje verde. Diseñe una interfaz que muestre lo planificado, lo observado y lo no visto, y que rechace una puntuación de seguridad única. En ABP, el jefe de planta pidió al principio un único porcentaje que mostrara si el CNHP funcionaba. El equipo de Lena explicó que cualquier cifra única mezclaría las técnicas observadas, la deriva de los conductos y la alcanzabilidad del SIS-B, que necesitan responsables y presupuestos distintos. La pantalla resultante da a cada medida su propia línea con el denominador visible, y las técnicas planificadas pero no vistas se enumeran por identificador para que el jefe pueda preguntar cuáles importan antes de aprobar la siguiente fase.
+Las partes interesadas quieren un gran porcentaje verde. Diseñe un tablero del CNHP que muestre las técnicas planificadas, observadas y no vistas, y que rechace una puntuación de seguridad única. En ABP, el jefe de planta pidió al principio un único porcentaje que mostrara si el CNHP funcionaba. El equipo de Lena explicó que cualquier cifra única mezclaría las técnicas observadas, la deriva de los conductos y la alcanzabilidad del SIS-B, que necesitan responsables y presupuestos distintos. La pantalla resultante da a cada medida su propia línea con el denominador visible, y las técnicas planificadas pero no vistas se enumeran por identificador para que el jefe pueda preguntar cuáles importan antes de aprobar la siguiente fase.
 
 ### 35.2 Textos
 
@@ -2255,7 +2255,7 @@ Las partes interesadas quieren un gran porcentaje verde. Diseñe una interfaz qu
 
 ### 35.3 Revisión
 
-Los revisores intentan imponer una insignia de riesgo rojo/amarillo/verde; el taller debe mantenerse firme con las reglas del capítulo de medición.
+Los revisores de la planta piden una insignia roja/amarilla/verde para cada línea de producción; el taller se atiene a las reglas del capítulo de medición.
 
 > **Caso sintético — Ashford Batch Plant.** El taller II eliminó la insignia; el tablero enumera por identificador las técnicas planificadas no vistas y, por separado, la alcanzabilidad del SIS.
 
@@ -2263,7 +2263,7 @@ Los críticos del taller argumentaron que los directivos no leerían una lista. 
 
 ### 35.4 Errores y límites
 
-Los patrones oscuros («solo para directivos») reintroducen las puntuaciones vacías: rechácelos mediante CODEOWNERS de la interfaz. En ABP, una solicitud posterior pidió una vista resumida solo para directivos con un único indicador de color. El equipo de Lena la rechazó durante la revisión de código, citando la decisión del taller y las reglas de medición, y ofreció en su lugar una exportación de una página con los mismos tres números y sus denominadores. Exigir que un responsable de código apruebe cada cambio en la interfaz del tablero hace que esta discusión la resuelva un revisor nombrado que conoce la historia, en lugar de que la reabra en silencio quien edite la pantalla a continuación.
+Una vista «solo para directivos» es la vía habitual por la que vuelve la puntuación vacía, así que los cambios en el tablero del CNHP requieren la aprobación de CODEOWNERS. En ABP, una solicitud posterior pidió una vista resumida solo para directivos con un único indicador de color. El equipo de Lena la rechazó durante la revisión de código, citando la decisión del taller y las reglas de medición, y ofreció en su lugar una exportación de una página con los mismos tres números y sus denominadores. Exigir que un responsable de código apruebe cada cambio en la interfaz del tablero hace que esta discusión la resuelva un revisor nombrado que conoce la historia, en lugar de que la reabra en silencio quien edite la pantalla a continuación.
 
 ### Nota práctica
 
@@ -2271,7 +2271,7 @@ Tarea de investigación con usuarios: explique este número a un jefe de planta 
 
 ### 35.1b Accesibilidad y veracidad de la exportación
 
-Las métricas que infravaloran el éxito deben seguir siendo legibles: letra grande para la fracción, lenguaje llano para la advertencia, acceso por teclado a la exportación del denominador. Si la interfaz y la exportación CSV no coinciden, la exportación gana para el informe. Construya primero las exportaciones; trate la interfaz como una vista. Las exportaciones narrativas generadas con la misma consulta que la interfaz se pegan en los informes sin la ambigüedad de una captura de pantalla. Ocultar la advertencia en una información emergente reintroduce el problema de la puntuación vacía para quien no pase el cursor por encima.
+Las métricas del CNHP que infravaloran el éxito deben seguir siendo legibles para el supervisor de turno: letra grande para la fracción, lenguaje llano para la advertencia, acceso por teclado a la exportación del denominador. Si el tablero y la exportación CSV no coinciden, el informe de Lena usa la exportación. Construya primero las exportaciones; trate la interfaz como una vista. Las exportaciones narrativas generadas con la misma consulta que la interfaz se pegan en los informes sin la ambigüedad de una captura de pantalla. Una advertencia oculta en una información emergente nunca aparece en la pantalla mural de la sala de control, donde nadie pasa el cursor, y la puntuación vacía vuelve.
 
 Lena contrasta cada versión con la exportación.
 
@@ -2493,7 +2493,7 @@ Mismo punto de observación, mínimo privilegio, mismo estándar de evidencia. P
 
 ### 38.3 Ningún método nuevo
 
-La validación usa el método que encontró el problema, o una comprobación de solo lectura más débil; no es una oportunidad para probar ataques nuevos.
+La validación dentro de una ventana del CNHP usa el método que encontró el problema, o una comprobación de solo lectura más débil, como una captura pasiva del monitor; no es una oportunidad para probar ataques nuevos.
 
 > **Caso sintético — Ashford Batch Plant.** Nueva prueba de la regla de L4 a L2: la alcanzabilidad ya excluye L1-SIS; ticket cerrado con el hash de la exportación. Un hallazgo aparte sobre las contraseñas de ingeniería compartidas siguió abierto.
 
@@ -2509,7 +2509,7 @@ Las nuevas pruebas automatizadas son comprobaciones de una lista de permitidos c
 
 ### 38.1b Evidencia de la validación y arbitraje
 
-Los tickets de validación enlazan con el hallazgo original, el método usado, la marca de tiempo y el hash de la nueva evidencia. Un «a mí me parece bien» sin esos campos no cierra un crítico. Las disputas se escalan a un árbitro nombrado que compara los hashes de la evidencia: no vuelve a atacar. Cuando muchos hallazgos similares comparten una causa raíz, repita la prueba en una muestra más los activos notificados originalmente, y dígalo. Las decisiones del árbitro son definitivas para la ventana y solo pueden recurrirse en la retrospectiva.
+Los tickets de validación del CNHP enlazan con el hallazgo original, el método usado, el número del permiso de trabajo, la marca de tiempo y el hash de la nueva evidencia. Un «me parece bien» del supervisor sin esos campos no cierra un hallazgo crítico. Las disputas se escalan a un árbitro nombrado que compara los hashes de la evidencia: no vuelve a atacar. Cuando muchos hallazgos similares comparten una causa raíz, repita la prueba en una muestra más los activos notificados originalmente, y dígalo. Las decisiones del árbitro son definitivas para la ventana y solo pueden recurrirse en la retrospectiva.
 
 Los tickets de Lena llevan los cuatro campos.
 
@@ -2570,7 +2570,7 @@ Escriba una nota sobre el factor autobús: quién puede publicar versiones, qui�
 
 ### 39.1b Planes de obsolescencia y borrado
 
-Anuncie con fechas la obsolescencia de las API; mantenga periodos de funcionamiento doble. La mantenibilidad incluye saber retirar una herramienta: exportar los expedientes, revocar las credenciales, archivar el código. Reserve en el calendario un mes anual de actualización de dependencias para que las versiones fijadas por CVE no esperen a una emergencia. Las sesiones de formación cruzada usan los mismos datos de prueba sintéticos que el laboratorio I, de modo que un respaldo practica con las entradas con las que se juzgará la versión; tras una sesión, el respaldo formado ejecutó solo el laboratorio I y la versión retenida salió.
+Anuncie con fechas la obsolescencia de las API; mantenga periodos de funcionamiento doble. La mantenibilidad incluye saber retirar una herramienta: exportar los expedientes, revocar las credenciales, archivar el código. El calendario del CNHP reserva un mes anual de actualización de dependencias, fuera de la parada general de la planta, para que las versiones fijadas por CVE no esperen a una emergencia. Las sesiones de formación cruzada usan los mismos datos de prueba sintéticos que el laboratorio I, de modo que un respaldo practica con las entradas con las que se juzgará la versión; tras una sesión, el respaldo formado ejecutó solo el laboratorio I y la versión retenida salió.
 
 Lena aplica este plan a todas las herramientas del CNHP, incluido el adaptador sustituido. Su retirada se anunció con antelación.
 
@@ -2627,7 +2627,7 @@ Detenga el almacén de hallazgos a mitad del flujo; confirme que el monitor sigu
 edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
 edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
 def reach(edges, start):
-    g={}; 
+    g={};
     for a,b in edges: g.setdefault(a,[]).append(b)
     seen=set(); stack=[start]
     while stack:
@@ -2651,7 +2651,7 @@ Los fallos del laboratorio II de Lena incluyen también la pérdida de alimentac
 
 ### 40.3 Aprobación
 
-Lista de comprobación de la versión candidata firmada por el implementador y el revisor; las filas de seguridad funcional deben estar en verde.
+Lista de comprobación de la versión candidata del monitor firmada por el implementador y el revisor; las filas de seguridad de procesos deben estar en verde.
 
 > **Caso sintético — Ashford Batch Plant.** El laboratorio II detectó que, en un reintento, la cobertura se actualizaba antes de crear el ticket; se corrigió el orden con una bandeja de salida.
 
@@ -2667,7 +2667,7 @@ Paquete de datos de prueba maliciosos: hashes erróneos, eventos reordenados, ma
 
 ### 40.1b Observabilidad y paridad
 
-El laboratorio II activa temporalmente los registros de depuración, pero sella una copia redactada. Dejar la depuración activada en las compilaciones de la ventana puede filtrar secretos. El entorno de laboratorio replica las versiones de las herramientas de producción y las claves de firma de políticas (claves de prueba). Un laboratorio II inestable es un bloqueo, no un ritual de reintentar hasta ver verde. Un guion de fallos que no puede ejecutarse se registra como fila fallida, no como omitida. Los guiones de inyección de fallos se guardan en la carpeta del laboratorio y se fijan por SHA en el informe. Las diferencias de paridad del entorno explican las sorpresas de verde en el laboratorio y rojo en la ventana.
+El laboratorio II activa temporalmente los registros de depuración, pero sella una copia redactada. Dejar la depuración activada en las compilaciones de la ventana puede filtrar secretos. El entorno de laboratorio replica las versiones de las herramientas de producción y las claves de firma de políticas (claves de prueba). Una ejecución del laboratorio II que solo pasa al reintentarla bloquea la versión del monitor; no se repite hasta ver verde. Un guion de fallos que no puede ejecutarse se registra como fila fallida, no como omitida. Los guiones que inyectan fallos en el banco, como un archivo de política ausente, se guardan en la carpeta del laboratorio y se fijan por SHA en el informe. Las diferencias de paridad del entorno explican las sorpresas de verde en el laboratorio y rojo en la ventana.
 
 La aprobación de Lena comprueba las diferencias de paridad.
 
@@ -2677,7 +2677,7 @@ El paquete malicioso del laboratorio II incluía un grafo plano etiquetado como 
 
 
 
-Selle los registros del laboratorio II con la misma herramienta de manifiesto que usa el expediente, para que los estudiantes practiquen un único flujo de hash.
+Lena sella los registros del laboratorio II con la misma herramienta de manifiesto que el expediente del CNHP, para que el banco y la planta usen un único flujo de hash.
 
 
 
@@ -2720,7 +2720,7 @@ Almacenar en caché AllowListVersion es correcto si la invalidación al publicar
 
 ### 41.3 Veto de seguridad funcional
 
-Cualquier optimización que omita las comprobaciones de la lista de denegación, acorte los campos de auditoría o falle de forma abierta se rechaza, sea cual sea la mejora de velocidad.
+Cualquier optimización del monitor que omita las comprobaciones de la lista de permitidos, acorte los campos de auditoría o falle de forma abierta se rechaza, sea cual sea el tiempo de ciclo que ahorre.
 
 ```python
 """Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
@@ -2803,7 +2803,7 @@ Prerregistre las medidas; use datos operativos sintéticos o consentidos; inform
 
 ### 42.3 Divulgación
 
-Si la investigación descubre accidentalmente un problema real, siga la divulgación responsable, no un blog de clase.
+Si la investigación descubre accidentalmente un problema real en un PLC o en una herramienta de un proveedor, siga la divulgación coordinada con el proveedor y la planta, no un blog de clase.
 
 > **Caso sintético — Ashford Batch Plant.** El estudio aplicado de Lena midió cuántos días de línea de base necesita un detector de nuevos conductos antes de que sus falsas alertas bajen de una por semana (§42.5); prerregistrado, sintético+anonimizado.
 
@@ -2815,11 +2815,11 @@ Los proyectos del curso no son investigación con seres humanos; evite recopilar
 
 ### Nota práctica
 
-El código de análisis prerregistrado vive en el repositorio con un commit de congelación anterior a la recopilación de datos. Enmendarlo después de mirar los datos requiere una enmienda registrada.
+El código de análisis prerregistrado de Lena vive en el repositorio del CNHP con un commit de congelación hecho antes de la primera captura del piloto. Enmendarlo después de mirar los datos requiere una enmienda registrada.
 
 ### 42.1b Compartición de datos y resultados negativos
 
-Incluso las métricas operativas sintéticas más anonimizadas requieren un acuerdo escrito con la organización anfitriona para las tesis de los estudiantes. La investigación aplicada publicable incluye resultados negativos. Ocultar los negativos sesga a la siguiente cohorte hacia una confianza vacía. Indique el límite del doble uso en la sección de ética de la tesis con un ejemplo concreto de rechazo. Los resultados negativos reciben la misma calidad de figuras que los positivos en la plantilla de tesis. El acuerdo con la organización anfitriona para los datos de ABP se firmó antes del análisis, y la tesis de Lena informa con figuras completas las longitudes de línea de base que nunca alcanzaron el umbral.
+Incluso las métricas sintéticas más anonimizadas procedentes del monitor de una planta requieren un acuerdo escrito con la organización anfitriona antes de entrar en la tesis de un estudiante. La investigación aplicada publicable incluye resultados negativos. Ocultar los negativos sesga a la siguiente cohorte hacia una confianza vacía. La sección de ética de la tesis indica el límite del doble uso con un rechazo concreto, como no publicar las direcciones de registros que un atacante necesitaría en el PLC-A. El acuerdo con la organización anfitriona para los datos de ABP se firmó antes del análisis, y la tesis de Lena informa con figuras completas las longitudes de línea de base que nunca alcanzaron el umbral.
 
 ### Nota de campo: registro de enmiendas
 
@@ -2862,7 +2862,7 @@ Usted podrá (1) adaptar la ingeniería CNHP a las restricciones de una organiza
 
 ### 43.1 Estancia
 
-En la industria o el servicio público, las plantillas de permisos de trabajo, la residencia de datos y las compras son distintas. Su trabajo sigue siendo construir herramientas que fallan de forma cerrada y medir con honestidad, no hacer pruebas ingeniosas sin autorización. En su estancia en un fabricante por contrato, Lena encontró formularios de permiso distintos, un proceso de compras distinto y reglas más estrictas que en ABP sobre dónde podían almacenarse los datos. Adaptó sus métodos al proceso de la anfitriona en lugar de importar los formularios de ABP. Lo que no cambió fue el núcleo de su práctica: herramientas que se detienen de forma segura ante la duda, mediciones con sus denominadores y pruebas realizadas solo dentro del alcance que la anfitriona había aprobado por escrito.
+En la industria o el servicio público, las plantillas de permisos de trabajo, la residencia de datos y las compras son distintas. En su estancia en un fabricante por contrato, Lena encontró formularios de permiso distintos, un proceso de compras distinto y reglas más estrictas que en ABP sobre dónde podían almacenarse los datos. Adaptó sus métodos al proceso de la anfitriona en lugar de importar los formularios de ABP. Lo que no cambió fue el núcleo de su práctica: herramientas que se detienen de forma segura ante la duda, mediciones con sus denominadores y pruebas realizadas solo dentro del alcance que la anfitriona había aprobado por escrito.
 
 ### 43.2 Informes depurados
 
@@ -2878,7 +2878,7 @@ En su memorando de prácticas, Lena redactó el mismo hallazgo sobre el portáti
 
 ### 43.4 Errores y límites
 
-«No puedo contarle lo que hice» no es un informe de prácticas: use una reconstrucción sintética acordada con la anfitriona. El informe de prácticas de Lena no podía incluir los detalles reales de la red de la anfitriona, así que acordó con su mentor en la anfitriona una reconstrucción sintética que conservaba la estructura del hallazgo pero sustituía cada detalle identificativo. Su apéndice de restricciones indicaba lo que no se le había permitido examinar. Esto dio a la universidad algo que evaluar sin exponer a la anfitriona, y es la norma para cualquier estancia en la que el propio trabajo no pueda describirse directamente.
+«No puedo contarle lo que hice» no es un informe de prácticas, aunque los detalles de la red de la planta anfitriona sean confidenciales. El informe de prácticas de Lena no podía incluir los detalles reales de la red de la anfitriona, así que acordó con su mentor en la anfitriona una reconstrucción sintética que conservaba la estructura del hallazgo pero sustituía cada detalle identificativo. Su apéndice de restricciones indicaba lo que no se le había permitido examinar. Esto dio a la universidad algo que evaluar sin exponer a la anfitriona, y es la norma para cualquier estancia en la que el propio trabajo no pueda describirse directamente.
 
 ### Nota práctica
 
@@ -2925,7 +2925,7 @@ Usted podrá (1) proponer un proyecto final que entregue una mejora CNHP medible
 
 ### 44.1 Propuesta
 
-Problema, usuarios, requisitos (la seguridad primero), esbozo de arquitectura, hitos, plan de verificación en laboratorio y párrafo de ética. Se rechazan los proyectos finales que requieren trabajo de explotación. La propuesta del Proyecto final I de Lena era el compilador de políticas descrito en el ejemplo resuelto siguiente. Sus requisitos ponían la seguridad primero: SIS-B debe seguir siendo inalcanzable desde todas las zonas enrutadas. Sus hitos, su plan de laboratorio y su párrafo de ética se revisaron antes de empezar a programar. El proyecto no necesitó trabajo de explotación, porque su tarea era demostrar que las reglas coinciden con el diseño, no irrumpir en nada de la planta.
+Una propuesta de proyecto final del CNHP recoge el problema, los usuarios, los requisitos (la seguridad de procesos primero), el esbozo de arquitectura, los hitos, el plan de verificación en laboratorio y el párrafo de ética. Se rechazan los proyectos finales que requieren trabajo de explotación. La propuesta del Proyecto final I de Lena era el compilador de políticas descrito en el ejemplo resuelto siguiente. Sus requisitos ponían la seguridad primero: SIS-B debe seguir siendo inalcanzable desde todas las zonas enrutadas. Sus hitos, su plan de laboratorio y su párrafo de ética se revisaron antes de empezar a programar. El proyecto no necesitó trabajo de explotación, porque su tarea era demostrar que las reglas coinciden con el diseño, no irrumpir en nada de la planta.
 
 ### 44.2 Objetivos excluidos
 
@@ -2933,7 +2933,7 @@ Enumere explícitamente lo que no construirá (módulos de explotación, escaneo
 
 ### 44.3 Hito 1
 
-Algo demostrable sobre datos sintéticos en la semana 3: p. ej., interruptor de corte respetado en ≤30 s, con una prueba.
+Algo demostrable sobre datos sintéticos de la planta en la semana 3: p. ej., el monitor respetando el archivo de interruptor de corte en ≤30 s, con una prueba.
 
 > **Caso sintético — Ashford Batch Plant.** Se devolvieron las propuestas de Proyecto final I que mencionaban auto-pwn; avanzó la distribución firmada de listas de permitidos con fallo cerrado.
 
@@ -2949,7 +2949,7 @@ Las propuestas que no pueden nombrar una fila del Laboratorio I para cada requis
 
 ### 44.1b Métricas de éxito y puntos de control
 
-Defina dos métricas que mostrará en la defensa (p. ej., tiempo hasta denegarlo todo, porcentaje de fusiones con tickets AUTH). El Proyecto final I tiene puntos de control obligatorios: propuesta aceptada, demostración del hito 1 y control ético intermedio. Saltarse un punto de control congela la programación hasta recuperarlo. Registro de riesgos del proyecto final: ampliación descontrolada del alcance, retraso de dependencias, falta de disponibilidad de revisores, confusión sobre los límites éticos, cada uno con su alerta temprana y su mitigación. Las demostraciones de hitos que omiten el fallo cerrado reciben cero en ese punto de control.
+Defina dos métricas que mostrará en la defensa (p. ej., el tiempo hasta que el monitor deniega todas las escrituras cuando falta su política, el porcentaje de fusiones de la lista de permitidos que citan un permiso de trabajo). El Proyecto final I tiene tres puntos de control obligatorios en el calendario del CNHP: propuesta aceptada, demostración del hito 1 en el banco y control ético intermedio. Saltarse un punto de control congela la programación hasta recuperarlo. Registro de riesgos del proyecto final: ampliación descontrolada del alcance, retraso de dependencias, falta de disponibilidad de revisores, confusión sobre los límites éticos, cada uno con su alerta temprana y su mitigación. Las demostraciones de hitos que omiten el fallo cerrado reciben cero en ese punto de control.
 
 Las dos métricas de Lena fueron la alcanzabilidad de los conductos y la cobertura de vectores. Ambas aparecen en su defensa.
 
@@ -3002,7 +3002,7 @@ Fallo cerrado; autenticación de la política; el esquema prohíbe cargas útile
 
 ### 45.3 Discrepancia
 
-Si un revisor discrepa, registre la discrepancia en el ADR aunque se le desautorice: los incidentes futuros necesitan ese rastro.
+Si un revisor discrepa de un diseño de conducto o de lista de permitidos, la discrepancia se registra en el ADR aunque se le desautorice: una futura revisión de incidentes en la planta necesita ese rastro.
 
 > **Caso sintético — Ashford Batch Plant.** Un PR de insignia de cobertura se bloqueó dos veces con esta lista de comprobación; la tercera revisión entregó la interfaz honesta (capítulo 35).
 
@@ -3014,11 +3014,11 @@ Las revisiones posteriores a la fusión son arqueología, no control. En ABP, un
 
 ### Nota práctica
 
-Los revisores ejecutan localmente las pruebas críticas sobre datos de prueba sintéticos antes de la reunión; no se limitan a leer el diff.
+Los revisores ejecutan las pruebas críticas del monitor sobre los datos de prueba sintéticos de la planta antes de la reunión; no se limitan a leer el diff.
 
 ### 45.1b Revisores externos y SLO
 
-Una vez por trimestre, invite a un ingeniero ajeno al equipo a revisar un PR crítico para la seguridad. Las revisiones se completan en un número acordado de días hábiles o el cambio caduca en la cola de fusión (no se fusiona automáticamente). Prohíba las fusiones del viernes por la tarde antes de las ventanas, salvo una corrección urgente de seguridad con evidencia del Laboratorio I. Los comentarios de bloqueo deben citar un identificador de requisito o un número de elemento de la lista de comprobación. Las omisiones repetidas de la lista por un mismo revisor desencadenan una conversación de orientación. El calendario forma parte del diseño de los controles.
+Una vez por periodo, un ingeniero de control ajeno al equipo del CNHP revisa un PR crítico para la seguridad. Las revisiones se completan en un número acordado de días hábiles o el cambio caduca en la cola de fusión (no se fusiona automáticamente). Prohíba las fusiones del viernes por la tarde antes de las ventanas, salvo una corrección urgente de seguridad con evidencia del Laboratorio I. Los comentarios de bloqueo deben citar un identificador de requisito o un número de elemento de la lista de comprobación. Las omisiones repetidas de la lista por un mismo revisor desencadenan una conversación de orientación. El calendario forma parte del diseño de los controles.
 
 La revisora externa de ABP procedía de una empresa de abastecimiento de agua.
 
@@ -3067,7 +3067,7 @@ La fecha de congelación de funcionalidades es real: después de ella, solo corr
 
 ### 46.2 Verificación
 
-El proyecto final debe superar el Laboratorio II (capítulo 40) sobre datos de prueba sintéticos, con una lista de comprobación firmada. Lena volvió a ejecutar el Laboratorio II para el compilador en una máquina limpia construida a partir de la etiqueta v1.0, usando solo datos de prueba sintéticos. La máquina limpia no tenía artefactos de compilación en caché, de modo que cada resultado procedía del código fuente etiquetado. La lista de comprobación la firmaron Lena y su revisor, y el informe enumeraba cada prueba omitida con su motivo. Lena guardó el registro de compilación de la máquina limpia junto a la etiqueta v1.0, y en él consta tanto la ejecución bloqueada del cargador de vectores como la ejecución satisfactoria.
+El proyecto final solo cuenta como verificado tras superar el Laboratorio II (capítulo 40) sobre datos de prueba sintéticos de la planta. Lena volvió a ejecutar el Laboratorio II para el compilador en una máquina limpia construida a partir de la etiqueta v1.0, usando solo datos de prueba sintéticos. La máquina limpia no tenía artefactos de compilación en caché, de modo que cada resultado procedía del código fuente etiquetado. La lista de comprobación la firmaron Lena y su revisor, y el informe enumeraba cada prueba omitida con su motivo. Lena guardó el registro de compilación de la máquina limpia junto a la etiqueta v1.0, y en él consta tanto la ejecución bloqueada del cargador de vectores como la ejecución satisfactoria.
 
 ### 46.3 Documentación
 
@@ -3099,7 +3099,7 @@ El proyecto de ese equipo era independiente del proyecto final de Lena, el compi
 
 ### 46.4 Errores y límites
 
-La magia de una demostración en un portátil, con el fallo cerrado despachado con vaguedades, no aprueba. En la revisión del proyecto final de Lena, la demostración de un compañero mostró una herramienta de políticas funcionando en un portátil, pero no pudo mostrar qué ocurría cuando faltaba el archivo de política. Los examinadores calificaron como no cumplido el requisito de fallo cerrado. La demostración de Lena borró la política en el banco y mostró la denegación con su código de motivo, y después la restauró, porque las afirmaciones sobre el fallo seguro deben demostrarse en situación de fallo, no describirse mientras todo funciona.
+Una demostración en un portátil que solo describe el fallo cerrado, sin retirar la política en el banco, no aprueba. En la revisión del proyecto final de Lena, la demostración de un compañero mostró una herramienta de políticas funcionando en un portátil, pero no pudo mostrar qué ocurría cuando faltaba el archivo de política. Los examinadores calificaron como no cumplido el requisito de fallo cerrado. La demostración de Lena borró la política en el banco y mostró la denegación con su código de motivo, y después la restauró, porque las afirmaciones sobre el fallo seguro deben demostrarse en situación de fallo, no describirse mientras todo funciona.
 
 ### Nota práctica
 
@@ -3160,7 +3160,7 @@ Tiempo hasta denegar todas las escrituras tras la pérdida de la política; tiem
 
 ### 47.3 Acciones correctivas
 
-Cada incumplimiento se convierte en un ticket con responsable y fecha límite, no solo en una diapositiva de lecciones aprendidas.
+Cada incumplimiento en un simulacro del CNHP se convierte en un ticket con responsable y fecha límite, no solo en una diapositiva de lecciones aprendidas.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -3209,7 +3209,7 @@ Celebre los tickets registrados: son el resultado. Un ensayo con cero tickets su
 
 ### 47.1b Corrección sin culpables y recurrencia
 
-Redacte los tickets correctivos contra componentes y runbooks, no contra personas que siguieron un mal procedimiento. Tras una corrección, repita la inyección que encontró la carencia. Cierre el ticket solo cuando la medida cumpla el SLO dos veces. Los observadores rotan para que nadie quede exento de forma permanente. Los observadores anotan tiempos y desviaciones; no arreglan nada en vivo. Sus tiempos se contrastan con los registros antes de fotografiar el marcador. Las fotos del marcador van al expediente. Los tickets de ABP siguen esta regla. No se culpó a nadie.
+Los tickets correctivos nombran el monitor, el conducto o el runbook defectuoso, no al operador que siguió un mal procedimiento. Tras una corrección, repita la inyección que encontró la carencia. Cierre el ticket solo cuando la medida cumpla el SLO dos veces. Los observadores rotan para que nadie quede exento de forma permanente. Un ticket que nombra a una persona en lugar de un componente vuelve a su autor para que lo reformule antes de aceptarlo. Los observadores anotan tiempos y desviaciones; no arreglan nada en vivo. Sus tiempos se contrastan con los registros antes de fotografiar el marcador. Las fotos del marcador van al expediente.
 
 ### Nota de campo: el olor de cero tickets
 
@@ -3260,7 +3260,7 @@ Clases: trabajo de la ventana (90 días), evidencia sellada (años acordados), m
 
 ### 48.3 Exclusiones
 
-Ninguna carga útil, ninguna credencial activa, ninguna genealogía de lotes de propiedad reservada. Si no puede compartirse con seguridad con los asesores jurídicos, no tiene cabida.
+Ninguna carga útil, ninguna credencial activa, ninguna genealogía de lotes de propiedad reservada. Un elemento que no podría mostrarse con seguridad a los asesores jurídicos de ABP queda fuera del expediente.
 
 > **Caso sintético — Ashford Batch Plant.** La v3 del expediente volvió a superar el recálculo de hashes tras un incidente de edición de findings.json; se incluyó una nota de proceso.
 
@@ -3276,9 +3276,9 @@ Automatice la compilación de los expedientes a partir de etiquetas. Arrastrar a
 
 ### 48.1b Lista de comprobación del lector y registro de ocultaciones
 
-Incluya al principio una página sobre cómo verificar este expediente. Al ocultar información, lleve un registro de ocultaciones (qué, por qué, quién) dentro del almacén sellado. Entregue el expediente a alguien ajeno al proyecto para un simulacro de recálculo de hashes. La generación del manifiesto hace fallar la compilación si alguna ruta coincide con una expresión regular de nombres prohibidos. Legibilidad para terceros: si alguien ajeno no encuentra el manifiesto o la versión del permiso de trabajo, el expediente no aprueba. Pruebe una vez por trimestre la restauración desde el expediente en una máquina limpia, como ejercicio calificado.
+Incluya al principio una página sobre cómo verificar este expediente. Cuando Lena oculta información de una captura o un diagrama, el registro de ocultaciones (qué, por qué, quién) queda dentro del almacén sellado. Alguien ajeno al CNHP recalcula los hashes del expediente como simulacro. La generación del manifiesto hace fallar la compilación si alguna ruta coincide con una expresión regular de nombres prohibidos, como la de archivos de proyecto de PLC o exportaciones de contraseñas. Legibilidad para terceros: si alguien ajeno no encuentra el manifiesto o la versión del permiso de trabajo, el expediente no aprueba. Una vez por periodo, la restauración del expediente del CNHP en una máquina limpia se realiza como ejercicio calificado.
 
-El expediente de Lena supera esta prueba cada trimestre.
+El expediente de Lena supera esta prueba cada periodo.
 
 ### Nota de campo: expediente automatizado
 
@@ -3394,7 +3394,7 @@ Usted podrá (1) presentar la afirmación y la evidencia en 20 minutos; (2) resp
 
 ### 50.1 Estructura de la exposición
 
-Afirmación; demostración sobre datos sintéticos; resultados de verificación; una lección del ensayo de fallos; límites; preguntas. Ninguna demostración de ataque a una planta en vivo. La defensa de Lena siguió este orden. Enunció su afirmación sobre el compilador, lo mostró con el modelo sintético de nueve conductos de ABP, presentó los resultados de equivalencia y de vectores y después expuso su reflexión sobre un fallo. Cerró con su diapositiva de limitaciones y una frase sobre lo que respalda la evidencia: reglas equivalentes al diseño en nueve de nueve conductos y tres errores que la revisión manual había pasado por alto. Nada en la exposición tocó un sistema en vivo, y cada cifra de sus diapositivas remitía a un artefacto del expediente.
+Afirmación; demostración sobre el modelo sintético de la planta; resultados de verificación; una lección del ensayo de fallos; límites; preguntas. Ninguna demostración de ataque a una planta en vivo. La defensa de Lena siguió este orden. Enunció su afirmación sobre el compilador, lo mostró con el modelo sintético de nueve conductos de ABP, presentó los resultados de equivalencia y de vectores y después expuso su reflexión sobre un fallo. Cerró con su diapositiva de limitaciones y una frase sobre lo que respalda la evidencia: reglas equivalentes al diseño en nueve de nueve conductos y tres errores que la revisión manual había pasado por alto. Nada en la exposición tocó un sistema en vivo, y cada cifra de sus diapositivas remitía a un artefacto del expediente.
 
 ### 50.2 Preguntas probables
 
@@ -3402,7 +3402,7 @@ Afirmación; demostración sobre datos sintéticos; resultados de verificación;
 
 ### 50.3 Reflexión
 
-Termine con un error de diseño y su corrección: los examinadores confían en los ingenieros que han visto sus propios fallos.
+Termine con un error de diseño en el monitor o en el compilador de políticas y su corrección: los examinadores confían en los ingenieros que han visto sus propios fallos.
 
 ```python
 # Lab 1 - tank hold-up after feed pump stop (Ashford Batch Plant, synthetic)
@@ -3437,11 +3437,11 @@ La defensa no es una presentación comercial para un proveedor de escáneres. La
 
 ### Nota práctica
 
-Veinte minutos significan ensayar con un cronómetro. Recortar la diapositiva de límites para ganar tiempo es el recorte equivocado: los examinadores necesitan su honestidad más que un cuarto clic de demostración.
+Veinte minutos significan ensayar con un cronómetro. Recortar la diapositiva de límites para que quepa otra demostración en el banco es el recorte equivocado: los examinadores necesitan su honestidad más que un cuarto clic de demostración.
 
 ### 50.1b Paquete para los examinadores y seguimiento posterior
 
-Entregue a los examinadores, con un día de antelación, la frase de la afirmación, el resumen del Laboratorio II, la medida del ensayo de fallos y el párrafo de ética. Después de la defensa, programe una revisión de mantenimiento a los noventa días: equipo responsable, versiones fijadas, tickets correctivos. Archive la presentación junto al expediente, con hashes coincidentes. Mantenga una lista de pendientes para las ideas de los examinadores y procésela en una semana. Agradezca a los operadores que ejecutaron los ensayos sintéticos; una defensa sin sus registros es una narración. El último capítulo de la titulación es el primero de la custodia.
+El paquete de los examinadores reúne la frase de la afirmación, el resumen del Laboratorio II del compilador, la medida del ensayo de fallos y el párrafo de ética, y se envía con un día de antelación. Después de la defensa, programe una revisión de mantenimiento a los noventa días: equipo responsable, versiones fijadas, tickets correctivos. Archive la presentación junto al expediente, con hashes coincidentes. Mantenga una lista de pendientes para las ideas de los examinadores y procésela en una semana. Agradezca a los operadores de ABP que ejecutaron los ensayos sintéticos; una defensa sin sus registros es una narración. El compilador y el monitor siguen en servicio en ABP cuando termina la titulación, así que la defensa también inicia el trabajo de mantenerlos.
 
 Lena envió su paquete con un día de antelación.
 
