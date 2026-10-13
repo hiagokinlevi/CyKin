@@ -704,7 +704,7 @@ You will (1) compute probabilities of independent events and expected counts; (2
 
 ### 12.1 Rare events at scale
 
-If an event has probability *p* per trial and there are *N* independent trials, the expected number of occurrences is *Np*, and the probability of at least one is 1 − (1 − *p*)^*N* ≈ *Np* when *Np* is small. This simple formula explains why cryptographers demand astronomically small failure probabilities. A 2^−20 failure rate sounds tiny, yet across 10^9 handshakes it predicts about 950 failures. ML-KEM is designed so that honest decapsulation fails with probability below about 2^−138 for ML-KEM-768 per FIPS 203's analysis, so failures are negligible at any realistic scale.
+If an event has probability *p* per trial and there are *N* independent trials, the expected number of occurrences is *Np*, and the probability of at least one is 1 − (1 − *p*)^*N* ≈ *Np* when *Np* is small. This simple formula explains why cryptographers demand astronomically small failure probabilities. A 2^−20 failure rate sounds tiny, yet across 10^9 handshakes it predicts about 950 failures. ML-KEM is designed so that honest decapsulation fails with probability of about 2^−139 for ML-KEM-512 and about 2^−165 for ML-KEM-768 per FIPS 203's analysis, so failures are negligible at any realistic scale.
 
 ### 12.2 Practical activity — Lab P
 

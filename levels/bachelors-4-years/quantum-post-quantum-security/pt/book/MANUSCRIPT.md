@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Fundamentos para Decisões Defensáveis
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções; os capítulos 11–40 (EX021–EX080) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 21–40 (EX041–EX080) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de segurança e computação em sentido amplo que precisam de fundamentos duradouros — matemática, sistemas, redes, conceitos criptográficos, evidências e ética — e, depois, de um primeiro estudo cuidadoso da ameaça quântica e da criptografia pós-quântica (PQC). Conhecimento de entrada: matemática do ensino médio, computação básica e comunicação escrita.
 - Relação com os livros vizinhos: o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta e constrói migrações; os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) as estudam empiricamente. **Este livro constrói os fundamentos e o hábito de comparar alternativas com hipóteses e evidências explícitas.**
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -33,8 +33,18 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 8. [Programação II](#ch-08)
 9. [Dados e bancos de dados](#ch-09)
 10. [Ética e prática autorizada](#ch-10)
+11. [Sistemas operacionais](#ch-11)
+12. [Probabilidade e estatística](#ch-12)
+13. [Identidade e acesso](#ch-13)
+14. [Fundamentos de privacidade](#ch-14)
+15. [Evidências e medição](#ch-15)
+16. [Arquitetura de segurança](#ch-16)
+17. [Conceitos de criptografia](#ch-17)
+18. [Métodos de pesquisa I](#ch-18)
+19. [Segurança quântica e pós-quântica: escopo e teoria](#ch-19)
+20. [Segurança quântica e pós-quântica: casos fundamentais](#ch-20)
 
-Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -679,7 +689,700 @@ A autorização, o tratamento dos dados dentro do escopo e a divulgação coorde
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 40
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever processos, isolamento de memória, permissões de arquivos e serviços do sistema; (2) explicar como os sistemas operacionais oferecem serviços criptográficos e armazenamento de chaves; (3) identificar as dependências no nível do sistema operacional que controlam uma migração; e (4) raciocinar sobre os canais de atualização e as suas assinaturas.
+
+### 11.1 Isolamento e privilégio
+
+Um sistema operacional isola os processos em espaços de endereçamento separados, impõe permissões de arquivos e concede privilégios a usuários e serviços. Chaves guardadas num arquivo que todos podem ler anulam tudo isso; chaves mantidas por um serviço privilegiado, ou por hardware como um TPM, só são alcançáveis por interfaces definidas. O menor privilégio — dar a cada componente apenas o acesso de que ele precisa — se aplica ao material criptográfico tanto quanto aos arquivos.
+
+O inventário da HCU registra, portanto, onde cada chave fica, além do algoritmo que ela usa.
+
+### 11.2 Provedores criptográficos
+
+As aplicações raramente implementam a criptografia elas mesmas. Elas chamam um *provedor*: os provedores do OpenSSL no Linux, o framework CNG no Windows, os repositórios de chaves da plataforma nos sistemas móveis. O provedor e a sua versão decidem quais algoritmos uma aplicação pode usar, então uma migração pós-quântica muitas vezes começa como uma atualização do sistema operacional ou de uma biblioteca. As políticas criptográficas de todo o sistema, em algumas distribuições Linux, definem os algoritmos permitidos num só lugar; isso é valioso para a agilidade, porque uma única mudança de política pode ativar um grupo híbrido em muitos serviços, e perigoso se for mudado sem testes.
+
+### 11.3 Atualizações e boot
+
+Os sistemas operacionais confiam em atualizações assinadas e, pelo boot seguro, em componentes de boot assinados. Hoje essas assinaturas usam tipicamente RSA ou ECDSA. Como os ataques de falsificação posterior visam âncoras de confiança de vida longa, os fornecedores estão planejando assinaturas pós-quânticas ou baseadas em hash para o firmware e as cadeias de boot; a [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) aprova os esquemas baseados em hash com estado LMS e XMSS, adequados à assinatura de firmware quando o signatário consegue gerenciar o estado com cuidado. Os dispositivos cuja ROM de boot só consegue verificar RSA não podem ser atualizados apenas por software.
+
+Esses dispositivos precisam de um plano de substituição.
+
+### 11.4 Exemplo resolvido
+
+Os servidores das agências da HCU rodam uma distribuição Linux cuja versão atual do OpenSSL suporta o grupo híbrido X25519MLKEM768 no TLS. A equipe descobre que o middleware bancário central traz a sua própria biblioteca TLS, mais antiga e ligada estaticamente, e ignora o provedor do sistema operacional. Atualizar o sistema operacional não muda nada para esse middleware; o fornecedor precisa entregar uma nova versão. A visão no nível do sistema operacional revelou uma dependência oculta que uma lista de verificação servidor a servidor teria deixado escapar.
+
+A equipe acrescenta ao inventário uma coluna que registra se cada aplicação usa a biblioteca do sistema ou a sua própria e pede a cada fornecedor um roteiro.
+
+### 11.5 Atividade prática
+
+Numa máquina virtual de laboratório que você controla, liste as bibliotecas criptográficas instaladas e as suas versões e encontre onde está configurada a política criptográfica do sistema (se houver). Registre quais aplicações ligam as suas próprias cópias.
+
+Procure aplicações que trazem a sua própria biblioteca TLS, como alguns bancos de dados, ambientes de execução de linguagens e agentes de fornecedores. As suas versões podem estar anos atrás da biblioteca do sistema. Faça isso apenas numa máquina que você controla e não mude a política criptográfica durante o exercício. O seu registro se torna uma pequena versão do inventário de dependências que a HCU constrói para os seus servidores, e as mesmas perguntas valem em escala.
+
+### 11.6 Erros comuns e limites
+
+- Supor que uma atualização do sistema operacional migra todas as aplicações.
+- Editar uma política criptográfica de todo o sistema diretamente na produção.
+- Deixar de lado as assinaturas da cadeia de boot e das atualizações.
+
+As aplicações que trazem as suas próprias bibliotecas não mudam quando o sistema operacional muda. As mudanças de política de todo o sistema podem quebrar serviços de maneiras difíceis de rastrear, então teste-as num laboratório e implante-as gradualmente. As assinaturas de boot e de atualização são fáceis de esquecer porque funcionam em silêncio, mas protegem o código mais confiável da máquina e muitas vezes têm os prazos de migração mais longos.
+
+### Exercícios
+
+- **EX021 — Dependência de provedor.** Explique por que uma aplicação que liga estaticamente a sua biblioteca TLS é um item de migração separado. Rubrica: 3 = consequências de dependência, de responsabilidade e de testes.
+- **EX022 — Cadeia de boot.** Por que as assinaturas baseadas em hash com estado são adequadas à assinatura de firmware, mas arriscadas para um servidor web? Rubrica: 3 = menciona o gerenciamento do estado, o volume de assinaturas e a recuperação.
+
+### Síntese
+
+Os sistemas operacionais fornecem os provedores criptográficos, o armazenamento de chaves e as cadeias de atualização assinadas de que as aplicações dependem. A migração, portanto, passa pelas camadas do sistema operacional e das bibliotecas — e por todo componente que as contorna.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 40
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular probabilidades de eventos independentes e contagens esperadas; (2) raciocinar sobre probabilidades de falha muito pequenas; (3) usar intervalos de confiança para taxas medidas; e (4) interpretar os números de falha de decifração dos esquemas pós-quânticos.
+
+### 12.1 Eventos raros em escala
+
+Se um evento tem probabilidade *p* por tentativa e há *N* tentativas independentes, o número esperado de ocorrências é *Np*, e a probabilidade de pelo menos uma é 1 − (1 − *p*)^*N* ≈ *Np* quando *Np* é pequeno. Essa fórmula simples explica por que os criptógrafos exigem probabilidades de falha astronomicamente pequenas. Uma taxa de falha de 2^−20 parece minúscula, mas em 10^9 handshakes ela prevê cerca de 950 falhas. O ML-KEM é projetado para que o desencapsulamento honesto falhe com probabilidade de cerca de 2^−139 no ML-KEM-512 e de cerca de 2^−165 no ML-KEM-768, segundo a análise da FIPS 203, então as falhas são desprezíveis em qualquer escala realista.
+
+### 12.2 Atividade prática — Laboratório P
+
+```python
+# Lab P (ch 12): how small must a failure probability be? Binomial reasoning for rare events.
+import math
+for p_exp in (-20, -40, -139):
+    p = 10.0 ** (p_exp * math.log10(2))       # p = 2^p_exp
+    for n_ops in (1e9, 1e15):
+        exp_fail = n_ops * p
+        print(f"p = 2^{p_exp:5d}, {n_ops:.0e} operations -> expected failures {exp_fail:.3e}")
+```
+
+Saída esperada:
+
+```text
+p = 2^  -20, 1e+09 operations -> expected failures 9.537e+02
+p = 2^  -20, 1e+15 operations -> expected failures 9.537e+08
+p = 2^  -40, 1e+09 operations -> expected failures 9.095e-04
+p = 2^  -40, 1e+15 operations -> expected failures 9.095e+02
+p = 2^ -139, 1e+09 operations -> expected failures 1.435e-33
+p = 2^ -139, 1e+15 operations -> expected failures 1.435e-27
+```
+
+Observe como cada mudança de 20 bits no expoente desloca a contagem esperada por um fator de cerca de um milhão.
+
+As linhas do meio mostram por que as probabilidades de falha nas normas são tão pequenas. Uma taxa que parece desprezível para um bilhão de operações pode produzir centenas de falhas em um milhão de bilhões, que os grandes serviços alcançam ao longo da sua vida. As últimas linhas mostram uma probabilidade tão pequena que não se esperam falhas em nenhuma escala realista. Quando um projeto cita uma taxa de falha, multiplique-a pelo número de operações que você espera antes de decidir se ela importa.
+
+### 12.3 Taxas medidas e intervalos
+
+Os dados operacionais dão contagens, não probabilidades. Se 3 de 5.000 conexões de teste falham, a estimativa pontual é 0,06%, mas a taxa verdadeira pode ser maior. Um intervalo de confiança de 95% — por exemplo, o intervalo de Wilson usado no Capítulo 29 — expressa essa incerteza. Com amostras pequenas, o limite superior é o que importa para uma decisão de seguir ou não: "estamos razoavelmente confiantes de que a taxa de falha está abaixo de *u*" é a afirmação defensável.
+
+Relate o intervalo junto com a contagem e o tamanho da amostra, para que o leitor possa julgá-lo.
+
+### 12.4 Taxas de base
+
+A probabilidade também protege contra alarmes enganosos. Se um detector sinaliza os handshakes que "parecem tentativas de rebaixamento" com 99% de sensibilidade e 1% de falsos positivos, mas as tentativas reais de rebaixamento ocorrem em um handshake por milhão, então quase todos os alertas são falsos. Pergunte sempre pela taxa de base antes de interpretar uma contagem de alertas.
+
+Neste exemplo, um milhão de handshakes daria cerca de dez mil alertas falsos e aproximadamente um verdadeiro. Uma equipe que recebesse esse fluxo aprenderia a ignorar o alerta, o que anula o seu propósito. Detectores melhores, ou a aplicação da regra apenas onde os rebaixamentos são mais prováveis, aumentam a parcela de alertas verdadeiros. A HCU pede esses números antes de adotar qualquer nova regra de detecção.
+
+### 12.5 Exemplo resolvido
+
+O aplicativo móvel da HCU realiza 2 × 10^8 estabelecimentos de chave por ano. Se um esquema hipotético falhasse com probabilidade 2^−40, as falhas esperadas seriam 2 × 10^8 × 9,1 × 10^−13 ≈ 1,8 × 10^−4 por ano — desprezíveis. Se um bug de implementação elevasse a taxa para 1 em 10^5, a contagem esperada seria de 2.000 por ano, visível nos chamados de suporte. As taxas de falha medidas testam, portanto, a implementação, e não a matemática.
+
+Pediu-se à equipe de suporte da HCU que observasse esse padrão durante o piloto híbrido. Um aumento repentino dos erros de conexão após a atualização de uma biblioteca apontaria para o código, já que a própria taxa de falha do esquema não consegue produzir esses números.
+
+### 12.6 Erros comuns e limites
+
+- Ler a estimativa pontual de uma amostra pequena como a taxa verdadeira.
+- Ignorar as taxas de base ao interpretar alertas.
+- Supor independência onde as falhas são correlacionadas (um middlebox ruim afeta todas as conexões que passam por ele).
+
+Amostras pequenas podem produzir uma estimativa pontual muito distante da taxa verdadeira, sobretudo para eventos raros; relate o intervalo. As taxas de base decidem se um alerta provavelmente é real. As falhas correlacionadas, como muitas conexões passando por um único dispositivo defeituoso, quebram a independência que os modelos simples supõem, então as falhas se agrupam e as médias enganam. Verifique onde as falhas ocorrem antes de tratá-las como independentes.
+
+### Exercícios
+
+- **EX023 — Falhas esperadas.** Com *p* = 2^−30 e 10^12 operações, calcule o número esperado de falhas. Rubrica: 3 = ≈ 931, com o método mostrado.
+- **EX024 — Taxa de base.** Para o detector de rebaixamento de 12.4, estime a fração de alertas verdadeiros entre 10^8 handshakes. Rubrica: 3 = cerca de 100 verdadeiros em cerca de 10^6 alertas (≈ 0,01%), com o método mostrado.
+
+### Síntese
+
+Contagens esperadas, limites de confiança e taxas de base transformam probabilidades minúsculas e dados operacionais ruidosos em decisões defensáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 40
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir identificação, autenticação e autorização; (2) explicar como os certificados e a infraestrutura de chaves públicas (PKI) ligam identidades a chaves; (3) identificar os elementos vulneráveis à computação quântica nos fluxos de autenticação comuns; e (4) planejar onde as assinaturas pós-quânticas serão necessárias primeiro.
+
+### 13.1 Três etapas
+
+A *identificação* alega uma identidade; a *autenticação* a prova; a *autorização* decide o que a parte autenticada pode fazer. Senhas, códigos de uso único e passkeys autenticam usuários; certificados e assinaturas autenticam máquinas e software. A autorização é geralmente uma contabilidade simétrica — listas de controle de acesso e papéis — e não é ameaçada diretamente pelos computadores quânticos. A autenticação baseada em assinaturas de chave pública é.
+
+Manter as três etapas separadas ajuda uma equipe de migração a manter o foco. As tabelas de papéis e as listas de acesso da HCU não precisam de mudança por motivos quânticos. Todo lugar onde uma assinatura ou um login por chave pública prova a identidade precisa, e esses lugares estão espalhados por celulares, servidores, a autoridade certificadora e as versões de software. Listá-los por etapa torna o escopo do trabalho mais claro.
+
+### 13.2 A PKI em resumo
+
+Um certificado é uma declaração assinada por uma autoridade certificadora (AC): "esta chave pública pertence a este nome, válida até esta data". Os verificadores confiam num pequeno conjunto de ACs raiz e seguem as cadeias até elas. Se um adversário consegue calcular a chave privada de uma AC a partir da sua chave pública — como o algoritmo de Shor permitiria para o RSA e o ECDSA —, ele pode emitir certificados para qualquer nome. Como as chaves raiz têm vida longa e estão amplamente embutidas, a PKI é o alvo arquetípico da falsificação posterior. As normas de assinatura pós-quântica oferecem substitutos: o ML-DSA, na [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204), para uso geral, e o SLH-DSA, na [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205), como opção conservadora baseada em hash.
+
+### 13.3 Fluxos de autenticação
+
+As passkeys e os autenticadores FIDO usam assinaturas de chave pública (muitas vezes ECDSA) dentro de um elemento seguro. Os tokens de login único são assinados com RSA ou ECDSA. Os certificados de assinatura de código protegem as atualizações de software. Cada fluxo tem um caminho de migração diferente: os tokens de vida curta podem mudar rapidamente quando as bibliotecas suportarem o ML-DSA; os autenticadores de hardware precisam de dispositivos novos; as ACs raiz precisam de um longo planejamento, porque as partes confiantes precisam primeiro confiar nas novas raízes.
+
+A HCU agrupa os seus fluxos pelo caminho de que cada um precisa. Os tokens de vida curta vêm primeiro; a AC, por último.
+
+### 13.4 Exemplo resolvido
+
+A HCU lista os seus usos de autenticação: as passkeys dos associados (ECDSA no hardware do celular), os tokens de SSO dos funcionários (RSA-2048, vida de 10 minutos), a AC interna (raiz RSA-4096, validade de 20 anos), a assinatura de código do aplicativo móvel (ECDSA, controlada pela plataforma). O risco de falsificação posterior é maior para a raiz de vida longa e para a assinatura de código, em que uma assinatura falsificada permitiria a um adversário distribuir software malicioso. Os tokens de SSO de vida curta têm prioridade menor: falsificar um exige um computador quântico no momento do ataque, e a chave pode ser trocada rapidamente assim que existir um.
+
+A lista também mostra quem controla cada mudança. A HCU pode mudar os seus próprios tokens e a sua AC; para as passkeys e a assinatura de código, depende dos fabricantes de celulares e das plataformas de aplicativos.
+
+### 13.5 Atividade prática
+
+Desenhe a hierarquia de certificados da HCU: raiz, duas intermediárias, folhas de servidor e de cliente. Anote em cada uma o algoritmo, a validade e quem precisa confiar nela. Marque quais mudanças exigem que as partes confiantes atualizem os seus repositórios de confiança.
+
+As partes confiantes incluem os celulares dos associados, os servidores das agências, os caixas eletrônicos e os bancos parceiros, cada um com uma forma diferente de atualizar a confiança. Alguns podem receber uma nova raiz numa atualização de rotina; outros, como os caixas eletrônicos, podem precisar da visita de um fornecedor. Marque esses com cuidado, porque eles ditam o ritmo de toda a migração dos certificados. Compare o seu diagrama com o de um colega e confira se os dois puseram os mesmos períodos de validade nos mesmos certificados.
+
+### 13.6 Erros comuns e limites
+
+- Tratar as listas de autorização como vulneráveis à computação quântica.
+- Planejar migrar os certificados folha antes que as partes confiantes confiem numa raiz pós-quântica.
+- Esquecer os autenticadores de hardware que não podem ser atualizados.
+
+As listas de acesso e as tabelas de papéis não usam matemática de chave pública, então os computadores quânticos não as ameaçam. Emitir certificados folha pós-quânticos antes que as partes confiantes confiem numa raiz correspondente faz as conexões falharem. Os autenticadores de hardware com algoritmos fixos só podem ser substituídos, o que exige orçamento e anos. Um plano que os ignora parecerá completo no papel e travará na prática, quando se descobrir que os dispositivos estão nos bolsos dos associados.
+
+### Exercícios
+
+- **EX025 — Classificar.** Para senhas, passkeys, tokens de SSO e uma AC raiz interna, declare se um computador quântico ameaça o mecanismo e por quê. Rubrica: 3 = quatro entradas corretas e fundamentadas.
+- **EX026 — Ordem do trabalho.** Explique por que uma raiz pós-quântica precisa ser distribuída às partes confiantes antes que os certificados folha pós-quânticos sejam úteis. Rubrica: 3 = lógica de validação da cadeia enunciada.
+
+### Síntese
+
+Os computadores quânticos ameaçam a autenticação de chave pública, e não a lógica de autorização. As raízes da PKI e a assinatura de código são os alvos de vida longa; os tokens de vida curta podem vir depois.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 40
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) enunciar princípios centrais de privacidade, como a limitação da finalidade e a minimização; (2) relacionar o dano à privacidade com o tempo de confidencialidade; (3) explicar por que o "colete agora, decifre depois" é um problema de privacidade; e (4) projetar uma medição que minimize os dados para o trabalho de migração.
+
+### 14.1 Princípios
+
+A legislação e a prática de privacidade compartilham princípios comuns: coletar dados pessoais para uma finalidade declarada, coletar apenas o necessário (*minimização*), guardá-los apenas pelo tempo necessário (*limitação do armazenamento*), protegê-los adequadamente e ser transparente. Esses princípios dizem respeito às pessoas, e não aos sistemas; um dano à privacidade é um dano a um associado cujos dados são expostos, mesmo que a organização não sofra perda alguma.
+
+Numa migração quântica, esses princípios moldam duas coisas: quais dados mais precisam de proteção e como o próprio trabalho de migração trata as informações pessoais encontradas pelo caminho.
+
+### 14.2 Tempo de vida do dano
+
+Alguns dados pessoais deixam de importar rapidamente; outros continuam sensíveis por toda a vida — condições de saúde, dificuldades financeiras, documentos de identidade. O "colete agora, decifre depois" transforma a sensibilidade de vida longa em risco presente: o tráfego gravado hoje pode revelar amanhã o que um associado contou em confiança décadas antes. Para a privacidade, o *x* relevante na desigualdade de Mosca é o tempo de vida do dano à pessoa, que pode exceder o período de retenção da organização. Apagar um registro do banco de dados da HCU não apaga uma cópia que um adversário gravou em trânsito.
+
+### 14.3 A minimização como controle quântico
+
+A proteção mais barata para os dados é não enviá-los. Reduzir o que atravessa as redes — tokenizar números de conta, manter os campos sensíveis no data center e enviar apenas resultados derivados — diminui a exposição ao HNDL, qualquer que seja o algoritmo. A minimização também se aplica à própria medição da migração: um inventário precisa de nomes de algoritmos e identificadores de hosts, e não do conteúdo das mensagens.
+
+A primeira revisão do tráfego das agências da HCU encontrou nomes de associados viajando junto com transações que precisavam apenas de um token de conta. Substituir os nomes por tokens reduziu a exposição de imediato, antes que qualquer algoritmo mudasse.
+
+### 14.4 Exemplo resolvido
+
+O fluxo de pedidos de empréstimo da HCU envia os perfis completos dos solicitantes das agências para a sede, incluindo anotações médicas nos casos de dificuldade financeira. Uma revisão de privacidade descobre que os analistas de crédito da sede precisam apenas de um indicador de dificuldade e de um valor. Mudar o formulário para que as anotações médicas fiquem no processo da agência reduz tanto a pegada de privacidade quanto os dados expostos à decifração futura, antes que qualquer algoritmo pós-quântico seja implantado. A troca de chaves híbrida na VPN das agências é então agendada para os fluxos restantes.
+
+### 14.5 Atividade prática
+
+Para três fluxos de dados sintéticos da HCU, liste os campos de dados pessoais, a finalidade e quais campos poderiam ser removidos, tokenizados ou agregados antes da transmissão.
+
+Os candidatos típicos são nomes completos enviados onde um identificador bastaria, datas de nascimento enviadas para verificações que só precisam de uma faixa etária e números de conta enviados onde um token funciona. Para cada campo que você remover, diga quem perceberia e se algum processo quebra. Depois, estime quanto a mudança reduz os dados de vida longa que atravessam a rede, que é a exposição da qual o "colete agora, decifre depois" depende.
+
+### 14.6 Erros comuns e limites
+
+- Igualar o período de retenção ao tempo de vida do dano.
+- Coletar capturas completas de pacotes para um inventário.
+- Tratar a PQC como substituta da minimização, e não como complemento.
+
+O dano da divulgação pode durar muito mais do que o registro é guardado: um arquivo de financiamento imobiliário apagado que foi gravado em trânsito ainda pode ser decifrado depois. As capturas completas coletam dados pessoais de que o inventário nunca precisou e criam um novo repositório a proteger. Os algoritmos pós-quânticos protegem o que é enviado; a minimização reduz o que é enviado. Os dois funcionam juntos, e nenhum substitui o outro.
+
+### Exercícios
+
+- **EX027 — Tempo de vida do dano.** Dê dois tipos de dados cujo dano à privacidade dure mais do que o período de retenção da HCU e explique a consequência para o HNDL. Rubrica: 3 = dois exemplos, com raciocínio ligado ao tráfego gravado.
+- **EX028 — Minimize o inventário.** Especifique os campos mínimos de que um inventário TLS passivo precisa e dois campos que ele não deve coletar. Rubrica: 3 = listas justificadas.
+
+### Síntese
+
+O dano à privacidade pode durar mais do que qualquer cronograma de retenção, o que faz do "colete agora, decifre depois" uma questão de privacidade. A minimização reduz a exposição sob qualquer algoritmo e deve preceder e acompanhar a PQC.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 40
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir validade, confiabilidade e cobertura para as medições de segurança; (2) escolher indicadores de prontidão criptográfica; (3) registrar a proveniência de cada observação; e (4) apresentar as medições com os seus pontos cegos.
+
+### 15.1 O que torna uma medição útil
+
+Uma medição é *válida* se mede o que afirma medir, *confiável* se dá o mesmo resultado quando repetida, e tem *cobertura* conhecida se sabemos que parcela da população ela observa. A "porcentagem de conexões TLS que usam troca de chaves híbrida" é válida se contada a partir das mensagens ServerHello, confiável se o sensor for estável, e a sua cobertura é a parcela do tráfego que passa pelo sensor. Sem a cobertura, um número de 90% pode descrever apenas o décimo fácil do parque.
+
+A cobertura é a propriedade que mais falta nos painéis de segurança.
+
+### 15.2 Indicadores de prontidão
+
+Indicadores úteis para uma migração quântica incluem: a parcela de ativos com um inventário criptográfico conhecido; a parcela de fluxos de dados de vida longa protegidos por troca de chaves híbrida; a parcela de certificados emitidos por ACs capazes de emitir certificados pós-quânticos; o número de fornecedores com um roteiro de PQC publicado; e o tempo médio para mudar um algoritmo por configuração. Cada indicador deve ter um responsável, uma fonte e uma frequência de atualização.
+
+A HCU começou com três desses e acrescentou os outros quando os responsáveis foram acordados. Cada um tem uma fonte.
+
+### 15.3 Proveniência
+
+Registre para cada observação: o que foi observado, por qual método (rede passiva, configuração, varredura de código, declaração do fornecedor), quando e por quem. Os métodos diferem em confiança: um handshake observado é uma evidência mais forte do que a ficha técnica de um fornecedor. No TLS 1.3, um sensor passivo vê o grupo selecionado, mas não o certificado do servidor, que é cifrado, então os algoritmos dos certificados precisam vir de evidências dos endpoints ou da configuração. Misturar métodos sem rótulos faz os painéis parecerem mais certos do que são.
+
+O inventário da HCU tem uma coluna para o método e outra para a data, e os painéis mostram as duas.
+
+### 15.4 Exemplo resolvido
+
+O primeiro painel da HCU relata "92% das conexões híbridas". Ao inspecioná-lo, descobre-se que o único sensor fica diante do novo gateway web, que já usa o X25519MLKEM768; as VPNs das agências e a rede de caixas eletrônicos são invisíveis para ele. O painel corrigido mostra "tráfego web: 92% híbrido (cobertura do sensor: 100% do gateway web); VPN: 0% (evidência de configuração, 40/40 agências); caixas eletrônicos: desconhecido (sem sensor)". O número de destaque caiu, e a qualidade das decisões subiu.
+
+A correção não mudou nenhum sistema, apenas o que o painel afirmava. Os gestores passaram a ver onde restava trabalho e onde a equipe simplesmente não tinha visibilidade. A linha dos caixas eletrônicos levou a um pedido ao fornecedor dos caixas eletrônicos por evidências de configuração, já que acrescentar um sensor de rede ali não era possível.
+
+### 15.5 Atividade prática
+
+Projete três indicadores de prontidão para a HCU. Para cada um, dê a definição, a fonte, a cobertura, o responsável e a frequência de atualização, e nomeie uma forma como ele poderia enganar.
+
+Uma boa definição diz exatamente o que é contado e o que não é. A cobertura deve declarar que parte do parque a fonte consegue ver. Um responsável é uma pessoa ou um papel que vai perceber quando o número parecer errado. A forma como um indicador poderia enganar é muitas vezes a sua linha mais útil: por exemplo, uma contagem de fornecedores com roteiros não diz nada sobre se os roteiros são realistas ou têm datas.
+
+### 15.6 Erros comuns e limites
+
+- Relatar uma porcentagem sem o seu denominador e a sua cobertura.
+- Tratar as alegações dos fornecedores como observações.
+- Contar conexões quando a decisão diz respeito a ativos ou classes de dados.
+
+Uma porcentagem sem a sua base pode esconder uma amostra minúscula ou enviesada. As declarações dos fornecedores são úteis, mas não testadas; rotule-as como alegações até que alguém observe o comportamento. Contar conexões favorece os sistemas movimentados, enquanto as decisões de migração geralmente dizem respeito a quais ativos ou classes de dados estão protegidos. Um único serviço web movimentado pode fazer o número parecer bom enquanto um enlace de arquivo, pouco movimentado mas sensível, continua clássico. Escolha a unidade que corresponde à decisão.
+
+### Exercícios
+
+- **EX029 — Cobertura.** Reescreva "95% dos nossos certificados estão prontos para PQC" de modo que declare o método, a cobertura e o denominador. Rubrica: 3 = os três presentes e plausíveis.
+- **EX030 — Projeto de indicador.** Proponha um indicador para "capacidade de mudar algoritmos rapidamente" e explique como medi-lo. Rubrica: 3 = definição, método de medição, limitação.
+
+### Síntese
+
+Medições válidas e confiáveis, com cobertura e proveniência declaradas, permitem que os tomadores de decisão vejam tanto o progresso quanto os pontos cegos.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — capítulo 15 de 40
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever fronteiras de confiança, zonas e defesa em profundidade; (2) desenhar um diagrama de fluxo de dados que mostre as proteções criptográficas; (3) explicar a agilidade criptográfica como uma propriedade da arquitetura; e (4) identificar as fronteiras de confiança de vida longa que atravessam o tempo.
+
+### 16.1 Fronteiras e zonas
+
+Uma *fronteira de confiança* separa componentes com níveis de confiança diferentes — a internet e a camada web da HCU, a camada web e a zona bancária central, uma agência e o data center. Os dados que atravessam uma fronteira precisam de uma proteção adequada à sua sensibilidade: cifração, autenticação, validação. A *defesa em profundidade* sobrepõe controles independentes, para que uma falha não exponha tudo.
+
+Para a migração quântica, as fronteiras que mais importam são aquelas em que dados de vida longa saem de uma zona protegida por uma rede que outra pessoa poderia gravar.
+
+### 16.2 Diagramas de fluxo de dados
+
+Um diagrama de fluxo de dados mostra entidades externas, processos, repositórios de dados e os fluxos entre eles, com as fronteiras de confiança desenhadas como linhas tracejadas. Anotar cada fluxo com o protocolo, o algoritmo de troca de chaves, o algoritmo de autenticação e o tempo de vida dos dados transforma o diagrama num mapa de exposição quântica: qualquer fluxo que atravessa uma fronteira não confiável com dados de vida longa e troca de chaves clássica é candidato ao "colete agora, decifre depois".
+
+O primeiro diagrama da HCU levou uma semana para ser anotado, sobretudo porque ninguém sabia qual algoritmo vários fluxos usavam. Essas lacunas foram tão úteis quanto as respostas: cada uma virou uma pergunta para um responsável ou um fornecedor. Desenhar o diagrama antes de escolher qualquer algoritmo novo fez o plano partir do que os sistemas realmente fazem.
+
+### 16.3 Agilidade criptográfica
+
+A *agilidade criptográfica* é a capacidade de trocar algoritmos criptográficos com esforço e risco limitados. Na arquitetura, ela significa política centralizada, identificadores de algoritmo que viajam com os dados, bibliotecas que suportam vários algoritmos e interfaces que toleram chaves e assinaturas maiores. O [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) do NIST discute as considerações sobre a agilidade criptográfica. Uma arquitetura sem agilidade trata a migração PQC como uma reconstrução única; uma arquitetura ágil a trata como a primeira de várias mudanças planejadas.
+
+Para a HCU, a agilidade é testada perguntando quanto tempo levaria para trocar um algoritmo na VPN das agências.
+
+### 16.4 Fronteiras no tempo
+
+Algumas fronteiras não são atravessadas no espaço, mas no tempo. Um financiamento imobiliário assinado hoje será verificado por um tribunal ou um comprador anos depois; um arquivo cifrado hoje será decifrado durante uma auditoria futura. A arquitetura deve mostrar os serviços de longo prazo — carimbo de tempo, recifração de arquivos, renovação de evidências — como componentes cuja própria criptografia precisa ser migrada.
+
+O arquivo de financiamentos imobiliários da HCU é o caso mais claro: a sua cifração e as suas assinaturas precisam continuar funcionando, e seguras, décadas depois da criação dos documentos. Cada uma precisa de um responsável.
+
+### 16.5 Exemplo resolvido
+
+O diagrama da HCU mostra aplicativo móvel → gateway web (fronteira com a internet, TLS híbrido), gateway web → sistema bancário central (interno, TLS clássico), sistema bancário central → arquivo (interno, AES-256 em repouso, chaves envelopadas com RSA-OAEP), agência → data center (fronteira da WAN, IPsec ECDH). A anotação revela duas prioridades: a WAN das agências, pelo HNDL, e as chaves do arquivo envelopadas com RSA, que ficam expostas se as chaves envelopadas forem algum dia copiadas para fora do local.
+
+O enlace TLS interno entre o gateway e o sistema bancário central é clássico, mas fica dentro do data center, o que reduz a sua prioridade. O diagrama tornou essas escolhas visíveis numa só página, e o escritório de segurança da HCU o usou para acordar o plano de migração do primeiro ano.
+
+### 16.6 Erros comuns e limites
+
+- Desenhar diagramas sem algoritmos e tempos de vida.
+- Considerar apenas as fronteiras de rede, e não as fronteiras no tempo.
+- Fixar as escolhas de algoritmo no código da aplicação.
+
+Um diagrama sem algoritmos e tempos de vida não consegue mostrar a exposição quântica, por mais organizado que pareça. As fronteiras no tempo são fáceis de deixar passar porque não aparecem nos mapas de rede; os arquivos, os carimbos de tempo e os registros assinados as atravessam em silêncio. As escolhas de algoritmo fixadas no código da aplicação transformam cada mudança futura num projeto de software, o oposto da agilidade criptográfica. Registre cada escolha na configuração ou na política, para que possa ser encontrada e mudada depois.
+
+### Exercícios
+
+- **EX031 — Mapa de exposição.** Para o diagrama da HCU em 16.5, ordene os quatro fluxos pela prioridade de HNDL e justifique a ordem. Rubrica: 3 = ordem coerente com a fronteira, o tempo de vida e o algoritmo.
+- **EX032 — Recursos de agilidade.** Liste três recursos de arquitetura que permitiriam à HCU trocar o ML-KEM-768 por outro KEM, se necessário. Rubrica: 3 = três recursos concretos e distintos.
+
+### Síntese
+
+As fronteiras de confiança, os fluxos de dados anotados e a agilidade criptográfica permitem que os arquitetos localizem a exposição quântica e projetem para trocas repetidas de algoritmo, inclusive nas fronteiras atravessadas no tempo.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — capítulo 16 de 40
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir cifração simétrica, funções de hash, MACs, troca de chaves, KEMs e assinaturas; (2) explicar os níveis de segurança e as categorias pós-quânticas do NIST; (3) construir e quebrar uma assinatura de uso único de Lamport; e (4) nomear as três normas pós-quânticas finais do NIST.
+
+### 17.1 A caixa de ferramentas
+
+A *cifração simétrica* (AES) usa uma única chave compartilhada; as *funções de hash* (SHA-2, SHA-3) comprimem os dados numa impressão digital; os *MACs* (HMAC) provam a integridade com uma chave compartilhada; a *troca de chaves* (Diffie–Hellman) permite que duas partes derivem um segredo compartilhado por um canal público; um *mecanismo de encapsulamento de chaves* (KEM) permite que uma parte encapsule um segredo novo para a chave pública da outra; as *assinaturas* permitem que qualquer um verifique que o detentor de uma chave privada aprovou uma mensagem. Os computadores quânticos ameaçam a troca de chaves, a cifração de chave pública e as assinaturas baseadas em fatoração e logaritmos discretos; as primitivas simétricas e os hashes precisam, no máximo, de parâmetros maiores.
+
+### 17.2 As normas do NIST
+
+Em agosto de 2024, o NIST publicou três normas pós-quânticas: a [FIPS 203](https://doi.org/10.6028/NIST.FIPS.203), ML-KEM, um KEM baseado em reticulados com os conjuntos de parâmetros ML-KEM-512, -768 e -1024; a [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204), ML-DSA, uma assinatura baseada em reticulados; e a [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205), SLH-DSA, uma assinatura baseada em hash sem estado. Antes disso, a [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) havia aprovado as assinaturas baseadas em hash com estado LMS e XMSS. O NIST define as *categorias* de segurança 1–5 por comparação com a quebra do AES-128, do SHA-256, do AES-192, do SHA-384 e do AES-256; o ML-KEM-768 visa a categoria 3.
+
+Para a HCU, os conjuntos de parâmetros da categoria três são o ponto de partida comum, já que oferecem uma margem confortável com tamanho moderado.
+
+### 17.3 Atividade prática — Laboratório L
+
+O esquema de Lamport assina uma mensagem revelando, para cada bit do seu hash, um de dois valores secretos cujos hashes formam a chave pública.
+
+```python
+# Lab L (ch 17): Lamport one-time signatures from SHA-256 - the idea under SLH-DSA, LMS and XMSS.
+import hashlib, secrets
+H = lambda b: hashlib.sha256(b).digest()
+def keygen(bits=256):
+    sk = [(secrets.token_bytes(32), secrets.token_bytes(32)) for _ in range(bits)]
+    pk = [(H(a), H(b)) for a, b in sk]
+    return sk, pk
+def bits_of(msg):
+    d = int.from_bytes(H(msg), "big"); return [(d >> (255 - i)) & 1 for i in range(256)]
+def sign(sk, msg): return [sk[i][b] for i, b in enumerate(bits_of(msg))]
+def verify(pk, msg, sig): return all(H(s) == pk[i][b] for i, (s, b) in enumerate(zip(sig, bits_of(msg))))
+sk, pk = keygen()
+s1 = sign(sk, b"firmware v1.0")
+print("valid signature verifies:", verify(pk, b"firmware v1.0", s1))
+print("tampered message rejected:", not verify(pk, b"firmware v1.1", s1))
+s2 = sign(sk, b"firmware v1.1")          # KEY REUSE: never do this
+revealed = sum(1 for i in range(256) if bits_of(b"firmware v1.0")[i] != bits_of(b"firmware v1.1")[i])
+print(f"after one reuse, both secrets revealed at {revealed}/256 positions -> forging needs ~2^{256 - revealed} hashes, not 2^256")
+print("signature size:", 256 * 32, "bytes; public key:", 2 * 256 * 32, "bytes")
+```
+
+Saída esperada:
+
+```text
+valid signature verifies: True
+tampered message rejected: True
+after one reuse, both secrets revealed at 118/256 positions -> forging needs ~2^138 hashes, not 2^256
+signature size: 8192 bytes; public key: 16384 bytes
+```
+
+A segurança se apoia apenas na função de hash, e é por isso que as assinaturas baseadas em hash são consideradas conservadoras. A reutilização é fatal: duas assinaturas revelam os dois segredos em muitas posições. O SLH-DSA constrói árvores de assinaturas de uso único e de poucos usos, para que uma única chave possa assinar muitas mensagens sem estado; o LMS e o XMSS o fazem com um estado que o signatário nunca pode repetir.
+
+### 17.4 Exemplo resolvido
+
+O arquiteto da HCU pergunta qual primitiva atende a cada necessidade: a cifração do arquivo (AES-256, manter), o transporte de chaves para o arquivo (KEM: ML-KEM-768 num híbrido), a assinatura dos extratos (ML-DSA-65 quando houver suporte, ou híbrido com ECDSA durante a transição), a assinatura do firmware dos caixas eletrônicos (LMS pela SP 800-208 ou SLH-DSA, porque o volume de assinaturas é baixo e o conservadorismo é valorizado).
+
+Cada escolha decorre da necessidade, e não do algoritmo mais novo. A cifração simétrica fica porque a busca de Grover deixa o AES-256 forte. O transporte de chaves precisa de um KEM. As assinaturas precisam ser verificáveis enquanto a declaração assinada importar. A assinatura de firmware favorece os esquemas baseados em hash porque a sua segurança se apoia apenas nas funções de hash, e o baixo volume de assinaturas torna prático o gerenciamento do estado.
+
+### 17.5 Erros comuns e limites
+
+- Chamar o ML-KEM de "cifração"; ele é um KEM que produz um segredo compartilhado.
+- Reutilizar chaves de assinatura de uso único ou com estado.
+- Tratar o laboratório de Lamport de brinquedo como código utilizável.
+
+Um KEM dá aos dois lados um segredo compartilhado; os próprios dados são então cifrados com um algoritmo simétrico. As chaves de assinatura com estado nunca podem assinar duas vezes com a mesma chave de uso único, o que significa que o signatário precisa acompanhar o estado de forma confiável, inclusive entre backups e falhas. O esquema de Lamport do laboratório existe para mostrar a ideia das assinaturas baseadas em hash; ele é inseguro na prática e nunca deve ser usado fora da sala de aula.
+
+### Exercícios
+
+- **EX033 — Escolha a primitiva.** Para o armazenamento de senhas, a integridade das mensagens entre dois servidores da HCU, o acordo de chave de sessão e a aprovação de documentos, nomeie a primitiva e um algoritmo padronizado. Rubrica: 3 = quatro escolhas corretas.
+- **EX034 — Reutilização.** Usando a saída do Laboratório L, explique por que a segunda assinatura de Lamport permite a falsificação. Rubrica: 3 = os dois segredos em muitas posições, combinados para assinar novas mensagens.
+
+### Síntese
+
+Os computadores quânticos quebram a troca de chaves e as assinaturas de chave pública baseadas em fatoração e logaritmos discretos. As FIPS 203, 204 e 205 e a SP 800-208 do NIST fornecem os substitutos; as primitivas simétricas e de hash permanecem, com tamanhos adequados.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — capítulo 17 de 40
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta pesquisável; (2) escolher entre revisão de literatura, medição, experimento e estudo de caso; (3) projetar um estudo de medição simples com população e amostra declaradas; e (4) identificar as ameaças à validade.
+
+### 18.1 Perguntas
+
+Uma boa pergunta de pesquisa é específica, respondível com as evidências disponíveis e relevante para uma decisão. "A PQC é boa?" não é pesquisável. "Que parcela dos fluxos entre as agências da HCU e o data center leva dados com um tempo de confidencialidade acima de 15 anos?" é. As perguntas nesta área costumam ter as formas *quanto* (medição), *o que acontece se* (experimento), *como foi* (estudo de caso) ou *o que se sabe* (revisão de literatura).
+
+O escritório de segurança da HCU pede à equipe de estudantes perguntas do segundo tipo, porque cada resposta muda uma prioridade da migração ou uma linha do orçamento.
+
+### 18.2 Métodos
+
+Uma *revisão de literatura* resume sistematicamente as fontes primárias, registrando os termos de busca e as regras de inclusão. Um *estudo de medição* conta propriedades de uma população, como os grupos TLS oferecidos por um conjunto de servidores. Um *experimento* muda um fator e observa o efeito, como a latência do handshake com e sem um grupo híbrido num laboratório. Um *estudo de caso* examina uma migração em profundidade. Cada método responde a perguntas diferentes; combiná-los fortalece as conclusões.
+
+Os estudos da própria HCU combinam uma medição do seu parque com experimentos de laboratório nos enlaces mais lentos das agências.
+
+### 18.3 Populações, amostras e validade
+
+Declare a população (todos os serviços web da HCU), o quadro de amostragem (os serviços no registro de ativos) e a amostra (os alcançáveis a partir da rede de teste). A *validade interna* pergunta se o efeito observado é causado pelo fator estudado; a *validade externa* pergunta se os resultados se generalizam. Um experimento de latência numa rede de laboratório rápida pode não prever os resultados nos enlaces das agências rurais; isso é um limite de validade externa, e não uma falha, desde que seja declarado.
+
+O próprio registro de ativos da HCU pode estar incompleto, o que é um problema de quadro a ser declarado.
+
+### 18.4 Exemplo resolvido
+
+Pergunta: "Ativar o X25519MLKEM768 no gateway de teste da HCU aumenta o tempo mediano de handshake dos clientes das agências?" Método: experimento de laboratório com latência de agência emulada de 40 ms e 1% de perda; 1.000 handshakes por condição, alternando a ordem para controlar a deriva. Resultado (sintético): a mediana aumenta 0,9 ms; o percentil 99 aumenta 3 ms porque alguns ClientHellos precisam de um segundo segmento. Nota de validade: a perda emulada não reproduz o comportamento do proxy de inspeção real da agência.
+
+O relatório declara tanto a mediana quanto a cauda e o limite da emulação. A equipe de rede da HCU então testou numa agência com o proxy real antes da implantação ampla, que é onde a lacuna de validade externa apareceria.
+
+### 18.5 Atividade prática
+
+Escreva um protocolo de estudo de uma página para medir quantos serviços internos da HCU suportam o TLS 1.3, incluindo a população, o quadro, a amostra, o método, o tratamento dos dados e as ameaças à validade.
+
+Um protocolo escrito antes da coleta dos dados impede que as escolhas posteriores sejam moldadas pelos resultados. Diga como você vai contar um serviço que não responde, como vai tratar os serviços fora do registro e por quanto tempo os dados serão guardados. As ameaças à validade podem incluir serviços alcançáveis apenas a partir de algumas redes ou uma rede de teste diferente da produção. Peça a um colega que leia o protocolo e tente encontrar uma escolha que você deixou sem declarar.
+
+### 18.6 Erros comuns e limites
+
+- Perguntas amplas demais para serem respondidas.
+- Quadros de amostragem não declarados que escondem o viés de seleção.
+- Generalizar a latência do laboratório para as redes de produção.
+
+Uma pergunta ampla produz respostas vagas sobre as quais ninguém consegue agir. Um quadro não declarado esconde quais sistemas nunca estiveram na amostra, e os ausentes muitas vezes são os mais antigos e frágeis. As redes de laboratório são mais limpas que a produção, então os resultados de latência e de falhas devem ser apresentados como limites inferiores até serem confirmados em campo. Escreva cada limite ao lado do resultado que ele afeta, e não num lugar separado que os leitores podem pular.
+
+### Exercícios
+
+- **EX035 — Afie a pergunta.** Transforme "Os nossos fornecedores estão prontos para a computação quântica?" numa pergunta pesquisável, com um método. Rubrica: 3 = específica, mensurável, relevante para a decisão.
+- **EX036 — Validade.** Nomeie uma ameaça à validade interna e uma à validade externa no experimento de 18.4. Rubrica: 3 = as duas corretas e explicadas.
+
+### Síntese
+
+Perguntas pesquisáveis, populações explícitas e limites de validade declarados transformam opiniões sobre a prontidão quântica em evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — capítulo 18 de 40
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Segurança quântica e pós-quântica: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o escopo da segurança quântica e pós-quântica; (2) enunciar a desigualdade de Mosca e aplicá-la variando as hipóteses; (3) distinguir a criptografia pós-quântica da distribuição quântica de chaves; e (4) resumir a situação das normas do NIST e das orientações de transição.
+
+### 19.1 Escopo
+
+A área cobre quatro perguntas. O que os computadores quânticos podem fazer com a criptografia? (O Shor quebra o RSA, o Diffie–Hellman e as curvas elípticas; o Grover enfraquece quadraticamente a busca simétrica.) O que substitui os algoritmos vulneráveis? (A criptografia pós-quântica: algoritmos clássicos que se acredita resistirem ao ataque quântico.) Como as organizações migram? (Inventário, priorização, implantação híbrida, agilidade.) E que papel, se algum, cabe às tecnologias de comunicação quântica, como a distribuição quântica de chaves (QKD)? Este livro se concentra nas três primeiras, porque a PQC roda nos computadores e redes de hoje.
+
+A QKD é discutida brevemente abaixo.
+
+### 19.2 PQC versus QKD
+
+Os algoritmos PQC, como o ML-KEM, são implementações em software e hardware de esquemas matemáticos; eles funcionam em qualquer rede. A QKD usa estados quânticos da luz para estabelecer chaves e precisa de enlaces dedicados e nós confiáveis, e ainda precisa de autenticação clássica. A [NSA](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/) declarou que não apoia a QKD para os sistemas de segurança nacional e recomenda, em vez disso, os algoritmos resistentes à computação quântica. Para uma organização como a HCU, a PQC é o caminho prático.
+
+Os enlaces da HCU passam por linhas dedicadas alugadas e pela internet, onde a QKD exigiria uma infraestrutura nova.
+
+### 19.3 A desigualdade de Mosca
+
+Mosca (2018) deu à área a sua regra de planejamento. Seja *x* o tempo durante o qual os dados precisam continuar seguros, *y* o tempo que a migração leva e *z* o tempo até que exista um computador quântico criptograficamente relevante (CRQC). Se *x* + *y* > *z*, você já está atrasado para esses dados. Como *z* é desconhecido, varie-o: as decisões corretas em toda uma faixa plausível de *z* são robustas.
+
+Para a HCU, os trinta anos do arquivo tornam grande o lado esquerdo, qualquer que seja o tempo de migração escolhido. Mesmo que um CRQC estivesse a quarenta anos de distância, uma migração que levasse mais de dez anos deixaria parte dos dados do arquivo exposta. A desigualdade transforma uma pergunta irrespondível, quando a máquina vai chegar, numa pergunta utilizável: para quais dados a resposta não importa?
+
+### 19.4 Atividade prática — Laboratório M
+
+```python
+# Lab M (ch 19): Mosca's inequality x + y > z for synthetic Harbourline Credit Union data, sweeping z.
+assets = [  # (name, shelf-life x in years, migration time y in years) - synthetic
+    ("mortgage archive", 30, 4), ("member records", 10, 3), ("card authorisation", 0.01, 5), ("branch VPN traffic", 7, 2)]
+for z in (10, 15, 20):  # years until a cryptographically relevant quantum computer: an assumption, not a forecast
+    late = [n for n, x, y in assets if x + y > z]
+    print(f"z={z:>2}: at risk now -> {', '.join(late) if late else 'none'}")
+```
+
+Saída esperada:
+
+```text
+z=10: at risk now -> mortgage archive, member records
+z=15: at risk now -> mortgage archive
+z=20: at risk now -> mortgage archive
+```
+
+As mensagens de autorização de cartão têm vida curta, então saem da lista; o arquivo de financiamentos imobiliários está em risco sob todas as hipóteses da variação. Essa é a conclusão robusta.
+
+O laboratório varia o tempo de chegada desconhecido em três valores e, para cada um, imprime as classes de dados da HCU cujo tempo de confidencialidade mais o tempo de migração o excede. Os registros dos associados aparecem apenas sob a hipótese mais curta, então a sua situação depende da data incerta; o arquivo de financiamentos imobiliários aparece nas três. As classes que mudam de situação dentro da variação são onde a data realmente importa, e elas precisam de um julgamento mais cuidadoso e de revisão regular à medida que as estimativas mudam. As classes que nunca aparecem, como as mensagens de cartão, podem esperar as atualizações de rotina.
+
+### 19.5 Normas e situação da transição
+
+As FIPS 203, 204 e 205 são finais (agosto de 2024). A [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) dá recomendações para o uso de KEMs. O rascunho [IR 8547](https://doi.org/10.6028/NIST.IR.8547.ipd) do NIST propõe tornar obsoletos, depois de 2030, os algoritmos vulneráveis à computação quântica com segurança de 112 bits e proibir, depois de 2035, os algoritmos de chave pública vulneráveis à computação quântica; como rascunho, ele sinaliza uma direção, e não datas vinculantes. O FN-DSA (FIPS 206) e uma norma baseada no HQC estavam em desenvolvimento em 12 de outubro de 2026. O [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html) define a terminologia dos esquemas híbridos pós-quânticos/tradicionais (PQ/T).
+
+A HCU acompanha esses documentos com a sua situação e a data da verificação.
+
+### 19.6 Exemplo resolvido
+
+O conselho da HCU pede uma resposta num único slide. "Os computadores quânticos capazes de quebrar a nossa criptografia de chave pública não existem hoje, e a sua data é incerta. O nosso arquivo de financiamentos imobiliários precisa permanecer confidencial por 30 anos, então as transferências gravadas estão em risco sob qualquer cronograma plausível; vamos proteger esses fluxos primeiro, com troca de chaves híbrida pós-quântica, seguindo as normas de 2024 do NIST. As assinaturas e os dispositivos seguem um cronograma planejado, alinhado ao rascunho das orientações de transição do NIST."
+
+O slide evita uma data prevista, declara a exigência que gera a urgência e nomeia a primeira ação. Os membros do conselho podem contestar qualquer parte, e cada parte aponta para evidências no plano. Um slide seguinte lista o que o conselho vai ouvir a cada trimestre.
+
+### 19.7 Erros comuns e limites
+
+- Citar uma única data de CRQC como fato.
+- Apresentar a QKD como substituta direta da PQC.
+- Tratar as datas do rascunho IR 8547 como finais.
+
+As estimativas publicadas de quando um CRQC poderia existir variam muito e mudam à medida que a pesquisa avança, então uma única data dá uma falsa confiança. A QKD precisa de hardware especial e de enlaces dedicados, resolve apenas a distribuição de chaves e ainda precisa de autenticação clássica. As orientações em rascunho estão abertas a comentários e podem mudar antes da publicação. Cada erro faz um plano parecer mais firme do que as evidências permitem, e o plano quebra quando a hipótese quebra.
+
+### Exercícios
+
+- **EX037 — Mosca.** Para os registros dos associados, com *x* = 10 e *y* = 3, para quais valores de *z* a HCU já está atrasada? Rubrica: 3 = *z* < 13, com raciocínio.
+- **EX038 — PQC ou QKD.** Dê dois motivos pelos quais a HCU deve priorizar a PQC em vez da QKD nos enlaces das agências. Rubrica: 3 = motivos de infraestrutura e de autenticação/orientações.
+
+### Síntese
+
+A segurança quântica e pós-quântica pergunta o que os computadores quânticos quebram, o que os substitui e como migrar. A desigualdade de Mosca, variada sobre cronogramas incertos, ordena os dados; as FIPS 203/204/205 fornecem os substitutos.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — capítulo 19 de 40
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança quântica e pós-quântica: casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) resumir os casos públicos que moldaram a prática pós-quântica; (2) explicar o que cada caso ensina sobre evidências e hipóteses; (3) relacionar os casos com a implantação híbrida; e (4) aplicar as suas lições às decisões da HCU.
+
+### 20.1 O Shor e as estimativas de recursos
+
+O algoritmo de Shor de 1994 (versão em periódico de 1997) mostrou que a fatoração e os logaritmos discretos são resolvíveis de forma eficiente num computador quântico. Por décadas, a questão foram os recursos. Gidney e Ekerå (2021) estimaram 20 milhões de qubits ruidosos funcionando por oito horas para fatorar o RSA-2048; Gidney (2025) baixou isso para menos de um milhão de qubits ruidosos em menos de uma semana, sob hipóteses declaradas sobre as taxas de erro e a conectividade. A lição: as estimativas de recursos caem à medida que os algoritmos e a correção de erros melhoram, então os planos não podem depender de que a estimativa de hoje permaneça fixa.
+
+O plano da HCU usa, portanto, uma faixa de datas de chegada, e não um único número.
+
+### 20.2 Candidatos quebrados
+
+O processo do NIST eliminou candidatos publicamente. O Rainbow, uma assinatura multivariada, foi quebrado por Beullens (2022) com um ataque de recuperação de chave que rodava "num fim de semana num laptop". O SIKE, um KEM baseado em isogenias, foi quebrado por Castryck e Decru (2022) com um ataque clássico. Os dois haviam sobrevivido a anos de análise. A lição: os esquemas novos carregam o risco de quebras clássicas, o que é um argumento central para a implantação híbrida — combinar um algoritmo pós-quântico e um tradicional, para que um atacante precise quebrar os dois.
+
+Nenhuma das quebras precisou de um computador quântico.
+
+### 20.3 Falhas de implementação
+
+O KyberSlash (Bernstein et al., 2024) mostrou que várias implementações do Kyber vazavam informações secretas pelo tempo das operações de divisão, embora a matemática fosse sólida. A lição: uma norma correta não é uma implementação correta; use bibliotecas verificadas e mantenha-as atualizadas.
+
+Para a HCU, a lição virou uma pergunta de compras: qual biblioteca e qual versão cada equipamento usa, e com que rapidez o fornecedor entrega as correções? Um fornecedor que não consegue responder é um risco, qualquer que seja o algoritmo que ele alega suportar.
+
+### 20.4 Implantação inicial
+
+A equipe do Chrome, do Google, anunciou em 2023 a troca de chaves híbrida pós-quântica ([Chromium Blog](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html)), e alguns servidores e middleboxes falharam diante do ClientHello maior. A lição: a implantação expõe bugs do ecossistema que nenhuma revisão de especificação encontra; a implantação em estágios e o monitoramento são essenciais.
+
+A maioria das falhas veio de software que supunha que as mensagens de handshake continuariam pequenas. Os navegadores implantaram gradualmente, mediram as falhas e trabalharam com os operadores de servidores para corrigi-las. A HCU segue o mesmo padrão em escala menor, com as suas agências piloto.
+
+### 20.5 Exemplo resolvido
+
+O fornecedor da HCU propõe ativar imediatamente o ML-KEM puro nas VPNs das agências. Aplicando os casos: o SIKE mostra que um esquema novo pode falhar de repente, então um híbrido com ECDH é o projeto de transição prudente; o KyberSlash mostra que a versão da implementação do fornecedor importa, então a HCU pergunta qual biblioteca e qual versão o equipamento usa; a experiência do Chrome mostra que uma agência com um dispositivo legado pode quebrar, então a HCU começa com três agências piloto.
+
+Cada agência piloto é monitorada quanto a fallbacks e falhas de handshake antes que qualquer implantação mais ampla seja aprovada.
+
+### 20.6 Atividade prática
+
+Escreva um cartão de lição de meia página para um dos quatro casos: o que aconteceu, a fonte primária, o que ele mudou na prática e uma pergunta que ele levanta para a HCU.
+
+Um bom cartão é curto o bastante para ser lido em um minuto e aponta para a fonte primária, e não para um resumo dela. A mudança prática deve ser específica, como a passagem para projetos híbridos ou testes de tempo mais rigorosos. A sua pergunta para a HCU deve ser uma que a equipe realmente consiga responder, por exemplo quais produtos dos seus fornecedores ainda usam uma versão vulnerável de biblioteca.
+
+### 20.7 Erros comuns e limites
+
+- Concluir a partir do SIKE que toda a PQC é frágil; o ML-KEM se apoia numa família de problemas diferente e bem estudada.
+- Tratar as estimativas de recursos como previsões de datas.
+- Supor que uma norma final implica implementações seguras.
+
+O SIKE e o Rainbow foram quebrados pelas suas próprias estruturas; os problemas de reticulados do ML-KEM têm uma longa história de pesquisa e resistiram à análise. Isso é evidência, e não demonstração, e é por isso que se usam híbridos durante a transição. As estimativas de recursos mostram do que um algoritmo precisaria, e não quando alguém vai construí-lo. As implementações precisam de revisão e testes próprios, como o KyberSlash mostrou para um projeto sólido.
+
+### Exercícios
+
+- **EX039 — Do caso ao controle.** Associe cada um dos quatro casos a um controle que a HCU deveria adotar. Rubrica: 3 = quatro associações plausíveis e distintas.
+- **EX040 — Tendência das estimativas.** Explique por que a queda das estimativas de recursos deve mudar o planejamento de *y* (tempo de migração) na desigualdade de Mosca, e não apenas o de *z*. Rubrica: 3 = defende começar mais cedo e construir agilidade.
+
+### Síntese
+
+A queda das estimativas de recursos, os candidatos quebrados, as falhas de implementação e os bugs de implantação ensinam, cada um, um controle: planejar para a incerteza, implantar híbridos, usar bibliotecas verificadas e implantar em estágios.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — capítulo 20 de 40
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -688,7 +1391,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a HCU são sintéticos. Esta edição parcial traz as resoluções de EX001–EX020; as de EX021–EX080 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a HCU são sintéticos. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX080 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** log₂(10^24) = 24 × 3,32 ≈ 79,7 → cerca de 80 bits; acrescentar 2^20 dá cerca de 100 bits.
 
@@ -729,6 +1432,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX019.** Faltam: quais sistemas; quais técnicas (passivas/ativas); a janela de tempo; o tratamento dos dados; os contatos e as condições de parada. Quaisquer três.
 
 **EX020.** Reproduzir num laboratório isolado; registrar as versões e as evidências; relatar em particular ao contato de segurança do fornecedor; combinar um prazo de divulgação (por exemplo, 90 dias); informar o escritório de segurança da HCU e aplicar mitigações (monitoramento do fallback); publicar um alerta em conjunto após uma correção ou o prazo.
+
+**EX021.** Ela ignora o provedor do sistema operacional, então as atualizações do sistema operacional e as políticas criptográficas do sistema não a mudam; o seu fornecedor ou desenvolvedor é responsável pela mudança; ela precisa ser testada e lançada separadamente, e a sua versão precisa constar do inventário.
+
+**EX022.** O firmware é assinado raramente, por um signatário controlado que pode manter o estado num HSM, e a verificação só precisa de um código pequeno. Um servidor web assina constantemente, pode rodar em muitas réplicas e ser restaurado a partir de backups, então a reutilização do estado — fatal para o LMS/XMSS — se torna provável.
+
+**EX023.** 2^−30 ≈ 9,31 × 10^−10; × 10^12 ≈ 931 falhas.
+
+**EX024.** Tentativas verdadeiras: 10^8/10^6 = 100, detectadas ≈ 99. Alertas falsos: 1% de ~10^8 ≈ 10^6. Fração verdadeira ≈ 99/1.000.099 ≈ 0,01%.
+
+**EX025.** Senhas: não diretamente (armazenamento simétrico/por hash; adequado diante do Grover). Passkeys: sim, assinaturas ECDSA (falsificação posterior). Tokens de SSO: sim, assinaturas RSA/ECDSA, mas de vida curta, prioridade menor. AC raiz interna: sim, chave de assinatura de vida longa, prioridade alta.
+
+**EX026.** Os verificadores constroem cadeias até uma raiz confiável. Uma folha pós-quântica assinada por uma intermediária pós-quântica se encadeia a uma raiz pós-quântica; se as partes confiantes não confiam nessa raiz, a validação falha, então a raiz precisa ser distribuída primeiro aos repositórios de confiança.
+
+**EX027.** As informações de saúde nos casos de dificuldade financeira e os documentos de identidade; os dois continuam danosos por toda a vida. O tráfego gravado que os leva pode ser decifrado depois que a HCU apaga a sua cópia, então a exposição ao HNDL é determinada pelo tempo de vida do dano, e não pela retenção.
+
+**EX028.** Necessários: identificador do host/serviço, protocolo, grupos oferecidos e selecionado, algoritmo de assinatura, validade do certificado, data da observação, método. Não coletados: payloads; endereços IP dos clientes associados (ou apenas truncados); identificadores de sessão.
+
+**EX029.** "A revisão de configuração do inventário de certificados da HCU (1.240 certificados do banco de dados da AC, 15 de março) mostra 95% emitidos por ACs cujo software suporta a emissão ML-DSA; os certificados de ACs externas (fora do banco de dados) estão excluídos."
+
+**EX030.** Indicador: tempo mediano entre a aprovação de uma mudança de algoritmo e a produção, para uma classe de serviços. Medir a partir dos chamados de mudança (registros de data da aprovação à implantação) para mudanças de teste, como ativar um grupo novo. Limitação: as mudanças de teste podem ser mais fáceis que as reais; amostras pequenas.
+
+**EX031.** 1) Agência → data center (WAN, fronteira não confiável, dados de 30 anos, ECDH). 2) Envelopamento das chaves do sistema bancário central → arquivo (RSA-OAEP, chaves de vida longa; expostas se copiadas). 3) Gateway → sistema central (interno, clássico; menor probabilidade de interceptação). 4) Aplicativo móvel → gateway (já híbrido; a autenticação continua clássica).
+
+**EX032.** Configuração central da política criptográfica; identificadores de algoritmo guardados com os textos cifrados/chaves; bibliotecas/provedores que suportam vários KEMs por trás de uma única interface; formatos de mensagem com campos de comprimento que toleram chaves maiores; testes executáveis para qualquer algoritmo configurado.
+
+**EX033.** Armazenamento de senhas: função de hash de senhas (por exemplo, PBKDF2 ou uma função que exige muita memória). Integridade entre servidores: HMAC-SHA-256. Acordo de chave de sessão: X25519MLKEM768 híbrido (FIPS 203 + RFC 10024). Aprovação de documentos: ML-DSA-65 (FIPS 204) ou híbrido com ECDSA durante a transição.
+
+**EX034.** Cada assinatura revela um segredo por posição de bit. Os hashes de duas mensagens diferentes diferem em ~metade das posições, revelando ali os dois segredos (118/256 no Laboratório L). Um atacante pode assinar qualquer mensagem nova cujos bits de hash nas 138 posições restantes coincidam com o que foi revelado, o que exige cerca de 2^138 tentativas de hash; cada reutilização adicional reduz aproximadamente à metade as posições não coincidentes, então, depois de algumas reutilizações, as falsificações se tornam fáceis.
+
+**EX035.** "Que parcela dos 25 fornecedores críticos da HCU publicou um roteiro de PQC com datas para a troca de chaves híbrida, medida pela revisão dos seus documentos públicos e das respostas aos questionários até 30 de junho?"
+
+**EX036.** Interna: a deriva das condições do laboratório ao longo do tempo (mitigada pela alternância da ordem) ou efeitos de cache. Externa: a perda e a latência emuladas não reproduzem os proxies reais das agências nem as condições de rádio.
+
+**EX037.** Atrasada quando *x* + *y* > *z*: 13 > *z*, então para *z* < 13 anos.
+
+**EX038.** A PQC roda nas redes e nos dispositivos existentes, enquanto a QKD precisa de enlaces ópticos dedicados e de nós confiáveis em 40 agências; a QKD ainda exige autenticação clássica e não é apoiada pelas orientações da NSA para os sistemas de segurança nacional, enquanto a PQC está padronizada nas FIPS 203/204/205.
+
+**EX039.** Queda das estimativas → planejar com cronogramas variados e começar cedo. Rainbow/SIKE → implantação híbrida. KyberSlash → bibliotecas verificadas e atualizadas e acompanhamento das versões. Implantação do Chrome → implantação em estágios com monitoramento.
+
+**EX040.** Se *z* puder ser menor que o esperado, a única variável que a HCU controla é *y*. Começar mais cedo e construir agilidade reduz *y* nesta migração e nas futuras, mantendo *x* + *y* abaixo de uma faixa mais ampla de *z*.
 
 <a id="references"></a>
 
