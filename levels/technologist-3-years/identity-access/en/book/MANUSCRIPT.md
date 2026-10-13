@@ -1108,6 +1108,8 @@ total items=185 reviewed=170 (92%) removed=18 (10.6% of reviewed)
 
 The run reports 170 of 185 items reviewed, 92 percent, with 18 removals, 10.6 percent of reviewed items. Every clinic is complete except east, at 20 of 35. Kai notes that 18 removals is a healthy sign that reviewers are looking rather than approving everything, while an incomplete clinic means some access went unchecked. He does not treat 92 percent as success while one clinic remains well behind the others. He also checks whether removals cluster in one group. They do not, which suggests the reviews were careful.
 
+East's 15 unreviewed items become the first follow-up task.
+
 ### 23.3 Following up
 
 Kai meets the east clinic manager, who explains that she was on leave during the review window. They agree a deputy reviewer for future absences and complete the remaining 15 items within a week, which brings two further removals. Kai records the reason and the fix. He also suggests reminding reviewers a week before the deadline. Following up specific gaps is more useful than reporting a single overall percentage. The reminder is added to the review runbook. Kai checks the deputy arrangement at the next review.

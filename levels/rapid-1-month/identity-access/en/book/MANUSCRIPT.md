@@ -336,9 +336,13 @@ still to do: recovery details up to date
 
 Before the course, the shop met 2 of 8 items; afterwards it meets 7 of 8. The one remaining item is keeping recovery details up to date: some accounts still list a former staff member's phone number for account recovery. Mia explains that recovery details are how an account is regained if a password or phone is lost, so wrong details could let someone else reset an account or lock Rosa out. Rosa agrees to update them the following week.
 
+Moving from 2 to 7 of 8 within the course shows how far a small shop can get with short, concrete steps.
+
 ### 4.6 The short report
 
 Mia writes Rosa a one-page report in plain words: what was found, what was changed, the checklist score from 2 to 7 of 8, what remains and three habits to keep: add and remove people promptly, keep a second step on every account, and check the account list every three months. She adds the supplier portal as the next account to secure. Joseph reviews the report, and Rosa keeps it with the account list in the password manager. Rosa signs it.
+
+Keeping it beside the account list means whoever next checks the list also sees what was agreed.
 
 ### Worked example
 

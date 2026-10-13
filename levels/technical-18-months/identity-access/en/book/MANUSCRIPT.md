@@ -91,6 +91,8 @@ You will (1) explain how browsers and services authenticate; (2) describe sessio
 
 When a receptionist opens the appointment system, the browser is redirected to the directory, which asks for her password and second factor, then sends her back with proof of sign-in. This redirect pattern is used by OpenID Connect, built on OAuth 2.0 (RFC 6749), and by SAML 2.0. Tomas does not need to implement these protocols, but he must recognise them in admin consoles, because settings such as allowed redirect addresses and certificate expiry dates affect whether sign-in works and stays safe.
 
+An expired signing certificate, for example, would stop every receptionist signing in at once even with correct passwords.
+
 ### 2.2 Sessions and tokens
 
 After sign-in, the service keeps a session so staff are not asked again on every click. Tokens carry the proof and expire after a set time. Tomas finds the appointment system keeps sessions for 30 days, so a lost reception tablet would stay signed in for a month. He proposes eight hours, matching a working day, and the practice manager agrees after a one-week trial. Session length is a balance between convenience and how long a lost or shared device stays useful to someone else.
@@ -628,6 +630,8 @@ total: MFA 23/28 (82%), phishing-resistant 6/28 (21%)
 ### 12.2 Interpreting results
 
 The run shows total MFA coverage of 23 of 28 staff, 82 percent, and phishing-resistant methods for 6 of 28, 21 percent. Dentists, managers and IT are at 100 percent MFA. Nurses are at 8 of 10 and reception at 5 of 8, 62 percent. Managers and IT all have phishing-resistant methods, as planned. Tomas notes that reception's gap matters because receptionists handle patient contact details and receive many emails, including the kind that try to capture passwords. He shares the figures with the practice manager.
+
+Reception's three staff without MFA are therefore the first to enrol.
 
 ### 12.3 Planning improvements
 

@@ -168,6 +168,8 @@ never activated: ['adm07']
 
 In the synthetic data, the eight administrators actually needed full rights for 18.5 hours in a typical week. Under just-in-time elevation, privilege-hours would fall from 1,344 to 18.5, a reduction of about 98.6 percent. One administrator, adm07, needed full rights not at all, which raises the question of whether that account is needed. Marta treats the figure carefully: it assumes elevation would match need exactly, and emergencies may add hours. Still, the scale of the difference shows how much exposure permanent rights create.
 
+The 1,344 figure is simply eight administrators holding full rights for all 168 hours of the week.
+
 ### 3.3 Interpreting carefully
 
 Specialist data can mislead. Change records may miss urgent fixes made without tickets, so needed hours may be underestimated. Interviews may reflect what administrators think they do rather than what they do. Marta compares change records, interviews and directory logs, and where they disagree she investigates. For example, logs show adm02 using administrator rights late on several evenings, which change records do not explain; it turns out to be a scheduled report that could run under a service account with much narrower rights.
@@ -287,6 +289,8 @@ C: full PAM suite          weighted=1.70
 ### 5.3 Reading the scores
 
 Design B scores 2.35, Design A 2.30 and Design C 1.70. B leads, but only narrowly ahead of A, so Marta tests sensitivity. If risk reduction is weighted slightly less, A overtakes B; if risk reduction is weighted more, B's lead grows. Because Corran's insurer and board have stressed privileged access risk, the agreed weighting is defensible, but she reports the closeness openly. C ranks last because its operability and disruption scores are poor for a small team, despite strong risk reduction.
+
+A lead of 0.05 is smaller than the swing from a modest change in weights, so the result is a narrow preference rather than a clear win.
 
 ### Worked example
 
@@ -542,6 +546,8 @@ You will (1) read research on access control and authentication critically; (2) 
 ### 10.1 Reading critically
 
 Marta reads published research to inform her work and to place it in context. She reads Sandhu and colleagues (1996) on role-based access control, Bonneau and colleagues (2012) on comparing authentication schemes and Herley (2009) on why users reject security advice. For each, she asks what question was studied, what method was used, what evidence supports the conclusions and how far they apply to Corran. Reading critically means neither accepting conclusions because they are published nor dismissing them because the setting differs.
+
+Herley's argument concerns ordinary users weighing security advice, so Marta asks whether it fits Corran's administrators, who face different incentives.
 
 ### 10.2 Evidence quality
 

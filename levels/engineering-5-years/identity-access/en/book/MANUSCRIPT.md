@@ -589,6 +589,8 @@ When a council employee opens an application, the browser is redirected to the i
 
 In OpenID Connect's authorisation code flow, the provider does not send the ID token through the browser directly. It sends a short-lived code, which the application exchanges with the provider over a direct back-channel connection for tokens. RFC 6749 defines this pattern for OAuth 2.0, and RFC 7636 adds Proof Key for Code Exchange so that a stolen code cannot be redeemed by someone else. RFC 9700 recommends these practices as current best practice. Sana requires them for every new integration at Linmouth.
 
+Without PKCE, a malicious app that intercepted the code on the same device could exchange it for tokens itself.
+
 ### 11.3 Name resolution and trust
 
 Browsers find the identity provider through DNS, then verify its TLS certificate. If DNS were tampered with and the certificate not checked, staff could be sent to a fake sign-in page. Proper certificate validation in browsers protects against this, and phishing-resistant authenticators add a second layer, because a passkey will not sign for a site whose origin differs from the one it was registered with. Sana documents the provider's domain names and certificate management as part of the identity design, not as a separate network matter.
@@ -780,6 +782,8 @@ Confidentiality in identity means credentials, tokens and personal data are not 
 ### 15.2 Least privilege and separation of duties
 
 Least privilege means each person and system has only the access needed for their role. Separation of duties means no single person can complete a sensitive task alone, such as raising and approving the same payment. Saltzer and Schroeder (1975) described related principles decades ago, and NIST SP 800-53 Rev. 5 includes both in its access control family. At Linmouth, Sana treats them as design requirements: roles are built from job functions, and conflicting permissions are prevented from being held together.
+
+A role combining payment raising and approval, for example, is rejected at design time rather than discovered in a later review.
 
 ### 15.3 Defence in depth
 
@@ -1016,6 +1020,8 @@ You will (1) describe Linmouth's current identity state; (2) record constraints;
 ### 20.1 Current state
 
 Linmouth has an on-premises directory for laptop sign-in and email, plus about 140 applications. Around 60 use their own local accounts; 50 sync accounts from the directory; and 30 cloud services each have their own sign-up. HR sends a monthly leaver list by email to IT, who forward it to application owners. Multi-factor authentication covers email only. Sana records this state with dated evidence, including counts of accounts per system, so later improvements can be measured against a fair baseline rather than impressions.
+
+The 60 applications with local accounts are where leavers are most likely to keep access, since the monthly email relies on each owner acting.
 
 ### 20.2 Constraints
 
@@ -1495,6 +1501,8 @@ Sana's implementation plan has phases: build the provider and HR feed; integrate
 
 The pilot covers the IT department and the planning department, about 180 staff, chosen because IT can troubleshoot and planning uses a mix of old and new applications. Pilot staff agree to report problems through a dedicated channel. Sana holds a short daily check-in with the identity team during the first two weeks. Success criteria are set beforehand, so the decision to proceed rests on evidence rather than impressions, and the pilot's issues are recorded for every later department's preparation.
 
+A failure that only appears in planning's older applications, for example, will surface with 180 staff rather than with the whole council.
+
 ### 28.3 Report-only policies
 
 Conditional access policies are first deployed in report-only mode, where the provider records what it would have done without enforcing it. Reviewing these records reveals effects nobody predicted: a scanner that signs in with a shared account, staff who work from a partner building with unusual network addresses and an old mobile app that cannot handle multi-factor prompts. Each is investigated with its owner. Some lead to policy adjustments, while others reveal behaviour that should stop, such as the shared scanner account, which gets its own managed identity.
@@ -1617,6 +1625,8 @@ Evidence records what each test did: date, configuration version, input, observe
 ### 30.4 Results
 
 Of 84 test cases in the first round, 79 pass. The five failures include an application that accepts tokens with the wrong audience, a mover whose old access was not removed because of an overlapping exception and a desk procedure step missing from the runbook. Each failure is fixed, retested and recorded. Sana reports failures openly in the results summary; reviewers trust a report that shows honest failures and fixes far more than one in which everything passed first time.
+
+Seventy-nine of 84 is a 94 percent first-round pass rate.
 
 ### Worked example
 
@@ -1941,6 +1951,8 @@ now          app sign-ins/s=14.4 refresh/s=3.2 total/s=17.6 one-server utilisati
 
 With 2,400 staff, six applications each and sixty percent arriving within ten minutes, the synthetic model gives about 14.4 application sign-ins per second plus 3.2 refreshes, around 17.6 requests per second, or 29 percent of one server's tested capacity. With forty percent growth in staff or applications, load rises to about 24.6 per second, 41 percent. These figures match the earlier calculus estimate and leave room for one server to fail. Sana treats them as estimates to be confirmed by load testing, not as guarantees.
 
+Even after growth, 24.6 requests per second would use 41 percent of one server, so a single surviving server could still carry the load.
+
 ### 36.3 Load testing safely
 
 Load tests run only in the test tenant, with synthetic users and the provider's documented testing rules, because generating large volumes of sign-ins against a production cloud service may breach its terms and could affect real staff. Sana ramps load gradually, watching latency percentiles and error rates, and stops at defined limits. The test confirms capacity and reveals a slow group-membership lookup for users with many groups, which is fixed by trimming nested groups in the directory. Results are stored as evidence with the configuration version.
@@ -2224,6 +2236,8 @@ You will (1) frame a small applied research question from the project; (2) desig
 ### 42.1 A research question
 
 Sana's project raises a question worth studying carefully: does showing last-use dates in access reviews increase the share of unneeded access removed? Herley (2009) argued that people reject security effort whose cost exceeds its visible benefit, which suggests that making benefit visible might change reviewer behaviour. She frames the question narrowly, defines removal rate as the share of reviewed items removed and later confirmed as unneeded, and agrees with the council to use the next quarterly review as the setting.
+
+Requiring confirmation that removed items were unneeded guards against a removal rate inflated by deleting access people still use.
 
 ### 42.2 Design
 
