@@ -1775,9 +1775,13 @@ You will (1) generate and use an SBOM; (2) match components to advisories with v
 
 CI generates an SBOM for every build from the lockfile and build metadata, in a standard format, stored with the artifact.
 
+Generating the SBOM inside CI, from the same lockfile the build used, means it describes what was actually built rather than what someone remembers adding. A standard format lets the advisory check and other tools read it without custom parsing. Storing it beside the artifact, linked by digest, means that months later the team can answer exactly which components shipped in any release, even if the lockfile has changed since. An SBOM written by hand after release would drift from reality almost at once.
+
 ### 24.2 Matching advisories
 
 Advisories list affected version ranges and fixed versions. Matching must compare versions numerically, not as text: "2.0.9" is lower than "2.0.10".
+
+Text comparison works character by character, so when it reaches the third part it compares '9' with '1' and wrongly ranks the older release higher. Splitting on dots and comparing each part as a number gives the right order. Real version schemes add complications, such as pre-release labels with a beta suffix, so production tools use the ecosystem's own comparison rules. Ranges are usually written with an inclusive lower bound and an exclusive upper bound at the fixed version, which is how the lab treats them.
 
 ### Lab — Lab — SBOM against advisories
 
@@ -1806,13 +1810,19 @@ ADV-104 webfw   installed 4.1.2 affected [3.0.0, 3.9.9) -> not affected
 
 Two of four advisories apply: ADV-101 affects tmpl 2.0.9 (fixed in 2.0.10) and ADV-103 affects imgkit 5.2.1 (fixed in 5.2.2). zipx 1.3.0 is past its fixed version 1.2.5, and webfw 4.1.2 is outside ADV-104's range. Note that comparing "2.0.9" and "2.0.10" as text would wrongly suggest 2.0.9 is newer.
 
+The lab's v() function turns each version into a tuple of integers, which Python compares part by part. A package missing from the SBOM would give None and count as not affected, so the SBOM's completeness directly limits what the check can see.
+
 ### 24.4 Prioritising
 
 Not every affected component is equally urgent. Kwame considers severity, whether the vulnerable function is reachable in ticket-web, and the exploitation likelihood estimated by EPSS (Jacobs et al., 2021). imgkit is isolated (chapter 8), which reduces its urgency; tmpl renders every page, so it goes first.
 
+EPSS gives a probability that a flaw will be exploited soon, which complements severity: a severe flaw nobody is exploiting may wait behind a moderate one under active attack. Reachability needs knowledge of the code, which the component owner provides.
+
 ### 24.5 In CI
 
 The check runs on every build and nightly against the current release, because new advisories appear for unchanged code.
+
+Running at build time catches advisories for newly added components before they ship. The nightly run against the current release covers the other case: code that was clean when built but has since had a flaw published. Without the nightly check, a release could sit in production for weeks with a known flaw until the next build happened to run. Results from both runs feed the same list, so owners see one queue. The nightly run uses the stored SBOM for the release, so it needs no rebuild and finishes in minutes.
 
 ### Handling false matches
 
@@ -1858,25 +1868,37 @@ You will (1) work in a team on a supply-chain design problem; (2) produce altern
 
 Kwame's studio team of four receives a brief from Coastline: design how the mobile ticket app, now built in CI, should be signed, verified and updated, meeting the requirements from chapter 21.
 
+Moving the mobile build into CI, after the gap found in the chain diagram, solved where the app is built but not how users and Coastline can confirm what they received. The brief asks for signing, verification and updates together, because a design that signs well but updates poorly still leaves riders on old versions. Requirements from earlier work give the team a ready test for each option.
+
 ### 25.2 Alternatives
 
 Option A: traditional long-lived signing key in a hardware module. Option B: keyless signing with short-lived certificates tied to the CI identity (the Sigstore model). Option C: platform app-store signing only.
+
+Including a minimal option, C, gives a baseline to compare against: if A or B adds little over relying on the app stores, the extra effort is not justified. The three differ mainly in where trust sits: in a key Coastline guards, in an identity and a public log, or in the store operators.
 
 ### 25.3 Critique
 
 Against requirements: A is strong but needs key ceremonies and rotation; B reduces key-theft risk and adds a public transparency log but depends on an external service; C is simplest but gives Coastline no independent verification.
 
+The team scores each option against the requirement table rather than against general impressions. Dependence on an external service, for B, is weighed by asking what happens during an outage: builds would pause signing, which fails closed. For C, the lack of independent verification fails the requirement that Coastline can check what was built from its own records.
+
 ### 25.4 Prototype
 
 The team prototypes B with synthetic artifacts in a test environment, measuring time added to builds (about 20 seconds).
+
+The prototype tests the claims made in the critique. Twenty seconds per build is small compared with the test suite, so build time is not an objection. The team also confirms that verification fails when an artifact is altered and when the certificate identity is not Coastline's CI, and records any steps that were harder than expected. Synthetic artifacts mean no real signing identity or production system is involved, so mistakes during the prototype carry no risk. Measured numbers replace guesses in the final presentation.
 
 ### 25.5 Presentation
 
 Ten minutes to Ingrid and two Coastline engineers, with the requirement table, risks and recommendation.
 
+Ten minutes forces the team to lead with the recommendation and the evidence for it, leaving detail for questions. The requirement table lets Ingrid see at once which needs each option meets. Risks are stated plainly, including the dependence on an external service for B. Kwame, as requirements owner, answers questions about coverage. The engineers' questions are noted and answered in writing afterwards, so nothing raised in the meeting is lost.
+
 ### 25.6 Peer review
 
 Another studio team reviews the design and asks how verification works offline on buses with no signal; the team adds cached verification material.
+
+Reviewers from outside the team see assumptions the authors no longer notice. The team had assumed riders' phones are always online, but buses and ferries often lose signal, and a verification step that needed the network would block riders at the worst moment. Cached verification material lets the app check updates offline, with a refresh when signal returns. The review is recorded with the change it caused, so later readers understand why the design includes caching.
 
 ### Team roles
 
@@ -1922,25 +1944,37 @@ You will (1) compare architectural options for dependency management and build i
 
 How should ticket-web obtain dependencies? Option 1: fetch directly from the public registry with lockfile hashes. Option 2: an internal mirror that proxies and caches the registry. Option 3: a curated internal repository where each new package version is reviewed before use.
 
+The three options represent increasing levels of control. Each moves the point where Coastline can inspect packages closer to its own boundary. The choice affects every build and every developer, so it is worth comparing carefully before committing. Kwame's team also asks which option a team of Coastline's size can keep running for years, not just set up.
+
 ### 26.2 Risk trade-offs
 
 Option 1 is simple but depends on the registry's availability and offers no central control point. Option 2 adds caching, logging and a place for checks, with modest cost. Option 3 gives the most control but slows updates, which can lengthen exposure to known flaws; Kula et al. (2018) showed that update friction already causes lag, and Decan et al. (2018) showed how lag spreads vulnerabilities.
+
+The tension is between control and speed. Every check added before a package can be used also delays the fixes that arrive as new versions, so tighter control can mean longer exposure. Option 2 sits in the middle: it inspects packages automatically as they pass through, without waiting for a person.
 
 ### 26.3 Build options
 
 For builds: self-hosted runners give control but must be maintained and isolated; hosted runners from the CI provider offer fresh, isolated environments and platform-generated provenance aligned with SLSA v1.0 Build Level 2 and above, but depend on the provider.
 
+Self-hosted runners require Coastline to patch, isolate and monitor them, which the old reused build agent showed is easy to get wrong. Hosted runners shift that work to the provider and produce provenance the build script cannot forge. The cost is dependence on the provider's availability and security, which Coastline checks through the provider's published assurances.
+
 ### 26.4 Reproducibility
 
 Reproducible builds (Lamb and Zacchiroli, 2022) let an independent builder recreate the same bits, detecting tampering in the original build. Coastline evaluates making ticket-web's server build reproducible; it requires fixing timestamps and ordering in the build.
+
+Timestamps embedded in files and the order in which files are archived are common reasons two builds of the same source differ. Fixing them lets an independent rebuild be compared with the release by digest. A match is strong evidence that the release came from the stated source. A mismatch is investigated before the release is trusted.
 
 ### 26.5 Usability
 
 Developers need fast builds and simple upgrades. A design that slows them down will be worked around, echoing Johnson et al. (2013) on tool adoption.
 
+Developers under deadline pressure find shortcuts: copying a package into the repository to avoid the mirror, or disabling a slow check. Each shortcut removes the control it avoided. Designs that are fast and simple to follow get used as intended, so usability is a security requirement, not a convenience. Coastline measures build times and the time to add a new dependency before and after each change to the design, and treats a significant slowdown as a defect to be fixed.
+
 ### 26.6 Decision
 
 Coastline chooses option 2 with automatic checks (name similarity, advisories, licence), hosted runners, and a pilot of reproducible server builds.
+
+The decision combines the option that balances control with update speed, a build platform that removes maintenance burden and provides provenance, and a limited pilot of reproducible builds to learn the cost before committing. The pilot covers only the server build, because the mobile build depends on store tooling that is harder to make reproducible. The record lists conditions that would reopen the choice, such as the registry suffering repeated outages or the curated option becoming cheaper through automation.
 
 ### Worked example
 
@@ -1978,25 +2012,37 @@ You will (1) design specific controls for source, dependencies, build and deploy
 
 Branch protection requires review by one engineer and passing checks; signed commits for release branches; no direct pushes to main.
 
+Review by one engineer prevents a single person from changing ticket-web alone. Passing checks ensures tests and the dependency gate ran. Signed commits on release branches tie each change to a verified author, so a stolen password alone cannot inject code. Blocking direct pushes means every change goes through the same path, including those from senior engineers and administrators, who could otherwise skip review in a hurry. The repository settings that enforce these rules are themselves protected, so changing them needs approval from two administrators.
+
 ### 27.2 Dependency controls
 
 The CI dependency gate fails a build if: a lockfile hash does not match, a new name is within edit distance 1 of a popular name without an approved review, or a critical advisory applies without an exception.
+
+Each condition corresponds to an earlier finding: hash mismatches to the mirror incident, lookalike names to the name-similarity lab and critical advisories to the tmpl case. The approved-review clause matters, because some legitimate packages have names close to popular ones; a reviewer can approve them once, and the gate then remembers the decision. Messages name the failing rule so developers can fix the cause quickly.
 
 ### 27.3 Build controls
 
 Builds run on hosted runners with pinned tool versions; production secrets are not available to builds from forks; the platform generates provenance.
 
+Pinned tool versions mean a build uses exactly the compiler and packaging tools the team tested, not whatever was latest that morning. Keeping secrets away from fork builds closes the threat ranked highest in the threat analysis. Platform-generated provenance records the builder, source and inputs in a way the build steps cannot alter, which the deployment policy then checks. Tool versions are updated deliberately in reviewed changes, so a new compiler is never introduced silently.
+
 ### 27.4 Deployment controls
 
 The deploy policy allows an artifact only if built by the approved builder from the approved repository from reviewed commits, with a valid signature and matching digest. Policies are written as code, version-controlled and reviewed like application code.
+
+Writing policy as code means a change to the rules is visible in a pull request, with a reviewer and history. Each condition in the policy maps to evidence produced earlier: the provenance names the builder and repository, branch protection records the review, and the signing log holds the signature. If any piece is missing, the artifact is refused, even when everything else looks correct.
 
 ### 27.5 Failure behaviour
 
 Controls fail closed: if the advisory service is unreachable, the build waits and retries rather than skipping the check; after one hour, the on-call engineer is paged.
 
+Failing open would mean an outage of the advisory service silently disables the check, which an attacker could exploit by causing the outage. Failing closed costs availability: releases wait until the service returns. Paging after an hour keeps that delay short. For a true emergency, the exception process allows a release with a recorded approval, so failing closed does not trap the team indefinitely.
+
 ### 27.6 Exceptions
 
 Exceptions need an owner, a reason, an expiry date and approval by Ingrid. Expired exceptions block builds again.
+
+An exception without an expiry tends to become permanent and forgotten. The owner is responsible for removing the cause before expiry or requesting renewal with a new reason. Requiring Ingrid's approval keeps exceptions visible to someone accountable for overall risk. A weekly list of active exceptions shows the trend; a rising count suggests a control is too strict or a team needs help. Each exception records exactly which check it suspends and for which component, so it cannot be stretched to cover other problems.
 
 ### Policy testing
 
@@ -2038,25 +2084,37 @@ You will (1) implement output encoding and authorisation checks in the applicati
 
 Cross-site scripting (CWE-79) happens when untrusted data is placed into pages without encoding for its context. The fixed tmpl version escapes attributes by default. Kwame also adds a test that renders synthetic rider names with special characters and checks they appear as text, not markup.
 
+Context matters because the same character is dangerous in different ways in page text, attribute values and scripts. A quote mark is harmless in text but can end an attribute early; angle brackets matter in text but not inside a quoted attribute. Encoding for the right context, by default, removes the burden from each developer. The test with synthetic rider names checks that quotes and angle brackets in them arrive on the page as plain text.
+
 ### 28.2 Authorisation
 
 Every endpoint calls a central authorisation function with the user's role and the resource owner. Checks happen on the server, aligned with OWASP Top 10:2021 A01 and ASVS access-control requirements.
+
+A central function means one place to review and test instead of checks scattered through every handler. It compares the user's role and identity with the resource: a rider may view only their own tickets, support staff any ticket but no payment tokens. A handler that forgets to call the function is caught by a test that lists every endpoint and checks each one calls it. Server-side checks matter because hidden buttons in the browser do nothing to stop a scripted request.
 
 ### 28.3 Upgrading tmpl
 
 The upgrade from 2.0.9 to 2.0.10 is small but changes one default. Tests catch two templates that relied on unescaped output for trusted icons; they are rewritten to use an explicit safe-markup helper reviewed by Ingrid.
 
+The changed default was the fix, so templates relying on the old behaviour broke as intended. Rewriting them with an explicit helper makes the trust decision visible in the code. Ingrid's review confirms the icons come from Coastline's own files, not user input. Any future use of the helper needs the same check.
+
 ### 28.4 Implementing the gate
 
 The dependency gate is a small CI step reading the lockfile and SBOM, calling the advisory feed and the name-similarity check, and applying the policy. Its own code is reviewed and tested.
+
+Keeping the gate small makes it easy to read and test. It does not decide policy itself; it reads the policy file and reports which rule failed, so the error message tells developers exactly what to fix. Tests use synthetic lockfiles that should pass and fail. A bug in the gate could let flawed packages through silently, so it is treated as security-critical code.
 
 ### 28.5 Regression review
 
 After the changes, a reviewer compares rendered pages before and after and runs the authorisation test suite.
 
+Comparing rendered pages catches text that now appears escaped where it should be formatted, or markup that should be escaped but is not. The authorisation suite checks that each role still sees exactly what it should after the refactoring of handlers. Automated screenshots highlight differences, and the reviewer looks at each one rather than approving the whole set. Regressions found here are cheaper than complaints from riders, and the review is repeated for any change that touches templates or authorisation.
+
 ### 28.6 Rollback plan
 
 Each release can be rolled back to the previous signed artifact within ten minutes.
+
+Fast rollback lowers the cost of a mistaken release, which makes the team more willing to ship security fixes quickly. Because the previous artifact is already signed and its digest recorded, the deployment policy accepts it without a new build. Database changes are the hard part: migrations are written so the previous version still works with the new schema for at least one release. The rollback is practised in staging every month, so the ten-minute figure is measured rather than hoped for.
 
 ### Code review focus
 
