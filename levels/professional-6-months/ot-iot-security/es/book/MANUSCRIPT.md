@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](../../en/book/MANUSCRIPT.md#ch-04) · [5](../../en/book/MANUSCRIPT.md#ch-05) · [6](../../en/book/MANUSCRIPT.md#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -190,7 +190,223 @@ Los controladores del edificio confían en quien los alcanza, así que importa c
 
 ### Siga estudiando — capítulo 03 de 12
 
-[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Un inventario de los dispositivos del edificio
+
+### Resultados de aprendizaje
+
+Usted podrá (1) elaborar un inventario de los dispositivos del edificio agrupado por sistema; (2) señalar los dispositivos sin soporte del fabricante; y (3) explicar cómo el estado del soporte cambia las decisiones de riesgo.
+
+### 4.1 Qué registrar
+
+Sistema, nombre del dispositivo, ubicación, responsable, modelo de controlador, firmware, año de instalación, dirección de red, estado del soporte del fabricante y consecuencia clínica. Las instalaciones de un edificio duran veinte años o más, así que el estado del soporte importa aquí más que en la informática de oficina. Cada campo responde a una pregunta que alguien hará. El responsable le dice a quién llamar; el firmware y el estado del soporte le dicen si existen correcciones; la dirección de red le dice qué reglas de cortafuegos se aplican; la consecuencia clínica le dice cuán urgente es un hallazgo. Un campo vacío es en sí mismo un hallazgo que hay que completar, no un hueco que ignorar.
+
+### 4.2 Agrupación
+
+Agrupar por sistema muestra con quién hablar: los dispositivos de climatización (HVAC) van al responsable mecánico de mantenimiento, el panel de gases a la persona autorizada para gases medicinales y el ascensor a su empresa contratista de mantenimiento.
+
+```python
+"""Lab 4: group a synthetic Millbrook building-device list by system and flag unsupported firmware."""
+devices = [("AHU-OT1", "HVAC", "2019", True), ("AHU-OT2", "HVAC", "2019", True),
+           ("CHILLER-1", "HVAC", "2015", False), ("MGAS-PANEL", "medical gas alarm", "2021", True),
+           ("LIFT-CTRL", "elevator", "2012", False), ("DOOR-SRV", "access control", "2020", True)]
+by = {}
+for name, system, year, supported in devices:
+    by.setdefault(system, []).append(name)
+    if not supported:
+        print(f"UNSUPPORTED {name:10} system={system} installed={year}")
+for system, names in sorted(by.items()):
+    print(f"{system:18} {len(names)} device(s): {', '.join(names)}")
+```
+
+Ejecútelo con `python3 lab_bms.py`. Salida verificada:
+
+```text
+UNSUPPORTED CHILLER-1  system=HVAC installed=2015
+UNSUPPORTED LIFT-CTRL  system=elevator installed=2012
+HVAC               3 device(s): AHU-OT1, AHU-OT2, CHILLER-1
+access control     1 device(s): DOOR-SRV
+elevator           1 device(s): LIFT-CTRL
+medical gas alarm  1 device(s): MGAS-PANEL
+```
+
+La agrupación también muestra dónde una misma debilidad afecta a varios dispositivos. Los tres dispositivos de climatización pueden compartir contratista y política de contraseñas, así que un problema hallado en uno debe comprobarse en todos. El Lab 4 agrupa por sistema los seis dispositivos de Millbrook y señala los que no tienen soporte del fabricante.
+
+### 4.3 Lectura de la salida
+
+Dos dispositivos carecen de soporte: CHILLER-1, instalado en 2015, y LIFT-CTRL, de 2012. «Sin soporte» significa que el fabricante no publicará correcciones para debilidades nuevas. No se pueden sustituir sin más (una enfriadora cuesta una suma considerable y su sustitución requiere planificación), así que necesitan controles compensatorios: un aislamiento de red más estricto, ningún acceso remoto y una supervisión más cercana. Anote los controles compensatorios junto a cada dispositivo sin soporte en el inventario, con un responsable y una fecha, para que no se olviden. Anote también cuándo está prevista la sustitución del dispositivo, porque los controles compensatorios son un puente, no una respuesta permanente. Confirme el estado del soporte con el fabricante antes de dar por definitiva la marca del laboratorio.
+
+### 4.4 Uso del inventario
+
+El inventario alimenta la correspondencia con avisos de seguridad (capítulo 10), la segmentación (capítulo 8) y el informe de riesgos del proyecto final (capítulo 12). Manténgalo bajo control de acceso. Como el inventario nombra dispositivos, versiones y direcciones, también es un mapa útil para un atacante. Compártalo con quienes lo necesitan, como mantenimiento, el equipo de redes y los contratistas para sus propios sistemas, y mantenga las copias antiguas fuera del correo electrónico. Registre quién lo modificó y cuándo, para que un lector pueda confiar en su contenido. Revise cada trimestre quién tiene acceso a él.
+
+### 4.5 De dónde salen los datos
+
+El expediente de entrega del contratista del BMS, los registros de mantenimiento, las órdenes de compra, las tablas de los conmutadores del equipo de redes y los recorridos por las salas de máquinas contribuyen todos. Cada fuente omite algo: los expedientes de entrega son anteriores a las ampliaciones posteriores, los registros de compra omiten lo que compraron los contratistas y las salas de máquinas albergan dispositivos que nadie anotó. Compararlas, y registrar qué fuente aportó cada campo, hace que el inventario sea fiable.
+
+En Millbrook el expediente de entrega del contratista del BMS es el punto de partida, pero las tablas de los conmutadores del equipo de redes muestran en la VLAN 300 dispositivos que el expediente omite. Los recorridos por las salas de máquinas se reservan a través de mantenimiento. Cuando las fuentes no coincidan, anote ambos valores y resuélvalos con el responsable, en lugar de elegir uno en silencio.
+
+### 4.6 Columna de consecuencia
+
+Escriba con palabras sencillas la consecuencia clínica de cada dispositivo, acordada con los responsables de mantenimiento y clínicos, para que las prioridades queden claras a quienes no son especialistas. Por ejemplo: AHU-OT1, el quirófano 1 pierde el control de presión; MGAS-PANEL, el personal no recibe aviso de un fallo en el suministro de oxígeno; LIFT-CTRL, traslados de pacientes entre plantas con retraso. La columna determina después el orden del trabajo en el informe de riesgos, así que su redacción debe ser clara para directivos que nunca han visto las instalaciones. Revise la redacción cada año.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+Aisha lleva los dos dispositivos sin soporte al jefe de mantenimiento e instalaciones. Acuerdan lo siguiente: CHILLER-1 se coloca tras una regla de cortafuegos dedicada que solo permite BMS-WS, y el enlace celular de LIFT-CTRL se revisa con el contratista del ascensor. Ambos se añaden al plan de inversiones de sustitución con años objetivo.
+
+> **Caso sintético — Millbrook.** Los dispositivos y los años son inventados.
+
+### Errores y límites
+
+El estado del soporte debe confirmarse con el fabricante; el año de instalación por sí solo es un indicio. Los inventarios envejecen; revíselos cada trimestre.
+
+### Ejercicios — capítulo 4
+
+- **EX016 — Campos del inventario.** Enumere seis campos de un inventario de dispositivos del edificio. *Rúbrica:* 3 = seis campos correctos, incluidos el estado del soporte y la consecuencia; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX017 — Ampliar el laboratorio.** Añada `("BOILER-2", "HVAC", "2010", False)`. ¿Qué líneas nuevas imprime el laboratorio? *Rúbrica:* 3 = `UNSUPPORTED BOILER-2   system=HVAC installed=2010` y HVAC con 4 dispositivos; 2 = una línea; 1 = incorrecto; 0 = nada.
+- **EX018 — Qué significa sin soporte.** Explique al jefe de mantenimiento e instalaciones qué significa «sin soporte» para CHILLER-1. *Rúbrica:* 3 = no habrá correcciones del fabricante para fallos nuevos; el riesgo crece; compensar y planificar la sustitución; 2 = parcial; 1 = «averiado»; 0 = nada.
+- **EX019 — Controles compensatorios.** Proponga tres controles compensatorios para LIFT-CTRL. *Rúbrica:* 3 = aislamiento, retirar o restringir el enlace celular, supervisión, plan de sustitución; 2 = dos; 1 = uno; 0 = nada.
+- **EX020 — A quién llamar.** Según la agrupación, ¿quién recibe la entrada de MGAS-PANEL? *Rúbrica:* 3 = la persona autorizada para gases medicinales; 2 = mantenimiento; 1 = informática; 0 = nada.
+
+### Síntesis del capítulo
+
+Un inventario agrupado por sistema y con el estado del soporte muestra a los responsables y dónde los controles compensatorios deben soportar el riesgo.
+
+### Siga estudiando — capítulo 04 de 12
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Cuentas, valores por defecto y configuraciones de referencia de los dispositivos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) encontrar cuentas por defecto y compartidas en los sistemas del edificio; (2) aplicar las ideas de ETSI EN 303 645 y NIST IR 8259 a las compras; y (3) fijar normas prácticas de contraseñas para el personal de mantenimiento.
+
+### 5.1 Valores por defecto en los edificios
+
+Los controladores y las interfaces web a menudo salen de fábrica con nombres de usuario y contraseñas documentados. Los integradores a veces mantienen una misma contraseña en todos los centros que atienden. Ambas cosas significan que cualquiera que haya leído un manual o haya trabajado para ese integrador puede iniciar sesión. En Millbrook, la interfaz web de DOOR-SRV aún aceptaba la contraseña de fábrica que figura en su manual público. Una comprobación de valores por defecto debe abarcar todos los controladores e interfaces web del inventario, hecha por el contratista o con él durante una franja reservada, sin probar contraseñas por su cuenta contra sistemas en funcionamiento. Registre cada resultado y la fecha en que se comprobó.
+
+### 5.2 Cuentas compartidas de mantenimiento
+
+La estación de trabajo del BMS puede tener un único inicio de sesión que usan todos los ingenieros de turno. Eso hace que los cambios no se puedan rastrear. Las cuentas individuales, aunque solo existan en el servidor del BMS, permiten que el registro de tendencias nombre a la persona que cambió un punto de consigna. Las cuentas nominativas también ayudan cuando algo sale mal. Si un punto de consigna de un quirófano cambia de noche, un inicio de sesión compartido no puede decir quién hizo el cambio, mientras que uno nominativo sí, como muestra la revisión de tendencias del capítulo 9. Cuando un controlador solo admita una cuenta, guarde la contraseña en el almacén de secretos y registre cada uso con el nombre del ingeniero.
+
+### 5.3 Una configuración de referencia para las compras
+
+ETSI EN 303 645 exige, entre otras disposiciones, que no haya contraseñas por defecto universales, una política de divulgación de vulnerabilidades, actualizaciones de software y comunicación segura; NIST IR 8259 enumera actividades fundamentales que deberían realizar los fabricantes. El departamento de compras del hospital puede convertirlas en preguntas contractuales para los nuevos dispositivos del edificio, de modo que el problema se reduzca con el tiempo. Para cada nuevo dispositivo del edificio, pregunte por escrito al proveedor: ¿tiene cada unidad una contraseña única?, ¿existe una vía publicada para notificar vulnerabilidades?, ¿durante cuánto tiempo se ofrecerán actualizaciones? y ¿está protegida la comunicación? Guarde las respuestas con el registro de compra. Un proveedor que no sabe responder es en sí mismo información útil para el comprador.
+
+### 5.4 Normas que el personal de mantenimiento pueda seguir
+
+Contraseñas únicas por dispositivo guardadas en un almacén de contraseñas gestionado; cuentas nominativas en el BMS; derechos de administración solo para trabajos planificados; contraseñas cambiadas cuando se marcha personal de un contratista. Escriba las normas en una página, acordadas con el jefe de mantenimiento e instalaciones, y compruebe que el almacén está disponible en los turnos que lo necesitan. Cuando una norma sea difícil de cumplir, como cambiar las contraseñas cada vez que se marcha personal de un contratista, acuerde cómo se enterará el hospital de la marcha. Revise las normas después de cualquier incidente en el que haya intervenido una cuenta.
+
+### 5.5 Comprobar que el cambio funcionó
+
+Después de cambiar una contraseña, pruebe la antigua desde la estación de trabajo del BMS en la misma franja reservada para confirmar que falla, y confirme que los operadores aún pueden iniciar sesión con el nuevo esquema. Registre ambos resultados en el ticket de cambio. Si la contraseña antigua sigue funcionando, el cambio no ha surtido efecto, quizá porque el dispositivo tiene más de una cuenta o interfaz. Si los operadores no pueden iniciar sesión con el nuevo esquema, puede que vuelvan a una contraseña compartida, lo que deshace el trabajo; resuelva el problema de acceso en la misma franja.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+Aisha y el contratista del BMS revisan DOOR-SRV, el servidor de control de accesos. Su interfaz web aún acepta la contraseña de fábrica que figura en el manual público. El contratista la cambia durante una franja reservada, la registra en el almacén del hospital y crea cuentas nominativas para los tres vigilantes de seguridad que gestionan los horarios de las puertas.
+
+> **Caso sintético — Millbrook.** El dispositivo y las cuentas son inventados.
+
+### Errores y límites
+
+ETSI EN 303 645 se dirige al IoT de consumo; para los controladores de edificio de grado industrial, los requisitos de componentes de IEC 62443-4-2 encajan mejor. Algunos controladores antiguos solo admiten una cuenta.
+
+### Ejercicios — capítulo 5
+
+- **EX021 — Por qué importan las contraseñas del integrador.** Explique el riesgo de una contraseña del integrador reutilizada en muchos hospitales. *Rúbrica:* 3 = una filtración o un antiguo empleado abre todos los centros; 2 = parcial; 1 = vago; 0 = nada.
+- **EX022 — Cambios rastreables.** ¿Cómo ayudan las cuentas nominativas del BMS tras un cambio inesperado de un punto de consigna? *Rúbrica:* 3 = el registro de tendencias o de auditoría muestra quién lo cambió; apoya la investigación; 2 = parcial; 1 = vago; 0 = nada.
+- **EX023 — Preguntas contractuales.** Convierta tres disposiciones de ETSI EN 303 645 en preguntas para un contrato de compra. *Rúbrica:* 3 = tres preguntas precisas (valores por defecto, divulgación, actualizaciones o cifrado); 2 = dos; 1 = una; 0 = nada.
+- **EX024 — Baja en el contratista.** Un ingeniero del contratista que conocía contraseñas de Millbrook deja la empresa. ¿Qué ocurre? *Rúbrica:* 3 = cambiar en el almacén las contraseñas afectadas, revisar los accesos, registrarlo; 2 = algo; 1 = vago; 0 = nada.
+- **EX025 — La norma adecuada.** ¿Qué norma encaja mejor que ETSI EN 303 645 para un controlador industrial de BMS, y por qué? *Rúbrica:* 3 = IEC 62443-4-2; requisitos de componentes para la automatización industrial; 2 = solo el nombre; 1 = incorrecto; 0 = nada.
+
+### Síntesis del capítulo
+
+Los valores por defecto cambiados, las cuentas nominativas, las contraseñas en el almacén y las preguntas contractuales de referencia cierran las puertas más fáciles.
+
+### Siga estudiando — capítulo 05 de 12
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Exposición a internet de los sistemas del edificio
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar por qué las interfaces del edificio acaban en internet; (2) comparar una exportación de exposición con una lista aprobada; y (3) responder a una exposición no aprobada.
+
+### 6.1 Cómo ocurre
+
+Un contratista abre un puerto para alcanzar desde casa la página web del BMS; una empresa de ascensores añade un enrutador; una regla de cortafuegos de un proyecto nunca se retira. MITRE ATT&CK for ICS recoge la técnica T0883 Internet Accessible Device precisamente para esta situación, y los avisos de CISA instan una y otra vez a retirar las interfaces de los sistemas de control del acceso directo desde internet. En Millbrook, una regla añadida en 2023 para la puesta en marcha de la enfriadora expuso directamente a internet BACnet y el inicio de sesión web del BMS, y nadie la retiró tras el proyecto. Toda apertura de este tipo empieza con una petición razonable por comodidad. La tarea consiste en dar a los contratistas una vía con soporte para que no necesiten pedir puertos.
+
+### 6.2 Comprobar la exposición
+
+El equipo de redes del hospital, o un servicio autorizado, elabora una lista de las direcciones públicas del hospital y de los servicios abiertos. El analista la compara con la lista aprobada, que normalmente contiene solo la pasarela de acceso remoto.
+
+```python
+"""Lab 6: compare a synthetic external-exposure export with approved internet-facing services."""
+approved = {("203.0.113.10", 443)}
+found = [("203.0.113.10", 443, "VPN gateway"), ("203.0.113.24", 47808, "BACnet/IP"),
+         ("203.0.113.24", 80, "BMS web login")]
+for ip, port, svc in found:
+    print(f"{ip}:{port:<6} {svc:14} {'approved' if (ip, port) in approved else 'NOT APPROVED - report'}")
+print("unapproved:", sum((ip, port) not in approved for ip, port, _ in found))
+```
+
+Ejecútelo con `python3 lab_exposure.py`. Salida verificada:
+
+```text
+203.0.113.10:443    VPN gateway    approved
+203.0.113.24:47808  BACnet/IP      NOT APPROVED - report
+203.0.113.24:80     BMS web login  NOT APPROVED - report
+unapproved: 2
+```
+
+Obtenga la exportación de quienes son dueños de las direcciones, y no sondee usted mismo las direcciones del hospital salvo que el equipo de redes lo haya autorizado. La lista aprobada debe ser corta y nombrar un responsable para cada entrada. El Lab 6 compara la exportación de Millbrook con una lista aprobada que solo contiene la pasarela VPN.
+
+### 6.3 Lectura del resultado
+
+La pasarela VPN en 203.0.113.10, puerto 443, está aprobada. La dirección 203.0.113.24 expone BACnet/IP en el 47808 y un inicio de sesión web del BMS en el 80. Ninguno de los dos está aprobado: cualquiera en internet podría intentar leer u ordenar a los controladores, o adivinar la contraseña web. La exposición importa más por lo que hay detrás. BACnet acepta órdenes de cualquiera que pueda alcanzarlo, así que no es solo una fuga de datos sino una vía hacia los ajustes del aire de los quirófanos y de la enfriadora. Esa combinación la sitúa en lo más alto del informe del analista al equipo de redes y a mantenimiento.
+
+### 6.4 Respuesta
+
+Informe de inmediato al equipo de redes y a mantenimiento; pida al responsable de la red que cierre la exposición mediante un cambio de emergencia; revise los registros en busca de conexiones desde el exterior; averigüe quién la abrió y por qué, y ofrézcale en su lugar una vía con soporte. Guarde la exportación, las horas y los extractos de registro con el informe, porque muestran cuánto duró la exposición y si alguien la usó. En Millbrook, los registros del cortafuegos mostraron muchos intentos externos de alcanzar el puerto 47808 en los últimos meses. Ese hallazgo se traslada a mantenimiento para que compruebe los ajustes de los controladores y los registros de tendencias en busca de cambios en el mismo periodo.
+
+### 6.5 Evitar que se repita
+
+Añada una comprobación mensual de exposición al calendario del equipo de redes, exija una fecha de fin en toda regla de cortafuegos abierta para un proyecto y haga que los contratistas soliciten el acceso remoto mediante el proceso de la pasarela en lugar de pedir puertos. Cada medida cierra una causa. La comprobación mensual detecta lo que se escapa; las fechas de fin hacen que las reglas de proyecto caduquen; el proceso de la pasarela da a los contratistas una vía que no necesita puertos abiertos. Lleve el seguimiento de la comprobación mensual en el registro con la fecha y el resultado, para que un mes omitido quede a la vista.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+El equipo de redes rastrea 203.0.113.24 hasta una regla de cortafuegos añadida en 2023 para un proyecto de puesta en marcha de la enfriadora. La retiran en menos de una hora; los registros del cortafuegos muestran muchos intentos de conexión externos al puerto 47808 en los últimos meses. Al contratista se le dan cuentas en la pasarela en su lugar.
+
+> **Caso sintético — Millbrook.** Las direcciones pertenecen al rango de documentación 203.0.113.0/24 y los hechos son inventados.
+
+### Errores y límites
+
+Las listas de exposición son instantáneas; repítalas cada mes. Pruebe solo direcciones que pertenezcan a su organización, por medios autorizados.
+
+### Ejercicios — capítulo 6
+
+- **EX026 — Cómo se produce la exposición.** Describa dos formas en que una interfaz del BMS llega a ser accesible desde internet. *Rúbrica:* 3 = dos vías concretas (puerto del contratista, regla olvidada, enrutador del fabricante); 2 = una; 1 = vago; 0 = nada.
+- **EX027 — Tercer hallazgo.** Si la exportación encontrara también 203.0.113.10 en el puerto 22, ¿qué imprimiría el laboratorio para ese hallazgo y para el total? *Rúbrica:* 3 = una línea NOT APPROVED y `unapproved: 3`; 2 = una de las dos; 1 = aprobado; 0 = nada.
+- **EX028 — Nombre de la técnica.** ¿Qué técnica de ATT&CK for ICS describe la situación de 203.0.113.24? *Rúbrica:* 3 = T0883 Internet Accessible Device; 2 = solo el nombre; 1 = incorrecto; 0 = nada.
+- **EX029 — Pasos de respuesta.** Enumere los pasos de respuesta tras encontrar una exposición no aprobada. *Rúbrica:* 3 = informar, cierre de emergencia por el responsable, revisar registros, averiguar la causa, ofrecer una alternativa segura; 2 = tres; 1 = uno; 0 = nada.
+- **EX030 — Límite de las pruebas.** ¿Por qué Aisha no prueba las direcciones de otros hospitales «para comparar»? *Rúbrica:* 3 = no está autorizada, puede ser ilegal, podría causar interrupciones; 2 = uno; 1 = no pasa nada; 0 = nada.
+
+### Síntesis del capítulo
+
+Solo la pasarela da a internet; cualquier otra cosa que se encuentre se notifica, se cierra y se sustituye por una vía con soporte.
+
+### Siga estudiando — capítulo 06 de 12
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
 
 <a id="worked-results"></a>
 
@@ -227,6 +443,36 @@ Respuestas modelo para EX001–EX060. Millbrook Hospital Building Systems, Aisha
 **EX014.** La estación BMS-WS conectada a dos redes, el enlace de acceso remoto del contratista y la conexión celular del fabricante de los ascensores.
 
 **EX015.** Algunos controladores antiguos fallan al escanearlos, lo que podría detener la ventilación de las áreas clínicas; y los planos junto con la configuración de los conmutadores ofrecen la misma imagen sin tocar instalaciones en funcionamiento.
+
+**EX016.** Sistema, nombre del dispositivo, ubicación, responsable, versión de firmware, estado del soporte del fabricante, dirección de red y consecuencia clínica de un fallo.
+
+**EX017.** Imprime `UNSUPPORTED BOILER-2   system=HVAC installed=2010` y la línea de HVAC pasa a ser `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
+
+**EX018.** El fabricante de la enfriadora no publicará correcciones para las debilidades que se descubran a partir de ahora, así que su riesgo crece con el tiempo; debemos protegerla de otras formas y planificar su sustitución.
+
+**EX019.** Colocar LIFT-CTRL en su propio segmento de red, accesible solo desde su pasarela de mantenimiento; restringir o retirar el enlace celular salvo cuando se use con un ticket; supervisar sus conexiones; programar la sustitución en el plan de inversiones.
+
+**EX020.** La persona autorizada para gases medicinales, porque el sistema de alarma de gases medicinales es suyo.
+
+**EX021.** Si esa única contraseña se filtra, o si un ingeniero que la conocía se marcha en malos términos, todos los hospitales que atiende el integrador quedan abiertos a la vez.
+
+**EX022.** El registro de auditoría o de tendencias del BMS anota qué cuenta nominativa hizo el cambio, así que el hospital puede preguntar a esa persona el motivo y distinguir rápidamente un error de un uso indebido.
+
+**EX023.** «¿Se entrega cada dispositivo con una contraseña única o obliga a fijar una durante la configuración?» «¿Publican una política de divulgación de vulnerabilidades y un contacto?» «¿Durante cuántos años ofrecerán actualizaciones de seguridad, y está cifrada la comunicación?»
+
+**EX024.** Cambiar todas las contraseñas que conocía ese ingeniero, guardando los nuevos valores en el almacén; revisar qué cuentas y accesos remotos tenía y desactivarlos; registrar el cambio.
+
+**EX025.** IEC 62443-4-2, porque fija requisitos de seguridad para los componentes de los sistemas de automatización y control industrial, que es lo que son los controladores del BMS.
+
+**EX026.** Un contratista redirige un puerto para que la página web del BMS funcione desde casa; una regla de cortafuegos de un proyecto permanece tras terminar la puesta en marcha.
+
+**EX027.** `203.0.113.10:22 ... NOT APPROVED - report` para la nueva entrada, y el total pasa a ser `unapproved: 3`, ya que en esa dirección solo está aprobado el puerto 443.
+
+**EX028.** T0883 Internet Accessible Device.
+
+**EX029.** Informar al equipo de redes y a mantenimiento; hacer que el responsable lo cierre mediante un cambio de emergencia; revisar los registros en busca de conexiones externas; averiguar quién lo abrió y por qué; dar a esa parte acceso por la pasarela en su lugar.
+
+**EX030.** No tiene autorización sobre sistemas que no pertenecen a Millbrook; sondearlos podría infringir la ley y perturbar las instalaciones de otro hospital.
 
 <a id="references"></a>
 

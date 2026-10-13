@@ -12,10 +12,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Los sistemas del edificio como sistemas ciberfísicos | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Seguridad del paciente, contingencia y autoridad | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
-| 2 | [03](book/PLAN.md#ch-03) | Redes y protocolos en los sistemas del edificio | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Un inventario de los dispositivos del edificio | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Cuentas, contraseñas predeterminadas y líneas base de los dispositivos | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Exposición de los sistemas del edificio a internet | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
+| 2 | [03](book/PLAN.md#ch-03) | Redes y protocolos en los sistemas del edificio | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Un inventario de los dispositivos del edificio | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Cuentas, contraseñas predeterminadas y líneas base de los dispositivos | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | Exposición de los sistemas del edificio a internet | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
 | 4 | [07](book/PLAN.md#ch-07) | Acceso remoto de contratistas y proveedores | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
 | 4 | [08](book/PLAN.md#ch-08) | Segmentación de las redes del edificio | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
 | 5 | [09](book/PLAN.md#ch-09) | Supervisar tendencias y registros | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
