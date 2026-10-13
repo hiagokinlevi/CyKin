@@ -1927,6 +1927,8 @@ The course is one method: frame, baseline, evidence, risk and distribution, desi
 This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
+<a id="worked-results"></a>
+
 ## Worked results and assessment notes
 
 Each worked result shows one defensible answer and explains what the rubric rewards. A different answer can earn full credit when it meets the same standard of evidence, scope and honesty about limits. Numerical results come from the offline labs in this book run with Python 3 (3.13 was used for this draft) and the standard library only; if your output differs, first check the Python version, the seed where one is used, and whether you changed the order of random draws. All figures describe synthetic data; never present them as findings about real operators.
@@ -1935,7 +1937,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 **EX001 — Frame a hospital decision.** *Decision-maker:* Merrow Health Chief Operating Officer, with board approval above a stated capital threshold. *Decision:* whether and when to replace the unsupported pathology laboratory information system. *Options:* (A) replace this year with a supported product; (B) isolate the current system, restrict its interfaces, and replace in two years; (C) replace in two years without further isolation (a weak option that a reasonable person might prefer only under extreme budget pressure — better replaced by a genuine third option such as migrate urgent work to another site's system); (D) defer indefinitely. *Objectives (service units):* maximize turnaround of urgent results within clinical targets; minimize cancelled elective procedures; minimize patient-identifiable data exposure. *Horizon:* decision this quarter; consequences over three years. *Constraints:* no unbudgeted headcount; clinical safety sign-off required; data-protection duties. Full credit requires a genuine third option (not a straw man), service-unit objectives and constraints distinguished from objectives.
 
-**EX002 — Change one cell.** With D's OT cost at 1,200: maximum regrets A=320, B=660, C=280, D=960; minimax regret still C. EV under the analyst's beliefs: A 299.6, B 293.1, C 290.6, D 309.0 — C still wins. D does not win because its ransomware and vendor/cloud cells remain expensive, so its maximum regret (against C in the ransomware scenario, 1,300 − 560 = 740 if OT were ignored, but with the revised OT cell the worst regret is 960 against B's 240 in a different scenario depending on the table) stays above C's. The point: one revised cell rarely flips a robust recommendation when several scenarios contribute.
+**EX002 — Change one cell.** With D's OT cost at 1,200: maximum regrets A=320, B=660, C=280, D=960; minimax regret still C. Expected values: analyst A 299.6, B 293.1, C 290.6, D 309.0 (C wins); pessimist A 381.5, B 367.0, C 362.5, D 562.0 (C wins); regulator A 252.6, B 310.6, C 275.1, D 265.0 (A still wins, with D now second). D does not win because its ransomware and vendor/cloud cells remain expensive: even if the OT scenario were ignored, its regret in the ransomware scenario would be 1,300 − 450 = 850 (against B), far above C's maximum regret of 280; with the revised cell its largest regret is 960, in the OT scenario against A's 240. The point: one revised cell rarely flips a robust recommendation when several scenarios contribute.
 
 **EX003 — Value of perfect information.** Best option now is C at expected cost 290.6. With perfect information the expected cost is 0.15×450 + 0.03×240 + 0.10×330 + 0.72×0 = 107.7. EVPI ≈ 182.9 (thousand pounds). A £60k assessment is worth buying for this decision only if it can move the probability of OT compromise across the 3% or 7% thresholds that change the recommendation, and if its expected value of *imperfect* information approaches its cost. An assessment that cannot change the choice has low decision value whatever its quality.
 
@@ -1969,7 +1971,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 ### Chapter 4: EX016–EX020
 
-**EX016 — Partial rural improvement.** Modified Y: Upper Merrow 1.93 hours/household/year and 771 vulnerable-household-hours — better than X (2.39; 956) but much worse than original Y (0.96; 386). Extending the lab to report P(any Upper Merrow interruption > 48 h) gives about 0.015 under X, 0.001 under original Y and 0.006 under modified Y (seed 4). Full credit implements a per-event duration check for Upper Merrow.
+**EX016 — Partial rural improvement.** Modified Y: Upper Merrow 1.93 hours/household/year and 771 vulnerable-household-hours — better than X (2.39; 956) but much worse than original Y (0.96; 386). Extending the lab to report P(any Upper Merrow interruption > 48 h) gives about 0.015 under X, 0.001 under original Y and 0.007 under modified Y (seed 4). Full credit implements a per-event duration check for Upper Merrow.
 
 **EX017 — Ethical analysis memo.** Affected groups: Harbour and Fenley households, Upper Merrow households (including vulnerable), staff. Beneficence and justice (Menlo; ACM/NSPE public-welfare primacy): X reduces total harm and meets the tail appetite; Y reduces concentrated rural harm. The board must choose the value judgement; a combined recommendation (X plus non-technical rural measures) is honest about residual concentration.
 
@@ -2075,6 +2077,8 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 **EX060 — Continuing practice and review triggers.** Volatile sources: NIS2 national transposition and guidance; NERC CIP revisions; NIST SP 800-82 and CSF updates; CISA CPGs and KEV; sector-specific guidance (HPH CPGs, water sector). Monitoring: standards mailing lists, regulator pages, advisory subscriptions. Triggers: new advisory affecting remote-access products; a peer incident; a supplier concentration change. Record changes as updates to decision records with dates.
 
+<a id="glossary"></a>
+
 ## Glossary
 
 **Architecture decision record (ADR).** A short record of an architecture choice: context, alternatives, decision, consequences, verification and review trigger.
@@ -2126,6 +2130,8 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 **Wilson score interval.** A confidence interval for a proportion that behaves well for small samples and rates near 0 or 1.
 
 **Zones and conduits.** IEC 62443 concepts: groups of assets with common security requirements, and the controlled communications between them.
+
+<a id="references"></a>
 
 ## References
 
