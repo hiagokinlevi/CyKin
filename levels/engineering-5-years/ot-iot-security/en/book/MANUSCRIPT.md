@@ -3341,9 +3341,13 @@ You will (1) run a review that can reject; (2) use a checklist tied to safety re
 
 Reviewers may block merge for fail-open paths, missing tests, SIS reachability regressions, or empty scores in UI. LGTM without the checklist is invalid.
 
+At ABP, CNHP reviewers have written authority to block a merge on any of these grounds, and the plant manager has agreed not to override a block to meet a deadline. A reviewer who approves without completing the checklist has not reviewed the change, and the merge is reverted until a proper review is done. Lena keeps a record of blocks and their reasons, which showed that most blocks concerned missing tests rather than unsafe designs.
+
 ### 45.2 Checklist
 
 Fail-closed; policy authn; schema forbids payloads; coverage has denominator; secrets redaction; rollback path documented; SIS reachability test green.
+
+Lena's checklist at ABP has one line for each item, and each line links to the requirement it enforces, such as S-1 for fail-closed behaviour and R-12 for SIS-B reachability. The reviewer ticks a line only after seeing the evidence, such as the test that fails when policy is missing. Rollback is checked by naming the previous version and the command to restore it, and the reachability test must have run on the exact commit being merged.
 
 ### 45.3 Dissent
 
@@ -3351,9 +3355,13 @@ If one reviewer disagrees, record the dissent in the ADR even if overruled — f
 
 > **Synthetic case — Ashford Batch Plant.** A coverage badge PR was blocked twice under this checklist; the third revision shipped the honest UI (Chapter 35).
 
+At ABP the external reviewer's dissent about the collector sending alerts to the HMI was recorded verbatim, and in that case it changed the design. Lena keeps overruled dissents in the same place, because a later incident may prove them right.
+
 ### 45.4 Errors and limits
 
 Reviews after merge are archaeology, not control.
+
+At ABP a small change to the alert format was once merged before review because the deadline was close, and the review that followed found it had removed the reason code that operators relied on. The fix required a second release during a window. Since then CNHP's merge queue refuses any change without a completed checklist, and a review requested after merging is recorded as a process failure in the retrospective rather than counted as a review.
 
 ### Practice note
 
@@ -3366,6 +3374,8 @@ Once per term, invite an engineer from outside the squad to review a safety-crit
 
 
 Blocking comments must cite a requirement id or checklist item number. Repeated checklist skips by the same reviewer trigger a coaching conversation. The calendar is part of the control design.
+
+ABP's external reviewer came from a water utility.
 
 ### Field note — Friday merge ban
 
@@ -3410,9 +3420,13 @@ You will (1) finish implementation against the frozen proposal; (2) run Verifica
 
 Feature freeze date is real: after it, only safety fixes. New ideas go to a sequel proposal.
 
+Lena's capstone froze at v1.0 of her compiler. After the freeze, she fixed only the silent stall in the vector loader, because it could hide a failure, and logged every new idea, such as support for a second plant, in a sequel proposal. The freeze date was agreed with her supervisor at the proposal stage, so nobody could treat it as a soft target when the last weeks became busy.
+
 ### 46.2 Verify
 
 Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
+
+Lena reran Lab II for the compiler on a clean machine built from the v1.0 tag, using only synthetic fixtures. The run included all 214 unit tests, the conformance vector sets, the reachability equivalence check and the bench firewall replay. The checklist was signed by Lena and her reviewer, and the report named the tests that need bench hardware, so a later rerun without that hardware cannot quietly treat skipped tests as passes.
 
 ### 46.3 Docs
 
@@ -3438,11 +3452,15 @@ per operator-hour before=3.31 after=1.05
 worst source before: comm loss PLC-A (38% of load)
 ```
 
-> **Synthetic case — Ashford Batch Plant.** Capstone II delivered signed allow-list distribution; Lab II green; runbook updated the same day.
+> **Synthetic case — Ashford Batch Plant.** One Capstone II team in Lena's cohort delivered signed allow-list distribution; Lab II green; runbook updated the same day.
+
+That team's project was separate from Lena's capstone, the compiler. Her documentation for the compiler included the demo script, the list of non-goals and a handover note naming which tests need bench hardware, all signed by operations before tagging.
 
 ### 46.4 Errors and limits
 
 Demo magic on a laptop with hand-waved fail-closed does not pass.
+
+At Lena's capstone review, a classmate's demo showed a policy tool working on a laptop but could not show what happened when the policy file was missing. The examiners marked the fail-closed requirement as not met. Lena's demo deleted the policy on the bench and showed the denial with its reason code, then restored it, because claims about safe failure must be shown under failure rather than described while everything is working.
 
 ### Practice note
 
@@ -3455,6 +3473,8 @@ Capstone II demo follows a script on synthetic data: show fail-closed, show cove
 
 
 Advisor review watches the silent-run recording and files doc issues before sign-off. Capstone code without an ops owner at merge is unfinished. Demo scripts are recorded next to the lab report.
+
+Lena's demo followed this script exactly. Her ops owner signed at merge.
 
 ### Field note — silent run stall
 
@@ -3499,9 +3519,13 @@ You will (1) run a scripted failure trial; (2) measure recovery time; (3) file c
 
 Inject: allow-list file deleted; finding store killed; clock skew; duplicate event replay; flat graph substituted for zoned. Observe denies, queues, alerts, reachability fail.
 
+In ABP's bench failure trial, Lena's team deleted the allow-list file while replayed traffic was running, then stopped the finding store, skewed the clock on the bench copy of PLC-A and replayed duplicate events. Finally they substituted a flat graph for the zoned one. Observers recorded whether writes were denied, whether findings queued, whether alerts fired and whether the reachability check failed on the flat graph. Each inject was run separately before any combination was attempted.
+
 ### 47.2 Measures
 
 Time to deny-all writes after policy loss; time to alert; time to restore; findings lost (should be 0 with queue); SIS reachability check still fails closed on bad graph.
+
+At ABP the trial measured 45 seconds to deny all writes after the allow-list was deleted, against a 30-second target. Alerts fired within the target, and no findings were lost, because drafts queued while the finding store was down. The reachability check correctly failed when the flat graph was substituted, showing SIS-B as reachable. Each measure was recorded by an observer with a stopwatch and checked against the logs, so the numbers did not rely on anyone's memory.
 
 ### 47.3 Corrective actions
 
@@ -3542,9 +3566,13 @@ cusum classB FA=0/60 det=0/60 mean_delay=nan
 
 > **Synthetic case — Ashford Batch Plant.** Trial showed 45s to deny-all writes; target 30s — poll interval tightened.
 
+At ABP the 45-second deny time became a ticket for the monitor's owner with a due date. The fix shortened the policy check interval, and the inject was rerun until it met the target twice. The ticket closed only after the second passing run, and the next trial date was booked before the observers left the room.
+
 ### 47.4 Errors and limits
 
 Trials on production windows are forbidden; use synthetic ranges.
+
+Lena's trials at ABP run on the bench range with synthetic traffic, never during a production window. Deleting the allow-list on the live monitor would test the same code path but could interrupt engineering writes while a batch was running on R-101. The bench copy of PLC-A and the replayed trunk traffic give the timing evidence needed. Production checks after a fix are read-only, such as confirming that the deployed version matches the one tested on the bench.
 
 ### Practice note
 
@@ -3557,6 +3585,8 @@ Write corrective tickets against components and runbooks, not against individual
 
 
 Observers note timings and deviations — they do not fix things live. Schedule the next trial date before leaving the room so recurrence tests actually happen. Scoreboard photos go into the dossier.
+
+ABP's tickets follow this rule. Nobody was blamed.
 
 ### Field note — zero-ticket smell
 
@@ -3601,9 +3631,13 @@ You will (1) assemble a dossier a third party can re-hash; (2) structure retenti
 
 Work permit PDF, ConduitSet/allow-list JSON, finding exports, evidence objects, hash manifest, tool versions, lab reports. Reader can verify without trusting your laptop.
 
+Lena's CNHP dossier at ABP contains the signed work permit, the zone model and allow-list v1.4.2 as files, finding exports, the evidence objects, a hash manifest, tool versions and the laboratory reports. An auditor can take the dossier to a clean machine and check every hash against the manifest, without needing access to Lena's laptop or her account. The first page explains how to do this in a few steps.
+
 ### 48.2 Retention
 
 Classes: window working (90 days), sealed evidence (agreed years), aggregate metrics (longer). Deletion jobs are tested.
+
+At ABP, working data from each window is kept for 90 days, and sealed evidence for safety-relevant change records is kept for seven years, following the site's record schedule. Aggregate metrics, such as the alarm rate falling from 556 to 176 per week, are kept longer. Lena tests the deletion job each quarter on a copy of the store, so that expired working data is actually removed rather than assumed gone.
 
 ### 48.3 Exclusions
 
@@ -3611,9 +3645,13 @@ No payloads, no live credentials, no proprietary batch genealogy. If it cannot b
 
 > **Synthetic case — Ashford Batch Plant.** Dossier v3 re-hashed clean after a findings.json edit incident; process note included.
 
+Lena's dossier at ABP replaces raw captures, passwords and recipe values with hashes and pointers to the controlled store. After a findings file was edited by mistake, version three was re-hashed and the process note explains how the error was found.
+
 ### 48.4 Errors and limits
 
 Dossiers in personal cloud accounts fail residency and retention.
+
+At ABP a contractor once copied window evidence to a personal cloud folder to work from home. The folder was outside the site's retention schedule and outside the approved data location, so the copy was deleted and the evidence restored from the sealed store. Lena's dossier now lives only in the controlled store, and the manifest records its location, so any copy elsewhere is clearly unofficial and can be identified during an audit.
 
 ### Practice note
 
@@ -3626,6 +3664,8 @@ Include a one-page how to verify this dossier at the top. When redacting, keep a
 
 
 Third-party readability: if outsiders cannot find the manifest or the work-permit version, the dossier fails. Test restore from dossier on a clean machine once per term as a graded exercise.
+
+Lena's dossier passes this test each term.
 
 ### Field note — automated dossier
 
@@ -3674,9 +3714,13 @@ You will (1) structure a thesis around a programme claim; (2) defend measures an
 
 One sentence: what you built/measured and for whom. Example: Signed allow-list distribution with fail-closed semantics reduces unauthorized writes forwarded in synthetic trials.
 
+Lena's own claim was about her compiler: for ABP's nine-conduit model, generated rules matched the design's reachability and caught three errors manual review missed. Her sentence names what she built, which plant model it was tested on and what it showed, so an examiner can check each part against the evidence. She rewrote it several times until every clause pointed to a specific result in the body.
+
 ### 49.2 Body
 
 Related work, design, verification, results with intervals and attack classes, limitations, ethics.
+
+Lena's thesis follows this order. Related work cites IEC 62443-3-2 and SP 800-82r3 for the methods she used. Design explains how the compiler turns ABP's zone model into rules. Verification shows the equivalence check and conformance vectors, results report the three errors found, limitations state that a flawed zone model would be compiled faithfully, and the ethics chapter explains why no live plant was touched. Each part points to evidence.
 
 ### 49.3 Citations
 
@@ -3684,9 +3728,13 @@ Use verified URLs/DOIs from the source policy; do not invent papers. Note access
 
 > **Synthetic case — Ashford Batch Plant.** Thesis draft used only synthetic trial data and cited SP 800-82 Rev. 3 correctly.
 
+Lena checked every reference in her thesis against its DOI or official URL and recorded the access date. Each citation has a note saying how the work was used, so none is listed without being read. Her advisor checked the notes.
+
 ### 49.4 Errors and limits
 
 A thesis that evaluates exploitation skill is out of programme scope.
+
+Lena's thesis measures whether her compiler produces correct rules, not whether she can break into a plant. Her ethics chapter states that the work used only synthetic exports of ABP's zone model and the bench firewall, and it gives an example of a request she refused: testing generated rules against a live plant firewall. Examiners judge the engineering and evidence, so attack skill is neither demonstrated nor assessed in the defense.
 
 ### Practice note
 
@@ -3699,6 +3747,8 @@ Cite frameworks you actually used. Padding related work with unread papers is di
 
 
 How-used notes stop citation padding cold in advisor review. The threats-to-validity page is graded; leaving it blank fails the thesis gate regardless of implementation quality. Examiners read that page first.
+
+Lena's threats page lists the compiler's reliance on a correct zone model.
 
 ### Field note — claim on page one
 
@@ -3743,9 +3793,13 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 Claim; demo on synthetic data; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
 
+Lena's defense followed this order. She stated her claim about the compiler, showed it on ABP's synthetic nine-conduit model, presented the equivalence and vector results, and described the silent stall in the vector loader and how a timeout fixed it. She then named the limitation that a wrong zone model would be compiled faithfully. Nothing in the talk touched a live system, and every number on her slides pointed to an artefact in the dossier.
+
 ### 50.2 Likely questions
 
 Fail-closed proof? Denominator choice? Dual-use boundary? SIS independence? What broke in Lab II? Practice answering with pointers to artefacts.
+
+Lena practised each question with her supervisor, answering with a pointer to an artefact rather than an opinion. For fail-closed behaviour, she pointed to the trial results; for SIS independence, to the reachability check showing SIS-B unreachable from every routed zone. For Lab II, she described the clock-skew defect and its fix. The hardest question, what happens if the design is wrong, received the most practice of all.
 
 ### 50.3 Reflection
 
@@ -3776,9 +3830,13 @@ average-rate estimate: 5.56 h
 
 > **Synthetic case — Ashford Batch Plant.** Lena's defense led with the fail-closed lab and SIS reachability, not a slide of logos. When asked for a risk score, she refused and showed SIS reachability, critical opens and coverage denominators.
 
+Lena's reflection was the silent stall during the freeze rerun: her vector loader had retried forever when the bench firewall rate-limited it, so a failed run looked like a slow one.
+
 ### 50.4 Errors and limits
 
 Defense is not a sales pitch for a scanner vendor.
+
+Lena's defense mentioned no product names and recommended no tools. When an examiner asked which commercial scanner she would buy, she explained that her work produced rules and evidence for any firewall and that the choice of product belonged to ABP's procurement process. Her slides showed results and limitations, not logos, so examiners judged her work on its evidence rather than on any vendor's marketing. She kept that line throughout.
 
 ### Practice note
 
@@ -3791,6 +3849,8 @@ Provide examiners the claim sentence, Lab II summary, failure-trial measure and 
 
 
 Keep a parking lot for examiner ideas and process it within a week. Thank operators who ran synthetic trials; defense without their logs is storytelling. The final chapter of the degree is the first chapter of stewardship.
+
+Lena sent her packet a day early.
 
 ### Field note — ninety-day review
 
