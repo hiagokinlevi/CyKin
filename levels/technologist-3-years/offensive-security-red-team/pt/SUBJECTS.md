@@ -24,11 +24,11 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 3 | [12](book/PLAN.md#ch-12) | Segurança ofensiva autorizada e red team: fluxos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Segurança ofensiva autorizada e red team: cenários de risco | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Segurança ofensiva autorizada e red team: métodos I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Segurança ofensiva autorizada e red team: laboratório guiado | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Plano](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Segurança ofensiva autorizada e red team: métodos II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Segurança ofensiva autorizada e red team: ferramentas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Segurança ofensiva autorizada e red team: controles | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Segurança ofensiva autorizada e red team: monitoramento | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plano](book/PLAN.md#ch-20) |
+| 3 | [15](book/PLAN.md#ch-15) | Segurança ofensiva autorizada e red team: laboratório guiado | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Segurança ofensiva autorizada e red team: métodos II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Segurança ofensiva autorizada e red team: ferramentas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Segurança ofensiva autorizada e red team: controles | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [19 · Rascunho](book/MANUSCRIPT.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Segurança ofensiva autorizada e red team: monitoramento | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-19) | [20 · Plano](book/PLAN.md#ch-20) |
 | 4 | [20](book/PLAN.md#ch-20) | Segurança ofensiva autorizada e red team: solução de problemas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Segurança ofensiva autorizada e red team: integração de serviços | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Segurança ofensiva autorizada e red team: automação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plano](book/PLAN.md#ch-23) |
