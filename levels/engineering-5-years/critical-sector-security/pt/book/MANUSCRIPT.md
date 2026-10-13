@@ -152,7 +152,7 @@ constant-average model (150 m3/h): 17.33 h
 dV/dt at t=6 h: -210.0 m3/h
 ```
 
-O método de Euler com passo de uma hora superestima o tempo em cerca de 0,4 h; com 0,01 h ele concorda com a resposta exata até a segunda casa decimal. A derivada em t = 6 h é −210 m³/h: o esvaziamento mais rápido da janela.
+O método de Euler com passo de uma hora superestima o tempo em cerca de 0,4 h; com 0,01 h ele fica a 0,01 h da resposta exata. A derivada em t = 6 h é −210 m³/h: o esvaziamento mais rápido da janela.
 
 Antes de confiar no laboratório, verifique se seus números concordam com o exemplo resolvido: o instante exato deve coincidir com a autonomia integrada de Hollin Hill, e a linha da taxa média deve reproduzir a estimativa mais longa do planejador. Se você mudar o horário de início, mantenha o piso em 800 metros cúbicos para que a comparação continue justa. Um resultado que só aparece com um tamanho de passo é uma propriedade do método, não do reservatório.
 

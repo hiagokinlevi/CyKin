@@ -157,7 +157,7 @@ constant-average model (150 m3/h): 17.33 h
 dV/dt at t=6 h: -210.0 m3/h
 ```
 
-Euler with a one-hour step overstates the time by about 0.4 h; at 0.01 h it agrees with the exact answer to two decimals. The derivative at t = 6 h is −210 m³/h: the steepest drain in the window.
+Euler with a one-hour step overstates the time by about 0.4 h; at 0.01 h it is within 0.01 h of the exact answer. The derivative at t = 6 h is −210 m³/h: the steepest drain in the window.
 
 Before trusting the lab, check that its numbers agree with the worked example: the exact time should match the integrated hold-up for Hollin Hill, and the average-rate line should reproduce the planner's longer estimate. If you change the start time, keep the floor at 800 cubic metres so the comparison stays fair. A result that only appears at one step size is a property of the method, not of the reservoir.
 

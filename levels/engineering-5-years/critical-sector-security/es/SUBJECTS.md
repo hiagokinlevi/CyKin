@@ -1,64 +1,64 @@
-# Subjects and book chapters — Critical infrastructure and sector security / Engineering course / Español
+# Asignaturas y capítulos del libro — Infraestructura crítica y seguridad sectorial / Ingeniería / Español
 
-**One course, one principal book, 50 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Un curso, un libro principal, 50 asignaturas y capítulos, una skill del curso.** Solo los enlaces marcados como Borrador llevan a contenido didáctico escrito; un capítulo planificado es un resumen, no una lección terminada.
 
-This is an English working index awaiting translation and review for this language.
+Edición en español neutro, escrita a partir de la edición de referencia en inglés; revisión técnica y lingüística pendiente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Inicio](../../../../README.md) · [Ruta de estudio completa](../../../../STUDY_PATH.md) · [Página del curso](../README.md) · [Plan del libro](book/PLAN.md) · [Skill del curso](../skill/SKILL.md)
 
-**Course 138 of 207.** Read chapters 01–50 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 138 de 207.** Lea los capítulos 01–50 de arriba abajo. Para cada capítulo, use el enlace Borrador; el enlace numerado del plan es solo un resumen. Intente resolver los ejercicios antes de consultar los resultados resueltos al final del libro. La última fila lleva al siguiente curso en este mismo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Calculus I | 80 | 30 | 3 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Discrete mathematics | 80 | 30 | 3 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Physics for computing | 80 | 30 | 3 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 1 | [04](book/PLAN.md#ch-04) | Programming I | 80 | 30 | 3 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Engineering communication | 80 | 30 | 3 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Calculus II | 80 | 30 | 3 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Probability and statistics | 80 | 30 | 3 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Computer architecture | 80 | 30 | 3 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Programming II | 80 | 30 | 3 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Engineering ethics and safety | 80 | 30 | 3 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Networks and protocols | 80 | 30 | 3 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Operating systems | 80 | 30 | 3 | Planned | [13 · Plan](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Data systems | 80 | 30 | 3 | Planned | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Software engineering | 80 | 30 | 3 | Planned | [15 · Plan](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Security fundamentals | 80 | 30 | 3 | Planned | [16 · Plan](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Systems engineering | 80 | 30 | 3 | Planned | [17 · Plan](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Control and feedback basics | 80 | 30 | 3 | Planned | [18 · Plan](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Security architecture | 80 | 30 | 3 | Planned | [19 · Plan](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Identity and cryptography | 80 | 30 | 3 | Planned | [20 · Plan](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Critical infrastructure and sector security: engineering context | 80 | 30 | 3 | Planned | [21 · Plan](book/PLAN.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Critical infrastructure and sector security: requirements | 80 | 30 | 3 | Planned | [22 · Plan](book/PLAN.md#ch-22) |
-| 5 | [22](book/PLAN.md#ch-22) | Critical infrastructure and sector security: system and data models | 80 | 30 | 3 | Planned | [23 · Plan](book/PLAN.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Critical infrastructure and sector security: threat and failure analysis | 80 | 30 | 3 | Planned | [24 · Plan](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Critical infrastructure and sector security: methods I | 80 | 30 | 3 | Planned | [25 · Plan](book/PLAN.md#ch-25) |
-| 5 | [25](book/PLAN.md#ch-25) | Design studio I | 80 | 30 | 3 | Planned | [26 · Plan](book/PLAN.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Critical infrastructure and sector security: architecture alternatives | 80 | 30 | 3 | Planned | [27 · Plan](book/PLAN.md#ch-27) |
-| 6 | [27](book/PLAN.md#ch-27) | Critical infrastructure and sector security: control design | 80 | 30 | 3 | Planned | [28 · Plan](book/PLAN.md#ch-28) |
-| 6 | [28](book/PLAN.md#ch-28) | Critical infrastructure and sector security: implementation I | 80 | 30 | 3 | Planned | [29 · Plan](book/PLAN.md#ch-29) |
-| 6 | [29](book/PLAN.md#ch-29) | Critical infrastructure and sector security: measurement | 80 | 30 | 3 | Planned | [30 · Plan](book/PLAN.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Verification laboratory I | 80 | 30 | 3 | Planned | [31 · Plan](book/PLAN.md#ch-31) |
-| 7 | [31](book/PLAN.md#ch-31) | Critical infrastructure and sector security: implementation II | 80 | 30 | 3 | Planned | [32 · Plan](book/PLAN.md#ch-32) |
-| 7 | [32](book/PLAN.md#ch-32) | Critical infrastructure and sector security: reliability | 80 | 30 | 3 | Planned | [33 · Plan](book/PLAN.md#ch-33) |
-| 7 | [33](book/PLAN.md#ch-33) | Critical infrastructure and sector security: safety and resilience | 80 | 30 | 3 | Planned | [34 · Plan](book/PLAN.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Critical infrastructure and sector security: integration | 80 | 30 | 3 | Planned | [35 · Plan](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Design studio II | 80 | 30 | 3 | Planned | [36 · Plan](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Critical infrastructure and sector security: performance and scale | 80 | 30 | 3 | Planned | [37 · Plan](book/PLAN.md#ch-37) |
-| 8 | [37](book/PLAN.md#ch-37) | Critical infrastructure and sector security: operations | 80 | 30 | 3 | Planned | [38 · Plan](book/PLAN.md#ch-38) |
-| 8 | [38](book/PLAN.md#ch-38) | Critical infrastructure and sector security: validation | 80 | 30 | 3 | Planned | [39 · Plan](book/PLAN.md#ch-39) |
-| 8 | [39](book/PLAN.md#ch-39) | Critical infrastructure and sector security: maintainability | 80 | 30 | 3 | Planned | [40 · Plan](book/PLAN.md#ch-40) |
-| 8 | [40](book/PLAN.md#ch-40) | Verification laboratory II | 80 | 30 | 3 | Planned | [41 · Plan](book/PLAN.md#ch-41) |
-| 9 | [41](book/PLAN.md#ch-41) | Critical infrastructure and sector security: system optimization | 80 | 30 | 3 | Planned | [42 · Plan](book/PLAN.md#ch-42) |
-| 9 | [42](book/PLAN.md#ch-42) | Critical infrastructure and sector security: applied research | 80 | 30 | 3 | Planned | [43 · Plan](book/PLAN.md#ch-43) |
-| 9 | [43](book/PLAN.md#ch-43) | Industry or public-service practice | 80 | 30 | 3 | Planned | [44 · Plan](book/PLAN.md#ch-44) |
-| 9 | [44](book/PLAN.md#ch-44) | Engineering capstone I | 80 | 30 | 3 | Planned | [45 · Plan](book/PLAN.md#ch-45) |
-| 9 | [45](book/PLAN.md#ch-45) | Independent design review | 80 | 30 | 3 | Planned | [46 · Plan](book/PLAN.md#ch-46) |
-| 10 | [46](book/PLAN.md#ch-46) | Engineering capstone II | 80 | 30 | 3 | Planned | [47 · Plan](book/PLAN.md#ch-47) |
-| 10 | [47](book/PLAN.md#ch-47) | Failure and recovery trial | 80 | 30 | 3 | Planned | [48 · Plan](book/PLAN.md#ch-48) |
-| 10 | [48](book/PLAN.md#ch-48) | Evidence dossier | 80 | 30 | 3 | Planned | [49 · Plan](book/PLAN.md#ch-49) |
-| 10 | [49](book/PLAN.md#ch-49) | Engineering thesis | 80 | 30 | 3 | Planned | [50 · Plan](book/PLAN.md#ch-50) |
-| 10 | [50](book/PLAN.md#ch-50) | Final defense | 80 | 30 | 3 | Planned | [Course 139 →](../../../postgraduate-2-years/cybersecurity/es/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Cálculo I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Matemática discreta | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Física para la computación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
+| 1 | [04](book/PLAN.md#ch-04) | Programación I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
+| 1 | [05](book/PLAN.md#ch-05) | Comunicación en ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Cálculo II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Probabilidad y estadística | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Arquitectura de computadoras | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Programación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Ética y seguridad en ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Redes y protocolos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Sistemas operativos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plan](book/PLAN.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Sistemas de datos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Ingeniería de software | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Fundamentos de seguridad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Ingeniería de sistemas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plan](book/PLAN.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Fundamentos de control y realimentación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Arquitectura de seguridad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plan](book/PLAN.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Identidad y criptografía | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plan](book/PLAN.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Infraestructura crítica y seguridad sectorial: contexto de ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plan](book/PLAN.md#ch-21) |
+| 5 | [21](book/PLAN.md#ch-21) | Infraestructura crítica y seguridad sectorial: requisitos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plan](book/PLAN.md#ch-22) |
+| 5 | [22](book/PLAN.md#ch-22) | Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plan](book/PLAN.md#ch-23) |
+| 5 | [23](book/PLAN.md#ch-23) | Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plan](book/PLAN.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Infraestructura crítica y seguridad sectorial: métodos I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plan](book/PLAN.md#ch-25) |
+| 5 | [25](book/PLAN.md#ch-25) | Taller de diseño I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plan](book/PLAN.md#ch-26) |
+| 6 | [26](book/PLAN.md#ch-26) | Infraestructura crítica y seguridad sectorial: alternativas de arquitectura | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plan](book/PLAN.md#ch-27) |
+| 6 | [27](book/PLAN.md#ch-27) | Infraestructura crítica y seguridad sectorial: diseño de controles | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plan](book/PLAN.md#ch-28) |
+| 6 | [28](book/PLAN.md#ch-28) | Infraestructura crítica y seguridad sectorial: implementación I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plan](book/PLAN.md#ch-29) |
+| 6 | [29](book/PLAN.md#ch-29) | Infraestructura crítica y seguridad sectorial: medición | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plan](book/PLAN.md#ch-30) |
+| 6 | [30](book/PLAN.md#ch-30) | Laboratorio de verificación I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-30)) | [31 · Plan](book/PLAN.md#ch-31) |
+| 7 | [31](book/PLAN.md#ch-31) | Infraestructura crítica y seguridad sectorial: implementación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-31)) | [32 · Plan](book/PLAN.md#ch-32) |
+| 7 | [32](book/PLAN.md#ch-32) | Infraestructura crítica y seguridad sectorial: confiabilidad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-32)) | [33 · Plan](book/PLAN.md#ch-33) |
+| 7 | [33](book/PLAN.md#ch-33) | Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-33)) | [34 · Plan](book/PLAN.md#ch-34) |
+| 7 | [34](book/PLAN.md#ch-34) | Infraestructura crítica y seguridad sectorial: integración | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-34)) | [35 · Plan](book/PLAN.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Taller de diseño II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plan](book/PLAN.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Infraestructura crítica y seguridad sectorial: desempeño y escala | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plan](book/PLAN.md#ch-37) |
+| 8 | [37](book/PLAN.md#ch-37) | Infraestructura crítica y seguridad sectorial: operaciones | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plan](book/PLAN.md#ch-38) |
+| 8 | [38](book/PLAN.md#ch-38) | Infraestructura crítica y seguridad sectorial: validación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plan](book/PLAN.md#ch-39) |
+| 8 | [39](book/PLAN.md#ch-39) | Infraestructura crítica y seguridad sectorial: mantenibilidad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plan](book/PLAN.md#ch-40) |
+| 8 | [40](book/PLAN.md#ch-40) | Laboratorio de verificación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-40)) | [41 · Plan](book/PLAN.md#ch-41) |
+| 9 | [41](book/PLAN.md#ch-41) | Infraestructura crítica y seguridad sectorial: optimización del sistema | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-41)) | [42 · Plan](book/PLAN.md#ch-42) |
+| 9 | [42](book/PLAN.md#ch-42) | Infraestructura crítica y seguridad sectorial: investigación aplicada | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-42)) | [43 · Plan](book/PLAN.md#ch-43) |
+| 9 | [43](book/PLAN.md#ch-43) | Práctica en la industria o en el servicio público | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-43)) | [44 · Plan](book/PLAN.md#ch-44) |
+| 9 | [44](book/PLAN.md#ch-44) | Proyecto final de ingeniería I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-44)) | [45 · Plan](book/PLAN.md#ch-45) |
+| 9 | [45](book/PLAN.md#ch-45) | Revisión independiente del diseño | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-45)) | [46 · Plan](book/PLAN.md#ch-46) |
+| 10 | [46](book/PLAN.md#ch-46) | Proyecto final de ingeniería II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-46)) | [47 · Plan](book/PLAN.md#ch-47) |
+| 10 | [47](book/PLAN.md#ch-47) | Ensayo de falla y recuperación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-47)) | [48 · Plan](book/PLAN.md#ch-48) |
+| 10 | [48](book/PLAN.md#ch-48) | Expediente de evidencia | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-48)) | [49 · Plan](book/PLAN.md#ch-49) |
+| 10 | [49](book/PLAN.md#ch-49) | Tesis de ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-49)) | [50 · Plan](book/PLAN.md#ch-50) |
+| 10 | [50](book/PLAN.md#ch-50) | Defensa final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-50)) | [Curso 139 →](../../../postgraduate-2-years/cybersecurity/es/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.
