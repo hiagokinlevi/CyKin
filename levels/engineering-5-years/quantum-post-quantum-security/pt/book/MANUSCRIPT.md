@@ -2075,7 +2075,7 @@ Os números contam uma história coerente: a cobertura subiu à medida que os de
 - Contar os algoritmos configurados como proteção.
 - Inventários de uma só fonte.
 
-Esconder os desconhecidos faz o inventário parecer completo enquanto sistemas como o CLP do guindaste continuam sem avaliação; o Laboratório I os relata como 20% para que não possam ser ignorados. Contar os algoritmos configurados superestima a proteção sempre que clientes ou middleboxes impedem a negociação. Um inventário construído com uma única fonte deixa escapar o que essa fonte não consegue ver, como bibliotecas ligadas estaticamente, invisíveis às varreduras de pacotes, ou equipamentos de fornecedores, invisíveis à varredura de código. A BPA exige pelo menos duas fontes para qualquer ativo que guarde dados de vida longa.
+Esconder os desconhecidos faz o inventário parecer completo enquanto sistemas como o CLP do guindaste continuam sem avaliação; o Laboratório I os relata como 20% para que não possam ser ignorados. Contar os algoritmos configurados superestima a proteção sempre que clientes ou middleboxes impedem a negociação. Um inventário construído com uma única fonte deixa escapar o que essa fonte não consegue ver, como bibliotecas ligadas estaticamente, invisíveis às varreduras de pacotes de software, ou equipamentos de fornecedores, invisíveis à varredura de código. A BPA exige pelo menos duas fontes para qualquer ativo que guarde dados de vida longa.
 
 ### Nota de engenharia
 
