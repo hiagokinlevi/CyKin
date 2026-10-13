@@ -39,9 +39,9 @@ Toda afirmación factual sobre una ley, una norma, un incidente público o un es
 1. [Toma de decisiones de seguridad avanzada](#ch-01): plantear decisiones, objetivos en unidades de servicio, valor esperado, arrepentimiento y robustez, valor de la información, sesgos y el registro de decisión.
 2. [Infraestructura crítica y seguridad sectorial: práctica actual](#ch-02): qué exigen las líneas base y los regímenes en los distintos sectores, cobertura declarada frente a verificada y priorización por consecuencias.
 3. [Infraestructura crítica y seguridad sectorial: evidencia especializada](#ch-03): evidencia en entornos de TO y mixtos, relojes y cronologías, preservación sin perturbar el proceso y hallazgos que separan la observación de la inferencia.
-4. [Riesgo y ética avanzados](../../en/book/MANUSCRIPT.md#ch-04): riesgo cuantificado con incertidumbre, excedencia de pérdidas, apetito de riesgo en unidades de servicio y quién soporta el riesgo residual.
-5. [Infraestructura crítica y seguridad sectorial: alternativas de diseño](../../en/book/MANUSCRIPT.md#ch-05): comparar arquitecturas como grafos de ataque y como sistemas operables, modos de fallo de los controles y registros de decisiones de arquitectura.
-6. [Infraestructura crítica y seguridad sectorial: evaluación controlada](../../en/book/MANUSCRIPT.md#ch-06): probar las detecciones y los simulacros antes de confiar en ellos, intervalos, carga de falsas alarmas y diseño seguro de las pruebas.
+4. [Riesgo y ética avanzados](#ch-04): riesgo cuantificado con incertidumbre, excedencia de pérdidas, apetito de riesgo en unidades de servicio y quién soporta el riesgo residual.
+5. [Infraestructura crítica y seguridad sectorial: alternativas de diseño](#ch-05): comparar arquitecturas como grafos de ataque y como sistemas operables, modos de fallo de los controles y registros de decisiones de arquitectura.
+6. [Infraestructura crítica y seguridad sectorial: evaluación controlada](#ch-06): probar las detecciones y los simulacros antes de confiar en ellos, intervalos, carga de falsas alarmas y diseño seguro de las pruebas.
 7. [Infraestructura crítica y seguridad sectorial: integración organizativa](../../en/book/MANUSCRIPT.md#ch-07): modelos operativos, propiedad, concentración de proveedores e integración con la gestión de emergencias.
 8. [Infraestructura crítica y seguridad sectorial: casos difíciles](../../en/book/MANUSCRIPT.md#ch-08): cascadas, prioridades de restablecimiento, actualizaciones de confianza defectuosas, internos ambiguos y obligaciones en conflicto.
 9. [Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento](../../en/book/MANUSCRIPT.md#ch-09): liderar una función, informes al consejo, casos de aseguramiento, frescura de la evidencia y distinguir la señal del ruido.
@@ -584,7 +584,480 @@ La evidencia especializada es el material sobre el que descansan las decisiones 
 <!-- cyberabc:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 12
 
-[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Riesgo y ética avanzados
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Construir una estimación cuantificada del riesgo con una incertidumbre explícita sobre la frecuencia y la gravedad, y leerla como una curva de excedencia de pérdidas en lugar de como un único número.
+2. Expresar el apetito y la tolerancia al riesgo en unidades de servicio, con límites sobre la cola y no solo sobre la media.
+3. Obtener y documentar el juicio experto de forma que pueda cuestionarse.
+4. Analizar quién soporta el riesgo residual y reconocer cuándo una opción que es mejor en promedio es peor para un grupo concreto.
+5. Aplicar principios éticos reconocidos a las decisiones de seguridad, a las pruebas y a la divulgación en los servicios esenciales.
+
+El capítulo 1 comparó opciones con una tabla de escenarios. Este capítulo sustituye la tabla por distribuciones y añade la pregunta que las tablas de decisión ocultan: ¿*para quién* es mejor una opción? El capítulo 8 aplica ambas cosas a casos en los que cualquier elección perjudica a alguien.
+
+### 4.1 Por qué engañan las estimaciones puntuales
+
+Una entrada de un registro de riesgos como «probabilidad 3, impacto 4, puntuación 12» oculta tres cosas que una decisión necesita: con qué frecuencia, con qué gravedad y con cuánta incertidumbre. Las recomendaciones del NIST sobre evaluación de riesgos describen el riesgo como una función de la amenaza, la vulnerabilidad, la probabilidad y el impacto, y advierten de que las evaluaciones deben indicar sus supuestos y su incertidumbre ([NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final)). Además, multiplicar puntuaciones ordinales hace aritmética con números que son solo etiquetas.
+
+Un modelo mínimo mejor tiene dos partes: una distribución de **frecuencia** del número de eventos de pérdida que ocurren en un año y una distribución de **gravedad** de lo grave que es cada uno. En las infraestructuras, la gravedad suele tener asimetría a la derecha: la mayoría de las interrupciones son cortas y unas pocas son muy largas. La distribución lognormal es una elección habitual y sencilla para estas magnitudes; sus parámetros deben anclarse en la evidencia (duraciones de interrupciones pasadas, resultados de ejercicios, incidentes de organizaciones similares) y la propia elección debe registrarse como un supuesto. Simular muchos años da una distribución de la pérdida anual, que puede resumirse de tres maneras: la **media** (lo que se paga en promedio), la **probabilidad de superar** los umbrales que importan y un **percentil alto** como el 99 (un año malo de uno entre cien). Representar la probabilidad de excedencia frente a la pérdida da la **curva de excedencia de pérdidas** (LEC, por sus siglas en inglés).
+
+### 4.2 Apetito y tolerancia en unidades de servicio
+
+El **apetito de riesgo** es la cantidad y el tipo de riesgo que una organización está dispuesta a buscar o retener; la **tolerancia** fija los límites de la variación aceptable. El NIST CSF 2.0 sitúa ambos dentro de la gobernanza ([NIST, 2024](https://doi.org/10.6028/NIST.CSWP.29)). En un servicio esencial, las declaraciones de apetito deben formularse en unidades de servicio y deben acotar la cola. Por ejemplo (sintético): «Merrow Water no aceptará una probabilidad anual superior al 2 % de una interrupción relacionada con ciberincidentes que supere un millón de horas-hogar de suministro, ni ningún escenario creíble en el que los hogares de un solo distrito se queden sin suministro durante más de 48 horas sin una provisión alternativa». La primera cláusula acota la LEC; la segunda acota la *distribución*, un tema al que volvemos en el §4.5.
+
+### 4.3 El juicio experto como evidencia
+
+Cuando los datos escasean, los parámetros de frecuencia y gravedad proceden de personas. La obtención estructurada (definir las magnitudes con precisión, formar a los expertos en calibración, pedir cuantiles en lugar de valores únicos, agregar a varios expertos y registrar la justificación) hace que el juicio sea inspeccionable ([O'Hagan et al., 2006](https://doi.org/10.1002/0470033312)). Reglas prácticas para el especialista: pregunte por magnitudes observables («¿cuántas horas se tardaría en restablecer el suministro a Upper Merrow tras una pérdida total del SCADA?») en lugar de por probabilidades abstractas; pida primero un intervalo del 90 % y después una mediana; pida tasas base de operadores comparables; y registre la persona, la fecha, la pregunta y la justificación, para poder revisar la estimación cuando llegue evidencia.
+
+### 4.4 La ética en la seguridad de los servicios esenciales
+
+Las decisiones de seguridad en las infraestructuras distribuyen el daño. Varios marcos consolidados ayudan a razonar sobre ellas:
+
+- El **Informe Menlo** adaptó los principios de la ética de la investigación (respeto por las personas, beneficencia, justicia) a la investigación en tecnologías de la información y la comunicación, y añadió el respeto por la ley y el interés público ([Dittrich and Kenneally, 2012](https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf)). Sus principios se aplican directamente a las pruebas y a la recogida de datos en entornos operativos.
+- Los códigos profesionales, como el [ACM Code of Ethics](https://www.acm.org/code-of-ethics) y el [NSPE Code of Ethics for Engineers](https://www.nspe.org/resources/ethics/code-ethics), sitúan el bienestar y la seguridad del público por encima del interés del empleador o del cliente, y exigen honestidad sobre los límites de la propia competencia y de la seguridad de un sistema.
+- La legislación de protección de datos impone deberes al tratamiento de datos personales en la monitorización de seguridad y la gestión de incidentes ([GDPR, Regulation (EU) 2016/679](https://eur-lex.europa.eu/eli/reg/2016/679/oj)); los marcos de privacidad, como el [NIST Privacy Framework](https://www.nist.gov/privacy-framework), ayudan a gestionar esos deberes en el diseño. *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia.
+
+Para un especialista hay cuatro preguntas éticas recurrentes. **Distribución:** ¿quién soporta el riesgo residual de la opción elegida y tuvo voz en la decisión? **Proporcionalidad:** ¿es la intrusión de una medida de seguridad (la monitorización del personal, la restricción del acceso de pacientes o clientes) proporcionada al daño que evita? **Honestidad:** ¿se comunican los riesgos y las incertidumbres con veracidad a quienes deciden y, cuando procede, al público? **Divulgación:** cuando descubre una debilidad que también afecta a otros (un producto de un proveedor usado por otras empresas de servicios), ¿cómo los protege sin armar a los atacantes? Los procesos de divulgación coordinada de vulnerabilidades existen exactamente para este caso ([CISA, CVD Program](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program)).
+
+### 4.5 Quién soporta el riesgo residual
+
+Las medidas agregadas (el total de horas-hogar perdidas, la pérdida esperada) pueden favorecer opciones que protegen zonas densas y bien servidas, porque proteger un poco a muchas personas puntúa más que proteger mucho a pocas. Por eso un especialista debe informar, junto a los totales, de la **carga per cápita por grupo** (distrito, tipo de cliente) y de la carga sobre las **personas con menos capacidad para afrontarla**, como los hogares con dependencia médica del agua o de la electricidad. Ni los totales ni las medidas per cápita zanjan la cuestión; elegir entre ellos es un juicio de valor que corresponde a quien decide y rinde cuentas, informado por los deberes legales (por ejemplo, los deberes hacia los clientes vulnerables) y por el apetito declarado de la organización. El deber ético del especialista es hacer visible la distribución para que el compromiso se elija con conocimiento de causa.
+
+### 4.6 Ejemplo resuelto: dos opciones con el mismo presupuesto (sintético)
+
+Merrow Water abastece a tres distritos. Harbour es urbano (60.000 hogares); Fenley, periurbano (25.000); Upper Merrow, rural (6.000 hogares en una única tubería troncal, con una telemetría lenta de restablecer y largos tiempos de desplazamiento de las cuadrillas). Las interrupciones del suministro relacionadas con ciberincidentes se modelan como eventos de Poisson con una duración lognormal (mediana de 8 horas). Actualmente, el restablecimiento en Upper Merrow tarda el triple. Dos opciones cuestan lo mismo:
+
+- **X: reforzar el SCADA central**: reduce la frecuencia de eventos de 0,30 a 0,20 al año en todas partes; no hace nada por el largo restablecimiento de Upper Merrow.
+- **Y: segunda alimentación y control local para Upper Merrow**: deja la frecuencia en 0,30, pero reduce el restablecimiento de Upper Merrow a 0,75 de la duración base.
+
+Los hogares vulnerables (con necesidades médicas o de cuidados registradas) se cuentan por separado: 900 en Harbour, 500 en Fenley y 400 en Upper Merrow.
+
+### 4.7 Actividad práctica: excedencia de pérdidas y distribución
+
+```python
+# Lab 4 - same budget, different people: loss exceedance and the distribution of harm (offline, stdlib only)
+# Synthetic: Merrow Water supply interruptions caused by cyber events. Two options cost the same.
+import random, math
+random.seed(4)
+YEARS = 20000
+DISTRICTS = {  # name: (households, share of interruption events that hit this district, vulnerable households)
+    "Harbour (urban)":  (60000, 0.40, 900),
+    "Fenley (suburban)": (25000, 0.25, 500),
+    "Upper Merrow (rural, single main)": (6000, 0.35, 400),
+}
+def poisson(lam):
+    L, k, p = math.exp(-lam), 0, 1.0
+    while True:
+        p *= random.random()
+        if p < L: return k
+        k += 1
+def simulate(freq, hours_mu, hours_sigma, rural_hours_factor):
+    annual_hh_hours = []; per_district = {d: 0.0 for d in DISTRICTS}; vuln = {d: 0.0 for d in DISTRICTS}
+    for _ in range(YEARS):
+        total = 0.0
+        for _ in range(poisson(freq)):
+            hours = random.lognormvariate(hours_mu, hours_sigma)
+            r = random.random(); acc = 0
+            for d, (hh, share, v) in DISTRICTS.items():
+                acc += share
+                if r < acc:
+                    h = hours * (rural_hours_factor if d.startswith("Upper") else 1.0)
+                    per_district[d] += hh * h; vuln[d] += v * h; total += hh * h
+                    break
+        annual_hh_hours.append(total)
+    return annual_hh_hours, per_district, vuln
+OPTIONS = {
+    "X: harden central SCADA (fewer events)":      (0.20, math.log(8), 0.9, 3.0),
+    "Y: second feed + local control Upper Merrow": (0.30, math.log(8), 0.9, 0.75),
+}
+for name, args in OPTIONS.items():
+    loss, per, vul = simulate(*args)
+    loss.sort()
+    mean = sum(loss) / YEARS
+    p_any = sum(1 for x in loss if x > 0) / YEARS
+    p_big = sum(1 for x in loss if x > 1_000_000) / YEARS
+    p99 = loss[int(0.99 * YEARS)]
+    print(name)
+    print(f"  mean household-hours/yr {mean:9.0f}  P(any)={p_any:.3f}  P(>1M hh-h)={p_big:.4f}  99th pct {p99:9.0f}")
+    for d, (hh, share, v) in DISTRICTS.items():
+        print(f"  {d:34s} hours per household/yr {per[d]/YEARS/hh:5.2f}   vulnerable-household-hours/yr {vul[d]/YEARS:7.0f}")
+```
+
+Salida esperada:
+
+```text
+X: harden central SCADA (fewer events)
+  mean household-hours/yr     88346  P(any)=0.183  P(>1M hh-h)=0.0204  99th pct   1498603
+  Harbour (urban)                    hours per household/yr  0.97   vulnerable-household-hours/yr     872
+  Fenley (suburban)                  hours per household/yr  0.64   vulnerable-household-hours/yr     318
+  Upper Merrow (rural, single main)  hours per household/yr  2.39   vulnerable-household-hours/yr     956
+Y: second feed + local control Upper Merrow
+  mean household-hours/yr    117262  P(any)=0.261  P(>1M hh-h)=0.0305  99th pct   1920694
+  Harbour (urban)                    hours per household/yr  1.48   vulnerable-household-hours/yr    1332
+  Fenley (suburban)                  hours per household/yr  0.91   vulnerable-household-hours/yr     453
+  Upper Merrow (rural, single main)  hours per household/yr  0.96   vulnerable-household-hours/yr     386
+```
+
+**Interpretación.** En todas las medidas agregadas X es mejor: una pérdida media de 88.346 frente a 117.262 horas-hogar al año; una probabilidad anual del 2,0 % frente al 3,1 % de superar un millón de horas-hogar; un percentil 99 más bajo. Frente al apetito del §4.2, X se sitúa en el límite del 2 % para la cola (0,0204, dentro del error de simulación del límite) e Y lo incumple claramente. Pero la **distribución** invierte el panorama. Con X, un hogar de Upper Merrow pierde en promedio 2,39 horas al año (más del doble que un hogar urbano y casi cuatro veces lo que pierde uno periurbano), y los 400 hogares vulnerables de Upper Merrow soportan 956 horas-hogar vulnerable al año, más que los 900 hogares de Harbour. Y reduce la carga rural a 0,96 horas por hogar y las horas-hogar vulnerable rurales a 386, a costa de cargas mayores en otros lugares. El total de horas-hogar vulnerable es casi idéntico (unas 2.146 con X y 2.171 con Y): las opciones apenas difieren en cuánto daño recae sobre las personas vulnerables en conjunto, pero sí, y mucho, en *qué* personas vulnerables lo soportan. La segunda cláusula del apetito (ningún distrito sin suministro más de 48 horas) exigiría examinar la cola de Upper Merrow, que el resumen no muestra; esa es la ampliación del EX016.
+
+El análisis no decide entre X e Y. Muestra que «X es mejor» solo es cierto desde una perspectiva utilitarista agregada y que la elección concentra el riesgo en una pequeña población rural. Una recomendación defendible podría combinar X con medidas no técnicas más baratas para Upper Merrow (agua embotellada preposicionada, un registro prioritario de hogares vulnerables), y debe dejar constancia del juicio de valor.
+
+### 4.8 Errores comunes y límites
+
+- Multiplicar puntuaciones ordinales y tratar el producto como una magnitud.
+- Informar solo de la pérdida anual media de un riesgo de cola pesada.
+- Expresar el apetito de riesgo como un color o un adjetivo en lugar de como un límite en unidades de servicio.
+- Tratar las cifras obtenidas de expertos como datos y descartar el registro de la obtención.
+- Informar solo del beneficio agregado, de modo que el daño concentrado en grupos pequeños resulta invisible.
+- Presentar un juicio de valor (agregado frente a distribución) como un resultado técnico.
+- Guardar silencio sobre una vulnerabilidad que afecta a otros operadores porque divulgarla resulta incómodo.
+
+Los límites del modelo son los de sus supuestos: la independencia de Poisson ignora las campañas que golpean varios emplazamientos a la vez; la lognormal puede subestimar las interrupciones más largas; los repartos entre distritos son juicios. Si se cambian, los números se mueven; el *método* de mostrar la distribución junto a los totales, no.
+
+### Ejercicios — capítulo 4
+
+**EX016 — Mejora rural parcial.** *Objetivo:* ver cómo responde la distribución a una opción más débil. *Entradas:* el Lab 4. *Restricciones:* cambie el factor de duración rural de Y de 0,75 a 1,5 (la segunda alimentación se retrasa; solo se entrega el control local). *Pasos:* (1) vuelva a ejecutarlo; (2) informe de las horas por hogar de Upper Merrow y de las horas-hogar vulnerable con la Y modificada; (3) compárelas con X y con la Y original; (4) amplíe el laboratorio para que informe de la probabilidad de que Upper Merrow sufra en un año una única interrupción de más de 48 horas con X y con Y. *Evidencia esperada:* salidas y un párrafo. *Rúbrica:* 3 = cifras de la Y modificada correctas (1,93 horas; 771 horas-hogar vulnerable), todavía mejor para Upper Merrow que X pero mucho menos que la Y original, ampliación de 48 horas implementada con una comprobación correcta por evento; 2 = falta la ampliación; 1 = no ejecutado; 0 = nada.
+
+**EX017 — Memorando de análisis ético.** *Objetivo:* aplicar principios éticos a la elección entre X e Y. *Entradas:* §4.4–4.7. *Restricciones:* 400 palabras; principios del Informe Menlo y de un código profesional. *Pasos:* (1) identifique los grupos afectados y su voz; (2) analice la beneficencia y la justicia; (3) indique el juicio de valor que debe hacer el consejo; (4) recomiende una opción combinada con medidas no técnicas. *Evidencia esperada:* memorando. *Rúbrica:* 3 = grupos concretos, el compromiso entre la perspectiva agregada y la distributiva se nombra como un juicio, recomendación combinada concreta, se respeta el deber de honestidad hacia el consejo; 2 = principios enumerados pero no aplicados; 1 = afirma que X o Y es técnicamente correcta; 0 = nada.
+
+**EX018 — Protocolo de obtención.** *Objetivo:* obtener parámetros de gravedad defendibles. *Entradas:* la pregunta «¿cuánto se tardaría en restablecer el suministro a Upper Merrow tras la pérdida total del SCADA?». *Restricciones:* tres expertos; magnitud observable; cuantiles. *Pasos:* (1) defina la magnitud con precisión; (2) redacte el guion de obtención, incluida una pregunta de calibración; (3) explique cómo agregaría y registraría las respuestas. *Evidencia esperada:* protocolo. *Rúbrica:* 3 = magnitud inequívoca (eventos de inicio y fin definidos), se piden los cuantiles 5, 50 y 95, obtención independiente antes de la discusión, calibración y registro conservados; 2 = se piden valores únicos; 1 = probabilidad de un evento vago; 0 = nada.
+
+**EX019 — Declaración de apetito.** *Objetivo:* formular el apetito y la tolerancia en unidades de servicio. *Entradas:* Merrow Health (tres hospitales, dependencia de un servicio de ambulancias). *Restricciones:* al menos un límite sobre la cola y uno sobre la distribución; medibles con los datos propios de la organización. *Pasos:* redáctela; después pruébela con un escenario plausible e indique si se incumple. *Evidencia esperada:* declaración y prueba. *Rúbrica:* 3 = unidades de servicio (por ejemplo, horas de desvío del servicio de urgencias, tratamientos urgentes retrasados), límites de cola y de distribución medibles, prueba honesta; 2 = solo promedios; 1 = adjetivos; 0 = nada.
+
+**EX020 — Dilema de divulgación.** *Objetivo:* gestionar una debilidad que afecta a otros. *Entradas:* durante una revisión, Merrow Water descubre que la herramienta de soporte remoto de Corvane acepta una credencial por defecto en un puerto de mantenimiento; Corvane da soporte a otras empresas de servicios de la región. *Restricciones:* ninguna prueba fuera de los propios sistemas de Merrow; ninguna divulgación pública antes de un proceso coordinado. *Pasos:* (1) acciones de protección inmediatas para Merrow; (2) vía de notificación a Corvane y, si hace falta, a un coordinador; (3) qué decir al foro de resiliencia y cuándo; (4) justificación ética. *Evidencia esperada:* plan. *Rúbrica:* 3 = primero se protegen los sistemas propios, notificación privada al proveedor con evidencia, uso de un proceso de divulgación coordinada si el proveedor no actúa, el foro se informa de un modo que protege a los demás sin publicar detalles de explotación, principios citados; 2 = falta un paso; 1 = prueba sistemas de otras empresas de servicios o publica; 0 = nada.
+
+### Síntesis del capítulo
+
+Cuantifique el riesgo como frecuencia y gravedad con una incertidumbre explícita, y léalo a través de la curva de excedencia de pérdidas, no de una única puntuación. Formule el apetito y la tolerancia en unidades de servicio, con límites sobre la cola y sobre la distribución. Trate el juicio experto como evidencia que debe obtenerse con cuidado y registrarse. Muestre quién soporta el riesgo residual (per cápita y entre quienes tienen menos capacidad para afrontarlo), porque las opciones que son mejores en promedio pueden concentrar el daño. Aplique principios éticos reconocidos a las elecciones, las pruebas y la divulgación, y mantenga visibles los juicios de valor como juicios que corresponden a quien decide y rinde cuentas.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Siga estudiando — capítulo 04 de 12
+
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Infraestructura crítica y seguridad sectorial: alternativas de diseño
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Generar alternativas de arquitectura realmente distintas para un problema de seguridad en un servicio esencial, partiendo de las consecuencias y no de los productos.
+2. Representar las alternativas como grafos de rutas permitidas y compararlas por sus rutas, sus puntos de estrangulamiento y las barreras de cada ruta.
+3. Evaluar cada alternativa como un sistema operable: los modos de fallo de los propios controles de seguridad, el acceso de emergencia, la mantenibilidad y el personal que debe operarlo.
+4. Combinar la evidencia de seguridad, operabilidad y coste en una recomendación, usando los métodos de decisión de los capítulos 1 y 4.
+5. Dejar constancia de la elección en un registro de decisión de arquitectura.
+
+El capítulo 4 cuantificó el riesgo; este capítulo muestra dónde lo cambian las decisiones de diseño. Después, el capítulo 6 comprueba si un diseño elegido funciona como se afirma.
+
+### 5.1 Partir de la consecuencia
+
+Las revisiones de arquitectura suelen partir de un producto («¿deberíamos comprar un diodo de datos?») o de un patrón («necesitamos confianza cero»). Un especialista parte de la **consecuencia que debe evitarse** y trabaja hacia atrás hasta las rutas digitales que podrían causarla. La ingeniería impulsada por las consecuencias e informada por la ciberseguridad, desarrollada en el Idaho National Laboratory, formaliza este enfoque: identificar las funciones cuyo fallo sería intolerable, mapear los sistemas y las dependencias que podrían causarlo y elegir mitigaciones de ingeniería (incluidas las no digitales, como los límites mecánicos) que eliminen o acoten la consecuencia ([INL, CCE](https://inl.gov/national-security/cce/); [Bochman and Freeman, 2021](https://www.routledge.com/Countering-Cyber-Sabotage-Introducing-Consequence-Driven-Cyber-Informed-Engineering-CCE/Bochman-Freeman/p/book/9780367673710)). En la planta de Hollin de Merrow Water, la consecuencia intolerable es que una dosis de cloro no segura llegue a los clientes; la pregunta de diseño es cómo debería funcionar el acceso remoto al controlador de dosificación, si es que debe existir.
+
+La mitigación no digital merece el primer lugar en el conjunto de opciones. Una bomba dosificadora dimensionada de modo que físicamente no pueda superar una dosis segura, o un analizador independiente que dispare la dosificación en un límite estricto, acota la consecuencia pase lo que pase en la red. Después se eligen los controles digitales para reducir la frecuencia de los intentos sobre lo que queda.
+
+### 5.2 Principios que generan alternativas
+
+Los principios de diseño clásicos siguen generando buenas alternativas: economía del mecanismo, valores por defecto a prueba de fallos, mediación completa y mínimo privilegio ([Saltzer and Schroeder, 1975](https://doi.org/10.1109/PROC.1975.9939)). La IEC 62443 los aplica a los sistemas de control mediante **zonas** (grupos de activos con requisitos de seguridad comunes) y **conductos** (la comunicación controlada entre zonas) ([ISA overview](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). La arquitectura de confianza cero traslada la aplicación de las políticas de la ubicación en la red a decisiones por sesión basadas en la identidad, el dispositivo y el contexto ([NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final)). La ingeniería de ciberresiliencia añade técnicas (segmentación, no persistencia, diversidad, redundancia, integridad fundamentada) orientadas a seguir operando a pesar del compromiso, y no solo a evitarlo ([NIST SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1)). Cada principio apunta a un diseño distinto; usar varios de forma deliberada produce alternativas que difieren en su naturaleza.
+
+### 5.3 Los diseños como grafos
+
+Una representación sencilla y potente: los nodos son sistemas, las aristas dirigidas son conexiones permitidas y cada arista lleva la barrera que un intruso debe superar para usarla. Tres medidas permiten entonces comparar diseños:
+
+- **Número de rutas** desde puntos de entrada plausibles hasta el activo que soporta la consecuencia. Menos es mejor, pero solo junto con la siguiente medida.
+- **Conjunto mínimo de puntos de estrangulamiento**: el menor número de nodos cuya eliminación (o defensa perfecta) corta todas las rutas. Un único punto de estrangulamiento fuerte es más fácil de defender, monitorizar y evidenciar que varios débiles; también es un punto único de fallo para las operaciones legítimas (§5.4).
+- **Fuerza de las barreras a lo largo de cada ruta**: una ruta cuyas aristas posteriores a la entrada inicial no llevan ninguna barrera ("none") permite que un punto de apoyo se convierta en control.
+
+El grafo debe incluir las **rutas inesperadas** que contienen los entornos reales: conexiones del historiador, enlaces de copia de seguridad, módems de proveedores, agentes de monitorización en la nube. Muchas debilidades de arquitectura no están en el diseño previsto, sino en la ruta que alguien añadió después por comodidad. El análisis de grafos no demuestra la seguridad; hace explícitos y contables los supuestos.
+
+### 5.4 Los diseños como sistemas operables
+
+Un diseño seguro sobre el papel puede hacer fracasar las operaciones. Para cada alternativa, pregunte:
+
+1. **¿Qué ocurre cuando falla el control de seguridad?** Si el intermediario de acceso está caído durante una emergencia nocturna, ¿cómo llega un ingeniero al controlador? Debe existir y probarse una ruta de **acceso de emergencia** (credenciales selladas, presencia física, una vía de emergencia grabada y con alarma); si no, los operadores construirán la suya.
+2. **¿Quién lo opera?** Un diseño que necesita competencias que la organización no tiene, o un proveedor al que no puede exigir responsabilidades, se degradará.
+3. **¿Cómo se modifica?** Cada excepción a una regla es una arista nueva en el grafo; los diseños que facilitan el trabajo legítimo reducen la presión para crear excepciones.
+4. **¿Cuánto cuesta a lo largo de su vida?** Licencias, personal, pruebas, renovaciones.
+5. **¿Qué efecto tiene sobre la monitorización?** Los flujos de datos unidireccionales pueden proteger una red de control y, aun así, permitir que el negocio vea los datos del proceso; también limitan el diagnóstico remoto.
+
+### 5.5 Ejemplo resuelto: tres diseños de acceso remoto en Hollin (sintético)
+
+Merrow Water tiene tres diseños candidatos para el acceso remoto a la red de control de Hollin:
+
+- **D1 VPN plana**: la configuración actual; la VPN de proveedores y personal llega directamente a la red de control; el historiador es accesible desde la red corporativa.
+- **D2 VPN más servidor de salto**: MFA en la VPN; todo el acceso interactivo a través de un servidor de salto bastionado; el historiador se traslada a una DMZ.
+- **D3 acceso intermediado con historiador unidireccional**: acceso remoto solo a través de un intermediario de acceso que exige MFA y aprobación por sesión, con sesiones grabadas y limitadas en el tiempo, que llegan a una única estación de trabajo de ingeniería; el historiador se replica hacia la DMZ a través de un enlace unidireccional; el interruptor de llave del controlador de dosificación se deja en RUN, lo que (en este controlador sintético) bloquea las descargas de programas.
+
+Se modelan dos puntos de entrada: internet y un correo de *phishing* que llega a un PC corporativo.
+
+### 5.6 Actividad práctica: rutas y puntos de estrangulamiento
+
+```python
+# Lab 5 - comparing three remote-access architectures as graphs (offline, standard library only)
+# Synthetic: paths from the internet to the dosing PLC at Merrow Water's Hollin works under three designs.
+# An edge is a permitted connection; its label is what an intruder must defeat to use it.
+from itertools import combinations
+DESIGNS = {
+ "D1 flat VPN": {
+   "internet": [("vpn", "password")],
+   "vpn": [("hmi", "none"), ("eng-ws", "none"), ("historian", "none")],
+   "corp-pc": [("vpn", "none"), ("historian", "password")],
+   "eng-ws": [("plc", "none")], "hmi": [("plc", "none")], "historian": [("hmi", "none")],
+   "email": [("corp-pc", "user click")], "plc": []},
+ "D2 VPN + jump host": {
+   "internet": [("vpn", "MFA")],
+   "vpn": [("jump", "password")], "corp-pc": [("jump", "password"), ("historian-dmz", "password")],
+   "jump": [("hmi", "password"), ("eng-ws", "password")],
+   "historian-dmz": [("historian", "none")], "historian": [("hmi", "none")],
+   "eng-ws": [("plc", "none")], "hmi": [("plc", "none")], "email": [("corp-pc", "user click")], "plc": []},
+ "D3 brokered access + one-way historian": {
+   "internet": [("broker", "MFA + per-session approval")],
+   "broker": [("eng-ws", "recorded session, time-boxed")],
+   "corp-pc": [("broker", "MFA + per-session approval")],
+   "historian": [("historian-dmz", "one-way")],  # data leaves OT only; nothing flows back
+   "eng-ws": [("plc", "PLC key switch in RUN blocks writes")], "hmi": [("plc", "none")],
+   "email": [("corp-pc", "user click")], "historian-dmz": [], "plc": []},
+}
+ENTRY, TARGET = ["internet", "email"], "plc"
+def paths(g, node, seen):
+    if node == TARGET: yield [node]; return
+    for nxt, _ in g.get(node, []):
+        if nxt not in seen:
+            for rest in paths(g, nxt, seen | {nxt}): yield [node] + rest
+def reachable(g, removed):
+    stack = [e for e in ENTRY if e not in removed]; seen = set(stack)
+    while stack:
+        n = stack.pop()
+        for nxt, _ in g.get(n, []):
+            if nxt not in seen and nxt not in removed: seen.add(nxt); stack.append(nxt)
+    return TARGET in seen
+for name, g in DESIGNS.items():
+    ps = [p for e in ENTRY for p in paths(g, e, {e})]
+    inner = sorted({n for n in g if n not in ENTRY + [TARGET]})
+    cut = next(c for k in range(1, len(inner) + 1) for c in combinations(inner, k) if not reachable(g, set(c)))
+    free = [p for p in ps if all(lbl == "none" for a, b in zip(p, p[1:]) for nxt, lbl in g[a] if nxt == b and a not in ENTRY)]
+    print(f"{name}: {len(ps)} paths; smallest chokepoint set {list(cut)}; "
+          f"paths with no barrier after the first hop: {len(free)}")
+    for p in ps:
+        bars = [lbl for a, b in zip(p, p[1:]) for nxt, lbl in g[a] if nxt == b]
+        print("   ", " -> ".join(p), "|", ", ".join(bars))
+```
+
+Salida esperada:
+
+```text
+D1 flat VPN: 7 paths; smallest chokepoint set ['corp-pc', 'vpn']; paths with no barrier after the first hop: 6
+    internet -> vpn -> hmi -> plc | password, none, none
+    internet -> vpn -> eng-ws -> plc | password, none, none
+    internet -> vpn -> historian -> hmi -> plc | password, none, none, none
+    email -> corp-pc -> vpn -> hmi -> plc | user click, none, none, none
+    email -> corp-pc -> vpn -> eng-ws -> plc | user click, none, none, none
+    email -> corp-pc -> vpn -> historian -> hmi -> plc | user click, none, none, none, none
+    email -> corp-pc -> historian -> hmi -> plc | user click, password, none, none
+D2 VPN + jump host: 5 paths; smallest chokepoint set ['corp-pc', 'jump']; paths with no barrier after the first hop: 0
+    internet -> vpn -> jump -> hmi -> plc | MFA, password, password, none
+    internet -> vpn -> jump -> eng-ws -> plc | MFA, password, password, none
+    email -> corp-pc -> jump -> hmi -> plc | user click, password, password, none
+    email -> corp-pc -> jump -> eng-ws -> plc | user click, password, password, none
+    email -> corp-pc -> historian-dmz -> historian -> hmi -> plc | user click, password, none, none, none
+D3 brokered access + one-way historian: 2 paths; smallest chokepoint set ['broker']; paths with no barrier after the first hop: 0
+    internet -> broker -> eng-ws -> plc | MFA + per-session approval, recorded session, time-boxed, PLC key switch in RUN blocks writes
+    email -> corp-pc -> broker -> eng-ws -> plc | user click, MFA + per-session approval, recorded session, time-boxed, PLC key switch in RUN blocks writes
+```
+
+**Interpretación.** D1 tiene siete rutas; en seis de ellas nada se interpone entre el primer punto de apoyo y el controlador. Su conjunto mínimo de puntos de estrangulamiento es de dos nodos. D2 elimina todas las rutas sin barreras y añade MFA, pero el grafo revela un defecto que el documento de diseño no mencionaba: la ruta `corp-pc → historian-dmz → historian → hmi → plc`. Trasladar el historiador a una DMZ dejando una conexión *desde la DMZ hacia* el historiador de la zona de control recrea una ruta que rodea el servidor de salto. Es exactamente el tipo de arista de conveniencia contra el que advertía el §5.3; el EX021 lo corrige. D3 tiene dos rutas, ambas a través de un único punto de estrangulamiento (el intermediario), y cada una cruza varias barreras fuertes. Por motivos de seguridad, D3 es claramente la mejor.
+
+Por motivos de operabilidad, el único punto de estrangulamiento de D3 es también su debilidad. Si el intermediario o su proveedor de identidad fallan durante una emergencia, no existe ninguna ruta remota; por tanto, el diseño necesita una ruta de acceso de emergencia probada, que es a su vez una arista nueva que hay que modelar y proteger. La barrera del interruptor de llave solo es real si los procedimientos operativos mantienen los interruptores en RUN y si una visita al emplazamiento es aceptable para los cambios de programa. Una recomendación completa añadiría estos elementos al coste y al grafo.
+
+### 5.7 Elegir y registrar
+
+Reúna la evidencia con los métodos del capítulo 1: una tabla de escenarios para cada diseño (incidentes evitados, costes operativos de un acceso más lento, escenarios de caída del intermediario) y la comprobación distributiva del capítulo 4 (¿hace un diseño más difícil dar soporte a los emplazamientos remotos?). Después, redacte un **registro de decisión de arquitectura (ADR)**: el contexto, la consecuencia que se aborda, las alternativas consideradas con sus grafos, la decisión, las consecuencias (incluidos los riesgos nuevos, como la dependencia del intermediario), el diseño del acceso de emergencia, la evidencia que mostrará que el diseño funciona (capítulo 6) y un desencadenante de revisión. Un ADR es un registro de decisión (§1.8) especializado en diseños; su valor está en que el próximo ingeniero que quiera añadir una arista cómoda pueda ver por qué no estaba ahí.
+
+### 5.8 Errores comunes y límites
+
+- Partir de un producto o de un eslogan en lugar de la consecuencia.
+- Omitir las mitigaciones no digitales que acotan directamente la consecuencia.
+- Dibujar el diseño previsto y pasar por alto las rutas añadidas después.
+- Contar controles en lugar de examinar las barreras a lo largo de cada ruta.
+- Celebrar un único punto de estrangulamiento sin diseñar para su fallo.
+- Ignorar quién operará el diseño y cómo se gestionarán las excepciones.
+- No redactar ningún registro de decisión, de modo que el siguiente cambio deshace el diseño sin que nadie lo note.
+
+Los grafos solo son tan completos como el inventario que los sustenta, y las etiquetas de las barreras son juicios sobre su fuerza, no mediciones. Úselos para comparar diseños y exponer supuestos, y después pruebe el diseño elegido (capítulo 6).
+
+### Ejercicios — capítulo 5
+
+**EX021 — Corrija D2.** *Objetivo:* eliminar una ruta no prevista y volver a evaluar. *Entradas:* el Lab 5. *Restricciones:* cambie solo los enlaces del historiador en D2, de modo que los datos fluyan en un solo sentido desde el historiador de la zona de control hacia la copia de la DMZ, como en D3. *Pasos:* (1) edítelo y vuelva a ejecutarlo; (2) informe de las rutas y del conjunto mínimo de puntos de estrangulamiento de D2; (3) compare D2 corregida con D3 en dos frases. *Evidencia esperada:* edición, salida y comparación. *Rúbrica:* 3 = edición correcta, D2 tiene ahora cuatro rutas con el punto de estrangulamiento `jump`, la comparación señala los saltos de D2 que siguen dependiendo solo de contraseñas frente a la aprobación por sesión y la grabación de D3; 2 = números correctos, comparación pobre; 1 = no ejecutado; 0 = nada.
+
+**EX022 — Una arista nueva.** *Objetivo:* evaluar una propuesta de conveniencia. *Entradas:* D3; Corvane propone un agente de monitorización en la nube en la estación de trabajo de ingeniería que mantiene una conexión saliente con la nube de Corvane «para diagnósticos». *Restricciones:* modélelo como una arista `internet → eng-ws` con la barrera "vendor cloud account". *Pasos:* (1) añada la arista y vuelva a ejecutarlo; (2) informe de las rutas y de los puntos de estrangulamiento; (3) proponga una alternativa que cubra la necesidad de diagnóstico. *Evidencia esperada:* salida y propuesta. *Rúbrica:* 3 = reconoce que el conjunto de puntos de estrangulamiento cambia porque ahora una ruta elude el intermediario, propone una alternativa (por ejemplo, diagnósticos exportados a través del historiador unidireccional, o el agente en un equipo de la DMZ), indica el riesgo residual; 2 = salida correcta, alternativa débil; 1 = acepta la arista porque, al ser solo saliente, sería segura; 0 = nada.
+
+**EX023 — Diseño del acceso de emergencia.** *Objetivo:* diseñar para el fallo del punto de estrangulamiento. *Entradas:* D3. *Restricciones:* debe funcionar cuando el intermediario y el proveedor de identidad están caídos; no debe convertirse en una ruta habitual. *Pasos:* (1) diseñe la ruta de acceso de emergencia; (2) añádala al grafo; (3) especifique las alarmas, los registros y la frecuencia de las pruebas. *Evidencia esperada:* diseño y lista de rutas actualizada. *Rúbrica:* 3 = ruta física o con credenciales selladas, con alarmas y revisión tras cada uso, modelada como una arista con su barrera, probada según un calendario; 2 = sin pruebas; 1 = contraseña compartida permanente; 0 = nada.
+
+**EX024 — Elija con evidencia.** *Objetivo:* combinar la seguridad y la operabilidad. *Entradas:* D1, D2 corregida y D3 con acceso de emergencia; costes anuales sintéticos de 20.000 £, 70.000 £ y 110.000 £; su juicio sobre las pérdidas de cada escenario con el formato del capítulo 1. *Restricciones:* al menos tres escenarios, incluida una caída del intermediario durante una emergencia. *Pasos:* (1) construya la tabla; (2) aplique el VE y el minimax del arrepentimiento; (3) indique el umbral que cambiaría su recomendación. *Evidencia esperada:* tabla y recomendación. *Rúbrica:* 3 = escenarios plausibles que incluyen los inconvenientes operativos de D3, ambas reglas aplicadas correctamente, umbral explícito; 2 = solo una regla; 1 = solo seguridad; 0 = nada.
+
+**EX025 — Registro de decisión de arquitectura.** *Objetivo:* dejar constancia de la elección de diseño. *Entradas:* su recomendación del EX024. *Restricciones:* una página; todos los elementos del §5.7. *Pasos:* redacte el ADR. *Evidencia esperada:* ADR. *Rúbrica:* 3 = contexto que parte de la consecuencia, alternativas con evidencia de los grafos, riesgos nuevos y acceso de emergencia, evidencia de verificación y desencadenante de revisión; 2 = falta un elemento; 1 = descripción de un producto; 0 = nada.
+
+### Síntesis del capítulo
+
+Diseñe hacia atrás desde la consecuencia y ponga primero los límites no digitales. Use principios consolidados (mínimo privilegio, mediación completa, zonas y conductos, decisiones por sesión, técnicas de resiliencia) para generar alternativas que difieran en su naturaleza. Represente los diseños como grafos de rutas permitidas y compare las rutas, los puntos de estrangulamiento y las barreras, incluidas las aristas de conveniencia que acumulan los entornos reales. Evalúe cada diseño como un sistema operable y diseñe para el fallo de sus propios controles. Elija con los métodos de decisión de los capítulos anteriores y deje constancia de la elección en un ADR para que sobreviva a la próxima solicitud de cambio.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Siga estudiando — capítulo 05 de 12
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Infraestructura crítica y seguridad sectorial: evaluación controlada
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Planificar una evaluación controlada de un control de seguridad (una regla de detección, un diseño, un procedimiento de recuperación) que responda de forma segura a una pregunta formulada.
+2. Informar de las tasas de detección y de éxito con intervalos, y calcular cuántos ensayos necesita una afirmación.
+3. Medir la carga de falsas alarmas en las unidades que experimentan los operadores.
+4. Evaluar simulacros y ejercicios con comparaciones pareadas y reconocer las amenazas a su validez.
+5. Redactar reglas de enfrentamiento y condiciones de seguridad para las pruebas cerca de una planta en funcionamiento.
+
+El capítulo 5 eligió diseños; el capítulo 2 calificó la evidencia de que los controles existen. Este capítulo pregunta si **funcionan**, en qué medida y con cuánta seguridad podemos afirmarlo, antes de que un incidente real responda por nosotros. El capítulo 11 amplía el método a la evaluación de un proyecto completo.
+
+### 6.1 Por qué evaluar en condiciones controladas
+
+Los controles de seguridad de los servicios esenciales rara vez se ven puestos a prueba por ataques reales, así que su eficacia suele darse por supuesta. La evaluación controlada crea la evidencia de forma deliberada: inyectar eventos conocidos y ver si se detectan; ejecutar una recuperación y cronometrarla; hacer un simulacro y observar si el personal puede operar en modo manual. La palabra *controlada* importa por partida doble. Científicamente, significa que el evaluador controla lo que se inyecta, de modo que las detecciones y los fallos pueden contarse frente a una verdad conocida. Operativamente, significa que la prueba está controlada para que no pueda dañar el proceso: las instalaciones de prueba, los simuladores, los gemelos digitales, los destinos de restauración aislados y los ejercicios de mesa soportan la mayor parte de la carga, y las pruebas en vivo solo se hacen con la autorización de operaciones y con condiciones de seguridad.
+
+### 6.2 Detección: tasas, familias e intervalos
+
+Una evaluación de la detección cuenta cuántos de los escenarios inyectados se detectaron. Una tasa única oculta dos cosas. La primera son las **familias**: una regla que detecta todas las escrituras directas desde la HMI pero solo la mitad de las manipulaciones de deriva lenta tiene un perfil de riesgo distinto del de otra que detecta el 85 % de todo. Informe por familia de técnicas; para la TO, las familias de MITRE ATT&CK for ICS son un buen vocabulario ([MITRE, ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)). La segunda es la **incertidumbre**: 17 detecciones en 20 ensayos son compatibles con una amplia gama de tasas reales. El intervalo de puntuación de Wilson ([Wilson, 1927](https://doi.org/10.1080/01621459.1927.10502953)) se comporta bien con muestras pequeñas y con tasas próximas a 0 o 1; úselo en lugar de la aproximación normal simple.
+
+De ello se sigue una consecuencia práctica: **las afirmaciones necesitan tamaños de muestra**. Para afirmar «al menos un 90 % de detección» con un límite inferior de Wilson al 95 %, se necesitan decenas de ensayos con éxito, no unos pocos; cada fallo eleva aún más la cifra. Planifique el número de ensayos antes de probar e indique qué afirmación puede respaldar el número previsto.
+
+La investigación sobre la evaluación de sistemas de detección aporta dos advertencias más. Los datos de prueba deben parecerse al entorno operativo (la tasa base de ataques reales, la variedad del comportamiento benigno), o los resultados no serán transferibles ([Sommer and Paxson, 2010](https://doi.org/10.1109/SP.2010.25); [Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp)). Y, en la detección de anomalías en series temporales, algunas convenciones de puntuación populares inflan el rendimiento; la evaluación debe definirse con cuidado ([Kim et al., 2022](https://ojs.aaai.org/index.php/AAAI/article/view/20680)).
+
+### 6.3 Carga de falsas alarmas
+
+Una detección solo es útil si los operadores pueden actuar a partir de sus alertas. Mida las falsas alarmas reproduciendo tráfico benigno representativo durante un periodo suficientemente largo y contando las alertas; después, exprese la tasa **por turno o por operador** y con un intervalo; para recuentos de eventos raros es adecuado el intervalo exacto de Poisson. Combínela con la tasa base de eventos reales: cuando los ataques reales son raros, incluso una tasa baja de falsas alarmas significa que la mayoría de las alertas son falsas. Acuerde con operaciones una carga aceptable *antes* de la prueba (por ejemplo, «no más de una investigación por turno de noche»), para que el resultado pueda aprobar o suspender.
+
+### 6.4 Simulacros y ejercicios
+
+Los simulacros de operación manual, los ejercicios de recuperación y los ejercicios de mesa ponen a prueba a las personas y los procedimientos. Las recomendaciones del NIST sobre planificación de contingencias tratan las pruebas, la formación y los ejercicios como un ciclo con objetivos documentados y resultados posteriores a la acción ([NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)). Para evaluar si la formación mejoró el desempeño, compare a **las mismas personas** antes y después (un diseño pareado), informe de la mejora media con un intervalo y examine las diferencias individuales: una mejora media puede ocultar a un operador que no mejoró nada. Las amenazas a la validez son serias en los simulacros: los participantes aprenden el escenario (efecto de la práctica), saben que se les observa y suelen ser el personal más dispuesto. Varíe los escenarios, incluya turnos de noche y personal con menos experiencia, y no trate un buen simulacro como prueba de preparación.
+
+### 6.5 Diseño seguro de las pruebas y reglas de enfrentamiento
+
+Toda prueba cerca de una planta en funcionamiento necesita **reglas de enfrentamiento** escritas: el alcance (sistemas, horarios), los sistemas excluidos, las técnicas permitidas, las condiciones de parada (cualquier cambio inesperado del proceso, cualquier alarma que los operadores no puedan explicar), la autoridad designada para detenerla, las comunicaciones, la vuelta atrás y el tratamiento de la evidencia. El responsable de operaciones las firma. Las pruebas que inyectan órdenes deben usar instalaciones de prueba o simuladores siempre que sea posible; las pruebas en la planta en vivo deben ser de solo lectura o usar marcadores benignos acordados previamente. Se aplican los principios éticos del capítulo 4: la prueba no debe trasladar riesgo a los clientes sin protegerlos.
+
+### 6.6 Ejemplo resuelto: una regla de detección nueva y un simulacro (sintético)
+
+El proveedor de detección gestionada de Merrow Water propone una regla para detectar escrituras no autorizadas de puntos de consigna. El especialista diseña una evaluación en la instalación de prueba: 20 escenarios inyectados en tres familias, 336 horas de tráfico benigno de Hollin reproducido y un simulacro de dosificación manual con seis operadores antes y después de un nuevo módulo de formación. El responsable de operaciones acordó de antemano los criterios de aceptación: un límite inferior de detección de al menos 0,80 en conjunto, sin ninguna familia por debajo de 0,50 como estimación puntual; no más de una falsa alarma por turno de noche en promedio; y una mejora del tiempo de dosificación manual cuyo intervalo excluya el cero.
+
+### 6.7 Actividad práctica: qué muestra la evaluación
+
+```python
+# Lab 6 - what a controlled evaluation can and cannot show (offline, standard library only)
+# Synthetic: Merrow Water tests a new detection rule for unauthorised setpoint writes on a test rig,
+# replays two weeks of benign plant traffic, and times a manual-operation drill before and after training.
+import math
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z*z/n
+    c = (p + z*z/(2*n)) / d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n)) / d
+    return c - h, c + h
+def pois_cdf(k, mu): return sum(math.exp(-mu) * mu**i / math.factorial(i) for i in range(k + 1))
+def pois_ci(k, a=0.05):  # exact (Garwood) interval by bisection
+    def solve(f, lo, hi):
+        for _ in range(200):
+            mid = (lo + hi) / 2
+            if f(mid): lo = mid
+            else: hi = mid
+        return (lo + hi) / 2
+    lower = 0.0 if k == 0 else solve(lambda m: 1 - pois_cdf(k - 1, m) < a/2, 0, 10*k + 10)
+    upper = solve(lambda m: pois_cdf(k, m) > a/2, 0, 10*k + 10)
+    return lower, upper
+# 1. Detection on injected scenarios, split by technique family
+RESULTS = {"direct HMI write": (9, 9), "engineering-workstation download": (6, 7), "slow drift via historian tag": (2, 4)}
+k = sum(a for a, b in RESULTS.values()); n = sum(b for a, b in RESULTS.values())
+lo, hi = wilson(k, n); print(f"overall detected {k}/{n} = {k/n:.2f}, 95% Wilson [{lo:.2f}, {hi:.2f}]")
+for fam, (a, b) in RESULTS.items():
+    lo, hi = wilson(a, b); print(f"  {fam:34s} {a}/{b}  [{lo:.2f}, {hi:.2f}]")
+# 2. How many trials, all detected, before the lower bound clears 0.90?
+n = 1
+while wilson(n, n)[0] < 0.90: n += 1
+print(f"perfect runs needed for Wilson lower bound >= 0.90: {n}")
+# 3. False alarms in 336 hours of benign replay
+fa, hours = 9, 336
+lo, hi = pois_ci(fa); print(f"false alarms {fa} in {hours} h = {fa/hours*24:.2f}/day, 95% CI [{lo/hours*24:.2f}, {hi/hours*24:.2f}]/day")
+# 4. Drill: minutes to stable manual dosing, same six operators before and after training (paired)
+before = [34, 41, 29, 52, 38, 45]; after = [22, 30, 27, 31, 25, 44]
+diffs = [b - a for b, a in zip(before, after)]
+md = sum(diffs) / len(diffs); sd = math.sqrt(sum((d - md)**2 for d in diffs) / (len(diffs) - 1))
+t = 2.571  # two-sided 95% t quantile, 5 degrees of freedom
+print(f"paired improvement mean {md:.1f} min, 95% CI [{md - t*sd/math.sqrt(6):.1f}, {md + t*sd/math.sqrt(6):.1f}]; diffs {diffs}")
+```
+
+Salida esperada:
+
+```text
+overall detected 17/20 = 0.85, 95% Wilson [0.64, 0.95]
+  direct HMI write                   9/9  [0.70, 1.00]
+  engineering-workstation download   6/7  [0.49, 0.97]
+  slow drift via historian tag       2/4  [0.15, 0.85]
+perfect runs needed for Wilson lower bound >= 0.90: 35
+false alarms 9 in 336 h = 0.64/day, 95% CI [0.29, 1.22]/day
+paired improvement mean 10.0 min, 95% CI [2.1, 17.9]; diffs [12, 11, 2, 21, 13, 1]
+```
+
+**Interpretación.** La detección global es 17/20 = 0,85, pero el intervalo de Wilson al 95 % [0,64, 0,95] no supera el límite inferior de 0,80 acordado previamente. Por familias, se detectaron todas las escrituras directas desde la HMI, seis de siete descargas desde la estación de trabajo de ingeniería y solo dos de cuatro derivas lentas a través de una etiqueta del historiador: la estimación puntual cumple el mínimo de 0,50, pero su intervalo va de 0,15 a 0,85, así que la evaluación no puede decir si la deriva lenta se detecta de forma fiable en absoluto. Para afirmar un 90 % de detección con todos los ensayos con éxito harían falta 35 éxitos consecutivos. Las falsas alarmas se producen a razón de 0,64 al día (intervalo 0,29–1,22), unas 0,21 por turno de ocho horas, holgadamente dentro del criterio de carga. El simulacro muestra una mejora media de 10,0 minutos con un intervalo del 95 % de 2,1 a 17,9 minutos (el intervalo excluye el cero, así que se cumple el criterio), pero dos operadores mejoraron solo uno y dos minutos; merece la pena entender su experiencia antes del despliegue.
+
+Por tanto, el resultado honesto es mixto: **adoptar la regla para las escrituras directas y las descargas, con monitorización de su rendimiento, no confiar en ella para la deriva lenta y diseñar más ensayos para esa familia**. Es una respuesta más útil que «un 85 % de detección».
+
+### 6.8 Errores comunes y límites
+
+- Informar de una única tasa de detección sin familias ni intervalos.
+- Hacer demasiado pocos ensayos para respaldar la afirmación y, aun así, hacer la afirmación.
+- Probar con escenarios diseñados por el autor de la regla, y solo con ellos.
+- Medir las falsas alarmas con una reproducción corta o poco representativa.
+- Expresar las falsas alarmas por día para toda una red en lugar de por turno o por operador.
+- Tratar un simulacro con éxito como prueba de preparación.
+- Probar en la planta en vivo sin reglas de enfrentamiento firmadas ni condiciones de parada.
+
+El límite de la evaluación controlada es la transferencia: una instalación de prueba no es una planta y los escenarios inyectados no son adversarios. Use la evaluación para acotar las afirmaciones y encontrar debilidades, siga midiendo durante la operación y repítala cuando cambie el entorno.
+
+### Ejercicios — capítulo 6
+
+**EX026 — Intervalos y tamaño de muestra.** *Objetivo:* relacionar las afirmaciones con el número de ensayos. *Entradas:* las funciones del Lab 6. *Restricciones:* intervalos de Wilson al 95 %. *Pasos:* (1) calcule el intervalo para 19/20; (2) halle el número de éxitos consecutivos necesarios para un límite inferior de 0,80; (3) halle los ensayos necesarios para un límite inferior de 0,90 si se produce exactamente un fallo; (4) explique a un directivo por qué «lo probamos 20 veces» no basta para afirmar un 90 %. *Evidencia esperada:* cifras y un párrafo. *Rúbrica:* 3 = 19/20 → [0,76, 0,99], 16 éxitos, 53 ensayos con un fallo, explicación en lenguaje claro; 2 = una cifra errónea; 1 = aproximación normal usada sin comentarios; 0 = nada.
+
+**EX027 — Plan de pruebas para la deriva lenta.** *Objetivo:* diseñar ensayos para la familia más débil. *Entradas:* el resultado de la deriva lenta. *Restricciones:* solo en la instalación de prueba; los escenarios deben variar la velocidad, la duración y la etiqueta objetivo; incluya escenarios no escritos por el autor de la regla. *Pasos:* (1) defina la afirmación que se va a probar; (2) elija el número de ensayos; (3) enumere las variaciones de los escenarios; (4) defina el criterio de aprobado o suspenso y qué hará si no se cumple. *Evidencia esperada:* plan. *Rúbrica:* 3 = afirmación explícita y número de ensayos justificado con un cálculo de intervalos, autoría independiente de los escenarios, variaciones realistas, decisión acordada previamente; 2 = número no justificado; 1 = reutiliza los cuatro escenarios; 0 = nada.
+
+**EX028 — Carga de alarmas.** *Objetivo:* expresar las falsas alarmas en las unidades de los operadores y combinarlas con las tasas base. *Entradas:* 0,64 falsas alarmas al día; suponga que las escrituras no autorizadas reales ocurren aproximadamente una vez cada dos años; detección de 0,85. *Restricciones:* tres turnos de ocho horas al día. *Pasos:* (1) falsas alarmas por turno y por año; (2) alertas verdaderas esperadas por año; (3) proporción de alertas que son verdaderas; (4) qué significa esto para el procedimiento de respuesta. *Evidencia esperada:* cálculo y un párrafo. *Rúbrica:* 3 = unas 0,21 por turno y 234 al año, unas 0,43 alertas verdaderas al año, alrededor del 0,2 % de alertas verdaderas, un procedimiento que haga cada investigación rápida y barata; 2 = aritmética correcta, falta la implicación; 1 = confunde las tasas; 0 = nada.
+
+**EX029 — Validez del simulacro.** *Objetivo:* criticar la evaluación de un simulacro. *Entradas:* el resultado pareado de los seis operadores. *Restricciones:* nombre al menos cuatro amenazas a la validez. *Pasos:* enumere las amenazas, el sentido en que cada una sesgaría el resultado y un cambio de diseño para cada una. *Evidencia esperada:* tabla. *Rúbrica:* 3 = efecto de la práctica, efecto de la observación, selección del personal dispuesto, mismo escenario, muestra pequeña, día frente a noche; sentidos indicados; cambios concretos; 2 = amenazas sin sentidos; 1 = genérico; 0 = nada.
+
+**EX030 — Reglas de enfrentamiento.** *Objetivo:* redactar condiciones de prueba seguras. *Entradas:* una propuesta de verificar en la planta en vivo de Fenley que la nueva regla alerta ante una escritura de punto de consigna inocua y acordada previamente (de 1,80 a 1,81 mg/L). *Restricciones:* operaciones tiene la autoridad; los clientes no deben verse afectados. *Pasos:* redacte el alcance, el momento, los roles, las condiciones de parada, las comunicaciones, la vuelta atrás y el tratamiento de la evidencia. *Evidencia esperada:* reglas de enfrentamiento de una página. *Rúbrica:* 3 = aprobación de operaciones, momento de baja demanda, condiciones de parada y autoridad explícitas, verificación independiente de la dosis, vuelta atrás, equipo de gestión de alertas avisado sin informar a los analistas de detección si la detección a ciegas forma parte de la prueba, evidencia registrada; 2 = falta un elemento; 1 = sin condiciones de parada; 0 = nada.
+
+### Síntesis del capítulo
+
+La evaluación controlada convierte los controles supuestos en controles medidos. Inyecte eventos conocidos en instalaciones de prueba y simuladores, informe de la detección por familia con intervalos de Wilson y planifique el número de ensayos según las afirmaciones que quiera hacer. Mida las falsas alarmas durante periodos representativos y expréselas en las unidades de los operadores junto a las tasas base. Evalúe los simulacros con comparaciones pareadas, examine a las personas individualmente y diseñe contra los efectos de la práctica y de la selección. Pruebe cerca de la planta en vivo solo con reglas de enfrentamiento escritas y firmadas. El resultado honesto de una evaluación suele ser mixto; indique exactamente para qué usos es adecuado un control.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Siga estudiando — capítulo 06 de 12
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -630,6 +1103,42 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX014 — Evidencia que discrimina.** Un intruso externo predice una IP de origen desconocida y técnicas nuevas: abierta. Un cambio legítimo del proveedor predice un tique y un patrón en otros emplazamientos: contradicho por la ausencia de tique; patrón abierto. Un error local del operador predice una estación local como origen: contradicho para el cambio (HMI-JH2). Una receta automatizada predice un calendario: abierta, compruébese el historiador. Un error de etiquetado predice una discrepancia con el controlador: abierta. El uso indebido de la cuenta compartida predice una sesión sin tique correspondiente: respaldada hasta ahora. Siguiente: registros de sesiones de Corvane y comparación con cuentas nominativas.
 
 **EX015 — Notificación por etapas.** Alerta temprana: el hecho del suceso, el impacto en el servicio (ninguno duradero), investigación abierta. Notificación: cronología corregida, acciones (cuenta suspendida, cuentas nominativas exigidas), preguntas abiertas. Esquema final: causa raíz, correcciones a las declaraciones anteriores, lecciones, riesgo residual. La máxima puntuación nunca afirma pronto un «ataque» ni nombra a una persona.
+
+### Capítulo 4: EX016–EX020
+
+**EX016 — Mejora rural parcial.** Y modificada: Upper Merrow 1,93 horas por hogar y año y 771 horas-hogar vulnerable, mejor que X (2,39; 956) pero mucho peor que la Y original (0,96; 386). Ampliar el laboratorio para que informe de P(alguna interrupción de Upper Merrow > 48 h) da aproximadamente 0,015 con X, 0,001 con la Y original y 0,007 con la Y modificada (semilla 4). La máxima puntuación implementa una comprobación de la duración por evento para Upper Merrow.
+
+**EX017 — Memorando de análisis ético.** Grupos afectados: los hogares de Harbour y Fenley, los hogares de Upper Merrow (incluidos los vulnerables) y el personal. Beneficencia y justicia (Menlo; primacía del bienestar público en ACM/NSPE): X reduce el daño total y cumple el apetito sobre la cola; Y reduce el daño rural concentrado. El consejo debe elegir el juicio de valor; una recomendación combinada (X más medidas rurales no técnicas) es honesta sobre la concentración residual.
+
+**EX018 — Protocolo de obtención.** Magnitud: horas desde «SCADA declarado no disponible en Upper Merrow» hasta «agua tratada fluyendo a la zona según un procedimiento manual documentado». Pida a tres expertos, de forma independiente y tras una pregunta de calibración, los percentiles 5, 50 y 95; discútalos; agréguelos (por ejemplo, la mediana de las medianas con igual peso y las envolventes de los intervalos); registre la persona, la fecha y la justificación.
+
+**EX019 — Declaración de apetito.** Ejemplo: «Merrow Health no aceptará una probabilidad anual superior al 5 % de un desvío del servicio de urgencias relacionado con ciberincidentes que supere 24 horas continuas en cualquier hospital, ni ningún escenario creíble en el que la atención urgente con tiempo crítico no esté disponible en los tres hospitales a la vez». Pruébela con un escenario de *ransomware* que afecte a los sistemas clínicos de dos hospitales.
+
+**EX020 — Dilema de divulgación.** Inmediato: eliminar o cambiar la credencial por defecto en los sistemas de Merrow; bloquear el puerto; monitorizar. Notificación privada a Corvane con evidencia; si Corvane no actúa, recurrir a un proceso de divulgación coordinada (CVD de CISA). Informar al foro de que una clase de herramientas de soporte remoto necesita una revisión de credenciales, sin publicar detalles de explotación. Justificarlo con la beneficencia y la justicia del Informe Menlo y con los deberes profesionales hacia el público.
+
+### Capítulo 5: EX021–EX025
+
+**EX021 — Corrija D2.** Hacer que el historiador sea unidireccional hacia fuera de la zona de control deja a D2 con cuatro rutas y un único punto de estrangulamiento, `jump`. En comparación con D3: D2 sigue dependiendo de saltos con contraseña tras la MFA; D3 añade la aprobación por sesión y la grabación. D3 sigue siendo más fuerte en seguridad; D2 corregida es una clara mejora respecto de D2.
+
+**EX022 — Una arista nueva.** Añadir `internet → eng-ws` con la barrera "vendor cloud account" da a D3 tres rutas y desplaza el punto de estrangulamiento a `eng-ws`, eludiendo el intermediario. Alternativa: exportar los diagnósticos a través del historiador unidireccional a un equipo de la DMZ que el proveedor pueda ver, o un agente del proveedor solo en ese equipo de la DMZ. Riesgo residual: uso indebido del canal saliente; monitorícelo y use una lista de permitidos.
+
+**EX023 — Diseño del acceso de emergencia.** Presencia física con un sobre de credenciales sellado, o una cuenta local de emergencia con alarma y revisada tras cada uso; probado trimestralmente; modelado como una arista con una barrera fuerte y detección. Nunca una contraseña compartida permanente.
+
+**EX024 — Elija con evidencia.** Una tabla de máxima puntuación incluye el compromiso de la TO, el *ransomware*, una caída del proveedor, una caída del intermediario durante una emergencia y un año tranquilo; aplica el VE y el minimax del arrepentimiento; indica un umbral (por ejemplo, una probabilidad de caída del intermediario superior al X % → preferir D2 corregida). Los números pueden variar; lo que puntúa es la estructura.
+
+**EX025 — Registro de decisión de arquitectura.** Contexto: la consecuencia de una dosis no segura. Alternativas con la evidencia de rutas y puntos de estrangulamiento. Decisión (indique la suya). Consecuencias, incluida la dependencia del intermediario. Acceso de emergencia. Evidencia de verificación (capítulo 6). Desencadenante de revisión (por ejemplo, la propuesta de un agente del proveedor).
+
+### Capítulo 6: EX026–EX030
+
+**EX026 — Intervalos y tamaño de muestra.** 19/20 → Wilson [0,76, 0,99]. Éxitos consecutivos para un límite inferior ≥ 0,80: 16. Con un fallo, ensayos para un límite inferior ≥ 0,90: 53. Explicación en lenguaje claro: las muestras pequeñas dejan margen para que la tasa real sea mucho más baja que la observada; los directivos oyen «85 %» y no lo perciben.
+
+**EX027 — Plan de pruebas para la deriva lenta.** Afirmación: «la manipulación de puntos de consigna por deriva lenta se detecta con un límite inferior de Wilson ≥ 0,70». Número de ensayos justificado con un cálculo de intervalos (por ejemplo, al menos 20 ensayos si se esperan pocos fallos). Los escenarios varían la velocidad, la duración, la etiqueta objetivo y el origen, tanto desde la ruta de la HMI como desde la del historiador; los redacta alguien distinto del autor de la regla. Criterio de aprobado o suspenso y decisión en caso de suspenso (no confiar en la regla para esta familia) acordados previamente.
+
+**EX028 — Carga de alarmas.** Unas 0,21 falsas alarmas por turno; unas 234 al año. Alertas verdaderas esperadas: unas 0,43 al año. Proporción de alertas verdaderas: alrededor del 0,2 %. La respuesta debe ser rápida y barata (una lista de comprobación breve, no una investigación completa cada vez), o la regla acabará ignorándose.
+
+**EX029 — Validez del simulacro.** Efecto de la práctica (infla la mejora); efecto de la observación (infla); selección del personal dispuesto (infla); mismo escenario (infla); muestra pequeña (incertidumbre amplia); simulacros solo de día (no captan el desempeño del turno de noche). Cambios de diseño: variar los escenarios, incluir turnos de noche y personal con menos experiencia, muestras más grandes, simulacros sin previo aviso cuando sea seguro.
+
+**EX030 — Reglas de enfrentamiento.** Alcance: dosificación de Fenley, una escritura de 1,80→1,81 mg/L; momento: baja demanda; roles: el responsable de operaciones puede detenerla; condiciones de parada: cualquier cambio inesperado del proceso o alarma inexplicada; verificación independiente de la dosis; analistas de detección a ciegas si el objetivo es la detección a ciegas; gestores de alertas avisados; plan de vuelta atrás; evidencia registrada. Firmadas por operaciones.
 
 <a id="glossary"></a>
 
