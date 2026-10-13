@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 071, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 30 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–30 (EX025–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 30 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–30 (EX049–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a configurar, verificar e manter os controles de segurança da informação de uma instituição de lazer sem fins lucrativos com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios verificam estações de trabalho sintéticas contra uma linha de base de quatro itens, revisam uma lista sintética de regras de firewall em busca de regras amplas, sombreadas e sem uso e analisam um log sintético de autenticação para classificar as origens de logins com falha. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
 
-Capítulos 9–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 17–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -397,11 +397,383 @@ Relatar cada item separadamente pode esconder quantas máquinas falham em pelo m
 
 - **EX024 — Primeira prioridade.** Quais falhas vêm primeiro? *Rubrica:* 3 = notebooks sem criptografia;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Gestão de correções
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um ciclo de correções; (2) testar as atualizações antes da implantação ampla; (3) lidar com sistemas que não podem ser corrigidos rapidamente.
+
+### 9.1 O ciclo
+
+Jamal aprende o ciclo de correções: saber das novas atualizações, avaliar sua importância, testá-las, implantá-las e confirmar a instalação. O gerente de TI do Riverbend recebe os avisos dos fabricantes e consulta um catálogo público de vulnerabilidades sabidamente exploradas. As atualizações para falhas exploradas ativamente têm prioridade. A Sra. Grant explica que um ciclo confiável e rotineiro protege melhor do que surtos ocasionais de esforço depois de notícias na imprensa. Ele escreve o ciclo como uma lista de verificação mensal com datas para cada etapa e o responsável, para que o gerente de TI e o técnico saibam exatamente o que fazer e quando. A lista inclui um passo para consultar toda semana o catálogo de vulnerabilidades exploradas.
+
+### 9.2 Testes
+
+As atualizações podem quebrar coisas. Jamal monta um grupo de teste de cinco estações de trabalho, uma de cada tipo de função, que recebe as atualizações primeiro. Depois de dois dias sem problemas, as atualizações vão para todas as estações. Quando uma atualização quebra o driver de uma impressora da recepção, o grupo de teste detecta o problema antes que ele chegue a todos os centros. Ele registra o problema e a correção no log de TI. A Sra. Grant observa que os grupos de teste devem incluir as máquinas mais incomuns, como os computadores da recepção com impressoras, porque são as mais propensas a quebrar. Jamal acrescenta mais duas máquinas ao grupo por esse motivo.
+
+### 9.3 Servidores e nuvem
+
+O sistema de reservas do Riverbend é hospedado na nuvem, por isso seu fornecedor cuida das correções dos servidores. Jamal consulta o contrato e descobre que o fornecedor se compromete a corrigir os problemas críticos em até catorze dias. O Riverbend continua corrigindo seu próprio servidor de arquivos e os gravadores das câmeras. As atualizações dos gravadores são raras e precisam ser baixadas manualmente, por isso ele acrescenta uma verificação trimestral ao calendário. Ele também pede ao fornecedor um resumo de seu desempenho recente nas correções, que o fornecedor envia. O resumo mostra que os problemas críticos foram corrigidos dentro do prazo acordado no último ano. Jamal arquiva o resumo com o contrato e cria um lembrete para pedi-lo anualmente.
+
+### 9.4 Sistemas que ficam para trás
+
+Alguns sistemas não podem ser corrigidos rapidamente. Um antigo controlador dos produtos químicos da piscina roda um software que o fornecedor não atualiza mais. Jamal recomenda isolá-lo num segmento de rede próprio, bloquear o acesso à internet e perguntar ao fornecedor sobre a substituição. A Sra. Grant observa que o isolamento reduz o risco quando a correção é impossível, mas deve ser registrado como uma exceção temporária com data de revisão. O fornecedor oferece um controlador substituto a preço reduzido, e o gerente do centro o inclui no orçamento do ano seguinte. Jamal registra a exceção com seus controles e a data de revisão no log de TI e verifica que o isolamento funciona testando a partir de um computador da equipe.
+
+### Exemplo resolvido
+
+Jamal segue o ciclo de correções, usa um grupo de teste de cinco máquinas que detecta um problema de impressora, confere o compromisso do fornecedor de nuvem e isola um controlador de piscina que não pode ser corrigido.
+
+> **Caso sintético.** Os sistemas são sintéticos.
+
+### Erros e limites
+
+Implantar atualizações não testadas em todos os lugares ao mesmo tempo pode quebrar todos os centros.
+
+### Exercícios
+
+- **EX025 — Atualizações prioritárias.** Quais atualizações têm prioridade? *Rubrica:* 3 = as de falhas exploradas ativamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX026 — Grupo de teste.** Quantas estações de trabalho há no grupo de teste? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX027 — Controlador da piscina.** Como o controlador da piscina é protegido? *Rubrica:* 3 = segmento isolado sem internet;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Varredura de vulnerabilidades
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar varreduras de vulnerabilidades autorizadas; (2) interpretar os resultados das varreduras; (3) verificar as correções.
+
+### 10.1 Varredura autorizada
+
+Os varredores de vulnerabilidades verificam os sistemas em busca de fraquezas conhecidas. Jamal aprende que a varredura precisa ser autorizada por escrito, agendada para evitar os horários de movimento e limitada aos sistemas combinados. O gerente de TI do Riverbend aprova uma varredura mensal da sede e de um centro, fora do horário de funcionamento. A Sra. Grant lembra aos estudantes que fazer varredura no sistema de outra pessoa sem permissão é ilegal em muitos países. Jamal guarda uma cópia da aprovação assinada com os resultados da varredura. Ele executa a primeira varredura com o gerente de TI acompanhando, para que qualquer efeito inesperado nos sistemas do centro possa ser tratado imediatamente.
+
+### 10.2 Leitura dos resultados
+
+A varredura produz uma longa lista de achados com classificações de severidade. Jamal aprende que os varredores produzem falsos positivos, relatando uma fraqueza que não está presente, e que as classificações de severidade não levam em conta o contexto local. Um achado classificado como alto numa impressora interna pode importar menos do que um achado médio num sistema exposto à internet. Ele ordena os achados por severidade e exposição e verifica manualmente os primeiros itens. Ele confirma dois falsos positivos conferindo diretamente as versões do software e os registra para que possam ser ignorados nas varreduras futuras.
+
+### 10.3 Correção
+
+Jamal trabalha com o gerente de TI para corrigir os principais achados: uma ferramenta de acesso remoto desatualizada no servidor de arquivos, uma configuração de criptografia fraca num site interno e o firmware antigo do gravador de câmeras. Cada correção é registrada com a data e o responsável. Ele aprende que registros claros ajudam quando auditores ou seguradoras perguntam se as fraquezas conhecidas foram tratadas. O gerente de TI atualiza a ferramenta de acesso remoto e aplica a nova configuração de criptografia, enquanto Jamal baixa e instala o firmware do gravador de câmeras durante um período com o centro fechado. Cada mudança é testada antes que o centro reabra.
+
+### 10.4 Verificação
+
+Depois de corrigir, Jamal executa de novo a varredura nos sistemas afetados para confirmar que os achados sumiram. Um permanece, porque a ferramenta de acesso remoto tinha duas instalações. Ele remove a segunda e repete a varredura com sucesso. A Sra. Grant observa que a verificação é essencial, porque presumir que uma correção funcionou sem conferir é uma fonte comum de fraquezas que persistem. Jamal acrescenta um passo de nova varredura à lista de verificação mensal, para que toda correção seja confirmada antes de o achado ser encerrado. Ele também registra a segunda instalação no caderno como lição: os inventários de software instalado devem ser conferidos antes de presumir que uma única correção está completa.
+
+### Exemplo resolvido
+
+Jamal executa varreduras mensais autorizadas, ordena os achados por severidade e exposição, corrige três achados principais e verifica com uma nova varredura, detectando uma segunda instalação.
+
+> **Caso sintético.** As varreduras são sintéticas.
+
+### Erros e limites
+
+Presumir que uma correção funcionou sem uma nova varredura deixa as fraquezas no lugar.
+
+### Exercícios
+
+- **EX028 — Aprovação da varredura.** Quem aprova a varredura? *Rubrica:* 3 = o gerente de TI, por escrito;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX029 — Falso positivo.** O que é um falso positivo? *Rubrica:* 3 = uma fraqueza relatada que não está presente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX030 — Achado remanescente.** Por que um achado permaneceu depois da correção? *Rubrica:* 3 = uma segunda instalação da ferramenta;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Administração de contas
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir os processos de admissão, mudança de função e desligamento; (2) lidar com contas compartilhadas e contas de serviço; (3) revisar as contas regularmente.
+
+### 11.1 Admissões
+
+No segundo ano, Jamal ajuda o gerente de TI do Riverbend na administração de contas. Salva-vidas e professores de natação temporários são admitidos em grande número antes do verão. Cada um precisa de uma conta para o sistema de reservas e para a escala da equipe, mas de nada mais. Jamal cria um modelo para cada função, para que as novas contas recebam exatamente o acesso certo. A Sra. Grant explica que os modelos evitam o erro comum de copiar a conta de um colega existente, que carrega direitos extras de que a pessoa nova não precisa. Os modelos também tornam a configuração mais rápida nos períodos de movimento.
+
+### 11.2 Mudanças de função e desligamentos
+
+Quando os funcionários mudam de função, os acessos antigos devem ser removidos. Jamal encontra uma ex-recepcionista, agora instrutora, que ainda tem acesso de recepção às telas de pagamento dos associados. Quando os funcionários saem, as contas devem ser desativadas no último dia. O Riverbend depende de os gerentes dos centros mandarem e-mail à TI, o que muitas vezes acontece com atraso. Jamal propõe um relatório semanal do sistema de folha de pagamento listando os desligamentos, que a TI confere com as contas ativas. O gerente de TI concorda em testá-lo por um período e registrar quantas remoções atrasadas ele encontra.
+
+### 11.3 Contas compartilhadas e de serviço
+
+As contas compartilhadas tornam impossível saber quem fez o quê. A recepção de cada centro usa um único login compartilhado. Jamal propõe logins individuais com uma entrada rápida por crachá, para que as ações sejam rastreáveis sem atrasar a recepção. As contas de serviço, usadas por software e não por pessoas, precisam de responsáveis nomeados e de senhas fortes guardadas com segurança. Ele lista as contas de serviço do Riverbend e encontra uma usada por uma antiga ferramenta de backup que não roda mais. Ele a desativa depois de confirmar com o gerente de TI. A entrada por crachá é testada primeiro num centro.
+
+### 11.4 Revisões
+
+Jamal conduz uma revisão trimestral de contas: comparar as contas ativas com a lista de funcionários, conferir o acesso de cada conta com o modelo da função e listar as contas sem uso há sessenta dias. Sua primeira revisão encontra vários temporários do verão passado ainda ativos e duas contas com acesso financeiro sem explicação. Todos os problemas são corrigidos em uma semana. A Sra. Grant observa que as revisões regulares pegam o que os processos deixam passar e que a segunda revisão costuma ser muito mais limpa, o que é em si uma evidência de melhoria. Ele registra os achados e as correções de cada revisão.
+
+### Exemplo resolvido
+
+Jamal cria modelos por função para os temporários admitidos, encontra uma pessoa que mudou de função com acesso antigo, propõe um relatório de desligamentos da folha de pagamento, substitui os logins compartilhados da recepção e conduz uma revisão trimestral.
+
+> **Caso sintético.** As contas são sintéticas.
+
+### Erros e limites
+
+Copiar a conta de um colega para criar uma nova espalha acessos desnecessários.
+
+### Exercícios
+
+- **EX031 — Acesso dos temporários.** De que acesso os temporários precisam? *Rubrica:* 3 = apenas o sistema de reservas e a escala;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX032 — Relatório de desligamentos.** Que fonte lista os desligamentos semanalmente? *Rubrica:* 3 = o sistema de folha de pagamento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX033 — Conta de serviço antiga.** Qual conta de serviço é desativada? *Rubrica:* 3 = uma usada por uma antiga ferramenta de backup;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Autenticação multifator
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher segundos fatores para usuários diferentes; (2) implantar a autenticação multifator em etapas; (3) apoiar os usuários e lidar com dispositivos perdidos.
+
+### 12.1 Escolha dos fatores
+
+Jamal compara os segundos fatores para o Riverbend. Os códigos gerados por aplicativo servem para a equipe de escritório com smartphones. As chaves físicas servem para os dois funcionários de TI, cujas contas são as mais poderosas e as mais visadas. Os códigos por mensagem de texto são mais fracos, mas podem servir para os funcionários eventuais que não querem aplicativos nos celulares pessoais. A Sra. Grant explica que a escolha equilibra proteção, custo e praticidade e que os métodos resistentes a phishing, como as chaves físicas, dão a proteção mais forte contra páginas de login falsas. Ele resume as opções numa tabela com o custo, a força e a facilidade de uso para cada grupo.
+
+### 12.2 Implantação em etapas
+
+Jamal planeja a implantação em etapas: primeiro a equipe de TI, depois os gerentes, depois a equipe de escritório e, por fim, todos os demais funcionários. Cada etapa tem uma data, um guia e uma sessão de apoio. Ele começa pelo sistema de e-mail, porque contas de e-mail comprometidas são usadas com frequência para enviar faturas fraudulentas. O gerente de TI aprova o plano. Jamal aprende que as etapas permitem à equipe corrigir problemas com um grupo pequeno antes que eles afetem todos. Ele escreve uma mensagem curta para cada etapa explicando por que a mudança importa, e o gerente de TI a envia duas semanas antes do início da etapa.
+
+### 12.3 Apoio aos usuários
+
+Alguns funcionários têm dificuldade com a configuração. Jamal escreve um guia de uma página com capturas de tela e faz sessões de atendimento livre em cada centro. Ele descobre que celulares mais antigos não conseguem instalar o aplicativo autenticador, por isso oferece códigos por mensagem de texto como alternativa para esses funcionários. Os pedidos de apoio atingem o pico na primeira semana e depois caem. A Sra. Grant observa que um bom apoio reduz a resistência e impede que os funcionários procurem formas de contornar o novo controle. Ele registra cada pedido de apoio com a causa, e a mais comum, o relógio do celular configurado errado, é acrescentada ao guia.
+
+### 12.4 Dispositivos perdidos
+
+Celulares se perdem. Jamal escreve um procedimento: o funcionário comunica a perda à TI, a TI remove o dispositivo perdido da conta depois de confirmar a identidade por um número de telefone conhecido ou pessoalmente, e o funcionário registra um novo dispositivo. Ele configura códigos de reserva para a equipe de TI, guardados com segurança. Ele aprende que os procedimentos de recuperação precisam ser tão seguros quanto o próprio login, porque os atacantes muitas vezes miram a recuperação em vez do login principal. Ele testa o procedimento com um colega que finge ter perdido o celular.
+
+### Exemplo resolvido
+
+Jamal escolhe os fatores por grupo de usuários, implanta em etapas começando pelo e-mail, apoia a equipe com guias e alternativas e escreve um procedimento seguro para dispositivos perdidos.
+
+> **Caso sintético.** A implantação é sintética.
+
+### Erros e limites
+
+Um procedimento de recuperação fraco permite que os atacantes contornem a autenticação multifator.
+
+### Exercícios
+
+- **EX034 — Fator da TI.** Qual fator serve para a equipe de TI? *Rubrica:* 3 = chaves físicas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX035 — Primeiro sistema.** Qual sistema recebe primeiro a autenticação multifator? *Rubrica:* 3 = o e-mail;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX036 — Celulares antigos.** Que alternativa serve para quem tem celulares antigos? *Rubrica:* 3 = códigos por mensagem de texto;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Senhas e segredos
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir regras práticas de senha; (2) gerenciar segredos compartilhados com um gerenciador de senhas; (3) remover segredos de scripts e documentos.
+
+### 13.1 Regras de senha
+
+As regras antigas do Riverbend obrigavam a trocar a senha todo mês, o que levava os funcionários a acrescentar um número à mesma palavra a cada vez. Jamal recomenda frases-senha mais longas, a verificação contra listas de senhas vazadas, a autenticação multifator e trocas apenas quando houver suspeita de comprometimento. A Sra. Grant explica que as regras que ignoram o comportamento humano produzem senhas previsíveis. O gerente de TI adota as novas regras depois que Jamal mostra exemplos dos padrões previsíveis que os funcionários vinham usando. Ele também sugere que o sistema de reservas dos associados adote a mesma verificação de senhas vazadas, e o fornecedor concorda em ativá-la.
+
+### 13.2 Gerenciadores de senhas
+
+A equipe de TI administra muitas senhas de roteadores, gravadores de câmeras, portais de fornecedores e contas de serviço. Elas ficavam numa planilha no servidor de arquivos. Jamal recomenda um gerenciador de senhas com contas individuais para cada membro da equipe de TI, compartilhando apenas as entradas de que cada um precisa, e um log de acesso. Ele transfere as entradas e apaga a planilha. Ele aprende que os gerenciadores de senhas tornam práticas as senhas fortes e únicas, porque ninguém precisa memorizá-las. Cada membro da equipe de TI vê apenas as entradas necessárias para seu trabalho, e o log mostra quem abriu cada entrada.
+
+### 13.3 Segredos em scripts
+
+Jamal encontra um script de backup com a senha de uma conta de serviço escrita dentro dele. Qualquer pessoa que consiga ler o script pode usar a senha. Ele reescreve o script para ler a senha de um arquivo de configuração protegido, legível apenas pela conta de serviço, e pede ao gerente de TI que troque a senha exposta. A Sra. Grant observa que os segredos em scripts muitas vezes se espalham por cópias, backups e pastas compartilhadas. Ele procura senhas semelhantes nos outros scripts do servidor e encontra mais duas, que corrige da mesma forma.
+
+### 13.4 Segredos em documentos
+
+Jamal procura na unidade compartilhada do Riverbend, com permissão, documentos que contenham a palavra senha. Ele encontra um guia de configuração dos gravadores de câmeras que lista as senhas atuais e uma antiga nota de passagem de serviço com as credenciais dos roteadores. Ele remove as senhas dos dois documentos, substituindo-as por uma referência ao gerenciador de senhas, e manda trocar as senhas afetadas. Ele aprende que procurar periodicamente segredos expostos é uma verificação simples e valiosa. Ele acrescenta a busca à lista de verificação mensal, para que novas exposições sejam encontradas depressa em vez de ficarem anos esquecidas em pastas compartilhadas.
+
+### Exemplo resolvido
+
+Jamal substitui as trocas mensais obrigatórias por frases-senha e verificação de vazamentos, transfere as senhas da TI para um gerenciador de senhas e remove segredos de um script e de documentos.
+
+> **Caso sintético.** Os segredos são sintéticos.
+
+### Erros e limites
+
+Uma senha escrita num script fica exposta a qualquer pessoa que consiga lê-lo.
+
+### Exercícios
+
+- **EX037 — Efeito da regra antiga.** O que as trocas mensais obrigatórias provocaram? *Rubrica:* 3 = acrescentar um número à mesma palavra;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX038 — Substituto da planilha.** O que substitui a planilha de senhas? *Rubrica:* 3 = um gerenciador de senhas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX039 — Achados nos documentos.** O que a busca nos documentos encontrou? *Rubrica:* 3 = senhas das câmeras e credenciais dos roteadores;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Firewalls e segmentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar as regras de firewall de forma sistemática; (2) encontrar regras amplas demais, sombreadas e sem uso; (3) limpar as regras com segurança.
+
+### 14.1 Por que revisar as regras
+
+As regras de firewall se acumulam ao longo dos anos à medida que fornecedores e funcionários pedem acesso. As regras antigas raramente são removidas, porque ninguém se lembra por que existem e todos têm medo de quebrar alguma coisa. Pedem a Jamal que revise a lista de regras do firewall da sede do Riverbend. A Sra. Grant explica três problemas comuns: regras que permitem demais, regras que nunca podem ter efeito porque uma regra anterior já corresponde ao mesmo tráfego e regras que não são usadas há muito tempo. Ele exporta a lista de regras com noventa dias de contagens de acertos.
+
+### 14.2 O laboratório do firewall
+
+O laboratório revisa uma lista sintética de doze regras com as contagens de acertos de noventa dias. A regra 11 permite qualquer tráfego de qualquer origem para qualquer destino. Como o firewall aplica a primeira regra correspondente, a regra 11 torna inalcançável a regra final de bloqueio, a regra 12, que tem zero acertos. A regra 9 duplica a regra 1 e é sombreada por ela. As regras 6, 9, 10 e 12 têm zero acertos, incluindo a regra 6, que permite a um fornecedor acesso por área de trabalho remota aos caixas. Ele apresenta os achados ao gerente de TI numa tabela curta que lista cada regra, seus acertos e o problema encontrado, se houver, com uma ação proposta para cada uma.
+
+### Laboratório — Revisando uma lista sintética de regras de firewall em busca de regras amplas, sombreadas e sem uso
+
+```python
+"""Review a synthetic firewall rule list for any-any rules, shadowed rules and unused rules (stdlib only)."""
+rules = [
+ (1, "allow", "staff", "internet", "443", 51234), (2, "allow", "staff", "internet", "80", 20877),
+ (3, "allow", "staff", "booking", "443", 9411), (4, "allow", "guest", "internet", "443", 40210),
+ (5, "deny", "guest", "staff", "any", 1876), (6, "allow", "supplier", "tills", "3389", 0),
+ (7, "allow", "staff", "tills", "443", 2210), (8, "allow", "cctv", "internet", "any", 1530),
+ (9, "allow", "staff", "internet", "443", 0), (10, "allow", "mgmt", "switches", "22", 0),
+ (11, "allow", "any", "any", "any", 312), (12, "deny", "any", "any", "any", 0),
+]
+anyany = [r[0] for r in rules if r[2] == "any" and r[3] == "any" and r[4] == "any" and r[1] == "allow"]
+def shadowed(rs):
+    out = []
+    for i, r in enumerate(rs):
+        for p in rs[:i]:
+            if p[2] in ("any", r[2]) and p[3] in ("any", r[3]) and p[4] in ("any", r[4]):
+                out.append((r[0], p[0])); break
+    return out
+unused = [r[0] for r in rules if r[5] == 0]
+print(f"rules {len(rules)}; allow any-any: {anyany}")
+print(f"shadowed (rule, by): {shadowed(rules)}")
+print(f"zero hits in 90 days: {unused}")
+print(f"after removing rule 11, shadowed: {shadowed([r for r in rules if r[0] != 11])}")
+```
+
+Execute com `python3 lab_firewall.py`. Saída verificada:
+
+```text
+rules 12; allow any-any: [11]
+shadowed (rule, by): [(9, 1), (12, 11)]
+zero hits in 90 days: [6, 9, 10, 12]
+after removing rule 11, shadowed: [(9, 1)]
+```
+
+### 14.3 Interpretação
+
+A regra que permite tudo para tudo é o achado mais grave, porque significa que o firewall na prática permite qualquer coisa que não tenha correspondido antes, e a regra de bloqueio destinada a barrar todo o resto nunca se aplica. Jamal pergunta sobre ela ao gerente de TI; ela foi acrescentada durante um problema de rede há dois anos como solução temporária. A regra sem uso de área de trabalho remota do fornecedor também é preocupante, porque a área de trabalho remota para os caixas é uma via comum de entrada de ransomware. A regra 10, para administrar os switches, está sem uso, mas é legítima. Ele registra o histórico de cada achado.
+
+### 14.4 Limpeza segura
+
+Jamal propõe mudanças: remover a regra 11, para que o bloqueio final tenha efeito; remover a regra duplicada 9; remover a regra 6 do fornecedor depois de confirmar com ele; e manter a regra 10 com uma nota explicando sua finalidade. O laboratório mostra que, depois de remover a regra 11, apenas a regra 9 continua sombreada. O gerente de TI faz as mudanças num período tranquilo, com um plano de reversão, monitora problemas por uma semana e registra cada mudança. O fornecedor confirma que não precisa mais da regra 6. Depois de uma semana sem problemas, Jamal agenda uma revisão da lista de regras a cada seis meses.
+
+### Exemplo resolvido
+
+Jamal revisa doze regras sintéticas, encontra uma regra que permite tudo para tudo e torna inalcançável o bloqueio final, uma duplicata e uma regra sem uso de área de trabalho remota do fornecedor, e faz a limpeza com segurança.
+
+> **Caso sintético.** As regras são sintéticas; as saídas vêm de lab_firewall.py.
+
+### Erros e limites
+
+Uma regra que permite tudo acima do bloqueio final torna o bloqueio inútil.
+
+### Exercícios
+
+- **EX040 — Regra ampla.** Qual regra permite qualquer tráfego? *Rubrica:* 3 = a regra 11;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX041 — Bloqueio inalcançável.** Por que a regra 12 tem zero acertos? *Rubrica:* 3 = a regra 11 corresponde antes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Regra do fornecedor.** O que a regra 6, sem uso, permite? *Rubrica:* 3 = área de trabalho remota do fornecedor para os caixas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Segurança sem fio
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar redes sem fio seguras; (2) separar as redes sem fio de visitantes e da equipe; (3) encontrar pontos de acesso não autorizados.
+
+### 15.1 A rede sem fio da equipe
+
+A rede sem fio da equipe do Riverbend usa uma única senha compartilhada por todos e inalterada há anos, conhecida por muitos ex-funcionários. Jamal recomenda a entrada individual na rede sem fio da equipe com as contas normais de cada um, para que quem sai perca o acesso sem fio quando a conta for desativada. Onde os dispositivos não suportam isso, como alguns tablets usados para as listas de presença das aulas, ele recomenda uma rede separada com uma senha forte trocada a cada período. O gerente de TI configura a entrada individual num centro como teste e a estende a todos os centros depois de um mês. Os tablets das listas passam para uma rede própria com uma senha nova.
+
+### 15.2 A rede sem fio de visitantes
+
+Os associados usam a rede sem fio de visitantes nos cafés e nas salas de convivência. Jamal verifica que a rede de visitantes está separada das redes da equipe e dos caixas e que os visitantes não veem os dispositivos uns dos outros. Ele também confere a página de boas-vindas da rede de visitantes, que pede um endereço de e-mail. Ele sugere explicar como o endereço é usado e oferecer acesso sem ele. A Sra. Grant observa que as redes de visitantes precisam ser isoladas, porque o Riverbend não tem como controlar os dispositivos que os visitantes trazem. A gerente de marketing concorda em atualizar o texto da página de boas-vindas em até um mês.
+
+### 15.3 Pontos de acesso não autorizados
+
+Jamal percorre dois centros com um notebook que lista as redes sem fio próximas. Ele encontra um ponto de acesso com nome parecido com o de uma rede da equipe, mas que não foi instalado pela TI. Descobre-se que o fornecedor do café o instalou para seu terminal de cartão. Ele se conecta diretamente à rede da equipe. Jamal relata o achado, e o gerente de TI providencia que o terminal do fornecedor use uma conexão separada adequada. Jamal aprende que os pontos de acesso não autorizados muitas vezes vêm de fornecedores resolvendo os próprios problemas. Ele acrescenta uma verificação da rede sem fio a suas visitas.
+
+### 15.4 Configurações
+
+Jamal confere as configurações da rede sem fio: criptografia moderna ativada, versões antigas do protocolo desativadas, interfaces de administração inalcançáveis a partir das redes de visitantes e firmware atualizado. O ponto de acesso de um centro ainda permite um modo de criptografia antigo e fraco, por compatibilidade com uma impressora velha. Ele passa a impressora para uma conexão cabeada e desativa o modo fraco. A Sra. Grant observa que as configurações de compatibilidade muitas vezes mantêm fraquezas vivas muito depois de deixarem de ser necessárias. Ele registra as configurações de cada ponto de acesso na documentação de rede, para que o gerente de TI possa conferi-las depois de qualquer mudança ou atualização de firmware.
+
+### Exemplo resolvido
+
+Jamal substitui uma senha compartilhada da rede sem fio da equipe por entrada individual, confere o isolamento dos visitantes, encontra um ponto de acesso de fornecedor ligado à rede da equipe e remove um modo de criptografia fraco.
+
+> **Caso sintético.** As redes são sintéticas.
+
+### Erros e limites
+
+As senhas compartilhadas de rede sem fio continuam conhecidas por ex-funcionários.
+
+### Exercícios
+
+- **EX043 — Problema da senha compartilhada.** Por que a senha compartilhada da rede sem fio da equipe é um problema? *Rubrica:* 3 = é conhecida por ex-funcionários;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX044 — Ponto de acesso clandestino.** Quem instalou o ponto de acesso não autorizado? *Rubrica:* 3 = o fornecedor do café;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX045 — Modo fraco.** Por que um modo de criptografia fraco estava ativado? *Rubrica:* 3 = por causa de uma impressora velha;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Proteção de endpoints
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar ferramentas de proteção de endpoints; (2) responder a alertas dos endpoints; (3) controlar a instalação de software.
+
+### 16.1 Ferramentas de endpoint
+
+O software de proteção de endpoints detecta e bloqueia malware e comportamentos suspeitos nos computadores. O Riverbend usa um produto, mas Jamal descobre que ele está instalado apenas na maioria das estações de trabalho, e vários computadores da recepção ficaram sem ele depois de uma reinstalação. Ele compara a lista do console do produto com o inventário e o instala nas máquinas que faltavam. A Sra. Grant observa que lacunas de cobertura são comuns e que conferir a cobertura com o inventário deveria ser uma tarefa mensal de rotina. Ele acrescenta à lista de verificação uma comparação mensal da cobertura e envia ao gerente de TI a lista das máquinas que estiverem faltando.
+
+### 16.2 Alertas
+
+Jamal aprende a revisar os alertas dos endpoints. A maioria é de baixo risco: software de publicidade bloqueado ou downloads suspeitos interrompidos automaticamente. Um alerta mostra um script tentando rodar a partir de um anexo de fatura baixado num computador do financeiro. A ferramenta o bloqueou. Jamal verifica se aconteceu mais alguma coisa, não encontra nada e relata a tentativa para que o gerente de TI possa alertar a equipe. Ele aprende a tratar ataques bloqueados como sinais de que alguém está mirando a organização. O gerente de TI envia um breve alerta à equipe do financeiro descrevendo o e-mail da fatura.
+
+### 16.3 Controle de software
+
+Os funcionários às vezes instalam ferramentas gratuitas, algumas das quais trazem software indesejado. Jamal recomenda que só a TI possa instalar software, com um formulário simples de pedido e uma lista de aplicativos aprovados. Ele também recomenda permitir que apenas aplicativos aprovados rodem nos computadores dos caixas, que fazem um único trabalho. A Sra. Grant explica que a lista de permissão é muito eficaz em máquinas de finalidade única, embora seja mais difícil em computadores gerais de escritório. O gerente de TI aprova o formulário de pedido e a lista aprovada. Nos caixas, a lista de permissão é testada num centro e depois implantada nos nove, sem problemas relatados pela equipe.
+
+### 16.4 Mídias removíveis
+
+O malware pode se espalhar por pen drives. Jamal configura a proteção de endpoints para examinar automaticamente as mídias removíveis e bloqueia a execução automática de programas a partir delas. Junto com a decisão anterior de fornecer pen drives criptografados do Riverbend, isso reduz o risco e mantém o trabalho possível. Ele documenta as configurações para que sejam aplicadas aos novos computadores. Ele testa as configurações com um arquivo de teste inofensivo num pen drive no laboratório e confirma que a execução automática é bloqueada e que o exame roda. O gerente de TI aprova a aplicação das configurações a todos os computadores do Riverbend pelo sistema de gestão de dispositivos, e Jamal confere uma amostra de computadores uma semana depois para confirmar que as configurações chegaram.
+
+### Exemplo resolvido
+
+Jamal corrige lacunas de cobertura dos endpoints, investiga um script de fatura bloqueado, restringe a instalação de software, aplica lista de permissão aos aplicativos dos caixas e examina as mídias removíveis.
+
+> **Caso sintético.** Os alertas são sintéticos.
+
+### Erros e limites
+
+A proteção de endpoints protege apenas as máquinas em que está instalada.
+
+### Exercícios
+
+- **EX046 — Lacuna de cobertura.** Onde faltava a proteção de endpoints? *Rubrica:* 3 = computadores da recepção após a reinstalação;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX047 — Alerta do financeiro.** O que o alerta do financeiro mostrou? *Rubrica:* 3 = um script vindo de um anexo de fatura;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Lista de permissão.** Onde a lista de permissão é mais eficaz? *Rubrica:* 3 = máquinas de finalidade única, como os caixas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Jamal Haddad, a Sra. Fiona Grant, o Northgate College of Technology, o Riverbend Leisure Trust e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Jamal Haddad, a Sra. Fiona Grant, o Northgate College of Technology, o Riverbend Leisure Trust e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Configurar, verificar e manter os controles de segurança.
 
@@ -450,6 +822,54 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX090 estão na edição em i
 **EX023.** 129 estações de trabalho, 61,4 por cento.
 
 **EX024.** Os notebooks sem criptografia.
+
+**EX025.** As atualizações para falhas exploradas ativamente.
+
+**EX026.** Cinco estações de trabalho.
+
+**EX027.** Isolando-o num segmento próprio sem acesso à internet.
+
+**EX028.** O gerente de TI do Riverbend, por escrito.
+
+**EX029.** Uma fraqueza relatada que na verdade não está presente.
+
+**EX030.** A ferramenta de acesso remoto tinha uma segunda instalação.
+
+**EX031.** Apenas o sistema de reservas e a escala da equipe.
+
+**EX032.** Um relatório semanal do sistema de folha de pagamento.
+
+**EX033.** A conta usada por uma antiga ferramenta de backup.
+
+**EX034.** Chaves físicas.
+
+**EX035.** O sistema de e-mail.
+
+**EX036.** Códigos por mensagem de texto.
+
+**EX037.** Os funcionários acrescentavam um número à mesma palavra a cada vez.
+
+**EX038.** Um gerenciador de senhas com contas individuais.
+
+**EX039.** Senhas dos gravadores de câmeras e credenciais dos roteadores.
+
+**EX040.** A regra 11.
+
+**EX041.** A regra 11 corresponde antes a todo o tráfego.
+
+**EX042.** Acesso do fornecedor por área de trabalho remota aos caixas.
+
+**EX043.** Ela é conhecida por muitos ex-funcionários.
+
+**EX044.** O fornecedor do café.
+
+**EX045.** Por compatibilidade com uma impressora velha.
+
+**EX046.** Em vários computadores da recepção depois de uma reinstalação.
+
+**EX047.** Um script tentando rodar a partir de um anexo de fatura baixado.
+
+**EX048.** Em máquinas de finalidade única, como os caixas.
 
 <a id="references"></a>
 ## Referências
