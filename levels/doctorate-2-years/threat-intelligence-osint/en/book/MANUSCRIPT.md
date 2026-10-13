@@ -184,9 +184,7 @@ Each threat has a planned response. Outcome coders see claims with the estimativ
 
 The claim is narrow: the first measured calibration estimate of estimative language in a defined synthetic-plus-licensed corpus, with an open codebook. It is not "CTI is unreliable".
 
-Keeping the claim narrow is what makes a negative result publishable. If high-confidence statements turn out to be confirmed no more often than possible ones, the thesis still delivers a measured estimate and an open codebook that others can apply to their own corpora; a broad claim would have nowhere to retreat.
-
-The open codebook is part of the claim for that reason: it lets other teams test the same question on their own reports.
+Keeping the claim narrow is what makes a negative result publishable. If high-confidence statements turn out to be confirmed no more often than possible ones, the thesis still delivers a measured estimate and an open codebook that others can apply to their own corpora; a broad claim would have nowhere to retreat. The open codebook is part of the claim for that reason: it lets other teams test the same question on their own reports.
 
 ### Worked example
 
@@ -233,7 +231,7 @@ Tomas's pilot uses two such checks: Jaccard overlap between two small synthetic 
 ### Lab 1 — overlap baseline
 
 ```python
-"""Lab 3 (ch 04): replicate a baseline - Jaccard overlap of synthetic indicator sets from two feeds."""
+"""Lab 1 (ch 04): replicate a baseline - Jaccard overlap of synthetic indicator sets from two feeds."""
 feed_a = {"203.0.113.7", "203.0.113.9", "198.51.100.44", "bad.example", "c2.example"}
 feed_b = {"203.0.113.9", "198.51.100.44", "c2.example", "drop.example"}
 inter, union = feed_a & feed_b, feed_a | feed_b
@@ -261,7 +259,7 @@ For Tomas the overlap lab is a pipeline check, not a result: the 0.500 matches w
 ### Lab 2 — calibration pilot
 
 ```python
-"""Lab 1 (ch 04): Brier score and calibration bins for synthetic analyst probability judgments."""
+"""Lab 2 (ch 04): Brier score and calibration bins for synthetic analyst probability judgments."""
 judgments = [  # (stated probability that the claim is true, outcome 1=true 0=false)
     (0.9, 1), (0.9, 1), (0.9, 0), (0.7, 1), (0.7, 0), (0.7, 1),
     (0.3, 0), (0.3, 1), (0.3, 0), (0.1, 0), (0.1, 0), (0.1, 0),
@@ -340,7 +338,7 @@ In the lab, ten events are coded; on the full sample of 340 judgments, the same 
 ### Lab 3 — agreement
 
 ```python
-"""Lab 2 (ch 05): Cohen's kappa for two coders labelling synthetic events with a Diamond core feature."""
+"""Lab 3 (ch 05): Cohen's kappa for two coders labelling synthetic events with a Diamond core feature."""
 from collections import Counter
 a = ["infra", "cap", "infra", "victim", "adv", "infra", "cap", "victim", "infra", "cap"]
 b = ["infra", "cap", "cap",   "victim", "adv", "infra", "cap", "infra",  "infra", "cap"]
@@ -370,9 +368,7 @@ Tomas's revision added that example, and agreement on the full 340-judgment samp
 
 A third person resolves disagreements using the codebook, and both original codes are preserved. Changing the codebook mid-study requires a version note and, where possible, recoding of earlier items with the new definition.
 
-Tomas's one codebook revision, the shared-hosting example for infrastructure, is the case this rule covers. It carries a version note in the archive, and items coded under the first version were recoded so that kappa on the full sample is computed under a single definition.
-
-The adjudicator's decisions are logged with the codebook rule they relied on, so that a later reader can see whether one coder was overruled systematically.
+Tomas's one codebook revision, the shared-hosting example for infrastructure, is the case this rule covers. It carries a version note in the archive, and items coded under the first version were recoded so that kappa on the full sample is computed under a single definition. The adjudicator's decisions are logged with the codebook rule they relied on, so that a later reader can see whether one coder was overruled systematically.
 
 ### 5.4 Independent validation
 
@@ -438,17 +434,13 @@ His fix applies the ICD 203 standard on uncertainty to his own conclusion: the t
 
 Each reviewer comment receives a numbered reply: accepted with change (cite page), accepted partially (explain), or declined (explain with evidence). Silence on a comment reads as evasion.
 
-Tomas's reply to the red-cell reader's follow-up-bias comment would be "accepted with change": it names the sensitivity analysis, the two assumptions about unresolved claims and the page where both ranges appear. A reader can check the reply against the thesis without re-reading the whole chapter.
-
-When a community partner asked him to drop a negative result, Tomas's reply was "declined", citing the pre-registered analysis plan that required reporting it; the wording change that partner also requested was "accepted with change".
+Tomas's reply to the red-cell reader's follow-up-bias comment would be "accepted with change": it names the sensitivity analysis, the two assumptions about unresolved claims and the page where both ranges appear. A reader can check the reply against the thesis without re-reading the whole chapter. When a community partner asked him to drop a negative result, Tomas's reply was "declined", citing the pre-registered analysis plan that required reporting it; the wording change that partner also requested was "accepted with change".
 
 ### 6.4 Substantive versus cosmetic
 
 A sensitivity analysis that moves the headline Brier from 0.17 to 0.21 is substantive and must reach the abstract. Fixing figure fonts is cosmetic. Candidates who bury substantive changes in an appendix lose trust.
 
-Tomas's sensitivity analysis is that kind of change. Treating unresolved claims under two assumptions produced two ranges, and both went into the abstract, because a reader who saw only the more favourable one would misjudge how much the conclusion depends on follow-up behaviour.
-
-The figure-font fix goes in the change log and nowhere else, while the Brier shift is listed in the response letter as the first substantive change.
+Tomas's sensitivity analysis is that kind of change. Treating unresolved claims under two assumptions produced two ranges, and both went into the abstract, because a reader who saw only the more favourable one would misjudge how much the conclusion depends on follow-up behaviour. The figure-font fix goes in the change log and nowhere else, while the Brier shift is listed in the response letter as the first substantive change.
 
 ### 6.5 Alternative hypotheses
 
@@ -494,11 +486,7 @@ You will (1) structure a thesis so each chapter carries one claim; (2) build a r
 
 ### 7.1 One claim per chapter
 
-Readers should be able to state each chapter's claim in a sentence: integrity design; gap; proposal; baseline replication; main calibration result; robustness under critique. If a chapter has three unrelated claims, split it; if it has none, cut it.
-
-Tomas's six claims follow the chapters: integrity design, gap, proposal, baseline replication, main calibration result and robustness under critique. A chapter whose claim could not be stated in a sentence was split or cut.
-
-The test also caught a draft chapter mixing the gap with the proposal.
+Readers should be able to state each chapter's claim in a sentence: integrity design; gap; proposal; baseline replication; main calibration result; robustness under critique. If a chapter has three unrelated claims, split it; if it has none, cut it. Tomas applied the test to each of his six chapters: a chapter whose claim could not be stated in a sentence was split or cut, and the test caught a draft chapter mixing the gap with the proposal. For the calibration chapter, the sentence has to name the measure and the corpus scope, as EX043 asks.
 
 ### 7.2 What the archive contains
 
@@ -510,17 +498,13 @@ Tomas's archive holds 14 scripts, 3 codebook versions, a manifest of 1,200 repor
 
 Record the Python version and confirm the analysis uses only the standard library, or pin every dependency. Record any random seed used for sampling. "It ran on my laptop" is not reproducibility.
 
-Tomas's labs use only the standard library, which removes most dependency drift; the archive still records the Python version used. The main sample's selection uses a recorded seed, so the 340 judgments can be drawn again from the manifest by anyone with lawful access to the reports.
-
-The archive also records the operating system the figures were built on, because the colleague's one-hour rebuild was done on a different machine.
+Tomas's labs use only the standard library, which removes most dependency drift; the archive still records the Python version used. The main sample's selection uses a recorded seed, so the 340 judgments can be drawn again from the manifest by anyone with lawful access to the reports. The archive also records the operating system the figures were built on, because the colleague's one-hour rebuild was done on a different machine.
 
 ### 7.4 Data-availability statement
 
 State what is open, what is restricted and why, and how an authorised researcher can request access. Do not say "available on request" if requests will in practice be refused.
 
-For Tomas the restricted part is the 200 TLP:AMBER+STRICT reports and licensed vendor text. His statement names the sharing community and the licence holder as the routes for access, and the hash manifest lets an authorised researcher confirm they hold the same files.
-
-It also says what an authorised researcher cannot get: the reports themselves never leave the lab, so access means working on site under the same TLP:AMBER+STRICT rules that bound Tomas.
+For Tomas the restricted part is the 200 TLP:AMBER+STRICT reports and licensed vendor text. His statement names the sharing community and the licence holder as the routes for access, and the hash manifest lets an authorised researcher confirm they hold the same files. It also says what an authorised researcher cannot get: the reports themselves never leave the lab, so access means working on site under the same TLP:AMBER+STRICT rules that bound Tomas.
 
 ### 7.5 Machine-readable outputs
 
@@ -530,7 +514,7 @@ Tomas's phrase-to-probability mapping is the obvious candidate: a CSV with one r
 
 ### Worked example
 
-Tomas's archive holds 14 scripts, 3 codebook versions, a manifest of 1,200 report hashes, and synthetic samples that exercise every code path. A colleague with no lab access rebuilds all figures from the synthetic samples and the aggregate tables in under an hour.
+A colleague with no lab access takes only the archive, runs the rebuild script against the synthetic samples and the aggregate tables, and compares each figure with the thesis draft; every figure matches, and the whole rebuild takes under an hour.
 
 > **Synthetic case.** The archive contents and rebuild test are invented.
 
@@ -586,17 +570,13 @@ Tomas's handling is the model: results reported by anonymised vendor class, prev
 
 Public papers are effectively TLP:CLEAR. Anything derived from restricted inputs must be aggregated enough that the source cannot be reconstructed. Check with the sharing community when in doubt.
 
-Tomas's results derived from the 200 TLP:AMBER+STRICT reports appear only as aggregates within vendor classes, and no report is quoted. Where a class is so small that a single report could be identified from its row, the class is merged with another before publication.
-
-The merging rule is written in the archive so that a sharing-community member can check that no restricted report is recoverable from a published row.
+Tomas's results derived from the 200 TLP:AMBER+STRICT reports appear only as aggregates within vendor classes, and no report is quoted. Where a class is so small that a single report could be identified from its row, the class is merged with another before publication. The merging rule is written in the archive so that a sharing-community member can check that no restricted report is recoverable from a published row.
 
 ### 8.5 Follow-on work
 
 Natural extensions: a prospective study where analysts record numeric probabilities at writing time; a cross-language comparison; an intervention that trains calibration and measures change. Each needs its own ethics file.
 
-The prospective study answers Tomas's biggest limitation: if analysts record a numeric probability when they write a judgment, there is no need to map phrases afterwards, and the mapping assumption the examiners questioned disappears.
-
-A calibration-training intervention would study analysts as participants, so it needs their informed consent, which the current corpus-only design never required.
+The prospective study answers Tomas's biggest limitation: if analysts record a numeric probability when they write a judgment, there is no need to map phrases afterwards, and the mapping assumption the examiners questioned disappears. A calibration-training intervention would study analysts as participants, so it needs their informed consent, which the current corpus-only design never required.
 
 ### Worked example
 
