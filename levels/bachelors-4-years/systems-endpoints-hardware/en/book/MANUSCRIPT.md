@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Bachelor's Course
 
 - Language: English (`en`); course 104, Bachelor's course (4 years).
-- Editorial state: **draft**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; Nine offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; nine offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: undergraduates learning to inventory, harden, patch, encrypt, monitor and recover the laptops and servers of a small organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -53,17 +53,25 @@ Aisha Rahman is a bachelor's student at the fictional Thornbury University. Her 
 
 If 13 of 45 laptops lack encryption, the proportion is 13 divided by 45, about 29%. Proportions let Bramley compare itself over time and with guidance, even as the number of laptops changes.
 
+The same 13 laptops would be 13% of a fleet of 100 but nearly 29% of Bramley's 45, so the proportion carries the meaning that the raw count cannot. Aisha also writes the complement: 32 of 45 encrypted is about 71%, and the two figures must add to 100%. Checking that the parts add up is the simplest test that no device has been counted twice or left out of the total.
+
 ### 1.3 Inequalities as targets
 
 Targets are often inequalities: "at least 95% of laptops encrypted" or "no critical update older than 14 days". Writing them this way makes them checkable: either the measured value satisfies the inequality or it does not.
+
+Aisha notes that the direction of the sign matters as much as the number in a target. "At least 95% encrypted" means 43 of 45 laptops would pass, because 43 divided by 45 is 95.6%, while 42 laptops gives only 93.3% and fails. Writing the smallest passing count beside the percentage lets Gareth check the target without a calculator.
 
 ### 1.4 Checking claims
 
 A supplier claims its tool "fixes 90% of problems". Aisha asks: 90% of what, counted how, over what period? Mathematical reasoning starts with defining the quantity before believing the number.
 
+Applied to Bramley, the supplier's claim raises three concrete questions that Gareth can put in writing. Does a "problem" mean a missing update, a failed setting or a support ticket? Is the 90% measured on laptops like Bramley's or on large corporate fleets? And over what period was the figure taken, a month or a year? Without those answers the claim cannot be compared with Bramley's own counts.
+
 ### 1.5 Orders of magnitude
 
 With 45 laptops, one stolen laptop is about 2% of the fleet, but if it holds 3,000 tenant records, its impact is far larger than 2% suggests. Counting devices and counting affected people are different measures.
+
+Aisha therefore keeps two columns in her first summary table: devices affected and records exposed. The stolen laptop scores one in the first column and about 3,000 in the second. Managers who see only the device column could think the loss was minor, while the second column explains why letters went to tenants and the loss had to be reported.
 
 ### Worked example
 
@@ -101,21 +109,31 @@ You will (1) describe the parts of laptops and servers; (2) explain storage, mem
 
 A laptop and a server share the same building blocks: processor, memory, storage, firmware and network interfaces. Servers run continuously and provide shared services such as file storage; laptops travel and are used by one person. Travel makes laptops easier to lose.
 
+At Bramley the difference shows up in daily practice and in the risks Aisha records. The four servers stay in the office cupboard and run all day, while the 45 laptops move between the office, staff homes and cars. Aisha records each device's role as laptop or server in her inventory, because later controls, such as patch windows and encryption, are planned differently for each group.
+
 ### 2.2 Storage
 
 Laptop storage keeps data when powered off. Without encryption, anyone who removes the disk or boots another system can read it. This is exactly what made the stolen Bramley laptop a reportable incident.
+
+Aisha checks how the stolen laptop's disk was set up from Gareth's purchase notes. It used a standard internal drive with encryption switched off, the factory default for that model. Anyone with a cable or a second computer could have copied the tenant files in minutes, without knowing a single password. That is why storage, not the login screen, is the first hardware topic in her project.
 
 ### 2.3 Firmware and the TPM
 
 Firmware starts the machine; a Trusted Platform Module stores keys and can release the disk encryption key only when the expected boot components load. Microsoft's BitLocker documentation describes this approach for Windows laptops.
 
+For Bramley the TPM matters because it lets encryption work without asking staff for an extra password each morning. If someone moves the disk into another computer, the TPM in the original laptop is not there to release the key, so the data stay unreadable. Aisha notes which laptop models have a TPM and which firmware version each runs, because both affect the rollout later in the course.
+
 ### 2.4 Memory
 
 Memory holds working data and is cleared when power is lost. Locking or shutting down laptops when unattended reduces the time data sits in an unlocked session.
 
+Aisha connects this to the stolen laptop, which was taken from a car and may have been asleep rather than shut down. A laptop that is only asleep keeps its session in memory, so Bramley's guidance will ask staff to shut down or hibernate laptops before travelling. Gareth adds a screen-lock timeout to the baseline list, so an unattended session locks itself even when staff forget.
+
 ### 2.5 Inventory of hardware
 
 Aisha records each device's model, age and whether it has a TPM. Two older laptops lack one, which affects how they can be encrypted.
+
+The two laptops without a TPM are the oldest in the fleet, and Aisha flags them for a different encryption approach and early replacement. Her inventory has one row per device, with columns for asset tag, model, purchase year, TPM present and firmware version. Gareth fills the gaps from purchase records, and the finished table becomes the starting point for the asset register used in later chapters.
 
 ### Servers in the case
 
@@ -157,21 +175,31 @@ You will (1) write small Python programs over lists and dictionaries; (2) print 
 
 Aisha's first program reads a list of synthetic laptop records and prints those without encryption. It has three parts: data, a loop with a condition and output. Even this small check answers the question Gareth used to answer by hand.
 
+Aisha's first version runs on a list of five synthetic laptop records typed straight into the script. The loop checks the encrypted field of each record and prints the asset tag when encryption is off. Gareth compares the printed list with his own notes, and the two agree, which gives him enough confidence to try the script on a larger export.
+
 ### 3.2 Lists and dictionaries
 
 Each laptop is a dictionary with fields such as name, encrypted and last_update. The fleet is a list of dictionaries. This structure appears in most labs in the course.
+
+A single synthetic record looks like {"name": "BHA-L03", "encrypted": True, "last_update": "2026-09-08"}, and the fleet is a list of 45 such records. Using the same field names in every lab means a function written for one check can be reused in another. Aisha keeps a short note of each field's meaning and type beside the code, because the type error in the worked example came from exactly this kind of field.
 
 ### 3.3 Clear output
 
 Good output starts with a count, then lists details. "13 of 45 laptops not encrypted" is more useful than a long list with no summary.
 
+Aisha's script prints the summary line first, for example "13 of 45 laptops not encrypted", and only then lists the 13 asset tags in order. Gareth can stop reading after the first line if he only needs the number for a manager. Sorting the asset tags makes it easy to compare two runs and spot which laptops have changed state between them.
+
 ### 3.4 Testing
 
 Before trusting the program, Aisha runs it on three synthetic laptops where she knows the answer: two encrypted, one not. The program must print exactly one.
 
+The three-laptop test is small enough that Aisha can check the expected answer by eye. She adds two further cases: an empty list, which must print "0 of 0", and a laptop whose encrypted field is the text "False", which exposed the bug in the worked example. Each test runs in under a second, so she runs all of them after every change to the script.
+
 ### 3.5 Standard library
 
 Labs use only Python's standard library, so they run on any computer and add no unreviewed code to Bramley's systems.
+
+For Bramley this rule has a practical side as well as a security one: Gareth cannot install extra packages on locked-down machines without a change request. The standard library already includes csv, json, sqlite3, statistics and collections, which together cover every lab in this course. Aisha checks each script's import lines before handing it over, so nothing outside the standard library slips in.
 
 ### Building on the first check
 
@@ -217,21 +245,31 @@ You will (1) write clear, evidenced arguments; (2) cite sources accurately; (3) 
 
 Academic writing presents an argument supported by evidence. Aisha's first essay argues that small charities should prioritise laptop encryption.
 
+Her argument starts from Bramley's own loss: an unencrypted laptop stolen from a car, tenant records exposed and letters sent to affected tenants. The essay asks whether encryption should come before other controls for a charity with one IT officer. Aisha states her position in the first paragraph, so every later paragraph can be read as support for it, a challenge to it or a limit on it.
+
 ### 4.2 Evidence
 
 She uses Bramley's counts, CIS Controls v8, which lists data protection and secure configuration among its safeguards, and NIST SP 800-53 Rev. 5, which includes controls for protecting information at rest.
+
+The two kinds of evidence do different jobs in the essay. Bramley's counts show the size of the local problem, 13 of 45 laptops unencrypted at the start, while the frameworks show that encrypting stored data is a recognised safeguard rather than her own preference. Aisha keeps them in separate paragraphs, so a reader can see which claims rest on data and which rest on guidance.
 
 ### 4.3 Citing
 
 Each claim from a source is cited; each claim from data names the data. Unsupported opinions are avoided or clearly marked.
 
+In practice Aisha's essay cites CIS Controls v8 and NIST SP 800-53 Rev. 5 by author and year, with full entries in the reference list. A claim such as "13 of 45 laptops were unencrypted" is followed by the source and date of the export it came from. Dr Grant checks three citations at random against the original documents, and all three say what the essay claims they say.
+
 ### 4.4 Structure
 
 Introduction with question, evidence, counter-arguments, conclusion. Counter-arguments include cost and performance; she answers them with evidence.
 
+Aisha's essay follows this order: the question in the first paragraph, Bramley's counts and the cited guidance next, then the objections. The cost objection is answered with Gareth's estimate of staff time for the rollout. The performance objection is answered by proposing a small pilot that would reveal any slowdown before a wider rollout, and the conclusion restates the position with its limits.
+
 ### 4.5 Clarity
 
 Short sentences, defined terms and no unexplained acronyms.
+
+Dr Grant's comments on her first draft show what clarity means in practice. He asks her to define TPM on first use, to split a 60-word sentence about recovery keys into three sentences, and to replace "the solution" with "full-disk encryption" wherever it appears. After these edits the essay is shorter, and Gareth, who is not an academic reader, understands every paragraph on his first read.
 
 ### Writing for Bramley
 
@@ -283,21 +321,31 @@ You will (1) explain confidentiality, integrity and availability for endpoints; 
 
 Tenant records must stay confidential, finance records must be accurate, and staff need laptops that work. Each goal suggests controls: encryption, updates and backups.
 
+Aisha maps each goal to a Bramley system so the triad is not left abstract. Confidentiality matters most for the laptops and the file server, which hold tenant names, addresses and support notes. Integrity matters most for the finance server, where a wrong figure could reach the accounts. Availability matters for the domain server, because all 45 laptops need it to sign in.
+
 ### 5.2 Common threats
 
 Loss and theft, malicious email attachments, unpatched software, weak passwords and misuse of administrator rights are the most common threats to small organisations' endpoints, as NIST SP 800-83 Rev. 1 on malware prevention notes.
+
+Aisha checks which of these threats Bramley has already met. Loss and theft is the clearest, because of the stolen laptop, and many staff hold local admin rights, so admin misuse is possible on most laptops. Patch latency data from chapter 12 later show ten laptops taking more than 30 days to install an update. She records each threat beside the evidence for it, not beside a guess.
 
 ### 5.3 Basic controls
 
 Encryption, timely updates, standard user accounts, screen locks, backups and anti-malware form a basic set that matches CIS Controls v8's early safeguards.
 
+Aisha checks the six controls against Bramley's current state and finds a mixed picture. Anti-malware and the laptop firewall are already on almost everywhere. Encryption covers only 32 of 45 laptops, many staff still have admin rights, screen-lock settings vary, and nobody has yet tested restoring a backup. The gaps tell her where the project should spend its first months.
+
 ### 5.4 Updates
 
 Patching fixes known vulnerabilities. NIST SP 800-40 Rev. 4 describes patching as routine preventive maintenance rather than an emergency activity.
 
+At Bramley, updates arrive monthly, but Gareth has treated them as something to chase when a vendor warning appears. Aisha suggests a fixed monthly cycle: updates are released to a small test group first, then to all laptops, with the result checked a fortnight later. This turns patching into a calendar task instead of a reaction, which suits a charity with one IT officer.
+
 ### 5.5 People
 
 Staff habits matter: leaving laptops in cars, sharing passwords and clicking unexpected links.
+
+The stolen laptop shows how one habit can defeat technical controls: it was left in a car and taken. Aisha does not blame the staff member; she notes that nobody had told staff where laptops should be kept. She lists three habits to address in staff sessions later in the project: where laptops are kept when travelling, never sharing passwords, and reporting unexpected links to Gareth.
 
 ### Proportionate security
 
@@ -349,21 +397,31 @@ You will (1) use sets to compare inventories; (2) use graphs to describe depende
 
 The asset register is set R; devices reporting to the management agent form set M. R minus M are devices nobody is managing; M minus R are devices nobody registered. Both differences matter.
 
+With the synthetic exports, R holds 49 entries, 45 laptops and four servers, and M holds 47 devices that report. Aisha points out that the difference in totals, two, hides more detail than it reveals. Four registered devices are missing from M, and two devices in M are not registered at all, so the two differences must be computed separately before anything can be fixed.
+
 ### 6.2 Logic
 
 Rules such as "if a laptop holds tenant data then it must be encrypted" are implications. Writing them precisely helps check which devices the rule covers.
+
+Aisha writes the rule as "holds tenant data implies encrypted" and notes the one case it forbids: a laptop with tenant data that is not encrypted. A laptop without tenant data satisfies the rule whatever its encryption state, which is exactly the gap the worked example exposes. Writing the rule in this form makes its coverage visible before any device is checked.
 
 ### 6.3 Graphs
 
 A dependency graph shows that laptops depend on the domain server for logons and the file server for documents; if the domain server fails, many laptops are affected.
 
+Aisha's graph has nodes for the 45 laptops and four servers, with an edge wherever a laptop needs a server to work. The domain server has 45 incoming edges, because every laptop needs it to sign in, more than any other node. The old application server has only a few edges, which helps when the course later weighs isolating it against its business value.
+
 ### 6.4 Counting
 
 With five yes-or-no baseline settings, there are 32 combinations; only one is fully compliant.
 
+Aisha uses this count to explain why partial compliance needs a careful definition. A laptop failing only the screen-lock setting and one failing all five settings are both "not compliant", yet they represent very different risks. She decides to report each setting's failures separately rather than one pass-or-fail figure, which is the approach the baseline lab takes in chapter 23.
+
 ### 6.5 Proof habits
 
 Discrete structures train careful reasoning: clear definitions, edge cases and no generalising from a few examples.
+
+Aisha applies these habits to her own inventory claims before showing them to Gareth. She defines "managed" as a device that has reported to the management agent in the last 30 days, not just a device with the agent installed. She tests the definition on edge cases, such as a laptop on long leave, before applying it to all 49 registered devices.
 
 ### Practising with Bramley's data
 
@@ -415,21 +473,31 @@ You will (1) describe office and home networks used by staff laptops; (2) explai
 
 Bramley's office has a router, switch and Wi-Fi. Laptops, printers and servers share one network.
 
+Because everything shares one flat network, a laptop infected at the office could reach the finance server as easily as the printer. Aisha draws the network on one page: the router to the internet, one switch, the Wi-Fi access point and the four servers in the cupboard. She marks where laptops connect and notes that guests and volunteers use the same Wi-Fi as staff.
+
 ### 7.2 Home working
 
 Many staff work from home, connecting through a VPN to reach the file server. Laptops at home may be off the office network for weeks, which affects updates and management.
+
+Gareth's console shows the effect clearly: 11 laptops have not been on the office network for more than 30 days. Those laptops receive settings and updates only while the VPN is connected, which some staff do only when they need a shared file. Aisha records home working as a design condition for every later control, not as an exception to it.
 
 ### 7.3 Protocols
 
 Laptops use HTTPS for web, SMB for file shares and DNS for names. Old SMB version 1 should be disabled, as CIS Benchmarks and Microsoft baselines advise.
 
+Aisha checks the file server and finds that SMB version 1 is still enabled, left over from an old network scanner that has since been replaced. Disabling it is added to the server hardening list, with a note to confirm that no remaining device still depends on it. HTTPS and DNS need no change, but she records which laptops use the office DNS server.
+
 ### 7.4 Firewalls
 
 The laptop firewall blocks unexpected incoming connections, protecting it on public Wi-Fi.
 
+Aisha's baseline check later finds the firewall turned off on only one of the 45 laptops, the smallest gap in the fleet. She still treats the setting as essential, because home and café networks are outside Bramley's control. The firewall is set centrally from the management server, so staff cannot switch it off without administrator rights.
+
 ### 7.5 Segmentation
 
 Servers could sit on their own segment, with access only from laptops that need them.
+
+Aisha notes segmentation as a later step rather than an immediate change, because Bramley's router and switch would need reconfiguring by the contractor. A first segment would separate the four servers from staff laptops, allowing only file sharing, sign-in and management traffic through. The idea returns in chapter 31, when the old application server is isolated on its own segment.
 
 ### VPN and updates
 
@@ -481,21 +549,31 @@ You will (1) build larger checks with functions and modules; (2) read CSV and JS
 
 Aisha writes functions such as load_devices(path) and check_encryption(device), each doing one job and tested separately.
 
+Each function has a test with a known answer, and Aisha keeps the tests next to the code. check_encryption returns one of three values, encrypted, not encrypted or unknown, never a bare true or false. load_devices only reads the file and returns a list of dictionaries, so a format change affects one function and nothing else in the program.
+
 ### 8.2 Files
 
 Device exports come as CSV; agent reports as JSON. Python's csv and json modules read both.
+
+The management server's export is a CSV file with one row per laptop, while the agent reports arrive as one JSON document per device. Aisha's loader reads both and joins them on the asset tag, such as BHA-L03. When a tag appears in one source but not the other, the loader records the mismatch instead of dropping the row, so no device disappears from the summary.
 
 ### 8.3 Missing data
 
 A device with no encryption field is neither encrypted nor unencrypted; it is unknown. Aisha reports unknowns separately rather than guessing.
 
+In the synthetic exports, two laptops have no encryption field at all, because their agents had not reported since the setting was added. Treating those two as encrypted would raise the reported figure; treating them as unencrypted would send Gareth chasing problems that may not exist. The unknown category keeps both mistakes out and puts the two laptops on Gareth's follow-up list.
+
 ### 8.4 Errors
 
 If a file is missing, the program stops with a clear message.
 
+Aisha's message names the missing file and the expected folder, for example "devices.csv not found in exports/", and the program exits without printing a partial summary. A half-finished summary is worse than none, because Gareth could take a count of 30 laptops as the whole fleet. Empty files are treated the same way and stop the run with a message.
+
 ### 8.5 Modules
 
 Shared functions live in one module, used by several checks.
+
+Aisha's module, called checks.py, holds load_devices, check_encryption and the update-age check, each with its own tests. The encryption report and the weekly summary both import it, so a fix to one function reaches every script at once. Gareth only needs to update one file when the export format changes, which matters for a single IT officer.
 
 ### Combining checks
 
@@ -549,25 +627,35 @@ You will (1) design tables for devices, updates and events; (2) use keys; (3) pr
 
 Devices (asset tag, model, owner role, location), updates (device, update, released, installed) and events (device, time, type).
 
+Each table answers a different question about the fleet. The devices table says what Bramley owns and where it is, the updates table says which fixes reached which device and when, and the events table records sign-ins, installs and errors. Keeping them separate means one laptop can have many update and event rows without its model and location being repeated in each one.
+
 ### 9.2 Keys
 
 Asset tags are unique keys; owner roles rather than names reduce personal data.
+
+The asset tag, such as BHA-L19, links each row in the updates and events tables back to one device. Because tags are never reused, a laptop retired and replaced keeps its own history instead of merging with the new machine. Using "finance manager" rather than a person's name means the table stays accurate when staff change roles, and it holds less personal data.
 
 ### 9.3 Queries
 
 Which devices miss critical updates older than 14 days? Which devices have not reported in 30 days?
 
+Each question becomes a short query that joins two tables on the asset tag. The first compares release and install dates in the updates table for critical items; the second finds devices whose latest event is older than 30 days. Aisha writes the expected answer for her small test set beside each query before running it, so she can tell a wrong query from a surprising fleet.
+
 ### 9.4 Retention
 
 Records are kept for a year.
+
+A year covers twelve monthly update cycles, enough for Aisha to compare the baseline with the final measures and to show seasonal patterns. Rows older than a year are deleted from the database during the weekly refresh, and the deletion is logged with the number of rows removed. Records needed for a live investigation are held back with a written reason.
 
 ### 9.5 Privacy
 
 No tenant data enters these tables.
 
+The tables hold device facts only: asset tags, owner roles, update dates and event types. Tenant names, addresses and support notes stay on the file server and never appear in an export Aisha loads. Before each load she runs a short check for columns she does not expect, so an export that suddenly includes extra fields is rejected rather than stored.
+
 ### Building the tables
 
-Aisha builds the tables in a small database file using Python's built-in sqlite3 module, loading synthetic exports. She writes the two queries from the section above and a third for laptops not seen for 30 days.
+Aisha builds the tables in a small database file using Python's built-in sqlite3 module, loading synthetic exports. She writes the two queries listed above and a third for laptops not seen for 30 days.
 
 She checks that each query returns what she expects on a small test set, then runs them on the full synthetic data. The 30-day query returns six devices, which matches her manual count.
 
@@ -621,21 +709,31 @@ You will (1) work only with permission; (2) protect personal data; (3) communica
 
 Aisha's work at Bramley is covered by a written agreement signed by Bramley's chief executive and Dr Grant: read-only access to device reports, no access to tenant records and changes only through Gareth.
 
+The agreement names what Aisha may see, who makes changes and what happens if she finds a problem. Read-only access means she can view device reports and exports but cannot change a setting on any laptop or server. Every change she recommends goes to Gareth, who decides whether to make it and records it in the change log.
+
 ### 10.2 Personal data
 
 Device reports include staff names. Aisha uses roles in her reports and keeps raw exports on encrypted university storage.
+
+Aisha replaces each name with a role, such as "finance manager" or "housing officer 3", before any table leaves the raw export. The mapping from role to name stays with Gareth, not with Aisha. Raw exports are kept on the university's encrypted storage and are deleted within a month of her capstone submission, as the agreement requires.
 
 ### 10.3 Honesty
 
 She reports problems plainly, including those caused by past decisions.
 
+At Bramley this means stating plainly that the stolen laptop was unencrypted because encryption had never been switched on. Aisha also reports the shared admin account and the 13 unencrypted laptops without softening them. She words each finding as a fact with its evidence, not as a judgement of Gareth, which keeps him willing to share more data with her.
+
 ### 10.4 Limits
 
 She does not test laptops for weaknesses or try to access data.
 
+Aisha's work is limited to reading reports and configurations; she never runs scanners or tries passwords on Bramley's devices. When a question can only be answered by testing, such as whether a disabled service is really off, she asks Gareth to check it himself. Gareth records the result, so the evidence comes from an authorised person.
+
 ### 10.5 Raising concerns
 
 If she sees something serious, she tells Gareth the same day.
+
+The shared admin account in the worked example is the first time Aisha uses this route. She sends Gareth a short message the same afternoon, naming the server and the account without investigating how it was used. Gareth acknowledges it in writing, and Aisha keeps the message in her project log as evidence that she followed the agreement.
 
 ### Why authorisation matters
 
@@ -687,21 +785,31 @@ You will (1) explain users, privileges, services and updates in Windows and Linu
 
 Standard users cannot change system settings; administrators can. Bramley's laptops give many staff local admin rights, which baseline guidance from CIS and Microsoft recommends removing.
 
+Aisha's baseline check later shows that 25 of 45 laptops still give their users local admin rights. With those rights, a user or a malicious program can switch off the firewall, change the screen lock or install software. Removing them makes staff ask Gareth for new software, which is why the course pairs the change with a request process.
+
 ### 11.2 Services
 
 Servers run services such as file sharing and directory services. NIST SP 800-123 advises removing services a server does not need, because each one adds risk and maintenance.
+
+Bramley's four servers each have a clear purpose: shared files, the finance system, the directory that controls sign-ins, and the old housing application. Aisha lists the services running on each server and later compares them with each server's role document. The comparison finds four unneeded services, including telnet on the file server and ftp on the old application server.
 
 ### 11.3 Updates
 
 Operating systems receive monthly security updates. Updates need restarts, which staff often postpone.
 
+At Bramley the monthly update arrives on all 45 laptops, but the restart is often postponed for days. Gareth's console shows updates as installed even when the restart is pending, which made earlier reports look better than reality. Aisha adds pending restarts as a separate count, so a laptop is counted as patched only after the restart completes.
+
 ### 11.4 Kernel and self-protection
 
 The OS kernel enforces separation between programs. The Linux kernel self-protection documentation describes techniques that make the kernel harder to misuse; Windows includes comparable protections in its security baselines.
 
+For Bramley, kernel protections are something to keep on rather than build. Aisha checks that the Windows security baseline settings that protect the kernel are enabled on the laptops and are not disabled by old drivers. On the Linux application server she records the kernel version, because missing kernel updates are part of why that server is a concern later.
+
 ### 11.5 Logs
 
 The OS records logons, installs and errors, supporting investigation.
+
+Aisha notes which logs Bramley already keeps: Windows security logs on each server, the management server's install records, and error logs on the old application server. They are spread across machines and overwritten when full, so nobody reviews them. Collecting sign-in records centrally becomes the basis for the weekly logon review in chapter 29.
 
 ### Linux at Bramley
 
@@ -753,7 +861,9 @@ You will (1) summarise patch latency with mean, median and spread; (2) recognise
 
 Patch latency is the days from an update's release to its installation on a device. Aisha collects it for the last monthly update on all 45 laptops.
 
-### Lab — Lab — patch latency
+The data come from the management server's update report, which records the release date and the install date for each laptop. Aisha uses the install completed after restart, not the download date, so a pending restart counts as not yet installed. All 45 laptops have both dates for this update, so no laptop has to be counted as unknown.
+
+### Lab — patch latency
 
 ```python
 """Summarise synthetic patch latency (days from release to install) for 45 laptops (stdlib only)."""
@@ -775,13 +885,19 @@ within 14 days 26/45, over 30 days 10
 
 The mean is 22.4 days, the median 12 and the maximum 104. 26 of 45 laptops installed within 14 days; 10 took over 30 days.
 
+Twenty-six of 45 is about 58%, and ten of 45 is about 22%, so more than one laptop in five took over a month. Rerunning the lab also shows that the 35 laptops at or under 30 days have a mean of about 11.5 days. The ten slowest laptops alone lift the fleet mean from about 11.5 to 22.4 days.
+
 ### 12.3 Skew
 
 A few very late laptops pull the mean far above the median. The distribution is skewed, so the median describes the typical laptop better and the tail count describes the problem.
 
+The lab's numbers show the skew directly: the median, 12 days, sits close to most laptops, while the mean, 22.4 days, sits above 32 of the 45 values. The longest delay, 104 days, is more than eight times the median. Aisha shows the sorted list to Gareth, because a single list makes the shape clearer than any one summary number.
+
 ### 12.4 Choosing measures
 
 Bramley adopts two measures: share within 14 days and count over 30 days.
+
+The first measure, 26 of 45 within 14 days at the baseline, tracks how quickly most laptops are patched. The second, ten laptops over 30 days, tracks the tail where the risk sits. Neither depends on the mean, so one laptop at 104 days cannot hide an improvement elsewhere, and Gareth can recalculate both from the same monthly report.
 
 ### Why the tail matters
 
@@ -799,7 +915,7 @@ The measure is repeated monthly for each update cycle.
 
 ### Interpreting the tail
 
-The mean of 22.4 days hides a long tail: ten laptops took over 30 days. Aisha looks at those ten individually and finds three causes: laptops left switched off, pending restarts and two broken update agents. The median of 12 shows that most laptops are fine. Fixing the tail, not the typical laptop, is where effort pays off.
+The mean of 22.4 days hides a long tail: ten laptops took over 30 days. Aisha looks at those ten individually and finds the three causes listed above: home workers rarely on the VPN, full disks and the laptop left in a drawer. The median of 12 shows that most laptops are fine. Fixing the tail, not the typical laptop, is where effort pays off.
 
 ### Worked example
 
@@ -837,21 +953,31 @@ You will (1) apply least privilege to staff and admins; (2) use named admin acco
 
 Saltzer and Schroeder (1975) described least privilege: each user and program gets only the access it needs.
 
+At Bramley the principle applies to people and to programs. A housing officer needs to read and edit tenant files but not to install drivers, so a standard account is enough. The backup agent needs to read every shared folder but not to change system settings. Aisha lists each account's real needs before any rights are removed.
+
 ### 13.2 Staff accounts
 
 Staff become standard users; software requests go to Gareth.
+
+The change affects the 25 laptops whose users still hold local admin rights. Staff keep everything they need for daily work: email, the housing system, documents and printing. When they need new software, they send a request and Gareth installs it centrally, which also means every installed program is recorded in the management server.
 
 ### 13.3 Admin accounts
 
 Gareth and the contractor use separate named admin accounts with multi-factor authentication, used only for admin tasks.
 
+The named accounts are it-gareth and it-contractor, the same names that appear in the logon review lab. Gareth signs in to his daily account for email and documents, and to it-gareth only for server and management tasks. A phished daily password therefore gives no admin access, and the second factor protects the admin accounts themselves.
+
 ### 13.4 Shared accounts
 
 The old shared admin account is disabled so actions can be traced to people.
 
+A shared account means a log entry can show that "admin" signed in, but never which person did. Disabling it is the change Gareth made after Aisha reported it, and each person now uses a named account. The later logon review still flags "admin" on S04 at 02:47, because a scheduled task had not yet moved to another account.
+
 ### 13.5 Reviews
 
 Admin group membership is reviewed monthly.
+
+The monthly review is short: Gareth exports the members of each admin group and compares them with the access register Aisha created. Anyone not on the register is removed or added to it with a reason. The contractor approves Gareth's own entries, so nobody reviews only their own access. Each review is saved with its date as evidence.
 
 ### MFA for admins
 
@@ -909,21 +1035,31 @@ You will (1) identify personal data on endpoints; (2) apply data minimisation; (
 
 Laptops hold tenant names, addresses and support notes. Some notes are sensitive.
 
+Aisha learns this from staff interviews and folder names, not by opening tenant files, which the agreement forbids. Housing officers keep copies of tenancy letters and support notes for visits, and some notes record health or family circumstances. Those sensitive notes are what made the stolen laptop serious, and they decide which laptops are treated as highest risk.
+
 ### 14.2 Minimisation
 
 Staff should keep tenant data on the file server rather than locally. Less local data means less exposure when a laptop is lost.
+
+Aisha's survey shows that many staff keep local copies "in case the network is slow", so minimisation must make the file server easy to use. Gareth's improved offline sync keeps a managed, encrypted copy that is removed when the file server version changes. Staff no longer need private copies on the desktop, and the copies that remain are known.
 
 ### 14.3 Breach duties
 
 Data protection law requires organisations to assess and often report personal data breaches. The stolen laptop was reported because it was unencrypted.
 
+For the stolen laptop, Bramley's assessment found that tenant names, addresses and support notes could be read by anyone with the disk. That made the loss reportable and led to the letters sent to affected tenants. Aisha records the timeline from the theft to the report, because the breach procedure must make the same decisions faster next time.
+
 ### 14.4 Encryption effect
 
 If a lost laptop is encrypted and the key not compromised, the data are unreadable, which usually changes the breach assessment.
 
+This is why the mock report checks encryption status first: in the mock, the console confirms it within 20 minutes. If the laptop is shown encrypted and its recovery key is held only in the directory, the data protection lead can record a much lower risk. Encryption does not remove the duty to assess the loss, but it changes what the assessment is likely to find.
+
 ### 14.5 Retention
 
 Old local copies are deleted.
+
+Aisha adds a check to the baseline routine for tenant files stored outside the managed sync folder on each laptop. Files older than the retention period are deleted by the owner after Gareth confirms the file server holds the current version. Staff are told before the first clean-up, and the deletion is recorded as a count per laptop, not as file names.
 
 ### Breach response basics
 
@@ -983,21 +1119,31 @@ You will (1) collect evidence with time and source; (2) define measures; (3) avo
 
 Agent reports, exports and logs, each saved with collection date and source.
 
+Aisha's baseline folder holds five files collected in one week: the device export, the encryption report, the update status for the last monthly release, the asset register and the server service lists. Each file name starts with the collection date and the system it came from. A reader of the dissertation can therefore trace every baseline number back to one dated file.
+
 ### 15.2 Measures
 
 Encryption share, patch latency, unmanaged devices and unneeded server services.
+
+Each measure has a fixed definition written before the first count. Encryption share is laptops reported encrypted out of 45; patch latency is days from release to install after restart; unmanaged devices come from the register comparison; unneeded services come from the role documents. At the baseline the four values are 32 of 45, 26 of 45 within 14 days, six and four.
 
 ### 15.3 Baselines
 
 The first measurements become the baseline for later comparison.
 
+Bramley's baseline is the week Aisha collects the five evidence files, and its figures are not changed afterwards, even when errors are found later. If a mistake is discovered, she records a correction note beside the original figure instead of overwriting it. The evaluation in chapter 39 compares the final measures with these baseline figures, so the starting point must stay fixed.
+
 ### 15.4 Honest presentation
 
 Counts with percentages; tails as well as averages.
 
+Aisha's baseline table shows "32 of 45 (71%)" rather than "71%" alone, and it lists the ten laptops over 30 days alongside the median of 12. She also shows the two laptops that did not report as a separate row, not hidden inside either total. Gareth can see at once how many devices each percentage describes.
+
 ### 15.5 Storage
 
 Evidence kept read-only.
+
+Aisha stores the five baseline files in a read-only folder on the university's encrypted storage, and works only on copies. She records a hash of each file on the day it is collected, using the same idea as checking an installer download. If a later figure disagrees with the baseline, the hashes show whether the evidence has changed since collection.
 
 ### Collecting the baseline
 
@@ -1055,21 +1201,31 @@ You will (1) design layered endpoint controls; (2) place controls on devices, se
 
 Device: encryption, standard users, firewall, updates, anti-malware. Server: minimal services, named admin accounts. Network: VPN, segmentation. Management: agent reporting, logs.
 
+Aisha writes each layer as one row of a table with its owner and evidence source. Device controls are set by the management server and shown in its reports; server controls come from role documents and the services check; network controls rest on the VPN and laptop firewall; management depends on agent reports and logs. Any control without an evidence source is marked as unverified.
+
 ### 16.2 Defence in depth
 
 If anti-malware misses a file, standard user rights limit what it can change.
+
+At Bramley, the layers are chosen so that each covers a gap another leaves. If a staff member opens a malicious attachment and anti-malware misses it, the standard account stops it changing system settings. If a laptop is stolen anyway, encryption protects the disk. No single control has to be perfect for tenant data to stay protected.
 
 ### 16.3 Central management
 
 A management agent applies settings and reports status, making Bramley's small IT team effective.
 
+With one IT officer and 45 laptops, central management is what makes the other controls workable at all. Gareth sets encryption, firewall, screen lock and update policy once on the management server, and each laptop's agent applies them. The same agent reports status back, which gives him evidence for every device without visiting it.
+
 ### 16.4 Dependencies
 
 Reporting depends on agents being installed; patching depends on laptops connecting.
 
+These dependencies explain several later findings. Laptops whose agents are broken, such as L19 and L33, receive no settings and report no missing updates, so they look fine by omission. Home laptops that rarely connect fall into the patch tail. Aisha marks each dependency on the architecture sketch so that its failure is checked in the weekly routine.
+
 ### 16.5 Simplicity
 
 Few tools, well configured.
+
+Aisha's design uses tools Bramley already licenses: the management server, the built-in disk encryption, the laptop firewall, the VPN and the backup service. She avoids adding a separate product for each layer, because each new tool needs its own configuration, updates and review time. Fewer tools also means fewer consoles for Gareth to check each week.
 
 ### Proportionate architecture
 
@@ -1123,21 +1279,31 @@ You will (1) explain symmetric encryption, keys and hashing; (2) describe full-d
 
 Full-disk encryption uses a symmetric key to encrypt the disk. The key is protected by the TPM and optionally a PIN.
 
+On Bramley's Windows laptops, BitLocker provides the full-disk encryption described in Microsoft's documentation. The same key encrypts and decrypts every block on the disk, so the laptop runs normally once unlocked. The finance manager's and chief executive's laptops add a start-up PIN, while the rest unlock through the TPM alone.
+
 ### 17.2 Recovery keys
 
 If the TPM cannot release the key, a recovery key unlocks the disk. Recovery keys are stored in Bramley's directory, accessible only to IT.
+
+A TPM may refuse to release the key after a firmware update or a hardware change, as the worked example shows. The recovery key is a long number that unlocks the disk in that case, so it must be available to IT but not to anyone who holds the laptop. Aisha checks that each laptop's recovery key is in the directory before rollout continues.
 
 ### 17.3 Hashing
 
 Hashes detect file changes and verify downloads.
 
+A hash is a short fixed-length value computed from a file, and changing even one byte changes the hash. Gareth compares the hash of each downloaded installer with the vendor's published value before deploying it. Aisha also records hashes of her baseline evidence files, so any later change to those files would be detectable.
+
 ### 17.4 TLS
 
 VPN and web traffic are protected in transit.
 
+The VPN encrypts traffic between home laptops and the office, so file share traffic is not readable on a home or café network. Web traffic to the housing system and email uses HTTPS. Aisha notes one gap in transit: tenant documents emailed to the partner agency, which she marks for review in the system model.
+
 ### 17.5 Key management
 
 Losing recovery keys can lock out data; leaking them defeats encryption.
+
+Bramley stores recovery keys only in the directory, readable by IT, and not on paper in desks. One laptop's key turns out to be missing because it was encrypted by hand before the rollout, which shows why verification must include the keys. Gareth's recovery test on a lab laptop confirms that a key can be found and used quickly.
 
 ### Choosing protectors
 
@@ -1191,21 +1357,31 @@ You will (1) form a research question; (2) choose a method; (3) consider ethics.
 
 Do monthly patch reminders sent to staff reduce patch latency?
 
+The question comes from the patch latency lab, where 26 of 45 laptops installed within 14 days and ten took over 30 days. Many delays came from staff postponing restarts, so a reminder seemed a cheap intervention. Aisha narrows the question to one change, a reminder email sent three days after each monthly release, so the answer can be measured.
+
 ### 18.2 Method
 
 Compare latency for two months before and after reminders.
+
+The comparison uses the management server's update reports for two monthly releases before the reminders and two after. The same 45 laptops are measured in each month, using the same definition of installed after restart. Aisha keeps each month separate in her table, so one unusual month can be seen instead of being hidden inside an average.
 
 ### 18.3 Ethics
 
 Data are aggregated; no individual is named.
 
+Aisha's tables show counts per month, such as 26 of 45, and never a named laptop owner. Raw reports with user names stay with Gareth inside IT, kept for the 90 days agreed for device reports. Staff are told that reminders are being tried and why, and Dr Grant confirms the light-touch ethics approval before data are pulled.
+
 ### 18.4 Limits
 
 Other changes may affect results.
 
+Aisha lists the likely confounders in advance: holidays, new laptops and any other policy change. The forced restart policy turns out to start in the same month as the reminders, which is exactly the kind of overlap she warned about. Writing the list early lets her name this limit plainly in chapter 33, not discover it afterwards.
+
 ### 18.5 Plan
 
 Pre-state the measure: share within 14 days.
+
+The plan fixes three things before any data are seen: the measure, share of laptops installed within 14 days; the comparison, two months before and after; and the threshold, a rise of at least five laptops. Dr Grant signs the one-page plan, which stops Aisha from changing the measure later to suit the result.
 
 ### Designing the study
 
@@ -1271,21 +1447,31 @@ You will (1) define the field's scope; (2) connect theory to Bramley; (3) place 
 
 The field covers servers, laptops, firmware and hardware: their configuration, updates, integrity and recovery.
 
+At Bramley, the scope covers 45 laptops and four servers: how they are set up, how quickly they are updated, whether their firmware and settings stay as intended, and how they are restored after failure. Phones and the website sit outside the capstone, as the scope statement says. Aisha keeps the boundary written down, so new requests are judged against it.
+
 ### 19.2 Theory
 
 Configuration management (SP 800-128), patch management (SP 800-40r4) and least privilege provide the main theories applied.
+
+Each theory gives Aisha a concrete routine for Bramley. SP 800-128 supports the five-setting baseline and the checks that keep laptops on it. SP 800-40 Rev. 4 supports the monthly patch cycle with forced restarts. Least privilege, from Saltzer and Schroeder (1975), supports standard staff accounts and named admin accounts.
 
 ### 19.3 Hardware
 
 Firmware and processor issues, such as those shown by Kocher et al. (2019), are fixed by updates, adding to patch volume.
 
+Kocher et al. (2019) showed that speculative execution in processors could leak data across boundaries that software assumed were safe. For Bramley, the practical result is more updates: firmware and microcode fixes arrive from the laptop vendor alongside operating system patches. Aisha records firmware versions in the inventory, so these updates can be tracked like any other.
+
 ### 19.4 Relation to other areas
 
 Identity, networks and incident response connect to endpoints.
 
+Aisha draws the links that matter for Bramley. Identity decides who holds admin rights on each device; the network decides whether home laptops receive updates; incident response decides what happens when a laptop is lost. A gap in any of these shows up on endpoints, so her capstone records the interface, though not the whole neighbouring field.
+
 ### 19.5 Bramley's place
 
 Small organisations need proportionate controls.
+
+A charity with one IT officer cannot run every control in a large framework. Aisha uses CIS Controls v8 implementation group 1 as the starting set, because it is aimed at organisations with limited IT resources. Her test for each proposed control is whether Gareth can run it within his weekly routine without new tools.
 
 ### Why systems security is its own field
 
@@ -1343,21 +1529,31 @@ You will (1) learn from public cases of endpoint failures; (2) extract lessons; 
 
 Many reported breaches involve lost or stolen unencrypted laptops; the lesson is encryption by default.
 
+Bramley's own incident fits this pattern exactly: a laptop stolen from a car, unencrypted, holding tenant records. Aisha uses the pattern to argue that encryption should be the default on every laptop, not only on those known to hold tenant data. Gareth's decision in chapter 6 to encrypt every laptop follows the same lesson.
+
 ### 20.2 Patch delays
 
 Nappa et al. (2015) found that shared code leaves vulnerable copies unpatched long after fixes; Li and Paxson (2017) found vulnerabilities often persist for years before fixes.
+
+Aisha takes one general point from both papers: a fix being released does not mean it has reached every device. Bramley's own data show the same pattern on a small scale, with ten laptops taking over 30 days to install an update. She uses the papers to explain why the tail matters, not to predict Bramley's figures.
 
 ### 20.3 Misconfiguration
 
 Dietrich et al. (2018) found operators link misconfigurations to time pressure and unclear responsibility.
 
+Bramley shows both conditions Dietrich et al. (2018) describe. One IT officer handles all requests, so urgent changes happen quickly, and the old application server was left to the contractor without a clear owner. Aisha's response is a short checklist for urgent changes and a named owner for each server in the role documents.
+
 ### 20.4 Lessons for Bramley
 
 Encrypt all laptops, measure patch tails, clarify responsibilities.
 
+Each lesson becomes a measure Aisha can track. Encrypting all laptops is tracked as laptops verified encrypted out of 45. Measuring patch tails is tracked as laptops over 30 days. Clarifying responsibilities is tracked through role documents that name an owner for each of the four servers.
+
 ### 20.5 Using cases
 
 Cases are used to learn, not to blame.
+
+Aisha applies this rule to Bramley's own incident card as well as the public cases. The card describes what was lost and which controls were missing, without naming the staff member whose laptop was stolen. Staff respond by admitting they had also left laptops in cars, which would have been less likely if the card assigned blame.
 
 ### Turning cases into actions
 
@@ -1415,21 +1611,31 @@ You will (1) model Bramley's endpoints, servers and management; (2) show data an
 
 45 laptops, four servers (file, finance, domain, an old application server), a management server, VPN and backup service.
 
+Each component appears as one box on Aisha's one-page model, labelled with its asset tag where it has one. The laptops are BHA-L01 to BHA-L45 and the servers BHA-S01 to BHA-S04. The management server, VPN and backup service are drawn separately, because every control on the laptops depends on at least one of them working.
+
 ### 21.2 Control flows
 
 The management server sends settings and updates to agents; agents report status back.
+
+Arrows from the management server to the laptops carry settings, encryption policy and updates; arrows back carry status reports. Aisha draws these as control flows, separate from data flows, because a break here is silent. A laptop whose agent stops reporting still works for its user, but receives nothing new and reports nothing.
 
 ### 21.3 Data flows
 
 Tenant data flow from the file server to laptops and back; finance data stay on the finance server.
 
+Tenant documents move from the file server to laptops through offline sync, and edits flow back the same way. The finance data stay on the finance server and are reached by three staff. Aisha's check with staff adds a third flow, documents emailed to the partner agency, which crosses a trust boundary and is marked for review.
+
 ### 21.4 Control points
 
 Encryption and standard users on laptops; minimal services on servers; agent reports at the management server.
 
+Aisha places each control where the model shows data at rest or in motion. Encryption and standard accounts act on the laptops; the services check and named admin accounts act on the servers; the VPN and firewall act on the network path. Agent reports at the management server provide the evidence that the device controls are in place.
+
 ### 21.5 Model use
 
 The model guides inventory, baseline and service checks in later chapters.
+
+Each later lab starts from a part of the model. The inventory comparison checks the component list; the baseline lab checks the laptop control points; the services lab checks the server control points. When a lab finds something the model lacks, such as the missing backup flow for the old application server, the model is corrected first.
 
 ### Checking the model
 
@@ -1483,7 +1689,9 @@ You will (1) compare the asset register with management agent reports; (2) find 
 
 Every control depends on the management agent. A device not reporting gets no settings, updates or monitoring. CIS Controls v8 begins with inventory for this reason.
 
-### Lab — Lab — inventory comparison
+The model already shows the risk: the management server reported three servers when four exist. A laptop whose agent is broken is invisible in the same way, so encryption, updates and the baseline checks all miss it. Aisha's comparison lab tests whether every registered device is reporting, and whether every reporting device is known.
+
+### Lab — inventory comparison
 
 ```python
 """Compare the asset register with devices reporting to the management agent (synthetic, stdlib only)."""
@@ -1506,13 +1714,19 @@ reporting, not in register: BHA-L46, DESKTOP-7F2K
 
 The register lists 49 devices; 47 report. Four registered devices are not reporting: laptops L07, L19, L33 and server S04. Two reporting devices are not registered: L46 and DESKTOP-7F2K.
 
+The two totals differ by only two devices, but the lab finds six mismatches in total. Four devices are on the register but not reporting, and two report without being registered. The gap between 49 and 47 hides this detail, which is why Aisha prints both differences instead of the totals alone.
+
 ### 22.3 Investigating
 
 L07 is in a drawer; L19 and L33 have broken agents; S04 was never enrolled. L46 is a new laptop not yet registered; DESKTOP-7F2K is a volunteer's personal PC that joined with old credentials.
 
+The six findings fall into three types of cause. Two are broken agents, which is a management fault; one, S04, was never enrolled, which is an onboarding gap; one, L07, is a laptop out of use. Of the two unregistered devices, L46 shows a gap in purchasing records, and DESKTOP-7F2K shows a weakness in the enrolment process.
+
 ### 22.4 Fixing
 
 Agents are repaired, S04 is enrolled, L46 registered and the personal PC removed and its access revoked.
+
+After the fixes, the comparison is rerun and the only remaining difference is L07, now recorded as a spare. The volunteer's personal PC loses its access, and the enrolment code it used is rotated so only IT can enrol devices. Gareth records each fix in the change log with the date and asset tag.
 
 ### Keeping the inventory current
 
@@ -1520,7 +1734,7 @@ After fixes, Aisha automates the comparison to run weekly, sending Gareth a shor
 
 ### Resolving the differences
 
-Missing devices L07, L19, L33 and S04 are traced: two laptops were in a drawer awaiting repair, one belonged to a leaver and was never returned, and S04 is the unenrolled application server. The extra entries L46 and DESKTOP-7F2K are a new laptop not yet registered and a reception PC bought by a manager directly. Each is resolved: the leaver's laptop is recovered and wiped, the drawer laptops are recorded as spares, the new laptop is registered and the reception PC is enrolled.
+Missing devices L07, L19, L33 and S04 are traced: L07 was in a drawer awaiting repair, L19 and L33 had broken agents, and S04 is the unenrolled application server. The extra entries L46 and DESKTOP-7F2K are a new laptop not yet registered and a volunteer's personal PC that joined with an old enrolment code. Each is resolved: L07 is recorded as a spare, the two agents are repaired, S04 is enrolled, the new laptop is registered and the personal PC is removed with its access revoked.
 
 ### Worked example
 
@@ -1558,7 +1772,9 @@ You will (1) check laptops against a baseline; (2) count gaps by setting; (3) pr
 
 Five settings: disk encryption, firewall, screen lock, local admin removed and automatic updates, drawn from CIS Benchmarks and Microsoft's Windows security baselines.
 
-### Lab — Lab — baseline gaps
+The five settings were chosen because each one addresses a risk Bramley has already met. Encryption answers the stolen laptop, the firewall answers home and café networks, the screen lock answers unattended sessions, removing local admin limits drift and malware, and automatic updates address the patch tail. Each is checked from agent reports, not by visiting laptops.
+
+### Lab — baseline gaps
 
 ```python
 """Count baseline gaps per setting across synthetic laptops (stdlib only)."""
@@ -1585,13 +1801,19 @@ auto_updates          6/45 failing
 
 Local admin removal fails on 25 of 45 laptops, disk encryption on 13, screen lock on 7, automatic updates on 6 and firewall on 1.
 
+As percentages, 25 of 45 is about 56%, 13 is about 29%, seven about 16%, six about 13% and one about 2%. The encryption figure matches the 13 unencrypted laptops counted in chapter 1. Rerunning the lab with the same seed gives the same counts, which lets Gareth repeat the check and compare.
+
 ### 23.3 Priorities
 
 Encryption first, because of the theft incident; local admin second, because it affects many settings; others follow.
 
+Aisha's order reflects impact and how the settings depend on one another. Encryption comes first because 13 laptops could expose tenant data if lost, as Bramley's stolen laptop did. Local admin comes second because, with 25 laptops affected, its removal also protects the screen lock, firewall and update settings from being changed.
+
 ### 23.4 Method
 
 Settings are applied centrally through the management server, not laptop by laptop.
+
+Gareth applies each setting once as a policy on the management server, and the agents on the laptops enforce it. Doing it this way means a new laptop receives all five settings when it is enrolled, without a manual checklist. The next baseline run shows whether each policy has reached every reporting laptop.
 
 ### Why local admin causes drift
 
@@ -1643,21 +1865,31 @@ You will (1) implement encryption, account and update controls; (2) communicate 
 
 Encryption is enabled in groups of ten laptops, with recovery keys escrowed and verified.
 
+With 13 laptops to encrypt, the rollout takes one group of ten laptops and a final group of three, and it runs after the five-laptop pilot. Before each group, Gareth checks that recovery keys from the previous group are in the directory. Laptops with a start-up PIN, the finance manager's and chief executive's, receive a short guide first.
+
 ### 24.2 Account changes
 
 Local admin is removed with a request process for software.
+
+Local admin rights are removed from the 25 laptops in the same staged groups, with the request form ready before the first group. In the first week Gareth receives five software requests and installs each one centrally. The specialist housing software that needed admin rights to update is packaged for central deployment.
 
 ### 24.3 Update policy
 
 Updates install automatically with a forced restart after seven days' notice.
 
+Staff see a notice when an update needs a restart, and can postpone it for up to seven days. On day five a friendly reminder appears, and on day seven the laptop restarts at a time staff can choose that day. Aisha explains that installed fixes are not active until the restart, as the sample laptop in chapter 11 showed.
+
 ### 24.4 Exceptions
 
 Two old laptops without TPMs use password-based encryption until replaced.
 
+The two oldest laptops lack a TPM, so they cannot unlock their disks automatically at start-up. Their users enter a password at start-up instead, which protects the disk if the laptop is stolen. The exception is recorded with an expiry date, because both laptops are scheduled for replacement within six months.
+
 ### 24.5 Communication
 
 Staff receive a short note before each change.
+
+Each note goes out two days before a group's change and says what staff will notice, such as a new screen-lock delay or a restart prompt. It names Gareth as the contact and gives the date of the change. Help requests during the rollout fall compared with an earlier change made without notice, which Gareth records.
 
 ### Pilot group
 
@@ -1723,7 +1955,9 @@ You will (1) triage missing updates by severity and age; (2) identify overdue it
 
 Critical updates within 14 days; important within 30.
 
-### Lab — Lab — update triage
+The two windows give Gareth a simple rule for each missing update in the management server's report. A critical update older than 14 days is overdue, and so is an important update older than 30 days. Moderate updates have no deadline here and are installed in the normal monthly cycle. Aisha's triage lab applies exactly these two conditions.
+
+### Lab — update triage
 
 ```python
 """Triage synthetic missing updates by severity and age (stdlib only)."""
@@ -1754,13 +1988,19 @@ overdue 4/8
 
 Four of eight missing updates are overdue: critical on L19 (88 days), L03 (41) and S02 (33), and important on L33 (47).
 
+The ranking shows why age alone is not enough: L25's moderate update is 60 days old but not overdue, while S02's critical update at 33 days is. L40's critical update is the newest at nine days and is still within policy. The four overdue items become Gareth's first list for the shared board.
+
 ### 25.3 Causes
 
 L19 and L33 were not reporting (chapter 22); L03 has a full disk; S02 waits for a maintenance window.
 
+Each cause points to a different fix and a different owner. The two non-reporting laptops connect the triage list back to the inventory comparison, because broken agents hide missing updates as well as other settings. L03's full disk is a local problem, and S02's delay is a planned wait for the finance server's monthly window.
+
 ### 25.4 Actions
 
 Agents fixed, disk cleaned, finance server window booked.
+
+Gareth repairs the agents on L19 and L33 so they report again, and the overdue updates install once they do. L03's disk is cleaned up and the update retried. The finance server's critical update is booked into the next monthly window after month-end, and the delay is recorded with its reason and new date.
 
 ### Setting the policy
 
@@ -1822,21 +2062,31 @@ You will (1) harden servers; (2) remove unneeded services; (3) plan server patch
 
 Each server's documented role defines needed services.
 
+Each role document lists purpose, owner, users, needed services, data held, backup method and patch window. The services list is what the server lab compares against. For the file server, the role is shared folders and printing, but printers now connect directly, so the print spooler is no longer a needed service.
+
 ### 26.2 SP 800-123
 
 NIST's server security guide recommends removing unneeded services and applications and patching regularly.
+
+Aisha applies the guide's advice to all four servers. Unneeded services are found by comparing what runs with each role document, and patching follows the monthly window. The guide also explains why: each service is more code to patch and configure, and the old telnet service on the file server is an example nobody uses.
 
 ### 26.3 Patching servers
 
 Servers are patched in a monthly window after backups are verified.
 
+Before each monthly server patch, Gareth confirms the latest backup completed and that a restore test was done in the last quarter. The finance server is patched on the second Sunday after month-end, so finance staff are not disrupted. Server updates are therefore judged against this window, not the 14-day laptop rule.
+
 ### 26.4 Admin access
 
 Named admin accounts only.
 
+Gareth and the contractor use it-gareth and it-contractor, each with multi-factor authentication. The contractor's account reaches only the servers they support and is enabled only for agreed maintenance windows. The shared admin account is disabled, so every server change can be traced to a named person.
+
 ### 26.5 Logging
 
 Server logs go to a central store.
+
+Server sign-in records, install records and service errors are collected by the management server, so they survive if a server's own log fills up. NIST SP 800-92 describes this kind of central collection as the first step in log management. Gareth reviews the server sign-ins weekly, and the records are kept for 90 days.
 
 ### Role documents
 
@@ -1898,7 +2148,9 @@ You will (1) verify encryption after rollout; (2) handle unknown and in-progress
 
 Agent reports show each laptop's encryption state.
 
-### Lab — Lab — encryption verification
+The agent on each laptop reports one of four states: encrypted, encrypting, not encrypted or no report. Aisha keeps all four in the lab output, because counting encrypting laptops as finished or silent laptops as encrypted would overstate the result. She also spot-checks five laptops by hand, and all five match their reports.
+
+### Lab — encryption verification
 
 ```python
 """Verify disk encryption status after rollout from synthetic agent reports (stdlib only)."""
@@ -1922,13 +2174,19 @@ verified encrypted 40/45 (89%)
 
 40 of 45 verified encrypted (89%); 2 still encrypting, 1 not encrypted and 2 not reporting.
 
+Forty of 45 is about 89%, so five laptops still need attention before the rollout can be called complete. Aisha lists the five by state rather than as one number. The two encrypting laptops need time, the unencrypted laptop needs a fix, and the two silent laptops need to be found before their state is known.
+
 ### 27.3 Follow-up
 
 The two encrypting finish overnight; the unencrypted laptop had a failed TPM and is fixed; the two silent laptops are tracked down.
 
+Each of the five is closed with a recorded action and date. The silent laptops are a reminder of the inventory lesson: a device that does not report cannot be counted as compliant. One laptop's recovery key is also found missing from the directory, so Gareth backs it up and records the fix.
+
 ### 27.4 Final state
 
 After follow-up, 45 of 45 are verified.
+
+The final verification run shows 45 of 45 encrypted, including the two older laptops protected by a start-up password. Aisha saves the run with its date as evidence for the evaluation. From then on the check is repeated monthly, so a new or rebuilt laptop that is not encrypted appears within a month.
 
 ### Why verify
 
@@ -1948,7 +2206,7 @@ Each verification run is saved with its date.
 
 ### The five remaining
 
-Of the 45 laptops, 40 are encrypted at first verification. The five remaining include two without a usable TPM, two that were offline and one with a full disk. The offline ones are encrypted when they return; the full disk is cleaned up; the two old laptops get a password protector until replaced. A month later all 45 are verified encrypted.
+Of the 45 laptops, 40 are encrypted at first verification. The five remaining are two still encrypting, one whose TPM had failed and two that were not reporting. The two encrypting finish overnight, the failed TPM is fixed, and the two silent laptops are verified when they come back online, one after its user returns from leave. The two old laptops without a TPM are already among the encrypted 40, protected by a password until they are replaced.
 
 ### Project log entry
 
@@ -1990,7 +2248,9 @@ You will (1) analyse update failures by cause; (2) find the biggest fixable caus
 
 Failure codes from a month of update attempts.
 
-### Lab — Lab — update failures
+The management server records an error code each time an update fails to install. Aisha exports one month of these codes for all laptops and groups them by cause. A laptop that fails twice in the month counts twice, because each failure needs a restart, a retry or a fix.
+
+### Lab — update failures
 
 ```python
 """Group synthetic update failure codes by cause (stdlib only)."""
@@ -2016,13 +2276,19 @@ total 34
 
 Of 34 failures, pending reboots cause 14 (41%), full disks 9 (26%), offline laptops 6 (18%), driver conflicts 3 (9%) and unknown 2 (6%).
 
+Pending reboots and full disks together account for 23 of the 34 failures, about two thirds. Both are operational causes that Bramley can address with policy and housekeeping, not with a new tool. Only the two unknown failures need individual investigation, and one turns out to be a corrupted update cache.
+
 ### 28.3 Fixes
 
 Forced restarts address reboots; disk clean-up tasks address full disks; VPN-based updates address offline laptops.
 
+The forced restart after seven days' notice, with a reminder on day five, targets the 14 pending reboots. A scheduled clean-up removes temporary files, and two laptops get larger disks. Internet-based management, already tried on five home workers, removes the dependence on the VPN for the six offline laptops.
+
 ### 28.4 Re-measure
 
 Next month failures fall.
+
+The following month, failures fall from 34 to 15, and pending reboots fall most. Aisha reports the change with the caveat that one month may vary, and repeats the grouping each month. The disk figure falls more slowly, because two disk upgrades are still waiting for delivery.
 
 ### Pending reboots
 
@@ -2084,7 +2350,9 @@ You will (1) review admin logons; (2) set simple alerts; (3) run a weekly routin
 
 Admin logons to servers are reviewed weekly.
 
-### Lab — Lab — admin logons
+The review covers sign-ins to the four servers and to laptops using the two named admin accounts. Gareth exports the week's records from the management server and runs the logon lab over them. Each flagged record is checked against the change log or with the person involved before it is closed.
+
+### Lab — admin logons
 
 ```python
 """Review synthetic administrator logons and flag unusual ones (stdlib only)."""
@@ -2112,21 +2380,27 @@ logons 7
 
 Of 7 logons, 2 are flagged: the default "admin" account on S04 at 02:47, and the contractor on S01 at 23:15.
 
+Both flags turn out to have ordinary explanations, which is the usual result. The 02:47 sign-in is flagged twice, as an unnamed account and as out of hours, so it is checked first. The other five sign-ins are named accounts during working hours and need no action.
+
 ### 29.3 Investigation
 
 The 23:15 logon was planned maintenance; the 02:47 default-account logon was a scheduled task using the old account, which is reconfigured and the account disabled.
+
+Both explanations lead to a small fix rather than an incident. The contractor's maintenance had not been written in the change log, so contractors now record planned work in advance. The scheduled task is moved to a named service account before the default account is disabled.
 
 ### 29.4 Routine
 
 Weekly: logon review, failed updates, unmanaged devices.
 
+The weekly routine is a one-page checklist Gareth follows every Monday. It covers the logon review, failed and overdue updates, the inventory comparison and backup completion. Monthly, he adds the encryption verification and the services check, and each completed checklist is saved as evidence.
+
 ### What logon records show
 
 Windows records successful and failed sign-ins in its security log, and the management server can collect them centrally. NIST SP 800-92 describes log management as collecting, storing and reviewing records so that unusual events can be noticed. For Bramley, the question is modest: did anyone sign in to a server at a strange hour, or fail many times in a row?
 
-Aisha's lab reads seven synthetic records, each with an account, a server, an hour and a result. It flags records outside working hours and accounts with repeated failures. Two of seven are flagged: a late-night sign-in by the contractor account and three failures by a staff account.
+Aisha's lab reads seven synthetic records, each with an account, a device and a time. It flags sign-ins before 07:00 or from 20:00 onwards, and any account that is not one of the two named admin accounts. Two of seven are flagged: the default "admin" account on S04 at 02:47 and the contractor on S01 at 23:15.
 
-Gareth checks both. The contractor was doing agreed maintenance, which had not been written in the change log; the staff member had forgotten a changed password. Neither is an incident, but both lead to small improvements: contractors now log planned work in advance, and the password reset process is explained again.
+Gareth checks both. The contractor was doing agreed maintenance, which had not been written in the change log; the 02:47 sign-in was a scheduled task still using the old default account. Neither is an incident, but both lead to small improvements: contractors now log planned work in advance, and the task is moved to a named service account before the default account is disabled.
 
 Aisha stresses that a flag is a question, not a verdict. Most flags will have ordinary explanations, and the point of the review is to know them.
 
@@ -2178,7 +2452,9 @@ You will (1) compare running services with documented needs; (2) remove unneeded
 
 Applying SP 800-123's advice to Bramley's servers.
 
-### Lab — Lab — server services
+The lab compares each server's running services with the needed services listed in its role document. Anything running but not listed is reported as unneeded. The comparison is run before any change and again after removal, so the result can be verified rather than assumed.
+
+### Lab — server services
 
 ```python
 """Compare running services on synthetic servers with documented needs, per SP 800-123 (stdlib only)."""
@@ -2219,7 +2495,7 @@ A re-run shows zero unneeded services.
 
 Every running service is code that must be patched and configured. Saltzer and Schroeder (1975) described economy of mechanism and least privilege: keep systems as simple as possible and give each part only what it needs. The CIS Benchmarks put this into practice by recommending that unneeded services be disabled.
 
-Aisha's lab compares each server's running services against its role document. The file server still runs a print spooler, although printers now connect directly; the old application server runs a web service nobody uses; and two other leftover services appear. Four services in total are unneeded.
+Aisha's lab compares each server's running services against its role document. The file server still runs a print spooler, although printers now connect directly, and an old telnet service; the finance server runs a web-admin console; and the old application server runs ftp. Four services in total are unneeded.
 
 Gareth disables them one at a time, after checking with users and noting each change. He waits a week between changes so any problem can be traced to a single step. No problems appear.
 
@@ -2359,7 +2635,7 @@ A short monthly meeting covers joiners, leavers and purchases.
 
 ### Why recovery matters
 
-Hardening reduces how often things go wrong; recovery decides how bad it is when they do. NIST SP 800-34 and the CIS Controls both stress tested backups and planned restoration. For Bramley, the key systems are the finance server and file server, and the key question is how long staff can work without them.
+Hardening reduces how often things go wrong; recovery decides how bad it is when they do. The CIS Controls stress tested backups and planned restoration. For Bramley, the key systems are the finance server and file server, and the key question is how long staff can work without them.
 
 Aisha and Bramley's manager agree targets: the file server should be back within one working day with no more than one day's data lost; the finance server within two days. Laptops can be rebuilt from the management server in about two hours each, since data sync to the file server.
 
@@ -2903,7 +3179,7 @@ You will (1) compare before and after measures; (2) judge success; (3) state lim
 
 Same as the baseline from chapter 15.
 
-### Lab — Lab — before and after
+### Lab — before and after
 
 ```python
 """Before and after metrics for Bramley's endpoint programme (synthetic, stdlib only)."""
@@ -2937,7 +3213,7 @@ One organisation, a few months, other changes coincided.
 
 ### Before and after
 
-The evaluation lab compares the baseline with the final measures. Encrypted laptops rose from 32 to 45; laptops patched within 14 days rose from 26 to 41; unneeded server services fell from 4 to 0; unmanaged devices fell from 6 to 1. The remaining unmanaged device is the old application server, due for replacement.
+The evaluation lab compares the baseline with the final measures. Encrypted laptops rose from 32 to 45; laptops patched within 14 days rose from 26 to 41; unneeded server services fell from 4 to 0; unmanaged devices fell from 6 to 1. The remaining unmanaged device is the one left in the final weekly comparison, recorded with its follow-up action.
 
 Aisha presents the numbers with their sources and dates, and repeats the measurement method from chapter 15 so the comparison is fair. Where a number depends on reporting devices, she notes how many reported.
 
@@ -2957,7 +3233,7 @@ Aisha's question was whether a small organisation could reach and keep a basic s
 
 ### Project log entry
 
-Aisha checks the evaluation against her original research question and success criteria from the proposal. Three of four criteria are fully met; the unmanaged device target misses by one because of the old server, which she reports plainly with its replacement date.
+Aisha checks the evaluation against her original research question and success criteria from the proposal. All four criteria are met, but the unmanaged-device target only at its limit of one, which she reports plainly rather than rounding it into a clean result.
 
 ### Worked example
 
