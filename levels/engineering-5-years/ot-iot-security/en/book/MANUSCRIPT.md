@@ -3205,7 +3205,7 @@ In her placement memo, Lena wrote the same laptop finding three ways: for proces
 
 ### 43.4 Errors and limits
 
-I can't tell you what I did is not a practice report — use synthetic reconstruction agreed with the host.
+"I can't tell you what I did" is not a practice report — use synthetic reconstruction agreed with the host.
 
 Lena's placement report could not include the host's real network details, so she agreed a synthetic reconstruction with her host mentor that kept the structure of the finding but replaced every identifying detail. Her constraints appendix stated what she had not been allowed to examine. This gave the university something to assess without exposing the host, and it is the standard for any placement where the work itself cannot be described directly.
 

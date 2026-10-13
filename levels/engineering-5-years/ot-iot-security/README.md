@@ -22,7 +22,7 @@ This is one course. It has **one course skill** and **one principal book in each
 |---|---|---|---|---|
 | English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Draft manuscript](en/book/MANUSCRIPT.md) | Authored draft; review pending |
 | Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Draft manuscript](pt/book/MANUSCRIPT.md) | Authored PT-BR draft; review pending |
-| Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Draft manuscript](es/book/MANUSCRIPT.md) | Partial Spanish draft (ch 1–42 of 50); review pending |
+| Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Draft manuscript](es/book/MANUSCRIPT.md) | Authored Spanish draft; review pending |
 | עברית (`he`) | [Overview](he/README.md) · [Materials](he/MATERIALS.md) | [Chapter index](he/SUBJECTS.md) | [Book plan](he/book/PLAN.md) | Working outline; translation pending |
 | Français (`fr`) | [Overview](fr/README.md) · [Materials](fr/MATERIALS.md) | [Chapter index](fr/SUBJECTS.md) | [Book plan](fr/book/PLAN.md) | Working outline; translation pending |
 | Русский (`ru`) | [Overview](ru/README.md) · [Materials](ru/MATERIALS.md) | [Chapter index](ru/SUBJECTS.md) | [Book plan](ru/book/PLAN.md) | Working outline; translation pending |
