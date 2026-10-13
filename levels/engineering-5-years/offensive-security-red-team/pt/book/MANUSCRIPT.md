@@ -1358,7 +1358,7 @@ Nenhum atributo para payload, senha ou comando de shell. O EvidenceObject guarda
 
 ### 22.4 Erros e limites
 
-Modelos que tentam codificar todo o ATT&CK como campos obrigatórios forçam etiquetas inúteis. Mantenha as etiquetas de técnicas opcionais e revisadas. Campos obrigatórios do ATT&CK produzem etiquetas inúteis que poluem os gráficos de cobertura. Etiquetas opcionais e revisadas mantêm o PulseMap honesto. A revisão semanal de etiquetas de Sam funde sinônimos e descarta etiquetas que ninguém consegue definir, e uma etiqueta sem uma definição de uma linha não pode ser aplicada a um novo achado. As definições das etiquetas ficam no mesmo repositório que as consultas do PulseMap, para que um significado apagado não continue nos gráficos.
+Modelos que tentam codificar todo o ATT&CK como campos obrigatórios forçam etiquetas inúteis. Mantenha as etiquetas de técnicas opcionais e revisadas. Essas etiquetas inúteis poluem os gráficos de cobertura e fazem técnicas parecerem testadas quando foram apenas rotuladas. A revisão semanal de etiquetas de Sam funde sinônimos e descarta etiquetas que ninguém consegue definir, e uma etiqueta sem uma definição de uma linha não pode ser aplicada a um novo achado. As definições das etiquetas ficam no mesmo repositório que as consultas do PulseMap, para que um significado apagado não continue nos gráficos.
 
 ### 22.2b Tempo e autores
 
@@ -3325,7 +3325,7 @@ Runbook, ADR e tutorial para operadores com capturas de tela sintéticas fazem p
 
 ### 46.4 Erros e limites
 
-Mágica de demo num laptop com a falha fechada explicada no gogó não passa. Uma demo em laptop que explica a falha fechada no gogó não passa no Projeto Final II. A execução silenciosa do operador e a lista de verificação do Laboratório II são a prova. A primeira tentativa de aceitação de Sam falhou em duas etapas da documentação; mágica não foi oferecida como substituto. As rubricas de avaliação do Projeto Final II dão zero para mágica de laptop sem a lista de verificação. O zero para mágica está escrito na rubrica publicada que os estudantes veem na primeira semana. Os estudantes veem esse zero na primeira semana, para que demos em laptop não sejam uma estratégia surpresa.
+Mágica de demo num laptop com a falha fechada explicada no gogó não passa. No Projeto Final II, a execução silenciosa do operador e a lista de verificação do Laboratório II são a prova. A primeira tentativa de aceitação de Sam falhou em duas etapas da documentação; mágica não foi oferecida como substituto. A rubrica publicada, que os estudantes veem na primeira semana, dá zero para uma demo em laptop sem a lista de verificação, para que ninguém a trate como estratégia surpresa. Os avaliadores executam eles mesmos a lista de verificação na versão entregue, em vez de aceitar o relato do estudante sobre uma execução bem-sucedida.
 
 ### 46.2b Acompanhamento do operador
 
@@ -3539,7 +3539,7 @@ Classes: trabalho do engajamento (90 dias), evidência selada (anos acordados), 
 
 ### 48.3 Exclusões
 
-Sem payloads, sem credenciais reais, sem dados pessoais. Se não pode ser compartilhado com o jurídico com segurança, não pertence ao dossiê. Se o jurídico não pode recebê-lo, não pertence ao dossiê. Payloads, credenciais reais e dados pessoais ficam de fora. Depois do incidente do findings.json, o dossiê v3 teve os hashes recalculados sem divergências, e a nota de processo explicou a verificação de exclusão que agora roda antes da selagem. A verificação de exclusão é um script, não um item de memória no dia da selagem.
+Sem payloads, sem credenciais reais, sem dados pessoais. Se não pode ser compartilhado com o jurídico com segurança, não pertence ao dossiê. Depois do incidente do findings.json, o dossiê v3 teve os hashes recalculados sem divergências, e a nota de processo explicou a verificação de exclusão que agora roda antes da selagem. A verificação de exclusão é um script, não um item de memória no dia da selagem. Tudo o que o script sinaliza é removido e registrado antes da selagem do dossiê, e a entrada do registro nomeia quem aprovou a remoção.
 
 > **Caso sintético — Riverstone Transit.** O dossiê v3 teve os hashes recalculados sem divergências depois do incidente do findings.json; nota de processo incluída.
 
