@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–50 (EX037–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 50 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–50 (EX046–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 13–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+Capítulos 16–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -767,11 +767,208 @@ Privilégio mínimo, logs como evidência, parsers em sandbox e patches discipli
 
 [← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) normalizar e deduplicar indicadores antes do armazenamento; (2) escolher chaves e índices para consultas de inteligência; (3) modelar a proveniência de cada objeto armazenado; (4) projetar a retenção e a exclusão.
+
+### 13.1 Normalização
+
+O mesmo domínio pode chegar como `C2.Example.`, `c2.example` ou em texto desarmado. Sem normalização, o repositório se enche de duplicatas e as contagens de correspondências mentem. O laboratório mostra o efeito: sete entradas, quatro valores reais. Uma contagem baseada nas strings brutas alegaria que a BEN viu sete indicadores distintos quando viu quatro. O normalizador de Kofi passa para minúsculas onde a caixa não importa, remove o ponto final dos domínios, retira os espaços e rearma o texto, com cada etapa testada isoladamente. A ordem das etapas é fixa e documentada.
+
+### Laboratório 4 — normalizar e deduplicar
+
+```python
+"""Lab 4 (ch 13): normalise and de-duplicate synthetic indicators before storage."""
+raw = ["C2.Example.", "c2.example", "hxxp://drop[.]example/a", "http://drop.example/a",
+       "203.0.113.9", " 203.0.113.9 ", "198.51.100.44"]
+def norm(s):
+    s = s.strip().lower().replace("hxxp", "http").replace("[.]", ".")
+    return s[:-1] if s.endswith(".") else s
+seen, out = set(), []
+for r in raw:
+    n = norm(r)
+    if n not in seen:
+        seen.add(n); out.append(n)
+print(f"raw={len(raw)} unique={len(out)}")
+for o in out:
+    print(" ", o)
+```
+
+Execute com `python3 lab_dedupe.py`. Saída verificada:
+
+```text
+raw=7 unique=4
+  c2.example
+  http://drop.example/a
+  203.0.113.9
+  198.51.100.44
+```
+
+### 13.2 Lendo o resultado
+
+Sete strings brutas se reduzem a quatro valores únicos. O ponto final, as maiúsculas, o desarme e os espaços em volta eram todos ruído. As regras de normalização precisam ser documentadas, versionadas e idempotentes. Kofi trata as regras como parte do modelo de dados. Cada regra tem um motivo escrito, um teste e um número de versão armazenado com cada registro que produziu. Rodar o normalizador sobre a própria saída deve dar o mesmo resultado, o que os testes de propriedades do capítulo de programação verificam. Se uma regra muda, os registros mais antigos podem ser encontrados pela versão e reprocessados, em vez de deixar duas formas normais diferentes no repositório ao mesmo tempo.
+
+### 13.3 Chaves e índices
+
+Os objetos STIX 2.1 trazem um `id` da forma `type--UUID`. O Lantern usa esse id como chave dos objetos e indexa os valores normalizados dos indicadores para comparações rápidas. Os avistamentos têm como chave o id do indicador e o horário. O identificador nunca muda, mesmo que a descrição ou a confiança do indicador mudem, então as referências feitas por relacionamentos e avistamentos continuam válidas. Os índices são escolhidos a partir das perguntas que os analistas mais fazem. Kofi mediu a velocidade de comparação com e sem o índice de valores e achou a diferença grande o bastante para justificar seu custo de armazenamento. Consultas raras podem rodar mais devagar, em vez de ganhar índices próprios.
+
+### 13.4 Proveniência
+
+Cada objeto registra sua fonte, o rótulo TLP, o horário da coleta e a versão do parser. Indicadores duplicados vindos de duas fontes são armazenados uma vez, com as duas entradas de proveniência, para que os analistas vejam a corroboração. A corroboração só conta se as fontes forem independentes. Se o parceiro B simplesmente copia o feed do parceiro A, duas entradas não acrescentam nada. O modelo de Kofi registra onde cada parceiro diz ter obtido um indicador, quando o parceiro informa isso, para que os analistas percebam relatos repetidos, e não independentes. O rótulo mais restritivo entre as fontes acompanha o registro compartilhado, de modo que a fusão nunca afrouxa um limite de compartilhamento.
+
+### 13.5 Retenção
+
+A retenção segue os acordos e a lei. A exclusão precisa chegar aos backups dentro de um prazo declarado; "apagado da interface" não é exclusão. O desenho de Kofi dá a cada fonte um período de retenção tirado de seu acordo. Um job agendado remove os registros expirados do repositório ativo, e os backups são destruídos em um ciclo fixo, de modo que um registro expirado sobrevive nas cópias de backup por, no máximo, o prazo declarado. O job grava um log das contagens removidas por fonte, que o encarregado de privacidade revisa. Se um parceiro pedir a exclusão, o mesmo log mostra quando ela foi feita.
+
+### Nota de prática — Padrões de consulta
+
+Os analistas fazem três tipos de pergunta: este valor existe, o que está relacionado a ele e o que mudou recentemente. Consultas de correspondência exata precisam de índices hash sobre os valores normalizados; consultas de relacionamento precisam de índices sobre os ids de origem e de destino; consultas de recência precisam de índices de tempo. Projetar os índices a partir de perguntas reais evita tanto consultas lentas quanto armazenamento desperdiçado. As exclusões em massa são ensaiadas primeiro em uma cópia, porque uma regra de normalização equivocada aplicada durante a exclusão pode remover muito mais do que o pretendido.
+
+### Exemplo resolvido
+
+Kofi funde os feeds de dois parceiros. A normalização revela que 18% dos indicadores do parceiro B já existem a partir do parceiro A. Em vez de descartá-los, o Lantern acrescenta a proveniência do parceiro B aos registros existentes, aumentando sua contagem de corroboração.
+
+> **Caso sintético.** Os feeds e as porcentagens são inventados.
+
+### Erros e limites
+
+Uma normalização agressiva demais pode fundir valores distintos (por exemplo, caminhos de URL sensíveis a maiúsculas e minúsculas). Teste as regras com formatos reais.
+
+### Exercícios
+
+- **EX037 — Contagem de únicos.** Quantos valores únicos o laboratório produz a partir de sete entradas? *Rubrica:* 3 = 4; 2 = correto, com um valor listado errado; 1 = 7; 0 = nenhuma.
+- **EX038 — Corroboração.** Por que manter as duas entradas de proveniência de um indicador duplicado? *Rubrica:* 3 = mostra a corroboração por fontes independentes; auditoria; 2 = só auditoria; 1 = descartar duplicatas; 0 = nenhuma.
+- **EX039 — Caixa do caminho.** Dê um exemplo em que passar uma URL inteira para minúsculas poderia estar errado. *Rubrica:* 3 = caminho/consulta sensível a maiúsculas no servidor; 2 = vago; 1 = nunca está errado; 0 = nenhuma.
+
+### Síntese
+
+Normalize com cuidado, use ids estáveis como chave, mantenha a proveniência e torne a exclusão real.
+
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar controle de versão, revisão de código e integração contínua a uma plataforma de CTI; (2) gerenciar dependências com cuidado de cadeia de suprimentos; (3) escrever registros de mudança ligados aos requisitos; (4) separar a configuração do código.
+
+### 14.1 Controle de versão e revisão
+
+Toda mudança no Lantern passa por um branch, uma execução automática de testes e a revisão de um segundo engenheiro. Mudanças em parsers precisam de um revisor que entenda o formato do parceiro. Revisar é mais do que ler código. O revisor roda os testes, verifica se a mudança corresponde ao que foi pedido e pergunta o que acontece com entradas ruins. Nas mudanças de parser, uma amostra de registros reais de parceiros, coberta pelo acordo, passa pelas duas versões. Kofi já viu revisões detectarem um campo lido da posição errada, que os testes com dados sintéticos limpos tinham deixado passar.
+
+### 14.2 Integração contínua
+
+A CI roda testes unitários, testes de propriedades e uma reprodução de um feed sintético pelo pipeline inteiro, comparando as saídas com um snapshot sabidamente bom. Uma diferença faz o build falhar até ser explicada. Foi a reprodução que tornou visível a mudança do exemplo resolvido: o snapshot mostrou exatamente quantos indicadores continuariam no bloqueio. Uma reprodução que falha nem sempre é um bug. Às vezes a mudança é intencional, e o engenheiro atualiza o snapshot com uma nota explicando o porquê.
+
+### 14.3 Dependências
+
+Bibliotecas de terceiros podem trazer vulnerabilidades ou estar comprometidas. Fixe as versões, revise as atualizações e prefira a biblioteca padrão para tarefas pequenas. A técnica T1195 Supply Chain Compromise do ATT&CK lembra aos defensores que suas próprias ferramentas são um alvo. A regra de Kofi é que cada nova biblioteca precisa de um motivo que a biblioteca padrão não atenda, de um responsável nomeado e de uma verificação de seus mantenedores e de seu histórico recente. As atualizações chegam em um lote semanal, lido antes do merge, e o build falha se uma dependência for obtida sem versão e hash fixos. O Lantern guarda dados de parceiros e influencia firewalls, o que faz de uma biblioteca comprometida em seu build uma rota atraente para um atacante.
+
+### 14.4 Rastreabilidade
+
+Cada mudança cita o requisito ou o defeito que trata. Quando um auditor pergunta por que o portão de TLP permite AMBER para "org", o histórico leva ao requisito e à definição do TLP 2.0. Kofi liga cada commit a um ticket, e cada ticket a um número de requisito no documento de requisitos. Um auditor consegue seguir a cadeia do código até o motivo dele em poucos cliques. Mudanças sem um motivo vinculado não entram no merge. Isso também ajuda na remoção de código: se o requisito foi retirado, o vínculo mostra quais partes podem sair.
+
+### 14.5 Configuração
+
+Os endpoints dos parceiros, as referências a credenciais e os limiares ficam na configuração, e não no código. Os segredos ficam em um cofre; a configuração guarda apenas referências. Separá-los significa que o mesmo código testado pode rodar em teste e em produção com configurações diferentes, e que mudar um limiar não exige um novo build. As mudanças de configuração também passam por revisão, porque um limiar errado pode causar tanto dano quanto um bug. Kofi mantém, ao lado de cada configuração, uma descrição curta do que ela controla e de quem pode alterá-la. Uma credencial nunca é colada na configuração, nem temporariamente; a referência ao cofre é a única coisa armazenada.
+
+### Nota de prática — Notas de versão
+
+Cada versão do Lantern sai com notas escritas para os analistas: que comportamento mudou, quais limiares se moveram e como relatar problemas. Analistas que entendem uma mudança têm menos chance de confundir o novo comportamento com um incidente, e relatam regressões mais depressa.
+
+### Exemplo resolvido
+
+Um pull request baixa o piso de decaimento de 30 para 20. A reprodução da CI mostra que mais 1.240 indicadores permaneceriam no bloqueio automatizado. O revisor pede o requisito; não existe nenhum. A mudança é rejeitada até que o líder do SOC concorde e um requisito seja escrito.
+
+> **Caso sintético.** O pull request e as contagens são inventados.
+
+### Erros e limites
+
+Testes com dados sintéticos não provam o comportamento sobre todos os dados dos parceiros; continue amostrando formatos reais sob o acordo. A pressa é a inimiga habitual da revisão.
+
+### Exercícios
+
+- **EX040 — Valor da reprodução.** O que a reprodução de feed sintético na CI detecta que os testes unitários podem deixar passar? *Rubrica:* 3 = mudanças de comportamento de ponta a ponta entre as etapas; 2 = bugs de integração, de forma vaga; 1 = vago; 0 = nenhuma.
+- **EX041 — Mudança rejeitada.** Por que a mudança do piso de decaimento foi rejeitada? *Rubrica:* 3 = sem requisito/acordo do responsável; grande impacto no comportamento; 2 = um; 1 = os testes falharam; 0 = nenhuma.
+- **EX042 — Local dos segredos.** Onde ficam as credenciais dos parceiros, e o que a configuração guarda? *Rubrica:* 3 = cofre; a configuração guarda referências; 2 = só o cofre; 1 = no código; 0 = nenhuma.
+
+### Síntese
+
+Revise, reproduza, fixe versões, rastreie e mantenha os segredos fora do código.
+
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar confidencialidade, integridade e disponibilidade aos dados de inteligência; (2) definir ameaça, vulnerabilidade e risco; (3) situar a CTI nas funções do NIST CSF 2.0; (4) explicar por que a própria plataforma de CTI é um alvo.
+
+### 15.1 CID para a inteligência
+
+Confidencialidade: relatórios TLP:RED só podem chegar aos destinatários nomeados. Integridade: um indicador adulterado poderia bloquear um fornecedor legítimo ou, pior, o servidor de atualizações de um sistema de segurança. Disponibilidade: quando uma campanha começa, é quando os analistas mais precisam da plataforma. Kofi escreve uma nota curta para cada tipo de dado do Lantern dizendo qual das três propriedades importa mais. Os relatórios de parceiros tratam principalmente de confidencialidade, as listas de bloqueio de integridade e o serviço de comparação de disponibilidade. Os controles são escolhidos a partir dessa nota, em vez de aplicados igualmente em toda parte.
+
+### 15.2 Ameaça, vulnerabilidade, risco
+
+Uma ameaça é uma causa potencial de dano (um adversário ou um acidente). Uma vulnerabilidade é uma fraqueza que poderia ser usada. O risco combina probabilidade e impacto. A CTI informa o lado da ameaça: quais adversários, quais técnicas, quais alvos. Kofi mantém os termos separados em seus relatórios. Um boletim de um parceiro sobre um agente que mira empresas de energia é informação de ameaça. Um servidor de acesso remoto sem patch na BEN é uma vulnerabilidade. O risco é esse agente usar esse servidor, julgado pela probabilidade e pelo dano que isso causaria. A inteligência muda a estimativa de probabilidade; ela não corrige o servidor.
+
+### 15.3 A CTI no CSF 2.0
+
+O NIST CSF 2.0 organiza os resultados em Govern, Identify, Protect, Detect, Respond e Recover (governar, identificar, proteger, detectar, responder e recuperar). A inteligência de ameaças alimenta Identify (avaliação de riscos), Detect (regras) e Respond (contexto), e os acordos de compartilhamento são assunto de Govern. Situar o trabalho de inteligência nessas funções ajuda a BEN a explicar seu valor. Uma nova regra de detecção escrita a partir do relatório de um parceiro é um resultado de Detect; um briefing que muda o registro de riscos é Identify. Os acordos sobre o que a BEN pode compartilhar, com quem e sob que rótulo ficam em Govern, porque criam obrigações para a organização inteira, e não para uma equipe. Kofi marca cada saída do Lantern com a função a que ela serve.
+
+### 15.4 A plataforma como alvo
+
+Um adversário que envenenasse o Lantern poderia fazer a BEN bloquear os próprios fornecedores ou ignorar ameaças reais. Controles de integridade — feeds assinados quando disponíveis, reputação das fontes, verificações de anomalia no volume — protegem contra o envenenamento. As verificações de anomalia de Kofi comparam cada entrega com o histórico daquela fonte. Um salto repentino de volume, muitos indicadores para serviços conhecidos ou entradas que correspondem à lista de permissões da BEN retêm a entrega para revisão. A reputação de uma fonte cai quando entradas de um parceiro se revelam erradas depois, o que reduz a confiança de suas entregas futuras até que o histórico melhore.
+
+### 15.5 A kill chain como mapa defensivo
+
+Hutchins et al. argumentaram que os defensores podem agir em cada fase. As saídas do Lantern se mapeiam às fases: bloqueios de domínio para entrega e comando e controle, analíticas comportamentais para instalação e ações sobre os objetivos. O mapeamento mostra onde as defesas da BEN estão finas. Quando Kofi contou as saídas do Lantern por fase, a maioria caía em entrega e comando e controle, porque indicadores dessas fases são fáceis de compartilhar. Poucas tratavam do que um intruso faz depois de ganhar um ponto de apoio. Essa lacuna virou um pedido à equipe de detecção por analíticas comportamentais nos hosts internos.
+
+### Nota de prática — Responsabilização
+
+Todo bloqueio automatizado precisa ser explicável: qual indicador, qual fonte, qual confiança, qual regra. O Lantern armazena essa cadeia junto com o bloqueio, para que, quando um fornecedor reclamar, o SOC possa responder em minutos e corrigir a fonte, em vez de adivinhar.
+
+### Exemplo resolvido
+
+O feed de um parceiro passa de repente a incluir o domínio do próprio provedor de folha de pagamento da BEN. A verificação de anomalia de Kofi o sinaliza porque o domínio aparece na lista de permissões de fornecedores críticos da BEN. Os analistas confirmam que a entrada foi um erro do parceiro; o bloqueio teria interrompido o pagamento dos salários.
+
+> **Caso sintético.** O erro do feed e o fornecedor são inventados.
+
+### Erros e limites
+
+As próprias listas de permissões podem ser abusadas; revise-as. A tríade CID é um vocabulário inicial, e não um método completo de risco.
+
+### Exercícios
+
+- **EX043 — Dano à integridade.** Descreva uma falha de integridade no Lantern e sua consequência operacional. *Rubrica:* 3 = indicador adulterado/envenenado → bloqueio de serviço legítimo ou ameaça não detectada; 2 = adulteração vaga; 1 = exemplo de confidencialidade; 0 = nenhuma.
+- **EX044 — Lugar no CSF.** Cite duas funções do CSF 2.0 que a CTI apoia, com um exemplo de cada. *Rubrica:* 3 = duas funções com exemplos correspondentes; 2 = dois nomes; 1 = uma; 0 = nenhuma.
+- **EX045 — Verificação de envenenamento.** Por que comparar o conteúdo do feed com uma lista de permissões de fornecedores críticos? *Rubrica:* 3 = detecta envenenamentos/erros que bloqueariam serviços críticos; 2 = parcial; 1 = rapidez; 0 = nenhuma.
+
+### Síntese
+
+Aplique a tríade CID à própria inteligência, situe a CTI no CSF e proteja a plataforma contra o envenenamento.
+
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -844,6 +1041,24 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em i
 **EX035.** Os logs de acesso da aplicação do Lantern, corroborados pelos logs de autenticação do sistema operacional das contas envolvidas.
 
 **EX036.** Três quaisquer entre: nenhum acesso à rede ou acesso muito limitado, sistema de arquivos somente leitura, limites de memória e CPU, usuário sem privilégios.
+
+**EX037.** Quatro: c2.example, http://drop.example/a, 203.0.113.9 e 198.51.100.44.
+
+**EX038.** Duas fontes independentes relatando o mesmo indicador são uma corroboração que os analistas precisam ver, e a proveniência sustenta a auditoria de quem compartilhou o quê.
+
+**EX039.** Os caminhos de URL costumam ser sensíveis a maiúsculas e minúsculas nos servidores, então `/Payload` e `/payload` podem ser recursos diferentes; passe para minúsculas apenas o esquema e o host.
+
+**EX040.** Mudanças no comportamento de ponta a ponta — quantos indicadores sobrevivem a todas as etapas e chegam ao bloqueio —, que os testes unitários isolados não revelam.
+
+**EX041.** Nenhum requisito nem acordo do SOC a justificava, e a reprodução mostrou um grande efeito no comportamento (1.240 indicadores a mais no bloqueio automatizado).
+
+**EX042.** Em um cofre de segredos; a configuração guarda apenas referências às entradas do cofre.
+
+**EX043.** Um indicador envenenado que liste o domínio de um fornecedor poderia levar a BEN a bloqueá-lo, interrompendo pagamentos ou atualizações; inversamente, indicadores removidos poderiam deixar passar uma ameaça real.
+
+**EX044.** Exemplo: Detect — indicadores e técnicas viram regras de detecção; Identify — perfis de ameaça alimentam a avaliação de riscos. Respond (contexto durante incidentes) e Govern (acordos de compartilhamento) também pontuam.
+
+**EX045.** Detecta entradas envenenadas ou equivocadas que bloqueariam serviços de que a BEN depende, antes que cheguem aos controles.
 
 <a id="references"></a>
 ## Referências
