@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Um Fluxo de Trabalho de Migração para Profissionais
 
 - Idioma: português do Brasil (`pt`); curso profissional, seis meses; aproximadamente 360 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito; os exercícios EX001–EX060 (cinco por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: profissionais em início de carreira — analistas de segurança, equipes de risco e conformidade de TI, coordenadores de projeto — que vão conduzir um fluxo de trabalho repetível de migração pós-quântica e comunicar as constatações a gestores, responsáveis e fornecedores. Conhecimento de entrada: fundamentos de segurança e os fundamentos de sistemas pertinentes.
 - Relação com os livros vizinhos: o [livro técnico](../../../../technical-18-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) ensina a configuração prática e o [livro de pós-graduação](../../../../postgraduate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md), a liderança em escala organizacional. **Este livro trata do fluxo de trabalho de gestão da migração**: delimitação do escopo, inventário, priorização, governança, relacionamento com fornecedores, acompanhamento, verificação e relato.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,8 +28,6 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 | Fundamentos e contexto | [1 Fundamentos de segurança para profissionais](#ch-01) · [2 Contexto de serviços e de partes interessadas](#ch-02) · [3 Prática autorizada e tratamento de evidências](#ch-03) |
 | Métodos e fluxo de trabalho | [4 Métodos centrais](#ch-04) · [5 Ferramentas e interpretação](#ch-05) · [6 Fluxo de trabalho operacional](#ch-06) · [7 Controles e verificação](#ch-07) · [8 Análise de caso supervisionada](#ch-08) |
 | Comunicação e qualidade | [9 Comunicação, ética e relato](#ch-09) · [10 Qualidade e diagnóstico de problemas](#ch-10) · [11 Laboratório supervisionado](#ch-11) · [12 Portfólio prático e revisão final](#ch-12) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -574,16 +572,569 @@ Um ciclo repetível, com papéis claros, estados no rastreador, dependências ge
 <!-- cyberabc:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 12
 
-[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 (inglês) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Segurança quântica e pós-quântica: controles e verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever os principais controles disponíveis para o risco quântico; (2) associar os controles à exposição; (3) entender a criptoagilidade como objetivo de governança; (4) definir o que conta como verificação; e (5) registrar o risco residual.
+
+### 7.1 Controles
+
+*Troca de chaves híbrida* (X25519MLKEM768 no TLS; ML-KEM no IKEv2 por meio da RFC 9370; `mlkem768x25519-sha256` no SSH). *Chaves pré-compartilhadas provisórias* misturadas às VPNs (RFC 8784) para enlaces fixos. *Minimização de dados*: enviar e guardar menos dados de vida longa. *Planejamento da migração de assinaturas*: AC interna pós-quântica, planos de assinatura de código, renovação de carimbos de tempo do arquivo. *Cláusulas de compras*: suporte a algoritmos, inventários, compromissos de atualização. *Gestão de exceções*: aceitação por tempo limitado com controles compensatórios.
+
+Nem todo controle se aplica a todo item, e vários costumam ser combinados, como no caso do arquivo da MTI. Registre quais controles cada item usa.
+
+### 7.2 Associando controles
+
+Exposição HNDL → troca de chaves híbrida e minimização primeiro. Exposição de forjar depois → planos de assinatura, compras e renovação do arquivo. Desconhecido → investigação. Controlado pelo fornecedor → cláusulas contratuais e acompanhamento do roteiro.
+
+Na MTI, as transferências do arquivo estão expostas a HNDL, então a troca de chaves híbrida e menos transferências vieram primeiro; as assinaturas dos documentos do arquivo são de forjar depois, então foram planejados um prazo para o fornecedor e a renovação dos carimbos de tempo; e o gravador de chamadas, ainda desconhecido, foi para investigação. Registre no rastreador o motivo de cada associação, para que revisores posteriores vejam por que um controle foi escolhido e possam mudá-lo se a exposição mudar.
+
+### 7.3 Atividade prática — Laboratório A
+
+```python
+# Lab A (ch 7): crypto-agility through a policy-driven registry instead of hard-coded algorithms.
+import hashlib, hmac
+REGISTRY = {"hmac-sha256": lambda k, m: hmac.new(k, m, hashlib.sha256).digest(),
+            "hmac-sha3-256": lambda k, m: hmac.new(k, m, hashlib.sha3_256).digest()}
+POLICY = {"tag-algorithm": "hmac-sha256", "accept": ["hmac-sha256", "hmac-sha3-256"]}
+def protect(key, msg):
+    alg = POLICY["tag-algorithm"]; return alg, REGISTRY[alg](key, msg)
+def check(key, msg, alg, tag):
+    if alg not in POLICY["accept"]: return False            # algorithm identifier is authenticated by policy
+    return hmac.compare_digest(REGISTRY[alg](key, msg), tag)
+k, m = b"k" * 32, b"policy schedule 42"
+a1, t1 = protect(k, m)
+POLICY["tag-algorithm"] = "hmac-sha3-256"                   # migration = one policy change
+a2, t2 = protect(k, m)
+print("old tag still verifies during transition:", check(k, m, a1, t1))
+print("new tag verifies:", check(k, m, a2, t2), "| algorithms:", a1, "->", a2)
+POLICY["accept"] = ["hmac-sha3-256"]                        # retire the old algorithm
+print("old tag after retirement:", check(k, m, a1, t1))
+```
+
+Saída esperada:
+
+```text
+old tag still verifies during transition: True
+new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
+old tag after retirement: False
+```
+
+Quando os algoritmos são escolhidos por política e rotulados nos dados, a migração é uma mudança de configuração, e um algoritmo antigo pode ser aposentado de forma limpa. Pergunte aos responsáveis pelos sistemas e aos fornecedores se os seus produtos funcionam assim; o [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) do NIST discute essas considerações de criptoagilidade.
+
+Pergunte aos responsáveis pelos sistemas da MTI se o algoritmo é nomeado na configuração ou fixado no código. Onde um algoritmo está fixado no código, a migração exige uma mudança de código e uma nova versão, o que leva mais tempo e deve ser planejado mais cedo. Registre a resposta no rastreador como um fator do tempo de migração do item.
+
+### 7.4 Verificação
+
+Verificação significa evidência de que o controle funciona em operação: logs de negociação mostrando híbrido no serviço pretendido, inventário de certificados mostrando os novos algoritmos, respostas de questionários confirmadas por observação, minimização confirmada por revisão dos fluxos de dados. Um ticket de mudança é evidência de intenção, não de efeito.
+
+Na MTI, o item do SFTP das resseguradoras só foi marcado como Verificado quando os logs do sshd mostraram os parceiros negociando o método híbrido. Sem essa evidência, o item continua Implementado, por mais confiante que esteja o responsável. Peça evidências que cubram um período normal de trabalho, para que os clientes ocasionais sejam incluídos, e registre a sua data.
+
+### 7.5 Risco residual
+
+Para cada item verificado, registre o que resta: normalmente a autenticação clássica, parceiros com clientes antigos ou dispositivos aguardando substituição. Dê a cada risco residual um responsável e uma data de revisão.
+
+No item do SFTP das resseguradoras da MTI, o risco residual eram três parceiros com clientes antigos e as chaves de host clássicas. Registrá-lo mantém o item honesto: verificado não significa concluído. Quando um risco residual for resolvido, anote a evidência e encerre-o; quando persistir além da data de revisão, considere uma exceção. Mantenha a lista curta e específica.
+
+### 7.6 Caso resolvido
+
+SFTP das resseguradoras: controle — troca de chaves SSH híbrida após a atualização do OpenSSH; verificação — os logs do sshd mostram 7 de 10 resseguradoras negociando o híbrido; residual — três resseguradoras com clientes antigos (notificadas, prazo de 12 meses), chaves de host clássicas; responsável: Infraestrutura; revisão trimestral.
+
+Esse registro está completo porque cada parte aponta para uma evidência ou uma pessoa: o controle nomeia o método, a verificação dá uma proporção medida nos logs, o risco residual nomeia o que resta e o responsável e o ciclo de revisão dizem quem acompanha e quando. Use-o como modelo.
+
+### 7.7 Tarefa prática
+
+Para três itens da MTI, escreva o controle, a evidência de verificação e o risco residual.
+
+Escolha itens em estados diferentes: por exemplo, os servidores SFTP das resseguradoras, o portal de sinistros e as transferências do arquivo. Para cada um, nomeie o controle, diga que evidência mostraria que ele funciona em operação e liste o que resta depois, com responsável e data de revisão. Onde a evidência ainda não existir, escreva como e quando ela será coletada. Compare os seus registros com o exemplo do SFTP das resseguradoras e preencha qualquer lacuna que encontrar.
+
+### 7.8 Exceções
+
+Quando um controle não puder ser aplicado a tempo, abra uma exceção: escopo, motivo, controles compensatórios, responsável, expiração. O patrocinador aprova; o rastreador a mostra; a expiração aciona uma revisão. Exceções são normais; exceções sem expiração não são.
+
+Na MTI, os dois escritórios aguardando a renovação de hardware são o exemplo: PSKs provisórias como controle compensatório, expiração na renovação. Cada exceção nomeia o seu controle compensatório, para que o patrocinador saiba o que reduz o risco enquanto o controle principal aguarda. Revise as exceções abertas na reunião mensal e relate qualquer exceção vencida no relatório trimestral.
+
+### 7.9 Erros comuns e limites
+
+- Tickets de mudança aceitos como verificação.
+- Risco residual omitido.
+- Exceções sem expiração.
+
+Cada erro faz o rastreador superestimar a proteção. Um ticket de mudança aceito como verificação teria escondido a regressão do portal de corretores da MTI. Omitir o risco residual faz um item parcialmente protegido parecer concluído, de modo que as chaves de host clássicas ou os clientes antigos dos parceiros saem de vista. Uma exceção sem expiração vira uma aceitação permanente que ninguém decidiu. Revise cada item Verificado e cada exceção quanto a esses três a cada trimestre. Corrija o que encontrar. Registre o que você mudou.
+
+### Exercícios
+
+- **EX031 — Associar.** Associe controles a: transferências do arquivo (HNDL), AC interna (forjar depois), gravador de chamadas (desconhecido), CDN (fornecedor). Rubrica: 3 = quatro associações sensatas.
+- **EX032 — Evidência de verificação.** No portal de corretores, o que verifica a troca de chaves híbrida? Rubrica: 3 = logs de negociação/saída de ferramenta, datados.
+- **EX033 — Agilidade.** Usando o Laboratório A, explique por que a aposentadoria é uma mudança de política de uma linha. Rubrica: 3 = lista de aceitos, identificador nos dados.
+- **EX034 — Residual.** Escreva a nota de risco residual do SFTP das resseguradoras. Rubrica: 3 = riscos restantes, responsável, revisão, prazo.
+- **EX035 — Exceção.** Esboce uma exceção para o gravador de chamadas enquanto se aguarda a resposta do fornecedor. Rubrica: 3 = escopo, motivo, controles compensatórios, responsável, expiração.
+
+### Síntese
+
+Os controles são associados à exposição, verificados por evidências operacionais e acompanhados de risco residual registrado e de exceções por tempo limitado; a agilidade torna mais barata a mudança futura.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — capítulo 07 de 12
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Segurança quântica e pós-quântica: análise de caso supervisionada
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar de ponta a ponta um caso realista de migração; (2) aplicar o fluxo de trabalho sob supervisão; (3) ponderar opções com critérios explícitos; (4) identificar lacunas de governança; e (5) apresentar uma recomendação.
+
+### 8.1 O caso
+
+O arquivo de apólices de vida da MTI (sintético): confidencialidade e verificabilidade por 40 anos; documentos assinados com RSA-2048; transferidos todas as noites dos escritórios regionais por VPNs IPsec com ECDH; armazenados cifrados com AES-256, com as chaves envolvidas por um HSM usando RSA-OAEP; appliances de VPN de um fornecedor cujo firmware suporta a RFC 9370 a partir da versão 7.4, com a MTI na 7.1; o fornecedor do software do arquivo declara "assinaturas PQC no roteiro".
+
+Repare que o caso combina os dois riscos do Capítulo 1: troca de chaves clássica em transferências de vida longa e assinaturas clássicas em documentos de vida longa. Liste os fatos numa tabela, com os seus graus, antes de analisá-los.
+
+### 8.2 Análise
+
+Exposição: as transferências estão expostas a HNDL agora (dados de 40 anos). As assinaturas estão expostas ao risco de forjar depois (os documentos precisam permanecer verificáveis por décadas). O AES-256 em repouso é adequado; o envolvimento de chaves com RSA importa se as chaves envolvidas alguma vez saírem do HSM ou forem copiadas para backups externos.
+
+Atribua grau a cada fato antes de usá-lo. O suporte a partir da versão 7.4 do firmware é uma declaração do fornecedor, então é grau D até ser testado; a alegação de roteiro do fornecedor do arquivo pontua 1 na escala do questionário, uma alegação sem data. Anote também a questão do backup do HSM, que precisa de uma resposta do responsável pelo HSM.
+
+### 8.3 Opções
+
+(A) Atualizar o firmware das VPNs para a 7.4 e habilitar a troca de chaves híbrida; (B) PSKs provisórias conforme a RFC 8784 nos túneis do arquivo até A; (C) reduzir as transferências, enviando os documentos uma única vez na conclusão, em vez da ressincronização noturna; (D) plano de assinaturas do arquivo: exigir do fornecedor datas para o suporte ao ML-DSA e planejar a renovação dos carimbos de tempo. Critérios: proteção, tempo, custo, risco operacional, dependência.
+
+Pontue cada opção em todos os critérios e escreva um motivo curto para cada pontuação. A protege totalmente as transferências, mas depende do firmware do fornecedor; B é rápida, mas acrescenta trabalho de gestão de chaves; C custa pouco e reduz a exposição imediatamente; D trata das assinaturas, mas depende do fornecedor.
+
+### 8.4 Lacunas de governança
+
+Nenhum responsável pela criptografia do arquivo; nenhuma cláusula contratual exigindo que o fornecedor do arquivo suporte assinaturas pós-quânticas; nenhum processo de exceção usado para o atraso das VPNs.
+
+Cada lacuna explica parte do risco. Sem um responsável, ninguém cobrou o fornecedor do arquivo. Sem uma cláusula, a MTI não tem como exigir datas. Sem uma exceção registrada, o atraso das VPNs foi aceito por omissão, e não por decisão. Corrija as lacunas junto com as opções técnicas, ou os mesmos problemas voltarão. Atribua um responsável a cada lacuna.
+
+### 8.5 Recomendação
+
+A em até dois trimestres, com C imediatamente e B para os dois escritórios cujos appliances não podem ser atualizados até a renovação de hardware; D como ação de compras com prazo; nomear a Gestão de Documentos como responsável pela criptografia do arquivo; registrar uma exceção para os dois escritórios, com expiração na renovação.
+
+Repare que as opções são combinadas, e não escolhidas isoladamente: C e B reduzem a exposição enquanto A é preparada, e D inicia o trabalho de assinaturas, que tem o prazo de preparação mais longo. Cada parte tem um responsável e uma data.
+
+### 8.6 Caso resolvido de apresentação
+
+"Recomendação: proteger as transferências do arquivo em até seis meses, atualizando o firmware das VPNs e habilitando a troca de chaves pós-quântica híbrida, reduzir já as transferências noturnas e usar chaves pré-compartilhadas provisórias em dois escritórios. Custo: CU 40–70 mil (sintético). Residual: assinaturas clássicas dos documentos até que o fornecedor do arquivo entregue o ML-DSA; pedimos um aditivo contratual com datas."
+
+A apresentação declara primeiro a recomendação, depois o que ela custa, depois o que resta. Ela usa palavras simples em vez das letras das opções e termina com o único pedido sobre o qual o público pode agir.
+
+### 8.7 Tarefa prática
+
+Analise o caso você mesmo, pontue as opções segundo os critérios e compare com a recomendação acima.
+
+Pontue cada opção em proteção, tempo, custo, risco operacional e dependência, com um motivo curto para cada pontuação. Atribua grau aos fatos em que se apoiar, especialmente o suporte do firmware e a alegação de roteiro do fornecedor. Depois compare a sua recomendação com a do livro e explique qualquer diferença: você pode ponderar o custo ou a dependência de outra forma, o que é aceitável se disser por quê. Apresente as suas pontuações a um colega e anote qualquer mudança.
+
+### 8.8 Revisão do supervisor
+
+Apresente a sua análise ao seu supervisor antes de compartilhá-la: ele vai verificar se os fatos estão graduados corretamente, se as opções foram consideradas de forma justa e se a recomendação fica dentro do que as evidências sustentam. Incorpore os comentários e registre o que mudou.
+
+No caso do arquivo, espere perguntas como por que a opção B se aplica apenas a dois escritórios e se a faixa de custo é sustentada por orçamentos. O seu supervisor também pode perguntar se a alegação sobre a versão 7.4 do firmware foi testada. Responda com as evidências que tem e diga o que ainda não sabe.
+
+### 8.9 Erros comuns e limites
+
+- Ignorar as assinaturas porque a troca de chaves é urgente.
+- Opções sem critérios.
+- Deixar passar lacunas de governança.
+
+Cada erro deixa parte do risco sem gestão. No caso do arquivo da MTI, focar apenas nas transferências deixaria sem plano documentos assinados com décadas de idade. Opções sem critérios fazem a recomendação parecer preferência. Deixar passar as lacunas de governança significa que o fornecedor do arquivo continua sem ser cobrado e o atraso das VPNs continua sem registro. Confira a sua análise quanto aos três antes de apresentá-la. Revise a sua análise onde encontrar algum deles. Anote cada um que corrigiu.
+
+### Exercícios
+
+- **EX036 — Exposição.** Liste as exposições do caso por classe. Rubrica: 3 = transferências HNDL, assinaturas forjar depois, AES adequado, envolvimento de chaves condicional.
+- **EX037 — Pontuação das opções.** Pontue as opções A–C em proteção e tempo (1–5). Rubrica: 3 = pontuações defensáveis, com os motivos.
+- **EX038 — Lacuna.** Proponha correções para as três lacunas de governança. Rubrica: 3 = responsável, cláusula, exceção.
+- **EX039 — Recomendação.** Reescreva a recomendação para um conselho não técnico em 60 palavras. Rubrica: 3 = clara, correta, custos e residual.
+- **EX040 — Envolvimento de chaves.** Quando o envolvimento de chaves com RSA-OAEP se torna uma preocupação quântica? Rubrica: 3 = quando as chaves envolvidas ficam expostas fora do HSM/são gravadas.
+
+### Síntese
+
+A análise de caso supervisionada aplica o fluxo de trabalho de ponta a ponta: exposições, opções com critérios, lacunas de governança e uma recomendação clara e com custos, com o risco residual.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — capítulo 08 de 12
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Comunicação, ética e relato
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever relatórios para executivos, responsáveis, fornecedores e auditores; (2) comunicar a incerteza com honestidade; (3) evitar mensagens baseadas no medo ou excessivamente confiantes; (4) tratar informações sensíveis de forma ética; e (5) apresentar constatações oralmente.
+
+### 9.1 Públicos
+
+Os executivos precisam de decisões, postura de risco, custos e risco residual em uma página. Os responsáveis pelos sistemas precisam de constatações específicas, com evidências e prazos. Os fornecedores precisam de requisitos e datas claros. Os auditores precisam de evidências e método. As equipes precisam saber o que muda para elas.
+
+Escreva cada versão a partir do mesmo rastreador, para que os números coincidam entre os públicos. Na MTI, o resumo executivo informa a proporção verificada e as decisões necessárias, enquanto a equipe de infraestrutura recebe as constatações do SFTP das resseguradoras com as evidências do sshd e as datas. O fornecedor do arquivo recebe um requisito claro de suporte datado ao ML-DSA. Verifique se cada versão responde ao que aquele público precisa decidir ou fazer.
+
+### 9.2 Incerteza
+
+Diga o que se sabe (normas publicadas, algoritmos em uso), o que se estima (durações da migração) e o que se desconhece (quando existirá um computador quântico capaz). Use faixas e mostre que as recomendações se mantêm em todas elas. Evite previsões de data única.
+
+Na MTI, a lista de prioridades se apoia nos resultados do Laboratório M para z de 10, 15 e 20, e o arquivo vem primeiro nos três. Dizer isso permite aos executivos aceitar a lista sem precisar aceitar previsão alguma. Onde uma estimativa orientar uma decisão, informe a sua fonte e a sua faixa.
+
+### 9.3 Tom
+
+Mensagens baseadas no medo ("apocalipse quântico") produzem pânico ou descaso. Mensagens excessivamente confiantes ("somos seguros contra o quântico") desmoronam na primeira auditoria. Mensagens calmas e específicas funcionam: "estamos protegendo primeiro os dados que precisam permanecer privados por mais tempo; aqui está o progresso e o que falta".
+
+Leia o seu rascunho em voz alta e remova qualquer palavra que alegue uma certeza que você não pode mostrar ou um alarme que não pode justificar. Confira cada número com o rastreador antes de enviar. Na MTI, o resumo trimestral evitou os dois extremos ao declarar com clareza a proporção verificada e os riscos.
+
+### 9.4 Ética
+
+Relatórios sobre fraquezas são sensíveis; compartilhe-os com base na necessidade de saber. Não exagere o risco para ganhar orçamento nem o subestime para evitar trabalho. Credite com exatidão o trabalho das equipes. Rotule os exemplos sintéticos nos materiais de treinamento. Relate os problemas que descobrir, incluindo os seus próprios erros.
+
+Na MTI, um relatório sobre a ordem de preferência fraca do portal de sinistros vai para o Web Platform e para o patrocinador, não para todos os funcionários. Se descobrir que um número que você relatou estava errado, corrija-o no relatório seguinte e diga o que mudou.
+
+### 9.5 Apresentação oral
+
+Comece pela pergunta e pela resposta, mostre as evidências e termine com as decisões necessárias. Mantenha os slides simples; prepare-se para perguntas sobre as hipóteses e a situação das orientações.
+
+No briefing trimestral da MTI, a pergunta é se os dados de nível 1 estão mais bem protegidos do que no trimestre anterior, a resposta é a proporção verificada e as decisões são o aditivo contratual e as duas exceções. Ensaie com alguém que vá perguntar se o IR 8547 é definitivo e responda que é um rascunho com datas propostas. Seja breve.
+
+### 9.6 Caso resolvido
+
+Resumo executivo trimestral (sintético): "Posição: 9 % dos itens de nível 1 verificados, 9 % ainda desconhecidos (eram 31 %). Destaques: o SFTP das resseguradoras agora usa troca de chaves pós-quântica híbrida com 7 de 10 parceiros. Riscos: o fornecedor do arquivo não tem plano datado para assinaturas pós-quânticas. Decisões necessárias: aprovar o pedido de aditivo contratual; aprovar duas exceções para escritórios que aguardam a renovação de hardware. Perspectiva: transferências do arquivo protegidas até o 2º trimestre, se as atualizações de firmware avançarem."
+
+O resumo segue a ordem das perguntas de um executivo: onde estamos, o que melhorou, o que está em risco, o que vocês precisam de mim e o que vem a seguir. Cada número pode ser rastreado até o rastreador. A perspectiva é condicional, o que é honesto quanto à dependência das atualizações de firmware.
+
+### 9.7 Tarefa prática
+
+Escreva a mensagem do mesmo trimestre para os responsáveis pelos sistemas e para um fornecedor.
+
+Para os responsáveis pelos sistemas, comece pelas suas constatações abertas, evidências e prazos; para o fornecedor do arquivo, declare o requisito de suporte datado ao ML-DSA e o pedido de aditivo contratual, sem compartilhar detalhes das fraquezas internas da MTI. Verifique se as duas usam os mesmos números do resumo executivo. Pergunte a um colega se cada destinatário saberia exatamente o que fazer depois de ler. Revise as duas após o retorno. Guarde as duas no seu portfólio.
+
+### 9.8 Lidando com resistência
+
+Os responsáveis podem contestar prazos; os executivos podem questionar o custo. Responda com evidências: o tempo de vida dos dados, a robustez da lista de prioridades entre os cronogramas, a faixa de custo e o risco residual de esperar. Ofereça opções em vez de ultimatos e registre a decisão e quem a tomou.
+
+Na MTI, a um responsável que resista a reordenar os grupos do portal de sinistros poderia ser oferecida uma implantação em etapas, com resultados de gate, em vez de uma mudança imediata. Pergunte o que tornaria o prazo possível, como ajuda de um fornecedor ou outra janela de mudança, e inclua isso nas opções.
+
+### 9.9 Erros comuns e limites
+
+- Um único relatório para todos os públicos.
+- Falsa precisão sobre os cronogramas.
+- Compartilhar amplamente os detalhes das fraquezas.
+
+Cada erro enfraquece a confiança. Um único relatório dá aos executivos detalhes que eles não vão ler e aos responsáveis pouco demais para agir. A falsa precisão sobre quando existirá um computador quântico convida à discussão e é facilmente desacreditada. Compartilhar amplamente os detalhes das fraquezas cria um mapa útil para os atacantes e quebra a regra da necessidade de saber. Revise cada relatório quanto aos três antes de enviá-lo. Reescreva os que falharem. Anote o que mudou e por quê.
+
+### Exercícios
+
+- **EX041 — Público.** Liste o que os executivos e os auditores precisam, cada um. Rubrica: 3 = decisões/postura versus evidências/método.
+- **EX042 — Frase sobre a incerteza.** Escreva uma frase que declare com exatidão a incerteza do cronograma quântico. Rubrica: 3 = sem data, faixa/hipótese, recomendação robusta.
+- **EX043 — Corrigir o tom.** Reescreva: "Hackers com computadores quânticos vão roubar tudo em breve!" Rubrica: 3 = calma, específica, correta.
+- **EX044 — Mensagem ao fornecedor.** Escreva uma mensagem de requisitos de cinco frases ao fornecedor do arquivo. Rubrica: 3 = requisito, norma, data, teste, contato.
+- **EX045 — Resistência.** Como você responde a um responsável que diz "o quântico está a décadas de distância"? Rubrica: 3 = HNDL, tempo de vida, robustez, opções.
+
+### Síntese
+
+Uma boa comunicação se ajusta ao público, declara a incerteza com honestidade, mantém um tom calmo, trata as informações sensíveis de forma ética e leva a decisões registradas.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — capítulo 09 de 12
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Segurança quântica e pós-quântica: qualidade e diagnóstico de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar a qualidade do inventário e do rastreador; (2) detectar falhas comuns do fluxo de trabalho; (3) interpretar as decisões de gate da implantação; (4) coordenar o diagnóstico de problemas com as equipes técnicas; e (5) melhorar o fluxo de trabalho a partir das lições aprendidas.
+
+### 10.1 Qualidade dos dados
+
+Verifique regularmente: evidências vencidas (mais antigas que a idade combinada), itens sem responsáveis, desconhecidos sem tarefas, itens marcados como Verificados sem evidência, exceções vencidas. Sorteie dez itens por mês e confira você mesmo as evidências deles.
+
+Registre o resultado de cada amostra, incluindo os itens aprovados, para que as tendências fiquem visíveis. Na MTI, a regressão do portal de corretores foi encontrada assim. Quando uma amostra falhar, corrija o item e depois pergunte se a mesma falha poderia afetar itens semelhantes, e confira-os também. Mantenha o mesmo método de amostragem todo mês, para que os resultados possam ser comparados ao longo do tempo.
+
+### 10.2 Falhas do fluxo de trabalho
+
+*Fallback silencioso*: um item verificado no trimestre anterior voltou ao clássico após uma atualização. *Itens parados*: dependências sem acompanhamento. *Expansão do escopo*: o fluxo de trabalho absorve trabalho não relacionado. *Deriva dos relatórios*: as definições mudam entre os trimestres sem aviso.
+
+Cada falha tem um remédio diferente: reverificação para o fallback silencioso, escalonamento para os itens parados, uma revisão de escopo para a expansão e um registro de definições para a deriva. Verifique as quatro na reunião mensal. Na MTI, a regressão do portal de corretores foi um fallback silencioso, detectado pela amostragem. Registre cada falha encontrada e o remédio aplicado.
+
+### 10.3 Atividade prática — Laboratório K
+
+```python
+# Lab K (ch 10): canary gate for enabling a hybrid group - promote only if failures stay within budget.
+import math
+def upper95(k, n):                      # Wilson upper bound
+    z = 1.96; p = k / n; d = 1 + z*z/n
+    return ((p + z*z/(2*n)) + z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))) / d
+baseline, budget = 5e-4, 4e-4            # baseline failure rate, allowed increase
+for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% canary (proxy site)", 96, 50000)]:
+    ub = upper95(k, n); ok = ub <= baseline + budget
+    print(f"{stage:24s} {k}/{n}  upper95={ub:.5f}  {'PROMOTE' if ok else 'HOLD'}")
+```
+
+Saída esperada:
+
+```text
+1% canary                3/5000  upper95=0.00176  HOLD
+10% canary               28/50000  upper95=0.00081  PROMOTE
+10% canary (proxy site)  96/50000  upper95=0.00234  HOLD
+```
+
+As equipes técnicas implantam as mudanças em etapas e só promovem quando as taxas de falha ficam dentro da margem com confiança. Como coordenador, leia os resultados dos gates para relatar a situação com exatidão: "retido à espera de mais dados" e "retido por causa de uma falha" significam coisas diferentes para o cronograma.
+
+Leia os três resultados com atenção. O primeiro canário ficou retido porque 5.000 conexões são poucas para mostrar que as falhas estão dentro da margem, então são necessários mais dados. O canário de 10 % foi promovido. O site com proxy ficou retido porque as falhas estavam claramente altas, o que aponta para uma falha que precisa de diagnóstico técnico.
+
+### 10.4 Coordenando o diagnóstico de problemas
+
+Quando uma implantação causar problemas, o seu papel é a coordenação: garantir que os responsáveis certos estejam envolvidos, que o impacto seja entendido, que a comunicação saia, que o rastreador mostre o item como bloqueado, com um motivo, e que as lições sejam capturadas. Deixe o diagnóstico técnico com a equipe técnica.
+
+Na MTI, quando a proporção híbrida da API de cotação caiu, o trabalho do coordenador foi envolver o responsável pela plataforma, informar as partes interessadas e atualizar o rastreador, e não diagnosticar a causa. Mantenha uma linha do tempo curta dos eventos e das decisões.
+
+### 10.5 Lições aprendidas
+
+Após cada trimestre e cada incidente significativo, faça uma revisão curta: o que deu certo, o que não deu, o que mudar no fluxo de trabalho. Registre as mudanças nas definições e nos procedimentos.
+
+Mantenha a revisão curta e sem culpados, com foco no fluxo de trabalho, e não nas pessoas. Na MTI, a regressão do portal de corretores levou a uma nova regra: todo item Verificado é reverificado mensalmente. Cada lição deve produzir uma mudança concreta com um responsável, ou uma decisão registrada de não mudar. Compartilhe as notas da revisão com a equipe.
+
+### 10.6 Caso resolvido
+
+Uma amostra mensal descobre que o portal de corretores, marcado como Verificado no 1º trimestre, mostra 4 % de híbrido nos logs do 2º trimestre. Causa: uma atualização da plataforma restaurou um perfil padrão. Ações: o item volta para Em andamento; o responsável restaura o perfil; acrescenta-se uma regra de qualidade — todo item Verificado é reverificado automaticamente a cada mês. Lições registradas.
+
+A resposta segue o fluxo de trabalho: o rastreador mostra o estado real, o responsável corrige a causa e uma regra evita a repetição. Relatar a regressão abertamente protege a credibilidade dos outros números de Verificados.
+
+### 10.7 Tarefa prática
+
+Projete um checklist mensal de qualidade com oito verificações para o rastreador da MTI.
+
+Inclua verificações de evidências vencidas, itens sem responsáveis, desconhecidos sem tarefas, itens Verificados sem evidência de negociação e exceções vencidas. Acrescente verificações suas, como a reverificação mensal dos itens Verificados introduzida após a regressão do portal de corretores. Para cada verificação, diga que dados ela usa, quem a executa e o que acontece quando ela falha. Mantenha o checklist em uma página, para que seja usado, e revise-o após cada trimestre.
+
+### 10.8 Medindo a qualidade
+
+Relate uma medida de qualidade ao lado do progresso: por exemplo, a proporção de itens sorteados cuja evidência coincidia com o seu estado no rastreador. Uma pontuação de qualidade em queda é um alerta precoce de que os números de progresso podem estar superestimados.
+
+Na MTI, a pontuação teria caído no mês em que a regressão do portal de corretores foi encontrada. Relate a pontuação com o tamanho da amostra, já que uma amostra de dez itens dá apenas um número aproximado. Se a pontuação cair, veja que tipos de itens falharam antes de tirar conclusões e diga no relatório como os números podem ser afetados.
+
+### 10.9 Erros comuns e limites
+
+- Confiar no Verificado para sempre.
+- Coordenadores fazendo diagnóstico técnico.
+- Definições mudadas em silêncio.
+
+Cada erro deixa os números se afastarem da realidade. O portal de corretores da MTI mostrou que os itens Verificados podem regredir após uma atualização. Um coordenador que diagnostica falhas técnicas atrasa as pessoas que podem corrigi-las e pode relatar errado a causa. Definições mudadas em silêncio tornam os números de um trimestre incomparáveis com os do seguinte, de modo que as tendências perdem o sentido. Acrescente uma verificação para cada um ao seu checklist mensal de qualidade. Corrija o que encontrar. Registre as correções.
+
+### Exercícios
+
+- **EX046 — Verificações de qualidade.** Liste cinco verificações de qualidade dos dados. Rubrica: 3 = vencidas, sem responsável, desconhecidos sem tarefa, Verificados sem evidência, exceções vencidas.
+- **EX047 — Leitura dos gates.** Relate os três resultados do Laboratório K em linguagem simples para o patrocinador. Rubrica: 3 = aguardar dados; prosseguir; falha num site sob investigação.
+- **EX048 — Regressão.** Que mudança no rastreador e que regra decorrem da regressão do portal de corretores? Rubrica: 3 = volta para Em andamento; reverificação mensal.
+- **EX049 — Coordenação.** Liste quatro ações do coordenador durante um problema de implantação. Rubrica: 3 = responsáveis, impacto, comunicação, rastreador.
+- **EX050 — Medida de qualidade.** Defina uma medida de qualidade e o seu cálculo. Rubrica: 3 = proporção de coincidentes entre os sorteados.
+
+### Síntese
+
+Verificações de qualidade, leitura correta das decisões de gate, diagnóstico coordenado e lições aprendidas mantêm honestos os números do fluxo de trabalho.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — capítulo 10 de 12
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Laboratório supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um ciclo completo do fluxo de trabalho com um conjunto de dados sintético; (2) produzir o rastreador, as constatações e o relatório; (3) trabalhar com responsáveis e fornecedores simulados; (4) tratar um incidente simulado; e (5) refletir sobre o seu desempenho.
+
+### 11.1 Preparação
+
+O laboratório usa um conjunto de dados sintético da MTI: 40 ativos com exportações de configuração, alguns resumos de logs, respostas de questionários a fornecedores e registros de tempos de vida dos dados. O seu supervisor e os colegas fazem o papel dos responsáveis, dos fornecedores e do patrocinador. Nenhum sistema ou dado real está envolvido.
+
+Trate o conjunto de dados como trataria evidências reais: peça uma autorização simulada antes de usá-lo, rotule-o e atribua grau a cada item. O supervisor verifica o tratamento, além dos resultados. Faça perguntas aos participantes que interpretam papéis como faria a responsáveis reais e registre as respostas como evidências.
+
+### 11.2 Tarefas
+
+Dia 1: escopo, autorização (simulada), inventário e graus. Dia 2: priorização com a regra de Mosca e as classes de exposição. Dia 3: planejar os itens, enviar pedidos aos fornecedores, abrir constatações. Dia 4: uma implantação simulada com resultados de gate e um incidente (fallback silencioso). Dia 5: relatório trimestral e apresentação.
+
+Guarde as saídas de cada dia, já que o dia seguinte se baseia nelas. Ao fim de cada dia, verifique se o rastreador reflete o que você aprendeu. O relatório do Dia 5 deve se basear apenas nas saídas dos dias anteriores, de modo que qualquer falta fique visível. Se você se atrasar, avise o supervisor e combine o que deixar de lado, como faria com um patrocinador real.
+
+### 11.3 O incidente
+
+No meio do laboratório, o "responsável pela plataforma" informa que a proporção híbrida da API de cotação caiu após uma atualização. Você coordena: atualização do rastreador, envolvimento do responsável, comunicação às partes interessadas, lições.
+
+Trate-o como um incidente real. Mova o item de Verificado para Em andamento ou bloqueado, com um motivo, contate o responsável, diga às partes interessadas o que mudou e quando virá a próxima atualização, e deixe o diagnóstico com o responsável pela plataforma. Registre uma lição depois, como a MTI fez após a regressão do portal de corretores. Mantenha a linha do tempo.
+
+### 11.4 Avaliação
+
+Os supervisores avaliam a exatidão do inventário e das prioridades, a qualidade das constatações e do tratamento de evidências, a integridade do rastreador, a comunicação e o tratamento do incidente.
+
+Cada critério corresponde a um capítulo do livro, então o retorno lhe diz qual capítulo revisitar. Os supervisores procuram evidências para cada afirmação que você faz; um rastreador correto, com desconhecidos honestos, pontua melhor do que um arrumado com itens Verificados sem sustentação. Peça um retorno por escrito ao fim de cada dia. Aja sobre ele no dia seguinte.
+
+### 11.5 Caso resolvido
+
+A saída do Dia 2 de um participante: 9 ativos de nível 1; lista de prioridades encabeçada pelas transferências do arquivo e pelo SFTP das resseguradoras; 6 desconhecidos com tarefas; tabela de Mosca para *z* = 10, 15, 20. Retorno do supervisor: uma alegação de fornecedor classificada como B deveria ser D; corrigida, e a prioridade daquele ativo reduzida enquanto se aguarda a verificação.
+
+O retorno mostra por que os graus importam: a alegação mal classificada tinha elevado a prioridade de um ativo com base na palavra de um fornecedor. Corrigi-la levou dinheiro e atenção para itens com evidências melhores. O participante registrou a correção no registro diário.
+
+### 11.6 Tarefa prática
+
+Complete o laboratório de cinco dias e mantenha um registro diário curto.
+
+A cada dia, escreva o que produziu, que decisão tomou e por quê, e o que faria diferente. Mantenha o registro factual e curto. Anote quando a resposta de um participante que interpreta um papel mudou o seu plano. O registro alimenta a reflexão e passa a fazer parte do seu portfólio. Leia o registro toda manhã antes de começar, para que as lições de ontem moldem o trabalho de hoje. Compartilhe-o com o seu supervisor no fim da semana.
+
+### 11.7 Reflexão
+
+No final, escreva uma reflexão de uma página: o que você fez bem, o que mudaria, qual habilidade precisa de mais prática e uma melhoria para o próprio fluxo de trabalho. Compartilhe-a com o seu supervisor.
+
+Baseie a reflexão no registro diário e no retorno do supervisor, e não na memória. Seja específico: "classifiquei uma alegação de fornecedor como B" é mais útil do que "a atribuição de graus precisa melhorar". Escolha uma melhoria do fluxo de trabalho que você poderia propor na MTI, como uma regra de reverificação dos itens Verificados, e explique como testaria se ela ajudou.
+
+### 11.8 Trabalhando com partes interessadas simuladas
+
+Trate os participantes que interpretam papéis como reais: envie pedidos claros e educados, com prazos; registre as respostas; escale quando os prazos passarem. O laboratório avalia se você consegue manter um fluxo de trabalho andando por meio de outras pessoas, que é o núcleo do trabalho do profissional.
+
+Se um participante recusar um prazo, registre isso e ofereça opções, como faria com um responsável real. O supervisor observa se os seus pedidos são claros o bastante para que se aja sobre eles sem uma pergunta de acompanhamento, se você registra as respostas como evidências e se o escalonamento é oportuno e educado, e não brusco.
+
+### 11.9 Erros comuns e limites
+
+- Tratar o laboratório como um exercício de planilha.
+- Deixar passar a etapa de comunicação do incidente.
+- Pular a reflexão.
+
+Cada erro perde aquilo que o laboratório testa. Tratá-lo como um exercício de planilha ignora as pessoas que precisam agir sobre os seus pedidos. Deixar passar a etapa de comunicação do incidente mantém as partes interessadas sem saber de uma regressão, o que prejudica mais a confiança do que a própria regressão. Pular a reflexão perde a lição que o retorno do supervisor deveria produzir. Confira o seu próprio trabalho de laboratório quanto aos três. Anote o que mudou.
+
+### Exercícios
+
+- **EX051 — Plano dos dias.** Escreva as entregas de cada dia do laboratório. Rubrica: 3 = cinco dias, com as saídas.
+- **EX052 — Correção de grau.** Por que reclassificar uma alegação de B para D muda as ações de prioridade? Rubrica: 3 = precisa de verificação antes do gasto.
+- **EX053 — Nota do incidente.** Escreva a nota às partes interessadas sobre o incidente da API de cotação. Rubrica: 3 = o quê, impacto, ação, próxima atualização.
+- **EX054 — Critérios de avaliação.** Liste cinco critérios que os supervisores usam. Rubrica: 3 = exatidão, constatações, evidências, rastreador, comunicação/incidente.
+- **EX055 — Reflexão.** Escreva um modelo de reflexão de cinco frases. Rubrica: 3 = pontos fortes, mudanças, lacuna de habilidade, melhoria do fluxo de trabalho, próximo passo.
+
+### Síntese
+
+O laboratório supervisionado executa um ciclo completo com pessoas simuladas e um incidente, construindo confiança no fluxo de trabalho antes do uso real.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 12
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Portfólio prático e revisão final
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um portfólio que mostre cada objetivo do curso; (2) apresentar o seu fluxo de trabalho e os seus resultados; (3) responder a perguntas sobre método, evidências e situação das orientações; (4) planejar os próximos passos na prática; e (5) manter o seu conhecimento atualizado.
+
+### 12.1 Conteúdo do portfólio
+
+Inclua: um texto explicativo correto (Capítulo 1); um mapa de serviços e de partes interessadas com prioridades (2); autorização e rótulos de evidência (3); um extrato graduado da CBOM (4); constatações a partir da saída de ferramentas (5); um rastreador com estados e dependências (6); registros de controle, verificação e risco residual (7); a análise do caso (8); relatórios para dois públicos (9); um checklist de qualidade e lições (10); as saídas do laboratório e a reflexão (11).
+
+Escolha itens que mostrem resultados, além de documentos, como estados do rastreador sustentados por evidências. Cada item deve citar a sua fonte e a sua data, e os itens graduados devem mostrar o seu grau. Remova tudo o que não puder sustentar e anote quais objetivos estão fracamente cobertos, para poder tratá-los antes da revisão.
+
+### 12.2 Apresentação
+
+Dez minutos: o fluxo de trabalho, o que você produziu, uma decisão que você apoiou, uma lição. Depois, perguntas.
+
+Por exemplo, você pode escolher a recomendação do caso do arquivo como a decisão e a regressão do portal de corretores como a lição. Mantenha a visão geral do fluxo de trabalho em dois minutos, para que a maior parte do tempo vá para os resultados. Ensaie com um cronômetro e prepare um slide que mostre o rastreador antes e depois do seu trabalho. Deixe tempo para as perguntas, já que a revisão testa como você raciocina tanto quanto o que você produziu. Leve o portfólio, para poder apontar as evidências quando perguntado.
+
+### 12.3 Perguntas prováveis
+
+"Como você sabe que um item está verificado?" "Por que o arquivo vem primeiro?" "O IR 8547 é definitivo?" "O que a troca de chaves híbrida não protege?" "O que você faria se um fornecedor nunca respondesse?" Responda com evidências do seu portfólio.
+
+Por exemplo, "Como você sabe que um item está verificado?" se responde com os logs de negociação do portfólio, e não com um ticket de mudança. Prepare uma resposta de uma linha e uma evidência para cada uma. Pratique as respostas com um colega. Mantenha as evidências prontas para mostrar.
+
+### 12.4 Próximos passos
+
+Combine com o seu gestor quais responsabilidades do fluxo de trabalho você vai assumir, quais habilidades aprofundar (por exemplo, o curso técnico, para a configuração prática) e quando vai revisar o progresso.
+
+Registre o acordo por escrito, com datas e um revisor nomeado. Escolha responsabilidades que usem o que o portfólio mostra que você sabe fazer, como conduzir o ciclo trimestral de uma divisão, e acrescente uma habilidade nova de cada vez. Revise o plano após três meses e ajuste-o com o seu gestor. Guarde uma cópia no portfólio.
+
+### 12.5 Mantendo-se atualizado
+
+Acompanhe as publicações do NIST e da IETF, as orientações setoriais e os anúncios dos fornecedores. Atualize o seu texto explicativo e a seção de normas do fluxo de trabalho quando a situação mudar — por exemplo, quando o FN-DSA ou a norma do HQC forem publicados, ou quando o IR 8547 for finalizado.
+
+Reserve um horário fixo a cada mês para conferir essas fontes e registrar o que mudou, se algo mudou. Quando uma situação mudar, atualize o texto explicativo do Capítulo 1 e avise as partes interessadas que dependem dele. Quando as orientações mudarem, verifique se alguma decisão da MTI se apoiava na situação antiga e, se for o caso, leve o assunto à reunião mensal seguinte, em vez de esperar pela revisão anual.
+
+### 12.6 Caso resolvido
+
+Um participante apresenta a posição da MTI no 2º trimestre, a recomendação do caso do arquivo e a lição da regressão do portal de corretores. Perguntado "O que o híbrido não protege?", responde: "A autenticação — o certificado do portal ainda é clássico —, além de qualquer salto ou parceiro ainda em troca de chaves clássica e dos dados gravados antes da mudança." Perguntado sobre o IR 8547, declara que é um rascunho com datas propostas e mostra como as datas internas da MTI foram definidas.
+
+As respostas funcionam porque cada uma aponta para evidências e declara limites. Nenhuma exagera, e ambas se referem aos próprios registros da MTI.
+
+### 12.7 Tarefa prática
+
+Monte o seu portfólio e ensaie a apresentação com um colega.
+
+Verifique se cada item do portfólio corresponde a um objetivo do curso e traz evidências, e não apenas um documento. Ensaie a apresentação de dez minutos pelo menos duas vezes com um colega que faça as perguntas prováveis, incluindo se o IR 8547 é definitivo e o que o híbrido não protege. Cronometre-se, anote as perguntas que achou difíceis e prepare evidências para cada uma antes da revisão final. Peça ao colega anotações por escrito. Revise uma vez e guarde as duas versões.
+
+### 12.8 Hábitos profissionais
+
+Os hábitos que este curso constrói — dar fonte a cada afirmação, graduar as evidências, registrar as decisões, declarar o risco residual, comunicar com calma — se aplicam a qualquer programa de segurança. Pratique-os deliberadamente no seu próximo cargo; são eles que tornam um profissional digno de confiança para coordenar o trabalho entre equipes.
+
+Escolha um hábito para praticar a cada mês e peça a um colega que o avise quando você escorregar. Na MTI, esses hábitos apareceram em pequenas coisas: uma alegação de fornecedor classificada como D, e não como B, uma regressão relatada abertamente e uma exceção com expiração. Continue praticando-os quando ninguém estiver conferindo.
+
+### 12.9 Erros comuns e limites
+
+- Portfólios de documentos sem evidências de resultados.
+- Exagerar nas respostas.
+- Nenhum plano para se manter atualizado.
+
+Cada erro enfraquece a revisão final. Um portfólio de documentos sem resultados mostra atividade, mas não resultados, como estados do rastreador sem evidências. Exagerar, por exemplo chamando o IR 8547 de definitivo ou a troca de chaves híbrida de proteção completa, desfaz a credibilidade que o portfólio constrói. Sem um plano para se manter atualizado, o seu texto explicativo ficará desatualizado assim que o FN-DSA ou a norma do HQC forem publicados. Confira cada um antes de entregar.
+
+### Exercícios
+
+- **EX056 — Mapa do portfólio.** Associe cinco objetivos do curso a itens do portfólio. Rubrica: 3 = artefatos específicos.
+- **EX057 — Resposta.** Responda: "Como você sabe que um item está verificado?" Rubrica: 3 = evidência operacional, data, fonte.
+- **EX058 — Silêncio do fornecedor.** O que você faz se um fornecedor nunca responde? Rubrica: 3 = escalar via compras, grau U, exceção/controles compensatórios, fornecedor alternativo.
+- **EX059 — Plano de atualização.** Escreva um plano de três itens para se manter atualizado. Rubrica: 3 = fontes, cadência, ações de atualização.
+- **EX060 — Próximo cargo.** Nomeie duas responsabilidades do fluxo de trabalho que você poderia assumir em seguida, e por quê. Rubrica: 3 = realistas, ligadas a evidências de habilidade.
+
+### Síntese
+
+O portfólio e a revisão final demonstram um fluxo de trabalho repetível e baseado em evidências e as habilidades de comunicação para conduzi-lo, com um plano para se manter atualizado.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 12
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a MTI são sintéticos. Esta edição parcial traz as resoluções de EX001–EX030; as de EX031–EX060 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a MTI são sintéticos.
 
 **EX001.** AES-256: manter (Grover apenas tira a raiz quadrada da busca). RSA-2048: substituir (Shor). SHA-256: manter (sem quebra quântica prática). ECDSA P-256: substituir (Shor).
 
@@ -644,6 +1195,70 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX029.** Fornecedor, produto/versão, pedido enviado (data), resposta (data, conteúdo), grau da evidência, data de acompanhamento, via de escalonamento.
 
 **EX030.** 5 min itens bloqueados e pedidos; 10 min itens a vencer no mês; 5 min novos desconhecidos e responsáveis; 5 min exceções perto do vencimento; 5 min decisões e ações.
+
+**EX031.** Transferências do arquivo: troca de chaves híbrida + minimização. AC interna: plano de migração de assinaturas. Gravador de chamadas: investigação (questionário). CDN: acompanhamento do contrato/roteiro e configuração quando houver suporte.
+
+**EX032.** Logs ou saída de ferramenta mostrando X25519MLKEM768 negociado no portal de corretores, com data e cobertura.
+
+**EX033.** O identificador do algoritmo viaja com cada tag e a lista de aceitos da política decide a validade; remover o identificador antigo o aposenta em todos os lugares, sem mudanças de código.
+
+**EX034.** "Três resseguradoras com clientes antigos continuam expostas a HNDL até a atualização (prazo de 12 meses); chaves de host clássicas (forjar depois). Responsável: Infraestrutura. Revisão: trimestral."
+
+**EX035.** Escopo: gravador de chamadas (modelo X). Motivo: algoritmos desconhecidos, resposta do fornecedor pendente. Compensatórios: segmentação de rede, exportação mínima de dados. Responsável: TI da Central de Atendimento. Expiração: 90 dias ou a resposta do fornecedor.
+
+**EX036.** Transferências: HNDL. Assinaturas dos documentos: forjar depois. AES-256 em repouso: adequado. Envolvimento de chaves com RSA-OAEP: preocupação apenas se as chaves envolvidas ficarem expostas fora do HSM.
+
+**EX037.** A: proteção 5, tempo 3 (dois trimestres). B: proteção 3–4 (depende da gestão das PSKs), tempo 4. C: proteção 2–3 (reduz o volume), tempo 5 (imediata).
+
+**EX038.** Nomear a Gestão de Documentos como responsável pela criptografia do arquivo; acrescentar uma cláusula contratual exigindo suporte datado a assinaturas PQ; registrar exceções para os escritórios atrasados, com expiração.
+
+**EX039.** "O nosso arquivo de apólices de 40 anos poderia ser gravado hoje e decifrado depois. Em até seis meses vamos atualizar as VPNs dos escritórios para uma nova proteção resistente ao quântico e reduzir já as transferências noturnas. Custo de CU 40–70 mil. As assinaturas dos documentos continuam clássicas até que o fornecedor do arquivo entregue; estamos aditando o contrato para exigir datas."
+
+**EX040.** Quando as chaves envolvidas saem do HSM — em backups, exportações ou transferências gravadas —, um adversário com um CRQC poderia desfazer o envolvimento delas depois.
+
+**EX041.** Executivos: decisões, postura, custo, risco residual. Auditores: evidências, método, definições, amostragem.
+
+**EX042.** "Ninguém pode dizer quando existirá um computador quântico capaz de quebrar a criptografia atual; as nossas prioridades foram escolhidas para continuar corretas, esteja isso a dez ou a vinte e cinco anos de distância."
+
+**EX043.** "Computadores quânticos futuros poderiam decifrar dados gravados hoje. Estamos protegendo primeiro os dados de vida mais longa e acompanhando o progresso trimestralmente."
+
+**EX044.** "A MTI exige assinaturas pós-quânticas para os documentos de apólice arquivados. Confirme, por favor, o suporte ao ML-DSA (NIST FIPS 204) e as datas de lançamento planejadas. Precisamos também de suporte à renovação dos carimbos de tempo dos documentos existentes. Forneça, por favor, um ambiente de teste até 31 de março. Contato: coordenador do programa de segurança."
+
+**EX045.** Explicar o HNDL: dados gravados com tempos de vida longos já estão expostos; mostrar que as prioridades se mantêm entre os cronogramas; oferecer opções em fases, com custos; registrar a decisão.
+
+**EX046.** Evidências vencidas; itens sem responsáveis; desconhecidos sem tarefas; Verificados sem evidência; exceções vencidas.
+
+**EX047.** "Primeira etapa: aguardando mais dados antes de ampliar. Segunda: é seguro ampliar. Terceira: uma falha num site está sendo investigada; esse site está pausado."
+
+**EX048.** Voltar o item para Em andamento; acrescentar uma reverificação automática mensal de todos os itens Verificados.
+
+**EX049.** Envolver os responsáveis certos; estabelecer o impacto; enviar a comunicação às partes interessadas; marcar o item como bloqueado, com o motivo, no rastreador (e registrar as lições).
+
+**EX050.** Proporção de itens sorteados cuja evidência coincide com o estado no rastreador = itens coincidentes / itens sorteados (por exemplo, 9/10 = 90 %), relatada mensalmente.
+
+**EX051.** Dia 1 escopo/autorização, inventário graduado; Dia 2 lista de prioridades e tabela de Mosca; Dia 3 planos dos itens, pedidos aos fornecedores, constatações; Dia 4 acompanhamento da implantação e tratamento do incidente; Dia 5 relatório e apresentação.
+
+**EX052.** Uma alegação de grau D não está verificada; gastar ou programar com base nela arrisca erro, então a próxima ação passa a ser a verificação, e não a migração.
+
+**EX053.** "Hoje, às 10:20, a proteção pós-quântica da API de cotação foi encontrada desativada após uma atualização. Sem indisponibilidade; as cotações continuam. A equipe da plataforma está restaurando a configuração agora. Próxima atualização até as 14:00."
+
+**EX054.** Exatidão do inventário e das prioridades; qualidade das constatações; tratamento de evidências; integridade do rastreador; comunicação e tratamento do incidente.
+
+**EX055.** "O que deu certo foi… Eu mudaria… A habilidade que preciso praticar é… Uma melhoria do fluxo de trabalho é… O meu próximo passo é…"
+
+**EX056.** Texto explicativo → comunicação correta (Cap. 1); CBOM graduada → método de inventário (Cap. 4); rastreador → fluxo de trabalho (Cap. 6); análise do caso → recomendação (Cap. 8); relatórios → comunicação por público (Cap. 9).
+
+**EX057.** Por evidência operacional datada — logs de negociação ou saída de ferramenta — de uma fonte nomeada, mostrando o controle em vigor, reverificada mensalmente.
+
+**EX058.** Escalar via compras/gestão de contas; manter o grau U; aplicar controles compensatórios sob uma exceção por tempo limitado; considerar fornecedores alternativos na renovação.
+
+**EX059.** Fontes: NIST CSRC, IETF datatracker, orientações setoriais; cadência: varredura mensal, atualização trimestral do texto explicativo; ações: atualizar a seção de normas e informar o patrocinador das mudanças de situação.
+
+**EX060.** Conduzir o relatório trimestral (demonstrado pelos relatórios do portfólio) e coordenar os questionários aos fornecedores (demonstrado pelas respostas pontuadas e pelo acompanhamento das dependências).
+
+## Rota de ensino de doze disciplinas
+
+Este é o curso **profissional** para quem conduz o fluxo de trabalho da migração na sintética **Marlow & Tide Insurance (MTI)**: fundamentos, contexto, evidências autorizadas, inventário, interpretação de ferramentas, fluxo de trabalho, controles e verificação, análise de caso, comunicação, qualidade e um laboratório supervisionado.
 
 <a id="references"></a>
 
