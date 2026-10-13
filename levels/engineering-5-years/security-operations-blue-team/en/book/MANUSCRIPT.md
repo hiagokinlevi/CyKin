@@ -1218,29 +1218,43 @@ You will (1) view the SOC as a system of people, process and technology; (2) def
 
 A SOC combines people (analysts, engineers), processes (triage, escalation) and technology (sensors, SIEM, case management). Zimmerman (2014) argued that many SOCs over-invest in tools and under-invest in people and process; systems thinking keeps them in balance.
 
+A new SIEM bought without analysts trained to use it, or without a triage process to receive its alerts, adds cost but little protection. Systems thinking asks how a change in one part affects the others: a new detection adds alerts, which adds analyst workload, which may need a process change. Amara learns to ask that chain of questions before proposing any tool.
+
 ### 16.2 Interfaces
 
 Each component exchanges something: sensors send events to the SIEM, the SIEM sends alerts to the case system, analysts send escalations to incident responders. Each interface needs a defined format, timing and owner.
+
+Most failures between teams happen at interfaces nobody owns. If the SIEM changes its alert format and nobody tells the case system's administrator, alerts may arrive with missing fields, or not at all. Writing down format, timing and owner for each interface turns an assumption into an agreement that can be checked, and gives someone the duty to notice when it breaks.
 
 ### 16.3 Requirements flow
 
 Top-level needs ("detect account takeover within 15 minutes") break down into component requirements: portal logs delivered within 2 minutes, rule latency under 5 minutes, analyst acknowledgement within 8 minutes.
 
+The parts add up: two minutes for delivery, five for the rule and eight for acknowledgement give exactly fifteen, which leaves no slack. If log delivery slips to four minutes, the whole target fails even though the rule and the analysts are on time. Paolo suggests tightening component budgets so the total leaves a margin, and monitoring each one separately.
+
 ### 16.4 Trade-offs
 
 More data improves visibility but costs storage and analyst attention. Systems engineers state criteria (detection time, cost, analyst load) and compare options against them.
+
+Stating criteria before comparing options stops people from picking the option they already liked and then finding reasons. Weights make priorities explicit: if detection time matters most, a costlier option that halves it may win. Amara builds a small table for adding depot network sensors, scoring each option on the agreed criteria with the evidence behind each score.
 
 ### 16.5 Lifecycle
 
 Components are planned, built, operated, maintained and retired. Retiring an old sensor needs a replacement first, or coverage silently disappears.
 
+Retirement is the phase most often neglected. A sensor switched off during a hardware refresh can leave a gap that nobody notices until an incident needs its data. Planning retirement means checking which rules depend on the component, confirming the replacement produces equivalent data, and running both in parallel for a short period before switching the old one off. Owners sign off each retirement.
+
 ### 16.6 Verification
 
 Each requirement has a test: a timed synthetic event checks that the 15-minute target is met end to end.
 
+The synthetic event is injected at the portal, as if from a real login burst, and timestamps are recorded at each stage: log arrival, rule firing, alert creation and analyst acknowledgement. Comparing the stage times with the component budgets shows exactly where delay occurs. The test runs regularly, not once, because performance drifts as volumes and staffing change. Missed targets open a ticket.
+
 ### 16.7 Case
 
 Amara draws Lindqvist's SOC as a block diagram and labels each interface with format, latency and owner.
+
+Drawing the diagram reveals two interfaces with no named owner: the feed from the load balancer and the link between the case system and the on-call paging service. It also shows that the portal logs pass through an intermediate collector that nobody had listed. Each gap becomes a task, and the diagram is stored with the SOC's architecture documents. Paolo reviews it with her.
 
 ### Failure modes of the system
 
@@ -1282,29 +1296,43 @@ You will (1) explain feedback loops in security operations; (2) model tuning as 
 
 A feedback loop measures an output and adjusts an input to reach a target. A thermostat measures temperature and switches heating. In a SOC, analysts measure alert quality and adjust rules.
 
+A loop has four parts: a target, a measurement, a comparison and an adjustment. If any part is missing, the loop does not work. Many SOCs have the adjustment, since engineers do tune rules, but lack a clear target or a reliable measurement, so tuning becomes a reaction to whichever complaint was loudest that week.
+
 ### 17.2 Tuning as control
 
 Suppose the target is fewer than 20 false alerts per day from a rule. If the measured count is higher, the threshold rises; if real attacks are missed, it falls. This is a control loop with the engineer as controller.
+
+The loop has two opposing pressures: false alerts push the threshold up, missed attacks push it down. A good controller balances both rather than reacting only to the more visible one. False alerts are seen every day by analysts, while misses may stay hidden, so engineers must deliberately look for misses or the threshold will drift upward over time.
 
 ### 17.3 Oscillation
 
 If adjustments are too large or too fast, the system overshoots: the threshold jumps up, misses an attack, jumps down, floods analysts. Small, measured steps with time to observe effects avoid oscillation.
 
+A thermostat that switched heating fully on and off at the slightest change would make a room swing between too hot and too cold. Rule tuning behaves the same way. Changing a threshold from five to six, then watching for a fortnight, gives clear evidence of the effect. Changing from five to fifteen and back within a week tells nobody anything.
+
 ### 17.4 Delay
 
 Feedback in SOCs is slow: the effect of a change on missed attacks may not be known for weeks. Long delays make aggressive tuning dangerous.
+
+A missed attack may surface only when a customer complains or when a later investigation finds earlier signs. If an engineer raises a threshold today, the cost of that change may not appear for a month. Faster signals, such as injected test events that should be caught, shorten the loop by showing immediately whether a change has opened a gap.
 
 ### 17.5 Positive feedback
 
 Some loops amplify: an overloaded queue makes analysts close alerts faster with less care, which hides misses, which leads to more silent compromise. Recognising such loops lets managers break them.
 
+The loop feeds itself: more silent compromises lead to more incidents later, which add more work, which increases the pressure to close alerts quickly. Breaking it might mean temporarily disabling low-value rules to give analysts time, or adding staff. Managers who track only queue length may see the queue shrink and believe things improved, while quality falls.
+
 ### 17.6 Measurement
 
 Feedback is only as good as its measurement. Labelled samples of closed alerts and periodic safe test events provide signals about misses.
 
+Labelled samples mean reviewing a random selection of closed alerts and checking whether the closing decision was right. That shows how often benign closures were actually wrong. Safe test events, injected without warning, show whether the full chain from sensor to analyst still works. Both give the loop data about misses, which ordinary alert counts cannot reveal. Both feed the monthly review.
+
 ### 17.7 Case
 
 Amara's portal rule threshold starts at 5 failures per 10 minutes; Paolo asks her to plan its tuning loop.
+
+Amara's plan names the target, at most a set number of false alerts per day with no missed test bursts; the measurements, daily counts and weekly injected bursts; the step size, one failure at a time; and the wait, two weeks between changes. Paolo approves it with one addition: any change and its result must be written in the rule's history. Amara starts the loop next Monday.
 
 ### Worked example
 
@@ -1342,29 +1370,43 @@ You will (1) describe security architecture as structured placement of controls;
 
 Security architecture decides where controls sit and how components trust each other. It is the structure that makes individual controls work together rather than a pile of products.
 
+Products bought separately may overlap in some areas and leave gaps in others. Architecture starts from the systems and data to protect, decides which controls each needs, and then chooses products to fill those roles. It also defines how the parts trust one another, such as which systems may send logs to the SIEM and how they prove who they are.
+
 ### 18.2 Zones and boundaries
 
 Lindqvist separates the internet-facing portal, internal business systems, the depot networks that run handheld scanners, and the SOC's own systems. Each boundary has rules about what may cross it. Boundaries are where monitoring is most informative, because legitimate traffic across them is limited and known.
+
+Inside a zone, many systems talk freely and traffic is hard to judge. At a boundary, only specific flows should pass: the portal may call the order system on one port, depots may send scan data to one server. Anything else crossing is suspicious by definition, which gives monitoring a clear baseline to compare against.
 
 ### 18.3 Sensor placement
 
 Sensors belong where they see relevant activity with little noise: at the web tier for the portal, at domain controllers for authentication, at the boundary between business and depot networks. Placing one large sensor at the internet edge sees much traffic but little context.
 
+An edge sensor sees every packet from the internet, most of it scanning noise, without knowing which customer account a request concerned. A sensor at the web tier sees the decrypted request and the username. Placing sensors where the meaning is available, rather than where the volume is highest, gives analysts fewer, richer events to work with.
+
 ### 18.4 Protecting the SOC
 
 The SIEM and case system are valuable targets: they show what defenders can see. They sit in their own zone with separate administrator accounts and multi-factor authentication.
+
+An attacker who controls the SIEM can see which alerts exist, learn which actions are being detected, or delete evidence. Separate administrator accounts mean a compromised staff account in the business zone cannot reach SOC systems. The SOC monitors its own systems too, with alerts on configuration changes and on logins from outside the SOC zone.
 
 ### 18.5 Mapping to threats
 
 Architects check each important ATT&CK technique against the architecture: which control prevents it, which sensor would see it, and which team would respond. Gaps become backlog items. D3FEND helps name the defensive technique each control provides.
 
+The exercise produces a table: each technique in a row, with columns for prevention, detection and response owner. Empty cells are gaps. Not every gap needs closing; some techniques are unlikely against Lindqvist, and the risk discussion decides priorities. D3FEND's names, such as credential hardening, make it easier to compare controls across products.
+
 ### 18.6 Simplicity
 
 Complex architectures hide gaps. Fewer, well-understood boundaries are easier to monitor.
 
+Each extra boundary needs its own rules, sensors and maintenance, and exceptions accumulate over time until nobody remembers why a flow is allowed. Merging zones that serve the same purpose can make monitoring clearer. Amara notes that Lindqvist has three slightly different depot network designs, which multiplies the work of defining normal traffic for each. She proposes one standard depot design, rolled out as each site's equipment is replaced, so the baseline only needs defining once.
+
 ### 18.7 Case
 
 Amara reviews where the portal's logs are produced and finds that the load balancer, which sees the true client addresses, was not forwarding its logs; the web servers saw only the balancer's address for some requests.
+
+Because the balancer replaced client addresses with its own for some requests, the web servers' logs showed many attempts from one internal address. Aggregating by network then grouped unrelated customers together and hid the real sources. Forwarding the balancer's logs, and configuring it to pass the original address in a header, fixes both the data and the rule's accuracy.
 
 ### Worked example
 
@@ -1402,29 +1444,43 @@ You will (1) explain authentication, authorisation and multi-factor methods; (2)
 
 Many attacks today use valid credentials rather than technical exploits. Authentication logs — successes, failures, MFA challenges, token issuance — are therefore among a SOC's most valuable data.
 
+With cloud services and remote work, there is no single network edge that all access crosses. Credentials are what grant access, so attackers buy, guess or steal them. Logs from identity systems show who tried to sign in, from where, with what result and which second factor was used, which makes them central to spotting misuse.
+
 ### 19.2 Authentication and authorisation
 
 Authentication proves who a user is; authorisation decides what they may do. The portal authenticates customers by password; Lindqvist staff use single sign-on with MFA. Authorisation logs show access to sensitive functions, such as changing a delivery address.
+
+A correct password satisfies authentication, but the portal still decides whether that customer may view a given order. Logs from each step answer different questions: authentication logs show who got in, authorisation logs show what they tried to do. An attacker who signs in successfully often shows up later in authorisation logs through unusual actions.
 
 ### 19.3 MFA signals
 
 MFA reduces credential-stuffing success. Its logs add signals: repeated MFA prompts denied by the user may indicate someone holding the password; a sudden change of MFA device warrants checking.
 
+Denied prompts suggest that the password is known to someone else, since the real user is refusing a sign-in they did not start. Repeated prompts sent in quick succession may be an attempt to wear the user down until they approve one. A new MFA device registered right after a sign-in from an unfamiliar place deserves prompt review.
+
 ### 19.4 Hashing
 
 A cryptographic hash gives a fixed-length fingerprint of data. SOCs use hashes to identify files and verify that exported evidence is unchanged. Passwords should be stored using slow, salted password-hashing functions so stolen databases resist cracking.
+
+A file hash lets analysts search across many machines for the same file without moving the file itself. Exported evidence hashed at export can be checked later by anyone. Password hashing is different: functions designed to be slow and salted make each guess expensive, so a stolen database cannot be checked against billions of guesses quickly.
 
 ### 19.5 Encryption and signatures
 
 Encryption protects confidentiality in transit (TLS) and at rest. Digital signatures prove origin and integrity: signed software, signed log batches. Signed load-test tools, as in chapter 14, let rules make reliable exceptions.
 
+Encryption in transit stops someone on the network from reading logins; encryption at rest protects stored data if a disk is stolen. Signatures answer a different question: did this come from who it claims, unchanged? A rule can safely exclude load tests from a tool whose signature verifies, while still alerting on an unsigned copy using the same name.
+
 ### 19.6 Identity attacks seen defensively
 
 Credential stuffing, password spraying and token theft all leave traces in identity logs. The defender's job is to collect those logs and know normal patterns, not to reproduce the attacks.
 
+Credential stuffing tries leaked username and password pairs across many accounts; password spraying tries a few common passwords against many accounts; token theft reuses a session token without needing the password at all. Each pattern looks different in logs, and detections are built from those defensive views using synthetic data rather than from live attempts.
+
 ### 19.7 Case
 
 After the incident, Lindqvist offers customers optional MFA and alerts on address changes immediately after a login from a new network.
+
+Optional MFA protects customers who choose it; the address-change alert protects everyone, because a change of delivery address is often what an attacker wants after entering an account. The alert combines two signals, a new network and a sensitive change, which keeps false alarms low. The security team plans to review uptake of MFA after six months. Customers are told how to enable it.
 
 ### Worked example
 
@@ -1462,29 +1518,43 @@ You will (1) describe the SOC's mission and services in engineering terms; (2) r
 
 Knerler, Parker and Zimmerman (2022) open with "know what you are protecting and why". Lindqvist protects customer data, delivery operations and payment flows. Engineering choices follow from that mission, not from tool features.
 
+Starting with tools leads to collecting whatever the tool supports. Starting with the mission leads to asking what harm would matter most: stolen customer data, stopped deliveries or diverted payments. Those answers decide which systems need the best coverage and which alerts deserve a page at night, so engineering effort follows business impact.
+
 ### 20.2 SOC services
 
 Lindqvist's SOC provides monitoring and triage, incident response coordination, detection engineering, vulnerability intake and threat intelligence consumption. Each service has customers inside the company and measurable outputs.
+
+Treating each as a service clarifies who it serves and how to measure it. Monitoring serves the whole company and is measured by detection and response times; detection engineering serves the analysts and is measured by rule quality; vulnerability intake serves IT teams and is measured by how quickly reports reach owners. Unclear services tend to drift into unplanned work.
 
 ### 20.3 Constraints
 
 Budget, staff numbers, regulation and legacy systems constrain design. The depot scanners run old software that cannot host agents, so network monitoring must cover them.
 
+Constraints are design inputs, not excuses. Old scanner software that cannot run an agent rules out endpoint telemetry, so the design shifts to observing scanner traffic on the depot network. Budget may limit sensors to the busiest depots first. Regulation may require keeping certain logs for set periods. Each constraint is written down so later readers understand the design.
+
 ### 20.4 Stakeholders
 
 The CISO sets priorities; IT operations own systems; legal and privacy staff set limits; business units feel the impact of response actions. SOC engineers must work with all of them.
+
+IT operations may resist a sensor that could slow their systems; legal staff may limit what content can be collected; business units may object to an account lock during peak delivery hours. Engineers who involve them early hear these concerns while design is still flexible. Amara keeps a stakeholder list with what each group cares about most.
 
 ### 20.5 Engineering problems ahead
 
 The course follows four problems at Lindqvist: detecting account takeover on the portal; monitoring depot networks without agents; keeping the SIEM within capacity; and proving the SOC works through verification.
 
+Each problem draws on different skills: account takeover on identity data and statistics, depot monitoring on networks and architecture, SIEM capacity on data systems and maths, and verification on testing and measurement. Following the same company through all four lets the course show how decisions in one area, such as storage tiering, constrain options in another.
+
 ### 20.6 Maturity
 
 The SOC-CMM (van Os, 2016) assesses business, people, process, technology and services. Lindqvist's self-assessment shows strong technology but weak process documentation, guiding priorities.
 
+A maturity model gives a structured way to see strengths and weaknesses across a whole SOC. Strong technology with weak process documentation means tools work but outcomes depend on which analyst is on shift. The self-assessment suggests writing playbooks before buying more tools, and it gives a baseline to repeat later and show progress. The assessment is repeated each year by the same method.
+
 ### 20.7 Measures of success
 
 Success is not "no incidents" but faster detection, better decisions and less harm.
+
+A quiet year may mean nothing happened, or that nothing was detected; the two look the same in an incident count. Better measures include time from first evidence to detection, time to containment, and how often response decisions were later judged correct. Lindqvist's SOC reports these monthly, alongside honest notes on any missed detection. Each measure has a stated target, and trends over several months matter more than any single month's figure, which can swing with one large incident.
 
 ### Funding the SOC
 
