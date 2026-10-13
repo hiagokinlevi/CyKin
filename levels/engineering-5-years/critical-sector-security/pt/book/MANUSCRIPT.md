@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–34 de 50 já estão escritos em português, com os exercícios EX001–EX068 e suas resoluções; os capítulos 35–50 (EX069–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–39 de 50 já estão escritos em português, com os exercícios EX001–EX078 e suas resoluções; os capítulos 40–50 (EX079–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -69,10 +69,15 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 32. [Infraestrutura crítica e segurança setorial: confiabilidade](#ch-32)
 33. [Infraestrutura crítica e segurança setorial: segurança operacional e resiliência](#ch-33)
 34. [Infraestrutura crítica e segurança setorial: integração](#ch-34)
+35. [Ateliê de projeto II](#ch-35)
+36. [Infraestrutura crítica e segurança setorial: desempenho e escala](#ch-36)
+37. [Infraestrutura crítica e segurança setorial: operações](#ch-37)
+38. [Infraestrutura crítica e segurança setorial: validação](#ch-38)
+39. [Infraestrutura crítica e segurança setorial: manutenibilidade](#ch-39)
 
-Capítulos 35–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-35), até a chegada dos próximos lotes.
+Capítulos 40–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-40), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX068. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX078. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -2616,7 +2621,342 @@ Integre de forma incremental, com testes de interface e cenários do sistema int
 <!-- cyberabc:chapter-navigation:start ch-34 -->
 ### Continue estudando — capítulo 34 de 50
 
-[← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 (inglês) →](../../en/book/MANUSCRIPT.md#ch-35)
+[← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) levar um projeto do conceito ao projeto detalhado, com justificativa quantitativa; (2) integrar as análises de confiabilidade, segurança operacional, segurança da informação, desempenho e custo num único argumento; (3) construir um argumento de garantia estruturado que ligue alegações a evidências; e (4) defender decisões de projeto detalhado sob revisão. Ele integra os capítulos 26 a 34 e prepara os capítulos 36 a 40.
+
+### 35.1 Do conceito ao projeto detalhado
+
+O Ateliê I selecionou um conceito. O Ateliê II o detalha: componentes, configurações, interfaces, procedimentos e verificação específicos. Todos os números dos capítulos anteriores voltam: tempos de autonomia (capítulos 1 e 6), dimensionamento das baterias (Capítulo 3), taxas-base (Capítulo 7), latência (Capítulo 11), árvore de falhas (Capítulo 23), métricas de detecção (Capítulo 29), disponibilidade (Capítulo 32), filas (prévia do Capítulo 36). Um projeto detalhado é coerente quando esses números são consistentes entre si e com os requisitos. Para o TMRP, o dimensionamento das baterias, as 72 horas de operação automática local, a reserva de quatro horas do hospital e o tempo de recuperação precisam contar a mesma história; o EX069 mostra o que acontece quando um deles não conta.
+
+### 35.2 Argumentos de garantia
+
+Um **caso de garantia** é um argumento estruturado de que um sistema atende a uma alegação, apoiado em evidências. Ele tem uma alegação de topo ("o TMRP mantém o hospital abastecido em cenários críveis, incluindo a falsificação de comandos remotos"), subalegações (cada requisito atendido; riscos residuais aceitáveis), argumentos (por que as subalegações apoiam a alegação) e evidências (resultados de testes, análises, revisões). O modelo de argumentação de Toulmin — alegação, dados, garantia, respaldo, qualificador, refutação ([Toulmin, 1958/2003](https://doi.org/10.1017/CBO9780511840005)) — é uma lente útil: que evidência apoia a alegação, por que ela é pertinente e o que a derrotaria. **Derrotadores** explícitos ("a menos que o centro SCADA esteja comprometido") mantêm o argumento honesto.
+
+### 35.3 Enunciado do Ateliê II (sintético)
+
+Produza o projeto detalhado da fase 1 do TMRP (PS2, PS3, PS4 e Hollin Hill): lista de componentes com seus recursos de segurança; listas de permissões de zonas e condutos; procedimento de gestão de chaves; procedimentos de manual local e de failover; racionalização dos novos alarmes de segurança; plano de verificação; e um caso de garantia para a alegação de topo, com pelo menos quatro subalegações e derrotadores identificados. O enunciado cobre os quatro ativos que mais importam para St Brenna's: a PS2 como piloto comprovado, a PS3 e Hollin Hill como o caminho do reservatório e a PS4 como a alimentação direta. As demais estações e a estação de tratamento de Fenwick vêm em fases posteriores, então o caso de garantia da fase 1 precisa dizer claramente que ainda não as cobre.
+
+### 35.4 Exemplo resolvido: um ramo do caso de garantia (sintético)
+
+*Subalegação C2:* comandos remotos forjados não podem causar a perda do abastecimento do hospital. *Argumento:* os comandos exigem um MAC válido por estação (R1) e um contador novo (R2); mesmo comandos aceitos não conseguem levar o processo além dos limites locais (R3); a perda dos dois caminhos de abastecimento exige, além disso, que o tanque do hospital falhe (árvore de falhas). *Evidências:* T1 e T2 aprovados (bancada e aceitação em campo na PS2); T3 aprovado na v2; análise de condicionamento do Laboratório 9; revisão independente da gestão de chaves. *Derrotadores:* (D1) servidores SCADA comprometidos — os comandos são autênticos; mitigado pelos limites locais e pela aprovação por duas pessoas de mudanças em massa, residual aceito pela diretora de operações; (D2) chave de uma estação extraída de uma RTU roubada — confinado a uma estação, detecção pelo alarme de violação, procedimento de rotação. *Qualificador:* a alegação vale para os cenários do registro de riscos v1.2; não para um ataque físico às duas estações de bombeamento.
+
+### 35.5 Atividade prática
+
+Escreva o caso de garantia completo para o enunciado do Ateliê II e apresente-o a uma banca instruída a encontrar derrotadores. Dê à banca o enunciado, sua lista de componentes e o caso de garantia, e peça que encontrem o que derrotaria cada subalegação. Registre todo derrotador encontrado, quer você já o tivesse listado ou não, e escreva uma resposta: evidência que o trate, uma mudança de projeto ou uma aceitação explícita com um dono. Derrotadores como um centro SCADA comprometido ou a chave de uma RTU roubada são esperados; o trabalho da banca é encontrar os que você deixou passar, como o uso indevido do modo manual local.
+
+### 35.6 Erros comuns e limites
+
+- Números inconsistentes entre as análises.
+- Casos de garantia com alegações e sem evidências, ou com evidências e sem argumento.
+- Derrotadores omitidos para que o caso pareça mais forte.
+- Projeto detalhado que muda os requisitos em silêncio.
+
+O EX069 é um exemplo do primeiro erro dentro do próprio TMRP: R6 pede oito horas, mas o ensaio de recuperação mediu doze. Um caso que alegasse R6 citando o ensaio seria inconsistente, então o caso registra R6 como não atendido e explica por que a alegação sobre o hospital ainda pode se sustentar graças à operação automática local.
+
+### Exercícios — capítulo 35
+
+**EX069 — Verificação de consistência.** *Objetivo:* encontrar inconsistências entre as análises. *Entradas:* autonomia das baterias da PS4 de 24 h (R5); reserva do hospital de 4 h; R6 restaurar a operação remota em 8 h; o ensaio do Capítulo 47 mostra 12 h. *Passos:* identifique quais alegações conflitam e o que o conflito significa para o caso de garantia. *Evidência esperada:* análise. *Rubrica:* 3 = identifica que R6 não é atendido (12 > 8), que o abastecimento não depende da operação remota (automático local), de modo que a alegação sobre o hospital ainda pode se sustentar, e que o caso precisa registrar R6 como reprovado, com plano; 2 = parcial; 1 = não percebe R6; 0 = nada.
+
+**EX070 — Encontre um derrotador.** *Objetivo:* contestar um argumento. *Entradas:* a subalegação C2 da §35.4. *Passos:* proponha mais dois derrotadores não listados e a evidência ou mudança de projeto que trataria cada um. *Evidência esperada:* dois derrotadores com respostas. *Rubrica:* 3 = derrotadores críveis (p. ex., uso indevido do modo manual local por um insider; caminho de atualização do firmware do gateway comprometido; falha na persistência do contador) com respostas específicas; 2 = um fraco; 1 = repete os listados; 0 = nada.
+
+### Síntese do capítulo
+
+O projeto detalhado faz com que todos os números anteriores se encontrem. Um caso de garantia liga a alegação de topo às evidências por meio de argumentos explícitos, com qualificadores e derrotadores declarados abertamente. A consistência entre as análises e a honestidade sobre os derrotadores são o que torna um projeto detalhado defensável.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — capítulo 35 de 50
+
+[← Capítulo 34](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Infraestrutura crítica e segurança setorial: desempenho e escala
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) modelar vazão, latência e utilização com a teoria das filas e a lei de Little; (2) estimar o custo de desempenho dos controles de segurança; (3) dimensionar sistemas para condições de pico e degradadas, incluindo a carga induzida por ataques; e (4) projetar para a escala — frotas de milhares de dispositivos — na gestão de chaves, no monitoramento e nas atualizações. Ele se apoia nos capítulos 11, 19 e 34 e prepara o Capítulo 41.
+
+### 36.1 Filas por toda parte
+
+As mensagens esperam em filas nos gateways, nos servidores e nos enlaces. A [lei de Little](https://doi.org/10.1287/opre.9.3.383), $L = \lambda W$, relaciona o número médio no sistema $L$, a taxa de chegada $\lambda$ e o tempo médio no sistema $W$, sob condições muito gerais. Para o modelo simples M/M/1 (chegadas aleatórias, serviço exponencial, um servidor com taxa de serviço $\mu$), a utilização é $\rho = \lambda/\mu$ e $W = 1/(\mu - \lambda)$. O atraso cresce sem limite quando $\rho \to 1$: com 80% de utilização, a mensagem média passa cinco tempos de serviço no sistema; com 96%, vinte e cinco. Dimensione para que a utilização de pico fique bem abaixo de 1 — em geral abaixo de 0,7 nos caminhos críticos para a latência.
+
+### 36.2 O custo da segurança
+
+Todo controle custa algo: bytes (os 22 bytes de sobrecarga do Laboratório 8), CPU (cálculo do MAC, handshakes TLS), latência (decisões de política, inspeção) e tempo dos operadores (nova autenticação, aprovações). Meça-os na bancada. Os custos costumam ser pequenos em relação às idas e voltas da rede, mas importam em enlaces restritos (rádio de baixa largura de banda), em dispositivos restritos (microcontroladores pequenos) e em escala. Para o TMRP, os custos medidos incluem os vinte e dois bytes extras por quadro, o cálculo do MAC de cada mensagem no verificador do lado do SCADA e o tempo dos operadores na aprovação por duas pessoas de mudanças de setpoint em massa. Nenhum é grande, mas é o limite de vazão do verificador que o exemplo resolvido precisa dimensionar.
+
+### 36.3 Carga de pico, degradada e de ataque
+
+Dimensione para a pior carga crível: inundações de alarmes em tempestades, rajadas de reconexão após quedas (Capítulo 34), recuperação do atraso após failover e inundações deliberadas. Um atacante que consiga enviar tráfego a um gateway pode empurrar a utilização para perto de 1 e atrasar alarmes legítimos; as defesas incluem limites de taxa por origem, filas com prioridade para os alarmes, rejeição precoce do tráfego não autenticado (faça primeiro a verificação barata) e margens de capacidade. Para o TMRP, a rajada de reconexão encontrada nos testes de integração é o exemplo mais claro, e a fila com prioridade para alarmes no verificador é a defesa escolhida no exemplo resolvido.
+
+### 36.4 Escala
+
+Na escala de frota, os processos manuais falham. O cadastro, a rotação e a revogação de chaves precisam ser automatizados, com auditoria; o monitoramento precisa agregar e priorizar; as atualizações precisam ser feitas em etapas e ser observáveis; o inventário precisa ser conciliado continuamente. Um procedimento que leva 30 minutos por dispositivo consome três semanas de trabalho da equipe para mil dispositivos. A LRWA tem hoje apenas 42 estações de campo, mas o mesmo projeto pode depois ser usado numa frota muito maior, então o TMRP automatiza desde o início os registros de cadastro e rotação de chaves, em vez de depender de uma planilha mantida por um único engenheiro.
+
+### 36.5 Exemplo resolvido: dimensionamento do gateway (sintético)
+
+O verificador do lado do SCADA consegue processar 50 mensagens/s. Em regime permanente, as 42 estações da LRWA geram cerca de 20 mensagens/s ($\rho = 0.4$, $W \approx 33$ ms). Durante uma tempestade, os alarmes elevam as chegadas a 40/s ($\rho = 0.8$, $W = 100$ ms, cerca de 4 mensagens no sistema). Com 48/s, $W = 500$ ms e há em média 24 mensagens no sistema. A varredura sequencial de 42 estações, com 180 ms de ida e volta mais o tempo dos registradores, leva 7,8 s por ciclo; seis canais paralelos a reduzem a 1,3 s. Decisões: capacidade do verificador dobrada para 100 mensagens/s, por folga; fila com prioridade para os alarmes; relato por exceção para os alarmes, em vez de esperar pela varredura.
+
+### 36.6 Atividade prática: Laboratório 13
+
+```python
+# Lab 13 - is the telemetry gateway fast enough? M/M/1 and a polling cycle (synthetic, offline)
+mu = 50.0                                    # messages/s the gateway can verify and forward
+for lam in (20.0, 40.0, 45.0, 48.0):
+    rho = lam / mu; W = 1 / (mu - lam); L = lam * W
+    print(f"lambda={lam:>4} rho={rho:.2f} W={W*1000:6.1f} ms L={L:5.1f} msgs")
+stations, regs_per_poll, rtt_ms, per_reg_ms = 42, 3, 180, 2
+cycle = stations * (rtt_ms + regs_per_poll * per_reg_ms)
+print(f"sequential polling cycle: {cycle/1000:.2f} s; with 6 parallel channels: {cycle/6/1000:.2f} s")
+```
+
+Saída esperada:
+
+```text
+lambda=20.0 rho=0.40 W=  33.3 ms L=  0.7 msgs
+lambda=40.0 rho=0.80 W= 100.0 ms L=  4.0 msgs
+lambda=45.0 rho=0.90 W= 200.0 ms L=  9.0 msgs
+lambda=48.0 rho=0.96 W= 500.0 ms L= 24.0 msgs
+sequential polling cycle: 7.81 s; with 6 parallel channels: 1.30 s
+```
+
+As quatro primeiras linhas mostram o atraso crescendo bruscamente à medida que as chegadas se aproximam da capacidade do verificador, de cinquenta mensagens por segundo: com vinte mensagens por segundo, a mensagem média espera cerca de um terço de décimo de segundo, enquanto com quarenta e oito espera meio segundo e há duas dúzias de mensagens no sistema. As linhas da varredura mostram por que a LRWA usa seis canais paralelos: um ciclo sequencial de quase oito segundos deixaria os alarmes esperando muito antes de chegarem ao verificador.
+
+### 36.7 Erros comuns e limites
+
+- Dimensionar para a carga média.
+- Ignorar que o atraso explode perto da utilização plena.
+- Supor que os custos de segurança são desprezíveis sem medi-los no dispositivo-alvo.
+- Procedimentos manuais que não escalam.
+- M/M/1 usado onde as chegadas são em rajadas ou o serviço é determinístico; trate-o como uma primeira aproximação.
+
+O dimensionamento do TMRP evita os dois primeiros erros dimensionando para a carga de tempestade e mantendo o verificador dobrado bem abaixo da utilização plena, e trata os resultados de filas como uma primeira aproximação a ser conferida com as medições de bancada.
+
+### Exercícios — capítulo 36
+
+**EX071 — Dobrar a capacidade.** *Objetivo:* quantificar a folga. *Entradas:* Laboratório 13 com $\mu = 100$. *Passos:* calcule $\rho$, $W$ e $L$ a 20, 40 e 48 mensagens/s; compare com $\mu = 50$. *Evidência esperada:* tabela. *Rubrica:* 3 = valores corretos (p. ex., a 48/s: ρ = 0,48, W ≈ 19,2 ms, L ≈ 0,92) e conclusão; 2 = um erro; 1 = uma única taxa; 0 = nada.
+
+**EX072 — Defesa contra inundações.** *Objetivo:* projetar contra a carga de ataque. *Entradas:* um atacante na rede LTE consegue enviar 1.000 quadros forjados/s ao verificador. *Passos:* proponha três defesas em ordem de custo e explique como cada uma protege a latência dos alarmes. *Evidência esperada:* lista. *Rubrica:* 3 = filtragem no nível da rede por origem/túnel, verificações prévias baratas antes do MAC, limites de taxa por origem e filas com prioridade, com raciocínio sobre onde a carga é descartada; 2 = uma defesa; 1 = apenas "acrescentar capacidade"; 0 = nada.
+
+### Síntese do capítulo
+
+As filas governam a latência; a lei de Little e os modelos de filas simples mostram que o atraso explode à medida que a utilização se aproxima de um. Meça os custos dos controles de segurança, dimensione para a carga de pico, degradada e de ataque, com prioridade para os alarmes, e automatize desde o início os processos na escala de frota.
+
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — capítulo 36 de 50
+
+[← Capítulo 35](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Infraestrutura crítica e segurança setorial: operações
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) projetar as operações de segurança para TO — monitoramento, triagem, escalonamento, coordenação com as operações do processo; (2) escrever procedimentos operacionais e playbooks que os operadores consigam executar sob estresse; (3) gerenciar mudanças, acessos e vulnerabilidades nas operações diárias; e (4) aprender com incidentes e quase acidentes sem atribuir culpa. Ele se apoia nos capítulos 18, 29 e 34 e prepara os capítulos 38 e 47.
+
+### 37.1 Operações de segurança em TO
+
+O monitoramento de segurança de TO observa o tráfego de rede, os logs e os dados do processo em busca de sinais de uso indevido. A triagem em TO difere da de TI: a primeira pergunta não é "isto é malicioso?", mas "o processo está seguro?". Os caminhos de escalonamento, portanto, vão até a sala de controle e o gerente de operações de plantão, além da equipe de segurança. Muitas concessionárias não têm uma equipe de segurança 24/7; a sala de controle tem pessoal 24/7 e precisa conseguir agir sobre os alarmes de segurança com playbooks claros, escalonando para especialistas de segurança de sobreaviso.
+
+### 37.2 Playbooks
+
+Um playbook é um procedimento curto e testado para uma situação específica: gatilho, ações imediatas de segurança operacional, informações a coletar, decisões e quem as toma, comunicações e retorno à normalidade. Escreva para um operador cansado às 03:00: passos numerados, pontos de decisão claros, números de telefone, nada de jargão. Teste cada playbook em exercícios e atualize-o depois de cada uso. Orientações de tratamento de incidentes como a [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) fornecem a estrutura geral; os playbooks de TO acrescentam passos de segurança do processo. O playbook da LRWA para uma mudança inesperada de setpoint é escrito segundo esse padrão.
+
+### 37.3 Gestão de mudanças, acessos e vulnerabilidades
+
+As operações diárias mantêm o sistema no estado projetado: gestão de mudanças (nenhuma mudança de configuração sem aprovação e registro); gestão de acessos (admissões, transferências, desligamentos; sessões de fornecedores aprovadas a cada uso); gestão de vulnerabilidades (acompanhar alertas como os [ICS advisories da CISA](https://www.cisa.gov/news-events/ics-advisories), avaliar a aplicabilidade, planejar a correção, Capítulo 12). A deriva — mudanças não documentadas que se acumulam — é o modo mais comum de um sistema bem projetado se tornar inseguro. Na LRWA, o script de relatório corporativo esquecido, encontrado na revisão de fluxos, é um exemplo de deriva, e o controle de mudanças em cada conduto é o modo como o TMRP impede que esses caminhos reapareçam.
+
+### 37.4 Aprender sem culpa
+
+Incidentes e quase acidentes são evidências sobre o sistema. [Reason (2000)](https://doi.org/10.1136/bmj.320.7237.768) contrastou a abordagem da pessoa (culpar indivíduos) com a abordagem do sistema (defesas, barreiras e condições latentes), argumentando que a segunda é mais eficaz. As revisões pós-ação perguntam o que aconteceu, por que aquilo fazia sentido para as pessoas envolvidas no momento, quais defesas funcionaram ou falharam e o que vai mudar. A culpa suprime o relato, e quase acidentes não relatados são lições perdidas. Na LRWA, o técnico que conectou um laptop à rede da PS3 no EX074 é tratado desse modo: a revisão pergunta por que o jump host parecia lento demais e o que tornou o atalho possível.
+
+### 37.5 Exemplo resolvido: playbook "mudança inesperada de setpoint" (sintético)
+
+*Gatilho:* o SCADA mostra uma mudança de setpoint em qualquer estação que não corresponde a uma ação de operador nos últimos 5 minutos, ou um gateway registra falhas repetidas de MAC. *Ações imediatas de segurança operacional:* (1) confira os valores do processo da estação com as medições independentes; (2) se estiverem fora da faixa normal, restaure localmente o setpoint anterior ou passe para o manual local por meio do técnico de plantão; (3) não desligue a telemetria remota. *Coletar:* estação, horário, valores antigo/novo, trecho do log do gateway, log do operador. *Decidir:* o gerente de plantão decide se desativa as escritas remotas em toda a frota (chave de configuração dos gateways). *Comunicar:* segurança de sobreaviso em até 30 minutos; contato com o hospital se a PS3/PS4 forem afetadas. *Retorno à normalidade:* as escritas remotas só são reativadas depois que a segurança de sobreaviso concordar.
+
+### 37.6 Atividade prática
+
+Execute o playbook num exercício de mesa com uma sequência roteirizada de injeções (primeiro uma única mudança de setpoint, depois falhas de MAC numa segunda estação, depois um telefonema do hospital sobre pressão baixa). Registre os tempos de decisão e as ambiguidades e revise o playbook. Execute as injeções em ordem e anote o horário de cada decisão. Observe em especial se a equipe mantém a telemetria remota funcionando, como o playbook exige, e se o gerente de plantão decide sobre a desativação das escritas remotas em toda a frota antes que chegue o telefonema do hospital. Registre cada ponto em que alguém perguntou o que o playbook queria dizer. Depois do exercício, reescreva esses passos e agende uma segunda execução para conferir as revisões.
+
+### 37.7 Erros comuns e limites
+
+- Alarmes de segurança encaminhados a uma equipe que não está de serviço quando eles disparam.
+- Playbooks escritos para especialistas, nunca testados.
+- Gestão de mudanças contornada "temporariamente".
+- Revisões pós-ação que terminam com "erro do operador".
+
+O projeto do playbook da LRWA responde a esses erros: os alarmes de segurança chegam à sala de controle, que tem pessoal a todo momento, e a segurança de sobreaviso é chamada em até 30 minutos. O playbook é testado em exercícios de mesa, e o controle de mudanças não tem exceções temporárias. As revisões pós-ação na LRWA buscam condições latentes, como um jump host lento, em vez de terminar com erro do operador.
+
+### Exercícios — capítulo 37
+
+**EX073 — Revisão do playbook.** *Objetivo:* melhorar um playbook. *Entradas:* §37.5. *Passos:* identifique três fraquezas (p. ex., limiares ambíguos, contatos ausentes, padrão inseguro) e reescreva os passos afetados. *Evidência esperada:* passos revisados. *Rubrica:* 3 = fraquezas substantivas corrigidas com passos executáveis; 2 = mudanças cosméticas; 1 = apenas crítica; 0 = nada.
+
+**EX074 — Revisão de quase acidente.** *Objetivo:* conduzir uma revisão sem culpa. *Entradas:* um técnico conectou um laptop à rede de controle da PS3 para baixar logs, contornando o jump host; o laptop não tinha sido verificado. Nenhum incidente se seguiu. *Passos:* escreva uma revisão de uma página: o que aconteceu, por que fazia sentido, defesas que falharam, mudanças no sistema. *Evidência esperada:* revisão. *Rubrica:* 3 = explica a racionalidade local (jump host lento, prazo), identifica condições latentes (sem segurança de porta, sem caminho fácil para os logs), propõe mudanças no sistema; 2 = alguma culpa; 1 = "treinar de novo o técnico"; 0 = nada.
+
+### Síntese do capítulo
+
+As operações de segurança de TO começam pela segurança do processo e encaminham o escalonamento pela sala de controle. Os playbooks precisam ser curtos, testados e executáveis sob estresse. A gestão diária de mudanças, acessos e vulnerabilidades mantém o sistema como projetado, e o aprendizado sem culpa com incidentes e quase acidentes melhora as defesas.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — capítulo 37 de 50
+
+[← Capítulo 36](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Infraestrutura crítica e segurança setorial: validação
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) distinguir a validação (o sistema certo para a necessidade) da verificação (o sistema construído segundo sua especificação); (2) validar com as partes interessadas por meio de demonstrações, ensaios operacionais e exercícios; (3) usar a rastreabilidade para mostrar quais necessidades estão apoiadas em evidências e quais não estão; e (4) relatar os resultados da validação com honestidade, incluindo os resultados parciais. Ele se apoia nos capítulos 16, 24 e 30 e prepara os capítulos 40 e 48.
+
+### 38.1 Verificação não é validação
+
+Um sistema pode passar em todos os testes contra sua especificação e ainda assim falhar com seus usuários, se a especificação estava errada ou incompleta. A validação pergunta se o sistema atende às necessidades das partes interessadas no ambiente pretendido: os operadores conseguem de fato operar o modo manual local à noite? O hospital de fato recebe água dentro de sua reserva quando a PS4 é perdida? As evidências de validação vêm do uso realista: ensaios operacionais, demonstrações com as partes interessadas, exercícios e os primeiros dados de operação. Para o TMRP, o exercício noturno do modo manual local é a atividade de validação que responde à primeira pergunta.
+
+### 38.2 A rastreabilidade como mapa de evidências
+
+Rastreie as necessidades até os requisitos, os testes e os resultados. Depois faça três perguntas: quais requisitos não têm teste (alegações não testadas)? Quais testes falharam ou não foram executados (alegações sem apoio)? Quais necessidades dependem apenas de requisitos ainda não verificados (necessidades não validadas)? O Laboratório 14 calcula isso para o dossiê do TMRP. Para o TMRP, as perguntas são concretas. R4 não tem teste porque sua demonstração nunca foi agendada. R9, o alarme de dosagem independente, não tem teste algum: a tabela de requisitos indica um teste como seu método de verificação, mas nenhum teste jamais foi escrito para ele. O único teste registrado de R3 é o reprovado na v1, e o teste de R8 não foi executado. N1 depende de R4, então não pode ser alegada como validada até que o exercício noturno aconteça. O Laboratório 14 imprime essas lacunas diretamente.
+
+### 38.3 Validação com as partes interessadas
+
+Envolva as pessoas a quem o sistema serve. Os operadores validam os procedimentos e as telas; a equipe de manutenção valida a reparabilidade e as peças de reposição; o hospital valida que os arranjos de abastecimento atendem às suas necessidades; os reguladores validam o raciocínio de conformidade. Registre as constatações deles como registraria as constatações de uma revisão, com respostas. Para o TMRP, os operadores validam o procedimento manual local e os novos alarmes de segurança, a equipe de manutenção confere que os gateways podem ser substituídos a partir das reservas, e o hospital confirma que os arranjos de abastecimento e sua reserva de quatro horas atendem às suas necessidades. As constatações deles vão para o mesmo registro de respostas das constatações da revisão de projeto.
+
+### 38.4 Relatar resultados parciais
+
+Relate a situação da validação por necessidade: validada, parcialmente validada (com o que falta), não validada. Não arredonde para cima. "N1 parcialmente validada: o ensaio de perda da PS4 atendeu à reserva de 4 h; a perda combinada da PS4 e do alimentador F1 da rede elétrica ainda não foi ensaiada." O mapa de evidências do TMRP torna isso concreto: N1 depende de R4, que ainda não foi demonstrado, então N1 é relatada como não validada até que o exercício noturno aconteça, mesmo que a maioria de seus outros requisitos tenha passado nos testes. A situação é atualizada depois do exercício.
+
+### 38.5 Exemplo resolvido: mapa de evidências do TMRP (sintético)
+
+O Laboratório 14 mostra: R4 (operação manual local) não tem teste — foi planejado como demonstração e nunca agendado; R3 tem um teste reprovado (na v1; o novo teste na v2 ainda não foi lançado na matriz); o teste T6 de R8 não foi executado. R9 (alarme de dosagem independente) também não tem teste: seu método de verificação é "Teste", mas nenhum identificador de teste foi jamais atribuído, então a evidência para ele é uma intenção de projeto, e não um resultado. Verificados: 5 de 9 requisitos (55,6%). Consequência para a validação: N1 (abastecimento do hospital) depende de R4, então N1 não pode ser alegada como validada; o exercício noturno do manual local é agendado como a atividade de validação. A matriz também expõe uma lacuna administrativa — o novo teste do T3 na v2 precisa ser registrado —, exatamente o tipo de inconsistência que examinadores e auditores encontram.
+
+### 38.6 Atividade prática: Laboratório 14
+
+```python
+# Lab 14 - requirements traceability: what is claimed but not shown? (synthetic TMRP dossier, offline)
+REQS = ["R1 auth telemetry", "R2 replay reject", "R3 setpoint bounds", "R4 local manual", "R5 24h hold-up",
+        "R6 restore 8h", "R7 alarm 60s", "R8 log integrity", "R9 dosing alarm"]
+TESTS = {"T1": ["R1"], "T2": ["R1", "R2"], "T3": ["R3"], "T4": ["R5"], "T5": ["R7"], "T6": ["R8"], "T7": ["R6"]}
+RESULT = {"T1": "pass", "T2": "pass", "T3": "fail", "T4": "pass", "T5": "pass", "T6": "not run", "T7": "pass"}
+ids = [r.split()[0] for r in REQS]
+cov = {r: [t for t, rs in TESTS.items() if r in rs] for r in ids}
+verified = [r for r in ids if cov[r] and all(RESULT[t] == "pass" for t in cov[r])]
+print("untested:", [r for r in ids if not cov[r]])
+print("tested but not passing:", [r for r in ids if cov[r] and r not in verified])
+print(f"verified {len(verified)}/{len(ids)} = {100*len(verified)/len(ids):.1f}%")
+```
+
+Saída esperada:
+
+```text
+untested: ['R4', 'R9']
+tested but not passing: ['R3', 'R8']
+verified 5/9 = 55.6%
+```
+
+A saída mostra que R4 e R9 não têm teste, que R3 e R8 estão testados mas não aprovados, e que cinco de nove requisitos estão verificados. A situação de R3 está desatualizada, e não realmente reprovada: o novo teste na v2 foi aprovado, mas ninguém o lançou na matriz, exatamente a lacuna administrativa de que o exemplo resolvido adverte. O EX075 atualiza o mapa. R9 é a lição mais difícil: o alarme de dosagem aparece no conjunto de requisitos, na tabela de riscos e nos controles de dosagem, então parece coberto, mas nenhum teste jamais lhe foi atribuído. Uma versão anterior desta matriz deixava R9 inteiramente fora da lista, o que elevava a fração verificada de cinco de nove para cinco de oito sem nenhuma evidência nova. Uma matriz precisa listar todo requisito definido, porque um requisito que ela omite não pode ser relatado como não testado.
+
+### 38.7 Erros comuns e limites
+
+- Chamar de "validação" um conjunto de testes aprovado.
+- Partes interessadas consultadas apenas no início.
+- Arredondar a validação parcial para "validada".
+- Mapas de evidências não atualizados depois de novos testes.
+
+O próprio mapa do TMRP mostra o último erro: o novo teste do T3 na v2 foi aprovado, mas a matriz nunca foi atualizada. Partes interessadas como os operadores e o hospital são envolvidas o tempo todo, e não apenas quando os requisitos foram escritos, e o mapa de evidências é atualizado toda vez que um novo teste ou uma demonstração produz um resultado, de modo que a situação de validação relatada nunca se adianta às evidências.
+
+### Exercícios — capítulo 38
+
+**EX075 — Atualize o mapa.** *Objetivo:* manter a rastreabilidade. *Entradas:* Laboratório 14. *Passos:* (1) acrescente o T3b (novo teste na v2) cobrindo R3 com resultado "pass" e remova a ligação do T3 com R3 como superada; (2) acrescente a demonstração T8 cobrindo R4 com resultado "pass"; (3) execute o T6 com resultado "pass"; recalcule. *Evidência esperada:* código e saída. *Rubrica:* 3 = oito de nove verificados (88,9%), R9 ainda listado como não testado porque não existe teste do alarme de dosagem, com uma nota de que verificação ≠ validação; 2 = uma mudança não feita; 1 = não executado; 0 = nada.
+
+**EX076 — Plano de validação para N1.** *Objetivo:* planejar a validação com as partes interessadas. *Entradas:* N1 "o hospital não pode ficar sem água por > 4 h". *Passos:* proponha duas atividades de validação com as partes interessadas, condições realistas, observações e critérios de sucesso. *Evidência esperada:* plano. *Rubrica:* 3 = atividades realistas (exercício noturno do manual local com o efetivo real; isolamento planejado da PS4 com monitoramento pelo hospital), critérios ligados à reserva de 4 h, partes interessadas nomeadas pelo papel; 2 = critérios vagos; 1 = testes rebatizados de validação; 0 = nada.
+
+### Síntese do capítulo
+
+A verificação pergunta se o sistema foi construído direito; a validação pergunta se ele é o sistema certo. Use a rastreabilidade como mapa de evidências para encontrar alegações não testadas, sem apoio e não validadas, valide com as pessoas a quem o sistema serve em condições realistas e relate os resultados parciais como parciais.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — capítulo 38 de 50
+
+[← Capítulo 37](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Infraestrutura crítica e segurança setorial: manutenibilidade
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) projetar para a manutenibilidade ao longo de ciclos de vida longos — atualizações, peças de reposição, competências, documentação; (2) gerenciar a dívida técnica e a obsolescência em TO; (3) planejar a agilidade criptográfica e a transição para a criptografia pós-quântica; e (4) planejar a desativação com segurança. Ele se apoia nos capítulos 8, 14 e 31 e prepara os capítulos 41 e 44.
+
+### 39.1 Ciclos de vida longos
+
+Os ativos de infraestrutura duram décadas; o software e as ameaças mudam em meses. Manutenibilidade significa que o sistema pode ser mantido seguro e funcional por toda a sua vida: componentes substituíveis sem novo projeto; atualizações possíveis sem longas interrupções; documentação em dia; competências disponíveis. Escolhas de projeto que prejudicam a manutenibilidade incluem protocolos proprietários com um único fornecedor, código personalizado não documentado e hardware sem caminho de atualização. Para o TMRP, as RTUs instaladas agora talvez ainda funcionem nos anos 2040, então o projeto do gateway, o formato das mensagens e a gestão de chaves precisam ser manuteníveis ao longo desse período.
+
+### 39.2 Dívida técnica e obsolescência
+
+A dívida técnica é o custo futuro dos atalhos tomados agora: uma configuração fixa no código, um teste pulado, um gateway construído "temporariamente" para RTUs legadas. Registre os itens de dívida com dono, custo de correção e risco de deixá-los. A gestão da obsolescência acompanha as datas de fim de venda e de fim de suporte de cada componente e planeja a substituição antes que o suporte termine, mantendo reservas onde a substituição é lenta. Os gateways do TMRP para as unidades legadas RTU-A da PS1 e da PS2 estão registrados como dívida com horizonte de três anos. As reservas são compradas antes do fim de venda.
+
+### 39.3 Agilidade criptográfica
+
+Os algoritmos se enfraquecem e as normas mudam. A agilidade criptográfica é a capacidade de mudar algoritmos e tamanhos de chave sem projetar o sistema de novo: identificadores de algoritmo nos formatos de mensagem, caminhos de atualização de firmware e uma gestão de chaves capaz de provisionar novos tipos de chave. O NIST publicou suas primeiras normas de criptografia pós-quântica (FIPS 203, 204 e 205) em agosto de 2024 ([anúncio do NIST](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards)); equipamentos de infraestrutura comprados agora talvez ainda estejam operando quando adversários com capacidade quântica forem plausíveis, então os mecanismos de chave pública em dispositivos de vida longa precisam de um caminho de migração. MACs simétricos como o HMAC-SHA256 são muito menos afetados; a troca de chaves e as assinaturas são onde a migração importa.
+
+### 39.4 Desativação segura
+
+Dispositivos aposentados contêm chaves, configurações e detalhes da rede. Passos da desativação: revogar chaves e certificados; remover contas; apagar ou destruir o armazenamento conforme a política; atualizar o inventário, os modelos e as listas de permissões; e remover as regras de firewall que serviam ao dispositivo. Regras obsoletas de dispositivos desativados são um caminho clássico para atacantes que colocam um novo dispositivo num endereço antigo. A revisão de manutenibilidade do TMRP constatou que não existia procedimento de desativação, então um foi escrito e ligado à gestão de mudanças. Ele será usado pela primeira vez quando a RTU-A legada da PS2 e seu gateway forem substituídos, como descreve o EX078.
+
+### 39.5 Exemplo resolvido: revisão de manutenibilidade do TMRP (sintético)
+
+A revisão constata: (1) os gateways da PS1/PS2 são dívida técnica com horizonte de três anos — registrados com plano de substituição; (2) o formato de mensagem do Laboratório 8 não tem identificador de algoritmo — alterado para incluir um ID de suíte de um byte (versão 1 = HMAC-SHA256-128) antes da implantação na frota, ao custo de um byte por mensagem; (3) a assinatura do firmware da RTU-B usa um esquema de assinatura clássico — pedido ao fornecedor um roteiro de migração pós-quântica como condição contratual; (4) não há modems LTE de reserva e o modelo chega ao fim de venda no ano que vem — comprar reservas agora, planejar a substituição; (5) procedimento de desativação ausente — escrito e ligado à gestão de mudanças.
+
+### 39.6 Atividade prática
+
+Monte um registro de obsolescência para os componentes do TMRP (RTUs, gateways, modems, servidores SCADA, sistema operacional, HSM) com datas presumidas, situação do suporte, reservas mantidas e plano de substituição. Inclua todos os componentes que a revisão do TMRP menciona: a RTU-A e a RTU-B, os gateways, os modems LTE, os servidores SCADA e seu sistema operacional, e o módulo de segurança de hardware. Para cada um, registre as datas presumidas de fim de venda e de fim de suporte, as reservas mantidas e o plano de substituição. Sinalize qualquer componente cujo suporte termine antes da substituição planejada, como a revisão constatou para os modems LTE. Mantenha o registro sob controle de mudanças para que ele continue atualizado.
+
+### 39.7 Erros comuns e limites
+
+- Projetos que exigem o fornecedor original para sempre.
+- Dívida técnica não registrada.
+- Formatos de mensagem sem versionamento nem identificadores de algoritmo.
+- Dispositivos desativados que deixam chaves e regras de firewall para trás.
+
+A revisão do TMRP encontrou o terceiro erro no quadro do Laboratório 8 e o corrigiu com um identificador de suíte de um byte antes da implantação na frota. Ela também registrou os gateways legados como dívida e escreveu o procedimento de desativação que faltava. Os modems LTE de reserva são comprados antes do fim de venda do modelo. O novo procedimento revoga as chaves e remove as regras de firewall obsoletas.
+
+### Exercícios — capítulo 39
+
+**EX077 — Adaptação para agilidade.** *Objetivo:* acrescentar agilidade criptográfica. *Entradas:* formato de quadro do Laboratório 8. *Passos:* acrescente um ID de suíte de um byte e uma política do receptor que aceite apenas as suítes configuradas; mostre como a suíte 2 (um MAC diferente) poderia ser introduzida durante um período de transição e como a suíte 1 seria aposentada. *Evidência esperada:* projeto e esboço curto de código. *Rubrica:* 3 = ID de suíte autenticado (dentro do MAC), política de suítes permitidas por estação, prevenção de rebaixamento, passo de aposentadoria; 2 = ID de suíte não autenticado; 1 = apenas descrição; 0 = nada.
+
+**EX078 — Checklist de desativação.** *Objetivo:* aposentar um dispositivo com segurança. *Entradas:* a RTU-A legada da PS2 e o gateway sendo substituídos pela RTU-B. *Passos:* escreva uma checklist de pelo menos oito passos, com a evidência de cada um. *Evidência esperada:* checklist. *Rubrica:* 3 = chaves revogadas, contas removidas, armazenamento apagado, inventário/modelo/lista de permissões atualizados, regras de firewall removidas, linhas de base do monitoramento atualizadas, destinação das reservas, aprovação formal; 2 = faltam regras ou chaves; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+Projete para décadas: componentes substituíveis, software atualizável, documentação em dia, competências disponíveis. Registre a dívida técnica, gerencie a obsolescência antes do fim do suporte, incorpore a agilidade criptográfica aos formatos e aos caminhos de atualização, com um plano de migração pós-quântica, e desative de modo que nada — chaves, contas, regras — sobreviva ao dispositivo.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — capítulo 39 de 50
+
+[← Capítulo 38](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 (inglês) →](../../en/book/MANUSCRIPT.md#ch-40)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2625,7 +2965,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX068; as de EX069–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX078; as de EX079–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -2830,6 +3170,36 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX067.** 42 × 180 = 7.560 mensagens; a 50 por segundo, 151,2 s para escoar; um alarme prioritário no fim espera cerca de 151 s, violando R7 (60 s). Correção: fila com prioridade para os alarmes e encaminhamento do valor mais recente, com preenchimento do histórico no historiador a taxa limitada.
 
 **EX068.** Cláusulas: notificação de incidentes à LRWA em até 1 h após a detecção; divulgação de vulnerabilidades que afetem a rede privada em até 72 h; manutenção planejada notificada com 10 dias úteis de antecedência; prioridade de restauração para os locais da LRWA, com meta de 4 h; logs de acesso ao APN da LRWA fornecidos mensalmente; exercício conjunto anual.
+
+### Capítulo 35
+
+**EX069.** R6 (8 h) conflita com o resultado do ensaio (12 h): R6 não é atendido. O abastecimento do hospital não depende da operação remota (modo automático local, 72 h), então a alegação N1 ainda pode se sustentar; o caso de garantia precisa registrar R6 como reprovado, com um plano de correção ou uma revisão acordada com as partes interessadas. A bateria de 24 h e a reserva de 4 h são consistentes.
+
+**EX070.** D3: uso indevido do modo manual local na PS4 por um insider — resposta: regra de duas pessoas para o modo manual fora dos horários de manutenção, alarme e CFTV no painel. D4: comprometimento do caminho de atualização do firmware do gateway — resposta: atualizações assinadas com chaves num HSM, implantação em etapas, monitoramento do comportamento do gateway. D5: a persistência do contador falha após a perda de energia — resposta: teste de reinício (EX060) e rotação de chaves em reinício não limpo.
+
+### Capítulo 36
+
+**EX071.** μ = 100/s: λ = 20 → ρ = 0,20, W = 12,5 ms, L = 0,25; λ = 40 → ρ = 0,40, W ≈ 16,7 ms, L ≈ 0,67; λ = 48 → ρ = 0,48, W ≈ 19,2 ms, L ≈ 0,92. Comparado com μ = 50 (33,3, 100 e 500 ms), dobrar a capacidade elimina a explosão do atraso em tempestades.
+
+**EX072.** (1) Filtragem no nível da rede: apenas as extremidades dos túneis dos gateways podem alcançar o verificador — descarta a maior parte do tráfego forjado antes de qualquer computação. (2) Verificações prévias baratas (comprimento, ID de estação conhecido, contador plausivelmente à frente do último aceito) antes de calcular o MAC. (3) Limites de taxa por origem e uma fila com prioridade estrita para os alarmes verificados, de modo que as inundações sejam descartadas na prioridade mais baixa. Apenas acrescentar capacidade perde para um atacante que consegue escalar o tráfego.
+
+### Capítulo 37
+
+**EX073.** Fraquezas: "não corresponde a uma ação de operador" é ambíguo — defina como nenhum comando de operador registrado para aquela estação e parâmetro nos 5 min anteriores; sem dados de contato — acrescente os números do gerente de plantão e da segurança de sobreaviso; restaurar setpoints remotamente poderia usar o caminho comprometido — especifique a restauração local pelo técnico de plantão se houver falhas de MAC no gateway.
+
+**EX074.** O que aconteceu: o técnico conectou um laptop à rede da PS3 para baixar logs. Por que fazia sentido: a rota pelo jump host é lenta e exige um chamado; os logs eram necessários para uma ligação com o fornecedor naquela tarde. Defesas que falharam: sem segurança de porta no switch; sem caminho aprovado simples para os logs; o procedimento pressupunha o jump host sempre disponível. Mudanças: fornecer um coletor de logs na DMZ para que os técnicos não precisem se conectar; habilitar a segurança de porta; disponibilizar um conjunto de laptops de manutenção verificados; simplificar o acesso pelo jump host para a obtenção de logs somente leitura.
+
+### Capítulo 38
+
+**EX075.** Com o T3b aprovado para R3, o T8 aprovado para R4 e o T6 aprovado para R8: untested ['R9'], tested but not passing [], verified 8/9 (88.9%). R9 permanece não verificado até que um teste do alarme de dosagem independente (por exemplo, parar a dosagem na bancada e cronometrar o alarme no registrador separado contra 15 min) seja escrito e aprovado. A verificação está completa para os outros oito requisitos; a validação de N1 ainda precisa das atividades com as partes interessadas do EX076.
+
+**EX076.** (1) Exercício noturno: a equipe de operações passa a PS3 e a PS4 para o manual local com o efetivo noturno real; observar o tempo e os erros; sucesso: operação manual em até 1 h e pressão de abastecimento mantida. (2) Isolamento planejado da PS4 em período de baixa demanda, com o gerente de instalações do hospital monitorando o armazenamento e a pressão no local; sucesso: abastecimento mantido pelo reservatório, com o armazenamento nunca abaixo do nível que dá 4 h de reserva. Partes interessadas: gerente de operações, instalações do hospital, engenharia do TMRP.
+
+### Capítulo 39
+
+**EX077.** Quadro: ID de suíte (1 byte) ‖ contador ‖ estação ‖ valor ‖ etiqueta, com o MAC calculado também sobre o ID de suíte (para que não possa ser alterado). O receptor mantém as suítes permitidas por estação, p. ex., {1} → {1, 2} durante a transição → {2}. Prevenção de rebaixamento: depois que uma estação tiver enviado a suíte 2, rejeitar dela a suíte 1. Aposentadoria: remover a suíte 1 de todos os conjuntos permitidos depois que todas as estações tiverem migrado e revogar as chaves da suíte 1.
+
+**EX078.** Revogar a chave da estação e removê-la do HSM; remover as contas do gateway; apagar (ou destruir) o armazenamento do gateway e da RTU; atualizar o inventário, o modelo do sistema e o dossiê; remover as entradas da lista de permissões e as regras de firewall dos endereços antigos; atualizar as linhas de base do monitoramento; dar destinação às reservas ou colocá-las em quarentena; registrar a aprovação formal de operações e de segurança.
 
 <a id="glossary"></a>
 
