@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso 145, curso de pós-graduação (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: arquitetos e engenheiros em atividade que lideram decisões de arquitetura de segurança em escala organizacional.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam a alcançabilidade entre zonas, notas ponderadas de opções com uma varredura de sensibilidade, contagens por nível de garantia e comparações de rubricas sobre dados sintéticos; nada toca uma rede real. Projetos de produção usam produtos e normas avaliados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ NIST [SP 800-207](https://doi.org/10.6028/NIST.SP.800-207), [SP 800-160 Vol. 1 R
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -335,11 +333,303 @@ Amostras pequenas são frágeis. A equipe pode se comportar de outro modo quando
 
 - **EX030 — Recomendação.** O que Priya recomendou depois do piloto? *Rubrica:* 3 = uma implantação escalonada com medição contínua;; 2 = escalonada;; 1 = big-bang;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Arquitetura e engenharia de segurança: integração organizacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) incorporar a arquitetura à governança da Corvane; (2) ligar a arquitetura ao sistema de gestão; (3) desenhar um comitê de revisão de arquitetura que funcione.
+
+### 7.1 Arquitetura e governança
+
+Os projetos de Priya só duram se passarem a fazer parte do modo como a Corvane funciona. Ela liga a arquitetura ao sistema de gestão da segurança da informação exigido pela ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022): avaliação de riscos, declaração de aplicabilidade, auditoria interna e análise crítica pela direção. Cada registro de decisão de arquitetura agora referencia os riscos que trata e os controles que implementa. Quando o auditor interno testa um controle, consegue rastreá-lo de volta a uma decisão de projeto e a seus motivos, fechando a lacuna entre os documentos de arquitetura e as evidências de auditoria. Isso também encurta a preparação para as auditorias.
+
+### 7.2 Um comitê de revisão que funciona
+
+O antigo comitê de revisão de arquitetura da Corvane se reunia mensalmente, revisava todos os projetos e se tornou um gargalo que as equipes evitavam. Priya o redesenha. Os projetos respondem a um formulário curto de triagem; só chegam ao comitê os que acrescentam fornecedores, fluxos de dados de pacientes, conexões de dispositivos clínicos ou exposição à internet. O comitê se reúne semanalmente por trinta minutos, publica as decisões em até dois dias e usa um modelo padrão. Em um trimestre, mais projetos se apresentam voluntariamente, porque o processo é rápido e previsível, em vez de ser uma fonte de atraso.
+
+### 7.3 Ligação com outras funções
+
+Priya mapeia onde a arquitetura toca compras, engenharia clínica, privacidade e finanças. Compras acrescenta perguntas de segurança às licitações; a engenharia clínica passa a integrar o comitê nos projetos de dispositivos; o encarregado de privacidade revisa todo novo fluxo de dados de pacientes; finanças vê cedo os custos de arquitetura. Ela usa as famílias de controles do NIST SP 800-53 Rev. 5 para garantir que nenhuma área fique sem responsável. A integração funciona quando cada função vê a arquitetura como uma ajuda para seus próprios objetivos, e não como uma aprovação extra imposta de fora. Cada interface tem um contato nomeado.
+
+### Exemplo resolvido
+
+Priya liga os registros de decisão aos processos da ISO/IEC 27001 (no Brasil, ABNT NBR ISO/IEC 27001), redesenha o comitê de revisão com triagem e reuniões semanais curtas e mapeia quatro interfaces com responsáveis.
+
+> **Caso sintético.** A governança da Corvane é sintética; a ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) e o SP 800-53 Rev. 5 são reais.
+
+### Erros e limites
+
+A triagem pode deixar passar projetos arriscados que respondem não. Comitês rápidos podem virar carimbadores.
+
+### Exercícios
+
+- **EX031 — Rastreabilidade para a auditoria.** Como ligar os registros ao SGSI ajudou os auditores? *Rubrica:* 3 = eles conseguem rastrear um controle até sua decisão de projeto;; 2 = rastreabilidade;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX032 — Problema do comitê antigo.** O que havia de errado com o antigo comitê de revisão? *Rubrica:* 3 = revisava tudo mensalmente e virou um gargalo;; 2 = gargalo;; 1 = rápido demais;; 0 = nenhuma.
+
+- **EX033 — Gatilhos da triagem.** Que características de um projeto disparam a revisão pelo comitê? *Rubrica:* 3 = fornecedores, fluxos de dados de pacientes, dispositivos clínicos, exposição à internet;; 2 = dois;; 1 = todos os projetos;; 0 = nenhuma.
+
+- **EX034 — Efeito do comitê.** O que mudou em um trimestre após o redesenho? *Rubrica:* 3 = mais projetos se apresentaram voluntariamente;; 2 = voluntário;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX035 — Princípio de integração.** Quando a integração com outras funções funciona? *Rubrica:* 3 = quando cada função vê a arquitetura ajudando seus próprios objetivos;; 2 = objetivos comuns;; 1 = imposições;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitetura e engenharia de segurança: casos difíceis
+
+### Objetivos de aprendizagem
+
+Você vai (1) lidar com um dispositivo legado que não consegue atender à arquitetura; (2) gerenciar a fusão de duas redes; (3) raciocinar sobre casos sem resposta limpa.
+
+### 8.1 O scanner sem patches
+
+O scanner de imagem de uma clínica roda um sistema operacional que o fabricante não suporta mais, e substituí-lo custaria mais do que o orçamento anual de equipamentos da clínica. Ele não consegue entrar no projeto ciente de identidade. Priya o trata como uma exceção documentada: isolá-lo em um segmento próprio, permitir que apenas o arquivo de imagens converse com ele, monitorar esse tráfego e fixar uma data de substituição no plano de investimentos. O comitê de governança clínica aceita o risco residual por escrito. Exceções são riscos gerenciados, e não falhas escondidas.
+
+### 8.2 Uma fusão
+
+A Corvane adquire um grupo fictício de clínicas privadas, a Hollin Care, com uma rede plana e contas de administrador compartilhadas. Conectar as duas redes rapidamente importaria as fraquezas da Hollin; mantê-las separadas bloqueia os prontuários compartilhados dos pacientes. Priya propõe uma integração escalonada: primeiro, uma conexão intermediada apenas para aplicações específicas; segundo, a equipe da Hollin migra para identidades da Corvane; terceiro, a rede da Hollin é reconstruída segundo a segmentação da Corvane. Cada etapa tem critérios de entrada. Ela usa a modelagem de ameaças de Shostack (2014) para analisar a conexão intermediada antes que qualquer tráfego passe por ela.
+
+### 8.3 Quando nenhuma resposta é limpa
+
+Os dois casos forçam trade-offs em que toda opção deixa risco. Priya segue um padrão: declarar as opções, o risco que cada uma deixa e quem o aceita; escolher a opção que preserva o atributo mais importante, aqui a disponibilidade do atendimento; e fixar uma data para revisitar. Ela escreve que o objetivo nos casos difíceis não é eliminar o risco, mas torná-lo visível, com responsável e temporário sempre que possível. A Dra. Voss observa que esse é o núcleo do trabalho de arquitetura sênior, em que as respostas de livro raramente se encaixam.
+
+### Exemplo resolvido
+
+Priya isola um scanner sem suporte como exceção documentada, planeja uma integração de fusão em três etapas e aplica um padrão consistente a casos sem resposta limpa.
+
+> **Caso sintético.** O scanner, a Hollin Care e as decisões são sintéticos; Shostack (2014) é real.
+
+### Erros e limites
+
+As exceções tendem a se tornar permanentes sem datas. Fusões escalonadas emperram sob pressão do negócio.
+
+### Exercícios
+
+- **EX036 — Tratamento do scanner.** Como o scanner sem suporte foi tratado? *Rubrica:* 3 = isolado, limitado ao arquivo de imagens, monitorado, com data de substituição;; 2 = isolamento;; 1 = substituído já;; 0 = nenhuma.
+
+- **EX037 — Responsável pela exceção.** Quem aceitou o risco residual do scanner? *Rubrica:* 3 = o comitê de governança clínica, por escrito;; 2 = comitê;; 1 = arquiteta;; 0 = nenhuma.
+
+- **EX038 — Dilema da fusão.** Por que nem a conexão rápida nem a separação total eram aceitáveis? *Rubrica:* 3 = a rápida importa fraquezas; a separação bloqueia os prontuários compartilhados;; 2 = os dois lados;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX039 — Primeira etapa da fusão.** Qual foi a primeira etapa da fusão? *Rubrica:* 3 = uma conexão intermediada apenas para aplicações específicas;; 2 = intermediada;; 1 = junção total;; 0 = nenhuma.
+
+- **EX040 — Objetivo nos casos difíceis.** Qual é o objetivo nos casos difíceis? *Rubrica:* 3 = tornar o risco visível, com responsável e temporário sempre que possível;; 2 = visível;; 1 = eliminar todo risco;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Arquitetura e engenharia de segurança: liderança e garantia
+
+### Objetivos de aprendizagem
+
+Você vai (1) liderar uma equipe de arquitetura num programa plurianual; (2) oferecer garantia a um conselho; (3) usar métricas que mostrem o progresso com honestidade.
+
+### 9.1 Liderar o programa
+
+Priya agora lidera uma equipe de três arquitetos num programa de três anos de segmentação e acesso. Ela define princípios que todos podem aplicar sem consultá-la: negar por padrão, identidade antes da rede, exceções datadas e com responsável. Ela delega as decisões dentro desses princípios e revisa apenas as exceções. Toda semana, a equipe compartilha um projeto e uma falha. Ela protege tempo para aprendizado, porque a tecnologia da saúde muda mais depressa do que qualquer arquiteto sozinho consegue acompanhar. Liderar em arquitetura é, sobretudo, tornar possíveis boas decisões sem que a líder esteja em todas as salas.
+
+### 9.2 Garantia para o conselho
+
+O conselho faz uma pergunta simples: estamos mais seguros do que no ano passado? Priya responde com garantia (assurance), e não com tranquilização. Ela relata o que foi verificado, por quem e como, usando o vocabulário do risk management framework do NIST SP 800-37 Rev. 2 para autorização e monitoramento contínuo. A auditoria interna independente testa uma amostra de controles a cada trimestre. Ela distingue três níveis: projetado, implementado e verificado. No relatório dela, só os controles verificados contam como redução de risco, o que faz o progresso parecer mais lento, mas muito mais confiável.
+
+### Laboratório — Contagem de controles projetados, implementados e verificados
+
+```python
+# Count programme controls by assurance level (synthetic register).
+levels = ["verified"] * 19 + ["implemented"] * 10 + ["designed"] * 7 + ["planned"] * 4
+designed = sum(l in ("designed", "implemented", "verified") for l in levels)
+implemented = sum(l in ("implemented", "verified") for l in levels)
+verified = levels.count("verified")
+print(f"controls {len(levels)}: designed {designed}, implemented {implemented}, verified {verified}")
+print(f"verified share {verified/len(levels):.0%}")
+```
+
+Execute com `python3 lab_assure.py`. Saída verificada:
+
+```text
+controls 40: designed 36, implemented 29, verified 19
+verified share 48%
+```
+
+### 9.3 Métricas honestas
+
+O laboratório mostra a lacuna entre os níveis. Dos quarenta controles do programa, trinta e seis estão projetados, vinte e nove implementados e dezenove verificados. Relatar trinta e seis lisonjearia o programa; relatar dezenove mostra onde o esforço é necessário. Priya também relata as clínicas totalmente segmentadas e a idade mediana das exceções em aberto. O conselho de início prefere o número maior, mas passa a confiar no menor depois que a auditoria o confirma. Ela observa que uma métrica conquista confiança quando, de vez em quando, traz más notícias. A parcela verificada era de 48 por cento naquele momento.
+
+### Exemplo resolvido
+
+Priya define princípios para a equipe, relata a garantia em três níveis com amostragem da auditoria independente e mostra ao conselho as contagens de controles verificados, e não de projetados.
+
+> **Caso sintético.** A equipe, os controles e os números são sintéticos; o SP 800-37 Rev. 2 é real.
+
+### Erros e limites
+
+As amostras de verificação podem deixar passar falhas. As métricas podem ser manipuladas depois que se fixam metas.
+
+### Exercícios
+
+- **EX041 — Princípio de delegação.** Que princípios permitem que a equipe decida sem Priya? *Rubrica:* 3 = negar por padrão, identidade antes da rede, exceções datadas e com responsável;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX042 — Três níveis.** Que três níveis Priya distingue? *Rubrica:* 3 = projetado, implementado e verificado;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX043 — Contagens do laboratório.** Quais foram as contagens em cada nível no laboratório? *Rubrica:* 3 = 36 projetados, 29 implementados, 19 verificados;; 2 = em parte;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX044 — Garantia versus tranquilização.** O que faz do relato de Priya garantia, e não tranquilização? *Rubrica:* 3 = ele relata o que foi verificado, por quem e como;; 2 = verificação;; 1 = tom;; 0 = nenhuma.
+
+- **EX045 — Métrica confiável.** Segundo Priya, quando uma métrica conquista confiança? *Rubrica:* 3 = quando de vez em quando traz más notícias;; 2 = más notícias;; 1 = sempre verde;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Leitura e crítica de pesquisas
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler criticamente artigos de pesquisa sobre arquitetura de segurança; (2) julgar se os achados se transferem para a Corvane; (3) escrever uma crítica estruturada.
+
+### 10.1 Ler com propósito
+
+A Dra. Voss passa uma tarefa de leitura: encontrar e criticar pesquisas publicadas sobre se os projetos de segmentação ou de zero trust reduzem o impacto dos incidentes. Priya lê com três perguntas. O que exatamente foi medido? Como a comparação foi feita? O cenário se pareceria com uma rede de clínicas? Ela observa que muitos artigos medem redes simuladas ou a base de clientes de fornecedores, e poucos medem a área da saúde. Herley e van Oorschot (2017) argumentam que a pesquisa em segurança muitas vezes carece de afirmações falseáveis, então ela procura estudos que declarem que resultado os teria contrariado.
+
+### 10.2 Julgar a transferência
+
+Um estudo de grandes empresas conclui que redes segmentadas contêm o movimento lateral mais depressa. Priya pergunta se isso se transfere para a Corvane: suas clínicas são menores, têm dispositivos legados e dependem de um prontuário eletrônico central. Alguns mecanismos se transferem, como limitar os hosts alcançáveis; outros não, como uma equipe dedicada de operações de segurança observando cada alerta. Ela conclui que a direção do achado provavelmente se aplica, mas que o tamanho do efeito é incerto. Os julgamentos de transferência são argumentos fundamentados sobre mecanismos, e não respostas simples de sim ou não.
+
+### 10.3 Escrever a crítica
+
+Priya escreve uma crítica de duas páginas para cada artigo: afirmação, método, dados, ameaças à validade, transferência para a Corvane e que evidências adicionais ajudariam. Ela evita descartar trabalhos por imperfeições que todo estudo tem e, em vez disso, julga se as falhas minam a afirmação. As conclusões de um artigo se apoiam numa comparação antes e depois sem controle, durante um período de outras mudanças, o que ela marca como fraco. Outro usa um grupo de comparação cuidadoso, que ela marca como mais forte apesar da amostra menor. Criticar é pesar evidências, e não marcar pontos.
+
+### Exemplo resolvido
+
+Priya critica pesquisas sobre segmentação com três perguntas de leitura, raciocina sobre a transferência por mecanismo e escreve críticas estruturadas.
+
+> **Caso sintético.** Os artigos descritos são composições sintéticas; Herley e van Oorschot (2017) é real.
+
+### Erros e limites
+
+As críticas podem ser mais duras com achados indesejados. O raciocínio sobre transferência é, ele próprio, incerto.
+
+### Exercícios
+
+- **EX046 — Três perguntas.** Que três perguntas orientam a leitura de Priya? *Rubrica:* 3 = o que foi medido, como se comparou, se o cenário se pareceria com uma clínica;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX047 — Afirmações falseáveis.** Por que procurar estudos que declarem o que os contrariaria? *Rubrica:* 3 = a pesquisa em segurança muitas vezes carece de afirmações falseáveis;; 2 = falseável;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX048 — Mecanismo que não se transfere.** Que mecanismo do estudo empresarial não se transferiu? *Rubrica:* 3 = uma equipe dedicada de operações de segurança observando os alertas;; 2 = equipe;; 1 = segmentação;; 0 = nenhuma.
+
+- **EX049 — Conclusão sobre a transferência.** O que Priya concluiu sobre a transferência? *Rubrica:* 3 = a direção provavelmente se aplica, o tamanho do efeito é incerto;; 2 = direção;; 1 = transferência total;; 0 = nenhuma.
+
+- **EX050 — Desenho fraco.** Por que um artigo foi marcado como fraco? *Rubrica:* 3 = comparação antes e depois sem controle durante outras mudanças;; 2 = sem controle;; 1 = amostra pequena;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto de arquitetura de ponta a ponta; (2) avaliá-lo com uma rubrica; (3) documentar os resultados para a passagem.
+
+### 11.1 O projeto
+
+O projeto aplicado de Priya é a segmentação dos dispositivos clínicos nas nove clínicas em que os dispositivos compartilhavam a rede com os notebooks. Ela entrega um projeto, um plano de migração acordado com a engenharia clínica, roteiros de teste e um manual de operações. A migração acontece clínica por clínica, fora do horário de atendimento, com um plano de rollback para cada uma. A primeira clínica revela uma conexão não documentada de um analisador de sangue para um serviço de laboratório, que teria interrompido o envio de resultados. Ela acrescenta uma semana de descoberta ao plano de cada clínica seguinte, antes de qualquer mudança de regra.
+
+### 11.2 Avaliação com uma rubrica
+
+A Dra. Voss e o diretor de tecnologia da informação da Corvane avaliam o projeto segundo uma rubrica acordada no início: qualidade do projeto, evidências de verificação, engajamento das partes interessadas, tratamento de surpresas e qualidade da passagem. Cada critério recebe nota de zero a três, com descrições para cada nível. Priya se avalia primeiro e depois compara. Ela se dá nota menor que a dos avaliadores em engajamento das partes interessadas e maior em verificação, critério em que os avaliadores observam que duas clínicas foram verificadas só por ela, sem um testador independente.
+
+### Laboratório — Comparação entre autoavaliação e notas dos avaliadores na rubrica
+
+```python
+# Compare self and assessor rubric scores (0-3, synthetic).
+crit = ["design", "verification", "stakeholders", "surprises", "handover"]
+self_s = [3, 3, 1, 2, 2]; assess = [3, 2, 2, 2, 2]
+for c, s, a in zip(crit, self_s, assess): print(f"{c:12} self {s} assessors {a} diff {s - a:+d}")
+print(f"totals: self {sum(self_s)}/15, assessors {sum(assess)}/15")
+```
+
+Execute com `python3 lab_rubric.py`. Saída verificada:
+
+```text
+design       self 3 assessors 3 diff +0
+verification self 3 assessors 2 diff +1
+stakeholders self 1 assessors 2 diff -1
+surprises    self 2 assessors 2 diff +0
+handover     self 2 assessors 2 diff +0
+totals: self 11/15, assessors 11/15
+```
+
+### 11.3 Passagem
+
+Priya escreve um pacote de passagem: os diagramas finais da arquitetura, os registros de decisão, as exceções com responsáveis e datas, os resultados da verificação e uma lista de lacunas conhecidas. Ela conduz duas sessões com a equipe de operações, que vai manter a segmentação. A verificação das duas clínicas sem testadores independentes é repetida por um engenheiro de operações, encerrando a preocupação dos avaliadores. O projeto só é avaliado como concluído depois da passagem, porque um projeto que só seu autor consegue operar não foi de fato entregue. Operações assina a passagem como aceita.
+
+### Exemplo resolvido
+
+Priya entrega a segmentação em nove clínicas, acrescenta semanas de descoberta depois de uma surpresa, compara as notas da rubrica e conclui uma passagem com reverificação independente.
+
+> **Caso sintético.** Os detalhes do projeto e as notas são sintéticos.
+
+### Erros e limites
+
+As rubricas comprimem o julgamento em números. As semanas de descoberta acrescentam tempo.
+
+### Exercícios
+
+- **EX051 — Surpresa da primeira clínica.** O que a primeira clínica revelou? *Rubrica:* 3 = uma conexão não documentada de um analisador de sangue para um serviço de laboratório;; 2 = não documentada;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX052 — Resposta à surpresa.** Como Priya mudou os planos das clínicas seguintes? *Rubrica:* 3 = acrescentou uma semana de descoberta antes das mudanças de regra;; 2 = descoberta;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX053 — Diferença na rubrica.** Em que critério Priya se deu nota acima da dos avaliadores no laboratório? *Rubrica:* 3 = verificação: ela 3, avaliadores 2;; 2 = verificação;; 1 = partes interessadas;; 0 = nenhuma.
+
+- **EX054 — Preocupação dos avaliadores.** Qual era a preocupação dos avaliadores sobre a verificação? *Rubrica:* 3 = duas clínicas foram verificadas só por Priya;; 2 = independência;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX055 — Regra de conclusão.** Por que o projeto só estava concluído depois da passagem? *Rubrica:* 3 = um projeto que só seu autor consegue operar não foi entregue;; 2 = passagem;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisão final e transferência
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar o que o curso mudou na prática; (2) transferir métodos para um novo domínio; (3) planejar o desenvolvimento profissional contínuo.
+
+### 12.1 O que mudou
+
+Priya revisa os dois anos. A Corvane agora tem registros de decisão, um comitê de revisão rápido, dispositivos clínicos segmentados em todas as clínicas, um projeto de acesso híbrido sendo implantado em etapas e relatórios de garantia baseados em controles verificados. Ela lista o que não mudou: o provedor de identidade continua sendo uma concentração de risco, e dois dispositivos legados permanecem como exceções datadas. Ela separa os resultados que pode atribuir ao programa daqueles que poderiam ter acontecido de qualquer modo, como a redução de indisponibilidades graças a melhorias do próprio fornecedor.
+
+### 12.2 Transferência para um novo domínio
+
+A Dra. Voss pede a Priya que aplique seus métodos a outro cenário: a rede de controle de uma empresa fictícia de saneamento de água. Priya descobre que os registros de decisão, os critérios por atributo, os modelos de alcançabilidade e as implantações escalonadas se transferem diretamente. O que muda é o peso dos atributos: a segurança física e a disponibilidade dominam ainda mais, e as janelas de mudança são mais raras. Ela consultaria o NIST SP 800-82 Rev. 3 para tecnologia operacional, que ela admite ainda não ter estudado a fundo. A transferência funciona para os métodos; o conhecimento do domínio precisa ser adquirido do zero a cada vez.
+
+### 12.3 Desenvolvimento contínuo
+
+Priya planeja seus próximos dois anos: aprofundar o conhecimento em tecnologia operacional, ser mentora de uma arquiteta júnior, publicar um estudo de caso anonimizado com a permissão da Corvane e apresentar o método do piloto num encontro de informática em saúde. Ela mantém um diário de aprendizagem e agenda uma revisão anual dos seus registros de decisão para ver quais envelheceram bem. O comentário final da Dra. Voss é que o curso buscava construir julgamento, e que o julgamento cresce revendo com honestidade as decisões passadas, e não colecionando mais frameworks. Ela compartilha o diário com sua mentora.
+
+### Exemplo resolvido
+
+Priya revisa os resultados e os limites do programa, transfere os métodos para uma empresa de saneamento com ressalvas de domínio e planeja dois anos de desenvolvimento.
+
+> **Caso sintético.** Os resultados, a empresa de saneamento e os planos são sintéticos; o SP 800-82 Rev. 3 é real.
+
+### Erros e limites
+
+A atribuição dos resultados é incerta. As afirmações de transferência precisam ser testadas no novo domínio.
+
+### Exercícios
+
+- **EX056 — Risco remanescente.** Que concentração de risco permaneceu na Corvane? *Rubrica:* 3 = o provedor de identidade;; 2 = identidade;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX057 — Cuidado na atribuição.** Que resultado poderia ter acontecido de qualquer modo? *Rubrica:* 3 = a redução de indisponibilidades por melhorias do próprio fornecedor;; 2 = fornecedor;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX058 — Métodos que se transferem.** Cite dois métodos que se transferem para a empresa de saneamento. *Rubrica:* 3 = registros de decisão, critérios por atributo, modelos de alcançabilidade, implantações escalonadas;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX059 — O que muda na transferência.** O que muda ao passar para a empresa de saneamento? *Rubrica:* 3 = os pesos dos atributos e janelas de mudança mais raras;; 2 = pesos;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Fazer crescer o julgamento.** Segundo a Dra. Voss, como o julgamento cresce? *Rubrica:* 3 = revendo com honestidade as decisões passadas;; 2 = revisão;; 1 = frameworks;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Ramanathan, a Dra. Elena Voss, a Brookmere University, a Corvane Health Network, a Hollin Care e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Priya Ramanathan, a Dra. Elena Voss, a Brookmere University, a Corvane Health Network, a Hollin Care e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Porque molda a proteção dos dados dos pacientes, a disponibilidade das clínicas, o fluxo de trabalho da equipe e o orçamento de todas as clínicas por cinco anos.
 
@@ -400,6 +690,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** Subiram no primeiro mês e depois caíram abaixo do nível de comparação.
 
 **EX030.** Uma implantação escalonada com medição contínua, em vez de uma única grande mudança.
+
+**EX031.** Os auditores conseguem rastrear cada controle de volta à decisão de projeto e a seus motivos.
+
+**EX032.** Revisava todos os projetos mensalmente, virou um gargalo e as equipes o evitavam.
+
+**EX033.** Novos fornecedores, fluxos de dados de pacientes, conexões de dispositivos clínicos ou exposição à internet.
+
+**EX034.** Mais projetos se apresentaram voluntariamente, porque o processo era rápido e previsível.
+
+**EX035.** Quando cada função vê a arquitetura como uma ajuda para seus próprios objetivos.
+
+**EX036.** Isolado em um segmento próprio, limitado ao arquivo de imagens, monitorado e com uma data de substituição.
+
+**EX037.** O comitê de governança clínica, por escrito.
+
+**EX038.** A conexão rápida importa as fraquezas da Hollin, enquanto a separação bloqueia os prontuários compartilhados dos pacientes.
+
+**EX039.** Uma conexão intermediada apenas para aplicações específicas.
+
+**EX040.** Tornar o risco visível, com responsável e temporário sempre que possível, em vez de eliminá-lo.
+
+**EX041.** Negar por padrão, identidade antes da rede e exceções datadas e com responsável.
+
+**EX042.** Projetado, implementado e verificado.
+
+**EX043.** 36 projetados, 29 implementados e 19 verificados, de 40.
+
+**EX044.** Ele declara o que foi verificado, por quem e como, em vez de oferecer conforto.
+
+**EX045.** Quando, de vez em quando, traz más notícias.
+
+**EX046.** O que foi medido, como a comparação foi feita e se o cenário se parece com uma rede de clínicas.
+
+**EX047.** Porque a pesquisa em segurança muitas vezes carece de afirmações falseáveis, como argumentam Herley e van Oorschot.
+
+**EX048.** Uma equipe dedicada de operações de segurança observando cada alerta.
+
+**EX049.** A direção provavelmente se aplica, mas o tamanho do efeito é incerto.
+
+**EX050.** Suas conclusões se apoiam numa comparação antes e depois sem controle, durante outras mudanças.
+
+**EX051.** Uma conexão não documentada de um analisador de sangue para um serviço de laboratório.
+
+**EX052.** Ela acrescentou uma semana de descoberta antes de qualquer mudança de regra.
+
+**EX053.** Em verificação, em que ela deu 3 e os avaliadores deram 2; os totais foram iguais, 11 de 15.
+
+**EX054.** Duas clínicas foram verificadas apenas por Priya, sem um testador independente.
+
+**EX055.** Porque um projeto que só seu autor consegue operar não foi verdadeiramente entregue.
+
+**EX056.** O provedor de identidade continuou sendo uma concentração de risco.
+
+**EX057.** A redução de indisponibilidades causada em parte por melhorias do próprio fornecedor.
+
+**EX058.** Os registros de decisão e os modelos de alcançabilidade, além dos critérios por atributo e das implantações escalonadas.
+
+**EX059.** Os pesos dos atributos, com a segurança física e a disponibilidade dominando, e janelas de mudança mais raras.
+
+**EX060.** Revendo com honestidade as decisões passadas, em vez de colecionar frameworks.
 
 <a id="references"></a>
 ## Referências
