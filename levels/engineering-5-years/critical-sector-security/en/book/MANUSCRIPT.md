@@ -3382,6 +3382,8 @@ This course's applied research answers a design question for a specific system, 
 
 State the question and the decision it informs; define the measurement (Chapter 29); choose a design — comparison of alternatives on a testbed, a parameter sweep in simulation, or measurement of an existing system; fix the analysis before running; control for confounders (same load, same hardware, same seeds); repeat runs to measure variability; and record everything to allow reproduction ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)).
 
+TMRP's detector study follows this pattern, with its analysis rule fixed before any run. Its seeds are recorded.
+
 ### 42.3 Public datasets and testbeds
 
 Public industrial-security datasets and testbeds allow experiments without touching real infrastructure. The Secure Water Treatment (SWaT) testbed dataset described by [Goh et al. (2017)](https://doi.org/10.1007/978-3-319-71368-7_8) and the BATADAL competition on water distribution networks reported by [Taormina et al. (2018)](https://doi.org/10.1061/(ASCE)WR.1943-5452.0000969) are widely used. Know their limits: testbeds are smaller and cleaner than real plants, attack sets are chosen by researchers, and benchmark performance does not transfer automatically. Read evaluation pitfalls before claiming results ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp); [Sommer and Paxson, 2010](https://doi.org/10.1109/SP.2010.25)).
@@ -3389,6 +3391,8 @@ Public industrial-security datasets and testbeds allow experiments without touch
 ### 42.4 Ethics and authorisation
 
 Applied research on real systems requires the owner's written authorisation and, where people or personal data are involved, ethics review (Chapter 10). Results that reveal weaknesses in specific systems go to the owner, not to a conference.
+
+For TMRP, the detector study uses simulation and LRWA's own historian data under the programme's authority. Any finding about a vendor's product would go to that vendor privately before anything is written for a wider audience, and no real station is used as an experimental subject.
 
 ### 42.5 Worked example: is the cumulative detector worth deploying? (synthetic)
 
@@ -3398,6 +3402,8 @@ Question: should TMRP deploy the cumulative mass-balance detector of Chapter 17 
 
 Implement a reduced version of §42.5 using Lab 7: three thresholds × three noise levels × 20 seeds; report false alarms and ramp detection times in a table with variability.
 
+Fix your analysis rule before running: for example, choose the lowest threshold with no false alarms in the no-attack runs at each noise level. Seed each run and record the seeds. Report the number of false alarms and the ramp detection time for every cell with its spread across seeds, not just the mean. Then state one limit of the reduced study, such as perfect flow meters, and the direction in which it biases your results.
+
 ### 42.7 Common errors and limits
 
 - Studies without a decision they inform.
@@ -3405,6 +3411,8 @@ Implement a reduced version of §42.5 using Lab 7: three thresholds × three noi
 - Single runs reported as results.
 - Benchmark performance claimed to transfer to real plants.
 - Weaknesses of real systems published without coordination.
+
+The cumulative detector study in the worked example avoids each of these: it informs a deployment decision, fixes its analysis rule in advance, uses a hundred runs per cell, validates its noise model against two weeks of LRWA historian data and states that an attacker controlling the flow meters is out of scope.
 
 ### Exercises — chapter 42
 
@@ -3436,17 +3444,25 @@ After this chapter you can (1) plan and complete a supervised practice placement
 
 Practice exposes the constraints that textbooks smooth over: procurement cycles, staffing, legacy equipment, regulatory deadlines, union agreements, budgets, and the gap between procedure and practice. Engineers who have seen a control room at night design differently from those who have not.
 
+The TMRP case in this book is synthetic; a placement is where you see how far a real utility's constraints differ from it. Notice how decisions are actually made, who owns operational risk and how long a simple change takes, because those observations will shape how you scope your capstone.
+
 ### 43.2 Placement agreement
 
 Before starting, agree in writing: host supervisor and academic supervisor; scope of work; systems you may access and how; confidentiality and data handling; safety induction; what you may publish in your report; and how incidental findings are handled. You work under the host's authority and policies; your course gives you no authority to test or access anything.
+
+The worked example's host approved the final report text before it left the organisation. Agreeing the publication rule in advance avoided any argument about what the report could include.
 
 ### 43.3 Reflective practice log
 
 Keep a weekly log with four entries: **observation** (what you saw, without judgement), **connection** (which chapter's method it relates to), **difference** (where practice diverged from the method, and why it made sense locally), and **question** (what you would investigate). Reflection turns experience into transferable judgement. Do not record sensitive details in the log; record patterns.
 
+In the worked example below, the student's observation about firmware versions follows exactly this pattern, and contains no device names. Weekly entries keep the habit.
+
 ### 43.4 Common placement work
 
 Typical tasks for an engineering student: updating an asset inventory and reconciling it with network data (Chapter 22); drafting or reviewing a playbook (Chapter 37); supporting a risk assessment (Chapter 24); preparing a test procedure for a commissioning (Chapter 31); assessing advisories against the inventory (Chapter 12). Each produces a deliverable for the host and a sanitised learning artefact for the course.
+
+The student in the worked example did the first task, reconciling an asset register with monitoring data. The student's deliverable to the host was a change to the work-order form.
 
 ### 43.5 Worked example: a sanitised placement report (synthetic)
 
@@ -3456,12 +3472,16 @@ A student placed with a (synthetic) regional electricity distributor writes a re
 
 Draft a placement agreement for a hypothetical four-month placement at a water utility, covering all items in §43.2.
 
+Use a water utility like LRWA as your mental model, but keep the agreement general enough for a real host to sign. Name both supervisors by role, list the systems you may see and how, and state plainly that you may not test or scan anything. Say how incidental findings are reported and who approves your report before it leaves the host. Add a safety induction date and the data you may take away, which should usually be none.
+
 ### 43.7 Common errors and limits
 
 - Starting without a written scope and data-handling agreement.
 - Treating placement access as permission to explore.
 - Logs containing sensitive details.
 - Reports that criticise the host without understanding local constraints.
+
+The worked example avoids each: its scope was agreed, its log recorded patterns rather than device details, and its recommendation took account of why the register lagged behind repairs. Its criticism of the register was framed around a process gap, not around the field staff, and the host accepted the recommendation because it fitted the way repairs were actually done.
 
 ### Exercises — chapter 43
 
@@ -3493,25 +3513,37 @@ After this chapter you can (1) define a capstone project with a sponsor, scope, 
 
 A capstone is a substantial engineering project in which the student designs, builds and verifies a system that meets real or realistic requirements under constraints. In this course the capstone must: address a critical-infrastructure security or resilience need; include a working artefact (software, configuration, testbed or prototype); include analysis (threat/failure, performance, reliability); and be verified against stated requirements. The capstone continues the TMRP case unless your supervisor approves another synthetic or authorised case.
 
+The worked example below follows TMRP: restart-safe authenticated telemetry for the legacy RTUs at PS1 and PS2.
+
 ### 44.2 Scoping
 
 A good capstone scope is narrow enough to finish and deep enough to require real engineering. Examples: an authenticated telemetry gateway with fault-injection verification; a residual-based detector with a validated simulation study; a recovery-orchestration tool with a measured restoration trial; a segmentation-verification tool with a policy model. Write a one-page scope: need, stakeholders, deliverables, out-of-scope items, constraints, and acceptance criteria.
+
+The TMRP capstone scope in the worked example below fits on one page and leaves real RTU hardware and the carrier network out.
 
 ### 44.3 Planning
 
 Plan with a work breakdown, schedule with milestones (preliminary design review, critical design review, verification complete, thesis draft, defense), risk register (technical, schedule, access, skills), and verification plan tracing requirements to tests. Keep a weekly log and update the risk register monthly.
 
+For the TMRP capstone, the twelve-week schedule places the preliminary design review in the first weeks and the independent review before verification. Its risk register includes the chance that restart safety proves harder than expected, which, as the verification summary later shows, is what happened when the receiver accepted replays after a restart.
+
 ### 44.4 Environment
 
 Set up version control, an issue tracker, a reproducible build (pinned dependencies or standard library only), automated tests, and a results directory where every result is stored with the commit, seeds and environment that produced it.
+
+For the TMRP capstone, the gateway uses only the Python standard library, so there are no dependencies to pin, and every campaign result is stored with its seed and commit. That discipline is what lets the later dossier list a hash and version for each result.
 
 ### 44.5 Worked example: capstone scope (synthetic)
 
 *Title:* Restart-safe authenticated telemetry for legacy RTUs. *Need:* N2/N3 of TMRP. *Deliverables:* gateway software (Python standard library), bench harness, fault-injection campaign, key-rotation procedure, thesis. *Out of scope:* real RTU hardware; carrier network. *Constraints:* 12 weeks; synthetic data. *Acceptance:* R1, R2 (including restarts), R7 verified on the bench; zero silent failures in a seeded campaign of 10,000 messages across seven fault classes; key rotation without loss of telemetry demonstrated.
 
+Each acceptance criterion maps to a requirement or a demonstration, so the critical design review can check them one by one.
+
 ### 44.6 Practical activity
 
 Write your capstone scope and plan, and hold a preliminary design review with your supervisor and one peer.
+
+Base your scope on the one-page template: need, stakeholders, deliverables, items out of scope, constraints and acceptance criteria. Then prepare a short plan with milestones and a risk register. At the review, ask your supervisor and peer to challenge the acceptance criteria above all, because a criterion that cannot be tested will cause trouble at the critical design review. Record their findings and your responses.
 
 ### 44.7 Common errors and limits
 
@@ -3519,6 +3551,8 @@ Write your capstone scope and plan, and hold a preliminary design review with yo
 - No acceptance criteria.
 - Verification planned last.
 - Unreproducible environments.
+
+The draft scope in EX087 shows the first two errors: securing water utilities with an AI system has no boundary and no acceptance criteria. The TMRP capstone scope avoids them by naming one gateway, three requirements and a measured campaign. Its verification plan was written with the scope, and its environment uses only the standard library with seeded runs, so every result can be reproduced. Its milestones are dated.
 
 ### Exercises — chapter 44
 
@@ -3550,17 +3584,25 @@ After this chapter you can (1) conduct an independent technical review of anothe
 
 An independent reviewer has not worked on the design and does not report to its authors. Independence catches errors that authors cannot see — shared assumptions, blind spots, wishful verification. The purpose is to improve the design and the decision about it, not to score points.
 
+For TMRP, the reviewer of the capstone dossier is someone who did not work on the gateway and does not report to its authors. That independence is why the reviewer noticed that the assurance case cited T3 as passed while the matrix still recorded it as failed, an inconsistency the authors had read past many times.
+
 ### 45.2 Review criteria
 
 Review against: requirements (complete, verifiable, traced); architecture (consequence-driven, failure and attack behaviour analysed); controls (specified with performance, independent layers); analyses (assumptions stated, numbers consistent); verification (plan covers requirements, failures handled honestly); operations (procedures, training, recovery); maintainability; and the assurance case (claims supported, defeaters stated).
+
+Each criterion maps to a chapter of this book: requirements to Chapter 21, architecture to Chapter 26, controls to Chapter 27, verification to Chapters 30 and 40, operations to Chapter 37 and the assurance case to Chapter 35. Reviewers of the TMRP dossier used this list as their checklist.
 
 ### 45.3 Writing findings
 
 A finding states: what was observed (with a reference to the document or evidence), why it matters (consequence), the criterion it fails, and a recommendation. Severity: **critical** (claim cannot be supported, or safety risk), **major** (significant gap needing change before approval), **minor** (improvement), **observation** (no change required). Avoid vague findings ("security seems weak") and design-by-reviewer (prescribing your favourite solution when several would do).
 
+The TMRP findings in the worked example below follow this form. F4, on the battery fraction, is minor because the claim survives with a source added.
+
 ### 45.4 Responding to review
 
 Authors respond to each finding: accept (with change), reject (with reasoning and evidence), or defer (with owner and date). The reviewer checks responses and closes or escalates findings. Disagreements that cannot be resolved go to the decision owner with both positions recorded.
+
+For TMRP, the authors accepted F2 and added the stale-station alarm, and accepted F3 by reporting R6 as not met and costing options in ADR-015. Each response named an owner, and the reviewer checked the re-run campaign before closing F2.
 
 ### 45.5 Worked example: findings on the TMRP dossier (synthetic)
 
@@ -3574,12 +3616,16 @@ Authors respond to each finding: accept (with change), reject (with reasoning an
 
 Exchange capstone dossiers with another student, review against §45.2 criteria, and write at least six findings with severities.
 
+Choose a reviewer who has not helped with your design. For each finding, include the observation with its reference, the consequence, the criterion it fails and a recommendation. Use the four severity levels honestly. Then exchange roles and respond to the findings on your own dossier with accept, reject or defer, giving evidence for each rejection. Keep both logs for your dossier. Keep it to evidence.
+
 ### 45.7 Common errors and limits
 
 - Reviews by people who helped design.
 - Vague or unevidenced findings.
 - Severity inflation or deflation.
 - Authors rejecting findings without evidence.
+
+The TMRP review avoided these: the reviewer was independent, each finding cited a document, severities matched consequences, and the authors' responses were backed by evidence and checked before closing. F5 was kept as an observation, not inflated. F1 was rated critical because the claim could not be supported as written, not because the error was embarrassing, and the authors did not reject any finding without evidence to support the rejection.
 
 ### Exercises — chapter 45
 
@@ -3611,13 +3657,19 @@ After this chapter you can (1) complete implementation of the capstone artefact;
 
 Freeze scope: new features now threaten verification. Close the review findings that require design changes first. Keep the main branch always passing its tests; tag the version that enters final verification.
 
+For the TMRP capstone, scope was frozen after the independent review. F2's stale-station alarm was the design change made before the tagged version entered final verification; every later idea went to a list for future work. The restart fix came later, as a correction found by verification itself, which is the only kind of change allowed after a freeze. The main branch stayed green.
+
 ### 46.2 Executing verification
 
 Run the full verification plan against the tagged version: unit, integration, property-based and fault-injection tests (Chapters 30 and 40). Record each result with version, seed and environment. For any failure: record, analyse, fix, re-run, record again. Do not overwrite earlier results; history is evidence.
 
+For the TMRP capstone, the receiver's failure to reject replays after a restart was recorded, fixed by persisting the last counter per station, and re-tested, with both results kept. The tagged version was the one tested. Its seed was recorded.
+
 ### 46.3 Critical design review
 
 At the critical design review the panel checks: requirements met with evidence; review findings closed or dispositioned; residual risks stated and owned; operations and maintenance prepared; and readiness for the trial. Bring the traceability matrix, verification results, finding log and assurance case.
+
+For TMRP, the panel saw the verification summary below. It includes the restart failure and its fix, the stale-station alarm added after F2 and the key rotation demonstration. With F1 to F3 closed or dispositioned and R6 reported honestly, the panel could make an explicit readiness decision for the trial instead of an assumption.
 
 ### 46.4 Worked example: capstone verification summary (synthetic)
 
@@ -3634,11 +3686,15 @@ The restart failure was found by the extended fault model of EX080 — a direct 
 
 Run your full verification plan and produce the summary table with links to raw results.
 
+For each requirement, give the tests, the result and any fix, as in the TMRP summary. Keep the failed results with their dates and the fixes that followed, and link each line to the raw result files with their seeds and versions. If a test was not run, say so in the table rather than leaving it blank. The table should let a reviewer trace any claim to a file in one step.
+
 ### 46.6 Common errors and limits
 
 - Adding features during verification.
 - Overwriting failed results with later passes.
 - Entering critical design review with open critical findings.
+
+The TMRP capstone avoided these by freezing scope after review, keeping the restart failure in the record beside its later pass, and closing F1 to F3 before the critical design review. Failed results stayed in the record with the fixes that followed, so reviewers could see how each pass was earned. No feature was added during verification. Open findings were closed first.
 
 ### Exercises — chapter 46
 
@@ -3670,13 +3726,19 @@ After this chapter you can (1) design a controlled failure and recovery trial wi
 
 Recovery capability that has not been exercised is a hope. Backups that have not been restored may be incomplete; procedures that have not been followed may be wrong; times that have not been measured are guesses. [NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) covers contingency planning, including testing, training and exercises.
 
+TMRP's own trial showed why: the eight-hour restoration target in R6 looked reasonable until the critical path was measured. Measuring it was the point.
+
 ### 47.2 Designing the trial
 
 Define the scenario (e.g., SCADA servers declared compromised at 02:00), the objectives (restore remote operation from offline backups; maintain supply in local mode throughout), the safety boundaries (trial on the test environment or a planned window with local operation staffed; abort criteria), the observers and the measurements (time of each task, deviations from procedure, decisions).
 
+TMRP's trial used the scenario of SCADA servers declared compromised, with supply maintained in local mode throughout. Observers recorded each task's time and every deviation from the procedure.
+
 ### 47.3 Critical path
 
 Recovery tasks have durations and dependencies. The **critical path** is the longest chain of dependent tasks; it sets the minimum recovery time. Tasks off the critical path have **slack**. Shortening recovery means shortening critical-path tasks or breaking dependencies — not speeding up tasks with slack.
+
+In TMRP's trial, re-keying the RTUs had six hours of slack. Speeding it up would have changed nothing. Only imaging, rebuild and configuration restore set the twelve-hour result, which is why every option for meeting R6 targets one of those three tasks, such as pre-built standby images or imaging on spare hardware.
 
 ### 47.4 Worked example: TMRP recovery trial (synthetic)
 
@@ -3710,6 +3772,8 @@ restore remote control at 12 h; critical path: isolate -> forensic_image -> rebu
 slack of rekey_rtus: 6 h; target 8 h met: False
 ```
 
+The output confirms the worked example: remote control returns after twelve hours because imaging, rebuild and configuration restore run in series, and re-keying finishes six hours before it is needed. Change the plan as EX093 asks and watch the critical path move to a different chain. The lab does not include manual operations on the path to remote control, because they run in parallel; the trial measured them separately at fifty minutes against the one-hour requirement. Keep both outputs.
+
 ### 47.6 Common errors and limits
 
 - Recovery tested only on paper.
@@ -3717,6 +3781,8 @@ slack of rekey_rtus: 6 h; target 8 h met: False
 - Improving tasks that have slack.
 - Trial results reported as passes when the requirement was missed.
 - Forensic preservation skipped to save time without a decision.
+
+TMRP's trial avoided the fourth error by reporting R6 as not met at twelve hours, and it kept forensic imaging rather than skipping it without a decision. Abort criteria and local staffing were set before the trial began, and the options for meeting R6 target only critical-path tasks.
 
 ### Exercises — chapter 47
 
@@ -3748,17 +3814,25 @@ After this chapter you can (1) assemble an engineering evidence dossier that sup
 
 The evidence dossier is the collection of artefacts that supports the assurance case: requirements and traceability; design documents and decision records; analyses (threat models, fault trees, performance, reliability); implementation records (source revision, SBOM, build provenance); verification and validation results; review findings and responses; trial reports; operational documents; and the residual-risk register with owners. Organise it by claim, not by date: a reviewer should be able to start from a claim and find its evidence in two clicks.
 
+For TMRP, the dossier's claims are C1 to C4.
+
 ### 48.2 Provenance
 
 Every piece of evidence states what it is, who produced it, when, from which version of the system and with which tools. Numbers in the thesis must trace to a result file (compare the master's provenance check in its Chapter 7). Use content hashes for result files and record them in an index, as Chapter 13's hash chain does for logs.
+
+For TMRP, each entry in the dossier index carries a version, such as the gateway release or the trial date, and the first characters of its hash.
 
 ### 48.3 Sensitivity
 
 Dossiers about infrastructure contain sensitive details. Keep a full restricted version for authorised reviewers and a redacted version for wider audiences, and record what was redacted and why. For coursework with synthetic cases, sensitivity is lower — but practise the discipline.
 
+For TMRP, the restricted version would include gateway configurations and key-management procedures, while the redacted version describes the architecture at the level of zones and conduits. The redaction record lists each removed item and the reason, so a reviewer of the redacted version knows what was withheld and can ask for access through the proper route.
+
 ### 48.4 Consistency check
 
 Before submission: every claim has evidence; every number in the thesis matches its source; statuses agree across documents (no "passed" in one and "failed" in another — finding F1 in Chapter 45); residual risks have owners; and all review findings are closed or dispositioned.
+
+TMRP's dossier failed this check once, when C2 cited T3 as passed while the matrix still showed it failed. The fix was to record the v2 re-test as T3b and update every document that referred to it, so the index now shows the same status everywhere.
 
 ### 48.5 Worked example: dossier index excerpt (synthetic)
 
@@ -3775,12 +3849,16 @@ Before submission: every claim has evidence; every number in the thesis matches 
 
 Build your dossier index with real content hashes of your result files (`hashlib.sha256`) and run the §48.4 consistency check.
 
+Use the script from EX095 to compute the hashes, and store the index under version control so its history is part of the evidence. Then run the consistency check against your thesis draft. Every number in the draft should appear in a result file listed in the index, and every status should match. Fix any mismatch in the source document first, then regenerate the index.
+
 ### 48.7 Common errors and limits
 
 - Dossiers organised by date or author instead of claim.
 - Numbers in the thesis with no source file.
 - Status inconsistencies across documents.
 - Redaction without a record.
+
+The TMRP index avoids the first error by organising evidence by claim, and its record of C3 as not met keeps the third from appearing. A redaction record accompanies the shared version. Every number in the thesis traces to a result file listed in the index, and the shared version carries a record of what was redacted and why.
 
 ### Exercises — chapter 48
 
@@ -3812,6 +3890,8 @@ After this chapter you can (1) structure an engineering thesis around a design p
 
 An engineering thesis argues that a designed system meets a need under constraints, supported by verification and validation evidence. It is not a research dissertation (the [master's book](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) covers that) and need not claim an original contribution to knowledge (the [doctoral book](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md)). Its originality, if any, lies in the design and the quality of its evidence.
 
+For TMRP, the thesis argues that the restart-safe gateway meets R1, R2 and R7 on the bench and reports R6 as not met.
+
 ### 49.2 Structure
 
 1. **Introduction:** need, stakeholders, consequence, scope.
@@ -3825,13 +3905,19 @@ An engineering thesis argues that a designed system meets a need under constrain
 9. **Conclusion:** what was achieved and what remains.
 Appendices: traceability matrix, dossier index, lab code.
 
+The TMRP thesis follows this structure.
+
 ### 49.3 Results and limitations
 
 Report requirement status honestly: met, met after fix, not met, not verified. For each limitation, say which claims it affects and in which direction: "the bench uses perfect clocks; real clock drift would increase stale-message rejections, so the false-stale rate reported is a lower bound". A limitation without a direction is decoration.
 
+The TMRP discussion paragraph in the worked example below gives such a limitation: the bench used a synthetic network, so the sixty-second stale-station threshold must be re-tuned on site, where LTE congestion may raise false alarms. That sentence names the affected claim and the likely direction.
+
 ### 49.4 Writing well
 
 Lead each chapter with its main point. Use figures with labelled axes and units; tables for exact values. Keep numbers traceable to the dossier. Write in plain technical English, define terms at first use, and use a glossary.
+
+For TMRP, the requirement-status table appears early in the discussion, and every number in it traces to an entry in the dossier index with its hash. Each chapter opens with its main point, and terms such as stale-station alarm are defined at first use and in the glossary, so an examiner can read any chapter without hunting for definitions.
 
 ### 49.5 Worked example: discussion paragraph (synthetic)
 
@@ -3841,12 +3927,16 @@ Lead each chapter with its main point. Use figures with labelled axes and units;
 
 Write the discussion chapter of your thesis, with a requirement-status table and directional limitations.
 
+Use the TMRP discussion paragraph as your model. Begin with a table that gives each requirement's status as met, met after fix, not met or not verified. Then write one paragraph per significant result, including any requirement you did not meet, and end with your limitations, each naming the claim it affects and the direction of likely bias. Check every number against your dossier index before submitting.
+
 ### 49.7 Common errors and limits
 
 - Theses organised as diaries.
 - Requirement status rounded up.
 - Limitations without direction or affected claims.
 - Numbers that do not match the dossier.
+
+The TMRP thesis avoids each: it is organised by argument, reports R6 as not met, gives directional limitations, and draws its numbers from the dossier index. Its requirement-status table is checked against the dossier before submission, so nothing is rounded up. Its limitations name the synthetic bench and the single recovery trial, and say in which direction each might bias the results.
 
 ### Exercises — chapter 49
 
@@ -3878,9 +3968,13 @@ After this chapter you can (1) prepare a technical defense presentation of a cap
 
 Examiners check that the candidate understands the need and constraints; made defensible design decisions; verified claims competently; knows the limits of the evidence; and can reason about changes ("what if the requirement were 2 h?"). They read the thesis closely and probe inconsistencies.
 
+For the TMRP defense, examiners are likely to probe the R6 shortfall and the accepted residual risk D1. They may ask what would change if the hospital buffer were two hours instead of four, and the candidate should reason from the fault tree and the local automatic mode rather than guess.
+
 ### 50.2 The presentation
 
 Twenty minutes: need and consequence (2 min); requirements (2); alternatives and selection (3); architecture and key controls (4); verification and validation results with failures and fixes (5); requirement status and residual risks (2); limitations and next steps (2). One message per slide. Show the requirement-status table; examiners respect "not met" stated plainly.
+
+For TMRP, the requirement-status table would show R1, R2 and R7 as met after fixes and R6 as not met at twelve hours, with the options in ADR-015. That slide prepares the panel for the questions in the worked example, and stating the shortfall before an examiner finds it earns more trust than any polished result.
 
 ### 50.3 Question families
 
@@ -3897,9 +3991,13 @@ Prepare two answers per family with references to the dossier.
 
 When you do not know: say so, say how you would find out, and — if you can — reason toward an answer aloud, labelled as reasoning. Do not invent numbers. When an examiner finds an error: acknowledge, assess its impact on the claims, and propose a correction.
 
+In the worked example, the candidate does this when asked about residual risk D1: the candidate states who accepted it, the evidence that bounds it and the alternative that would remove it, without pretending the risk is negligible. No number is invented.
+
 ### 50.5 After the defense
 
 Corrections are listed in a table: examiner request, change made, location. Hand over the artefact and dossier to the sponsor with known limitations and maintenance needs. For real projects, route any security findings through the owner's processes.
+
+For TMRP, the handover goes to LRWA's operations director with the dossier, the open item on R6 and the note that the stale-station threshold needs re-tuning on site. Any security finding about real equipment would go through LRWA's own processes, not the thesis.
 
 ### 50.6 Worked example: answering a hard question (synthetic)
 
@@ -3909,12 +4007,16 @@ Corrections are listed in a table: examiner request, change made, location. Hand
 
 Hold a mock defense with two peers acting as examiners using the question families; record questions you could not answer and prepare answers.
 
+Ask your examiners to use every question family and to probe at least one number in your thesis. Record each question you could not answer, then trace the answer to your dossier afterwards. For TMRP, the hardest questions concern the R6 shortfall and residual risk D1; prepare those answers until you can give them briefly, with the evidence named, and without claiming more than the dossier supports.
+
 ### 50.8 Common errors and limits
 
 - Presentations that hide failures.
 - Defensive answers to error findings.
 - Invented numbers under pressure.
 - No correction plan.
+
+The TMRP candidate avoids these by showing the R6 shortfall on a slide, acknowledging errors plainly, refusing to invent numbers and keeping a corrections table ready for the examiners' requests. Failures such as the restart replay are presented as findings that verification caught, with the fix and the re-test, which is exactly what examiners want to see. A corrections table is ready. Every claim stays within the dossier.
 
 ### Exercises — chapter 50
 
