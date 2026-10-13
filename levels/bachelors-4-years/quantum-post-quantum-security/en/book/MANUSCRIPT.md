@@ -2053,31 +2053,45 @@ You will (1) analyse migrations with constrained devices, long-term signatures a
 
 Card terminals, ATMs and building controllers have limited memory, slow processors and long lifetimes. ML-KEM is fast enough for most, but key and signature sizes may exceed buffers, and boot ROMs that verify only RSA cannot change. The realistic plan combines firmware upgrades where possible, gateways that terminate post-quantum protocols in front of devices that cannot, and procurement requirements so that replacements are ready.
 
+For HCU, the 3,000 card terminals are the clearest case. Each model needs a record of what its firmware can verify and how much memory it has, so that the plan can say which terminals will be upgraded and which will sit behind a gateway until they are replaced.
+
 ### 31.2 Stateful signatures in practice
 
 LMS and XMSS ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) require that each one-time key is used once. State must survive crashes, backups and HSM failover without rollback. SP 800-208 requires these schemes to be generated and used within hardware cryptographic modules and forbids exporting private keys, which reflects the danger of state duplication. Organisations using them plan the total number of signatures in advance and monitor remaining capacity.
+
+Running out of one-time keys stops signing completely, so capacity planning is part of the design.
 
 ### 31.3 Long-term signatures and archives
 
 A mortgage signed with ECDSA today must still be verifiable in 30 years. If a quantum computer can later forge ECDSA, a forger could backdate documents. Archive systems address this with timestamps and evidence records renewed with stronger algorithms before the old ones weaken; the renewal proves the document existed while its original signature was still trustworthy. Encrypted archives need similar care: re-encrypting with new keys does not help if old ciphertexts or wrapped keys were already copied.
 
+For HCU this means the archive plan covers signatures, timestamps and keys together.
+
 ### 31.4 Partners and suppliers
 
 Payment networks, shared service providers and regulators set requirements HCU cannot change alone. Migration plans list partner dependencies, ask for roadmaps, and include contract clauses for algorithm support and inventory disclosure.
+
+Where a partner cannot yet say when it will support post-quantum algorithms, the plan records that as an open dependency with an owner and a date to ask again, rather than assuming the partner will be ready in time. HCU tracks its payment network and core banking provider this way, since both control flows it cannot change on its own.
 
 ### 31.5 Worked example
 
 HCU's ATM vendor offers a firmware update supporting ML-KEM for the ATM-to-switch link but not post-quantum firmware signing, because the boot ROM verifies only RSA. Decision: deploy the key-exchange update to protect PIN-related traffic (short-lived but sensitive), accept forge-later residual risk for firmware until replacement in five years, and require LMS or ML-DSA boot verification in the replacement tender.
 
+The residual risk is written into the risk register with an owner, so that it is reviewed each year rather than forgotten until the replacement arrives.
+
 ### 31.6 Practical activity
 
 Write a one-page plan for HCU's 30-year mortgage archive covering signatures, timestamps, encryption and key wrapping.
+
+Say which documents need protection for the full period, when evidence records will be renewed, how the renewal is triggered, and who owns it. Explain how the plan deals with ciphertexts and wrapped keys that may already have been copied, since re-encryption alone cannot help them. Finish with the first three actions HCU should take this year and the evidence each will produce. Keep it to one page.
 
 ### 31.7 Common errors and limits
 
 - Using stateful signatures in software without protected state.
 - Assuming re-encryption fixes past exposure.
 - Leaving partner dependencies out of the plan.
+
+- Treating a gateway in front of old devices as permanent rather than as a bridge to replacement. - Renewing archive timestamps only after the old algorithm is already doubted, when the renewal can no longer prove anything. - Planning the total number of stateful signatures without allowing for test, backup and failover use. - Buying replacement devices without post-quantum boot verification in the tender.
 
 ### Exercises
 
@@ -2104,13 +2118,19 @@ You will (1) connect PQC migration to law, finance, procurement and communicatio
 
 Regulators increasingly expect financial institutions to manage cryptographic risk. Contracts define confidentiality periods that become *x* in Mosca's inequality. Evidence rules for signed documents shape archive design. A lawyer and a cryptographer looking at the same mortgage archive see two sides of one requirement.
 
+Getting both views into the same room early prevents a design that is technically sound but cannot be relied on in a dispute. For HCU, the legal team supplies the confidentiality periods for each data class, and those periods become the inputs to the prioritisation model rather than estimates made by the technical team alone.
+
 ### 32.2 Finance and procurement
 
 Migration cost drivers include inventory effort, software upgrades, hardware replacement, testing, staff training and partner coordination. Aligning hardware replacement with natural refresh cycles lowers cost; procurement clauses requiring algorithm agility, post-quantum support and cryptographic inventories reduce future cost. Finance teams need ranges and assumptions, not single figures.
 
+A range that shows the effect of a delayed vendor or an early replacement is more useful than a precise number that turns out wrong. HCU's estimate separates costs it controls, such as testing and training, from costs set by partners and vendors.
+
 ### 32.3 Communication and governance
 
 Boards need one-page decisions: exposure, options, recommendation, cost range, residual risk. Staff need to know what changes for them. Members need reassurance without alarm. Avoid fear-based messaging; describe what is being protected and why the timing is prudent.
+
+The same facts can serve each audience if the level of detail changes. HCU's board paper on the migration fits on one page, with the technical evidence attached for those who want it. The member notice, if one is ever needed, says what is protected and that nothing is required of members.
 
 ### 32.4 Worked example
 
@@ -2120,14 +2140,21 @@ HCU's security lead presents to the board: "Our 30-year mortgage archive is expo
 
 Prepare a stakeholder map for HCU's migration: legal, finance, procurement, IT operations, vendors, partners, members and regulators, with what each needs and provides.
 
+Mark which groups must approve decisions, which must be consulted, and which only need to be informed. Note any group whose cooperation is on the critical path, such as the payment network, and say how and when it will be contacted. Then compare your map with a classmate's and discuss any group one of you missed. Keep the map current as the plan changes.
+
 ### 32.6 Common errors and limits
 
 - Presenting technical detail without a decision.
 - Single-figure cost estimates.
 - Ignoring procurement as a control.
+
+- Leaving legal and procurement out until the technical design is finished. - Treating member communication as an afterthought. - Writing board papers that list risks but do not ask for a decision. - Assuming regulators want the same detail as engineers. - Forgetting that partners' timelines may set the pace. Each makes a sound technical plan harder to fund, approve or carry out. Involving these groups early costs little and avoids rework.
+
 ### 32.7 Regulators and auditors
 
 Auditors will ask for evidence, not intentions: the inventory with its coverage, the prioritisation method, the approved plan and progress against it. Organizing the migration programme so that these artefacts exist as by-products of normal work — the CBOM regenerated each quarter, decision records for each choice — makes audits cheaper and more honest than preparing special documents before each review.
+
+An honest progress report includes the items that are late and why. HCU's internal audit team reviews the CBOM and decision records once a year and reports any gaps to the risk committee.
 
 ### Exercises
 
@@ -2154,31 +2181,45 @@ You will (1) design comparative studies with controlled variables; (2) handle me
 
 Comparative questions — "which of two hybrid configurations performs better on branch links?" — need controlled variables: same hardware, same network emulation, same client versions, randomised order. Record everything that could differ. Prefer paired designs, where each condition runs on the same set of clients, so that client variation cancels out.
 
+In a lab, small differences such as a background update on one virtual machine can be larger than the effect being measured. Run a short pilot first to check that the measurement itself is stable before collecting the main data.
+
 ### 33.2 Uncertainty and replication
 
 Report medians and high percentiles with confidence intervals; repeat runs on different days; publish scripts and configurations. A result that disappears on replication was noise. For rare events such as handshake failures, plan sample sizes in advance so that confidence bounds are narrow enough to support the decision.
+
+State the intervals in the write-up, not only in an appendix, so readers see how certain each result is. A difference smaller than the run-to-run variation should be reported as no detectable difference, which is itself a useful finding for a migration decision.
 
 ### 33.3 Qualitative evidence
 
 Many migration questions are organisational: why did a team delay? what do vendors say about roadmaps? Semi-structured interviews, coded for recurring themes, answer such questions. Protect interviewees with consent, anonymisation and secure storage. Combine qualitative findings with measurements: interviews may explain why fallback persists at certain branches.
 
+Interview notes are analysed with the same care as measurements: the coding scheme is written down, and a second person codes a sample to check agreement. Quotes are reported without names or details that would identify a branch or a person.
+
 ### 33.4 Methods sections
 
 A methods section states question, design, setting, participants or systems, procedure, measures, analysis and limitations. The test is replication: could another student rerun your study from the text and obtain comparable results?
+
+Write it as the study is done, not afterwards. Include the exact versions of software, the configuration of any network emulation, and how many runs were made. Limitations belong here too: for HCU studies, the most common is that the lab does not reproduce every device found in the branches.
 
 ### 33.5 Worked example
 
 An HCU study compares ML-KEM-768 hybrid against classical X25519 handshakes on emulated branch links (40 ms RTT, 1 % loss). Paired design: 20 client VMs, each runs 500 handshakes per condition in random order, repeated on three days. Result (synthetic): median +0.8 ms (95 % CI 0.6–1.0), p99 +3.1 ms (CI 2.2–4.3). Interviews with five branch IT staff explain that two branches route through an old proxy, which the emulation did not include — a stated limitation and next study.
 
+The proxy finding links to the rollout in Chapter 29. The study's scripts are kept so it can be rerun.
+
 ### 33.6 Practical activity
 
 Write a methods section for a study of certificate-chain size effects on HCU's mobile app, including sample size reasoning.
+
+Explain how many handshakes you need to detect a difference you care about, which client devices and network conditions you will emulate, and how you will separate the effect of chain size from other changes. State what result would lead HCU to keep ECDSA and what would support a move to ML-DSA. List the limitations you expect before collecting any data.
 
 ### 33.7 Common errors and limits
 
 - Unpaired comparisons with uncontrolled clients.
 - Reporting only means for skewed latency.
 - Interviews without consent or anonymisation.
+
+- Changing two variables at once, so that the effect cannot be attributed. - Running all of one condition before the other, letting time-of-day effects creep in. - Reporting one day's results as if they were general. - Drawing conclusions from interviews with only the most enthusiastic staff. Each weakens the evidence a migration decision depends on. The fix in each case is planning before data collection. Write the plan down first.
 
 ### Exercises
 
@@ -2205,30 +2246,45 @@ You will (1) compare two or more migration approaches on explicit criteria; (2) 
 
 Comparisons need criteria agreed in advance: protection against HNDL, protection against forge-later, operational risk, cost, time to deploy, agility for future change and dependency on third parties. Weights express priorities; publish them so readers can disagree with the weights rather than with hidden judgments.
 
+A criterion that cannot be scored with evidence should be reworded or dropped. For HCU, the weights were set by the risk owner after discussion with operations and finance, and each criterion has a short definition so that two scorers would read it the same way. HNDL protection carries the largest weight because of the mortgage archive.
+
 ### 34.2 Scoring and sensitivity
 
 Score each alternative per criterion on a simple scale with evidence. Multiply by weights and sum. Then vary weights and key assumptions (CRQC timeline, vendor delivery dates) to see whether the ranking changes. A recommendation that holds across reasonable weightings is robust; one that flips with small changes should be presented as a close call.
+
+Record each score with its source. A score with no evidence behind it is a guess and should be marked as one. Sensitivity runs are chosen where reviewers disagree most, not at random, so that the analysis answers the questions people are actually asking.
 
 ### 34.3 The project
 
 Students compare, for HCU's branch WAN, three options: (A) hybrid IKEv2 via appliance firmware, (B) RFC 8784 post-quantum pre-shared keys as an interim layer, and (C) a new SD-WAN product with native hybrid support. Evidence comes from the system model (Chapter 21), lab measurements (Chapters 25 and 30) and vendor statements labelled as such.
 
+Each option is described in enough detail that a reader can see what would actually change at a branch. The comparison covers all 40 branches, noting where a branch's appliance or link differs from the rest, because one exception can change which option is practical there.
+
 ### 34.4 Worked example
 
 Synthetic scores (1–5) with weights HNDL 0.35, operational risk 0.2, cost 0.15, time 0.15, agility 0.15: A = 4,4,4,3,4 → 3.85; B = 3,3,5,5,2 → 3.45; C = 5,2,1,2,5 → 3.35. Sensitivity: if time weight rises to 0.3 (taking 0.15 from HNDL), B narrowly overtakes A (A 3.70 vs B 3.75). The recommendation becomes "A as target; B as interim at branches where firmware is delayed".
 
+The weights were agreed with HCU's risk owner before scoring began, and the sensitivity run was chosen because delivery time was the factor most disputed in review. Branches waiting on firmware are named in the plan.
+
 ### 34.5 Practical activity
 
 Complete the comparison with your own scores and evidence; run at least two sensitivity variations; write a one-page recommendation.
+
+Where a score depends on a vendor statement, label it and say how you would check it. In the recommendation, state the option, the main reason, the sensitivity result that could change it, and the first action HCU should take. Keep the page readable by someone who will not open the scoring table. Then ask a classmate to change one weight and see whether your recommendation still holds.
 
 ### 34.6 Common errors and limits
 
 - Choosing criteria after scoring.
 - Treating vendor claims as measured evidence.
 - Presenting a single ranking without sensitivity.
+
+- Using too many criteria, so each carries little weight and the scoring becomes noise. - Double-counting one concern under two names, such as cost and time when both measure the same vendor delay. - Scores without recorded evidence. - Omitting the option of doing nothing yet, which is a real choice with its own risks. Review the criteria list with someone outside the project before scoring. Keep notes of that review.
+
 ### 34.7 Presenting the comparison
 
 Show the scoring table, the weights and the sensitivity results on one page, followed by the evidence behind each score. Readers should be able to change one weight in their head and see whether the conclusion survives. Where a score rests on a vendor statement rather than measurement, mark it, because those scores are the first to revisit when the vendor delivers or slips.
+
+Keep the version history of the table. When a vendor delivers late or early, update the affected score, rerun the sensitivity checks and note the date, so readers can see how and why the recommendation evolved.
 
 ### Exercises
 
@@ -2255,30 +2311,45 @@ You will (1) choose a capstone problem in quantum and post-quantum security; (2)
 
 A good capstone addresses a real decision, can be completed in one academic year, and uses evidence the student can lawfully obtain. Suitable topics: an inventory and prioritisation method for a synthetic organization; a lab comparison of hybrid configurations; an archive-protection design; a crypto-agility refactoring of a small open-source tool; or a study of vendor PQC roadmaps from public documents.
 
+The best topics come with a named person who would use the result. A study that answers a question nobody is asking is harder to motivate and to evaluate, however good its method.
+
 ### 35.2 Proposal structure
 
 State the problem and why it matters; the aims and research questions; scope (in and out); method; data and authorization; deliverables (report, code, lab records); timeline with milestones; risks and mitigations; and success criteria. Success criteria should be observable, for example "a reproducible lab showing negotiated groups for five client types".
+
+A proposal of three or four pages is enough. The most important part is often the part on risks: what happens if a library, dataset or interview access does not arrive in time, and what the fallback plan will be. Reviewers look for criteria that can clearly be met or missed.
 
 ### 35.3 Authorization and ethics
 
 Any work on real systems needs written authorization from the owner. Prefer synthetic or lab environments. Plan data minimisation and retention. If interviews are included, plan consent and anonymisation. If you might find vulnerabilities in products, plan coordinated disclosure.
 
+Write these plans down before starting, and have them checked by the supervisor and, where interviews are involved, by the ethics process of your institution. Record any data you will not collect and why. For projects based on HCU, all data is synthetic, which removes most risks but not the need to describe how the model was built.
+
 ### 35.4 Worked example
 
 Proposal (synthetic): "Prioritising HCU's quantum migration with a lifetime-weighted CBOM." Aims: build a CBOM for a synthetic 60-asset HCU model; rank flows using Mosca's inequality swept over *z*; validate ranking with three practitioner interviews. Scope: key establishment and signatures; excludes QKD. Data: synthetic model, public standards, consented interviews. Deliverables: Python tool, report, lab record. Success: ranking stable across *z* from 10 to 25 years for the top five flows, or a documented explanation where it is not.
 
+The interview plan was reviewed for consent before approval.
+
 ### 35.5 Practical activity
 
 Draft your proposal using the structure above, then exchange with a peer for review against the success-criteria test.
+
+The reviewer should check whether each success criterion could clearly be judged met or not met at the end of the year, and whether the scope fits the time available. Revise the proposal using their comments, and keep both versions so that the changes are visible to your supervisor. If the reviewer could not judge a criterion, rewrite it until they can.
 
 ### 35.6 Common errors and limits
 
 - Scope too large for one year.
 - Unobservable success criteria.
 - Assuming access to real systems without authorization.
+
+- Choosing a method before the question is clear. - Leaving the timeline without milestones, so delays are noticed too late. - Planning interviews without allowing time for ethics approval. - Writing aims that describe activity, such as studying a topic, rather than an answer that can be judged. Each makes the final evaluation harder to do fairly. A peer review of the proposal usually catches them early.
+
 ### 35.7 Supervisor agreement
 
 Before starting, agree the proposal with your supervisor in writing, including what counts as success and what happens if a key dependency fails — for example, if a library needed for the lab is not released. A one-paragraph fallback plan prevents a late scramble and makes it clear that a well-documented negative result is an acceptable outcome.
+
+The agreement is revisited if the scope changes. Note any change in a dated addendum signed by both of you, so that the final evaluation is measured against the agreed version rather than the first draft.
 
 ### Exercises
 
