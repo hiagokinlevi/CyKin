@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Postgraduate Course
 
 - Language: English (`en`); course 152, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: experienced practitioners who lead application and software supply chain security decisions and must evaluate and defend them.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -50,11 +50,15 @@ Hannah Brooks is product security lead at the fictional Northbridge Bank and a p
 
 Hannah's board asks: what should we do about third-party SDKs? She frames three options: continue without review; review every SDK update before release; or remove third-party SDKs and build analytics in-house.
 
+The February incident had already shown the cost of the first option: an analytics SDK update began collecting location data, and nobody at Northbridge noticed for nineteen days. The board wanted options it could compare, so Hannah describes each one in the same terms: what it costs to run, what it would have caught in February, and what it would change for the mobile teams.
+
 ### 1.3 Expected cost
 
 For each option she estimates the annual cost of the control, the probability of a similar incident in a year and its impact (fines, remediation, customer trust), using the February incident and industry reports as anchors.
 
-### Lab — Lab — comparing options
+Every probability is an estimate, so she writes down where each one came from and who she asked. The impact figure of 900k combines remediation work, the regulator's likely response and an allowance for customers leaving. She keeps the inputs in a small table the board can question, rather than presenting a single total.
+
+### Lab — comparing options
 
 ```python
 """Expected annual cost of three SDK-governance options (synthetic estimates, GBP thousands)."""
@@ -75,17 +79,25 @@ remove SDKs, in-house analytics  control  220k + 0.02 x 900k =  238.0k
 
 With an impact of 900k, "no review" has an expected cost of 270k (0.30 × 900k). "Review on update" costs 60k plus 0.08 × 900k, totalling 132k. Removing SDKs costs 220k plus 0.02 × 900k, totalling 238k. On these estimates, reviewing updates is cheapest overall.
 
+The ranking holds only as long as the estimates are roughly right, which is why the next step tests how far they can move. Hannah also notes that the 60k for review is mostly staff time, which the bank can measure after the first year.
+
 ### 1.5 Beyond money
 
 Some harms are not well captured in money: customer trust, regulatory relationships, and the bank's duty to treat customers fairly. Hannah lists these alongside the numbers and notes that they strengthen the case for review rather than changing the ranking.
+
+She does not convert trust into a money figure, because any number she chose would look more precise than it is. Instead, the board paper keeps a separate short list of harms that the expected-cost table leaves out, so the directors weigh them openly when they decide.
 
 ### 1.6 Sensitivity
 
 If the incident probability without review were 0.15 instead of 0.30, "no review" would cost 135k, almost tied with review. Hannah shows the board this sensitivity so they see the decision depends on her estimates.
 
+She also checks the other direction: if the review control cost twice as much, it would still be cheaper than having no review at all. The board can therefore see which estimates matter most to the choice and which ones barely move it. The directors agree that the estimates should be revisited after a year of data from the review process.
+
 ### 1.7 Accountability
 
 The decision, options, estimates and sensitivity are recorded and signed by the chief information security officer (CISO), so later reviewers can see what was known and why the choice was made.
+
+The record also names the estimates most likely to be wrong and when they will be checked, so a later review can compare them with what actually happened. Hannah stores it with the February incident report, because the two documents explain each other. When the evaluation in chapter 6 reports, she adds its results to the same file.
 
 ### Worked example
 
@@ -125,29 +137,43 @@ You will (1) describe current industry practice for third-party code in applicat
 
 Mobile and web apps typically include open-source libraries and commercial SDKs for analytics, crash reporting, payments and identity checks. SDKs run with the app's permissions and can collect data or change behaviour with each update.
 
+Northbridge's mobile app includes SDKs for analytics, crash reporting and identity verification, and the February change came through the analytics one. The bank's own engineers never read the SDK's code, because it arrives as a compiled binary inside an automated dependency refresh. Whatever an SDK does with the app's permissions, the bank answers for it to its customers.
+
 ### 2.2 The SSDF
 
 NIST SP 800-218 (Souppaya et al., 2022) asks organisations to acquire and maintain well-secured software components (PW.4), to protect all forms of code from unauthorised access and tampering (PS.1), and to identify and confirm vulnerabilities on an ongoing basis (RV.1). Third-party SDK governance falls largely under PW.4.
+
+Hannah uses the SSDF as a checklist rather than a score, asking whether Northbridge has a working practice for each relevant task. For PW.4, the answer in February was no for commercial SDKs, even though open-source libraries were already scanned.
 
 ### 2.3 SAMM
 
 OWASP SAMM v2 (2020) assesses maturity across governance, design, implementation, verification and operations. Its implementation function includes secure build and secure deployment practices, while the design function includes security requirements, including requirements for suppliers.
 
+Hannah runs a light SAMM assessment with the mobile and platform leads, scoring each practice from interviews and samples of recent work. The scores show secure build is reasonably mature, while supplier security requirements are close to absent, which matches what the February incident exposed. Hannah repeats the assessment a year later with the same leads to measure change.
+
 ### 2.4 SLSA and provenance
 
 SLSA v1.0 focuses on build integrity: knowing which source and build produced an artifact. For vendor SDKs delivered as binaries, provenance and signatures from the vendor would show the SDK was built as claimed, but most SDK vendors do not yet provide them.
+
+Hannah therefore treats SLSA as the target for Northbridge's own builds and as something to ask vendors about, not as a requirement she can enforce on them yet. Her own release pipeline can produce provenance now; the SDKs inside it remain the weaker link.
 
 ### 2.5 SBOMs
 
 NTIA (2021) minimum elements give a baseline for listing components. Northbridge generates SBOMs for its own builds, but the SDK appears as a single opaque entry.
 
+That opaque entry tells the bank which SDK version is in the app but nothing about the components or data collection inside it. Hannah records this as a gap: the SBOM supports vulnerability matching for open-source code but could not have revealed the February behaviour change. A vendor SBOM would help with components, but behaviour still needs observing.
+
 ### 2.6 Gap assessment
 
 Hannah's assessment finds: no review of SDK updates, no inventory of what data each SDK collects, no contractual SBOM requirement for vendors, and update automation that pulls SDKs along with open-source libraries.
 
+She lists the four gaps in a table with the framework reference beside each, so the CISO can see why each one matters and which standard supports closing it. The fourth gap matters because automation treats a commercial SDK like any open-source library: a weekly dependency refresh can pull a new SDK version into the app without anyone reading its changelog. That is exactly how the February analytics update reached customers without review. Hannah adds the gaps to the bank's risk register so they are tracked like any other risk.
+
 ### 2.7 The gaps that matter
 
 The February incident maps directly to the first two gaps; Hannah prioritises them.
+
+The first gap let the update reach customers unreviewed, and the second meant nobody could say what the SDK was supposed to collect. Fixing these two would have caught February's change before release, so they come first. The contract and automation gaps matter too, but they would not on their own have stopped the location collection, so they follow in the plan. Each gap gets an owner and a target quarter in the plan the CISO approves.
 
 ### Worked example
 
@@ -187,15 +213,21 @@ You will (1) use specialist evidence to prioritise vulnerabilities in dependenci
 
 Northbridge's apps have hundreds of dependency findings each quarter. Treating all high-severity findings as urgent overwhelms teams.
 
+In a typical quarter the mobile app alone reports more than two hundred findings, most of them in transitive dependencies the team never chose directly. Engineers had learned to treat the list as noise, and real fixes were delayed while they triaged items that could not affect the app. Hannah wants a ranking that sends effort to the few findings that matter most, and that engineers will accept as fair rather than arbitrary.
+
 ### 3.2 Severity and likelihood
 
 CVSS gives a severity score describing how bad a flaw could be. EPSS (Jacobs et al., 2021) estimates the probability that a vulnerability will be exploited in the next 30 days, using observed activity. Severity and likelihood answer different questions.
+
+Hannah uses both, because a severe flaw that nobody exploits may wait while a moderate one under active exploitation needs fixing this week. EPSS scores change daily, so the ranking is refreshed each time it is used. Neither input is enough alone, which is why the lab combines them.
 
 ### 3.3 Reachability
 
 A flaw matters most if the vulnerable function is reachable from the app's code. Static analysis can estimate reachability, though imperfectly.
 
-### Lab — Lab — two rankings
+Northbridge's tool marks a finding reachable when a call path exists from app code to the vulnerable function. It can miss calls made through reflection or configuration, so Hannah keeps unreachable findings on the list at reduced weight rather than dropping them. Engineers can ask for a manual check whenever they think the tool has got a call path wrong. The reachability judgement is stored with each finding, so later reviews can see why it was ranked low.
+
+### Lab — two rankings
 
 ```python
 """Rank synthetic findings by CVSS alone and by CVSS weighted with EPSS and reachability."""
@@ -217,13 +249,19 @@ by risk score: ['F2', 'F4', 'F3', 'F5', 'F1']
 
 By CVSS alone, the order is F1, F5, F3, F2, F4. Weighting CVSS by EPSS and reducing unreachable findings to one tenth gives F2, F4, F3, F5, F1. F1 (CVSS 9.8) falls to last because its EPSS is low and it is not reachable; F2 (7.5) rises to first because it is reachable and has EPSS 0.61.
 
+Hannah shares the five-finding example with team leads before rolling out the method, so they can see how one finding falls and another rises. Hannah notes that the weighting is a judgement, not a law, and teams may question it.
+
 ### 3.5 Ecosystem evidence
 
 Decan et al. (2018) showed vulnerabilities spread through dependency networks and fixes reach dependents slowly; Kula et al. (2018) found developers often do not update. These support investing in fast updating, not only prioritisation.
 
+For Northbridge this means the ranking is only half the answer. Hannah also asks teams to shorten the time between a fixed version appearing and the app adopting it, because slow updating leaves known flaws in place however well they are ranked. Batched weekly updates with tests make this routine work rather than a special project.
+
 ### 3.6 Explaining to engineers
 
 Engineers trust prioritisation they can understand. Hannah shows the three inputs for each finding and lets teams challenge reachability judgements.
+
+Each finding in the weekly list shows its CVSS score, its EPSS probability and the reachability result, with a link to the call path when one exists. If a team shows the tool was wrong, the finding is re-ranked and the correction is noted, which also helps Hannah judge how far to trust the tool. Shared reasoning makes the ranking easier to defend when a deprioritised finding is questioned later.
 
 ### Deadlines remain
 
@@ -267,25 +305,37 @@ You will (1) assess risk to customers, not only to the organisation; (2) apply d
 
 The February incident cost the bank little money, but customers lost control of their location data. Hannah's risk method now rates harm to customers separately from harm to the bank, so a cheap incident with real customer harm is not under-ranked.
 
+The two ratings sit side by side in the risk register, and either one can raise an item's priority. For February, harm to the bank was rated low, while harm to customers was rated high, because people had not agreed to share where they were.
+
 ### 4.2 Data protection duties
 
 The bank is responsible for data its app collects, including data an SDK sends to a vendor. A lawful basis and transparency are needed; the privacy notice did not mention location. Data protection impact assessments are now required for SDKs that process personal data.
+
+The privacy team leads these assessments, with Hannah's team supplying what the diff harness observes about each SDK's data. The privacy notice was corrected, and the analytics SDK's location collection was switched off until the vendor changed its default.
 
 ### 4.3 Ethical tensions
 
 The SDK vendor's sales team argued that location helped "improve analytics". Hannah's view: collecting data customers were not told about breaks trust regardless of usefulness. The bank asks the vendor to disable location collection by default for all its customers, not just Northbridge.
 
+Hannah writes her reasoning into the vendor review so the position does not depend on her being in the room. The bank also decides that usefulness alone will not justify any new data field an SDK starts sending.
+
 ### 4.4 Disclosure
 
 The bank told the regulator and published a short notice for customers explaining what happened, what data was involved and what the bank did. Hannah argues that clear, early disclosure protects trust better than silence.
+
+The notice was written in plain language and reviewed by legal and the privacy team before publication. It avoided blaming the vendor and stated the bank's own responsibility for what its app collects. Customers who asked further questions were answered through the normal complaints route.
 
 ### 4.5 Responsible reporting to vendors
 
 The change in data collection was not a vulnerability but a behaviour change; still, the bank reports it to the vendor's security contact so other customers can be told.
 
+The report sets out what changed between versions, how the bank observed it in testing, and which customers' data was affected. It does not accuse the vendor of bad intent, since the change may have been a default the vendor had not thought through. Hannah asks the vendor to confirm in writing how other customers will be informed, and records the reply in the vendor file.
+
 ### 4.6 Fairness to staff
 
 The engineer who merged the dependency refresh followed the process as it was; the analysis focuses on the missing review step, not on blame.
+
+The incident review records that the automated refresh had no step where anyone could have seen the new data collection. Naming the engineer would have taught other teams to avoid merging refreshes, slowing security updates, so the fix targets the process. Hannah thanks the engineer for helping reconstruct the timeline, which made the review faster and more accurate. The finding is phrased as a missing control, with the action owned by Hannah's team.
 
 ### Worked example
 
@@ -325,29 +375,43 @@ You will (1) design alternative processes for governing third-party code; (2) co
 
 The board chose "review on update". Hannah must design how. Three designs are considered.
 
+Each design must have been able to catch a change like February's location collection before release, and Hannah writes that down as the first requirement. The others are a cost the two-person security team can carry, an acceptable delay to releases, and evidence that audit can check later. She scores each design against these four requirements with the mobile and privacy leads, so the comparison is shared rather than hers alone.
+
 ### 5.2 Design A: manual review
 
 Every SDK update is reviewed by the security team before merging: changelog, permissions requested, network destinations observed in a test run. Strong but slow; the security team has two people.
+
+With more than twenty SDKs across the apps and frequent updates, two reviewers would soon become a queue that teams try to bypass. Design A would have caught February's change, but only if the reviewer happened to run the right test. Hannah keeps Design A as the fallback for SDKs the harness cannot exercise, such as those that only activate on specific devices or account types.
 
 ### 5.3 Design B: automated diff plus targeted review
 
 A CI job runs the app in a test harness with synthetic data, records network destinations, permissions and data fields sent by each SDK, and compares with the previous version. Only changes trigger human review.
 
+The harness uses fixed synthetic accounts and scripted journeys, so differences between runs come from the SDK rather than from the test data. A reviewer sees only what changed, such as a new destination or a new field, which keeps reviews short. Design B depends on the harness covering the journeys where SDKs actually run.
+
 ### 5.4 Design C: isolation
 
 Run SDKs in a restricted wrapper that limits the data they can access, for example passing only anonymised events rather than giving SDKs direct access to device APIs. Strong but requires engineering work per SDK.
+
+For the analytics SDK, isolation would mean the app passes it a fixed list of events with no location or device identifiers. Some SDKs, such as fraud detection, need direct device signals to work, so isolation cannot be applied everywhere. Isolation also needs maintenance whenever the SDK's interface changes between versions.
 
 ### 5.5 Delivery speed
 
 Hannah models effects: Design A adds a median of 5 days per SDK update; B adds 1 day; C adds no delay after initial work but takes three months to build.
 
+She takes these figures from a small dry run with one mobile team and from the platform team's estimate for building the wrapper. A five-day delay matters because security fixes also arrive as SDK updates, and slowing them adds risk of another kind. Hannah shows the mobile leads the assumptions, and they agree to measure the real delay during the pilot.
+
 ### 5.6 Stakeholders
 
 Mobile engineers prefer B; privacy prefers C; the CISO wants something in place within a month.
 
+Hannah sets out what each group gains and gives up in a short table. Engineers want speed, privacy wants the strongest limit on data, and the CISO needs a control that exists before the next SDK update arrives. She also records which concerns the chosen design does not answer, so they stay visible after the decision. Each concern on that list has an owner and a date when it will be looked at again.
+
 ### 5.7 Choice
 
 B now, with C for the two SDKs that handle the most sensitive events over the next six months.
+
+The diff can run within the CISO's one-month window, and the two SDKs chosen for isolation process the most sensitive events. The choice is recorded with the scores and the stakeholders' positions, and the CISO signs it. Hannah agrees to revisit the choice after the evaluation, in case the diff misses changes the pilot was designed to test. Design A remains as the fallback for SDKs the harness cannot reach in its scripted journeys.
 
 ### Review records
 
@@ -391,15 +455,21 @@ You will (1) evaluate a new control with a controlled comparison; (2) choose out
 
 Does the automated SDK diff (Design B) shorten the time to detect unreviewed changes in third-party code?
 
+The answer matters because the board's choice in chapter 1 assumed review would cut the chance of a repeat incident. If the diff does not detect changes faster than the old process, that assumption fails. Hannah writes the question down before the study starts, so the result cannot be reframed afterwards to fit whatever is found. Delivery delay and false alarms are recorded as secondary outcomes.
+
 ### 6.2 Design
 
 Two mobile teams pilot Design B; two comparable teams continue with the old process for three months. Synthetic test changes, harmless but detectable (a new test-only network destination), are introduced into SDK updates in all four teams' test builds, with the teams' managers aware but not the engineers.
+
+The planted changes are scheduled at random times across the three months, so neither group can predict them. Detection is timed from the moment a changed SDK reaches a team's test build to the moment someone on that team records it for review. Each team receives the same number of planted changes, so the groups face equal workloads.
 
 ### 6.3 Ethics
 
 The engineers' managers and the works council approved the study. No real customer data is involved; results are reported by team, not by person.
 
-### Lab — Lab — comparing detection times
+Managers held the schedule of planted changes, so the engineers' detection reflected their normal routine rather than an alert they had been warned about. Data showing which engineer reviewed which change was kept by Hannah only and deleted at the end of the study. Teams were told in advance that a study was running, though not when changes would appear. Afterwards, every engineer in all four teams saw the results.
+
+### Lab — comparing detection times
 
 ```python
 """Controlled evaluation: days to detect unreviewed SDK changes, pilot teams vs comparison teams, bootstrap (seed 3)."""
@@ -422,13 +492,19 @@ median pilot 2.0 comparison 11.5 difference 9.5
 
 Pilot teams detected test changes in a median of 2 days; comparison teams in 11.5 days, a difference of 9.5 days. The bootstrap 95% interval (4,000 resamples, seed 3) runs from 6.0 to 19.0 days, so the improvement is unlikely to be chance, though its size is uncertain.
 
+The interval is wide because there were only eight planted changes per group, a point the next paragraph takes further. The lab script resamples the eight detection times in each group with replacement, recomputes the difference in medians each time, and reports the middle 95% of those differences. Hannah publishes the script alongside the result so audit can rerun it.
+
 ### 6.5 Interpreting
 
 Eight changes per group is a small sample. Comparison teams knew a study was running, which might have changed their behaviour; if anything this would narrow the difference.
 
+Planted changes may also be easier to spot than real ones, since each added a whole new network destination. Hannah reports these limits in the evaluation summary, and she recommends tracking real detections after rollout to confirm the effect outside the study. She also notes that the four teams were not chosen at random, so team differences could explain part of the gap between the groups.
+
 ### 6.6 Other outcomes
 
 Delivery speed: pilot teams' median SDK update time rose by 1 day, as modelled. False alarms: 3 harmless changes flagged per month, each taking about 20 minutes to review.
+
+The one-day rise matches the delivery model in chapter 5, which gives the mobile leads some confidence in the other estimates. Three false alarms a month means about an hour of review, which the teams judged acceptable. Hannah reports both figures beside the detection result so the CISO sees benefits and costs together. Neither figure gave the CISO a reason to delay the wider rollout.
 
 ### Pre-registered measures
 
@@ -472,29 +548,43 @@ You will (1) embed third-party code governance into existing processes; (2) assi
 
 Rather than adding a separate approval board, Hannah connects SDK governance to processes teams already use: the dependency update pull request triggers the diff; the privacy impact assessment covers new SDKs; procurement contracts include SDK clauses.
 
+Each existing process gains one small step rather than a new meeting. Teams see the diff result in the pull request they already review, and procurement uses a revised template instead of a separate security questionnaire. Fitting into existing work also means the controls survive when the people who designed them move on to other roles.
+
 ### 7.2 Responsibilities
 
 Mobile teams own SDK updates and first review of diffs; the security team reviews flagged changes involving new destinations or permissions; privacy reviews new data fields; procurement manages vendor terms. A RACI table makes this clear.
+
+The table is published on the engineering wiki and linked from the pull request template, so anyone reviewing a diff can see who to call. Where two teams share an SDK, the RACI names one owner, so neither team can assume the other has already checked. Hannah reviews the table each quarter as teams and SDKs change.
 
 ### 7.3 Procurement
 
 Standard contract terms now require: notice of data-collection changes, a security contact, timely fixes, and SBOMs where available. These align with SSDF PW.4.
 
+Procurement applies the terms at renewal, so existing contracts move over during the year rather than all at once. Where a vendor refuses a clause, the refusal goes to Hannah's team for a risk decision, as happened with the fraud-detection vendor in chapter 8. The legal team keeps a short list of acceptable alternatives to each clause. Vendors receive the revised terms well in advance of renewal talks, so objections surface early.
+
 ### 7.4 Inventory
 
 A register lists every SDK in every app, its owner, purpose, data processed and contract. It is generated partly from SBOMs and partly from the harness results.
+
+The harness supplies what each SDK actually sends, while SBOMs supply names and versions, so the register can show where stated purpose and observed behaviour differ. Each entry has an owner who confirms it every quarter. The register is the starting point for the SDK reduction review in the applied project. Missing entries are chased by the register's owner each month.
 
 ### 7.5 Training
 
 Short sessions for mobile engineers explain why SDK changes matter, using the February incident.
 
+Each session lasts about forty-five minutes and walks through the February change as it would appear in the diff today. Engineers practise reading a diff result and deciding whether to approve it, send it to privacy, or ask the vendor. The sessions are repeated for new joiners, and the material is updated whenever a new difficult case is written up. Attendance is recorded for each team, but the sessions are not assessed or graded.
+
 ### 7.6 Adoption measures
 
 Share of apps with the diff enabled, share of SDK updates with completed reviews, and register completeness.
 
+Each measure has a definition and a data source, so the numbers can be checked rather than reported from memory. The diff measure comes from the CI configuration, review completion from pull requests, and register completeness from comparing the register against SBOMs. Hannah reports all three monthly to the CISO, with the apps that are behind named alongside their owners and expected dates. Trends across several months matter more to the CISO than any single month's figure.
+
 ### 7.7 SAMM progress
 
 Using SAMM v2, Northbridge's maturity for supplier security in design and for secure build in implementation rises one level over a year.
+
+The rise rests on evidence an assessor can check, such as contract terms, the register and pull request records, rather than on new policy documents. Hannah reports the change cautiously, because SAMM levels summarise practice and a one-level rise does not prove fewer incidents. She records the evidence behind each scored practice, so the next assessment can check whether the rise held. The assessment is repeated each year with the same leads.
 
 ### Feedback loop
 
@@ -538,25 +628,37 @@ You will (1) handle cases where good options conflict; (2) manage vendor resista
 
 A fraud-detection SDK vendor refuses to disclose which data its SDK collects, citing trade secrets. The SDK reduces fraud losses significantly. Options: accept with isolation, negotiate, or replace. Hannah negotiates a confidential data schedule shared with the bank's privacy team only, plus isolation of the SDK's inputs.
 
+Hannah records why the bank accepted less transparency than its standard terms require: the fraud losses the SDK prevents are large and measurable, and isolation limits what it can reach. The exception has an expiry date, and the vendor is asked again at renewal.
+
 ### 8.2 Compromised upstream
 
 An open-source library used by the web banking app is reported to have had a malicious version published for six hours after a maintainer's account was taken over, a pattern described by Ohm et al. (2020). Using SBOMs, the team confirms no Northbridge build included that version, because lockfile hashes pinned the previous version and updates are batched weekly.
+
+The team posts its conclusion in the incident channel with the evidence attached: the SBOM entries, the lockfile hashes and the dates of the weekly batches. Hannah also checks whether any developer machine fetched the bad version directly, since lockfiles protect builds but not local experiments.
 
 ### 8.3 Incomplete information
 
 Early reports are confused about which versions were affected. Hannah's rule: assume the wider range until confirmed, check builds against it, and update the assessment as facts emerge.
 
+She writes each update with the time, what is confirmed and what is still assumed. The first assessment covered every version released that week, and it narrowed as the maintainers published details. Because each update says what it rests on, a later correction does not undermine trust in the earlier ones or in the team's final conclusion.
+
 ### 8.4 Conflicting priorities
 
 A product launch depends on a new identity-verification SDK whose diff shows it sends device identifiers to a new destination. The vendor explains it is a fraud-prevention service. Privacy approves with a notice update; launch slips by three days.
+
+The launch team was frustrated by the delay, but the diff had shown a real change that customers needed to be told about. The vendor's explanation was checked against its published documentation before privacy agreed. Hannah records the case to show the diff working under deadline pressure.
 
 ### 8.5 Escalation
 
 When teams disagree, the CISO decides within two working days, with reasoning recorded.
 
+The CISO hears both sides together, usually in a short call, and decides on the evidence in the diff and the register. The written decision states the reasoning, any conditions, and when it will be revisited. Recording reasons means a similar dispute later can be settled by pointing to the earlier decision. Teams may ask for a decision to be reviewed if new evidence appears, such as a vendor changing its documentation.
+
 ### 8.6 Learning
 
 Each difficult case is written up as a short case study for training.
+
+A case study is one page: what happened, what the team knew at each point, what they decided, and what they would do differently. The fraud-detection vendor, the compromised library and the delayed launch were the first three written up. Each is used in the mobile engineers' training sessions, and new joiners read them during onboarding. Hannah removes vendor names from the versions shared outside the security team.
 
 ### Case library
 
@@ -600,11 +702,15 @@ You will (1) lead a programme for application and supply-chain security; (2) pro
 
 Hannah leads a programme with three goals for the year: every app release verifiable (provenance and signatures), every SDK update reviewed, and critical dependency findings fixed within 14 days.
 
+Each goal is tied to a measure the chapter later reports, so progress can be checked quarter by quarter. The goals came from the gaps found in chapter 2 and the February incident, which helps engineers see why they matter. Hannah presents the three goals to the CISO with the resources each needs, so the programme's cost is agreed at the start.
+
 ### 9.2 Assurance
 
 Assurance means giving decision-makers justified confidence. The board and the regulator want evidence that controls work, not just that they exist.
 
-### Lab — Lab — assurance indicators
+At Northbridge, assurance for the SDK programme rests on three things: indicators reported each quarter, records that let someone check an individual release, and periodic independent checks by internal audit. Each part supports the others, so a gap in one is noticed elsewhere. The board receives the summary, and the detailed records stay available for audit. Hannah designs the programme's indicators with that standard of evidence in mind.
+
+### Lab — assurance indicators
 
 ```python
 """Quarterly assurance indicators for app releases (synthetic)."""
@@ -625,21 +731,31 @@ Q3: provenance verified 15/15 = 100%  SDKs reviewed 25/25 = 100%
 
 Provenance-verified releases rose from 9 of 14 (64%) in Q1 to 13 of 16 (81%) in Q2 and 15 of 15 (100%) in Q3. SDK updates reviewed rose from 15 of 22 (68%) to 21 of 24 (87%) and 25 of 25 (100%).
 
+The Q1 provenance gap came from the legacy build path described below, and the review gap came from apps that had not yet enabled the diff. Both figures reached 100% by Q3, but the totals are small, so one missed release would show clearly. Hannah shows the board the counts beside the percentages for that reason, and explains each quarter's misses by name.
+
 ### 9.4 Indicators
 
 Indicators are chosen because they link to the February incident and SLSA-style build integrity. Each has a definition, data source and owner.
+
+Hannah avoids indicators that are easy to count but say little, such as the number of policies written. She documents each indicator's definition on one page, so a new owner can produce the same figure next year. Data is drawn from build systems and pull requests rather than self-reported spreadsheets. Owners confirm each quarter's figures before they go to the CISO and the board.
 
 ### 9.5 Independent checks
 
 Internal audit samples five releases each quarter and re-verifies provenance and review records.
 
+Auditors pick the releases themselves, without notice, and rerun the provenance check using the published verification steps. They also confirm that each SDK update in those releases has a review record with a named reviewer and a date. Findings go to the CISO and to Hannah, with an agreed date for each fix. The Q3 sample led to the reviewer-name field becoming mandatory in the review template.
+
 ### 9.6 Gaps
 
 In Q1, five releases lacked verified provenance because a legacy build path was still in use; it was retired in Q2.
 
+Hannah reported the gap rather than waiting for it to close, because hiding it would have weakened trust in the other figures. The legacy path's owner agreed a retirement date with the platform team, and releases using it were listed until then. Reporting the gap also explained the Q1 figure to the board without anyone having to ask. The legacy app's later exception follows the same open approach.
+
 ### 9.7 Regulator
 
 Northbridge's regulator receives a summary showing the February incident's follow-up and the indicators.
+
+The summary covers what happened in February, the controls introduced since, and the quarterly indicators with their definitions. It states the remaining limits, such as the legacy app with an exception, rather than presenting the programme as finished. Hannah prepares it with the compliance team, which manages the bank's contact with the regulator, and it is sent alongside the regular reporting cycle. Questions from the regulator are answered within the agreed timeframe.
 
 ### Reporting format
 
@@ -687,25 +803,37 @@ You will (1) read research on software supply chains critically; (2) assess vali
 
 Hannah reads Ladisa et al. (2023), a taxonomy of attacks on open-source supply chains with safeguards; Zimmermann et al. (2019) on concentration of risk in npm; Wermke et al. (2022) on trust practices in open-source projects; Newman et al. (2022) on Sigstore; and Torres-Arias et al. (2019) on in-toto.
 
+She chose them because they cover the threats Northbridge faces: compromised packages, concentrated maintainer risk, and the verification tools that might answer both. Each reading is linked to a decision in her programme, so the reading group has a practical reason to discuss it.
+
 ### 10.2 Validity
 
 For each paper she asks: what data, what method, what claims, what threats to validity? The taxonomy is built from literature and expert input, valuable for structure but not for estimating frequency. Ecosystem studies measure one registry at one time.
+
+She notes each answer in a short table for each paper, so the group can compare the strength of evidence across them. Where a paper's method cannot support a claim, she marks the claim as a hypothesis to test at Northbridge rather than a finding to apply.
 
 ### 10.3 Transferability
 
 Northbridge uses several ecosystems and commercial SDKs, which open-source studies may not cover. Findings about maintainer concentration likely transfer; specific percentages may not.
 
+Commercial SDKs are the biggest gap, because they come as binaries from companies whose practices the open-source studies did not examine. Hannah therefore uses the papers to frame questions for vendors rather than to estimate Northbridge's own risk. She notes the date of each study as well, since registries and maintainer behaviour change over time. Where she cites a figure, she states which ecosystem and year it comes from.
+
 ### 10.4 Synthesis
 
 Guidance for Northbridge: reduce dependency count; prefer well-maintained components; verify integrity (signatures, provenance); monitor maintainer and behaviour changes; and require vendors to provide transparency equivalent to open-source practice.
+
+Each item links back to a reading and to a control already in Northbridge's programme, or to a gap in it. Signing and provenance for internal libraries is the clearest gap, which is why the reading group later chose it for a pilot. Hannah shares the synthesis with the platform team, who own the build pipeline.
 
 ### 10.5 Open questions
 
 How should banks verify closed-source SDKs that offer no provenance? How effective are behaviour diffs at catching subtle changes? Hannah lists these as research gaps.
 
+The first matters most to Northbridge, because several of its most sensitive SDKs are closed-source and their vendors offer no provenance. The second matters because the pilot used planted changes, which may be easier to see than the subtle changes a vendor might make in practice. She shares the list with her tutor as possible topics for further study, and with vendors as questions.
+
 ### 10.6 Critique practice
 
 She writes a one-page critique of each paper, shared with her team as a reading group.
+
+Each critique states the paper's claim, the evidence offered, the main threat to validity and what Northbridge should take from it. Team members take turns presenting a paper and answering questions on it. Disagreements are recorded rather than settled, since several papers support more than one reasonable reading. The practice also gives junior staff experience in reading research carefully before citing it in their work.
 
 ### Reading group practice
 
@@ -749,29 +877,43 @@ You will (1) plan and carry out an applied project in the workplace; (2) measure
 
 Hannah's applied project: reduce the number of third-party SDKs in the mobile app and cut the time from SDK data-collection change to detection to under three days, across all Northbridge apps.
 
+The two aims are linked: fewer SDKs means fewer updates to review, and faster detection reduces the harm from the changes that do get through. The three-day target came from the February detection time of nineteen days and the median of two days seen in the pilot. Dr Menon approves the plan, and the CISO agrees to sponsor the work across all apps. The project runs for nine months, matching the period reported in the results.
+
 ### 11.2 Baseline
 
 At the start: 22 SDKs across apps; February detection time 19 days; no SDK register.
+
+These figures come from the February incident record and from a manual count Hannah's team made across the apps' build files. Without a register, the count of twenty-two had to be checked by hand, and two SDKs were found that nobody could name an owner for. Hannah records the baseline in the project plan before any action starts, so the results can be compared fairly. Dr Menon reviews the baseline method before the project begins.
 
 ### 11.3 Actions
 
 Diff harness rollout (chapter 7), isolation of two sensitive SDKs, contract clauses, and an SDK reduction review asking each team to justify each SDK.
 
+The reduction review asks each team three questions about every SDK: what it is used for, whether another SDK already provides it, and what data it processes. Isolation work is done by the platform team, while contract changes follow procurement's renewal calendar. Hannah tracks each action on the project board with an owner and a date. Progress against each action is reviewed monthly with the CISO, who sponsors the project.
+
 ### 11.4 Results
 
 After nine months: 15 SDKs (seven removed or replaced with in-house code); median detection of planted changes 2 days across all teams; register complete; two real vendor data-collection changes detected and reviewed before release.
+
+The detection figure comes from planted changes, so it measures the same thing as the pilot, now across every team. The two real detections, including the crash-reporting change described in the worked example, show the diff catching changes outside the study. Hannah compares each figure with the baseline recorded before any action started.
 
 ### 11.5 Stakeholders
 
 Product owners worried about losing analytics features; Hannah worked with them to replace duplicated SDKs first, keeping features.
 
+Replacing duplicates first meant no team lost a feature it relied on, which built goodwill for the harder cases later. Where a team wanted to keep an SDK that duplicated another, it had to state why in the register, and the CISO decided on the few disputed cases. Product owners were invited to the monthly review, so they saw the project's progress and its costs together.
+
 ### 11.6 Limits
 
 Planted changes test detection, not every real-world variation; nine months is short; the cost of in-house replacements will continue.
 
+Hannah states these limits in both the academic report and the board summary, so neither audience reads the results as proof of lasting change. She also notes that the in-house replacements now need maintaining, with their own security updates and owners. A follow-up measurement after a further year is proposed, using the same planted-change method. She lists which conclusions would change if that measurement showed detection had slowed again.
+
 ### 11.7 Reporting
 
 A project report for Calder College and a summary for Northbridge's board.
+
+The college report sets out the method, data, evaluation and limits in academic form, with references and the lab scripts as appendices. The board summary is two pages: the problem, what was done, what changed, what remains uncertain, and what it costs to keep going. Dr Menon reads both before submission, checking that the summary makes no claim the report does not support. The board receives its version at the next quarterly meeting.
 
 ### Project governance
 
@@ -819,25 +961,37 @@ You will (1) review the course's learning against practice; (2) transfer lessons
 
 From an unreviewed SDK update to a governed, measured process, Hannah's course connected decisions, evidence, design, evaluation, integration and assurance.
 
+Each chapter answered a question the previous one raised: what to decide, which practices were missing, which findings mattered, what was fair to customers, how to build the control, whether it worked, how to fit it into daily work, how to handle hard cases, and how to show it to others. Hannah keeps the February incident as the thread linking them, because every later choice can be traced back to it.
+
 ### 12.2 Transfer
 
 The same pattern applies to browser scripts on the web banking site and to internal shared libraries: inventory, behaviour diff, isolation where needed, contracts or ownership, and indicators.
+
+Browser scripts on the web banking site behave much like mobile SDKs: they come from third parties, change without notice and run with the page's access to customer data. Hannah proposes extending the harness to record script destinations on the site, with the same register and review rules. Internal libraries need ownership and signing rather than contracts, which links to the reading group's Sigstore-style pilot.
 
 ### 12.3 Sustainability
 
 The SDK register and harness have named owners; the indicators are part of quarterly reporting; training is in onboarding.
 
+Each owner has a deputy, so the harness and register keep running during leave or staff changes. Indicator definitions are documented, so the quarterly figures do not depend on Hannah producing them herself. The CISO reviews the programme once a year and decides whether its targets need changing. Training material is updated whenever a new case study is written, so onboarding reflects the latest difficult cases.
+
 ### 12.4 Sharing
 
 Hannah presents an anonymised version at an industry forum, with all examples synthetic.
+
+Before presenting, she removes vendor names and replaces the bank's figures with synthetic ones, and the bank's communications team approves the slides. The talk focuses on the method, behaviour diffs plus a register, which other banks can adapt to their own apps. She invites listeners to share their own results, since closed-source SDK verification is still an open problem across the sector. Questions from the forum feed into her list of research gaps.
 
 ### 12.5 Personal goals
 
 Deepen knowledge of build provenance (SLSA levels) and contribute to an open-source verification tool.
 
+Both goals grow from the research gaps in chapter 10: verifying closed-source components and making provenance routine. Hannah plans to start by reading the SLSA specification in full and joining the community discussions of an open-source verification project. She agrees with Dr Menon to review her progress against these goals in six months. Contributing in the open also lets her test whether her ideas hold outside Northbridge.
+
 ### 12.6 Next steps
 
 Further study in the next course of the curriculum.
+
+Hannah will carry her SDK register, diff harness design and evaluation method into the next course as worked material. Dr Menon advises her to choose a topic linked to the open questions from chapter 10, such as verifying closed-source SDKs that offer no provenance. Before starting, she writes a short handover for the register's owner at Northbridge, listing open actions, the legacy app's exception date and the indicators to report each quarter. The handover is stored with the project report, and she agrees to answer questions from the team during the first months.
 
 ### What changed in practice
 
