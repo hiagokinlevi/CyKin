@@ -3397,8 +3397,8 @@ In the independent design review, an external reviewer from a water utility chal
 ### Exercises
 
 - **EX133 — Block.** Blocking comment for a fail-open retry. Rubric: 3 = cites safety req + fix ask; 2 = vague block; 1 = nit; 0 = approve.
-- **EX134 — Checklist.** Add one item for serial taps. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
-- **EX135 — Dissent.** One sentence of recorded dissent. Rubric: 3 = clear; 2 = hedged; 1 = none; 0 = none.
+- **EX134 — Checklist.** Add one item for serial taps. Rubric: 3 = specific; 2 = vague; 1 = minimal attempt; 0 = none.
+- **EX135 — Dissent.** One sentence of recorded dissent. Rubric: 3 = clear; 2 = hedged; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3608,8 +3608,8 @@ The trial scenario: PLC-A's logic is corrupted (simulated by loading a wrong pro
 ### Exercises
 
 - **EX139 — Inject.** One inject and expected safe behaviour. Rubric: 3 = both; 2 = inject only; 1 = vague; 0 = unsafe.
-- **EX140 — Measure.** Primary measure for policy-loss inject. Rubric: 3 = time to deny writes; 2 = vague uptime; 1 = none; 0 = none.
-- **EX141 — Action.** Turn a 45s result into a corrective ticket title. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
+- **EX140 — Measure.** Primary measure for policy-loss inject. Rubric: 3 = time to deny writes; 2 = vague uptime; 1 = minimal attempt; 0 = none.
+- **EX141 — Action.** Turn a 45s result into a corrective ticket title. Rubric: 3 = specific; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -3865,7 +3865,7 @@ An examiner asks: "Your compiler proves reachability equals the design. What if 
 
 - **EX148 — Outline.** Six-bullet talk outline. Rubric: 3 = claim to demo to verify to failure to limits to Q; 2 = partial; 1 = vendor pitch; 0 = none.
 - **EX149 — Answer.** 3-4 sentences answering what's your risk score? Rubric: 3 = refuse empty score + alternatives; 2 = partial; 1 = invents score; 0 = none.
-- **EX150 — Mistake.** One real (synthetic-story) mistake and fix. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
+- **EX150 — Mistake.** One real (synthetic-story) mistake and fix. Rubric: 3 = specific; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 

@@ -729,8 +729,8 @@ Critique is easier than building; pair every criticism with a constructive sugge
 
 - **EX046 — Circular claim.** Explain why the vendor's 90% figure is circular. *Rubric:* 3 = threats defined by own catalogue; self-referential; 2 = partial; 1 = valid; 0 = none.
 - **EX047 — Method checklist.** List five method questions for a CTI study. *Rubric:* 3 = data, source/period, labels, comparison, reproducibility/interests; 2 = three; 1 = one; 0 = none.
-- **EX048 — Kill chain fit.** For which attack types does the kill chain fit poorly? *Rubric:* 3 = insider, cloud-identity abuse; reason; 2 = one; 1 = none; 0 = none.
-- **EX049 — Transfer test.** What should you compare before applying a study's results to NLG? *Rubric:* 3 = population, exposure, resources similarity; 2 = two; 1 = none; 0 = none.
+- **EX048 — Kill chain fit.** For which attack types does the kill chain fit poorly? *Rubric:* 3 = insider, cloud-identity abuse; reason; 2 = one; 1 = vague; 0 = none.
+- **EX049 — Transfer test.** What should you compare before applying a study's results to NLG? *Rubric:* 3 = population, exposure, resources similarity; 2 = two; 1 = vague; 0 = none.
 - **EX050 — Diamond role.** Is the Diamond Model a method that produces conclusions? Explain. *Rubric:* 3 = no, organising framework; analysis supplies conclusions; 2 = no; 1 = yes; 0 = none.
 
 ### Synthesis

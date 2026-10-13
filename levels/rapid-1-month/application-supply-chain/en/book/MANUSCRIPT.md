@@ -87,19 +87,19 @@ Proportionate does not mean minimal; some risks need more effort than they first
 
 ### Exercises
 
-- **EX001 — Opening problem.** What did Owen realise after the donor's report? *Rubric:* 3 = nobody knew components or owners; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Opening problem.** What did Owen realise after the donor's report? *Rubric:* 3 = nobody knew components or owners; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Supply chain scope.** What does the charity's software supply chain include? *Rubric:* 3 = platform, plugins, themes, services, update path; 2 = three; 1 = one; 0 = none.
 - **EX003 — Top 10 links.** Which Top 10:2021 categories match the main risks? *Rubric:* 3 = A06, A07, A08; 2 = two; 1 = one; 0 = none.
 - **EX004 — Deciding questions.** What three questions guide Owen's decisions? *Rubric:* 3 = likelihood, harm, cost of fix; 2 = two; 1 = one; 0 = none.
 - **EX005 — First decisions.** Name Owen's first three decisions. *Rubric:* 3 = MFA, component list, ask about auto-updates; 2 = two; 1 = one; 0 = none.
 - **EX006 — Framework scaling.** How do SSDF and SAMM ideas scale down? *Rubric:* 3 = know, update, check, plan; 2 = three; 1 = one; 0 = none.
-- **EX007 — Week three.** What does week 3 cover? *Rubric:* 3 = components, data and dependencies; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Most of the site.** Why is the supply chain "most of the website" here? *Rubric:* 3 = built from others' components; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Unmaintained risk.** Why is an unmaintained component a risk? *Rubric:* 3 = future flaws never fixed; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Integrity failure.** Give an example of an integrity failure. *Rubric:* 3 = update changed before arrival; 2 = partial; 1 = none; 0 = none.
-- **EX011 — MFA value.** Why is multi-factor sign-in a good first step? *Rubric:* 3 = cheap and high value; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Proportionate limit.** What warning comes with proportionate decisions? *Rubric:* 3 = some risks need more effort; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Nadia's role.** What did Nadia do with Owen's list? *Rubric:* 3 = agreed they were right first steps; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Week three.** What does week 3 cover? *Rubric:* 3 = components, data and dependencies; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Most of the site.** Why is the supply chain "most of the website" here? *Rubric:* 3 = built from others' components; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Unmaintained risk.** Why is an unmaintained component a risk? *Rubric:* 3 = future flaws never fixed; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Integrity failure.** Give an example of an integrity failure. *Rubric:* 3 = update changed before arrival; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — MFA value.** Why is multi-factor sign-in a good first step? *Rubric:* 3 = cheap and high value; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Proportionate limit.** What warning comes with proportionate decisions? *Rubric:* 3 = some risks need more effort; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Nadia's role.** What did Nadia do with Owen's list? *Rubric:* 3 = agreed they were right first steps; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -165,19 +165,19 @@ Backups that have never been restored may not work.
 
 ### Exercises
 
-- **EX014 — Permission form.** How is Owen's permission recorded? *Rubric:* 3 = email naming checks and changes; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Permission form.** How is Owen's permission recorded? *Rubric:* 3 = email naming checks and changes; 2 = partial; 1 = vague; 0 = none.
 - **EX015 — In scope.** List the in-scope items. *Rubric:* 3 = site, admin accounts, plugins and theme, host account; 2 = three; 1 = one; 0 = none.
-- **EX016 — Out of scope.** Name two out-of-scope items. *Rubric:* 3 = payment provider systems; volunteers' devices; 2 = one; 1 = none; 0 = none.
-- **EX017 — Staging copy.** What is a staging copy? *Rubric:* 3 = private copy with synthetic data; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Backup proof.** How did Owen prove the backup works? *Rubric:* 3 = restored it to staging; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Card details.** Where are card details stored? *Rubric:* 3 = with the payment provider; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Change log.** Why keep a change log? *Rubric:* 3 = track one change at a time; undo; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Out of scope.** Name two out-of-scope items. *Rubric:* 3 = payment provider systems; volunteers' devices; 2 = one; 1 = vague; 0 = none.
+- **EX017 — Staging copy.** What is a staging copy? *Rubric:* 3 = private copy with synthetic data; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Backup proof.** How did Owen prove the backup works? *Rubric:* 3 = restored it to staging; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Card details.** Where are card details stored? *Rubric:* 3 = with the payment provider; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Change log.** Why keep a change log? *Rubric:* 3 = track one change at a time; undo; 2 = partial; 1 = vague; 0 = none.
 - **EX021 — Misuse signs.** What should Owen do if he sees misuse? *Rubric:* 3 = stop, preserve evidence, contact host and tutor; 2 = two; 1 = one; 0 = none.
-- **EX022 — Defensive scope.** What kind of tools does Owen avoid? *Rubric:* 3 = tools that try to break in; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Director request.** What did the director ask for? *Rubric:* 3 = notice before donor-visible changes; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Donor data rule.** How is donor data protected during testing? *Rubric:* 3 = never copied; synthetic records; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Host terms.** Why read the host's terms? *Rubric:* 3 = they say what customers may test; 2 = partial; 1 = none; 0 = none.
-- **EX026 — One change.** Why make one change at a time? *Rubric:* 3 = easy to find what caused a problem; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Defensive scope.** What kind of tools does Owen avoid? *Rubric:* 3 = tools that try to break in; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Director request.** What did the director ask for? *Rubric:* 3 = notice before donor-visible changes; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Donor data rule.** How is donor data protected during testing? *Rubric:* 3 = never copied; synthetic records; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Host terms.** Why read the host's terms? *Rubric:* 3 = they say what customers may test; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — One change.** Why make one change at a time? *Rubric:* 3 = easy to find what caused a problem; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -271,17 +271,17 @@ A component list from the admin page may miss files added by hand; ask the host 
 ### Exercises
 
 - **EX027 — Inventory fields.** What does Owen's inventory record? *Rubric:* 3 = name, version, active, plus theme, platform, services; 2 = three; 1 = one; 0 = none.
-- **EX028 — donate-form action.** What does the lab say about donate-form? *Rubric:* 3 = update 3.2.0 to 3.2.4; 2 = partial; 1 = none; 0 = none.
-- **EX029 — event-calendar flag.** Why is event-calendar flagged? *Rubric:* 3 = 1,606 days without a release; 2 = partial; 1 = none; 0 = none.
-- **EX030 — photo-gallery flag.** What should happen to photo-gallery? *Rubric:* 3 = remove; not in use; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Card flow.** Where do card details go? *Rubric:* 3 = directly to payment provider; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Newsletter flow.** When does an email reach the newsletter service? *Rubric:* 3 = if donor opts in; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Maintenance research.** What did Kula et al. find? *Rubric:* 3 = outdated dependencies common; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Choosing components.** What kind of components suit small sites? *Rubric:* 3 = popular, actively maintained; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Hidden data.** What did Owen discover about event-calendar? *Rubric:* 3 = stored volunteers' phone numbers; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Phone numbers.** What happened to the phone numbers? *Rubric:* 3 = moved to volunteer system; deleted; 2 = partial; 1 = none; 0 = none.
+- **EX028 — donate-form action.** What does the lab say about donate-form? *Rubric:* 3 = update 3.2.0 to 3.2.4; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — event-calendar flag.** Why is event-calendar flagged? *Rubric:* 3 = 1,606 days without a release; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — photo-gallery flag.** What should happen to photo-gallery? *Rubric:* 3 = remove; not in use; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Card flow.** Where do card details go? *Rubric:* 3 = directly to payment provider; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Newsletter flow.** When does an email reach the newsletter service? *Rubric:* 3 = if donor opts in; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Maintenance research.** What did Kula et al. find? *Rubric:* 3 = outdated dependencies common; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Choosing components.** What kind of components suit small sites? *Rubric:* 3 = popular, actively maintained; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Hidden data.** What did Owen discover about event-calendar? *Rubric:* 3 = stored volunteers' phone numbers; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Phone numbers.** What happened to the phone numbers? *Rubric:* 3 = moved to volunteer system; deleted; 2 = partial; 1 = vague; 0 = none.
 - **EX037 — Three actions.** Name the three possible actions. *Rubric:* 3 = update, replace, remove; 2 = two; 1 = one; 0 = none.
-- **EX038 — Admin page gap.** What might the admin page list miss? *Rubric:* 3 = files added by hand; 2 = partial; 1 = none; 0 = none.
+- **EX038 — Admin page gap.** What might the admin page list miss? *Rubric:* 3 = files added by hand; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -372,18 +372,18 @@ A passed checklist means the known steps were done, not that the site is perfect
 
 ### Exercises
 
-- **EX039 — Download source.** Where did Owen download the update? *Rubric:* 3 = official plugin page; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Hash check.** How did Owen check the download? *Rubric:* 3 = compare SHA-256 with vendor's; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Lab outcome.** What did the checklist report? *Rubric:* 3 = NOT READY: admin MFA; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Holding release.** What did Owen do about the failed item? *Rubric:* 3 = waited for volunteer setup; reran; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Checklist purpose.** Why use a checklist? *Rubric:* 3 = nothing skipped under pressure; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Weekly routine.** What is the weekly routine? *Rubric:* 3 = check and apply security updates after staging; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Monthly routine.** What happens monthly? *Rubric:* 3 = review components and admin accounts; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Download source.** Where did Owen download the update? *Rubric:* 3 = official plugin page; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Hash check.** How did Owen check the download? *Rubric:* 3 = compare SHA-256 with vendor's; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Lab outcome.** What did the checklist report? *Rubric:* 3 = NOT READY: admin MFA; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Holding release.** What did Owen do about the failed item? *Rubric:* 3 = waited for volunteer setup; reran; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Checklist purpose.** Why use a checklist? *Rubric:* 3 = nothing skipped under pressure; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Weekly routine.** What is the weekly routine? *Rubric:* 3 = check and apply security updates after staging; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Monthly routine.** What happens monthly? *Rubric:* 3 = review components and admin accounts; 2 = partial; 1 = vague; 0 = none.
 - **EX046 — Month results.** Name four results of the month. *Rubric:* 3 = MFA, inventory, update, replace, remove, auto-updates, routines; 2 = three; 1 = one; 0 = none.
-- **EX047 — Limits named.** Name two limits Owen gave. *Rubric:* 3 = payment provider; vendor advisories; one person; 2 = one; 1 = none; 0 = none.
-- **EX048 — Continuity.** How will routines continue if Owen is away? *Rubric:* 3 = second volunteer learns them; 2 = partial; 1 = none; 0 = none.
-- **EX049 — What passing means.** What does a passed checklist mean? *Rubric:* 3 = known steps done, not perfect safety; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Larger projects.** Which tools automate integrity checks for larger projects? *Rubric:* 3 = SLSA, Sigstore; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Limits named.** Name two limits Owen gave. *Rubric:* 3 = payment provider; vendor advisories; one person; 2 = one; 1 = vague; 0 = none.
+- **EX048 — Continuity.** How will routines continue if Owen is away? *Rubric:* 3 = second volunteer learns them; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — What passing means.** What does a passed checklist mean? *Rubric:* 3 = known steps done, not perfect safety; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Larger projects.** Which tools automate integrity checks for larger projects? *Rubric:* 3 = SLSA, Sigstore; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

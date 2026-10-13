@@ -80,9 +80,9 @@ Diagrams show intended design; real configuration can differ and must be checked
 
 ### Exercises
 
-- **EX001 — January problem.** What made the January advisory hard to handle? *Rubric:* 3 = no central list; 3 days manual search; 2 = partial; 1 = none; 0 = none.
-- **EX002 — Reuse trade-off.** What is the trade-off of reusing libraries across clients? *Rubric:* 3 = saves time; one flaw affects many; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Upload storage.** What did the arrows reveal? *Rubric:* 3 = uploads stored with site images; 2 = partial; 1 = none; 0 = none.
+- **EX001 — January problem.** What made the January advisory hard to handle? *Rubric:* 3 = no central list; 3 days manual search; 2 = partial; 1 = vague; 0 = none.
+- **EX002 — Reuse trade-off.** What is the trade-off of reusing libraries across clients? *Rubric:* 3 = saves time; one flaw affects many; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Upload storage.** What did the arrows reveal? *Rubric:* 3 = uploads stored with site images; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -140,9 +140,9 @@ Network controls limit damage but cannot fix flaws in the application itself.
 
 ### Exercises
 
-- **EX004 — DNS protection.** How are client DNS records protected? *Rubric:* 3 = two-person approval; MFA; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Build downloads.** How do builds check downloaded packages? *Rubric:* 3 = HTTPS plus lockfile hashes; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Outbound fix.** What did Diego change for Greenleaf? *Rubric:* 3 = restricted outbound to three services; 2 = partial; 1 = none; 0 = none.
+- **EX004 — DNS protection.** How are client DNS records protected? *Rubric:* 3 = two-person approval; MFA; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Build downloads.** How do builds check downloaded packages? *Rubric:* 3 = HTTPS plus lockfile hashes; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Outbound fix.** What did Diego change for Greenleaf? *Rubric:* 3 = restricted outbound to three services; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -204,9 +204,9 @@ Validation reduces bad input but does not replace output encoding and parameteri
 
 ### Exercises
 
-- **EX007 — Name rule.** What is the pet-name rule? *Rubric:* 3 = 1–40 letters, spaces or hyphens; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Secret storage.** Where are API keys kept? *Rubric:* 3 = environment variables in hosting platform; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Review catch.** What did Aiko catch? *Rubric:* 3 = past dates accepted; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Name rule.** What is the pet-name rule? *Rubric:* 3 = 1–40 letters, spaces or hyphens; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Secret storage.** Where are API keys kept? *Rubric:* 3 = environment variables in hosting platform; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Review catch.** What did Aiko catch? *Rubric:* 3 = past dates accepted; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -289,9 +289,9 @@ Manifests list declared dependencies; code copied directly into projects will no
 
 ### Exercises
 
-- **EX010 — Lab result.** Which projects were affected? *Rubric:* 3 = greenleaf-booking, museum-tickets; 2 = one; 1 = none; 0 = none.
-- **EX011 — Text comparison.** Why not compare versions as text? *Rubric:* 3 = wrong ordering e.g. 3.10 vs 3.2; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Missing lockfiles.** Why fix projects without lockfiles first? *Rubric:* 3 = real versions unknown; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Lab result.** Which projects were affected? *Rubric:* 3 = greenleaf-booking, museum-tickets; 2 = one; 1 = vague; 0 = none.
+- **EX011 — Text comparison.** Why not compare versions as text? *Rubric:* 3 = wrong ordering e.g. 3.10 vs 3.2; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Missing lockfiles.** Why fix projects without lockfiles first? *Rubric:* 3 = real versions unknown; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -353,8 +353,8 @@ The Top 10 is an awareness list; use ASVS for detailed requirements.
 
 ### Exercises
 
-- **EX013 — Category.** Which Top 10 category is the upload-kit case? *Rubric:* 3 = A06; 2 = partial; 1 = none; 0 = none.
-- **EX014 — CWE-434.** What is CWE-434? *Rubric:* 3 = unrestricted upload of dangerous file types; 2 = partial; 1 = none; 0 = none.
+- **EX013 — Category.** Which Top 10 category is the upload-kit case? *Rubric:* 3 = A06; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — CWE-434.** What is CWE-434? *Rubric:* 3 = unrestricted upload of dangerous file types; 2 = partial; 1 = vague; 0 = none.
 - **EX015 — Client questions.** What three questions do clients ask? *Rubric:* 3 = affected? what done? action needed?; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -413,9 +413,9 @@ Containers share the host's kernel; they reduce risk but are not perfect isolati
 
 ### Exercises
 
-- **EX016 — App permissions.** What can each app process write to? *Rubric:* 3 = upload and log folders only; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Isolation purpose.** Why use containers for client apps? *Rubric:* 3 = isolate clients from each other; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Admin finding.** What did Diego change in the older app? *Rubric:* 3 = run as dedicated user; build check; 2 = partial; 1 = none; 0 = none.
+- **EX016 — App permissions.** What can each app process write to? *Rubric:* 3 = upload and log folders only; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Isolation purpose.** Why use containers for client apps? *Rubric:* 3 = isolate clients from each other; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Admin finding.** What did Diego change in the older app? *Rubric:* 3 = run as dedicated user; build check; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -473,9 +473,9 @@ Access reviews only help if owners check carefully; ask them to confirm each nam
 
 ### Exercises
 
-- **EX019 — Production deploy.** Who can deploy to production? *Rubric:* 3 = only two developers; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Build identity.** What identity does the build service use? *Rubric:* 3 = dedicated identity, not personal token; 2 = partial; 1 = none; 0 = none.
-- **EX021 — Review finding.** What did the first review find? *Rubric:* 3 = former contractor with deploy access; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Production deploy.** Who can deploy to production? *Rubric:* 3 = only two developers; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Build identity.** What identity does the build service use? *Rubric:* 3 = dedicated identity, not personal token; 2 = partial; 1 = vague; 0 = none.
+- **EX021 — Review finding.** What did the first review find? *Rubric:* 3 = former contractor with deploy access; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -539,7 +539,7 @@ A standard helps only if followed; check new projects against it.
 
 - **EX022 — Four layers.** List the four layers. *Rubric:* 3 = edge, application, data, pipeline; 2 = three; 1 = one; 0 = none.
 - **EX023 — Client separation.** How are clients separated? *Rubric:* 3 = own database, bucket, secrets; 2 = two; 1 = one; 0 = none.
-- **EX024 — Shared database.** What was found and fixed? *Rubric:* 3 = two clients sharing a database; split; 2 = partial; 1 = none; 0 = none.
+- **EX024 — Shared database.** What was found and fixed? *Rubric:* 3 = two clients sharing a database; split; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -622,9 +622,9 @@ Age is a rough proxy; a new version can still have flaws, an old one may be fine
 
 ### Exercises
 
-- **EX025 — Lab stale.** Which libraries were stale? *Rubric:* 3 = date-utils 1,141; upload-kit 637; 2 = one; 1 = none; 0 = none.
-- **EX026 — Bad measure.** Why not count libraries updated? *Rubric:* 3 = encourages risky bulk updates; 2 = partial; 1 = none; 0 = none.
-- **EX027 — Six-month result.** What did six months of updates achieve? *Rubric:* 3 = stale 64 to 18; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Lab stale.** Which libraries were stale? *Rubric:* 3 = date-utils 1,141; upload-kit 637; 2 = one; 1 = vague; 0 = none.
+- **EX026 — Bad measure.** Why not count libraries updated? *Rubric:* 3 = encourages risky bulk updates; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — Six-month result.** What did six months of updates achieve? *Rubric:* 3 = stale 64 to 18; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -683,7 +683,7 @@ Frameworks describe what good looks like; small agencies must choose what is pro
 ### Exercises
 
 - **EX028 — Stages.** List the stages for Brightwave. *Rubric:* 3 = code, libraries, build, registry, deploy, update; 2 = four; 1 = two; 0 = none.
-- **EX029 — SSDF gap.** Where were Brightwave's SSDF gaps? *Rubric:* 3 = Respond: no inventory, no fix targets; 2 = partial; 1 = none; 0 = none.
+- **EX029 — SSDF gap.** Where were Brightwave's SSDF gaps? *Rubric:* 3 = Respond: no inventory, no fix targets; 2 = partial; 1 = vague; 0 = none.
 - **EX030 — Three goals.** State the three placement goals. *Rubric:* 3 = inventory minutes; highs in 7 days; verified builds; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -738,9 +738,9 @@ Ratings are judgements; record the reasoning so others can challenge them.
 
 ### Exercises
 
-- **EX031 — Most sensitive.** Which Greenleaf assets are most sensitive? *Rubric:* 3 = medical notes and uploads; 2 = one; 1 = none; 0 = none.
-- **EX032 — Supply chain importance.** Why do supply chain assets rate highly? *Rubric:* 3 = affect all clients at once; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Context order.** How did context order the form-library patching? *Rubric:* 3 = sensitive same day; brochure sites weekly; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Most sensitive.** Which Greenleaf assets are most sensitive? *Rubric:* 3 = medical notes and uploads; 2 = one; 1 = vague; 0 = none.
+- **EX032 — Supply chain importance.** Why do supply chain assets rate highly? *Rubric:* 3 = affect all clients at once; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Context order.** How did context order the form-library patching? *Rubric:* 3 = sensitive same day; brochure sites weekly; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -794,9 +794,9 @@ A diagram is a model; walk through the running system to check it.
 
 ### Exercises
 
-- **EX034 — Pipeline entry.** Where do libraries enter the pipeline? *Rubric:* 3 = public registry to build boundary; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Upload check.** What check guards the upload boundary? *Rubric:* 3 = validation and size limits; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Forgotten path.** What did the Greenleaf diagram reveal? *Rubric:* 3 = CSV export reachable by any staff; 2 = partial; 1 = none; 0 = none.
+- **EX034 — Pipeline entry.** Where do libraries enter the pipeline? *Rubric:* 3 = public registry to build boundary; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Upload check.** What check guards the upload boundary? *Rubric:* 3 = validation and size limits; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Forgotten path.** What did the Greenleaf diagram reveal? *Rubric:* 3 = CSV export reachable by any staff; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -856,7 +856,7 @@ Ratings are estimates; record the evidence behind each.
 
 - **EX037 — Scenario parts.** What does a scenario state? *Rubric:* 3 = what, weakness, harm; 2 = two; 1 = one; 0 = none.
 - **EX038 — Harmful version controls.** Name controls for a harmful library version. *Rubric:* 3 = pinning with hashes; adoption delay; review; 2 = two; 1 = one; 0 = none.
-- **EX039 — Top scenario.** What was the top-ranked scenario? *Rubric:* 3 = outdated library with known flaw in public app; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Top scenario.** What was the top-ranked scenario? *Rubric:* 3 = outdated library with known flaw in public app; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -941,8 +941,8 @@ Keep the allowed list short; every added type adds risk.
 ### Exercises
 
 - **EX040 — Lab rejections.** Why was each file rejected? *Rubric:* 3 = notes mismatch; scan too large; run.exe type; 2 = two; 1 = one; 0 = none.
-- **EX041 — Second layer.** What protects if a checked file is still harmful? *Rubric:* 3 = storage outside web root; safe serving; random names; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Oversize response.** How was oversized photo uploads handled? *Rubric:* 3 = clear message, not raised limit; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Second layer.** What protects if a checked file is still harmful? *Rubric:* 3 = storage outside web root; safe serving; random names; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Oversize response.** How was oversized photo uploads handled? *Rubric:* 3 = clear message, not raised limit; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1021,9 +1021,9 @@ Audits only find known advisories; they say nothing about unknown flaws.
 
 ### Exercises
 
-- **EX043 — Lab totals.** What totals did the lab give? *Rubric:* 3 = high 2, medium 1; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Due dates.** What due dates apply? *Rubric:* 3 = high 7 days; medium 30; 2 = partial; 1 = none; 0 = none.
-- **EX045 — False match.** Why was one match false? *Rubric:* 3 = range excluded installed version; 2 = partial; 1 = none; 0 = none.
+- **EX043 — Lab totals.** What totals did the lab give? *Rubric:* 3 = high 2, medium 1; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Due dates.** What due dates apply? *Rubric:* 3 = high 7 days; medium 30; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — False match.** Why was one match false? *Rubric:* 3 = range excluded installed version; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1081,9 +1081,9 @@ Pinning stops surprise changes but also stops automatic fixes; pair it with regu
 
 ### Exercises
 
-- **EX046 — Lock file purpose.** What does a lock file record? *Rubric:* 3 = exact versions and hashes of all libraries; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Adoption delay.** Why delay brand-new versions? *Rubric:* 3 = harmful versions often found quickly; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Review finding.** What did Diego's review find? *Rubric:* 3 = new transitive library with install script; avoided; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Lock file purpose.** What does a lock file record? *Rubric:* 3 = exact versions and hashes of all libraries; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Adoption delay.** Why delay brand-new versions? *Rubric:* 3 = harmful versions often found quickly; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Review finding.** What did Diego's review find? *Rubric:* 3 = new transitive library with install script; avoided; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1165,8 +1165,8 @@ Pinning needs updating too; a pinned old action can miss its own fixes.
 ### Exercises
 
 - **EX049 — Lab issues.** List the four lab issues. *Rubric:* 3 = two unpinned; fork secrets; write-all; 2 = three; 1 = one; 0 = none.
-- **EX050 — Token fix.** How were token permissions fixed? *Rubric:* 3 = read-only default, write only where needed; 2 = partial; 1 = none; 0 = none.
-- **EX051 — First fix.** Which issues were fixed first and why? *Rubric:* 3 = secret exposure; most direct harm; 2 = partial; 1 = none; 0 = none.
+- **EX050 — Token fix.** How were token permissions fixed? *Rubric:* 3 = read-only default, write only where needed; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — First fix.** Which issues were fixed first and why? *Rubric:* 3 = secret exposure; most direct harm; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1225,8 +1225,8 @@ Provenance proves how something was built, not that the code is safe.
 ### Exercises
 
 - **EX052 — Digest record.** What does the deployment record store? *Rubric:* 3 = digest, commit, build run; 2 = two; 1 = one; 0 = none.
-- **EX053 — SLSA L2.** What does SLSA build L2 add over L1? *Rubric:* 3 = hosted build service signs provenance; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Refused deploy.** What did the refused deploy show? *Rubric:* 3 = control works; local images blocked; 2 = partial; 1 = none; 0 = none.
+- **EX053 — SLSA L2.** What does SLSA build L2 add over L1? *Rubric:* 3 = hosted build service signs provenance; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Refused deploy.** What did the refused deploy show? *Rubric:* 3 = control works; local images blocked; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1305,9 +1305,9 @@ Monitoring shows differences; people must find the causes.
 
 ### Exercises
 
-- **EX055 — Lab drift.** What did the lab report? *Rubric:* 3 = harbour-cafe BEHIND; museum UNAPPROVED BUILD; 2 = one; 1 = none; 0 = none.
-- **EX056 — Unapproved urgency.** Why is an unapproved build urgent? *Rubric:* 3 = unknown origin of what runs; 2 = partial; 1 = none; 0 = none.
-- **EX057 — Hotfix cause.** What caused the museum hotfix? *Rubric:* 3 = manual weekend deploy before rule; 2 = partial; 1 = none; 0 = none.
+- **EX055 — Lab drift.** What did the lab report? *Rubric:* 3 = harbour-cafe BEHIND; museum UNAPPROVED BUILD; 2 = one; 1 = vague; 0 = none.
+- **EX056 — Unapproved urgency.** Why is an unapproved build urgent? *Rubric:* 3 = unknown origin of what runs; 2 = partial; 1 = vague; 0 = none.
+- **EX057 — Hotfix cause.** What caused the museum hotfix? *Rubric:* 3 = manual weekend deploy before rule; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1369,9 +1369,9 @@ Exceptions must expire; permanent exceptions become hidden risk.
 
 ### Exercises
 
-- **EX058 — No disabling.** What happens if a check must be bypassed? *Rubric:* 3 = time-limited approved exception; 2 = partial; 1 = none; 0 = none.
+- **EX058 — No disabling.** What happens if a check must be bypassed? *Rubric:* 3 = time-limited approved exception; 2 = partial; 1 = vague; 0 = none.
 - **EX059 — Diagnosis steps.** How does Diego diagnose? *Rubric:* 3 = read, reproduce, one change at a time; 2 = two; 1 = one; 0 = none.
-- **EX060 — Date library fix.** What fixed the date library failure? *Rubric:* 3 = explicit time zone; 2 = partial; 1 = none; 0 = none.
+- **EX060 — Date library fix.** What fixed the date library failure? *Rubric:* 3 = explicit time zone; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1433,9 +1433,9 @@ A trusted provider can still send unexpected data; validate everything.
 
 ### Exercises
 
-- **EX061 — Key storage.** Where are service keys kept? *Rubric:* 3 = secret store, scoped per client and environment; 2 = partial; 1 = none; 0 = none.
-- **EX062 — Least data.** What does the email service receive? *Rubric:* 3 = email and appointment time only; 2 = partial; 1 = none; 0 = none.
-- **EX063 — Callback finding.** What was wrong with the payment callback? *Rubric:* 3 = no signature check; 2 = partial; 1 = none; 0 = none.
+- **EX061 — Key storage.** Where are service keys kept? *Rubric:* 3 = secret store, scoped per client and environment; 2 = partial; 1 = vague; 0 = none.
+- **EX062 — Least data.** What does the email service receive? *Rubric:* 3 = email and appointment time only; 2 = partial; 1 = vague; 0 = none.
+- **EX063 — Callback finding.** What was wrong with the payment callback? *Rubric:* 3 = no signature check; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1497,9 +1497,9 @@ Automation repeats mistakes quickly; test it and watch its output.
 
 ### Exercises
 
-- **EX064 — Job permissions.** What can the nightly job do? *Rubric:* 3 = read; open tasks and PRs; not merge or deploy; 2 = partial; 1 = none; 0 = none.
-- **EX065 — Silent failure.** Why alert when the report is missing? *Rubric:* 3 = absence looks like no problems; 2 = partial; 1 = none; 0 = none.
-- **EX066 — Skipped projects.** How were skipped projects found? *Rubric:* 3 = missing-project count; 2 = partial; 1 = none; 0 = none.
+- **EX064 — Job permissions.** What can the nightly job do? *Rubric:* 3 = read; open tasks and PRs; not merge or deploy; 2 = partial; 1 = vague; 0 = none.
+- **EX065 — Silent failure.** Why alert when the report is missing? *Rubric:* 3 = absence looks like no problems; 2 = partial; 1 = vague; 0 = none.
+- **EX066 — Skipped projects.** How were skipped projects found? *Rubric:* 3 = missing-project count; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1569,9 +1569,9 @@ A small labelled sample gives rough estimates; report the sample size.
 
 ### Exercises
 
-- **EX067 — Definitions.** Define precision and recall. *Rubric:* 3 = share of alerts real; share of problems found; 2 = one; 1 = none; 0 = none.
-- **EX068 — Lab figures.** What were the lab figures? *Rubric:* 3 = outdated 0.62/0.94; credential 0.25/1.00; 2 = one; 1 = none; 0 = none.
-- **EX069 — Re-measure.** Why re-run the sample after tuning? *Rubric:* 3 = check recall did not fall; 2 = partial; 1 = none; 0 = none.
+- **EX067 — Definitions.** Define precision and recall. *Rubric:* 3 = share of alerts real; share of problems found; 2 = one; 1 = vague; 0 = none.
+- **EX068 — Lab figures.** What were the lab figures? *Rubric:* 3 = outdated 0.62/0.94; credential 0.25/1.00; 2 = one; 1 = vague; 0 = none.
+- **EX069 — Re-measure.** Why re-run the sample after tuning? *Rubric:* 3 = check recall did not fall; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1633,9 +1633,9 @@ A difference in records is not proof of cause.
 
 ### Exercises
 
-- **EX070 — Question.** What was the question? *Rubric:* 3 = weekly PRs vs manual fix speed; 2 = partial; 1 = none; 0 = none.
-- **EX071 — Result.** What were the medians? *Rubric:* 3 = 3 vs 12 days; 2 = partial; 1 = none; 0 = none.
-- **EX072 — Limit.** Name a limit. *Rubric:* 3 = not random; older projects manual; 2 = partial; 1 = none; 0 = none.
+- **EX070 — Question.** What was the question? *Rubric:* 3 = weekly PRs vs manual fix speed; 2 = partial; 1 = vague; 0 = none.
+- **EX071 — Result.** What were the medians? *Rubric:* 3 = 3 vs 12 days; 2 = partial; 1 = vague; 0 = none.
+- **EX072 — Limit.** Name a limit. *Rubric:* 3 = not random; older projects manual; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1697,9 +1697,9 @@ Small increments make reviews easier and problems smaller.
 
 ### Exercises
 
-- **EX073 — Project.** What did the team build? *Rubric:* 3 = client security status page; 2 = partial; 1 = none; 0 = none.
-- **EX074 — Diego's part.** What did Diego build? *Rubric:* 3 = access checks and tests; 2 = partial; 1 = none; 0 = none.
-- **EX075 — Review catch.** What did review catch? *Rubric:* 3 = all clients visible to anyone; 2 = partial; 1 = none; 0 = none.
+- **EX073 — Project.** What did the team build? *Rubric:* 3 = client security status page; 2 = partial; 1 = vague; 0 = none.
+- **EX074 — Diego's part.** What did Diego build? *Rubric:* 3 = access checks and tests; 2 = partial; 1 = vague; 0 = none.
+- **EX075 — Review catch.** What did review catch? *Rubric:* 3 = all clients visible to anyone; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1755,7 +1755,7 @@ A handoff is finished when others can run the process without you, not when the 
 
 - **EX076 — Runbook contents.** What does a runbook include? *Rubric:* 3 = purpose, health, failures, fixes, contacts; 2 = three; 1 = one; 0 = none.
 - **EX077 — Advisory roles.** Who does what in advisory response? *Rubric:* 3 = job finds; owners fix; Aiko watches dates; 2 = two; 1 = one; 0 = none.
-- **EX078 — Handoff check.** How was the handoff checked? *Rubric:* 3 = two weeks owners run, Diego watches; 2 = partial; 1 = none; 0 = none.
+- **EX078 — Handoff check.** How was the handoff checked? *Rubric:* 3 = two weeks owners run, Diego watches; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1813,9 +1813,9 @@ Validation proves the control is present; monitoring proves it stays present.
 
 ### Exercises
 
-- **EX079 — Rollout order.** Which projects went first? *Rubric:* 3 = most sensitive clients; 2 = partial; 1 = none; 0 = none.
-- **EX080 — Legacy projects.** How were the two legacy projects handled? *Rubric:* 3 = compensating steps and rebuild date; 2 = partial; 1 = none; 0 = none.
-- **EX081 — Rollback case.** Why was one project rolled back? *Rubric:* 3 = rejected a format the client used; 2 = partial; 1 = none; 0 = none.
+- **EX079 — Rollout order.** Which projects went first? *Rubric:* 3 = most sensitive clients; 2 = partial; 1 = vague; 0 = none.
+- **EX080 — Legacy projects.** How were the two legacy projects handled? *Rubric:* 3 = compensating steps and rebuild date; 2 = partial; 1 = vague; 0 = none.
+- **EX081 — Rollback case.** Why was one project rolled back? *Rubric:* 3 = rejected a format the client used; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1873,8 +1873,8 @@ One good event does not prove the process always works; keep measuring.
 
 ### Exercises
 
-- **EX082 — Detection.** How quickly were affected projects found? *Rubric:* 3 = within hours via nightly job; 2 = partial; 1 = none; 0 = none.
-- **EX083 — Fix time.** How long did fixing take? *Rubric:* 3 = four days for all nine; 2 = partial; 1 = none; 0 = none.
+- **EX082 — Detection.** How quickly were affected projects found? *Rubric:* 3 = within hours via nightly job; 2 = partial; 1 = vague; 0 = none.
+- **EX083 — Fix time.** How long did fixing take? *Rubric:* 3 = four days for all nine; 2 = partial; 1 = vague; 0 = none.
 - **EX084 — Goals met.** Which goals were shown to be met? *Rubric:* 3 = inventory minutes; 7-day highs; recorded builds; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -1934,8 +1934,8 @@ An SBOM lists components; it does not say whether they are safe.
 ### Exercises
 
 - **EX085 — NTIA elements.** Name four NTIA minimum elements. *Rubric:* 3 = supplier, name, version, identifier, relationship, author, timestamp; 2 = two; 1 = one; 0 = none.
-- **EX086 — New question.** What new question can SBOMs answer? *Rubric:* 3 = which past release had a library; 2 = partial; 1 = none; 0 = none.
-- **EX087 — Hidden library.** What did testing reveal? *Rubric:* 3 = library bundled outside lock file; 2 = partial; 1 = none; 0 = none.
+- **EX086 — New question.** What new question can SBOMs answer? *Rubric:* 3 = which past release had a library; 2 = partial; 1 = vague; 0 = none.
+- **EX087 — Hidden library.** What did testing reveal? *Rubric:* 3 = library bundled outside lock file; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1994,8 +1994,8 @@ Assessment rewards honest limits as well as results.
 ### Exercises
 
 - **EX088 — SSDF map.** Map the work to the SSDF groups. *Rubric:* 3 = four groups mapped; 2 = three; 1 = one; 0 = none.
-- **EX089 — Limits.** Name two limits. *Rubric:* 3 = legacy projects; unsigned SBOMs; unknown flaws; 2 = one; 1 = none; 0 = none.
-- **EX090 — Lesson.** What was Diego's main lesson? *Rubric:* 3 = security is careful routine; 2 = partial; 1 = none; 0 = none.
+- **EX089 — Limits.** Name two limits. *Rubric:* 3 = legacy projects; unsigned SBOMs; unknown flaws; 2 = one; 1 = vague; 0 = none.
+- **EX090 — Lesson.** What was Diego's main lesson? *Rubric:* 3 = security is careful routine; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

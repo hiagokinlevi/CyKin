@@ -95,7 +95,7 @@ Searches miss industry reports behind paywalls; note this as a limitation.
 - **EX003 — Search record.** What does Tariq record for each search? *Rubric:* 3 = date, database, terms, hits, screening counts; 2 = three; 1 = one; 0 = none.
 - **EX004 — Source weight.** Compare the evidential weight of Alahmadi et al. and a vendor blog. *Rubric:* 3 = peer-reviewed empirical vs unreviewed marketing; 2 = partial; 1 = equal; 0 = none.
 - **EX005 — Frameworks.** What role do NIST SP 800-92 and Sigma play in the review? *Rubric:* 3 = define practice/format, not evidence of effect; 2 = partial; 1 = evidence; 0 = none.
-- **EX006 — Gap.** State the gap Tariq's study addresses. *Rubric:* 3 = few measurements of tuning effects with comparison group; 2 = partial; 1 = none; 0 = none.
+- **EX006 — Gap.** State the gap Tariq's study addresses. *Rubric:* 3 = few measurements of tuning effects with comparison group; 2 = partial; 1 = vague; 0 = none.
 - **EX007 — Exclusions.** Why were network-IDS algorithm papers excluded? *Rubric:* 3 = no analyst/operational data relevant to the question; 2 = partial; 1 = random; 0 = none.
 
 ### Synthesis
@@ -166,9 +166,9 @@ Frameworks change versions; cite the version used.
 - **EX009 — ATT&CK use.** What does ATT&CK provide to detection engineering? *Rubric:* 3 = shared behaviour vocabulary for mapping coverage; 2 = partial; 1 = exploits; 0 = none.
 - **EX010 — D3FEND use.** What does D3FEND add? *Rubric:* 3 = map of defensive techniques/countermeasures; 2 = partial; 1 = same as ATT&CK; 0 = none.
 - **EX011 — Monitoring programme.** How does SP 800-137 frame monitoring? *Rubric:* 3 = ongoing risk-tied programme with frequencies and metrics; 2 = partial; 1 = tools; 0 = none.
-- **EX012 — Metric side effect.** Give one metric side effect. *Rubric:* 3 = e.g. closed-count rewards speed over depth; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Counter-evidence.** What counter-evidence did Tariq present? *Rubric:* 3 = Alahmadi et al.: volume drives burnout, so reduction has value; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Maturity framing.** How does SOC-CMM change the view of tuning? *Rubric:* 3 = part of process maturity, not one-off clean-up; 2 = partial; 1 = none; 0 = none.
+- **EX012 — Metric side effect.** Give one metric side effect. *Rubric:* 3 = e.g. closed-count rewards speed over depth; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Counter-evidence.** What counter-evidence did Tariq present? *Rubric:* 3 = Alahmadi et al.: volume drives burnout, so reduction has value; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Maturity framing.** How does SOC-CMM change the view of tuning? *Rubric:* 3 = part of process maturity, not one-off clean-up; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -336,7 +336,7 @@ Comparison groups remove shared effects only; something affecting tuned rules al
 - **EX022 — DiD logic.** Explain difference-in-differences in one sentence. *Rubric:* 3 = subtract control change from treated change to remove shared effects; 2 = partial; 1 = vague; 0 = none.
 - **EX023 — Lab estimate.** Give both group changes and the net estimate. *Rubric:* 3 = −173.8, −37.2, −136.5; 2 = two; 1 = one; 0 = none.
 - **EX024 — Specific checks.** How was the firewall migration ruled out? *Rubric:* 3 = tuned rules do not use firewall logs; 2 = partial; 1 = assumed; 0 = none.
-- **EX025 — Parallel trends.** What assumption does the method need, and what supports it? *Rubric:* 3 = parallel trends; similar flat pre-period; 2 = assumption only; 1 = none; 0 = none.
+- **EX025 — Parallel trends.** What assumption does the method need, and what supports it? *Rubric:* 3 = parallel trends; similar flat pre-period; 2 = assumption only; 1 = vague; 0 = none.
 - **EX026 — Residual bias.** What could still bias the estimate? *Rubric:* 3 = something affecting tuned rules only; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -435,7 +435,7 @@ Minimum stratum sizes improve small-stratum estimates but require reweighting; f
 - **EX029 — Allocation.** Give the stratum allocations and why high gets 20. *Rubric:* 3 = 20/45/135; proportional gives 6, too few; 2 = numbers only; 1 = wrong; 0 = none.
 - **EX030 — Reweighting.** Why reweight estimates? *Rubric:* 3 = sample not proportional; reweight by stratum size to avoid bias; 2 = partial; 1 = no need; 0 = none.
 - **EX031 — Definitions sharpened.** How were benign trigger and false positive distinguished? *Rubric:* 3 = intended behaviour legitimate vs unintended match; 2 = partial; 1 = same; 0 = none.
-- **EX032 — Signatures.** Who signed the proposal and annex? *Rubric:* 3 = Solberg and Bell; CISO for purple-team annex; 2 = partial; 1 = none; 0 = none.
+- **EX032 — Signatures.** Who signed the proposal and annex? *Rubric:* 3 = Solberg and Bell; CISO for purple-team annex; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -611,7 +611,7 @@ Long limitation lists without direction or impact are less useful than a few ana
 
 - **EX039 — Dissertation parts.** List the main dissertation sections in order. *Rubric:* 3 = abstract through appendices in order; 2 = minor slips; 1 = jumbled; 0 = none.
 - **EX040 — Results wording.** Rewrite "tuning eliminated noise" in results style. *Rubric:* 3 = measured estimate with interval, no overclaim; 2 = partial; 1 = unchanged; 0 = none.
-- **EX041 — Risk trade.** What trade-off does the discussion identify? *Rubric:* 3 = analyst time vs blind spots; narrow entries reduce it; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Risk trade.** What trade-off does the discussion identify? *Rubric:* 3 = analyst time vs blind spots; narrow entries reduce it; 2 = partial; 1 = vague; 0 = none.
 - **EX042 — Bias direction.** Which way does purple-team design bias the suppression estimate? *Rubric:* 3 = makes suppression look rarer; designers knew rules; 2 = direction only; 1 = wrong; 0 = none.
 - **EX043 — Recommendations.** Give three recommendations. *Rubric:* 3 = review entries rigorously, conditional entries, quarterly replay, suppression metric (three); 2 = two; 1 = one; 0 = none.
 - **EX044 — Shared bias.** Why would shared labeller bias not show up as disagreement? *Rubric:* 3 = both share the same assumptions so they agree wrongly; 2 = partial; 1 = it would; 0 = none.

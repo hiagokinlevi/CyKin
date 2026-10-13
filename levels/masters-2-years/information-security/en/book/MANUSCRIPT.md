@@ -73,8 +73,8 @@ A question about whether staff are secure cannot be answered with any measure.
 - **EX002 — Revised question.** What is Priya's revised question? *Rubric:* 3 = whether feedback departments' click rates fall more than comparison;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX003 — Four elements.** Which four elements does the revised question name? *Rubric:* 3 = intervention, outcome, comparison, population;; 2 = all;; 1 = some;; 0 = none.
 - **EX004 — Inclusion restriction.** Which studies does Priya include? *Rubric:* 3 = those measuring behaviour;; 2 = correct;; 1 = opinions;; 0 = none.
-- **EX005 — Anderson warning.** What warning does Anderson's text give? *Rubric:* 3 = blaming users rarely fixes systems;; 2 = correct;; 1 = none;; 0 = none.
-- **EX006 — Logged reasons.** Give an exclusion reason Priya logs. *Rubric:* 3 = no behavioural measure;; 2 = one;; 1 = none;; 0 = none.
+- **EX005 — Anderson warning.** What warning does Anderson's text give? *Rubric:* 3 = blaming users rarely fixes systems;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX006 — Logged reasons.** Give an exclusion reason Priya logs. *Rubric:* 3 = no behavioural measure;; 2 = one;; 1 = vague;; 0 = none.
 - **EX007 — Included count.** How many studies are included? *Rubric:* 3 = twenty-three;; 2 = correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-02"></a>
@@ -113,12 +113,12 @@ Assuming a control works because a standard requires it confuses having with wor
 
 ### Exercises
 
-- **EX008 — 27001 requirement.** What does ISO/IEC 27001:2022 require about people? *Rubric:* 3 = awareness of policy and their contribution;; 2 = correct;; 1 = none;; 0 = none.
+- **EX008 — 27001 requirement.** What does ISO/IEC 27001:2022 require about people? *Rubric:* 3 = awareness of policy and their contribution;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX009 — 27000 role.** What is ISO/IEC 27000:2026? *Rubric:* 3 = the overview of the family;; 2 = correct;; 1 = vocabulary only;; 0 = none.
 - **EX010 — SP 800-53 family.** Which SP 800-53 family holds training controls? *Rubric:* 3 = awareness and training;; 2 = correct;; 1 = other;; 0 = none.
 - **EX011 — CSF function.** Which CSF 2.0 function includes awareness and training? *Rubric:* 3 = Protect;; 2 = correct;; 1 = other;; 0 = none.
 - **EX012 — Design principle.** Which Saltzer and Schroeder principle supports feedback? *Rubric:* 3 = psychological acceptability;; 2 = correct;; 1 = other;; 0 = none.
-- **EX013 — Secondary outcome.** What secondary outcome is added? *Rubric:* 3 = reporting rates;; 2 = correct;; 1 = none;; 0 = none.
+- **EX013 — Secondary outcome.** What secondary outcome is added? *Rubric:* 3 = reporting rates;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX014 — Expected size.** What effect size does Priya expect? *Rubric:* 3 = a few percentage points;; 2 = correct;; 1 = large;; 0 = none.
 
 <a id="ch-03"></a>
@@ -158,11 +158,11 @@ Using simulation results to discipline staff undermines trust and reporting.
 ### Exercises
 
 - **EX015 — Design chosen.** Which design does Priya use? *Rubric:* 3 = difference-in-differences;; 2 = correct;; 1 = randomised;; 0 = none.
-- **EX016 — Shared influences.** What does the comparison group remove? *Rubric:* 3 = influences shared by both groups;; 2 = correct;; 1 = none;; 0 = none.
+- **EX016 — Shared influences.** What does the comparison group remove? *Rubric:* 3 = influences shared by both groups;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX017 — Assumption check.** What did the four earlier simulations show? *Rubric:* 3 = rates moved together;; 2 = correct;; 1 = diverged;; 0 = none.
-- **EX018 — Lure check.** Why check that emails were identical? *Rubric:* 3 = harder lures would distort comparison;; 2 = correct;; 1 = none;; 0 = none.
+- **EX018 — Lure check.** Why check that emails were identical? *Rubric:* 3 = harder lures would distort comparison;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX019 — Reporting level.** At what level are results reported? *Rubric:* 3 = department level;; 2 = correct;; 1 = individual;; 0 = none.
-- **EX020 — Uncertainty method.** How is uncertainty estimated? *Rubric:* 3 = bootstrap with a thousand resamples and fixed seed;; 2 = correct;; 1 = none;; 0 = none.
+- **EX020 — Uncertainty method.** How is uncertainty estimated? *Rubric:* 3 = bootstrap with a thousand resamples and fixed seed;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -200,12 +200,12 @@ Ignoring a fall in reporting would hide a harmful side effect.
 
 ### Exercises
 
-- **EX021 — Template rival.** Why vary simulation templates? *Rubric:* 3 = so staff cannot learn one pattern;; 2 = correct;; 1 = none;; 0 = none.
-- **EX022 — Filter check.** How is the mail filter rival checked? *Rubric:* 3 = confirm identical rules across departments;; 2 = correct;; 1 = none;; 0 = none.
+- **EX021 — Template rival.** Why vary simulation templates? *Rubric:* 3 = so staff cannot learn one pattern;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX022 — Filter check.** How is the mail filter rival checked? *Rubric:* 3 = confirm identical rules across departments;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX023 — Weak measure.** Which check depends on honest reporting? *Rubric:* 3 = manager reminder logs;; 2 = correct;; 1 = other;; 0 = none.
-- **EX024 — Side effect.** What harmful side effect might feedback cause? *Rubric:* 3 = fewer reports of suspicious emails;; 2 = correct;; 1 = none;; 0 = none.
-- **EX025 — Supervisor addition.** What weakening result does Dr. Bello add? *Rubric:* 3 = fall only on repeated templates;; 2 = correct;; 1 = none;; 0 = none.
-- **EX026 — Advance purpose.** Why record weakening results in advance? *Rubric:* 3 = prevents reinterpretation afterwards;; 2 = correct;; 1 = none;; 0 = none.
+- **EX024 — Side effect.** What harmful side effect might feedback cause? *Rubric:* 3 = fewer reports of suspicious emails;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX025 — Supervisor addition.** What weakening result does Dr. Bello add? *Rubric:* 3 = fall only on repeated templates;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX026 — Advance purpose.** Why record weakening results in advance? *Rubric:* 3 = prevents reinterpretation afterwards;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -275,7 +275,7 @@ Counting scanner clicks as human clicks inflates measured risk.
 - **EX027 — Raw clicks.** How many raw clicks does the pilot find? *Rubric:* 3 = 239, 19.9 percent;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX028 — Scanner clicks.** How many clicks occur within two seconds? *Rubric:* 3 = 77;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX029 — Human rate.** What is the human click rate? *Rubric:* 3 = 13.5 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX030 — Better method.** What would be better than timing? *Rubric:* 3 = matching known scanner addresses;; 2 = correct;; 1 = none;; 0 = none.
+- **EX030 — Better method.** What would be better than timing? *Rubric:* 3 = matching known scanner addresses;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX031 — Threshold test.** Which alternative threshold is tested? *Rubric:* 3 = five seconds;; 2 = correct;; 1 = other;; 0 = none.
 - **EX032 — New outcome.** What is the new primary outcome? *Rubric:* 3 = human click rate excluding two-second clicks;; 2 = correct;; 1 = raw;; 0 = none.
 
@@ -347,7 +347,7 @@ Treating a simulation click rate as a breach rate overstates the finding.
 - **EX035 — DiD and interval.** What is the estimate and interval? *Rubric:* 3 = minus 6.2 points, minus 10.7 to minus 1.2;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX036 — Remaining rival.** Which rival is not fully ruled out? *Rubric:* 3 = manager reminders;; 2 = correct;; 1 = other;; 0 = none.
 - **EX037 — Reporting result.** What happened to report rates? *Rubric:* 3 = rose slightly in feedback departments;; 2 = correct;; 1 = fell;; 0 = none.
-- **EX038 — Proxy limit.** Why not claim feedback prevents breaches? *Rubric:* 3 = simulation clicks are a proxy;; 2 = correct;; 1 = none;; 0 = none.
+- **EX038 — Proxy limit.** Why not claim feedback prevents breaches? *Rubric:* 3 = simulation clicks are a proxy;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -386,11 +386,11 @@ Generic disclaimers do not help readers judge a result.
 ### Exercises
 
 - **EX039 — Separate section.** Which finding gets its own section? *Rubric:* 3 = the scanner-click correction;; 2 = correct;; 1 = other;; 0 = none.
-- **EX040 — Five limitations.** Name one of the five limitations. *Rubric:* 3 = non-random treated departments;; 2 = one;; 1 = none;; 0 = none.
-- **EX041 — Limitation detail.** What does Priya state for each limitation? *Rubric:* 3 = how it biases and in which direction;; 2 = correct;; 1 = none;; 0 = none.
-- **EX042 — Staged rollout.** Why recommend a staged rollout? *Rubric:* 3 = comparison remains possible;; 2 = correct;; 1 = none;; 0 = none.
+- **EX040 — Five limitations.** Name one of the five limitations. *Rubric:* 3 = non-random treated departments;; 2 = one;; 1 = vague;; 0 = none.
+- **EX041 — Limitation detail.** What does Priya state for each limitation? *Rubric:* 3 = how it biases and in which direction;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX042 — Staged rollout.** Why recommend a staged rollout? *Rubric:* 3 = comparison remains possible;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX043 — Summary length.** How long is the team summary? *Rubric:* 3 = two pages;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX044 — Revised wording.** What wording was revised? *Rubric:* 3 = sentences implying carelessness;; 2 = correct;; 1 = none;; 0 = none.
+- **EX044 — Revised wording.** What wording was revised? *Rubric:* 3 = sentences implying carelessness;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -428,11 +428,11 @@ Presenting a three-department result as definitive overstates certainty.
 
 ### Exercises
 
-- **EX045 — Leave-one-out.** What does leaving out each department show? *Rubric:* 3 = direction holds, one omission nearly touches zero;; 2 = correct;; 1 = none;; 0 = none.
+- **EX045 — Leave-one-out.** What does leaving out each department show? *Rubric:* 3 = direction holds, one omission nearly touches zero;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX046 — Trust answer.** How should Harrowgate treat the result? *Rubric:* 3 = encouraging but provisional;; 2 = correct;; 1 = definitive;; 0 = none.
-- **EX047 — Ethics answer.** What suggests feedback was not punitive? *Rubric:* 3 = reports rose;; 2 = correct;; 1 = none;; 0 = none.
-- **EX048 — Committee decision.** What does the committee decide? *Rubric:* 3 = extend to two departments, keep one comparison;; 2 = correct;; 1 = none;; 0 = none.
-- **EX049 — Supplier request.** What does the committee ask the supplier for? *Rubric:* 3 = scanner addresses in exports;; 2 = correct;; 1 = none;; 0 = none.
+- **EX047 — Ethics answer.** What suggests feedback was not punitive? *Rubric:* 3 = reports rose;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX048 — Committee decision.** What does the committee decide? *Rubric:* 3 = extend to two departments, keep one comparison;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX049 — Supplier request.** What does the committee ask the supplier for? *Rubric:* 3 = scanner addresses in exports;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX050 — Practitioner paper.** What does Dr. Bello recommend for a practitioner paper? *Rubric:* 3 = the scanner finding;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>

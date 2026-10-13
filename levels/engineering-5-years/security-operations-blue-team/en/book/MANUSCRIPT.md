@@ -260,7 +260,7 @@ Physical analogies help intuition but telemetry noise is not random in the physi
 
 - **EX007 — Sampling effect.** What happens to a 20-second burst in 5-minute flow summaries? *Rubric:* 3 = smeared into one record; pace lost; 2 = partial; 1 = nothing; 0 = none.
 - **EX008 — Clock drift.** Why does a 4-second clock error matter? *Rubric:* 3 = reorders events across hosts; time sync needed (SP 800-92); 2 = partial; 1 = it does not; 0 = none.
-- **EX009 — Physical capacity.** How does physics limit telemetry retention? *Rubric:* 3 = power, cooling, space and disk limit servers and storage; 2 = one factor; 1 = none; 0 = none.
+- **EX009 — Physical capacity.** How does physics limit telemetry retention? *Rubric:* 3 = power, cooling, space and disk limit servers and storage; 2 = one factor; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -633,7 +633,7 @@ Architecture knowledge explains where data can be lost, but each product behaves
 
 ### Exercises
 
-- **EX022 — Kernel agents.** Why do many endpoint agents run partly in the kernel, and what is the risk? *Rubric:* 3 = reliable visibility of process/file events; bugs can crash systems; 2 = one side; 1 = none; 0 = none.
+- **EX022 — Kernel agents.** Why do many endpoint agents run partly in the kernel, and what is the risk? *Rubric:* 3 = reliable visibility of process/file events; bugs can crash systems; 2 = one side; 1 = vague; 0 = none.
 - **EX023 — Lost events.** Explain the 30-second event loss at 10:06. *Rubric:* 3 = buffer filled during network saturation; older events dropped; 2 = partial; 1 = agent bug guess; 0 = none.
 - **EX024 — Performance trade.** How do engineers decide how much a sensor may inspect? *Rubric:* 3 = balance visibility vs CPU/memory; test on representative machines; 2 = partial; 1 = maximum always; 0 = none.
 
@@ -1346,8 +1346,8 @@ Treating tuning as control is a model; attackers adapt deliberately, unlike heat
 
 ### Exercises
 
-- **EX049 — Oscillation cause.** What causes threshold oscillation, and how is it avoided? *Rubric:* 3 = large/fast changes; small steps with observation time; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Harmful loop.** Describe one positive feedback loop in a SOC. *Rubric:* 3 = overload → hasty closures → missed attacks → more compromise; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Oscillation cause.** What causes threshold oscillation, and how is it avoided? *Rubric:* 3 = large/fast changes; small steps with observation time; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Harmful loop.** Describe one positive feedback loop in a SOC. *Rubric:* 3 = overload → hasty closures → missed attacks → more compromise; 2 = partial; 1 = vague; 0 = none.
 - **EX051 — Tuning plan.** State Amara's tuning rules and the outcome. *Rubric:* 3 = ≤ 1 step per fortnight; no raise if test missed; settled at 6, 8 false/day, all tests caught; 2 = partial; 1 = outcome only; 0 = none.
 
 ### Synthesis
@@ -1495,7 +1495,7 @@ Identity logs from external providers may arrive late or lack fields; check deli
 ### Exercises
 
 - **EX055 — Why identity logs.** Why are authentication logs among the most valuable SOC data? *Rubric:* 3 = attacks often use valid credentials; logs show their use; 2 = partial; 1 = vague; 0 = none.
-- **EX056 — MFA signals.** Give two MFA-related detection signals. *Rubric:* 3 = repeated denied prompts; new MFA device; 2 = one; 1 = none; 0 = none.
+- **EX056 — MFA signals.** Give two MFA-related detection signals. *Rubric:* 3 = repeated denied prompts; new MFA device; 2 = one; 1 = vague; 0 = none.
 - **EX057 — Confirmation design.** How did Amara reduce noise from the address-change rule? *Rubric:* 3 = customer email confirmation; alert only on failed confirmation; 2 = partial; 1 = deleted rule; 0 = none.
 
 ### Synthesis
@@ -2135,7 +2135,7 @@ Playbooks age as systems change; review after each use.
 ### Exercises
 
 - **EX079 — Detective versus responsive.** Give a detective and a responsive control for portal takeover. *Rubric:* 3 = possible-takeover rule; lock account/invalidate sessions; 2 = one; 1 = confused; 0 = none.
-- **EX080 — Automation safeguard.** What safeguard limits the automated hold? *Rubric:* 3 = cap of 20 accounts/hour; pause and page above it; 2 = partial; 1 = none; 0 = none.
+- **EX080 — Automation safeguard.** What safeguard limits the automated hold? *Rubric:* 3 = cap of 20 accounts/hour; pause and page above it; 2 = partial; 1 = vague; 0 = none.
 - **EX081 — Human decision.** Why should network-range blocking need a human? *Rubric:* 3 = may harm legitimate users; judgement needed; 2 = partial; 1 = speed; 0 = none.
 
 ### Synthesis
@@ -2783,7 +2783,7 @@ Estimates from one month may not hold during seasonal peaks such as holiday deli
 
 - **EX103 — Load source.** What did the alert data reveal? *Rubric:* 3 = 55% from five rules; three never led to incidents; 2 = partial; 1 = vague; 0 = none.
 - **EX104 — Morning backlog.** How did the design address the analysts' warning? *Rubric:* 3 = scheduled 30-minute morning slot and queue limit; 2 = partial; 1 = ignored; 0 = none.
-- **EX105 — Constructive critique.** What weakness did Amara's team find in another design? *Rubric:* 3 = paging only critical assets misses unclassified 60%; 2 = partial; 1 = none; 0 = none.
+- **EX105 — Constructive critique.** What weakness did Amara's team find in another design? *Rubric:* 3 = paging only critical assets misses unclassified 60%; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2952,7 +2952,7 @@ Procedures cannot cover every alert; analysts' judgement and escalation remain e
 ### Exercises
 
 - **EX109 — Handover template.** What does the handover template cover? *Rubric:* 3 = open cases, pending alerts, system health, expected events; 2 = three; 1 = one; 0 = none.
-- **EX110 — Tacit knowledge.** How does the SOC make tacit triage knowledge shareable? *Rubric:* 3 = written triage notes per rule; 2 = partial; 1 = none; 0 = none.
+- **EX110 — Tacit knowledge.** How does the SOC make tacit triage knowledge shareable? *Rubric:* 3 = written triage notes per rule; 2 = partial; 1 = vague; 0 = none.
 - **EX111 — Mixed signals.** Why did Amara escalate the address-change alert? *Rubric:* 3 = mixed signals: new network but usual device; escalate rather than close; 2 = partial; 1 = closed it; 0 = none.
 
 ### Synthesis
@@ -3207,7 +3207,7 @@ Five runs give limited coverage; extreme peaks remain untested.
 
 - **EX118 — Pass and fail.** Which runs passed and which failed? *Rubric:* 3 = R1, R2, R4 pass; R3 busy 19.7 and R5 handover 16.8 fail; 2 = partial; 1 = wrong; 0 = none.
 - **EX119 — Failure stages.** Which stages caused the failures? *Rubric:* 3 = ingestion under load; acknowledgement under load and at handover; 2 = partial; 1 = detection; 0 = none.
-- **EX120 — Fixes applied.** What fixes were made, and what did re-verification show? *Rubric:* 3 = prioritised portal ingestion, dedicated paging; re-runs passed 12.9 and 13.4; 2 = partial; 1 = none; 0 = none.
+- **EX120 — Fixes applied.** What fixes were made, and what did re-verification show? *Rubric:* 3 = prioritised portal ingestion, dedicated paging; re-runs passed 12.9 and 13.4; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3440,7 +3440,7 @@ Placement experience depends on the host; tutors check that learning goals are m
 ### Exercises
 
 - **EX127 — Placement goals.** List Amara's four placement goals. *Rubric:* 3 = depot logging project, three rules, queue day, two runbooks; 2 = three; 1 = one; 0 = none.
-- **EX128 — Framing requests.** How did working with depot managers change her approach? *Rubric:* 3 = frame requests in their terms; check their calendar; 2 = partial; 1 = none; 0 = none.
+- **EX128 — Framing requests.** How did working with depot managers change her approach? *Rubric:* 3 = frame requests in their terms; check their calendar; 2 = partial; 1 = vague; 0 = none.
 - **EX129 — Sharing indicators.** What did Lindqvist share, and with whom? *Rubric:* 3 = anonymised stuffing indicators with sector sharing group; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
@@ -3518,8 +3518,8 @@ Capstone scope must fit the time available; resist adding features.
 ### Exercises
 
 - **EX130 — Capstone requirement.** State the capstone's headline requirement. *Rubric:* 3 = detect depot-to-DC remote logons within 15 min, ≤5 false/week; 2 = partial; 1 = vague; 0 = none.
-- **EX131 — Scope boundaries.** What is out of scope, and why does that matter? *Rubric:* 3 = agents on depot devices, app changes; keeps project feasible; 2 = partial; 1 = none; 0 = none.
-- **EX132 — Added requirement.** What did the operations lead add? *Rubric:* 3 = ≤2% firewall CPU, with measurement; 2 = partial; 1 = none; 0 = none.
+- **EX131 — Scope boundaries.** What is out of scope, and why does that matter? *Rubric:* 3 = agents on depot devices, app changes; keeps project feasible; 2 = partial; 1 = vague; 0 = none.
+- **EX132 — Added requirement.** What did the operations lead add? *Rubric:* 3 = ≤2% firewall CPU, with measurement; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3600,7 +3600,7 @@ One reviewer cannot catch everything; reviews reduce but do not remove design ri
 ### Exercises
 
 - **EX133 — Blocking finding.** Which finding was blocking, and why? *Rubric:* 3 = ignored second protocol: coverage gap; 2 = partial; 1 = wrong; 0 = none.
-- **EX134 — Drift fix.** How was approved-list drift addressed? *Rubric:* 3 = linked to asset inventory with weekly reconciliation; 2 = partial; 1 = none; 0 = none.
+- **EX134 — Drift fix.** How was approved-list drift addressed? *Rubric:* 3 = linked to asset inventory with weekly reconciliation; 2 = partial; 1 = vague; 0 = none.
 - **EX135 — Busy-day estimate.** What did the busy-day re-estimate change? *Rubric:* 3 = 3.2× volume; two depots log connection starts only to keep CPU < 2%; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -3683,7 +3683,7 @@ Four weeks of operation is short; long-term false-alert rates may differ.
 
 - **EX136 — Pilot false alert.** What caused the pilot false alert, and how was it resolved? *Rubric:* 3 = technician's unregistered laptop; registered properly; 2 = partial; 1 = suppressed; 0 = none.
 - **EX137 — Requirements met.** Summarise verification results against requirements. *Rubric:* 3 = latency ≤13.1, false ≤1/week, completeness 99.94%, CPU ≤1.7%; 2 = three; 1 = one; 0 = none.
-- **EX138 — Remaining gap.** What gap remains, and how is it handled? *Rubric:* 3 = web management interface logons; follow-up item with owner; 2 = partial; 1 = none; 0 = none.
+- **EX138 — Remaining gap.** What gap remains, and how is it handled? *Rubric:* 3 = web management interface logons; follow-up item with owner; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3778,7 +3778,7 @@ A planned trial at a quiet time is gentler than a real failure during an inciden
 
 - **EX139 — Silence logic.** Why use an expected gap per source? *Rubric:* 3 = sources have different cadences; avoids false alarms; 2 = partial; 1 = one threshold; 0 = none.
 - **EX140 — Trial timing.** Why did paging take 17 minutes, and what changed? *Rubric:* 3 = 3× gap threshold plus check interval; lowered to 2×; 2 = partial; 1 = unknown; 0 = none.
-- **EX141 — Data loss.** What data was lost and how was it prevented next time? *Rubric:* 3 = 0.8% when buffer filled; buffer enlarged to two hours; 2 = partial; 1 = none; 0 = none.
+- **EX141 — Data loss.** What data was lost and how was it prevented next time? *Rubric:* 3 = 0.8% when buffer filled; buffer enlarged to two hours; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3855,8 +3855,8 @@ Dossiers record what was tested; untested behaviour remains uncertain.
 ### Exercises
 
 - **EX142 — Dossier sections.** List five dossier sections. *Rubric:* 3 = five of requirements, design/review, implementation, verification, validation, reliability, operations, gaps; 2 = three; 1 = one; 0 = none.
-- **EX143 — Claim links.** How are claims linked to evidence? *Rubric:* 3 = each claim cites dossier item ID; unsupported removed; 2 = partial; 1 = none; 0 = none.
-- **EX144 — Completeness gap.** What gap did Paolo find, and how was it fixed? *Rubric:* 3 = completeness backed by one week only; full four-week export added; 2 = partial; 1 = none; 0 = none.
+- **EX143 — Claim links.** How are claims linked to evidence? *Rubric:* 3 = each claim cites dossier item ID; unsupported removed; 2 = partial; 1 = vague; 0 = none.
+- **EX144 — Completeness gap.** What gap did Paolo find, and how was it fixed? *Rubric:* 3 = completeness backed by one week only; full four-week export added; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3937,7 +3937,7 @@ A thesis describes one project; generalisation needs other sites.
 ### Exercises
 
 - **EX145 — Thesis argument.** State the thesis's central argument. *Rubric:* 3 = small SOC closes agentless depot gap with existing firewalls, measured requirements and staged validation, low cost; 2 = partial; 1 = vague; 0 = none.
-- **EX146 — Trade-offs.** Name two trade-offs discussed. *Rubric:* 3 = connection-start logging lost duration; continuity as context; tiering (two); 2 = one; 1 = none; 0 = none.
+- **EX146 — Trade-offs.** Name two trade-offs discussed. *Rubric:* 3 = connection-start logging lost duration; continuity as context; tiering (two); 2 = one; 1 = vague; 0 = none.
 - **EX147 — Tutor advice.** What did the tutor ask Amara to change, and why? *Rubric:* 3 = shorten background, expand failures; examiners value learning from failure; 2 = partial; 1 = style; 0 = none.
 
 ### Synthesis

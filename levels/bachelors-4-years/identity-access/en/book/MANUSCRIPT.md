@@ -112,7 +112,7 @@ Assuming every system uses the main office suite account misses separate account
 
 ### Exercises
 
-- **EX004 — Separate account risk.** Why are separate account lists risky when staff leave? *Rubric:* 3 = IT may disable the main account but forget separate ones;; 2 = forgotten;; 1 = none;; 0 = none.
+- **EX004 — Separate account risk.** Why are separate account lists risky when staff leave? *Rubric:* 3 = IT may disable the main account but forget separate ones;; 2 = forgotten;; 1 = vague;; 0 = none.
 - **EX005 — Most sensitive systems.** Which two systems does Elena rank most sensitive? *Rubric:* 3 = housing and finance;; 2 = one;; 1 = website;; 0 = none.
 - **EX006 — Connected meaning.** What does connected mean for a system here? *Rubric:* 3 = uses office suite accounts directly;; 2 = shared sign-in;; 1 = networked;; 0 = none.
 
@@ -290,7 +290,7 @@ Reviewing group names without computing each person's combined access misses acc
 
 - **EX016 — Leftover accounts.** Which set operation finds accounts with no current employee? *Rubric:* 3 = enabled accounts minus HR staff;; 2 = difference;; 1 = union;; 0 = none.
 - **EX017 — Combined access.** How is a person's access computed from groups? *Rubric:* 3 = union of their groups' permissions;; 2 = union;; 1 = intersection;; 0 = none.
-- **EX018 — Leftover count.** How many accounts with no current employee does the worked example find? *Rubric:* 3 = seven;; 2 = 7;; 1 = none;; 0 = none.
+- **EX018 — Leftover count.** How many accounts with no current employee does the worked example find? *Rubric:* 3 = seven;; 2 = 7;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -333,7 +333,7 @@ Relying only on staff spotting fake addresses ignores how convincing look-alike 
 ### Exercises
 
 - **EX019 — HTTPS role.** What does HTTPS do for sign-in? *Rubric:* 3 = encrypts traffic and confirms server identity;; 2 = encrypts;; 1 = speeds up;; 0 = none.
-- **EX020 — SSO benefit.** What is Greenhill's main benefit from single sign-on? *Rubric:* 3 = one place to sign in, enforce MFA and disable access;; 2 = central control;; 1 = none;; 0 = none.
+- **EX020 — SSO benefit.** What is Greenhill's main benefit from single sign-on? *Rubric:* 3 = one place to sign in, enforce MFA and disable access;; 2 = central control;; 1 = vague;; 0 = none.
 - **EX021 — Fake page defence.** Which authenticators resist fake sign-in pages? *Rubric:* 3 = site-bound passkeys or security keys (WebAuthn);; 2 = passkeys;; 1 = SMS codes;; 0 = none.
 
 ### Synthesis
@@ -421,7 +421,7 @@ Keeping every field from every export forever creates a growing store of persona
 ### Exercises
 
 - **EX025 — Snapshot value.** Why store dated snapshots? *Rubric:* 3 = compare months and measure trends;; 2 = trends;; 1 = backup;; 0 = none.
-- **EX026 — Unused query result.** How many enabled accounts are unused for ninety days in the worked example? *Rubric:* 3 = nine;; 2 = 9;; 1 = none;; 0 = none.
+- **EX026 — Unused query result.** How many enabled accounts are unused for ninety days in the worked example? *Rubric:* 3 = nine;; 2 = 9;; 1 = vague;; 0 = none.
 - **EX027 — Retention agreed.** How long are snapshots kept? *Rubric:* 3 = two years, agreed with data protection lead;; 2 = two years;; 1 = forever;; 0 = none.
 
 ### Synthesis
@@ -464,7 +464,7 @@ Investigating a suspicious sign-in alone, beyond the agreed role, can damage evi
 
 ### Exercises
 
-- **EX028 — Excluded actions.** Name two actions Elena's agreement excludes. *Rubric:* 3 = admin sign-in, password testing, bypass attempts (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX028 — Excluded actions.** Name two actions Elena's agreement excludes. *Rubric:* 3 = admin sign-in, password testing, bypass attempts (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX029 — Excess access tone.** How does Elena report a manager's excess access? *Rubric:* 3 = factually, without blame;; 2 = neutral;; 1 = publicly;; 0 = none.
 - **EX030 — Suspicious sign-in steps.** What should Elena do about a leaver's post-departure sign-in? *Rubric:* 3 = report to IT lead and supervisor, preserve evidence, act no further;; 2 = report;; 1 = investigate;; 0 = none.
 
@@ -509,8 +509,8 @@ Disabling a leaver's cloud account does not stop sign-in on laptops that use onl
 ### Exercises
 
 - **EX031 — Admin daily risk.** Why is working daily as administrator risky? *Rubric:* 3 = harmful files get admin power;; 2 = power;; 1 = slow;; 0 = none.
-- **EX032 — Unenrolled laptops.** How many unenrolled laptops did Elena find? *Rubric:* 3 = four;; 2 = 4;; 1 = none;; 0 = none.
-- **EX033 — Local password fix.** What fixes shared local administrator passwords? *Rubric:* 3 = unique, rotated, centrally stored and logged passwords;; 2 = unique;; 1 = none;; 0 = none.
+- **EX032 — Unenrolled laptops.** How many unenrolled laptops did Elena find? *Rubric:* 3 = four;; 2 = 4;; 1 = vague;; 0 = none.
+- **EX033 — Local password fix.** What fixes shared local administrator passwords? *Rubric:* 3 = unique, rotated, centrally stored and logged passwords;; 2 = unique;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -640,9 +640,9 @@ Using security logs to judge productivity breaks purpose limitation and staff tr
 
 ### Exercises
 
-- **EX040 — Unneeded data.** What unneeded personal data did Elena find? *Rubric:* 3 = staff home addresses in finance;; 2 = addresses;; 1 = none;; 0 = none.
+- **EX040 — Unneeded data.** What unneeded personal data did Elena find? *Rubric:* 3 = staff home addresses in finance;; 2 = addresses;; 1 = vague;; 0 = none.
 - **EX041 — Purpose example.** Why not use sign-in logs to judge productivity? *Rubric:* 3 = different purpose, breaks purpose limitation and trust;; 2 = purpose;; 1 = allowed;; 0 = none.
-- **EX042 — Phone alternative.** What alternative to personal phones does Elena recommend? *Rubric:* 3 = Greenhill-provided security keys;; 2 = keys;; 1 = none;; 0 = none.
+- **EX042 — Phone alternative.** What alternative to personal phones does Elena recommend? *Rubric:* 3 = Greenhill-provided security keys;; 2 = keys;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -845,7 +845,7 @@ Relying only on what people say can miss practices, such as shared tablet accoun
 
 - **EX052 — Specific question.** Why avoid a question like how to improve security? *Rubric:* 3 = too broad to answer in one study;; 2 = broad;; 1 = boring;; 0 = none.
 - **EX053 — Observation value.** What did observation add to interviews? *Rubric:* 3 = showed shared tablet accounts despite claims;; 2 = practice;; 1 = nothing;; 0 = none.
-- **EX054 — Consent elements.** Name two things participants are told. *Rubric:* 3 = purpose, voluntary, anonymity (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX054 — Consent elements.** Name two things participants are told. *Rubric:* 3 = purpose, voluntary, anonymity (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -890,7 +890,7 @@ Ignoring service accounts leaves powerful non-human identities unmanaged.
 ### Exercises
 
 - **EX055 — Non-human identity.** Give an example of a non-human identity at Greenhill. *Rubric:* 3 = finance service account sending payment files;; 2 = service account;; 1 = tenant;; 0 = none.
-- **EX056 — Supplier conflict.** What separation-of-duties problem did Elena find? *Rubric:* 3 = one officer could set up and pay suppliers;; 2 = create and pay;; 1 = none;; 0 = none.
+- **EX056 — Supplier conflict.** What separation-of-duties problem did Elena find? *Rubric:* 3 = one officer could set up and pay suppliers;; 2 = create and pay;; 1 = vague;; 0 = none.
 - **EX057 — Model choice.** Which access model does Elena recommend for Greenhill? *Rubric:* 3 = role-based via team groups, few exceptions;; 2 = roles;; 1 = attributes;; 0 = none.
 
 ### Synthesis
@@ -934,7 +934,7 @@ Treating identity failures as stories about bad people distracts from the proces
 ### Exercises
 
 - **EX058 — Leaver lesson.** What is the main lesson of the forgotten leaver? *Rubric:* 3 = removal must be automatic from HR and checked everywhere;; 2 = automate;; 1 = villains;; 0 = none.
-- **EX059 — Shared account alternative.** What allows team access without sharing a password? *Rubric:* 3 = features such as shared mailboxes with individual accounts;; 2 = shared mailbox;; 1 = none;; 0 = none.
+- **EX059 — Shared account alternative.** What allows team access without sharing a password? *Rubric:* 3 = features such as shared mailboxes with individual accounts;; 2 = shared mailbox;; 1 = vague;; 0 = none.
 - **EX060 — Overpowered fix.** What addresses the overpowered helper? *Rubric:* 3 = regular reviews and removing old access on moves;; 2 = reviews;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -1176,7 +1176,7 @@ Testing new controls directly on real staff accounts risks locking people out of
 
 - **EX073 — Trial tenant purpose.** Why use a trial tenant? *Rubric:* 3 = mistakes cannot affect real staff;; 2 = safety;; 1 = cost;; 0 = none.
 - **EX074 — Lab I result.** How many tests passed in Laboratory I? *Rubric:* 3 = 18 of 20;; 2 = 18;; 1 = 20;; 0 = none.
-- **EX075 — Date bug.** What was the leaver date bug? *Rubric:* 3 = evening job ignored dates entered with a time;; 2 = date format;; 1 = none;; 0 = none.
+- **EX075 — Date bug.** What was the leaver date bug? *Rubric:* 3 = evening job ignored dates entered with a time;; 2 = date format;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1284,7 +1284,7 @@ Checking only that a control is configured, not that it is effective, misses exc
 
 - **EX079 — Configured versus effective.** What is the difference between configured and effective? *Rubric:* 3 = setting exists vs real sign-ins use it;; 2 = exists vs works;; 1 = same;; 0 = none.
 - **EX080 — Random sampling reason.** Why sample sign-ins randomly? *Rubric:* 3 = avoids picking easy cases;; 2 = bias;; 1 = speed;; 0 = none.
-- **EX081 — Auditor addition.** What check did the auditor suggest? *Rubric:* 3 = accounts created outside HR, such as supplier test accounts;; 2 = outside HR;; 1 = none;; 0 = none.
+- **EX081 — Auditor addition.** What check did the auditor suggest? *Rubric:* 3 = accounts created outside HR, such as supplier test accounts;; 2 = outside HR;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1327,7 +1327,7 @@ Recovering lost keys with weak checks, such as a caller simply giving their name
 ### Exercises
 
 - **EX082 — Lost key verification.** How does the desk verify an operative who lost a key? *Rubric:* 3 = call back the manager on a known number;; 2 = call-back;; 1 = name only;; 0 = none.
-- **EX083 — Outage preparation.** Name one outage arrangement Elena plans. *Rubric:* 3 = paper emergency contacts, printed job lists, safe-stored emergency admin key (one);; 2 = one;; 1 = none;; 0 = none.
+- **EX083 — Outage preparation.** Name one outage arrangement Elena plans. *Rubric:* 3 = paper emergency contacts, printed job lists, safe-stored emergency admin key (one);; 2 = one;; 1 = vague;; 0 = none.
 - **EX084 — Near miss cause.** What caused the housing access near miss? *Rubric:* 3 = an untested group rename;; 2 = rename;; 1 = attack;; 0 = none.
 
 ### Synthesis
@@ -1416,7 +1416,7 @@ A job that treats a missing HR file as everyone leaving would disable every acco
 
 - **EX088 — Lab II result.** How many Laboratory II tests passed? *Rubric:* 3 = 29 of 30;; 2 = 29;; 1 = 30;; 0 = none.
 - **EX089 — Missing file behaviour.** What must the evening job do if the HR file is missing? *Rubric:* 3 = stop and alert, not disable everyone;; 2 = stop;; 1 = disable;; 0 = none.
-- **EX090 — Rerun purpose.** Why rerun Laboratory I tests? *Rubric:* 3 = confirm earlier fixes stay fixed;; 2 = regression;; 1 = none;; 0 = none.
+- **EX090 — Rerun purpose.** Why rerun Laboratory I tests? *Rubric:* 3 = confirm earlier fixes stay fixed;; 2 = regression;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1459,8 +1459,8 @@ Creating contractor accounts outside any lifecycle leaves access long after work
 ### Exercises
 
 - **EX091 — Sponsor role.** What does a contractor's sponsor do? *Rubric:* 3 = confirms need every three months;; 2 = confirms need;; 1 = pays;; 0 = none.
-- **EX092 — Service account steps.** Name two service account improvements. *Rubric:* 3 = document owner, reduce permissions, vault storage, rotation (two);; 2 = one;; 1 = none;; 0 = none.
-- **EX093 — Tenant concern.** Name one tenant identity concern. *Rubric:* 3 = no smartphone, shared devices, accessible recovery, household consent (one);; 2 = one;; 1 = none;; 0 = none.
+- **EX092 — Service account steps.** Name two service account improvements. *Rubric:* 3 = document owner, reduce permissions, vault storage, rotation (two);; 2 = one;; 1 = vague;; 0 = none.
+- **EX093 — Tenant concern.** Name one tenant identity concern. *Rubric:* 3 = no smartphone, shared devices, accessible recovery, household consent (one);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1680,7 +1680,7 @@ Sending enrolment instructions by email to staff who rarely use it leads to low 
 
 - **EX106 — Enrolment place.** Where are enrolment sessions held, and when? *Rubric:* 3 = at the depot before shifts;; 2 = depot;; 1 = online;; 0 = none.
 - **EX107 — Enrolment count.** How many operatives enrol in the sessions? *Rubric:* 3 = 38 of 40;; 2 = 38;; 1 = 40;; 0 = none.
-- **EX108 — Feedback action.** What action came from feedback about forgotten keys? *Rubric:* 3 = key check added to van checklist;; 2 = checklist;; 1 = none;; 0 = none.
+- **EX108 — Feedback action.** What action came from feedback about forgotten keys? *Rubric:* 3 = key check added to van checklist;; 2 = checklist;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1767,8 +1767,8 @@ Marking tasks done before verifying them in production overstates progress.
 ### Exercises
 
 - **EX112 — Done definition.** When does a task count as done? *Rubric:* 3 = its test passes in production;; 2 = verified;; 1 = deployed;; 0 = none.
-- **EX113 — Remaining tasks.** Which two tasks remain after month two? *Rubric:* 3 = repairs app SSO and service account rotation;; 2 = two;; 1 = none;; 0 = none.
-- **EX114 — Contractor fix.** What process change followed the wrongly disabled contractor? *Rubric:* 3 = sponsor confirms end dates;; 2 = date confirmation;; 1 = none;; 0 = none.
+- **EX113 — Remaining tasks.** Which two tasks remain after month two? *Rubric:* 3 = repairs app SSO and service account rotation;; 2 = two;; 1 = vague;; 0 = none.
+- **EX114 — Contractor fix.** What process change followed the wrongly disabled contractor? *Rubric:* 3 = sponsor confirms end dates;; 2 = date confirmation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1833,7 +1833,7 @@ Claiming every improvement was caused by the project without discussing alternat
 
 - **EX115 — Coverage change.** How did multi-factor coverage change in the lab? *Rubric:* 3 = 77.1% to 97.9%, above target;; 2 = rose;; 1 = fell;; 0 = none.
 - **EX116 — Licence saving.** How did unused licences change? *Rubric:* 3 = 23 to 6;; 2 = fell;; 1 = rose;; 0 = none.
-- **EX117 — Leaver counts.** How many leavers were in each period? *Rubric:* 3 = nine before, seven after;; 2 = counts;; 1 = none;; 0 = none.
+- **EX117 — Leaver counts.** How many leavers were in each period? *Rubric:* 3 = nine before, seven after;; 2 = counts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

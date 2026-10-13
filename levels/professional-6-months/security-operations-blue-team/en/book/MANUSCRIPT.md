@@ -75,9 +75,9 @@ A hybrid model fails if the provider and in-house team do not share context; cha
 ### Exercises
 
 - **EX001 — The trigger.** What did the March alert show? *Rubric:* 3 = 22:41 new-country VPN login; Domain Admins; 2,310 files read; unwatched mailbox; 2 = partial; 1 = one; 0 = none.
-- **EX002 — Model choice.** Why did Fenwick choose a hybrid model? *Rubric:* 3 = no security staff; needs night cover; keep ownership in-house; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Mission parts.** What does Priya's mission statement cover? *Rubric:* 3 = design data, production systems, staff accounts; around clock; in-house decisions; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Out of scope.** What is out of scope and why? *Rubric:* 3 = machine controllers; vendor-managed; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Model choice.** Why did Fenwick choose a hybrid model? *Rubric:* 3 = no security staff; needs night cover; keep ownership in-house; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Mission parts.** What does Priya's mission statement cover? *Rubric:* 3 = design data, production systems, staff accounts; around clock; in-house decisions; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Out of scope.** What is out of scope and why? *Rubric:* 3 = machine controllers; vendor-managed; 2 = partial; 1 = vague; 0 = none.
 - **EX005 — First-year goals.** List the three first-year goals. *Rubric:* 3 = log coverage; tested response plan; 30-minute alert handling; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -136,11 +136,11 @@ A charter that nobody reads is useless; brief every manager and the provider on 
 
 ### Exercises
 
-- **EX006 — March authority gap.** What authority gap existed in March? *Rubric:* 3 = nobody authorised to disable a technician's account at night; 2 = partial; 1 = none; 0 = none.
+- **EX006 — March authority gap.** What authority gap existed in March? *Rubric:* 3 = nobody authorised to disable a technician's account at night; 2 = partial; 1 = vague; 0 = none.
 - **EX007 — Charter contents.** List four charter sections. *Rubric:* 3 = mission, scope, services, authority, escalation, reporting (four); 2 = two; 1 = one; 0 = none.
 - **EX008 — Provider actions.** Which actions can the provider take alone? *Rubric:* 3 = disable accounts, block addresses, isolate office PCs; 2 = two; 1 = one; 0 = none.
-- **EX009 — Factory compromise.** What was agreed for factory PCs? *Rubric:* 3 = call shift supervisor first, unless ransomware: isolate then call; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Privacy safeguard.** How is staff privacy addressed? *Rubric:* 3 = security-only purpose; HR and staff council review; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Factory compromise.** What was agreed for factory PCs? *Rubric:* 3 = call shift supervisor first, unless ransomware: isolate then call; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Privacy safeguard.** How is staff privacy addressed? *Rubric:* 3 = security-only purpose; HR and staff council review; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -221,11 +221,11 @@ Coverage of an asset is not coverage of every event on it; check audit settings 
 
 ### Exercises
 
-- **EX011 — Starting point.** How did Priya choose first sources? *Rubric:* 3 = from March case needs: VPN, DC, file audit; 2 = partial; 1 = none; 0 = none.
+- **EX011 — Starting point.** How did Priya choose first sources? *Rubric:* 3 = from March case needs: VPN, DC, file audit; 2 = partial; 1 = vague; 0 = none.
 - **EX012 — Lab figures.** Give the lab coverage figures. *Rubric:* 3 = 6/10=60%; critical 4/5 missing ERP; high 2/4; 2 = partial; 1 = one; 0 = none.
-- **EX013 — Factory HMI.** How was the HMI gap handled? *Rubric:* 3 = firewall logs instead; vendor approval needed; recorded in risk register; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Cost control.** How was log cost controlled? *Rubric:* 3 = filter debug logs; keep security events; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Coverage caveat.** Why is asset coverage not enough? *Rubric:* 3 = audit settings may miss events; 2 = partial; 1 = none; 0 = none.
+- **EX013 — Factory HMI.** How was the HMI gap handled? *Rubric:* 3 = firewall logs instead; vendor approval needed; recorded in risk register; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Cost control.** How was log cost controlled? *Rubric:* 3 = filter debug logs; keep security events; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Coverage caveat.** Why is asset coverage not enough? *Rubric:* 3 = audit settings may miss events; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -289,9 +289,9 @@ ATT&CK describes known behaviours; novel behaviour may not fit any technique.
 
 - **EX016 — March behaviours.** Which behaviours did March combine? *Rubric:* 3 = remote valid account; admin group change; file collection; 2 = two; 1 = one; 0 = none.
 - **EX017 — Rules chosen.** Which three rules did Priya pick? *Rubric:* 3 = admin group change; new-country VPN; mass file reads; 2 = two; 1 = one; 0 = none.
-- **EX018 — Adaptation.** How was the admin-group rule adapted? *Rubric:* 3 = change-window context: outside high, inside low; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Replay result.** What did the replay show? *Rubric:* 3 = rules fired 22:41, 22:43, ~22:50; critical within 10 min; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Honest coverage.** What is not counted as coverage? *Rubric:* 3 = untested rules; 2 = partial; 1 = none; 0 = none.
+- **EX018 — Adaptation.** How was the admin-group rule adapted? *Rubric:* 3 = change-window context: outside high, inside low; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Replay result.** What did the replay show? *Rubric:* 3 = rules fired 22:41, 22:43, ~22:50; critical within 10 min; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Honest coverage.** What is not counted as coverage? *Rubric:* 3 = untested rules; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -353,11 +353,11 @@ Service levels can push analysts to close quickly; review closure quality as wel
 
 ### Exercises
 
-- **EX021 — Pipeline stages.** Name the stages of the alert pipeline. *Rubric:* 3 = acknowledge, triage, close/escalate/incident; 2 = partial; 1 = none; 0 = none.
-- **EX022 — Critical service level.** What is the service level for critical alerts? *Rubric:* 3 = acknowledge 15 min; call Priya; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Mailbox decision.** Why remove the shared mailbox? *Rubric:* 3 = nobody owned it; March missed; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Trade fair call.** How was the week-three alert resolved? *Rubric:* 3 = travel calendar showed fair; closed; calendar shared with provider; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Note purpose.** Why must night notes be readable by Tom? *Rubric:* 3 = continuity across provider and in-house; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Pipeline stages.** Name the stages of the alert pipeline. *Rubric:* 3 = acknowledge, triage, close/escalate/incident; 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Critical service level.** What is the service level for critical alerts? *Rubric:* 3 = acknowledge 15 min; call Priya; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Mailbox decision.** Why remove the shared mailbox? *Rubric:* 3 = nobody owned it; March missed; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Trade fair call.** How was the week-three alert resolved? *Rubric:* 3 = travel calendar showed fair; closed; calendar shared with provider; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Note purpose.** Why must night notes be readable by Tom? *Rubric:* 3 = continuity across provider and in-house; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -416,9 +416,9 @@ A provider shared across many clients may be stretched during wide attacks.
 ### Exercises
 
 - **EX026 — Context shared.** List four items of context shared. *Rubric:* 3 = assets, travel, change windows, VIPs, shifts (four); 2 = two; 1 = one; 0 = none.
-- **EX027 — Morning handover.** What happens at 08:00? *Rubric:* 3 = provider summary; Tom reviews and asks questions; 2 = partial; 1 = none; 0 = none.
+- **EX027 — Morning handover.** What happens at 08:00? *Rubric:* 3 = provider summary; Tom reviews and asks questions; 2 = partial; 1 = vague; 0 = none.
 - **EX028 — Test results.** Compare the two night tests. *Rubric:* 3 = 12 min within target; 26 min missed; backup analyst added; 2 = partial; 1 = one; 0 = none.
-- **EX029 — Data ownership.** Why must Fenwick own logs and rules? *Rubric:* 3 = to move to new provider if needed; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Data ownership.** Why must Fenwick own logs and rules? *Rubric:* 3 = to move to new provider if needed; 2 = partial; 1 = vague; 0 = none.
 - **EX030 — Monthly review.** What is checked monthly? *Rubric:* 3 = response times, false positives, missed alerts, context; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -496,11 +496,11 @@ Precision does not show missed attacks; validation tests (chapter 6) help there.
 
 ### Exercises
 
-- **EX031 — Lab precision.** Give the lowest and highest precision in the lab. *Rubric:* 3 = macro 0.01; admin/AV 0.33; 2 = one; 1 = none; 0 = none.
-- **EX032 — Base rate.** Explain the base-rate problem. *Rubric:* 3 = rare attacks; mostly false alarms; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Macro tuning.** How was the macro rule tuned? *Rubric:* 3 = external email docs starting new process; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Post-tuning.** What were the results after tuning? *Rubric:* 3 = macro 9 alerts 1 real; VPN 8 alerts 3 real; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Precision limit.** What does precision not show? *Rubric:* 3 = missed attacks; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Lab precision.** Give the lowest and highest precision in the lab. *Rubric:* 3 = macro 0.01; admin/AV 0.33; 2 = one; 1 = vague; 0 = none.
+- **EX032 — Base rate.** Explain the base-rate problem. *Rubric:* 3 = rare attacks; mostly false alarms; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Macro tuning.** How was the macro rule tuned? *Rubric:* 3 = external email docs starting new process; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Post-tuning.** What were the results after tuning? *Rubric:* 3 = macro 9 alerts 1 real; VPN 8 alerts 3 real; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Precision limit.** What does precision not show? *Rubric:* 3 = missed attacks; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -562,11 +562,11 @@ Plans age; review after each incident and exercise.
 
 ### Exercises
 
-- **EX036 — Plan basis.** What does the plan follow? *Rubric:* 3 = SP 800-61r3 within CSF 2.0; 2 = partial; 1 = none; 0 = none.
+- **EX036 — Plan basis.** What does the plan follow? *Rubric:* 3 = SP 800-61r3 within CSF 2.0; 2 = partial; 1 = vague; 0 = none.
 - **EX037 — Roles list.** Name five incident roles. *Rubric:* 3 = lead, analyst, IT ops, comms, legal/DP, approver (five); 2 = three; 1 = one; 0 = none.
 - **EX038 — Playbooks.** List the three playbooks. *Rubric:* 3 = compromised account; ransomware; data theft; 2 = two; 1 = one; 0 = none.
-- **EX039 — Tabletop finding.** What did the tabletop reveal? *Rubric:* 3 = unknown if designs had customer confidentiality duties; step added; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Early adviser.** Why call the data protection adviser early? *Rubric:* 3 = reporting deadlines for personal data breaches; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Tabletop finding.** What did the tabletop reveal? *Rubric:* 3 = unknown if designs had customer confidentiality duties; step added; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Early adviser.** Why call the data protection adviser early? *Rubric:* 3 = reporting deadlines for personal data breaches; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -648,9 +648,9 @@ Missing logs (for example from the ERP server in March) can hide parts of the st
 ### Exercises
 
 - **EX041 — Timeline order.** Give the first three timeline events. *Rubric:* 3 = 22:41 VPN; 22:43 admin add; 22:47 files read; 2 = partial; 1 = one; 0 = none.
-- **EX042 — Removal meaning.** What might the 22:58 removal suggest? *Rubric:* 3 = attempt to hide the change; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Fact vs inference.** Give one fact and one inference. *Rubric:* 3 = fact: events; inference: not j.harper; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Root cause.** How was the password obtained? *Rubric:* 3 = fake VPN page phishing two days before; no MFA; 2 = partial; 1 = none; 0 = none.
+- **EX042 — Removal meaning.** What might the 22:58 removal suggest? *Rubric:* 3 = attempt to hide the change; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Fact vs inference.** Give one fact and one inference. *Rubric:* 3 = fact: events; inference: not j.harper; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Root cause.** How was the password obtained? *Rubric:* 3 = fake VPN page phishing two days before; no MFA; 2 = partial; 1 = vague; 0 = none.
 - **EX045 — Scope statement.** Summarise the scope statement. *Rubric:* 3 = one account; 15 min admin; 1.4 GB out; no other accounts/malware; 2 = partial; 1 = one; 0 = none.
 
 ### Synthesis
@@ -714,10 +714,10 @@ Board metrics summarise; they cannot show everything; keep detail available.
 ### Exercises
 
 - **EX046 — Metric list.** List Priya's five metrics. *Rubric:* 3 = coverage, acknowledge time, precision, open risks, findings closed; 2 = four; 1 = two; 0 = none.
-- **EX047 — Excluded metric.** Which metric was left out and why? *Rubric:* 3 = alerts handled; grows with noise; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Board decisions.** What did the board decide in month five? *Rubric:* 3 = MFA for vendor access; ERP log cost; 2 = one; 1 = none; 0 = none.
-- **EX049 — Six-month figures.** Give two six-month figures. *Rubric:* 3 = coverage 5/5; 9 min; precision 0.38; 2/3 findings (two); 2 = one; 1 = none; 0 = none.
-- **EX050 — Honest reporting.** Why report the failed test? *Rubric:* 3 = builds trust; shows fix; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Excluded metric.** Which metric was left out and why? *Rubric:* 3 = alerts handled; grows with noise; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Board decisions.** What did the board decide in month five? *Rubric:* 3 = MFA for vendor access; ERP log cost; 2 = one; 1 = vague; 0 = none.
+- **EX049 — Six-month figures.** Give two six-month figures. *Rubric:* 3 = coverage 5/5; 9 min; precision 0.38; 2/3 findings (two); 2 = one; 1 = vague; 0 = none.
+- **EX050 — Honest reporting.** Why report the failed test? *Rubric:* 3 = builds trust; shows fix; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -776,10 +776,10 @@ Maturity scores are self-reported; external review helps.
 ### Exercises
 
 - **EX051 — CMM domains.** Name the five SOC-CMM domains. *Rubric:* 3 = business, people, process, technology, services; 2 = four; 1 = two; 0 = none.
-- **EX052 — Self-assessment.** Summarise Fenwick's self-assessment. *Rubric:* 3 = process improving; people thin; tech provider-reliant; 2 = partial; 1 = none; 0 = none.
-- **EX053 — Kokulu finding.** How did Priya use Kokulu et al.? *Rubric:* 3 = agree metrics with Tom; avoid manager-analyst mismatch; 2 = partial; 1 = none; 0 = none.
+- **EX052 — Self-assessment.** Summarise Fenwick's self-assessment. *Rubric:* 3 = process improving; people thin; tech provider-reliant; 2 = partial; 1 = vague; 0 = none.
+- **EX053 — Kokulu finding.** How did Priya use Kokulu et al.? *Rubric:* 3 = agree metrics with Tom; avoid manager-analyst mismatch; 2 = partial; 1 = vague; 0 = none.
 - **EX054 — Year two.** List three year-two items. *Rubric:* 3 = second analyst, ERP/factory monitoring, rule review, validation (three); 2 = two; 1 = one; 0 = none.
-- **EX055 — Peer review gain.** What did provider peer review find? *Rubric:* 3 = two rules failing on new VPN; fixed; 2 = partial; 1 = none; 0 = none.
+- **EX055 — Peer review gain.** What did provider peer review find? *Rubric:* 3 = two rules failing on new VPN; fixed; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -843,9 +843,9 @@ One year of good results does not prove future resilience; keep testing.
 
 - **EX056 — Goal results.** Summarise results against the three goals. *Rubric:* 3 = coverage full; tabletops + real incident; median 9 worst 26; 2 = partial; 1 = one; 0 = none.
 - **EX057 — Month nine.** Describe the month-nine incident handling. *Rubric:* 3 = 02:14 login; 02:19 disabled; MFA blocked VPN; webmail only; no data; 2 = partial; 1 = one; 0 = none.
-- **EX058 — Contrast.** Contrast March with month nine. *Rubric:* 3 = 9 hours unseen, 1.4 GB vs 5 min, nothing; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Reflection.** Name two things Priya would change. *Rubric:* 3 = hire earlier; share context day one; involve factory (two); 2 = one; 1 = none; 0 = none.
-- **EX060 — Provider failure.** How would provider failure be handled? *Rubric:* 3 = exit terms; Fenwick owns logs and rules; 2 = partial; 1 = none; 0 = none.
+- **EX058 — Contrast.** Contrast March with month nine. *Rubric:* 3 = 9 hours unseen, 1.4 GB vs 5 min, nothing; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Reflection.** Name two things Priya would change. *Rubric:* 3 = hire earlier; share context day one; involve factory (two); 2 = one; 1 = vague; 0 = none.
+- **EX060 — Provider failure.** How would provider failure be handled? *Rubric:* 3 = exit terms; Fenwick owns logs and rules; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

@@ -127,7 +127,7 @@ Journey maps simplify real work. Card readers cost money.
 
 ### Exercises
 
-- **EX004 — Weakest interaction.** Why does a strong password policy matter little in one case? *Rubric:* 3 = if counter computers stay logged in;; 2 = logged in;; 1 = none;; 0 = none.
+- **EX004 — Weakest interaction.** Why does a strong password policy matter little in one case? *Rubric:* 3 = if counter computers stay logged in;; 2 = logged in;; 1 = vague;; 0 = none.
 - **EX005 — Adams and Sasse.** What did Adams and Sasse (1999) show about users? *Rubric:* 3 = they are not the enemy and struggle with ill-fitting mechanisms;; 2 = fit;; 1 = careless;; 0 = none.
 - **EX006 — Suggested fix.** What fix did Nadia suggest for unlocked screens? *Rubric:* 3 = short automatic lock with tap-card unlocking;; 2 = tap card;; 1 = longer passwords;; 0 = none.
 
@@ -205,7 +205,7 @@ Broken lines may hide real problems. Small tests do not prove correctness.
 ### Exercises
 
 - **EX007 — Dictionary use.** Why is a dictionary suited to counting by branch? *Rubric:* 3 = it maps each branch to its count;; 2 = mapping;; 1 = list order;; 0 = none.
-- **EX008 — Top branch.** Which branch reported most in the lab? *Rubric:* 3 = Central with 14;; 2 = Central;; 1 = none;; 0 = none.
+- **EX008 — Top branch.** Which branch reported most in the lab? *Rubric:* 3 = Central with 14;; 2 = Central;; 1 = vague;; 0 = none.
 - **EX009 — Broken lines.** How does the script handle a line with a missing field? *Rubric:* 3 = skips it with a warning;; 2 = skip;; 1 = crash;; 0 = none.
 
 ### Synthesis
@@ -248,9 +248,9 @@ Hedging can become vague. Reports update their figures yearly.
 
 ### Exercises
 
-- **EX010 — Counter-argument.** What counter-argument must Nadia address? *Rubric:* 3 = many breaches involve human actions;; 2 = human element;; 1 = none;; 0 = none.
+- **EX010 — Counter-argument.** What counter-argument must Nadia address? *Rubric:* 3 = many breaches involve human actions;; 2 = human element;; 1 = vague;; 0 = none.
 - **EX011 — Sasse et al..** What did Sasse, Brostoff and Weirich (2001) argue? *Rubric:* 3 = security must be designed around human capabilities;; 2 = design;; 1 = users are careless;; 0 = none.
-- **EX012 — DBIR caution.** Why does the DBIR figure not show staff are careless? *Rubric:* 3 = it combines errors, misuse and social engineering;; 2 = combined;; 1 = none;; 0 = none.
+- **EX012 — DBIR caution.** Why does the DBIR figure not show staff are careless? *Rubric:* 3 = it combines errors, misuse and social engineering;; 2 = combined;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -292,9 +292,9 @@ Tactics evolve. Categories overlap in practice.
 
 ### Exercises
 
-- **EX013 — Three levels.** What three levels did SP 800-16 distinguish? *Rubric:* 3 = awareness, training and education;; 2 = three;; 1 = none;; 0 = none.
+- **EX013 — Three levels.** What three levels did SP 800-16 distinguish? *Rubric:* 3 = awareness, training and education;; 2 = three;; 1 = vague;; 0 = none.
 - **EX014 — Pretexting.** What is pretexting? *Rubric:* 3 = inventing a believable story to deceive;; 2 = story;; 1 = phishing;; 0 = none.
-- **EX015 — Campaign failure.** Why do campaigns often fail according to Bada et al. (2019)? *Rubric:* 3 = they assume knowledge leads to behaviour;; 2 = assumption;; 1 = none;; 0 = none.
+- **EX015 — Campaign failure.** Why do campaigns often fail according to Bada et al. (2019)? *Rubric:* 3 = they assume knowledge leads to behaviour;; 2 = assumption;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -359,8 +359,8 @@ Real reporting routes are informal. Idle timeouts can annoy visitors.
 ### Exercises
 
 - **EX016 — Union of sets.** Which set union describes permitted exporters? *Rubric:* 3 = managers and IT staff;; 2 = union;; 1 = volunteers;; 0 = none.
-- **EX017 — Unreachable staff.** How many staff could not reach IT in the lab? *Rubric:* 3 = 11, at Quay and Elm;; 2 = 11;; 1 = none;; 0 = none.
-- **EX018 — Session gap.** What gap did the logic test reveal? *Rubric:* 3 = a new visitor inherits an open session;; 2 = inherit;; 1 = none;; 0 = none.
+- **EX017 — Unreachable staff.** How many staff could not reach IT in the lab? *Rubric:* 3 = 11, at Quay and Elm;; 2 = 11;; 1 = vague;; 0 = none.
+- **EX018 — Session gap.** What gap did the logic test reveal? *Rubric:* 3 = a new visitor inherits an open session;; 2 = inherit;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -402,9 +402,9 @@ Tags become ignored if everything is external. Checks depend on correct configur
 
 ### Exercises
 
-- **EX019 — Forged sender.** Why can the displayed sender be forged? *Rubric:* 3 = basic email was designed for cooperation not security;; 2 = design;; 1 = none;; 0 = none.
-- **EX020 — Check limits.** What can authentication checks not stop? *Rubric:* 3 = lookalike domains and compromised accounts;; 2 = lookalikes;; 1 = none;; 0 = none.
-- **EX021 — Whitten and Tygar.** What did Whitten and Tygar (1999) show? *Rubric:* 3 = security software can be too hard for ordinary users;; 2 = usability;; 1 = none;; 0 = none.
+- **EX019 — Forged sender.** Why can the displayed sender be forged? *Rubric:* 3 = basic email was designed for cooperation not security;; 2 = design;; 1 = vague;; 0 = none.
+- **EX020 — Check limits.** What can authentication checks not stop? *Rubric:* 3 = lookalike domains and compromised accounts;; 2 = lookalikes;; 1 = vague;; 0 = none.
+- **EX021 — Whitten and Tygar.** What did Whitten and Tygar (1999) show? *Rubric:* 3 = security software can be too hard for ordinary users;; 2 = usability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -476,9 +476,9 @@ Skipped rows may bias results. Rates for small branches are unstable.
 
 ### Exercises
 
-- **EX022 — Zero guard.** Why guard against division by zero? *Rubric:* 3 = a branch might have no staff records;; 2 = new branch;; 1 = none;; 0 = none.
+- **EX022 — Zero guard.** Why guard against division by zero? *Rubric:* 3 = a branch might have no staff records;; 2 = new branch;; 1 = vague;; 0 = none.
 - **EX023 — Highest rate.** Which branch had the highest reporting rate in the lab? *Rubric:* 3 = Quay at 60 per hundred;; 2 = Quay;; 1 = Central;; 0 = none.
-- **EX024 — Skipped rows.** Why report the number of skipped rows? *Rubric:* 3 = so nothing is hidden;; 2 = transparency;; 1 = none;; 0 = none.
+- **EX024 — Skipped rows.** Why report the number of skipped rows? *Rubric:* 3 = so nothing is hidden;; 2 = transparency;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -541,9 +541,9 @@ Removing names prevents some follow-up. Category labels can be inconsistent.
 
 ### Exercises
 
-- **EX025 — Name excluded.** Why does the table exclude reporter names? *Rubric:* 3 = analysis needs only branch counts and names create risk;; 2 = minimisation;; 1 = none;; 0 = none.
+- **EX025 — Name excluded.** Why does the table exclude reporter names? *Rubric:* 3 = analysis needs only branch counts and names create risk;; 2 = minimisation;; 1 = vague;; 0 = none.
 - **EX026 — Top category.** Which malicious category was most common in the lab? *Rubric:* 3 = invoice;; 2 = invoices;; 1 = parcel;; 0 = none.
-- **EX027 — Reporting effect.** What should Nadia check when a branch count is high? *Rubric:* 3 = whether it reflects more attacks or more reporting;; 2 = reporting;; 1 = none;; 0 = none.
+- **EX027 — Reporting effect.** What should Nadia check when a branch count is high? *Rubric:* 3 = whether it reflects more attacks or more reporting;; 2 = reporting;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -585,9 +585,9 @@ Rules can be ignored under pressure. Representatives may not exist in small orga
 
 ### Exercises
 
-- **EX028 — Participant rights.** What must participants be able to do? *Rubric:* 3 = know, agree freely and withdraw;; 2 = consent;; 1 = none;; 0 = none.
-- **EX029 — Trust as asset.** Why should deception be used sparingly? *Rubric:* 3 = it can damage trust, which is a security asset;; 2 = trust;; 1 = none;; 0 = none.
-- **EX030 — Banned lure type.** Which lures do the rules ban? *Rubric:* 3 = those exploiting personal distress such as pay or health;; 2 = distress;; 1 = none;; 0 = none.
+- **EX028 — Participant rights.** What must participants be able to do? *Rubric:* 3 = know, agree freely and withdraw;; 2 = consent;; 1 = vague;; 0 = none.
+- **EX029 — Trust as asset.** Why should deception be used sparingly? *Rubric:* 3 = it can damage trust, which is a security asset;; 2 = trust;; 1 = vague;; 0 = none.
+- **EX030 — Banned lure type.** Which lures do the rules ban? *Rubric:* 3 = those exploiting personal distress such as pay or health;; 2 = distress;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -629,8 +629,8 @@ Overnight updates fail if devices are off. Removing admin rights increases IT wo
 
 ### Exercises
 
-- **EX031 — Shared account problem.** What is the problem with shared counter accounts? *Rubric:* 3 = nobody can tell who did what;; 2 = accountability;; 1 = none;; 0 = none.
-- **EX032 — Compliance budget.** What does the compliance budget describe? *Rubric:* 3 = limited willingness to spend effort on security;; 2 = effort;; 1 = none;; 0 = none.
+- **EX031 — Shared account problem.** What is the problem with shared counter accounts? *Rubric:* 3 = nobody can tell who did what;; 2 = accountability;; 1 = vague;; 0 = none.
+- **EX032 — Compliance budget.** What does the compliance budget describe? *Rubric:* 3 = limited willingness to spend effort on security;; 2 = effort;; 1 = vague;; 0 = none.
 - **EX033 — Burden shift.** Where does Nadia move the update effort? *Rubric:* 3 = from individuals to the system;; 2 = system;; 1 = users;; 0 = none.
 
 ### Synthesis
@@ -694,7 +694,7 @@ Intervals assume independent responses. One simulation is a single snapshot.
 ### Exercises
 
 - **EX034 — Overall interval.** What was the 95% interval for 18 of 120? *Rubric:* 3 = about 9.7% to 22.5%;; 2 = range;; 1 = 15% exactly;; 0 = none.
-- **EX035 — Branch comparison.** Why not praise Central over Riverside? *Rubric:* 3 = their intervals overlap heavily;; 2 = chance;; 1 = none;; 0 = none.
+- **EX035 — Branch comparison.** Why not praise Central over Riverside? *Rubric:* 3 = their intervals overlap heavily;; 2 = chance;; 1 = vague;; 0 = none.
 - **EX036 — Minimum group.** What minimum group size did Nadia suggest? *Rubric:* 3 = twenty staff;; 2 = 20;; 1 = five;; 0 = none.
 
 ### Synthesis
@@ -737,8 +737,8 @@ Keys can be lost. Ending forced changes needs compromise detection.
 
 ### Exercises
 
-- **EX037 — Three factor types.** What are the three factor types? *Rubric:* 3 = know, have, are;; 2 = three;; 1 = none;; 0 = none.
-- **EX038 — Forced change effect.** What did Nadia find staff do at forced changes? *Rubric:* 3 = add a number to the old password;; 2 = pattern;; 1 = none;; 0 = none.
+- **EX037 — Three factor types.** What are the three factor types? *Rubric:* 3 = know, have, are;; 2 = three;; 1 = vague;; 0 = none.
+- **EX038 — Forced change effect.** What did Nadia find staff do at forced changes? *Rubric:* 3 = add a number to the old password;; 2 = pattern;; 1 = vague;; 0 = none.
 - **EX039 — Key advantage.** Why do security keys resist phishing? *Rubric:* 3 = they check the website;; 2 = site check;; 1 = they are long;; 0 = none.
 
 ### Synthesis
@@ -781,9 +781,9 @@ Procedures may delay genuine urgent requests. Aggregates can still reveal indivi
 
 ### Exercises
 
-- **EX040 — Privacy versus security.** How does privacy differ from security? *Rubric:* 3 = privacy also limits what authorised people do with data;; 2 = use limits;; 1 = none;; 0 = none.
-- **EX041 — Phone procedure.** What does the new procedure require? *Rubric:* 3 = no disclosure by phone and written requests to the privacy officer;; 2 = written;; 1 = none;; 0 = none.
-- **EX042 — Staff data.** Why apply privacy principles to staff data? *Rubric:* 3 = to keep the trust that supports reporting;; 2 = trust;; 1 = none;; 0 = none.
+- **EX040 — Privacy versus security.** How does privacy differ from security? *Rubric:* 3 = privacy also limits what authorised people do with data;; 2 = use limits;; 1 = vague;; 0 = none.
+- **EX041 — Phone procedure.** What does the new procedure require? *Rubric:* 3 = no disclosure by phone and written requests to the privacy officer;; 2 = written;; 1 = vague;; 0 = none.
+- **EX042 — Staff data.** Why apply privacy principles to staff data? *Rubric:* 3 = to keep the trust that supports reporting;; 2 = trust;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -839,9 +839,9 @@ Outcome measures can be noisy. Unreported attacks are invisible.
 
 ### Exercises
 
-- **EX043 — Completion validity.** Why are completion rates weak measures? *Rubric:* 3 = they show clicking through, not behaviour;; 2 = validity;; 1 = none;; 0 = none.
-- **EX044 — Median result.** What was the median time to first report in the lab? *Rubric:* 3 = 14 minutes;; 2 = 14;; 1 = none;; 0 = none.
-- **EX045 — Burden measure.** Why measure staff effort too? *Rubric:* 3 = effort is a real cost that affects sustainability;; 2 = cost;; 1 = none;; 0 = none.
+- **EX043 — Completion validity.** Why are completion rates weak measures? *Rubric:* 3 = they show clicking through, not behaviour;; 2 = validity;; 1 = vague;; 0 = none.
+- **EX044 — Median result.** What was the median time to first report in the lab? *Rubric:* 3 = 14 minutes;; 2 = 14;; 1 = vague;; 0 = none.
+- **EX045 — Burden measure.** Why measure staff effort too? *Rubric:* 3 = effort is a real cost that affects sustainability;; 2 = cost;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -883,8 +883,8 @@ Layers add cost and complexity. Alerts need people to respond.
 
 ### Exercises
 
-- **EX046 — Acceptability principle.** What does psychological acceptability mean? *Rubric:* 3 = protection should be easy to use correctly;; 2 = usability;; 1 = none;; 0 = none.
-- **EX047 — Staff as sensors.** How can staff strengthen the architecture? *Rubric:* 3 = reporting attacks filters miss;; 2 = sensors;; 1 = none;; 0 = none.
+- **EX046 — Acceptability principle.** What does psychological acceptability mean? *Rubric:* 3 = protection should be easy to use correctly;; 2 = usability;; 1 = vague;; 0 = none.
+- **EX047 — Staff as sensors.** How can staff strengthen the architecture? *Rubric:* 3 = reporting attacks filters miss;; 2 = sensors;; 1 = vague;; 0 = none.
 - **EX048 — Fake site defence.** What blocks an attacker after a password is entered on a fake site? *Rubric:* 3 = the second factor;; 2 = factor;; 1 = backups;; 0 = none.
 
 ### Synthesis
@@ -928,8 +928,8 @@ Invisible tools may hide failures. Central encryption needs key recovery.
 ### Exercises
 
 - **EX049 — Signature purpose.** What does a digital signature show? *Rubric:* 3 = who sent a message and that it was unchanged;; 2 = origin;; 1 = secrecy;; 0 = none.
-- **EX050 — Study finding.** What did Whitten and Tygar find? *Rubric:* 3 = most could not use the encryption correctly in ninety minutes;; 2 = usability;; 1 = none;; 0 = none.
-- **EX051 — Manual encryption.** Why avoid manual attachment encryption? *Rubric:* 3 = it is error-prone for staff;; 2 = errors;; 1 = none;; 0 = none.
+- **EX050 — Study finding.** What did Whitten and Tygar find? *Rubric:* 3 = most could not use the encryption correctly in ninety minutes;; 2 = usability;; 1 = vague;; 0 = none.
+- **EX051 — Manual encryption.** Why avoid manual attachment encryption? *Rubric:* 3 = it is error-prone for staff;; 2 = errors;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -972,8 +972,8 @@ Volunteers may differ from others. Surveys rely on honest self-report.
 ### Exercises
 
 - **EX052 — Narrowed question.** What was Nadia's narrowed question? *Rubric:* 3 = what stops counter staff reporting within an hour;; 2 = barriers;; 1 = how to improve security;; 0 = none.
-- **EX053 — Observation choice.** Why did Nadia avoid covert observation? *Rubric:* 3 = it raises ethical concerns without consent;; 2 = consent;; 1 = none;; 0 = none.
-- **EX054 — Pilot purpose.** Why pilot the survey? *Rubric:* 3 = to check questions are clear;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX053 — Observation choice.** Why did Nadia avoid covert observation? *Rubric:* 3 = it raises ethical concerns without consent;; 2 = consent;; 1 = vague;; 0 = none.
+- **EX054 — Pilot purpose.** Why pilot the survey? *Rubric:* 3 = to check questions are clear;; 2 = clarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1015,8 +1015,8 @@ Theories overlap. Survey items may not capture constructs fully.
 
 ### Exercises
 
-- **EX055 — Field shift.** What shift does the field show? *Rubric:* 3 = from blaming users to designing for them;; 2 = design;; 1 = none;; 0 = none.
-- **EX056 — Planned behaviour parts.** What three factors shape intentions in Ajzen's theory? *Rubric:* 3 = attitudes, norms and perceived control;; 2 = three;; 1 = none;; 0 = none.
+- **EX055 — Field shift.** What shift does the field show? *Rubric:* 3 = from blaming users to designing for them;; 2 = design;; 1 = vague;; 0 = none.
+- **EX056 — Planned behaviour parts.** What three factors shape intentions in Ajzen's theory? *Rubric:* 3 = attitudes, norms and perceived control;; 2 = three;; 1 = vague;; 0 = none.
 - **EX057 — Common point.** On what do the theories agree? *Rubric:* 3 = behaviour depends on how easy and worthwhile secure action feels;; 2 = ease;; 1 = knowledge;; 0 = none.
 
 ### Synthesis
@@ -1059,9 +1059,9 @@ Synthetic cases may miss real details. Simple rules have exceptions.
 
 ### Exercises
 
-- **EX058 — Pressure types.** Which pressures did the caller use? *Rubric:* 3 = authority and urgency;; 2 = two;; 1 = none;; 0 = none.
+- **EX058 — Pressure types.** Which pressures did the caller use? *Rubric:* 3 = authority and urgency;; 2 = two;; 1 = vague;; 0 = none.
 - **EX059 — Where factors lie.** Where do most factors lie in the case? *Rubric:* 3 = in the system rather than the person;; 2 = system;; 1 = the assistant;; 0 = none.
-- **EX060 — Named contact.** What does the named contact do? *Rubric:* 3 = verifies any official request;; 2 = verify;; 1 = none;; 0 = none.
+- **EX060 — Named contact.** What does the named contact do? *Rubric:* 3 = verifies any official request;; 2 = verify;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1125,7 +1125,7 @@ Step rates are rough estimates. Steps interact.
 ### Exercises
 
 - **EX061 — Chain view.** Why model reporting as a chain? *Rubric:* 3 = any weak step can stop a warning;; 2 = weak link;; 1 = single act;; 0 = none.
-- **EX062 — Funnel survivors.** How many of 100 suspicious emails become replied reports in the lab? *Rubric:* 3 = about 24;; 2 = 24;; 1 = none;; 0 = none.
+- **EX062 — Funnel survivors.** How many of 100 suspicious emails become replied reports in the lab? *Rubric:* 3 = about 24;; 2 = 24;; 1 = vague;; 0 = none.
 - **EX063 — Biggest loss.** Which step loses the most? *Rubric:* 3 = the decision to report;; 2 = decision;; 1 = noticing;; 0 = none.
 
 ### Synthesis
@@ -1168,9 +1168,9 @@ Shared mailboxes need clear ownership. Paper forms can be lost.
 
 ### Exercises
 
-- **EX064 — Log risk.** Why is a leaked report log harmful? *Rubric:* 3 = it could reveal who reported what;; 2 = names;; 1 = none;; 0 = none.
-- **EX065 — IT dependency.** What single point of failure involves IT? *Rubric:* 3 = one officer whose inbox receives reports;; 2 = one person;; 1 = none;; 0 = none.
-- **EX066 — Acknowledgement.** What does the automatic acknowledgement do? *Rubric:* 3 = tells reporters their message arrived;; 2 = confirmation;; 1 = none;; 0 = none.
+- **EX064 — Log risk.** Why is a leaked report log harmful? *Rubric:* 3 = it could reveal who reported what;; 2 = names;; 1 = vague;; 0 = none.
+- **EX065 — IT dependency.** What single point of failure involves IT? *Rubric:* 3 = one officer whose inbox receives reports;; 2 = one person;; 1 = vague;; 0 = none.
+- **EX066 — Acknowledgement.** What does the automatic acknowledgement do? *Rubric:* 3 = tells reporters their message arrived;; 2 = confirmation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1231,8 +1231,8 @@ Survey response bias. Coding remains interpretive.
 ### Exercises
 
 - **EX067 — Response rate.** What was the survey response rate? *Rubric:* 3 = 70%;; 2 = 84 of 120;; 1 = 84%;; 0 = none.
-- **EX068 — Top barrier.** What was the top barrier and its share? *Rubric:* 3 = unsure if suspicious enough, 45 of 84 or 54%;; 2 = uncertainty;; 1 = none;; 0 = none.
-- **EX069 — Second coder.** Why did a second student code interviews? *Rubric:* 3 = to check consistency of codes;; 2 = consistency;; 1 = none;; 0 = none.
+- **EX068 — Top barrier.** What was the top barrier and its share? *Rubric:* 3 = unsure if suspicious enough, 45 of 84 or 54%;; 2 = uncertainty;; 1 = vague;; 0 = none.
+- **EX069 — Second coder.** Why did a second student code interviews? *Rubric:* 3 = to check consistency of codes;; 2 = consistency;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1274,9 +1274,9 @@ Burden estimates may be optimistic. Nudges fade with familiarity.
 
 ### Exercises
 
-- **EX070 — Feedback control.** Which control addresses lack of feedback? *Rubric:* 3 = IT replies within one working day;; 2 = reply;; 1 = none;; 0 = none.
-- **EX071 — Nudge limits.** Which limits apply to nudges? *Rubric:* 3 = transparent, ignorable and not fear-based;; 2 = limits;; 1 = none;; 0 = none.
-- **EX072 — Review timing.** When should controls be reviewed for burden? *Rubric:* 3 = after three months;; 2 = three months;; 1 = none;; 0 = none.
+- **EX070 — Feedback control.** Which control addresses lack of feedback? *Rubric:* 3 = IT replies within one working day;; 2 = reply;; 1 = vague;; 0 = none.
+- **EX071 — Nudge limits.** Which limits apply to nudges? *Rubric:* 3 = transparent, ignorable and not fear-based;; 2 = limits;; 1 = vague;; 0 = none.
+- **EX072 — Review timing.** When should controls be reviewed for burden? *Rubric:* 3 = after three months;; 2 = three months;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1333,9 +1333,9 @@ Volunteers are not typical. Lab conditions differ from busy counters.
 
 ### Exercises
 
-- **EX073 — Test mailbox.** Why use a test mailbox? *Rubric:* 3 = so no real inboxes are involved;; 2 = contained;; 1 = none;; 0 = none.
-- **EX074 — Mean times.** What were mean times for forwarding and the button? *Rubric:* 3 = 40 and 6 seconds;; 2 = 34 seconds saved;; 1 = none;; 0 = none.
-- **EX075 — Forwarding failures.** How many volunteers failed to forward correctly? *Rubric:* 3 = two;; 2 = 2;; 1 = none;; 0 = none.
+- **EX073 — Test mailbox.** Why use a test mailbox? *Rubric:* 3 = so no real inboxes are involved;; 2 = contained;; 1 = vague;; 0 = none.
+- **EX074 — Mean times.** What were mean times for forwarding and the button? *Rubric:* 3 = 40 and 6 seconds;; 2 = 34 seconds saved;; 1 = vague;; 0 = none.
+- **EX075 — Forwarding failures.** How many volunteers failed to forward correctly? *Rubric:* 3 = two;; 2 = 2;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1392,9 +1392,9 @@ Non-random groups may differ. One month is short.
 
 ### Exercises
 
-- **EX076 — Monthly change.** How did average monthly reports change? *Rubric:* 3 = from 12 to 31;; 2 = rise of 19;; 1 = none;; 0 = none.
-- **EX077 — Confounder found.** Which confounder did IT records reveal? *Rubric:* 3 = malicious emails rose from 3 to 5 a month;; 2 = more attacks;; 1 = none;; 0 = none.
-- **EX078 — Group rates.** What rates did early and late branches show in the rollout month? *Rubric:* 3 = 26 versus 8 per hundred staff;; 2 = early higher;; 1 = none;; 0 = none.
+- **EX076 — Monthly change.** How did average monthly reports change? *Rubric:* 3 = from 12 to 31;; 2 = rise of 19;; 1 = vague;; 0 = none.
+- **EX077 — Confounder found.** Which confounder did IT records reveal? *Rubric:* 3 = malicious emails rose from 3 to 5 a month;; 2 = more attacks;; 1 = vague;; 0 = none.
+- **EX078 — Group rates.** What rates did early and late branches show in the rollout month? *Rubric:* 3 = 26 versus 8 per hundred staff;; 2 = early higher;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1436,9 +1436,9 @@ Checks show a moment in time. Layout changes can reintroduce problems.
 
 ### Exercises
 
-- **EX079 — Verification versus evaluation.** What does verification not ask? *Rubric:* 3 = whether reporting improved;; 2 = outcomes;; 1 = none;; 0 = none.
-- **EX080 — Counter problem.** What problem appeared on counter computers? *Rubric:* 3 = the button was hidden behind a menu;; 2 = hidden;; 1 = none;; 0 = none.
-- **EX081 — Check record.** How many of eight checks passed first time? *Rubric:* 3 = six;; 2 = 6;; 1 = none;; 0 = none.
+- **EX079 — Verification versus evaluation.** What does verification not ask? *Rubric:* 3 = whether reporting improved;; 2 = outcomes;; 1 = vague;; 0 = none.
+- **EX080 — Counter problem.** What problem appeared on counter computers? *Rubric:* 3 = the button was hidden behind a menu;; 2 = hidden;; 1 = vague;; 0 = none.
+- **EX081 — Check record.** How many of eight checks passed first time? *Rubric:* 3 = six;; 2 = 6;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1498,9 +1498,9 @@ Factor classes overlap. Five near misses are a small set.
 
 ### Exercises
 
-- **EX082 — Near miss value.** Why are near misses valuable? *Rubric:* 3 = they reveal weaknesses without harm;; 2 = learning;; 1 = none;; 0 = none.
+- **EX082 — Near miss value.** Why are near misses valuable? *Rubric:* 3 = they reveal weaknesses without harm;; 2 = learning;; 1 = vague;; 0 = none.
 - **EX083 — Most common class.** Which factor class appeared most in the lab? *Rubric:* 3 = organisational, in 5 of 5;; 2 = organisational;; 1 = individual;; 0 = none.
-- **EX084 — Habit to rule.** What did Nadia do with the finance officer's habit? *Rubric:* 3 = made it a written rule;; 2 = rule;; 1 = none;; 0 = none.
+- **EX084 — Habit to rule.** What did Nadia do with the finance officer's habit? *Rubric:* 3 = made it a written rule;; 2 = rule;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1543,8 +1543,8 @@ Calendars slip under pressure. Few simulations give limited data.
 ### Exercises
 
 - **EX085 — Simulation frequency.** How often does Nadia recommend simulations? *Rubric:* 3 = at most twice a year;; 2 = twice;; 1 = monthly;; 0 = none.
-- **EX086 — Template rating.** Why rate templates with the Phish Scale? *Rubric:* 3 = so results can be compared across years;; 2 = comparison;; 1 = none;; 0 = none.
-- **EX087 — Upsetting template.** What happens to a template that upsets staff? *Rubric:* 3 = it is withdrawn;; 2 = withdraw;; 1 = none;; 0 = none.
+- **EX086 — Template rating.** Why rate templates with the Phish Scale? *Rubric:* 3 = so results can be compared across years;; 2 = comparison;; 1 = vague;; 0 = none.
+- **EX087 — Upsetting template.** What happens to a template that upsets staff? *Rubric:* 3 = it is withdrawn;; 2 = withdraw;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1605,9 +1605,9 @@ Observational data cannot prove causation. Groups may differ.
 
 ### Exercises
 
-- **EX088 — Group rates.** What repeat rates did the two groups show? *Rubric:* 3 = 65% after fast replies and 30% after slow or none;; 2 = 26/40 and 9/30;; 1 = none;; 0 = none.
+- **EX088 — Group rates.** What repeat rates did the two groups show? *Rubric:* 3 = 65% after fast replies and 30% after slow or none;; 2 = 26/40 and 9/30;; 1 = vague;; 0 = none.
 - **EX089 — Interval result.** What did the intervals show? *Rubric:* 3 = they did not overlap;; 2 = separate;; 1 = overlap;; 0 = none.
-- **EX090 — Causation caution.** Why can the result not prove causation? *Rubric:* 3 = the data are observational and groups may differ;; 2 = observational;; 1 = none;; 0 = none.
+- **EX090 — Causation caution.** Why can the result not prove causation? *Rubric:* 3 = the data are observational and groups may differ;; 2 = observational;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1650,7 +1650,7 @@ Proportion requires judgement. Open models carry residual risk.
 ### Exercises
 
 - **EX091 — Insider motive.** What usually drives insider problems according to the chapter? *Rubric:* 3 = convenience and goodwill rather than malice;; 2 = convenience;; 1 = malice;; 0 = none.
-- **EX092 — Identification rejected.** Why did Nadia reject identification for public computers? *Rubric:* 3 = it would exclude vulnerable users and create records;; 2 = access;; 1 = none;; 0 = none.
+- **EX092 — Identification rejected.** Why did Nadia reject identification for public computers? *Rubric:* 3 = it would exclude vulnerable users and create records;; 2 = access;; 1 = vague;; 0 = none.
 - **EX093 — Volunteer fix.** What fix addresses the shared login? *Rubric:* 3 = a volunteer account with booking rights only;; 2 = role account;; 1 = ban;; 0 = none.
 
 ### Synthesis
@@ -1693,9 +1693,9 @@ Translation can oversimplify. Meetings can be dominated by senior voices.
 
 ### Exercises
 
-- **EX094 — Staff framing.** How was the rule framed for staff? *Rubric:* 3 = protection from pressure to judge callers;; 2 = relief;; 1 = none;; 0 = none.
-- **EX095 — Representative concern.** What did the staff representative worry about? *Rubric:* 3 = blame;; 2 = blame;; 1 = cost;; 0 = none.
-- **EX096 — Meeting outcome.** What did the meeting agree? *Rubric:* 3 = minimised log, modest budget, templates and no-blame statement;; 2 = four;; 1 = none;; 0 = none.
+- **EX094 — Staff framing.** How was the rule framed for staff? *Rubric:* 3 = protection from pressure to judge callers;; 2 = relief;; 1 = vague;; 0 = none.
+- **EX095 — Representative concern.** What did the staff representative worry about? *Rubric:* 3 = blame;; 2 = blame, without explanation;; 1 = cost;; 0 = none.
+- **EX096 — Meeting outcome.** What did the meeting agree? *Rubric:* 3 = minimised log, modest budget, templates and no-blame statement;; 2 = four;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1739,7 +1739,7 @@ Comparisons between organisations are confounded. Recording practices differ.
 
 - **EX097 — Dunmore approach.** What approach does Dunmore use? *Rubric:* 3 = annual training and monthly simulations;; 2 = compliance-led;; 1 = reporting-led;; 0 = none.
 - **EX098 — Reliability definition.** What does reliability mean? *Rubric:* 3 = consistent results from a measure;; 2 = consistency;; 1 = validity;; 0 = none.
-- **EX099 — Plan first.** Why write the analysis plan before data? *Rubric:* 3 = to avoid searching for interesting results;; 2 = pre-planning;; 1 = none;; 0 = none.
+- **EX099 — Plan first.** Why write the analysis plan before data? *Rubric:* 3 = to avoid searching for interesting results;; 2 = pre-planning;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1799,8 +1799,8 @@ Six months is short. Networks face different attacks.
 
 ### Exercises
 
-- **EX100 — Lab medians.** What median times to first report did the lab show? *Rubric:* 3 = Ashcombe 14 and Dunmore 70 minutes;; 2 = faster;; 1 = none;; 0 = none.
-- **EX101 — Reported share.** What shares of malicious emails were reported? *Rubric:* 3 = Ashcombe 86% and Dunmore 52%;; 2 = higher;; 1 = none;; 0 = none.
+- **EX100 — Lab medians.** What median times to first report did the lab show? *Rubric:* 3 = Ashcombe 14 and Dunmore 70 minutes;; 2 = faster;; 1 = vague;; 0 = none.
+- **EX101 — Reported share.** What shares of malicious emails were reported? *Rubric:* 3 = Ashcombe 86% and Dunmore 52%;; 2 = higher;; 1 = vague;; 0 = none.
 - **EX102 — Click versus report.** What do Dunmore's results suggest? *Rubric:* 3 = low clicks and fast reporting differ;; 2 = different;; 1 = same;; 0 = none.
 
 ### Synthesis
@@ -1843,9 +1843,9 @@ Volunteer numbers fluctuate. Small samples limit evaluation.
 
 ### Exercises
 
-- **EX103 — Capstone group.** Which group does the capstone address? *Rubric:* 3 = volunteers and part-time staff;; 2 = volunteers;; 1 = none;; 0 = none.
+- **EX103 — Capstone group.** Which group does the capstone address? *Rubric:* 3 = volunteers and part-time staff;; 2 = volunteers;; 1 = vague;; 0 = none.
 - **EX104 — Guide criterion.** What share of volunteers should receive the guide? *Rubric:* 3 = at least two thirds;; 2 = two thirds;; 1 = half;; 0 = none.
-- **EX105 — Obligation concern.** What ethical concern applies to volunteers? *Rubric:* 3 = they may feel obliged to take part;; 2 = pressure;; 1 = none;; 0 = none.
+- **EX105 — Obligation concern.** What ethical concern applies to volunteers? *Rubric:* 3 = they may feel obliged to take part;; 2 = pressure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1887,9 +1887,9 @@ Informal feedback is unrepresentative. Volunteers vary in confidence.
 
 ### Exercises
 
-- **EX106 — Volunteer role.** What informal role do volunteers play? *Rubric:* 3 = advisers on online safety for members;; 2 = advisers;; 1 = none;; 0 = none.
-- **EX107 — Password rule.** What must volunteers never do? *Rubric:* 3 = handle a member's passwords;; 2 = passwords;; 1 = none;; 0 = none.
-- **EX108 — Fear lesson.** What did the older member's comment show? *Rubric:* 3 = fear can reduce safe and useful technology use;; 2 = fear;; 1 = none;; 0 = none.
+- **EX106 — Volunteer role.** What informal role do volunteers play? *Rubric:* 3 = advisers on online safety for members;; 2 = advisers;; 1 = vague;; 0 = none.
+- **EX107 — Password rule.** What must volunteers never do? *Rubric:* 3 = handle a member's passwords;; 2 = passwords;; 1 = vague;; 0 = none.
+- **EX108 — Fear lesson.** What did the older member's comment show? *Rubric:* 3 = fear can reduce safe and useful technology use;; 2 = fear;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1932,8 +1932,8 @@ Reviews may miss studies. Quality questions are simple.
 ### Exercises
 
 - **EX109 — Lain finding.** What did Lain et al. find about embedded training? *Rubric:* 3 = it did not improve outcomes;; 2 = ineffective;; 1 = helped;; 0 = none.
-- **EX110 — Quality questions.** Name two quality questions used. *Rubric:* 3 = number of participants and comparison group;; 2 = two;; 1 = none;; 0 = none.
-- **EX111 — Known gap.** What is less well known? *Rubric:* 3 = long-term feedback effects and small organisations;; 2 = gap;; 1 = none;; 0 = none.
+- **EX110 — Quality questions.** Name two quality questions used. *Rubric:* 3 = number of participants and comparison group;; 2 = two;; 1 = vague;; 0 = none.
+- **EX111 — Known gap.** What is less well known? *Rubric:* 3 = long-term feedback effects and small organisations;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1976,8 +1976,8 @@ Counts do not show reading. Forms can be misused.
 ### Exercises
 
 - **EX112 — Form access.** How do volunteers access the form? *Rubric:* 3 = with a volunteer code from any device;; 2 = code;; 1 = staff email;; 0 = none.
-- **EX113 — Distribution share.** What share of volunteers received the guide? *Rubric:* 3 = 31 of 40, about 78%;; 2 = 78%;; 1 = none;; 0 = none.
-- **EX114 — Form change.** Why was the form updated? *Rubric:* 3 = reports included members' personal details;; 2 = privacy;; 1 = none;; 0 = none.
+- **EX113 — Distribution share.** What share of volunteers received the guide? *Rubric:* 3 = 31 of 40, about 78%;; 2 = 78%;; 1 = vague;; 0 = none.
+- **EX114 — Form change.** Why was the form updated? *Rubric:* 3 = reports included members' personal details;; 2 = privacy;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2040,9 +2040,9 @@ Different respondents before and after. Seasonal effects.
 
 ### Exercises
 
-- **EX115 — Report counts.** How did volunteer and part-time reports change? *Rubric:* 3 = from 4 to 15;; 2 = rise;; 1 = none;; 0 = none.
-- **EX116 — Knowledge shares.** What shares knew how to report before and after in the lab? *Rubric:* 3 = 41% and 81%;; 2 = rise;; 1 = none;; 0 = none.
-- **EX117 — Groups caution.** Why is the survey comparison between groups? *Rubric:* 3 = volunteers changed between surveys;; 2 = turnover;; 1 = none;; 0 = none.
+- **EX115 — Report counts.** How did volunteer and part-time reports change? *Rubric:* 3 = from 4 to 15;; 2 = rise;; 1 = vague;; 0 = none.
+- **EX116 — Knowledge shares.** What shares knew how to report before and after in the lab? *Rubric:* 3 = 41% and 81%;; 2 = rise;; 1 = vague;; 0 = none.
+- **EX117 — Groups caution.** Why is the survey comparison between groups? *Rubric:* 3 = volunteers changed between surveys;; 2 = turnover;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2085,8 +2085,8 @@ One case limits generalisation. Reflection can be selective.
 ### Exercises
 
 - **EX118 — Simulation answer.** How did Nadia answer the question on simulations? *Rubric:* 3 = favour feedback and easy reporting, simulations sparingly;; 2 = sparing;; 1 = more simulations;; 0 = none.
-- **EX119 — Generalisation answer.** How did Nadia answer on generalisation? *Rubric:* 3 = one network, suggests studies elsewhere;; 2 = limits;; 1 = none;; 0 = none.
-- **EX120 — Changed view.** How did Nadia's view change since her first essay? *Rubric:* 3 = from half-believing staff are the weakest link to looking at systems;; 2 = systems;; 1 = none;; 0 = none.
+- **EX119 — Generalisation answer.** How did Nadia answer on generalisation? *Rubric:* 3 = one network, suggests studies elsewhere;; 2 = limits;; 1 = vague;; 0 = none.
+- **EX120 — Changed view.** How did Nadia's view change since her first essay? *Rubric:* 3 = from half-believing staff are the weakest link to looking at systems;; 2 = systems;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

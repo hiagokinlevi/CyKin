@@ -71,7 +71,7 @@ Service maps drawn without checking real paths often miss shared subnets.
 ### Exercises
 
 - **EX001 — Service description.** Describe a service in the terms network rules need. *Rubric:* 3 = users, location, ports or access path;; 2 = some terms;; 1 = name only;; 0 = none.
-- **EX002 — Weak spot found.** What weakness did the service map reveal? *Rubric:* 3 = guest wireless can reach housing system via shared subnet;; 2 = guest access;; 1 = none;; 0 = none.
+- **EX002 — Weak spot found.** What weakness did the service map reveal? *Rubric:* 3 = guest wireless can reach housing system via shared subnet;; 2 = guest access;; 1 = vague;; 0 = none.
 - **EX003 — Path controls.** Name two controls already protecting Castleford paths. *Rubric:* 3 = office VPN, firewall, HTTPS;; 2 = two;; 1 = one;; 0 = none.
 - **EX004 — Supervision rule.** What must happen before Amina touches real Castleford systems? *Rubric:* 3 = Rosa's approval;; 2 = approval;; 1 = nothing;; 0 = none.
 
@@ -121,7 +121,7 @@ Assuming a firewall filters traffic inside one subnet leads to false confidence.
 
 - **EX005 — Usable addresses.** How many usable addresses does a /24 provide? *Rubric:* 3 = 254, explaining network and broadcast;; 2 = 254;; 1 = 256;; 0 = none.
 - **EX006 — Same-subnet traffic.** Why can't the firewall block guest-to-housing traffic today? *Rubric:* 3 = same subnet, never reaches gateway;; 2 = same subnet;; 1 = misconfigured;; 0 = none.
-- **EX007 — Encrypted admin protocol.** Which protocol provides encrypted remote administration? *Rubric:* 3 = SSH;; 2 = SSH;; 1 = Telnet;; 0 = none.
+- **EX007 — Encrypted admin protocol.** Which protocol provides encrypted remote administration? *Rubric:* 3 = SSH;; 2 = SSH, without explanation;; 1 = Telnet;; 0 = none.
 - **EX008 — Diagram check.** What did checking the diagram against configurations reveal? *Rubric:* 3 = missing switch;; 2 = missing device;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -266,8 +266,8 @@ Testing live systems without specific approval can disrupt services and breach t
 
 ### Exercises
 
-- **EX017 — Out-of-scope area.** Name one area outside Amina's scope. *Rubric:* 3 = tenant data or housing system internals;; 2 = one;; 1 = none;; 0 = none.
-- **EX018 — Test approval.** What approval does a test against Castleford need? *Rubric:* 3 = Rosa's explicit approval for activity and time;; 2 = approval;; 1 = none;; 0 = none.
+- **EX017 — Out-of-scope area.** Name one area outside Amina's scope. *Rubric:* 3 = tenant data or housing system internals;; 2 = one;; 1 = vague;; 0 = none.
+- **EX018 — Test approval.** What approval does a test against Castleford need? *Rubric:* 3 = Rosa's explicit approval for activity and time;; 2 = approval;; 1 = vague;; 0 = none.
 - **EX019 — Evidence label.** What should label each piece of evidence? *Rubric:* 3 = date, system and provider;; 2 = date;; 1 = nothing;; 0 = none.
 - **EX020 — Conflicting sources.** What should Amina do when two sources conflict? *Rubric:* 3 = report the conflict;; 2 = report;; 1 = pick one;; 0 = none.
 
@@ -317,7 +317,7 @@ Listing flows from memory alone misses rarely used but important services.
 
 - **EX021 — Guest zone access.** What access does the guest zone receive? *Rubric:* 3 = internet only;; 2 = internet;; 1 = servers;; 0 = none.
 - **EX022 — Excess measure.** How does Amina measure excess access? *Rubric:* 3 = reachable zone pairs minus needed pairs;; 2 = compare pairs;; 1 = vague;; 0 = none.
-- **EX023 — Cloud move effect.** How would moving the housing system to the cloud change flows? *Rubric:* 3 = staff-to-servers becomes staff-to-internet; remote direct;; 2 = changes;; 1 = none;; 0 = none.
+- **EX023 — Cloud move effect.** How would moving the housing system to the cloud change flows? *Rubric:* 3 = staff-to-servers becomes staff-to-internet; remote direct;; 2 = changes;; 1 = vague;; 0 = none.
 - **EX024 — DNS dependency.** Why does DNS need special protection? *Rubric:* 3 = everything depends on it;; 2 = dependency;; 1 = speed;; 0 = none.
 
 ### Synthesis
@@ -392,9 +392,9 @@ Fixed thresholds without review either flood staff with alerts or miss slow gues
 ### Exercises
 
 - **EX025 — Flagged accounts.** Which accounts does the lab flag? *Rubric:* 3 = admin (7) and m.ortiz (6);; 2 = two;; 1 = one;; 0 = none.
-- **EX026 — Generic account concern.** Why are failures on a generic "admin" VPN account concerning? *Rubric:* 3 = should not exist; suggests outside guessing;; 2 = guessing;; 1 = none;; 0 = none.
+- **EX026 — Generic account concern.** Why are failures on a generic "admin" VPN account concerning? *Rubric:* 3 = should not exist; suggests outside guessing;; 2 = guessing;; 1 = vague;; 0 = none.
 - **EX027 — Log retention.** How long are central logs kept? *Rubric:* 3 = ninety days;; 2 = 90 days;; 1 = forever;; 0 = none.
-- **EX028 — Context factors.** Name one context factor that makes failures more concerning. *Rubric:* 3 = unusual location or time;; 2 = location;; 1 = none;; 0 = none.
+- **EX028 — Context factors.** Name one context factor that makes failures more concerning. *Rubric:* 3 = unusual location or time;; 2 = location;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -441,8 +441,8 @@ Assuming a control still works because nothing has complained ignores silent fai
 ### Exercises
 
 - **EX029 — Predictable failure.** Why are certificate expiries predictable yet common? *Rubric:* 3 = dates known but not tracked;; 2 = tracking;; 1 = random;; 0 = none.
-- **EX030 — Absence alert.** Give one absence-based alert. *Rubric:* 3 = no logs for an hour, no backup in 24h, no export;; 2 = one;; 1 = none;; 0 = none.
-- **EX031 — Workaround example.** Name a workaround a slow VPN might cause. *Rubric:* 3 = emailing files to personal accounts;; 2 = workaround;; 1 = none;; 0 = none.
+- **EX030 — Absence alert.** Give one absence-based alert. *Rubric:* 3 = no logs for an hour, no backup in 24h, no export;; 2 = one;; 1 = vague;; 0 = none.
+- **EX031 — Workaround example.** Name a workaround a slow VPN might cause. *Rubric:* 3 = emailing files to personal accounts;; 2 = workaround;; 1 = vague;; 0 = none.
 - **EX032 — Workaround reduction.** How can workarounds be reduced? *Rubric:* 3 = reporting process and fast fixes;; 2 = fix fast;; 1 = punish;; 0 = none.
 
 ### Synthesis
@@ -570,7 +570,7 @@ Enforcing outbound rules without a logging period often breaks unlisted dependen
 
 - **EX037 — Allowed flows.** How many synthetic flows are allowed? *Rubric:* 3 = four of eight, naming them;; 2 = four;; 1 = some;; 0 = none.
 - **EX038 — Direct server mail.** Why deny direct mail from servers to the internet? *Rubric:* 3 = common sign of compromise; use relay;; 2 = compromise;; 1 = speed;; 0 = none.
-- **EX039 — Missing copier flow.** What flow did Rosa notice was missing? *Rubric:* 3 = copier scans to branch printers;; 2 = scans;; 1 = none;; 0 = none.
+- **EX039 — Missing copier flow.** What flow did Rosa notice was missing? *Rubric:* 3 = copier scans to branch printers;; 2 = scans;; 1 = vague;; 0 = none.
 - **EX040 — Logging-only purpose.** Why start egress rules in logging-only mode? *Rubric:* 3 = find hidden dependencies before blocking;; 2 = dependencies;; 1 = testing;; 0 = none.
 
 ### Synthesis
@@ -617,9 +617,9 @@ Recording configured rather than negotiated VPN settings can hide fallback to we
 
 ### Exercises
 
-- **EX041 — Orphan rule.** What rule without a flow did Amina find? *Rubric:* 3 = staff to decommissioned server;; 2 = orphan;; 1 = none;; 0 = none.
+- **EX041 — Orphan rule.** What rule without a flow did Amina find? *Rubric:* 3 = staff to decommissioned server;; 2 = orphan;; 1 = vague;; 0 = none.
 - **EX042 — Negotiated settings.** Why record negotiated VPN settings? *Rubric:* 3 = gateway may fall back to weaker options;; 2 = fallback;; 1 = duplicate;; 0 = none.
-- **EX043 — TLS finding.** Which service accepted TLS 1.0? *Rubric:* 3 = intranet;; 2 = intranet;; 1 = VPN;; 0 = none.
+- **EX043 — TLS finding.** Which service accepted TLS 1.0? *Rubric:* 3 = intranet;; 2 = intranet, without explanation;; 1 = VPN;; 0 = none.
 - **EX044 — Classmate finding.** What did the independent check find? *Rubric:* 3 = wrong zone name for printers;; 2 = zone error;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -792,7 +792,7 @@ Automated reports that are too long are skipped and miss real problems.
 - **EX053 — Automation choice.** Why avoid automating changes to live devices? *Rubric:* 3 = mistakes could affect both offices; no out-of-hours staff;; 2 = risk;; 1 = slow;; 0 = none.
 - **EX054 — Credential storage.** Where are automation credentials stored? *Rubric:* 3 = OS protected store, not scripts;; 2 = protected store;; 1 = in script;; 0 = none.
 - **EX055 — Report design.** How are automated reports kept useful? *Rubric:* 3 = short, action items first, tuned with feedback;; 2 = short;; 1 = long;; 0 = none.
-- **EX056 — Script health check.** How does Amina detect a broken script? *Rubric:* 3 = check it ran and produced plausible output;; 2 = check;; 1 = none;; 0 = none.
+- **EX056 — Script health check.** How does Amina detect a broken script? *Rubric:* 3 = check it ran and produced plausible output;; 2 = check;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -840,8 +840,8 @@ Supplier access left open permanently is a common route for intruders.
 
 - **EX057 — Cloud admin limit.** Who may access cloud administration consoles? *Rubric:* 3 = Rosa and named support engineers;; 2 = limited;; 1 = all staff;; 0 = none.
 - **EX058 — Supplier access change.** How does supplier access change? *Rubric:* 3 = named VPN accounts to housing server only, windows, logged;; 2 = VPN;; 1 = unchanged;; 0 = none.
-- **EX059 — Single point of failure.** What single point of failure did the dependency list reveal? *Rubric:* 3 = one internet link carrying remote access;; 2 = link;; 1 = none;; 0 = none.
-- **EX060 — Supplier exit step.** Name one step when a supplier leaves. *Rubric:* 3 = remove accounts and access;; 2 = remove access;; 1 = none;; 0 = none.
+- **EX059 — Single point of failure.** What single point of failure did the dependency list reveal? *Rubric:* 3 = one internet link carrying remote access;; 2 = link;; 1 = vague;; 0 = none.
+- **EX060 — Supplier exit step.** Name one step when a supplier leaves. *Rubric:* 3 = remove accounts and access;; 2 = remove access;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1015,8 +1015,8 @@ Changes attempted without a tested procedure tend to overrun and cause confusion
 
 - **EX069 — Project focus.** What was the most needed change the project delivered? *Rubric:* 3 = removing guest access to housing system via separation;; 2 = separation;; 1 = VPN;; 0 = none.
 - **EX070 — Stale address issue.** How was the staff laptop problem fixed? *Rubric:* 3 = renewing its address;; 2 = renew;; 1 = rule change;; 0 = none.
-- **EX071 — Reachability result.** How did reachable zone pairs change at the main office? *Rubric:* 3 = twenty to seven;; 2 = reduced;; 1 = none;; 0 = none.
-- **EX072 — Reflection point.** Name one reflection from Amina's project. *Rubric:* 3 = lab preparation helped; fixed addresses slow; communication helped;; 2 = one;; 1 = none;; 0 = none.
+- **EX071 — Reachability result.** How did reachable zone pairs change at the main office? *Rubric:* 3 = twenty to seven;; 2 = reduced;; 1 = vague;; 0 = none.
+- **EX072 — Reflection point.** Name one reflection from Amina's project. *Rubric:* 3 = lab preparation helped; fixed addresses slow; communication helped;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -114,7 +114,7 @@ Listing only sensitive data misses systems the business depends on to operate.
 - **EX006 — Three goals.** Which three goals does ISO/IEC 27000:2026 use? *Rubric:* 3 = confidentiality, integrity, availability;; 2 = all three;; 1 = two;; 0 = none.
 - **EX007 — Integrity example.** Give an integrity example at Corbridge. *Rubric:* 3 = client refund bank details;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX008 — Peak availability.** When does availability matter most? *Rubric:* 3 = weeks before filing deadlines;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX009 — Fourth item.** What did Mrs. Pike add to the list? *Rubric:* 3 = the firm's reputation for discretion;; 2 = correct;; 1 = none;; 0 = none.
+- **EX009 — Fourth item.** What did Mrs. Pike add to the list? *Rubric:* 3 = the firm's reputation for discretion;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX010 — Dependency lesson.** Why ask about dependency as well as sensitivity? *Rubric:* 3 = low-sensitivity systems can still stop the business;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>

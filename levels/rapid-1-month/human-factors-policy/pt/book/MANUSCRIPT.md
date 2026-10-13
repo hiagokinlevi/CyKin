@@ -75,7 +75,7 @@ As decisões precisam de continuidade. As equipes pequenas mudam com frequência
 
 - **EX001 — Tamanho da organização.** Quantos funcionários e voluntários o Riverbend tem? *Rubrica:* 3 = doze funcionários e sessenta voluntários;; 2 = 72;; 1 = nada;; 0 = nenhuma.
 
-- **EX002 — Onde os ataques chegam.** Segundo Callum, ao que a maioria dos ataques contra pequenas organizações beneficentes chega primeiro? *Rubrica:* 3 = às pessoas;; 2 = às pessoas;; 1 = aos sistemas;; 0 = nenhuma.
+- **EX002 — Onde os ataques chegam.** Segundo Callum, ao que a maioria dos ataques contra pequenas organizações beneficentes chega primeiro? *Rubrica:* 3 = às pessoas;; 2 = às pessoas, sem justificativa;; 1 = aos sistemas;; 0 = nenhuma.
 
 - **EX003 — Causa do descumprimento.** Por que as pessoas descumprem as regras de segurança, segundo Adams e Sasse (1999)? *Rubrica:* 3 = as regras não se encaixam no seu trabalho;; 2 = encaixe;; 1 = descuido;; 0 = nenhuma.
 
@@ -157,7 +157,7 @@ O escopo pode precisar de atualização. Os voluntários podem não ler os guias
 
 - **EX020 — Risco das simulações.** Por que as simulações são arriscadas para uma organização de voluntários? *Rubrica:* 3 = o engano pode prejudicar a confiança;; 2 = confiança;; 1 = custo;; 0 = nenhuma.
 
-- **EX021 — Recomendação sobre simulações.** O que Ruth recomenda agora sobre as simulações? *Rubrica:* 3 = nenhuma por enquanto;; 2 = nenhuma;; 1 = mensais;; 0 = nenhuma.
+- **EX021 — Recomendação sobre simulações.** O que Ruth recomenda agora sobre as simulações? *Rubrica:* 3 = nenhuma por enquanto;; 2 = nenhuma;; 1 = mensais;; 0 = sem resposta.
 
 - **EX022 — Temas de isca proibidos.** Que temas de isca são proibidos se algum dia houver simulações? *Rubrica:* 3 = dinheiro, comida ou dificuldades pessoais;; 2 = dificuldades;; 1 = nada;; 0 = nenhuma.
 

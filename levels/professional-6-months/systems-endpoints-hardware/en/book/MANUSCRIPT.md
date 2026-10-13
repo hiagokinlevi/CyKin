@@ -74,11 +74,11 @@ Treating an audit finding as a checklist of settings misses the real gap, which 
 
 ### Exercises
 
-- **EX001 — Evidence gap.** Explain why "no documented standard" is a finding even if settings are good. *Rubric:* 3 = missing evidence and governance;; 2 = documentation;; 1 = none;; 0 = none.
+- **EX001 — Evidence gap.** Explain why "no documented standard" is a finding even if settings are good. *Rubric:* 3 = missing evidence and governance;; 2 = documentation;; 1 = vague;; 0 = none.
 - **EX002 — Control mapping.** Which two SP 800-53 controls match the finding? *Rubric:* 3 = CM-2 and CM-6 explained;; 2 = numbers;; 1 = wrong;; 0 = none.
-- **EX003 — Scope decisions.** Why record out-of-scope items with owners? *Rubric:* 3 = prevents assumed coverage;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX003 — Scope decisions.** Why record out-of-scope items with owners? *Rubric:* 3 = prevents assumed coverage;; 2 = clarity;; 1 = vague;; 0 = none.
 - **EX004 — Outcome wording.** Rewrite "improve hardening" as a measurable outcome. *Rubric:* 3 = specific measure and date;; 2 = measurable;; 1 = vague;; 0 = none.
-- **EX005 — Stakeholder purpose.** Why meet the finance director early? *Rubric:* 3 = insurance and budget interest;; 2 = support;; 1 = none;; 0 = none.
+- **EX005 — Stakeholder purpose.** Why meet the finance director early? *Rubric:* 3 = insurance and budget interest;; 2 = support;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -128,11 +128,11 @@ Copying a benchmark wholesale without tailoring produces a standard nobody can m
 
 ### Exercises
 
-- **EX006 — Reference choice.** Why base a standard on recognised references? *Rubric:* 3 = reviewed widely, auditor confidence, saves time;; 2 = saves time;; 1 = none;; 0 = none.
-- **EX007 — Tailoring record.** What must each tailored item record? *Rubric:* 3 = reason and compensating control;; 2 = reason;; 1 = none;; 0 = none.
-- **EX008 — Warehouse tailoring.** Describe the warehouse PC screen-lock tailoring and its compensations. *Rubric:* 3 = longer timeout, kiosk desktop, supervised location;; 2 = longer timeout;; 1 = none;; 0 = none.
+- **EX006 — Reference choice.** Why base a standard on recognised references? *Rubric:* 3 = reviewed widely, auditor confidence, saves time;; 2 = saves time;; 1 = vague;; 0 = none.
+- **EX007 — Tailoring record.** What must each tailored item record? *Rubric:* 3 = reason and compensating control;; 2 = reason;; 1 = vague;; 0 = none.
+- **EX008 — Warehouse tailoring.** Describe the warehouse PC screen-lock tailoring and its compensations. *Rubric:* 3 = longer timeout, kiosk desktop, supervised location;; 2 = longer timeout;; 1 = vague;; 0 = none.
 - **EX009 — CIS safeguard.** Which CIS safeguard asks for a secure configuration process? *Rubric:* 3 = 4.1;; 2 = Control 4;; 1 = wrong;; 0 = none.
-- **EX010 — Approval value.** Why should the operations director approve the standard? *Rubric:* 3 = business ownership;; 2 = authority;; 1 = none;; 0 = none.
+- **EX010 — Approval value.** Why should the operations director approve the standard? *Rubric:* 3 = business ownership;; 2 = authority;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -207,10 +207,10 @@ Reporting one overall percentage hides weak groups.
 ### Exercises
 
 - **EX011 — Four controls.** Name the four controls measured. *Rubric:* 3 = all four;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX012 — Denominator.** Why reconcile with the asset register first? *Rubric:* 3 = trustworthy denominator;; 2 = accuracy;; 1 = none;; 0 = none.
+- **EX012 — Denominator.** Why reconcile with the asset register first? *Rubric:* 3 = trustworthy denominator;; 2 = accuracy;; 1 = vague;; 0 = none.
 - **EX013 — Weakest cell.** What is the weakest cell and its value? *Rubric:* 3 = warehouse encryption 30%;; 2 = warehouse;; 1 = wrong;; 0 = none.
-- **EX014 — Averages.** Why avoid a single overall percentage? *Rubric:* 3 = hides weak groups;; 2 = misleading;; 1 = none;; 0 = none.
-- **EX015 — Linux view.** Summarise the Linux server position. *Rubric:* 3 = 50% baseline, 78% EDR, 72% patch;; 2 = some;; 1 = none;; 0 = none.
+- **EX014 — Averages.** Why avoid a single overall percentage? *Rubric:* 3 = hides weak groups;; 2 = misleading;; 1 = vague;; 0 = none.
+- **EX015 — Linux view.** Summarise the Linux server position. *Rubric:* 3 = 50% baseline, 78% EDR, 72% patch;; 2 = some;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -281,11 +281,11 @@ Scores give a false sense of precision if presented without the reasoning.
 
 ### Exercises
 
-- **EX016 — Top gap.** Why is admin access without MFA the top gap? *Rubric:* 3 = high likelihood and impact reaching all systems;; 2 = high score;; 1 = none;; 0 = none.
-- **EX017 — Low rank.** Why are unencrypted warehouse PCs ranked low? *Rubric:* 3 = secured building, little data;; 2 = low impact;; 1 = none;; 0 = none.
-- **EX018 — Tie breaking.** How are equal scores ordered? *Rubric:* 3 = lower effort first;; 2 = effort;; 1 = none;; 0 = none.
-- **EX019 — Precision caution.** What caution applies to these scores? *Rubric:* 3 = judgement, not precise, show reasoning;; 2 = approximate;; 1 = none;; 0 = none.
-- **EX020 — Business input.** What did the director add and why? *Rubric:* 3 = shared logons, accountability after discrepancy;; 2 = shared logons;; 1 = none;; 0 = none.
+- **EX016 — Top gap.** Why is admin access without MFA the top gap? *Rubric:* 3 = high likelihood and impact reaching all systems;; 2 = high score;; 1 = vague;; 0 = none.
+- **EX017 — Low rank.** Why are unencrypted warehouse PCs ranked low? *Rubric:* 3 = secured building, little data;; 2 = low impact;; 1 = vague;; 0 = none.
+- **EX018 — Tie breaking.** How are equal scores ordered? *Rubric:* 3 = lower effort first;; 2 = effort;; 1 = vague;; 0 = none.
+- **EX019 — Precision caution.** What caution applies to these scores? *Rubric:* 3 = judgement, not precise, show reasoning;; 2 = approximate;; 1 = vague;; 0 = none.
+- **EX020 — Business input.** What did the director add and why? *Rubric:* 3 = shared logons, accountability after discrepancy;; 2 = shared logons;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -343,11 +343,11 @@ Blocking direct admin access before the jump host works would stop urgent fixes.
 
 ### Exercises
 
-- **EX021 — Generic accounts.** Why replace generic admin accounts? *Rubric:* 3 = accountability and revocation;; 2 = accountability;; 1 = none;; 0 = none.
-- **EX022 — Jump host.** What does the jump host achieve? *Rubric:* 3 = single controlled MFA path;; 2 = MFA;; 1 = none;; 0 = none.
-- **EX023 — Root login.** Why disable root SSH sign-in? *Rubric:* 3 = forces named accounts and sudo logging;; 2 = security;; 1 = none;; 0 = none.
-- **EX024 — Time-limited rights.** Explain time-limited elevation. *Rubric:* 3 = granted temporarily with approval;; 2 = temporary;; 1 = none;; 0 = none.
-- **EX025 — Order of change.** Why build the jump host before blocking direct access? *Rubric:* 3 = avoid locking out admins;; 2 = order;; 1 = none;; 0 = none.
+- **EX021 — Generic accounts.** Why replace generic admin accounts? *Rubric:* 3 = accountability and revocation;; 2 = accountability;; 1 = vague;; 0 = none.
+- **EX022 — Jump host.** What does the jump host achieve? *Rubric:* 3 = single controlled MFA path;; 2 = MFA;; 1 = vague;; 0 = none.
+- **EX023 — Root login.** Why disable root SSH sign-in? *Rubric:* 3 = forces named accounts and sudo logging;; 2 = security;; 1 = vague;; 0 = none.
+- **EX024 — Time-limited rights.** Explain time-limited elevation. *Rubric:* 3 = granted temporarily with approval;; 2 = temporary;; 1 = vague;; 0 = none.
+- **EX025 — Order of change.** Why build the jump host before blocking direct access? *Rubric:* 3 = avoid locking out admins;; 2 = order;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -405,11 +405,11 @@ Individual sign-in that slows shift changes will be resisted; speed matters.
 
 ### Exercises
 
-- **EX026 — Shared logon problem.** What problem do shared logons create? *Rubric:* 3 = no accountability;; 2 = tracing;; 1 = none;; 0 = none.
-- **EX027 — Badge sign-in.** Why badge-based sign-in? *Rubric:* 3 = fast individual access;; 2 = speed;; 1 = none;; 0 = none.
-- **EX028 — Old PCs.** How are PCs too old for the agent handled? *Rubric:* 3 = exception and replacement;; 2 = replaced;; 1 = none;; 0 = none.
-- **EX029 — Restricted desktop.** What does the restricted desktop limit? *Rubric:* 3 = apps available;; 2 = access;; 1 = none;; 0 = none.
-- **EX030 — Encryption plan.** Why encrypt warehouse PCs on replacement? *Rubric:* 3 = low risk, hardware age;; 2 = later;; 1 = none;; 0 = none.
+- **EX026 — Shared logon problem.** What problem do shared logons create? *Rubric:* 3 = no accountability;; 2 = tracing;; 1 = vague;; 0 = none.
+- **EX027 — Badge sign-in.** Why badge-based sign-in? *Rubric:* 3 = fast individual access;; 2 = speed;; 1 = vague;; 0 = none.
+- **EX028 — Old PCs.** How are PCs too old for the agent handled? *Rubric:* 3 = exception and replacement;; 2 = replaced;; 1 = vague;; 0 = none.
+- **EX029 — Restricted desktop.** What does the restricted desktop limit? *Rubric:* 3 = apps available;; 2 = access;; 1 = vague;; 0 = none.
+- **EX030 — Encryption plan.** Why encrypt warehouse PCs on replacement? *Rubric:* 3 = low risk, hardware age;; 2 = later;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -467,11 +467,11 @@ Manual changes outside the tool are overwritten, so everyone must use it.
 
 ### Exercises
 
-- **EX031 — Code benefits.** Why define settings in configuration code? *Rubric:* 3 = consistent, repeatable, reviewable;; 2 = consistent;; 1 = none;; 0 = none.
-- **EX032 — Test copy.** Why test on a copy first? *Rubric:* 3 = avoid outages;; 2 = safety;; 1 = none;; 0 = none.
-- **EX033 — Result.** State the Linux compliance change. *Rubric:* 3 = 50 to 89;; 2 = one;; 1 = none;; 0 = none.
-- **EX034 — Vendor exception.** How is the vendor library exception handled? *Rubric:* 3 = isolation, review date;; 2 = recorded;; 1 = none;; 0 = none.
-- **EX035 — Manual changes.** What happens to manual changes? *Rubric:* 3 = overwritten;; 2 = lost;; 1 = none;; 0 = none.
+- **EX031 — Code benefits.** Why define settings in configuration code? *Rubric:* 3 = consistent, repeatable, reviewable;; 2 = consistent;; 1 = vague;; 0 = none.
+- **EX032 — Test copy.** Why test on a copy first? *Rubric:* 3 = avoid outages;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX033 — Result.** State the Linux compliance change. *Rubric:* 3 = 50 to 89;; 2 = one;; 1 = vague;; 0 = none.
+- **EX034 — Vendor exception.** How is the vendor library exception handled? *Rubric:* 3 = isolation, review date;; 2 = recorded;; 1 = vague;; 0 = none.
+- **EX035 — Manual changes.** What happens to manual changes? *Rubric:* 3 = overwritten;; 2 = lost;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -539,11 +539,11 @@ Targets without exception handling force unsafe rushed changes.
 
 ### Exercises
 
-- **EX036 — Exploited flaws.** Why a shorter target for exploited flaws? *Rubric:* 3 = active risk;; 2 = urgency;; 1 = none;; 0 = none.
-- **EX037 — KEV.** What is the KEV catalogue used for? *Rubric:* 3 = identifying exploited flaws;; 2 = list;; 1 = none;; 0 = none.
-- **EX038 — Field laptops.** How was the field laptop tail fixed? *Rubric:* 3 = cloud update management;; 2 = updates;; 1 = none;; 0 = none.
-- **EX039 — Report fields.** Name two report figures. *Rubric:* 3 = percent and oldest;; 2 = one;; 1 = none;; 0 = none.
-- **EX040 — Result.** State the laptop change. *Rubric:* 3 = 84 to 95;; 2 = one;; 1 = none;; 0 = none.
+- **EX036 — Exploited flaws.** Why a shorter target for exploited flaws? *Rubric:* 3 = active risk;; 2 = urgency;; 1 = vague;; 0 = none.
+- **EX037 — KEV.** What is the KEV catalogue used for? *Rubric:* 3 = identifying exploited flaws;; 2 = list;; 1 = vague;; 0 = none.
+- **EX038 — Field laptops.** How was the field laptop tail fixed? *Rubric:* 3 = cloud update management;; 2 = updates;; 1 = vague;; 0 = none.
+- **EX039 — Report fields.** Name two report figures. *Rubric:* 3 = percent and oldest;; 2 = one;; 1 = vague;; 0 = none.
+- **EX040 — Result.** State the laptop change. *Rubric:* 3 = 84 to 95;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -612,8 +612,8 @@ Exceptions without expiry become permanent.
 - **EX041 — Fields.** List six register fields. *Rubric:* 3 = six;; 2 = five;; 1 = fewer;; 0 = none.
 - **EX042 — Approver.** Who approves exceptions? *Rubric:* 3 = business owner;; 2 = manager;; 1 = IT;; 0 = none.
 - **EX043 — Review outcomes.** Name three review outcomes. *Rubric:* 3 = renew, close, escalate;; 2 = two;; 1 = one;; 0 = none.
-- **EX044 — Expiry.** Why must exceptions expire? *Rubric:* 3 = prevent permanence;; 2 = review;; 1 = none;; 0 = none.
-- **EX045 — Month six.** How many exceptions at month six? *Rubric:* 3 = twelve in date;; 2 = twelve;; 1 = none;; 0 = none.
+- **EX044 — Expiry.** Why must exceptions expire? *Rubric:* 3 = prevent permanence;; 2 = review;; 1 = vague;; 0 = none.
+- **EX045 — Month six.** How many exceptions at month six? *Rubric:* 3 = twelve in date;; 2 = twelve;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -680,10 +680,10 @@ Overstated answers can void cover.
 ### Exercises
 
 - **EX046 — Pack contents.** List five pack items. *Rubric:* 3 = five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX047 — Overstating.** Why avoid overstating answers? *Rubric:* 3 = void cover;; 2 = trust;; 1 = none;; 0 = none.
+- **EX047 — Overstating.** Why avoid overstating answers? *Rubric:* 3 = void cover;; 2 = trust;; 1 = vague;; 0 = none.
 - **EX048 — Gap disclosure.** How should gaps be presented? *Rubric:* 3 = with plans;; 2 = listed;; 1 = hidden;; 0 = none.
 - **EX049 — Maintenance.** How often update the pack? *Rubric:* 3 = monthly;; 2 = regularly;; 1 = never;; 0 = none.
-- **EX050 — Outcome.** What was the insurance outcome? *Rubric:* 3 = smaller increase;; 2 = accepted;; 1 = none;; 0 = none.
+- **EX050 — Outcome.** What was the insurance outcome? *Rubric:* 3 = smaller increase;; 2 = accepted;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -757,11 +757,11 @@ Without routines, coverage drifts back.
 
 ### Exercises
 
-- **EX051 — Results.** State two results. *Rubric:* 3 = correct;; 2 = one;; 1 = none;; 0 = none.
+- **EX051 — Results.** State two results. *Rubric:* 3 = correct;; 2 = one;; 1 = vague;; 0 = none.
 - **EX052 — Routines.** List three routines. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
-- **EX053 — Ownership.** Why named owners? *Rubric:* 3 = accountability;; 2 = clarity;; 1 = none;; 0 = none.
-- **EX054 — Limits.** Name one limit. *Rubric:* 3 = specific;; 2 = vague;; 1 = none;; 0 = none.
-- **EX055 — Drift.** What happens without routines? *Rubric:* 3 = drift;; 2 = decline;; 1 = none;; 0 = none.
+- **EX053 — Ownership.** Why named owners? *Rubric:* 3 = accountability;; 2 = clarity;; 1 = vague;; 0 = none.
+- **EX054 — Limits.** Name one limit. *Rubric:* 3 = specific;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX055 — Drift.** What happens without routines? *Rubric:* 3 = drift;; 2 = decline;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -831,11 +831,11 @@ Lessons not written down are lost.
 
 ### Exercises
 
-- **EX056 — Key lesson.** State the main lesson. *Rubric:* 3 = evidence plus settings;; 2 = stated;; 1 = none;; 0 = none.
-- **EX057 — Next scope.** What comes next? *Rubric:* 3 = phones and scanners;; 2 = phones;; 1 = none;; 0 = none.
-- **EX058 — Tailoring lesson.** Why does tailoring matter? *Rubric:* 3 = workable standards;; 2 = practical;; 1 = none;; 0 = none.
-- **EX059 — Sharing.** Why share lessons? *Rubric:* 3 = help peers;; 2 = useful;; 1 = none;; 0 = none.
-- **EX060 — Pattern.** Where else could the pattern apply? *Rubric:* 3 = another area;; 2 = vague;; 1 = none;; 0 = none.
+- **EX056 — Key lesson.** State the main lesson. *Rubric:* 3 = evidence plus settings;; 2 = stated;; 1 = vague;; 0 = none.
+- **EX057 — Next scope.** What comes next? *Rubric:* 3 = phones and scanners;; 2 = phones;; 1 = vague;; 0 = none.
+- **EX058 — Tailoring lesson.** Why does tailoring matter? *Rubric:* 3 = workable standards;; 2 = practical;; 1 = vague;; 0 = none.
+- **EX059 — Sharing.** Why share lessons? *Rubric:* 3 = help peers;; 2 = useful;; 1 = vague;; 0 = none.
+- **EX060 — Pattern.** Where else could the pattern apply? *Rubric:* 3 = another area;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 
 ### Synthesis
 

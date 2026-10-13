@@ -141,7 +141,7 @@ A cifração em repouso não protege os dados em uso por uma aplicação comprom
 
 - **EX005 — Dados em uso.** O que protege principalmente os dados em uso? *Rubrica:* 3 = controle de acesso e isolamento do sistema operacional, já que os dados estão decifrados na memória;; 2 = controle de acesso;; 1 = cifração;; 0 = nenhuma.
 
-- **EX006 — Lacuna dos backups.** Que lacuna Priya encontrou, e o que ela recomendou? *Rubrica:* 3 = fitas de backup não cifradas; cifrar com chaves do consórcio e fazer backup das chaves;; 2 = lacuna;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Lacuna dos backups.** Que lacuna Priya encontrou, e o que ela recomendou? *Rubrica:* 3 = fitas de backup não cifradas; cifrar com chaves do consórcio e fazer backup das chaves;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -813,7 +813,7 @@ Camadas que compartilham uma fraqueza, como uma única conta de administrador qu
 
 ### Exercícios
 
-- **EX046 — Fronteira de confiança.** Cite duas fronteiras de confiança na arquitetura da Tidewell. *Rubrica:* 3 = duas entre internet-portal, portal-banco de dados, consórcio-provedor;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Fronteira de confiança.** Cite duas fronteiras de confiança na arquitetura da Tidewell. *Rubrica:* 3 = duas entre internet-portal, portal-banco de dados, consórcio-provedor;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX047 — Bug no portal.** O que um atacante ainda enfrentaria depois de explorar um bug no portal? *Rubrica:* 3 = as permissões do banco de dados e a cifração dos campos;; 2 = uma camada;; 1 = nada;; 0 = nenhuma.
 
@@ -973,7 +973,7 @@ Confiar em muitas raízes amplia o risco. As assinaturas provam a aprovação de
 
 - **EX055 — Quatro serviços.** Cite quatro tipos de serviço de confiança. *Rubrica:* 3 = autoridades certificadoras, carimbo de tempo, serviços de assinatura, gerenciamento de chaves;; 2 = três;; 1 = um;; 0 = nenhuma.
 
-- **EX056 — Fraqueza das raízes.** Qual é a principal fraqueza da confiança delegada? *Rubrica:* 3 = qualquer raiz confiável pode emitir para qualquer nome, então uma autoridade ruim mina todas;; 2 = qualquer raiz;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Fraqueza das raízes.** Qual é a principal fraqueza da confiança delegada? *Rubrica:* 3 = qualquer raiz confiável pode emitir para qualquer nome, então uma autoridade ruim mina todas;; 2 = qualquer raiz;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Mal-entendido do contrato.** O que a equipe entendeu mal sobre o PDF assinado? *Rubrica:* 3 = supôs que a assinatura cobria os termos de um anexo não assinado;; 2 = cobertura;; 1 = nada;; 0 = nenhuma.
 
@@ -1185,7 +1185,7 @@ Controles sem evidências falham nas auditorias. O controle duplo se desgasta se
 
 - **EX071 — Exemplo de controle duplo.** Dê um controle duplo que Priya aplicou. *Rubrica:* 3 = restaurar as chaves de backup exige dois administradores;; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
 
-- **EX072 — Lacuna da auditoria.** Que lacuna a auditoria encontrou, e como foi corrigida? *Rubrica:* 3 = evidências no e-mail pessoal; transferidas para armazenamento compartilhado com controle de acesso;; 2 = lacuna;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Lacuna da auditoria.** Que lacuna a auditoria encontrou, e como foi corrigida? *Rubrica:* 3 = evidências no e-mail pessoal; transferidas para armazenamento compartilhado com controle de acesso;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1227,7 +1227,7 @@ Códigos de exemplo muitas vezes contêm chaves ou nonces fixos para demonstraç
 
 - **EX074 — Bug do nonce.** Que bug os testes revelaram? *Rubrica:* 3 = um nonce fixo copiado de um trecho de exemplo, tornando idênticas as cifrações repetidas;; 2 = nonce fixo;; 1 = nenhum;; 0 = nenhuma.
 
-- **EX075 — Limitações do relatório.** Cite uma limitação do relatório. *Rubrica:* 3 = transferência manual da chave ou falta de revisão de canais laterais;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX075 — Limitações do relatório.** Cite uma limitação do relatório. *Rubrica:* 3 = transferência manual da chave ou falta de revisão de canais laterais;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1592,7 +1592,7 @@ Amostras pequenas dão estimativas instáveis. Contextos simulados podem não re
 
 - **EX098 — Redação cuidadosa.** Como Priya descreve o efeito? *Rubrica:* 3 = associado a menos pessoas prosseguindo nesta simulação, e não "funciona";; 2 = cuidadosa;; 1 = "funciona";; 0 = nenhuma.
 
-- **EX099 — Ameaça à validade.** Cite duas ameaças à validade. *Rubrica:* 3 = duas entre adivinhar o propósito, simulação versus pressão real, amostra pequena, único consórcio;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX099 — Ameaça à validade.** Cite duas ameaças à validade. *Rubrica:* 3 = duas entre adivinhar o propósito, simulação versus pressão real, amostra pequena, único consórcio;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1676,7 +1676,7 @@ Varrer além dos hosts autorizados não é permitido, nem mesmo com bons propós
 
 - **EX104 — Fora do escopo.** O que está fora do escopo? *Rubrica:* 3 = as chaves de segurança da equipe e as chaves mantidas por fornecedores;; 2 = uma;; 1 = nada;; 0 = nenhuma.
 
-- **EX105 — Medida acrescentada.** Que mudança o Dr. Echeverría exigiu? *Rubrica:* 3 = acrescentar uma medida de alertas falsos;; 2 = alertas falsos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX105 — Medida acrescentada.** Que mudança o Dr. Echeverría exigiu? *Rubrica:* 3 = acrescentar uma medida de alertas falsos;; 2 = alertas falsos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1716,7 +1716,7 @@ Uma ajuda pessoal bem-intencionada pode expor os dados dos participantes. As dem
 
 - **EX106 — Demonstração com dados.** Por que usar dados para gerar uma frase-senha nas oficinas? *Rubrica:* 3 = mostra que as escolhas aleatórias são mais fortes do que as escolhidas;; 2 = aleatoriedade;; 1 = diversão;; 0 = nenhuma.
 
-- **EX107 — Revisão da oficina.** Como Priya revisou a oficina? *Rubrica:* 3 = mais tempo para os gerenciadores de senhas, com base no retorno;; 2 = retorno;; 1 = nenhuma;; 0 = nenhuma.
+- **EX107 — Revisão da oficina.** Como Priya revisou a oficina? *Rubrica:* 3 = mais tempo para os gerenciadores de senhas, com base no retorno;; 2 = retorno;; 1 = vago;; 0 = nenhuma.
 
 - **EX108 — Limite.** Como ela respondeu aos pedidos para consertar contas pessoais? *Rubrica:* 3 = explicou os limites, indicou a recuperação oficial e os encaminhamentos, nunca pediu senhas;; 2 = limite;; 1 = consertou;; 0 = nenhuma.
 
@@ -1760,7 +1760,7 @@ Evidências amplamente repetidas não são necessariamente fortes. Dados locais 
 
 - **EX110 — Peso dos fornecedores.** Por que os relatórios de fornecedores receberam pouco peso? *Rubrica:* 3 = não dão o método e podem ter conflitos de interesse;; 2 = sem método;; 1 = peso alto;; 0 = nenhuma.
 
-- **EX111 — Ressalva da síntese.** Que ressalva a síntese inclui sobre a automação? *Rubrica:* 3 = a automação introduz modos de falha silenciosos que exigem monitoramento;; 2 = falhas silenciosas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX111 — Ressalva da síntese.** Que ressalva a síntese inclui sobre a automação? *Rubrica:* 3 = a automação introduz modos de falha silenciosos que exigem monitoramento;; 2 = falhas silenciosas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

@@ -125,11 +125,11 @@ Testing a system without its owner's written permission can be unlawful even if 
 - **EX017 — Permission signer.** Who must sign alongside Elena? *Rubric:* 3 = the vendor, who owns the environment;; 2 = vendor;; 1 = a customer;; 0 = none.
 - **EX018 — Out-of-scope finding.** What should the contractor do with out-of-scope discoveries? *Rubric:* 3 = stop and report;; 2 = report;; 1 = investigate;; 0 = none.
 - **EX019 — Unpermitted testing.** Why avoid testing without permission? *Rubric:* 3 = it can be unlawful even with good intent;; 2 = unlawful;; 1 = slow;; 0 = none.
-- **EX020 — Fix confirmation.** What clause does Elena add? *Rubric:* 3 = vendor confirms fixes in writing;; 2 = written fix confirmation;; 1 = none;; 0 = none.
+- **EX020 — Fix confirmation.** What clause does Elena add? *Rubric:* 3 = vendor confirms fixes in writing;; 2 = written fix confirmation;; 1 = vague;; 0 = none.
 - **EX021 — Test data.** What data is used in testing? *Rubric:* 3 = synthetic customers and points with no value;; 2 = synthetic;; 1 = real customers;; 0 = none.
 - **EX022 — Key separation.** How are test keys handled? *Rubric:* 3 = separate from real keys and clearly labelled;; 2 = labelled;; 1 = shared;; 0 = none.
 - **EX023 — Report style.** How are weaknesses described in reports? *Rubric:* 3 = in general terms without misusable steps;; 2 = general;; 1 = full instructions;; 0 = none.
-- **EX024 — Contractor log.** What record does the contractor keep? *Rubric:* 3 = a log of what he did and when;; 2 = activity log;; 1 = none;; 0 = none.
+- **EX024 — Contractor log.** What record does the contractor keep? *Rubric:* 3 = a log of what he did and when;; 2 = activity log;; 1 = vague;; 0 = none.
 - **EX025 — Maturity test.** What does asking about safe practice reveal? *Rubric:* 3 = the vendor's or contractor's maturity;; 2 = maturity;; 1 = price;; 0 = none.
 - **EX026 — Findings storage.** Where are findings stored? *Rubric:* 3 = a restricted folder;; 2 = restricted;; 1 = public drive;; 0 = none.
 
@@ -179,7 +179,7 @@ Accepting a vendor's full control of points and nodes without an exit plan leave
 - **EX030 — Off-ledger data.** What stays off the ledger? *Rubric:* 3 = names, emails and purchase details;; 2 = personal data;; 1 = balances;; 0 = none.
 - **EX031 — Linkage remedy.** What does the vendor offer against linkage? *Rubric:* 3 = a new address on request;; 2 = new address;; 1 = nothing;; 0 = none.
 - **EX032 — Deletion reason.** Why keep personal data off the ledger? *Rubric:* 3 = so it can be corrected or deleted under privacy law;; 2 = deletable;; 1 = cost;; 0 = none.
-- **EX033 — Exit requirement.** What exit protections does Elena ask for? *Rubric:* 3 = a monthly balance export and contractual exit plan;; 2 = export and exit plan;; 1 = none;; 0 = none.
+- **EX033 — Exit requirement.** What exit protections does Elena ask for? *Rubric:* 3 = a monthly balance export and contractual exit plan;; 2 = export and exit plan;; 1 = vague;; 0 = none.
 - **EX034 — Compiler question.** What does she ask about the compiler? *Rubric:* 3 = its version and review history;; 2 = version;; 1 = its price;; 0 = none.
 - **EX035 — Dependency example.** Name one dependency of the system. *Rubric:* 3 = the wallet app;; 2 = the cloud provider;; 1 = the coffee supplier;; 0 = none.
 - **EX036 — Wallet location.** Where do customers hold their points? *Rubric:* 3 = in app wallets;; 2 = wallets;; 1 = on paper;; 0 = none.
@@ -270,7 +270,7 @@ Reading a checklist percentage without weighting gaps can hide the most serious 
 - **EX045 — Pilot scope.** What pilot does Elena approve? *Rubric:* 3 = three months in one café;; 2 = one café;; 1 = all cafés now;; 0 = none.
 - **EX046 — Pilot condition.** Name one pilot condition. *Rubric:* 3 = gaps fixed and verified by the contractor;; 2 = exit plan in contract;; 1 = free coffee;; 0 = none.
 - **EX047 — Decision note.** What does the decision note state? *Rubric:* 3 = benefits, remaining risks and a review date;; 2 = risks and review;; 1 = only benefits;; 0 = none.
-- **EX048 — Monthly check.** What monthly check does Elena add? *Rubric:* 3 = compare points with purchases and review privileged events;; 2 = reconciliation;; 1 = none;; 0 = none.
+- **EX048 — Monthly check.** What monthly check does Elena add? *Rubric:* 3 = compare points with purchases and review privileged events;; 2 = reconciliation;; 1 = vague;; 0 = none.
 - **EX049 — Coach praise.** Why does Mr Otieno praise the decision? *Rubric:* 3 = proportionate and evidence-based;; 2 = evidence;; 1 = it was fast;; 0 = none.
 - **EX050 — Verification owner.** Who verifies the vendor's fixes? *Rubric:* 3 = the café's IT contractor;; 2 = contractor;; 1 = the vendor itself;; 0 = none.
 

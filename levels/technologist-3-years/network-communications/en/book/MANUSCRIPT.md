@@ -312,7 +312,7 @@ Separating physical networks while leaving virtual machines on one virtual segme
 ### Exercises
 
 - **EX016 — Virtualisation risk.** Why must virtualisation host management be strongly protected? *Rubric:* 3 = controls all VMs on the host;; 2 = control;; 1 = slow;; 0 = none.
-- **EX017 — Virtual segment finding.** What risk does sharing a segment with the web server create for finance? *Rubric:* 3 = compromised web server could reach finance directly;; 2 = direct access;; 1 = none;; 0 = none.
+- **EX017 — Virtual segment finding.** What risk does sharing a segment with the web server create for finance? *Rubric:* 3 = compromised web server could reach finance directly;; 2 = direct access;; 1 = vague;; 0 = none.
 - **EX018 — Lab isolation.** Why keep the practice lab disconnected from other networks? *Rubric:* 3 = avoid disruption and agreement breaches;; 2 = safety;; 1 = speed;; 0 = none.
 
 ### Synthesis
@@ -407,9 +407,9 @@ Designs too complex for the available staff are quietly simplified in unsafe way
 
 ### Exercises
 
-- **EX022 — Student to admin flows.** How many flows are allowed from students to administration? *Rubric:* 3 = none; all denied by default;; 2 = none;; 1 = some;; 0 = none.
+- **EX022 — Student to admin flows.** How many flows are allowed from students to administration? *Rubric:* 3 = none; all denied by default;; 2 = none;; 1 = some;; 0 = no answer.
 - **EX023 — Telnet risk.** Why replace Telnet on switches? *Rubric:* 3 = sends passwords in clear text;; 2 = unencrypted;; 1 = old;; 0 = none.
-- **EX024 — Simplicity reason.** Which design principle supports keeping the school design simple? *Rubric:* 3 = economy of mechanism (Saltzer and Schroeder);; 2 = simplicity;; 1 = none;; 0 = none.
+- **EX024 — Simplicity reason.** Which design principle supports keeping the school design simple? *Rubric:* 3 = economy of mechanism (Saltzer and Schroeder);; 2 = simplicity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -507,7 +507,7 @@ Starting technical work before agreeing boundaries risks well-meant actions that
 
 - **EX028 — Zero trust idea adopted.** Which zero trust idea does Tomás adopt for the school? *Rubric:* 3 = reduce implicit trust between internal groups;; 2 = internal checks;; 1 = full zero trust;; 0 = none.
 - **EX029 — Exam periods.** Why does the placement plan avoid exam periods? *Rubric:* 3 = changes could disrupt exams;; 2 = disruption;; 1 = holidays;; 0 = none.
-- **EX030 — Placement boundary.** Name one activity Tomás may not do alone. *Rubric:* 3 = make changes, access student data or run tools without approval;; 2 = one;; 1 = none;; 0 = none.
+- **EX030 — Placement boundary.** Name one activity Tomás may not do alone. *Rubric:* 3 = make changes, access student data or run tools without approval;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -725,7 +725,7 @@ Tests that only check permitted flows miss rules that allow too much.
 
 - **EX040 — Migration order.** Which zone is created first, and why? *Rubric:* 3 = management, so network devices are protected and reachable for later steps;; 2 = management;; 1 = students;; 0 = none.
 - **EX041 — R1 test design.** Describe a test for R1. *Rubric:* 3 = student test device to admin/management fails, learning platform succeeds;; 2 = attempt;; 1 = vague;; 0 = none.
-- **EX042 — Projector timing.** Why test projectors before term starts? *Rubric:* 3 = failures disrupt first lessons;; 2 = disruption;; 1 = none;; 0 = none.
+- **EX042 — Projector timing.** Why test projectors before term starts? *Rubric:* 3 = failures disrupt first lessons;; 2 = disruption;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -795,7 +795,7 @@ Removing services without checking their users can break needed functions.
 ### Exercises
 
 - **EX043 — Comparison result.** What does the comparison report? *Rubric:* 3 = 4 unapproved, 0 missing, naming them;; 2 = 4 unapproved;; 1 = some;; 0 = none.
-- **EX044 — Kept exception.** Which unapproved service is kept, and how? *Rubric:* 3 = raw printing port restricted to shared devices zone with review date;; 2 = printing port;; 1 = none;; 0 = none.
+- **EX044 — Kept exception.** Which unapproved service is kept, and how? *Rubric:* 3 = raw printing port restricted to shared devices zone with review date;; 2 = printing port;; 1 = vague;; 0 = none.
 - **EX045 — Data source.** Where do observed services come from in this lab? *Rubric:* 3 = systems' own management data, authorised, not scanning;; 2 = exports;; 1 = scanning;; 0 = none.
 
 ### Synthesis
@@ -892,7 +892,7 @@ Adding tools without maintenance plans creates new weaknesses and silent failure
 
 - **EX049 — Tool selection questions.** List three questions for choosing a tool. *Rubric:* 3 = problem solved, can technician run it, cost or support;; 2 = two;; 1 = one;; 0 = none.
 - **EX050 — No scanning.** How does Tomás obtain service data without scanning? *Rubric:* 3 = exports from systems with authorisation;; 2 = exports;; 1 = scans;; 0 = none.
-- **EX051 — Silent collector risk.** Why is a silent log collector dangerous? *Rubric:* 3 = people believe they have evidence they lack;; 2 = false confidence;; 1 = none;; 0 = none.
+- **EX051 — Silent collector risk.** Why is a silent log collector dangerous? *Rubric:* 3 = people believe they have evidence they lack;; 2 = false confidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1260,7 +1260,7 @@ Small samples of tickets can show large changes by chance.
 
 ### Exercises
 
-- **EX067 — Reachability change.** How did reachable zone pairs change? *Rubric:* 3 = thirty to fourteen needed flows;; 2 = reduced;; 1 = none;; 0 = none.
+- **EX067 — Reachability change.** How did reachable zone pairs change? *Rubric:* 3 = thirty to fourteen needed flows;; 2 = reduced;; 1 = vague;; 0 = none.
 - **EX068 — Median change.** What was the median resolution change? *Rubric:* 3 = 92.5 to 47.5 minutes, −48.6%;; 2 = about half;; 1 = some;; 0 = none.
 - **EX069 — Median reason.** Why use the median for ticket times? *Rubric:* 3 = one long ticket distorts mean;; 2 = skew;; 1 = easier;; 0 = none.
 
@@ -1309,7 +1309,7 @@ Studies of people's work without consent and clear purpose damage trust.
 ### Exercises
 
 - **EX070 — Study measure.** What does the study measure? *Rubric:* 3 = time from alert to closure;; 2 = handling time;; 1 = alerts;; 0 = none.
-- **EX071 — Alternative explanation check.** Name one alternative explanation Tomás checked. *Rubric:* 3 = simpler alerts or lower workload;; 2 = one;; 1 = none;; 0 = none.
+- **EX071 — Alternative explanation check.** Name one alternative explanation Tomás checked. *Rubric:* 3 = simpler alerts or lower workload;; 2 = one;; 1 = vague;; 0 = none.
 - **EX072 — Consent framing.** How was the study framed to Gareth? *Rubric:* 3 = evaluates process, not performance;; 2 = process;; 1 = performance;; 0 = none.
 
 ### Synthesis
@@ -1356,7 +1356,7 @@ Copying a design from one organisation to another without adapting it to staff a
 
 ### Exercises
 
-- **EX073 — Placeholder rule.** What did Tomás find in peer review? *Rubric:* 3 = provider remote access to every zone;; 2 = broad rule;; 1 = none;; 0 = none.
+- **EX073 — Placeholder rule.** What did Tomás find in peer review? *Rubric:* 3 = provider remote access to every zone;; 2 = broad rule;; 1 = vague;; 0 = none.
 - **EX074 — Fewer zones reason.** Why does the primary school design use four zones? *Rubric:* 3 = no technician, simpler to run;; 2 = simpler;; 1 = cheaper;; 0 = none.
 - **EX075 — Everyone reviews.** Why does everyone review everything despite divided roles? *Rubric:* 3 = shared knowledge, pieces fit;; 2 = sharing;; 1 = slow;; 0 = none.
 
@@ -1406,7 +1406,7 @@ Runbooks never tested by someone else often contain steps only the author unders
 
 - **EX076 — Runbook test.** How were runbooks tested? *Rubric:* 3 = another student followed them unaided in lab;; 2 = followed;; 1 = reviewed;; 0 = none.
 - **EX077 — Weekly routine items.** List three weekly routine items. *Rubric:* 3 = alerts, drift report, log arrival or certificates;; 2 = two;; 1 = one;; 0 = none.
-- **EX078 — Open item.** Name one open item at handover. *Rubric:* 3 = replace old printers or review DNS exclusion;; 2 = one;; 1 = none;; 0 = none.
+- **EX078 — Open item.** Name one open item at handover. *Rubric:* 3 = replace old printers or review DNS exclusion;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1453,7 +1453,7 @@ Temporary exceptions without end dates become permanent weaknesses.
 ### Exercises
 
 - **EX079 — Old laptops.** How were older laptops handled? *Rubric:* 3 = temporary restricted network with end date;; 2 = temporary;; 1 = excluded;; 0 = none.
-- **EX080 — Validation finding.** What did validation find for remote access? *Rubric:* 3 = shared folder missing from VPN allowed list;; 2 = folder;; 1 = none;; 0 = none.
+- **EX080 — Validation finding.** What did validation find for remote access? *Rubric:* 3 = shared folder missing from VPN allowed list;; 2 = folder;; 1 = vague;; 0 = none.
 - **EX081 — Operational check.** Why recheck requirements during term? *Rubric:* 3 = holiday tests miss full-use behaviour;; 2 = real use;; 1 = unnecessary;; 0 = none.
 
 ### Synthesis
@@ -1501,7 +1501,7 @@ Students on placement acting alone in incidents can breach agreements and harm t
 ### Exercises
 
 - **EX082 — Incident detection.** How was the infected laptop noticed? *Rubric:* 3 = repeated denies and DNS lookups of new domain;; 2 = alerts;; 1 = complaint;; 0 = none.
-- **EX083 — Runbook update.** What was added to the runbook after the incident? *Rubric:* 3 = contact safeguarding lead for student devices;; 2 = safeguarding;; 1 = none;; 0 = none.
+- **EX083 — Runbook update.** What was added to the runbook after the incident? *Rubric:* 3 = contact safeguarding lead for student devices;; 2 = safeguarding;; 1 = vague;; 0 = none.
 - **EX084 — Tomás's role.** What did Tomás do during the incident? *Rubric:* 3 = searched logs and drafted note under supervision;; 2 = assisted;; 1 = led;; 0 = none.
 
 ### Synthesis
@@ -1596,9 +1596,9 @@ Claiming broad benefits from a few weeks' use overstates a tool's value.
 
 ### Exercises
 
-- **EX088 — Absence plan.** How does the health pack handle Gareth's absence? *Rubric:* 3 = summary to head teacher, support contract;; 2 = shared;; 1 = none;; 0 = none.
-- **EX089 — Measured value.** Give two measured benefits after six weeks. *Rubric:* 3 = review 30 to 20 minutes, one logging failure caught;; 2 = one;; 1 = none;; 0 = none.
-- **EX090 — Maintainability criterion.** Why is maintainability important in small organisations? *Rubric:* 3 = tool understood only by author becomes a liability;; 2 = few staff;; 1 = none;; 0 = none.
+- **EX088 — Absence plan.** How does the health pack handle Gareth's absence? *Rubric:* 3 = summary to head teacher, support contract;; 2 = shared;; 1 = vague;; 0 = none.
+- **EX089 — Measured value.** Give two measured benefits after six weeks. *Rubric:* 3 = review 30 to 20 minutes, one logging failure caught;; 2 = one;; 1 = vague;; 0 = none.
+- **EX090 — Maintainability criterion.** Why is maintainability important in small organisations? *Rubric:* 3 = tool understood only by author becomes a liability;; 2 = few staff;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -81,8 +81,8 @@ A diagram simplifies; real sites often hide extra parts such as scheduled tasks 
 
 - **EX001 — Site parts.** List the main parts of a hosted customer site. *Rubric:* 3 = server, web server, application, database, plugins; 2 = three; 1 = one; 0 = none.
 - **EX002 — Pinecrest's share.** What is Pinecrest responsible for? *Rubric:* 3 = servers, OS updates, control panel; 2 = two; 1 = one; 0 = none.
-- **EX003 — Support's share.** Why do support staff's installation steps matter? *Rubric:* 3 = they take on part of responsibility for plugins; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Unverified box.** Which box in Tomás's drawing was marked unverified? *Rubric:* 3 = the resize plugin from a mirror; 2 = partial; 1 = none; 0 = none.
+- **EX003 — Support's share.** Why do support staff's installation steps matter? *Rubric:* 3 = they take on part of responsibility for plugins; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Unverified box.** Which box in Tomás's drawing was marked unverified? *Rubric:* 3 = the resize plugin from a mirror; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -142,8 +142,8 @@ A redirect can also come from DNS or caching changes; check those too before con
 
 - **EX005 — Connection steps.** What steps happen before an HTTPS page loads? *Rubric:* 3 = DNS, connect 443, certificate check, encrypted requests; 2 = three; 1 = one; 0 = none.
 - **EX006 — Status codes.** What do 302, 401 and 500 mean? *Rubric:* 3 = redirect, needs sign-in, server error; 2 = two; 1 = one; 0 = none.
-- **EX007 — Unexpected redirect.** Why are unexpected redirects investigated? *Rubric:* 3 = usually mean site was changed; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Narrowing.** How did screenshots narrow the Ferncroft problem? *Rubric:* 3 = only image page redirected; resize plugin; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Unexpected redirect.** Why are unexpected redirects investigated? *Rubric:* 3 = usually mean site was changed; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Narrowing.** How did screenshots narrow the Ferncroft problem? *Rubric:* 3 = only image page redirected; resize plugin; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -201,10 +201,10 @@ Correct permissions limit damage but do not fix a flawed plugin.
 
 ### Exercises
 
-- **EX009 — Site isolation.** How are customer sites kept apart? *Rubric:* 3 = own OS user each; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Writable code.** Why should code not be writable by the web server? *Rubric:* 3 = a flaw could write changed code; 2 = partial; 1 = none; 0 = none.
-- **EX011 — Support access.** How is support access limited? *Rubric:* 3 = temporary, per open ticket; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Ferncroft permission.** What permission problem was found? *Rubric:* 3 = plugin folder writable by web server; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Site isolation.** How are customer sites kept apart? *Rubric:* 3 = own OS user each; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Writable code.** Why should code not be writable by the web server? *Rubric:* 3 = a flaw could write changed code; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — Support access.** How is support access limited? *Rubric:* 3 = temporary, per open ticket; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Ferncroft permission.** What permission problem was found? *Rubric:* 3 = plugin folder writable by web server; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -287,10 +287,10 @@ A matching hash proves the file is the released one, not that the release is fre
 
 ### Exercises
 
-- **EX013 — Lab result.** Which file failed and what does the lab advise? *Rubric:* 3 = mirror zip; do not install; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Hash source.** Why must the hash come from a trusted source? *Rubric:* 3 = attacker could change both; 2 = partial; 1 = none; 0 = none.
-- **EX015 — What a match proves.** What does a matching hash prove? *Rubric:* 3 = file is the released one, not flawless; 2 = partial; 1 = none; 0 = none.
-- **EX016 — New step.** What did Grace add to the ticket? *Rubric:* 3 = hash source and computed hash fields; 2 = partial; 1 = none; 0 = none.
+- **EX013 — Lab result.** Which file failed and what does the lab advise? *Rubric:* 3 = mirror zip; do not install; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Hash source.** Why must the hash come from a trusted source? *Rubric:* 3 = attacker could change both; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — What a match proves.** What does a matching hash prove? *Rubric:* 3 = file is the released one, not flawless; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — New step.** What did Grace add to the ticket? *Rubric:* 3 = hash source and computed hash fields; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -354,8 +354,8 @@ Changing a system before copying evidence can destroy the facts needed later.
 
 - **EX017 — Scope parts.** What defines a task's scope? *Rubric:* 3 = customer, systems, allowed actions; 2 = two; 1 = one; 0 = none.
 - **EX018 — Evidence note.** What does each evidence note record? *Rubric:* 3 = what, who, when, hash; 2 = three; 1 = one; 0 = none.
-- **EX019 — Beyond scope.** What is needed to look at another site? *Rubric:* 3 = new ticket and approval; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Before changing.** Why copy evidence before changing anything? *Rubric:* 3 = changes can destroy facts; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Beyond scope.** What is needed to look at another site? *Rubric:* 3 = new ticket and approval; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Before changing.** Why copy evidence before changing anything? *Rubric:* 3 = changes can destroy facts; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -414,8 +414,8 @@ A model is only useful if updated when processes change.
 ### Exercises
 
 - **EX021 — Model steps.** List the model's steps. *Rubric:* 3 = vendor, publish, source, download, verify, install, update; 2 = four; 1 = two; 0 = none.
-- **EX022 — Download check.** What check belongs at download? *Rubric:* 3 = official sources; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Consumer role.** What can Pinecrest do as a consumer? *Rubric:* 3 = prefer verifiable vendors; inventory; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Download check.** What check belongs at download? *Rubric:* 3 = official sources; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Consumer role.** What can Pinecrest do as a consumer? *Rubric:* 3 = prefer verifiable vendors; inventory; 2 = partial; 1 = vague; 0 = none.
 - **EX024 — Four gaps.** Name the four Ferncroft gaps. *Rubric:* 3 = unofficial source, no verification, writable folder, no inventory; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis
@@ -507,10 +507,10 @@ Logs only show what was recorded; missing logs leave blind spots.
 
 ### Exercises
 
-- **EX025 — Lab hour 10.** What did hour 10 show? *Rubric:* 3 = 5 failed admin sign-ins from one address; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Hour 11.** What did the hour-11 errors suggest? *Rubric:* 3 = application fault, 500s; 2 = partial; 1 = none; 0 = none.
-- **EX027 — New telemetry.** What monitoring did Pinecrest add? *Rubric:* 3 = file-change monitoring for code folders; 2 = partial; 1 = none; 0 = none.
-- **EX028 — REVIEW meaning.** What does a REVIEW line mean? *Rubric:* 3 = prompt to look further, not proof; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Lab hour 10.** What did hour 10 show? *Rubric:* 3 = 5 failed admin sign-ins from one address; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Hour 11.** What did the hour-11 errors suggest? *Rubric:* 3 = application fault, 500s; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — New telemetry.** What monitoring did Pinecrest add? *Rubric:* 3 = file-change monitoring for code folders; 2 = partial; 1 = vague; 0 = none.
+- **EX028 — REVIEW meaning.** What does a REVIEW line mean? *Rubric:* 3 = prompt to look further, not proof; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -568,10 +568,10 @@ Some failures cannot be prevented by a consumer, only detected quickly.
 
 ### Exercises
 
-- **EX029 — Changed download check.** What checks prevent changed downloads? *Rubric:* 3 = official sources, hash verification; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Abandoned plugins.** How are abandoned plugins handled? *Rubric:* 3 = review yearly; replace; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Compromised publisher.** Why can't consumers fully prevent publisher compromise? *Rubric:* 3 = legitimate channel; detect quickly; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Blame-free.** Why was the review blame-free? *Rubric:* 3 = no rule existed; process problem; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Changed download check.** What checks prevent changed downloads? *Rubric:* 3 = official sources, hash verification; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Abandoned plugins.** How are abandoned plugins handled? *Rubric:* 3 = review yearly; replace; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Compromised publisher.** Why can't consumers fully prevent publisher compromise? *Rubric:* 3 = legitimate channel; detect quickly; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Blame-free.** Why was the review blame-free? *Rubric:* 3 = no rule existed; process problem; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -630,9 +630,9 @@ An inventory from the application's own records may miss files added by hand; co
 ### Exercises
 
 - **EX033 — Inventory content.** What does the inventory list? *Rubric:* 3 = site, plugin, version; 2 = two; 1 = one; 0 = none.
-- **EX034 — Version compare.** Why compare versions as numbers? *Rubric:* 3 = text puts 2.10 before 2.9; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Priority.** What comes first? *Rubric:* 3 = high severity on public pages; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Seven plugins.** Why watch seven plugins closely? *Rubric:* 3 = over 80% of installations; 2 = partial; 1 = none; 0 = none.
+- **EX034 — Version compare.** Why compare versions as numbers? *Rubric:* 3 = text puts 2.10 before 2.9; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Priority.** What comes first? *Rubric:* 3 = high severity on public pages; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Seven plugins.** Why watch seven plugins closely? *Rubric:* 3 = over 80% of installations; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -718,9 +718,9 @@ Headers depend on browsers enforcing them; they are a layer, not a guarantee.
 ### Exercises
 
 - **EX037 — Baseline items.** List the baseline headers. *Rubric:* 3 = HSTS, CSP, nosniff, Referrer-Policy, no version banner; 2 = three; 1 = one; 0 = none.
-- **EX038 — Lab gaps.** What did the lab find for alder-dental and quayside-gym? *Rubric:* 3 = alder missing CSP, Referrer; quayside missing HSTS, version banner; 2 = one; 1 = none; 0 = none.
-- **EX039 — Report-only.** Why use report-only mode first? *Rubric:* 3 = avoid breaking legitimate scripts; 2 = partial; 1 = none; 0 = none.
-- **EX040 — CSP benefit.** How does CSP help with supply chain problems? *Rubric:* 3 = blocks scripts from unknown domains; 2 = partial; 1 = none; 0 = none.
+- **EX038 — Lab gaps.** What did the lab find for alder-dental and quayside-gym? *Rubric:* 3 = alder missing CSP, Referrer; quayside missing HSTS, version banner; 2 = one; 1 = vague; 0 = none.
+- **EX039 — Report-only.** Why use report-only mode first? *Rubric:* 3 = avoid breaking legitimate scripts; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — CSP benefit.** How does CSP help with supply chain problems? *Rubric:* 3 = blocks scripts from unknown domains; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -778,10 +778,10 @@ Tests only cover cases you thought of; vary them over time.
 
 ### Exercises
 
-- **EX041 — Difference.** How does verification differ from configuration? *Rubric:* 3 = checks the result works; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Test cases.** Name two synthetic test cases. *Rubric:* 3 = mismatched file, writable folder, unlisted script; 2 = one; 1 = none; 0 = none.
+- **EX041 — Difference.** How does verification differ from configuration? *Rubric:* 3 = checks the result works; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Test cases.** Name two synthetic test cases. *Rubric:* 3 = mismatched file, writable folder, unlisted script; 2 = one; 1 = vague; 0 = none.
 - **EX043 — When to re-verify.** When are controls re-verified? *Rubric:* 3 = template changes, upgrades, quarterly; 2 = two; 1 = one; 0 = none.
-- **EX044 — Quarterly catch.** What did the quarterly check catch? *Rubric:* 3 = Referrer-Policy dropped from 40 sites; 2 = partial; 1 = none; 0 = none.
+- **EX044 — Quarterly catch.** What did the quarterly check catch? *Rubric:* 3 = Referrer-Policy dropped from 40 sites; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -869,10 +869,10 @@ A version comparison depends on accurate advisories; check the advisory text.
 
 ### Exercises
 
-- **EX045 — Lab totals.** What totals did the lab give? *Rubric:* 3 = high 1, medium 2; 2 = partial; 1 = none; 0 = none.
-- **EX046 — Already fixed.** Which installations were already fixed? *Rubric:* 3 = quayside resize 2.5.0; ferncroft contact-form 5.2.0; 2 = one; 1 = none; 0 = none.
-- **EX047 — Due dates.** What due dates apply? *Rubric:* 3 = high 7 days, medium 30; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Added step.** What did Tomás add after Grace's question? *Rubric:* 3 = backup and rollback; 2 = partial; 1 = none; 0 = none.
+- **EX045 — Lab totals.** What totals did the lab give? *Rubric:* 3 = high 1, medium 2; 2 = partial; 1 = vague; 0 = none.
+- **EX046 — Already fixed.** Which installations were already fixed? *Rubric:* 3 = quayside resize 2.5.0; ferncroft contact-form 5.2.0; 2 = one; 1 = vague; 0 = none.
+- **EX047 — Due dates.** What due dates apply? *Rubric:* 3 = high 7 days, medium 30; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Added step.** What did Tomás add after Grace's question? *Rubric:* 3 = backup and rollback; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -935,9 +935,9 @@ Rolling back to a vulnerable version is temporary; set a deadline to fix forward
 ### Exercises
 
 - **EX049 — Method.** What is Tomás's method? *Rubric:* 3 = read, check recent change, reproduce, one change; 2 = three; 1 = one; 0 = none.
-- **EX050 — Rollback rule.** What comes first when a site is broken? *Rubric:* 3 = restore service by rollback; 2 = partial; 1 = none; 0 = none.
-- **EX051 — Republished hash.** What happens when a vendor's hash changes? *Rubric:* 3 = ask vendor officially first; 2 = partial; 1 = none; 0 = none.
-- **EX052 — Alder fix.** What fixed the alder-dental form? *Rubric:* 3 = renamed setting applied; 2 = partial; 1 = none; 0 = none.
+- **EX050 — Rollback rule.** What comes first when a site is broken? *Rubric:* 3 = restore service by rollback; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — Republished hash.** What happens when a vendor's hash changes? *Rubric:* 3 = ask vendor officially first; 2 = partial; 1 = vague; 0 = none.
+- **EX052 — Alder fix.** What fixed the alder-dental form? *Rubric:* 3 = renamed setting applied; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1000,9 +1000,9 @@ Automation that can change sites needs far stronger review; keep it read-only wh
 ### Exercises
 
 - **EX053 — Job tasks.** What does the nightly job do? *Rubric:* 3 = inventory, advisory compare, headers and permissions, report; 2 = three; 1 = one; 0 = none.
-- **EX054 — Job permissions.** Why can't the job change sites? *Rubric:* 3 = limits harm; changes by technicians; 2 = partial; 1 = none; 0 = none.
-- **EX055 — Zero findings.** Why was zero findings suspicious? *Rubric:* 3 = site count dropped too; 2 = partial; 1 = none; 0 = none.
-- **EX056 — Cause.** What caused the gap? *Rubric:* 3 = expired read credential; 2 = partial; 1 = none; 0 = none.
+- **EX054 — Job permissions.** Why can't the job change sites? *Rubric:* 3 = limits harm; changes by technicians; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — Zero findings.** Why was zero findings suspicious? *Rubric:* 3 = site count dropped too; 2 = partial; 1 = vague; 0 = none.
+- **EX056 — Cause.** What caused the gap? *Rubric:* 3 = expired read credential; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1064,10 +1064,10 @@ Disabled plugins still have files on the server; remove, do not just disable.
 
 ### Exercises
 
-- **EX057 — Chain risk.** Why can deep dependencies affect sites? *Rubric:* 3 = bundled libraries not chosen directly; 2 = partial; 1 = none; 0 = none.
-- **EX058 — Outside scripts.** How are outside scripts tracked? *Rubric:* 3 = listed in CSP; inventory; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Disabled plugins.** Why remove disabled plugins? *Rubric:* 3 = files remain on server; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Removal result.** What did removal achieve? *Rubric:* 3 = 140 installations removed from 54 sites; 2 = partial; 1 = none; 0 = none.
+- **EX057 — Chain risk.** Why can deep dependencies affect sites? *Rubric:* 3 = bundled libraries not chosen directly; 2 = partial; 1 = vague; 0 = none.
+- **EX058 — Outside scripts.** How are outside scripts tracked? *Rubric:* 3 = listed in CSP; inventory; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Disabled plugins.** Why remove disabled plugins? *Rubric:* 3 = files remain on server; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Removal result.** What did removal achieve? *Rubric:* 3 = 140 installations removed from 54 sites; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1130,9 +1130,9 @@ A procedure nobody follows is a false comfort; check tickets show the steps were
 ### Exercises
 
 - **EX061 — Install steps.** List four installation steps. *Rubric:* 3 = ticket, official source, verify, backup, permissions, record; 2 = three; 1 = one; 0 = none.
-- **EX062 — Safety rule.** Name two safety rules. *Rubric:* 3 = scope; no mirrors; no disabling; synthetic tests; 2 = one; 1 = none; 0 = none.
-- **EX063 — Testing documents.** How is a procedure tested? *Rubric:* 3 = new technician follows it exactly; 2 = partial; 1 = none; 0 = none.
-- **EX064 — Signature gap.** What gap did the new technician find? *Rubric:* 3 = vendor uses signature not hash; 2 = partial; 1 = none; 0 = none.
+- **EX062 — Safety rule.** Name two safety rules. *Rubric:* 3 = scope; no mirrors; no disabling; synthetic tests; 2 = one; 1 = vague; 0 = none.
+- **EX063 — Testing documents.** How is a procedure tested? *Rubric:* 3 = new technician follows it exactly; 2 = partial; 1 = vague; 0 = none.
+- **EX064 — Signature gap.** What gap did the new technician find? *Rubric:* 3 = vendor uses signature not hash; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1199,9 +1199,9 @@ Rehearsals cannot include every real-world complication.
 ### Exercises
 
 - **EX065 — Steps.** List the four lab steps. *Rubric:* 3 = compare, verify, headers, logs; 2 = three; 1 = one; 0 = none.
-- **EX066 — Rejected file.** Which file was rejected and why? *Rubric:* 3 = mirror file; hash mismatch; 2 = partial; 1 = none; 0 = none.
-- **EX067 — Timing.** How long did the rehearsal take? *Rubric:* 3 = 35 minutes; 2 = partial; 1 = none; 0 = none.
-- **EX068 — Lesson.** What improvement did the rehearsal show? *Rubric:* 3 = site name in log output; 2 = partial; 1 = none; 0 = none.
+- **EX066 — Rejected file.** Which file was rejected and why? *Rubric:* 3 = mirror file; hash mismatch; 2 = partial; 1 = vague; 0 = none.
+- **EX067 — Timing.** How long did the rehearsal take? *Rubric:* 3 = 35 minutes; 2 = partial; 1 = vague; 0 = none.
+- **EX068 — Lesson.** What improvement did the rehearsal show? *Rubric:* 3 = site name in log output; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1263,10 +1263,10 @@ Report weak comparisons honestly rather than overstating improvement.
 
 ### Exercises
 
-- **EX069 — Project goal.** What was the project goal? *Rubric:* 3 = reduce advisory-to-update time; 2 = partial; 1 = none; 0 = none.
-- **EX070 — Measure.** What was measured? *Rubric:* 3 = median 5 days for 24 highs; 2 = partial; 1 = none; 0 = none.
-- **EX071 — Limits.** Name two limits. *Rubric:* 3 = weak before figure; plugins outside feeds; vendor compromise; 2 = one; 1 = none; 0 = none.
-- **EX072 — Next steps.** What are the next steps? *Rubric:* 3 = signatures; SBOMs for bundled libraries; 2 = partial; 1 = none; 0 = none.
+- **EX069 — Project goal.** What was the project goal? *Rubric:* 3 = reduce advisory-to-update time; 2 = partial; 1 = vague; 0 = none.
+- **EX070 — Measure.** What was measured? *Rubric:* 3 = median 5 days for 24 highs; 2 = partial; 1 = vague; 0 = none.
+- **EX071 — Limits.** Name two limits. *Rubric:* 3 = weak before figure; plugins outside feeds; vendor compromise; 2 = one; 1 = vague; 0 = none.
+- **EX072 — Next steps.** What are the next steps? *Rubric:* 3 = signatures; SBOMs for bundled libraries; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

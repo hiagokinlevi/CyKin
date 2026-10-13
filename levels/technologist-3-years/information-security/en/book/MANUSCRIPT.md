@@ -69,9 +69,9 @@ Practising on real systems without permission is unsafe and may be illegal.
 
 ### Exercises
 
-- **EX001 — Technologist work.** What do technologists do daily? *Rubric:* 3 = configure, check and maintain controls;; 2 = correct;; 1 = none;; 0 = none.
+- **EX001 — Technologist work.** What do technologists do daily? *Rubric:* 3 = configure, check and maintain controls;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX002 — Riverbend size.** How many staff does Riverbend employ? *Rubric:* 3 = about 350;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX003 — Notebook purpose.** Why keep a laboratory notebook? *Rubric:* 3 = to repeat and explain work;; 2 = correct;; 1 = none;; 0 = none.
+- **EX003 — Notebook purpose.** Why keep a laboratory notebook? *Rubric:* 3 = to repeat and explain work;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -111,7 +111,7 @@ Scanned sensitive forms often end up in folders everyone can open.
 
 - **EX004 — Health users.** Who uses health questionnaires? *Rubric:* 3 = instructors;; 2 = correct;; 1 = other;; 0 = none.
 - **EX005 — Bank details risk.** Which objective matters most for bank details? *Rubric:* 3 = integrity;; 2 = correct;; 1 = other;; 0 = none.
-- **EX006 — Folder fix.** What happens to the questionnaire folder? *Rubric:* 3 = restricted to instructors and managers;; 2 = correct;; 1 = none;; 0 = none.
+- **EX006 — Folder fix.** What happens to the questionnaire folder? *Rubric:* 3 = restricted to instructors and managers;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -149,9 +149,9 @@ Automatic administrator logins give any malware full control.
 
 ### Exercises
 
-- **EX007 — Group permissions.** Why assign permissions to groups? *Rubric:* 3 = people change roles;; 2 = correct;; 1 = none;; 0 = none.
-- **EX008 — Reception risk.** What risk do reception computers have? *Rubric:* 3 = automatic administrator login;; 2 = correct;; 1 = none;; 0 = none.
-- **EX009 — Service reduction.** What does disabling unneeded services do? *Rubric:* 3 = shrinks the attack surface;; 2 = correct;; 1 = none;; 0 = none.
+- **EX007 — Group permissions.** Why assign permissions to groups? *Rubric:* 3 = people change roles;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX008 — Reception risk.** What risk do reception computers have? *Rubric:* 3 = automatic administrator login;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX009 — Service reduction.** What does disabling unneeded services do? *Rubric:* 3 = shrinks the attack surface;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -189,8 +189,8 @@ Scanning without written permission is unacceptable, even on a friendly network.
 
 ### Exercises
 
-- **EX010 — Payment label.** Which devices must be labelled specially? *Rubric:* 3 = those handling payment data;; 2 = correct;; 1 = none;; 0 = none.
-- **EX011 — Camera finding.** What did the scan find on the camera recorder? *Rubric:* 3 = a default password;; 2 = correct;; 1 = none;; 0 = none.
+- **EX010 — Payment label.** Which devices must be labelled specially? *Rubric:* 3 = those handling payment data;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX011 — Camera finding.** What did the scan find on the camera recorder? *Rubric:* 3 = a default password;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX012 — Proposed segments.** Name the four proposed segments. *Rubric:* 3 = tills, staff, cameras, guests;; 2 = all;; 1 = some;; 0 = none.
 
 <a id="ch-05"></a>
@@ -229,9 +229,9 @@ Scripts that silently skip bad input give false reassurance.
 
 ### Exercises
 
-- **EX013 — Inactivity script.** Which accounts does the second script list? *Rubric:* 3 = no login for sixty days;; 2 = correct;; 1 = none;; 0 = none.
+- **EX013 — Inactivity script.** Which accounts does the second script list? *Rubric:* 3 = no login for sixty days;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX014 — Bad lines.** How does the script handle bad lines? *Rubric:* 3 = skips and reports them;; 2 = correct;; 1 = ignore;; 0 = none.
-- **EX015 — Traceability.** What does each report include for tracing? *Rubric:* 3 = script version and input file name;; 2 = correct;; 1 = none;; 0 = none.
+- **EX015 — Traceability.** What does each report include for tracing? *Rubric:* 3 = script version and input file name;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -310,8 +310,8 @@ Controls that ignore real work needs get bypassed.
 ### Exercises
 
 - **EX019 — Overview standard.** Which standard gives the family overview? *Rubric:* 3 = ISO/IEC 27000:2026;; 2 = correct;; 1 = other;; 0 = none.
-- **EX020 — Compromise limit.** How does least privilege limit compromise? *Rubric:* 3 = attacker inherits limited rights;; 2 = correct;; 1 = none;; 0 = none.
-- **EX021 — USB alternative.** What USB alternative does Jamal suggest? *Rubric:* 3 = Riverbend-issued encrypted devices only;; 2 = correct;; 1 = none;; 0 = none.
+- **EX020 — Compromise limit.** How does least privilege limit compromise? *Rubric:* 3 = attacker inherits limited rights;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX021 — USB alternative.** What USB alternative does Jamal suggest? *Rubric:* 3 = Riverbend-issued encrypted devices only;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -415,9 +415,9 @@ Deploying untested updates everywhere at once can break every centre.
 
 ### Exercises
 
-- **EX025 — Priority updates.** Which updates get priority? *Rubric:* 3 = those for actively exploited flaws;; 2 = correct;; 1 = none;; 0 = none.
+- **EX025 — Priority updates.** Which updates get priority? *Rubric:* 3 = those for actively exploited flaws;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX026 — Test group.** How many workstations are in the test group? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX027 — Pool controller.** How is the pool controller protected? *Rubric:* 3 = isolated segment without internet;; 2 = correct;; 1 = none;; 0 = none.
+- **EX027 — Pool controller.** How is the pool controller protected? *Rubric:* 3 = isolated segment without internet;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -455,9 +455,9 @@ Assuming a fix worked without rescanning leaves weaknesses in place.
 
 ### Exercises
 
-- **EX028 — Scan approval.** Who approves the scan? *Rubric:* 3 = the IT manager, in writing;; 2 = correct;; 1 = none;; 0 = none.
-- **EX029 — False positive.** What is a false positive? *Rubric:* 3 = a reported weakness that is not present;; 2 = correct;; 1 = none;; 0 = none.
-- **EX030 — Remaining finding.** Why did one finding remain after fixing? *Rubric:* 3 = a second installation of the tool;; 2 = correct;; 1 = none;; 0 = none.
+- **EX028 — Scan approval.** Who approves the scan? *Rubric:* 3 = the IT manager, in writing;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX029 — False positive.** What is a false positive? *Rubric:* 3 = a reported weakness that is not present;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX030 — Remaining finding.** Why did one finding remain after fixing? *Rubric:* 3 = a second installation of the tool;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -495,9 +495,9 @@ Copying a colleague's account to create a new one spreads unneeded access.
 
 ### Exercises
 
-- **EX031 — Seasonal access.** What access do seasonal staff need? *Rubric:* 3 = booking system and rota only;; 2 = correct;; 1 = none;; 0 = none.
+- **EX031 — Seasonal access.** What access do seasonal staff need? *Rubric:* 3 = booking system and rota only;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX032 — Leaver report.** What source lists leavers weekly? *Rubric:* 3 = the payroll system;; 2 = correct;; 1 = other;; 0 = none.
-- **EX033 — Old service account.** Which service account is disabled? *Rubric:* 3 = one used by an old backup tool;; 2 = correct;; 1 = none;; 0 = none.
+- **EX033 — Old service account.** Which service account is disabled? *Rubric:* 3 = one used by an old backup tool;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -575,9 +575,9 @@ A password written in a script is exposed to anyone who can read it.
 
 ### Exercises
 
-- **EX037 — Old rule effect.** What did monthly forced changes cause? *Rubric:* 3 = adding a number to the same word;; 2 = correct;; 1 = none;; 0 = none.
+- **EX037 — Old rule effect.** What did monthly forced changes cause? *Rubric:* 3 = adding a number to the same word;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX038 — Spreadsheet replacement.** What replaces the password spreadsheet? *Rubric:* 3 = a password manager;; 2 = correct;; 1 = other;; 0 = none.
-- **EX039 — Document findings.** What did the document search find? *Rubric:* 3 = camera passwords and router credentials;; 2 = correct;; 1 = none;; 0 = none.
+- **EX039 — Document findings.** What did the document search find? *Rubric:* 3 = camera passwords and router credentials;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-14"></a>
 
@@ -652,8 +652,8 @@ An allow-any rule above the final deny makes the deny useless.
 ### Exercises
 
 - **EX040 — Broad rule.** Which rule allows any traffic? *Rubric:* 3 = rule 11;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX041 — Unreachable deny.** Why does rule 12 have zero hits? *Rubric:* 3 = rule 11 matches first;; 2 = correct;; 1 = none;; 0 = none.
-- **EX042 — Supplier rule.** What does unused rule 6 allow? *Rubric:* 3 = supplier remote desktop to tills;; 2 = correct;; 1 = none;; 0 = none.
+- **EX041 — Unreachable deny.** Why does rule 12 have zero hits? *Rubric:* 3 = rule 11 matches first;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX042 — Supplier rule.** What does unused rule 6 allow? *Rubric:* 3 = supplier remote desktop to tills;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -691,9 +691,9 @@ Shared wireless passwords remain known to former staff.
 
 ### Exercises
 
-- **EX043 — Shared password problem.** Why is the shared staff wireless password a problem? *Rubric:* 3 = known to former staff;; 2 = correct;; 1 = none;; 0 = none.
+- **EX043 — Shared password problem.** Why is the shared staff wireless password a problem? *Rubric:* 3 = known to former staff;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX044 — Rogue access point.** Who installed the unauthorised access point? *Rubric:* 3 = the café supplier;; 2 = correct;; 1 = other;; 0 = none.
-- **EX045 — Weak mode.** Why was a weak encryption mode enabled? *Rubric:* 3 = for an old printer;; 2 = correct;; 1 = none;; 0 = none.
+- **EX045 — Weak mode.** Why was a weak encryption mode enabled? *Rubric:* 3 = for an old printer;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-16"></a>
 
@@ -731,9 +731,9 @@ Endpoint protection protects only the machines it is installed on.
 
 ### Exercises
 
-- **EX046 — Coverage gap.** Where was endpoint protection missing? *Rubric:* 3 = reception computers after reinstallation;; 2 = correct;; 1 = none;; 0 = none.
-- **EX047 — Finance alert.** What did the finance alert show? *Rubric:* 3 = a script from an invoice attachment;; 2 = correct;; 1 = none;; 0 = none.
-- **EX048 — Allow-listing.** Where is allow-listing most effective? *Rubric:* 3 = single-purpose machines like tills;; 2 = correct;; 1 = none;; 0 = none.
+- **EX046 — Coverage gap.** Where was endpoint protection missing? *Rubric:* 3 = reception computers after reinstallation;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX047 — Finance alert.** What did the finance alert show? *Rubric:* 3 = a script from an invoice attachment;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX048 — Allow-listing.** Where is allow-listing most effective? *Rubric:* 3 = single-purpose machines like tills;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -771,9 +771,9 @@ Technical filters alone cannot stop well-crafted payment fraud.
 
 ### Exercises
 
-- **EX049 — Incomplete records.** What risk did incomplete authentication records create? *Rubric:* 3 = fake messages using Riverbend's domain delivered;; 2 = correct;; 1 = none;; 0 = none.
+- **EX049 — Incomplete records.** What risk did incomplete authentication records create? *Rubric:* 3 = fake messages using Riverbend's domain delivered;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX050 — Gift card scam.** How many centres received the gift card message? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX051 — Bank change rule.** How must bank detail changes be confirmed? *Rubric:* 3 = by phone using a number on file;; 2 = correct;; 1 = none;; 0 = none.
+- **EX051 — Bank change rule.** How must bank detail changes be confirmed? *Rubric:* 3 = by phone using a number on file;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-18"></a>
 
@@ -811,8 +811,8 @@ A backup job that reports success may still be missing data.
 
 ### Exercises
 
-- **EX052 — Moved files.** What should happen to finance local files? *Rubric:* 3 = move to the file server;; 2 = correct;; 1 = none;; 0 = none.
-- **EX053 — Restore failure.** Why did a folder fail to restore? *Rubric:* 3 = excluded after a rename;; 2 = correct;; 1 = none;; 0 = none.
+- **EX052 — Moved files.** What should happen to finance local files? *Rubric:* 3 = move to the file server;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX053 — Restore failure.** Why did a folder fail to restore? *Rubric:* 3 = excluded after a rename;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX054 — Supplier retention.** How long does the booking supplier keep backups? *Rubric:* 3 = fourteen days;; 2 = correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-19"></a>
@@ -851,7 +851,7 @@ Losing encryption keys can make data unrecoverable.
 
 ### Exercises
 
-- **EX055 — Stolen laptop.** Why were no data exposed from the stolen laptop? *Rubric:* 3 = it was encrypted;; 2 = correct;; 1 = none;; 0 = none.
+- **EX055 — Stolen laptop.** Why were no data exposed from the stolen laptop? *Rubric:* 3 = it was encrypted;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX056 — Internal page.** What did the unencrypted internal page show? *Rubric:* 3 = member names;; 2 = correct;; 1 = other;; 0 = none.
 - **EX057 — Renewal reminder.** When are manual renewal reminders set? *Rubric:* 3 = thirty days before expiry;; 2 = correct;; 1 = wrong;; 0 = none.
 
@@ -891,9 +891,9 @@ Discarded devices often still hold readable data.
 
 ### Exercises
 
-- **EX058 — Cupboard misuse.** How was one network cupboard misused? *Rubric:* 3 = storing cleaning supplies;; 2 = correct;; 1 = none;; 0 = none.
-- **EX059 — Terminal check.** How do staff check terminals daily? *Rubric:* 3 = compare with a photo and check seals;; 2 = correct;; 1 = none;; 0 = none.
-- **EX060 — Recorder screen.** What problem did one recorder screen have? *Rubric:* 3 = visible from reception;; 2 = correct;; 1 = none;; 0 = none.
+- **EX058 — Cupboard misuse.** How was one network cupboard misused? *Rubric:* 3 = storing cleaning supplies;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX059 — Terminal check.** How do staff check terminals daily? *Rubric:* 3 = compare with a photo and check seals;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX060 — Recorder screen.** What problem did one recorder screen have? *Rubric:* 3 = visible from reception;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-21"></a>
 
@@ -1008,8 +1008,8 @@ Changing settings before recording them can destroy evidence.
 ### Exercises
 
 - **EX064 — Procedure basis.** Which CSF 2.0 functions shape the procedure? *Rubric:* 3 = Respond and Recover;; 2 = correct;; 1 = other;; 0 = none.
-- **EX065 — Forwarding rule.** What did Jamal find in the mailbox? *Rubric:* 3 = a rule forwarding mail externally;; 2 = correct;; 1 = none;; 0 = none.
-- **EX066 — Root cause.** What caused the incident? *Rubric:* 3 = delayed MFA enrolment;; 2 = correct;; 1 = none;; 0 = none.
+- **EX065 — Forwarding rule.** What did Jamal find in the mailbox? *Rubric:* 3 = a rule forwarding mail externally;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX066 — Root cause.** What caused the incident? *Rubric:* 3 = delayed MFA enrolment;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-23"></a>
 
@@ -1048,7 +1048,7 @@ A supplier certificate is useful evidence only if its scope covers the service u
 ### Exercises
 
 - **EX067 — Missing terms.** Which contract has no security terms? *Rubric:* 3 = camera maintenance company;; 2 = correct;; 1 = other;; 0 = none.
-- **EX068 — Supplier access fix.** How is the camera company's access changed? *Rubric:* 3 = enabled only for scheduled work;; 2 = correct;; 1 = none;; 0 = none.
+- **EX068 — Supplier access fix.** How is the camera company's access changed? *Rubric:* 3 = enabled only for scheduled work;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX069 — Cloud setting.** What default cloud setting is restricted? *Rubric:* 3 = external file sharing;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-24"></a>
@@ -1087,7 +1087,7 @@ Policies that contradict practice create avoidable audit findings.
 
 ### Exercises
 
-- **EX070 — Procedure test.** How does Jamal test his procedures? *Rubric:* 3 = the technician follows them without help;; 2 = correct;; 1 = none;; 0 = none.
+- **EX070 — Procedure test.** How does Jamal test his procedures? *Rubric:* 3 = the technician follows them without help;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX071 — Archive rule.** What happens to old procedure versions? *Rubric:* 3 = archived, not deleted;; 2 = correct;; 1 = deleted;; 0 = none.
 - **EX072 — Outdated policy.** Which policy is outdated? *Rubric:* 3 = the password policy;; 2 = correct;; 1 = other;; 0 = none.
 
@@ -1128,8 +1128,8 @@ Measuring individual click rates can discourage reporting.
 ### Exercises
 
 - **EX073 — Session length.** How long are the sessions? *Rubric:* 3 = ten minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX074 — Phishing clue.** Name one phishing clue Jamal shows. *Rubric:* 3 = slightly different sender address;; 2 = one;; 1 = none;; 0 = none.
-- **EX075 — Lifeguard report.** What did the lifeguard report? *Rubric:* 3 = a scam text claiming to be from payroll;; 2 = correct;; 1 = none;; 0 = none.
+- **EX074 — Phishing clue.** Name one phishing clue Jamal shows. *Rubric:* 3 = slightly different sender address;; 2 = one;; 1 = vague;; 0 = none.
+- **EX075 — Lifeguard report.** What did the lifeguard report? *Rubric:* 3 = a scam text claiming to be from payroll;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-26"></a>
 
@@ -1167,9 +1167,9 @@ Automation that fails silently gives false confidence.
 
 ### Exercises
 
-- **EX076 — Automation choice.** Which tasks are automated first? *Rubric:* 3 = stable tasks with predictable inputs;; 2 = correct;; 1 = none;; 0 = none.
-- **EX077 — Heartbeat catch.** What did the heartbeat catch? *Rubric:* 3 = baseline check failing after a password change;; 2 = correct;; 1 = none;; 0 = none.
-- **EX078 — Sick leave.** Why should one inactive account stay enabled? *Rubric:* 3 = staff on long-term sick leave;; 2 = correct;; 1 = none;; 0 = none.
+- **EX076 — Automation choice.** Which tasks are automated first? *Rubric:* 3 = stable tasks with predictable inputs;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX077 — Heartbeat catch.** What did the heartbeat catch? *Rubric:* 3 = baseline check failing after a password change;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX078 — Sick leave.** Why should one inactive account stay enabled? *Rubric:* 3 = staff on long-term sick leave;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-27"></a>
 
@@ -1208,8 +1208,8 @@ Documentation tested only by its author often fails other users.
 ### Exercises
 
 - **EX079 — Handover recipient.** Who takes over most tasks? *Rubric:* 3 = the technician;; 2 = correct;; 1 = other;; 0 = none.
-- **EX080 — Restore document fix.** What was wrong in the restore procedure? *Rubric:* 3 = a changed server name;; 2 = correct;; 1 = none;; 0 = none.
-- **EX081 — Own access.** What happens to Jamal's access? *Rubric:* 3 = removed on his last day;; 2 = correct;; 1 = none;; 0 = none.
+- **EX080 — Restore document fix.** What was wrong in the restore procedure? *Rubric:* 3 = a changed server name;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX081 — Own access.** What happens to Jamal's access? *Rubric:* 3 = removed on his last day;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1247,9 +1247,9 @@ Investigating outside one's remit without asking oversteps professional boundari
 
 ### Exercises
 
-- **EX082 — Placement interruptions.** What makes planning important on placement? *Rubric:* 3 = frequent urgent interruptions;; 2 = correct;; 1 = none;; 0 = none.
+- **EX082 — Placement interruptions.** What makes planning important on placement? *Rubric:* 3 = frequent urgent interruptions;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX083 — Notice board.** What does Jamal do about the notice board? *Rubric:* 3 = reports it to the centre manager;; 2 = correct;; 1 = remove;; 0 = none.
-- **EX084 — Development area.** Name one area to develop. *Rubric:* 3 = estimating task time;; 2 = one;; 1 = none;; 0 = none.
+- **EX084 — Development area.** Name one area to develop. *Rubric:* 3 = estimating task time;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-29"></a>
 
@@ -1287,8 +1287,8 @@ A single external scan shows only what was reachable at that moment.
 
 ### Exercises
 
-- **EX085 — Project goal.** What is the project goal? *Rubric:* 3 = every remote path known, restricted and MFA-protected;; 2 = correct;; 1 = none;; 0 = none.
-- **EX086 — Extra path.** What extra path did the scan find? *Rubric:* 3 = an old router management page;; 2 = correct;; 1 = none;; 0 = none.
+- **EX085 — Project goal.** What is the project goal? *Rubric:* 3 = every remote path known, restricted and MFA-protected;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX086 — Extra path.** What extra path did the scan find? *Rubric:* 3 = an old router management page;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX087 — Path total.** How many paths were restricted or closed? *Rubric:* 3 = six;; 2 = correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-30"></a>
@@ -1327,8 +1327,8 @@ Answers without records to support them weaken a project review.
 
 ### Exercises
 
-- **EX088 — New path detection.** How will new paths be detected? *Rubric:* 3 = scheduled scans and six-monthly firewall review;; 2 = correct;; 1 = none;; 0 = none.
-- **EX089 — Remote desktop kept.** Why keep remote desktop? *Rubric:* 3 = staff work from home;; 2 = correct;; 1 = none;; 0 = none.
+- **EX088 — New path detection.** How will new paths be detected? *Rubric:* 3 = scheduled scans and six-monthly firewall review;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX089 — Remote desktop kept.** Why keep remote desktop? *Rubric:* 3 = staff work from home;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX090 — Standing task.** What becomes a standing task? *Rubric:* 3 = the six-monthly remote access review;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>

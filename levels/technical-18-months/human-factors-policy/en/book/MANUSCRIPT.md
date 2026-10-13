@@ -66,9 +66,9 @@ Two shifts may not be typical. Observations should not record names.
 ### Exercises
 
 - **EX001 — Wall password.** Why is the team password written on the wall? *Rubric:* 3 = individual logins take time during busy shifts;; 2 = time;; 1 = carelessness;; 0 = none.
-- **EX002 — Driver texts.** What do drivers sometimes receive? *Rubric:* 3 = texts claiming route changes from the company;; 2 = fake texts;; 1 = none;; 0 = none.
+- **EX002 — Driver texts.** What do drivers sometimes receive? *Rubric:* 3 = texts claiming route changes from the company;; 2 = fake texts;; 1 = vague;; 0 = none.
 - **EX003 — Current reporting.** How do staff currently report suspicious messages? *Rubric:* 3 = tell their supervisor, who may tell IT;; 2 = supervisor;; 1 = a button;; 0 = none.
-- **EX004 — Baseline purpose.** Why record a baseline? *Rubric:* 3 = to measure later whether changes helped;; 2 = comparison;; 1 = none;; 0 = none.
+- **EX004 — Baseline purpose.** Why record a baseline? *Rubric:* 3 = to measure later whether changes helped;; 2 = comparison;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -110,10 +110,10 @@ Tags lose effect if overused. Drivers may not read messages.
 
 ### Exercises
 
-- **EX005 — Lookalike pass.** Why does the lookalike email pass authentication? *Rubric:* 3 = the attacker owns the lookalike domain;; 2 = ownership;; 1 = none;; 0 = none.
-- **EX006 — Whitten and Tygar.** What did Whitten and Tygar (1999) show? *Rubric:* 3 = unguided security interfaces confuse users;; 2 = usability;; 1 = none;; 0 = none.
+- **EX005 — Lookalike pass.** Why does the lookalike email pass authentication? *Rubric:* 3 = the attacker owns the lookalike domain;; 2 = ownership;; 1 = vague;; 0 = none.
+- **EX006 — Whitten and Tygar.** What did Whitten and Tygar (1999) show? *Rubric:* 3 = unguided security interfaces confuse users;; 2 = usability;; 1 = vague;; 0 = none.
 - **EX007 — Testing warnings.** Where were the warnings tested first? *Rubric:* 3 = a test mailbox with synthetic messages;; 2 = test mailbox;; 1 = live inboxes;; 0 = none.
-- **EX008 — Driver rule.** What rule did Priya draft for drivers? *Rubric:* 3 = route changes only come through the route app;; 2 = app only;; 1 = none;; 0 = none.
+- **EX008 — Driver rule.** What rule did Priya draft for drivers? *Rubric:* 3 = route changes only come through the route app;; 2 = app only;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -169,9 +169,9 @@ Badges can be lost or shared. End dates may need extension.
 
 ### Exercises
 
-- **EX009 — Badge time.** How long does a badge login take? *Rubric:* 3 = about two seconds;; 2 = 2 seconds;; 1 = none;; 0 = none.
-- **EX010 — Lab unlocked minutes.** How did unlocked minutes change in the lab? *Rubric:* 3 = from 1,920 to 85 per week;; 2 = fall;; 1 = none;; 0 = none.
-- **EX011 — Lock acceptance.** Why is a two-minute lock accepted? *Rubric:* 3 = unlocking only needs a tap;; 2 = low cost;; 1 = none;; 0 = none.
+- **EX009 — Badge time.** How long does a badge login take? *Rubric:* 3 = about two seconds;; 2 = 2 seconds;; 1 = vague;; 0 = none.
+- **EX010 — Lab unlocked minutes.** How did unlocked minutes change in the lab? *Rubric:* 3 = from 1,920 to 85 per week;; 2 = fall;; 1 = vague;; 0 = none.
+- **EX011 — Lock acceptance.** Why is a two-minute lock accepted? *Rubric:* 3 = unlocking only needs a tap;; 2 = low cost;; 1 = vague;; 0 = none.
 - **EX012 — Seasonal expiry.** How do seasonal accounts end? *Rubric:* 3 = they expire automatically at an end date;; 2 = expiry;; 1 = manual removal;; 0 = none.
 
 ### Synthesis
@@ -235,9 +235,9 @@ Exports can change format. Random codes can sometimes be linked.
 ### Exercises
 
 - **EX013 — CSV module reason.** Why use Python's csv module? *Rubric:* 3 = it handles commas inside fields;; 2 = parsing;; 1 = split;; 0 = none.
-- **EX014 — Lab top depot.** Which depot had most reports in the lab? *Rubric:* 3 = North with 12;; 2 = North;; 1 = none;; 0 = none.
-- **EX015 — JSON benefit.** Why store settings in JSON? *Rubric:* 3 = changes need no code edits;; 2 = maintainability;; 1 = none;; 0 = none.
-- **EX016 — Removed field.** Which field was removed from the export? *Rubric:* 3 = reporter email addresses;; 2 = addresses;; 1 = none;; 0 = none.
+- **EX014 — Lab top depot.** Which depot had most reports in the lab? *Rubric:* 3 = North with 12;; 2 = North;; 1 = vague;; 0 = none.
+- **EX015 — JSON benefit.** Why store settings in JSON? *Rubric:* 3 = changes need no code edits;; 2 = maintainability;; 1 = vague;; 0 = none.
+- **EX016 — Removed field.** Which field was removed from the export? *Rubric:* 3 = reporter email addresses;; 2 = addresses;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -280,9 +280,9 @@ Scope creep. Evidence collection takes time.
 ### Exercises
 
 - **EX017 — Out of scope.** Name an item out of scope. *Rubric:* 3 = monitoring individual staff;; 2 = monitoring;; 1 = reporting mailbox;; 0 = none.
-- **EX018 — Simulation boundary.** What boundary applies to simulated phishing? *Rubric:* 3 = none sent during the placement;; 2 = none;; 1 = monthly;; 0 = none.
-- **EX019 — Evidence record.** What does Priya record with each item of evidence? *Rubric:* 3 = source and date;; 2 = provenance;; 1 = none;; 0 = none.
-- **EX020 — Contradicting evidence.** Why record contradicting evidence? *Rubric:* 3 = hiding it would mislead;; 2 = honesty;; 1 = none;; 0 = none.
+- **EX018 — Simulation boundary.** What boundary applies to simulated phishing? *Rubric:* 3 = none sent during the placement;; 2 = none;; 1 = monthly;; 0 = no answer.
+- **EX019 — Evidence record.** What does Priya record with each item of evidence? *Rubric:* 3 = source and date;; 2 = provenance;; 1 = vague;; 0 = none.
+- **EX020 — Contradicting evidence.** Why record contradicting evidence? *Rubric:* 3 = hiding it would mislead;; 2 = honesty;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -347,9 +347,9 @@ Step rates are estimates. Steps interact.
 ### Exercises
 
 - **EX021 — Step count.** How many steps does Priya's model have? *Rubric:* 3 = seven;; 2 = 7;; 1 = three;; 0 = none.
-- **EX022 — Lab survivors.** How many of 100 suspicious messages become replied reports in the lab? *Rubric:* 3 = 21;; 2 = 21;; 1 = none;; 0 = none.
+- **EX022 — Lab survivors.** How many of 100 suspicious messages become replied reports in the lab? *Rubric:* 3 = 21;; 2 = 21, without explanation;; 1 = vague;; 0 = none.
 - **EX023 — Biggest loss.** Which step loses the most? *Rubric:* 3 = the decision to report;; 2 = decision;; 1 = noticing;; 0 = none.
-- **EX024 — Decision fix.** What fixes the decision step? *Rubric:* 3 = managers saying unsure reports are welcome;; 2 = message;; 1 = none;; 0 = none.
+- **EX024 — Decision fix.** What fixes the decision step? *Rubric:* 3 = managers saying unsure reports are welcome;; 2 = message;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -393,8 +393,8 @@ Agreements can be forgotten. Logs may be incomplete.
 
 - **EX025 — Telemetry definition.** What is telemetry? *Rubric:* 3 = data collected automatically from systems;; 2 = automatic;; 1 = surveys;; 0 = none.
 - **EX026 — Collection rule.** What rule guides telemetry collection? *Rubric:* 3 = collect only what links to a decision;; 2 = minimal;; 1 = everything;; 0 = none.
-- **EX027 — Badge data risk.** What misuse could badge data allow? *Rubric:* 3 = monitoring productivity;; 2 = surveillance;; 1 = none;; 0 = none.
-- **EX028 — Badge data limit.** What is badge data limited to? *Rubric:* 3 = security investigations and aggregated counts;; 2 = limited use;; 1 = none;; 0 = none.
+- **EX027 — Badge data risk.** What misuse could badge data allow? *Rubric:* 3 = monitoring productivity;; 2 = surveillance;; 1 = vague;; 0 = none.
+- **EX028 — Badge data limit.** What is badge data limited to? *Rubric:* 3 = security investigations and aggregated counts;; 2 = limited use;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -439,7 +439,7 @@ Classifications overlap. Defences have side effects.
 - **EX029 — Lapse example.** Which failure is a lapse? *Rubric:* 3 = the supervisor forgetting to tell IT;; 2 = forgetting;; 1 = the bank change;; 0 = none.
 - **EX030 — Mistake definition.** What is a mistake in Reason's terms? *Rubric:* 3 = the plan itself is wrong;; 2 = wrong plan;; 1 = wrong action;; 0 = none.
 - **EX031 — Lapse defence.** How are lapses reduced? *Rubric:* 3 = by removing memory demands;; 2 = memory;; 1 = training;; 0 = none.
-- **EX032 — Deception defence.** What reduces mistakes caused by deception? *Rubric:* 3 = verification not based on appearance;; 2 = callbacks;; 1 = none;; 0 = none.
+- **EX032 — Deception defence.** What reduces mistakes caused by deception? *Rubric:* 3 = verification not based on appearance;; 2 = callbacks;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -499,9 +499,9 @@ Self-report bias. Small tests.
 ### Exercises
 
 - **EX033 — Response rate.** What was the survey response rate? *Rubric:* 3 = 70%;; 2 = 210 of 300;; 1 = 210%;; 0 = none.
-- **EX034 — Lab top barrier.** What was the top barrier in the lab? *Rubric:* 3 = not knowing how to report from terminals or phones, 88 of 210;; 2 = how;; 1 = none;; 0 = none.
-- **EX035 — Terminal gap.** Why could warehouse workers not report? *Rubric:* 3 = terminals have no email client;; 2 = no route;; 1 = none;; 0 = none.
-- **EX036 — Label change.** What label replaced incident? *Rubric:* 3 = Report something odd;; 2 = plain words;; 1 = none;; 0 = none.
+- **EX034 — Lab top barrier.** What was the top barrier in the lab? *Rubric:* 3 = not knowing how to report from terminals or phones, 88 of 210;; 2 = how;; 1 = vague;; 0 = none.
+- **EX035 — Terminal gap.** Why could warehouse workers not report? *Rubric:* 3 = terminals have no email client;; 2 = no route;; 1 = vague;; 0 = none.
+- **EX036 — Label change.** What label replaced incident? *Rubric:* 3 = Report something odd;; 2 = plain words;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -544,9 +544,9 @@ Holds can delay genuine changes. Phone numbers on file may be outdated.
 ### Exercises
 
 - **EX037 — Terminal form.** What does the terminal form ask for? *Rubric:* 3 = a short description and terminal number, no name;; 2 = minimal;; 1 = name;; 0 = none.
-- **EX038 — Driver route.** How do drivers report suspicious texts? *Rubric:* 3 = forward them to a short company number;; 2 = forward;; 1 = none;; 0 = none.
+- **EX038 — Driver route.** How do drivers report suspicious texts? *Rubric:* 3 = forward them to a short company number;; 2 = forward;; 1 = vague;; 0 = none.
 - **EX039 — Bank change control.** How is a bank detail change confirmed? *Rubric:* 3 = a second person calls the number on file;; 2 = callback;; 1 = email reply;; 0 = none.
-- **EX040 — Documentation value.** Why record the reason for each setting? *Rubric:* 3 = so nobody removes it without understanding;; 2 = rationale;; 1 = none;; 0 = none.
+- **EX040 — Documentation value.** Why record the reason for each setting? *Rubric:* 3 = so nobody removes it without understanding;; 2 = rationale;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -604,10 +604,10 @@ Checks reflect one moment. Volunteers may not represent everyone.
 
 ### Exercises
 
-- **EX041 — Expected result.** Why write expected results before testing? *Rubric:* 3 = so pass or fail is clear;; 2 = clarity;; 1 = none;; 0 = none.
-- **EX042 — Driver problem.** What problem did the driver find? *Rubric:* 3 = forwarding a text needed five taps;; 2 = awkward;; 1 = none;; 0 = none.
+- **EX041 — Expected result.** Why write expected results before testing? *Rubric:* 3 = so pass or fail is clear;; 2 = clarity;; 1 = vague;; 0 = none.
+- **EX042 — Driver problem.** What problem did the driver find? *Rubric:* 3 = forwarding a text needed five taps;; 2 = awkward;; 1 = vague;; 0 = none.
 - **EX043 — Lab pass rate.** How many controls passed first time in the lab? *Rubric:* 3 = 5 of 7;; 2 = five;; 1 = 7 of 7;; 0 = none.
-- **EX044 — Table use.** What does the table become? *Rubric:* 3 = the baseline for re-verification;; 2 = baseline;; 1 = none;; 0 = none.
+- **EX044 — Table use.** What does the table become? *Rubric:* 3 = the baseline for re-verification;; 2 = baseline;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -664,10 +664,10 @@ Small sample. Calm conditions.
 
 ### Exercises
 
-- **EX045 — Isolation.** Why is the lab disconnected from live systems? *Rubric:* 3 = to keep tests contained and safe;; 2 = containment;; 1 = none;; 0 = none.
-- **EX046 — Lost reports.** What happened to two old-method reports? *Rubric:* 3 = they never arrived because the supervisor forgot;; 2 = lapse;; 1 = none;; 0 = none.
-- **EX047 — Lab times.** What average times did the lab show? *Rubric:* 3 = old 260 seconds, new 22 seconds;; 2 = faster;; 1 = none;; 0 = none.
-- **EX048 — Driver follow-up.** What follow-up is needed for drivers? *Rubric:* 3 = a simpler forwarding option;; 2 = simpler;; 1 = none;; 0 = none.
+- **EX045 — Isolation.** Why is the lab disconnected from live systems? *Rubric:* 3 = to keep tests contained and safe;; 2 = containment;; 1 = vague;; 0 = none.
+- **EX046 — Lost reports.** What happened to two old-method reports? *Rubric:* 3 = they never arrived because the supervisor forgot;; 2 = lapse;; 1 = vague;; 0 = none.
+- **EX047 — Lab times.** What average times did the lab show? *Rubric:* 3 = old 260 seconds, new 22 seconds;; 2 = faster;; 1 = vague;; 0 = none.
+- **EX048 — Driver follow-up.** What follow-up is needed for drivers? *Rubric:* 3 = a simpler forwarding option;; 2 = simpler;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -709,10 +709,10 @@ Weekly checks need attention. Checklists can be skipped.
 
 ### Exercises
 
-- **EX049 — Silent failure.** Why did workers not notice the failure? *Rubric:* 3 = the form showed no error or confirmation;; 2 = silent;; 1 = none;; 0 = none.
-- **EX050 — Misread drop.** How did the IT lead misread the drop? *Rubric:* 3 = as fewer suspicious messages;; 2 = good news;; 1 = none;; 0 = none.
-- **EX051 — Form fix.** What does the form now show? *Rubric:* 3 = a confirmation number or an error;; 2 = feedback;; 1 = none;; 0 = none.
-- **EX052 — Weekly check.** What does the weekly check compare? *Rubric:* 3 = reports with malicious messages delivered per depot;; 2 = ratio;; 1 = none;; 0 = none.
+- **EX049 — Silent failure.** Why did workers not notice the failure? *Rubric:* 3 = the form showed no error or confirmation;; 2 = silent;; 1 = vague;; 0 = none.
+- **EX050 — Misread drop.** How did the IT lead misread the drop? *Rubric:* 3 = as fewer suspicious messages;; 2 = good news;; 1 = vague;; 0 = none.
+- **EX051 — Form fix.** What does the form now show? *Rubric:* 3 = a confirmation number or an error;; 2 = feedback;; 1 = vague;; 0 = none.
+- **EX052 — Weekly check.** What does the weekly check compare? *Rubric:* 3 = reports with malicious messages delivered per depot;; 2 = ratio;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -771,7 +771,7 @@ Known lists need updates. Samples may miss rare errors.
 - **EX053 — Lab review share.** How many of 80 reports needed human review in the lab? *Rubric:* 3 = 12;; 2 = 15%;; 1 = 80;; 0 = none.
 - **EX054 — Scoring service.** Why not let a scoring service decide all verdicts? *Rubric:* 3 = mislabelling causes lost customers or fraud;; 2 = consequences;; 1 = cost;; 0 = none.
 - **EX055 — Automation rule.** What should automation handle? *Rubric:* 3 = what is certain and repetitive;; 2 = routine;; 1 = judgement;; 0 = none.
-- **EX056 — Monthly sample.** What monthly check did Priya add? *Rubric:* 3 = hand-checking ten automated verdicts;; 2 = sample;; 1 = none;; 0 = none.
+- **EX056 — Monthly sample.** What monthly check did Priya add? *Rubric:* 3 = hand-checking ten automated verdicts;; 2 = sample;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -813,10 +813,10 @@ Backups lose skill if unused. Contracts change.
 
 ### Exercises
 
-- **EX057 — Customer reports.** What happens to customer reports of fake texts? *Rubric:* 3 = forwarded to triage and a website notice posted;; 2 = integration;; 1 = none;; 0 = none.
+- **EX057 — Customer reports.** What happens to customer reports of fake texts? *Rubric:* 3 = forwarded to triage and a website notice posted;; 2 = integration;; 1 = vague;; 0 = none.
 - **EX058 — Single point.** Who is the main single point of failure? *Rubric:* 3 = the IT lead;; 2 = one person;; 1 = the contractor;; 0 = none.
-- **EX059 — Triage backup.** How is dependence on the IT lead reduced? *Rubric:* 3 = training a second person with a runbook and rota;; 2 = backup;; 1 = none;; 0 = none.
-- **EX060 — Contract risk.** Which supplier risk is tracked in the calendar? *Rubric:* 3 = the mobile contract renewal;; 2 = renewal;; 1 = none;; 0 = none.
+- **EX059 — Triage backup.** How is dependence on the IT lead reduced? *Rubric:* 3 = training a second person with a runbook and rota;; 2 = backup;; 1 = vague;; 0 = none.
+- **EX060 — Contract risk.** Which supplier risk is tracked in the calendar? *Rubric:* 3 = the mobile contract renewal;; 2 = renewal;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -858,10 +858,10 @@ Reviews get skipped. Rules need enforcing.
 
 ### Exercises
 
-- **EX061 — Runbook test.** How were runbooks tested? *Rubric:* 3 = a colleague followed them unaided;; 2 = walkthrough;; 1 = none;; 0 = none.
-- **EX062 — Banned lures.** Which lures are banned? *Rubric:* 3 = pay, health or job security;; 2 = distress;; 1 = none;; 0 = none.
-- **EX063 — Data rule.** Where must reporting and click data never be used? *Rubric:* 3 = disciplinary or performance processes;; 2 = HR;; 1 = none;; 0 = none.
-- **EX064 — Outdated danger.** Why can outdated documentation be worse than none? *Rubric:* 3 = people trust it;; 2 = misplaced trust;; 1 = none;; 0 = none.
+- **EX061 — Runbook test.** How were runbooks tested? *Rubric:* 3 = a colleague followed them unaided;; 2 = walkthrough;; 1 = vague;; 0 = none.
+- **EX062 — Banned lures.** Which lures are banned? *Rubric:* 3 = pay, health or job security;; 2 = distress;; 1 = vague;; 0 = none.
+- **EX063 — Data rule.** Where must reporting and click data never be used? *Rubric:* 3 = disciplinary or performance processes;; 2 = HR;; 1 = vague;; 0 = none.
+- **EX064 — Outdated danger.** Why can outdated documentation be worse than none? *Rubric:* 3 = people trust it;; 2 = misplaced trust;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -917,10 +917,10 @@ Volunteers knew the purpose. Small group.
 
 ### Exercises
 
-- **EX065 — Exercise groups.** How were the two groups treated in session one? *Rubric:* 3 = half got quick verdicts, half got nothing;; 2 = feedback;; 1 = none;; 0 = none.
-- **EX066 — Lab result.** What did the lab show for session two reporting? *Rubric:* 3 = 26 of 30 with feedback versus 17 of 30 without;; 2 = higher;; 1 = none;; 0 = none.
-- **EX067 — Verdict content.** What should each verdict briefly include? *Rubric:* 3 = what made the message suspicious;; 2 = explanation;; 1 = none;; 0 = none.
-- **EX068 — Reply target.** What reply target did Priya recommend? *Rubric:* 3 = within one working day;; 2 = one day;; 1 = none;; 0 = none.
+- **EX065 — Exercise groups.** How were the two groups treated in session one? *Rubric:* 3 = half got quick verdicts, half got nothing;; 2 = feedback;; 1 = vague;; 0 = none.
+- **EX066 — Lab result.** What did the lab show for session two reporting? *Rubric:* 3 = 26 of 30 with feedback versus 17 of 30 without;; 2 = higher;; 1 = vague;; 0 = none.
+- **EX067 — Verdict content.** What should each verdict briefly include? *Rubric:* 3 = what made the message suspicious;; 2 = explanation;; 1 = vague;; 0 = none.
+- **EX068 — Reply target.** What reply target did Priya recommend? *Rubric:* 3 = within one working day;; 2 = one day;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -977,10 +977,10 @@ Six weeks is short. Campaigns can inflate reports.
 
 ### Exercises
 
-- **EX069 — Driver route.** What replaced forwarding for drivers? *Rubric:* 3 = a Report button in the route app;; 2 = app button;; 1 = none;; 0 = none.
-- **EX070 — Lab change.** What did the lab show for driver reports? *Rubric:* 3 = 6 to 19 reports and median 95 to 12 minutes;; 2 = rise;; 1 = none;; 0 = none.
-- **EX071 — Confounder.** What may have raised reports besides the button? *Rubric:* 3 = an attack campaign in week four;; 2 = campaign;; 1 = none;; 0 = none.
-- **EX072 — Next request.** What did the operations manager ask for next? *Rubric:* 3 = extend the button to handheld scanners;; 2 = scanners;; 1 = none;; 0 = none.
+- **EX069 — Driver route.** What replaced forwarding for drivers? *Rubric:* 3 = a Report button in the route app;; 2 = app button;; 1 = vague;; 0 = none.
+- **EX070 — Lab change.** What did the lab show for driver reports? *Rubric:* 3 = 6 to 19 reports and median 95 to 12 minutes;; 2 = rise;; 1 = vague;; 0 = none.
+- **EX071 — Confounder.** What may have raised reports besides the button? *Rubric:* 3 = an attack campaign in week four;; 2 = campaign;; 1 = vague;; 0 = none.
+- **EX072 — Next request.** What did the operations manager ask for next? *Rubric:* 3 = extend the button to handheld scanners;; 2 = scanners;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

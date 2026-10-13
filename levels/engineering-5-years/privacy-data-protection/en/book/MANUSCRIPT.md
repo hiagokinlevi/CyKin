@@ -429,7 +429,7 @@ Hardware features have their own flaws; defence in depth still matters.
 
 ### Exercises
 
-- **EX022 — Hidden copies.** Name two places where a deleted record may persist in a server. *Rubric:* 3 = memory dumps and swap (also caches);; 2 = names one;; 1 = none;; 0 = none.
+- **EX022 — Hidden copies.** Name two places where a deleted record may persist in a server. *Rubric:* 3 = memory dumps and swap (also caches);; 2 = names one;; 1 = vague;; 0 = none.
 - **EX023 — Monthly keys.** How do monthly keys make retention auditable? *Rubric:* 3 = deleting a month's key erases that month's recordings in one operation;; 2 = mentions keys;; 1 = omits;; 0 = none.
 - **EX024 — Evidence over opinion.** Why measure encryption overhead? *Rubric:* 3 = to replace claims that privacy is too slow with data;; 2 = mentions speed;; 1 = skips it;; 0 = none.
 
@@ -479,7 +479,7 @@ Central checks become a single point of failure; they need their own tests and m
 
 - **EX025 — Split record.** Why split identity and clinical data into two structures? *Rubric:* 3 = most services need only one part, so each gets only what it needs;; 2 = mentions separation;; 1 = no reason;; 0 = none.
 - **EX026 — Purpose in access.** Why must callers state a purpose to read a record? *Rubric:* 3 = access is checked and logged against purpose, preventing over-broad use;; 2 = mentions logging;; 1 = says optional;; 0 = none.
-- **EX027 — Property test finding.** What bug did property-based testing find? *Rubric:* 3 = an export joining identity and clinical tables;; 2 = mentions export;; 1 = none;; 0 = none.
+- **EX027 — Property test finding.** What bug did property-based testing find? *Rubric:* 3 = an export joining identity and clinical tables;; 2 = mentions export;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -623,7 +623,7 @@ Masking filters miss unusual formats; periodic searches remain necessary.
 
 - **EX034 — Shared export directory.** What was wrong with the export directory? *Rubric:* 3 = it was readable by every account on the server;; 2 = mentions permissions;; 1 = nothing;; 0 = none.
 - **EX035 — Temporary reports.** How does Zara deal with leftover temporary reports? *Rubric:* 3 = secure temp functions, cleanup on start and a daily deletion job;; 2 = one measure;; 1 = ignores;; 0 = none.
-- **EX036 — Patch metric.** Why track patch delay? *Rubric:* 3 = to show a regular process for testing and maintaining security, as Article 32 expects;; 2 = mentions patching;; 1 = none;; 0 = none.
+- **EX036 — Patch metric.** Why track patch delay? *Rubric:* 3 = to show a regular process for testing and maintaining security, as Article 32 expects;; 2 = mentions patching;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -750,7 +750,7 @@ Checklists become rote; rotate examples and audit samples of reviews.
 
 ### Exercises
 
-- **EX040 — Privacy story.** Write one privacy user story from the chapter. *Rubric:* 3 = e.g. as a patient I want recordings deleted after thirty days unless I ask otherwise;; 2 = similar story;; 1 = none;; 0 = none.
+- **EX040 — Privacy story.** Write one privacy user story from the chapter. *Rubric:* 3 = e.g. as a patient I want recordings deleted after thirty days unless I ask otherwise;; 2 = similar story;; 1 = vague;; 0 = none.
 - **EX041 — Review catch.** What did the review checklist catch in its first month? *Rubric:* 3 = a change sending full names to a crash reporter;; 2 = mentions crash reporting;; 1 = nothing;; 0 = none.
 - **EX042 — Synthetic test data.** Why replace production copies with generated patients? *Rubric:* 3 = test environments are less protected; synthetic data avoids exposing health data;; 2 = mentions safety;; 1 = uses masking only;; 0 = none.
 
@@ -846,9 +846,9 @@ Traceability matrices go stale unless updated with each change.
 
 ### Exercises
 
-- **EX046 — Weakest interface.** What is the weakest-interface problem? *Rubric:* 3 = a privacy property ignored in one component is effectively absent;; 2 = mentions components;; 1 = none;; 0 = none.
-- **EX047 — Analytics gap.** What gap did the traceability matrix reveal? *Rubric:* 3 = analytics had no retention requirement;; 2 = mentions analytics;; 1 = none;; 0 = none.
-- **EX048 — Contract mismatch.** What vendor mismatch did Zara find? *Rubric:* 3 = vendor may keep recordings 90 days versus Pellmore's 30;; 2 = mentions retention;; 1 = none;; 0 = none.
+- **EX046 — Weakest interface.** What is the weakest-interface problem? *Rubric:* 3 = a privacy property ignored in one component is effectively absent;; 2 = mentions components;; 1 = vague;; 0 = none.
+- **EX047 — Analytics gap.** What gap did the traceability matrix reveal? *Rubric:* 3 = analytics had no retention requirement;; 2 = mentions analytics;; 1 = vague;; 0 = none.
+- **EX048 — Contract mismatch.** What vendor mismatch did Zara find? *Rubric:* 3 = vendor may keep recordings 90 days versus Pellmore's 30;; 2 = mentions retention;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -895,8 +895,8 @@ Signals can generate false alarms; review thresholds after the first months of d
 ### Exercises
 
 - **EX049 — Missing feedback.** Why did the paper retention policy fail in control terms? *Rubric:* 3 = there was no measurement, so no feedback adjusted the process;; 2 = mentions monitoring;; 1 = other cause;; 0 = none.
-- **EX050 — Snooping signal.** What signal might reveal staff snooping? *Rubric:* 3 = record views without a booked appointment;; 2 = mentions views;; 1 = none;; 0 = none.
-- **EX051 — Gaming defence.** How does Zara guard against category gaming? *Rubric:* 3 = track and require approval for category changes;; 2 = mentions monitoring;; 1 = none;; 0 = none.
+- **EX050 — Snooping signal.** What signal might reveal staff snooping? *Rubric:* 3 = record views without a booked appointment;; 2 = mentions views;; 1 = vague;; 0 = none.
+- **EX051 — Gaming defence.** How does Zara guard against category gaming? *Rubric:* 3 = track and require approval for category changes;; 2 = mentions monitoring;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -942,7 +942,7 @@ Zones on diagrams can differ from deployed reality; verify with network tests.
 
 ### Exercises
 
-- **EX052 — Segmentation benefit.** Name two benefits of zone segmentation. *Rubric:* 3 = limits attacker movement and accidental access;; 2 = names one;; 1 = none;; 0 = none.
+- **EX052 — Segmentation benefit.** Name two benefits of zone segmentation. *Rubric:* 3 = limits attacker movement and accidental access;; 2 = names one;; 1 = vague;; 0 = none.
 - **EX053 — Purpose via roles.** How does least privilege implement purpose limitation? *Rubric:* 3 = each component can only use data its role's purpose allows;; 2 = mentions purpose;; 1 = unrelated;; 0 = none.
 - **EX054 — Support tool.** How was the support tool redesigned? *Rubric:* 3 = notes visible only with temporary patient-granted access;; 2 = mentions consent;; 1 = removes tool;; 0 = none.
 
@@ -1088,7 +1088,7 @@ Ranking cannot postpone a legal duty indefinitely; lower-ranked items still need
 
 - **EX061 — Purpose tagging.** How does Zara turn purpose limitation into a requirement? *Rubric:* 3 = tag fields with permitted purposes; services read only fields tagged for their purpose;; 2 = mentions tags;; 1 = restates principle;; 0 = none.
 - **EX062 — Testable access.** Rewrite "patients shall be able to access their data" testably. *Rubric:* 3 = download all data within one minute in machine-readable format;; 2 = partly measurable;; 1 = vague;; 0 = none.
-- **EX063 — Portability gap.** Which gap did rights requirements reveal? *Rubric:* 3 = no structured export format for portability;; 2 = mentions export;; 1 = none;; 0 = none.
+- **EX063 — Portability gap.** Which gap did rights requirements reveal? *Rubric:* 3 = no structured export format for portability;; 2 = mentions export;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1293,7 +1293,7 @@ Multiplying ordinal scores is a convention, not arithmetic on real quantities.
 ### Exercises
 
 - **EX070 — DPIA trigger.** Why does Pellmore need a DPIA? *Rubric:* 3 = large-scale special-category processing meets several WP248 criteria, indicating high risk;; 2 = mentions health data;; 1 = not needed;; 0 = none.
-- **EX071 — Unchanged risk.** Which risk stays medium after measures, and why? *Rubric:* 3 = vendor breach of chat logs, because Pellmore cannot directly control vendor security;; 2 = names risk;; 1 = none;; 0 = none.
+- **EX071 — Unchanged risk.** Which risk stays medium after measures, and why? *Rubric:* 3 = vendor breach of chat logs, because Pellmore cannot directly control vendor security;; 2 = names risk;; 1 = vague;; 0 = none.
 - **EX072 — Conditional conclusion.** Why is the "no prior consultation" conclusion conditional? *Rubric:* 3 = it depends on the measures being implemented, e.g. removing the SDK;; 2 = mentions measures;; 1 = unconditional;; 0 = none.
 
 ### Synthesis
@@ -1389,7 +1389,7 @@ Scores depend on weights; show sensitivity to different weights.
 ### Exercises
 
 - **EX076 — Centralisation trade-off.** What is the main trade-off of centralisation? *Rubric:* 3 = easiest analysis but concentrated exposure;; 2 = mentions risk;; 1 = says best overall;; 0 = none.
-- **EX077 — PET limits.** Name a limit of each of two privacy-enhancing technologies. *Rubric:* 3 = e.g. DP loses accuracy for small groups; MPC is complex and slow;; 2 = one;; 1 = none;; 0 = none.
+- **EX077 — PET limits.** Name a limit of each of two privacy-enhancing technologies. *Rubric:* 3 = e.g. DP loses accuracy for small groups; MPC is complex and slow;; 2 = one;; 1 = vague;; 0 = none.
 - **EX078 — Hybrid decision.** What did the architecture board decide? *Rubric:* 3 = federation for comparisons plus a restricted pseudonymised set for safety audits;; 2 = one part;; 1 = centralise;; 0 = none.
 
 ### Synthesis
@@ -1438,7 +1438,7 @@ Too many controls create overhead and confusion; prune regularly.
 
 - **EX079 — Control types for snooping.** Give a preventive, detective and corrective control for staff snooping. *Rubric:* 3 = access checks; anomaly signals; disciplinary and notification procedures;; 2 = two;; 1 = one;; 0 = none.
 - **EX080 — Valid consent.** What makes consent valid under EDPB Guidelines 05/2020? *Rubric:* 3 = freely given, specific, informed, unambiguous, easy to withdraw;; 2 = lists some;; 1 = wrong;; 0 = none.
-- **EX081 — Pruned control.** What control did Zara remove, and why? *Rubric:* 3 = a nightly database copy to an old reporting server, justified by no requirement;; 2 = mentions copy;; 1 = none;; 0 = none.
+- **EX081 — Pruned control.** What control did Zara remove, and why? *Rubric:* 3 = a nightly database copy to an old reporting server, justified by no requirement;; 2 = mentions copy;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1485,7 +1485,7 @@ Generated documentation covers only what is configured; manual processes still n
 ### Exercises
 
 - **EX082 — Warn then block.** Why log warnings before blocking untagged reads? *Rubric:* 3 = to find missing tags without breaking the service;; 2 = mentions safety;; 1 = block immediately;; 0 = none.
-- **EX083 — Reconciliation catch.** What did consent reconciliation find? *Rubric:* 3 = the email platform missed withdrawals during an outage;; 2 = mentions email;; 1 = none;; 0 = none.
+- **EX083 — Reconciliation catch.** What did consent reconciliation find? *Rubric:* 3 = the email platform missed withdrawals during an outage;; 2 = mentions email;; 1 = vague;; 0 = none.
 - **EX084 — Generated records.** Why generate the record of processing from configuration? *Rubric:* 3 = it stays aligned with the system as it changes;; 2 = mentions accuracy;; 1 = manual is better;; 0 = none.
 
 ### Synthesis
@@ -1560,7 +1560,7 @@ Field counts ignore sensitivity; one unnecessary health field may matter more th
 
 - **EX085 — Minimisation result.** What share of collected fields is unnecessary? *Rubric:* 3 = 8 of 18, 44%;; 2 = about four in ten;; 1 = wrong;; 0 = none.
 - **EX086 — Need claims.** Why does a second reviewer check need claims? *Rubric:* 3 = owners may overstate need, making the measure look good;; 2 = mentions bias;; 1 = trusts owners;; 0 = none.
-- **EX087 — Recursive principle.** What is the recursive principle of privacy engineering? *Rubric:* 3 = monitoring data must also follow privacy principles such as minimisation;; 2 = mentions metrics;; 1 = none;; 0 = none.
+- **EX087 — Recursive principle.** What is the recursive principle of privacy engineering? *Rubric:* 3 = monitoring data must also follow privacy principles such as minimisation;; 2 = mentions metrics;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1607,7 +1607,7 @@ Tests verify what they check; untested paths can still fail.
 ### Exercises
 
 - **EX088 — Expected results.** Why define expected results before running tests? *Rubric:* 3 = to prevent generous interpretation after seeing results;; 2 = mentions bias;; 1 = not needed;; 0 = none.
-- **EX089 — Erasure gap.** Which store kept data after erasure in the first run? *Rubric:* 3 = the analytics store, under the pseudonym;; 2 = names analytics;; 1 = none;; 0 = none.
+- **EX089 — Erasure gap.** Which store kept data after erasure in the first run? *Rubric:* 3 = the analytics store, under the pseudonym;; 2 = names analytics;; 1 = vague;; 0 = none.
 - **EX090 — Claim versus evidence.** Distinguish a claim from evidence about erasure. *Rubric:* 3 = a claim says it works; evidence is a dated test log across stores;; 2 = mentions logs;; 1 = equates them;; 0 = none.
 
 ### Synthesis
@@ -1772,7 +1772,7 @@ Break-glass access can be abused; review every use promptly.
 ### Exercises
 
 - **EX097 — Availability breach.** Can ransomware without exfiltration be a personal data breach? *Rubric:* 3 = yes; loss of availability is a breach;; 2 = yes without reason;; 1 = no;; 0 = none.
-- **EX098 — Restore risk.** What privacy risk does restoring a backup create, and how is it handled? *Rubric:* 3 = erased or expired data return; reapply erasure log and retention before service;; 2 = one part;; 1 = none;; 0 = none.
+- **EX098 — Restore risk.** What privacy risk does restoring a backup create, and how is it handled? *Rubric:* 3 = erased or expired data return; reapply erasure log and retention before service;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX099 — Fail-safe consent.** How should systems behave if the consent service is down? *Rubric:* 3 = treat consent as absent;; 2 = mentions caution;; 1 = assume present;; 0 = none.
 
 ### Synthesis
@@ -1868,7 +1868,7 @@ Prompts can alert a controlling relative if seen; design their appearance carefu
 ### Exercises
 
 - **EX103 — Default notes.** Why are consultation notes never shared by default? *Rubric:* 3 = they carry confidentiality norms; moving them needs the patient's explicit choice;; 2 = mentions confidentiality;; 1 = share all;; 0 = none.
-- **EX104 — Coercion defence.** What design responds to coercion by relatives? *Rubric:* 3 = private prompts when the patient is alone plus clinician questions;; 2 = one part;; 1 = none;; 0 = none.
+- **EX104 — Coercion defence.** What design responds to coercion by relatives? *Rubric:* 3 = private prompts when the patient is alone plus clinician questions;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX105 — Who changes settings.** Who may change sharing settings? *Rubric:* 3 = the patient, or a verified legal representative where the patient lacks capacity;; 2 = patient only;; 1 = carer;; 0 = none.
 
 ### Synthesis
@@ -1934,7 +1934,7 @@ Simple composition is conservative; advanced accounting gives tighter bounds but
 ### Exercises
 
 - **EX106 — Daily error.** What error would daily releases have? *Rubric:* 3 = 121.7 per count;; 2 = over a hundred;; 1 = wrong;; 0 = none.
-- **EX107 — Contribution limit.** Why limit each patient to one count per release? *Rubric:* 3 = keeps sensitivity at one so error figures hold;; 2 = mentions sensitivity;; 1 = none;; 0 = none.
+- **EX107 — Contribution limit.** Why limit each patient to one count per release? *Rubric:* 3 = keeps sensitivity at one so error figures hold;; 2 = mentions sensitivity;; 1 = vague;; 0 = none.
 - **EX108 — Safe post-processing.** Does rounding and clamping noisy counts weaken the guarantee? *Rubric:* 3 = no; post-processing does not weaken differential privacy;; 2 = no without reason;; 1 = yes;; 0 = none.
 
 ### Synthesis
@@ -1983,7 +1983,7 @@ Automation can mis-identify requesters; keep a manual route for edge cases.
 
 - **EX109 — On-time rate.** What share of rights requests was answered on time? *Rubric:* 3 = 97%;; 2 = nearly all;; 1 = wrong;; 0 = none.
 - **EX110 — Relative's record.** How is a clinician viewing a relative's record handled? *Rubric:* 3 = disciplinary process and assessment as a potential breach;; 2 = one part;; 1 = ignored;; 0 = none.
-- **EX111 — Management cycle.** What does the quarterly review provide? *Rubric:* 3 = a monitor-review-improve cycle expected of a management system;; 2 = mentions improvement;; 1 = none;; 0 = none.
+- **EX111 — Management cycle.** What does the quarterly review provide? *Rubric:* 3 = a monitor-review-improve cycle expected of a management system;; 2 = mentions improvement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2030,8 +2030,8 @@ Small validation groups may not represent all patients; recruit diverse particip
 ### Exercises
 
 - **EX112 — V and V.** Distinguish verification from validation. *Rubric:* 3 = verification checks requirements are met; validation checks requirements meet real needs;; 2 = one;; 1 = confuses;; 0 = none.
-- **EX113 — Erasure expectation.** What did validation reveal about erasure? *Rubric:* 3 = patients expected full medical record removal, which law prevents; explanation needed;; 2 = mentions expectation;; 1 = none;; 0 = none.
-- **EX114 — Refined assumption.** Which legal assumption did counsel refine? *Rubric:* 3 = some patient-entered symptom notes are part of the medical record and must be kept;; 2 = mentions notes;; 1 = none;; 0 = none.
+- **EX113 — Erasure expectation.** What did validation reveal about erasure? *Rubric:* 3 = patients expected full medical record removal, which law prevents; explanation needed;; 2 = mentions expectation;; 1 = vague;; 0 = none.
+- **EX114 — Refined assumption.** Which legal assumption did counsel refine? *Rubric:* 3 = some patient-entered symptom notes are part of the medical record and must be kept;; 2 = mentions notes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2078,7 +2078,7 @@ Debt registers need regular review or they become lists nobody reads.
 ### Exercises
 
 - **EX115 — Privacy debt.** Define privacy debt. *Rubric:* 3 = shortcuts that weaken privacy, such as temporary copies or disabled checks;; 2 = example only;; 1 = technical debt in general;; 0 = none.
-- **EX116 — Library regression.** What did the test suite catch after a library update? *Rubric:* 3 = changed retry behaviour affecting erasure reliability;; 2 = mentions erasure;; 1 = none;; 0 = none.
+- **EX116 — Library regression.** What did the test suite catch after a library update? *Rubric:* 3 = changed retry behaviour affecting erasure reliability;; 2 = mentions erasure;; 1 = vague;; 0 = none.
 - **EX117 — Maintainability and accountability.** Why is maintainability a precondition for accountability? *Rubric:* 3 = an organisation that cannot explain its controls cannot demonstrate compliance;; 2 = mentions explanation;; 1 = unrelated;; 0 = none.
 
 ### Synthesis
@@ -2125,8 +2125,8 @@ Passing tests do not prove absence of vulnerabilities.
 
 ### Exercises
 
-- **EX118 — Partial success.** Which adversarial attack partly succeeded, and why? *Rubric:* 3 = statistics inference for a rural clinic via legacy small-count reports;; 2 = mentions rural clinic;; 1 = none;; 0 = none.
-- **EX119 — Legacy outputs rule.** What rule did Zara add after the statistics leak? *Rubric:* 3 = search for outputs from the old approach whenever a new protection is introduced;; 2 = mentions legacy;; 1 = none;; 0 = none.
+- **EX118 — Partial success.** Which adversarial attack partly succeeded, and why? *Rubric:* 3 = statistics inference for a rural clinic via legacy small-count reports;; 2 = mentions rural clinic;; 1 = vague;; 0 = none.
+- **EX119 — Legacy outputs rule.** What rule did Zara add after the statistics leak? *Rubric:* 3 = search for outputs from the old approach whenever a new protection is introduced;; 2 = mentions legacy;; 1 = vague;; 0 = none.
 - **EX120 — Independent value.** Why commission independent testing after strong internal tests? *Rubric:* 3 = different habits find different issues, e.g. the autocomplete leak;; 2 = mentions independence;; 1 = unnecessary;; 0 = none.
 
 ### Synthesis
@@ -2173,8 +2173,8 @@ Before-and-after comparisons can include unrelated changes; note other events in
 
 ### Exercises
 
-- **EX121 — Name caches.** How did Zara remove redundant name caches? *Rubric:* 3 = replaced three caches with one name service for authorised callers;; 2 = mentions caches;; 1 = none;; 0 = none.
-- **EX122 — Clinical trade-off.** How was chat log retention shortened safely? *Rubric:* 3 = clinicians agreed to six months with the option to keep logs in the record when relevant;; 2 = mentions clinicians;; 1 = none;; 0 = none.
+- **EX121 — Name caches.** How did Zara remove redundant name caches? *Rubric:* 3 = replaced three caches with one name service for authorised callers;; 2 = mentions caches;; 1 = vague;; 0 = none.
+- **EX122 — Clinical trade-off.** How was chat log retention shortened safely? *Rubric:* 3 = clinicians agreed to six months with the option to keep logs in the record when relevant;; 2 = mentions clinicians;; 1 = vague;; 0 = none.
 - **EX123 — Services with access.** How did the number of services with clinical access change? *Rubric:* 3 = from eleven to six;; 2 = direction only;; 1 = wrong;; 0 = none.
 
 ### Synthesis
@@ -2221,9 +2221,9 @@ Volunteers may not represent patients with low digital confidence.
 
 ### Exercises
 
-- **EX124 — Success criterion.** What criterion did Zara set before the study? *Rubric:* 3 = at least 80% correct comprehension;; 2 = mentions threshold;; 1 = none;; 0 = none.
+- **EX124 — Success criterion.** What criterion did Zara set before the study? *Rubric:* 3 = at least 80% correct comprehension;; 2 = mentions threshold;; 1 = vague;; 0 = none.
 - **EX125 — Preview effect.** What comprehension did the two screens achieve? *Rubric:* 3 = 71% current, 90% preview;; 2 = one number;; 1 = wrong;; 0 = none.
-- **EX126 — Study caveat.** Name one caveat on the comprehension result. *Rubric:* 3 = small sample, confident volunteers or scenarios not real relationships;; 2 = vague caveat;; 1 = none;; 0 = none.
+- **EX126 — Study caveat.** Name one caveat on the comprehension result. *Rubric:* 3 = small sample, confident volunteers or scenarios not real relationships;; 2 = vague caveat;; 1 = minimal attempt;; 0 = none.
 
 ### Synthesis
 
@@ -2318,7 +2318,7 @@ Narrow scope limits usefulness; plan extensions after verification.
 ### Exercises
 
 - **EX130 — Capstone limit.** Why limit the capstone to outcome counts and rates? *Rubric:* 3 = to complete and verify properly within the year;; 2 = mentions time;; 1 = broad scope;; 0 = none.
-- **EX131 — Reconstruction control.** How does the design limit reconstruction attacks? *Rubric:* 3 = a per-study differential privacy budget;; 2 = mentions noise;; 1 = none;; 0 = none.
+- **EX131 — Reconstruction control.** How does the design limit reconstruction attacks? *Rubric:* 3 = a per-study differential privacy budget;; 2 = mentions noise;; 1 = vague;; 0 = none.
 - **EX132 — Verification first.** Why plan verification before building? *Rubric:* 3 = it prevents a system that only works in demonstrations;; 2 = mentions quality;; 1 = after;; 0 = none.
 
 ### Synthesis
@@ -2365,7 +2365,7 @@ Review panels can miss issues outside their expertise; combine with testing.
 
 ### Exercises
 
-- **EX133 — Opt-out cache.** What was the cached opt-out problem? *Rubric:* 3 = patients opting out mid-study could remain in cached intermediate results;; 2 = mentions cache;; 1 = none;; 0 = none.
+- **EX133 — Opt-out cache.** What was the cached opt-out problem? *Rubric:* 3 = patients opting out mid-study could remain in cached intermediate results;; 2 = mentions cache;; 1 = vague;; 0 = none.
 - **EX134 — Query log sensitivity.** Why protect the query log? *Rubric:* 3 = queries reveal researchers' sensitive interests;; 2 = mentions privacy;; 1 = unnecessary;; 0 = none.
 - **EX135 — Rare conditions.** How did Zara handle rare-condition noise? *Rubric:* 3 = national aggregation and longer accumulation periods;; 2 = one part;; 1 = ignore;; 0 = none.
 
@@ -2413,8 +2413,8 @@ Template systems can be extended unsafely; review each new template.
 
 ### Exercises
 
-- **EX136 — Expiry bug.** What test failed in verification? *Rubric:* 3 = an expired study could run due to a time-zone date format;; 2 = mentions expiry;; 1 = none;; 0 = none.
-- **EX137 — Attack result.** What did the reconstruction attack recover? *Rubric:* 3 = no individual's data;; 2 = none;; 1 = partial;; 0 = none.
+- **EX136 — Expiry bug.** What test failed in verification? *Rubric:* 3 = an expired study could run due to a time-zone date format;; 2 = mentions expiry;; 1 = vague;; 0 = none.
+- **EX137 — Attack result.** What did the reconstruction attack recover? *Rubric:* 3 = no individual's data;; 2 = none;; 1 = partial;; 0 = no answer.
 - **EX138 — Researcher view.** How did researchers judge the template approach? *Rubric:* 3 = restrictive but workable; asked for one more template;; 2 = mentions restriction;; 1 = ideal;; 0 = none.
 
 ### Synthesis
@@ -2492,7 +2492,7 @@ Exercises run with known scenarios; real incidents are messier and slower to und
 
 - **EX139 — Deadline.** When was the 72-hour deadline in the exercise? *Rubric:* 3 = 15:00 on 7 March;; 2 = right day;; 1 = wrong;; 0 = none.
 - **EX140 — Weak link.** What was the weakest link in the timeline? *Rubric:* 3 = the vendor's 35.5-hour delay before telling Pellmore;; 2 = mentions vendor;; 1 = internal process;; 0 = none.
-- **EX141 — Patient message.** What must the patient communication contain? *Rubric:* 3 = nature of breach, likely consequences, measures and contact point in clear language;; 2 = lists some;; 1 = none;; 0 = none.
+- **EX141 — Patient message.** What must the patient communication contain? *Rubric:* 3 = nature of breach, likely consequences, measures and contact point in clear language;; 2 = lists some;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2562,9 +2562,9 @@ Digests detect change, not truth; a correct-looking file can still describe a wr
 
 ### Exercises
 
-- **EX142 — Mismatched file.** Which file failed the integrity check? *Rubric:* 3 = erasure_test.log;; 2 = names erasure log;; 1 = none;; 0 = none.
+- **EX142 — Mismatched file.** Which file failed the integrity check? *Rubric:* 3 = erasure_test.log;; 2 = names erasure log;; 1 = vague;; 0 = none.
 - **EX143 — What the mismatch shows.** What does a digest mismatch prove and not prove? *Rubric:* 3 = the file changed since approval; not who changed it or why;; 2 = one part;; 1 = proves fraud;; 0 = none.
-- **EX144 — Evidence lesson.** What process lesson follows from the mismatch? *Rubric:* 3 = version evidence instead of overwriting, with dates and reasons;; 2 = mentions versions;; 1 = none;; 0 = none.
+- **EX144 — Evidence lesson.** What process lesson follows from the mismatch? *Rubric:* 3 = version evidence instead of overwriting, with dates and reasons;; 2 = mentions versions;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2659,7 +2659,7 @@ A passed defense is not the end of learning; practice will expose new gaps.
 ### Exercises
 
 - **EX148 — Template guarantee.** How are guarantees maintained when templates change? *Rubric:* 3 = each new template needs sensitivity analysis and review;; 2 = mentions review;; 1 = automatic;; 0 = none.
-- **EX149 — Vendor answer.** What evidence did Zara cite on vendor dependence? *Rubric:* 3 = the breach exercise and the twelve-hour notification clause;; 2 = one;; 1 = none;; 0 = none.
+- **EX149 — Vendor answer.** What evidence did Zara cite on vendor dependence? *Rubric:* 3 = the breach exercise and the twelve-hour notification clause;; 2 = one;; 1 = vague;; 0 = none.
 - **EX150 — Course conclusion.** What does Zara conclude about privacy engineering? *Rubric:* 3 = it is a way of building systems responsibly from the start, not an add-on;; 2 = mentions design;; 1 = specialism;; 0 = none.
 
 ### Synthesis

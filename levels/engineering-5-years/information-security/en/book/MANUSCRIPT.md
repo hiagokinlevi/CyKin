@@ -70,8 +70,8 @@ Treating a quiet log source as safe can hide a disabled forwarder.
 ### Exercises
 
 - **EX001 — Daily events.** About how many events arrive per day? *Rubric:* 3 = about forty million;; 2 = close;; 1 = wrong;; 0 = none.
-- **EX002 — Silent source.** What might a sudden drop in a source's event rate mean? *Rubric:* 3 = a stopped forwarder;; 2 = correct;; 1 = none;; 0 = none.
-- **EX003 — Summary risk.** What is the risk of summarising old logs? *Rubric:* 3 = losing detail investigators need;; 2 = correct;; 1 = none;; 0 = none.
+- **EX002 — Silent source.** What might a sudden drop in a source's event rate mean? *Rubric:* 3 = a stopped forwarder;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX003 — Summary risk.** What is the risk of summarising old logs? *Rubric:* 3 = losing detail investigators need;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -109,9 +109,9 @@ A formal rule can still encode the wrong policy; confirm it with owners.
 
 ### Exercises
 
-- **EX004 — Empty difference.** Which set difference should be empty? *Rubric:* 3 = payroll-access accounts minus finance staff;; 2 = correct;; 1 = none;; 0 = none.
-- **EX005 — Shared accounts.** Why do shared accounts harm accountability? *Rubric:* 3 = actions cannot be traced to a person;; 2 = correct;; 1 = none;; 0 = none.
-- **EX006 — Cutting paths.** How can many attack paths be cut at once? *Rubric:* 3 = remove a few trust edges;; 2 = correct;; 1 = none;; 0 = none.
+- **EX004 — Empty difference.** Which set difference should be empty? *Rubric:* 3 = payroll-access accounts minus finance staff;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX005 — Shared accounts.** Why do shared accounts harm accountability? *Rubric:* 3 = actions cannot be traced to a person;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX006 — Cutting paths.** How can many attack paths be cut at once? *Rubric:* 3 = remove a few trust edges;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -149,8 +149,8 @@ Deleting files does not remove data from storage media.
 
 ### Exercises
 
-- **EX007 — Radio leakage.** Why does encryption matter for depot wireless? *Rubric:* 3 = signals reach beyond the building;; 2 = correct;; 1 = none;; 0 = none.
-- **EX008 — SSD remanence.** Why can deleted data survive on solid-state drives? *Rubric:* 3 = wear-levelling keeps old copies;; 2 = correct;; 1 = none;; 0 = none.
+- **EX007 — Radio leakage.** Why does encryption matter for depot wireless? *Rubric:* 3 = signals reach beyond the building;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX008 — SSD remanence.** Why can deleted data survive on solid-state drives? *Rubric:* 3 = wear-levelling keeps old copies;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX009 — UPS runtime.** What runtime does the power supply give at current load? *Rubric:* 3 = under ten minutes;; 2 = correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-04"></a>
@@ -189,9 +189,9 @@ Blocking known bad input is weaker than allowing only known good input.
 
 ### Exercises
 
-- **EX010 — Inactive accounts.** What does the first script count? *Rubric:* 3 = accounts with no login in ninety days;; 2 = correct;; 1 = none;; 0 = none.
-- **EX011 — Allow list.** How is the depot code validated? *Rubric:* 3 = against the twelve valid codes;; 2 = correct;; 1 = none;; 0 = none.
-- **EX012 — Injection fix.** How should the reset script call commands? *Rubric:* 3 = pass arguments as a list;; 2 = correct;; 1 = none;; 0 = none.
+- **EX010 — Inactive accounts.** What does the first script count? *Rubric:* 3 = accounts with no login in ninety days;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX011 — Allow list.** How is the depot code validated? *Rubric:* 3 = against the twelve valid codes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX012 — Injection fix.** How should the reset script call commands? *Rubric:* 3 = pass arguments as a list;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -231,7 +231,7 @@ A finding without a clear owner and action rarely gets fixed.
 
 - **EX013 — Finding structure.** Name the parts of a finding. *Rubric:* 3 = found, where, why, likelihood, action;; 2 = most;; 1 = few;; 0 = none.
 - **EX014 — Trust boundaries.** What does Prof. Hale ask her to mark? *Rubric:* 3 = trust boundaries;; 2 = correct;; 1 = other;; 0 = none.
-- **EX015 — Record answer.** Why was the folder moved rather than deleted? *Rubric:* 3 = licences are retained for insurance checks;; 2 = correct;; 1 = none;; 0 = none.
+- **EX015 — Record answer.** Why was the folder moved rather than deleted? *Rubric:* 3 = licences are retained for insurance checks;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -270,8 +270,8 @@ A single average closure rate hides slow handling of critical findings.
 ### Exercises
 
 - **EX016 — Half-life.** What is the half-life at fifteen percent weekly closure? *Rubric:* 3 = a little over four weeks;; 2 = close;; 1 = wrong;; 0 = none.
-- **EX017 — Steady state.** What is the steady-state backlog formula? *Rubric:* 3 = inflow divided by closure rate;; 2 = correct;; 1 = none;; 0 = none.
-- **EX018 — Reduce inflow.** How can inflow be reduced? *Rubric:* 3 = remove unused software;; 2 = correct;; 1 = none;; 0 = none.
+- **EX017 — Steady state.** What is the steady-state backlog formula? *Rubric:* 3 = inflow divided by closure rate;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX018 — Reduce inflow.** How can inflow be reduced? *Rubric:* 3 = remove unused software;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -311,7 +311,7 @@ An accurate-sounding detector can still produce mostly false alerts.
 
 - **EX019 — False alarms.** About how many false alarms occur per million logins? *Rubric:* 3 = about ten thousand;; 2 = close;; 1 = wrong;; 0 = none.
 - **EX020 — Poisson weeks.** What model describes weekly detections? *Rubric:* 3 = Poisson with mean twelve;; 2 = correct;; 1 = other;; 0 = none.
-- **EX021 — Laptop confounder.** What might explain fewer detections with new laptops? *Rubric:* 3 = larger depots with IT staff;; 2 = correct;; 1 = none;; 0 = none.
+- **EX021 — Laptop confounder.** What might explain fewer detections with new laptops? *Rubric:* 3 = larger depots with IT staff;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -349,9 +349,9 @@ Firmware and management controllers are often left with factory credentials.
 
 ### Exercises
 
-- **EX022 — Kernel separation.** What does kernel and application separation prevent? *Rubric:* 3 = one application reading another's memory;; 2 = correct;; 1 = none;; 0 = none.
+- **EX022 — Kernel separation.** What does kernel and application separation prevent? *Rubric:* 3 = one application reading another's memory;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX023 — Secure boot gap.** Why was secure boot disabled on some laptops? *Rubric:* 3 = an old driver;; 2 = correct;; 1 = other;; 0 = none.
-- **EX024 — Signing key.** Where should the code-signing key move? *Rubric:* 3 = a hardware token or managed key service;; 2 = correct;; 1 = none;; 0 = none.
+- **EX024 — Signing key.** Where should the code-signing key move? *Rubric:* 3 = a hardware token or managed key service;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -391,7 +391,7 @@ A password committed to code must be treated as exposed and changed.
 
 - **EX025 — Test module.** Which module runs her tests? *Rubric:* 3 = unittest;; 2 = correct;; 1 = other;; 0 = none.
 - **EX026 — Secret storage.** Where does the tool read credentials from? *Rubric:* 3 = an environment variable set by the scheduler;; 2 = correct;; 1 = code;; 0 = none.
-- **EX027 — Parser choice.** Why write her own parser? *Rubric:* 3 = simple format, unmaintained library;; 2 = correct;; 1 = none;; 0 = none.
+- **EX027 — Parser choice.** Why write her own parser? *Rubric:* 3 = simple format, unmaintained library;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -431,7 +431,7 @@ Testing a live system without authorisation is not acceptable, even to help.
 
 - **EX028 — Untested report.** What does Lindiwe do on noticing the exposure? *Rubric:* 3 = reports it without testing further;; 2 = correct;; 1 = test;; 0 = none.
 - **EX029 — Notice gap.** What did the monitoring notice omit? *Rubric:* 3 = web browsing logging;; 2 = correct;; 1 = other;; 0 = none.
-- **EX030 — Safety link.** Why do temperature records matter for safety? *Rubric:* 3 = tampering could let spoiled medicines reach patients;; 2 = correct;; 1 = none;; 0 = none.
+- **EX030 — Safety link.** Why do temperature records matter for safety? *Rubric:* 3 = tampering could let spoiled medicines reach patients;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -469,8 +469,8 @@ A flat network lets one compromised device reach everything.
 
 ### Exercises
 
-- **EX031 — Clear-text risk.** What risk do the printers' management protocol pose? *Rubric:* 3 = passwords sent in clear text;; 2 = correct;; 1 = none;; 0 = none.
-- **EX032 — Resolver logs.** What can resolver logs help detect? *Rubric:* 3 = malware contacting unusual domains;; 2 = correct;; 1 = none;; 0 = none.
+- **EX031 — Clear-text risk.** What risk do the printers' management protocol pose? *Rubric:* 3 = passwords sent in clear text;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX032 — Resolver logs.** What can resolver logs help detect? *Rubric:* 3 = malware contacting unusual domains;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX033 — Segmentation value.** What does segmentation mainly limit? *Rubric:* 3 = how far attackers move;; 2 = correct;; 1 = entry;; 0 = none.
 
 <a id="ch-12"></a>
@@ -510,8 +510,8 @@ Logs kept only on the server can be erased by an attacker who controls it.
 ### Exercises
 
 - **EX034 — Backup account.** What account should the backup service use? *Rubric:* 3 = a dedicated least-privilege account;; 2 = correct;; 1 = admin;; 0 = none.
-- **EX035 — Central logs.** Why forward logs to a central collector? *Rubric:* 3 = attackers cannot erase local evidence;; 2 = correct;; 1 = none;; 0 = none.
-- **EX036 — Update staging.** What does Lindiwe propose for updates? *Rubric:* 3 = a test group first, then promotion after a week;; 2 = correct;; 1 = none;; 0 = none.
+- **EX035 — Central logs.** Why forward logs to a central collector? *Rubric:* 3 = attackers cannot erase local evidence;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX036 — Update staging.** What does Lindiwe propose for updates? *Rubric:* 3 = a test group first, then promotion after a week;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 
@@ -549,9 +549,9 @@ A backup reachable and deletable from the main network may not survive ransomwar
 
 ### Exercises
 
-- **EX037 — Database accounts.** What does Lindiwe recommend for the application's database access? *Rubric:* 3 = separate limited read and write accounts;; 2 = correct;; 1 = none;; 0 = none.
+- **EX037 — Database accounts.** What does Lindiwe recommend for the application's database access? *Rubric:* 3 = separate limited read and write accounts;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX038 — Injection fix.** How does she fix the search page? *Rubric:* 3 = parameterised queries;; 2 = correct;; 1 = other;; 0 = none.
-- **EX039 — Backup copy.** What extra backup copy does she recommend? *Rubric:* 3 = one that cannot be altered for a set period;; 2 = correct;; 1 = none;; 0 = none.
+- **EX039 — Backup copy.** What extra backup copy does she recommend? *Rubric:* 3 = one that cannot be altered for a set period;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-14"></a>
 
@@ -589,9 +589,9 @@ Hiding a button in the interface does not stop requests to the server.
 
 ### Exercises
 
-- **EX040 — Delete flaw.** What flaw does code review find? *Rubric:* 3 = server accepts delete requests from anyone logged in;; 2 = correct;; 1 = none;; 0 = none.
+- **EX040 — Delete flaw.** What flaw does code review find? *Rubric:* 3 = server accepts delete requests from anyone logged in;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX041 — Dependency check.** How often are dependencies checked? *Rubric:* 3 = weekly;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX042 — Build protection.** Name one build protection she recommends. *Rubric:* 3 = signed packages;; 2 = one;; 1 = none;; 0 = none.
+- **EX042 — Build protection.** Name one build protection she recommends. *Rubric:* 3 = signed packages;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -629,9 +629,9 @@ Calling a vulnerability a risk ignores threat and impact.
 
 ### Exercises
 
-- **EX043 — Integrity definition.** How does FIPS 199 define integrity? *Rubric:* 3 = guarding against improper modification or destruction;; 2 = correct;; 1 = none;; 0 = none.
-- **EX044 — High-water mark.** What is the high-water mark? *Rubric:* 3 = overall category is the highest of the three;; 2 = correct;; 1 = none;; 0 = none.
-- **EX045 — Defence in depth.** What is defence in depth? *Rubric:* 3 = several independent controls;; 2 = correct;; 1 = none;; 0 = none.
+- **EX043 — Integrity definition.** How does FIPS 199 define integrity? *Rubric:* 3 = guarding against improper modification or destruction;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX044 — High-water mark.** What is the high-water mark? *Rubric:* 3 = overall category is the highest of the three;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX045 — Defence in depth.** What is defence in depth? *Rubric:* 3 = several independent controls;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-16"></a>
 
@@ -669,7 +669,7 @@ Forgotten retired servers often keep old data and old vulnerabilities.
 
 ### Exercises
 
-- **EX046 — Mapping data.** What data does the mapping service receive? *Rubric:* 3 = full delivery addresses;; 2 = correct;; 1 = none;; 0 = none.
+- **EX046 — Mapping data.** What data does the mapping service receive? *Rubric:* 3 = full delivery addresses;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX047 — Untested requirements.** How many requirements had no test? *Rubric:* 3 = two;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX048 — Retirement checklist.** What does the retirement checklist cover? *Rubric:* 3 = data deletion, account removal, disconnection;; 2 = all;; 1 = some;; 0 = none.
 
@@ -710,7 +710,7 @@ Aggressive automatic lockouts can become a denial of service.
 ### Exercises
 
 - **EX049 — Slowest stage.** What is the slowest stage in the loop? *Rubric:* 3 = overnight analyst review;; 2 = correct;; 1 = other;; 0 = none.
-- **EX050 — Gradual response.** What comes before locking an account? *Rubric:* 3 = slowing attempts, then extra verification;; 2 = correct;; 1 = none;; 0 = none.
+- **EX050 — Gradual response.** What comes before locking an account? *Rubric:* 3 = slowing attempts, then extra verification;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX051 — Loop metrics.** Which statistics does she report? *Rubric:* 3 = medians and the slowest tenth;; 2 = correct;; 1 = means;; 0 = none.
 
 <a id="ch-18"></a>
@@ -749,7 +749,7 @@ Relying on an undocumented port is obscurity, not protection.
 
 ### Exercises
 
-- **EX052 — Fail-safe defaults.** What does fail-safe defaults mean for new staff? *Rubric:* 3 = no access until approved;; 2 = correct;; 1 = none;; 0 = none.
+- **EX052 — Fail-safe defaults.** What does fail-safe defaults mean for new staff? *Rubric:* 3 = no access until approved;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX053 — Chosen option.** Which option do developers choose? *Rubric:* 3 = the intermediate service;; 2 = correct;; 1 = direct;; 0 = none.
 - **EX054 — Open design.** What did the transfer tool rely on? *Rubric:* 3 = an undocumented port;; 2 = correct;; 1 = other;; 0 = none.
 
@@ -791,7 +791,7 @@ App-based approval prompts can be accepted by users who did not start a login.
 
 - **EX055 — Orphaned accounts.** Where were leavers not removed? *Rubric:* 3 = the depot routing system;; 2 = correct;; 1 = other;; 0 = none.
 - **EX056 — Admin factor.** Which factor does she recommend for administrators? *Rubric:* 3 = hardware keys;; 2 = correct;; 1 = other;; 0 = none.
-- **EX057 — Certificate outages.** Why did certificates expire? *Rubric:* 3 = renewal relied on memory;; 2 = correct;; 1 = none;; 0 = none.
+- **EX057 — Certificate outages.** Why did certificates expire? *Rubric:* 3 = renewal relied on memory;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-20"></a>
 
@@ -869,9 +869,9 @@ A requirement without a measurable threshold cannot be verified.
 
 ### Exercises
 
-- **EX061 — Customer demands.** What does the retail customer require? *Rubric:* 3 = MFA for remote access and 24-hour incident reports;; 2 = correct;; 1 = none;; 0 = none.
+- **EX061 — Customer demands.** What does the retail customer require? *Rubric:* 3 = MFA for remote access and 24-hour incident reports;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX062 — Patch requirement.** How quickly must critical patches be applied? *Rubric:* 3 = within fourteen days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX063 — Retention conflict.** How is the log retention conflict resolved? *Rubric:* 3 = a year with restricted access and minimised fields;; 2 = correct;; 1 = none;; 0 = none.
+- **EX063 — Retention conflict.** How is the log retention conflict resolved? *Rubric:* 3 = a year with restricted access and minimised fields;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-22"></a>
 
@@ -974,7 +974,7 @@ Modelling only one powerful adversary misses common, simpler threats.
 
 - **EX067 — Fraudster target.** What do fraudsters target? *Rubric:* 3 = integrity of delivery addresses;; 2 = correct;; 1 = other;; 0 = none.
 - **EX068 — Silent failure.** Which failure would go unnoticed for hours? *Rubric:* 3 = a full message queue;; 2 = correct;; 1 = other;; 0 = none.
-- **EX069 — Open gap.** Which threat lacks an adequate control? *Rubric:* 3 = insiders exporting customer lists;; 2 = correct;; 1 = none;; 0 = none.
+- **EX069 — Open gap.** Which threat lacks an adequate control? *Rubric:* 3 = insiders exporting customer lists;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-24"></a>
 
@@ -1012,9 +1012,9 @@ Mixing observations with conclusions makes reports harder to verify.
 
 ### Exercises
 
-- **EX070 — Signed plan.** Who signs the assessment plan? *Rubric:* 3 = the depot manager and security lead;; 2 = correct;; 1 = none;; 0 = none.
-- **EX071 — Evidence integrity.** How does she protect evidence integrity? *Rubric:* 3 = checksums in a restricted folder;; 2 = correct;; 1 = none;; 0 = none.
-- **EX072 — Corrected error.** What factual error is corrected? *Rubric:* 3 = a door with a code lock she missed;; 2 = correct;; 1 = none;; 0 = none.
+- **EX070 — Signed plan.** Who signs the assessment plan? *Rubric:* 3 = the depot manager and security lead;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX071 — Evidence integrity.** How does she protect evidence integrity? *Rubric:* 3 = checksums in a restricted folder;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX072 — Corrected error.** What factual error is corrected? *Rubric:* 3 = a door with a code lock she missed;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-25"></a>
 
@@ -1052,9 +1052,9 @@ A strong authentication design without a recovery process fails at the first los
 
 ### Exercises
 
-- **EX073 — Studio constraints.** Name one constraint of the brief. *Rubric:* 3 = small budget;; 2 = one;; 1 = none;; 0 = none.
-- **EX074 — VPN drawback.** What drawback does the VPN option have? *Rubric:* 3 = broad network access once connected;; 2 = correct;; 1 = none;; 0 = none.
-- **EX075 — Recovery process.** What recovery process is added? *Rubric:* 3 = second key at home and verified call;; 2 = correct;; 1 = none;; 0 = none.
+- **EX073 — Studio constraints.** Name one constraint of the brief. *Rubric:* 3 = small budget;; 2 = one;; 1 = vague;; 0 = none.
+- **EX074 — VPN drawback.** What drawback does the VPN option have? *Rubric:* 3 = broad network access once connected;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX075 — Recovery process.** What recovery process is added? *Rubric:* 3 = second key at home and verified call;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-26"></a>
 
@@ -1092,9 +1092,9 @@ Moving to a cloud service does not transfer responsibility for accounts and conf
 
 ### Exercises
 
-- **EX076 — Perimeter weakness.** Why is the perimeter model insufficient? *Rubric:* 3 = attackers inside inherit trust;; 2 = correct;; 1 = none;; 0 = none.
+- **EX076 — Perimeter weakness.** Why is the perimeter model insufficient? *Rubric:* 3 = attackers inside inherit trust;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX077 — Mediation link.** Which principle does identity-centred checking follow? *Rubric:* 3 = complete mediation;; 2 = correct;; 1 = other;; 0 = none.
-- **EX078 — Cloud responsibility.** What remains Saltmarsh's responsibility in the cloud? *Rubric:* 3 = accounts, configuration and data;; 2 = correct;; 1 = none;; 0 = none.
+- **EX078 — Cloud responsibility.** What remains Saltmarsh's responsibility in the cloud? *Rubric:* 3 = accounts, configuration and data;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-27"></a>
 
@@ -1132,9 +1132,9 @@ A control that leaves no evidence cannot be shown to work.
 
 ### Exercises
 
-- **EX079 — Preventive part.** What is the preventive part of the address control? *Rubric:* 3 = second-person approval;; 2 = correct;; 1 = none;; 0 = none.
+- **EX079 — Preventive part.** What is the preventive part of the address control? *Rubric:* 3 = second-person approval;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX080 — Targeted share.** About what share of orders exceed the threshold? *Rubric:* 3 = about five percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX081 — Planted tests.** How is the control tested despite rare fraud? *Rubric:* 3 = staging synthetic suspicious changes;; 2 = correct;; 1 = none;; 0 = none.
+- **EX081 — Planted tests.** How is the control tested despite rare fraud? *Rubric:* 3 = staging synthetic suspicious changes;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1279,8 +1279,8 @@ Ranking by total failures confuses broken clients with attacks.
 ### Exercises
 
 - **EX085 — Flagged accounts.** Which accounts are flagged? *Rubric:* 3 = u17, u402 and u977;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX086 — Top account.** Why is u1200 not flagged? *Rubric:* 3 = failures spread across the day;; 2 = correct;; 1 = none;; 0 = none.
-- **EX087 — Blind spot.** What does the window measure miss? *Rubric:* 3 = slow, patient guessing;; 2 = correct;; 1 = none;; 0 = none.
+- **EX086 — Top account.** Why is u1200 not flagged? *Rubric:* 3 = failures spread across the day;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX087 — Blind spot.** What does the window measure miss? *Rubric:* 3 = slow, patient guessing;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-30"></a>
 
@@ -1318,9 +1318,9 @@ Untested boundary cases often reveal disagreement between definition and code.
 
 ### Exercises
 
-- **EX088 — Planted burst.** What planted burst should be flagged? *Rubric:* 3 = ten failures in four minutes;; 2 = correct;; 1 = none;; 0 = none.
-- **EX089 — Failing test.** Which planted case failed at first? *Rubric:* 3 = ten failures spanning exactly five minutes;; 2 = correct;; 1 = none;; 0 = none.
-- **EX090 — Permanent tests.** Why keep planted cases permanently? *Rubric:* 3 = to check future changes quickly;; 2 = correct;; 1 = none;; 0 = none.
+- **EX088 — Planted burst.** What planted burst should be flagged? *Rubric:* 3 = ten failures in four minutes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX089 — Failing test.** Which planted case failed at first? *Rubric:* 3 = ten failures spanning exactly five minutes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX090 — Permanent tests.** Why keep planted cases permanently? *Rubric:* 3 = to check future changes quickly;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-31"></a>
 
@@ -1359,7 +1359,7 @@ Exceptions without expiry dates become permanent weaknesses.
 ### Exercises
 
 - **EX091 — Rollout order.** Which group comes first? *Rubric:* 3 = administrators with hardware keys;; 2 = correct;; 1 = other;; 0 = none.
-- **EX092 — Warehouse method.** How do warehouse staff log in? *Rubric:* 3 = badge tap with a personal code;; 2 = correct;; 1 = none;; 0 = none.
+- **EX092 — Warehouse method.** How do warehouse staff log in? *Rubric:* 3 = badge tap with a personal code;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX093 — Adoption measures.** What three adoption measures are tracked? *Rubric:* 3 = enrolled share, second-factor logins, open exceptions;; 2 = all;; 1 = some;; 0 = none.
 
 <a id="ch-32"></a>
@@ -1425,8 +1425,8 @@ A successful backup job does not prove data can be restored intact.
 ### Exercises
 
 - **EX094 — Restore figures.** How many files were verified? *Rubric:* 3 = 492, 98.4 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX095 — Missing cause.** Why were five files missing? *Rubric:* 3 = a folder added after selection was configured;; 2 = correct;; 1 = none;; 0 = none.
-- **EX096 — Dispatch objectives.** What are dispatch's recovery objectives? *Rubric:* 3 = lose at most an hour, return within four hours;; 2 = correct;; 1 = none;; 0 = none.
+- **EX095 — Missing cause.** Why were five files missing? *Rubric:* 3 = a folder added after selection was configured;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX096 — Dispatch objectives.** What are dispatch's recovery objectives? *Rubric:* 3 = lose at most an hour, return within four hours;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-33"></a>
 
@@ -1464,9 +1464,9 @@ A resilience plan that has never been exercised usually contains outdated detail
 
 ### Exercises
 
-- **EX097 — Essential services.** Name one essential service identified. *Rubric:* 3 = refrigerated medicine deliveries;; 2 = one;; 1 = none;; 0 = none.
-- **EX098 — Exercise discovery.** What did the exercise reveal? *Rubric:* 3 = missing printed lists location and outdated contacts;; 2 = correct;; 1 = none;; 0 = none.
-- **EX099 — Temperature evidence.** How is temperature evidence protected? *Rubric:* 3 = independent loggers read at delivery;; 2 = correct;; 1 = none;; 0 = none.
+- **EX097 — Essential services.** Name one essential service identified. *Rubric:* 3 = refrigerated medicine deliveries;; 2 = one;; 1 = vague;; 0 = none.
+- **EX098 — Exercise discovery.** What did the exercise reveal? *Rubric:* 3 = missing printed lists location and outdated contacts;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX099 — Temperature evidence.** How is temperature evidence protected? *Rubric:* 3 = independent loggers read at delivery;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-34"></a>
 
@@ -1504,9 +1504,9 @@ A credential shared between partners cannot be revoked for one without affecting
 
 ### Exercises
 
-- **EX100 — Shared credential.** What problem did two carriers create? *Rubric:* 3 = they shared one credential;; 2 = correct;; 1 = none;; 0 = none.
+- **EX100 — Shared credential.** What problem did two carriers create? *Rubric:* 3 = they shared one credential;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX101 — Removed fields.** How many unnecessary fields were removed? *Rubric:* 3 = six;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX102 — Misuse signal.** What would suggest misuse of a retailer credential? *Rubric:* 3 = sudden rise in address requests;; 2 = correct;; 1 = none;; 0 = none.
+- **EX102 — Misuse signal.** What would suggest misuse of a retailer credential? *Rubric:* 3 = sudden rise in address requests;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-35"></a>
 
@@ -1545,7 +1545,7 @@ Designing monitoring without estimating alert volume leads to understaffed teams
 ### Exercises
 
 - **EX103 — In-house staff.** How many analysts would in-house continuous cover need? *Rubric:* 3 = at least five;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX104 — Hybrid model.** What is the hybrid model? *Rubric:* 3 = external at night, Saltmarsh staff by day;; 2 = correct;; 1 = none;; 0 = none.
+- **EX104 — Hybrid model.** What is the hybrid model? *Rubric:* 3 = external at night, Saltmarsh staff by day;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX105 — Pseudonym reveal.** Who can reveal pseudonymous identities? *Rubric:* 3 = an on-call Saltmarsh manager;; 2 = correct;; 1 = analysts;; 0 = none.
 
 <a id="ch-36"></a>
@@ -1584,9 +1584,9 @@ Security systems that silently drop data under load give false assurance.
 
 ### Exercises
 
-- **EX106 — Inspection cost.** What does inspecting all encrypted traffic do? *Rubric:* 3 = roughly doubles firewall processor load;; 2 = correct;; 1 = none;; 0 = none.
+- **EX106 — Inspection cost.** What does inspecting all encrypted traffic do? *Rubric:* 3 = roughly doubles firewall processor load;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX107 — Collector capacity.** When does the collector reach capacity? *Rubric:* 3 = within eighteen months;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX108 — Kept events.** Which events are kept in full? *Rubric:* 3 = authentication and administrative events;; 2 = correct;; 1 = none;; 0 = none.
+- **EX108 — Kept events.** Which events are kept in full? *Rubric:* 3 = authentication and administrative events;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-37"></a>
 
@@ -1625,8 +1625,8 @@ Rewarding fewer alerts can encourage turning detection off.
 ### Exercises
 
 - **EX109 — Checklist length.** How long does the morning checklist take? *Rubric:* 3 = about forty minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX110 — Incident actions.** Name one containment action taken. *Rubric:* 3 = locking the account;; 2 = one;; 1 = none;; 0 = none.
-- **EX111 — Root cause.** Why did the account lack multi-factor authentication? *Rubric:* 3 = an exception extended twice without review;; 2 = correct;; 1 = none;; 0 = none.
+- **EX110 — Incident actions.** Name one containment action taken. *Rubric:* 3 = locking the account;; 2 = one;; 1 = vague;; 0 = none.
+- **EX111 — Root cause.** Why did the account lack multi-factor authentication? *Rubric:* 3 = an exception extended twice without review;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-38"></a>
 
@@ -1665,8 +1665,8 @@ A control can be built correctly and still fail to meet the real need.
 ### Exercises
 
 - **EX112 — Detected incidents.** How many of six incidents did course controls detect? *Rubric:* 3 = four;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX113 — Missed gaps.** Name one detection gap found. *Rubric:* 3 = email forwarding rules;; 2 = one;; 1 = none;; 0 = none.
-- **EX114 — Address status.** What is the address-change control's status? *Rubric:* 3 = verified but not yet validated;; 2 = correct;; 1 = none;; 0 = none.
+- **EX113 — Missed gaps.** Name one detection gap found. *Rubric:* 3 = email forwarding rules;; 2 = one;; 1 = vague;; 0 = none.
+- **EX114 — Address status.** What is the address-change control's status? *Rubric:* 3 = verified but not yet validated;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-39"></a>
 
@@ -1705,8 +1705,8 @@ Tools whose authors leave without handover become unmaintained.
 ### Exercises
 
 - **EX115 — Configuration.** Where are thresholds kept? *Rubric:* 3 = a single configuration file;; 2 = correct;; 1 = code;; 0 = none.
-- **EX116 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a colleague follows each one;; 2 = correct;; 1 = none;; 0 = none.
-- **EX117 — Deputies.** Why add deputies? *Rubric:* 3 = controls stop when one person is absent;; 2 = correct;; 1 = none;; 0 = none.
+- **EX116 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a colleague follows each one;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX117 — Deputies.** Why add deputies? *Rubric:* 3 = controls stop when one person is absent;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-40"></a>
 
@@ -1744,9 +1744,9 @@ Showing only final passing tests hides how controls were improved.
 
 ### Exercises
 
-- **EX118 — End-to-end steps.** Name one step followed end to end. *Rubric:* 3 = analyst locks the account;; 2 = one;; 1 = none;; 0 = none.
+- **EX118 — End-to-end steps.** Name one step followed end to end. *Rubric:* 3 = analyst locks the account;; 2 = one;; 1 = vague;; 0 = none.
 - **EX119 — Late alert.** Which alert fired late? *Rubric:* 3 = bulk download;; 2 = correct;; 1 = other;; 0 = none.
-- **EX120 — Before and after.** Why record results before and after fixing? *Rubric:* 3 = shows the improvement and its cause;; 2 = correct;; 1 = none;; 0 = none.
+- **EX120 — Before and after.** Why record results before and after fixing? *Rubric:* 3 = shows the improvement and its cause;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-41"></a>
 
@@ -1785,7 +1785,7 @@ Removing a tool without checking coverage can open unnoticed gaps.
 ### Exercises
 
 - **EX121 — Kept scanner.** Which laptop scanner is kept? *Rubric:* 3 = the one covering warehouse terminals;; 2 = correct;; 1 = other;; 0 = none.
-- **EX122 — Account lists.** How are the three account lists produced after change? *Rubric:* 3 = from the single identity source;; 2 = correct;; 1 = none;; 0 = none.
+- **EX122 — Account lists.** How are the three account lists produced after change? *Rubric:* 3 = from the single identity source;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX123 — Low-ranked purchase.** Which investment ranks low? *Rubric:* 3 = an advanced analytics product;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-42"></a>
@@ -1824,8 +1824,8 @@ Small incident counts cannot support confident conclusions.
 
 ### Exercises
 
-- **EX124 — Natural comparison.** What created the natural comparison? *Rubric:* 3 = the staged rollout;; 2 = correct;; 1 = none;; 0 = none.
-- **EX125 — Incident definition.** How is an incident defined? *Rubric:* 3 = use of an account by someone other than its owner;; 2 = correct;; 1 = none;; 0 = none.
+- **EX124 — Natural comparison.** What created the natural comparison? *Rubric:* 3 = the staged rollout;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX125 — Incident definition.** How is an incident defined? *Rubric:* 3 = use of an account by someone other than its owner;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX126 — Evidence strength.** How strong is the evidence? *Rubric:* 3 = favourable but weak;; 2 = correct;; 1 = strong;; 0 = none.
 
 <a id="ch-43"></a>
@@ -1866,7 +1866,7 @@ Presenting incomplete controls as implemented misleads auditors.
 
 - **EX127 — Most-used skills.** Which skills does Lindiwe use most? *Rubric:* 3 = writing and negotiation;; 2 = correct;; 1 = coding;; 0 = none.
 - **EX128 — Incomplete evidence.** How are the two incomplete controls presented? *Rubric:* 3 = as in progress with dates;; 2 = correct;; 1 = complete;; 0 = none.
-- **EX129 — Blameless effect.** What did blameless handling encourage? *Rubric:* 3 = quicker reporting next time;; 2 = correct;; 1 = none;; 0 = none.
+- **EX129 — Blameless effect.** What did blameless handling encourage? *Rubric:* 3 = quicker reporting next time;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-44"></a>
 
@@ -1904,7 +1904,7 @@ Undocumented dependencies make recovery far slower than planned.
 
 ### Exercises
 
-- **EX130 — Success criterion.** What is the capstone's success criterion? *Rubric:* 3 = recover dispatch within four hours;; 2 = correct;; 1 = none;; 0 = none.
+- **EX130 — Success criterion.** What is the capstone's success criterion? *Rubric:* 3 = recover dispatch within four hours;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX131 — Hidden dependency.** What dependency was missing from diagrams? *Rubric:* 3 = a licence server;; 2 = correct;; 1 = other;; 0 = none.
 - **EX132 — Scope decision.** What is done about payroll? *Rubric:* 3 = document dependencies only;; 2 = correct;; 1 = full;; 0 = none.
 
@@ -1944,8 +1944,8 @@ A recovery environment sharing production credentials can be destroyed by the sa
 
 ### Exercises
 
-- **EX133 — Credential finding.** What credential problem did the reviewer find? *Rubric:* 3 = recovery uses production admin credentials;; 2 = correct;; 1 = none;; 0 = none.
-- **EX134 — Older backups.** What test was added for older backups? *Rubric:* 3 = restoring from week-old backups;; 2 = correct;; 1 = none;; 0 = none.
+- **EX133 — Credential finding.** What credential problem did the reviewer find? *Rubric:* 3 = recovery uses production admin credentials;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX134 — Older backups.** What test was added for older backups? *Rubric:* 3 = restoring from week-old backups;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX135 — Recovery decision.** Who authorises recovery? *Rubric:* 3 = security lead and operations director;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-46"></a>
@@ -1985,7 +1985,7 @@ A single successful recovery trial does not prove recovery is reliable.
 ### Exercises
 
 - **EX136 — First trial time.** How long did the first trial take? *Rubric:* 3 = six hours forty minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX137 — Idempotent meaning.** What does idempotent mean for her scripts? *Rubric:* 3 = same result when run twice;; 2 = correct;; 1 = none;; 0 = none.
+- **EX137 — Idempotent meaning.** What does idempotent mean for her scripts? *Rubric:* 3 = same result when run twice;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX138 — Remaining slow step.** What remains the slowest step? *Rubric:* 3 = database restoration;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-47"></a>
@@ -2026,7 +2026,7 @@ Recovery trials that test only technology miss communication failures.
 
 - **EX139 — Trial duration.** How long did the rebuild take? *Rubric:* 3 = three hours thirty-five minutes;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX140 — Credential delay.** How much time was lost finding credentials? *Rubric:* 3 = twenty minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX141 — Coordinator role.** Why add a coordinator role? *Rubric:* 3 = two people ran the same script;; 2 = correct;; 1 = none;; 0 = none.
+- **EX141 — Coordinator role.** Why add a coordinator role? *Rubric:* 3 = two people ran the same script;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-48"></a>
 
@@ -2064,7 +2064,7 @@ Including claims without evidence undermines the whole dossier.
 
 ### Exercises
 
-- **EX142 — Dossier claim.** Name one claim in the dossier. *Rubric:* 3 = dispatch can be recovered within four hours;; 2 = one;; 1 = none;; 0 = none.
+- **EX142 — Dossier claim.** Name one claim in the dossier. *Rubric:* 3 = dispatch can be recovered within four hours;; 2 = one;; 1 = vague;; 0 = none.
 - **EX143 — Baseline starting rate.** What baseline rate starts the record? *Rubric:* 3 = 72.0 percent passing all rules;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX144 — Auditor sample.** How many claims did the auditor sample? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
 
@@ -2104,9 +2104,9 @@ Citing sources as decoration rather than for specific points weakens a thesis.
 
 ### Exercises
 
-- **EX145 — Thesis argument.** What does the thesis argue? *Rubric:* 3 = small organisations can achieve verifiable recovery;; 2 = correct;; 1 = none;; 0 = none.
+- **EX145 — Thesis argument.** What does the thesis argue? *Rubric:* 3 = small organisations can achieve verifiable recovery;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX146 — Risk source.** Which source supports risk assessment? *Rubric:* 3 = NIST SP 800-30 Revision 1;; 2 = correct;; 1 = other;; 0 = none.
-- **EX147 — Key finding.** What key finding concerns recovery environments? *Rubric:* 3 = must be isolated from production credentials;; 2 = correct;; 1 = none;; 0 = none.
+- **EX147 — Key finding.** What key finding concerns recovery environments? *Rubric:* 3 = must be isolated from production credentials;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-50"></a>
 
@@ -2144,8 +2144,8 @@ Answering beyond one's evidence undermines a defense.
 
 ### Exercises
 
-- **EX148 — Long compromise.** What complements immutable backups against long compromise? *Rubric:* 3 = detecting intrusions sooner;; 2 = correct;; 1 = none;; 0 = none.
-- **EX149 — Manifest storage.** Where is the checksum manifest stored? *Rubric:* 3 = immutably with the backups;; 2 = correct;; 1 = none;; 0 = none.
+- **EX148 — Long compromise.** What complements immutable backups against long compromise? *Rubric:* 3 = detecting intrusions sooner;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX149 — Manifest storage.** Where is the checksum manifest stored? *Rubric:* 3 = immutably with the backups;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX150 — Defense result.** What is the outcome of the defense? *Rubric:* 3 = pass with commendation;; 2 = correct;; 1 = fail;; 0 = none.
 
 <a id="worked-results"></a>

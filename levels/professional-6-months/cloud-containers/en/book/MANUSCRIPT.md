@@ -74,11 +74,11 @@ Experienced administrators can over-trust familiar habits; cloud identities and 
 
 ### Exercises
 
-- **EX001 — Audit concerns.** Name the two audit concerns. *Rubric:* 3 = broad roles; unprioritised vulnerable images; 2 = one; 1 = none; 0 = none.
+- **EX001 — Audit concerns.** Name the two audit concerns. *Rubric:* 3 = broad roles; unprioritised vulnerable images; 2 = one; 1 = vague; 0 = none.
 - **EX002 — What stays the same.** Which of Hannah's existing practices still apply? *Rubric:* 3 = least privilege, patching, logging, change control; 2 = three; 1 = two; 0 = none.
 - **EX003 — Permit goals.** Apply the three security goals to permits. *Rubric:* 3 = resident data private, records accurate, service available; 2 = two; 1 = one; 0 = none.
-- **EX004 — Responsibility placement.** Where do the audit findings sit in shared responsibility? *Rubric:* 3 = council side; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Self-service risk.** Why does self-service make excessive access common? *Rubric:* 3 = easy to grant, hard to notice; 2 = partial; 1 = none; 0 = none.
+- **EX004 — Responsibility placement.** Where do the audit findings sit in shared responsibility? *Rubric:* 3 = council side; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Self-service risk.** Why does self-service make excessive access common? *Rubric:* 3 = easy to grant, hard to notice; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -135,10 +135,10 @@ Ignoring a stakeholder's concern often turns them into an obstacle later.
 ### Exercises
 
 - **EX006 — Components.** List the permit service components. *Rubric:* 3 = web, worker, reporting, database, bucket, deploy bot; 2 = five; 1 = three; 0 = none.
-- **EX007 — Developer worry.** What do developers worry about? *Rubric:* 3 = removals breaking deployments; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Developer worry.** What do developers worry about? *Rubric:* 3 = removals breaking deployments; 2 = partial; 1 = vague; 0 = none.
 - **EX008 — Agreed priorities.** What priorities were agreed? *Rubric:* 3 = protect data, availability, close findings in 3 months; 2 = two; 1 = one; 0 = none.
-- **EX009 — Update cadence.** How often are stakeholders updated? *Rubric:* 3 = fortnightly; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Trial terms.** What did Hannah offer the digital team? *Rubric:* 3 = staging tests together, availability on change days; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Update cadence.** How often are stakeholders updated? *Rubric:* 3 = fortnightly; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Trial terms.** What did Hannah offer the digital team? *Rubric:* 3 = staging tests together, availability on change days; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -203,8 +203,8 @@ Acting outside authority, even helpfully, can undermine evidence and trust.
 - **EX011 — Granted access.** What access does the brief grant? *Rubric:* 3 = read identity, registry, cluster; propose changes; 2 = three; 1 = two; 0 = none.
 - **EX012 — Prohibited actions.** Name the three limits. *Rubric:* 3 = no resident data, no testing, no unapproved production change; 2 = two; 1 = one; 0 = none.
 - **EX013 — Evidence set.** What evidence did Hannah export? *Rubric:* 3 = roles, 90 days usage, scan results; 2 = two; 1 = one; 0 = none.
-- **EX014 — Privacy step.** How is staff privacy protected in summaries? *Rubric:* 3 = names removed; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Contractor role.** How was the contractor role handled? *Rubric:* 3 = reported to Dev, removed via process; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Privacy step.** How is staff privacy protected in summaries? *Rubric:* 3 = names removed; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Contractor role.** How was the contractor role handled? *Rubric:* 3 = reported to Dev, removed via process; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -268,11 +268,11 @@ Hannah writes a one-page method note combining these approaches. Dev asks why no
 
 ### Exercises
 
-- **EX016 — Least privilege method.** Describe the least privilege analysis method. *Rubric:* 3 = compare allowed vs used over a period; confirm with owners; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Role aim.** What role design does Hannah aim for? *Rubric:* 3 = one role per workload with needed permissions; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Least privilege method.** Describe the least privilege analysis method. *Rubric:* 3 = compare allowed vs used over a period; confirm with owners; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Role aim.** What role design does Hannah aim for? *Rubric:* 3 = one role per workload with needed permissions; 2 = partial; 1 = vague; 0 = none.
 - **EX018 — Three factors.** Which three factors order vulnerabilities? *Rubric:* 3 = severity, EPSS likelihood, exposure; 2 = two; 1 = one; 0 = none.
-- **EX019 — Restricted effect.** How does Restricted reduce impact? *Rubric:* 3 = non-root, fewer privileges; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Period limit.** What can a 90-day window miss? *Rubric:* 3 = yearly tasks; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Restricted effect.** How does Restricted reduce impact? *Rubric:* 3 = non-root, fewer privileges; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Period limit.** What can a 90-day window miss? *Rubric:* 3 = yearly tasks; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -356,11 +356,11 @@ Usage data shows what happened, not what is needed; confirm with owners.
 
 ### Exercises
 
-- **EX021 — Lab total.** What share of permissions was unused? *Rubric:* 3 = 6/13 (46%); 2 = partial; 1 = none; 0 = none.
-- **EX022 — Most dangerous.** Which unused permissions were most dangerous and why? *Rubric:* 3 = iam.admin; can change permissions; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Yearly job.** How was storage.write handled? *Rubric:* 3 = moved to separate rarely used role; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Registry delete.** Why could registry.delete be removed from the bot? *Rubric:* 3 = Dev does clean-ups manually; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Origin.** Why was iam.admin on reporting? *Rubric:* 3 = early test, never removed; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Lab total.** What share of permissions was unused? *Rubric:* 3 = 6/13 (46%); 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Most dangerous.** Which unused permissions were most dangerous and why? *Rubric:* 3 = iam.admin; can change permissions; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Yearly job.** How was storage.write handled? *Rubric:* 3 = moved to separate rarely used role; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Registry delete.** Why could registry.delete be removed from the bot? *Rubric:* 3 = Dev does clean-ups manually; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Origin.** Why was iam.admin on reporting? *Rubric:* 3 = early test, never removed; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -455,11 +455,11 @@ Likelihood scores change; re-check before deferring.
 
 ### Exercises
 
-- **EX026 — Tier 1.** Which finding was tier 1 and why? *Rubric:* 3 = CVE-A; internet, high severity and likelihood; 2 = partial; 1 = none; 0 = none.
-- **EX027 — Severity 9.1.** Why was CVE-C not tier 1? *Rubric:* 3 = internal, low likelihood; 2 = partial; 1 = none; 0 = none.
+- **EX026 — Tier 1.** Which finding was tier 1 and why? *Rubric:* 3 = CVE-A; internet, high severity and likelihood; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — Severity 9.1.** Why was CVE-C not tier 1? *Rubric:* 3 = internal, low likelihood; 2 = partial; 1 = vague; 0 = none.
 - **EX028 — Deadlines.** State the tier deadlines. *Rubric:* 3 = week, month, next routine rebuild; 2 = two; 1 = one; 0 = none.
-- **EX029 — Fix route.** How is each fix made? *Rubric:* 3 = rebuild from updated base via pipeline, change process; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Re-checking.** Why re-check before deferring? *Rubric:* 3 = likelihood scores change; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Fix route.** How is each fix made? *Rubric:* 3 = rebuild from updated base via pipeline, change process; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Re-checking.** Why re-check before deferring? *Rubric:* 3 = likelihood scores change; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -545,11 +545,11 @@ A ticket marked done is not verification; check the system itself.
 
 ### Exercises
 
-- **EX031 — Lab result.** How many items were confirmed, and which was open? *Rubric:* 3 = 5/6; reporting rebuild; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Restricted evidence.** What evidence showed Restricted was enforced? *Rubric:* 3 = label and staging rejection of test pod; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Open item cause.** Why was the reporting rebuild delayed? *Rubric:* 3 = old library incompatible; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Lab result.** How many items were confirmed, and which was open? *Rubric:* 3 = 5/6; reporting rebuild; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Restricted evidence.** What evidence showed Restricted was enforced? *Rubric:* 3 = label and staging rejection of test pod; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Open item cause.** Why was the reporting rebuild delayed? *Rubric:* 3 = old library incompatible; 2 = partial; 1 = vague; 0 = none.
 - **EX034 — Compensating controls.** What compensating controls applied? *Rubric:* 3 = internal only, no internet, read-only role; 2 = two; 1 = one; 0 = none.
-- **EX035 — Done versus verified.** Why is a closed ticket not verification? *Rubric:* 3 = must check the system; 2 = partial; 1 = none; 0 = none.
+- **EX035 — Done versus verified.** Why is a closed ticket not verification? *Rubric:* 3 = must check the system; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -621,11 +621,11 @@ Recommendations without owners rarely happen.
 
 ### Exercises
 
-- **EX036 — Role growth.** How did roles grow too broad? *Rubric:* 3 = added in testing and fixes, never reviewed; 2 = partial; 1 = none; 0 = none.
+- **EX036 — Role growth.** How did roles grow too broad? *Rubric:* 3 = added in testing and fixes, never reviewed; 2 = partial; 1 = vague; 0 = none.
 - **EX037 — Inbox problem.** Why did vulnerabilities pile up? *Rubric:* 3 = results to unwatched inbox, no priority rule; 2 = two; 1 = one; 0 = none.
 - **EX038 — Process causes.** Name the three process causes. *Rubric:* 3 = ownership, review cadence, prioritisation; 2 = two; 1 = one; 0 = none.
-- **EX039 — Pilot result.** What happened in the expiry pilot? *Rubric:* 3 = 48h grant expired automatically; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Owners.** Who owns role reviews and scan triage? *Rubric:* 3 = platform team; digital team; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Pilot result.** What happened in the expiry pilot? *Rubric:* 3 = 48h grant expired automatically; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Owners.** Who owns role reviews and scan triage? *Rubric:* 3 = platform team; digital team; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -698,10 +698,10 @@ Reassuring without evidence damages trust when problems appear later.
 ### Exercises
 
 - **EX041 — Audiences.** What does each audience want? *Rubric:* 3 = councillors risk/cost, audit evidence, developers detail; 2 = two; 1 = one; 0 = none.
-- **EX042 — Blame.** How was the contractor's role reported? *Rubric:* 3 = without naming; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Honest limits.** Which limits did Hannah report? *Rubric:* 3 = open rebuild, 90-day data; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Detail sharing.** Who receives detailed vulnerability information? *Rubric:* 3 = need to know until fixed; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Councillor answer.** How did Hannah answer the councillor? *Rubric:* 3 = no evidence of misuse, serious fixed, one item controlled; 2 = partial; 1 = none; 0 = none.
+- **EX042 — Blame.** How was the contractor's role reported? *Rubric:* 3 = without naming; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Honest limits.** Which limits did Hannah report? *Rubric:* 3 = open rebuild, 90-day data; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Detail sharing.** Who receives detailed vulnerability information? *Rubric:* 3 = need to know until fixed; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Councillor answer.** How did Hannah answer the councillor? *Rubric:* 3 = no evidence of misuse, serious fixed, one item controlled; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -773,11 +773,11 @@ Repeated checks by another person catch errors the author cannot see.
 
 ### Exercises
 
-- **EX046 — Quality check.** How was the role analysis quality-checked? *Rubric:* 3 = colleague repeated one role from raw exports; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Breakage fix.** What fixed the worker failure? *Rubric:* 3 = narrow metadata permission; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Method lesson.** What did the breakage teach? *Rubric:* 3 = map action names carefully; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Measures.** Give two improvement measures. *Rubric:* 3 = unused 6/13→0; tier 1 fixed in 3 days; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Sprint board.** Why put triage on the sprint board? *Rubric:* 3 = where developers work; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Quality check.** How was the role analysis quality-checked? *Rubric:* 3 = colleague repeated one role from raw exports; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Breakage fix.** What fixed the worker failure? *Rubric:* 3 = narrow metadata permission; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Method lesson.** What did the breakage teach? *Rubric:* 3 = map action names carefully; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Measures.** Give two improvement measures. *Rubric:* 3 = unused 6/13→0; tier 1 fixed in 3 days; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Sprint board.** Why put triage on the sprint board? *Rubric:* 3 = where developers work; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -854,10 +854,10 @@ Rehearsals with synthetic data may hide complications of real services.
 ### Exercises
 
 - **EX051 — Rehearsal steps.** List the rehearsal steps. *Rubric:* 3 = analysis, triage, plan, staging, verify, report; 2 = five; 1 = three; 0 = none.
-- **EX052 — Duration.** How long did the rehearsals take? *Rubric:* 3 = 3h then 2h; 2 = partial; 1 = none; 0 = none.
-- **EX053 — Weak point.** What slowed verification? *Rubric:* 3 = no test pod template; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Transfer.** How was transferability shown? *Rubric:* 3 = colleague ran it in 3.5h; 2 = partial; 1 = none; 0 = none.
-- **EX055 — Account.** Where did the rehearsal run? *Rubric:* 3 = separate staging account; 2 = partial; 1 = none; 0 = none.
+- **EX052 — Duration.** How long did the rehearsals take? *Rubric:* 3 = 3h then 2h; 2 = partial; 1 = vague; 0 = none.
+- **EX053 — Weak point.** What slowed verification? *Rubric:* 3 = no test pod template; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Transfer.** How was transferability shown? *Rubric:* 3 = colleague ran it in 3.5h; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — Account.** Where did the rehearsal run? *Rubric:* 3 = separate staging account; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -938,10 +938,10 @@ A portfolio shows evidence; reflection explains it.
 ### Exercises
 
 - **EX056 — Portfolio items.** List four portfolio items. *Rubric:* 3 = brief, method, analysis, triage, verification, exception, reports, rehearsal; 2 = four; 1 = two; 0 = none.
-- **EX057 — Strength.** What strength did Hannah identify? *Rubric:* 3 = careful verification; 2 = partial; 1 = none; 0 = none.
-- **EX058 — Growth.** Where did she grow? *Rubric:* 3 = stakeholder communication; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Audit closure.** When did audit close the findings? *Rubric:* 3 = after reporting rebuild; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Key habit.** Which habit mattered most? *Rubric:* 3 = confirm with owners before removing; 2 = partial; 1 = none; 0 = none.
+- **EX057 — Strength.** What strength did Hannah identify? *Rubric:* 3 = careful verification; 2 = partial; 1 = vague; 0 = none.
+- **EX058 — Growth.** Where did she grow? *Rubric:* 3 = stakeholder communication; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Audit closure.** When did audit close the findings? *Rubric:* 3 = after reporting rebuild; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Key habit.** Which habit mattered most? *Rubric:* 3 = confirm with owners before removing; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

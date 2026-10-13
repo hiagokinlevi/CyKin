@@ -343,7 +343,7 @@ As taxas das etapas são estimativas. As etapas interagem.
 
 - **EX021 — Número de etapas.** Quantas etapas tem o modelo de Priya? *Rubrica:* 3 = sete;; 2 = 7;; 1 = três;; 0 = nenhuma.
 
-- **EX022 — Sobreviventes no laboratório.** Quantas de 100 mensagens suspeitas viram reportes com resposta no laboratório? *Rubrica:* 3 = 21;; 2 = 21;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Sobreviventes no laboratório.** Quantas de 100 mensagens suspeitas viram reportes com resposta no laboratório? *Rubrica:* 3 = 21;; 2 = 21, sem justificativa;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Maior perda.** Que etapa perde mais? *Rubrica:* 3 = a decisão de reportar;; 2 = decisão;; 1 = perceber;; 0 = nenhuma.
 

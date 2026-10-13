@@ -66,10 +66,10 @@ Roles can drift into enforcement. Goals need revisiting.
 ### Exercises
 
 - **EX001 — Integrity example.** Which Ferngate example threatens integrity? *Rubric:* 3 = a fake email changing a contractor's bank details;; 2 = bank change;; 1 = lost laptop;; 0 = none.
-- **EX002 — Role position.** Between whom does Grace's role sit? *Rubric:* 3 = staff, managers and the IT supplier;; 2 = three groups;; 1 = none;; 0 = none.
+- **EX002 — Role position.** Between whom does Grace's role sit? *Rubric:* 3 = staff, managers and the IT supplier;; 2 = three groups;; 1 = vague;; 0 = none.
 - **EX003 — Role purpose.** What is the purpose of Grace's role? *Rubric:* 3 = make secure behaviour easy and welcome;; 2 = enabling;; 1 = policing;; 0 = none.
 - **EX004 — Weakest link.** What did Sasse, Brostoff and Weirich (2001) argue? *Rubric:* 3 = the weakest-link view should be transformed by design;; 2 = design;; 1 = blame;; 0 = none.
-- **EX005 — Portfolio.** What will Grace's portfolio contain? *Rubric:* 3 = procedures, analyses and reflections;; 2 = portfolio;; 1 = none;; 0 = none.
+- **EX005 — Portfolio.** What will Grace's portfolio contain? *Rubric:* 3 = procedures, analyses and reflections;; 2 = portfolio;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -111,11 +111,11 @@ Interviews reflect few voices. Concerns change.
 
 ### Exercises
 
-- **EX006 — Remote work.** How do housing officers often work? *Rubric:* 3 = remotely with tablets visiting tenants;; 2 = mobile;; 1 = none;; 0 = none.
-- **EX007 — Caller example.** What did the fake son caller want? *Rubric:* 3 = a tenant's new address;; 2 = address;; 1 = none;; 0 = none.
+- **EX006 — Remote work.** How do housing officers often work? *Rubric:* 3 = remotely with tablets visiting tenants;; 2 = mobile;; 1 = vague;; 0 = none.
+- **EX007 — Caller example.** What did the fake son caller want? *Rubric:* 3 = a tenant's new address;; 2 = address;; 1 = vague;; 0 = none.
 - **EX008 — Staff concern.** What do staff worry about? *Rubric:* 3 = blame and extra work;; 2 = two;; 1 = fraud;; 0 = none.
-- **EX009 — Tenant concern.** What do tenants want assurance about? *Rubric:* 3 = Ferngate never asks for bank details by email;; 2 = email;; 1 = none;; 0 = none.
-- **EX010 — Concerns table.** Why record stakeholder concerns? *Rubric:* 3 = to design changes that answer them;; 2 = design input;; 1 = none;; 0 = none.
+- **EX009 — Tenant concern.** What do tenants want assurance about? *Rubric:* 3 = Ferngate never asks for bank details by email;; 2 = email;; 1 = vague;; 0 = none.
+- **EX010 — Concerns table.** Why record stakeholder concerns? *Rubric:* 3 = to design changes that answer them;; 2 = design input;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -158,10 +158,10 @@ Mandates need updating. Evidence handling needs supplier support.
 ### Exercises
 
 - **EX011 — Mandate limit.** Name one thing Grace may not do. *Rubric:* 3 = read staff mailboxes;; 2 = monitoring;; 1 = review reports;; 0 = none.
-- **EX012 — Safe handling.** What must Grace never do with reported items? *Rubric:* 3 = click links or open attachments on her computer;; 2 = no clicking;; 1 = none;; 0 = none.
+- **EX012 — Safe handling.** What must Grace never do with reported items? *Rubric:* 3 = click links or open attachments on her computer;; 2 = no clicking;; 1 = vague;; 0 = none.
 - **EX013 — Serious incident.** What does Grace do if a report suggests a serious incident? *Rubric:* 3 = follow the incident plan and supplier advice;; 2 = plan;; 1 = investigate alone;; 0 = none.
-- **EX014 — Summary rule.** What is excluded from summaries for managers? *Rubric:* 3 = who reported what;; 2 = reporter identity;; 1 = none;; 0 = none.
-- **EX015 — Privacy reason.** Why does privacy encourage reporting? *Rubric:* 3 = staff do not fear being judged;; 2 = trust;; 1 = none;; 0 = none.
+- **EX014 — Summary rule.** What is excluded from summaries for managers? *Rubric:* 3 = who reported what;; 2 = reporter identity;; 1 = vague;; 0 = none.
+- **EX015 — Privacy reason.** Why does privacy encourage reporting? *Rubric:* 3 = staff do not fear being judged;; 2 = trust;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -222,9 +222,9 @@ Self-report bias. Eight conversations are few.
 ### Exercises
 
 - **EX016 — Response rate.** What was the staff response rate? *Rubric:* 3 = 70%;; 2 = 126 of 180;; 1 = 126%;; 0 = none.
-- **EX017 — Lab top barrier.** What was the top barrier in the lab? *Rubric:* 3 = unsure if worth reporting, 51 of 126;; 2 = uncertainty;; 1 = none;; 0 = none.
-- **EX018 — Consistent questions.** Why use the same questions in every conversation? *Rubric:* 3 = to compare answers across teams;; 2 = comparability;; 1 = none;; 0 = none.
-- **EX019 — Phone priority.** Which priority addresses phone requests? *Rubric:* 3 = a clear procedure for phone requests about tenants;; 2 = procedure;; 1 = none;; 0 = none.
+- **EX017 — Lab top barrier.** What was the top barrier in the lab? *Rubric:* 3 = unsure if worth reporting, 51 of 126;; 2 = uncertainty;; 1 = vague;; 0 = none.
+- **EX018 — Consistent questions.** Why use the same questions in every conversation? *Rubric:* 3 = to compare answers across teams;; 2 = comparability;; 1 = vague;; 0 = none.
+- **EX019 — Phone priority.** Which priority addresses phone requests? *Rubric:* 3 = a clear procedure for phone requests about tenants;; 2 = procedure;; 1 = vague;; 0 = none.
 - **EX020 — Results sharing.** When did Grace share headline results with staff? *Rubric:* 3 = within two weeks;; 2 = two weeks;; 1 = never;; 0 = none.
 
 ### Synthesis
@@ -282,11 +282,11 @@ Small numbers vary. Scripts need checking after changes.
 
 ### Exercises
 
-- **EX021 — Hand check.** Why check script output by hand? *Rubric:* 3 = to confirm the tool works before sharing;; 2 = verification;; 1 = none;; 0 = none.
-- **EX022 — Report rise.** What two things could a rise in reports mean? *Rubric:* 3 = more attacks or more willingness;; 2 = two causes;; 1 = none;; 0 = none.
+- **EX021 — Hand check.** Why check script output by hand? *Rubric:* 3 = to confirm the tool works before sharing;; 2 = verification;; 1 = vague;; 0 = none.
+- **EX022 — Report rise.** What two things could a rise in reports mean? *Rubric:* 3 = more attacks or more willingness;; 2 = two causes;; 1 = vague;; 0 = none.
 - **EX023 — Over-reporting.** How does Alan view over-reporting in a new programme? *Rubric:* 3 = as a healthy sign of feeling safe;; 2 = healthy;; 1 = problem;; 0 = none.
-- **EX024 — Lab verdict times.** How did median time to verdict change with templates? *Rubric:* 3 = 26 hours before and 3 hours after templates;; 2 = faster;; 1 = none;; 0 = none.
-- **EX025 — Better question.** What question did Grace offer instead of which team is worst? *Rubric:* 3 = where people need more support;; 2 = support;; 1 = none;; 0 = none.
+- **EX024 — Lab verdict times.** How did median time to verdict change with templates? *Rubric:* 3 = 26 hours before and 3 hours after templates;; 2 = faster;; 1 = vague;; 0 = none.
+- **EX025 — Better question.** What question did Grace offer instead of which team is worst? *Rubric:* 3 = where people need more support;; 2 = support;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -328,11 +328,11 @@ Twice-daily review may be slow during campaigns. Backups need practice.
 
 ### Exercises
 
-- **EX026 — Daily time.** How long does the workflow take on normal days? *Rubric:* 3 = about twenty minutes;; 2 = 20 minutes;; 1 = none;; 0 = none.
-- **EX027 — Verdict target.** What is the verdict target? *Rubric:* 3 = within one working day;; 2 = one day;; 1 = none;; 0 = none.
+- **EX026 — Daily time.** How long does the workflow take on normal days? *Rubric:* 3 = about twenty minutes;; 2 = 20 minutes;; 1 = vague;; 0 = none.
+- **EX027 — Verdict target.** What is the verdict target? *Rubric:* 3 = within one working day;; 2 = one day;; 1 = vague;; 0 = none.
 - **EX028 — Payment reports.** Who handles payment-related reports? *Rubric:* 3 = the finance manager;; 2 = finance;; 1 = Grace alone;; 0 = none.
-- **EX029 — Peak message.** What does Grace send during campaigns? *Rubric:* 3 = a message saying the email is known and being removed;; 2 = all-staff notice;; 1 = none;; 0 = none.
-- **EX030 — Backup test.** How did Grace test the backup arrangement? *Rubric:* 3 = taking a planned day off and reviewing afterwards;; 2 = planned absence;; 1 = none;; 0 = none.
+- **EX029 — Peak message.** What does Grace send during campaigns? *Rubric:* 3 = a message saying the email is known and being removed;; 2 = all-staff notice;; 1 = vague;; 0 = none.
+- **EX030 — Backup test.** How did Grace test the backup arrangement? *Rubric:* 3 = taking a planned day off and reviewing afterwards;; 2 = planned absence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -374,11 +374,11 @@ Scripts can sound cold. Contractor records may be outdated.
 
 ### Exercises
 
-- **EX031 — Phone rule.** What may staff not share by phone? *Rubric:* 3 = tenant address, contact details or circumstances;; 2 = tenant data;; 1 = none;; 0 = none.
+- **EX031 — Phone rule.** What may staff not share by phone? *Rubric:* 3 = tenant address, contact details or circumstances;; 2 = tenant data;; 1 = vague;; 0 = none.
 - **EX032 — Callback number.** Which number is used for callbacks? *Rubric:* 3 = the number in Ferngate's records;; 2 = records;; 1 = request;; 0 = none.
-- **EX033 — Pressure principles.** Which pressures does the callback control relieve? *Rubric:* 3 = authority and urgency;; 2 = Cialdini;; 1 = none;; 0 = none.
+- **EX033 — Pressure principles.** Which pressures does the callback control relieve? *Rubric:* 3 = authority and urgency;; 2 = Cialdini;; 1 = vague;; 0 = none.
 - **EX034 — Role-play.** How was the phone script tested? *Rubric:* 3 = announced role-play with a colleague as caller;; 2 = role-play;; 1 = secret test;; 0 = none.
-- **EX035 — Script change.** Why was the script adjusted? *Rubric:* 3 = it sounded abrupt to relatives;; 2 = tone;; 1 = none;; 0 = none.
+- **EX035 — Script change.** Why was the script adjusted? *Rubric:* 3 = it sounded abrupt to relatives;; 2 = tone;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -438,9 +438,9 @@ Near-miss sets are small. Success stories can encourage complacency.
 ### Exercises
 
 - **EX036 — What stopped payment.** What stopped the fake payment? *Rubric:* 3 = the finance system blocked it pending callback;; 2 = callback;; 1 = the assistant;; 0 = none.
-- **EX037 — Story used.** What story did the fake invoice tell? *Rubric:* 3 = a cash flow problem requiring same-day payment;; 2 = urgency;; 1 = none;; 0 = none.
-- **EX038 — Lab top factor.** Which factor appeared in all four near misses in the lab? *Rubric:* 3 = urgency;; 2 = urgency;; 1 = workload;; 0 = none.
-- **EX039 — Tag issue.** What problem did the external tag have? *Rubric:* 3 = easy to miss on a busy screen;; 2 = visibility;; 1 = none;; 0 = none.
+- **EX037 — Story used.** What story did the fake invoice tell? *Rubric:* 3 = a cash flow problem requiring same-day payment;; 2 = urgency;; 1 = vague;; 0 = none.
+- **EX038 — Lab top factor.** Which factor appeared in all four near misses in the lab? *Rubric:* 3 = urgency;; 2 = urgency, without explanation;; 1 = workload;; 0 = none.
+- **EX039 — Tag issue.** What problem did the external tag have? *Rubric:* 3 = easy to miss on a busy screen;; 2 = visibility;; 1 = vague;; 0 = none.
 - **EX040 — Sharing approach.** How will the case be shared? *Rubric:* 3 = anonymously as a success story;; 2 = success;; 1 = blame;; 0 = none.
 
 ### Synthesis
@@ -484,9 +484,9 @@ Monthly messages can become routine. Board attention varies.
 ### Exercises
 
 - **EX041 — Message parts.** What does each monthly message contain? *Rubric:* 3 = an example, an action and thanks;; 2 = three;; 1 = warnings;; 0 = none.
-- **EX042 — Tenant notice.** What does the tenant notice promise? *Rubric:* 3 = Ferngate never asks for bank details by email or text;; 2 = never;; 1 = none;; 0 = none.
-- **EX043 — Simulation recommendation.** What did Grace recommend for year one? *Rubric:* 3 = no simulations;; 2 = none;; 1 = monthly;; 0 = none.
-- **EX044 — Banned lure topics.** Which lure topics are banned if simulations are used later? *Rubric:* 3 = pay, housing or health;; 2 = distress;; 1 = none;; 0 = none.
+- **EX042 — Tenant notice.** What does the tenant notice promise? *Rubric:* 3 = Ferngate never asks for bank details by email or text;; 2 = never;; 1 = vague;; 0 = none.
+- **EX043 — Simulation recommendation.** What did Grace recommend for year one? *Rubric:* 3 = no simulations;; 2 = none;; 1 = monthly;; 0 = no answer.
+- **EX044 — Banned lure topics.** Which lure topics are banned if simulations are used later? *Rubric:* 3 = pay, housing or health;; 2 = distress;; 1 = vague;; 0 = none.
 - **EX045 — Report contents.** What do Grace's reports include? *Rubric:* 3 = outcomes, verified controls, near misses and burden;; 2 = outcomes;; 1 = activities;; 0 = none.
 
 ### Synthesis
@@ -547,11 +547,11 @@ Samples may miss problems. Logs need review.
 
 ### Exercises
 
-- **EX046 — Quality questions.** Name two monthly quality questions. *Rubric:* 3 = verdict speed and correctness;; 2 = two;; 1 = none;; 0 = none.
+- **EX046 — Quality questions.** Name two monthly quality questions. *Rubric:* 3 = verdict speed and correctness;; 2 = two;; 1 = vague;; 0 = none.
 - **EX047 — Drop cause.** What caused the housing officer drop? *Rubric:* 3 = a tablet update removed the report button;; 2 = update;; 1 = fewer attacks;; 0 = none.
-- **EX048 — Lab drop.** How did housing officer reports move across the six months? *Rubric:* 3 = 14 and 16, then 2 in month four, then 15;; 2 = drop and recovery;; 1 = none;; 0 = none.
-- **EX049 — Pattern found.** What pattern did the improvement log reveal? *Rubric:* 3 = updates removing settings;; 2 = updates;; 1 = none;; 0 = none.
-- **EX050 — Supplier fix.** What did the supplier add? *Rubric:* 3 = a standard post-update checklist;; 2 = checklist;; 1 = none;; 0 = none.
+- **EX048 — Lab drop.** How did housing officer reports move across the six months? *Rubric:* 3 = 14 and 16, then 2 in month four, then 15;; 2 = drop and recovery;; 1 = vague;; 0 = none.
+- **EX049 — Pattern found.** What pattern did the improvement log reveal? *Rubric:* 3 = updates removing settings;; 2 = updates;; 1 = vague;; 0 = none.
+- **EX050 — Supplier fix.** What did the supplier add? *Rubric:* 3 = a standard post-update checklist;; 2 = checklist;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -607,11 +607,11 @@ Small sample. Volunteers knew the task.
 
 ### Exercises
 
-- **EX051 — Version B.** What does version B add? *Rubric:* 3 = one sentence explaining the clue;; 2 = explanation;; 1 = none;; 0 = none.
-- **EX052 — Lab result.** What did the lab show for correct judgements? *Rubric:* 3 = A 18 of 30, B 25 of 30;; 2 = B better;; 1 = none;; 0 = none.
-- **EX053 — Caution.** Why might volunteers be more careful than usual? *Rubric:* 3 = they knew they would judge messages;; 2 = awareness;; 1 = none;; 0 = none.
-- **EX054 — Cost.** What does version B cost? *Rubric:* 3 = one sentence per verdict;; 2 = low;; 1 = none;; 0 = none.
-- **EX055 — Follow-up.** What follow-up did Grace plan? *Rubric:* 3 = check repeat reporting after three months;; 2 = follow-up;; 1 = none;; 0 = none.
+- **EX051 — Version B.** What does version B add? *Rubric:* 3 = one sentence explaining the clue;; 2 = explanation;; 1 = vague;; 0 = none.
+- **EX052 — Lab result.** What did the lab show for correct judgements? *Rubric:* 3 = A 18 of 30, B 25 of 30;; 2 = B better;; 1 = vague;; 0 = none.
+- **EX053 — Caution.** Why might volunteers be more careful than usual? *Rubric:* 3 = they knew they would judge messages;; 2 = awareness;; 1 = vague;; 0 = none.
+- **EX054 — Cost.** What does version B cost? *Rubric:* 3 = one sentence per verdict;; 2 = low;; 1 = vague;; 0 = none.
+- **EX055 — Follow-up.** What follow-up did Grace plan? *Rubric:* 3 = check repeat reporting after three months;; 2 = follow-up;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -653,11 +653,11 @@ Portfolios can be selective. Six months is short.
 
 ### Exercises
 
-- **EX056 — Portfolio check.** What did Alan check in the portfolio? *Rubric:* 3 = no personal details and supported claims;; 2 = quality;; 1 = none;; 0 = none.
-- **EX057 — Verdict time outcome.** How did median time to verdict change? *Rubric:* 3 = from about a day to a few hours;; 2 = faster;; 1 = none;; 0 = none.
-- **EX058 — Next control.** What next control did Grace suggest? *Rubric:* 3 = callbacks for tenant refund requests;; 2 = refunds;; 1 = none;; 0 = none.
-- **EX059 — Mentoring.** Whom will Grace mentor? *Rubric:* 3 = a colleague acting as her backup;; 2 = backup;; 1 = none;; 0 = none.
-- **EX060 — Background lesson.** Why did Grace's background prove useful? *Rubric:* 3 = human-centred security depends on trust and communication;; 2 = people skills;; 1 = none;; 0 = none.
+- **EX056 — Portfolio check.** What did Alan check in the portfolio? *Rubric:* 3 = no personal details and supported claims;; 2 = quality;; 1 = vague;; 0 = none.
+- **EX057 — Verdict time outcome.** How did median time to verdict change? *Rubric:* 3 = from about a day to a few hours;; 2 = faster;; 1 = vague;; 0 = none.
+- **EX058 — Next control.** What next control did Grace suggest? *Rubric:* 3 = callbacks for tenant refund requests;; 2 = refunds;; 1 = vague;; 0 = none.
+- **EX059 — Mentoring.** Whom will Grace mentor? *Rubric:* 3 = a colleague acting as her backup;; 2 = backup;; 1 = vague;; 0 = none.
+- **EX060 — Background lesson.** Why did Grace's background prove useful? *Rubric:* 3 = human-centred security depends on trust and communication;; 2 = people skills;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

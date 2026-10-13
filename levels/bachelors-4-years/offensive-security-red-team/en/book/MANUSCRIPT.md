@@ -237,7 +237,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX007 — Socket rule.** Why must lab_scope open no sockets? *Rubric:* 3 = offline/synthetic only; no accidental scan; 2 = partial; 1 = sockets fine; 0 = none.
-- **EX008 — Two unsafe patterns.** Name two scripting patterns forbidden on the platform team. *Rubric:* 3 = two of secrets, TLS off, unsanitised shell, uncapped retries; 2 = one; 1 = none; 0 = none.
+- **EX008 — Two unsafe patterns.** Name two scripting patterns forbidden on the platform team. *Rubric:* 3 = two of secrets, TLS off, unsanitised shell, uncapped retries; 2 = one; 1 = vague; 0 = none.
 - **EX009 — Second reader.** What does the second reader look for? *Rubric:* 3 = scope path mistakes and secrets; 2 = one; 1 = style only; 0 = none.
 
 ### Synthesis
@@ -1701,7 +1701,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX049 — TLS vs AuthZ.** Does TLS fix IDOR? *Rubric:* 3 = no; 2 = no; 1 = yes; 0 = none.
+- **EX049 — TLS vs AuthZ.** Does TLS fix IDOR? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
 - **EX050 — Hard-coded key.** Why reject hard-coded AES keys in source? *Rubric:* 3 = key exposure in repo; not dual-control; 2 = partial; 1 = fine; 0 = none.
 - **EX051 — Hash use here.** What are SHA-256 digests used for in this course? *Rubric:* 3 = evidence integrity; 2 = partial; 1 = encrypting traffic; 0 = none.
 
@@ -1819,7 +1819,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX052 — Bad question.** Why is "is security good?" a poor research question? *Rubric:* 3 = not measurable/specific; 2 = partial; 1 = fine; 0 = none.
 - **EX053 — Pre-register.** What should be written before results? *Rubric:* 3 = metric and threshold (and design); 2 = partial; 1 = nothing; 0 = none.
-- **EX054 — Staff phishing.** What approvals before simulated phishing? *Rubric:* 3 = CISO/HR (and ROE); 2 = one; 1 = none; 0 = none.
+- **EX054 — Staff phishing.** What approvals before simulated phishing? *Rubric:* 3 = CISO/HR (and ROE); 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2779,7 +2779,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX076 — Minimum proof.** What does minimum proof mean? *Rubric:* 3 = stop once impact shown; no extra pivot; 2 = partial; 1 = full takeover always; 0 = none.
-- **EX077 — Payment-near.** What extra step before payment-adjacent tests? *Rubric:* 3 = extra approvals/ROE check; 2 = partial; 1 = none; 0 = none.
+- **EX077 — Payment-near.** What extra step before payment-adjacent tests? *Rubric:* 3 = extra approvals/ROE check; 2 = partial; 1 = vague; 0 = none.
 - **EX078 — Chain doc.** What belongs in the chain appendix? *Rubric:* 3 = steps/times/evidence links; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -3028,7 +3028,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX082 — Blameless.** What does a blameless review seek? *Rubric:* 3 = systemic fixes not punishment; 2 = partial; 1 = scapegoat; 0 = none.
-- **EX083 — Action form.** What two fields must each corrective action have? *Rubric:* 3 = owner and date; 2 = one; 1 = none; 0 = none.
+- **EX083 — Action form.** What two fields must each corrective action have? *Rubric:* 3 = owner and date; 2 = one; 1 = vague; 0 = none.
 - **EX084 — Stale feed.** Why can stale inventory cause a production hit? *Rubric:* 3 = wrong host classified in scope; 2 = partial; 1 = cannot; 0 = none.
 
 ### Synthesis
@@ -3295,7 +3295,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX088 — Retest counts.** How many FIXED vs STILL OPEN? *Rubric:* 3 = 2 FIXED, 1 STILL OPEN; 2 = partial; 1 = all fixed; 0 = none.
 - **EX089 — Stop limit.** Stop message time limit? *Rubric:* 3 = two minutes; 2 = fast; 1 = next day; 0 = none.
-- **EX090 — F3 handling.** May the report close F3 without evidence? *Rubric:* 3 = no; 2 = no; 1 = yes; 0 = none.
+- **EX090 — F3 handling.** May the report close F3 without evidence? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
 
 ### Synthesis
 
@@ -3883,7 +3883,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX103 — Non-goal.** Name one required non-goal. *Rubric:* 3 = no exploit modules or no live scanning / no all-ticket integrations; 2 = partial; 1 = none; 0 = none.
+- **EX103 — Non-goal.** Name one required non-goal. *Rubric:* 3 = no exploit modules or no live scanning / no all-ticket integrations; 2 = partial; 1 = vague; 0 = none.
 - **EX104 — Metric.** Give one success metric for scope-diff. *Rubric:* 3 = precision/recall on planted drifts or fail-closed on corrupt files; 2 = vague; 1 = "works"; 0 = none.
 - **EX105 — Ethics line.** What data may the capstone use? *Rubric:* 3 = synthetic inventories only; 2 = partial; 1 = production customer DB; 0 = none.
 
@@ -4281,7 +4281,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX112 — Statuses.** Name three diff statuses the tool prints. *Rubric:* 3 = only-in-docs, only-on-network, type conflict/match; 2 = two; 1 = one; 0 = none.
 - **EX113 — Corrupt file.** What should happen on corrupt YAML? *Rubric:* 3 = deny/fail closed with reason, non-zero exit; 2 = partial; 1 = empty success; 0 = none.
-- **EX114 — Network.** May the tool open network sockets? *Rubric:* 3 = no; 2 = no; 1 = yes; 0 = none.
+- **EX114 — Network.** May the tool open network sockets? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
 
 ### Synthesis
 
@@ -4433,7 +4433,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX115 — Independent.** Who should run the evaluation script? *Rubric:* 3 = another student/independent tester; 2 = only Sam; 1 = nobody; 0 = none.
 - **EX116 — Residual.** What residual risk remains after adoption? *Rubric:* 3 = still need ROE discipline / not a substitute for authorization; 2 = partial; 1 = zero risk; 0 = none.
-- **EX117 — Metric swap.** May Sam change metrics after seeing results? *Rubric:* 3 = no; 2 = no; 1 = yes; 0 = none.
+- **EX117 — Metric swap.** May Sam change metrics after seeing results? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
 
 ### Synthesis
 

@@ -105,7 +105,7 @@ Kappa summarises agreement but hides where disagreement lies; always inspect dis
 - **EX004 — Chance correction.** What does kappa add beyond raw agreement? *Rubric:* 3 = removes agreement expected by chance from category frequencies;; 2 = chance;; 1 = nothing;; 0 = none.
 - **EX005 — Disagreement use.** How should the four disagreements be used? *Rubric:* 3 = sharpen decision rules and repeat on fresh items;; 2 = refine codebook;; 1 = ignore;; 0 = none.
 - **EX006 — Data boundary.** Name two protections in Rhea's data agreement. *Rubric:* 3 = pseudonyms, encrypted logged storage, no publication of identifying names;; 2 = two;; 1 = one;; 0 = none.
-- **EX007 — Internal validity threat.** Give one threat to attributing change to the review procedure. *Rubric:* 3 = staff turnover or system migration;; 2 = one threat;; 1 = none;; 0 = none.
+- **EX007 — Internal validity threat.** Give one threat to attributing change to the review procedure. *Rubric:* 3 = staff turnover or system migration;; 2 = one threat;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -159,9 +159,9 @@ Reviewing only one strand, such as access control models, misses the human facto
 - **EX009 — ABAC source.** Which NIST publication describes attribute-based access control? *Rubric:* 3 = SP 800-162 with its scope;; 2 = SP 800-162;; 1 = SP 800-63;; 0 = none.
 - **EX010 — Role mining aim.** What does role mining research try to do? *Rubric:* 3 = infer meaningful roles from existing assignments;; 2 = infer roles;; 1 = delete roles;; 0 = none.
 - **EX011 — Authentication limit.** Why does strong authentication not remove excess privilege? *Rubric:* 3 = it limits who uses an account, not what it reaches;; 2 = different problem;; 1 = it does;; 0 = none.
-- **EX012 — Rubber-stamp explanation.** Which 2009 argument helps explain approve-all reviews? *Rubric:* 3 = Herley: people rationally reject advice whose cost exceeds visible benefit;; 2 = Herley;; 1 = none;; 0 = none.
-- **EX013 — Complexity measures.** Which two measures does Rhea use for role-model complexity? *Rubric:* 3 = roles per user and entitlements per role;; 2 = one;; 1 = none;; 0 = none.
-- **EX014 — Non-claims.** Name two things the thesis will not claim. *Rubric:* 3 = new models, attack outcomes, all sectors (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX012 — Rubber-stamp explanation.** Which 2009 argument helps explain approve-all reviews? *Rubric:* 3 = Herley: people rationally reject advice whose cost exceeds visible benefit;; 2 = Herley;; 1 = vague;; 0 = none.
+- **EX013 — Complexity measures.** Which two measures does Rhea use for role-model complexity? *Rubric:* 3 = roles per user and entitlements per role;; 2 = one;; 1 = vague;; 0 = none.
+- **EX014 — Non-claims.** Name two things the thesis will not claim. *Rubric:* 3 = new models, attack outcomes, all sectors (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -213,10 +213,10 @@ Without randomisation and blinded outcome coding, any difference in removals cou
 
 - **EX015 — H1 test.** Which test does H1 use and why? *Rubric:* 3 = rank correlation, measures not expected normal;; 2 = rank correlation;; 1 = t-test;; 0 = none.
 - **EX016 — Excess rate.** Define the excess rate. *Rubric:* 3 = excess, dormant or toxic entitlements over all entitlements in a unit;; 2 = share of excess;; 1 = count;; 0 = none.
-- **EX017 — Randomisation level.** At what level are units randomised, and why? *Rubric:* 3 = within partners, to balance organisational differences;; 2 = within partners;; 1 = none;; 0 = none.
+- **EX017 — Randomisation level.** At what level are units randomised, and why? *Rubric:* 3 = within partners, to balance organisational differences;; 2 = within partners;; 1 = vague;; 0 = none.
 - **EX018 — Blinding target.** Who is blinded in the design? *Rubric:* 3 = outcome coders judging removals;; 2 = coders;; 1 = reviewers;; 0 = none.
 - **EX019 — Reviewer time reason.** Why record reviewer time? *Rubric:* 3 = a slower procedure may not be adopted;; 2 = adoption;; 1 = no reason;; 0 = none.
-- **EX020 — Reversal safeguard.** What safeguard protects staff from wrongful removal? *Rubric:* 3 = removals reversible within one working day via normal change;; 2 = reversible;; 1 = none;; 0 = none.
+- **EX020 — Reversal safeguard.** What safeguard protects staff from wrongful removal? *Rubric:* 3 = removals reversible within one working day via normal change;; 2 = reversible;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -366,7 +366,7 @@ Counting removals without checking their correctness rewards a procedure that re
 ### Exercises
 
 - **EX027 — Mean removal rates.** What are the two mean removal rates in the lab? *Rubric:* 3 = 8.2% usual, 24.8% structured;; 2 = both;; 1 = one;; 0 = none.
-- **EX028 — Difference size.** What difference does the lab report? *Rubric:* 3 = 16.7 percentage points with uncertainty noted;; 2 = 0.167;; 1 = none;; 0 = none.
+- **EX028 — Difference size.** What difference does the lab report? *Rubric:* 3 = 16.7 percentage points with uncertainty noted;; 2 = 0.167;; 1 = vague;; 0 = none.
 - **EX029 — Spread meaning.** What does the structured unit at twelve percent suggest? *Rubric:* 3 = effect depends on local factors;; 2 = variation;; 1 = error;; 0 = none.
 - **EX030 — Validation coders.** What do blinded validation coders classify? *Rubric:* 3 = removals as correct, wrong or unclear;; 2 = correctness;; 1 = reviewers;; 0 = none.
 - **EX031 — Within-partner check.** Why check the correlation within each partner? *Rubric:* 3 = an all-unit pattern could just reflect differences between organisations;; 2 = confounding;; 1 = power;; 0 = none.
@@ -420,7 +420,7 @@ Applying procedure improvements retrospectively to reported results misrepresent
 
 ### Exercises
 
-- **EX033 — Seminar value.** Why record questions Rhea could not answer well? *Rubric:* 3 = they show where explanation, analysis or limitation is needed;; 2 = gaps;; 1 = none;; 0 = none.
+- **EX033 — Seminar value.** Why record questions Rhea could not answer well? *Rubric:* 3 = they show where explanation, analysis or limitation is needed;; 2 = gaps;; 1 = vague;; 0 = none.
 - **EX034 — Response table.** List the columns of Rhea's response table. *Rubric:* 3 = comment, reply, evidence, page;; 2 = three;; 1 = one;; 0 = none.
 - **EX035 — Sensitivity result.** What did the sensitivity analysis excluding the largest partner show? *Rubric:* 3 = effect direction held, wider interval;; 2 = held;; 1 = reversed;; 0 = none.
 - **EX036 — Observation check.** How did Rhea partly test the observation concern? *Rubric:* 3 = compared observed and unobserved structured sittings;; 2 = compared;; 1 = ignored;; 0 = none.
@@ -498,10 +498,10 @@ Presenting a strong correlation across few units as a causal finding overstates 
 
 - **EX039 — Spearman value.** What Spearman correlation does the lab report? *Rubric:* 3 = 0.90 with sum of squared rank differences 16;; 2 = 0.90;; 1 = 0.5;; 0 = none.
 - **EX040 — Causal caution.** Why does Rhea avoid a causal claim about complexity? *Rubric:* 3 = correlation only; both may stem from fast change;; 2 = correlation;; 1 = she proves it;; 0 = none.
-- **EX041 — Practical claim.** What practical claim does the correlation support? *Rubric:* 3 = complexity as a warning sign for where to focus reviews;; 2 = focus;; 1 = none;; 0 = none.
+- **EX041 — Practical claim.** What practical claim does the correlation support? *Rubric:* 3 = complexity as a warning sign for where to focus reviews;; 2 = focus;; 1 = vague;; 0 = none.
 - **EX042 — Archive contents.** Name three items in the archive. *Rubric:* 3 = codebook, scripts, synthetic data, decision log, guide (three);; 2 = two;; 1 = one;; 0 = none.
 - **EX043 — Real data boundary.** Why can the real figures not be reproduced externally? *Rubric:* 3 = partner data cannot be shared under the agreement;; 2 = privacy;; 1 = lost;; 0 = none.
-- **EX044 — Release check.** What check comes before releasing outputs? *Rubric:* 3 = remove identifiers, check combinations, partner review;; 2 = anonymise;; 1 = none;; 0 = none.
+- **EX044 — Release check.** What check comes before releasing outputs? *Rubric:* 3 = remove identifiers, check combinations, partner review;; 2 = anonymise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -3249,8 +3249,8 @@ Todo comentário de revisão termina em um de três estados: corrigido, com link
 ### Exercícios
 
 - **EX133 — Bloqueio.** Escreva um comentário bloqueante para uma nova tentativa que falha aberta. Rubrica: 3 = cita o requisito de segurança + pedido de correção; 2 = bloqueio vago; 1 = detalhe menor; 0 = aprova.
-- **EX134 — Lista de verificação.** Acrescente um item para engajamentos de rádio. Rubrica: 3 = específico; 2 = vago; 1 = nada; 0 = nada.
-- **EX135 — Divergência.** Uma frase de divergência registrada. Rubrica: 3 = clara; 2 = evasiva; 1 = nada; 0 = nada.
+- **EX134 — Lista de verificação.** Acrescente um item para engajamentos de rádio. Rubrica: 3 = específico; 2 = vago; 1 = tentativa mínima; 0 = nada.
+- **EX135 — Divergência.** Uma frase de divergência registrada. Rubrica: 3 = clara; 2 = evasiva; 1 = vago; 0 = nada.
 
 ### Síntese
 
@@ -3477,8 +3477,8 @@ O ensaio repete a falha com a pior consequência para os clientes, não a mais f
 ### Exercícios
 
 - **EX139 — Injeção.** Escreva uma injeção e o comportamento seguro esperado. Rubrica: 3 = ambos; 2 = só a injeção; 1 = vago; 0 = inseguro.
-- **EX140 — Medida.** Medida primária para a injeção de perda de política. Rubrica: 3 = tempo até negar tudo; 2 = disponibilidade vaga; 1 = nada; 0 = nada.
-- **EX141 — Ação.** Transforme um resultado de 45 s num título de ticket corretivo. Rubrica: 3 = específico; 2 = vago; 1 = nada; 0 = nada.
+- **EX140 — Medida.** Medida primária para a injeção de perda de política. Rubrica: 3 = tempo até negar tudo; 2 = disponibilidade vaga; 1 = vago; 0 = nada.
+- **EX141 — Ação.** Transforme um resultado de 45 s num título de ticket corretivo. Rubrica: 3 = específico; 2 = vago; 1 = tentativa mínima; 0 = nada.
 
 ### Síntese
 

@@ -257,7 +257,7 @@ Simple host extraction fails for unusual URL forms; keep a manual review queue.
 ### Exercises
 
 - **EX007 — Invalid octet.** Why was 203.0.113.300 marked invalid? *Rubric:* 3 = octet above 255; ipaddress rejects; 2 = partial; 1 = range reserved; 0 = none.
-- **EX008 — Why defang.** What risk does defanging reduce in reports? *Rubric:* 3 = accidental clicks/auto-linking to malicious sites; 2 = partial; 1 = none; 0 = none.
+- **EX008 — Why defang.** What risk does defanging reduce in reports? *Rubric:* 3 = accidental clicks/auto-linking to malicious sites; 2 = partial; 1 = vague; 0 = none.
 - **EX009 — Typo handling.** What should Lena do with indicators containing typos? *Rubric:* 3 = mark invalid, ask sender; do not guess; 2 = discard; 1 = guess; 0 = none.
 
 ### Synthesis
@@ -489,7 +489,7 @@ A clean search covers only machines with logging; report gaps alongside results.
 
 - **EX016 — Task technique.** Which ATT&CK technique fits a malicious scheduled task? *Rubric:* 3 = Scheduled Task/Job T1053; 2 = name; 1 = T1190; 0 = none.
 - **EX017 — VM network.** Why does CMS's analysis VM lack internet access? *Rubric:* 3 = prevents contact with adversary infrastructure/leaks; 2 = partial; 1 = speed; 0 = none.
-- **EX018 — Coverage gap.** What gap did Lena report alongside her clean search? *Rubric:* 3 = two servers without endpoint agents; 2 = vague gap; 1 = none; 0 = none.
+- **EX018 — Coverage gap.** What gap did Lena report alongside her clean search? *Rubric:* 3 = two servers without endpoint agents; 2 = vague gap; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -1688,7 +1688,7 @@ Service levels slip during staff absence; plan cover.
 
 ### Exercises
 
-- **EX061 — Desk loop.** How does the service desk close the intelligence loop? *Rubric:* 3 = forwards reported samples to CTI queue; 2 = partial; 1 = none; 0 = none.
+- **EX061 — Desk loop.** How does the service desk close the intelligence loop? *Rubric:* 3 = forwards reported samples to CTI queue; 2 = partial; 1 = vague; 0 = none.
 - **EX062 — Parking text routing.** Which three teams or bodies received outputs from the parking-fine case? *Rubric:* 3 = network block, communications, MCX; 2 = two; 1 = one; 0 = none.
 - **EX063 — Routing table.** Where should a vulnerability advisory be routed? *Rubric:* 3 = system owner (via asset list); 2 = IT generally; 1 = communications; 0 = none.
 
@@ -1922,8 +1922,8 @@ Before/after comparisons cannot prove causation; they suggest.
 
 ### Exercises
 
-- **EX070 — Define the measure.** Define "escalated call" for Lena's study. *Rubric:* 3 = call forwarded to CTI queue, defined before collection; 2 = vague definition; 1 = none; 0 = none.
-- **EX071 — Confounder.** What else might explain the fall in escalations? *Rubric:* 3 = regional news story/other awareness; 2 = vague; 1 = none; 0 = none.
+- **EX070 — Define the measure.** Define "escalated call" for Lena's study. *Rubric:* 3 = call forwarded to CTI queue, defined before collection; 2 = vague definition; 1 = minimal attempt; 0 = none.
+- **EX071 — Confounder.** What else might explain the fall in escalations? *Rubric:* 3 = regional news story/other awareness; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX072 — Ticket ethics.** List three ethical steps when using tickets as data. *Rubric:* 3 = minimise, remove names, secure storage, approvals; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -2002,7 +2002,7 @@ Team projects reward visible work; make sure reviewing and testing are credited 
 
 - **EX073 — Role rotation.** Why rotate roles at mid-point? *Rubric:* 3 = everyone learns all parts; reduces dependency; 2 = partial; 1 = no reason; 0 = none.
 - **EX074 — SMS request.** How was the client's mid-project SMS request handled? *Rubric:* 3 = recorded, estimated, agreed as future work; 2 = partial; 1 = added immediately; 0 = none.
-- **EX075 — Planted cases.** How did planted test cases improve the generator? *Rubric:* 3 = revealed missing 0-for-o rule; after fix all 12 found; 2 = partial; 1 = none; 0 = none.
+- **EX075 — Planted cases.** How did planted test cases improve the generator? *Rubric:* 3 = revealed missing 0-for-o rule; after fix all 12 found; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2169,7 +2169,7 @@ Validation sets age; refresh them when data formats change.
 ### Exercises
 
 - **EX079 — Acceptance list.** List four acceptance criteria for the matching script. *Rubric:* 3 = no missed known matches, FP ≤ manual, runtime, alerts; 2 = three; 1 = one; 0 = none.
-- **EX080 — Report-only mode.** What is report-only mode and why use it? *Rubric:* 3 = outputs checked by humans, no automatic action; catch errors safely; 2 = partial; 1 = none; 0 = none.
+- **EX080 — Report-only mode.** What is report-only mode and why use it? *Rubric:* 3 = outputs checked by humans, no automatic action; catch errors safely; 2 = partial; 1 = vague; 0 = none.
 - **EX081 — Service account rights.** What rights should the script's account lack, and why? *Rubric:* 3 = no firewall/control changes; limits damage; 2 = partial; 1 = admin fine; 0 = none.
 
 ### Synthesis
@@ -2254,7 +2254,7 @@ Placements show one organisation's habits; compare them with standards.
 
 - **EX082 — Journal content.** What should the placement journal contain and avoid? *Rubric:* 3 = lessons/actions/questions; no restricted details; 2 = one; 1 = data copies; 0 = none.
 - **EX083 — CLEAR with email.** Why did Lena flag rather than edit the submission? *Rubric:* 3 = not her authority; member/mentor decide; 2 = partial; 1 = should edit; 0 = none.
-- **EX084 — Summary feedback.** What feedback changed Lena's summaries? *Rubric:* 3 = put action first; 2 = partial; 1 = none; 0 = none.
+- **EX084 — Summary feedback.** What feedback changed Lena's summaries? *Rubric:* 3 = put action first; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

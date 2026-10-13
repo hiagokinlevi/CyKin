@@ -441,7 +441,7 @@ Os conjuntos de quase-incidentes são pequenos. Histórias de sucesso podem ince
 
 - **EX037 — História usada.** Que história a fatura falsa contava? *Rubrica:* 3 = um problema de fluxo de caixa que exigia pagamento no mesmo dia;; 2 = urgência;; 1 = nada;; 0 = nenhuma.
 
-- **EX038 — Fator principal no laboratório.** Que fator apareceu nos quatro quase-incidentes do laboratório? *Rubrica:* 3 = urgência;; 2 = urgência;; 1 = carga de trabalho;; 0 = nenhuma.
+- **EX038 — Fator principal no laboratório.** Que fator apareceu nos quatro quase-incidentes do laboratório? *Rubrica:* 3 = urgência;; 2 = urgência, sem justificativa;; 1 = carga de trabalho;; 0 = nenhuma.
 
 - **EX039 — Problema da etiqueta.** Que problema a etiqueta de externo tinha? *Rubrica:* 3 = era fácil de não ver numa tela movimentada;; 2 = visibilidade;; 1 = nada;; 0 = nenhuma.
 
@@ -487,7 +487,7 @@ As mensagens mensais podem virar rotina. A atenção do conselho varia.
 
 - **EX042 — Aviso aos inquilinos.** O que o aviso aos inquilinos promete? *Rubrica:* 3 = a Ferngate nunca pede dados bancários por e-mail ou mensagem de texto;; 2 = nunca;; 1 = nada;; 0 = nenhuma.
 
-- **EX043 — Recomendação sobre simulações.** O que Grace recomendou para o primeiro ano? *Rubrica:* 3 = nenhuma simulação;; 2 = nenhuma;; 1 = mensais;; 0 = nenhuma.
+- **EX043 — Recomendação sobre simulações.** O que Grace recomendou para o primeiro ano? *Rubrica:* 3 = nenhuma simulação;; 2 = nenhuma;; 1 = mensais;; 0 = sem resposta.
 
 - **EX044 — Temas de isca proibidos.** Que temas de isca são proibidos se houver simulações depois? *Rubrica:* 3 = salário, moradia ou saúde;; 2 = angústia;; 1 = nada;; 0 = nenhuma.
 

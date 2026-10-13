@@ -119,7 +119,7 @@ Comparisons of laws simplify; national authority regulations add detail.
 
 ### Exercises
 
-- **EX006 — DPIA trigger gap.** What gap did Priscila find in DPIA practice? *Rubric:* 3 = DPIAs only for new products, not changes;; 2 = mentions changes;; 1 = none;; 0 = none.
+- **EX006 — DPIA trigger gap.** What gap did Priscila find in DPIA practice? *Rubric:* 3 = DPIAs only for new products, not changes;; 2 = mentions changes;; 1 = vague;; 0 = none.
 - **EX007 — LGPD bases.** How many legal bases does LGPD Article 7 list, and which suits payments? *Rubric:* 3 = ten; credit protection is relevant;; 2 = number only;; 1 = wrong;; 0 = none.
 - **EX008 — Stricter requirement.** How does Priscila handle differences between the laws? *Rubric:* 3 = designs processes meeting the stricter requirement;; 2 = mentions stricter;; 1 = picks one;; 0 = none.
 - **EX009 — Framework role.** How does Priscila use the frameworks? *Rubric:* 3 = as structured checklists, not certification targets;; 2 = mentions checklist;; 1 = certify;; 0 = none.
@@ -202,7 +202,7 @@ Synthetic data reflect assumptions; real pilots may show different results.
 - **EX011 — GPS value.** What did precise GPS add in the simulation? *Rubric:* 3 = nothing beyond city-level: same 43.1% detection and 90 false alarms;; 2 = mentions no gain;; 1 = improved;; 0 = none.
 - **EX012 — Device-only cost.** Why not use device novelty alone? *Rubric:* 3 = 1,572 false alarms would block many legitimate customers;; 2 = mentions false alarms;; 1 = best;; 0 = none.
 - **EX013 — Interim decision.** What does Corvina use until the pilot ends? *Rubric:* 3 = city-level location;; 2 = mentions city;; 1 = GPS;; 0 = none.
-- **EX014 — Necessity principle.** Which principles require limiting data to what is necessary? *Rubric:* 3 = GDPR Article 5(1)(c) and LGPD Article 6(III);; 2 = one;; 1 = none;; 0 = none.
+- **EX014 — Necessity principle.** Which principles require limiting data to what is necessary? *Rubric:* 3 = GDPR Article 5(1)(c) and LGPD Article 6(III);; 2 = one;; 1 = vague;; 0 = none.
 - **EX015 — Resistant team.** Why did the fraud team accept the pilot? *Rubric:* 3 = it could prove them right;; 2 = mentions fairness;; 1 = forced;; 0 = none.
 
 ### Synthesis
@@ -251,9 +251,9 @@ Ethics notes need examples to be usable; abstract principles are easily ignored.
 
 - **EX016 — Two risk views.** Why add a column for harm to individuals? *Rubric:* 3 = law focuses on people's rights, not only company losses;; 2 = mentions people;; 1 = company only;; 0 = none.
 - **EX017 — Life-event inference.** Why advise against inferring life events from transactions? *Rubric:* 3 = breaks contextual norms and amounts to secondary use;; 2 = mentions intrusion;; 1 = support;; 0 = none.
-- **EX018 — DPO conflict.** What conflict did Priscila identify for the DPO? *Rubric:* 3 = reporting to an executive responsible for marketing revenue;; 2 = mentions reporting;; 1 = none;; 0 = none.
+- **EX018 — DPO conflict.** What conflict did Priscila identify for the DPO? *Rubric:* 3 = reporting to an executive responsible for marketing revenue;; 2 = mentions reporting;; 1 = vague;; 0 = none.
 - **EX019 — Article 38(6).** What does GDPR Article 38(6) require? *Rubric:* 3 = DPO's other tasks must not cause a conflict of interests;; 2 = close;; 1 = wrong;; 0 = none.
-- **EX020 — Revised segmentation.** How was the past segmentation decision revised? *Rubric:* 3 = coarser categories and opt-in personalisation;; 2 = one;; 1 = none;; 0 = none.
+- **EX020 — Revised segmentation.** How was the past segmentation decision revised? *Rubric:* 3 = coarser categories and opt-in personalisation;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -302,7 +302,7 @@ Banner tests measure behaviour, not understanding; add comprehension checks if p
 - **EX021 — Banner A problem.** Why does banner A likely fail? *Rubric:* 3 = refusing is harder than accepting;; 2 = mentions ease;; 1 = compliant;; 0 = none.
 - **EX022 — Lower acceptance.** Why is a fall in acceptance not a failure? *Rubric:* 3 = choices reflect real preferences; nudged consents are fragile;; 2 = mentions preferences;; 1 = is failure;; 0 = none.
 - **EX023 — Why test B.** Why test B rather than C first? *Rubric:* 3 = minimal change likely compliant and easy to implement;; 2 = mentions simplicity;; 1 = random;; 0 = none.
-- **EX024 — Regret measure.** What outcome measures regret? *Rubric:* 3 = withdrawals within ninety days;; 2 = mentions withdrawals;; 1 = none;; 0 = none.
+- **EX024 — Regret measure.** What outcome measures regret? *Rubric:* 3 = withdrawals within ninety days;; 2 = mentions withdrawals;; 1 = vague;; 0 = none.
 - **EX025 — Cookie consent law.** Which provision requires consent for non-essential cookies? *Rubric:* 3 = ePrivacy Directive Article 5(3);; 2 = mentions ePrivacy;; 1 = GDPR only;; 0 = none.
 
 ### Synthesis
@@ -371,9 +371,9 @@ Two weeks may not capture seasonal behaviour; repeat later.
 ### Exercises
 
 - **EX026 — Acceptance difference.** What was the difference in acceptance between A and B? *Rubric:* 3 = 22.0 points (95% CI 20.0 to 24.0);; 2 = approximately;; 1 = wrong;; 0 = none.
-- **EX027 — Withdrawal ratio.** How did withdrawals compare? *Rubric:* 3 = 41 vs 12 per 1,000, more than three times higher under A;; 2 = numbers only;; 1 = none;; 0 = none.
+- **EX027 — Withdrawal ratio.** How did withdrawals compare? *Rubric:* 3 = 41 vs 12 per 1,000, more than three times higher under A;; 2 = numbers only;; 1 = vague;; 0 = none.
 - **EX028 — Test ethics.** Why must showing banner A during the test be brief? *Rubric:* 3 = it is likely less compliant, justified only to measure improvement;; 2 = mentions compliance;; 1 = unlimited;; 0 = none.
-- **EX029 — Durable consent.** What business benefit does banner B offer? *Rubric:* 3 = fewer but more durable consents;; 2 = mentions stability;; 1 = none;; 0 = none.
+- **EX029 — Durable consent.** What business benefit does banner B offer? *Rubric:* 3 = fewer but more durable consents;; 2 = mentions stability;; 1 = vague;; 0 = none.
 - **EX030 — Freely given doubt.** Why are consents under A questionable? *Rubric:* 3 = design pushed users, and higher withdrawals suggest choices did not reflect preferences;; 2 = mentions nudging;; 1 = valid;; 0 = none.
 
 ### Synthesis
@@ -420,11 +420,11 @@ Screening questions can be answered carelessly; spot-check answers.
 
 ### Exercises
 
-- **EX031 — Screening triggers.** Name two screening questions that trigger a DPIA. *Rubric:* 3 = new data, new purpose, new vendor or many customers affected;; 2 = one;; 1 = none;; 0 = none.
-- **EX032 — Procurement criteria.** What privacy criteria were added to procurement? *Rubric:* 3 = Article 28-compliant agreements, deletion terms, sub-processor lists and breach times;; 2 = two;; 1 = none;; 0 = none.
+- **EX031 — Screening triggers.** Name two screening questions that trigger a DPIA. *Rubric:* 3 = new data, new purpose, new vendor or many customers affected;; 2 = one;; 1 = vague;; 0 = none.
+- **EX032 — Procurement criteria.** What privacy criteria were added to procurement? *Rubric:* 3 = Article 28-compliant agreements, deletion terms, sub-processor lists and breach times;; 2 = two;; 1 = vague;; 0 = none.
 - **EX033 — Champion catch.** What did champions catch early? *Rubric:* 3 = screenshots with card numbers in internal chat;; 2 = mentions screenshots;; 1 = nothing;; 0 = none.
 - **EX034 — Coordination value.** Why coordinate privacy, security and risk monthly? *Rubric:* 3 = avoids duplication and gaps, making protection coherent;; 2 = mentions alignment;; 1 = unnecessary;; 0 = none.
-- **EX035 — Fraud DPIA.** Which existing product change triggered a DPIA? *Rubric:* 3 = changes to the fraud model;; 2 = mentions fraud;; 1 = none;; 0 = none.
+- **EX035 — Fraud DPIA.** Which existing product change triggered a DPIA? *Rubric:* 3 = changes to the fraud model;; 2 = mentions fraud;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -473,8 +473,8 @@ Jurisdiction-specific timelines change; check current regulations.
 - **EX036 — AML erasure.** What does Corvina erase and retain for the erasure request? *Rubric:* 3 = erases marketing and preferences; retains AML records restricted to compliance;; 2 = one part;; 1 = everything;; 0 = none.
 - **EX037 — Article 17(3)(b).** Which provision allows retaining data for legal obligations? *Rubric:* 3 = GDPR Article 17(3)(b);; 2 = close;; 1 = wrong;; 0 = none.
 - **EX038 — Police disclosure.** What did Corvina disclose to police? *Rubric:* 3 = only transactions in the requested period, with a record;; 2 = mentions limited;; 1 = all;; 0 = none.
-- **EX039 — Cross-border breach.** Which authorities were notified for the vendor breach? *Rubric:* 3 = Portuguese supervisory authority under GDPR and Brazilian authority under LGPD;; 2 = one;; 1 = none;; 0 = none.
-- **EX040 — Ticket masking.** What preventive fix followed the breach? *Rubric:* 3 = automated masking of card data in support tickets;; 2 = mentions masking;; 1 = none;; 0 = none.
+- **EX039 — Cross-border breach.** Which authorities were notified for the vendor breach? *Rubric:* 3 = Portuguese supervisory authority under GDPR and Brazilian authority under LGPD;; 2 = one;; 1 = vague;; 0 = none.
+- **EX040 — Ticket masking.** What preventive fix followed the breach? *Rubric:* 3 = automated masking of card data in support tickets;; 2 = mentions masking;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -543,10 +543,10 @@ Indicators can be gamed; audit underlying data.
 ### Exercises
 
 - **EX041 — Red indicators.** Which indicators are red? *Rubric:* 3 = breaches notified late, processors without DPA, records past retention;; 2 = two;; 1 = wrong;; 0 = none.
-- **EX042 — Amber indicator.** Which indicator is amber and why? *Rubric:* 3 = staff training overdue: 10.5% just above 10.0%;; 2 = names it;; 1 = none;; 0 = none.
-- **EX043 — Red threshold.** How is the red threshold defined? *Rubric:* 3 = 1.5 times the appetite threshold;; 2 = mentions multiple;; 1 = none;; 0 = none.
-- **EX044 — Audit finding.** What did internal audit find? *Rubric:* 3 = processors-without-agreements figure understated due to register gaps;; 2 = mentions understated;; 1 = none;; 0 = none.
-- **EX045 — Board story.** What four elements does Priscila use for each red indicator? *Rubric:* 3 = what is wrong, why it matters, what fixes it, when;; 2 = three;; 1 = none;; 0 = none.
+- **EX042 — Amber indicator.** Which indicator is amber and why? *Rubric:* 3 = staff training overdue: 10.5% just above 10.0%;; 2 = names it;; 1 = vague;; 0 = none.
+- **EX043 — Red threshold.** How is the red threshold defined? *Rubric:* 3 = 1.5 times the appetite threshold;; 2 = mentions multiple;; 1 = vague;; 0 = none.
+- **EX044 — Audit finding.** What did internal audit find? *Rubric:* 3 = processors-without-agreements figure understated due to register gaps;; 2 = mentions understated;; 1 = vague;; 0 = none.
+- **EX045 — Board story.** What four elements does Priscila use for each red indicator? *Rubric:* 3 = what is wrong, why it matters, what fixes it, when;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -595,7 +595,7 @@ Summaries simplify; link to originals.
 - **EX046 — Transaction data.** Why are transaction data not anonymous after removing names? *Rubric:* 3 = few purchases with times and places identify customers;; 2 = mentions distinctiveness;; 1 = anonymous;; 0 = none.
 - **EX047 — DP limits.** Where can Corvina not use differential privacy? *Rubric:* 3 = fraud detection, which needs individual data;; 2 = mentions fraud;; 1 = everywhere;; 0 = none.
 - **EX048 — Local testing.** Why must practitioners test research claims locally? *Rubric:* 3 = research contexts differ from their own;; 2 = mentions context;; 1 = trust research;; 0 = none.
-- **EX049 — Summary elements.** What does each entry in Priscila's summary contain? *Rubric:* 3 = claim, evidence, limits, implications;; 2 = three;; 1 = none;; 0 = none.
+- **EX049 — Summary elements.** What does each entry in Priscila's summary contain? *Rubric:* 3 = claim, evidence, limits, implications;; 2 = three;; 1 = vague;; 0 = none.
 - **EX050 — Shared reading.** Who receives the critical summary? *Rubric:* 3 = the privacy champions;; 2 = mentions colleagues;; 1 = board;; 0 = none.
 
 ### Synthesis
@@ -643,9 +643,9 @@ Lower retention figures can hide unindexed data stores; keep discovering.
 ### Exercises
 
 - **EX051 — Project result.** How did records past retention change? *Rubric:* 3 = from 11.0% to 3.8%;; 2 = direction;; 1 = wrong;; 0 = none.
-- **EX052 — Near miss.** What near miss occurred and how was it fixed? *Rubric:* 3 = a job nearly deleted legal-hold records; untagged records now blocked;; 2 = one part;; 1 = none;; 0 = none.
+- **EX052 — Near miss.** What near miss occurred and how was it fixed? *Rubric:* 3 = a job nearly deleted legal-hold records; untagged records now blocked;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX053 — Resistance.** How did Priscila handle teams wanting to keep data? *Rubric:* 3 = offered aggregated statistics kept longer and explained risks;; 2 = one part;; 1 = forced;; 0 = none.
-- **EX054 — Side benefits.** Name two side benefits of the project. *Rubric:* 3 = lower storage costs and faster rights requests;; 2 = one;; 1 = none;; 0 = none.
+- **EX054 — Side benefits.** Name two side benefits of the project. *Rubric:* 3 = lower storage costs and faster rights requests;; 2 = one;; 1 = vague;; 0 = none.
 - **EX055 — Sustaining.** What sustains the improvement? *Rubric:* 3 = monitoring and onboarding new systems before launch;; 2 = one;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -692,11 +692,11 @@ Self-review is biased; ask colleagues and auditors for their view.
 
 ### Exercises
 
-- **EX056 — Remaining red.** Which indicators remain red after two years? *Rubric:* 3 = late breach notification and processors without agreements;; 2 = one;; 1 = none;; 0 = none.
+- **EX056 — Remaining red.** Which indicators remain red after two years? *Rubric:* 3 = late breach notification and processors without agreements;; 2 = one;; 1 = vague;; 0 = none.
 - **EX057 — Transferable principles.** Name three transferable principles. *Rubric:* 3 = e.g. separate constraints from trade-offs; test necessity; report honestly;; 2 = two;; 1 = tools;; 0 = none.
 - **EX058 — Not a template.** Why does Priscila avoid presenting her programme as a template? *Rubric:* 3 = contexts and resources differ;; 2 = mentions context;; 1 = universal;; 0 = none.
-- **EX059 — Evolving standards.** Give an example of an evolving standard she must track. *Rubric:* 3 = ISO/IEC 27701:2025 edition;; 2 = mentions ISO;; 1 = none;; 0 = none.
-- **EX060 — Development areas.** Name two development areas Priscila plans. *Rubric:* 3 = privacy engineering/DP, regulator interactions, mentoring;; 2 = one;; 1 = none;; 0 = none.
+- **EX059 — Evolving standards.** Give an example of an evolving standard she must track. *Rubric:* 3 = ISO/IEC 27701:2025 edition;; 2 = mentions ISO;; 1 = vague;; 0 = none.
+- **EX060 — Development areas.** Name two development areas Priscila plans. *Rubric:* 3 = privacy engineering/DP, regulator interactions, mentoring;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -237,8 +237,8 @@ Disabling accounts directly from a script's output, without owner checks, risks 
 
 ### Exercises
 
-- **EX010 — Orphan count.** Which accounts does the lab flag as having no current employee? *Rubric:* 3 = jdoe and kpatel;; 2 = two;; 1 = none;; 0 = none.
-- **EX011 — Missing account.** Which employee has no account in the lab? *Rubric:* 3 = mlee;; 2 = one;; 1 = none;; 0 = none.
+- **EX010 — Orphan count.** Which accounts does the lab flag as having no current employee? *Rubric:* 3 = jdoe and kpatel;; 2 = two;; 1 = vague;; 0 = none.
+- **EX011 — Missing account.** Which employee has no account in the lab? *Rubric:* 3 = mlee;; 2 = one;; 1 = vague;; 0 = none.
 - **EX012 — Case bug.** What did the case test reveal? *Rubric:* 3 = JDoe and jdoe treated as different;; 2 = case;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -383,7 +383,7 @@ Reporting only a mean sign-in time hides the slow tail that users actually exper
 
 - **EX019 — Poisson assumption.** What assumption does a Poisson lockout model rely on? *Rubric:* 3 = independent events at a stable rate;; 2 = independence;; 1 = normality;; 0 = none.
 - **EX020 — Percentile meaning.** What does a 95th percentile of twelve seconds mean? *Rubric:* 3 = one in twenty sign-ins takes twelve seconds or more;; 2 = slow tail;; 1 = average;; 0 = none.
-- **EX021 — Base-rate effect.** Why does a 1% false-alarm rate overwhelm monitoring? *Rubric:* 3 = legitimate sign-ins vastly outnumber suspicious ones;; 2 = base rate;; 1 = none;; 0 = none.
+- **EX021 — Base-rate effect.** Why does a 1% false-alarm rate overwhelm monitoring? *Rubric:* 3 = legitimate sign-ins vastly outnumber suspicious ones;; 2 = base rate;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -431,7 +431,7 @@ Storing the token-signing key in an ordinary file on the server exposes the most
 
 - **EX022 — Signing key value.** Why is the token-signing key the most valuable secret? *Rubric:* 3 = anyone holding it can forge tokens every app accepts;; 2 = forge tokens;; 1 = encryption;; 0 = none.
 - **EX023 — Restart spike.** What happens if sessions are lost on restart? *Rubric:* 3 = all users sign in again, causing a load spike;; 2 = spike;; 1 = nothing;; 0 = none.
-- **EX024 — Failure headroom.** How does Sana plan for one server failing? *Rubric:* 3 = each server can carry full peak alone;; 2 = headroom;; 1 = none;; 0 = none.
+- **EX024 — Failure headroom.** How does Sana plan for one server failing? *Rubric:* 3 = each server can carry full peak alone;; 2 = headroom;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -513,8 +513,8 @@ Parsers that silently skip unreadable lines can hide the very accounts a check i
 
 ### Exercises
 
-- **EX025 — Single-member roles.** How many single-member roles does the lab find? *Rubric:* 3 = four, two differing by one permission;; 2 = four;; 1 = none;; 0 = none.
-- **EX026 — Combined permissions.** What risky combination does the lab find? *Rubric:* 3 = one account with payments-raise and payments-approve;; 2 = raise and approve;; 1 = none;; 0 = none.
+- **EX025 — Single-member roles.** How many single-member roles does the lab find? *Rubric:* 3 = four, two differing by one permission;; 2 = four;; 1 = vague;; 0 = none.
+- **EX026 — Combined permissions.** What risky combination does the lab find? *Rubric:* 3 = one account with payments-raise and payments-approve;; 2 = raise and approve;; 1 = vague;; 0 = none.
 - **EX027 — Report header.** What does Sana put in each report header? *Rubric:* 3 = script version, export file and date;; 2 = version;; 1 = name;; 0 = none.
 
 ### Synthesis
@@ -562,7 +562,7 @@ Making identity changes without an emergency administrator path can turn a small
 ### Exercises
 
 - **EX028 — Uncomfortable duty.** What uncomfortable report does Sana's duty require? *Rubric:* 3 = telling a director former staff still have access;; 2 = raise concern;; 1 = stay silent;; 0 = none.
-- **EX029 — Excluded activities.** Name two activities outside Sana's authorisation. *Rubric:* 3 = production sign-in, password testing, bypass attempts (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX029 — Excluded activities.** Name two activities outside Sana's authorisation. *Rubric:* 3 = production sign-in, password testing, bypass attempts (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX030 — Emergency account.** Why keep an emergency administrator account during changes? *Rubric:* 3 = so a mistake cannot remove the ability to fix it;; 2 = recovery;; 1 = convenience;; 0 = none.
 
 ### Synthesis
@@ -709,7 +709,7 @@ Combining sources whose user identifiers or clocks differ produces queries that 
 
 - **EX037 — HR role.** What question does the HR record answer? *Rubric:* 3 = who should exist;; 2 = staff;; 1 = who signed in;; 0 = none.
 - **EX038 — Correlation identifier.** What is the correlation identifier for? *Rubric:* 3 = linking related events;; 2 = linking;; 1 = encryption;; 0 = none.
-- **EX039 — Inactive query.** What does the tested inactivity query find? *Rubric:* 3 = 61 accounts inactive over ninety days;; 2 = 61;; 1 = none;; 0 = none.
+- **EX039 — Inactive query.** What does the tested inactivity query find? *Rubric:* 3 = 61 accounts inactive over ninety days;; 2 = 61;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -855,7 +855,7 @@ Writing product choices as requirements closes off design options before alterna
 
 - **EX046 — Requirement versus design.** Which is a requirement: leaver removal within four hours, or buying a product? *Rubric:* 3 = leaver removal within four hours;; 2 = first;; 1 = product;; 0 = none.
 - **EX047 — Untested requirement.** What does a requirement without a linked test indicate? *Rubric:* 3 = it is unverified;; 2 = gap;; 1 = done;; 0 = none.
-- **EX048 — Interface gap example.** What interface gap does Sana give as an example? *Rubric:* 3 = weekly leaver feed when hours required;; 2 = timing;; 1 = none;; 0 = none.
+- **EX048 — Interface gap example.** What interface gap does Sana give as an example? *Rubric:* 3 = weekly leaver feed when hours required;; 2 = timing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -902,7 +902,7 @@ Hard lockouts let anyone who knows a username deny that person access by failing
 ### Exercises
 
 - **EX049 — Low threshold effect.** What happens when a lockout threshold is too low? *Rubric:* 3 = staff locked out, desk flooded;; 2 = lockouts;; 1 = nothing;; 0 = none.
-- **EX050 — Lockout abuse.** How can hard lockouts be abused? *Rubric:* 3 = attacker fails deliberately to lock someone out;; 2 = deny service;; 1 = none;; 0 = none.
+- **EX050 — Lockout abuse.** How can hard lockouts be abused? *Rubric:* 3 = attacker fails deliberately to lock someone out;; 2 = deny service;; 1 = vague;; 0 = none.
 - **EX051 — Progressive response.** What does Sana prefer to hard lockouts? *Rubric:* 3 = progressive slowing or extra verification;; 2 = delays;; 1 = no limit;; 0 = none.
 
 ### Synthesis
@@ -950,7 +950,7 @@ Pushing all fine-grained authorisation into the central provider ignores that ap
 ### Exercises
 
 - **EX052 — Decision versus enforcement.** What does the policy enforcement point do? *Rubric:* 3 = applies the decision by accepting or rejecting access;; 2 = enforce;; 1 = decide;; 0 = none.
-- **EX053 — Central risk.** What risk comes with a central decision point? *Rubric:* 3 = its failure or misconfiguration affects every application;; 2 = single point;; 1 = none;; 0 = none.
+- **EX053 — Central risk.** What risk comes with a central decision point? *Rubric:* 3 = its failure or misconfiguration affects every application;; 2 = single point;; 1 = vague;; 0 = none.
 - **EX054 — Authorisation placement.** Where does fine-grained authorisation stay in Sana's design? *Rubric:* 3 = in the application, which knows its data;; 2 = application;; 1 = provider;; 0 = none.
 
 ### Synthesis
@@ -1048,7 +1048,7 @@ Starting design without a measured baseline makes it impossible to show improvem
 ### Exercises
 
 - **EX058 — Leaver process today.** How are leavers communicated today? *Rubric:* 3 = monthly emailed list forwarded to app owners;; 2 = monthly email;; 1 = automated;; 0 = none.
-- **EX059 — Constraint examples.** Name two constraints Sana records. *Rubric:* 3 = budget, small team, legacy apps, union agreements, service continuity (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX059 — Constraint examples.** Name two constraints Sana records. *Rubric:* 3 = budget, small team, legacy apps, union agreements, service continuity (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX060 — Baseline leaver time.** What is the baseline median leaver removal time? *Rubric:* 3 = 19 days;; 2 = weeks;; 1 = hours;; 0 = none.
 
 ### Synthesis
@@ -1351,7 +1351,7 @@ Defending a design in the studio instead of recording and testing comments waste
 
 ### Exercises
 
-- **EX073 — New starter gap.** What gap did the service desk leader find? *Rubric:* 3 = call-back fails for new starters without HR phone numbers;; 2 = new starters;; 1 = none;; 0 = none.
+- **EX073 — New starter gap.** What gap did the service desk leader find? *Rubric:* 3 = call-back fails for new starters without HR phone numbers;; 2 = new starters;; 1 = vague;; 0 = none.
 - **EX074 — Grace period.** What grace period does Sana add for leaver disabling? *Rubric:* 3 = one hour, reversible by HR;; 2 = one hour;; 1 = one day;; 0 = none.
 - **EX075 — Slow vendor response.** How does Sana handle vendors slow to support SCIM? *Rubric:* 3 = interim scripted daily exports as residual risk;; 2 = scripts;; 1 = wait;; 0 = none.
 
@@ -1401,7 +1401,7 @@ Comparing a preferred design only against an obviously weak alternative makes th
 
 - **EX076 — Do-minimum purpose.** Why include a do-minimum option? *Rubric:* 3 = gives a fair baseline others must beat;; 2 = baseline;; 1 = cheapest;; 0 = none.
 - **EX077 — Option C failure.** Which requirement does Option C fail? *Rubric:* 3 = leaver requirement;; 2 = leaver;; 1 = cost;; 0 = none.
-- **EX078 — Decision change evidence.** What evidence would change Sana's recommendation? *Rubric:* 3 = e.g. large subscription price rise;; 2 = price;; 1 = none;; 0 = none.
+- **EX078 — Decision change evidence.** What evidence would change Sana's recommendation? *Rubric:* 3 = e.g. large subscription price rise;; 2 = price;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1473,7 +1473,7 @@ Relying only on preventive checks misses conflicts granted directly inside appli
 
 ### Exercises
 
-- **EX079 — Conflict count.** How many conflicts does the lab scan find? *Rubric:* 3 = three: s02, s03, s06;; 2 = three;; 1 = none;; 0 = none.
+- **EX079 — Conflict count.** How many conflicts does the lab scan find? *Rubric:* 3 = three: s02, s03, s06;; 2 = three;; 1 = vague;; 0 = none.
 - **EX080 — Detective need.** Why is a nightly detective scan needed? *Rubric:* 3 = preventive checks miss grants made inside applications;; 2 = app grants;; 1 = speed;; 0 = none.
 - **EX081 — Admin separation.** How are administrator accounts separated? *Rubric:* 3 = separate admin accounts, managed workstations, just-in-time rights;; 2 = separate accounts;; 1 = shared;; 0 = none.
 
@@ -1590,9 +1590,9 @@ Reporting a mean removal time lets one slow case distort the picture in either d
 
 ### Exercises
 
-- **EX085 — Median change.** How did the median removal time change in the lab? *Rubric:* 3 = 408 to 1.6 hours;; 2 = large fall;; 1 = none;; 0 = none.
-- **EX086 — Over-requirement count.** How many leavers exceeded four hours after automation? *Rubric:* 3 = one of twelve;; 2 = one;; 1 = none;; 0 = none.
-- **EX087 — Outlier causes.** What two actions came from the outlier? *Rubric:* 3 = fix locked-record handling; agree weekend alert handling;; 2 = one;; 1 = none;; 0 = none.
+- **EX085 — Median change.** How did the median removal time change in the lab? *Rubric:* 3 = 408 to 1.6 hours;; 2 = large fall;; 1 = vague;; 0 = none.
+- **EX086 — Over-requirement count.** How many leavers exceeded four hours after automation? *Rubric:* 3 = one of twelve;; 2 = one;; 1 = vague;; 0 = none.
+- **EX087 — Outlier causes.** What two actions came from the outlier? *Rubric:* 3 = fix locked-record handling; agree weekend alert handling;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1641,7 +1641,7 @@ Evidence not linked to a configuration version cannot show that the tested setup
 ### Exercises
 
 - **EX088 — Lab isolation.** Why is the test tenant isolated from production? *Rubric:* 3 = tests cannot affect staff;; 2 = safety;; 1 = cost;; 0 = none.
-- **EX089 — Audience failure.** Which serious failure did the first round find? *Rubric:* 3 = an application accepting wrong-audience tokens;; 2 = audience;; 1 = none;; 0 = none.
+- **EX089 — Audience failure.** Which serious failure did the first round find? *Rubric:* 3 = an application accepting wrong-audience tokens;; 2 = audience;; 1 = vague;; 0 = none.
 - **EX090 — First round result.** How many tests passed in the first round? *Rubric:* 3 = 79 of 84;; 2 = 79;; 1 = 84;; 0 = none.
 
 ### Synthesis
@@ -1856,7 +1856,7 @@ Integrating alerts without runbooks leaves analysts unsure what to check or do.
 ### Exercises
 
 - **EX100 — Repeated recovery signal.** Why link resets to identities as tickets? *Rubric:* 3 = patterns of repeated recovery become visible as possible abuse;; 2 = patterns;; 1 = billing;; 0 = none.
-- **EX101 — Alert examples.** Name two identity alert types sent to monitoring. *Rubric:* 3 = new device plus unusual location, failed second factors, emergency account use, admin activation, connector failure (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX101 — Alert examples.** Name two identity alert types sent to monitoring. *Rubric:* 3 = new device plus unusual location, failed second factors, emergency account use, admin activation, connector failure (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX102 — Integration test.** What is the real test of integration? *Rubric:* 3 = everything keeps working after Sana leaves;; 2 = handover;; 1 = go-live;; 0 = none.
 
 ### Synthesis
@@ -1904,7 +1904,7 @@ Leaving design documents describing the intended rather than the built system mi
 ### Exercises
 
 - **EX103 — Exception growth.** How many exceptions were active, and what share lacked a reason? *Rubric:* 3 = 140, about a third;; 2 = 140;; 1 = few;; 0 = none.
-- **EX104 — Consolidation safeguard.** How is policy consolidation kept safe? *Rubric:* 3 = test cases written first;; 2 = tests first;; 1 = none;; 0 = none.
+- **EX104 — Consolidation safeguard.** How is policy consolidation kept safe? *Rubric:* 3 = test cases written first;; 2 = tests first;; 1 = vague;; 0 = none.
 - **EX105 — Recovery response.** What campaign addresses rising recovery requests? *Rubric:* 3 = second-passkey registration;; 2 = second passkey;; 1 = password reset;; 0 = none.
 
 ### Synthesis
@@ -1974,7 +1974,7 @@ Load testing against production cloud identity services can breach terms and aff
 ### Exercises
 
 - **EX106 — Peak estimate.** What total peak load does the lab estimate now? *Rubric:* 3 = about 17.6 requests per second, 29%;; 2 = 17.6;; 1 = 4.4;; 0 = none.
-- **EX107 — Lifetime trade-off.** What is the trade-off in lengthening token lifetimes? *Rubric:* 3 = fewer refreshes but stolen tokens useful longer;; 2 = security vs load;; 1 = none;; 0 = none.
+- **EX107 — Lifetime trade-off.** What is the trade-off in lengthening token lifetimes? *Rubric:* 3 = fewer refreshes but stolen tokens useful longer;; 2 = security vs load;; 1 = vague;; 0 = none.
 - **EX108 — Load test finding.** What did load testing reveal? *Rubric:* 3 = slow lookup for users with many nested groups;; 2 = nested groups;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -2023,7 +2023,7 @@ Disabling a password without revoking sessions leaves an attacker's existing ses
 
 - **EX109 — Session revocation reason.** Why must sessions be revoked in a compromise? *Rubric:* 3 = disabling password alone does not end existing sessions;; 2 = sessions persist;; 1 = speed;; 0 = none.
 - **EX110 — Change failure rate.** What does change failure rate measure? *Rubric:* 3 = share of changes needing rollback;; 2 = rollbacks;; 1 = speed;; 0 = none.
-- **EX111 — Review design.** Name two features of Sana's improved access reviews. *Rubric:* 3 = plain descriptions, last-use dates, highlights, short lists, automatic removal (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX111 — Review design.** Name two features of Sana's improved access reviews. *Rubric:* 3 = plain descriptions, last-use dates, highlights, short lists, automatic removal (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2119,7 +2119,7 @@ Allowing console edits without drift detection makes the repository an unreliabl
 
 - **EX115 — Sprawl metrics.** Name three sprawl counts Sana tracks. *Rubric:* 3 = groups, ownerless groups, policies, ownerless apps, exceptions (three);; 2 = two;; 1 = one;; 0 = none.
 - **EX116 — Drift outcome.** What happened to the four drift findings? *Rubric:* 3 = three added via review, one reverted;; 2 = resolved;; 1 = ignored;; 0 = none.
-- **EX117 — Naming example.** Give an example of Sana's naming convention. *Rubric:* 3 = role-finance-clerk or app-payroll-users;; 2 = example;; 1 = none;; 0 = none.
+- **EX117 — Naming example.** Give an example of Sana's naming convention. *Rubric:* 3 = role-finance-clerk or app-payroll-users;; 2 = example;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2167,7 +2167,7 @@ Failure handling that has never been tested usually fails when it is needed.
 
 - **EX118 — Feed failure rule.** What must not happen when the HR feed stops? *Rubric:* 3 = treating missing staff as leavers and disabling everyone;; 2 = mass disable;; 1 = alert;; 0 = none.
 - **EX119 — Second round result.** How many tests passed in the second round? *Rubric:* 3 = 146 of 148;; 2 = 146;; 1 = 148;; 0 = none.
-- **EX120 — Clock tolerance.** What did the clock tolerance failure allow? *Rubric:* 3 = tokens accepted two minutes after expiry;; 2 = late tokens;; 1 = none;; 0 = none.
+- **EX120 — Clock tolerance.** What did the clock tolerance failure allow? *Rubric:* 3 = tokens accepted two minutes after expiry;; 2 = late tokens;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2214,7 +2214,7 @@ Simplifying policies without first capturing intended behaviour in tests can qui
 ### Exercises
 
 - **EX121 — Finance roles.** How many finance roles remain after consolidation? *Rubric:* 3 = eight, down from fourteen;; 2 = eight;; 1 = fourteen;; 0 = none.
-- **EX122 — Policy gaps closed.** What did policy consolidation also fix? *Rubric:* 3 = two gaps where devices escaped MFA prompts;; 2 = gaps;; 1 = none;; 0 = none.
+- **EX122 — Policy gaps closed.** What did policy consolidation also fix? *Rubric:* 3 = two gaps where devices escaped MFA prompts;; 2 = gaps;; 1 = vague;; 0 = none.
 - **EX123 — Optimisation success test.** When is optimisation a success? *Rubric:* 3 = less effort and complexity with security kept or improved;; 2 = both;; 1 = cost only;; 0 = none.
 
 ### Synthesis
@@ -2313,7 +2313,7 @@ Presenting identity work to boards as technical features rather than service out
 
 - **EX127 — Union concern.** What concern did the union raise? *Rubric:* 3 = logs used to monitor productivity;; 2 = monitoring;; 1 = pay;; 0 = none.
 - **EX128 — Procurement outcomes.** Name two outcomes Sana's procurement requirements stress. *Rubric:* 3 = phishing-resistant auth, standard protocols, exportable logs, limited supplier data access (two);; 2 = one;; 1 = price;; 0 = none.
-- **EX129 — Ethical refusal.** What request did Sana decline? *Rubric:* 3 = sharing an individual's sign-in history without authorisation;; 2 = sharing logs;; 1 = none;; 0 = none.
+- **EX129 — Ethical refusal.** What request did Sana decline? *Rubric:* 3 = sharing an individual's sign-in history without authorisation;; 2 = sharing logs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2408,8 +2408,8 @@ Assuming that a proxied application cannot be reached directly leaves a path aro
 ### Exercises
 
 - **EX133 — Proxy finding.** What must a proxied application do according to the review? *Rubric:* 3 = reject requests not coming through the proxy;; 2 = reject direct;; 1 = nothing;; 0 = none.
-- **EX134 — Residual window.** What leaver window does the revised residual risk state for scripted checks? *Rubric:* 3 = up to twenty-four hours;; 2 = 24h;; 1 = none;; 0 = none.
-- **EX135 — Lasting change.** What lasting process change does Sana recommend? *Rubric:* 3 = independent review step for high-risk identity changes;; 2 = review step;; 1 = none;; 0 = none.
+- **EX134 — Residual window.** What leaver window does the revised residual risk state for scripted checks? *Rubric:* 3 = up to twenty-four hours;; 2 = 24h;; 1 = vague;; 0 = none.
+- **EX135 — Lasting change.** What lasting process change does Sana recommend? *Rubric:* 3 = independent review step for high-risk identity changes;; 2 = review step;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2456,7 +2456,7 @@ Declaring success at go-live without measuring leaver removal afterwards leaves 
 ### Exercises
 
 - **EX136 — Migrated count.** How many applications were migrated in the capstone? *Rubric:* 3 = thirteen of twenty, one above target;; 2 = thirteen;; 1 = twelve;; 0 = none.
-- **EX137 — Ownerless accounts change.** How did ownerless accounts change in capstone applications? *Rubric:* 3 = 47 to 2, both pending HR corrections;; 2 = 47 to 2;; 1 = none;; 0 = none.
+- **EX137 — Ownerless accounts change.** How did ownerless accounts change in capstone applications? *Rubric:* 3 = 47 to 2, both pending HR corrections;; 2 = 47 to 2;; 1 = vague;; 0 = none.
 - **EX138 — Interim test.** How are interim scripted checks verified? *Rubric:* 3 = a synthetic leaver is detected and alerts reach the team;; 2 = synthetic test;; 1 = assumed;; 0 = none.
 
 ### Synthesis
@@ -2553,7 +2553,7 @@ A dossier that claims every requirement was fully met invites suspicion rather t
 
 - **EX142 — Requirement status.** How many requirements are met, partly met and not met? *Rubric:* 3 = 53, 5, 2;; 2 = 53 met;; 1 = all;; 0 = none.
 - **EX143 — SSO coverage final.** What single sign-on coverage does the dossier report? *Rubric:* 3 = 133 of 140 applications;; 2 = 133;; 1 = 140;; 0 = none.
-- **EX144 — Auditor trial.** What did the auditor's trial find? *Rubric:* 3 = one broken link among three requirements;; 2 = one issue;; 1 = none;; 0 = none.
+- **EX144 — Auditor trial.** What did the auditor's trial find? *Rubric:* 3 = one broken link among three requirements;; 2 = one issue;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2600,7 +2600,7 @@ Claiming a reduction in attacks that was never measured overstates the evidence.
 ### Exercises
 
 - **EX145 — Unmeasured claim.** Which claim does Sana avoid because she did not measure it? *Rubric:* 3 = a reduction in attacks;; 2 = attacks;; 1 = leaver time;; 0 = none.
-- **EX146 — Contribution items.** Name two parts of Sana's stated contribution. *Rubric:* 3 = verified programme, reusable requirements and tests, measured improvement, review study (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX146 — Contribution items.** Name two parts of Sana's stated contribution. *Rubric:* 3 = verified programme, reusable requirements and tests, measured improvement, review study (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX147 — Hindsight change.** What would Sana do differently? *Rubric:* 3 = involve HR earlier;; 2 = HR;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -2648,7 +2648,7 @@ Answering a question about an unmeasured outcome with guesses rather than statin
 ### Exercises
 
 - **EX148 — Attack question answer.** How does Sana answer whether attacks fell? *Rubric:* 3 = explains attacks were not measured, what was, and how to study it;; 2 = honest;; 1 = yes;; 0 = none.
-- **EX149 — HR dependency evidence.** What evidence does Sana cite on HR dependency? *Rubric:* 3 = failure trial showing safe behaviour when feed stopped;; 2 = trial;; 1 = none;; 0 = none.
+- **EX149 — HR dependency evidence.** What evidence does Sana cite on HR dependency? *Rubric:* 3 = failure trial showing safe behaviour when feed stopped;; 2 = trial;; 1 = vague;; 0 = none.
 - **EX150 — Lasting outcome.** What does Sana consider the most lasting outcome? *Rubric:* 3 = processes and evidence the council now owns;; 2 = processes;; 1 = thesis;; 0 = none.
 
 ### Synthesis

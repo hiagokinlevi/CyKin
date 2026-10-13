@@ -72,7 +72,7 @@ Decision frameworks cannot replace judgement; they make judgement visible. Assum
 - **EX001 — Programme scope.** What three goals did Corvane's board set for the programme? *Rubric:* 3 = retire legacy TLS, consolidate key management, prepare post-quantum migration;; 2 = two;; 1 = one;; 0 = none.
 - **EX002 — Three columns.** Distinguish a fact, an assumption and a value with Corvane examples. *Rubric:* 3 = fact: endpoints on TLS 1.0; assumption: quantum timeline; value: tolerated outage risk;; 2 = two correct;; 1 = confused;; 0 = none.
 - **EX003 — Matching rules.** Which decision rule suits root-key loss and which suits certificate expiry? *Rubric:* 3 = minimax for catastrophic root loss; expected value for frequent expiry;; 2 = one;; 1 = reversed;; 0 = none.
-- **EX004 — Draft flaw.** What flaw did Leila find in her first draft? *Rubric:* 3 = an assumption about quantum timelines presented as fact;; 2 = mixing;; 1 = none;; 0 = none.
+- **EX004 — Draft flaw.** What flaw did Leila find in her first draft? *Rubric:* 3 = an assumption about quantum timelines presented as fact;; 2 = mixing;; 1 = vague;; 0 = none.
 - **EX005 — Record test.** Why did Prof. Rao rate the record strong? *Rubric:* 3 = a newcomer could reconstruct the reasoning in five minutes;; 2 = clarity;; 1 = length;; 0 = none.
 
 ### Synthesis
@@ -154,7 +154,7 @@ Inventories from scanning miss internal-only services and client-side settings. 
 - **EX006 — Current baselines.** Name the standards Leila cites for TLS, key exchange and AEAD. *Rubric:* 3 = RFC 8446, RFC 7748, SP 800-38D;; 2 = two;; 1 = one;; 0 = none.
 - **EX007 — Inventory split.** What share of endpoints offer TLS 1.3? *Rubric:* 3 = 114 of 160, 71.2 percent;; 2 = count;; 1 = wrong;; 0 = none.
 - **EX008 — Legacy by unit.** How are the 25 legacy-accepting endpoints distributed? *Rubric:* 3 = ports 9, finance 4, legacy-edi 12;; 2 = two units;; 1 = total only;; 0 = none.
-- **EX009 — Lifetime proxy.** Why does Leila treat certificate lifetime as a proxy? *Rubric:* 3 = short lifetimes indicate automated management; EDI two-year manual certificates show low maturity;; 2 = automation;; 1 = none;; 0 = none.
+- **EX009 — Lifetime proxy.** Why does Leila treat certificate lifetime as a proxy? *Rubric:* 3 = short lifetimes indicate automated management; EDI two-year manual certificates show low maturity;; 2 = automation;; 1 = vague;; 0 = none.
 - **EX010 — Top gap.** Which gap ranks first and why? *Rubric:* 3 = legacy protocol acceptance on internet-facing EDI, since partners connect over the internet;; 2 = gap;; 1 = other;; 0 = none.
 
 ### Synthesis
@@ -234,7 +234,7 @@ Sizes alone do not determine performance; computation and memory matter too. IET
 - **EX011 — Standards map.** Which FIPS standards cover ML-KEM, ML-DSA and SLH-DSA? *Rubric:* 3 = FIPS 203, 204, 205 respectively;; 2 = two;; 1 = wrong;; 0 = none.
 - **EX012 — Size ratio.** How much larger is an ML-DSA-65 signature than Ed25519? *Rubric:* 3 = 3,309 vs 64 bytes, about 52 times;; 2 = ratio;; 1 = wrong;; 0 = none.
 - **EX013 — Hybrid share.** What is the size of a hybrid X25519 plus ML-KEM-768 client share? *Rubric:* 3 = 1,216 bytes;; 2 = close;; 1 = wrong;; 0 = none.
-- **EX014 — Constrained systems.** Which Corvane systems are most affected by size and why? *Rubric:* 3 = telematics (cellular, memory), port controllers (vendor cycles), EDI (message limits);; 2 = two;; 1 = none;; 0 = none.
+- **EX014 — Constrained systems.** Which Corvane systems are most affected by size and why? *Rubric:* 3 = telematics (cellular, memory), port controllers (vendor cycles), EDI (message limits);; 2 = two;; 1 = vague;; 0 = none.
 - **EX015 — Evidence strength.** How does Leila describe an argument's overall strength? *Rubric:* 3 = by its lowest-grade evidence link;; 2 = weakest link;; 1 = average;; 0 = none.
 
 ### Synthesis
@@ -281,10 +281,10 @@ Quantum timelines are uncertain; scenarios must be revisited. Disclosure without
 
 ### Exercises
 
-- **EX016 — Planning inequality.** State the x + y > z test and its meaning. *Rubric:* 3 = secrecy years plus migration years exceeding years to a quantum computer signals risk now;; 2 = partial;; 1 = none;; 0 = none.
-- **EX017 — Board choice.** Which planning scenario did the board choose, with what review? *Rubric:* 3 = moderate (about fifteen years), reviewed every two years;; 2 = scenario;; 1 = none;; 0 = none.
+- **EX016 — Planning inequality.** State the x + y > z test and its meaning. *Rubric:* 3 = secrecy years plus migration years exceeding years to a quantum computer signals risk now;; 2 = partial;; 1 = vague;; 0 = none.
+- **EX017 — Board choice.** Which planning scenario did the board choose, with what review? *Rubric:* 3 = moderate (about fifteen years), reviewed every two years;; 2 = scenario;; 1 = vague;; 0 = none.
 - **EX018 — EDI ethics.** What transition did Leila propose for small EDI partners? *Rubric:* 3 = supported transition with free updated clients and a firm published deadline;; 2 = partial;; 1 = abrupt cut-off;; 0 = none.
-- **EX019 — Vendor flaw.** What weakness did the team find in the port controller? *Rubric:* 3 = accepts firmware signed with a deprecated algorithm;; 2 = weakness;; 1 = none;; 0 = none.
+- **EX019 — Vendor flaw.** What weakness did the team find in the port controller? *Rubric:* 3 = accepts firmware signed with a deprecated algorithm;; 2 = weakness;; 1 = vague;; 0 = none.
 - **EX020 — Disclosure steps.** List the disclosure steps Leila followed. *Rubric:* 3 = private report, agreed fix timeline, compensating controls, vendor informs others after fix;; 2 = three;; 1 = publish;; 0 = none.
 
 ### Synthesis
@@ -362,9 +362,9 @@ Weighted matrices hide judgement in weights; always test sensitivity. Key migrat
 
 - **EX021 — Hybrid definition.** Describe the hybrid alternative. *Rubric:* 3 = root and high-value signing keys in on-prem HSMs; data keys in cloud KMS wrapped under Corvane-controlled keys;; 2 = partial;; 1 = cloud only;; 0 = none.
 - **EX022 — Base scores.** Give the three base scores. *Rubric:* 3 = cloud 3.90, hybrid 3.65, on-prem 3.25;; 2 = two;; 1 = one;; 0 = none.
-- **EX023 — Sensitivity result.** What did the sensitivity test show? *Rubric:* 3 = with custody 0.45 and cost 0 the hybrid wins; choice hinges on custody value;; 2 = winner;; 1 = none;; 0 = none.
-- **EX024 — Matrix blind spots.** Name two trade-offs the matrix cannot show. *Rubric:* 3 = two of contract/law dependence, key-person risk, double audit scope, migration risk;; 2 = one;; 1 = none;; 0 = none.
-- **EX025 — Reversal condition.** What would reverse the recommendation? *Rubric:* 3 = cloud provider offering customer-controlled HSM-backed keys meeting regulators at lower cost;; 2 = condition;; 1 = none;; 0 = none.
+- **EX023 — Sensitivity result.** What did the sensitivity test show? *Rubric:* 3 = with custody 0.45 and cost 0 the hybrid wins; choice hinges on custody value;; 2 = winner;; 1 = vague;; 0 = none.
+- **EX024 — Matrix blind spots.** Name two trade-offs the matrix cannot show. *Rubric:* 3 = two of contract/law dependence, key-person risk, double audit scope, migration risk;; 2 = one;; 1 = vague;; 0 = none.
+- **EX025 — Reversal condition.** What would reverse the recommendation? *Rubric:* 3 = cloud provider offering customer-controlled HSM-backed keys meeting regulators at lower cost;; 2 = condition;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -437,10 +437,10 @@ Before-and-after designs without controls are vulnerable to concurrent changes. 
 
 ### Exercises
 
-- **EX026 — Paired design.** Why measure the same sites before and after? *Rubric:* 3 = pairing controls for site differences such as size and age;; 2 = control;; 1 = none;; 0 = none.
+- **EX026 — Paired design.** Why measure the same sites before and after? *Rubric:* 3 = pairing controls for site differences such as size and age;; 2 = control;; 1 = vague;; 0 = none.
 - **EX027 — Evaluation numbers.** Report the mean reduction and p-value. *Rubric:* 3 = 5.62 per site, p = 0.0036;; 2 = one;; 1 = wrong;; 0 = none.
-- **EX028 — Minimum p.** Why is 0.0036 close to the minimum possible? *Rubric:* 3 = eight sites allow at most 1/256 ≈ 0.0039 when all improve;; 2 = 1/256;; 1 = none;; 0 = none.
-- **EX029 — Concurrent change.** Which threat arises from the lack of a control group? *Rubric:* 3 = other changes such as a patching campaign could explain improvement;; 2 = concurrent;; 1 = none;; 0 = none.
+- **EX028 — Minimum p.** Why is 0.0036 close to the minimum possible? *Rubric:* 3 = eight sites allow at most 1/256 ≈ 0.0039 when all improve;; 2 = 1/256;; 1 = vague;; 0 = none.
+- **EX029 — Concurrent change.** Which threat arises from the lack of a control group? *Rubric:* 3 = other changes such as a patching campaign could explain improvement;; 2 = concurrent;; 1 = vague;; 0 = none.
 - **EX030 — Cost reporting.** Why include the two engineer-weeks per site cost? *Rubric:* 3 = lets the board compare against other programmes competing for budget;; 2 = budget;; 1 = irrelevant;; 0 = none.
 
 ### Synthesis
@@ -488,7 +488,7 @@ Standards without owners decay. Procurement questionnaires need scoring guidance
 ### Exercises
 
 - **EX031 — Four processes.** Into which four processes was the standard embedded? *Rubric:* 3 = architecture review, procurement, change management, onboarding;; 2 = three;; 1 = one;; 0 = none.
-- **EX032 — Ownership pattern.** What inventory pattern did unit ownership address? *Rubric:* 3 = unowned certificates and keys were those that expired or stayed on deprecated algorithms;; 2 = pattern;; 1 = none;; 0 = none.
+- **EX032 — Ownership pattern.** What inventory pattern did unit ownership address? *Rubric:* 3 = unowned certificates and keys were those that expired or stayed on deprecated algorithms;; 2 = pattern;; 1 = vague;; 0 = none.
 - **EX033 — Contract requirements.** List three contract requirements for new suppliers. *Rubric:* 3 = three of TLS 1.3, documented key management, compromise notification, PQ roadmap;; 2 = two;; 1 = one;; 0 = none.
 - **EX034 — Tender rejection.** Why was a supplier rejected in the first tender? *Rubric:* 3 = answers revealed hard-coded keys in its product;; 2 = hard-coded keys;; 1 = price;; 0 = none.
 - **EX035 — Compatibility scan.** What prompted the pre-change compatibility scan? *Rubric:* 3 = a change unexpectedly disconnected a small partner;; 2 = outage;; 1 = audit;; 0 = none.
@@ -537,11 +537,11 @@ Inspection proxies become high-value targets. Pressure during incidents is when 
 
 ### Exercises
 
-- **EX036 — Inspection risks.** Name two risks of TLS inspection. *Rubric:* 3 = two of breaks end-to-end guarantees, concentrates signing key, outdated proxy TLS weakens connections;; 2 = one;; 1 = none;; 0 = none.
-- **EX037 — Inspection exemptions.** Which traffic did Leila exempt from inspection? *Rubric:* 3 = banking, health and partner traffic;; 2 = two;; 1 = none;; 0 = none.
+- **EX036 — Inspection risks.** Name two risks of TLS inspection. *Rubric:* 3 = two of breaks end-to-end guarantees, concentrates signing key, outdated proxy TLS weakens connections;; 2 = one;; 1 = vague;; 0 = none.
+- **EX037 — Inspection exemptions.** Which traffic did Leila exempt from inspection? *Rubric:* 3 = banking, health and partner traffic;; 2 = two;; 1 = vague;; 0 = none.
 - **EX038 — Lawful request.** Why could Corvane comply with the customs request? *Rubric:* 3 = it holds keys for its own data and the request was valid; followed documented procedure;; 2 = holds keys;; 1 = refused;; 0 = none.
 - **EX039 — HSM failure.** What did Leila do when operations asked to export signing keys? *Rubric:* 3 = refused plaintext export; activated standby HSM despite two-hour delay;; 2 = refused;; 1 = exported;; 0 = none.
-- **EX040 — Case structure.** What structure does Leila use for case write-ups? *Rubric:* 3 = context, conflicting goals, options, decision, rationale, follow-up;; 2 = four;; 1 = none;; 0 = none.
+- **EX040 — Case structure.** What structure does Leila use for case write-ups? *Rubric:* 3 = context, conflicting goals, options, decision, rationale, follow-up;; 2 = four;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -587,9 +587,9 @@ Metrics reported without narrative invite misreading. Assurance limited to desig
 
 ### Exercises
 
-- **EX041 — Roadmap phases.** Describe the three roadmap phases. *Rubric:* 3 = inventory and baseline (6 months), key consolidation (9), PQ pilots (9), with EDI retirement throughout;; 2 = partial;; 1 = none;; 0 = none.
+- **EX041 — Roadmap phases.** Describe the three roadmap phases. *Rubric:* 3 = inventory and baseline (6 months), key consolidation (9), PQ pilots (9), with EDI retirement throughout;; 2 = partial;; 1 = vague;; 0 = none.
 - **EX042 — Board metrics.** Name three metrics Leila reports. *Rubric:* 3 = three of legacy endpoints, automated certificate share, unowned keys, PQ assessments, crypto incidents;; 2 = two;; 1 = vanity;; 0 = none.
-- **EX043 — Audit findings.** What did internal audit find? *Rubric:* 3 = inventory incomplete for internal services; two units' owners rarely attend;; 2 = one;; 1 = none;; 0 = none.
+- **EX043 — Audit findings.** What did internal audit find? *Rubric:* 3 = inventory incomplete for internal services; two units' owners rarely attend;; 2 = one;; 1 = vague;; 0 = none.
 - **EX044 — Regulator pack.** List three items in the regulator pack. *Rubric:* 3 = three of standard, inventory summary, architecture, control evidence, PQ plan;; 2 = two;; 1 = one;; 0 = none.
 - **EX045 — Regulator question.** What did the regulator ask and how did Leila answer? *Rubric:* 3 = response to signing-root compromise; walked through rehearsed procedure;; 2 = both;; 1 = one;; 0 = none.
 
@@ -638,7 +638,7 @@ Headlines exaggerate; read the paper. Benchmarks rarely transfer across hardware
 ### Exercises
 
 - **EX046 — Reading method.** What four elements does Prof. Rao's method identify? *Rubric:* 3 = claim, threat model, evidence, conditions;; 2 = three;; 1 = one;; 0 = none.
-- **EX047 — Broken claims.** What questions does Leila ask of a "broken" headline? *Rubric:* 3 = practicality, resources, algorithm vs implementation, patches;; 2 = three;; 1 = none;; 0 = none.
+- **EX047 — Broken claims.** What questions does Leila ask of a "broken" headline? *Rubric:* 3 = practicality, resources, algorithm vs implementation, patches;; 2 = three;; 1 = vague;; 0 = none.
 - **EX048 — Side-channel meaning.** Does a physical side-channel attack on one implementation break the standard? *Rubric:* 3 = no; it targets an implementation needing physical access;; 2 = no;; 1 = yes;; 0 = none.
 - **EX049 — Benchmark replication.** What did Leila's replication show? *Rubric:* 3 = close to published figures on servers, slower on telematics units;; 2 = both;; 1 = one;; 0 = none.
 - **EX050 — Watch list rule.** What does Leila report to executives from the watch list? *Rubric:* 3 = only items that change risk or plans;; 2 = filter;; 1 = everything;; 0 = none.
@@ -688,10 +688,10 @@ Hard deadlines without support harm small partners; exceptions need compensating
 ### Exercises
 
 - **EX051 — Project aim.** State the project's aim. *Rubric:* 3 = every EDI endpoint meets baseline, automatic renewal, all active partners migrate without lost shipments;; 2 = partial;; 1 = vague;; 0 = none.
-- **EX052 — Small broker support.** What support did small brokers receive? *Rubric:* 3 = free updated clients, guides, a test endpoint, reminders;; 2 = two;; 1 = none;; 0 = none.
+- **EX052 — Small broker support.** What support did small brokers receive? *Rubric:* 3 = free updated clients, guides, a test endpoint, reminders;; 2 = two;; 1 = vague;; 0 = none.
 - **EX053 — Shutdown rule.** When is an old endpoint shut down? *Rubric:* 3 = after traffic is zero for two weeks;; 2 = rule;; 1 = immediately;; 0 = none.
 - **EX054 — Migration result.** How many partners migrated, and what happened to the rest? *Rubric:* 3 = 138 of 140; two inactive partners offboarded;; 2 = count;; 1 = wrong;; 0 = none.
-- **EX055 — Residual EDI risk.** Name one residual risk recorded. *Rubric:* 3 = partner-side RSA 2048 keys or EDI message-size limit for PQ signatures;; 2 = one;; 1 = none;; 0 = none.
+- **EX055 — Residual EDI risk.** Name one residual risk recorded. *Rubric:* 3 = partner-side RSA 2048 keys or EDI message-size limit for PQ signatures;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -737,11 +737,11 @@ Declaring victory hides slips; report them. Transfers without a test period ofte
 
 ### Exercises
 
-- **EX056 — Slipped goals.** Which two goals slipped? *Rubric:* 3 = two port controllers awaiting vendor firmware; internal inventory 90 percent complete;; 2 = one;; 1 = none;; 0 = none.
+- **EX056 — Slipped goals.** Which two goals slipped? *Rubric:* 3 = two port controllers awaiting vendor firmware; internal inventory 90 percent complete;; 2 = one;; 1 = vague;; 0 = none.
 - **EX057 — Transfer done.** How is a completed transfer defined? *Rubric:* 3 = receiving team runs the process one quarter without programme help;; 2 = definition;; 1 = handover meeting;; 0 = none.
 - **EX058 — Improvement plan.** Name three elements of the continuing-improvement plan. *Rubric:* 3 = three of annual standard review, biennial scenario review, quarterly metrics, post-incident lessons;; 2 = two;; 1 = one;; 0 = none.
-- **EX059 — Next focus.** What should the next programme focus on and why? *Rubric:* 3 = PQ migration of signatures for long-lived devices, due to vendor dependencies;; 2 = focus;; 1 = none;; 0 = none.
-- **EX060 — Leila's mistakes.** Which mistakes did Leila acknowledge? *Rubric:* 3 = underestimating partner support needs and presenting assumptions as facts;; 2 = one;; 1 = none;; 0 = none.
+- **EX059 — Next focus.** What should the next programme focus on and why? *Rubric:* 3 = PQ migration of signatures for long-lived devices, due to vendor dependencies;; 2 = focus;; 1 = vague;; 0 = none.
+- **EX060 — Leila's mistakes.** Which mistakes did Leila acknowledge? *Rubric:* 3 = underestimating partner support needs and presenting assumptions as facts;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

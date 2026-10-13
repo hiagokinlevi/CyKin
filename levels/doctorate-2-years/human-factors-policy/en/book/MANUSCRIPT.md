@@ -88,13 +88,13 @@ Pre-registration does not stop all bias. Kappa depends on prevalence in the samp
 
 ### Exercises
 
-- **EX001 — Falsifiable outcome.** What makes Mireille's question falsifiable? *Rubric:* 3 = she states in advance which result would show her idea is wrong;; 2 = prior statement;; 1 = none;; 0 = none.
-- **EX002 — Click-rate flaw.** Why are click rates a weak outcome? *Rubric:* 3 = they depend heavily on lure difficulty;; 2 = difficulty;; 1 = none;; 0 = none.
-- **EX003 — Lure difficulty tool.** Which published tool helps rate lure difficulty? *Rubric:* 3 = the NIST Phish Scale (Dawkins and Jacobs, 2023);; 2 = Phish Scale;; 1 = none;; 0 = none.
-- **EX004 — Landing page rule.** How does the protocol avoid collecting credentials? *Rubric:* 3 = the landing page records only that a link was opened;; 2 = no capture;; 1 = none;; 0 = none.
+- **EX001 — Falsifiable outcome.** What makes Mireille's question falsifiable? *Rubric:* 3 = she states in advance which result would show her idea is wrong;; 2 = prior statement;; 1 = vague;; 0 = none.
+- **EX002 — Click-rate flaw.** Why are click rates a weak outcome? *Rubric:* 3 = they depend heavily on lure difficulty;; 2 = difficulty;; 1 = vague;; 0 = none.
+- **EX003 — Lure difficulty tool.** Which published tool helps rate lure difficulty? *Rubric:* 3 = the NIST Phish Scale (Dawkins and Jacobs, 2023);; 2 = Phish Scale;; 1 = vague;; 0 = none.
+- **EX004 — Landing page rule.** How does the protocol avoid collecting credentials? *Rubric:* 3 = the landing page records only that a link was opened;; 2 = no capture;; 1 = vague;; 0 = none.
 - **EX005 — Manager reports.** Who receives individual simulation results? *Rubric:* 3 = nobody; only aggregates are reported;; 2 = aggregates;; 1 = managers;; 0 = none.
-- **EX006 — Kappa result.** What kappa did the pilot coding reach in the lab? *Rubric:* 3 = 0.80 on 50 reports, agreement 0.90;; 2 = about 0.8;; 1 = none;; 0 = none.
-- **EX007 — Coding rule change.** What rule changed after coder disagreements? *Rubric:* 3 = newsletters with tracking links were defined more clearly;; 2 = newsletters;; 1 = none;; 0 = none.
+- **EX006 — Kappa result.** What kappa did the pilot coding reach in the lab? *Rubric:* 3 = 0.80 on 50 reports, agreement 0.90;; 2 = about 0.8;; 1 = vague;; 0 = none.
+- **EX007 — Coding rule change.** What rule changed after coder disagreements? *Rubric:* 3 = newsletters with tracking links were defined more clearly;; 2 = newsletters;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -141,12 +141,12 @@ Literature maps reflect the reader's choices. Policy guidance changes between re
 ### Exercises
 
 - **EX008 — Adams and Sasse finding.** What did Adams and Sasse (1999) find about rule-breaking users? *Rubric:* 3 = they were coping with unworkable demands, not careless;; 2 = coping;; 1 = careless;; 0 = none.
-- **EX009 — Johnny study.** What did Whitten and Tygar (1999) show? *Rubric:* 3 = motivated users could not use encryption software correctly;; 2 = usability;; 1 = none;; 0 = none.
+- **EX009 — Johnny study.** What did Whitten and Tygar (1999) show? *Rubric:* 3 = motivated users could not use encryption software correctly;; 2 = usability;; 1 = vague;; 0 = none.
 - **EX010 — Rational rejection.** Why might users rationally reject advice, per Herley (2009)? *Rubric:* 3 = its costs exceed its benefits to them;; 2 = cost-benefit;; 1 = ignorance;; 0 = none.
-- **EX011 — Compliance budget idea.** What is the compliance budget? *Rubric:* 3 = limited capacity for security effort competing with work;; 2 = limited capacity;; 1 = none;; 0 = none.
-- **EX012 — Framework silence.** What do frameworks often leave unspecified? *Rubric:* 3 = what outcome to evaluate;; 2 = outcome;; 1 = none;; 0 = none.
-- **EX013 — Not claimed.** What does Mireille's contribution not measure? *Rubric:* 3 = whether breaches fall;; 2 = breaches;; 1 = none;; 0 = none.
-- **EX014 — Contribution parts.** Name two features of her planned contribution. *Rubric:* 3 = public sector, fixed lure difficulty, pre-registration, replication, staggered design;; 2 = two;; 1 = none;; 0 = none.
+- **EX011 — Compliance budget idea.** What is the compliance budget? *Rubric:* 3 = limited capacity for security effort competing with work;; 2 = limited capacity;; 1 = vague;; 0 = none.
+- **EX012 — Framework silence.** What do frameworks often leave unspecified? *Rubric:* 3 = what outcome to evaluate;; 2 = outcome;; 1 = vague;; 0 = none.
+- **EX013 — Not claimed.** What does Mireille's contribution not measure? *Rubric:* 3 = whether breaches fall;; 2 = breaches;; 1 = vague;; 0 = none.
+- **EX014 — Contribution parts.** Name two features of her planned contribution. *Rubric:* 3 = public sector, fixed lure difficulty, pre-registration, replication, staggered design;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -192,12 +192,12 @@ Twelve clusters give limited power. Stepped designs can be disrupted by organisa
 
 ### Exercises
 
-- **EX015 — Randomised order.** Why randomise the order in which departments switch? *Rubric:* 3 = to control for seasonal threat changes affecting everyone;; 2 = seasonality;; 1 = none;; 0 = none.
+- **EX015 — Randomised order.** Why randomise the order in which departments switch? *Rubric:* 3 = to control for seasonal threat changes affecting everyone;; 2 = seasonality;; 1 = vague;; 0 = none.
 - **EX016 — Primary outcome.** What is the study's primary outcome? *Rubric:* 3 = share of real suspicious emails reported within thirty minutes;; 2 = reporting;; 1 = clicks;; 0 = none.
-- **EX017 — Clustering reason.** Why account for clustering? *Rubric:* 3 = staff in a department share managers and email patterns;; 2 = shared context;; 1 = none;; 0 = none.
-- **EX018 — Real attack confusion.** How does the protocol avoid confusing real attacks with simulations? *Rubric:* 3 = simulated emails carry a hidden marker known to the security team;; 2 = marker;; 1 = none;; 0 = none.
-- **EX019 — Practitioner warning.** What did the practitioner warn about? *Rubric:* 3 = report buttons can overwhelm small security teams;; 2 = workload;; 1 = none;; 0 = none.
-- **EX020 — Triage response.** How did Mireille respond to the workload concern? *Rubric:* 3 = an automated triage step grouping duplicate reports;; 2 = triage;; 1 = none;; 0 = none.
+- **EX017 — Clustering reason.** Why account for clustering? *Rubric:* 3 = staff in a department share managers and email patterns;; 2 = shared context;; 1 = vague;; 0 = none.
+- **EX018 — Real attack confusion.** How does the protocol avoid confusing real attacks with simulations? *Rubric:* 3 = simulated emails carry a hidden marker known to the security team;; 2 = marker;; 1 = vague;; 0 = none.
+- **EX019 — Practitioner warning.** What did the practitioner warn about? *Rubric:* 3 = report buttons can overwhelm small security teams;; 2 = workload;; 1 = vague;; 0 = none.
+- **EX020 — Triage response.** How did Mireille respond to the workload concern? *Rubric:* 3 = an automated triage step grouping duplicate reports;; 2 = triage;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -243,11 +243,11 @@ Volunteer pilots are unrepresentative. Baseline periods may include unusual even
 
 ### Exercises
 
-- **EX021 — Baseline click range.** What range did baseline click rates show? *Rubric:* 3 = eight to nineteen percent, tracking lure difficulty;; 2 = range;; 1 = none;; 0 = none.
-- **EX022 — Baseline reporting.** What was baseline reporting of real suspicious emails? *Rubric:* 3 = about one in four within thirty minutes;; 2 = 25%;; 1 = none;; 0 = none.
-- **EX023 — Mobile problem.** What problem did the pilot find with mobile email? *Rubric:* 3 = the report button was hidden in the mobile app;; 2 = mobile;; 1 = none;; 0 = none.
-- **EX024 — Feedback delay.** Why did thank-you messages arrive late? *Rubric:* 3 = a mail rule delayed them by two hours;; 2 = mail rule;; 1 = none;; 0 = none.
-- **EX025 — Change log.** Why log every change before the main study? *Rubric:* 3 = transparency builds trust in final results;; 2 = trust;; 1 = none;; 0 = none.
+- **EX021 — Baseline click range.** What range did baseline click rates show? *Rubric:* 3 = eight to nineteen percent, tracking lure difficulty;; 2 = range;; 1 = vague;; 0 = none.
+- **EX022 — Baseline reporting.** What was baseline reporting of real suspicious emails? *Rubric:* 3 = about one in four within thirty minutes;; 2 = 25%;; 1 = vague;; 0 = none.
+- **EX023 — Mobile problem.** What problem did the pilot find with mobile email? *Rubric:* 3 = the report button was hidden in the mobile app;; 2 = mobile;; 1 = vague;; 0 = none.
+- **EX024 — Feedback delay.** Why did thank-you messages arrive late? *Rubric:* 3 = a mail rule delayed them by two hours;; 2 = mail rule;; 1 = vague;; 0 = none.
+- **EX025 — Change log.** Why log every change before the main study? *Rubric:* 3 = transparency builds trust in final results;; 2 = trust;; 1 = vague;; 0 = none.
 - **EX026 — Pilot limits.** Why is the pilot not evidence of effect? *Rubric:* 3 = two volunteer departments over six weeks cannot show it;; 2 = feasibility;; 1 = effect;; 0 = none.
 
 ### Synthesis
@@ -330,12 +330,12 @@ Department-level outcomes hide individual variation. Replications in other counc
 
 ### Exercises
 
-- **EX027 — Fidelity checks.** What did fidelity monitoring check? *Rubric:* 3 = button availability, prompt thank-yous and fixed simulation difficulty;; 2 = three;; 1 = none;; 0 = none.
-- **EX028 — Filter upgrade.** Why did the filter upgrade not spoil the study? *Rubric:* 3 = it affected all departments at once and was logged;; 2 = design absorbs;; 1 = none;; 0 = none.
-- **EX029 — Lab estimate.** What effect did the lab estimate? *Rubric:* 3 = +0.157 in 30-minute reporting, permutation share 0.000 of 2,000;; 2 = positive;; 1 = none;; 0 = none.
+- **EX027 — Fidelity checks.** What did fidelity monitoring check? *Rubric:* 3 = button availability, prompt thank-yous and fixed simulation difficulty;; 2 = three;; 1 = vague;; 0 = none.
+- **EX028 — Filter upgrade.** Why did the filter upgrade not spoil the study? *Rubric:* 3 = it affected all departments at once and was logged;; 2 = design absorbs;; 1 = vague;; 0 = none.
+- **EX029 — Lab estimate.** What effect did the lab estimate? *Rubric:* 3 = +0.157 in 30-minute reporting, permutation share 0.000 of 2,000;; 2 = positive;; 1 = vague;; 0 = none.
 - **EX030 — Narrow claim.** How does Mireille state the finding? *Rubric:* 3 = more timely reporting in this council at fixed difficulty, not fewer breaches;; 2 = narrow;; 1 = breaches fell;; 0 = none.
 - **EX031 — Reanalysis setup.** What did the second analyst receive? *Rubric:* 3 = anonymised data, pre-registration and plan, but not the code;; 2 = no code;; 1 = everything;; 0 = none.
-- **EX032 — Replication result.** What did the Brenholt replication find? *Rubric:* 3 = a smaller but positive effect;; 2 = smaller;; 1 = none;; 0 = none.
+- **EX032 — Replication result.** What did the Brenholt replication find? *Rubric:* 3 = a smaller but positive effect;; 2 = smaller;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -381,12 +381,12 @@ Exploratory findings may be noise. Some reviewer concerns cannot be resolved wit
 
 ### Exercises
 
-- **EX033 — False-alarm test.** How did Mireille address the false-alarm concern? *Rubric:* 3 = benign share rose slightly; triage kept handling time stable;; 2 = data;; 1 = none;; 0 = none.
-- **EX034 — Mechanism limit.** Why can't she separate the button from feedback? *Rubric:* 3 = they were introduced together;; 2 = confounded;; 1 = none;; 0 = none.
-- **EX035 — Future design.** What study did she propose for the mechanism question? *Rubric:* 3 = a factorial study;; 2 = factorial;; 1 = none;; 0 = none.
+- **EX033 — False-alarm test.** How did Mireille address the false-alarm concern? *Rubric:* 3 = benign share rose slightly; triage kept handling time stable;; 2 = data;; 1 = vague;; 0 = none.
+- **EX034 — Mechanism limit.** Why can't she separate the button from feedback? *Rubric:* 3 = they were introduced together;; 2 = confounded;; 1 = vague;; 0 = none.
+- **EX035 — Future design.** What study did she propose for the mechanism question? *Rubric:* 3 = a factorial study;; 2 = factorial;; 1 = vague;; 0 = none.
 - **EX036 — Subgroup handling.** How were subgroup analyses reported? *Rubric:* 3 = all reported and labelled exploratory;; 2 = exploratory;; 1 = selected;; 0 = none.
-- **EX037 — Excluded lure themes.** Which lure themes were excluded to avoid distress? *Rubric:* 3 = pay cuts, bereavement, health and union impersonation;; 2 = two;; 1 = none;; 0 = none.
-- **EX038 — Complaints.** How many complaints were reported? *Rubric:* 3 = two, with their resolution;; 2 = two;; 1 = none;; 0 = none.
+- **EX037 — Excluded lure themes.** Which lure themes were excluded to avoid distress? *Rubric:* 3 = pay cuts, bereavement, health and union impersonation;; 2 = two;; 1 = vague;; 0 = none.
+- **EX038 — Complaints.** How many complaints were reported? *Rubric:* 3 = two, with their resolution;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -454,11 +454,11 @@ Digests prove files are unchanged, not that they are correct. Aggregation reduce
 ### Exercises
 
 - **EX039 — Overall contribution.** How does Mireille frame her overall contribution? *Rubric:* 3 = reporting-focused programmes improve timely reporting when reporting is cheap and feedback fast;; 2 = conditional;; 1 = universal;; 0 = none.
-- **EX040 — Open unknowns.** Name one question the thesis leaves open. *Rubric:* 3 = which component matters, whether effects last, whether incidents fall;; 2 = one;; 1 = none;; 0 = none.
-- **EX041 — Manifest check.** What did the archive lab report after editing one file? *Rubric:* 3 = MISMATCH for the edited CSV;; 2 = mismatch;; 1 = none;; 0 = none.
-- **EX042 — Small departments.** How were small departments protected? *Rubric:* 3 = merged if under twenty staff;; 2 = merged;; 1 = none;; 0 = none.
-- **EX043 — Privacy review.** Who reviewed the archive before release? *Rubric:* 3 = Vantor's data protection officer;; 2 = DPO;; 1 = none;; 0 = none.
-- **EX044 — Practitioner guide.** Why write a short practitioner guide? *Rubric:* 3 = so organisations can apply the protocol without the full thesis;; 2 = uptake;; 1 = none;; 0 = none.
+- **EX040 — Open unknowns.** Name one question the thesis leaves open. *Rubric:* 3 = which component matters, whether effects last, whether incidents fall;; 2 = one;; 1 = vague;; 0 = none.
+- **EX041 — Manifest check.** What did the archive lab report after editing one file? *Rubric:* 3 = MISMATCH for the edited CSV;; 2 = mismatch;; 1 = vague;; 0 = none.
+- **EX042 — Small departments.** How were small departments protected? *Rubric:* 3 = merged if under twenty staff;; 2 = merged;; 1 = vague;; 0 = none.
+- **EX043 — Privacy review.** Who reviewed the archive before release? *Rubric:* 3 = Vantor's data protection officer;; 2 = DPO;; 1 = vague;; 0 = none.
+- **EX044 — Practitioner guide.** Why write a short practitioner guide? *Rubric:* 3 = so organisations can apply the protocol without the full thesis;; 2 = uptake;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -506,9 +506,9 @@ Policy recommendations generalise beyond one or two councils. Funding may not fo
 
 - **EX045 — Fear question.** How did Mireille answer the fear-driven reporting question? *Rubric:* 3 = burden survey and no-consequence policy, admitting some anxiety cannot be ruled out;; 2 = partly;; 1 = denied;; 0 = none.
 - **EX046 — Evaluation advice.** What should organisations evaluate instead of click rates alone? *Rubric:* 3 = timely reporting;; 2 = reporting;; 1 = completion;; 0 = none.
-- **EX047 — Simulation ethics policy.** Why should policy require ethical review of simulations? *Rubric:* 3 = poorly designed simulations damage trust;; 2 = trust;; 1 = none;; 0 = none.
-- **EX048 — Three outputs.** Which three outputs does she plan? *Rubric:* 3 = journal article, methods paper and practitioner briefing;; 2 = two;; 1 = none;; 0 = none.
-- **EX049 — Next study.** What is her next research question? *Rubric:* 3 = a factorial study separating button from feedback, and linking reporting to response time;; 2 = factorial;; 1 = none;; 0 = none.
+- **EX047 — Simulation ethics policy.** Why should policy require ethical review of simulations? *Rubric:* 3 = poorly designed simulations damage trust;; 2 = trust;; 1 = vague;; 0 = none.
+- **EX048 — Three outputs.** Which three outputs does she plan? *Rubric:* 3 = journal article, methods paper and practitioner briefing;; 2 = two;; 1 = vague;; 0 = none.
+- **EX049 — Next study.** What is her next research question? *Rubric:* 3 = a factorial study separating button from feedback, and linking reporting to response time;; 2 = factorial;; 1 = vague;; 0 = none.
 - **EX050 — Defense outcome.** What was the defense outcome? *Rubric:* 3 = passed with minor corrections;; 2 = passed;; 1 = failed;; 0 = none.
 
 ### Synthesis

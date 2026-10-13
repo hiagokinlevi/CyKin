@@ -652,7 +652,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX029 — Evaluation report.** *Steps:* write a 150-word report of the comparison for the commander, including limitations. *Rubric:* 3 = method, results, recommendation, limitations (synthetic generator, reference reliability, undiscovered changes); 2 = no limitations; 1 = opinion; 0 = none.
 
-**EX030 — When to choose R2.** *Steps:* describe conditions under which R2 would be the better base. *Rubric:* 3 = attacker access start verified after replica stop, or strong integrity verification of replica, and re-entry infeasible; 2 = one condition; 1 = none; 0 = none.
+**EX030 — When to choose R2.** *Steps:* describe conditions under which R2 would be the better base. *Rubric:* 3 = attacker access start verified after replica stop, or strong integrity verification of replica, and re-entry infeasible; 2 = one condition; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -851,7 +851,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX038 — Disconfirmation plan.** *Steps:* list three tests that could disconfirm H2. *Rubric:* 3 = specific, non-intrusive first (application session device ID, browser profile on workstation, other activity of hr-assist-5 at 22:47), with HR involvement for interviews; 2 = two; 1 = generic; 0 = none.
 
-**EX039 — Assumption register.** *Steps:* list the assumptions behind E3–E5 with how to verify each. *Rubric:* 3 = IP-to-host mapping, clock alignment, app attribution semantics, completeness of job configs; verification methods; 2 = two; 1 = none; 0 = none.
+**EX039 — Assumption register.** *Steps:* list the assumptions behind E3–E5 with how to verify each. *Rubric:* 3 = IP-to-host mapping, clock alignment, app attribution semantics, completeness of job configs; verification methods; 2 = two; 1 = vague; 0 = none.
 
 **EX040 — Communication boundary.** *Steps:* write who should know about H2 at this stage and why. *Rubric:* 3 = need-to-know: commander, HR lead, counsel, investigators; not the wider team or the named person's manager without HR; reasons: fairness, legal risk, evidence integrity; 2 = partial; 1 = broadcast; 0 = none.
 
@@ -1138,7 +1138,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX053 — Run and critique Lab PG-11.** *Steps:* run the lab and list four threats to the conclusion. *Rubric:* 3 = output reported; small n, Hawthorne effect, non-equivalent divisions, correlated outcomes, regression to the mean; 2 = two threats; 1 = not run; 0 = none.
 
-**EX054 — Stop rules.** *Steps:* write stop rules for the pilot. *Rubric:* 3 = adverse effects (containment time increase beyond threshold, staff burden complaints), data-quality failure, incident severity override; 2 = one; 1 = none; 0 = none.
+**EX054 — Stop rules.** *Steps:* write stop rules for the pilot. *Rubric:* 3 = adverse effects (containment time increase beyond threshold, staff burden complaints), data-quality failure, incident severity override; 2 = one; 1 = vague; 0 = none.
 
 **EX055 — Stakeholder plan.** *Steps:* identify stakeholders and their involvement at each project stage. *Rubric:* 3 = division leads, SOC, service owners, HR (for shift practices), executives; involvement at assessment, design, pilot, evaluation; 2 = list only; 1 = security only; 0 = none.
 

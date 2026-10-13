@@ -581,7 +581,7 @@ Recomendar mais do que as evidências sustentam é a falha mais comum das disser
 
 - **EX040 — Conteúdo das tabelas.** O que cada tabela de resultados precisa declarar? *Rubrica:* 3 = unidade, exposição, número de eventos, método do intervalo;; 2 = três;; 1 = um;; 0 = nenhuma.
 
-- **EX041 — Viés dos chamados.** Em que direção o sub-registro dos chamados provavelmente enviesa os resultados, e por quê? *Rubrica:* 3 = subconta mais os incidentes manuais, pois as correções à mão acontecem em minutos, sem chamado;; 2 = direção;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Viés dos chamados.** Em que direção o sub-registro dos chamados provavelmente enviesa os resultados, e por quê? *Rubrica:* 3 = subconta mais os incidentes manuais, pois as correções à mão acontecem em minutos, sem chamado;; 2 = direção;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Recomendações fortes versus fracas.** Que recomendações se apoiam em evidências fortes, e quais em fracas? *Rubrica:* 3 = automatizar a renovação e designar donos: fortes; alertas e revisão de mudanças: mais fracas;; 2 = parcial;; 1 = todas fortes;; 0 = nenhuma.
 

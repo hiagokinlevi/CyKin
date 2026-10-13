@@ -428,7 +428,7 @@ As ferramentas nativas têm limites; documente o que um método não consegue de
 
 ### Exercícios
 
-- **EX033 — Pergunta sobre as ferramentas.** Que pergunta Leila acrescentou à sua lista de ferramentas? *Rubrica:* 3 = para onde a ferramenta envia os dados que lê;; 2 = correta;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Pergunta sobre as ferramentas.** Que pergunta Leila acrescentou à sua lista de ferramentas? *Rubrica:* 3 = para onde a ferramenta envia os dados que lê;; 2 = correta;; 1 = vago;; 0 = nenhuma.
 - **EX034 — Partes do método.** O que cada método define? *Rubrica:* 3 = pergunta, fonte, passos, saída esperada, interpretação;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 - **EX035 — Sementes fixas.** Por que usar sementes aleatórias fixas? *Rubrica:* 3 = dados sintéticos idênticos entre execuções;; 2 = menciona repetibilidade;; 1 = nada;; 0 = nenhuma.
 - **EX036 — Ferramentas como tratamento.** Por que as próprias ferramentas de privacidade são um risco? *Rubrica:* 3 = também tratam dados pessoais;; 2 = menciona tratamento;; 1 = nada;; 0 = nenhuma.

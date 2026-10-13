@@ -114,8 +114,8 @@ Probability estimates for rare events are uncertain; present ranges and sensitiv
 - **EX001 — February incident.** Summarise the February incident. *Rubric:* 3 = SDK update sent location to vendor; unreviewed; found after 19 days; reported to regulator; 2 = partial; 1 = one; 0 = none.
 - **EX002 — Three options.** What were the three options? *Rubric:* 3 = no review; review on update; remove SDKs; 2 = two; 1 = one; 0 = none.
 - **EX003 — Lab totals.** Give the expected cost of each option. *Rubric:* 3 = 270k, 132k, 238k; 2 = two; 1 = one; 0 = none.
-- **EX004 — Sensitivity.** What happens if the no-review probability is 0.15? *Rubric:* 3 = 135k, near tie; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Non-financial harms.** Name two harms not well captured in money. *Rubric:* 3 = trust, regulator relationship, fairness (two); 2 = one; 1 = none; 0 = none.
+- **EX004 — Sensitivity.** What happens if the no-review probability is 0.15? *Rubric:* 3 = 135k, near tie; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Non-financial harms.** Name two harms not well captured in money. *Rubric:* 3 = trust, regulator relationship, fairness (two); 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -187,9 +187,9 @@ Current practice differs by sector; banking regulation may require more than gen
 
 ### Exercises
 
-- **EX006 — SDK risk.** Why are SDKs risky? *Rubric:* 3 = run with app permissions; updates can change behaviour/data; 2 = partial; 1 = none; 0 = none.
-- **EX007 — SSDF practice.** Which SSDF practice covers third-party components? *Rubric:* 3 = PW.4; 2 = partial; 1 = none; 0 = none.
-- **EX008 — SBOM limit.** What is the SBOM limit for SDKs? *Rubric:* 3 = opaque single entry; 2 = partial; 1 = none; 0 = none.
+- **EX006 — SDK risk.** Why are SDKs risky? *Rubric:* 3 = run with app permissions; updates can change behaviour/data; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — SSDF practice.** Which SSDF practice covers third-party components? *Rubric:* 3 = PW.4; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — SBOM limit.** What is the SBOM limit for SDKs? *Rubric:* 3 = opaque single entry; 2 = partial; 1 = vague; 0 = none.
 - **EX009 — Four gaps.** List the four gaps. *Rubric:* 3 = no update review; no data inventory; no vendor SBOM clause; automation pulls SDKs; 2 = three; 1 = one; 0 = none.
 - **EX010 — Gap table.** What columns did Hannah's table have? *Rubric:* 3 = practice, reference, status, risk, owner; 2 = four; 1 = two; 0 = none.
 
@@ -279,11 +279,11 @@ EPSS and reachability are estimates; a low score is not a guarantee, so keep dea
 
 ### Exercises
 
-- **EX011 — CVSS vs EPSS.** Distinguish CVSS and EPSS. *Rubric:* 3 = severity vs exploitation probability; 2 = partial; 1 = none; 0 = none.
+- **EX011 — CVSS vs EPSS.** Distinguish CVSS and EPSS. *Rubric:* 3 = severity vs exploitation probability; 2 = partial; 1 = vague; 0 = none.
 - **EX012 — Lab rankings.** Give both lab rankings. *Rubric:* 3 = CVSS F1,F5,F3,F2,F4; risk F2,F4,F3,F5,F1; 2 = partial; 1 = one; 0 = none.
-- **EX013 — F1 drop.** Why did F1 fall to last? *Rubric:* 3 = low EPSS; unreachable; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Ecosystem lesson.** What do Decan et al. and Kula et al. suggest? *Rubric:* 3 = invest in fast updating; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Engineer trust.** How did Hannah build engineers' trust? *Rubric:* 3 = show inputs; allow challenges; 2 = partial; 1 = none; 0 = none.
+- **EX013 — F1 drop.** Why did F1 fall to last? *Rubric:* 3 = low EPSS; unreachable; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Ecosystem lesson.** What do Decan et al. and Kula et al. suggest? *Rubric:* 3 = invest in fast updating; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Engineer trust.** How did Hannah build engineers' trust? *Rubric:* 3 = show inputs; allow challenges; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -349,11 +349,11 @@ Ethical judgements can conflict with commercial pressure; record reasoning and e
 
 ### Exercises
 
-- **EX016 — Customer harm.** Why rate customer harm separately? *Rubric:* 3 = cheap incidents may still harm customers; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Notice gap.** What did the privacy notice lack? *Rubric:* 3 = location not mentioned; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Vendor request.** What did the bank ask the vendor? *Rubric:* 3 = location off by default for all customers; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Contract clause.** What contract clause was added? *Rubric:* 3 = advance notice of data collection changes; 2 = partial; 1 = none; 0 = none.
-- **EX020 — No blame.** Why not blame the engineer? *Rubric:* 3 = followed process; missing review step; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Customer harm.** Why rate customer harm separately? *Rubric:* 3 = cheap incidents may still harm customers; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Notice gap.** What did the privacy notice lack? *Rubric:* 3 = location not mentioned; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Vendor request.** What did the bank ask the vendor? *Rubric:* 3 = location off by default for all customers; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Contract clause.** What contract clause was added? *Rubric:* 3 = advance notice of data collection changes; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — No blame.** Why not blame the engineer? *Rubric:* 3 = followed process; missing review step; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -429,11 +429,11 @@ Test harnesses may not trigger all SDK behaviours; some changes appear only with
 
 ### Exercises
 
-- **EX021 — Design B.** Describe Design B. *Rubric:* 3 = automated harness diff of destinations, permissions, data fields; human review of changes; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Design B.** Describe Design B. *Rubric:* 3 = automated harness diff of destinations, permissions, data fields; human review of changes; 2 = partial; 1 = vague; 0 = none.
 - **EX022 — Speed effects.** Give the delivery effects of A, B and C. *Rubric:* 3 = A +5 days; B +1 day; C none after 3 months' build; 2 = two; 1 = one; 0 = none.
 - **EX023 — Stakeholder views.** What did each stakeholder prefer? *Rubric:* 3 = engineers B; privacy C; CISO fast; 2 = two; 1 = one; 0 = none.
-- **EX024 — Final choice.** What was chosen? *Rubric:* 3 = B now; C for two sensitive SDKs; 2 = partial; 1 = none; 0 = none.
-- **EX025 — February replay.** Would B have caught February? *Rubric:* 3 = yes; new destination and location field; 2 = partial; 1 = none; 0 = none.
+- **EX024 — Final choice.** What was chosen? *Rubric:* 3 = B now; C for two sensitive SDKs; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — February replay.** Would B have caught February? *Rubric:* 3 = yes; new destination and location field; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -522,11 +522,11 @@ Planted test changes may be easier to spot than real ones; supplement with real-
 
 ### Exercises
 
-- **EX026 — Study question.** State the evaluation question. *Rubric:* 3 = does diff shorten detection of unreviewed changes; 2 = partial; 1 = none; 0 = none.
+- **EX026 — Study question.** State the evaluation question. *Rubric:* 3 = does diff shorten detection of unreviewed changes; 2 = partial; 1 = vague; 0 = none.
 - **EX027 — Lab results.** Give the medians, difference and interval. *Rubric:* 3 = 2 vs 11.5; 9.5; 6.0–19.0; 2 = partial; 1 = one; 0 = none.
-- **EX028 — Ethics.** How was the study made ethical? *Rubric:* 3 = approval by managers and works council; no customer data; team-level reporting; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Side effects.** What other outcomes were measured? *Rubric:* 3 = +1 day update time; 3 false alarms/month at 20 min; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Limitation.** Name one limitation. *Rubric:* 3 = small sample; awareness; planted changes easier; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Ethics.** How was the study made ethical? *Rubric:* 3 = approval by managers and works council; no customer data; team-level reporting; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Side effects.** What other outcomes were measured? *Rubric:* 3 = +1 day update time; 3 false alarms/month at 20 min; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Limitation.** Name one limitation. *Rubric:* 3 = small sample; awareness; planted changes easier; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -602,11 +602,11 @@ Integration depends on people; turnover can erode it, so keep processes document
 
 ### Exercises
 
-- **EX031 — Integration principle.** How did Hannah avoid a separate board? *Rubric:* 3 = connect to existing PR, PIA, procurement processes; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Responsibilities.** Who reviews new data fields? *Rubric:* 3 = privacy team; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Integration principle.** How did Hannah avoid a separate board? *Rubric:* 3 = connect to existing PR, PIA, procurement processes; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Responsibilities.** Who reviews new data fields? *Rubric:* 3 = privacy team; 2 = partial; 1 = vague; 0 = none.
 - **EX033 — Contract terms.** List three standard contract terms. *Rubric:* 3 = notice of changes, security contact, timely fixes, SBOMs (three); 2 = two; 1 = one; 0 = none.
 - **EX034 — Adoption status.** What was the six-month adoption status? *Rubric:* 3 = 11/12 apps; legacy exception; 96% register; 2 = partial; 1 = one; 0 = none.
-- **EX035 — Exception rule.** How was the legacy app handled? *Rubric:* 3 = exception with expiry; 2 = partial; 1 = none; 0 = none.
+- **EX035 — Exception rule.** How was the legacy app handled? *Rubric:* 3 = exception with expiry; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -676,11 +676,11 @@ Quick reassurance is valuable but must rest on evidence; say what was checked.
 
 ### Exercises
 
-- **EX036 — Trade-secret vendor.** How was the trade-secret vendor handled? *Rubric:* 3 = confidential data schedule to privacy; isolation; 2 = partial; 1 = none; 0 = none.
-- **EX037 — Compromise check.** How did the team know no build was affected? *Rubric:* 3 = SBOM, lockfile hashes pinned previous, weekly batching, logs; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Uncertain ranges.** What is Hannah's rule for unclear version ranges? *Rubric:* 3 = assume wider range until confirmed; 2 = partial; 1 = none; 0 = none.
-- **EX039 — Launch case.** What happened with the identity SDK? *Rubric:* 3 = new destination; privacy approved with notice update; 3-day slip; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Escalation.** How are disagreements resolved? *Rubric:* 3 = CISO decides within 2 days, reasoning recorded; 2 = partial; 1 = none; 0 = none.
+- **EX036 — Trade-secret vendor.** How was the trade-secret vendor handled? *Rubric:* 3 = confidential data schedule to privacy; isolation; 2 = partial; 1 = vague; 0 = none.
+- **EX037 — Compromise check.** How did the team know no build was affected? *Rubric:* 3 = SBOM, lockfile hashes pinned previous, weekly batching, logs; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Uncertain ranges.** What is Hannah's rule for unclear version ranges? *Rubric:* 3 = assume wider range until confirmed; 2 = partial; 1 = vague; 0 = none.
+- **EX039 — Launch case.** What happened with the identity SDK? *Rubric:* 3 = new destination; privacy approved with notice update; 3-day slip; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Escalation.** How are disagreements resolved? *Rubric:* 3 = CISO decides within 2 days, reasoning recorded; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -778,10 +778,10 @@ Internal audit's Q3 sample finds all five releases verified, but one SDK review 
 ### Exercises
 
 - **EX041 — Programme goals.** List the three programme goals. *Rubric:* 3 = verifiable releases; SDK updates reviewed; criticals in 14 days; 2 = two; 1 = one; 0 = none.
-- **EX042 — Lab trend.** Give the provenance trend. *Rubric:* 3 = 64% → 81% → 100%; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Q1 gap cause.** Why were Q1 releases unverified? *Rubric:* 3 = legacy build path; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Audit finding.** What did internal audit find in Q3? *Rubric:* 3 = missing reviewer name; field made mandatory; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Assurance meaning.** What is assurance? *Rubric:* 3 = justified confidence with evidence; 2 = partial; 1 = none; 0 = none.
+- **EX042 — Lab trend.** Give the provenance trend. *Rubric:* 3 = 64% → 81% → 100%; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Q1 gap cause.** Why were Q1 releases unverified? *Rubric:* 3 = legacy build path; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Audit finding.** What did internal audit find in Q3? *Rubric:* 3 = missing reviewer name; field made mandatory; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Assurance meaning.** What is assurance? *Rubric:* 3 = justified confidence with evidence; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -852,10 +852,10 @@ Applying research outside its context can mislead; pilot before adopting.
 ### Exercises
 
 - **EX046 — Five readings.** Name three of Hannah's readings. *Rubric:* 3 = Ladisa, Zimmermann, Wermke, Newman, Torres-Arias (three); 2 = two; 1 = one; 0 = none.
-- **EX047 — Taxonomy limit.** What is the taxonomy good and not good for? *Rubric:* 3 = structure, not frequency; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Transferability.** What transfers to Northbridge and what may not? *Rubric:* 3 = concentration likely; percentages may not; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Open question.** Name one open question. *Rubric:* 3 = verifying closed-source SDKs; effectiveness of diffs; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Pilot decision.** What did the reading group decide to pilot? *Rubric:* 3 = signing internal shared libraries; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Taxonomy limit.** What is the taxonomy good and not good for? *Rubric:* 3 = structure, not frequency; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Transferability.** What transfers to Northbridge and what may not? *Rubric:* 3 = concentration likely; percentages may not; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Open question.** Name one open question. *Rubric:* 3 = verifying closed-source SDKs; effectiveness of diffs; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Pilot decision.** What did the reading group decide to pilot? *Rubric:* 3 = signing internal shared libraries; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -935,11 +935,11 @@ Reductions may reverse as new features arrive; keep the justification step for n
 
 ### Exercises
 
-- **EX051 — Project goal.** State the project goal. *Rubric:* 3 = fewer SDKs; detection under 3 days; 2 = partial; 1 = none; 0 = none.
+- **EX051 — Project goal.** State the project goal. *Rubric:* 3 = fewer SDKs; detection under 3 days; 2 = partial; 1 = vague; 0 = none.
 - **EX052 — Baseline.** Give the baseline. *Rubric:* 3 = 22 SDKs; 19 days; no register; 2 = two; 1 = one; 0 = none.
 - **EX053 — Results.** Give the main results. *Rubric:* 3 = 15 SDKs; 2-day detection; register complete; 2 real changes caught; 2 = partial; 1 = one; 0 = none.
-- **EX054 — Product concerns.** How were product owners' concerns handled? *Rubric:* 3 = replace duplicated SDKs first, keep features; 2 = partial; 1 = none; 0 = none.
-- **EX055 — Device names.** Why did device-name uploads matter? *Rubric:* 3 = may contain real names; 2 = partial; 1 = none; 0 = none.
+- **EX054 — Product concerns.** How were product owners' concerns handled? *Rubric:* 3 = replace duplicated SDKs first, keep features; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — Device names.** Why did device-name uploads matter? *Rubric:* 3 = may contain real names; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1013,11 +1013,11 @@ Lessons from one bank may not suit organisations without similar resources; adap
 
 ### Exercises
 
-- **EX056 — Transfer targets.** Where else does the pattern apply? *Rubric:* 3 = web scripts; internal libraries; 2 = one; 1 = none; 0 = none.
+- **EX056 — Transfer targets.** Where else does the pattern apply? *Rubric:* 3 = web scripts; internal libraries; 2 = one; 1 = vague; 0 = none.
 - **EX057 — Pattern steps.** List the pattern's steps. *Rubric:* 3 = inventory, diff, isolation, contracts/ownership, indicators; 2 = four; 1 = two; 0 = none.
 - **EX058 — Sustainability.** How is the work sustained? *Rubric:* 3 = owners; quarterly reporting; onboarding training; 2 = two; 1 = one; 0 = none.
-- **EX059 — Most important.** What did Hannah say mattered most? *Rubric:* 3 = making SDK changes visible automatically; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Personal goal.** Name one personal goal. *Rubric:* 3 = SLSA provenance; open-source tool; 2 = partial; 1 = none; 0 = none.
+- **EX059 — Most important.** What did Hannah say mattered most? *Rubric:* 3 = making SDK changes visible automatically; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Personal goal.** Name one personal goal. *Rubric:* 3 = SLSA provenance; open-source tool; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

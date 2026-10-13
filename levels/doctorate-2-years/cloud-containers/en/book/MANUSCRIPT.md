@@ -88,12 +88,12 @@ Defining "no effect" after seeing results invites bias; write it down first.
 ### Exercises
 
 - **EX001 — Question parts.** Which boundaries does Amara's question set? *Rubric:* 3 = clusters, standard, outcome, cost; 2 = three; 1 = one; 0 = none.
-- **EX002 — Opening finding.** What did the earlier review find? *Rubric:* 3 = privileged log collector live 11 months despite scan; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Data agreement.** What may and may not be collected? *Rubric:* 3 = metadata and timestamps; no patient data or secrets; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Ethics review.** Why does the ethics board review the plan? *Rubric:* 3 = staff behaviour observed indirectly; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Stepped rollout.** Why use a stepped rollout? *Rubric:* 3 = comparison without withholding permanently; 2 = partial; 1 = none; 0 = none.
-- **EX006 — No-effect rule.** How did Amara define no effect? *Rubric:* 3 = median difference under 2 h or interval including zero; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Declarative config.** Why does Kubernetes' history matter here? *Rubric:* 3 = declarative config checkable before running; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Opening finding.** What did the earlier review find? *Rubric:* 3 = privileged log collector live 11 months despite scan; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Data agreement.** What may and may not be collected? *Rubric:* 3 = metadata and timestamps; no patient data or secrets; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Ethics review.** Why does the ethics board review the plan? *Rubric:* 3 = staff behaviour observed indirectly; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Stepped rollout.** Why use a stepped rollout? *Rubric:* 3 = comparison without withholding permanently; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — No-effect rule.** How did Amara define no effect? *Rubric:* 3 = median difference under 2 h or interval including zero; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Declarative config.** Why does Kubernetes' history matter here? *Rubric:* 3 = declarative config checkable before running; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -160,12 +160,12 @@ Vendor reports can be useful leads but are not evidence unless methods and data 
 ### Exercises
 
 - **EX008 — Essential characteristics.** Name three NIST essential characteristics. *Rubric:* 3 = self-service, network access, pooling, elasticity, measured; 2 = two; 1 = one; 0 = none.
-- **EX009 — Customer side.** What does the customer secure under shared responsibility? *Rubric:* 3 = identities, network rules, workloads, configs; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Shared fate.** What does Google's shared fate add? *Rubric:* 3 = provider secure defaults and guidance; 2 = partial; 1 = none; 0 = none.
-- **EX011 — IaC finding.** What did Rahman et al. find? *Rubric:* 3 = recurring security smells in IaC; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Admission and ZTA.** How does admission control relate to SP 800-207? *Rubric:* 3 = policy enforcement point; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Gap statement.** State the gap. *Rubric:* 3 = no measurement of exposure reduction and cost; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Removed claim.** Why was one claim removed? *Rubric:* 3 = vendor blog without data; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Customer side.** What does the customer secure under shared responsibility? *Rubric:* 3 = identities, network rules, workloads, configs; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Shared fate.** What does Google's shared fate add? *Rubric:* 3 = provider secure defaults and guidance; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — IaC finding.** What did Rahman et al. find? *Rubric:* 3 = recurring security smells in IaC; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Admission and ZTA.** How does admission control relate to SP 800-207? *Rubric:* 3 = policy enforcement point; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Gap statement.** State the gap. *Rubric:* 3 = no measurement of exposure reduction and cost; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Removed claim.** Why was one claim removed? *Rubric:* 3 = vendor blog without data; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -248,12 +248,12 @@ High agreement on an easy sample can hide disagreement on hard cases; sample del
 
 ### Exercises
 
-- **EX015 — Contributions.** State the two contributions. *Rubric:* 3 = measured comparison; reusable method; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Risky definition.** What makes a configuration risky? *Rubric:* 3 = selected Pod Security Standards violations; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Lab kappa.** What did the lab report? *Rubric:* 3 = 0.94 agreement, 0.51 chance, kappa 0.88; 2 = one; 1 = none; 0 = none.
-- **EX018 — Why kappa.** Why use kappa over raw agreement? *Rubric:* 3 = corrects for chance; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Cost ceiling.** What cost ceiling was set? *Rubric:* 3 = 5% rejections after fortnight; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Panel condition.** What condition did the panel set? *Rubric:* 3 = report exceptions separately; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Contributions.** State the two contributions. *Rubric:* 3 = measured comparison; reusable method; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Risky definition.** What makes a configuration risky? *Rubric:* 3 = selected Pod Security Standards violations; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Lab kappa.** What did the lab report? *Rubric:* 3 = 0.94 agreement, 0.51 chance, kappa 0.88; 2 = one; 1 = vague; 0 = none.
+- **EX018 — Why kappa.** Why use kappa over raw agreement? *Rubric:* 3 = corrects for chance; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Cost ceiling.** What cost ceiling was set? *Rubric:* 3 = 5% rejections after fortnight; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Panel condition.** What condition did the panel set? *Rubric:* 3 = report exceptions separately; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -351,12 +351,12 @@ A pilot is for finding problems in the method, not for estimating the effect.
 
 ### Exercises
 
-- **EX021 — Purpose.** Why replicate the scanner first? *Rubric:* 3 = differences must come from control not tool; 2 = partial; 1 = none; 0 = none.
-- **EX022 — Lab totals.** What totals did the lab give? *Rubric:* 3 = 7 violations; 1/5 compliant; 2 = partial; 1 = none; 0 = none.
-- **EX023 — log-agent.** What violations did log-agent have? *Rubric:* 3 = all four; 2 = one; 1 = none; 0 = none.
-- **EX024 — Pod grouping.** What protocol change followed the pilot? *Rubric:* 3 = group pods by owning workload; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Retention.** What logging problem was found? *Rubric:* 3 = 24h retention too short; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Pilot purpose.** What is a pilot for? *Rubric:* 3 = finding method problems; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Purpose.** Why replicate the scanner first? *Rubric:* 3 = differences must come from control not tool; 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Lab totals.** What totals did the lab give? *Rubric:* 3 = 7 violations; 1/5 compliant; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — log-agent.** What violations did log-agent have? *Rubric:* 3 = all four; 2 = one; 1 = vague; 0 = none.
+- **EX024 — Pod grouping.** What protocol change followed the pilot? *Rubric:* 3 = group pods by owning workload; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Retention.** What logging problem was found? *Rubric:* 3 = 24h retention too short; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Pilot purpose.** What is a pilot for? *Rubric:* 3 = finding method problems; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -446,12 +446,12 @@ A stepped design reduces but does not remove time effects; report calendar-time 
 
 ### Exercises
 
-- **EX027 — Design.** Describe the rollout design. *Rubric:* 3 = 8 clusters, 4 steps of 2, monthly; 2 = partial; 1 = none; 0 = none.
-- **EX028 — Lab medians.** What were the medians and difference? *Rubric:* 3 = 14.5 vs 0.0; 14.5; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Interval.** What was the interval? *Rubric:* 3 = 10.5-18.5 h; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Cost result.** Was the cost ceiling met? *Rubric:* 3 = yes, 3% after fortnight; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Validation.** How were results validated? *Rubric:* 3 = outside researcher reran scripts; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Exceptions.** What raised step-two exposure? *Rubric:* 3 = exceptions without end dates; 2 = partial; 1 = none; 0 = none.
+- **EX027 — Design.** Describe the rollout design. *Rubric:* 3 = 8 clusters, 4 steps of 2, monthly; 2 = partial; 1 = vague; 0 = none.
+- **EX028 — Lab medians.** What were the medians and difference? *Rubric:* 3 = 14.5 vs 0.0; 14.5; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Interval.** What was the interval? *Rubric:* 3 = 10.5-18.5 h; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Cost result.** Was the cost ceiling met? *Rubric:* 3 = yes, 3% after fortnight; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Validation.** How were results validated? *Rubric:* 3 = outside researcher reran scripts; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Exceptions.** What raised step-two exposure? *Rubric:* 3 = exceptions without end dates; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -515,11 +515,11 @@ Absorbing every suggestion can blur the paper; respond to all, change only what 
 
 ### Exercises
 
-- **EX033 — Reviewers asked.** What did Amara ask reviewers for? *Rubric:* 3 = weakest claim and analysis; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Workaround objection.** What was the measurement objection? *Rubric:* 3 = zero exposure may hide workarounds; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Workarounds found.** How many workarounds were found? *Rubric:* 3 = two in development namespace; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Revised claim.** How was the claim revised? *Rubric:* 3 = reduced median ~14h with exceptions noted; 2 = partial; 1 = none; 0 = none.
-- **EX037 — Test preference.** How was the test preference handled? *Rubric:* 3 = alternative as supplementary; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Reviewers asked.** What did Amara ask reviewers for? *Rubric:* 3 = weakest claim and analysis; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Workaround objection.** What was the measurement objection? *Rubric:* 3 = zero exposure may hide workarounds; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Workarounds found.** How many workarounds were found? *Rubric:* 3 = two in development namespace; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Revised claim.** How was the claim revised? *Rubric:* 3 = reduced median ~14h with exceptions noted; 2 = partial; 1 = vague; 0 = none.
+- **EX037 — Test preference.** How was the test preference handled? *Rubric:* 3 = alternative as supplementary; 2 = partial; 1 = vague; 0 = none.
 - **EX038 — Revision log.** What does the revision log contain? *Rubric:* 3 = critique, response, change; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -605,10 +605,10 @@ A manifest proves files are unchanged, not that the analysis is correct.
 
 - **EX039 — Argument links.** Which chapters does the argument connect? *Rubric:* 3 = gap, measures, baseline, result, revisions; 2 = three; 1 = one; 0 = none.
 - **EX040 — Archive contents.** List four archive items. *Rubric:* 3 = data, scripts, policies, label guide, log, README; 2 = three; 1 = one; 0 = none.
-- **EX041 — Lab result.** What did the archive lab find? *Rubric:* 3 = 3/4 verified; policies.yaml changed; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Real change.** What happened in the real check? *Rubric:* 3 = unrecorded late edit restored; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Raw logs.** How are raw logs handled? *Rubric:* 3 = stay with partner; synthetic generator; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Manifest limit.** What does a manifest not prove? *Rubric:* 3 = analysis correctness; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Lab result.** What did the archive lab find? *Rubric:* 3 = 3/4 verified; policies.yaml changed; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Real change.** What happened in the real check? *Rubric:* 3 = unrecorded late edit restored; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Raw logs.** How are raw logs handled? *Rubric:* 3 = stay with partner; synthetic generator; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Manifest limit.** What does a manifest not prove? *Rubric:* 3 = analysis correctness; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -679,11 +679,11 @@ Practitioner summaries tend to drop caveats; keep the key limit in the first par
 ### Exercises
 
 - **EX045 — Talk structure.** What is the talk structure? *Rubric:* 3 = problem, gap, method, result, limits, contribution; 2 = four; 1 = two; 0 = none.
-- **EX046 — Exposure proxy.** Why use exposure as the outcome? *Rubric:* 3 = variable the control changes; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Two papers.** What are the two papers? *Rubric:* 3 = method and archive; comparison results; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Data release.** What is released? *Rubric:* 3 = synthetic data, scripts, policies; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Exposure proxy.** Why use exposure as the outcome? *Rubric:* 3 = variable the control changes; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Two papers.** What are the two papers? *Rubric:* 3 = method and archive; comparison results; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Data release.** What is released? *Rubric:* 3 = synthetic data, scripts, policies; 2 = partial; 1 = vague; 0 = none.
 - **EX049 — Practitioner guidance.** What does the guidance stress? *Rubric:* 3 = gradual rollout, exception expiry, measurement; 2 = two; 1 = one; 0 = none.
-- **EX050 — Time question.** How did Amara answer the time-effect question? *Rubric:* 3 = calendar-time check and stepped design; 2 = partial; 1 = none; 0 = none.
+- **EX050 — Time question.** How did Amara answer the time-effect question? *Rubric:* 3 = calendar-time check and stepped design; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

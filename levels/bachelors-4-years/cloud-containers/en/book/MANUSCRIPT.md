@@ -93,9 +93,9 @@ Precise statements can still rest on wrong data; check the data source too.
 
 ### Exercises
 
-- **EX001 — Checkable claim.** Rewrite "StudyHub is secure" as a checkable claim. *Rubric:* 3 = e.g. no repo allows anonymous pull; 2 = partial; 1 = none; 0 = none.
-- **EX002 — Not sufficient.** Why is disabling anonymous pull not sufficient? *Rubric:* 3 = internal users could still read baked-in secret; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Unknown duration.** Why was exposure duration unknown? *Rubric:* 3 = audit logging off; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Checkable claim.** Rewrite "StudyHub is secure" as a checkable claim. *Rubric:* 3 = e.g. no repo allows anonymous pull; 2 = partial; 1 = vague; 0 = none.
+- **EX002 — Not sufficient.** Why is disabling anonymous pull not sufficient? *Rubric:* 3 = internal users could still read baked-in secret; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Unknown duration.** Why was exposure duration unknown? *Rubric:* 3 = audit logging off; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -166,8 +166,8 @@ Responsibility boundaries differ between services; check each service's document
 ### Exercises
 
 - **EX004 — Service models.** Name the three NIST service models. *Rubric:* 3 = IaaS, PaaS, SaaS; 2 = two; 1 = one; 0 = none.
-- **EX005 — Layer persistence.** Why did the connection string remain readable? *Rubric:* 3 = stays in image layer; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Briefing use.** How did the drawing help managers? *Rubric:* 3 = showed customer owns registry settings; 2 = partial; 1 = none; 0 = none.
+- **EX005 — Layer persistence.** Why did the connection string remain readable? *Rubric:* 3 = stays in image layer; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Briefing use.** How did the drawing help managers? *Rubric:* 3 = showed customer owns registry settings; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -243,9 +243,9 @@ Programs that assume missing settings are safe can hide problems.
 
 ### Exercises
 
-- **EX007 — Why programs.** Why use programs for configuration checks? *Rubric:* 3 = consistent, fast, many resources; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Function benefit.** Why write checks as functions? *Rubric:* 3 = testable and reusable; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Missing field.** How does Samuel handle a missing field? *Rubric:* 3 = report setting missing; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Why programs.** Why use programs for configuration checks? *Rubric:* 3 = consistent, fast, many resources; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Function benefit.** Why write checks as functions? *Rubric:* 3 = testable and reusable; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Missing field.** How does Samuel handle a missing field? *Rubric:* 3 = report setting missing; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -322,8 +322,8 @@ Absence of evidence is not evidence of absence when logging was missing.
 ### Exercises
 
 - **EX010 — Paragraph structure.** Describe a good paragraph. *Rubric:* 3 = topic sentence, evidence, link; 2 = two; 1 = one; 0 = none.
-- **EX011 — Accurate phrasing.** Why is "no misuse occurred" an overstatement? *Rubric:* 3 = logs missing for part of the period; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Revision habit.** Name a revision habit. *Rubric:* 3 = read aloud, cut words, check numbers; 2 = one; 1 = none; 0 = none.
+- **EX011 — Accurate phrasing.** Why is "no misuse occurred" an overstatement? *Rubric:* 3 = logs missing for part of the period; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Revision habit.** Name a revision habit. *Rubric:* 3 = read aloud, cut words, check numbers; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -394,8 +394,8 @@ Guidance can be outdated; check versions.
 ### Exercises
 
 - **EX013 — Common risks.** Name three common cloud risks. *Rubric:* 3 = storage/registry misconfig, broad identities, leaked creds, unpatched images, missing logs; 2 = two; 1 = one; 0 = none.
-- **EX014 — Least privilege example.** How would least privilege have helped records-api? *Rubric:* 3 = short-lived identity, no secret; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Working layer.** Which layer worked? *Rubric:* 3 = network restrictions on test DB; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Least privilege example.** How would least privilege have helped records-api? *Rubric:* 3 = short-lived identity, no secret; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Working layer.** Which layer worked? *Rubric:* 3 = network restrictions on test DB; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -489,9 +489,9 @@ Graphs built from exports miss conditions such as time limits; check details for
 
 ### Exercises
 
-- **EX016 — Edge meaning.** What does an edge represent? *Rubric:* 3 = may assume permission; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Surprise path.** Which path was surprising and why? *Rubric:* 3 = support-cy via ticket-bot; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Fix.** How was it fixed? *Rubric:* 3 = ticket-bot given narrow restart role; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Edge meaning.** What does an edge represent? *Rubric:* 3 = may assume permission; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Surprise path.** Which path was surprising and why? *Rubric:* 3 = support-cy via ticket-bot; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Fix.** How was it fixed? *Rubric:* 3 = ticket-bot given narrow restart role; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -567,9 +567,9 @@ Network controls reduce reach but do not replace authentication.
 
 ### Exercises
 
-- **EX019 — Why string unusable.** Why couldn't the leaked string be used from outside? *Rubric:* 3 = DB only accepted cluster subnet; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Private endpoint.** What does a private endpoint provide? *Rubric:* 3 = access inside network; public off; 2 = partial; 1 = none; 0 = none.
-- **EX021 — Registry fix.** How was public registry access removed? *Rubric:* 3 = build runner inside network; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Why string unusable.** Why couldn't the leaked string be used from outside? *Rubric:* 3 = DB only accepted cluster subnet; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Private endpoint.** What does a private endpoint provide? *Rubric:* 3 = access inside network; public off; 2 = partial; 1 = vague; 0 = none.
+- **EX021 — Registry fix.** How was public registry access removed? *Rubric:* 3 = build runner inside network; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -650,8 +650,8 @@ Checkers need the same care as production code.
 ### Exercises
 
 - **EX022 — Three parts.** Name the checker's parts. *Rubric:* 3 = loaders, checks, report writer; 2 = two; 1 = one; 0 = none.
-- **EX023 — Unable to check.** Why report "unable to check"? *Rubric:* 3 = avoid silent passing; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Case bug.** What bug did review find? *Rubric:* 3 = case-sensitive names; 2 = partial; 1 = none; 0 = none.
+- **EX023 — Unable to check.** Why report "unable to check"? *Rubric:* 3 = avoid silent passing; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Case bug.** What bug did review find? *Rubric:* 3 = case-sensitive names; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -745,9 +745,9 @@ Deleting data is irreversible; confirm before deleting.
 
 ### Exercises
 
-- **EX025 — Test data rule.** What should test databases contain? *Rubric:* 3 = synthetic data only; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Lab over.** Which stores were over retention? *Rubric:* 3 = app-logs 120; snapshot 210; 2 = one; 1 = none; 0 = none.
-- **EX027 — Snapshot fix.** What rule followed? *Rubric:* 3 = expiry tags on manual snapshots; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Test data rule.** What should test databases contain? *Rubric:* 3 = synthetic data only; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Lab over.** Which stores were over retention? *Rubric:* 3 = app-logs 120; snapshot 210; 2 = one; 1 = vague; 0 = none.
+- **EX027 — Snapshot fix.** What rule followed? *Rubric:* 3 = expiry tags on manual snapshots; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -822,8 +822,8 @@ Testing a found credential, even to check it works, is using it without authoris
 ### Exercises
 
 - **EX028 — Allowed access.** What may Samuel access? *Rubric:* 3 = read-only exports, test account, documentation; 2 = two; 1 = one; 0 = none.
-- **EX029 — Found key.** What did Samuel do with the found key? *Rubric:* 3 = reported, did not use; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Testing a credential.** Why not test a found credential? *Rubric:* 3 = that is unauthorised use; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Found key.** What did Samuel do with the found key? *Rubric:* 3 = reported, did not use; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Testing a credential.** Why not test a found credential? *Rubric:* 3 = that is unauthorised use; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -899,9 +899,9 @@ Some system components need more privileges; isolate them rather than weakening 
 
 ### Exercises
 
-- **EX031 — Shared kernel.** Why do isolation-weakening settings affect the node? *Rubric:* 3 = containers share kernel; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Shared kernel.** Why do isolation-weakening settings affect the node? *Rubric:* 3 = containers share kernel; 2 = partial; 1 = vague; 0 = none.
 - **EX032 — Restricted requirements.** Name three Restricted requirements. *Rubric:* 3 = non-root, no escalation, dropped caps, seccomp; 2 = two; 1 = one; 0 = none.
-- **EX033 — Root pods.** How many pods ran as root and why? *Rubric:* 3 = 9 of 31; no user set; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Root pods.** How many pods ran as root and why? *Rubric:* 3 = 9 of 31; no user set; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -991,8 +991,8 @@ The simple interval used here is approximate; for small samples better methods e
 ### Exercises
 
 - **EX034 — Lab figures.** What were mean, median and on-time share? *Rubric:* 3 = 19.3, 12.5, 0.55; 2 = two; 1 = one; 0 = none.
-- **EX035 — Interval.** What was the interval? *Rubric:* 3 = 0.33-0.77; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Reframing.** How was the report reframed? *Rubric:* 3 = focus on long tail over 30 days; 2 = partial; 1 = none; 0 = none.
+- **EX035 — Interval.** What was the interval? *Rubric:* 3 = 0.33-0.77; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Reframing.** How was the report reframed? *Rubric:* 3 = focus on long tail over 30 days; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1091,8 +1091,8 @@ Disabling accounts can break hidden dependencies; disable before deleting and wa
 ### Exercises
 
 - **EX037 — Lab findings.** What did the lab find for old-contractor? *Rubric:* 3 = no MFA, 400 d key, inactive 220 d; 2 = two; 1 = one; 0 = none.
-- **EX038 — svc-backup.** What should happen to svc-backup? *Rubric:* 3 = move to managed identity; 2 = partial; 1 = none; 0 = none.
-- **EX039 — Hidden dependency.** What hidden dependency was found? *Rubric:* 3 = scheduled report used contractor key; 2 = partial; 1 = none; 0 = none.
+- **EX038 — svc-backup.** What should happen to svc-backup? *Rubric:* 3 = move to managed identity; 2 = partial; 1 = vague; 0 = none.
+- **EX039 — Hidden dependency.** What hidden dependency was found? *Rubric:* 3 = scheduled report used contractor key; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1169,8 +1169,8 @@ Aggregated data can still identify people in small groups; suppress small counts
 ### Exercises
 
 - **EX040 — Principles.** List three privacy principles. *Rubric:* 3 = minimise, purpose, retention, accuracy, security, transparency; 2 = two; 1 = one; 0 = none.
-- **EX041 — Logging and breach.** How does logging help with breach duties? *Rubric:* 3 = determine what was exposed; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Analytics change.** How was the analytics job changed? *Rubric:* 3 = counts instead of full records; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Logging and breach.** How does logging help with breach duties? *Rubric:* 3 = determine what was exposed; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Analytics change.** How was the analytics job changed? *Rubric:* 3 = counts instead of full records; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1266,8 +1266,8 @@ Logging only per account can be switched off by that account's administrators; c
 ### Exercises
 
 - **EX043 — Lab coverage.** What was coverage and where were gaps? *Rubric:* 3 = 3/6; test eu-central and research both; 2 = two; 1 = one; 0 = none.
-- **EX044 — Central logging.** Why send logs to a separate account? *Rubric:* 3 = cannot be altered by individual accounts; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Sandbox event.** What did logs show a month later? *Rubric:* 3 = attempted public bucket, blocked; 2 = partial; 1 = none; 0 = none.
+- **EX044 — Central logging.** Why send logs to a separate account? *Rubric:* 3 = cannot be altered by individual accounts; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Sandbox event.** What did logs show a month later? *Rubric:* 3 = attempted public bucket, blocked; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1343,9 +1343,9 @@ Guardrails can block legitimate needs; provide a documented exception route.
 
 ### Exercises
 
-- **EX046 — Account benefit.** Why use separate accounts? *Rubric:* 3 = strong boundary for mistakes; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Guardrails.** Name two organisation guardrails. *Rubric:* 3 = block public storage, restrict regions, keep audit logs; 2 = one; 1 = none; 0 = none.
-- **EX048 — Shared registry.** What was found and fixed? *Rubric:* 3 = sandbox shared prod registry; separated; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Account benefit.** Why use separate accounts? *Rubric:* 3 = strong boundary for mistakes; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Guardrails.** Name two organisation guardrails. *Rubric:* 3 = block public storage, restrict regions, keep audit logs; 2 = one; 1 = vague; 0 = none.
+- **EX048 — Shared registry.** What was found and fixed? *Rubric:* 3 = sandbox shared prod registry; separated; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1425,9 +1425,9 @@ Encryption protects data from some threats but not from authorised identities mi
 
 ### Exercises
 
-- **EX049 — Customer-managed keys.** What do customer-managed keys add? *Rubric:* 3 = control and audit of key use; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Digest benefit.** Why deploy by digest? *Rubric:* 3 = exact tested image runs; 2 = partial; 1 = none; 0 = none.
-- **EX051 — TLS finding.** What TLS issue was found? *Rubric:* 3 = certificate verification disabled; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Customer-managed keys.** What do customer-managed keys add? *Rubric:* 3 = control and audit of key use; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Digest benefit.** Why deploy by digest? *Rubric:* 3 = exact tested image runs; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — TLS finding.** What TLS issue was found? *Rubric:* 3 = certificate verification disabled; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1507,9 +1507,9 @@ A correlation in observational data suggests but does not prove that the base ca
 
 ### Exercises
 
-- **EX052 — Hypothesis.** State the hypothesis. *Rubric:* 3 = shared base images have fewer high findings; 2 = partial; 1 = none; 0 = none.
-- **EX053 — Results.** What were the shares with high findings? *Rubric:* 3 = 12/18 public vs 3/22 shared; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Limit.** Why can't the study prove cause? *Rubric:* 3 = not randomly assigned; 2 = partial; 1 = none; 0 = none.
+- **EX052 — Hypothesis.** State the hypothesis. *Rubric:* 3 = shared base images have fewer high findings; 2 = partial; 1 = vague; 0 = none.
+- **EX053 — Results.** What were the shares with high findings? *Rubric:* 3 = 12/18 public vs 3/22 shared; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Limit.** Why can't the study prove cause? *Rubric:* 3 = not randomly assigned; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1580,8 +1580,8 @@ Theories describe ideals; real systems need verification.
 ### Exercises
 
 - **EX055 — SP 800-190 areas.** Name the five SP 800-190 risk areas. *Rubric:* 3 = image, registry, orchestrator, container, host; 2 = three; 1 = one; 0 = none.
-- **EX056 — Declarative benefit.** Why is declarative configuration helpful for security? *Rubric:* 3 = reviewable and checkable before applied; 2 = partial; 1 = none; 0 = none.
-- **EX057 — Case mapping.** Map the connection string to an SP 800-190 area. *Rubric:* 3 = image risk; 2 = partial; 1 = none; 0 = none.
+- **EX056 — Declarative benefit.** Why is declarative configuration helpful for security? *Rubric:* 3 = reviewable and checkable before applied; 2 = partial; 1 = vague; 0 = none.
+- **EX057 — Case mapping.** Map the connection string to an SP 800-190 area. *Rubric:* 3 = image risk; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1655,9 +1655,9 @@ Cases are selected because they went wrong; they do not show how common problems
 
 ### Exercises
 
-- **EX058 — Case B lesson.** What is Case B's lesson? *Rubric:* 3 = short-lived identities, pre-push scanning; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Hindsight.** What is hindsight bias? *Rubric:* 3 = judging past decisions with later knowledge; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Westmere comparison.** Which case resembles Westmere's? *Rubric:* 3 = Case B; 2 = partial; 1 = none; 0 = none.
+- **EX058 — Case B lesson.** What is Case B's lesson? *Rubric:* 3 = short-lived identities, pre-push scanning; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Hindsight.** What is hindsight bias? *Rubric:* 3 = judging past decisions with later knowledge; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Westmere comparison.** Which case resembles Westmere's? *Rubric:* 3 = Case B; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1734,8 +1734,8 @@ Models omit details; verify important assumptions with real configuration.
 ### Exercises
 
 - **EX061 — Per-flow checks.** What is checked for each flow? *Rubric:* 3 = authn, authz, encryption, logging; 2 = three; 1 = one; 0 = none.
-- **EX062 — Model vs reality.** How are surprises found? *Rubric:* 3 = compare model with flow logs; 2 = partial; 1 = none; 0 = none.
-- **EX063 — Coursework role.** What was wrong with the coursework role? *Rubric:* 3 = could delete any object; 2 = partial; 1 = none; 0 = none.
+- **EX062 — Model vs reality.** How are surprises found? *Rubric:* 3 = compare model with flow logs; 2 = partial; 1 = vague; 0 = none.
+- **EX063 — Coursework role.** What was wrong with the coursework role? *Rubric:* 3 = could delete any object; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1812,8 +1812,8 @@ Inventories must be generated automatically or they go stale.
 ### Exercises
 
 - **EX064 — Image dependencies.** What does an image depend on? *Rubric:* 3 = base image, OS packages, libraries; 2 = two; 1 = one; 0 = none.
-- **EX065 — Third-party images.** How are third-party images handled? *Rubric:* 3 = mirrored, digest-checked, scanned; 2 = partial; 1 = none; 0 = none.
-- **EX066 — Advisory response.** How quickly were affected images found? *Rubric:* 3 = minutes via inventory; 7 images; 2 = partial; 1 = none; 0 = none.
+- **EX065 — Third-party images.** How are third-party images handled? *Rubric:* 3 = mirrored, digest-checked, scanned; 2 = partial; 1 = vague; 0 = none.
+- **EX066 — Advisory response.** How quickly were affected images found? *Rubric:* 3 = minutes via inventory; 7 images; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1902,8 +1902,8 @@ Disabling anonymous access can break external consumers; check who pulls before 
 ### Exercises
 
 - **EX067 — Lab findings.** What did the lab find for legacy-import? *Rubric:* 3 = anonymous, 540 d, never scanned; 2 = two; 1 = one; 0 = none.
-- **EX068 — Priority.** Why fix anonymous pull first? *Rubric:* 3 = exposes images to anyone; 2 = partial; 1 = none; 0 = none.
-- **EX069 — legacy-import outcome.** What happened to legacy-import? *Rubric:* 3 = archived and deleted; 2 = partial; 1 = none; 0 = none.
+- **EX068 — Priority.** Why fix anonymous pull first? *Rubric:* 3 = exposes images to anyone; 2 = partial; 1 = vague; 0 = none.
+- **EX069 — legacy-import outcome.** What happened to legacy-import? *Rubric:* 3 = archived and deleted; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1989,7 +1989,7 @@ A register is only useful if tests are actually run and dates updated.
 
 - **EX070 — Control types.** Name the three control types with an example each. *Rubric:* 3 = preventive guardrail, detective alerts, response runbooks; 2 = two; 1 = one; 0 = none.
 - **EX071 — Register fields.** What does the register record? *Rubric:* 3 = control, owner, evidence, test, last test; 2 = three; 1 = one; 0 = none.
-- **EX072 — Missing control.** What gap did the register show? *Rubric:* 3 = no pre-push secret detection; 2 = partial; 1 = none; 0 = none.
+- **EX072 — Missing control.** What gap did the register show? *Rubric:* 3 = no pre-push secret detection; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2074,8 +2074,8 @@ Ranking depends on assumptions; state them.
 ### Exercises
 
 - **EX073 — Lab tasks.** List the lab tasks. *Rubric:* 3 = registry, accounts, logging, role graph; 2 = three; 1 = one; 0 = none.
-- **EX074 — Expected findings.** Name two expected findings. *Rubric:* 3 = anonymous repo, no-MFA account, missing log region, support-admin path; 2 = one; 1 = none; 0 = none.
-- **EX075 — Ranking debate.** How was the ranking debate resolved? *Rubric:* 3 = both top, fixed in parallel; 2 = partial; 1 = none; 0 = none.
+- **EX074 — Expected findings.** Name two expected findings. *Rubric:* 3 = anonymous repo, no-MFA account, missing log region, support-admin path; 2 = one; 1 = vague; 0 = none.
+- **EX075 — Ranking debate.** How was the ranking debate resolved? *Rubric:* 3 = both top, fixed in parallel; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2171,8 +2171,8 @@ Passing a benchmark is not the same as being secure.
 ### Exercises
 
 - **EX076 — Lab score.** What was the score and which checks failed? *Rubric:* 3 = 4/7; logging, password, open ports; 2 = two; 1 = one; 0 = none.
-- **EX077 — Weighting.** Why does password length matter less here? *Rubric:* 3 = staff use identity provider; 2 = partial; 1 = none; 0 = none.
-- **EX078 — Ports fix.** How were the open ports fixed? *Rubric:* 3 = deleted unused default networks; 2 = partial; 1 = none; 0 = none.
+- **EX077 — Weighting.** Why does password length matter less here? *Rubric:* 3 = staff use identity provider; 2 = partial; 1 = vague; 0 = none.
+- **EX078 — Ports fix.** How were the open ports fixed? *Rubric:* 3 = deleted unused default networks; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2265,9 +2265,9 @@ A passing test shows one case works; coverage of cases matters.
 
 ### Exercises
 
-- **EX079 — Lab result.** Which test failed? *Rubric:* 3 = privileged pod admitted; 2 = partial; 1 = none; 0 = none.
-- **EX080 — Cause.** What caused the failure? *Rubric:* 3 = namespace missing Restricted label; 2 = partial; 1 = none; 0 = none.
-- **EX081 — Coverage point.** Why add a label check across namespaces? *Rubric:* 3 = one namespace test doesn't prove all; 2 = partial; 1 = none; 0 = none.
+- **EX079 — Lab result.** Which test failed? *Rubric:* 3 = privileged pod admitted; 2 = partial; 1 = vague; 0 = none.
+- **EX080 — Cause.** What caused the failure? *Rubric:* 3 = namespace missing Restricted label; 2 = partial; 1 = vague; 0 = none.
+- **EX081 — Coverage point.** Why add a label check across namespaces? *Rubric:* 3 = one namespace test doesn't prove all; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2347,9 +2347,9 @@ Fail-closed choices create availability risks; make the control itself reliable.
 
 ### Exercises
 
-- **EX082 — Fail closed.** What does fail closed mean for admission? *Rubric:* 3 = deployments blocked if service down; 2 = partial; 1 = none; 0 = none.
-- **EX083 — Silent failures.** Why do silent failures rank highest? *Rubric:* 3 = last long unnoticed; 2 = partial; 1 = none; 0 = none.
-- **EX084 — Scanner fix.** How was the scanner failure addressed? *Rubric:* 3 = scanner error fails build; weekly counts; 2 = partial; 1 = none; 0 = none.
+- **EX082 — Fail closed.** What does fail closed mean for admission? *Rubric:* 3 = deployments blocked if service down; 2 = partial; 1 = vague; 0 = none.
+- **EX083 — Silent failures.** Why do silent failures rank highest? *Rubric:* 3 = last long unnoticed; 2 = partial; 1 = vague; 0 = none.
+- **EX084 — Scanner fix.** How was the scanner failure addressed? *Rubric:* 3 = scanner error fails build; weekly counts; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2446,9 +2446,9 @@ Tuning can hide real events; review tuned rules periodically.
 
 ### Exercises
 
-- **EX085 — Lab worst rule.** Which rule was least actionable? *Rubric:* 3 = login-new-country 0/3; 2 = partial; 1 = none; 0 = none.
-- **EX086 — Why it matters.** Why do non-actionable alerts matter? *Rubric:* 3 = slow responses spread; 2 = partial; 1 = none; 0 = none.
-- **EX087 — Tuning result.** What did tuning achieve? *Rubric:* 3 = 40 to 3 a month; ack under 10 min; 2 = partial; 1 = none; 0 = none.
+- **EX085 — Lab worst rule.** Which rule was least actionable? *Rubric:* 3 = login-new-country 0/3; 2 = partial; 1 = vague; 0 = none.
+- **EX086 — Why it matters.** Why do non-actionable alerts matter? *Rubric:* 3 = slow responses spread; 2 = partial; 1 = vague; 0 = none.
+- **EX087 — Tuning result.** What did tuning achieve? *Rubric:* 3 = 40 to 3 a month; ack under 10 min; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2533,8 +2533,8 @@ Test accounts may differ from production in log delivery; check both.
 ### Exercises
 
 - **EX088 — Injected events.** List the injected events. *Rubric:* 3 = public change, new key, privileged pod, logging disable; 2 = three; 1 = one; 0 = none.
-- **EX089 — Slow alert.** Which alert was slow and why? *Rubric:* 3 = new key, 18 min, batch export; 2 = partial; 1 = none; 0 = none.
-- **EX090 — Fix.** What fixed it? *Rubric:* 3 = real-time event stream; 2 = partial; 1 = none; 0 = none.
+- **EX089 — Slow alert.** Which alert was slow and why? *Rubric:* 3 = new key, 18 min, batch export; 2 = partial; 1 = vague; 0 = none.
+- **EX090 — Fix.** What fixed it? *Rubric:* 3 = real-time event stream; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2605,8 +2605,8 @@ Fixing one link is good; fixing several protects against unknown links.
 ### Exercises
 
 - **EX091 — Chain parts.** List the three weaknesses in the first case. *Rubric:* 3 = broad laptop token, pipeline role to admin, no alerting; 2 = two; 1 = one; 0 = none.
-- **EX092 — Container fixes.** Name two fixes for the container case. *Rubric:* 3 = Restricted, default-deny, no auto token; 2 = one; 1 = none; 0 = none.
-- **EX093 — StudyHub finding.** What did Samuel find in StudyHub? *Rubric:* 3 = 14 pods mounting unused tokens; 2 = partial; 1 = none; 0 = none.
+- **EX092 — Container fixes.** Name two fixes for the container case. *Rubric:* 3 = Restricted, default-deny, no auto token; 2 = one; 1 = vague; 0 = none.
+- **EX093 — StudyHub finding.** What did Samuel find in StudyHub? *Rubric:* 3 = 14 pods mounting unused tokens; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2680,9 +2680,9 @@ Translating risk across disciplines can lose nuance; check understanding.
 
 ### Exercises
 
-- **EX094 — DPO needs.** What does the DPO need? *Rubric:* 3 = data location and breach detection; 2 = partial; 1 = none; 0 = none.
-- **EX095 — Scheduling.** How are student needs respected? *Rubric:* 3 = changes away from deadline peaks; 2 = partial; 1 = none; 0 = none.
-- **EX096 — Public dataset.** How was the public dataset request handled? *Rubric:* 3 = dedicated public-data account with review; 2 = partial; 1 = none; 0 = none.
+- **EX094 — DPO needs.** What does the DPO need? *Rubric:* 3 = data location and breach detection; 2 = partial; 1 = vague; 0 = none.
+- **EX095 — Scheduling.** How are student needs respected? *Rubric:* 3 = changes away from deadline peaks; 2 = partial; 1 = vague; 0 = none.
+- **EX096 — Public dataset.** How was the public dataset request handled? *Rubric:* 3 = dedicated public-data account with review; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2760,9 +2760,9 @@ Matching reduces some differences but not unmeasured ones.
 
 ### Exercises
 
-- **EX097 — Design.** How were groups compared? *Rubric:* 3 = 12 vs 12 matched pairs; 2 = partial; 1 = none; 0 = none.
-- **EX098 — Results.** What were medians and kappa? *Rubric:* 3 = 1 vs 4; kappa 0.82; 2 = partial; 1 = none; 0 = none.
-- **EX099 — Blind check.** How was reviewer bias checked? *Rubric:* 3 = relabel with names hidden; 2 = partial; 1 = none; 0 = none.
+- **EX097 — Design.** How were groups compared? *Rubric:* 3 = 12 vs 12 matched pairs; 2 = partial; 1 = vague; 0 = none.
+- **EX098 — Results.** What were medians and kappa? *Rubric:* 3 = 1 vs 4; kappa 0.82; 2 = partial; 1 = vague; 0 = none.
+- **EX099 — Blind check.** How was reviewer bias checked? *Rubric:* 3 = relabel with names hidden; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2840,9 +2840,9 @@ Test accounts may not represent all production behaviours.
 
 ### Exercises
 
-- **EX100 — Two approaches.** What two approaches were compared? *Rubric:* 3 = periodic scanning vs event alerts; 2 = partial; 1 = none; 0 = none.
-- **EX101 — Results.** Give the median delays. *Rubric:* 3 = scan 11 h; events 2 min; 2 = partial; 1 = none; 0 = none.
-- **EX102 — Recommendation.** What was recommended? *Rubric:* 3 = both, plus guardrails; 2 = partial; 1 = none; 0 = none.
+- **EX100 — Two approaches.** What two approaches were compared? *Rubric:* 3 = periodic scanning vs event alerts; 2 = partial; 1 = vague; 0 = none.
+- **EX101 — Results.** Give the median delays. *Rubric:* 3 = scan 11 h; events 2 min; 2 = partial; 1 = vague; 0 = none.
+- **EX102 — Recommendation.** What was recommended? *Rubric:* 3 = both, plus guardrails; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2926,9 +2926,9 @@ Capstones should solve a real problem, not showcase tools.
 
 ### Exercises
 
-- **EX103 — Capstone.** What is the capstone? *Rubric:* 3 = weekly posture report plus pipeline secret scan; 2 = partial; 1 = none; 0 = none.
-- **EX104 — Criteria.** Name two success criteria. *Rubric:* 3 = weekly checks, no anonymous repos, logging 6/6, median <14 d, scan blocks keys; 2 = one; 1 = none; 0 = none.
-- **EX105 — Limit stated.** What will Samuel not claim? *Rubric:* 3 = that StudyHub cannot be attacked; 2 = partial; 1 = none; 0 = none.
+- **EX103 — Capstone.** What is the capstone? *Rubric:* 3 = weekly posture report plus pipeline secret scan; 2 = partial; 1 = vague; 0 = none.
+- **EX104 — Criteria.** Name two success criteria. *Rubric:* 3 = weekly checks, no anonymous repos, logging 6/6, median <14 d, scan blocks keys; 2 = one; 1 = vague; 0 = none.
+- **EX105 — Limit stated.** What will Samuel not claim? *Rubric:* 3 = that StudyHub cannot be attacked; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3000,7 +3000,7 @@ Advice must match the organisation's capacity or it will not be followed.
 
 - **EX106 — Five checks.** List the five checks. *Rubric:* 3 = owner MFA, no owner keys, public access blocked, logging, budget alerts; 2 = four; 1 = two; 0 = none.
 - **EX107 — Findings.** What did Samuel find? *Rubric:* 3 = MFA off, public bucket, logging off; 2 = two; 1 = one; 0 = none.
-- **EX108 — Who changes.** Who made the changes? *Rubric:* 3 = the volunteer, with permission; 2 = partial; 1 = none; 0 = none.
+- **EX108 — Who changes.** Who made the changes? *Rubric:* 3 = the volunteer, with permission; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3075,8 +3075,8 @@ Even peer-reviewed studies age quickly in fast-changing cloud environments.
 ### Exercises
 
 - **EX109 — Evidence questions.** What four questions assess evidence? *Rubric:* 3 = who, what data, what method, what limits; 2 = three; 1 = one; 0 = none.
-- **EX110 — Vendor claim.** How was the vendor claim judged? *Rubric:* 3 = plausible but weakly supported percentage; 2 = partial; 1 = none; 0 = none.
-- **EX111 — Wording.** How was the thesis wording changed? *Rubric:* 3 = "a vendor survey reported"; 2 = partial; 1 = none; 0 = none.
+- **EX110 — Vendor claim.** How was the vendor claim judged? *Rubric:* 3 = plausible but weakly supported percentage; 2 = partial; 1 = vague; 0 = none.
+- **EX111 — Wording.** How was the thesis wording changed? *Rubric:* 3 = "a vendor survey reported"; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3147,8 +3147,8 @@ Warning modes that never end become ignored; set a date.
 ### Exercises
 
 - **EX112 — Report sources.** Which checks feed the report? *Rubric:* 3 = registry, account, logging, benchmark, pod security; 2 = three; 1 = one; 0 = none.
-- **EX113 — Warning mode.** What did warning mode reveal? *Rubric:* 3 = realistic fake keys in fixtures; 2 = partial; 1 = none; 0 = none.
-- **EX114 — First block.** What did the scan block? *Rubric:* 3 = real key from developer's notes; 2 = partial; 1 = none; 0 = none.
+- **EX113 — Warning mode.** What did warning mode reveal? *Rubric:* 3 = realistic fake keys in fixtures; 2 = partial; 1 = vague; 0 = none.
+- **EX114 — First block.** What did the scan block? *Rubric:* 3 = real key from developer's notes; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3226,9 +3226,9 @@ Meeting criteria shows the project did what it set out to do; it does not show t
 
 ### Exercises
 
-- **EX115 — Findings trend.** How did open findings change? *Rubric:* 3 = 41 to 9; 2 = partial; 1 = none; 0 = none.
-- **EX116 — Median age.** What was the median findings age? *Rubric:* 3 = 9 days; 2 = partial; 1 = none; 0 = none.
-- **EX117 — Limits.** Name two limits. *Rubric:* 3 = one term, config only, scan misses non-random secrets; 2 = one; 1 = none; 0 = none.
+- **EX115 — Findings trend.** How did open findings change? *Rubric:* 3 = 41 to 9; 2 = partial; 1 = vague; 0 = none.
+- **EX116 — Median age.** What was the median findings age? *Rubric:* 3 = 9 days; 2 = partial; 1 = vague; 0 = none.
+- **EX117 — Limits.** Name two limits. *Rubric:* 3 = one term, config only, scan misses non-random secrets; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3302,8 +3302,8 @@ Presentations should match the thesis claims, not exaggerate them.
 
 ### Exercises
 
-- **EX118 — Argument.** State the thesis argument. *Rubric:* 3 = guardrails, scanning, posture report close gaps; 2 = partial; 1 = none; 0 = none.
-- **EX119 — Commercial tool.** How did Samuel answer the tool question? *Rubric:* 3 = built-ins met needs; reconsider if estate grows; 2 = partial; 1 = none; 0 = none.
+- **EX118 — Argument.** State the thesis argument. *Rubric:* 3 = guardrails, scanning, posture report close gaps; 2 = partial; 1 = vague; 0 = none.
+- **EX119 — Commercial tool.** How did Samuel answer the tool question? *Rubric:* 3 = built-ins met needs; reconsider if estate grows; 2 = partial; 1 = vague; 0 = none.
 - **EX120 — Three layers.** What three layers now cover the registry case? *Rubric:* 3 = guardrail, event alert, weekly report; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis

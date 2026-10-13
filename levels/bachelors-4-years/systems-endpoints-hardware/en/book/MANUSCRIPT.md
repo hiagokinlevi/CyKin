@@ -86,8 +86,8 @@ Percentages of small numbers can mislead; always show the count too.
 ### Exercises
 
 - **EX001 — Case trigger.** What incident started Bramley's concern? *Rubric:* 3 = unencrypted stolen laptop with tenant records; 2 = partial; 1 = vague; 0 = none.
-- **EX002 — Proportion.** What share of 45 laptops is 13? *Rubric:* 3 = about 29%; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Two measures.** Why do device count and people affected differ? *Rubric:* 3 = one device can hold many records; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Proportion.** What share of 45 laptops is 13? *Rubric:* 3 = about 29%; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Two measures.** Why do device count and people affected differ? *Rubric:* 3 = one device can hold many records; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -151,9 +151,9 @@ Hardware features help only when enabled; many laptops ship with encryption off.
 
 ### Exercises
 
-- **EX004 — Travel risk.** Why are laptops more exposed than servers? *Rubric:* 3 = they travel and are lost; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Login password.** Why is a login password not enough? *Rubric:* 3 = disk readable directly; 2 = partial; 1 = none; 0 = none.
-- **EX006 — TPM role.** What does the TPM do for encryption? *Rubric:* 3 = releases key for expected boot; 2 = partial; 1 = none; 0 = none.
+- **EX004 — Travel risk.** Why are laptops more exposed than servers? *Rubric:* 3 = they travel and are lost; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Login password.** Why is a login password not enough? *Rubric:* 3 = disk readable directly; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — TPM role.** What does the TPM do for encryption? *Rubric:* 3 = releases key for expected boot; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -222,8 +222,8 @@ Data types cause silent errors; test with realistic data.
 ### Exercises
 
 - **EX007 — Program parts.** What are the three parts of the first program? *Rubric:* 3 = data, loop with condition, output; 2 = two; 1 = one; 0 = none.
-- **EX008 — Output style.** How should output be ordered? *Rubric:* 3 = count then details; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Bug.** Why did the first version print nothing? *Rubric:* 3 = "False" text treated as true; 2 = partial; 1 = none; 0 = none.
+- **EX008 — Output style.** How should output be ordered? *Rubric:* 3 = count then details; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Bug.** Why did the first version print nothing? *Rubric:* 3 = "False" text treated as true; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -297,9 +297,9 @@ Overclaiming in writing weakens credibility.
 
 ### Exercises
 
-- **EX010 — Sources.** Which two sources support Aisha's argument? *Rubric:* 3 = CIS Controls v8, SP 800-53r5; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Sources.** Which two sources support Aisha's argument? *Rubric:* 3 = CIS Controls v8, SP 800-53r5; 2 = partial; 1 = vague; 0 = none.
 - **EX011 — Structure.** Give the essay structure. *Rubric:* 3 = intro, evidence, counter-arguments, conclusion; 2 = three; 1 = two; 0 = none.
-- **EX012 — Rewrite.** How was the overclaim corrected? *Rubric:* 3 = protects data when lost/stolen and off or locked; 2 = partial; 1 = none; 0 = none.
+- **EX012 — Rewrite.** How was the overclaim corrected? *Rubric:* 3 = protects data when lost/stolen and off or locked; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -375,7 +375,7 @@ Controls fail when staff do not understand why they exist.
 
 - **EX013 — Goals.** Apply the three goals to Bramley. *Rubric:* 3 = tenant confidentiality, finance accuracy, working laptops; 2 = two; 1 = one; 0 = none.
 - **EX014 — Threats.** Name four common endpoint threats. *Rubric:* 3 = loss/theft, attachments, unpatched, weak passwords, admin misuse; 2 = three; 1 = two; 0 = none.
-- **EX015 — Admin question.** Why not give staff admin rights? *Rubric:* 3 = malware/mistakes change system; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Admin question.** Why not give staff admin rights? *Rubric:* 3 = malware/mistakes change system; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -449,9 +449,9 @@ Rules with conditions create gaps when conditions change.
 
 ### Exercises
 
-- **EX016 — Set differences.** What do R minus M and M minus R represent? *Rubric:* 3 = unmanaged registered; unregistered reporting; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Dependency.** What does the domain server affect? *Rubric:* 3 = logons for many laptops; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Rule change.** Why did Gareth simplify the rule? *Rubric:* 3 = conditions change; encrypt all; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Set differences.** What do R minus M and M minus R represent? *Rubric:* 3 = unmanaged registered; unregistered reporting; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Dependency.** What does the domain server affect? *Rubric:* 3 = logons for many laptops; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Rule change.** Why did Gareth simplify the rule? *Rubric:* 3 = conditions change; encrypt all; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -525,9 +525,9 @@ Assuming all laptops are on the office network misses home workers.
 
 ### Exercises
 
-- **EX019 — Home effect.** How does home working affect management? *Rubric:* 3 = off network for weeks, updates delayed; 2 = partial; 1 = none; 0 = none.
-- **EX020 — SMB1.** What do baselines say about SMB1? *Rubric:* 3 = disable; 2 = partial; 1 = none; 0 = none.
-- **EX021 — Count.** How many laptops had not connected for 30 days? *Rubric:* 3 = 11; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Home effect.** How does home working affect management? *Rubric:* 3 = off network for weeks, updates delayed; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — SMB1.** What do baselines say about SMB1? *Rubric:* 3 = disable; 2 = partial; 1 = vague; 0 = none.
+- **EX021 — Count.** How many laptops had not connected for 30 days? *Rubric:* 3 = 11; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -603,9 +603,9 @@ Treating unknown as compliant hides problems.
 
 ### Exercises
 
-- **EX022 — Formats.** Which modules read the exports? *Rubric:* 3 = csv and json; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Unknowns.** How are missing fields reported? *Rubric:* 3 = as unknown, separately; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Result.** What did the program report? *Rubric:* 3 = 40, 2, 1, 2; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Formats.** Which modules read the exports? *Rubric:* 3 = csv and json; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Unknowns.** How are missing fields reported? *Rubric:* 3 = as unknown, separately; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Result.** What did the program report? *Rubric:* 3 = 40, 2, 1, 2; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -686,8 +686,8 @@ Queries are only as good as the data's timeliness.
 ### Exercises
 
 - **EX025 — Tables.** Name the three tables. *Rubric:* 3 = devices, updates, events; 2 = two; 1 = one; 0 = none.
-- **EX026 — Owner role.** Why store owner role instead of name? *Rubric:* 3 = reduce personal data; 2 = partial; 1 = none; 0 = none.
-- **EX027 — Validation.** How did Aisha validate her query? *Rubric:* 3 = checked each result by hand; 2 = partial; 1 = none; 0 = none.
+- **EX026 — Owner role.** Why store owner role instead of name? *Rubric:* 3 = reduce personal data; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — Validation.** How did Aisha validate her query? *Rubric:* 3 = checked each result by hand; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -762,8 +762,8 @@ Good intentions do not replace authorisation.
 ### Exercises
 
 - **EX028 — Agreement.** What does the agreement permit? *Rubric:* 3 = read-only reports, no tenant data, changes via Gareth; 2 = two; 1 = one; 0 = none.
-- **EX029 — Names.** How are staff names handled? *Rubric:* 3 = roles in reports, encrypted storage; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Shared admin.** How was the shared admin account handled? *Rubric:* 3 = reported to Gareth; disabled, named accounts; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Names.** How are staff names handled? *Rubric:* 3 = roles in reports, encrypted storage; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Shared admin.** How was the shared admin account handled? *Rubric:* 3 = reported to Gareth; disabled, named accounts; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -837,9 +837,9 @@ Installed is not the same as active; restarts matter.
 
 ### Exercises
 
-- **EX031 — Admin advice.** What do baselines advise about local admin? *Rubric:* 3 = remove; 2 = partial; 1 = none; 0 = none.
-- **EX032 — SP 800-123.** What does SP 800-123 advise about services? *Rubric:* 3 = remove unneeded; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Pending restart.** Why were the sample laptop's fixes inactive? *Rubric:* 3 = restart postponed; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Admin advice.** What do baselines advise about local admin? *Rubric:* 3 = remove; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — SP 800-123.** What does SP 800-123 advise about services? *Rubric:* 3 = remove unneeded; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Pending restart.** Why were the sample laptop's fixes inactive? *Rubric:* 3 = restart postponed; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -930,8 +930,8 @@ A mean alone hides tails.
 ### Exercises
 
 - **EX034 — Lab figures.** Give mean, median and max. *Rubric:* 3 = 22.4, 12, 104; 2 = two; 1 = one; 0 = none.
-- **EX035 — Tail.** How many laptops took over 30 days? *Rubric:* 3 = 10; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Measures.** Which two measures did Bramley adopt? *Rubric:* 3 = share within 14 days, count over 30; 2 = partial; 1 = none; 0 = none.
+- **EX035 — Tail.** How many laptops took over 30 days? *Rubric:* 3 = 10; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Measures.** Which two measures did Bramley adopt? *Rubric:* 3 = share within 14 days, count over 30; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1011,9 +1011,9 @@ Removing rights without a request process creates frustration and workarounds.
 
 ### Exercises
 
-- **EX037 — Principle.** Who described least privilege? *Rubric:* 3 = Saltzer and Schroeder 1975; 2 = partial; 1 = none; 0 = none.
+- **EX037 — Principle.** Who described least privilege? *Rubric:* 3 = Saltzer and Schroeder 1975; 2 = partial; 1 = vague; 0 = none.
 - **EX038 — Admin use.** How are admin accounts used? *Rubric:* 3 = named, MFA, admin tasks only; 2 = two; 1 = one; 0 = none.
-- **EX039 — First week.** What happened after removing admin rights? *Rubric:* 3 = five requests, installed centrally; 2 = partial; 1 = none; 0 = none.
+- **EX039 — First week.** What happened after removing admin rights? *Rubric:* 3 = five requests, installed centrally; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1095,9 +1095,9 @@ Privacy controls that ignore staff needs lead to shadow copies.
 
 ### Exercises
 
-- **EX040 — Minimisation.** What minimisation step applies to laptops? *Rubric:* 3 = keep tenant data on server; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Encryption effect.** How does encryption affect breach assessment? *Rubric:* 3 = data unreadable, changes assessment; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Shadow copies.** Why did staff keep local copies? *Rubric:* 3 = slow network; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Minimisation.** What minimisation step applies to laptops? *Rubric:* 3 = keep tenant data on server; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Encryption effect.** How does encryption affect breach assessment? *Rubric:* 3 = data unreadable, changes assessment; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Shadow copies.** Why did staff keep local copies? *Rubric:* 3 = slow network; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1178,8 +1178,8 @@ Measures changed mid-project break comparisons.
 ### Exercises
 
 - **EX043 — Measures.** List the four measures. *Rubric:* 3 = encryption, latency, unmanaged, services; 2 = three; 1 = two; 0 = none.
-- **EX044 — Baseline.** Give the baseline encryption and patch figures. *Rubric:* 3 = 32/45, 26/45; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Consistency.** Why keep measures fixed? *Rubric:* 3 = comparisons; 2 = partial; 1 = none; 0 = none.
+- **EX044 — Baseline.** Give the baseline encryption and patch figures. *Rubric:* 3 = 32/45, 26/45; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Consistency.** Why keep measures fixed? *Rubric:* 3 = comparisons; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1256,8 +1256,8 @@ Layers without monitoring may fail unseen.
 ### Exercises
 
 - **EX046 — Device layer.** List device-layer controls. *Rubric:* 3 = encryption, standard users, firewall, updates, anti-malware; 2 = four; 1 = two; 0 = none.
-- **EX047 — Depth example.** Give a defence-in-depth example. *Rubric:* 3 = standard rights limit missed malware; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Key dependency.** Which dependency leads to inventory work? *Rubric:* 3 = management agent; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Depth example.** Give a defence-in-depth example. *Rubric:* 3 = standard rights limit missed malware; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Key dependency.** Which dependency leads to inventory work? *Rubric:* 3 = management agent; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1333,9 +1333,9 @@ Encryption without recovery planning risks data loss.
 
 ### Exercises
 
-- **EX049 — Key protection.** How is the disk key protected? *Rubric:* 3 = TPM, optional PIN; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Recovery storage.** Where are recovery keys stored? *Rubric:* 3 = directory, IT only; 2 = partial; 1 = none; 0 = none.
-- **EX051 — Firmware event.** What happened after a firmware update? *Rubric:* 3 = recovery key needed, retrieved; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Key protection.** How is the disk key protected? *Rubric:* 3 = TPM, optional PIN; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Recovery storage.** Where are recovery keys stored? *Rubric:* 3 = directory, IT only; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — Firmware event.** What happened after a firmware update? *Rubric:* 3 = recovery key needed, retrieved; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1423,9 +1423,9 @@ Before-after designs cannot exclude other causes.
 
 ### Exercises
 
-- **EX052 — Question.** State the research question. *Rubric:* 3 = reminders reduce latency?; 2 = partial; 1 = none; 0 = none.
-- **EX053 — Measure.** Which measure was pre-stated? *Rubric:* 3 = share within 14 days; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Limit.** What is the main limit? *Rubric:* 3 = other changes; 2 = partial; 1 = none; 0 = none.
+- **EX052 — Question.** State the research question. *Rubric:* 3 = reminders reduce latency?; 2 = partial; 1 = vague; 0 = none.
+- **EX053 — Measure.** Which measure was pre-stated? *Rubric:* 3 = share within 14 days; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Limit.** What is the main limit? *Rubric:* 3 = other changes; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1505,9 +1505,9 @@ Unclear scope makes projects grow.
 
 ### Exercises
 
-- **EX055 — Field scope.** What does the field cover? *Rubric:* 3 = servers, laptops, firmware, hardware; 2 = partial; 1 = none; 0 = none.
+- **EX055 — Field scope.** What does the field cover? *Rubric:* 3 = servers, laptops, firmware, hardware; 2 = partial; 1 = vague; 0 = none.
 - **EX056 — Theories.** Name three theories applied. *Rubric:* 3 = configuration mgmt, patch mgmt, least privilege; 2 = two; 1 = one; 0 = none.
-- **EX057 — Capstone scope.** What does Aisha's capstone exclude? *Rubric:* 3 = phones, website; 2 = partial; 1 = none; 0 = none.
+- **EX057 — Capstone scope.** What does Aisha's capstone exclude? *Rubric:* 3 = phones, website; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1587,9 +1587,9 @@ Cases from large firms may not fit small charities directly.
 
 ### Exercises
 
-- **EX058 — Lost device lesson.** What lesson comes from lost-laptop cases? *Rubric:* 3 = encryption by default; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Nappa.** What did Nappa et al. (2015) find? *Rubric:* 3 = shared code leaves copies unpatched; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Dietrich.** What did Dietrich et al. (2018) find? *Rubric:* 3 = time pressure, unclear responsibility; 2 = partial; 1 = none; 0 = none.
+- **EX058 — Lost device lesson.** What lesson comes from lost-laptop cases? *Rubric:* 3 = encryption by default; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Nappa.** What did Nappa et al. (2015) find? *Rubric:* 3 = shared code leaves copies unpatched; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Dietrich.** What did Dietrich et al. (2018) find? *Rubric:* 3 = time pressure, unclear responsibility; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1666,8 +1666,8 @@ Models drift from reality; check them against inventories.
 ### Exercises
 
 - **EX061 — Components.** List Bramley's four servers. *Rubric:* 3 = file, finance, domain, old application; 2 = three; 1 = two; 0 = none.
-- **EX062 — Control flow.** What flows between management server and agents? *Rubric:* 3 = settings and updates out, status back; 2 = partial; 1 = none; 0 = none.
-- **EX063 — Backup gap.** What gap did the model reveal? *Rubric:* 3 = old app server lacked backup; 2 = partial; 1 = none; 0 = none.
+- **EX062 — Control flow.** What flows between management server and agents? *Rubric:* 3 = settings and updates out, status back; 2 = partial; 1 = vague; 0 = none.
+- **EX063 — Backup gap.** What gap did the model reveal? *Rubric:* 3 = old app server lacked backup; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1749,8 +1749,8 @@ Inventory differences need investigation, not just counting.
 ### Exercises
 
 - **EX064 — Lab counts.** How many registered devices were not reporting, and which? *Rubric:* 3 = 4: L07, L19, L33, S04; 2 = two; 1 = one; 0 = none.
-- **EX065 — Unregistered.** Which devices reported but were not registered? *Rubric:* 3 = L46, DESKTOP-7F2K; 2 = partial; 1 = none; 0 = none.
-- **EX066 — Personal PC.** How was the personal PC handled? *Rubric:* 3 = removed, access revoked, enrolment code rotated; 2 = partial; 1 = none; 0 = none.
+- **EX065 — Unregistered.** Which devices reported but were not registered? *Rubric:* 3 = L46, DESKTOP-7F2K; 2 = partial; 1 = vague; 0 = none.
+- **EX066 — Personal PC.** How was the personal PC handled? *Rubric:* 3 = removed, access revoked, enrolment code rotated; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1841,9 +1841,9 @@ Fixing the most common gap first is not always right; consider impact.
 
 ### Exercises
 
-- **EX067 — Lab result.** Which setting failed most? *Rubric:* 3 = local admin 25/45; 2 = partial; 1 = none; 0 = none.
-- **EX068 — Priority.** Why encryption first? *Rubric:* 3 = theft incident, data exposure; 2 = partial; 1 = none; 0 = none.
-- **EX069 — Central fix.** How are settings applied? *Rubric:* 3 = centrally via management server; 2 = partial; 1 = none; 0 = none.
+- **EX067 — Lab result.** Which setting failed most? *Rubric:* 3 = local admin 25/45; 2 = partial; 1 = vague; 0 = none.
+- **EX068 — Priority.** Why encryption first? *Rubric:* 3 = theft incident, data exposure; 2 = partial; 1 = vague; 0 = none.
+- **EX069 — Central fix.** How are settings applied? *Rubric:* 3 = centrally via management server; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1931,9 +1931,9 @@ Exceptions without expiry become permanent.
 
 ### Exercises
 
-- **EX070 — Rollout size.** How was encryption rolled out? *Rubric:* 3 = groups of ten, keys escrowed; 2 = partial; 1 = none; 0 = none.
-- **EX071 — Restart policy.** What is the restart policy? *Rubric:* 3 = forced after seven days' notice; 2 = partial; 1 = none; 0 = none.
-- **EX072 — TPM exception.** How were laptops without TPMs handled? *Rubric:* 3 = password-based encryption until replaced; 2 = partial; 1 = none; 0 = none.
+- **EX070 — Rollout size.** How was encryption rolled out? *Rubric:* 3 = groups of ten, keys escrowed; 2 = partial; 1 = vague; 0 = none.
+- **EX071 — Restart policy.** What is the restart policy? *Rubric:* 3 = forced after seven days' notice; 2 = partial; 1 = vague; 0 = none.
+- **EX072 — TPM exception.** How were laptops without TPMs handled? *Rubric:* 3 = password-based encryption until replaced; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2039,8 +2039,8 @@ Severity alone ignores age; age alone ignores severity.
 ### Exercises
 
 - **EX073 — Lab overdue.** Which updates were overdue? *Rubric:* 3 = L19, L03, S02 critical; L33 important; 2 = three; 1 = two; 0 = none.
-- **EX074 — Causes.** Why were L19 and L33 overdue? *Rubric:* 3 = not reporting; 2 = partial; 1 = none; 0 = none.
-- **EX075 — L40.** Why was L40 not overdue? *Rubric:* 3 = 9 days, within 14; 2 = partial; 1 = none; 0 = none.
+- **EX074 — Causes.** Why were L19 and L33 overdue? *Rubric:* 3 = not reporting; 2 = partial; 1 = vague; 0 = none.
+- **EX075 — L40.** Why was L40 not overdue? *Rubric:* 3 = 9 days, within 14; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2124,9 +2124,9 @@ Without role documents, nobody knows which services are needed.
 
 ### Exercises
 
-- **EX076 — Role doc.** What defines needed services? *Rubric:* 3 = documented role; 2 = partial; 1 = none; 0 = none.
-- **EX077 — Patch window.** When are servers patched? *Rubric:* 3 = monthly after backup verification; 2 = partial; 1 = none; 0 = none.
-- **EX078 — Unclear role.** What did the old server's unclear role prompt? *Rubric:* 3 = talk with users; 2 = partial; 1 = none; 0 = none.
+- **EX076 — Role doc.** What defines needed services? *Rubric:* 3 = documented role; 2 = partial; 1 = vague; 0 = none.
+- **EX077 — Patch window.** When are servers patched? *Rubric:* 3 = monthly after backup verification; 2 = partial; 1 = vague; 0 = none.
+- **EX078 — Unclear role.** What did the old server's unclear role prompt? *Rubric:* 3 = talk with users; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2224,9 +2224,9 @@ Counting "encrypting" as done is premature.
 
 ### Exercises
 
-- **EX079 — Lab result.** What share was verified encrypted? *Rubric:* 3 = 40/45 (89%); 2 = partial; 1 = none; 0 = none.
+- **EX079 — Lab result.** What share was verified encrypted? *Rubric:* 3 = 40/45 (89%); 2 = partial; 1 = vague; 0 = none.
 - **EX080 — Other states.** Give the other states. *Rubric:* 3 = 2 encrypting, 1 not, 2 no report; 2 = two; 1 = one; 0 = none.
-- **EX081 — Final.** What was the final verified count? *Rubric:* 3 = 45/45; 2 = partial; 1 = none; 0 = none.
+- **EX081 — Final.** What was the final verified count? *Rubric:* 3 = 45/45; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2326,9 +2326,9 @@ Tools rarely fix process causes.
 
 ### Exercises
 
-- **EX082 — Top cause.** What was the top failure cause? *Rubric:* 3 = pending reboot 41%; 2 = partial; 1 = none; 0 = none.
-- **EX083 — Second.** What was second? *Rubric:* 3 = disk full 26%; 2 = partial; 1 = none; 0 = none.
-- **EX084 — Tool decision.** Why not buy a new tool? *Rubric:* 3 = causes are process; 2 = partial; 1 = none; 0 = none.
+- **EX082 — Top cause.** What was the top failure cause? *Rubric:* 3 = pending reboot 41%; 2 = partial; 1 = vague; 0 = none.
+- **EX083 — Second.** What was second? *Rubric:* 3 = disk full 26%; 2 = partial; 1 = vague; 0 = none.
+- **EX084 — Tool decision.** Why not buy a new tool? *Rubric:* 3 = causes are process; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2428,8 +2428,8 @@ Out-of-hours alone is not suspicious; check context.
 
 ### Exercises
 
-- **EX085 — Lab flags.** Which logons were flagged? *Rubric:* 3 = admin S04 02:47; contractor S01 23:15; 2 = partial; 1 = none; 0 = none.
-- **EX086 — 02:47 cause.** What explained the 02:47 logon? *Rubric:* 3 = scheduled task with old account; 2 = partial; 1 = none; 0 = none.
+- **EX085 — Lab flags.** Which logons were flagged? *Rubric:* 3 = admin S04 02:47; contractor S01 23:15; 2 = partial; 1 = vague; 0 = none.
+- **EX086 — 02:47 cause.** What explained the 02:47 logon? *Rubric:* 3 = scheduled task with old account; 2 = partial; 1 = vague; 0 = none.
 - **EX087 — Routine.** What does the weekly routine cover? *Rubric:* 3 = logons, failed updates, unmanaged; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -2532,8 +2532,8 @@ Removing services without asking users can break workflows.
 ### Exercises
 
 - **EX088 — Lab result.** How many unneeded services and where? *Rubric:* 3 = 4: file (2), finance (1), old app (1); 2 = two; 1 = one; 0 = none.
-- **EX089 — Verification.** What did the re-run show? *Rubric:* 3 = zero; 2 = partial; 1 = none; 0 = none.
-- **EX090 — Finance.** How was web-admin replaced? *Rubric:* 3 = remote access via admin workstation; 2 = partial; 1 = none; 0 = none.
+- **EX089 — Verification.** What did the re-run show? *Rubric:* 3 = zero; 2 = partial; 1 = vague; 0 = none.
+- **EX090 — Finance.** How was web-admin replaced? *Rubric:* 3 = remote access via admin workstation; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2610,8 +2610,8 @@ Isolation without an end date becomes permanent.
 ### Exercises
 
 - **EX091 — Legacy options.** What options existed for the legacy server? *Rubric:* 3 = replace, isolate, accept; 2 = two; 1 = one; 0 = none.
-- **EX092 — Firmware care.** Why check recovery keys before firmware updates? *Rubric:* 3 = may trigger recovery prompts; 2 = partial; 1 = none; 0 = none.
-- **EX093 — Volunteers.** How do volunteers get access? *Rubric:* 3 = managed loan laptops; 2 = partial; 1 = none; 0 = none.
+- **EX092 — Firmware care.** Why check recovery keys before firmware updates? *Rubric:* 3 = may trigger recovery prompts; 2 = partial; 1 = vague; 0 = none.
+- **EX093 — Volunteers.** How do volunteers get access? *Rubric:* 3 = managed loan laptops; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2693,9 +2693,9 @@ Security gaps often lie between departments.
 
 ### Exercises
 
-- **EX094 — Leavers.** What happens for leavers? *Rubric:* 3 = disable on last day, wipe laptop; 2 = partial; 1 = none; 0 = none.
-- **EX095 — Finance link.** How does finance support security? *Rubric:* 3 = planned replacements; 2 = partial; 1 = none; 0 = none.
-- **EX096 — Gap.** What gap did the meeting close? *Rubric:* 3 = unreported leaver; 2 = partial; 1 = none; 0 = none.
+- **EX094 — Leavers.** What happens for leavers? *Rubric:* 3 = disable on last day, wipe laptop; 2 = partial; 1 = vague; 0 = none.
+- **EX095 — Finance link.** How does finance support security? *Rubric:* 3 = planned replacements; 2 = partial; 1 = vague; 0 = none.
+- **EX096 — Gap.** What gap did the meeting close? *Rubric:* 3 = unreported leaver; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2783,9 +2783,9 @@ Simultaneous changes confound simple comparisons.
 
 ### Exercises
 
-- **EX097 — Result.** How did the share change? *Rubric:* 3 = 26→33 of 45; 2 = partial; 1 = none; 0 = none.
-- **EX098 — Confounder.** What confounds the result? *Rubric:* 3 = forced restarts same month; 2 = partial; 1 = none; 0 = none.
-- **EX099 — Rewrite.** How was the conclusion rewritten? *Rubric:* 3 = coincided with both; 2 = partial; 1 = none; 0 = none.
+- **EX097 — Result.** How did the share change? *Rubric:* 3 = 26→33 of 45; 2 = partial; 1 = vague; 0 = none.
+- **EX098 — Confounder.** What confounds the result? *Rubric:* 3 = forced restarts same month; 2 = partial; 1 = vague; 0 = none.
+- **EX099 — Rewrite.** How was the conclusion rewritten? *Rubric:* 3 = coincided with both; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2873,9 +2873,9 @@ Comparing without context can mislead.
 
 ### Exercises
 
-- **EX100 — Difference.** How did the other charity differ? *Rubric:* 3 = all encrypted, slower patching; 2 = partial; 1 = none; 0 = none.
-- **EX101 — Exchange.** What practices were exchanged? *Rubric:* 3 = loan laptops; forced restarts; 2 = partial; 1 = none; 0 = none.
-- **EX102 — Agreement.** What did they agree? *Rubric:* 3 = quarterly sharing; 2 = partial; 1 = none; 0 = none.
+- **EX100 — Difference.** How did the other charity differ? *Rubric:* 3 = all encrypted, slower patching; 2 = partial; 1 = vague; 0 = none.
+- **EX101 — Exchange.** What practices were exchanged? *Rubric:* 3 = loan laptops; forced restarts; 2 = partial; 1 = vague; 0 = none.
+- **EX102 — Agreement.** What did they agree? *Rubric:* 3 = quarterly sharing; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2961,7 +2961,7 @@ Criteria without a baseline are guesses.
 
 - **EX103 — Criteria.** State the success criteria. *Rubric:* 3 = 100% enc, 90% patched, 0 services, ≤1 unmanaged; 2 = three; 1 = two; 0 = none.
 - **EX104 — Method.** Give the method steps. *Rubric:* 3 = baseline, implement, verify, measure, handover; 2 = four; 1 = two; 0 = none.
-- **EX105 — 90% case.** Why is 90% achievable? *Rubric:* 3 = 73% now plus forced restarts; 2 = partial; 1 = none; 0 = none.
+- **EX105 — 90% case.** Why is 90% achievable? *Rubric:* 3 = 73% now plus forced restarts; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3054,8 +3054,8 @@ Training without follow-up fades.
 ### Exercises
 
 - **EX106 — Topics.** What did sessions cover? *Rubric:* 3 = screen lock, reporting lost devices, restarts; 2 = two; 1 = one; 0 = none.
-- **EX107 — Feedback.** What did staff ask for? *Rubric:* 3 = clearer restart messages; 2 = partial; 1 = none; 0 = none.
-- **EX108 — USB event.** What did Aisha do about the lost USB stick? *Rubric:* 3 = helped Gareth follow incident process; 2 = partial; 1 = none; 0 = none.
+- **EX107 — Feedback.** What did staff ask for? *Rubric:* 3 = clearer restart messages; 2 = partial; 1 = vague; 0 = none.
+- **EX108 — USB event.** What did Aisha do about the lost USB stick? *Rubric:* 3 = helped Gareth follow incident process; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3147,9 +3147,9 @@ Unchecked evidence can be confidently wrong.
 
 ### Exercises
 
-- **EX109 — Challenge.** What challenge did a peer raise? *Rubric:* 3 = agent reports wrong?; 2 = partial; 1 = none; 0 = none.
-- **EX110 — Spot check.** How was it answered? *Rubric:* 3 = five laptops checked by hand, all match; 2 = partial; 1 = none; 0 = none.
-- **EX111 — Feedback bias.** What bias affects staff feedback? *Rubric:* 3 = self-selected; 2 = partial; 1 = none; 0 = none.
+- **EX109 — Challenge.** What challenge did a peer raise? *Rubric:* 3 = agent reports wrong?; 2 = partial; 1 = vague; 0 = none.
+- **EX110 — Spot check.** How was it answered? *Rubric:* 3 = five laptops checked by hand, all match; 2 = partial; 1 = vague; 0 = none.
+- **EX111 — Feedback bias.** What bias affects staff feedback? *Rubric:* 3 = self-selected; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3242,8 +3242,8 @@ Programmes reliant on one person are fragile.
 ### Exercises
 
 - **EX112 — Runbooks.** Which runbooks exist? *Rubric:* 3 = encryption, updates, inventory, server checks; 2 = three; 1 = two; 0 = none.
-- **EX113 — Training.** Who was trained? *Rubric:* 3 = Gareth's assistant; 2 = partial; 1 = none; 0 = none.
-- **EX114 — Routine finding.** What did the assistant find? *Rubric:* 3 = unmanaged new laptop; 2 = partial; 1 = none; 0 = none.
+- **EX113 — Training.** Who was trained? *Rubric:* 3 = Gareth's assistant; 2 = partial; 1 = vague; 0 = none.
+- **EX114 — Routine finding.** What did the assistant find? *Rubric:* 3 = unmanaged new laptop; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3342,8 +3342,8 @@ Short evaluation periods may not show seasonal problems.
 ### Exercises
 
 - **EX115 — Lab results.** Give the four before-and-after figures. *Rubric:* 3 = 32→45, 26→41, 4→0, 6→1; 2 = three; 1 = two; 0 = none.
-- **EX116 — Patching target.** Was the patching target met? *Rubric:* 3 = 41/45 = 91% ≥ 90%; 2 = partial; 1 = none; 0 = none.
-- **EX117 — Incident now.** How would the incident differ now? *Rubric:* 3 = data unreadable; 2 = partial; 1 = none; 0 = none.
+- **EX116 — Patching target.** Was the patching target met? *Rubric:* 3 = 41/45 = 91% ≥ 90%; 2 = partial; 1 = vague; 0 = none.
+- **EX117 — Incident now.** How would the incident differ now? *Rubric:* 3 = data unreadable; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3433,7 +3433,7 @@ Reflection should be specific.
 
 - **EX118 — Structure.** Give the thesis structure. *Rubric:* 3 = problem, baseline, design, implementation, evaluation, limits; 2 = four; 1 = two; 0 = none.
 - **EX119 — Questions.** What topics were asked? *Rubric:* 3 = cost, acceptance, sustainability; 2 = two; 1 = one; 0 = none.
-- **EX120 — Lesson.** What did Aisha learn? *Rubric:* 3 = simple well-run controls over advanced tools; 2 = partial; 1 = none; 0 = none.
+- **EX120 — Lesson.** What did Aisha learn? *Rubric:* 3 = simple well-run controls over advanced tools; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

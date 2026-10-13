@@ -101,7 +101,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 ### Exercises
 
 - **EX001 — Boxes.** List five NMT services. *Rubric:* 3 = five correct; 2 = four; 1 = two; 0 = none.
-- **EX002 — Trust boundary.** Give one trust boundary on Sam's drawing. *Rubric:* 3 = e.g. Internet to WAF/web, or VPN to jump; 2 = vague; 1 = none; 0 = none.
+- **EX002 — Trust boundary.** Give one trust boundary on Sam's drawing. *Rubric:* 3 = e.g. Internet to WAF/web, or VPN to jump; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX003 — Why fare is red.** Why is fare-collection out of ordinary scope? *Rubric:* 3 = operations/safety impact if disturbed; needs specialised auth; 2 = partial; 1 = "old"; 0 = none.
 - **EX004 — Start point.** Where do ordinary authorized tests start at NMT? *Rubric:* 3 = internet-facing web/API and staff remote access; 2 = partial; 1 = fare gates; 0 = none.
 
@@ -637,8 +637,8 @@ Live transit systems and fare equipment are never tested without a separate, spe
 
 ### Exercises
 
-- **EX021 — Actors.** Name two actors in the model. *Rubric:* 3 = rider and staff; 2 = one; 1 = none; 0 = none.
-- **EX022 — WSTG theme.** Pick one entry point and one WSTG theme to apply. *Rubric:* 3 = concrete pair e.g. API+access control; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Actors.** Name two actors in the model. *Rubric:* 3 = rider and staff; 2 = one; 1 = vague; 0 = none.
+- **EX022 — WSTG theme.** Pick one entry point and one WSTG theme to apply. *Rubric:* 3 = concrete pair e.g. API+access control; 2 = partial; 1 = vague; 0 = none.
 - **EX023 — Assumption check.** How would Sam validate the staging-mirrors-prod-auth assumption? *Rubric:* 3 = compare configs/owners confirm; not assume; 2 = partial; 1 = assume true; 0 = none.
 - **EX024 — Why omit fare.** Why omit fare validators from this model? *Rubric:* 3 = out of scope; 2 = partial; 1 = unimportant; 0 = none.
 
@@ -743,7 +743,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 - **EX025 — Log types.** List four log types useful at NMT. *Rubric:* 3 = four from chapter; 2 = three; 1 = one; 0 = none.
 - **EX026 — Password share.** May Sam borrow the SOC analyst's SIEM login? *Rubric:* 3 = no; request named read-only access; 2 = no; 1 = yes; 0 = none.
 - **EX027 — Dump.** Why not export the whole trip DB? *Rubric:* 3 = privacy/scope/minimisation; 2 = partial; 1 = fine; 0 = none.
-- **EX028 — Stronger evidence.** What log detail strengthens an access-control finding? *Rubric:* 3 = successful unauthorized request id/time/user; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Stronger evidence.** What log detail strengthens an access-control finding? *Rubric:* 3 = successful unauthorized request id/time/user; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -933,7 +933,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 - **EX033 — Card fields.** List five method-card fields. *Rubric:* 3 = five from chapter; 2 = three; 1 = one; 0 = none.
 - **EX034 — Rate limit reason.** Why set rate limits on staging? *Rubric:* 3 = avoid crash/lockout/log storm; 2 = partial; 1 = go faster; 0 = none.
 - **EX035 — Selectivity.** Why not run every WSTG check in one window? *Rubric:* 3 = time/quality; focus on high-risk themes; 2 = partial; 1 = always all; 0 = none.
-- **EX036 — Forbidden.** Name two forbidden methods at NMT. *Rubric:* 3 = password spraying and DoS; 2 = one; 1 = none; 0 = none.
+- **EX036 — Forbidden.** Name two forbidden methods at NMT. *Rubric:* 3 = password spraying and DoS; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1746,7 +1746,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 
 - **EX065 — Pass bar.** Name three pass requirements. *Rubric:* 3 = stop drill, refusal, coherent report; 2 = two; 1 = one; 0 = none.
 - **EX066 — Stop timing.** What is the time limit for the stop message? *Rubric:* 3 = two minutes; 2 = fast; 1 = end of day; 0 = none.
-- **EX067 — Report honesty.** May the report mark F2 closed without evidence? *Rubric:* 3 = no; 2 = no; 1 = yes; 0 = none.
+- **EX067 — Report honesty.** May the report mark F2 closed without evidence? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
 - **EX068 — Index fields.** What three fields are in the evidence index? *Rubric:* 3 = file, hash, finding id; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis

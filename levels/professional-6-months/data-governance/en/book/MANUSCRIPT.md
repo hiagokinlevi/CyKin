@@ -71,9 +71,9 @@ Treating a small organisation's data as too simple to govern leaves sensitive re
 
 - **EX001 — Course length.** How long is Grace's course? *Rubric:* 3 = six months;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX002 — Most sensitive.** Which data are most sensitive at Northbank? *Rubric:* 3 = client referral data;; 2 = correct;; 1 = other;; 0 = none.
-- **EX003 — Special category.** Why can referrals be special category data? *Rubric:* 3 = they sometimes contain health details;; 2 = correct;; 1 = none;; 0 = none.
-- **EX004 — Family figures.** What went wrong when trustees asked about families helped? *Rubric:* 3 = food banks used different definitions;; 2 = correct;; 1 = none;; 0 = none.
-- **EX005 — Measurable goal.** Give the course's example of a measurable goal. *Rubric:* 3 = all six food banks use one household definition;; 2 = correct;; 1 = none;; 0 = none.
+- **EX003 — Special category.** Why can referrals be special category data? *Rubric:* 3 = they sometimes contain health details;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX004 — Family figures.** What went wrong when trustees asked about families helped? *Rubric:* 3 = food banks used different definitions;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX005 — Measurable goal.** Give the course's example of a measurable goal. *Rubric:* 3 = all six food banks use one household definition;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -111,11 +111,11 @@ Presenting governance only as compliance misses its value for decisions and trus
 
 ### Exercises
 
-- **EX006 — Breach effect.** How could a referral breach affect clients? *Rubric:* 3 = families might stop seeking help;; 2 = correct;; 1 = none;; 0 = none.
+- **EX006 — Breach effect.** How could a referral breach affect clients? *Rubric:* 3 = families might stop seeking help;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX007 — Marketing rule.** What do fundraising emails need? *Rubric:* 3 = consent;; 2 = correct;; 1 = other;; 0 = none.
-- **EX008 — Decision example.** Name one decision good data support. *Rubric:* 3 = where to open a distribution point;; 2 = one;; 1 = none;; 0 = none.
+- **EX008 — Decision example.** Name one decision good data support. *Rubric:* 3 = where to open a distribution point;; 2 = one;; 1 = vague;; 0 = none.
 - **EX009 — Highest risks.** Which risks ranked highest? *Rubric:* 3 = client data on paper and phones;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX010 — Trustee case.** What did Grace use to explain the need for governance? *Rubric:* 3 = her ranked risk list;; 2 = correct;; 1 = none;; 0 = none.
+- **EX010 — Trustee case.** What did Grace use to explain the need for governance? *Rubric:* 3 = her ranked risk list;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -154,10 +154,10 @@ Copying large-company role structures into a small charity creates unfilled post
 ### Exercises
 
 - **EX011 — Donor owner.** Who owns donor data? *Rubric:* 3 = the fundraising manager;; 2 = correct;; 1 = other;; 0 = none.
-- **EX012 — Oversight trustee.** Which trustee oversees data? *Rubric:* 3 = one with legal experience;; 2 = correct;; 1 = none;; 0 = none.
-- **EX013 — DPO question.** Why might Northbank need a data protection officer? *Rubric:* 3 = large-scale special category processing;; 2 = correct;; 1 = none;; 0 = none.
+- **EX012 — Oversight trustee.** Which trustee oversees data? *Rubric:* 3 = one with legal experience;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX013 — DPO question.** Why might Northbank need a data protection officer? *Rubric:* 3 = large-scale special category processing;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX014 — Lead reporting time.** How quickly must leads report problems? *Rubric:* 3 = within a day;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX015 — Embedding roles.** Name one routine that embeds roles. *Rubric:* 3 = volunteer induction or monthly meetings;; 2 = one;; 1 = none;; 0 = none.
+- **EX015 — Embedding roles.** Name one routine that embeds roles. *Rubric:* 3 = volunteer induction or monthly meetings;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -195,9 +195,9 @@ Building inventories from descriptions alone misses informal practices.
 
 ### Exercises
 
-- **EX016 — Visiting reason.** Why did Grace visit food banks in person? *Rubric:* 3 = to find data people do not mention;; 2 = correct;; 1 = none;; 0 = none.
+- **EX016 — Visiting reason.** Why did Grace visit food banks in person? *Rubric:* 3 = to find data people do not mention;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX017 — Old forms.** How old were the forgotten referral forms? *Rubric:* 3 = five years;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX018 — Inbox gap.** What was wrong with the shared inbox? *Rubric:* 3 = open to all staff with case details;; 2 = correct;; 1 = none;; 0 = none.
+- **EX018 — Inbox gap.** What was wrong with the shared inbox? *Rubric:* 3 = open to all staff with case details;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX019 — Review cycle.** How often is the inventory reviewed? *Rubric:* 3 = every six months;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX020 — Notice use.** What document does the inventory help write? *Rubric:* 3 = the privacy notice;; 2 = correct;; 1 = other;; 0 = none.
 
@@ -237,11 +237,11 @@ Banning a practice without an alternative leads people to keep doing it quietly.
 
 ### Exercises
 
-- **EX021 — Client data rule.** Who may see client referral data? *Rubric:* 3 = named volunteers at the relevant food bank;; 2 = correct;; 1 = none;; 0 = none.
-- **EX022 — Guide title.** What is the volunteer guide called? *Rubric:* 3 = Looking after people's information;; 2 = correct;; 1 = none;; 0 = none.
+- **EX021 — Client data rule.** Who may see client referral data? *Rubric:* 3 = named volunteers at the relevant food bank;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX022 — Guide title.** What is the volunteer guide called? *Rubric:* 3 = Looking after people's information;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX023 — Rule count.** How many rules does the guide have? *Rubric:* 3 = ten;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX024 — Phone alternative.** What replaced personal phones for collections? *Rubric:* 3 = a shared charity phone at each food bank;; 2 = correct;; 1 = none;; 0 = none.
-- **EX025 — Board request.** What did the board ask for after approval? *Rubric:* 3 = a progress report in three months;; 2 = correct;; 1 = none;; 0 = none.
+- **EX024 — Phone alternative.** What replaced personal phones for collections? *Rubric:* 3 = a shared charity phone at each food bank;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX025 — Board request.** What did the board ask for after approval? *Rubric:* 3 = a progress report in three months;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -304,8 +304,8 @@ Exact-match duplicate checks miss differences in case and spacing.
 
 - **EX026 — Distinct normalised.** How many distinct addresses remain after normalising? *Rubric:* 3 = 1,500;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX027 — Duplicates revealed.** How many duplicate records did normalising reveal? *Rubric:* 3 = 184;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX028 — Exact check result.** What did an exact duplicate check find? *Rubric:* 3 = nothing; all 1,684 distinct;; 2 = correct;; 1 = none;; 0 = none.
-- **EX029 — Supplier change.** What did the supplier enable? *Rubric:* 3 = storing emails in lowercase automatically;; 2 = correct;; 1 = none;; 0 = none.
+- **EX028 — Exact check result.** What did an exact duplicate check find? *Rubric:* 3 = nothing; all 1,684 distinct;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX029 — Supplier change.** What did the supplier enable? *Rubric:* 3 = storing emails in lowercase automatically;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX030 — Check duration.** How long should each check take? *Rubric:* 3 = less than an hour;; 2 = correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-07"></a>
@@ -371,7 +371,7 @@ Treating any yes as valid consent ignores the need to show when and how it was g
 
 - **EX031 — Dated consent share.** What share of donors had dated consent? *Rubric:* 3 = 62.7% (2,507);; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX032 — Blank treatment.** How are blank consent records treated? *Rubric:* 3 = as no;; 2 = correct;; 1 = yes;; 0 = none.
-- **EX033 — Undated weakness.** Why are undated yes records weak? *Rubric:* 3 = they cannot show when or how consent was given;; 2 = correct;; 1 = none;; 0 = none.
+- **EX033 — Undated weakness.** Why are undated yes records weak? *Rubric:* 3 = they cannot show when or how consent was given;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX034 — Receipt basis.** What basis supports sending receipts? *Rubric:* 3 = contract or legal obligation;; 2 = correct;; 1 = consent;; 0 = none.
 - **EX035 — New form fields.** What do new forms record automatically? *Rubric:* 3 = date, wording shown and source;; 2 = all;; 1 = some;; 0 = none.
 
@@ -412,7 +412,7 @@ Leaving former volunteers' access in place exposes data long after they leave.
 ### Exercises
 
 - **EX036 — Scan deadline.** How soon are referral forms scanned? *Rubric:* 3 = within a week;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX037 — Open box reason.** Why did two food banks still use open boxes? *Rubric:* 3 = the cabinet was in a different room;; 2 = correct;; 1 = none;; 0 = none.
+- **EX037 — Open box reason.** Why did two food banks still use open boxes? *Rubric:* 3 = the cabinet was in a different room;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX038 — Phone settings.** Which settings do charity phones have? *Rubric:* 3 = screen lock, encryption and remote wipe;; 2 = all;; 1 = some;; 0 = none.
 - **EX039 — Former access.** How many former volunteers could still read the donor database? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX040 — Supplier checks.** What did Grace check with the database supplier? *Rubric:* 3 = encryption, backups, logs and contract terms;; 2 = most;; 1 = few;; 0 = none.
@@ -453,9 +453,9 @@ Accepting full case notes when a short form would do collects more sensitive dat
 
 ### Exercises
 
-- **EX041 — Payroll contract.** What did the payroll contract lack? *Rubric:* 3 = processor terms;; 2 = correct;; 1 = none;; 0 = none.
+- **EX041 — Payroll contract.** What did the payroll contract lack? *Rubric:* 3 = processor terms;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX042 — Sorting volunteers.** Do food-sorting volunteers need client details? *Rubric:* 3 = no;; 2 = correct;; 1 = yes;; 0 = none.
-- **EX043 — Health details rule.** When are health details included in referrals? *Rubric:* 3 = only when relevant to food, like allergies;; 2 = correct;; 1 = none;; 0 = none.
+- **EX043 — Health details rule.** When are health details included in referrals? *Rubric:* 3 = only when relevant to food, like allergies;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX044 — Referral channel.** How do partners send forms now? *Rubric:* 3 = through a secure portal;; 2 = correct;; 1 = email;; 0 = none.
 - **EX045 — Leaver timing.** How soon is leaving volunteers' access removed? *Rubric:* 3 = within a week;; 2 = correct;; 1 = wrong;; 0 = none.
 
@@ -537,10 +537,10 @@ Blaming volunteers for reported mistakes discourages future reporting.
 
 ### Exercises
 
-- **EX051 — Lost item.** What did the volunteer lose? *Rubric:* 3 = a folder with five referral forms;; 2 = correct;; 1 = none;; 0 = none.
+- **EX051 — Lost item.** What did the volunteer lose? *Rubric:* 3 = a folder with five referral forms;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX052 — Notification deadline.** Within what time was the authority notified? *Rubric:* 3 = seventy-two hours;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX053 — Families informed.** Why were families told directly? *Rubric:* 3 = the risk to them was high;; 2 = correct;; 1 = none;; 0 = none.
-- **EX054 — Root cause.** Why were the forms taken home? *Rubric:* 3 = the charity phone was busy;; 2 = correct;; 1 = none;; 0 = none.
+- **EX053 — Families informed.** Why were families told directly? *Rubric:* 3 = the risk to them was high;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX054 — Root cause.** Why were the forms taken home? *Rubric:* 3 = the charity phone was busy;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX055 — Trustee decision.** What did trustees fund? *Rubric:* 3 = more charity phones;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-12"></a>
@@ -579,11 +579,11 @@ Governance that depends on one person's memory stops when they leave.
 
 ### Exercises
 
-- **EX056 — Incomplete goal.** Which goal remained incomplete? *Rubric:* 3 = one household definition at all six banks;; 2 = correct;; 1 = none;; 0 = none.
+- **EX056 — Incomplete goal.** Which goal remained incomplete? *Rubric:* 3 = one household definition at all six banks;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX057 — Banks adopted.** How many food banks adopted the definition? *Rubric:* 3 = four;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX058 — Transition length.** How long is the dual-recording transition? *Rubric:* 3 = three months;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX059 — Plan test.** What exercise does the plan include? *Rubric:* 3 = a practice incident exercise;; 2 = correct;; 1 = none;; 0 = none.
-- **EX060 — Continuity tool.** Where are routines documented? *Rubric:* 3 = a governance calendar;; 2 = correct;; 1 = none;; 0 = none.
+- **EX059 — Plan test.** What exercise does the plan include? *Rubric:* 3 = a practice incident exercise;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX060 — Continuity tool.** Where are routines documented? *Rubric:* 3 = a governance calendar;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

@@ -177,21 +177,21 @@ Scopes can be too narrow to show real dependencies. Written permission does not 
 
 ### Exercises
 
-- **EX006 — Scope contents.** List the elements a written scope should state. *Rubric:* 3 = services, systems, data, locations, people, exclusions and duration;; 2 = most elements;; 1 = none;; 0 = none.
-- **EX007 — Excluded services.** Which Northstar services are outside the first scope? *Rubric:* 3 = case management and the volunteer roster;; 2 = both;; 1 = none;; 0 = none.
-- **EX008 — Scope failures.** Name the two failures a clear scope prevents. *Rubric:* 3 = unapproved expansion and overclaimed conclusions;; 2 = two;; 1 = none;; 0 = none.
-- **EX009 — Scope versus permission.** Explain why knowing how to read backup logs is not enough. *Rubric:* 3 = permission must come from the accountable owner;; 2 = authority;; 1 = none;; 0 = none.
-- **EX010 — Second approver.** Besides the operations director, who must approve and why? *Rubric:* 3 = the data protection lead, because the database holds client personal data;; 2 = privacy;; 1 = none;; 0 = none.
+- **EX006 — Scope contents.** List the elements a written scope should state. *Rubric:* 3 = services, systems, data, locations, people, exclusions and duration;; 2 = most elements;; 1 = vague;; 0 = none.
+- **EX007 — Excluded services.** Which Northstar services are outside the first scope? *Rubric:* 3 = case management and the volunteer roster;; 2 = both;; 1 = vague;; 0 = none.
+- **EX008 — Scope failures.** Name the two failures a clear scope prevents. *Rubric:* 3 = unapproved expansion and overclaimed conclusions;; 2 = two;; 1 = vague;; 0 = none.
+- **EX009 — Scope versus permission.** Explain why knowing how to read backup logs is not enough. *Rubric:* 3 = permission must come from the accountable owner;; 2 = authority;; 1 = vague;; 0 = none.
+- **EX010 — Second approver.** Besides the operations director, who must approve and why? *Rubric:* 3 = the data protection lead, because the database holds client personal data;; 2 = privacy;; 1 = vague;; 0 = none.
 - **EX011 — Out-of-scope discovery.** A suspicious case-management account is spotted. What should the engineer do? *Rubric:* 3 = report it to its owner, not investigate alone;; 2 = report;; 1 = investigate;; 0 = none.
 - **EX012 — Minimal exports.** How should account exports be requested? *Rubric:* 3 = only the fields needed for review;; 2 = minimal fields;; 1 = full export;; 0 = none.
-- **EX013 — Screenshot care.** What precaution applies to screenshots of client records? *Rubric:* 3 = mask client names;; 2 = masking;; 1 = none;; 0 = none.
-- **EX014 — Privacy beyond breaches.** What does the NIST Privacy Framework remind the team about review work? *Rubric:* 3 = careless review can itself create privacy harm;; 2 = broader risk;; 1 = none;; 0 = none.
+- **EX013 — Screenshot care.** What precaution applies to screenshots of client records? *Rubric:* 3 = mask client names;; 2 = masking;; 1 = vague;; 0 = none.
+- **EX014 — Privacy beyond breaches.** What does the NIST Privacy Framework remind the team about review work? *Rubric:* 3 = careless review can itself create privacy harm;; 2 = broader risk;; 1 = vague;; 0 = none.
 - **EX015 — Isolated restore.** Where must the restore exercise be run? *Rubric:* 3 = an isolated test environment, never over production;; 2 = test environment;; 1 = production;; 0 = none.
-- **EX016 — Email block.** Why block outbound email during the exercise? *Rubric:* 3 = so test bookings cannot reach clients;; 2 = client protection;; 1 = none;; 0 = none.
-- **EX017 — Stop rule.** What role does the exercise plan name besides the operator? *Rubric:* 3 = a person who can stop it at any time;; 2 = stop authority;; 1 = none;; 0 = none.
-- **EX018 — Credential separation.** Which control prevents restoring over the live database by mistake? *Rubric:* 3 = separate credentials for the test environment;; 2 = separate credentials;; 1 = none;; 0 = none.
-- **EX019 — Record purposes.** State the three purposes of the activity record. *Rubric:* 3 = repeatability, proof of staying in scope, basis for decisions;; 2 = three;; 1 = none;; 0 = none.
-- **EX020 — Record review.** Who reviews the activity log and how often? *Rubric:* 3 = the operations director, monthly;; 2 = monthly;; 1 = none;; 0 = none.
+- **EX016 — Email block.** Why block outbound email during the exercise? *Rubric:* 3 = so test bookings cannot reach clients;; 2 = client protection;; 1 = vague;; 0 = none.
+- **EX017 — Stop rule.** What role does the exercise plan name besides the operator? *Rubric:* 3 = a person who can stop it at any time;; 2 = stop authority;; 1 = vague;; 0 = none.
+- **EX018 — Credential separation.** Which control prevents restoring over the live database by mistake? *Rubric:* 3 = separate credentials for the test environment;; 2 = separate credentials;; 1 = vague;; 0 = none.
+- **EX019 — Record purposes.** State the three purposes of the activity record. *Rubric:* 3 = repeatability, proof of staying in scope, basis for decisions;; 2 = three;; 1 = vague;; 0 = none.
+- **EX020 — Record review.** Who reviews the activity log and how often? *Rubric:* 3 = the operations director, monthly;; 2 = monthly;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -271,21 +271,21 @@ Maps omit informal tools staff use. Supplier assurance varies in scope. A shared
 
 ### Exercises
 
-- **EX021 — Portal chain.** List the four components behind the appointment portal. *Rubric:* 3 = web host, scheduling database, identity provider, email relay;; 2 = four;; 1 = none;; 0 = none.
+- **EX021 — Portal chain.** List the four components behind the appointment portal. *Rubric:* 3 = web host, scheduling database, identity provider, email relay;; 2 = four;; 1 = vague;; 0 = none.
 - **EX022 — Universal dependency.** Which component supports all three services? *Rubric:* 3 = the identity provider;; 2 = identity;; 1 = email relay;; 0 = none.
-- **EX023 — Unowned components.** Which two components have no owner in the lab? *Rubric:* 3 = the email relay and the roster spreadsheet;; 2 = two;; 1 = none;; 0 = none.
-- **EX024 — Restore scope change.** Why does the map add the identity provider to the restore exercise? *Rubric:* 3 = without sign-in a restored portal still cannot reopen;; 2 = sign-in;; 1 = none;; 0 = none.
-- **EX025 — Decision list.** What did the map add to the operations director's decision list? *Rubric:* 3 = owners for the email relay and roster;; 2 = ownership;; 1 = none;; 0 = none.
-- **EX026 — Sensitive appointment data.** Why is appointment reason sensitive? *Rubric:* 3 = it may reveal health or financial hardship;; 2 = sensitivity;; 1 = none;; 0 = none.
-- **EX027 — Email content fix.** What cheap change lowers privacy risk in confirmations? *Rubric:* 3 = remove the appointment reason from emails;; 2 = minimise;; 1 = none;; 0 = none.
-- **EX028 — Data record fields.** Which facts are recorded for each data set? *Rubric:* 3 = what, why, who sees, where copies go, retention;; 2 = five;; 1 = none;; 0 = none.
-- **EX029 — Supplier questions.** What can Northstar check about suppliers without inspecting internals? *Rubric:* 3 = assurance offered, outage and data terms, export ability;; 2 = three;; 1 = none;; 0 = none.
+- **EX023 — Unowned components.** Which two components have no owner in the lab? *Rubric:* 3 = the email relay and the roster spreadsheet;; 2 = two;; 1 = vague;; 0 = none.
+- **EX024 — Restore scope change.** Why does the map add the identity provider to the restore exercise? *Rubric:* 3 = without sign-in a restored portal still cannot reopen;; 2 = sign-in;; 1 = vague;; 0 = none.
+- **EX025 — Decision list.** What did the map add to the operations director's decision list? *Rubric:* 3 = owners for the email relay and roster;; 2 = ownership;; 1 = vague;; 0 = none.
+- **EX026 — Sensitive appointment data.** Why is appointment reason sensitive? *Rubric:* 3 = it may reveal health or financial hardship;; 2 = sensitivity;; 1 = vague;; 0 = none.
+- **EX027 — Email content fix.** What cheap change lowers privacy risk in confirmations? *Rubric:* 3 = remove the appointment reason from emails;; 2 = minimise;; 1 = vague;; 0 = none.
+- **EX028 — Data record fields.** Which facts are recorded for each data set? *Rubric:* 3 = what, why, who sees, where copies go, retention;; 2 = five;; 1 = vague;; 0 = none.
+- **EX029 — Supplier questions.** What can Northstar check about suppliers without inspecting internals? *Rubric:* 3 = assurance offered, outage and data terms, export ability;; 2 = three;; 1 = vague;; 0 = none.
 - **EX030 — CSF placement.** Where does NIST CSF 2.0 place supply chain risk management? *Rubric:* 3 = in the Govern function;; 2 = Govern;; 1 = Protect;; 0 = none.
-- **EX031 — Supplier record.** What does the team record for each supplier? *Rubric:* 3 = service supported, evidence available, last review date;; 2 = record;; 1 = none;; 0 = none.
-- **EX032 — Identity scenario.** Write the identity provider scenario's evidence gap. *Rubric:* 3 = no tested fallback sign-in;; 2 = untested fallback;; 1 = none;; 0 = none.
-- **EX033 — Relay scenario.** What consequence follows a misconfigured email relay? *Rubric:* 3 = confirmations could reach the wrong people;; 2 = misdirection;; 1 = none;; 0 = none.
-- **EX034 — Roster evidence.** Which evidence is requested for the roster scenario? *Rubric:* 3 = its sharing list;; 2 = sharing list;; 1 = none;; 0 = none.
-- **EX035 — Honest strategy.** How do evidence requests keep the strategy honest? *Rubric:* 3 = they show which beliefs are checked and which are assumptions;; 2 = evidence;; 1 = none;; 0 = none.
+- **EX031 — Supplier record.** What does the team record for each supplier? *Rubric:* 3 = service supported, evidence available, last review date;; 2 = record;; 1 = vague;; 0 = none.
+- **EX032 — Identity scenario.** Write the identity provider scenario's evidence gap. *Rubric:* 3 = no tested fallback sign-in;; 2 = untested fallback;; 1 = vague;; 0 = none.
+- **EX033 — Relay scenario.** What consequence follows a misconfigured email relay? *Rubric:* 3 = confirmations could reach the wrong people;; 2 = misdirection;; 1 = vague;; 0 = none.
+- **EX034 — Roster evidence.** Which evidence is requested for the roster scenario? *Rubric:* 3 = its sharing list;; 2 = sharing list;; 1 = vague;; 0 = none.
+- **EX035 — Honest strategy.** How do evidence requests keep the strategy honest? *Rubric:* 3 = they show which beliefs are checked and which are assumptions;; 2 = evidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -362,21 +362,21 @@ One calm, announced exercise overstates real readiness. Timings depend on who is
 
 ### Exercises
 
-- **EX036 — Success definition.** How was success defined before the exercise? *Rubric:* 3 = front-desk staff making test bookings in the restored portal;; 2 = bookings;; 1 = none;; 0 = none.
-- **EX037 — Director presence.** Why did the operations director attend the start and end? *Rubric:* 3 = the result tests the four-hour assumption the director owns;; 2 = ownership;; 1 = none;; 0 = none.
+- **EX036 — Success definition.** How was success defined before the exercise? *Rubric:* 3 = front-desk staff making test bookings in the restored portal;; 2 = bookings;; 1 = vague;; 0 = none.
+- **EX037 — Director presence.** Why did the operations director attend the start and end? *Rubric:* 3 = the result tests the four-hour assumption the director owns;; 2 = ownership;; 1 = vague;; 0 = none.
 - **EX038 — Total time.** What total time did the exercise take? *Rubric:* 3 = 245 minutes;; 2 = 4.08 hours;; 1 = 240;; 0 = none.
-- **EX039 — Target gap.** By how much did the exercise miss the target? *Rubric:* 3 = five minutes;; 2 = 5;; 1 = none;; 0 = none.
-- **EX040 — Longest step.** Which step took longest? *Rubric:* 3 = restoring the scheduling database, 70 minutes;; 2 = database;; 1 = none;; 0 = none.
-- **EX041 — Governance delay.** Which delay was a governance gap rather than a technical limit? *Rubric:* 3 = 55 minutes locating backup and credentials;; 2 = locating;; 1 = none;; 0 = none.
-- **EX042 — Three improvements.** Name the three improvements identified. *Rubric:* 3 = known protected location for instructions and credentials, scripted web host configuration, identity step in procedure;; 2 = three;; 1 = none;; 0 = none.
-- **EX043 — Calm conditions.** Why might a real event be slower than the exercise? *Rubric:* 3 = it may be at night with attackers present and no warning;; 2 = conditions;; 1 = none;; 0 = none.
+- **EX039 — Target gap.** By how much did the exercise miss the target? *Rubric:* 3 = five minutes;; 2 = 5;; 1 = vague;; 0 = none.
+- **EX040 — Longest step.** Which step took longest? *Rubric:* 3 = restoring the scheduling database, 70 minutes;; 2 = database;; 1 = vague;; 0 = none.
+- **EX041 — Governance delay.** Which delay was a governance gap rather than a technical limit? *Rubric:* 3 = 55 minutes locating backup and credentials;; 2 = locating;; 1 = vague;; 0 = none.
+- **EX042 — Three improvements.** Name the three improvements identified. *Rubric:* 3 = known protected location for instructions and credentials, scripted web host configuration, identity step in procedure;; 2 = three;; 1 = vague;; 0 = none.
+- **EX043 — Calm conditions.** Why might a real event be slower than the exercise? *Rubric:* 3 = it may be at night with attackers present and no warning;; 2 = conditions;; 1 = vague;; 0 = none.
 - **EX044 — Second exercise.** When should the four-hour limit be confirmed? *Rubric:* 3 = after a second exercise following improvements;; 2 = retest;; 1 = now;; 0 = none.
-- **EX045 — Decision options.** What three options did the decision record offer? *Rubric:* 3 = accept now, accept after improvement and retest, raise to six hours with manual booking;; 2 = three;; 1 = none;; 0 = none.
-- **EX046 — Recommended option.** Which option was recommended and approved? *Rubric:* 3 = accept after improvements within thirty days and a second test;; 2 = second option;; 1 = none;; 0 = none.
-- **EX047 — Record filing.** Why is the decision record filed with the evidence? *Rubric:* 3 = so the reasoning can be checked later;; 2 = traceability;; 1 = none;; 0 = none.
-- **EX048 — New scenario.** Which scenario entered the strategy from the dependency map? *Rubric:* 3 = identity provider failure;; 2 = identity;; 1 = none;; 0 = none.
-- **EX049 — Monthly signals.** List the signals reviewed monthly. *Rubric:* 3 = restore time, backup failures, privileged changes, overdue owner actions;; 2 = four;; 1 = none;; 0 = none.
-- **EX050 — Adjusting targets.** What temptation should the team resist after missing by minutes? *Rubric:* 3 = changing the target instead of the process;; 2 = resist;; 1 = none;; 0 = none.
+- **EX045 — Decision options.** What three options did the decision record offer? *Rubric:* 3 = accept now, accept after improvement and retest, raise to six hours with manual booking;; 2 = three;; 1 = vague;; 0 = none.
+- **EX046 — Recommended option.** Which option was recommended and approved? *Rubric:* 3 = accept after improvements within thirty days and a second test;; 2 = second option;; 1 = vague;; 0 = none.
+- **EX047 — Record filing.** Why is the decision record filed with the evidence? *Rubric:* 3 = so the reasoning can be checked later;; 2 = traceability;; 1 = vague;; 0 = none.
+- **EX048 — New scenario.** Which scenario entered the strategy from the dependency map? *Rubric:* 3 = identity provider failure;; 2 = identity;; 1 = vague;; 0 = none.
+- **EX049 — Monthly signals.** List the signals reviewed monthly. *Rubric:* 3 = restore time, backup failures, privileged changes, overdue owner actions;; 2 = four;; 1 = vague;; 0 = none.
+- **EX050 — Adjusting targets.** What temptation should the team resist after missing by minutes? *Rubric:* 3 = changing the target instead of the process;; 2 = resist;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

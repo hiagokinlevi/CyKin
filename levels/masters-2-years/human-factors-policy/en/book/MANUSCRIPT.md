@@ -69,12 +69,12 @@ Database searches miss grey literature. Guidance documents state positions rathe
 
 ### Exercises
 
-- **EX001 — Research question.** What research question did Sofia form? *Rubric:* 3 = after ending forced changes and offering a manager, did resets fall and reuse reports drop?;; 2 = two outcomes;; 1 = none;; 0 = none.
-- **EX002 — Adams and Sasse relevance.** Why is Adams and Sasse (1999) relevant? *Rubric:* 3 = demanding rules led to writing down and reuse;; 2 = workarounds;; 1 = none;; 0 = none.
-- **EX003 — Search record.** What does Sofia record for each search? *Rubric:* 3 = date, database, search string and result count;; 2 = three;; 1 = none;; 0 = none.
-- **EX004 — Excluded items.** Why keep a table of excluded items? *Rubric:* 3 = so the search can be repeated and is not seen as selective;; 2 = transparency;; 1 = none;; 0 = none.
+- **EX001 — Research question.** What research question did Sofia form? *Rubric:* 3 = after ending forced changes and offering a manager, did resets fall and reuse reports drop?;; 2 = two outcomes;; 1 = vague;; 0 = none.
+- **EX002 — Adams and Sasse relevance.** Why is Adams and Sasse (1999) relevant? *Rubric:* 3 = demanding rules led to writing down and reuse;; 2 = workarounds;; 1 = vague;; 0 = none.
+- **EX003 — Search record.** What does Sofia record for each search? *Rubric:* 3 = date, database, search string and result count;; 2 = three;; 1 = vague;; 0 = none.
+- **EX004 — Excluded items.** Why keep a table of excluded items? *Rubric:* 3 = so the search can be repeated and is not seen as selective;; 2 = transparency;; 1 = vague;; 0 = none.
 - **EX005 — Guidance as context.** Why treat official guidance as context, not evidence? *Rubric:* 3 = it states positions rather than measured effects;; 2 = positions;; 1 = evidence;; 0 = none.
-- **EX006 — Gap found.** What gap did Sofia record? *Rubric:* 3 = few studies measure effects in a hospital after such a change;; 2 = hospital;; 1 = none;; 0 = none.
+- **EX006 — Gap found.** What gap did Sofia record? *Rubric:* 3 = few studies measure effects in a hospital after such a change;; 2 = hospital;; 1 = vague;; 0 = none.
 - **EX007 — Herley's point.** Which source argues users rationally reject costly advice? *Rubric:* 3 = Herley (2009);; 2 = Herley;; 1 = Whitten;; 0 = none.
 
 ### Synthesis
@@ -121,13 +121,13 @@ Models simplify behaviour. Survey measures of attitudes are imperfect.
 
 ### Exercises
 
-- **EX008 — Planned behaviour inputs.** What three factors shape intention in planned behaviour? *Rubric:* 3 = attitudes, social norms and perceived control;; 2 = two;; 1 = none;; 0 = none.
-- **EX009 — Budget prediction.** What does the compliance budget predict after forced changes end? *Rubric:* 3 = freed effort may raise compliance with other rules;; 2 = freed effort;; 1 = none;; 0 = none.
-- **EX010 — Intention gap.** What is a known weakness of planned behaviour? *Rubric:* 3 = it explains intentions better than actions;; 2 = intention-action;; 1 = none;; 0 = none.
-- **EX011 — Campaign failure.** Why do campaigns fail according to Bada et al.? *Rubric:* 3 = they assume information alone changes behaviour;; 2 = information;; 1 = none;; 0 = none.
+- **EX008 — Planned behaviour inputs.** What three factors shape intention in planned behaviour? *Rubric:* 3 = attitudes, social norms and perceived control;; 2 = two;; 1 = vague;; 0 = none.
+- **EX009 — Budget prediction.** What does the compliance budget predict after forced changes end? *Rubric:* 3 = freed effort may raise compliance with other rules;; 2 = freed effort;; 1 = vague;; 0 = none.
+- **EX010 — Intention gap.** What is a known weakness of planned behaviour? *Rubric:* 3 = it explains intentions better than actions;; 2 = intention-action;; 1 = vague;; 0 = none.
+- **EX011 — Campaign failure.** Why do campaigns fail according to Bada et al.? *Rubric:* 3 = they assume information alone changes behaviour;; 2 = information;; 1 = vague;; 0 = none.
 - **EX012 — Theory for policy.** When does theory help policy, in Sofia's view? *Rubric:* 3 = when it yields measurable predictions;; 2 = predictions;; 1 = always;; 0 = none.
-- **EX013 — Two predictions.** Name the two model-based predictions she adds. *Rubric:* 3 = manager adoption by attitudes and norms; better screen locking from freed effort;; 2 = one;; 1 = none;; 0 = none.
-- **EX014 — Budget measurement.** Why is the compliance budget hard to test? *Rubric:* 3 = it is hard to measure directly;; 2 = measurement;; 1 = none;; 0 = none.
+- **EX013 — Two predictions.** Name the two model-based predictions she adds. *Rubric:* 3 = manager adoption by attitudes and norms; better screen locking from freed effort;; 2 = one;; 1 = vague;; 0 = none.
+- **EX014 — Budget measurement.** Why is the compliance budget hard to test? *Rubric:* 3 = it is hard to measure directly;; 2 = measurement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -173,10 +173,10 @@ Interrupted time series can be confounded by other changes at the same time. Sur
 
 ### Exercises
 
-- **EX015 — Three parts.** What are the three parts of Sofia's study? *Rubric:* 3 = reset counts time series, anonymous survey and interviews;; 2 = two;; 1 = none;; 0 = none.
-- **EX016 — Survey limits.** What does the survey not ask? *Rubric:* 3 = names or actual passwords;; 2 = passwords;; 1 = none;; 0 = none.
-- **EX017 — Colleague recruitment.** Why avoid recruiting direct colleagues? *Rubric:* 3 = they might feel unable to refuse;; 2 = pressure;; 1 = none;; 0 = none.
-- **EX018 — Normalising wording.** How does Sofia reduce socially desirable answers? *Rubric:* 3 = wording that normalises reuse and asks frequency;; 2 = wording;; 1 = none;; 0 = none.
+- **EX015 — Three parts.** What are the three parts of Sofia's study? *Rubric:* 3 = reset counts time series, anonymous survey and interviews;; 2 = two;; 1 = vague;; 0 = none.
+- **EX016 — Survey limits.** What does the survey not ask? *Rubric:* 3 = names or actual passwords;; 2 = passwords;; 1 = vague;; 0 = none.
+- **EX017 — Colleague recruitment.** Why avoid recruiting direct colleagues? *Rubric:* 3 = they might feel unable to refuse;; 2 = pressure;; 1 = vague;; 0 = none.
+- **EX018 — Normalising wording.** How does Sofia reduce socially desirable answers? *Rubric:* 3 = wording that normalises reuse and asks frequency;; 2 = wording;; 1 = vague;; 0 = none.
 - **EX019 — Comparing levels.** Why compare before and after rather than trust absolute levels? *Rubric:* 3 = reuse is likely under-reported consistently;; 2 = relative;; 1 = absolute;; 0 = none.
 - **EX020 — Unshared transcripts.** What is shared instead of interview transcripts? *Rubric:* 3 = the coding frame and counts;; 2 = coding frame;; 1 = transcripts;; 0 = none.
 
@@ -250,11 +250,11 @@ Department comparisons are confounded by adoption choices. Time series need enou
 
 ### Exercises
 
-- **EX021 — Explanation list.** Name three explanations for falling resets. *Rubric:* 3 = ended forced changes, password manager, self-service tool, staffing, logging change;; 2 = two;; 1 = none;; 0 = none.
+- **EX021 — Explanation list.** Name three explanations for falling resets. *Rubric:* 3 = ended forced changes, password manager, self-service tool, staffing, logging change;; 2 = two;; 1 = vague;; 0 = none.
 - **EX022 — Self-service check.** How did Sofia handle the self-service tool? *Rubric:* 3 = added self-service counts to help desk counts;; 2 = combine;; 1 = ignore;; 0 = none.
-- **EX023 — Staffing check.** How did she control for staffing changes? *Rubric:* 3 = divided resets by active accounts;; 2 = rate;; 1 = none;; 0 = none.
+- **EX023 — Staffing check.** How did she control for staffing changes? *Rubric:* 3 = divided resets by active accounts;; 2 = rate;; 1 = vague;; 0 = none.
 - **EX024 — Lab level change.** What did the lab estimate at the change point? *Rubric:* 3 = a level drop of 18.8 resets per 1,000 accounts, slope change +0.09;; 2 = level drop;; 1 = rise;; 0 = none.
-- **EX025 — Logging timing.** Why can the logging change not explain the immediate drop? *Rubric:* 3 = it happened four months later;; 2 = timing;; 1 = none;; 0 = none.
+- **EX025 — Logging timing.** Why can the logging change not explain the immediate drop? *Rubric:* 3 = it happened four months later;; 2 = timing;; 1 = vague;; 0 = none.
 - **EX026 — Weakest claim.** Which explanation is only weakly supported? *Rubric:* 3 = that the password manager contributed;; 2 = manager;; 1 = forced changes;; 0 = none.
 
 ### Synthesis
@@ -301,12 +301,12 @@ Small pilots miss rare problems. Revisions after piloting may introduce new ambi
 
 ### Exercises
 
-- **EX027 — Counting against.** What results would count against the policy change? *Rubric:* 3 = no fall in resets per 1,000 or more writing down reported;; 2 = either;; 1 = none;; 0 = none.
-- **EX028 — Proposal revision.** What did Dr Nakamura ask her to add? *Rubric:* 3 = a risk register for data access delays;; 2 = risk register;; 1 = none;; 0 = none.
-- **EX029 — Ambiguous term.** Which term did staff interpret in different ways? *Rubric:* 3 = password manager;; 2 = manager;; 1 = none;; 0 = none.
-- **EX030 — Interview fix.** How was the interview guide reordered? *Rubric:* 3 = start with a specific recent experience, then wider views;; 2 = specific first;; 1 = none;; 0 = none.
+- **EX027 — Counting against.** What results would count against the policy change? *Rubric:* 3 = no fall in resets per 1,000 or more writing down reported;; 2 = either;; 1 = vague;; 0 = none.
+- **EX028 — Proposal revision.** What did Dr Nakamura ask her to add? *Rubric:* 3 = a risk register for data access delays;; 2 = risk register;; 1 = vague;; 0 = none.
+- **EX029 — Ambiguous term.** Which term did staff interpret in different ways? *Rubric:* 3 = password manager;; 2 = manager;; 1 = vague;; 0 = none.
+- **EX030 — Interview fix.** How was the interview guide reordered? *Rubric:* 3 = start with a specific recent experience, then wider views;; 2 = specific first;; 1 = vague;; 0 = none.
 - **EX031 — Pilot data use.** Is pilot data used in the main analysis? *Rubric:* 3 = no;; 2 = excluded;; 1 = yes;; 0 = none.
-- **EX032 — Shared words.** What common problem do pilots reveal in security research? *Rubric:* 3 = researchers and participants use words differently;; 2 = meaning;; 1 = none;; 0 = none.
+- **EX032 — Shared words.** What common problem do pilots reveal in security research? *Rubric:* 3 = researchers and participants use words differently;; 2 = meaning;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -377,12 +377,12 @@ Anonymous repeated surveys compare groups, not individuals. Saturation judgement
 
 ### Exercises
 
-- **EX033 — Comparable questions.** Why could Sofia compare before and after survey answers? *Rubric:* 3 = an earlier anonymous survey used the same wording;; 2 = same wording;; 1 = none;; 0 = none.
-- **EX034 — Response numbers.** How many staff responded before and after? *Rubric:* 3 = 390 before and 412 after;; 2 = numbers;; 1 = none;; 0 = none.
+- **EX033 — Comparable questions.** Why could Sofia compare before and after survey answers? *Rubric:* 3 = an earlier anonymous survey used the same wording;; 2 = same wording;; 1 = vague;; 0 = none.
+- **EX034 — Response numbers.** How many staff responded before and after? *Rubric:* 3 = 390 before and 412 after;; 2 = numbers;; 1 = vague;; 0 = none.
 - **EX035 — Bootstrap result.** What did the lab find for writing passwords down? *Rubric:* 3 = 21.0% before, 15.0% after; difference -6.0 points, interval below zero;; 2 = fall;; 1 = rise;; 0 = none.
-- **EX036 — Group comparison.** Why is the survey comparison only between groups? *Rubric:* 3 = anonymous surveys cannot link the same people;; 2 = anonymity;; 1 = none;; 0 = none.
-- **EX037 — Low adoption reason.** Why was password manager adoption low, according to interviews? *Rubric:* 3 = it was introduced without training;; 2 = training;; 1 = none;; 0 = none.
-- **EX038 — Theory support.** Which theory's prediction about burden did the evidence support? *Rubric:* 3 = the compliance budget;; 2 = budget;; 1 = none;; 0 = none.
+- **EX036 — Group comparison.** Why is the survey comparison only between groups? *Rubric:* 3 = anonymous surveys cannot link the same people;; 2 = anonymity;; 1 = vague;; 0 = none.
+- **EX037 — Low adoption reason.** Why was password manager adoption low, according to interviews? *Rubric:* 3 = it was introduced without training;; 2 = training;; 1 = vague;; 0 = none.
+- **EX038 — Theory support.** Which theory's prediction about burden did the evidence support? *Rubric:* 3 = the compliance budget;; 2 = budget;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -454,12 +454,12 @@ Robustness checks cover only chosen alternatives. Implications may be read more 
 
 ### Exercises
 
-- **EX039 — Writing order.** Which chapters does Sofia write first and last? *Rubric:* 3 = methods first, introduction last;; 2 = order;; 1 = none;; 0 = none.
-- **EX040 — Leave-one-out.** What does dropping each month in turn test? *Rubric:* 3 = whether one unusual month drives the result;; 2 = influence;; 1 = none;; 0 = none.
+- **EX039 — Writing order.** Which chapters does Sofia write first and last? *Rubric:* 3 = methods first, introduction last;; 2 = order;; 1 = vague;; 0 = none.
+- **EX040 — Leave-one-out.** What does dropping each month in turn test? *Rubric:* 3 = whether one unusual month drives the result;; 2 = influence;; 1 = vague;; 0 = none.
 - **EX041 — Robust range.** What range did the leave-one-month-out lab show? *Rubric:* 3 = level change between -19.3 and -17.8;; 2 = narrow;; 1 = wide;; 0 = none.
 - **EX042 — Missing outcome.** Which security outcome was not measured? *Rubric:* 3 = account compromise;; 2 = compromise;; 1 = resets;; 0 = none.
-- **EX043 — Trust implications.** What did Sofia recommend to the trust? *Rubric:* 3 = keep the change, train on the manager and track compromise;; 2 = three;; 1 = none;; 0 = none.
-- **EX044 — Three levels.** At which three levels are implications stated? *Rubric:* 3 = trust, other hospitals and policy;; 2 = two;; 1 = none;; 0 = none.
+- **EX043 — Trust implications.** What did Sofia recommend to the trust? *Rubric:* 3 = keep the change, train on the manager and track compromise;; 2 = three;; 1 = vague;; 0 = none.
+- **EX044 — Three levels.** At which three levels are implications stated? *Rubric:* 3 = trust, other hospitals and policy;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -505,12 +505,12 @@ Partners may still overstate findings. Viva performance depends on preparation a
 
 ### Exercises
 
-- **EX045 — Comparability table.** What did Sofia add after the independent review? *Rubric:* 3 = a table of staff group proportions in both surveys;; 2 = comparability;; 1 = none;; 0 = none.
+- **EX045 — Comparability table.** What did Sofia add after the independent review? *Rubric:* 3 = a table of staff group proportions in both surveys;; 2 = comparability;; 1 = vague;; 0 = none.
 - **EX046 — No randomisation.** Why was a randomised trial impossible? *Rubric:* 3 = the policy applied to the whole trust at once;; 2 = whole trust;; 1 = cost;; 0 = none.
-- **EX047 — Safe criticism.** How did she help interviewees feel safe criticising IT? *Rubric:* 3 = neutral recruitment and quoting only by role;; 2 = neutral;; 1 = none;; 0 = none.
+- **EX047 — Safe criticism.** How did she help interviewees feel safe criticising IT? *Rubric:* 3 = neutral recruitment and quoting only by role;; 2 = neutral;; 1 = vague;; 0 = none.
 - **EX048 — Correct claim.** What should the trust say about security? *Rubric:* 3 = burden fell; security outcomes were not measured;; 2 = burden;; 1 = security improved;; 0 = none.
 - **EX049 — Trust decision.** What did the governance group decide? *Rubric:* 3 = keep the policy and fund manager training;; 2 = both;; 1 = reverse;; 0 = none.
-- **EX050 — Key skill.** What skill does Sofia value most? *Rubric:* 3 = separating what evidence shows from what people hope;; 2 = evidence;; 1 = none;; 0 = none.
+- **EX050 — Key skill.** What skill does Sofia value most? *Rubric:* 3 = separating what evidence shows from what people hope;; 2 = evidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -66,10 +66,10 @@ Bias labels can be used to dismiss views. Records of reasoning may be incomplete
 ### Exercises
 
 - **EX001 — Good decision.** How should a good security decision be judged? *Rubric:* 3 = by whether the choice made sense given information, values and time;; 2 = reasoning;; 1 = outcome;; 0 = none.
-- **EX002 — Lucky skip.** Why was praising the skipped supplier review a mistake? *Rubric:* 3 = it rewarded luck, not reasoning;; 2 = luck;; 1 = none;; 0 = none.
+- **EX002 — Lucky skip.** Why was praising the skipped supplier review a mistake? *Rubric:* 3 = it rewarded luck, not reasoning;; 2 = luck;; 1 = vague;; 0 = none.
 - **EX003 — Overconfidence.** What does overconfidence do to expert ranges? *Rubric:* 3 = makes them too narrow;; 2 = narrow;; 1 = wide;; 0 = none.
 - **EX004 — Calibration source.** Which source describes calibration training for security estimates? *Rubric:* 3 = Hubbard and Seiersen (2016);; 2 = Hubbard;; 1 = Cox;; 0 = none.
-- **EX005 — Bias defence.** Name one practical defence against bias. *Rubric:* 3 = recording assumptions and asking for ranges;; 2 = structure;; 1 = none;; 0 = none.
+- **EX005 — Bias defence.** Name one practical defence against bias. *Rubric:* 3 = recording assumptions and asking for ranges;; 2 = structure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -112,10 +112,10 @@ Trend lists date quickly. Self-assessment can be generous.
 ### Exercises
 
 - **EX006 — Board structure.** Which framework structures Halbrook's board reports? *Rubric:* 3 = NIST CSF 2.0;; 2 = CSF;; 1 = COBIT;; 0 = none.
-- **EX007 — Matrix problem.** Why does the board struggle with the five-by-five matrix? *Rubric:* 3 = it is hard to compare with financial risks;; 2 = comparability;; 1 = none;; 0 = none.
-- **EX008 — Supplier weakness.** What is weak about supplier oversight? *Rubric:* 3 = slow questionnaires rarely read in depth;; 2 = questionnaires;; 1 = none;; 0 = none.
-- **EX009 — Trend caution.** Why should trends be weighed against maturity? *Rubric:* 3 = methods without data or skills can make governance worse;; 2 = maturity;; 1 = none;; 0 = none.
-- **EX010 — Combining frameworks.** Why do mature organisations combine frameworks? *Rubric:* 3 = each answers a different question;; 2 = complementary;; 1 = none;; 0 = none.
+- **EX007 — Matrix problem.** Why does the board struggle with the five-by-five matrix? *Rubric:* 3 = it is hard to compare with financial risks;; 2 = comparability;; 1 = vague;; 0 = none.
+- **EX008 — Supplier weakness.** What is weak about supplier oversight? *Rubric:* 3 = slow questionnaires rarely read in depth;; 2 = questionnaires;; 1 = vague;; 0 = none.
+- **EX009 — Trend caution.** Why should trends be weighed against maturity? *Rubric:* 3 = methods without data or skills can make governance worse;; 2 = maturity;; 1 = vague;; 0 = none.
+- **EX010 — Combining frameworks.** Why do mature organisations combine frameworks? *Rubric:* 3 = each answers a different question;; 2 = complementary;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -186,11 +186,11 @@ Estimates depend on expert ranges. Models omit correlated events.
 
 ### Exercises
 
-- **EX011 — FAIR decomposition.** Into which two factors does FAIR decompose risk? *Rubric:* 3 = loss event frequency and loss magnitude;; 2 = two;; 1 = none;; 0 = none.
-- **EX012 — Mean loss.** What mean annual loss did the lab report? *Rubric:* 3 = about 170k;; 2 = 170;; 1 = none;; 0 = none.
-- **EX013 — Quiet years.** In what share of years was there no loss? *Rubric:* 3 = 68%;; 2 = 0.68;; 1 = none;; 0 = none.
-- **EX014 — Tail chance.** What is the chance of exceeding a million in a year? *Rubric:* 3 = about 4%;; 2 = 0.041;; 1 = none;; 0 = none.
-- **EX015 — Persuasion.** What makes specialist evidence persuasive to committees? *Rubric:* 3 = translation into familiar terms and visible uncertainty;; 2 = translation;; 1 = none;; 0 = none.
+- **EX011 — FAIR decomposition.** Into which two factors does FAIR decompose risk? *Rubric:* 3 = loss event frequency and loss magnitude;; 2 = two;; 1 = vague;; 0 = none.
+- **EX012 — Mean loss.** What mean annual loss did the lab report? *Rubric:* 3 = about 170k;; 2 = 170;; 1 = vague;; 0 = none.
+- **EX013 — Quiet years.** In what share of years was there no loss? *Rubric:* 3 = 68%;; 2 = 0.68;; 1 = vague;; 0 = none.
+- **EX014 — Tail chance.** What is the chance of exceeding a million in a year? *Rubric:* 3 = about 4%;; 2 = 0.041;; 1 = vague;; 0 = none.
+- **EX015 — Persuasion.** What makes specialist evidence persuasive to committees? *Rubric:* 3 = translation into familiar terms and visible uncertainty;; 2 = translation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -232,11 +232,11 @@ Ethical judgements can be contested. Declared conflicts still influence.
 
 ### Exercises
 
-- **EX016 — Misused numbers.** How can numbers be misused in risk quantification? *Rubric:* 3 = optimistic or pessimistic inputs chosen to justify a conclusion;; 2 = manipulation;; 1 = none;; 0 = none.
-- **EX017 — Missing interests.** Whose interests rarely appear in loss models? *Rubric:* 3 = people affected, such as policyholders;; 2 = policyholders;; 1 = none;; 0 = none.
-- **EX018 — Conflict measures.** What did Daniel propose to manage his conflicts? *Rubric:* 3 = audit review, declaration, separate budget decision makers;; 2 = three;; 1 = none;; 0 = none.
-- **EX019 — Notification stance.** Why did Daniel oppose narrowing notifiable incidents? *Rubric:* 3 = it would harm policyholders and conflict with legal duties;; 2 = harm;; 1 = none;; 0 = none.
-- **EX020 — Compliance minimum.** How should compliance with law be viewed ethically? *Rubric:* 3 = as a minimum, not the full measure;; 2 = minimum;; 1 = none;; 0 = none.
+- **EX016 — Misused numbers.** How can numbers be misused in risk quantification? *Rubric:* 3 = optimistic or pessimistic inputs chosen to justify a conclusion;; 2 = manipulation;; 1 = vague;; 0 = none.
+- **EX017 — Missing interests.** Whose interests rarely appear in loss models? *Rubric:* 3 = people affected, such as policyholders;; 2 = policyholders;; 1 = vague;; 0 = none.
+- **EX018 — Conflict measures.** What did Daniel propose to manage his conflicts? *Rubric:* 3 = audit review, declaration, separate budget decision makers;; 2 = three;; 1 = vague;; 0 = none.
+- **EX019 — Notification stance.** Why did Daniel oppose narrowing notifiable incidents? *Rubric:* 3 = it would harm policyholders and conflict with legal duties;; 2 = harm;; 1 = vague;; 0 = none.
+- **EX020 — Compliance minimum.** How should compliance with law be viewed ethically? *Rubric:* 3 = as a minimum, not the full measure;; 2 = minimum;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -278,11 +278,11 @@ Criteria weights are subjective. Rating services vary in quality.
 
 ### Exercises
 
-- **EX021 — Current approach.** How does Halbrook currently oversee suppliers? *Rubric:* 3 = one long questionnaire for all three hundred;; 2 = questionnaire;; 1 = none;; 0 = none.
-- **EX022 — Tiering evidence.** What evidence do deep reviews rely on? *Rubric:* 3 = SOC 2 type two reports or ISO/IEC 27001:2022 certificates plus targeted questions;; 2 = assurance reports;; 1 = none;; 0 = none.
-- **EX023 — Rating limit.** What is the limitation of the rating service? *Rubric:* 3 = outside-in views miss internal controls;; 2 = outside-in;; 1 = none;; 0 = none.
-- **EX024 — Success definition.** How is success defined for tiering? *Rubric:* 3 = faster reviews without losing depth for critical suppliers;; 2 = criteria;; 1 = none;; 0 = none.
-- **EX025 — Evaluate first.** Why evaluate before full rollout? *Rubric:* 3 = keeps the organisation open to evidence and reduces cost of error;; 2 = evidence;; 1 = none;; 0 = none.
+- **EX021 — Current approach.** How does Halbrook currently oversee suppliers? *Rubric:* 3 = one long questionnaire for all three hundred;; 2 = questionnaire;; 1 = vague;; 0 = none.
+- **EX022 — Tiering evidence.** What evidence do deep reviews rely on? *Rubric:* 3 = SOC 2 type two reports or ISO/IEC 27001:2022 certificates plus targeted questions;; 2 = assurance reports;; 1 = vague;; 0 = none.
+- **EX023 — Rating limit.** What is the limitation of the rating service? *Rubric:* 3 = outside-in views miss internal controls;; 2 = outside-in;; 1 = vague;; 0 = none.
+- **EX024 — Success definition.** How is success defined for tiering? *Rubric:* 3 = faster reviews without losing depth for critical suppliers;; 2 = criteria;; 1 = vague;; 0 = none.
+- **EX025 — Evaluate first.** Why evaluate before full rollout? *Rubric:* 3 = keeps the organisation open to evidence and reduces cost of error;; 2 = evidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -348,10 +348,10 @@ Small samples. Blinding may be imperfect if reviewers recognise formats.
 
 ### Exercises
 
-- **EX026 — Random assignment.** Why were reviews randomly assigned? *Rubric:* 3 = to make groups comparable on average;; 2 = comparability;; 1 = none;; 0 = none.
-- **EX027 — Mean durations.** What were the mean durations? *Rubric:* 3 = old 39.3 days, tiered 26.5 days;; 2 = 12.8 difference;; 1 = none;; 0 = none.
+- **EX026 — Random assignment.** Why were reviews randomly assigned? *Rubric:* 3 = to make groups comparable on average;; 2 = comparability;; 1 = vague;; 0 = none.
+- **EX027 — Mean durations.** What were the mean durations? *Rubric:* 3 = old 39.3 days, tiered 26.5 days;; 2 = 12.8 difference;; 1 = vague;; 0 = none.
 - **EX028 — Permutation p.** What one-sided p-value did the permutation test give? *Rubric:* 3 = about 0.0002;; 2 = 0.0002;; 1 = 0.05;; 0 = none.
-- **EX029 — Blind scoring.** Why was the auditor not told which process was used? *Rubric:* 3 = to avoid bias in depth scores;; 2 = blinding;; 1 = none;; 0 = none.
+- **EX029 — Blind scoring.** Why was the auditor not told which process was used? *Rubric:* 3 = to avoid bias in depth scores;; 2 = blinding;; 1 = vague;; 0 = none.
 - **EX030 — Depth result.** Did tiering lose depth? *Rubric:* 3 = no, slightly better on high-tier suppliers;; 2 = no;; 1 = yes;; 0 = none.
 
 ### Synthesis
@@ -394,11 +394,11 @@ Intake forms can be gamed. Lines models vary across organisations.
 
 ### Exercises
 
-- **EX031 — Intake gate.** What prevents high-tier suppliers being approved without review? *Rubric:* 3 = the procurement intake sets tier and blocks approval;; 2 = gate;; 1 = none;; 0 = none.
+- **EX031 — Intake gate.** What prevents high-tier suppliers being approved without review? *Rubric:* 3 = the procurement intake sets tier and blocks approval;; 2 = gate;; 1 = vague;; 0 = none.
 - **EX032 — First line.** Who manages supplier risk in the first line? *Rubric:* 3 = procurement and business owners;; 2 = owners;; 1 = audit;; 0 = none.
-- **EX033 — Line confusion.** What weakens assurance between lines? *Rubric:* 3 = the risk team performing reviews it should challenge;; 2 = confusion;; 1 = none;; 0 = none.
-- **EX034 — Resistance cause.** Why did some units resist tiering? *Rubric:* 3 = high-tier reviews delayed contracts;; 2 = delay;; 1 = none;; 0 = none.
-- **EX035 — Resistance fix.** How was resistance reduced? *Rubric:* 3 = early engagement and published review times;; 2 = engagement;; 1 = none;; 0 = none.
+- **EX033 — Line confusion.** What weakens assurance between lines? *Rubric:* 3 = the risk team performing reviews it should challenge;; 2 = confusion;; 1 = vague;; 0 = none.
+- **EX034 — Resistance cause.** Why did some units resist tiering? *Rubric:* 3 = high-tier reviews delayed contracts;; 2 = delay;; 1 = vague;; 0 = none.
+- **EX035 — Resistance fix.** How was resistance reduced? *Rubric:* 3 = early engagement and published review times;; 2 = engagement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -440,11 +440,11 @@ Compensating controls can mask risk. Escalation can strain relationships.
 
 ### Exercises
 
-- **EX036 — SOC 2 exception.** What exception did the supplier's report show? *Rubric:* 3 = access reviews not performed for two quarters;; 2 = access review;; 1 = none;; 0 = none.
+- **EX036 — SOC 2 exception.** What exception did the supplier's report show? *Rubric:* 3 = access reviews not performed for two quarters;; 2 = access review;; 1 = vague;; 0 = none.
 - **EX037 — Critical supplier plan.** What did Daniel recommend for the critical supplier? *Rubric:* 3 = remediation plan, extra monitoring and parallel exit assessment;; 2 = three;; 1 = replace immediately;; 0 = none.
-- **EX038 — Scope doubt.** Why was the provider's certificate insufficient? *Rubric:* 3 = its scope did not clearly include the analytics service;; 2 = scope;; 1 = none;; 0 = none.
-- **EX039 — Limited exposure.** How did Daniel limit exposure while gathering evidence? *Rubric:* 3 = pilot with synthetic data and audit rights;; 2 = pilot;; 1 = none;; 0 = none.
-- **EX040 — Escalation memo.** What did Daniel's escalation memo contain? *Rubric:* 3 = decision needed, options, risk and recommendation;; 2 = memo;; 1 = none;; 0 = none.
+- **EX038 — Scope doubt.** Why was the provider's certificate insufficient? *Rubric:* 3 = its scope did not clearly include the analytics service;; 2 = scope;; 1 = vague;; 0 = none.
+- **EX039 — Limited exposure.** How did Daniel limit exposure while gathering evidence? *Rubric:* 3 = pilot with synthetic data and audit rights;; 2 = pilot;; 1 = vague;; 0 = none.
+- **EX040 — Escalation memo.** What did Daniel's escalation memo contain? *Rubric:* 3 = decision needed, options, risk and recommendation;; 2 = memo;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -507,11 +507,11 @@ Combined curves depend on correlation assumptions. Appetite thresholds are judge
 
 ### Exercises
 
-- **EX041 — Appetite example.** Give the example exceedance limit. *Rubric:* 3 = no more than 5% chance of exceeding 1 million;; 2 = 5% at 1m;; 1 = none;; 0 = none.
-- **EX042 — Within appetite.** At which points is the estimate within appetite? *Rubric:* 3 = 250k and 500k;; 2 = two;; 1 = none;; 0 = none.
-- **EX043 — One-million breach.** What is the estimate at one million versus appetite? *Rubric:* 3 = 8% versus 5%;; 2 = exceeds;; 1 = none;; 0 = none.
+- **EX041 — Appetite example.** Give the example exceedance limit. *Rubric:* 3 = no more than 5% chance of exceeding 1 million;; 2 = 5% at 1m;; 1 = vague;; 0 = none.
+- **EX042 — Within appetite.** At which points is the estimate within appetite? *Rubric:* 3 = 250k and 500k;; 2 = two;; 1 = vague;; 0 = none.
+- **EX043 — One-million breach.** What is the estimate at one million versus appetite? *Rubric:* 3 = 8% versus 5%;; 2 = exceeds;; 1 = vague;; 0 = none.
 - **EX044 — Breach location.** Which part of the curve breaches appetite? *Rubric:* 3 = the tail;; 2 = tail;; 1 = typical year;; 0 = none.
-- **EX045 — Trust answer.** How did Daniel answer whether estimates could be trusted? *Rubric:* 3 = explained inputs, audit review and ranges;; 2 = transparency;; 1 = none;; 0 = none.
+- **EX045 — Trust answer.** How did Daniel answer whether estimates could be trusted? *Rubric:* 3 = explained inputs, audit review and ranges;; 2 = transparency;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -553,11 +553,11 @@ Summaries simplify sources. Settings differ from Halbrook's.
 
 ### Exercises
 
-- **EX046 — Reading fields.** What does Daniel record for each source? *Rubric:* 3 = question, method, data, main claim, limits;; 2 = five;; 1 = none;; 0 = none.
+- **EX046 — Reading fields.** What does Daniel record for each source? *Rubric:* 3 = question, method, data, main claim, limits;; 2 = five;; 1 = vague;; 0 = none.
 - **EX047 — Cox evidence.** What kind of evidence does Cox (2008) provide? *Rubric:* 3 = logical analysis of matrix properties;; 2 = analytical;; 1 = empirical;; 0 = none.
-- **EX048 — Spears method.** What method do Spears and Barki (2010) use? *Rubric:* 3 = survey data and interviews with managers;; 2 = survey;; 1 = none;; 0 = none.
-- **EX049 — Gordon-Loeb practice.** How does Gordon and Loeb's work apply at Halbrook? *Rubric:* 3 = comparing investments with expected loss reduction;; 2 = investment;; 1 = none;; 0 = none.
-- **EX050 — Research gap.** What gap does Daniel's evaluation fill? *Rubric:* 3 = none studied insurer supplier oversight directly;; 2 = local evidence;; 1 = none;; 0 = none.
+- **EX048 — Spears method.** What method do Spears and Barki (2010) use? *Rubric:* 3 = survey data and interviews with managers;; 2 = survey;; 1 = vague;; 0 = none.
+- **EX049 — Gordon-Loeb practice.** How does Gordon and Loeb's work apply at Halbrook? *Rubric:* 3 = comparing investments with expected loss reduction;; 2 = investment;; 1 = vague;; 0 = none.
+- **EX050 — Research gap.** What gap does Daniel's evaluation fill? *Rubric:* 3 = none studied insurer supplier oversight directly;; 2 = local evidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -599,11 +599,11 @@ Six months is short. Calibration gains can fade.
 
 ### Exercises
 
-- **EX051 — Review time result.** How did average review time change? *Rubric:* 3 = from about thirty-nine to twenty-four days;; 2 = nearly halved;; 1 = none;; 0 = none.
-- **EX052 — High-tier reviews.** How many high-tier suppliers completed deep reviews? *Rubric:* 3 = forty-two;; 2 = 42;; 1 = none;; 0 = none.
-- **EX053 — Exceptions found.** How many high-tier suppliers had significant exceptions? *Rubric:* 3 = three;; 2 = 3;; 1 = none;; 0 = none.
-- **EX054 — Partly met.** Which objective was only nearly met? *Rubric:* 3 = halving review time;; 2 = review time;; 1 = none;; 0 = none.
-- **EX055 — Data recommendation.** What data does Daniel recommend collecting? *Rubric:* 3 = internal incident cost data;; 2 = incident costs;; 1 = none;; 0 = none.
+- **EX051 — Review time result.** How did average review time change? *Rubric:* 3 = from about thirty-nine to twenty-four days;; 2 = nearly halved;; 1 = vague;; 0 = none.
+- **EX052 — High-tier reviews.** How many high-tier suppliers completed deep reviews? *Rubric:* 3 = forty-two;; 2 = 42;; 1 = vague;; 0 = none.
+- **EX053 — Exceptions found.** How many high-tier suppliers had significant exceptions? *Rubric:* 3 = three;; 2 = 3;; 1 = vague;; 0 = none.
+- **EX054 — Partly met.** Which objective was only nearly met? *Rubric:* 3 = halving review time;; 2 = review time;; 1 = vague;; 0 = none.
+- **EX055 — Data recommendation.** What data does Daniel recommend collecting? *Rubric:* 3 = internal incident cost data;; 2 = incident costs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -645,11 +645,11 @@ Self-review can be generous. Transfer needs local testing.
 
 ### Exercises
 
-- **EX056 — Survival answer.** How did Daniel show quantification would survive his departure? *Rubric:* 3 = handover, trained colleague and audit review;; 2 = continuity;; 1 = none;; 0 = none.
-- **EX057 — Do differently.** What would Daniel do differently? *Rubric:* 3 = collect incident cost data from the start and involve brokers earlier;; 2 = hindsight;; 1 = none;; 0 = none.
-- **EX058 — Transfer condition.** When do methods transfer best? *Rubric:* 3 = when assumptions are explicit;; 2 = assumptions;; 1 = none;; 0 = none.
-- **EX059 — Smaller charities.** What adjustment might loss exceedance reporting need for small charities? *Rubric:* 3 = simplification;; 2 = simpler;; 1 = none;; 0 = none.
-- **EX060 — Lasting habits.** Which habits will remain useful as frameworks change? *Rubric:* 3 = critical reading, controlled evaluation, transparent reporting;; 2 = habits;; 1 = none;; 0 = none.
+- **EX056 — Survival answer.** How did Daniel show quantification would survive his departure? *Rubric:* 3 = handover, trained colleague and audit review;; 2 = continuity;; 1 = vague;; 0 = none.
+- **EX057 — Do differently.** What would Daniel do differently? *Rubric:* 3 = collect incident cost data from the start and involve brokers earlier;; 2 = hindsight;; 1 = vague;; 0 = none.
+- **EX058 — Transfer condition.** When do methods transfer best? *Rubric:* 3 = when assumptions are explicit;; 2 = assumptions;; 1 = vague;; 0 = none.
+- **EX059 — Smaller charities.** What adjustment might loss exceedance reporting need for small charities? *Rubric:* 3 = simplification;; 2 = simpler;; 1 = vague;; 0 = none.
+- **EX060 — Lasting habits.** Which habits will remain useful as frameworks change? *Rubric:* 3 = critical reading, controlled evaluation, transparent reporting;; 2 = habits;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

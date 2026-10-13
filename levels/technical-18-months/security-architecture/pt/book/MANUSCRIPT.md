@@ -66,9 +66,9 @@ As listas de serviços deixam de fora ferramentas informais. Os gerentes podem e
 
 ### Exercícios
 
-- **EX001 — Serviços primeiro.** Por que listar os serviços antes dos dispositivos? *Rubrica:* 3 = um dispositivo só importa pelos serviços que sustenta;; 2 = propósito;; 1 = nenhuma;; 0 = nenhuma.
+- **EX001 — Serviços primeiro.** Por que listar os serviços antes dos dispositivos? *Rubrica:* 3 = um dispositivo só importa pelos serviços que sustenta;; 2 = propósito;; 1 = vago;; 0 = nenhuma.
 
-- **EX002 — Acréscimo de Grace.** O que Grace acrescentou ao mapa? *Rubrica:* 3 = um appliance de backup no escritório central que copia os servidores de imagens toda noite;; 2 = backup;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Acréscimo de Grace.** O que Grace acrescentou ao mapa? *Rubrica:* 3 = um appliance de backup no escritório central que copia os servidores de imagens toda noite;; 2 = backup;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Contingência dos pagamentos.** Por que os pagamentos não são classificados como críticos? *Rubrica:* 3 = podem recorrer a anotar os dados do cartão e cobrar depois por telefone;; 2 = contingência;; 1 = sem importância;; 0 = nenhuma.
 
@@ -110,11 +110,11 @@ Software antigo pode precisar de protocolos antigos. Mudanças no roteador podem
 
 ### Exercícios
 
-- **EX005 — Risco da rede plana.** Por que a rede plana da clínica é um risco? *Rubrica:* 3 = qualquer PC infectado consegue alcançar o servidor de imagens;; 2 = propagação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX005 — Risco da rede plana.** Por que a rede plana da clínica é um risco? *Rubrica:* 3 = qualquer PC infectado consegue alcançar o servidor de imagens;; 2 = propagação;; 1 = vago;; 0 = nenhuma.
 
-- **EX006 — Pergunta sobre o SMB.** Por que perguntar qual versão do SMB o servidor de imagens usa? *Rubrica:* 3 = versões antigas têm fraquezas exploradas por ransomware;; 2 = ransomware;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Pergunta sobre o SMB.** Por que perguntar qual versão do SMB o servidor de imagens usa? *Rubrica:* 3 = versões antigas têm fraquezas exploradas por ransomware;; 2 = ransomware;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Correção do roteador.** Como a administração do roteador foi restringida? *Rubrica:* 3 = à rede da equipe, e não à rede de visitantes;; 2 = só equipe;; 1 = nenhuma;; 0 = nenhuma.
+- **EX007 — Correção do roteador.** Como a administração do roteador foi restringida? *Rubrica:* 3 = à rede da equipe, e não à rede de visitantes;; 2 = só equipe;; 1 = vago;; 0 = nenhuma.
 
 - **EX008 — Problema maior.** Que problema precisa de um reprojeto planejado? *Rubrica:* 3 = a rede plana;; 2 = rede plana;; 1 = impressoras;; 0 = nenhuma.
 
@@ -154,13 +154,13 @@ Métodos de login rápido precisam de tratamento para crachás perdidos. As corr
 
 ### Exercícios
 
-- **EX009 — Risco da conta compartilhada.** Por que a conta de administrador compartilhada é arriscada? *Rubrica:* 3 = os downloads rodam com direitos totais e não há registro dos usuários;; 2 = direitos e responsabilização;; 1 = nenhuma;; 0 = nenhuma.
+- **EX009 — Risco da conta compartilhada.** Por que a conta de administrador compartilhada é arriscada? *Rubrica:* 3 = os downloads rodam com direitos totais e não há registro dos usuários;; 2 = direitos e responsabilização;; 1 = vago;; 0 = nenhuma.
 
 - **EX010 — Correção do odontograma.** Como o programa de odontograma foi corrigido? *Rubrica:* 3 = uma configuração do fornecedor que concede direitos só à própria pasta;; 2 = direitos na pasta;; 1 = direitos de administrador;; 0 = nenhuma.
 
-- **EX011 — Tempo de bloqueio.** Depois de quanto tempo os PCs dos consultórios bloqueiam? *Rubrica:* 3 = cinco minutos de inatividade;; 2 = cinco;; 1 = nenhuma;; 0 = nenhuma.
+- **EX011 — Tempo de bloqueio.** Depois de quanto tempo os PCs dos consultórios bloqueiam? *Rubrica:* 3 = cinco minutos de inatividade;; 2 = cinco;; 1 = vago;; 0 = nenhuma.
 
-- **EX012 — Conveniência.** Por que a conveniência é um requisito de segurança nas clínicas? *Rubrica:* 3 = controles lentos são contornados;; 2 = contornar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX012 — Conveniência.** Por que a conveniência é um requisito de segurança nas clínicas? *Rubrica:* 3 = controles lentos são contornados;; 2 = contornar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -237,9 +237,9 @@ Os scripts quebram quando os formatos de exportação mudam. Os e-mails de suces
 
 ### Exercícios
 
-- **EX013 — Falha silenciosa.** Por que Grace não tinha percebido as falhas de Elmfield? *Rubrica:* 3 = o appliance só enviava e-mail quando havia sucesso;; 2 = e-mails de sucesso;; 1 = nenhuma;; 0 = nenhuma.
+- **EX013 — Falha silenciosa.** Por que Grace não tinha percebido as falhas de Elmfield? *Rubrica:* 3 = o appliance só enviava e-mail quando havia sucesso;; 2 = e-mails de sucesso;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Resultado do laboratório.** O que o laboratório relatou para Elmfield? *Rubrica:* 3 = 4 de 7 noites ok, último sucesso em 2026-03-05;; 2 = três falhas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX014 — Resultado do laboratório.** O que o laboratório relatou para Elmfield? *Rubrica:* 3 = 4 de 7 noites ok, último sucesso em 2026-03-05;; 2 = três falhas;; 1 = vago;; 0 = nenhuma.
 
 - **EX015 — Status desconhecido.** Por que tratar valores de status desconhecidos como falhas? *Rubrica:* 3 = esconder problemas é pior do que não monitorar;; 2 = padrão seguro;; 1 = sucesso;; 0 = nenhuma.
 
@@ -281,13 +281,13 @@ Os escopos podem excluir justamente onde estão os problemas. As declarações p
 
 ### Exercícios
 
-- **EX017 — Exclusões.** O que o escopo excluiu? *Rubrica:* 3 = o sistema de gestão clínica em nuvem e os sistemas do provedor de pagamentos;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX017 — Exclusões.** O que o escopo excluiu? *Rubrica:* 3 = o sistema de gestão clínica em nuvem e os sistemas do provedor de pagamentos;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Não permitido.** O que Nadia não tinha permissão para fazer? *Rubrica:* 3 = testar ataques;; 2 = ataques;; 1 = entrevistas;; 0 = nenhuma.
 
 - **EX019 — Post-it.** Como Nadia tratou a afirmação sobre o post-it? *Rubrica:* 3 = registrou-a como declaração e conferiu ela mesma;; 2 = verificar;; 1 = ignorou;; 0 = nenhuma.
 
-- **EX020 — Exemplo de achado.** Dê um achado do relatório de Nadia. *Rubrica:* 3 = o servidor de imagens compartilha uma pasta legível por todos;; 2 = compartilhamento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Exemplo de achado.** Dê um achado do relatório de Nadia. *Rubrica:* 3 = o servidor de imagens compartilha uma pasta legível por todos;; 2 = compartilhamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -325,13 +325,13 @@ Os modelos deixam de fora fluxos não documentados. Os recursos dos roteadores v
 
 ### Exercícios
 
-- **EX021 — Caminhos desnecessários.** Que dispositivos nunca precisam conversar com os PCs da recepção? *Rubrica:* 3 = maquininhas de cartão e sensores de raio X;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Caminhos desnecessários.** Que dispositivos nunca precisam conversar com os PCs da recepção? *Rubrica:* 3 = maquininhas de cartão e sensores de raio X;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Fronteira das imagens.** Por que colocar uma fronteira em torno das imagens clínicas? *Rubrica:* 3 = a integridade das imagens afeta o diagnóstico;; 2 = integridade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Fronteira das imagens.** Por que colocar uma fronteira em torno das imagens clínicas? *Rubrica:* 3 = a integridade das imagens afeta o diagnóstico;; 2 = integridade;; 1 = vago;; 0 = nenhuma.
 
-- **EX023 — Quatro segmentos.** Que quatro segmentos Nadia propôs? *Rubrica:* 3 = PCs da equipe, imagens clínicas, maquininhas de pagamento e visitantes;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX023 — Quatro segmentos.** Que quatro segmentos Nadia propôs? *Rubrica:* 3 = PCs da equipe, imagens clínicas, maquininhas de pagamento e visitantes;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX024 — Suporte do roteador.** Como o roteador suporta os segmentos? *Rubrica:* 3 = LANs virtuais;; 2 = VLANs;; 1 = nenhuma;; 0 = nenhuma.
+- **EX024 — Suporte do roteador.** Como o roteador suporta os segmentos? *Rubrica:* 3 = LANs virtuais;; 2 = VLANs;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -369,13 +369,13 @@ Os logs de auditoria dos fornecedores podem ser limitados. O logging centralizad
 
 ### Exercícios
 
-- **EX025 — Cabeçalhos das imagens.** Que dados sensíveis os cabeçalhos dos arquivos de raio X trazem? *Rubrica:* 3 = nome e data de nascimento dos pacientes;; 2 = identificadores;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Cabeçalhos das imagens.** Que dados sensíveis os cabeçalhos dos arquivos de raio X trazem? *Rubrica:* 3 = nome e data de nascimento dos pacientes;; 2 = identificadores;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Regra da telemetria.** Por que ligar cada sinal a uma pergunta? *Rubrica:* 3 = telemetria sem pergunta vira ruído;; 2 = propósito;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Regra da telemetria.** Por que ligar cada sinal a uma pergunta? *Rubrica:* 3 = telemetria sem pergunta vira ruído;; 2 = propósito;; 1 = vago;; 0 = nenhuma.
 
 - **EX027 — Destino dos logs.** Para onde devem ir os logs dos PCs e do firewall? *Rubrica:* 3 = um serviço de logs em nuvem que a equipe não consegue modificar;; 2 = central;; 1 = PC local;; 0 = nenhuma.
 
-- **EX028 — Sincronização dos relógios.** Por que sincronizar os relógios dos dispositivos? *Rubrica:* 3 = para que os eventos possam ser ordenados corretamente;; 2 = ordenação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Sincronização dos relógios.** Por que sincronizar os relógios dos dispositivos? *Rubrica:* 3 = para que os eventos possam ser ordenados corretamente;; 2 = ordenação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -413,13 +413,13 @@ Os cartões de resposta envelhecem conforme os sistemas mudam. Os tempos de rest
 
 ### Exercícios
 
-- **EX029 — Sinais de ransomware.** Em que o ransomware costuma diferir da exclusão acidental? *Rubrica:* 3 = muitos arquivos mudam rapidamente e aparecem notas de resgate;; 2 = volume;; 1 = nenhuma;; 0 = nenhuma.
+- **EX029 — Sinais de ransomware.** Em que o ransomware costuma diferir da exclusão acidental? *Rubrica:* 3 = muitos arquivos mudam rapidamente e aparecem notas de resgate;; 2 = volume;; 1 = vago;; 0 = nenhuma.
 
 - **EX030 — Primeiro passo no ransomware.** Qual é o primeiro passo diante de um ransomware? *Rubrica:* 3 = desconectar o servidor da rede;; 2 = isolar;; 1 = restaurar;; 0 = nenhuma.
 
-- **EX031 — Contingência da internet.** Qual é a contingência quando a internet cai? *Rubrica:* 3 = um roteador reserva de dados móveis e listas do dia impressas;; 2 = roteador reserva;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Contingência da internet.** Qual é a contingência quando a internet cai? *Rubrica:* 3 = um roteador reserva de dados móveis e listas do dia impressas;; 2 = roteador reserva;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Estimativa de restauração.** Quanto tempo se estima que leve a restauração das imagens? *Rubrica:* 3 = quatro horas;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Estimativa de restauração.** Quanto tempo se estima que leve a restauração das imagens? *Rubrica:* 3 = quatro horas;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -457,11 +457,11 @@ Os checklists ficam desatualizados. Os modelos de ameaças dependem de projetos 
 
 ### Exercícios
 
-- **EX033 — Limite do checklist.** Qual é o limite de um checklist? *Rubrica:* 3 = só encontra o que lista;; 2 = cobertura;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Limite do checklist.** Qual é o limite de um checklist? *Rubrica:* 3 = só encontra o que lista;; 2 = cobertura;; 1 = vago;; 0 = nenhuma.
 
-- **EX034 — Achado do STRIDE.** O que o STRIDE encontrou no projeto de agendamento? *Rubrica:* 3 = nomes de outros pacientes exibidos no calendário;; 2 = nomes;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Achado do STRIDE.** O que o STRIDE encontrou no projeto de agendamento? *Rubrica:* 3 = nomes de outros pacientes exibidos no calendário;; 2 = nomes;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Correção do fornecedor.** Como o fornecedor corrigiu o calendário? *Rubrica:* 3 = mostrando apenas os horários livres;; 2 = horários;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Correção do fornecedor.** Como o fornecedor corrigiu o calendário? *Rubrica:* 3 = mostrando apenas os horários livres;; 2 = horários;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — Método para sistemas novos.** Que método serve para sistemas novos? *Rubrica:* 3 = a modelagem de ameaças com STRIDE;; 2 = STRIDE;; 1 = checklist;; 0 = nenhuma.
 
@@ -528,13 +528,13 @@ Os testes cobrem apenas os fluxos listados. A sintaxe do roteador difere do mode
 
 ### Exercícios
 
-- **EX037 — Ordem das regras.** Por que as permissões específicas precisam vir antes da negação geral? *Rubrica:* 3 = os roteadores aplicam a primeira regra que corresponde;; 2 = primeira correspondência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Ordem das regras.** Por que as permissões específicas precisam vir antes da negação geral? *Rubrica:* 3 = os roteadores aplicam a primeira regra que corresponde;; 2 = primeira correspondência;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Regras não documentadas.** Por que as regras não documentadas se acumulam? *Rubrica:* 3 = ninguém se atreve a apagá-las;; 2 = medo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Regras não documentadas.** Por que as regras não documentadas se acumulam? *Rubrica:* 3 = ninguém se atreve a apagá-las;; 2 = medo;; 1 = vago;; 0 = nenhuma.
 
-- **EX039 — Falha no laboratório.** Que fluxo proibido o primeiro teste permitiu? *Rubrica:* 3 = recepção para imagens na porta 8443;; 2 = recepção;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Falha no laboratório.** Que fluxo proibido o primeiro teste permitiu? *Rubrica:* 3 = recepção para imagens na porta 8443;; 2 = recepção;; 1 = vago;; 0 = nenhuma.
 
-- **EX040 — Correção.** Como Nadia corrigiu a regra ampla? *Rubrica:* 3 = dividindo a equipe em segmentos de recepção e de consultórios;; 2 = dividir;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Correção.** Como Nadia corrigiu a regra ampla? *Rubrica:* 3 = dividindo a equipe em segmentos de recepção e de consultórios;; 2 = dividir;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -572,13 +572,13 @@ Testes num momento não provam o comportamento futuro. Mover um notebook entre s
 
 ### Exercícios
 
-- **EX041 — Por que não a tela.** Por que não confiar na tela de configuração do roteador? *Rubrica:* 3 = o comportamento configurado e o real podem diferir;; 2 = comportamento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Por que não a tela.** Por que não confiar na tela de configuração do roteador? *Rubrica:* 3 = o comportamento configurado e o real podem diferir;; 2 = comportamento;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Teste de visitantes.** O que o teste da rede de visitantes confirmou? *Rubrica:* 3 = só internet, nenhum dispositivo interno;; 2 = só internet;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Teste de visitantes.** O que o teste da rede de visitantes confirmou? *Rubrica:* 3 = só internet, nenhum dispositivo interno;; 2 = só internet;; 1 = vago;; 0 = nenhuma.
 
-- **EX043 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = impressora dos consultórios inalcançável; estava no segmento da recepção;; 2 = impressora;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = impressora dos consultórios inalcançável; estava no segmento da recepção;; 2 = impressora;; 1 = vago;; 0 = nenhuma.
 
-- **EX044 — Reutilização.** Como os testes serão reutilizados? *Rubrica:* 3 = acrescentados ao procedimento de mudanças para as mudanças futuras;; 2 = procedimento de mudanças;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Reutilização.** Como os testes serão reutilizados? *Rubrica:* 3 = acrescentados ao procedimento de mudanças para as mudanças futuras;; 2 = procedimento de mudanças;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -643,13 +643,13 @@ As simulações simplificam o comportamento do atacante. Os PCs dos consultório
 
 ### Exercícios
 
-- **EX045 — Segurança do laboratório.** Que regra protege o laboratório? *Rubrica:* 3 = nenhum malware real e nenhuma conexão com a internet;; 2 = isolado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Segurança do laboratório.** Que regra protege o laboratório? *Rubrica:* 3 = nenhum malware real e nenhuma conexão com a internet;; 2 = isolado;; 1 = vago;; 0 = nenhuma.
 
-- **EX046 — Resultado plano.** Quantas máquinas a infecção alcançou na rede plana? *Rubrica:* 3 = todas as 8;; 2 = todas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Resultado plano.** Quantas máquinas a infecção alcançou na rede plana? *Rubrica:* 3 = todas as 8;; 2 = todas;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Resultado segmentado.** Quantas máquinas foram afetadas no projeto segmentado? *Rubrica:* 3 = 3 PCs da recepção;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Resultado segmentado.** Quantas máquinas foram afetadas no projeto segmentado? *Rubrica:* 3 = 3 PCs da recepção;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Resultado mais valioso.** Por que a restrição do servidor de backup é o resultado mais valioso? *Rubrica:* 3 = mantém a recuperação possível;; 2 = recuperação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Resultado mais valioso.** Por que a restrição do servidor de backup é o resultado mais valioso? *Rubrica:* 3 = mantém a recuperação possível;; 2 = recuperação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -687,13 +687,13 @@ A documentação dos fornecedores pode estar incompleta. O comportamento de nova
 
 ### Exercícios
 
-- **EX049 — Sintoma preciso.** Que sintoma preciso Nadia registrou? *Rubrica:* 3 = carregamento lento das imagens em dois de quatro consultórios desde terça;; 2 = preciso;; 1 = nenhuma;; 0 = nenhuma.
+- **EX049 — Sintoma preciso.** Que sintoma preciso Nadia registrou? *Rubrica:* 3 = carregamento lento das imagens em dois de quatro consultórios desde terça;; 2 = preciso;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Evidência nos logs.** O que os logs do firewall mostraram? *Rubrica:* 3 = conexões bloqueadas dos PCs dos consultórios para o servidor de imagens numa segunda porta;; 2 = bloqueios;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Evidência nos logs.** O que os logs do firewall mostraram? *Rubrica:* 3 = conexões bloqueadas dos PCs dos consultórios para o servidor de imagens numa segunda porta;; 2 = bloqueios;; 1 = vago;; 0 = nenhuma.
 
 - **EX051 — Correção certa.** Como o problema foi corrigido? *Rubrica:* 3 = uma regra documentada só para aquela porta, seguida de novos testes;; 2 = regra estreita;; 1 = liberar tudo;; 0 = nenhuma.
 
-- **EX052 — Prevenção.** O que evita uma repetição? *Rubrica:* 3 = documentar as necessidades de rede dos novos dispositivos antes da instalação;; 2 = procedimento de mudanças;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Prevenção.** O que evita uma repetição? *Rubrica:* 3 = documentar as necessidades de rede dos novos dispositivos antes da instalação;; 2 = procedimento de mudanças;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -753,13 +753,13 @@ As exportações podem omitir algumas configurações. As baselines precisam de 
 
 ### Exercícios
 
-- **EX053 — Por que a deriva importa.** Por que a deriva importa? *Rubrica:* 3 = uma mudança esquecida pode desfazer a proteção do projeto;; 2 = desfazer;; 1 = nenhuma;; 0 = nenhuma.
+- **EX053 — Por que a deriva importa.** Por que a deriva importa? *Rubrica:* 3 = uma mudança esquecida pode desfazer a proteção do projeto;; 2 = desfazer;; 1 = vago;; 0 = nenhuma.
 
-- **EX054 — Achado em Westcott.** O que o laboratório encontrou em Westcott? *Rubrica:* 3 = administração remota habilitada a partir da internet;; 2 = administração remota;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Achado em Westcott.** O que o laboratório encontrou em Westcott? *Rubrica:* 3 = administração remota habilitada a partir da internet;; 2 = administração remota;; 1 = vago;; 0 = nenhuma.
 
 - **EX055 — Atualização da baseline.** Por que a diferença de Norbury foi acrescentada à baseline? *Rubrica:* 3 = todas as clínicas em breve terão os novos sensores;; 2 = aprovada;; 1 = ignorada;; 0 = nenhuma.
 
-- **EX056 — Exportação vazia.** Por que testar exportações vazias? *Rubrica:* 3 = uma exportação vazia poderia parecer conformidade perfeita;; 2 = falsa aprovação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Exportação vazia.** Por que testar exportações vazias? *Rubrica:* 3 = uma exportação vazia poderia parecer conformidade perfeita;; 2 = falsa aprovação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -803,7 +803,7 @@ Os compromissos dos fornecedores podem não ser cumpridos. As contingências pre
 
 - **EX059 — Dados do serviço de mensagens.** De que dados o serviço de mensagens realmente precisa? *Rubrica:* 3 = primeiro nome e horário da consulta;; 2 = mínimos;; 1 = prontuários completos;; 0 = nenhuma.
 
-- **EX060 — Contingência dos prontuários.** Qual é a contingência se o sistema clínico falhar? *Rubrica:* 3 = imprimir toda noite as listas do dia seguinte;; 2 = imprimir;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Contingência dos prontuários.** Qual é a contingência se o sistema clínico falhar? *Rubrica:* 3 = imprimir toda noite as listas do dia seguinte;; 2 = imprimir;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -843,11 +843,11 @@ Os documentos derivam quando as mudanças pulam o procedimento. Avisos demais di
 
 - **EX061 — Teste da documentação.** Como a documentação é julgada? *Rubrica:* 3 = por se outra pessoa consegue segui-la corretamente sem ajuda;; 2 = usabilidade;; 1 = extensão;; 0 = nenhuma.
 
-- **EX062 — Aviso sobre reiniciar o servidor de imagens.** Que aviso se aplica a reiniciar o servidor de imagens? *Rubrica:* 3 = consultar os consultórios primeiro para não interromper um raio X;; 2 = consultar os consultórios;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Aviso sobre reiniciar o servidor de imagens.** Que aviso se aplica a reiniciar o servidor de imagens? *Rubrica:* 3 = consultar os consultórios primeiro para não interromper um raio X;; 2 = consultar os consultórios;; 1 = vago;; 0 = nenhuma.
 
 - **EX063 — Onde pôr os avisos.** Onde os avisos devem ser colocados? *Rubrica:* 3 = imediatamente antes do passo a que se aplicam;; 2 = junto ao passo;; 1 = apêndice;; 0 = nenhuma.
 
-- **EX064 — Achado da verificação trimestral.** O que a primeira verificação trimestral encontrou? *Rubrica:* 3 = uma captura de tela desatualizada do roteador;; 2 = captura de tela;; 1 = nenhuma;; 0 = nenhuma.
+- **EX064 — Achado da verificação trimestral.** O que a primeira verificação trimestral encontrou? *Rubrica:* 3 = uma captura de tela desatualizada do roteador;; 2 = captura de tela;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -911,11 +911,11 @@ Os ataques plantados podem ser mais fáceis que os reais. Os dados de localizaç
 
 ### Exercícios
 
-- **EX065 — Normal primeiro.** O que Nadia descreveu antes de escrever as regras? *Rubrica:* 3 = o comportamento normal: cinco cidades, das 7h às 19h;; 2 = normal;; 1 = nenhuma;; 0 = nenhuma.
+- **EX065 — Normal primeiro.** O que Nadia descreveu antes de escrever as regras? *Rubrica:* 3 = o comportamento normal: cinco cidades, das 7h às 19h;; 2 = normal;; 1 = vago;; 0 = nenhuma.
 
-- **EX066 — Resultado da regra A.** Quais foram os resultados da regra A? *Rubrica:* 3 = 4 alertas, 3 ataques detectados, 1 alarme falso;; 2 = números;; 1 = nenhuma;; 0 = nenhuma.
+- **EX066 — Resultado da regra A.** Quais foram os resultados da regra A? *Rubrica:* 3 = 4 alertas, 3 ataques detectados, 1 alarme falso;; 2 = números;; 1 = vago;; 0 = nenhuma.
 
-- **EX067 — Resultado da regra B.** Quais foram os resultados da regra B? *Rubrica:* 3 = 3 alertas, 3 ataques detectados, 0 alarme falso;; 2 = números;; 1 = nenhuma;; 0 = nenhuma.
+- **EX067 — Resultado da regra B.** Quais foram os resultados da regra B? *Rubrica:* 3 = 3 alertas, 3 ataques detectados, 0 alarme falso;; 2 = números;; 1 = vago;; 0 = nenhuma.
 
 - **EX068 — Ponto cego.** O que a regra B deixaria passar? *Rubrica:* 3 = uma senha roubada usada no horário de trabalho a partir de uma cidade habitual;; 2 = horário de trabalho;; 1 = nada;; 0 = nenhuma.
 
@@ -955,13 +955,13 @@ A supervisão pode esconder lacunas na habilidade independente. As lacunas resta
 
 ### Exercícios
 
-- **EX069 — Verificação antes da implantação.** O que Nadia confirmava antes de cada implantação? *Rubrica:* 3 = as listas de dispositivos com o gerente da clínica e eventuais dispositivos novos;; 2 = dispositivos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Verificação antes da implantação.** O que Nadia confirmava antes de cada implantação? *Rubrica:* 3 = as listas de dispositivos com o gerente da clínica e eventuais dispositivos novos;; 2 = dispositivos;; 1 = vago;; 0 = nenhuma.
 
-- **EX070 — Problema em Ashby.** Que problema ocorreu em Ashby? *Rubrica:* 3 = uma maquininha de cartão na porta errada do switch;; 2 = porta;; 1 = nenhuma;; 0 = nenhuma.
+- **EX070 — Problema em Ashby.** Que problema ocorreu em Ashby? *Rubrica:* 3 = uma maquininha de cartão na porta errada do switch;; 2 = porta;; 1 = vago;; 0 = nenhuma.
 
-- **EX071 — Trabalho restante.** O que Nadia listou como restante? *Rubrica:* 3 = login multifator no sistema clínico e treinamento da equipe;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX071 — Trabalho restante.** O que Nadia listou como restante? *Rubrica:* 3 = login multifator no sistema clínico e treinamento da equipe;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX072 — Hábito mais forte.** Qual Daniel disse ser o hábito mais forte dela? *Rubrica:* 3 = testar antes e depois de cada mudança;; 2 = testar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Hábito mais forte.** Qual Daniel disse ser o hábito mais forte dela? *Rubrica:* 3 = testar antes e depois de cada mudança;; 2 = testar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

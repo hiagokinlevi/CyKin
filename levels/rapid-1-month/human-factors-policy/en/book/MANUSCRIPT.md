@@ -73,19 +73,19 @@ Decisions need follow-through. Small teams change often.
 
 ### Exercises
 
-- **EX001 — Charity size.** How many staff and volunteers does Riverbend have? *Rubric:* 3 = twelve staff and sixty volunteers;; 2 = 72;; 1 = none;; 0 = none.
-- **EX002 — Where attacks land.** According to Callum, what do most attacks on small charities reach first? *Rubric:* 3 = people;; 2 = people;; 1 = systems;; 0 = none.
+- **EX001 — Charity size.** How many staff and volunteers does Riverbend have? *Rubric:* 3 = twelve staff and sixty volunteers;; 2 = 72;; 1 = vague;; 0 = none.
+- **EX002 — Where attacks land.** According to Callum, what do most attacks on small charities reach first? *Rubric:* 3 = people;; 2 = people, without explanation;; 1 = systems;; 0 = none.
 - **EX003 — Rule breaking cause.** Why do people break security rules according to Adams and Sasse (1999)? *Rubric:* 3 = the rules do not fit their work;; 2 = fit;; 1 = carelessness;; 0 = none.
 - **EX004 — Shared login cause.** Why do volunteers share one donations login? *Rubric:* 3 = individual accounts were never arranged;; 2 = setup;; 1 = laziness;; 0 = none.
-- **EX005 — Authority example.** Give an example of an authority tactic. *Rubric:* 3 = posing as the bank or a major donor;; 2 = authority;; 1 = none;; 0 = none.
-- **EX006 — Urgency example.** Give an example of an urgency tactic. *Rubric:* 3 = a deadline today;; 2 = deadline;; 1 = none;; 0 = none.
-- **EX007 — Typical attack.** What typical attack might Riverbend face? *Rubric:* 3 = a lookalike wholesaler email with new bank details;; 2 = invoice fraud;; 1 = none;; 0 = none.
-- **EX008 — Campaign weakness.** Why do awareness campaigns often fail according to Bada et al. (2019)? *Rubric:* 3 = fear and assuming knowledge leads to action;; 2 = fear;; 1 = none;; 0 = none.
+- **EX005 — Authority example.** Give an example of an authority tactic. *Rubric:* 3 = posing as the bank or a major donor;; 2 = authority;; 1 = vague;; 0 = none.
+- **EX006 — Urgency example.** Give an example of an urgency tactic. *Rubric:* 3 = a deadline today;; 2 = deadline;; 1 = vague;; 0 = none.
+- **EX007 — Typical attack.** What typical attack might Riverbend face? *Rubric:* 3 = a lookalike wholesaler email with new bank details;; 2 = invoice fraud;; 1 = vague;; 0 = none.
+- **EX008 — Campaign weakness.** Why do awareness campaigns often fail according to Bada et al. (2019)? *Rubric:* 3 = fear and assuming knowledge leads to action;; 2 = fear;; 1 = vague;; 0 = none.
 - **EX009 — SP 800-50r1 content.** What does SP 800-50r1 combine in learning programmes? *Rubric:* 3 = awareness, role-based training and evaluation;; 2 = three;; 1 = lectures;; 0 = none.
 - **EX010 — Practical approach.** What practical approach suits a small charity? *Rubric:* 3 = easy habits, clear procedures and friendly help;; 2 = habits;; 1 = long lectures;; 0 = none.
-- **EX011 — First decision.** What is Ruth's first decision? *Rubric:* 3 = phone suppliers on the number on file before bank changes;; 2 = callback;; 1 = none;; 0 = none.
-- **EX012 — Second decision.** What is Ruth's second decision? *Rubric:* 3 = tell everyone reporting is welcome without blame;; 2 = no blame;; 1 = none;; 0 = none.
-- **EX013 — Third decision.** What is Ruth's third decision? *Rubric:* 3 = replace the shared login with individual accounts;; 2 = accounts;; 1 = none;; 0 = none.
+- **EX011 — First decision.** What is Ruth's first decision? *Rubric:* 3 = phone suppliers on the number on file before bank changes;; 2 = callback;; 1 = vague;; 0 = none.
+- **EX012 — Second decision.** What is Ruth's second decision? *Rubric:* 3 = tell everyone reporting is welcome without blame;; 2 = no blame;; 1 = vague;; 0 = none.
+- **EX013 — Third decision.** What is Ruth's third decision? *Rubric:* 3 = replace the shared login with individual accounts;; 2 = accounts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -136,18 +136,18 @@ Scope may need updating. Volunteers may not read guides.
 ### Exercises
 
 - **EX014 — Out-of-scope item.** Name one item outside Ruth's scope. *Rubric:* 3 = reading anyone's email;; 2 = monitoring;; 1 = reporting;; 0 = none.
-- **EX015 — Scope signatories.** Who signed Ruth's scope? *Rubric:* 3 = the charity manager and trustees' chair;; 2 = two;; 1 = none;; 0 = none.
-- **EX016 — Coordinator idea.** What did the volunteer coordinator suggest? *Rubric:* 3 = include the guide in the induction pack;; 2 = induction;; 1 = none;; 0 = none.
-- **EX017 — Reported link rule.** What must Ruth never do with links in reported emails? *Rubric:* 3 = click them;; 2 = no clicking;; 1 = none;; 0 = none.
+- **EX015 — Scope signatories.** Who signed Ruth's scope? *Rubric:* 3 = the charity manager and trustees' chair;; 2 = two;; 1 = vague;; 0 = none.
+- **EX016 — Coordinator idea.** What did the volunteer coordinator suggest? *Rubric:* 3 = include the guide in the induction pack;; 2 = induction;; 1 = vague;; 0 = none.
+- **EX017 — Reported link rule.** What must Ruth never do with links in reported emails? *Rubric:* 3 = click them;; 2 = no clicking;; 1 = vague;; 0 = none.
 - **EX018 — Record fields.** What does Ruth record about reports? *Rubric:* 3 = date, type and outcome only;; 2 = minimal;; 1 = names;; 0 = none.
 - **EX019 — Serious report.** What does Ruth do with a serious report? *Rubric:* 3 = follow incident steps with the IT volunteer;; 2 = escalate;; 1 = investigate alone;; 0 = none.
 - **EX020 — Simulation risk.** Why are simulations risky for a volunteer charity? *Rubric:* 3 = deception can damage trust;; 2 = trust;; 1 = cost;; 0 = none.
-- **EX021 — Simulation recommendation.** What does Ruth recommend about simulations now? *Rubric:* 3 = none for now;; 2 = none;; 1 = monthly;; 0 = none.
-- **EX022 — Banned lure themes.** Which lure themes are banned if simulations are ever used? *Rubric:* 3 = money, food or personal hardship;; 2 = hardship;; 1 = none;; 0 = none.
-- **EX023 — Results use.** How may simulation results ever be used? *Rubric:* 3 = only as totals, never against anyone;; 2 = aggregate;; 1 = none;; 0 = none.
+- **EX021 — Simulation recommendation.** What does Ruth recommend about simulations now? *Rubric:* 3 = none for now;; 2 = none;; 1 = monthly;; 0 = no answer.
+- **EX022 — Banned lure themes.** Which lure themes are banned if simulations are ever used? *Rubric:* 3 = money, food or personal hardship;; 2 = hardship;; 1 = vague;; 0 = none.
+- **EX023 — Results use.** How may simulation results ever be used? *Rubric:* 3 = only as totals, never against anyone;; 2 = aggregate;; 1 = vague;; 0 = none.
 - **EX024 — Procedure practice.** How should procedures be practised? *Rubric:* 3 = announced role-play;; 2 = role-play;; 1 = secret tests;; 0 = none.
-- **EX025 — Why habits matter more.** Why do safe habits matter even more in charities? *Rubric:* 3 = volunteers can leave if mistrusted;; 2 = volunteers;; 1 = none;; 0 = none.
-- **EX026 — Pinned summary.** Where does Ruth keep her safe practice summary? *Rubric:* 3 = pinned above her desk;; 2 = desk;; 1 = none;; 0 = none.
+- **EX025 — Why habits matter more.** Why do safe habits matter even more in charities? *Rubric:* 3 = volunteers can leave if mistrusted;; 2 = volunteers;; 1 = vague;; 0 = none.
+- **EX026 — Pinned summary.** Where does Ruth keep her safe practice summary? *Rubric:* 3 = pinned above her desk;; 2 = desk;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -217,16 +217,16 @@ Maps go out of date. Second approvers need training.
 
 - **EX027 — Data locations.** Where do donor names and addresses sit? *Rubric:* 3 = the donations spreadsheet;; 2 = spreadsheet;; 1 = rota app;; 0 = none.
 - **EX028 — Treasurer access.** How many of five systems can the treasurer reach in the lab? *Rubric:* 3 = 5;; 2 = all;; 1 = 2;; 0 = none.
-- **EX029 — Payment single point.** Why is the treasurer a single point of failure? *Rubric:* 3 = only she can approve payments;; 2 = approval;; 1 = none;; 0 = none.
-- **EX030 — Pressure link.** How does a waiting invoice help attackers? *Rubric:* 3 = pressure builds that urgent fakes exploit;; 2 = urgency;; 1 = none;; 0 = none.
-- **EX031 — Social media risk.** What is the social media single point? *Rubric:* 3 = only one volunteer knows the password;; 2 = one person;; 1 = none;; 0 = none.
-- **EX032 — Bank alerts.** Where did bank alerts originally go? *Rubric:* 3 = only the treasurer's personal email;; 2 = personal;; 1 = none;; 0 = none.
-- **EX033 — Payment fix.** What fixes the payment single point? *Rubric:* 3 = a second authorised trustee with callbacks;; 2 = second approver;; 1 = none;; 0 = none.
+- **EX029 — Payment single point.** Why is the treasurer a single point of failure? *Rubric:* 3 = only she can approve payments;; 2 = approval;; 1 = vague;; 0 = none.
+- **EX030 — Pressure link.** How does a waiting invoice help attackers? *Rubric:* 3 = pressure builds that urgent fakes exploit;; 2 = urgency;; 1 = vague;; 0 = none.
+- **EX031 — Social media risk.** What is the social media single point? *Rubric:* 3 = only one volunteer knows the password;; 2 = one person;; 1 = vague;; 0 = none.
+- **EX032 — Bank alerts.** Where did bank alerts originally go? *Rubric:* 3 = only the treasurer's personal email;; 2 = personal;; 1 = vague;; 0 = none.
+- **EX033 — Payment fix.** What fixes the payment single point? *Rubric:* 3 = a second authorised trustee with callbacks;; 2 = second approver;; 1 = vague;; 0 = none.
 - **EX034 — Social media fix.** How are social media accounts secured? *Rubric:* 3 = individual logins with two-step verification;; 2 = two-step;; 1 = shared password;; 0 = none.
-- **EX035 — Donor data limit.** What limit applies to donor data? *Rubric:* 3 = only what thank-you letters need;; 2 = minimal;; 1 = none;; 0 = none.
-- **EX036 — Fix checks.** How did Ruth check the bank alert fix? *Rubric:* 3 = a test alert reached the shared mailbox;; 2 = test;; 1 = none;; 0 = none.
-- **EX037 — Unchecked fixes.** Why check fixes according to Callum? *Rubric:* 3 = well-meant changes often fail silently;; 2 = silent failure;; 1 = none;; 0 = none.
-- **EX038 — Rota access gap.** What gap did Ruth find for rota access? *Rubric:* 3 = some staff who need it lack it;; 2 = missing access;; 1 = none;; 0 = none.
+- **EX035 — Donor data limit.** What limit applies to donor data? *Rubric:* 3 = only what thank-you letters need;; 2 = minimal;; 1 = vague;; 0 = none.
+- **EX036 — Fix checks.** How did Ruth check the bank alert fix? *Rubric:* 3 = a test alert reached the shared mailbox;; 2 = test;; 1 = vague;; 0 = none.
+- **EX037 — Unchecked fixes.** Why check fixes according to Callum? *Rubric:* 3 = well-meant changes often fail silently;; 2 = silent failure;; 1 = vague;; 0 = none.
+- **EX038 — Rota access gap.** What gap did Ruth find for rota access? *Rubric:* 3 = some staff who need it lack it;; 2 = missing access;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -292,16 +292,16 @@ Small test. Plans slip without review.
 ### Exercises
 
 - **EX039 — Old reporting.** How were suspicious messages reported before? *Rubric:* 3 = mentioned to whoever was nearby;; 2 = informal;; 1 = button;; 0 = none.
-- **EX040 — Reply promise.** What does the IT volunteer do for every report? *Rubric:* 3 = replies with a short verdict and thanks;; 2 = feedback;; 1 = none;; 0 = none.
+- **EX040 — Reply promise.** What does the IT volunteer do for every report? *Rubric:* 3 = replies with a short verdict and thanks;; 2 = feedback;; 1 = vague;; 0 = none.
 - **EX041 — Lab success.** How many volunteers reported the suspicious message correctly in the lab? *Rubric:* 3 = 7 of 8;; 2 = seven;; 1 = 8 of 8;; 0 = none.
-- **EX042 — Lab median time.** What was the median reporting time in the lab? *Rubric:* 3 = 40 seconds;; 2 = under a minute;; 1 = none;; 0 = none.
+- **EX042 — Lab median time.** What was the median reporting time in the lab? *Rubric:* 3 = 40 seconds;; 2 = under a minute;; 1 = vague;; 0 = none.
 - **EX043 — Genuine forward.** How did Ruth treat the volunteer who forwarded a genuine message? *Rubric:* 3 = as a useful report;; 2 = useful;; 1 = mistake;; 0 = none.
-- **EX044 — Phone fix.** What fixed the phone problem? *Rubric:* 3 = adding the report address as a contact;; 2 = contact;; 1 = none;; 0 = none.
-- **EX045 — Unsure line.** What line did Ruth add to the guide? *Rubric:* 3 = if unsure, report it;; 2 = unsure;; 1 = none;; 0 = none.
-- **EX046 — Week two.** What happens in week two of the plan? *Rubric:* 3 = individual accounts replace the shared login;; 2 = accounts;; 1 = none;; 0 = none.
-- **EX047 — Week four.** What happens in week four? *Rubric:* 3 = review reports and problems with the manager;; 2 = review;; 1 = none;; 0 = none.
-- **EX048 — Plan style.** Why prefer a short concrete plan? *Rubric:* 3 = it is more likely to be completed;; 2 = completion;; 1 = none;; 0 = none.
-- **EX049 — Deceptive tests view.** What is Ruth's view on deceptive tests? *Rubric:* 3 = unnecessary and could harm trust;; 2 = unnecessary;; 1 = none;; 0 = none.
+- **EX044 — Phone fix.** What fixed the phone problem? *Rubric:* 3 = adding the report address as a contact;; 2 = contact;; 1 = vague;; 0 = none.
+- **EX045 — Unsure line.** What line did Ruth add to the guide? *Rubric:* 3 = if unsure, report it;; 2 = unsure;; 1 = vague;; 0 = none.
+- **EX046 — Week two.** What happens in week two of the plan? *Rubric:* 3 = individual accounts replace the shared login;; 2 = accounts;; 1 = vague;; 0 = none.
+- **EX047 — Week four.** What happens in week four? *Rubric:* 3 = review reports and problems with the manager;; 2 = review;; 1 = vague;; 0 = none.
+- **EX048 — Plan style.** Why prefer a short concrete plan? *Rubric:* 3 = it is more likely to be completed;; 2 = completion;; 1 = vague;; 0 = none.
+- **EX049 — Deceptive tests view.** What is Ruth's view on deceptive tests? *Rubric:* 3 = unnecessary and could harm trust;; 2 = unnecessary;; 1 = vague;; 0 = none.
 - **EX050 — Review timing.** When should Ruth review the plan? *Rubric:* 3 = after three months;; 2 = three months;; 1 = never;; 0 = none.
 
 ### Synthesis

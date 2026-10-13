@@ -96,11 +96,11 @@ Políticas reais incluem contexto que as fórmulas omitem, como emergências. A 
 
 ### Exercícios
 
-- **EX001 — Duas leituras.** Escreva em lógica as duas leituras da regra de reembolso. *Rubrica:* 3 = M OR (S AND R) e (M OR S) AND R;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX001 — Duas leituras.** Escreva em lógica as duas leituras da regra de reembolso. *Rubrica:* 3 = M OR (S AND R) e (M OR S) AND R;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX002 — Linhas divergentes.** Segundo o laboratório, em quantas linhas as leituras divergem, e o que elas têm em comum? *Rubrica:* 3 = 2 linhas, ambas um gerente sem recibo;; 2 = contagem e padrão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Linhas divergentes.** Segundo o laboratório, em quantas linhas as leituras divergem, e o que elas têm em comum? *Rubrica:* 3 = 2 linhas, ambas um gerente sem recibo;; 2 = contagem e padrão;; 1 = vago;; 0 = nenhuma.
 
-- **EX003 — Lacuna da política.** Que lacuna Lucas encontrou na política de acesso remoto? *Rubrica:* 3 = terceirizados fazendo manutenção nos scanners do armazém;; 2 = caso;; 1 = nenhuma;; 0 = nenhuma.
+- **EX003 — Lacuna da política.** Que lacuna Lucas encontrou na política de acesso remoto? *Rubrica:* 3 = terceirizados fazendo manutenção nos scanners do armazém;; 2 = caso;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -140,7 +140,7 @@ Os inventários nunca ficam completos na primeira passada. As fronteiras da resp
 
 - **EX004 — Fraqueza herdada.** Por que uma plataforma de loja segura ainda pode ser vulnerável? *Rubrica:* 3 = herda as fraquezas de um servidor sem patches abaixo dela;; 2 = camada inferior;; 1 = não pode;; 0 = nenhuma.
 
-- **EX005 — Item sem dono.** Que responsabilidade não tinha dono na Fernway? *Rubrica:* 3 = revisar o acesso do parceiro de entregas aos endereços dos clientes;; 2 = nomeada;; 1 = nenhuma;; 0 = nenhuma.
+- **EX005 — Item sem dono.** Que responsabilidade não tinha dono na Fernway? *Rubrica:* 3 = revisar o acesso do parceiro de entregas aos endereços dos clientes;; 2 = nomeada;; 1 = vago;; 0 = nenhuma.
 
 - **EX006 — Surpresas do inventário.** Que duas surpresas o inventário revelou? *Rubrica:* 3 = notebook antigo de etiquetas com dados de clientes; cópia de teste do banco num bucket na nuvem;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
 
@@ -266,7 +266,7 @@ Os padrões de ataque mudam; as listas precisam de atualização regular. Os con
 
 - **EX013 — Integridade no varejo.** Dê um exemplo de integridade no varejo. *Rubrica:* 3 = preços e pedidos não podem ser alterados sem permissão;; 2 = exemplo;; 1 = confidencialidade;; 0 = nenhuma.
 
-- **EX014 — Credential stuffing.** O que é credential stuffing, e um controle contra ele? *Rubrica:* 3 = entrar com senhas vazadas em outros sites; rate limiting, verificação de senhas vazadas ou MFA;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX014 — Credential stuffing.** O que é credential stuffing, e um controle contra ele? *Rubrica:* 3 = entrar com senhas vazadas em outros sites; rate limiting, verificação de senhas vazadas ou MFA;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX015 — Controle dos dados bancários.** Como as alterações de dados bancários de fornecedores devem ser verificadas? *Rubrica:* 3 = ligação para um número conhecido mais duas aprovações;; 2 = os dois;; 1 = resposta por e-mail;; 0 = nenhuma.
 
@@ -335,7 +335,7 @@ Os grafos omitem arestas que ninguém conhece. O comprimento do caminho é um in
 
 ### Exercícios
 
-- **EX016 — Significado das arestas.** O que as arestas podem representar num grafo de segurança? *Rubrica:* 3 = logins, conexões de rede ou permissões;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX016 — Significado das arestas.** O que as arestas podem representar num grafo de segurança? *Rubrica:* 3 = logins, conexões de rede ou permissões;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX017 — Mudança de caminho no laboratório.** O que aconteceu com o caminho mais curto depois da remoção da credencial salva? *Rubrica:* 3 = passou de 3 para 4 saltos, pelo sistema do armazém;; 2 = mais longo;; 1 = inalterado;; 0 = nenhuma.
 
@@ -377,7 +377,7 @@ Separar redes pode quebrar dependências não documentadas; teste antes. Os serv
 
 ### Exercícios
 
-- **EX019 — Redes interligadas.** Que risco a interligação das redes do armazém e do escritório cria? *Rubrica:* 3 = um scanner comprometido consegue alcançar diretamente os notebooks do financeiro;; 2 = alcance;; 1 = nenhuma;; 0 = nenhuma.
+- **EX019 — Redes interligadas.** Que risco a interligação das redes do armazém e do escritório cria? *Rubrica:* 3 = um scanner comprometido consegue alcançar diretamente os notebooks do financeiro;; 2 = alcance;; 1 = vago;; 0 = nenhuma.
 
 - **EX020 — Conta do registrador.** Por que proteger fortemente a conta do registrador do domínio? *Rubrica:* 3 = seu comprometimento permite redirecionar os clientes e possivelmente obter certificados;; 2 = redirecionar;; 1 = não é importante;; 0 = nenhuma.
 
@@ -421,7 +421,7 @@ Servidores da biblioteca padrão servem para aprender; a produção usa framewor
 
 - **EX022 — AuthN versus AuthZ.** Qual é a diferença entre autenticação e autorização? *Rubrica:* 3 = a autenticação estabelece a identidade; a autorização decide as ações permitidas;; 2 = as duas;; 1 = iguais;; 0 = nenhuma.
 
-- **EX023 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = gerente ajustando o estoque de outra loja; a loja não era verificada;; 2 = nomeado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX023 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = gerente ajustando o estoque de outra loja; a loja não era verificada;; 2 = nomeado;; 1 = vago;; 0 = nenhuma.
 
 - **EX024 — Nunca registrado.** O que nunca pode aparecer nos logs? *Rubrica:* 3 = senhas ou tokens de sessão;; 2 = os dois;; 1 = nomes de usuário;; 0 = nenhuma.
 
@@ -461,9 +461,9 @@ Dividir as contas exige mudanças e testes na aplicação. Dados mascarados aind
 
 ### Exercícios
 
-- **EX025 — Impacto do comprometimento.** Como contas de banco separadas limitam um comprometimento da loja? *Rubrica:* 3 = o atacante obtém apenas os direitos limitados da conta da loja;; 2 = limitado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Impacto do comprometimento.** Como contas de banco separadas limitam um comprometimento da loja? *Rubrica:* 3 = o atacante obtém apenas os direitos limitados da conta da loja;; 2 = limitado;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Contagem de injeções.** Quantas consultas injetáveis Lucas encontrou no total? *Rubrica:* 3 = três;; 2 = três;; 1 = uma;; 0 = nenhuma.
+- **EX026 — Contagem de injeções.** Quantas consultas injetáveis Lucas encontrou no total? *Rubrica:* 3 = três;; 2 = três, sem justificativa;; 1 = uma;; 0 = nenhuma.
 
 - **EX027 — Regra dos dados de teste.** Que dados os ambientes de teste devem usar? *Rubrica:* 3 = dados sintéticos ou mascarados;; 2 = sintéticos;; 1 = reais;; 0 = nenhuma.
 
@@ -503,7 +503,7 @@ As leis variam conforme a jurisdição; busque orientação em caso de dúvida. 
 
 ### Exercícios
 
-- **EX028 — Conteúdo da autorização.** O que uma autorização de teste deve especificar? *Rubrica:* 3 = o quê, como, quando, por quem e um contato de emergência;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Conteúdo da autorização.** O que uma autorização de teste deve especificar? *Rubrica:* 3 = o quê, como, quando, por quem e um contato de emergência;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Dados dos trabalhos.** O que Lucas usa como exemplos nos trabalhos do curso? *Rubrica:* 3 = registros sintéticos, não dados de associados;; 2 = sintéticos;; 1 = reais;; 0 = nenhuma.
 
@@ -545,7 +545,7 @@ Remover os direitos de administrador aumenta os pedidos de suporte no início. A
 
 ### Exercícios
 
-- **EX031 — Risco do administrador local.** Por que ter todo usuário como administrador local é arriscado? *Rubrica:* 3 = o malware roda com direitos totais;; 2 = direitos totais;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Risco do administrador local.** Por que ter todo usuário como administrador local é arriscado? *Rubrica:* 3 = o malware roda com direitos totais;; 2 = direitos totais;; 1 = vago;; 0 = nenhuma.
 
 - **EX032 — Correção do root compartilhado.** O que substitui a senha de root compartilhada? *Rubrica:* 3 = contas individuais com elevação registrada;; 2 = individuais;; 1 = nova senha compartilhada;; 0 = nenhuma.
 
@@ -610,7 +610,7 @@ Os intervalos supõem amostragem aleatória; amostras por conveniência os inval
 
 - **EX034 — Por que aleatória.** Por que a amostra da auditoria precisa ser aleatória? *Rubrica:* 3 = amostras dirigidas enviesam a estimativa;; 2 = viés;; 1 = mais rápido;; 0 = nenhuma.
 
-- **EX035 — Intervalo do laboratório.** Que intervalo o laboratório relatou? *Rubrica:* 3 = cerca de 9,0 a 18,4 por cento, aproximadamente 361 a 735 contas;; 2 = intervalo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Intervalo do laboratório.** Que intervalo o laboratório relatou? *Rubrica:* 3 = cerca de 9,0 a 18,4 por cento, aproximadamente 361 a 735 contas;; 2 = intervalo;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — De quatro para dois.** Por que os cliques em phishing caíram pela metade, de quatro para dois, é uma evidência fraca? *Rubrica:* 3 = contagens minúsculas tornam a mudança sem significado, explicável pelo acaso;; 2 = números pequenos;; 1 = forte;; 0 = nenhuma.
 
@@ -650,9 +650,9 @@ Os modelos de papéis derivam sem revisão regular. Os processos de recuperaçã
 
 ### Exercícios
 
-- **EX037 — Privilege creep.** O que é privilege creep, e que processo o impede? *Rubrica:* 3 = acesso que se acumula nas mudanças de função; o processo de movimentação remove os papéis antigos;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Privilege creep.** O que é privilege creep, e que processo o impede? *Rubrica:* 3 = acesso que se acumula nas mudanças de função; o processo de movimentação remove os papéis antigos;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Combinação tóxica.** Que combinação tóxica Lucas bloqueou? *Rubrica:* 3 = comprador que também pode aprovar pagamentos a fornecedores;; 2 = nomeada;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Combinação tóxica.** Que combinação tóxica Lucas bloqueou? *Rubrica:* 3 = comprador que também pode aprovar pagamentos a fornecedores;; 2 = nomeada;; 1 = vago;; 0 = nenhuma.
 
 - **EX039 — Fraqueza dos códigos por SMS.** Por que os códigos por SMS são mais fracos do que as passkeys? *Rubrica:* 3 = podem ser capturados por phishing e repassados em tempo real; as passkeys se vinculam ao site verdadeiro;; 2 = repasse;; 1 = mais fortes;; 0 = nenhuma.
 
@@ -785,7 +785,7 @@ As métricas de cobertura medem a presença dos controles, não sua eficácia. D
 
 ### Exercícios
 
-- **EX043 — Definição precisa.** Por que definir com precisão o que é atender à baseline? *Rubrica:* 3 = para que os números signifiquem o mesmo todo mês e não possam ser inflados por redefinição;; 2 = consistência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Definição precisa.** Por que definir com precisão o que é atender à baseline? *Rubrica:* 3 = para que os números signifiquem o mesmo todo mês e não possam ser inflados por redefinição;; 2 = consistência;; 1 = vago;; 0 = nenhuma.
 
 - **EX044 — Departamento mais fraco.** Que departamento teve a cobertura resistente a phishing mais fraca no laboratório, e por quê? *Rubrica:* 3 = o armazém, 2 de 15, scanners compartilhados sem dispositivos individuais;; 2 = armazém;; 1 = financeiro;; 0 = nenhuma.
 
@@ -829,7 +829,7 @@ As visões gerais simplificam; os detalhes ficam em documentos de apoio. Os atri
 
 - **EX046 — Não é uma lista de produtos.** Por que uma arquitetura de segurança não é uma lista de produtos? *Rubrica:* 3 = descreve princípios, atributos, serviços, conexões e responsáveis;; 2 = estrutura;; 1 = é sim;; 0 = nenhuma.
 
-- **EX047 — Uso dos atributos.** Como o mapa de atributos ajuda quando alguém propõe cortar um serviço? *Rubrica:* 3 = mostra qual valor de negócio seria enfraquecido;; 2 = valor;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Uso dos atributos.** Como o mapa de atributos ajuda quando alguém propõe cortar um serviço? *Rubrica:* 3 = mostra qual valor de negócio seria enfraquecido;; 2 = valor;; 1 = vago;; 0 = nenhuma.
 
 - **EX048 — Efeito no conselho.** O que a visão geral mudou para o conselho da Fernway? *Rubrica:* 3 = passaram a ver a segurança como um projeto coerente, e não como compras;; 2 = coerente;; 1 = nada;; 0 = nenhuma.
 
@@ -871,7 +871,7 @@ Chaves gerenciadas pelo provedor reduzem o ônus, mas acrescentam dependência. 
 
 - **EX049 — Assinatura versus MAC.** O que uma assinatura oferece que um MAC não oferece? *Rubrica:* 3 = verificação pública sem a capacidade de assinar;; 2 = verificação pública;; 1 = o mesmo;; 0 = nenhuma.
 
-- **EX050 — Segredo de webhook compartilhado.** Por que um único segredo de webhook para teste e produção é um problema? *Rubrica:* 3 = um vazamento em teste permitiria forjar atualizações em produção;; 2 = forjar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Segredo de webhook compartilhado.** Por que um único segredo de webhook para teste e produção é um problema? *Rubrica:* 3 = um vazamento em teste permitiria forjar atualizações em produção;; 2 = forjar;; 1 = vago;; 0 = nenhuma.
 
 - **EX051 — Principal fonte de falhas.** De onde vem a maioria das falhas criptográficas em pequenas organizações? *Rubrica:* 3 = do manuseio das chaves, e não de algoritmos fracos;; 2 = chaves;; 1 = algoritmos;; 0 = nenhuma.
 
@@ -911,11 +911,11 @@ A atribuição não aleatória limita as afirmações causais. O uso do botão d
 
 ### Exercícios
 
-- **EX052 — Partes da pergunta.** Que quatro partes a pergunta de Lucas nomeia? *Rubrica:* 3 = população, intervenção, comparação e desfecho;; 2 = três das quatro;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Partes da pergunta.** Que quatro partes a pergunta de Lucas nomeia? *Rubrica:* 3 = população, intervenção, comparação e desfecho;; 2 = três das quatro;; 1 = vago;; 0 = nenhuma.
 
 - **EX053 — Por que não um levantamento.** Por que Lucas rejeitou um levantamento como método principal? *Rubrica:* 3 = os autorrelatos exageram o bom comportamento;; 2 = viés;; 1 = custo;; 0 = nenhuma.
 
-- **EX054 — Condição das células pequenas.** Por que o comitê exigiu agrupar as lojas pequenas? *Rubrica:* 3 = para que o comportamento individual não possa ser inferido a partir do número de uma loja;; 2 = privacidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Condição das células pequenas.** Por que o comitê exigiu agrupar as lojas pequenas? *Rubrica:* 3 = para que o comportamento individual não possa ser inferido a partir do número de uma loja;; 2 = privacidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -955,7 +955,7 @@ Os princípios podem entrar em conflito, como o menor privilégio versus a aceit
 
 - **EX055 — Padrão fail-safe.** Como a Fernway aplica os padrões fail-safe? *Rubrica:* 3 = as contas de novos funcionários começam sem acesso;; 2 = sem acesso;; 1 = acesso aberto;; 0 = nenhuma.
 
-- **EX056 — Aceitabilidade.** Por que a aceitabilidade psicológica importa nas lojas? *Rubrica:* 3 = controles que não se encaixam nas rotinas são contornados;; 2 = contorno;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Aceitabilidade.** Por que a aceitabilidade psicológica importa nas lojas? *Rubrica:* 3 = controles que não se encaixam nas rotinas são contornados;; 2 = contorno;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Achado do aplicativo de escalas.** O que os princípios revelaram sobre o aplicativo de escalas? *Rubrica:* 3 = todo gerente podia ver todas as lojas, violando o menor privilégio;; 2 = menor privilégio;; 1 = nada;; 0 = nenhuma.
 
@@ -995,7 +995,7 @@ Os padrões genéricos podem deixar passar detalhes locais. As lições dos caso
 
 ### Exercícios
 
-- **EX058 — Padrão do fornecedor.** Que arranjo da Fernway correspondia ao padrão do fornecedor? *Rubrica:* 3 = a conta de VPN permanente e ampla do terceirizado de montagem de lojas;; 2 = terceirizado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Padrão do fornecedor.** Que arranjo da Fernway correspondia ao padrão do fornecedor? *Rubrica:* 3 = a conta de VPN permanente e ampla do terceirizado de montagem de lojas;; 2 = terceirizado;; 1 = vago;; 0 = nenhuma.
 
 - **EX059 — Correção do bucket.** O que Lucas recomendou para o bucket na nuvem? *Rubrica:* 3 = mover a pasta de exportação para um bucket privado separado;; 2 = separar;; 1 = apagar as imagens;; 0 = nenhuma.
 
@@ -1037,11 +1037,11 @@ Os modelos envelhecem à medida que os sistemas mudam. O STRIDE encontra categor
 
 ### Exercícios
 
-- **EX061 — Validar o modelo.** O que o desenvolvedor e o gerente do armazém acrescentaram? *Rubrica:* 3 = uma importação noturna de preços de um fornecedor e um upload manual de planilha;; 2 = um fluxo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX061 — Validar o modelo.** O que o desenvolvedor e o gerente do armazém acrescentaram? *Rubrica:* 3 = uma importação noturna de preços de um fornecedor e um upload manual de planilha;; 2 = um fluxo;; 1 = vago;; 0 = nenhuma.
 
-- **EX062 — Travessia sem validação.** Por que o upload de planilha é uma preocupação? *Rubrica:* 3 = atravessa uma fronteira sem validação e poderia mudar preços;; 2 = validação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Travessia sem validação.** Por que o upload de planilha é uma preocupação? *Rubrica:* 3 = atravessa uma fronteira sem validação e poderia mudar preços;; 2 = validação;; 1 = vago;; 0 = nenhuma.
 
-- **EX063 — Achado de repúdio.** Que lacuna de repúdio o STRIDE encontrou? *Rubrica:* 3 = as mudanças de preço não são registradas com o usuário;; 2 = logging;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Achado de repúdio.** Que lacuna de repúdio o STRIDE encontrou? *Rubrica:* 3 = as mudanças de preço não são registradas com o usuário;; 2 = logging;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1149,11 +1149,11 @@ As escalas qualitativas escondem a incerteza. Equipes pequenas podem compartilha
 
 ### Exercícios
 
-- **EX067 — Por que uma gerente de loja.** Por que Lucas envolveu uma gerente de loja? *Rubrica:* 3 = as pessoas que operam o processo sabem onde ele falha;; 2 = conhecimento local;; 1 = nenhuma;; 0 = nenhuma.
+- **EX067 — Por que uma gerente de loja.** Por que Lucas envolveu uma gerente de loja? *Rubrica:* 3 = as pessoas que operam o processo sabem onde ele falha;; 2 = conhecimento local;; 1 = vago;; 0 = nenhuma.
 
 - **EX068 — Diferenças de classificação.** O que a comparação das classificações independentes revelou? *Rubrica:* 3 = erros passados na retirada conhecidos só pela gerente da loja;; 2 = informação nova;; 1 = nada;; 0 = nenhuma.
 
-- **EX069 — Tratamento da retirada pela pessoa errada.** Como a retirada pela pessoa errada foi tratada? *Rubrica:* 3 = um código de retirada por SMS conferido no balcão;; 2 = código;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Tratamento da retirada pela pessoa errada.** Como a retirada pela pessoa errada foi tratada? *Rubrica:* 3 = um código de retirada por SMS conferido no balcão;; 2 = código;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1191,7 +1191,7 @@ A adaptação pode descambar para o enfraquecimento dos controles. A evidência 
 
 ### Exercícios
 
-- **EX070 — Área esquecida.** Que área a Fernway nunca havia considerado? *Rubrica:* 3 = o descarte de mídias dos discos rígidos dos caixas antigos;; 2 = descarte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX070 — Área esquecida.** Que área a Fernway nunca havia considerado? *Rubrica:* 3 = o descarte de mídias dos discos rígidos dos caixas antigos;; 2 = descarte;; 1 = vago;; 0 = nenhuma.
 
 - **EX071 — Revisão de auditoria adaptada.** Como a revisão de auditoria foi adaptada? *Rubrica:* 3 = uma revisão mensal de trinta minutos dos alertas de identidade;; 2 = revisão mensal;; 1 = um centro de operações de segurança;; 0 = nenhuma.
 
@@ -1259,11 +1259,11 @@ As permissões internas das aplicações são invisíveis para o verificador. As
 
 ### Exercícios
 
-- **EX073 — Excesso encontrado.** Quantos usuários tinham permissões em excesso, e por quê? *Rubrica:* 3 = três: dois resquícios da promoção e um direito de dono do banco de uma correção urgente;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX073 — Excesso encontrado.** Quantos usuários tinham permissões em excesso, e por quê? *Rubrica:* 3 = três: dois resquícios da promoção e um direito de dono do banco de uma correção urgente;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX074 — Conferir as definições.** Por que confirmar as definições das funções antes de relatar? *Rubrica:* 3 = definições erradas causam alarmes falsos;; 2 = exatidão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX074 — Conferir as definições.** Por que confirmar as definições das funções antes de relatar? *Rubrica:* 3 = definições erradas causam alarmes falsos;; 2 = exatidão;; 1 = vago;; 0 = nenhuma.
 
-- **EX075 — Campo de exceções.** Que melhoria Lucas sugeriu para as exceções? *Rubrica:* 3 = um campo de exceção aprovada com datas de expiração;; 2 = expiração;; 1 = nenhuma;; 0 = nenhuma.
+- **EX075 — Campo de exceções.** Que melhoria Lucas sugeriu para as exceções? *Rubrica:* 3 = um campo de exceção aprovada com datas de expiração;; 2 = expiração;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1305,7 +1305,7 @@ As estimativas de esforço são julgamentos grosseiros. As árvores podem deixar
 
 - **EX077 — Ponto fraco das passkeys.** O que se tornou o caminho mais barato com as passkeys? *Rubrica:* 3 = a contingência por e-mail;; 2 = contingência;; 1 = passkeys;; 0 = nenhuma.
 
-- **EX078 — Contribuições dos métodos.** Com o que contribuíram o STRIDE, a árvore e as classificações? *Rubrica:* 3 = amplitude, caminhos do atacante e prioridade;; 2 = dois dos três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Contribuições dos métodos.** Com o que contribuíram o STRIDE, a árvore e as classificações? *Rubrica:* 3 = amplitude, caminhos do atacante e prioridade;; 2 = dois dos três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1385,11 +1385,11 @@ Sem culpados não significa sem responsáveis; os responsáveis pelas correçõe
 
 ### Exercícios
 
-- **EX082 — Por que nenhum alerta.** Por que nenhum alerta disparou? *Rubrica:* 3 = o monitoramento observava a disponibilidade, e não os preços;; 2 = lacuna de monitoramento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX082 — Por que nenhum alerta.** Por que nenhum alerta disparou? *Rubrica:* 3 = o monitoramento observava a disponibilidade, e não os preços;; 2 = lacuna de monitoramento;; 1 = vago;; 0 = nenhuma.
 
 - **EX083 — Não culpar o comprador.** Por que evitar apontar o comprador como a causa? *Rubrica:* 3 = qualquer pessoa sob a mesma pressão e com as mesmas ferramentas poderia errar;; 2 = sistema;; 1 = culpa;; 0 = nenhuma.
 
-- **EX084 — Prova posterior.** O que mostrou que as melhorias funcionaram? *Rubrica:* 3 = o alerta captou um erro de conversão de moeda;; 2 = alerta;; 1 = nenhuma;; 0 = nenhuma.
+- **EX084 — Prova posterior.** O que mostrou que as melhorias funcionaram? *Rubrica:* 3 = o alerta captou um erro de conversão de moeda;; 2 = alerta;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1427,11 +1427,11 @@ Os ritmos escorregam sob pressão de trabalho. As perguntas de mudança dependem
 
 ### Exercícios
 
-- **EX085 — Por que um calendário.** Por que registrar o ritmo de operação por escrito? *Rubrica:* 3 = as tarefas sobrevivem a férias e trocas de pessoal;; 2 = continuidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX085 — Por que um calendário.** Por que registrar o ritmo de operação por escrito? *Rubrica:* 3 = as tarefas sobrevivem a férias e trocas de pessoal;; 2 = continuidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX086 — Gatilho de mudança.** O que dispara uma revisão de segurança de uma mudança? *Rubrica:* 3 = acrescentar um fornecedor, dados novos, um cruzamento de fronteira ou acesso privilegiado;; 2 = gatilho;; 1 = todas as mudanças;; 0 = nenhuma.
 
-- **EX087 — Correção do aplicativo de fidelidade.** Como o aplicativo de fidelidade foi reprojetado? *Rubrica:* 3 = para receber apenas números de associados e saldos de pontos;; 2 = minimizar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX087 — Correção do aplicativo de fidelidade.** Como o aplicativo de fidelidade foi reprojetado? *Rubrica:* 3 = para receber apenas números de associados e saldos de pontos;; 2 = minimizar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1500,7 +1500,7 @@ Os dados sintéticos raramente reproduzem o ruído real. VPNs e aplicativos de v
 
 ### Exercícios
 
-- **EX088 — Problema da primeira regra.** O que havia de errado em sinalizar todos os logins do exterior? *Rubrica:* 3 = compradores em viagem causaram muitos alarmes falsos;; 2 = falsos positivos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX088 — Problema da primeira regra.** O que havia de errado em sinalizar todos os logins do exterior? *Rubrica:* 3 = compradores em viagem causaram muitos alarmes falsos;; 2 = falsos positivos;; 1 = vago;; 0 = nenhuma.
 
 - **EX089 — Escolha da janela.** Por que manter duas horas em vez de uma? *Rubrica:* 3 = uma hora deixou passar três dos quatro ataques;; 2 = falha de detecção;; 1 = mais rápido;; 0 = nenhuma.
 
@@ -1544,9 +1544,9 @@ Zero trust é uma direção, e não um produto. A resiliência adiada deixa a te
 
 - **EX091 — Por que o financeiro primeiro.** Por que começar o zero trust pelo aplicativo financeiro? *Rubrica:* 3 = poucos usuários e alto valor, então as lições são aprendidas com segurança;; 2 = piloto;; 1 = lojas primeiro;; 0 = nenhuma.
 
-- **EX092 — Quatro objetivos de resiliência.** Que quatro objetivos de resiliência Lucas usou? *Rubrica:* 3 = antecipar, resistir, recuperar e adaptar;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX092 — Quatro objetivos de resiliência.** Que quatro objetivos de resiliência Lucas usou? *Rubrica:* 3 = antecipar, resistir, recuperar e adaptar;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX093 — Item adiado.** O que o conselho adiou, e com qual contingência? *Rubrica:* 3 = a segunda região de hospedagem; processo manual de pedidos;; 2 = adiado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX093 — Item adiado.** O que o conselho adiou, e com qual contingência? *Rubrica:* 3 = a segunda região de hospedagem; processo manual de pedidos;; 2 = adiado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1586,9 +1586,9 @@ A tradução pode exagerar os benefícios. Os meios-termos precisam de revisão 
 
 - **EX094 — Enquadramento para o financeiro.** Como Lucas enquadrou o proxy para o financeiro? *Rubrica:* 3 = redução da chance de fraude em pagamentos;; 2 = fraude;; 1 = termos técnicos;; 0 = nenhuma.
 
-- **EX095 — Detecção e lei.** O que Lucas e a assessora documentaram para a regra de detecção? *Rubrica:* 3 = finalidade, minimização ao nível de país, retenção, aviso e uma avaliação de interesse legítimo;; 2 = três itens;; 1 = nenhuma;; 0 = nenhuma.
+- **EX095 — Detecção e lei.** O que Lucas e a assessora documentaram para a regra de detecção? *Rubrica:* 3 = finalidade, minimização ao nível de país, retenção, aviso e uma avaliação de interesse legítimo;; 2 = três itens;; 1 = vago;; 0 = nenhuma.
 
-- **EX096 — Meio-termo temporário.** Qual foi o meio-termo para as contas temporárias? *Rubrica:* 3 = contas limitadas pré-criadas, ativadas na chegada e que expiram no fim da temporada;; 2 = limitadas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX096 — Meio-termo temporário.** Qual foi o meio-termo para as contas temporárias? *Rubrica:* 3 = contas limitadas pré-criadas, ativadas na chegada e que expiram no fim da temporada;; 2 = limitadas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1643,11 +1643,11 @@ Poucas unidades tornam as estimativas instáveis. As tendências paralelas não 
 
 ### Exercícios
 
-- **EX097 — Resultado do DiD.** Qual foi o difference-in-differences no laboratório? *Rubrica:* 3 = 0,29 denúncia por funcionário por mês;; 2 = positivo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX097 — Resultado do DiD.** Qual foi o difference-in-differences no laboratório? *Rubrica:* 3 = 0,29 denúncia por funcionário por mês;; 2 = positivo;; 1 = vago;; 0 = nenhuma.
 
-- **EX098 — Ameaça de construto.** Que ameaça à validade de construto Lucas apontou? *Rubrica:* 3 = o uso do botão mede a disposição, e não a capacidade de detecção;; 2 = construto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX098 — Ameaça de construto.** Que ameaça à validade de construto Lucas apontou? *Rubrica:* 3 = o uso do botão mede a disposição, e não a capacidade de detecção;; 2 = construto;; 1 = vago;; 0 = nenhuma.
 
-- **EX099 — Desenho mais forte.** O que Lucas recomendou em seguida? *Rubrica:* 3 = implantação aleatorizada por sorteio;; 2 = aleatorizar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX099 — Desenho mais forte.** O que Lucas recomendou em seguida? *Rubrica:* 3 = implantação aleatorizada por sorteio;; 2 = aleatorizar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1706,7 +1706,7 @@ Os pesos refletem opiniões. As notas de um grupo pequeno podem compartilhar vie
 
 ### Exercícios
 
-- **EX100 — Critérios primeiro.** Por que definir os critérios antes da pontuação? *Rubrica:* 3 = para que a opção favorita não possa moldá-los;; 2 = viés;; 1 = nenhuma;; 0 = nenhuma.
+- **EX100 — Critérios primeiro.** Por que definir os critérios antes da pontuação? *Rubrica:* 3 = para que a opção favorita não possa moldá-los;; 2 = viés;; 1 = vago;; 0 = nenhuma.
 
 - **EX101 — Totais.** Quais foram os totais ponderados no laboratório? *Rubrica:* 3 = A 3,05, B 4,10;; 2 = B maior;; 1 = A maior;; 0 = nenhuma.
 
@@ -1748,11 +1748,11 @@ Projetos reais atrasam, afetando os cronogramas dos estudantes. Os patrocinadore
 
 ### Exercícios
 
-- **EX103 — Área excluída.** O que o Dr. Bellini exigiu que fosse excluído? *Rubrica:* 3 = os sistemas internos de segurança física dos robôs;; 2 = segurança dos robôs;; 1 = nenhuma;; 0 = nenhuma.
+- **EX103 — Área excluída.** O que o Dr. Bellini exigiu que fosse excluído? *Rubrica:* 3 = os sistemas internos de segurança física dos robôs;; 2 = segurança dos robôs;; 1 = vago;; 0 = nenhuma.
 
-- **EX104 — Por que listar exclusões.** Por que escrever as exclusões na proposta? *Rubrica:* 3 = para evitar o scope creep e alinhar as expectativas do patrocinador;; 2 = escopo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX104 — Por que listar exclusões.** Por que escrever as exclusões na proposta? *Rubrica:* 3 = para evitar o scope creep e alinhar as expectativas do patrocinador;; 2 = escopo;; 1 = vago;; 0 = nenhuma.
 
-- **EX105 — Critérios de antemão.** Por que definir os critérios de avaliação na proposta? *Rubrica:* 3 = para que o sucesso não seja definido depois do fato;; 2 = de antemão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX105 — Critérios de antemão.** Por que definir os critérios de avaliação na proposta? *Rubrica:* 3 = para que o sucesso não seja definido depois do fato;; 2 = de antemão;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1790,11 +1790,11 @@ A rotatividade dos voluntários corrói as mudanças. Os serviços gratuitos pod
 
 ### Exercícios
 
-- **EX106 — Primeiro passo.** Por que Lucas começou ouvindo os voluntários? *Rubrica:* 3 = recomendações que acrescentam etapas a turnos movimentados são ignoradas;; 2 = adequação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX106 — Primeiro passo.** Por que Lucas começou ouvindo os voluntários? *Rubrica:* 3 = recomendações que acrescentam etapas a turnos movimentados são ignoradas;; 2 = adequação;; 1 = vago;; 0 = nenhuma.
 
 - **EX107 — Plano abandonado.** O que Lucas abandonou, e por quê? *Rubrica:* 3 = a implantação de um gerenciador de senhas que os voluntários não sustentariam;; 2 = sustentar;; 1 = custo;; 0 = nenhuma.
 
-- **EX108 — O que se transferiu.** Cite duas coisas que se transferiram da Fernway. *Rubrica:* 3 = classificação, menor privilégio, perguntar quem perceberia;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX108 — O que se transferiu.** Cite duas coisas que se transferiram da Fernway. *Rubrica:* 3 = classificação, menor privilégio, perguntar quem perceberia;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1832,7 +1832,7 @@ Ausência de evidência não é evidência de ausência. Os revisores podem carr
 
 ### Exercícios
 
-- **EX109 — Quatro perguntas.** Que quatro perguntas Lucas fez a cada fonte? *Rubrica:* 3 = autor, método, dados e interesses;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX109 — Quatro perguntas.** Que quatro perguntas Lucas fez a cada fonte? *Rubrica:* 3 = autor, método, dados e interesses;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 - **EX110 — Limite das normas.** O que as normas não fazem? *Rubrica:* 3 = medir resultados;; 2 = resultados;; 1 = tudo;; 0 = nenhuma.
 
@@ -1874,11 +1874,11 @@ As trocas de fornecedor podem invalidar testes anteriores. As tabelas de rastrea
 
 ### Exercícios
 
-- **EX112 — Caminho mais fácil.** Qual era o caminho mais fácil para parar a separação? *Rubrica:* 3 = o link de suporte remoto do fornecedor com senha compartilhada;; 2 = link de suporte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX112 — Caminho mais fácil.** Qual era o caminho mais fácil para parar a separação? *Rubrica:* 3 = o link de suporte remoto do fornecedor com senha compartilhada;; 2 = link de suporte;; 1 = vago;; 0 = nenhuma.
 
 - **EX113 — Troca de fornecedor.** Como Lucas lidou com a troca de fornecedor? *Rubrica:* 3 = revisou os entregáveis afetados, acertou novos marcos, reaproveitou o método e atualizou o que mudou;; 2 = adaptou-se;; 1 = recomeçou;; 0 = nenhuma.
 
-- **EX114 — Controle do link de suporte.** Que requisito substituiu a senha compartilhada de suporte? *Rubrica:* 3 = contas nominais com autenticação multifator e gravação de sessão;; 2 = nominais;; 1 = nenhuma;; 0 = nenhuma.
+- **EX114 — Controle do link de suporte.** Que requisito substituiu a senha compartilhada de suporte? *Rubrica:* 3 = contas nominais com autenticação multifator e gravação de sessão;; 2 = nominais;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1916,9 +1916,9 @@ A disponibilidade do revisor limita a profundidade. Testes adiados para a instal
 
 ### Exercícios
 
-- **EX115 — Teste não executado.** Que teste não pôde ser executado, e por quê? *Rubrica:* 3 = isolamento da rede dos robôs; os robôs não haviam chegado;; 2 = isolamento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX115 — Teste não executado.** Que teste não pôde ser executado, e por quê? *Rubrica:* 3 = isolamento da rede dos robôs; os robôs não haviam chegado;; 2 = isolamento;; 1 = vago;; 0 = nenhuma.
 
-- **EX116 — Achados da revisora.** Que duas lacunas a revisora encontrou? *Rubrica:* 3 = nenhum plano de patches para os controladores dos robôs e nenhum processo de revogação do acesso do fornecedor;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX116 — Achados da revisora.** Que duas lacunas a revisora encontrou? *Rubrica:* 3 = nenhum plano de patches para os controladores dos robôs e nenhum processo de revogação do acesso do fornecedor;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX117 — Responsáveis pelas lacunas.** O que aconteceu com as lacunas remanescentes? *Rubrica:* 3 = cada uma recebeu um responsável na Fernway;; 2 = responsáveis;; 1 = ignoradas;; 0 = nenhuma.
 
@@ -1962,7 +1962,7 @@ As apresentações simplificam; o trabalho escrito guarda os detalhes. Os planos
 
 - **EX119 — Perguntas do conselho.** Sobre o que o conselho perguntou? *Rubrica:* 3 = o risco do provedor de identidade;; 2 = identidade;; 1 = validade;; 0 = nenhuma.
 
-- **EX120 — Conselho final.** Qual foi o conselho de Lucas aos futuros estudantes? *Rubrica:* 3 = tratar todo projeto como hipótese e registrar as incógnitas com cuidado;; 2 = hipótese;; 1 = nenhuma;; 0 = nenhuma.
+- **EX120 — Conselho final.** Qual foi o conselho de Lucas aos futuros estudantes? *Rubrica:* 3 = tratar todo projeto como hipótese e registrar as incógnitas com cuidado;; 2 = hipótese;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

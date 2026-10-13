@@ -205,7 +205,7 @@ Writing scripts that change accounts directly removes the human review step that
 
 - **EX013 — Script rule.** What rule does Priya set for scripts? *Rubric:* 3 = read exports and print only, no changes;; 2 = read-only;; 1 = anything;; 0 = none.
 - **EX014 — Empty date.** What might an empty last sign-in date mean? *Rubric:* 3 = never signed in;; 2 = new account;; 1 = deleted;; 0 = none.
-- **EX015 — Test bug.** What bug did testing reveal? *Rubric:* 3 = disabled account listed as stale;; 2 = disabled;; 1 = none;; 0 = none.
+- **EX015 — Test bug.** What bug did testing reveal? *Rubric:* 3 = disabled account listed as stale;; 2 = disabled;; 1 = vague;; 0 = none.
 - **EX016 — Change path.** How are changes made after a report? *Rubric:* 3 = by a person in the admin console;; 2 = manually;; 1 = script;; 0 = none.
 
 ### Synthesis
@@ -248,7 +248,7 @@ Deleting accounts missing from HR without checking can remove access a legitimat
 
 ### Exercises
 
-- **EX017 — Naming pattern.** What naming prefixes were adopted? *Rubric:* 3 = role- and site-;; 2 = prefixes;; 1 = none;; 0 = none.
+- **EX017 — Naming pattern.** What naming prefixes were adopted? *Rubric:* 3 = role- and site-;; 2 = prefixes;; 1 = vague;; 0 = none.
 - **EX018 — Mismatches.** How many role mismatches were found? *Rubric:* 3 = three;; 2 = 3;; 1 = two;; 0 = none.
 - **EX019 — Restored account.** Whose account was restored? *Rubric:* 3 = a visiting hygienist;; 2 = hygienist;; 1 = nobody;; 0 = none.
 - **EX020 — Disable first.** Why disable rather than delete? *Rubric:* 3 = reversible if records are incomplete;; 2 = reversible;; 1 = faster;; 0 = none.
@@ -386,7 +386,7 @@ Disabling only the directory account misses systems with separate accounts.
 - **EX029 — Joiner timing.** When is a joiner added to the staff list? *Rubric:* 3 = a week before they start;; 2 = week;; 1 = on the day;; 0 = none.
 - **EX030 — Overlap rule.** When is mover overlap allowed? *Rubric:* 3 = only with approval and an end date;; 2 = end date;; 1 = always;; 0 = none.
 - **EX031 — Separate systems.** Which systems need separate leaver steps? *Rubric:* 3 = dental records and payroll;; 2 = two;; 1 = email;; 0 = none.
-- **EX032 — Late account.** What was found late? *Rubric:* 3 = a payroll account active a week late;; 2 = payroll;; 1 = none;; 0 = none.
+- **EX032 — Late account.** What was found late? *Rubric:* 3 = a payroll account active a week late;; 2 = payroll;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -518,7 +518,7 @@ Using daily email accounts as admins exposes administrator control to ordinary p
 
 ### Exercises
 
-- **EX037 — Main risk.** What was the main admin risk found? *Rubric:* 3 = daily email accounts used as admins;; 2 = combined;; 1 = none;; 0 = none.
+- **EX037 — Main risk.** What was the main admin risk found? *Rubric:* 3 = daily email accounts used as admins;; 2 = combined;; 1 = vague;; 0 = none.
 - **EX038 — Emergency account.** Where is the emergency key stored? *Rubric:* 3 = the practice safe;; 2 = safe;; 1 = desk;; 0 = none.
 - **EX039 — Scanner limit.** What can the scanner account do? *Rubric:* 3 = send email only, from the practice network;; 2 = send;; 1 = everything;; 0 = none.
 - **EX040 — Service storage.** Where are service credentials stored? *Rubric:* 3 = password manager with owner and renewal date;; 2 = manager;; 1 = note;; 0 = none.
@@ -564,7 +564,7 @@ Creating dozens of alerts leads staff to ignore them all.
 ### Exercises
 
 - **EX041 — Failure source.** What caused most failures? *Rubric:* 3 = reception tablet with an old password;; 2 = tablet;; 1 = attacker;; 0 = none.
-- **EX042 — Alert list.** Name one configured alert. *Rubric:* 3 = emergency admin account use;; 2 = out of hours admin;; 1 = none;; 0 = none.
+- **EX042 — Alert list.** Name one configured alert. *Rubric:* 3 = emergency admin account use;; 2 = out of hours admin;; 1 = vague;; 0 = none.
 - **EX043 — Alert volume.** Why keep alerts few? *Rubric:* 3 = so each is read and acted on;; 2 = attention;; 1 = cost;; 0 = none.
 - **EX044 — Response order.** What comes first in response? *Rubric:* 3 = confirm with the person and evidence;; 2 = confirm;; 1 = reset;; 0 = none.
 
@@ -651,7 +651,7 @@ Reporting only overall coverage hides a weak role behind a good total.
 
 - **EX045 — Total coverage.** What was total MFA coverage? *Rubric:* 3 = 23 of 28, 82%;; 2 = 82%;; 1 = 100%;; 0 = none.
 - **EX046 — Weakest role.** Which role had the lowest coverage? *Rubric:* 3 = reception, 5 of 8 (62%);; 2 = reception;; 1 = nurse;; 0 = none.
-- **EX047 — Phishing-resistant.** How many had phishing-resistant methods? *Rubric:* 3 = 6 of 28, 21%;; 2 = six;; 1 = none;; 0 = none.
+- **EX047 — Phishing-resistant.** How many had phishing-resistant methods? *Rubric:* 3 = 6 of 28, 21%;; 2 = six;; 1 = vague;; 0 = none.
 - **EX048 — Reception concern.** Why does reception's gap matter? *Rubric:* 3 = handle patient contact data and many emails;; 2 = exposure;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -694,7 +694,7 @@ Leaving local passwords active after SSO preserves a path around MFA and leaver 
 
 ### Exercises
 
-- **EX049 — Rollback plan.** What was the rollback plan? *Rubric:* 3 = keep local passwords active until testing finished;; 2 = local passwords;; 1 = none;; 0 = none.
+- **EX049 — Rollback plan.** What was the rollback plan? *Rubric:* 3 = keep local passwords active until testing finished;; 2 = local passwords;; 1 = vague;; 0 = none.
 - **EX050 — Test finding.** What did testing find? *Rubric:* 3 = a nurse saw manager reports from a double-mapped group;; 2 = mapping;; 1 = nothing;; 0 = none.
 - **EX051 — Bypass risk.** Why disable local passwords? *Rubric:* 3 = they bypass MFA and leaver controls;; 2 = bypass;; 1 = cost;; 0 = none.
 - **EX052 — Local exception.** Which account keeps a local sign-in? *Rubric:* 3 = emergency admin;; 2 = emergency;; 1 = all;; 0 = none.
@@ -876,8 +876,8 @@ Relying on memory for configuration reasons leaves no answer when settings are q
 
 - **EX065 — Runbook test.** How are runbooks tested? *Rubric:* 3 = second IT person follows them unaided;; 2 = follow;; 1 = read;; 0 = none.
 - **EX066 — Session question.** What answers the supplier's session question? *Rubric:* 3 = configuration record with trial result;; 2 = record;; 1 = memory;; 0 = none.
-- **EX067 — Unrecorded change.** What unrecorded change was found? *Rubric:* 3 = a group added by a supplier engineer;; 2 = supplier;; 1 = none;; 0 = none.
-- **EX068 — Change fields.** Name two fields of a change record. *Rubric:* 3 = what and rollback;; 2 = why, approver;; 1 = none;; 0 = none.
+- **EX067 — Unrecorded change.** What unrecorded change was found? *Rubric:* 3 = a group added by a supplier engineer;; 2 = supplier;; 1 = vague;; 0 = none.
+- **EX068 — Change fields.** Name two fields of a change record. *Rubric:* 3 = what and rollback;; 2 = why, approver;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -922,7 +922,7 @@ Declaring a project complete from configuration alone, without verification agai
 - **EX069 — Project scope.** What two goals did the project have? *Rubric:* 3 = payroll SSO and passkeys for dentists;; 2 = two;; 1 = one;; 0 = none.
 - **EX070 — Coverage change.** How did phishing-resistant coverage change? *Rubric:* 3 = 6 to 10 of 28;; 2 = rose;; 1 = fell;; 0 = none.
 - **EX071 — Payroll verification.** How was the payroll change verified? *Rubric:* 3 = local sign-in attempt failed;; 2 = test;; 1 = assumed;; 0 = none.
-- **EX072 — Remaining work.** Name one item of remaining work. *Rubric:* 3 = nurses and reception on app methods;; 2 = reminder credential;; 1 = none;; 0 = none.
+- **EX072 — Remaining work.** Name one item of remaining work. *Rubric:* 3 = nurses and reception on app methods;; 2 = reminder credential;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

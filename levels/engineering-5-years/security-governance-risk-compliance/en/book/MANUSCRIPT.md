@@ -65,8 +65,8 @@ Smooth curves hide lumpy monthly data. Exposure areas ignore how severe each wea
 
 ### Exercises
 
-- **EX001 — Backlog trend.** What does the rate of change of open findings tell the board? *Rubric:* 3 = whether the backlog is shrinking, steady or growing;; 2 = trend;; 1 = none;; 0 = none.
-- **EX002 — Flattening meaning.** Why does the flattening of the curve matter? *Rubric:* 3 = attention fades and hard findings linger;; 2 = lingering;; 1 = none;; 0 = none.
+- **EX001 — Backlog trend.** What does the rate of change of open findings tell the board? *Rubric:* 3 = whether the backlog is shrinking, steady or growing;; 2 = trend;; 1 = vague;; 0 = none.
+- **EX002 — Flattening meaning.** Why does the flattening of the curve matter? *Rubric:* 3 = attention fades and hard findings linger;; 2 = lingering;; 1 = vague;; 0 = none.
 - **EX003 — Exposure integral.** How does Nadia define accumulated exposure? *Rubric:* 3 = area under open weaknesses over time;; 2 = area;; 1 = count;; 0 = none.
 
 ### Synthesis
@@ -109,9 +109,9 @@ Logic captures written rules, not actual practice. Set lists go stale quickly.
 
 ### Exercises
 
-- **EX004 — Emergency clash.** Which two policies clash during an outage? *Rubric:* 3 = mandatory MFA and immediate vendor emergency access;; 2 = conflict;; 1 = none;; 0 = none.
-- **EX005 — Stale accounts.** How many stale control-system accounts did the set difference reveal? *Rubric:* 3 = seven;; 2 = 7;; 1 = none;; 0 = none.
-- **EX006 — Forbidden pairs.** Name one forbidden permission pair. *Rubric:* 3 = create supplier with approve payment;; 2 = SoD pair;; 1 = none;; 0 = none.
+- **EX004 — Emergency clash.** Which two policies clash during an outage? *Rubric:* 3 = mandatory MFA and immediate vendor emergency access;; 2 = conflict;; 1 = vague;; 0 = none.
+- **EX005 — Stale accounts.** How many stale control-system accounts did the set difference reveal? *Rubric:* 3 = seven;; 2 = 7;; 1 = vague;; 0 = none.
+- **EX006 — Forbidden pairs.** Name one forbidden permission pair. *Rubric:* 3 = create supplier with approve payment;; 2 = SoD pair;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -153,9 +153,9 @@ Simple heat models ignore airflow. Physical controls degrade without inspection.
 
 ### Exercises
 
-- **EX007 — Control groups.** Which control group in ISO/IEC 27002:2022 covers secure areas? *Rubric:* 3 = physical controls;; 2 = physical;; 1 = none;; 0 = none.
-- **EX008 — Cooling owner.** Who should own the cooling-failure risk entry? *Rubric:* 3 = facilities, not only IT;; 2 = facilities;; 1 = none;; 0 = none.
-- **EX009 — Delay and detection.** Why do substations need door sensors as well as locks? *Rubric:* 3 = locks delay but do not detect a determined attacker;; 2 = detection;; 1 = none;; 0 = none.
+- **EX007 — Control groups.** Which control group in ISO/IEC 27002:2022 covers secure areas? *Rubric:* 3 = physical controls;; 2 = physical;; 1 = vague;; 0 = none.
+- **EX008 — Cooling owner.** Who should own the cooling-failure risk entry? *Rubric:* 3 = facilities, not only IT;; 2 = facilities;; 1 = vague;; 0 = none.
+- **EX009 — Delay and detection.** Why do substations need door sensors as well as locks? *Rubric:* 3 = locks delay but do not detect a determined attacker;; 2 = detection;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -197,9 +197,9 @@ Scripts check only what is recorded. Wrong data produce confident wrong output.
 
 ### Exercises
 
-- **EX010 — Policy fields.** Which fields does each policy record hold? *Rubric:* 3 = title, owner, approval date, next review date;; 2 = four fields;; 1 = none;; 0 = none.
-- **EX011 — Actionable output.** Why print the policy title and reason, not just a count? *Rubric:* 3 = owners can act on specific items;; 2 = actionable;; 1 = none;; 0 = none.
-- **EX012 — Script as evidence.** Why must compliance scripts be readable and versioned? *Rubric:* 3 = the script becomes part of the evidence;; 2 = evidence;; 1 = none;; 0 = none.
+- **EX010 — Policy fields.** Which fields does each policy record hold? *Rubric:* 3 = title, owner, approval date, next review date;; 2 = four fields;; 1 = vague;; 0 = none.
+- **EX011 — Actionable output.** Why print the policy title and reason, not just a count? *Rubric:* 3 = owners can act on specific items;; 2 = actionable;; 1 = vague;; 0 = none.
+- **EX012 — Script as evidence.** Why must compliance scripts be readable and versioned? *Rubric:* 3 = the script becomes part of the evidence;; 2 = evidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -241,9 +241,9 @@ Plain language can lose nuance. Long appendices go unread.
 
 ### Exercises
 
-- **EX013 — Board needs.** What do boards need from governance messages? *Rubric:* 3 = decisions, options and consequences in plain language;; 2 = decisions;; 1 = none;; 0 = none.
+- **EX013 — Board needs.** What do boards need from governance messages? *Rubric:* 3 = decisions, options and consequences in plain language;; 2 = decisions;; 1 = vague;; 0 = none.
 - **EX014 — Revised claim.** How did Nadia revise her ransomware statement? *Rubric:* 3 = expected loss under stated assumptions with a wide range;; 2 = uncertainty;; 1 = certainty;; 0 = none.
-- **EX015 — Consulted line.** Why add who was consulted to a memo? *Rubric:* 3 = governance decisions affect many teams;; 2 = record;; 1 = none;; 0 = none.
+- **EX015 — Consulted line.** Why add who was consulted to a memo? *Rubric:* 3 = governance decisions affect many teams;; 2 = record;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -285,9 +285,9 @@ Real decay is uneven. Discount rates are policy choices.
 
 ### Exercises
 
-- **EX016 — Decay driver.** What makes access correctness decay after a review? *Rubric:* 3 = staff changing roles without access updates;; 2 = role changes;; 1 = none;; 0 = none.
-- **EX017 — High turnover.** Which departments need more frequent review? *Rubric:* 3 = those with high staff turnover;; 2 = turnover;; 1 = none;; 0 = none.
-- **EX018 — Time value.** Why is a future avoided loss worth less today? *Rubric:* 3 = money has a time value;; 2 = discounting;; 1 = none;; 0 = none.
+- **EX016 — Decay driver.** What makes access correctness decay after a review? *Rubric:* 3 = staff changing roles without access updates;; 2 = role changes;; 1 = vague;; 0 = none.
+- **EX017 — High turnover.** Which departments need more frequent review? *Rubric:* 3 = those with high staff turnover;; 2 = turnover;; 1 = vague;; 0 = none.
+- **EX018 — Time value.** Why is a future avoided loss worth less today? *Rubric:* 3 = money has a time value;; 2 = discounting;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -354,9 +354,9 @@ Single estimates hide uncertainty. Averages underweight rare catastrophes.
 
 ### Exercises
 
-- **EX019 — ALE formula.** How is annualised loss expectancy computed? *Rubric:* 3 = rate of occurrence times single loss expectancy;; 2 = ARO x SLE;; 1 = none;; 0 = none.
+- **EX019 — ALE formula.** How is annualised loss expectancy computed? *Rubric:* 3 = rate of occurrence times single loss expectancy;; 2 = ARO x SLE;; 1 = vague;; 0 = none.
 - **EX020 — Top two.** Which two risks ranked highest by ALE in the lab? *Rubric:* 3 = ransomware 90k and vendor misuse 80k;; 2 = ransomware first;; 1 = laptops;; 0 = none.
-- **EX021 — Hidden shape.** Why might the card breach deserve more attention than its ALE suggests? *Rubric:* 3 = rare but catastrophic single outcome;; 2 = tail;; 1 = none;; 0 = none.
+- **EX021 — Hidden shape.** Why might the card breach deserve more attention than its ALE suggests? *Rubric:* 3 = rare but catastrophic single outcome;; 2 = tail;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -398,9 +398,9 @@ Inventories go stale. Vendor support dates change.
 
 ### Exercises
 
-- **EX022 — Inventory scope.** What must Ardwell's asset inventory include beyond servers and laptops? *Rubric:* 3 = control-system devices at substations;; 2 = OT devices;; 1 = none;; 0 = none.
-- **EX023 — Firmware risk.** Why does compromised firmware matter? *Rubric:* 3 = it can bypass operating system controls;; 2 = bypass;; 1 = none;; 0 = none.
-- **EX024 — Unsupported options.** Which options exist for the two unsupported devices? *Rubric:* 3 = replace, isolate or accept with monitoring;; 2 = three options;; 1 = none;; 0 = none.
+- **EX022 — Inventory scope.** What must Ardwell's asset inventory include beyond servers and laptops? *Rubric:* 3 = control-system devices at substations;; 2 = OT devices;; 1 = vague;; 0 = none.
+- **EX023 — Firmware risk.** Why does compromised firmware matter? *Rubric:* 3 = it can bypass operating system controls;; 2 = bypass;; 1 = vague;; 0 = none.
+- **EX024 — Unsupported options.** Which options exist for the two unsupported devices? *Rubric:* 3 = replace, isolate or accept with monitoring;; 2 = three options;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -442,9 +442,9 @@ Tests cover only cases someone imagined. Archived inputs need retention rules.
 
 ### Exercises
 
-- **EX025 — Module split.** Into which three modules did Nadia split her tool? *Rubric:* 3 = reading, rule checking and reporting;; 2 = three;; 1 = none;; 0 = none.
-- **EX026 — Skipped rows.** Why is silently skipping unreadable rows dangerous? *Rubric:* 3 = it could hide an unowned risk;; 2 = hidden risk;; 1 = none;; 0 = none.
-- **EX027 — Report header.** What does each report print at the top? *Rubric:* 3 = run date, script version and input summary;; 2 = header;; 1 = none;; 0 = none.
+- **EX025 — Module split.** Into which three modules did Nadia split her tool? *Rubric:* 3 = reading, rule checking and reporting;; 2 = three;; 1 = vague;; 0 = none.
+- **EX026 — Skipped rows.** Why is silently skipping unreadable rows dangerous? *Rubric:* 3 = it could hide an unowned risk;; 2 = hidden risk;; 1 = vague;; 0 = none.
+- **EX027 — Report header.** What does each report print at the top? *Rubric:* 3 = run date, script version and input summary;; 2 = header;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -486,9 +486,9 @@ Codes give principles, not answers. Escalation can carry personal risk.
 
 ### Exercises
 
-- **EX028 — Sign-off duty.** What does signing off a risk assessment mean for an engineer? *Rubric:* 3 = taking responsibility for its accuracy;; 2 = responsibility;; 1 = none;; 0 = none.
+- **EX028 — Sign-off duty.** What does signing off a risk assessment mean for an engineer? *Rubric:* 3 = taking responsibility for its accuracy;; 2 = responsibility;; 1 = vague;; 0 = none.
 - **EX029 — Console alternative.** What did Nadia propose instead of lockout at control consoles? *Rubric:* 3 = monitoring and alerting with physical access restriction;; 2 = monitoring;; 1 = lockout;; 0 = none.
-- **EX030 — Honest culture.** Why should organisations make honest reporting safe? *Rubric:* 3 = punishing bad news hides problems until they cause harm;; 2 = culture;; 1 = none;; 0 = none.
+- **EX030 — Honest culture.** Why should organisations make honest reporting safe? *Rubric:* 3 = punishing bad news hides problems until they cause harm;; 2 = culture;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -530,8 +530,8 @@ Network diagrams drift from reality. Tests show only what was tested.
 
 ### Exercises
 
-- **EX031 — Four zones.** Which four zones did Nadia map? *Rubric:* 3 = corporate, payment, control-system and vendor access;; 2 = four;; 1 = none;; 0 = none.
-- **EX032 — Bypass finding.** Why was the direct vendor connection a finding? *Rubric:* 3 = it bypassed logging and approval;; 2 = bypass;; 1 = none;; 0 = none.
+- **EX031 — Four zones.** Which four zones did Nadia map? *Rubric:* 3 = corporate, payment, control-system and vendor access;; 2 = four;; 1 = vague;; 0 = none.
+- **EX032 — Bypass finding.** Why was the direct vendor connection a finding? *Rubric:* 3 = it bypassed logging and approval;; 2 = bypass;; 1 = vague;; 0 = none.
 - **EX033 — Retesting.** When must segmentation be retested? *Rubric:* 3 = after changes such as new firewall rules;; 2 = after change;; 1 = never;; 0 = none.
 
 ### Synthesis
@@ -574,9 +574,9 @@ Baselines lag new versions. Drift scripts miss settings they do not check.
 
 ### Exercises
 
-- **EX034 — Admin claim.** What makes a policy restricting administrators credible? *Rubric:* 3 = separate admin accounts enforced and logged;; 2 = enforcement;; 1 = none;; 0 = none.
+- **EX034 — Admin claim.** What makes a policy restricting administrators credible? *Rubric:* 3 = separate admin accounts enforced and logged;; 2 = enforcement;; 1 = vague;; 0 = none.
 - **EX035 — Baseline deviations.** How should deviations from the baseline be handled? *Rubric:* 3 = recorded with reasons;; 2 = documented;; 1 = ignored;; 0 = none.
-- **EX036 — Drift question.** What is the real governance question about drift? *Rubric:* 3 = how quickly it is detected and corrected;; 2 = speed;; 1 = none;; 0 = none.
+- **EX036 — Drift question.** What is the real governance question about drift? *Rubric:* 3 = how quickly it is detected and corrected;; 2 = speed;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -648,9 +648,9 @@ Validation checks form, not whether risks are correct. Audit trails need review.
 
 ### Exercises
 
-- **EX037 — Validation rules.** Which three rules did the lab apply? *Rubric:* 3 = owner present, review within 180 days, score 1-25;; 2 = three rules;; 1 = none;; 0 = none.
+- **EX037 — Validation rules.** Which three rules did the lab apply? *Rubric:* 3 = owner present, review within 180 days, score 1-25;; 2 = three rules;; 1 = vague;; 0 = none.
 - **EX038 — Clean rows.** How many of six rows were clean? *Rubric:* 3 = two;; 2 = 2;; 1 = six;; 0 = none.
-- **EX039 — Integrity risk.** What could happen without change history? *Rubric:* 3 = risks made to look smaller before board meetings;; 2 = manipulation;; 1 = none;; 0 = none.
+- **EX039 — Integrity risk.** What could happen without change history? *Rubric:* 3 = risks made to look smaller before board meetings;; 2 = manipulation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -692,9 +692,9 @@ Reviews vary in depth. Component lists miss transitive dependencies.
 
 ### Exercises
 
-- **EX040 — Standards for development.** Which two standards did Nadia map secure development to? *Rubric:* 3 = ISO/IEC 27002:2022 and PCI DSS v4.0;; 2 = two;; 1 = none;; 0 = none.
-- **EX041 — Emergency path.** What did Nadia recommend for emergency fixes? *Rubric:* 3 = a documented path with review within two working days;; 2 = after-the-fact review;; 1 = none;; 0 = none.
-- **EX042 — Library risk.** Why are open-source libraries a governance concern? *Rubric:* 3 = their vulnerabilities and licences become Ardwell's risk;; 2 = supplier;; 1 = none;; 0 = none.
+- **EX040 — Standards for development.** Which two standards did Nadia map secure development to? *Rubric:* 3 = ISO/IEC 27002:2022 and PCI DSS v4.0;; 2 = two;; 1 = vague;; 0 = none.
+- **EX041 — Emergency path.** What did Nadia recommend for emergency fixes? *Rubric:* 3 = a documented path with review within two working days;; 2 = after-the-fact review;; 1 = vague;; 0 = none.
+- **EX042 — Library risk.** Why are open-source libraries a governance concern? *Rubric:* 3 = their vulnerabilities and licences become Ardwell's risk;; 2 = supplier;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -736,9 +736,9 @@ Objective rankings can be contested. Classifications blur in practice.
 
 ### Exercises
 
-- **EX043 — Meter priority.** Which objective matters most for meter readings? *Rubric:* 3 = integrity;; 2 = integrity;; 1 = confidentiality;; 0 = none.
-- **EX044 — Risk parts.** What vulnerability did Nadia identify for vendor access? *Rubric:* 3 = a shared password;; 2 = shared password;; 1 = none;; 0 = none.
-- **EX045 — Corrective example.** Give the corrective control for vendor access. *Rubric:* 3 = tested procedure to revoke access during incidents;; 2 = revoke;; 1 = none;; 0 = none.
+- **EX043 — Meter priority.** Which objective matters most for meter readings? *Rubric:* 3 = integrity;; 2 = integrity, without explanation;; 1 = confidentiality;; 0 = none.
+- **EX044 — Risk parts.** What vulnerability did Nadia identify for vendor access? *Rubric:* 3 = a shared password;; 2 = shared password;; 1 = vague;; 0 = none.
+- **EX045 — Corrective example.** Give the corrective control for vendor access. *Rubric:* 3 = tested procedure to revoke access during incidents;; 2 = revoke;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -780,9 +780,9 @@ System views can become bureaucratic. Traceability needs upkeep.
 
 ### Exercises
 
-- **EX046 — Programme purpose.** What is the purpose of Ardwell's governance programme as a system? *Rubric:* 3 = keep risk within appetite and demonstrate compliance;; 2 = purpose;; 1 = none;; 0 = none.
-- **EX047 — Trace gaps.** What gaps does a traceability matrix reveal? *Rubric:* 3 = requirements without controls and controls without tests;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX048 — Neglected stage.** Which life-cycle stage is often neglected for controls and policies? *Rubric:* 3 = retirement;; 2 = retirement;; 1 = design;; 0 = none.
+- **EX046 — Programme purpose.** What is the purpose of Ardwell's governance programme as a system? *Rubric:* 3 = keep risk within appetite and demonstrate compliance;; 2 = purpose;; 1 = vague;; 0 = none.
+- **EX047 — Trace gaps.** What gaps does a traceability matrix reveal? *Rubric:* 3 = requirements without controls and controls without tests;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX048 — Neglected stage.** Which life-cycle stage is often neglected for controls and policies? *Rubric:* 3 = retirement;; 2 = retirement, without explanation;; 1 = design;; 0 = none.
 
 ### Synthesis
 
@@ -824,9 +824,9 @@ Organisations are not linear systems. Indicators can be gamed.
 
 ### Exercises
 
-- **EX049 — Set point.** What acts as the set point in Ardwell's governance loop? *Rubric:* 3 = the board's risk appetite;; 2 = appetite;; 1 = none;; 0 = none.
-- **EX050 — Annual loop.** What happened to the backlog when reviewed annually instead of quarterly? *Rubric:* 3 = it swung further from target;; 2 = larger swings;; 1 = none;; 0 = none.
-- **EX051 — Oscillation cure.** What helps managers avoid oscillating responses? *Rubric:* 3 = proportionate, documented decision rules;; 2 = rules;; 1 = none;; 0 = none.
+- **EX049 — Set point.** What acts as the set point in Ardwell's governance loop? *Rubric:* 3 = the board's risk appetite;; 2 = appetite;; 1 = vague;; 0 = none.
+- **EX050 — Annual loop.** What happened to the backlog when reviewed annually instead of quarterly? *Rubric:* 3 = it swung further from target;; 2 = larger swings;; 1 = vague;; 0 = none.
+- **EX051 — Oscillation cure.** What helps managers avoid oscillating responses? *Rubric:* 3 = proportionate, documented decision rules;; 2 = rules;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -868,9 +868,9 @@ Principles can conflict. Decision records go unread if too long.
 
 ### Exercises
 
-- **EX052 — Principle list.** Name two of Nadia's architecture principles. *Rubric:* 3 = minimise sensitive data scope; broker external access;; 2 = principles;; 1 = none;; 0 = none.
-- **EX053 — Platform concern.** What was wrong with the meter platform design? *Rubric:* 3 = names stored with readings reachable from office laptops;; 2 = scope;; 1 = none;; 0 = none.
-- **EX054 — Record contents.** What does an architecture decision record contain? *Rubric:* 3 = context, decision, alternatives and consequences;; 2 = four parts;; 1 = none;; 0 = none.
+- **EX052 — Principle list.** Name two of Nadia's architecture principles. *Rubric:* 3 = minimise sensitive data scope; broker external access;; 2 = principles;; 1 = vague;; 0 = none.
+- **EX053 — Platform concern.** What was wrong with the meter platform design? *Rubric:* 3 = names stored with readings reachable from office laptops;; 2 = scope;; 1 = vague;; 0 = none.
+- **EX054 — Record contents.** What does an architecture decision record contain? *Rubric:* 3 = context, decision, alternatives and consequences;; 2 = four parts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -912,9 +912,9 @@ Automation fails when HR data are wrong. Key inventories go stale.
 
 ### Exercises
 
-- **EX055 — Weak transition.** Which identity transition is Ardwell's weak point? *Rubric:* 3 = movers;; 2 = movers;; 1 = leavers;; 0 = none.
-- **EX056 — Encryption rule.** Which data does Ardwell's classification require to be encrypted? *Rubric:* 3 = payment data and personal data on laptops;; 2 = classification;; 1 = none;; 0 = none.
-- **EX057 — Certificate risk.** Why was the single-engineer certificate a risk? *Rubric:* 3 = no backup or expiry tracking, so it could expire unnoticed;; 2 = ownership;; 1 = none;; 0 = none.
+- **EX055 — Weak transition.** Which identity transition is Ardwell's weak point? *Rubric:* 3 = movers;; 2 = movers, without explanation;; 1 = leavers;; 0 = none.
+- **EX056 — Encryption rule.** Which data does Ardwell's classification require to be encrypted? *Rubric:* 3 = payment data and personal data on laptops;; 2 = classification;; 1 = vague;; 0 = none.
+- **EX057 — Certificate risk.** Why was the single-engineer certificate a risk? *Rubric:* 3 = no backup or expiry tracking, so it could expire unnoticed;; 2 = ownership;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -956,8 +956,8 @@ Legal obligations need legal review. Roles differ between organisations.
 
 ### Exercises
 
-- **EX058 — Governance role.** What does governance set? *Rubric:* 3 = direction, accountability and oversight;; 2 = direction;; 1 = none;; 0 = none.
-- **EX059 — Independence.** Why should the person running controls not judge whether they work? *Rubric:* 3 = it creates a conflict of interest that weakens assurance;; 2 = independence;; 1 = none;; 0 = none.
+- **EX058 — Governance role.** What does governance set? *Rubric:* 3 = direction, accountability and oversight;; 2 = direction;; 1 = vague;; 0 = none.
+- **EX059 — Independence.** Why should the person running controls not judge whether they work? *Rubric:* 3 = it creates a conflict of interest that weakens assurance;; 2 = independence;; 1 = vague;; 0 = none.
 - **EX060 — Mandatory or voluntary.** Is Ardwell's alignment with ISO/IEC 27001:2022 mandatory? *Rubric:* 3 = no, a board choice;; 2 = voluntary;; 1 = mandatory;; 0 = none.
 
 ### Synthesis
@@ -1000,8 +1000,8 @@ Testable wording can miss intent. Priorities shift with incidents.
 
 ### Exercises
 
-- **EX061 — Appetite to requirement.** Which requirement followed from the four-hour appetite statement? *Rubric:* 3 = a recovery requirement for control-system backups and spares;; 2 = recovery;; 1 = none;; 0 = none.
-- **EX062 — Testable parts.** What does each testable requirement name? *Rubric:* 3 = owner, frequency, measurable condition and evidence;; 2 = four parts;; 1 = none;; 0 = none.
+- **EX061 — Appetite to requirement.** Which requirement followed from the four-hour appetite statement? *Rubric:* 3 = a recovery requirement for control-system backups and spares;; 2 = recovery;; 1 = vague;; 0 = none.
+- **EX062 — Testable parts.** What does each testable requirement name? *Rubric:* 3 = owner, frequency, measurable condition and evidence;; 2 = four parts;; 1 = vague;; 0 = none.
 - **EX063 — Top priority.** Which requirements ranked highest? *Rubric:* 3 = safety of supply and contractual card obligations;; 2 = safety;; 1 = efficiency;; 0 = none.
 
 ### Synthesis
@@ -1044,9 +1044,9 @@ Models simplify messy reality. Data quality limits query value.
 
 ### Exercises
 
-- **EX064 — Entity list.** Name four core entities in the model. *Rubric:* 3 = assets, risks, controls, obligations;; 2 = entities;; 1 = none;; 0 = none.
-- **EX065 — Cascading findings.** Why can one failed control create findings in several audits? *Rubric:* 3 = it satisfies several obligations;; 2 = many-to-many;; 1 = none;; 0 = none.
-- **EX066 — Example query.** Give one governance question the model answers quickly. *Rubric:* 3 = which risks rely only on controls that failed testing;; 2 = query;; 1 = none;; 0 = none.
+- **EX064 — Entity list.** Name four core entities in the model. *Rubric:* 3 = assets, risks, controls, obligations;; 2 = entities;; 1 = vague;; 0 = none.
+- **EX065 — Cascading findings.** Why can one failed control create findings in several audits? *Rubric:* 3 = it satisfies several obligations;; 2 = many-to-many;; 1 = vague;; 0 = none.
+- **EX066 — Example query.** Give one governance question the model answers quickly. *Rubric:* 3 = which risks rely only on controls that failed testing;; 2 = query;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1088,9 +1088,9 @@ Scenario lists are never complete. Failure analysis takes time.
 
 ### Exercises
 
-- **EX067 — Scenario parts.** Which parts does each scenario name? *Rubric:* 3 = threat source, event, vulnerabilities and impact;; 2 = four;; 1 = none;; 0 = none.
-- **EX068 — Hidden failure.** Which failure mode of access review went unchecked? *Rubric:* 3 = approved removals never carried out;; 2 = follow-up;; 1 = none;; 0 = none.
-- **EX069 — Combined risk.** Why is a scenario relying on a control with an undetected failure mode riskier? *Rubric:* 3 = the defence may have quietly stopped working;; 2 = hidden failure;; 1 = none;; 0 = none.
+- **EX067 — Scenario parts.** Which parts does each scenario name? *Rubric:* 3 = threat source, event, vulnerabilities and impact;; 2 = four;; 1 = vague;; 0 = none.
+- **EX068 — Hidden failure.** Which failure mode of access review went unchecked? *Rubric:* 3 = approved removals never carried out;; 2 = follow-up;; 1 = vague;; 0 = none.
+- **EX069 — Combined risk.** Why is a scenario relying on a control with an undetected failure mode riskier? *Rubric:* 3 = the defence may have quietly stopped working;; 2 = hidden failure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1156,7 +1156,7 @@ Independence overstates combined effect. Effectiveness estimates are subjective.
 ### Exercises
 
 - **EX070 — Residual definition.** How does residual risk differ from inherent risk? *Rubric:* 3 = it remains after controls;; 2 = after controls;; 1 = before;; 0 = none.
-- **EX071 — Ransomware residual.** By how much did controls reduce ransomware loss in the lab? *Rubric:* 3 = 76%, to 21.6k;; 2 = 76%;; 1 = none;; 0 = none.
+- **EX071 — Ransomware residual.** By how much did controls reduce ransomware loss in the lab? *Rubric:* 3 = 76%, to 21.6k;; 2 = 76%;; 1 = vague;; 0 = none.
 - **EX072 — Largest residual.** Which risk had the largest residual loss and why? *Rubric:* 3 = vendor misuse at 80k, untreated;; 2 = vendor;; 1 = ransomware;; 0 = none.
 
 ### Synthesis
@@ -1199,9 +1199,9 @@ Studio designs skip cost detail. Stakeholder interviews are small samples.
 
 ### Exercises
 
-- **EX073 — Stakeholder wants.** What did the control engineer want? *Rubric:* 3 = vendors connected within minutes during outages;; 2 = speed;; 1 = none;; 0 = none.
-- **EX074 — Session limit.** How long can a vendor session last before ending automatically? *Rubric:* 3 = four hours;; 2 = 4h;; 1 = none;; 0 = none.
-- **EX075 — Recording review.** How will recordings be reviewed? *Rubric:* 3 = sample ten percent monthly, focusing on emergencies;; 2 = sampling;; 1 = none;; 0 = none.
+- **EX073 — Stakeholder wants.** What did the control engineer want? *Rubric:* 3 = vendors connected within minutes during outages;; 2 = speed;; 1 = vague;; 0 = none.
+- **EX074 — Session limit.** How long can a vendor session last before ending automatically? *Rubric:* 3 = four hours;; 2 = 4h;; 1 = vague;; 0 = none.
+- **EX075 — Recording review.** How will recordings be reviewed? *Rubric:* 3 = sample ten percent monthly, focusing on emergencies;; 2 = sampling;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1243,7 +1243,7 @@ Weights reflect opinion. Vendor claims need verification.
 
 ### Exercises
 
-- **EX076 — Three options.** What are the three alternatives? *Rubric:* 3 = spreadsheets with scripts, commercial platform, ticketing-based tooling;; 2 = three;; 1 = none;; 0 = none.
+- **EX076 — Three options.** What are the three alternatives? *Rubric:* 3 = spreadsheets with scripts, commercial platform, ticketing-based tooling;; 2 = three;; 1 = vague;; 0 = none.
 - **EX077 — Heaviest criteria.** Which criteria received the highest weights? *Rubric:* 3 = data integrity and owner effort;; 2 = integrity;; 1 = cost;; 0 = none.
 - **EX078 — Sensitivity note.** What would a weighting favouring board reporting have chosen? *Rubric:* 3 = the commercial platform;; 2 = platform;; 1 = spreadsheets;; 0 = none.
 
@@ -1287,9 +1287,9 @@ Catalogues are generic. Descriptions can describe intent rather than practice.
 
 ### Exercises
 
-- **EX079 — Objective role.** Why should every control start with an objective? *Rubric:* 3 = so it stays linked to the risk it reduces;; 2 = objective;; 1 = none;; 0 = none.
-- **EX080 — Selection record.** Which ISO/IEC 27001:2022 document does the selection record resemble? *Rubric:* 3 = the statement of applicability;; 2 = SoA;; 1 = none;; 0 = none.
-- **EX081 — Description test.** How does Nadia check a control description? *Rubric:* 3 = an independent tester could verify it from the description alone;; 2 = testability;; 1 = none;; 0 = none.
+- **EX079 — Objective role.** Why should every control start with an objective? *Rubric:* 3 = so it stays linked to the risk it reduces;; 2 = objective;; 1 = vague;; 0 = none.
+- **EX080 — Selection record.** Which ISO/IEC 27001:2022 document does the selection record resemble? *Rubric:* 3 = the statement of applicability;; 2 = SoA;; 1 = vague;; 0 = none.
+- **EX081 — Description test.** How does Nadia check a control description? *Rubric:* 3 = an independent tester could verify it from the description alone;; 2 = testability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1331,9 +1331,9 @@ Plans meet surprises. Compensating controls can become permanent.
 
 ### Exercises
 
-- **EX082 — Phase one.** What does phase one cover? *Rubric:* 3 = moving the two highest-risk vendors to the broker;; 2 = two vendors;; 1 = none;; 0 = none.
-- **EX083 — Night approvals.** How was approval fatigue at night addressed? *Rubric:* 3 = pre-approved maintenance windows;; 2 = windows;; 1 = none;; 0 = none.
-- **EX084 — Compensating control.** What compensating control covered the vendor whose equipment could not use the broker? *Rubric:* 3 = supervised sessions with an Ardwell engineer;; 2 = supervision;; 1 = none;; 0 = none.
+- **EX082 — Phase one.** What does phase one cover? *Rubric:* 3 = moving the two highest-risk vendors to the broker;; 2 = two vendors;; 1 = vague;; 0 = none.
+- **EX083 — Night approvals.** How was approval fatigue at night addressed? *Rubric:* 3 = pre-approved maintenance windows;; 2 = windows;; 1 = vague;; 0 = none.
+- **EX084 — Compensating control.** What compensating control covered the vendor whose equipment could not use the broker? *Rubric:* 3 = supervised sessions with an Ardwell engineer;; 2 = supervision;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1399,9 +1399,9 @@ Aggregates hide weak areas. Measures invite gaming.
 
 ### Exercises
 
-- **EX085 — Measure kinds.** Which three kinds of measure did Nadia separate? *Rubric:* 3 = activity, performance and outcome;; 2 = three;; 1 = none;; 0 = none.
+- **EX085 — Measure kinds.** Which three kinds of measure did Nadia separate? *Rubric:* 3 = activity, performance and outcome;; 2 = three;; 1 = vague;; 0 = none.
 - **EX086 — Red families.** Which two control families were red? *Rubric:* 3 = patching 78% and change 72%;; 2 = two reds;; 1 = backup;; 0 = none.
-- **EX087 — Aggregate risk.** Why is the overall 85% misleading? *Rubric:* 3 = it hides two red families;; 2 = hides;; 1 = none;; 0 = none.
+- **EX087 — Aggregate risk.** Why is the overall 85% misleading? *Rubric:* 3 = it hides two red families;; 2 = hides;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1443,9 +1443,9 @@ Lab copies differ from production. Tests cover planned cases only.
 
 ### Exercises
 
-- **EX088 — Lab copy.** Why test in a laboratory copy? *Rubric:* 3 = so production is not disturbed;; 2 = safety;; 1 = none;; 0 = none.
-- **EX089 — Evidence fields.** What does Nadia record for each test? *Rubric:* 3 = date, tester, steps, result and artefacts;; 2 = evidence;; 1 = none;; 0 = none.
-- **EX090 — Failed test.** Which test failed? *Rubric:* 3 = an approved session could reach a second device;; 2 = routing;; 1 = none;; 0 = none.
+- **EX088 — Lab copy.** Why test in a laboratory copy? *Rubric:* 3 = so production is not disturbed;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX089 — Evidence fields.** What does Nadia record for each test? *Rubric:* 3 = date, tester, steps, result and artefacts;; 2 = evidence;; 1 = vague;; 0 = none.
+- **EX090 — Failed test.** Which test failed? *Rubric:* 3 = an approved session could reach a second device;; 2 = routing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1487,9 +1487,9 @@ Reminders cause fatigue. Exceptions are often renewed by habit.
 
 ### Exercises
 
-- **EX091 — Migration findings.** What did the migration reveal? *Rubric:* 3 = twelve controls without owners and three obsolete;; 2 = cleanup;; 1 = none;; 0 = none.
-- **EX092 — Escalation rule.** When do overdue tasks escalate to managers? *Rubric:* 3 = after five days;; 2 = five days;; 1 = none;; 0 = none.
-- **EX093 — Exception expiry.** Why must exceptions expire? *Rubric:* 3 = to force fresh reasoning and keep risk visible;; 2 = renewal;; 1 = none;; 0 = none.
+- **EX091 — Migration findings.** What did the migration reveal? *Rubric:* 3 = twelve controls without owners and three obsolete;; 2 = cleanup;; 1 = vague;; 0 = none.
+- **EX092 — Escalation rule.** When do overdue tasks escalate to managers? *Rubric:* 3 = after five days;; 2 = five days;; 1 = vague;; 0 = none.
+- **EX093 — Exception expiry.** Why must exceptions expire? *Rubric:* 3 = to force fresh reasoning and keep risk visible;; 2 = renewal;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1551,8 +1551,8 @@ Common-cause rates are hard to estimate. Separation adds cost.
 
 ### Exercises
 
-- **EX094 — Independent joint.** What is the joint failure probability for independent layers? *Rubric:* 3 = 0.50%;; 2 = 0.005;; 1 = none;; 0 = none.
-- **EX095 — Common-cause joint.** How large is the joint failure probability with a 2% common cause? *Rubric:* 3 = 2.49%;; 2 = about five times;; 1 = none;; 0 = none.
+- **EX094 — Independent joint.** What is the joint failure probability for independent layers? *Rubric:* 3 = 0.50%;; 2 = 0.005;; 1 = vague;; 0 = none.
+- **EX095 — Common-cause joint.** How large is the joint failure probability with a 2% common cause? *Rubric:* 3 = 2.49%;; 2 = about five times;; 1 = vague;; 0 = none.
 - **EX096 — Best fix.** What reduces joint failure most? *Rubric:* 3 = removing the shared dependency;; 2 = independence;; 1 = stronger single layer;; 0 = none.
 
 ### Synthesis
@@ -1595,9 +1595,9 @@ Tests are rehearsed scenarios. Real crises bring surprises.
 
 ### Exercises
 
-- **EX097 — Board goal.** What is Ardwell's real resilience goal? *Rubric:* 3 = keep power flowing and restore services quickly;; 2 = resilience;; 1 = none;; 0 = none.
-- **EX098 — Restore gap.** How did the billing restore test compare with its target? *Rubric:* 3 = nine hours versus eight;; 2 = over by one hour;; 1 = none;; 0 = none.
-- **EX099 — Test purpose.** Why are failed first recovery tests valuable? *Rubric:* 3 = they reveal gaps to close;; 2 = learning;; 1 = none;; 0 = none.
+- **EX097 — Board goal.** What is Ardwell's real resilience goal? *Rubric:* 3 = keep power flowing and restore services quickly;; 2 = resilience;; 1 = vague;; 0 = none.
+- **EX098 — Restore gap.** How did the billing restore test compare with its target? *Rubric:* 3 = nine hours versus eight;; 2 = over by one hour;; 1 = vague;; 0 = none.
+- **EX099 — Test purpose.** Why are failed first recovery tests valuable? *Rubric:* 3 = they reveal gaps to close;; 2 = learning;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1639,9 +1639,9 @@ Common scales can blur distinctions. Integration takes political effort.
 
 ### Exercises
 
-- **EX100 — Integration benefit.** What does integrating registers let the board do? *Rubric:* 3 = compare cyber risk with other risks equally;; 2 = comparison;; 1 = none;; 0 = none.
-- **EX101 — Translation example.** How was a ransomware scenario translated for finance? *Rubric:* 3 = operational disruption with financial impact range and reporting obligation;; 2 = translation;; 1 = none;; 0 = none.
-- **EX102 — Integration failure.** When does integration fail? *Rubric:* 3 = when one team takes over another's work;; 2 = takeover;; 1 = none;; 0 = none.
+- **EX100 — Integration benefit.** What does integrating registers let the board do? *Rubric:* 3 = compare cyber risk with other risks equally;; 2 = comparison;; 1 = vague;; 0 = none.
+- **EX101 — Translation example.** How was a ransomware scenario translated for finance? *Rubric:* 3 = operational disruption with financial impact range and reporting obligation;; 2 = translation;; 1 = vague;; 0 = none.
+- **EX102 — Integration failure.** When does integration fail? *Rubric:* 3 = when one team takes over another's work;; 2 = takeover;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1683,9 +1683,9 @@ Volunteers are not real directors. Short packs omit detail.
 
 ### Exercises
 
-- **EX103 — Board wishes.** What did the two interviewed board members want? *Rubric:* 3 = trend direction and decisions asked;; 2 = trend and decisions;; 1 = none;; 0 = none.
-- **EX104 — Matrix avoidance.** Why did the team avoid numberless heat maps? *Rubric:* 3 = Cox (2008) shows risk matrices can mislead;; 2 = Cox;; 1 = none;; 0 = none.
-- **EX105 — Arrow fix.** How was the misread trend arrow fixed? *Rubric:* 3 = labelled arrows with words;; 2 = labels;; 1 = none;; 0 = none.
+- **EX103 — Board wishes.** What did the two interviewed board members want? *Rubric:* 3 = trend direction and decisions asked;; 2 = trend and decisions;; 1 = vague;; 0 = none.
+- **EX104 — Matrix avoidance.** Why did the team avoid numberless heat maps? *Rubric:* 3 = Cox (2008) shows risk matrices can mislead;; 2 = Cox;; 1 = vague;; 0 = none.
+- **EX105 — Arrow fix.** How was the misread trend arrow fixed? *Rubric:* 3 = labelled arrows with words;; 2 = labels;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1727,9 +1727,9 @@ Hour estimates are rough. Automation can fail silently.
 
 ### Exercises
 
-- **EX106 — Total effort.** Roughly how much effort does the programme require? *Rubric:* 3 = about two full-time staff;; 2 = two FTE;; 1 = none;; 0 = none.
-- **EX107 — Bottleneck person.** Who is the bottleneck as Ardwell grows? *Rubric:* 3 = the single security analyst checking evidence;; 2 = analyst;; 1 = none;; 0 = none.
-- **EX108 — Human focus.** Where should human attention go once evidence is automated? *Rubric:* 3 = decisions, exceptions and judgement tasks;; 2 = judgement;; 1 = none;; 0 = none.
+- **EX106 — Total effort.** Roughly how much effort does the programme require? *Rubric:* 3 = about two full-time staff;; 2 = two FTE;; 1 = vague;; 0 = none.
+- **EX107 — Bottleneck person.** Who is the bottleneck as Ardwell grows? *Rubric:* 3 = the single security analyst checking evidence;; 2 = analyst;; 1 = vague;; 0 = none.
+- **EX108 — Human focus.** Where should human attention go once evidence is automated? *Rubric:* 3 = decisions, exceptions and judgement tasks;; 2 = judgement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1771,7 +1771,7 @@ Verified closure slows reporting. Reviews can become routine.
 
 ### Exercises
 
-- **EX109 — Rhythm as control.** Why is the weekly rhythm itself a control? *Rubric:* 3 = when it lapses problems accumulate unseen;; 2 = rhythm;; 1 = none;; 0 = none.
+- **EX109 — Rhythm as control.** Why is the weekly rhythm itself a control? *Rubric:* 3 = when it lapses problems accumulate unseen;; 2 = rhythm;; 1 = vague;; 0 = none.
 - **EX110 — Closure rule.** Who may close findings under Nadia's rule? *Rubric:* 3 = only the security analyst after checking evidence;; 2 = analyst;; 1 = owner;; 0 = none.
 - **EX111 — Repeated failures.** What did repeated substation patch failures turn out to be? *Rubric:* 3 = a design problem leading to device replacement;; 2 = design;; 1 = owner;; 0 = none.
 
@@ -1840,9 +1840,9 @@ Random samples miss rare patterns. Validation covers only tested attributes.
 
 ### Exercises
 
-- **EX112 — Validation meaning.** What does validation ask that verification does not? *Rubric:* 3 = whether the control achieves its purpose in operation over time;; 2 = operation;; 1 = none;; 0 = none.
+- **EX112 — Validation meaning.** What does validation ask that verification does not? *Rubric:* 3 = whether the control achieves its purpose in operation over time;; 2 = operation;; 1 = vague;; 0 = none.
 - **EX113 — Minimum sample.** How many clean records give a 5% upper bound? *Rubric:* 3 = fifty-nine;; 2 = 59;; 1 = 25;; 0 = none.
-- **EX114 — Separate stratum.** Why check emergency sessions separately? *Rubric:* 3 = they follow a different path and could hide problems;; 2 = strata;; 1 = none;; 0 = none.
+- **EX114 — Separate stratum.** Why check emergency sessions separately? *Rubric:* 3 = they follow a different path and could hide problems;; 2 = strata;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1884,9 +1884,9 @@ Triggers are missed. Handover notes are incomplete.
 
 ### Exercises
 
-- **EX115 — Review triggers.** What triggers early review of governance documents? *Rubric:* 3 = major system changes or incidents;; 2 = triggers;; 1 = none;; 0 = none.
-- **EX116 — CSF change.** What did NIST CSF 2.0 add? *Rubric:* 3 = the Govern function;; 2 = Govern;; 1 = none;; 0 = none.
-- **EX117 — Handover measure.** Which measure protects against loss of the retiring manager's knowledge? *Rubric:* 3 = decision notes and a two-month paired handover;; 2 = handover;; 1 = none;; 0 = none.
+- **EX115 — Review triggers.** What triggers early review of governance documents? *Rubric:* 3 = major system changes or incidents;; 2 = triggers;; 1 = vague;; 0 = none.
+- **EX116 — CSF change.** What did NIST CSF 2.0 add? *Rubric:* 3 = the Govern function;; 2 = Govern;; 1 = vague;; 0 = none.
+- **EX117 — Handover measure.** Which measure protects against loss of the retiring manager's knowledge? *Rubric:* 3 = decision notes and a two-month paired handover;; 2 = handover;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1928,8 +1928,8 @@ Regression suites age. Not every change triggers tests.
 
 ### Exercises
 
-- **EX118 — Schedule regression.** What did the upgrade break? *Rubric:* 3 = quarterly tasks became annual;; 2 = frequency;; 1 = none;; 0 = none.
-- **EX119 — Report defect.** Which reporting error did Nadia find? *Rubric:* 3 = reopened findings counted twice;; 2 = double count;; 1 = none;; 0 = none.
+- **EX118 — Schedule regression.** What did the upgrade break? *Rubric:* 3 = quarterly tasks became annual;; 2 = frequency;; 1 = vague;; 0 = none.
+- **EX119 — Report defect.** Which reporting error did Nadia find? *Rubric:* 3 = reopened findings counted twice;; 2 = double count;; 1 = vague;; 0 = none.
 - **EX120 — Verification principle.** What principle does the laboratory illustrate? *Rubric:* 3 = verification must repeat whenever the system changes;; 2 = repeat;; 1 = one-time;; 0 = none.
 
 ### Synthesis
@@ -1999,7 +1999,7 @@ Estimates are uncertain. Interactions between controls are ignored.
 
 - **EX121 — Best set.** Which controls form the best set? *Rubric:* 3 = MFA, offline backups and card tokenisation;; 2 = three;; 1 = broker;; 0 = none.
 - **EX122 — Best cost.** At what cost does the best set deliver its 630k reduction? *Rubric:* 3 = 190k;; 2 = 190;; 1 = 200;; 0 = none.
-- **EX123 — Investment value.** According to Gordon and Loeb, what drives the value of security investment? *Rubric:* 3 = vulnerability and potential loss;; 2 = not cost alone;; 1 = none;; 0 = none.
+- **EX123 — Investment value.** According to Gordon and Loeb, what drives the value of security investment? *Rubric:* 3 = vulnerability and potential loss;; 2 = not cost alone;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2041,9 +2041,9 @@ Before-after designs confound timing. Minutes are incomplete records.
 
 ### Exercises
 
-- **EX124 — Measured outcomes.** Which outcomes does Nadia measure? *Rubric:* 3 = decisions per quarter, time to decision and alignment with largest risks;; 2 = three;; 1 = none;; 0 = none.
-- **EX125 — Own bias.** Why is Nadia's own role a validity threat? *Rubric:* 3 = she helped design the new pack;; 2 = bias;; 1 = none;; 0 = none.
-- **EX126 — Evidence gap.** What is missing from the published evidence? *Rubric:* 3 = direct measurement of board decisions;; 2 = gap;; 1 = none;; 0 = none.
+- **EX124 — Measured outcomes.** Which outcomes does Nadia measure? *Rubric:* 3 = decisions per quarter, time to decision and alignment with largest risks;; 2 = three;; 1 = vague;; 0 = none.
+- **EX125 — Own bias.** Why is Nadia's own role a validity threat? *Rubric:* 3 = she helped design the new pack;; 2 = bias;; 1 = vague;; 0 = none.
+- **EX126 — Evidence gap.** What is missing from the published evidence? *Rubric:* 3 = direct measurement of board decisions;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2085,9 +2085,9 @@ One placement is one context. Observations can be selective.
 
 ### Exercises
 
-- **EX127 — Document gap.** What gap did Nadia find between documents and practice? *Rubric:* 3 = some controls work but are undocumented, others documented but rarely done;; 2 = mismatch;; 1 = none;; 0 = none.
-- **EX128 — Stage one focus.** What did auditors ask about in stage one? *Rubric:* 3 = how risk acceptance decisions are made and approved;; 2 = acceptance;; 1 = none;; 0 = none.
-- **EX129 — Regulator focus.** How did the regulator's focus differ from certification? *Rubric:* 3 = outcomes like restoration and communication versus processes;; 2 = outcomes;; 1 = none;; 0 = none.
+- **EX127 — Document gap.** What gap did Nadia find between documents and practice? *Rubric:* 3 = some controls work but are undocumented, others documented but rarely done;; 2 = mismatch;; 1 = vague;; 0 = none.
+- **EX128 — Stage one focus.** What did auditors ask about in stage one? *Rubric:* 3 = how risk acceptance decisions are made and approved;; 2 = acceptance;; 1 = vague;; 0 = none.
+- **EX129 — Regulator focus.** How did the regulator's focus differ from certification? *Rubric:* 3 = outcomes like restoration and communication versus processes;; 2 = outcomes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2129,9 +2129,9 @@ Scopes creep. Surveys measure perception, not time.
 
 ### Exercises
 
-- **EX130 — Excluded controls.** Which controls are excluded from scope? *Rubric:* 3 = those requiring human judgement;; 2 = judgement;; 1 = none;; 0 = none.
-- **EX131 — Coverage criterion.** What is the evidence coverage success criterion? *Rubric:* 3 = at least eighteen of twenty controls automated;; 2 = 18/20;; 1 = none;; 0 = none.
-- **EX132 — Alert risk.** How does Nadia respond to the risk that owners ignore alerts? *Rubric:* 3 = involve owners in alert design;; 2 = involvement;; 1 = none;; 0 = none.
+- **EX130 — Excluded controls.** Which controls are excluded from scope? *Rubric:* 3 = those requiring human judgement;; 2 = judgement;; 1 = vague;; 0 = none.
+- **EX131 — Coverage criterion.** What is the evidence coverage success criterion? *Rubric:* 3 = at least eighteen of twenty controls automated;; 2 = 18/20;; 1 = vague;; 0 = none.
+- **EX132 — Alert risk.** How does Nadia respond to the risk that owners ignore alerts? *Rubric:* 3 = involve owners in alert design;; 2 = involvement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2173,9 +2173,9 @@ Reviewers have limited time. Deferred items can be forgotten.
 
 ### Exercises
 
-- **EX133 — Assumption example.** Which assumption did Nadia state explicitly? *Rubric:* 3 = source systems report accurate timestamps;; 2 = timestamps;; 1 = none;; 0 = none.
+- **EX133 — Assumption example.** Which assumption did Nadia state explicitly? *Rubric:* 3 = source systems report accurate timestamps;; 2 = timestamps;; 1 = vague;; 0 = none.
 - **EX134 — Silence fix.** How was the silence-as-success flaw fixed? *Rubric:* 3 = missing evidence raises an alert and counts as a failed collection;; 2 = fail closed;; 1 = pass;; 0 = none.
-- **EX135 — Integrity measures.** What protects evidence from manipulation? *Rubric:* 3 = hashing and storage the monitored teams cannot alter;; 2 = hashing;; 1 = none;; 0 = none.
+- **EX135 — Integrity measures.** What protects evidence from manipulation? *Rubric:* 3 = hashing and storage the monitored teams cannot alter;; 2 = hashing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2218,8 +2218,8 @@ Two months is short. Survey responses are self-reported.
 ### Exercises
 
 - **EX136 — Coverage result.** How many controls had automated evidence? *Rubric:* 3 = nineteen of twenty;; 2 = 19;; 1 = 20;; 0 = none.
-- **EX137 — Manual control.** Why did one control remain manual? *Rubric:* 3 = its vendor system has no export;; 2 = no export;; 1 = none;; 0 = none.
-- **EX138 — Handover items.** Which items did Nadia hand over? *Rubric:* 3 = runbook, collector owners, test cases and known issues;; 2 = handover;; 1 = none;; 0 = none.
+- **EX137 — Manual control.** Why did one control remain manual? *Rubric:* 3 = its vendor system has no export;; 2 = no export;; 1 = vague;; 0 = none.
+- **EX138 — Handover items.** Which items did Nadia hand over? *Rubric:* 3 = runbook, collector owners, test cases and known issues;; 2 = handover;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2261,9 +2261,9 @@ Announced trials differ from real failures. Daily checks add load.
 
 ### Exercises
 
-- **EX139 — Injected failures.** Which three failures were injected? *Rubric:* 3 = collector crash, source unavailable, altered evidence file;; 2 = three;; 1 = none;; 0 = none.
-- **EX140 — Slow detection.** Which failure was detected slowly? *Rubric:* 3 = the altered evidence file, at the weekly check;; 2 = tampering;; 1 = none;; 0 = none.
-- **EX141 — Check change.** How often do integrity checks run after the trial? *Rubric:* 3 = daily;; 2 = daily;; 1 = weekly;; 0 = none.
+- **EX139 — Injected failures.** Which three failures were injected? *Rubric:* 3 = collector crash, source unavailable, altered evidence file;; 2 = three;; 1 = vague;; 0 = none.
+- **EX140 — Slow detection.** Which failure was detected slowly? *Rubric:* 3 = the altered evidence file, at the weekly check;; 2 = tampering;; 1 = vague;; 0 = none.
+- **EX141 — Check change.** How often do integrity checks run after the trial? *Rubric:* 3 = daily;; 2 = daily, without explanation;; 1 = weekly;; 0 = none.
 
 ### Synthesis
 
@@ -2328,8 +2328,8 @@ Digests prove change, not intent. Manifests must be protected too.
 
 ### Exercises
 
-- **EX142 — Dossier as argument.** Why is a dossier an argument rather than a pile of files? *Rubric:* 3 = it lets readers trace claims back to evidence;; 2 = traceability;; 1 = none;; 0 = none.
-- **EX143 — Mismatch file.** Which file showed a mismatch? *Rubric:* 3 = control_tests.csv;; 2 = test results;; 1 = none;; 0 = none.
+- **EX142 — Dossier as argument.** Why is a dossier an argument rather than a pile of files? *Rubric:* 3 = it lets readers trace claims back to evidence;; 2 = traceability;; 1 = vague;; 0 = none.
+- **EX143 — Mismatch file.** Which file showed a mismatch? *Rubric:* 3 = control_tests.csv;; 2 = test results;; 1 = vague;; 0 = none.
 - **EX144 — Correct handling.** How should a retest be recorded? *Rubric:* 3 = as new evidence with its own date;; 2 = append;; 1 = edit in place;; 0 = none.
 
 ### Synthesis
@@ -2372,9 +2372,9 @@ One-organisation studies limit generality. Confounding remains.
 
 ### Exercises
 
-- **EX145 — Board finding.** What did the board study find and why is it uncertain? *Rubric:* 3 = more decisions, but a major incident also prompted action;; 2 = confounded;; 1 = none;; 0 = none.
-- **EX146 — Contribution list.** Name one of Nadia's three contributions. *Rubric:* 3 = tested low-cost continuous monitoring design;; 2 = contribution;; 1 = none;; 0 = none.
-- **EX147 — Thesis limits.** List two limits of the thesis. *Rubric:* 3 = one organisation and short operating period;; 2 = limits;; 1 = none;; 0 = none.
+- **EX145 — Board finding.** What did the board study find and why is it uncertain? *Rubric:* 3 = more decisions, but a major incident also prompted action;; 2 = confounded;; 1 = vague;; 0 = none.
+- **EX146 — Contribution list.** Name one of Nadia's three contributions. *Rubric:* 3 = tested low-cost continuous monitoring design;; 2 = contribution;; 1 = vague;; 0 = none.
+- **EX147 — Thesis limits.** List two limits of the thesis. *Rubric:* 3 = one organisation and short operating period;; 2 = limits;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2416,9 +2416,9 @@ Defenses sample knowledge. Reflections can be idealised.
 
 ### Exercises
 
-- **EX148 — Complacency answer.** How did Nadia answer the concern about owner complacency? *Rubric:* 3 = owners still review exceptions and the analyst samples;; 2 = oversight;; 1 = none;; 0 = none.
+- **EX148 — Complacency answer.** How did Nadia answer the concern about owner complacency? *Rubric:* 3 = owners still review exceptions and the analyst samples;; 2 = oversight;; 1 = vague;; 0 = none.
 - **EX149 — Audit reliance.** Does the service replace external audit testing? *Rubric:* 3 = no, it supports but does not replace it;; 2 = no;; 1 = yes;; 0 = none.
-- **EX150 — Career plan.** What does Nadia plan after graduating? *Rubric:* 3 = join Ardwell's governance team;; 2 = Ardwell;; 1 = none;; 0 = none.
+- **EX150 — Career plan.** What does Nadia plan after graduating? *Rubric:* 3 = join Ardwell's governance team;; 2 = Ardwell;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

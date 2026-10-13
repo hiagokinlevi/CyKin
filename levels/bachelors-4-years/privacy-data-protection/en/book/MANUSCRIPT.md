@@ -71,7 +71,7 @@ Base-rate figures here are illustrative; real rates must be estimated.
 ### Exercises
 
 - **EX001 — Necessity and basis.** How does Elena rewrite the sharing rule? *Rubric:* 3 = sharing permitted only if necessary and a lawful basis exists;; 2 = mentions necessity;; 1 = keeps original;; 0 = none.
-- **EX002 — Popular app assumption.** What hidden assumption lies in "the app is popular, so it is safe"? *Rubric:* 3 = popularity implies careful data handling;; 2 = names an assumption;; 1 = none;; 0 = none.
+- **EX002 — Popular app assumption.** What hidden assumption lies in "the app is popular, so it is safe"? *Rubric:* 3 = popularity implies careful data handling;; 2 = names an assumption;; 1 = vague;; 0 = none.
 - **EX003 — Flagged apps.** Roughly what share of flagged apps is actually bad in Elena's example? *Rubric:* 3 = about one in six;; 2 = a minority;; 1 = most;; 0 = none.
 
 ### Synthesis
@@ -118,9 +118,9 @@ A first map misses shadow systems such as personal spreadsheets; revisit it.
 
 ### Exercises
 
-- **EX004 — Missing view.** What did Elena's system map reveal? *Rubric:* 3 = nobody had a complete view of where pupil data live;; 2 = mentions gaps;; 1 = none;; 0 = none.
+- **EX004 — Missing view.** What did Elena's system map reveal? *Rubric:* 3 = nobody had a complete view of where pupil data live;; 2 = mentions gaps;; 1 = vague;; 0 = none.
 - **EX005 — Cloud not automatic.** Why is cloud storage not automatically less private? *Rubric:* 3 = a well-configured cloud may be safer than an unpatched school server;; 2 = mentions configuration;; 1 = says cloud is worse;; 0 = none.
-- **EX006 — Device controls.** Which device controls does Elena recommend? *Rubric:* 3 = full-disk encryption on laptops and auto sign-out on shared tablets;; 2 = one;; 1 = none;; 0 = none.
+- **EX006 — Device controls.** Which device controls does Elena recommend? *Rubric:* 3 = full-disk encryption on laptops and auto sign-out on shared tablets;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -310,8 +310,8 @@ Models simplify; real access often has exceptions not captured in role tables.
 
 ### Exercises
 
-- **EX016 — Ordinary but sensitive.** Give an example of ordinary-looking data that may be special category. *Rubric:* 3 = dietary requirements revealing religion or health;; 2 = example given;; 1 = none;; 0 = none.
-- **EX017 — Access relation finding.** What did the access relation reveal? *Rubric:* 3 = office staff could access support plans they do not need;; 2 = mentions office;; 1 = none;; 0 = none.
+- **EX016 — Ordinary but sensitive.** Give an example of ordinary-looking data that may be special category. *Rubric:* 3 = dietary requirements revealing religion or health;; 2 = example given;; 1 = vague;; 0 = none.
+- **EX017 — Access relation finding.** What did the access relation reveal? *Rubric:* 3 = office staff could access support plans they do not need;; 2 = mentions office;; 1 = vague;; 0 = none.
 - **EX018 — Weakest link path.** Why is a multi-step data path only as protected as its weakest link? *Rubric:* 3 = data can leak at any step, such as a subprocessor;; 2 = mentions steps;; 1 = strongest;; 0 = none.
 
 ### Synthesis
@@ -359,8 +359,8 @@ Safeguarding requirements vary by country; check local guidance.
 ### Exercises
 
 - **EX019 — Filter logs.** Why are web filter logs sensitive? *Rubric:* 3 = they reveal children's searches on health or family issues;; 2 = mentions searches;; 1 = not personal;; 0 = none.
-- **EX020 — Filter retention.** What did Elena recommend for filter logs? *Rubric:* 3 = shorter retention, safeguarding-only access and transparency;; 2 = two;; 1 = none;; 0 = none.
-- **EX021 — Over-monitoring harm.** How can over-monitoring harm children? *Rubric:* 3 = it may discourage seeking help online about sensitive issues;; 2 = mentions chilling;; 1 = none;; 0 = none.
+- **EX020 — Filter retention.** What did Elena recommend for filter logs? *Rubric:* 3 = shorter retention, safeguarding-only access and transparency;; 2 = two;; 1 = vague;; 0 = none.
+- **EX021 — Over-monitoring harm.** How can over-monitoring harm children? *Rubric:* 3 = it may discourage seeking help online about sensitive issues;; 2 = mentions chilling;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -408,7 +408,7 @@ Keyed pseudonyms can be reversed by anyone holding the key; protect it.
 
 - **EX022 — Class-based access.** How does Elena's application decide whether a teacher sees a record? *Rubric:* 3 = role and purpose checks plus class membership;; 2 = mentions role;; 1 = shows all;; 0 = none.
 - **EX023 — Pseudonymised still personal.** Why is the pseudonymised reading dataset still personal data? *Rubric:* 3 = the key can re-identify pupils;; 2 = mentions key;; 1 = anonymous;; 0 = none.
-- **EX024 — Stale access.** What failed test did Elena fix? *Rubric:* 3 = teachers keeping access after leaving a class;; 2 = mentions access;; 1 = none;; 0 = none.
+- **EX024 — Stale access.** What failed test did Elena fix? *Rubric:* 3 = teachers keeping access after leaving a class;; 2 = mentions access;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -532,7 +532,7 @@ Personal codes can be vague; tie each value to a concrete behaviour.
 
 ### Exercises
 
-- **EX028 — Children's protection.** Which provisions emphasise special protection for children's data? *Rubric:* 3 = GDPR Recital 38 and LGPD Article 14;; 2 = one;; 1 = none;; 0 = none.
+- **EX028 — Children's protection.** Which provisions emphasise special protection for children's data? *Rubric:* 3 = GDPR Recital 38 and LGPD Article 14;; 2 = one;; 1 = vague;; 0 = none.
 - **EX029 — Declining real data.** Why does Elena decline the real spreadsheet? *Rubric:* 3 = her placement authorises only synthetic data;; 2 = mentions authority;; 1 = accepts;; 0 = none.
 - **EX030 — Complaint referral.** Why refer the complaint investigation to the data protection lead? *Rubric:* 3 = it needs authority and access she lacks;; 2 = mentions role;; 1 = investigates;; 0 = none.
 
@@ -581,7 +581,7 @@ Secure erase methods differ by device; verify that the method works on each mode
 ### Exercises
 
 - **EX031 — Shared account risk.** What is wrong with one shared pupil account? *Rubric:* 3 = files and histories are visible to every pupil;; 2 = mentions sharing;; 1 = fine;; 0 = none.
-- **EX032 — Safeguarding folder.** How was the safeguarding folder fixed? *Rubric:* 3 = access restricted to safeguarding leads with auditing;; 2 = one part;; 1 = none;; 0 = none.
+- **EX032 — Safeguarding folder.** How was the safeguarding folder fixed? *Rubric:* 3 = access restricted to safeguarding leads with auditing;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX033 — Device disposal.** Why is deleting user accounts not enough before selling a laptop? *Rubric:* 3 = data may remain recoverable on disk;; 2 = mentions recovery;; 1 = enough;; 0 = none.
 
 ### Synthesis
@@ -650,8 +650,8 @@ Barely overlapping intervals are suggestive, not a formal test; a test of differ
 ### Exercises
 
 - **EX034 — Trust-wide interval.** What is the 95% interval for trust-wide awareness? *Rubric:* 3 = 22% to 29%;; 2 = approximately right;; 1 = wrong;; 0 = none.
-- **EX035 — Kelso difference.** What might explain Kelso's higher awareness? *Rubric:* 3 = a yearly letter listing apps, though causation is not proven;; 2 = mentions letter;; 1 = none;; 0 = none.
-- **EX036 — Respondent protection.** How does Elena protect survey respondents? *Rubric:* 3 = redacts free text and reports schools only with at least twenty responses;; 2 = one part;; 1 = none;; 0 = none.
+- **EX035 — Kelso difference.** What might explain Kelso's higher awareness? *Rubric:* 3 = a yearly letter listing apps, though causation is not proven;; 2 = mentions letter;; 1 = vague;; 0 = none.
+- **EX036 — Respondent protection.** How does Elena protect survey respondents? *Rubric:* 3 = redacts free text and reports schools only with at least twenty responses;; 2 = one part;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -697,9 +697,9 @@ HR integration fails if HR records are late; reviews remain necessary.
 
 ### Exercises
 
-- **EX037 — Stale access cases.** Name the two stale access cases Elena found. *Rubric:* 3 = former SEN coordinator keeping support plans; departed teacher with active account;; 2 = one;; 1 = none;; 0 = none.
+- **EX037 — Stale access cases.** Name the two stale access cases Elena found. *Rubric:* 3 = former SEN coordinator keeping support plans; departed teacher with active account;; 2 = one;; 1 = vague;; 0 = none.
 - **EX038 — Review results.** How many accounts needed changes in the first and second reviews? *Rubric:* 3 = eleven, then three;; 2 = one figure;; 1 = wrong;; 0 = none.
-- **EX039 — Age-appropriate login.** Why use picture passwords for very young pupils? *Rubric:* 3 = security they cannot manage will be bypassed;; 2 = mentions usability;; 1 = none;; 0 = none.
+- **EX039 — Age-appropriate login.** Why use picture passwords for very young pupils? *Rubric:* 3 = security they cannot manage will be bypassed;; 2 = mentions usability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -747,7 +747,7 @@ Lawful basis choices depend on national education law; check locally.
 
 - **EX040 — Contextual flow.** How does contextual integrity apply to family information shared with a teacher? *Rubric:* 3 = it should not flow to other parents or vendors;; 2 = mentions norms;; 1 = free to share;; 0 = none.
 - **EX041 — Consent misuse.** Why is consent wrong for data needed to teach? *Rubric:* 3 = parents cannot really refuse without consequence;; 2 = mentions choice;; 1 = consent always;; 0 = none.
-- **EX042 — Equality data.** What did Elena find about equality monitoring data? *Rubric:* 3 = kept with names when aggregate analysis would suffice;; 2 = mentions names;; 1 = none;; 0 = none.
+- **EX042 — Equality data.** What did Elena find about equality monitoring data? *Rubric:* 3 = kept with names when aggregate analysis would suffice;; 2 = mentions names;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -862,7 +862,7 @@ Central systems concentrate risk; protect and monitor them closely.
 ### Exercises
 
 - **EX046 — Safeguarding separation.** Why keep safeguarding records in a separate system? *Rubric:* 3 = a compromised teacher account cannot reach them;; 2 = mentions sensitivity;; 1 = same system;; 0 = none.
-- **EX047 — Single sign-on benefit.** What does single sign-on give the trust? *Rubric:* 3 = central control and quick removal of access to all apps;; 2 = mentions control;; 1 = none;; 0 = none.
+- **EX047 — Single sign-on benefit.** What does single sign-on give the trust? *Rubric:* 3 = central control and quick removal of access to all apps;; 2 = mentions control;; 1 = vague;; 0 = none.
 - **EX048 — Backup retention.** Why must backups follow retention rules? *Rubric:* 3 = backups hold personal data too;; 2 = mentions data;; 1 = exempt;; 0 = none.
 
 ### Synthesis
@@ -909,8 +909,8 @@ Encrypted data are still personal data; encryption reduces risk, not obligations
 
 ### Exercises
 
-- **EX049 — USB exports.** What did Elena recommend for exports on USB drives? *Rubric:* 3 = encrypted drives or replace with secure sharing;; 2 = one option;; 1 = none;; 0 = none.
-- **EX050 — Single key holder.** What was the risk of one technician holding backup keys? *Rubric:* 3 = backups unusable if he leaves or loses the key;; 2 = mentions loss;; 1 = none;; 0 = none.
+- **EX049 — USB exports.** What did Elena recommend for exports on USB drives? *Rubric:* 3 = encrypted drives or replace with secure sharing;; 2 = one option;; 1 = vague;; 0 = none.
+- **EX050 — Single key holder.** What was the risk of one technician holding backup keys? *Rubric:* 3 = backups unusable if he leaves or loses the key;; 2 = mentions loss;; 1 = vague;; 0 = none.
 - **EX051 — Encryption limits.** What does encryption not protect against? *Rubric:* 3 = authorised users misusing data and over-collection;; 2 = one;; 1 = everything;; 0 = none.
 
 ### Synthesis
@@ -1007,7 +1007,7 @@ Identifiability is contextual; the same table may be safe for a large school.
 
 - **EX055 — Personal data definition.** What does personal data mean under the GDPR? *Rubric:* 3 = information relating to an identified or identifiable natural person;; 2 = close;; 1 = wrong;; 0 = none.
 - **EX056 — Nameless table.** How can a results table without names be personal data? *Rubric:* 3 = small cells let readers identify a child;; 2 = mentions small numbers;; 1 = never;; 0 = none.
-- **EX057 — Lawful but harmful.** Give an example of lawful but harmful processing from the chapter. *Rubric:* 3 = sharing a photo showing a child in distress;; 2 = example;; 1 = none;; 0 = none.
+- **EX057 — Lawful but harmful.** Give an example of lawful but harmful processing from the chapter. *Rubric:* 3 = sharing a photo showing a child in distress;; 2 = example;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1103,7 +1103,7 @@ Records go stale quickly; tie updates to procurement and project processes.
 
 - **EX061 — Purpose-based model.** Why model activities by purpose rather than system? *Rubric:* 3 = the law organises duties around purposes; one system may serve several;; 2 = mentions purpose;; 1 = by system;; 0 = none.
 - **EX062 — Census recipient.** What role does a local authority receiving census data have? *Rubric:* 3 = a separate controller;; 2 = controller;; 1 = processor;; 0 = none.
-- **EX063 — Walkthrough finding.** What did the teacher walkthrough reveal? *Rubric:* 3 = an unrecorded parent messaging app used for photographs;; 2 = mentions app;; 1 = none;; 0 = none.
+- **EX063 — Walkthrough finding.** What did the teacher walkthrough reveal? *Rubric:* 3 = an unrecorded parent messaging app used for photographs;; 2 = mentions app;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1173,7 +1173,7 @@ Equal weights treat criteria as equally important; red lines correct the worst c
 
 - **EX064 — Approved apps.** Which apps are approved and with what scores? *Rubric:* 3 = MathsQuest 10 and Timetabler 8;; 2 = one;; 1 = wrong;; 0 = none.
 - **EX065 — Red line.** Why make advertising to pupils an automatic rejection? *Rubric:* 3 = profiling children for marketing conflicts with their special protection;; 2 = mentions children;; 1 = points only;; 0 = none.
-- **EX066 — ClassChat fix.** What changed ClassChat's score to 10? *Rubric:* 3 = it signed an agreement and added deletion on request;; 2 = one;; 1 = none;; 0 = none.
+- **EX066 — ClassChat fix.** What changed ClassChat's score to 10? *Rubric:* 3 = it signed an agreement and added deletion on request;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1344,8 +1344,8 @@ Laboratory configurations can drift from production; compare them regularly.
 
 ### Exercises
 
-- **EX073 — Unexpected access.** What unexpected access did testing reveal? *Rubric:* 3 = a head of year could see safeguarding notes;; 2 = mentions safeguarding;; 1 = none;; 0 = none.
-- **EX074 — Lost tablet test.** What did the lost-tablet simulation check? *Rubric:* 3 = remote wipe works and no cached pupil data on the device;; 2 = one;; 1 = none;; 0 = none.
+- **EX073 — Unexpected access.** What unexpected access did testing reveal? *Rubric:* 3 = a head of year could see safeguarding notes;; 2 = mentions safeguarding;; 1 = vague;; 0 = none.
+- **EX074 — Lost tablet test.** What did the lost-tablet simulation check? *Rubric:* 3 = remote wipe works and no cached pupil data on the device;; 2 = one;; 1 = vague;; 0 = none.
 - **EX075 — Untested areas.** Why record what was not tested? *Rubric:* 3 = it shows where assurance is missing, e.g. vendor deletion;; 2 = mentions gaps;; 1 = unnecessary;; 0 = none.
 
 ### Synthesis
@@ -1414,7 +1414,7 @@ Tagging must be accurate; untagged pupils in photographs escape the check.
 ### Exercises
 
 - **EX076 — Missing record.** How is a pupil with no consent record treated? *Rubric:* 3 = as not consented; the photograph is held;; 2 = as refusal;; 1 = as consent;; 0 = none.
-- **EX077 — Held photos.** Which photographs need action? *Rubric:* 3 = sports day (P02) and choir (P05, P08);; 2 = one;; 1 = none;; 0 = none.
+- **EX077 — Held photos.** Which photographs need action? *Rubric:* 3 = sports day (P02) and choir (P05, P08);; 2 = one;; 1 = vague;; 0 = none.
 - **EX078 — Withdrawal honesty.** What must parents be told about withdrawal? *Rubric:* 3 = it stops future use but cannot recall printed copies;; 2 = mentions limits;; 1 = everything removed;; 0 = none.
 
 ### Synthesis
@@ -1461,7 +1461,7 @@ Network comparison misses apps used on home devices.
 
 ### Exercises
 
-- **EX079 — Sample result.** What did the account sample find? *Rubric:* 3 = two of twenty accounts with extra permissions;; 2 = number only;; 1 = none;; 0 = none.
+- **EX079 — Sample result.** What did the account sample find? *Rubric:* 3 = two of twenty accounts with extra permissions;; 2 = number only;; 1 = vague;; 0 = none.
 - **EX080 — Unapproved apps.** How were unapproved apps found? *Rubric:* 3 = comparing contacted domains with the approved list;; 2 = mentions network;; 1 = survey;; 0 = none.
 - **EX081 — Compliance claim.** Why does Elena avoid claiming full compliance? *Rubric:* 3 = evidence cannot support it and failures remain;; 2 = mentions evidence;; 1 = claims it;; 0 = none.
 
@@ -1557,9 +1557,9 @@ Champions need time and training; naming them is not enough.
 
 ### Exercises
 
-- **EX085 — Calendar purpose.** What does the operations calendar achieve? *Rubric:* 3 = turns separate tasks into a predictable routine;; 2 = mentions routine;; 1 = none;; 0 = none.
+- **EX085 — Calendar purpose.** What does the operations calendar achieve? *Rubric:* 3 = turns separate tasks into a predictable routine;; 2 = mentions routine;; 1 = vague;; 0 = none.
 - **EX086 — Redaction.** Why redact parts of emails in an access request? *Rubric:* 3 = they contain information about other pupils;; 2 = mentions others;; 1 = send all;; 0 = none.
-- **EX087 — Single point.** What single point of failure does Elena identify? *Rubric:* 3 = the data protection lead as the only person running operations;; 2 = mentions lead;; 1 = none;; 0 = none.
+- **EX087 — Single point.** What single point of failure does Elena identify? *Rubric:* 3 = the data protection lead as the only person running operations;; 2 = mentions lead;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1605,8 +1605,8 @@ Vendors may confirm deletion without verifying it; request evidence where possib
 
 ### Exercises
 
-- **EX088 — Vendor gap.** What did the vendor deletion test reveal? *Rubric:* 3 = one vendor kept data for a year contrary to its contract;; 2 = mentions retention;; 1 = none;; 0 = none.
-- **EX089 — Leaver process.** What did Elena add to the leaver process? *Rubric:* 3 = vendor deletion confirmation with a two-week reminder;; 2 = mentions confirmation;; 1 = none;; 0 = none.
+- **EX088 — Vendor gap.** What did the vendor deletion test reveal? *Rubric:* 3 = one vendor kept data for a year contrary to its contract;; 2 = mentions retention;; 1 = vague;; 0 = none.
+- **EX089 — Leaver process.** What did Elena add to the leaver process? *Rubric:* 3 = vendor deletion confirmation with a two-week reminder;; 2 = mentions confirmation;; 1 = vague;; 0 = none.
 - **EX090 — Boundaries.** Why did the second laboratory find more serious gaps? *Rubric:* 3 = failures often occur at boundaries between systems and vendors;; 2 = mentions boundaries;; 1 = luck;; 0 = none.
 
 ### Synthesis
@@ -1750,8 +1750,8 @@ Theme counts depend on coding; a second coder improves reliability.
 ### Exercises
 
 - **EX097 — Main driver.** What drives most unchecked adoption according to the combined evidence? *Rubric:* 3 = lack of awareness of the process;; 2 = mentions awareness;; 1 = resistance;; 0 = none.
-- **EX098 — Fast-track.** What fast-track did Elena recommend? *Rubric:* 3 = review of requested apps within five school days;; 2 = mentions speed;; 1 = none;; 0 = none.
-- **EX099 — Second interviewer.** Why did a colleague conduct two interviews? *Rubric:* 3 = to check whether her role influenced answers;; 2 = mentions bias;; 1 = none;; 0 = none.
+- **EX098 — Fast-track.** What fast-track did Elena recommend? *Rubric:* 3 = review of requested apps within five school days;; 2 = mentions speed;; 1 = vague;; 0 = none.
+- **EX099 — Second interviewer.** Why did a colleague conduct two interviews? *Rubric:* 3 = to check whether her role influenced answers;; 2 = mentions bias;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1797,9 +1797,9 @@ Document-based comparison can miss practice; interviews reduce but do not remove
 
 ### Exercises
 
-- **EX100 — Harrow Lane strength.** What does Harrow Lane do better? *Rubric:* 3 = automatic retention and faster rights handling;; 2 = one;; 1 = none;; 0 = none.
+- **EX100 — Harrow Lane strength.** What does Harrow Lane do better? *Rubric:* 3 = automatic retention and faster rights handling;; 2 = one;; 1 = vague;; 0 = none.
 - **EX101 — Context matters.** Why should one organisation not simply copy the other? *Rubric:* 3 = context differs, so principles must be adapted;; 2 = mentions context;; 1 = copy;; 0 = none.
-- **EX102 — Comparison ethics.** What did both organisations agree before participating? *Rubric:* 3 = the aim is learning, not public ranking;; 2 = mentions consent;; 1 = none;; 0 = none.
+- **EX102 — Comparison ethics.** What did both organisations agree before participating? *Rubric:* 3 = the aim is learning, not public ranking;; 2 = mentions consent;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1845,7 +1845,7 @@ Portals can shift risk rather than remove it; a breach could expose many reports
 
 ### Exercises
 
-- **EX103 — Portal purpose.** What problem does the portal solve? *Rubric:* 3 = misdirected emails of sensitive reports;; 2 = mentions email;; 1 = none;; 0 = none.
+- **EX103 — Portal purpose.** What problem does the portal solve? *Rubric:* 3 = misdirected emails of sensitive reports;; 2 = mentions email;; 1 = vague;; 0 = none.
 - **EX104 — Fairness criterion.** Why include alternatives for parents without internet? *Rubric:* 3 = so families with limited digital access are not excluded;; 2 = mentions fairness;; 1 = ignore;; 0 = none.
 - **EX105 — DPIA need.** Why plan a DPIA for the portal? *Rubric:* 3 = it processes children's data at scale, meeting WP248 criteria;; 2 = mentions children;; 1 = unnecessary;; 0 = none.
 
@@ -1990,7 +1990,7 @@ Postal codes delay activation; balance security with convenience.
 ### Exercises
 
 - **EX112 — Linking process.** How are parents linked to children? *Rubric:* 3 = office identity check and a one-time code posted to the recorded address;; 2 = one part;; 1 = self-registration;; 0 = none.
-- **EX113 — Linking error.** How was the linking error caught and fixed? *Rubric:* 3 = a parent saw an unfamiliar name; a confirmation step was added;; 2 = one part;; 1 = none;; 0 = none.
+- **EX113 — Linking error.** How was the linking error caught and fixed? *Rubric:* 3 = a parent saw an unfamiliar name; a confirmation step was added;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX114 — Remaining emails.** Why did some staff still email reports? *Rubric:* 3 = they did not know how to upload large files;; 2 = mentions training;; 1 = refused;; 0 = none.
 
 ### Synthesis
@@ -2039,7 +2039,7 @@ One term is short; effects may change as novelty fades.
 
 - **EX115 — Unmet criterion.** Which criterion was not met? *Rubric:* 3 = parent activation: 83% against 85%;; 2 = mentions activation;; 1 = all met;; 0 = none.
 - **EX116 — Equity issue.** Why is low activation an equity issue? *Rubric:* 3 = families who cannot access the portal lose timely information;; 2 = mentions fairness;; 1 = technical only;; 0 = none.
-- **EX117 — New need.** What new need did evaluation reveal? *Rubric:* 3 = secure sharing with external professionals;; 2 = mentions professionals;; 1 = none;; 0 = none.
+- **EX117 — New need.** What new need did evaluation reveal? *Rubric:* 3 = secure sharing with external professionals;; 2 = mentions professionals;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2086,8 +2086,8 @@ A single trust's experience may not generalise; state context clearly.
 ### Exercises
 
 - **EX118 — Thesis argument.** What is Elena's main thesis argument? *Rubric:* 3 = most risks came from ordinary processes, reduced by practical controls and measurement;; 2 = mentions processes;; 1 = technology only;; 0 = none.
-- **EX119 — Sustainability answer.** How does Elena answer the sustainability question? *Rubric:* 3 = owners and an operations calendar maintain register and portal;; 2 = mentions owners;; 1 = none;; 0 = none.
-- **EX120 — Future work.** What future work did the panel suggest? *Rubric:* 3 = involving pupils in designing privacy information;; 2 = mentions pupils;; 1 = none;; 0 = none.
+- **EX119 — Sustainability answer.** How does Elena answer the sustainability question? *Rubric:* 3 = owners and an operations calendar maintain register and portal;; 2 = mentions owners;; 1 = vague;; 0 = none.
+- **EX120 — Future work.** What future work did the panel suggest? *Rubric:* 3 = involving pupils in designing privacy information;; 2 = mentions pupils;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

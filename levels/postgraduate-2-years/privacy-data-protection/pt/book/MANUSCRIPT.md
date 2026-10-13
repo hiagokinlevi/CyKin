@@ -115,7 +115,7 @@ Comparações entre leis simplificam; os regulamentos das autoridades nacionais 
 
 ### Exercícios
 
-- **EX006 — Lacuna no acionamento da DPIA.** Que lacuna Priscila encontrou na prática de DPIA? *Rubrica:* 3 = DPIAs só para produtos novos, não para mudanças;; 2 = menciona mudanças;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Lacuna no acionamento da DPIA.** Que lacuna Priscila encontrou na prática de DPIA? *Rubrica:* 3 = DPIAs só para produtos novos, não para mudanças;; 2 = menciona mudanças;; 1 = vago;; 0 = nenhuma.
 - **EX007 — Bases da LGPD.** Quantas bases legais o art. 7º da LGPD lista, e qual serve a pagamentos? *Rubrica:* 3 = dez; a proteção do crédito é relevante;; 2 = só o número;; 1 = errado;; 0 = nenhuma.
 - **EX008 — Exigência mais rigorosa.** Como Priscila trata as diferenças entre as leis? *Rubrica:* 3 = desenha processos que atendem à exigência mais rigorosa;; 2 = menciona a mais rigorosa;; 1 = escolhe uma;; 0 = nenhuma.
 - **EX009 — Papel das estruturas.** Como Priscila usa as estruturas de referência? *Rubrica:* 3 = como listas de verificação organizadas, não metas de certificação;; 2 = menciona lista;; 1 = certificar;; 0 = nenhuma.
@@ -396,11 +396,11 @@ As perguntas da triagem podem ser respondidas sem cuidado; confira as respostas 
 
 ### Exercícios
 
-- **EX031 — Gatilhos da triagem.** Cite duas perguntas da triagem que acionam uma DPIA. *Rubrica:* 3 = dados novos, nova finalidade, novo fornecedor ou muitos clientes afetados;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Gatilhos da triagem.** Cite duas perguntas da triagem que acionam uma DPIA. *Rubrica:* 3 = dados novos, nova finalidade, novo fornecedor ou muitos clientes afetados;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Critérios de compras.** Que critérios de privacidade foram acrescentados às compras? *Rubrica:* 3 = contratos conformes ao artigo 28, cláusulas de exclusão, listas de suboperadores e prazos de notificação;; 2 = dois;; 1 = nenhum;; 0 = nenhuma.
 - **EX033 — O que os multiplicadores pegaram.** O que os multiplicadores identificaram cedo? *Rubrica:* 3 = capturas de tela com números de cartão no chat interno;; 2 = menciona capturas de tela;; 1 = nada;; 0 = nenhuma.
 - **EX034 — Valor da coordenação.** Por que coordenar privacidade, segurança e riscos todo mês? *Rubrica:* 3 = evita duplicação e lacunas, tornando a proteção coerente;; 2 = menciona alinhamento;; 1 = desnecessário;; 0 = nenhuma.
-- **EX035 — DPIA antifraude.** Que mudança em produto existente acionou uma DPIA? *Rubrica:* 3 = as mudanças no modelo antifraude;; 2 = menciona fraude;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — DPIA antifraude.** Que mudança em produto existente acionou uma DPIA? *Rubrica:* 3 = as mudanças no modelo antifraude;; 2 = menciona fraude;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -445,8 +445,8 @@ Os prazos de cada jurisdição mudam; confira os regulamentos vigentes.
 - **EX036 — Eliminação e AML.** O que a Corvina elimina e o que conserva no pedido de eliminação? *Rubrica:* 3 = elimina marketing e preferências; conserva os registros de AML restritos a compliance;; 2 = uma parte;; 1 = tudo;; 0 = nenhuma.
 - **EX037 — Artigo 17(3)(b).** Que dispositivo permite conservar dados por obrigação legal? *Rubrica:* 3 = o artigo 17(3)(b) do GDPR;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
 - **EX038 — Divulgação à polícia.** O que a Corvina divulgou à polícia? *Rubrica:* 3 = só as transações do período requisitado, com registro;; 2 = menciona limitação;; 1 = tudo;; 0 = nenhuma.
-- **EX039 — Incidente internacional.** Que autoridades foram notificadas no incidente do fornecedor? *Rubrica:* 3 = a autoridade de controle portuguesa pelo GDPR e a ANPD pela LGPD;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
-- **EX040 — Mascaramento nos tickets.** Que correção preventiva seguiu o incidente? *Rubrica:* 3 = mascaramento automático dos dados de cartão nos tickets de suporte;; 2 = menciona mascaramento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Incidente internacional.** Que autoridades foram notificadas no incidente do fornecedor? *Rubrica:* 3 = a autoridade de controle portuguesa pelo GDPR e a ANPD pela LGPD;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Mascaramento nos tickets.** Que correção preventiva seguiu o incidente? *Rubrica:* 3 = mascaramento automático dos dados de cartão nos tickets de suporte;; 2 = menciona mascaramento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -652,7 +652,7 @@ A autoavaliação é enviesada; peça a opinião de colegas e auditores.
 - **EX057 — Princípios transferíveis.** Cite três princípios transferíveis. *Rubrica:* 3 = por exemplo, separar restrições de trade-offs; testar a necessidade; reportar com honestidade;; 2 = dois;; 1 = ferramentas;; 0 = nenhuma.
 - **EX058 — Não é um modelo pronto.** Por que Priscila evita apresentar seu programa como modelo pronto? *Rubrica:* 3 = os contextos e os recursos diferem;; 2 = menciona contexto;; 1 = é universal;; 0 = nenhuma.
 - **EX059 — Normas em evolução.** Dê um exemplo de norma em evolução que ela precisa acompanhar. *Rubrica:* 3 = a edição de 2025 da ISO/IEC 27701;; 2 = menciona ISO;; 1 = nenhum;; 0 = nenhuma.
-- **EX060 — Áreas de desenvolvimento.** Cite duas áreas de desenvolvimento que Priscila planeja. *Rubrica:* 3 = engenharia de privacidade/privacidade diferencial, interações com reguladores, mentoria;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Áreas de desenvolvimento.** Cite duas áreas de desenvolvimento que Priscila planeja. *Rubrica:* 3 = engenharia de privacidade/privacidade diferencial, interações com reguladores, mentoria;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

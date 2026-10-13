@@ -74,18 +74,18 @@ Definitions are broad; when unsure whether data are personal, treat them as pers
 ### Exercises
 
 - **EX001 — Loyalty number.** Is a loyalty number personal data? *Rubric:* 3 = yes, it can be linked to a person;; 2 = yes;; 1 = no;; 0 = none.
-- **EX002 — Insulin.** What can an insulin prescription reveal? *Rubric:* 3 = a health condition such as diabetes;; 2 = mentions health;; 1 = none;; 0 = none.
+- **EX002 — Insulin.** What can an insulin prescription reveal? *Rubric:* 3 = a health condition such as diabetes;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX003 — LGPD term.** What does the LGPD call special category data? *Rubric:* 3 = sensitive personal data;; 2 = correct;; 1 = other;; 0 = none.
-- **EX004 — Purchase history.** Why might loyalty purchase history be health data? *Rubric:* 3 = purchases can reveal illnesses or conditions;; 2 = mentions health;; 1 = none;; 0 = none.
+- **EX004 — Purchase history.** Why might loyalty purchase history be health data? *Rubric:* 3 = purchases can reveal illnesses or conditions;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX005 — Count principles.** How many principles are in GDPR Article 5? *Rubric:* 3 = seven;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX006 — Necessity.** Which LGPD principle resembles minimisation? *Rubric:* 3 = necessity;; 2 = correct;; 1 = other;; 0 = none.
-- **EX007 — Minimisation sentence.** What did Sofia write for minimisation? *Rubric:* 3 = the app should collect only what points and vouchers need;; 2 = mentions need;; 1 = none;; 0 = none.
+- **EX007 — Minimisation sentence.** What did Sofia write for minimisation? *Rubric:* 3 = the app should collect only what points and vouchers need;; 2 = mentions need;; 1 = vague;; 0 = none.
 - **EX008 — Counter photo.** What did Sofia recommend for shop photos? *Rubric:* 3 = no customers visible or clear permission;; 2 = mentions permission;; 1 = allow;; 0 = none.
-- **EX009 — Photo purpose.** What purpose did the counter photo serve? *Rubric:* 3 = promotion;; 2 = correct;; 1 = none;; 0 = none.
+- **EX009 — Photo purpose.** What purpose did the counter photo serve? *Rubric:* 3 = promotion;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX010 — Expectation.** Did customers expect to appear online? *Rubric:* 3 = no;; 2 = correct;; 1 = yes;; 0 = none.
 - **EX011 — Living persons.** Does the GDPR definition cover deceased people? *Rubric:* 3 = no, living persons;; 2 = correct;; 1 = yes;; 0 = none.
-- **EX012 — Extra condition.** What does processing health data need beyond a lawful basis? *Rubric:* 3 = a specific Article 9 condition;; 2 = mentions condition;; 1 = none;; 0 = none.
-- **EX013 — Checklist use.** How will Sofia use her principle sentences? *Rubric:* 3 = as a checklist for later decisions;; 2 = correct;; 1 = none;; 0 = none.
+- **EX012 — Extra condition.** What does processing health data need beyond a lawful basis? *Rubric:* 3 = a specific Article 9 condition;; 2 = mentions condition;; 1 = vague;; 0 = none.
+- **EX013 — Checklist use.** How will Sofia use her principle sentences? *Rubric:* 3 = as a checklist for later decisions;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -128,18 +128,18 @@ Verbal permission is easily disputed; get scope changes in writing.
 ### Exercises
 
 - **EX014 — Scope exclusions.** Name two things excluded from Sofia's scope. *Rubric:* 3 = reading customer records, contacting customers, changing settings;; 2 = two;; 1 = one;; 0 = none.
-- **EX015 — Test customer.** Why did Sofia use a test customer? *Rubric:* 3 = to avoid viewing real customer records;; 2 = mentions real data;; 1 = none;; 0 = none.
+- **EX015 — Test customer.** Why did Sofia use a test customer? *Rubric:* 3 = to avoid viewing real customer records;; 2 = mentions real data;; 1 = vague;; 0 = none.
 - **EX016 — Note storage.** Where does Sofia keep her notes? *Rubric:* 3 = locked drawer and encrypted folder;; 2 = both;; 1 = phone;; 0 = none.
-- **EX017 — Neighbour lookup.** Why did Sofia refuse the neighbour lookup? *Rubric:* 3 = no work reason; misuse of access;; 2 = mentions misuse;; 1 = none;; 0 = none.
-- **EX018 — Driver phone.** How was the driver's phone added to the review? *Rubric:* 3 = owner added it in writing after speaking with the driver;; 2 = mentions writing;; 1 = none;; 0 = none.
-- **EX019 — Storeroom find.** What did Sofia find in the storeroom? *Rubric:* 3 = old prescription copies unlocked;; 2 = correct;; 1 = none;; 0 = none.
-- **EX020 — Not touching.** Why did Sofia not move or read the copies? *Rubric:* 3 = to avoid further exposure and stay within scope;; 2 = mentions scope;; 1 = none;; 0 = none.
+- **EX017 — Neighbour lookup.** Why did Sofia refuse the neighbour lookup? *Rubric:* 3 = no work reason; misuse of access;; 2 = mentions misuse;; 1 = vague;; 0 = none.
+- **EX018 — Driver phone.** How was the driver's phone added to the review? *Rubric:* 3 = owner added it in writing after speaking with the driver;; 2 = mentions writing;; 1 = vague;; 0 = none.
+- **EX019 — Storeroom find.** What did Sofia find in the storeroom? *Rubric:* 3 = old prescription copies unlocked;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX020 — Not touching.** Why did Sofia not move or read the copies? *Rubric:* 3 = to avoid further exposure and stay within scope;; 2 = mentions scope;; 1 = vague;; 0 = none.
 - **EX021 — Report content.** What did her report include? *Rubric:* 3 = location, time and what she saw;; 2 = most;; 1 = one;; 0 = none.
 - **EX022 — Owner response.** What did the owner do about the storeroom? *Rubric:* 3 = locked it and arranged shredding of expired copies;; 2 = both;; 1 = one;; 0 = none.
-- **EX023 — Quick reporting.** Why does quick reporting matter? *Rubric:* 3 = to judge breach and notification;; 2 = mentions notification;; 1 = none;; 0 = none.
+- **EX023 — Quick reporting.** Why does quick reporting matter? *Rubric:* 3 = to judge breach and notification;; 2 = mentions notification;; 1 = vague;; 0 = none.
 - **EX024 — Staff as subjects.** Are staff data subjects too? *Rubric:* 3 = yes;; 2 = correct;; 1 = no;; 0 = none.
-- **EX025 — Review risk.** How can a review itself create risk? *Rubric:* 3 = notes and screenshots can spread;; 2 = mentions notes;; 1 = none;; 0 = none.
-- **EX026 — Openness.** What encourages staff to mention problems? *Rubric:* 3 = understanding the aim is improvement, not blame;; 2 = mentions aim;; 1 = none;; 0 = none.
+- **EX025 — Review risk.** How can a review itself create risk? *Rubric:* 3 = notes and screenshots can spread;; 2 = mentions notes;; 1 = vague;; 0 = none.
+- **EX026 — Openness.** What encourages staff to mention problems? *Rubric:* 3 = understanding the aim is improvement, not blame;; 2 = mentions aim;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -181,7 +181,7 @@ A map drawn once becomes outdated; update it when systems change.
 
 ### Exercises
 
-- **EX027 — Hidden flow.** Which flow had the owner not realised? *Rubric:* 3 = till sends medicine purchases to the loyalty app;; 2 = mentions loyalty;; 1 = none;; 0 = none.
+- **EX027 — Hidden flow.** Which flow had the owner not realised? *Rubric:* 3 = till sends medicine purchases to the loyalty app;; 2 = mentions loyalty;; 1 = vague;; 0 = none.
 - **EX028 — Delivery data.** What does the delivery service receive? *Rubric:* 3 = names, addresses and bag description;; 2 = most;; 1 = one;; 0 = none.
 - **EX029 — Vendor count.** How many vendors does Juniper rely on? *Rubric:* 3 = four;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX030 — Contract gaps.** Which contracts lacked data protection terms? *Rubric:* 3 = loyalty and delivery;; 2 = both;; 1 = one;; 0 = none.
@@ -190,9 +190,9 @@ A map drawn once becomes outdated; update it when systems change.
 - **EX033 — Personalised offers.** What would personalised offers from medicine purchases need? *Rubric:* 3 = explicit consent;; 2 = correct;; 1 = contract;; 0 = none.
 - **EX034 — CCTV retention.** How long is CCTV kept? *Rubric:* 3 = thirty days;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX035 — Unlimited data.** Which data had no retention limit? *Rubric:* 3 = loyalty data and delivery records;; 2 = both;; 1 = one;; 0 = none.
-- **EX036 — Retention benefit.** Why does storage limitation reduce breach damage? *Rubric:* 3 = less data held means less exposed;; 2 = mentions less data;; 1 = none;; 0 = none.
+- **EX036 — Retention benefit.** Why does storage limitation reduce breach damage? *Rubric:* 3 = less data held means less exposed;; 2 = mentions less data;; 1 = vague;; 0 = none.
 - **EX037 — Basis timing.** When should a lawful basis be chosen? *Rubric:* 3 = before processing starts;; 2 = correct;; 1 = after;; 0 = none.
-- **EX038 — Expectation marks.** What did Sofia mark on each flow besides contents? *Rubric:* 3 = whether customers would expect it;; 2 = correct;; 1 = none;; 0 = none.
+- **EX038 — Expectation marks.** What did Sofia mark on each flow besides contents? *Rubric:* 3 = whether customers would expect it;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -269,17 +269,17 @@ Purposes listed in a notice may be incomplete; ask the business whether any othe
 ### Exercises
 
 - **EX039 — Unneeded share.** What share of loyalty fields were unneeded? *Rubric:* 3 = 5 of 10, 50%;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX040 — Location trail.** Why is the location trail a concern? *Rubric:* 3 = intrusive and unexpected tracking;; 2 = mentions tracking;; 1 = none;; 0 = none.
-- **EX041 — Vendor defaults.** Where might gender, postcode and phone have come from? *Rubric:* 3 = the vendor's default template;; 2 = correct;; 1 = none;; 0 = none.
+- **EX040 — Location trail.** Why is the location trail a concern? *Rubric:* 3 = intrusive and unexpected tracking;; 2 = mentions tracking;; 1 = vague;; 0 = none.
+- **EX041 — Vendor defaults.** Where might gender, postcode and phone have come from? *Rubric:* 3 = the vendor's default template;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX042 — Principles broken.** Which two principles does unneeded collection break? *Rubric:* 3 = minimisation and purpose limitation;; 2 = both;; 1 = one;; 0 = none.
 - **EX043 — Plan actions.** How many actions does Sofia's plan contain? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX044 — Plan details.** What does each action have? *Rubric:* 3 = owner, cost estimate, target date;; 2 = most;; 1 = one;; 0 = none.
 - **EX045 — Lead issue.** Which issue did Sofia present first? *Rubric:* 3 = medicine purchases reaching the loyalty vendor;; 2 = correct;; 1 = other;; 0 = none.
-- **EX046 — Owner concern.** What did the owner worry about? *Rubric:* 3 = removing fields reducing app value;; 2 = correct;; 1 = none;; 0 = none.
+- **EX046 — Owner concern.** What did the owner worry about? *Rubric:* 3 = removing fields reducing app value;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX047 — Remaining fields.** How many fields does the form ask for after the change? *Rubric:* 3 = five;; 2 = correct;; 1 = ten;; 0 = none.
 - **EX048 — Till export.** What does the till export contain now? *Rubric:* 3 = total spend and non-medicine categories;; 2 = correct;; 1 = medicines;; 0 = none.
-- **EX049 — Post-change check.** Why check after a change? *Rubric:* 3 = to confirm the plan worked;; 2 = mentions confirmation;; 1 = none;; 0 = none.
-- **EX050 — Next study.** What does Sofia plan to study next? *Rubric:* 3 = governance, risk and compliance;; 2 = correct;; 1 = none;; 0 = none.
+- **EX049 — Post-change check.** Why check after a change? *Rubric:* 3 = to confirm the plan worked;; 2 = mentions confirmation;; 1 = vague;; 0 = none.
+- **EX050 — Next study.** What does Sofia plan to study next? *Rubric:* 3 = governance, risk and compliance;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

@@ -113,7 +113,7 @@ Training staff to click through certificate warnings undermines the protection H
 
 - **EX004 — Warning risk.** Why is clicking through certificate warnings dangerous? *Rubric:* 3 = staff could be fooled by a fake site;; 2 = fake site;; 1 = slow;; 0 = none.
 - **EX005 — East clinic finding.** What did Kai find at the east clinic? *Rubric:* 3 = guest and staff Wi-Fi not separated;; 2 = shared network;; 1 = nothing;; 0 = none.
-- **EX006 — Passkey layer.** What extra layer do passkeys add against look-alike sites? *Rubric:* 3 = they only sign for the genuine site;; 2 = site-bound;; 1 = none;; 0 = none.
+- **EX006 — Passkey layer.** What extra layer do passkeys add against look-alike sites? *Rubric:* 3 = they only sign for the genuine site;; 2 = site-bound;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -201,7 +201,7 @@ Identifying people only by usernames that differ across systems makes complete l
 
 - **EX010 — Person key.** What key links a person's accounts? *Rubric:* 3 = HR staff number;; 2 = staff number;; 1 = username;; 0 = none.
 - **EX011 — Group purpose.** Why record each group's owner and purpose? *Rubric:* 3 = to explain how access is granted;; 2 = explain;; 1 = style;; 0 = none.
-- **EX012 — Locum attribute use.** How do attributes help with locum vets? *Rubric:* 3 = access limited by clinic and removed on end date;; 2 = end date;; 1 = none;; 0 = none.
+- **EX012 — Locum attribute use.** How do attributes help with locum vets? *Rubric:* 3 = access limited by clinic and removed on end date;; 2 = end date;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -465,7 +465,7 @@ Creating a group for every role and location combination multiplies groups beyon
 
 - **EX028 — Separation reason.** Why keep role and location groups separate? *Rubric:* 3 = avoid a group for every combination;; 2 = combinations;; 1 = colour;; 0 = none.
 - **EX029 — Nesting finding.** What did the nested chain grant? *Rubric:* 3 = finance access to a locum vet;; 2 = finance;; 1 = nothing;; 0 = none.
-- **EX030 — Nesting limit.** What nesting limit does Kai set? *Rubric:* 3 = one level;; 2 = one;; 1 = none;; 0 = none.
+- **EX030 — Nesting limit.** What nesting limit does Kai set? *Rubric:* 3 = one level;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -531,7 +531,7 @@ Deleting a group immediately because its name looks old risks breaking something
 ### Exercises
 
 - **EX031 — Ownerless groups.** Which groups had no owner? *Rubric:* 3 = clinic-south-staff and old-project-2021;; 2 = two;; 1 = finance;; 0 = none.
-- **EX032 — Empty powerful risk.** Why is an empty powerful group risky? *Rubric:* 3 = anyone added later gets powerful access without a deliberate decision;; 2 = later;; 1 = none;; 0 = none.
+- **EX032 — Empty powerful risk.** Why is an empty powerful group risky? *Rubric:* 3 = anyone added later gets powerful access without a deliberate decision;; 2 = later;; 1 = vague;; 0 = none.
 - **EX033 — Retirement.** How is old-project-2021 retired? *Rubric:* 3 = disabled 30 days, deleted if no objection;; 2 = disabled;; 1 = deleted now;; 0 = none.
 
 ### Synthesis
@@ -618,7 +618,7 @@ Adding new access on a move without removing old access accumulates privilege ov
 
 ### Exercises
 
-- **EX037 — Leftover examples.** Give one leftover access example. *Rubric:* 3 = nurse kept booking admin rights;; 2 = leftover;; 1 = none;; 0 = none.
+- **EX037 — Leftover examples.** Give one leftover access example. *Rubric:* 3 = nurse kept booking admin rights;; 2 = leftover;; 1 = vague;; 0 = none.
 - **EX038 — Overlap rule.** What rule applies to overlap access? *Rubric:* 3 = it must have an end date;; 2 = end date;; 1 = permanent;; 0 = none.
 - **EX039 — First results.** How many of five moves were clean? *Rubric:* 3 = four;; 2 = 4;; 1 = five;; 0 = none.
 
@@ -664,7 +664,7 @@ Assuming directory disablement removes access everywhere misses systems outside 
 
 - **EX040 — Disable not delete.** Why disable rather than delete at first? *Rubric:* 3 = keep records for a set period;; 2 = records;; 1 = speed;; 0 = none.
 - **EX041 — Shared items.** Name one shared item to handle. *Rubric:* 3 = shared passwords the leaver knew;; 2 = shared passwords;; 1 = desk;; 0 = none.
-- **EX042 — Payroll gap.** How long did the payroll account remain active? *Rubric:* 3 = nine days;; 2 = 9;; 1 = none;; 0 = none.
+- **EX042 — Payroll gap.** How long did the payroll account remain active? *Rubric:* 3 = nine days;; 2 = 9;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -707,7 +707,7 @@ Using one account for email and administration exposes admin rights to ordinary 
 ### Exercises
 
 - **EX043 — Combined account risk.** Why is a combined email/admin account risky? *Rubric:* 3 = a malicious email could act with admin rights;; 2 = phishing;; 1 = cost;; 0 = none.
-- **EX044 — Stale admin.** What stale admin issue was found? *Rubric:* 3 = former contractor still in admin role;; 2 = contractor;; 1 = none;; 0 = none.
+- **EX044 — Stale admin.** What stale admin issue was found? *Rubric:* 3 = former contractor still in admin role;; 2 = contractor;; 1 = vague;; 0 = none.
 - **EX045 — Admin alert.** When does an admin alert fire? *Rubric:* 3 = outside hours or new location;; 2 = out of hours;; 1 = always;; 0 = none.
 
 ### Synthesis
@@ -1170,7 +1170,7 @@ Permanent supplier accounts with unchanged passwords leave access open between v
 
 ### Exercises
 
-- **EX070 — Permanent account.** What was wrong with the maintenance company's access? *Rubric:* 3 = permanent account with unchanged password;; 2 = permanent;; 1 = none;; 0 = none.
+- **EX070 — Permanent account.** What was wrong with the maintenance company's access? *Rubric:* 3 = permanent account with unchanged password;; 2 = permanent;; 1 = vague;; 0 = none.
 - **EX071 — Remote approval.** How is remote support now granted? *Rubric:* 3 = requested each time, approved for a set period;; 2 = approved;; 1 = always on;; 0 = none.
 - **EX072 — Contract term.** Name one identity contract term. *Rubric:* 3 = notify when engineers leave;; 2 = named accounts;; 1 = price;; 0 = none.
 
@@ -1434,8 +1434,8 @@ A capstone that lists only successes leaves the next person unaware of gaps.
 
 ### Exercises
 
-- **EX088 — Remaining gaps.** Name one remaining gap. *Rubric:* 3 = payroll without SSO;; 2 = payroll;; 1 = none;; 0 = none.
-- **EX089 — Leaver result.** What leaver result was achieved? *Rubric:* 3 = on time in every case for six months;; 2 = on time;; 1 = none;; 0 = none.
+- **EX088 — Remaining gaps.** Name one remaining gap. *Rubric:* 3 = payroll without SSO;; 2 = payroll;; 1 = vague;; 0 = none.
+- **EX089 — Leaver result.** What leaver result was achieved? *Rubric:* 3 = on time in every case for six months;; 2 = on time;; 1 = vague;; 0 = none.
 - **EX090 — Strongest result.** What did Ruth call the strongest result? *Rubric:* 3 = Fernhill staff run processes confidently;; 2 = staff own it;; 1 = scripts;; 0 = none.
 
 ### Synthesis

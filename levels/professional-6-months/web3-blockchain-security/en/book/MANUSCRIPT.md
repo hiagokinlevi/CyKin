@@ -205,7 +205,7 @@ Skipping routine-seeming checklist areas can miss findings like a departed signe
 ### Exercises
 
 - **EX016 — Checklist area.** Name one custody checklist area. *Rubric:* 3 = how signers verify what they approve;; 2 = key storage;; 1 = office layout;; 0 = none.
-- **EX017 — First finding.** What was the first significant finding? *Rubric:* 3 = a former officer still on the signer list;; 2 = departed signer;; 1 = none;; 0 = none.
+- **EX017 — First finding.** What was the first significant finding? *Rubric:* 3 = a former officer still on the signer list;; 2 = departed signer;; 1 = vague;; 0 = none.
 - **EX018 — Guidance adaptation.** Why adapt guidance carefully? *Rubric:* 3 = most is written for developers;; 2 = developer focus;; 1 = it is perfect;; 0 = none.
 - **EX019 — High-rated findings.** Which findings are rated high? *Rubric:* 3 = departed signer and approvals on everyday laptops;; 2 = two findings;; 1 = recovery;; 0 = none.
 - **EX020 — Pre-report step.** What does Marcus do before writing the report? *Rubric:* 3 = discusses findings with the director;; 2 = discuss;; 1 = publish;; 0 = none.
@@ -429,7 +429,7 @@ Treating assumptions as facts in incident analysis leads to wrong lessons.
 - **EX037 — Missing control.** Which control was missing in the case? *Rubric:* 3 = an allow-list of destinations;; 2 = allow-list;; 1 = multisig;; 0 = none.
 - **EX038 — Assumption to test.** Name one assumption to test. *Rubric:* 3 = that the email came from the director;; 2 = signers had time;; 1 = funds left;; 0 = none.
 - **EX039 — Urgency lesson.** How should urgency in a request be treated? *Rubric:* 3 = as a warning sign that slows approval;; 2 = warning sign;; 1 = speed up;; 0 = none.
-- **EX040 — Added rule.** What rule does Marcus add at Bayview? *Rubric:* 3 = confirm any new destination by phone;; 2 = phone confirmation;; 1 = none;; 0 = none.
+- **EX040 — Added rule.** What rule does Marcus add at Bayview? *Rubric:* 3 = confirm any new destination by phone;; 2 = phone confirmation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -473,7 +473,7 @@ Claiming a charity is fully secure overstates assurance and invites misplaced tr
 
 - **EX041 — Summary content.** What does the one-page summary contain? *Rubric:* 3 = scope, three findings, actions and remaining risks;; 2 = key findings;; 1 = all evidence;; 0 = none.
 - **EX042 — Fair framing.** How is the departed signer finding framed? *Rubric:* 3 = as a leaver process gap, not a person's fault;; 2 = process gap;; 1 = blame;; 0 = none.
-- **EX043 — Stated limit.** What limit does the report state? *Rubric:* 3 = the exchange's controls were not covered;; 2 = exchange not reviewed;; 1 = none;; 0 = none.
+- **EX043 — Stated limit.** What limit does the report state? *Rubric:* 3 = the exchange's controls were not covered;; 2 = exchange not reviewed;; 1 = vague;; 0 = none.
 - **EX044 — Donor statement.** What does Marcus suggest telling donors? *Rubric:* 3 = controls were reviewed, strengthened and will be reviewed yearly;; 2 = short statement;; 1 = full technical detail;; 0 = none.
 - **EX045 — Phrase to avoid.** Which kind of phrase does he advise against? *Rubric:* 3 = fully secure;; 2 = overstatement;; 1 = thank you;; 0 = none.
 
@@ -520,7 +520,7 @@ Assuming funds are lost when a credit is delayed, without checking, causes needl
 - **EX046 — Reconciliation improvement.** How did on-time reconciliation change? *Rubric:* 3 = from 70 to 95 percent;; 2 = 95 percent;; 1 = unchanged;; 0 = none.
 - **EX047 — Discrepancy trend.** How did monthly discrepancies change? *Rubric:* 3 = from six to two;; 2 = fell;; 1 = rose;; 0 = none.
 - **EX048 — Delay cause.** What caused the missing exchange credit? *Rubric:* 3 = an exchange delay crediting that network;; 2 = exchange delay;; 1 = wrong address;; 0 = none.
-- **EX049 — Added step.** What step is added before transfers? *Rubric:* 3 = check the exchange's status page;; 2 = status check;; 1 = none;; 0 = none.
+- **EX049 — Added step.** What step is added before transfers? *Rubric:* 3 = check the exchange's status page;; 2 = status check;; 1 = vague;; 0 = none.
 - **EX050 — Approval delay cause.** Why did approvals sometimes take four days? *Rubric:* 3 = the trustee was travelling;; 2 = travel;; 1 = no reason;; 0 = none.
 
 ### Synthesis
@@ -604,7 +604,7 @@ Counting approvals from departed signers lets an outdated list override policy.
 - **EX051 — Departed signer warning.** Which signer triggers a warning? *Rubric:* 3 = former-cfo;; 2 = the departed CFO;; 1 = director;; 0 = none.
 - **EX052 — P-32 status.** Why is P-32 not ready? *Rubric:* 3 = large amount needs 3 approvals, has 2;; 2 = needs three;; 1 = wrong destination;; 0 = none.
 - **EX053 — P-33 problems.** What is wrong with P-33? *Rubric:* 3 = destination not allow-listed and only one active approval;; 2 = two failures;; 1 = nothing;; 0 = none.
-- **EX054 — Ready count.** How many proposals are ready? *Rubric:* 3 = none;; 2 = zero;; 1 = all;; 0 = none.
+- **EX054 — Ready count.** How many proposals are ready? *Rubric:* 3 = none;; 2 = zero;; 1 = all;; 0 = no answer.
 - **EX055 — Allow-list addition.** Why not just add P-33's destination to the allow-list? *Rubric:* 3 = adding destinations is a controlled change needing verification;; 2 = controlled change;; 1 = no reason;; 0 = none.
 
 ### Synthesis
@@ -647,10 +647,10 @@ Including donor personal data in a portfolio breaches the privacy it should demo
 
 ### Exercises
 
-- **EX056 — Portfolio sanitising.** How is the portfolio sanitised? *Rubric:* 3 = donor data removed, sensitive addresses replaced by placeholders;; 2 = redaction;; 1 = none;; 0 = none.
+- **EX056 — Portfolio sanitising.** How is the portfolio sanitised? *Rubric:* 3 = donor data removed, sensitive addresses replaced by placeholders;; 2 = redaction;; 1 = vague;; 0 = none.
 - **EX057 — Original goals.** Name one of Marcus's original goals. *Rubric:* 3 = make conversions safer;; 2 = fix custody weaknesses;; 1 = learn to trade;; 0 = none.
-- **EX058 — Remaining dependency.** What dependency remains? *Rubric:* 3 = reliance on a single exchange;; 2 = one exchange;; 1 = none;; 0 = none.
-- **EX059 — Development step.** Name one development step planned. *Rubric:* 3 = reading the EthTrust specification;; 2 = fraud prevention course;; 1 = none;; 0 = none.
+- **EX058 — Remaining dependency.** What dependency remains? *Rubric:* 3 = reliance on a single exchange;; 2 = one exchange;; 1 = vague;; 0 = none.
+- **EX059 — Development step.** Name one development step planned. *Rubric:* 3 = reading the EthTrust specification;; 2 = fraud prevention course;; 1 = vague;; 0 = none.
 - **EX060 — Final reflection.** What did Marcus conclude about cryptoasset security? *Rubric:* 3 = it relies on the same disciplines as financial control;; 2 = same disciplines;; 1 = entirely new;; 0 = none.
 
 ### Synthesis

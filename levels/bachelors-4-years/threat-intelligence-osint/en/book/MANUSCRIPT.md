@@ -1342,7 +1342,7 @@ Small samples cannot support strong claims. Report method limits alongside findi
 ### Exercises
 
 - **EX052 — Sharpen a question.** Rewrite "Is CTI useful?" as a researchable question. *Rubric:* 3 = population, period, measurable outcome; 2 = two; 1 = still vague; 0 = none.
-- **EX053 — Public bias.** Describe one bias in public incident reports. *Rubric:* 3 = selection—vendors publish notable/marketable cases, so counts skew; 2 = vague; 1 = none; 0 = none.
+- **EX053 — Public bias.** Describe one bias in public incident reports. *Rubric:* 3 = selection—vendors publish notable/marketable cases, so counts skew; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX054 — Interview rule.** What must Amara obtain before interviewing analysts? *Rubric:* 3 = informed consent and ethics review; avoid restricted content; 2 = consent only; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -1483,7 +1483,7 @@ Published cases favour dramatic events. Avoid overgeneralising from them.
 
 - **EX058 — Kill chain lesson.** State the main lesson of the Hutchins et al. paper for defenders. *Rubric:* 3 = intelligence from each intrusion (incl. failed) blocks later phases/attempts; 2 = partial; 1 = vague; 0 = none.
 - **EX059 — Behaviour vs infrastructure.** Why does behavioural detection outlast indicator lists? *Rubric:* 3 = techniques change less than domains/addresses; 2 = partial; 1 = opposite; 0 = none.
-- **EX060 — Backup pattern.** What pattern did Amara's ransomware table reveal? *Rubric:* 3 = offline backups → faster recovery; 2 = partial; 1 = none; 0 = none.
+- **EX060 — Backup pattern.** What pattern did Amara's ransomware table reveal? *Rubric:* 3 = offline backups → faster recovery; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1554,7 +1554,7 @@ System diagrams simplify human judgment. Measure before and after changes.
 ### Exercises
 
 - **EX061 — Find the bottleneck.** In Amara's week, where was the bottleneck and how do you know? *Rubric:* 3 = analysis; 40 in, 12 done; 2 = analysis; 1 = collection; 0 = none.
-- **EX062 — Negative loop.** Describe a negative feedback loop in CTI delivery. *Rubric:* 3 = false-positive blocks → network team ignores CTI; 2 = vague; 1 = none; 0 = none.
+- **EX062 — Negative loop.** Describe a negative feedback loop in CTI delivery. *Rubric:* 3 = false-positive blocks → network team ignores CTI; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX063 — STIX mapping.** Which STIX object type links an indicator to a malware object? *Rubric:* 3 = relationship (e.g. "indicates"); 2 = relationship; 1 = report; 0 = none.
 
 ### Synthesis
@@ -2416,7 +2416,7 @@ Translation can drop uncertainty. Keep likelihood and confidence in every versio
 
 - **EX094 — Who decides.** Who decides whether to isolate a laboratory system, and what does CTI contribute? *Rubric:* 3 = clinical/system owner decides; CTI provides threat picture; 2 = partial; 1 = CTI decides; 0 = none.
 - **EX095 — Media call.** A journalist calls Amara about an incident. What should she do? *Rubric:* 3 = not comment; refer to communications; 2 = decline; 1 = answer; 0 = none.
-- **EX096 — Word clash.** Give one term that means different things to clinicians and security staff. *Rubric:* 3 = e.g. "incident" with both meanings; 2 = term only; 1 = none; 0 = none.
+- **EX096 — Word clash.** Give one term that means different things to clinicians and security staff. *Rubric:* 3 = e.g. "incident" with both meanings; 2 = term only; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2638,7 +2638,7 @@ Proposals change; record changes and reasons in an appendix.
 
 - **EX103 — Out of scope.** Name two activities Amara excluded and why. *Rubric:* 3 = contacting registrars/takedown/active scanning, with reason (authority, legality); 2 = two without reasons; 1 = one; 0 = none.
 - **EX104 — Measurable success.** Why is "find all lookalikes" a poor success measure? *Rubric:* 3 = unknowable total; unmeasurable; replace with precision/defined checks; 2 = partial; 1 = fine; 0 = none.
-- **EX105 — Registrant privacy.** What data rule protects people who register similar domains innocently? *Rubric:* 3 = store only domain names/dates; no personal research on registrants; 2 = partial; 1 = none; 0 = none.
+- **EX105 — Registrant privacy.** What data rule protects people who register similar domains innocently? *Rubric:* 3 = store only domain names/dates; no personal research on registrants; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2781,7 +2781,7 @@ Public reports omit restricted evidence; absence of evidence in the text does no
 ### Exercises
 
 - **EX109 — Standards list.** Name three ICD 203 analytic standards. *Rubric:* 3 = three valid (source quality, uncertainty, distinguish assumptions/judgments, alternatives, relevance, logic); 2 = two; 1 = one; 0 = none.
-- **EX110 — Alternative explanation.** Suggest an alternative to "shared infrastructure means the same group". *Rubric:* 3 = shared hosting/tools sold widely/coincidence; 2 = vague; 1 = none; 0 = none.
+- **EX110 — Alternative explanation.** Suggest an alternative to "shared infrastructure means the same group". *Rubric:* 3 = shared hosting/tools sold widely/coincidence; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX111 — Missing evidence caution.** Why should a reviewer be careful about concluding a public report "has no evidence"? *Rubric:* 3 = restricted evidence may be withheld; absence in text ≠ absence; 2 = partial; 1 = not careful; 0 = none.
 
 ### Synthesis

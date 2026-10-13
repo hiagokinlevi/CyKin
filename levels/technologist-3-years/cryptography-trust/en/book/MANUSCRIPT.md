@@ -313,8 +313,8 @@ Snapshots and backups can contain keys; protect them like keys. Fixing a templat
 
 ### Exercises
 
-- **EX016 — Key permissions.** What permission problem did Rosa find? *Rubric:* 3 = a TLS key file readable by every account;; 2 = readable;; 1 = none;; 0 = none.
-- **EX017 — Template flaw.** What was wrong with the VM template? *Rubric:* 3 = it contained a pre-generated SSH host key shared by all clones;; 2 = shared key;; 1 = none;; 0 = none.
+- **EX016 — Key permissions.** What permission problem did Rosa find? *Rubric:* 3 = a TLS key file readable by every account;; 2 = readable;; 1 = vague;; 0 = none.
+- **EX017 — Template flaw.** What was wrong with the VM template? *Rubric:* 3 = it contained a pre-generated SSH host key shared by all clones;; 2 = shared key;; 1 = vague;; 0 = none.
 - **EX018 — getrandom.** Why use getrandom on new VMs? *Rubric:* 3 = it blocks until the generator is seeded, avoiding weak early randomness;; 2 = seeded;; 1 = faster;; 0 = none.
 
 ### Synthesis
@@ -359,7 +359,7 @@ Strong authentication does not limit what an authenticated user may do. Spare se
 
 - **EX019 — Two credentials.** What do the device certificate and the password-plus-code each prove? *Rubric:* 3 = certificate: council-managed device; password and code: authorised person;; 2 = both;; 1 = one;; 0 = none.
 - **EX020 — Two keys.** Why register two security keys per administrator? *Rubric:* 3 = so a lost key does not lock them out;; 2 = backup;; 1 = security;; 0 = none.
-- **EX021 — Leaver gap.** What gap did Rosa find in the leaver process? *Rubric:* 3 = device certificates not revoked for weeks;; 2 = delay;; 1 = none;; 0 = none.
+- **EX021 — Leaver gap.** What gap did Rosa find in the leaver process? *Rubric:* 3 = device certificates not revoked for weeks;; 2 = delay;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -401,7 +401,7 @@ Internal networks are not automatically trustworthy. More certificates mean more
 
 ### Exercises
 
-- **EX022 — Internal gap.** What gap did the diagram reveal behind the gateway? *Rubric:* 3 = traffic forwarded to applications over plain HTTP;; 2 = plain HTTP;; 1 = none;; 0 = none.
+- **EX022 — Internal gap.** What gap did the diagram reveal behind the gateway? *Rubric:* 3 = traffic forwarded to applications over plain HTTP;; 2 = plain HTTP;; 1 = vague;; 0 = none.
 - **EX023 — Webhook control.** Which control protects payment webhooks? *Rubric:* 3 = HMAC signatures from the payment provider;; 2 = HMAC;; 1 = TLS only;; 0 = none.
 - **EX024 — CA weakness.** Why is the internal CA a single point of failure? *Rubric:* 3 = one VM without key backup, managed by the same account as the gateway;; 2 = both;; 1 = one;; 0 = none.
 
@@ -567,8 +567,8 @@ Ratings are judgements and should be reviewed. Inventories built once and never 
 
 ### Exercises
 
-- **EX031 — Stale certificate.** What wasteful asset did Rosa discover? *Rubric:* 3 = certificate for a retired events website still auto-renewing;; 2 = stale cert;; 1 = none;; 0 = none.
-- **EX032 — Critical assets.** Which two assets were rated critical and why? *Rubric:* 3 = document-signing key (forged decisions) and internal CA key (mint any identity);; 2 = one;; 1 = none;; 0 = none.
+- **EX031 — Stale certificate.** What wasteful asset did Rosa discover? *Rubric:* 3 = certificate for a retired events website still auto-renewing;; 2 = stale cert;; 1 = vague;; 0 = none.
+- **EX032 — Critical assets.** Which two assets were rated critical and why? *Rubric:* 3 = document-signing key (forged decisions) and internal CA key (mint any identity);; 2 = one;; 1 = vague;; 0 = none.
 - **EX033 — Ten-year context.** What does the ten-year requirement imply for signing? *Rubric:* 3 = need timestamps and archived validation data for long-term verification;; 2 = timestamps;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -612,7 +612,7 @@ Flow tables omit undocumented "shadow" flows; ask owners. Encrypting backups wit
 ### Exercises
 
 - **EX034 — Table choice.** Why does Rosa use a table for flows? *Rubric:* 3 = it can be sorted and filtered when planning fixes;; 2 = sortable;; 1 = prettier;; 0 = none.
-- **EX035 — Backup gap.** What was wrong with backup encryption? *Rubric:* 3 = key stored on the backup server itself;; 2 = key beside data;; 1 = none;; 0 = none.
+- **EX035 — Backup gap.** What was wrong with backup encryption? *Rubric:* 3 = key stored on the backup server itself;; 2 = key beside data;; 1 = vague;; 0 = none.
 - **EX036 — Top fix.** Which flow ranked first and what fix was proposed? *Rubric:* 3 = emailed permit export; secure transfer with TLS and per-file encryption to contractor's key;; 2 = flow;; 1 = fix;; 0 = none.
 
 ### Synthesis
@@ -1012,7 +1012,7 @@ Thresholds without baselines create noise or miss problems. Monitoring failures,
 
 - **EX055 — Monitored signals.** List four signals Rosa monitors. *Rubric:* 3 = four of expiry days, renewal results, handshake failure rate, webhook failures, HSM availability;; 2 = three;; 1 = one;; 0 = none.
 - **EX056 — Alert hour.** When did the lab alert fire and why? *Rubric:* 3 = hour 4, after three consecutive hours above two percent;; 2 = hour;; 1 = wrong;; 0 = none.
-- **EX057 — Spike cause.** What caused the synthetic spike? *Rubric:* 3 = configuration push removed a cipher suite needed by an older payment terminal;; 2 = cause;; 1 = none;; 0 = none.
+- **EX057 — Spike cause.** What caused the synthetic spike? *Rubric:* 3 = configuration push removed a cipher suite needed by an older payment terminal;; 2 = cause;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1099,7 +1099,7 @@ Checklists can become box-ticking; require evidence. Supplier test environments 
 ### Exercises
 
 - **EX061 — Secret sharing.** How must the webhook secret be shared with the supplier? *Rubric:* 3 = through a secure channel from the secret store, never email;; 2 = secure;; 1 = email;; 0 = none.
-- **EX062 — Failed check.** Which go-live check failed? *Rubric:* 3 = supplier accepted a webhook with a wrong signature;; 2 = webhook;; 1 = none;; 0 = none.
+- **EX062 — Failed check.** Which go-live check failed? *Rubric:* 3 = supplier accepted a webhook with a wrong signature;; 2 = webhook;; 1 = vague;; 0 = none.
 - **EX063 — Evidence.** Why test with negative cases rather than trusting supplier statements? *Rubric:* 3 = statements can be wrong; negative tests prove rejection actually happens;; 2 = proof;; 1 = trust;; 0 = none.
 
 ### Synthesis
@@ -1171,8 +1171,8 @@ Automation that fails silently is worse than manual work. Thresholds must suit c
 ### Exercises
 
 - **EX064 — Planner outcome.** What did the planner decide for legacy-gis and why? *Rubric:* 3 = escalate; expired at -3 days and managed manually;; 2 = escalate;; 1 = renew;; 0 = none.
-- **EX065 — Threshold.** What threshold triggers automatic renewal? *Rubric:* 3 = within thirty days of expiry;; 2 = 30;; 1 = none;; 0 = none.
-- **EX066 — Safeguards.** Name two safeguards around the planner. *Rubric:* 3 = two of dry run posted, vetted ACME client, tickets for escalations, failure alerts;; 2 = one;; 1 = none;; 0 = none.
+- **EX065 — Threshold.** What threshold triggers automatic renewal? *Rubric:* 3 = within thirty days of expiry;; 2 = 30;; 1 = vague;; 0 = none.
+- **EX066 — Safeguards.** Name two safeguards around the planner. *Rubric:* 3 = two of dry run posted, vetted ACME client, tickets for escalations, failure alerts;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1216,7 +1216,7 @@ Before-and-after comparisons can mislead when other factors changed. Activity co
 
 - **EX067 — Activity vs outcome.** Give an example of an activity and an outcome from the chapter. *Rubric:* 3 = activity: finishing migration; outcome: fewer outages;; 2 = both;; 1 = one;; 0 = none.
 - **EX068 — Outage figures.** How did certificate outage hours change? *Rubric:* 3 = from nine to zero over the half-year;; 2 = numbers;; 1 = vague;; 0 = none.
-- **EX069 — Confounder.** Name one confounder Rosa noted. *Rubric:* 3 = quieter change period or short six-month window;; 2 = one;; 1 = none;; 0 = none.
+- **EX069 — Confounder.** Name one confounder Rosa noted. *Rubric:* 3 = quieter change period or short six-month window;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1259,7 +1259,7 @@ Small samples give unstable results. Observational data cannot prove cause witho
 ### Exercises
 
 - **EX070 — Research question.** What was Rosa's research question? *Rubric:* 3 = how long renewals take after alerts and which factors predict delay;; 2 = question;; 1 = topic only;; 0 = none.
-- **EX071 — Ethics step.** Name two ethical steps Rosa took. *Rubric:* 3 = two of written permission, staff names replaced, data kept on council systems, no citizen data, ethics check;; 2 = one;; 1 = none;; 0 = none.
+- **EX071 — Ethics step.** Name two ethical steps Rosa took. *Rubric:* 3 = two of written permission, staff names replaced, data kept on council systems, no citizen data, ethics check;; 2 = one;; 1 = vague;; 0 = none.
 - **EX072 — Conclusion limit.** Why can't Rosa claim automation causes faster renewal? *Rubric:* 3 = automated teams may also be better resourced; association only;; 2 = confounder;; 1 = can claim;; 0 = none.
 
 ### Synthesis
@@ -1347,7 +1347,7 @@ Runbooks written by experts often skip steps they find obvious. Credentials must
 ### Exercises
 
 - **EX076 — Handoff meaning.** What does handoff mean in this chapter? *Rubric:* 3 = operations can run, monitor, troubleshoot and change without the builder;; 2 = full;; 1 = partial;; 0 = none.
-- **EX077 — Rehearsal finding.** What did the first rehearsal reveal? *Rubric:* 3 = runbook assumed knowledge of log location;; 2 = gap;; 1 = none;; 0 = none.
+- **EX077 — Rehearsal finding.** What did the first rehearsal reveal? *Rubric:* 3 = runbook assumed knowledge of log location;; 2 = gap;; 1 = vague;; 0 = none.
 - **EX078 — Credentials.** How are credentials handed over? *Rubric:* 3 = via the secret store with location recorded, never in documents;; 2 = store;; 1 = docs;; 0 = none.
 
 ### Synthesis
@@ -1392,7 +1392,7 @@ Big-bang changes make failures hard to isolate. Temporary risk acceptance needs 
 
 - **EX079 — Staging.** What stages did the deployment use? *Rubric:* 3 = test, low-traffic endpoint, then batches;; 2 = three;; 1 = one;; 0 = none.
 - **EX080 — Validation test.** How did Rosa confirm old versions were rejected? *Rubric:* 3 = connecting with clients offering only old versions;; 2 = test;; 1 = assume;; 0 = none.
-- **EX081 — Rollback cause.** Why was one endpoint rolled back? *Rubric:* 3 = failure rate above two percent from an older TLS 1.0 payment kiosk;; 2 = cause;; 1 = none;; 0 = none.
+- **EX081 — Rollback cause.** Why was one endpoint rolled back? *Rubric:* 3 = failure rate above two percent from an older TLS 1.0 payment kiosk;; 2 = cause;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1436,7 +1436,7 @@ Logs that include sensitive data become liabilities. Feedback without reflection
 
 - **EX082 — Role limits.** What rights did Rosa not hold during placement? *Rubric:* 3 = HSM and internal CA administrator rights;; 2 = both;; 1 = one;; 0 = none.
 - **EX083 — Disable checking.** How did Rosa respond to a request to disable certificate checking? *Rubric:* 3 = explained interception risk and proposed installing correct intermediate;; 2 = both;; 1 = complied;; 0 = none.
-- **EX084 — Feedback change.** What did Rosa change after Owen's feedback? *Rubric:* 3 = added a three-line summary to change requests;; 2 = summary;; 1 = none;; 0 = none.
+- **EX084 — Feedback change.** What did Rosa change after Owen's feedback? *Rubric:* 3 = added a three-line summary to change requests;; 2 = summary;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1480,7 +1480,7 @@ Toolkits used outside their intended context can mislead. Tests on synthetic dat
 
 - **EX085 — Capstone contents.** List three components of Rosa's toolkit. *Rubric:* 3 = three of inventory template, renewal planner, log summariser, monitoring rule, runbooks;; 2 = two;; 1 = one;; 0 = none.
 - **EX086 — Review fix.** What problem did review find and how was it fixed? *Rubric:* 3 = summariser crashed on unexpected lines; now counts and reports them;; 2 = both;; 1 = one;; 0 = none.
-- **EX087 — Limits section.** What does the limits section say? *Rubric:* 3 = toolkit does not replace a CA, an HSM or professional review;; 2 = statement;; 1 = none;; 0 = none.
+- **EX087 — Limits section.** What does the limits section say? *Rubric:* 3 = toolkit does not replace a CA, an HSM or professional review;; 2 = statement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1522,9 +1522,9 @@ Demos can hide weaknesses; assessors should ask for evidence. Development plans 
 
 ### Exercises
 
-- **EX088 — Panel request.** What evidence did the panel request? *Rubric:* 3 = that the toolkit would have prevented a real past incident;; 2 = incident;; 1 = none;; 0 = none.
-- **EX089 — Own code.** Why did Rosa avoid writing her own certificate checking? *Rubric:* 3 = vetted libraries handle RFC 5280 edge cases and get security fixes;; 2 = reason;; 1 = none;; 0 = none.
-- **EX090 — Development plan.** Name two items in Rosa's development plan. *Rubric:* 3 = two of security operations certificate, HSM and signing study, post-quantum guidance, continued council work;; 2 = one;; 1 = none;; 0 = none.
+- **EX088 — Panel request.** What evidence did the panel request? *Rubric:* 3 = that the toolkit would have prevented a real past incident;; 2 = incident;; 1 = vague;; 0 = none.
+- **EX089 — Own code.** Why did Rosa avoid writing her own certificate checking? *Rubric:* 3 = vetted libraries handle RFC 5280 edge cases and get security fixes;; 2 = reason;; 1 = vague;; 0 = none.
+- **EX090 — Development plan.** Name two items in Rosa's development plan. *Rubric:* 3 = two of security operations certificate, HSM and signing study, post-quantum guidance, continued council work;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

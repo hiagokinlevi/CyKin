@@ -333,7 +333,7 @@ Exposing a permissioned validator to unknown peers removes the main advantage of
 ### Exercises
 
 - **EX019 — Fault location.** Why learn the layers? *Rubric:* 3 = to locate problems such as a firewall at the transport layer;; 2 = locate faults;; 1 = to memorise names;; 0 = none.
-- **EX020 — Gossip weakness.** What is a weakness of gossip for one node? *Rubric:* 3 = it is only as informed as its peers;; 2 = few peers;; 1 = none;; 0 = none.
+- **EX020 — Gossip weakness.** What is a weakness of gossip for one node? *Rubric:* 3 = it is only as informed as its peers;; 2 = few peers;; 1 = vague;; 0 = none.
 - **EX021 — Peer policy.** What peer policy does Sofia configure? *Rubric:* 3 = connect to the other two and refuse unknown peers;; 2 = allow-list;; 1 = accept all;; 0 = none.
 
 ### Synthesis
@@ -597,7 +597,7 @@ Treating a blockchain address as a person ignores that whoever holds the key con
 ### Exercises
 
 - **EX037 — Authentication on-chain.** How does a member authenticate on the ledger? *Rubric:* 3 = by signing a transaction with their private key;; 2 = signing;; 1 = password;; 0 = none.
-- **EX038 — Custody trade-off.** What is the risk of custodial wallets? *Rubric:* 3 = risk concentrates with the cooperative;; 2 = concentration;; 1 = none;; 0 = none.
+- **EX038 — Custody trade-off.** What is the risk of custodial wallets? *Rubric:* 3 = risk concentrates with the cooperative;; 2 = concentration;; 1 = vague;; 0 = none.
 - **EX039 — Administrator safeguard.** What protects the administrator role? *Rubric:* 3 = a timelock that makes changes visible first;; 2 = timelock;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -728,7 +728,7 @@ Letting one person control two layers collapses defence in depth into a single p
 
 ### Exercises
 
-- **EX046 — Boundary check.** What check sits at the database-to-service boundary? *Rubric:* 3 = the service verifies approvals before requesting a mint;; 2 = verify approvals;; 1 = none;; 0 = none.
+- **EX046 — Boundary check.** What check sits at the database-to-service boundary? *Rubric:* 3 = the service verifies approvals before requesting a mint;; 2 = verify approvals;; 1 = vague;; 0 = none.
 - **EX047 — Layer independence.** Why separate approval and signing duties? *Rubric:* 3 = so two layers do not collapse into one person;; 2 = independence;; 1 = speed;; 0 = none.
 - **EX048 — Ledger choice reason.** Why a permissioned ledger? *Rubric:* 3 = low costs and controlled participation;; 2 = control;; 1 = popularity;; 0 = none.
 
@@ -847,7 +847,7 @@ Choosing a method before the question often answers a different question than th
 
 - **EX052 — Research question.** What is Sofia's research question? *Rubric:* 3 = how often records and ledger balances disagree, and why;; 2 = mismatch frequency;; 1 = are blockchains secure;; 0 = none.
 - **EX053 — Chosen method.** Which method does she choose? *Rubric:* 3 = log analysis with short interviews;; 2 = mixed;; 1 = survey only;; 0 = none.
-- **EX054 — Committee change.** What change did the ethics committee require? *Rubric:* 3 = avoid discussing any named member;; 2 = no names;; 1 = none;; 0 = none.
+- **EX054 — Committee change.** What change did the ethics committee require? *Rubric:* 3 = avoid discussing any named member;; 2 = no names;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -977,9 +977,9 @@ Modelling only direct contract powers misses actors who cause outcomes indirectl
 
 ### Exercises
 
-- **EX061 — Specification gap.** What gap did the state table reveal? *Rubric:* 3 = whether redemption is allowed while paused;; 2 = redemption when paused;; 1 = none;; 0 = none.
+- **EX061 — Specification gap.** What gap did the state table reveal? *Rubric:* 3 = whether redemption is allowed while paused;; 2 = redemption when paused;; 1 = vague;; 0 = none.
 - **EX062 — Invariant example.** Give one voucher invariant. *Rubric:* 3 = total supply equals the sum of balances;; 2 = no negative balance;; 1 = supply grows;; 0 = none.
-- **EX063 — Indirect power.** What indirect power do coordinators have? *Rubric:* 3 = their approvals cause minting;; 2 = approvals;; 1 = none;; 0 = none.
+- **EX063 — Indirect power.** What indirect power do coordinators have? *Rubric:* 3 = their approvals cause minting;; 2 = approvals;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1321,7 +1321,7 @@ Blaming individuals for a system gap hides the root cause and discourages honest
 
 - **EX082 — Extra vouchers.** How many extra vouchers were detected? *Rubric:* 3 = 310;; 2 = three hundred ten;; 1 = 3,100;; 0 = none.
 - **EX083 — Root cause.** What was the root cause? *Rubric:* 3 = no check that a week was already processed;; 2 = missing repeat check;; 1 = a keyholder;; 0 = none.
-- **EX084 — Controls that worked.** Which controls limited and detected the error? *Rubric:* 3 = the weekly cap and reconciliation;; 2 = cap;; 1 = none;; 0 = none.
+- **EX084 — Controls that worked.** Which controls limited and detected the error? *Rubric:* 3 = the weekly cap and reconciliation;; 2 = cap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1533,7 +1533,7 @@ Ignoring incentives misses behaviour that technical analysis alone cannot predic
 
 - **EX094 — Voucher classification.** How are the vouchers classified? *Rubric:* 3 = a membership benefit redeemable only at the shop;; 2 = membership benefit;; 1 = an investment;; 0 = none.
 - **EX095 — Incentive control.** What limits the incentive to record extra shifts? *Rubric:* 3 = the weekly cap and coordinator approval;; 2 = cap;; 1 = nothing;; 0 = none.
-- **EX096 — Member feedback.** What feedback did members give? *Rubric:* 3 = the recovery process was confusing;; 2 = recovery;; 1 = none;; 0 = none.
+- **EX096 — Member feedback.** What feedback did members give? *Rubric:* 3 = the recovery process was confusing;; 2 = recovery;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1841,7 +1841,7 @@ Judging success only on technical tests misses whether users find a tool usable.
 
 - **EX115 — Routine reduction.** By how much did weekly routine time fall? *Rubric:* 3 = from thirty to eighteen minutes, 40 percent;; 2 = 40 percent;; 1 = 10 percent;; 0 = none.
 - **EX116 — Rule adjustment.** How was the alert rule adjusted? *Rubric:* 3 = recent-approval mismatches go to the daily summary;; 2 = summary note;; 1 = removed alerts;; 0 = none.
-- **EX117 — Stated limit.** Name one limit of the monitor. *Rubric:* 3 = depends on one validator for data;; 2 = one-month evaluation;; 1 = none;; 0 = none.
+- **EX117 — Stated limit.** Name one limit of the monitor. *Rubric:* 3 = depends on one validator for data;; 2 = one-month evaluation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

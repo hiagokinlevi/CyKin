@@ -75,19 +75,19 @@ Os princípios podem entrar em conflito, como a aceitabilidade contra a separaç
 
 - **EX001 — Definição simples.** Como Felix define a arquitetura de segurança? *Rubrica:* 3 = o arranjo geral das proteções entre pessoas, processos e tecnologia;; 2 = plano geral;; 1 = lista de produtos;; 0 = nenhuma.
 
-- **EX002 — Organizações pequenas.** Por que uma pequena cooperativa de crédito precisa de arquitetura? *Rubrica:* 3 = decisões tomadas isoladamente muitas vezes se contradizem;; 2 = consistência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Organizações pequenas.** Por que uma pequena cooperativa de crédito precisa de arquitetura? *Rubrica:* 3 = decisões tomadas isoladamente muitas vezes se contradizem;; 2 = consistência;; 1 = vago;; 0 = nenhuma.
 
-- **EX003 — Menor privilégio na Saltmarsh.** Dê o exemplo de menor privilégio da Saltmarsh. *Rubrica:* 3 = os caixas veem as contas, mas não podem alterar as taxas de juros;; 2 = caixas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX003 — Menor privilégio na Saltmarsh.** Dê o exemplo de menor privilégio da Saltmarsh. *Rubrica:* 3 = os caixas veem as contas, mas não podem alterar as taxas de juros;; 2 = caixas;; 1 = vago;; 0 = nenhuma.
 
-- **EX004 — Exemplo de fail-safe.** Que prática mostra os padrões seguros contra falhas? *Rubrica:* 3 = contas de novos funcionários começam vazias e recebem papéis mediante aprovação;; 2 = começo vazio;; 1 = nenhuma;; 0 = nenhuma.
+- **EX004 — Exemplo de fail-safe.** Que prática mostra os padrões seguros contra falhas? *Rubrica:* 3 = contas de novos funcionários começam vazias e recebem papéis mediante aprovação;; 2 = começo vazio;; 1 = vago;; 0 = nenhuma.
 
-- **EX005 — Regra das duas pessoas.** Onde a Saltmarsh usa a separação de privilégio? *Rubrica:* 3 = transferências grandes precisam de um segundo aprovador;; 2 = transferências;; 1 = nenhuma;; 0 = nenhuma.
+- **EX005 — Regra das duas pessoas.** Onde a Saltmarsh usa a separação de privilégio? *Rubrica:* 3 = transferências grandes precisam de um segundo aprovador;; 2 = transferências;; 1 = vago;; 0 = nenhuma.
 
-- **EX006 — Lacuna da caixa compartilhada.** Por que a conta de e-mail compartilhada da agência é uma lacuna? *Rubrica:* 3 = ninguém consegue saber quem enviou o quê;; 2 = responsabilização;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Lacuna da caixa compartilhada.** Por que a conta de e-mail compartilhada da agência é uma lacuna? *Rubrica:* 3 = ninguém consegue saber quem enviou o quê;; 2 = responsabilização;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Exemplo de aceitabilidade.** Que controle mostra a aceitabilidade psicológica? *Rubrica:* 3 = o segundo fator por aplicativo que os associados acham fácil;; 2 = fator por aplicativo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX007 — Exemplo de aceitabilidade.** Que controle mostra a aceitabilidade psicológica? *Rubrica:* 3 = o segundo fator por aplicativo que os associados acham fácil;; 2 = fator por aplicativo;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Partes do registro de decisão.** Liste as partes do registro de decisão de Leah. *Rubrica:* 3 = contexto, opções, escolha, motivos, consequências, data de revisão;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+- **EX008 — Partes do registro de decisão.** Liste as partes do registro de decisão de Leah. *Rubrica:* 3 = contexto, opções, escolha, motivos, consequências, data de revisão;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 - **EX009 — Opção escolhida.** Que opção a decisão sobre o e-mail escolheu? *Rubrica:* 3 = contas individuais com acesso à caixa compartilhada;; 2 = individual;; 1 = manter compartilhada;; 0 = nenhuma.
 
@@ -95,9 +95,9 @@ Os princípios podem entrar em conflito, como a aceitabilidade contra a separaç
 
 - **EX011 — Falhas combinadas.** Segundo Anderson, de onde vêm muitas falhas? *Rubrica:* 3 = de sistemas razoáveis sozinhos, mas inseguros juntos;; 2 = combinação;; 1 = bugs isolados;; 0 = nenhuma.
 
-- **EX012 — Conflito de princípios.** Cite dois princípios que podem entrar em conflito. *Rubrica:* 3 = aceitabilidade e separação de privilégio;; 2 = par;; 1 = nenhuma;; 0 = nenhuma.
+- **EX012 — Conflito de princípios.** Cite dois princípios que podem entrar em conflito. *Rubrica:* 3 = aceitabilidade e separação de privilégio;; 2 = par;; 1 = vago;; 0 = nenhuma.
 
-- **EX013 — Valor de registrar.** Segundo Felix, por que registrar as decisões por escrito? *Rubrica:* 3 = para que outros possam entendê-las e questioná-las depois;; 2 = questionar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX013 — Valor de registrar.** Segundo Felix, por que registrar as decisões por escrito? *Rubrica:* 3 = para que outros possam entendê-las e questioná-las depois;; 2 = questionar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -143,31 +143,31 @@ Os escopos podem excluir justamente onde estão os problemas. Os logs do fornece
 
 ### Exercícios
 
-- **EX014 — Sistemas excluídos.** Que sistemas o escopo excluiu? *Rubrica:* 3 = o sistema bancário central operado por um bureau de serviços e o processador de cartões;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX014 — Sistemas excluídos.** Que sistemas o escopo excluiu? *Rubrica:* 3 = o sistema bancário central operado por um bureau de serviços e o processador de cartões;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX015 — Não permitido.** Que atividades ficavam fora da permissão de Leah? *Rubrica:* 3 = tentar ataques ou acessar arquivos de associados;; 2 = ataques;; 1 = entrevistas;; 0 = nenhuma.
 
-- **EX016 — Aprovadores.** Quem aprovou por escrito a revisão de Leah? *Rubrica:* 3 = o diretor executivo e o responsável pelo sistema de empréstimos;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX016 — Aprovadores.** Quem aprovou por escrito a revisão de Leah? *Rubrica:* 3 = o diretor executivo e o responsável pelo sistema de empréstimos;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Conferência com o fornecedor.** O que Leah confirmou com o fornecedor? *Rubrica:* 3 = que ler as telas de configuração não viola o contrato de suporte;; 2 = contrato;; 1 = nenhuma;; 0 = nenhuma.
+- **EX017 — Conferência com o fornecedor.** O que Leah confirmou com o fornecedor? *Rubrica:* 3 = que ler as telas de configuração não viola o contrato de suporte;; 2 = contrato;; 1 = vago;; 0 = nenhuma.
 
-- **EX018 — Solicitação de teste.** Como Leah evitou ver dados reais de associados? *Rubrica:* 3 = usou uma solicitação de teste do fornecedor com dados fictícios;; 2 = dados de teste;; 1 = nenhuma;; 0 = nenhuma.
+- **EX018 — Solicitação de teste.** Como Leah evitou ver dados reais de associados? *Rubrica:* 3 = usou uma solicitação de teste do fornecedor com dados fictícios;; 2 = dados de teste;; 1 = vago;; 0 = nenhuma.
 
-- **EX019 — Cuidado com as capturas.** O que Leah conferia antes de salvar as capturas de tela? *Rubrica:* 3 = que nenhuma informação de associado aparecesse;; 2 = sem dados;; 1 = nenhuma;; 0 = nenhuma.
+- **EX019 — Cuidado com as capturas.** O que Leah conferia antes de salvar as capturas de tela? *Rubrica:* 3 = que nenhuma informação de associado aparecesse;; 2 = sem dados;; 1 = vago;; 0 = nenhuma.
 
-- **EX020 — Três gatilhos de parada.** Que três condições fazem Leah parar? *Rubrica:* 3 = sinais de invasão, documentos de associados expostos online, interrupção do serviço;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Três gatilhos de parada.** Que três condições fazem Leah parar? *Rubrica:* 3 = sinais de invasão, documentos de associados expostos online, interrupção do serviço;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
-- **EX021 — Por que parar.** Por que quem revisa deve parar em vez de investigar sozinho? *Rubrica:* 3 = a resposta a incidentes exige outras habilidades e outra autoridade;; 2 = autoridade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Por que parar.** Por que quem revisa deve parar em vez de investigar sozinho? *Rubrica:* 3 = a resposta a incidentes exige outras habilidades e outra autoridade;; 2 = autoridade;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Achado nos envios.** Que exposição a revisão encontrou? *Rubrica:* 3 = documentos numa pasta em nuvem visível a qualquer pessoa com o link;; 2 = compartilhamento por link;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Achado nos envios.** Que exposição a revisão encontrou? *Rubrica:* 3 = documentos numa pasta em nuvem visível a qualquer pessoa com o link;; 2 = compartilhamento por link;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Resultado dos logs do fornecedor.** O que os logs de acesso do fornecedor mostraram? *Rubrica:* 3 = nenhum acesso de terceiros desconhecidos;; 2 = nada encontrado;; 1 = invasão;; 0 = nenhuma.
 
 - **EX024 — Retenção das anotações.** Quando as anotações da revisão de Leah são apagadas? *Rubrica:* 3 = depois que a revisão for aceita;; 2 = após aceitação;; 1 = nunca;; 0 = nenhuma.
 
-- **EX025 — Rapidez da resposta.** Com que rapidez o fornecedor corrigiu a configuração de compartilhamento? *Rubrica:* 3 = em menos de uma hora;; 2 = hora;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Rapidez da resposta.** Com que rapidez o fornecedor corrigiu a configuração de compartilhamento? *Rubrica:* 3 = em menos de uma hora;; 2 = hora;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Exposição pela revisão.** O que uma revisão de segurança nunca deve se tornar? *Rubrica:* 3 = uma nova fonte de exposição de dados;; 2 = exposição;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Exposição pela revisão.** O que uma revisão de segurança nunca deve se tornar? *Rubrica:* 3 = uma nova fonte de exposição de dados;; 2 = exposição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -240,19 +240,19 @@ Os mapas ficam desatualizados sem atualizações. As falhas de fornecedores pode
 
 - **EX027 — Onde ficam os saldos.** Que sistema guarda os saldos e as transações das contas? *Rubrica:* 3 = o sistema bancário central no bureau de serviços;; 2 = sistema central;; 1 = sistema de empréstimos;; 0 = nenhuma.
 
-- **EX028 — Etapas do fluxo de empréstimo.** Descreva o fluxo da solicitação de empréstimo. *Rubrica:* 3 = envio, sistema de empréstimos, revisão do agente, pagamento pelo sistema central, e-mail;; 2 = a maioria das etapas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Etapas do fluxo de empréstimo.** Descreva o fluxo da solicitação de empréstimo. *Rubrica:* 3 = envio, sistema de empréstimos, revisão do agente, pagamento pelo sistema central, e-mail;; 2 = a maioria das etapas;; 1 = vago;; 0 = nenhuma.
 
-- **EX029 — Atenção aos cruzamentos.** Por que os cruzamentos com fornecedores exigem atenção? *Rubrica:* 3 = cada um depende dos controles e das suposições de outra parte;; 2 = suposições;; 1 = nenhuma;; 0 = nenhuma.
+- **EX029 — Atenção aos cruzamentos.** Por que os cruzamentos com fornecedores exigem atenção? *Rubrica:* 3 = cada um depende dos controles e das suposições de outra parte;; 2 = suposições;; 1 = vago;; 0 = nenhuma.
 
-- **EX030 — Registro do fornecedor.** O que Leah registra para cada fornecedor? *Rubrica:* 3 = papel, dados guardados, responsável pelo contrato e impacto da falha;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX030 — Registro do fornecedor.** O que Leah registra para cada fornecedor? *Rubrica:* 3 = papel, dados guardados, responsável pelo contrato e impacto da falha;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 - **EX031 — Contagem da identidade.** Quantos serviços dependem do provedor de identidade no laboratório? *Rubrica:* 3 = seis;; 2 = 6;; 1 = um;; 0 = nenhuma.
 
-- **EX032 — Contagem do bureau.** Quantos serviços dependem do bureau de serviços? *Rubrica:* 3 = quatro;; 2 = 4;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Contagem do bureau.** Quantos serviços dependem do bureau de serviços? *Rubrica:* 3 = quatro;; 2 = 4;; 1 = vago;; 0 = nenhuma.
 
-- **EX033 — Break-glass.** Que contingência foi acordada para o provedor de identidade? *Rubrica:* 3 = uma conta break-glass offline e um procedimento de login testado;; 2 = break-glass;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Break-glass.** Que contingência foi acordada para o provedor de identidade? *Rubrica:* 3 = uma conta break-glass offline e um procedimento de login testado;; 2 = break-glass;; 1 = vago;; 0 = nenhuma.
 
-- **EX034 — Contingência do bureau.** Que contingência existe para o bureau de serviços? *Rubrica:* 3 = recuperação contratual e um procedimento manual de saque nas agências;; 2 = manual;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Contingência do bureau.** Que contingência existe para o bureau de serviços? *Rubrica:* 3 = recuperação contratual e um procedimento manual de saque nas agências;; 2 = manual;; 1 = vago;; 0 = nenhuma.
 
 - **EX035 — Aplicativo de orçamento.** O que o mapa revelou sobre o aplicativo de orçamento? *Rubrica:* 3 = um novo fornecedor com dados de transações e mais dependência da identidade;; 2 = novo fornecedor;; 1 = nada;; 0 = nenhuma.
 
@@ -260,7 +260,7 @@ Os mapas ficam desatualizados sem atualizações. As falhas de fornecedores pode
 
 - **EX037 — Retorno do mapa.** Quando um mapa simples se paga? *Rubrica:* 3 = na primeira vez em que molda uma decisão antes de o dinheiro ser gasto;; 2 = primeira decisão;; 1 = nunca;; 0 = nenhuma.
 
-- **EX038 — Mapas desatualizados.** O que limita a utilidade do mapa ao longo do tempo? *Rubrica:* 3 = fica desatualizado sem atualizações;; 2 = desatualização;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Mapas desatualizados.** O que limita a utilidade do mapa ao longo do tempo? *Rubrica:* 3 = fica desatualizado sem atualizações;; 2 = desatualização;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -328,27 +328,27 @@ As baselines cobrem apenas as configurações listadas. As verificações trimes
 
 ### Exercícios
 
-- **EX039 — Itens da baseline.** Cite três itens da baseline do laboratório. *Rubrica:* 3 = login multifator, expiração de sessão, nenhuma conta compartilhada, expiração de links, logs de auditoria, dois administradores;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Itens da baseline.** Cite três itens da baseline do laboratório. *Rubrica:* 3 = login multifator, expiração de sessão, nenhuma conta compartilhada, expiração de links, logs de auditoria, dois administradores;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX040 — Primeiro resultado.** Quantas configurações atendiam à baseline no início? *Rubrica:* 3 = 4 de 7;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Primeiro resultado.** Quantas configurações atendiam à baseline no início? *Rubrica:* 3 = 4 de 7;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
-- **EX041 — Lacuna de sessão.** Que configuração de sessão falhou? *Rubrica:* 3 = as sessões ficavam abertas oito horas em vez de trinta minutos;; 2 = oito horas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Lacuna de sessão.** Que configuração de sessão falhou? *Rubrica:* 3 = as sessões ficavam abertas oito horas em vez de trinta minutos;; 2 = oito horas;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Lacuna de administradores.** Quantas pessoas tinham direitos de administrador? *Rubrica:* 3 = cinco em vez de duas;; 2 = cinco;; 1 = duas;; 0 = nenhuma.
 
-- **EX043 — Fraqueza escondida.** O que a correção anterior do link não cobriu? *Rubrica:* 3 = a expiração dos links;; 2 = expiração;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Fraqueza escondida.** O que a correção anterior do link não cobriu? *Rubrica:* 3 = a expiração dos links;; 2 = expiração;; 1 = vago;; 0 = nenhuma.
 
-- **EX044 — Prioridade máxima.** Por que os direitos de administrador são a prioridade máxima? *Rubrica:* 3 = qualquer uma das cinco contas poderia alterar configurações ou exportar todos os documentos;; 2 = poder amplo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Prioridade máxima.** Por que os direitos de administrador são a prioridade máxima? *Rubrica:* 3 = qualquer uma das cinco contas poderia alterar configurações ou exportar todos os documentos;; 2 = poder amplo;; 1 = vago;; 0 = nenhuma.
 
-- **EX045 — Posição da expiração de sessão.** Por que a expiração de sessão ficou em terceiro? *Rubrica:* 3 = os PCs das agências já bloqueiam após cinco minutos;; 2 = bloqueio do PC;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Posição da expiração de sessão.** Por que a expiração de sessão ficou em terceiro? *Rubrica:* 3 = os PCs das agências já bloqueiam após cinco minutos;; 2 = bloqueio do PC;; 1 = vago;; 0 = nenhuma.
 
-- **EX046 — Segunda execução.** Quantas configurações passaram depois das mudanças? *Rubrica:* 3 = 7 de 7;; 2 = todas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Segunda execução.** Quantas configurações passaram depois das mudanças? *Rubrica:* 3 = 7 de 7;; 2 = todas;; 1 = vago;; 0 = nenhuma.
 
 - **EX047 — Mudança feita.** Segundo Felix, quando uma mudança solicitada está de fato feita? *Rubrica:* 3 = quando uma verificação a confirma;; 2 = verificada;; 1 = quando solicitada;; 0 = nenhuma.
 
-- **EX048 — Nova execução trimestral.** Por que rodar de novo a verificação a cada trimestre? *Rubrica:* 3 = atualizações e mudanças na equipe podem desfazer configurações;; 2 = deriva;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Nova execução trimestral.** Por que rodar de novo a verificação a cada trimestre? *Rubrica:* 3 = atualizações e mudanças na equipe podem desfazer configurações;; 2 = deriva;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Itens do plano.** Cite dois itens do plano de seis meses de Leah. *Rubrica:* 3 = e-mail individual, baseline trimestral, teste de break-glass, atualização da visão geral, perguntas aos fornecedores;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX049 — Itens do plano.** Cite dois itens do plano de seis meses de Leah. *Rubrica:* 3 = e-mail individual, baseline trimestral, teste de break-glass, atualização da visão geral, perguntas aos fornecedores;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX050 — Objetivo do curso.** Segundo Felix, qual era o objetivo do curso? *Rubrica:* 3 = um hábito de trabalho de mapear, verificar e registrar;; 2 = hábito;; 1 = especialização;; 0 = nenhuma.
 

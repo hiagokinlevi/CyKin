@@ -157,9 +157,9 @@ Believing a hash chain prevents tampering, rather than revealing it to those who
 
 ### Exercises
 
-- **EX004 — Transfer precondition.** What must hold for a transfer of a from x? *Rubric:* 3 = balance(x) at least a;; 2 = enough balance;; 1 = none;; 0 = none.
+- **EX004 — Transfer precondition.** What must hold for a transfer of a from x? *Rubric:* 3 = balance(x) at least a;; 2 = enough balance;; 1 = vague;; 0 = none.
 - **EX005 — Tamper evidence.** Does a hash chain prevent or reveal tampering? *Rubric:* 3 = reveals it to those who compare;; 2 = reveals;; 1 = prevents;; 0 = none.
-- **EX006 — Bad index.** Which index did the lab flag after editing? *Rubric:* 3 = 2;; 2 = index 2;; 1 = none;; 0 = none.
+- **EX006 — Bad index.** Which index did the lab flag after editing? *Rubric:* 3 = 2;; 2 = index 2;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -291,7 +291,7 @@ Presenting only the recommended option without trade-offs denies decision-makers
 
 - **EX013 — Note structure.** How does Jonas structure board notes? *Rubric:* 3 = decision, options, trade-offs, recommendation;; 2 = decision first;; 1 = jargon;; 0 = none.
 - **EX014 — Ledger recommendation.** What did Jonas recommend? *Rubric:* 3 = permissioned ledger with published governance;; 2 = permissioned;; 1 = public chain;; 0 = none.
-- **EX015 — Record value.** How did a decision record help later? *Rubric:* 3 = answered a new member's question quickly;; 2 = reasoning preserved;; 1 = none;; 0 = none.
+- **EX015 — Record value.** How did a decision record help later? *Rubric:* 3 = answered a new member's question quickly;; 2 = reasoning preserved;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -334,7 +334,7 @@ Ignoring rounding direction in repeated operations can let users gain value at o
 ### Exercises
 
 - **EX016 — Reserve formula.** How is the reserve modelled? *Rubric:* 3 = integral of fee fraction times transfer rate minus withdrawals;; 2 = integral;; 1 = constant;; 0 = none.
-- **EX017 — Rounding bound.** What bounds cumulative truncation loss? *Rubric:* 3 = number of transfers times one unit;; 2 = one unit each;; 1 = none;; 0 = none.
+- **EX017 — Rounding bound.** What bounds cumulative truncation loss? *Rubric:* 3 = number of transfers times one unit;; 2 = one unit each;; 1 = vague;; 0 = none.
 - **EX018 — Rounding direction.** Which way must rounding never favour? *Rubric:* 3 = the person initiating the transaction;; 2 = initiator;; 1 = cooperative;; 0 = none.
 
 ### Synthesis
@@ -511,7 +511,7 @@ Deploying untested code under deadline pressure puts members' money at risk.
 
 - **EX028 — Paramount duty.** What do codes ask engineers to hold paramount? *Rubric:* 3 = safety and welfare of the public;; 2 = public welfare;; 1 = profit;; 0 = none.
 - **EX029 — Privacy protection.** How are household patterns protected? *Rubric:* 3 = readings kept off the shared ledger;; 2 = off-chain;; 1 = published;; 0 = none.
-- **EX030 — Safety principle.** Name one project safety principle. *Rubric:* 3 = never handle members' private keys;; 2 = test networks only;; 1 = none;; 0 = none.
+- **EX030 — Safety principle.** Name one project safety principle. *Rubric:* 3 = never handle members' private keys;; 2 = test networks only;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -554,7 +554,7 @@ Exposing node administrative interfaces to public networks invites misuse.
 ### Exercises
 
 - **EX031 — Validator count.** How many validators does Brightwater run? *Rubric:* 3 = three;; 2 = 3;; 1 = one;; 0 = none.
-- **EX032 — Exposed interface.** What configuration mistake was found? *Rubric:* 3 = admin interface on a public address;; 2 = exposed admin;; 1 = none;; 0 = none.
+- **EX032 — Exposed interface.** What configuration mistake was found? *Rubric:* 3 = admin interface on a public address;; 2 = exposed admin;; 1 = vague;; 0 = none.
 - **EX033 — Site separation.** Why run nodes at separate sites? *Rubric:* 3 = one outage does not halt the ledger;; 2 = availability;; 1 = cost;; 0 = none.
 
 ### Synthesis
@@ -685,7 +685,7 @@ Upgrading dependencies without reading changes can import bugs into code that co
 
 ### Exercises
 
-- **EX040 — Lifecycle difference.** What is unusual about the contract lifecycle? *Rubric:* 3 = code is hard to change after deployment;; 2 = immutability;; 1 = none;; 0 = none.
+- **EX040 — Lifecycle difference.** What is unusual about the contract lifecycle? *Rubric:* 3 = code is hard to change after deployment;; 2 = immutability;; 1 = vague;; 0 = none.
 - **EX041 — Build record.** What is recorded for each release? *Rubric:* 3 = exact compiler version and settings;; 2 = compiler;; 1 = nothing;; 0 = none.
 - **EX042 — Dependency practice.** How are dependencies managed? *Rubric:* 3 = listed, pinned, provenance recorded;; 2 = pinned;; 1 = latest always;; 0 = none.
 
@@ -775,7 +775,7 @@ Testing components separately without checking interfaces misses mismatched assu
 
 ### Exercises
 
-- **EX046 — Interface failure.** What interface mismatch was found? *Rubric:* 3 = UTC versus local timestamps;; 2 = time zones;; 1 = none;; 0 = none.
+- **EX046 — Interface failure.** What interface mismatch was found? *Rubric:* 3 = UTC versus local timestamps;; 2 = time zones;; 1 = vague;; 0 = none.
 - **EX047 — Agreement content.** Name two items in an interface agreement. *Rubric:* 3 = format and units;; 2 = timing, owner;; 1 = colour;; 0 = none.
 - **EX048 — Minting trace.** Which components implement the minting cap? *Rubric:* 3 = gateway check, contract cap, monitoring alert;; 2 = three;; 1 = one;; 0 = none.
 
@@ -863,7 +863,7 @@ Relying on a single control for a high-value function leaves no protection if it
 
 ### Exercises
 
-- **EX052 — Boundary example.** Name one trust boundary. *Rubric:* 3 = meters to gateway;; 2 = admin to contracts;; 1 = none;; 0 = none.
+- **EX052 — Boundary example.** Name one trust boundary. *Rubric:* 3 = meters to gateway;; 2 = admin to contracts;; 1 = vague;; 0 = none.
 - **EX053 — Minting layers.** How many layers protect minting? *Rubric:* 3 = five;; 2 = 5;; 1 = one;; 0 = none.
 - **EX054 — Review addition.** What did reviewers ask to add? *Rubric:* 3 = coordination of validator software upgrades;; 2 = upgrades;; 1 = nothing;; 0 = none.
 
@@ -996,7 +996,7 @@ Starting design without stating constraints leads to solutions the cooperative c
 ### Exercises
 
 - **EX058 — Credit uses.** What can members do with credits? *Rubric:* 3 = spend on bills or transfer to neighbours;; 2 = spend;; 1 = mine;; 0 = none.
-- **EX059 — Developer constraint.** What does having one developer imply? *Rubric:* 3 = design must be simple to maintain;; 2 = simplicity;; 1 = none;; 0 = none.
+- **EX059 — Developer constraint.** What does having one developer imply? *Rubric:* 3 = design must be simple to maintain;; 2 = simplicity;; 1 = vague;; 0 = none.
 - **EX060 — Problem areas.** Name two requirement areas from the statement. *Rubric:* 3 = issuance and governance;; 2 = transfer, privacy;; 1 = colour;; 0 = none.
 
 ### Synthesis
@@ -1085,7 +1085,7 @@ Writing code before modelling state and roles leaves design gaps to be discovere
 
 - **EX064 — Pause decision.** Does pausing stop burning for redemption? *Rubric:* 3 = no, members can still redeem;; 2 = no;; 1 = yes;; 0 = none.
 - **EX065 — Minting role holder.** Who holds the minting role? *Rubric:* 3 = the gateway's multisig wallet;; 2 = gateway multisig;; 1 = a member;; 0 = none.
-- **EX066 — Model gap.** What gap did the model check find? *Rubric:* 3 = unbounded cap change by governance;; 2 = cap;; 1 = none;; 0 = none.
+- **EX066 — Model gap.** What gap did the model check find? *Rubric:* 3 = unbounded cap change by governance;; 2 = cap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1257,7 +1257,7 @@ Adopting the first design without considering alternatives misses better options
 ### Exercises
 
 - **EX073 — Studio requirement.** What must each studio design state? *Rubric:* 3 = assumptions, models and how it meets top requirements;; 2 = assumptions;; 1 = colours;; 0 = none.
-- **EX074 — Single-contract concern.** What concern was raised about Jonas's design? *Rubric:* 3 = concentrates roles, riskier upgrades;; 2 = concentration;; 1 = none;; 0 = none.
+- **EX074 — Single-contract concern.** What concern was raised about Jonas's design? *Rubric:* 3 = concentrates roles, riskier upgrades;; 2 = concentration;; 1 = vague;; 0 = none.
 - **EX075 — Carried forward.** How many alternatives were carried forward? *Rubric:* 3 = two;; 2 = 2;; 1 = four;; 0 = none.
 
 ### Synthesis
@@ -1383,7 +1383,7 @@ Leaving test-time single-key control on production functions is a common, avoida
 ### Exercises
 
 - **EX079 — Pause exemption.** Why is pause exempt from the timelock? *Rubric:* 3 = its purpose is fast protection;; 2 = speed;; 1 = oversight;; 0 = none.
-- **EX080 — Breaches found.** How many breaches did the check report? *Rubric:* 3 = three of seven functions;; 2 = three;; 1 = none;; 0 = none.
+- **EX080 — Breaches found.** How many breaches did the check report? *Rubric:* 3 = three of seven functions;; 2 = three;; 1 = vague;; 0 = none.
 - **EX081 — Most serious.** Which finding is most serious? *Rubric:* 3 = Oracle.setSource single signer;; 2 = data source;; 1 = pause;; 0 = none.
 
 ### Synthesis
@@ -1544,7 +1544,7 @@ Assuming database and ledger always agree leaves member statements unchecked.
 ### Exercises
 
 - **EX088 — Reconciliation purpose.** What does reconciliation verify? *Rubric:* 3 = integration between database and ledger;; 2 = consistency;; 1 = contract code;; 0 = none.
-- **EX089 — Mismatch count.** How many mismatches were found? *Rubric:* 3 = three of seven accounts;; 2 = three;; 1 = none;; 0 = none.
+- **EX089 — Mismatch count.** How many mismatches were found? *Rubric:* 3 = three of seven accounts;; 2 = three;; 1 = vague;; 0 = none.
 - **EX090 — h05 cause.** What caused h05's difference? *Rubric:* 3 = a transfer missed during gateway restart;; 2 = missed event;; 1 = theft;; 0 = none.
 
 ### Synthesis
@@ -1716,9 +1716,9 @@ Writing emergency procedures without rehearsing them leaves untested assumptions
 
 ### Exercises
 
-- **EX097 — Redemption during pause.** Why does redemption continue during a pause? *Rubric:* 3 = members can still use credits for bills;; 2 = bills;; 1 = none;; 0 = none.
+- **EX097 — Redemption during pause.** Why does redemption continue during a pause? *Rubric:* 3 = members can still use credits for bills;; 2 = bills;; 1 = vague;; 0 = none.
 - **EX098 — Recovery step.** Name one step in contract-flaw recovery. *Rubric:* 3 = queue upgrade with 48-hour timelock;; 2 = review fix;; 1 = delete contract;; 0 = none.
-- **EX099 — Rehearsal gap.** What gap did the tabletop reveal? *Rubric:* 3 = only two keyholders knew how to sign;; 2 = signing skills;; 1 = none;; 0 = none.
+- **EX099 — Rehearsal gap.** What gap did the tabletop reveal? *Rubric:* 3 = only two keyholders knew how to sign;; 2 = signing skills;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1804,7 +1804,7 @@ Launching on a fixed date without evidence of readiness puts members' credits at
 
 ### Exercises
 
-- **EX103 — Unaddressed risk.** What risk did the studio find unaddressed? *Rubric:* 3 = member wallet key loss;; 2 = key loss;; 1 = none;; 0 = none.
+- **EX103 — Unaddressed risk.** What risk did the studio find unaddressed? *Rubric:* 3 = member wallet key loss;; 2 = key loss;; 1 = vague;; 0 = none.
 - **EX104 — Recovery timelock.** How long is the recovery timelock? *Rubric:* 3 = 14 days;; 2 = two weeks;; 1 = 48 hours;; 0 = none.
 - **EX105 — Readiness nature.** What is readiness according to Jonas? *Rubric:* 3 = a board decision based on evidence;; 2 = evidence;; 1 = a date;; 0 = none.
 
@@ -1920,7 +1920,7 @@ Ignoring queued privileged actions wastes the window a timelock provides.
 
 ### Exercises
 
-- **EX109 — Alert count.** How many alerts did the monitor raise? *Rubric:* 3 = two of four;; 2 = two;; 1 = none;; 0 = none.
+- **EX109 — Alert count.** How many alerts did the monitor raise? *Rubric:* 3 = two of four;; 2 = two;; 1 = vague;; 0 = none.
 - **EX110 — Market upgrade outcome.** What happened with the Market upgrade? *Rubric:* 3 = mistaken test action, cancelled within timelock;; 2 = cancelled;; 1 = executed;; 0 = none.
 - **EX111 — Weekly checks.** What happens weekly? *Rubric:* 3 = reconciliation and invariant replay;; 2 = reconciliation;; 1 = drills;; 0 = none.
 
@@ -1966,7 +1966,7 @@ Treating a passed external review as proof of security ignores its stated limits
 
 - **EX112 — Validation question.** What does validation ask? *Rubric:* 3 = whether the right system was built;; 2 = needs;; 1 = built right;; 0 = none.
 - **EX113 — Review result.** What did the external review find? *Rubric:* 3 = no high, two medium, four informational;; 2 = two medium;; 1 = nothing;; 0 = none.
-- **EX114 — Rounding fix basis.** What guidance did the rounding fix follow? *Rubric:* 3 = rounding must not create value for the initiator;; 2 = EthTrust rounding;; 1 = none;; 0 = none.
+- **EX114 — Rounding fix basis.** What guidance did the rounding fix follow? *Rubric:* 3 = rounding must not create value for the initiator;; 2 = EthTrust rounding;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2008,7 +2008,7 @@ Assuming deployed contracts need no maintenance ignores changing compilers, libr
 
 ### Exercises
 
-- **EX115 — Network upgrade issue.** Why check ledger software upgrades? *Rubric:* 3 = they can change code behaviour;; 2 = behaviour changes;; 1 = none;; 0 = none.
+- **EX115 — Network upgrade issue.** Why check ledger software upgrades? *Rubric:* 3 = they can change code behaviour;; 2 = behaviour changes;; 1 = vague;; 0 = none.
 - **EX116 — Trial friction.** What did the trial upgrade reveal? *Rubric:* 3 = unclear responsibility for member notices;; 2 = notices;; 1 = nothing;; 0 = none.
 - **EX117 — Knowledge test.** How is knowledge transfer tested? *Rubric:* 3 = partner engineer deploys to test unaided;; 2 = second person;; 1 = quiz;; 0 = none.
 
@@ -2096,7 +2096,7 @@ Optimising contract code by removing checks to save gas trades security for smal
 
 ### Exercises
 
-- **EX121 — Optimisation rule.** What rule constrains optimisation? *Rubric:* 3 = no control may be removed or weakened;; 2 = keep controls;; 1 = none;; 0 = none.
+- **EX121 — Optimisation rule.** What rule constrains optimisation? *Rubric:* 3 = no control may be removed or weakened;; 2 = keep controls;; 1 = vague;; 0 = none.
 - **EX122 — Gas saving.** How much gas per transfer was saved? *Rubric:* 3 = about eleven percent;; 2 = 11%;; 1 = half;; 0 = none.
 - **EX123 — Confirmation change.** How did median confirmation change? *Rubric:* 3 = nine hours to five;; 2 = faster;; 1 = slower;; 0 = none.
 
@@ -2186,7 +2186,7 @@ Lowering a finding's rating to please a client undermines the purpose of review.
 
 - **EX127 — Placement firm.** Where does Jonas do his placement? *Rubric:* 3 = Northgate Assurance, an audit firm;; 2 = audit firm;; 1 = bank;; 0 = none.
 - **EX128 — Report statement.** What explicit statement do reports include? *Rubric:* 3 = certification does not guarantee freedom from all vulnerabilities;; 2 = limits;; 1 = guarantee;; 0 = none.
-- **EX129 — Conflict example.** What conflict of interest is declined? *Rubric:* 3 = reviewing a classmate's project;; 2 = classmate;; 1 = none;; 0 = none.
+- **EX129 — Conflict example.** What conflict of interest is declined? *Rubric:* 3 = reviewing a classmate's project;; 2 = classmate;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2316,7 +2316,7 @@ Deploying when keyholders are unavailable leaves no one able to respond if somet
 
 ### Exercises
 
-- **EX136 — Reconciliation fix.** What reconciliation fix was needed? *Rubric:* 3 = include the fund's address;; 2 = fund address;; 1 = none;; 0 = none.
+- **EX136 — Reconciliation fix.** What reconciliation fix was needed? *Rubric:* 3 = include the fund's address;; 2 = fund address;; 1 = vague;; 0 = none.
 - **EX137 — Usability problem.** What confused test members? *Rubric:* 3 = confirmation showed a transaction identifier;; 2 = unclear confirmation;; 1 = colours;; 0 = none.
 - **EX138 — Deployment timing.** When is deployment scheduled? *Rubric:* 3 = weekday morning with all keyholders available;; 2 = staffed weekday;; 1 = weekend night;; 0 = none.
 
@@ -2449,8 +2449,8 @@ Claiming absolute security for a system contradicts the limits stated by review 
 ### Exercises
 
 - **EX145 — Thesis argument.** What does the thesis argue? *Rubric:* 3 = secure token systems need lifecycle-wide engineering;; 2 = lifecycle;; 1 = code alone;; 0 = none.
-- **EX146 — Evidence example.** Name one measured result used. *Rubric:* 3 = full role policy conformance;; 2 = recovery within targets;; 1 = none;; 0 = none.
-- **EX147 — Future work.** Name one future direction. *Rubric:* 3 = formal verification of the minting contract;; 2 = independent validators;; 1 = none;; 0 = none.
+- **EX146 — Evidence example.** Name one measured result used. *Rubric:* 3 = full role policy conformance;; 2 = recovery within targets;; 1 = vague;; 0 = none.
+- **EX147 — Future work.** Name one future direction. *Rubric:* 3 = formal verification of the minting contract;; 2 = independent validators;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

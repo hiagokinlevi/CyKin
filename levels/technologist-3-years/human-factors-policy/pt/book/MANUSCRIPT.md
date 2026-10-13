@@ -381,7 +381,7 @@ Camadas não testadas dão falsa confiança. Diagramas simplificam.
 ### Exercícios
 
 - **EX022 — Achado nos backups.** Que problema Lucas encontrou nos backups? *Rubrica:* 3 = nunca tinham sido testados;; 2 = não testados;; 1 = nada;; 0 = nenhuma.
-- **EX023 — Camada do reporte.** Que camada o reporte dos funcionários fornece? *Rubrica:* 3 = detecção;; 2 = detecção;; 1 = prevenção;; 0 = nenhuma.
+- **EX023 — Camada do reporte.** Que camada o reporte dos funcionários fornece? *Rubrica:* 3 = detecção;; 2 = detecção, sem justificativa;; 1 = prevenção;; 0 = nenhuma.
 - **EX024 — Contenção de pagamentos.** O que contém uma falsa mudança de pagamento? *Rubrica:* 3 = um bloqueio com verificação por retorno de ligação;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
 
 ### Síntese
@@ -1458,7 +1458,7 @@ As ferramentas precisam de manutenção. A nova verificação exige tempo.
 
 - **EX086 — Pedido de um gestor.** O que um gestor pediu? *Rubrica:* 3 = um botão para ligar direto da tela;; 2 = botão de ligação;; 1 = nada;; 0 = nenhuma.
 
-- **EX087 — Sinalizações do laboratório.** Quantos dos 40 fornecedores precisavam de nova verificação no laboratório? *Rubrica:* 3 = 7;; 2 = 7;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Sinalizações do laboratório.** Quantos dos 40 fornecedores precisavam de nova verificação no laboratório? *Rubrica:* 3 = 7;; 2 = 7, sem justificativa;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

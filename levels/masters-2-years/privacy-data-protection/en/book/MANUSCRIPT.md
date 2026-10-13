@@ -325,7 +325,7 @@ Power formulas assume independent requests; repeat requesters break this slightl
 
 - **EX027 — Needed sample.** How many requests per period detect a rise from 0.74 to 0.90? *Rubric:* 3 = 90;; 2 = about ninety;; 1 = wrong;; 0 = none.
 - **EX028 — Null result meaning.** Why must a null result not be read as failure? *Rubric:* 3 = the study may miss a real improvement smaller than detectable;; 2 = mentions power;; 1 = treats null as proof;; 0 = none.
-- **EX029 — Pilot errors.** Name the two timing errors the pilot found. *Rubric:* 3 = closure date instead of answer date; postal requests logged at scanning;; 2 = names one;; 1 = none;; 0 = none.
+- **EX029 — Pilot errors.** Name the two timing errors the pilot found. *Rubric:* 3 = closure date instead of answer date; postal requests logged at scanning;; 2 = names one;; 1 = vague;; 0 = none.
 - **EX030 — Legal clock.** Why count from the post-room stamp? *Rubric:* 3 = the deadline runs from receipt, as the guidelines confirm;; 2 = mentions receipt;; 1 = uses scan date;; 0 = none.
 - **EX031 — Proposal decision paragraph.** What does the decision paragraph add? *Rubric:* 3 = ties each result to a concrete action at Brookfield;; 2 = mentions use;; 1 = omits;; 0 = none.
 - **EX032 — Detectable versus important.** Distinguish a detectable change from an important one. *Rubric:* 3 = detectable depends on sample size; important depends on harm to requesters;; 2 = defines one;; 1 = confuses them;; 0 = none.

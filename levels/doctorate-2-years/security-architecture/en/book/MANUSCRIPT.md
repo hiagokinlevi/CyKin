@@ -91,7 +91,7 @@ Kappa depends on class prevalence and can mislead when one class dominates. Pre-
 ### Exercises
 
 - **EX001 — Falsifiability test.** What observation would refute Amara's hypothesis? *Rubric:* 3 = no reduction, or an increase, in post-release architecture defects per hundred design changes for adopting teams relative to comparison teams;; 2 = names outcome without comparison;; 1 = says it cannot be refuted;; 0 = none.
-- **EX002 — Herley critique.** What problem do Herley and van Oorschot identify in security claims? *Rubric:* 3 = many claims cannot be refuted because they name no observation that would contradict them;; 2 = unscientific claims;; 1 = none;; 0 = none.
+- **EX002 — Herley critique.** What problem do Herley and van Oorschot identify in security claims? *Rubric:* 3 = many claims cannot be refuted because they name no observation that would contradict them;; 2 = unscientific claims;; 1 = vague;; 0 = none.
 - **EX003 — Rejecting before-after.** Why is a simple before-and-after design weak here? *Rubric:* 3 = cannot separate the practice from general improvement or regression to the mean;; 2 = one rival;; 1 = strong design;; 0 = none.
 - **EX004 — No randomisation.** Why could Tessaro not randomise adoption? *Rubric:* 3 = adoption follows budget cycles the researcher cannot control;; 2 = budget;; 1 = ethics only;; 0 = none.
 - **EX005 — Industry veto.** What right does Tessaro have over drafts? *Rubric:* 3 = review for confidential details only, no veto over findings;; 2 = review;; 1 = full veto;; 0 = none.
@@ -146,7 +146,7 @@ Literature searches miss grey literature and non-English work. A gap may exist b
 
 ### Exercises
 
-- **EX008 — Saltzer principles.** Name three Saltzer and Schroeder principles. *Rubric:* 3 = three of least privilege, fail-safe defaults, complete mediation, economy of mechanism, open design, separation of privilege, least common mechanism, psychological acceptability;; 2 = two;; 1 = none;; 0 = none.
+- **EX008 — Saltzer principles.** Name three Saltzer and Schroeder principles. *Rubric:* 3 = three of least privilege, fail-safe defaults, complete mediation, economy of mechanism, open design, separation of privilege, least common mechanism, psychological acceptability;; 2 = two;; 1 = vague;; 0 = none.
 - **EX009 — Framework evidence.** Does adopting SABSA or TOGAF by itself show better outcomes? *Rubric:* 3 = no; frameworks organise work and vocabulary, outcomes need empirical evidence;; 2 = no;; 1 = yes;; 0 = none.
 - **EX010 — SP 800-207 tenet.** State one tenet of zero trust from SP 800-207. *Rubric:* 3 = no implicit trust from network location or every request authenticated and authorised;; 2 = one;; 1 = trust internal network;; 0 = none.
 - **EX011 — Thin category.** Which category of knowledge did Amara find thinnest? *Rubric:* 3 = empirical evidence comparing outcomes with a counterfactual;; 2 = empirical;; 1 = principles;; 0 = none.
@@ -260,7 +260,7 @@ A pilot with volunteer teams may be more motivated than typical teams. Regressio
 - **EX021 — Baseline discrepancy.** What explained the gap between 3.6 and 4.1? *Rubric:* 3 = duplicate tickets for the same defect across teams in the reported figure;; 2 = duplicates;; 1 = coding error;; 0 = none.
 - **EX022 — Inflated comparison risk.** What would have happened if the inflated figure were used as baseline? *Rubric:* 3 = the intervention would appear to work even without real change;; 2 = false success;; 1 = nothing;; 0 = none.
 - **EX023 — Pilot not effect.** Why was the pilot not used to estimate the effect? *Rubric:* 3 = three teams over three months yield too few defects;; 2 = too few;; 1 = it was;; 0 = none.
-- **EX024 — Missed ticket.** Why was one synthetic ticket missed, and how was it fixed? *Rubric:* 3 = filed under a renamed project; fixed the project mapping;; 2 = cause;; 1 = none;; 0 = none.
+- **EX024 — Missed ticket.** Why was one synthetic ticket missed, and how was it fixed? *Rubric:* 3 = filed under a renamed project; fixed the project mapping;; 2 = cause;; 1 = vague;; 0 = none.
 - **EX025 — Test ticket analogy.** What do the synthetic tickets resemble in cryptographic practice? *Rubric:* 3 = known-answer test vectors;; 2 = test vectors;; 1 = nothing;; 0 = none.
 - **EX026 — Large changes.** How was the protocol revised for large changes? *Rubric:* 3 = allowed splitting into two sessions;; 2 = split;; 1 = shortened;; 0 = none.
 
@@ -345,7 +345,7 @@ Parallel trends can hold before adoption yet fail afterwards. Permutation checks
 ### Exercises
 
 - **EX027 — Blind coding.** Why does the coding assistant not know which teams adopted? *Rubric:* 3 = to protect the outcome measure from expectation bias;; 2 = bias;; 1 = speed;; 0 = none.
-- **EX028 — Parallel trends.** What assumption does difference-in-differences need? *Rubric:* 3 = parallel trends between groups without the intervention;; 2 = named;; 1 = none;; 0 = none.
+- **EX028 — Parallel trends.** What assumption does difference-in-differences need? *Rubric:* 3 = parallel trends between groups without the intervention;; 2 = named;; 1 = vague;; 0 = none.
 - **EX029 — Lab estimate.** What difference-in-differences and permutation result did the lab print? *Rubric:* 3 = about -0.77 per hundred changes, permutation share about 0.02;; 2 = estimate only;; 1 = positive;; 0 = none.
 - **EX030 — Champions sensitivity.** What did excluding the security-champions division show? *Rubric:* 3 = estimate changed only slightly, weakening that rival;; 2 = slight change;; 1 = large change;; 0 = none.
 - **EX031 — Low fidelity reading.** Why is the low-fidelity finding ambiguous? *Rubric:* 3 = consistent with the practice mattering or with less engaged teams;; 2 = both readings;; 1 = one reading;; 0 = none.

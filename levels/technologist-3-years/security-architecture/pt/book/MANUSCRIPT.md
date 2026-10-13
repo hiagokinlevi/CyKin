@@ -66,9 +66,9 @@ Inventários feitos percorrendo o local deixam de fora sistemas guardados em arm
 
 ### Exercícios
 
-- **EX001 — Camadas do coletor.** Cite as camadas de um coletor portátil do centro de distribuição. *Rubrica:* 3 = processador, firmware, SO móvel, aplicativo de leitura, dados das encomendas;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX001 — Camadas do coletor.** Cite as camadas de um coletor portátil do centro de distribuição. *Rubrica:* 3 = processador, firmware, SO móvel, aplicativo de leitura, dados das encomendas;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX002 — Impressoras sem responsável.** Por que as três impressoras de etiquetas sem responsável são um problema? *Rubrica:* 3 = ninguém as atualiza;; 2 = sem atualizações;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Impressoras sem responsável.** Por que as três impressoras de etiquetas sem responsável são um problema? *Rubrica:* 3 = ninguém as atualiza;; 2 = sem atualizações;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Camada só do fornecedor.** Que camada do coletor só o fornecedor consegue atualizar? *Rubrica:* 3 = o firmware, pela ferramenta do fornecedor;; 2 = firmware;; 1 = aplicativo;; 0 = nenhuma.
 
@@ -110,9 +110,9 @@ As regras de firewall podem não refletir as configurações do lado da nuvem. O
 
 - **EX004 — Porta 443.** Que porta o coletor usou, e por quê? *Rubrica:* 3 = 443, para HTTPS criptografado;; 2 = 443;; 1 = 80;; 0 = nenhuma.
 
-- **EX005 — Risco da área de trabalho remota.** Por que a regra de entrada na porta 3389 era urgente? *Rubrica:* 3 = a área de trabalho remota pela internet é uma rota frequente de ransomware;; 2 = ransomware;; 1 = nenhuma;; 0 = nenhuma.
+- **EX005 — Risco da área de trabalho remota.** Por que a regra de entrada na porta 3389 era urgente? *Rubrica:* 3 = a área de trabalho remota pela internet é uma rota frequente de ransomware;; 2 = ransomware;; 1 = vago;; 0 = nenhuma.
 
-- **EX006 — Lista de exposição.** Cite dois pontos de exposição que Tomás listou. *Rubrica:* 3 = conexão com a internet, regra de área de trabalho remota, link do fornecedor da esteira, rede sem fio de visitantes;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Lista de exposição.** Cite dois pontos de exposição que Tomás listou. *Rubrica:* 3 = conexão com a internet, regra de área de trabalho remota, link do fornecedor da esteira, rede sem fio de visitantes;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -171,7 +171,7 @@ Scripts pequenos podem crescer sem testes. As allow-lists precisam ser atualizad
 
 - **EX007 — Caso sabidamente ruim.** Por que testar o script com uma regra sabidamente ruim? *Rubrica:* 3 = para confirmar que ele encontra o que diz encontrar;; 2 = confirmação;; 1 = rapidez;; 0 = nenhuma.
 
-- **EX008 — Regras sinalizadas.** Quantas regras o laboratório sinalizou? *Rubrica:* 3 = duas: 3389 para office-pc3 e 22 para switch1;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX008 — Regras sinalizadas.** Quantas regras o laboratório sinalizou? *Rubrica:* 3 = duas: 3389 para office-pc3 e 22 para switch1;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 - **EX009 — Consulta mais segura.** Qual é o padrão mais seguro para consultas ao banco com entrada do usuário? *Rubrica:* 3 = consultas parametrizadas;; 2 = parâmetros;; 1 = juntar strings;; 0 = nenhuma.
 
@@ -211,7 +211,7 @@ Campos ocultados ainda podem existir nas exportações. A exclusão por retenç�
 
 ### Exercícios
 
-- **EX010 — Campos combinados.** Como o horário de entrega e o endereço juntos podem ser pessoais? *Rubrica:* 3 = revelam quando alguém está em casa;; 2 = inferência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Campos combinados.** Como o horário de entrega e o endereço juntos podem ser pessoais? *Rubrica:* 3 = revelam quando alguém está em casa;; 2 = inferência;; 1 = vago;; 0 = nenhuma.
 
 - **EX011 — Necessidades dos separadores.** De que campos os separadores precisam? *Rubrica:* 3 = código postal, nível de serviço e peso;; 2 = código postal;; 1 = endereço completo;; 0 = nenhuma.
 
@@ -257,7 +257,7 @@ Uma única orientação se apaga rapidamente. As histórias precisam corresponde
 
 - **EX014 — Alvo financeiro.** Que ataque mira o escritório financeiro da Brightwater? *Rubrica:* 3 = fraude de faturas, passando-se por fornecedor de combustível;; 2 = fraude de faturas;; 1 = ransomware;; 0 = nenhuma.
 
-- **EX015 — Ações da orientação.** Quais foram as três ações da orientação? *Rubrica:* 3 = relatar, relatar, ligar para confirmar;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX015 — Ações da orientação.** Quais foram as três ações da orientação? *Rubrica:* 3 = relatar, relatar, ligar para confirmar;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -297,7 +297,7 @@ O hardening pode quebrar software legado. Hosts compartilhados concentram o risc
 
 - **EX016 — Risco dos direitos de administrador.** Por que retirar os direitos de administrador local das contas do dia a dia? *Rubrica:* 3 = um malware poderia se instalar livremente;; 2 = malware;; 1 = rapidez;; 0 = nenhuma.
 
-- **EX017 — Contêineres versus VMs.** Em que os contêineres diferem das máquinas virtuais? *Rubrica:* 3 = os contêineres compartilham um kernel; cada VM tem seu próprio SO sobre um hypervisor;; 2 = kernel;; 1 = nenhuma;; 0 = nenhuma.
+- **EX017 — Contêineres versus VMs.** Em que os contêineres diferem das máquinas virtuais? *Rubrica:* 3 = os contêineres compartilham um kernel; cada VM tem seu próprio SO sobre um hypervisor;; 2 = kernel;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Atualizações dos coletores.** Por que os coletores estavam onze meses desatualizados? *Rubrica:* 3 = a ferramenta do fornecedor exige uma etapa manual;; 2 = manual;; 1 = não existem atualizações;; 0 = nenhuma.
 
@@ -341,7 +341,7 @@ A perda de crachás gera carga de suporte. As revisões viram carimbo sem orient
 
 - **EX020 — Limites do supervisor.** O que os supervisores não podem fazer? *Rubrica:* 3 = alterar endereços de clientes;; 2 = endereços;; 1 = redistribuir encomendas;; 0 = nenhuma.
 
-- **EX021 — Mudanças de função esquecidas.** Por que as mudanças de função são um risco? *Rubrica:* 3 = a pessoa mantém os direitos antigos ao ganhar os novos;; 2 = deriva;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Mudanças de função esquecidas.** Por que as mudanças de função são um risco? *Rubrica:* 3 = a pessoa mantém os direitos antigos ao ganhar os novos;; 2 = deriva;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -379,7 +379,7 @@ Diagramas de uma página omitem detalhes. Os princípios podem entrar em conflit
 
 ### Exercícios
 
-- **EX022 — Por que registrar.** Por que uma pequena empresa se beneficia de uma arquitetura escrita? *Rubrica:* 3 = decisões tomadas uma de cada vez se contradizem;; 2 = consistência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Por que registrar.** Por que uma pequena empresa se beneficia de uma arquitetura escrita? *Rubrica:* 3 = decisões tomadas uma de cada vez se contradizem;; 2 = consistência;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Exemplo de fail-safe.** Como a Brightwater aplica os padrões seguros contra falhas? *Rubrica:* 3 = novos dispositivos entram numa rede de quarentena até serem aprovados;; 2 = quarentena;; 1 = rede aberta;; 0 = nenhuma.
 
@@ -446,11 +446,11 @@ As medidas podem ser manipuladas depois que se fixam metas. As exportações pod
 
 ### Exercícios
 
-- **EX025 — Definições das medidas.** Por que escrever uma definição de uma linha para cada medida? *Rubrica:* 3 = para que signifique a mesma coisa todo mês;; 2 = consistência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Definições das medidas.** Por que escrever uma definição de uma linha para cada medida? *Rubrica:* 3 = para que signifique a mesma coisa todo mês;; 2 = consistência;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Parcela de atualizações.** Qual foi a parcela de atualizações no laboratório? *Rubrica:* 3 = 29 de 60, 48%;; 2 = 48%;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Parcela de atualizações.** Qual foi a parcela de atualizações no laboratório? *Rubrica:* 3 = 29 de 60, 48%;; 2 = 48%;; 1 = vago;; 0 = nenhuma.
 
-- **EX027 — Conferência à mão.** Por que conferir uma amostra de registros à mão? *Rubrica:* 3 = para confirmar que as datas são lidas corretamente;; 2 = interpretação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX027 — Conferência à mão.** Por que conferir uma amostra de registros à mão? *Rubrica:* 3 = para confirmar que as datas são lidas corretamente;; 2 = interpretação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -492,7 +492,7 @@ Os modelos de ciclo de vida parecem lineares; o trabalho real volta atrás. Os p
 
 - **EX029 — Etapas do tecnólogo.** Em que etapas os tecnólogos trabalham sobretudo? *Rubrica:* 3 = construir, verificar, implantar e operar;; 2 = três;; 1 = só projeto;; 0 = nenhuma.
 
-- **EX030 — Ciclo de retorno.** Por que o retorno do tecnólogo é essencial? *Rubrica:* 3 = projetos que ignoram a operação viram ficção;; 2 = realidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX030 — Ciclo de retorno.** Por que o retorno do tecnólogo é essencial? *Rubrica:* 3 = projetos que ignoram a operação viram ficção;; 2 = realidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -532,7 +532,7 @@ Os gerentes podem superestimar seus próprios sistemas. Os atributos mudam com a
 
 - **EX031 — Ativo principal.** Que ativo ficou em primeiro, e por quê? *Rubrica:* 3 = o serviço de rastreamento; sem ele as encomendas não podem ser roteadas;; 2 = rastreamento;; 1 = esteira;; 0 = nenhuma.
 
-- **EX032 — Exemplo de restrição.** Cite duas restrições que Tomás registrou. *Rubrica:* 3 = horário longo de funcionamento, alta temporada, acesso remoto do fornecedor, rotatividade, margens estreitas;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Exemplo de restrição.** Cite duas restrições que Tomás registrou. *Rubrica:* 3 = horário longo de funcionamento, alta temporada, acesso remoto do fornecedor, rotatividade, margens estreitas;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX033 — Atributos da esteira.** Que atributos importam mais para a esteira? *Rubrica:* 3 = disponibilidade e segurança física;; 2 = disponibilidade;; 1 = confidencialidade;; 0 = nenhuma.
 
@@ -572,9 +572,9 @@ Os diagramas envelhecem rápido. Os portais acrescentam trabalho para os pequeno
 
 ### Exercícios
 
-- **EX034 — Correção de Sam.** O que Sam corrigiu no diagrama? *Rubrica:* 3 = pequenos varejistas enviam planilhas por e-mail, enviadas ao sistema à mão;; 2 = manifestos por e-mail;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Correção de Sam.** O que Sam corrigiu no diagrama? *Rubrica:* 3 = pequenos varejistas enviam planilhas por e-mail, enviadas ao sistema à mão;; 2 = manifestos por e-mail;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Verificações na fronteira.** Que verificações cada cruzamento de fronteira deveria ter? *Rubrica:* 3 = autenticação do remetente, criptografia e validação do conteúdo;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Verificações na fronteira.** Que verificações cada cruzamento de fronteira deveria ter? *Rubrica:* 3 = autenticação do remetente, criptografia e validação do conteúdo;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — Manifesto falso.** O que um criminoso poderia fazer com o fluxo por e-mail? *Rubrica:* 3 = enviar um manifesto falso para desviar encomendas;; 2 = desviar;; 1 = nada;; 0 = nenhuma.
 
@@ -614,9 +614,9 @@ Escalas de três níveis são grosseiras. As listas de cenários deixam surpresa
 
 ### Exercícios
 
-- **EX037 — Partes do cenário.** Que quatro partes cada cenário nomeia? *Rubrica:* 3 = ameaça, fraqueza, ativo e consequência;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Partes do cenário.** Que quatro partes cada cenário nomeia? *Rubrica:* 3 = ameaça, fraqueza, ativo e consequência;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Diferença de classificação.** Por que o gerente de operações classificou mais alto o coletor perdido? *Rubrica:* 3 = coletores somem todo mês;; 2 = conhecimento local;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Diferença de classificação.** Por que o gerente de operações classificou mais alto o coletor perdido? *Rubrica:* 3 = coletores somem todo mês;; 2 = conhecimento local;; 1 = vago;; 0 = nenhuma.
 
 - **EX039 — Risco aceito.** Que cenário foi aceito, e por quê? *Rubrica:* 3 = falha de impressora; há impressoras de reserva em cada centro;; 2 = impressora;; 1 = ransomware;; 0 = nenhuma.
 
@@ -656,11 +656,11 @@ O STRIDE encontra categorias, não todos os ataques. As revisões dependem do te
 
 ### Exercícios
 
-- **EX040 — Divulgação de informação.** Que ameaça de divulgação de informação Tomás encontrou? *Rubrica:* 3 = um varejista ver os manifestos de outro;; 2 = entre varejistas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Divulgação de informação.** Que ameaça de divulgação de informação Tomás encontrou? *Rubrica:* 3 = um varejista ver os manifestos de outro;; 2 = entre varejistas;; 1 = vago;; 0 = nenhuma.
 
-- **EX041 — Item que exige o negócio.** Que item precisava de informação do negócio? *Rubrica:* 3 = definir picos incomuns de alteração de endereços;; 2 = picos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Item que exige o negócio.** Que item precisava de informação do negócio? *Rubrica:* 3 = definir picos incomuns de alteração de endereços;; 2 = picos;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Ameaça esquecida.** Que ameaça o desenvolvedor acrescentou? *Rubrica:* 3 = interceptação dos e-mails de redefinição de senha;; 2 = redefinição;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Ameaça esquecida.** Que ameaça o desenvolvedor acrescentou? *Rubrica:* 3 = interceptação dos e-mails de redefinição de senha;; 2 = redefinição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -722,9 +722,9 @@ Os limiares deixam passar ataques abaixo deles. Ligar para os varejistas acresce
 
 ### Exercícios
 
-- **EX043 — Normal primeiro.** Por que definir o normal antes de escrever a regra? *Rubrica:* 3 = para ligar a regra ao negócio, e não a palpites;; 2 = negócio;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Normal primeiro.** Por que definir o normal antes de escrever a regra? *Rubrica:* 3 = para ligar a regra ao negócio, e não a palpites;; 2 = negócio;; 1 = vago;; 0 = nenhuma.
 
-- **EX044 — Achado do laboratório.** O que o laboratório sinalizou? *Rubrica:* 3 = varejista R2: 5 encomendas para o novo endereço 9 Quay Lane;; 2 = cinco;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Achado do laboratório.** O que o laboratório sinalizou? *Rubrica:* 3 = varejista R2: 5 encomendas para o novo endereço 9 Quay Lane;; 2 = cinco;; 1 = vago;; 0 = nenhuma.
 
 - **EX045 — Número conhecido.** Por que ligar para o varejista num número conhecido? *Rubrica:* 3 = o número do manifesto pode pertencer ao criminoso;; 2 = fraude;; 1 = é mais rápido;; 0 = nenhuma.
 
@@ -766,9 +766,9 @@ As estimativas de esforço são julgamentos. As árvores deixam de fora ramos qu
 
 - **EX046 — Ramo realista.** Que ramo o engenheiro de manutenção tornou realista? *Rubrica:* 3 = pendrives USB usados para copiar arquivos de configuração;; 2 = USB;; 1 = fornecedor;; 0 = nenhuma.
 
-- **EX047 — Caminho bloqueado.** Por que a inundação a partir de um PC de escritório é improvável? *Rubrica:* 3 = o projeto de zonas bloqueia caminhos do escritório para o controle;; 2 = zonas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Caminho bloqueado.** Por que a inundação a partir de um PC de escritório é improvável? *Rubrica:* 3 = o projeto de zonas bloqueia caminhos do escritório para o controle;; 2 = zonas;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Benefício extra.** Que benefício para o negócio o backup offline da configuração trouxe? *Rubrica:* 3 = recuperação mais rápida de falhas comuns de hardware;; 2 = recuperação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Benefício extra.** Que benefício para o negócio o backup offline da configuração trouxe? *Rubrica:* 3 = recuperação mais rápida de falhas comuns de hardware;; 2 = recuperação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -808,9 +808,9 @@ Os testes são curtos e podem deixar problemas passarem. Os planos gratuitos pod
 
 - **EX049 — Lacunas de verdade.** Que necessidades eram lacunas de verdade? *Rubrica:* 3 = varredura de vulnerabilidades e alertas sobre logs;; 2 = uma;; 1 = inventário;; 0 = nenhuma.
 
-- **EX050 — Permissão para o teste.** O que Tomás obteve antes da varredura? *Rubrica:* 3 = permissão por escrito de Sam e do provedor de hospedagem;; 2 = permissão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Permissão para o teste.** O que Tomás obteve antes da varredura? *Rubrica:* 3 = permissão por escrito de Sam e do provedor de hospedagem;; 2 = permissão;; 1 = vago;; 0 = nenhuma.
 
-- **EX051 — Shelfware.** O que acontece com as ferramentas sem responsável? *Rubrica:* 3 = viram shelfware que dá falso conforto;; 2 = shelfware;; 1 = nenhuma;; 0 = nenhuma.
+- **EX051 — Shelfware.** O que acontece com as ferramentas sem responsável? *Rubrica:* 3 = viram shelfware que dá falso conforto;; 2 = shelfware;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -848,11 +848,11 @@ As evidências podem mostrar a configuração sem provar a eficácia. Os catálo
 
 ### Exercícios
 
-- **EX052 — Controle compartilhado.** Por que as atualizações mensais merecem atenção extra? *Rubrica:* 3 = sua falha enfraquece as defesas contra muitos cenários;; 2 = muitos cenários;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Controle compartilhado.** Por que as atualizações mensais merecem atenção extra? *Rubrica:* 3 = sua falha enfraquece as defesas contra muitos cenários;; 2 = muitos cenários;; 1 = vago;; 0 = nenhuma.
 
-- **EX053 — Acréscimos do catálogo.** Cite dois controles acrescentados a partir da ISO/IEC 27002. *Rubrica:* 3 = cláusula do fornecedor, call-back de mudança bancária, apagamento dos coletores;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX053 — Acréscimos do catálogo.** Cite dois controles acrescentados a partir da ISO/IEC 27002. *Rubrica:* 3 = cláusula do fornecedor, call-back de mudança bancária, apagamento dos coletores;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX054 — Benefício nos questionários.** Como a lista de evidências vai ajudar com os clientes? *Rubrica:* 3 = respondendo rapidamente aos questionários de segurança de fornecedores;; 2 = questionários;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Benefício nos questionários.** Como a lista de evidências vai ajudar com os clientes? *Rubrica:* 3 = respondendo rapidamente aos questionários de segurança de fornecedores;; 2 = questionários;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -923,9 +923,9 @@ Os limiares deixam passar ataques lentos. Relógios dessincronizados confundem a
 
 ### Exercícios
 
-- **EX055 — Sincronização dos relógios.** Por que conferir os relógios dos dispositivos? *Rubrica:* 3 = eventos com horários errados são difíceis de correlacionar;; 2 = correlação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Sincronização dos relógios.** Por que conferir os relógios dos dispositivos? *Rubrica:* 3 = eventos com horários errados são difíceis de correlacionar;; 2 = correlação;; 1 = vago;; 0 = nenhuma.
 
-- **EX056 — Alertas do laboratório.** Que três alertas o laboratório gerou? *Rubrica:* 3 = falhas de login de r-07, sessão noturna não aprovada do fornecedor, backup que falhou;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Alertas do laboratório.** Que três alertas o laboratório gerou? *Rubrica:* 3 = falhas de login de r-07, sessão noturna não aprovada do fornecedor, backup que falhou;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Regras silenciosas.** O que eles fazem com as regras que nunca disparam? *Rubrica:* 3 = testam-nas com um evento simulado;; 2 = testar;; 1 = apagar;; 0 = nenhuma.
 
@@ -965,7 +965,7 @@ Os provedores nem sempre anunciam as mudanças. Correções rápidas viram perma
 
 ### Exercícios
 
-- **EX058 — Mudança recente.** Que mudança recente apontou para a causa? *Rubrica:* 3 = uma atualização do firewall na noite anterior;; 2 = firewall;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Mudança recente.** Que mudança recente apontou para a causa? *Rubrica:* 3 = uma atualização do firewall na noite anterior;; 2 = firewall;; 1 = vago;; 0 = nenhuma.
 
 - **EX059 — Causa real.** Qual foi a causa de fato? *Rubrica:* 3 = o serviço de rastreamento mudou para um endereço novo não permitido pela regra;; 2 = endereço novo;; 1 = ataque;; 0 = nenhuma.
 
@@ -1009,9 +1009,9 @@ Os parceiros podem mudar seus sistemas sem aviso. Os gerenciadores de segredos c
 
 - **EX061 — Dados desnecessários.** De que dados a empresa dos armários não precisa? *Rubrica:* 3 = endereço residencial e telefone;; 2 = dados de contato;; 1 = código de retirada;; 0 = nenhuma.
 
-- **EX062 — Impacto do vazamento da chave.** O que um atacante poderia fazer com uma chave vazada dos armários? *Rubrica:* 3 = marcar encomendas como retiradas;; 2 = falsa retirada;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Impacto do vazamento da chave.** O que um atacante poderia fazer com uma chave vazada dos armários? *Rubrica:* 3 = marcar encomendas como retiradas;; 2 = falsa retirada;; 1 = vago;; 0 = nenhuma.
 
-- **EX063 — Teste dos limites.** Como Tomás testou os limites do parceiro? *Rubrica:* 3 = tentou buscar uma encomenda não relacionada com a chave de teste; foi recusado;; 2 = teste;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Teste dos limites.** Como Tomás testou os limites do parceiro? *Rubrica:* 3 = tentou buscar uma encomenda não relacionada com a chave de teste; foi recusado;; 2 = teste;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1071,7 +1071,7 @@ Nomes discrepantes entre sistemas causam resultados falsos. Scripts que apenas r
 
 - **EX065 — Apenas relatar.** Por que o script apenas relata? *Rubrica:* 3 = alguns desligados têm prorrogações aprovadas que exigem julgamento;; 2 = julgamento;; 1 = rapidez;; 0 = nenhuma.
 
-- **EX066 — Resultado do laboratório.** Que contas de desligados ainda estavam ativas no laboratório? *Rubrica:* 3 = j.mensah e p.kowal;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX066 — Resultado do laboratório.** Que contas de desligados ainda estavam ativas no laboratório? *Rubrica:* 3 = j.mensah e p.kowal;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1111,9 +1111,9 @@ A ausência de incidentes é uma evidência fraca. A atribuição da melhoria é
 
 - **EX067 — Parcela do portal.** Que parcela dos manifestos usa agora o portal? *Rubrica:* 3 = noventa por cento;; 2 = 90%;; 1 = todos;; 0 = nenhuma.
 
-- **EX068 — Melhoria das atualizações.** Como mudou a parcela de atualizações em trinta dias? *Rubrica:* 3 = de 48 para 85 por cento;; 2 = subiu;; 1 = nenhuma;; 0 = nenhuma.
+- **EX068 — Melhoria das atualizações.** Como mudou a parcela de atualizações em trinta dias? *Rubrica:* 3 = de 48 para 85 por cento;; 2 = subiu;; 1 = vago;; 0 = nenhuma.
 
-- **EX069 — Nenhum incidente.** Por que a ausência de incidentes graves é uma evidência fraca? *Rubrica:* 3 = pode refletir tanto a sorte quanto os controles;; 2 = sorte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Nenhum incidente.** Por que a ausência de incidentes graves é uma evidência fraca? *Rubrica:* 3 = pode refletir tanto a sorte quanto os controles;; 2 = sorte;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1170,11 +1170,11 @@ Desenhos antes e depois não conseguem isolar as causas. Contagens pequenas osci
 
 ### Exercícios
 
-- **EX070 — Fraqueza do desenho.** Qual é a fraqueza do desenho antes e depois? *Rubrica:* 3 = outras mudanças no mesmo período poderiam explicar as diferenças;; 2 = confusão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX070 — Fraqueza do desenho.** Qual é a fraqueza do desenho antes e depois? *Rubrica:* 3 = outras mudanças no mesmo período poderiam explicar as diferenças;; 2 = confusão;; 1 = vago;; 0 = nenhuma.
 
-- **EX071 — Relato rápido.** Quais foram as taxas de relato rápido antes e depois? *Rubrica:* 3 = 9 de 20 (45%) e 17 de 21 (81%);; 2 = taxas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX071 — Relato rápido.** Quais foram as taxas de relato rápido antes e depois? *Rubrica:* 3 = 9 de 20 (45%) e 17 de 21 (81%);; 2 = taxas;; 1 = vago;; 0 = nenhuma.
 
-- **EX072 — Causa alternativa.** Que causa alternativa Tomás mencionou? *Rubrica:* 3 = o novo processo de apagamento remoto fez o relato valer a pena;; 2 = apagamento remoto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Causa alternativa.** Que causa alternativa Tomás mencionou? *Rubrica:* 3 = o novo processo de apagamento remoto fez o relato valer a pena;; 2 = apagamento remoto;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1212,9 +1212,9 @@ As equipes podem se curvar ao membro mais barulhento. Três semanas limitam a pr
 
 ### Exercícios
 
-- **EX073 — Erro de zona.** O que Tomás encontrou no diagrama de zonas? *Rubrica:* 3 = celulares dos entregadores na mesma zona que os sistemas do armazém;; 2 = zona;; 1 = nenhuma;; 0 = nenhuma.
+- **EX073 — Erro de zona.** O que Tomás encontrou no diagrama de zonas? *Rubrica:* 3 = celulares dos entregadores na mesma zona que os sistemas do armazém;; 2 = zona;; 1 = vago;; 0 = nenhuma.
 
-- **EX074 — Acréscimo de privacidade.** Que cenário a estudante de privacidade acrescentou? *Rubrica:* 3 = dados das receitas visíveis nas telas dos entregadores;; 2 = receitas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX074 — Acréscimo de privacidade.** Que cenário a estudante de privacidade acrescentou? *Rubrica:* 3 = dados das receitas visíveis nas telas dos entregadores;; 2 = receitas;; 1 = vago;; 0 = nenhuma.
 
 - **EX075 — Valor do log de revisão.** Por que Ruth elogiou o log de revisão? *Rubrica:* 3 = mostrava como o projeto melhorou;; 2 = melhoria;; 1 = extensão;; 0 = nenhuma.
 
@@ -1254,7 +1254,7 @@ Os runbooks envelhecem conforme os sistemas mudam. Equipes de duas pessoas são 
 
 ### Exercícios
 
-- **EX076 — Por que a passagem.** Por que os controles se deterioram sem passagem? *Rubrica:* 3 = ninguém mais sabe por que existem nem como operá-los;; 2 = conhecimento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX076 — Por que a passagem.** Por que os controles se deterioram sem passagem? *Rubrica:* 3 = ninguém mais sabe por que existem nem como operá-los;; 2 = conhecimento;; 1 = vago;; 0 = nenhuma.
 
 - **EX077 — Teste do runbook.** O que o teste do runbook de restauração revelou? *Rubrica:* 3 = uma etapa sem a indicação de onde fica a senha;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
 
@@ -1296,11 +1296,11 @@ Implantações escalonadas prolongam estados mistos. O rollback pode reintroduzi
 
 ### Exercícios
 
-- **EX079 — Critério de saída.** Qual era o critério de saída de cada etapa? *Rubrica:* 3 = menos de cinco chamados de ajuda com login por turno;; 2 = chamados de ajuda;; 1 = nenhuma;; 0 = nenhuma.
+- **EX079 — Critério de saída.** Qual era o critério de saída de cada etapa? *Rubrica:* 3 = menos de cinco chamados de ajuda com login por turno;; 2 = chamados de ajuda;; 1 = vago;; 0 = nenhuma.
 
-- **EX080 — Lacuna de firmware.** O que a validação pegou no segundo centro? *Rubrica:* 3 = um modelo com firmware antigo ainda aceitava o PIN compartilhado;; 2 = firmware;; 1 = nenhuma;; 0 = nenhuma.
+- **EX080 — Lacuna de firmware.** O que a validação pegou no segundo centro? *Rubrica:* 3 = um modelo com firmware antigo ainda aceitava o PIN compartilhado;; 2 = firmware;; 1 = vago;; 0 = nenhuma.
 
-- **EX081 — Gatilho do rollback.** O que dispararia o rollback? *Rubrica:* 3 = mais de dez por cento dos motoristas sem conseguir fazer login no início do turno;; 2 = dez por cento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX081 — Gatilho do rollback.** O que dispararia o rollback? *Rubrica:* 3 = mais de dez por cento dos motoristas sem conseguir fazer login no início do turno;; 2 = dez por cento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1340,9 +1340,9 @@ Estágios curtos deixam as mudanças sem suporte. Locais pequenos podem regredir
 
 - **EX082 — Indisponibilidade mais dolorosa.** Que indisponibilidade doeria mais no centro esportivo? *Rubrica:* 3 = o site de reservas num sábado de manhã;; 2 = reservas;; 1 = cartões de acesso;; 0 = nenhuma.
 
-- **EX083 — Correção dos cartões.** Como foram tratados os cartões de acesso de quem saiu? *Rubrica:* 3 = uma etapa de desativação acrescentada ao cancelamento de associação;; 2 = procedimento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX083 — Correção dos cartões.** Como foram tratados os cartões de acesso de quem saiu? *Rubrica:* 3 = uma etapa de desativação acrescentada ao cancelamento de associação;; 2 = procedimento;; 1 = vago;; 0 = nenhuma.
 
-- **EX084 — Evidência de aprendizagem.** Que resultado a gerente relatou um mês depois? *Rubrica:* 3 = onze cartões desativados;; 2 = onze;; 1 = nenhuma;; 0 = nenhuma.
+- **EX084 — Evidência de aprendizagem.** Que resultado a gerente relatou um mês depois? *Rubrica:* 3 = onze cartões desativados;; 2 = onze;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1382,9 +1382,9 @@ Os testes em laboratório deixam passar peculiaridades de cada local. Os pacotes
 
 - **EX085 — Por que reutilizável.** Por que Ruth aprovou o escopo do projeto final? *Rubrica:* 3 = ele produz algo reutilizável;; 2 = reutilização;; 1 = tamanho;; 0 = nenhuma.
 
-- **EX086 — Conflito no teste.** Que problema o teste revelou? *Rubrica:* 3 = uma configuração da baseline quebrou o driver da impressora de etiquetas;; 2 = impressora;; 1 = nenhuma;; 0 = nenhuma.
+- **EX086 — Conflito no teste.** Que problema o teste revelou? *Rubrica:* 3 = uma configuração da baseline quebrou o driver da impressora de etiquetas;; 2 = impressora;; 1 = vago;; 0 = nenhuma.
 
-- **EX087 — Motivos ligados.** Por que ligar cada item do checklist a um motivo? *Rubrica:* 3 = para que a equipe futura possa julgar se ele ainda se aplica;; 2 = julgamento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX087 — Motivos ligados.** Por que ligar cada item do checklist a um motivo? *Rubrica:* 3 = para que a equipe futura possa julgar se ele ainda se aplica;; 2 = julgamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1424,9 +1424,9 @@ Avaliadores que conhecem o estudante podem dar notas generosas. Planos provisór
 
 - **EX088 — Nota menor.** Que critério recebeu dois, e por quê? *Rubrica:* 3 = completude, porque a configuração do acesso do fornecedor foi acrescentada tarde;; 2 = completude;; 1 = clareza;; 0 = nenhuma.
 
-- **EX089 — Seção provisória.** O que o profissional sugeriu acrescentar? *Rubrica:* 3 = o que fazer se o centro abrir antes que todos os controles estejam prontos;; 2 = risco provisório;; 1 = nenhuma;; 0 = nenhuma.
+- **EX089 — Seção provisória.** O que o profissional sugeriu acrescentar? *Rubrica:* 3 = o que fazer se o centro abrir antes que todos os controles estejam prontos;; 2 = risco provisório;; 1 = vago;; 0 = nenhuma.
 
-- **EX090 — Valor do tecnólogo.** Onde Tomás vê o valor de um tecnólogo? *Rubrica:* 3 = fazer os projetos funcionarem com confiabilidade e relatar com honestidade quando não funcionam;; 2 = mundo real;; 1 = nenhuma;; 0 = nenhuma.
+- **EX090 — Valor do tecnólogo.** Onde Tomás vê o valor de um tecnólogo? *Rubrica:* 3 = fazer os projetos funcionarem com confiabilidade e relatar com honestidade quando não funcionam;; 2 = mundo real;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

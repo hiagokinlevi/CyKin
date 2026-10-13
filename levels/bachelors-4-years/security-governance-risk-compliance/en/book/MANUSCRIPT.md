@@ -67,8 +67,8 @@ Precise numbers can still be wrong. Sources can be out of date.
 ### Exercises
 
 - **EX001 — Points versus percent.** A fall from ten percent to five percent is how large a change? *Rubric:* 3 = five percentage points;; 2 = points;; 1 = five percent;; 0 = none.
-- **EX002 — Missing base.** Why can a ninety percent figure mislead? *Rubric:* 3 = the base and which items are missing are unknown;; 2 = base;; 1 = none;; 0 = none.
-- **EX003 — Claim parts.** What four parts did Sofia's precise claim include? *Rubric:* 3 = date, count, base and source;; 2 = four;; 1 = none;; 0 = none.
+- **EX002 — Missing base.** Why can a ninety percent figure mislead? *Rubric:* 3 = the base and which items are missing are unknown;; 2 = base;; 1 = vague;; 0 = none.
+- **EX003 — Claim parts.** What four parts did Sofia's precise claim include? *Rubric:* 3 = date, count, base and source;; 2 = four;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -110,9 +110,9 @@ Inventories miss shadow IT. Owners may be nominal.
 
 ### Exercises
 
-- **EX004 — Inventory fields.** Which fields does Sofia's inventory hold? *Rubric:* 3 = name, type, owner, location, data held, supplier;; 2 = six fields;; 1 = none;; 0 = none.
-- **EX005 — Inventory gaps.** What two gaps did the inventory reveal? *Rubric:* 3 = unowned board portal and eleven missing tablets;; 2 = two gaps;; 1 = none;; 0 = none.
-- **EX006 — Decay check.** How does Sofia plan to keep the inventory current? *Rubric:* 3 = quarterly check against purchases and identity records;; 2 = quarterly;; 1 = none;; 0 = none.
+- **EX004 — Inventory fields.** Which fields does Sofia's inventory hold? *Rubric:* 3 = name, type, owner, location, data held, supplier;; 2 = six fields;; 1 = vague;; 0 = none.
+- **EX005 — Inventory gaps.** What two gaps did the inventory reveal? *Rubric:* 3 = unowned board portal and eleven missing tablets;; 2 = two gaps;; 1 = vague;; 0 = none.
+- **EX006 — Decay check.** How does Sofia plan to keep the inventory current? *Rubric:* 3 = quarterly check against purchases and identity records;; 2 = quarterly;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -154,9 +154,9 @@ Scripts trust their input. Suggested owners need confirmation.
 
 ### Exercises
 
-- **EX007 — Script benefit.** Why does a script count help governance? *Rubric:* 3 = it replaces impressions with repeatable facts;; 2 = facts;; 1 = none;; 0 = none.
-- **EX008 — Filter combination.** Which combination did Sofia filter for? *Rubric:* 3 = tenant personal data and no owner;; 2 = sensitive unowned;; 1 = none;; 0 = none.
-- **EX009 — Output rewrite.** What did each output line include after rewriting? *Rubric:* 3 = asset, problem, suggested owner and run date;; 2 = fields;; 1 = none;; 0 = none.
+- **EX007 — Script benefit.** Why does a script count help governance? *Rubric:* 3 = it replaces impressions with repeatable facts;; 2 = facts;; 1 = vague;; 0 = none.
+- **EX008 — Filter combination.** Which combination did Sofia filter for? *Rubric:* 3 = tenant personal data and no owner;; 2 = sensitive unowned;; 1 = vague;; 0 = none.
+- **EX009 — Output rewrite.** What did each output line include after rewriting? *Rubric:* 3 = asset, problem, suggested owner and run date;; 2 = fields;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -198,9 +198,9 @@ Short essays oversimplify. Paraphrases can distort meaning.
 
 ### Exercises
 
-- **EX010 — Counterargument.** What counterargument did Sofia address? *Rubric:* 3 = formal frameworks cost too much for small teams;; 2 = cost;; 1 = none;; 0 = none.
-- **EX011 — Edition reason.** Why cite standards with edition and year? *Rubric:* 3 = requirements change between editions;; 2 = editions;; 1 = none;; 0 = none.
-- **EX012 — Paraphrase test.** Why does paraphrasing test understanding? *Rubric:* 3 = if you cannot explain simply you have not understood;; 2 = understanding;; 1 = none;; 0 = none.
+- **EX010 — Counterargument.** What counterargument did Sofia address? *Rubric:* 3 = formal frameworks cost too much for small teams;; 2 = cost;; 1 = vague;; 0 = none.
+- **EX011 — Edition reason.** Why cite standards with edition and year? *Rubric:* 3 = requirements change between editions;; 2 = editions;; 1 = vague;; 0 = none.
+- **EX012 — Paraphrase test.** Why does paraphrasing test understanding? *Rubric:* 3 = if you cannot explain simply you have not understood;; 2 = understanding;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -242,9 +242,9 @@ Simple controls fail if inconsistent. Talks have short-lived effects.
 
 ### Exercises
 
-- **EX013 — Common cause.** Where do most incidents in small organisations come from? *Rubric:* 3 = ordinary failures, not sophisticated attacks;; 2 = ordinary;; 1 = none;; 0 = none.
-- **EX014 — Ransomware control.** Which control enables recovery from ransomware? *Rubric:* 3 = offline backups;; 2 = backups;; 1 = none;; 0 = none.
-- **EX015 — Fear effect.** Why avoid fear in security talks? *Rubric:* 3 = it leads to hiding mistakes;; 2 = hiding;; 1 = none;; 0 = none.
+- **EX013 — Common cause.** Where do most incidents in small organisations come from? *Rubric:* 3 = ordinary failures, not sophisticated attacks;; 2 = ordinary;; 1 = vague;; 0 = none.
+- **EX014 — Ransomware control.** Which control enables recovery from ransomware? *Rubric:* 3 = offline backups;; 2 = backups;; 1 = vague;; 0 = none.
+- **EX015 — Fear effect.** Why avoid fear in security talks? *Rubric:* 3 = it leads to hiding mistakes;; 2 = hiding;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -286,8 +286,8 @@ Permission data may be incomplete. Graphs miss informal dependencies.
 
 ### Exercises
 
-- **EX016 — Conflict found.** What conflict did Sofia find? *Rubric:* 3 = one person could add a supplier and approve payment;; 2 = SoD;; 1 = none;; 0 = none.
-- **EX017 — Cover fix.** How should cover arrangements work? *Rubric:* 3 = temporary access with second approver and end date;; 2 = temporary;; 1 = none;; 0 = none.
+- **EX016 — Conflict found.** What conflict did Sofia find? *Rubric:* 3 = one person could add a supplier and approve payment;; 2 = SoD;; 1 = vague;; 0 = none.
+- **EX017 — Cover fix.** How should cover arrangements work? *Rubric:* 3 = temporary access with second approver and end date;; 2 = temporary;; 1 = vague;; 0 = none.
 - **EX018 — Single point.** Which system is a single point of failure? *Rubric:* 3 = cloud identity;; 2 = identity;; 1 = email;; 0 = none.
 
 ### Synthesis
@@ -330,9 +330,9 @@ Data flows change. Rankings depend on judgement.
 
 ### Exercises
 
-- **EX019 — Trusted network.** Why does the trusted internal network idea no longer fit? *Rubric:* 3 = staff and data are spread across many places;; 2 = cloud and mobile;; 1 = none;; 0 = none.
+- **EX019 — Trusted network.** Why does the trusted internal network idea no longer fit? *Rubric:* 3 = staff and data are spread across many places;; 2 = cloud and mobile;; 1 = vague;; 0 = none.
 - **EX020 — Minimisation fix.** What should contractors receive instead of full records? *Rubric:* 3 = name, address and phone only;; 2 = minimum fields;; 1 = full records;; 0 = none.
-- **EX021 — Top network risk.** Which network risk ranked first? *Rubric:* 3 = exposed remote desktop on the file server;; 2 = RDP;; 1 = none;; 0 = none.
+- **EX021 — Top network risk.** Which network risk ranked first? *Rubric:* 3 = exposed remote desktop on the file server;; 2 = RDP;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -374,9 +374,9 @@ Mapping errors cause false alarms. Sources may share the same mistake.
 
 ### Exercises
 
-- **EX022 — Test purpose.** Why do governance scripts need tests? *Rubric:* 3 = their output may be used as evidence;; 2 = evidence;; 1 = none;; 0 = none.
-- **EX023 — Join problem.** Why did Sofia need a mapping table? *Rubric:* 3 = sources use different identifiers;; 2 = identifiers;; 1 = none;; 0 = none.
-- **EX024 — Orphan account.** What is an orphan account in this check? *Rubric:* 3 = an active account matching no staff member;; 2 = orphan;; 1 = none;; 0 = none.
+- **EX022 — Test purpose.** Why do governance scripts need tests? *Rubric:* 3 = their output may be used as evidence;; 2 = evidence;; 1 = vague;; 0 = none.
+- **EX023 — Join problem.** Why did Sofia need a mapping table? *Rubric:* 3 = sources use different identifiers;; 2 = identifiers;; 1 = vague;; 0 = none.
+- **EX024 — Orphan account.** What is an orphan account in this check? *Rubric:* 3 = an active account matching no staff member;; 2 = orphan;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -445,7 +445,7 @@ Structured data can still hold poor judgements. Scales cause ties.
 
 - **EX025 — Score formula.** How is the risk score computed? *Rubric:* 3 = likelihood times impact;; 2 = product;; 1 = sum;; 0 = none.
 - **EX026 — Tied risks.** Which two risks tied at the top? *Rubric:* 3 = misdirected tenant data and lost laptop, both 12;; 2 = tie;; 1 = ransomware;; 0 = none.
-- **EX027 — Unowned list.** Which risks had no owner? *Rubric:* 3 = R3 contractor misuse and R6 board portal passwords;; 2 = two;; 1 = none;; 0 = none.
+- **EX027 — Unowned list.** Which risks had no owner? *Rubric:* 3 = R3 contractor misuse and R6 board portal passwords;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -487,9 +487,9 @@ Scopes can be ambiguous. Urgency judgements vary.
 
 ### Exercises
 
-- **EX028 — Excluded activity.** Which activity was excluded from Sofia's scope? *Rubric:* 3 = active testing of systems;; 2 = testing;; 1 = none;; 0 = none.
-- **EX029 — Data handling.** How did Sofia handle personal data from exports? *Rubric:* 3 = encrypted laptop, names removed when sharing, deleted at end;; 2 = minimise;; 1 = none;; 0 = none.
-- **EX030 — Urgent report.** Why report the remote desktop exposure immediately? *Rubric:* 3 = attackers could exploit it at any time;; 2 = urgency;; 1 = none;; 0 = none.
+- **EX028 — Excluded activity.** Which activity was excluded from Sofia's scope? *Rubric:* 3 = active testing of systems;; 2 = testing;; 1 = vague;; 0 = none.
+- **EX029 — Data handling.** How did Sofia handle personal data from exports? *Rubric:* 3 = encrypted laptop, names removed when sharing, deleted at end;; 2 = minimise;; 1 = vague;; 0 = none.
+- **EX030 — Urgent report.** Why report the remote desktop exposure immediately? *Rubric:* 3 = attackers could exploit it at any time;; 2 = urgency;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -531,9 +531,9 @@ Console exports miss unmanaged devices. Update targets need exceptions.
 
 ### Exercises
 
-- **EX031 — Policy to setting.** Which setting enforces the no-admin rule? *Rubric:* 3 = group membership;; 2 = groups;; 1 = none;; 0 = none.
-- **EX032 — Root cause.** Why did nine laptops lack encryption? *Rubric:* 3 = bought locally outside the normal route;; 2 = procurement;; 1 = none;; 0 = none.
-- **EX033 — Update target.** What target did Sofia set for critical updates? *Rubric:* 3 = thirty days;; 2 = 30;; 1 = none;; 0 = none.
+- **EX031 — Policy to setting.** Which setting enforces the no-admin rule? *Rubric:* 3 = group membership;; 2 = groups;; 1 = vague;; 0 = none.
+- **EX032 — Root cause.** Why did nine laptops lack encryption? *Rubric:* 3 = bought locally outside the normal route;; 2 = procurement;; 1 = vague;; 0 = none.
+- **EX033 — Update target.** What target did Sofia set for critical updates? *Rubric:* 3 = thirty days;; 2 = 30;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -595,9 +595,9 @@ Acknowledgement does not mean understanding. Intervals assume independence.
 
 ### Exercises
 
-- **EX034 — Wilson reason.** Why use the Wilson interval? *Rubric:* 3 = behaves well for small counts and extreme proportions;; 2 = small samples;; 1 = none;; 0 = none.
-- **EX035 — Repairs interval.** What is the repairs team's interval? *Rubric:* 3 = 42% to 75%;; 2 = wide;; 1 = none;; 0 = none.
-- **EX036 — Repairs cause.** Why did repairs staff acknowledge less? *Rubric:* 3 = they rarely use laptops and the policy came by email;; 2 = channel;; 1 = none;; 0 = none.
+- **EX034 — Wilson reason.** Why use the Wilson interval? *Rubric:* 3 = behaves well for small counts and extreme proportions;; 2 = small samples;; 1 = vague;; 0 = none.
+- **EX035 — Repairs interval.** What is the repairs team's interval? *Rubric:* 3 = 42% to 75%;; 2 = wide;; 1 = vague;; 0 = none.
+- **EX036 — Repairs cause.** Why did repairs staff acknowledge less? *Rubric:* 3 = they rarely use laptops and the policy came by email;; 2 = channel;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -639,9 +639,9 @@ Managers may approve without checking. Role design takes time.
 
 ### Exercises
 
-- **EX037 — Leaver fix.** How did Sofia fix late leaver notices? *Rubric:* 3 = automatic HR notices before last day with ticket confirmation;; 2 = automation;; 1 = none;; 0 = none.
+- **EX037 — Leaver fix.** How did Sofia fix late leaver notices? *Rubric:* 3 = automatic HR notices before last day with ticket confirmation;; 2 = automation;; 1 = vague;; 0 = none.
 - **EX038 — Sensitive fields.** Who should see safeguarding notes? *Rubric:* 3 = only the specialist support team;; 2 = support team;; 1 = all officers;; 0 = none.
-- **EX039 — Review outcome.** How many access rights did the review remove? *Rubric:* 3 = seven;; 2 = 7;; 1 = none;; 0 = none.
+- **EX039 — Review outcome.** How many access rights did the review remove? *Rubric:* 3 = seven;; 2 = 7;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -684,8 +684,8 @@ Laws differ by country. Mappings go out of date.
 ### Exercises
 
 - **EX040 — Purpose breach.** Which use of tenant data would breach purpose limitation? *Rubric:* 3 = unrelated marketing;; 2 = marketing;; 1 = repairs;; 0 = none.
-- **EX041 — Processing gaps.** Name two gaps found in the processing map. *Rubric:* 3 = excess contractor data and unknown call recording retention;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX042 — Joint example.** Why is a misdirected email both a security and privacy matter? *Rubric:* 3 = it is a security incident and a personal data breach;; 2 = both;; 1 = none;; 0 = none.
+- **EX041 — Processing gaps.** Name two gaps found in the processing map. *Rubric:* 3 = excess contractor data and unknown call recording retention;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX042 — Joint example.** Why is a misdirected email both a security and privacy matter? *Rubric:* 3 = it is a security incident and a personal data breach;; 2 = both;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -747,8 +747,8 @@ Small samples vary. Medians hide the slowest cases.
 ### Exercises
 
 - **EX043 — Performance measure.** Why is time to install a better measure than updates installed? *Rubric:* 3 = it relates to how long vulnerabilities stay open;; 2 = performance;; 1 = activity;; 0 = none.
-- **EX044 — Patch results.** What median and on-target share did the lab report? *Rubric:* 3 = 21 days, 67%;; 2 = median 21;; 1 = none;; 0 = none.
-- **EX045 — Slow cause.** Why were the slowest updates late? *Rubric:* 3 = the file server was not restarted during working hours;; 2 = server;; 1 = none;; 0 = none.
+- **EX044 — Patch results.** What median and on-target share did the lab report? *Rubric:* 3 = 21 days, 67%;; 2 = median 21;; 1 = vague;; 0 = none.
+- **EX045 — Slow cause.** Why were the slowest updates late? *Rubric:* 3 = the file server was not restarted during working hours;; 2 = server;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -791,8 +791,8 @@ Layers can share weaknesses. Cloud moves bring supplier risk.
 ### Exercises
 
 - **EX046 — Central element.** What is central to Elmfield's target architecture? *Rubric:* 3 = identity with multi-factor authentication;; 2 = identity;; 1 = network;; 0 = none.
-- **EX047 — Shared weakness.** What could weaken layered defence? *Rubric:* 3 = one administrator account controlling all layers;; 2 = shared admin;; 1 = none;; 0 = none.
-- **EX048 — Decision notes.** What do Sofia's decision notes record? *Rubric:* 3 = alternatives and accepted risks;; 2 = alternatives;; 1 = none;; 0 = none.
+- **EX047 — Shared weakness.** What could weaken layered defence? *Rubric:* 3 = one administrator account controlling all layers;; 2 = shared admin;; 1 = vague;; 0 = none.
+- **EX048 — Decision notes.** What do Sofia's decision notes record? *Rubric:* 3 = alternatives and accepted risks;; 2 = alternatives;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -836,7 +836,7 @@ Encryption does not stop authorised misuse. Key procedures need testing.
 
 - **EX049 — Hash role.** What does hashing support? *Rubric:* 3 = integrity checks;; 2 = integrity;; 1 = confidentiality;; 0 = none.
 - **EX050 — Board papers rule.** When must board papers be encrypted under the draft standard? *Rubric:* 3 = when shared outside the portal;; 2 = outside portal;; 1 = never;; 0 = none.
-- **EX051 — Key risk.** What was the risk with laptop recovery keys? *Rubric:* 3 = one administrator controlled the only store;; 2 = single admin;; 1 = none;; 0 = none.
+- **EX051 — Key risk.** What was the risk with laptop recovery keys? *Rubric:* 3 = one administrator controlled the only store;; 2 = single admin;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -879,7 +879,7 @@ Interviews reflect what people say, not always what they do. Small groups limit 
 ### Exercises
 
 - **EX052 — Narrowed question.** What did Sofia's question narrow to? *Rubric:* 3 = what helps or hinders managers completing the access review;; 2 = specific;; 1 = culture;; 0 = none.
-- **EX053 — Method choice.** Why interviews rather than a survey? *Rubric:* 3 = only twelve managers and a why question;; 2 = small group;; 1 = none;; 0 = none.
+- **EX053 — Method choice.** Why interviews rather than a survey? *Rubric:* 3 = only twelve managers and a why question;; 2 = small group;; 1 = vague;; 0 = none.
 - **EX054 — Director access.** What will Elmfield's director see? *Rubric:* 3 = only themes, not who said what;; 2 = themes;; 1 = transcripts;; 0 = none.
 
 ### Synthesis
@@ -922,9 +922,9 @@ Definitions vary by source. Scope decisions need review.
 
 ### Exercises
 
-- **EX055 — Discipline roles.** How do the three disciplines support each other? *Rubric:* 3 = governance sets direction, risk informs decisions, compliance confirms obligations;; 2 = roles;; 1 = none;; 0 = none.
-- **EX056 — Excluded item.** What item was excluded from scope? *Rubric:* 3 = tenants' own devices;; 2 = tenant devices;; 1 = none;; 0 = none.
-- **EX057 — Treatment options.** List the four treatment options. *Rubric:* 3 = avoid, reduce, share, accept;; 2 = four;; 1 = none;; 0 = none.
+- **EX055 — Discipline roles.** How do the three disciplines support each other? *Rubric:* 3 = governance sets direction, risk informs decisions, compliance confirms obligations;; 2 = roles;; 1 = vague;; 0 = none.
+- **EX056 — Excluded item.** What item was excluded from scope? *Rubric:* 3 = tenants' own devices;; 2 = tenant devices;; 1 = vague;; 0 = none.
+- **EX057 — Treatment options.** List the four treatment options. *Rubric:* 3 = avoid, reduce, share, accept;; 2 = four;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -966,8 +966,8 @@ Cases from large organisations may not transfer. Root cause analysis can stop to
 
 ### Exercises
 
-- **EX058 — GAO weaknesses.** Which two weaknesses did GAO-21-105263 describe? *Rubric:* 3 = risk assessments lacking cyber information and an outdated incident protocol;; 2 = two;; 1 = none;; 0 = none.
-- **EX059 — Board reporting.** How often should progress be reported to Elmfield's board? *Rubric:* 3 = twice a year;; 2 = twice;; 1 = none;; 0 = none.
+- **EX058 — GAO weaknesses.** Which two weaknesses did GAO-21-105263 describe? *Rubric:* 3 = risk assessments lacking cyber information and an outdated incident protocol;; 2 = two;; 1 = vague;; 0 = none.
+- **EX059 — Board reporting.** How often should progress be reported to Elmfield's board? *Rubric:* 3 = twice a year;; 2 = twice;; 1 = vague;; 0 = none.
 - **EX060 — Contractor root cause.** What was the root cause of the contractor account incident? *Rubric:* 3 = no one owned contractor offboarding;; 2 = ownership;; 1 = active account;; 0 = none.
 
 ### Synthesis
@@ -1010,8 +1010,8 @@ Charts describe intended roles, not behaviour. Small teams blur roles.
 
 ### Exercises
 
-- **EX061 — RACI letters.** What do the four RACI letters mean? *Rubric:* 3 = responsible, accountable, consulted, informed;; 2 = four;; 1 = none;; 0 = none.
-- **EX062 — Incident problem.** What was wrong with incident handling? *Rubric:* 3 = three people accountable meant no one was;; 2 = too many;; 1 = none;; 0 = none.
+- **EX061 — RACI letters.** What do the four RACI letters mean? *Rubric:* 3 = responsible, accountable, consulted, informed;; 2 = four;; 1 = vague;; 0 = none.
+- **EX062 — Incident problem.** What was wrong with incident handling? *Rubric:* 3 = three people accountable meant no one was;; 2 = too many;; 1 = vague;; 0 = none.
 - **EX063 — Accountability rule.** How many roles should be accountable per process? *Rubric:* 3 = one;; 2 = single;; 1 = several;; 0 = none.
 
 ### Synthesis
@@ -1075,9 +1075,9 @@ Simple scores miss nuance. Supplier assurance reports vary in scope.
 
 ### Exercises
 
-- **EX064 — Tiering factors.** Which three factors are scored? *Rubric:* 3 = personal data access, criticality, remote access;; 2 = three;; 1 = none;; 0 = none.
+- **EX064 — Tiering factors.** Which three factors are scored? *Rubric:* 3 = personal data access, criticality, remote access;; 2 = three;; 1 = vague;; 0 = none.
 - **EX065 — High tier.** Which suppliers are high tier? *Rubric:* 3 = repairs contractor, cloud email, payroll bureau;; 2 = three;; 1 = printing;; 0 = none.
-- **EX066 — High-tier controls.** Name two controls for high-tier suppliers. *Rubric:* 3 = pre-contract questions and breach notification clauses;; 2 = controls;; 1 = none;; 0 = none.
+- **EX066 — High-tier controls.** Name two controls for high-tier suppliers. *Rubric:* 3 = pre-contract questions and breach notification clauses;; 2 = controls;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1143,7 +1143,7 @@ Expected loss needs uncertain inputs. Matrices compress severity.
 
 - **EX067 — Matrix top.** Which risk tops the matrix ranking? *Rubric:* 3 = misdirected tenant data, tied with the laptop at 12;; 2 = tie;; 1 = ransomware;; 0 = none.
 - **EX068 — Expected-loss top.** Which risk tops by expected loss? *Rubric:* 3 = ransomware at 25k;; 2 = ransomware;; 1 = laptop;; 0 = none.
-- **EX069 — Disagreement cause.** Why do the methods disagree on ransomware? *Rubric:* 3 = the matrix compresses very large impacts into a score of five;; 2 = compression;; 1 = none;; 0 = none.
+- **EX069 — Disagreement cause.** Why do the methods disagree on ransomware? *Rubric:* 3 = the matrix compresses very large impacts into a score of five;; 2 = compression;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1185,9 +1185,9 @@ Catalogue controls need tailoring. Owners change roles.
 
 ### Exercises
 
-- **EX070 — Laptop controls.** Which controls address lost laptops? *Rubric:* 3 = encryption and remote wipe;; 2 = two;; 1 = none;; 0 = none.
-- **EX071 — Justified exclusion.** Why are secure development controls excluded? *Rubric:* 3 = Elmfield builds no software;; 2 = no development;; 1 = none;; 0 = none.
-- **EX072 — Owner spread.** Why not assign all controls to the IT lead? *Rubric:* 3 = it would overload one person;; 2 = overload;; 1 = none;; 0 = none.
+- **EX070 — Laptop controls.** Which controls address lost laptops? *Rubric:* 3 = encryption and remote wipe;; 2 = two;; 1 = vague;; 0 = none.
+- **EX071 — Justified exclusion.** Why are secure development controls excluded? *Rubric:* 3 = Elmfield builds no software;; 2 = no development;; 1 = vague;; 0 = none.
+- **EX072 — Owner spread.** Why not assign all controls to the IT lead? *Rubric:* 3 = it would overload one person;; 2 = overload;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1230,8 +1230,8 @@ Small samples miss rare failures. Test copies may differ from live systems.
 ### Exercises
 
 - **EX073 — Restore result.** How many sampled files restored correctly? *Rubric:* 3 = nineteen of twenty;; 2 = 19;; 1 = 20;; 0 = none.
-- **EX074 — Failure cause.** Why did one file fail to restore? *Rubric:* 3 = backup excluded files above a size limit;; 2 = size limit;; 1 = none;; 0 = none.
-- **EX075 — Belief versus reality.** What did the test reveal about the control? *Rubric:* 3 = it did less than believed because of a forgotten setting;; 2 = gap;; 1 = none;; 0 = none.
+- **EX074 — Failure cause.** Why did one file fail to restore? *Rubric:* 3 = backup excluded files above a size limit;; 2 = size limit;; 1 = vague;; 0 = none.
+- **EX075 — Belief versus reality.** What did the test reveal about the control? *Rubric:* 3 = it did less than believed because of a forgotten setting;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1298,7 +1298,7 @@ Sampled outcomes are not the whole framework. Binary ratings lose nuance.
 
 - **EX076 — Rating basis.** On what basis are outcomes rated achieved? *Rubric:* 3 = evidence rather than opinion;; 2 = evidence;; 1 = opinion;; 0 = none.
 - **EX077 — Weakest function.** Which function is weakest and at what level? *Rubric:* 3 = Detect, 1/4 = 25%;; 2 = Detect;; 1 = Protect;; 0 = none.
-- **EX078 — Overall result.** What share of outcomes is achieved overall? *Rubric:* 3 = 15/28 = 54%;; 2 = 54%;; 1 = none;; 0 = none.
+- **EX078 — Overall result.** What share of outcomes is achieved overall? *Rubric:* 3 = 15/28 = 54%;; 2 = 54%;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1341,8 +1341,8 @@ Observation can change behaviour. Re-performance needs access.
 ### Exercises
 
 - **EX079 — Strongest test.** Which test type gives the strongest evidence? *Rubric:* 3 = re-performance;; 2 = re-perform;; 1 = inspection;; 0 = none.
-- **EX080 — Inspection risk.** What is the risk of relying only on inspection? *Rubric:* 3 = records may describe controls nobody performed;; 2 = false records;; 1 = none;; 0 = none.
-- **EX081 — Conclusion categories.** What three conclusions can a verification reach? *Rubric:* 3 = effective, effective with exceptions, failed;; 2 = three;; 1 = none;; 0 = none.
+- **EX080 — Inspection risk.** What is the risk of relying only on inspection? *Rubric:* 3 = records may describe controls nobody performed;; 2 = false records;; 1 = vague;; 0 = none.
+- **EX081 — Conclusion categories.** What three conclusions can a verification reach? *Rubric:* 3 = effective, effective with exceptions, failed;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1385,8 +1385,8 @@ Blameless reviews still need accountability for repeated negligence. Warnings ca
 ### Exercises
 
 - **EX082 — Review aim.** What is the aim of a blameless review? *Rubric:* 3 = understand how the system allowed the error;; 2 = system;; 1 = punishment;; 0 = none.
-- **EX083 — System causes.** Name two system causes found. *Rubric:* 3 = auto-complete and routine emailing of arrears spreadsheets;; 2 = causes;; 1 = none;; 0 = none.
-- **EX084 — Register update.** How did Sofia update the register? *Rubric:* 3 = raised likelihood for misdirected data and recorded new controls;; 2 = update;; 1 = none;; 0 = none.
+- **EX083 — System causes.** Name two system causes found. *Rubric:* 3 = auto-complete and routine emailing of arrears spreadsheets;; 2 = causes;; 1 = vague;; 0 = none.
+- **EX084 — Register update.** How did Sofia update the register? *Rubric:* 3 = raised likelihood for misdirected data and recorded new controls;; 2 = update;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1428,9 +1428,9 @@ Calendars slip under pressure. Board attention varies.
 
 ### Exercises
 
-- **EX085 — Quarterly items.** Which activities are quarterly? *Rubric:* 3 = access reviews, register review, supplier checks;; 2 = three;; 1 = none;; 0 = none.
-- **EX086 — Action progress.** How many actions were complete after three months? *Rubric:* 3 = eighteen of twenty-four;; 2 = 18/24;; 1 = none;; 0 = none.
-- **EX087 — Reassurance problem.** Why is a report that only reassures a problem? *Rubric:* 3 = it gives the board nothing to govern;; 2 = no decisions;; 1 = none;; 0 = none.
+- **EX085 — Quarterly items.** Which activities are quarterly? *Rubric:* 3 = access reviews, register review, supplier checks;; 2 = three;; 1 = vague;; 0 = none.
+- **EX086 — Action progress.** How many actions were complete after three months? *Rubric:* 3 = eighteen of twenty-four;; 2 = 18/24;; 1 = vague;; 0 = none.
+- **EX087 — Reassurance problem.** Why is a report that only reassures a problem? *Rubric:* 3 = it gives the board nothing to govern;; 2 = no decisions;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1472,8 +1472,8 @@ Tabletops do not test technical recovery. Participants may perform for observers
 
 ### Exercises
 
-- **EX088 — Exercise safety.** Why does the tabletop use no real systems? *Rubric:* 3 = to stay safe and avoid disruption;; 2 = safety;; 1 = none;; 0 = none.
-- **EX089 — Missing plan.** What gap concerned the restore plan? *Rubric:* 3 = nobody knew where it was stored;; 2 = location;; 1 = none;; 0 = none.
+- **EX088 — Exercise safety.** Why does the tabletop use no real systems? *Rubric:* 3 = to stay safe and avoid disruption;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX089 — Missing plan.** What gap concerned the restore plan? *Rubric:* 3 = nobody knew where it was stored;; 2 = location;; 1 = vague;; 0 = none.
 - **EX090 — Notification decision.** Who will decide on external notifications? *Rubric:* 3 = the director;; 2 = director;; 1 = IT lead;; 0 = none.
 
 ### Synthesis
@@ -1516,9 +1516,9 @@ Scope reduction does not remove all duties. Reports vary in scope.
 
 ### Exercises
 
-- **EX091 — Hosted page effect.** How does a hosted payment page affect PCI DSS obligations? *Rubric:* 3 = keeps card data off Elmfield's systems, reducing scope;; 2 = scope;; 1 = none;; 0 = none.
-- **EX092 — Certification advice.** What did Sofia suggest before deciding on certification? *Rubric:* 3 = operate the system for a year and measure progress;; 2 = wait;; 1 = none;; 0 = none.
-- **EX093 — Type two report.** What does a SOC 2 type two report add? *Rubric:* 3 = tests of control operation over a period;; 2 = operation;; 1 = none;; 0 = none.
+- **EX091 — Hosted page effect.** How does a hosted payment page affect PCI DSS obligations? *Rubric:* 3 = keeps card data off Elmfield's systems, reducing scope;; 2 = scope;; 1 = vague;; 0 = none.
+- **EX092 — Certification advice.** What did Sofia suggest before deciding on certification? *Rubric:* 3 = operate the system for a year and measure progress;; 2 = wait;; 1 = vague;; 0 = none.
+- **EX093 — Type two report.** What does a SOC 2 type two report add? *Rubric:* 3 = tests of control operation over a period;; 2 = operation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1560,9 +1560,9 @@ Translation can oversimplify. Compromises may drift.
 
 ### Exercises
 
-- **EX094 — Legal boundary.** What should GRC staff not do in legal matters? *Rubric:* 3 = give legal advice;; 2 = advice;; 1 = none;; 0 = none.
-- **EX095 — HR framing.** How did Sofia frame the leaver process for HR? *Rubric:* 3 = protecting former staff from account misuse;; 2 = fairness;; 1 = none;; 0 = none.
-- **EX096 — Device compromise.** What compromise was agreed for devices? *Rubric:* 3 = managed devices anywhere, personal devices email only;; 2 = compromise;; 1 = none;; 0 = none.
+- **EX094 — Legal boundary.** What should GRC staff not do in legal matters? *Rubric:* 3 = give legal advice;; 2 = advice;; 1 = vague;; 0 = none.
+- **EX095 — HR framing.** How did Sofia frame the leaver process for HR? *Rubric:* 3 = protecting former staff from account misuse;; 2 = fairness;; 1 = vague;; 0 = none.
+- **EX096 — Device compromise.** What compromise was agreed for devices? *Rubric:* 3 = managed devices anywhere, personal devices email only;; 2 = compromise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1604,9 +1604,9 @@ Themes reflect the analyst's lens. Twelve interviews limit generality.
 
 ### Exercises
 
-- **EX097 — Three themes.** Name the three themes. *Rubric:* 3 = long jargon-filled lists, unknown staff needs, busy timing;; 2 = three;; 1 = none;; 0 = none.
-- **EX098 — Reflexivity.** What is reflexivity in this study? *Rubric:* 3 = awareness of how Sofia's role shapes data;; 2 = self-awareness;; 1 = none;; 0 = none.
-- **EX099 — Dissent.** Why report the two managers who liked reviews? *Rubric:* 3 = including dissent makes findings more credible;; 2 = balance;; 1 = none;; 0 = none.
+- **EX097 — Three themes.** Name the three themes. *Rubric:* 3 = long jargon-filled lists, unknown staff needs, busy timing;; 2 = three;; 1 = vague;; 0 = none.
+- **EX098 — Reflexivity.** What is reflexivity in this study? *Rubric:* 3 = awareness of how Sofia's role shapes data;; 2 = self-awareness;; 1 = vague;; 0 = none.
+- **EX099 — Dissent.** Why report the two managers who liked reviews? *Rubric:* 3 = including dissent makes findings more credible;; 2 = balance;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1648,9 +1648,9 @@ Two cases cannot generalise. Shared summaries may be optimistic.
 
 ### Exercises
 
-- **EX100 — Model difference.** How do the two organisations' IT models differ? *Rubric:* 3 = managed service provider versus in-house IT lead;; 2 = models;; 1 = none;; 0 = none.
-- **EX101 — Incident counts.** Why avoid comparing raw incident counts? *Rubric:* 3 = reporting cultures differ;; 2 = culture;; 1 = none;; 0 = none.
-- **EX102 — Corbridge weakness.** What weakness did Corbridge show? *Rubric:* 3 = weak ownership because staff assume the provider handles everything;; 2 = ownership;; 1 = none;; 0 = none.
+- **EX100 — Model difference.** How do the two organisations' IT models differ? *Rubric:* 3 = managed service provider versus in-house IT lead;; 2 = models;; 1 = vague;; 0 = none.
+- **EX101 — Incident counts.** Why avoid comparing raw incident counts? *Rubric:* 3 = reporting cultures differ;; 2 = culture;; 1 = vague;; 0 = none.
+- **EX102 — Corbridge weakness.** What weakness did Corbridge show? *Rubric:* 3 = weak ownership because staff assume the provider handles everything;; 2 = ownership;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1692,9 +1692,9 @@ Before-after comparisons confound time. Surveys measure perception.
 
 ### Exercises
 
-- **EX103 — Design elements.** What four changes does the redesign include? *Rubric:* 3 = shorter plain lists, role guide, better timing, leaver list;; 2 = four;; 1 = none;; 0 = none.
-- **EX104 — Interpretation risk.** Why might rights removed fall for reasons unrelated to the design? *Rubric:* 3 = earlier reviews already cleaned up access;; 2 = prior cleanup;; 1 = none;; 0 = none.
-- **EX105 — Safety commitment.** What safeguards Elmfield's control during the project? *Rubric:* 3 = keeping the old process available if the new one fails;; 2 = fallback;; 1 = none;; 0 = none.
+- **EX103 — Design elements.** What four changes does the redesign include? *Rubric:* 3 = shorter plain lists, role guide, better timing, leaver list;; 2 = four;; 1 = vague;; 0 = none.
+- **EX104 — Interpretation risk.** Why might rights removed fall for reasons unrelated to the design? *Rubric:* 3 = earlier reviews already cleaned up access;; 2 = prior cleanup;; 1 = vague;; 0 = none.
+- **EX105 — Safety commitment.** What safeguards Elmfield's control during the project? *Rubric:* 3 = keeping the old process available if the new one fails;; 2 = fallback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1736,9 +1736,9 @@ Volunteers change often. Simple guidance omits risks.
 
 ### Exercises
 
-- **EX106 — Shared account fix.** What replaced the shared email account? *Rubric:* 3 = individual accounts for each member;; 2 = own accounts;; 1 = none;; 0 = none.
+- **EX106 — Shared account fix.** What replaced the shared email account? *Rubric:* 3 = individual accounts for each member;; 2 = own accounts;; 1 = vague;; 0 = none.
 - **EX107 — Steps adopted.** How many guide steps were adopted immediately? *Rubric:* 3 = four of five;; 2 = 4;; 1 = 5;; 0 = none.
-- **EX108 — Volunteer boundary.** Why did Sofia teach members instead of doing the work herself? *Rubric:* 3 = to build capacity, not dependence;; 2 = capacity;; 1 = none;; 0 = none.
+- **EX108 — Volunteer boundary.** Why did Sofia teach members instead of doing the work herself? *Rubric:* 3 = to build capacity, not dependence;; 2 = capacity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1781,8 +1781,8 @@ Rankings are general guides. Feedback can be too polite to help.
 ### Exercises
 
 - **EX109 — Weakest evidence.** Which evidence types rank lowest? *Rubric:* 3 = owner statements and questionnaires;; 2 = statements;; 1 = tests;; 0 = none.
-- **EX110 — Phishing alternatives.** What else could explain fewer reported suspicious emails? *Rubric:* 3 = better filtering or less reporting;; 2 = alternatives;; 1 = none;; 0 = none.
-- **EX111 — Scope correction.** How did Sofia revise her backup claim? *Rubric:* 3 = limited it to the file share;; 2 = scope;; 1 = none;; 0 = none.
+- **EX110 — Phishing alternatives.** What else could explain fewer reported suspicious emails? *Rubric:* 3 = better filtering or less reporting;; 2 = alternatives;; 1 = vague;; 0 = none.
+- **EX111 — Scope correction.** How did Sofia revise her backup claim? *Rubric:* 3 = limited it to the file share;; 2 = scope;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1824,9 +1824,9 @@ Mid-course fixes complicate evaluation. One quarter is a short trial.
 
 ### Exercises
 
-- **EX112 — Question log.** Why does Sofia log managers' questions? *Rubric:* 3 = they reveal unclear parts of the design;; 2 = clarity;; 1 = none;; 0 = none.
-- **EX113 — Clarified permission.** Which permission description was clarified? *Rubric:* 3 = case escalation;; 2 = case escalation;; 1 = none;; 0 = none.
-- **EX114 — Dual definitions.** Why record completion under both definitions? *Rubric:* 3 = to compare fairly with previous quarters;; 2 = comparability;; 1 = none;; 0 = none.
+- **EX112 — Question log.** Why does Sofia log managers' questions? *Rubric:* 3 = they reveal unclear parts of the design;; 2 = clarity;; 1 = vague;; 0 = none.
+- **EX113 — Clarified permission.** Which permission description was clarified? *Rubric:* 3 = case escalation;; 2 = case escalation, without explanation;; 1 = vague;; 0 = none.
+- **EX114 — Dual definitions.** Why record completion under both definitions? *Rubric:* 3 = to compare fairly with previous quarters;; 2 = comparability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1868,9 +1868,9 @@ Small samples and observation effects limit conclusions. Surveys are subjective.
 
 ### Exercises
 
-- **EX115 — Completion change.** How did completion by the deadline change? *Rubric:* 3 = from eight of twelve to eleven of twelve;; 2 = improved;; 1 = none;; 0 = none.
-- **EX116 — Median change.** How did median days to complete change? *Rubric:* 3 = from fourteen to six;; 2 = faster;; 1 = none;; 0 = none.
-- **EX117 — Cause caution.** Why can Sofia not claim the redesign caused the improvement? *Rubric:* 3 = quieter quarter and observation effects;; 2 = alternatives;; 1 = none;; 0 = none.
+- **EX115 — Completion change.** How did completion by the deadline change? *Rubric:* 3 = from eight of twelve to eleven of twelve;; 2 = improved;; 1 = vague;; 0 = none.
+- **EX116 — Median change.** How did median days to complete change? *Rubric:* 3 = from fourteen to six;; 2 = faster;; 1 = vague;; 0 = none.
+- **EX117 — Cause caution.** Why can Sofia not claim the redesign caused the improvement? *Rubric:* 3 = quieter quarter and observation effects;; 2 = alternatives;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1912,9 +1912,9 @@ Reflection can be selective. One organisation limits generality.
 
 ### Exercises
 
-- **EX118 — Thesis sources.** Which research paper on participation does Sofia cite? *Rubric:* 3 = Spears and Barki (2010);; 2 = Spears;; 1 = none;; 0 = none.
-- **EX119 — Bias answer.** How did Sofia answer the examiners on bias? *Rubric:* 3 = reflexive notes and a second coder;; 2 = reflexivity;; 1 = none;; 0 = none.
-- **EX120 — Board suggestion.** What did Sofia suggest for repairs contractors? *Rubric:* 3 = a pilot of the approach;; 2 = pilot;; 1 = none;; 0 = none.
+- **EX118 — Thesis sources.** Which research paper on participation does Sofia cite? *Rubric:* 3 = Spears and Barki (2010);; 2 = Spears;; 1 = vague;; 0 = none.
+- **EX119 — Bias answer.** How did Sofia answer the examiners on bias? *Rubric:* 3 = reflexive notes and a second coder;; 2 = reflexivity;; 1 = vague;; 0 = none.
+- **EX120 — Board suggestion.** What did Sofia suggest for repairs contractors? *Rubric:* 3 = a pilot of the approach;; 2 = pilot;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

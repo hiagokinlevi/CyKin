@@ -363,7 +363,7 @@ Um APN privado não é criptografia; as redes internas das operadoras estão for
 ### Exercícios
 
 - **EX021 — O registro da opção rejeitada.** Escreva a entrada de rejeição da alternativa 3. *Rubrica:* 3 = motivo com evidência e condições para reconsideração; 2 = só o motivo; 1 = "não escolhida"; 0 = nenhum.
-- **EX022 — Pressuposto de confiança num APN privado.** Declare o pressuposto de confiança do qual a alternativa 1 depende. *Rubrica:* 3 = a operadora isola o tráfego do APN e gerencia o acesso corretamente; 2 = vago; 1 = nenhum; 0 = nenhum.
+- **EX022 — Pressuposto de confiança num APN privado.** Declare o pressuposto de confiança do qual a alternativa 1 depende. *Rubrica:* 3 = a operadora isola o tráfego do APN e gerencia o acesso corretamente; 2 = vago; 1 = tentativa mínima; 0 = nenhum.
 - **EX023 — Custo de ciclo de vida das VPNs nas RTUs.** Liste duas tarefas recorrentes que a alternativa 2 acrescenta. *Rubrica:* 3 = renovação/rotação de certificados, correção do firmware dos roteadores (ou manutenção do concentrador); 2 = uma; 1 = tarefas pontuais; 0 = nenhum.
 - **EX024 — Justificar uma solução híbrida.** Justifique aplicar a alternativa 2 apenas a seis estações. *Rubrica:* 3 = classificação por consequência, custo proporcional ao risco; 2 = parcial; 1 = só o custo; 0 = nenhum.
 - **EX025 — Descrição do conduíte.** Descreva o conduíte da alternativa 2 na linguagem de zonas e conduítes. *Rubrica:* 3 = conduíte de cada zona de estação elevatória pelo túnel IPsec até o concentrador na DMZ e depois à zona do SCADA, com os controles declarados; 2 = parcial; 1 = "VPN"; 0 = nenhum.

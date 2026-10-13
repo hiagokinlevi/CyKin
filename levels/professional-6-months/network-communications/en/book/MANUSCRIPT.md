@@ -76,7 +76,7 @@ Describing risks only in technical terms makes it harder for managers to act.
 
 - **EX001 — Law firm integrity.** Give an integrity concern specific to a law firm. *Rubric:* 3 = altered documents or instructions harming a case;; 2 = altered files;; 1 = generic;; 0 = none.
 - **EX002 — Approach steps.** List the five steps of Sam's working approach. *Rubric:* 3 = scope, evidence, smallest change, verify, record;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX003 — Support background value.** How does Grace's support background help? *Rubric:* 3 = understands users, tickets and disruption cost;; 2 = users;; 1 = none;; 0 = none.
+- **EX003 — Support background value.** How does Grace's support background help? *Rubric:* 3 = understands users, tickets and disruption cost;; 2 = users;; 1 = vague;; 0 = none.
 - **EX004 — Citing guidance.** Why cite specific guidance for recommendations? *Rubric:* 3 = easier to accept and check, not personal preference;; 2 = credibility;; 1 = required;; 0 = none.
 - **EX005 — Availability example.** Give an availability need at Oakline. *Rubric:* 3 = reaching files and email before court deadlines;; 2 = deadlines;; 1 = generic;; 0 = none.
 
@@ -129,9 +129,9 @@ Ranking risks without the business's input misses factors such as insurer requir
 ### Exercises
 
 - **EX006 — Worst outcome question.** What did Grace ask each stakeholder? *Rubric:* 3 = the worst outcome for them;; 2 = worst case;; 1 = their job;; 0 = none.
-- **EX007 — Printer gap.** What gap did Grace find at one office? *Rubric:* 3 = guest wireless shares network with confidential printers;; 2 = guest-printer;; 1 = none;; 0 = none.
-- **EX008 — Insurer effect.** How did the insurer affect priorities? *Rubric:* 3 = asked about MFA, raising its priority;; 2 = MFA up;; 1 = none;; 0 = none.
-- **EX009 — Change constraint.** Name one constraint on changes at Oakline. *Rubric:* 3 = avoid working hours or busy court periods;; 2 = one;; 1 = none;; 0 = none.
+- **EX007 — Printer gap.** What gap did Grace find at one office? *Rubric:* 3 = guest wireless shares network with confidential printers;; 2 = guest-printer;; 1 = vague;; 0 = none.
+- **EX008 — Insurer effect.** How did the insurer affect priorities? *Rubric:* 3 = asked about MFA, raising its priority;; 2 = MFA up;; 1 = vague;; 0 = none.
+- **EX009 — Change constraint.** Name one constraint on changes at Oakline. *Rubric:* 3 = avoid working hours or busy court periods;; 2 = one;; 1 = vague;; 0 = none.
 - **EX010 — Context summary purpose.** Why write the context summary down? *Rubric:* 3 = focus, checking fit, onboarding others;; 2 = focus;; 1 = formality;; 0 = none.
 
 ### Synthesis
@@ -238,7 +238,7 @@ Reviewing only the design document without the actual configuration misses drift
 
 - **EX016 — Review comparison.** What two things does a design review compare? *Rubric:* 3 = design with good practice and with actual configuration;; 2 = both;; 1 = one;; 0 = none.
 - **EX017 — Rule issues.** List the three rule issues found. *Rubric:* 3 = staff to server management, guest to printers, supplier rule without expiry;; 2 = two;; 1 = one;; 0 = none.
-- **EX018 — Remote access gap.** What remote access gap did Grace find? *Rubric:* 3 = passwords only, no second factor;; 2 = no MFA;; 1 = none;; 0 = none.
+- **EX018 — Remote access gap.** What remote access gap did Grace find? *Rubric:* 3 = passwords only, no second factor;; 2 = no MFA;; 1 = vague;; 0 = none.
 - **EX019 — Review table columns.** List the review table's columns. *Rubric:* 3 = finding, evidence, risk, recommendation, owner;; 2 = four;; 1 = fewer;; 0 = none.
 - **EX020 — Acknowledging strengths.** Why include strengths in the review? *Rubric:* 3 = easier acceptance, shows understanding;; 2 = balance;; 1 = politeness;; 0 = none.
 
@@ -310,10 +310,10 @@ Ranking alerts by tool severity alone overweights low-value assets.
 ### Exercises
 
 - **EX021 — Top alert.** Which alert ranks first, and why? *Rubric:* 3 = admin login from new country on case files, score 9;; 2 = A3;; 1 = A2;; 0 = none.
-- **EX022 — Forwarding rule.** Why is a mass email forwarding rule concerning? *Rubric:* 3 = possible compromise leaking email;; 2 = compromise;; 1 = none;; 0 = none.
-- **EX023 — Blocked event.** Why does a blocked malware callback still need action? *Rubric:* 3 = infected device remains;; 2 = infection;; 1 = none;; 0 = none.
+- **EX022 — Forwarding rule.** Why is a mass email forwarding rule concerning? *Rubric:* 3 = possible compromise leaking email;; 2 = compromise;; 1 = vague;; 0 = none.
+- **EX023 — Blocked event.** Why does a blocked malware callback still need action? *Rubric:* 3 = infected device remains;; 2 = infection;; 1 = vague;; 0 = none.
 - **EX024 — Severity limit.** Why is tool severity not enough to prioritise? *Rubric:* 3 = ignores asset importance;; 2 = context;; 1 = accurate;; 0 = none.
-- **EX025 — Time zone misreading.** What misreading do time zones cause? *Rubric:* 3 = confused event sequence;; 2 = order;; 1 = none;; 0 = none.
+- **EX025 — Time zone misreading.** What misreading do time zones cause? *Rubric:* 3 = confused event sequence;; 2 = order;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -366,7 +366,7 @@ Without escalation criteria, serious events wait in the routine queue.
 - **EX026 — Daily checks.** List three daily routine checks. *Rubric:* 3 = alerts, tunnels, log arrival or help desk queue;; 2 = two;; 1 = one;; 0 = none.
 - **EX027 — Weekly value.** What do weekly checks catch that daily ones miss? *Rubric:* 3 = slow trends like rising denies;; 2 = trends;; 1 = nothing;; 0 = none.
 - **EX028 — Ticket system reuse.** Why use the existing ticket system? *Rubric:* 3 = keeps work visible and fits current practice;; 2 = visibility;; 1 = cheaper;; 0 = none.
-- **EX029 — Escalation criterion.** Give one escalation criterion. *Rubric:* 3 = suspected compromise of case-file account, data leaving, deadline outage;; 2 = one;; 1 = none;; 0 = none.
+- **EX029 — Escalation criterion.** Give one escalation criterion. *Rubric:* 3 = suspected compromise of case-file account, data leaving, deadline outage;; 2 = one;; 1 = vague;; 0 = none.
 - **EX030 — Compliance role.** Who decides on client and regulatory notifications? *Rubric:* 3 = compliance officer;; 2 = compliance;; 1 = IT;; 0 = none.
 
 ### Synthesis
@@ -447,8 +447,8 @@ Approving broad vendor rules to save time creates long-lived exposure.
 - **EX031 — Approved requests.** Which requests are approved as submitted? *Rubric:* 3 = CR1 and CR4;; 2 = two;; 1 = all;; 0 = none.
 - **EX032 — Vendor request.** What should happen to CR2? *Rubric:* 3 = reject, rewrite as specific flows with expiry;; 2 = rewrite;; 1 = approve;; 0 = none.
 - **EX033 — Guest request.** Why is CR5 refused outright? *Rubric:* 3 = guests never reach internal systems;; 2 = guest rule;; 1 = no owner;; 0 = none.
-- **EX034 — Verification test.** Describe post-change verification. *Rubric:* 3 = config matches request, permitted flow works, neighbour denied;; 2 = test;; 1 = none;; 0 = none.
-- **EX035 — Review evidence.** Which study supports reviewing each change? *Rubric:* 3 = Wool 2004 on firewall errors;; 2 = Wool;; 1 = none;; 0 = none.
+- **EX034 — Verification test.** Describe post-change verification. *Rubric:* 3 = config matches request, permitted flow works, neighbour denied;; 2 = test;; 1 = vague;; 0 = none.
+- **EX035 — Review evidence.** Which study supports reviewing each change? *Rubric:* 3 = Wool 2004 on firewall errors;; 2 = Wool;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -499,7 +499,7 @@ Blaming individuals for phishing distracts from control gaps that allowed harm.
 ### Exercises
 
 - **EX036 — Escalation reason.** Why was the event escalated immediately? *Rubric:* 3 = suspected compromise of case-file account;; 2 = criterion;; 1 = severity;; 0 = none.
-- **EX037 — MFA evidence.** What showed multi-factor authentication working? *Rubric:* 3 = admin login denied by MFA;; 2 = admin denied;; 1 = none;; 0 = none.
+- **EX037 — MFA evidence.** What showed multi-factor authentication working? *Rubric:* 3 = admin login denied by MFA;; 2 = admin denied;; 1 = vague;; 0 = none.
 - **EX038 — Forwarded emails.** How many forwarded emails contained client material? *Rubric:* 3 = three of twelve;; 2 = three;; 1 = twelve;; 0 = none.
 - **EX039 — Root cause list.** List the three root causes. *Rubric:* 3 = phishing reached user, no MFA on email, external forwarding allowed;; 2 = two;; 1 = one;; 0 = none.
 - **EX040 — Facts versus inferences.** What did Sam ask Grace to improve? *Rubric:* 3 = separate confirmed facts from inferences;; 2 = clarity;; 1 = nothing;; 0 = none.
@@ -556,7 +556,7 @@ Stating "nothing else happened" when logs cannot show it overstates certainty.
 - **EX042 — Plain language rewrite.** Rewrite "credential compromise via phishing" plainly. *Rubric:* 3 = lawyer entered password on fake page, used by someone else;; 2 = plain;; 1 = jargon;; 0 = none.
 - **EX043 — Uncertainty phrase.** How should Grace describe events logs cannot show? *Rubric:* 3 = "we have no evidence of", not "did not happen";; 2 = hedged;; 1 = certain;; 0 = none.
 - **EX044 — Sensitive content.** How is sensitive colleague information handled? *Rubric:* 3 = include only what is necessary, need-to-know;; 2 = minimal;; 1 = full;; 0 = none.
-- **EX045 — Report reviewers.** Who reviews the reports before release? *Rubric:* 3 = Sam, Priyanka and compliance officer;; 2 = reviewers;; 1 = none;; 0 = none.
+- **EX045 — Report reviewers.** Who reviews the reports before release? *Rubric:* 3 = Sam, Priyanka and compliance officer;; 2 = reviewers;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -608,7 +608,7 @@ Exempting users from controls to fix device problems leaves the most exposed acc
 
 - **EX046 — Tablet fix.** How was the partner's tablet problem fixed? *Rubric:* 3 = install supported mail app;; 2 = new app;; 1 = exemption;; 0 = none.
 - **EX047 — Exception scope.** What does the forwarding exception cover? *Rubric:* 3 = one mailbox to one destination, owner, review date;; 2 = narrow;; 1 = all;; 0 = none.
-- **EX048 — Quality check.** Give one weekly quality check. *Rubric:* 3 = accounts without MFA, exceptions, rules without owners;; 2 = one;; 1 = none;; 0 = none.
+- **EX048 — Quality check.** Give one weekly quality check. *Rubric:* 3 = accounts without MFA, exceptions, rules without owners;; 2 = one;; 1 = vague;; 0 = none.
 - **EX049 — Mistyped lesson.** What changed after the mistyped destination? *Rubric:* 3 = copy addresses from request, not retype;; 2 = copy;; 1 = nothing;; 0 = none.
 - **EX050 — Exception necessity.** Why are narrow approved exceptions necessary? *Rubric:* 3 = otherwise control removed under pressure;; 2 = usability;; 1 = weakness;; 0 = none.
 
@@ -737,7 +737,7 @@ Portfolios that claim credit for others' work undermine trust.
 - **EX057 — Improvement named.** What would Grace do differently in the investigation? *Rubric:* 3 = check forwarding rules firm-wide sooner;; 2 = check others;; 1 = nothing;; 0 = none.
 - **EX058 — Outcome list.** Name three improvements at Oakline. *Rubric:* 3 = guest isolation, MFA, forwarding approval, change review, routines;; 2 = two;; 1 = one;; 0 = none.
 - **EX059 — Attribution.** Why avoid claiming credit for the IT team's work? *Rubric:* 3 = accuracy, relationships, credibility;; 2 = honesty;; 1 = modesty;; 0 = none.
-- **EX060 — Development item.** Name one item in Grace's development plan. *Rubric:* 3 = cloud email security, labs, reading, practitioners' group;; 2 = one;; 1 = none;; 0 = none.
+- **EX060 — Development item.** Name one item in Grace's development plan. *Rubric:* 3 = cloud email security, labs, reading, practitioners' group;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

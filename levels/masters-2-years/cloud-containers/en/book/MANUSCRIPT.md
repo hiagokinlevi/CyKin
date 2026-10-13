@@ -77,13 +77,13 @@ Searching only for evidence that supports a favoured explanation is confirmation
 
 ### Exercises
 
-- **EX001 — Opening incident.** What happened at Larkspur? *Rubric:* 3 = console-made bucket public 9 days; 2 = partial; 1 = none; 0 = none.
-- **EX002 — Two explanations.** What are the competing explanations? *Rubric:* 3 = console changes vs weak IaC defaults; 2 = partial; 1 = none; 0 = none.
-- **EX003 — The question.** State Lucas's question. *Rubric:* 3 = console more likely to expose than reviewed IaC, and why; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Exposure term.** How is exposure defined? *Rubric:* 3 = readable without authentication; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Opening incident.** What happened at Larkspur? *Rubric:* 3 = console-made bucket public 9 days; 2 = partial; 1 = vague; 0 = none.
+- **EX002 — Two explanations.** What are the competing explanations? *Rubric:* 3 = console changes vs weak IaC defaults; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — The question.** State Lucas's question. *Rubric:* 3 = console more likely to expose than reviewed IaC, and why; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Exposure term.** How is exposure defined? *Rubric:* 3 = readable without authentication; 2 = partial; 1 = vague; 0 = none.
 - **EX005 — Search record.** What is recorded about the search? *Rubric:* 3 = strings, dates, counts, decisions; 2 = three; 1 = one; 0 = none.
-- **EX006 — Reinstated papers.** Why were two papers reinstated? *Rubric:* 3 = avoid confirmation bias; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Customer side.** Whose responsibility are storage access settings? *Rubric:* 3 = customer; 2 = partial; 1 = none; 0 = none.
+- **EX006 — Reinstated papers.** Why were two papers reinstated? *Rubric:* 3 = avoid confirmation bias; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Customer side.** Whose responsibility are storage access settings? *Rubric:* 3 = customer; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -163,13 +163,13 @@ Absence of use in a window is not proof a permission is unneeded.
 
 ### Exercises
 
-- **EX008 — RBAC idea.** What is the core RBAC idea? *Rubric:* 3 = permissions attach to roles; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Lab share.** What share of permissions went unused? *Rubric:* 3 = 4/11, 36%; 2 = partial; 1 = none; 0 = none.
-- **EX010 — analytics-job.** Which permissions did analytics-job not use? *Rubric:* 3 = db.admin, storage.write; 2 = partial; 1 = none; 0 = none.
-- **EX011 — Why storage.write.** Why does analytics-job's unused storage.write matter? *Rubric:* 3 = could change bucket settings; 2 = partial; 1 = none; 0 = none.
-- **EX012 — ZTA for storage.** What does zero trust mean for storage? *Rubric:* 3 = private by default, named identities; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Peer challenge.** What did peers challenge? *Rubric:* 3 = rare tasks need unused permissions; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Response.** How did Lucas respond? *Rubric:* 3 = review with owner, not auto-remove; 2 = partial; 1 = none; 0 = none.
+- **EX008 — RBAC idea.** What is the core RBAC idea? *Rubric:* 3 = permissions attach to roles; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Lab share.** What share of permissions went unused? *Rubric:* 3 = 4/11, 36%; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — analytics-job.** Which permissions did analytics-job not use? *Rubric:* 3 = db.admin, storage.write; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — Why storage.write.** Why does analytics-job's unused storage.write matter? *Rubric:* 3 = could change bucket settings; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — ZTA for storage.** What does zero trust mean for storage? *Rubric:* 3 = private by default, named identities; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Peer challenge.** What did peers challenge? *Rubric:* 3 = rare tasks need unused permissions; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Response.** How did Lucas respond? *Rubric:* 3 = review with owner, not auto-remove; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -227,12 +227,12 @@ Observational data show association; explanations need careful argument and subg
 
 ### Exercises
 
-- **EX015 — Why observational.** Why is the design observational? *Rubric:* 3 = cannot randomise change methods; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Why observational.** Why is the design observational? *Rubric:* 3 = cannot randomise change methods; 2 = partial; 1 = vague; 0 = none.
 - **EX016 — Confounders.** Name three possible confounders. *Rubric:* 3 = time pressure, team, hour, resource type; 2 = two; 1 = one; 0 = none.
-- **EX017 — Pseudonymising.** What happens to engineer identities? *Rubric:* 3 = pseudonymised; team-level reports; 2 = partial; 1 = none; 0 = none.
+- **EX017 — Pseudonymising.** What happens to engineer identities? *Rubric:* 3 = pseudonymised; team-level reports; 2 = partial; 1 = vague; 0 = none.
 - **EX018 — Pre-registration.** What was pre-registered? *Rubric:* 3 = hypotheses, primary comparison, subgroups; 2 = two; 1 = one; 0 = none.
 - **EX019 — Primary result.** What is the primary result measure? *Rubric:* 3 = proportion exposing by origin, risk ratio, chi-square; 2 = two; 1 = one; 0 = none.
-- **EX020 — Small teams.** How are small teams protected? *Rubric:* 3 = merge under 5 into other; 2 = partial; 1 = none; 0 = none.
+- **EX020 — Small teams.** How are small teams protected? *Rubric:* 3 = merge under 5 into other; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -290,12 +290,12 @@ Supporting one explanation does not rule out others; look for the pattern that w
 
 ### Exercises
 
-- **EX021 — Explanation A.** State explanation A's prediction. *Rubric:* 3 = higher console rate within teams and hours; 2 = partial; 1 = none; 0 = none.
-- **EX022 — Explanation B.** What does explanation B predict? *Rubric:* 3 = clustering by template; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Explanation C.** What does C predict? *Rubric:* 3 = exposures where many identities have admin rights; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Human error.** Why is "human error" alone weak? *Rubric:* 3 = predicts nothing; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Control variable.** What control variable was added? *Rubric:* 3 = identity breadth; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Both true.** Can A and B both be true? *Rubric:* 3 = yes; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Explanation A.** State explanation A's prediction. *Rubric:* 3 = higher console rate within teams and hours; 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Explanation B.** What does explanation B predict? *Rubric:* 3 = clustering by template; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Explanation C.** What does C predict? *Rubric:* 3 = exposures where many identities have admin rights; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Human error.** Why is "human error" alone weak? *Rubric:* 3 = predicts nothing; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Control variable.** What control variable was added? *Rubric:* 3 = identity breadth; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Both true.** Can A and B both be true? *Rubric:* 3 = yes; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -378,10 +378,10 @@ Changing measures after seeing main data is a source of bias; change them only a
 
 - **EX027 — Lab public.** Which buckets were public? *Rubric:* 3 = marketing-assets, tmp-export-0412, partner-drop; 2 = two; 1 = one; 0 = none.
 - **EX028 — tmp-export.** What issues did tmp-export-0412 have? *Rubric:* 3 = public, unencrypted, no logs; 2 = two; 1 = one; 0 = none.
-- **EX029 — Revised measure.** How was exposure redefined? *Rubric:* 3 = unintended public access; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Mobile app.** What labelling issue was found? *Rubric:* 3 = mobile app console origin label; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Framework links.** Which frameworks do checks align with? *Rubric:* 3 = CIS Benchmarks, CSA CCM v4; 2 = partial; 1 = none; 0 = none.
-- **EX032 — When to change measures.** When may measures change? *Rubric:* 3 = after pilots, before main data, logged; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Revised measure.** How was exposure redefined? *Rubric:* 3 = unintended public access; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Mobile app.** What labelling issue was found? *Rubric:* 3 = mobile app console origin label; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Framework links.** Which frameworks do checks align with? *Rubric:* 3 = CIS Benchmarks, CSA CCM v4; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — When to change measures.** When may measures change? *Rubric:* 3 = after pilots, before main data, logged; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -459,12 +459,12 @@ A small p-value shows the difference is unlikely by chance, not that it is large
 
 ### Exercises
 
-- **EX033 — Rates.** What were the exposure rates? *Rubric:* 3 = IaC 1.0%, console 4.5%; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Statistics.** What were the chi-square and risk ratio? *Rubric:* 3 = 23.1, RR 4.5; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Template clustering.** How many IaC exposures came from two templates? *Rubric:* 3 = 9 of 12; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Identity finding.** What did identity breadth show? *Rubric:* 3 = >10 admins higher rates both origins; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Rates.** What were the exposure rates? *Rubric:* 3 = IaC 1.0%, console 4.5%; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Statistics.** What were the chi-square and risk ratio? *Rubric:* 3 = 23.1, RR 4.5; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Template clustering.** How many IaC exposures came from two templates? *Rubric:* 3 = 9 of 12; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Identity finding.** What did identity breadth show? *Rubric:* 3 = >10 admins higher rates both origins; 2 = partial; 1 = vague; 0 = none.
 - **EX037 — Remedies.** Match each explanation to a remedy. *Rubric:* 3 = guardrails, template fixes, fewer admins; 2 = two; 1 = one; 0 = none.
-- **EX038 — p-value meaning.** What does the small p-value show? *Rubric:* 3 = unlikely by chance, not size or cause; 2 = partial; 1 = none; 0 = none.
+- **EX038 — p-value meaning.** What does the small p-value show? *Rubric:* 3 = unlikely by chance, not size or cause; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -527,11 +527,11 @@ Recommendations framed as findings mislead readers about certainty.
 ### Exercises
 
 - **EX039 — Limitations.** Name three limitations. *Rubric:* 3 = one org/year, logging accuracy, register, no access data; 2 = two; 1 = one; 0 = none.
-- **EX040 — Findings vs recommendations.** How do findings differ from recommendations? *Rubric:* 3 = data vs judgement; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Recommendations.** List two recommendations. *Rubric:* 3 = account-level block, template fixes, fewer admins, private export; 2 = one; 1 = none; 0 = none.
-- **EX042 — Figures.** How are figures organised? *Rubric:* 3 = one per explanation, same scale; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Overclaiming.** How was the overclaim fixed? *Rubric:* 3 = expected to reduce; test later; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Exposure vs access.** Why is exposure not access? *Rubric:* 3 = data may not have been read; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Findings vs recommendations.** How do findings differ from recommendations? *Rubric:* 3 = data vs judgement; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Recommendations.** List two recommendations. *Rubric:* 3 = account-level block, template fixes, fewer admins, private export; 2 = one; 1 = vague; 0 = none.
+- **EX042 — Figures.** How are figures organised? *Rubric:* 3 = one per explanation, same scale; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Overclaiming.** How was the overclaim fixed? *Rubric:* 3 = expected to reduce; test later; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Exposure vs access.** Why is exposure not access? *Rubric:* 3 = data may not have been read; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -593,12 +593,12 @@ A before-after improvement may reflect other changes too; note them.
 
 ### Exercises
 
-- **EX045 — Preparation.** How did Lucas prepare? *Rubric:* 3 = reran scripts on clean machine; 2 = partial; 1 = none; 0 = none.
-- **EX046 — Chi-square check.** Why was chi-square appropriate? *Rubric:* 3 = expected counts over five; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Examiner suggestion.** What did the examiner suggest? *Rubric:* 3 = multilevel models; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Follow-up rates.** What were follow-up rates? *Rubric:* 3 = console 1.2%, IaC 0.3%; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Before-after limit.** What limits the follow-up? *Rubric:* 3 = other changes may explain; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Sharing.** What is never published? *Rubric:* 3 = engineer or team names; 2 = partial; 1 = none; 0 = none.
+- **EX045 — Preparation.** How did Lucas prepare? *Rubric:* 3 = reran scripts on clean machine; 2 = partial; 1 = vague; 0 = none.
+- **EX046 — Chi-square check.** Why was chi-square appropriate? *Rubric:* 3 = expected counts over five; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Examiner suggestion.** What did the examiner suggest? *Rubric:* 3 = multilevel models; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Follow-up rates.** What were follow-up rates? *Rubric:* 3 = console 1.2%, IaC 0.3%; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Before-after limit.** What limits the follow-up? *Rubric:* 3 = other changes may explain; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Sharing.** What is never published? *Rubric:* 3 = engineer or team names; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

@@ -73,8 +73,8 @@ Treating security as a separate job from support leads to setups that must later
 
 - **EX001 — Support tasks and security.** Pick two support tasks and explain how each affects security. *Rubric:* 3 = two tasks with clear effects;; 2 = two tasks;; 1 = one;; 0 = none.
 - **EX002 — Case trigger.** What event started the placement project and what did it reveal? *Rubric:* 3 = adware install via admin rights, revealing broad admin access;; 2 = adware;; 1 = vague;; 0 = none.
-- **EX003 — Placement boundaries.** State two limits on Nadia's work. *Rubric:* 3 = no client files, no probing tools;; 2 = one;; 1 = none;; 0 = none.
-- **EX004 — Unknown router password.** Why is the missing router admin password a security concern? *Rubric:* 3 = cannot update or check settings, previous supplier control;; 2 = concern;; 1 = none;; 0 = none.
+- **EX003 — Placement boundaries.** State two limits on Nadia's work. *Rubric:* 3 = no client files, no probing tools;; 2 = one;; 1 = vague;; 0 = none.
+- **EX004 — Unknown router password.** Why is the missing router admin password a security concern? *Rubric:* 3 = cannot update or check settings, previous supplier control;; 2 = concern;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -124,8 +124,8 @@ Changing firmware settings without a plan can stop a PC starting; Nadia only rec
 
 ### Exercises
 
-- **EX005 — Secure Boot purpose.** What does Secure Boot check? *Rubric:* 3 = signed trusted startup software;; 2 = startup;; 1 = none;; 0 = none.
-- **EX006 — Firmware password value.** Explain why a firmware password helps. *Rubric:* 3 = prevents changing boot settings to bypass Windows;; 2 = protection;; 1 = none;; 0 = none.
+- **EX005 — Secure Boot purpose.** What does Secure Boot check? *Rubric:* 3 = signed trusted startup software;; 2 = startup;; 1 = vague;; 0 = none.
+- **EX006 — Firmware password value.** Explain why a firmware password helps. *Rubric:* 3 = prevents changing boot settings to bypass Windows;; 2 = protection;; 1 = vague;; 0 = none.
 - **EX007 — Hardware record.** List five details to record per PC. *Rubric:* 3 = all five;; 2 = four;; 1 = fewer;; 0 = none.
 - **EX008 — Disabled TPM.** What should happen with a PC whose TPM is disabled? *Rubric:* 3 = plan to enable before encryption, by IT;; 2 = enable;; 1 = ignore;; 0 = none.
 
@@ -199,10 +199,10 @@ Removing admin rights without offering an alternative leads to frustration and r
 
 ### Exercises
 
-- **EX009 — Daily account choice.** Why should IT staff browse the web from a standard account? *Rubric:* 3 = malicious content runs without admin rights;; 2 = safer;; 1 = none;; 0 = none.
-- **EX010 — UAC difference.** How does UAC behave differently for standard users and administrators? *Rubric:* 3 = password required vs click;; 2 = different;; 1 = none;; 0 = none.
+- **EX009 — Daily account choice.** Why should IT staff browse the web from a standard account? *Rubric:* 3 = malicious content runs without admin rights;; 2 = safer;; 1 = vague;; 0 = none.
+- **EX010 — UAC difference.** How does UAC behave differently for standard users and administrators? *Rubric:* 3 = password required vs click;; 2 = different;; 1 = vague;; 0 = none.
 - **EX011 — Lab reading.** Summarise the lab result. *Rubric:* 3 = 4 of 10 PCs, 5 accounts, names temp;; 2 = counts;; 1 = wrong;; 0 = none.
-- **EX012 — Alternative to admin.** What alternative lets staff install approved tools? *Rubric:* 3 = self-service catalogue;; 2 = IT installs;; 1 = none;; 0 = none.
+- **EX012 — Alternative to admin.** What alternative lets staff install approved tools? *Rubric:* 3 = self-service catalogue;; 2 = IT installs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -252,8 +252,8 @@ Resetting passwords from unverified requests is one of the easiest ways for some
 
 ### Exercises
 
-- **EX013 — Passphrase reasoning.** Why is a long passphrase better than a short complex password? *Rubric:* 3 = harder to guess, easier to remember;; 2 = longer;; 1 = none;; 0 = none.
-- **EX014 — MFA protection.** What does MFA protect against when a password is phished? *Rubric:* 3 = attacker lacks second factor;; 2 = protection;; 1 = none;; 0 = none.
+- **EX013 — Passphrase reasoning.** Why is a long passphrase better than a short complex password? *Rubric:* 3 = harder to guess, easier to remember;; 2 = longer;; 1 = vague;; 0 = none.
+- **EX014 — MFA protection.** What does MFA protect against when a password is phished? *Rubric:* 3 = attacker lacks second factor;; 2 = protection;; 1 = vague;; 0 = none.
 - **EX015 — Reset steps.** List the steps of a safe password reset. *Rubric:* 3 = verify by known channel, temporary password, forced change, log;; 2 = three;; 1 = fewer;; 0 = none.
 - **EX016 — Shared accounts.** How should a shared team login be stored? *Rubric:* 3 = shared vault with access control;; 2 = password manager;; 1 = spreadsheet;; 0 = none.
 
@@ -322,10 +322,10 @@ A PC reported as late may not be faulty; it may just be switched off. Check befo
 
 ### Exercises
 
-- **EX017 — Deadline purpose.** Why set an update restart deadline? *Rubric:* 3 = prevents indefinite postponement;; 2 = forces;; 1 = none;; 0 = none.
+- **EX017 — Deadline purpose.** Why set an update restart deadline? *Rubric:* 3 = prevents indefinite postponement;; 2 = forces;; 1 = vague;; 0 = none.
 - **EX018 — Late PC causes.** Name three reasons a PC might be late on updates. *Rubric:* 3 = three distinct;; 2 = two;; 1 = one;; 0 = none.
 - **EX019 — Lab reading.** What does the lab show? *Rubric:* 3 = 25 of 30, five late, oldest 60;; 2 = counts;; 1 = wrong;; 0 = none.
-- **EX020 — Spare PCs.** How should spare PCs be kept updated? *Rubric:* 3 = switched on regularly to update;; 2 = update;; 1 = none;; 0 = none.
+- **EX020 — Spare PCs.** How should spare PCs be kept updated? *Rubric:* 3 = switched on regularly to update;; 2 = update;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -375,10 +375,10 @@ Installing a second antivirus usually causes conflicts and can disable the manag
 
 ### Exercises
 
-- **EX021 — Coverage check.** How do you find PCs without protection? *Rubric:* 3 = compare console with inventory;; 2 = console;; 1 = none;; 0 = none.
-- **EX022 — Second antivirus.** Why avoid installing a second antivirus? *Rubric:* 3 = conflicts, disables managed one;; 2 = conflicts;; 1 = none;; 0 = none.
+- **EX021 — Coverage check.** How do you find PCs without protection? *Rubric:* 3 = compare console with inventory;; 2 = console;; 1 = vague;; 0 = none.
+- **EX022 — Second antivirus.** Why avoid installing a second antivirus? *Rubric:* 3 = conflicts, disables managed one;; 2 = conflicts;; 1 = vague;; 0 = none.
 - **EX023 — Unremoved threat.** What do you do when a threat is not removed? *Rubric:* 3 = disconnect and tell supplier;; 2 = tell supplier;; 1 = ignore;; 0 = none.
-- **EX024 — PUA setting.** Which Defender setting would have stopped the adware? *Rubric:* 3 = potentially unwanted application protection;; 2 = a setting;; 1 = none;; 0 = none.
+- **EX024 — PUA setting.** Which Defender setting would have stopped the adware? *Rubric:* 3 = potentially unwanted application protection;; 2 = a setting;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -428,8 +428,8 @@ A hash only helps if it comes from the vendor's official page, not the same down
 
 ### Exercises
 
-- **EX025 — Bundled software.** Why are third-party download sites risky? *Rubric:* 3 = bundled unwanted programs;; 2 = risky;; 1 = none;; 0 = none.
-- **EX026 — Hash check.** What does a matching SHA-256 hash show? *Rubric:* 3 = file unchanged from vendor's;; 2 = integrity;; 1 = none;; 0 = none.
+- **EX025 — Bundled software.** Why are third-party download sites risky? *Rubric:* 3 = bundled unwanted programs;; 2 = risky;; 1 = vague;; 0 = none.
+- **EX026 — Hash check.** What does a matching SHA-256 hash show? *Rubric:* 3 = file unchanged from vendor's;; 2 = integrity;; 1 = vague;; 0 = none.
 - **EX027 — Approval roles.** Who approves software, and what does each check? *Rubric:* 3 = manager need, supplier source/licence;; 2 = both;; 1 = one;; 0 = none.
 - **EX028 — CIS link.** Which CIS Control covers software inventory? *Rubric:* 3 = Control 2 with description;; 2 = 2;; 1 = wrong;; 0 = none.
 
@@ -490,9 +490,9 @@ Turning off remote desktop everywhere without asking would have stopped one part
 ### Exercises
 
 - **EX029 — Setting choice.** Name four of the ten settings. *Rubric:* 3 = four correct;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX030 — Macro conflict.** How was the macro conflict solved without weakening the setting? *Rubric:* 3 = trusted location;; 2 = solved;; 1 = none;; 0 = none.
+- **EX030 — Macro conflict.** How was the macro conflict solved without weakening the setting? *Rubric:* 3 = trusted location;; 2 = solved;; 1 = vague;; 0 = none.
 - **EX031 — Exception record.** What does an exception record contain? *Rubric:* 3 = PC, setting, reason, review date;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX032 — Spot checks.** Why spot-check settings directly? *Rubric:* 3 = confirm tool reports;; 2 = check;; 1 = none;; 0 = none.
+- **EX032 — Spot checks.** Why spot-check settings directly? *Rubric:* 3 = confirm tool reports;; 2 = check;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -550,10 +550,10 @@ Keys stored on a sticky note in the laptop bag defeat encryption.
 
 ### Exercises
 
-- **EX033 — Why laptops first.** Why prioritise laptops for encryption? *Rubric:* 3 = leave office, theft risk;; 2 = travel;; 1 = none;; 0 = none.
-- **EX034 — Status command.** Which command shows BitLocker status? *Rubric:* 3 = manage-bde -status;; 2 = manage-bde;; 1 = none;; 0 = none.
-- **EX035 — Key request.** How should a recovery key request be handled? *Rubric:* 3 = verify identity, read key, log;; 2 = verify;; 1 = none;; 0 = none.
-- **EX036 — Bad storage.** Why is a written key in the laptop bag a problem? *Rubric:* 3 = thief gets both;; 2 = insecure;; 1 = none;; 0 = none.
+- **EX033 — Why laptops first.** Why prioritise laptops for encryption? *Rubric:* 3 = leave office, theft risk;; 2 = travel;; 1 = vague;; 0 = none.
+- **EX034 — Status command.** Which command shows BitLocker status? *Rubric:* 3 = manage-bde -status;; 2 = manage-bde;; 1 = vague;; 0 = none.
+- **EX035 — Key request.** How should a recovery key request be handled? *Rubric:* 3 = verify identity, read key, log;; 2 = verify;; 1 = vague;; 0 = none.
+- **EX036 — Bad storage.** Why is a written key in the laptop bag a problem? *Rubric:* 3 = thief gets both;; 2 = insecure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -611,10 +611,10 @@ A backup that has never been restored may not work.
 
 ### Exercises
 
-- **EX037 — Ransomware risk.** Why should backups not be mapped as drives on PCs? *Rubric:* 3 = ransomware can reach them;; 2 = risk;; 1 = none;; 0 = none.
-- **EX038 — Immutable copy.** What does keeping unchangeable versions for 30 days give? *Rubric:* 3 = recovery after ransomware;; 2 = safety;; 1 = none;; 0 = none.
-- **EX039 — Test finding.** What did the monthly restore test reveal? *Rubric:* 3 = excluded folder;; 2 = problem;; 1 = none;; 0 = none.
-- **EX040 — Report check.** How are backup failures noticed? *Rubric:* 3 = flagged report email and weekly review;; 2 = email;; 1 = none;; 0 = none.
+- **EX037 — Ransomware risk.** Why should backups not be mapped as drives on PCs? *Rubric:* 3 = ransomware can reach them;; 2 = risk;; 1 = vague;; 0 = none.
+- **EX038 — Immutable copy.** What does keeping unchangeable versions for 30 days give? *Rubric:* 3 = recovery after ransomware;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX039 — Test finding.** What did the monthly restore test reveal? *Rubric:* 3 = excluded folder;; 2 = problem;; 1 = vague;; 0 = none.
+- **EX040 — Report check.** How are backup failures noticed? *Rubric:* 3 = flagged report email and weekly review;; 2 = email;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -677,9 +677,9 @@ Leaving router remote management open to the internet exposes the office's front
 ### Exercises
 
 - **EX041 — Router actions.** List three router actions taken. *Rubric:* 3 = password, firmware, remote management off;; 2 = two;; 1 = one;; 0 = none.
-- **EX042 — Guest network.** Why separate guest Wi-Fi? *Rubric:* 3 = guests cannot reach server;; 2 = separation;; 1 = none;; 0 = none.
-- **EX043 — Printer defaults.** Why change printer admin passwords? *Rubric:* 3 = defaults are public;; 2 = security;; 1 = none;; 0 = none.
-- **EX044 — Firewall profiles.** Why keep the public firewall profile on? *Rubric:* 3 = protection on untrusted networks;; 2 = safety;; 1 = none;; 0 = none.
+- **EX042 — Guest network.** Why separate guest Wi-Fi? *Rubric:* 3 = guests cannot reach server;; 2 = separation;; 1 = vague;; 0 = none.
+- **EX043 — Printer defaults.** Why change printer admin passwords? *Rubric:* 3 = defaults are public;; 2 = security;; 1 = vague;; 0 = none.
+- **EX044 — Firewall profiles.** Why keep the public firewall profile on? *Rubric:* 3 = protection on untrusted networks;; 2 = safety;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -737,10 +737,10 @@ Remote support tools that connect without user approval can be misused.
 
 ### Exercises
 
-- **EX045 — RDP exposure.** Why never expose remote desktop directly to the internet? *Rubric:* 3 = attacked constantly;; 2 = risky;; 1 = none;; 0 = none.
-- **EX046 — Session consent.** Why should users accept each remote support session? *Rubric:* 3 = prevents unseen access;; 2 = consent;; 1 = none;; 0 = none.
-- **EX047 — Family use.** Why not share work laptops with family? *Rubric:* 3 = data exposure and unwanted software;; 2 = risk;; 1 = none;; 0 = none.
-- **EX048 — Old VPN client.** Why update the VPN client? *Rubric:* 3 = fixes and performance;; 2 = update;; 1 = none;; 0 = none.
+- **EX045 — RDP exposure.** Why never expose remote desktop directly to the internet? *Rubric:* 3 = attacked constantly;; 2 = risky;; 1 = vague;; 0 = none.
+- **EX046 — Session consent.** Why should users accept each remote support session? *Rubric:* 3 = prevents unseen access;; 2 = consent;; 1 = vague;; 0 = none.
+- **EX047 — Family use.** Why not share work laptops with family? *Rubric:* 3 = data exposure and unwanted software;; 2 = risk;; 1 = vague;; 0 = none.
+- **EX048 — Old VPN client.** Why update the VPN client? *Rubric:* 3 = fixes and performance;; 2 = update;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -808,8 +808,8 @@ Blaming staff discourages reporting, so problems are found later.
 
 - **EX049 — After a click.** List three actions after a password is entered on a fake page. *Rubric:* 3 = reset, check forwarding rules, check MFA;; 2 = two;; 1 = one;; 0 = none.
 - **EX050 — Safe inspection.** How should Nadia inspect a reported email safely? *Rubric:* 3 = headers and links, no attachments;; 2 = carefully;; 1 = open;; 0 = none.
-- **EX051 — Seasonal risk.** Why mention tax season in awareness tips? *Rubric:* 3 = targeted phishing then;; 2 = relevance;; 1 = none;; 0 = none.
-- **EX052 — Blame effect.** Why thank people who report clicks? *Rubric:* 3 = encourages fast reporting;; 2 = nice;; 1 = none;; 0 = none.
+- **EX051 — Seasonal risk.** Why mention tax season in awareness tips? *Rubric:* 3 = targeted phishing then;; 2 = relevance;; 1 = vague;; 0 = none.
+- **EX052 — Blame effect.** Why thank people who report clicks? *Rubric:* 3 = encourages fast reporting;; 2 = nice;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -871,9 +871,9 @@ Handing a PC to a new user without reset leaves the previous user's files and se
 
 ### Exercises
 
-- **EX053 — Enrolment benefit.** What does automatic enrolment give? *Rubric:* 3 = consistent settings and encryption;; 2 = consistency;; 1 = none;; 0 = none.
-- **EX054 — Reassignment.** Why reset a PC before reassigning? *Rubric:* 3 = remove previous data;; 2 = clean;; 1 = none;; 0 = none.
-- **EX055 — Disposal proof.** What proves secure disposal? *Rubric:* 3 = certificate with serials;; 2 = certificate;; 1 = none;; 0 = none.
+- **EX053 — Enrolment benefit.** What does automatic enrolment give? *Rubric:* 3 = consistent settings and encryption;; 2 = consistency;; 1 = vague;; 0 = none.
+- **EX054 — Reassignment.** Why reset a PC before reassigning? *Rubric:* 3 = remove previous data;; 2 = clean;; 1 = vague;; 0 = none.
+- **EX055 — Disposal proof.** What proves secure disposal? *Rubric:* 3 = certificate with serials;; 2 = certificate;; 1 = vague;; 0 = none.
 - **EX056 — Leaver timing.** When should a leaver's account be disabled? *Rubric:* 3 = last day;; 2 = soon;; 1 = later;; 0 = none.
 
 ### Synthesis
@@ -933,7 +933,7 @@ Undocumented fixes are repeated from scratch next time.
 ### Exercises
 
 - **EX057 — System page.** What goes on a system page? *Rubric:* 3 = four items;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX058 — Ticket quality.** What makes a ticket useful later? *Rubric:* 3 = problem, steps, outcome;; 2 = detail;; 1 = none;; 0 = none.
+- **EX058 — Ticket quality.** What makes a ticket useful later? *Rubric:* 3 = problem, steps, outcome;; 2 = detail;; 1 = vague;; 0 = none.
 - **EX059 — Change fields.** List change record fields. *Rubric:* 3 = date, who, what, why;; 2 = three;; 1 = fewer;; 0 = none.
 - **EX060 — Standard reference.** Which NIST publication covers configuration change control? *Rubric:* 3 = SP 800-128;; 2 = NIST;; 1 = wrong;; 0 = none.
 
@@ -997,10 +997,10 @@ Measuring without recording the method makes comparison unreliable.
 
 ### Exercises
 
-- **EX061 — Project measures.** What two measures did Nadia use? *Rubric:* 3 = admin rights and update status;; 2 = one;; 1 = none;; 0 = none.
-- **EX062 — Baseline values.** State the baseline values. *Rubric:* 3 = 12/30 and 25/30;; 2 = one;; 1 = none;; 0 = none.
-- **EX063 — Method record.** Why record export steps? *Rubric:* 3 = repeatability;; 2 = repeat;; 1 = none;; 0 = none.
-- **EX064 — Approval.** Who approved the plan? *Rubric:* 3 = Lena;; 2 = manager;; 1 = none;; 0 = none.
+- **EX061 — Project measures.** What two measures did Nadia use? *Rubric:* 3 = admin rights and update status;; 2 = one;; 1 = vague;; 0 = none.
+- **EX062 — Baseline values.** State the baseline values. *Rubric:* 3 = 12/30 and 25/30;; 2 = one;; 1 = vague;; 0 = none.
+- **EX063 — Method record.** Why record export steps? *Rubric:* 3 = repeatability;; 2 = repeat;; 1 = vague;; 0 = none.
+- **EX064 — Approval.** Who approved the plan? *Rubric:* 3 = Lena;; 2 = manager;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1066,10 +1066,10 @@ Removing rights before the catalogue was ready would have caused complaints.
 
 ### Exercises
 
-- **EX065 — Results.** State both results. *Rubric:* 3 = 12→0 and 25→29;; 2 = one;; 1 = none;; 0 = none.
-- **EX066 — Ordering.** Why set up the catalogue first? *Rubric:* 3 = alternative before removal;; 2 = smoother;; 1 = none;; 0 = none.
+- **EX065 — Results.** State both results. *Rubric:* 3 = 12→0 and 25→29;; 2 = one;; 1 = vague;; 0 = none.
+- **EX066 — Ordering.** Why set up the catalogue first? *Rubric:* 3 = alternative before removal;; 2 = smoother;; 1 = vague;; 0 = none.
 - **EX067 — Remaining PC.** How is the remaining late PC handled? *Rubric:* 3 = reminder;; 2 = followed;; 1 = ignored;; 0 = none.
-- **EX068 — Reaction.** What did staff reaction suggest? *Rubric:* 3 = low disruption;; 2 = fine;; 1 = none;; 0 = none.
+- **EX068 — Reaction.** What did staff reaction suggest? *Rubric:* 3 = low disruption;; 2 = fine;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1125,10 +1125,10 @@ Without a handover, checks stop when the student leaves.
 
 ### Exercises
 
-- **EX069 — Lesson.** State Nadia's main lesson. *Rubric:* 3 = support equals security, explained;; 2 = stated;; 1 = none;; 0 = none.
-- **EX070 — Recommendation.** Give one recommendation with reason. *Rubric:* 3 = justified;; 2 = unjustified;; 1 = none;; 0 = none.
-- **EX071 — Handover target.** Who receives the handover? *Rubric:* 3 = supplier;; 2 = IT;; 1 = none;; 0 = none.
-- **EX072 — Contract.** Why put checks in the supplier contract? *Rubric:* 3 = ensures they happen;; 2 = formal;; 1 = none;; 0 = none.
+- **EX069 — Lesson.** State Nadia's main lesson. *Rubric:* 3 = support equals security, explained;; 2 = stated;; 1 = vague;; 0 = none.
+- **EX070 — Recommendation.** Give one recommendation with reason. *Rubric:* 3 = justified;; 2 = unjustified;; 1 = vague;; 0 = none.
+- **EX071 — Handover target.** Who receives the handover? *Rubric:* 3 = supplier;; 2 = IT;; 1 = vague;; 0 = none.
+- **EX072 — Contract.** Why put checks in the supplier contract? *Rubric:* 3 = ensures they happen;; 2 = formal;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

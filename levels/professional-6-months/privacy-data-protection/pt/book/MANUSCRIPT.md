@@ -617,7 +617,7 @@ Portfólios podem exagerar a contribuição individual; dê o crédito correto a
 - **EX056 — Itens do portfólio.** Cite três itens do portfólio. *Rubrica:* 3 = mapa de dados, análise da retenção, fluxo de acesso, registro, violação, caso ético, solução de problemas, ocultação;; 2 = três;; 1 = um;; 0 = nenhuma.
 - **EX057 — Nota de capa.** O que cada nota de capa explica? *Rubrica:* 3 = o problema, as ações, as evidências e o resultado;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 - **EX058 — Áreas de crescimento.** Que duas áreas de crescimento a Sra. Lin identificou? *Rubrica:* 3 = raciocínio jurídico sobre antecedentes e scripts;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
-- **EX059 — Lacunas restantes.** Cite uma lacuna restante na Halden. *Rubrica:* 3 = contratos de verificação de antecedentes; avisos do artigo 14 da rede profissional;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX059 — Lacunas restantes.** Cite uma lacuna restante na Halden. *Rubrica:* 3 = contratos de verificação de antecedentes; avisos do artigo 14 da rede profissional;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Próximo cargo.** Que cargo a Halden oferece a Marta? *Rubrica:* 3 = coordenadora de privacidade em meio período;; 2 = correta;; 1 = nada;; 0 = nenhuma.
 
 <a id="worked-results"></a>
