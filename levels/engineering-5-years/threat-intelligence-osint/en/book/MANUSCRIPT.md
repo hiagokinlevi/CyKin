@@ -948,7 +948,7 @@ Corroboration only counts if the sources are independent. If partner B simply co
 
 Retention follows agreements and law. Deletion must reach backups within a stated period; "deleted from the UI" is not deletion.
 
-Kofi's design gives each source a retention period from its agreement. A scheduled job removes expired records from the live store, and backups older than the longest period are destroyed on a fixed cycle, so nothing survives longer than allowed. The job writes a log of counts removed per source, which the privacy officer reviews. If a partner asks for deletion, the same log shows when it was done.
+Kofi's design gives each source a retention period from its agreement. A scheduled job removes expired records from the live store, and backups are destroyed on a fixed cycle, so an expired record survives in backup copies for no longer than the stated period. The job writes a log of counts removed per source, which the privacy officer reviews. If a partner asks for deletion, the same log shows when it was done.
 
 ### Practice note — Query patterns
 
@@ -996,7 +996,7 @@ Review is more than reading code. The reviewer runs the tests, checks that the c
 
 CI runs unit tests, property tests and a replay of a synthetic feed through the whole pipeline, comparing outputs with a known-good snapshot. A difference fails the build until explained.
 
-The replay is what made the change in the worked example visible: the snapshot showed exactly how many indicators would stay in blocking. A failing replay is not always a bug. Sometimes the change is intended, and the engineer updates the snapshot with a note explaining why. What matters is that every difference in output is explained before release.
+The replay is what made the change in the worked example visible: the snapshot showed exactly how many indicators would stay in blocking. A failing replay is not always a bug. Sometimes the change is intended, and the engineer updates the snapshot with a note explaining why.
 
 ### 14.3 Dependencies
 
