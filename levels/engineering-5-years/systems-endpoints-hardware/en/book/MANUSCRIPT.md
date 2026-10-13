@@ -2507,6 +2507,8 @@ You will (1) evaluate an application allowlist against a week of executions; (2)
 
 With application control in audit mode for a week, the system logs every program that would have been blocked.
 
+Audit mode changes nothing for patrons: every program still runs, and the log simply records which ones the allowlist would have stopped. Mateo chose the pilot branch and a full week so that weekday and weekend use would both appear. The log records the program name and a count, not who ran it, which keeps the evaluation within the project's privacy rules. The lab summarises a synthetic version of that week.
+
 ### Lab — Lab — allowlist evaluation
 
 ```python
@@ -2533,13 +2535,19 @@ executions 2003, would be blocked 23
 
 Of 2,003 executions, 23 would be blocked: game_setup.exe (6), toolbar_installer.exe (3) and accessibility_reader.exe (14).
 
+The blocked share is small, a little over one execution in a hundred, which tells Mateo that the allowlist already covers almost everything patrons use. The detail matters more than the total, though. Two of the three blocked programs are unwanted, and one is not. Reading the list item by item, rather than accepting a low overall rate as good enough, is what reveals the problem with the reader.
+
 ### 31.3 Interpretation
 
 The game and toolbar installers are exactly what the control should stop. The accessibility reader is a needed tool missing from the list.
 
+The game and toolbar installers match the scenario ranked highest in the threat analysis, so the control is doing its job. The reader is a different matter: fourteen launches in a week means patrons rely on it. Enforcing the list as it stood would have locked those patrons out of the PCs, a harm the ethics chapter warned about. Mateo treats the omission as a defect in the allowlist, not as a patron problem to work around.
+
 ### 31.4 Fix and enforce
 
 The reader is added by publisher signature; another audit week shows only unwanted installers blocked; enforce mode begins.
+
+Adding the reader by publisher signature means future updates from the same publisher will run without new entries. The second audit week is a check that the fix worked and that nothing else was missing; it shows only the unwanted installers. Mateo switches to enforce mode on the pilot branch first, watches the block log for several days and then rolls enforcement out to the other branches in stages.
 
 ### Allowlist design choices
 
@@ -2599,6 +2607,8 @@ You will (1) calculate availability and MTBF; (2) compare before and after self-
 
 In a month, 42 PC failures occurred across 300 PCs. Before self-restore, each took about 18 hours to fix manually; after, about half an hour.
 
+The forty-two failures are the baseline month's figure from the start of the project. Before self-restore, a failed PC waited for the technician's next visit to its branch and then needed manual cleaning, which explains the long repair time. After self-restore, most failures clear at the next restore or with a single rerun at the morning check. Mateo takes both repair times from Fernhill's job records rather than estimating them.
+
 ### Lab — Lab — availability
 
 ```python
@@ -2623,13 +2633,19 @@ MTBF per PC 5143 hours
 
 Downtime falls from 756 to 21 PC-hours; availability rises from 0.9965 to 0.9999. MTBF per PC is about 5,143 hours.
 
+The availability figures look close because both are near one; the downtime in PC-hours shows the real difference much more clearly. Seven hundred and fifty-six PC-hours is like having about a full PC out of service for every working hour of the month. Mateo reports the downtime first for that reason, with availability as a secondary figure. MTBF depends only on the failure count, so it is the same before and after.
+
 ### 32.3 Meaning
 
 Fewer PCs out of service means patrons wait less and staff handle fewer complaints.
 
+At busy times every working PC has a queue, so each PC out of service makes waits longer for everyone. Librarians also spend less time explaining out-of-order signs and calling IT. Mateo connects the downtime figure to the third objective, PCs ready at opening, and to the fourth, less manual effort, since each repair avoided is staff time saved. The result is easier for the board to value than the availability ratio.
+
 ### 32.4 Assumptions
 
 Failure count is assumed unchanged; self-restore may also reduce failures, which would further improve results.
+
+Keeping the failure count fixed isolates the effect of faster repair. In practice, the nightly restore probably prevents some failures as well, such as those caused by unwanted software slowing a PC down. If so, the true improvement is larger than the estimate. Mateo states the assumption plainly so that nobody reads the result as a measured outcome, and plans to measure both failures and repair times after deployment.
 
 ### Definitions
 
@@ -2697,21 +2713,31 @@ You will (1) plan for failures of the design itself; (2) recover from bad images
 
 If a released image breaks PCs, staged release limits impact, and PCs can roll back to the previous signed image.
 
+Staged release means a bad image reaches the lab and one branch before the rest, so a problem found there affects a few dozen PCs at most. Rollback uses the previous signed image, which each PC keeps until the new one has run successfully for a week. Mateo tested rollback on lab PCs with a deliberately faulty synthetic image, and every PC returned to the earlier release at the next restore.
+
 ### 33.2 Firmware updates
 
 NIST SP 800-193 emphasises recovery for firmware. Fernhill keeps vendor recovery tools and tests firmware updates on lab PCs first.
+
+Firmware updates carry more risk than image updates, because a failed one can leave a PC unable to start. Mateo tests each update on a lab PC of the same model, checks that settings such as Secure Boot and the firmware password survive, and keeps the vendor's recovery tool and a known-good firmware file ready before rolling out. Updates go to branches a few PCs at a time.
 
 ### 33.3 Server outage
 
 PCs restore from local protected copies for up to a week without the server.
 
+The local copy came from the first design studio, where a guest asked what would happen if the server failed. A week covers a long outage without forcing PCs out of service. If the server stays down longer, PCs keep restoring from the same copy, but new image releases and their updates stop arriving, so the risk grows over time. The dashboard shows when each PC last reached the server.
+
 ### 33.4 Recovery drills
 
 Each quarter, the team practises rolling back an image on lab PCs.
 
+A drill uses a synthetic faulty image on lab PCs and times each step: noticing the problem, deciding to roll back, carrying out the rollback and confirming the PCs are healthy. The worked example shows what drills reveal. Steps that take longer than expected are improved before the next drill. Records of each drill are kept for audit and to show whether the team is getting faster. Marta reviews every record.
+
 ### 33.5 Human factors
 
 Instructions are short and printed, for use under pressure.
+
+Mateo wrote the procedures for a technician working alone early in the morning with patrons waiting outside. Each step fits on one line, with the expected result beside it. A printed copy sits in each branch's IT cupboard as well as online, since an outage may also affect access to the online version. Librarians tested the instructions and found two unclear steps, which were rewritten before the first drill. Each copy carries a date.
 
 ### Fail-safe design
 
@@ -2779,21 +2805,31 @@ You will (1) integrate the design with library services; (2) manage dependencies
 
 Public PCs must work with the session booking system, the print service and the catalogue.
 
+Each service is run by a different party: the booking system by a vendor, the print service by Fernhill and the catalogue by its supplier. The public PC image must work with all three after every restore. Mateo lists what each service needs from the PC, such as a client program, a stored setting or a network route, so that the image and the restore scope include it.
+
 ### 34.2 Dependencies
 
 Each service is listed with owner, interface and test.
+
+The list shows who to contact when something breaks and which test checks the link. Mateo found that the print service had no named owner at Fernhill before the project; Marta's technician now holds that role. Each entry also records where the service's settings live on the PC, which matters because settings stored in the patron area are wiped every night, as the printing problem later showed. The list is reviewed twice a year.
 
 ### 34.3 End-to-end test
 
 A tester books a session, prints, uses the catalogue and the reader, logs off and confirms restore.
 
+The test follows a real patron's visit from start to finish, using a synthetic library card. It includes the overnight restore and a second session the next morning, because some problems appear only after a reset. Mateo runs it on each hardware model and records each step's result. Any failure stops the release until fixed. A full run takes under an hour, so it fits easily into the release schedule.
+
 ### 34.4 Issues
 
 Printing fails after restore because a printer mapping is stored in the patron area; it is moved to the system image.
 
+After each restore the printer mapping disappeared, so the first patron of the day could not print. The cause was a setting that the print client wrote to the patron's own profile. Moving it to the system image fixed the problem for every session. Mateo then checked the other services for settings stored in the same place and found none, but added the check to the integration test.
+
 ### 34.5 Change coordination
 
 Service owners are told before image releases.
+
+A week's notice gives each owner time to raise concerns and to join the integration test if they wish. Mateo sends a short note with the release date, what changes and the test results so far. Owners also tell Fernhill about their own changes, which go on the shared calendar. Coordination prevents two changes landing on the same night and making a failure hard to diagnose. Marta keeps the calendar up to date.
 
 ### Integration testing schedule
 
@@ -2861,21 +2897,31 @@ You will (1) present the integrated design; (2) respond to expert critique; (3) 
 
 Mateo presents the design with measurements: restore times, availability and allowlist results.
 
+This time the presentation leads with evidence rather than plans. Restore times show the nightly design fits the window. The availability estimate shows the benefit in downtime. The allowlist results show the control working and the accessibility fix. Guests can question the numbers directly, which makes the critique sharper than in the first studio, where most discussion was about intentions. Mateo brought the raw data in case guests wanted to check a figure.
+
 ### 35.2 Critique
 
 A guest from another library asks about cost of maintaining the allowlist. Another asks about patrons who need software not on the list.
+
+Both questions came from people who maintain public computers themselves. The first concerns sustainability: a control that needs more staff time than Fernhill has will decay. The second concerns fairness and service: patrons sometimes need a program for a course or a job application that nobody anticipated. Mateo recorded the questions word for word, as he had in the first studio.
 
 ### 35.3 Responses
 
 Maintenance takes about an hour a week; a request form lets librarians propose additions, reviewed weekly.
 
+The hour a week comes from Mateo's own records during the pilot, so it is measured rather than guessed. The request form asks what the program is for and who publishes it, which is enough for Marta to judge whether it can be signed in safely. Most requests are answered within a week. Patrons who need a program urgently are directed to staff PCs where a librarian can help.
+
 ### 35.4 Improvements
 
 Add a dashboard for librarians; automate weekly reimage reports.
 
+The dashboard would let librarians see at a glance which PCs are ready and which are out of service, without calling IT. Automating the weekly reimage report would save Marta's team the time spent collecting results by hand. Both ideas came from the critique, and both serve the fourth objective of reducing manual effort. Guests also suggested a printed weekly summary for branch managers, which Mateo listed as a lower priority because the dashboard could provide the same figures.
+
 ### 35.5 Prioritising
 
 Dashboard first, because librarians are the daily users.
+
+Librarians deal with PC problems first and most often, so a tool that helps them pays back daily. The reimage report helps Marta's small team, which matters too, but less urgently. Mateo estimated the effort for each and found the dashboard could reuse the tables already built for restore results, keeping the work small. The order was agreed with Marta and Dr Novak and recorded with the critique table. Work starts the following week.
 
 ### Turning critique into a plan
 
