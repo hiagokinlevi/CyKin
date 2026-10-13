@@ -100,6 +100,8 @@ target=8.8.8.8:80 decision=DENY reasons=outside-cidr
 target=192.168.1.10:80 decision=DENY reasons=outside-cidr
 ```
 
+Elena's lab uses the ranges and ports in the worked example: probes aimed at 8.8.8.8 or at port 3389 are denied before any packet leaves. Write the stop conditions into the runbook and rehearse them, so operators know what to do when one fires.
+
 ### 1.3 Measures that matter
 
 Count effects: out-of-scope probes, confirmed findings with evidence, time-to-stop after a violation, remediation verification. Avoid vanity counts such as "number of tools run". Report rates with intervals. When you compare methods, change one factor at a time and hold the environment fixed.
@@ -120,7 +122,7 @@ for seed in range(5):
     r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
 m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
 print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
-# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+# paired bootstrap: baseline vs defence on the same 300 synthetic trials
 r = random.Random(42)
 base = [r.random() < 0.30 for _ in range(300)]
 defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
@@ -143,23 +145,33 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The stats lab shows why counts matter: 3 successes in 20 and 300 in 2,000 both give a 15% rate, but the Wilson intervals are about 5–36% and 13.5–16.6%. Only the larger sample supports a precise claim. Elena's primary measure is out-of-scope probes per engagement-hour, with an interval.
+
 ### 1.4 Dual-use discipline
 
-Your thesis will discuss techniques that could be misused. Publish methods and measurement, not weaponised procedures. Prefer synthetic targets and open lab topologies. Route any real weakness found during research through coordinated disclosure. Herzog's OSSTMM has been influential, yet Schlossberger and others (arXiv:2010.06377) show why a single "security quantity" is a poor research measure — prefer concrete, contextual metrics.
+Your thesis will discuss techniques that could be misused. Publish methods and measurement, not weaponised procedures. Prefer synthetic targets and open lab topologies. Route any real weakness found during research through coordinated disclosure. Herzog's OSSTMM has been influential, yet Albrecht and Jensen (arXiv:2010.06377) show why a single "security quantity" is a poor research measure — prefer concrete, contextual metrics.
+
+Elena's protocol states that she will publish predicates, rates and scoring code, not exploit chains, and that any real issue found on institutional systems goes through coordinated disclosure. Prefer concrete metrics such as probe rates and time-to-stop over a single security score.
 
 ### 1.5 Evidence trail
 
 Keep: authorization, ROE, scope versions, tool versions, raw logs (redacted), findings with evidence hashes, and a change log. An auditor should be able to answer "what was tried, against what, when, under which permission?"
 
+Elena's trail also records which scope version was active when each probe was logged, so a later dispute about what was in can be settled from the record rather than from memory. Pin tool versions beside the logs. Store the trail where only the study team and supervisors can read it.
+
 ### 1.6 Worked example (synthetic NHUSTL case)
 
 Elena's first integrity plan: all studies run on NHUSTL's isolated `10.20.0.0/16` and `192.168.50.0/24` ranges; ports limited to 22, 80, 443, 8080; deny-list includes `10.20.0.1`. The scope lab shows how a proposed probe of `8.8.8.8:80` or `192.168.50.20:3389` is denied before packets leave. She pre-registers two measures: out-of-scope probe rate and minutes from violation note to stop.
+
+Those two measures become her primary and secondary outcomes. The deny decisions in the scope lab are the first evidence that the checker works before any engagement starts. Both appear in her integrity plan before the first engagement.
 
 ### 1.7 Errors and limits
 
 - Verbal authorization.
 - Measures that count activity instead of effects.
 - Publishing working exploit recipes.
+
+Each error damages integrity from the start. Verbal authorization cannot be checked later and does not protect anyone if a probe causes harm. Counting tools run or packets sent says nothing about whether scope held. Publishing working exploit recipes turns research into an attack resource. Check your integrity plan for all three before any engagement starts. Elena's plan names written authorization, effect measures and dual-use limits. Elena's plan names written authorization, effect measures and dual-use limits before any engagement starts.
 
 ### Exercises
 
@@ -191,9 +203,13 @@ You will (1) map the main methodology families and threat-led frameworks; (2) lo
 
 NIST SP 800-115 organises assessment into planning, discovery, attack (carefully bounded), reporting and remediation support. PTES sequences intelligence, threat modelling, vulnerability analysis, exploitation and post-exploitation under explicit scoping. OWASP WSTG provides web-specific test cases. Threat-led frameworks such as TIBER-EU and CBEST emphasise intelligence-led scenarios, purple-team collaboration and regulatory oversight for critical financial systems. Your frontier map should place each family by what it optimises: breadth of technical coverage, realism of adversary emulation, or assurance for supervisors.
 
+Elena's map places NIST SP 800-115 and PTES under technical coverage, WSTG under web cases, and TIBER-EU and CBEST under threat-led assurance. Her doctorate sits with the first group: she measures whether a scoping instrument reduces out-of-scope probes, not whether an intelligence-led scenario finds business-critical weaknesses.
+
 ### 2.2 Open problems
 
 Open problems that suit a doctorate include: how to measure out-of-scope risk reduction; how to validate that a control blocked an action without publishing an exploit; how coverage of ATT&CK techniques relates to residual risk; how human factors (fatigue, approval theatre) affect ROE compliance; and how to compare red-team report quality. Avoid "problems" that are merely "run more tools".
+
+Elena's problem is the first of these: measuring whether machine-checkable predicates reduce out-of-scope probes. A doctorate that only wraps another scanner has no research question, only an engineering task.
 
 ### 2.3 Critique of weak scores
 
@@ -231,6 +247,8 @@ SYN-003 priority=high     score=13 impact=2 exploitability=2 exposure=1 :: outda
 SYN-004 priority=medium   score=10 impact=1 exploitability=2 exposure=2 :: verbose error messages disclose paths
 SYN-005 priority=critical score=17 impact=3 exploitability=2 exposure=1 :: service account with domain admin in lab AD
 ```
+
+The findings lab scores impact, exploitability and exposure without describing an attack path. SYN-001, a default admin password on the staging web UI, scores 20 and is critical; SYN-002, missing headers, scores 9 and is medium. Severity helps an operator decide what to fix first inside one engagement; it is not a universal security quantity.
 
 ### 2.4 ATT&CK as vocabulary
 
@@ -271,15 +289,21 @@ T1021 Remote Services                    PLANNED-NOT-SEEN
 coverage=5/7 (71%)
 ```
 
+The coverage lab shows 5 of 7 planned techniques observed, or 71%. Planned-not-seen techniques such as T1059 and T1021 go on the next authorized plan. Elena uses ATT&CK to label what operators attempted and what was observed, and to talk with blue teams, not to claim residual risk.
+
 ### 2.5 Worked example (synthetic NHUSTL case)
 
 Elena's frontier note: prior work describes ROE in prose; threat-led frameworks require scenario fidelity; few studies measure whether machine-checkable predicates reduce out-of-scope actions. The findings lab shows prioritisation of synthetic issues without exploit detail. The coverage lab shows 71% of a planned technique set observed — a reporting fact, not a safety proof. Her gap: a controlled comparison of prose vs checkable scope on out-of-scope probe rate.
+
+The gap is measurable, ethical and non-tool: a controlled comparison of prose against checkable scope on out-of-scope probe rate, in authorized labs with synthetic targets. That sentence becomes the first paragraph of her proposal.
 
 ### 2.6 Errors and limits
 
 - Treating ATT&CK coverage as risk eliminated.
 - Single-score "security levels".
 - Frontier notes that list tools instead of questions.
+
+Each error weakens the frontier note. Reading ATT&CK coverage as risk eliminated turns a planning aid into a false claim of safety. A single-score security level hides what failed, as Albrecht and Jensen argue. Listing tools instead of questions produces an engineering project, not a doctorate. Check your frontier note for all three before the proposal. Elena's note avoids all three.
 
 ### Exercises
 
@@ -311,9 +335,13 @@ You will (1) write a falsifiable research question; (2) specify hypotheses, meas
 
 A good question can be wrong. "Do machine-checkable scope predicates reduce out-of-scope probes compared with prose ROE, in NHUSTL's authorized labs, measured as probes per engagement-hour?" can fail. "How can red teams be better?" cannot.
 
+Elena's question names the population (NHUSTL authorized labs), the intervention (predicate checker on or off), and the measure (out-of-scope probes per engagement-hour). A result of no difference would still be publishable if the study was powered and executed as planned. Write the question so a null result is still a clear answer.
+
 ### 3.2 Pre-registration
 
 Write down: population (engagements on the lab range), intervention (predicate checker on/off), primary measure (out-of-scope probes / hour), secondary measures (time-to-stop, false stops), analysis (rate difference with interval), exclusions (aborted for infra failure). File it before the main study.
+
+Elena files hers before the first main-study engagement. The file also records the ATT&CK and checker versions, so later readers know which definitions applied. A peer should be able to run the main study from the file alone. File it where the supervisor and ethics board can both find it.
 
 ### 3.3 Ethical protocol
 
@@ -359,27 +387,39 @@ action=service-enum         when=18:00 conc= 2 approved=False -> DENY outside-ho
 action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrency
 ```
 
+The ROE lab shows the same discipline for proposed actions: denial of service is denied; a lab password spray needs approval; work at 18:00 or with concurrency 20 is denied. Findings from work outside these rules never enter study data. Consent forms state purpose, data used, withdrawal rights and contacts.
+
 ### 3.4 Baselines and sample size
 
 Estimate the prose-ROE out-of-scope rate from a pilot. Choose a sample (engagements or hours) that can detect a meaningful reduction — for example, from 0.20 to 0.05 probes/hour — with a planned interval width.
+
+Elena's pilot suggests a prose rate near 0.18 per hour. Detecting a drop towards 0.05 with a usable interval needs on the order of 20 two-hour engagements per arm, which is feasible across two terms at NHUSTL. Record the sketch as a planning figure, and refine it after the pilot's variance estimate.
 
 ### 3.5 Approval
 
 Supervisor sign-off on science; ethics board on people; lab owner on systems. Keep versions of the proposal with dates.
 
+Elena files all three before the pilot. A change to the proposal after approval needs a dated amendment, not an email. Without all three, the pilot does not start. Keep the signed copies with the pre-registration, and check that the dates still cover the work before each engagement. An expired lab authorization pauses research as well as assessment. An expired ethics approval pauses research as well.
+
 ### 3.5b Failure modes of the proposal
 
 Common failure modes: a question that only the intervention arm can "win" by construction; measures that punish reporting (operators hide probes); ethics that block independent validation. Stress-test the proposal by asking what result would make you abandon the idea, and whether that result is observable.
 
+For Elena, a result that would abandon the idea is a checker that does not reduce out-of-scope probes once false stops are fixed. That result is observable from the primary measure. A measure that punished operators for reporting probes would hide the very events the study needs.
+
 ### 3.6 Worked example (synthetic NHUSTL case)
 
-Elena's proposal: H1 — predicate checking halves out-of-scope probe rate vs prose ROE. Primary measure: denied or executed probes outside CIDR/port/action lists per engagement-hour. The ROE lab shows deny-action, outside-hours and concurrency rules blocking unsafe proposals before they run. Pilot target: 20 two-hour engagements per arm. Ethics: student operators, synthetic targets, no publication of working attack procedures.
+Elena's proposal: H1 — predicate checking halves out-of-scope probe rate vs prose ROE. Primary measure: denied or executed probes outside CIDR/port/action lists per engagement-hour. The ROE lab shows deny-action, outside-hours and concurrency rules blocking unsafe proposals before they run. Main-study target: 20 engagements per arm, after a pilot of 10 per arm. Ethics: student operators, synthetic targets, no publication of working attack procedures.
+
+H1 can fail: if the checker rate matches the prose rate within the planned interval, the hypothesis is not supported. The ethics paragraph is short enough for the supervisor to quote when asked what will not be published.
 
 ### 3.7 Errors and limits
 
 - Hypotheses written after looking at data.
 - Pilots that use real client systems.
 - Proposals without a stop-condition plan.
+
+Each error damages the proposal. Hypotheses written after looking at data cannot be falsified honestly. Pilots on real client systems break authorization and expose real data. Proposals without stop conditions leave operators without a rehearsed pause. Check the proposal for all three before seeking approval. Elena's proposal addresses each one in writing before she seeks signatures, so examiners can see the controls were planned. Elena's proposal addresses each one before she seeks signatures.
 
 ### Exercises
 
@@ -410,9 +450,13 @@ You will (1) replicate a baseline method under prose ROE; (2) run a pilot of the
 
 Run the current practice — prose ROE read at the start — across a fixed lab topology. Log every probe attempt with host, port, action and timestamp. Score out-of-scope using the same predicate rules you will later enforce live, so the baseline is comparable.
 
+Elena runs ten baseline engagements on the fixed NHUSTL topology. Scoring the baseline with the same predicates she will later enforce live means both arms use one definition of out-of-scope, so a difference can be attributed to the checker rather than to a change in scoring.
+
 ### 4.2 Pilot of the intervention
 
 Enable the checker that evaluates proposals before execution. Record allows, denies and reasons. Watch for false stops that frustrate operators without improving safety.
+
+Elena's pilot runs ten engagements with the checker on. She logs every allow and deny with its reason, and notes whether a deny was a false stop, such as a mistyped host that was actually in scope. False stops are a secondary measure: too many mean the checker is unusable, even if out-of-scope probes fall. Too many false stops mean the checker is unusable even if probe rates fall.
 
 ### 4.3 Estimation
 
@@ -457,27 +501,39 @@ stop reason present: yes
 events=8 phases=7
 ```
 
+Elena reports pilot rates with intervals and does not test H1 yet. Operator effects are noted so the main study can plan for them, for example by modelling operator as a factor or by balancing slots across people. Keep the pilot analysis in a separate notebook from the main study. Keep pilot analysis in a separate notebook from the main study.
+
 ### 4.4 Instrument refinement
 
 Clarify ROE wording, fix checker bugs, improve logging. Lock instruments before the main study. Document every change.
+
+Elena's typo UX fix and the locked checker version are both recorded in the instrument log with dates. After lock, further changes need a supervisor-approved amendment. Locking stops silent drift between early and late engagements. Elena records every change with its date and reason. After lock, a checker bug fix needs a supervisor-approved amendment, and the main study does not start until the new version is pinned. Operators receive the locked version number in the briefing, so they can report if a different build appears.
 
 ### 4.5 Go / no-go
 
 Go if: authorization still valid; instruments stable; pilot shows non-zero out-of-scope events under prose ROE (so there is something to reduce); ethics unchanged. No-go or redesign if the checker is unusable or the lab is unstable.
 
+Elena's go decision lists all four. A no-go example is a false-stop rate above about 30%, which would force a UX redesign and a re-pilot before the main study. Going ahead with an unusable checker would produce data that measures frustration rather than scope compliance.
+
 ### 4.5b Operator briefing
 
 Brief operators identically in both arms: same ROE text length, same topology map, same allowed tool categories. Differences should come from the checker, not from unequal preparation. Record briefing duration and attendance.
 
+Elena's briefing script is identical in both arms and lasts the same number of minutes. Attendance is recorded so missing briefings can be reported as a limitation if they cluster in one arm. Unequal preparation would confound the comparison, so differences should come from the checker alone. Differences should come from the checker alone.
+
 ### 4.6 Worked example (synthetic NHUSTL case)
 
 Baseline (10 engagements): 0.18 out-of-scope probes/hour (interval roughly 0.11–0.28). Pilot with checker (10 engagements): 0.04/hour; two false stops when an operator mistyped a host in scope. Timeline lab habits — note finding, stop, escalate — are rehearsed; minutes from SYN-001 note to stop in the synthetic timeline is 25. Elena fixes the typo UX and locks the checker version.
+
+The baseline shows there is something to reduce: a non-zero out-of-scope rate under prose ROE. The pilot shows the checker can cut that rate, and exposes a UX bug that would have frustrated operators in the main study. Locking the checker after the fix keeps the main study comparable across engagements.
 
 ### 4.7 Errors and limits
 
 - Changing the scoring rules between baseline and pilot.
 - Treating pilot results as confirmatory.
 - Skipping false-stop analysis.
+
+Each error damages the comparison. Changing scoring rules between baseline and pilot means the two rates are not measuring the same thing. Treating pilot results as confirmatory inflates the chance of a false finding. Skipping false-stop analysis leaves a UX problem that will confound the main study. Check the pilot report for all three before the go decision. Elena's go criteria list each one.
 
 ### Exercises
 
@@ -508,6 +564,8 @@ You will (1) run the main study to the pre-registered plan; (2) analyse primary 
 
 Randomise or alternate arms (prose vs checker) across matched engagement slots. Hold topology, briefing length and allowed tool categories fixed. Do not tune the checker using main-study outcomes.
 
+Elena interleaves prose and checker slots across the term so time and lab load do not favour one arm. Topology images, briefing scripts and allowed tool lists are pinned. Checker tuning from main-study outcomes is forbidden; any bug fix needs an amendment. Hold the plan in a short checklist that operators see before each slot.
+
 ### 5.2 Analysis
 
 Primary: difference in out-of-scope probes per hour with a confidence interval. Secondary: time-to-stop; false-stop rate; operator workload scores. Pre-specify any hierarchical model for operator effects.
@@ -528,7 +586,7 @@ for seed in range(5):
     r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
 m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
 print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
-# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+# paired bootstrap: baseline vs defence on the same 300 synthetic trials
 r = random.Random(42)
 base = [r.random() < 0.30 for _ in range(300)]
 defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
@@ -551,31 +609,45 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+Lab S habits apply: report counts and intervals, not a single p-value story. Small samples produce wide Wilson intervals, so Elena's claim rests on twenty engagements per arm and on the interval for the difference. Secondary measures are reported with the same discipline, and labelled secondary. Secondary measures use the same discipline and are labelled secondary.
+
 ### 5.3 Independent validation
 
 Ask researchers who did not build the checker to repeat the scoring of out-of-scope events from raw logs, or to re-run a subset of engagements. Independence catches optimistic grading.
+
+Elena's validators are two researchers who did not build the checker. They re-score out-of-scope labels from redacted logs, blind to arm, and report percent agreement. Disagreements are adjudicated and counted. Agreement below a pre-set threshold triggers adjudication of the full set, not only the disagreements. Agreement below a pre-set threshold triggers adjudication of the full set.
 
 ### 5.4 Confirmatory vs exploratory
 
 Confirmatory results answer the pre-registered question. Exploratory analyses (for example, which deny-reasons dominate) are labelled as such and do not rescue a failed primary hypothesis.
 
+Elena's confirmatory claim is the difference in out-of-scope probes per hour. That port-not-in-scope dominated denies is exploratory: useful for operators, not a rescue if the primary had failed. Keep the line bright in every table and figure caption, so a reader cannot mistake an exploratory plot for the primary result. Keep that line bright in every table and figure caption.
+
 ### 5.4b Negative results
 
 A non-significant primary result is still a contribution if the study was powered and executed as planned. Publish the rates, intervals and limits. Negative results prevent other labs from repeating the same blind alley and keep the literature honest.
+
+Elena writes the negative-result paragraph into her thesis template before the main study, so she is ready to publish either way. A powered null result still tells other labs that this checker, under these conditions, did not move the rate. State the rates, intervals and limits even when H1 is not supported.
 
 ### 5.4c Sensitivity analyses
 
 Plan one or two sensitivity checks in advance: exclude the highest-volume operator; recompute with a stricter out-of-scope definition. If the qualitative conclusion moves, discuss why. Sensitivity is not a search for a significant p-value.
 
+Elena plans two: exclude the highest-volume operator, and recompute with a stricter out-of-scope definition that treats any deny-listed host contact as out of scope even if the operator stopped at once. Both are named in the pre-registration. If either check moves the qualitative conclusion, discuss why in the limitations, rather than searching for a significant p-value.
+
 ### 5.5 Worked example (synthetic NHUSTL case)
 
 Main study (20+20 engagements): prose 0.17/hour (interval 0.12–0.23); checker 0.03/hour (0.01–0.07); difference about 0.14/hour. Independent validators agreed on 98% of out-of-scope labels. Exploratory: most denies were port-not-in-scope. Failure mode: one engagement had a lab network renumbering that invalidated CIDRs mid-run — excluded per pre-registered rule, reported in limits.
+
+The primary result supports H1 under the stated conditions. Independent agreement of 98% shows the labels were not optimistic grading by Elena alone. The excluded engagement is named in the results table and limitations, with the rule that justified it.
 
 ### 5.6 Errors and limits
 
 - Peeking and stopping early when results look good.
 - Validators who co-authored the tool.
 - Hiding exclusions.
+
+Each error biases the result. Peeking and stopping early when results look good inflates false findings. Validators who co-authored the tool share the incentive to find an effect. Hiding exclusions lets the researcher shape the data without readers knowing. Check the analysis and validation plan for all three. Elena's analysis plan, written before collection, addresses all three. Elena's analysis plan, written before collection, addresses all three.
 
 ### Exercises
 
@@ -674,15 +746,21 @@ sample='aaaaaaaa'                   bits= 37.6 grade=weak   flags=single-char
 
 After academic revision, write a one-page practitioner brief: what to configure, what to measure on the next authorized engagement, and what not to claim. If practitioners cannot use the brief, the contribution's path to impact is incomplete.
 
+Elena's brief states the checker defaults, the two measures to watch on the next authorized engagement, and the refused claims: residual risk from coverage percentages, and replacement of threat-led programmes. She asks one NHUSTL operator to follow the brief cold and notes where they stall.
+
 ### 6.5 Worked example (synthetic NHUSTL case)
 
 A practitioner argues that NHUSTL's topology is too clean versus enterprise networks. Elena adds a limitations subsection and a planned external replication, without changing the primary claim. A statistician asks for operator-level plots; she adds them as exploratory. The entropy lab is used in a teaching appendix on why "complexity scores" without context mislead — analogous to empty security scores.
+
+The limitation and planned external replication answer the practitioner without moving the goalposts. Operator-level plots answer the statistician as exploratory displays. The entropy lab's lesson — that bit counts without context can still grade weak passwords as strong — parallels empty security scores, and sits in a teaching appendix rather than in the primary claim.
 
 ### 6.6 Errors and limits
 
 - Ignoring major critique.
 - Quietly changing the primary measure.
 - Defensive responses without evidence.
+
+Each error damages honesty. Ignoring major critique leaves validity questions for examiners to find. Quietly changing the primary measure moves the goalposts after seeing results. Defensive responses without evidence do not convince reviewers or examiners. Check the response trail for all three before the next revision. Elena's response trail shows major issues first, with evidence for each reply. Elena's response trail shows major issues first, with evidence for each reply.
 
 ### Exercises
 
@@ -713,9 +791,13 @@ You will (1) synthesise claims that follow from evidence; (2) state limitations 
 
 Each claim cites a measure, a sample and conditions. Example: "On NHUSTL's synthetic ranges, enabling machine-checkable scope predicates reduced out-of-scope probes from 0.17/hour to 0.03/hour (20 engagements per arm)." Claims that need exploit detail are rewritten as measurement claims.
 
+Elena's sentence names the setting, the rates and the sample. A claim such as "the lab is secure" would need exploit detail or a universal score; she rewrites every such draft as a measurement claim with conditions. Every claim in the results chapter should pass this test.
+
 ### 7.2 Limitations
 
 List: synthetic topology; student operators; single checker implementation; English-only ROE; no live enterprise network. Limitations are not failures — they bound the claim.
+
+Elena places the list before the discussion. Each line narrows where the 0.17 to 0.03 drop can be claimed: not yet on live enterprise networks, not yet with professional operators, not yet with other checker designs. Limitations are part of the contribution because they stop unsafe generalisation into live enterprise programmes. Each line is a bound on the claim, not an apology.
 
 ### 7.3 Reproducibility archive
 
@@ -752,27 +834,39 @@ roe.pdf          OK
 scope.csv        OK
 ```
 
+Elena's archive regenerates the primary table — prose 0.17/hour against checker 0.03/hour, twenty engagements per arm — from the anonymised logs. Environment pins record the Python and checker versions. A peer who cannot rebuild the table on a clean machine has found a gap. Hash the release so examiners can detect accidental edits after pinning.
+
 ### 7.4 Secrets vs science
 
 Keep out of the archive: real credentials, client names, weaponised procedures. Keep in: synthetic topologies, measures, code for scoping and scoring. Hash-pin the archive; the lab shows how a tampered findings file is detected.
+
+Elena's private appendix holds authorization templates without signatures. The hash lab shows a tampered findings.json as MISMATCH while roe.pdf and scope.csv stay OK; she investigates, restores from a trusted copy and re-hashes before submission. Hash-pinning is what makes the archive trustworthy after it leaves your machine.
 
 ### 7.5 Thesis structure
 
 Introduction; background (NIST 800-115, PTES, ATT&CK, TIBER-EU/CBEST, measurement critiques); related work; methods; results; discussion; ethics; archive guide; conclusion.
 
+Elena's abstract states the question, measure and primary result in under 250 words, so a reader finds the claim before the archive guide. Each chapter maps to one stage of the doctorate: methods hold the pre-registration and ethics; results hold the rates; discussion and limitations bound the claim; and the archive guide tells a peer how to rebuild the primary table. Keep the order so examiners can find each piece quickly.
+
 ### 7.5b Reading guide for practitioners
 
 Include a two-page reading guide at the front of the archive: how to install, how to replay the primary table, and which files are deliberately absent (and why). Busy assessors will not reverse-engineer your repository layout.
 
+Elena's guide names the missing files — signed authorizations, any real vulnerability details — and the dual-use reason they are absent. Install and replay steps are numbered, with expected output matching the primary table. Busy assessors will not reverse-engineer your repository layout. Number the install and replay steps, and show the expected primary table.
+
 ### 7.6 Worked example (synthetic NHUSTL case)
 
 Elena's archive is a public repository with synthetic data and the checker. A private appendix holds institutional authorization templates without signatures. She verifies archive integrity with hashes before submission. Her synthesis chapter rejects the sentence "the lab is secure" in favour of the measured rate reduction under stated conditions.
+
+The public repository is what examiners and later researchers can run. The private appendix stays inside the university. Hash verification before submission catches accidental edits that would make a rebuilt table disagree with the results chapter.
 
 ### 7.7 Errors and limits
 
 - Archives that do not run.
 - Claims broader than conditions.
 - Mixing client secrets into public artefacts.
+
+Each error weakens the thesis. Archives that do not run cannot support the reproducibility claim. Claims broader than the conditions invite readers to apply results where they were never tested. Client secrets in public artefacts turn research into an exposure. Check the archive and synthesis chapter for all three before submission. Ask a reviewer to check them too. Ask a reviewer to check them before submission.
 
 ### Exercises
 
@@ -803,13 +897,19 @@ You will (1) defend methods, ethics and claims under examination; (2) answer dua
 
 Open with the question, the measure and the primary result with intervals. Expect questions on: authorization; why synthetic labs; independence; what would falsify the claim; how operators might game the checker. Bring the pre-registration and a live demo of the checker on synthetic proposals.
 
+Elena's opening fits in about ninety seconds: machine-checkable predicates versus prose ROE; out-of-scope probes per hour; 0.17 against 0.03 with intervals; synthetic NHUSTL ranges, student operators, twenty engagements per arm. The live demo shows a DENY on 8.8.8.8 before any packet leaves.
+
 ### 8.2 Dual-use answers
 
 "We publish predicates and rates, not exploit chains. All targets were synthetic. Any real issue found on institutional systems went through coordinated disclosure." If pressed for a demo of an attack, refuse and offer a demo of the scope denial instead.
 
+Elena's four-part answer is: refuse the exploit; demo the scope denial; restate the ethics and dual-use rules; note coordinated disclosure for any real issue. A demand for attack detail at a defence is usually a test of judgement. Offer the scope demo immediately, so the refusal is not the end of the answer.
+
 ### 8.3 Publication plan
 
 Target: a measurement/ethics venue for the main result; a short practitioner brief for authorised teams; no "how to bypass" companion. Cite frameworks accurately (NIST SP 800-115, PTES, ATT&CK, WSTG, TIBER-EU, CBEST) with versions and dates.
+
+Elena's plan lists one journal submission on measurement and ethics, with no exploit details, and one open archive release with hashes. Framework citations carry versions and access dates, because ATT&CK and WSTG change. No companion paper on how to bypass the checker. No companion paper on how to bypass the checker.
 
 ### 8.4 Next research
 
@@ -850,13 +950,19 @@ T1021 Remote Services                    PLANNED-NOT-SEEN
 coverage=5/7 (71%)
 ```
 
+Elena's next-research page lists these four, each with a one-line authorization note. External replication comes first: another lab running the same checker and measures under its own approval. Enterprise pilots need separate authorization from the lab study, and must not reuse NHUSTL's synthetic-only approval. Enterprise pilots need separate authorization and must not reuse the synthetic-only approval.
+
 ### 8.5 Leaving the lab safer
 
 Document checker defaults; train the next cohort on stop conditions; remove any temporary exceptions; donate the synthetic topology to teaching. Coverage reporting (the lab) becomes a teaching exercise in humility: planned-not-seen is a prompt for the next authorized study, not a trophy.
 
+Elena pins checker defaults, trains the next cohort on stop conditions, removes temporary exceptions and donates the synthetic topology to teaching. Planned-not-seen techniques from the coverage lab go on the next authorized study plan, with permission, rather than being tested freelance.
+
 ### 8.6 Worked example (synthetic NHUSTL case)
 
 At defence, Elena is asked whether results generalise to CBEST-style assessments. She answers that CBEST is threat-led and regulator-supervised for financial firms; her contribution is a measurement instrument for scope compliance that such programmes could adopt, not a substitute for intelligence-led scenarios. She refuses a request to show a "fun exploit" and demos a DENY on `8.8.8.8` instead. Her publication plan lists one journal submission and one open archive release with hashes.
+
+The CBEST answer is complementary, not substitute: a scope-compliance instrument could support such programmes, but does not replace intelligence-led scenarios or supervisory oversight. The refused exploit demo and the DENY on 8.8.8.8 show the same dual-use discipline as the publication plan.
 
 ### 8.7 Errors and limits
 
@@ -864,13 +970,15 @@ At defence, Elena is asked whether results generalise to CBEST-style assessments
 - Publishing bypass recipes.
 - Leaving temporary wide scope rules enabled.
 
+Each error undoes earlier care. Overclaiming generalisation to live enterprises goes beyond synthetic labs and student operators. Publishing bypass recipes turns measurement research into an attack resource. Leaving temporary wide scope rules enabled is a risk to the next cohort. Check the defence and handoff plan for all three. Elena's handoff checklist names each one. Elena's handoff checklist names each one and records when it was done.
+
 ### Exercises
 
 - **EX045 — Opening.** Write a 90-second defence opening. Rubric: 3 = question, measure, result, conditions; 2 = three; 1 = vague; 0 = none.
 - **EX046 — Dual-use.** Answer "show us the exploit" in four sentences. Rubric: 3 = refuse, offer scope demo, ethics, CVD; 2 = three; 1 = shows exploit; 0 = none.
 - **EX047 — CBEST.** Relate your work to CBEST without overclaim. Rubric: 3 = complementary, not substitute; 2 = partial; 1 = "we replace CBEST"; 0 = none.
 - **EX048 — Pubs.** Plan two publications with venues and what is excluded. Rubric: 3 = both with exclusions; 2 = one; 1 = vague; 0 = none.
-- **EX049 — Coverage lab.** How would you use a planned-not-seen technique ethically? Rubric: 3 = next authorized study, no freelancing; 2 = partial; 1 = just attack it; 0 = none.
+- **EX049 — Coverage lab.** How would you use a planned-not-seen technique ethically? Rubric: 3 = next authorized study, no freelance testing; 2 = partial; 1 = just attack it; 0 = none.
 - **EX050 — Handoff.** List five handoff actions to leave the lab safer. Rubric: 3 = five apt; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis
@@ -983,7 +1091,7 @@ Model answers; any answer meeting the rubric scores equally. North Harbour Unive
 
 **EX048.** Journal paper on measurement/ethics (no exploit details). Practitioner brief on configuring checkers (no client data).
 
-**EX049.** Add it to the next authorized study plan with permission — do not freelancing-test it.
+**EX049.** Add it to the next authorized study plan with permission — do not freelance-test it.
 
 **EX050.** Pin checker defaults; train stop conditions; remove temp exceptions; publish synthetic topology; transfer on-call docs.
 
