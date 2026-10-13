@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso de tecnólogo, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–19 de 30 já estão escritos em português, com os exercícios EX001–EX057 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 20–30 (EX058–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–23 de 30 já estão escritos em português, com os exercícios EX001–EX069 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 24–30 (EX070–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia que vão construir, operar e medir a capacidade de avaliação autorizada de uma organização, trabalhando ao lado de seus defensores.
 - Relação com os livros vizinhos: o [livro técnico](../../../../technical-18-months/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a disciplina no uso de ferramentas e a verificação; o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta teoria mais ampla. **Este livro trata da integração de serviços, controles, operações e medição em torno de testes autorizados.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -31,9 +31,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) |
 
-Capítulos 20–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-20), até a chegada dos próximos lotes.
+Capítulos 24–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-24), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1189,11 +1189,243 @@ Meça o que este exercício exercitou, diga a verdade sobre as falhas e transfor
 
 [← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
 
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança ofensiva autorizada e red team: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir uma árvore de falhas para uma sessão de avaliação que falhou; (2) separar falhas de ferramenta, de escopo e de ambiente; (3) escrever uma nota de go/no-go depois de um incidente no meio da janela; (4) manter as notas de solução de problemas como evidência do engajamento.
+
+### 20.1 Sessões falham por motivos banais
+
+Deriva de DNS, um certificado de testador vencido, um coletor do SIEM fora do ar, o telefone da equipe branca no silencioso, uma planilha de escopo com erro de digitação — isso interrompe o trabalho com mais frequência do que problemas exóticos. Uma árvore de falhas começa com "a sessão não pode prosseguir" e se ramifica em autorização, conectividade, ferramentas e segurança. Priya dedica a essas falhas comuns os primeiros trinta minutos de qualquer sessão travada do ENG-712: confere se os nomes ainda resolvem para os endereços aprovados, se os certificados dos testadores são válidos, se o coletor do SIEM está recebendo e se o telefone da equipe branca toca. Só quando as quatro verificações estão saudáveis a equipe procura algo incomum. A maioria das sessões travadas termina na primeira ou na segunda verificação.
+
+### 20.2 Três classes de falha
+
+Falhas de escopo: o alvo deixou de estar aprovado. Falhas de ferramenta: o verificador ou o scanner se comporta mal. Falhas de ambiente: o sistema do cliente está instável ou já há um incidente em andamento. Classificar uma falha de ambiente como falha de ferramenta leva a "tentar de novo" quando a atitude certa é parar. Cada classe tem um responsável diferente: as falhas de escopo vão para a equipe branca, as de ferramenta para o líder do kit da própria Northpoint e as de ambiente para as operações da TRT. A nota de go/no-go de Priya nomeia a classe para que a pessoa certa seja acionada. Registrar uma falha de ambiente como falha de ferramenta faria a Northpoint insistir contra um sistema que as operações estão tentando estabilizar.
+
+### 20.3 Go / no-go
+
+Depois de qualquer evento inesperado — uma queda, uma reclamação, uma indisponibilidade do SIEM —, a equipe escreve uma nota curta de go/no-go: o que aconteceu, qual a classe da falha, quem foi informado, a decisão, assinatura/horário. No-go é um resultado profissional. Durante uma indisponibilidade do SIEM, por exemplo, a equipe pausa o tráfego e escreve a nota antes de enviar qualquer coisa a mais, porque uma atividade que o SOC não consegue ver produz ruído sem valor de evidência. A nota registra o carimbo de tempo da última técnica observada normalmente. Esse carimbo mantém honestas as contagens do exercício purple quando a sessão é retomada.
+
+### 20.4 Incidente paralelo
+
+Se o SOC da TRT já está tratando um incidente real, a atividade de avaliação que acrescenta ruído costuma ser suspensa. O NIST SP 800-61 Rev. 3 discute a coordenação da resposta a incidentes; as equipes de avaliação precisam saber como recuar. As ROE de Priya para o ENG-712 declaram explicitamente o caminho de suspensão, incluindo quem manda a Northpoint recuar e quem depois diz que ela pode retomar. O caminho é ensaiado no estúdio com um acionamento falso do SOC antes do engajamento real. Acrescentar ruído de avaliação enquanto os analistas trabalham num incidente real disputaria a atenção de que o incidente precisa.
+
+### Exemplo resolvido
+
+Às 23:10, a API de horários começa a dar timeout. A ferramenta de inventário da Northpoint é a primeira a ser culpada. A árvore de falhas de Priya pergunta se algum outro cliente relatou a indisponibilidade — sim, o NOC relatou, antes de a taxa de varredura aumentar. Classificação: falha de ambiente (fragilidade preexistente). Decisão: no-go para verificações ativas; continuar apenas com revisão de documentos, depois da aprovação da equipe branca.
+
+> **Caso sintético.** O timeout das 23:10 e o relato do NOC são inventados.
+
+### Erros e limites
+
+Notas de solução de problemas que culpam pessoas, e não sistemas, envenenam a confiança no trabalho purple. Não esconda um no-go da página de limitações do relatório.
+
+### Exercícios
+
+- **EX058 — Classifique.** O relógio do notebook de um testador está errado, e o verificador de ROE marca todas as ações como fora da janela. Qual é a classe da falha e a primeira correção? *Rubrica:* 3 = ferramenta (ou ambiente local do testador); corrigir o relógio/NTP; executar de novo o verificador; 2 = só a classe; 1 = falha de escopo; 0 = nada.
+- **EX059 — Recuar.** O SOC declara uma investigação ativa de ransomware (sintética). O que a equipe de avaliação faz? *Rubrica:* 3 = suspender a atividade ruidosa; avisar a equipe branca; esperar a retomada por escrito; 2 = pausa vaga; 1 = continuar discretamente; 0 = nada.
+- **EX060 — Campos do go/no-go.** Liste cinco campos que uma nota de go/no-go deve conter. *Rubrica:* 3 = cinco entre evento/horário/classe/pessoas informadas/decisão/assinatura; 2 = três; 1 = um; 0 = nada.
+
+### Síntese
+
+Primeiro a árvore, depois a classificação, escreva a decisão e recue quando a organização já estiver apagando um incêndio.
+
+### Continue estudando — capítulo 20 de 30
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança ofensiva autorizada e red team: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) situar o serviço de avaliação entre os serviços de identidade, logs, chamados e gestão de mudanças; (2) definir interfaces de passagem com responsáveis e SLAs; (3) explicar por que os achados da avaliação precisam entrar no mesmo controle que os demais riscos; (4) evitar TI paralela para evidências e chamados.
+
+### 21.1 A avaliação como serviço
+
+Uma capacidade de avaliação autorizada é um serviço com entradas (pedidos, acordos), processos (execução com escopo) e saídas (achados, relatórios, resultados de reteste). Ela depende de identidade (quem pode aprovar), de logs (para onde vai a evidência da atividade), de chamados (onde os achados moram) e de gestão de mudanças (quando as correções entram em produção). Desenhar essas dependências impede que a equipe de avaliação invente ferramentas paralelas que ninguém mais acompanha. Tratar o trabalho como serviço muda o que Priya mede. Ao lado das contagens de críticos, ela acompanha o tempo de fila entre um pedido de parada e a confirmação da equipe branca, e a taxa de achados reabertos depois do reteste. Uma prestadora com muitos críticos, mas confirmações lentas e reaberturas frequentes, pode servir pior à TRT do que uma mais discreta.
+
+### 21.2 Interfaces e SLAs
+
+Cada interface precisa de um responsável e de uma expectativa de resposta: confirmação da equipe branca em até quinze minutos após um pedido de parada; confirmação do chamado de correção em até dois dias úteis; acesso ao repositório de evidências revogado em até um dia após o encerramento do engajamento. SLAs sem responsáveis são enfeites. No ENG-712, essas expectativas estão escritas no acordo, cada uma com um responsável nomeado, e Priya as acompanha durante o engajamento. Uma confirmação perdida aparece como dívida de processo na folha de avaliação assinada. Uma interface sem responsável tende a virar um lugar onde pedidos de parada e chamados ficam sem resposta.
+
+### 21.3 Um único controle de riscos
+
+Achados que vivem só num PDF nunca encontram seus responsáveis. Exporte-os para o controle de riscos ou de vulnerabilidades da organização, com o mesmo vocabulário de severidade exigido no Capítulo 4. Mantenha o PDF como narrativa; mantenha o controle como fila de trabalho. No ENG-712, o F-01 e o F-07 existem como chamados no controle antes de qualquer apresentação de slides ser montada, usando as mesmas palavras de severidade do relatório. Uma apresentação que chega antes dos chamados é devolvida sem publicação. O controle é onde moram os responsáveis e os prazos, então um achado que nunca chega a ele nunca é corrigido.
+
+### 21.4 TI paralela
+
+Drives pessoais, canais de chat não gerenciados e quadros privados "só para este engajamento" viram o lugar onde a evidência vai morrer — ou vazar. Use os serviços aprovados, mesmo quando parecem mais lentos. A regra cobre também os arquivos temporários: uma captura de tela salva numa pasta da área de trabalho chamada evidence_tmp está fora do cofre e de seu relógio de retenção. Auditorias semanais do cofre verificam por amostragem notebooks e drives compartilhados em busca dessas pastas paralelas durante o engajamento. A regra de canal discreto do Capítulo 25 vale da mesma forma, então evidências e detalhes das ROE circulam apenas por serviços aprovados.
+
+### Exemplo resolvido
+
+Priya integra as saídas da Northpoint ao controle da TRT: cada achado vira um chamado com ID do ATT&CK, severidade, responsável e prazo; o relatório em PDF é anexado. O cofre de evidências concede à Northpoint um acesso com prazo, que expira no fim da retenção. O SOC recebe um convite de calendário para a repetição purple antes de a janela abrir, e não depois.
+
+> **Caso sintético.** O padrão de integração foi inventado para o cenário de ferramentas da TRT.
+
+### Erros e limites
+
+Uma integração que inunda o SOC com ruído bruto de scanner ensina as pessoas a ignorar chamados. Filtre e classifique os achados antes que entrem no controle.
+
+### Exercícios
+
+- **EX061 — Responsável pela interface.** Nomeie três interfaces da avaliação e um papel responsável para cada uma. *Rubrica:* 3 = três interfaces distintas com papéis (por exemplo, equipe branca/CISO, controle/gestão de vulnerabilidades, cofre/engenharia de segurança); 2 = duas; 1 = uma; 0 = nada.
+- **EX062 — Só o PDF.** Por que um relatório em PDF, sozinho, é uma integração fraca? *Rubrica:* 3 = sem fila de trabalho/responsável/prazo; os achados empacam; 2 = difícil de pesquisar; 1 = o PDF basta; 0 = nada.
+- **EX063 — Quadro paralelo.** Um testador cria um Trello privado para os achados da TRT. O que Priya deve exigir em vez disso? *Rubrica:* 3 = usar o controle aprovado da TRT; exportar/migrar; desativar o quadro privado; 2 = só migrar; 1 = permitir o quadro privado; 0 = nada.
+
+### Síntese
+
+Trate a avaliação como um serviço com interfaces nomeadas, um único controle e nenhum depósito paralelo.
+
+### Continue estudando — capítulo 21 de 30
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança ofensiva autorizada e red team: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar tabelas de relatório e contagens de status a partir de achados estruturados; (2) decidir quais etapas precisam continuar humanas; (3) aplicar limites de taxa e opções de ensaio a seco (dry-run) a qualquer automação que possa tocar sistemas; (4) versionar os scripts de automação junto com o engajamento.
+
+### 22.1 Automatize as partes tediosas e inspecionáveis
+
+Montar uma tabela Markdown a partir de uma lista de achados, contar abertos versus corrigidos, ordenar por severidade — isso é ideal para scripts. Eles reduzem os erros de cópia e produzem artefatos idênticos para o revisor. A regra prática de Priya é que um script pode reorganizar o que uma pessoa já decidiu, mas não pode decidir nada sozinho. Ordenar quatro achados por severidade é seguro porque as severidades foram definidas durante a validação; adivinhar a severidade de um registro que não a tem, não. Quando o gerador e uma tabela feita à mão divergem, a diferença é tratada como defeito num dos dois e rastreada antes de o rascunho sair.
+
+### Laboratório H — gerador de relatório
+
+```python
+"""Lab G (ch 22): build a Markdown executive table from synthetic findings."""
+from collections import Counter
+findings = [
+    {"id": "F-01", "sev": "high", "status": "open", "tid": "T1078"},
+    {"id": "F-04", "sev": "low", "status": "accepted", "tid": "T1190"},
+    {"id": "F-07", "sev": "high", "status": "open", "tid": "T1133"},
+    {"id": "F-09", "sev": "critical", "status": "fixed", "tid": "T1552"},
+]
+rank = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+print("| ID | Severity | ATT&CK | Status |")
+print("|---|---|---|---|")
+for f in sorted(findings, key=lambda f: (rank[f["sev"]], f["id"])):
+    print(f"| {f['id']} | {f['sev']} | {f['tid']} | {f['status']} |")
+c = Counter(f["status"] for f in findings)
+print(f"open={c['open']} fixed={c['fixed']} accepted={c['accepted']}")
+```
+
+Execute com `python3 lab_report.py`. Saída verificada:
+
+```text
+| ID | Severity | ATT&CK | Status |
+|---|---|---|---|
+| F-09 | critical | T1552 | fixed |
+| F-01 | high | T1078 | open |
+| F-07 | high | T1133 | open |
+| F-04 | low | T1190 | accepted |
+open=2 fixed=1 accepted=1
+```
+
+### 22.2 Mantenha pessoas nos controles
+
+Decisões de autorização, acionamentos da equipe branca, disputas de severidade e notas de go/no-go continuam humanos. Automatizar "aprovar escopo" é como as organizações acabam autorizando, sem querer, o prefixo errado. A linha é traçada nas decisões que mudam quem ou o que pode ser tocado. Um script pode avisar a equipe branca de que um cartão planejado mira um endereço fora da lista de escopo assinada, mas só uma pessoa nomeada pode dizer se o cartão para ou se o escopo é emendado. Propostas de automatizar a aprovação de escopo no ENG-712 são encerradas com uma referência a esta regra, em vez de serem debatidas a cada vez.
+
+### 22.3 Ensaio a seco e limites de taxa
+
+Qualquer automação capaz de enviar tráfego precisa de um modo de ensaio a seco que imprima o que ela faria e de um limite de taxa combinado nas ROE. Os laboratórios de sala de aula nunca enviam tráfego; as ferramentas de produção precisam mostrar a mesma disciplina. O ensaio a seco de uma ferramenta do ENG-712 lista cada endereço de alvo, o cartão de método a que pertence e a taxa de envio planejada, para que a equipe branca possa compará-lo com as ROE assinadas antes que qualquer coisa saia do notebook. Quando as ROE pedem prova de que as taxas foram respeitadas, essa lista impressa é arquivada com as demais evidências do engajamento e mantida pelo mesmo prazo de retenção.
+
+### 22.4 Versione com o engajamento
+
+Guarde a versão exata do script (hash do commit ou hash do arquivo) no registro do engajamento, para que um revisor possa regenerar a tabela depois. Arquivos "final_final_v3.py" sem versão não são evidência. Priya registra um SHA-256 do gerador ao lado de cada tabela gerada, do mesmo jeito que faz no exemplo resolvido. Meses depois, um auditor pode executar de novo o script com hash sobre o JSON arquivado e conferir que a tabela do relatório é idêntica. Um arquivo chamado final_v3.py sem hash não pode ser ligado a nenhuma tabela, então a revisão do arquivo o rejeita, por mais arrumada que a saída pareça.
+
+### 22.5 O que não raspar
+
+Uma automação que puxa senhas de produção, cookies de sessão ou dados pessoais para um gerador de relatórios é um incidente de tratamento de dados prestes a acontecer. O gerador deste capítulo lê apenas os campos que uma pessoa já registrou como achados. Se um campo estiver ausente, o script deve falhar ruidosamente em vez de inventar uma severidade padrão. O padrão seguro é um gerador que só aceita os campos de um achado registrado: identificador, título, severidade, status e responsável. Testes de integração contínua o alimentam com fixtures sintéticas, incluindo registros deliberadamente quebrados e sem severidade, para provar que ele para com erro. Um gerador que fosse buscar cookies ou senhas em consoles transformaria uma conveniência de relatório num incidente de tratamento de dados sob o acordo.
+
+### Exemplo resolvido
+
+Priya executa o gerador de relatório sobre quatro achados sintéticos. Ele imprime primeiro o F-09, crítico, depois os dois altos, depois o baixo, e resume open=2 fixed=1 accepted=1. Ela cola a tabela no rascunho do relatório e registra o SHA-256 do script ao lado do anexo.
+
+> **Caso sintético.** Os quatro achados e a tabela impressa são inventados.
+
+### Erros e limites
+
+Uma automação que descarta em silêncio os achados de severidade desconhecida é um defeito; falhe ruidosamente. Não feche chamados automaticamente a partir de um scanner sem revisão humana.
+
+### Exercícios
+
+- **EX064 — Ordem da tabela.** Na saída do laboratório, qual achado aparece primeiro e por quê? *Rubrica:* 3 = F-09; crítico fica acima de alto/baixo; 2 = só o F-09; 1 = lógica de ordenação errada; 0 = nada.
+- **EX065 — Controle humano.** Nomeie duas decisões que não devem ser automatizadas no processo da TRT. *Rubrica:* 3 = duas entre autorizar escopo / disputa de severidade / go-no-go / parada pela equipe branca; 2 = uma; 1 = automatizar tudo; 0 = nada.
+- **EX066 — Evidência de versão.** Como Priya deve provar qual script gerou a tabela? *Rubrica:* 3 = guardar o commit ou o SHA-256 do script junto com o engajamento; 2 = nota de versão vaga; 1 = lembrar; 0 = nada.
+
+### Síntese
+
+Automatize tabelas e contagens; mantenha a autorização humana; faça ensaio a seco de tudo o que toca sistemas; versione os scripts.
+
+### Continue estudando — capítulo 22 de 30
+
+[← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança ofensiva autorizada e red team: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir os critérios de avaliação antes de um engajamento terminar; (2) pontuar a qualidade do processo separadamente da contagem de achados; (3) conduzir uma revisão de lições aprendidas que produza itens de backlog; (4) recusar métricas de vaidade.
+
+### 23.1 Critérios antes do encerramento
+
+A avaliação responde: ficamos no escopo, atendemos à decisão de que o CISO precisava, os defensores aprenderam, a correção começou? Escreva esses critérios nas ROE ou nas notas da abertura, para que o seu eu do futuro não invente critérios mais brandos depois de uma semana bagunçada. No ENG-712, as quatro perguntas foram escritas nas notas da abertura como itens de sim ou não: ficou no escopo, apoiou a decisão do CISO sobre cobertura, deu aos defensores algo a aprender, iniciou a correção. Priya as preenche antes de o CISO ler a folha, e a contagem de achados aparece apenas como linha de apoio, para que um apêndice longo não possa substituir um critério não cumprido.
+
+### 23.2 Qualidade do processo ≠ contagem de troféus
+
+Um engajamento que não encontra nada, mas demonstra controles sólidos, evidências limpas e uma repetição purple útil, pode ser um sucesso. Um engajamento que encontra dezenas de problemas ignorando as exclusões é um fracasso com um apêndice longo. Pontue a disciplina explicitamente. A rubrica de estúdio de Priya põe isso na primeira página, porque os estudantes tendem a se medir pelo tamanho da tabela de achados. No ENG-712, um engajamento discreto, com controles limpos e uma repetição purple útil, ainda teria cumprido os quatro critérios. Uma equipe que produzisse muitos achados atravessando uma linha de STOP seria reprovada no critério de escopo, e nenhuma contagem de achados conserta isso.
+
+### 23.3 Lições aprendidas
+
+Em até duas semanas, as equipes red, blue e branca se reúnem. Cada falha da matriz de cobertura vira um chamado. Cada falha de processo vira uma mudança de procedimento. Registre o que parar, o que começar e o que continuar. O DET-19, da história da cobertura, é o modelo de chamado de falha: nomeia a técnica do ATT&CK não coberta, a célula da matriz de onde veio e o responsável pela detecção. As falhas de processo são escritas como edições de um procedimento, como a verificação de sincronização de relógio antes da abertura que o ENG-712 acrescentou. Fazer a reunião em até duas semanas importa porque as pessoas ainda lembram por que uma escolha foi feita.
+
+### 23.4 Métricas de vaidade
+
+"Hosts varridos", "pacotes enviados" e "críticos encontrados", sem contexto, incentivam o comportamento errado. Prefira "técnicas exercitadas", "percentual com alerta", "achados aceitos no controle dentro do SLA" e "retestes encerrados". Num slide gerencial, Priya substitui uma linha como hosts varridos pelo número de técnicas exercitadas e pela parcela que gerou alerta. O segundo par responde à pergunta que o CISO fez sobre a cobertura do SOC; o primeiro só mede o quanto os testadores estiveram ocupados. Ela remove as linhas de vaidade na mesma passada de revisão que tira do relatório as frases de garantia proibidas.
+
+### 23.5 Compartilhar os resultados sem vergonha
+
+Publique a folha de avaliação para as pessoas que viveram o exercício. Esconder do SOC uma pontuação baixa de processo enquanto se celebra uma contagem alta de achados ensina a lição errada. A regra da TRT é que a mesma folha que o CISO assina é a folha que a equipe lê na retrospectiva. No ENG-712, o SOC viu a folha completa, incluindo a falha de processo da sincronização de relógio, na mesma retrospectiva em que os dois itens de backlog de detecção foram discutidos. Saber de uma pontuação fraca de processo por um resumo semanas depois teria soado como culpa. Vê-la ao lado dos achados a transformou num problema compartilhado, com responsável e data.
+
+### Exemplo resolvido
+
+A folha de avaliação da TRT para o ENG-712: aderência ao escopo de 100% (nenhuma violação de STOP); decisão apoiada (números de cobertura do SOC entregues); dois itens de backlog de detecção abertos; uma mudança de processo (verificação de sincronização de relógio antes da abertura). A contagem de achados é registrada, mas não é usada como pontuação principal. O CISO assina a folha.
+
+> **Caso sintético.** A folha de avaliação é inventada.
+
+### Erros e limites
+
+Culpar indivíduos na reunião de lições aprendidas destrói a confiança no trabalho purple. Mantenha a ata centrada em sistemas e procedimentos.
+
+### Exercícios
+
+- **EX067 — Pontuação principal.** Por que "críticos encontrados" é uma pontuação principal de avaliação fraca? *Rubrica:* 3 = premia volume/abuso de escopo; ignora processo e aprendizado; 2 = um motivo; 1 = é a melhor pontuação; 0 = nada.
+- **EX068 — Critério.** Escreva um critério declarado de antemão que meça o aprendizado dos defensores. *Rubrica:* 3 = critério de aprendizado mensurável (por exemplo, itens de backlog abertos por falha, presença na repetição); 2 = aprendizado vago; 1 = contagem de achados; 0 = nada.
+- **EX069 — Parar/começar/continuar.** Dê um parar, um começar e um continuar tirados da história do ENG-712 até aqui. *Rubrica:* 3 = três itens concretos apoiados nos capítulos anteriores; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Declare os critérios cedo, pontue a disciplina, converta as lições em chamados e ignore os contadores de vaidade.
+
+### Continue estudando — capítulo 23 de 30
+
+[← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX057 (as de EX058–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O BMC é acessível por uma porta de rede própria, recebe correções pelo firmware do fabricante e não pelo sistema operacional, e pode ficar numa VLAN de gerenciamento fora do escopo escrito. Um registro separado obriga a reunião de escopo a incluí-lo ou excluí-lo explicitamente.
 
@@ -1308,6 +1540,30 @@ Respostas-modelo para EX001–EX057 (as de EX058–EX090 estão na edição em i
 **EX056.** Exemplo: "Detectar T1021 Remote Services nos jump hosts — alertar o SOC sobre sessões interativas fora das janelas de mudança."
 
 **EX057.** O objetivo do exercício era detecção e resposta. Uma linha de log que ninguém vê não produz resposta, então o resultado não cumpre o objetivo, mesmo com a telemetria existindo.
+
+**EX058.** Ferramenta (ambiente do testador): corrigir o relógio via NTP ou ajuste manual, conferir o horário com o relógio da equipe branca e executar de novo o verificador de ROE antes de qualquer outra ação.
+
+**EX059.** Suspender as atividades que possam acrescentar ruído ou risco, avisar imediatamente a equipe branca e retomar apenas por instrução escrita, depois que o comandante do incidente concordar.
+
+**EX060.** Quaisquer cinco entre: descrição do evento, carimbo de tempo, classe da falha, pessoas informadas, decisão (go/no-go), condições para retomar, assinatura/nome de quem decidiu.
+
+**EX061.** Exemplo: pedidos de parada da equipe branca → CISO/gestor de segurança de plantão; chamados de achados → responsável pela gestão de vulnerabilidades; acesso ao cofre de evidências → engenharia de segurança. Outros trios coerentes recebem 3.
+
+**EX062.** Um PDF não tem campo de responsável, prazo nem estado de fluxo de trabalho, então a correção empaca, a menos que alguém copie à mão cada achado para um controle.
+
+**EX063.** Exigir todos os achados no controle aprovado da TRT, migrar o que já estiver no quadro privado e desativar o quadro, para que evidências e status não possam divergir.
+
+**EX064.** O F-09 aparece primeiro porque sua severidade é crítica, que o gerador classifica acima de alta e baixa.
+
+**EX065.** Exemplo: aprovar mudanças de escopo e emitir um go/no-go depois de um incidente. A autoridade de parada da equipe branca e a decisão final sobre severidade também pontuam.
+
+**EX066.** Registrar o hash do commit ou o digest SHA-256 do script na pasta do engajamento, ao lado da tabela gerada, para que um revisor possa regenerá-la e comparar.
+
+**EX067.** Ela premia encontrar mais problemas, mesmo por métodos inseguros, e ignora se a equipe ficou no escopo, se os defensores aprenderam e se a correção começou.
+
+**EX068.** Exemplo: "Para cada técnica não detectada na matriz de cobertura, um chamado de backlog de detecção, com responsável e ID do ATT&CK, é aberto em até cinco dias úteis."
+
+**EX069.** Exemplo: Parar — atualizações de ferramentas no meio da janela sem o aval da equipe branca. Começar — verificação de sincronização de relógio antes da abertura. Continuar — pipeline de três controles com registro do operador. Outros trios coerentes recebem 3.
 
 <a id="references"></a>
 ## Referências
