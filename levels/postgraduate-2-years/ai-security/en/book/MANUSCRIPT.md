@@ -963,7 +963,7 @@ The criteria were met.
 - Testing on production.
 - Handover of a report but no harness.
 
-Each error limits the project's value. Without a decision owner, results have nowhere to go. Testing on production can harm customers and breaches authorisation. A report without the harness cannot be repeated after the next fine-tune, which is why Tomás handed over his harness and runbook. Settle all three in the project plan before work starts, and ask your supervisor to confirm them.
+Each error limits the project's value. Without a decision owner, results have nowhere to go. Testing on production can harm customers and breaches authorisation. A report without the harness cannot be repeated after the next fine-tune, which is why Tomás handed over his harness and runbook. Settle all three in the project plan before work starts, and ask your supervisor to confirm them in writing.
 
 ### Exercises
 
