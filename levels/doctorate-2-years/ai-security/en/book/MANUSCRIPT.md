@@ -450,13 +450,13 @@ backdoor: add n triggered class-1 points labelled 0
 
 ### 4.7 Errors and limits
 
-Each of the errors listed below corrupts evidence. Changing several settings at once would have hidden that temperature alone explained Ana's gap. A failed replication may come from your environment, so contact the authors first. A hosted endpoint can change model without notice, so its results are time-stamped observations. Graders who see condition names may favour the defence. Pilot data in the sealed test set makes the main study partly tuned on its own test.
+Each of these errors corrupts evidence:
 
-- Changing several settings at once while diagnosing a gap.
-- Treating a failed replication as proof the original was wrong without contacting the authors.
-- Using a hosted API endpoint as a fixed artefact.
-- Letting graders see condition names.
-- Pilot data leaking into the sealed test set.
+- Changing several settings at once while diagnosing a gap; that would have hidden that temperature alone explained Ana's gap.
+- Treating a failed replication as proof the original was wrong without contacting the authors; the failure may come from your environment, so contact them first.
+- Using a hosted API endpoint as a fixed artefact; it can change model without notice, so its results are time-stamped observations.
+- Letting graders see condition names, so that they may favour the defence.
+- Pilot data leaking into the sealed test set, which makes the main study partly tuned on its own test.
 
 ### Exercises
 
@@ -543,13 +543,13 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 5.7 Errors and limits
 
-Each of the errors listed below overstates the defence. A larger tuning budget makes the comparison unfair. One budget point hides whether the defence holds at 200 attempts as well as 20. Pooling hides a model or family where the defence fails. Reporting only significant tests ignores the multiplicity that Holm correction addresses. A red team that fails has shown only that its attempts failed; Ana's red team found a family she had missed.
+Each of these errors overstates the defence:
 
-- Giving your defence a larger tuning budget than baselines.
-- Reporting one budget point.
-- Pooling results across models or attack families when they disagree.
-- Running many tests and reporting only significant ones.
-- Treating red-team failure to break a defence as proof of security.
+- Giving your defence a larger tuning budget than baselines, which makes the comparison unfair.
+- Reporting one budget point, which hides whether the defence holds at 200 attempts as well as 20.
+- Pooling results across models or attack families when they disagree, which hides a model or family where the defence fails.
+- Running many tests and reporting only significant ones, which ignores the multiplicity that Holm correction addresses.
+- Treating red-team failure to break a defence as proof of security; a red team that fails has shown only that its attempts failed, and Ana's red team found a family she had missed.
 
 ### Exercises
 

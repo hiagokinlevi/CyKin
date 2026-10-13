@@ -28,8 +28,8 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | 1 | [1 Integridad y métodos avanzados de investigación](#ch-01) |
 | 1 | [2 Seguridad de la IA y del aprendizaje automático: frontera de la investigación](#ch-02) |
 | 2 | [3 Propuesta de contribución original](#ch-03) |
-| 2 | [4 Replicación de la línea de base y piloto](../../en/book/MANUSCRIPT.md#ch-04) |
-| 3 | [5 Estudio principal y validación independiente](../../en/book/MANUSCRIPT.md#ch-05) |
+| 2 | [4 Replicación de la línea de base y piloto](#ch-04) |
+| 3 | [5 Estudio principal y validación independiente](#ch-05) |
 | 3 | [6 Crítica de pares y revisión](../../en/book/MANUSCRIPT.md#ch-06) |
 | 4 | [7 Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07) |
 | 4 | [8 Defensa y plan de publicación](../../en/book/MANUSCRIPT.md#ch-08) |
@@ -354,7 +354,219 @@ Una propuesta merece la aprobación cuando nombra un tipo de contribución, cong
 
 ### Siga estudiando — capítulo 03 de 08
 
-[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Replicación de líneas de base y estudio piloto
+
+### Resultados de aprendizaje
+
+Usted podrá (1) reproducir un resultado publicado de seguridad de la IA y clasificar el desenlace (reproducido, parcialmente reproducido, no reproducido); (2) documentar cada desviación; (3) realizar un estudio piloto que estime la varianza y el tamaño de la muestra; (4) construir un entorno de evaluación versionado y determinista cuando sea posible; y (5) decidir, a partir de la evidencia del piloto, si continuar, revisar o detenerse.
+
+### 4.1 Por qué replicar primero
+
+Su contribución se comparará con el trabajo previo, así que debe saber qué hace realmente ese trabajo en su entorno. La replicación detecta tres problemas habituales: cifras publicadas que dependen de configuraciones no documentadas, líneas de base más débiles de lo comunicado y código de evaluación que mide algo distinto de lo que da a entender el texto del artículo. Pineau et al. (arXiv:2003.12206) informaron sobre el programa de reproducibilidad de NeurIPS 2019 y su lista de comprobación; Henderson et al. (arXiv:1709.06560) mostraron, en aprendizaje por refuerzo, que las semillas aleatorias y los detalles de implementación bastan por sí solos para cambiar las conclusiones. Use términos precisos: *repetibilidad* (mismo equipo, misma configuración), *reproducibilidad* (otro equipo, mismos artefactos), *replicabilidad* (otro equipo, artefactos o datos nuevos). Diga cuál intentó.
+
+### 4.2 Un protocolo de replicación
+
+Las API de modelos alojados complican la replicación porque el modelo que hay detrás de un punto de acceso puede cambiar. Prefiera para el estudio principal puntos de control locales de pesos abiertos identificados por su *hash*, y trate los resultados de las API como observaciones con fecha y hora. Los cinco pasos siguientes se aplican a cada línea de base de la tesis. Los pasos 1 y 2 hacen identificable la ejecución, el paso 3 da el punto de comparación, el paso 4 explica cualquier diferencia y el paso 5 enuncia el desenlace en los términos definidos en 4.1. La replicación de Ana en 4.5 los sigue, incluido el diagnóstico de un factor cada vez que aisló la temperatura.
+
+1. **Congele el objetivo.** Registre la versión del artículo, el *commit* del código, los *hashes* de los puntos de control del modelo, la versión del conjunto de datos y la licencia.
+2. **Recree el entorno.** Fije las versiones de las bibliotecas; registre el *hardware* y la configuración numérica; anote las fuentes de no determinismo (núcleos de GPU, temperatura de muestreo, actualizaciones del modelo de la API).
+3. **Ejecute tal como se publicó.** Primero, sin cambios. Registre el resultado con intervalos a lo largo de al menos tres semillas.
+4. **Diagnostique las diferencias.** Si las cifras difieren, cambie un factor cada vez y registre cada ejecución.
+5. **Clasifique y comunique.** Un resultado está *reproducido* si su intervalo se solapa con el valor publicado y la conclusión cualitativa se mantiene; *parcialmente* si la dirección se mantiene pero el tamaño difiere de forma sustancial; *no reproducido* en otro caso. Contacte con cortesía con los autores antes de publicar un fracaso.
+
+### 4.3 Estudios piloto
+
+Un piloto no es un estudio principal pequeño; estima lo que necesita para diseñar el estudio principal. Mida la varianza de la métrica principal entre semillas y tareas, estime el tamaño del efecto, compruebe que el entorno registra todo lo necesario y cronometre cada ejecución. Use el piloto para calcular el tamaño de la muestra. Para una tasa cercana al 10 % y una semiamplitud objetivo del intervalo al 95 % de 2 puntos porcentuales, la aproximación normal da n ≈ 1,96² × 0,1 × 0,9 / 0,02² ≈ 864 ensayos por condición. Los pilotos también revelan *patologías de la métrica*: por ejemplo, un juez LLM que etiqueta las negativas como «defensa con éxito» aunque la llamada a la herramienta ya se haya producido. Corrija la medición, no el resultado.
+
+### 4.4 Ingeniería del entorno de evaluación
+
+Un entorno de evaluación debe ser determinista dada una semilla, escribir un registro JSON por ensayo (identificador de la tarea, condición, semilla, *hash* del modelo, versión de la plantilla de instrucciones, referencia a la transcripción completa, llamadas a herramientas, etiquetas) y mantener las etiquetas separadas de los resultados para que los evaluadores no vean los nombres de las condiciones. Ponga el conjunto de prueba sellado detrás de un paso de acceso aparte para que no pueda cargarse durante el desarrollo. Añada *canarios*: cargas útiles que siempre deberían tener éxito contra la línea de base sin defensa; si fallan, el entorno de evaluación o el entorno de ejecución está roto. La corrección del evaluador de Ana es un ejemplo.
+
+### 4.5 Ejemplo resuelto (caso sintético del MAAL)
+
+Ana replicó una defensa estructural publicada. Tal como se publicó, midió una ASR del 4,1 % contra la lista de cargas útiles del artículo (artículo: 1,0 %); con tres semillas el intervalo fue del 3,2 % al 5,2 %, así que no se reprodujo en tamaño. El diagnóstico mostró que el artículo usaba temperatura 0, mientras que la configuración publicada usaba 0,7; con temperatura 0 obtuvo un 1,4 % (del 0,9 % al 2,1 %), *reproducido* según el protocolo de 4.2, con el cambio de configuración registrado como desviación. Frente a sus ataques adaptativos, la defensa llegó a una ASR del 19 %. Escribió a los autores, que confirmaron la configuración de temperatura y le dieron las gracias. El piloto (90 tareas por condición) dio una desviación típica por condición de unos 1,7 puntos entre semillas y un efecto de la separación de aproximadamente 12 puntos, así que fijó el estudio principal en 900 tareas por condición y cinco semillas, amplió el conjunto de evaluación sellado respecto a las 600 tareas de la propuesta y registró el cambio. El piloto también reveló que su evaluador contaba una llamada a herramienta como bloqueada si la respuesta final contenía una negativa; reescribió el evaluador para que leyera directamente los registros de llamadas a herramientas.
+
+El laboratorio de envenenamiento ilustra por qué los pilotos deben medir más de una métrica: a medida que aumentan los puntos de puerta trasera, la exactitud *con datos limpios* apenas se mueve, mientras el *éxito del ataque* sobre entradas con disparador sube del 7,5 % al 98 %. Un piloto que solo siguiera la exactitud con datos limpios pasaría por alto el ataque por completo.
+
+```python
+"""Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
+classifier (synthetic data, stdlib only). Teaching model only."""
+import random
+rng = random.Random(11)
+def point(label, trigger=False):
+    cx = 1.0 if label else -1.0
+    x = [rng.gauss(cx, 0.8), rng.gauss(cx, 0.8), 0.0]
+    if trigger: x[2] = 5.0          # third feature is the 'trigger'
+    return x, label
+clean = [point(i % 2) for i in range(400)]
+test = [point(i % 2) for i in range(400)]
+def fit(data):
+    c = {}
+    for lab in (0, 1):
+        pts = [x for x, y in data if y == lab]
+        c[lab] = [sum(p[i] for p in pts)/len(pts) for i in range(3)]
+    return c
+def pred(c, x):
+    d = {k: sum((x[i]-v[i])**2 for i in range(3)) for k, v in c.items()}
+    return min(d, key=d.get)
+def accuracy(c, data): return sum(pred(c, x) == y for x, y in data)/len(data)
+print("label-flip poisoning (flip a fraction of class-1 labels to 0):")
+for frac in (0.0, 0.1, 0.2, 0.3, 0.4):
+    data = [(x, y) for x, y in clean]; ones = [i for i, (x, y) in enumerate(data) if y == 1]
+    for i in ones[:int(frac*len(ones))]: data[i] = (data[i][0], 0)
+    print(f"  flipped={frac:.1f} clean_test_accuracy={accuracy(fit(data), test):.3f}")
+print("backdoor: add n triggered class-1 points labelled 0")
+trig_test = [point(1, trigger=True) for _ in range(200)]
+for n in (0, 10, 40, 80):
+    data = clean + [(point(1, trigger=True)[0], 0) for _ in range(n)]
+    c = fit(data)
+    asr = sum(pred(c, x) == 0 for x, _ in trig_test)/len(trig_test)
+    print(f"  poison_points={n:3d} clean_accuracy={accuracy(c, test):.3f} attack_success={asr:.3f}")
+```
+
+Salida esperada:
+
+```text
+label-flip poisoning (flip a fraction of class-1 labels to 0):
+  flipped=0.0 clean_test_accuracy=0.965
+  flipped=0.1 clean_test_accuracy=0.965
+  flipped=0.2 clean_test_accuracy=0.953
+  flipped=0.3 clean_test_accuracy=0.950
+  flipped=0.4 clean_test_accuracy=0.945
+backdoor: add n triggered class-1 points labelled 0
+  poison_points=  0 clean_accuracy=0.965 attack_success=0.075
+  poison_points= 10 clean_accuracy=0.963 attack_success=0.145
+  poison_points= 40 clean_accuracy=0.963 attack_success=0.685
+  poison_points= 80 clean_accuracy=0.968 attack_success=0.980
+```
+
+### 4.6 Actividades de práctica
+
+1. Elija una línea de base para su tesis y ejecute los pasos 1 a 3 del protocolo. 2. Calcule un tamaño de muestra a partir de la varianza de su piloto. 3. Añada canarios y etiquetas ciegas a su entorno de evaluación. Para la replicación, registre la versión del artículo, el *commit*, los *hashes* de los puntos de control y el conjunto de datos antes de ejecutar nada, y después ejecute tal como se publicó con al menos tres semillas. Clasifique el desenlace con las tres categorías del protocolo y anote cada desviación. Para el tamaño de la muestra, use la fórmula de la discusión sobre el piloto con su propia varianza y su intervalo objetivo. Para el entorno de evaluación, confirme que los canarios tienen éxito contra la línea de base sin defensa y que los evaluadores no pueden ver los nombres de las condiciones.
+
+### 4.7 Errores y límites
+
+Cada uno de estos errores corrompe la evidencia:
+
+- Cambiar varias configuraciones a la vez al diagnosticar una diferencia; eso habría ocultado que la temperatura, por sí sola, explicaba la diferencia de Ana.
+- Tratar una replicación fallida como prueba de que el original estaba equivocado sin contactar con los autores; el fallo puede deberse a su entorno, así que contacte primero con ellos.
+- Usar un punto de acceso de una API alojada como un artefacto fijo; puede cambiar de modelo sin aviso, así que sus resultados son observaciones con fecha y hora.
+- Dejar que los evaluadores vean los nombres de las condiciones, de modo que pueden favorecer la defensa.
+- Datos del piloto que se filtran al conjunto de prueba sellado, lo que hace que el estudio principal quede en parte ajustado sobre su propia prueba.
+
+### Ejercicios — capítulo 4
+
+- **EX021 — Términos.** Defina repetibilidad, reproducibilidad y replicabilidad en una línea cada una. Rúbrica: 3 = las tres correctas; 2 = dos; 1 = una; 0 = ninguna.
+- **EX022 — Clasificar.** ASR publicada del 1,0 %; su intervalo con tres semillas, del 0,9 % al 2,1 %, con la misma conclusión. Clasifique y justifique. Rúbrica: 3 = reproducido o parcialmente reproducido, con un razonamiento justificado sobre el solapamiento y el tamaño; 2 = solo la etiqueta; 1 = incorrecto pero razonado; 0 = ninguno.
+- **EX023 — Tamaño de la muestra.** Calcule n por condición para una tasa cercana al 20 % y una semiamplitud de 3 puntos (95 %). Rúbrica: 3 = ≈683 con la fórmula; 2 = error aritmético; 1 = solo la fórmula; 0 = ninguno.
+- **EX024 — Lectura del laboratorio.** En el laboratorio de envenenamiento, ¿cuáles son la exactitud con datos limpios y el éxito del ataque con 40 puntos envenenados, y qué enseña eso sobre la supervisión? Rúbrica: 3 = 0,963 y 0,685; las métricas con datos limpios ocultan las puertas traseras; 2 = solo los números; 1 = vago; 0 = incorrecto.
+- **EX025 — Canarios.** Explique qué es un canario de evaluación y qué significa si falla. Rúbrica: 3 = ensayo de resultado conocido; el fallo indica una avería del entorno de evaluación o de ejecución, detenerse; 2 = solo la definición; 1 = vago; 0 = incorrecto.
+- **EX026 — Error del evaluador.** ¿Por qué contar las negativas en la respuesta final no es una medida válida del bloqueo de llamadas a herramientas? Rúbrica: 3 = el efecto secundario dañino puede haberse producido ya; medir las acciones a partir de los registros; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+La replicación le dice qué hace realmente el trabajo previo en sus manos; el piloto le dice qué tamaño debe tener el estudio principal y si sus mediciones son sólidas. Ambos son evidencia por derecho propio y pertenecen a la tesis.
+
+### Siga estudiando — capítulo 04 de 08
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Estudio principal y validación independiente
+
+### Resultados de aprendizaje
+
+Usted podrá (1) realizar un estudio principal prerregistrado y llevar un registro de desviaciones; (2) evaluar una defensa bajo ataque adaptativo con un presupuesto justo; (3) analizar los resultados con comparaciones emparejadas, intervalos y corrección por pruebas múltiples; (4) encargar una validación independiente (equipo rojo, segunda implementación o replicación externa); y (5) comunicar lo que la evidencia respalda y lo que no.
+
+### 5.1 Ejecutar un estudio prerregistrado
+
+Congele el protocolo: versión del modelo de amenazas, hipótesis, métricas, tamaños de muestra, semillas, *hashes* de los modelos, plantillas de instrucciones, presupuesto del ataque y el *script* de análisis. Guárdelo como un documento con fecha y hora; un *commit* fechado en un repositorio o un registro en su institución o en un registro público basta para la mayoría de los foros. Ejecute el estudio exactamente tal como se congeló. Cada cambio (un nodo que se cae, un punto de control del modelo que no carga, un error en una plantilla de tarea) va a un *registro de desviaciones* con la fecha, la razón y el efecto esperado. Las desviaciones son normales; ocultarlas no lo es.
+
+### 5.2 Ataque adaptativo con un presupuesto justo
+
+La principal amenaza a la validez en los artículos sobre defensas es un adversario débil. Para cada defensa, ejecute (a) los ataques estáticos usados para las líneas de base; (b) ataques dirigidos explícitamente contra el mecanismo de la defensa: para una defensa por separación, cargas útiles que imitan los delimitadores del canal reservado para instrucciones, cargas útiles que piden al modelo *repetir* contenido en una posición privilegiada, y cargas útiles en varios pasos que usan una herramienta permitida para preparar una no permitida; y (c) un ataque basado en optimización o en búsqueda cuando el modelo de amenazas lo permita. Dé a todas las defensas el mismo presupuesto (consultas, variantes de carga útil, cómputo) y comunique el éxito del ataque en función del presupuesto, no solo en un punto: una defensa que resiste con 20 intentos pero falla con 200 tiene un significado de seguridad distinto del de otra que resiste en ambos casos. La orientación de arXiv:1902.06705 (comprobar que más esfuerzo de ataque nunca reduce el éxito y que los ataques sin límite llegan al 100 % cuando deben) se aplica directamente.
+
+### 5.3 Análisis
+
+Use comparaciones emparejadas cuando las condiciones compartan tareas: las mismas 900 tareas con la línea de base y con la defensa. El *bootstrap* emparejado del capítulo 1 estima la reducción de la ASR con un intervalo. Cuando pruebe varias hipótesis o varias familias de ataques, controle los falsos descubrimientos; Holm–Bonferroni es sencillo y conservador. Comunique los tamaños del efecto con intervalos, los costes de utilidad sobre las mismas tareas y los resultados por familia, para que un promedio no oculte una familia en la que la defensa falla. Estratifique por modelo: una defensa que ayuda a un modelo y perjudica a otro necesita ambos números en el resumen, no un único número agregado.
+
+### 5.4 Validación independiente
+
+La evidencia doctoral es más fuerte cuando alguien distinto del autor intenta romperla o reproducirla. Hay tres formas practicables. Una **validación por equipo rojo**: entregue a un equipo aparte la defensa, la documentación y el presupuesto, pero no las tareas de prueba selladas, y pídale la ASR máxima. Una **segunda implementación**: otra persona implementa el método solo a partir del texto del artículo; las diferencias revelan decisiones no documentadas. Una **replicación externa**: un colaborador de otro laboratorio ejecuta los artefactos que usted ha publicado. Acuerden de antemano cómo se comunicarán los resultados, también si gana el equipo rojo. La matriz MITRE ATLAS es una lista de comprobación útil para la cobertura del equipo rojo, y NIST AI 600-1 incluye el *red teaming* entre las acciones sugeridas para la gestión del riesgo de la IA generativa.
+
+### 5.5 Ejemplo resuelto (caso sintético del MAAL)
+
+El protocolo congelado de Ana ejecutó 900 tareas × 4 condiciones × 5 semillas en dos modelos locales. Registro de desviaciones: un punto de control no cargó con la semilla 3 y se volvió a ejecutar tras corregir un controlador (sin efecto esperado). Resultados (sintéticos): con cargas útiles estáticas, la ASR fue del 31 % (sin defensa), del 18 % (filtro), del 6 % (lista de permitidos) y del 2,1 % (separación + lista de permitidos). Bajo ataque adaptativo con 200 variantes por familia de tareas, la ASR pasó a ser del 44 %, del 37 %, del 11 % y del 5,8 %. La reducción emparejada de separación + lista de permitidos frente a la lista de permitidos sola fue de 5,2 puntos (IC al 95 %: 3,9–6,6) y sobrevivió a la corrección de Holm. El éxito de las tareas cayó 2,4 puntos (H2 cumplida). El equipo rojo independiente, con el mismo presupuesto, llegó al 8,9 % en un modelo encadenando una herramienta de búsqueda permitida con un resumen que repetía instrucciones, una familia que Ana no había previsto. No la descartó: se convirtió en una limitación con nombre y en una nueva familia de ataques en el artículo.
+
+El laboratorio de inferencia de pertenencia recuerda que la validación independiente también se aplica a la medición: la señal del «ataque» (AUC de 0,60 con k = 1) casi desaparece con k = 25. Que su auditoría encuentre fuga depende tanto de la configuración del modelo como del ataque.
+
+```python
+"""Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
+that returns a confidence score. Synthetic records only; teaching model."""
+import random, math
+rng = random.Random(5)
+def rec(): 
+    y = rng.random() < 0.5
+    return [rng.gauss(0.6 if y else -0.6, 1.0) for _ in range(4)], int(y)
+members = [rec() for _ in range(150)]; nonmembers = [rec() for _ in range(150)]
+def confidence(x, y, k):
+    # k-NN vote share for the true label, computed over the training set
+    d = sorted((sum((a-b)**2 for a, b in zip(x, m)), my) for m, my in members)
+    return sum(1 for _, my in d[:k] if my == y)/k
+def auc(pos, neg):
+    s = sum((p > n) + 0.5*(p == n) for p in pos for n in neg)
+    return s/(len(pos)*len(neg))
+for k in (1, 5, 25):
+    pos = [confidence(x, y, k) for x, y in members]
+    neg = [confidence(x, y, k) for x, y in nonmembers]
+    best = max(sum(p >= t for p in pos)/len(pos) - sum(n >= t for n in neg)/len(neg)
+               for t in sorted(set(pos + neg)))
+    print(f"k={k:2d} attack_auc={auc(pos, neg):.3f} best_advantage={best:.3f}")
+```
+
+Salida esperada:
+
+```text
+k= 1 attack_auc=0.600 best_advantage=0.200
+k= 5 attack_auc=0.521 best_advantage=0.073
+k=25 attack_auc=0.520 best_advantage=0.060
+```
+
+### 5.6 Actividades de práctica
+
+1. Congele su protocolo y abra un registro de desviaciones. 2. Escriba tres ataques adaptativos dirigidos contra el mecanismo de su defensa. 3. Redacte un encargo para el equipo rojo con presupuesto, alcance, reglas de enfrentamiento y condiciones de comunicación. Su protocolo debe enumerar la versión del modelo de amenazas, las hipótesis, las métricas, los tamaños de muestra, las semillas, los *hashes* de los modelos, las plantillas, el presupuesto del ataque y el *script* de análisis, con una fecha. Los ataques adaptativos deben dirigirse a cómo funciona su defensa, como hacen las cargas útiles de Ana que imitan delimitadores o piden repeticiones. El encargo al equipo rojo debe entregar la defensa y el presupuesto, pero no las tareas selladas, y decir de antemano cómo se comunicarán los resultados si gana el equipo rojo.
+
+### 5.7 Errores y límites
+
+Cada uno de estos errores exagera la defensa:
+
+- Dar a su defensa un presupuesto de ajuste mayor que el de las líneas de base, lo que hace injusta la comparación.
+- Comunicar un solo punto de presupuesto, lo que oculta si la defensa resiste con 200 intentos igual que con 20.
+- Agregar los resultados de distintos modelos o familias de ataques cuando discrepan, lo que oculta un modelo o una familia en la que la defensa falla.
+- Realizar muchas pruebas y comunicar solo las significativas, lo que ignora la multiplicidad que aborda la corrección de Holm.
+- Tratar el hecho de que un equipo rojo no rompa una defensa como prueba de seguridad; un equipo rojo que fracasa solo ha mostrado que sus intentos fracasaron, y el equipo rojo de Ana encontró una familia que a ella se le había escapado.
+
+### Ejercicios — capítulo 5
+
+- **EX027 — Registro de desviaciones.** Escriba dos entradas del registro de desviaciones para problemas plausibles del estudio. Rúbrica: 3 = fecha, cambio, razón y efecto esperado en ambas; 2 = una completa; 1 = vago; 0 = ninguna.
+- **EX028 — Ataques adaptativos.** Proponga dos ataques adaptativos contra una defensa que envuelve el texto recuperado en delimitadores especiales. Rúbrica: 3 = dos ataques dirigidos al mecanismo (falsificación de delimitadores, eco o repetición, encadenamiento de herramientas) descritos de forma segura; 2 = uno; 1 = genérico; 0 = ninguno o con detalles operativos dañinos.
+- **EX029 — Curva de presupuesto.** Explique por qué la ASR debe comunicarse como una curva en función del presupuesto del ataque. Rúbrica: 3 = muestra cómo se degrada la seguridad y detecta ataques rotos o fallos de monotonía; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX030 — Holm.** Con valores p de 0,004, 0,020 y 0,030 para tres pruebas con α = 0,05, ¿cuáles sobreviven a Holm–Bonferroni? Rúbrica: 3 = 0,004 (≤0,0167), 0,020 (≤0,025) y 0,030 (≤0,05) sobreviven todas, con los pasos mostrados; 2 = respuesta correcta sin pasos; 1 = parcial; 0 = incorrecto.
+- **EX031 — Lectura del laboratorio.** En el laboratorio de MIA, ¿cuáles son el AUC y la ventaja con k = 1 y con k = 25, y qué explica el cambio? Rúbrica: 3 = 0,600/0,200 frente a 0,520/0,060; con k = 1 memoriza (cada miembro es su propio vecino), con k mayor generaliza; 2 = solo los números; 1 = vago; 0 = incorrecto.
+- **EX032 — Resultado del equipo rojo.** ¿Cómo debe comunicar Ana el 8,9 % del equipo rojo? Rúbrica: 3 = en los resultados principales y como limitación al nivel del resumen, describir la familia con un nivel de abstracción seguro, revisar las afirmaciones; 2 = solo mencionarlo; 1 = solo en un apéndice; 0 = omitirlo.
+
+### Síntesis del capítulo
+
+Un estudio principal se gana la confianza con un protocolo congelado, un adversario justo y adaptativo, un análisis emparejado y corregido, y el intento de otra persona de romperlo. Lo que encuentra el equipo rojo forma parte de la contribución.
+
+### Siga estudiando — capítulo 05 de 08
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](../../en/book/MANUSCRIPT.md#ch-06)
 
 <a id="worked-results"></a>
 
@@ -401,6 +613,30 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX019.** «Si H1 no se confirma, comunicaremos la diferencia emparejada con su intervalo, los resultados por familia y los costes de utilidad, concluiremos que la separación no añade un beneficio medible sobre la lista de permitidos bajo este modelo de amenazas y recomendaremos a los profesionales que prioricen la reducción de privilegios.»
 
 **EX020.** (a) Público, con documentación. (b) Acceso controlado para investigadores verificados; la versión pública usa canarios. (c) Primero divulgación coordinada al fabricante; publicar tras el plazo acordado sin detalles operativos.
+
+**EX021.** Repetibilidad: mismo equipo, misma configuración, mismo resultado. Reproducibilidad: otro equipo, mismos artefactos, mismo resultado. Replicabilidad: otro equipo, artefactos o datos nuevos, resultado coherente.
+
+**EX022.** Reproducido (o al menos parcialmente): el intervalo del 0,9 % al 2,1 % contiene el 1,0 % y la conclusión se mantiene; anote que el cambio de configuración (temperatura 0) fue necesario para llegar a él.
+
+**EX023.** n ≈ 1,96² × 0,2 × 0,8 / 0,03² = 3,8416 × 0,16 / 0,0009 ≈ 683 por condición.
+
+**EX024.** Exactitud con datos limpios de 0,963 y éxito del ataque de 0,685. Las métricas con datos limpios pueden parecer perfectas mientras una puerta trasera funciona; la supervisión y la evaluación necesitan pruebas orientadas a disparadores, procedencia de los datos y comprobaciones de anomalías.
+
+**EX025.** Un canario es un ensayo cuyo resultado se conoce de antemano (por ejemplo, una carga útil contra la línea de base sin defensa que debe tener éxito). Si falla, ha cambiado el entorno de evaluación, el de ejecución o el modelo; deténgase y corríjalo antes de recoger datos.
+
+**EX026.** La llamada dañina a la herramienta puede ejecutarse antes de que el modelo escriba una negativa; el texto final no dice nada de los efectos secundarios. Mida las acciones a partir de los registros de llamadas a herramientas.
+
+**EX027.** «2026-03-04: semilla 3 ejecutada de nuevo tras corregir el controlador de la GPU; razón: el punto de control no cargó; efecto esperado: ninguno (decodificación determinista).» «2026-03-09: plantilla de tarea 17 corregida (faltaba la descripción de una herramienta) en todas las condiciones; razón: error detectado en los registros; efecto esperado: pequeño y simétrico entre condiciones; las ejecuciones anteriores de la plantilla 17 se excluyen y se contabilizan.»
+
+**EX028.** (1) Falsificación de delimitadores: el texto recuperado imita el delimitador de cierre y abre una falsa sección de instrucciones. (2) Preparación por eco: el contenido pide al modelo que cite un pasaje en su propia salida (de confianza) o en un argumento de herramienta, que un paso posterior trata como instrucción. (El encadenamiento a través de herramientas permitidas es otro.) Descritos solo a nivel de diseño.
+
+**EX029.** La seguridad depende del esfuerzo; una curva muestra con qué rapidez se degrada una defensa, permite a los lectores elegir su nivel de amenaza y deja al descubierto los ataques rotos (un éxito que cae con más presupuesto, o que nunca llega al 100 % sin límite).
+
+**EX030.** Ordenados: 0,004 ≤ 0,05/3 = 0,0167 → rechazar; 0,020 ≤ 0,05/2 = 0,025 → rechazar; 0,030 ≤ 0,05/1 → rechazar. Las tres sobreviven.
+
+**EX031.** k = 1: AUC 0,600, ventaja 0,200; k = 25: AUC 0,520, ventaja 0,060. Con k = 1, el vecino más próximo de cada miembro es él mismo, así que los miembros obtienen confianza 1 para su propia etiqueta; con k mayor, la puntuación refleja la población, de modo que miembros y no miembros parecen iguales.
+
+**EX032.** Como resultado principal: comunicarlo junto a sus propias cifras y en las limitaciones del resumen, describir la familia de encadenamiento de herramientas con un nivel de abstracción seguro, acotar las afirmaciones y añadirlo al trabajo futuro.
 
 <a id="references"></a>
 

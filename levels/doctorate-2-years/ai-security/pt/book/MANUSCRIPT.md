@@ -452,13 +452,13 @@ backdoor: add n triggered class-1 points labelled 0
 
 ### 4.7 Erros e limites
 
-Cada um dos erros listados abaixo corrompe as evidências. Mudar várias configurações ao mesmo tempo teria escondido que a temperatura, sozinha, explicava a diferença encontrada por Ana. Uma replicação que falha pode vir do seu ambiente, então contate primeiro os autores. Um endpoint hospedado pode trocar de modelo sem aviso, então os seus resultados são observações com data e hora. Avaliadores que veem os nomes das condições podem favorecer a defesa. Dados do piloto no conjunto de teste lacrado fazem o estudo principal ser parcialmente ajustado no seu próprio teste.
+Cada um destes erros corrompe as evidências:
 
-- Mudar várias configurações ao mesmo tempo ao diagnosticar uma diferença.
-- Tratar uma replicação que falhou como prova de que o original estava errado, sem contatar os autores.
-- Usar um endpoint de API hospedada como artefato fixo.
-- Deixar os avaliadores verem os nomes das condições.
-- Dados do piloto vazando para o conjunto de teste lacrado.
+- Mudar várias configurações ao mesmo tempo ao diagnosticar uma diferença; isso teria escondido que a temperatura, sozinha, explicava a diferença encontrada por Ana.
+- Tratar uma replicação que falhou como prova de que o original estava errado, sem contatar os autores; a falha pode vir do seu ambiente, então contate-os primeiro.
+- Usar um endpoint de API hospedada como artefato fixo; ele pode trocar de modelo sem aviso, então os seus resultados são observações com data e hora.
+- Deixar os avaliadores verem os nomes das condições, de modo que podem favorecer a defesa.
+- Dados do piloto vazando para o conjunto de teste lacrado, o que faz o estudo principal ser parcialmente ajustado no seu próprio teste.
 
 ### Exercícios
 
@@ -545,13 +545,13 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 5.7 Erros e limites
 
-Cada um dos erros listados abaixo superestima a defesa. Um orçamento de ajuste maior torna a comparação injusta. Um único ponto de orçamento esconde se a defesa resiste tanto a 200 tentativas quanto a 20. A agregação esconde um modelo ou uma família em que a defesa falha. Relatar só os testes significativos ignora a multiplicidade que a correção de Holm trata. Um red team que falha mostrou apenas que as suas tentativas falharam; o red team de Ana encontrou uma família que ela não tinha visto.
+Cada um destes erros superestima a defesa:
 
-- Dar à sua defesa um orçamento de ajuste maior do que o das linhas de base.
-- Relatar um único ponto de orçamento.
-- Agregar resultados entre modelos ou famílias de ataque quando eles divergem.
-- Executar muitos testes e relatar apenas os significativos.
-- Tratar a incapacidade do red team de quebrar uma defesa como prova de segurança.
+- Dar à sua defesa um orçamento de ajuste maior do que o das linhas de base, o que torna a comparação injusta.
+- Relatar um único ponto de orçamento, o que esconde se a defesa resiste tanto a 200 tentativas quanto a 20.
+- Agregar resultados entre modelos ou famílias de ataque quando eles divergem, o que esconde um modelo ou uma família em que a defesa falha.
+- Executar muitos testes e relatar apenas os significativos, o que ignora a multiplicidade que a correção de Holm trata.
+- Tratar a incapacidade do red team de quebrar uma defesa como prova de segurança; um red team que falha mostrou apenas que as suas tentativas falharam, e o red team de Ana encontrou uma família que ela não tinha visto.
 
 ### Exercícios
 
