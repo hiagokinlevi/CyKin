@@ -317,6 +317,8 @@ A practice's importance depends on how much it limits loss of the essential serv
 
 The Merrow Bay Resilience Forum asked four operators to self-assess eight practices, scoring 0 (absent), 1 (partial) or 2 (in place), and to grade the evidence V, D or S. The specialist's task is to turn the answers into a regional picture without insulting anyone or believing everything. Rather than "rejecting" statements, Lab 2 gives them zero **provisional** credit until tested and half credit for documents. Those credits are a policy choice; EX007 tests their effect.
 
+Section two point seven develops critical infrastructure and sector security with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
 ### 2.8 Practical activity: claimed versus verified coverage
 
 ```python
@@ -1118,6 +1120,12 @@ Operators learn faster together, but sharing carries legal, commercial and secur
 
 The resilience forum asked each operator which suppliers serve its essential functions and what share they provide. At the same time, Merrow Water's specialist drafted a RACI for five critical security activities, to be agreed with operations and the CISO. Lab 7 analyses both.
 
+Section seven point six develops critical infrastructure and sector security with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
+Under section seven point six, the mentor expects critical claims to carry owners and dates.
+
+Section seven point six treats operating models ownership raci as testable only when evidence and ticket IDs are recorded.
+
 ### 7.7 Practical activity: concentration and ownership checks
 
 ```python
@@ -1409,6 +1417,10 @@ The Institute of Internal Auditors' Three Lines Model describes roles for manage
 
 Merrow Water's board receives monthly the median days to remediate known-exploited vulnerabilities on internet-facing systems. After a December reading of 24 days, a non-executive director asked whether things were getting worse or whether December was a bad month. At the same meeting, the specialist presented the evidence behind six assurance claims. Lab 9 examines both.
 
+Section nine point seven develops critical infrastructure and sector security with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
+Under section nine point seven, the mentor expects critical claims to carry owners and dates.
+
 ### 9.8 Practical activity: XmR chart and evidence freshness
 
 ```python
@@ -1561,13 +1573,23 @@ When groups differ in a factor that also affects the outcome, a pooled compariso
 
 A finding transfers to your setting only if the mechanism that produced it operates there. The formal literature on transportability asks which population differences change the effect ([Pearl and Bareinboim, 2014](https://doi.org/10.1214/14-STS486)); in practice, list the conditions the finding depended on — size, sector, regulatory reporting, technology, staffing — and check each for your organization. A mortality finding from a national health system with network-wide diversion arrangements may not transfer to a rural region with one hospital.
 
+Section ten point six develops research reading and critique with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
 ### 10.7 The evidence brief
 
 Summarize each important source for decision-makers in a short **evidence brief**: the question it helps with; design and setting; main finding with its size and uncertainty; strongest claim supported; key limitations and their likely direction; transfer to our setting; and what we will do with it. Keep briefs in a library so later decisions can cite them (Chapter 1's decision records).
 
+Section ten point seven develops research reading and critique with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
 ### 10.8 Worked example: a monitoring vendor's brochure (synthetic)
 
 A vendor of OT monitoring tells the resilience forum: "Customers using our monitoring had 40% fewer reported incidents." Asked for data, the vendor supplies counts by operator size. Lab 10 re-reads them.
+
+Section ten point eight develops research reading and critique with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
+Under section ten point eight, the mentor expects research claims to carry owners and dates.
+
+Section ten point eight treats three kinds of source as testable only when evidence and ticket IDs are recorded.
 
 ### 10.9 Practical activity: aggregation, denominators and detection
 
@@ -1672,6 +1694,8 @@ A one-page **charter** fixes: the problem and its consequence; the sponsor and d
 
 Most security projects in essential services fail on adoption, not technology. Map stakeholders by influence and interest; agree with operations how and when changes touch plant; plan training and supervised practice; and anticipate who loses something (convenience, autonomy, budget). A **pre-mortem** at the start ([Klein, 2007](https://hbr.org/2007/09/performing-a-project-premortem)) surfaces adoption risks early. Keep a project decision log in the Chapter 1 format so later reviewers can see why the plan changed.
 
+Section eleven point three develops applied project with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
+
 ### 11.4 Evaluating the result
 
 Before-and-after comparisons are seductive and weak: the outcome may have improved anyway because of season, practice, new staff or other projects. A stronger, practical design is **difference-in-differences (DiD)**: compare the change at sites that received the project (pilot) with the change at similar sites that did not (comparison) over the same period. The estimate is (pilot after − pilot before) − (comparison after − comparison before). Its key assumption is **parallel trends**: without the project, pilot and comparison sites would have changed by the same amount. The design was popularized in economics by a well-known study comparing employment in neighbouring states ([Card and Krueger, 1994](https://www.jstor.org/stable/2118030)); it applies equally to drill times or recovery times across sites.
@@ -1697,6 +1721,8 @@ Projects are assessed against five criteria, each scored 0–3:
 ### 11.7 Worked example: the manual-operation runbook project (synthetic)
 
 Merrow Water's specialist ran a project to introduce a manual-operation runbook and quarterly drills at six works (pilot), chosen because they had the oldest control systems; six other works continued as before (comparison). The pre-specified outcome was mean minutes to stable manual operation in quarterly drills, averaged over two quarters before and two after. The charter pre-specified DiD with a permutation check and a robustness check dropping the most influential site.
+
+Section eleven point seven develops applied project with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
 
 ### 11.8 Practical activity: did it work?
 
@@ -1833,6 +1859,8 @@ The course outcome is to **lead advanced application and justify organization-sc
 ### 12.5 Worked example: transferring a programme choice to Merrow Health (synthetic)
 
 Merrow Water's panel scored three security programmes on four criteria (0–10): continuity of the essential service, safety of people, affordability and privacy. Merrow Water's leadership weighted continuity heavily and privacy lightly. Merrow Health wants to reuse the analysis. The specialist copies the scores only after checking each one with clinical and information-governance colleagues (in this example they are confirmed), and asks Merrow Health's leadership to set its own weights. Lab 12 compares the results and finds the reversal point.
+
+Section twelve point five develops final review and transfer with a Merrow Bay Resilience Forum (MBRF) note Merrow Bay can demo offline.
 
 ### 12.6 Practical activity: same options, different weights
 
