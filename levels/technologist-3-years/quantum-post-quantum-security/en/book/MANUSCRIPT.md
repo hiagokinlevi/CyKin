@@ -993,7 +993,7 @@ The first error is the portal case that Lab T in Chapter 17 detects: hybrid pres
 
 ### 14.7 Client-side configuration
 
-Servers are only half of the negotiation. Clients choose which key shares to send first, and a wrong prediction costs the extra round trip described in Section 14.3. Modern browsers and current libraries send the hybrid share by default. For KLS's own SDKs and internal clients, set the group list explicitly in code or configuration, test against the staging gateway, and record the library version in the release notes so customers know which SDK versions negotiate hybrid key exchange.
+Servers are only half of the negotiation. Clients choose which key shares to send first, and a wrong prediction costs the extra round trip described in Section 14.3. Modern browsers and current libraries send the hybrid share by default. For KLS's own SDKs and internal clients, set the group list explicitly in code or configuration, test against the staging gateway, and record the library version in the release notes so customers know which SDK versions negotiate hybrid key exchange. KLS's Go SDK, for example, sets the group list in its own TLS configuration, so a customer who upgrades the SDK gets the hybrid share without changing any code.
 
 ### Exercises
 
