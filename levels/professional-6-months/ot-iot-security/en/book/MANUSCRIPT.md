@@ -190,7 +190,7 @@ Record which source supplied each fact, and mark anything seen only on a drawing
 
 Some sensors report over wireless links to gateways. Ask where each gateway connects and who manages its keys.
 
-A wireless gateway can be an unlisted way into the building network, and its keys may never have been changed since installation. Record each gateway in the inventory with its location, the network it connects to, who holds its keys and when they were last changed. Treat a gateway that reaches VLAN 300 as part of the BMS zone.  Ask the contractor for this list in writing.
+A wireless gateway can be an unlisted way into the building network, and its keys may never have been changed since installation. Record each gateway in the inventory with its location, the network it connects to, who holds its keys and when they were last changed. Treat a gateway that reaches VLAN 300 as part of the BMS zone. Ask the contractor for this list in writing.
 
 ### Worked example (synthetic Millbrook)
 
@@ -273,7 +273,7 @@ Write the compensating controls next to each unsupported device in the inventory
 
 The inventory feeds advisory matching (Chapter 10), segmentation (Chapter 8) and the capstone risk report (Chapter 12). Keep it under access control.
 
-Because the inventory names devices, versions and addresses, it is also a useful map for an attacker. Share it with the people who need it, such as estates, the network team and the contractors for their own systems, and keep older copies out of email. Record who changed it and when, so a reader can trust its contents.  Review access to it each quarter.
+Because the inventory names devices, versions and addresses, it is also a useful map for an attacker. Share it with the people who need it, such as estates, the network team and the contractors for their own systems, and keep older copies out of email. Record who changed it and when, so a reader can trust its contents. Review access to it each quarter.
 
 ### 4.5 Where the data comes from
 
@@ -285,7 +285,7 @@ At Millbrook the handover file from the BMS contractor is the starting point, bu
 
 Write the clinical consequence in plain words for each device, agreed with estates and clinical leads, so priorities are clear to non-specialists.
 
-For example: AHU-OT1, theatre 1 loses pressure control; MGAS-PANEL, staff not warned of an oxygen supply fault; LIFT-CTRL, delayed patient transfers between floors. Write these with estates and clinical leads, not alone. The column later drives the order of work in the risk report, so its wording should be clear to managers who have never seen the plant.  Review the wording yearly.
+For example: AHU-OT1, theatre 1 loses pressure control; MGAS-PANEL, staff not warned of an oxygen supply fault; LIFT-CTRL, delayed patient transfers between floors. Write these with estates and clinical leads, not alone. The column later drives the order of work in the risk report, so its wording should be clear to managers who have never seen the plant. Review the wording yearly.
 
 ### Worked example (synthetic Millbrook)
 
@@ -554,7 +554,7 @@ Agree beforehand which BMS points will be checked after each step and who will c
 
 Publish the zone diagram and rule table with revision numbers and owners so contractors can request changes against them.
 
-Keep the diagram and table in a place estates, the network team and contractors can all read, and refer to them in every change request. When a change is made, update the revision number and note who approved it. Out-of-date documentation leads contractors to request rules that already exist or that contradict the design.  Keep superseded revisions so that past decisions can be traced.
+Keep the diagram and table in a place estates, the network team and contractors can all read, and refer to them in every change request. When a change is made, update the revision number and note who approved it. Out-of-date documentation leads contractors to request rules that already exist or that contradict the design. Keep superseded revisions so that past decisions can be traced.
 
 ### Worked example (synthetic Millbrook)
 
@@ -619,7 +619,7 @@ Run with `python3 lab_trend.py`. Verified output:
 09:00 setpoint 26.0->21.0 in window
 ```
 
-The windows should be agreed with estates and written down, with any exceptions such as emergency repairs. Outside the window, the question is simply what happened and who did it. Lab 9 checks one theatre setpoint trend against a morning window and flags any change outside it.  Review them yearly.
+The windows should be agreed with estates and written down, with any exceptions such as emergency repairs. Outside the window, the question is simply what happened and who did it. Lab 9 checks one theatre setpoint trend against a morning window and flags any change outside it. Review them yearly.
 
 ### 9.3 Reading the output
 
@@ -637,7 +637,7 @@ Record what each source showed, including the ones that showed nothing. At Millb
 
 Where the BMS supports it, raise an alarm for setpoint changes outside windows on critical units, sent to the estates on-call engineer.
 
-Agree with estates which units count as critical, such as the theatre air-handling units, and what the on-call engineer should do on receiving the alarm. An alarm that nobody acts on soon gets ignored. Test it once after setting it up, during a planned change, and record the result.  Review the alarm list each quarter with the on-call engineers, removing units that no longer need it.
+Agree with estates which units count as critical, such as the theatre air-handling units, and what the on-call engineer should do on receiving the alarm. An alarm that nobody acts on soon gets ignored. Test it once after setting it up, during a planned change, and record the result. Review the alarm list each quarter with the on-call engineers, removing units that no longer need it.
 
 ### 9.6 Keeping evidence
 
@@ -707,7 +707,7 @@ Keep the register in the same place as the inventory, so that a new advisory can
 
 Afterwards, the contractor confirms every point reports, alarms work and schedules are correct; estates signs off.
 
-Agree the checks before the patch, with a list of points and alarms to test and the person who will test them. Keep a fall-back ready, such as the previous firmware or manual keys for doors. Record the results and the sign-off in the advisory register, so the item can be closed with evidence.  Patch one unit first where possible, and check it before moving to the next.
+Agree the checks before the patch, with a list of points and alarms to test and the person who will test them. Keep a fall-back ready, such as the previous firmware or manual keys for doors. Record the results and the sign-off in the advisory register, so the item can be closed with evidence. Patch one unit first where possible, and check it before moving to the next.
 
 ### 10.6 Vendor contact
 
@@ -771,13 +771,13 @@ Before isolating, check how each critical controller behaves without the server,
 
 Preserve logs and images before rebuilding; restore BMS-WS and the server from verified backups; check every critical point against local readings; reconnect conduits one at a time.
 
-Agree beforehand where evidence will be stored and who will take it, so that rebuilding is not delayed. At Millbrook BMS-WS was rebuilt from a verified image the next morning and conduits were restored by 14:00 after point checks. Keep the evidence until the incident lead decides it is no longer needed.  Record each step and its time.
+Agree beforehand where evidence will be stored and who will take it, so that rebuilding is not delayed. At Millbrook BMS-WS was rebuilt from a verified image the next morning and conduits were restored by 14:00 after point checks. Keep the evidence until the incident lead decides it is no longer needed. Record each step and its time.
 
 ### 11.5 Communication
 
 The incident lead informs hospital management, who decide about external notification. Analysts do not contact the press or regulators themselves.
 
-Analysts support the incident lead by providing clear facts with times and sources. They should avoid informal messages to colleagues or contractors that could spread inaccurate information. If a regulator or journalist contacts an analyst directly, pass the request to the incident lead without comment.  Keep a copy of every update sent, with its time, so the incident record shows what was said and when it was said.
+Analysts support the incident lead by providing clear facts with times and sources. They should avoid informal messages to colleagues or contractors that could spread inaccurate information. If a regulator or journalist contacts an analyst directly, pass the request to the incident lead without comment. Keep a copy of every update sent, with its time, so the incident record shows what was said and when it was said.
 
 ### Worked example (synthetic Millbrook)
 
@@ -829,19 +829,19 @@ Agree the scales before rating any finding, and write a sentence explaining each
 
 Each one names a specific change, an owner, a date and how completion will be shown. Include quick wins (closing exposure, removing old remote tools) and longer projects (replacing unsupported plant).
 
-At Millbrook the recommendations included replacing LIFT-CTRL and a weekly check of gateway accounts. Each was written with an owner, a date and the evidence that would show completion, such as a purchase order or a weekly account report. Vague recommendations without owners rarely lead to change.  Separate quick wins from projects in the list.
+At Millbrook the recommendations included replacing LIFT-CTRL and a weekly check of gateway accounts. Each was written with an owner, a date and the evidence that would show completion, such as a purchase order or a weekly account report. Vague recommendations without owners rarely lead to change. Separate quick wins from projects in the list.
 
 ### 12.4 Presenting
 
 Lead with the top three risks in patient terms; show what has already improved; ask for decisions, not admiration.
 
-Keep the presentation short, with one slide per top risk and one slide of improvements. Bring the evidence appendix in case managers ask, but do not present it. End with the specific decisions needed, such as funding to replace LIFT-CTRL, and confirm who will act on each decision.  Send the slides afterwards with the summary, so that absent managers see the same decisions and owners.
+Keep the presentation short, with one slide per top risk and one slide of improvements. Bring the evidence appendix in case managers ask, but do not present it. End with the specific decisions needed, such as funding to replace LIFT-CTRL, and confirm who will act on each decision. Send the slides afterwards with the summary, so that absent managers see the same decisions and owners.
 
 ### 12.5 Evidence appendix
 
 For each finding, keep the photograph, log extract or configuration excerpt that supports it, with the date and who collected it. Managers rarely read the appendix, but auditors and the next analyst will, and it lets anyone check that the finding was real.
 
-Store the appendix with access controls, because it contains details about devices, addresses and weaknesses. Link each item to its finding number, and record where the original evidence is kept.  A finding with no supporting item should be marked unconfirmed until evidence is collected.
+Store the appendix with access controls, because it contains details about devices, addresses and weaknesses. Link each item to its finding number, and record where the original evidence is kept. A finding with no supporting item should be marked unconfirmed until evidence is collected.
 
 ### 12.6 After the meeting
 
@@ -913,7 +913,7 @@ Model answers for EX001–EX060. Millbrook Hospital Building Systems, Aisha Bell
 
 **EX016.** System, device name, location, owner, firmware version, vendor support status, network address, and clinical consequence of failure.
 
-**EX017.** It prints `UNSUPPORTED BOILER-2   system=HVAC installed=2010` and the HVAC line becomes `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
+**EX017.** It prints `UNSUPPORTED BOILER-2 system=HVAC installed=2010` and the HVAC line becomes `HVAC               4 device(s): AHU-OT1, AHU-OT2, CHILLER-1, BOILER-2`.
 
 **EX018.** The chiller's vendor will not publish fixes for weaknesses found from now on, so its risk grows over time; we must protect it in other ways and plan its replacement.
 
@@ -933,7 +933,7 @@ Model answers for EX001–EX060. Millbrook Hospital Building Systems, Aisha Bell
 
 **EX026.** A contractor forwards a port so the BMS web page works from home; a project firewall rule stays after commissioning ends.
 
-**EX027.** `203.0.113.10:22     ...  NOT APPROVED - report` for the new entry, and the total becomes `unapproved: 3`, since only port 443 on that address is approved.
+**EX027.** `203.0.113.10:22 ... NOT APPROVED - report` for the new entry, and the total becomes `unapproved: 3`, since only port 443 on that address is approved.
 
 **EX028.** T0883 Internet Accessible Device.
 

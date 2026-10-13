@@ -361,9 +361,9 @@ Model answers for EX001–EX050. Riverside Civic College, Maya Chen and all figu
 
 **EX015.** The owner explicitly excluded the payroll server; being inside the network range does not override a written exclusion.
 
-**EX016.** `198.51.100.7   OUT OF SCOPE - do not test` — she removes it from the plan and never sends traffic to it.
+**EX016.** `198.51.100.7 OUT OF SCOPE - do not test` — she removes it from the plan and never sends traffic to it.
 
-**EX017.** `192.0.2.20     in scope` because it lies in 192.0.2.0/25 and is not on the excluded list.
+**EX017.** `192.0.2.20 in scope` because it lies in 192.0.2.0/25 and is not on the excluded list.
 
 **EX018.** Refuse: the college's authorization and tools cover only agreed college systems; testing a personal blog with them would be unauthorized.
 

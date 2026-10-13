@@ -2478,7 +2478,7 @@ A control without an owner is a sentence in a report. The owner is the person wh
 
 Chapter 30 retests.
 
-Declaring a control implemented is not the same as showing it works. Retests close that gap. After the owner says named accounts replaced the shared admin password, Sam schedules a retest that tries the old password and checks that administration still requires the jump host. Failed retests reopen the finding automatically. The retest date is part of the control's record, so a control that has never been retested is visible on PulseMap as unverified.  A retest is planned with the same account, the same source network and the same request that proved the weakness, so a pass means the path is closed rather than that the tester tried something easier.
+Declaring a control implemented is not the same as showing it works. Retests close that gap. After the owner says named accounts replaced the shared admin password, Sam schedules a retest that tries the old password and checks that administration still requires the jump host. Failed retests reopen the finding automatically. The retest date is part of the control's record, so a control that has never been retested is visible on PulseMap as unverified. A retest is planned with the same account, the same source network and the same request that proved the weakness, so a pass means the path is closed rather than that the tester tried something easier.
 
 ### 24.6 Overclaim
 
@@ -2520,19 +2520,19 @@ Before the split, every easy finding competed for the same meeting slot as F3, a
 
 Hygiene track WIP limits keep it from becoming a dumping ground for ignored risk.
 
-Without a limit, every uncomfortable finding gets relabelled as hygiene and the track becomes a second backlog of ignored risk. The limit forces a choice: finish something before starting more. Findings that do not fit must either wait, earn a place on the main ranked list or be accepted with an expiry. The WIP limit is a control on the process that claims to help.  A finding moved to hygiene must still carry its original score, so anyone reviewing the track can see whether a high-risk item has been disguised as a tidy-up.
+Without a limit, every uncomfortable finding gets relabelled as hygiene and the track becomes a second backlog of ignored risk. The limit forces a choice: finish something before starting more. Findings that do not fit must either wait, earn a place on the main ranked list or be accepted with an expiry. The WIP limit is a control on the process that claims to help. A finding moved to hygiene must still carry its original score, so anyone reviewing the track can see whether a high-risk item has been disguised as a tidy-up.
 
 ### 24.13 A hard WIP of three
 
 Hygiene WIP limit is three. Fourth easy fix waits. Focus is a control.
 
-Three is small enough that the team feels the constraint and large enough that real hygiene work continues. When a fourth easy fix appears, it waits visibly on the board. Waiting is uncomfortable and useful. It stops the quiet accumulation of half-finished tidy-ups and keeps the hygiene track's promise of speed from turning into another infinite queue.  The limit is reviewed each quarter. If items wait longer than a month, the team either raises capacity or admits that some hygiene work will not be done and records that decision.
+Three is small enough that the team feels the constraint and large enough that real hygiene work continues. When a fourth easy fix appears, it waits visibly on the board. Waiting is uncomfortable and useful. It stops the quiet accumulation of half-finished tidy-ups and keeps the hygiene track's promise of speed from turning into another infinite queue. The limit is reviewed each quarter. If items wait longer than a month, the team either raises capacity or admits that some hygiene work will not be done and records that decision.
 
 ### 24.14 Ninety-second covers for funding boards
 
 Funding boards receive ranked lists with a one-page plain-language cover. Sam practices the cover aloud until he can deliver it in ninety seconds. Boards remember the cover longer than the appendix.
 
-Practising aloud catches jargon the appendix can keep and the cover cannot. Boards that remember the cover ask better questions about the ranked list. Boards that receive only the appendix often remember nothing but the total count of findings, which is the least useful number in the pack.  The appendix still matters for the engineers who will do the work, so the cover always ends with a pointer to the ranked table and its scoring rubric.
+Practising aloud catches jargon the appendix can keep and the cover cannot. Boards that remember the cover ask better questions about the ranked list. Boards that receive only the appendix often remember nothing but the total count of findings, which is the least useful number in the pack. The appendix still matters for the engineers who will do the work, so the cover always ends with a pointer to the ranked table and its scoring rubric.
 
 ### Worked example (synthetic TRB)
 
@@ -2576,7 +2576,7 @@ The laboratory notebook is the evidence that the learner ran the tools, not that
 
 Compare scope classifications.
 
-After running lab_scope, learners swap notebooks and re-classify the same target list without looking at each other's answers. Disagreements are discussed against the written scope file, not against memory. The peer check catches systematic misreadings, such as treating the SWIFT exclusion as optional, and it trains the habit of having a second person confirm scope decisions before a real window. A clean peer check is part of the lab's pass criteria.  When peers still disagree after reading the file, the supervisor rules and the ambiguous line is sent to the scope author as a drafting fix.
+After running lab_scope, learners swap notebooks and re-classify the same target list without looking at each other's answers. Disagreements are discussed against the written scope file, not against memory. The peer check catches systematic misreadings, such as treating the SWIFT exclusion as optional, and it trains the habit of having a second person confirm scope decisions before a real window. A clean peer check is part of the lab's pass criteria. When peers still disagree after reading the file, the supervisor rules and the ambiguous line is sent to the scope author as a drafting fix.
 
 ### 25.3 Planted fault
 
@@ -2588,19 +2588,19 @@ One evidence file in the lab pack has a hash that does not match the accompanyin
 
 Two hours hard stop.
 
-Real windows end. The lab ends too, even if a station is unfinished. Learners practise writing what they completed, what they did not and what they would do next, which is the same discipline Sam uses when a testing night runs out of time. Extending the lab for struggling learners would teach the wrong lesson. Time boxes also keep peer checks fair: everyone has the same clock.  Supervisors grade the hand-off note as seriously as the completed stations, because an honest list of unfinished work is what lets a colleague resume safely the next night.
+Real windows end. The lab ends too, even if a station is unfinished. Learners practise writing what they completed, what they did not and what they would do next, which is the same discipline Sam uses when a testing night runs out of time. Extending the lab for struggling learners would teach the wrong lesson. Time boxes also keep peer checks fair: everyone has the same clock. Supervisors grade the hand-off note as seriously as the completed stations, because an honest list of unfinished work is what lets a colleague resume safely the next night.
 
 ### 25.5 No production
 
 Live TRB scanning fails the lab.
 
-The lab environment uses documentation-range addresses and synthetic data. Any attempt to point tools at live TRB systems, even out of enthusiasm, is an automatic fail and a conversation with the supervisor. The rule protects the bank and the learner. Authorization for the lab is authorization for the lab. Curiosity about production belongs in a planned engagement with a signed scope, not in a classroom exercise.  The lab network has no route to TRB ranges, so the rule is also enforced technically, and any blocked attempt appears in the lab firewall log the supervisor reviews.
+The lab environment uses documentation-range addresses and synthetic data. Any attempt to point tools at live TRB systems, even out of enthusiasm, is an automatic fail and a conversation with the supervisor. The rule protects the bank and the learner. Authorization for the lab is authorization for the lab. Curiosity about production belongs in a planned engagement with a signed scope, not in a classroom exercise. The lab network has no route to TRB ranges, so the rule is also enforced technically, and any blocked attempt appears in the lab firewall log the supervisor reviews.
 
 ### 25.6 Sign-off
 
 Supervisor signs on discipline, not novelty.
 
-A passing lab shows careful scope checks, honest hashing, completed notebooks and respect for stops. Fancy extra techniques that were not asked for do not raise the grade, and they can lower it if they violate a rule. Supervisors sign a short rubric: scope correct, hash refusal demonstrated, outputs present, no production contact. Novelty is welcome in later research chapters. Laboratory I rewards discipline.  A learner who finished every station but filed the mismatched evidence does not pass, while one who refused it and ran out of time on a later station usually does.
+A passing lab shows careful scope checks, honest hashing, completed notebooks and respect for stops. Fancy extra techniques that were not asked for do not raise the grade, and they can lower it if they violate a rule. Supervisors sign a short rubric: scope correct, hash refusal demonstrated, outputs present, no production contact. Novelty is welcome in later research chapters. Laboratory I rewards discipline. A learner who finished every station but filed the mismatched evidence does not pass, while one who refused it and ran out of time on a later station usually does.
 
 ### 25.7 The missing SWIFT exclusion
 
@@ -2612,13 +2612,13 @@ The variant works because learners often check that in-scope ranges look right a
 
 Lab notebooks include hashes of the lab scripts used. Version skew is a common excuse Sam removes by pinning hashes.
 
-Without hashes, a learner whose numbers differ from the key can claim they ran a different script version, and the supervisor cannot easily check. With hashes, the notebook shows exactly which bytes ran. Pinning also protects learners. If the lab maintainers change a script mid-term, the hash mismatch explains a surprise result instead of looking like learner error.  The hash list sits at the top of the notebook, and the supervisor's first check is to recompute one hash before reading any results.
+Without hashes, a learner whose numbers differ from the key can claim they ran a different script version, and the supervisor cannot easily check. With hashes, the notebook shows exactly which bytes ran. Pinning also protects learners. If the lab maintainers change a script mid-term, the hash mismatch explains a surprise result instead of looking like learner error. The hash list sits at the top of the notebook, and the supervisor's first check is to recompute one hash before reading any results.
 
 ### 25.9 Rotating planted variants
 
 The planted scope variant is rotated so word cannot spread between sittings. Sam keeps three variants.
 
-If every sitting saw the same missing SWIFT line, the afternoon cohort would hear about it at lunch. Three variants keep the peer check honest: missing exclusion, renamed exclusion and exclusion only in an appendix. Learners are told that variants exist, so memorising one answer is obviously useless. Facilitators draw the variant from a sealed envelope at the start of each sitting.  Variants differ only in where the exclusion problem hides, so every learner faces the same skill under a different disguise and grades stay comparable.
+If every sitting saw the same missing SWIFT line, the afternoon cohort would hear about it at lunch. Three variants keep the peer check honest: missing exclusion, renamed exclusion and exclusion only in an appendix. Learners are told that variants exist, so memorising one answer is obviously useless. Facilitators draw the variant from a sealed envelope at the start of each sitting. Variants differ only in where the exclusion problem hides, so every learner faces the same skill under a different disguise and grades stay comparable.
 
 ### 25.10 Exclusions by asset id
 
@@ -2630,25 +2630,25 @@ Real inventories rename things. A gateway that staff call SWIFT may appear in th
 
 Variant C uses an exclusion listed only in an appendix table. Learners who skip appendices fail. Sam loves appendix discipline.
 
-Scope documents bury important rows in appendices more often than anyone admits. Variant C is slightly cruel and very realistic. The fix is a reading order: cover page, exclusion appendix, then inclusion ranges. Learners who adopt that order stop failing C and stop missing exclusions in real rules of engagement.  The appendix variant also teaches that a scope document's structure is part of its meaning; a table at the back can carry as much authority as the cover page.
+Scope documents bury important rows in appendices more often than anyone admits. Variant C is slightly cruel and very realistic. The fix is a reading order: cover page, exclusion appendix, then inclusion ranges. Learners who adopt that order stop failing C and stop missing exclusions in real rules of engagement. The appendix variant also teaches that a scope document's structure is part of its meaning; a table at the back can carry as much authority as the cover page.
 
 ### 25.12 Laminated asset-id reminders
 
 Asset-id exclusions are printed on the lab desk laminated card.
 
-The card lists the three identifiers that must appear in every scope check for the lab's fictional bank. It is a scaffold for the habit, not a substitute for reading the scope file. Learners may use it during Laboratory I and are expected to work without it in later labs. Lamination survives spilled coffee, which is a more common lab hazard than instructors admit.  Learners record in the notebook whether they used the card, which lets supervisors see who is ready to drop the scaffold.
+The card lists the three identifiers that must appear in every scope check for the lab's fictional bank. It is a scaffold for the habit, not a substitute for reading the scope file. Learners may use it during Laboratory I and are expected to work without it in later labs. Lamination survives spilled coffee, which is a more common lab hazard than instructors admit. Learners record in the notebook whether they used the card, which lets supervisors see who is ready to drop the scaffold.
 
 ### 25.13 Voiding old laminated cards
 
 Laminated cards are versioned; old cards are hole-punched as void.
 
-An outdated card is worse than no card, because learners trust it. When asset identifiers change, new cards are issued and old ones are hole-punched so they cannot be reused at a glance. The version number on the card matches the lab pack version. Facilitators check the match before each sitting as part of opening the room.  The void cards go into a box on the facilitator's desk, which doubles as a quick history of how often the lab's identifiers changed.
+An outdated card is worse than no card, because learners trust it. When asset identifiers change, new cards are issued and old ones are hole-punched so they cannot be reused at a glance. The version number on the card matches the lab pack version. Facilitators check the match before each sitting as part of opening the room. The void cards go into a box on the facilitator's desk, which doubles as a quick history of how often the lab's identifiers changed.
 
 ### 25.14 Showing a real failed notebook
 
 Laboratory I briefings show a failed notebook from a prior year (with permission) where hashing was skipped. Seeing a real fail is more persuasive than a rubric bullet. Sam thanks the alumnus who allowed the anonymised share.
 
-Permission and anonymisation are mandatory; the point is the missing hash, not the person. Learners who see the fail ask better questions about their own notebooks. Rubric bullets describe the standard. A real miss makes the standard felt.  Each new cohort sees a different anonymised failure where possible, so the example does not become a familiar story everyone tunes out.
+Permission and anonymisation are mandatory; the point is the missing hash, not the person. Learners who see the fail ask better questions about their own notebooks. Rubric bullets describe the standard. A real miss makes the standard felt. Each new cohort sees a different anonymised failure where possible, so the example does not become a familiar story everyone tunes out.
 
 ### Worked example (synthetic TRB)
 
@@ -3433,85 +3433,85 @@ You will (1) work with legal, HR, SOC and developers; (2) translate findings; (3
 
 Contracts, disclosure, privacy — Sam brings facts, not legal conclusions.
 
-Legal partners need a clean factual packet: systems touched, data classes, timestamps and whether customer data left the bank. Sam refuses to draft conclusions about breach notification statutes; that is counsel's lane. The interface works when red teamers speak precisely and stay inside evidence. Vague adjectives force lawyers to re-investigate what the tester already knew. A one-page fact sheet attached to the ticket beats a long narrative email.  Fact sheets travel better across counsel rotations than heroic memory does.
+Legal partners need a clean factual packet: systems touched, data classes, timestamps and whether customer data left the bank. Sam refuses to draft conclusions about breach notification statutes; that is counsel's lane. The interface works when red teamers speak precisely and stay inside evidence. Vague adjectives force lawyers to re-investigate what the tester already knew. A one-page fact sheet attached to the ticket beats a long narrative email. Fact sheets travel better across counsel rotations than heroic memory does.
 
 ### 32.2 HR
 
 Staff-affecting simulations need HR paths.
 
-Phishing or social exercises that can touch staff records or performance perceptions require an HR path before launch. Sam's checklist asks who will see names, how long identifiers live and how complaints will be handled. Skipping HR once created a grievance that outlived the finding. The path is a named contact and a written consent boundary, not a friendly hallway nod. Findings that implicate a person's conduct go through HR language review before wide distribution.  People-impacting work without an HR path is treated as a scope defect.
+Phishing or social exercises that can touch staff records or performance perceptions require an HR path before launch. Sam's checklist asks who will see names, how long identifiers live and how complaints will be handled. Skipping HR once created a grievance that outlived the finding. The path is a named contact and a written consent boundary, not a friendly hallway nod. Findings that implicate a person's conduct go through HR language review before wide distribution. People-impacting work without an HR path is treated as a scope defect.
 
 ### 32.3 SOC
 
 Detection engineering consumes ATT&CK tags and timelines.
 
-SOC engineers can use red-team output only when technique tags and stage times are present. Sam's chain diagrams feed detection backlog items with those fields already filled. A screenshot without a technique id is a story; a tagged timeline is a work order. Purple synergy fails when red teamers dump lore and expect analysts to invent structure. PulseMap imports are rejected if required tags are blank.  Tagged timelines are how detection work begins rather than how arguments begin.
+SOC engineers can use red-team output only when technique tags and stage times are present. Sam's chain diagrams feed detection backlog items with those fields already filled. A screenshot without a technique id is a story; a tagged timeline is a work order. Purple synergy fails when red teamers dump lore and expect analysts to invent structure. PulseMap imports are rejected if required tags are blank. Tagged timelines are how detection work begins rather than how arguments begin.
 
 ### 32.4 Developers
 
 Want reproduction and safe fix patterns.
 
-Developers ask for exact reproduction steps and a fix pattern that will not brick payments. Sam includes a minimal request, expected response and a suggested guard that stays inside the service's change rules. Heroic exploit write-ups without a safe patch shape waste engineering sprints. FindingsDesk templates force a reproduction block before a finding can leave draft. When a fix is unclear, Sam schedules a fifteen-minute huddle rather than guessing in prose.  Reproducible steps are the courtesy developers remember next quarter.
+Developers ask for exact reproduction steps and a fix pattern that will not brick payments. Sam includes a minimal request, expected response and a suggested guard that stays inside the service's change rules. Heroic exploit write-ups without a safe patch shape waste engineering sprints. FindingsDesk templates force a reproduction block before a finding can leave draft. When a fix is unclear, Sam schedules a fifteen-minute huddle rather than guessing in prose. Reproducible steps are the courtesy developers remember next quarter.
 
 ### 32.5 Executives
 
 Want decisions and dates.
 
-Executives need the decision required, the date it is needed and the residual if they wait. Sam keeps executive notes under half a page and links deeper detail rather than pasting it. Metaphor-heavy briefings lose to a table with three rows. The interface fails when testers perform expertise instead of enabling a choice. Every executive note ends with a single asked decision in plain text, and dates are calendar dates.  A crisp ask is kinder than a brilliant digression when calendars are full.
+Executives need the decision required, the date it is needed and the residual if they wait. Sam keeps executive notes under half a page and links deeper detail rather than pasting it. Metaphor-heavy briefings lose to a table with three rows. The interface fails when testers perform expertise instead of enabling a choice. Every executive note ends with a single asked decision in plain text, and dates are calendar dates. A crisp ask is kinder than a brilliant digression when calendars are full.
 
 ### 32.6 Friction
 
 Procurement and change windows are real; plan for them.
 
-Brilliant findings die when the fix needs a vendor change during a freeze. Sam asks early which remedies require procurement or a change window and records those constraints beside the finding. Planning for friction is not lowering severity; it is sequencing work the bank can actually do. Engagement kickoffs include a five-minute constraint scan with the owner. Surprise freezes still happen; documented constraints make rescheduling calmer.  Calendar literacy is part of technical maturity in regulated firms.
+Brilliant findings die when the fix needs a vendor change during a freeze. Sam asks early which remedies require procurement or a change window and records those constraints beside the finding. Planning for friction is not lowering severity; it is sequencing work the bank can actually do. Engagement kickoffs include a five-minute constraint scan with the owner. Surprise freezes still happen; documented constraints make rescheduling calmer. Calendar literacy is part of technical maturity in regulated firms.
 
 ### 32.7 Generated translation packets
 
 Translation packets are generated from FindingsDesk fields so exec and engineer texts cannot disagree on CVSS-like scores or asset ids. Sam once found a drift of severity words between emails; templates removed it.
 
-Generated packets pull severity, asset ids and titles from the same rows the ticket uses. Manual rephrasing is allowed for clarity but not for score changes. Sam's drift incident taught the team that copy-paste between audiences invents two truths. Templates made the dual versions boring and consistent. Reviewers spot-check that generated numbers match the ticket before sending.  One source of severity numbers beats two clever paraphrases.
+Generated packets pull severity, asset ids and titles from the same rows the ticket uses. Manual rephrasing is allowed for clarity but not for score changes. Sam's drift incident taught the team that copy-paste between audiences invents two truths. Templates made the dual versions boring and consistent. Reviewers spot-check that generated numbers match the ticket before sending. One source of severity numbers beats two clever paraphrases.
 
 ### 32.8 Glossary for legal readers
 
 A mini glossary maps "conduit", "control", and "finding" for legal readers. Sam attaches it when legal joins late.
 
-Shared words hide different meanings across professions. The mini glossary is one screen and travels as an attachment, not a lecture. Sam updates it when a new misunderstanding appears in a thread. Late-joining counsel get the glossary in the first packet so the second meeting is shorter. Argument about definitions mid-crisis is how deadlines slip.  Shared definitions shorten every later meeting by minutes that add up across a quarter.
+Shared words hide different meanings across professions. The mini glossary is one screen and travels as an attachment, not a lecture. Sam updates it when a new misunderstanding appears in a thread. Late-joining counsel get the glossary in the first packet so the second meeting is shorter. Argument about definitions mid-crisis is how deadlines slip. Shared definitions shorten every later meeting by minutes that add up across a quarter.
 
 ### 32.9 Finding RACI fields
 
 Each major finding carries a tiny RACI: who fixes, who verifies, who accepts. Sam fills it in FindingsDesk fields.
 
-Unowned findings age into folklore. The tiny RACI sits on the ticket so accountability is visible without a separate programme management ritual. Sam will not move a major finding to in-progress without the three names. Acceptors must have authority to own residual risk; friends of the team do not qualify. Empty RACI fields block status transitions in the workflow.  Named roles turn findings into scheduled work instead of ambient guilt.
+Unowned findings age into folklore. The tiny RACI sits on the ticket so accountability is visible without a separate programme management ritual. Sam will not move a major finding to in-progress without the three names. Acceptors must have authority to own residual risk; friends of the team do not qualify. Empty RACI fields block status transitions in the workflow. Named roles turn findings into scheduled work instead of ambient guilt.
 
 ### 32.10 Confirm RACI autosuggest
 
 RACI fields auto-suggest owners from the asset register. Sam still confirms with a human. Autosuggest without confirmation once mailed a finding to a former employee.
 
-Autosuggest is a convenience that can become a confidentiality incident. Sam's confirmation call is short and logged with a timestamp on the ticket. The former-employee mail became a teaching case about trusting directories after HR events. Humans still beat stale graphs when stakes include private vulnerability detail. Confirmation is mandatory even when the suggestion looks obviously right.  Human confirmation is cheap insurance against directory rot.
+Autosuggest is a convenience that can become a confidentiality incident. Sam's confirmation call is short and logged with a timestamp on the ticket. The former-employee mail became a teaching case about trusting directories after HR events. Humans still beat stale graphs when stakes include private vulnerability detail. Confirmation is mandatory even when the suggestion looks obviously right. Human confirmation is cheap insurance against directory rot.
 
 ### 32.11 Deactivated owner near miss
 
 RACI autosuggest once chose a deactivated user; confirmation call caught it. Sam keeps the call even when busy.
 
-Deactivated users lingering in the asset register are a quiet failure mode. The confirmation call caught the miss before mail merged. Sam refuses to drop the call on busy days because busy days are when shortcuts concentrate. A two-minute live check beats a day of recall. Platform tickets now flag deactivated owners in red beside the suggestion.  Near misses that change both UI and habit are the reviews worth keeping.
+Deactivated users lingering in the asset register are a quiet failure mode. The confirmation call caught the miss before mail merged. Sam refuses to drop the call on busy days because busy days are when shortcuts concentrate. A two-minute live check beats a day of recall. Platform tickets now flag deactivated owners in red beside the suggestion. Near misses that change both UI and habit are the reviews worth keeping.
 
 ### 32.12 Owner-confirmed timestamps
 
 Confirmation calls are logged as "owner confirmed 15:04" in the ticket.
 
-A bare checkbox saying confirmed ages poorly when auditors ask who spoke. The log line names the act and the clock so later readers can reconstruct diligence. Sam pastes the line immediately after the call while memory is fresh. Tickets without the line bounce from peer review. The format is dull on purpose so people actually use it.  Timestamped diligence survives staff turnover cleanly and keeps auditors from guessing. The discipline sounds small until the first time it prevents a messy recall.
+A bare checkbox saying confirmed ages poorly when auditors ask who spoke. The log line names the act and the clock so later readers can reconstruct diligence. Sam pastes the line immediately after the call while memory is fresh. Tickets without the line bounce from peer review. The format is dull on purpose so people actually use it. Timestamped diligence survives staff turnover cleanly and keeps auditors from guessing. The discipline sounds small until the first time it prevents a messy recall.
 
 ### 32.13 Business-hours confirmation rule
 
 Owner confirmed timestamps must be during business hours unless on-call is noted.
 
-Night confirmations happen, but they need an on-call note so nobody assumes a sleepy accidental yes. Sam's validator warns when the timestamp falls outside business hours without the note. The rule protects owners as much as it protects the process. On-call notes name the rotation and the ticket that authorised off-hours contact. False urgency is easier to spot when the clock is disciplined.  Clock rules make urgency claims easier to audit later when memories disagree.
+Night confirmations happen, but they need an on-call note so nobody assumes a sleepy accidental yes. Sam's validator warns when the timestamp falls outside business hours without the note. The rule protects owners as much as it protects the process. On-call notes name the rotation and the ticket that authorised off-hours contact. False urgency is easier to spot when the clock is disciplined. Clock rules make urgency claims easier to audit later when memories disagree.
 
 ### 32.14 Monthly legal office hours
 
 Interdisciplinary office hours invite legal monthly. Sam brings one finding and asks how they would phrase disclosure duties. The mutual translation compounds.
 
-Monthly office hours beat emergency-only contact. Sam brings a single live finding stripped of drama and asks counsel how they would frame duties. Legal brings questions about what evidence they wish testers captured earlier. Both sides leave with sharper templates. Attendance is short and recurring so trust accumulates.  Recurring low-stakes practice beats rare high-stakes translation under deadline heat.
+Monthly office hours beat emergency-only contact. Sam brings a single live finding stripped of drama and asks counsel how they would frame duties. Legal brings questions about what evidence they wish testers captured earlier. Both sides leave with sharper templates. Attendance is short and recurring so trust accumulates. Recurring low-stakes practice beats rare high-stakes translation under deadline heat.
 
 ### Worked example (synthetic TRB)
 
@@ -4663,7 +4663,7 @@ Model answers for EX001–EX120. Riverstone Transit Bank, Sam Ito and all figure
 
 **EX027.** Other engagements' evidence and production customer databases.
 
-**EX028.** `198.51.100.20   EXCLUDED`
+**EX028.** `198.51.100.20 EXCLUDED`
 
 **EX029.** Refuse; SWIFT remains excluded unless a written ROE change — which ordinary tests will not grant.
 
@@ -4735,7 +4735,7 @@ Model answers for EX001–EX120. Riverstone Transit Bank, Sam Ito and all figure
 
 **EX063.** Web, mobile API and staff VPN (batch peers also).
 
-**EX064.** `web        -> ledger-db  UNAPPROVED` (chapter 22 emphasis).
+**EX064.** `web -> ledger-db UNAPPROVED` (chapter 22 emphasis).
 
 **EX065.** Fixing an unapproved flow may need both firewall/routing and application changes.
 

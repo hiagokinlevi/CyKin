@@ -532,7 +532,7 @@ Write each recommendation with its owner and the evidence that supports it. The 
 - Limitations listed without direction.
 - Recommendations broader than the product and site studied.
 
-Each error has a guard in this dissertation: three-layer results sentences, a limitations list where each item names its direction, and recommendations limited to the legacy proxy model at Larkspur. Read the abstract once more against the results tables before submission.  Ask a peer to mark any sentence that mixes estimate and interpretation, any limitation without a direction, and any recommendation that names a category of products instead of the device studied.
+Each error has a guard in this dissertation: three-layer results sentences, a limitations list where each item names its direction, and recommendations limited to the legacy proxy model at Larkspur. Read the abstract once more against the results tables before submission. Ask a peer to mark any sentence that mixes estimate and interpretation, any limitation without a direction, and any recommendation that names a category of products instead of the device studied.
 
 ### Exercises — chapter 7
 
@@ -563,7 +563,7 @@ You will (1) prepare a reproducibility package an independent reviewer can run; 
 
 Include the minimized dataset (or a synthetic surrogate if the university cannot release it), the frozen scripts with hashes, the codebook and coding sheets, the testbed configuration (without vendor-confidential firmware), and a README explaining how to regenerate every table. Ask a peer to run it cold and log every point where they got stuck.
 
-Test the package on a clean machine with only the README to guide the run.  Record the versions of Python and of each script, and note how long the full run takes, so a reviewer can plan time.
+Test the package on a clean machine with only the README to guide the run. Record the versions of Python and of each script, and note how long the full run takes, so a reviewer can plan time.
 
 ### 8.2 Examiner questions
 
@@ -590,7 +590,7 @@ Test the briefing with one operator who has not seen the study. If they cannot s
 - Answering "is it PQC's fault?" with yes or no instead of the mechanism.
 - Publishing a defect before the vendor and owner are informed.
 
-Each error has a guard: a package tested cold by a peer, an answer to the PQC question that explains message size and the padding-only result, and a disclosure timeline with the vendor and Larkspur's network team agreed before publication. Check each before the defense date.  Rehearse the answers aloud once.
+Each error has a guard: a package tested cold by a peer, an answer to the PQC question that explains message size and the padding-only result, and a disclosure timeline with the vendor and Larkspur's network team agreed before publication. Check each before the defense date. Rehearse the answers aloud once.
 
 ### Exercises — chapter 8
 

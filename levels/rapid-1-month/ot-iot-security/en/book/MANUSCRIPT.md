@@ -181,7 +181,7 @@ A list made from records may miss devices; walk-downs and network records comple
 - **EX015 — Inventory fields.** Name five fields for an Elmstead device record. *Rubric:* 3 = five relevant fields; 2 = four; 1 = two; 0 = none.
 - **EX016 — Default password risk.** Why is INV-02's default password dangerous? *Rubric:* 3 = published in manuals; anyone with reach logs in; 2 = partial; 1 = "weak"; 0 = none.
 - **EX017 — Old firmware.** What does "old-fw 4.7" suggest about INV-03? *Rubric:* 3 = may lack security fixes in 5.1; check advisories; plan update; 2 = partial; 1 = slower; 0 = none.
-- **EX018 — Changing the lab.** If INV-04's firmware were "4.9", what would the lab print for it and the total? *Rubric:* 3 = "INV-04 cloud=no  old-fw 4.9" and "needs action: 3"; 2 = one; 1 = ok; 0 = none.
+- **EX018 — Changing the lab.** If INV-04's firmware were "4.9", what would the lab print for it and the total? *Rubric:* 3 = "INV-04 cloud=no old-fw 4.9" and "needs action: 3"; 2 = one; 1 = ok; 0 = none.
 - **EX019 — Who fixes it.** Who changes INV-02's password, and when? *Rubric:* 3 = owner/vendor at a planned time; 2 = owner only; 1 = Jonah now; 0 = none.
 - **EX020 — Zones.** Name the four zones proposed for Elmstead. *Rubric:* 3 = control, cameras, office, DMZ; 2 = three; 1 = one; 0 = none.
 - **EX021 — Conduit meaning.** What is a conduit in IEC 62443 terms? *Rubric:* 3 = controlled communication path between zones; 2 = "connection"; 1 = cable duct; 0 = none.
@@ -260,7 +260,7 @@ A short message sent quickly is better than a complete one sent late. Jonah's re
 
 If a battery is overheating, follow the site's fire and safety procedure first; security questions wait.
 
-At Elmstead that means raising the alarm, keeping clear of the battery enclosure and following the evacuation and fire steps on the site card. The person on call can decide later whether the overheating had a security cause. Evidence that is lost while people are kept safe is an acceptable price; a person hurt while saving a log file is not.  Safety staff should never wait for a security answer.
+At Elmstead that means raising the alarm, keeping clear of the battery enclosure and following the evacuation and fire steps on the site card. The person on call can decide later whether the overheating had a security cause. Evidence that is lost while people are kept safe is an acceptable price; a person hurt while saving a log file is not. Safety staff should never wait for a security answer.
 
 ### Worked example (synthetic Elmstead)
 
@@ -406,7 +406,7 @@ Model answers for EX001–EX050. Elmstead Solar and Battery Site, Jonah Park and
 
 **EX017.** INV-03 may be missing security fixes included in 5.1; check advisories for 4.7 and plan an update with the vendor.
 
-**EX018.** `INV-04 cloud=no  old-fw 4.9` and `needs action: 3`.
+**EX018.** `INV-04 cloud=no old-fw 4.9` and `needs action: 3`.
 
 **EX019.** The site owner's engineer, with the inverter vendor, changes it during a planned visit — not a trainee and not ad hoc.
 
@@ -430,7 +430,7 @@ Model answers for EX001–EX050. Elmstead Solar and Battery Site, Jonah Park and
 
 **EX029.** An unannounced vendor test; an operator or vendor mistake in the portal; or someone using stolen portal credentials.
 
-**EX030.** `14:00 charge    from site-controller UNEXPECTED - report` — the schedule has no entry for hour 14, so `schedule.get("14")` is `None` and the check fails even though the source is SC-1.
+**EX030.** `14:00 charge from site-controller UNEXPECTED - report` — the schedule has no entry for hour 14, so `schedule.get("14")` is `None` and the check fails even though the source is SC-1.
 
 **EX031.** T0831 Manipulation of Control.
 

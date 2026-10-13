@@ -3193,7 +3193,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 **EX005 — Update the declaration.** Relay updates: either add a narrow conduit (relay → named update mirror or, better, an internal FSTS update server, tcp/443, purpose "OS updates", owner FSTS Platform, review yearly) or remove direct internet access and point the relay at the internal update server; the second is preferred because the relay should not reach the internet. Engineer's laptop: remove the corporate → station path; declare an engineering path from the management jump host (MFA, session logging) to the station engineering interface, owner Water engineering, purpose "PLC configuration", enabled only for approved work. Full credit refuses to "allow what was observed" and puts owners and purposes on every new entry.
 
-**EX006 — Extend the lab.** A minimal change: in the loop, after computing `key`, add `if "unknown" in key[:2]: print(f"UNKNOWN ZONE {s:>12} -> {d:<12} {p}/{port} n={count}"); continue`. With the added line `10.50.1.9,10.30.0.5,tcp,443,5`, the new output includes `UNKNOWN ZONE    10.50.1.9 -> 10.30.0.5    tcp/443 n=5`. Full credit explains that "unknown zone" means the inventory or zone map is incomplete — a different finding from an undeclared path between known zones.
+**EX006 — Extend the lab.** A minimal change: in the loop, after computing `key`, add `if "unknown" in key[:2]: print(f"UNKNOWN ZONE {s:>12} -> {d:<12} {p}/{port} n={count}"); continue`. With the added line `10.50.1.9,10.30.0.5,tcp,443,5`, the new output includes `UNKNOWN ZONE    10.50.1.9 -> 10.30.0.5 tcp/443 n=5`. Full credit explains that "unknown zone" means the inventory or zone map is incomplete — a different finding from an undeclared path between known zones.
 
 ### Chapter 3: EX007–EX009
 
@@ -3325,7 +3325,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 ### Chapter 19: EX055–EX057
 
-**EX055 — Episode rule.** Group Rule B events by (source, destination); for each group, open an episode at the first event and add later events within 60 minutes to it. Output: one line such as `22:16+  B corp->station Modbus   10.40.3.7->10.20.0.11 (2 events, last 22:31)`; total alerts fall from 4 to 3. Preserved: the count, first and last times and the pair, so investigators lose nothing while the on-call receives one page instead of two.
+**EX055 — Episode rule.** Group Rule B events by (source, destination); for each group, open an episode at the first event and add later events within 60 minutes to it. Output: one line such as `22:16+  B corp->station Modbus 10.40.3.7->10.20.0.11 (2 events, last 22:31)`; total alerts fall from 4 to 3. Preserved: the count, first and last times and the pair, so investigators lose nothing while the on-call receives one page instead of two.
 
 **EX056 — First actions.** Rule A: (1) confirm whether SSH is exposed beyond the jump host (it should not be — Chapter 2 finding); (2) check for any successful login from that source; (3) block the source at the edge under a standard change and raise the exposure as a finding. Rule B: (1) check the change calendar for an approved engineering session; (2) if none, call the Water control room and ask them to watch PS-04; (3) preserve flow records and identify the workstation's user. Rule C: (1) call the Water control room to confirm the station's state; (2) check BayTel status; (3) check relay logs for MAC or window rejects from that station (Chapter 26's gap).
 

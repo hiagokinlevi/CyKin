@@ -723,7 +723,7 @@ State a maximum file size and a retention period, because a day of process value
 
 - Starting from a verbal go-ahead and writing the scope afterwards.
 - Scanning a subnet in a control network to discover devices.
-- Fixing a finding before collecting the evidence that showed it.  A scope written after the work cannot protect the process during it.
+- Fixing a finding before collecting the evidence that showed it. A scope written after the work cannot protect the process during it.
 
 ### Exercises — chapter 5
 
@@ -1657,7 +1657,7 @@ Refuse the whole write if any register is not writable or any value is out of li
 
 - Binding a real listening socket for testing and leaving it on all interfaces.
 - Accepting a partial multi-register write that changes some registers before refusing others.
-- Treating the lab's exception behaviour as a vendor's behaviour.  State containment as a technical property in every lab report.
+- Treating the lab's exception behaviour as a vendor's behaviour. State containment as a technical property in every lab report.
 
 ### Exercises — chapter 12
 

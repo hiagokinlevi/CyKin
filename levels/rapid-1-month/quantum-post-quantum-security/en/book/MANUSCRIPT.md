@@ -307,7 +307,7 @@ The list mixes facts and unknowns, and each unknown ends with ask, which turns i
 
 1. List the services your household or a club you belong to depends on. 2. For each, write the data held, lifetime and controller. 3. Turn two unknowns into questions.
 
-Use the same columns as the bakery list: service, data held, lifetime, who controls it. For the unknowns, write a question addressed to a named person or company. Keep the result private if it includes information about other people.  Ask someone in the household or club to check your lifetimes, since they may know rules you do not.
+Use the same columns as the bakery list: service, data held, lifetime, who controls it. For the unknowns, write a question addressed to a named person or company. Keep the result private if it includes information about other people. Ask someone in the household or club to check your lifetimes, since they may know rules you do not.
 
 ### 3.10 Common mistakes
 
@@ -316,7 +316,7 @@ Use the same columns as the bakery list: service, data held, lifetime, who contr
 - Writing facts without sources.
 - Assuming the provider has it handled without asking.
 
-Each mistake has a simple remedy. Walk round the premises to find equipment such as tills and controllers. Write unknown and add a question. Put a source and date beside every fact. And ask providers directly; a short email is cheap and the answer is useful.  Review the list with the owner once a year, or when a provider changes.
+Each mistake has a simple remedy. Walk round the premises to find equipment such as tills and controllers. Write unknown and add a question. Put a source and date beside every fact. And ask providers directly; a short email is cheap and the answer is useful. Review the list with the owner once a year, or when a provider changes.
 
 ### Exercises
 
@@ -417,7 +417,7 @@ The month's work produces three things the bakery can keep: a service list with 
 
 If you want to go further: the professional course teaches the full migration workflow; the technical course teaches hands-on configuration and verification. Keep up with news from reliable sources such as NIST, and be sceptical of headlines.
 
-Before moving on, check that you can explain to someone else what harvest now, decrypt later means and why AES-256 stays strong. Revisit any exercises you scored below 3. Keep the readiness note as an example for later courses.  Note the date you finished.
+Before moving on, check that you can explain to someone else what harvest now, decrypt later means and why AES-256 stays strong. Revisit any exercises you scored below 3. Keep the readiness note as an example for later courses. Note the date you finished.
 
 ### 4.8 Worked example
 
@@ -429,7 +429,7 @@ The answer keeps the decision small and specific: send emails, keep updating, an
 
 1. Rewrite the readiness note for your household or club. 2. Draft one provider email from the questions above. 3. Explain "offered versus used" to a friend using an everyday analogy.
 
-For the first activity, use the same four parts as the bakery note: what you reviewed, findings, what it means and suggested actions. For the second, pick one question from the provider list and address it to a real service you use. For the third, test your analogy on a friend.  Share your work only with people you trust.
+For the first activity, use the same four parts as the bakery note: what you reviewed, findings, what it means and suggested actions. For the second, pick one question from the provider list and address it to a real service you use. For the third, test your analogy on a friend. Share your work only with people you trust.
 
 ### 4.10 Common mistakes
 
@@ -438,7 +438,7 @@ For the first activity, use the same four parts as the bakery note: what you rev
 - Alarmist notes that ask for spending without need.
 - Forgetting to set a review date.
 
-Each mistake has a simple correction. Write offered but not preferred when that is what a configuration shows. Use your own browser, never scanning tools. Keep the tone calm and spending suggestions small. Put a review date on every note.  Ask the owner whether the note was clear, and improve the next one using their answer.
+Each mistake has a simple correction. Write offered but not preferred when that is what a configuration shows. Use your own browser, never scanning tools. Keep the tone calm and spending suggestions small. Put a review date on every note. Ask the owner whether the note was clear, and improve the next one using their answer.
 
 ### Exercises
 

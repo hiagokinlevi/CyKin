@@ -100,7 +100,7 @@ NRHT's board must decide whether to fund an 18-month programme for hybrid key ex
 - Hiding value judgments inside scoring weights.
 - Waiting for information that cannot change the decision.
 
-Each error has a guard used in this chapter. Sweep z across scenarios and report which choices hold in all of them. Show the weights in any score and record who approved them. Before commissioning a study, ask whether any plausible result would change the decision; if not, decide now and note why.  Keep the scenario table in the decision record.
+Each error has a guard used in this chapter. Sweep z across scenarios and report which choices hold in all of them. Show the weights in any score and record who approved them. Before commissioning a study, ask whether any plausible result would change the decision; if not, decide now and note why. Keep the scenario table in the decision record.
 
 ### Exercises
 
@@ -248,7 +248,7 @@ The report is uncomfortable but honest, and it leads directly to a funded action
 - Reporting asset counts without tier and grade.
 - Deleting stale observations instead of downgrading them.
 
-Each error has a guard. Grade supplier statements as D until observed. Report counts by tier and grade, never alone. Keep stale observations, downgrade them and record the date they were last confirmed, so the history remains visible and a reversion can be detected.  At NRHT, the 29 % of tier-1 assets resting on supplier statements were reported as grade D, not as covered, which is why the board funded verification first. Keep the grade with every count in the same table.
+Each error has a guard. Grade supplier statements as D until observed. Report counts by tier and grade, never alone. Keep stale observations, downgrade them and record the date they were last confirmed, so the history remains visible and a reversion can be detected. At NRHT, the 29 % of tier-1 assets resting on supplier statements were reported as grade D, not as covered, which is why the board funded verification first. Keep the grade with every count in the same table.
 
 ### Exercises
 
@@ -314,7 +314,7 @@ NRHT's genomics service sends 20,000 records a year to an external research part
 - Letting retention schedules define harm horizons.
 - Risk acceptances without expiry.
 
-Each error has a guard. Represent harvest-now-decrypt-later as yearly exposure that cannot be removed later. Set x for each dataset from the harm horizon, not from retention. Give every acceptance an expiry date and a named reviewer, and escalate automatically when one passes.  At NRHT the genomics link was recorded as yearly exposure with a 50-year horizon, and the acceptance for earlier transfers was noted in the privacy impact assessment with a review date. Use that entry as a model for others.
+Each error has a guard. Represent harvest-now-decrypt-later as yearly exposure that cannot be removed later. Set x for each dataset from the harm horizon, not from retention. Give every acceptance an expiry date and a named reviewer, and escalate automatically when one passes. At NRHT the genomics link was recorded as yearly exposure with a 50-year horizon, and the acceptance for earlier transfers was noted in the privacy impact assessment with a review date. Use that entry as a model for others.
 
 ### Exercises
 
@@ -397,7 +397,7 @@ Record the rejected alternative and its reason in the design record, so that it 
 - PSK schemes without rotation and secure distribution.
 - Ignoring minimization because it is not cryptography.
 
-Each error has a guard. Keep the hybrid unless there is a reason to drop it and record that reason. For PSKs, write down how keys are generated, distributed and rotated, and when they expire. Count minimization as a security control alongside cryptographic ones.  At NRHT the vendor-B PSKs were given an expiry tied to hybrid support, and replication was redesigned to send deltas, cutting volume by 70 %.
+Each error has a guard. Keep the hybrid unless there is a reason to drop it and record that reason. For PSKs, write down how keys are generated, distributed and rotated, and when they expire. Count minimization as a security control alongside cryptographic ones. At NRHT the vendor-B PSKs were given an expiry tied to hybrid support, and replication was redesigned to send deltas, cutting volume by 70 %.
 
 ### Exercises
 
@@ -485,7 +485,7 @@ The decision treats each problem separately, which pooled results would have hid
 - Pooling sites, which hides a failing one.
 - Lab-only conclusions for production decisions.
 
-Each error has a guard in the PACS evaluation: a threshold agreed before any data, results reported by site, and decisions based on both the lab matrix and production canaries. A pooled result that looks acceptable can hide a site such as the hospital with the legacy proxy.  Write the threshold, the site breakdown and the evidence source into every rollout decision, so a reviewer can check each one.
+Each error has a guard in the PACS evaluation: a threshold agreed before any data, results reported by site, and decisions based on both the lab matrix and production canaries. A pooled result that looks acceptable can hide a site such as the hospital with the legacy proxy. Write the threshold, the site breakdown and the evidence source into every rollout decision, so a reviewer can check each one.
 
 ### Exercises
 
@@ -556,7 +556,7 @@ old tag after retirement: False
 
 The same pattern — registry, policy, accepted list, retirement — applies to KEMs and signatures in real platforms.
 
-The lab records the algorithm identifier with each tag and checks it against the accepted list, so a retired algorithm can be refused. During the transition both algorithms verify; after retirement the old tag fails. In a real platform the identifier must be protected by the tag or signature itself, so that an attacker cannot change it.  Try retiring the old algorithm before switching the default, and note what breaks.
+The lab records the algorithm identifier with each tag and checks it against the accepted list, so a retired algorithm can be refused. During the transition both algorithms verify; after retirement the old tag fails. In a real platform the identifier must be protected by the tag or signature itself, so that an attacker cannot change it. Try retiring the old algorithm before switching the default, and note what breaks.
 
 ### 7.4 Governance and decision rights
 
@@ -588,7 +588,7 @@ The authority's first decisions are recorded with their reasons and review dates
 - No exception process, leading to silent non-compliance.
 - Activity metrics instead of outcome metrics.
 
-Each error has a guard. Integrate cryptographic questions into architecture, change and procurement processes. Publish an exception process with expiries. Report outcomes such as coverage with evidence grades, not counts of meetings or documents produced.  At NRHT the Cryptography Authority's standard includes an exception process with expiry dates, and its progress metrics are reviewed quarterly by the audit committee. Check each new metric for a denominator and a source before adding it to the board report.
+Each error has a guard. Integrate cryptographic questions into architecture, change and procurement processes. Publish an exception process with expiries. Report outcomes such as coverage with evidence grades, not counts of meetings or documents produced. At NRHT the Cryptography Authority's standard includes an exception process with expiry dates, and its progress metrics are reviewed quarterly by the audit committee. Check each new metric for a denominator and a source before adding it to the board report.
 
 ### Exercises
 
@@ -656,7 +656,7 @@ Record the residual risk in the register with its expiry tied to the 2031 replac
 - Building a PQ root without a relying-party distribution plan.
 - Software-only LMS signing.
 
-Each error has a guard in this chapter. Agree clinical change windows with clinical engineering. Write the relying-party distribution plan before standing up a post-quantum root. Keep LMS and XMSS keys and state in hardware modules, as SP 800-208 requires, and test failover.  At NRHT the pump firmware plan was agreed with clinical engineering, the internal ML-DSA root has a distribution plan for relying parties, and firmware signing keys stay in hardware modules with failover tested so that no index is reused.
+Each error has a guard in this chapter. Agree clinical change windows with clinical engineering. Write the relying-party distribution plan before standing up a post-quantum root. Keep LMS and XMSS keys and state in hardware modules, as SP 800-208 requires, and test failover. At NRHT the pump firmware plan was agreed with clinical engineering, the internal ML-DSA root has a distribution plan for relying parties, and firmware signing keys stay in hardware modules with failover tested so that no index is reused.
 
 ### Exercises
 
@@ -724,7 +724,7 @@ Each finding leads to a process change rather than a one-off fix, and the board 
 - Evidence packs built specially before audits.
 - Programmes dependent on a single expert.
 
-Each error has a guard. Re-observe negotiated algorithms instead of reading reports. Generate evidence from normal operations. Train successors and keep decision records, so the programme continues if its lead leaves.  At NRHT internal audit re-observed 60 tier-1 flows rather than reading status reports, and found three with classical fallback. The evidence pack is generated from normal operation and refreshed each quarter. A named deputy can run each review if the lead is absent, and decision records explain why each choice was made, so a newcomer can continue the work.
+Each error has a guard. Re-observe negotiated algorithms instead of reading reports. Generate evidence from normal operations. Train successors and keep decision records, so the programme continues if its lead leaves. At NRHT internal audit re-observed 60 tier-1 flows rather than reading status reports, and found three with classical fallback. The evidence pack is generated from normal operation and refreshed each quarter. A named deputy can run each review if the lead is absent, and decision records explain why each choice was made, so a newcomer can continue the work.
 
 ### Exercises
 
@@ -778,7 +778,7 @@ Note the status of each source in your critique, and check later whether a prepr
 
 A critique summarises the claim, evaluates evidence and assumptions, identifies what would change the conclusion, and states implications for practice. Keep it to one page for practitioners.
 
-Use the same headings for every critique so that readers can compare them. End with one sentence on what NRHT should do differently, if anything. Keep the critique with the decision records it informs, dated, so it can be revisited when new work appears.  Ask a colleague to check that the summary of the claim is fair.
+Use the same headings for every critique so that readers can compare them. End with one sentence on what NRHT should do differently, if anything. Keep the critique with the decision records it informs, dated, so it can be revisited when new work appears. Ask a colleague to check that the summary of the claim is fair.
 
 ### 10.6 Worked case
 
@@ -792,7 +792,7 @@ The critique is short, cites the paper's assumptions and avoids converting them 
 - Quoting resource estimates as forecasts.
 - Dismissing preprints wholesale.
 
-Each error has a guard. Ask whether a new attack applies to standardised parameters before calling it urgent. Present resource estimates with their assumptions and never as dates. Weigh preprints by author, method and reproduction rather than dismissing them.  At NRHT the Gidney (2025) critique was presented as direction of travel and connected to an existing decision, not as a date. Apply the same discipline to cryptanalysis: check the parameter set first, then ask whether the attack has been reproduced before raising urgency.
+Each error has a guard. Ask whether a new attack applies to standardised parameters before calling it urgent. Present resource estimates with their assumptions and never as dates. Weigh preprints by author, method and reproduction rather than dismissing them. At NRHT the Gidney (2025) critique was presented as direction of travel and connected to an existing decision, not as a date. Apply the same discipline to cryptanalysis: check the parameter set first, then ask whether the attack has been reproduced before raising urgency.
 
 ### Exercises
 
@@ -828,25 +828,25 @@ Choose a project that the sponsor will use whatever the result. A pilot that fin
 
 Agree with a sponsor: the decision the project supports, scope, deliverables, access, authorization, success criteria, and how results will be used. Written authorization must cover any observation or testing; prefer isolated labs for active tests.
 
-Write the agreement down and have the sponsor sign it before any data are collected. Include what happens to project data at the end and who may see results. Review the scope with the sponsor at the midpoint, and record any changes.  Keep a copy with the project records.
+Write the agreement down and have the sponsor sign it before any data are collected. Include what happens to project data at the end and who may see results. Review the scope with the sponsor at the midpoint, and record any changes. Keep a copy with the project records.
 
 ### 11.3 Deliverables
 
 Decision-ready deliverables include a short decision paper, the evidence behind it (inventory extracts, evaluation results, assumption tables), implementation artefacts (policy text, configuration baselines, procurement clauses) and a handover plan.
 
-Each deliverable should have an owner who will use it after the project. At NRHT the radiology project produced a questionnaire, a scoring rubric and contract clauses as well as a decision paper. Test usable artefacts with the people who will apply them before handover.  Agree the handover date with each owner.
+Each deliverable should have an owner who will use it after the project. At NRHT the radiology project produced a questionnaire, a scoring rubric and contract clauses as well as a decision paper. Test usable artefacts with the people who will apply them before handover. Agree the handover date with each owner.
 
 ### 11.4 Data protection
 
 Projects in healthcare touch sensitive systems. Collect metadata, not content; minimise identifiers; store project data securely; and delete it per the agreement.
 
-Record in the project plan which data will be collected, who can access it, where it will be stored and when it will be deleted. Check that the data protection officer agrees before collection starts. At the end, confirm deletion in writing.  Pseudonymise asset names in any project extract that leaves NRHT systems, and keep the mapping on NRHT systems only. Report any accidental collection of content to the sponsor straight away.
+Record in the project plan which data will be collected, who can access it, where it will be stored and when it will be deleted. Check that the data protection officer agrees before collection starts. At the end, confirm deletion in writing. Pseudonymise asset names in any project extract that leaves NRHT systems, and keep the mapping on NRHT systems only. Report any accidental collection of content to the sponsor straight away.
 
 ### 11.5 Impact evaluation
 
 Define impact before starting: for example, "tier-1 unknown share in the radiology division reduced from 25 % to below 10 %" or "supplier questionnaire adopted for all new radiology contracts". Measure after a defined period.
 
-Set a baseline measure before starting and agree the target and the date for measuring it. At NRHT's radiology project the unknown share started at 31 % and was measured again after six months. Report the result whether or not it meets the target.  Choose measures the organization already collects where possible.
+Set a baseline measure before starting and agree the target and the date for measuring it. At NRHT's radiology project the unknown share started at 31 % and was measured again after six months. Report the result whether or not it meets the target. Choose measures the organization already collects where possible.
 
 ### 11.6 Worked case
 
@@ -860,7 +860,7 @@ The result is reported with its baseline and its measurement date, and the decis
 - Deliverables that are reports only, without usable artefacts.
 - Impact measures defined after the fact.
 
-Each error has a guard. Agree the decision the project supports before starting. Deliver artefacts such as policy text, clauses and configuration baselines along with the report. Define impact measures and baselines before work begins, and report the outcome even when it falls short.  At NRHT the radiology project was tied to a procurement decision, delivered a questionnaire, rubric and clauses, and measured unknown share against a 31 % baseline after six months. Use that structure as a template for other divisions.
+Each error has a guard. Agree the decision the project supports before starting. Deliver artefacts such as policy text, clauses and configuration baselines along with the report. Define impact measures and baselines before work begins, and report the outcome even when it falls short. At NRHT the radiology project was tied to a procurement decision, delivered a questionnaire, rubric and clauses, and measured unknown share against a 31 % baseline after six months. Use that structure as a template for other divisions.
 
 ### 11.8 Working with resistance
 
@@ -894,13 +894,13 @@ You will (1) review your portfolio against course outcomes; (2) present and defe
 
 Assemble: the decision records from Chapter 1; state-of-practice brief (2); inventory design and metrics (3); risk and ethics analysis (4); design alternatives (5); evaluation (6); governance model (7); difficult-case plans (8); assurance design (9); research critiques (10); project deliverables (11). For each, note what evidence shows the outcome was met.
 
-Present the portfolio in the same order as the course so that examiners can follow it. For each item, include a short note on what you would change now. Missing evidence should be named rather than hidden.  Ask a peer to read it before submission.
+Present the portfolio in the same order as the course so that examiners can follow it. For each item, include a short note on what you would change now. Missing evidence should be named rather than hidden. Ask a peer to read it before submission.
 
 ### 12.2 Defence
 
 Expect challenges on assumptions (timelines, harm horizons), values (scoring weights), evidence grades, residual-risk acceptance, and status of guidance. Defend with evidence and acknowledge uncertainty.
 
-Prepare a short answer to each challenge with a pointer to evidence in the portfolio, such as the decision record for internal dates or the scoring weights approved by the board. Where you are uncertain, say what evidence would resolve it. Rehearse with someone who disagrees with your choices.  Keep the answers short and specific.  Note any question you could not answer.
+Prepare a short answer to each challenge with a pointer to evidence in the portfolio, such as the decision record for internal dates or the scoring weights approved by the board. Where you are uncertain, say what evidence would resolve it. Rehearse with someone who disagrees with your choices. Keep the answers short and specific. Note any question you could not answer.
 
 ### 12.3 Transfer
 
@@ -912,13 +912,13 @@ To show transfer, apply one method to a new case in the portfolio, such as using
 
 Track standards (NIST, IETF), sector guidance, cryptanalysis and deployment research. Maintain your state-of-practice brief quarterly. Participate in professional communities and share anonymised lessons.
 
-Write a plan with specific sources and a schedule, and review it each year. Keep a short log of what you read and what changed in your practice because of it.  Share one anonymised lesson each year with a professional community, and invite comments from peers who work in other sectors, since their transitions may face similar problems and offer useful comparisons.
+Write a plan with specific sources and a schedule, and review it each year. Keep a short log of what you read and what changed in your practice because of it. Share one anonymised lesson each year with a professional community, and invite comments from peers who work in other sectors, since their transitions may face similar problems and offer useful comparisons.
 
 ### 12.5 Legacy
 
 Leave the organization with a living inventory, a cryptographic standard with a review cycle, decision records, an exception register with expiries and trained successors. Success is a programme that continues without you.
 
-Check the legacy by asking a successor to run the quarterly review without you, and fix any step they could not complete. Record where each key document lives and who owns it.  A test run by the successor before you leave is the best evidence that the legacy works, so schedule one and record what had to be fixed.
+Check the legacy by asking a successor to run the quarterly review without you, and fix any step they could not complete. Record where each key document lives and who owns it. A test run by the successor before you leave is the best evidence that the legacy works, so schedule one and record what had to be fixed.
 
 ### 12.6 Worked case
 
@@ -932,7 +932,7 @@ The final review shows progress with evidence grades and names the residual risk
 - Defences that overclaim certainty.
 - Legacy that depends on the departing lead.
 
-Each error has a guard. Attach evidence of outcomes to each portfolio item. In the defence, state assumptions and uncertainties plainly. Train successors and document processes so that the programme continues after you leave.  At NRHT the final review presented coverage with evidence grades, residual risks with expiries and an agility test on four platforms. The examiner's question about IR 8547 was answered with a governance trigger. Use that structure: outcome, evidence, residual risk and the mechanism that will respond to change after you leave.
+Each error has a guard. Attach evidence of outcomes to each portfolio item. In the defence, state assumptions and uncertainties plainly. Train successors and document processes so that the programme continues after you leave. At NRHT the final review presented coverage with evidence grades, residual risks with expiries and an agility test on four platforms. The examiner's question about IR 8547 was answered with a governance trigger. Use that structure: outcome, evidence, residual risk and the mechanism that will respond to change after you leave.
 
 ### 12.8 Reflecting on judgment
 

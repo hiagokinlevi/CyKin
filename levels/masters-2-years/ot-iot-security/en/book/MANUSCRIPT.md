@@ -281,7 +281,7 @@ cusum classA FA_runs=0/80 detected=80/80 mean_delay=37.7 mean_overfill@alarm=1.3
 cusum classB FA_runs=0/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
 ```
 
-The lab runs eighty seeds for each detector and attack class and counts false-alarm runs on the same eighty seeds without an attack. The band alarm never fires on either attack, because replay holds the reported level near 50, yet it still raises false alarms on 11 of 80 nominal runs. CUSUM detects all class A episodes and none of class B, when the flow meter is also spoofed. That single table already contains the main result and its boundary.  Read it before any rig work begins.
+The lab runs eighty seeds for each detector and attack class and counts false-alarm runs on the same eighty seeds without an attack. The band alarm never fires on either attack, because replay holds the reported level near 50, yet it still raises false alarms on 11 of 80 nominal runs. CUSUM detects all class A episodes and none of class B, when the flow meter is also spoofed. That single table already contains the main result and its boundary. Read it before any rig work begins.
 
 ### 3.6 Common errors and limits
 
@@ -336,7 +336,7 @@ Write this mapping as a table in the dissertation: rival, test, status, evidence
 
 Listing rivals without tests; treating a confirmed boundary as a failure to hide.
 
-A rival without a test is a worry, not part of the analysis. Each one needs an observation that would come out differently if it were true. When a rival survives, as the architectural rival does in class B, report it as a finding with its numbers. Hiding it would leave readers believing the residual method protects loops where one device controls both measurements.  The class B result is the clearest example in this study.
+A rival without a test is a worry, not part of the analysis. Each one needs an observation that would come out differently if it were true. When a rival survives, as the architectural rival does in class B, report it as a finding with its numbers. Hiding it would leave readers believing the residual method protects loops where one device controls both measurements. The class B result is the clearest example in this study.
 
 ### Exercises — chapter 4
 
@@ -381,7 +381,7 @@ A pilot that "looks promising" tempts peeking. Resist by writing the go/no-go sh
 
 Using pilot runs to tune thresholds that later "validate" the same runs; no abandonment condition.
 
-Keep pilot traces in a separate directory that the analysis code refuses to read, and record in the proposal that thresholds are frozen from simulator tuning seeds only. Write abandonment conditions in measurable terms: for example, the rig is abandoned if the float valve cannot be shown to trip before the drip tray fills. Without such conditions a failing study simply drifts.  Review those conditions with the supervisor before the first pilot run.
+Keep pilot traces in a separate directory that the analysis code refuses to read, and record in the proposal that thresholds are frozen from simulator tuning seeds only. Write abandonment conditions in measurable terms: for example, the rig is abandoned if the float valve cannot be shown to trip before the drip tray fills. Without such conditions a failing study simply drifts. Review those conditions with the supervisor before the first pilot run.
 
 ### 5.4 Proposal checklist before supervisor review
 
@@ -469,7 +469,7 @@ The paragraph reports the failure in the same sentence pattern as the success, s
 
 Independent seeds for paired comparisons; intervals presented as real-world uncertainty; hiding class B.
 
-Paired comparisons need the same seed for both settings; independent seeds add noise that hides small differences. Bootstrap intervals describe simulation variability under the model, not uncertainty about real plants. Class B belongs in the main results table, not in an appendix, because it is the measured boundary of the method and an operator needs to know it.  Report the seeds used for each comparison so others can repeat the pairing exactly.
+Paired comparisons need the same seed for both settings; independent seeds add noise that hides small differences. Bootstrap intervals describe simulation variability under the model, not uncertainty about real plants. Class B belongs in the main results table, not in an appendix, because it is the measured boundary of the method and an operator needs to know it. Report the seeds used for each comparison so others can repeat the pairing exactly.
 
 ### 6.5 From numbers to claims
 
@@ -524,7 +524,7 @@ Write a manifest listing every file, its tier and its hash, and run the check on
 
 Limitations without direction; abstract claims broader than results; archives that dump everything.
 
-Each error weakens the link between evidence and claim. A limitation without a direction does not tell the reader how to adjust confidence. An abstract that says industrial control systems when the study measured one model and one rig invites rejection. An archive containing everything makes review slow and risks releasing configuration that should stay restricted.  Read the abstract against the results tables once more before submission and remove any wording the tables cannot support.
+Each error weakens the link between evidence and claim. A limitation without a direction does not tell the reader how to adjust confidence. An abstract that says industrial control systems when the study measured one model and one rig invites rejection. An archive containing everything makes review slow and risks releasing configuration that should stay restricted. Read the abstract against the results tables once more before submission and remove any wording the tables cannot support.
 
 ### 7.5 Abstract surgery
 
@@ -585,7 +585,7 @@ Keep the brief to one page, with each statement tagged by its confidence and its
 
 Overreach in the defense talk; publishing exploit detail before disclosure; confidence labels without evidence.
 
-In the defense, keep to the scope the dissertation measured, and answer stronger-attacker questions with class B rather than speculation. Hold implementation details until disclosure is complete. Every confidence label in the operator brief needs the evidence behind it named; a label without evidence is an opinion presented as a finding.  Before the defense, rehearse each examiner family once with the cheat sheet, and mark any answer that reaches beyond the measured contexts, so it can be narrowed before the real questions arrive.
+In the defense, keep to the scope the dissertation measured, and answer stronger-attacker questions with class B rather than speculation. Hold implementation details until disclosure is complete. Every confidence label in the operator brief needs the evidence behind it named; a label without evidence is an opinion presented as a finding. Before the defense, rehearse each examiner family once with the cheat sheet, and mark any answer that reaches beyond the measured contexts, so it can be narrowed before the real questions arrive.
 
 ### 8.6 After the defense
 
