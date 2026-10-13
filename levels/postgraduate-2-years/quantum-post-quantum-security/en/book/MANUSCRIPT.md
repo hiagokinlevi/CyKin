@@ -936,7 +936,7 @@ Each error has a guard. Attach evidence of outcomes to each portfolio item. In t
 
 ### 12.8 Reflecting on judgment
 
-Close the portfolio with a reflective note on your own judgment: one decision you would make again, one you would change with what you now know, and one assumption you are least sure of. Specialists are trusted not because they are always right but because they show how they reason and update. The note also helps successors understand which parts of the programme rest on firm evidence and which on considered bets. At NRHT, for example, the timing of the pump firmware migration rests on a vendor roadmap rather than on evidence, and saying so plainly tells the next lead where to look first.
+Close the portfolio with a reflective note on your own judgment: one decision you would make again, one you would change with what you now know, and one assumption you are least sure of. Specialists are trusted not because they are always right but because they show how they reason and update. The note also helps successors understand which parts of the programme rest on firm evidence and which on considered bets. At NRHT, for example, the infusion pump plan assumes that the vendor's 2027 hybrid firmware release arrives on time and passes clinical testing, and saying so plainly tells the next lead where to look first.
 
 ### Exercises
 
