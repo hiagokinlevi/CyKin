@@ -1,26 +1,26 @@
-# Subjects and book chapters — Data governance / Postgraduate course / Português
+# Disciplinas e capítulos do livro — Governança de dados / Pós-graduação / Português
 
-**One course, one principal book, 12 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Um curso, um livro principal, 12 disciplinas e capítulos, uma skill do curso.** Apenas os links marcados como Rascunho levam a conteúdo didático escrito; um capítulo planejado é um resumo, não uma lição concluída.
 
-This is an English working index awaiting translation and review for this language.
+Edição em português do Brasil, escrita a partir da edição de referência em inglês; revisão técnica e linguística pendente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Início](../../../../README.md) · [Trilha de estudo completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md)
 
-**Course 141 of 207.** Read chapters 01–12 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 141 de 207.** Leia os capítulos 01–12 de cima para baixo. Para cada capítulo, use o link Rascunho; o link numerado do plano é apenas um resumo. Tente os exercícios antes de consultar as resoluções no fim do livro. A última linha leva ao próximo curso neste mesmo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plano | Disciplina | Horas | Páginas A4 previstas | Meta de exercícios | Estado didático | Próximo passo |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Advanced security decision-making | 50 | 35 | 5 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Data governance: current practice | 50 | 35 | 5 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Data governance: specialist evidence | 50 | 35 | 5 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Advanced risk and ethics | 50 | 35 | 5 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 2 | [05](book/PLAN.md#ch-05) | Data governance: design alternatives | 50 | 35 | 5 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Data governance: controlled evaluation | 50 | 35 | 5 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 3 | [07](book/PLAN.md#ch-07) | Data governance: organizational integration | 50 | 35 | 5 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 3 | [08](book/PLAN.md#ch-08) | Data governance: difficult cases | 50 | 35 | 5 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 3 | [09](book/PLAN.md#ch-09) | Data governance: leadership and assurance | 50 | 35 | 5 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 4 | [10](book/PLAN.md#ch-10) | Research reading and critique | 50 | 35 | 5 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 4 | [11](book/PLAN.md#ch-11) | Applied project | 50 | 35 | 5 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 4 | [12](book/PLAN.md#ch-12) | Final review and transfer | 50 | 35 | 5 | Planned | [Course 142 →](../../privacy-data-protection/pt/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | A profissional e a Corran Freight | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Modelo operacional de governança | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Titularidade de dados em uma rede logística | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Gestão da qualidade dos dados de remessas | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 2 | [05](book/PLAN.md#ch-05) | Pontualidade dos eventos das transportadoras | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Metadados, linhagem e catálogo | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 3 | [07](book/PLAN.md#ch-07) | Governança de acessos | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 3 | [08](book/PLAN.md#ch-08) | Privacidade e dados de motoristas | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 3 | [09](book/PLAN.md#ch-09) | Dados de terceiros e contratos | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 4 | [10](book/PLAN.md#ch-10) | Métricas, relatórios e o conselho | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 4 | [11](book/PLAN.md#ch-11) | Projeto final | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 4 | [12](book/PLAN.md#ch-12) | Apresentação do projeto final e próximos passos | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [Curso 142 →](../../privacy-data-protection/pt/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
