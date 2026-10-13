@@ -53,13 +53,19 @@ A computing system is a stack. At the bottom sit processor, memory, storage and 
 
 Assessment traffic consumes resources. A service that answers fifty requests a minute in normal use may degrade when an inventory tool sends thousands. NIST SP 800-115 warns that testing can disrupt operations and asks planners to weigh that risk before choosing techniques. Old embedded controllers, single-threaded legacy daemons and storage arrays near their limits are the usual casualties. The answer is not to skip them silently but to record the constraint and agree a gentler method, such as configuration review, with the owner.
 
+Priya's first ENG-712 diagram separates passenger internet paths from staff VPN paths before any prefix list is built. Trust assumptions differ on each path, so a single flat inventory would hide where authorization must change.
+
 ### 1.3 Shared and virtual infrastructure
 
 Many systems run on hardware owned by someone else: a hosting provider, a managed-service partner, a cloud platform. The client may own the virtual machine but not the hypervisor or the storage fabric beneath it. Authorization from the client therefore covers only what the client controls. Provider terms, which sometimes require notice and sometimes forbid certain test types, must be read before planning.
 
+Shared hosting means TRT may not see the underlying hypervisor. Priya's ENG-712 scope therefore names virtual machines and URLs TRT controls, not the provider's management plane. When a finding touches shared infrastructure she escalates to the cloud owner rather than probing sideways. Northpoint's ROE repeats that boundary so testers do not invent permission.
+
 ### 1.4 The asset record
 
 A useful record holds: identifier, business function, owner, location (physical or logical), operating system and version, criticality, known fragility, and the authorization status for testing. Every later chapter leans on these fields: scope checks read the address, risk ratings read criticality, reports read the owner.
+
+Priya's asset row for the staff portal carries owner, criticality and the fragile note "change freeze Fridays". Without that record lab_scope decisions look arbitrary. She updates the row when DNS moves, because a stale identifier is how OUT-OF-SCOPE hosts get tested by mistake.
 
 ### Worked example
 
@@ -97,17 +103,29 @@ You will (1) read address ranges in CIDR notation; (2) separate in-scope, exclud
 
 An IPv4 network such as 192.0.2.0/25 covers 128 addresses from .0 to .127. The prefix length tells you how many leading bits are fixed. Scope documents almost always list prefixes rather than single hosts, so a technologist must be able to test membership quickly and without mental arithmetic errors. Ownership is separate from membership: a prefix announced by a cloud provider may contain addresses that belong to thousands of customers.
 
+lab_scope prints 192.0.2.10 and 198.51.100.20 as IN-SCOPE inside TRT's documented /25 teaching ranges. Priya teaches prefix length with those RFC 5737 addresses so learners never point tools at live transit networks. Ownership of each prefix is written beside the CIDR before Northpoint receives the list.
+
 ### 2.2 Exclusions inside ranges
 
 Real scopes often carve holes. TRT's fare-payment segment, 192.0.2.64/27, sits inside the larger in-scope block because of how the network was historically numbered. A checker must evaluate exclusions first; otherwise the broader inclusion wins and a forbidden system is touched.
+
+The fare carve-out 192.0.2.70 EXCLUDED sits inside a larger block on purpose. Priya's checker must honour holes, not only outer prefixes; otherwise ENG-712 would green-light fare-payment hosts. She demos the EXCLUDED line in kickoff so Northpoint sees the hole is intentional.
+
+lab_scope's EXCLUDED line for 192.0.2.70 is the teaching proof that holes matter. Priya fails any scope sheet that only lists outer CIDRs without the fare carve-out written beside them.
 
 ### 2.3 Names versus numbers
 
 DNS records change. A hostname approved on Monday may resolve to a different address on Thursday after a migration, perhaps to a shared content-delivery address. Good practice is to approve both the name and the address, resolve again before each session, and stop if they diverge.
 
+After a CDN migration the staff-portal name resolved outside the approved addresses. Priya paused ENG-712, re-ran lab_scope, and waited for a written white-team update. Names alone never authorize; numbers on the signed list do.
+
+When the portal name drifted to a CDN address, ENG-712 paused until white team updated the number list. Priya screenshots the old and new resolutions into evidence with a HOLD note, not a guess.
+
 ### 2.4 Typical exposed services
 
 A transit operator usually publishes a passenger website, a timetable or real-time API, a staff remote-access gateway, mail, and sometimes a vendor support portal. ATT&CK catalogues the adversary use of remote-access gateways as T1133 External Remote Services, which is why such gateways are commonly prioritised in scope discussions.
+
+TRT's ordinary exposed face is the passenger site, timetable API, staff VPN and mail — not fare validators. Method statements for ENG-712 list those services explicitly. Anything that looks like fare.trt.example is refused even if it answers on an interesting port.
 
 ### Lab A — scope checker
 
@@ -176,21 +194,39 @@ You will (1) write small, readable Python functions that make one decision each;
 
 Assessment work produces lists: hosts, accounts, findings, evidence items, retest dates. Scripts that check, sort and summarise those lists remove copying errors and make decisions repeatable. They are not attack tools. In this book every script reads invented data held in the file itself and prints a verdict.
 
+Priya automates host and finding lists so humans spend time on HOLDs and severity, not on copying rows. Scripts that classify scope and hash evidence are in bounds; scripts that invent attack paths are not. ENG-712's operator log is generated from gate-passing actions only.
+
 ### 3.2 One function, one decision
 
 A function such as `verdict(addr)` in Chapter 2 answers one question and returns a small set of labels. That design makes it testable: feed it an address you already know the answer for and compare. When a function both decides and prints and writes files, a bug in one part hides in the others.
+
+verdict(addr) returns IN-SCOPE, EXCLUDED or OUT-OF-SCOPE and nothing else. That single decision is unit-tested with 192.0.2.10, 192.0.2.70 and 192.0.2.200 before every window. Multi-purpose helpers that also spray passwords fail TRT code review.
+
+Unit tests feed 192.0.2.10, 192.0.2.70 and 192.0.2.200 into verdict() every kickoff. A helper that also mutates inventories fails review because it no longer answers one decision.
 
 ### 3.3 Standard library first
 
 The Python standard library includes `ipaddress`, `datetime`, `hashlib`, `json`, `csv` and `collections`. These cover scope arithmetic, time windows, evidence hashing, structured records and counting. Avoiding third-party packages means no dependency review, no supply-chain surprise, and identical behaviour on the reviewer's machine.
 
+ipaddress, datetime, hashlib and json cover ENG-712's classroom labs without third-party scanners. Priya pins the standard-library choice in the kit inventory so supply-chain arguments stay about TRT tools, not random PyPI packages pulled mid-window.
+
+Kit inventory for ENG-712 lists CPython 3.x standard modules only for classroom checkers. If Northpoint later brings a commercial scanner, that tool gets its own row, owner and data-handling note.
+
 ### 3.4 Failing closed
 
 If a scope file is missing or a date cannot be parsed, the safe default is "do not proceed". A checker that returns "allowed" when it hits an exception is worse than none, because it creates false confidence. Write the deny path first, then add the allow conditions.
 
+Missing scope files make the checker fail closed to "do not proceed". Returning allowed on exception would have green-lit 192.0.2.200 in a broken parse. Priya's tests assert the closed path with a deleted file fixture.
+
+Deleting the scope file in CI must yield do-not-proceed, never allowed. Priya keeps that fixture beside the ENG-712 test table so auditors can rerun the closed path.
+
 ### 3.5 Tests as evidence
 
 A short table of inputs and expected outputs, run before each engagement, is evidence that the tooling behaves. Keep it with the engagement records so a reviewer can rerun it.
+
+The pre-engagement test table for verdict() is filed under ENG-712 beside the ROE. When Northpoint asks whether the tool drifted, she shows the table run at kickoff, not a memory of green output.
+
+Kickoff attaches the green test-table run to the ticket before tools start. Northpoint cannot claim the checker was 'probably fine' without that artefact.
 
 ### Worked example
 
@@ -228,17 +264,31 @@ You will (1) design a minimal record for a finding; (2) validate records for mis
 
 A finding is a claim: on this asset, this weakness exists, shown by this evidence, with this severity. The minimal fields are therefore an identifier, the asset, an ATT&CK technique ID or other weakness reference, a severity from an agreed list, and a pointer to evidence. Remediation owner, due date and status come later in the life cycle.
 
+Finding F-01 needs id, asset, evidence id, severity and scenario before it may enter the report builder. lab_records rejects incomplete rows. Priya will not argue severity on a record that still prints missing evidence.
+
 ### 4.2 Controlled vocabularies
 
 If one tester writes "urgent", another "P1" and a third "very bad", nobody can count criticals. A fixed set — low, medium, high, critical — lets dashboards add and compare. ATT&CK IDs such as T1078 do the same job for adversary behaviour: "valid accounts" phrased five ways is still one technique.
+
+TRT's vocabulary is low, medium, high, critical — never urgent. lab_records flags F-02 for severity urgent so dashboards stay countable. Northpoint's writers get the same enum in the ROE appendix.
+
+F-02's urgent label is rejected so TRT dashboards remain comparable across providers. Priya's ROE appendix pastes the four allowed severity words for Northpoint authors.
 
 ### 4.3 Identifiers over prose
 
 Evidence is linked by an ID such as E-001, not by "see the screenshot from Tuesday". IDs survive renaming, translation and copying into a ticket system. Each ID must be unique within the engagement.
 
+Evidence links as E-001 and E-002, not as "Tuesday's screenshot". When the wiki export is renamed, F-09 still points at E-002's id. Ticket systems inherit those ids unchanged.
+
+Renaming a PNG does not break F-09 because the finding points at E-002. Chat references to 'the wiki shot' are rewritten to ids before the report builder runs.
+
 ### 4.4 Validation as a gate
 
 Records are validated before they enter the report. A validator that lists every problem, rather than stopping at the first, saves round trips with the tester.
+
+The validator lists every problem on a record in one pass. F-03 missing evidence and a bad severity on another row both appear before the author rewrites. Round trips drop when the gate is complete.
+
+Authors see F-03 missing evidence and any other field errors together. One-problem-at-a-time validators wasted a day on ENG-712's first dry run; complete gates fixed that.
 
 ### Lab B — record validator
 
@@ -307,13 +357,25 @@ A vulnerability assessment enumerates known weaknesses broadly and usually stops
 
 Confidentiality: only the right people read timetable drafts and staff records. Integrity: nobody alters next week's driver roster without trace. Availability: passengers receive real-time arrivals when they need them. Every finding should say which of these it threatens, because that steers who cares and how fast.
 
+For TRT, confidentiality covers staff roster drafts; integrity covers timetable truth; availability covers passenger information at rush hour. Priya rates F-01 shared admin as integrity and availability risk, not as a confidentiality trophy hunt.
+
+Timetable integrity failures at rush hour hurt riders even when no personal data leaks. Priya's F-01 write-up leads with that operational CIA framing for the CISO.
+
 ### 5.3 Existence versus effectiveness
 
 A policy that requires multi-factor authentication exists on paper. Effectiveness is shown only when an assessor observes that accounts actually cannot sign in without the second factor. Assessments measure effectiveness; audits often stop at existence. Both matter, but a report must say which one it measured.
 
+MFA "exists" in policy; effectiveness is an assessor watching a portal login that still accepts password-only. ENG-712 records that observation with evidence, not with a policy quote.
+
+Policy PDFs are never enough: ENG-712 includes an observed portal login path that still lacked a second factor. That observation is evidenced, then rated.
+
 ### 5.4 Authorization is the line
 
 The same activity — checking whether an account is protected — is a service when written permission exists and an offence in many jurisdictions when it does not. Skill does not change that. Chapter 10 covers the documents that create permission.
+
+Without signed permission the same account check is not a service. Priya opens ENG-712 only after the CISO path signs; Northpoint may not "start quietly" on staging clones.
+
+CISO signature timestamp is the first line in the ENG-712 pack. Northpoint staging enthusiasm without that line is treated as unauthorized.
 
 ### Worked example
 
@@ -351,17 +413,27 @@ You will (1) name the OS artefacts an assessor typically asks for; (2) explain h
 
 An OS holds accounts, process lists, listening services, package inventories, logs and configuration files. For authorized assessment these are evidence sources when the agreement allows access. A technologist who understands where each source lives can ask for exports rather than for interactive sessions, which reduces operational risk and still produces checkable artefacts.
 
+OS evidence for TRT guests is package lists, listeners and auth logs collected under the ROE. Priya does not dump process memory for curiosity. Fare appliances stay untouched even when they share a VLAN drawing.
+
 ### 6.2 Patch and configuration state
 
 A supported OS with current patches is different from an unsupported release that no longer receives security updates. Configuration also matters: a service that listens on every interface, a password stored in a cleartext file, a firewalled host with an unused management port left open. These are configuration facts, not exploit recipes, and they appear in findings as evidence of control gaps.
+
+Unsupported guests on the staff VLAN become findings with owners; current patched guests do not. Configuration drift — open RDP that lab_ports would mark NOT APPROVED elsewhere — is filed with the package state, not as a separate folklore list.
 
 ### 6.3 Virtualization and shared fate
 
 Guests share a hypervisor, storage and sometimes a network fabric. Isolation is a property of the platform's design and of how carefully it is configured. A finding that one guest can reach another guest's management interface is a platform concern, not only a guest-OS concern. Provider terms usually forbid testing the hypervisor from inside a guest; that boundary must be written into every cloud or hosting engagement.
 
+Shared hypervisors mean one noisy test can affect neighbours. ENG-712 rate limits and dry-runs exist partly because TRT hosts sit on shared fabric. Priya notes shared fate in the residual-risk page.
+
 ### 6.4 Snapshots for remediation
 
 When a fix is applied, a snapshot of the known-good state lets operators roll back if the change breaks something. Snapshots also freeze a moment for later review, but they can contain secrets. Store them under the same access rules as other evidence and delete them when the agreement says so.
+
+Remediation snapshots freeze the post-fix portal build so retest compares like with like. Rolling forward without a snapshot turns F-01 VALIDATED debates into "which build?" arguments.
+
+Post-fix snapshots of the portal guest are named in the retest plan for 2026-12-08. Without them VALIDATED debates become build-identity arguments.
 
 ### Worked example
 
@@ -399,17 +471,31 @@ You will (1) describe authentication, authorization and accounting as separate d
 
 Authentication answers "who is this?" Authorization answers "what may they do?" Accounting answers "what did they do?" A system that authenticates strongly but authorizes everyone as administrator has only solved the first question. Findings should say which decision failed.
 
+Authentication, authorization and accounting fail independently on TRT's portal. A correct password with a leftover contractor role is still a finding. Priya scores each decision separately in the write-up.
+
+F-07's leftover VPN roles show authorization drift after authentication still works. Priya scores the broken accounting trail as part of the same finding family.
+
 ### 7.2 Shared and leftover accounts
 
 Shared passwords for "the ops account" destroy accountability: nobody knows who used it. Leftover accounts of contractors and former staff are a classic source of unexpected access. ATT&CK catalogues the adversary use of legitimate credentials as T1078 Valid Accounts, and the creation of new accounts as T1136 Create Account. Mapping a finding to these IDs lets defenders search the same patterns in their own logs.
+
+Shared ops passwords destroy the accounting leg; F-07 tracks ex-contractor VPN accounts for the same reason. ENG-712 recommends named accounts and revocation dates, not another shared secret.
 
 ### 7.3 Multi-factor and recovery paths
 
 A second factor raises the cost of stolen passwords. Recovery paths — SMS reset, help-desk override, backup codes — must be protected at the same level, or they become the weak door. MFA request generation (ATT&CK T1621) is an adversary technique against push-based factors; that is a design concern for purple-team exercises, not a cue to disable MFA.
 
+SMS resets that bypass MFA are tested as recovery paths, not ignored. Priya's method statement includes recovery review for the staff portal when the ROE allows it.
+
+Help-desk override paths on the staff portal are reviewed when the ROE lists recovery. A strong MFA story with a weak reset is filed, not ignored.
+
 ### 7.4 Least privilege as a checklist
 
 For each role on the staff portal: list the actions it needs, remove the rest, and record who can grant exceptions. The checklist is evidence that authorization was designed rather than inherited.
+
+Least privilege for portal roles is a written checklist signed by the app owner. Exceptions list who granted them and when they expire. The checklist is attached as evidence beside F-01.
+
+The portal role checklist is signed by the app owner and attached next to F-01. Unsigned checklists do not count as least-privilege evidence.
 
 ### Worked example
 
@@ -447,17 +533,35 @@ You will (1) draw a trust-boundary diagram for a small service; (2) explain defe
 
 A trust boundary is a place where assumptions change: from internet to DMZ, from DMZ to internal network, from application to database, from staff device to VPN. Crossing a boundary should require a control — authentication, encryption, a gateway, a filter. Diagrams that omit boundaries hide the places where findings matter most.
 
+Internet→DMZ→portal→directory is a chain of trust boundaries on Priya's diagram. Fare-payment behind another gateway is a different domain. Scope follows those boundaries, not a flat pingable list.
+
+Priya draws internet, DMZ, portal and directory as separate assumption changes. Fare behind another gateway never inherits portal permissions by proximity on a slide.
+
 ### 8.2 Defence in depth as layers with purposes
 
 Depth means independent layers that fail differently. A VPN, an application login and a database permission are three layers. If they all depend on the same password store, they are one layer wearing three hats. An assessor looks for shared single points of failure as carefully as for missing layers.
+
+VPN, portal login and database grants must fail differently. If all three collapse when directory is down, depth is theatre. Purple findings that show shared fate become architecture recommendations.
+
+Purple replay showed VPN and portal both depending on the same directory outage mode. Recommendations therefore include independent session controls, not another shared password.
 
 ### 8.3 Where evidence lives
 
 Network evidence lives in gateway logs and packet captures when authorized. Identity evidence lives in authentication logs. Application evidence lives in access logs and configuration exports. Knowing where to ask saves interactive access that nobody needs.
 
+Gateway logs, directory auth logs and app logs are named in the evidence plan before ENG-712 starts. Packet captures need explicit ROE lines; Priya does not freestyle pcaps on shared links.
+
+Evidence plan names gateway, directory and app logs before the window. Ad-hoc pcaps on shared links stay off unless the ROE gains an explicit line.
+
 ### 8.4 Architecture and scope
 
 Scope should follow architecture. If the fare-payment segment sits behind a different gateway with different owners, it is a different trust domain and usually a different engagement. Mixing domains in one report confuses remediation.
+
+Because fare sits in another trust domain, ENG-712 exclusions name 192.0.2.64/27 and fare.trt.example. Architecture disagreement is resolved in writing before tools run.
+
+Exclusion text for 192.0.2.64/27 and fare.trt.example is read aloud at kickoff. Architecture owners initial that they heard it.
+
+Owners initial the exclusion paragraph in the kickoff pack. Uninitialled exclusions are treated as unread.
 
 ### Worked example
 
@@ -495,13 +599,25 @@ You will (1) write a chain-of-custody note for a digital artefact; (2) compute a
 
 A finding without evidence is an opinion. Evidence can be a configuration export, a redacted screenshot, a log excerpt or a hash of a file. Capture only what proves the point; more data means more retention risk and more redaction work.
 
+E-001's MATCH digest supports the portal banner claim; opinion without that file is rejected. Priya captures on authorized systems only and redacts staff local-parts before filing.
+
+E-001 MATCH is what lets the banner claim enter the report. Opinions about banners without digests are deleted in peer review.
+
 ### 9.2 Chain of custody
 
 For each item record who collected it, when, from where, and every hand-off. NIST SP 800-86 describes integrating forensic techniques into incident response; the same discipline of labelling and integrity checking applies to assessment evidence even when the legal stakes are lower.
 
+Custody lines for ENG-712 name who exported E-001, when, and from which host. Hand-offs to Jordan as evidence owner are logged. NIST SP 800-86 habits transfer even when the case is synthetic.
+
+Jordan's evidence-owner hand-off line lists E-001's collector and time. Missing custody blocks board-pack export even when the hash matches.
+
 ### 9.3 Hashing as a tamper check
 
 A SHA-256 digest of an artefact, stored separately from the artefact, lets a later reader detect silent edits. If the digest no longer matches, the file changed — intentionally or not — and the claim that relied on it must be revisited.
+
+lab_hash shows E-001 MATCH and E-002 MISMATCH. MISMATCH blocks attach until lineage is cleared with two-person review. Digests live beside files, not only inside chat.
+
+E-002 MISMATCH stopped a wiki-password claim until the export was re-taken under two-person review. Digests are stored outside the mutable ticket thread.
 
 ### Lab C — evidence manifest
 
@@ -533,6 +649,10 @@ E-002_wiki_page_export.txt MISMATCH
 ### 9.4 Measurement needs units
 
 "We scanned a lot" is not a measure. "Seven ATT&CK techniques exercised between 22:00 and 05:00; three alerted, two logged, two missed" is a measure. Chapter 19 builds a coverage matrix; this chapter only insists that numbers have units and windows.
+
+ENG-712 reports seven ATT&CK techniques with alerted/logged/missed counts, not "we scanned a lot". Units make purple investment conversations possible with the CISO.
+
+Seven techniques with alerted/logged/missed beats any 'coverage percent' invented without units. ENG-712's purple slide uses only those counts.
 
 ### Worked example
 
@@ -568,19 +688,33 @@ You will (1) place vulnerability assessment, penetration testing and red teaming
 
 ### 10.1 A life cycle, not a tool list
 
-Authorized practice moves through governance and scoping, rules of engagement, execution within those rules, evidence handling, risk rating, reporting, remediation and validation. Tool names change; the life cycle does not. NIST SP 800-115 and PTES both organise work this way, even though their section titles differ.
+Authorized practice moves through governance and scoping, rules of engagement, execution within those rules, evidence handling, risk rating, reporting, remediation and validation. Tool names change; the life cycle does not. NIST SP 800-115 and PTES both organise work this way, even though their part titles differ.
+
+Governance→scope→ROE→execute→evidence→rate→report→retest is the path Priya teaches. Skipping to tools produces STOP lines like fare-system interaction. Northpoint is graded on the path, not on trophies.
+
+Skipping straight to scanners produced a fare STOP in training runs. Priya grades life-cycle adherence before she grades finding cleverness.
 
 ### 10.2 Permission is written
 
 Permission comes from a signed agreement that names the parties, the systems, the methods, the window, the exclusions, the data-handling rules, the emergency contact and the report audience. Verbal "go ahead" is not enough. Chapter 11 turns that agreement into checkable scope and ROE objects.
 
+The signed pack names parties, systems, methods, window, exclusions, retention, emergency contact and white-team phone. Missing emergency contact cancels the Saturday start the same way ROE labs teach elsewhere.
+
+Emergency contact empty equals cancelled start, same as professional ROE labs. Retention and white-team phone are checked in the same breath.
+
 ### 10.3 Red, blue and purple
 
 The red team (or testing provider) exercises adversary behaviours under authorization. The blue team (SOC and defenders) detects and responds. Purple teaming is structured collaboration: red announces or reveals techniques in a controlled way so blue can improve detection, with learning as the goal rather than a pure "gotcha". TIBER-EU and CBEST add a threat-intelligence-led layer used in financial-sector assurance; technologists should recognise those names even when their organisation is not a bank.
 
+Red (Northpoint) exercises behaviours; blue (TRT SOC) detects; purple replays misses into DET-19 and DET-20. Priya refuses engagements that omit a reachable white team. Learning is a deliverable, not a soft extra.
+
 ### 10.4 What this book will not do
 
 It will not provide exploit code, payloads or step-by-step attack procedures. It will not authorize anyone to test a real system. It teaches governance, evidence, measurement and remediation validation on synthetic data so that when a learner later joins a real team, the discipline is already in place.
+
+No exploit code, no live authorization, no fare "just this once". Chapter 10's boundary is what Priya quotes when a panel asks for T1552.001 steps — she points at ATT&CK and stops.
+
+Panel requests for exploit steps get ATT&CK URLs and a closed laptop. Chapter 10's refusal is practised, not theoretical.
 
 ### Worked example
 
@@ -618,13 +752,25 @@ You will (1) turn a signed agreement into a machine-checkable scope and ROE; (2)
 
 An agreement written in paragraphs becomes useful when it is also a list: in-scope prefixes and names, excluded systems, allowed activities, start and end times, forbidden activities, and an emergency contact. Checkers in Chapters 2 and this chapter operate on those lists. Ambiguous prose such as "and related systems" is a defect, not a feature.
 
+Prose agreements become loadable lists for lab_scope and lab_roe checkers. If a field cannot be parsed, ENG-712 does not start. Priya maintains both the narrative ROE and the machine lists.
+
 ### 11.2 Context changes the method
 
 A high-criticality, fragile asset may be examined by configuration review only. A low-criticality staging clone may accept more active checks. The asset record from Chapter 1 supplies that context; ignoring it produces either reckless testing or wasted caution.
 
+High-fragility assets stay on configuration review; staging clones may see more active inventory. Criticality on the asset record drives that choice, not tester boredom.
+
+Fragile production portal stays on config review; a labelled staging clone may see inventory scans. Criticality on the asset record is the switch, not tester preference.
+
 ### 11.3 Stop lists and windows
 
 A stop list names activities that are never allowed even inside the window — for TRT, fare-system interaction and social engineering of drivers. A window names when allowed activities may run. Both are hard gates.
+
+Stop lists ban fare-system interaction and social engineering of drivers even inside the window. Windows that end at 05:00 make 06:10 VPN review a STOP in the lab output Priya demos.
+
+Driver social-engineering bans sit on the stop list beside fare interaction. Windows ending 05:00 make 06:10 VPN work a documented STOP.
+
+Stop-list drills in studio use a fake fare hostname that must produce HOLD/STOP, not curiosity traffic.
 
 ### Lab D — ROE activity checker
 
@@ -663,6 +809,10 @@ Run with `python3 lab_roe.py`. Verified output:
 
 Someone with stop authority must be reachable throughout the window. If that person cannot be reached, the session does not start. TIBER-EU-style exercises formalise this as a white-team control function; smaller engagements still need the same idea.
 
+White-team silence means no start. TIBER-style control functions are borrowed as an idea even though TRT is not a bank. Sam as liaison pages white team; side chats do not.
+
+Sam pages white team; nobody else. Unreachable white team means the vans stay parked and the VPN stays dark.
+
 ### Worked example
 
 Northpoint's draft plan includes a VPN review at 06:10 and a "fare-system interaction" at 23:00. The lab prints STOP for both — one outside the window, one forbidden. Priya cancels those lines before kickoff and keeps the two allowed activities.
@@ -699,17 +849,37 @@ You will (1) draw a data-flow diagram for one TRT service; (2) mark where assess
 
 A data-flow diagram shows what moves: a passenger request to the timetable API, a staff login to the portal, a log line to the SIEM, a backup to storage. Boxes alone do not reveal where copies of sensitive data land. Assessments that touch those paths can create new copies; the agreement must say what happens to them.
 
+Passenger→API and staff→portal→SIEM flows are drawn before ENG-712. Findings that need log evidence cite those flows. Boxes without flows hide where personal data moves.
+
+API and SIEM flows are checked for personal data before evidence designs are approved. Boxes without arrows hide retention obligations.
+
 ### 12.2 Personal and operational data
 
 Even a transit operator holds personal data — staff identifiers, sometimes passenger account details on adjacent systems. Operational data such as driver rosters and maintenance schedules can also be sensitive. Capture the minimum that proves a finding; mask the rest before filing.
+
+Staff identifiers in login screenshots are masked to domain-only before vaulting. Operational roster data is treated as sensitive even when not classic PII. Retention clocks still run.
+
+Masked screenshots keep staff domains for proof but drop local-parts. Roster extracts are vaulted with the same 90-day clock as banners.
 
 ### 12.3 Cross-border and vendor paths
 
 If logs are shipped to a vendor SIEM in another country, evidence may leave the jurisdiction the agreement assumed. Note the path before the engagement; do not discover it in the report draft.
 
+Vendor SIEM in another country is noted in the agreement before evidence ships. Priya will not invent cross-border consent mid-window. Paths are scoped like hosts.
+
+Cross-border SIEM paths are named in the agreement before first log ship. Mid-window 'the vendor moved regions' triggers a pause, not a shrug.
+
+Vendor region changes mid-window open a decision clinic before any more logs ship abroad.
+
 ### 12.4 Retention clocks
 
 Start a retention clock when evidence is collected. When the agreement's period ends, delete or return the data and record that you did. Indefinite "just in case" stores are a liability.
+
+ENG-712's 90-day clock ends with delete-or-return plus a written destruction record. Indefinite "just in case" archives fail the handoff checklist.
+
+Day-90 destruction records name who deleted ENG-712 evidence and when. Keeping copies 'for training' without a new agreement fails handoff.
+
+Destruction certificates for ENG-712 evidence are hashed into the handoff pack beside the ACL flip.
 
 ### Worked example
 
@@ -747,13 +917,31 @@ You will (1) rate findings with a transparent likelihood × impact matrix; (2) s
 
 A 1–5 likelihood and 1–5 impact scale, multiplied, gives a score that anyone can recompute. Bands such as critical ≥ 20, high ≥ 12, medium ≥ 6, low ≥ 0 turn scores into language managers recognise. Document the scale in the report so readers are not guessing.
 
+Likelihood×impact on 1–5 scales makes F-09's 20 critical recomputable by anyone. Priya shows the arithmetic in the report appendix so boards do not treat scores as mystique.
+
+F-09's 4×5=20 arithmetic is printed so a director can recompute critical. Mystique scores are rejected in review.
+
+Directors who cannot recompute 4×5 are walked through the appendix once; mystique is not teaching.
+
 ### 13.2 Scenarios connect the dots
 
 "Shared admin account on the staff portal" is a weakness. The scenario adds: an adversary using T1078 Valid Accounts could alter public timetables (integrity) and lock out operators (availability). Scenarios make impact scores defensible.
 
+Shared admin becomes T1078 with timetable integrity impact in the scenario paragraph. Weakness alone understates why the CISO should care before the weekend service change.
+
+T1078 plus timetable integrity is the scenario sentence under F-01. Weakness-only titles are rewritten before the exec table builds.
+
+Scenario sentences are mandatory under high findings before the exec table ships.
+
 ### 13.3 Severity versus urgency
 
 A critical finding on a decommissioned staging host may be low urgency. A medium finding on a system under active attack may be high urgency. Tickets carry both fields; collapsing them into one number loses information.
+
+Critical on a decommissioned staging host can wait; medium under active abuse cannot. Tickets carry urgency separate from severity so owners schedule sanely.
+
+Urgency fields let medium-under-abuse jump the queue past critical-on-junk-staging. Owners see both numbers on the ticket.
+
+Abuse-driven urgency overrides staging criticals in the weekly triage sort Priya runs with owners.
 
 ### Lab E — finding scorer
 
@@ -786,9 +974,17 @@ F-04 L3 x I1 =  3 low      verbose error page on timetable API
 
 NIST SP 800-30 Rev. 1 describes risk as a function of threat, vulnerability and impact (among other framings). The classroom matrix is a simplification for ordering work, not a full enterprise risk assessment.
 
+NIST SP 800-30 language frames threat×vulnerability×impact; the classroom matrix is a teaching simplification. Priya cites the simplification so examiners do not think TRT invented risk theory.
+
+Priya labels the 1–5 matrix as a classroom simplification of SP 800-30 ideas. Examiners hear the citation, not a claim of inventing risk math.
+
+Citation to SP 800-30 sits under the matrix figure caption so examiners see the lineage.
+
 ### 13.5 Communicating scores upward
 
 When Priya presents the ordered list, she spends more time on the top two scenarios than on the low finding. Boards can absorb a handful of well-narrated risks; they cannot absorb a spreadsheet dump. She keeps the full table in an appendix for auditors and puts three sentences in the executive summary: what matters, why, and what decision she needs this week.
+
+Top scenarios get the airtime; low verbose-error findings get a line. Boards absorb two narratives better than twenty equal bullets. F-09 and F-01 lead ENG-712's oral summary.
 
 ### Worked example
 
@@ -826,17 +1022,35 @@ You will (1) map engagement phases to NIST SP 800-115 and PTES; (2) choose revie
 
 NIST SP 800-115 groups techniques into review, target identification and analysis, and target vulnerability validation, wrapped by planning and post-testing activities. PTES names pre-engagement, intelligence gathering, threat modelling, vulnerability analysis, exploitation, post-exploitation and reporting. A technologist does not need to memorise every subsection; they need to place each planned activity in a phase and know which document the client prefers.
 
+SP 800-115 and PTES name stages; Priya maps ENG-712 activities onto both so Northpoint and auditors share vocabulary. Threat-led extras sit on top of scoping discipline, not instead of it.
+
 ### 14.2 Review before validation
 
 Configuration review, document review and log review often answer the question with less operational risk than active validation. Use validation when the decision truly needs confirmation that a weakness is reachable under the agreed limits — and only then.
+
+Configuration review of portal auth often beats active password experiments. Validation is used when the CISO decision truly needs reachability proof under the ROE.
+
+Auth configuration review answered the MFA question with less risk than password experiments. Validation is reserved for reachability the CISO truly needs.
+
+Reachability validation requests need a one-line CISO decision statement before active checks run.
 
 ### 14.3 Method statements
 
 A method statement is a short, non-procedural description: "External service inventory of in-scope prefixes using approved scanners at agreed rates; authentication configuration review of the staff portal; no denial-of-service, no fare-system interaction, no social engineering." It belongs in the ROE.
 
+Method statements stay non-procedural: inventory at agreed rates, portal auth review, no DoS, no fare. How-to exploit steps are out of the book and out of ENG-712 deliverables.
+
+Method statements stay at inventory rates and portal review — never step-by-step exploit paths. Dual-use detail is a fail on the peer rubric.
+
 ### 14.4 ATT&CK at ID level
 
 Refer to behaviours as T1595 Active Scanning, T1046 Network Service Discovery, T1078 Valid Accounts. Do not expand them into how-to steps. Defenders can open the ATT&CK pages; attackers do not need this book.
+
+T1595, T1046 and T1078 are cited as IDs with ATT&CK links. Expanding them into recipes would violate Chapter 10. Defenders can open MITRE; this course will not paste payloads.
+
+ATT&CK IDs link out; recipes stay out. Defenders open MITRE; ENG-712 deliverables do not paste payloads.
+
+Hyperlinks to ATT&CK technique pages replace pasted procedure text in every deliverable.
 
 ### Worked example
 
@@ -874,9 +1088,19 @@ You will (1) run a three-gate pipeline that admits an action only when target, t
 
 Every planned action has a target address, a timestamp and an activity name. The target must sit in the in-scope prefix, the timestamp inside the window, and the activity on the approved list. Fail any gate and the action does not proceed.
 
+Target in prefix, time in window, activity approved — three gates. lab activity output shows A2 HOLD activity and A3 HOLD target. Fail any gate and the action never hits the operator log.
+
+A2 and A3 HOLD lines in the lab are screenshotted into training notes. Gates are the product; improvisation is the defect.
+
 ### 15.2 The operator log
 
 Only actions that pass all three gates are written to the operator log. The log is evidence that the team stayed inside the agreement. A log full of improvisation is a finding against the testing team itself.
+
+Only A1 and A4 appear in the operator log in the lab. Improvised actions are findings against Northpoint. Priya reviews the log before the CISO session.
+
+Operator logs containing only A1 and A4 prove the gates held. Extra shadow actions become findings against Northpoint.
+
+Shadow actions found in chat but not in the operator log become Northpoint process findings.
 
 ### Lab F — guided pipeline
 
@@ -921,9 +1145,21 @@ operator log entries: ['A1', 'A4']
 
 A2 is held because "password spraying" is not an approved activity. A3 is held because the target is outside the /25. Those HOLDs protect TRT and Northpoint. Celebrating a HOLD in the debrief teaches juniors that restraint is professional.
 
+HOLD on password spraying and HOLD on out-of-/25 targets are celebrated in debrief. Juniors learn restraint is professional. Fare STOP lines get the same applause.
+
+Debriefs clap for HOLDs and fare STOPs. Juniors who hide HOLDs to look productive fail the studio grade.
+
+Studio grades add points for documented HOLDs that prevented fare or out-of-window work.
+
 ### 15.4 Reviewer use
 
 A reviewer should be able to replay the gates against the log. If an entry appears that would not pass, the engagement has a process failure regardless of whether anything "interesting" was found.
+
+Reviewers replay gates against the log. An entry that would HOLD is a process failure even if the finding was flashy. ENG-712 grades process beside findings.
+
+Process failure is scored even when a finding looks good. Reviewers replay gates; flashy cannot wash a bad log.
+
+Gate replay scripts are part of peer review for ENG-712 training packs.
 
 ### Worked example
 
@@ -961,17 +1197,37 @@ You will (1) contrast web-application testing literacy (OWASP WSTG) with network
 
 The OWASP Web Security Testing Guide organises checks for web applications: configuration, identity, input handling, business logic and more. A technologist uses it as a coverage checklist for the staff portal and timetable API, not as a licence to run every check. Each selected check still needs a ROE line.
 
+WSTG catalogues portal and API checks; Priya picks items that fit the ROE, not the whole book. Coverage language names which WSTG areas ran and which were excluded.
+
+Priya marks which WSTG areas ran for portal versus API. 'We did WSTG' without the mark is empty coverage language.
+
 ### 16.2 Threat-led assurance
 
 TIBER-EU and CBEST describe intelligence-led exercises used especially in financial-market infrastructure. They add a threat-intelligence phase, a white-team control function and a learning-focused replay. TRT is not a bank, but borrowing the white-team and learning-review ideas improves any red-team exercise.
+
+TIBER/CBEST ideas — intel, white team, learning replay — are borrowed cautiously for TRT. Priya does not claim CBEST compliance for a bus operator. She claims white-team reachability and purple tickets.
+
+Borrowing white-team and purple learning from TIBER/CBEST ideas does not let TRT claim bank-style compliance. Priya's slides say so explicitly.
 
 ### 16.3 Mixing methods without mixing scopes
 
 A single engagement can include a WSTG-informed portal review and a limited network inventory, provided both sit inside the same agreement and exclusions. Mixing in an unstated "quick look" at fare-payment systems violates the agreement even if the method is gentle.
 
+Portal WSTG review plus network inventory can share one agreement; a quiet fare peek cannot. Mixing scopes is how STOP fare-system interaction appears in the checker.
+
+One agreement can hold portal review and network inventory; it cannot silently add fare. Scope creep is a STOP, not a stretch goal.
+
 ### 16.4 Exclusion language that works
 
 "Fare-payment systems, including hosts in 192.0.2.64/27 and any hostname under fare.trt.example, are excluded from all activities." Beats "sensitive systems are out of scope", which nobody can check.
+
+Exact exclusion text names 192.0.2.64/27 and fare.trt.example. Vague "sensitive systems" language fails peer review because lab_scope cannot parse it.
+
+Peer review rejects 'sensitive systems excluded' as uncheckable. Exact prefixes and host patterns are required.
+
+Uncheckable exclusion prose fails the same gate as a missing emergency contact.
+
+Checkable exclusion strings are a kickoff gate equal to emergency contact presence.
 
 ### Worked example
 
@@ -1009,17 +1265,39 @@ You will (1) inventory assessment tools with owner, purpose and data handled; (2
 
 Anything that touches client systems or client data is part of the engagement's attack surface — including the tester's own laptop and scanners. An inventory lists each tool, who maintains it, what data it stores, and whether it may leave the approved environment.
 
+Tester laptops and scanners are inventoried as part of ENG-712's attack surface. Data they store falls under the same retention clock. Lost kit is an incident, not a shrug.
+
+Lost tester laptops trigger the same incident path as lost badges. Kit inventory rows include disk encryption and retention for local evidence caches.
+
 ### 17.2 Change control mid-flight
 
 Upgrading a scanner halfway through a window can change its behaviour and invalidate comparisons. Note the version at kickoff; defer upgrades unless the white team agrees that a security fix in the tool itself requires it.
+
+Scanner versions pin at kickoff; mid-window upgrades need white-team OK. Comparisons against earlier purple runs die when versions drift silently.
+
+Pinned scanner versions at kickoff protect before/after purple comparisons. Emergency tool patches need white-team initials in the log.
+
+White-team initials for emergency tool patches are stored next to the version pin line.
 
 ### 17.3 Supply chain of tools
 
 Assessment software comes from vendors and open-source projects. Prefer signed releases, verify checksums when provided, and avoid random scripts from the internet. ATT&CK T1195 Supply Chain Compromise is usually discussed as an adversary technique against the client; it applies to the testing team too.
 
+Signed releases and checksums beat random internet scripts. T1195 is discussed as a supply-chain risk to TRT's own tools too. Priya verifies hashes before the window.
+
+Checksum verification is a kickoff checklist line. Random GitHub scripts are refused even when they claim to 'just parse JSON'.
+
 ### 17.4 Classroom constraint
 
 Every lab in this book uses only the Python 3 standard library and synthetic data. That is intentional: learners practise decision logic without depending on commercial scanners or building attack tooling.
+
+Standard-library labs keep learners on decisions, not on building scanners. Commercial tools may appear at work later under their own governance.
+
+Classroom standard-library constraint keeps focus on gates. Work tools arrive later under TRT's own procurement controls.
+
+Procurement brings commercial tools under change control; class does not.
+
+Class stays on stdlib; work scanners arrive only through TRT change control later.
 
 ### Worked example
 
@@ -1057,17 +1335,35 @@ You will (1) map common assessment findings to control families in NIST SP 800-5
 
 A finding is a gap; a control is how the organisation closes it. NIST SP 800-53 Rev. 5 provides control families (access control, audit and accountability, identification and authentication, and many others). NIST CSF 2.0 organises outcomes into Govern, Identify, Protect, Detect, Respond and Recover. Reports that recommend "be careful" help nobody; reports that recommend "enforce MFA on all VPN paths (IA-family control); owner: identity team; check: quarterly account review" create work.
 
+Findings map to SP 800-53 families and CSF functions in the recommendation line. F-01 points at identity controls; missed T1021 points at detect/respond work. Owners see a control verb, not only a problem.
+
 ### 18.2 Compensating controls
 
 If MFA cannot yet cover a legacy path, a compensating control might be a jump host with session recording and a shorter session timeout. Document the compensation and the plan to remove it. Assessors should test whether the compensation actually works, not merely whether it is written down.
+
+Legacy paths without MFA get jump-host recording and short timeouts as compensation with an end date. Assessors retest the compensation, not only the wish for MFA.
+
+Compensating jump-host controls carry end dates and retest hooks. Eternal compensations become silent accepted risk without a name.
 
 ### 18.3 Detect and respond are controls too
 
 Purple-team work often finds that Prevent failed but Detect also failed. Recommendations then land in the Detect and Respond functions: a new alert, a runbook step, a playbook link. D3FEND offers defensive technique vocabulary that can sit beside ATT&CK IDs in a mature programme.
 
+Prevent-fail plus detect-fail becomes a DET ticket and a runbook step. D3FEND vocabulary keeps blue recommendations from becoming vague "monitor more".
+
+Detect/respond recommendations cite D3FEND-style verbs and open DET tickets. 'Monitor more' without an owner is rewritten.
+
 ### 18.4 Forbidden assurance phrases
 
 "Fully secure", "guaranteed", "hack-proof" and "100% coverage" are false and forbidden in TRT reports. Time-bounded, scope-bounded statements are the professional alternative.
+
+Fully secure, guaranteed, hack-proof and 100% coverage are stripped by review. ENG-712's assurance line is time-bounded and scope-bounded like lab_assurance lessons elsewhere.
+
+Review bots flag forbidden assurance phrases before the CISO sees the pack. Time and scope bounds replace swagger.
+
+Forbidden phrases are listed in the ROE appendix so vendors cannot plead ignorance.
+
+Vendor drafts with hack-proof language are returned unread until rewritten.
 
 ### Worked example
 
@@ -1105,9 +1401,21 @@ You will (1) build an ATT&CK coverage matrix from a purple-team log; (2) interpr
 
 A coverage matrix does not claim the organisation detects "everything". It shows, for the techniques exercised in a named window, whether the SOC alerted, merely logged, or missed. That conversation drives investment.
 
+Coverage matrices state alerted/logged/missed for named techniques in a named window. They never claim TRT detects everything. Investment talks use those three words.
+
+Coverage slides open with the window dates and technique list. Universal detection claims are deleted.
+
+Window dates print above the coverage matrix in 28-point type on purple slides.
+
 ### 19.2 Alerted, logged, missed
 
 Alerted means a person or playbook was notified in time to act. Logged means the telemetry existed but nobody was woken. Missed means the behaviour left no usable telemetry. Logged is not success if the exercise assumed a responding analyst.
+
+Alerted means notify-in-time; logged means telemetry without waking anyone; missed means no usable telemetry. Logged is failure when the exercise expected response.
+
+Logged-but-not-alerted is explained as a miss against the exercise's response goal. SOC leaders hear the distinction in purple language.
+
+Response-goal misses (logged only) open DET tickets even when telemetry existed.
 
 ### Lab G — coverage matrix
 
@@ -1147,13 +1455,27 @@ missed   2/7 = 28.6%
 
 Each missed technique becomes a backlog item: which log source, which alert logic, which owner, which test to prove it later. Tie the item to the ATT&CK ID so future exercises can retest the same cell.
 
+Misses become backlog with log source, alert logic, owner and retest plan, tagged with ATT&CK IDs. DET-19 and DET-20 follow that pattern for T1021 and T1087.
+
+Backlog items for misses include ATT&CK tags so the next cycle can retest cells. Untagged misses die in the wrong queue.
+
 ### 19.4 Navigator and D3FEND
 
 ATT&CK Navigator visualises coverage layers. D3FEND names defensive techniques that can counter a given offensive technique. Together they help a technologist talk to both red and blue without inventing a private vocabulary.
 
+Navigator layers and D3FEND counters give red and blue a shared picture. Priya imports ENG-712's exercised set rather than a generic heat map.
+
+Navigator imports ENG-712's exercised set rather than a generic enterprise heatmap. D3FEND links sit on the recommendation cells.
+
+Generic heatmaps without ENG-712's exercised set are rejected as decoration.
+
 ### 19.5 Retesting the same cells
 
 A coverage matrix earns its keep only if the next exercise reopens the same cells. Priya tags DET-19 and DET-20 with T1021 and T1087 so the following purple cycle can print a before/after row. Without that discipline the organisation rediscovers the same misses and calls it a new insight.
+
+Next purple cycle reprints DET-19/DET-20 before/after rows. Without retesting the same cells, TRT rediscovers misses and calls them new.
+
+Before/after rows for DET-19 and DET-20 are the point of the matrix. New fancy techniques do not excuse skipping old misses.
 
 ### Worked example
 
@@ -1191,17 +1513,41 @@ You will (1) build a fault tree for a failed assessment session; (2) separate to
 
 DNS drift, an expired tester certificate, a SIEM collector down, a white-team phone on silent, a scope sheet with a typo — these stop work more often than exotic problems. A fault tree starts with "session cannot proceed" and branches into authorization, connectivity, tooling and safety.
 
+DNS drift, expired certs, silent white-team phones and scope typos stop ENG-712 more often than novel exploits. Troubleshooting trees start with those boring faults.
+
+Boring faults get the first thirty minutes of any stuck session. Novel exploit hunts wait until DNS, certs and phones are healthy.
+
 ### 20.2 Three fault classes
 
 Scope faults: the target is no longer approved. Tooling faults: the checker or scanner misbehaves. Environment faults: the client's system is unstable or an incident is already in progress. Mis-classifying an environment fault as a tooling fault leads to "trying again" when the right move is to stop.
+
+Scope, tooling and environment faults get different owners. Priya's go/no-go note names the class so the wrong team is not paged.
+
+Go/no-go notes name scope versus tooling versus environment so the right on-call answers. Mis-filed faults burn trust.
 
 ### 20.3 Go / no-go
 
 After any unexpected event — a crash, a complaint, a SIEM outage — the team writes a short go/no-go note: what happened, which fault class, who was informed, decision, signature/time. No-go is a professional outcome.
 
+After a SIEM outage the team writes go/no-go before sending more traffic. Continuing blind creates noise without evidence value.
+
+SIEM outages pause traffic; they do not invite freestyle offline guessing about detections. Notes record the pause.
+
+Pause notes during SIEM outages include the last good technique timestamp.
+
+Last-good technique timestamps keep purple metrics honest across outages.
+
 ### 20.4 Parallel incident
 
 If TRT's SOC is already handling a real incident, assessment activity that adds noise is usually suspended. NIST SP 800-61 Rev. 3 discusses incident response coordination; assessment teams must know how to stand down.
+
+Parallel real incidents at TRT SOC suspend noisy assessment. SP 800-61 thinking applies: do not fight the blue team during their incident.
+
+Real SOC incidents preempt assessment noise. Priya's ROE states that suspension path explicitly.
+
+Suspension for real incidents is rehearsed in studio with a fake SOC page.
+
+Fake SOC pages in studio prove the suspension path before live ENG-712.
 
 ### Worked example
 
@@ -1211,7 +1557,7 @@ At 23:10 the timetable API starts timing out. Northpoint's inventory tool is bla
 
 ### Errors and limits
 
-Troubleshooting notes that blame people rather than systems poison purple-team trust. Do not hide a no-go from the report's limitations section.
+Troubleshooting notes that blame people rather than systems poison purple-team trust. Do not hide a no-go from the report's limitations page.
 
 ### Exercises
 
@@ -1239,17 +1585,41 @@ You will (1) place the assessment service among identity, logging, ticketing and
 
 An authorized assessment capability is a service with inputs (requests, agreements), processes (scoped execution) and outputs (findings, reports, retest results). It depends on identity (who may approve), logging (where evidence of activity goes), ticketing (where findings live) and change management (when fixes roll out). Drawing those dependencies prevents the assessment team from inventing parallel tools that nobody else watches.
 
+Assessment is a service with request→agreement→execution→findings/retest outputs. Priya measures queue time and reopen rates, not only critical counts.
+
+Service metrics include queue time to white-team ack and reopen rates after retest. Critical counts alone mis-rank providers.
+
 ### 21.2 Interfaces and SLAs
 
 Each interface needs an owner and a response expectation: white-team acknowledgement within fifteen minutes of a stop call; remediation ticket acknowledgement within two business days; evidence repository access revoked within one day of engagement close. SLAs without owners are decorations.
+
+White-team ack within fifteen minutes and remediation ack within five business days are written expectations. Interfaces without owners become black holes.
+
+Fifteen-minute white-team and five-day remediation acks are tracked. Interfaces without owners appear on the evaluation sheet as process debt.
+
+Missed ack SLAs appear as process debt on the signed evaluation sheet.
 
 ### 21.3 One risk tracker
 
 Findings that live only in a PDF never meet their owners. Export them into the organisation's risk or vulnerability tracker with the same severity vocabulary Chapter 4 required. Keep the PDF as the narrative; keep the tracker as the work queue.
 
+PDF-only findings never meet owners; export to the tracker with the same severity words. F-01 and F-07 live in the tracker before the slide deck does.
+
+Tracker export precedes the slide deck. F-01 and F-07 must exist as tickets before storytelling begins.
+
+Slide decks that precede tickets are sent back unpublished.
+
 ### 21.4 Shadow IT
 
 Personal drives, unmanaged chat channels and private boards for "just this engagement" become the place evidence goes to die — or to leak. Use the approved services even when they feel slower.
+
+Personal drives and side chats are banned for evidence. Approved vault paths only — Chapter 25's quiet-channel rule applies to ENG-712 too.
+
+Side-channel evidence stores are audit findings. Vault paths only — including for 'temporary' screenshots.
+
+Temporary desktop folders named evidence_tmp fail the vault audit.
+
+Vault audit samples look for evidence_tmp and similar shadow folders weekly.
 
 ### Worked example
 
@@ -1287,6 +1657,12 @@ You will (1) automate report tables and status counts from structured findings; 
 
 Building a Markdown table from a finding list, counting open versus fixed, sorting by severity — these are ideal for scripts. They reduce copy errors and produce identical artefacts for the reviewer.
 
+Markdown tables, open/fixed counts and severity sorts are automated from validated records. Humans still gate authorization. lab_report builders consume clean JSON, not screenshots of Excel.
+
+Report builders consume validated JSON; they do not scrape consoles. Automation errors become builder bugs, not silent wrong severities.
+
+Wrong severities from builders open defect tickets against the automation, not the finding owner.
+
 ### Lab H — report builder
 
 ```python
@@ -1323,17 +1699,47 @@ open=2 fixed=1 accepted=1
 
 Authorization decisions, white-team calls, severity disputes and go/no-go notes stay human. Automating "approve scope" is how organisations accidentally authorize the wrong prefix.
 
+Approve-scope bots are forbidden. White-team calls, severity disputes and go/no-go stay human even when tables auto-build.
+
+Human gates stay human even when tables auto-render. Scope approval bots are out of policy.
+
+Scope-approval automation proposals are closed with a pointer to this rule.
+
+Closed automation tickets cite the human-gate rule by ENG-712 policy id.
+
+Human gates stay mandatory even when builders auto-render tables; scope-approval bots stay out of TRT policy for ENG-712.
+
 ### 22.3 Dry-run and rate limits
 
 Any automation that could send traffic needs a dry-run mode that prints what it would do, and a rate limit agreed in the ROE. Classroom labs never send traffic; production tools must still show the same discipline.
+
+Dry-run prints the would-be targets; rate limits match the ROE. Classroom labs never send packets, rehearsing the habit before production tools appear.
+
+Dry-run output is filed when the ROE requires proof that rates were respected. Live sends without dry-run fail kit checks.
+
+Dry-run artefacts are retention-scoped like other ENG-712 evidence.
 
 ### 22.4 Version with the engagement
 
 Store the exact script version (commit hash or file hash) in the engagement record so a reviewer can regenerate the table later. Unversioned "final_final_v3.py" files are not evidence.
 
+Commit or file hashes of scripts sit in the ENG-712 record. Unversioned final_v3 scripts fail audit when regenerating tables.
+
+Commit hashes in ENG-712 let reviewers regenerate tables months later. final_v3.py without a hash fails archive review.
+
+Archive review rejects unhashed scripts even if the Markdown looks pretty.
+
+Pretty Markdown cannot redeem an unhashed builder script in archive review.
+
 ### 22.5 What not to scrape
 
 Automation that pulls production passwords, session cookies or personal data into a report builder is a data-handling incident waiting to happen. The builder in this chapter reads only the fields a human already filed as findings. If a field is missing, the script should fail loudly rather than invent a default severity.
+
+Report builders must not scrape passwords or cookies from production. That scrape would itself be a data incident under the agreement.
+
+Builders that pull session cookies fail security review before merge. Synthetic fixtures only in CI.
+
+CI fixtures use synthetic cookies only; production pulls fail the pipeline.
 
 ### Worked example
 
@@ -1371,21 +1777,51 @@ You will (1) define evaluation criteria before an engagement ends; (2) score pro
 
 Evaluation answers: did we stay in scope, did we meet the decision the CISO needed, did defenders learn, did remediation start? Write those criteria in the ROE or kickoff notes so future-you cannot invent softer ones after a messy week.
 
+Close criteria — scope adherence, decision support, defender learning, remediation start — are written before ENG-712. Priya's signed sheet uses those four, not trophy count.
+
+Signed evaluation sheets list the four close criteria with yes/no. Trophy counts are footnotes.
+
+Yes/no close criteria are filled before the CISO pen touches the sheet.
+
 ### 23.2 Process quality ≠ trophy count
 
 An engagement that finds nothing but demonstrates solid gates, clean evidence and a useful purple replay can be a success. An engagement that finds dozens of issues by ignoring exclusions is a failure with a long appendix. Score discipline explicitly.
+
+Zero findings with clean gates can still succeed; dozens of findings with STOP breaches fail. Process quality is scored beside outcomes.
+
+Clean gates with zero findings can outscore messy trophy hunts. Priya's studio rubric says so on page one.
+
+Studio page one states process can beat trophy count in the final grade.
 
 ### 23.3 Lessons learned
 
 Within two weeks, red, blue and white teams meet. Each miss from the coverage matrix becomes a ticket. Each process fault becomes a procedure change. Capture what to stop, start and continue.
 
+Within two weeks, misses become tickets and process faults become procedure changes. DET-19 is an example miss ticket from the coverage story.
+
+Two-week lessons turn misses into DET tickets and faults into procedure edits. Waiting for annual reviews loses the thread.
+
+DET tickets from lessons learned inherit ATT&CK tags from the matrix cells.
+
 ### 23.4 Vanity metrics
 
 "Hosts scanned", "packets sent" and "criticals found" without context encourage the wrong behaviour. Prefer "techniques exercised", "percent alerted", "findings accepted into tracker within SLA" and "retests closed".
 
+Hosts scanned and packets sent are vanity without technique and alert rates. Prefer ATT&CK cells and percent alerted.
+
+Technique and alert rates replace hosts-scanned vanity on management slides. Priya removes vanity rows in review.
+
+Vanity rows are deleted in the same review pass as forbidden assurance phrases.
+
+Vanity and forbidden-assurance cleanups share one review checklist row.
+
 ### 23.5 Sharing results without shame
 
 Publish the evaluation sheet to the people who lived the exercise. Hiding a low process score from the SOC while celebrating a high finding count teaches the wrong lesson. TRT's rule is that the same sheet the CISO signs is the sheet the team reads in the retrospective.
+
+Evaluation sheets go to the people who ran the exercise. Hiding a low process score while celebrating findings teaches the wrong lesson to the SOC.
+
+SOC staff receive the process score with the findings. Shame culture is not a control; shared scores are.
 
 ### Worked example
 
@@ -1423,21 +1859,53 @@ You will (1) pose a research question about assessment practice that can be answ
 
 Examples: Does a three-gate pipeline reduce out-of-scope attempts in student exercises? Which ATT&CK techniques does TRT's SOC alert on after one purple cycle? How long do remediation tickets of each severity stay open? Each question names a population, a measure and a limit.
 
+Technologist research questions measure gates, coverage and backlog closure — e.g. did three-gate pipelines cut out-of-scope attempts in studio logs? Ethics bars covert user tests.
+
+Studio log studies ask whether three-gate pipelines cut OUT-OF-SCOPE attempts. Covert live-user tests stay unethical here.
+
 ### 24.2 Methods that fit technologists
 
 Measurement studies on ticket and coverage data; before/after comparisons when a control changes; structured interviews with SOC analysts about alert quality. Laboratory exploit research is out of scope for this course.
+
+Ticket measurements, before/after control changes and structured SOC interviews fit this audience. Exploit development studies do not.
+
+Before/after DET-19 closure studies fit technologists; exploit novelty studies do not. Methods match the audience.
+
+Method choice is graded against audience fit, not against academic fashion.
+
+Audience-fit method grades stop exploit-novelty drift in studio proposals.
 
 ### 24.3 Ethics first
 
 No covert testing of real users, no collection of personal data beyond the agreement, no publication of client identifiers. Label synthetic data. Obtain approval before interviewing staff.
 
+No covert user testing, no extra personal data, no client identifiers in publications. Synthetic logs are labelled. Consent for interviews is written.
+
+Interview consent forms and synthetic labels are filed before abstracts are written. Client names never appear in public drafts.
+
+Public drafts are grepped for client strings before seminar upload.
+
+Client-string greps are a seminar upload gate with zero false-pass tolerance.
+
 ### 24.4 Abstract checklist
 
 A passable abstract states the question, the method, the sample size n, the limits and the ethics posture. Missing n is a common failure mode in student papers.
 
+Abstracts state question, method, n, limits and ethics. Missing n fails Priya's seminar checklist the same way lab_critique fails elsewhere.
+
+Seminar grading fails abstracts without n. Limits and ethics lines are checked in the same pass.
+
+Missing limits lines fail as hard as missing n in the abstract rubric.
+
+Abstract rubrics weight n and limits equally in the fail-closed check.
+
 ### 24.5 Reproducibility for technologists
 
 A classmate should be able to rerun the counts from the synthetic logs and obtain the same fractions. Priya stores the input files beside the abstract and notes the Python version. Reproducibility here is not about exotic environments; it is about not waving at numbers that nobody else can rebuild.
+
+Classmates rerun counts from stored synthetic logs and match fractions. Input files sit beside the abstract draft for ENG-712 studies.
+
+Stored synthetic logs let classmates reproduce alerted fractions. Priya rejects screenshots of counts without files.
 
 ### Worked example
 
@@ -1475,21 +1943,59 @@ You will (1) form a small team with named roles (lead, evidence, liaison); (2) r
 
 Lead keeps the ROE and timeline. Evidence owner runs manifests and custody. Liaison speaks to the (synthetic) white team and SOC. Rotating roles across studios builds breadth; leaving everything to the strongest writer builds a single point of failure.
 
+Lead owns ROE/timeline; evidence owns manifests; liaison pages white team. Rotating roles across studios prevents hero culture. Sam is liaison in the worked example.
+
+Role cards for lead, evidence and liaison hang on the studio wall. Sam's liaison card includes the only white-team number.
+
+Wall role cards are photographed into the studio evidence folder at start.
+
 ### 25.2 Planning checklist
 
 Agreement fields complete; scope lists loadable by the checker; kit inventory pinned; evaluation criteria written; communication channel tested. No checklist, no lab time. The instructor may fail a studio that cannot produce the checklist at the door.
+
+Planning checklist: agreement fields, loadable scope, pinned kit, evaluation criteria, tested channel. No checkbox, no lab start.
+
+Planning checkboxes are binary: incomplete agreement fields stop the lab clock. Soft 'we'll finish later' is a fail.
+
+Binary checkboxes leave no 'mostly done' middle grade before lab start.
+
+Mostly-done planning states do not start the lab clock under any instructor.
 
 ### 25.3 Mid-studio review
 
 Halfway through, the team presents: gates passed so far, HOLDs encountered, evidence count, risks to delivery. Instructors score process, not drama.
 
+Mid-studio review shows gates, HOLDs, evidence count and delivery risks. Instructors score process. Drama is irrelevant.
+
+Mid-review scoring ignores dramatic HOLDs that were hidden. Process transparency is the grade.
+
+Hidden HOLDs discovered later cost more points than visible HOLDs celebrated early.
+
+Early visible HOLDs score higher than late-discovered hidden ones.
+
+Instructors score visible process: early HOLDs earn credit, hidden HOLDs found later cost more than honest pauses.
+
 ### 25.4 Conflict on scope
 
 When members disagree whether a hostname is in scope, the rule is: stop, re-read the agreement, ask the liaison to confirm with white team. The loudest voice does not win.
 
+Hostname disputes trigger stop, re-read, liaison confirmation. Loudest voice loses to the signed list.
+
+Signed lists beat confident memories when hostnames drift. Liaison confirmation is written, not nodded.
+
+Written white-team decisions on drift are filed under the hostname's evidence id.
+
+Hostname evidence ids carry the white-team decision PDF as an attachment.
+
 ### 25.5 Quiet channels
 
 Studio chatter that contains evidence hashes, account names or ROE details stays on the approved channel, not on personal messaging apps. Sam as liaison is the only person who pages the white team. Parallel side chats create conflicting instructions and lost custody.
+
+Evidence hashes and ROE details stay on the approved channel. Sam alone pages white team. Side chats create conflicting orders and broken custody.
+
+Personal SMS carrying hashes fails the quiet-channel audit. Approved channel logs are the custody spine.
+
+Quiet-channel audits sample SMS and email for hashes weekly during studio.
 
 ### Worked example
 
@@ -1527,21 +2033,59 @@ You will (1) write a handoff package that operations can act on without the test
 
 Owners need: each finding with severity, scenario, evidence pointer, recommended control, and a suggested due date. They do not need a travelogue of every tool the testers ran. Cut narrative that does not change a decision.
 
+Owners receive severity, scenario, evidence pointer, control recommendation and due date — not a travelogue. Executive tables come from the report builder.
+
+Owner packs lead with scenario and due date; travelogue appendices stay optional. Exec tables stay short.
+
+Due dates without owners are stripped from exec tables automatically.
+
+Ownerless due dates never reach the CISO exec table export.
+
 ### 26.2 Residual risk and unknowns
 
 Every engagement ends with things not tested — excluded segments, techniques not exercised, windows that were shortened. List them. Boards hate surprises more than they hate incomplete work that is honestly bounded.
+
+Untested fare-payment and missed T1021 appear on the residual-risk page. Boards hate surprise exclusions discovered later.
+
+Untested fare and missed T1021 are printed, not whispered. Surprise exclusions at board time are process fails.
+
+Residual pages that omit fare untested are incomplete by checklist.
+
+Fare-untested lines are checklist-mandatory on residual pages.
 
 ### 26.3 Access transfer
 
 Tester accounts, VPN profiles and vault grants end on the handoff date. Operations receives read access to the evidence package under its own roles. Shared mailboxes used "just for the test" are closed.
 
+Tester VPN and vault grants end on handoff day; TRT-only ACLs begin. Shared Northpoint access past handoff is a finding.
+
+VPN revoke same afternoon as handoff is checked off aloud. Lingering Northpoint access is a finding.
+
+Revoke checklists are read aloud on the handoff call with Northpoint present.
+
+Northpoint hears the revoke checklist items read aloud before disconnect.
+
 ### 26.4 Retest on the calendar
 
 A remediation due date without a retest slot is a wish. Book the validation window (Chapter 27) before the testing team disperses. A handoff without a booked retest is marked incomplete on the evaluation sheet.
 
+Retest for ENG-712 is booked 2026-12-08 before Northpoint disperses. Due dates without slots are wishes.
+
+2026-12-08 retest is on the calendar before Northpoint leaves. Wishes without slots are struck from due dates.
+
+Calendar invites for 2026-12-08 are attachments in the handoff pack.
+
+Handoff without the 2026-12-08 invite attached is incomplete by rule.
+
 ### 26.5 Warm introductions
 
 A handoff meeting where Priya introduces each finding owner by name beats an email dump. Ten minutes of face-to-face (or video) clarification prevents a week of misrouted tickets. She records attendance so the evaluation sheet can show that operations actually received the work.
+
+Warm introductions of each finding owner beat email dumps. Ten minutes prevents weeks of misrouted tickets.
+
+Named warm intros reduce misrouted tickets in the first week after ENG-712. Email-only dumps are the anti-pattern.
+
+Misrouted first-week tickets are counted as a handoff quality metric.
 
 ### Worked example
 
@@ -1579,6 +2123,14 @@ You will (1) decide VALIDATED, REOPENED or NOT RETESTED from retest observations
 
 Remediation validation asks whether the agreed fix removed the problem under the same scope and method constraints. It is not a brand-new engagement, and it is not a rubber stamp.
 
+Validation rechecks the claimed fix under the same scope — not a new free-for-all. lab retest statuses keep language honest.
+
+Validation reuses ENG-712 scope constraints. Expanding into fare 'while we are here' fails safety.
+
+Safety fails validation that widens into excluded fare hosts.
+
+Excluded-host widening during validation is an automatic safety fail.
+
 ### Lab I — retest status
 
 ```python
@@ -1610,17 +2162,49 @@ F-09 NOT RETESTED - no fix declared plaintext password on wiki
 
 VALIDATED: fix claimed and the check passed. REOPENED: fix claimed but the check failed. NOT RETESTED: no fix declared, so no check yet. Closing a ticket without one of the first two (or an explicit risk acceptance) is a process defect.
 
+VALIDATED / REOPENED / NOT RETESTED are the only close labels. lab output shows F-01 VALIDATED, F-07 REOPENED, F-09 NOT RETESTED.
+
+F-01 VALIDATED, F-07 REOPENED, F-09 NOT RETESTED is the honest status set. Other labels are rewritten.
+
+Status enums are validated by lab_report patterns before CISO send.
+
 ### 27.3 Same custody
 
 Retest evidence — a new configuration export, a new log excerpt — gets hashed and filed like the original. "Looks fine on my screen" is not evidence.
+
+Retest exports are hashed like originals. "Looks fine" without a digest fails custody.
+
+New digests for retest exports sit beside originals. Screen-share 'looks fine' closes nothing.
+
+Retest digests use the same vault layout as discovery evidence.
+
+Retest and discovery digests share folder layout so peers find both.
+
+Retest exports receive digests in the same vault layout as discovery so peers locate both without hallway help.
 
 ### 27.4 Risk acceptance
 
 Sometimes an owner accepts a residual risk with a named approver and a review date. That is a legitimate close path; silence is not.
 
+Named residual acceptance with review date can close; silence cannot. Priya records approver and date on F-04-style accepts.
+
+F-04-style acceptance needs approver and review date in the tracker. Empty acceptance is reopened.
+
+Review dates on acceptances create calendar reminders for Priya's team.
+
+Acceptance review reminders page Priya two weeks before expiry.
+
+Named acceptance with a review date is valid; silence is reopened, and calendar reminders page Priya before expiry.
+
 ### 27.5 Partial fixes
 
 Sometimes an owner fixes two of three accounts and asks to close the ticket. Priya's rule is to validate what was claimed, reopen or split the finding for what remains, and never let a partial fix erase the whole issue. The tracker should show residual work, not a green checkbox that hides it.
+
+Partial account fixes are validated for what was claimed; the rest stays open or split. Closing three-of-three when two-of-three moved is refused.
+
+Two-of-three account fixes validate two and keep one open — or split tickets. Premature triple close is reversed.
+
+Split tickets keep lineage to the parent finding id for examiners.
 
 ### Worked example
 
@@ -1658,21 +2242,51 @@ You will (1) prepare a field kit checklist for an on-site or remote supervised s
 
 Written ROE and emergency contacts (offline copy); pinned tool versions; scope checker and ROE checker; evidence vault credentials that work; a tested out-of-band phone path to the white team; a notepad for custody lines when systems are down. Fancy dashboards are optional; the checklist is not.
 
+Offline ROE, pinned tools, working vault creds and out-of-band phone are kit minimums. Field practice fails if the phone is the only copy of the ROE and the battery dies.
+
+Field kit includes offline ROE because phones die on platforms. Missing offline copy fails the conduct checklist.
+
 ### 28.2 Conduct
 
 Assessment staff are guests in operations' house. Explain what you are about to do in plain language, keep to the window, and never surprise a change manager with traffic during a freeze. Purple-team success depends on trust built in these small moments.
+
+Guests explain next steps in plain language and honour change freezes. Surprising a Friday roster cutover is unprofessional even if in scope.
+
+Friday change freezes are honoured even when a check is 'almost done'. Guests do not own the roster cutover.
+
+Almost-done checks still stop for roster freeze; reopen next window.
 
 ### 28.3 Unexpected events
 
 A breaker trip, a passenger-information outage, a medical emergency on site — none of these appear in the ROE, and all of them mean stop noisy work and yield to operations. Resume only on white-team instruction.
 
+Breaker trips and medical events mean stop noisy work and support operations. The ROE cannot list every emergency; judgement defaults to stop.
+
+Medical or breaker events default to stop noisy work. Restart needs white-team explicit go.
+
+Explicit go after emergencies is logged with white-team name and time.
+
+White-team name and time on emergency go are mandatory log fields.
+
 ### 28.4 Debrief with facts
 
 "The SOC was asleep" is folklore. "T1021 produced no alert for 40 minutes; ticket DET-19 opened" is a fact. Field notes should support the second style.
 
+Field notes say T1021 produced no alert for 40 minutes and DET-19 opened — not "SOC was asleep". Facts survive panels; folklore does not.
+
+DET-19's forty-minute silence is the note format. Insults toward SOC are edited out of field books.
+
+Insulting SOC wording is a conduct finding against the note author.
+
+Conduct findings for insults route to the liaison, not to the SOC target.
+
 ### 28.5 Remote field practice
 
 When the session is remote rather than on-site, the kit still applies: out-of-band phone, offline ROE, tested screen-sharing that does not expose unrelated desktop files. Priya closes every other window before joining the white-team call. Accidental disclosure of another client's screen is a field failure even if no packet was sent.
+
+Remote sessions still need offline ROE and screen-share hygiene that hides unrelated desktop secrets. Kit discipline does not vanish over VPN.
+
+Remote kits still test screen-share redaction. Desktop Slack popups have leaked ROE details in past studios.
 
 ### Worked example
 
@@ -1710,21 +2324,61 @@ You will (1) assemble an end-to-end authorized assessment package for a syntheti
 
 1. Request and decision statement. 2. Scope lists (prefixes, names, exclusions). 3. ROE (window, allowed activities, stop list, white-team contact). 4. Method statement mapped to SP 800-115/PTES/WSTG as used. 5. Kit inventory with versions. 6. Evidence plan (what, where, retention). 7. Rating scale and bands. 8. Report template with executive table hook. 9. Retest plan. 10. Evaluation criteria.
 
+Ten build artefacts from request through retest plan are listed in order. Missing any one fails the capstone completeness score.
+
+Completeness scoring walks the ten artefacts in order. Skipping residual-risk fails even if findings sparkle.
+
+Walkthrough order is enforced by the peer score sheet sequence.
+
 ### 29.2 Operate what you built
 
 A peer loads your scope into `lab_scope.py` patterns, your ROE into `lab_roe.py` patterns, and your findings into `lab_score.py` and `lab_report.py`. If they cannot, the build is incomplete.
+
+Peers load scope into lab_scope patterns, ROE into lab_roe patterns, findings into score/report labs. Operability beats slide polish.
+
+Peers actually run lab_scope/roe/score patterns on the package. Slides without operability scores lose.
+
+Operability fails if lab_scope cannot load the submitted lists.
+
+Unloadable scope lists fail operability before any slide is scored.
 
 ### 29.3 No exploit content
 
 The package contains zero attack procedures. Anyone asking for them during the capstone is redirected to the educational boundary in Chapter 10.
 
+Zero attack procedures in the package. Capstone requests for exploits redirect to Chapter 10's boundary.
+
+Exploit requests during capstone earn a safety deduction and a redirect to Chapter 10. No exceptions for 'teaching'.
+
+Safety deductions for exploit asks are non-negotiable in the rubric.
+
+Teaching exceptions for exploit asks do not exist in the capstone key.
+
+Capstone exploit asks earn safety deductions and a redirect to Chapter 10; teaching exceptions do not exist.
+
 ### 29.4 Peer review rubric
 
 Peers score: completeness of the ten artefacts, checkability, clarity of residual-risk language, and safety (no dual-use detail). Finding volume is irrelevant.
 
+Peers score completeness, checkability, residual-risk clarity and safety — not finding volume. Dual-use detail fails safety.
+
+Dual-use detail fails safety regardless of completeness. Finding volume never raises the peer score.
+
+Volume bonuses do not exist; peers who add them are corrected.
+
+Peer score sheets that invent volume bonuses are voided and redone.
+
+Peers score completeness and safety only; invented volume bonuses void the sheet and force a redo.
+
 ### 29.5 Time box
 
 The capstone build is scored on completeness and operability inside a fixed studio window, not on endless polish. Priya freezes scope lists forty-eight hours before peer review so checkers stop moving. Last-minute aesthetic edits that break a CSV column fail the peer test.
+
+Priya freezes scope lists forty-eight hours before the studio bell. Endless polish after freeze does not raise the score.
+
+Scope freeze at T-minus forty-eight hours is enforced by the lead. Polish after freeze does not add points.
+
+Lead announces freeze clock in the studio channel at T-minus 48h.
 
 ### Worked example
 
@@ -1762,21 +2416,55 @@ You will (1) present the capstone package to a review panel; (2) defend scope, m
 
 Ten minutes: decision and scope. Ten minutes: method and gates. Ten minutes: evidence, rating and report. Ten minutes: purple-team learning and retest. Ten minutes: questions. The panel holds the ROE and the checker outputs while you speak.
 
+Panel time boxes cover decision/scope, method/gates, evidence/rating, purple/retest. Going deep on exploits wastes the agenda.
+
+Agenda time boxes stop exploit rabbit holes from eating purple and retest minutes. Priya keeps a visible timer.
+
+Visible timers are part of the panel kit checklist.
+
+Panel kit missing a visible timer fails the readiness check.
+
 ### 30.2 Defence with citations
 
 When asked why exclusions come first, cite Chapter 2 and the ROE practice. When asked why you borrow a white team, cite TIBER-EU/CBEST ideas. When asked how you rated F-09, show the matrix. Opinions without artefacts score poorly.
+
+Exclusions cite Chapter 2 practice; white team cites TIBER/CBEST ideas; evidence cites hashing labs. Citations beat swagger.
+
+Citation answers beat swagger when panels ask why. Chapter 2 and TIBER/CBEST ideas are practised aloud.
+
+Practised citation answers are on one page in the candidate folder.
+
+One-page citation crib sheets are allowed on the panel desk.
 
 ### 30.3 The refusal question
 
 Panels ask what you would refuse. Strong answers: testing without a reachable white team; fare-payment contact; mid-window scope expansion by chat; providing exploit steps; keeping evidence on a personal laptop. Weak answers: "nothing, we are flexible."
 
+Strong refusals: no white team, fare contact, chat-based scope expansion, exploit step requests. Priya's worked panel uses those answers.
+
+Refusal answers for white-team absence, fare contact, chat scope and exploit steps are rehearsed. Weak refusals fail oral safety.
+
+Oral safety fails if any of the four refusal classes is missing.
+
 ### 30.4 After the panel
 
 Pass means the package meets the Chapter 29 rubric and the oral defence showed judgement. It does not mean the manuscript has passed A4 or independent review. The next course in the study path is course 089, AI and machine-learning security for technologists.
 
+Pass means Chapter 29 rubric plus judgement in the oral — not A4 publication. Priya states residual limits aloud.
+
+Pass language states residual limits and synthetic labelling. It does not claim A4 or live authority.
+
+Pass scripts include a spoken residual-limits sentence before questions end.
+
+Spoken residual-limits sentences are on the pass script checklist.
+
 ### 30.5 Portfolio entry
 
 After the panel, Priya files a short portfolio note: which artefacts she led, which refusal she practised, which detection tickets she opened. The note cites ENG-712 and labels everything synthetic. Future employers reading a portfolio should see judgement, not a claim that she "hacked a transit agency."
+
+Portfolio notes list artefacts led, refusals practised and DET tickets opened, citing ENG-712 as synthetic. Employers should see judgement, not "hacked a transit agency".
+
+Portfolio notes cite ENG-712 and list refusals practised. 'Hacked transit' wording is banned from the note.
 
 ### Worked example
 
