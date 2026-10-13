@@ -166,6 +166,8 @@ Cases are discrete, arrive in bursts and are not interchangeable: one ransomware
 - Reporting a single "time to clear" without its sensitivity to capacity.
 - Differentiating raw counts without smoothing or stating the step size.
 
+Each error shows up in the HVSS surge of Lab 1. A planner who reads 12 cases/h as 288 per day and compares it with an hourly outage peak of 25 arrivals will mistake a twelve-hour backlog for a momentary blip. The 37 cases still waiting at t = 12 h assume that all twelve hours of capacity were delivered, which tired analysts on a long shift rarely achieve. Quote that figure with its sensitivity to capacity, and state the 0.1 h step the lab used.
+
 ### Exercises — chapter 01
 
 **EX001 — Drain time sensitivity.** *Objective:* quantify how fragile a recovery estimate is. *Inputs:* backlog $Q_0 = 50$ cases, arrivals $\lambda = 10$ cases/h, capacity $\mu = 12$ cases/h. *Steps:* compute $T$; compute $\partial T/\partial \mu$; estimate $T$ if one of six analysts is lost (capacity falls proportionally). *Expected evidence:* three numbers with units and one sentence of interpretation. *Rubric:* 3 = all correct with interpretation; 2 = one error; 1 = formula only; 0 = none.
@@ -203,6 +205,8 @@ An **invariant** is a property that must hold in every reachable state or on eve
 ### 2.3 Checking by search
 
 To test the path invariant, delete the *approved* node and ask whether *contained* is still reachable from *new*. Breadth-first search answers in time linear in the number of edges. If it is reachable, every edge into *contained* from a state other than *approved* is a candidate violation.
+
+On the HVSS graph from Lab 2, deleting *approved* still leaves the path new → triage → contain_req → contained, so the search reports it and points at the convenience edge. The same search, run after every change to the transition table, turns a review comment into a repeatable check that a build can fail on.
 
 ### 2.4 Worked example (synthetic): an approval graph at HVSS
 
@@ -250,11 +254,15 @@ The search finds the bypass path and names the edge. Separation of duties holds 
 
 Graph models check structure, not people's behaviour: a duty manager who approves everything satisfies the invariant. State explosion appears when states carry data (tenant, severity); then you check properties over a model abstraction and test the implementation separately (Chapter 30).
 
+Removing the *approved* node also tells you nothing about how long a request waited there, or whether the approver read the evidence before saying yes. Those properties need timestamps and audit records from the running platform, which Chapter 30 tests against the implementation rather than against the abstract graph of eight edges.
+
 ### 2.6 Common errors
 
 - Writing invariants in prose that cannot be checked.
 - Checking only the "happy path".
 - Treating role names as people: one person holding two roles defeats separation of duties.
+
+At HVSS the third error is a staffing question rather than a modelling one. If the night duty manager also covers analyst shifts, the disjoint role sets in Lab 2 still print `SoD holds: True`, yet one person can both request and approve the same containment. The check has to run over the assignment of people to roles for each shift, not only over the role labels on the edges. Equally, a test suite that walks only new → triage → contain_req → approved → contained would never have exercised the bypass edge that the breadth-first search found.
 
 ### Exercises — chapter 02
 
@@ -292,7 +300,7 @@ Evidence lives on physical media. Flash memory wears with program/erase cycles a
 
 ### 3.3 Signals, time and measurement error
 
-Clocks are oscillators with drift measured in parts per million (ppm). A crystal at 50 ppm drifts up to $50 \times 10^{-6} \times 86{,}400 \approx 4.3$ s per day if left unsynchronised. Correlating events across hosts with second-level resolution therefore requires synchronisation (NTP, [RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)) and recording of offset when known. Every timestamp is a measurement with an error bar; a timeline that ignores it can invert cause and effect.
+Clocks are oscillators with drift measured in parts per million (ppm). A crystal at 50 ppm drifts up to $50 \times 10^{-6} \times 86{,}400 \approx 4.3$ s per day if left unsynchronised. Correlating events across hosts with second-level resolution therefore requires synchronisation (NTP, [RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)) and recording of offset when known. Every timestamp is a measurement with an error bar; a timeline that ignores it can invert cause and effect. Over the three unsynchronised days of EX006, a 40 ppm offset already exceeds ten seconds, larger than many gaps between logon and file activity.
 
 ### 3.4 Worked example (synthetic): the edge collector that went quiet
 
@@ -304,6 +312,8 @@ An HVSS branch office collector (a fan-less box in a cupboard, **synthetic**) no
 - Assuming timestamps from different hosts are directly comparable.
 - Ignoring media behaviour when planning acquisition.
 - Physical models give orders of magnitude; measure the actual device.
+
+The edge collector in the worked example shows the first two errors together. After about 1.8 hours of throttled operation its buffer fills, and the receiver sees a quiet branch office exactly when events are being dropped. Without the heartbeat sequence numbers, that silence would be read as a calm afternoon. If its clock has also drifted, any events that do arrive cannot be placed against the central timeline without the reported offset.
 
 ### Exercises — chapter 03
 
@@ -337,7 +347,7 @@ In incident response, a script is not just a convenience; it touches material th
 
 ### 4.2 Variables, functions and validation
 
-Keep parsing, validation and output in separate functions. A validation function takes one record and returns a list of named errors; an empty list means valid. Names matter: "severity" is a better error than "bad row". Validate type (is it a timestamp?), range (severity 1–4), presence (reporter required) and uniqueness (no duplicate key). Use a standard parser for CSV — hand-splitting on commas breaks on quoted fields, which is exactly how many real intake tools corrupt data.
+Keep parsing, validation and output in separate functions. A validation function takes one record and returns a list of named errors; an empty list means valid. Names matter: "severity" is a better error than "bad row". Validate type (is it a timestamp?), range (severity 1–4), presence (reporter required) and uniqueness (no duplicate key). Use a standard parser for CSV — hand-splitting on commas breaks on quoted fields, which is exactly how many real intake tools corrupt data. In Lab 4 the `validate` function returns the names `timestamp`, `severity` and `reporter`, which a reviewer can count and sort later.
 
 ### 4.3 Worked example (synthetic): HVSS case intake
 
@@ -387,11 +397,13 @@ quarantined line 6 C-1004 ['reporter']
 conservation: 6 == 6
 ```
 
-Observe: the duplicate is detected by a composite key (case ID plus timestamp), the comma inside a quoted summary survives, every quarantined record keeps its line number and reasons, and a conservation check proves that accepted plus quarantined equals input lines. A reviewer can open the quarantine and decide; the program never silently decided for them.
+Observe: the duplicate is detected by a composite key (case ID plus timestamp), the comma inside a quoted summary survives, every quarantined record keeps its line number and reasons, and a conservation check proves that accepted plus quarantined equals input lines. A reviewer can open the quarantine and decide; the program never silently decided for them. Note that line numbers start at 2 because line 1 of the export is the header row.
 
 ### 4.4 Tests that matter
 
 Write tests for each rule and for the conservation property, plus one for idempotence — running the program twice on the same input gives the same output. Test the boundary values (severity 0, 1, 4, 5) and the empty file. A test that only checks the happy path tells you nothing about the failures that occur during incidents, when inputs are at their worst.
+
+For Lab 4 the boundary tests are concrete: severities 0 and 5 must be quarantined with the reason `severity`, while 1 and 4 must be accepted. An empty export with only the header row should produce no accepted records and a conservation line of 0 == 0. Running the parser twice must print the same digest prefix 954554b24a46d4a7 and the same quarantine list.
 
 ### 4.5 Errors and limits
 
@@ -399,6 +411,8 @@ Write tests for each rule and for the conservation property, plus one for idempo
 - Dropping invalid rows rather than quarantining them.
 - Editing the original file in place.
 - Validation rules hard-coded without a version, so later readers cannot know which rules applied.
+
+Each of these errors would break something visible in Lab 4. Swallowing the `ValueError` from `strptime` would let C-1003 through with the text not-a-date as its report time. Dropping instead of quarantining would make the conservation line print 2 == 6. Editing the export in place would change the SHA-256 digest that later readers rely on to confirm they hold the original bytes.
 
 ### Exercises — chapter 04
 
@@ -434,9 +448,11 @@ A good requirement is **necessary, unambiguous, verifiable and owned**. "The pla
 
 A trace table links each stakeholder need to requirements, design elements, tests and results. Its value appears during change: when the approval chain changes, you know which tests to rerun. A requirement without a test is a hope; a test without a requirement is either missing a requirement or wasted effort.
 
+In the HVSS brief, a trace row for R3 would link the emergency-containment need to the *emergency_contain* state of Chapter 2, a test that confirms retrospective approval within 60 minutes, and the latest test result. When the response manager changes that window, the row shows which test must be rerun.
+
 ### 5.3 Diagrams and audience
 
-A context diagram shows the system as one box, its external actors and data flows, and the trust boundaries crossed. Name owners on every external element. Write for the reader: a service owner needs consequences and decisions; an engineer needs interfaces and limits; an auditor needs evidence and accountability. One document can serve all three only if it is layered: a one-page summary, then detail.
+A context diagram shows the system as one box, its external actors and data flows, and the trust boundaries crossed. Name owners on every external element. Write for the reader: a service owner needs consequences and decisions; an engineer needs interfaces and limits; an auditor needs evidence and accountability. One document can serve all three only if it is layered: a one-page summary, then detail. For HVSS the context diagram would show the identity provider, endpoint agent and client tenants as external actors, each with a named owner.
 
 ### 5.4 Worked example (synthetic): rewriting an HVSS design brief
 
@@ -457,6 +473,8 @@ Unresolved assumptions recorded as risk notes: the cloud provider's log delivery
 - Requirements that prescribe a product instead of a property.
 - Owners named as teams.
 - Assumptions hidden in prose rather than listed.
+
+The original HVSS brief in the worked example commits all four of these errors. "Quickly" and "stop attacks" are unmeasurable adjectives, "integrate with everything" names no interface, "Security will own it" names a department, and the 180-day privacy default against 400-day retention was hidden until the rewrite exposed it. Each rewritten requirement in the table answers one of those defects with a number, an interface, an owner or a recorded risk note.
 
 ### Exercises — chapter 05
 
@@ -494,7 +512,7 @@ clipped at zero. A second integral matters more for people affected by an incide
 
 ### 6.2 Numerical integration
 
-Real rates are samples, not formulas. The trapezoidal rule approximates $\int f$ by summing $(f_i + f_{i+1})h/2$; Euler's method, used in Lab 1, updates $Q \leftarrow Q + (\lambda - \mu)h$. Halving the step and comparing results is a simple convergence check: if the answer changes in the second significant digit, the step is too large. Lab 1 reports $W \approx 371$ case-hours for the 12 hours after the outage starts (Chapter 1).
+Real rates are samples, not formulas. The trapezoidal rule approximates $\int f$ by summing $(f_i + f_{i+1})h/2$; Euler's method, used in Lab 1, updates $Q \leftarrow Q + (\lambda - \mu)h$. Halving the step and comparing results is a simple convergence check: if the answer changes in the second significant digit, the step is too large. Lab 1 reports $W \approx 371$ case-hours for the 12 hours after the outage starts (Chapter 1). For Lab 1 the check means rerunning with a step of 0.05 h and confirming that the 371 case-hours change only in the third digit.
 
 ### 6.3 Recovery trajectories and model fit
 
@@ -503,6 +521,8 @@ Service recovery often looks like exponential approach to normal: performance $P
 ### 6.4 Boundary conditions
 
 A model is valid inside stated conditions: initial backlog, staffing, arrival pattern and the assumption that work is not lost or merged. State them. "The backlog clears in 20 h *assuming* constant staffing of six, arrivals following last month's daily profile and no second incident" is a defensible statement; "the backlog clears in 20 h" is not.
+
+The Lab 1 backlog figures carry their own conditions: a constant capacity of 12 cases/h, the sinusoidal daily profile, one outage between hours 2 and 6, and no merging of duplicate reports. Once any of these changes, such as a second outage or merged reports, the 37 cases waiting at hour 12 must be recomputed.
 
 ### 6.5 Worked example (synthetic): staffing a surge
 
@@ -514,6 +534,8 @@ HVSS considers adding two analysts (capacity 12 → 16 cases/h) from hour 4 to h
 - Using a step size so large that the integral is wrong.
 - Fitting smooth curves to step-wise recoveries.
 - Forgetting the zero floor on backlog.
+
+The surge-staffing example shows why the first error matters at HVSS. Measured by peak alone, two extra analysts look weak, cutting 49.9 cases to 41.9. Measured by accumulated waiting, they remove about 121 case-hours, and most of that saving comes during the drain phase between hours 6 and 10. Rerunning the modified model without the `max(0.0, ...)` clip would show the last error, since the backlog would go negative whenever arrivals fell below capacity.
 
 ### Exercises — chapter 06
 
@@ -553,9 +575,13 @@ with prevalence $\pi$. [Axelsson (2000)](https://doi.org/10.1145/357830.357849) 
 
 A proportion from a small sample is uncertain. The Wilson score interval behaves better than the simple $\hat p \pm 1.96\sqrt{\hat p(1-\hat p)/n}$ near 0 or 1 and for small $n$. Always report $k/n$, the estimate and the interval. "90% correct" from 20 cases has an interval of roughly 70–97%.
 
+In Lab 7, workflow B's low-severity score of 5/10 has a Wilson interval from 0.237 to 0.763, so it is consistent with almost any underlying rate. Workflow A's high-severity 19/20 still allows a true rate as low as 0.764.
+
 ### 7.3 Bias and confounding
 
 Comparisons between workflows are confounded when the groups differ in case mix. **Simpson's paradox** ([Simpson, 1951](https://doi.org/10.1111/j.2517-6161.1951.tb00088.x)) is the extreme case: a workflow can be better in every severity stratum and worse overall because it handled a harder mix. Stratify by known confounders, or better, assign cases to workflows at random when you can (Chapter 29).
+
+The HVSS comparison in Lab 7 has exactly this structure. Workflow B's team received 70 of its 80 cases at high severity, while A's team received only 20 of 100, so pooling rewards the easier mix. Randomly assigning incoming cases to A or B would have removed that imbalance before any review panel scored the outcomes.
 
 ### 7.4 Worked example (synthetic): two triage workflows
 
@@ -602,11 +628,15 @@ Pooled, B looks far better (0.81 vs 0.64). Stratified, A is better in both sever
 
 A $p$-value answers a narrow question about data under a null model; it does not measure effect size or importance. Searching many metrics until one is "significant" produces false findings ([Simmons, Nelson and Simonsohn, 2011](https://doi.org/10.1177/0956797611417632)). Pre-state the primary measure before looking at results.
 
+For the HVSS triage comparison, the primary measure was correct escalation as judged by the review panel, and it should be fixed before results are opened. If the team then also tested time to first action, number of handovers and reopen rate, one of them would eventually look "significant" by chance.
+
 ### 7.6 Errors and limits
 
 - Reporting accuracy without base rate or interval.
 - Pooling across strata with different mixes.
 - Treating the review panel's judgment as ground truth without measuring agreement.
+
+All three errors can be seen in the Lab 7 comparison of workflows A and B. Quoting B's pooled 0.81 without its interval and case mix hides that A is better in both strata. Quoting 95% sensitivity without the 0.5% prevalence hides that only about one alert in five is real. Every 'correct' label also comes from one review panel, so a second independent reviewer on a sample is needed before agreement can be stated.
 
 ### Exercises — chapter 07
 
@@ -640,11 +670,11 @@ A modern host stores state at many levels: CPU registers and caches (nanoseconds
 
 ### 8.2 Isolation boundaries
 
-Privilege rings, memory management units and hypervisors separate software. They also separate *observers*: a tool running inside a compromised guest relies on that guest's kernel to report truthfully, while a hypervisor-level snapshot observes the guest from outside its trust boundary. Speculative-execution attacks such as Spectre ([Kocher et al., 2019](https://doi.org/10.1109/SP.2019.00002)) show that boundaries can leak, so architecture must be treated as a set of assumptions to verify, not guarantees.
+Privilege rings, memory management units and hypervisors separate software. They also separate *observers*: a tool running inside a compromised guest relies on that guest's kernel to report truthfully, while a hypervisor-level snapshot observes the guest from outside its trust boundary. Speculative-execution attacks such as Spectre ([Kocher et al., 2019](https://doi.org/10.1109/SP.2019.00002)) show that boundaries can leak, so architecture must be treated as a set of assumptions to verify, not guarantees. This is why the booking-host table rates the in-guest memory tool as low to medium trust.
 
 ### 8.3 Shared storage and multi-tenancy
 
-When several virtual machines share a storage array, a snapshot of a volume is cheap and fast but captures only what the guest has flushed; a memory snapshot captures volatile state but may be large and briefly pause the guest. In multi-tenant platforms the snapshot must not include another tenant's data — collection scope is an authorisation question as well as a technical one (Chapter 27).
+When several virtual machines share a storage array, a snapshot of a volume is cheap and fast but captures only what the guest has flushed; a memory snapshot captures volatile state but may be large and briefly pause the guest. In multi-tenant platforms the snapshot must not include another tenant's data — collection scope is an authorisation question as well as a technical one (Chapter 27). On the HVSS cluster that serves council, water-billing and hospital tenants, the scope check must confirm that the snapshotted volume belongs only to the booking host before collection starts.
 
 ### 8.4 Worked example (synthetic): HVSS booking host
 
@@ -663,12 +693,16 @@ A defensible order: storage snapshot (cheap, protects disk history), hypervisor 
 
 Estimate transfer time: 16 GB over a 1 Gb/s link at ~80% efficiency takes about $16 \times 8 / 0.8 \approx 160$ s; across a congested 100 Mb/s branch link it takes roughly 27 minutes, during which the service is degraded and the data change. Architecture determines whether collection is practical during an incident, so the evidence platform must be designed with collection paths in mind, not added afterwards.
 
+The same arithmetic decides the order in the booking-host example. The storage snapshot is near-instant on the array, while the 16 GB memory snapshot must be copied off the hypervisor before analysis. Collecting it over a branch link would leave the booking service degraded for the whole transfer.
+
 ### 8.6 Errors and limits
 
 - Trusting in-guest tools on a compromised kernel without corroboration.
 - Ignoring firmware as a persistence location.
 - Taking multi-tenant snapshots without scope checks.
 - Forgetting that collection itself changes state; record what it changed.
+
+In the booking-host case, each error has a specific guard. Findings from the in-guest memory tool are corroborated against the hypervisor snapshot before anyone relies on them. The storage snapshot is checked to contain only the booking host's volume on the shared array. The pause time of the memory snapshot and every live triage command are written into the record with their hashes and times.
 
 ### Exercises — chapter 08
 
@@ -698,15 +732,17 @@ After this chapter you can (1) structure an event-normalisation component as mod
 
 ### 9.1 Structured data and modules
 
-A normaliser converts heterogeneous events into a common schema. Design it as a pipeline of small pure functions — parse, validate, map fields, enrich, emit — each with a typed input and output. Modules should hide decisions likely to change behind stable interfaces ([Parnas, 1972](https://doi.org/10.1145/361598.361623)); the mapping from a vendor's field names to your schema is such a decision.
+A normaliser converts heterogeneous events into a common schema. Design it as a pipeline of small pure functions — parse, validate, map fields, enrich, emit — each with a typed input and output. Modules should hide decisions likely to change behind stable interfaces ([Parnas, 1972](https://doi.org/10.1145/361598.361623)); the mapping from a vendor's field names to your schema is such a decision. In the HVSS normaliser, the identity-provider field mapping lives in its own module with a version number, so a vendor rename changes one file and one mapping version.
 
 ### 9.2 Exceptions as data
 
 Inside one function, an exception is fine. At the pipeline boundary, every failure becomes a record: `{"input_ref": ..., "stage": "parse", "error": "json_decode", "detail": ...}` routed to a dead-letter store. The pipeline never loses an input by raising past its caller. Retries apply only to transient errors (a dependency timeout), never to deterministic ones (malformed JSON), or you build an infinite loop.
 
+In the HVSS burst, the truncated identity-provider events are deterministic failures: retrying a `json_decode` error on the same bytes will fail every time. A timeout from the user directory lookup in EX018 is transient, so it can be retried with a limit before the event goes on with its enrichment marked missing.
+
 ### 9.3 Provenance
 
-Every output event carries the hash of its raw input, the normaliser version and the mapping version. Then an analyst who sees an odd field can ask "which rule produced this?" and get an answer. Provenance is cheap at write time and impossible to reconstruct later. The W3C PROV model ([PROV-Overview](https://www.w3.org/TR/prov-overview/)) gives vocabulary — entity, activity, agent — that maps directly: raw event (entity), normalisation (activity), normaliser version (agent).
+Every output event carries the hash of its raw input, the normaliser version and the mapping version. Then an analyst who sees an odd field can ask "which rule produced this?" and get an answer. Provenance is cheap at write time and impossible to reconstruct later. The W3C PROV model ([PROV-Overview](https://www.w3.org/TR/prov-overview/)) gives vocabulary — entity, activity, agent — that maps directly: raw event (entity), normalisation (activity), normaliser version (agent). For the HVSS normaliser, those three fields would have shown at once which version had silently skipped the truncated identity-provider events.
 
 ### 9.4 Property-based testing
 
@@ -730,12 +766,16 @@ Run it with fixed seeds, assert the properties and keep failing seeds as regress
 
 HVSS's normaliser receives a burst in which 3% of identity-provider events are truncated JSON and 1% are exact duplicates. Version 1 caught the decode error with a bare `except` and continued — conservation failed by 3%, unnoticed for weeks. Version 2 routed errors to a dead-letter store with counters exported as metrics; the 3% became an alert and a vendor ticket on the first day.
 
+Version 1 failed the conservation property of the previous subsection, because truncated inputs produced neither an output nor a dead letter. A property test with the `bad_json` generator mode would have exposed the gap before deployment.
+
 ### 9.6 Errors and limits
 
 - Bare exception handlers that continue silently.
 - Retrying deterministic failures.
 - Dropping unknown fields (Chapter 24 shows the consequence).
 - Property tests with random seeds that are not recorded.
+
+Each error in this list maps onto a step in the HVSS normaliser history. The bare `except` in version 1 is the first error, and the weeks of unnoticed 3% loss are its cost. Retrying the truncated JSON would add load without ever succeeding. A failing generator seed that was not recorded cannot be replayed as a regression test after the fix, so the property test proves less than it seems.
 
 ### Exercises — chapter 09
 
@@ -773,7 +813,7 @@ A **safety gate** is a check that must pass before an action proceeds; a **stop 
 
 ### 10.3 Authorisation is not technical capability
 
-Your tooling may be able to disable any account. That does not mean you may. Authority comes from policy, contracts and law; engineering's job is to make the authorised path easy and the unauthorised path impossible or loud. Where authority is ambiguous, the design must route the decision to someone who has it.
+Your tooling may be able to disable any account. That does not mean you may. Authority comes from policy, contracts and law; engineering's job is to make the authorised path easy and the unauthorised path impossible or loud. Where authority is ambiguous, the design must route the decision to someone who has it. In EX020, the HVSS engineer's tooling may reach the second client's tenant, yet only that client can authorise action there. The right design there routes the observation to that client through the defined notification channel rather than acting.
 
 ### 10.4 Worked example (synthetic): isolating a clinical scheduling service
 
@@ -783,12 +823,16 @@ A **synthetic** HVSS client hospital runs a care-scheduling service. An alert su
 
 Tests and exercises involving real people or systems need agreement from those accountable, a defined scope and a way to stop. The [Menlo Report](https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf) adapts research-ethics principles — respect for persons, beneficence, justice and respect for law and public interest — to ICT work, and is a useful checklist for exercises and practicums (Chapter 43).
 
+At HVSS, an exercise on the hospital trust's care-scheduling service would need agreement from the clinical service owner and the response manager. It would also need a scope limited to named test accounts and the same stop criterion of 50 waiting requests used for real isolation decisions.
+
 ### 10.6 Errors and limits
 
 - Equating "the tool allows it" with "I am allowed".
 - Stop criteria written after the action started.
 - Collecting broadly "in case".
 - Ethics treated as a sign-off rather than a design input.
+
+The care-scheduling case shows how each error would have played out. The automatic playbook could isolate the application server, which is exactly the equation of tool capability with permission. Writing the 50-request stop criterion only after isolation had begun would leave wards without schedules while people argued about thresholds. In that case, ethics changed the design itself by adding a criticality check and a less disruptive credential rotation.
 
 ### Exercises — chapter 10
 
@@ -828,6 +872,8 @@ A request from a user's browser to an application crosses a resolver, possibly a
 
 Flow exporters often sample (1 in N packets); packet captures drop under load; logs are delivered over UDP syslog and can be lost silently ([RFC 5424](https://www.rfc-editor.org/rfc/rfc5424) defines the message format, not reliable delivery). Absence in a sampled source is weak evidence.
 
+EX022 puts a number on how weak that absence is as evidence. With flows sampled at 1 in 1,000, a six-packet probe escapes sampling entirely with probability of about 0.994. A NetFlow record that fails to show the probe therefore says almost nothing about whether it happened. In the citizen-portal example, the claim rests on the NAT log, proxy and endpoint instead, which record every connection rather than a sample.
+
 ### 11.4 Worked example (synthetic): HVSS multi-zone application
 
 HVSS's **synthetic** citizen portal sits behind a reverse proxy in a DMZ; the application zone calls a remote identity provider over the internet. Claim to test: "workstation W-114 uploaded data to external address 203.0.113.50 at 14:02". (203.0.113.0/24 is a documentation range, [RFC 5737](https://www.rfc-editor.org/rfc/rfc5737).)
@@ -848,6 +894,8 @@ Three independent sources (NAT plus firewall, proxy, endpoint) agree within a se
 - Ignoring NAT when attributing flows.
 - Assuming syslog delivery is reliable.
 - Correlating unsynchronised timestamps.
+
+The W-114 claim in the worked example shows how each error would mislead an analyst. The resolver entry at 14:01:58 shows only that W-114 looked up `files.example.net`, not that it sent anything. The egress firewall alone shows only a NAT pool address, and it is the NAT log that maps port 40122 back to W-114. If the proxy's syslog stream had lost the CONNECT record, nothing would have flagged its absence. The one-second agreement between sources is meaningful only after each source's clock offset has been corrected.
 
 ### Exercises — chapter 11
 
@@ -877,11 +925,11 @@ After this chapter you can (1) model host state as processes, services, accounts
 
 ### 12.1 Host state
 
-The kernel mediates access to hardware and enforces permissions; user-space processes run under identities with privileges. Persistence mechanisms — services, scheduled tasks, startup entries, cron jobs — are ordinary administrative features that attackers reuse. A responder's model of a host lists: running processes with parent, user and command line; services and their accounts; scheduled tasks; local accounts and group memberships; listening sockets; recently modified executables; and installed updates.
+The kernel mediates access to hardware and enforces permissions; user-space processes run under identities with privileges. Persistence mechanisms — services, scheduled tasks, startup entries, cron jobs — are ordinary administrative features that attackers reuse. A responder's model of a host lists: running processes with parent, user and command line; services and their accounts; scheduled tasks; local accounts and group memberships; listening sockets; recently modified executables; and installed updates. On the HVSS finance workstation of the next subsections, that model includes the two service accounts and the scheduled task `UpdateCheck`.
 
 ### 12.2 Logs and their limits
 
-Operating systems log authentication, process creation (if enabled), service changes and policy changes. Logging must be configured: process command-line capture, for instance, is often off by default. Logs live on the host, so an attacker with administrative rights can clear or alter them; forwarding to a separate store quickly is what makes them evidence ([NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) covers log management). Kernel-level activity — a malicious driver — may not appear in user-space logs at all.
+Operating systems log authentication, process creation (if enabled), service changes and policy changes. Logging must be configured: process command-line capture, for instance, is often off by default. Logs live on the host, so an attacker with administrative rights can clear or alter them; forwarding to a separate store quickly is what makes them evidence ([NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) covers log management). Kernel-level activity — a malicious driver — may not appear in user-space logs at all. On that workstation, the encoded `UpdateCheck` command is visible only if command-line capture was enabled.
 
 ### 12.3 Observation points and agent design
 
@@ -893,7 +941,7 @@ A response agent is itself privileged software and therefore a target and a risk
 
 ### 12.5 Worked example (synthetic): safe observation
 
-Specification for collecting on that workstation: (1) export scheduled task definitions and the task's history; (2) capture process list with command lines and parents; (3) copy the task's referenced script if any, hashing before and after copy; (4) query the authentication log for `svc-update` logons; (5) do *not* run the encoded command to "see what it does" on the host — decode it as text offline. Each step records the command, time, operator and output hash.
+Specification for collecting on that workstation: (1) export scheduled task definitions and the task's history; (2) capture process list with command lines and parents; (3) copy the task's referenced script if any, hashing before and after copy; (4) query the authentication log for `svc-update` logons; (5) do *not* run the encoded command to "see what it does" on the host — decode it as text offline. Each step records the command, time, operator and output hash. Step 5 is the one most often skipped under pressure, and EX023 practises it with Python on an analysis machine.
 
 ### 12.6 Errors and limits
 
@@ -901,6 +949,8 @@ Specification for collecting on that workstation: (1) export scheduled task defi
 - Running unknown commands on the suspect host to understand them.
 - One all-powerful agent identity.
 - Treating baseline deviation as proof.
+
+The HVSS finance workstation from the baseline example shows where each error bites. If command-line capture was never switched on, the `-enc` argument of `UpdateCheck` would not appear anywhere in the logs. Running the encoded command to understand it would execute the attacker's code under `svc-update`. An agent that holds both memory-read and isolation rights under one identity is the target EX024 asks you to split. The three deviations from baseline still justify investigation, not a verdict.
 
 ### Exercises — chapter 12
 
@@ -939,6 +989,8 @@ The **recovery point objective (RPO)** is the maximum acceptable data loss, meas
 ### 13.3 Restoration order
 
 Components depend on each other: the case API needs the case database, the evidence store and the identity service. A topological sort of the dependency graph gives a valid order; the **critical path** — the longest dependent chain — gives the minimum time with unlimited parallel teams.
+
+In Lab 13 the critical path runs identity → evidence store → case API → portal, adding 1 + 3 + 0.5 + 0.5 = 5.0 h. The queue and case database restores fit beside it on a second team, which is why EX026 also reaches 5.0 h. With a single team, the same restores take 7.5 h because nothing runs in parallel.
 
 ### 13.4 Worked example (synthetic): HVSS case platform after ransomware
 
@@ -984,12 +1036,16 @@ Two findings. First, the case database's last clean backup is 6 h old against a 
 
 Restoring from a backup taken after the intruder arrived restores the intruder. Before reconnecting: compare restored data with checksums or record counts from an independent source; scan for known persistence (new administrator accounts, triggers, stored procedures); and verify the backup timestamp precedes the earliest evidence of compromise — which itself is uncertain (Chapter 3).
 
+For the HVSS case database, the 6 h old backup has to pass these checks before the case API reconnects. Its timestamp must precede the earliest evidence of the ransomware intrusion, allowing for clock uncertainty. Its record counts must match an independent source such as the queue's retained messages. It must also be scanned for administrator accounts or triggers that were not present in earlier backups.
+
 ### 13.6 Errors and limits
 
 - Equating backup job success with restorability.
 - Backups reachable with production administrator credentials.
 - Restoring in an order that violates dependencies.
 - Ignoring the RPO gap until after restoration.
+
+Lab 13 exposes the last error in this list directly, before any restore begins. The case database misses its RPO by two hours before any restore work starts, so the gap must be filled or accepted while choosing sources. If that is discovered only after the portal is back at 7.5 h, the replicated write-ahead logs or retained queue messages may have expired. Restoring the case API before the evidence store would also break the dependency order the lab computes.
 
 ### Exercises — chapter 13
 
@@ -1019,7 +1075,7 @@ After this chapter you can (1) define interfaces and versioning for response too
 
 ### 14.1 Interfaces and versions
 
-An evidence-ingest service has consumers — analysts, detection rules, dashboards, legal hold — who depend on its output schema. Treat the schema as a published interface with semantic versions: a removed or renamed field is a breaking change requiring a major version and a migration plan. Consumers should declare which version they expect, so a mismatch fails loudly. [Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) argued that the essential difficulty of software is its conceptual complexity; interfaces are where that complexity is contained.
+An evidence-ingest service has consumers — analysts, detection rules, dashboards, legal hold — who depend on its output schema. Treat the schema as a published interface with semantic versions: a removed or renamed field is a breaking change requiring a major version and a migration plan. Consumers should declare which version they expect, so a mismatch fails loudly. [Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) argued that the essential difficulty of software is its conceptual complexity; interfaces are where that complexity is contained. The HVSS ingest defect below was a breaking change shipped as a minor version.
 
 ### 14.2 Tests that protect evidence
 
@@ -1033,6 +1089,8 @@ def test_unknown_fields_preserved():
     assert sha256(canonical(raw)) == out["raw_sha256"]
 ```
 
+Had this test existed before v3.2, the strict schema library would have failed it on the first build. The `mfa_reset` and `grantor_is_self` fields would then have stayed under `extra` instead of disappearing for three weeks.
+
 ### 14.3 Review, deployment and rollback
 
 Code review finds defects that tests miss; inspections were shown early on to remove many defects before testing ([Fagan, 1976](https://doi.org/10.1147/sj.153.0182)). Deploy in stages — a canary receiving a copy of traffic, compared with the current version on output counts and field coverage — and keep the previous version deployable. Rollback restores the code, but not data processed meanwhile: if the new version dropped fields, events ingested during the window remain incomplete unless the raw input was kept and can be reprocessed. That is why raw retention (Chapter 4) is a precondition for safe deployment. The [Secure Software Development Framework (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final) lists practices for protecting the build and release pipeline itself.
@@ -1045,12 +1103,16 @@ HVSS's ingest v3.2 switched to a strict schema library that discards unknown key
 
 A release plan for ingest changes states: affected interfaces and versions; acceptance tests; canary duration and comparison metrics; rollback trigger and procedure; reprocessing plan; owner. It is a short document, reviewed like code.
 
+For the HVSS v3.2 change, such a plan would have named the strict schema library as the change. It would have compared distinct field names per source during the canary and kept the three-week reprocessing path from raw storage ready before release. Its rollback trigger would have been any drop in distinct field names for the identity-provider source.
+
 ### 14.6 Errors and limits
 
 - Fixtures that never change while inputs do.
 - Rollback assumed to undo data effects.
 - Schema libraries with lossy defaults.
 - Canary metrics that measure volume only.
+
+The HVSS ingest v3.2 incident combines all four errors in a single release. Fixtures written before the vendor added `mfa_reset` and `grantor_is_self` could not detect their loss. The library's lossy default discarded them, and a canary that compared event counts saw nothing wrong. Rolling back the code would still not have restored the fields in three weeks of stored events, so reprocessing from raw storage was required.
 
 ### Exercises — chapter 14
 
@@ -1084,11 +1146,13 @@ An **asset** is something whose loss matters: a user account, a case record, the
 
 ### 15.2 Controls as claims
 
-A control is useful only as a claim that can be checked: "Multi-factor authentication prevents account takeover" is too broad. "For interactive logons to the case platform, possession of the password alone is insufficient to obtain a session, assuming the second factor is phishing-resistant and recovery flows require equal strength" is a claim with assumptions. [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final) describes authenticator assurance levels that make such assumptions explicit.
+A control is useful only as a claim that can be checked: "Multi-factor authentication prevents account takeover" is too broad. "For interactive logons to the case platform, possession of the password alone is insufficient to obtain a session, assuming the second factor is phishing-resistant and recovery flows require equal strength" is a claim with assumptions. [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final) describes authenticator assurance levels that make such assumptions explicit. Claim P1 in the HVSS phishing case is written in that form.
 
 ### 15.3 Assurance and evidence
 
 **Assurance** is justified confidence that properties hold. It comes from evidence: tests (including negative tests), inspection of configuration, analysis, and operational monitoring. For each claim, ask what observation would show it false. If nothing could, the claim is not engineering.
+
+In the HVSS phishing case, P2 had a falsifying observation ready: an IMAP login success in the webmail logs. Because that observation was named in advance, the investigation could show that the legacy protocol was still enabled for one mailbox class. P3 had one too, file access after the reset time, and the absence of any revocation left that claim unsupported rather than confirmed.
 
 ### 15.4 Worked example (synthetic): account compromise across services
 
@@ -1107,12 +1171,16 @@ The investigation found P2 false (legacy protocol still enabled for one mailbox 
 
 Every control leaves risk. Write it down with an owner, a review date and the condition that would trigger re-evaluation. Unowned residual risk becomes nobody's problem until it becomes an incident ([NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final) frames risk as likelihood and impact under stated threats).
 
+The HVSS residual-risk note on 14-day file-sharing sessions has all three parts: the identity service manager owns it, mitigation is due in 30 days, and the review would be triggered by any file access after a credential reset.
+
 ### 15.6 Errors and limits
 
 - Controls stated without adversary model.
 - Claims with no falsifying observation.
 - Password reset assumed to end sessions.
 - Residual risk without owner.
+
+The HVSS phishing case from the worked example shows each of these errors in turn. Without an adversary model naming a stolen password and session cookie, "MFA protects us" could not be checked against the file-sharing service. The investigators assumed that resetting the password had ended the attacker's 14-day sessions, but no revocation had been performed. The risk became manageable only once the identity service manager was named as its owner with a deadline.
 
 ### Exercises — chapter 15
 
@@ -1146,11 +1214,13 @@ An incident-response capability is a socio-technical system: people, procedures,
 
 ### 16.2 Stakeholders and needs
 
-Stakeholders of a response platform include analysts (fast, clear queues), approvers (clear decision information), service owners (minimal disruption, notification), legal and records staff (preserved, defensible evidence), privacy officers (minimisation), auditors (accountability), platform operators (maintainable, observable) and, indirectly, the public served. Needs conflict: analysts want everything visible, privacy officers want minimisation. Systems engineering makes conflicts explicit and resolves them by decision, not by accident.
+Stakeholders of a response platform include analysts (fast, clear queues), approvers (clear decision information), service owners (minimal disruption, notification), legal and records staff (preserved, defensible evidence), privacy officers (minimisation), auditors (accountability), platform operators (maintainable, observable) and, indirectly, the public served. Needs conflict: analysts want everything visible, privacy officers want minimisation. Systems engineering makes conflicts explicit and resolves them by decision, not by accident. The HVSS trace in the worked example shows one such conflict: analysts' visibility against the privacy officer's need N5.
 
 ### 16.3 Architecture and interfaces
 
 Architecture allocates requirements to components and defines interfaces between them. Each interface needs an owner on both sides, a specification (data, timing, error behaviour) and a test. Most integration failures occur at interfaces nobody owned: the identity provider changed a log field; the paging provider rate-limited the platform during a surge.
+
+In the HVSS trace, the IdP → API tenant claim is one such interface. The identity team owns the claim it issues, the case-API team owns how it is checked, and AT-07 tests both with a forged claim.
 
 ### 16.4 Worked example (synthetic): one platform, several teams
 
@@ -1169,12 +1239,16 @@ The trace exposes a gap: N5 "privacy officer: analysts do not browse personal da
 
 Plan verification while writing requirements; a requirement you cannot verify must be rewritten. Plan operations equally early: who monitors the platform, who patches it, how changes are approved (Chapter 37). A response platform that fails during an incident because nobody was on call for it is a systems-engineering failure, not bad luck.
 
+For HVSS, AT-02 is planned when R2 is written: seeded containment requests, a measured latency distribution, and the 99% within 60 s target against which it is judged. The operations plan should also name who is on call for the platform and its paging interface when three client tenants depend on them.
+
 ### 16.6 Errors and limits
 
 - Treating stakeholders as one "user".
 - Interfaces without owners on both sides.
 - Validation skipped because verification passed.
 - Operations considered only at hand-over.
+
+The HVSS deployment to one central team and three clients would expose each error early. Treating the central team and three client organisations as one user would have produced no tenant-isolation requirement like R7. Leaving the IdP → API tenant claim without an owner on the identity side would let a claim format change break AT-07 unnoticed. Passing AT-02 in a test environment would still not prove that a real duty manager decides within minutes when paged.
 
 ### Exercises — chapter 16
 
@@ -1208,11 +1282,13 @@ A **feedback loop** measures a system, compares the measurement with a goal and 
 
 ### 17.2 Delay, noise and oscillation
 
-Detection delay means the controller acts on old information. Noisy scores near a single threshold cause **chattering**: isolate, release, isolate again — each toggle disrupts users and erodes trust in the system. Isolation also changes the signal itself (an isolated host stops sending telemetry, so its score drops, so it is released): the action feeds back into the measurement. **Observability** suffers: a loop that acts can destroy the evidence it needs to judge whether it acted correctly.
+Detection delay means the controller acts on old information. Noisy scores near a single threshold cause **chattering**: isolate, release, isolate again — each toggle disrupts users and erodes trust in the system. Isolation also changes the signal itself (an isolated host stops sending telemetry, so its score drops, so it is released): the action feeds back into the measurement. **Observability** suffers: a loop that acts can destroy the evidence it needs to judge whether it acted correctly. Lab 17 shows chattering with a single 0.45 threshold, which produces 9–10 toggles.
 
 ### 17.3 Stabilising techniques
 
 **Hysteresis** uses two thresholds: act above $\theta_{on}$, release only below $\theta_{off} < \theta_{on}$. **Dwell time** requires the condition to persist for $k$ samples. **Rate limits** cap actions per period. **Human gates** require approval for actions beyond a scope. **Stability measure**: toggles per incident or per day, tracked as a service metric with a threshold.
+
+Lab 17 measures the first and last of these techniques directly. With hysteresis between 0.55 and 0.35, toggles fall from 9 to 2 while first isolation stays at step 23. HVSS then added the human gate for servers and patient-facing services, plus a four-hour expiry for automatic workstation isolations.
 
 ### 17.4 Worked example (synthetic): HVSS auto-isolation loop
 
@@ -1260,6 +1336,8 @@ A single threshold of 0.45 chatters (9–10 toggles) and isolates outside the at
 - Measuring only detection speed, not toggles and false actions.
 - Automating actions whose harm is not bounded.
 
+The four Lab 17 runs illustrate the first and third errors together. Judged only by first isolation, the single 0.45 threshold without delay looks best at step 20, yet it toggles ten times and isolates four steps outside the attack window. A report that lists toggles and outside-window isolations beside detection speed makes the hysteresis configuration the defensible choice.
+
 ### Exercises — chapter 17
 
 **EX033 — Tune.** *Objective:* explore the trade-off. *Inputs:* Lab 17. *Steps:* run (on 0.60, off 0.35, delay 3) and (on 0.55, off 0.45, delay 3); report toggles, first isolation and outside-window steps; choose one and justify. *Expected evidence:* outputs and justification. *Rubric:* 3 = correct runs and justified choice referencing harm; 2 = runs only; 1 = attempt; 0 = none.
@@ -1288,15 +1366,19 @@ After this chapter you can (1) draw trust zones and boundaries for a response sy
 
 ### 18.1 Trust zones and boundaries
 
-A **trust zone** groups components that share a security posture and administrators; a **boundary** is where data or control crosses between zones and must be mediated. [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939) named principles that still guide placement: economy of mechanism, fail-safe defaults, complete mediation, separation of privilege, least privilege, least common mechanism. [NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final) adds the zero-trust view: no implicit trust from network location; each request is authenticated and authorised.
+A **trust zone** groups components that share a security posture and administrators; a **boundary** is where data or control crosses between zones and must be mediated. [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939) named principles that still guide placement: economy of mechanism, fail-safe defaults, complete mediation, separation of privilege, least privilege, least common mechanism. [NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final) adds the zero-trust view: no implicit trust from network location; each request is authenticated and authorised. In Architecture A, the corporate IdP is an implicit trust anchor for all three planes.
 
 ### 18.2 Planes
 
 A response system has three planes. The **data plane** carries telemetry and case data. The **control plane** issues actions — isolate, disable, block — and holds the highest privilege. The **evidence plane** stores raw records, manifests and audit logs and must be writable by producers but not alterable by them. Separating the planes means separate identities, separate administrators where possible, and one-way flows into the evidence plane.
 
+Architecture B in the worked example applies this separation of planes to the HVSS case service. Its evidence store sits in a separate account with write-only ingest roles, and its containment orchestrator holds credentials scoped per action. Its break-glass case access also avoids the corporate IdP, so compromising that provider does not give the attacker every plane at once.
+
 ### 18.3 Logging and recovery paths
 
 Logs must leave the zone they describe quickly, to a store the zone's administrators cannot modify. A **recovery path** — how responders work if the main platform or the corporate identity provider is compromised — must exist before the incident: out-of-band communication, break-glass accounts stored offline, and a minimal case log that does not depend on the main platform.
+
+For HVSS, the recovery path matters because identity compromise is the most common route in its past cases. If the corporate IdP is the system under attack, responders who sign in through it lose access exactly when they need the case service. The break-glass path in Architecture B exists for that situation.
 
 ### 18.4 Worked example (synthetic): two architectures for the HVSS case service
 
@@ -1317,6 +1399,8 @@ Threat constraint: the scenario of highest concern is identity compromise — th
 - Response tooling dependent on the system under attack.
 - Break-glass accounts never tested.
 - Architecture chosen without stating the threat it addresses.
+
+Architecture A commits the first two errors, since the cloud administrators who may be under investigation can alter the evidence store, and an IdP outage locks responders out. Architecture B avoids both of those errors but takes on the third risk instead. Its offline, dual-controlled break-glass credentials must be exercised on a schedule, or the first real use may fail.
 
 ### Exercises — chapter 18
 
@@ -1347,6 +1431,8 @@ After this chapter you can (1) distinguish authentication, authorisation and acc
 ### 19.1 Identity
 
 **Authentication** establishes who is acting; **authorisation** decides what that identity may do; **accountability** links each action to an identity afterwards. Shared accounts break accountability regardless of cryptography. Service identities need the same rigour as people: one identity per function, short-lived credentials, and scopes that match the function.
+
+Lab 19 records `collector-2` as the producer of every manifest entry, which is accountability only if that identity is used by one collector and no person. The worked example ends on the same point: administrators who share one account able to read the anchor key cannot be told apart afterwards. Each of them could have rewritten and re-anchored the chain.
 
 ### 19.2 Hashes, MACs and signatures
 
@@ -1402,12 +1488,16 @@ Editing an item breaks the chain at that entry. Truncation leaves a valid-lookin
 
 Generation (in a hardware security module or managed key service where possible), storage with access limited to the anchoring service, rotation with overlap so old anchors remain verifiable, revocation procedures, and logging of every key use. Document which keys protect which claims.
 
+For the Lab 19 manifest, the published key `synthetic-anchor-key-not-for-production` breaks every one of these rules, which is why it is marked as never to be used. A production anchor key would sit in a managed key service that only the anchoring service can call, and its use would be logged. After rotation, the old key must stay available for verifying anchors computed before the change.
+
 ### 19.6 Errors and limits
 
 - Treating a hash as proof of origin.
 - Hash chains without independent anchors.
 - Signing keys accessible to the people whose actions are logged.
 - Claiming signatures prove truth of content.
+
+Lab 19 shows the limit that lies behind each of these errors. The SHA-256 values for `host0.evtx` to `host4.evtx` show only that copies match, not who made them. The chain alone did not catch truncation to four entries; only the HMAC anchor, which binds the count, did. Even an intact anchor says nothing about whether collector-2 gathered the right files.
 
 ### Exercises — chapter 19
 
@@ -1441,7 +1531,7 @@ The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) recom
 
 ### 20.2 Mission and stakeholders
 
-A mission statement for a response capability should name what is protected and what "good response" means: "Detect, decide and act on incidents affecting HVSS and its client services so that harmful activity is stopped within authorised scope, essential services continue or recover within agreed objectives, and decisions are supported by preserved evidence." Stakeholders are those of Chapter 16, plus external ones: regulators, law enforcement, insurers, suppliers and the public.
+A mission statement for a response capability should name what is protected and what "good response" means: "Detect, decide and act on incidents affecting HVSS and its client services so that harmful activity is stopped within authorised scope, essential services continue or recover within agreed objectives, and decisions are supported by preserved evidence." Stakeholders are those of Chapter 16, plus external ones: regulators, law enforcement, insurers, suppliers and the public. For HVSS, "within authorised scope" means within each client tenant's delegated authority, so the council, utility and hospital trust each bound what may be done in their systems.
 
 ### 20.3 Constraints
 
@@ -1475,11 +1565,15 @@ Prioritised constraint register (extract):
 
 A coordination-focused course trains people to run incidents; a research course studies how response works. This course builds and verifies the capability: you will specify, construct and test the platforms, pipelines and procedures that make coordination possible and research measurable.
 
+In HVSS terms, the coordination course teaches the duty manager how to run the hospital-scheduling case. This book designs the gates, evidence path and measured objectives that the duty manager relies on during that case. Its chapters therefore end in evidence that the built system works, not in a coordination checklist.
+
 ### 20.6 Errors and limits
 
 - Starting from a product rather than a mission and constraints.
 - Ignoring regulatory clocks until an incident.
 - Uniform design despite uneven telemetry and criticality.
+
+The HVSS constraint register in the worked example shows how each error is avoided. Starting from a product would have skipped C1, so the containment design would lack non-disruptive alternatives for hospital scheduling. Leaving regulatory clocks until an incident would leave C2 unimplemented, with no recorded moment of awareness from which to count the NIS2 24-hour early warning. A uniform design would also overstate what detection can claim for the hospital's legacy systems, which C3 explicitly limits.
 
 ### Exercises — chapter 20
 
@@ -1545,6 +1639,8 @@ The brief promises "response in under 15 minutes" and "full forensic evidence fo
 - Hidden conflicts resolved by whoever configures the system.
 - Uptime as the only objective.
 
+The HVSS brief commits the first two errors in its promise of "response in under 15 minutes". It does not say whether that is a mean or a percentile, or where the clock starts and stops. SO-1 to SO-3 replace it with percentiles over named segments, each measured from timestamps or workflow audit. The original wording also hid a conflict with the approval gate for multi-host actions, which the rewrite resolves by limiting SO-3 to single targets.
+
 ### Exercises — chapter 21
 
 **EX041 — Write objectives.** *Objective:* measurable objectives. *Inputs:* aim "notifications to clients must be timely and accurate". *Steps:* write two objectives with indicator, target, window and measurement source. *Expected evidence:* two objectives. *Rubric:* 3 = percentile-based, measurable, accuracy defined (e.g., correction rate); 2 = one weak; 1 = vague; 0 = none.
@@ -1577,15 +1673,17 @@ A response event schema needs at least: an **event ID**; **timestamps** — even
 
 ### 22.2 Entity resolution
 
-The same person appears as `j.ortiz@hvss.example` in the identity provider, `HVSS\jortiz` on Windows hosts and an opaque object ID in the cloud audit log. Resolution maps each to a canonical entity using authoritative directories, with a record of which mapping rule applied and when the directory was read. Resolution is evidence-relevant: a wrong mapping attributes actions to the wrong person. Keep the original identifier alongside the resolved one, never replace it.
+The same person appears as `j.ortiz@hvss.example` in the identity provider, `HVSS\jortiz` on Windows hosts and an opaque object ID in the cloud audit log. Resolution maps each to a canonical entity using authoritative directories, with a record of which mapping rule applied and when the directory was read. Resolution is evidence-relevant: a wrong mapping attributes actions to the wrong person. Keep the original identifier alongside the resolved one, never replace it. In case C-2207, the cloud actor `9f2…` was resolved to `person:0193` using the 06:00 directory snapshot.
 
 ### 22.3 Lineage
 
 Lineage answers "where did this value come from?" The [W3C PROV](https://www.w3.org/TR/prov-overview/) model represents entities, activities and agents; in practice, store for each derived record the IDs of its inputs and the activity (normaliser version, enrichment source, rule version). A case decision then references derived records, which reference raw records — a traversable graph.
 
+The C-2207 trace in the worked example is this graph in practice. The decision record points to D-881 and D-884, and these point to raw events R-55102, R-55140 and R-55171. Each link names the normaliser version and the directory snapshot used, so a reviewer can follow the chain without asking the analyst.
+
 ### 22.4 Retention and integrity
 
-Different classes need different rules: raw security telemetry (integrity-critical, long retention, hash manifest); derived events (reproducible from raw, shorter retention acceptable); case notes (records-management rules); personal data (minimisation, legal basis). The [FAIR principles](https://doi.org/10.1038/sdata.2016.18) — findable, accessible, interoperable, reusable — written for research data, are a useful checklist for whether evidence will be usable later.
+Different classes need different rules: raw security telemetry (integrity-critical, long retention, hash manifest); derived events (reproducible from raw, shorter retention acceptable); case notes (records-management rules); personal data (minimisation, legal basis). The [FAIR principles](https://doi.org/10.1038/sdata.2016.18) — findable, accessible, interoperable, reusable — written for research data, are a useful checklist for whether evidence will be usable later. For case C-2207, the IdP and cloud audit raw events fall in the first class and were checked against the manifest anchored at 00:00, while D-881 and D-884 could be regenerated from them by normaliser v4.1.
 
 ### 22.5 Worked example (synthetic): tracing a decision at HVSS
 
@@ -1604,6 +1702,8 @@ The trace revealed a weakness: the directory snapshot was eight hours old; had t
 - Overwriting source identifiers with resolved ones.
 - Lineage as free-text notes.
 - One retention rule for all data.
+
+The C-2207 trace in the worked example works only because each error was avoided. With one timestamp per event, the Lisbon sign-in at 13:58 could not be compared with its ingest time to measure delivery delay. If `9f2…` had been overwritten by `person:0193`, the reviewer could not have checked the eight-hour-old directory mapping. Free-text lineage would not let the decision be traversed back to R-55171. One retention rule would also force the derived events and the raw events to share a lifetime they do not need.
 
 ### Exercises — chapter 22
 
@@ -1642,6 +1742,8 @@ A **fault tree** decomposes an undesired top event into combinations of basic ev
 ### 23.3 Common cause
 
 Redundancy helps only if components fail independently. A shared credential, shared administrator, shared cloud account or shared software version is a **common cause** that defeats redundancy.
+
+Design S in Lab 23 is exactly this case of redundancy defeated by a shared element. The evidence store has a backup and the notification service has a pager behind it, so each side looks redundant. Yet one administrator credential reaches both, and its compromise alone produces silent evidence loss. Common causes are found by listing what the redundant parts share: credentials, administrators, accounts, software versions, power and network paths.
 
 ### 23.4 Worked example (synthetic): silent evidence loss at HVSS
 
@@ -1704,12 +1806,16 @@ In design S, the shared credential is a single-element cut set: one compromise b
 
 Alternatives to credential separation: an independent integrity monitor that alerts from outside both systems; immutable storage (object lock) so a credential cannot delete evidence within the retention period. A mitigation table compares each against cut sets removed, cost, operational burden and new failure modes introduced (immutable storage complicates legitimate deletion for privacy requests).
 
+In Lab 23 terms, an independent integrity monitor would add a third way to raise the alarm, so even design S's shared credential would no longer silence everyone. Object lock would instead make the `lost` branch depend on more than a stolen credential during the retention period. Each change removes a different cut set and should be compared on that basis.
+
 ### 23.6 Errors and limits
 
 - Threat models that omit the response system itself.
 - Treating adversarial probabilities as precise.
 - Redundancy with hidden common causes.
 - Mitigations evaluated without their new failure modes.
+
+Lab 23 itself illustrates the second and third errors in this list. Its credential probability of 0.005 is a teaching input, not a forecast of how often an HVSS administrator is phished. The useful result is structural: design S has a single-element cut set, while design D needs two independent compromises. The backup and pager redundancies in design S hid exactly the common cause that the fault tree exposed.
 
 ### Exercises — chapter 23
 
@@ -1739,7 +1845,7 @@ After this chapter you can (1) design an evidence path from ingestion through va
 
 ### 24.1 The evidence path
 
-Stages: **ingest** (receive, hash raw, store); **validate** (schema, timestamps, quarantine with reasons); **normalise and enrich** (entity resolution, context such as asset criticality); **score** (rules or models producing a priority); **present** (queue with explanations); **decide** (human, recorded); **feedback** (decision outcomes returned to tune scoring). Each stage has an input contract, output contract, error path and metrics. Provenance links each presented item to its raw inputs.
+Stages: **ingest** (receive, hash raw, store); **validate** (schema, timestamps, quarantine with reasons); **normalise and enrich** (entity resolution, context such as asset criticality); **score** (rules or models producing a priority); **present** (queue with explanations); **decide** (human, recorded); **feedback** (decision outcomes returned to tune scoring). Each stage has an input contract, output contract, error path and metrics. Provenance links each presented item to its raw inputs. At HVSS, the v3.2 regression broke the contract between ingest and normalisation without any stage reporting an error.
 
 ### 24.2 Inspectable scoring
 
@@ -1748,6 +1854,8 @@ A score that cannot be explained cannot be challenged. For rule-based scoring, p
 ### 24.3 Omission is a decision
 
 When a pipeline drops data, it makes a decision on the responder's behalf without telling them. The most dangerous omissions are silent: unknown fields discarded, late events excluded from correlation windows, enrichment failures treated as "not critical".
+
+Lab 24 makes such a hidden decision visible by printing the ranking both ways. With unknown fields dropped, the pipeline silently decided that `mfa_reset` and `grantor_is_self` did not matter for user `u17`, and A2 moved to the top of the queue. Nothing in the dropped-field ranking told the responder that two inputs were missing. A line such as "fields dropped: 2" on A1 and A3 would have turned that hidden decision into information the responder could weigh.
 
 ### 24.4 Worked example (synthetic): ranking with and without unknown fields
 
@@ -1792,7 +1900,7 @@ With fields dropped, a quarantined-malware alert (already handled by the endpoin
 
 ### 24.5 Human review and rollback
 
-Scoring changes are deployments: run new and old scorers in parallel on live data for a period, compare rankings (rank correlation, top-k overlap) and examine every alert whose rank moved by more than a set amount. Keep the previous scorer deployable; record scorer version in every presented alert so that past decisions can be understood in the context of the ranking the responder actually saw.
+Scoring changes are deployments: run new and old scorers in parallel on live data for a period, compare rankings (rank correlation, top-k overlap) and examine every alert whose rank moved by more than a set amount. Keep the previous scorer deployable; record scorer version in every presented alert so that past decisions can be understood in the context of the ranking the responder actually saw. Applied to Lab 24, a parallel run would flag A3 moving from 85 to 50 and A1 from 70 to 40 under v3.2.
 
 ### 24.6 Errors and limits
 
@@ -1800,6 +1908,8 @@ Scoring changes are deployments: run new and old scorers in parallel on live dat
 - Silent omission of fields, late events or enrichment.
 - Alerts ranked individually when entities link them.
 - Scorer changes without parallel comparison.
+
+Every error in this list appears in the Lab 24 ranking. The dropped-field scores of 50 and 40 for A3 and A1 carried no explanation of what was missing. The two vendor fields vanished silently, with no counter or warning on the affected alerts. The two `u17` alerts were ranked separately, so a strong account-takeover pattern looked like two medium alerts. The v3.2 normaliser also went live without its rankings being compared against the previous version on live data.
 
 ### Exercises — chapter 24
 
@@ -1829,11 +1939,13 @@ After this studio you can (1) design a case-intake state machine for a multi-ten
 
 ### 25.1 Studio brief (synthetic)
 
-HVSS operates a shared response service. Central responders may work cases of any client that has delegated authority to HVSS; client responders may see and act only within their own tenant; some cases are *shared* (affecting several tenants) and need a structure in which each tenant's data remains separated. Deliverables: state machine, access matrix, audit event list, a check script and a peer review record.
+HVSS operates a shared response service. Central responders may work cases of any client that has delegated authority to HVSS; client responders may see and act only within their own tenant; some cases are *shared* (affecting several tenants) and need a structure in which each tenant's data remains separated. Deliverables: state machine, access matrix, audit event list, a check script and a peer review record. The three HVSS clients, the city council, the water utility's billing department and the hospital trust, are the tenants in this brief.
 
 ### 25.2 State machine
 
 States: *intake → triage → investigating → contain_requested → contain_approved → containing → recovering → closed*, with *rejected* (not an incident) and *merged* (duplicate). Rules: every state except *closed*, *rejected* and *merged* has a timeout that escalates (Chapter 31); *closed* can be reopened only by a duty manager with a reason; *merged* keeps a pointer to the surviving case and never deletes data.
+
+Compared with the seven states of Lab 2, this machine separates *investigating* from *triage* and *containing* from the approval state. It also adds the two exits *rejected* and *merged*, which the check script must treat as terminal along with *closed*.
 
 ### 25.3 Access matrix
 
@@ -1852,7 +1964,7 @@ For a shared case, the matrix applies per tenant partition: a client responder f
 
 ### 25.4 Checking the design
 
-Encode transitions and the matrix, then check properties mechanically, as in Lab 2: no path to *containing* without *contain_approved*; no role both requests and approves the same request; no read or action across tenant boundaries without delegation; every transition emits an audit event with actor, tenant, case, from/to state and reason. A short check over all (role, tenant, state, action) combinations — a few hundred cases — is cheap and catches errors that review misses.
+Encode transitions and the matrix, then check properties mechanically, as in Lab 2: no path to *containing* without *contain_approved*; no role both requests and approves the same request; no read or action across tenant boundaries without delegation; every transition emits an audit event with actor, tenant, case, from/to state and reason. A short check over all (role, tenant, state, action) combinations — a few hundred cases — is cheap and catches errors that review misses. Finding F1 in the peer review below is the kind of error this sweep catches.
 
 ### 25.5 Worked example: peer review findings
 
@@ -1864,6 +1976,8 @@ A peer reviewing the first draft found: (F1) client approvers could approve cont
 - Merge and split operations that move data across tenants.
 - Missing audit events on rare transitions.
 - Review without mechanical checking.
+
+The HVSS peer review found the first three errors in one draft. F1 checked the case tenant rather than the target tenant, letting a client approver act on another tenant's hosts in a shared case. F2 allowed a cross-tenant merge that would have moved one client's data into another client's case. F3 left the rare *reopen* transition without any audit event at all. Each fix gained a test so that the mechanical check would catch a recurrence.
 
 ### Exercises — chapter 25
 
@@ -1906,6 +2020,8 @@ After this chapter you can (1) describe containment architectures by isolation b
 
 When the identity provider (IdP) itself is suspect, every service that trusts it is exposed, and the response team's own access probably depends on it. Containment options range from narrow (revoke specific sessions and tokens, rotate signing keys) to broad (fail over to a clean standby IdP, or cut federation to all relying services).
 
+At HVSS this is the scenario of the worked example below: an attacker with administrative access to the cloud IdP tenant who may have added a federated trust. Revoking sessions cannot remove a trust the attacker created, and responders who sign in through the same tenant may be locked out midway.
+
 ### 26.3 Worked example (synthetic): two designs at HVSS
 
 Scenario: evidence suggests an attacker obtained administrative access to HVSS's cloud IdP tenant and may have added a federated trust or credentials to an application identity.
@@ -1931,6 +2047,8 @@ Against HVSS objectives — critical applications restored within 8 h and no ret
 - Response access dependent on the compromised system.
 - Standby environments that are never exercised.
 - Choosing by speed alone.
+
+HVSS's hybrid rule addresses the first and last errors together. A confirmed single application credential gets the faster in-place Design 1. Tenant-level administrative compromise, or doubt that cannot be cleared within 2 h, gets the slower clean-standby Design 2. Picking Design 1 every time because it takes 1–2 h would leave hidden persistence in the tenant. Design 2 is only safe if the standby is rehearsed, as the failure-mode table warns.
 
 ### Exercises — chapter 26
 
@@ -1964,7 +2082,7 @@ A containment control receives a request (case ID, action, target selectors, app
 
 ### 27.2 Why selectors are dangerous
 
-Requests often name targets loosely ("disable alice"), and the same name exists in several tenants or directories. Resolution must be explicit and its result shown to the approver; approval refers to resolved identifiers, not to names. Complete mediation ([Saltzer and Schroeder, 1975](https://doi.org/10.1109/PROC.1975.9939)) means the check happens at execution time, against current state, not only when the request was written.
+Requests often name targets loosely ("disable alice"), and the same name exists in several tenants or directories. Resolution must be explicit and its result shown to the approver; approval refers to resolved identifiers, not to names. Complete mediation ([Saltzer and Schroeder, 1975](https://doi.org/10.1109/PROC.1975.9939)) means the check happens at execution time, against current state, not only when the request was written. Lab 27 below reproduces this: the selector `alice` matches both `t1/alice` and `t2/alice`. Approving `t1/alice` rather than `alice` is what makes the tenant check meaningful at execution time.
 
 ### 27.3 Worked example (synthetic): suspect account and a protected tenant
 
@@ -2005,15 +2123,19 @@ unrelated tenant untouched: True
 reverse: {'t1/alice': 'active'}
 ```
 
-The selector matched `alice` in two tenants. The control denied the tenant-2 account (outside case tenant) and would have denied it again as "not in approval". The dry run shows the plan; execution changes exactly one account; the effect log lists before/after state; the unrelated tenant is untouched; and the reverse operation is derived from recorded prior state. A blast-radius limit (three targets) stops a selector that unexpectedly expands to many accounts.
+The selector matched `alice` in two tenants. The control denied the tenant-2 account (outside case tenant) and would have denied it again as "not in approval". The dry run shows the plan; execution changes exactly one account; the effect log lists before/after state; the unrelated tenant is untouched; and the reverse operation is derived from recorded prior state. A blast-radius limit (three targets) stops a selector that unexpectedly expands to many accounts. If the approval had wrongly listed `t2/alice` as well, the tenant check would still have denied it first.
 
 ### 27.4 Observability and reversibility
 
 Each action emits a structured record: request ID, approval ID, actor, resolved target, prior state, new state, timestamp, result. Reversal is itself an action requiring authority (often lower than the original). Some actions are not fully reversible — revoked tokens cannot be un-revoked; deleted mail rules must be recreated from recorded definitions — so the control must store enough prior state to reconstruct, and must state which actions are irreversible to the approver before approval.
 
+In Lab 27, the recorded prior state `('active', 'disabled')` is what lets the reverse step restore `t1/alice` without guessing. If the same control instead revoked `t1/alice`'s sessions, the dry-run plan would have to say that this part cannot be undone.
+
 ### 27.5 Testing the control
 
 Tests: positive (in-scope target disabled); negative (cross-tenant target denied even if named in approval; target not in approval denied); limit (four targets denied as a set, not partially executed); idempotence (executing twice changes nothing more); reversal (state restored exactly); failure (provider error midway → partial-execution report and no silent success).
+
+The Lab 27 code already passes the positive and cross-tenant negative tests, with `t2/alice` denied and `t1/alice` disabled. Its limit check runs before any change, so four in-scope targets produce a single denial. The provider-error test needs a fake account store that fails after the first disable, because the lab's in-memory dictionary never fails.
 
 ### 27.6 Errors and limits
 
@@ -2021,6 +2143,8 @@ Tests: positive (in-scope target disabled); negative (cross-tenant target denied
 - Checks performed at request time only.
 - Partial execution reported as success.
 - Irreversible actions not flagged before approval.
+
+Lab 27 guards against the first two errors by approving `t1/alice` rather than the name `alice`, and by checking tenant and approval inside `contain` when it runs. The limit check returns before any account changes, so four targets are never half-disabled and reported as success. The lab disables accounts, which can be reversed, so an irreversible action such as token revocation would need its own warning.
 
 ### Exercises — chapter 27
 
@@ -2080,7 +2204,7 @@ def capture(src_path, dest_dir, manifest, case_id, actor, chunk=1 << 20):
     return digest, "committed"
 ```
 
-The sketch omits network transport and the append-only storage policy, which in production come from the storage service (for example write-once retention). A mismatch between first-read and committed hash usually means the source changed during collection — a finding in itself, recorded rather than retried blindly.
+The sketch omits network transport and the append-only storage policy, which in production come from the storage service (for example write-once retention). A mismatch between first-read and committed hash usually means the source changed during collection — a finding in itself, recorded rather than retried blindly. Note that the sketch rereads and recopies the whole source on each attempt; chunk-level resume would need per-chunk acknowledgement state at the destination. The `.part` suffix is what keeps an incomplete copy out of the manifest until `os.replace` commits it.
 
 ### 28.4 Worked example (synthetic): interrupted transfer at HVSS
 
@@ -2092,6 +2216,8 @@ An HVSS collector copies a 2 GB log archive from a branch server; the link drops
 - Partial files visible as evidence.
 - Overwriting by filename instead of content address.
 - Collector credentials that can delete stored evidence.
+
+The interrupted HVSS transfer in the worked example shows why each of these guards matters. Because the 2 GB archive was hashed at the branch server before transfer, a corrupt copy could be told apart from a source that changed. The 60% `.part` file never appeared as evidence because commit waited for a matching hash. Content addressing turned the accidental re-run into `already-committed` instead of a second copy. A collector able to delete stored items would undermine the whole access history.
 
 ### Exercises — chapter 28
 
@@ -2121,19 +2247,25 @@ After this chapter you can (1) define the population and unit of analysis for ev
 
 ### 29.1 Define before measuring
 
-An evaluation states: the **population** (which alerts or cases, which period, which tenants); the **unit** (alert, case or entity — results differ); the **reference standard** (how "true incident" is decided, by whom, blind to which workflow handled it); the **primary measures** and their thresholds for a meaningful difference; and how **missing** outcomes are treated. Write these before looking at results.
+An evaluation states: the **population** (which alerts or cases, which period, which tenants); the **unit** (alert, case or entity — results differ); the **reference standard** (how "true incident" is decided, by whom, blind to which workflow handled it); the **primary measures** and their thresholds for a meaningful difference; and how **missing** outcomes are treated. Write these before looking at results. The HVSS evaluation below names its population as the 1,200 alerts of six weeks and its reference standard as a review panel blind to workflow.
 
 ### 29.2 Accuracy measures
 
 For escalation decisions against the reference standard: **precision** = escalated-and-true / escalated; **recall** = escalated-and-true / all true; report both with intervals (Chapter 7) and the prevalence in the evaluated population. [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) warn that unrealistic base rates in evaluation sets inflate apparent performance.
 
+In the HVSS trial below, prevalence is 96 true incidents in 1,200 alerts, or 8%. That is far above the 0.5% assumed in the Lab 7 PPV line, so its precision figures would not carry over to a lower-prevalence source without recomputing them.
+
 ### 29.3 Latency distributions
 
 Report latency as a distribution: median, 90th and 99th percentiles, and the count of cases never actioned within the observation window (censored). A mean hides the long tail where harm occurs. If 5% of cases never close within the window, compute percentiles including them as "greater than window", not by dropping them.
 
+The HVSS trial shows why the tail matters. v2 shortened the median escalation latency by only four minutes, from 22 to 18. At the 90th percentile it cut 95 minutes to 61, which is where slow decisions on real incidents do their damage.
+
 ### 29.4 Before-and-after designs and confounding
 
 Comparing workflow v1 (March) with v2 (May) confounds the workflow with everything else that changed: case mix, staffing, threat activity. Better designs: run both concurrently with random assignment; or alternate by week; at minimum, stratify by severity and source and report standardised results (Chapter 7). Causal reasoning with explicit assumptions is treated in [Hernán and Robins, *Causal Inference: What If*](https://miguelhernan.org/whatifbook).
+
+This is why the HVSS v1 and v2 trial ran both workflows concurrently for six weeks with seeded random assignment after severity stratification. A March-versus-May comparison would have mixed the workflow change with any shift in staffing or threat activity between those months.
 
 ### 29.5 Worked example (synthetic): HVSS triage v1 vs v2
 
@@ -2147,6 +2279,8 @@ HVSS ran v1 and v2 concurrently for six weeks, assigning incoming alerts at rand
 - Means for latency; dropping censored cases.
 - Before-after comparisons presented as causal.
 - Ignoring missing outcomes.
+
+The HVSS trial avoided each error by design, which is what makes its limited conclusion credible. The panel's labels were fixed blind to workflow, so the meaning of "true" could not move after results were seen. Latency was reported as median and p90 rather than as a mean. The 30 unlabelled alerts were tested under three assumptions instead of being dropped, and that test is why the report makes no claim about recall.
 
 ### Exercises — chapter 29
 
@@ -2187,7 +2321,7 @@ These are properties over all inputs, not examples. Testing them under hostile i
 
 ### 30.2 Fault model
 
-Inputs are duplicated (at-least-once delivery), delayed and reordered (network and buffering), corrupted (content does not match its claimed hash) and *conflicting* — the same record ID with different content, which happens when a source re-emits a corrected event or when an attacker injects a look-alike.
+Inputs are duplicated (at-least-once delivery), delayed and reordered (network and buffering), corrupted (content does not match its claimed hash) and *conflicting* — the same record ID with different content, which happens when a source re-emits a corrected event or when an attacker injects a look-alike. Lab 30 injects one of each kind of fault into a stream of 20 records: two duplicates, one conflicting `r5` and one corrupted `r99`, all shuffled with seed 30. A design that defends against only one of these kinds can still pass checks written for the others.
 
 ### 30.3 The lab
 
@@ -2243,6 +2377,8 @@ dedupe by record id | stored 20 | rejects ['r99']
    FAIL  I4 no distinct payload lost
 ```
 
+The lab builds a stream of 24 receipts: twenty distinct records `r0`–`r19`, duplicates of two of them, a second `r5` with changed content, and an `r99` whose payload does not match its claimed hash. It shuffles the stream with seed 30 and feeds it to two pipeline variants that differ only in their deduplication key, content hash or record ID. The `check` function then evaluates I1 to I4 on each variant; I5 and I6 are left to the exercises. The expected output shows 21 stored items under content-hash deduplication and 20 under record-ID deduplication, and only the second variant fails I4.
+
 ### 30.4 Explaining the results
 
 With deduplication by content hash, all invariants pass: both versions of `r5` are stored as distinct items and the corrupted `r99` is rejected with its raw copy retained. With deduplication by record ID, I4 fails: whichever version of `r5` arrives second is classified as a duplicate and its distinct content is lost from the store, although the raw copy (I1) still holds it. The mechanism: identity was defined by a label the source controls, not by content. The fix: deduplicate by content hash; when the same record ID appears with different content, store both and raise a **conflict** event for review. This mirrors EX008 at pipeline scale.
@@ -2253,12 +2389,16 @@ Note what the checks do *not* prove: that the source was honest, that no records
 
 Run the invariant checks continuously in production as reconciliation jobs: counts of received vs outcomes per hour (I2), sampled hash verification (I3), and conflict-rate metrics. A failed invariant in production is an incident about the response platform itself.
 
+For HVSS, the I4 failure from Lab 30 would surface in production as a conflict-rate metric: the same record ID arriving with different content, as `r5` did, raised as a conflict event for review. An hourly I2 reconciliation would likewise detect receipts with no recorded outcome before a case reviewer finds the gap.
+
 ### 30.6 Errors and limits
 
 - Deduplication by source-controlled identifiers.
 - Invariants checked only on clean test data.
 - One random seed taken as coverage.
 - Raw copies kept but never reconciled against the store.
+
+Lab 30 contains a small, concrete instance of each error in this list. The record-ID pipeline trusted a label that the source controls, and lost the changed `r5` from the store as a result. A clean stream of twenty distinct records would have passed all four checks in both modes. The single shuffle with seed 30 explored one ordering of 24 receipts. The raw copy still held the lost `r5`, yet only a reconciliation of raw against store revealed the loss.
 
 ### Exercises — chapter 30
 
@@ -2292,11 +2432,13 @@ Security orchestration platforms coordinate tasks across tools and people. The e
 
 ### 31.2 Timers, retries and escalation
 
-Each waiting state has a timer. On expiry: **escalate** to a deputy or higher role; after a second expiry, **expire** the request with a recorded outcome. Never auto-approve. Retries apply to *machine* steps with transient failure (an API timeout), with bounded attempts and backoff; human tasks are escalated, not retried. Each retry and escalation is an audit event.
+Each waiting state has a timer. On expiry: **escalate** to a deputy or higher role; after a second expiry, **expire** the request with a recorded outcome. Never auto-approve. Retries apply to *machine* steps with transient failure (an API timeout), with bounded attempts and backoff; human tasks are escalated, not retried. Each retry and escalation is an audit event. Lab 31 uses two 30-minute timers: escalation to the deputy at 30, expiry with no containment at 60. Neither timer ever converts the duty manager's silence into an approval of the containment request.
 
 ### 31.3 Audit trail
 
 For every transition record: time, previous and next state, actor (or "clock"), reason, and references to the request, approval and evidence. The trail should allow a reviewer to answer: who knew what, when, and who decided? Sagas ([Garcia-Molina and Salem, 1987](https://doi.org/10.1145/38714.38742)) — sequences of steps each with a compensating action — are a useful model for multi-step containment that may need to be unwound.
+
+The Lab 31 trail meets this test for the self-approval scenario. A reviewer can read that analyst-1 requested at t = 0 and tried to self-approve at 5. The clock then escalated the request at 30 and expired it at 60 without containment, so every transition names an actor or the clock and a reason.
 
 ### 31.4 Worked example (synthetic): approval timeout at HVSS
 
@@ -2361,12 +2503,16 @@ Four behaviours are visible. In the normal path the approval arrives in 12 minut
 
 Test with simulated clocks so timeouts can be exercised in milliseconds. Cases: approval before, at and after timeout boundary; approval by requester; approval by unauthorised role; executor failure after approval (retry then failure state, not silent success); concurrent approval and expiry (the first committed transition wins; the second is rejected and logged). Concurrency bugs in workflow engines are subtle; serialise transitions per case.
 
+The Lab 31 scenarios already cover the requester approving and the silent approver. The boundary cases are still missing: approvals at minutes 29, 30 and 31 relative to the escalation timer, and a deputy approval arriving at exactly 60, when expiry also fires.
+
 ### 31.6 Errors and limits
 
 - Auto-approval on timeout.
 - Retrying human tasks instead of escalating.
 - Workflow state held only in memory.
 - Audit trails that omit clock-driven transitions.
+
+Lab 31 is written to avoid the first and last errors. In the "nobody answers" scenario, the request ends `expired` with "containment NOT executed" instead of being approved by the clock, and both clock transitions appear in the trail. The approval task is escalated to the deputy rather than resent to the same silent duty manager. The lab still keeps `state` in a local variable, so a production engine would need to persist it per case to survive a restart mid-wait.
 
 ### Exercises — chapter 31
 
@@ -2396,15 +2542,19 @@ After this chapter you can (1) compute availability of response tool chains in s
 
 ### 32.1 Availability arithmetic
 
-For a repairable component with mean time between failures (MTBF) and mean time to repair (MTTR), steady-state availability is $A = \text{MTBF}/(\text{MTBF} + \text{MTTR})$. Components needed together (in series) multiply: $A_s = \prod A_i$. Redundant components (parallel, any one sufficient) give $A_p = 1 - \prod (1 - A_i)$ if failures are independent. [Avižienis et al. (2004)](https://doi.org/10.1109/TDSC.2004.2) define availability and reliability as dependability attributes.
+For a repairable component with mean time between failures (MTBF) and mean time to repair (MTTR), steady-state availability is $A = \text{MTBF}/(\text{MTBF} + \text{MTTR})$. Components needed together (in series) multiply: $A_s = \prod A_i$. Redundant components (parallel, any one sufficient) give $A_p = 1 - \prod (1 - A_i)$ if failures are independent. [Avižienis et al. (2004)](https://doi.org/10.1109/TDSC.2004.2) define availability and reliability as dependability attributes. With Lab 32's numbers, the broker's MTBF of 720 h and MTTR of 4 h give 720/724 ≈ 0.99448.
 
 ### 32.2 Common cause
 
 Redundant copies often share software, configuration, credentials or cloud region. The **beta-factor** model assigns a fraction $\beta$ of each unit's unavailability to causes that defeat all copies. Even a small $\beta$ dominates the result, so diversity and independence matter more than the number of copies.
 
+Lab 32 shows how strongly common cause dominates even with only two brokers. Two independent HVSS brokers would be down about 0.27 h a year, but a β of 0.1 raises that to about 5.08 h. Almost all of the remaining downtime then comes from the shared tenth of failures, such as the bad configuration update pushed to both brokers last year.
+
 ### 32.3 Correlated demand
 
 Response tools are needed most when the environment is failing: an alert broker hosted in the same cloud region as the compromised workload, a paging service reached via the same identity provider under attack. Availability measured over a year can be high while availability *during incidents* is poor. Objectives should be stated for incident conditions, and verified by exercises (Chapter 40).
+
+At HVSS, the broker outage that Lab 32 sizes for is the case in point. An outage of four hours at 300 alerts per hour is most likely during an incident, when alert volume is high and the shared infrastructure may itself be affected. An exercise that stops the broker under realistic alert load measures that conditional availability; an annual uptime report does not.
 
 ### 32.4 Worked example (synthetic): HVSS alert broker
 
@@ -2445,12 +2595,16 @@ A single broker and pager in series lose about 57 hours a year. Two independent 
 
 A degraded mode that is never exercised does not exist. Test: broker stopped in a staging environment, spool fills, replay occurs, counts reconcile (sent = received + reported lost), latency of replayed alerts measured, analysts see a "degraded" banner. Run quarterly and after changes.
 
+For the HVSS collector spool, the reconciliation target of such a test is concrete. With the spool resized to at least 1,200 alerts, a four-hour staged outage at 300 alerts per hour must show 1,200 sent and 1,200 received, with none reported lost. The replayed backlog should also drain in about four hours at 600 per hour.
+
 ### 32.6 Errors and limits
 
 - Assuming independence of redundant copies.
 - Annual availability as the only measure.
 - Degraded modes that silently drop data when full.
 - Replay without severity ordering.
+
+Lab 32 shows the cost of each of these errors in numbers. Assuming independence promises 0.27 h of yearly broker downtime when common cause makes it about 5.08 h. A yearly figure says nothing about the hours when an incident is in progress. The original 1,000-alert spool silently loses 200 alerts in a four-hour outage. Replaying in arrival order would also leave a critical alert spooled at minute 230 queued behind the earlier low-severity ones.
 
 ### Exercises — chapter 32
 
@@ -2484,11 +2638,13 @@ A component is **fail-safe** if, on failure, it moves to a state that does not c
 
 ### 33.2 Circuit breakers and bulkheads
 
-A **circuit breaker** stops calls to a failing dependency after a threshold of errors, returning a defined failure quickly instead of piling up retries; it probes periodically and closes when the dependency recovers. A **bulkhead** isolates resources so one tenant's or one integration's failure cannot exhaust shared capacity. For response, a breaker on the endpoint-management API prevents a retry storm from making a provider outage worse; a bulkhead prevents a flood of one client's alerts from starving others.
+A **circuit breaker** stops calls to a failing dependency after a threshold of errors, returning a defined failure quickly instead of piling up retries; it probes periodically and closes when the dependency recovers. A **bulkhead** isolates resources so one tenant's or one integration's failure cannot exhaust shared capacity. For response, a breaker on the endpoint-management API prevents a retry storm from making a provider outage worse; a bulkhead prevents a flood of one client's alerts from starving others. In the HVSS partition, the controller's breaker opens after five consecutive failures and probes every 30 s.
 
 ### 33.3 Expiry and leases
 
 Containment applied under a **lease** expires unless renewed by an authorised decision. Leases bound the harm of a controller that crashes or loses its policy: a forgotten isolation ends automatically, and the expiry is visible in advance. But expiry is itself an action with risk — releasing a compromised host — so the case must alert the owner before expiry.
+
+In the HVSS partition example, one lease reached its expiry while the controller could not consult the policy service. The design extended it once by 60 minutes automatically and alerted the duty manager, so a compromised workstation was not released without review. The extension is bounded, so a forgotten isolation still ends.
 
 ### 33.4 Worked example (synthetic): controller loses its policy service
 
@@ -2511,12 +2667,16 @@ Test results in staging: existing isolations persisted; one lease extended and t
 
 Monitor: breaker states, queued-action count and age, lease expiries in the next hour, and controller heartbeat. Manual override must exist, be tested, be logged and be harder to use than the normal path — never easier, or it becomes the normal path.
 
+During the 40-minute HVSS partition, these signals would show an open breaker toward the policy service and two queued isolation requests growing older. They would also show the lease that was extended and alerted. The duty manager's break-glass isolation is limited to a single host and requires retrospective approval, which keeps it harder than the normal path.
+
 ### 33.6 Errors and limits
 
 - One failure behaviour for all actions.
 - Replaying queued actions without re-checking current policy.
 - Leases that expire silently.
 - Override paths that bypass logging.
+
+The staging test of the HVSS partition shows why the second error matters most. Of the two queued isolation requests, one targeted a host that had been reassigned to another tenant during the 40 minutes. Replaying it without a policy re-check would have isolated a machine outside the case's authority. The test also confirmed that the lease extension raised an alert instead of passing silently.
 
 ### Exercises — chapter 33
 
@@ -2546,7 +2706,7 @@ After this chapter you can (1) design integration interfaces across identity, en
 
 ### 34.1 Different control planes, different rules
 
-Each platform has its own model. The identity provider (IdP) controls accounts, sessions, tokens and federation; the endpoint platform controls agents, processes and network isolation of hosts; the cloud provider controls resources, roles and keys through its API and logs actions in its audit trail. Each has its own permission model, API rate limits, eventual-consistency delays and log retention. An integration that ignores these will fail exactly under incident load.
+Each platform has its own model. The identity provider (IdP) controls accounts, sessions, tokens and federation; the endpoint platform controls agents, processes and network isolation of hosts; the cloud provider controls resources, roles and keys through its API and logs actions in its audit trail. Each has its own permission model, API rate limits, eventual-consistency delays and log retention. An integration that ignores these will fail exactly under incident load. In case C-3101 below, the cloud audit event for `CreateAccessKey` arrived 11 minutes after it happened, which is one such delay.
 
 ### 34.2 Interface design
 
@@ -2555,6 +2715,8 @@ For each integration define: the **actions** used and their permission scopes (l
 ### 34.3 Correlation
 
 A single incident spans platforms: a phished account (IdP) signs in from a new device, a process on a laptop exfiltrates data (endpoint), and an access key is created in a cloud account (cloud audit). Correlation requires entity resolution across identifiers (Chapter 22) and time alignment with known offsets and delivery delays. Cloud audit logs in particular can arrive many minutes after the event; rules that correlate on ingest time will miss or misorder.
+
+Case C-3101 in the worked example shows this risk concretely. By event time, the cloud key was created at 09:19:55, after the 09:12:04 sign-in and the 09:14:30 `rclone.exe` start. By delivery time it appears at 09:31:02, so a ten-minute correlation window on ingest time would separate it from the IdP event.
 
 ### 34.4 Worked example (synthetic): cross-platform account incident at HVSS
 
@@ -2574,6 +2736,8 @@ Validation: the trace links all three by resolved entity `person:0441`, aligns e
 - Correlating on delivery time.
 - Assuming actions take effect instantly everywhere.
 - Ignoring rate limits until the incident.
+
+The C-3101 integration in the worked example was designed against all four of these errors. It uses three separate scopes, user-admin-limited for the IdP, isolate-only for the endpoint and key-admin-limited for the cloud, rather than one powerful identity. Correlation used event times, so the 11-minute delay of the cloud audit record did not reorder the trace. Each action was confirmed by its platform's own record, and the key deactivation at 09:44 was not delivered until 09:53.
 
 ### Exercises — chapter 34
 
@@ -2607,7 +2771,7 @@ After this studio you can (1) design a recovery exercise whose success criteria 
 
 ### 35.2 Studio brief (synthetic)
 
-An HVSS client runs a regional permits portal: web front-end, application API, PostgreSQL database, identity service (federated to the client's IdP) and a message queue for notifications. Scenario: ransomware encrypted the database and application servers; the identity service is suspected but unconfirmed. Objectives: portal read-write within 8 h, at most 1 h of lost permit updates, suspect systems preserved.
+An HVSS client runs a regional permits portal: web front-end, application API, PostgreSQL database, identity service (federated to the client's IdP) and a message queue for notifications. Scenario: ransomware encrypted the database and application servers; the identity service is suspected but unconfirmed. Objectives: portal read-write within 8 h, at most 1 h of lost permit updates, suspect systems preserved. As in Lab 13, the identity service is suspect and is rebuilt first, from configuration and with new keys. The one-hour bound on lost permit updates is the RPO that the failed restore later had to meet.
 
 ### 35.3 Exercise plan
 
@@ -2628,6 +2792,8 @@ In the run, the newest database backup (02:00) failed checksum verification — 
 - Restoring before preserving evidence.
 - Fallbacks never exercised.
 - Business owners absent from acceptance.
+
+The permits-portal run avoided the first, second and fourth errors because the plan required them. Forensic snapshots of the encrypted systems came before any restore, and success meant five permit transactions completed by the business owner. The third error, an unexercised fallback, was the one the run exposed. Write-ahead log replay had never been rehearsed, and that slow step is why the run took 9.5 h instead of 8 h.
 
 ### Exercises — chapter 35
 
@@ -2666,6 +2832,8 @@ Two policies: **drop** (discard new or old events when full) or **backpressure**
 ### 36.3 Delay changes decisions
 
 Correlation rules use time windows. If they evaluate on arrival time, delayed events fall outside the window and the rule fails to fire; if they evaluate on event time, the rule must wait for late events (a *watermark*), adding latency. The trade-off is explicit: wait longer and decide later, or decide sooner and accept missed correlations — then re-evaluate when late events arrive.
+
+Lab 36 puts both sides of this trade-off in numbers. With the middle event 8 minutes late, the arrival-time span grows to 10 minutes and the rule stays silent. Evaluated on event time, the span is still 4 minutes and the rule escalates. HVSS's 10-minute watermark means such escalations can arrive up to 10 minutes later than a perfect pipeline would deliver them.
 
 ### 36.4 Worked example (synthetic): HVSS incident spike
 
@@ -2711,12 +2879,16 @@ During a 15-minute spike at 1,500 events/min against capacity 1,000/min, the dro
 
 Load tests replay recorded (sanitised) or synthetic traffic at multiples of normal rate — 2×, 5×, 10× — and measure throughput, event-time lag percentiles, loss and rule outcomes. Compare rule outcomes against the same traffic replayed at normal rate: any difference is a performance-induced detection change.
 
+For HVSS, the decisive check is that the three-event rule from Lab 36 still escalates at 5× load as it does at normal rate. Throughput alone would not show whether backpressure delays had pushed the middle event outside an arrival-time window.
+
 ### 36.6 Errors and limits
 
 - Sizing for average rather than incident peak.
 - Silent loss at buffers.
 - Correlation on arrival time.
 - Load tests that measure throughput but not detection outcomes.
+
+Lab 36 shows the consequence of each of these errors in turn. A pipeline sized for the 600 events per minute of normal traffic meets 1,500 during the spike and must either lose or delay. Under the drop policy, 5,500 events disappear unless a drop counter reports them. On arrival time, an 8-minute delay is enough to suppress the escalation. A load test that reported only the 1,000 events per minute served would have missed that changed rule outcome.
 
 ### Exercises — chapter 36
 
@@ -2756,6 +2928,8 @@ Every change to detection rules, scoring, workflow definitions, integration perm
 
 Daily: compare platform audit events of type "configuration change" with approved change records. Any change without a record is an incident about the platform — possibly an emergency fix not documented, possibly an attacker suppressing detection. Weekly: compare integration permissions in each provider against the declared scopes (Chapter 34).
 
+At HVSS, the daily comparison is what caught the R-118 exception added at 23:47 on 13 May: an audit event of type configuration change with no matching change record. Without it, the exception for `partner-mail.example` would have stayed in place well beyond its nine hours.
+
 ### 37.4 Worked example (synthetic): an unauthorised change at HVSS
 
 Reconciliation on 14 May flagged an audit event: detection rule `R-118 suspicious inbox forwarding` changed at 23:47 on 13 May by `ops-admin-2`, adding an exception for domain `partner-mail.example`. No change record existed.
@@ -2770,6 +2944,8 @@ The case was benign, but the engineering conclusion is the same as for a malicio
 - Shared operator accounts.
 - Change records without independent reconciliation.
 - Emergency exceptions without expiry.
+
+The R-118 case from 13 May contains three of these errors at once. The exception was a production console edit made under the shared `ops-admin-2` account, so only the VPN address and IdP sign-in identified the engineer. It had no expiry, and only the daily reconciliation against the independent audit log brought it to light. HVSS's fixes map one-to-one: named accounts with just-in-time elevation, emergency changes recorded within an hour, and a 24-hour auto-expiry.
 
 ### Exercises — chapter 37
 
@@ -2799,7 +2975,7 @@ After this chapter you can (1) write acceptance criteria for containment and res
 
 ### 38.1 Actions are not outcomes
 
-"Account disabled" is an action. "Attacker can no longer act as the user" is an outcome. Between them lie sessions, refresh tokens, application passwords, API keys, delegated grants, mail forwarding rules, other footholds and propagation delays. Response reports often state actions as if they were outcomes. Engineering requires that each claimed outcome has an acceptance criterion and evidence.
+"Account disabled" is an action. "Attacker can no longer act as the user" is an outcome. Between them lie sessions, refresh tokens, application passwords, API keys, delegated grants, mail forwarding rules, other footholds and propagation delays. Response reports often state actions as if they were outcomes. Engineering requires that each claimed outcome has an acceptance criterion and evidence. Lab 38 below makes the gap concrete for user `u17`: disabling the account at minute 55 leaves three tokens valid. The containment report in the worked example below shows how to separate what was done from what was achieved.
 
 ### 38.2 Acceptance criteria and negative tests
 
@@ -2851,12 +3027,16 @@ The containment report therefore states: "Account disabled at 14:55 (supported).
 
 Restoration claims combine service and security: the service meets functional acceptance (Chapter 35) and the attacker's access paths identified in the case are closed and monitored. A claim "restored to a clean state" is rarely fully supportable; prefer "restored from a backup verified clean against indicators known at time T; monitoring for 30 days".
 
+For the permits portal of Chapter 35, such a claim would name the 03:55 log-replay point and the indicators known at that time. It would also state that the backup-service credentials the intruder used had been replaced and that monitoring would continue for 30 days.
+
 ### 38.5 Errors and limits
 
 - Reporting actions as outcomes.
 - Positive tests only.
 - No monitoring window.
 - Hiding unsupported claims instead of stating them with owners.
+
+The HVSS containment report from Lab 38 avoids all four errors. It separates the disablement at 14:55 from the revocation at 15:02 rather than reporting disablement as the outcome. It relies on token-use logs for the interval between them, and it holds the claim open for a monitoring window. It also states openly that third-party grants remain unenumerated, naming the identity service manager as owner with a Friday deadline.
 
 ### Exercises — chapter 38
 
@@ -2890,7 +3070,7 @@ Playbooks describe actions in tools that change monthly: cloud commands are rena
 
 ### 39.2 Playbooks as code
 
-Store playbooks in version control with: a unique ID and **semantic version**; an accountable **owner** (a named role and person); **dependencies** (tools, APIs, permissions, contacts, other playbooks); **review date**; **triggers** for unscheduled review; and machine-checkable steps where possible (a CACAO-style structure, Chapter 31, or simple YAML). Changes go through review like code, with a changelog. Human-only steps remain text, but their dependencies are declared so that checks can test them.
+Store playbooks in version control with: a unique ID and **semantic version**; an accountable **owner** (a named role and person); **dependencies** (tools, APIs, permissions, contacts, other playbooks); **review date**; **triggers** for unscheduled review; and machine-checkable steps where possible (a CACAO-style structure, Chapter 31, or simple YAML). Changes go through review like code, with a changelog. Human-only steps remain text, but their dependencies are declared so that checks can test them. PB-CLOUD-07 in the worked example shows what the missing fields cost: v1.3 declared no CLI version and no approving role.
 
 ### 39.3 Triggers and regression tests
 
@@ -2904,12 +3084,16 @@ Playbook PB-CLOUD-07 "Contain compromised cloud access key" v1.3, last reviewed 
 
 Never delete a playbook used in past cases: auditors and investigators need to know what responders were told to do at the time. Mark deprecated, point to the replacement, remove from active indexes and record the date. Cases record the playbook version followed.
 
+PB-CLOUD-07 v1.3 follows this rule in the worked example from the previous subsection. It is marked deprecated, points to v2.0 and is gone from the responders' quick index, but it remains in history. A reviewer of a past cloud-key case can then see that responders were told to delete the key and judge their actions against that instruction.
+
 ### 39.6 Errors and limits
 
 - Playbooks without owners or review dates.
 - Contacts maintained manually in text.
 - Testing only after an incident exposes failure.
 - Deleting old versions needed for audit.
+
+PB-CLOUD-07 v1.3 shows the first three errors in this list at once. It had gone 20 months without review. Its approval step still named the abolished Infrastructure Manager because contacts lived in text rather than a directory lookup. Its broken CLI flag would have been found mid-incident if the review had not run the regression test. The v2.0 fix is a weekly pipeline test in the lab tenant, with v1.3 kept for audit.
 
 ### Exercises — chapter 39
 
@@ -2939,7 +3123,7 @@ After this lab you can (1) plan a bounded fault-injection experiment against an 
 
 ### 40.1 Fault injection as verification
 
-Fault injection deliberately introduces failures to test error handling. Chaos engineering applies the idea to running distributed systems with explicit hypotheses about steady-state behaviour ([Basiri et al., 2016](https://doi.org/10.1109/MS.2016.60)). For response systems the rule is strict: **never in production evidence or control paths without explicit authorisation and safeguards** — use an isolated environment with synthetic data, or a production-like staging copy. The experiment has a written plan: hypothesis, fault, scope, stop conditions, observations, rollback and reproducibility details.
+Fault injection deliberately introduces failures to test error handling. Chaos engineering applies the idea to running distributed systems with explicit hypotheses about steady-state behaviour ([Basiri et al., 2016](https://doi.org/10.1109/MS.2016.60)). For response systems the rule is strict: **never in production evidence or control paths without explicit authorisation and safeguards** — use an isolated environment with synthetic data, or a production-like staging copy. The experiment has a written plan: hypothesis, fault, scope, stop conditions, observations, rollback and reproducibility details. Lab 40 below follows that rule by simulating the outage entirely in code.
 
 ### 40.2 Plan for this lab
 
@@ -2995,6 +3179,8 @@ design O, long outage: stored 60/60 lost 0 left 0 stop=45
     t=45 store back; outbox flushed
 ```
 
+The lab runs a 60-minute simulation, producing one evidence record per minute and making the evidence store unavailable from minute 20 to minute 35. Design N writes each record straight to the store and loses whatever arrives while the store is down. Design O appends to a local outbox, flushes it whenever the store is reachable, and counts any key it writes twice. A third run stretches the outage to minute 70 so that the outbox crosses its limit of 25 records and the stop condition fires. Because the simulation uses no randomness, the expected output below is reproduced exactly on every run.
+
 ### 40.4 Comparing with claims
 
 Design N loses exactly the 15 records produced during the outage: the claim that N is unsafe is confirmed. Design O stores all 60 records with no loss and flushes its outbox when the store returns at minute 35: the claim holds for a 15-minute outage. In the long-outage variant, the outbox reaches the stop threshold at minute 45; the stop condition fires, the store is restored and all 60 records are eventually stored. This demonstrates the stop condition but also exposes an untested assumption: in a *real* long outage nobody can "restore the store" on demand. The design therefore needs a second-tier behaviour — spill the outbox to durable local disk and alert operators — and a new experiment to verify it. Fault injection's most valuable output is often a claim you discover you had not tested.
@@ -3003,12 +3189,16 @@ Design N loses exactly the 15 records produced during the outage: the claim that
 
 Report: environment, versions, parameters, seed (if random), timeline of fault and observations, results against each hypothesis, deviations from plan, and follow-up actions. Store the experiment definition in version control so the same test can be rerun after changes (regression) — the basis of the trial in Chapter 47. [Sandve et al. (2013)](https://doi.org/10.1371/journal.pcbi.1003285) give simple rules for reproducible computational work that transfer directly.
 
+For Lab 40, the report would record the outage window of minutes 20–35 and the stop limit of 25 records. It would show the 45/60 and 60/60 results for designs N and O, and list the deviation that matters. The long-outage stop condition at minute 45 assumed the store could be restored on demand, and spilling to durable disk becomes the follow-up experiment.
+
 ### 40.6 Errors and limits
 
 - Injecting faults in production without authorisation and stop conditions.
 - No hypothesis written before the run.
 - Stop conditions that assume capabilities unavailable in real failures.
 - Simulations taken as proof of real-system behaviour without staging tests.
+
+Lab 40 itself shows the third and fourth errors in this list. Its stop condition "restores the store" at minute 45, something no operator can do during a real long outage, and the run looks clean only because of that. The 60/60 result for design O comes from a deterministic simulation. It must be repeated against the staging copy of the workflow service before anyone states the claim for the real system.
 
 ### Exercises — chapter 40
 
@@ -3040,13 +3230,17 @@ After this chapter you can (1) express a response-policy choice as a multi-objec
 
 "Mean time to contain" rewards aggressive containment; it does not count the disruption caused by false or excessive actions, the analyst effort, or the cost of letting an attacker persist. A response policy is a choice among alternatives with several consequences. Make them explicit: expected **business disruption**, probability of **attacker persistence**, **analyst effort**, **evidence loss**, and constraints that are not tradable (safety, legal obligations).
 
+The three HVSS containment policies in Lab 41 show the problem clearly. Judged by containment speed alone, `isolate_immediately` would win outright for every asset. Its six expected hours of business disruption per incident, against half an hour for `monitor_then_contain`, are invisible to a time-to-contain metric.
+
 ### 41.2 Decision tables and weights
 
-With consequences measured or modelled per alternative, a simple approach is a weighted cost: convert each consequence to a common unit by an exchange rate — for example, how many hours of business disruption is one percentage point of persistence probability worth? Exchange rates are value judgements owned by accountable people, not by the engineer. The engineer's job is to make the dependence of the choice on these judgements visible. Constraints filter alternatives before weighting.
+With consequences measured or modelled per alternative, a simple approach is a weighted cost: convert each consequence to a common unit by an exchange rate — for example, how many hours of business disruption is one percentage point of persistence probability worth? Exchange rates are value judgements owned by accountable people, not by the engineer. The engineer's job is to make the dependence of the choice on these judgements visible. Constraints filter alternatives before weighting. In Lab 41, the exchange rates are `c_persist = 60` and `c_analyst = 0.5`, each expressed in disruption-hour equivalents.
 
 ### 41.3 Sensitivity
 
 **One-at-a-time** sensitivity varies one parameter across a plausible range; **switching values** are the parameter values where the preferred option changes. When a switching value lies inside the plausible range, the decision is fragile and the parameter deserves better measurement. Global methods consider several parameters together ([Saltelli et al., *Global Sensitivity Analysis: The Primer*, 2008](https://doi.org/10.1002/9780470725184)).
+
+In Lab 41, the switching value between immediate isolation and isolate-after-review is exactly 50. At that value both cost 8.50, since 6 + 0.02c + 1.5 equals 2.5 + 0.08c + 2 when c = 50. The baseline of 60 is close to that boundary, so the persistence weight deserves better measurement.
 
 ### 41.4 Worked example (synthetic): three containment policies at HVSS
 
@@ -3082,11 +3276,13 @@ sweep cost of persistence (disruption-hour equivalents):
    from c_persist= 50: isolate_immediately
 ```
 
-At the baseline exchange rate (one unit of persistence probability valued at 60 disruption-hour equivalents), immediate isolation is cheapest, narrowly ahead of isolate-after-review (8.70 vs 9.30). The sweep shows the switching values: below 10 monitoring-then-containing wins; between 10 and 50, isolate-after-review; above 50, immediate isolation. The baseline (60) lies just above a switching value: a modest disagreement about the value of persistence reverses the choice. Two consequences for HVSS: (1) the decision was escalated to the service owners and the CISO with the switching value shown, not presented as an engineering result; (2) the parameter with most influence — persistence probability under review delay — was measured in the next exercise rather than assumed. The owners chose isolate-after-review for servers (where disruption is costlier, raising the effective disruption weight) and immediate isolation for workstations.
+At the baseline exchange rate (one unit of persistence probability valued at 60 disruption-hour equivalents), immediate isolation is cheapest, narrowly ahead of isolate-after-review (8.70 vs 9.30). The sweep shows the switching values: below about 5.9 monitoring-then-containing wins (the sweep, in steps of 5, first shows the change at 10); between about 5.9 and 50, isolate-after-review; above 50, immediate isolation. The baseline (60) lies just above a switching value: a modest disagreement about the value of persistence reverses the choice. Two consequences for HVSS: (1) the decision was escalated to the service owners and the CISO with the switching value shown, not presented as an engineering result; (2) the parameter with most influence — persistence probability under review delay — was measured in the next exercise rather than assumed. The owners chose isolate-after-review for servers (where disruption is costlier, raising the effective disruption weight) and immediate isolation for workstations.
 
 ### 41.5 Presenting decisions
 
 Present: alternatives, consequences with uncertainty, constraints, exchange rates and their owners, the choice at baseline, switching values, and what measurement would reduce the uncertainty. One page, one chart of the sweep.
+
+For the HVSS choice, that page showed the three policies with baseline costs 8.70, 9.30 and 18.50, and the CISO and service owners as owners of the exchange rates. It also showed the switching value of 50 against the baseline of 60. The measurement it proposed was persistence probability under review delay. Owners can then disagree about the exchange rate while still seeing exactly what their disagreement changes.
 
 ### 41.6 Errors and limits
 
@@ -3094,6 +3290,8 @@ Present: alternatives, consequences with uncertainty, constraints, exchange rate
 - Engineers silently choosing exchange rates.
 - Point estimates without sensitivity.
 - Models treated as data.
+
+The HVSS analysis avoided each error, which is why its recommendation reached the owners in a usable form. Mean time to contain would have favoured immediate isolation for every asset. The exchange rate of 60 was shown to the service owners and CISO rather than fixed quietly by the engineer. The sweep exposed how close the baseline lay to a switch, and the persistence probabilities were treated as synthetic model outputs to be measured.
 
 ### Exercises — chapter 41
 
@@ -3123,7 +3321,7 @@ After this chapter you can (1) formulate a testable claim about where a designed
 
 ### 42.1 Limit claims
 
-A **limit claim** has the form: "Under conditions C, property P of the system holds while parameter X stays within range R, and fails beyond it." Example: "With independent loss of telemetry, case classification based on 2-of-3 corroborating signals stays at or above 90% accuracy while the missing rate per signal is at most about 20%." The claim is useful because it can be monitored: if a source's missing rate exceeds the limit, the operators know conclusions have become unreliable.
+A **limit claim** has the form: "Under conditions C, property P of the system holds while parameter X stays within range R, and fails beyond it." Example: "With independent loss of telemetry, case classification based on 2-of-3 corroborating signals stays at or above 90% accuracy while the missing rate per signal is at most about 20%." The claim is useful because it can be monitored: if a source's missing rate exceeds the limit, the operators know conclusions have become unreliable. Lab 42 below tests exactly this example and places the limit at 0.196.
 
 ### 42.2 Experiment design
 
@@ -3168,7 +3366,7 @@ missing  accuracy(mean of 5 seeds)  min..max   analytic
 limit: accuracy >= 0.9 holds while missing rate <= 0.196 (independent-loss assumption)
 ```
 
-The simulated means track the analytic curve $q^3 + 3q^2(1-q)$ with $q = 1 - m$, which verifies the simulation code against the model. Accuracy stays above 0.9 while the missing rate is at most about 0.196. The spread across seeds (for example 0.863–0.912 at $m = 0.2$ with 400 cases per run) shows that a single run near the limit could fall on either side — a reason to report the limit with uncertainty and to monitor with margin, say alerting at 15% missing.
+The simulated means track the analytic curve $q^3 + 3q^2(1-q)$ with $q = 1 - m$, which verifies the simulation code against the model. Accuracy stays above 0.9 while the missing rate is at most about 0.196. The spread across seeds (for example 0.863–0.912 at $m = 0.2$ with 400 cases per run) shows that a single run near the limit could fall on either side — a reason to report the limit with uncertainty and to monitor with margin, say alerting at 15% missing. Each point in the table rests on 5 seeds of 400 cases, so 2,000 simulated cases per missing rate.
 
 ### 42.4 External validity
 
@@ -3178,12 +3376,16 @@ The result rests on **independent** losses. Real losses are correlated: one coll
 
 Publish within the organisation: code, parameters, seeds, the analytic check, raw results and the analysis plan. Another engineer should reproduce the table exactly. Pre-specifying the analysis protects against picking the most favourable presentation ([Nosek et al., 2018](https://doi.org/10.1073/pnas.1708274114)).
 
+For Lab 42, that means publishing the five seeds 0–4, the 400 cases per run and the analytic formula $q^3 + 3q^2(1-q)$. The bisection that produced 0.196 and the plan written before the run should be published with them. Another HVSS engineer can then rerun the code and reproduce the table digit for digit.
+
 ### 42.6 Errors and limits
 
 - Limit claims without stated conditions.
 - Simulation without verification against an analytic or reference case.
 - Ignoring correlation structure.
 - Single-run results presented as the limit.
+
+The Lab 42 result illustrates how each of these errors would distort it. Stated as "telemetry loss up to 20% is fine", it drops the independence condition on which it rests. Without the analytic column, a bug in `trial` could pass unnoticed. Under fully correlated loss the 90% limit falls from about 19.6% to 10% missing. A single seed at m = 0.2 could have reported anything from 0.863 to 0.912, on either side of the target.
 
 ### Exercises — chapter 42
 
@@ -3223,6 +3425,8 @@ A scope agreement states: objectives; systems and data in and out of scope; meth
 
 During the exercise, an observer records a timeline: injects, decisions, tool use, delays, workarounds and questions. Afterwards, a structured debrief collects participants' views — what helped, what hindered, what was missing — without blame. Observations are linked to the engineering artefacts: requirements, workflows, playbooks, dashboards.
 
+In the ambulance-dispatch exercise, observation (1) is linked to the approval workflow: 34 minutes were lost because no escalation path existed. Observation (3) is linked to the credential-rotation playbook, which had never been tested against the staging account's permissions. Linking each observation to a named artefact is what lets it become an owned change rather than a remark.
+
 ### 43.4 Worked example (synthetic): a public-service operator
 
 A **synthetic** regional ambulance-dispatch support organisation agreed a 3-hour functional exercise in its staging environment, simulating compromise of a scheduling integration account. Scope: staging tenant only; synthetic records; response staff from IT and the dispatch operations manager; stop condition: any indication that staging is connected to live dispatch systems — checked before start by the host's engineer. Safeguards: the exercise director could halt at any time; no live systems contacted; observation notes anonymised by role.
@@ -3235,6 +3439,8 @@ Observations: (1) the containment approval required the IT manager, who was in a
 - Scope agreements without stop conditions or data handling.
 - Observations recorded with names where roles suffice.
 - Feedback that never becomes owned changes.
+
+The ambulance-dispatch exercise in the worked example was built to avoid each error. It ran only in the staging tenant with synthetic records, and before the start the host's engineer checked the stop condition: no connection to live dispatch systems. Observation notes were anonymised by role, so no individual was named in the record. Each of the four changes received an owner and due date, and two were verified a month later in a follow-up exercise.
 
 ### Exercises — chapter 43
 
@@ -3264,19 +3470,21 @@ After this chapter you can (1) scope a capstone response system that is buildabl
 
 ### 44.1 Capstone brief (synthetic)
 
-Build a case-intake and evidence-preservation service for a **synthetic** multi-service organisation (the HVSS model or your own, clearly labelled). Minimum scope: ingest from at least two synthetic sources with different identifiers; validation and quarantine; content-addressed evidence store with anchored manifest; case workflow with approval gate, timeout escalation and audit trail; one scoped containment action against a simulated target with dry run and reversal; metrics for latency, completeness and integrity. Out of scope: real systems, real data, production deployment.
+Build a case-intake and evidence-preservation service for a **synthetic** multi-service organisation (the HVSS model or your own, clearly labelled). Minimum scope: ingest from at least two synthetic sources with different identifiers; validation and quarantine; content-addressed evidence store with anchored manifest; case workflow with approval gate, timeout escalation and audit trail; one scoped containment action against a simulated target with dry run and reversal; metrics for latency, completeness and integrity. Out of scope: real systems, real data, production deployment. Each scope item corresponds to an earlier lab, from the Lab 4 quarantine and Lab 19 manifest to the Lab 31 workflow.
 
 ### 44.2 Design dossier
 
-The dossier contains: context and constraints (Chapter 20); requirements and service objectives with IDs (Chapter 21); data model and lineage (Chapter 22); threat and failure analysis with cut sets (Chapter 23); architecture with planes, zones and interfaces (Chapters 18, 26); control designs (Chapter 27); verification plan mapping every requirement to a test (Chapters 30, 40); operations sketch (Chapter 37); risk register; and a traceability matrix. Keep it concise and current; it is a working document, versioned with the code.
+The dossier contains: context and constraints (Chapter 20); requirements and service objectives with IDs (Chapter 21); data model and lineage (Chapter 22); threat and failure analysis with cut sets (Chapter 23); architecture with planes, zones and interfaces (Chapters 18, 26); control designs (Chapter 27); verification plan mapping every requirement to a test (Chapters 30, 40); operations sketch (Chapter 37); risk register; and a traceability matrix. Keep it concise and current; it is a working document, versioned with the code. In the HVSS-style extract below, risk entry K4 shows how the dossier and the thesis connect.
 
 ### 44.3 Scoping for buildability
 
 A capstone fails more often from scope than from difficulty. Use a **walking skeleton**: the thinnest end-to-end path — one source, one validation rule, one stored item, one case, one approval, one action — working and tested in the first weeks; then widen. Track dependencies explicitly; anything external (a cloud account, a mock IdP) is a risk with an owner and a fallback (a local stub).
 
+For the HVSS-style capstone, the walking skeleton is one synthetic identity-provider feed and the Lab 4 severity rule. It continues through one content-addressed item, one case through the approval gate, and one dry-run disable of a simulated account. The mock IdP is the obvious external dependency, which is why risk K4 names it.
+
 ### 44.4 Implementation discipline
 
-Version control from day one; reproducible environment (pinned dependencies, a script that builds from scratch); synthetic data generators with seeds; tests run on every change; no secrets in the repository; changes linked to requirement IDs in commit messages. The [SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) practices scale down to a student project: protect the build, review changes, record provenance of dependencies.
+Version control from day one; reproducible environment (pinned dependencies, a script that builds from scratch); synthetic data generators with seeds; tests run on every change; no secrets in the repository; changes linked to requirement IDs in commit messages. The [SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) practices scale down to a student project: protect the build, review changes, record provenance of dependencies. In the HVSS-style capstone, a commit fixing AT-02b would therefore name R2 in its message, so the week-8 traceability check can see which requirement a change touched.
 
 ### 44.5 Worked example: an HVSS-style capstone extract
 
@@ -3290,6 +3498,8 @@ Traceability check at week 8 found three requirements without tests (R9 retentio
 - Dossier written at the end.
 - Untraceable tests and untested requirements.
 - External dependencies without fallbacks.
+
+The week-8 traceability check in the HVSS-style extract found the third error twice. R9, R11 and R14 had no tests, and the performance smoke tests had no requirement until one was written. Finding that at week 8 rather than at the end is the case for a living dossier. Risk K4 shows the fourth error being avoided, because the mock IdP is recorded with an owner, a mitigation and a stated limit on validity.
 
 ### Exercises — chapter 44
 
@@ -3319,7 +3529,7 @@ After this chapter you can (1) prepare a claim-evidence matrix for independent r
 
 ### 45.1 Why independent review
 
-Designers see the system they intended. Independent reviewers see the system that exists. Review is most valuable before a trial is interpreted as success, because it can reveal that the trial would not test the claims that matter. Independence means the reviewer did not design or build the component, is not managed by the person whose work is reviewed, and has access to everything needed — code, dossier, environment.
+Designers see the system they intended. Independent reviewers see the system that exists. Review is most valuable before a trial is interpreted as success, because it can reveal that the trial would not test the claims that matter. Independence means the reviewer did not design or build the component, is not managed by the person whose work is reviewed, and has access to everything needed — code, dossier, environment. Finding F2 in the review below is the case in point: AT-02b passed only because its mocked clock never reached the escalation branch.
 
 ### 45.2 Claim-evidence matrix and assurance cases
 
@@ -3333,6 +3543,8 @@ A **claim-evidence matrix** lists each claim (from requirements and from the des
 - Are assumptions (threat model, independence, provider behaviour) stated and justified?
 - Are results reproducible from the repository?
 - Are safety constraints (Chapter 10) represented as tests?
+
+Applied to the HVSS-style capstone, the second question produced finding F5: "complete audit trail" was offered with no reconciliation job behind it. The third produced F4, where cross-tenant denial had been tested on reads but never on containment.
 
 ### 45.4 Worked example (synthetic): review of an HVSS-style capstone
 
@@ -3352,12 +3564,16 @@ Each high finding was reproduced by the student before fixing — reproduction c
 
 Classify findings by severity (does it invalidate a safety or security claim?), effort and dependency. Fix high-severity findings before the trial; otherwise qualify the claim. Record disagreements: if the designer disputes a finding, both views go into the record with the decision and decision-maker.
 
+In the HVSS-style review, F1, F2 and F4 were high severity and were fixed before the trial. F5 was medium and was handled by qualifying the claim to cover workflow transitions only. F3 was medium and was rerun with 10,000 events.
+
 ### 45.6 Errors and limits
 
 - Reviewers who helped build the system.
 - Fixing findings without reproducing them.
 - Claims left unchanged when evidence is insufficient.
 - Review after the trial, when results are already interpreted.
+
+The two-reviewer HVSS-style review in the worked example avoided each of these errors. Neither of its two reviewers had designed or built any part of the capstone. Every high finding was reproduced before it was fixed, which in F2 also uncovered a real defect in escalation. Claims F1 and F5 were narrowed rather than left standing, and the review came before the trial, so results were never read against claims that had not been examined.
 
 ### Exercises — chapter 45
 
@@ -3387,19 +3603,25 @@ After this chapter you can (1) write a trial protocol for a capstone response sy
 
 ### 46.1 Trial protocol
 
-A trial is a planned set of scenarios run against the built system with measurement. The protocol states: scenarios and their parameters (telemetry completeness, approval delay, volume); success criteria per requirement; instrumentation; number of runs and seeds; who plays which role (approvers can be students acting from scripts); stop conditions; and how results will be analysed. Pre-specify it — the discipline of Chapter 29 applies.
+A trial is a planned set of scenarios run against the built system with measurement. The protocol states: scenarios and their parameters (telemetry completeness, approval delay, volume); success criteria per requirement; instrumentation; number of runs and seeds; who plays which role (approvers can be students acting from scripts); stop conditions; and how results will be analysed. Pre-specify it — the discipline of Chapter 29 applies. The HVSS-style trial below fixes these in advance: six scenarios, five seeded runs each, synthetic ground truth.
 
 ### 46.2 Scenarios for response systems
 
 Vary the conditions that stress the design: (S1) normal — complete telemetry, prompt approval; (S2) degraded telemetry — one source 20% missing, another delayed 8 minutes; (S3) approval delay — primary approver silent, deputy responds at 40 minutes; (S4) volume spike — 5× normal events for 15 minutes; (S5) dependency failure — evidence store unavailable for 10 minutes; (S6) adversarial input — conflicting record IDs and a forged tenant claim. Each scenario has synthetic ground truth so outcomes can be scored.
 
+Several of these scenarios reuse earlier labs, now run at the scale of a whole system. S2's 8-minute delay is the delay that silenced the arrival-time rule in Lab 36, and S5 repeats the Lab 40 outage in shorter form. S6 combines the conflicting record IDs of Lab 30 with the forged claim of AT-07.
+
 ### 46.3 Instrumentation
 
 Measure from the system's own records: event, ingest and queue timestamps; workflow transitions; action effects; manifest verification results; invariant checks; resource use. Instrumentation is part of the design: if a requirement cannot be measured from the system's records, either add instrumentation or rewrite the requirement.
 
+In the HVSS-style trial, defect D3 was found because event-time lag p99 could be computed from ingest and queue timestamps. Without them, the 11-minute lag in S4 would have been invisible. Those timestamps are the same fields defined in the event schema of Chapter 22, now used as trial instruments.
+
 ### 46.4 Defects and prioritisation
 
 Classify each defect by the requirement affected, severity (safety/security claim broken, objective missed, cosmetic), reproducibility and root cause (design, implementation, configuration, test). Prioritise safety and security first, then objectives, then usability. Each fix gets a regression test and a **change-impact analysis**: which requirements, interfaces and tests could the change affect? Rerun those tests, not only the one that failed.
+
+In the HVSS-style trial, D2 is classified first even though it appeared in only one run: an action executed twice breaks a safety claim. Its fix, per-case serialisation with an idempotency key, triggered reruns of workflow and controller tests.
 
 ### 46.5 Worked example (synthetic): an HVSS-style trial
 
@@ -3413,6 +3635,8 @@ Iteration 2 reran all scenarios after fixes: all criteria met except S4 at 10× 
 - Rerunning only the failed test after a fix.
 - Defects closed without regression tests.
 - Results from one run per scenario.
+
+The HVSS-style trial in the worked example was designed against each of these errors. S6 was deliberately adversarial, with a forged tenant claim and conflicting record IDs. After fixing D1, the team reran S1 and AT-01 as well as S2, because the watermark changes R1 latency. Each fix gained a regression test before its defect was closed. Five seeded runs per scenario are why D2 surfaced at all, since it appeared in just one of them.
 
 ### Exercises — chapter 46
 
@@ -3444,9 +3668,13 @@ After this chapter you can (1) design a recovery trial around a recorded failure
 
 Chapter 40 injected faults to test error handling. A recovery trial tests the whole recovery claim: after failure F during activity A, the system returns to state S within time T with data loss at most L, and evidence integrity holds. It is run with recorded inputs so that the result can be reproduced and compared across design versions.
 
+In the worked example below, F is a corrupted evidence-store volume at minute 25 and A is case C-9 receiving 600 items. T is 30 minutes and L is zero items.
+
 ### 47.2 Reproducible inputs
 
 Publish (within the course or organisation): seed data generator and seed; the event sequence (or generator parameters); restore points (backup snapshots with hashes); the failure script (what fails, when, how); environment definition (container images or setup script with pinned versions); and the analysis script. Another person running the package should obtain the same measurements, within stated tolerance for timing.
+
+For the C-9 trial, the package would contain the item generator with seeds 1–10, the minute-0 snapshot with its hash and the script that deletes the store's data directory at minute 25. It would also include the analysis script that computes median and maximum recovery time and counts lost items per seed.
 
 ### 47.3 Worked example (synthetic): evidence-store failure during an active case
 
@@ -3464,9 +3692,13 @@ Residual risk stated: snapshot at minute 0 means replay depends on raw archive i
 
 Report a table: objective, measured value (median, worst, count of failures), met / not met, notes. "Met in 9 of 10 runs" is not "met"; it is a defect to fix or a limit to state.
 
+For the C-9 trial before the fix, that table would show recovery time with a median of 18 min and a worst case of 24 min, met. Items lost would read 0 in 9 runs and 3 in seed 7, not met, which is why the write-behind change was required before the claim could stand.
+
 ### 47.5 Reproducibility check
 
 Ask a peer to run the published package. Differences reveal hidden dependencies — an unpinned library, a local configuration file, timing assumptions. [Stodden et al. (2016)](https://doi.org/10.1126/science.aah6168) argue for sharing data, code and workflows so computational results can be verified; the same applies to engineering trials.
+
+For the C-9 trial, the most likely difference between machines is timing: the 40-second health-detection window behind the seed-7 loss. A peer run with a different detection interval could lose more or fewer items, which is why the package must state the tolerance for timing.
 
 ### 47.6 Errors and limits
 
@@ -3474,6 +3706,8 @@ Ask a peer to run the published package. Differences reveal hidden dependencies 
 - Inputs not published or not pinned.
 - "Mostly met" reported as met.
 - Residual common causes left unstated.
+
+The C-9 trial in the worked example shows why each of these errors matters. A single run with any seed other than 7 would have reported zero loss and hidden the health-detection race. Without published seeds, nobody could rerun seed 7 to confirm the write-behind fix. Reporting zero loss "in most runs" would have shipped the race, and the trial named its common cause: the raw archive shares the storage cluster with the evidence store.
 
 ### Exercises — chapter 47
 
@@ -3503,7 +3737,7 @@ After this chapter you can (1) assemble a verifiable evidence dossier that maps 
 
 ### 48.1 Purpose
 
-The evidence dossier answers one question for each requirement: *what evidence shows that the built system satisfies it, and how strong is that evidence?* It is the engineering counterpart of an audit file: someone who did not build the system should be able to verify the claims from the dossier and the repository alone.
+The evidence dossier answers one question for each requirement: *what evidence shows that the built system satisfies it, and how strong is that evidence?* It is the engineering counterpart of an audit file: someone who did not build the system should be able to verify the claims from the dossier and the repository alone. In the extract below, a reviewer can follow R1 to load test LT-3 and commit a41f… and rerun it without asking the student. Where that verification fails, the dossier entry is the place to say so plainly.
 
 ### 48.2 Structure
 
@@ -3518,6 +3752,8 @@ Artefacts are identified by hash and stored immutably for the dossier's version,
 ### 48.3 Standards for "adequate proof"
 
 Evidence is adequate when it tests the requirement as stated (not a weaker version), under representative conditions, reproducibly, and when negative cases are covered where the requirement is a prohibition. A requirement verified only by a demonstration once, or only by a unit test of a component, may be "verified" in form but not in substance. Mark such cases explicitly.
+
+In the dossier extract below, R9 shows the difference between form and substance. The retention configuration was inspected and a simulated-time test passed, but 400 days of real behaviour could not be observed in the project. The status is therefore "met with exception E1", not "met". R7, a prohibition, counts as adequate only because AT-07c tests denial of containment as well as reads.
 
 ### 48.4 Worked example (synthetic): dossier extract
 
@@ -3542,6 +3778,8 @@ Sign-off: two independent reviewers reviewed R1–R16; conditions: R11 and R15 t
 - Exceptions buried in prose.
 - Hiding unverified requirements.
 - Sign-off by people who built the system.
+
+The dossier extract shows the honest alternative to each error. R1's "met" links to LT-3 with three runs and a commit hash. E1 is its own entry with a disposition, not a footnote. R11 is shown as **not verified** and R15 as **not met** with defect D9 open. The sign-off names two reviewers independent of the build, with conditions on R11 and R15.
 
 ### Exercises — chapter 48
 
@@ -3571,7 +3809,7 @@ After this chapter you can (1) structure an engineering thesis that links design
 
 ### 49.1 What an engineering thesis is
 
-An engineering thesis explains a designed and built system and what was learned by measuring it. Its contribution is a justified design with evidence of how it performs and where it fails — not an original theory (the doctoral task) or a single empirical study of practice (the master's dissertation). Readers should come away able to reuse the design decisions that worked, avoid those that did not, and know the conditions under which the results hold.
+An engineering thesis explains a designed and built system and what was learned by measuring it. Its contribution is a justified design with evidence of how it performs and where it fails — not an original theory (the doctoral task) or a single empirical study of practice (the master's dissertation). Readers should come away able to reuse the design decisions that worked, avoid those that did not, and know the conditions under which the results hold. In the HVSS-style capstone, the reusable decisions include the write-behind outbox (DD-4) and its limit under gradual storage degradation.
 
 ### 49.2 Structure
 
@@ -3585,13 +3823,19 @@ An engineering thesis explains a designed and built system and what was learned 
 8. **Limits and future work**.
 9. **Appendices**: dossier summary (Chapter 48), reproduction package (Chapter 47).
 
+In the DD-4 extract below, results under item 6 compare against Lab 40 design N as baseline, and the limit to abrupt failures belongs under item 8.
+
 ### 49.3 Baselines and attribution
 
 A result means something only relative to a baseline: the system without the design feature (e.g., direct writes vs outbox), a simpler design, or a published reference. Attribute outcomes to decisions cautiously — several changes made between trial iterations confound attribution; ablation (removing one feature at a time) separates them.
 
+The DD-4 extract in the worked example below follows this advice. Its baseline is Lab 40's design N, which loses 15 items per 15-minute outage. It then reports an ablation with fix D11 alone, without the outbox, which lost items in every run, so the improvement cannot be credited to D11 by itself.
+
 ### 49.4 Uncertainty and validity
 
 Report distributions and intervals. Discuss **internal validity** (could something other than the design explain the result? e.g., synthetic traffic too regular), **construct validity** (do the measures capture the requirement? e.g., queue latency vs time to informed decision), and **external validity** (would results hold with real providers, real staff, real attack patterns?). The synthetic and mocked nature of a capstone is a limit to state, not to hide.
+
+In the DD-4 extract, the external-validity threat is named directly: the mock store fails abruptly, while real storage often degrades gradually. The claim about the outbox is therefore limited to abrupt storage failure. In DD-7, precision measured per batch window did not capture the requirement for slow-burn cases, which is a construct-validity limit.
 
 ### 49.5 Worked example (synthetic): results and discussion extract
 
@@ -3605,6 +3849,8 @@ Report distributions and intervals. Discuss **internal validity** (could somethi
 - Results without baseline or uncertainty.
 - Attributing outcomes to one decision when several changed.
 - Omitting failures.
+
+The two extracts in the worked example avoid all four errors. DD-4 is reported against a baseline and an ablation, with the one seed in ten that lost three items stated openly. DD-7 is presented with its failure on two slow-burn cases, turned into a limit of batch-window grouping and a proposal for rolling windows. A thesis that reported only DD-7's improved precision would commit the last error.
 
 ### Exercises — chapter 49
 
@@ -3634,7 +3880,7 @@ After this chapter you can (1) present a response system's design rationale and 
 
 ### 50.1 What the defense tests
 
-The panel tests whether the engineer understands the system well enough to explain why it is built as it is, what evidence supports each claim, what alternatives were rejected and why, and where the system will fail. It is not a sales pitch. A strong defense makes its limits visible before the panel finds them.
+The panel tests whether the engineer understands the system well enough to explain why it is built as it is, what evidence supports each claim, what alternatives were rejected and why, and where the system will fail. It is not a sales pitch. A strong defense makes its limits visible before the panel finds them. In the exchange below, the candidate makes limit L6 visible before the panel finds it. The panel will probe most where the dossier lists exceptions, open defects and not-verified items.
 
 ### 50.2 Preparing
 
@@ -3661,12 +3907,16 @@ A counterexample is a scenario in which a claim appears to fail. Four honest res
 
 The panel's required revisions go into a register: item, source question, required change or evidence, owner, due date, verification. Closing the register — with evidence, not assertion — completes the capstone. Optional recommendations are recorded separately.
 
+In the exchange below, a revision could ask for performance evidence at hundreds of tenants under R17. Its register entry would name the tenant-scale question as the source, a load test as the required evidence, and an owner with a due date. A revision that changes a claim must also update the dossier entry that supported it.
+
 ### 50.6 Errors and limits
 
 - Defending every claim as unconditional.
 - Answering beyond the evidence.
 - Hiding not-met requirements until asked.
 - Revisions accepted verbally and never verified.
+
+The worked exchange shows the candidate avoiding the first three errors. The partition answer qualifies the claim with the 60-minute lease extension and concedes limit L6. The tenant answer separates what inspection and tests up to 50 tenants show from performance at hundreds, which is listed as not verified under R17. Any panel revision on R17 must close with a measured result, not an oral promise.
 
 ### Exercises — chapter 50
 
