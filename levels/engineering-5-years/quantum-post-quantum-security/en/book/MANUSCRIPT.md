@@ -51,6 +51,8 @@ Taking log₂ of a work factor gives "bits of security". A cost of 2^128 operati
 
 "Big-O" statements describe behaviour as input size tends to infinity and hide constants. Shor's *n*³ hides a large constant and, more importantly, the overhead of quantum error correction, which may multiply physical qubit counts by a thousand or more. Resource estimates such as [Gidney (2025)](https://arxiv.org/abs/2505.15917) — under one million noisy qubits for RSA-2048 under stated hardware assumptions — fill in those constants. An engineer must never read an asymptotic bound as a time.
 
+Two algorithms with the same big-O can differ by factors that decide whether an attack takes an hour or a decade. The jump from twenty million noisy qubits to under a million came from better constants and codes, not from a change in Shor's n³. When a vendor quotes an asymptotic bound, the engineer asks for the hardware assumptions behind the constant.
+
 ### 1.4 Practical activity — Lab G
 
 ```python
@@ -83,15 +85,21 @@ Factoring an n-bit RSA modulus: classical GNFS (heuristic) vs Shor gate count ~n
 
 The GNFS formula is heuristic (its *o*(1) term is dropped), so the bit values approximate the commonly quoted 112-bit strength of RSA-2048 rather than match it. The Shor "gate counts" are logical gates before error correction.
 
+The lab's comparison exists to make the shapes visible side by side: brute force doubles per bit, GNFS bends more slowly, and Shor's logical gate count grows only polynomially. Running it for 1024, 2048 and 3072-bit moduli shows why longer RSA keys buy little against a quantum adversary. Students should annotate their table with the warning that the Shor column omits error-correction overhead, so no row should be read as a time to break.
+
 ### 1.5 Worked example: BPA's first question
 
 BPA's board asks whether to double AES key sizes "because of quantum". Using 1.1: AES-128 under Grover falls to roughly 2^64 sequential iterations in the idealized model, but Grover parallelizes poorly, so many guidance documents still accept AES-128; moving bulk encryption to AES-256 is cheap and removes the debate. The urgent item is not AES but every RSA and elliptic-curve key exchange, which Shor breaks outright.
+
+The memo to BPA's board therefore separates two decisions. Symmetric keys move to AES-256 during normal refresh, at almost no cost. Key exchange and signatures need a planned migration to ML-KEM and ML-DSA, because no key length rescues RSA or elliptic curves from Shor. Mixing the two questions is how boards spend money on the cheap fix and delay the important one.
 
 ### 1.6 Common errors and limits
 
 - Treating Grover as fatal to symmetric cryptography.
 - Reading *O*(*n*³) as "fast" without error-correction overhead.
 - Comparing bits across exponential and sub-exponential curves as if they grew alike.
+
+Each error leads to a wrong decision. Treating Grover as fatal sends budget to symmetric upgrades that were already adequate. Reading n³ as fast ignores the physical qubits needed for each logical one. Comparing bit numbers across different growth curves makes RSA-3072 look stronger against quantum attack than it is. The models in this chapter compare options; they are not schedules.
 
 ### Exercises
 
@@ -117,6 +125,8 @@ You will (1) compute in modular arithmetic and polynomial rings; (2) explain the
 ### 2.1 Modular arithmetic
 
 Arithmetic modulo *q* keeps numbers in {0, …, *q*−1}. RSA uses a composite modulus; elliptic-curve cryptography uses groups of points over a prime field. Both rely on the hardness of finding a hidden *period* — the order of an element, or a discrete logarithm. Shor's insight is that a quantum computer can find periods efficiently with the quantum Fourier transform; that is why every scheme whose security reduces to a hidden period in an abelian group falls together.
+
+This shared weakness is why migration cannot be done one algorithm at a time by swapping RSA for elliptic curves: both fall to the same idea. Post-quantum schemes are chosen precisely because their hard problems, such as noisy linear equations or hash inversion, have no known hidden period for a quantum computer to find.
 
 ### 2.2 Polynomial rings
 
@@ -152,19 +162,27 @@ a*a  = [6, 4, 12, 6]
 
 Check by hand: (1 + 2*x* + 3*x*³)·*x* = *x* + 2*x*² + 3*x*⁴ = *x* + 2*x*² − 3 ≡ 14 + *x* + 2*x*² (mod 17).
 
+The hand check shows the wrap-around rule at work: the x⁴ term exceeds the degree limit for n equal to four, so it becomes minus three, and minus three modulo seventeen is fourteen. ML-KEM uses the same rule with n equal to 256 and q equal to 3329. Students who get the sign wrong will compute a different polynomial, and in a real implementation that mistake would break every decapsulation, which is why known-answer tests catch it at once.
+
 ### 2.4 Hash functions
 
 A cryptographic hash maps any input to a fixed-length digest. Its required properties are *preimage resistance* (given a digest, find no input), *second-preimage resistance* and *collision resistance*. Hash-based signatures (SLH-DSA in [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205); LMS and XMSS in [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) need only these properties, which is why they are the most conservative post-quantum signatures: quantum computers are not known to do much better than Grover-style speed-ups against good hash functions.
 
+Grover can search for preimages faster, roughly square-rooting the work, so a 256-bit hash still offers about 128 bits against preimage search. Collision search with quantum algorithms gains less in practice than the idealised bounds suggest. The trade-off for hash-based signatures is size and speed, not security assumptions.
+
 ### 2.5 Worked example
 
 A BPA developer asks why the post-quantum library "multiplies polynomials" when RSA "just exponentiates". The answer: RSA's security lives in the multiplicative group modulo *N*, where Shor finds periods. ML-KEM's lives in noisy linear algebra over a polynomial ring, where no period-finding shortcut is known; the ring is for efficiency, the noise is for security.
+
+The developer's follow-up is usually about cost: polynomial multiplication with the number-theoretic transform is fast, and ML-KEM key generation is often quicker than RSA key generation. What changes for the system is size: keys and ciphertexts are larger than elliptic-curve ones. That shifts the engineering problem from CPU time to bytes on the wire.
 
 ### 2.6 Common errors and limits
 
 - Forgetting the sign flip when reducing by *x*^*n* + 1.
 - Thinking ring structure alone provides security (without noise, the linear system is easy).
 - Confusing collision resistance with preimage resistance.
+
+A missed sign flip produces outputs that look plausible but fail interoperability tests against the standard. Assuming the ring alone gives security misses the role of noise: without small errors, Gaussian elimination recovers the secret. Mixing up collision and preimage resistance leads to wrong parameter claims, for example halving a hash length for a use that only needs preimage resistance.
 
 ### Exercises
 
@@ -195,6 +213,8 @@ A classical bit is 0 or 1. A qubit's state is a combination α|0⟩ + β|1⟩ wi
 
 Entangled qubits have correlated measurement outcomes that cannot be explained by independent states. Gates — rotations of single qubits and controlled operations on pairs — build circuits. Algorithms are measured in logical gate counts and circuit *depth*, the number of sequential layers, which matters because errors accumulate with time.
 
+Depth matters because qubits decohere while they wait: a circuit with many sequential layers must finish before errors overwhelm it, or error correction must keep up. That is why resource estimates report both logical qubits and a runtime figure. Entanglement is a resource algorithms use, not a speed-up on its own; most problems gain nothing from it.
+
 ### 3.3 Decoherence and error correction
 
 Physical qubits lose their state through interaction with the environment (decoherence) and through imperfect gates. Quantum error correction encodes one *logical* qubit in many *physical* qubits — in surface-code designs, hundreds to thousands — and continuously measures syndromes to correct errors. This overhead is why estimates for breaking RSA-2048 moved from twenty million noisy qubits ([Gidney and Ekerå 2021](https://doi.org/10.22331/q-2021-04-15-433)) to under a million ([Gidney 2025](https://arxiv.org/abs/2505.15917)) as algorithms and codes improved — and why counts of physical qubits in press releases say little about cryptographic relevance without error rates.
@@ -203,15 +223,21 @@ Physical qubits lose their state through interaction with the environment (decoh
 
 Quantum key distribution (QKD) uses quantum states of light to agree keys, with security grounded in physics, but it needs special hardware, point-to-point links and authenticated classical channels, and it does not provide signatures. Several agencies, including the [NSA](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/), recommend PQC rather than QKD for most uses. This book treats QKD as a niche technology and PQC as the migration path.
 
+QKD also leaves authentication to classical cryptography, so a QKD link still needs signatures or pre-shared keys, which brings PQC back into the design. Its distance limits and trusted-node relays add physical security problems. For BPA's customs exchange over the public internet, QKD is not an option, while hybrid TLS with ML-KEM can be deployed on existing servers.
+
 ### 3.5 Worked example
 
 A vendor tells BPA that "a 1,000-qubit machine was announced, so RSA is broken soon". The engineering response: ask for error rates, logical qubit counts and circuit depth; compare with published resource estimates; note that a thousand noisy physical qubits is orders of magnitude short of the estimates; and still migrate, because recorded traffic must stay secret for decades (Chapter 20).
+
+The vendor's number answers none of the questions that matter for RSA-2048. Physical qubits must be turned into logical ones at a ratio of hundreds or thousands, and the circuit must run long enough without failure. Even so, the conclusion is to keep migrating: the case for action rests on how long customs data must stay secret, not on the date of the next announcement.
 
 ### 3.6 Common errors and limits
 
 - Saying quantum computers "try all answers at once".
 - Equating physical and logical qubits.
 - Presenting QKD as a replacement for PQC.
+
+Superposition does not let a quantum computer read out all answers; measurement returns one result, and only interference designed for a specific structure helps. Physical and logical qubits differ by error-correction overhead, so headlines about qubit counts say little about cryptographic risk. QKD needs dedicated links and leaves signatures unsolved, so it cannot replace PQC across ordinary networks such as the internet links BPA's partners use.
 
 ### Exercises
 
@@ -238,31 +264,45 @@ You will (1) write small, testable Python programs with the standard library; (2
 
 Cryptographic functions operate on bytes. Python's `str` is text; convert with an explicit encoding (`"text".encode("utf-8")`). Mixing them causes subtle bugs, such as hashing the string representation of a byte object (`"b'...'"`) instead of the bytes themselves. Integers convert with `int.from_bytes(b, "big")` and `n.to_bytes(length, "big")`; always state the byte order and length, because protocol specifications such as FIPS 203 define exact encodings.
 
+A common symptom of mixing types is two systems computing different hashes for the same message because one encoded text as UTF-8 and the other as Latin-1. Fixing the encoding at the boundary, and passing bytes everywhere inside, removes that class of bug. Length and byte order matter too: FIPS 203 encodes coefficients in a precise bit layout, and a test against the standard's vectors is the only reliable check.
+
 ### 4.2 Randomness
 
 Use `secrets.token_bytes()` for keys and nonces; never `random`, which is a predictable pseudo-random generator designed for simulations. The labs in this book use `random` only to generate synthetic data and toy parameters, and say so.
+
+Python's `random` is seeded from a state that can be recovered after observing enough outputs, so any key it produces can be predicted. `secrets` draws from the operating system's cryptographic generator. Keeping the two visibly separate in code, for example by never importing `random` in production modules, makes reviews easier and stops toy code from slipping into real systems.
 
 ### 4.3 Hashes and MACs
 
 `hashlib.sha256`, `hashlib.sha3_256` and `hashlib.shake_256` are available; SHA-3 and SHAKE are used inside ML-KEM and ML-DSA. `hmac.new(key, msg, hashlib.sha256)` computes a message authentication code, and `hmac.compare_digest` compares tags in constant time — a normal `==` can leak timing information about where two values first differ.
 
+SHAKE is an extendable-output function: it can produce as many output bytes as needed, which ML-KEM uses to expand seeds into matrices. A MAC differs from a hash because it needs a secret key; without one, anyone can recompute a hash over a modified message. The constant-time comparison matters most when an attacker can submit many guesses and measure response times.
+
 ### 4.4 Testing
 
 Every function gets a test with a known answer. For cryptography, *known-answer tests* (KATs) published with standards let you confirm that an implementation produces exactly the expected bytes. NIST's Cryptographic Algorithm Validation Program publishes test vectors for approved algorithms.
+
+A KAT fixes the inputs, including what would normally be random, so the expected output is a single exact byte string. Passing KATs proves the implementation matches the standard on those inputs; it does not prove resistance to side channels or misuse. Engineers run KATs in continuous integration so that a library upgrade that changes outputs is caught before deployment.
 
 ### 4.5 Worked example: a hash-chain audit log
 
 BPA wants tamper-evident logs. Each entry stores `h_i = SHA-256(h_{i-1} || entry_i)`. A short program computes the chain, and a test verifies that changing any entry changes every later hash. The program uses bytes throughout, fixed encodings and `compare_digest`. This is a sound use of standard primitives; designing a new signature scheme would not be.
 
+The chain detects modification, deletion and reordering, because each change alters every later hash. It does not stop someone with write access from rebuilding the whole chain, so BPA publishes the latest hash daily to a separate system. The program is short enough to review completely, and every primitive it uses is already standardised.
+
 ### 4.6 Practical activity
 
 Write the hash-chain function with a test, then add a deliberate bug (hashing `str(entry)` instead of `entry`) and see the test catch it.
+
+The deliberate bug shows why tests must compare exact bytes: hashing `str(entry)` hashes the text "b'...'" with quotes and a prefix, so every later hash changes even though the log content looks identical. Write the failing test first, confirm it fails with the bug, then fix the code and confirm it passes. Keep the test in the suite so the mistake cannot return.
 
 ### 4.7 Common errors and limits
 
 - Using `random` for keys.
 - Comparing secrets with `==`.
 - Implementing ML-KEM or ML-DSA yourself for production: implementation security (Chapter 31) is harder than correctness.
+
+Each error has caused real failures. Predictable random numbers have exposed keys, plain comparisons have leaked authentication tags through timing, and home-made implementations of standard algorithms have passed correctness tests while leaking secrets through timing or power use. BPA uses vetted libraries for ML-KEM and ML-DSA and reserves its own code for the glue around them, which it tests with KATs.
 
 ### Exercises
 
@@ -289,17 +329,25 @@ You will (1) write a decision memo that separates facts, assumptions and recomme
 
 A memo opens with the decision requested, then gives context, options, recommendation, risks and what would change the recommendation. In PQC work, label four kinds of statement: **fact** ("FIPS 203 was published in August 2024"), **assumption** ("we plan as if a cryptographically relevant quantum computer could exist within 15 years"), **estimate** ("migration of the VPN will take nine months") and **recommendation**. Mixing them is how timelines become myths.
 
+Labelling each statement lets readers challenge the right thing. A fact can be checked against its source; an assumption can be varied to see whether the recommendation still holds; an estimate can be compared with actual progress later. When a sentence mixes them, such as a migration date presented as certain, nobody can tell which part to question.
+
 ### 5.2 Communicating uncertainty
 
 Never give a single "Q-Day". State a range of assumptions and show which decisions are robust across it. Mosca's inequality — if data lifetime plus migration time exceeds time-to-quantum, act now ([Mosca 2018](https://doi.org/10.1109/MSP.2018.3761723)) — is useful precisely because it can be evaluated across a range. A recommendation that holds for all plausible ranges is easy to defend.
+
+In practice, the memo shows a small table: rows for assumed time-to-quantum, columns for data lifetime and migration time, and cells marking where action is needed. If every cell says act, the debate about the exact year becomes irrelevant. If the answer flips within the plausible range, the memo says so and explains what new evidence would settle it.
 
 ### 5.3 Diagrams
 
 Architecture diagrams show components, trust boundaries and where each cryptographic function happens: key exchange, signature, data at rest. Every diagram needs a text alternative describing the same content for accessibility and for review; reviewers often find errors when forced to read the text version.
 
+Marking where each cryptographic function happens shows the migration scope at a glance: every key exchange and signature arrow is a candidate for change, while symmetric encryption at rest may only need larger keys. The text version lists each arrow with its algorithm and owner. Reviewers reading that list often spot a hidden dependency, such as a signature used inside a firmware update path that the diagram drew as a single box.
+
 ### 5.4 Audiences
 
 For engineers: algorithms, parameter sets, protocols, test evidence. For executives: risk, cost, schedule, what is protected and what is not. For auditors: requirement traceability and evidence. The same facts, differently ordered.
+
+An engineer reading the executive version may think detail is missing, and an executive reading the engineering version may miss the decision. Writing separate versions from one source of facts keeps them consistent. Auditors need a third ordering: each requirement, the evidence that it is met, and where that evidence is stored. BPA keeps all three versions in one repository so a changed fact updates every audience together.
 
 ### 5.5 Worked example: BPA's one-page memo
 
@@ -310,6 +358,8 @@ Decision requested: fund a 12-month cryptographic inventory and a hybrid TLS pil
 - Executive slides with a single date for quantum computers.
 - Diagrams without text alternatives.
 - Memos that bury the decision on page three.
+
+A single date invites argument about the date instead of the decision, and it becomes wrong as soon as estimates move. A diagram without text excludes readers using screen readers and hides errors that writing would expose. A buried decision means executives leave the meeting without making it. Each of these is easy to fix before the memo is sent.
 
 ### Exercises
 
@@ -336,6 +386,8 @@ You will (1) use exponential and logarithmic models for growth and decay; (2) co
 
 Many quantities in this field are modelled exponentially: the volume of recorded traffic, the decline in cost per qubit, the decay of a certificate's usefulness. A model *f*(*t*) = *f*₀·*e*^(*rt*) has doubling time ln 2 / *r*. Engineers should treat such models as scenarios: an assumed doubling time of qubit quality is an assumption, not a law.
 
+Doubling time is the most intuitive way to state an exponential model: if recorded traffic doubles every 3.8 years, a reader can picture the growth without logarithms. Showing results under a fast and a slow scenario keeps the model honest. If the recommendation changes between scenarios, the memo must say which assumption drives the change.
+
 ### 6.2 Sums and integrals for exposure
 
 Suppose BPA records traffic at a rate *v*(*t*) GB per year, and any traffic recorded before migration date *T* is exposed if a CRQC appears at time *Z*. The exposed volume is the integral of *v* from 0 to *T*. If *v* grows exponentially, ∫₀^*T* *v*₀*e*^(*rt*) d*t* = (*v*₀/*r*)(*e*^(*rT*) − 1): delaying migration grows exposure faster than linearly. The engineering lesson is that a one-year delay late in the programme costs more exposure than a one-year delay early.
@@ -344,19 +396,27 @@ Suppose BPA records traffic at a rate *v*(*t*) GB per year, and any traffic reco
 
 Parameter choice is constrained optimization. Example: choose an ML-KEM parameter set to maximize security subject to a handshake byte budget. ML-KEM-512, -768 and -1024 offer NIST categories 1, 3 and 5 with encapsulation keys of 800, 1,184 and 1,568 bytes ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)). If the budget for the client key share is 1,300 bytes, ML-KEM-768 is the largest that fits. Lagrange multipliers formalize such trade-offs for continuous variables; in discrete parameter sets you simply enumerate.
 
+The byte budget comes from real limits: some networks fragment or drop handshake messages above certain sizes, and middleboxes may reject unusual records. Choosing ML-KEM-768 within a 1,300-byte budget gives category 3 security with room left. If the budget were 1,000 bytes, only ML-KEM-512 would fit, and the memo would have to discuss whether category 1 is acceptable.
+
 ### 6.4 Worked example
 
 BPA's customs exchange sends 2 TB/year today, growing 20% per year (*r* ≈ 0.182). Exposed volume if migration completes after 3 years: (2/0.182)(*e*^0.547 − 1) ≈ 8.0 TB; after 5 years: ≈ 16.3 TB. Two extra years roughly double the exposed archive.
 
+With r equal to 0.182, the exponential terms are about 1.73 after three years and 2.48 after five. Multiplying the excess over one by about eleven, the factor two divided by r, gives the two figures. The doubling shows why the programme plan front-loads the customs exchange: it has the fastest-growing volume and the longest confidentiality requirement.
+
 ### 6.5 Practical activity
 
 Compute the exposed volume for migration after 1–8 years and plot (or tabulate) it. Identify the year where exposure exceeds 10 TB.
+
+Using the formula from the worked example, the exposed volume is about 8.0 TB after three years and about 11.8 TB after four, so exposure first exceeds 10 TB in year four. Tabulating each year shows the gaps between consecutive years growing, which is the non-linear effect that makes late delays expensive. Students should state their growth assumption beside the table and rerun it at 10% and 30%.
 
 ### 6.6 Common errors and limits
 
 - Treating growth assumptions as forecasts.
 - Linear thinking about delay under exponential growth.
 - Ignoring that exposure also depends on how long data stays sensitive (Chapter 20).
+
+Growth rates are assumptions; a 20% rate may fall if a service is retired or rise if new partners join. Linear thinking underestimates the cost of delay because each later year adds more volume than the one before. Exposure also depends on lifetime: traffic that loses value after a year matters less than customs records that must stay confidential for twenty-five years.
 
 ### Exercises
 
