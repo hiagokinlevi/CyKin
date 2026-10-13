@@ -705,7 +705,7 @@ After Lab 2 showed writes from a corporate desk, L. Ferreira (KVROC security lea
 | Stop | Any KW-04 alarm, communication loss or operator request. |
 | Evidence | Firewall config export, connect test output, fw-01 log lines; hashes in the case folder. |
 
-The working note after the test reads: *Observed* — connect from 10.30.99.9 to 10.10.4.2:502 completed at 08:04:11Z; fw-01 logged rule R4 allow. *Inferred* — corporate hosts can reach station Modbus because of R4 (Chapter 10). *Done* — nothing changed. *Open* — who created R4 and why (owner: L. Ferreira).
+The working note after the test reads: *Observed* — connect from 10.30.99.9 to 10.10.4.2:502 did not complete at 08:04:11Z; fw-01 logged it as blocked by the default deny. *Inferred* — fw-01 does not let corporate desks reach station Modbus, so the writes from 10.30.3.7 captured in Chapter 2 must have used another path (Chapters 10 and 13). *Done* — nothing changed. *Open* — which path carried those writes (owner: L. Ferreira).
 
 ### 5.6 Practical activity
 
