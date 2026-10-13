@@ -1,7 +1,7 @@
 # Segurança de TO, IoT e Sistemas Ciberfísicos: Engenharia de Sistemas de Controle Seguros
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros engenheiros que vão projetar, implementar e verificar a segurança de sistemas de controle industrial, de TO e de sistemas ciberfísicos.
 - Relação com os livros vizinhos: o livro de engenharia de infraestrutura crítica enfatiza os setores; o livro de mestrado de TO enfatiza o desenho de estudos empíricos. **Este livro trata de construir a segurança de sistemas de controle**.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -37,10 +37,20 @@ Os capítulos 1–19 constroem os fundamentos, aplicados à TO desde a primeira 
 8. [Arquitetura de computadores](#ch-08)
 9. [Programação II](#ch-09)
 10. [Ética e segurança na engenharia](#ch-10)
+11. [Redes e protocolos](#ch-11)
+12. [Sistemas operacionais](#ch-12)
+13. [Sistemas de dados](#ch-13)
+14. [Engenharia de software](#ch-14)
+15. [Fundamentos de segurança](#ch-15)
+16. [Engenharia de sistemas](#ch-16)
+17. [Fundamentos de controle e realimentação](#ch-17)
+18. [Arquitetura de segurança](#ch-18)
+19. [Identidade e criptografia](#ch-19)
+20. [Segurança de TO, IoT e sistemas ciberfísicos: contexto de engenharia](#ch-20)
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX030. As [referências](#references) encerram o livro.
+As [resoluções](#worked-results) contêm EX001–EX060. As [referências](#references) encerram o livro.
 
 <a id="ch-01"></a>
 
@@ -733,7 +743,738 @@ Permissão escrita, condições de parada que põem o processo em primeiro lugar
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 50
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o que um observador autorizado pode aprender com os protocolos de TO sem atacá-los; (2) definir o escopo por código de função e por registrador; (3) tratar os bloqueios de protocolo como controles bem-sucedidos.
+
+### 11.1 Pontos de observação
+
+Monitores seriais veem o Modbus RTU no fio; portas SPAN veem EtherNet/IP ou Modbus TCP; logs de aplicação veem as ações na IHM. Uma avaliação que só tem capturas de tela da IHM não deve alegar visibilidade do barramento de campo. Declare o ponto de observação na seção de método de cada constatação.
+
+Lena escreve o ponto de observação no campo de método de cada constatação, para que os leitores saibam o que podia e o que não podia ser visto. Na ABP, um monitor serial no tronco RS-485 até o PLC-A dá visibilidade do barramento de campo, enquanto os próprios logs da IHM mostram as ações dos operadores. As constatações baseadas em apenas um deles dizem isso, porque cada um pode deixar passar o que o outro vê.
+
+### 11.2 Portas não são semântica
+
+TCP 502 muitas vezes significa Modbus TCP, mas o escopo significativo é quais códigos de função e quais faixas de registradores cada estação pode usar. A porta 502 aberta é uma informação incompleta sem a situação da lista de permissões e as estações observadas. A função de permissão do Capítulo 4 é a abstração certa.
+
+As constatações de Lena sobre portas abertas sempre acrescentam quais estações foram vistas usando quais códigos de função, para que o leitor saiba se a porta importa. Na ABP, a lista de permissões declara que a HMI-1 só pode escrever nos registradores 40001 a 40010 e que o historiador só pode ler. Uma varredura de portas sozinha não mostraria nada disso.
+
+### 11.3 Bloqueios são cobertura
+
+Um firewall que bloqueia o tráfego do escritório para o SCADA, ou um monitor que descarta a função 16 vinda do HIST-1, é evidência de que um controle funcionou para aquela sondagem. Os painéis de cobertura devem contar as verificações planejadas que foram bloqueadas como verificações concluídas, e não como falhas de entrada.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Saída esperada:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+> **Caso sintético — Ashford Batch Plant.** O painel de cobertura do CNHP lista "o HIST-1 não consegue escrever" como verificação planejada. O BLOCK do laboratório na função 16 é um resultado verde para essa verificação, e não um teste vermelho que falhou.
+
+O painel de Lena mostra cada verificação planejada com o seu resultado esperado.
+
+### 11.4 Erros e limites
+
+Banners mentem; confirme com evidências no nível da aplicação ou de quadros decodificados. Os ambientes do curso nunca varrem plantas em operação.
+
+Lena trata o banner de um dispositivo como uma pista e confirma o produto pela exportação do projeto de engenharia ou por quadros decodificados antes de registrá-lo no inventário. Os banners podem estar desatualizados depois de uma atualização de firmware ou ser deliberadamente genéricos. A etapa de confirmação também evita um erro comum, em que o banner de um gateway é confundido com o do controlador por trás dele. No curso, todas essas verificações rodam sobre dados capturados ou sintéticos, nunca numa rede de planta em operação.
+
+### Nota prática
+
+Mantenha um inventário de protocolos de uma página: tronco, taxa de transmissão, estações, códigos de função em uso, dono da lista de permissões. Atualize-o quando um fornecedor acrescentar uma estação. A maior parte do tráfego misterioso é um laptop de engenharia não documentado.
+
+### 11.1b Famílias de protocolos na permissão de trabalho
+
+As permissões de trabalho devem nomear explicitamente as famílias de protocolos: "Modbus TCP com os códigos de função 3/4/6 nos registradores 40001-40010" é mais claro do que "porta 502". Se os códigos de escrita forem proibidos a partir das estações de avaliação, diga isso. Se só taps de escuta forem autorizados, diga isso. A ambiguidade aqui vira discussão durante a janela, quando alguém quer experimentar uma função de diagnóstico só para ver. Quando a permissão nomeia códigos de função, a lista de permissões do monitor para aquela janela deve nomear os mesmos códigos, para que a permissão e as evidências possam ser comparadas linha a linha.
+
+Na ABP, a permissão de Lena para a verificação serial diz "somente escuta" no tronco RS-485 até o PLC-A, nomeia as escritas permitidas da HMI-1 e proíbe códigos de função de diagnóstico a partir do laptop de avaliação. Durante a janela W-17, o pedido de um fornecedor para experimentar um diagnóstico foi recusado exatamente por esse motivo e avaliado depois, sob a sua própria permissão.
+
+### Exercícios
+
+- **EX031 — Ponto de observação.** Associe três tipos de evidência ao ponto de observação mínimo. Rubrica: 3 = associação correta (por exemplo, erros de CRC do RTU ao serial; FC do Modbus TCP à decodificação IP; atribuição de uma mudança de setpoint ao log da IHM/da aplicação); 2 = duas; 1 = uma; 0 = nada.
+- **EX032 — Escopo.** Reescreva "testar o Modbus no PLC-A" como uma linha delimitada de ficha de método. Rubrica: 3 = códigos, registradores, estações, somente leitura, janela; 2 = parcial; 1 = só a porta; 0 = nada.
+- **EX033 — Laboratório.** Por que HMI-1 fc=6 reg=40050 é bloqueado enquanto 40003 passa? Rubrica: 3 = register-out-of-range versus dentro de WRITE_REGS; 2 = um lado; 1 = vago; 0 = errado.
+
+### Síntese
+
+Delimite os protocolos de TO pela semântica (códigos, registradores, estações); comemore os bloqueios que correspondem ao plano.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 50
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) endurecer as IHMs e as estações de engenharia sem quebrar o controle; (2) coletar evidências do sistema operacional com privilégio mínimo; (3) planejar a aplicação de correções dentro das janelas de manutenção.
+
+### 12.1 As estações de trabalho fazem parte do sistema de controle
+
+As IHMs e as estações de engenharia muitas vezes rodam sistemas operacionais de uso geral com décadas de software legado. Tratá-las como simples PCs é o caminho pelo qual o malware entra no L2. As linhas de base de endurecimento (lista de permissões de aplicações, remoção do administrador local, controle de USB) precisam ser testadas contra a matriz de suporte do fornecedor da IHM — uma mudança de endurecimento sem suporte que apaga uma tela durante um lote é um incidente de disponibilidade.
+
+Na ABP, Lena testa cada mudança de endurecimento numa IHM de bancada que roda a mesma versão do fornecedor antes de ela chegar à sala de controle, e registra quais itens o fornecedor suporta.
+
+### 12.2 Privilégio mínimo para engenheiros
+
+Contas nominais, direitos de administrador com prazo, elevações registradas. Senhas de engenheiro compartilhadas ainda são comuns e ainda estão erradas: elas destroem a atribuição e permanecem depois que os prestadores vão embora. Constatações sobre senhas compartilhadas são constatações de configuração, não convites para quebrar hashes.
+
+Na ABP, a senha de engenheiro compartilhada na eng-WS-1 é substituída por contas nominais, e cada elevação é registrada com a pessoa e o motivo. Os prestadores recebem contas que expiram ao fim da sua ordem de serviço. Lena relata as senhas compartilhadas a partir da configuração e da lista de contas, nunca testando-as.
+
+### 12.3 Janelas de correção
+
+As correções de TO entram nas janelas de manutenção, não na Patch Tuesday. Encaixe os trabalhos por risco nas horas disponíveis; adie o que não couber, em vez de invadir a produção.
+
+```python
+"""Lab: fit patch jobs into plant maintenance windows (synthetic, greedy by risk)."""
+windows = [("W1 Sat 02-06", 4.0), ("W2 Sun 02-04", 2.0)]
+jobs = [("HMI OS update", 1.5, 8), ("historian DB patch", 2.5, 5), ("PLC-A firmware", 3.0, 9),
+        ("eng-WS AV update", 0.5, 3), ("switch firmware", 1.0, 6)]   # name, hours, risk score
+left = {w: h for w, h in windows}; plan = {w: [] for w, _ in windows}; deferred = []
+for name, h, r in sorted(jobs, key=lambda j: -j[2]):
+    for w, _ in windows:
+        if left[w] >= h:
+            left[w] -= h; plan[w].append(name); break
+    else:
+        deferred.append(name)
+for w, _ in windows:
+    print(w, plan[w], f"spare={left[w]:.1f}h")
+print("deferred:", deferred)
+```
+
+Saída esperada:
+
+```text
+W1 Sat 02-06 ['PLC-A firmware', 'switch firmware'] spare=0.0h
+W2 Sun 02-04 ['HMI OS update', 'eng-WS AV update'] spare=0.0h
+deferred: ['historian DB patch']
+```
+
+> **Caso sintético — Ashford Batch Plant.** O laboratório de correções adiou o patch do banco de dados do historiador porque W1 e W2 estavam cheias de trabalhos de maior risco no CLP e na IHM. Lena agendou uma janela dedicada no mês seguinte, em vez de espremê-lo na manhã de domingo.
+
+Cada trabalho adiado mantém o seu ticket e a sua data. Os adiamentos são revistos mensalmente.
+
+### 12.4 Erros e limites
+
+Não desabilite o antivírus nem a lista de permissões para agradar o fornecedor sem uma exceção escrita e um monitoramento compensatório. Plantas offline também precisam de controle de mídias.
+
+Quando o fornecedor da IHM pede uma exceção, Lena registra qual proteção é relaxada, em qual host, por quanto tempo e qual monitoramento a substitui. A exceção tem um dono e uma data de expiração. Os hosts offline continuam recebendo mídias por meio de uma estação de varredura e de uma transferência registrada, já que os pendrives são a rota habitual para dentro de uma rede isolada.
+
+### Nota prática
+
+Todo patch adiado recebe um ticket com o risco residual e uma data. "Adiado sem data" é como sobrevivem imagens de sistema operacional de IHM com uma década. Revise a lista de adiados na mesma reunião que planeja a próxima janela.
+
+### 12.1b Imagens e análise offline
+
+Imagens de disco completas de IHMs têm alto impacto: tiram sistemas do ar, podem conter receitas proprietárias e convidam a navegar fora do escopo. Prefira leituras ao vivo com privilégio mínimo e exportações de configuração. Se uma imagem for realmente necessária, a permissão de trabalho precisa nomear a cadeia de custódia, a criptografia em repouso, quem pode montá-la e uma data de destruição — e os laboratórios do curso continuam não praticando a extração de imagens de hosts reais. Plantas offline também precisam de controle de mídias; air gaps que escondem USB e modems celulares não são air gaps.
+
+Lena nunca precisou de uma imagem completa na ABP.
+
+### Exercícios
+
+- **EX034 — Conta.** Especifique um padrão de privilégio mínimo para o acesso de engenharia ao CLP. Rubrica: 3 = nominal, com prazo, registrado, controle duplo para o download de lógica; 2 = três de quatro; 1 = administrador compartilhado; 0 = nada.
+- **EX035 — Laboratório.** Qual trabalho foi adiado e por quê? Rubrica: 3 = patch do banco de dados do historiador; janelas cheias depois dos trabalhos de maior risco; 2 = só o nome; 1 = vago; 0 = errado.
+- **EX036 — Exceção.** Escreva uma exceção de USB de uma linha para a colocação em serviço por um fornecedor, com controle compensatório. Rubrica: 3 = com prazo, mídia verificada, host monitorado; 2 = parcial; 1 = USB aberto; 0 = nada.
+
+### Síntese
+
+Endureça e corrija as estações de trabalho como se fossem controladores — porque, para o malware, elas são a porta.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 50
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger os dados do historiador e das receitas sem bloquear as operações; (2) delimitar a avaliação de bancos de dados sem extrair lotes proprietários; (3) projetar conjuntos de dados sintéticos para os laboratórios.
+
+### 13.1 Os historiadores são as joias da coroa
+
+Os historiadores guardam valores de processo que revelam taxas de produção, receitas e, às vezes, dados de qualidade. Escritas não autorizadas podem corromper os registros dos lotes; leituras não autorizadas podem vazar dados comerciais. Coloque-os em zona (L3), permita caminhos de leitura por réplicas controladas e nunca exponha SQL ao L4.
+
+Na ABP, o HIST-1 fica no L3, e os usuários do escritório leem da réplica na DMZ, nunca do historiador da zona de controle. O acesso de escrita ao HIST-1 é limitado ao serviço de coleta, e toda mudança nos registros dos lotes é registrada. Lena verifica os dois caminhos em cada revisão de condutos.
+
+### 13.2 Minimize as extrações
+
+O trabalho autorizado com bancos de dados usa cópias sintéticas ou mascaradas. Exportar a genealogia real dos lotes para o laptop de um estudante é um incidente de confidencialidade. A permissão de trabalho precisa declarar: nenhum dump completo, listas de permissões de colunas, limites de linhas, data de destruição.
+
+A permissão de trabalho de Lena para o acesso ao historiador lista as colunas permitidas e o limite de linhas em palavras simples. As extrações vão para um host de análise aprovado, não para um laptop pessoal, e a sua exclusão é registrada. Um pedido de mais dados do que a pergunta exige é estreitado antes que qualquer consulta rode.
+
+### 13.3 Dados de processo sintéticos
+
+Gere níveis de tanque e setpoints determinísticos, com sementes fixas, para que os laboratórios se reproduzam. Os laboratórios do CUSUM e do PI fazem isso; nunca copie um historiador de produção para o repositório do curso.
+
+> **Caso sintético — Ashford Batch Plant.** A operação forneceu a Lena uma semana de valores sintéticos do T-1/T-2/R-101 a 1 Hz para os ensaios do detector — sem números de pedidos de clientes, sem nomes de operadores.
+
+A semana de valores sintéticos do T-1, do T-2 e do R-101 da ABP, com resolução de um hertz, foi gerada dessa forma, e a sua semente é registrada com o conjunto de dados. Lena executa o gerador de novo para confirmar que o arquivo confere antes de cada ensaio.
+
+### 13.4 Erros e limites
+
+Um mascaramento que deixa receitas raras e únicas ainda pode identificar as corridas de produção. Prefira a geração sintética para o ensino.
+
+Uma receita que a ABP roda só duas vezes por ano pode identificar o lote mesmo sem os nomes. Lena usa, por isso, dados sintéticos para o ensino e mantém dados reais mascarados apenas para as investigações que realmente precisam deles, com acesso limitado aos investigadores. As escolhas de mascaramento são registradas e revistas com a equipe de qualidade. Os casos de lotes raros são listados no pedido de extração. A equipe de qualidade revisa esses casos antes da liberação.
+
+### Nota prática
+
+Desenhe o fluxo de dados: sensor para CLP para historiador para réplica para relatórios do L4. Cada seta precisa de um dono e de um protocolo. As setas misteriosas são onde vivem a exfiltração e a exposição acidental.
+
+### 13.1b Controles por linha e por coluna
+
+Os historiadores e data warehouses modernos oferecem políticas por linha e por coluna. As perguntas da avaliação passam a ser: o papel R vê a coluna C? O filtro de linhas F se aplica? Teste com o próprio papel. Documente a versão do mecanismo de políticas; "rodamos SELECT * com um papel de administrador" prova pouco sobre a exposição de um analista. Registre cada resultado de papel e coluna com a conta usada e a data, para que a próxima revisão repita exatamente as mesmas verificações.
+
+Lena testa a réplica da ABP com uma conta de analista antes de cada revisão. Os resultados vão para as notas da revisão.
+
+### 13.5 Exemplo resolvido — uma extração minimizada do historiador (ABP sintética)
+
+Os engenheiros de qualidade pedem "todos os dados do R-101 do último ano". A extração de Lena contém apenas as quatro tags de que a investigação de desvio precisa (temperatura do reator, temperatura da camisa, velocidade do agitador, posição da válvula de alimentação), com resolução de um minuto, para os 11 lotes em análise, com os IDs dos lotes substituídos por códigos de estudo e a coluna de nomes de operadores descartada. A extração é uma leitura da réplica na DMZ, nunca do historiador da zona de controle, e o texto da consulta e um hash SHA-256 do arquivo de saída vão para o ticket do pedido, para que as mesmas linhas possam ser reproduzidas ou excluídas depois. O resultado são 11 × 4 tags × cerca de 480 minutos ≈ 21.000 linhas, em vez de dezenas de milhões.
+
+### Exercícios
+
+- **EX037 — Cláusula da permissão.** Escreva uma cláusula de tratamento de dados para uma avaliação do historiador. Rubrica: 3 = só a réplica, lista de permissões de colunas, limite de linhas, data de destruição, sem dumps; 2 = três; 1 = um; 0 = nada.
+- **EX038 — Autorização.** Como você testa se o papel analyst consegue escrever anotações no historiador sem técnicas de injeção? Rubrica: 3 = conectar como analyst, tentar a escrita, registrar concessão/negação; 2 = ideia; 1 = injeção; 0 = nada.
+- **EX039 — Sintético.** Três campos seguros para uma tabela sintética de tanque e dois que não podem aparecer. Rubrica: 3 = por exemplo, tag, valor, timestamp versus operator_name, customer_order; 2 = parcial; 1 = fraco; 0 = nada.
+
+### Síntese
+
+Minimize os dados, teste os papéis, sintetize para o ensino. O historiador não é um depósito de troféus.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) pôr as ferramentas de segurança de TO sob controle de versão, com revisão; (2) condicionar as mudanças que alargam condutos; (3) manter a integração contínua apenas com dados de teste sintéticos.
+
+### 14.1 Ferramentas são produtos
+
+Compiladores de listas de permissões, verificadores de alcançabilidade e configurações de detectores são software. Precisam de repositórios, revisões, tags e registros de mudanças. Uma permissão de trabalho que cita a exportação do firewall sem um hash está incompleta.
+
+Lena mantém as ferramentas do CNHP num único repositório, com versões marcadas por tags e um registro de mudanças, e toda permissão de trabalho cita a tag e o hash das exportações em que se apoia. Quando um revisor pergunta qual versão do verificador de alcançabilidade produziu um resultado, a resposta é uma tag, não uma lembrança.
+
+### 14.2 Condicione o alargamento
+
+Merges que acrescentam um conduto, abrem um código de função ou removem um bloqueio exigem um segundo revisor e um ticket de autorização vinculado. As mudanças que restringem podem ser mais leves. Codifique isso no CODEOWNERS dos caminhos de política.
+
+Lena designa donos de código da engenharia de controle para os arquivos de listas de permissões e de condutos, de modo que as mudanças que alargam não possam ser integradas sem eles. As mudanças que restringem ainda precisam de um revisor. A regra é imposta pelas configurações de donos de código nos caminhos de política, então não pode ser pulada por um revisor ocupado. Uma mudança que alarga também precisa de um ticket de autorização vinculado, que nomeie quem aprovou o novo caminho e por quê.
+
+### 14.3 Dados de teste da integração contínua
+
+A integração contínua roda os laboratórios e os testes de unidade sobre dados sintéticos. Nunca aponte a integração contínua para uma VPN da planta. Os dados de semente ficam no repositório; as credenciais da planta ficam num cofre e nunca nos logs da integração contínua.
+
+> **Caso sintético — Ashford Batch Plant.** Um PR acrescentou uma regra temporária do L4 para o L2 para a visita de um fornecedor. A verificação de alcançabilidade da integração contínua falhou porque o L1-SIS se tornou alcançável; o PR foi bloqueado até que a regra fosse reescrita através da DMZ.
+
+O pipeline de Lena carrega dados de teste sintéticos para as zonas e a lista de permissões da ABP.
+
+### 14.4 Erros e limites
+
+As tags podem se afastar do que os operadores de fato executam; registre o hash em execução no log do trabalho no início da janela.
+
+O log de trabalho de Lena registra o hash do binário do monitor e da lista de permissões efetivamente em execução no início de cada janela. Se ele diferir da versão marcada, a janela espera até que a diferença seja explicada. Essa verificação encontrou um monitor de bancada ainda rodando uma versão candidata depois de uma correção urgente. Os hashes em execução vão para o registro da janela. Uma divergência é tratada como parada, não como aviso.
+
+### Nota prática
+
+Os repositórios de política usam a mesma cultura de dupla aprovação que os downloads de lógica de CLP. Se baixar o ladder para o PLC-A exige duas pessoas, publicar um conduto que alcança o PLC-A também deveria exigir.
+
+### 14.1b Trens de versão versus correções urgentes
+
+As melhorias normais seguem um trem de versões com os Laboratórios I/II. As correções urgentes de segurança podem pular funcionalidades, mas não a verificação: um pacote mínimo de regressão que falha de forma fechada é obrigatório. Marque as correções urgentes com clareza, para que uma janela possa fixar conscientemente ou a build do trem ou o SHA da correção. As versões fixadas aparecem na lista de verificação de abertura, ao lado do hash da permissão de trabalho; se a versão fixada e o binário em execução discordarem, a janela não começa.
+
+As correções urgentes da ABP têm a sua própria tag e o resultado do pacote de regressão na nota de versão, para que um líder de janela veja exatamente o que foi verificado.
+
+### 14.5 Exemplo resolvido — revisando uma mudança em permit() (ABP sintética)
+
+Um pull request alarga a faixa gravável da IHM no PLC-A de 40001–40010 para 40001–40012, para um novo setpoint do agitador. A lista de verificação da revisão de Lena: o ID do requisito que justifica 40011–40012; novos vetores de conformidade para 40012 (passa) e 40013 (bloqueia); a negação por padrão inalterada para origens desconhecidas; um incremento de versão e uma linha no registro de mudanças; e um segundo revisor da engenharia de controle que confirma o significado dos registradores no projeto do CLP. O merge espera a execução em bancada dos vetores contra a build real do firewall. A disciplina de engenharia de software aqui não é cerimônia: um erro de um caractere na faixa deixaria a IHM escrever num registrador que o projeto do processo nunca previu.
+
+### Exercícios
+
+- **EX040 — Fixação.** Escreva a frase de método que fixa a lista de permissões para uma janela. Rubrica: 3 = nome, hash/tag, data de carregamento; 2 = nome+tag; 1 = nome; 0 = nada.
+- **EX041 — Condição.** Política de merge, numa frase, para os arquivos de condutos. Rubrica: 3 = segundo revisor + AUTH para alargar; 2 = só o revisor; 1 = vago; 0 = nada.
+- **EX042 — Integração contínua.** Por que a integração contínua nunca pode usar credenciais da VPN da planta? Rubrica: 3 = automação não autorizada, vazamento de segredos, não determinismo; 2 = uma razão sólida; 1 = vago; 0 = errado.
+
+### Síntese
+
+Trate o software de segurança de TO como software de produção: versões, condições de revisão, integração contínua sintética.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear a CID e a segurança física para as perguntas de uma avaliação de TO; (2) distinguir vulnerabilidade, exposição e risco de processo; (3) recusar pontuações de segurança vazias.
+
+### 15.1 CID mais segurança física
+
+Confidencialidade: quem pode ler as receitas ou as tendências? Integridade: quem pode mudar setpoints ou a lógica? Disponibilidade: o que para o lote? Segurança física: quais camadas de proteção continuam independentes? Toda constatação deve dizer quais propriedades são afetadas e se uma função de segurança está no escopo.
+
+Lena acrescenta a cada constatação do CNHP uma linha que nomeia as propriedades afetadas e se o SIS-B está no escopo. Na ABP, uma constatação sobre uma escrita não autenticada no PLC-A afeta a integridade e, pelo nível do tanque, possivelmente a segurança física; uma constatação sobre a réplica do historiador afeta a confidencialidade. Nomear a propriedade diz aos leitores qual equipe precisa responder.
+
+### 15.2 Vulnerabilidade, exposição, risco
+
+Uma escrita Modbus não autenticada é uma vulnerabilidade. Num CLP alcançável a partir do L2, ela é uma exposição. O risco de processo acrescenta a probabilidade e a consequência para a planta — o que exige o modelo do engenheiro de segurança, e não uma história universal baseada só no CVSS. Os tickets guardam os limites de consequência e as camadas de proteção separadamente; a aceitação do risco fica com o dono da planta.
+
+O modelo de ticket de Lena tem campos separados para cada um, para que nenhum se perca. Lena registra a exposição, como a alcançabilidade a partir do L2, separadamente da vulnerabilidade, para que a correção de qualquer uma das duas possa ser acompanhada. O gerente da planta assina qualquer aceitação de risco residual.
+
+### 15.3 Pontuações vazias
+
+Um único "risco de TO = 42" esconde se a independência do SIS se mantém. Prefira medidas concretas: constatações abertas de alta consequência, condutos para o SIS, taxa de alarmes falsos do detector na taxa de base da planta, idade dos adiamentos de correções. Se mostrar uma pontuação, mostre o modelo e as entradas.
+
+> **Caso sintético — Ashford Batch Plant.** Lena parou de pôr uma pontuação composta nos slides do CNHP. A apresentação agora mostra: SIS alcançável a partir do L4? Não. Críticas abertas: 1. Alarmes por hora de operador: 1,05. Correções de alto risco adiadas: 0.
+
+Cada medida do CNHP tem uma definição e uma fonte, para que possa ser recalculada.
+
+### 15.4 Erros e limites
+
+Os fundamentos são vocabulário; não são uma análise de perigos completa. Siga para a análise de ameaças e de falhas para um estudo estruturado.
+
+O vocabulário ajuda as pessoas a descrever as constatações de forma coerente, mas não substitui a análise de perigos do processo da planta. Lena liga as constatações do CNHP à análise de perigos onde elas tocam um perigo e deixa os juízos de consequência para o engenheiro de segurança de processo. A análise de ameaças e de falhas, mais adiante no programa, dá o método estruturado. Cada constatação se liga ao perigo pertinente. O engenheiro de segurança revisa essas ligações.
+
+### Nota prática
+
+Quando alguém pedir um painel de semáforos, ofereça três luzes que signifiquem algo: independência do SIS intacta (sim/não), constatações críticas abertas (contagem), correções adiadas além da data (contagem). Recuse uma quarta luz chamada "cibernética geral".
+
+### 15.1b Da propriedade ao teste
+
+Se uma constatação alega impacto na integridade, o plano de validação precisa incluir uma verificação de integridade (quem ainda consegue escrever). Se alega impacto na disponibilidade, a validação inclui um canário ou uma sondagem sintética — não um novo ataque. Alinhe a propriedade, a constatação e o método de novo teste num único parágrafo do ticket. O resultado do novo teste vai para o mesmo ticket da constatação original, com a data e a verificação usada, para que o encerramento possa ser auditado depois.
+
+Na ABP, a constatação FW-12 alegava uma exposição de integridade, então o seu novo teste verificou que a zona do escritório não conseguia mais alcançar o SCADA, usando o mesmo método de alcançabilidade.
+
+### Exercícios
+
+- **EX043 — Mapa.** Mapeie a escrita de setpoint não autenticada no PLC-A para C/I/D/segurança física, com uma frase para cada. Rubrica: 3 = as quatro delimitadas; 2 = três; 1 = uma; 0 = nada.
+- **EX044 — Termos.** Distinga vulnerabilidade, exposição e risco de processo para essa escrita. Rubrica: 3 = divisão clara; 2 = duas claras; 1 = confuso; 0 = nada.
+- **EX045 — Recusa da pontuação.** Uma parte interessada quer uma pontuação de "hackeabilidade" de 0 a 100. Recuse com alternativas. Rubrica: 3 = recusa + medidas concretas; 2 = só recusa; 1 = vago; 0 = inventa a pontuação.
+
+### Síntese
+
+Nomeie a propriedade, separe a exposição do risco de processo, prefira medidas que você possa recalcular.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever requisitos de segurança de TO testáveis; (2) rastrear um requisito até uma regra de conduto e um laboratório; (3) gerir as interfaces entre CLP, SIS, historiador e monitores de segurança.
+
+### 16.1 Requisitos testáveis
+
+"A planta deve ser segura" não é um requisito. "Nenhum host fora do L1/L2 deverá iniciar escritas nos registradores de retenção do PLC-A; verificado por análise de alcançabilidade e por testes da lista de permissões sobre dados de teste sintéticos" é. Cada requisito precisa de um id, de uma declaração com "deverá", de um método de verificação e de um dono.
+
+Lena atribui a cada requisito do CNHP um id, como R-12, e um dono antes de qualquer trabalho de projeto começar. Um requisito sem método de verificação volta ao autor. Lena também confere se cada um pode ser testado sobre dados de teste sintéticos, porque um requisito que só pode ser verificado escrevendo num controlador em operação não pode ser aceito.
+
+### 16.2 Rastreabilidade
+
+Matriz: requisito para elemento de projeto para caso de teste para evidência da planta. Quando uma constatação mostra um conduto para o SIS, você sabe qual requisito e qual teste falharam. Sem a matriz, as análises pós-incidente viram busca de culpados.
+
+Lena mantém a matriz como um arquivo no repositório do CNHP, atualizado no mesmo pull request que a política que ela descreve. Cada linha liga um requisito como o R-12 à lista de arestas zoneada, ao teste de alcançabilidade e ao hash mais recente da exportação do firewall. Quando um teste falha, a matriz mostra qual requisito está em risco e quem é o seu dono.
+
+### 16.3 Interfaces
+
+O PLC-A publica valores de processo; o SIS-B consome sensores dedicados; o historiador consome tags do CLP; o monitor serial consome um tap somente de escuta. Acordem as listas de tags e as taxas de atualização. Uma mudança de interface é uma solicitação de mudança, não uma edição silenciosa durante um lote.
+
+> **Caso sintético — Ashford Batch Plant.** O requisito R-12, "SIS não alcançável a partir do L4", é rastreado até a lista de arestas zoneada, o lab_reach.py e o hash trimestral da exportação do firewall no dossiê.
+
+Lena mantém a lista de tags de cada interface no repositório, com o seu dono e a sua taxa de atualização.
+
+### 16.4 Erros e limites
+
+As matrizes de rastreabilidade apodrecem se não forem atualizadas no mesmo PR que a política. Mantenha-as ao lado do código.
+
+A integração contínua de Lena reprova um pull request que muda um arquivo de política sem tocar a matriz, o que mantém os dois em sincronia. Cada linha também traz a data da sua última verificação. As linhas não conferidas há um trimestre são sinalizadas na reunião de revisão, porque uma ligação antiga muitas vezes está quebrada. Os donos confirmam cada linha anualmente.
+
+### Nota prática
+
+Ponha os ids dos requisitos nos nomes dos objetos do firewall e nos comentários de configuração dos detectores (req=R-12). Poder buscar durante um incidente vale mais do que um slide que um dia mapeou requisitos para módulos.
+
+### 16.1b Glossário e aposentadoria
+
+Mantenha um glossário de uma página: permissão de trabalho, ConduitSet, lista de permissões, técnica planejada, evidência lacrada. As partes interessadas usam mal "cobertura" e "risco" o tempo todo; o glossário é um artefato de requisitos. A rastreabilidade também cobre a aposentadoria: quando um requisito é retirado, marque-o como substituído, com um ponteiro, em vez de apagar a linha. As constatações históricas ainda citam os ids antigos.
+
+Os SLAs internos entre serviços importam: o monitor pode precisar que o repositório de constatações aceite um evento em até N segundos durante uma condição de parada. Escreva isso como um requisito, com um teste de carga sintético. Sem ele, os avisos de condição de parada chegam depois que a pessoa já ligou para a segurança de processo.
+
+### Exercícios
+
+- **EX046 — "Deverá".** Reescreva "impedir o escritório de tocar o SCADA" como dois requisitos com "deverá". Rubrica: 3 = dois "deverá" testáveis, com método de verificação; 2 = um bom; 1 = ainda vago; 0 = nada.
+- **EX047 — Rastreio.** Para o R-12, nomeie o artefato e o sinal de teste que falha. Rubrica: 3 = arestas zoneadas + L1-SIS em reach(L4); 2 = um; 1 = vago; 0 = nada.
+- **EX048 — Interface.** Liste três campos de um contrato de interface de lista de tags. Rubrica: 3 = nome da tag, tipo/unidades de engenharia, taxa de atualização (ou equivalente); 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Requisitos que você pode testar, ligações que você pode seguir, interfaces que você versiona.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) sintonizar uma malha PI simples e ver a ação integral eliminar o desvio; (2) posicionar sensores de segurança na malha de controle sem desestabilizá-la; (3) evitar tempestades de alertas que escondem os alarmes de processo.
+
+### 17.1 PI em uma página
+
+Um controlador proporcional deixa um desvio em regime permanente; a ação integral acumula o erro e o elimina. O laboratório muda o setpoint de nível de 50 para 60 em degrau e compara apenas kp com kp+ki. Os engenheiros de segurança precisam dessa fluência para não propor detectores que briguem com o controlador.
+
+```python
+# Lab 17 - discrete PI level control vs. setpoint step (synthetic)
+def sim(kp, ki, steps=200, sp=60.0):
+    level, integ, err_hist = 50.0, 0.0, []
+    for t in range(steps):
+        err = sp - level
+        integ += err * 0.1
+        u = max(0.0, min(3.0, kp*err + ki*integ))   # inflow m3/h capped
+        level += (u - 0.02*level)*0.1
+        err_hist.append(abs(err))
+    return level, sum(err_hist)/len(err_hist), max(err_hist[50:])
+for kp,ki in ((0.05,0.0),(0.05,0.01),(0.2,0.01)):
+    final, mae, peak = sim(kp,ki)
+    print(f"kp={kp} ki={ki} final={final:.2f} mae={mae:.2f} peak_abs_err_after_5s={peak:.2f}")
+```
+
+Saída esperada:
+
+```text
+kp=0.05 ki=0.0 final=44.61 mae=13.29 peak_abs_err_after_5s=15.38
+kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
+kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
+```
+
+Lena usa o laboratório para explicar aos colegas por que um detector deve observar o erro, e não o nível bruto. A saída do laboratório mostra o desvio desaparecendo quando a ação integral é acrescentada, o que ajuda os colegas a ver como um controlador responde a uma perturbação. Um detector que alarmasse sobre o próprio nível dispararia sempre que um setpoint mudasse.
+
+### 17.2 Sensores na malha
+
+A inspeção em linha acrescenta latência. Se a constante de tempo do processo é de minutos (nível de tanque), dezenas de milissegundos não importam. Se é de dezenas de milissegundos (pressão rápida), prefira taps passivos. Meça antes de implantar (Capítulo 3).
+
+Na bancada, Lena compara a latência acrescentada por cada dispositivo candidato com a constante de tempo da malha em que ele ficaria: no tronco do T-1 a margem é de minutos, no skid do compressor de apenas dezenas de milissegundos, então um mesmo dispositivo pode ser aceitável no primeiro e inaceitável no segundo. A latência medida na bancada decidiu as duas escolhas, e não os números declarados pelo fornecedor. Lena registra os valores medidos com as constantes de tempo de cada malha, para que a decisão possa ser revista se um processo mudar.
+
+### 17.3 Tempestades de alertas
+
+Se todo alerta cibernético médio aciona o pager da planta inteira, as pessoas silenciam o pager — e então perdem o alarme de processo que importa. O roteamento por severidade e os limites de taxa nas notificações são amortecimento, exatamente como no laboratório de racionalização de alarmes.
+
+> **Caso sintético — Ashford Batch Plant.** Depois da revisão do laboratório PI, Lena rejeitou uma caixa de DPI em linha no skid do compressor (malha rápida) e aprovou um tap serial somente de escuta no tronco lento do tanque.
+
+O roteamento de Lena na ABP aciona o líder de turno apenas para eventos de alta severidade.
+
+### 17.4 Erros e limites
+
+O PI de livro-texto ignora o agarramento da válvula e o atraso do sensor. Use os historiadores da planta para a sintonia real; o laboratório serve para a intuição.
+
+Lena diz aos revisores que as curvas limpas do laboratório não são o que o historiador da planta mostra. As malhas reais da ABP têm agarramento de válvula e atraso de transmissor, que tornam a resposta mais lenta e mais ruidosa. Todo limiar de detector proposto a partir dos resultados do laboratório é conferido contra uma semana de dados do historiador antes de ser usado, e a sintonia dos controladores reais fica com os engenheiros de controle. Lena registra as diferenças encontradas.
+
+### Nota prática
+
+Desenhe a malha: setpoint, erro, controlador, atuador, processo, sensor, e marque onde o seu dispositivo de segurança fica. Se você não consegue marcá-lo, não sabe se está medindo ou atuando.
+
+### 17.1b Setpoints e posicionamento humano
+
+Escreva o setpoint ao lado do sensor (tempo de ciclo ≤ 50 ms). Revise os setpoints quando a planta mudar de receitas ou quando os acionamentos falsos excederem uma taxa acordada. Ponha pessoas onde for necessário julgar uma autorização; ponha automação onde o atraso for perigoso. Aprovar o alargamento de um conduto é humano. Negar uma escrita fora da faixa é automação.
+
+Na ABP, o setpoint de tempo de ciclo do monitor serial é de 50 ms, e ele é revisto quando as receitas mudam. A regra prática é simples: automação para decisões rápidas e bem definidas, pessoas para julgamentos sobre autorização e risco.
+
+### Exercícios
+
+- **EX049 — Laboratório.** Qual par (kp, ki) chega mais perto de 60 com o menor mae? Rubrica: 3 = (0.2, 0.01) com os números; 2 = só o par; 1 = par errado; 0 = nada.
+- **EX050 — Posicionamento.** Em linha versus tap para uma malha de pressão de 20 ms — escolha e justifique. Rubrica: 3 = tap/passivo, risco de latência; 2 = escolha sem porquê; 1 = em linha sem cuidado; 0 = nada.
+- **EX051 — Amortecimento.** Uma regra de amortecimento para os alertas cibernéticos na sala de controle. Rubrica: 3 = específica (lote, severidade, taxa); 2 = vaga; 1 = nenhuma útil; 0 = nada.
+
+### Síntese
+
+Entenda a malha antes de inserir segurança; amorteça os alertas para que os alarmes de processo continuem audíveis.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o zoneamento Purdue/62443 na ABP; (2) definir fronteiras de confiança para o acesso de engenharia; (3) escolher quando um ambiente sintético é o lugar certo para testar.
+
+### 18.1 Zonas que acompanham a segurança física
+
+L0/L1 contêm o processo e o controle básico; L2, a supervisão; L3, as operações do site; L3.5, a DMZ; L4/L5, a empresa. O SIS fica com condutos cuidadosamente controlados. Os diagramas de arquitetura precisam conferir com o grafo de alcançabilidade, não com um pôster Purdue de marketing.
+
+Lena confere o diagrama da ABP contra os resultados de alcançabilidade da exportação do firewall em cada revisão. Na ABP, as portas de engenharia do SIS-B só são alcançáveis pelo caminho da chave seletora durante os testes programados, e o escritório só alcança os dados do SCADA pela réplica do historiador na DMZ. Onde o diagrama e os resultados de alcançabilidade discordam, os resultados vencem e o diagrama é corrigido. Lena marca no diagrama o hash da exportação contra a qual ele foi conferido.
+
+### 18.2 Acesso de engenharia
+
+Estações de engenharia e laptops de fornecedores cruzam fronteiras de confiança. Prefira: host de salto na DMZ, contas com prazo, sessões monitoradas, nenhuma VPN permanente da internet para o L2. USB e modems celulares também são arquitetura — inventarie-os.
+
+Na ABP, as sessões de fornecedores passam por um host de salto na DMZ, com contas com prazo e sessões gravadas. O inventário de Lena lista todo laptop de engenharia autorizado a se conectar, e qualquer VPN permanente encontrada numa revisão é relatada como constatação. O uso de USB nas estações de engenharia é registrado e revisado mensalmente.
+
+### 18.3 Ambientes sintéticos
+
+Quando os métodos são ruidosos ou a planta é frágil, use um ambiente sintético ou um gêmeo digital que espelhe a configuração. Os resultados então sustentam afirmações sobre a configuração espelhada, não sobre o comportamento do processo real. Diga isso no relatório.
+
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
+
+Saída esperada:
+
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
+
+> **Caso sintético — Ashford Batch Plant.** A arquitetura-alvo do CNHP é o grafo zoneado: o L4 visualiza através do L3.5; a engenharia do SIS só pela chave seletora; nenhum conduto do L2 para o L1-SIS.
+
+A cópia de bancada do firewall e do monitor da ABP mantida por Lena é um ambiente desse tipo; os seus relatórios declaram que os resultados se aplicam apenas à configuração espelhada.
+
+### 18.4 Erros e limites
+
+Os diagramas envelhecem. Revalide as zonas contra a exportação do firewall em operação a cada janela.
+
+Lena compara o diagrama com a exportação do firewall em operação no início de cada janela e registra qualquer diferença como constatação. Um diagrama que não foi conferido contra a exportação é marcado como não verificado, para que ninguém se apoie nele por engano durante um incidente. O novo teste de seis meses depois encontrou exatamente esse tipo de deriva. A verificação leva minutos com o script de alcançabilidade. O seu resultado é arquivado com o registro da janela.
+
+### Nota prática
+
+Pendure o diagrama de zonas ao lado do mapa de privilégios do Capítulo 8. Quando um fornecedor pedir uma regra temporária, aponte para a parede e pergunte qual aresta ele quer acrescentar — e qual requisito ela quebra.
+
+### 18.1b Hosts de salto e saída
+
+Os hosts de salto de engenharia são de alto valor: endureça-os, registre o início e o fim das sessões, proíba agentes pessoais de sincronização de arquivos e reconstrua-os a partir de imagens de referência entre as janelas, quando possível. As zonas de avaliação e de engenharia precisam de listas de permissões de saída: apenas os CIDRs da planta no escopo e o repositório de evidências. Uma saída aberta transforma um laptop comprometido num ponto de pivô que a permissão de trabalho nunca autorizou.
+
+Os diagramas de rede da zona de avaliação vão para o dossiê com a mesma disciplina de hashes dos arquivos de evidência. Quando um auditor pergunta como o tráfego chegou ao L2, você mostra a versão do diagrama que estava em vigor, não um esboço mais novo e arrumado.
+
+### Exercícios
+
+- **EX052 — Esboço de zonas.** Posicione IHM, PLC-A, SIS-B, historiador e PC do escritório em zonas e nomeie dois controles nas setas. Rubrica: 3 = zonas claras + dois controles; 2 = só zonas; 1 = confuso; 0 = nada.
+- **EX053 — Fronteira.** Por que "mandar por e-mail um CSV de receita para o meu Gmail" é uma violação de fronteira? Rubrica: 3 = os dados saem das zonas controladas/autorização; 2 = aceno à privacidade; 1 = vago; 0 = aprova.
+- **EX054 — Afirmação do gêmeo.** Frase de limitação para testes feitos só em ambiente sintético. Rubrica: 3 = afirma a configuração, não o processo real; 2 = vaga; 1 = afirma demais; 0 = nada.
+
+### Síntese
+
+Zonas, fronteiras do acesso de engenharia e limites honestos sobre o que um gêmeo pode provar.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar a identidade em TO sem atacar a criptografia; (2) usar hashes para a integridade das evidências; (3) tratar as credenciais de engenharia com segurança.
+
+### 19.1 Identidade na planta
+
+Pergunte: quais contas existem nas IHMs, nos historiadores e nos hosts de engenharia? Quais usam senhas compartilhadas? Quais se integram ao diretório do site? MFA nos hosts de salto do L4 é comum; MFA numa IHM legada pode ser impossível — documente os controles compensatórios (acesso físico, gravação de sessões).
+
+A revisão de identidade de Lena na ABP listou todas as contas na HMI-1, no historiador e na eng-WS-1, com o dono e se eram compartilhadas. A senha compartilhada de engenheiro foi a constatação mais clara e foi substituída por contas nominais. Onde não foi possível acrescentar MFA a uma IHM legada, ela registrou os controles compensatórios, como o acesso trancado à sala de controle e a gravação de sessões no host de salto, e nomeou quem os confere.
+
+### 19.2 Hashes de evidências
+
+Calcule o hash das exportações de configuração e dos arquivos de evidência (SHA-256); guarde os digests no ticket. Recalcule depois para detectar adulteração. Associe os hashes ao id do ator e à versão da permissão de trabalho.
+
+Lena calcula o hash de cada exportação do firewall quando ela é coletada e guarda o digest no ticket com o horário, a sua conta e a versão da permissão de trabalho. As revisões posteriores recalculam o hash do arquivo guardado e comparam. Uma divergência é investigada antes que a evidência seja usada, porque uma exportação alterada pode significar adulteração, uma edição descuidada ou simplesmente o arquivo errado. O manifesto nomeia o algoritmo usado.
+
+### 19.3 Segredos
+
+As credenciais de engenharia ficam num cofre; retiradas de curta duração; rotação no fim da janela. Nenhum segredo no git, em capturas de tela ou no chat. As contas de serviço dos historiadores recebem senhas únicas e uso monitorado.
+
+> **Caso sintético — Ashford Batch Plant.** Uma senha compartilhada de "engineer" na eng-WS-1 foi substituída por contas nominais depois da revisão de identidade do CNHP. A retirada dos arquivos de projeto do CLP agora registra a pessoa, e não um usuário compartilhado mítico.
+
+Na ABP, as credenciais de engenharia do projeto do PLC-A são retiradas do cofre para uma janela e trocadas depois.
+
+### 19.4 Erros e limites
+
+Os hashes detectam mudança, não distinguem malícia de acidente. Associe-os aos logs de acesso. Não tente quebrar hashes de senhas da planta neste curso.
+
+Um hash que confere prova apenas que um arquivo não mudou desde que o hash foi calculado, não que ele foi coletado de forma lícita ou interpretado corretamente. Lena associa as verificações de hash ao log de acesso do repositório de evidências, que mostra quem tocou cada arquivo e quando. As constatações sobre senhas são relatadas a partir da configuração e das listas de contas; quebrar hashes está fora do programa e fora de qualquer permissão que ela tenha.
+
+### Nota prática
+
+As contas de quebra de vidro para emergências da planta precisam de controle duplo para serem retiradas e de rotação automática após o uso. Uma senha de quebra de vidro nunca usada, colada com fita embaixo de um teclado, não é um controle.
+
+### 19.1b Certificados e quebra de vidro
+
+Para historiadores e hosts de salto com TLS, registre os certificados apresentados, sob autorização. Certificados expirados ou divergentes são constatações de operação. O registro de certificados de Lena lista, para cada host, o sujeito, o emissor, a data de expiração e a data da observação, para que um certificado prestes a expirar na réplica do historiador vire um ticket com data, e não uma parada inesperada. Prefira SHA-256 para os manifestos de evidências; documente o algoritmo no manifesto.
+
+As escolhas de algoritmo dos manifestos são um campo de versão, não uma troca silenciosa no meio da janela. Quando o algoritmo muda, os manifestos existentes mantêm o seu campo de algoritmo original e são recalculados num novo manifesto, em vez de editados.
+
+### Exercícios
+
+- **EX055 — Perguntas.** Cinco perguntas de identidade para os hosts de engenharia da ABP. Rubrica: 3 = cinco concretas; 2 = três; 1 = uma; 0 = nada.
+- **EX056 — Hash.** O que você faz quando o hash de uma exportação lacrada do firewall diverge? Rubrica: 3 = restaurar/reexportar, investigar as escritas, constatação de processo; 2 = só registrar; 1 = vago; 0 = ignorar.
+- **EX057 — Regra de segredos.** Política de uma linha para as senhas de projetos de CLP em tickets. Rubrica: 3 = nunca no ticket; referência ao cofre; 2 = não compartilhar; 1 = fraca; 0 = permite colar.
+
+### Síntese
+
+Leia a configuração de identidade; calcule o hash das evidências; mantenha os segredos num cofre.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança de TO, IoT e sistemas ciberfísicos: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) situar a engenharia de segurança de TO entre a SP 800-82, a ISA/IEC 62443 e o ATT&CK for ICS; (2) definir o que este programa de graduação constrói; (3) declarar a fronteira de segurança física para todos os capítulos seguintes.
+
+### 20.1 Mapa da disciplina
+
+A NIST SP 800-82 orienta a segurança de ICS. A ISA/IEC 62443 estrutura zonas, condutos e níveis de segurança. O ATT&CK for ICS nomeia técnicas adversárias para o planejamento e a cobertura — não como uma pontuação de risco residual. As especificações do Modbus definem o protocolo que você coloca em lista de permissões. Levantamentos acadêmicos (Giraldo et al.; Urbina et al.) alertam contra detectores avaliados apenas com ataques fáceis. Os engenheiros constroem as plataformas e os processos que tornam essas fontes operáveis sob as restrições da segurança de processo.
+
+Lena usa cada fonte naquilo em que ela é boa e cita a revisão exata.
+
+### 20.2 O que construímos
+
+O CNHP na Ashford Batch Plant é o exemplo contínuo: zoneamento, listas de permissões, detectores com métricas honestas, janelas de correção, dossiês de evidências. Os formados projetam, verificam e operam programas assim — eles não inventam exploits contra CLPs.
+
+Os produtos do programa são concretos: uma rede zoneada com alcançabilidade testada, listas de permissões impostas ao tráfego Modbus, detectores com intervalos de alarmes falsos publicados, um cronograma de correções com adiamentos datados e um dossiê que um auditor pode verificar. Cada capítulo seguinte acrescenta uma parte desse sistema e mostra como Lena a construiu e conferiu na ABP sem pôr um lote em risco.
+
+### 20.3 Fronteira de segurança
+
+Nenhum payload de exploit, nenhum acesso não autorizado à planta, nenhum dado pessoal ou proprietário real de lotes nos laboratórios, laboratórios apenas com dados sintéticos locais. Pedidos de uso dual são recusados (Capítulo 10). As condições de parada da segurança de processo sempre vencem. Essa fronteira é um requisito em toda revisão de projeto dos Capítulos 21–50.
+
+> **Caso sintético — Ashford Batch Plant.** A liderança pediu um red team que hackeasse a planta. Lena reformulou o mandato: um programa de endurecimento autorizado que impõe zonas e mede a detecção sem pôr lotes em risco.
+
+Lena confere todo projeto contra essa fronteira.
+
+### 20.4 Erros e limites
+
+Os frameworks evoluem; reconfira URLs e versões antes de citá-los numa tese. Este capítulo orienta; não substitui a leitura das fontes primárias.
+
+A lista de fontes de Lena registra a revisão e a data de acesso de cada norma e artigo usados nos documentos do CNHP. Antes de citar um framework na sua tese, ela verifica se existe uma revisão mais nova e anota qualquer mudança que afete o seu argumento. O capítulo dá apenas a orientação suficiente para começar; ler as fontes primárias faz parte do trabalho.
+
+### Nota prática
+
+Mantenha no fichário do CNHP uma lista de uma página das "fontes que realmente usamos", com datas de acesso. Examinadores e auditores perguntam qual revisão da 62443 você quis dizer; "a da ISA" não é resposta.
+
+### 20.1b Cursos vizinhos e entregáveis
+
+Este livro de engenharia pressupõe familiaridade com cálculo, probabilidade e engenharia de software dos capítulos anteriores. O livro de TO do bacharelado é mais amplo; o livro de tecnólogo enfatiza exercícios de implementação. Os operadores precisam de runbooks e tickets; os engenheiros precisam de esquemas, testes e ADRs. A avaliação do projeto final procura os dois. Cada entregável nomeia o seu leitor pretendido na primeira página.
+
+Os entregáveis da própria Lena na ABP incluem os dois tipos. Os seus runbooks e tickets servem os operadores que rodam a planta todos os dias, enquanto os esquemas, testes e registros de decisão servem os engenheiros que vão manter as ferramentas depois dela. Os avaliadores procuram os dois.
+
+### Exercícios
+
+- **EX058 — Encaixe dos frameworks.** Associe cada necessidade a SP 800-82 / 62443 / ATT&CK ICS / especificação Modbus. Rubrica: 3 = quatro pares sensatos; 2 = três; 1 = dois; 0 = nada.
+- **EX059 — Mandato.** Reescreva "hackear a planta" como uma frase de mandato de engenharia. Rubrica: 3 = autorização + endurecimento/medição + segurança física; 2 = parcial; 1 = ainda centrado em ataque; 0 = nada.
+- **EX060 — Fronteira.** Três itens concretos fora do escopo deste programa. Rubrica: 3 = três claros; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Os engenheiros viabilizam o endurecimento autorizado de TO; não substituem a segurança de processo por esperteza.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — capítulo 20 de 50
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -742,7 +1483,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação. Esta edição parcial traz as resoluções de EX001–EX030; as de EX031–EX150 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX150 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** (9 − 1,5) / 1,25 = 7,5 / 1,25 = 6,0 horas.
 
@@ -803,6 +1544,66 @@ Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP 
 **EX029.** Alarme de processo inesperado; tempo de ciclo ou latência acima do orçamento; falha ou trip do SIS; o contato de segurança de processo manda parar; um host da lista de negação foi sondado; mudança de setpoint inexplicada — quaisquer quatro, com gatilhos claros.
 
 **EX030.** Unidades/ativos no escopo; métodos permitidos; janela de data/hora; limites de impacto e de taxa; contatos nomeados de engenharia e de segurança de processo; regras de parada e de retomada. Assinada por alguém com autoridade sobre as unidades.
+
+**EX031.** Exemplo: CRC/enquadramento serial exige um monitor serial no tronco; o código de função do Modbus TCP exige captura/decodificação IP no conduto; saber qual operador mudou um setpoint exige um log de auditoria da IHM ou da aplicação. Outras trincas corretas são aceitas.
+
+**EX032.** Decodificação somente leitura do Modbus TCP até o PLC-A a partir da HMI-1/do HIST-1; apenas os códigos de função 3/4/6; registradores 40001-40010; nenhuma escrita a partir da estação de avaliação; janela sábado 02:00-04:00, com o contato de segurança de processo de plantão.
+
+**EX033.** WRITE_REGS permite à HMI-1 fc=6 apenas para registradores em range(40001, 40011). 40003 está dentro (PASS); 40050 está fora (BLOCK register-out-of-range).
+
+**EX034.** Contas nominais de engenheiro; direitos de administrador por meio de associação a um grupo retirada com prazo; todos os downloads de lógica registrados; uma segunda pessoa aprova os downloads para o SIS e para o CLP de produção fora de uma janela.
+
+**EX035.** O patch do banco de dados do historiador (2,5 h, risco 5) foi adiado — a W1 levou o firmware do PLC-A e o firmware do switch; a W2 levou o SO da IHM e o antivírus da eng-WS; não sobraram horas.
+
+**EX036.** USB de fornecedor permitido apenas na eng-WS-2, 14 de março, 09:00-12:00, mídia verificada num quiosque isolado, sessão gravada em vídeo; porta desabilitada depois.
+
+**EX037.** Usar apenas a réplica do L3. SELECT limitado a tag, valor e timestamp. LIMIT 10000. Sem dumps. Arquivos destruídos em até 24 h, com confirmação no ticket.
+
+**EX038.** Obter as credenciais de analista emitidas para o teste; conectar; tentar um UPDATE/INSERT numa tabela de anotações de setpoints; registrar sucesso ou permissão negada. Nenhum payload elaborado.
+
+**EX039.** Seguros: tag_id, value, quality_code, timestamp. Proibidos: operator_name, customer_order_id, recipe_secret_key.
+
+**EX040.** Lista de permissões Modbus abp-modbus-v1.4.2 (SHA do git c0ffee1), carregada em 14 de março às 02:05 a partir do bucket de versões assinadas.
+
+**EX041.** Todo PR que alarga condutos (aresta ou código acrescentado, ou bloqueio removido) precisa de um ticket AUTH vinculado e de um segundo dono de código; restringir exige um dono.
+
+**EX042.** Uma integração contínua com credenciais da VPN da planta tocaria sistemas fora de uma janela autorizada por uma pessoa, poderia vazar segredos nos logs e faria as builds dependerem das redes da planta. Os dados de teste sintéticos mantêm a integração contínua segura e repetível.
+
+**EX043.** Confidencialidade: pouco impacto direto (escritas de setpoint não são leituras). Integridade: mudança não autorizada do setpoint de nível do T-1. Disponibilidade: o lote pode ser abortado ou intertravado. Segurança física: o nível muito alto do SIS-B continua independente se os condutos se mantiverem — declare isso explicitamente.
+
+**EX044.** Vulnerabilidade: escrita Modbus não autenticada. Exposição: gravável a partir da rede de IHMs do L2. Risco de processo: o julgamento do dono da planta sobre a probabilidade e a consequência de um transbordamento, dado o SIS-B — aceito ou remediado por ele.
+
+**EX045.** Não publicamos uma pontuação única de "hackeabilidade". Aqui estão: alcançabilidade do SIS (não), críticas abertas (1), alarmes por hora de operador (1,05), correções de alto risco adiadas (0).
+
+**EX046.** "Nenhum host do L4 deverá ter um conduto permitido até os servidores SCADA do L2; verificar por alcançabilidade em cada exportação do firewall." "Toda visualização de dados de processo a partir do L4 deverá usar a réplica do historiador no L3.5; verificar pela ausência de regras diretas do L4 para o L2 e por testes das ACLs da réplica."
+
+**EX047.** Artefato: a lista de arestas zoneada, sem L2 para L1-SIS e sem L4 para L2. Sinal: o lab_reach relata writes_to_SIS=True ou o L1-SIS no alcance a partir do L4.
+
+**EX048.** Nome/id da tag, tipo de dado e unidades de engenharia, taxa de atualização ou de exceção, significado do código de qualidade, dono — quaisquer três com significado claro.
+
+**EX049.** kp=0.2 ki=0.01: final≈58,15, mae≈4,62, o melhor dos três. O P puro (ki=0) deixa um desvio maior (final≈44,61).
+
+**EX050.** Prefira um tap passivo ou espelhamento; a DPI em linha arrisca acrescentar uma latência comparável à escala de tempo da malha. Meça primeiro numa cópia de bancada.
+
+**EX051.** Acionar imediatamente para eventos cibernéticos relevantes para a segurança física; agrupar os eventos médios num resumo do turno; suprimir duplicatas da mesma impressão digital por 24 h.
+
+**EX052.** PC do escritório no L4; historiador no L3; IHM no L2; PLC-A no L1; SIS-B no L1-segurança. Controles: salto pela DMZ para a visualização a partir do L4; nenhuma aresta do L2 para o SIS; lista de permissões no Modbus — qualquer esboço coerente com dois controles.
+
+**EX053.** Os dados da receita saem do caminho controlado de TO/TI para uma conta pessoal não autorizada, quebrando a confidencialidade e a retenção.
+
+**EX054.** Os testes usaram um ambiente sintético que espelha a configuração da ABP; os resultados sustentam afirmações sobre essa configuração sob a permissão de trabalho, não sobre o comportamento do processo real nem sobre dados de produção.
+
+**EX055.** Contas nominais ou compartilhadas? Locais ou do diretório? Membros do grupo de administradores? Última troca de senha? Procedimento de quebra de vidro? Gravação de sessões nos hosts de salto?
+
+**EX056.** Reexportar do dispositivo ou restaurar a cópia lacrada; reverificar os hashes; verificar quem escreveu depois do horário do lacre; abrir uma constatação de processo sobre edições não controladas.
+
+**EX057.** Os segredos da planta e de engenharia nunca são colados em tickets, no chat ou no git; os tickets guardam apenas um id de referência do cofre e o horário da última rotação.
+
+**EX058.** Exemplo: orientação de segurança de ICS para a SP 800-82; zonas/condutos/SL para a 62443; vocabulário de técnicas para o ATT&CK ICS; detalhes dos códigos de função para o Modbus Application Protocol.
+
+**EX059.** Projetar e operar um programa autorizado de endurecimento da rede de controle que imponha zonas e listas de permissões, meça a detecção com honestidade e nunca ponha em risco a segurança de processo nem exceda a permissão de trabalho assinada.
+
+**EX060.** Exploits funcionais para CLPs; varredura de plantas em operação sem permissão de trabalho; exportação da genealogia proprietária de lotes para os laboratórios; desativação do SIS para facilitar um teste.
 
 <a id="references"></a>
 
