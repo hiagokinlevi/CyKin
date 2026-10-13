@@ -56,9 +56,9 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 18. [Arquitectura de seguridad](#ch-18)
 19. [Identidad y criptografía](#ch-19)
 20. [Infraestructura crítica y seguridad sectorial: contexto de ingeniería](#ch-20)
-21. [Infraestructura crítica y seguridad sectorial: requisitos](../../en/book/MANUSCRIPT.md#ch-21)
-22. [Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos](../../en/book/MANUSCRIPT.md#ch-22)
-23. [Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas](../../en/book/MANUSCRIPT.md#ch-23)
+21. [Infraestructura crítica y seguridad sectorial: requisitos](#ch-21)
+22. [Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos](#ch-22)
+23. [Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas](#ch-23)
 24. [Infraestructura crítica y seguridad sectorial: métodos I](../../en/book/MANUSCRIPT.md#ch-24)
 25. [Taller de diseño I](../../en/book/MANUSCRIPT.md#ch-25)
 26. [Infraestructura crítica y seguridad sectorial: alternativas de arquitectura](../../en/book/MANUSCRIPT.md#ch-26)
@@ -1644,7 +1644,246 @@ La infraestructura crítica se define por las consecuencias. Los sectores difier
 <!-- cyberabc:chapter-navigation:start ch-20 -->
 ### Siga estudiando — capítulo 20 de 50
 
-[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](../../en/book/MANUSCRIPT.md#ch-21)
+[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Infraestructura crítica y seguridad sectorial: requisitos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) obtener requisitos de seguridad y resiliencia a partir de las consecuencias, las partes interesadas, las regulaciones y la información sobre amenazas; (2) escribir requisitos basados en el desempeño para la operación degradada, la recuperación y la seguridad funcional, no solo para la protección; (3) derivar requisitos de componentes a partir de los requisitos del sistema usando niveles de seguridad; y (4) negociar de forma explícita los conflictos entre requisitos. Aplica al sector los capítulos 5 y 16 y prepara el capítulo 22.
+
+### 21.1 Fuentes de los requisitos
+
+Los requisitos de seguridad de la infraestructura proceden de cinco fuentes, y un buen conjunto se traza hasta todas ellas: **consecuencias** (lo que nunca debe ocurrir y lo que debe restablecerse y con qué rapidez); **partes interesadas** (operadores, clientes como los hospitales, servicios de emergencia, reguladores); **regulaciones y normas** (p. ej., las evaluaciones de riesgos de la AWIA, NERC CIP, las medidas de gestión de riesgos de NIS2); **información sobre amenazas** (capacidades de los adversarios documentadas en fuentes como [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) y los avisos de CISA); y **restricciones** (equipos heredados, presupuesto, personal, certificación de seguridad funcional).
+
+### 21.2 Requisitos para la operación degradada
+
+Un sistema que solo puede estar «seguro» o «comprometido» está mal especificado. Escriba requisitos para los estados intermedios: *Durante la pérdida de la red de telemetría, cada estación de bombeo deberá continuar en control automático local dentro de sus límites configurados durante al menos 72 h.* *Durante una sospecha de compromiso de los servidores SCADA, los operadores deberán poder hacer funcionar PS3 y PS4 en modo manual local con procedimientos y personal documentados en menos de 1 h desde la decisión.* *Tras un incidente, la operación remota deberá restablecerse en menos de 8 h desde la decisión de restaurar, a partir de copias de seguridad fuera de línea verificadas.* Estos son los requisitos que mantienen abastecidas a las personas.
+
+### 21.3 Niveles de seguridad y requisitos de componentes
+
+IEC 62443-3-3 e IEC 62443-4-2 expresan los requisitos de sistema y de componente frente a **niveles de seguridad** (SL 1–4) que reflejan la capacidad del adversario al que hay que resistir, desde la infracción casual o fortuita hasta el ataque sofisticado y con muchos recursos ([presentación general de la serie ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). La evaluación de riesgos para el diseño (IEC 62443-3-2, [página del catálogo](https://webstore.iec.ch/en/publication/30727)) divide el sistema en zonas y conductos y asigna un nivel objetivo a cada uno. Un nivel objetivo se convierte después en requisitos de componente concretos; por ejemplo, la autenticación de todos los usuarios humanos o la protección de la integridad de las comunicaciones. El texto de la norma no es de libre acceso; cite cláusulas solo de un ejemplar obtenido legalmente.
+
+### 21.4 Conflictos y negociación
+
+Los requisitos entran en conflicto: acceso rápido del operador frente a autenticación fuerte; parches frecuentes frente a disponibilidad; registro detallado frente a almacenamiento en sitios remotos; soporte del proveedor frente a aislamiento de la red. No resuelva los conflictos en silencio durante el diseño. Registre cada uno, sus opciones y la decisión con su responsable, que suele ser la persona dueña del riesgo operativo. El primer conflicto registrado del TMRP es entre el modo manual local de R4 y la autenticación de R1, resuelto con un interruptor de llave, una alarma y un registro local. El responsable es operaciones, que asume el riesgo de un acceso manual más lento.
+
+### 21.5 Ejemplo resuelto: el conjunto de requisitos v1.0 del TMRP (sintético)
+
+| ID | Requisito | Fuente | Verificación |
+|---|---|---|---|
+| R1 | La telemetría y las órdenes entre el campo y el SCADA deberán llevar un MAC sobre el contenido y el contador; las comprobaciones fallidas deberán rechazarse y alarmarse. | Consecuencia (órdenes falsificadas), ADR-007 | Prueba (T1, T2) |
+| R2 | Los mensajes repetidos deberán rechazarse, también tras el reinicio de cualquiera de los extremos. | Amenaza (repetición) | Prueba (T2) |
+| R3 | Los controladores deberán rechazar las consignas fuera de los límites físicos configurados o que superen el escalón configurado, incluidos los valores no finitos. | Consecuencia (operación insegura) | Prueba (T3) |
+| R4 | Cada estación deberá admitir la operación manual local con independencia del SCADA y de la red. | Operación degradada | Demostración |
+| R5 | La telemetría de campo deberá funcionar ≥ 24 h con batería a la capacidad de fin de vida. | Parte interesada (visibilidad) | Análisis + prueba (T4) |
+| R6 | La operación remota deberá poder restaurarse en menos de 8 h a partir de copias de seguridad fuera de línea. | Recuperación | Ensayo (T7, capítulo 47) |
+| R7 | Las alarmas prioritarias deberán llegar a las pantallas de los operadores en menos de 60 s para el 99 % de los eventos. | Operaciones | Prueba (T5) |
+| R8 | Los registros de seguridad deberán protegerse en su integridad con anclas fuera de la zona de control. | Investigación | Prueba (T6) |
+| R9 | La pérdida de la dosificación de cloro deberá alarmarse en menos de 15 min por un camino independiente del controlador de dosificación. | Consecuencia (agua insegura) | Prueba |
+
+Conflicto registrado: el modo manual local de R4 crea un camino que elude la autenticación de R1. Resolución: el modo manual exige un interruptor de llave físico en el panel, genera una alarma en el SCADA y se registra localmente.
+
+### 21.6 Actividad práctica
+
+Elija un estado degradado aún no cubierto (p. ej., la pérdida del proveedor de cloro durante 7 días) y escriba un requisito, su fuente y su método de verificación. Escriba el requisito con la misma forma que la tabla del TMRP: un identificador, un único enunciado verificable, su fuente y un método de verificación. Una pérdida de siete días del suministro de cloro, por ejemplo, podría llevar a un inventario mínimo de producto químico en el sitio, verificado por inspección, y a un procedimiento con un proveedor alternativo, probado mediante un ejercicio. Compruebe que su requisito no entra en conflicto con uno existente y, si lo hace, registre el conflicto y quién debe decidirlo.
+
+### 21.7 Errores comunes y límites
+
+- Requisitos solo de protección, ninguno de degradación y recuperación.
+- Niveles de seguridad asignados sin una evaluación de riesgos documentada.
+- Citar cláusulas de normas sin acceso al texto.
+- Conflictos resueltos en silencio por quien redacta el diseño.
+- Requisitos que no pueden verificarse con los medios del programa.
+
+El conjunto del TMRP evita el primer error incluyendo R4, R5 y R6 para la operación degradada y la recuperación, y evita el cuarto registrando abiertamente el conflicto del modo manual local. Cada requisito del conjunto puede verificarse con el banco, el ensayo o la demostración del propio programa.
+
+### Ejercicios — capítulo 21
+
+**EX041 — Requisitos para estados degradados.** *Objetivo:* especificar el comportamiento bajo estrés. *Entradas:* LRWA, escenario «servidores SCADA cifrados por *ransomware*». *Pasos:* escriba tres requisitos que cubran la continuidad del servicio, la detección y contención, y la restauración, cada uno con su fuente y su verificación. *Evidencia esperada:* tabla. *Rúbrica:* 3 = medibles, cubren las tres fases, verificación realista; 2 = falta una fase; 1 = solo protección; 0 = nada.
+
+**EX042 — Registro de un conflicto.** *Objetivo:* documentar un conflicto. *Entradas:* los operadores quieren que la HMI permanezca con la sesión iniciada todo el turno; un requisito nuevo exige volver a autenticarse tras 15 min de inactividad. *Pasos:* redacte un registro de conflicto con opciones, resolución recomendada y responsable. *Evidencia esperada:* registro. *Rúbrica:* 3 = las opciones incluyen controles compensatorios (control de acceso físico a la sala de control, bloqueo en modo solo visualización con reautenticación rápida para las acciones de control), responsable designado por su rol; 2 = sin responsable; 1 = elige un bando sin opciones; 0 = nada.
+
+### Síntesis del capítulo
+
+Derive los requisitos de las consecuencias, las partes interesadas, las regulaciones, las amenazas y las restricciones. Especifique la operación degradada y la recuperación con tanto cuidado como la protección. Traduzca los niveles de seguridad objetivo en requisitos de componente concretos mediante una evaluación de riesgos documentada, y registre cada conflicto con sus opciones, su decisión y su responsable.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Siga estudiando — capítulo 21 de 50
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) construir un inventario de activos y un modelo del sistema que sirvan para el análisis de seguridad; (2) modelar las dependencias funcionales, los flujos de datos y las fronteras de confianza; (3) representar los estados degradados, no solo «funciona / no funciona»; y (4) mantener el modelo actualizado y protegido como información sensible. Se apoya en los capítulos 2, 13 y 21 y prepara el capítulo 23 (análisis de amenazas y fallas).
+
+### 22.1 Primero, el inventario
+
+No se puede proteger lo que no se conoce. Un inventario de activos de TO registra, para cada dispositivo: identidad, ubicación, función, zona, direcciones de red, versiones de hardware y de firmware, relaciones de comunicación, responsable, criticidad y estado del soporte. Constrúyalo a partir de varias fuentes y concílielas: documentos de diseño, monitoreo pasivo de la red, exportaciones de configuración y recorridos por los sitios. Cada fuente omite cosas: los documentos derivan, el monitoreo pasivo no ve los dispositivos silenciosos y los recorridos no ven los virtuales.
+
+En LRWA, el inventario cubre las 42 estaciones de campo, el par SCADA y las pasarelas, y se construyó con los documentos de diseño, el monitoreo pasivo en el conmutador de control y en la cabecera LTE, y visitas a los sitios.
+
+### 22.2 Tres vistas de un sistema
+
+- **Vista funcional:** lo que hace el sistema (funciones como «mantener el nivel del depósito», «desinfectar», «dar visibilidad al operador») y qué funciones dependen de cuáles (el grafo del Lab 2).
+- **Vista física y de red:** dónde están los activos y cómo se conectan: zonas, conductos, enlaces.
+- **Vista de flujos de datos:** qué datos se mueven, hacia dónde, en qué dirección, con qué protección y a través de qué **fronteras de confianza**. Los diagramas de flujo de datos con fronteras de confianza son la entrada del modelado de amenazas (capítulo 23).
+
+Mantenga las vistas enlazadas: cada función corresponde a los activos que la implementan; cada flujo corresponde a un conducto.
+
+### 22.3 Estados degradados
+
+Los grafos de «funciona / no funciona» son útiles (capítulo 2), pero insuficientes. Una estación de bombeo puede estar en *automático remoto*, *automático local*, *manual local*, *degradada* (una bomba de dos) o *fuera de servicio*; el depósito puede estar *normal*, *bajo* o *por debajo del piso*. Un **modelo de estados** para cada función crítica, con transiciones causadas por fallas, ataques y acciones de los operadores, permite preguntar: desde la operación normal, ¿qué secuencia de eventos lleva a un estado inaceptable y qué control la interrumpe?
+
+PS4 es el primer candidato evidente en LRWA, porque abastece directamente al hospital.
+
+### 22.4 El modelo como información sensible
+
+Un modelo preciso del sistema es un mapa para un adversario. Guárdelo con control de acceso, versiónelo y publique solo abstracciones. Trate las exportaciones a proveedores y consultores mediante acuerdos. Mantenga un **registro de cambios del modelo** vinculado a la gestión de la configuración (capítulo 16) para que el modelo siga actualizado; un modelo con un año de retraso es un pasivo presentado como activo. El modelo de LRWA, incluidos el grafo de dependencias y las listas de permitidos de las zonas, se guarda con control de acceso y se versiona con cada cambio de configuración.
+
+### 22.5 Ejemplo resuelto: modelo funcional de Hollin Hill (sintético)
+
+La función F1, «abastecer a St Brenna's», se cumple si está disponible el camino A (PS4 directo) o el camino B (depósito de Hollin Hill alimentado por PS3), *y* el tanque propio del hospital cubre el hueco durante la conmutación. El camino A necesita PS4, su energía (alimentador F2 o generador) y su control (basta el automático local). El camino B necesita el depósito por encima del piso y PS3 con energía del alimentador F1. La telemetría no es necesaria para el suministro (el control automático local mantiene las bombas en marcha), pero sí para la *visibilidad* (F3) y la *intervención* remota. Esta idea cambia las prioridades: la propiedad de seguridad más importante para F1 es que nadie pueda ordenar a distancia a las bombas que entren en un estado inseguro, mientras que la pérdida de telemetría es un problema de visibilidad con una reserva de 72 h en automático local (R-local). El árbol de fallas del capítulo 23 formaliza exactamente esta estructura Y/O.
+
+### 22.6 Actividad práctica
+
+Amplíe el Lab 2 para que cada nodo tenga un tipo de dependencia Y u O, e implemente una función de disponibilidad que evalúe si `hospital_supply` funciona dado un conjunto de nodos fallidos. Pruebe con las fallas `{grid_f1}`, `{ps4}` y `{ps4, grid_f1}`. Modele el suministro del hospital como un O de sus dos caminos, con la energía de PS4 como un O del alimentador F2 y el generador. Deje la telemetría fuera de la función de suministro, como argumenta el ejemplo resuelto, pero manténgala en una función de visibilidad separada para que su pérdida siga apareciendo. Después contraste sus tres resultados con el EX043: el suministro debe sobrevivir a la pérdida del alimentador F1 o a la de PS4, y fallar solo cuando se pierden ambos.
+
+### 22.7 Errores comunes y límites
+
+- Inventario a partir de una sola fuente.
+- Diagramas sin fronteras de confianza ni dirección de los datos.
+- Modelos de «funciona / no funciona» cuando los modos degradados deciden el resultado.
+- Modelos que nunca se actualizan o que se comparten libremente.
+- Tratar la pérdida de telemetría y el uso indebido del control como la misma consecuencia.
+
+El modelo de Hollin Hill muestra claramente el último error: tratar la pérdida de telemetría como pérdida de suministro enviaría el presupuesto del TMRP a la redundancia de comunicaciones, cuando la propiedad que realmente protege al hospital es que no se pueda ordenar a distancia a las bombas que entren en un estado inseguro.
+
+### Ejercicios — capítulo 22
+
+**EX043 — Evaluación Y/O.** *Objetivo:* implementar y usar un modelo de dependencias mixto. *Entradas:* §22.6. *Pasos:* impleméntelo, ejecute las tres pruebas e informe los resultados. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = semántica correcta; `{grid_f1}` → el suministro sobrevive gracias a PS4 si PS4 funciona en automático local (sin necesidad de LTE); `{ps4}` → sobrevive gracias al depósito; `{ps4, grid_f1}` → falla; 2 = se exige erróneamente la telemetría para el suministro; 1 = no ejecutado; 0 = nada.
+
+**EX044 — Modelo de estados.** *Objetivo:* modelar los estados degradados. *Entradas:* los modos de PS4 de §22.3. *Pasos:* dibuje un modelo de estados con al menos cinco estados y los eventos (falla, ataque, acción del operador) entre ellos; identifique un camino desde *automático remoto* hasta *fuera de servicio* que un atacante remoto podría provocar, y el control que lo rompe. *Evidencia esperada:* tabla de estados y análisis. *Rúbrica:* 3 = estados y eventos coherentes, camino de ataque realista, el control lo rompe (p. ej., el rearme tras un disparo exige una acción local); 2 = solo estados; 1 = solo «funciona / no funciona»; 0 = nada.
+
+### Síntesis del capítulo
+
+Construya el inventario a partir de varias fuentes conciliadas, modele el sistema en vistas funcional, física y de flujos de datos con fronteras de confianza, represente explícitamente los modos degradados y mantenga el modelo actualizado y protegido. Los buenos modelos separan la visibilidad del control y muestran qué propiedad protege realmente el servicio.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Siga estudiando — capítulo 22 de 50
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) modelar amenazas sobre diagramas de flujo de datos con STRIDE y ATT&CK for ICS; (2) construir árboles de fallas y calcular los conjuntos de corte mínimos y la probabilidad del evento superior; (3) combinar el análisis de fallas y de ataques mediante árboles de ataque, diagramas de pajarita (*bow-tie*) y escenarios guiados por las consecuencias; y (4) enunciar los supuestos y los límites de cada método. Usa los capítulos 7 y 22 y prepara los capítulos 24, 27 y 33.
+
+### 23.1 Modelado de amenazas
+
+El modelado de amenazas pregunta de forma sistemática qué puede salir mal en cada elemento y en cada frontera de confianza de un modelo del sistema. **STRIDE** (suplantación, manipulación, repudio, divulgación de información, denegación de servicio, elevación de privilegios) es un recurso mnemotécnico para las categorías de amenazas que se aplica a cada flujo de datos, proceso y almacén. [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) cataloga las tácticas y técnicas de los adversarios observadas contra sistemas industriales, desde el acceso inicial hasta el impacto (por ejemplo, la manipulación del control o la pérdida de la vista). Use STRIDE para generar amenazas candidatas elemento por elemento y ATT&CK para comprobar su realismo y su exhaustividad frente al comportamiento observado.
+
+### 23.2 Árboles de fallas
+
+Un árbol de fallas descompone un evento superior no deseado en combinaciones de eventos básicos mediante puertas Y y O. Un **conjunto de corte mínimo** es un conjunto mínimo de eventos básicos cuya ocurrencia conjunta provoca el evento superior; la lista de conjuntos de corte mínimos es la lógica de falla del sistema en su forma más simple. Los conjuntos de corte de un solo evento son puntos únicos de falla. Con probabilidades independientes de los eventos básicos, la probabilidad del evento superior se calcula exactamente por enumeración en los árboles pequeños, o de forma aproximada sumando las probabilidades de los conjuntos de corte (la **aproximación de eventos raros**, una cota superior cuando las probabilidades son pequeñas).
+
+### 23.3 Árboles de ataque y diagramas de pajarita
+
+Un árbol de ataque aplica la misma estructura Y/O al objetivo de un adversario; las hojas son acciones del atacante con atributos como el costo, la habilidad o la detectabilidad, en lugar de probabilidades. Asignar probabilidades a los ataques deliberados es cuestionable (los adversarios se adaptan), así que los árboles de ataque suelen usarse para encontrar el camino más barato o menos detectable y colocar después controles en él. Un **diagrama de pajarita** une las causas (izquierda), el evento central y las consecuencias (derecha), y muestra las barreras preventivas antes del evento y las barreras de mitigación después; comunica bien con operadores y directivos.
+
+### 23.4 Combinar fallas y ataques
+
+Los eventos de infraestructura mezclan causas accidentales y deliberadas: un atacante puede esperar a una tormenta, o una falla puede enmascarar una intrusión. Los métodos guiados por las consecuencias, como la [CCE del INL](https://inl.gov/national-security/cce/), parten de la consecuencia inaceptable y preguntan qué combinaciones de fallas y acciones del adversario llegan a ella. Un enfoque práctico: construya el árbol de fallas de la consecuencia; marque qué eventos básicos podría provocar deliberadamente un adversario; vuelva a calcular con esos eventos fijados como «ocurridos» para ver qué queda como protección. Lo que queda es su verdadera defensa frente a un adversario capaz.
+
+### 23.5 Ejemplo resuelto: pérdida del suministro al hospital (sintético)
+
+Evento superior: St Brenna's pierde el suministro durante más de 4 h en un año. Siguiendo el modelo del capítulo 22: el camino A (PS4) se pierde si falla PS4, o si fallan a la vez el alimentador F2 *y* el generador de PS4; el camino B se pierde si el depósito no está disponible, si falla PS3 o si falla el alimentador F1; y el evento exige que se pierdan ambos caminos *y* que el tanque del hospital no logre cubrir el hueco (TANK). El Lab 9 enumera el árbol con probabilidades anuales sintéticas. Hay seis conjuntos de corte mínimos, todos de orden tres o cuatro, porque TANK aparece en todos. El mayor contribuyente es {G1, PS4, TANK}. La probabilidad exacta es de 9,10 × 10⁻⁵ por año; la aproximación de eventos raros da 9,36 × 10⁻⁵.
+
+Ahora, la visión adversarial: si un atacante puede detener a distancia PS3 y PS4 (sin R1), ambos pasan a «ocurridos» y el evento superior se reduce a TANK por sí solo, con probabilidad 0,03. La autenticación de las órdenes remotas lleva el sistema de un problema de dos de tres fallas independientes a un problema de punto único de falla. Esa comparación es el argumento más claro a favor de R1 en todo el expediente.
+
+### 23.6 Actividad práctica: Lab 9
+
+```python
+# Lab 9 - fault tree: minimal cut sets and top-event probability (synthetic annual probabilities, offline)
+from itertools import product
+P = {"G1": 0.10, "G2": 0.08, "GEN": 0.05, "PS4": 0.02, "PS3": 0.02, "RES": 0.01, "TANK": 0.03}
+# Top: hospital loses supply > 4 h = (feed A lost AND feed B lost)
+# feed A (PS4 direct) lost = PS4 OR (G2 AND GEN);  feed B (reservoir) lost = RES OR PS3 OR G1
+# hospital on-site tank TANK failing (empty/contaminated) is needed too: top = A AND B AND TANK
+def top(s): A = s["PS4"] or (s["G2"] and s["GEN"]); B = s["RES"] or s["PS3"] or s["G1"]; return A and B and s["TANK"]
+names = list(P); exact = 0.0; cuts = []
+for bits in product([0, 1], repeat=len(names)):
+    s = dict(zip(names, bits)); pr = 1.0
+    for n in names: pr *= P[n] if s[n] else 1 - P[n]
+    if top(s):
+        exact += pr
+        on = frozenset(n for n in names if s[n])
+        cuts.append(on)
+mcs = sorted({c for c in cuts if not any(o < c for o in cuts)}, key=lambda c: (len(c), sorted(c)))
+for c in mcs:
+    pr = 1.0
+    for n in c: pr *= P[n]
+    print(sorted(c), f"{pr:.2e}")
+rare = sum(eval("*".join(str(P[n]) for n in c)) for c in mcs)
+print(f"rare-event approx {rare:.3e}  exact {exact:.3e}")
+```
+
+Salida esperada:
+
+```text
+['G1', 'PS4', 'TANK'] 6.00e-05
+['PS3', 'PS4', 'TANK'] 1.20e-05
+['PS4', 'RES', 'TANK'] 6.00e-06
+['G1', 'G2', 'GEN', 'TANK'] 1.20e-05
+['G2', 'GEN', 'PS3', 'TANK'] 2.40e-06
+['G2', 'GEN', 'RES', 'TANK'] 1.20e-06
+rare-event approx 9.360e-05  exact 9.101e-05
+```
+
+Los seis conjuntos de corte contienen TANK, de modo que el almacenamiento propio del hospital aparece en todos los caminos hacia el evento superior. El mayor contribuyente individual combina el alimentador F1, PS4 y el tanque. Las dos cifras de probabilidad difieren ligeramente porque la aproximación de eventos raros cuenta dos veces los conjuntos de corte que se solapan, y por eso da una pequeña cota superior del valor exacto. La lectura adversarial del ejemplo resuelto se obtiene fijando PS3 y PS4 como falla segura y volviendo a ejecutar, lo que el EX045 le pide hacer a usted.
+
+### 23.7 Errores comunes y límites
+
+- Árboles de fallas con eventos básicos dependientes tratados como independientes (energía común, software común).
+- Probabilidades de ataques deliberados presentadas como frecuencias.
+- Modelos de amenazas sin fronteras de confianza.
+- Listas STRIDE nunca contrastadas con el comportamiento observado de los adversarios.
+- Tratar la aproximación de eventos raros como exacta cuando las probabilidades son grandes.
+
+El propio Lab 9 supone independencia, así que una falla de software compartida en las RTU de ambas estaciones haría optimistas sus cifras. Sus probabilidades de falla de PS3 y PS4 son frecuencias de fallas aleatorias, de modo que no dicen nada sobre la probabilidad de que un atacante detenga ambas estaciones; por eso el caso adversarial se trata condicionando y no añadiendo una probabilidad de ataque.
+
+### Ejercicios — capítulo 23
+
+**EX045 — Árbol condicionado al adversario.** *Objetivo:* cuantificar lo que aporta la autenticación. *Entradas:* Lab 9. *Pasos:* (1) fije PS3 y PS4 con probabilidad 1 (el atacante puede detenerlas a distancia) y calcule la probabilidad del evento superior; (2) en su lugar, fije G1 y G2 en 1 (el atacante puede cortar ambos alimentadores) y vuelva a calcular; (3) interprete ambos resultados. *Evidencia esperada:* números e interpretación de 150 palabras. *Rúbrica:* 3 = números correctos (0,03; y con G1=G2=1, superior = P(TANK)·P(PS4 o GEN), calcúlelo), interpretación vinculada a los controles (R1; independencia del generador y tanque); 2 = un número erróneo; 1 = no ejecutado; 0 = nada.
+
+**EX046 — STRIDE sobre un flujo.** *Objetivo:* modelar las amenazas de un flujo de datos. *Entradas:* el flujo pasarela–SCADA (tramas del Lab 8 sobre el conducto LTE). *Pasos:* aplique cada categoría de STRIDE, nombre una técnica de ATT&CK for ICS donde encaje e indique el control existente o propuesto. *Evidencia esperada:* tabla de seis filas. *Rúbrica:* 3 = las seis categorías tienen sentido y los controles corresponden (p. ej., suplantación → MAC; DoS → recurso al automático local); 2 = una categoría vacía; 1 = solo una lista; 0 = nada.
+
+### Síntesis del capítulo
+
+Los modelos de amenazas generan lo que podría salir mal en cada frontera de confianza; ATT&CK los mantiene realistas. Los árboles de fallas y los conjuntos de corte mínimos muestran la lógica de falla y los puntos únicos de falla; los árboles de ataque y los diagramas de pajarita muestran los caminos del adversario y las barreras. Combínelos condicionando a lo que un adversario puede provocar: lo que queda es la defensa que realmente importa.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Siga estudiando — capítulo 23 de 50
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 →](../../en/book/MANUSCRIPT.md#ch-24)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1774,6 +2013,24 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX039.** Se evalúa con la rúbrica; por ejemplo, distribución eléctrica: unidades de consecuencia: clientes interrumpidos × horas, MW no suministrados, clientes críticos afectados; tecnologías: relés de protección, sistemas de gestión de la distribución, RTU de subestaciones; regulaciones: normas NERC CIP (cite versión y fecha) y NIS2 (2022/2555) para los operadores de la UE; incidente: Ucrania 2015, descrito a partir de CISA IR-ALERT-H-16-056-01.
 
 **EX040.** Modelo: un único producto de seguridad con acceso privilegiado al núcleo estaba instalado en muchas organizaciones de distintos sectores y se actualizaba automáticamente; una actualización de contenido defectuosa hizo fallar a la vez los equipos Windows, y Microsoft estimó que resultaron afectados unos 8,5 millones de dispositivos. La propiedad es una causa común a través de una dependencia compartida, privilegiada y actualizada automáticamente. Práctica: despliegues por etapas (canario) de las actualizaciones, por parte de los proveedores y, cuando sea posible, controlados por los clientes en los sistemas críticos, más procedimientos de recuperación que no dependan de los equipos afectados. No fue un ataque.
+
+### Capítulo 21
+
+**EX041.** Continuidad del servicio: «Ante la pérdida del SCADA, PS3 y PS4 deberán continuar en control automático local y los operadores deberán poder operarlas localmente en menos de 1 h (ejercicio)». Contención: «Ante una sospecha de compromiso del SCADA, los caminos de órdenes remotas hacia todas las estaciones deberán deshabilitarse desde las pasarelas en menos de 15 min desde la decisión (prueba)». Restauración: «La operación remota deberá restaurarse a partir de copias de seguridad fuera de línea verificadas en menos de 8 h desde la decisión de restaurar (ensayo)».
+
+**EX042.** Conflicto: acceso continuo del operador frente a reautenticación a los 15 min. Opciones: (a) mantener la reautenticación; (b) sin reautenticación; (c) la pantalla de solo visualización sigue activa; las acciones de control exigen una reautenticación rápida (acercar la credencial o PIN) tras 15 min de inactividad, con la sala de control bajo control de acceso físico. Recomendación: (c). Responsable: el gerente de operaciones (dueño del riesgo) junto con el responsable de seguridad.
+
+### Capítulo 22
+
+**EX043.** Con PS4 necesitando solo `grid_f2` en modo automático local (sin LTE para el suministro) y el suministro como O: `{grid_f1}` → el suministro funciona (gracias a PS4); `{ps4}` → funciona (gracias al depósito); `{ps4, grid_f1}` → falla. Un modelo que hace depender el suministro de la telemetría falla erróneamente en el primer caso.
+
+**EX044.** Estados: automático remoto, automático local, manual local, degradada (una bomba), disparada, fuera de servicio. Camino de ataque: órdenes de parada falsificadas y arranques y paradas repetidos (automático remoto → disparada por la protección del arrancador) → si el rearme tras el disparo es remoto, el atacante mantiene la estación disparada → fuera de servicio. Control: el rearme tras el disparo exige una acción local; órdenes autenticadas; limitación de la frecuencia de las órdenes de arranque.
+
+### Capítulo 23
+
+**EX045.** PS3 = PS4 = 1: superior = P(TANK) = 0,03. G1 = G2 = 1: el camino B se pierde; el camino A se pierde si falla PS4 o GEN: 1 − 0,98 × 0,95 = 0,069; superior = 0,03 × 0,069 = 0,00207. Interpretación: la autenticación de las órdenes remotas elimina el camino más barato para el adversario (el evento superior baja de 0,03 a 9,1 × 10⁻⁵); si un adversario puede cortar ambos alimentadores, el generador y el tanque del hospital se convierten en las barreras decisivas: hay que mantenerlos y probarlos.
+
+**EX046.** Suplantación: tramas falsificadas (ATT&CK for ICS: Spoof Reporting Message) → MAC por estación. Manipulación: valores modificados en tránsito → MAC. Repudio: disputas sobre las órdenes → registros firmados o con MAC y anclas. Divulgación de información: telemetría leída en la red del operador → cifrado del operador más cifrado opcional de la carga útil. Denegación de servicio: inhibición de señal o inundación (Denial of Service; Block Reporting Message) → recurso al automático local, alarma de estación sin datos, limitación de frecuencia. Elevación de privilegios: compromiso de la pasarela para emitir órdenes → endurecimiento de la pasarela, filtrado de códigos de función, límites locales.
 
 <a id="glossary"></a>
 
