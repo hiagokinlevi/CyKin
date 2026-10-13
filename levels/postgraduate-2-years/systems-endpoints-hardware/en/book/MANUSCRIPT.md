@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Postgraduate Course
 
 - Language: English (`en`); course 150, Postgraduate course.
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: graduates and practitioners learning to govern endpoint risk in a regulated, multi-site organisation that depends on vendor-certified devices.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -44,19 +44,19 @@ You will (1) describe the endpoint estate of a multi-site clinic group; (2) expl
 
 ### 1.1 The case
 
-Priya Natarajan, a postgraduate student at the fictional Westmere Polytechnic supervised by Dr Owen Hale, joins the fictional Kestrel Dental Group for her applied project. Kestrel runs six clinics with sixty workstations, a small central office and an external IT supplier. A routine audit found that several imaging workstations ran an operating system no longer receiving security updates, and that nobody could say exactly how many.
+Priya Natarajan, a postgraduate student at the fictional Westmere Polytechnic supervised by Dr Owen Hale, joins the fictional Kestrel Dental Group for her applied project. Kestrel runs six clinics with sixty workstations, a small central office and an external IT supplier. A routine audit found that several imaging workstations ran an operating system no longer receiving security updates, and that nobody could say exactly how many. Dr Hale asks her to treat that uncertainty as the first finding: a clinic group that cannot count its unsupported machines cannot plan, budget or explain its risk to anyone. The project therefore begins with a count and ends with a governed estate.
 
 ### 1.2 Why unsupported systems matter
 
-When a vendor ends support, newly found flaws stay unfixed. NIST SP 800-40 Rev. 4 treats end-of-life software as a standing risk that must be replaced, isolated or formally accepted, because patching is no longer available as a control. In a clinic, the problem is sharper: imaging devices are tied to vendor software certified for a particular operating system, so upgrading is not simply a matter of pressing a button.
+When a vendor ends support, newly found flaws stay unfixed. NIST SP 800-40 Rev. 4 treats end-of-life software as a standing risk that must be replaced, isolated or formally accepted, because patching is no longer available as a control. In a clinic, the problem is sharper: imaging devices are tied to vendor software certified for a particular operating system, so upgrading is not simply a matter of pressing a button. For Kestrel this means each unsupported imaging PC needs one of those three answers, recorded and owned, rather than the hope that nothing happens before the next budget year.
 
 ### 1.3 Patient data on endpoints
 
-Workstations at reception and in surgeries display and cache patient records and radiographs. A compromise affects confidentiality, but also availability: a clinic that cannot open its schedule or images cancels appointments. Priya therefore frames risk in terms staff recognise, such as cancelled sessions and notification duties, alongside technical terms.
+Workstations at reception and in surgeries display and cache patient records and radiographs. A compromise affects confidentiality, but also availability: a clinic that cannot open its schedule or images cancels appointments. Priya therefore frames risk in terms staff recognise, such as cancelled sessions and notification duties, alongside technical terms. At Kestrel, a reception PC that fails on a Monday morning means a clinic phoning patients to rebook, and an imaging PC that fails means surgeries without radiographs. A stolen laptop holding patient records may also bring a duty to report the breach. Priya's risk table uses these consequences, so the operations manager can compare endpoint risks with the clinical and business risks she already manages.
 
 ### 1.4 The project question
 
-Her question is practical: within twelve months, how can Kestrel know every workstation's support status, reduce unsupported systems, and control the ones that must remain? Each part maps to a later chapter: inventory, a replacement plan, and an exception process with compensating controls.
+Her question is practical: within twelve months, how can Kestrel know every workstation's support status, reduce unsupported systems, and control the ones that must remain? Each part maps to a later chapter: inventory, a replacement plan, and an exception process with compensating controls. Writing the question this way gives the project a deadline and three things that can be checked at the end. Dr Hale approves it only after Priya agrees with the operations manager how each part will be measured, so the final report can show change against the starting point rather than impressions of progress.
 
 ### Worked example
 
@@ -94,15 +94,15 @@ You will (1) combine sources into one inventory; (2) record support status; (3) 
 
 ### 2.1 Sources of truth
 
-Kestrel has three partial lists: the supplier's management console, a purchasing spreadsheet and the imaging vendor's install records. CIS Controls v8 Safeguard 1.1 asks for a detailed enterprise asset inventory, and 2.2 asks that software be supported or documented as an exception. Priya merges the lists by serial number, since names change when machines are reimaged.
+Kestrel has three partial lists: the supplier's management console, a purchasing spreadsheet and the imaging vendor's install records. CIS Controls v8 Safeguard 1.1 asks for a detailed enterprise asset inventory, and 2.2 asks that software be supported or documented as an exception. Priya merges the lists by serial number, since names change when machines are reimaged. Each list misses something: the console lacks machines never enrolled, purchasing records include machines already retired, and the vendor records cover only imaging PCs. Merging by serial number lets Priya see which source is wrong for each mismatch, and she records the reason beside each corrected row.
 
 ### 2.2 Recording support status
 
-For each workstation she records operating system, version, the vendor's support end date and the business role. The support date comes from the vendor's published lifecycle page, recorded with the date she checked it. Workstations whose role is imaging are tagged, because their upgrade path depends on another vendor.
+For each workstation she records operating system, version, the vendor's support end date and the business role. The support date comes from the vendor's published lifecycle page, recorded with the date she checked it. Workstations whose role is imaging are tagged, because their upgrade path depends on another vendor. Recording the date of each lifecycle check matters because vendors sometimes extend or shorten support, and an auditor will ask when the status was last confirmed. Priya also notes who uses each machine and how often, since a little-used spare is easier to replace than the main imaging PC in a busy surgery.
 
 ### 2.3 Coverage before conclusions
 
-Before counting unsupported systems, Priya checks that every clinic is represented. One clinic's machines were missing from the console because they had never been enrolled; she visits and records them by hand. Only then does she trust totals.
+Before counting unsupported systems, Priya checks that every clinic is represented. One clinic's machines were missing from the console because they had never been enrolled; she visits and records them by hand. Only then does she trust totals. Unenrolled machines are exactly the ones least likely to be patched or monitored, so missing them would understate the problem. Priya's visit adds them to the merged list and to the supplier's enrolment queue. She also asks clinic managers to confirm the counts for their own sites, which catches a spare PC kept in a store cupboard. Her method notes record both checks, so later counts can be compared on the same basis.
 
 ### Lab — Support status by clinic
 
@@ -130,7 +130,7 @@ clinics with none: ['Vale']
 
 ### 2.4 Reading the result
 
-The lab shows 12 of 60 workstations, 20 percent, on an unsupported operating system, concentrated in Harbour and North, with Vale having none. Most of the twelve are imaging or cephalometric machines. This tells Priya that the problem is mostly a vendor-dependency problem, not neglect of ordinary desktops.
+The lab shows 12 of 60 workstations, 20 percent, on an unsupported operating system, concentrated in Harbour and North, with Vale having none. Most of the twelve are imaging or cephalometric machines. This tells Priya that the problem is mostly a vendor-dependency problem, not neglect of ordinary desktops. That reading changes the plan: ordinary desktops can follow a normal upgrade cycle, while the imaging machines need vendor negotiations, licence decisions and probably exceptions. Priya reports the count by clinic so that the operations manager can see where the work will concentrate.
 
 ### Keeping the inventory current
 
@@ -172,19 +172,19 @@ You will (1) find a vendor's certified configurations; (2) plan upgrades jointly
 
 ### 3.1 Certified configurations
 
-Imaging software is certified on specific operating system versions. Running it on an uncertified version may void support. Priya asks the vendor for its current compatibility list and finds that a supported version is certified for newer software releases, but the clinic's licence covers only the old release.
+Imaging software is certified on specific operating system versions. Running it on an uncertified version may void support. Priya asks the vendor for its current compatibility list and finds that a supported version is certified for newer software releases, but the clinic's licence covers only the old release. The licence gap turns a technical question into a commercial one. Priya records the certified versions, the licensed release and the upgrade path for each imaging model, with the date of the vendor's list, so that later decisions can be traced to that evidence.
 
 ### 3.2 Costs and timing
 
-Upgrading means a software licence upgrade, possibly new hardware for capture cards, and a visit by the vendor's engineer. Priya builds a simple cost and schedule table per machine, which shows that most can move within the year if work is batched by clinic.
+Upgrading means a software licence upgrade, possibly new hardware for capture cards, and a visit by the vendor's engineer. Priya builds a simple cost and schedule table per machine, which shows that most can move within the year if work is batched by clinic. Batching by clinic means one engineer visit can cover several machines and one disruption window for each site. The table lists each machine's licence, hardware and labour needs with a target month, and Kestrel's finance lead reviews it before the budget is set. Priya marks costs as estimates until the vendor's quote arrives, so the table does not promise more than the evidence supports.
 
 ### 3.3 Written commitments
 
-Promises made on the phone are easily forgotten. Priya asks the vendor to confirm in writing the target versions, prerequisites and engineer availability. These letters become evidence for the exception register and for auditors.
+Promises made on the phone are easily forgotten. Priya asks the vendor to confirm in writing the target versions, prerequisites and engineer availability. These letters become evidence for the exception register and for auditors. Written confirmation also protects Kestrel if staff change at the vendor. For Harbour's machines, the letter states the target version, the capture card replacement and the planned month. Priya files each letter with the inventory row it supports, so anyone reviewing an exception can see what the vendor promised and when it was due.
 
 ### 3.4 Shared responsibility
 
-NIST SP 800-53 Rev. 5 control SA-22 addresses unsupported system components, expecting replacement or documented justification. Kestrel cannot shift this duty to the vendor, but it can make the vendor's role explicit in the contract renewal, including notice periods before support ends.
+NIST SP 800-53 Rev. 5 control SA-22 addresses unsupported system components, expecting replacement or documented justification. Kestrel cannot shift this duty to the vendor, but it can make the vendor's role explicit in the contract renewal, including notice periods before support ends. Priya drafts contract language for the operations manager: the vendor should give notice before support for a certified version ends, publish its compatibility list, and state how long each release will be supported. The supplier's role is also written down, since it operates the machines but does not own the risk. The proposal goes to Kestrel's next contract review, and Priya records it as a recommendation rather than an agreed term.
 
 ### When the vendor cannot help yet
 
@@ -226,11 +226,11 @@ You will (1) design an exception register; (2) choose compensating controls; (3)
 
 ### 4.1 What an exception is
 
-Some machines cannot be upgraded this year. An exception records that the risk is knowingly accepted for a period, by whom, and with which compensating controls. It is not permission forever; each entry has an expiry date.
+Some machines cannot be upgraded this year. An exception records that the risk is knowingly accepted for a period, by whom, and with which compensating controls. It is not permission forever; each entry has an expiry date. At Kestrel, each entry names the machine, the reason it cannot be upgraded, the controls in place, the manager who accepted the risk and the date the decision expires. An exception without these details is only a note that a problem exists. Expiry forces a fresh decision, so a temporary arrangement cannot quietly become permanent. Priya builds the register as a simple table, so clinic managers can read it without technical help.
 
 ### 4.2 Compensating controls
 
-For an imaging PC that cannot be patched, Kestrel reduces exposure: place it on an isolated network segment that reaches only the image server, block internet access, remove email and web browsing, apply application allowlisting and restrict who can sign in. The CIS Benchmarks and Microsoft's App Control guidance give the configuration detail.
+For an imaging PC that cannot be patched, Kestrel reduces exposure: place it on an isolated network segment that reaches only the image server, block internet access, remove email and web browsing, apply application allowlisting and restrict who can sign in. The CIS Benchmarks and Microsoft's App Control guidance give the configuration detail. Each control reduces a different path: the segment limits which machines can reach the PC, blocking the internet and email removes common ways malware arrives, allowlisting stops unapproved programs running, and sign-in restrictions limit who can make changes. Priya records which controls are in place on each excepted machine, with evidence such as a firewall rule.
 
 ### Lab — Exception register review
 
@@ -254,11 +254,11 @@ entries 6; expired 2 ['IMG-N2', 'IMG-H2']; no compensating control 1 ['IMG-H1']
 
 ### 4.3 Reading the review
 
-Of six entries, two have expired without renewal and one has no compensating control recorded. Priya raises all three with the operations manager the same week. The expired ones are either renewed with a fresh decision or scheduled for replacement; the missing control is fixed by moving the machine onto the isolated segment.
+Of six entries, two have expired without renewal and one has no compensating control recorded. Priya raises all three with the operations manager the same week. The expired ones are either renewed with a fresh decision or scheduled for replacement; the missing control is fixed by moving the machine onto the isolated segment. The review shows why a register needs checking, not just filling in: entries had expired without anyone noticing, and one control existed only on paper. Priya adds the review to the quarterly schedule so that expiry dates and controls are checked regularly.
 
 ### 4.4 Accountability
 
-Each exception is approved by a named manager, not the IT supplier, because accepting risk is a business decision. Approvals are reviewed quarterly.
+Each exception is approved by a named manager, not the IT supplier, because accepting risk is a business decision. Approvals are reviewed quarterly. The supplier can advise on controls and costs, but it does not carry the consequences of a failed clinic or a data breach; Kestrel does. Naming the manager makes the decision visible and gives auditors a person to ask. At the quarterly review, each approver confirms that the reason still holds and the controls are still in place, or the machine moves to the replacement plan. Priya records each confirmation with the date and the approver's name.
 
 ### Why allowlisting fits these machines
 
@@ -300,19 +300,19 @@ You will (1) apply a recognised baseline; (2) pilot changes; (3) measure complia
 
 ### 5.1 Choosing a baseline
 
-The 48 supported desktops follow the CIS Benchmark for their Windows version at level one, adjusted with Microsoft's security baseline. Priya and the supplier review each recommendation against clinic needs, such as card readers and the practice management client.
+The 48 supported desktops follow the CIS Benchmark for their Windows version at level one, adjusted with Microsoft's security baseline. Priya and the supplier review each recommendation against clinic needs, such as card readers and the practice management client. Starting from a published benchmark gives Kestrel a tested, documented set of settings instead of a list written from scratch. Each recommendation that conflicts with clinic needs is either adjusted or left out, and the reason is written down, so that the baseline reflects Kestrel's work rather than a generic office. The supplier applies the agreed settings through its management console, which also reports compliance against them.
 
 ### 5.2 Piloting
 
-Changes go first to one desktop per clinic for two weeks. The pilot finds that a screen-lock timeout of five minutes frustrates surgery staff wearing gloves; it is set to ten minutes with a lock shortcut, and the reason recorded.
+Changes go first to one desktop per clinic for two weeks. The pilot finds that a screen-lock timeout of five minutes frustrates surgery staff wearing gloves; it is set to ten minutes with a lock shortcut, and the reason recorded. Piloting one desktop per clinic catches local needs that a single office test would miss, such as different card readers or the surgery workflow. Staff at pilot desks are told what changed and how to report problems, and Priya keeps a short log of each complaint with the decision taken. The baseline is rolled out to the remaining desktops only after the two-week pilot ends.
 
 ### 5.3 Measuring compliance
 
-The supplier's console reports compliance per setting. Priya tracks the share of desktops fully compliant each week. Drift is investigated rather than overwritten blindly, since a drift often signals a real working need.
+The supplier's console reports compliance per setting. Priya tracks the share of desktops fully compliant each week. Drift is investigated rather than overwritten blindly, since a drift often signals a real working need. When a desktop drifts, Priya asks the clinic first: a setting changed to let a new scanner work is a reason to adjust the baseline or add a documented exception, while an unexplained change is investigated as a possible problem. Weekly tracking also shows whether compliance holds after the rollout, not just on the day settings are applied. Clinic-specific gaps are listed separately so that they can be followed up.
 
 ### 5.4 Least privilege
 
-Staff lose local administrator rights; the supplier uses separate admin accounts. This single change prevents much drift and accidental software installation.
+Staff lose local administrator rights; the supplier uses separate admin accounts. This single change prevents much drift and accidental software installation. Before the change, staff could install software, change settings and disable protection on their own machines, often with good intentions. Removing those rights means changes go through the supplier, who records them. Priya arranges how staff request software, so the clinics are not left waiting when they need a legitimate tool, and the supplier's separate admin accounts are used only for administration, never for email or web browsing.
 
 ### Common recommendations
 
@@ -356,19 +356,19 @@ You will (1) schedule updates around surgeries; (2) track latency; (3) handle fa
 
 ### 6.1 Timing
 
-Clinics run long days and some Saturdays. Updates install overnight with restarts at 21:00, and a deadline forces a restart after five days. SP 800-40 Rev. 4 recommends planning maintenance so that patching is routine rather than an emergency.
+Clinics run long days and some Saturdays. Updates install overnight with restarts at 21:00, and a deadline forces a restart after five days. SP 800-40 Rev. 4 recommends planning maintenance so that patching is routine rather than an emergency. Restarting at 21:00 avoids late appointments and evening cleaning, and the five-day deadline ensures that a PC left signed in does not delay updates indefinitely. Saturday clinics are asked about their hours so that restarts do not interrupt work. The schedule is agreed with clinic managers and written into the patch plan, so changes to it are deliberate, recorded decisions.
 
 ### 6.2 Rings
 
-A small first ring of office machines takes updates on release day, clinics follow after three days. If the first ring shows problems, the supplier pauses the second ring.
+A small first ring of office machines takes updates on release day, clinics follow after three days. If the first ring shows problems, the supplier pauses the second ring. Office machines go first because problems there are less disruptive than in a clinic: an office user can wait for a fix, while a surgery cannot. Three days gives the supplier time to spot problems reported by the first ring or published by the vendor. Pausing the second ring is the supplier's decision, but it must tell the operations manager and record why, and the pause has an end date. Emergency updates can follow a shorter, documented route.
 
 ### 6.3 Measuring latency
 
-Priya measures days from release to install for each desktop, and reports the share within 14 days and the slowest tail. Machines often switched off at night show up in the tail.
+Priya measures days from release to install for each desktop, and reports the share within 14 days and the slowest tail. Machines often switched off at night show up in the tail. The share within 14 days shows typical performance, while the slowest tail shows which machines are left exposed for longest. Looking at the tail by clinic and role tells Priya where to act: a reception PC that is switched off every evening needs a different fix from a machine that fails to install. Her monthly figure uses the same definition each time, so changes can be compared fairly.
 
 ### 6.4 Failures
 
-Failed updates are grouped by cause: pending restart, low disk space, offline. Each cause gets a fix, such as Wake-on-LAN for overnight installs.
+Failed updates are grouped by cause: pending restart, low disk space, offline. Each cause gets a fix, such as Wake-on-LAN for overnight installs. Grouping by cause turns a list of failures into a set of fixes the supplier can act on. Pending restarts are handled by the deadline, low disk space by clearing old files and checking disk sizes, and offline machines by waking them for installs. Each month Priya checks whether a cause has shrunk after its fix was applied, rather than assuming the fix worked. Repeated failures on one machine are passed to the supplier for investigation.
 
 ### Third-party software
 
@@ -416,19 +416,19 @@ You will (1) verify disk encryption; (2) manage recovery keys; (3) plan for thef
 
 ### 7.1 Why it matters
 
-Laptops used by the dental nurse manager and clinicians at home carry patient data. Full-disk encryption with BitLocker protects data if a device is stolen, provided recovery keys are protected and encryption is verified.
+Laptops used by the dental nurse manager and clinicians at home carry patient data. Full-disk encryption with BitLocker protects data if a device is stolen, provided recovery keys are protected and encryption is verified. Encryption is only useful if it is actually on, if keys are available when a legitimate user is locked out, and if keys cannot be used by a thief. Priya's plan covers all three: verifying encryption on each laptop, escrowing recovery keys, and limiting who can retrieve them. Kestrel's nine laptops are listed in the inventory with their users, so each one can be checked.
 
 ### 7.2 Verification
 
-Priya compares console reports with a sample of devices checked by hand. Three laptops show encryption suspended after a firmware update; the supplier resumes protection and adds a weekly check.
+Priya compares console reports with a sample of devices checked by hand. Three laptops show encryption suspended after a firmware update; the supplier resumes protection and adds a weekly check. A console report shows what the management tool believes, not necessarily the state of the device. The hand checks found what the console missed, because suspended protection still looked like encryption to it. The weekly check now flags suspended protection directly, and Priya repeats a small hand sample each quarter to confirm that the console and the devices still agree.
 
 ### 7.3 Recovery keys
 
-Keys are escrowed to the directory, and access to them is limited and logged. A key retrieval test is run for one laptop.
+Keys are escrowed to the directory, and access to them is limited and logged. A key retrieval test is run for one laptop. Escrow means a locked-out clinician can be helped without losing data, while limited and logged access means a recovery key cannot be retrieved quietly. Only named supplier staff can retrieve keys, and each retrieval is recorded with the reason and the person who asked. The test confirms that the escrow actually works for a real laptop, rather than trusting the configuration. Priya records the test date and result in the encryption register, and repeats it each year.
 
 ### 7.4 Responding to theft
 
-The loss procedure confirms encryption status, disables the account's sessions and records the event for data protection review.
+The loss procedure confirms encryption status, disables the account's sessions and records the event for data protection review. Confirming encryption status matters most for a data protection decision: a stolen laptop that is verified encrypted with a protected key is a much smaller risk to patients than one that is not. The procedure also asks when and where the device was lost, which data the user worked with, and whether any recovery key was retrieved afterwards. The record goes to Kestrel's data protection lead, who decides on any notification. The supplier also removes the laptop from management.
 
 ### Removable media
 
@@ -476,19 +476,19 @@ You will (1) choose endpoint events; (2) centralise them; (3) review weekly.
 
 ### 8.1 Choosing events
 
-NIST SP 800-92 advises deciding what to log before collecting. Priya chooses sign-in failures, new local accounts, security software disabled and changes to the exception devices.
+NIST SP 800-92 advises deciding what to log before collecting. Priya chooses sign-in failures, new local accounts, security software disabled and changes to the exception devices. Each event answers a question Kestrel cares about. Repeated sign-in failures may show guessing, a new local account may be a way to keep access, disabled security software may be the first sign of a compromise, and changes on excepted machines matter because those machines cannot be patched. Choosing a short list keeps review possible for a small organisation with no dedicated security team, and every event chosen has a named person to review it.
 
 ### 8.2 Central collection
 
-Events forward to the supplier's log service, retained for 90 days. Clock synchronisation is checked, since times must line up across clinics.
+Events forward to the supplier's log service, retained for 90 days. Clock synchronisation is checked, since times must line up across clinics. Ninety days covers a quarter, which matches Kestrel's review cycle and gives time to investigate a problem found late. Clock synchronisation matters because an investigation may need to compare a sign-in at one clinic with a change on an imaging PC at another. Priya checks that every device, including the excepted imaging PCs on their isolated segment, actually sends events, since a missing source looks the same as a quiet one. The supplier confirms the forwarding settings in writing.
 
 ### 8.3 Weekly review
 
-A short weekly review covers a few defined questions. Each finding is resolved or explained.
+A short weekly review covers a few defined questions. Each finding is resolved or explained. Priya and the supplier agree the questions: were there repeated sign-in failures, new local accounts, disabled security software or changes to excepted machines? The supplier answers each one in a short note. A finding that needs action is passed to the operations manager, and an explained event, such as a planned software install, is recorded with its reason. Keeping the review short makes it likely to happen every week, and the notes show auditors that it did. Priya checks the notes monthly.
 
 ### 8.4 Privacy
 
-Logs contain staff names; access is restricted and use limited to security.
+Logs contain staff names; access is restricted and use limited to security. Because security logs record when staff sign in and what they do on shared machines, they could be misused to monitor performance or attendance. Kestrel's log policy states that logs are used only to protect systems and patient data, names the supplier staff who can read them, and keeps access records. Staff are told what is collected and why. The policy also sets the 90-day retention, so data is not kept longer than the purpose needs. Priya asks the data protection lead to approve the policy before collection begins.
 
 ### Endpoint protection alerts
 
@@ -536,19 +536,19 @@ You will (1) define recovery targets; (2) test restores; (3) plan for a failed w
 
 ### 9.1 Targets
 
-The operations manager sets targets: a failed reception PC replaced within two hours from a pre-built spare; imaging server restored within one day.
+The operations manager sets targets: a failed reception PC replaced within two hours from a pre-built spare; imaging server restored within one day. Targets come from the business, not the supplier, because the operations manager knows how long a clinic can work without a PC or images. A reception PC can be replaced quickly because desktops are standard. The imaging server takes longer because it holds images and vendor software. Priya records each target with the reason given, and the targets become the measure for recovery tests. Each clinic keeps one pre-built spare desktop for this purpose.
 
 ### 9.2 Rebuilds
 
-Supported desktops are rebuilt from a standard image and management enrolment. Imaging PCs need vendor steps, so Priya documents them with the vendor.
+Supported desktops are rebuilt from a standard image and management enrolment. Imaging PCs need vendor steps, so Priya documents them with the vendor. A standard image means a failed desktop can be replaced with a working one that already has the baseline settings and management. Imaging PCs are different: their software, licences and capture cards must be installed by the vendor or following its steps. Priya writes those steps down with the vendor's help, including what must be backed up beforehand, so the clinic is not dependent on one engineer's memory. The document is stored with the exception register.
 
 ### 9.3 Testing
 
-A restore test of the image server on spare hardware takes seven hours, within the target, and reveals a missing licence file, now added to backups.
+A restore test of the image server on spare hardware takes seven hours, within the target, and reveals a missing licence file, now added to backups. Testing on spare hardware shows whether the restore works when it is needed, not just whether backups exist. The missing licence file would have stopped the server working after a real failure. Priya records the test date, duration, problems found and fixes made, and the operations manager agrees to repeat the test each year, as well as after any major change to the imaging server or its vendor software.
 
 ### 9.4 Ransomware readiness
 
-One backup copy is offline. Isolated imaging segments limit spread.
+One backup copy is offline. Isolated imaging segments limit spread. An offline copy cannot be encrypted by malware that reaches the network, so it remains available for recovery. Priya checks with the supplier how often the offline copy is updated and where it is kept. The isolated imaging segment helps in a different way: unsupported imaging PCs cannot reach most other machines, so ransomware that starts at reception has fewer paths to them. Restoring from the offline copy is part of the yearly recovery test. Priya records both measures in the recovery plan, so they are reviewed each year.
 
 ### Mapping dependencies
 
@@ -600,19 +600,19 @@ You will (1) report to leadership; (2) align with standards; (3) plan reviews.
 
 ### 10.1 Reporting
 
-A quarterly one-page report shows unsupported count, exceptions in date, compliance and patch latency.
+A quarterly one-page report shows unsupported count, exceptions in date, compliance and patch latency. Keeping the report to one page makes it readable for clinic managers and Kestrel's directors, who need to know whether risk is falling, not how each setting is configured. Each measure uses the same definition every quarter, so changes are comparable. Priya adds a short note on the actions behind any change and the decisions needed, such as renewing an exception or funding a replacement. The supplier provides the figures, and the operations manager checks and signs the report before it goes to the directors.
 
 ### 10.2 Standards
 
-Priya maps the work to CIS Controls v8 implementation group 1 and NIST SP 800-53 families CM, SI and SA, so auditors see recognised structure.
+Priya maps the work to CIS Controls v8 implementation group 1 and NIST SP 800-53 families CM, SI and SA, so auditors see recognised structure. The mapping shows auditors and future staff where Kestrel's practices come from: the inventory relates to CIS asset safeguards, the baseline to configuration management, patching to system integrity and the exception register to SA-22. It does not claim full compliance with either framework. Priya lists the gaps, such as monitoring that covers only a few events. Mapping also makes it easier to check later whether a practice has lapsed.
 
 ### 10.3 Reviews
 
-The exception register and baseline are reviewed quarterly, the plan yearly.
+The exception register and baseline are reviewed quarterly, the plan yearly. Quarterly review of the register and baseline matches the reporting cycle and the expiry dates of exceptions. The operations manager chairs the review, with the supplier attending. Each meeting checks expiries, compensating controls and any drift that led to a baseline change. The yearly review of the plan looks further ahead: vendor support dates, budget for replacements and whether the targets still fit Kestrel's clinics. Each review's decisions are recorded with dates. Priya leaves a template agenda so that reviews continue after her project ends.
 
 ### 10.4 Roles
 
-The supplier operates, the operations manager owns risk, and Priya's handover names successors.
+The supplier operates, the operations manager owns risk, and Priya's handover names successors. Separating operation from ownership keeps the decision to accept risk with Kestrel, while the supplier keeps systems running. Priya's handover names who maintains the inventory, who chairs reviews, who approves exceptions and who prepares the quarterly report, with a deputy for each. Without named successors, the governance she built would depend on her and would be likely to lapse after her project ends. The operations manager signs the handover document, and the supplier receives a copy.
 
 ### Budgeting
 
@@ -664,19 +664,19 @@ You will (1) compare baseline and outcome; (2) discuss limits; (3) recommend nex
 
 ### 11.1 Results
 
-Unsupported systems fell from 12 to 3, all with in-date exceptions; desktop compliance rose to 92 percent; patching within 14 days rose to 46 of 48.
+Unsupported systems fell from 12 to 3, all with in-date exceptions; desktop compliance rose to 92 percent; patching within 14 days rose to 46 of 48. Priya reports each result against its starting point and its source. The unsupported count comes from the merged inventory; compliance and patch latency come from the supplier's console, checked against hand samples where possible. The three remaining unsupported machines are the cephalometric PCs awaiting a vendor release, and they are reported as controlled exceptions, not as fixed. She keeps the monthly figures so that readers can see how each measure changed during the year, not just its final value.
 
 ### 11.2 Attribution
 
-Several changes overlapped, so Priya links outcomes to actions cautiously.
+Several changes overlapped, so Priya links outcomes to actions cautiously. The baseline, removal of administrator rights, new patch timing and wake-up for overnight installs all began within a few months, so Priya cannot say how much each contributed to better compliance or patch latency. She describes the sequence of changes beside the monthly figures and states which outcomes followed which actions, without claiming that one change caused one result. Where a link is direct, such as replacing an unsupported machine, she says so plainly. Her discussion labels each link as direct or uncertain, so readers can judge it.
 
 ### 11.3 Limits
 
-One organisation, one year, supplier-reported data.
+One organisation, one year, supplier-reported data. These limits shape how far the results can be used. A different organisation, with other vendors, more staff or in-house IT, might find different problems and different costs. A year is too short to show whether the governance holds once Priya leaves. Much of the evidence comes from the supplier's console, which Priya checked with hand samples but could not verify fully. She states each limit in the report, so a reader in another organisation can judge which parts of the approach are likely to apply to them.
 
 ### 11.4 Next steps
 
-Replace the last three imaging PCs, extend checks to clinic tablets.
+Replace the last three imaging PCs, extend checks to clinic tablets. The three cephalometric PCs stay under their exceptions until the vendor's new release is available, then follow the same upgrade process as the other imaging machines. Clinic tablets were outside the project but carry patient data, so Priya recommends adding them to the inventory, baseline and encryption checks. Each step has a named owner and a target quarter in the handover document, so that the work is tracked rather than left as a hope. Priya also recommends repeating the merged inventory check yearly, as staff and suppliers change.
 
 ### Measuring the same way
 
@@ -726,19 +726,19 @@ You will (1) structure the report; (2) defend choices; (3) hand over.
 
 ### 12.1 Structure
 
-The report follows question, method, results, discussion, recommendations.
+The report follows question, method, results, discussion, recommendations. This structure lets examiners and Kestrel read the report in the order they need. The question shows what Priya set out to do; the method explains how she merged lists, checked status and measured compliance; the results report each measure against the starting point; the discussion covers attribution and limits; and the recommendations name owners and dates. Appendices hold the inventory, register template and lab code. Dr Hale reads a full draft and returns comments before submission, and Priya records each change she made in response.
 
 ### 12.2 Defending choices
 
-Priya explains why isolation, not immediate upgrade, was chosen for some machines, citing vendor evidence.
+Priya explains why isolation, not immediate upgrade, was chosen for some machines, citing vendor evidence. Upgrading every imaging PC at once would have needed licence upgrades, new capture cards and engineer visits across all clinics in one period, with more clinical disruption. The vendor's letters show what was possible and when. Isolation with compensating controls kept the remaining machines in service while reducing exposure, under named owners and expiry dates. In the viva, Priya explains these trade-offs and admits that isolation reduces risk but does not remove it, which is why each exception expires.
 
 ### 12.3 Handover
 
-The supplier and operations manager receive the register, baseline notes and reporting template.
+The supplier and operations manager receive the register, baseline notes and reporting template. Each document comes with a short explanation of how to use it and when it is next due. The register lists every exception with its owner and expiry; the baseline notes record each adjusted setting and the reason; the reporting template defines each measure so the next report is comparable. Priya walks through them with both parties before she leaves and answers their questions. Kestrel stores the documents where the supplier and operations manager can both find them.
 
 ### 12.4 Reflection
 
-Working with vendors took longer than technical changes.
+Working with vendors took longer than technical changes. Technical work, such as applying a baseline or encrypting laptops, followed known steps and took weeks. Getting vendor compatibility lists, written commitments and quotes took months, and the project depended on them. Priya writes that a similar project should contact vendors early and ask for commitments in writing from the start. She also notes that agreeing measures with the operations manager before collecting data made the final report much easier to defend, because nobody could say the targets had changed. Dr Hale asks her to include this in her final reflection.
 
 ### Writing for two audiences
 
