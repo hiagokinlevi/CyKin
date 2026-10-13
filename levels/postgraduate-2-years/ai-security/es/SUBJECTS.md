@@ -1,26 +1,26 @@
-# Subjects and book chapters — AI and machine-learning security / Postgraduate course / Español
+# Asignaturas y capítulos del libro — Seguridad de la IA y del aprendizaje automático / Posgrado / Español
 
-**One course, one principal book, 12 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Un curso, un libro principal, 12 asignaturas y capítulos, una skill del curso.** Solo los enlaces marcados como Borrador llevan a contenido didáctico escrito; un capítulo planificado es un resumen, no una lección terminada.
 
-This is an English working index awaiting translation and review for this language.
+Edición en español neutro, escrita a partir de la edición de referencia en inglés; revisión técnica y lingüística pendiente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Inicio](../../../../README.md) · [Ruta de estudio completa](../../../../STUDY_PATH.md) · [Página del curso](../README.md) · [Plan del libro](book/PLAN.md) · [Skill del curso](../skill/SKILL.md)
 
-**Course 158 of 207.** Read chapters 01–12 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 158 de 207.** Lea los capítulos 01–12 de arriba abajo. Para cada capítulo, use el enlace Borrador; el enlace numerado del plan es solo un resumen. Intente resolver los ejercicios antes de consultar los resultados resueltos al final del libro. La última fila lleva al siguiente curso en este mismo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Advanced security decision-making | 50 | 35 | 5 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | AI and machine-learning security: current practice | 50 | 35 | 5 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | AI and machine-learning security: specialist evidence | 50 | 35 | 5 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Advanced risk and ethics | 50 | 35 | 5 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 2 | [05](book/PLAN.md#ch-05) | AI and machine-learning security: design alternatives | 50 | 35 | 5 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | AI and machine-learning security: controlled evaluation | 50 | 35 | 5 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 3 | [07](book/PLAN.md#ch-07) | AI and machine-learning security: organizational integration | 50 | 35 | 5 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 3 | [08](book/PLAN.md#ch-08) | AI and machine-learning security: difficult cases | 50 | 35 | 5 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 3 | [09](book/PLAN.md#ch-09) | AI and machine-learning security: leadership and assurance | 50 | 35 | 5 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 4 | [10](book/PLAN.md#ch-10) | Research reading and critique | 50 | 35 | 5 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 4 | [11](book/PLAN.md#ch-11) | Applied project | 50 | 35 | 5 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 4 | [12](book/PLAN.md#ch-12) | Final review and transfer | 50 | 35 | 5 | Planned | [Course 159 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Toma de decisiones avanzada en seguridad | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Seguridad de la IA y del aprendizaje automático: práctica actual | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Seguridad de la IA y del aprendizaje automático: evidencia especializada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Riesgo y ética avanzados | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
+| 2 | [05](book/PLAN.md#ch-05) | Seguridad de la IA y del aprendizaje automático: alternativas de diseño | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Seguridad de la IA y del aprendizaje automático: evaluación controlada | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
+| 3 | [07](book/PLAN.md#ch-07) | Seguridad de la IA y del aprendizaje automático: integración organizativa | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
+| 3 | [08](book/PLAN.md#ch-08) | Seguridad de la IA y del aprendizaje automático: casos difíciles | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
+| 3 | [09](book/PLAN.md#ch-09) | Seguridad de la IA y del aprendizaje automático: liderazgo y aseguramiento | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
+| 4 | [10](book/PLAN.md#ch-10) | Lectura y crítica de la investigación | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
+| 4 | [11](book/PLAN.md#ch-11) | Proyecto aplicado | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
+| 4 | [12](book/PLAN.md#ch-12) | Revisión final y transferencia | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 159 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

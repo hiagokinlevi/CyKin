@@ -160,7 +160,7 @@ Três erros são comuns: usar uma taxonomia como lista de verificação sem mape
 
 - **EX006 — Classificar.** Classifique cinco ataques por objetivo e capacidade segundo o NIST. Rubrica: 3 = os cinco corretos; 2 = quatro; 1 = dois ou três; 0 = menos.
 - **EX007 — Mapeamento OWASP.** Mapeie o FraudScore e o DocRead para classes pertinentes do OWASP ou do NIST (observe que o OWASP LLM visa aplicações de LLM). Rubrica: 3 = mapeamentos pertinentes com nota de escopo; 2 = mapeamentos sem nota de escopo; 1 = um sistema; 0 = nenhum.
-- **EX008 — Leitura do laboratório.** Explique por que, no laboratório, "keyword" apenas reduz a exfiltração de 17/20 para 10/20, mas "separate" a elimina. Rubrica: 3 = palavras-chave deixam passar paráfrases; a separação remove o canal; ressalva de modelo de brinquedo; 2 = parcial; 1 = vago; 0 = errado.
+- **EX008 — Leitura do laboratório.** Explique por que, no laboratório, "keyword" apenas reduz a exfiltração de 17/20 para 10/20, mas "separate" a elimina. Rubrica: 3 = palavras-chave deixam passar injeções sem a palavra listada; a separação remove o canal; ressalva de modelo de brinquedo; 2 = parcial; 1 = vago; 0 = errado.
 - **EX009 — Maturidade.** Classifique quatro práticas como maduras / parcialmente maduras / pesquisa, com justificativas. Rubrica: 3 = quatro justificadas; 2 = três; 1 = uma ou duas; 0 = nenhuma.
 - **EX010 — Imposição externa.** Em 120 palavras, defenda a imposição externa de limites diante de um gerente de produto cético. Rubrica: 3 = evidências, dano limitado, custo; 2 = dois; 1 = afirmação; 0 = nenhum.
 
@@ -952,7 +952,7 @@ Respostas-modelo para EX001–EX060. A Corvane Freight e todos os seus números 
 
 **EX007.** O FraudScore é um modelo preditivo, por isso se mapeia para evasão segundo o NIST (fornecedores moldando faturas para evitar sinalizações), envenenamento (rótulos manipulados) e extração por pontuação repetida. O DocRead enfrenta evasão por digitalizações forjadas. Se a saída do DocRead alimentar um LLM, LLM01 e LLM05 do OWASP se aplicam a jusante. Nota de escopo: o OWASP LLM Top 10 visa aplicações de LLM, de modo que, para esses modelos, as classes do NIST se ajustam melhor.
 
-**EX008.** A filtragem por palavras-chave só pega injeções que usam as palavras listadas, e as paráfrases passam, por isso cerca de metade atravessa. A separação significa que documentos não confiáveis nunca chegam ao componente que emite chamadas de ferramenta, de modo que o próprio canal é removido. O laboratório é um modelo de brinquedo, e uma separação real ainda pode vazar pelos valores dos campos.
+**EX008.** A filtragem por palavras-chave bloqueia apenas os documentos que contêm a palavra listada ("ignore", as notas); as dez faturas trazem linhas ACTION simples sem ela, por isso passam. Os memorandos ofuscados não geram chamada nesse modo apenas porque ele analisa linhas "ACTION:" exatas. A separação significa que documentos não confiáveis nunca chegam ao componente que emite chamadas de ferramenta, de modo que o próprio canal é removido. O laboratório é um modelo de brinquedo, e uma separação real ainda pode vazar pelos valores dos campos.
 
 **EX009.** Maduras: inventários; limites de taxa. Parcialmente maduras: classificadores de injeção, que ajudam mas podem ser contornados de forma adaptativa. Pesquisa: robustez certificada para modelos grandes; detecção confiável de *backdoors*, em que Hubinger et al. mostram comportamento enganoso que persiste.
 

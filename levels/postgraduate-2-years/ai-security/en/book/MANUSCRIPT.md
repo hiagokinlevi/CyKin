@@ -177,7 +177,7 @@ Each error makes mapping misleading. A taxonomy used as a checklist marks entrie
 
 - **EX006 — Classify.** Classify five attacks by NIST goal and capability. Rubric: 3 = all five correct; 2 = four; 1 = two or three; 0 = fewer.
 - **EX007 — OWASP mapping.** Map FraudScore and DocRead to relevant OWASP or NIST classes (note that OWASP LLM targets LLM apps). Rubric: 3 = apt mappings with scope note; 2 = mappings without scope note; 1 = one system; 0 = none.
-- **EX008 — Lab reading.** Explain why "keyword" only cuts exfiltration from 17/20 to 10/20 but "separate" removes it in the lab. Rubric: 3 = keywords miss paraphrases; separation removes the channel; caveat toy model; 2 = partial; 1 = vague; 0 = wrong.
+- **EX008 — Lab reading.** Explain why "keyword" only cuts exfiltration from 17/20 to 10/20 but "separate" removes it in the lab. Rubric: 3 = keywords miss injections without the listed word; separation removes the channel; caveat toy model; 2 = partial; 1 = vague; 0 = wrong.
 - **EX009 — Maturity.** Place four practices on mature / partly mature / research with reasons. Rubric: 3 = four justified; 2 = three; 1 = one or two; 0 = none.
 - **EX010 — External enforcement.** In 120 words, argue for external enforcement to a sceptical product manager. Rubric: 3 = evidence, bounded harm, cost; 2 = two; 1 = assertion; 0 = none.
 
@@ -1095,7 +1095,7 @@ Model answers; any answer meeting the rubric scores equally. Corvane Freight and
 
 **EX007.** FraudScore is a predictive model, so it maps to NIST evasion (suppliers shaping invoices to avoid flags), poisoning (manipulated labels) and extraction via repeated scoring. DocRead faces evasion through crafted scans. If DocRead's output feeds an LLM, OWASP LLM01 and LLM05 apply downstream. Scope note: OWASP LLM Top 10 targets LLM applications, so for these models NIST classes fit better.
 
-**EX008.** Keyword filtering catches only injections using the listed words, and paraphrases pass, so about half get through. Separation means untrusted documents never reach the component that issues tool calls, so the channel itself is removed. The lab is a toy model, and real separation can still leak through field values.
+**EX008.** Keyword filtering blocks only documents containing the listed word ("ignore", the notes); the ten invoices carry plain ACTION lines without it, so they get through. The obfuscated memos produce no call in this mode only because it parses exact "ACTION:" lines. Separation means untrusted documents never reach the component that issues tool calls, so the channel itself is removed. The lab is a toy model, and real separation can still leak through field values.
 
 **EX009.** Mature: inventories; rate limits. Partly mature: injection classifiers, which help but can be bypassed adaptively. Research: certified robustness for large models; reliable backdoor detection, where Hubinger et al. show deceptive behaviour persisting.
 
