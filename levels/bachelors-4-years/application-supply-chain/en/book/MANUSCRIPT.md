@@ -483,25 +483,37 @@ You will (1) explain HTTP and HTTPS for web applications; (2) describe cookies a
 
 Browsers send requests with a method (GET, POST), a path, headers and sometimes a body; servers respond with a status, headers and a body. CampusEats uses HTTPS so traffic is encrypted and the server authenticated.
 
+Lena uses the browser's developer tools to watch an order being placed and notes each request and response. The status codes tell her what the server decided: a refused price change should return an error, not a success page with the change quietly ignored. Headers carry the session cookie and the security settings described next, so reading them is the first step in checking what the application actually does rather than what the design says.
+
 ### 7.2 Cookies
 
 The session cookie identifies a logged-in student. Attributes protect it: Secure (only sent over HTTPS), HttpOnly (not readable by page scripts) and SameSite (limits sending with requests from other sites). ASVS session-management requirements specify these.
+
+Lena checks the cookie in the browser and confirms all three attributes are set. Without HttpOnly, a cross-site scripting flaw could read the cookie and let someone act as the student. The session also expires after a period of inactivity and is replaced at login, so a cookie captured before login cannot be reused afterwards. These settings cost nothing to apply and remove whole classes of attack.
 
 ### 7.3 Security headers
 
 Response headers such as Strict-Transport-Security and Content-Security-Policy tell browsers to apply extra protections; chapter 25's lab checks them.
 
+Strict-Transport-Security tells browsers to use only HTTPS for the site in future, which stops a first request from being sent unencrypted on a café's public network. Content-Security-Policy limits where scripts may come from. Headers are only instructions: an older browser may ignore them, so they add protection rather than replace correct code. Lena records which headers CampusEats sends and which are missing, as a starting point for the later lab.
+
 ### 7.4 Downloading dependencies
 
 Package managers download over HTTPS from registries. The lockfile's hashes allow checking that the bytes received are the ones expected (chapter 22).
+
+HTTPS protects the download in transit, but it does not prove the registry served the right file. If a package were replaced on the registry or by a misconfigured mirror, HTTPS would deliver the wrong bytes securely. The hash in the lockfile closes that gap, which is exactly what stopped the CampusEats build in Lena's first week: the received file did not match the recorded hash, so the install failed rather than continuing.
 
 ### 7.5 Network protections
 
 The hosting platform provides a firewall and rate limiting; the database is not reachable from the internet.
 
+Rate limiting slows anyone trying many passwords or flooding the order page at lunchtime, and the firewall allows only web traffic to reach the application. Keeping the database off the internet means an attacker must first get through the application to reach the data. Lena confirms the setup from outside the network, under her test permission, by checking that the database port does not answer.
+
 ### 7.6 Outbound calls
 
 CampusEats calls the payment provider; it only calls known addresses, which protects against server-side request forgery (OWASP A10).
+
+The list of allowed addresses is kept in configuration, and the code refuses to fetch any address a user supplies, such as an image link in a review. Without that rule, a request could be steered to internal services that trust anything coming from inside the network. Lena adds a test that tries an internal address and checks that the request is refused before any connection is made.
 
 ### DNS
 
@@ -547,9 +559,13 @@ You will (1) encode output for its context; (2) explain cross-site scripting as 
 
 CampusEats shows student reviews of dishes. If review text is inserted into the page as HTML, any markup in it would be interpreted by the browser. This weakness, cross-site scripting (CWE-79), lets one user's text run in another user's browser.
 
+A review containing a script could, for example, act with the reader's session or change what the page shows. Reviews are an obvious target because any logged-in student can write one and many others will read it. Lena therefore treats every review as untrusted text.
+
 ### 8.2 Encoding
 
 Encoding converts special characters to safe forms: < becomes &lt;, & becomes &amp;, " becomes &quot;. The browser then shows them as text.
+
+The key is to encode at the point of output, for the place where the text will appear, rather than cleaning text when it is stored. Stored text then remains exactly what the student wrote, which matters for moderation and for other uses such as email, where different encoding is needed. Lena's lab compares raw and encoded output for a review containing markup characters, so the difference is visible on screen.
 
 ### Lab — Lab — escaping output
 
@@ -572,17 +588,25 @@ escaped: <p>Great pasta &lt;b&gt;5/5&lt;/b&gt; &amp; &quot;fast&quot;</p>
 
 The raw version would let the browser treat <b> as bold markup; the escaped version shows "<b>5/5</b>" as literal text, with & and quotes encoded. The review reads the same to people but cannot change the page structure.
 
+Lena adds the lab's sample review to the test suite, so a template change that breaks encoding would fail the build. She also tries a review containing an image tag and a quoted attribute, and both appear as plain text. The comparison makes the abstract rule concrete for new society members, who see exactly how one missing step changes what the browser does.
+
 ### 8.4 Framework defaults
 
 CampusEats' template engine escapes by default. Developers must not turn this off; the few places that need trusted markup use a reviewed helper.
+
+Searching the code for the setting that disables escaping is part of every review, and any use must be justified in the pull request. The reviewed helper accepts only a small set of formatting, such as bold and line breaks, and rejects everything else. Relying on the framework means one well-tested mechanism protects every page, instead of each developer remembering to encode each field.
 
 ### 8.5 Context matters
 
 Text inside an attribute, a script or a URL needs different encoding; frameworks handle common cases, which is another reason to rely on them.
 
+A student's name placed inside a link, for example, needs URL encoding as well as HTML encoding. Lena notes the few places where CampusEats puts user text into scripts or URLs and checks each one by hand, since these are where framework defaults are most likely to fall short. Where possible, the code is changed so that user text appears only in ordinary page content.
+
 ### 8.6 Defence in depth
 
 A Content-Security-Policy header limits which scripts can run, reducing harm if encoding is missed somewhere.
+
+CampusEats' policy allows scripts only from its own domain and the payment provider's, so an injected script would be refused by modern browsers even if an encoding mistake slipped through. The policy is first deployed in report-only mode to find legitimate scripts that would break, and then enforced. It does not replace encoding; it limits the damage when encoding fails. Violation reports are reviewed weekly by the society.
 
 ### Testing encoding
 
@@ -624,9 +648,13 @@ You will (1) design simple database tables for an application; (2) use parameter
 
 CampusEats has tables for students, menu items, orders and order lines. Each order line refers to a menu item by its identifier, and prices are copied at order time so later price changes do not alter past orders.
 
+Copying the price means a receipt always shows what the student actually paid. Lena checks that order lines cannot refer to items that do not exist, using a database constraint rather than relying on application code alone. The constraint makes a whole class of bugs impossible.
+
 ### 9.2 Parameterised queries
 
 Queries send SQL text and values separately, so values cannot change the query's structure. This prevents SQL injection (CWE-89, OWASP A03).
+
+Lena reviews every query in CampusEats and finds none built by joining strings with user input. She adds a rule to the code review checklist: any query that includes user text must use parameters, with no exceptions for "internal" pages. Parameters also make queries easier to read and let the database reuse their plans, so the secure way is also the convenient one.
 
 ### Lab — Lab — safe search
 
@@ -654,13 +682,19 @@ search 'curry': ['veg curry']
 
 Searching for "100%" returns only "100% juice". Without escaping, % is a wildcard in LIKE and "100%" would also match "1000 island salad". The lab escapes %, _ and backslash in the user's text and uses a parameter, so the search means exactly what the student typed.
 
+The example shows that parameters prevent injection but do not make text mean what the user intended; special characters inside a pattern still need handling. Lena adds tests for each special character, including a search for an underscore, which would otherwise match any single character and return unexpected dishes.
+
 ### 9.4 Permissions
 
 The application's database account can read and write its tables but cannot drop tables or create users. Reporting uses a read-only account.
 
+If an injection flaw were ever found, these limits would cap the damage: an attacker could not delete the database or create an administrator account. Lena checks the permissions directly in the database rather than trusting the setup notes, and records the result. Reviewing them each term catches rights that were granted temporarily during a migration and never removed.
+
 ### 9.5 Backups
 
 Nightly encrypted backups are tested monthly by restoring to a test database.
+
+A backup that has never been restored is a hope, not a control. The monthly test restores the latest copy, checks that recent orders are present and records how long the restore took, so the society knows how quickly it could recover after a failure or a mistaken deletion. Backup keys are stored separately from the backups, and only two named society members can use them, which protects the student data the backups contain.
 
 ### Data minimisation
 
@@ -706,25 +740,37 @@ You will (1) distinguish authorised from unauthorised testing; (2) follow respon
 
 Testing systems without permission is unethical and often illegal, even to "help". Lena tests only CampusEats' test environment, under written permission from the society and Grace.
 
+The permission names what may be tested, by whom and when, and Lena keeps a copy with her notes. Good intentions do not change the law or the harm an unplanned test can cause, such as slowing a live service at lunchtime or exposing data. If a test seems useful but is not covered, she asks first.
+
 ### 10.2 Scope
 
 Permission lists systems, time and methods. The payment provider's systems are out of scope; Lena never tests them.
+
+Lena reads the provider's terms and confirms that testing its systems requires the provider's own permission. When a test needs to involve payments, she uses the provider's sandbox with test cards, which is designed for that purpose. Methods matter too: the permission allows functional and configuration testing but not load testing, which could disrupt the shared hosting platform. Anything unclear is settled in writing first.
 
 ### 10.3 Found something?
 
 If Lena finds a flaw in another system, such as a café's own website, she reports it through the university security office rather than probing further.
 
+She records what she noticed, when and how, without trying to confirm it further, and lets the office contact the owner. Probing a system without permission, even to prove a point, could break the law and damage trust in the society's work. The office then tells her whether any follow-up is needed, and she keeps a note of the outcome.
+
 ### 10.4 Disclosure
 
 Flaws in open-source packages used by CampusEats are reported privately to maintainers, with time to fix before publication.
+
+The report describes the affected versions, the impact and a suggested fix, and Lena agrees a date with the maintainer before anything is published. If the maintainer does not respond, she asks Grace for advice rather than publishing early. CampusEats meanwhile applies its own temporary mitigation if one is possible, such as disabling the affected feature. Lena keeps all messages with the maintainer, so the timeline can be shown later.
 
 ### 10.5 Privacy
 
 Order histories reveal habits and dietary needs. Developers access real data only when needed and log their access.
 
+For most development work, the society uses synthetic orders that look realistic but describe no real student. When real data is needed, for example to investigate a failed payment, access is granted for that task only, the developer notes the reason and the log is reviewed monthly. Dietary information is treated as especially sensitive because it can reveal health or religious details.
+
 ### 10.6 Honesty
 
 Students must not overstate findings or hide mistakes; the society's incident notes describe the token leak honestly.
+
+The notes state what happened, when, the effect and what was changed, without blaming the developer who pushed the token. An honest record lets others learn from the mistake, and it builds trust with the university and the payment provider. Lena applies the same standard to her own reports: she states the limits of each test and marks results she could not reproduce.
 
 ### Codes of conduct
 
@@ -774,25 +820,37 @@ You will (1) explain processes, users and permissions on servers; (2) apply leas
 
 On the hosting platform, CampusEats runs as a process under its own user with no administrator rights. Files it can change are limited to temporary and log folders. If a flaw let someone control the process, they would gain only these limited rights.
 
+Lena checks the account's rights on the platform and confirms that it cannot read other projects' files or install software. A small test confirms this after each platform change: it tries to write outside the allowed folders and expects a refusal. Limiting rights is cheap and turns many serious flaws into minor ones.
+
 ### 11.2 Containers
 
 CampusEats runs in a container: a packaged process with its own file system view. The container image is built from a small base image, reducing the number of installed programs that could have flaws. The image is rebuilt weekly to include operating system security updates.
+
+Weekly rebuilds mean the image does not drift far from current patches, and each rebuild runs the full test suite before deployment. Lena compares the number of installed programs in the small base image with a full one and finds the difference large, which means far fewer advisories to track each month.
 
 ### 11.3 Build isolation
 
 Each build runs in a fresh container that is destroyed afterwards. Package install scripts run during builds, and Ohm et al. (2020) found that malicious packages often act at install time; isolation and limited network access during builds reduce what such a script could reach.
 
+Builds that need the network reach only the package registry, and the payment key is never available during the build. Lena checks the build configuration to confirm both limits, and the build log records every network destination contacted, so an unexpected address would stand out at review.
+
 ### 11.4 Secrets at runtime
 
 The payment key is provided to the running container as an environment variable from the platform's secret store. It is never written to logs or files, and only the payment module reads it.
+
+Lena checks the logging configuration to confirm that request bodies containing payment details are not logged either. Rotating the key is a platform setting rather than a code change, so it can be done quickly after any suspected exposure, as happened with the leaked token. Only two people can change it.
 
 ### 11.5 Logs
 
 The operating system and platform record process restarts, deployments and errors, which help investigate problems.
 
+CampusEats adds its own application log, recording logins, refused requests and price changes, but never passwords, tokens or payment details. Logs are kept for ninety days and only the society's two administrators can read them. When the build stopped for the hash mismatch, the build log showed exactly which package and version failed, which made the investigation quick. Lena checks that the logs record enough to answer basic questions after an incident.
+
 ### 11.6 Updates
 
 Base images are pinned by digest and updated deliberately, so the team knows exactly which image each release used.
+
+A digest identifies one exact image, whereas a tag like "latest" can point to different images over time. Pinning means that two builds of the same release use the same base. When an operating system advisory appears, the team updates the digest in a small, reviewed change, runs the tests and records the update, so rollbacks are possible and nothing changes silently.
 
 ### Worked example
 
@@ -830,6 +888,8 @@ You will (1) compute precision and recall for a security check; (2) interpret ba
 
 After the token leak, CampusEats adds a secret scanner. Lena measures it on 200 synthetic commits whose true status she knows: 10 contain real secrets, 190 do not.
 
+Each commit is labelled before the scanner is run, so the labels cannot be influenced by its output. The synthetic secrets imitate real formats, such as payment-provider keys, but none is valid, which lets Lena share the test set with the society without risk. Labelling first is a simple guard against measuring what you expect to find. She keeps the commits and labels in the repository so that later versions of the scanner can be measured the same way.
+
 ### Lab — Lab — scanner precision and recall
 
 ```python
@@ -848,17 +908,25 @@ precision 0.30  recall 0.90  flagged 30 of 200
 
 The scanner flagged 30 commits: 9 true secrets (true positives) and 21 harmless strings (false positives); it missed 1 secret (false negative). Precision is 0.30: only 30% of flags are real. Recall is 0.90: it finds 90% of real secrets.
 
+Lena reports the full table of counts alongside the two percentages, so that readers can check the figures and see the base rate. The single missed secret was a key split across two lines, which the scanner's patterns did not expect. Lena reports the miss to the scanner's maintainers and adds a custom rule, then reruns the test set to confirm that the rule finds it without adding new false positives.
+
 ### 12.3 Base rates
 
 With only 10 secrets in 200 commits, even a fairly accurate scanner produces more false than true flags. This is the base-rate effect. A scanner with low precision is tolerable if each flag takes seconds to check; otherwise developers start ignoring it, as Johnson et al. (2013) found for noisy tools.
+
+Lena times the review of a flag at about half a minute, which the society accepts. In practice, developers see about two harmless flags for each real one. Fast review keeps them engaged, and the society tracks how often flags are dismissed without a look.
 
 ### 12.4 Thresholds
 
 Raising the threshold would cut false positives but miss more secrets. For secrets, missing one is costly, so the society keeps high recall and reduces review time instead.
 
+Lena tries a stricter setting on the same commits and records the result, so the trade-off is measured rather than guessed. She also groups repeated false positives, such as a long identifier used in test fixtures, and adds them to an allow list that a reviewer approves. That cuts review effort without lowering recall on real secrets.
+
 ### 12.5 Uncertainty
 
 Ten real secrets is a small number; recall of 0.90 could easily be 0.7 or 1.0 on another sample. Lena reports counts, not just percentages.
+
+She also notes that synthetic secrets may be easier to find than real ones, so the true recall could be lower. The society plans to re-measure after a term of real use, counting any secret found later by other means as a miss, which gives a better estimate than a single lab test. Counts let readers judge this.
 
 ### Confidence in small samples
 
