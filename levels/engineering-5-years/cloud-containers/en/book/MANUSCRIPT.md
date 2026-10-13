@@ -2398,29 +2398,43 @@ You will (1) implement image signing, admission verification and default-deny ne
 
 The standard pipeline signs every image after build and scanning, and records the image digest. Admission verifies the signature and that the image comes from Solent's registry. Images are referenced by digest, not mutable tags, so what was verified is what runs.
 
+Signing after scanning means a signature also certifies that the image passed the pipeline's checks, not just that the pipeline built it. Recording the digest ties the signature to exact bytes. A tag such as 'latest' can be moved to point at different content at any time, so a manifest that names a tag might run something other than what was verified. Referencing digests closes that gap and makes deployments repeatable.
+
 ### 31.2 Rollout sequence
 
 Signature verification starts in audit mode, logging unsigned images without blocking, for two weeks. The log shows which teams still use old pipelines. Enforcement follows namespace by namespace once each is clean.
+
+Turning enforcement on everywhere at once would block any team still using an old pipeline, possibly during an urgent fix. Audit mode shows who would be blocked without blocking them, so the platform team can help those teams move first. Enforcing namespace by namespace means each switch affects a known, prepared group, and a problem in one namespace does not stop deployments across the whole platform.
 
 ### 31.3 Network policies
 
 Default-deny policies roll out in the order from chapter 24, with denied-connection logs watched for a day after each namespace.
 
+Following the order set during design means the riskiest paths, such as web to database, are closed early. Watching denied-connection logs for a day after each namespace catches flows that the traffic map missed, such as a daily report job. Each missed flow found this way gets an allow rule with a reason, and the traffic map is updated so the next namespace benefits.
+
 ### 31.4 Exceptions
 
 The node agent keeps its exception on a dedicated node pool; the two services writing to their root filesystem complete their changes and their exception expires on time.
+
+The node agent's exception stays because its job genuinely needs elevated access, and the dedicated pool limits what that access could reach. The two services that wrote to their root filesystem were given time to move writes to a mounted volume. Letting their exception expire on schedule, rather than extending it, shows the process works and that exceptions are truly temporary.
 
 ### 31.5 Communication
 
 A shared calendar shows each namespace's enforcement date. Teams can ask for a delay with a reason, approved by the platform lead.
 
+Teams plan better when they know dates in advance; surprise enforcement leads to frustration and pressure to roll back. Allowing delays with a reason keeps the rollout realistic, since a team mid-release may genuinely need a week. Requiring the platform lead's approval keeps delays from becoming routine and records why each one was granted. Most teams keep their original dates.
+
 ### 31.6 Confirming
 
 After each step, verification tests from chapter 30 run again in production using synthetic test workloads in a dedicated test namespace.
 
+Laboratory tests showed controls worked in the test cluster; rerunning them in production shows they work where it matters. A dedicated namespace keeps test workloads separate from real services, and synthetic workloads mean no real data are involved. Results are recorded the same way as in the laboratory, adding production evidence to the record. Any failure pauses the next namespace's enforcement.
+
 ### 31.7 Cleanup
 
 Old pipeline jobs that cannot sign images are archived so they cannot be used by mistake.
+
+An old pipeline job left in place could be used by someone in a hurry, producing an unsigned image that admission would then reject, or worse, prompting a request for an exception. Archiving removes the temptation while keeping the history for reference. Elena lists the archived jobs and their owners in the change record. A pipeline check also rejects references to archived jobs, so nobody restores one by copying old configuration.
 
 ### Signing keys
 
@@ -2462,29 +2476,43 @@ You will (1) ensure security controls do not reduce reliability; (2) design high
 
 Admission controllers, policy engines, secret managers and identity services are now on the critical path for deployments and running services. If they fail, so does meterhub.
 
+Before the project, a broken admission controller would have affected nothing because there was none. Now every deployment passes through it, every workload fetches secrets from the manager, and every cloud call uses workload identity. Security controls have become infrastructure, and must be engineered with the same care for availability as the services they protect.
+
 ### 32.2 High availability
 
 The policy engine runs three replicas across zones with a disruption budget so upgrades never remove more than one. The secret manager is a managed cloud service with regional redundancy.
+
+Three replicas across zones means the engine survives the loss of one replica or one zone. A disruption budget stops routine maintenance from removing too many at once. Using a managed secret service shifts some of the availability work to the provider, whose regional redundancy is stronger than Solent could build alone.
 
 ### 32.3 Expiry
 
 Certificates and signing keys expire. Elena lists every certificate and key with expiry dates and adds alerts at 30 and 7 days. An expired webhook certificate would block all deployments.
 
+Expiry problems are predictable, which makes outages caused by them especially frustrating. Listing every certificate and key with its date turns invisible risks into a schedule. Alerts at thirty days give time to renew calmly; seven days is the final warning. The webhook certificate is listed first because its expiry would halt all deployments.
+
 ### 32.4 Timeouts
 
 Admission webhooks have short timeouts so a slow engine causes a clear failure rather than hanging deployments.
+
+Without a timeout, a slow policy engine leaves deployments waiting indefinitely, which is harder to diagnose than an outright failure. A short timeout produces a clear error message that points to the engine. Combined with fail-closed behaviour in production, it means no workload is admitted unchecked. Elena tests the timeout by slowing the engine in staging and confirming that deployments fail within seconds with a message naming the webhook, rather than hanging until the deployment tool gives up.
 
 ### 32.5 Measuring
 
 Incidents caused by security controls are tracked separately; the goal is fewer than one per quarter after rollout.
 
+Tracking control-caused incidents separately shows whether security changes are hurting reliability. A target of fewer than one per quarter sets a clear expectation. If the count rises, the platform team investigates before adding new controls, which keeps trust with service teams. Each incident gets a short review naming the control involved, the cause and the fix. Reviews look for patterns, such as several incidents from one rule, which may mean the rule needs redesign rather than another quick patch.
+
 ### 32.6 Error budgets
 
 Solent's site reliability practice gives each service an error budget; control-induced outages count against it, which gives the platform team a reason to make controls reliable.
 
+An error budget allows a set amount of unreliability per period. When control-induced outages consume it, the platform team must spend time making controls more reliable. This gives security and reliability a shared measure, so neither is pursued at the expense of the other. Elena explains the idea to service teams with one example from the past quarter, so the budget feels concrete.
+
 ### 32.7 Game days
 
 Planned exercises simulate control failures in staging to practise recovery.
+
+Simulating failures in staging lets the team practise recovery without risking production. Scenarios include the policy engine going down and an expired webhook certificate. Each game day records how long recovery took and what was unclear, and the runbooks are updated afterwards. Each game day has a written scenario, a start time known to the participants and an observer who notes timings and confusion. Elena runs the first one with Rosa: the signing key's certificate is replaced with an expired copy in staging, and the team practises spotting the cause and rotating it from the runbook.
 
 ### Disruption budgets
 
@@ -2526,29 +2554,43 @@ You will (1) design meterhub to keep essential functions during incidents; (2) s
 
 For an energy co-op, essential functions are ingesting readings (data must not be lost), billing accuracy and tamper alerts. Customer portal features are less critical.
 
+Ranking functions tells engineers what to protect first when resources are stretched. Readings that are lost cannot be recollected, so ingestion comes first. Billing accuracy matters for members' trust and regulatory compliance. Tamper alerts protect the grid. Portal features can wait if necessary. Elena writes the ranking into the incident plan, so responders know which services to restore first and which can stay down a little longer while attention goes elsewhere.
+
 ### 33.2 Graceful degradation
 
 If the API is attacked or overloaded, ingest continues on separate infrastructure. Queues buffer readings if the database is unavailable.
+
+Separating ingest from the customer-facing API means an attack on the portal does not stop meters reporting. Queues hold readings while the database is down and deliver them when it returns, so no data are lost. Elena checks that the queue's capacity covers the longest expected database outage. She also checks that ingest uses no component shared with the API, such as a common database connection pool, which could let the overload spread.
 
 ### 33.3 Recovery from compromise
 
 If a cluster is suspected compromised, the plan is to rebuild from code in a clean account rather than clean it in place: declarative configuration and signed images make rebuilds repeatable.
 
+Cleaning a compromised cluster in place risks missing a hidden change. Rebuilding from reviewed code in a fresh account starts from a known state. Signed images ensure only Solent-built software runs. The approach depends on everything being defined in code, which earlier chapters made true. The rebuild runbook is tested in the resilience exercises.
+
 ### 33.4 Backups and immutability
 
 Backups in a separate account with deletion protection allow recovery even if production credentials are misused.
+
+Deletion protection stops anyone, including an attacker with production credentials, from removing backups before they expire. A separate account adds another barrier. Together they ensure that even a severe compromise of production leaves a clean copy to restore from. Restores from these backups are tested quarterly, and the restored data are compared with production counts to confirm nothing is missing. Retention on the backups is longer than any plausible delay in discovering a compromise, so a clean copy predates the attacker's arrival.
 
 ### 33.5 Isolation of blast radius
 
 Separate clusters and accounts (chapter 26) limit how far a compromise spreads.
 
+Separating the high-sensitivity cluster from the standard one means a compromise of a general service cannot directly reach readings or payments. Separate accounts for backups and logs add further walls. Each boundary limits how far an incident can spread and simplifies containment. Elena lists each boundary with the credentials needed to cross it, which shows that no single identity can reach both clusters, the backup account and the log account. The list is checked whenever a new role is created, so the boundaries stay intact as the platform grows.
+
 ### 33.6 Exercises
 
 Resilience exercises rebuild the standard cluster from code in a fresh account and measure the time to restore ingest.
 
+Rebuilding from code proves that documentation and templates are complete enough to recreate the platform. Measuring time to restore ingest shows whether the recovery objective is realistic. Each exercise finds small gaps, such as a missing permission, which are fixed before the next. The first exercise shows which steps still wait on people, and those steps are the first to be automated or pre-approved. Results are reported to Solent's risk committee with the list of fixes.
+
 ### 33.7 Communication
 
 Incident plans include messages to customers and the regulator.
+
+Customers deserve to know if their data might be affected, and the regulator expects prompt notification. Pre-written messages save time during an incident and reduce the risk of saying something inaccurate. The data protection officer approves the templates in advance. The plan names who sends each message, who approves it and the deadline that applies, including any legal notification period. Messages avoid technical jargon and say what members should do, if anything. The templates are reviewed once a year and after any real incident, and the contact list for the regulator is checked at the same time.
 
 ### Tamper alerts
 
@@ -2594,29 +2636,43 @@ You will (1) integrate cloud controls with logging, incident response, change ma
 
 Cloud audit logs, Kubernetes audit logs, admission decisions and network denials flow to Solent's central log platform, kept for a year in a separate account.
 
+Each log source answers different questions: cloud audit logs show changes to accounts and storage; Kubernetes audit logs show actions in the cluster; admission decisions show what was blocked; network denials show blocked connections. Keeping them in a separate account protects them from tampering by someone who compromises production. Retention of a year supports investigations that start long after an event, such as a key misused months later.
+
 ### 34.2 Alerting
 
 High-risk events (public access settings changed, new keys created, policy engine disabled, privileged pod admitted under exception) raise alerts routed to the on-call engineer, meeting the 15-minute objective from chapter 7.
+
+Each listed event is rare in normal operation and serious when unexpected, so alerting on it produces few false alarms. A policy engine being disabled could precede an attack. Routing directly to the on-call engineer avoids the delays that pushed the earlier p95 to forty minutes. Each alert links to its runbook.
 
 ### 34.3 Incident response
 
 Runbooks describe first steps for each alert type, including revoking credentials and isolating namespaces.
 
+Runbooks give the first steps so the on-call engineer can act quickly and consistently at any hour. Revoking credentials stops their misuse; isolating a namespace limits spread. Each runbook names when to escalate and to whom. Runbooks are written for an engineer who may be woken at night, so each step is short and exact, with the command or console path given. Each runbook also lists what evidence to preserve before acting, so containment does not destroy what investigators will need later.
+
 ### 34.4 Change management
 
 Policy changes follow the normal change process with security review; emergency changes are reviewed afterwards.
+
+Security review of policy changes catches mistakes that could open gaps or break services. Emergency changes are allowed when needed but reviewed afterwards to confirm they were justified and correct. The record shows every change to controls over time. Changes are linked to the requirement they affect, so reviewers can check the change still meets it. The record of emergency changes is reviewed monthly to see whether any recur, which would suggest a gap in the normal process.
 
 ### 34.5 Governance
 
 Monthly coverage and incidents feed Solent's risk committee; CSA CCM v4 mapping supports the regulator's annual review.
 
+Regular reporting keeps managers informed and lets them make decisions about risk and investment. Mapping to CCM shows how Solent's controls meet recognised standards, which simplifies the regulator's review and highlights any gaps. Elena prepares the first monthly report herself, showing coverage by namespace, incidents and open exceptions on one page. The committee's questions guide what later reports include, and the CCM mapping is updated whenever a control changes.
+
 ### 34.6 People
 
 Developers get training on the new controls and a help channel; the platform team runs office hours.
 
+Controls that developers do not understand cause frustration and workarounds. Training explains why each control exists and how to work with it. A help channel and office hours make it easy to ask questions, reducing the chance of teams requesting unnecessary exceptions. Feedback from office hours shapes documentation and sometimes the controls themselves; a confusing error message is rewritten after three teams ask about it.
+
 ### 34.7 Integration testing
 
 Synthetic events are injected monthly to check each alert reaches the on-call engineer.
+
+An alert that never reaches anyone is useless, and routing can break silently through configuration changes. Monthly synthetic events check the whole path from source to on-call engineer. The time taken is recorded and compared with the fifteen-minute objective. The injected events use test identities and test resources, so they cannot be confused with real incidents. Each one carries a marker that the on-call engineer recognises. A missed or slow test alert is treated like a real failure and investigated.
 
 ### Training developers
 
@@ -2662,25 +2718,37 @@ You will (1) design monitoring and response for configuration drift and policy e
 
 Design how Solent detects and responds to differences between declared and running configuration, and manages exceptions through their life.
 
+Drift between declared and running configuration may come from an emergency fix, a mistake or an attacker. Exceptions, if unmanaged, become permanent weaknesses. The brief asks teams to handle both, since they share a theme: keeping reality aligned with what was approved. Teams must show how their design would handle a manual fix made during an incident at night. Each team has two weeks.
+
 ### 35.2 Alternatives
 
 Team A proposes relying on GitOps reconciliation to revert drift silently. Team B proposes reconciliation plus alerts for security-relevant drift. Elena's team proposes B plus a weekly drift report covering resources outside GitOps, such as cloud accounts.
+
+Each option goes further than the last. Silent reversion fixes drift but leaves no trace. Alerts add visibility for important changes. A weekly report extends coverage to resources the controller does not manage. Teams compare the options on visibility, noise and effort. Costs are estimated for each.
 
 ### 35.3 Trade-offs
 
 Silent reversion hides useful signals: someone made a manual change, perhaps during an incident. Alerts on every drift create noise. Elena's team limits alerts to security-relevant fields.
 
+A manual change during an incident may be legitimate but should still be noticed and reviewed. Alerting on every field would overwhelm the on-call engineer with trivial differences. Focusing on security-relevant fields, such as privilege settings, balances visibility and noise. The team lists the security-relevant fields explicitly, such as privileged, capabilities and network policy rules, and reviews the list each quarter.
+
 ### 35.4 Exceptions life cycle
 
 Request, review, approval, labelled implementation, expiry reminder, renewal or removal, all logged.
+
+Each stage has a clear owner and record. Review checks the reason and compensating controls; approval makes someone accountable; labels let the policy engine enforce expiry; reminders give time to plan renewal or removal. Logging every step creates an audit trail. The policy engine enforces expiry, and the workflow tool sends reminders at thirty and seven days. Renewal needs the same review as the original request, so an exception cannot roll over unexamined. Removal is confirmed by checking that the label has gone and the workload still runs.
 
 ### 35.5 Package
 
 Diagrams, alert list with severities, exception workflow and test plan.
 
+The alert list shows which drifts matter most and who responds. The exception workflow shows how requests move through stages. The test plan shows how the design will be verified, such as creating synthetic drift and checking that alerts fire. Elena's team keeps the package short, with the alert list as a table of field, severity, owner and response. Critics receive it in advance. The test plan includes one case for each alert and one for an exception expiring on schedule.
+
 ### 35.6 Critique
 
 Critics ask what happens to drift in resources the GitOps controller does not manage; Elena's weekly report addresses this.
+
+Cloud accounts, DNS settings and some managed services sit outside the GitOps controller's reach. Without the weekly report, drift there would go unnoticed. The critique confirms the value of the extra coverage and prompts Elena's team to list exactly which resources the report covers. Critics also ask how often the report is read; the team assigns a named reviewer and records each review.
 
 ### Assessment
 
