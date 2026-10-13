@@ -1063,27 +1063,39 @@ You will (1) apply the systems-engineering V-model to AI-enabled systems; (2) de
 
 Systems engineering descends from stakeholder needs to system requirements, architecture, component design and implementation, then ascends through component verification, integration testing, system verification and validation against needs. Every requirement on the left has a verification activity on the right. AI components fit into this but need statistical verification methods (rates with intervals) rather than single pass/fail tests.
 
+A pass for TrackEye is a stated rate with an interval, measured on a named test set, rather than a single correct output.
+
 ### 16.2 Requirements decomposition
 
 A system requirement such as "rail defects larger than 10 mm are detected with probability ≥ 0.98 in all operating conditions" decomposes into camera, lighting, model, alerting and human-review requirements. The model's share might be "false-negative rate ≤ 1.5% in each condition stratum with 95% upper bound", leaving margin for other components.
+
+The split is a budget. If the model may miss 1.5%, the human review step and the alerting chain must keep their own losses small enough that the whole chain still meets 0.98. Each component's requirement names its share and how it will be verified, so a shortfall in one place is visible and can be balanced elsewhere rather than discovered at the end.
 
 ### 16.3 Interfaces and emergence
 
 Interfaces carry assumptions: the model assumes images at a given resolution and exposure; the alert system assumes the model's confidence is calibrated. Emergent behaviour arises when components interact — for example, an LLM agent combining two harmless tools to produce a harmful effect. Interface control documents should state data formats, trust levels and failure behaviour.
 
+When the camera supplier changes a sensor, the interface document tells the team which model assumptions to retest. For agents, emergent harm is found by reviewing combinations of tools, not tools alone: reading a document and sending an email are each harmless, but together they can leak the document.
+
 ### 16.4 Hazard analysis
 
 Techniques such as failure modes and effects analysis (FMEA) and system-theoretic process analysis (STPA) look for ways the system can reach hazardous states. Add AI failure modes: distribution shift, adversarial inputs, poisoning, overconfidence, unsafe tool use. STPA's focus on unsafe control actions is a natural fit for agents that issue commands.
 
+FMEA works upwards from component failures and suits TrackEye's perception chain. STPA works downwards from hazards, asking which control actions would be unsafe if given, withheld, given at the wrong time or for too long. For Wrench, an unsafe action is a work order sent to the wrong asset, and STPA asks what would cause the agent to issue it.
+
 ### 16.5 Worked example (synthetic NRS case)
 
 Sam ran an FMEA row for TrackEye: failure mode "missed defect under glare"; effect "defect undetected until next run"; cause "distribution shift"; detection "dawn stratum monitoring"; severity 9, occurrence 4, detection 5, risk priority number 180. A second row for "adversarial marking" had severity 9, occurrence 2, detection 7 (hard to detect), RPN 126. Both exceeded the action threshold of 100.
+
+The marking row scores lower overall because occurrence is rare, yet its detection score is worse, since nobody monitors for deliberate patterns. Exceeding 100 triggers action for both rows, but the actions differ: better dawn data for one, a detection method for the other. Sam records the scores' basis, since occurrence for attacks is an estimate.
 
 ### 16.6 Errors and limits
 
 - Requirements on AI components without statistical verification methods.
 - Interfaces that do not state trust levels.
 - Hazard analyses that ignore deliberate attack.
+
+A requirement such as 'the model detects defects' cannot be verified, because no finite test proves it; a rate with a bound can. Interfaces without trust levels let untrusted text flow into privileged components unnoticed. Hazard analyses that consider only random failure miss the cases where someone searches for the worst input on purpose, which is often far worse than the typical case the analysis assumed.
 
 ### Exercises
 
@@ -1111,6 +1123,8 @@ You will (1) describe open- and closed-loop control, feedback, gain and stabilit
 
 A closed-loop controller measures output, compares it with a target and adjusts input. Gain determines how strongly it reacts; too much gain causes oscillation or instability, too little causes slow response. Delays in the loop make instability more likely.
 
+A thermostat is a familiar loop: it measures room temperature and switches heating on or off. If it reacts to every small fluctuation, heating toggles rapidly; if it reacts too slowly, the room swings between hot and cold. Delay worsens both, because the controller acts on information that is already out of date. The same trade-offs appear wherever a system adjusts itself from its own results, including automated threshold tuning.
+
 ### 17.2 Feedback loops in AI systems
 
 AI systems often form loops: a model's decisions change the data it is later retrained on; an anomaly model whose alerts trigger maintenance never sees what would have happened without maintenance; an agent observes the results of its own tool calls and plans further actions. Loops can amplify small errors — and amplify an attacker's influence. If attackers can inject data that is fed back into training (for example user feedback "thumbs up" on manipulated answers), they can steer the model over time; this is a poisoning path (OWASP LLM04).
@@ -1119,19 +1133,27 @@ AI systems often form loops: a model's decisions change the data it is later ret
 
 Control engineers bound actuator commands, rate-limit changes, and add interlocks that override the controller when measurements leave a safe region. Apply the same to AI: bound the actions an agent may take per hour, require human approval outside an envelope, and add independent checks (a simple rule-based monitor) that can veto the model.
 
+The rule-based monitor is deliberately simple, so it fails in different ways from the model. A rule such as 'no more than five work orders per hour from one session' catches runaway behaviour regardless of why the model produced it. Envelopes are written from operating data: the normal range of actions observed, with a margin, and an explicit owner who approves changes.
+
 ### 17.4 Monitoring loops
 
 Monitor input distribution, output distribution and outcome rates. Sudden changes may indicate drift or attack; slow drift may indicate a feedback loop. Keep a reference dataset that is not influenced by the model to measure true performance.
 
+A reference set is labelled independently and kept away from training and tuning. Measuring the model on it at intervals shows true performance, even when production feedback is biased by the model's own decisions. Monitoring outcome rates also needs care: if maintenance follows every alert, the system never sees missed failures directly, so engineers sample unalerted cases for inspection to estimate them.
+
 ### 17.5 Worked example (synthetic NRS case)
 
 Pulse's thresholds were automatically retuned weekly from technician feedback on alerts. A contractor team, under schedule pressure, marked many true alerts as "false alarm"; over six weeks the threshold rose and true-positive rate fell from 92% to 78% on the reference set. Sam replaced automatic retuning with a bounded update (at most 2% threshold change per week), a reference-set check before each change, and review of feedback from any team whose feedback diverged sharply from others.
+
+Without the reference set, the decline would have looked like improvement, since fewer alerts were being raised.
 
 ### 17.6 Errors and limits
 
 - Retraining on model-influenced data without a clean reference.
 - Unbounded automatic updates.
 - Agents with no action budget.
+
+Retraining on data shaped by the model's own decisions can lock in its errors, because cases it missed never come back as examples. Unbounded updates let a few biased inputs move the system far before anyone notices. Agents without action budgets can repeat a harmful action many times in the minutes before a human reviews the log. Each mistake is a missing bound on a feedback loop, and each fix is a limit that does not depend on the model being right.
 
 ### Exercises
 
@@ -1159,27 +1181,39 @@ You will (1) apply architecture principles (least privilege, separation of dutie
 
 Saltzer and Schroeder's classic principles still apply. *Least privilege*: the model and its tools get only the permissions needed. *Complete mediation*: every action is checked by a policy point, every time. *Fail-safe defaults*: deny unless explicitly allowed. *Separation of duties*: the component that proposes an action is not the one that approves it. *Economy of mechanism*: keep the policy small enough to review.
 
+These principles predate machine learning, which is useful: they give reviewers a checklist that does not depend on how the model behaves. A model can be manipulated, but a policy point that checks every action still applies whatever the model was persuaded to propose.
+
 ### 18.2 Trust boundaries
 
 A trust boundary is where data or control passes between parties with different trust. In LLM applications the critical boundary runs *inside* the prompt: system instructions (trusted), user input (partly trusted), retrieved or tool-returned content (untrusted). Because the model cannot reliably enforce this boundary, the architecture must enforce consequences outside the model.
+
+The model sees all three kinds of text as one sequence of tokens. Delimiters and instructions help it separate them, but a carefully written bulletin can still be read as an instruction. Enforcing consequences outside means the policy service, tool credentials and human approval decide what actually happens, so the model's confusion about whose text it is reading cannot by itself cause harm.
 
 ### 18.3 A reference architecture for agents
 
 Components: (1) an ingestion service that labels provenance; (2) the model, which *proposes* actions; (3) a policy decision point that checks each proposal against identity, scope and rules; (4) tool adapters with narrow credentials; (5) human approval for high-impact actions; (6) logging and monitoring. Research on structured queries (Chen et al., arXiv:2402.06363) improves the model's own separation of instructions and data but does not replace the external policy point. OWASP LLM06 (*excessive agency*) warns against excessive functionality, permissions and autonomy.
 
+Each component maps to a principle: the policy point gives complete mediation, narrow credentials give least privilege, and human approval separates proposing from approving.
+
 ### 18.4 Architecture decision records
 
 Record each significant decision: context, options considered, decision, consequences, threats addressed and residual risk. Reviewers and future engineers can then see why a control exists.
 
+Without a record, a control that looks inconvenient may be removed by someone who does not know the attack it prevents. Records are short, usually a page, and stored with the code so they change through the same review. When conditions change, such as a new tool or a new threat, the record is revisited and a new one supersedes it, keeping the history. Residual risk is the field most often left blank and the one reviewers most need.
+
 ### 18.5 Worked example (synthetic NRS case)
 
 Sam wrote ADR-007: "Wrench work-order creation". Options: (a) model calls API directly; (b) model proposes, policy checks, technician confirms; (c) no tool, model drafts text for the technician to copy. Decision: (b). Consequences: one more click for technicians; injected instructions cannot create orders without a human. Residual risk: technicians may approve without reading — mitigated by showing the source document of any instruction-like text.
+
+Option (c) was safest but gave up the benefit of structured orders, while option (a) put an untrusted model in direct control of a privileged system. The record shows why (b) sits between them.
 
 ### 18.6 Errors and limits
 
 - Trusting the model to enforce boundaries in its prompt.
 - Tools with broad credentials "for convenience".
 - Decisions without recorded residual risk.
+
+A boundary enforced only by instructions in the prompt holds until a clever input breaks it. Broad credentials turn a single manipulated call into access to everything the credential reaches. Decisions recorded without residual risk give the impression that a problem is solved when it is only reduced. Sam's architecture review asks of each design: where is the boundary enforced in code, what can each tool's credential do, and what risk remains.
 
 ### Exercises
 
