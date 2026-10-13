@@ -2206,7 +2206,7 @@ At ABP, finding ids come from the client on create and are reused on every retry
 
 Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes.
 
-Lena's finding store at ABP rejects any record with an unknown field or a forbidden name, such as payload or password, and returns a code saying which field failed. Severity accepts only the agreed values. The same validator runs for interactive creates and bulk imports, a lesson learned after a trusted import path once let a password through in a notes field. Errors are documented with examples.
+Lena's finding store at ABP rejects any record with an unknown field or a forbidden name, such as payload or password, and returns a code saying which field failed. Severity accepts only the agreed values. The same validator runs for interactive creates and bulk imports, so no input path is trusted more than another and every rejection is reported in the same format. Errors are documented with examples.
 
 ### 31.3 API versioning
 
@@ -2232,7 +2232,7 @@ PATCH that allows severity changes without evidence references invites silent do
 
 
 
-Optimistic concurrency with ETags prevents lost updates that clear re-test pointers. Bulk deletes are forbidden without dual control. Document upsert semantics in OpenAPI so mobile clients do not invent retry ids.
+A status change to closed is accepted only when the same request carries a re-test pointer. Bulk deletes are forbidden without dual control. Document upsert semantics in OpenAPI so mobile clients do not invent retry ids.
 
 ETags are required on every finding update.
 
@@ -2289,7 +2289,7 @@ If the finding store is down, continue deny/allow locally and queue drafts on di
 
 > **Synthetic case — Ashford Batch Plant.** During a findings-store outage, Lena's laptop queue held drafts; the serial monitor kept denying out-of-range writes.
 
-Lena tests this degraded mode in Lab II on the bench. During a real outage of the finding store, drafts queued on Lena's laptop and the serial monitor kept denying out-of-range writes. When the queue reached its threshold, discovery stopped automatically and Lena was paged, so no scans ran while findings could not be recorded.
+Lena tests this degraded mode in Lab II on the bench. During a real outage of the finding store, drafts queued on Lena's laptop and the serial monitor kept denying out-of-range writes. After each outage, Lena confirms that every queued draft reached the store by comparing counts with the queue log.
 
 ### 32.4 Errors and limits
 
@@ -2303,7 +2303,7 @@ When the draft queue grows past a threshold, stop starting new discovery methods
 
 ### 32.1b Error budgets and health checks
 
-Define error budgets for the deny path separately from best-effort UI budgets. Health-check policy storage and event sink at start of window. Starting a window blind and discovering a broken sink mid-scan is an operations failure this chapter is meant to prevent. Retries need deadlines so trunk budgets still hold.
+Define error budgets for the deny path separately from best-effort UI budgets. Health-check policy storage and event sink at start of window. Starting a window blind and discovering a broken sink mid-scan is an operations failure this chapter is meant to prevent. A failed health check delays the window start; the checks are never shortened to save time.
 
 
 
@@ -2311,7 +2311,7 @@ Chaos experiments run only on synthetic ranges, never during a client's signed w
 
 ### Field note — queue back-pressure
 
-When the draft queue hit 50 during a store outage, Track-style discovery stopped automatically and paged Lena. Deny/allow continued. Untracked scans while findings cannot be recorded are how windows create invisible risk; back-pressure is a safety feature.
+When the draft queue hit 50 during a store outage, Track-style discovery stopped automatically and paged Lena. Deny/allow continued. The threshold of 50 was chosen so the queue holds a full night of drafts with room to spare.
 
 
 ### 32.5 Worked example — degrading safely when the collector fails (synthetic ABP)
@@ -2358,7 +2358,7 @@ Walk a scenario: cycle time exceeds 50 ms at 02:40; who is called; what is said;
 
 > **Synthetic case — Ashford Batch Plant.** Tabletop found the kill-switch file path undocumented; runbook v1.4 fixed it before the next window.
 
-ABP's tabletops run each term with the shift lead present. The first tabletop found that the kill-switch file path was undocumented, and runbook v1.4 fixed it before the next window. Each scenario names who is called, what they are told and who may allow work to resume.
+ABP's tabletops run each term with the shift lead present, and every gap they expose is closed by a new runbook version before the next window. Each scenario names who is called, what they are told and who may allow work to resume.
 
 ### 33.4 Errors and limits
 
@@ -2376,7 +2376,7 @@ Stop conditions that page only one person fail when that person is offline. Main
 
 
 
-After every real stop, run a five-minute hotwash and file at least one runbook edit. Resume authority is named in the work permit; Boolean flips anyone on the jumphost can toggle are forbidden.
+After every real stop, run a five-minute hotwash and file at least one runbook edit. Hotwash notes record the trigger, the time to stop and the time to resume, so drills can be compared with real stops.
 
 ### Field note — resume token
 
@@ -2441,13 +2441,13 @@ Poison events (future timestamps, unknown policy versions) go to a dead-letter q
 
 ### 34.1b Dead letters and schema drills
 
-Events that fail validation go to a dead-letter queue with an alert. Operators replay after fixing the producer. Practice adding an optional field end-to-end in a dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
+Each dead-lettered event keeps the validation error that rejected it. Operators replay after fixing the producer. Practice adding an optional field end-to-end in a dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
 
 
 
-Contract tests run on a schedule against staging fixtures even when no PR is open, catching silent producer drift. Dead-letter age is an SLO chart beside deny-path latency.
+A failed scheduled run opens a ticket for the producer team, not the consumer team. Dead-letter age is an SLO chart beside deny-path latency.
 
-ABP runs a schema drill each term. Drill results are recorded.
+ABP runs a schema drill each term. Drill results are recorded with the producer and consumer versions involved.
 
 ### Field note — poison quarantine
 
@@ -2459,7 +2459,7 @@ Include a consumer canary that fails the deploy if poison events are not quarant
 
 
 
-Schema evolution drills once per term keep producer and consumer teams from inventing incompatible shortcuts under incident pressure.
+Each drill ends with the new field visible in a staging ticket and the drill's duration recorded, so the next drill can be compared with it.
 
 
 ### 34.5 Worked example — integrating alerts with the maintenance system (synthetic ABP)
@@ -2534,7 +2534,7 @@ In user research, three managers explained the coverage fraction as how safe we 
 
 
 
-Export as the source of truth removes arguments about what a screenshot meant in a status meeting.
+Every export carries the query version and the time it ran in its first line.
 
 
 ### 35.5 Worked example — the studio critique (synthetic ABP)
@@ -2615,11 +2615,11 @@ Publish a rate-limit economics note: cost of waiting versus cost of a batch inte
 
 ### 36.1b Fairness and warm-up
 
-When several methods share one budget, a noisy enumerator can starve a quiet config review. Weight or separate budgets by method class. Ramp traffic at window start and drain before hard stop. Instant full-rate starts look like floods to defenders and trip unrelated alarms.
+When several methods share one budget, a noisy enumerator can starve a quiet config review. Weight or separate budgets by method class. Ramp traffic at window start and drain before hard stop. Draining means no new requests in the last ten minutes, so in-flight replies arrive before the stop.
 
 
 
-Document who may raise a rate limit and which AUTH ticket type is required. Separate budgets for quiet versus noisy methods so a hungry enumerator cannot starve config review work.
+Document who may raise a rate limit and which AUTH ticket type is required. A raised limit expires at the end of the window unless renewed under a new ticket.
 
 Lena enforces both budgets in the coordinator.
 
@@ -2715,13 +2715,13 @@ Windows belong on a shared calendar with work-permit version in the description.
 
 
 
-Store the close-out checklist result hash so incomplete close-outs cannot be marked done quietly. Handover includes reading the last ten monitor denies aloud to the incoming lead.
+Close-out is not marked done until both checklist signers are recorded by name. Handover includes reading the last ten monitor denies aloud to the incoming lead.
 
 Lena checks the calendar at every handover. Overlaps are logged as findings.
 
 ### Field note — offline kit
 
-SSO failed during a Sunday window. The offline runbook copy and printed contact cards let the team stop cleanly and notify process safety. Wikis nobody can reach from the control room are not runbooks.
+SSO failed during a Sunday window. The offline runbook copy and printed contact cards let the team stop cleanly and notify process safety. Since then the kit is checked at every close-out.
 
 
 
@@ -2861,7 +2861,7 @@ Announce API deprecations with dates; keep dual-run periods. Maintainability inc
 
 
 
-Ownership pages list vacation coverage by name. Treat missing coverage as a release blocker equal to a failing test. Cross-training sessions use the same synthetic fixtures as Lab I.
+Cross-training sessions use the same synthetic fixtures as Lab I, so a backup practises on the inputs the release will be judged on and can run the lab alone afterwards.
 
 Lena applies this plan to every CNHP tool, including the replaced adapter. Its retirement was announced in advance.
 
@@ -2871,11 +2871,11 @@ A release was blocked because the only person who understood permit() was on lea
 
 
 
-API deprecation windows keep dual-run periods so Pulse-style consumers do not break mid-window when reason codes change.
+Deprecated reason codes stay readable by consumers for one full release after producers stop emitting them.
 
 
 
-Deletion plans for retiring a monitor include dossier export, credential revocation and archive of the code tag.
+The deletion date is announced on the service page at least one release ahead.
 
 
 ### 39.5 Worked example — removing a fragile adapter (synthetic ABP)
@@ -2966,7 +2966,7 @@ Lab II enables debug logs temporarily but seals a redacted copy. Leaving debug o
 
 
 
-Happy-path green with malicious-pack red still fails Lab II sign-off. Fault-injection scripts are checked into the lab folder and pinned by SHA in the report. Environment parity gaps explain green-in-lab red-in-window surprises.
+A fault script that cannot run is recorded as a failed row, not skipped. Fault-injection scripts are checked into the lab folder and pinned by SHA in the report. Environment parity gaps explain green-in-lab red-in-window surprises.
 
 Lena's sign-off checks for parity gaps.
 
