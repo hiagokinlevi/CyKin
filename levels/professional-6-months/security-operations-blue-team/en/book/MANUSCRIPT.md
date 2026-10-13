@@ -106,7 +106,7 @@ Priya writes a two-page charter: mission, scope, services, the authority to take
 
 ### 2.3 Pre-approved actions
 
-The provider may disable any user account, block an address at the firewall and isolate an office PC without calling Fenwick first. Isolating servers or factory PCs needs Priya or her deputy, because production could stop. These actions were chosen because they are quick, reversible and would have limited March: disabling j.harper's account would have stopped the attacker. The charter workshop added a condition for factory supervisory PCs: the provider phones the shift supervisor before isolating one, unless ransomware activity is seen, in which case it isolates first and calls immediately after. Each action taken is recorded and reported the next morning.
+The provider may disable any user account, block an address at the firewall and isolate an office PC without calling Fenwick first. Isolating servers needs Priya or her deputy, because production could stop; the first draft gave factory PCs the same rule. These actions were chosen because they are quick, reversible and would have limited March: disabling j.harper's account would have stopped the attacker. The charter workshop replaced that draft rule for factory supervisory PCs: the provider phones the shift supervisor before isolating one, unless ransomware activity is seen, in which case it isolates first and calls immediately after. Each action taken is recorded and reported the next morning.
 
 ### 2.4 Escalation
 
