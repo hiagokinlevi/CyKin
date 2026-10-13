@@ -311,11 +311,11 @@ The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how of
 
 ### 4.4 The pilot
 
-Two volunteer analysts not in the main study triage 40 alerts in each condition. The pilot checks timing, instructions, the alert-card layout and logging. The pilot analysts use the same cards and instructions as the main study, so any problem they meet would also affect the main sessions. They are asked afterwards what confused them, and Nadia watches one session to see where they hesitate. Their logs are kept separately and are not part of any reported effect. Pilot analysts also time each session.
+Two volunteer analysts not in the main study triage 40 alerts, 20 in each condition. The pilot checks timing, instructions, the alert-card layout and logging. The pilot analysts use the same cards and instructions as the main study, so any problem they meet would also affect the main sessions. They are asked afterwards what confused them, and Nadia watches one session to see where they hesitate. Their logs are kept separately and are not part of any reported effect. Pilot analysts also time each session.
 
 ### 4.5 What the pilot found
 
-Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits sessions into two of 40 alerts. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second. The pilot also confirmed that the logging worked: every disposition and change was recorded with a timestamp, so no fix was needed there.
+Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits the 40 alerts into two sessions of 20. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second. The pilot also confirmed that the logging worked: every disposition and change was recorded with a timestamp, so no fix was needed there.
 
 ### 4.6 Pilot data
 
@@ -323,7 +323,7 @@ Pilot results are not used to estimate effects; they test procedure. This is sta
 
 ### Worked example
 
-Nadia's protocol change log: "v1.1 — context fields moved above the raw event; disposition-change logging added; sessions split into 2 × 40 alerts with a 15-minute break; alert 17 rewritten after label disagreement."
+Nadia's protocol change log: "v1.1 — context fields moved above the raw event; disposition-change logging added; sessions split into 2 × 20 alerts with a 15-minute break; alert 17 rewritten after label disagreement."
 
 > **Synthetic case.** Labels come from the lab script.
 
@@ -358,11 +358,11 @@ You will (1) run a controlled crossover study; (2) estimate effects with interva
 
 ### 5.1 Design
 
-Eight analysts each triage 160 alerts: 80 baseline cards and 80 enriched cards, in counterbalanced order, with alert sets swapped between halves. Each analyst sees each alert once. Enriched cards add asset criticality, user role, and the count of similar alerts closed as benign in the last 30 days. Counterbalancing means half the analysts see baseline cards first and half see enriched cards first, so learning and fatigue affect both conditions equally. Swapping alert sets between halves ensures that differences come from the cards, not from easier alerts in one condition. The three enriched fields were chosen from the Contextual property and from what Northgate's analysts said they look up most often.
+Eight analysts each triage 40 alerts: 20 baseline cards and 20 enriched cards, in counterbalanced order, with alert sets swapped between halves. Each of the 320 corpus alerts is triaged by exactly one analyst, so the study has 320 decisions, 160 per condition. Enriched cards add asset criticality, user role, and the count of similar alerts closed as benign in the last 30 days. Counterbalancing means half the analysts see baseline cards first and half see enriched cards first, so learning and fatigue affect both conditions equally. Swapping alert sets between halves ensures that differences come from the cards, not from easier alerts in one condition. The three enriched fields were chosen from the Contextual property and from what Northgate's analysts said they look up most often.
 
 ### 5.2 Primary measure
 
-Accuracy: the share of dispositions matching ground truth. Pooled across analysts, each condition has 160 alert decisions in the primary sample used for the registered interval. Accuracy is scored against the corpus labels confirmed by the senior analysts. Decisions are logged automatically, including any change of disposition before submission, so the final decision is the one scored. Time-to-disposition is recorded in the same log but treated as secondary, as registered. An alert is scored correct only when the disposition matches the label exactly; escalating a benign alert counts as an error, just as closing an attack does, because both cost a SOC time or safety.
+Accuracy: the share of dispositions matching ground truth. Pooled across analysts, each condition has 160 alert decisions (8 analysts × 20), and all of them enter the registered interval. Accuracy is scored against the corpus labels confirmed by the senior analysts. Decisions are logged automatically, including any change of disposition before submission, so the final decision is the one scored. Time-to-disposition is recorded in the same log but treated as secondary, as registered. An alert is scored correct only when the disposition matches the label exactly; escalating a benign alert counts as an error, just as closing an attack does, because both cost a SOC time or safety.
 
 ### Lab — intervals for accuracy
 
