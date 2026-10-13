@@ -25,14 +25,14 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 3 | [13](book/PLAN.md#ch-13) | Senhas e segredos | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Firewalls e segmentação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Segurança sem fio | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Proteção de endpoints | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Plano](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Segurança do e-mail | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Backups na prática | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Criptografia na prática | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plano](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Segurança física e dos dispositivos | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Monitoramento de logs | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
-| 5 | [22](book/PLAN.md#ch-22) | Tratamento de incidentes | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plano](book/PLAN.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Fornecedores e serviços em nuvem | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plano](book/PLAN.md#ch-24) |
+| 4 | [16](book/PLAN.md#ch-16) | Proteção de endpoints | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Segurança do e-mail | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Backups na prática | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [19 · Rascunho](book/MANUSCRIPT.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Criptografia na prática | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-19) | [20 · Rascunho](book/MANUSCRIPT.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Segurança física e dos dispositivos | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-20) | [21 · Rascunho](book/MANUSCRIPT.md#ch-21) |
+| 5 | [21](book/PLAN.md#ch-21) | Monitoramento de logs | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-21) | [22 · Rascunho](book/MANUSCRIPT.md#ch-22) |
+| 5 | [22](book/PLAN.md#ch-22) | Tratamento de incidentes | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-22) | [23 · Rascunho](book/MANUSCRIPT.md#ch-23) |
+| 5 | [23](book/PLAN.md#ch-23) | Fornecedores e serviços em nuvem | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-23) | [24 · Plano](book/PLAN.md#ch-24) |
 | 5 | [24](book/PLAN.md#ch-24) | Políticas e procedimentos | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plano](book/PLAN.md#ch-25) |
 | 5 | [25](book/PLAN.md#ch-25) | Apoio à conscientização em segurança | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plano](book/PLAN.md#ch-26) |
 | 6 | [26](book/PLAN.md#ch-26) | Automação e agendamento | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plano](book/PLAN.md#ch-27) |
