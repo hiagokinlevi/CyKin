@@ -648,53 +648,79 @@ You will (1) design minimal schemas for findings; (2) protect customer data in e
 
 Store what retests need, not entire customer tables.
 
+A finding record at TRB needs only enough to reproduce and verify the weakness: the affected asset identifier, the request or configuration that demonstrated it, a timestamp, the tester, the engagement id and a pointer to the evidence file. When Sam proved that a statement-download endpoint returned another customer's PDF, the record kept the two synthetic account ids involved and a hash of the response, not the statement itself. A retest next quarter repeats the same request and compares the outcome. Every extra column copied from a customer table becomes data the testing team must now protect, retain and eventually delete.
+
 ### 9.2 Access control
 
 Evidence databases use role-based access; Sam's intern role is read/write on engagement schemas only.
+
+Roles are granted per engagement, not per person, so the permission disappears when the engagement closes rather than when someone remembers to revoke it. FindingsDesk has three: tester (write findings and evidence for one engagement), reviewer (read across the engagements they sign off) and custodian (run retention and restore jobs, never edit findings). Separating the custodian from the tester means the person who deletes evidence on schedule is not the person whose work it documents. When a tester moves to a new engagement, their old role expires and the reviewer keeps read access until the report is accepted.
 
 ### 9.3 Retention
 
 Agreement-driven deletion jobs; "keep forever" is not a policy.
 
+The statement of work fixes a retention period for raw evidence, commonly ninety days after the final report, and a longer one for the report and remediation status. FindingsDesk stores that date on the engagement row the day the agreement is signed, and a nightly job deletes evidence blobs whose date has passed, writing a deletion receipt with counts and hashes. Retention also protects the tester: evidence kept past its agreed date is customer data held without a reason, and an auditor will ask why. If a client requests a legal hold, the hold is a dated field with an owner, not an informal promise.
+
 ### 9.4 Backups
 
 Encrypted, access-logged, tested restores — backups are in scope for abuse review.
+
+A backup is a second copy of every screenshot, request log and credential-shaped string the team ever captured, so it attracts the same threats as the live database and is often watched less carefully. TRB's evidence backups are encrypted with a key held by the custodian role, stored in a separate account, and every read is logged. Retention applies to backups too: a deletion job that cleans the live store but leaves ninety-day-old snapshots intact has not deleted anything. Sam's quarterly review compares the oldest snapshot date with the shortest retention period on any active engagement.
 
 ### 9.5 Query hygiene
 
 No SELECT * into laptops; export minimised CSVs.
 
+Analysts usually want a count, a trend or a single example, and the query should return exactly that. Pulling whole tables to a laptop moves evidence outside the controls that protect it: no access log, no retention job and a disk that may travel. FindingsDesk therefore exposes saved queries such as open findings by severity, or days to fix per business unit, that return aggregates and redacted columns. When someone needs a raw row, they open it inside the evidence viewer, where the read is logged. Sam rewrote a popular dashboard query that selected every column and cut the export from forty fields to six.
+
 ### 9.6 Integrity
 
 Foreign keys from findings to evidence blobs.
 
-### 9.7 9.7 Applied note
+A finding that points to a missing or altered file cannot be defended when the client disputes it. Each evidence blob in FindingsDesk is stored with a SHA-256 hash computed at upload, and the finding row references the blob by id with a foreign-key constraint, so the database refuses to delete evidence that a live finding still cites. When a report goes out, the export lists each finding with the hashes of its evidence. If TRB later asks whether a screenshot was edited, Sam recomputes the hash and compares. A mismatch is itself an incident to investigate, not a reason to re-upload quietly.
+
+### 9.7 Access review against HR records
 
 Evidence DB roles are reviewed quarterly against HR lists. Sam's query checks for active vault roles without active employees. The first run found two contractors; access was removed the same afternoon.
 
-### 9.8 9.8 Export watermarks
+The join is simple: roles with no matching active record in the HR export are orphaned. The interesting cases are near-misses. A tester on parental leave is inactive in HR but should keep a dormant account, and a contractor renewed under a new purchase order may appear under a different id. Sam's query therefore produces a review list rather than revoking access automatically, and the security lead signs each decision. The second quarter's run found zero orphans, which is the result the control exists to produce.
+
+### 9.8 Export watermarks
 
 CSV exports embed engagement id and exporter name in a header comment. Leaked files can be traced. Sam verifies the watermark exists in a quarterly spot check.
 
-### 9.9 9.9 Backup restore game
+A watermark does not stop a leak; it shortens the investigation that follows one. When a file turns up on a shared drive, the header names the engagement and the person who exported it, so the custodian can check whether that export was authorised and which retention date applies. Header comments are easy to strip, so the export log in FindingsDesk records the same fields together with a hash of the file. Matching a stray file's hash against that log identifies its origin even when someone has deleted the comment line.
+
+### 9.9 Backup restore game
 
 Quarterly, Sam restores an evidence backup to an isolated host and opens one file. Untested backups are assumed broken.
 
-### 9.10 9.11 Scene
+The exercise has a pass condition written in advance: restore within two hours, open a randomly chosen evidence file, recompute its hash and match it to the finding record. The isolated host has no network route to production and is wiped afterwards, because a restored backup is full of sensitive evidence. Timing matters as much as success. If TRB disputes a finding during a report review, the team must produce the original evidence that week, not after a day of searching for the decryption key. Each game ends with a short note recording duration, problems and fixes.
+
+### 9.10 Refusing a bulk export
 
 An analyst requests "all evidence for the year" for a thesis. Sam refuses bulk export and offers a statistics-only extract with counts by severity. The thesis still proceeds. Minimisation applies to friendly requests too.
 
-### 9.11 9.12 Extension
+The refusal works because Sam asked what question the thesis was trying to answer. The analyst wanted to show how long high-severity web findings stayed open, which needs dates and severities, not screenshots or account ids. A query grouped by quarter and severity answered that, and the result contained no customer data at all. Purpose comes first: a request framed as all evidence usually hides a narrower need, and naming that need turns a privacy conflict into a reporting task.
+
+### 9.11 Restore without a manifest
 
 During restore game day the backup opened, but the hash manifest was missing. Sam failed the game and restored the manifest job before the next engagement. Backups without manifests are rumours.
 
-### 9.12 9.16 Pad
+The file opened, so a less careful reviewer would have passed the game. Without the manifest, though, nobody could prove the restored file matched what was captured during testing, and that proof is what the evidence is for. The cause was mundane: a storage migration had dropped the scheduled job that writes manifests beside each snapshot. Sam added a check that fails the backup itself when no manifest is present, so the gap now surfaces the night it occurs instead of on the next quarterly game.
+
+### 9.12 A contact address in every export
 
 Watermark headers include a contact mailto for lost-and-found of stray exports. Someone used it once; Sam bought them coffee.
 
-### 9.13 9.20 Extra
+The address gives an honest finder a way to report a stray export instead of guessing who owns it. It goes to a shared custodian mailbox, not to an individual, so it still works after staff change. Reports are handled like a small incident. The custodian confirms the file's origin from the export log, asks the finder to delete their copy or hand it back, and records whether its retention date had already passed. Thanking the reporter publicly makes it more likely that the next stray file is reported too.
+
+### 9.13 A returned drive
 
 Lost-and-found mailto once returned a USB drive labelled with an engagement id. Process works.
+
+The drive also showed where the process had failed earlier: someone had copied evidence to removable media despite the export rules. The custodian did not simply wipe the drive. They checked its contents against the export log, found an unlogged copy of screenshots from an engagement that had closed months before, and traced it to a tester who had wanted to work offline on a train. The response was a short conversation, deletion with a receipt, and a new option in FindingsDesk for encrypted offline workspaces that expire on the retention date.
 
 ### Worked example (synthetic TRB)
 
@@ -732,6 +758,8 @@ You will (1) list ROE essentials; (2) check targets offline; (3) handle pressure
 
 Scope, exclusions, methods, window, emergency contacts, data handling, report audience — NIST SP 800-115 and PTES both put authorization first.
 
+The rules of engagement turn a general permission into instructions a tester can check before each action. At TRB they list the networks and hostnames in scope, name the SWIFT gateway and the production ledger as excluded, permit authenticated web testing but forbid denial-of-service and social engineering, and fix testing to weeknights between 20:00 and 02:00. They also name who answers the phone if something breaks, how captured data is stored, and who receives the report. A rule that is not written down does not exist when it is needed at 23:40.
+
 ### 10.2 Offline check
 
 lab_scope classifies proposed targets before any packet.
@@ -756,49 +784,73 @@ Run with `python3 lab_scope.py`. Verified output:
 203.0.113.9     OUT OF SCOPE
 ```
 
+Running the classifier before any traffic turns scope from something a tester remembers into something a tester can show. The list of proposed targets, the version of the scope file and the output are saved together in the engagement folder. If a later dispute asks why one host was tested, the answer is the saved output, not a recollection. The check is deliberately strict: an address outside every listed range is refused, even when it looks like part of the same service, until the scope file is amended and signed.
+
 ### 10.3 Pressure
 
 "Just add the SWIFT box" is refused until written exclusion changes — which they will not for ordinary tests.
+
+Pressure rarely arrives as an order to break rules. It comes as a reasonable-sounding shortcut from someone senior, late in a window, when the extra host would make the report look more complete. Sam's answer follows a script: thank them, explain that the gateway is excluded in the signed rules, and offer to raise a scope change with its owner for a future window. The exclusion exists because the gateway's owner has not accepted the operational risk, and no one on a test call can accept it for them. Refusing politely and in writing protects both the tester and the person who asked.
 
 ### 10.4 Responsible disclosure
 
 Vendor bugs found in third-party software follow vendor paths only with CISO approval.
 
+A flaw in a commercial product that TRB uses belongs partly to TRB and partly to every other customer of that product. Sam records it in FindingsDesk as a TRB finding with a compensating control, then passes the technical detail to the CISO, who decides whether to contact the vendor and under which disclosure timeline. Contacting the vendor directly, or posting about it, could expose TRB as an unpatched customer before a fix exists. The report to the vendor carries enough detail to reproduce the bug safely and nothing about TRB's wider environment.
+
 ### 10.5 Conflicts
 
 Sam does not test systems owned by family businesses on TRB time or tools.
+
+A conflict of interest does not need bad intent to damage an engagement. Someone who tests a relative's company with the bank's scanner uses TRB resources outside TRB's authority, and any finding they produce is open to the charge that it was shaded for a personal reason. The same reasoning applies inside the bank: a tester whose friend owns the application under review should declare it before scoping. Declaring a conflict early costs one email and possibly a reassignment. Declaring it after the report has gone out can cost the credibility of every finding in it.
 
 ### 10.6 Dual-use teaching
 
 Exploit details for real payment products are out of curriculum scope.
 
-### 10.7 10.7 Applied note
+The skills in this book can be misused, so the book draws a line at what it teaches in detail. It explains weakness classes, how authorized testers confirm them safely and how to report them, using synthetic systems. It does not give working exploit chains for real card terminals, payment switches or banking platforms, because such material helps an attacker more than a learner. A student who wants to go further does so in a sanctioned lab under supervision. The test of any teaching example is whether a defender learns more from it than an attacker gains.
+
+### 10.7 No exploit code in the findings system
 
 Dual-use policy examples include refusing to paste exploit PoCs into FindingsDesk even when a vendor asks "for repro". Reproduction at TRB uses configuration evidence and authorized accounts, not weaponised snippets.
 
-### 10.8 10.8 Gift and conflict log
+FindingsDesk is read by developers, auditors and managers, and its exports reach vendors. A working proof-of-concept stored there would spread to every one of those readers. Sam's findings show the conditions instead: the misconfigured setting, the request an authorized test account sent and the response that proved the weakness. A developer can confirm the issue in a test environment from that description. When a vendor insists on more, the CISO decides what to share and over which secure channel.
+
+### 10.8 Gift and conflict log
 
 Sam logs any vendor gifts or outside bank accounts that could bias scope decisions. Transparency is cheaper than recusal fights mid-engagement.
 
-### 10.9 10.9 Tabletop ROE
+The log is a short dated table: what was received or held, from whom, and which engagements it might touch. Small things count because they show a pattern. A conference ticket from a scanner vendor matters if Sam later recommends that vendor's product in a report. The security lead reviews the log before assigning testers, which settles recusals at planning time, when swapping a tester is easy. An entry is not an accusation; an unlogged gift found later is treated as one.
+
+### 10.9 Tabletop on the rules of engagement
 
 Annual tabletop walks a missing emergency-contact scenario. Sam's team practices postponing rather than improvising.
 
-### 10.10 10.11 Scene
+A tabletop costs an hour and no packets. The facilitator reads out a situation: a test is about to start and the named emergency contact does not answer. Each participant says what they would do and which rule tells them so. The useful outcome is the gaps it exposes. One year the team found that the rules named a contact who had changed roles three months earlier. Updating that name before the next window was the most valuable result of the session.
+
+### 10.10 Postponing when the contact is unreachable
 
 Tabletop: emergency contact unreachable. Sam's team postpones the window in writing within five minutes. Improvised verbal approval from a random manager is scored as a fail condition in the tabletop. Postponement is success.
 
-### 10.11 10.12 Extension
+The instinct to keep going comes from the cost of rescheduling, but continuing without a reachable contact means that if a service degrades, nobody with authority can tell the testers to stop. A manager who happens to be online may mean well, yet they are not named in the rules and cannot accept the risk. The written postponement records the time, the attempts to reach the contact and the next proposed window, so the delay is documented rather than blamed.
+
+### 10.11 Recusing from a relative's vendor
 
 Sam's conflict log once listed a sibling working at a fintech vendor. He recused from a test involving that vendor's library. Recusal is quieter than scandal.
 
-### 10.12 10.16 Pad
+The library was a small part of the engagement, which made it tempting to stay on and just skip that component. The security lead chose clean separation instead. Another tester took every finding that touched the library, and Sam's name was left off those records. Had the test found a serious flaw, the vendor could not argue that a relative had either exaggerated or softened it. The log entry, written months earlier, made the decision a two-minute task rather than an argument.
+
+### 10.12 Postponement templates
 
 Postponement templates include SOC and CISO aliases pre-filled. Sam sends postponements in under three minutes during drills.
 
-### 10.13 10.20 Extra
+A template removes decisions from a stressful moment. It already lists the engagement id, the recipients who must know (the SOC, so it does not hunt for testers who are no longer testing, and the CISO's office), and fields for the reason, the attempts made and a proposed new window. The tester fills in facts, not wording. Pre-filled aliases matter because individual names go out of date, while role addresses are maintained by the teams that own them.
+
+### 10.13 Timing the postponement drill
 
 Three-minute postponement drill is timed with a visible clock. Over three minutes fails the drill.
+
+The limit is not arbitrary. TRB's SOC escalates unexplained scanning after five minutes, so a postponement sent within three reaches the analysts before they start an incident for activity that has already stopped. A visible clock also shows where time goes. In early drills most of it went on finding the template, which led to a pinned link in the engagement channel. Drills are scored on whether the message arrived, whether it went to the right roles and whether it was accurate, not on speed alone.
 
 ### Worked example (synthetic TRB)
 
@@ -836,57 +888,85 @@ You will (1) compare admin surfaces; (2) require jump hosts; (3) treat images as
 
 Patch levels, local admins and remote services differ across Windows and Linux. Findings name OS and failed control.
 
+On a Windows server the usual surfaces are missing cumulative updates, members of the local Administrators group and remote services such as RDP, SMB and WinRM. On Linux they are outdated packages, accounts with sudo rights and listening daemons such as SSH or an exposed database port. A finding that just says the server is insecure gives the owner nothing to act on. A finding that says a staging Linux host accepts SSH password logins from the user VLAN, contrary to the hardening baseline, names the operating system, the control that failed and what fixing it looks like.
+
 ### 11.2 Jump hosts
 
 Admin paths go through jump; email-VLAN RDP to servers is a finding.
+
+A jump host concentrates administrative access in one place that can be hardened, monitored and protected with multi-factor authentication. If administrators can also reach servers directly from the network where they read email, a phishing compromise of their workstation becomes a route to the servers that bypasses all of those controls. Sam tests the path from a synthetic user-VLAN host with an authorized account. If an RDP session to a staging server opens without passing through the jump host, the finding records the source network, the destination and the firewall rule that should have blocked it.
 
 ### 11.3 Images
 
 Golden images with old agents reintroduce risk when rebuilt.
 
+A golden image is the template from which new hosts are built, so whatever it contains is copied onto every host built from it. If the image carries an endpoint agent two versions behind, or a local account created for a debugging session, each rebuild brings that weakness back, often after the original host had been fixed by hand. Rebuilding is supposed to remove drift, but a stale image adds it instead. That is why Sam treats a weakness that reappears after a rebuild as an image problem first and checks the image's build date and contents before writing a host finding.
+
 ### 11.4 Logging
 
 OS logs support detection recommendations tied to ATT&CK.
+
+A test can show more than whether an attack works. It can also show whether the defenders would have seen it. After an authorized action, such as creating a scheduled task with a test account, Sam asks the SOC whether the Windows event for task creation arrived in the SIEM and whether any rule fired. Mapping the action to its ATT&CK technique gives both teams a shared name for it. A recommendation then reads as an improvement to detection, for example forwarding the task-creation event from staging servers and alerting when a non-administrator creates a task, rather than a vague call for more logging.
 
 ### 11.5 Privileges
 
 Hypervisor admin is a separate scope layer.
 
+Whoever administers the hypervisor controls every virtual machine on it: they can take snapshots, attach disks and open consoles without the guest operating system recording much. Permission to test the guest servers therefore does not cover the virtualisation layer, which usually has a different owner and a different risk. At TRB the virtualisation team must sign its own scope entry before anyone tests the management console. If Sam finds hypervisor credentials while testing a guest, he records that as a finding and stops there, because using them would move the test into a layer nobody authorised.
+
 ### 11.6 Hardening baselines
 
 Deviations need tickets, not folklore.
 
-### 11.7 11.7 Applied note
+A baseline is the written list of settings every host of a given type should have, such as disabled legacy protocols, a minimum password policy and audit logging turned on. Real systems deviate for real reasons, for example an old application that needs a legacy protocol. The deviation is acceptable only if it is recorded with an owner, a reason and an expiry date. Without that record, a tester cannot tell an approved exception from neglect, and the next administrator inherits a setting nobody can explain. Sam checks each deviation he finds against the exception register before deciding whether to write a finding.
+
+### 11.7 Pinning versions in the image pipeline
 
 Image pipeline tickets must name the agent versions baked in. Sam rejects "latest" as a version string. Reproducible builds of golden images are treated like application releases.
 
-### 11.8 11.8 Local admin census
+The tag latest describes a moment, not a version. An image built on Monday with the latest agent and rebuilt on Friday can contain different code, and neither ticket shows which. Exact version numbers let a tester compare a running host with the image it claims to come from, and they let the pipeline owner roll back to a known state. Treating images as releases also means each one has a changelog, a reviewer and a retirement date.
+
+### 11.8 Local admin census
 
 A quarterly query lists local admins on staging. Unexpected names become tickets. Sam correlates with leaver lists.
 
-### 11.9 11.9 Agent drift
+Local administrator rights accumulate quietly. Someone is added to fix a printer driver and never removed, or a service account is given admin rights because that was quicker than working out what it needed. The census compares each host's local Administrators group with the expected list for that host's role. Names absent from the expected list are checked against the leaver list first, because an admin account belonging to someone who has left is the most urgent case. Each census is saved, so the next one shows whether the count is falling.
+
+### 11.9 Agent drift
 
 Hosts whose agent version differs from the image catalogue by more than one minor version open tickets automatically.
 
-### 11.10 11.11 Scene
+The endpoint agent is how defenders see a host, so an outdated agent may miss techniques that newer versions detect, or may fail silently. The one-minor-version tolerance allows for staged rollouts, in which some hosts update a week before others, without raising tickets for normal lag. Anything further behind usually means the host stopped receiving updates, often because it was moved to a network segment the update server cannot reach. The automatic ticket names the host, both version numbers and the date the host last checked in.
+
+### 11.10 A rebuild that reintroduced RDP
 
 A rebuilt staging host comes back with an old RDP posture. The image catalogue said it should not. Sam files both a host finding and an image-pipeline finding. Two owners, two tickets, one root cause class.
 
-### 11.11 11.12 Extension
+The host owner can fix their server the same day by disabling RDP from the user VLAN. That does nothing for the next server built from the same pipeline. The image owner's ticket asks why the catalogue and the build disagreed. Here a configuration step had been moved into an optional stage that the rebuild skipped. Linking the two tickets lets the reviewer close the host finding only after the image finding has a fix in place.
+
+### 11.11 A forgotten temporary admin
 
 Local admin census found a dormant "temp" admin created during an outage. Ticket, remove, verify. Dormant temps are permanent until hunted.
 
-### 11.12 11.14 Note 11
+The account had been created at 02:00 during a storage outage so that a contractor could restart services, and the incident record said it would be removed the next morning. It was not. Its password had never been changed and it had not logged in for seven months, which made it both useless and dangerous. After removing it, Sam verified the removal on the host and added a field to the outage template for emergency accounts, each with an expiry time that the closing review must check.
+
+### 11.12 Copying image owners on findings
 
 Image findings always CC the pipeline owner, not only the host owner.
 
-### 11.13 11.16 Pad
+Host owners often cannot see the pipeline that built their servers, and pipeline owners rarely look at individual host tickets. A weakness inherited from an image falls between the two. The host owner patches their machine and closes the ticket, and the pipeline keeps producing the same weakness. Copying the pipeline owner puts the finding in front of the person who can stop it recurring. FindingsDesk does this automatically when a finding's root cause is set to image, so the routing does not depend on the tester remembering.
+
+### 11.13 Weighting image findings for recurrence
 
 Pipeline findings use a separate severity rubric weighted toward recurrence. One bad image can mint a hundred bad hosts.
 
-### 11.14 11.20 Extra
+On a single host, a weak setting might rate medium because few people can reach the host. The same setting in an image that builds every staging and production web server is a different risk, because its reach grows with each build and it returns after each local fix. The image rubric therefore asks how many hosts are built from the image, how often they are rebuilt and whether any of them are internet-facing. A medium host finding can become a high pipeline finding without any change to the technical weakness.
+
+### 11.14 Publishing both severity scales
 
 Recurrence-weighted rubric for images is published beside host severity. Different beasts, different scales.
+
+Publishing both scales prevents a predictable argument. A pipeline owner who sees a high rating for a setting the host team rated medium will suspect inconsistency unless the reason is written down. The published page shows both rubrics side by side, with a worked example of one weakness rated on each. Reviewers check that every image finding states which scale it used. Having a separate scale also lets TRB track pipeline debt on its own, which made the case for funding automated image testing.
 
 ### Worked example (synthetic TRB)
 
