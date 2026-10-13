@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 100, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem criptografia desde os fundamentos matemáticos até a operação de serviços de confiança numa organização real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios ilustram conceitos (XOR, cifras clássicas, hash com salt, cadeias de hashes) sobre dados sintéticos; as cifras de brinquedo aparecem apenas para explicar por que falham. Sistemas de produção usam bibliotecas avaliadas; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Katz e Lindell (3ª ed.); Menezes et al., [*Handbook of Applied Cryptography*](h
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -945,11 +945,420 @@ Culpar indivíduos esconde as causas de processo. Falhas criptográficas raras a
 
 - **EX060 — Causas da indisponibilidade.** Cite as três causas da indisponibilidade do catálogo. *Rubrica:* 3 = renovação manual por pessoa que saiu, nenhum alerta, local da chave desconhecido;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Criptografia e serviços de confiança: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar os serviços de confiança da Tidewell como componentes e fluxos; (2) identificar qual componente afirma o quê; (3) encontrar pontos únicos de confiança.
+
+### 21.1 Componentes e fluxos
+
+Priya modela os serviços de confiança do consórcio como um sistema. Os componentes incluem a autoridade certificadora pública usada para os sites, a autoridade interna para os dispositivos da equipe, o serviço de chaves, o serviço de assinatura de contratos e o servidor de licenças do provedor de e-books, que verifica tokens de empréstimo assinados. Os fluxos os conectam: solicitações de certificados, tokens assinados, backups cifrados e informações de revogação. Ela desenha o modelo com setas rotuladas com o que cada fluxo transporta e como é protegido, partindo da arquitetura do Capítulo 16. Grace revisa o diagrama com sua equipe para conferir a exatidão.
+
+### 21.2 Quem afirma o quê
+
+Para cada componente, Priya registra sua afirmação e quem confia nela. A autoridade pública afirma que a Tidewell controla seus nomes de domínio, e os navegadores dos leitores confiam nisso. A autoridade interna afirma que um dispositivo pertence à equipe, e a wiki confia nisso. O servidor de licenças confia nos tokens de empréstimo assinados da Tidewell, que afirmam que um leitor pode emprestar um título por catorze dias. Escrever as afirmações explicitamente mostra quais falhas enganariam quem e, portanto, quais componentes precisam dos controles mais fortes. Ela compartilha a tabela com Grace.
+
+### 21.3 Pontos únicos de confiança
+
+O modelo revela pontos únicos de confiança: a chave de assinatura da autoridade interna, se roubada, permitiria a um atacante criar certificados de dispositivos da equipe; e uma única conta de administrador controla tanto o serviço de chaves quanto seus logs de auditoria. Priya recomenda tirar do ar (offline) a raiz da autoridade interna, com uma chave emissora separada, e separar a administração do serviço de chaves da administração dos logs. Cada recomendação reduz o dano que um único comprometimento pode causar. Grace acrescenta as duas ao plano do ano seguinte, com os custos estimados. Os dois itens recebem donos e datas-alvo.
+
+### Exemplo resolvido
+
+O modelo de sistema de Priya rotula cada fluxo, lista a afirmação de cada componente e encontra dois pontos únicos de confiança, com recomendações.
+
+> **Caso sintético.** O modelo é inventado.
+
+### Erros e limites
+
+Os modelos simplificam; confira-os contra as configurações reais. Os pontos únicos de confiança podem se esconder em pessoas, e não apenas em sistemas.
+
+### Exercícios
+
+- **EX061 — Afirmação da licença.** O que os tokens de empréstimo assinados da Tidewell afirmam ao servidor de licenças? *Rubrica:* 3 = que um leitor pode emprestar um título por catorze dias;; 2 = permissão de empréstimo;; 1 = identidade;; 0 = nenhuma.
+
+- **EX062 — Risco da autoridade interna.** O que um atacante poderia fazer com a chave de assinatura da autoridade interna? *Rubrica:* 3 = criar certificados de dispositivos da equipe;; 2 = se passar por dispositivos;; 1 = nada;; 0 = nenhuma.
+
+- **EX063 — Separação da administração.** Que separação Priya recomendou para a administração? *Rubrica:* 3 = separar a administração do serviço de chaves da administração dos logs de auditoria;; 2 = separação;; 1 = unificar;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Criptografia e serviços de confiança: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) inventariar os ativos e as dependências criptográficas; (2) acompanhar as bibliotecas e os algoritmos em uso; (3) planejar mudanças de fornecedores.
+
+### 22.1 Inventário criptográfico
+
+Priya constrói um inventário dos ativos criptográficos da Tidewell: certificados com datas de expiração e donos; chaves com finalidades, algoritmos e locais; e os protocolos em uso em cada serviço. O SP 800-57 Part 1 enfatiza que a organização precisa saber que chaves tem. Ela descobre dois certificados esquecidos em servidores antigos e uma chave de backup guardada numa pasta compartilhada. O inventário transforma riscos invisíveis numa lista com donos e se torna a base de todas as mudanças posteriores, incluindo a migração de algoritmos. O inventário é revisado mensalmente pela equipe de Grace para conferir a exatidão.
+
+### 22.2 Dependências de bibliotecas e algoritmos
+
+Os sistemas da Tidewell dependem de bibliotecas criptográficas nos sistemas operacionais, nos servidores web e nas aplicações. Priya lista cada biblioteca e versão e registra quais algoritmos cada sistema usa. Ela descobre que o serviço de assinatura de contratos usa RSA com chaves de 2048 bits e SHA-256, aceitável hoje, e que uma ferramenta antiga de relatórios usa SHA-1 para conferir arquivos. Ela anota a orientação do NIST no SP 800-131A sobre a transição para longe do SHA-1 e agenda a substituição da ferramenta de relatórios. Ela guarda a lista de dependências no repositório compartilhado, para que qualquer equipe possa ver que sistemas uma atualização de biblioteca afetaria.
+
+### 22.3 Mudanças de fornecedores
+
+Vários serviços vêm de fornecedores, incluindo o provedor de e-books e o hospedeiro do portal. Priya pergunta a cada um sobre suas práticas criptográficas: versões de TLS, armazenamento de chaves e planos de migração pós-quântica. Um fornecedor não consegue responder sobre os planos pós-quânticos; ela registra isso como um risco, e não como uma falha, já que a migração ainda está num estágio inicial. Ela recomenda acrescentar requisitos criptográficos aos contratos futuros, como suportar as versões atuais do TLS e notificar a Tidewell sobre comprometimentos de chaves. Grace inclui o modelo de requisitos na licitação seguinte.
+
+### Exemplo resolvido
+
+O inventário de Priya encontra dois certificados esquecidos e uma chave de backup numa pasta compartilhada, sinaliza uma ferramenta com SHA-1 para substituição e acrescenta requisitos criptográficos aos contratos com fornecedores.
+
+> **Caso sintético.** Os achados do inventário são inventados; o SP 800-57 e o SP 800-131A são reais.
+
+### Erros e limites
+
+Os inventários se degradam sem varreduras regulares de descoberta. As respostas dos fornecedores precisam de evidências, e não apenas de garantias verbais.
+
+### Exercícios
+
+- **EX064 — Achados do inventário.** O que o inventário revelou? *Rubrica:* 3 = dois certificados esquecidos e uma chave de backup numa pasta compartilhada;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX065 — Ferramenta com SHA-1.** O que Priya decidiu sobre a ferramenta de relatórios com SHA-1, e que orientação sustenta isso? *Rubrica:* 3 = agendar a substituição; orientação de transição do SP 800-131A;; 2 = substituir;; 1 = manter;; 0 = nenhuma.
+
+- **EX066 — Risco do fornecedor.** Como ela tratou um fornecedor incapaz de responder sobre os planos pós-quânticos? *Rubrica:* 3 = registrou como risco, e não como falha, dado o estágio inicial da migração;; 2 = risco;; 1 = descartou o fornecedor;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Criptografia e serviços de confiança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar corretamente a cifração autenticada; (2) entender os nonces e suas regras; (3) escolher os parâmetros do AES-GCM a partir das normas.
+
+### 23.1 Cifração autenticada
+
+A cifração autenticada combina confidencialidade e integridade: a decifração falha se o texto cifrado tiver sido alterado. O AES-GCM, especificado no SP 800-38D usando o AES do FIPS 197, é o esquema mais usado. Priya aprende sua interface: uma chave, um nonce único, o texto claro e dados associados opcionais, que são autenticados, mas não cifrados, como o identificador de um registro. Incluir o identificador como dado associado impede que um atacante troque registros cifrados entre leitores sem ser detectado. Priya demonstra, com registros sintéticos, que mudar o identificador faz a decifração falhar, o que convence colegas céticos.
+
+### 23.2 Regras dos nonces
+
+O GCM exige que um nonce nunca se repita sob a mesma chave. Uma repetição permite a um atacante descobrir o XOR de dois textos claros, como no pad reutilizado do Capítulo 1, e forjar mensagens. O SP 800-38D permite contadores, que nunca podem ser reiniciados, ou nonces aleatórios de 96 bits, limitados a cerca de 2^32 cifrações por chave. Priya recomenda nonces aleatórios gerados pela biblioteca, junto com a rotação das chaves bem antes desse limite. Ela confere que a ferramenta de exportação da Tidewell nunca constrói os nonces por conta própria. Ela documenta a regra no checklist de revisão de código.
+
+### 23.3 Escolher os parâmetros
+
+Priya escreve uma nota de parâmetros para a Tidewell: AES-256-GCM, nonces de 96 bits gerados pela biblioteca, tags de autenticação de 128 bits, dados associados contendo o tipo e o identificador do registro, e chaves rotacionadas anualmente ou depois de um número definido de cifrações. Cada escolha cita o SP 800-38D ou o SP 800-57. Ela anota que a receita de alto nível da biblioteca já escolhe a maioria desses parâmetros, e esse é justamente o ponto: os engenheiros devem verificar os parâmetros, e não inventá-los. Grace arquiva a nota com a documentação do sistema, e Priya agenda uma revisão anual para confirmar que os parâmetros continuam de acordo com as orientações atuais.
+
+### Exemplo resolvido
+
+Priya especifica AES-256-GCM com nonces de 96 bits gerados pela biblioteca, tags completas e dados associados que vinculam os registros aos leitores, citando o SP 800-38D.
+
+> **Caso sintético.** A nota de parâmetros é inventada; o SP 800-38D e o FIPS 197 são reais.
+
+### Erros e limites
+
+A reutilização de nonces quebra o GCM gravemente. Os dados associados precisam ser idênticos na cifração e na decifração.
+
+### Exercícios
+
+- **EX067 — Dados associados.** Por que incluir o identificador do registro como dado associado? *Rubrica:* 3 = para impedir que registros cifrados sejam trocados entre leitores sem detecção;; 2 = vinculação;; 1 = cifra o identificador;; 0 = nenhuma.
+
+- **EX068 — Limite dos nonces aleatórios.** Que limite se aplica aos nonces aleatórios de 96 bits do GCM? *Rubrica:* 3 = cerca de 2^32 cifrações por chave;; 2 = limite;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX069 — Origem dos parâmetros.** Por que Priya diz que verificar os parâmetros é o ponto? *Rubrica:* 3 = os engenheiros devem verificar, não inventar, os parâmetros; as receitas escolhem a maioria;; 2 = verificar;; 1 = inventar;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Criptografia e serviços de confiança: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) selecionar controles para o gerenciamento de chaves; (2) aplicar a segregação de funções e o controle duplo; (3) documentar os controles para auditoria.
+
+### 24.1 Selecionar os controles
+
+Priya seleciona os controles de gerenciamento de chaves da Tidewell com base no SP 800-57: chaves geradas no serviço de chaves, nunca por indivíduos; acesso às chaves limitado por papel; rotação no prazo; procedimentos de revogação; e destruição segura quando as chaves são aposentadas. Para cada controle, ela lista o propósito, o dono e as evidências, como logs ou chamados. Ela prioriza os controles para as chaves de maior valor, a autoridade interna e as chaves de backup, em vez de aplicar todos os controles em toda parte. Ela explica que espalhar o esforço por igual deixaria as chaves mais valiosas tão protegidas quanto as triviais.
+
+### 24.2 Segregação e controle duplo
+
+A segregação de funções significa que nenhuma pessoa sozinha consegue concluir uma ação sensível; o controle duplo significa que duas pessoas precisam agir juntas. Priya aplica os dois: restaurar as chaves de backup exige dois administradores; quem aprova as solicitações de certificado não pode também emiti-los; e os logs de auditoria são revisados por alguém de fora da equipe de TI. Esses controles protegem tanto contra erros quanto contra insiders, e protegem a equipe honesta ao deixar claro que ninguém poderia ter agido sozinho. Ela documenta cada controle na política de acesso.
+
+### 24.3 Documentar para a auditoria
+
+Priya escreve um registro de controles: controle, risco tratado, dono, frequência e local das evidências. Quando os auditores do consórcio visitam, eles fazem uma amostragem do registro: pedem as evidências do teste das chaves de backup do último trimestre e os registros de aprovação de três certificados. Dois itens estão faltando porque as evidências eram guardadas no e-mail pessoal. Priya transfere o armazenamento das evidências para um local compartilhado e com controle de acesso. A documentação é o que permite a uma organização provar que seus controles funcionam, e não apenas afirmá-lo. Grace acrescenta ao checklist trimestral um lembrete para confirmar que as evidências estão guardadas corretamente.
+
+### Exemplo resolvido
+
+Priya constrói um registro de controles com controle duplo para as chaves de backup e segregação na aprovação de certificados e corrige, depois de uma amostragem da auditoria, as evidências guardadas no e-mail pessoal.
+
+> **Caso sintético.** Os controles e a auditoria são inventados; o SP 800-57 é real.
+
+### Erros e limites
+
+Controles sem evidências falham nas auditorias. O controle duplo se desgasta se a equipe compartilhar credenciais para ganhar tempo.
+
+### Exercícios
+
+- **EX070 — Chaves prioritárias.** Que chaves Priya priorizou para os controles? *Rubrica:* 3 = a autoridade interna e as chaves de backup;; 2 = uma;; 1 = todas por igual;; 0 = nenhuma.
+
+- **EX071 — Exemplo de controle duplo.** Dê um controle duplo que Priya aplicou. *Rubrica:* 3 = restaurar as chaves de backup exige dois administradores;; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX072 — Lacuna da auditoria.** Que lacuna a auditoria encontrou, e como foi corrigida? *Rubrica:* 3 = evidências no e-mail pessoal; transferidas para armazenamento compartilhado com controle de acesso;; 2 = lacuna;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir num laboratório uma pequena ferramenta de exportação protegida; (2) testá-la com casos positivos e negativos; (3) escrever um relatório de laboratório.
+
+### 25.1 A tarefa do laboratório
+
+No Laboratório I, a equipe de Priya constrói uma ferramenta que exporta registros sintéticos de leitores para uma biblioteca parceira, protegidos com cifração autenticada de uma biblioteca avaliada, usando os parâmetros do Capítulo 23. A ferramenta carrega uma chave de um cofre de segredos de teste, cifra cada registro com dados associados e grava um arquivo que a parceira consegue decifrar com a chave compartilhada. O laboratório usa apenas registros sintéticos; nenhum dado real de leitores entra no ambiente do laboratório. Cada membro da equipe revisa o código de outro antes de os testes rodarem, para que os erros sejam pegos cedo.
+
+### 25.2 Testes
+
+A equipe escreve os testes: a decifração devolve os registros originais; um byte adulterado causa falha; trocar os dados associados de dois registros causa falha; uma chave errada causa falha; e cifrar o mesmo registro duas vezes produz saídas diferentes. Um teste falha de início porque a equipe reutilizou por acidente um nonce fixo de um trecho de exemplo, de modo que as cifrações repetidas coincidiam. Eles removem o nonce fixo e deixam a biblioteca gerá-lo. O teste que falhou impediu que um erro perigoso chegasse à produção. Eles também acrescentam um teste de regressão para o bug do nonce.
+
+### 25.3 O relatório do laboratório
+
+Priya escreve o relatório: objetivo, projeto, parâmetros com citações, testes e resultados, o bug do nonce e sua correção, e as limitações. As limitações incluem o compartilhamento da chave por transferência manual, que um laboratório posterior vai substituir, e a falta de revisão de canais laterais. Ela inclui a saída dos testes e declara claramente que a ferramenta depende da criptografia da biblioteca e que a equipe não implementou nenhuma primitiva. O Dr. Echeverría avalia o relatório pela clareza e pela honestidade, além da correção. Ela também anexa os logs dos testes como apêndice.
+
+### Exemplo resolvido
+
+A ferramenta de exportação da equipe passa em cinco testes depois que um bug de nonce fixo, vindo de um trecho de exemplo, é pego e removido, e o relatório de Priya declara as limitações.
+
+> **Caso sintético.** O laboratório e os registros são inventados.
+
+### Erros e limites
+
+Códigos de exemplo muitas vezes contêm chaves ou nonces fixos para demonstração; nunca os copie. A transferência manual de chaves é um ponto fraco.
+
+### Exercícios
+
+- **EX073 — Cinco testes.** Liste três dos cinco testes. *Rubrica:* 3 = três entre decifração correta, adulteração falha, dados associados trocados falham, chave errada falha, saídas diferentes;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX074 — Bug do nonce.** Que bug os testes revelaram? *Rubrica:* 3 = um nonce fixo copiado de um trecho de exemplo, tornando idênticas as cifrações repetidas;; 2 = nonce fixo;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX075 — Limitações do relatório.** Cite uma limitação do relatório. *Rubrica:* 3 = transferência manual da chave ou falta de revisão de canais laterais;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Criptografia e serviços de confiança: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar as assinaturas digitais e a verificação; (2) aplicar assinaturas a documentos e softwares; (3) escolher entre ECDSA e Ed25519.
+
+### 26.1 Como funcionam as assinaturas
+
+Um esquema de assinatura digital tem três operações: geração de chaves, assinatura com uma chave privada e verificação com a chave pública correspondente. O FIPS 186-5 especifica o ECDSA e o EdDSA, e a RFC 8032 especifica o Ed25519. Qualquer pessoa com a chave pública pode verificar que a assinatura corresponde exatamente aos bytes assinados, mas só o detentor da chave privada poderia criá-la. Priya contrasta isso com o HMAC, em que os verificadores compartilham o segredo e poderiam criar as tags eles mesmos. Ela demonstra com uma biblioteca que mudar um byte de um arquivo assinado faz a verificação falhar, enquanto o original é verificado.
+
+### 26.2 Aplicar as assinaturas
+
+A Tidewell assina dois tipos de coisa. Os contratos com as editoras são assinados como documentos PDF com certificados, para que qualquer uma das partes possa verificá-los anos depois. Os scripts de software implantados nos servidores das unidades são assinados pela equipe de TI, e os servidores recusam scripts não assinados. Priya explica que as assinaturas provam a origem e a integridade, mas dependem de proteger as chaves privadas e de distribuir chaves públicas confiáveis. Ela recomenda manter a chave de assinatura dos scripts no serviço de chaves, onde assinar exige uma solicitação aprovada. Grace aprova a mudança para o trimestre seguinte.
+
+### 26.3 ECDSA ou Ed25519
+
+Priya compara os dois. O ECDSA com P-256 é amplamente suportado e permitido pelo FIPS 186-5, mas exige um valor secreto novo a cada assinatura, e implementações que o reutilizaram ou vazaram já expuseram chaves privadas. O Ed25519 deriva esse valor de forma determinística a partir da chave e da mensagem, eliminando esse modo de falha, e é rápido. Ambos estão no FIPS 186-5. Ela recomenda o Ed25519 onde houver suporte e o ECDSA por meio de bibliotecas avaliadas onde a compatibilidade exigir, e anota que as assinaturas pós-quânticas do FIPS 204 serão necessárias mais tarde. Grace adota a recomendação.
+
+### Exemplo resolvido
+
+Priya explica a assinatura e a verificação, aplica assinaturas a contratos e scripts com uma chave de assinatura no serviço de chaves e recomenda o Ed25519 onde houver suporte.
+
+> **Caso sintético.** Os usos de assinatura da Tidewell são inventados; o FIPS 186-5, a RFC 8032 e o FIPS 204 são reais.
+
+### Erros e limites
+
+As assinaturas são inúteis se as chaves privadas vazarem ou se as chaves públicas não forem autenticadas. Falhas na aleatoriedade por assinatura do ECDSA já expuseram chaves.
+
+### Exercícios
+
+- **EX076 — Três operações.** Cite as três operações de um esquema de assinatura. *Rubrica:* 3 = geração de chaves, assinatura, verificação;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX077 — Assinatura de scripts.** O que os servidores das unidades fazem com os scripts, e onde fica a chave de assinatura? *Rubrica:* 3 = recusam scripts não assinados; a chave fica no serviço de chaves, com solicitações aprovadas;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+
+- **EX078 — Vantagem do Ed25519.** Que modo de falha o Ed25519 evita? *Rubrica:* 3 = o segredo por assinatura é derivado de forma determinística, evitando nonces reutilizados/vazados que expõem chaves;; 2 = nonce;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Criptografia e serviços de confiança: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar as configurações criptográficas em relação aos requisitos; (2) testar a validação de certificados nas aplicações; (3) relatar os achados com evidências.
+
+### 27.1 Verificação das configurações
+
+Priya verifica os serviços da Tidewell em relação aos seus requisitos criptográficos: TLS 1.2 no mínimo, com preferência pelo TLS 1.3, certificados de autoridades aprovadas, nenhuma assinatura com SHA-1 e HSTS nos sites públicos. Com autorização, ela executa scanners de configuração e registra os resultados. O portal dos leitores passa; a wiki da equipe, já sinalizada no Capítulo 7, agora suporta o TLS 1.3, mas ainda aceita o TLS 1.0, então a mudança anterior foi incompleta. A verificação depois das mudanças pega correções parciais. Priya reabre o chamado original e anexa a saída da varredura, para que a equipe veja exatamente quais versões do protocolo continuam habilitadas e por que a mudança ficou incompleta.
+
+### 27.2 Testar a validação
+
+As aplicações precisam rejeitar certificados ruins. Num ambiente de teste, Priya apresenta a uma aplicação de relatórios um certificado expirado, um certificado para o nome errado e um certificado autoassinado. A aplicação rejeita os dois primeiros, mas aceita o autoassinado, porque um desenvolvedor o tinha acrescentado a uma lista de confiança durante os testes e nunca o removeu. Ela relata o problema e sugere que as configurações de confiança de teste fiquem apenas em arquivos de configuração de teste que não possam ir para a produção. O desenvolvedor remove a entrada no mesmo dia.
+
+### 27.3 Relatar os achados
+
+O relatório de Priya lista cada achado com a severidade, as evidências, o sistema afetado e a correção recomendada, e separa os achados confirmados das observações. Ela evita linguagem sensacionalista e inclui o que passou, para que os leitores vejam o estado geral. Grace usa o relatório para agendar as correções, e Priya testa de novo depois de cada uma, registrando as datas. O relatório se torna evidência para a revisão anual de segurança do consórcio. Grace apresenta o resumo ao conselho do consórcio, que aprova o orçamento para as correções restantes. Priya guarda as saídas brutas das varreduras e os logs dos testes no repositório de evidências, com links no relatório, para que revisores posteriores possam conferir cada afirmação que ela fez.
+
+### Exemplo resolvido
+
+Priya verifica as configurações de TLS, descobre que a wiki da equipe ainda aceita o TLS 1.0 e que uma aplicação de relatórios confia num certificado autoassinado esquecido, e relata com evidências e novos testes.
+
+> **Caso sintético.** Os achados são inventados.
+
+### Erros e limites
+
+Os scanners deixam passar falhas de validação no nível da aplicação; teste-as diretamente. Relatórios que omitem o que passou distorcem o quadro.
+
+### Exercícios
+
+- **EX079 — Correção parcial.** O que a verificação revelou sobre a wiki da equipe? *Rubrica:* 3 = suporta o TLS 1.3, mas ainda aceita o TLS 1.0, então a correção anterior foi incompleta;; 2 = parcial;; 1 = corrigida;; 0 = nenhuma.
+
+- **EX080 — Aceitação do autoassinado.** Por que a aplicação de relatórios aceitou um certificado autoassinado? *Rubrica:* 3 = um desenvolvedor o acrescentou à lista de confiança durante os testes e nunca o removeu;; 2 = resto de teste;; 1 = bug no TLS;; 0 = nenhuma.
+
+- **EX081 — Conteúdo do relatório.** O que cada achado do relatório inclui? *Rubrica:* 3 = severidade, evidências, sistema afetado, correção recomendada;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Criptografia e serviços de confiança: análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um cenário de comprometimento de chave; (2) construir uma linha do tempo e uma cadeia causal; (3) definir ações corretivas e preventivas.
+
+### 28.1 O cenário
+
+Num exercício de mesa, a Tidewell simula um comprometimento: a chave privada TLS do portal foi encontrada num repositório de código público, enviada por um prestador de serviços meses antes. Priya conduz a análise. As perguntas imediatas são o que a chave permite a um atacante, se passar pelo portal diante dos leitores caso consiga interceptar o tráfego, e o que precisa acontecer agora: revogar o certificado, emitir uma nova chave e um novo certificado, implantá-los e procurar sinais de uso indevido. O exercício não usa nenhuma chave real. Os facilitadores fazem os papéis do atacante e do prestador.
+
+### 28.2 Linha do tempo e causas
+
+Priya constrói uma linha do tempo a partir das evidências simuladas: o prestador copiou a configuração do servidor para um repositório por conveniência, o repositório era público, não havia varredura de segredos e a chave nunca foi rotacionada. Ela desenha uma cadeia causal e identifica os fatores contribuintes: regras pouco claras para prestadores, nenhum alerta do inventário para chaves fora dos locais aprovados e validades longas dos certificados. Ela evita culpar apenas o prestador, já que o processo tornou o erro fácil. Ela apresenta a linha do tempo numa única página, para que os participantes vejam como pequenas decisões se acumularam numa exposição grave.
+
+### 28.3 Ações
+
+Ações corretivas: revogar e substituir o certificado, rotacionar as credenciais relacionadas e procurar sinais de uso indevido nos logs do Certificate Transparency e nos logs de acesso. Ações preventivas: varredura de segredos nos repositórios, orientações para os prestadores, validades de certificado mais curtas com renovação automatizada e chaves geradas nos servidores, para que nunca passem pelas mãos de pessoas. Priya atribui donos e datas e agenda um exercício de acompanhamento para conferir se as ações funcionam. Grace atribui a ação de varredura de segredos ao líder de desenvolvimento e as orientações para prestadores ao setor de compras. Priya anota que gerar as chaves nos servidores também simplifica a rotação futura, porque ninguém precisa mover chaves entre máquinas.
+
+### Exemplo resolvido
+
+Priya analisa um vazamento simulado de chave TLS, constrói uma linha do tempo com as causas de processo e define ações corretivas e preventivas com donos.
+
+> **Caso sintético.** O cenário é inventado e não usa nenhuma chave real.
+
+### Erros e limites
+
+A verificação de revogação é desigual entre os clientes, então as validades curtas importam. Uma análise focada em culpados deixa passar as causas sistêmicas.
+
+### Exercícios
+
+- **EX082 — Capacidade do atacante.** O que um atacante poderia fazer com a chave vazada do portal? *Rubrica:* 3 = se passar pelo portal diante de leitores cujo tráfego ele intercepte;; 2 = se passar pelo portal;; 1 = ler o banco de dados;; 0 = nenhuma.
+
+- **EX083 — Fatores contribuintes.** Cite dois fatores contribuintes. *Rubrica:* 3 = dois entre regras pouco claras para prestadores, nenhum alerta do inventário, validades longas, nenhuma varredura de segredos;; 2 = um;; 1 = culpar o prestador;; 0 = nenhuma.
+
+- **EX084 — Ação preventiva.** Dê duas ações preventivas. *Rubrica:* 3 = duas entre varredura de segredos, orientações para prestadores, validades curtas com automação, chaves geradas no servidor;; 2 = uma;; 1 = revogar;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Criptografia e serviços de confiança: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) operar a renovação e o monitoramento de certificados; (2) ler as validades dos certificados e as janelas de renovação; (3) executar a rotação rotineira de chaves.
+
+### 29.1 Operações de certificados
+
+Seguindo as lições do Capítulo 20, a Tidewell automatiza a renovação dos certificados de seus sites públicos com o ACME, o protocolo da RFC 8555, e monitora as datas de expiração de forma centralizada. A prática do setor caminha para validades de certificado mais curtas, que limitam o dano de chaves vazadas, mas exigem uma automação confiável. Priya revisa os certificados do consórcio numa data sintética para conferir as janelas de renovação e identificar certificados ainda renovados à mão. Ela usa a revisão para decidir quais dos certificados restantes devem passar primeiro para a automação. A prioridade vai para os serviços que os leitores usam diretamente, já que suas indisponibilidades são as mais visíveis e as que mais prejudicam a confiança.
+
+### Laboratório — Janelas dos certificados
+
+```python
+"""Certificate validity windows for a synthetic consortium, with the shorter lifetimes trend."""
+from datetime import date, timedelta
+TODAY = date(2026, 9, 1)
+SITES = [("catalog", date(2026, 7, 10), 90), ("patron-portal", date(2026, 6, 20), 90),
+         ("ebooks", date(2025, 10, 1), 397), ("staff-wiki", date(2026, 8, 15), 47)]
+
+def main():
+    for name, issued, life in SITES:
+        exp = issued + timedelta(days=life); left = (exp - TODAY).days
+        print(f"{name:<14} life {life:>3} d expires {exp} left {left:>4} d")
+    print("renew soon (<21 d):", [n for n, i, l in SITES if (i + timedelta(days=l) - TODAY).days < 21])
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_certdays.py`. Saída verificada:
+
+```text
+catalog        life  90 d expires 2026-10-08 left   37 d
+patron-portal  life  90 d expires 2026-09-18 left   17 d
+ebooks         life 397 d expires 2026-11-02 left   62 d
+staff-wiki     life  47 d expires 2026-10-01 left   30 d
+renew soon (<21 d): ['patron-portal']
+```
+
+### 29.2 Ler as janelas
+
+Em 1º de setembro de 2026, o certificado do portal dos leitores tem dezessete dias restantes e é sinalizado para renovação dentro da janela de três semanas; o catálogo tem trinta e sete dias, a wiki da equipe trinta e o site de e-books sessenta e dois. A validade de 397 dias do site de e-books o marca como gerenciado manualmente, um caso atípico agora que os outros usam noventa dias ou menos. Priya verifica por que a renovação automatizada do portal ainda não rodou e descobre que seu cliente ACME começa quando resta um terço da validade, cerca de trinta dias, mas falhou silenciosamente depois de uma mudança no firewall. Ela corrige a regra e acrescenta um alerta para falhas de renovação.
+
+### 29.3 Rotação rotineira
+
+Além dos certificados, Priya agenda a rotação anual das chaves de backup e do banco de dados usando a cifração envelopada, de modo que apenas as chaves de dados são reembrulhadas. Cada rotação segue um runbook com verificações e rollback e é registrada no inventário. Ela também testa a restauração de um backup cifrado sob a chave anterior, porque uma rotação que deixasse os backups antigos ilegíveis seria um desastre. As operações dão certo quando são rotineiras, documentadas e testadas. Ela registra cada rotação no inventário com a data, para que futuros auditores possam confirmar que as chaves foram trocadas no prazo e que os backups antigos continuaram legíveis.
+
+### Exemplo resolvido
+
+Priya encontra o certificado do portal sinalizado com dezessete dias restantes porque a renovação ACME falhou silenciosamente depois de uma mudança no firewall, corrige o problema com um alerta e agenda uma rotação de chaves testada.
+
+> **Caso sintético.** As datas e os certificados são inventados; a RFC 8555 é real.
+
+### Erros e limites
+
+A automação falha silenciosamente sem alertas. A rotação precisa manter legíveis os backups antigos.
+
+### Exercícios
+
+- **EX085 — Certificado sinalizado.** Que certificado foi sinalizado, e com quantos dias restantes? *Rubrica:* 3 = patron-portal, 17 dias;; 2 = nome;; 1 = errado;; 0 = nenhuma.
+
+- **EX086 — Validade atípica.** Por que o site de e-books é um caso atípico? *Rubrica:* 3 = a validade de 397 dias indica gerenciamento manual, contra 90 dias ou menos nos demais;; 2 = longa;; 1 = curta;; 0 = nenhuma.
+
+- **EX087 — Teste da rotação.** Por que testar a restauração de um backup antigo depois da rotação? *Rubrica:* 3 = a rotação não pode deixar os backups antigos ilegíveis;; 2 = legibilidade;; 1 = desnecessário;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) substituir num laboratório o compartilhamento manual de chaves por uma troca de chave pública; (2) assinar e verificar os arquivos exportados; (3) avaliar o projeto melhorado.
+
+### 30.1 Melhorar a ferramenta de exportação
+
+O Laboratório II retoma a ferramenta de exportação do Laboratório I, cujo ponto fraco era o compartilhamento manual da chave. A equipe de Priya a reprojeta com cifração híbrida de chave pública: a biblioteca parceira publica uma chave pública, e a ferramenta cifra cada exportação com uma chave simétrica nova, embrulhada para essa chave pública, seguindo o padrão de cifração híbrida de chave pública da RFC 9180, usando uma biblioteca avaliada. A equipe também assina cada exportação com a chave Ed25519 da Tidewell, para que a parceira possa verificar sua origem. Cada exportação leva sua assinatura ao lado.
+
+### 30.2 Testar o novo projeto
+
+Os testes conferem que a parceira consegue decifrar e verificar; que um arquivo assinado com a chave errada falha na verificação; que um arquivo cifrado para outra parceira não pode ser decifrado; e que a adulteração é detectada. Um teste revela que a ferramenta assinava o texto claro, mas a parceira verificava depois da decifração com um valor diferente de dados associados, o que causava falhas falsas. A equipe alinha nas duas ferramentas a definição do conteúdo assinado, aprendendo que o emissor e o receptor precisam concordar exatamente sobre o que é assinado.
+
+### 30.3 Avaliar o projeto
+
+Priya avalia as melhorias: nenhum segredo compartilhado circula por e-mail; cada exportação tem sua própria chave; a origem é verificável. Os problemas restantes incluem distribuir a chave pública da parceira e confiar nela, o que a equipe resolve trocando as impressões digitais das chaves numa reunião, e a rotação das chaves das duas partes. Ela registra que a equipe usou funções da biblioteca o tempo todo e não implementou nenhuma primitiva criptográfica. A avaliação compara os projetos numa tabela com segurança, usabilidade e esforço operacional. Grace concorda em adotar o projeto para as exportações reais às parceiras.
+
+### Exemplo resolvido
+
+A equipe substitui o compartilhamento manual de chaves por cifração híbrida de chave pública baseada em biblioteca e assinaturas Ed25519, corrige uma divergência no conteúdo assinado e avalia o projeto.
+
+> **Caso sintético.** O laboratório é inventado; a RFC 9180 e a RFC 8032 são reais.
+
+### Erros e limites
+
+As chaves públicas precisam ser autenticadas, por exemplo comparando as impressões digitais. Definições divergentes do conteúdo assinado causam falhas falsas ou lacunas.
+
+### Exercícios
+
+- **EX088 — Padrão híbrido.** Como a nova ferramenta cifra as exportações? *Rubrica:* 3 = chave simétrica nova por exportação, embrulhada para a chave pública da parceira (padrão da RFC 9180);; 2 = embrulhada;; 1 = senha compartilhada;; 0 = nenhuma.
+
+- **EX089 — Divergência da assinatura.** O que causou as falhas falsas de verificação? *Rubrica:* 3 = emissor e receptor discordavam sobre a definição do conteúdo assinado;; 2 = divergência;; 1 = chave errada;; 0 = nenhuma.
+
+- **EX090 — Troca de impressões digitais.** Como a equipe passou a confiar na chave pública da parceira? *Rubrica:* 3 = trocando as impressões digitais das chaves numa reunião;; 2 = impressões digitais;; 1 = confiou no e-mail;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Raman, o Dr. Tomás Echeverría, Grace Okafor, a Ashford University, o Tidewell Public Library Consortium e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Raman, o Dr. Tomás Echeverría, Grace Okafor, a Ashford University, o Tidewell Public Library Consortium e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sem uma definição precisa da segurança e do atacante, a afirmação não pode ser provada nem testada.
 
@@ -1070,6 +1479,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em i
 **EX059.** Qualquer certificado emitido para os nomes da Tidewell, para que os emitidos indevidamente possam ser percebidos.
 
 **EX060.** Renovação manual a cargo de alguém que tinha saído, nenhum alerta de expiração e nenhum registro de que servidor guardava a chave.
+
+**EX061.** Que determinado leitor tem direito a emprestar um título específico por catorze dias.
+
+**EX062.** Emitir certificados que fazem seus próprios dispositivos parecerem dispositivos da equipe.
+
+**EX063.** Que as pessoas que administram o serviço de chaves não devem também controlar seus logs de auditoria.
+
+**EX064.** Dois certificados esquecidos em servidores antigos e uma chave de backup guardada numa pasta compartilhada.
+
+**EX065.** Ela agendou a substituição, seguindo a orientação de transição do SP 800-131A.
+
+**EX066.** Ela o registrou como um risco, e não como uma falha, já que a migração ainda está no início.
+
+**EX067.** Para que mover um registro cifrado para o identificador de outro leitor faça a decifração falhar.
+
+**EX068.** Aproximadamente 2^32 cifrações sob uma mesma chave.
+
+**EX069.** Porque os engenheiros devem conferir se as escolhas da biblioteca atendem à norma, em vez de projetar as próprias.
+
+**EX070.** A chave da autoridade certificadora interna e as chaves de backup.
+
+**EX071.** Restaurar as chaves de backup exige dois administradores agindo juntos.
+
+**EX072.** As evidências estavam no e-mail pessoal, então o armazenamento foi transferido para um local compartilhado e com controle de acesso.
+
+**EX073.** Decifração correta, falha com um byte adulterado e falha com uma chave errada.
+
+**EX074.** Um nonce fixo tirado de um código de exemplo, de modo que as cifrações repetidas eram idênticas.
+
+**EX075.** As chaves eram compartilhadas por transferência manual.
+
+**EX076.** Gerar as chaves, assinar com a chave privada e verificar com a chave pública.
+
+**EX077.** Eles rejeitam scripts não assinados, e a chave de assinatura fica no serviço de chaves, usada apenas em solicitações aprovadas.
+
+**EX078.** Ele deriva o segredo de cada assinatura de forma determinística, evitando os valores aleatórios reutilizados ou vazados que expuseram chaves ECDSA.
+
+**EX079.** Ela agora oferecia o TLS 1.3, mas ainda aceitava o TLS 1.0, então a mudança anterior tinha sido incompleta.
+
+**EX080.** Um desenvolvedor tinha confiado nele durante os testes e esqueceu de removê-lo.
+
+**EX081.** Severidade, evidências, o sistema afetado e uma correção recomendada.
+
+**EX082.** Passar-se pelo portal diante de qualquer leitor cuja conexão ele consiga interceptar.
+
+**EX083.** Regras pouco claras para os prestadores e a ausência de varredura de segredos.
+
+**EX084.** Varredura de segredos nos repositórios e geração das chaves nos servidores, para que as pessoas nunca as manuseiem.
+
+**EX085.** O certificado do portal dos leitores, com dezessete dias restantes.
+
+**EX086.** Sua validade de 397 dias mostra um manuseio manual, enquanto os outros usam noventa dias ou menos.
+
+**EX087.** Para garantir que a rotação não deixou os backups anteriores impossíveis de decifrar.
+
+**EX088.** Ela cifra cada exportação com uma nova chave simétrica embrulhada para a chave pública da parceira, seguindo a RFC 9180.
+
+**EX089.** As duas ferramentas definiam o conteúdo assinado de formas diferentes.
+
+**EX090.** Comparando as impressões digitais das chaves numa reunião presencial.
 
 <a id="references"></a>
 ## Referências
