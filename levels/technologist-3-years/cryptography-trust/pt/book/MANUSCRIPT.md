@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 077, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–23 de 30 já estão escritos em português, com os exercícios EX001–EX069 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 24–30 (EX070–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios analisam logs, planejam renovações, verificam HMACs e chamam o scrypt do hashlib contra um vetor publicado; não implementam nenhuma cifra. Sistemas de produção usam bibliotecas avaliadas, clientes ACME, HSMs e produtos de fornecedores; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Leia na ordem. Os capítulos acompanham uma estudante de tecnólogo pelos fundam
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) |
 
-Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 24–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-24), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -759,11 +759,434 @@ As autoridades de laboratório não têm os controles das de produção. Nunca i
 
 Uma autoridade de laboratório segura torna familiares a estrutura dos certificados e suas falhas antes que elas apareçam em produção.
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Criptografia e serviços de confiança: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) armazenar senhas com hash resistente em memória; (2) verificar uma chamada de implementação contra um vetor de teste publicado; (3) planejar a migração de um armazenamento de senhas fraco.
+
+### 16.1 Hash resistente em memória
+
+As contas dos cidadãos no portal de licenças precisam de um armazenamento seguro de senhas. Rosa aprende que os hashes rápidos permitem que os atacantes testem bilhões de palpites por segundo depois de roubar um banco de dados, enquanto as funções resistentes em memória tornam cada palpite caro em memória além de tempo, desacelerando o hardware especializado. O Argon2id, da RFC 9106, é a escolha preferida; o scrypt, da RFC 7914, é uma alternativa consolidada disponível no hashlib do Python. O código de produção usa uma biblioteca avaliada de hash de senhas, com parâmetros ajustados; o laboratório usa o hashlib.scrypt para mostrar a ideia.
+
+### Laboratório — scrypt com um vetor de teste
+
+```python
+"""Check hashlib.scrypt against an RFC 7914 test vector, then store a synthetic password."""
+import hashlib, hmac
+WANT = ("fdbabe1c9d3472007856e7190d01e9fe7c6ad7cbc8237830e77376634b3731622eaf30d92e22a3886ff109279d9830dac727afb94a83ee6d8360cbdfa2cc0640")
+
+def main():
+    got = hashlib.scrypt(b"password", salt=b"NaCl", n=1024, r=8, p=16, dklen=64).hex()
+    print("RFC 7914 vector matches:", got == WANT)
+    salt = bytes.fromhex("5e" * 16)  # fixed demo salt for repeatable output
+    stored = hashlib.scrypt(b"Permit-Desk-2026!", salt=salt, n=2**14, r=8, p=1, dklen=32)
+    ok = hmac.compare_digest(stored, hashlib.scrypt(b"Permit-Desk-2026!", salt=salt, n=2**14, r=8, p=1, dklen=32))
+    print("stored:", stored.hex()[:24], "... verify:", ok)
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_scrypt.py`. Saída verificada:
+
+```text
+RFC 7914 vector matches: True
+stored: ddb1b7d5e7566125ab501de6 ... verify: True
+```
+
+### 16.2 Ler a execução do scrypt
+
+O laboratório primeiro confere o hashlib.scrypt contra um vetor de teste publicado na RFC 7914, com a senha "password", o salt "NaCl", N 1024, r 8 e p 16; a saída de 64 bytes coincide. Coincidir com o vetor confirma que a função é chamada com os significados corretos dos parâmetros. Em seguida, ele armazena uma senha sintética de um funcionário com um salt e N igual a 2^14, e a verificação com compare_digest retorna True. O salt fixo serve apenas para tornar a saída repetível; os salts reais são aleatórios por usuário. Rosa registra os parâmetros ao lado do hash armazenado, para que possam ser elevados mais tarde.
+
+### 16.3 Planejar a migração
+
+O portal hoje armazena as senhas com SHA-256 com salt, que é rápido demais. Rosa planeja uma migração: quando um cidadão faz login com sucesso, o portal verifica contra o hash antigo e armazena imediatamente um novo hash resistente em memória; as contas que nunca fazem login são envolvidas aplicando a nova função sobre o hash antigo, de modo que nenhum hash fraco permaneça armazenado. Depois de um período definido, as contas sem uso são convidadas a redefinir a senha. O plano evita forçar milhões de redefinições de senha de uma só vez. Ela estima a carga do servidor com o novo hash nos horários de pico de login antes de programar a mudança.
+
+### Exemplo resolvido
+
+Rosa confirma o hashlib.scrypt contra a RFC 7914, armazena uma senha sintética e planeja a migração do SHA-256 com salt por novo hash no login mais envolvimento.
+
+> **Caso sintético.** O portal e as senhas são inventados; a RFC 7914 e a RFC 9106 são reais.
+
+### Erros e limites
+
+Os parâmetros resistentes em memória precisam ser ajustados à capacidade do servidor. O envolvimento dos hashes antigos precisa ser feito com cuidado para evitar bloqueios de contas.
+
+### Exercícios
+
+- **EX046 — Por que resistente em memória.** Por que as funções resistentes em memória são melhores para senhas do que os hashes rápidos? *Rubrica:* 3 = cada palpite custa memória e tempo, desacelerando o hardware especializado;; 2 = mais lentas;; 1 = iguais;; 0 = nenhuma.
+
+- **EX047 — Propósito do vetor.** O que coincidir com o vetor da RFC 7914 confirma? *Rubrica:* 3 = a função é chamada com os significados corretos dos parâmetros;; 2 = uso correto;; 1 = segurança;; 0 = nenhuma.
+
+- **EX048 — Método de migração.** Como as contas que nunca fazem login ficam protegidas durante a migração? *Rubrica:* 3 = o hash antigo é envolvido pela nova função resistente em memória;; 2 = envolvimento;; 1 = ignoradas;; 0 = nenhuma.
+
+### Síntese
+
+O hash resistente em memória, verificado contra vetores de teste e introduzido por uma migração cuidadosa, protege as senhas dos cidadãos.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Criptografia e serviços de confiança: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher ferramentas para a descoberta de certificados, a renovação e o armazenamento de segredos; (2) avaliar as ferramentas em relação aos requisitos; (3) documentar o uso das ferramentas com segurança.
+
+### 17.1 Categorias de ferramentas
+
+Rosa levanta as ferramentas que a prefeitura usa ou poderia usar: scanners que descobrem certificados nos hosts autorizados; clientes ACME que renovam certificados automaticamente segundo a RFC 8555; um repositório de segredos que guarda os segredos de webhook e os tokens de API com controle de acesso; o serviço de chaves para as chaves de cifração; e um monitoramento que acompanha as expirações e as falhas. Ela observa que as ferramentas devem ser maduras, mantidas e amplamente usadas e que a prefeitura deve preferir configurar ferramentas comprovadas a escrever seus próprios substitutos. Para cada categoria, ela anota qual equipe é dona dela hoje, revelando que ninguém era dono da varredura de descoberta até ela levantar a questão.
+
+### 17.2 Avaliar as ferramentas
+
+Rosa avalia dois clientes ACME em relação aos requisitos: suporte aos servidores web da prefeitura, ganchos de renovação para recarregar os serviços, logs claros, alertas em caso de falha e manutenção ativa com atualizações de segurança. Ela testa cada um no laboratório do Capítulo 15, forçando renovações e falhas. Um cliente renova de forma confiável, mas registra as falhas apenas localmente, então ela acrescenta um gancho que envia as falhas ao monitoramento. Ela escreve um breve relatório de avaliação recomendando o outro cliente, que já se integra ao monitoramento da prefeitura. Seu relatório declara os testes realizados e seus resultados, para que a decisão possa ser conferida, e não aceita por confiança.
+
+### 17.3 Documentar o uso
+
+Para cada ferramenta, Rosa escreve uma página de uso: finalidade, dono, instalação, configuração, tarefas comuns, modos de falha e onde seus segredos estão guardados. Ela evita incluir quaisquer valores secretos ou arquivos de configuração completos que contenham chaves. As páginas se ligam às entradas do inventário que afetam. Quando um novo membro da equipe renova um certificado manualmente durante uma indisponibilidade, a página permite que ele o faça corretamente em minutos. A documentação faz parte da ferramenta, já que uma ferramenta que ninguém sabe operar com segurança é um risco.
+
+### Exemplo resolvido
+
+Rosa levanta as ferramentas, avalia dois clientes ACME no laboratório, recomenda o que se integra ao monitoramento e escreve páginas de uso sem segredos.
+
+> **Caso sintético.** As ferramentas são descritas de forma genérica; a RFC 8555 é real.
+
+### Erros e limites
+
+Ferramentas que registram as falhas apenas localmente criam falhas silenciosas. Uma documentação que inclui segredos se torna um vazamento.
+
+### Exercícios
+
+- **EX049 — Preferência de ferramentas.** Que princípio orienta a escolha das ferramentas? *Rubrica:* 3 = configurar ferramentas maduras e mantidas em vez de escrever substitutos;; 2 = maduras;; 1 = próprias;; 0 = nenhuma.
+
+- **EX050 — Requisitos do ACME.** Cite três requisitos que Rosa usou para avaliar os clientes ACME. *Rubrica:* 3 = três entre suporte aos servidores, ganchos de recarga, logs claros, alertas de falha, manutenção ativa;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX051 — Página de uso.** O que uma página de uso nunca pode incluir? *Rubrica:* 3 = valores secretos ou configurações que contenham chaves;; 2 = segredos;; 1 = dono;; 0 = nenhuma.
+
+### Síntese
+
+Ferramentas maduras, avaliadas em relação aos requisitos e documentadas sem segredos, tornam as operações de confiança confiáveis.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Criptografia e serviços de confiança: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir os controles da chave de assinatura de documentos; (2) aplicar o privilégio mínimo e o controle duplo; (3) coletar evidências de que os controles funcionam.
+
+### 18.1 Proteger a chave de assinatura
+
+A chave de assinatura de documentos é crítica, então Rosa ajuda a projetar seus controles. A chave é gerada dentro de um módulo de segurança de hardware e marcada como não exportável. Os pedidos de assinatura vêm do sistema de fluxo de documentos, que envia um resumo do documento, e não o documento em si, e apenas depois que um servidor da prefeitura aprova a decisão no fluxo. O HSM registra cada operação de assinatura. As assinaturas usam um algoritmo padronizado do FIPS 186-5 por meio da interface avaliada do HSM, nunca por código próprio. Os backups do material de chave cifrado do HSM seguem o procedimento documentado do fornecedor e são testados uma vez por ano, restaurando-os num módulo reserva.
+
+### 18.2 Privilégio mínimo e controle duplo
+
+Apenas a conta de serviço do fluxo pode solicitar assinaturas, e apenas para documentos aprovados. Os administradores podem gerenciar o HSM, mas não podem assinar. Mudar a configuração de assinatura, como substituir a chave, exige dois administradores e um chamado de mudança aprovado pelo gestor de registros. Rosa explica aos colegas que essas regras também os protegem: ninguém poderia ser acusado sozinho de forjar uma decisão, porque ninguém conseguiria fazê-lo sozinho. Rosa documenta esses papéis numa pequena matriz que lista cada conta, o que ela pode fazer e quem aprova as mudanças nela. Os auditores depois usam a matriz como ponto de partida ao amostrar as permissões.
+
+### 18.3 Evidências
+
+Rosa define as evidências de cada controle: logs do HSM mostrando que as assinaturas correspondem a itens aprovados no fluxo; revisões trimestrais de acesso sobre quem pode administrar o HSM; chamados de mudança com dois aprovadores para as mudanças de chave; e um teste anual de que um documento não aprovado não pode ser assinado. Ela monta um pequeno relatório que compara os logs de assinatura do HSM com as aprovações do fluxo e sinaliza as divergências. A primeira execução não encontra nenhuma, o que já é por si uma evidência útil para os auditores. Ela agenda o teste negativo anual com a presença do gestor de registros, já que uma testemunha fortalece a evidência. Cada evidência é arquivada com sua data e seu revisor, para que as revisões que faltarem fiquem visíveis, em vez de serem puladas em silêncio.
+
+### Exemplo resolvido
+
+Rosa projeta uma assinatura baseada em HSM e condicionada ao fluxo, com privilégio mínimo e controle duplo, e monta um relatório que compara os logs de assinatura com as aprovações.
+
+> **Caso sintético.** Os controles são inventados; o FIPS 186-5 é real.
+
+### Erros e limites
+
+Os HSMs protegem as chaves, e não as decisões por trás dos pedidos de assinatura; os controles do fluxo importam. As evidências precisam ser revisadas, e não apenas coletadas.
+
+### Exercícios
+
+- **EX052 — Entrada da assinatura.** O que o fluxo envia ao HSM? *Rubrica:* 3 = um resumo do documento depois da aprovação do servidor responsável;; 2 = resumo;; 1 = o documento inteiro;; 0 = nenhuma.
+
+- **EX053 — Limites dos administradores.** O que os administradores do HSM não podem fazer? *Rubrica:* 3 = assinar documentos;; 2 = assinar;; 1 = gerenciar;; 0 = nenhuma.
+
+- **EX054 — Relatório de divergências.** O que o relatório de Rosa compara? *Rubrica:* 3 = os logs de assinatura do HSM com as aprovações do fluxo;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+### Síntese
+
+Chaves críticas precisam de proteção em hardware, condicionamento ao fluxo, privilégio mínimo, controle duplo e evidências de que os controles funcionam.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Criptografia e serviços de confiança: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher métricas para a saúde do TLS e dos certificados; (2) definir limiares de alerta que evitem ruído; (3) responder aos alertas com runbooks.
+
+### 19.1 O que monitorar
+
+Rosa monta o monitoramento dos serviços de confiança: dias até a expiração de cada certificado, sucessos e falhas das renovações ACME, taxas de falha de handshake TLS no gateway, falhas de verificação de webhooks e disponibilidade do HSM. Cada métrica tem um dono e um runbook. Ela se concentra em sinais que preveem problemas, como as falhas de renovação, em vez de apenas medir as indisponibilidades depois que acontecem. O monitoramento é a forma de a prefeitura saber de um problema antes dos cidadãos. Antes de definir os limiares, ela registra duas semanas de valores de linha de base, para que os alertas reflitam o que é incomum para a prefeitura, e não números copiados de outro lugar. Ela envia os alertas para a escala de plantão, nunca para caixas de entrada pessoais que ficam sem leitura durante as férias.
+
+### Laboratório — Alerta de taxa de falhas
+
+```python
+"""Flag hours where TLS failure rate exceeds 2% for three consecutive hours (synthetic gateway counts)."""
+HOURS = [(1200, 6), (1350, 9), (1500, 41), (1480, 44), (1420, 39), (1300, 12), (1250, 7)]  # (handshakes, failures)
+
+def main():
+    rates = [f / h for h, f in HOURS]
+    for i, r in enumerate(rates):
+        print(f"hour {i}: {100 * r:.2f}%")
+    run = 0
+    for i, r in enumerate(rates):
+        run = run + 1 if r > 0.02 else 0
+        if run == 3:
+            print(f"ALERT at hour {i} (3 consecutive hours above 2%)")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_monitor.py`. Saída verificada:
+
+```text
+hour 0: 0.50%
+hour 1: 0.67%
+hour 2: 2.73%
+hour 3: 2.97%
+hour 4: 2.75%
+hour 5: 0.92%
+hour 6: 0.56%
+ALERT at hour 4 (3 consecutive hours above 2%)
+```
+
+### 19.2 Ler o alerta
+
+O laboratório calcula as taxas horárias de falha de TLS no gateway. As horas normais ficam abaixo de um por cento. As horas 2, 3 e 4 sobem para 2,73, 2,97 e 2,75 por cento, e a regra, mais de dois por cento por três horas consecutivas, dispara na hora 4. Exigir três horas evita alertar por um pico breve. Rosa anota o compromisso: uma expiração de certificado voltada aos cidadãos justificaria um alerta mais rápido, então a expiração tem sua própria verificação direta, com trinta e com sete dias de antecedência, em vez de esperar que as falhas subam. Ela também confere que o alerta se encerra quando as taxas voltam para baixo do limiar, para que alertas velhos não se acumulem.
+
+### 19.3 Responder aos alertas
+
+Cada alerta se liga a um runbook. Para um alerta de taxa de falhas, o runbook manda conferir o resumo do log do gateway do Capítulo 9, identificar o código de motivo e o host dominantes, conferir as mudanças recentes e escalar se um certificado ou uma configuração estiver errado. Rosa pratica o runbook sobre o pico sintético e encontra a causa no log de mudanças do cenário: um envio de configuração removeu uma suíte de cifras de que um terminal de pagamento mais antigo precisava. Ela também registra mensalmente os volumes de alertas e ajusta os limiares que nunca levam a nenhuma ação.
+
+### Exemplo resolvido
+
+O monitoramento de Rosa dispara um alerta de taxa de falhas na hora 4, depois de três horas acima de dois por cento, e seu runbook o rastreia até um envio de configuração.
+
+> **Caso sintético.** As contagens e as causas são inventadas.
+
+### Erros e limites
+
+Limiares sem linhas de base criam ruído ou deixam passar problemas. Monitorar as falhas, e não apenas as indisponibilidades, captura os problemas silenciosos.
+
+### Exercícios
+
+- **EX055 — Sinais monitorados.** Liste quatro sinais que Rosa monitora. *Rubrica:* 3 = quatro entre dias até a expiração, resultados das renovações, taxa de falha de handshake, falhas de webhook, disponibilidade do HSM;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX056 — Hora do alerta.** Quando o alerta do laboratório disparou, e por quê? *Rubrica:* 3 = hora 4, depois de três horas consecutivas acima de dois por cento;; 2 = hora;; 1 = errada;; 0 = nenhuma.
+
+- **EX057 — Causa do pico.** O que causou o pico sintético? *Rubrica:* 3 = um envio de configuração removeu uma suíte de cifras de que um terminal de pagamento antigo precisava;; 2 = causa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Monitorar sinais preditivos com limiares ajustados e runbooks permite que os operadores corrijam os problemas de confiança antes que os cidadãos percebam.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Criptografia e serviços de confiança: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) resolver problemas de certificados e de TLS de forma sistemática; (2) usar evidências em vez de palpites; (3) corrigir as causas-raiz, e não apenas os sintomas.
+
+### 20.1 Um método
+
+Rosa adota um método de solução de problemas: definir o sintoma com precisão, coletar evidências, formular uma hipótese de cada vez, testá-la, corrigir e verificar e, por fim, registrar. Para um chamado que diz "a equipe não consegue acessar a wiki", ela primeiro pergunta quais funcionários, quais dispositivos e qual erro. O erro é "autoridade certificadora desconhecida", e apenas nos notebooks novos. As evidências estreitam o problema rapidamente: a imagem dos notebooks novos não tem o certificado raiz interno da prefeitura. Palpites, como reiniciar o servidor da wiki, teriam desperdiçado tempo. Ela testa uma mudança de cada vez, para que cada resultado possa ser atribuído a uma única causa.
+
+### 20.2 Causas-raiz comuns
+
+Rosa compila as causas-raiz dos chamados anteriores: intermediários ausentes nos servidores; raízes internas ausentes nas imagens novas; relógios errados nos dispositivos, fazendo certificados válidos parecerem ainda não válidos; clientes antigos sem suporte ao TLS 1.2; certificados sem um nome de host; e certificados expirados que foram renovados, mas não recarregados pelo servidor web. A última é sutil: o novo certificado está no disco, mas o servidor continua usando o antigo na memória até ser recarregado. Ela acrescenta a verificação da recarga ao runbook de renovação.
+
+### 20.3 Corrigir as causas-raiz
+
+Para o chamado da wiki, Rosa instala a raiz interna nos notebooks afetados por meio do gerenciamento de dispositivos, mas também corrige a imagem dos notebooks para que os dispositivos futuros a incluam e acrescenta um teste à construção da imagem. Para o problema da recarga, ela configura ganchos de renovação que recarregam os serviços e confere a expiração do certificado servido depois da renovação. Corrigir as causas-raiz evita repetições e libera tempo. Ela registra cada caso numa base de conhecimento, com o sintoma, as evidências, a causa e a correção. Cada entrada da base de conhecimento é marcada com o serviço afetado, para que a próxima pessoa que pesquisar a encontre rapidamente.
+
+### Exemplo resolvido
+
+Rosa rastreia um erro de AC desconhecida até uma imagem de notebook sem a raiz interna, corrige a imagem e acrescenta verificações de recarga após a renovação para evitar certificados velhos na memória.
+
+> **Caso sintético.** Os chamados são inventados.
+
+### Erros e limites
+
+Corrigir sintomas deixa a causa voltar. Várias mudanças simultâneas tornam os resultados impossíveis de interpretar.
+
+### Exercícios
+
+- **EX058 — Diagnóstico da wiki.** Que evidência revelou a causa do problema da wiki? *Rubrica:* 3 = erro de AC desconhecida apenas nos notebooks novos; a imagem não tinha a raiz interna;; 2 = evidência;; 1 = palpite;; 0 = nenhuma.
+
+- **EX059 — Problema da recarga.** Por que um certificado renovado ainda pode parecer expirado? *Rubrica:* 3 = o servidor mantém o certificado antigo na memória até ser recarregado;; 2 = recarga;; 1 = não renovado;; 0 = nenhuma.
+
+- **EX060 — Correção da causa-raiz.** Que correção da causa-raiz Rosa aplicou na wiki? *Rubrica:* 3 = corrigiu a imagem dos notebooks e acrescentou um teste à construção, além de instalar a raiz nos dispositivos afetados;; 2 = imagem;; 1 = só os dispositivos;; 0 = nenhuma.
+
+### Síntese
+
+Uma solução de problemas sistemática e guiada por evidências encontra causas-raiz, como raízes ausentes e certificados não recarregados, e evita repetições.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Criptografia e serviços de confiança: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar um novo serviço aos serviços de confiança da prefeitura; (2) definir uma lista de verificação de integração; (3) verificar a integração antes da entrada em produção.
+
+### 21.1 Chega um novo serviço
+
+A prefeitura compra um sistema hospedado de reservas para os salões comunitários. Ele precisa usar o login único da prefeitura, apresentar um certificado válido num subdomínio da prefeitura, receber webhooks de pagamento e armazenar os dados de contato dos cidadãos. Pedem a Rosa que o integre aos serviços de confiança da prefeitura. Ela começa listando o que o serviço precisa da prefeitura, como um certificado e um segredo de webhook, e o que a prefeitura precisa do fornecedor, como TLS 1.2 ou superior, cifração dos dados armazenados e um contato de segurança nomeado.
+
+### 21.2 Lista de verificação da integração
+
+Rosa transforma seu trabalho numa lista de verificação reutilizável: entrada no inventário com dono; certificado emitido por ACME, com monitoramento; configuração de TLS conferida contra a linha de base da prefeitura; segredo de webhook criado no repositório de segredos e compartilhado com o fornecedor por um canal seguro, nunca por e-mail; login único configurado com asserções assinadas, validadas pelo fornecedor; cifração dos dados armazenados confirmada no contrato; e um plano de reversão. Cada item tem uma pessoa que o confirma. A lista de verificação faz com que o próximo serviço seja integrado de forma mais rápida e mais consistente.
+
+### 21.3 Verificar antes da entrada em produção
+
+Antes do lançamento, Rosa verifica cada item com evidências, e não com a palavra do fornecedor: ela se conecta e registra a versão do TLS e a cadeia de certificados, envia um webhook de teste com uma assinatura deliberadamente errada para confirmar que ele é rejeitado, confere que o monitoramento de expiração mostra o novo certificado e confirma que o login falha quando as asserções são adulteradas no ambiente de teste do fornecedor. Uma verificação falha: o fornecedor aceitou a assinatura de webhook errada. A entrada em produção espera até que o fornecedor corrija a verificação e Rosa teste de novo com sucesso. Ela registra a saída do novo teste no registro de mudança antes de aprovar o lançamento.
+
+### Exemplo resolvido
+
+Rosa integra um serviço de reserva de salões usando uma lista de verificação e bloqueia a entrada em produção quando um teste negativo de webhook mostra que o fornecedor aceitou uma assinatura ruim.
+
+> **Caso sintético.** O serviço e o fornecedor são inventados.
+
+### Erros e limites
+
+Listas de verificação podem virar um ritual de marcar caixas; exija evidências. Os ambientes de teste dos fornecedores podem diferir da produção.
+
+### Exercícios
+
+- **EX061 — Compartilhamento do segredo.** Como o segredo de webhook precisa ser compartilhado com o fornecedor? *Rubrica:* 3 = por um canal seguro a partir do repositório de segredos, nunca por e-mail;; 2 = seguro;; 1 = e-mail;; 0 = nenhuma.
+
+- **EX062 — Verificação que falhou.** Que verificação de entrada em produção falhou? *Rubrica:* 3 = o fornecedor aceitou um webhook com uma assinatura errada;; 2 = webhook;; 1 = nada;; 0 = nenhuma.
+
+- **EX063 — Evidências.** Por que testar com casos negativos em vez de confiar nas declarações do fornecedor? *Rubrica:* 3 = as declarações podem estar erradas; os testes negativos provam que a rejeição de fato acontece;; 2 = prova;; 1 = confiança;; 0 = nenhuma.
+
+### Síntese
+
+Integrar um serviço significa uma lista de verificação dos requisitos de confiança, cada um verificado por evidências, incluindo testes negativos, antes da entrada em produção.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Criptografia e serviços de confiança: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar o planejamento das renovações a partir dos dados do inventário; (2) separar os caminhos automáticos dos manuais; (3) manter as pessoas no controle das exceções.
+
+### 22.1 Por que automatizar
+
+A renovação manual causou as indisponibilidades anteriores da prefeitura. Rosa escreve um planejador que lê o inventário e decide, para cada certificado, se deve renovar agora, pular ou escalar. A automação repete todos os dias a mesma decisão correta, que as pessoas esquecem de tomar durante os feriados. Ainda assim, a automação precisa ser observável e precisa entregar as exceções às pessoas, porque alguns certificados não podem ser renovados automaticamente e algumas decisões exigem julgamento. Rosa escreve o que o planejador nunca pode fazer, como apagar certificados ou mudar chaves, e torna essas ações impossíveis no seu código. Ela também guarda o plano de cada dia, para que qualquer pessoa possa ver depois o que foi decidido e por quê. O inventário se torna a fonte única em que o planejador confia, o que dá às equipes uma razão para mantê-lo preciso.
+
+### Laboratório — Planejador de renovações
+
+```python
+"""Dry-run renewal planner: which certificates an automation job would renew (renew at <= 30 days)."""
+from datetime import date
+TODAY = date(2026, 5, 1)
+CERTS = [("permits", date(2026, 5, 20), "acme"), ("council-docs", date(2026, 9, 2), "acme"),
+         ("staff-vpn", date(2026, 5, 9), "internal-ca"), ("legacy-gis", date(2026, 4, 28), "manual")]
+
+def main():
+    for name, exp, how in CERTS:
+        left = (exp - TODAY).days
+        act = "RENEW" if left <= 30 and how != "manual" else ("ESCALATE (manual)" if left <= 30 else "skip")
+        print(f"{name:<13} {left:>4} d {how:<12} {act}")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_renewplan.py`. Saída verificada:
+
+```text
+permits         19 d acme         RENEW
+council-docs   124 d acme         skip
+staff-vpn        8 d internal-ca  RENEW
+legacy-gis      -3 d manual       ESCALATE (manual)
+```
+
+### 22.2 Ler o planejador
+
+O planejador renova os certificados que estão a até trinta dias da expiração. O site de licenças, a 19 dias, é renovado automaticamente. O council-docs, a 124 dias, é pulado. A staff-vpn, a 8 dias, é renovada. O legacy-gis já expirou, a menos três dias, e é gerenciado manualmente, porque seu equipamento antigo não consegue rodar um cliente ACME, então o planejador o escala a uma pessoa, em vez de tentar qualquer coisa. Rosa gosta de que a saída do planejador seja um plano legível, que pode ser revisado antes de as ações serem executadas. Ela acrescenta uma linha de resumo que conta cada tipo de decisão, para uma revisão diária rápida.
+
+### 22.3 Pessoas e exceções
+
+Rosa acrescenta salvaguardas: o planejador roda primeiro em modo de simulação e publica seu plano no canal de operações; as renovações reais rodam apenas por meio do cliente ACME avaliado; qualquer escalonamento cria um chamado com o dono; e as falhas alertam o monitoramento. O equipamento do legacy-gis ganha um projeto de substituição, já que um certificado expirado num dispositivo sem suporte é um risco recorrente. Owen observa que a melhor automação elimina o trabalho rotineiro, para que as pessoas possam se concentrar nas exceções que ela relata. Ela revisa os planos simulados por duas semanas antes de permitir renovações reais, comparando-os com o que ela teria decidido à mão.
+
+### Exemplo resolvido
+
+O planejador de Rosa renova dois certificados, pula um e escala um certificado manual expirado, rodando primeiro em simulação e abrindo chamados para as exceções.
+
+> **Caso sintético.** Os valores do inventário são inventados.
+
+### Erros e limites
+
+Uma automação que falha em silêncio é pior que o trabalho manual. Os limiares precisam combinar com as validades dos certificados.
+
+### Exercícios
+
+- **EX064 — Resultado do planejador.** O que o planejador decidiu para o legacy-gis, e por quê? *Rubrica:* 3 = escalar; expirado a -3 dias e gerenciado manualmente;; 2 = escalar;; 1 = renovar;; 0 = nenhuma.
+
+- **EX065 — Limiar.** Que limiar dispara a renovação automática? *Rubrica:* 3 = até trinta dias da expiração;; 2 = 30;; 1 = nada;; 0 = nenhuma.
+
+- **EX066 — Salvaguardas.** Cite duas salvaguardas em torno do planejador. *Rubrica:* 3 = duas entre simulação publicada, cliente ACME avaliado, chamados para os escalonamentos, alertas de falha;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A automação deve tornar confiáveis as renovações rotineiras, continuar observável e entregar as exceções a pessoas responsáveis.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Criptografia e serviços de confiança: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar se as mudanças nos serviços de confiança funcionaram; (2) escolher medidas de antes e depois; (3) relatar os resultados com honestidade.
+
+### 23.1 Funcionou?
+
+Depois de seis meses de mudanças, Owen pede que Rosa as avalie. Ela volta às metas definidas nos cenários de risco: menos indisponibilidades por certificados, nenhum TLS fraco nos serviços públicos, armazenamento de senhas mais seguro e webhooks verificados. A avaliação compara os resultados com essas metas, em vez de listar as tarefas concluídas. Terminar uma migração é uma atividade; reduzir as indisponibilidades é um resultado. Rosa escreve essa distinção no alto do relatório, para que os leitores saibam o que ela mediu. Ela também lista as metas originais textualmente, para que ninguém possa redefinir o sucesso discretamente depois do fato.
+
+### 23.2 Medidas
+
+Rosa escolhe medidas disponíveis antes e depois: as horas de indisponibilidade relacionadas a certificados caíram de nove no semestre anterior para zero; os endpoints públicos que oferecem TLS 1.0 caíram de três para zero; a parcela das contas de cidadãos com hashes resistentes em memória subiu para 71 por cento, por meio do novo hash no login e do envolvimento; e as falhas de verificação de webhooks agora são registradas e revisadas. Ela anota os fatores de confusão: um período mais calmo de mudanças pode ter ajudado os números de indisponibilidade, e seis meses é pouco para eventos raros. Cada número se liga à consulta que o produziu, para que o comitê possa executá-la de novo no próximo semestre.
+
+### 23.3 Relato honesto
+
+Rosa relata o que melhorou, o que não melhorou e o que é desconhecido. O equipamento do legacy-gis continua sendo uma lacuna; um fornecedor ainda precisa de um novo teste; e os números de indisponibilidade precisam de mais um ano para serem convincentes. Ela inclui as fontes de dados e como os números foram calculados, para que outros possam conferi-los. Owen diz a ela que limitações honestas tornam o relatório mais crível para o comitê de riscos, que já viu relatórios demais alegando sucesso completo. Ela termina com três recomendações ordenadas pela redução de risco, cada uma com um dono e uma data proposta, para que a avaliação leve diretamente aos próximos passos.
+
+### Exemplo resolvido
+
+Rosa avalia seis meses de trabalho, relatando horas de indisponibilidade caindo de nove para zero e endpoints com TLS 1.0 caindo de três para zero, com os fatores de confusão e as lacunas restantes.
+
+> **Caso sintético.** Os números são inventados.
+
+### Erros e limites
+
+Comparações de antes e depois podem enganar quando outros fatores mudaram. Contagens de atividades não são resultados.
+
+### Exercícios
+
+- **EX067 — Atividade versus resultado.** Dê um exemplo de atividade e um de resultado do capítulo. *Rubrica:* 3 = atividade: terminar a migração; resultado: menos indisponibilidades;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+- **EX068 — Números de indisponibilidade.** Como mudaram as horas de indisponibilidade por certificados? *Rubrica:* 3 = de nove para zero ao longo do semestre;; 2 = números;; 1 = vago;; 0 = nenhuma.
+
+- **EX069 — Fator de confusão.** Cite um fator de confusão que Rosa anotou. *Rubrica:* 3 = período mais calmo de mudanças ou janela curta de seis meses;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A avaliação compara os resultados com as metas, anota os fatores de confusão e relata as lacunas com honestidade.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Rosa Delgado, Owen Pryce, a Dr Imogen Hale, a Pinecrest Polytechnic, o Harbourview City Council e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Rosa Delgado, Owen Pryce, a Dr Imogen Hale, a Pinecrest Polytechnic, o Harbourview City Council e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** No departamento de TI da prefeitura, concentrando-se em construir e operar serviços integrados de forma confiável e segura.
 
@@ -854,6 +1277,54 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em i
 **EX044.** A extensão de nome alternativo do titular, e não o nome comum.
 
 **EX045.** Remover o intermediário, deixar um certificado expirar e solicitar o nome de host errado.
+
+**EX046.** Elas tornam cada palpite caro tanto em memória quanto em tempo, o que desacelera o hardware especializado dos atacantes.
+
+**EX047.** Que o hashlib.scrypt está sendo chamado com os significados corretos dos seus parâmetros.
+
+**EX048.** Seus hashes existentes são envolvidos, aplicando-se sobre eles a nova função resistente em memória.
+
+**EX049.** Preferir configurar ferramentas maduras e mantidas a escrever substitutos próprios da prefeitura.
+
+**EX050.** Suporte aos servidores da prefeitura, ganchos para recarregar os serviços e alertas em caso de falha.
+
+**EX051.** Valores secretos ou arquivos de configuração que contenham chaves.
+
+**EX052.** Um resumo do documento aprovado, somente depois que um servidor responsável o aprova.
+
+**EX053.** Eles não podem criar assinaturas.
+
+**EX054.** Ele compara os logs de assinatura do HSM com as aprovações do fluxo e sinaliza qualquer divergência.
+
+**EX055.** Dias até a expiração dos certificados, resultados das renovações, taxas de falha de handshake e falhas de verificação de webhooks.
+
+**EX056.** Na hora 4, depois de três horas seguidas acima de dois por cento.
+
+**EX057.** Uma mudança de configuração removeu uma suíte de cifras de que um terminal de pagamento mais antigo ainda precisava.
+
+**EX058.** O erro era "autoridade certificadora desconhecida" apenas nos notebooks novos, cuja imagem não tinha a raiz interna.
+
+**EX059.** Porque o servidor web continua usando o certificado antigo na memória até ser recarregado.
+
+**EX060.** Ela corrigiu a imagem dos notebooks e acrescentou um teste à construção, além de consertar os notebooks afetados.
+
+**EX061.** Por um canal seguro a partir do repositório de segredos, nunca por e-mail.
+
+**EX062.** O sistema do fornecedor aceitou um webhook de teste com uma assinatura deliberadamente errada.
+
+**EX063.** Porque só uma entrada deliberadamente ruim mostra que a rejeição realmente acontece, diga o fornecedor o que disser.
+
+**EX064.** Escalou para uma pessoa, porque o certificado tinha expirado e o equipamento exige renovação manual.
+
+**EX065.** Qualquer certificado gerenciado automaticamente que esteja a até trinta dias da expiração.
+
+**EX066.** Um plano simulado publicado para revisão e chamados com donos para cada escalonamento.
+
+**EX067.** Concluir uma migração é uma atividade; reduzir as indisponibilidades por certificados é um resultado.
+
+**EX068.** Caíram de nove horas no semestre anterior para zero.
+
+**EX069.** Um período mais calmo de mudanças poderia explicar parte da redução das indisponibilidades.
 
 <a id="references"></a>
 ## Referências
