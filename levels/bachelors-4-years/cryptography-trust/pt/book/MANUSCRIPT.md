@@ -1650,7 +1650,7 @@ Você vai (1) propor um trabalho de conclusão que melhore um serviço de confia
 
 ### 35.1 Escolher o trabalho de conclusão
 
-Priya propõe um trabalho de conclusão: um inventário de certificados e chaves para a Tidewell, com descoberta automatizada, monitoramento da expiração e alertas aos donos, partindo das lições da indisponibilidade do catálogo e do exercício da chave vazada. O problema é claro, o parceiro precisa dele e o escopo cabe num ano letivo. Ela declara o objetivo: todo certificado e toda chave no escopo são listados com um dono, e nenhum certificado expira sem pelo menos dois alertas, trinta e sete dias antes. Ela confere com Grace se o objetivo corresponde às prioridades do consórcio.
+Priya propõe um trabalho de conclusão: um inventário de certificados e chaves para a Tidewell, com descoberta automatizada, monitoramento da expiração e alertas aos donos, partindo das lições da indisponibilidade do catálogo e do exercício da chave vazada. O problema é claro, o parceiro precisa dele e o escopo cabe num ano letivo. Ela declara o objetivo: todo certificado e toda chave no escopo são listados com um dono, e nenhum certificado expira sem pelo menos dois alertas, com trinta e com sete dias de antecedência. Ela confere com Grace se o objetivo corresponde às prioridades do consórcio.
 
 ### 35.2 Escopo e entregas
 
@@ -2102,7 +2102,7 @@ Respostas-modelo para EX001–EX120. Priya Raman, o Dr. Tomás Echeverría, Grac
 
 **EX102.** Uma queda nos preços das chaves de segurança tornaria vantajoso um uso mais amplo das chaves.
 
-**EX103.** Todo certificado e toda chave no escopo têm um dono no inventário, e nenhum expira sem alertas trinta e sete dias antes.
+**EX103.** Todo certificado e toda chave no escopo têm um dono no inventário, e nenhum expira sem alertas com trinta e com sete dias de antecedência.
 
 **EX104.** As chaves de segurança da equipe e as chaves mantidas pelos fornecedores.
 
