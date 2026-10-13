@@ -101,6 +101,8 @@ The Menlo Report adapts the Belmont principles to ICT research: respect for pers
 
 Network captures, PLC programs, piping and instrumentation diagrams, and alarm logs together form a map of how to hurt a facility. Treat them as sensitive even when the facility is a university rig, because rigs reuse commercial controllers and their configurations reveal product behaviour. Define tiers early: T0 public, T1 shareable under licence, T2 shareable with vetted researchers, T3 never leaves the owner. Chapter 7 turns these tiers into a release manifest.
 
+Section one point five develops advanced research integrity and methods with a the organisation note Setpoint Study can demo offline.
+
 ### 1.6 Metrics that resist gaming
 
 Detection research in OT has a measurement problem. Attacks in time-series datasets are long contiguous segments; a widely used scoring convention, *point adjustment*, marks a whole attack segment as detected if any single point inside it is flagged. As Lab 1 shows, it can turn a detector that finds 10% of attack points into one reporting near-perfect F1. Arp et al. list this family of pitfalls — inappropriate performance measures, base-rate neglect, lab-only evaluation — for machine learning in security generally. For OT the defensible metric set is: **event-level recall** (fraction of attack episodes detected), **time to detection** measured from attack onset, **false alarms per operator shift** (because alarm floods are themselves a safety hazard), and **physical impact at detection** (how far the process had moved when the alarm fired). The last metric is OT-specific and is the one most often omitted.
@@ -112,6 +114,10 @@ The candidate's first protocol proposed replaying recorded attacks on Kestrel Pl
 ### 1.8 Practical activity — Lab 1: point adjustment inflates scores
 
 Run this offline. It creates a 100-sample synthetic label sequence with two attack segments and a detector that flags five samples.
+
+Section one point eight develops advanced research integrity and methods with a the organisation note Setpoint Study can demo offline.
+
+Under section one point eight, the mentor expects advanced claims to carry owners and dates.
 
 ```python
 # Lab 1 (synthetic): how "point-adjusted" scoring inflates an OT anomaly detector.
@@ -159,6 +165,10 @@ events detected  : (2, 2)
 Interpretation: both episodes were detected (event recall 1.0), which is genuinely useful, but the point-adjusted F1 of 0.988 hides that the first alarm in segment one came 20 samples after onset. Report event recall *with* delay, never point-adjusted F1 alone.
 
 ### 1.9 Common errors and limits
+Section one point nine develops advanced research integrity and methods with a the organisation note Setpoint Study can demo offline.
+
+Under section one point nine, the mentor expects advanced claims to carry owners and dates.
+
 
 - Treating a protocol anomaly as a process anomaly (rung 1 presented as rung 3).
 - Calling a passive capture "safe" while running active polling tools.
@@ -198,6 +208,8 @@ After this chapter you can (1) organize the OT security literature into research
 
 OT security research is scattered across control engineering (fault detection, resilient control), computer security (intrusion detection, protocol analysis), safety engineering (hazard analysis, functional safety), and industrial practice (vendor white papers, government advisories). The same idea appears under different names: a control engineer's *residual-based fault detection* is a security researcher's *physics-based anomaly detection*. A scoping search must therefore use synonyms from each community and search engineering databases as well as security venues.
 
+Section two point one develops ot iot and cyber-physical security with a the organisation note Setpoint Study can demo offline.
+
 ### 2.2 Research families
 
 **Architecture and segmentation.** The Purdue reference model, described in NIST SP 800-82 Rev. 3, layers enterprise (levels 4–5), operations management (3), supervisory control (2), basic control (1) and the physical process (0), with an industrial DMZ between IT and OT. ISA/IEC 62443-3-2 reframes segmentation as *zones and conduits* with target security levels. Research questions include whether segmentation designs actually reduce reachable attack paths and how cloud-connected IIoT erodes the layered model.
@@ -213,6 +225,8 @@ OT security research is scattered across control engineering (fault detection, r
 ### 2.3 Standards as hypotheses
 
 A standard encodes expert belief: "zones with security level 2 resist casual attackers". Treat such statements as hypotheses. A thesis can measure whether a zone design reduces reachability, whether a recommended alarm practice reduces operator overload, or whether a security level is achievable within a controller's scan-time budget. Do not cite a standard as evidence that its recommendations work; cite it as the claim you test.
+
+Section two point three develops ot iot and cyber-physical security with a the organisation note Setpoint Study can demo offline.
 
 ### 2.4 Appraisal: what makes an OT detection paper credible
 
@@ -237,13 +251,25 @@ The pattern is the gap: no study combines (a) a detector-aware adversary, (b) th
 
 Copy the table into a CSV and count, with Python's `csv` module, how many studies satisfy each criterion. Expected counts from the table: adversary aware fully = 2 (S2, S7), validation thresholds = 4 (S2, S5, S6, S7), impact reported fully = 2 (S2, S7), two contexts = 1 (S5). Change one coding decision and note how the gap statement changes; record that sensitivity in your notes.
 
+Section two point six develops ot iot and cyber-physical security with a the organisation note Setpoint Study can demo offline.
+
+Under section two point six, the mentor expects ot claims to carry owners and dates.
+
 ### 2.7 A falsifiable gap
 
 Weak gap: "Physics-based detection is understudied." Strong gap: "No evaluation reports both detection delay and maximum process deviation at detection for sensor-replay attacks on a level loop, with thresholds fixed in advance, on two independent plants; we predict that a mass-balance residual reduces delay relative to a band alarm, and that the advantage disappears when the attacker also controls the independent flow sensor." The strong version names the condition under which the contribution fails.
 
+Section two point seven develops ot iot and cyber-physical security with a the organisation note Setpoint Study can demo offline.
+
 ### 2.8 Common errors and limits
 
 Citing vendor marketing as evidence; treating ATT&CK techniques as frequencies (they are documented possibilities, not base rates); claiming novelty because of a new dataset name; describing incidents beyond what public analyses state.
+
+Section two point eight develops ot iot and cyber-physical security with a the organisation note Setpoint Study can demo offline.
+
+Under section two point eight, the mentor expects ot claims to carry owners and dates.
+
+Section two point eight treats why the frontier is as testable only when evidence and ticket IDs are recorded.
 
 ### Exercises — chapter 2
 
@@ -367,6 +393,14 @@ Reading the output against the hypotheses: H1 is supported in the model (100/100
 
 Claiming a mechanism is novel when only its application is; omitting the honest-sensor assumption; choosing attack magnitudes after seeing detector behaviour; having no condition under which the hypothesis fails.
 
+Section three point seven develops original contribution proposal with a the organisation note Setpoint Study can demo offline.
+
+Under section three point seven, the mentor expects original claims to carry owners and dates.
+
+Section three point seven treats types of contribution the as testable only when evidence and ticket IDs are recorded.
+
+For section three point seven, the organisation will not accept original work without a written trail.
+
 ### Exercises — chapter 3
 
 - **EX015** — Classify the Setpoint Study's contribution type and write a two-sentence positioning statement citing prior work.
@@ -396,6 +430,12 @@ After this chapter you can (1) distinguish reproduction, replication and re-impl
 
 The ACM artifact-badging policy distinguishes **repeatability** (same team, same setup), **reproducibility** (different team, same artifacts) and **replicability** (different team, own artifacts). In OT these differ sharply because plants, controllers and datasets are rarely shareable. Fix your vocabulary before claiming any of them.
 
+Section four point one develops baseline replication and pilot with a the organisation note Setpoint Study can demo offline.
+
+Under section four point one, the mentor expects baseline claims to carry owners and dates.
+
+Section four point one treats terms diagnosing failed reproduction as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Diagnosing a failed reproduction: TankBench-21
 
 The synthetic benchmark TankBench-21 reports an F1 of 0.96 for a band-plus-rate alarm. The candidate's re-implementation gets 0.31. A disciplined diagnosis lists hypotheses and tests each: (a) **scoring convention** — the paper used point adjustment (Lab 1 shows this alone can explain a gap of this size); (b) **threshold leakage** — thresholds were chosen on the test split; (c) **label alignment** — attack labels start when the attack script launched, not when the process first deviated; (d) **sampling** — the paper downsampled to 10 s, smoothing noise. Re-scoring with point adjustment yields 0.94, inside a predeclared tolerance of ±0.05, so the reproduction "succeeds" — but it succeeds in reproducing an inflated metric. The thesis records both numbers and adopts event-level recall plus delay.
@@ -403,6 +443,8 @@ The synthetic benchmark TankBench-21 reports an F1 of 0.96 for a band-plus-rate 
 ### 4.3 Verifying the simulator
 
 Verification asks whether the model is built right; validation asks whether it is the right model (standard modelling vocabulary). Verification tests for the Lab 3 tank include: equilibrium at 50.0 with nominal inflow (analytical check); mass conservation over 1,000 steps without noise; residual mean near zero under no attack; and seeds producing identical traces on two machines. A detector evaluated on an unverified simulator is evaluated on an unknown system.
+
+Section four point three develops baseline replication and pilot with a the organisation note Setpoint Study can demo offline.
 
 ### 4.4 Tuning without leakage: Lab 6
 
@@ -451,6 +493,14 @@ The pilot answers feasibility questions only: can the rig run the replay scenari
 ### 4.6 Common errors and limits
 
 Calling a re-scoring a replication; trusting a simulator because it "looks right"; tuning on evaluation seeds; using pilot data to test hypotheses; lacking an independent emergency stop.
+
+Section four point six develops baseline replication and pilot with a the organisation note Setpoint Study can demo offline.
+
+Under section four point six, the mentor expects baseline claims to carry owners and dates.
+
+Section four point six treats terms diagnosing failed reproduction as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, the organisation will not accept baseline work without a written trail.
 
 ### Exercises — chapter 4
 
@@ -513,6 +563,12 @@ The robustness chosen in Chapter 4 costs about 7 steps on Plant A but about 45 s
 
 Separate **stochastic** uncertainty (seed-to-seed variation, captured by the interval), **parametric** uncertainty (orifice coefficient, noise levels, calibration bias — explored by sensitivity analysis as in Lab 6) and **structural** uncertainty (is a single-tank mass balance the right model at all?). Only the second testbed addresses the third.
 
+Section five point two develops main study and independent validation with a the organisation note Setpoint Study can demo offline.
+
+Under section five point two, the mentor expects main claims to carry owners and dates.
+
+Section five point two treats paired design three kinds as testable only when evidence and ticket IDs are recorded.
+
 ### 5.3 Independent validation on Testbed T2
 
 T2 differs from the Plant A model in ways that matter: two coupled tanks, a different flow meter with its own lag, and a PLC scan cycle of 100 ms. Thresholds are frozen from Plant A tuning before any T2 data are examined — the validation would otherwise be another tuning exercise. Synthetic T2 results: class A replay detected in 18 of 20 episodes (two missed because the flow-meter lag hid small manipulations), median delay longer than in simulation, zero false alarms over 40 nominal hours, and class B evasion confirmed in all 10 trials. The study thus supports H1 with a qualification (lower recall on a laggy instrument) and confirms H4.
@@ -521,6 +577,8 @@ T2 differs from the Plant A model in ways that matter: two coupled tanks, a diff
 
 Ten synthetic operators (O01–O10) reviewed alarm timelines without knowing which detector produced them. Eight preferred the CUSUM alarm because it arrived with a residual trend they could interpret; two found a "residual" abstract and wanted the predicted level shown on the HMI. The finding is about interpretability, not detection accuracy, and it changes the design: the thesis recommends displaying predicted versus reported level.
 
+Section five point four develops main study and independent validation with a the organisation note Setpoint Study can demo offline.
+
 ### 5.5 Writing mixed results honestly
 
 "In the synthetic Plant A model and on the synthetic Testbed T2, a mass-balance residual CUSUM detected class A sensor-replay attacks that a ±1.5 band alarm missed, with no false-alarm runs in nominal operation. Recall fell from 100% in simulation to 90% on T2 owing to flow-meter lag. Robustness to a 0.4-unit calibration bias required a larger allowance, which lengthened detection delay by about 7 steps on Plant A and at least 45 on the weaker-signal Plant B. When the attacker also controlled the flow meter (class B), detection failed in every trial, as predicted."
@@ -528,6 +586,14 @@ Ten synthetic operators (O01–O10) reviewed alarm timelines without knowing whi
 ### 5.6 Common errors and limits
 
 Independent seeds for paired comparisons; tuning on the validation testbed; hiding censored runs; presenting intervals as real-world uncertainty; omitting the failure condition from the abstract.
+
+Section five point six develops main study and independent validation with a the organisation note Setpoint Study can demo offline.
+
+Under section five point six, the mentor expects main claims to carry owners and dates.
+
+Section five point six treats paired design three kinds as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, the organisation will not accept main work without a written trail.
 
 ### Exercises — chapter 5
 
@@ -571,21 +637,39 @@ The second objection is the most important: it reveals that the defense's streng
 
 A good thesis maps where the method works. For the Setpoint Study the boundaries are: (1) an independent second measurement of the same physics must exist and be outside the attacker's control; (2) the model error must be smaller than the attack signal; (3) attacks slower than the allowance can evade, but their impact within a stated horizon is bounded (in the model, ≤1.37 units of overfill in 300 steps for gains ≤0.01). These are stated in the abstract, not buried in a limitations section.
 
+Section six point two develops peer critique and revision with a the organisation note Setpoint Study can demo offline.
+
 ### 6.3 The narrowed claim
 
 Before: "Physics-based CUSUM detects sensor manipulation in water plants." After: "Where an independently wired sensor measures a quantity linked by a known mass balance, a residual CUSUM with allowance tuned for expected calibration error detects single-sensor replay attacks that band alarms miss, and bounds the overfill achievable by slower attacks; it provides no protection when the attacker controls both sensing paths." The narrowed claim is weaker in reach and much stronger in evidence.
+
+Section six point three develops peer critique and revision with a the organisation note Setpoint Study can demo offline.
 
 ### 6.4 Dual-use review
 
 Before submission ask: Does the paper give a recipe for the class B evasion against a named product? (No: it describes the capability class, which is already documented as manipulation of view.) Does it reveal T2's configuration? (Only generic structure.) Would a defender gain more than an attacker? (Yes: the architectural recommendation — independent sensing paths — is actionable for defenders and well known to capable attackers.) Record the answers in the thesis appendix.
 
+Section six point four develops peer critique and revision with a the organisation note Setpoint Study can demo offline.
+
 ### 6.5 Responding to reviewers
 
 Answer every point, quote it, state what changed and where, and disagree with evidence where you must. Example: "Reviewer 2 states that CUSUM is not novel. We agree and have revised §1 to position the contribution as a measurement of when cross-sensor invariants help against manipulation of view, citing Page (1954) and Giraldo et al. (2018). The new contribution statement is on p. 3."
 
+Section six point five develops peer critique and revision with a the organisation note Setpoint Study can demo offline.
+
+Under section six point five, the mentor expects peer claims to carry owners and dates.
+
 ### 6.6 Common errors and limits
 
 Defending instead of testing; hiding the class B failure; claiming generality across plants after two contexts; responding to reviewers without stating changes.
+
+Section six point six develops peer critique and revision with a the organisation note Setpoint Study can demo offline.
+
+Under section six point six, the mentor expects peer claims to carry owners and dates.
+
+Section six point six treats objections as hypotheses boundary as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, the organisation will not accept peer work without a written trail.
 
 ### Exercises — chapter 6
 
@@ -616,9 +700,19 @@ After this chapter you can (1) map the thesis argument from evidence to claim, (
 
 Use a Toulmin structure: **claim** (narrowed claim of §6.3), **data** (Lab 3, Lab 5, T2 results), **warrant** (the mass balance links flow and level; an attacker controlling only one cannot keep both consistent), **backing** (verification tests, Page's CUSUM properties), **qualifier** ("in two synthetic contexts"), **rebuttal** (class B, slow ramps, laggy instruments). Each element points to a chapter and an artifact.
 
+Section seven point one develops thesis synthesis and reproducibility archive with a the organisation note Setpoint Study can demo offline.
+
+Under section seven point one, the mentor expects thesis claims to carry owners and dates.
+
 ### 7.2 Format
 
 A monograph suits a single integrated argument; a publication-based thesis suits independent papers with a linking chapter. Either way, the reproducibility archive belongs to the thesis, not to one paper.
+
+Section seven point two develops thesis synthesis and reproducibility archive with a the organisation note Setpoint Study can demo offline.
+
+Under section seven point two, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point two treats argument map format tiered as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Tiered archive
 
@@ -663,13 +757,31 @@ The stale hash blocks the release, and the T3 file is never considered. The comp
 
 State for each synthetic dataset whether it is **invented** (parameters chosen for teaching) or **calibrated** (fitted to a real system's statistics). The Setpoint Study's tank is invented. Record parameters, seeds, generator code version and the intended use; warn against using it to make claims about real plants.
 
+Section seven point four develops thesis synthesis and reproducibility archive with a the organisation note Setpoint Study can demo offline.
+
+Under section seven point four, the mentor expects thesis claims to carry owners and dates.
+
 ### 7.5 Directional limitations
 
 A useful limitations table states the direction of each bias: noise-free flow meter in simulation (*overstates* recall — confirmed by T2), single-loop model (*unknown* direction for multi-loop plants), synthetic operators (*unknown*), testbed scale (*likely overstates* signal-to-noise), censoring at 400 steps (*understates* Plant B delay cost).
 
+Section seven point five develops thesis synthesis and reproducibility archive with a the organisation note Setpoint Study can demo offline.
+
+Under section seven point five, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point five treats argument map format tiered as testable only when evidence and ticket IDs are recorded.
+
 ### 7.6 Common errors and limits
 
 Archives that release everything or nothing; manifests not checked; calling invented data "realistic"; limitations without direction.
+
+Section seven point six develops thesis synthesis and reproducibility archive with a the organisation note Setpoint Study can demo offline.
+
+Under section seven point six, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point six treats argument map format tiered as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, the organisation will not accept thesis work without a written trail.
 
 ### Exercises — chapter 7
 
@@ -699,6 +811,10 @@ After this chapter you can (1) audit a claim register before the defense, (2) pr
 ### 8.1 Claim-register audit
 
 Every claim in the thesis needs evidence, scope and a falsifier, and must avoid overreach wording. Lab 8 automates the first pass.
+
+Section eight point one develops defense and publication plan with a the organisation note Setpoint Study can demo offline.
+
+Under section eight point one, the mentor expects defense claims to carry owners and dates.
 
 ```python
 # Lab 8: audit a thesis claim register (synthetic). Every claim needs evidence, scope and a falsifier.
@@ -730,21 +846,41 @@ C2 must be deleted or narrowed; C3 needs a falsifier (for example "a band narrow
 
 Prepare answers for: **positioning** ("what is new beyond Page and Giraldo?"), **validity** ("why should a testbed generalize?"), **adversary** ("what does a stronger attacker do?"), **safety** ("how did you bound T2 experiments?"), **ethics** ("what did you withhold and why?"), and **impact** ("what should an operator change on Monday?"). The answer to the last is architectural: provide an independently wired second measurement of key process quantities and display predicted versus reported values.
 
+Section eight point two develops defense and publication plan with a the organisation note Setpoint Study can demo offline.
+
 ### 8.3 Publication sequencing
 
 Paper 1: the evaluation-methodology contribution (impact-at-detection and event metrics, with the TankBench-21-style reproduction lesson told generically). Paper 2: the Setpoint Study comparison with boundary conditions. Paper 3: the operator interpretability finding with human-factors collaborators. Release the T0/T1 archive with Paper 2.
+
+Section eight point three develops defense and publication plan with a the organisation note Setpoint Study can demo offline.
+
+Under section eight point three, the mentor expects defense claims to carry owners and dates.
+
+Section eight point three treats claim-register audit examiner question as testable only when evidence and ticket IDs are recorded.
 
 ### 8.4 Coordinated disclosure
 
 If the research reveals a vulnerability in a commercial product — for example a PLC accepting unauthenticated writes to a register that should be read-only — report it to the vendor and, where appropriate, to a coordinator such as CISA's coordinated vulnerability disclosure program, agree a timeline, and publish technical detail only after mitigations are available. A design property documented in a public specification (Modbus lacking authentication) is not a vulnerability disclosure; an implementation flaw is.
 
+Section eight point four develops defense and publication plan with a the organisation note Setpoint Study can demo offline.
+
 ### 8.5 Translation for practice
 
 Write a two-page brief for operators with confidence levels: "High confidence (model + testbed): band alarms alone do not detect replayed level readings. Medium confidence (two contexts): an independent flow measurement plus a residual check detects single-sensor replay. No protection: if one device or PLC controls both measurements." Suggest to standards working groups that independent measurement paths be considered when assessing zone security levels — as a proposal, not as a finding of compliance.
 
+Section eight point five develops defense and publication plan with a the organisation note Setpoint Study can demo offline.
+
 ### 8.6 Post-doctoral program
 
 Extend to multi-loop plants, test calibrated rather than invented models, measure operator response time with real (consenting) control-room staff, and study class C attackers who modify PLC logic.
+
+Section eight point six develops defense and publication plan with a the organisation note Setpoint Study can demo offline.
+
+Under section eight point six, the mentor expects defense claims to carry owners and dates.
+
+Section eight point six treats claim-register audit examiner question as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, the organisation will not accept defense work without a written trail.
 
 ### Exercises — chapter 8
 
