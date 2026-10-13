@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–47 de 50 já estão escritos em português, com os exercícios EX001–EX094 e suas resoluções; os capítulos 48–50 (EX095–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito; os exercícios EX001–EX100 (dois por capítulo) têm resoluções correspondentes; dezessete laboratórios offline estão incorporados com suas saídas verificadas. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. A meta do plano, de três exercícios por capítulo, ainda não foi atingida. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -82,10 +82,11 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 45. [Revisão independente de projeto](#ch-45)
 46. [Projeto final de engenharia II](#ch-46)
 47. [Ensaio de falha e recuperação](#ch-47)
+48. [Dossiê de evidências](#ch-48)
+49. [Trabalho de conclusão de curso de engenharia](#ch-49)
+50. [Defesa final](#ch-50)
 
-Capítulos 48–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-48), até a chegada dos próximos lotes.
-
-As [resoluções](#worked-results) contêm EX001–EX094. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX100. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -3523,16 +3524,222 @@ A recuperação precisa ser ensaiada para merecer confiança. Projete ensaios co
 <!-- cyberabc:chapter-navigation:start ch-47 -->
 ### Continue estudando — capítulo 47 de 50
 
-[← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 (inglês) →](../../en/book/MANUSCRIPT.md#ch-48)
+[← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) montar um dossiê de evidências de engenharia que apoie as alegações do projeto final; (2) organizar as evidências por alegação, com proveniência; (3) proteger as evidências sensíveis mantendo-as revisáveis; e (4) conferir a consistência do dossiê antes da entrega. Ele reúne os capítulos 44 a 47 e prepara o trabalho de conclusão de engenharia.
+
+### 48.1 O que é o dossiê
+
+O dossiê de evidências é a coleção de artefatos que apoia o caso de garantia: requisitos e rastreabilidade; documentos de projeto e registros de decisão; análises (modelos de ameaças, árvores de falhas, desempenho, confiabilidade); registros de implementação (revisão do código-fonte, SBOM, proveniência do build); resultados de verificação e validação; constatações de revisão e respostas; relatórios de ensaios; documentos operacionais; e o registro de riscos residuais com os donos. Organize-o por alegação, e não por data: um revisor deve conseguir partir de uma alegação e encontrar sua evidência em dois cliques. Para o TMRP, as alegações do dossiê são C1 a C4.
+
+### 48.2 Proveniência
+
+Toda evidência declara o que é, quem a produziu, quando, a partir de qual versão do sistema e com quais ferramentas. Os números do trabalho de conclusão precisam ser rastreáveis até um arquivo de resultados (compare com a verificação de proveniência do livro de mestrado, no seu Capítulo 7). Use hashes de conteúdo para os arquivos de resultados e registre-os num índice, como a cadeia de hashes do Capítulo 13 faz para os logs. Para o TMRP, cada entrada do índice do dossiê traz uma versão, como a versão do gateway ou a data do ensaio, e os primeiros caracteres de seu hash.
+
+### 48.3 Sensibilidade
+
+Dossiês sobre infraestrutura contêm detalhes sensíveis. Mantenha uma versão completa e restrita para os revisores autorizados e uma versão com supressões para públicos mais amplos, e registre o que foi suprimido e por quê. Em trabalhos acadêmicos com casos sintéticos, a sensibilidade é menor — mas pratique a disciplina. Para o TMRP, a versão restrita incluiria as configurações dos gateways e os procedimentos de gestão de chaves, enquanto a versão com supressões descreve a arquitetura no nível de zonas e condutos. O registro de supressões lista cada item removido e o motivo, de modo que um revisor da versão com supressões sabe o que foi retido e pode pedir acesso pelo caminho adequado.
+
+### 48.4 Verificação de consistência
+
+Antes da entrega: toda alegação tem evidência; todo número do trabalho de conclusão coincide com sua fonte; as situações concordam entre os documentos (nada de "aprovado" num e "reprovado" noutro — a constatação F1 do Capítulo 45); os riscos residuais têm donos; e todas as constatações de revisão estão encerradas ou encaminhadas. O dossiê do TMRP falhou nessa verificação uma vez, quando C2 citava o T3 como aprovado enquanto a matriz ainda o mostrava como reprovado. A correção foi registrar o novo teste na v2 como T3b e atualizar todos os documentos que se referiam a ele, de modo que o índice agora mostra a mesma situação em toda parte.
+
+### 48.5 Exemplo resolvido: trecho do índice do dossiê (sintético)
+
+| Alegação | Evidência | Versão | Hash (12 primeiros) | Situação |
+|---|---|---|---|---|
+| C1 R1 atendido | Resultados de T1/T2; campanha de 10 mil mensagens | gw v1.3.0 | 3f9a1c0b7e22 | Aprovado |
+| C2 comandos forjados não podem causar perda de abastecimento | Condicionamento do Laboratório 9; T3b; revisão da gestão de chaves | reg. de riscos v1.2 | 8b01d4e6aa90 | Apoiada, com os derrotadores D1, D2 |
+| C3 R6 restauração ≤ 8 h | Relatório do ensaio de recuperação | ensaio 2026-09-14 | c47e2b19f5d3 | **Não atendido (12 h)**; opções no ADR-015 |
+| C4 R5 bateria de 24 h | Análise de dimensionamento; teste de descarga T4 | gab. v2 | 51d7a0e8c4f6 | Aprovado |
+
+(Os hashes são marcadores ilustrativos para o caso sintético.)
+
+### 48.6 Atividade prática
+
+Monte o índice do seu dossiê com hashes de conteúdo reais dos seus arquivos de resultados (`hashlib.sha256`) e execute a verificação de consistência da §48.4. Use o script do EX095 para calcular os hashes e guarde o índice sob controle de versões, para que seu histórico faça parte das evidências. Depois execute a verificação de consistência contra o rascunho do seu trabalho de conclusão. Todo número do rascunho deve aparecer num arquivo de resultados listado no índice, e toda situação deve coincidir. Corrija qualquer divergência primeiro no documento de origem e depois gere o índice de novo.
+
+### 48.7 Erros comuns e limites
+
+- Dossiês organizados por data ou autor, e não por alegação.
+- Números do trabalho de conclusão sem arquivo de origem.
+- Situações inconsistentes entre documentos.
+- Supressões sem registro.
+
+O índice do TMRP evita o primeiro erro organizando as evidências por alegação, e seu registro de C3 como não atendido impede que o terceiro apareça. Um registro de supressões acompanha a versão compartilhada. Todo número do trabalho de conclusão é rastreável até um arquivo de resultados listado no índice, e a versão compartilhada traz um registro do que foi suprimido e por quê.
+
+### Exercícios — capítulo 48
+
+**EX095 — Script de índice.** *Objetivo:* automatizar a proveniência. *Entradas:* uma pasta de resultados. *Passos:* escreva um script com a biblioteca padrão que percorra a pasta, calcule o SHA-256 de cada arquivo e escreva um índice CSV com caminho, tamanho, hash e horário de modificação; explique por que o horário de modificação é uma evidência fraca. *Evidência esperada:* script e explicação. *Rubrica:* 3 = script funcional, explicação (o mtime é facilmente alterado; hash mais commit no controle de versões é mais forte); 2 = sem explicação; 1 = não funciona; 0 = nada.
+
+**EX096 — Auditoria de consistência.** *Objetivo:* pegar inconsistências. *Entradas:* o trecho da §48.5 e uma frase do resumo, "Todos os requisitos foram verificados e o sistema restaura a operação remota em até 8 horas". *Passos:* identifique a inconsistência e reescreva a frase. *Evidência esperada:* reescrita. *Rubrica:* 3 = identifica a contradição com C3, reescrita precisa e ainda positiva onde justificado; 2 = reescrita vaga; 1 = não a percebe; 0 = nada.
+
+### Síntese do capítulo
+
+O dossiê é o corpo de evidências, organizado por alegação e com proveniência rastreada, por trás do caso de garantia. Mantenha versões restrita e com supressões, com um registro das supressões, e confira a consistência de cada alegação, número e situação antes que qualquer outra pessoa o faça.
+
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Continue estudando — capítulo 48 de 50
+
+[← Capítulo 47](#ch-47) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Trabalho de conclusão de curso de engenharia
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) estruturar um trabalho de conclusão de engenharia em torno de um problema de projeto, uma solução e as evidências; (2) escrever resultados e limitações que fiquem dentro das evidências; (3) apresentar resultados quantitativos com incerteza e proveniência; e (4) preparar um trabalho de conclusão que um examinador consiga verificar. Ele transforma o dossiê num documento e prepara a defesa.
+
+### 49.1 O trabalho de conclusão de engenharia
+
+Um trabalho de conclusão de engenharia argumenta que um sistema projetado atende a uma necessidade sob restrições, apoiado em evidências de verificação e validação. Ele não é uma dissertação de pesquisa (o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) trata disso) e não precisa alegar uma contribuição original ao conhecimento (o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md)). Sua originalidade, se houver, está no projeto e na qualidade de suas evidências. Para o TMRP, o trabalho de conclusão argumenta que o gateway seguro diante de reinícios atende a R1, R2 e R7 na bancada e relata R6 como não atendido.
+
+### 49.2 Estrutura
+
+1. **Introdução:** necessidade, partes interessadas, consequência, escopo.
+2. **Fundamentação:** contexto setorial, normas pertinentes e projetos anteriores, com fontes.
+3. **Requisitos:** requisitos derivados, com fontes e métodos de verificação.
+4. **Projeto:** alternativas, seleção, arquitetura, controles, com registros de decisão.
+5. **Análise:** análise de ameaças e falhas, desempenho, confiabilidade.
+6. **Implementação:** o que foi construído, como, com quais ferramentas.
+7. **Verificação e validação:** métodos, resultados, reprovações e correções.
+8. **Discussão:** situação dos requisitos, riscos residuais, limitações, o que você faria de outro modo.
+9. **Conclusão:** o que foi alcançado e o que falta.
+Apêndices: matriz de rastreabilidade, índice do dossiê, código dos laboratórios.
+
+O trabalho de conclusão do TMRP segue essa estrutura.
+
+### 49.3 Resultados e limitações
+
+Relate a situação dos requisitos com honestidade: atendido, atendido após correção, não atendido, não verificado. Para cada limitação, diga quais alegações ela afeta e em que direção: "a bancada usa relógios perfeitos; a deriva real dos relógios aumentaria as rejeições de mensagens inativas, então a taxa de falsas inatividades relatada é um limite inferior". Uma limitação sem direção é enfeite. O parágrafo de discussão do TMRP no exemplo resolvido abaixo dá uma limitação desse tipo: a bancada usou uma rede sintética, então o limiar de sessenta segundos da estação inativa precisa ser ajustado de novo em campo, onde o congestionamento da LTE pode aumentar os alarmes falsos. Essa frase nomeia a alegação afetada e a direção provável.
+
+### 49.4 Escrever bem
+
+Abra cada capítulo com seu ponto principal. Use figuras com eixos rotulados e unidades; tabelas para valores exatos. Mantenha os números rastreáveis até o dossiê. Escreva em linguagem técnica simples, defina os termos no primeiro uso e use um glossário. Para o TMRP, a tabela de situação dos requisitos aparece cedo na discussão, e cada número nela é rastreável até uma entrada do índice do dossiê, com seu hash. Cada capítulo abre com seu ponto principal, e termos como alarme de estação inativa são definidos no primeiro uso e no glossário, de modo que um examinador consiga ler qualquer capítulo sem caçar definições.
+
+### 49.5 Exemplo resolvido: parágrafo de discussão (sintético)
+
+> O gateway atendeu a R1 e R2 na bancada, incluindo reinícios de qualquer das extremidades, depois que o receptor foi alterado para persistir seu último contador aceito (Seção 7.3). R7 foi atendido para os alarmes prioritários e, depois da constatação de revisão F2, para a perda de dados. R6 não foi atendido: o ensaio de recuperação restaurou a operação remota em 12 h contra um requisito de 8 h, porque a geração de imagens forenses e a reconstrução ficam em série no caminho crítico. O abastecimento do hospital foi mantido em modo local durante todo o ensaio, então a consequência da insuficiência é a redução da visibilidade e da capacidade de intervenção, e não a perda do abastecimento. Duas opções de projeto que atenderiam às 8 h estão orçadas no ADR-015. Todos os resultados vêm de uma bancada sintética; o desempenho em campo, em particular a latência da LTE sob congestionamento, pode ser diferente, e o limiar de 60 s da estação inativa precisa ser ajustado de novo em campo.
+
+### 49.6 Atividade prática
+
+Escreva o capítulo de discussão do seu trabalho de conclusão, com uma tabela de situação dos requisitos e limitações com direção. Use o parágrafo de discussão do TMRP como modelo. Comece com uma tabela que dê a situação de cada requisito como atendido, atendido após correção, não atendido ou não verificado. Depois escreva um parágrafo por resultado significativo, incluindo qualquer requisito que você não atendeu, e termine com suas limitações, cada uma nomeando a alegação que afeta e a direção do viés provável. Confira cada número contra o índice do seu dossiê antes da entrega.
+
+### 49.7 Erros comuns e limites
+
+- Trabalhos de conclusão organizados como diários.
+- Situação dos requisitos arredondada para cima.
+- Limitações sem direção nem alegações afetadas.
+- Números que não coincidem com o dossiê.
+
+O trabalho de conclusão do TMRP evita cada um desses erros: é organizado pelo argumento, relata R6 como não atendido, dá limitações com direção e tira seus números do índice do dossiê. Sua tabela de situação dos requisitos é conferida contra o dossiê antes da entrega, então nada é arredondado para cima. Suas limitações nomeiam a bancada sintética e o ensaio de recuperação único, e dizem em que direção cada uma poderia enviesar os resultados.
+
+### Exercícios — capítulo 49
+
+**EX097 — Limitações com direção.** *Objetivo:* escrever limitações úteis. *Entradas:* três limitações: modelo de ruído sintético; bancada sem LTE real; um único ensaio de recuperação. *Passos:* para cada uma, declare a alegação afetada e a direção do viés provável. *Evidência esperada:* três frases. *Rubrica:* 3 = cada uma tem alegação e direção (p. ex., um único ensaio não dá estimativa de variabilidade — as 12 h podem ser otimistas ou pessimistas; a latência real da LTE aumentaria as rejeições por inatividade e a latência dos alarmes); 2 = falta uma direção; 1 = apenas a lista; 0 = nada.
+
+**EX098 — Resumo.** *Objetivo:* resumir com precisão. *Entradas:* §49.5. *Passos:* escreva um resumo estruturado de 150 palavras (necessidade, projeto, métodos, resultados, limitações). *Evidência esperada:* resumo. *Rubrica:* 3 = preciso, incluindo R6 não atendido, limite da bancada sintética declarado; 2 = um exagero; 1 = vago; 0 = nada.
+
+### Síntese do capítulo
+
+Um trabalho de conclusão de engenharia argumenta da necessidade ao projeto e às evidências. Estruture-o para um examinador, relate a situação dos requisitos como ela é, dê a cada limitação uma alegação afetada e uma direção, e mantenha cada número rastreável até o dossiê.
+
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Continue estudando — capítulo 49 de 50
+
+[← Capítulo 48](#ch-48) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) preparar a apresentação técnica de defesa de um projeto final e de um trabalho de conclusão; (2) antecipar as perguntas dos examinadores por família e preparar respostas baseadas em evidências; (3) lidar com honestidade com as perguntas que você não consegue responder; e (4) planejar as correções e a passagem depois da defesa. Ele encerra o curso.
+
+### 50.1 O que os examinadores testam
+
+Os examinadores conferem se o candidato entende a necessidade e as restrições; tomou decisões de projeto defensáveis; verificou as alegações com competência; conhece os limites das evidências; e consegue raciocinar sobre mudanças ("e se o requisito fosse de 2 h?"). Eles leem o trabalho de conclusão com atenção e sondam as inconsistências. Na defesa do TMRP, os examinadores provavelmente vão sondar a insuficiência de R6 e o risco residual aceito D1. Eles podem perguntar o que mudaria se a reserva do hospital fosse de duas horas em vez de quatro, e o candidato deve raciocinar a partir da árvore de falhas e do modo automático local, em vez de chutar.
+
+### 50.2 A apresentação
+
+Vinte minutos: necessidade e consequência (2 min); requisitos (2); alternativas e seleção (3); arquitetura e principais controles (4); resultados de verificação e validação, com reprovações e correções (5); situação dos requisitos e riscos residuais (2); limitações e próximos passos (2). Uma mensagem por slide. Mostre a tabela de situação dos requisitos; os examinadores respeitam um "não atendido" dito com clareza. Para o TMRP, a tabela de situação dos requisitos mostraria R1, R2 e R7 como atendidos após correções e R6 como não atendido em doze horas, com as opções do ADR-015. Esse slide prepara a banca para as perguntas do exemplo resolvido, e declarar a insuficiência antes que um examinador a encontre conquista mais confiança do que qualquer resultado polido.
+
+### 50.3 Famílias de perguntas
+
+- **Necessidade:** por que isto importa, para quem, como você sabe?
+- **Projeto:** por que esta e não aquela alternativa; o que mudaria sua escolha?
+- **Análise:** de onde vem este número; e se este pressuposto estiver errado?
+- **Verificação:** como você sabe que o teste testa o requisito; o que seus testes deixaram passar?
+- **Limites:** o que você não pode alegar; o que uma implantação em campo revelaria?
+- **Ética e segurança:** o que poderia dar errado para as pessoas; quem é dono do risco residual?
+
+Prepare duas respostas por família, com referências ao dossiê.
+
+### 50.4 Respostas honestas
+
+Quando você não sabe: diga isso, diga como descobriria e — se puder — raciocine em voz alta rumo a uma resposta, deixando claro que é raciocínio. Não invente números. Quando um examinador encontra um erro: reconheça-o, avalie seu impacto sobre as alegações e proponha uma correção. No exemplo resolvido, o candidato faz isso quando perguntado sobre o risco residual D1: declara quem o aceitou, as evidências que o limitam e a alternativa que o eliminaria, sem fingir que o risco é desprezível. Nenhum número é inventado.
+
+### 50.5 Depois da defesa
+
+As correções são listadas numa tabela: pedido do examinador, mudança feita, localização. Passe o artefato e o dossiê ao patrocinador, com as limitações conhecidas e as necessidades de manutenção. Em projetos reais, encaminhe quaisquer constatações de segurança pelos processos do proprietário. Para o TMRP, a passagem vai para a diretora de operações da LRWA, com o dossiê, o item em aberto sobre R6 e a nota de que o limiar da estação inativa precisa ser ajustado de novo em campo. Qualquer constatação de segurança sobre equipamentos reais passaria pelos próprios processos da LRWA, e não pelo trabalho de conclusão.
+
+### 50.6 Exemplo resolvido: respondendo a uma pergunta difícil (sintético)
+
+*Examinador:* "Seu caso de garantia aceita o risco residual D1 — um centro SCADA comprometido emitindo comandos autênticos. Por que isso é aceitável para o abastecimento de um hospital?" *Candidato:* "Ele foi aceito pela diretora de operações, e não por mim, e o caso declara por quê: os limites locais (R3) mantêm qualquer setpoint aceito dentro de limites seguros, então o pior que um centro comprometido pode fazer na PS4 é parar as bombas, e a árvore de falhas mostra que perder o abastecimento exige então que o caminho do reservatório e o tanque do hospital também falhem. Se os examinadores considerarem isso insuficiente, a alternativa do ADR-012 — escritas de setpoint apenas locais na PS4 — elimina o controle remoto naquele local, a um custo de pessoal estimado em um acionamento por mês. Eu não alegaria que D1 é desprezível; alego que ele é limitado e tem dono."
+
+### 50.7 Atividade prática
+
+Realize uma defesa simulada com dois colegas atuando como examinadores, usando as famílias de perguntas; registre as perguntas que você não conseguiu responder e prepare as respostas. Peça aos examinadores que usem todas as famílias de perguntas e que sondem pelo menos um número do seu trabalho de conclusão. Registre cada pergunta que você não conseguiu responder e depois rastreie a resposta até o seu dossiê. Para o TMRP, as perguntas mais difíceis tratam da insuficiência de R6 e do risco residual D1; prepare essas respostas até conseguir dá-las de forma breve, com as evidências nomeadas e sem alegar mais do que o dossiê apoia.
+
+### 50.8 Erros comuns e limites
+
+- Apresentações que escondem as reprovações.
+- Respostas defensivas a constatações de erro.
+- Números inventados sob pressão.
+- Nenhum plano de correções.
+
+O candidato do TMRP evita esses erros mostrando a insuficiência de R6 num slide, reconhecendo os erros com clareza, recusando-se a inventar números e mantendo uma tabela de correções pronta para os pedidos dos examinadores. Reprovações como a repetição após o reinício são apresentadas como constatações que a verificação pegou, com a correção e o novo teste, que é exatamente o que os examinadores querem ver. Uma tabela de correções está pronta. Cada alegação fica dentro do dossiê.
+
+### Exercícios — capítulo 50
+
+**EX099 — Banco de perguntas.** *Objetivo:* antecipar o exame. *Entradas:* seu trabalho de conclusão ou o caso do TMRP. *Passos:* escreva doze perguntas (duas por família) e respostas curtas baseadas em evidências, com referências ao dossiê. *Evidência esperada:* banco. *Rubrica:* 3 = perguntas difíceis e específicas, com respostas honestas que incluem os limites; 2 = perguntas brandas; 1 = respostas sem evidências; 0 = nada.
+
+**EX100 — Tabela de correções.** *Objetivo:* planejar as correções. *Entradas:* pedidos dos examinadores: (1) relatar a variabilidade do tempo de recuperação; (2) justificar a fração utilizável de 0,6 da bateria; (3) remover a alegação de que o detector "impede" ataques. *Passos:* escreva uma tabela de correções com a mudança, a localização e como cada uma é evidenciada. *Evidência esperada:* tabela. *Rubrica:* 3 = (1) reconhece o ensaio único e acrescenta um plano ou execuções simuladas repetidas, (2) acrescenta a fonte do fabricante ou uma análise de sensibilidade, (3) reformulação para "detecta"; 2 = uma fraca; 1 = sem localizações; 0 = nada.
+
+### Síntese do capítulo
+
+A defesa testa a compreensão, o julgamento e a honestidade sobre os limites. Apresente com clareza a necessidade, o projeto, as evidências e a situação; prepare-se por família de perguntas, com referências ao dossiê; responda o que você sabe, raciocine de forma transparente sobre o que não sabe e transforme as constatações dos examinadores numa tabela de correções precisa e numa passagem responsável.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Continue estudando — capítulo 50 de 50
+
+[← Capítulo 49](#ch-49) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX094; as de EX095–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos.
 
 ### Capítulo 1
 
@@ -3815,6 +4022,24 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX093.** (1) Com a reconstrução dependendo apenas do isolamento: controle remoto em 9 h; caminho crítico isolar → reconstruir → restaurar a configuração → verificar → retomar; a geração de imagens sai do caminho. (2) Com uma reconstrução de 1 h a partir de uma imagem de reserva: 6 h; a cadeia da reconstrução e a cadeia da troca de chaves (isolar → trocar chaves → verificar → retomar) empatam agora em 6 h, então a troca de chaves passou a ser crítica e ganhos adicionais exigem encurtá-la também.
 
 **EX094.** Opções: (a) pular a geração de imagens (mais rápida; evidências perdidas; a causa raiz e a persistência do atacante podem passar despercebidas; possíveis consequências regulatórias ou legais); (b) gerar as imagens primeiro (mais lenta); (c) gerar as imagens em paralelo usando hardware de reserva e reconstruir em hardware limpo (quase a mais rápida; evidências preservadas). Recomendação: (c), com uma decisão pré-aprovada de que a diretora de operações pode autorizar (a) apenas se o abastecimento estiver em risco. Dono: diretora de operações.
+
+### Capítulo 48
+
+**EX095.** Script: percorra a pasta com `os.walk`; para cada arquivo, leia em blocos para o `hashlib.sha256`; escreva `path, size, sha256, mtime` com `csv.writer`. O horário de modificação é uma evidência fraca porque é facilmente alterado e não está vinculado ao conteúdo; um hash de conteúdo registrado no controle de versões (ID do commit e tag assinada) é muito mais forte.
+
+**EX096.** Inconsistência: C3 mostra R6 não atendido (12 h). Reescrita: "Todos os requisitos, exceto a meta de restauração de 8 horas, foram verificados; um ensaio de recuperação restaurou a operação remota em 12 horas enquanto o abastecimento continuava em modo local, e são apresentadas duas opções de projeto para atender à meta."
+
+### Capítulo 49
+
+**EX097.** Modelo de ruído sintético → afeta as alegações de alarmes falsos e de tempo de detecção do detector; o ruído real provavelmente não é gaussiano e tem deriva, então os alarmes falsos provavelmente estão subestimados. Bancada sem LTE real → afeta as alegações de latência e de rejeição por inatividade; a latência e o jitter reais aumentariam as rejeições por inatividade e a latência dos alarmes. Um único ensaio de recuperação → afeta a situação de R6; sem estimativa de variabilidade, as 12 h podem ser otimistas ou pessimistas.
+
+**EX098.** Exemplo: "Necessidade: RTUs legadas numa concessionária de água aceitam comandos não autenticados pela LTE, pondo em risco o abastecimento de um hospital. Projeto: um gateway que acrescenta autenticação HMAC por estação, com contadores seguros diante de reinícios, retorno ao modo automático local e alarmes de estação inativa. Métodos: verificação em bancada, campanhas de injeção de falhas com semente e um ensaio de recuperação em sistemas sintéticos. Resultados: os requisitos de autenticação e de repetição foram atendidos, incluindo reinícios após uma correção; os alarmes atenderam aos 60 s; a restauração remota levou 12 h contra uma meta de 8 h, enquanto o abastecimento continuava localmente. Limitações: bancada sintética sem LTE real; um único ensaio de recuperação."
+
+### Capítulo 50
+
+**EX099.** Avaliado pela rubrica. Perguntas fortes incluem: "O que acontece se o HSM falhar?"; "Por que 60 s?"; "O que seu modelo de falhas não incluiu?"; "Quem é dono de D1?"; "O que mudaria se a reserva do hospital fosse de 1 h?"; as respostas citam itens do dossiê e declaram os limites.
+
+**EX100.** (1) Acrescentar a declaração de que um único ensaio não dá estimativa de variabilidade; acrescentar 100 execuções simuladas de recuperação com semente, com faixas de duração das tarefas, e relatar a mediana e o percentil 90; Seção 7.4 e Apêndice C. (2) Citar a recomendação de profundidade de descarga do fabricante da bateria ou acrescentar uma tabela de sensibilidade para 0,5–0,8; Seção 5.2. (3) Substituir "impede" por "detecta" e acrescentar o contexto do tempo de detecção; resumo e Seção 8.1.
 
 <a id="glossary"></a>
 

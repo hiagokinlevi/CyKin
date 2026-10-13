@@ -56,9 +56,9 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 9 | [44](book/PLAN.md#ch-44) | Projeto final de engenharia I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-44) | [45 · Rascunho](book/MANUSCRIPT.md#ch-45) |
 | 9 | [45](book/PLAN.md#ch-45) | Revisão independente de projeto | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-45) | [46 · Rascunho](book/MANUSCRIPT.md#ch-46) |
 | 10 | [46](book/PLAN.md#ch-46) | Projeto final de engenharia II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-46) | [47 · Rascunho](book/MANUSCRIPT.md#ch-47) |
-| 10 | [47](book/PLAN.md#ch-47) | Ensaio de falha e recuperação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-47) | [48 · Plano](book/PLAN.md#ch-48) |
-| 10 | [48](book/PLAN.md#ch-48) | Dossiê de evidências | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-48)) | [49 · Plano](book/PLAN.md#ch-49) |
-| 10 | [49](book/PLAN.md#ch-49) | Trabalho de conclusão de curso de engenharia | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-49)) | [50 · Plano](book/PLAN.md#ch-50) |
-| 10 | [50](book/PLAN.md#ch-50) | Defesa final | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-50)) | [Curso 139 →](../../../postgraduate-2-years/cybersecurity/pt/SUBJECTS.md) |
+| 10 | [47](book/PLAN.md#ch-47) | Ensaio de falha e recuperação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-47) | [48 · Rascunho](book/MANUSCRIPT.md#ch-48) |
+| 10 | [48](book/PLAN.md#ch-48) | Dossiê de evidências | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-48) | [49 · Rascunho](book/MANUSCRIPT.md#ch-49) |
+| 10 | [49](book/PLAN.md#ch-49) | Trabalho de conclusão de curso de engenharia | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-49) | [50 · Rascunho](book/MANUSCRIPT.md#ch-50) |
+| 10 | [50](book/PLAN.md#ch-50) | Defesa final | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-50) | [Curso 139 →](../../../postgraduate-2-years/cybersecurity/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
