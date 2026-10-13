@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -406,7 +406,190 @@ Solo la pasarela da a internet; cualquier otra cosa que se encuentre se notifica
 
 ### Siga estudiando — capítulo 06 de 12
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Acceso remoto de contratistas y fabricantes
+
+### Resultados de aprendizaje
+
+Usted podrá (1) inventariar todas las vías remotas hacia los sistemas del edificio; (2) aplicar las lecciones de CISA AA21-042A; y (3) diseñar un proceso de acceso remoto controlado para los contratistas.
+
+### 7.1 Muchas manos
+
+Un hospital puede tener contratistas distintos para el BMS, las enfriadoras, los ascensores, las alarmas de incendio y el control de accesos, y cada uno quiere soporte remoto. Sin una política, cada uno instala su propia vía: una herramienta de escritorio remoto en la estación de trabajo, un enrutador, un módem celular. En Millbrook Aisha encontró cuatro vías distintas, tres de ellas instaladas por contratistas para su propia comodidad. Ninguna era maliciosa, pero cada una era una entrada que el hospital no controlaba. La primera tarea es enumerar todas las vías, con quién las instaló, qué alcanzan y si alguien las sigue usando.
+
+### 7.2 Lecciones de AA21-042A
+
+El aviso de CISA sobre el compromiso en 2021 de una instalación de tratamiento de agua de EE. UU. describe cómo se usó software de acceso remoto para alcanzar un sistema de control. Entre sus recomendaciones están la autenticación multifactor, contraseñas robustas para el escritorio remoto, el cierre de los puertos de escritorio remoto sin uso y la auditoría de las conexiones remotas. MITRE ATT&CK for ICS describe el uso indebido de estas vías como T0886 Remote Services. En Millbrook las lecciones se aplican directamente a las vías que encontró Aisha. Una herramienta de escritorio remoto en BMS-WS es el mismo tipo de vía que describe el aviso. Exigir autenticación multifactor, auditar las conexiones y cerrar el acceso por escritorio remoto sin uso son pasos prácticos que mantenimiento y los contratistas pueden acordar sin esperar a un proyecto mayor.
+
+### 7.3 Un proceso controlado
+
+Una única pasarela de acceso remoto propiedad del hospital; una cuenta nominativa y con autenticación multifactor para cada ingeniero del contratista; cuentas desactivadas por defecto y activadas por ticket; acceso limitado al sistema concreto que mantiene el contratista; sesiones grabadas cuando sea posible; la cuenta desactivada al terminar la sesión. Escriba el proceso en un documento breve que firmen los contratistas, para que sepan cómo obtener acceso tanto en una emergencia como para el trabajo planificado. Pruébelo una vez con cada contratista antes de retirar las vías antiguas. Revise las cuentas de la pasarela cada semana, porque las cuentas que quedan activadas tras una sesión son en sí mismas un hallazgo, como muestra después el informe de riesgos de Millbrook.
+
+### 7.4 Retirar las vías antiguas
+
+Una vez que la pasarela esté en servicio, retire las herramientas de escritorio remoto instaladas directamente en las estaciones de trabajo del edificio y desconecte los módems no gestionados, de acuerdo con el contratista y con mantenimiento, en un momento planificado, para que no se pierda el soporte durante una emergencia. En Millbrook el orden se acordó con mantenimiento: la herramienta de escritorio remoto se retiró solo después de que funcionara la cuenta del contratista del BMS en la pasarela, el enrutador de la enfriadora una semana después, y el enlace del ascensor se restringió en lugar de retirarse. Registre cada retirada con la fecha y quién la confirmó, y vuelva a comprobar después el inventario de vías para asegurarse de que nada ha reaparecido.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+El inventario de vías de Aisha encuentra cuatro entradas: la pasarela, una herramienta de escritorio remoto en BMS-WS instalada por el contratista del BMS, el enlace celular del ascensor y el enrutador de un fabricante de enfriadoras. Mantenimiento acuerda un plan: la herramienta de escritorio remoto se retira en la semana 1, después de que funcione la cuenta del contratista en la pasarela; el enrutador de la enfriadora, en la semana 2; el enlace del ascensor se restringe al centro de servicio del contratista del ascensor y exige un ticket.
+
+> **Caso sintético — Millbrook.** Las vías y los plazos son inventados.
+
+### Errores y límites
+
+Algunos enlaces de ascensores y de alarmas de incendio son necesarios para la supervisión de la seguridad; restrínjalos y regístrelos en lugar de retirarlos a ciegas.
+
+### Ejercicios — capítulo 7
+
+- **EX031 — Contar las vías.** Enumere las cuatro vías remotas que encontró Aisha. *Rúbrica:* 3 = pasarela, escritorio remoto en BMS-WS, enlace celular del ascensor, enrutador de la enfriadora; 2 = tres; 1 = una; 0 = nada.
+- **EX032 — Aplicar el aviso.** Aplique dos recomendaciones de AA21-042A al acceso del contratista del BMS. *Rúbrica:* 3 = MFA en la cuenta de la pasarela y auditoría de las sesiones (o cerrar el puerto RDP o contraseña robusta); 2 = una; 1 = vago; 0 = nada.
+- **EX033 — Límites por sistema.** ¿Por qué la cuenta del contratista de la enfriadora no debe alcanzar el servidor de control de accesos? *Rúbrica:* 3 = mínimo privilegio; el compromiso de un contratista queda limitado a su sistema; 2 = parcial; 1 = sin motivo; 0 = nada.
+- **EX034 — Momento de la retirada.** ¿Por qué la herramienta de escritorio remoto se retira solo después de que funcione la cuenta de la pasarela? *Rúbrica:* 3 = evitar perder el soporte durante una emergencia; probar antes el sustituto; 2 = parcial; 1 = sin motivo; 0 = nada.
+- **EX035 — Enlace de seguridad.** El enlace de supervisión de la alarma de incendios usa un módem celular. ¿Debe desconectarse? *Rúbrica:* 3 = no; supervisión de la seguridad; restringir, documentar y revisar con el responsable; 2 = solo «no»; 1 = sí; 0 = nada.
+
+### Síntesis del capítulo
+
+Toda ayuda remota pasa por una única pasarela con cuentas nominativas, con autenticación multifactor y asociadas a un ticket; las vías heredadas se retiran con cuidado.
+
+### Siga estudiando — capítulo 07 de 12
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Segmentación de las redes del edificio
+
+### Resultados de aprendizaje
+
+Usted podrá (1) definir zonas y conductos para los sistemas del edificio de Millbrook con la terminología de IEC 62443; (2) redactar un conjunto mínimo de reglas; y (3) planificar la migración sin perturbar las áreas clínicas.
+
+### 8.1 Zonas
+
+IEC 62443-3-2 describe cómo agrupar los activos en zonas con requisitos de seguridad similares y conectarlas mediante conductos. En Millbrook un comienzo sensato es: una zona del BMS (controladores y servidor del BMS), una zona relevante para la seguridad (alarma de gases medicinales y ascensor, cada uno por separado), una zona de control de accesos, una DMZ para la pasarela y las exportaciones de datos, y la zona corporativa. Anote cada zona con sus miembros, su responsable y la consecuencia si se compromete. Las alarmas de gases medicinales y los ascensores se mantienen en zonas separadas porque sus fallos importan para la seguridad de los pacientes y sus contratistas son distintos. Un diagrama de zonas que acepten tanto mantenimiento como el equipo de redes es el punto de partida de cualquier tabla de reglas.
+
+### 8.2 Conductos y reglas
+
+Escriba cada conducto como un pequeño conjunto de reglas: de BMS-WS (trasladada a la zona del BMS) a los controladores por BACnet/IP; de la pasarela a BMS-WS para las sesiones de los contratistas; del servidor del BMS a un servidor de datos en la DMZ para los informes de energía. Todo lo demás se deniega. Los PC corporativos nunca se conectan directamente a los controladores. Escriba cada regla con su origen, destino, protocolo y puerto, un motivo y un responsable, para que pueda revisarse más adelante. Contraste las reglas con el inventario de vías, para que no se bloquee nada aprobado ni quede nada sin aprobar. Una regla sin responsable debe tratarse como candidata a retirarse.
+
+### 8.3 Corregir la estación de trabajo conectada a dos redes
+
+Retirar la tarjeta de red corporativa de BMS-WS cierra el puente del capítulo 3. El personal de mantenimiento que necesite ver el BMS desde las oficinas usa un panel de solo lectura en el servidor de la DMZ, o un servidor de salto al que se llega a través de la pasarela. Antes de retirar la tarjeta, acuerde con mantenimiento qué tareas de oficina la usaban y pruebe la vía sustituta con el personal que la usará. Haga el cambio en una franja reservada y confirme después que BMS-WS sigue alcanzando sus controladores. Registre el cambio en la entrada de la lista de riesgos que Aisha creó al encontrar el puente.
+
+### 8.4 Migrar con seguridad
+
+Cambie un conducto cada vez, en momentos acordados con mantenimiento y con los supervisores del bloque quirúrgico; vigile si se pierden puntos en el BMS después de cada paso; tenga lista la configuración anterior para restaurarla. Acuerde de antemano qué puntos del BMS se comprobarán después de cada paso y quién los comprobará. En Millbrook, después del segundo paso dos controladores dejaron de informar porque se había olvidado un conducto hacia un servidor de hora; se detectó porque los puntos se comprobaron de inmediato. Anote estas sorpresas en la tabla de reglas para que el siguiente cambio las evite.
+
+### 8.5 Documentación
+
+Publique el diagrama de zonas y la tabla de reglas con números de revisión y responsables, para que los contratistas puedan solicitar cambios sobre ellos. Guarde el diagrama y la tabla en un lugar que puedan leer mantenimiento, el equipo de redes y los contratistas, y cítelos en cada solicitud de cambio. Cuando se haga un cambio, actualice el número de revisión y anote quién lo aprobó. Una documentación desactualizada lleva a los contratistas a pedir reglas que ya existen o que contradicen el diseño. Conserve las revisiones superadas para poder rastrear las decisiones pasadas.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+A lo largo de tres mañanas de sábado planificadas, el equipo de redes crea las zonas, traslada BMS-WS por completo a la zona del BMS y despliega las reglas. Después del paso 2, dos controladores dejan de informar; la causa es un conducto olvidado hacia un servidor de hora, que se añade dentro del mismo cambio. Los informes de energía salen ahora del servidor de la DMZ.
+
+> **Caso sintético — Millbrook.** Los pasos y los hallazgos son inventados.
+
+### Errores y límites
+
+La segmentación no detiene a un atacante que ya tiene credenciales de la pasarela; limita adónde puede ir. Los diseños de zonas deben revisarse cuando se añaden sistemas.
+
+### Ejercicios — capítulo 8
+
+- **EX036 — Lista de zonas.** Proponga cinco zonas para Millbrook. *Rúbrica:* 3 = BMS, relevante para la seguridad (gases y ascensor), control de accesos, DMZ, corporativa; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX037 — Redactar un conducto.** Escriba la regla que permite al servidor del BMS enviar datos de energía al servidor de la DMZ. *Rúbrica:* 3 = origen servidor del BMS, destino servidor de datos de la DMZ, puerto concreto, permitir; más denegación por defecto; 2 = sin denegación; 1 = cualquiera; 0 = nada.
+- **EX038 — Visualización desde la oficina.** ¿Cómo ve el BMS desde sus oficinas el personal de mantenimiento después de que BMS-WS pierda su tarjeta corporativa? *Rúbrica:* 3 = panel de solo lectura en la DMZ o servidor de salto a través de la pasarela; 2 = parcial; 1 = volver a poner la tarjeta; 0 = nada.
+- **EX039 — Puntos perdidos.** Dos controladores dejan de informar tras un cambio de reglas. ¿Cuál es la respuesta segura? *Rúbrica:* 3 = comprobar el impacto clínico, restaurar la configuración anterior si hace falta, encontrar el conducto que falta, corregirlo dentro del cambio; 2 = parcial; 1 = ignorarlo; 0 = nada.
+- **EX040 — Límite de la segmentación.** ¿Contra qué no protege la segmentación? *Rúbrica:* 3 = uso indebido de credenciales legítimas de la pasarela o de un interno dentro de los conductos permitidos; 2 = vago; 1 = todo protegido; 0 = nada.
+
+### Síntesis del capítulo
+
+Las zonas con conductos estrechos impiden que los compromisos de la oficina alcancen los controladores; migre un conducto cada vez.
+
+### Siga estudiando — capítulo 08 de 12
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Supervisión de tendencias y registros
+
+### Resultados de aprendizaje
+
+Usted podrá (1) usar los registros de tendencias del BMS como evidencia de seguridad; (2) señalar con un script breve los cambios fuera de las ventanas aprobadas; y (3) combinar evidencias de tendencias, de inicios de sesión y de red.
+
+### 9.1 Las tendencias como evidencia
+
+Un BMS registra valores a lo largo del tiempo (temperaturas, puntos de consigna, posiciones de válvulas), sobre todo para los ingenieros. Esos mismos registros muestran cuándo cambió un punto de consigna y, con cuentas nominativas, quién lo cambió. A menudo son la mejor evidencia de una manipulación en un sistema del edificio. Para Aisha, el registro de tendencias suele ser el primer lugar donde mirar cuando algo parece ir mal, porque muestra directamente el efecto físico. Averigüe con qué frecuencia se muestrea cada punto y cuánto tiempo se conservan los registros antes de confiar en ellos. Donde las cuentas son compartidas, la tendencia muestra qué cambió pero no quién lo cambió.
+
+### 9.2 Ventanas de cambio
+
+Mantenimiento acuerda ventanas para los cambios planificados de puntos de consigna, por ejemplo las mañanas de los días laborables. Un cambio fuera de una ventana no es necesariamente malicioso, pero necesita una explicación.
+
+```python
+"""Lab 9: flag operating-theatre temperature setpoint changes outside a synthetic change window."""
+trend = [("01:00", 20.0), ("02:00", 20.0), ("03:00", 26.0), ("04:00", 26.0), ("09:00", 21.0)]
+window = ("08:00", "10:00")
+prev = None
+for t, sp in trend:
+    if prev is not None and sp != prev:
+        inside = window[0] <= t <= window[1]
+        print(f"{t} setpoint {prev}->{sp} {'in window' if inside else 'OUTSIDE WINDOW - review'}")
+    prev = sp
+```
+
+Ejecútelo con `python3 lab_trend.py`. Salida verificada:
+
+```text
+03:00 setpoint 20.0->26.0 OUTSIDE WINDOW - review
+09:00 setpoint 26.0->21.0 in window
+```
+
+Las ventanas deben acordarse con mantenimiento y ponerse por escrito, con las excepciones que haya, como las reparaciones de emergencia. Fuera de la ventana, la pregunta es simplemente qué ocurrió y quién lo hizo. El Lab 9 comprueba la tendencia de un punto de consigna de un quirófano frente a una ventana de mañana y señala cualquier cambio fuera de ella. Revise las ventanas con mantenimiento cada año.
+
+### 9.3 Lectura de la salida
+
+A las 03:00 el punto de consigna del quirófano subió de 20 °C a 26 °C, fuera de la ventana de 08:00 a 10:00; a las 09:00 volvió a fijarse en 21 °C, dentro de la ventana. El cambio de las 03:00 es el que hay que revisar. La vuelta a 21 °C a las 09:00 está dentro de la ventana, pero aun así merece anotarse, porque sugiere que alguien advirtió el cambio anterior y lo corrigió. Ambos cambios entran en la revisión, con las preguntas de quién hizo cada uno y por qué. El laboratorio muestra solo el punto de consigna; la tendencia de la temperatura real del quirófano mostraría si el cambio tuvo consecuencias.
+
+### 9.4 Combinar fuentes
+
+Compruebe en el registro de auditoría del BMS quién tenía la sesión iniciada a las 03:00; en el registro de la pasarela, las sesiones remotas; en el registro del cortafuegos, las conexiones a la zona del BMS. La coincidencia entre fuentes refuerza la conclusión, sea cual sea. Anote lo que mostró cada fuente, incluidas las que no mostraron nada. En Millbrook el registro de la pasarela no tenía sesiones a las 03:00, lo que hacía improbable un cambio remoto, y el registro de auditoría del BMS nombraba al ingeniero de noche. El registro del cortafuegos también se habría comprobado si las dos primeras fuentes no hubieran coincidido.
+
+### 9.5 Alertas
+
+Donde el BMS lo permita, genere una alarma para los cambios de puntos de consigna fuera de las ventanas en las unidades críticas, enviada al ingeniero de guardia de mantenimiento. Acuerde con mantenimiento qué unidades cuentan como críticas, como las unidades de tratamiento de aire de los quirófanos, y qué debe hacer el ingeniero de guardia al recibir la alarma. Una alarma a la que nadie responde pronto se ignora. Pruébela una vez después de configurarla, durante un cambio planificado, y registre el resultado. Revise la lista de alarmas cada trimestre con los ingenieros de guardia, retirando las unidades que ya no la necesiten.
+
+### 9.6 Conservar la evidencia
+
+Cuando un cambio necesite revisión, exporte ese mismo día los registros de tendencias y de auditoría pertinentes, anote la hora de la exportación y guárdelos con las notas de la revisión; la retención del BMS suele ser corta. Guarde las exportaciones donde solo puedan leerlas las personas que revisan el cambio, con una nota sobre la procedencia de cada una. En Millbrook los registros de tendencias se conservaban solo 14 días, lo que más tarde se convirtió en un hallazgo del informe de riesgos de Aisha. Mientras no se amplíe la retención, exportar el mismo día es la única práctica segura.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+Aisha comprueba los registros: no hay sesiones en la pasarela a las 03:00, pero el registro de auditoría del BMS muestra que el ingeniero de noche subió el punto de consigna durante una avería de la enfriadora para reducir la carga, y olvidó anotarlo. La explicación se documenta, y el procedimiento de guardia gana un paso: anotar en el registro del turno cualquier cambio fuera de ventana.
+
+> **Caso sintético — Millbrook.** La tendencia y la explicación son inventadas.
+
+### Errores y límites
+
+Los registros de tendencias pueden muestrear con poca frecuencia y omitir cambios breves; los relojes deben estar sincronizados. La retención puede ser de solo unas semanas: exporte lo que necesite.
+
+### Ejercicios — capítulo 9
+
+- **EX041 — Lógica de la ventana.** ¿Por qué no se señala el cambio de las 09:00? *Rúbrica:* 3 = las 09:00 caen dentro de la ventana de 08:00 a 10:00; 2 = «está permitido»; 1 = incorrecto; 0 = nada.
+- **EX042 — Tendencia modificada.** Si la ventana fuera de 02:00 a 04:00, ¿qué imprimiría el laboratorio? *Rúbrica:* 3 = 03:00 `in window`, 09:00 `OUTSIDE WINDOW - review`; 2 = una; 1 = lo mismo; 0 = nada.
+- **EX043 — Tres fuentes.** ¿Qué tres registros combina Aisha con la tendencia? *Rúbrica:* 3 = auditoría del BMS, pasarela, cortafuegos; 2 = dos; 1 = uno; 0 = nada.
+- **EX044 — Impacto clínico.** ¿Qué impacto clínico podría tener durante la noche un punto de consigna de 26 °C en un quirófano? *Rúbrica:* 3 = quirófano inutilizable o fuera de especificación al inicio de la sesión quirúrgica, retraso o problema de control de infecciones; 2 = parcial; 1 = vago; 0 = nada.
+- **EX045 — Mejora del proceso.** ¿Qué cambio evita el próximo cambio fuera de ventana sin explicar? *Rúbrica:* 3 = anotación obligatoria en el registro del turno, alarma ante cambios fuera de ventana; 2 = uno; 1 = buscar culpables; 0 = nada.
+
+### Síntesis del capítulo
+
+Los registros de tendencias muestran qué cambió y cuándo; combinados con los registros de acceso, lo explican.
+
+### Siga estudiando — capítulo 09 de 12
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](../../en/book/MANUSCRIPT.md#ch-10)
 
 <a id="worked-results"></a>
 
@@ -473,6 +656,36 @@ Respuestas modelo para EX001–EX060. Millbrook Hospital Building Systems, Aisha
 **EX029.** Informar al equipo de redes y a mantenimiento; hacer que el responsable lo cierre mediante un cambio de emergencia; revisar los registros en busca de conexiones externas; averiguar quién lo abrió y por qué; dar a esa parte acceso por la pasarela en su lugar.
 
 **EX030.** No tiene autorización sobre sistemas que no pertenecen a Millbrook; sondearlos podría infringir la ley y perturbar las instalaciones de otro hospital.
+
+**EX031.** La pasarela de acceso remoto del hospital; una herramienta de escritorio remoto en BMS-WS; el enlace celular del ascensor; el enrutador del fabricante de la enfriadora.
+
+**EX032.** Dar a los ingenieros del contratista del BMS cuentas individuales en la pasarela con autenticación multifactor, y revisar los registros de sesión de la pasarela después de cada visita de soporte.
+
+**EX033.** Cada contratista solo necesita su propio sistema; limitar la cuenta significa que una contraseña robada al contratista de la enfriadora no puede abrir las puertas de farmacia o de maternidad.
+
+**EX034.** Si se retira primero la herramienta antigua y la cuenta de la pasarela falla, el contratista no podría ayudar durante una avería de las instalaciones; probar antes el sustituto mantiene el soporte sin interrupción.
+
+**EX035.** No: la supervisión de la alarma de incendios es una función de seguridad de las personas; documente el enlace, confirme con el responsable de seguridad contra incendios que solo alcanza la central de supervisión y revíselo, en lugar de desconectarlo.
+
+**EX036.** Una zona del BMS; una zona de alarma de gases medicinales y una zona del ascensor (relevantes para la seguridad); una zona de control de accesos; una DMZ; la zona corporativa.
+
+**EX037.** «Servidor del BMS → servidor de datos de la DMZ en el puerto de exportación acordado, permitir», con la regla final «cualquiera → cualquiera, denegar» que captura todo lo que no figura en la lista.
+
+**EX038.** Abren un panel de solo lectura en el servidor de datos de la DMZ o, para hacer cambios, se conectan a través de la pasarela a un servidor de salto dentro de la zona del BMS.
+
+**EX039.** Confirmar con mantenimiento si los puntos que faltan afectan a áreas clínicas, restaurar la configuración anterior si es así, identificar el conducto que falta (aquí, un servidor de hora) y añadirlo dentro del mismo registro de cambio.
+
+**EX040.** No impide que alguien que use credenciales válidas de la pasarela, o un interno, cause daños dentro de los conductos permitidos.
+
+**EX041.** El script solo señala un cambio cuya hora queda fuera de 08:00–10:00, y las 09:00 están dentro de esa ventana.
+
+**EX042.** `03:00 setpoint 20.0->26.0 in window` y `09:00 setpoint 26.0->21.0 OUTSIDE WINDOW - review`.
+
+**EX043.** El registro de auditoría del BMS, el registro de la pasarela de acceso remoto y el registro del cortafuegos de la zona del BMS.
+
+**EX044.** El quirófano estaría fuera de su intervalo de temperatura al empezar la sesión quirúrgica de la mañana, así que la cirugía podría retrasarse hasta que se recuperen las condiciones, y el confort del personal y las condiciones de esterilidad se verían comprometidos.
+
+**EX045.** Exigir que todo cambio fuera de ventana se anote en el registro del turno con el motivo, y configurar una alarma del BMS dirigida al ingeniero de guardia cuando un punto de consigna crítico cambie fuera de la ventana.
 
 <a id="references"></a>
 
