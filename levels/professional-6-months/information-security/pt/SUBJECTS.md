@@ -1,26 +1,26 @@
-# Subjects and book chapters — Information security / Professional course / Português
+# Disciplinas e capítulos do livro — Segurança da informação / Profissional / Português
 
-**One course, one principal book, 12 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Um curso, um livro principal, 12 disciplinas e capítulos, uma skill do curso.** Apenas os links marcados como Rascunho levam a conteúdo didático escrito; um capítulo planejado é um resumo, não uma lição concluída.
 
-This is an English working index awaiting translation and review for this language.
+Edição em português do Brasil, escrita a partir da edição de referência em inglês; revisão técnica e linguística pendente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Início](../../../../README.md) · [Trilha de estudo completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md)
 
-**Course 025 of 207.** Read chapters 01–12 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 025 de 207.** Leia os capítulos 01–12 de cima para baixo. Para cada capítulo, use o link Rascunho; o link numerado do plano é apenas um resumo. Tente os exercícios antes de consultar as resoluções no fim do livro. A última linha leva ao próximo curso neste mesmo idioma.
 
-| Month | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Mês | Capítulo / plano | Disciplina | Horas | Páginas A4 previstas | Meta de exercícios | Estado didático | Próximo passo |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Security foundations for practitioners | 30 | 30 | 5 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Information security: service and stakeholder context | 30 | 30 | 5 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 2 | [03](book/PLAN.md#ch-03) | Authorized practice and evidence handling | 30 | 30 | 5 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Information security: core methods | 30 | 30 | 5 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Information security: tools and interpretation | 30 | 30 | 5 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Information security: operational workflow | 30 | 30 | 5 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Information security: controls and verification | 30 | 30 | 5 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Information security: supervised case analysis | 30 | 30 | 5 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Communication, ethics and reporting | 30 | 30 | 5 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Information security: quality and troubleshooting | 30 | 30 | 5 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Supervised laboratory | 30 | 30 | 5 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Practice portfolio and final review | 30 | 30 | 5 | Planned | [Course 026 →](../../data-governance/pt/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Um profissional em atividade volta a estudar | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Entendendo a firma | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
+| 2 | [03](book/PLAN.md#ch-03) | O risco em termos simples | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Contas e entrada com múltiplos fatores | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Dispositivos e dados no escritório | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | E-mail e fraude de pagamentos | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Plano](book/PLAN.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Fornecedores e serviços em nuvem | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Pessoas e conscientização | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
+| 5 | [09](book/PLAN.md#ch-09) | Tratamento de incidentes | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
+| 5 | [10](book/PLAN.md#ch-10) | Continuidade e backups | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Política e obrigações | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Relatórios à liderança e próximos passos | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 026 →](../../data-governance/pt/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
