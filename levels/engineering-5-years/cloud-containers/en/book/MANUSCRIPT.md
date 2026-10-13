@@ -2005,25 +2005,37 @@ You will (1) compare isolation and tenancy architectures for meterhub; (2) evalu
 
 Option 1: one shared cluster with namespaces per service and strict policies. Option 2: one cluster per environment and sensitivity tier. Option 3: one cluster per service. Each gives a different balance of isolation, cost and operational effort.
 
+The three options sit on a spectrum. At one end, everything shares a control plane and nodes, so isolation rests on namespaces, policies and admission rules. At the other, each service has its own cluster and a compromise stays inside it, but every cluster must be upgraded, monitored and secured separately. The middle option groups services by how much harm a compromise would do, which is how many organisations of Solent's size settle the question.
+
 ### 26.2 Criteria
 
 Blast radius if a workload is compromised; cost of control planes and nodes; operational effort for upgrades; consistency of policy; regulator expectations for separation of payment data.
+
+Blast radius asks what an attacker could reach after compromising one workload. Cost includes control-plane fees and the extra nodes that partly empty clusters waste. Operational effort counts the hours four engineers would spend on upgrades each quarter. Policy consistency matters because many clusters drift apart. Regulator expectations are a hard constraint: if separation of payment data is required, an option that cannot show it is ruled out regardless of its other scores.
 
 ### 26.3 Evaluation
 
 Option 1 is cheapest but relies on Kubernetes isolation between namespaces; NIST SP 800-190 suggests grouping containers by sensitivity. Option 3 isolates best but multiplies upgrade work by the number of services. Option 2 balances them: a high-sensitivity cluster for readings and payments, a standard cluster for other services.
 
+Elena puts rough numbers on each option: Option 3 would mean around a dozen clusters to upgrade, each upgrade taking a day, which the team cannot sustain alongside other work. Option 1 would need only one, but a flaw in namespace isolation would expose everything. Option 2 needs two clusters, keeps readings and payments apart from general services, and fits the team's capacity. The scores and the reasons behind them go into the comparison table.
+
 ### 26.4 Hybrid with nodes
 
 Within a cluster, dedicated node pools for sensitive or privileged workloads add separation at the host level.
+
+Namespaces separate workloads logically, but pods from different namespaces can still share a node and its kernel. Dedicated node pools, enforced with taints and tolerations, keep sensitive or privileged pods on their own machines. A kernel-level escape from a general workload then lands on a node with nothing sensitive on it. The node agent, which needs elevated privileges, runs in a pool kept apart from the ingest and database workloads.
 
 ### 26.5 Decision
 
 Option 2 with dedicated node pools, recorded in an architecture decision record with criteria scores.
 
+The record states the context (one shared cluster with no policies after the key leak), the options, the scores against each criterion, the choice and its consequences, including the extra cost of a second cluster and the work of keeping two sets of policies in step. It names who decided and when. Recording scores means a future reviewer can see how close the alternatives were, not just which one won.
+
 ### 26.6 Revisit triggers
 
 The decision is revisited if the number of services doubles, the regulator changes rules or a namespace isolation weakness is published.
+
+Decisions made for one set of conditions can become wrong as conditions change. Doubling the number of services would raise the cost of managing policies in shared clusters. A regulatory change could demand stricter separation. A published flaw in namespace isolation would weaken the main assumption behind Option 2. Naming triggers in advance means the team reconsiders at the right moment rather than when a problem has already happened.
 
 ### Scoring the options
 
@@ -2069,25 +2081,37 @@ You will (1) design admission, identity and storage controls in detail; (2) spec
 
 Pod Security admission enforces the Restricted profile on production namespaces; a policy engine adds checks for image signatures, resource limits and allowed registries. Policies are code, reviewed and tested.
 
+Admission control is the last check before a pod runs, so it catches mistakes regardless of how the manifest was produced. Pod Security admission handles the standard profile with no extra software. The policy engine covers rules the profiles do not, such as requiring signatures or limits. Writing policies as code means they are tested like application code, with compliant and non-compliant examples, before being enforced in production.
+
 ### 27.2 Failure mode
 
 If the policy engine is unavailable, should deployments fail closed (blocked) or open (allowed)? Solent chooses fail closed for production with a monitored, highly available engine, and fail open with alerts for test clusters.
+
+Failing closed in production means an outage of the policy engine stops deployments, which is inconvenient but safe: nothing unchecked can run. Making the engine highly available and monitoring it keeps such outages rare and short. In test clusters, blocking work would frustrate developers for little security gain, so failing open with alerts lets work continue while the problem is visible.
 
 ### 27.3 Identity controls
 
 Workload identity bindings map each service account to one cloud role with minimal permissions. Organisation policy disallows creating long-lived keys for service accounts.
 
+One service account mapped to one role keeps permissions easy to read: anyone can see exactly what the ingest service may do in the cloud. Preventing long-lived keys at the organisation level stops someone from creating a key as a quick fix, which is how the leaked key came to exist. Teams that need cloud access must use workload identity, so credentials are short-lived and never stored in images.
+
 ### 27.4 Storage controls
 
 Account-level settings block public access to storage; bucket policies require encrypted connections; customer-managed keys protect readings.
+
+Blocking public access at account level overrides any individual bucket setting, so a mistaken bucket policy cannot expose readings. Requiring encrypted connections stops data from crossing networks in clear text. Customer-managed keys add a further layer, since even someone with storage access must also have permission to use the key. Each control covers a different way data could leak. Elena verifies each setting with a configuration query.
 
 ### 27.5 Exceptions
 
 Exceptions are labels on namespaces or workloads that reference a ticket and expiry date; the policy engine checks expiry.
 
+Putting exceptions on the workload itself, rather than in a separate spreadsheet, means the policy engine can see and enforce them. The ticket reference explains why the exception exists; the expiry date makes it temporary by design. When the date passes, the engine rejects the workload, prompting a renewal decision rather than letting the exception linger forgotten. Elena's report lists exceptions due to expire within a month.
+
 ### 27.6 Observability
 
 Every denial is logged with the rule and reason and counted on a dashboard; repeated denials for the same team prompt help, not punishment.
+
+Logged denials with reasons let developers fix problems themselves. The dashboard shows which rules are triggered most, which might indicate a confusing rule or a common mistake worth addressing in documentation. Treating repeated denials as a sign that a team needs help, not as misconduct, keeps teams cooperative and avoids pressure to weaken rules. Denial counts are reviewed weekly.
 
 ### Policy testing
 
@@ -2129,25 +2153,37 @@ You will (1) implement workload identity and storage guardrails; (2) migrate ser
 
 Migrate services one at a time from long-lived keys to workload identity: create the role binding, deploy the service using it, confirm it works, then disable and delete the old key.
 
+Migrating one service at a time limits the impact of any problem and lets the team learn from early migrations. Confirming the service works before removing the old key ensures there is always a working credential. Deleting the key at the end closes the exposure. Each step is recorded for audit, so Solent can show when every key disappeared.
+
 ### 28.2 Inventory
 
 A query lists all service account keys in Solent's cloud accounts: 23 keys, of which 9 had not been used in 90 days.
+
+Knowing how many keys exist and which are used is the starting point for removing them. Nine unused keys represent risk with no benefit: if any were leaked, they could be used without anyone noticing a change in legitimate activity. The query also shows creation dates and owners, helping trace why each key exists. Elena assigns each key to an owner before any change is made.
 
 ### 28.3 Unused keys
 
 Unused keys are disabled first, not deleted, for two weeks. If nothing breaks, they are deleted.
 
+Disabling first is a safe test: if some forgotten job did use a key, it fails visibly and the key can be re-enabled quickly. After two weeks without problems, deletion is low risk. This two-step approach avoids breaking things while still removing the keys reasonably fast. Owners are told before each key is disabled, with the date and how to report a failure. Re-enabled keys are recorded with the reason, since a key that something still needs moves to the active migration list.
+
 ### 28.4 Active keys
 
 Active keys are migrated service by service, with each service owner present.
+
+Owners know their services' behaviour and can spot problems quickly during migration. Each migration follows the same steps and checklist, so the process is consistent. Problems found in early migrations, such as a library that does not support workload identity, are fixed before later services move. Migrations are booked outside the evening ingest peak. Each one ends with the owner confirming normal traffic for a full day before the old key is disabled, and the checklist records any library or configuration change the service needed.
 
 ### 28.5 Storage guardrail
 
 Account-level public access blocking is enabled on test accounts first, then production. A query beforehand lists buckets with public access and their documented reasons: none in production after chapter 13's fixes.
 
+Enabling the guardrail in test first reveals any surprises without affecting production. Listing public buckets beforehand ensures that nothing legitimate depends on public access. Finding none in production confirms earlier fixes held, and the guardrail now prevents any future public bucket. Elena records the before-and-after query results as evidence that the guardrail did not break anything.
+
 ### 28.6 Verification
 
 After each migration, a check confirms the service has no keys and that its role has only the expected permissions.
+
+Checking for keys confirms the old credential is gone. Checking permissions confirms the new role has exactly what the service needs, no more. Both checks are scripted so they can run again later to catch drift, such as someone adding a permission without review. The checks run weekly afterwards, and any key that reappears raises an alert to the platform team, together with the identity that created it.
 
 ### Communicating the migration
 
@@ -2193,6 +2229,8 @@ You will (1) define control coverage measures; (2) compute coverage per namespac
 
 For each production namespace, Elena records whether four controls are in place: default-deny network policy, Restricted pod security, image signature enforcement and resource limits on all pods.
 
+These four controls address the main risks found earlier: open networking, risky pod settings, unverified images and unbounded resource use. Recording them per namespace shows where each service stands. Elena chooses controls that can be checked automatically from cluster configuration, so the measure stays current without manual effort. She writes down the exact test for each control, so the same configuration always gives the same answer.
+
 ### Lab — Lab — control coverage
 
 ```python
@@ -2220,17 +2258,25 @@ overall coverage 10/16 = 62%
 
 meterhub has 4 of 4 controls. billing has 3 of 4 (missing image-signature). reports has 2 of 4 (missing netpol-default-deny and image-signature). legacy-import has 1 of 4 (missing netpol-default-deny, pod-security-restricted and image-signature). Overall coverage is 10 of 16 controls, 62%.
 
+Ten of sixteen means six control gaps remain. Image signatures are missing in three namespaces, so that control is the most common gap. legacy-import has the most work, missing three of four. Elena uses these results to plan the next rollout steps, starting with the gaps that affect the most sensitive services.
+
 ### 29.3 Interpreting
 
 Coverage says a control is configured, not that it is effective; an allow-all policy would count as a policy. Elena's checker therefore requires a default-deny policy specifically, and verification tests (later chapters) check behaviour.
+
+A coverage figure can look good while protection is weak, if controls are present in name only. Requiring a specific default-deny policy prevents an allow-all policy from counting. Behaviour tests in the laboratory then check that controls actually block what they should. Coverage and effectiveness together give a truer picture.
 
 ### 29.4 Weighting
 
 Namespaces differ in sensitivity; a missing control in billing matters more than in reports. The dashboard shows both raw and sensitivity-weighted coverage.
 
+Treating all namespaces equally would make a gap in a low-risk service look as serious as one in billing. Weighting by sensitivity directs attention to where harm would be greatest. Showing both raw and weighted figures lets readers see progress overall and where it matters most. Sensitivity weights come from the data model's classes: namespaces holding readings or payment data count three times as much as internal tools.
+
 ### 29.5 Trends
 
 Monthly coverage is plotted; a drop signals new namespaces without controls or removed controls.
+
+A single month's figure shows status; a trend shows direction. A falling trend often means new namespaces were created without the standard controls, pointing to a gap in the onboarding process. A rising trend shows the rollout working. Elena adds a note to each month explaining any significant change. Trend charts go to Solent's managers each month with a one-line summary. When coverage falls, the summary names the namespaces responsible and the action planned, so the chart prompts decisions rather than just reporting a number.
 
 ### Sensitivity weighting
 
@@ -2276,25 +2322,37 @@ You will (1) verify controls with safe, synthetic tests; (2) check admission, ne
 
 A test cluster mirrors production policies. Tests use synthetic workloads designed to violate one rule each, so a correct control rejects them. No production systems are touched.
 
+Mirroring production policies ensures tests reflect what production actually enforces. Synthetic workloads designed to break exactly one rule make results unambiguous: if one is admitted, the corresponding control has failed. Keeping tests in a separate cluster means no risk to production services or data. The test cluster is rebuilt from code before each full run, so earlier experiments cannot leave state that changes results. Its version matches production, which Elena checks at the start of every run.
+
 ### 30.2 Admission tests
 
 A synthetic pod requesting privileged mode must be rejected; one without runAsNonRoot must be rejected; an unsigned image must be rejected; a compliant pod must be admitted.
+
+Each rejection test proves a specific control works; the compliant pod proves the rules are not so strict that nothing can run. Running all four together catches both failure modes: a control that allows too much, and a configuration that blocks legitimate workloads. The pods use small images built for testing, holding no real application code. Each is named after the rule it breaks.
 
 ### 30.3 Network tests
 
 From a test pod labelled web, a connection to db must fail and a connection to api must succeed, matching the chapter 24 design.
 
+Testing both a denied and an allowed path confirms the policy blocks what it should without breaking normal traffic. Using labels that match production pods ensures the policies being tested are the ones that would apply. A failure in either direction is a defect. Elena also tests DNS from the web pod, since egress rules could break name resolution. Results are stored with the policy version, so a later change can be compared directly with this run.
+
 ### 30.4 Identity tests
 
 A test service with workload identity can read its allowed bucket and is refused writing to another; no keys exist for the service account.
+
+Reading the allowed bucket confirms the role works; being refused a write elsewhere confirms permissions are limited. Checking that no keys exist confirms the old credential path is closed. Together they verify R1 for the test service. The tests use a dedicated test bucket holding synthetic files only, so no readings are involved. Elena also checks the cloud audit log afterwards: the refused write should appear there with the service's workload identity, which confirms the denial came from the role rather than from a network fault.
 
 ### 30.5 Recording
 
 Each test records requirement, input, expected and actual result, time and cluster version.
 
+Records allow anyone to see what was tested, when and against which cluster version. If a later change breaks a control, comparing records shows when it last passed. Records also form part of the evidence submitted to the regulator. Elena writes results to a CSV file per run, named with the date and cluster version. Files are kept in the evidence folder and are never edited after the run; corrections appear as a new run with a note explaining what changed and why the earlier result was wrong.
+
 ### 30.6 Failures
 
 A failed test is a defect with an owner, not a test to rewrite.
+
+Rewriting a failing test to pass hides the problem it found. Treating it as a defect means someone investigates and fixes the control. The test stays as it is and is rerun after the fix, providing evidence that the problem is resolved. The defect records which requirement is at risk, so its priority follows from the requirement's priority. Until it is fixed, the requirement is reported as not met, even if every other test passes. Elena's first run finds one such defect: a namespace label that set the wrong pod security profile, so a weaker level was enforced than the requirement demands.
 
 ### Parity checks
 
