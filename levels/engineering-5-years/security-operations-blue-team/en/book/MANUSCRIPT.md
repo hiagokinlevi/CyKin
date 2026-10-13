@@ -1596,29 +1596,43 @@ You will (1) elicit SOC requirements from stakeholders and threats; (2) write me
 
 Requirements come from the mission, threats, regulations, incidents and analysts' pain. The portal incident produced the requirement "detect likely account takeover on the customer portal within 15 minutes".
 
+Each source pulls in a different direction. Threats suggest what attackers will try; regulations set minimums such as retention; incidents expose gaps that actually hurt; analysts' pain reveals where work is wasted on noisy rules or missing context. Collecting from all of them avoids a requirement set that reflects only the loudest voice, and the source of each is recorded beside it.
+
 ### 21.2 Functional requirements
 
 These say what the system does: ingest load-balancer logs; correlate failures and successes per network; raise an alert with the customer ID, source network and subsequent actions.
+
+Each statement is phrased as something the system must do, so a tester can check it directly: feed in load-balancer logs and see whether they are ingested; create a failure burst followed by a success and see whether the correlation fires; open the alert and see whether it carries the three named fields. Vague verbs like 'support' or 'handle' are avoided.
 
 ### 21.3 Non-functional requirements
 
 These say how well: latency under 5 minutes from event to alert; availability of 99.5% for the pipeline; no more than 10 false alerts per day to the night shift; data retained 90 days hot.
 
+These qualities are often where systems disappoint, because they are easy to forget during design. A rule that is logically perfect but alerts twenty minutes late misses the target. A 99.5% availability target allows about 44 hours of pipeline downtime per year, which Amara compares with the maintenance windows already planned, to check that the figure is realistic.
+
 ### 21.4 Measurable wording
 
 "Fast" and "accurate" cannot be tested. Each requirement states a number, a condition and a measurement method.
+
+For example, 'fast' becomes '95% of alerts created within 5 minutes of the triggering event, measured from event time to alert time over a calendar month'. The method matters as much as the number: measuring from ingestion time rather than event time would hide delays in log delivery and make the pipeline look better than it is. Amara rewrites every requirement in this form and asks Paolo to try writing a test for each; any he cannot test goes back for rewording.
 
 ### 21.5 Traceability
 
 A table links each requirement to its source (threat, regulation, incident), the design element that meets it and the test that verifies it. ATT&CK technique IDs give a common reference for threat sources.
 
+The table works in both directions. Reading forward from a threat shows whether anything addresses it; reading backward from a test shows why it exists. When a regulation changes, the table shows which requirements and tests are affected. Using technique IDs means the security team and outside reports can refer to the same threat without ambiguity.
+
 ### 21.6 Prioritisation
 
 With limited staff, Amara and Paolo rank requirements as must, should or could, guided by risk and cost.
 
+A must is something without which the system fails its purpose, such as detecting account takeover; a should adds real value but can wait, such as enriching alerts with customer tier; a could is nice to have. Ranking openly lets managers see what will not be delivered this quarter, rather than discovering it later when time runs out. Musts are funded first; coulds wait for spare capacity.
+
 ### 21.7 Change control
 
 Requirements change; each change is recorded with reason and approval, and affected tests are updated.
+
+Without it, requirements shift quietly through conversations, and tests end up checking something no one agreed to. Recording the reason keeps changes honest: lowering the false-alert limit because analysts complained is different from lowering it because the night shift was reduced. Updating tests alongside keeps verification aligned with what the system is now expected to do. Paolo approves each change, and the requirement keeps its history so earlier test results can still be interpreted against the version in force then.
 
 ### Acceptance criteria
 
@@ -1660,29 +1674,43 @@ You will (1) model the SOC pipeline as stages and data stores; (2) define the ev
 
 Lindqvist's pipeline has stages: collect (agents, syslog, cloud APIs), transport, parse and normalise, enrich (asset and identity data), store, detect, alert, and case management. Each stage can fail, delay or distort data.
 
+Thinking in stages helps locate problems. A missing alert could mean the event was never collected, was dropped in transport, failed to parse, lacked enrichment the rule needed, aged out of storage, or never matched the rule. Each stage gets its own health measures, so an analyst can trace an event through the pipeline and find where it disappeared.
+
 ### 22.2 Event model
 
 Every normalised event carries time (UTC), source, host, user, action, outcome, and raw record reference. A shared model lets one rule work across sources.
+
+Keeping a reference to the raw record matters because normalisation can lose detail or introduce errors; an analyst may need the original line to check what the source actually said. Recording time in UTC avoids confusion between sources in different zones. Because every source maps to the same fields, a rule about failed logins works across the portal, VPN and staff sign-in.
 
 ### 22.3 Entity model
 
 Entities persist across events: a customer, an employee, a host, a network. Entity tables hold attributes such as criticality, owner and normal locations, used for enrichment.
 
+Events are moments; entities give them context. An alert about a host means more when the alert also shows that the host is a payment server owned by finance. Normal locations for a customer help judge whether a login from a new country is unusual. Entity tables need updating, since stale data misleads analysts as surely as missing data.
+
 ### 22.4 Relationships
 
 Customers own accounts; employees use hosts; hosts sit in zones. Modelling relationships lets analysts ask "which zone is this host in?" automatically.
+
+Without modelled relationships, an analyst must look up each link manually in different systems, which is slow during an incident. With them, an alert can show automatically that the host belongs to a depot zone and that its usual user is on leave. Relationships also let rules reason across entities, for example flagging an employee using a host outside their own zone.
 
 ### 22.5 Gaps from models
 
 Walking through the model stage by stage, Amara checks each source: is it collected, parsed, enriched and covered by detections? Depot networks are collected but not enriched, because the asset inventory lacks depot devices.
 
+The walk-through is systematic: for each source, four yes-or-no questions. Missing enrichment for depot devices means alerts about them carry only an address, with no owner, location or role, so analysts must investigate from scratch. The fix is upstream: adding depot devices to the asset inventory, which helps IT operations as well as the SOC.
+
 ### 22.6 Model ownership
 
 The data model is owned by the detection engineering team; changes are versioned like rules.
 
+An owner decides which fields exist and what they mean, and reviews proposed changes. Versioning lets rules declare which model version they expect, so a field rename does not silently break them. Without ownership, different engineers add fields with overlapping meanings, and over time the shared model splinters into source-specific dialects. The owner publishes a changelog, and rule authors read it before each release. Deprecated fields stay available for one release so rules can migrate without a gap in coverage.
+
 ### 22.7 Models and people
 
 Models also include who acts at each stage: which team fixes parsing errors, who maintains enrichment tables.
+
+A pipeline diagram that shows only systems hides the human work that keeps it running. Naming the team responsible for parser failures means alerts about broken parsing reach someone who can act. Naming the owner of enrichment tables means stale entries have someone accountable. Amara adds an owner to every stage on the pipeline diagram. Each owner also has a backup named, so a parser failure during holidays still reaches someone able to fix it.
 
 ### Enrichment freshness
 
@@ -1724,29 +1752,43 @@ You will (1) analyse threats relevant to the organisation using ATT&CK; (2) anal
 
 Lindqvist's threat analysis asks which adversaries target logistics firms and which techniques they use. Public reporting and ATT&CK groups show credential abuse, phishing of staff, ransomware and fraud through customer accounts.
 
+Starting with adversaries who target the sector keeps the analysis grounded in what actually happens to similar firms. For a logistics company, delivery fraud and payment diversion are as relevant as data theft. ATT&CK groups document techniques seen in real campaigns, which turns general concern about ransomware into specific behaviours the SOC can look for.
+
 ### 23.2 Technique coverage
 
 For each relevant technique, the team records data sources needed, detections present and confidence. Coverage maps show strengths (credential abuse on the portal) and gaps (lateral movement in depot networks).
+
+Confidence records how sure the team is that a detection would work, based on testing rather than on its existence. A rule written but never tested earns low confidence. The coverage map makes priorities visible to managers who cannot read rules: strong in one area, weak in another, with the evidence behind each rating.
 
 ### 23.3 Failure analysis
 
 The monitoring system itself fails: sources go silent, parsers break after upgrades, enrichment tables go stale, rules are disabled and forgotten. A failure mode and effects table lists each failure, its effect on detection, how it would be noticed and its likelihood.
 
+The format comes from engineering safety analysis, where it is used for machines and plants. Applied to monitoring, each row asks: if this part fails, which detections stop working, how quickly would we know, and how likely is it? A parser breaking after an upgrade is likely and may go unnoticed for days, so it ranks high.
+
 ### 23.4 Silent failures
 
 The worst failures are silent: a source stops sending and nothing alerts. These get detection of their own, covered in chapter 47.
+
+Silence is dangerous because the absence of alerts looks the same as the absence of attacks. A source that normally sends ten thousand events an hour and suddenly sends none should itself raise an alarm. Expected volumes per source, with alerts on large drops, turn silence into a visible signal. Some sources are naturally quiet at night, so thresholds compare each hour with the same hour on previous weeks rather than with a flat daily average.
 
 ### 23.5 Combining views
 
 Priority is highest where an important technique depends on a fragile component — for example, account-takeover detection depending on a single load-balancer log feed.
 
+Threat analysis shows what matters; failure analysis shows what is fragile. Their overlap is where a single failure would blind the SOC to an important technique. The load-balancer feed is a clear example: if it stops, account-takeover detection degrades. The response is either a second feed or close monitoring of the existing one. Amara marks such overlaps in red on the coverage map.
+
 ### 23.6 Review
 
 Analyses are reviewed by analysts, IT operations and the CISO's office, then revisited after incidents or major changes.
 
+Analysts know which detections are trusted in practice; IT operations know which components are fragile; the CISO's office knows business priorities. Each view corrects the others. Revisiting after incidents keeps the analysis current, since an incident often reveals a technique or failure mode the original review overlooked. Each review produces a dated version with a short list of changes and who requested them, so later readers can see how the team's view of threats and failures evolved over time.
+
 ### 23.7 Avoiding bias
 
 Teams overweight recent incidents. Using ATT&CK as a checklist helps consider techniques that have not yet hit Lindqvist.
+
+After the portal incident, attention focuses on credential abuse, and it is tempting to spend all effort there. A checklist forces the team to look systematically at other techniques, such as misuse of remote management tools in depots, that have not yet caused trouble. Recent pain is a useful signal but a poor complete guide. Each technique left out is marked with a short reason.
 
 ### Insider and fraud threats
 
@@ -1788,9 +1830,13 @@ You will (1) design threshold and correlation detections; (2) evaluate rules aga
 
 A threshold rule fires when a count in a window crosses a limit: at least 5 distinct users failing from one /24 in 10 minutes.
 
+Counting distinct users rather than total failures targets the stuffing pattern: many accounts, few tries each. A single customer failing ten times would not trip the rule, which is intended. The window and limit are parameters to tune, and the rule's documentation records the values chosen and the evidence that led to them. Five in ten minutes is the starting point.
+
 ### 24.2 Correlation rules
 
 A correlation rule requires several conditions, possibly from different sources: failures followed by a success, or a success followed by an address change.
+
+Correlation adds meaning by joining steps that are weak alone. Failures happen constantly; a success alone is normal; failures followed by a success from the same network suggest a guessed password. An address change after a new-network login is more suspicious than either event separately. Such rules need sources with aligned times and shared fields. Clock offsets between sources must be small.
 
 ### Lab — comparing rule variants
 
@@ -1822,17 +1868,25 @@ threshold=5 no success clause: TP=3 FP=2 FN=0
 
 With the success clause and threshold 5, the rule catches 2 of 3 attack windows with no false alerts; at threshold 6 it catches only 1. Without the success clause, threshold 5 catches all 3 attack windows but adds 2 false alerts — the 11:00 load test and a 15:00 window.
 
+The figures show the trade-off clearly. Requiring a success makes the rule precise but costs one attack window, an attempt that never succeeded. Dropping the clause catches every attempt but adds noise, including a load test that a signed-tool exception could remove. Raising the threshold to six loses another real window without removing any false alerts, since there were none.
+
 ### 24.4 Purpose decides
 
 The no-success variant detects attempts; the success variant detects likely compromise. Lindqvist uses both: attempts go to a daytime queue for rate-limit tuning; likely compromise pages the night shift.
+
+Neither variant is simply better; each answers a different question. Attempts matter for tuning defences, such as rate limits, and can wait for daytime. Likely compromise needs action within minutes, so it justifies waking someone. Splitting the rule by purpose gives each the right urgency instead of forcing one compromise threshold on both needs.
 
 ### 24.5 Labels
 
 Evaluation needs labelled windows. Labels come from investigated incidents, authorised tests and analyst review of samples.
 
+Each label source has weaknesses. Investigated incidents are reliable but few; authorised tests are clean but may not look like real attacks; analyst reviews are plentiful but can be wrong. Recording where each label came from lets evaluators weight them and check whether results depend heavily on one kind of label. Beside each of her eight windows, Amara writes which source supplied its label and who confirmed it, so a reviewer can challenge any single label.
+
 ### 24.6 Small samples
 
 Eight windows illustrate the method only; real evaluation uses weeks of data.
+
+With eight windows, a single mislabelled one changes the results dramatically. Weeks of data give hundreds of windows, enough to estimate rates with useful confidence and to see variation between weekdays and weekends. The small set remains valuable for teaching and for unit tests, where every window can be checked by hand. Amara states the sample size beside every figure she reports, so nobody mistakes the teaching example for a measured performance of the rule in production.
 
 ### Rule naming and severity
 
@@ -1874,29 +1928,43 @@ You will (1) work in a team on an open-ended SOC design problem; (2) generate an
 
 Teams design monitoring for Lindqvist's depot networks, where handheld scanners and old workstations cannot run agents. The design must detect unusual connections from depots into business systems.
 
+Unusual connections might include a scanner talking to a finance server, or a depot workstation reaching systems it has never used before. Without agents, the design must rely on network observation. Teams also need to consider that depots differ in size and connectivity, so one design must work for a small rural depot and a large hub.
+
 ### 25.2 Generating alternatives
 
 Amara's team lists three options: network flow monitoring at the depot-to-business boundary; a network detection sensor with protocol analysis; and tightening firewall rules with logging of denied connections.
+
+Listing several options before evaluating any prevents the first idea from becoming the only one. The three differ in kind: one observes flows, one inspects content, one restricts traffic and records refusals. Each has different costs and blind spots, which the criteria comparison will bring out, and a hybrid may emerge once the pieces are understood.
 
 ### 25.3 Criteria
 
 They compare options on visibility, cost, operational load, privacy and failure modes, using a weighted table.
 
+Visibility asks what each option can see; cost includes hardware, licences and staff time; operational load asks who maintains it; privacy considers whether staff traffic content is collected; failure modes ask what happens when it breaks. Weights are agreed before scoring, and each score cites evidence such as a vendor datasheet or a measurement. Privacy carries a high weight because depot staff use the same network for personal messages during breaks, and the company's monitoring policy limits content collection.
+
 ### 25.4 Studio critique
 
 Each team presents for ten minutes; peers and staff challenge assumptions. The studio values clear reasoning over polished slides.
+
+Critique is aimed at the design, not the people. Typical challenges are 'what happens if the sensor fails?' or 'how will you know the rules work?'. Slides with impressive diagrams but no reasoning score poorly. Staff note recurring weaknesses across teams and address them in the next teaching session. Feedback is written on cards and handed to each team after its slot, so comments are not lost and quieter students can contribute too.
 
 ### 25.5 Iteration
 
 After critique, teams revise. Amara's team learns that the boundary firewall already logs allowed and denied flows; combining firewall logs with a small number of allow rules is cheaper than a new sensor.
 
+The finding came from asking depot IT staff during critique, which shows the value of involving people who know the existing systems. Using the firewall's existing logs costs almost nothing in hardware. Tight allow rules shrink normal traffic to a short list, so any denied or unexpected flow stands out clearly in the logs.
+
 ### 25.6 Documentation
 
 The final design includes a diagram, data flows, requirements met, risks and a test plan.
 
+The diagram shows where logs come from and where they go; data flows give formats and volumes; requirements met link back to the brief; risks state what could go wrong; the test plan shows how the design will be proved. A reviewer who missed the presentation should understand the design from the document alone. Amara's team limits the document to six pages. Appendices hold detail.
+
 ### 25.7 Teamwork
 
 Roles rotate: presenter, scribe, critic. Everyone explains every part.
+
+Rotating roles stops one confident member from presenting everything while others stay silent. The scribe records decisions and critique; the critic looks for weaknesses before outsiders do. Requiring everyone to explain every part means the staff can question any member, which reveals whether understanding is shared or held by one person. At the end, each member writes a short note on what they contributed and what they learned from another member, which staff read alongside the team's design.
 
 ### Privacy in the design
 
@@ -1938,29 +2006,43 @@ You will (1) compare SOC architecture models such as centralised, distributed an
 
 Zimmerman (2014) and Knerler, Parker and Zimmerman (2022) describe SOC structures from small centralised teams to tiered, distributed and federated models. Lindqvist, with one head office and forty depots, runs a small central SOC with depot IT staff as local contacts.
 
+Structure follows size and spread. A tiered model with many specialists suits a large organisation; a federated model suits one with independent business units. Lindqvist's forty depots are too many for central staff to visit but too small to have their own analysts, so depot IT contacts act as eyes and hands on site when needed.
+
 ### 26.2 Data platform options
 
 A traditional SIEM indexes events for fast search and built-in rules. A data-lake approach stores cheaply and queries flexibly but needs more engineering. Many SOCs combine them: hot SIEM for recent, high-value data and a lake for long-term, bulk data.
+
+A SIEM's indexing makes searches fast but costs storage and licence fees per volume. A lake stores raw data cheaply but searches more slowly and needs engineers to build queries and pipelines. Combining them puts data where its use justifies its cost: recent authentication logs in the SIEM, months of firewall logs in the lake.
 
 ### 26.3 Managed services
 
 A managed detection provider can watch at night and bring wider threat knowledge, but knows less about local context and needs clear escalation agreements. Lindqvist considers using one for night coverage.
 
+Night coverage by a provider can be cheaper than a full in-house night shift. The risks are that the provider escalates too much or too little, or lacks context to judge alerts. Clear agreements state which alerts the provider handles, what it may do on its own, and how quickly it must call Lindqvist's on-call engineer.
+
 ### 26.4 Build versus buy
 
 Building gives control and fit; buying gives speed and support. Engineers estimate total cost over several years, including staff time, not just licence price.
+
+A built tool fits exactly but needs people to maintain it after its authors move on. A bought tool comes with updates and support but may force processes to fit its design. Comparing five-year costs, including staff hours for integration and upkeep, often changes the picture from licence price alone. Lindqvist's comparison for its case system shows that a cheaper licence would cost more in integration work within two years, which tips the decision.
 
 ### 26.5 Decision records
 
 Each major choice is written as an architecture decision record: context, options, decision, consequences. Future engineers can see why things are as they are.
 
+Records are short, often one page, and written when the decision is made. Consequences include both benefits and costs, such as lock-in to a vendor format. When a later team wonders why the lake uses a particular format, the record explains the reasoning and the options rejected, saving them from repeating the analysis. Lindqvist stores them next to the code.
+
 ### 26.6 Reversibility
 
 Prefer choices that can be undone. Keeping raw logs in an open format makes changing platforms later possible.
 
+Some choices are hard to reverse: data stored only in a proprietary format may need costly conversion to move. Keeping raw logs in open formats such as JSON lines alongside the platform's own copy preserves options. Reversible choices let a team move faster, since a mistake can be corrected without a major project. Contract terms count too: a short initial term with a vendor is easier to leave than a five-year commitment signed for a discount.
+
 ### 26.7 Case
 
 With storage growing (chapter 6), Lindqvist must decide whether to expand the SIEM or add a lake for firewall and DNS logs.
+
+Expanding the SIEM keeps everything in one place but costs more as volume grows. Adding a lake for firewall and DNS logs, which are bulky but searched less often, keeps the SIEM for high-value data. Amara prepares the comparison with five-year cost estimates and the effect on investigation speed for each log type. The decision goes to the CISO with a recommendation and is recorded as a decision record.
 
 ### Worked example
 
